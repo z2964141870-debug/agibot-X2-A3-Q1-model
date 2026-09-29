@@ -25,10 +25,13 @@ YUANQI/
 ## 开始阅读
 
 1. [项目状态与报告索引](reports/README.md)
-2. [训练工作包](reports/训练工作包.md)
-3. [第一课：机器人控制与 PPO](reports/第一课_机器人控制与PPO.md)
-4. [训练服务器与存储](reports/README_INFRASTRUCTURE.md)
-5. [Git 与百度网盘保存规范](reports/README_STORAGE.md)
+2. [当前状态与下一步](reports/README_CURRENT_STATE.md)：恢复上下文时先看这里。
+3. [训练工作包](reports/训练工作包.md)
+4. [第一课：机器人控制与 PPO](reports/第一课_机器人控制与PPO.md)
+5. [训练服务器与存储](reports/README_INFRASTRUCTURE.md)
+6. [Git 与百度网盘保存规范](reports/README_STORAGE.md)
+
+每完成重要阶段，立即保存阶段 README，更新状态与索引，并提交到 GitHub。该要求已写入 [AGENTS.md](AGENTS.md)，记录格式见 [阶段模板](reports/README_STAGE_TEMPLATE.md)。
 
 初始化时确认：RTX 3090 24GB；目标磁盘为可写 ext4；已安装百度网盘 Linux 客户端 8.7.0。客户端登录和上传/下载能力未验证。完整证据见 `logs/session_records/`。
 

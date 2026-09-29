@@ -10,7 +10,19 @@
 - `logs/` 放终端 stdout/stderr 和纯执行记录；原始传感器数据属于 `data/`。
 - `script/` 放代码、脚本和配置；`reports/` 放重要说明和结论，优先用 README。
 - 根目录只放必要项目管理文件。环境、缓存和下载资产不要进入 Git。
-- 先读 `reports/README.md`、`README_INFRASTRUCTURE.md` 和 `README_STORAGE.md`。
+- 开始新一轮工作或恢复上下文时，先读 `reports/README.md`、`reports/README_CURRENT_STATE.md` 和当前阶段 README，再按任务读取 `reports/README_INFRASTRUCTURE.md` 与 `reports/README_STORAGE.md`。
+
+## 重要阶段必须写 README（用户明确要求）
+
+- 每完成一部分重要任务，必须立即把工作写成 README 保存到 `reports/`，并更新报告索引与当前状态；完成这些记录后再进入下一重要阶段或向用户报告完成，不能只留在聊天中。
+- 重要任务包括：环境搭建/变更、数据处理、训练/评测、部署验证、关键故障定位、方案选择与研究结论。形成有价值的失败结论或出现阻塞也要记录，不只记录成功。
+- 阶段文件统一使用 `reports/README_<主题>_<YYYYMMDD>.md`；同日同主题继续更新同一份，独立实验用不同实验编号。现有历史 README 保留。
+- 按 `reports/README_STAGE_TEMPLATE.md` 写清：目标、完成内容、关键决定及理由、代码/配置版本、可复现命令、产物与日志路径、实际验证结果、未解决问题、下一步。
+- `reports/README_CURRENT_STATE.md` 只保存恢复工作必需的最新摘要和证据链接；详细过程留在阶段 README 与日志中，避免入口无限增长。
+- 阶段记录按用户已授权的存储规范提交并推送到指定 GitHub 仓库；核验远端提交。若推送失败，保留本地记录并明确标注尚未同步，不能据此丢失本轮工作。
+- 任务被中断或上下文不足时，尽可能先保存可恢复的检查点，注明正在运行的作业、日志、当前状态和下一条可执行步骤；不要把未完成工作记成完成。
+- 恢复时以 README 和对应文件/日志为依据，重新核实会变化的进程、GPU、机器人、网盘与 Git 状态；不凭聊天记忆重做已有工作，也不把旧记录当成实时状态。
+- README 不保存密码、token、Cookie 或私钥；不复制无关的大段终端输出。原始记录留 `logs/`，大型工件留 `data/` 并登记清单。
 
 ## GitHub
 

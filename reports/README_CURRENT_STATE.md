@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-09-29。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
+更新：2026-09-30。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
 
 ## 用户目标与固定约定
 
@@ -19,6 +19,7 @@
 4. 17 份参考节选已同步到项目 `data/references/` 并核验 SHA-256；原始附件仍在 Mac，未复制全部 ZIP。见[清单](../data/manifests/reference_excerpts_20260929.json)。
 5. 已加入工件登记、Git 暂存检查和只读环境盘点脚本；见 [script README](../script/README.md)。
 6. 本轮把重要阶段落盘要求写入项目规则，建立当前状态和阶段模板。见[记录规范阶段 README](README_RECORDING_POLICY_20260929.md)。
+7. 已创建当前聊天的每日研究检查 `yuanqi`，北京时间 09:00，配置回读为 `ACTIVE`；首份简报已手动生成，首次定时触发尚待验证。见[研究跟踪说明](README_RESEARCH_WATCH.md)、[简报索引](research/README.md)与[建立记录](README_RESEARCH_WATCH_SETUP_20260929.md)。
 
 ## 尚未验证 / 尚未完成
 

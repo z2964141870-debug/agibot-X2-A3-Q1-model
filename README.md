@@ -30,6 +30,7 @@ YUANQI/
 4. [第一课：机器人控制与 PPO](reports/第一课_机器人控制与PPO.md)
 5. [训练服务器与存储](reports/README_INFRASTRUCTURE.md)
 6. [Git 与百度网盘保存规范](reports/README_STORAGE.md)
+7. [每日研究跟踪](reports/README_RESEARCH_WATCH.md)：每天北京时间 09:00 检查，查看[简报](reports/research/README.md)与[待验证研究想法](reports/research/README_IDEAS.md)。
 
 每完成重要阶段，立即保存阶段 README，更新状态与索引，并提交到 GitHub。该要求已写入 [AGENTS.md](AGENTS.md)，记录格式见 [阶段模板](reports/README_STAGE_TEMPLATE.md)。
 

@@ -1,0 +1,47 @@
+Observed at 2026-09-29T14:40:45.036407+00:00
+Markdown relative links: PASS
+Source excerpt SHA-256: True; files=17
+$ python3 -m py_compile script/project_tools/inventory_host.py script/project_tools/audit_git_payload.py script/project_tools/register_artifact.py
+
+
+exit_code=0
+$ git add README.md AGENTS.md .gitignore data/README.md data/manifests logs/README.md logs/session_records script reports
+
+
+exit_code=0
+$ python3 script/project_tools/audit_git_payload.py
+PASS: 23 staged files, 84374 bytes; size limit 10 MiB/file
+Pattern checks are limited; manually review logs and diff before publishing.
+
+exit_code=0
+$ git diff --cached --check
+
+
+exit_code=0
+$ git diff --cached --stat
+ .gitignore                                         |  68 ++++++++
+ AGENTS.md                                          |  36 +++++
+ README.md                                          |  44 ++++++
+ data/README.md                                     |  23 +++
+ data/manifests/README.md                           |   8 +
+ ..._review_20260929_14c7538d23387f76_4beb9137.json |  21 +++
+ data/manifests/reference_excerpts_20260929.json    | 126 +++++++++++++++
+ logs/README.md                                     |  13 ++
+ .../host_inventory_20260929T143803Z.json           |  61 +++++++
+ reports/EgoLocate与头环分析.md                |  96 +++++++++++
+ reports/README.md                                  |  28 ++++
+ reports/README_INFRASTRUCTURE.md                   |  51 ++++++
+ reports/README_SETUP_20260929.md                   |  39 +++++
+ reports/README_SOURCES.md                          |  41 +++++
+ reports/README_STORAGE.md                          |  56 +++++++
+ reports/学习路线与OKR.md                      | 176 +++++++++++++++++++++
+ reports/实验记录模板.md                      |  49 ++++++
+ reports/第一课_机器人控制与PPO.md         | 131 +++++++++++++++
+ reports/训练工作包.md                         | 143 +++++++++++++++++
+ script/README.md                                   |  11 ++
+ script/project_tools/audit_git_payload.py          |  78 +++++++++
+ script/project_tools/inventory_host.py             |  64 ++++++++
+ script/project_tools/register_artifact.py          |  72 +++++++++
+ 23 files changed, 1435 insertions(+)
+
+exit_code=0

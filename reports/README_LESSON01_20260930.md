@@ -120,4 +120,4 @@ optimizer.step()
 - 验证：浏览器实际检查默认值、阻尼场景和控件更新；320px 宽度下无横向溢出，读取的脚本错误日志为空。未跑机器人动力学或 PPO 训练。
 - 执行与核验证据：[lesson01 日志](../logs/session_records/lesson01_checks_20260930.log)；服务器核验结果见 [P0 清单](../data/manifests/training_resource_check_20260930.json)。
 - 交互片段保存在任务展示目录并归档到 `script/`；关键文档/清单/小日志按项目规则同步 GitHub，提交身份由 Git 历史给出。
-- 学习状态：第一小节两个判断与第二小节评分/更新判断已答对；现进入速度观测新题。恢复时先读[当前状态](README_CURRENT_STATE.md)，不要因为材料存在就跳过学生反馈。
+- 学习状态：第一小节两个判断与第二小节评分/更新判断已答对；后续练习进度见[当前状态](README_CURRENT_STATE.md)，不要因为材料存在就跳过学生反馈。

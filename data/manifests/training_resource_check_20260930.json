@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-09-30",
+  "host": "hp3090",
+  "project_root": "/media/yu/FAFF-E9771/YUANQI",
+  "project_edit_base": "ae7c7bc3b8a292cdde8b87366f5b772d12ed15c3",
+  "phase": "P0_STATIC_INSPECTION_ONLY",
+  "training_started": false,
+  "checkpoint_reload_verified": false,
+  "robot_control_started": false,
+  "learner_status": {
+    "lesson": "01.1",
+    "material_prepared": true,
+    "understanding_check": "PENDING_USER_ANSWER"
+  },
+  "repositories": [
+    {
+      "path": "/home/yu/projects/IsaacLab",
+      "head": "37ddf626871758333d6ed89cf64ad702aef127d0",
+      "clean_at_inspection": true,
+      "version_file": "2.3.2",
+      "alias": "/home/yu/IsaacLab",
+      "role": "官方训练框架候选，未启动仿真"
+    },
+    {
+      "path": "/home/yu/projects/a2a-x2",
+      "head": "d2384821583007306f5feee6cffa0ed3e78ab3f8",
+      "clean_at_inspection": true,
+      "role": "本课控制循环阅读，ONNX/MuJoCo 评估入口，未重跑"
+    },
+    {
+      "path": "/home/yu/projects/gr00t-wbc-x2",
+      "head": "70bed4539efae431621013b3df71e6f81df1ab1c",
+      "clean_at_inspection": true,
+      "role": "本轮所查 gear_sonic/train_agent_trl.py 等路径未找到，不据 README 认定当前 checkout 训练可用"
+    },
+    {
+      "path": "/home/yu/projects/x2-sonic-sim/x2_sonic/sonic_x2_sandbox",
+      "head": "bc38f6d0ce6cab4589e025037ad0bfbab7ba73d8",
+      "clean_at_inspection": false,
+      "role": "X2 训练候选，有多处本地改动，HEAD 不能表示全部当前源文件"
+    }
+  ],
+  "environment": {
+    "python_path": "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+    "python_version": "3.11.15",
+    "packages": {
+      "torch": "2.8.0+cu128",
+      "isaacsim": "5.1.0.0",
+      "isaaclab": "0.54.2",
+      "rsl-rl-lib": "3.0.1",
+      "mujoco": "3.3.7"
+    },
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_memory_snapshot_mib": {
+      "used": 244,
+      "total": 24576
+    },
+    "gpu_utilization_snapshot_percent": 0,
+    "cuda_probe": {
+      "runtime": "12.8",
+      "operation": "torch.tensor([2.0], device='cuda') squared",
+      "result": 4,
+      "passed": true,
+      "scope": "基础张量计算；不证明仿真、策略训练或导出通过"
+    }
+  },
+  "inspected_code": [
+    {
+      "path": "/home/yu/projects/a2a-x2/scripts/eval_x2_mujoco_onnx.py",
+      "policy_forward_line": 263,
+      "joint_target_line": 584,
+      "pd_physics_loop_line": 599,
+      "role": "action → 关节目标 → PD → mj_step"
+    },
+    {
+      "path": "/home/yu/projects/x2-sonic-sim/x2_sonic/sonic_x2_sandbox/gear_sonic/train_agent_trl.py",
+      "sha256": "c1d73941bc5dd0900a3100b4d656358e4c6c153dcdb5ae9f1a6b77cf15d7e977",
+      "train_call_line": 477
+    },
+    {
+      "path": "/home/yu/projects/x2-sonic-sim/x2_sonic/sonic_x2_sandbox/gear_sonic/trl/trainer/ppo_trainer.py",
+      "sha256": "3a8f1e30a24af796c602c2846d4cfd8933ec4ab77429f806a9f77de76cbf0786",
+      "loss_line": 11600,
+      "backward_line": 12863,
+      "optimizer_step_line": 12879
+    }
+  ],
+  "asset_checks": [
+    {
+      "path": "/home/humanplus/x2_teleop_final/assets/agibot_x2/x2_ultra.urdf",
+      "exists": false,
+      "meaning": "一个候选配置的默认路径；未解析全部配置覆盖，不能推广到全项目"
+    },
+    {
+      "path": "/home/yu/projects/a2a-x2/assets/mjcf/x2_ultra.xml",
+      "exists": true,
+      "bytes": 42775,
+      "dependencies_validated": false
+    }
+  ],
+  "open_items": [
+    "Isaac Sim 启动",
+    "完整配置解析和资产依赖",
+    "独立教学实验入口与输出路径",
+    "PPO 参数更新",
+    "checkpoint 保存与重载",
+    "导出验证"
+  ],
+  "primary_report": "reports/README_P0_INSPECTION_20260930.md",
+  "lesson_report": "reports/README_LESSON01_20260930.md",
+  "execution_log": "logs/session_records/lesson01_checks_20260930.log"
+}

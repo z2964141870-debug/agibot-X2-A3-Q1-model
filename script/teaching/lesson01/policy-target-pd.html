@@ -1,0 +1,117 @@
+<section id="yuanqi-pd-lesson-one" aria-label="目标角、实际角和 PD 力矩">
+  <style>
+    #yuanqi-pd-lesson-one .pd-figure { width: 100%; display: block; overflow: visible; }
+    #yuanqi-pd-lesson-one .pd-figure text { fill: var(--foreground); }
+    #yuanqi-pd-lesson-one .pd-neutral { stroke: var(--border); fill: none; }
+    #yuanqi-pd-lesson-one .pd-actual { stroke: var(--viz-series-1); fill: none; }
+    #yuanqi-pd-lesson-one .pd-target { stroke: var(--viz-series-2); fill: none; }
+    #yuanqi-pd-lesson-one .pd-readout { margin-top: 12px; overflow-wrap: anywhere; }
+  </style>
+  <h3>目标角与实际角</h3>
+  <div class="viz-controls">
+    <label class="form-label" for="pd-target-angle">
+      策略给出的目标角：<output id="pd-target-value" class="tabular-nums">20°</output>
+      <input class="form-range" id="pd-target-angle" type="range" min="-45" max="45" step="1" value="20">
+    </label>
+    <label class="form-label" for="pd-actual-angle">
+      实际关节角：<output id="pd-actual-value" class="tabular-nums">0°</output>
+      <input class="form-range" id="pd-actual-angle" type="range" min="-45" max="45" step="1" value="0">
+    </label>
+    <label class="form-label" for="pd-velocity">
+      实际角速度：<output id="pd-speed-value" class="tabular-nums">0°/s</output>
+      <input class="form-range" id="pd-velocity" type="range" min="-90" max="90" step="5" value="0">
+    </label>
+  </div>
+  <svg class="pd-figure" role="img" aria-labelledby="pd-svg-title pd-svg-description">
+    <title id="pd-svg-title">一个关节的目标与实际位置</title>
+    <desc id="pd-svg-description">虚线表示目标角，实线表示实际角。调整目标不会自动改变实际角。</desc>
+    <line id="pd-base" class="pd-neutral" stroke-width="2"></line>
+    <line id="pd-zero" class="pd-neutral" stroke-width="1"></line>
+    <path id="pd-error-arc" class="pd-neutral" stroke-width="2"></path>
+    <line id="pd-target-line" class="pd-target" stroke-width="4" stroke-dasharray="7 5"></line>
+    <line id="pd-actual-line" class="pd-actual" stroke-width="6" stroke-linecap="round"></line>
+    <circle id="pd-joint" r="6" style="fill: var(--foreground)"></circle>
+    <text id="pd-legend-target" x="12" y="20">虚线：目标</text>
+    <text id="pd-legend-actual" x="145" y="20">实线：实际</text>
+    <text id="pd-direction" x="12" y="216"></text>
+  </svg>
+  <div id="pd-result" class="pd-readout tabular-nums" role="status" aria-live="polite"></div>
+  <div class="text-small text-muted">教学参数 · Kp 10 N·m/rad · Kd 1 N·m·s/rad · 力矩限幅 ±6 N·m</div>
+  <script>
+    (() => {
+      const root = document.getElementById('yuanqi-pd-lesson-one');
+      const element = id => root.querySelector('#' + id);
+      const inputs = {
+        target: element('pd-target-angle'),
+        actual: element('pd-actual-angle'),
+        speed: element('pd-velocity')
+      };
+      const svg = root.querySelector('.pd-figure');
+      const toRadians = degrees => degrees * Math.PI / 180;
+      const signed = (value, places = 0) => (value > 0 ? '+' : '') + value.toFixed(places);
+      const setLine = (id, x1, y1, x2, y2) => {
+        const line = element(id);
+        Object.entries({ x1, y1, x2, y2 }).forEach(([key, value]) => line.setAttribute(key, String(value)));
+      };
+      function draw() {
+        const target = Number(inputs.target.value);
+        const actual = Number(inputs.actual.value);
+        const speed = Number(inputs.speed.value);
+        const error = target - actual;
+        const rawTorque = 10 * toRadians(error) - toRadians(speed);
+        const torque = Math.max(-6, Math.min(6, rawTorque));
+        element('pd-target-value').textContent = target + '°';
+        element('pd-actual-value').textContent = actual + '°';
+        element('pd-speed-value').textContent = signed(speed) + '°/s';
+        const width = Math.max(240, root.getBoundingClientRect().width);
+        svg.setAttribute('viewBox', '0 0 ' + width + ' 235');
+        svg.setAttribute('height', '235');
+        const cx = width * 0.34;
+        const cy = 120;
+        const length = Math.min(145, width * 0.45);
+        const point = (degrees, radius = length) => [cx + radius * Math.cos(toRadians(degrees)), cy - radius * Math.sin(toRadians(degrees))];
+        const a = point(actual);
+        const t = point(target);
+        setLine('pd-base', 20, cy, cx, cy);
+        setLine('pd-zero', cx, cy, cx + length + 10, cy);
+        setLine('pd-target-line', cx, cy, t[0], t[1]);
+        setLine('pd-actual-line', cx, cy, a[0], a[1]);
+        element('pd-joint').setAttribute('cx', String(cx));
+        element('pd-joint').setAttribute('cy', String(cy));
+        const arcA = point(actual, 30);
+        const arcT = point(target, 30);
+        element('pd-error-arc').setAttribute('d', error === 0 ? '' : 'M ' + arcA.join(' ') + ' A 30 30 0 0 ' + (error > 0 ? '0' : '1') + ' ' + arcT.join(' '));
+        const direction = Math.abs(torque) < 1e-9 ? 'PD 力矩为零' : torque > 0 ? 'PD 力矩方向：增大关节角' : 'PD 力矩方向：减小关节角';
+        element('pd-direction').textContent = direction;
+        element('pd-result').textContent = '位置误差 ' + signed(error) + '° · PD 力矩 ' + signed(torque, 2) + ' N·m' + (Math.abs(rawTorque) > 6 ? '（已限幅）' : '');
+        element('pd-svg-description').textContent = '目标角 ' + target + ' 度，实际角 ' + actual + ' 度，实际角速度 ' + speed + ' 度每秒。' + direction + '。';
+      }
+      function restore(snapshot) {
+        const state = snapshot && snapshot.modelContent;
+        if (!state || state.lesson !== 'yuanqi-pd-01') return;
+        Object.entries(inputs).forEach(([key, input]) => {
+          const value = Number(state[key]);
+          if (Number.isFinite(value)) input.value = String(Math.max(Number(input.min), Math.min(Number(input.max), value)));
+        });
+      }
+      restore(window.openai && window.openai.widgetState);
+      Object.values(inputs).forEach(input => {
+        input.addEventListener('input', draw);
+        input.addEventListener('change', () => {
+          if (!window.openai || !window.openai.setWidgetState) return;
+          const modelContent = { lesson: 'yuanqi-pd-01' };
+          Object.entries(inputs).forEach(([key, node]) => { modelContent[key] = Number(node.value); });
+          window.openai.setWidgetState({ modelContent, privateContent: null }).catch(() => {});
+        });
+      });
+      window.addEventListener('openai:set_globals', event => {
+        if (event.detail && event.detail.globals && 'widgetState' in event.detail.globals) {
+          restore(event.detail.globals.widgetState);
+          draw();
+        }
+      });
+      new ResizeObserver(draw).observe(root);
+      draw();
+    })();
+  </script>
+</section>

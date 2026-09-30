@@ -20,23 +20,25 @@
 5. 已加入工件登记、Git 暂存检查和只读环境盘点脚本；见 [script README](../script/README.md)。
 6. 本轮把重要阶段落盘要求写入项目规则，建立当前状态和阶段模板。见[记录规范阶段 README](README_RECORDING_POLICY_20260929.md)。
 7. 每日研究检查 `yuanqi` 已于 2026-09-30 北京时间 09:01:12 首次实际触发，完成本期检索与简报；公开公告列表仍为 9 月 29 日，已区分首次发现与首次发表。GAE 加入 H001 先行工作；未启动研究实验。见[研究跟踪说明](README_RESEARCH_WATCH.md)、[最新简报](research/2026-09-30/README.md)与[运行记录](README_RESEARCH_CHECK_20260930.md)。
+8. 教学第一课第一小节已准备并交互验证，讲解资产模型/策略、目标/实际角、PD 与训练更新；学生理解检查待回答，不能记为已掌握。见[本节讲义](README_LESSON01_20260930.md)。
+9. P0 静态检查找到干净的 Isaac Lab 2.3.2、X2 评估代码和有未提交改动的 SONIC/X2 训练 sandbox；一个候选配置仍指向不存在的旧 URDF 路径。既有训练环境的 PyTorch/CUDA 小计算通过，尚未完成 PPO 烟测。见[核验报告](README_P0_INSPECTION_20260930.md)。
 
 ## 尚未验证 / 尚未完成
 
-- 机器人训练框架、PyTorch/CUDA 组合、精确机器人资产和完整 PPO 训练入口尚未验证；旧项目目录存在不等于训练可复现。
+- PyTorch 2.8.0+cu128 / CUDA 12.8 在 3090 上的小计算已通过；Isaac Sim 启动、精确机器人资产、PPO 训练、checkpoint 重载与导出仍未通过本轮验证。
 - 百度网盘官方 Linux 客户端 8.7.0 已发现，入口 `/opt/baidunetdisk/baidunetdisk`；登录、上传/下载未验证，未上传模型。记录状态仍是 `LOCAL_ONLY`；如现有入口不合适，再与用户讨论替代方案。
 - 历史 X2 支撑站立/A3 上肢里程碑不能当作当前完整遥操验收；当前工作没有启动机器人控制。
 - EgoLocate 的 Stage-A 推理实现已找到，所引用完整外部训练项目与 `best.pth` 不在已检查的 ZIP 中。
 
 ## 下一项具体工作
 
-进入 P0：只读核验 hp3090 上已有训练资源，优先定位一个匹配 X2 的完整训练闭环；若只有部署包，则选择资产和训练配方完整的人形示例完成第一轮学习，再迁移。
+教学侧：收取[第一小节](README_LESSON01_20260930.md)关于目标角、实际角和“是否发生学习”的回答，再按理解程度进入观测/action/reward 与 PPO 采集更新。
 
-候选路径（只确认过目录名）：`/home/yu/projects/IsaacLab`、`/home/yu/IsaacLab`、`/home/yu/projects/gr00t-wbc-x2`、`/home/yu/projects/a2a-x2`、`/home/yu/projects/x2-sonic-sim`、`/home/yu/projects/x2-rl-deploy`、`/home/yu/miniconda3/envs/x2-sonic-isaaclab`。
+工程侧：继续 P0 的运行核验，按[已完成的静态核验](README_P0_INSPECTION_20260930.md)准备独立的最短训练、保存和重载实验。优先检查干净 Isaac Lab 的官方简单任务与 RSL-RL 入口；简单任务是流程教学，不等于完成 X2 自主站立/跟踪。X2 的原生训练候选确实存在，但旧资产路径、配置覆盖与未提交改动仍待处理，不直接接手旧实验。
 
-执行前先读候选项目的 `AGENTS.md` 与 README，核对 Git 工作区、版本、`train/play/export` 入口和资产。保留其他项目的已有工作，不直接复制整个目录或启动旧训练命令。
+训练环境候选：`/home/yu/miniconda3/envs/x2-sonic-isaaclab`；框架：`/home/yu/projects/IsaacLab`（`/home/yu/IsaacLab` 是同一位置）。X2 训练候选的准确路径、提交与缺口见核验报告。新代码/配置与产物遵守 YUANQI 四目录约定。
 
-本聊天截至本次记录没有启动需接续的训练作业。下一步应生成 P0 资源核验 README，列明可用与缺失的具体证据。
+本聊天截至本次记录没有启动需接续的训练作业。既有项目的版本和进程状态在下一次执行前重新核实，不覆盖无关改动。
 
 ## 恢复时的最小检查
 

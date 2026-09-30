@@ -27,6 +27,7 @@
 | 2026-09-30 | 教学第一课·价值网络与优势 | 学员答对 +4 的方向；最新释疑区分事后回报与事前期望，说明特权观测和预测用途，理解待确认；见[第五小节](README_LESSON01_ACTOR_CRITIC_20260930.md) |
 | 2026-09-30 | 教学第一课·PPO 裁剪目标 | 学员答对 4.8 平台与同批分母 20%；Critic 更新问题转入第五小节释疑，并补充单样本拟合不等于期望必错；见[第六小节](README_LESSON01_PPO_CLIP_20260930.md) |
 | 2026-09-30 | 教学第一课·第一次阶段回顾 | 已串联同一份经历训练 Actor/Critic，记录最新复述边界和定期总结要求；理解仍在确认；见[阶段总结](README_LESSON01_SUMMARY_20260930.md) |
+| 2026-09-30 | 教学第一课·Actor/Critic 参数更新 | CPU 固定样本正、负、零优势对照与 18 项行为检查通过；解释梯度与优化器更新，学员理解待确认；见[第七小节](README_LESSON01_ACTOR_CRITIC_UPDATE_20260930.md) |
 
 ## 当前状态
 
@@ -39,7 +40,7 @@
 ## 阅读顺序
 
 1. [训练工作包](训练工作包.md)：按 P0–P8 推进，近期目标是第一次完整策略训练。
-2. 第一课当前先读[阶段总结](README_LESSON01_SUMMARY_20260930.md)，再按需查看小节：[控制循环](README_LESSON01_20260930.md)、[奖励与更新](README_LESSON01_REWARD_UPDATE_20260930.md)、[累计回报与 clip](README_LESSON01_RETURN_20260930.md)、[奖励设计](README_LESSON01_REWARD_DESIGN_20260930.md)、[价值网络与优势](README_LESSON01_ACTOR_CRITIC_20260930.md)、[PPO 裁剪目标](README_LESSON01_PPO_CLIP_20260930.md)；[完整参考讲义](第一课_机器人控制与PPO.md)按需阅读。
+2. 第一课当前结合[阶段总结](README_LESSON01_SUMMARY_20260930.md)和[参数更新代码](README_LESSON01_ACTOR_CRITIC_UPDATE_20260930.md)，再按需查看小节：[控制循环](README_LESSON01_20260930.md)、[奖励与更新](README_LESSON01_REWARD_UPDATE_20260930.md)、[累计回报与 clip](README_LESSON01_RETURN_20260930.md)、[奖励设计](README_LESSON01_REWARD_DESIGN_20260930.md)、[价值网络与优势](README_LESSON01_ACTOR_CRITIC_20260930.md)、[PPO 裁剪目标](README_LESSON01_PPO_CLIP_20260930.md)；[完整参考讲义](第一课_机器人控制与PPO.md)按需阅读。
 3. [学习路线与 OKR](学习路线与OKR.md)：三平台交付与科研方向。
 4. [EgoLocate 与头环分析](EgoLocate与头环分析.md)：手部、SLAM、双目及已有融合方案。
 5. [实验记录模板](实验记录模板.md)：每次实验复制后填写。
@@ -52,4 +53,4 @@
 - [初始化结果](README_SETUP_20260929.md)
 - [每日研究跟踪规则](README_RESEARCH_WATCH.md)、[简报索引](research/README.md)、[候选研究想法](research/README_IDEAS.md)
 
-下一项工作：先用第一次阶段总结串联完整学习关系，巩固状态价值、平均回报与两个网络的训练目标，再把两个损失与参数更新对应到最小代码例子；工程侧准备独立的最短 PPO 训练/保存/重载实验。当前已完成静态盘点，具体入口与缺口见 P0 核验 README，不重复从目录名开始盘点。
+下一项工作：先结合第七小节的真实代码输出理解损失、梯度与参数更新，再放回完整训练流程；工程侧准备独立的最短 PPO 训练/保存/重载实验。当前已完成静态盘点与小型教学更新，具体入口与缺口见 P0 核验 README，不重复从目录名开始盘点。

@@ -1,0 +1,73 @@
+{
+  "experiment": "lesson01_reward_vs_update",
+  "executed_at_utc": "2026-09-30T02:27:02.751381+00:00",
+  "script_sha256": "1500702cb98f0823487e0844bfa22a0804cc3358114d7e07a94a98bc9c573a6f",
+  "torch_version": "2.8.0+cu128",
+  "device": "cpu",
+  "algorithm": "one-step REINFORCE; not PPO or robot dynamics",
+  "seed": 7,
+  "batch_size": 64,
+  "learning_rate": 0.1,
+  "toy_angle_degrees": 10.0,
+  "toy_target_degrees": 30.0,
+  "action_counts_minus_plus": [
+    29,
+    35
+  ],
+  "reward_per_action_minus_plus": [
+    -1.0,
+    1.0
+  ],
+  "sample_mean_reward_before_update": 0.09375,
+  "before": {
+    "weights": [
+      0.0,
+      0.0
+    ],
+    "max_abs_change_from_initial": 0.0,
+    "probability_of_plus_1_degree": 0.5
+  },
+  "after_reward": {
+    "weights": [
+      0.0,
+      0.0
+    ],
+    "max_abs_change_from_initial": 0.0,
+    "probability_of_plus_1_degree": 0.5
+  },
+  "after_backward": {
+    "weights": [
+      0.0,
+      0.0
+    ],
+    "max_abs_change_from_initial": 0.0,
+    "probability_of_plus_1_degree": 0.5,
+    "gradient": [
+      0.5,
+      -0.5
+    ]
+  },
+  "after_optimizer_step": {
+    "weights": [
+      -0.05,
+      0.05
+    ],
+    "max_abs_change_from_initial": 0.05,
+    "probability_of_plus_1_degree": 0.52497918747894
+  },
+  "evaluation": {
+    "method": "exact expectation over the two actions at the same start",
+    "expected_reward_before_update": 0.0,
+    "expected_reward_after_update": 0.049958374957880025,
+    "max_abs_weight_change_during_evaluation": 0.0
+  },
+  "checks": {
+    "reward_computation_preserves_weights": true,
+    "backward_preserves_weights": true,
+    "backward_produces_nonzero_gradient": true,
+    "optimizer_changes_weights": true,
+    "rewarded_action_more_likely_in_this_example": true,
+    "evaluation_preserves_weights": true
+  }
+}
+PASS: all six teaching checks passed

@@ -19,7 +19,7 @@
 4. 17 份参考节选已同步到项目 `data/references/` 并核验 SHA-256；原始附件仍在 Mac，未复制全部 ZIP。见[清单](../data/manifests/reference_excerpts_20260929.json)。
 5. 已加入工件登记、Git 暂存检查和只读环境盘点脚本；见 [script README](../script/README.md)。
 6. 本轮把重要阶段落盘要求写入项目规则，建立当前状态和阶段模板。见[记录规范阶段 README](README_RECORDING_POLICY_20260929.md)。
-7. 已创建当前聊天的每日研究检查 `yuanqi`，北京时间 09:00，配置回读为 `ACTIVE`；首份简报已手动生成，首次定时触发尚待验证。见[研究跟踪说明](README_RESEARCH_WATCH.md)、[简报索引](research/README.md)与[建立记录](README_RESEARCH_WATCH_SETUP_20260929.md)。
+7. 每日研究检查 `yuanqi` 已于 2026-09-30 北京时间 09:01:12 首次实际触发，完成本期检索与简报；公开公告列表仍为 9 月 29 日，已区分首次发现与首次发表。GAE 加入 H001 先行工作；未启动研究实验。见[研究跟踪说明](README_RESEARCH_WATCH.md)、[最新简报](research/2026-09-30/README.md)与[运行记录](README_RESEARCH_CHECK_20260930.md)。
 
 ## 尚未验证 / 尚未完成
 

@@ -36,3 +36,11 @@ DRAM 说明固定大小的历史记忆已用于机器人操作。现有 Stage-A 
 组合检索：`asynchronous multimodal fusion humanoid teleoperation`、`observation age recurrent policy latency`、`delay compensation visual inertial wrist tracking`、`uncertainty gated memory robot policy`，并查相关工作和后续引用。至少比较递归滤波/延迟状态估计、现有门控 GRU、机器人历史记忆三类工作。登记最相近方法与具体差异后再讨论创新强度。
 
 本期只确认近期记忆方法及本地已有实现，未完成上述系统查新，也没有启动实验。
+
+### 2026-09-30 先行工作补充：GAE
+
+[GAE / General Action Expert](https://arxiv.org/abs/2609.34233) 已在全身遥操策略中显式加入延迟条件，并通过移动人体 token 的 RoPE 时间位置编码实现不同预测时间。正文报告了延迟补偿与精度之间的取舍，并包含 G1/O1 实验。核验层级为摘要、相关正文段落与作者项目页，未复现。
+
+这进一步限制了 H001 可以主张的新意：“延迟条件”“时间编码”“提前预测人体动作”本身已有直接先例。进入实验前必须把 GAE 式统一延迟条件方法纳入相关工作；若训练实现不可获得，可以在共同基线上实现明确标注的简化对照，不能将其称为复现 GAE。
+
+H001 继续保留为待验证问题，重点检查衣服/视觉各自延迟与可靠性变化、遮挡后旧观测更新的影响。与 GAE 的统一预测时间是否存在实质差别，还需完整正文和更多状态估计/融合先行工作支持。没有新增 H002，也没有把候选标为已确立创新。

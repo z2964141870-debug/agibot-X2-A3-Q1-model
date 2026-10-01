@@ -1,0 +1,709 @@
+{
+  "schema_version": 1,
+  "check_date": "2026-10-01",
+  "timezone": "Asia/Shanghai",
+  "automation_id": "yuanqi",
+  "triggered_at": "2026-10-01T01:02:44.470Z",
+  "previous_successful_source_check_at": "2026-09-30T09:05:50.045907+08:00",
+  "source_fetch_started_at": "2026-10-01T01:32:16.311712+00:00",
+  "source_check_completed_at": "2026-10-01T09:49:30.738184+08:00",
+  "report_path": "reports/research/2026-10-01/README.md",
+  "baseline_commit": "7ef6001e234fbb1883a917f4853ac16cd274d741",
+  "execution_note": "Interrupted run resumed after user prompt. SSH and reads succeeded on recovery; no verified server outage. Source retrieval began at 09:32 Beijing, not completed at 09:00.",
+  "coverage": {
+    "source_scope": "cs.RO/cs.LG/cs.CV RSS title screening, cs.RO new listing, seven original abstracts, selected fulltext sections of four papers, two author project pages, two official framework release APIs. Not exhaustive or a systematic novelty review.",
+    "feeds": [
+      {
+        "path": "data/research/2026-10-01/cs_ro.xml",
+        "url": "https://rss.arxiv.org/rss/cs.RO",
+        "last_build_at": "2026-09-30T04:00:05+00:00",
+        "entry_count": 199
+      },
+      {
+        "path": "data/research/2026-10-01/cs_lg.xml",
+        "url": "https://rss.arxiv.org/rss/cs.LG",
+        "last_build_at": "2026-09-30T04:00:01+00:00",
+        "entry_count": 1522
+      },
+      {
+        "path": "data/research/2026-10-01/cs_cv.xml",
+        "url": "https://rss.arxiv.org/rss/cs.CV",
+        "last_build_at": "2026-09-30T04:00:08+00:00",
+        "entry_count": 406
+      }
+    ],
+    "listing_url": "https://arxiv.org/list/cs.RO/new",
+    "listing_date": "2026-09-30",
+    "candidate_feed_entries": 191,
+    "unique_candidate_ids": 183,
+    "candidate_note": "Cross-category duplicates included; initially known IDs filtered. Not all entries were read in full. Known IDs were checked separately for updates.",
+    "abstracts_verified": 7,
+    "new_candidate_abstracts_verified": 6,
+    "items_reported": 4,
+    "freshness_note": "Three v1 papers submitted 2026-09-29 UTC, announced 09-30, first seen 10-01. DRAM v2 submitted 09-29, announced 09-30, change first verified 10-01. Later 10-01 announcements and unvisited channels are not covered."
+  },
+  "sources": [
+    {
+      "id": "arxiv:2609.38087",
+      "version": "v1",
+      "title": "CrossBFM: Distilling a Shared Latent Behavior Space Across Humanoid Embodiments",
+      "url": "https://arxiv.org/abs/2609.38087v1",
+      "first_submitted_at": "2026-09-29T17:40:11Z",
+      "feed_announced_on": "2026-09-30",
+      "feed_pub_date_raw": "Wed, 30 Sep 2026 00:00:00 -0400",
+      "first_seen_on": "2026-10-01",
+      "last_fetched_at": "2026-10-01T01:35:33.160922+00:00",
+      "verification_level": "Abstract, submission history, selected method/experiment/appendix sections and author project page; no implementation execution or reproduction.",
+      "code_status": "AUTHOR_PROJECT_SAYS_CODE_COMING_SOON",
+      "related_links": [
+        "https://dotandung.github.io/crossbfm/"
+      ],
+      "notes": "Frozen G1 source model and matched retargeted human-motion frames yield a shared behavior space. Section 4.4 still trains a PPO tracker per robot. Targets M3, T1, N1; no verified Agibot support. Joint-reference tracking is somewhat more accurate in reported comparisons.",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-01/README.md",
+      "dedup_key": "arxiv:2609.38087@v1",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
+      "recommendation": "AFTER_BASELINE",
+      "asset_status": "Code Coming Soon; runnable training assets and weights not verified."
+    },
+    {
+      "id": "arxiv:2609.37070",
+      "version": "v1",
+      "title": "Predictive Safety Curricula for Robust Legged Locomotion",
+      "url": "https://arxiv.org/abs/2609.37070v1",
+      "first_submitted_at": "2026-09-29T09:06:17Z",
+      "feed_announced_on": "2026-09-30",
+      "feed_pub_date_raw": "Wed, 30 Sep 2026 00:00:00 -0400",
+      "first_seen_on": "2026-10-01",
+      "last_fetched_at": "2026-10-01T01:35:33.162157+00:00",
+      "verification_level": "Abstract, submission history, method section 2.5, selected experiments and limitations; not reproduced.",
+      "code_status": "TRAINING_ASSET_ENTRY_NOT_IDENTIFIED_IN_CHECKED_PAPER",
+      "related_links": [],
+      "notes": "Separate distributional safety critic prioritizes contexts and reuses environment event realizations. PPO policy loss and task reward remain fixed. This is not arbitrary off-policy trajectory replay. ANYmal-D/X quadrupeds; omitted safety costs remain a limitation.",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-01/README.md",
+      "dedup_key": "arxiv:2609.37070@v1",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
+      "recommendation": "NOW_FOR_FAILURE_METRICS; AFTER_BASELINE_FOR_ALGORITHM",
+      "asset_status": "No training code or weight entry identified in the checked original paper; external channels not exhaustively searched."
+    },
+    {
+      "id": "arxiv:2609.36720",
+      "version": "v1",
+      "title": "T2Mem: Learning Test-Time Memory for Robotics",
+      "url": "https://arxiv.org/abs/2609.36720v1",
+      "first_submitted_at": "2026-09-29T04:59:46Z",
+      "feed_announced_on": "2026-09-30",
+      "feed_pub_date_raw": "Wed, 30 Sep 2026 00:00:00 -0400",
+      "first_seen_on": "2026-10-01",
+      "last_fetched_at": "2026-10-01T01:35:33.164778+00:00",
+      "verification_level": "Abstract, submission history, selected methods/related work/ablations/inference/limitations and author page; not reproduced.",
+      "code_status": "AUTHOR_PROJECT_SAYS_CODE_COMING_SOON",
+      "related_links": [
+        "https://yzliu84.github.io/T2MEM-project/"
+      ],
+      "notes": "Observation self-supervision updates episode-local fast weights, reset each episode. RoboMME manipulation does not verify low-latency wrist fusion or SLAM. Profiling excludes RPC, simulation and action execution. Added as H001 prior art, not a new hypothesis.",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-01/README.md",
+      "dedup_key": "arxiv:2609.36720@v1",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
+      "recommendation": "BACKGROUND",
+      "asset_status": "Code Coming soon; runnable training code and weights not verified."
+    },
+    {
+      "id": "arxiv:2609.36924",
+      "version": "v1",
+      "title": "Track-and-Complete: Learning Humanoid Skills from a Single Failed Human Video",
+      "url": "https://arxiv.org/abs/2609.36924v1",
+      "first_submitted_at": "2026-09-29T07:42:28Z",
+      "feed_announced_on": "2026-09-30",
+      "feed_pub_date_raw": "Wed, 30 Sep 2026 00:00:00 -0400",
+      "first_seen_on": "2026-10-01",
+      "last_fetched_at": "2026-10-01T01:33:55.834492+00:00",
+      "verification_level": "Original abstract and submission history only; full text and code not checked.",
+      "code_status": "NOT_VERIFIED",
+      "related_links": [],
+      "notes": "Track the usable prefix of a failed human video then optimize completion; background only, not a general rule for discarding or keeping PPO failures.",
+      "disposition": "SCREENED_BACKGROUND",
+      "reported_in": null,
+      "dedup_key": "arxiv:2609.36924@v1",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1"
+    },
+    {
+      "id": "arxiv:2609.36107",
+      "version": "v1",
+      "title": "Scouting the Dynamics Gap: Test-Time Policy Adaptation via Action-Outcome Feedback",
+      "url": "https://arxiv.org/abs/2609.36107v1",
+      "first_submitted_at": "2026-09-28T18:45:34Z",
+      "feed_announced_on": "2026-09-30",
+      "feed_pub_date_raw": "Wed, 30 Sep 2026 00:00:00 -0400",
+      "first_seen_on": "2026-10-01",
+      "last_fetched_at": "2026-10-01T01:33:55.835734+00:00",
+      "verification_level": "Original abstract and submission history only; project link identified but not fetched.",
+      "code_status": "NOT_VERIFIED",
+      "related_links": [
+        "https://liy1shu.github.io/SCOUT/"
+      ],
+      "notes": "Action-outcome prediction mismatch adapts a belief latent shared by policy and forward model; retain as background while completing first training loop.",
+      "disposition": "SCREENED_BACKGROUND",
+      "reported_in": null,
+      "dedup_key": "arxiv:2609.36107@v1",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1"
+    },
+    {
+      "id": "arxiv:2609.37131",
+      "version": "v1",
+      "title": "ReF-HIL: Shaping the Critic around Human Action Neighborhoods for Efficient Human-in-the-Loop Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2609.37131v1",
+      "first_submitted_at": "2026-09-29T09:35:20Z",
+      "feed_announced_on": "2026-09-30",
+      "feed_pub_date_raw": "Wed, 30 Sep 2026 00:00:00 -0400",
+      "first_seen_on": "2026-10-01",
+      "last_fetched_at": "2026-10-01T01:33:55.835842+00:00",
+      "verification_level": "Original abstract and submission history only; project link identified but not fetched.",
+      "code_status": "NOT_VERIFIED",
+      "related_links": [
+        "https://anonymous.4open.science/w/ReF-HIL-7762/"
+      ],
+      "notes": "Human-success value reference and human-action neighborhoods shape the critic; not verified as a drop-in PPO recipe.",
+      "disposition": "SCREENED_BACKGROUND",
+      "reported_in": null,
+      "dedup_key": "arxiv:2609.37131@v1",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1"
+    },
+    {
+      "id": "arxiv:2609.32453",
+      "version": "v2",
+      "title": "DRAM: Delta-rule Recurrent Associative Memory for Robot Manipulation Policies",
+      "url": "https://arxiv.org/abs/2609.32453v2",
+      "first_submitted_at": "2026-09-26T10:38:49Z",
+      "feed_announced_on": "2026-09-30",
+      "feed_pub_date_raw": "Wed, 30 Sep 2026 00:00:00 -0400",
+      "first_seen_on": "2026-10-01",
+      "last_fetched_at": "2026-10-01T01:41:29.179626+00:00",
+      "verification_level": "Original abstract, submission history, v1/v2 fulltext text diff and added benchmark paragraphs; not reproduced.",
+      "code_status": "TRAINING_ASSET_ENTRY_NOT_IDENTIFIED_IN_CHECKED_PAPER",
+      "related_links": [
+        "https://arxiv.org/html/2609.32453v1",
+        "https://arxiv.org/html/2609.32453v2"
+      ],
+      "notes": "v2 adds nine RMBench tasks. Author-reported average 57.8 percent versus cited Mem-0 42.0 percent, but DRAM uses 50 rollouts/task versus 100 for cited baselines and respective protocols differ. Not a strictly controlled comparison; no confirmed core algorithm change.",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-01/README.md",
+      "dedup_key": "arxiv:2609.32453@v2",
+      "change_kind": "VERSION_UPDATE_FIRST_VERIFIED",
+      "version_submitted_at": "2026-09-29T03:00:59Z",
+      "previous_dedup_key": "arxiv:2609.32453@v1",
+      "source_first_seen_on": "2026-09-29",
+      "recommendation": "BACKGROUND",
+      "asset_status": "No training asset entry identified in checked v1/v2 paper; not an exhaustive search."
+    }
+  ],
+  "dedup_checks": [
+    {
+      "id": "arxiv:2609.31840",
+      "previous_version": "v1",
+      "feed_occurrences": [],
+      "decision": "Absent from inspected feeds; not evidence of no update. Previous project assets were not all revisited."
+    },
+    {
+      "id": "arxiv:2609.32453",
+      "previous_version": "v1",
+      "feed_occurrences": [
+        {
+          "id": "arxiv:2609.32453",
+          "version": "v2",
+          "announce_type": "replace",
+          "feed": "cs_ro.xml",
+          "pub_date_raw": "Wed, 30 Sep 2026 00:00:00 -0400"
+        }
+      ],
+      "decision": "v2 adds benchmark results; verified against v1 and briefly reported."
+    },
+    {
+      "id": "arxiv:2609.32591",
+      "previous_version": "v1",
+      "feed_occurrences": [
+        {
+          "id": "arxiv:2609.32591",
+          "version": "v1",
+          "announce_type": "cross",
+          "feed": "cs_lg.xml",
+          "pub_date_raw": "Wed, 30 Sep 2026 00:00:00 -0400"
+        }
+      ],
+      "decision": "Same version across categories; no verified material change, not repeated."
+    },
+    {
+      "id": "arxiv:2609.34233",
+      "previous_version": "v1",
+      "feed_occurrences": [],
+      "decision": "Absent from inspected feeds; not evidence of no update. Previous project assets were not all revisited."
+    },
+    {
+      "id": "arxiv:2609.35761",
+      "previous_version": "v1",
+      "feed_occurrences": [],
+      "decision": "Absent from inspected feeds; not evidence of no update. Previous project assets were not all revisited."
+    },
+    {
+      "id": "arxiv:2609.34674",
+      "previous_version": "v1",
+      "feed_occurrences": [],
+      "decision": "Absent from inspected feeds; not evidence of no update. Previous project assets were not all revisited."
+    },
+    {
+      "id": "arxiv:2609.33310",
+      "previous_version": "v1",
+      "feed_occurrences": [],
+      "decision": "Absent from inspected feeds; not evidence of no update. Previous project assets were not all revisited."
+    },
+    {
+      "id": "arxiv:2609.35715",
+      "previous_version": "v1",
+      "feed_occurrences": [
+        {
+          "id": "arxiv:2609.35715",
+          "version": "v1",
+          "announce_type": "new",
+          "feed": "cs_lg.xml",
+          "pub_date_raw": "Wed, 30 Sep 2026 00:00:00 -0400"
+        }
+      ],
+      "decision": "Same version across categories; no verified material change, not repeated."
+    }
+  ],
+  "release_check": {
+    "checks": [
+      {
+        "url": "https://api.github.com/repos/isaac-sim/IsaacLab/releases?per_page=3",
+        "latest_entry": "v3.0.0-EA",
+        "latest_entry_published_at": "2026-09-16T22:34:03Z",
+        "release_url": "https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0-EA",
+        "checked_at": "2026-10-01T01:33:56.102025+00:00",
+        "action": "No new release entry in the check window; not reported as current news; no environment changes."
+      },
+      {
+        "url": "https://api.github.com/repos/leggedrobotics/rsl_rl/releases?per_page=3",
+        "latest_entry": "v5.5.1",
+        "latest_entry_published_at": "2026-09-09T11:38:40Z",
+        "release_url": "https://github.com/leggedrobotics/rsl_rl/releases/tag/v5.5.1",
+        "checked_at": "2026-10-01T01:33:56.104763+00:00",
+        "action": "No new release entry in the check window; not reported as current news; no environment changes."
+      }
+    ]
+  },
+  "handled_source_errors": [
+    {
+      "source": "https://github.com/isaac-sim/IsaacLab/releases.atom",
+      "error": "curl: (28) SSL connection timeout",
+      "recovery": "Official GitHub REST releases API succeeded with HTTP 200; no authentication material accessed."
+    },
+    {
+      "source": "https://github.com/leggedrobotics/rsl_rl/releases.atom",
+      "error": "curl: (28) Operation timed out after 22006 milliseconds with 0 bytes received",
+      "recovery": "Official GitHub REST releases API succeeded with HTTP 200; no authentication material accessed."
+    }
+  ],
+  "fetches": [
+    {
+      "url": "https://rss.arxiv.org/rss/cs.RO",
+      "checked_at": "2026-10-01T01:32:16.311712+00:00",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "path": "data/research/2026-10-01/cs_ro.xml",
+      "bytes": 434065,
+      "sha256": "fb8bcd5c603af70021b48d2696797916d7c3a238bc4006d25aa6a2d87695c178"
+    },
+    {
+      "url": "https://rss.arxiv.org/rss/cs.LG",
+      "checked_at": "2026-10-01T01:32:16.313890+00:00",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "path": "data/research/2026-10-01/cs_lg.xml",
+      "bytes": 3258084,
+      "sha256": "490efd57190f1b435f3c067c8a76b7c27e595473fcb3ccbf1472c209b9b13bd6"
+    },
+    {
+      "url": "https://rss.arxiv.org/rss/cs.CV",
+      "checked_at": "2026-10-01T01:32:16.314667+00:00",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "path": "data/research/2026-10-01/cs_cv.xml",
+      "bytes": 883811,
+      "sha256": "526cba3e0e1e15e663f89fbc918dc4b900c36cdfc091c6ab671048e58c50a51f"
+    },
+    {
+      "url": "https://arxiv.org/list/cs.RO/new",
+      "checked_at": "2026-10-01T01:32:16.312909+00:00",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "path": "data/research/2026-10-01/cs_ro_new.html",
+      "bytes": 668485,
+      "sha256": "6c9be9a4adaf5c41b1178995082cdef52d69433e32e2e2911e2a4ac193ec7cde"
+    },
+    {
+      "url": "https://github.com/isaac-sim/IsaacLab/releases.atom",
+      "checked_at": "2026-10-01T01:32:16.315080+00:00",
+      "http_status": "000",
+      "exit_code": 28,
+      "error": "curl: (28) SSL connection timeout",
+      "path": "data/research/2026-10-01/isaaclab_releases.atom"
+    },
+    {
+      "url": "https://github.com/leggedrobotics/rsl_rl/releases.atom",
+      "checked_at": "2026-10-01T01:32:16.315224+00:00",
+      "http_status": "000",
+      "exit_code": 28,
+      "error": "curl: (28) Operation timed out after 22006 milliseconds with 0 bytes received",
+      "path": "data/research/2026-10-01/rsl_rl_releases.atom"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.38087",
+      "checked_at": "2026-10-01T01:33:55.833175+00:00",
+      "path": "data/research/2026-10-01/2609.38087_abstract.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 44488,
+      "sha256": "718ce4facc8fe9664f8ae38c35a2a803e9d1e0a53c270e371658ec0af9940c19"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.36107",
+      "checked_at": "2026-10-01T01:33:55.835734+00:00",
+      "path": "data/research/2026-10-01/2609.36107_abstract.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 42191,
+      "sha256": "14d21ed97888014219650a26e25f6dc8a88b6af13015f2157ac34f5f256a1dd7"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.36720",
+      "checked_at": "2026-10-01T01:33:55.837550+00:00",
+      "path": "data/research/2026-10-01/2609.36720_abstract.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 41985,
+      "sha256": "33217679a335da148b1453d12b235e90bc32f0c8b5d28640c0983b18c046c2f1"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.37131",
+      "checked_at": "2026-10-01T01:33:55.835842+00:00",
+      "path": "data/research/2026-10-01/2609.37131_abstract.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 43273,
+      "sha256": "12a3527dd75031b00e5a3b3e59402ee8f305d5c07c302bbf307c539d6136c9ad"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.36924",
+      "checked_at": "2026-10-01T01:33:55.834492+00:00",
+      "path": "data/research/2026-10-01/2609.36924_abstract.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 41011,
+      "sha256": "3aad3593df1363fc0d6bb83a7765fd29ffe1b4674c9336a7165785bd203341ed"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.37070",
+      "checked_at": "2026-10-01T01:33:55.835928+00:00",
+      "path": "data/research/2026-10-01/2609.37070_abstract.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 42384,
+      "sha256": "4ab91d450e83aa497b1d72519d2ac7b8c897f737df01b70d3732769ceb1de7d6"
+    },
+    {
+      "url": "https://api.github.com/repos/leggedrobotics/rsl_rl/releases?per_page=3",
+      "checked_at": "2026-10-01T01:33:56.104763+00:00",
+      "path": "data/research/2026-10-01/rsl_rl_releases_api.json",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 8365,
+      "sha256": "6dc2c093fa1109cecf29eceac5df02c639b3fac4294e6ec1f9e5aca5cebfe7e4"
+    },
+    {
+      "url": "https://api.github.com/repos/isaac-sim/IsaacLab/releases?per_page=3",
+      "checked_at": "2026-10-01T01:33:56.102025+00:00",
+      "path": "data/research/2026-10-01/isaaclab_releases_api.json",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 38499,
+      "sha256": "fb5bfac8fff1eff917584a16dbd2073ba682e6c3ed39d4803261391b4a49c02a"
+    },
+    {
+      "url": "https://arxiv.org/html/2609.37070v1",
+      "checked_at": "2026-10-01T01:35:33.162157+00:00",
+      "path": "data/research/2026-10-01/psc_fulltext.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 279741,
+      "sha256": "b78f41c5cb0bfd6e7e3d0bc58a76c615833d4728bef7890d8ec994ab088d941c"
+    },
+    {
+      "url": "https://yzliu84.github.io/T2MEM-project/",
+      "checked_at": "2026-10-01T01:35:33.163881+00:00",
+      "path": "data/research/2026-10-01/t2mem_project.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 24938,
+      "sha256": "b95e55bdc03c5d6dd69fc7d6aa667b4b5b25484d2202a3456b3ff746b5fb6aff"
+    },
+    {
+      "url": "https://arxiv.org/html/2609.36720v1",
+      "checked_at": "2026-10-01T01:35:33.164778+00:00",
+      "path": "data/research/2026-10-01/t2mem_fulltext.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 296870,
+      "sha256": "8144e947a1a0e511b29e1d14a1a494f5f909adc828c5d74dc1592b92e6ce6f91"
+    },
+    {
+      "url": "https://arxiv.org/html/2609.38087v1",
+      "checked_at": "2026-10-01T01:35:33.160922+00:00",
+      "path": "data/research/2026-10-01/crossbfm_fulltext.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 486154,
+      "sha256": "63235b1bac50eef0884a51285375899d24912f9d8ba88a8953387353fe147fbb"
+    },
+    {
+      "url": "https://dotandung.github.io/crossbfm/",
+      "checked_at": "2026-10-01T01:35:33.160591+00:00",
+      "path": "data/research/2026-10-01/crossbfm_project.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 85986,
+      "sha256": "1cc00519ba22f2fc0288e546046454750c01c3531e79cc2efa83d45b834052db"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.32453",
+      "checked_at": "2026-10-01T01:41:29.178434+00:00",
+      "path": "data/research/2026-10-01/2609.32453_abstract.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 42764,
+      "sha256": "1d85dbc5eafcd9fdfb0365c04994fc9a35c8721da6fed5c2b49b22efd970f14d"
+    },
+    {
+      "url": "https://arxiv.org/html/2609.32453v1",
+      "checked_at": "2026-10-01T01:41:29.179531+00:00",
+      "path": "data/research/2026-10-01/dram_v1_fulltext.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 355671,
+      "sha256": "21435cd1a2b0d9a7e7f467b127d7f0b0318f262b8580d4d6992bccb1addb810b"
+    },
+    {
+      "url": "https://arxiv.org/html/2609.32453v2",
+      "checked_at": "2026-10-01T01:41:29.179626+00:00",
+      "path": "data/research/2026-10-01/dram_v2_fulltext.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 369938,
+      "sha256": "03672a94aebd907f448312a8a4c82bec84ce6401265c25b7ad90aa7e3783476c"
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": "data/research/2026-10-01/2609.32453_abstract.html",
+      "bytes": 42764,
+      "sha256": "1d85dbc5eafcd9fdfb0365c04994fc9a35c8721da6fed5c2b49b22efd970f14d"
+    },
+    {
+      "path": "data/research/2026-10-01/2609.36107_abstract.html",
+      "bytes": 42191,
+      "sha256": "14d21ed97888014219650a26e25f6dc8a88b6af13015f2157ac34f5f256a1dd7"
+    },
+    {
+      "path": "data/research/2026-10-01/2609.36720_abstract.html",
+      "bytes": 41985,
+      "sha256": "33217679a335da148b1453d12b235e90bc32f0c8b5d28640c0983b18c046c2f1"
+    },
+    {
+      "path": "data/research/2026-10-01/2609.36924_abstract.html",
+      "bytes": 41011,
+      "sha256": "3aad3593df1363fc0d6bb83a7765fd29ffe1b4674c9336a7165785bd203341ed"
+    },
+    {
+      "path": "data/research/2026-10-01/2609.37070_abstract.html",
+      "bytes": 42384,
+      "sha256": "4ab91d450e83aa497b1d72519d2ac7b8c897f737df01b70d3732769ceb1de7d6"
+    },
+    {
+      "path": "data/research/2026-10-01/2609.37131_abstract.html",
+      "bytes": 43273,
+      "sha256": "12a3527dd75031b00e5a3b3e59402ee8f305d5c07c302bbf307c539d6136c9ad"
+    },
+    {
+      "path": "data/research/2026-10-01/2609.38087_abstract.html",
+      "bytes": 44488,
+      "sha256": "718ce4facc8fe9664f8ae38c35a2a803e9d1e0a53c270e371658ec0af9940c19"
+    },
+    {
+      "path": "data/research/2026-10-01/abstract_and_release_fetches.json",
+      "bytes": 2789,
+      "sha256": "96e2181b47b242cd63b2653d9c0785e37353b323f1909a0c593a6963e0274165"
+    },
+    {
+      "path": "data/research/2026-10-01/candidate_feed_entries.json",
+      "bytes": 342479,
+      "sha256": "ed5b1f7bfe077871acce8999135c6a82bb85405c4cdf2c63688a383238a7971a"
+    },
+    {
+      "path": "data/research/2026-10-01/crossbfm_fulltext.html",
+      "bytes": 486154,
+      "sha256": "63235b1bac50eef0884a51285375899d24912f9d8ba88a8953387353fe147fbb"
+    },
+    {
+      "path": "data/research/2026-10-01/crossbfm_fulltext.txt",
+      "bytes": 88037,
+      "sha256": "b5c370d3fd1e7c4d2d53d23af9ae50363d7bd2b5648f679798f98878e5cf7afc"
+    },
+    {
+      "path": "data/research/2026-10-01/crossbfm_project.html",
+      "bytes": 85986,
+      "sha256": "1cc00519ba22f2fc0288e546046454750c01c3531e79cc2efa83d45b834052db"
+    },
+    {
+      "path": "data/research/2026-10-01/crossbfm_project.txt",
+      "bytes": 16618,
+      "sha256": "a6039356701ab2c83be69ba2abbe41f99c03b6e47ccc2e0690566e9bb2435ff9"
+    },
+    {
+      "path": "data/research/2026-10-01/cs_cv.xml",
+      "bytes": 883811,
+      "sha256": "526cba3e0e1e15e663f89fbc918dc4b900c36cdfc091c6ab671048e58c50a51f"
+    },
+    {
+      "path": "data/research/2026-10-01/cs_lg.xml",
+      "bytes": 3258084,
+      "sha256": "490efd57190f1b435f3c067c8a76b7c27e595473fcb3ccbf1472c209b9b13bd6"
+    },
+    {
+      "path": "data/research/2026-10-01/cs_ro.xml",
+      "bytes": 434065,
+      "sha256": "fb8bcd5c603af70021b48d2696797916d7c3a238bc4006d25aa6a2d87695c178"
+    },
+    {
+      "path": "data/research/2026-10-01/cs_ro_new.html",
+      "bytes": 668485,
+      "sha256": "6c9be9a4adaf5c41b1178995082cdef52d69433e32e2e2911e2a4ac193ec7cde"
+    },
+    {
+      "path": "data/research/2026-10-01/dedup_followup_fetches.json",
+      "bytes": 1022,
+      "sha256": "f9066ef969ecb2084e01e0fcc63fb1c901a9bc713d9c2b82d6c90888b5076123"
+    },
+    {
+      "path": "data/research/2026-10-01/detailed_fetches.json",
+      "bytes": 1700,
+      "sha256": "d9d65298c95f2c55cce6fcde54163ac4c1a7e988c4d1b34da750574a52f7867e"
+    },
+    {
+      "path": "data/research/2026-10-01/dram_v1_fulltext.html",
+      "bytes": 355671,
+      "sha256": "21435cd1a2b0d9a7e7f467b127d7f0b0318f262b8580d4d6992bccb1addb810b"
+    },
+    {
+      "path": "data/research/2026-10-01/dram_v1_fulltext.txt",
+      "bytes": 72790,
+      "sha256": "a687a8a0a05cc530569e3157e88bc2a8cf026f6c536742d0adf97aa7c30ea54f"
+    },
+    {
+      "path": "data/research/2026-10-01/dram_v2_fulltext.html",
+      "bytes": 369938,
+      "sha256": "03672a94aebd907f448312a8a4c82bec84ce6401265c25b7ad90aa7e3783476c"
+    },
+    {
+      "path": "data/research/2026-10-01/dram_v2_fulltext.txt",
+      "bytes": 75281,
+      "sha256": "a1f6bfa298f264dd583ab638f469022cf7ac4e623998211eba5cc552953f7b8b"
+    },
+    {
+      "path": "data/research/2026-10-01/dram_version_diff.txt",
+      "bytes": 5323,
+      "sha256": "18ff89457787827773499f27d2cee400307551581ab15a57556ef8aad449cdd3"
+    },
+    {
+      "path": "data/research/2026-10-01/initial_fetches.json",
+      "bytes": 1927,
+      "sha256": "705c7f9b8221a066f721adbeb31c8b9a10a319b5e1b4fb140fde7e57e9949fd4"
+    },
+    {
+      "path": "data/research/2026-10-01/isaaclab_releases_api.json",
+      "bytes": 38499,
+      "sha256": "fb5bfac8fff1eff917584a16dbd2073ba682e6c3ed39d4803261391b4a49c02a"
+    },
+    {
+      "path": "data/research/2026-10-01/paper_metadata.json",
+      "bytes": 8474,
+      "sha256": "7b2f3169bd341ec9ca3d8f6faa0d5f5d9dc6469db9d7b7e5da98163b27737c88"
+    },
+    {
+      "path": "data/research/2026-10-01/project_edit_base.json",
+      "bytes": 1030,
+      "sha256": "9917a9ef4a804186ad5040c70acb2ede2fa93b1a446e9f721241a08ec471eab0"
+    },
+    {
+      "path": "data/research/2026-10-01/psc_fulltext.html",
+      "bytes": 279741,
+      "sha256": "b78f41c5cb0bfd6e7e3d0bc58a76c615833d4728bef7890d8ec994ab088d941c"
+    },
+    {
+      "path": "data/research/2026-10-01/psc_fulltext.txt",
+      "bytes": 56535,
+      "sha256": "cddacd8c3ac3f2292840128fe781be30955b2f0e23338e30c65e6fde4a2e07ea"
+    },
+    {
+      "path": "data/research/2026-10-01/rsl_rl_releases_api.json",
+      "bytes": 8365,
+      "sha256": "6dc2c093fa1109cecf29eceac5df02c639b3fac4294e6ec1f9e5aca5cebfe7e4"
+    },
+    {
+      "path": "data/research/2026-10-01/t2mem_fulltext.html",
+      "bytes": 296870,
+      "sha256": "8144e947a1a0e511b29e1d14a1a494f5f909adc828c5d74dc1592b92e6ce6f91"
+    },
+    {
+      "path": "data/research/2026-10-01/t2mem_fulltext.txt",
+      "bytes": 63644,
+      "sha256": "5a9964f8e25642a925883d48db3e6ec86db1901e38568b7c48c7d269e3fa7bc3"
+    },
+    {
+      "path": "data/research/2026-10-01/t2mem_project.html",
+      "bytes": 24938,
+      "sha256": "b95e55bdc03c5d6dd69fc7d6aa667b4b5b25484d2202a3456b3ff746b5fb6aff"
+    },
+    {
+      "path": "data/research/2026-10-01/t2mem_project.txt",
+      "bytes": 8755,
+      "sha256": "e06eedfbbe5e501ab108374b86bc7d67dbc39fc655c004b12c2fc0b4d40661cb"
+    }
+  ],
+  "replication_performed": false,
+  "new_hypothesis_added": false,
+  "prior_art_updated": [
+    "H001"
+  ],
+  "raw_data_storage": "LOCAL_ONLY: small public research evidence caches, retained on Mac and synced to hp3090 through publication; no verified Baidu backup, no training datasets or models."
+}

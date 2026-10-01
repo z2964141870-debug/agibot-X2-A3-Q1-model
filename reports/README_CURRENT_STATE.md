@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-09-30。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
+更新：2026-10-01。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
 
 ## 用户目标与固定约定
 
@@ -20,7 +20,7 @@
 4. 17 份参考节选已同步到项目 `data/references/` 并核验 SHA-256；原始附件仍在 Mac，未复制全部 ZIP。见[清单](../data/manifests/reference_excerpts_20260929.json)。
 5. 已加入工件登记、Git 暂存检查和只读环境盘点脚本；见 [script README](../script/README.md)。
 6. 本轮把重要阶段落盘要求写入项目规则，建立当前状态和阶段模板。见[记录规范阶段 README](README_RECORDING_POLICY_20260929.md)。
-7. 每日研究检查 `yuanqi` 已于 2026-09-30 北京时间 09:01:12 首次实际触发，完成本期检索与简报；公开公告列表仍为 9 月 29 日，已区分首次发现与首次发表。GAE 加入 H001 先行工作；未启动研究实验。见[研究跟踪说明](README_RESEARCH_WATCH.md)、[最新简报](research/2026-09-30/README.md)与[运行记录](README_RESEARCH_CHECK_20260930.md)。
+7. 每日研究检查 `yuanqi` 已验证 9/30 首次触发；10/1 北京时间 09:02:44 再次触发，中断后恢复完成来源核验。当前可见公告为 9/30，最新简报含 CrossBFM、PSC、T²Mem 与 DRAM v2 新增评测；已区分首次发现与首次发表，为 H001 补充先行工作，未启动实验。见[研究跟踪说明](README_RESEARCH_WATCH.md)、[最新简报](research/2026-10-01/README.md)与[运行记录](README_RESEARCH_CHECK_20261001.md)。
 8. 学员已答对 +4 的方向、4.8 平台和同批分母 20%，抓住实际回报训练 Critic 的关系；已按要求完成[阶段总结](README_LESSON01_SUMMARY_20260930.md)。最新请求是用代码解释学习信号；Agent 已在 CPU 跑通[第七小节](README_LESSON01_ACTOR_CRITIC_UPDATE_20260930.md)的固定样本正、负、零优势对照：回报 14 时 Critic 梯度 −8、预测 10→10.8，动作概率 50%→59.87%，18 项行为检查通过。单样本与平均回报、状态价值及两网络目标仍需巩固；学员尚未独立运行，也未完成完整 PPO 训练。
 9. P0 静态检查找到干净的 Isaac Lab 2.3.2、X2 评估代码和有未提交改动的 SONIC/X2 训练 sandbox；一个候选配置仍指向不存在的旧 URDF 路径。既有训练环境的 PyTorch/CUDA 小计算通过，尚未完成 PPO 烟测。见[核验报告](README_P0_INSPECTION_20260930.md)。
 

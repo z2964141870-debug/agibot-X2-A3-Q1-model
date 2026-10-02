@@ -1,0 +1,365 @@
+{
+  "schema_version": 1,
+  "experiment_id": "lesson02_cartpole_20261002_E002",
+  "date": "2026-10-02",
+  "timezone": "Asia/Shanghai",
+  "project_base_commit": "ecfa76e675af18b4c020ce4ae89a36f61473cc50",
+  "run_config": {
+    "task": "Isaac-Cartpole-Direct-v0",
+    "seed": 42,
+    "eval_seed": 10001,
+    "num_envs": 1024,
+    "iterations": 150,
+    "num_steps_per_env": 16,
+    "device": "cuda:0",
+    "asset_usd": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.1/Isaac/IsaacLab/Robots/Classic/Cartpole/cartpole.usd",
+    "script_sha256": "31856b4ed4b1644e33c55f59c23d8e3f1fe749b841e51c5e0b474f01c1b6dcca",
+    "packages": {
+      "torch": "2.8.0+cu128",
+      "rsl-rl-lib": "3.0.1",
+      "isaacsim": "5.1.0.0",
+      "isaaclab": "0.54.2",
+      "gymnasium": "1.2.1"
+    },
+    "isaaclab_commit": "37ddf626871758333d6ed89cf64ad702aef127d0"
+  },
+  "training_summary": {
+    "iterations": 150,
+    "transitions": 2457600,
+    "train_wall_seconds": 16.74237708398141,
+    "parameter_updates": {
+      "actor": {
+        "max_parameter_change": 2.073362350463867,
+        "changed_tensors": 6
+      },
+      "critic": {
+        "max_parameter_change": 1.5041615962982178,
+        "changed_tensors": 6
+      }
+    },
+    "training_seed_count": 1,
+    "phase": "teaching_baseline_not_research_validation"
+  },
+  "evaluation": {
+    "initial": {
+      "label": "initial",
+      "eval_seed": 10001,
+      "episodes": 1024,
+      "control_dt_s": 0.016666666666666666,
+      "time_limit_s": 5.0,
+      "mean_return": 9.096874237060547,
+      "mean_episode_steps": 38.6748046875,
+      "mean_survival_s": 0.644580078125,
+      "survived_time_limit_fraction": 0.0,
+      "mean_abs_pole_angle_rad_before_termination": 0.7364394664764404,
+      "initial_observations_sha256": "2918a264a626e6879aaa2691107178381d1434789bbedd3d0199db15d0a6370d",
+      "evaluation_policy": "deterministic actor mean; first episode per reset; no parameter updates"
+    },
+    "trained": {
+      "label": "trained",
+      "eval_seed": 10001,
+      "episodes": 1024,
+      "control_dt_s": 0.016666666666666666,
+      "time_limit_s": 5.0,
+      "mean_return": 296.7772216796875,
+      "mean_episode_steps": 299.0,
+      "mean_survival_s": 4.983333333333333,
+      "survived_time_limit_fraction": 1.0,
+      "mean_abs_pole_angle_rad_before_termination": 0.025415807962417603,
+      "initial_observations_sha256": "2918a264a626e6879aaa2691107178381d1434789bbedd3d0199db15d0a6370d",
+      "evaluation_policy": "deterministic actor mean; first episode per reset; no parameter updates"
+    },
+    "reloaded": {
+      "label": "reloaded",
+      "eval_seed": 10001,
+      "episodes": 1024,
+      "control_dt_s": 0.016666666666666666,
+      "time_limit_s": 5.0,
+      "mean_return": 296.7772216796875,
+      "mean_episode_steps": 299.0,
+      "mean_survival_s": 4.983333333333333,
+      "survived_time_limit_fraction": 1.0,
+      "mean_abs_pole_angle_rad_before_termination": 0.025415807962417603,
+      "initial_observations_sha256": "2918a264a626e6879aaa2691107178381d1434789bbedd3d0199db15d0a6370d",
+      "evaluation_policy": "deterministic actor mean; first episode per reset; no parameter updates"
+    }
+  },
+  "reload_verification": {
+    "separate_process": true,
+    "checkpoint": "/media/yu/FAFF-E9771/YUANQI/data/training/lesson02_cartpole_20261002_E002/checkpoints/final.pt",
+    "max_probe_action_error": 0.0,
+    "initial_states_match": true,
+    "mean_return_delta": 0.0,
+    "success_fraction_delta": 0.0
+  },
+  "commands": {
+    "train": {
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "-u",
+        "/media/yu/FAFF-E9771/YUANQI/script/teaching/lesson02/cartpole_ppo.py",
+        "--headless",
+        "--device",
+        "cuda:0",
+        "--run-dir",
+        "/media/yu/FAFF-E9771/YUANQI/data/training/lesson02_cartpole_20261002_E002",
+        "--log-dir",
+        "/media/yu/FAFF-E9771/YUANQI/logs/lesson02_cartpole_20261002_E002/tensorboard",
+        "--num-envs",
+        "1024",
+        "--iterations",
+        "150",
+        "--seed",
+        "42",
+        "--eval-seed",
+        "10001",
+        "--mode",
+        "train",
+        "--kit_args=--/log/file=/media/yu/FAFF-E9771/YUANQI/logs/lesson02_cartpole_20261002_E002/kit_train.log"
+      ],
+      "cwd": "/media/yu/FAFF-E9771/YUANQI",
+      "status": "PASSED",
+      "started_at": "2026-10-02T02:51:11.338815+00:00",
+      "pid": 1298674,
+      "returncode": 0,
+      "expected_marker_found": true,
+      "finished_at": "2026-10-02T02:51:36.197791+00:00"
+    },
+    "evaluate": {
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "-u",
+        "/media/yu/FAFF-E9771/YUANQI/script/teaching/lesson02/cartpole_ppo.py",
+        "--headless",
+        "--device",
+        "cuda:0",
+        "--run-dir",
+        "/media/yu/FAFF-E9771/YUANQI/data/training/lesson02_cartpole_20261002_E002",
+        "--log-dir",
+        "/media/yu/FAFF-E9771/YUANQI/logs/lesson02_cartpole_20261002_E002/tensorboard",
+        "--num-envs",
+        "1024",
+        "--iterations",
+        "150",
+        "--seed",
+        "42",
+        "--eval-seed",
+        "10001",
+        "--mode",
+        "evaluate",
+        "--kit_args=--/log/file=/media/yu/FAFF-E9771/YUANQI/logs/lesson02_cartpole_20261002_E002/kit_evaluate.log",
+        "--checkpoint",
+        "/media/yu/FAFF-E9771/YUANQI/data/training/lesson02_cartpole_20261002_E002/checkpoints/final.pt"
+      ],
+      "cwd": "/media/yu/FAFF-E9771/YUANQI",
+      "status": "PASSED",
+      "started_at": "2026-10-02T02:51:36.198094+00:00",
+      "pid": 1298959,
+      "returncode": 0,
+      "expected_marker_found": true,
+      "finished_at": "2026-10-02T02:51:43.626088+00:00"
+    }
+  },
+  "source_files": [
+    {
+      "path": "script/teaching/lesson02/cartpole_ppo.py",
+      "sha256": "31856b4ed4b1644e33c55f59c23d8e3f1fe749b841e51c5e0b474f01c1b6dcca"
+    },
+    {
+      "path": "script/teaching/lesson02/plot_results.py",
+      "sha256": "585eea2c2e6795696c0f8f6deda73bb4570eb15a1119a30b208e33420e6f29fb"
+    },
+    {
+      "path": "script/teaching/lesson02/run_lesson.py",
+      "sha256": "5808b998884a5292322a46f51ec32136edf66f56144aea8a219a37b3b5977488"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/agent.yaml",
+      "bytes": 974,
+      "sha256": "3ef1cfa0c5780268c957ff389eead083514b816abc9d12f6989c39d5280ba151"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/checkpoints/final.pt",
+      "bytes": 44051,
+      "sha256": "c2d9a452c8042170dc44bef96102c9890480a07600b7b016e4b52cfe41925334"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/checkpoints/initial.pt",
+      "bytes": 15228,
+      "sha256": "3d20500323a55c6aea762db3379bb525e037f5266cda0709aa4f899c18eeee4c"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/checkpoints/model_0.pt",
+      "bytes": 45575,
+      "sha256": "c2f9c690276eb49079aa5b8291206a2d7511593b17b7f82c8ab37981dee54257"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/checkpoints/model_100.pt",
+      "bytes": 46139,
+      "sha256": "92162aad15e2591e73d437651f327930944c49efd135a9f045cf6815046347f1"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/checkpoints/model_149.pt",
+      "bytes": 46139,
+      "sha256": "b68081d78b90b26bf8bcc6a30853b37db62c863f00fcf8c1ca44567df70167a7"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/checkpoints/model_50.pt",
+      "bytes": 46081,
+      "sha256": "addd7ca12de272289e9536d3ceb4054440cba82bf39a4746991da03e5552c1b1"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/environment.yaml",
+      "bytes": 5834,
+      "sha256": "f9c8ece88788195c71cc00be38381d49cc662ebca58015a50448c643237266b2"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/evaluation_initial.json",
+      "bytes": 49697,
+      "sha256": "786f29138e589a97257db6917a071d22b111525d29c87ef3edf989d521180bda"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/evaluation_reloaded.json",
+      "bytes": 115733,
+      "sha256": "235e583fea5f9b38c0ddfc9156bb4ae8729a3be74daf5380b3516197b6556540"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/evaluation_trained.json",
+      "bytes": 115732,
+      "sha256": "5ff923fd7f33c7b6d3b6a9a080427a4cc66d52acda486ffa64201750832e4154"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/learning_comparison.png",
+      "bytes": 114313,
+      "sha256": "3c09166b1b837635d0adc6e9cc10d682cfe915c9a7818816046caf8a0d2d3e78"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/policy_probes.pt",
+      "bytes": 22421,
+      "sha256": "28ebb5b2f42bb8ba47862aa141a567b0821cdbebcc811e352a5e4b4a958bc720"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/reload_verification.json",
+      "bytes": 271,
+      "sha256": "aaceddb41a1cf5758937b69704d476e9d2271f296648d078b1ed2b1068b98608"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/run_config.json",
+      "bytes": 624,
+      "sha256": "56d24e7eccec2c1447b3241e76308aa11013915bf965aefe9f8d85ad52a1b850"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E002/training_summary.json",
+      "bytes": 404,
+      "sha256": "806aeccefc747aeb64c0637212021345f0bb2b90399185ed4cfd19d6bd210acf"
+    },
+    {
+      "path": "logs/lesson02_cartpole_20261002_E002/driver_source.py",
+      "bytes": 11447,
+      "sha256": "31856b4ed4b1644e33c55f59c23d8e3f1fe749b841e51c5e0b474f01c1b6dcca"
+    },
+    {
+      "path": "logs/lesson02_cartpole_20261002_E002/evaluate.log",
+      "bytes": 7069,
+      "sha256": "7a5b9a35cb9bab371ed845a47dad51e84409f41af25a2f2deeae8692596e86d5"
+    },
+    {
+      "path": "logs/lesson02_cartpole_20261002_E002/job_evaluate.json",
+      "bytes": 1033,
+      "sha256": "8c5ae1fbcde610109e0acbee2d6eef2342770ef241d5e72bc63a5ce9a3712372"
+    },
+    {
+      "path": "logs/lesson02_cartpole_20261002_E002/job_train.json",
+      "bytes": 905,
+      "sha256": "d4b7d412635ba0ddcb25098e14906742c1c9d77877afcf88232bbc7900e50ad0"
+    },
+    {
+      "path": "logs/lesson02_cartpole_20261002_E002/kit_evaluate.log",
+      "bytes": 388057,
+      "sha256": "1839a35731b68e48c4b1f82871c18861bc69dff8174a6941d5b76dc64d443920"
+    },
+    {
+      "path": "logs/lesson02_cartpole_20261002_E002/kit_train.log",
+      "bytes": 387943,
+      "sha256": "71a392f82ec3f9b96ddbe0f6b65db6dc96a4e2b8a9ae7cbd0ed85156638277e9"
+    },
+    {
+      "path": "logs/lesson02_cartpole_20261002_E002/tensorboard/events.out.tfevents.1790909478.yu-MS-7D31.1298674.0",
+      "bytes": 103160,
+      "sha256": "73301b46efd5f9097fba43de9a8b741fda7a79eb3007e00af76bb23e4367a2bb"
+    },
+    {
+      "path": "logs/lesson02_cartpole_20261002_E002/train.log",
+      "bytes": 122821,
+      "sha256": "42ba847662953f6394573a4507a9cb15144989a2d04f48749f9adcdca9256c6e"
+    },
+    {
+      "path": "logs/lesson02_cartpole_20261002_E001/driver_source.py",
+      "bytes": 11218,
+      "sha256": "f0b3d31d25db489072410f3ae764430a591e9bb275c085118c83a1f51ebffd11"
+    },
+    {
+      "path": "logs/lesson02_cartpole_20261002_E001/job.json",
+      "bytes": 863,
+      "sha256": "e53de576fb72e11d801fe40d09a16774ea48a1902eef6456a5c164ef04b6f995"
+    },
+    {
+      "path": "logs/lesson02_cartpole_20261002_E001/job_attempt1.json",
+      "bytes": 852,
+      "sha256": "66954acb457ae534219b36bc88bc2ee3190cba996f1dc099ce2193e359892566"
+    },
+    {
+      "path": "logs/lesson02_cartpole_20261002_E001/kit_train.log",
+      "bytes": 389392,
+      "sha256": "756e5c0b88249ab1cd141d13f8e4c416868f18563e46be896f58118b29bc333e"
+    },
+    {
+      "path": "logs/lesson02_cartpole_20261002_E001/train.log",
+      "bytes": 7029,
+      "sha256": "9ff8c4d6a542fd390dfaa48bd2252aef3089278c4db08a43397db6f423233326"
+    },
+    {
+      "path": "logs/lesson02_cartpole_20261002_E001/train_attempt1.log",
+      "bytes": 835,
+      "sha256": "513c8a3492cbc96116bde60b929212a4efab7012db5d749c2685ceabbafda49f"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E001/agent.yaml",
+      "bytes": 974,
+      "sha256": "3ef1cfa0c5780268c957ff389eead083514b816abc9d12f6989c39d5280ba151"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E001/checkpoints/initial.pt",
+      "bytes": 15228,
+      "sha256": "3d20500323a55c6aea762db3379bb525e037f5266cda0709aa4f899c18eeee4c"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E001/environment.yaml",
+      "bytes": 5834,
+      "sha256": "f9c8ece88788195c71cc00be38381d49cc662ebca58015a50448c643237266b2"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E001/evaluation_initial.json",
+      "bytes": 49697,
+      "sha256": "786f29138e589a97257db6917a071d22b111525d29c87ef3edf989d521180bda"
+    },
+    {
+      "path": "data/training/lesson02_cartpole_20261002_E001/run_config.json",
+      "bytes": 624,
+      "sha256": "a8eb938f08e7b64ae5d2683c32435a495f887fcd96b22b554d945f8c7758e328"
+    }
+  ],
+  "backup_status": "LOCAL_ONLY",
+  "baidu_verified": false,
+  "scope": "Agent-executed introductory Cartpole simulation; one training seed; not X2/humanoid validation or evidence of student independent mastery",
+  "asset_identity_note": "Official Isaac 5.1 asset URL captured; USD file contents were not independently checksummed.",
+  "gpu_process_snapshot_after_completion": "",
+  "isaaclab_worktree_status_after_completion": "",
+  "rsl_source_sha256": {
+    "rsl_rl/runners/on_policy_runner.py": "e51e4dd49664ccc8743a16b71d2971d392f40a6988136f10fe8c5f03ab6a83b5",
+    "rsl_rl/algorithms/ppo.py": "deafc8c947eba4df3e91b393869426cdab8d7b71e05974c3734125d2331d7d1c",
+    "rsl_rl/modules/actor_critic.py": "20c6396d32802112dc217ba51add5fe7f7953518a0c7cdb4b7da51f77dc30b6e"
+  }
+}

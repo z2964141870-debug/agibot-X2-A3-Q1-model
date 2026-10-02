@@ -5,6 +5,7 @@ not copy or modify their PPO or environment code. All outputs stay in YUANQI.
 """
 
 import argparse
+import math
 from pathlib import Path
 
 from isaaclab.app import AppLauncher
@@ -17,9 +18,13 @@ parser.add_argument("--iterations", type=int, default=150)
 parser.add_argument("--num-envs", type=int, default=1024)
 parser.add_argument("--seed", type=int, default=42)
 parser.add_argument("--eval-seed", type=int, default=10001)
+parser.add_argument("--pole-angle-weight", type=float, default=1.0,
+                    help="Positive magnitude of the pole-angle penalty; reward term is -weight * angle_rad**2.")
 parser.add_argument("--checkpoint", type=Path)
 AppLauncher.add_app_launcher_args(parser)
 args = parser.parse_args()
+if not math.isfinite(args.pole_angle_weight) or args.pole_angle_weight <= 0:
+    parser.error("pole-angle-weight must be finite and positive")
 args.run_dir = args.run_dir.resolve()
 args.log_dir = args.log_dir.resolve()
 if args.mode == "train" and args.run_dir.exists():
@@ -127,6 +132,7 @@ def main():
     env_cfg.scene.num_envs = args.num_envs
     env_cfg.seed = args.seed
     env_cfg.sim.device = args.device or "cuda:0"
+    env_cfg.rew_scale_pole_pos = -args.pole_angle_weight
     agent_cfg.seed = args.seed
     agent_cfg.device = env_cfg.sim.device
     agent_cfg.logger = "tensorboard"
@@ -139,6 +145,8 @@ def main():
         "num_envs": args.num_envs, "iterations": args.iterations,
         "num_steps_per_env": agent_cfg.num_steps_per_env,
         "device": agent_cfg.device,
+        "pole_angle_weight": args.pole_angle_weight,
+        "rew_scale_pole_pos": env_cfg.rew_scale_pole_pos,
         "asset_usd": env_cfg.robot_cfg.spawn.usd_path,
         "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "packages": {p: importlib.metadata.version(p) for p in
@@ -149,7 +157,8 @@ def main():
     if args.mode == "evaluate":
         original = json.loads(config_path.read_text())
         for key in ["task", "seed", "eval_seed", "num_envs", "device", "script_sha256",
-                    "packages", "isaaclab_commit", "asset_usd"]:
+                    "packages", "isaaclab_commit", "asset_usd",
+                    "pole_angle_weight", "rew_scale_pole_pos"]:
             if original[key] != config[key]:
                 raise ValueError(f"Evaluation configuration differs: {key}")
     else:

@@ -118,3 +118,5 @@ next_obs, reward, terminated, truncated, info = env.step(action)
 理解状态：已证实用户按提供命令完成完整复跑；上述函数对应和奖励用途是本次讲解内容，仍待用户反馈。下一小步再读一个奖励项、观察其影响，不同时推进多个新概念或自动启动额外实验。
 
 本次记录的编辑基线为 `026d4f9c532c0856c66cbe5cee7533b2e76d3aa9`，核验时项目工作区干净，GPU 无计算进程。恢复/核验记录：`logs/lesson02_user_run_base_20261002.json`、`logs/lesson02_user_run_verification_20261002.json`；diff、载荷审计、提交与远端核验：`logs/lesson02_user_run_publish_20261002.log`。本轮未重新执行训练、评测或算法测试；只核验用户已生成的证据并维护文档。
+
+后续已准备倾斜惩罚权重 1→3 的教学对照，见[奖励项跟进](README_LESSON02_REWARD_20261002.md)。新版驱动增加可选权重参数，默认保持 1；以上旧实验的精确代码仍保存在各自 `logs/<experiment_id>/driver_source.py`，重载旧实验时保留源码一致性要求。对照仅准备完成，不修改本页已核验的历史结果。

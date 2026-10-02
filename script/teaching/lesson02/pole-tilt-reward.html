@@ -1,0 +1,103 @@
+<div id="yuanqi-pole-tilt-reward-v1">
+  <h3>同一倾斜，怎样评分</h3>
+  <div class="viz-controls">
+    <label class="form-label" for="yu-tilt-angle">
+      倾斜角度 <output id="yu-tilt-angle-value" class="tabular-nums" for="yu-tilt-angle">0.20 rad · 11.5°</output>
+      <input class="form-range" id="yu-tilt-angle" type="range" min="-0.5" max="0.5" step="0.01" value="0.2">
+    </label>
+    <label class="form-label" for="yu-tilt-weight">
+      惩罚权重 <output id="yu-tilt-weight-value" class="tabular-nums" for="yu-tilt-weight">1</output>
+      <input class="form-range" id="yu-tilt-weight" type="range" min="1" max="5" step="1" value="1">
+    </label>
+  </div>
+  <svg class="yu-tilt-scene" role="img" aria-labelledby="yu-tilt-title yu-tilt-desc">
+    <title id="yu-tilt-title">杆的倾斜示意</title>
+    <desc id="yu-tilt-desc">杆偏离竖直方向 0.20 弧度。这里只显示给定姿态的评分，不模拟训练或运动。</desc>
+    <line data-upright stroke="var(--border)" stroke-width="2"></line>
+    <text data-upright-label fill="var(--muted-foreground)">竖直</text>
+    <rect data-cart width="68" height="23" rx="4" fill="var(--muted)"></rect>
+    <circle data-wheel-left r="6" fill="var(--muted-foreground)"></circle>
+    <circle data-wheel-right r="6" fill="var(--muted-foreground)"></circle>
+    <line data-pole stroke="var(--viz-series-1)" stroke-width="7" stroke-linecap="round"></line>
+    <circle data-pivot r="4" fill="var(--foreground)"></circle>
+  </svg>
+  <div class="viz-row" aria-live="polite" aria-atomic="true">
+    <span>这一项奖励</span>
+    <output id="yu-tilt-score" class="tabular-nums" for="yu-tilt-angle yu-tilt-weight">−0.040 分</output>
+    <span class="text-small text-muted">单步倾斜项</span>
+  </div>
+</div>
+<style>
+  #yuanqi-pole-tilt-reward-v1 .yu-tilt-scene { display: block; width: 100%; height: 220px; }
+</style>
+<script>
+(() => {
+  const root = document.getElementById('yuanqi-pole-tilt-reward-v1');
+  const angle = root.querySelector('#yu-tilt-angle');
+  const weight = root.querySelector('#yu-tilt-weight');
+  const angleValue = root.querySelector('#yu-tilt-angle-value');
+  const weightValue = root.querySelector('#yu-tilt-weight-value');
+  const score = root.querySelector('#yu-tilt-score');
+  const scene = root.querySelector('.yu-tilt-scene');
+  const desc = root.querySelector('#yu-tilt-desc');
+  const lesson = 'cartpole-tilt-reward-v1';
+  const elements = {};
+  ['upright', 'upright-label', 'cart', 'wheel-left', 'wheel-right', 'pole', 'pivot'].forEach(key => {
+    elements[key] = root.querySelector('[data-' + key + ']');
+  });
+  function attributes(element, values) {
+    Object.entries(values).forEach(([key, value]) => element.setAttribute(key, value));
+  }
+  function draw() {
+    const radians = Number(angle.value);
+    const coefficient = Number(weight.value);
+    const penalty = coefficient * radians * radians;
+    const degrees = radians * 180 / Math.PI;
+    angleValue.textContent = radians.toFixed(2) + ' rad · ' + degrees.toFixed(1) + '°';
+    weightValue.textContent = String(coefficient);
+    score.textContent = (penalty === 0 ? '' : '−') + penalty.toFixed(3) + ' 分';
+    const width = Math.max(1, scene.getBoundingClientRect().width);
+    scene.setAttribute('viewBox', '0 0 ' + width + ' 220');
+    const center = width / 2;
+    const pivotY = 172;
+    attributes(elements.upright, { x1: center, y1: 35, x2: center, y2: pivotY });
+    attributes(elements['upright-label'], { x: center, y: 23, 'text-anchor': 'middle' });
+    attributes(elements.cart, { x: center - 34, y: pivotY });
+    attributes(elements['wheel-left'], { cx: center - 23, cy: 202 });
+    attributes(elements['wheel-right'], { cx: center + 23, cy: 202 });
+    attributes(elements.pole, {
+      x1: center, y1: pivotY,
+      x2: center + 132 * Math.sin(radians), y2: pivotY - 132 * Math.cos(radians)
+    });
+    attributes(elements.pivot, { cx: center, cy: pivotY });
+    desc.textContent = '杆偏离竖直 ' + radians.toFixed(2) + ' 弧度，惩罚权重 ' + coefficient
+      + '，单步倾斜奖励 ' + (-penalty).toFixed(3) + ' 分。仅为姿态评分示意。';
+  }
+  function restore(snapshot) {
+    const saved = snapshot && snapshot.modelContent;
+    if (!saved || saved.lesson !== lesson) return;
+    if (Number.isFinite(saved.angleRad) && saved.angleRad >= -0.5 && saved.angleRad <= 0.5)
+      angle.value = String(saved.angleRad);
+    if (Number.isInteger(saved.penaltyWeight) && saved.penaltyWeight >= 1 && saved.penaltyWeight <= 5)
+      weight.value = String(saved.penaltyWeight);
+    draw();
+  }
+  function interact() {
+    draw();
+    if (window.openai && typeof window.openai.setWidgetState === 'function') {
+      window.openai.setWidgetState({
+        modelContent: { lesson, angleRad: Number(angle.value), penaltyWeight: Number(weight.value) },
+        privateContent: null
+      }).catch(() => {});
+    }
+  }
+  angle.addEventListener('input', interact);
+  weight.addEventListener('input', interact);
+  window.addEventListener('openai:set_globals', event => {
+    restore(event.detail && event.detail.globals && event.detail.globals.widgetState);
+  });
+  draw();
+  restore(window.openai && window.openai.widgetState);
+  new ResizeObserver(draw).observe(scene);
+})();
+</script>

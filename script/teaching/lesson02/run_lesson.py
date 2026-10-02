@@ -3,6 +3,7 @@
 import argparse
 from datetime import datetime, timezone
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -15,6 +16,8 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--experiment-id", required=True)
 parser.add_argument("--num-envs", type=int, default=1024)
 parser.add_argument("--iterations", type=int, default=150)
+parser.add_argument("--pole-angle-weight", type=float, default=1.0,
+                    help="Positive magnitude of the pole-angle penalty; default 1 keeps the baseline.")
 parser.add_argument("--timeout", type=int, default=600)
 parser.add_argument("--python", default="/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python")
 args = parser.parse_args()
@@ -22,6 +25,8 @@ if not re.fullmatch(r"[A-Za-z0-9_-]+", args.experiment_id):
     parser.error("experiment-id may contain letters, numbers, underscores and hyphens")
 if min(args.num_envs, args.iterations, args.timeout) <= 0:
     parser.error("counts and timeout must be positive")
+if not math.isfinite(args.pole_angle_weight) or args.pole_angle_weight <= 0:
+    parser.error("pole-angle-weight must be finite and positive")
 root = Path(__file__).resolve().parents[3]
 run_dir = root / "data/training" / args.experiment_id
 log_dir = root / "logs" / args.experiment_id
@@ -33,6 +38,7 @@ shutil.copyfile(driver, log_dir / "driver_source.py")
 common = [args.python, "-u", str(driver), "--headless", "--device", "cuda:0",
           "--run-dir", str(run_dir), "--log-dir", str(log_dir / "tensorboard"),
           "--num-envs", str(args.num_envs), "--iterations", str(args.iterations),
+          "--pole-angle-weight", str(args.pole_angle_weight),
           "--seed", "42", "--eval-seed", "10001"]
 
 

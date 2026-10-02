@@ -20,7 +20,7 @@
 4. 17 份参考节选已同步到项目 `data/references/` 并核验 SHA-256；原始附件仍在 Mac，未复制全部 ZIP。见[清单](../data/manifests/reference_excerpts_20260929.json)。
 5. 已加入工件登记、Git 暂存检查和只读环境盘点脚本；见 [script README](../script/README.md)。
 6. 本轮把重要阶段落盘要求写入项目规则，建立当前状态和阶段模板。见[记录规范阶段 README](README_RECORDING_POLICY_20260929.md)。
-7. 每日研究检查 `yuanqi` 已验证 9/30 首次触发；10/1 北京时间 09:02:44 再次触发，中断后恢复完成来源核验。当前可见公告为 9/30，最新简报含 CrossBFM、PSC、T²Mem 与 DRAM v2 新增评测；已区分首次发现与首次发表，为 H001 补充先行工作，未启动实验。见[研究跟踪说明](README_RESEARCH_WATCH.md)、[最新简报](research/2026-10-01/README.md)与[运行记录](README_RESEARCH_CHECK_20261001.md)。
+7. 每日研究检查 `yuanqi` 已验证 9/30 首次触发；最新 10/2 北京时间 09:40:10 触发并完成来源检查。当前可见公告为 10/1，简报包含 DTMR 动作节奏重定向、NEXUS 地形遥操、LBDU-VIO 视觉中断定位；DTMR 项目入口访问失败，三项均未复现。旧项目去重、H001 先行工作已更新，没有新假设或训练。见[最新简报](research/2026-10-02/README.md)与[运行记录](README_RESEARCH_CHECK_20261002.md)。
 8. 学员已答对既有优势/裁剪题、动作记录是尝试及固定 Actor 的判断；一步回报估计出现卡点后改用流程图。最新追问“到底更新什么数据”，已在[结构体与变量对照](README_LESSON01_PIPELINE_20261001.md)说明权重、经历记录、输出及 Critic 间接影响 Actor 的时机，理解待确认，TD/终止题仍暂缓。[第七小节](README_LESSON01_ACTOR_CRITIC_UPDATE_20260930.md)的 18 项检查仍为 Agent 既有结果，尚未独立训练，P0 未通过。
 9. P0 静态检查找到干净的 Isaac Lab 2.3.2、X2 评估代码和有未提交改动的 SONIC/X2 训练 sandbox；一个候选配置仍指向不存在的旧 URDF 路径。既有训练环境的 PyTorch/CUDA 小计算通过，尚未完成 PPO 烟测。见[核验报告](README_P0_INSPECTION_20260930.md)。
 

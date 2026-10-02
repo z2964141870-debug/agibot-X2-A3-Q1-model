@@ -1,0 +1,707 @@
+{
+  "schema_version": 1,
+  "automation_id": "yuanqi",
+  "check_date": "2026-10-02",
+  "timezone": "Asia/Shanghai",
+  "triggered_at": "2026-10-02T01:40:10.703Z",
+  "source_check_completed_at": "2026-10-02T09:52:25.647381+08:00",
+  "previous_successful_source_check_at": "2026-10-01T09:49:30.738184+08:00",
+  "project_base_commit": "a2eaf581e904391d12b399df226a437049b77460",
+  "coverage": {
+    "source_scope": "arXiv cs.RO/cs.LG/cs.CV RSS title screening and cs.RO new; six new original abstracts, selected fulltext sections of three papers, known-paper v1/v2 text comparison, three successful author-page checks and two official framework release APIs.",
+    "feeds": [
+      {
+        "path": "data/research/2026-10-02/cs_ro.xml",
+        "last_build_raw": "Thu, 01 Oct 2026 04:00:06 +0000",
+        "entry_count": 203
+      },
+      {
+        "path": "data/research/2026-10-02/cs_lg.xml",
+        "last_build_raw": "Thu, 01 Oct 2026 04:00:03 +0000",
+        "entry_count": 638
+      },
+      {
+        "path": "data/research/2026-10-02/cs_cv.xml",
+        "last_build_raw": "Thu, 01 Oct 2026 04:00:03 +0000",
+        "entry_count": 353
+      }
+    ],
+    "listing_date": "2026-10-01",
+    "candidate_feed_entries": 122,
+    "unique_candidate_ids": 109,
+    "new_candidate_abstracts_verified": 6,
+    "known_paper_update_checked": 1,
+    "items_reported": 3,
+    "note": "Checked 2026-10-01 arXiv announcements; three reported v1 papers first submitted 09-29/09-30 UTC and first seen 10-02. Later 10-02 announcements and unvisited vendor/repository channels are not covered. DTMR author project failed; assets remain unverified."
+  },
+  "sources": [
+    {
+      "id": "arxiv:2609.38617",
+      "version": "v1",
+      "title": "Dense Temporal Motion Retargeting for Legged Robots",
+      "url": "https://arxiv.org/abs/2609.38617v1",
+      "first_submitted_at": "2026-09-29T22:21:54Z",
+      "feed_announced_on": "2026-10-01",
+      "feed_pub_date_raw": "Thu, 01 Oct 2026 00:00:00 -0400",
+      "first_seen_on": "2026-10-02",
+      "last_fetched_at": "2026-10-02T01:42:40.073648+00:00",
+      "dedup_key": "arxiv:2609.38617@v1",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
+      "verification_level": "Original abstract and selected method, evaluation and limitation sections; no reproduction.",
+      "code_status": "AUTHOR_PROJECT_CONNECTION_RESET_ASSETS_UNVERIFIED",
+      "recommendation": "AFTER_BASELINE",
+      "notes": "Optimizes per-step reference timing with control through GPU sampling MPC. Four evaluated humanoids G1/R1/H1-2/T1; G1 physical deployment. Timing semantics and object interaction remain limitations; no verified Agibot support. Author project failed twice.",
+      "related_links": [
+        "https://arxiv.org/html/2609.38617v1",
+        "https://jaeryeongnicolekim.com/Dense-Temporal-Motion-Retargeting-For-Legged-Robots/"
+      ],
+      "asset_status": "Official project inaccessible during check; code, checkpoints and released data not verified.",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-02/README.md"
+    },
+    {
+      "id": "arxiv:2609.39000",
+      "version": "v1",
+      "title": "NEXUS: Perceptive Whole-Body Control for Terrain-Adaptive Teleoperation",
+      "url": "https://arxiv.org/abs/2609.39000v1",
+      "first_submitted_at": "2026-09-30T05:13:49Z",
+      "feed_announced_on": "2026-10-01",
+      "feed_pub_date_raw": "Thu, 01 Oct 2026 00:00:00 -0400",
+      "first_seen_on": "2026-10-02",
+      "last_fetched_at": "2026-10-02T01:42:40.074533+00:00",
+      "dedup_key": "arxiv:2609.39000@v1",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
+      "verification_level": "Original abstract, selected methods/evaluation/deployment/limitations and author project page; no reproduction.",
+      "code_status": "AUTHOR_PROJECT_SAYS_CODE_COMING_SOON",
+      "recommendation": "AFTER_BASELINE; NOW_FOR_EVALUATION_DESIGN",
+      "notes": "Paired flat/terrain motion data, privileged PPO teacher and depth-conditioned student. G1 deployment, four H100 training reported. No Agibot validation; overhang unsupported and some difficult real trials fall. Lookahead window does not establish measured end-to-end latency.",
+      "related_links": [
+        "https://arxiv.org/html/2609.39000v1",
+        "https://nexus-humanoid.github.io/"
+      ],
+      "asset_status": "Author page is a preview with code Coming Soon; runnable policy/training assets not verified.",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-02/README.md"
+    },
+    {
+      "id": "arxiv:2609.39125",
+      "version": "v1",
+      "title": "LBDU-VIO: Learned Bias Dynamics and Uncertainty for Visual-Inertial Odometry with Unreliable Vision",
+      "url": "https://arxiv.org/abs/2609.39125v1",
+      "first_submitted_at": "2026-09-30T06:57:26Z",
+      "feed_announced_on": "2026-10-01",
+      "feed_pub_date_raw": "Thu, 01 Oct 2026 00:00:00 -0400",
+      "first_seen_on": "2026-10-02",
+      "last_fetched_at": "2026-10-02T01:42:40.075546+00:00",
+      "dedup_key": "arxiv:2609.39125@v1",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
+      "verification_level": "Original abstract and selected method, data splits, visual outage/recovery and ablation sections; no reproduction.",
+      "code_status": "OFFICIAL_ASSET_ENTRY_NOT_IDENTIFIED_IN_CHECKED_PAPER",
+      "recommendation": "AFTER_BASELINE",
+      "notes": "Learns continuous IMU bias dynamics plus adaptive noise covariance within MSCKF. Pose supervision remains required. Author-reported 25.1 percent mean RPE reduction against S-MSCKF for artificial 10-second EuRoC image outages; not headband/hand tracking validation.",
+      "related_links": [
+        "https://arxiv.org/html/2609.39125v1"
+      ],
+      "asset_status": "No official code/weights entry identified in checked original paper; not an exhaustive availability search.",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-02/README.md"
+    },
+    {
+      "id": "arxiv:2609.39634",
+      "version": "v1",
+      "title": "Free Everywhere, Exact on Trees: PPO's Dropped Correction Buys Sample Efficiency Under Aggressive Reuse",
+      "url": "https://arxiv.org/abs/2609.39634v1",
+      "first_submitted_at": "2026-09-30T12:41:43Z",
+      "feed_announced_on": "2026-10-01",
+      "feed_pub_date_raw": "Thu, 01 Oct 2026 00:00:00 -0400",
+      "first_seen_on": "2026-10-02",
+      "last_fetched_at": "2026-10-02T01:42:40.075693+00:00",
+      "dedup_key": "arxiv:2609.39634@v1",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
+      "verification_level": "Original abstract and submission history only; full text, code and assets not checked.",
+      "code_status": "NOT_VERIFIED",
+      "recommendation": "BACKGROUND",
+      "notes": "Abstract only. State-visitation correction exactness requires history-injective dynamics; demonstrated scheduling/construction setting does not establish a drop-in robot PPO modification. Retain for later theory reading.",
+      "related_links": [],
+      "disposition": "SCREENED_BACKGROUND",
+      "reported_in": null
+    },
+    {
+      "id": "arxiv:2609.38709",
+      "version": "v1",
+      "title": "CEER2: Directional and Tunable End-Effector and Root Compliance for Humanoid Loco-Manipulation",
+      "url": "https://arxiv.org/abs/2609.38709v1",
+      "first_submitted_at": "2026-09-30T00:48:09Z",
+      "feed_announced_on": "2026-10-01",
+      "feed_pub_date_raw": "Thu, 01 Oct 2026 00:00:00 -0400",
+      "first_seen_on": "2026-10-02",
+      "last_fetched_at": "2026-10-02T01:42:40.075759+00:00",
+      "dedup_key": "arxiv:2609.38709@v1",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
+      "verification_level": "Original abstract and submission history only; full text, code and assets not checked.",
+      "code_status": "NOT_VERIFIED",
+      "recommendation": "BACKGROUND",
+      "notes": "Abstract only. Hierarchical compliant control on top of a fixed whole-body tracker; relevant to future physical interaction but not first training milestone.",
+      "related_links": [],
+      "disposition": "SCREENED_BACKGROUND",
+      "reported_in": null
+    },
+    {
+      "id": "arxiv:2609.38932",
+      "version": "v1",
+      "title": "EFormer: Temporally Aligned Local Correction for Continuous sEMG-Based Hand Pose Tracking",
+      "url": "https://arxiv.org/abs/2609.38932v1",
+      "first_submitted_at": "2026-09-30T04:11:27Z",
+      "feed_announced_on": "2026-10-01",
+      "feed_pub_date_raw": "Thu, 01 Oct 2026 00:00:00 -0400",
+      "first_seen_on": "2026-10-02",
+      "last_fetched_at": "2026-10-02T01:42:40.078144+00:00",
+      "dedup_key": "arxiv:2609.38932@v1",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
+      "verification_level": "Original abstract and submission history only; full text, code and assets not checked.",
+      "code_status": "NOT_VERIFIED",
+      "recommendation": "BACKGROUND",
+      "notes": "Abstract only. Frozen hand-tracking backbone plus time-aligned causal residual correction for sEMG. Used as H001 prior-art lead; full paper, split details, code and assets not checked.",
+      "related_links": [],
+      "disposition": "SCREENED_BACKGROUND",
+      "reported_in": null
+    },
+    {
+      "id": "arxiv:2609.32591",
+      "version": "v2",
+      "title": "Think Fast, Plan Selectively: Adaptive Deliberation for Efficient Data-Driven MPC",
+      "url": "https://arxiv.org/abs/2609.32591v2",
+      "first_submitted_at": "2026-09-26T13:10:00Z",
+      "version_submitted_at": "2026-09-30T02:14:08Z",
+      "feed_announced_on": "2026-10-01",
+      "feed_pub_date_raw": "Thu, 01 Oct 2026 00:00:00 -0400",
+      "source_first_seen_on": "2026-09-29",
+      "first_seen_on": "2026-10-02",
+      "last_fetched_at": "2026-10-02T01:46:25.599198+00:00",
+      "dedup_key": "arxiv:2609.32591@v2",
+      "previous_dedup_key": "arxiv:2609.32591@v1",
+      "change_kind": "VERSION_NOTATION_CORRECTION",
+      "verification_level": "Submission history and v1/v2 extracted fulltext diff; only version date and equation (4) input notation s_t to z_t changed in extracted text. No reproduction.",
+      "code_status": "NOT_RECHECKED",
+      "notes": "No substantive method or evaluation update confirmed; do not repeat in daily brief.",
+      "related_links": [
+        "https://arxiv.org/html/2609.32591v1",
+        "https://arxiv.org/html/2609.32591v2"
+      ],
+      "disposition": "CHECKED_NOT_REPORTED",
+      "reported_in": null,
+      "recommendation": "BACKGROUND"
+    }
+  ],
+  "requests": [
+    {
+      "url": "https://rss.arxiv.org/rss/cs.RO",
+      "checked_at": "2026-10-02T01:41:54.832042+00:00",
+      "path": "data/research/2026-10-02/cs_ro.xml",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 444561,
+      "sha256": "4ff01d1509019566d081d025f4c283e8d9de7a3ef2e1d98b587d90164ca6e2e7"
+    },
+    {
+      "url": "https://rss.arxiv.org/rss/cs.LG",
+      "checked_at": "2026-10-02T01:41:54.832384+00:00",
+      "path": "data/research/2026-10-02/cs_lg.xml",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 1362390,
+      "sha256": "e780a5f205add7458eeb8fc4242858cb8f62187f3520320aef59f261d467b52b"
+    },
+    {
+      "url": "https://rss.arxiv.org/rss/cs.CV",
+      "checked_at": "2026-10-02T01:41:54.833370+00:00",
+      "path": "data/research/2026-10-02/cs_cv.xml",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 769802,
+      "sha256": "23d431054daa873096b01a6954e5f39f865d5d16bc7405f954d7487c75cfe1f1"
+    },
+    {
+      "url": "https://arxiv.org/list/cs.RO/new",
+      "checked_at": "2026-10-02T01:41:54.834312+00:00",
+      "path": "data/research/2026-10-02/cs_ro_new.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 682115,
+      "sha256": "28543ab3b2e5c4759ed3685cf8411168c872f98cf198fdbf045d4d9be397ae68"
+    },
+    {
+      "url": "https://api.github.com/repos/isaac-sim/IsaacLab/releases?per_page=3",
+      "checked_at": "2026-10-02T01:41:54.835387+00:00",
+      "path": "data/research/2026-10-02/isaaclab_releases.json",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 39647,
+      "sha256": "a17621bfc83ac03f7e05473f84f9cf86cb34cd34a85ddbefecd9941cf5881b3d"
+    },
+    {
+      "url": "https://api.github.com/repos/leggedrobotics/rsl_rl/releases?per_page=3",
+      "checked_at": "2026-10-02T01:41:54.836457+00:00",
+      "path": "data/research/2026-10-02/rsl_rl_releases.json",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 9428,
+      "sha256": "d3c1f675adba353b982dfaf3b4031e179855d28857ed8367124c45e507dbb3a3"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.38617",
+      "checked_at": "2026-10-02T01:42:40.073648+00:00",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "path": "data/research/2026-10-02/2609.38617_abstract.html",
+      "bytes": 41799,
+      "sha256": "c3d5cc52a17077a670a3d813e8d11bc02c24b06428306debcb93f2ccd2ccf37e"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.39000",
+      "checked_at": "2026-10-02T01:42:40.074533+00:00",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "path": "data/research/2026-10-02/2609.39000_abstract.html",
+      "bytes": 42959,
+      "sha256": "622191d9156f9b36d7a0577d5636170027c15e0b85e07a9a021325852990b505"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.39125",
+      "checked_at": "2026-10-02T01:42:40.075546+00:00",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "path": "data/research/2026-10-02/2609.39125_abstract.html",
+      "bytes": 41024,
+      "sha256": "261312ec7b78e04760eaebe221f0147f1d9492195613aec4db961873e8389871"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.39634",
+      "checked_at": "2026-10-02T01:42:40.075693+00:00",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "path": "data/research/2026-10-02/2609.39634_abstract.html",
+      "bytes": 43619,
+      "sha256": "1c798afc72c7aee74b349b8e98e1051fe00655e832dac96bca3420dcd294fa91"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.38709",
+      "checked_at": "2026-10-02T01:42:40.075759+00:00",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "path": "data/research/2026-10-02/2609.38709_abstract.html",
+      "bytes": 41367,
+      "sha256": "11b9536e0173a869e95232b0c9a57d0f99e969eff26bf659662b0e111248f0e9"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.38932",
+      "checked_at": "2026-10-02T01:42:40.078144+00:00",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "path": "data/research/2026-10-02/2609.38932_abstract.html",
+      "bytes": 42434,
+      "sha256": "aeb04379ae8b9bac7f1d37107093448febb9a4b8e38272b5eb3d540299f2f14c"
+    },
+    {
+      "url": "https://arxiv.org/html/2609.38617v1",
+      "checked_at": "2026-10-02T01:44:07.209971+00:00",
+      "path": "data/research/2026-10-02/dtmr_fulltext.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 293717,
+      "sha256": "bd216a5e3cefffdde3300e776db9d66aa99f2119fb83a93f2dd6576148b07b84"
+    },
+    {
+      "url": "https://arxiv.org/html/2609.39000v1",
+      "checked_at": "2026-10-02T01:44:07.211342+00:00",
+      "path": "data/research/2026-10-02/nexus_fulltext.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 298073,
+      "sha256": "28472d254a08f785b1091d5396f72272f8ea1f2af15b44e2ac4f364441800376"
+    },
+    {
+      "url": "https://arxiv.org/html/2609.39125v1",
+      "checked_at": "2026-10-02T01:44:07.211678+00:00",
+      "path": "data/research/2026-10-02/lbdu_fulltext.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 362146,
+      "sha256": "6f7ea9e1e095171b912039c2fca6f7e4c2c0416b8492f3532a1e299d09de2a77"
+    },
+    {
+      "url": "https://jaeryeongnicolekim.com/Dense-Temporal-Motion-Retargeting-For-Legged-Robots/",
+      "checked_at": "2026-10-02T01:44:07.213187+00:00",
+      "path": "data/research/2026-10-02/dtmr_project.html",
+      "http_status": "000",
+      "exit_code": 35,
+      "error": "curl: (35) Recv failure: Connection reset by peer"
+    },
+    {
+      "url": "https://nexus-humanoid.github.io/",
+      "checked_at": "2026-10-02T01:44:07.213477+00:00",
+      "path": "data/research/2026-10-02/nexus_project.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 10538,
+      "sha256": "b08642aa2d591b579e5289f9a0e828b578f85ffd7e6375388c3f4a28078e303d"
+    },
+    {
+      "url": "https://dotandung.github.io/crossbfm/",
+      "checked_at": "2026-10-02T01:44:07.214298+00:00",
+      "path": "data/research/2026-10-02/crossbfm_project.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 85999,
+      "sha256": "5026e91be93c8d0d71d53b96af71b95f72d044a23d6bd0acc0155a0413cc93f1"
+    },
+    {
+      "url": "https://yzliu84.github.io/T2MEM-project/",
+      "checked_at": "2026-10-02T01:44:07.215088+00:00",
+      "path": "data/research/2026-10-02/t2mem_project.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 24938,
+      "sha256": "b95e55bdc03c5d6dd69fc7d6aa667b4b5b25484d2202a3456b3ff746b5fb6aff"
+    },
+    {
+      "url": "https://arxiv.org/html/2609.32591v1",
+      "checked_at": "2026-10-02T01:47:08.173555+00:00",
+      "path": "data/research/2026-10-02/fastmpc_v1.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 1889833,
+      "sha256": "69714be40daecbfa96e8ab0e1444bc48f2c44b9935aea37890831e194dd97882"
+    },
+    {
+      "url": "https://arxiv.org/html/2609.32591v2",
+      "checked_at": "2026-10-02T01:47:08.173975+00:00",
+      "path": "data/research/2026-10-02/fastmpc_v2.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 1889833,
+      "sha256": "7dc791b59274b53fd6b0bfbad2d3f89e0807823ae261409fa298d2134a8f95fa"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.32591",
+      "checked_at": "2026-10-02T01:46:25.599198+00:00",
+      "path": "data/research/2026-10-02/2609.32591_abstract.html",
+      "http_status": "200",
+      "exit_code": 0,
+      "error": "",
+      "bytes": 40886,
+      "sha256": "96b6e0466a09503740acdff93762756d2ed13c149c6e51594cb9541c58465200"
+    }
+  ],
+  "asset_check_failures": [
+    {
+      "url": "https://jaeryeongnicolekim.com/Dense-Temporal-Motion-Retargeting-For-Legged-Robots/",
+      "attempts": 2,
+      "observed_error": "curl exit 35, connection reset by peer; code and model availability not determined."
+    }
+  ],
+  "dedup_followups": {
+    "known_project_text_comparison": [
+      {
+        "name": "crossbfm_project",
+        "text_unchanged": false,
+        "diff": "--- previous\n\n+++ current\n\n@@ -2797,7 +2797,7 @@\n\n Corresponding\n author\n BibTeX\n-@inproceedings{crossbfm2026,\n+@article{crossbfm2026,\n title\n =\n {CrossBFM:\n@@ -2842,10 +2842,11 @@\n\n Le,\n An\n Thai},\n-booktitle\n+journal\n =\n-{Under\n-Review},\n+{arXiv\n+preprint\n+arXiv:2609.38087},\n year\n =\n {2026}"
+      },
+      {
+        "name": "t2mem_project",
+        "text_unchanged": true,
+        "diff": ""
+      }
+    ],
+    "framework_releases": [
+      {
+        "source_path": "data/research/2026-10-02/isaaclab_releases.json",
+        "compared_fields": [
+          "tag_name",
+          "published_at",
+          "updated_at",
+          "body"
+        ],
+        "first_three_entries_unchanged": true,
+        "latest_tag": "v3.0.0-EA",
+        "latest_published_at": "2026-09-16T22:34:03Z"
+      },
+      {
+        "source_path": "data/research/2026-10-02/rsl_rl_releases.json",
+        "compared_fields": [
+          "tag_name",
+          "published_at",
+          "updated_at",
+          "body"
+        ],
+        "first_three_entries_unchanged": true,
+        "latest_tag": "v5.5.1",
+        "latest_published_at": "2026-09-09T11:38:40Z"
+      }
+    ],
+    "known_paper": "Fast-TD-MPC v2 text diff shows date and input notation change only; not reported as substantive news."
+  },
+  "evidence_files": [
+    {
+      "path": "data/research/2026-10-02/2609.32591_abstract.html",
+      "bytes": 40886,
+      "sha256": "96b6e0466a09503740acdff93762756d2ed13c149c6e51594cb9541c58465200"
+    },
+    {
+      "path": "data/research/2026-10-02/2609.32591_abstract.txt",
+      "bytes": 4539,
+      "sha256": "8e0175cf3c0253f26658ef8c811857d02f4131028492dda3ecd34281a5af40b6"
+    },
+    {
+      "path": "data/research/2026-10-02/2609.38617_abstract.html",
+      "bytes": 41799,
+      "sha256": "c3d5cc52a17077a670a3d813e8d11bc02c24b06428306debcb93f2ccd2ccf37e"
+    },
+    {
+      "path": "data/research/2026-10-02/2609.38617_abstract.txt",
+      "bytes": 4666,
+      "sha256": "5b87aff964d0cbfc02d73ca5633e559a06c37883150472536784ada5fdc1c871"
+    },
+    {
+      "path": "data/research/2026-10-02/2609.38709_abstract.html",
+      "bytes": 41367,
+      "sha256": "11b9536e0173a869e95232b0c9a57d0f99e969eff26bf659662b0e111248f0e9"
+    },
+    {
+      "path": "data/research/2026-10-02/2609.38709_abstract.txt",
+      "bytes": 4660,
+      "sha256": "65c28e2007bbc565ab0dc5d5605a97e58040bf3e584deeed8d2ef2a6c39b80ed"
+    },
+    {
+      "path": "data/research/2026-10-02/2609.38932_abstract.html",
+      "bytes": 42434,
+      "sha256": "aeb04379ae8b9bac7f1d37107093448febb9a4b8e38272b5eb3d540299f2f14c"
+    },
+    {
+      "path": "data/research/2026-10-02/2609.38932_abstract.txt",
+      "bytes": 4972,
+      "sha256": "e9f1e6331aa0fe4bc94a1d279ee58942f87b2896b5ca8c2886ff284855208ae1"
+    },
+    {
+      "path": "data/research/2026-10-02/2609.39000_abstract.html",
+      "bytes": 42959,
+      "sha256": "622191d9156f9b36d7a0577d5636170027c15e0b85e07a9a021325852990b505"
+    },
+    {
+      "path": "data/research/2026-10-02/2609.39000_abstract.txt",
+      "bytes": 4889,
+      "sha256": "9576f1ce4aec2ab1d10ec9e4be6fd150f49825f742e647d7b027e1f3a9a5c476"
+    },
+    {
+      "path": "data/research/2026-10-02/2609.39125_abstract.html",
+      "bytes": 41024,
+      "sha256": "261312ec7b78e04760eaebe221f0147f1d9492195613aec4db961873e8389871"
+    },
+    {
+      "path": "data/research/2026-10-02/2609.39125_abstract.txt",
+      "bytes": 4544,
+      "sha256": "e658262d62c693a0c2f418f3bdd34c7f8d1f49d9ede6e382c5264e92c15c95a0"
+    },
+    {
+      "path": "data/research/2026-10-02/2609.39634_abstract.html",
+      "bytes": 43619,
+      "sha256": "1c798afc72c7aee74b349b8e98e1051fe00655e832dac96bca3420dcd294fa91"
+    },
+    {
+      "path": "data/research/2026-10-02/2609.39634_abstract.txt",
+      "bytes": 5260,
+      "sha256": "1cc9ed118b382df6f9d2bab866bb7d0613a63c676d179f414d48d5fd47f8a3b3"
+    },
+    {
+      "path": "data/research/2026-10-02/abstract_fetches.json",
+      "bytes": 31882,
+      "sha256": "f603150d72b49d055421bc85a5311162ffb311a847ee251b259e375cfe19c951"
+    },
+    {
+      "path": "data/research/2026-10-02/candidate_feed_entries.json",
+      "bytes": 221138,
+      "sha256": "7970da3c9402796835ad2a8079c85d23bf27fa4c286a7bc7c4b86784a625815b"
+    },
+    {
+      "path": "data/research/2026-10-02/crossbfm_project.html",
+      "bytes": 85999,
+      "sha256": "5026e91be93c8d0d71d53b96af71b95f72d044a23d6bd0acc0155a0413cc93f1"
+    },
+    {
+      "path": "data/research/2026-10-02/crossbfm_project.txt",
+      "bytes": 17580,
+      "sha256": "173290a75928893d56fe616d74acbdda0ce7fbb61ece45fa32da3e0fdb4dfa58"
+    },
+    {
+      "path": "data/research/2026-10-02/crossbfm_project_normalized.diff",
+      "bytes": 294,
+      "sha256": "b30073e7fa104c12d09521638c29990e8d9c88b08474dce808c6d0e4e897bddf"
+    },
+    {
+      "path": "data/research/2026-10-02/cs_cv.xml",
+      "bytes": 769802,
+      "sha256": "23d431054daa873096b01a6954e5f39f865d5d16bc7405f954d7487c75cfe1f1"
+    },
+    {
+      "path": "data/research/2026-10-02/cs_lg.xml",
+      "bytes": 1362390,
+      "sha256": "e780a5f205add7458eeb8fc4242858cb8f62187f3520320aef59f261d467b52b"
+    },
+    {
+      "path": "data/research/2026-10-02/cs_ro.xml",
+      "bytes": 444561,
+      "sha256": "4ff01d1509019566d081d025f4c283e8d9de7a3ef2e1d98b587d90164ca6e2e7"
+    },
+    {
+      "path": "data/research/2026-10-02/cs_ro_new.html",
+      "bytes": 682115,
+      "sha256": "28543ab3b2e5c4759ed3685cf8411168c872f98cf198fdbf045d4d9be397ae68"
+    },
+    {
+      "path": "data/research/2026-10-02/detailed_fetches.json",
+      "bytes": 14036,
+      "sha256": "17b5d714362eec5af873308c4ae96069bb97ee904d79b9943f263936be803e3e"
+    },
+    {
+      "path": "data/research/2026-10-02/dtmr_fulltext.html",
+      "bytes": 293717,
+      "sha256": "bd216a5e3cefffdde3300e776db9d66aa99f2119fb83a93f2dd6576148b07b84"
+    },
+    {
+      "path": "data/research/2026-10-02/dtmr_fulltext.txt",
+      "bytes": 49266,
+      "sha256": "f18036ab0f107587f13f7ddcf5a7724bced97745a0225796933a8bdde7853ed2"
+    },
+    {
+      "path": "data/research/2026-10-02/fastmpc_v1.html",
+      "bytes": 1889833,
+      "sha256": "69714be40daecbfa96e8ab0e1444bc48f2c44b9935aea37890831e194dd97882"
+    },
+    {
+      "path": "data/research/2026-10-02/fastmpc_v1.txt",
+      "bytes": 213916,
+      "sha256": "4c33aa7cea8ce00cbbe994f7346d6b851e18688cd8aecd820d569bb526e0652c"
+    },
+    {
+      "path": "data/research/2026-10-02/fastmpc_v2.html",
+      "bytes": 1889833,
+      "sha256": "7dc791b59274b53fd6b0bfbad2d3f89e0807823ae261409fa298d2134a8f95fa"
+    },
+    {
+      "path": "data/research/2026-10-02/fastmpc_v2.txt",
+      "bytes": 213916,
+      "sha256": "4bd7d8c1811fa71219fbd8a7ff5e47770f3a1a7a36011e5860f0e26dc0db5625"
+    },
+    {
+      "path": "data/research/2026-10-02/fastmpc_version_diff.txt",
+      "bytes": 722,
+      "sha256": "304dad7b768332ea42a443e5193f2e79dd38298f04caab158f63cb86f00bbc00"
+    },
+    {
+      "path": "data/research/2026-10-02/initial_fetches.json",
+      "bytes": 2050,
+      "sha256": "b33704fc14ef8e8cbf43ef97012ae668021a70b5e7aacd2b050af5d217a60378"
+    },
+    {
+      "path": "data/research/2026-10-02/isaaclab_releases.json",
+      "bytes": 39647,
+      "sha256": "a17621bfc83ac03f7e05473f84f9cf86cb34cd34a85ddbefecd9941cf5881b3d"
+    },
+    {
+      "path": "data/research/2026-10-02/known_paper_followup.json",
+      "bytes": 834,
+      "sha256": "f2cb30f76a97985010cff97fe7b1cfe8fee998dd69dafd6b2ecfae92d054689e"
+    },
+    {
+      "path": "data/research/2026-10-02/known_project_text_comparison.json",
+      "bytes": 492,
+      "sha256": "f96895145ce097d7159fa717ae762ca0deb0f3ccc05ed990ca90136f567b29ff"
+    },
+    {
+      "path": "data/research/2026-10-02/lbdu_fulltext.html",
+      "bytes": 362146,
+      "sha256": "6f7ea9e1e095171b912039c2fca6f7e4c2c0416b8492f3532a1e299d09de2a77"
+    },
+    {
+      "path": "data/research/2026-10-02/lbdu_fulltext.txt",
+      "bytes": 77621,
+      "sha256": "09992b187593218c3fa30d36c983dc761110fb1477da0905afbb68b83b1e0eaf"
+    },
+    {
+      "path": "data/research/2026-10-02/nexus_fulltext.html",
+      "bytes": 298073,
+      "sha256": "28472d254a08f785b1091d5396f72272f8ea1f2af15b44e2ac4f364441800376"
+    },
+    {
+      "path": "data/research/2026-10-02/nexus_fulltext.txt",
+      "bytes": 74065,
+      "sha256": "95def16f5d65df175ee8e5c8fec202f83012078c342293c7693a9f1c7d038901"
+    },
+    {
+      "path": "data/research/2026-10-02/nexus_project.html",
+      "bytes": 10538,
+      "sha256": "b08642aa2d591b579e5289f9a0e828b578f85ffd7e6375388c3f4a28078e303d"
+    },
+    {
+      "path": "data/research/2026-10-02/nexus_project.txt",
+      "bytes": 479,
+      "sha256": "dea4ff5a6a645737a9c2d7e1a975c270916ca50a882378c4bbc88aa3a1a6e403"
+    },
+    {
+      "path": "data/research/2026-10-02/project_edit_base.json",
+      "bytes": 922,
+      "sha256": "f14e17c746c01a52c553e993953a0e230699bae0722591dea4a9ebb3172631ca"
+    },
+    {
+      "path": "data/research/2026-10-02/rsl_rl_releases.json",
+      "bytes": 9428,
+      "sha256": "d3c1f675adba353b982dfaf3b4031e179855d28857ed8367124c45e507dbb3a3"
+    },
+    {
+      "path": "data/research/2026-10-02/t2mem_project.html",
+      "bytes": 24938,
+      "sha256": "b95e55bdc03c5d6dd69fc7d6aa667b4b5b25484d2202a3456b3ff746b5fb6aff"
+    },
+    {
+      "path": "data/research/2026-10-02/t2mem_project.txt",
+      "bytes": 8772,
+      "sha256": "d526edad02270a66a37130f7cef0f2fbae91fec3dcaaa6650db4ace6c152d7ba"
+    },
+    {
+      "path": "data/research/2026-10-02/t2mem_project_normalized.diff",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/research/2026-10-02/version_followup_fetches.json",
+      "bytes": 673,
+      "sha256": "a2284c8748b8ae18104fee94312b1ea22edd74028847759beb1b596f6ad3968e"
+    }
+  ],
+  "replication_performed": false,
+  "new_hypothesis_added": false,
+  "prior_art_updated": [
+    "H001"
+  ],
+  "raw_data_storage": "LOCAL_ONLY: small public-source evidence caches; server copy checks recorded in publication log. No verified Baidu backup, no training data/model downloads."
+}

@@ -14,6 +14,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-02 | 学习目标与数学深度调整 | 用户明确希望训练 policy 并形成论文，不必限定底层算法；改为实践先行、数学按需，尚未训练或确认选题；见[路线说明](README_LEARNING_ROUTE_20261002.md) |
 | 2026-10-02 | 每日研究检查 | 三项新候选：动作节奏、地形感知遥操、视觉中断定位；已去重旧项目，未启动实验；见[运行 README](README_RESEARCH_CHECK_20261002.md) |
 | 2026-10-01 | 教学第一课·训练流程图 | 最新补充结构体对照：优化器改网络权重，保留经历记录；Critic 通过预测参与 Actor 的训练依据，理解待确认；见[流程图与变量记录](README_LESSON01_PIPELINE_20261001.md) |
 | 2026-10-01 | 教学第一课·阶段复习与算法路线 | 学员答对固定 Actor/只更新 Critic 的两项判断；一步回报估计出现卡点，终止情形题暂缓，转到流程图；见[复习记录](README_LESSON01_REVIEW_20261001.md) |
@@ -44,7 +45,7 @@
 
 ## 阅读顺序
 
-1. [训练工作包](训练工作包.md)：按 P0–P8 推进，近期目标是第一次完整策略训练。
+1. [最新学习安排](README_LEARNING_ROUTE_20261002.md)与[训练工作包](训练工作包.md)：实践先行、数学按需，近期目标是第一次完整策略训练。
 2. 第一课当前结合[阶段总结](README_LESSON01_SUMMARY_20260930.md)和[参数更新代码](README_LESSON01_ACTOR_CRITIC_UPDATE_20260930.md)，再按需查看小节：[控制循环](README_LESSON01_20260930.md)、[奖励与更新](README_LESSON01_REWARD_UPDATE_20260930.md)、[累计回报与 clip](README_LESSON01_RETURN_20260930.md)、[奖励设计](README_LESSON01_REWARD_DESIGN_20260930.md)、[价值网络与优势](README_LESSON01_ACTOR_CRITIC_20260930.md)、[PPO 裁剪目标](README_LESSON01_PPO_CLIP_20260930.md)；[完整参考讲义](第一课_机器人控制与PPO.md)按需阅读。
 3. [学习路线与 OKR](学习路线与OKR.md)：三平台交付与科研方向。
 4. [EgoLocate 与头环分析](EgoLocate与头环分析.md)：手部、SLAM、双目及已有融合方案。
@@ -58,4 +59,4 @@
 - [初始化结果](README_SETUP_20260929.md)
 - [每日研究跟踪规则](README_RESEARCH_WATCH.md)、[简报索引](research/README.md)、[候选研究想法](research/README_IDEAS.md)
 
-下一项工作：沿[结构体与参数对照](README_LESSON01_PIPELINE_20261001.md)确认更新写回的是哪些变量，以及 Critic 预测怎样参与 Actor 的后续学习；暂停一步 TD/终止题，整体理解仍需确认。工程侧准备独立的最短 PPO 训练/保存/重载实验。当前已完成静态盘点与小型教学更新，具体入口与缺口见 P0 核验 README，不重复从目录名开始盘点。
+下一项工作：按[最新学习安排](README_LEARNING_ROUTE_20261002.md)，以成熟 PPO 的最短训练、保存和重载为教学载体，把观测、动作、奖励、参数更新和评测对应到代码与日志。仍用[结构体与参数对照](README_LESSON01_PIPELINE_20261001.md)按需补已有卡点，不把 TD/GAE 推导或连续答题作为开始实践的门槛。P0 仍未通过，入口与缺口见既有核验 README。

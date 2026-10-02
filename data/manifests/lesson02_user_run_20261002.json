@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "experiment_id": "lesson02_my_first_run",
+  "date": "2026-10-02",
+  "timezone": "Asia/Shanghai",
+  "verified_at": "2026-10-02T13:05:58.485306+00:00",
+  "project_base_commit": "026d4f9c532c0856c66cbe5cee7533b2e76d3aa9",
+  "user_report": "用户报告已完成一轮；核验其新实验目录的配置、训练/评测完成标记与生成文件。",
+  "learning_status": "用户已按提供入口完成一次复跑；不等于已能独立设计任务、修改奖励或完整解释 PPO。",
+  "run_config": {
+    "task": "Isaac-Cartpole-Direct-v0",
+    "seed": 42,
+    "eval_seed": 10001,
+    "num_envs": 1024,
+    "iterations": 150,
+    "num_steps_per_env": 16,
+    "device": "cuda:0",
+    "asset_usd": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.1/Isaac/IsaacLab/Robots/Classic/Cartpole/cartpole.usd",
+    "script_sha256": "31856b4ed4b1644e33c55f59c23d8e3f1fe749b841e51c5e0b474f01c1b6dcca",
+    "packages": {
+      "torch": "2.8.0+cu128",
+      "rsl-rl-lib": "3.0.1",
+      "isaacsim": "5.1.0.0",
+      "isaaclab": "0.54.2",
+      "gymnasium": "1.2.1"
+    },
+    "isaaclab_commit": "37ddf626871758333d6ed89cf64ad702aef127d0"
+  },
+  "training_summary": {
+    "iterations": 150,
+    "transitions": 2457600,
+    "train_wall_seconds": 16.568774888990447,
+    "parameter_updates": {
+      "actor": {
+        "max_parameter_change": 2.073362350463867,
+        "changed_tensors": 6
+      },
+      "critic": {
+        "max_parameter_change": 1.5041615962982178,
+        "changed_tensors": 6
+      }
+    },
+    "training_seed_count": 1,
+    "phase": "teaching_baseline_not_research_validation"
+  },
+  "evaluation": {
+    "initial": {
+      "label": "initial",
+      "eval_seed": 10001,
+      "episodes": 1024,
+      "control_dt_s": 0.016666666666666666,
+      "time_limit_s": 5.0,
+      "mean_return": 9.096874237060547,
+      "mean_episode_steps": 38.6748046875,
+      "mean_survival_s": 0.644580078125,
+      "survived_time_limit_fraction": 0.0,
+      "mean_abs_pole_angle_rad_before_termination": 0.7364394664764404,
+      "initial_observations_sha256": "2918a264a626e6879aaa2691107178381d1434789bbedd3d0199db15d0a6370d",
+      "evaluation_policy": "deterministic actor mean; first episode per reset; no parameter updates"
+    },
+    "trained": {
+      "label": "trained",
+      "eval_seed": 10001,
+      "episodes": 1024,
+      "control_dt_s": 0.016666666666666666,
+      "time_limit_s": 5.0,
+      "mean_return": 296.7772216796875,
+      "mean_episode_steps": 299.0,
+      "mean_survival_s": 4.983333333333333,
+      "survived_time_limit_fraction": 1.0,
+      "mean_abs_pole_angle_rad_before_termination": 0.025415807962417603,
+      "initial_observations_sha256": "2918a264a626e6879aaa2691107178381d1434789bbedd3d0199db15d0a6370d",
+      "evaluation_policy": "deterministic actor mean; first episode per reset; no parameter updates"
+    },
+    "reloaded": {
+      "label": "reloaded",
+      "eval_seed": 10001,
+      "episodes": 1024,
+      "control_dt_s": 0.016666666666666666,
+      "time_limit_s": 5.0,
+      "mean_return": 296.7772216796875,
+      "mean_episode_steps": 299.0,
+      "mean_survival_s": 4.983333333333333,
+      "survived_time_limit_fraction": 1.0,
+      "mean_abs_pole_angle_rad_before_termination": 0.025415807962417603,
+      "initial_observations_sha256": "2918a264a626e6879aaa2691107178381d1434789bbedd3d0199db15d0a6370d",
+      "evaluation_policy": "deterministic actor mean; first episode per reset; no parameter updates"
+    }
+  },
+  "reload_verification": {
+    "separate_process": true,
+    "checkpoint": "/media/yu/FAFF-E9771/YUANQI/data/training/lesson02_my_first_run/checkpoints/final.pt",
+    "max_probe_action_error": 0.0,
+    "initial_states_match": true,
+    "mean_return_delta": 0.0,
+    "success_fraction_delta": 0.0
+  },
+  "jobs": {
+    "train": {
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "-u",
+        "/media/yu/FAFF-E9771/YUANQI/script/teaching/lesson02/cartpole_ppo.py",
+        "--headless",
+        "--device",
+        "cuda:0",
+        "--run-dir",
+        "/media/yu/FAFF-E9771/YUANQI/data/training/lesson02_my_first_run",
+        "--log-dir",
+        "/media/yu/FAFF-E9771/YUANQI/logs/lesson02_my_first_run/tensorboard",
+        "--num-envs",
+        "1024",
+        "--iterations",
+        "150",
+        "--seed",
+        "42",
+        "--eval-seed",
+        "10001",
+        "--mode",
+        "train",
+        "--kit_args=--/log/file=/media/yu/FAFF-E9771/YUANQI/logs/lesson02_my_first_run/kit_train.log"
+      ],
+      "cwd": "/media/yu/FAFF-E9771/YUANQI",
+      "status": "PASSED",
+      "started_at": "2026-10-02T12:59:46.417370+00:00",
+      "pid": 1363286,
+      "returncode": 0,
+      "expected_marker_found": true,
+      "finished_at": "2026-10-02T13:00:12.277604+00:00"
+    },
+    "evaluate": {
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "-u",
+        "/media/yu/FAFF-E9771/YUANQI/script/teaching/lesson02/cartpole_ppo.py",
+        "--headless",
+        "--device",
+        "cuda:0",
+        "--run-dir",
+        "/media/yu/FAFF-E9771/YUANQI/data/training/lesson02_my_first_run",
+        "--log-dir",
+        "/media/yu/FAFF-E9771/YUANQI/logs/lesson02_my_first_run/tensorboard",
+        "--num-envs",
+        "1024",
+        "--iterations",
+        "150",
+        "--seed",
+        "42",
+        "--eval-seed",
+        "10001",
+        "--mode",
+        "evaluate",
+        "--kit_args=--/log/file=/media/yu/FAFF-E9771/YUANQI/logs/lesson02_my_first_run/kit_evaluate.log",
+        "--checkpoint",
+        "/media/yu/FAFF-E9771/YUANQI/data/training/lesson02_my_first_run/checkpoints/final.pt"
+      ],
+      "cwd": "/media/yu/FAFF-E9771/YUANQI",
+      "status": "PASSED",
+      "started_at": "2026-10-02T13:00:12.277931+00:00",
+      "pid": 1363527,
+      "returncode": 0,
+      "expected_marker_found": true,
+      "finished_at": "2026-10-02T13:00:19.706411+00:00"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "data/training/lesson02_my_first_run/agent.yaml",
+      "bytes": 974,
+      "sha256": "3ef1cfa0c5780268c957ff389eead083514b816abc9d12f6989c39d5280ba151"
+    },
+    {
+      "path": "data/training/lesson02_my_first_run/checkpoints/final.pt",
+      "bytes": 44051,
+      "sha256": "c2d9a452c8042170dc44bef96102c9890480a07600b7b016e4b52cfe41925334"
+    },
+    {
+      "path": "data/training/lesson02_my_first_run/checkpoints/initial.pt",
+      "bytes": 15228,
+      "sha256": "3d20500323a55c6aea762db3379bb525e037f5266cda0709aa4f899c18eeee4c"
+    },
+    {
+      "path": "data/training/lesson02_my_first_run/checkpoints/model_0.pt",
+      "bytes": 45575,
+      "sha256": "c2f9c690276eb49079aa5b8291206a2d7511593b17b7f82c8ab37981dee54257"
+    },
+    {
+      "path": "data/training/lesson02_my_first_run/checkpoints/model_100.pt",
+      "bytes": 46139,
+      "sha256": "92162aad15e2591e73d437651f327930944c49efd135a9f045cf6815046347f1"
+    },
+    {
+      "path": "data/training/lesson02_my_first_run/checkpoints/model_149.pt",
+      "bytes": 46139,
+      "sha256": "b68081d78b90b26bf8bcc6a30853b37db62c863f00fcf8c1ca44567df70167a7"
+    },
+    {
+      "path": "data/training/lesson02_my_first_run/checkpoints/model_50.pt",
+      "bytes": 46081,
+      "sha256": "addd7ca12de272289e9536d3ceb4054440cba82bf39a4746991da03e5552c1b1"
+    },
+    {
+      "path": "data/training/lesson02_my_first_run/environment.yaml",
+      "bytes": 5834,
+      "sha256": "f9c8ece88788195c71cc00be38381d49cc662ebca58015a50448c643237266b2"
+    },
+    {
+      "path": "data/training/lesson02_my_first_run/evaluation_initial.json",
+      "bytes": 49697,
+      "sha256": "786f29138e589a97257db6917a071d22b111525d29c87ef3edf989d521180bda"
+    },
+    {
+      "path": "data/training/lesson02_my_first_run/evaluation_reloaded.json",
+      "bytes": 115733,
+      "sha256": "235e583fea5f9b38c0ddfc9156bb4ae8729a3be74daf5380b3516197b6556540"
+    },
+    {
+      "path": "data/training/lesson02_my_first_run/evaluation_trained.json",
+      "bytes": 115732,
+      "sha256": "5ff923fd7f33c7b6d3b6a9a080427a4cc66d52acda486ffa64201750832e4154"
+    },
+    {
+      "path": "data/training/lesson02_my_first_run/policy_probes.pt",
+      "bytes": 22421,
+      "sha256": "28ebb5b2f42bb8ba47862aa141a567b0821cdbebcc811e352a5e4b4a958bc720"
+    },
+    {
+      "path": "data/training/lesson02_my_first_run/reload_verification.json",
+      "bytes": 261,
+      "sha256": "2840f0338a21001e2926dc9da3c60dfac02c044b9203753b2c8394c68bbcbb8e"
+    },
+    {
+      "path": "data/training/lesson02_my_first_run/run_config.json",
+      "bytes": 624,
+      "sha256": "56d24e7eccec2c1447b3241e76308aa11013915bf965aefe9f8d85ad52a1b850"
+    },
+    {
+      "path": "data/training/lesson02_my_first_run/training_summary.json",
+      "bytes": 405,
+      "sha256": "ca9782ba0ec229c14f4eb884d4566af7d4920f9b173ce7c8c6253366b82f633d"
+    },
+    {
+      "path": "logs/lesson02_my_first_run/driver_source.py",
+      "bytes": 11447,
+      "sha256": "31856b4ed4b1644e33c55f59c23d8e3f1fe749b841e51c5e0b474f01c1b6dcca"
+    },
+    {
+      "path": "logs/lesson02_my_first_run/evaluate.log",
+      "bytes": 7059,
+      "sha256": "cff99cc1ef6023e1a649d7c6ca82e842c9f83cf6d4b244fabb06c3b56db1fd92"
+    },
+    {
+      "path": "logs/lesson02_my_first_run/job_evaluate.json",
+      "bytes": 993,
+      "sha256": "75e8872ad24e9e4925c37828fdbd8d3e68e107c57fe50b23c14be69f23f70bea"
+    },
+    {
+      "path": "logs/lesson02_my_first_run/job_train.json",
+      "bytes": 875,
+      "sha256": "315dcac9ae69fbcbfa06805016ba102e59a7856d893133d4152196f5496eff76"
+    },
+    {
+      "path": "logs/lesson02_my_first_run/kit_evaluate.log",
+      "bytes": 387997,
+      "sha256": "9d987d5abae693ce03d49fd926e3aecceef0bb774bd95441cf665475b25e8c4b"
+    },
+    {
+      "path": "logs/lesson02_my_first_run/kit_train.log",
+      "bytes": 387905,
+      "sha256": "2e7c849c0edb5d87578f2dc9e695d92c6ea3abfa24d7492451451993a0a09a50"
+    },
+    {
+      "path": "logs/lesson02_my_first_run/tensorboard/events.out.tfevents.1790945994.yu-MS-7D31.1363286.0",
+      "bytes": 103156,
+      "sha256": "3eb10abe8393fccb602bd7019d987d8891d30814b0ad63acf8620bfcbd67613c"
+    },
+    {
+      "path": "logs/lesson02_my_first_run/train.log",
+      "bytes": 122811,
+      "sha256": "9a6db6f01d68986b37831cd2db6abdd3f2921a82c7b8226ed64fc2a876cdbf02"
+    }
+  ],
+  "source_location": {
+    "path": "/home/yu/projects/IsaacLab/source/isaaclab_tasks/isaaclab_tasks/direct/cartpole/cartpole_env.py",
+    "sha256": "b1e7c79ba0dc6c6ab4c6875b278a3459e660b84849a62d03790dc6828644aef8"
+  },
+  "backup_status": "LOCAL_ONLY",
+  "baidu_verified": false,
+  "same_training_seed_as_agent_baseline": true,
+  "scope": "Introductory Cartpole repeat run; not an additional independent training seed or X2 result."
+}

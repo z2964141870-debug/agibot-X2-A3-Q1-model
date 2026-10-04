@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-02。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
+更新：2026-10-04。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
 
 ## 用户目标与固定约定
 
@@ -20,7 +20,7 @@
 4. 17 份参考节选已同步到项目 `data/references/` 并核验 SHA-256；原始附件仍在 Mac，未复制全部 ZIP。见[清单](../data/manifests/reference_excerpts_20260929.json)。
 5. 已加入工件登记、Git 暂存检查和只读环境盘点脚本；见 [script README](../script/README.md)。
 6. 本轮把重要阶段落盘要求写入项目规则，建立当前状态和阶段模板。见[记录规范阶段 README](README_RECORDING_POLICY_20260929.md)。
-7. 每日研究检查 `yuanqi` 已验证 9/30 首次触发；最新 10/2 北京时间 09:40:10 触发并完成来源检查。当前可见公告为 10/1，简报包含 DTMR 动作节奏重定向、NEXUS 地形遥操、LBDU-VIO 视觉中断定位；DTMR 项目入口访问失败，三项均未复现。旧项目去重、H001 先行工作已更新，没有新假设或训练。见[最新简报](research/2026-10-02/README.md)与[运行记录](README_RESEARCH_CHECK_20261002.md)。
+7. 每日研究检查最新为 10/4 北京时间 11:07:15 触发，接续 10/3 中断；SSH 已恢复，当前可见公告为 10/2。简报包含 DexPolicy 探索幅度、HumanVerse-500/SONIC 人体数据和 FlashDexRetarget 手部重定向；静态核验 DexPolicy 核心调度源码，均未复现。未新增假设或训练。见[最新简报](research/2026-10-04/README.md)与[运行记录](README_RESEARCH_CHECK_20261004.md)。
 8. 10/2 Agent 基线后，用户已按说明完成 `lesson02_my_first_run`；新目录、训练与重载完成标记及 23 个产物已核验。1024 并行环境、150 次采集/更新循环，平均维持 0.6446→4.9833 秒，达到时限比例 0→100%，重载动作探针误差 0。两次使用相同种子，不算多种子结果；操作已完成，代码理解与自主设计仍待确认。见[第二课跟进](README_LESSON02_CARTPOLE_20261002.md)及[复跑清单](../data/manifests/lesson02_user_run_20261002.json)。
 9. 基础 Isaac Lab 仿真及 RSL-RL 训练/保存/重载已通过；人形 X2 的 P0 未完成。原有训练 sandbox 的资产路径/配置与未提交改动仍待处理，见[静态核验](README_P0_INSPECTION_20260930.md)；本轮未修改该工程。
 10. 已讲解单步倾斜惩罚，入口新增 `--pole-angle-weight`（默认 1），准备权重 3 的单变量对照；参数与 CPU 数值检查通过，未启动新训练/重载。新版驱动增加权重记录与重载核对，旧实验精确重载继续用保存的驱动快照。见[奖励项与对照准备](README_LESSON02_REWARD_20261002.md)。
@@ -40,7 +40,7 @@
 
 训练环境候选：`/home/yu/miniconda3/envs/x2-sonic-isaaclab`；框架：`/home/yu/projects/IsaacLab`（`/home/yu/IsaacLab` 是同一位置）。X2 训练候选的准确路径、提交与缺口见核验报告。新代码/配置与产物遵守 YUANQI 四目录约定。
 
-Agent 基线与用户复跑的训练/重载进程均已结束；本次准备对照入口、执行 CPU 奖励数值检查，未启动新的仿真或训练。核验时 GPU 无计算进程。最近已完成训练仍为 `lesson02_my_first_run`，模型/评测与终端记录分别在其 `data/training/`、`logs/` 目录；基线 E002 保留，备份状态均为 `LOCAL_ONLY`。下一次执行前仍核实 GPU 与 Git 当前状态。
+10/2 教学阶段核验时，Agent 基线与用户复跑的训练/重载均已结束，GPU 无计算进程；随后只准备对照入口与 CPU 奖励数值检查。10/4 研究检查未重新核验训练/GPU 状态，也未启动仿真或训练。最近已核验完成的训练为 `lesson02_my_first_run`，模型/评测与终端记录分别在其 `data/training/`、`logs/` 目录；基线 E002 保留，备份状态均为 `LOCAL_ONLY`。下一次执行前核实 GPU、实际新产物与 Git 当前状态。
 
 ## 恢复时的最小检查
 

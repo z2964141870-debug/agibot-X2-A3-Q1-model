@@ -86,3 +86,13 @@ CrossBFM 仅 BibTeX 更新，T²Mem 代码仍待发布；不据此变更候选�
 HumanVerse-500 正文已使用时间戳/坐标变换对齐与手部有效性掩码；因此“加同步”“遮挡时屏蔽无效手数据”本身不能作为 H001 新颖性。H001 仍需先与既有 EgoLocate GRU、新鲜度门控和 FGP fallback 比较，再完成异步状态估计/记忆相关查新。没有确认新算法贡献。
 
 HumanoidTTT（9/18 UTC 首次提交）与 DITTO-X 仅原摘要/历史筛选，分别涉及已验证动作的条件复用和带力反馈的手部接管；尚未做完整正文与实现检查，保留背景，不由有限搜索推断创新空白。
+
+### 2026-10-08 指定论文补充：PredActor 与 H001 的引导切口
+
+[PredActor 专题](../README_PREDACTOR_20261008.md)核验了 v3 方法/实验与公开仓库提交 `147a25f6f9bdefca32449764a5b74783a4473608` 的 README、MIT 许可证、资产清单和部分源码。模型联合生成未来状态与控制动作，内部状态可接受目标引导；代码已含身体权重、激活强度和 G1 腕部位置增量引导。因此“给腕部加权”“接入头环”“预测后引导”本身不能直接当作创新。
+
+H001 继续保留一个待验证切口：衣服与头环观测迟到/遮挡时，根据观测年龄和可靠性调节腕部引导，减少旧目标导致的跟踪错误与失稳。先完成 Q1 无支撑低幅跟踪基线，再以同一控制器、同一数据和预算比较固定强度、简单时间补偿/超时渐弱与候选规则；消融年龄、可靠性和恢复渐变。测手腕与身体误差、接触/跌倒、恢复突跳、P95 和超时；不优于朴素基线或只在合成延迟有效则否定复杂方案。具体实验边界见专题 README。
+
+这是 H001 的方法候选，未新增已确立创新。PredActor D.3 已提及 constrained/adaptive guidance；其相关工作覆盖 Diffuse-CLoC、SCDP、Streaming Diffusion Policy 与 DAgger。项目此前 GAE 延迟条件与 EgoLocate GRU/新鲜度门控仍是先例。本次没有独立复核上述所有论文或完成 confidence-weighted guidance、delay-aware teleoperation、out-of-sequence measurement 等系统查新。
+
+当前正式发行包仅面向 G1 MuJoCo 评测；完整训练、采集、DAgger 和真机部署待发布。作者清单声明 PDP051/MotionCLIP 权重，本次 Hugging Face 访问失败，未下载或复现。Q1 仍需自己的老师与训练数据，22DOF 不能直接使用 G1 29DOF 权重；近期训练主线保持不变。

@@ -46,3 +46,18 @@ $ ls -lha data/references/q1/archives (server, last observed)
 
 $ compile both script/q1 Python files
 Python syntax OK: ['script/q1/inspect_resources.py', 'script/q1/check_mujoco_assets.py']
+
+$ git diff --cached --check
+(exit 0, no output)
+
+$ python3 script/project_tools/audit_git_payload.py (Q1 server checkout)
+PASS: 8 staged files, 50731 bytes; size limit 10 MiB/file
+Pattern checks are limited; manually review logs and diff before publishing.
+
+$ ls -lh data/references/q1/archives (server, later observation)
+-rw-r--r-- 1 yu yu 1.6M Jan  1  1970 docker_x86_cross_arm-v1.0.0.zip
+-rw-r--r-- 1 yu yu 3.8M Oct  8 13:58 q1_v3.zip
+-rw-r--r-- 1 yu yu 2.3M Oct  8 13:39 sdk_q1-v1.0.0.0.zip
+
+$ rsync shared SSH connection (later attempt)
+mux_client_request_session: read from master failed: Broken pipe

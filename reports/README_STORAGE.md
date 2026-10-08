@@ -11,6 +11,8 @@
 
 Git 远端固定为 `git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。不把模型塞进普通 Git 历史，也不默认改用 Git LFS 代替用户指定的网盘。
 
+Q1 专用工作副本为 hp3090 的 `/media/yu/FAFF-E977/YuanQi_Q1`，使用 `Q1` 分支并跟踪 `origin/Q1`。这是用户于 2026-10-08 指定的分支；Q1 代码、配置、报告、审核后的小日志与工件清单均在该分支保存。既有 `main` 历史保留，后续 Q1 更新显式推送 `Q1`，详见[分支建立与核验记录](README_Q1_VERSIONING_20261008.md)。
+
 ## 一次训练需要保存什么
 
 - 数据和模型：`data/<用途>/<experiment_id>/`。
@@ -25,6 +27,23 @@ Git 远端固定为 `git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`
 2. 查看 `git status` 和 diff，只暂存本阶段需要的文件。
 3. 运行 `python3 script/project_tools/audit_git_payload.py`。默认检查单文件不超过 10 MiB，并拒绝模型/归档格式与明显凭证；这是项目记录仓库的初始限额，特殊情况应说明用途后调整。
 4. 提交并推送，核对本地 HEAD 与远端分支一致。
+
+Q1 每次保存使用以下检查；仅在当前分支确认为 `Q1` 且暂存区审查通过后执行提交与推送：
+
+```bash
+ssh hp3090
+cd /media/yu/FAFF-E977/YuanQi_Q1
+git branch --show-current
+git status --short --branch
+git diff --cached --check
+python3 script/project_tools/audit_git_payload.py
+git commit -m "docs: record Q1 stage results"
+git push origin Q1
+git rev-parse HEAD
+git ls-remote origin refs/heads/Q1
+```
+
+最后两条命令的完整提交号须一致；推送退出码为零也不能代替远端核验。只用显式文件路径暂存本阶段修改，避免混入待同步的其他阶段记录。
 
 自动检查不能替代人工查看日志。禁止在仓库写入登录 Cookie、BDUSS/STOKEN、token、密码、SSH 私钥或本地认证配置。
 

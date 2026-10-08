@@ -29,6 +29,7 @@
 ## GitHub
 
 - 用户指定的远端是 `git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。
+- 2026-10-08 用户明确指定 Q1 重要文件上传到大小写准确的 `Q1` 分支。Q1 工作副本 `/media/yu/FAFF-E977/YuanQi_Q1` 使用并跟踪 `origin/Q1`；每阶段先核对当前分支，显式 `git push origin Q1`，再比对本地 HEAD 与 `refs/heads/Q1`。详细记录见 `reports/README_Q1_VERSIONING_20261008.md`。
 - 关键代码、计划、结论、小型执行记录和工件清单保存到该仓库。
 - 每个完成阶段更新报告，检查 diff 与暂存区，运行 `script/project_tools/audit_git_payload.py`，再提交和推送已授权的项目记录。
 - 不强推，不覆盖无关修改，不提交密码、令牌、SSH 私钥、登录态或百度网盘凭证。

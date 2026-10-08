@@ -1,0 +1,43 @@
+Selected executed version-control outputs, 2026-10-08 Asia/Shanghai.
+Project: hp3090:/media/yu/FAFF-E977/YuanQi_Q1
+No training or robot control was started during this stage.
+
+$ git log -1 --format="%H %s"
+d0868987862307a122d193cf537b5b940e3663a5 docs: assess Q1 SMPL full-body control interfaces and assets
+
+$ git ls-remote --heads origin (before branch creation)
+d0868987862307a122d193cf537b5b940e3663a5 refs/heads/main
+
+$ git diff --cached --check (version-management changes)
+(exit 0, no output)
+
+$ python3 script/project_tools/audit_git_payload.py (initial audit, before adding this evidence)
+PASS: 8 staged files, 54192 bytes; size limit 10 MiB/file
+Pattern checks are limited; manually review logs and diff before publishing.
+
+The same staged checks are required again after adding this record.
+
+$ git fetch origin
+From github.com:z2964141870-debug/agibot-X2-A3-Q1-model
+   a82be9b..d086898  main -> origin/main
+
+$ git switch -c Q1
+Switched to a new branch 'Q1'
+
+$ git push -u origin Q1
+To github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git
+ * [new branch] Q1 -> Q1
+Branch 'Q1' set up to track remote branch 'Q1' from 'origin'.
+
+$ git rev-parse HEAD
+d0868987862307a122d193cf537b5b940e3663a5
+
+$ git ls-remote origin refs/heads/Q1
+d0868987862307a122d193cf537b5b940e3663a5 refs/heads/Q1
+
+$ git status --short --branch
+## Q1...origin/Q1
+
+$ git ls-remote --heads https://github.com/z2964141870-debug/agibot-X2-A3-Q1-model.git (Mac HTTPS independent verification)
+d0868987862307a122d193cf537b5b940e3663a5 refs/heads/Q1
+d0868987862307a122d193cf537b5b940e3663a5 refs/heads/main

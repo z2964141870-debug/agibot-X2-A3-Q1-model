@@ -1,0 +1,42 @@
+2026-10-08 Q1-P3 real cloth -> FGP -> SMPL input testing
+Host: hp3090
+Project: /media/yu/FAFF-E977/YuanQi_Q1
+Branch: Q1
+Runtime base commit: 38a7805086203f54f7b9a1b12653d3ecc6d89285
+Scope: TEST_ONLY; training_allowed=false; no training or hardware control
+
+Original JSONL: 1969 + 1923 = 3892 valid frames; zero invalid body records
+Full originals remain on Mac. Body-only bundles include all valid frames.
+Both server bundle byte counts and SHA-256 match extraction manifests.
+Initial stalled transfer terminated; verified prefixes resumed with SFTP reput.
+
+Initial input checks: 4 passed, 2 failed (zero-adjacent float tolerance).
+Largest discrepancy: 2.22044605e-16. Test atol changed to 1e-12.
+Final input checks: 6 passed in 0.018 s; converter code unchanged.
+
+E001: q1_mocap_20261008_E001; 3751 frames; 75.00 s
+Body position residual P95/max: 0.0371873265 / 0.0689507818 m
+Body orientation residual P95/max: 0.3660127511 / 0.5306369706 rad
+Reference joint-limit violations: 0; speed max: 1.999998 rad/s
+Supported replay max per-joint RMSE: 0.0097418895 rad
+Torque saturation fraction: 0
+Summary SHA-256: c67f1cd680effb143bdc25cd1ba73e8198434d7720e611211138bdefa9d299b0
+
+E002: q1_mocap_20261008_E002; 3755 frames; 75.08 s
+Body position residual P95/max: 0.0650648117 / 0.1199702363 m
+Body orientation residual P95/max: 0.6077703192 / 0.8651319059 rad
+Reference joint-limit violations: 0; speed max: 1.999998 rad/s
+Supported replay max per-joint RMSE: 0.0275671655 rad
+Torque saturation fraction: 3.0270741512e-6
+Summary SHA-256: e413a143c511d0f245c34c37291dfa67f93e336314244c860f99b7ea939f9562
+
+Both trans arrays are zero. Root-relative foot changes do not prove locomotion.
+First-frame relative calibration is diagnostic; no paired standing calibration.
+E001 recorded first-frame knee turns: left 103.72 deg, right 115.12 deg.
+E002 recorded first-frame knee turns: left 9.59 deg, right 16.46 deg.
+E001 source bent-leg first pose maps to Q1 neutral: absolute pose discrepancy.
+Source ground-truth video, hardware axes and foot contacts have not been verified.
+Kinematic visuals are not the supported replay and do not show dynamic balance.
+Generated trajectories/images remain on hp3090. Backup status: LOCAL_ONLY.
+Both full validation jobs exited 0; no stage simulation/training job left running.
+See reports/README_Q1_MOCAP_TEST_20261008.md and result manifests for evidence.

@@ -1,0 +1,48 @@
+Selected terminal outputs, 2026-10-08 Asia/Shanghai.
+Only executed checks are represented; full source asset details remain in data/inspection.
+
+$ ssh hp3090 hostname
+yu-MS-7D31
+
+$ df -h /media/yu/FAFF-E977/YuanQi_Q1
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme1n1p1  916G  326G  591G  36% /media/yu/FAFF-E9771
+
+$ ls -ld /media/yu/FAFF-E977
+lrwxrwxrwx 1 root root 20 Sep 12 23:27 /media/yu/FAFF-E977 -> /media/yu/FAFF-E9771
+
+$ git -C /media/yu/FAFF-E977/YuanQi_Q1 rev-parse HEAD
+a82be9bb25450be6f432fb24d7b8f70e24df1d6e
+
+$ nvidia-smi --query-gpu=name,memory.total,memory.used --format=csv,noheader
+NVIDIA GeForce RTX 3090, 24576 MiB, 38 MiB
+
+$ python3 script/q1/inspect_resources.py --source /Users/yu/Documents/ChatGPT/Q1 --output data/inspection/q1_static_20261008.json
+q1_v3/urdf/q1_v3.urdf: joints=22, mass=16.917298, missing_meshes=0
+q1_v3/urdf/q1_v3_no_collision.urdf: joints=22, mass=16.917298, missing_meshes=0
+q1_v3/urdf/q1_v3_with_points.urdf: joints=22, mass=16.997298, missing_meshes=0
+q1_v3/xml/q1_v3.xml: joints=22, mass=16.917288, missing_meshes=0
+q1_v3/xml/q1_v3_full_range.xml: joints=22, mass=16.917288, missing_meshes=0
+q1_v3/xml/q1_v3_mc.xml: joints=22, mass=16.917288, missing_meshes=0
+Static report: data/inspection/q1_static_20261008.json
+
+$ importlib.util.find_spec in existing x2-sonic-isaaclab Python
+{'mujoco': True, 'torch': True, 'smplx': True, 'rclpy': False}
+
+$ ssh (failed retries)
+Connection timed out during banner exchange
+Connection to 100.70.125.121 port 22 timed out
+
+$ scp (IPv6 retry)
+Timeout, server fd7a:115c:a1e0::1038:7d7a not responding.
+lost connection
+
+$ rsync --partial --checksum --timeout=45 --bwlimit=256 (interrupted)
+rsync(6189): error: poll: timeout
+
+$ ls -lha data/references/q1/archives (server, last observed)
+-rw------- 1 yu yu 1.0M Oct  8 13:47 .docker_x86_cross_arm-v1.0.0.zip.RxAtcp
+-rw-r--r-- 1 yu yu 2.3M Oct  8 13:39 sdk_q1-v1.0.0.0.zip
+
+$ compile both script/q1 Python files
+Python syntax OK: ['script/q1/inspect_resources.py', 'script/q1/check_mujoco_assets.py']

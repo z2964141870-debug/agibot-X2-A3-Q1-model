@@ -1,0 +1,108 @@
+{
+  "stage": "Q1-P4",
+  "date": "2026-10-08",
+  "status": "WALK_FGP_E003_COMPLETE_Q1_E003_INTERRUPTED_BY_REBOOT",
+  "usage": "TEST_ONLY",
+  "training_allowed": false,
+  "archive": {
+    "mac_path": "/Users/yu/Human+/data/train_released.zip",
+    "server_path": "/media/yu/FAFF-E9771/data/fgp/CLOTHO_train_data/train_released.zip",
+    "bytes": 1896104195,
+    "sha256": "8015e969dc2ef9629e3a4e02d16d2846449d7db2ebd2eb94ca063c814358f952",
+    "mac_server_identity": "SIZE_AND_SHA256_MATCH",
+    "sequences": 206,
+    "entries": 1639,
+    "uncompressed_bytes": 3145544185,
+    "new_large_transfer": false,
+    "extracted_on_mac": false
+  },
+  "input_contract": {
+    "acc": "[T,11,3,1]",
+    "rot": "[T,11,3,3]",
+    "retained_channels": [0, 1, 2, 3, 4, 6, 7, 8, 9, 10],
+    "fps": 30,
+    "timing_source": "PUBLISHED_ALIGNED_TENSOR_CONTRACT_NOT_MEASURED_TEXT_TIMESTAMPS",
+    "supplied_pose_joint_used_for_inference": false,
+    "label_comparison_independent": false
+  },
+  "pipeline": {
+    "fgp_root": "/home/yu/projects/x2-teleop/FGP-main",
+    "velocity_root": "/home/yu/projects/fgp/scripts/clotho_velocity",
+    "python": "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+    "imports_verified": true,
+    "velocity_checkpoint": "/media/yu/FAFF-E9771/data/fgp/velocity_checkpoints/clotho_v2_displacement/last.pt",
+    "root_translation_kind": "EXISTING_LEARNED_VELOCITY_HEAD_NOT_MEASURED_WORLD_TRAJECTORY",
+    "canonicalizer_warmup_frames": 29,
+    "velocity_warmup_frames": 30,
+    "infer_script_sha256": "ff93a6783f29b2012915c9959e34d5d2e47164c3617d24d1ec235a36bda9e4c7",
+    "input_adapter_sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da",
+    "uploaded_with_scp_exit_0": true,
+    "server_code_sha256_reverification_pending": false
+  },
+  "experiments": [
+    {
+      "id": "q1_cloth_fgp_20261008_E001",
+      "sequence": "G_0113_zj_train/183926_zj_walk",
+      "status": "NO_LOG_OR_OUTPUT_FOUND_AFTER_REBOOT_AT_2021",
+      "launch_pid_historical": 2944,
+      "no_prior_log_output_or_process_at_1956_recovery": true,
+      "latest_popen_pid_historical": 2838,
+      "log": "logs/q1_cloth_fgp_20261008_E001.log",
+      "output": "data/experiments/q1_cloth_fgp_20261008_E001",
+      "q1_replay_started": false
+    },
+    {
+      "id": "q1_cloth_fgp_20261008_E003",
+      "sequence": "G_0113_zj_train/183926_zj_walk",
+      "status": "COMPLETED_TEST_ONLY",
+      "frames_input": 1825,
+      "frames_exported": 1766,
+      "device": "cpu",
+      "wall_s": 78.72351181800002,
+      "summary": "data/manifests/q1_cloth_fgp_20261008_E003_summary.json",
+      "log": "logs/q1_cloth_pipeline_20261008_R001_fgp_E003.log",
+      "output": "data/experiments/q1_cloth_fgp_20261008_E003",
+      "q1_evaluation": "q1_cloth_q1_20261008_E003",
+      "q1_status": "INTERRUPTED_NO_SUMMARY_KINEMATIC_TRACE_ZERO_BYTES",
+      "q1_retry": "q1_cloth_q1_20261008_E005"
+    },
+    {
+      "id": "q1_cloth_fgp_20261008_E004",
+      "sequence": "G_0109_yy_train/193310_yy_oneLegStand",
+      "status": "NOT_STARTED",
+      "q1_evaluation_planned": "q1_cloth_q1_20261008_E006"
+    },
+    {
+      "id": "q1_cloth_fgp_20261008_E002",
+      "sequence": "G_0109_yy_train/193310_yy_oneLegStand",
+      "status": "NOT_STARTED",
+      "q1_replay_started": false
+    }
+  ],
+  "verification": {
+    "mac_py_compile": "PASS",
+    "server_input_tests": "PASS_6_OF_6_LOG_READ",
+    "fgp_conversion_passed": true,
+    "q1_ik_passed": null,
+    "supported_replay_passed": null,
+    "dynamic_balance_verified": false,
+    "training_started": false,
+    "hardware_control": false
+  },
+  "server_rechecked_cst": "2026-10-08 20:35",
+  "server_source_hashes_reverified_after_reboot": true,
+  "batch_driver": {
+    "path": "script/q1/run_clotho_tests.py",
+    "syntax_check": "PASS",
+    "uploaded_to_server": true,
+    "executed": true,
+    "run_id": "q1_cloth_pipeline_20261008_R001",
+    "status": "INTERRUPTED_BY_REBOOT_STALE_RUNNING_IN_ORIGINAL_SUMMARY",
+    "process_absent_at_recovery": true
+  },
+  "remote_Q1_sha_verified_via_https": "b0c1fabe5cc915531bb6862dd92ec62d12e1cc49",
+  "github_stage_synced": false,
+  "baidu_backup_status": "LOCAL_ONLY",
+  "slow_large_transfer_policy": "STOP_AND_LIST_FILES_FOR_USER_THIRD_PARTY_TRANSFER",
+  "new_user_transfer_required": false
+}

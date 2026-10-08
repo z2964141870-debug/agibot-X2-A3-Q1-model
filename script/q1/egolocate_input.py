@@ -88,9 +88,11 @@ def convert_bundle(path, names, hz=50):
     target_times, target_positions, target_quaternions = resample(times, positions[:, ids], orientations[:, ids], hz)
     source = BodyReference(target_times, names, target_positions, target_quaternions,
                            target_positions[0], target_quaternions[0], names,
-                           "TEST_ONLY_REAL_CLOTH_FGP_SMPL_FIRST_FRAME_RELATIVE_CALIBRATION")
+                           inspection.get("reference_source_kind",
+                                          "TEST_ONLY_REAL_CLOTH_FGP_SMPL_FIRST_FRAME_RELATIVE_CALIBRATION"))
     details = {
         "usage": "TEST_ONLY", "training_allowed": False, "source_raw_sha256": source_sha,
+        "source_kind": source.source_kind,
         "source_bundle_sha256": actual_sha, "raw_frames": len(times),
         "source_duration_s": float(times[-1] - times[0]),
         "source_average_hz": float((len(times) - 1) / (times[-1] - times[0])),

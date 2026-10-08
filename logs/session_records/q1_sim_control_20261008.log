@@ -1,0 +1,25 @@
+2026-10-08 Q1 simulation adapter verification
+Host: hp3090
+Project: /media/yu/FAFF-E977/YuanQi_Q1
+Branch: Q1
+Base commit: 61d2c68cfe0514c934aca17a2a39181005bb7705
+Python: /home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python
+MuJoCo: 3.3.7
+
+test_q1_sim.py -v: exit 0, 9 tests passed (1.504s).
+validate_control.py --output-dir data/experiments/q1_sim_20261008_E001 --render: exit 0.
+validate_control.py --output-dir data/experiments/q1_sim_20261008_E002 --render: exit 0.
+Supported: 24 seconds, 1200 control frames, all 22 joint pulses detected.
+Max per-joint RMSE: 0.007158815159979959 rad.
+Max absolute error: 0.028779149469367563 rad.
+Supported torque saturation fraction: 0.
+Free base static PD: no fall in 5 seconds.
+Pelvis height: 0.419 -> 0.41939140784748763 m.
+Final tilt: 0.05008465284657928 degrees; saturation fraction 0.
+E001 and E002 have identical physical results.
+E001 image has a cropped supported head; E002 camera fix verified visually.
+E001 NEGATIVE_CONTROL label corrected to STATIC_BASELINE in source and E002.
+E002 summary records execution-time source hashes.
+Artifact manifests generated with register_artifact.py for each summary.json.
+No SMPL device input, locomotion policy, training or hardware control verified.
+Artifacts LOCAL_ONLY; no cloud backup claimed.

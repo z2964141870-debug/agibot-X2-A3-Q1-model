@@ -1,0 +1,26 @@
+2026-10-08 Q1 calibrated skeleton retargeting
+Host/project: hp3090 /media/yu/FAFF-E977/YuanQi_Q1
+Branch/base: Q1 / 453e6ca47f0090ba5e65a6135b31ec48cdbe30fe
+Environment: x2-sonic-isaaclab, Python 3.11, MuJoCo 3.3.7.
+Mink 1.2.0, qpsolvers 4.12.0, daqp 0.7.2, quadprog 0.1.13.
+NumPy 1.26.0, SciPy 1.15.3. No package installation or modification.
+Existing GMR inspected read-only: humanoid-gpt commit 27851f496dcca2005af753362604bec6daf20700.
+GMR configs only G1 BVH/FBX. Root repository and Mink package licenses Apache-2.0.
+
+DAQP: initial 5 tests produced 2 solve errors (3 passed).
+Error: solve() got an unexpected keyword argument 'primal_start'.
+q1_retarget_20261008_E001 exited 1; original logs and partial artifacts preserved.
+Switched this project's solver config to installed quadprog.
+Final retarget tests: exit 0, 8 passed (0.748s).
+Large jump test verified <=0.04 rad per 20 ms across all four IK iterations.
+q1_retarget_20261008_E002: exit 0, synthetic FK source, 1201 frames over 24s.
+IK wall time: 1.219134478000342s (offline benchmark only).
+Maximum body position error: 1.12417679621779e-09 m.
+Maximum per-joint roundtrip RMSE: 9.72534450583333e-09 rad.
+Maximum root position/orientation errors: 1.3902592116691543e-15 m / 1.8310013360912677e-15 rad.
+All 22 joint pulses detected.
+Supported replay maximum per-joint RMSE: 0.007158815151671795 rad, saturation fraction 0.
+Independent q1_retarget.py CLI: exit 0, joint_reference.npz SHA matches E002.
+Summary artifact manifests registered as LOCAL_ONLY.
+No real SMPL input, dynamic locomotion, policy training or hardware control validated.
+No training/control process started; all stage verification commands completed.

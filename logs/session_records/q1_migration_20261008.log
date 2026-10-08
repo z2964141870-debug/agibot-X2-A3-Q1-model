@@ -1,0 +1,67 @@
+Selected executed outputs, 2026-10-08 Asia/Shanghai.
+Project: hp3090:/media/yu/FAFF-E977/YuanQi_Q1
+Starting code commit: 3951b69b998ead443dfc657345c6fe33630de08a
+
+$ stat -c "%s" data/references/q1/archives/q1_v3.zip (initial)
+4702208
+$ sha256sum data/references/q1/archives/q1_v3.zip (initial)
+7a3954742cd4e24f4f20e1bc086cfb68fdcac37f043340784ed59b9653684106
+$ head -c 4702208 /Users/yu/Documents/ChatGPT/Q1/q1_v3.zip | shasum -a 256
+7a3954742cd4e24f4f20e1bc086cfb68fdcac37f043340784ed59b9653684106
+
+$ rsync --append --partial --timeout=25 --bwlimit=64 (failed)
+Timeout, server 100.70.125.121 not responding.
+rsync: error: unexpected end of file
+exit 255
+$ stat -c "%s" data/references/q1/archives/q1_v3.zip (after first attempt)
+5062656
+
+$ stat -c "%s" data/references/q1/archives/q1_v3.zip (after stopped 16 KiB/s retry)
+5849088
+$ sha256sum data/references/q1/archives/q1_v3.zip (same prefix as Mac source)
+37f666b2c3384bc69b38ee6ede2370f34d17d976edf66208a0a47cbff35d5338
+
+$ sftp -R 1 -B 8192 (partial, deliberately interrupted)
+remote size observed: 6291456, then 6676480 bytes
+$ sftp -R 4 -B 8192 -b script/q1/transfer_model.sftp hp3090
+exit 0
+$ stat -c "%s %n" data/references/q1/archives/q1_v3.zip
+11065174 data/references/q1/archives/q1_v3.zip
+$ sha256sum data/references/q1/archives/q1_v3.zip
+332a629e51fa7559e0cb16acb7276d600cb990102934e26861f80ccaa1443fb0
+$ unzip -tq data/references/q1/archives/q1_v3.zip
+No errors detected in compressed data of data/references/q1/archives/q1_v3.zip.
+
+$ python3 script/q1/package_sdk_core.py (arguments in stage README)
+SDK core: 103 files, 961744 bytes
+Bundle: 235438 bytes, sha256=852c966c1f1918de75bd3f26de0a0f063cda18bc04269ddddbd4284693fb5566
+$ sftp reput (new core bundle target absent; retry changed to put)
+stat remote: No such file or directory
+exit 1
+$ sftp -R 4 -B 8192 -b script/q1/transfer_sdk_core.sftp hp3090
+exit 0
+$ sha256sum -c - (expected SDK core bundle hash)
+data/references/q1/archives/q1_sdk_core.tar.gz: OK
+$ sha256sum --check --quiet SHA256SUMS (inside extracted core directory)
+exit 0
+$ wc -l SHA256SUMS
+103 SHA256SUMS
+SDK_CORE_FILES_OK
+
+$ existing x2-sonic-isaaclab Python script/q1/check_mujoco_assets.py
+mujoco_version=3.3.7, scope=compile_and_passive_steps, exit 0
+q1_v3.xml: compiled=true, nq=29, nv=28, nu=0, nsensor=0, nmesh=24
+q1_v3_full_range.xml: compiled=true, nq=29, nv=28, nu=0, nsensor=0, nmesh=24
+q1_v3_mc.xml: compiled=true, nq=29, nv=28, nu=22, nsensor=49, nmesh=24
+Each asset: passive_steps=100, initial_finite=true, final_finite=true,
+warnings={}, basic_engine_check=true, policy_test=false.
+Full results: data/inspection/q1_mujoco_20261008.json
+
+No policy training or robot control was started.
+Full SDK/toolchain archives remain incomplete; Baidu backup remains LOCAL_ONLY.
+
+$ git diff --cached --check
+exit 0
+$ python3 script/project_tools/audit_git_payload.py (before adding this evidence)
+PASS: 12 staged files, 74128 bytes; size limit 10 MiB/file
+Same staged checks run again after adding this record and before committing.

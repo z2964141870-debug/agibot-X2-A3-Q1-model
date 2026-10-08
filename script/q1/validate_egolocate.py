@@ -46,12 +46,49 @@ def kinematic_orientation_errors(retargeter, qposes, targets):
     return np.asarray(errors)
 
 
-def render_overview(retargeter, source, qposes, directory):
+def render_robot_cpu(model, data, pelvis_id):
+    import matplotlib.pyplot as plt
+    from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+    from io import BytesIO
+    from PIL import Image
+
+    fig = plt.figure(figsize=(4.8, 5), dpi=100)
+    ax = fig.add_subplot(projection="3d")
+    centre = data.xpos[pelvis_id]
+    mesh_count = 0
+    for geom in range(model.ngeom):
+        if model.geom_type[geom] != mujoco.mjtGeom.mjGEOM_MESH:
+            continue
+        mesh = model.geom_dataid[geom]
+        vertex_start, face_start = model.mesh_vertadr[mesh], model.mesh_faceadr[mesh]
+        vertices = model.mesh_vert[vertex_start:vertex_start + model.mesh_vertnum[mesh]]
+        faces = model.mesh_face[face_start:face_start + model.mesh_facenum[mesh]]
+        world = vertices @ data.geom_xmat[geom].reshape(3, 3).T + data.geom_xpos[geom]
+        material = model.geom_matid[geom]
+        rgba = model.mat_rgba[material] if material >= 0 else model.geom_rgba[geom]
+        ax.add_collection3d(Poly3DCollection(world[faces], facecolor=rgba, edgecolor="none"))
+        mesh_count += 1
+    if not mesh_count:
+        raise ValueError("CPU overview requires the actual Q1 mesh geometry")
+    ax.set(xlim=(centre[0] - .55, centre[0] + .55),
+           ylim=(centre[1] - .55, centre[1] + .55),
+           zlim=(centre[2] - .6, centre[2] + .5),
+           xlabel="Forward (m)", ylabel="Left (m)", zlabel="Up (m)")
+    ax.set_box_aspect((1.1, 1.1, 1.1))
+    ax.view_init(elev=12, azim=130)
+    buffer = BytesIO()
+    fig.savefig(buffer, format="png")
+    plt.close(fig)
+    return Image.open(buffer).convert("RGB")
+
+
+def render_overview(retargeter, source, qposes, directory, backend="egl"):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     from PIL import Image, ImageDraw
     from io import BytesIO
+    from contextlib import nullcontext
 
     left = source.names.index("left_wrist")
     right = source.names.index("right_wrist")
@@ -66,7 +103,9 @@ def render_overview(retargeter, source, qposes, directory):
              ("right_shoulder", "right_elbow"), ("right_elbow", "right_wrist")]
     montage = Image.new("RGB", (960, len(picks) * 540), "white")
     data = mujoco.MjData(retargeter.sim.model)
-    with mujoco.Renderer(retargeter.sim.model, height=500, width=480) as renderer:
+    context = (mujoco.Renderer(retargeter.sim.model, height=500, width=480)
+               if backend == "egl" else nullcontext(None))
+    with context as renderer:
         for row, frame in enumerate(picks):
             points = source.positions[frame] - source.positions[frame, source.names.index("pelvis")]
             fig = plt.figure(figsize=(4.8, 5), dpi=100)
@@ -84,11 +123,15 @@ def render_overview(retargeter, source, qposes, directory):
             montage.paste(Image.open(buf).convert("RGB"), (0, row * 540 + 40))
             data.qpos[:] = qposes[frame]
             mujoco.mj_forward(retargeter.sim.model, data)
-            camera = mujoco.MjvCamera()
-            camera.lookat[:] = data.xpos[retargeter.sim.pelvis_id] + [0, 0, 0.08]
-            camera.distance, camera.azimuth, camera.elevation = 1.9, 130, -12
-            renderer.update_scene(data, camera=camera)
-            montage.paste(Image.fromarray(renderer.render()), (480, row * 540 + 40))
+            if renderer is None:
+                robot_image = render_robot_cpu(retargeter.sim.model, data, retargeter.sim.pelvis_id)
+            else:
+                camera = mujoco.MjvCamera()
+                camera.lookat[:] = data.xpos[retargeter.sim.pelvis_id] + [0, 0, 0.08]
+                camera.distance, camera.azimuth, camera.elevation = 1.9, 130, -12
+                renderer.update_scene(data, camera=camera)
+                robot_image = Image.fromarray(renderer.render())
+            montage.paste(robot_image, (480, row * 540 + 40))
             draw = ImageDraw.Draw(montage)
             draw.text((10, row * 540 + 10), f"Recorded SMPL body: t={source.times[frame]:.2f}s", fill="black")
             draw.text((490, row * 540 + 10), "Q1 kinematic IK (not dynamic balance)", fill="black")
@@ -100,23 +143,27 @@ def main():
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--render", action="store_true")
+    parser.add_argument("--render-backend", choices=("egl", "cpu"), default="egl")
     args = parser.parse_args()
     if args.output_dir.exists():
         parser.error("Use a new output directory")
     args.output_dir.mkdir(parents=True)
     retargeter = Q1Retargeter()
     source, conversion = convert_bundle(args.input, retargeter.names, retargeter.sim.config["reference_hz"])
+    print(f"Input decoded: {len(source.times)} frames", flush=True)
     save_test_only(source, args.output_dir / "body_reference.npz")
     scale, scaling = leg_scale(source, retargeter)
     started = time.perf_counter()
     reference, qposes, targets, target_rotations, body_errors = retargeter.retarget(source, scale)
     ik_wall_seconds = time.perf_counter() - started
+    print(f"IK complete: {ik_wall_seconds:.2f}s", flush=True)
     save_test_only(reference, args.output_dir / "joint_reference.npz")
     orientation_errors = kinematic_orientation_errors(retargeter, qposes, target_rotations)
     np.savez_compressed(args.output_dir / "kinematic_trace.npz", time_s=source.times, qpos=qposes,
                         target_position_m=targets, target_rotation_matrix=target_rotations,
                         body_position_error_m=body_errors, body_orientation_error_rad=orientation_errors,
                         usage=np.asarray("TEST_ONLY"), training_allowed=np.asarray(False))
+    print("Kinematic trace saved", flush=True)
     sim = Q1Sim(retargeter.sim.config_path, supported=True)
     reference = JointReference.load(args.output_dir / "joint_reference.npz", sim.names)
     reference.validate_limits(sim)
@@ -133,8 +180,10 @@ def main():
     np.savez_compressed(args.output_dir / "supported_replay.npz", time_s=times,
                         position_rad=actual_positions, target_rad=target_positions, torque_nm=torques,
                         usage=np.asarray("TEST_ONLY"), training_allowed=np.asarray(False))
+    print(f"Supported replay complete: {sim.data.time:.2f}s", flush=True)
     if args.render:
-        render_overview(retargeter, source, qposes, args.output_dir)
+        print(f"Rendering overview: {args.render_backend}", flush=True)
+        render_overview(retargeter, source, qposes, args.output_dir, args.render_backend)
     position_norms = np.linalg.norm(body_errors, axis=-1)
     speeds = np.abs(np.diff(reference.positions, axis=0) / np.diff(reference.times)[:, None])
     margin = np.minimum(reference.positions - sim.lower, sim.upper - reference.positions)
@@ -142,6 +191,7 @@ def main():
     report = {
         "stage": args.output_dir.name, "usage": "TEST_ONLY", "training_allowed": False,
         "scope": "REAL_RECORDED_POSE_INPUT_KINEMATIC_IK_SUPPORTED_PD_REPLAY",
+        "render_backend": args.render_backend if args.render else None,
         "conversion": conversion, "scaling": scaling,
         "base_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip(),
         "versions": {name: importlib.metadata.version(name) for name in ["mujoco", "mink", "qpsolvers", "quadprog", "scipy", "numpy"]},

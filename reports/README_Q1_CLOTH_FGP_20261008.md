@@ -1,6 +1,6 @@
 # Q1 衣服原始 IMU 经 FGP 转换测试
 
-记录日期：2026-10-08。阶段：Q1-P4。状态：走路 E003 转换完成，输入 6 项检查通过；Q1 E003 被 20:26 重启中断，单腿站立尚未开始。
+记录日期：2026-10-08。阶段：Q1-P4。状态：两段 FGP 转换、Q1 数值重定向/支撑回放与抽帧生成完成；姿态精度、无支撑平衡及主机持续稳定性未通过验收。
 
 ## 目标与范围
 
@@ -38,7 +38,7 @@ cd /media/yu/FAFF-E977/YuanQi_Q1
 
 ## 结果与保存状态
 
-输入身份及走路 E003 实际 FGP 转换通过，Q1 回放未完成。输入和全部衍生测试标记 `TEST_ONLY/training_allowed=false`。网盘未新上传，状态 `LOCAL_ONLY`，原件保留。用户最新要求：大文件传输较慢时停止自动重试，提供具体文件、大小和目标路径，由用户用飞书等第三方软件传输；本阶段所需大包和模型已在服务器，无需用户新传文件。
+输入身份、走路 E003 实际 FGP 转换和 Q1 E005 运动学/支撑回放通过，尚未证明姿态保真或无支撑平衡。输入和全部衍生测试标记 `TEST_ONLY/training_allowed=false`。网盘未新上传，状态 `LOCAL_ONLY`，原件保留。用户最新要求：大文件传输较慢时停止自动重试，提供具体文件、大小和目标路径，由用户用飞书等第三方软件传输；本阶段所需大包和模型已在服务器，无需用户新传文件。
 
 19:37 恢复核验：原 SSH 转换命令因连接中断未启动，E001 日志/输出目录和推理进程均不存在；现已重新连接，保留资源核验结果后启动转换。不把前一次命令发出当成运行成功。
 
@@ -109,8 +109,95 @@ tail -n 12 logs/q1_cloth_input_tests_20261008.log
 - Q1 E003 只有身体/关节参考，`kinematic_trace.npz` 为 0 字节，无 supported replay、summary 或渲染产物。保留该中断目录；R001 的 `RUNNING` 是重启前残留状态，不是实时进程状态。单腿 E004 未启动。
 - 后续复用完整 E003 身体包，Q1 用新目录 E005；单腿 FGP 使用未占用 E004，Q1 使用新目录 E006。准备增加 CPU 真实 mesh 抽帧渲染及进度记录，以减少本次测试的图形环境依赖；该渲染修改尚未实际验证。不从发生重启推断 EGL/GPU 是故障原因。
 
+### 走路 Q1 E005 已完成
+
+- 复用 E003 身体包，30→50 Hz 无外推重采样为 2942 帧，完整运动学求解耗时 3.09 秒；人工支撑 PD 回放 58.82 秒，有限值通过、限位违例 0，最大关节速度 1.999998 rad/s（到配置上限）、3.01% 关节样本接近限位。
+- 对诊断校准后 IK 目标的位置误差 P95 `0.014338 m`；最大关节回放 RMSE `0.012856 rad`，最大绝对误差 `0.031155 rad`，力矩饱和比例 0。这些是对变换后目标/关节参考的结果，不是对真实人体标签的误差，也不等于同姿跟随验收。
+- 输出在 `data/experiments/q1_cloth_q1_20261008_E005/`；小型摘要副本为 `data/manifests/q1_cloth_q1_20261008_E005_summary.json`。CPU 抽帧使用编译模型的真实 mesh 顶点/三角面及世界变换，未重新绘制机器人或安装环境；生成 `body_q1_overview.png` 340,985 字节，图像视觉检查待追加。模型共 24 meshes、509,188 faces，CPU 渲染较慢但已完成；没有以图形接口替换运动学/动力学算法。
+- 成功步骤日志为 `logs/q1_cloth_q1_20261008_E005.log`；此前 E003 0 字节中断文件保留。
+- 转换/中断检查点已提交并推送：`3bc7815f1f1e10cdeec2e0fefeb749a6138da016`，本地 HEAD 与远端 `refs/heads/Q1` 完全一致。既有两份 PredActor 暂存内容保留，未混入本阶段提交。新增渲染代码/当前结果待后续阶段提交。
+- 单腿 E004 CPU 推理已发出独立会话启动，日志 `logs/q1_cloth_fgp_20261008_E004.log`，实际进程/输出还需下一次检查；未称作已完成。
+
+走路 Q1 复现（已有 E005 目录不可覆盖，复现时使用新目录）：
+
+```bash
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  /home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python -u script/q1/validate_egolocate.py \
+  --input data/experiments/q1_cloth_fgp_20261008_E003/body_only.npz \
+  --output-dir data/experiments/q1_cloth_q1_20261008_E005 --render --render-backend cpu
+```
+
+### 单腿 E004 推理已完成与误差初查
+
+单腿 `G_0109_yy_train/193310_yy_oneLegStand` 实际 1826→1767 帧，CPU 83.17 秒，暖机/有限值/速度有效性检查通过，batch/individual 最大差 `2.3842e-7`。包内标签比较：旋转 P95 `0.646459 rad`，根相对关节 P95 `0.393520 m`，根轨迹 RMSE `0.536074 m`。估计根范围 `[0.63139,0.36240,1.13386] m`，标签 `[0.80600,0.33700,0.28000] m`；“单腿站立”样本标签自身也有移动，不能把整个录制当零位移静态真值。摘要已保存 `data/manifests/q1_cloth_fgp_20261008_E004_summary.json`，产物服务器 E004 目录，准备交给 Q1 E006。
+
+步行标签误差初查（只读取产物与标签）：同一 SMPLight 骨架用标签 pose FK 与包内根相对 joint 的 P95 差仅 `2.74e-7 m`；用预测 pose 对同一模板标签 FK 的 P95 仍为 `0.377489 m`，因此本次误差不是两套骨长导致。去掉两者根朝向后姿态关节 P95 仍有 `0.245619 m`，根朝向 P95 为 `0.932490 rad`。腕关节位置 P95 左/右 `0.462931/0.450856 m`，踝 `0.346368/0.325341 m`。这个分解支持优先检查 FGP 重建/根朝向与校准，不能因 Q1 IK 残差小就认为输入姿态已准确。只读计算尚需落为可复现诊断脚本/JSON 后同步。
+
+已视觉检查走路 CPU 抽帧：真实 Q1 mesh 非空、肢体与头脚在视野内，抽帧存在姿态变化；这是运动学姿态图，未显示无支撑动力学。颜色较浅，细小表面细节不足，不据其验证完整高保真。
+
+### 20:50 单腿回放后的再次重启
+
+E006 实读日志显示 2944 帧、IK 3.43 秒、kinematic trace 已保存、58.86 秒 supported replay 已保存，随后开始 CPU 抽帧渲染。20:50:38 重新 SSH 的 uptime 为 0 分钟，已有四份 NPZ 文件保留，无抽帧图/summary，进程已消失；不能宣称整项验证完成。此次也没有 GPU 神经推理；重启原因未确认，不能从时序推断渲染、CPU 或硬件故障。
+
+诊断脚本第一次 SCP 因连接 reset 未传入服务器，随后的诊断命令退出码 2（脚本不存在），没有诊断 D001 产物。准备重传小型代码，并从 E006 的已保存文件独立核验/汇总数值，保留中断记录；不反复重跑模型与同一回放。若没有完整数值，则明确记录缺失。暂不重试 CPU mesh 渲染。
+
+### 更换供电后的恢复核验
+
+用户说明已把供电从排插移至墙壁插座，要求继续尝试。20:58/21:01 实读 uptime 为 1/3 分钟，无遗留推理或回放进程；这只是一次恢复状态，不能证明此前原因或长期稳定性。未改动系统电源设置。
+
+新增 `script/q1/recover_q1_validation.py`，只加载已保存数值文件，检查 TEST_ONLY、有限值、完整帧数/时序、身体输入一致性、关节参考与 qpos 一致性、限位及回放 target 对齐；不重跑神经网络/IK/动力学。先在完整走路 E005 对照原 summary，9 项数值完全相同（最大绝对差 0），再恢复单腿 E006。
+
+E006 四个 NPZ 的完整解码和上述检查均通过：2944 参考帧、58.86 秒支撑回放、关节限位违例 0，IK 位置 P95 `0.095351 m`，最大关节回放 RMSE `0.030482 rad`、最大绝对误差 `0.227515 rad`。恢复摘要为 `data/experiments/q1_cloth_q1_20261008_E006/recovered_summary.json`。原始全物理子步力矩饱和计数没有持久化，恢复报告对此记为 null；已保存的末子步力矩仅可核验在限幅内，不能据此声称整个回放饱和比例为零。
+
+误差诊断 D001 已实际完成（成功日志 D002，第一次 D001 日志保留脚本未传入的失败），脚本 `script/q1/diagnose_clotho_output.py`，摘要清单 `data/manifests/q1_cloth_diagnostics_20261008_D001_summary.json`。单腿同模板 pose-FK/joint 标签差 `2.95e-7 m`，预测误差 P95 `0.393520 m`，去根朝向后 `0.254600 m`，根朝向 P95 `0.987265 rad`。两段仍存在显著人体重建误差，模型/规范化/校准各自贡献尚未确定；不擅自用标签修正推理。
+
+新增独立 `render_q1_recording.py`，在恢复摘要及产物哈希核验后，只补抽帧图和渲染回执。这样渲染再中断也不会丢失数值摘要；准备以 CPU 后端补单腿图，不重复完整推理/回放。
+
+### 本轮最终数值结果与补图回执
+
+| 指标 | 步行 FGP E003 / Q1 E005 | 单腿 FGP E004 / Q1 E006 |
+| --- | --- | --- |
+| 导出 SMPL 帧数 | 1766 | 1767 |
+| 神经推理 CPU 耗时 | 78.72 秒 | 83.17 秒 |
+| 对包内人体标签：根相对关节位置 P95 | 37.75 cm | 39.35 cm |
+| 对包内人体标签：相对根轨迹 RMSE | 65.79 cm | 53.61 cm |
+| 对诊断校准后 IK 目标：位置 P95 | 1.43 cm | 9.54 cm |
+| Q1 参考限位违例 | 0 | 0 |
+| Q1 支撑回放时长 | 58.82 秒 | 58.86 秒 |
+| Q1 支撑回放最大关节 RMSE | 0.01286 rad | 0.03048 rad |
+| Q1 支撑回放最大绝对关节误差 | 0.03115 rad | 0.22752 rad |
+
+两类位置误差的比较对象不同：Q1 数值对诊断校准/缩放后的目标，人体数值对包内标签；不能用前者小来证明人体重建准确。标签 pose/joint 不进入推理，既有模型可能见过这些样本，因此这不是独立测试集成绩。此包的对齐 IMU 张量可用于离线通路测试；`sensor_data.txt` 到同一标定/对齐张量的转换、现场服装校准和实时接口尚未核验。
+
+单腿 R002 在 21:05 完成独立 CPU 抽帧（未重新运行推理/IK/PD）：`body_q1_overview.png` 343,853 字节，SHA-256 `1d2bddc32c0cc0bce40305174331f60e800a26952ceb664239d2980c35e673ca`；`render_summary.json` 保存后端、源码/数值产物及图像身份，清单副本 `data/manifests/q1_cloth_q1_20261008_E006_render_summary.json`。恢复数值摘要中的 `render_completed=false` 是 21:01 的历史状态，最新补图结果以独立回执为准，不回写历史证据。小图下载后哈希与回执一致，已实际视觉检查：mesh 非空、视野完整，人体抬腿与机器人对应姿态可见，但机器人抬腿幅度不足，不能认为已经复现单腿站立；与数值残差偏大的结论一致。两张小图在 Mac `data/sync/q1_cloth_fgp_resume_20261008/`，未下载 NPZ/模型/大包。
+
+换插座后的本次渲染完成，但 journal 启动记录仍有 `20:57:59→21:05:47`、随后 `21:06:17` 新启动；21:10:11 实读 uptime 3 分钟。最后一轮日志/内核筛查未得到可归因的 OOM、NVIDIA Xid、panic 或正常关机证据；传感器枚举时的 thermal 读取失败不能直接证明过热。是否人工重启、供电与其他硬件原因仍未确认，不能宣称换插座解决问题。当前没有本阶段遗留模型/仿真进程。
+
+新增脚本服务器语法检查通过，五份成功摘要 TEST_ONLY 边界核验通过；输入 6/6 检查、恢复对照 9 项完全一致及实际 NPZ 解码结果均已有证据。没有新安装依赖、训练、真机控制、网盘上传或大型数据迁移。
+
+复现入口（输出/日志已存在时拒绝覆盖；复制复现须用新实验目录）：
+
+```bash
+cd /media/yu/FAFF-E977/YuanQi_Q1
+# 重建推理时沿用上面的 infer_clotho_fgp.py 参数，并指定 --device cpu 与新目录。
+# 仅恢复已有数值，不重新执行神经推理或物理回放。
+/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python script/q1/recover_q1_validation.py \
+  --input data/experiments/q1_cloth_fgp_20261008_E004/body_only.npz \
+  --output-dir data/experiments/q1_cloth_q1_20261008_E006 \
+  --original-validator-sha256 ad2b79e750e9644e60ed452ba7e7a2f66cb7ee03b909d448fb784c823a186b3c
+/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python script/q1/render_q1_recording.py \
+  --output-dir data/experiments/q1_cloth_q1_20261008_E006 --backend cpu
+/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python script/q1/diagnose_clotho_output.py \
+  --archive /media/yu/FAFF-E9771/data/fgp/CLOTHO_train_data/train_released.zip \
+  --fgp-root /home/yu/projects/x2-teleop/FGP-main \
+  --experiments data/experiments/q1_cloth_fgp_20261008_E003 data/experiments/q1_cloth_fgp_20261008_E004 \
+  --output-dir data/experiments/q1_cloth_diagnostics_20261008_D001
+```
+
+工件清单集中在 `data/manifests/q1_cloth_*_summary.json` 与 `q1_cloth_input_20261008.json`，源码身份由各摘要登记；原始/衍生 NPZ、模型、大包均留服务器，`LOCAL_ONLY`。尚没有需要用户通过第三方传输的新文件。已核验发布检查点为 `3bc7815`，本轮最终报告与新增恢复/渲染代码待审查后推送，成功回执另存；不把待推送写成已同步。
+
 ## 下一步
 
-1. 复用走路 E003，完成新目录 Q1 E005；单腿 E004 再推理，并完成 Q1 E006，不复跑成功步骤或覆盖中断目录。
-2. 检查 CPU 抽帧图、关节限位、支撑回放及标签误差来源；测试结果不等于无支撑动态行走，不启动训练/真机。
-3. 更新本 README、索引/当前状态，审查提交并核验 `origin/Q1`。
+1. 本轮离线测试完成后，先核对发布回执；无需再跑两段转换或 PD 回放。服务器稳定性未确定，不自动启动训练。
+2. 优先检查 FGP 输入预处理、根朝向、服装标定和配对站姿校准，降低人体重建误差；单腿重定向残差也需改善。
+3. 再建立地面/脚接触、无支撑动力学跟踪与训练任务。当前测试数据保持 TEST_ONLY，不用于训练，不操作真机。

@@ -1,0 +1,216 @@
+{
+  "usage": "TEST_ONLY",
+  "training_allowed": false,
+  "source_kind": "REINFERRED_CLOTHO_IMU_FGP_LIP_EXISTING_VELOCITY_HEAD",
+  "reference_source_kind": "TEST_ONLY_REINFERRED_CLOTHO_FGP_LIP_ESTIMATED_ROOT",
+  "source_sequence": "G_0109_yy_train/193310_yy_oneLegStand",
+  "archive": {
+    "path": "/media/yu/FAFF-E9771/data/fgp/CLOTHO_train_data/train_released.zip",
+    "bytes": 1896104195,
+    "sha256": "8015e969dc2ef9629e3a4e02d16d2846449d7db2ebd2eb94ca063c814358f952"
+  },
+  "entries": [
+    {
+      "entry": "train_released/G_0109_yy_train/193310_yy_oneLegStand/acc.pt",
+      "bytes": 242573,
+      "sha256": "065c3739fdc2661c5718889a54fa31230c473c32fd96c74c3007b77b6f260ea4",
+      "shape": [
+        1826,
+        11,
+        3,
+        1
+      ]
+    },
+    {
+      "entry": "train_released/G_0109_yy_train/193310_yy_oneLegStand/rot.pt",
+      "bytes": 724621,
+      "sha256": "e903763d1947971374da2be73acd4625e68df51acec992d2bd64d26a60a98bc9",
+      "shape": [
+        1826,
+        11,
+        3,
+        3
+      ]
+    },
+    {
+      "entry": "train_released/G_0109_yy_train/193310_yy_oneLegStand/device2bone.pt",
+      "bytes": 1584,
+      "sha256": "ed2df5fca19b86a03f3bad9efa91a42208d61a278da1e7a9a8a05b77b9b8611a",
+      "shape": [
+        11,
+        3,
+        3
+      ]
+    },
+    {
+      "entry": "train_released/G_0109_yy_train/193310_yy_oneLegStand/pose.pt",
+      "bytes": 527380,
+      "sha256": "118c7ac091600a3f1bc6552d3e970def8f68a54f46ec44e23a162a201a59cb4a",
+      "shape": [
+        1826,
+        24,
+        3
+      ]
+    },
+    {
+      "entry": "train_released/G_0109_yy_train/193310_yy_oneLegStand/joint.pt",
+      "bytes": 527387,
+      "sha256": "b6fc0643b668118b570cc85ee871f061352f5de2ad39d27927eda14b1a3cb661",
+      "shape": [
+        1826,
+        24,
+        3
+      ]
+    }
+  ],
+  "bundle": {
+    "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_cloth_fgp_20261008_E004/body_only.npz",
+    "bytes": 2878460,
+    "sha256": "2dae1fc2230773196930de147ff856d60cd66dce472a5f3ad9d72ed4e2458652"
+  },
+  "timestamps": "PUBLISHED_ALIGNED_PT_FIXED_30_HZ_NOT_RAW_TEXT_TIMESTAMPS",
+  "root_translation_kind": "LEARNED_EXISTING_VELOCITY_HEAD_NOT_MEASURED_GROUND_TRUTH",
+  "frames_input": 1826,
+  "frames_exported": 1767,
+  "raw_sensor_text_rows": 1850,
+  "raw_text_alignment_verified": false,
+  "input_semantics": "PUBLISHED_PREPROCESSED_CLOTH_IMU_ACC_ROT_11_CHANNELS",
+  "channel_selection": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "calibration": "RELEASED_TENSOR_CONTRACT_NO_RECALIBRATION_FROM_UNALIGNED_SENSOR_TEXT",
+  "canonicalization": "30_FRAME_CAUSAL_LAST_OUTPUT_RESIDUAL_EULER_1_EMA_0_7_BATCHED",
+  "canonicalizer_checks": {
+    "source_max_orthogonality_error": 7.337214356084587e-07,
+    "source_max_determinant_error": 5.960464477539062e-07,
+    "max_matrix_repair_frobenius_change": 4.405313234201458e-07,
+    "repair_budget": 0.05,
+    "batch_vs_individual_context_indices": [
+      0,
+      898,
+      1796
+    ],
+    "batch_vs_individual_max_abs_difference": 2.384185791015625e-07
+  },
+  "lip_reset_at_first_complete_canonical_context": true,
+  "velocity_valid_all_exported": true,
+  "removed_warmup_input_frames": 59,
+  "supplied_pose_joint_used_for_inference": false,
+  "label_comparison_is_independent_benchmark": false,
+  "existing_velocity_training_overlap_possible": true,
+  "supplied_label_local_rotation_error_p95_rad": 0.646459200849435,
+  "supplied_label_rootrelative_joint_error_p95_m": 0.39351976960897456,
+  "supplied_label_relative_root_trajectory_rmse_m": 0.5360744595527649,
+  "estimated_root_range_m": [
+    0.6313920617103577,
+    0.3623987138271332,
+    1.133862853050232
+  ],
+  "supplied_label_root_range_m": [
+    0.8059999942779541,
+    0.3370000123977661,
+    0.2800000011920929
+  ],
+  "estimated_root_path_length_m": 6.576233863830566,
+  "wall_s": 83.16842718099997,
+  "versions": {
+    "torch": "2.8.0+cu128",
+    "numpy": "1.26.0",
+    "scipy": "1.15.3"
+  },
+  "device": "cpu",
+  "batch_size": 8,
+  "source_files": [
+    {
+      "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/infer_clotho_fgp.py",
+      "bytes": 14435,
+      "sha256": "ff93a6783f29b2012915c9959e34d5d2e47164c3617d24d1ec235a36bda9e4c7"
+    },
+    {
+      "path": "/home/yu/projects/x2-teleop/FGP-main/neural_backbone.py",
+      "bytes": 26869,
+      "sha256": "d62702df79ef333b2f687e5af8736f7f60cf0d15cbb77abfe2ced9b288d3e8b5"
+    },
+    {
+      "path": "/home/yu/projects/x2-teleop/FGP-main/Aplus/tools/smpl_light.py",
+      "bytes": 5661,
+      "sha256": "c4d395461d87906237625a565ac28d43a1f54174880e6d8eb500dadf84cf7d39"
+    },
+    {
+      "path": "/home/yu/projects/x2-teleop/FGP-main/PoseReconstruction/LIP_model.py",
+      "bytes": 9752,
+      "sha256": "632615d553ccd17fd19b7a0c814ab6fa0cfe2b11c5d63d57cb0965d32197b4c0"
+    },
+    {
+      "path": "/home/yu/projects/fgp/scripts/clotho_velocity/scripts/evaluate_deployment_orientation.py",
+      "bytes": 15297,
+      "sha256": "0a25e23a6692a6a0334b08ac94e713dfadaa8766e564c3dbbc7adfec8e4eaabd"
+    },
+    {
+      "path": "/home/yu/projects/fgp/scripts/clotho_velocity/fgp_velocity/runtime.py",
+      "bytes": 15936,
+      "sha256": "c4b9aa2c3c6cb05e4aa128e4c5b590c4fc823c8a894782aeaeb6e475d00e8469"
+    },
+    {
+      "path": "/home/yu/projects/fgp/scripts/clotho_velocity/fgp_velocity/features.py",
+      "bytes": 4355,
+      "sha256": "7ea599a8f59547c54bb2666b6b46f5477d2dc7de47cccbebf9fca20348a64400"
+    },
+    {
+      "path": "/home/yu/projects/fgp/scripts/clotho_velocity/fgp_velocity/rotations.py",
+      "bytes": 6050,
+      "sha256": "1a5d295cc3801a6e6d117a6a04f48e9aa4153692f7e83025eeda637b42e8d770"
+    },
+    {
+      "path": "/home/yu/projects/fgp/scripts/clotho_velocity/fgp_velocity/model.py",
+      "bytes": 4778,
+      "sha256": "7b72f387c1a5e3645b094c3970c5d7c96bc26c5bd3d6f19721d62ccfb38f549d"
+    }
+  ],
+  "weights": [
+    {
+      "path": "/media/yu/FAFF-E9771/data/x2-teleop/FGP-main/checkpoints/canonicalization/U100hL7.07h_residual.pth",
+      "bytes": 384845450,
+      "sha256": "b613eb8226b26b9dc82904c22f4aec78773992503337c3cbde674c998f61ce12"
+    },
+    {
+      "path": "/media/yu/FAFF-E9771/data/x2-teleop/FGP-main/checkpoints/LIP/LIP_10_real_denoised_7.07_10imu_10.pth",
+      "bytes": 26748498,
+      "sha256": "efc4bb8583bf053890d9ae754e97415c8658dba237893982aa51b9541edbb9a2"
+    },
+    {
+      "path": "/media/yu/FAFF-E9771/data/fgp/velocity_checkpoints/clotho_v2_displacement/last.pt",
+      "bytes": 13158518,
+      "sha256": "7842a9d7866f5957df1e69a4ff62a72e0c0cd1a472eb9524399183424f955764"
+    }
+  ],
+  "training_started": false,
+  "hardware_control": false,
+  "baidu_backup_status": "LOCAL_ONLY",
+  "artifacts": [
+    {
+      "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_cloth_fgp_20261008_E004/body_only.npz",
+      "bytes": 2878460,
+      "sha256": "2dae1fc2230773196930de147ff856d60cd66dce472a5f3ad9d72ed4e2458652"
+    },
+    {
+      "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_cloth_fgp_20261008_E004/fgp_trace.npz",
+      "bytes": 3266513,
+      "sha256": "ad5eb350d00cda0e912b294f02b61fb8295dd0710cad57e9ff8ba090d560c518"
+    },
+    {
+      "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_cloth_fgp_20261008_E004/inspection.json",
+      "bytes": 2211,
+      "sha256": "9bd7e2d92cfe4853b8c1e5d7fd20032eda31e861e14dae33839b9a45fd357e47"
+    }
+  ]
+}

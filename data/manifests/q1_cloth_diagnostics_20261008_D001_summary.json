@@ -1,0 +1,338 @@
+{
+  "usage": "TEST_ONLY",
+  "training_allowed": false,
+  "labels_used_for_inference": false,
+  "independent_benchmark": false,
+  "existing_training_overlap_possible": true,
+  "template_test": "LABEL_POSE_FK_VS_LABEL_JOINT_ROOT_RELATIVE",
+  "root_orientation_test": "REMOVE_EACH_POSES_OWN_ROOT_ROTATION_NO_ALIGNMENT_FIT",
+  "source_files": [
+    {
+      "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/diagnose_clotho_output.py",
+      "bytes": 6127,
+      "sha256": "6e21b45522fd77e5c77feaf732fa57912210f5d04a0df845aa3d1d4b3cbc88ac"
+    },
+    {
+      "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/infer_clotho_fgp.py",
+      "bytes": 14435,
+      "sha256": "ff93a6783f29b2012915c9959e34d5d2e47164c3617d24d1ec235a36bda9e4c7"
+    },
+    {
+      "path": "/home/yu/projects/x2-teleop/FGP-main/Aplus/tools/smpl_light.py",
+      "bytes": 5661,
+      "sha256": "c4d395461d87906237625a565ac28d43a1f54174880e6d8eb500dadf84cf7d39"
+    }
+  ],
+  "archive": {
+    "path": "/media/yu/FAFF-E9771/data/fgp/CLOTHO_train_data/train_released.zip",
+    "bytes": 1896104195,
+    "sha256": "8015e969dc2ef9629e3a4e02d16d2846449d7db2ebd2eb94ca063c814358f952"
+  },
+  "results": [
+    {
+      "experiment": "q1_cloth_fgp_20261008_E003",
+      "sequence": "G_0113_zj_train/183926_zj_walk",
+      "frames": 1766,
+      "frame_index_first_last": [
+        59,
+        1824
+      ],
+      "same_template_prediction_vs_label_pose_fk_position_p95_m": 0.3774893745779991,
+      "label_pose_fk_vs_supplied_label_joint_position_p95_m": 2.7426841171518373e-07,
+      "root_orientation_removed_articulation_position_p95_m": 0.24561858886388302,
+      "pelvis_rotation_error_p95_rad": 0.932490326032175,
+      "relative_root_trajectory_rmse_m": 0.6579445600509644,
+      "relative_root_trajectory_axis_rmse_m_smpl_xyz": [
+        0.38020896911621094,
+        0.027441896498203278,
+        0.5362640619277954
+      ],
+      "joint_errors": [
+        {
+          "name": "pelvis",
+          "position_p95_m": 0.0,
+          "local_rotation_p95_rad": 0.932490326032175
+        },
+        {
+          "name": "left_hip",
+          "position_p95_m": 0.055633765645325184,
+          "local_rotation_p95_rad": 0.3502445303278083
+        },
+        {
+          "name": "right_hip",
+          "position_p95_m": 0.059517974965274334,
+          "local_rotation_p95_rad": 0.32416240526391116
+        },
+        {
+          "name": "spine1",
+          "position_p95_m": 0.06105738505721092,
+          "local_rotation_p95_rad": 0.11555830105871037
+        },
+        {
+          "name": "left_knee",
+          "position_p95_m": 0.21186457946896553,
+          "local_rotation_p95_rad": 0.25275154479334117
+        },
+        {
+          "name": "right_knee",
+          "position_p95_m": 0.2193138673901558,
+          "local_rotation_p95_rad": 0.2951019710954502
+        },
+        {
+          "name": "spine2",
+          "position_p95_m": 0.07539870031177998,
+          "local_rotation_p95_rad": 0.14840312040303158
+        },
+        {
+          "name": "left_ankle",
+          "position_p95_m": 0.3463681787252426,
+          "local_rotation_p95_rad": 0.09296282859822909
+        },
+        {
+          "name": "right_ankle",
+          "position_p95_m": 0.32534074038267136,
+          "local_rotation_p95_rad": 0.1463255198173381
+        },
+        {
+          "name": "spine3",
+          "position_p95_m": 0.08256391249597073,
+          "local_rotation_p95_rad": 0.06156278445826552
+        },
+        {
+          "name": "left_foot",
+          "position_p95_m": 0.3936461731791496,
+          "local_rotation_p95_rad": 0.10010380313759301
+        },
+        {
+          "name": "right_foot",
+          "position_p95_m": 0.4194660857319832,
+          "local_rotation_p95_rad": 0.24287661939186897
+        },
+        {
+          "name": "neck",
+          "position_p95_m": 0.13834937661886215,
+          "local_rotation_p95_rad": 0.17940044357703877
+        },
+        {
+          "name": "left_collar",
+          "position_p95_m": 0.14289171621203423,
+          "local_rotation_p95_rad": 0.2089697850973845
+        },
+        {
+          "name": "right_collar",
+          "position_p95_m": 0.1268659345805645,
+          "local_rotation_p95_rad": 0.18024250176622042
+        },
+        {
+          "name": "head",
+          "position_p95_m": 0.17141059786081314,
+          "local_rotation_p95_rad": 0.2070036695882348
+        },
+        {
+          "name": "left_shoulder",
+          "position_p95_m": 0.22884375229477882,
+          "local_rotation_p95_rad": 0.16129255021748082
+        },
+        {
+          "name": "right_shoulder",
+          "position_p95_m": 0.21002885326743126,
+          "local_rotation_p95_rad": 0.24442385297813307
+        },
+        {
+          "name": "left_elbow",
+          "position_p95_m": 0.3275616317987442,
+          "local_rotation_p95_rad": 0.22702128693886336
+        },
+        {
+          "name": "right_elbow",
+          "position_p95_m": 0.3005734235048294,
+          "local_rotation_p95_rad": 0.3097505866689545
+        },
+        {
+          "name": "left_wrist",
+          "position_p95_m": 0.4629308432340622,
+          "local_rotation_p95_rad": 0.24083815316779542
+        },
+        {
+          "name": "right_wrist",
+          "position_p95_m": 0.45085590332746506,
+          "local_rotation_p95_rad": 0.17784109192805897
+        },
+        {
+          "name": "left_hand",
+          "position_p95_m": 0.4922177642583847,
+          "local_rotation_p95_rad": 0.1741201771924658
+        },
+        {
+          "name": "right_hand",
+          "position_p95_m": 0.4892938807606697,
+          "local_rotation_p95_rad": 0.1750564360813515
+        }
+      ],
+      "input_summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_cloth_fgp_20261008_E003/summary.json",
+        "bytes": 7345,
+        "sha256": "c17fc4161a1d5eec079c91f5d89baa12cdffb003088e22eef1e3f876e02d2c48"
+      },
+      "input_bundle": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_cloth_fgp_20261008_E003/body_only.npz",
+        "bytes": 2876717,
+        "sha256": "8142ea18889cba34cf2d582d88adbbf91d91a0cae79dfb83b786666db90e3d8c"
+      }
+    },
+    {
+      "experiment": "q1_cloth_fgp_20261008_E004",
+      "sequence": "G_0109_yy_train/193310_yy_oneLegStand",
+      "frames": 1767,
+      "frame_index_first_last": [
+        59,
+        1825
+      ],
+      "same_template_prediction_vs_label_pose_fk_position_p95_m": 0.39351969212293636,
+      "label_pose_fk_vs_supplied_label_joint_position_p95_m": 2.9502794518521114e-07,
+      "root_orientation_removed_articulation_position_p95_m": 0.25459974340612107,
+      "pelvis_rotation_error_p95_rad": 0.9872653116771634,
+      "relative_root_trajectory_rmse_m": 0.5360744595527649,
+      "relative_root_trajectory_axis_rmse_m_smpl_xyz": [
+        0.3920711278915405,
+        0.08670977503061295,
+        0.355158269405365
+      ],
+      "joint_errors": [
+        {
+          "name": "pelvis",
+          "position_p95_m": 0.0,
+          "local_rotation_p95_rad": 0.9872653116771634
+        },
+        {
+          "name": "left_hip",
+          "position_p95_m": 0.06857249438762665,
+          "local_rotation_p95_rad": 0.5763134133395595
+        },
+        {
+          "name": "right_hip",
+          "position_p95_m": 0.08053207695484162,
+          "local_rotation_p95_rad": 0.7904537098219367
+        },
+        {
+          "name": "spine1",
+          "position_p95_m": 0.09146230891346925,
+          "local_rotation_p95_rad": 0.34858776356604276
+        },
+        {
+          "name": "left_knee",
+          "position_p95_m": 0.39489532113075254,
+          "local_rotation_p95_rad": 0.9649147254882842
+        },
+        {
+          "name": "right_knee",
+          "position_p95_m": 0.3367701947689056,
+          "local_rotation_p95_rad": 1.2261491507039515
+        },
+        {
+          "name": "spine2",
+          "position_p95_m": 0.16461364328861233,
+          "local_rotation_p95_rad": 0.11122625355323602
+        },
+        {
+          "name": "left_ankle",
+          "position_p95_m": 0.5393319964408873,
+          "local_rotation_p95_rad": 0.3848206008856737
+        },
+        {
+          "name": "right_ankle",
+          "position_p95_m": 0.5310339272022246,
+          "local_rotation_p95_rad": 0.34457069379150695
+        },
+        {
+          "name": "spine3",
+          "position_p95_m": 0.19902684688568112,
+          "local_rotation_p95_rad": 0.0798225336489999
+        },
+        {
+          "name": "left_foot",
+          "position_p95_m": 0.5768007397651669,
+          "local_rotation_p95_rad": 0.2833558174209562
+        },
+        {
+          "name": "right_foot",
+          "position_p95_m": 0.6100479960441583,
+          "local_rotation_p95_rad": 0.29296750527311055
+        },
+        {
+          "name": "neck",
+          "position_p95_m": 0.34845841228961927,
+          "local_rotation_p95_rad": 0.16251649973392907
+        },
+        {
+          "name": "left_collar",
+          "position_p95_m": 0.28929073810577377,
+          "local_rotation_p95_rad": 0.28064444247934117
+        },
+        {
+          "name": "right_collar",
+          "position_p95_m": 0.28374964296817773,
+          "local_rotation_p95_rad": 0.19799524217334386
+        },
+        {
+          "name": "head",
+          "position_p95_m": 0.38957772552967007,
+          "local_rotation_p95_rad": 0.28508933667614816
+        },
+        {
+          "name": "left_shoulder",
+          "position_p95_m": 0.3575199842453002,
+          "local_rotation_p95_rad": 0.36597190407424945
+        },
+        {
+          "name": "right_shoulder",
+          "position_p95_m": 0.31405709981918334,
+          "local_rotation_p95_rad": 0.37530124609116805
+        },
+        {
+          "name": "left_elbow",
+          "position_p95_m": 0.31508044004440294,
+          "local_rotation_p95_rad": 0.721765735796581
+        },
+        {
+          "name": "right_elbow",
+          "position_p95_m": 0.33988676667213436,
+          "local_rotation_p95_rad": 0.6313001403873413
+        },
+        {
+          "name": "left_wrist",
+          "position_p95_m": 0.38001996874809263,
+          "local_rotation_p95_rad": 0.2610118837853828
+        },
+        {
+          "name": "right_wrist",
+          "position_p95_m": 0.35543983876705154,
+          "local_rotation_p95_rad": 0.3016108862900688
+        },
+        {
+          "name": "left_hand",
+          "position_p95_m": 0.44775334596633903,
+          "local_rotation_p95_rad": 0.21592654594350455
+        },
+        {
+          "name": "right_hand",
+          "position_p95_m": 0.36463536322116846,
+          "local_rotation_p95_rad": 0.1965019799757666
+        }
+      ],
+      "input_summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_cloth_fgp_20261008_E004/summary.json",
+        "bytes": 7382,
+        "sha256": "0642dbe2290582c44dcd10630002ecab15101b4542dfc3780aa294e04c438ad2"
+      },
+      "input_bundle": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_cloth_fgp_20261008_E004/body_only.npz",
+        "bytes": 2878460,
+        "sha256": "2dae1fc2230773196930de147ff856d60cd66dce472a5f3ad9d72ed4e2458652"
+      }
+    }
+  ],
+  "training_started": false,
+  "hardware_control": false,
+  "baidu_backup_status": "LOCAL_ONLY"
+}

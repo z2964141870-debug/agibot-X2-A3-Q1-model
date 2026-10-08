@@ -1,0 +1,226 @@
+{
+  "stage": "q1_cloth_q1_20261008_E005",
+  "usage": "TEST_ONLY",
+  "training_allowed": false,
+  "scope": "REAL_RECORDED_POSE_INPUT_KINEMATIC_IK_SUPPORTED_PD_REPLAY",
+  "render_backend": "cpu",
+  "conversion": {
+    "usage": "TEST_ONLY",
+    "training_allowed": false,
+    "source_raw_sha256": "8015e969dc2ef9629e3a4e02d16d2846449d7db2ebd2eb94ca063c814358f952",
+    "source_kind": "TEST_ONLY_REINFERRED_CLOTHO_FGP_LIP_ESTIMATED_ROOT",
+    "source_bundle_sha256": "8142ea18889cba34cf2d582d88adbbf91d91a0cae79dfb83b786666db90e3d8c",
+    "raw_frames": 1766,
+    "source_duration_s": 58.833333333333336,
+    "source_average_hz": 30.0,
+    "source_max_gap_s": 0.033333333333338544,
+    "resampled_frames": 2942,
+    "reference_hz": 50,
+    "resampled_duration_s": 58.82,
+    "interpolation": "POSITION_LINEAR_ROTATION_SLERP_NO_EXTRAPOLATION",
+    "axis_basis": "SMPL_X_LEFT_Y_UP_Z_FORWARD_TO_ROBOT_X_FORWARD_Y_LEFT_Z_UP",
+    "basis_matrix": [
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "axes_verified_on_hardware": false,
+    "calibration": "FIRST_FRAME_RELATIVE_DIAGNOSTIC_NOT_PAIRED_HUMAN_ROBOT_CALIBRATION",
+    "root_translation_range_m": [
+      2.686487555503845,
+      0.21216033026576042,
+      2.0374804735183716
+    ],
+    "root_translation_all_zero": false,
+    "axis_angle_vs_projected_matrix_max_error_rad": 9.753004325929758e-16,
+    "rotation_repair": {
+      "repair_budget_orthogonality_frobenius": 0.01,
+      "source_max_orthogonality_error": 5.16663154483473e-07,
+      "source_max_determinant_error": 4.106456494845645e-07,
+      "max_matrix_repair_frobenius_change": 2.583315537996049e-07
+    }
+  },
+  "scaling": {
+    "method": "MEAN_MAPPED_PELVIS_HIP_KNEE_ANKLE_CHAIN_LENGTH_RATIO",
+    "robot_leg_chain_lengths_m": [
+      0.4200625614162781,
+      0.4200625614162781
+    ],
+    "human_median_leg_chain_lengths_m": [
+      0.9202759503798952,
+      0.9176317413915884
+    ],
+    "scale": 0.4571095309051099
+  },
+  "base_commit": "3bc7815f1f1e10cdeec2e0fefeb749a6138da016",
+  "versions": {
+    "mujoco": "3.3.7",
+    "mink": "1.2.0",
+    "qpsolvers": "4.12.0",
+    "quadprog": "0.1.13",
+    "scipy": "1.15.3",
+    "numpy": "1.26.0"
+  },
+  "source_files": [
+    {
+      "path": "script/q1/validate_egolocate.py",
+      "sha256": "ad2b79e750e9644e60ed452ba7e7a2f66cb7ee03b909d448fb784c823a186b3c"
+    },
+    {
+      "path": "script/q1/egolocate_input.py",
+      "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+    },
+    {
+      "path": "script/q1/inspect_egolocate.py",
+      "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+    },
+    {
+      "path": "script/q1/q1_retarget.py",
+      "sha256": "0dc566f0159a4206b0cc4c5df89c80bbce1c6061ab412ce6bc0b2295ee949d97"
+    },
+    {
+      "path": "script/q1/q1_sim.py",
+      "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+    },
+    {
+      "path": "script/q1/retarget_config.json",
+      "sha256": "3513583be13034a939fc327800c26ecfdb3ab2f8fcb0da6b36a932e73079be83"
+    },
+    {
+      "path": "script/q1/sim_config.json",
+      "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+    }
+  ],
+  "input_decoded": true,
+  "finite_kinematic_output": true,
+  "kinematic_max_body_position_error_m": 0.019853373279169136,
+  "kinematic_body_position_error_p95_m": 0.014337995221398558,
+  "kinematic_max_body_orientation_error_rad": 0.38553189253702763,
+  "kinematic_body_orientation_error_p95_rad": 0.3132165421030361,
+  "reference_max_joint_speed_rad_s": 1.9999980000000037,
+  "reference_joint_limit_violations": 0,
+  "reference_fraction_joint_samples_within_0_001_rad_of_limit": 0.030097027377788764,
+  "supported_replay_duration_s": 58.819999999953616,
+  "supported_replay_max_joint_rmse_rad": 0.012856265707075433,
+  "supported_replay_max_abs_joint_error_rad": 0.03115494788770208,
+  "supported_replay_torque_saturation_fraction": 0.0,
+  "supported_replay_finite": true,
+  "pose_fidelity_validated": false,
+  "root_translation_tracking_tested": false,
+  "balance_verified": false,
+  "policy_trained": false,
+  "hardware_control": false,
+  "body_residuals": [
+    {
+      "name": "pelvis",
+      "position_p95_m": 0.0,
+      "orientation_p95_rad": 2.2929868617541516e-16
+    },
+    {
+      "name": "spine3",
+      "position_p95_m": 0.004492297616043081,
+      "orientation_p95_rad": 0.07648646698467859
+    },
+    {
+      "name": "left_hip",
+      "position_p95_m": 0.01054827479801153,
+      "orientation_p95_rad": 0.058623095128241286
+    },
+    {
+      "name": "right_hip",
+      "position_p95_m": 0.009494243947711584,
+      "orientation_p95_rad": 0.06505498861217077
+    },
+    {
+      "name": "left_knee",
+      "position_p95_m": 0.008344075192348767,
+      "orientation_p95_rad": 0.04113284302265209
+    },
+    {
+      "name": "right_knee",
+      "position_p95_m": 0.0072742652681703455,
+      "orientation_p95_rad": 0.04063137518248291
+    },
+    {
+      "name": "left_ankle",
+      "position_p95_m": 0.007490921851748958,
+      "orientation_p95_rad": 0.038568227212156275
+    },
+    {
+      "name": "right_ankle",
+      "position_p95_m": 0.00869049315400634,
+      "orientation_p95_rad": 0.05355671116541749
+    },
+    {
+      "name": "left_shoulder",
+      "position_p95_m": 0.015387516922742374,
+      "orientation_p95_rad": 0.3194649571794971
+    },
+    {
+      "name": "right_shoulder",
+      "position_p95_m": 0.011238549859640165,
+      "orientation_p95_rad": 0.3599536110713603
+    },
+    {
+      "name": "left_elbow",
+      "position_p95_m": 0.015100836234090774,
+      "orientation_p95_rad": 0.14316538515624444
+    },
+    {
+      "name": "right_elbow",
+      "position_p95_m": 0.01613976304017906,
+      "orientation_p95_rad": 0.23115279061278857
+    },
+    {
+      "name": "left_wrist",
+      "position_p95_m": 0.007141204713939322,
+      "orientation_p95_rad": 0.20419816059418508
+    },
+    {
+      "name": "right_wrist",
+      "position_p95_m": 0.011433485396883545,
+      "orientation_p95_rad": 0.32900745294014133
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "body_q1_overview.png",
+      "bytes": 340985,
+      "sha256": "638034c99ec94158fe83614a8157aa242badb8e9708f8929d015df3a7d01d0dd"
+    },
+    {
+      "name": "body_reference.npz",
+      "bytes": 1948720,
+      "sha256": "e0ccf11233243ec4dcaba66cd641d3399d9fa581da4541db5cb69f2f2e304b29"
+    },
+    {
+      "name": "joint_reference.npz",
+      "bytes": 494754,
+      "sha256": "b3164ff3bdece5732d3d78beaf34daa78bf4894cd70b49f84156e20965597bb6"
+    },
+    {
+      "name": "kinematic_trace.npz",
+      "bytes": 5582822,
+      "sha256": "43ce492c3086a8991420bd402b9ae51ef64b4dbd1c200047d1ea585e4dd2c74d"
+    },
+    {
+      "name": "supported_replay.npz",
+      "bytes": 1493905,
+      "sha256": "1578088c53200cc326b7c8624863d25ad18400b39990c2ea2b9ee7d64398f1e1"
+    }
+  ],
+  "baidu_backup_status": "LOCAL_ONLY",
+  "ik_wall_s": 3.0865046190000385
+}

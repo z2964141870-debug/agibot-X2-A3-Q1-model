@@ -43,3 +43,15 @@ Q1 E003 interrupted: kinematic_trace.npz 0 bytes, no replay/summary; retain inco
 R001 original RUNNING state is stale after reboot. Next: reuse walking E003 for Q1 E005, then single-leg E004/Q1 E006.
 User slow-transfer preference: stop slow large transfer; list exact source/target/size for user third-party transfer.
 No new large transfer needed. TEST_ONLY, no training or hardware control; backup LOCAL_ONLY.
+2026-10-08 21:12 CST final offline-test evidence:
+Walking FGP E003 / Q1 E005 completed; single-leg FGP E004 / Q1 E006 numeric recovery completed.
+Recovering E005 reproduced 9 original metrics exactly (maximum absolute difference 0).
+E006: 2944 frames, full supported replay 58.86 s, limits 0 violations, IK position P95 0.0953509315 m.
+E006: max joint RMSE 0.0304815467 rad, max absolute joint error 0.2275152069 rad.
+E006 complete numerical trace/target/timeline checks PASS. Full torque-saturation counter was not persisted; report null.
+Diagnostic D001 completed via D002 command log after preserving first missing-script failure.
+E006 saved-kinematics rendering R002 completed at 21:05; image 343853 bytes, SHA256 1d2bddc32c0cc0bce40305174331f60e800a26952ceb664239d2980c35e673ca.
+Server boots: 20:57:59 then 21:06:17, after user changed power from strip to wall socket. Cause/manual initiation unconfirmed.
+Journal filter did not identify OOM, NVIDIA Xid, panic or clean shutdown; this is not proof excluding hardware/power faults.
+All 5 successful summaries enforce TEST_ONLY; added server code py_compile PASS.
+No current inference/simulation process. No new training, hardware control, dependency install, Baidu upload or large transfer.

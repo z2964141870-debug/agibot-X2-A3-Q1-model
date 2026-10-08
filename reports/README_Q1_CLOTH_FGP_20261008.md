@@ -194,10 +194,10 @@ cd /media/yu/FAFF-E977/YuanQi_Q1
   --output-dir data/experiments/q1_cloth_diagnostics_20261008_D001
 ```
 
-工件清单集中在 `data/manifests/q1_cloth_*_summary.json` 与 `q1_cloth_input_20261008.json`，源码身份由各摘要登记；原始/衍生 NPZ、模型、大包均留服务器，`LOCAL_ONLY`。尚没有需要用户通过第三方传输的新文件。已核验发布检查点为 `3bc7815`，本轮最终报告与新增恢复/渲染代码待审查后推送，成功回执另存；不把待推送写成已同步。
+工件清单集中在 `data/manifests/q1_cloth_*_summary.json` 与 `q1_cloth_input_20261008.json`，源码身份由各摘要登记；原始/衍生 NPZ、模型、大包均留服务器，`LOCAL_ONLY`。尚没有需要用户通过第三方传输的新文件。本轮 15 份代码/报告/清单/小型执行记录已提交并推送 `40c8f95572568c6788c5787eea0ca289cd08262f`；`git rev-parse HEAD` 与 `git ls-remote origin refs/heads/Q1` 实读完全一致。暂存 payload 审核通过，其他两份 PredActor 暂存内容原样保留。发布核验回执见 `logs/session_records/q1_cloth_fgp_publication_20261008.json`；回执自身提交号以 Git 历史为准，不循环写入自己的提交号。
 
 ## 下一步
 
-1. 本轮离线测试完成后，先核对发布回执；无需再跑两段转换或 PD 回放。服务器稳定性未确定，不自动启动训练。
+1. 本轮离线测试及结果发布已完成；恢复先核对报告/发布回执与实时主机状态，无需再跑两段转换或 PD 回放。服务器稳定性未确定，不自动启动训练。
 2. 优先检查 FGP 输入预处理、根朝向、服装标定和配对站姿校准，降低人体重建误差；单腿重定向残差也需改善。
 3. 再建立地面/脚接触、无支撑动力学跟踪与训练任务。当前测试数据保持 TEST_ONLY，不用于训练，不操作真机。

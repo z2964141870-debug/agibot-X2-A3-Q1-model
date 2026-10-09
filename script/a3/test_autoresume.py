@@ -76,6 +76,37 @@ class RecoveryTests(unittest.TestCase):
                 recovery.main()
         self.assertEqual(json.loads((job / "state.json").read_text())["attempts"], [1, 2, 3])
 
+    def test_new_job_target_does_not_modify_completed_ledger(self):
+        old = self.root / "data/training/R01"
+        old.mkdir(parents=True)
+        atomic_json(old / "state.json", {"status": "complete", "attempts": [1, 2, 3]})
+        previous = (old / "state.json").read_bytes()
+        new = self.root / "data/training/R02"
+        argv = ["autoresume", str(new), "--init", "--source-dir", "data/training/source2000",
+                "--target-step", "10000", "--run-prefix", "E007_long"]
+        with patch.object(recovery, "ROOT", self.root), patch("sys.argv", argv):
+            self.assertEqual(recovery.main(), 0)
+        config = json.loads((new / "job.json").read_text())
+        self.assertEqual(config["target_step"], 10000)
+        self.assertEqual(config["source_dirs"], ["data/training/source2000"])
+        self.assertEqual(config["max_attempts"], 3)
+        self.assertEqual(recovery.read_state(new / "state.json", config)["attempts"], [])
+        self.assertEqual((old / "state.json").read_bytes(), previous)
+
+    def test_job_target_cannot_be_changed_on_run(self):
+        with patch("sys.argv", ["autoresume", str(self.root), "--target-step", "10000"]):
+            with self.assertRaises(SystemExit):
+                recovery.main()
+
+    def test_new_job_rejects_escaping_source_or_run_prefix(self):
+        for source, prefix in [("../outside", "valid"), ("data/training/source", "../outside")]:
+            job = self.root / "data/training" / ("bad_source" if source.startswith("..") else "bad_prefix")
+            argv = ["autoresume", str(job), "--init", "--source-dir", source, "--run-prefix", prefix]
+            with patch.object(recovery, "ROOT", self.root), patch("sys.argv", argv):
+                with self.assertRaises(SystemExit):
+                    recovery.main()
+            self.assertFalse((job / "job.json").exists())
+
     def test_second_supervisor_cannot_launch(self):
         job = self.root / "data/training/job"
         job.mkdir(parents=True)

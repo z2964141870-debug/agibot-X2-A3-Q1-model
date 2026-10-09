@@ -1,0 +1,21 @@
+[Unit]
+Description=YUANQI A3 official continuation to cumulative 10000
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/yu/.local/lib/yuanqi/boot_autoresume.sh
+WorkingDirectory=/home/yu
+Environment=YUANQI_A3_JOB_DIR=/media/yu/FAFF-E9771/YUANQI/data/training/a3_20261009/autoresume_control_R02
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+RestartSec=300
+RestartPreventExitStatus=2
+MemoryHigh=16G
+MemoryMax=20G
+CPUQuota=100%
+KillMode=control-group
+TimeoutStopSec=45
+
+[Install]
+WantedBy=default.target

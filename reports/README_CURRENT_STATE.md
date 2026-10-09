@@ -16,6 +16,10 @@
 
 ## 已完成，可从证据继续
 
+10/9 17:50最新A3：用户授权测试失败后续训至累计10000；新R02已17:47从2000完整恢复，独立校验2050通过，`yuanqi-a3-longtrain.service` active/running/enabled、CPUQuota100%，第1/3次run `E007_long_01_s2000`。CPU69°C/GPU40°C、同boot，无新热停/重启证据。R02有效至10/10 17:47:35，温度CPU90/GPU85保护保持，普通异常/热停不自动解锁。原heartbeat yuanqi-a3已恢复ACTIVE/每10分钟、范围更新R02；R01complete及其3/3账本保留。见[累计10000续训](README_A3_LONGTRAIN_20261009.md)和[启动证据](../data/manifests/a3_longtrain_R02_20261009.json)。
+
+续训依据MuJoCo E01的20/20跌倒结果。Isaac E02输出路径冲突，E03加载模型和20动作后缺smpl_sim指标依赖，官方validate因metrics缺失返回1；原生效果UNKNOWN，不能采用退出0/manifest complete作为通过依据。包装器已补强制validate。35项恢复/保存检查通过；模型LOCAL_ONLY，更新数不证明策略效果。下面R01完成与旧巡检暂停为历史证据。
+
 10/9 15:37后完成A3 E01 MuJoCo sim2sim：相同20个训练动作、完整长度，各模型24304策略步；step500和step2000均20/20触发跌倒，首次跌倒时间中位1.90→2.40秒，前向慢走最终1.96秒即触发。两进程退出0、数值/覆盖核验通过，策略稳定跟随未通过，不可据此部署。CPU保护采样最高82°C，无新热停/重启。见[模型效果评测](README_A3_EVALUATION_20261009.md)和[逐动作摘要](../data/manifests/a3_mujoco_E01_20261009.json)。下一步训练仿真Isaac同条件评测以区分策略失败与sim2sim差异，尚未做该评测。
 
 10/9 15:22 最新A3：第三次 `E006_auto_03_s1800` 已于15:20:33正常完成1800→2000，ledger complete、service inactive/success/exit0，同boot `91918243…`。最终2000模型独立SHA/CPU重载/有限性通过，13项训练标量有限；模型LOCAL_ONLY。CPUQuota100%期间100条保护采样CPU最高71°C，独立巡检曾73°C，没有再次触发保护；不能认定长期稳定、故障根因或策略效果通过。见[最终续训记录](README_A3_CPU_RESUME_20261009.md)。最终记录已保存；yuanqi-a3已暂停且回读PAUSED，每日研究yuanqi仍ACTIVE；3/3预算与原保护保留，不自动开新训练。
@@ -48,7 +52,7 @@ Q1新工作：用户于10/8指定 `/media/yu/FAFF-E977/YuanQi_Q1`，最终目标
 
 ## 下一项具体工作
 
-R01累计2000已完成并重载，MuJoCo E01稳定动作跟随失败（20/20触发跌倒）；下一步做训练仿真Isaac的同动作评测，检查观测/关节映射/PD与迁移差异，再决定是否扩大训练或采用官方PT。见[效果评测](README_A3_EVALUATION_20261009.md)。官方035 PT尚未下载，B0/B1安排保留。旧训练巡检仍暂停，本轮未新增训练或真机操作。
+当前R02续训至10000进行中，恢复入口为[长训README](README_A3_LONGTRAIN_20261009.md)。先检查最新服务/账本/sidecar/温度，不重复初始化或解锁保护；完成后补齐Isaac指标依赖，做同条件2000vs10000原生与MuJoCo评测。运行中不抢占GPU评测。官方035 PT尚未下载，B0/B1安排保留，未操作真机。
 
 下一课：同一个关节的 Actor 输出 -> 目标角 -> PD -> 实际反馈，由本人解释并判断，再回到对应字段 / 代码。A3 公开工程来源本轮已确认智元官方组织发布、基于 NVIDIA SONIC；型号兼容和实际训练仍按资源审计推进，见[主线与来源记录](README_LEARNING_MAINLINE_20261009.md)。
 

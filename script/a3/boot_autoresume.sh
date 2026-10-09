@@ -2,7 +2,7 @@
 set -euo pipefail
 
 project_root=/media/yu/FAFF-E9771/YUANQI
-job_dir="$project_root/data/training/a3_20261009/autoresume_control_R01"
+job_dir="${YUANQI_A3_JOB_DIR:-$project_root/data/training/a3_20261009/autoresume_control_R01}"
 # This small guard is installed in HOME so it can wait for the data disk.
 for ((attempt = 0; attempt < 120; attempt++)); do
     if mountpoint -q /media/yu/FAFF-E9771 && [[ -f "$job_dir/job.json" && -x "$project_root/data/environments/a3-sonic/bin/python" ]]; then

@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import signal
 import subprocess
 import time
@@ -219,11 +220,17 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("job_dir", type=Path)
     parser.add_argument("--init", action="store_true")
+    parser.add_argument("--source-dir", type=Path, help="New job's trusted source checkpoint directory")
+    parser.add_argument("--target-step", type=int, help="New job's cumulative update target")
+    parser.add_argument("--run-prefix", help="New job's distinct run prefix")
     parser.add_argument("--rearm-temperature", metavar="AUTHORIZATION",
                         help="Record explicit authorization without resetting the budget or launching")
     options = parser.parse_args()
     if options.init and options.rearm_temperature is not None:
         parser.error("Init and rearm are mutually exclusive")
+    if not options.init and any(value is not None for value in (
+            options.source_dir, options.target_step, options.run_prefix)):
+        parser.error("Source, target and prefix can only be set when initializing a new job")
     job_dir = options.job_dir.resolve()
     if not job_dir.is_relative_to(ROOT / "data/training"):
         parser.error("Job directory must be inside this project's data/training")
@@ -231,8 +238,15 @@ def main():
         job_dir.mkdir(parents=True, exist_ok=True)
         if (job_dir / "job.json").exists() or (job_dir / "state.json").exists():
             raise FileExistsError("Existing job budget cannot be reset by init")
-        config = {"source_dirs": ["data/training/a3_20261009/E005_resume_154to2000"],
-                  "run_prefix": "E006_auto", "num_envs": 64, "target_step": 2000,
+        source = (ROOT / (options.source_dir or Path("data/training/a3_20261009/E005_resume_154to2000"))).resolve()
+        target = options.target_step if options.target_step is not None else 2000
+        prefix = options.run_prefix if options.run_prefix is not None else "E006_auto"
+        if not source.is_relative_to(ROOT / "data/training"):
+            parser.error("Source must be inside this project's data/training")
+        if target <= 0 or not re.fullmatch(r"[A-Za-z0-9_-]+", prefix):
+            parser.error("Target must be positive and prefix must contain only letters, numbers, underscore or hyphen")
+        config = {"source_dirs": [str(source.relative_to(ROOT))],
+                  "run_prefix": prefix, "num_envs": 64, "target_step": target,
                   "max_attempts": 3, "max_no_progress": 2, "expires_at": time.time() + 86400,
                   "cooldown_seconds": 300, "sample_seconds": 5, "max_gpu_c": 85, "max_cpu_c": 90}
         atomic_json(job_dir / "job.json", config)

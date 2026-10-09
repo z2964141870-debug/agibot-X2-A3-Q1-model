@@ -1,6 +1,6 @@
 # A3 R03 持续续训至累计10000
 
-记录日期：2026-10-10，北京时间。阶段：R03 / E008_cont。状态：配置与恢复校验完成，启动验证待做。
+记录日期：2026-10-10，北京时间。阶段：R03 / E008_cont。状态：00:52已启动，00:53:50核验运行及2725新模型通过；目标10000尚未完成。
 
 ## 目标与授权
 
@@ -32,12 +32,18 @@ data/training/a3_20261009/autoresume_control_R03 --init \
 
 ## 实际结果与边界
 
-当前完成配置与源模型验证，尚未核验新训练进程加载或新checkpoint。R02多次整机重启根因仍UNKNOWN，取消启动上限不是修复硬件。空闲温度不能证明训练负载稳定。
+00:52:12服务启动，00:52:15登记首次 `E008_cont_01_s2700`，run和health的boot均为 `a95a89b9-df91-4c13-b609-86273fbd847d`。加载回执确认global_step2700、Actor/Critic与源一致，optimizer_steps=[3000,54000]、两组学习率2e-5；仿真episode重新reset，非逐轨迹无缝恢复。
+
+00:53独立selector已验证新2725模型的大小/SHA/CPU重载/网络与优化器有限性及计数：402081749 bytes，SHA `7024a35ec2355cd1d87864412f9b37c22635a0b87de8ae5425a42388e1b1b82a`，LOCAL_ONLY。日志 `logs/a3_continuous_20261010/setup/new_checkpoint_validation.log`；加载回执 `logs/a3_training_20261009/E008_cont_01_s2700/resume_loaded.json`。非500倍数模型可能按保留策略清理，此项保留当时启动成功证据。
+
+00:53:50独立健康采样CPU66°C、GPU37°C、可用RAM25209962496 bytes，服务active/running/enabled、CPUQuotaPerSecUSec=1s，未见新热停/重启。快照 `logs/a3_continuous_20261010/launch_verified/snapshot.jsonl`。这只证明当时运行和保存成功，不能证明数小时稳定。R02多次整机重启根因仍UNKNOWN，取消启动上限不是修复硬件。
 
 MuJoCo step2000基线20/20跌倒；Isaac原生评测缺smpl_sim指标依赖、validate失败，效果UNKNOWN。R03更新数不证明效果通过，也未操作真机。所有大型模型仍LOCAL_ONLY，未验证网盘备份。
 
 ## 保存、同步与下一步
 
-本README与索引/当前状态先保存，再审计发布代码与配置；具体提交与远端核验见Git历史。启动后补加载回执、service/health、首个新checkpoint，并更新原 `yuanqi-a3` 的巡检范围到R03。每日研究 `yuanqi` 保持。
+配置与初始README已发布 `287ee882944ef078744845acfd933b6f23af8477`，索引/current state已发布 `889546bf9aea6f1af9f222b3c4a56e02ef5f214b`，各次远端main均核验一致。启动结果、工件/巡检清单和长期偏好随本次scoped审计发布；具体提交由Git历史提供。00:55核验R02 job/state SHA仍与启动前一致。
+
+原 `yuanqi-a3` 已更新R03，工具返回ACTIVE，automation.toml回读确认10分钟间隔、R03范围、无到期限制，完成10000后暂停；每日研究 `yuanqi` 未修改。未来巡检日志 `logs/a3_watch_20261010/`，去重仍使用 `data/manifests/a3_watch_state_20261009.json`。此前00:43触发已保存00:44:55原始快照但被用户中断，未完成去重清单发布，不冒充完整巡检。
 
 恢复先读本文件、R03 job/state和当前service。巡检不主动解除blocked或重复启动；完成10000后独立校验最终模型、保存结果并暂停巡检。原R02到期不适用于新R03。

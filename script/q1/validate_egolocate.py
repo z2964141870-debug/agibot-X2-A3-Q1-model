@@ -133,7 +133,7 @@ def render_overview(retargeter, source, qposes, directory, backend="egl"):
                 robot_image = Image.fromarray(renderer.render())
             montage.paste(robot_image, (480, row * 540 + 40))
             draw = ImageDraw.Draw(montage)
-            draw.text((10, row * 540 + 10), f"Recorded SMPL body: t={source.times[frame]:.2f}s", fill="black")
+            draw.text((10, row * 540 + 10), f"Source body: t={source.times[frame]:.2f}s", fill="black")
             draw.text((490, row * 540 + 10), "Q1 kinematic IK (not dynamic balance)", fill="black")
     montage.save(directory / "body_q1_overview.png")
 
@@ -141,6 +141,7 @@ def render_overview(retargeter, source, qposes, directory, backend="egl"):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, required=True)
+    parser.add_argument("--input-format", choices=("egolocate", "dataset-reference"), default="egolocate")
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--render", action="store_true")
     parser.add_argument("--render-backend", choices=("egl", "cpu"), default="egl")
@@ -149,7 +150,11 @@ def main():
         parser.error("Use a new output directory")
     args.output_dir.mkdir(parents=True)
     retargeter = Q1Retargeter()
-    source, conversion = convert_bundle(args.input, retargeter.names, retargeter.sim.config["reference_hz"])
+    if args.input_format == "dataset-reference":
+        from dataset_input import load_dataset_reference
+        source, conversion = load_dataset_reference(args.input, retargeter.names)
+    else:
+        source, conversion = convert_bundle(args.input, retargeter.names, retargeter.sim.config["reference_hz"])
     print(f"Input decoded: {len(source.times)} frames", flush=True)
     save_test_only(source, args.output_dir / "body_reference.npz")
     scale, scaling = leg_scale(source, retargeter)
@@ -190,7 +195,8 @@ def main():
     root = Path(__file__).resolve().parents[2]
     report = {
         "stage": args.output_dir.name, "usage": "TEST_ONLY", "training_allowed": False,
-        "scope": "REAL_RECORDED_POSE_INPUT_KINEMATIC_IK_SUPPORTED_PD_REPLAY",
+        "scope": "BODY_POSE_INPUT_KINEMATIC_IK_SUPPORTED_PD_REPLAY",
+        "input_format": args.input_format,
         "render_backend": args.render_backend if args.render else None,
         "conversion": conversion, "scaling": scaling,
         "base_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip(),
@@ -221,6 +227,17 @@ def main():
                       for p in sorted(args.output_dir.iterdir())], "baidu_backup_status": "LOCAL_ONLY",
     }
     report["ik_wall_s"] = ik_wall_seconds
+    if args.input_format == "dataset-reference":
+        from dataset_input import identity, knee_geometry
+        data = mujoco.MjData(retargeter.sim.model)
+        body_positions = []
+        for q in qposes:
+            data.qpos[:] = q
+            mujoco.mj_forward(retargeter.sim.model, data)
+            body_positions.append(data.xpos[retargeter.bodies].copy())
+        report["q1_leg_geometry"] = knee_geometry(np.asarray(body_positions), source.names)
+        report["kinematic_root_translation_range_m"] = np.ptp(qposes[:, :3], axis=0).tolist()
+        report["source_files"].append(identity(Path(__file__).with_name("dataset_input.py")))
     (args.output_dir / "summary.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2))
 

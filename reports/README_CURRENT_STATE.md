@@ -16,6 +16,8 @@
 
 ## 已完成，可从证据继续
 
+10/10 A3全链路执行：用户授权推进所有可用测试并包含短微调，卡点登记后继续，重启只恢复不查根因。四段SMPL结构/30Hz规范化和完整29关节A3运动学参考已完成，仍TEST_ONLY/非高保真；官方PT网络超时、Isaac指标依赖和RKNN工具链待处理，继续独立检查。旧R03保持disabled。台账 `data/experiments/a3_fullchain_20261010/tasks.json`，见[执行入口](README_A3_FULLCHAIN_20261010.md)。
+
 10/10主线调整：用户赞成“官方预训练PT + 动捕服数据适配与微调”。先验证官方样例链路，再测转换后的衣服录制，以短板决定微调；会话/动作序列隔离验证，未来参考先建议缓冲并计延迟。Q1目录已有FGP导出的SMPL测试样本，优先复用并验收根轨迹/接触/坐标时序，不重复索取已有文件；现场协议仍待核验，官方PT未下载/评测。实时服务inactive、MainPID0、disabled，继续暂停；下一步为已有样本质量与数据合同、官方基线准备，见[动捕适配路线](README_A3_MOCAP_ROUTE_20261010.md)。
 
 10/10最新A3：用户要求先停并核对官方HF模型；R03已01:09停止，service inactive/dead/disabled、无GPU计算进程，巡检yuanqi-a3 PAUSED，每日研究yuanqi ACTIVE。最近保存2950独立大小/SHA/CPU重载/有限性校验通过，LOCAL_ONLY。期间01:03出现新boot40497006，根因未知；账本running字段为历史持久值。官方035 step200000有PT/ONNX/RKNN，RKNN用于板端推理，PT支持评测/权重微调；未下载/评测，不含SMPL编码器。最新入口[官方模型与暂停](README_A3_PRETRAINED_20261010.md)，下方运行记录为历史证据。

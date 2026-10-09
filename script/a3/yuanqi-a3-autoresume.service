@@ -1,0 +1,20 @@
+[Unit]
+Description=YUANQI A3 bounded checkpoint recovery
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/yu/.local/lib/yuanqi/boot_autoresume.sh
+WorkingDirectory=/home/yu
+Restart=on-failure
+RestartSec=300
+RestartPreventExitStatus=2
+MemoryHigh=16G
+MemoryMax=20G
+CPUQuota=300%
+KillMode=control-group
+TimeoutStopSec=45
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

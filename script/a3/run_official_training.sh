@@ -31,6 +31,9 @@ if [[ "${RESUME_MODE:-false}" == true ]]; then
 fi
 
 cd "$PROJECT_ROOT"
+mkdir -p "$PROJECT_ROOT/logs/a3_training_20261009"
+exec 9>"$PROJECT_ROOT/logs/a3_training_20261009/training.lock"
+flock -n 9 || { echo 'Another A3 training wrapper holds the lock' >&2; exit 75; }
 LOG_DIR="$PROJECT_ROOT/logs/a3_training_20261009/$RUN_ID"
 mkdir -p "$LOG_DIR" "$EXPERIMENT_DIR"
 if [[ -e "$LOG_DIR/exit_code" || -e "$EXPERIMENT_DIR/config.yaml" ]]; then

@@ -1,0 +1,166 @@
+"""CPU recovery tests; real power loss and automatic boot remain untested."""
+
+import fcntl
+import json
+from pathlib import Path
+import signal
+import subprocess
+import tempfile
+from types import SimpleNamespace
+import unittest
+from unittest.mock import patch
+
+import torch
+
+from script.a3 import autoresume as recovery
+from script.a3.checkpoint_store import atomic_json, save_checkpoint
+
+
+class RecoveryTests(unittest.TestCase):
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.root = Path(self.temporary.name)
+        self.config = {"max_attempts": 3, "max_no_progress": 2, "target_step": 2000,
+                       "expires_at": 10000, "num_envs": 64, "source_dirs": ["source"]}
+
+    def tearDown(self):
+        self.temporary.cleanup()
+
+    def ledger(self, steps):
+        return {"config_sha256": recovery.fingerprint(self.config), "status": "running",
+                "attempts": [{"start_step": step, "run_dir": f"run{index}"}
+                             for index, step in enumerate(steps)]}
+
+    def test_budget_survives_serialization_and_progress(self):
+        path = self.root / "state.json"
+        atomic_json(path, self.ledger([600, 625, 650]))
+        state = recovery.read_state(path, self.config)
+        self.assertEqual(recovery.decision(self.config, state, 675, 100), "attempt_limit")
+
+    def test_two_failures_without_saved_progress_stop(self):
+        self.assertEqual(recovery.decision(self.config, self.ledger([600, 600]), 600, 100), "no_progress")
+
+    def test_progress_clears_only_no_progress_count(self):
+        self.assertEqual(recovery.decision(self.config, self.ledger([600, 600]), 625, 100), "run")
+        self.assertEqual(len(self.ledger([600, 600])["attempts"]), 2)
+
+    def test_expiration(self):
+        self.assertEqual(recovery.decision(self.config, self.ledger([]), 600, 10000), "expired")
+
+    def test_target_precedes_attempt_limit(self):
+        self.assertEqual(recovery.decision(self.config, self.ledger([600, 625, 650]), 2000, 100), "complete")
+
+    def test_changed_config_rejected(self):
+        path = self.root / "state.json"
+        atomic_json(path, self.ledger([600]))
+        with self.assertRaises(ValueError):
+            recovery.read_state(path, dict(self.config, max_attempts=30))
+
+    def test_missing_ledger_never_resets_budget(self):
+        with self.assertRaises(FileNotFoundError):
+            recovery.read_state(self.root / "missing.json", self.config)
+
+    def test_corrupt_ledger_is_not_recreated(self):
+        path = self.root / "state.json"
+        path.write_text("{")
+        with self.assertRaises(json.JSONDecodeError):
+            recovery.read_state(path, self.config)
+        self.assertEqual(path.read_text(), "{")
+
+    def test_init_does_not_reset_existing_job(self):
+        job = self.root / "data/training/job"
+        job.mkdir(parents=True)
+        (job / "state.json").write_text('{"attempts": [1, 2, 3]}')
+        with patch.object(recovery, "ROOT", self.root), patch("sys.argv", ["autoresume", str(job), "--init"]):
+            with self.assertRaises(FileExistsError):
+                recovery.main()
+        self.assertEqual(json.loads((job / "state.json").read_text())["attempts"], [1, 2, 3])
+
+    def test_second_supervisor_cannot_launch(self):
+        job = self.root / "data/training/job"
+        job.mkdir(parents=True)
+        with (job / "supervisor.lock").open("a") as lock:
+            fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            with patch.object(recovery, "ROOT", self.root), patch("sys.argv", ["autoresume", str(job)]), patch.object(recovery, "run_job") as launch:
+                self.assertEqual(recovery.main(), 2)
+                launch.assert_not_called()
+
+    def test_controller_error_persists_block_without_resetting_budget(self):
+        job = self.root / "data/training/job"
+        job.mkdir(parents=True)
+        atomic_json(job / "job.json", self.config)
+        atomic_json(job / "state.json", self.ledger([600]))
+        with patch.object(recovery, "ROOT", self.root), patch("sys.argv", ["autoresume", str(job)]), patch.object(recovery, "run_job", side_effect=OSError("injected diagnostic error")):
+            self.assertEqual(recovery.main(), 2)
+        saved = recovery.read_state(job / "state.json", self.config)
+        self.assertEqual(saved["status"], "blocked")
+        self.assertEqual(len(saved["attempts"]), 1)
+
+    def checkpoint(self, directory, step, environments=64):
+        save_checkpoint(self.root / directory, {
+            "policy_state_dict": {"weight": torch.tensor([1.0])},
+            "value_state_dict": {"weight": torch.tensor([1.0])},
+            "optimizer_state_dict": {"state": {}},
+            "state": SimpleNamespace(global_step=step, cur_episode_length=torch.zeros(environments)),
+        })
+
+    def test_corrupt_checkpoint_fallback_and_registered_lineage(self):
+        self.checkpoint("source", 575)
+        self.checkpoint("source", 600)
+        (self.root / "source/model_step_000600.pt").write_bytes(b"corrupt")
+        self.checkpoint("unrelated", 1900)
+        with patch.object(recovery, "ROOT", self.root):
+            step, path, rejected = recovery.best_checkpoint(self.config, self.ledger([]))
+        self.assertEqual(step, 575)
+        self.assertIn("source", path)
+        self.assertEqual(len(rejected), 1)
+
+    def test_latest_registered_attempt_is_selected(self):
+        self.checkpoint("source", 600)
+        self.checkpoint("run0", 625)
+        with patch.object(recovery, "ROOT", self.root):
+            self.assertEqual(recovery.best_checkpoint(self.config, self.ledger([600]))[0], 625)
+
+    def test_environment_count_mismatch_blocks(self):
+        self.checkpoint("source", 600, environments=16)
+        with patch.object(recovery, "ROOT", self.root), self.assertRaises(ValueError):
+            recovery.best_checkpoint(self.config, self.ledger([]))
+
+    def test_normal_training_error_is_not_retried(self):
+        state = self.ledger([600])
+        self.assertEqual(recovery.finish_attempt(self.config, state, state["attempts"][0], 625, 1, None), 2)
+        self.assertEqual(state["status"], "blocked")
+
+    def test_killed_training_can_retry_with_budget_retained(self):
+        state = self.ledger([600])
+        self.assertEqual(recovery.finish_attempt(self.config, state, state["attempts"][0], 625, -9, None), 75)
+        self.assertEqual(len(state["attempts"]), 1)
+
+    def test_temperature_blocks_even_with_sigkill(self):
+        state = self.ledger([600])
+        self.assertEqual(recovery.finish_attempt(self.config, state, state["attempts"][0], 625, -9, "temperature_stop"), 2)
+
+    def test_complete_requires_success_exit(self):
+        state = self.ledger([600])
+        self.assertEqual(recovery.finish_attempt(self.config, state, state["attempts"][0], 2000, 0, None), 0)
+        self.assertEqual(state["status"], "complete")
+
+    def test_expired_monitor_terminates_real_child(self):
+        child = subprocess.Popen(["sleep", "30"], start_new_session=True)
+        config = dict(self.config, expires_at=0, max_gpu_c=85, max_cpu_c=90, sample_seconds=0.01)
+        health = {"gpus": [], "temperatures_c": {}, "gpu_query": {"returncode": 0}}
+        with patch.object(recovery, "sample", return_value=health):
+            code, reason = recovery.monitor_child(child, self.root, config)
+        self.assertEqual(reason, "expired")
+        self.assertEqual(code, -signal.SIGTERM)
+
+    def test_monitor_exception_cleans_real_child(self):
+        child = subprocess.Popen(["sleep", "30"], start_new_session=True)
+        with patch.object(recovery, "sample", side_effect=OSError("injected telemetry failure")):
+            with self.assertRaises(OSError):
+                recovery.monitor_child(child, self.root, self.config)
+        self.assertIsNotNone(child.poll())
+
+
+if __name__ == "__main__":
+    unittest.main()

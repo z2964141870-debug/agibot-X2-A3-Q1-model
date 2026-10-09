@@ -9,14 +9,18 @@
   "first_scheduled_trigger_verified": true,
   "first_scheduled_trigger_at_utc": "2026-10-09T06:04:59.251Z",
   "first_scheduled_check_at_utc": "2026-10-09T06:06:39.022444+00:00",
-  "latest_trigger_at_utc": "2026-10-09T07:18:29.427Z",
+  "latest_trigger_at_utc": "2026-10-09T09:58:50.618Z",
+  "first_R02_scheduled_trigger_verified": true,
+  "first_R02_scheduled_check_at_utc": "2026-10-09T10:00:04.025493+00:00",
   "intervening_trigger_at_utc": "2026-10-09T06:14:59.279Z",
   "intervening_trigger_status": "arrived while earlier inspection was unfinished; no separate measurement claimed",
   "scope": "R02 cumulative2000to10000; watcher must not unblock or restart training; R01complete preserved",
   "service": "yuanqi-a3-longtrain.service",
   "job_dir": "data/training/a3_20261009/autoresume_control_R02",
   "monitor_until_local": "2026-10-10T17:47:35.419209+08:00",
-  "last_checked_at_utc": "2026-10-09T09:50:05.900475+00:00",
+  "last_checked_at_utc": "2026-10-09T10:00:04.025493+00:00",
+  "last_check_logs": "logs/a3_watch_20261009/scheduled_20261009T095850Z",
+  "last_check_event": "none; same boot/run/service/attempt; below next2500 milestone",
   "last_observation": {
     "ssh_available": true,
     "boot_id": "91918243-d1e8-4a3b-a49b-85b19b112134",
@@ -27,11 +31,14 @@
     "attempt_limit": 3,
     "run_id": "E007_long_01_s2000",
     "verified_step": 2050,
+    "latest_saved_step_from_sidecar": 2300,
     "ledger_start_step": 2000,
     "target_step": 10000,
-    "cpu_c": 69.0,
-    "gpu_c": 40.0,
-    "gpu_utilization_percent": 13.0,
+    "cpu_c": 71.0,
+    "gpu_c": 43.0,
+    "gpu_utilization_percent": 30.0,
+    "memory_available_bytes": 25186267136,
+    "uptime_seconds": 17881.98,
     "cpu_quota_percent": 100
   },
   "last_notified_event_key": "R02:91918243-d1e8-4a3b-a49b-85b19b112134:running:2050:attempt1",
@@ -43,11 +50,21 @@
     "Isaac_E03_missing_smpl_sim_no_valid_metrics",
     "R02_user_authorized2000to10000_started_verified2050"
   ],
+  "latest_observed_checkpoint": {
+    "path": "data/training/a3_20261009/E007_long_01_s2000/model_step_002300.pt",
+    "step": 2300,
+    "bytes": 402081495,
+    "sha256": "76c622ffcc64350a9ec528b93506e9ad825c2aadd746052765cfcaa49827591e",
+    "validation_level": "published_sidecar_read; no independent reload or rehash this routine check",
+    "backup_status": "LOCAL_ONLY"
+  },
   "latest_verified_checkpoint": {
     "path": "data/training/a3_20261009/E007_long_01_s2000/model_step_002050.pt",
     "step": 2050,
     "bytes": 402081749,
     "sha256": "c7ea0e998802d2b3cecaebde34b934ad68932826bba8d4430ba2ed75909af165",
+    "verified_at_utc": "2026-10-09T09:50:05.900475+00:00",
+    "retention": "historical independent verification; nonmilestone file may be pruned",
     "backup_status": "LOCAL_ONLY"
   }
 }

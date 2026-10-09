@@ -4,6 +4,8 @@
 
 ## R02巡检范围更新（17:50）
 
+R02首次定时检查：17:58:50.618触发、18:00:04.025493现场采样，服务active/running/enabled、CPUQuota100%、相同boot/run、第1/3次启动，最新持久sidecar2300（本轮未独立重哈希/重载，最近独立核验为17:50的2050）。CPU71°C、GPU43°C，可用RAM25186267136 bytes；近期health和journal未见新热停/退出/重启，目标未完成且未到期。日志 `logs/a3_watch_20261009/scheduled_20261009T095850Z/`，包含服务、账本、sidecar、health及console/journal副本。尚未到2500通知里程碑，保持已通知事件不变；仅巡检，无训练恢复、配置调整或评测。此项同时验证更新为R02后的定时巡检实际触发。
+
 监控服务改为 `yuanqi-a3-longtrain.service`，账本 `data/training/a3_20261009/autoresume_control_R02/`，第1次run `E007_long_01_s2000`，目标10000。CPUQuota100%、CPU90/GPU85连续两次保护、3次启动/2次无进展限制、24小时有效（10/10 17:47:35，以job.json为准）。R01 complete不改账本。17:50服务active/running/enabled，独立checkpoint2050核验通过，CPU69°C/GPU40°C、boot未变；这是新训练启动成功，不是对R01追加恢复次数。
 
 原任务yuanqi-a3已通过app更新，返回ACTIVE、automation.toml回读每10分钟与新范围；每日研究保留。只读巡检、500步重要进度/故障/完成通知与去重原则保持；巡检不解除blocked、不重启、不改预算或阈值，不抢占GPU评测。完成10000或R02到期后保存最终结果并暂停。原生Isaac E03缺smpl_sim指标依赖，效果UNKNOWN；MuJoCo基线失败，训练更新不能当成通过证据。

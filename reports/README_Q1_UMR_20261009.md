@@ -68,6 +68,6 @@ PYTHONPATH="$PWD/data/environments/umr_q1_overlay" "$PY" script/q1/inspect_umr_p
 
 ## 保存与下一步
 
-全部作业结束，无控制 policy、支撑PD或无支撑动力学/真机测试。README、索引与当前状态已更新，Q1 推送核验由发布回执记录；既有 PredActor 暂存修改保留。大型工件仅服务器 `LOCAL_ONLY`，没有百度网盘上传证据。
+Q1 本阶段作业已结束，无控制 policy、支撑PD或无支撑动力学/真机测试；不据此判断同主机 A3 等其他任务是否运行。成果提交 `7ebf80f63d55f92b8542d5555141fb1e62924e7a` 已核验推送 Q1，回执为 `logs/session_records/q1_retarget_publication_20261009.json`；README、索引与当前状态已更新，既有 PredActor 暂存修改保留。大型工件仅服务器 `LOCAL_ONLY`，没有百度网盘上传证据。
 
 下一步优先定位足底视觉网格/碰撞体/采样点的地面关系，再统一完整16-beta人体重建、参考时间与速度预算；随后扩大点数和片段，在相同目标、时间轴、速度限制及初始化下做 GMR/UMR 对照。当前源快速动作不能在保守门限下按原速度完整复现，可用减速回放隔离速度因素，但减速不等于实时全身遥操。重定向参考通过后才进入无支撑跟踪与控制策略训练。

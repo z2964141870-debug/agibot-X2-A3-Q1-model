@@ -1,0 +1,59 @@
+{
+  "verified_at_utc": "2026-10-09 07:14:09 UTC",
+  "server": "hp3090",
+  "project_root": "/media/yu/FAFF-E977/YuanQi_Q1",
+  "remote": "git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git",
+  "branch": "Q1",
+  "observed_local_head": "7ebf80f63d55f92b8542d5555141fb1e62924e7a",
+  "observed_remote_Q1": "7ebf80f63d55f92b8542d5555141fb1e62924e7a",
+  "exact_match": true,
+  "results_commits": {
+    "calibration": "946e71f9bfcd3b6874e87aa11702b2eabbc90ccb",
+    "gmr": "7960732b31aa4eca088e9de4738361acaa888346",
+    "umr": "7ebf80f63d55f92b8542d5555141fb1e62924e7a"
+  },
+  "ancestry_evidence": "Verified contiguous git log includes UMR, GMR, calibration and prior publication commit",
+  "stage_payload": [
+    "script/q1/prepare_umr_q1.py",
+    "script/q1/run_umr_pilot.py",
+    "script/q1/inspect_umr_pilot.py",
+    "script/q1/umr_pilot_E008_20261009.json",
+    "script/q1/umr_pilot_E009_20261009.json",
+    "reports/README_Q1_UMR_20261009.md",
+    "reports/README.md",
+    "reports/README_CURRENT_STATE.md",
+    "data/manifests/q1_umr_20261009.json",
+    "data/manifests/q1_umr_speed_20261009.json",
+    "logs/session_records/q1_umr_E008_build_attempt1_20261009.log",
+    "logs/session_records/q1_umr_E008_build_attempt2_20261009.log",
+    "logs/session_records/q1_umr_E008_train_attempt2_20261009.log",
+    "logs/session_records/q1_umr_E008_retarget_attempt2_20261009.log",
+    "logs/session_records/q1_umr_E008_retarget_attempt3_20261009.log",
+    "logs/session_records/q1_umr_E009_retarget_attempt1_20261009.log",
+    "logs/session_records/q1_umr_E009_regression_checks_20261009.log"
+  ],
+  "git_payload_audit": {
+    "status": "PASS",
+    "staged_files": 19,
+    "staged_bytes": 172601,
+    "stage_committed_files": 17,
+    "unrelated_staged_files_excluded": 2
+  },
+  "checks": {
+    "existing_regression_tests_passed": 25,
+    "new_scripts_compile_passed": true,
+    "diff_check_passed": true,
+    "umr_e008_all_stages_complete": true,
+    "umr_e009_all_stages_complete": true,
+    "independent_numeric_inspection_complete": true
+  },
+  "result_scope": "TEST_ONLY; UMR surface correspondence training is not control policy training",
+  "policy_trained": false,
+  "hardware_control": false,
+  "dynamic_balance_verified": false,
+  "backup_status": "LOCAL_ONLY",
+  "preserved_staged_blobs": {
+    "data/manifests/predactor_review_20261008.json": "8fa64e9f1d1eeb555bdd220fad4c84d538805760",
+    "reports/README_PREDACTOR_20261008.md": "85561005c96b2d4328a16d962e3406e9891bdabb"
+  }
+}

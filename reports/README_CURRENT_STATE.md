@@ -16,7 +16,7 @@
 
 ## 已完成，可从证据继续
 
-10/9 13:57 最新 A3：主机新boot `91918243…` 后服务自动恢复第2次任务 `E006_auto_02_s950`，950→1800及Actor / Critic / optimizer恢复核验通过；13:47:27与13:47:32 CPU连续90°C、GPU42–43°C，触发temperature_stop，service failed、ledger blocked，当前不训练。本轮1800模型独立大小 / SHA / CPU重载 / 有限性校验通过，GPU空闲，CPU回落50°C；不据此解除保护或认定之前重启都由热导致。用户要求loop，已配置当前聊天10分钟heartbeat `yuanqi-a3`，首次定时触发待验证，去重清单 `data/manifests/a3_watch_state_20261009.json`。详见[巡检与CPU热保护](README_A3_LOOP_WATCH_20261009.md)。预算已用2/3次、有效期至10/10 12:47:08，模型仍LOCAL_ONLY。
+10/9 14:25 最新A3：相同boot `91918243…`，service failed、ledger blocked/temperature_stop、最新checkpoint1800、预算2/3，GPU空闲31°C、CPU51°C，无新事件；不解除保护。950→1800真实boot后恢复与13:47 CPU连续90°C保护停止的既有证据不变。10分钟heartbeat `yuanqi-a3` 已于14:04:59首次实际触发并在14:06采样，14:24轮也完成核验；14:14触发在前次未完成时到达，未宣称独立采样。去重清单 `data/manifests/a3_watch_state_20261009.json`，详见[巡检与CPU热保护](README_A3_LOOP_WATCH_20261009.md)。有效期至10/10 12:47:08，模型LOCAL_ONLY，2000未完成。
 
 E001 / E002 / E005 的中断与 E003 / E004 续训历史保留在[续训 README](README_A3_RESUME_20261009.md)。当前任务为从零学习 / 对照，不是成熟预训练策略；2000更新 / 固定条件效果未验收。恢复前重新检查 service、ledger 与最新有效模型。Q1 副本未修改。
 

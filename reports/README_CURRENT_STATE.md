@@ -16,6 +16,8 @@
 
 ## 已完成，可从证据继续
 
+10/10 01:00:52 R03首次定时巡检已实际触发：service active/running/enabled、同boot/run、R03范围与CPUQuota100%核验，最新持久sidecar2900/大小匹配，本轮不重复哈希/重载；CPU73°C/GPU42°C，无新退出/热停，尚未到3000通知节点。日志 `logs/a3_watch_20261010/scheduled_20261009T165952Z/`，详情见[持续续训README](README_A3_CONTINUOUS_20261010.md)。下方为启动时独立模型验证证据。
+
 10/10 00:53:50最新A3：用户授权重启并取消3次启动上限；R03已00:52从2700完整恢复，新2725模型独立大小/SHA/CPU重载/有限性校验通过，LOCAL_ONLY。`yuanqi-a3-longtrain.service` active/running/enabled、CPUQuota100%，run `E008_cont_01_s2700`；CPU66°C/GPU37°C、同boot。无累计启动上限/到期时间，温度、连续2次无进度及异常停止保护保留；39项测试通过。原heartbeat ACTIVE/每10分钟已更新R03，到10000后停止并暂停巡检。R01/R02账本不修改，重启根因仍UNKNOWN；见[持续续训README](README_A3_CONTINUOUS_20261010.md)，下方R02停训为历史状态。
 
 10/9 20:28最新A3：R02反复整机重启后在18:40:13因3/3启动预算用完停止，服务failed/exit2、总账本blocked/attempt_limit、GPU无计算进程；当前boot `a95a89b9…`。2700模型独立大小/SHA/CPU重载/网络和优化器有限性校验通过，LOCAL_ONLY，距10000尚差7300。三个run CPU采样最高76/67/67°C、GPU44/35/37°C，无temperature_stop证据，重启根因UNKNOWN；不能认定电源故障。本轮只诊断与记录，未重启训练或重置预算。最新入口见[长训故障与恢复](README_A3_LONGTRAIN_20261009.md)及[故障清单](../data/manifests/a3_R02_stop_20261009.json)。下面17:50运行状态为历史证据。

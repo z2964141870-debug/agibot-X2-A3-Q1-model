@@ -32,6 +32,8 @@ data/training/a3_20261009/autoresume_control_R03 --init \
 
 ## 实际结果与边界
 
+R03首次定时巡检：2026-10-10 00:59:52.193触发、01:00:52.610602实际采样。服务active/running/enabled、指向R03、CPUQuota100%，boot和run未变；最新2900 sidecar与文件大小402081495匹配，本轮未独立重哈希/重载，最近独立核验为启动时2725。CPU73°C/GPU42°C、可用RAM25223151616 bytes，近期health持续更新、journal无新退出，未见温度保护。尚未到3000通知节点，无新故障/恢复，保留通知去重键。日志 `logs/a3_watch_20261010/scheduled_20261009T165952Z/`；本轮仅巡检，没有启动或恢复训练、配置变更或评测。该条核验更新R03后定时巡检实际触发。
+
 00:52:12服务启动，00:52:15登记首次 `E008_cont_01_s2700`，run和health的boot均为 `a95a89b9-df91-4c13-b609-86273fbd847d`。加载回执确认global_step2700、Actor/Critic与源一致，optimizer_steps=[3000,54000]、两组学习率2e-5；仿真episode重新reset，非逐轨迹无缝恢复。
 
 00:53独立selector已验证新2725模型的大小/SHA/CPU重载/网络与优化器有限性及计数：402081749 bytes，SHA `7024a35ec2355cd1d87864412f9b37c22635a0b87de8ae5425a42388e1b1b82a`，LOCAL_ONLY。日志 `logs/a3_continuous_20261010/setup/new_checkpoint_validation.log`；加载回执 `logs/a3_training_20261009/E008_cont_01_s2700/resume_loaded.json`。非500倍数模型可能按保留策略清理，此项保留当时启动成功证据。

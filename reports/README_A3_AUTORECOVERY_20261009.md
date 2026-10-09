@@ -109,7 +109,9 @@ data/environments/a3-sonic/bin/python -m script.a3.host_health logs/a3_diagnosti
 - 模型：服务器 `data/training/a3_20261009/E005_resume_154to2000/model_step_000600.pt`，402081559 bytes，SHA-256 `757e96edd2754f298ae4daae95d25f9da52a4c11364a1ea45371a7ae41473aa0`。
 - 本次续训目录 `data/training/a3_20261009/E006_auto_01_s600`；后续同任务启动为 `E006_auto_<序号>_s<起点>`，每次独立目录，不覆盖 E005。
 - 日志：`logs/a3_autoresume_20261009/`、`logs/a3_diagnostics_20261009/` 和每个新 run 的 `logs/a3_training_20261009/<run_id>/`。系统原始日志留服务器，不整段上传 Git。
-- 代码 / 报告 / 小型清单提交 main；本报告仍待本轮推送核验。Q1 工作副本未修改。模型备份仍 `LOCAL_ONLY`，不能把恢复机制当作云端备份。
+- 本阶段代码 / 报告 / 小型清单已作为 `215ed9b140bc91e923dd813335af596a44cada69` 推送 main，2026-10-09 13:02:28 核验本机 HEAD 与 `refs/heads/main` 一致，暂存审计通过（11文件 / 66806字节）。发布回执为 `logs/session_records/a3_autorecovery_publication_20261009.json`，随后补存核验记录的提交号由 Git 历史查阅。Q1 工作副本未修改。模型备份仍 `LOCAL_ONLY`，不能把恢复机制当作云端备份。
+
+13:03:38 再次由独立 selector 核验新 **step950** 的大小 / SHA / CPU 重载 / 有限性，服务仍 active / running；日志 `logs/a3_autoresume_20261009/final_checkpoint_validation.log`。650为此前检查点，继续工作须选择最新有效模型，不固定要求650或950仍存在。
 
 ## 下一步
 

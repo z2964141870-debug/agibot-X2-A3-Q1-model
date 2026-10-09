@@ -1,0 +1,53 @@
+{
+  "stage_id": "model-route-20261009",
+  "checked_date": "2026-10-09",
+  "timezone": "Asia/Shanghai",
+  "scope": "Training route planning and read-only source audit; no policy training or robot operation",
+  "report": "reports/README_MODEL_ROUTE_20261009.md",
+  "publication_branch": "main",
+  "public_a3_repository": {
+    "url": "https://github.com/AgibotTech/sonic_for_a3",
+    "branch_observed": "main",
+    "commit": "fe6868ba37034f89b912f0fb851bce19f120266d",
+    "commit_time_utc": "2026-09-25T11:05:51Z",
+    "evidence_level": "Static README and training documentation review; not reproduced",
+    "policy_action_dof_declared": 29,
+    "reference_window_ms_declared": [0, 180],
+    "warm_start_declared": "Loads policy/value weights with resume=false; optimizer, scheduler, sampler, environment and step restart",
+    "smpl_teleop_encoder_status_declared": "Not included in this release; upstream robot-reference conversion required",
+    "weights_status": "NOT_DOWNLOADED",
+    "compatible_hardware_status": "UNVERIFIED",
+    "sources": [
+      {
+        "path": "data/research/model_route_20261009/a3_training2sim2deploy.md",
+        "source_url": "https://raw.githubusercontent.com/AgibotTech/sonic_for_a3/fe6868ba37034f89b912f0fb851bce19f120266d/docs/a3_training2sim2deploy.md",
+        "sha256": "7240718c9ee7bf626d9b39e8ed64142c3ed4b06b24e6fe1f931d43a453a70635",
+        "git_payload": false
+      },
+      {
+        "path": "data/research/model_route_20261009/a3_035_training_contract.md",
+        "source_url": "https://raw.githubusercontent.com/AgibotTech/sonic_for_a3/fe6868ba37034f89b912f0fb851bce19f120266d/docs/a3_035_training_contract.md",
+        "sha256": "64fa25c12e075ec5b2ce1b4ae3a22c23ec5c88b871ef46080d1c5f9b75f59f95",
+        "git_payload": false
+      }
+    ],
+    "uncompleted_source_read": {
+      "path": "train_a3_035_fromscratch.sh",
+      "download_exit_code": 28,
+      "reason": "Timed out after 25 seconds with no bytes; implementation not audited"
+    }
+  },
+  "gpu_query": {
+    "host": "hp3090",
+    "checked_date": "2026-10-09",
+    "model": "NVIDIA GeForce RTX 3090",
+    "memory_total_mib": 24576,
+    "memory_used_mib_at_query": 92,
+    "utilization_percent_at_query": 0,
+    "driver_version": "595.84",
+    "a3_training_compatibility": "UNVERIFIED"
+  },
+  "q1_evidence_status": "Asset/control/retarget records exist; current dataset tests in progress; policy training and unassisted dynamic whole-body control unverified",
+  "q1_existing_wearable_recordings_usage": "TEST_ONLY",
+  "recommendation": "Audit same-platform A3 warm-start first; Q1 small-task training using existing recipes is the fallback; no final selection yet"
+}

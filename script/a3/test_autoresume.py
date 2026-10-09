@@ -47,6 +47,29 @@ class RecoveryTests(unittest.TestCase):
     def test_expiration(self):
         self.assertEqual(recovery.decision(self.config, self.ledger([]), 600, 10000), "expired")
 
+    def test_until_target_allows_many_progressing_attempts_without_expiry(self):
+        config = dict(self.config, max_attempts=None, expires_at=None)
+        state = self.ledger(list(range(600, 1000, 25)))
+        self.assertEqual(recovery.decision(config, state, 1000, 1000000), "run")
+        self.assertEqual(recovery.decision(config, state, 2000, 1000000), "complete")
+
+    def test_until_target_retains_no_progress_stop(self):
+        config = dict(self.config, max_attempts=None, expires_at=None)
+        self.assertEqual(recovery.decision(config, self.ledger([600, 600]), 600, 1000000), "no_progress")
+
+    def test_until_target_init_and_runtime_immutability(self):
+        job = self.root / "data/training/until_target"
+        argv = ["autoresume", str(job), "--init", "--until-target", "--target-step", "10000"]
+        with patch.object(recovery, "ROOT", self.root), patch("sys.argv", argv):
+            self.assertEqual(recovery.main(), 0)
+        config = json.loads((job / "job.json").read_text())
+        self.assertIsNone(config["max_attempts"])
+        self.assertIsNone(config["expires_at"])
+        self.assertEqual(config["max_no_progress"], 2)
+        with patch("sys.argv", ["autoresume", str(job), "--until-target"]):
+            with self.assertRaises(SystemExit):
+                recovery.main()
+
     def test_target_precedes_attempt_limit(self):
         self.assertEqual(recovery.decision(self.config, self.ledger([600, 625, 650]), 2000, 100), "complete")
 
@@ -234,6 +257,17 @@ class RecoveryTests(unittest.TestCase):
             with self.assertRaises(OSError):
                 recovery.monitor_child(child, self.root, self.config)
         self.assertIsNotNone(child.poll())
+
+    def test_until_target_monitor_retains_temperature_stop(self):
+        child = subprocess.Popen(["sleep", "30"], start_new_session=True)
+        config = dict(self.config, expires_at=None, max_attempts=None, max_gpu_c=85,
+                      max_cpu_c=90, sample_seconds=0.01)
+        health = {"gpus": [], "temperatures_c": {"x86_pkg_temp": 90},
+                  "gpu_query": {"returncode": 0}}
+        with patch.object(recovery, "sample", return_value=health):
+            code, reason = recovery.monitor_child(child, self.root, config)
+        self.assertEqual(reason, "temperature_stop")
+        self.assertEqual(code, -signal.SIGTERM)
 
 
 if __name__ == "__main__":

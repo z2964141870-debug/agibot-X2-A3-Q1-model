@@ -1,4 +1,4 @@
-"""Bounded A3 recovery across host reboots; no reboot, driver, or power changes."""
+"""A3 recovery across host reboots with explicit job limits and health protection."""
 
 import argparse
 import fcntl
@@ -26,10 +26,10 @@ def fingerprint(config):
 def decision(config, state, step, now):
     if step >= config["target_step"]:
         return "complete"
-    if now >= config["expires_at"]:
+    if config["expires_at"] is not None and now >= config["expires_at"]:
         return "expired"
     attempts = state.get("attempts", [])
-    if len(attempts) >= config["max_attempts"]:
+    if config["max_attempts"] is not None and len(attempts) >= config["max_attempts"]:
         return "attempt_limit"
     no_progress = 0
     for attempt in reversed(attempts):
@@ -115,7 +115,7 @@ def monitor_child(child, log_dir, config):
                           for gpu in health["gpus"])
             cpu_hot = health["temperatures_c"].get("x86_pkg_temp", 0) >= config["max_cpu_c"]
             high_temperature = high_temperature + 1 if gpu_hot or cpu_hot else 0
-            expired = time.time() >= config["expires_at"]
+            expired = config["expires_at"] is not None and time.time() >= config["expires_at"]
             if stopped or expired or high_temperature >= 2 or health["gpu_query"]["returncode"] != 0:
                 reason = ("operator_stop" if stopped else "expired" if expired else
                           "temperature_stop" if high_temperature >= 2 else "gpu_query_failed")
@@ -223,14 +223,16 @@ def main():
     parser.add_argument("--source-dir", type=Path, help="New job's trusted source checkpoint directory")
     parser.add_argument("--target-step", type=int, help="New job's cumulative update target")
     parser.add_argument("--run-prefix", help="New job's distinct run prefix")
+    parser.add_argument("--until-target", action="store_true",
+                        help="New job has no start count or expiry limit; health/error and no-progress stops remain")
     parser.add_argument("--rearm-temperature", metavar="AUTHORIZATION",
                         help="Record explicit authorization without resetting the budget or launching")
     options = parser.parse_args()
     if options.init and options.rearm_temperature is not None:
         parser.error("Init and rearm are mutually exclusive")
-    if not options.init and any(value is not None for value in (
-            options.source_dir, options.target_step, options.run_prefix)):
-        parser.error("Source, target and prefix can only be set when initializing a new job")
+    if not options.init and (options.until_target or any(value is not None for value in (
+            options.source_dir, options.target_step, options.run_prefix))):
+        parser.error("Source, target, prefix and until-target can only be set when initializing a new job")
     job_dir = options.job_dir.resolve()
     if not job_dir.is_relative_to(ROOT / "data/training"):
         parser.error("Job directory must be inside this project's data/training")
@@ -247,7 +249,8 @@ def main():
             parser.error("Target must be positive and prefix must contain only letters, numbers, underscore or hyphen")
         config = {"source_dirs": [str(source.relative_to(ROOT))],
                   "run_prefix": prefix, "num_envs": 64, "target_step": target,
-                  "max_attempts": 3, "max_no_progress": 2, "expires_at": time.time() + 86400,
+                  "max_attempts": None if options.until_target else 3, "max_no_progress": 2,
+                  "expires_at": None if options.until_target else time.time() + 86400,
                   "cooldown_seconds": 300, "sample_seconds": 5, "max_gpu_c": 85, "max_cpu_c": 90}
         atomic_json(job_dir / "job.json", config)
         atomic_json(job_dir / "state.json", {"config_sha256": fingerprint(config), "attempts": [], "status": "armed"})

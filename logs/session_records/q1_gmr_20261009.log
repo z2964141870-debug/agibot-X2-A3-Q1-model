@@ -1,0 +1,25 @@
+Q1 GMR E003/E004/E005, 2026-10-09. Compact record from actual command output.
+Host: hp3090. Workdir: /media/yu/FAFF-E977/YuanQi_Q1
+Upstream GMR commit: bb1bbe40774794fceb2a7c579a3464a28e68c844
+
+E003 no frame speed limit:
+amass_stand: P95 0.0485 m, max speed 8.00 rad/s, right knee range 3.61 deg
+amass_walk_turn: P95 0.0530 m, max speed 14.15 rad/s, right knee range 56.58 deg
+amass_kick: P95 0.1255 m, max speed 23.66 rad/s, right knee range 93.66 deg
+amass_swing_arms: P95 0.0323 m, max speed 5.83 rad/s, right knee range 0.15 deg
+
+E004 2 rad/s total-frame position bounds:
+amass_stand: P95 0.0485 m, max speed 2.00 rad/s, right knee range 3.61 deg
+amass_walk_turn: P95 0.0523 m, max speed 2.00 rad/s, right knee range 32.27 deg
+amass_kick: P95 0.1255 m, max speed 2.00 rad/s, right knee range 40.49 deg
+amass_swing_arms: P95 0.0324 m, max speed 2.00 rad/s, right knee range 0.16 deg
+
+E005 roundoff normalization budget 1e-8 rad:
+amass_stand: bound roundoff 3.469e-18 rad, supported RMSE 0.0059 rad
+amass_walk_turn: bound roundoff 0, reused verified supported RMSE 0.0531 rad
+amass_kick: bound roundoff 0, reused verified supported RMSE 0.1977 rad
+amass_swing_arms: bound roundoff 8.674e-18 rad, supported RMSE 0.0105 rad
+
+No unsupported dynamic balance, policy training or hardware control.
+GMR raw source download timed out on hp3090; three small original files fetched on Mac and transferred with pinned SHA/license.
+NMR official inference source was inspected; no 518 MB checkpoint or body-model download executed.

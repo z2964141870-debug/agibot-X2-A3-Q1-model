@@ -14,6 +14,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-09 | Q1 GMR 与新方法对照 | 官方固定版本 GMR 的 Q1 实验映射完成八组 IK / 四段支撑 PD；限速后前踢范围 40.49°，未通过整体保真，确认 NMR 推理仅 G1、UMR 可适配新机器人，见[GMR README](README_Q1_GMR_20261009.md) |
 | 2026-10-09 | Q1 重力轴与站姿校准 | 14 组对照完成，根轨迹串轴修复通过；合成站姿前踢幅度增大但目标残差变大，姿态保真未验收，见[校准 README](README_Q1_CALIBRATION_20261009.md) |
 | 2026-10-09 | Q1 数据集对照 | 八样本离线 IK / 支撑 PD 完成；发现腿幅度压缩和首帧对齐将水平位移混进高度，未通过高保真 / 移动验收，见[数据集 README](README_Q1_DATASETS_20261009.md) |
 | 2026-10-09 | Q1 新数据与训练入口研究 | 核验 MOSAIC、HiPHI、BONES/SOMA、PHUMA、HumanTracker 与 SONIC 训练入口；未新增大下载或训练，见[研究 README](README_Q1_DATASET_RESEARCH_20261009.md) |

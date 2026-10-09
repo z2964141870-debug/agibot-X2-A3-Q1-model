@@ -1,6 +1,6 @@
 # A3 中断续训与模型持久化
 
-记录日期：2026-10-09。状态：8 项 CPU 故障检查通过，E003 / E004 两次实际续训完成 150→152→154；E005 已启动，11:13:54 服务 active/running，随后 selector 验证 step 300 模型。尚未完成累计 2,000 更新或固定条件评测。
+记录日期：2026-10-09。最新状态：11:36:41 核验 E005 已因主机再次重启中断，当前无训练。step600 checkpoint 大小 / SHA / 重载 / 有限性校验通过，可以恢复；尚未完成累计 2,000 更新或固定条件评测。此前 E003 / E004 两次续训和 8 项 CPU 故障检查通过。
 
 ## 目标与决定
 
@@ -59,5 +59,15 @@ E005 实际验证：北京时间 11:13:54 主机 uptime 1:30，服务 active/run
 E005 已产生 step275 / 300 checkpoint sidecar；随后 selector 通过大小 / SHA / 重载检查并选择 `model_step_000300.pt`。step300 是核验时快照，最新两份会随训练被替换，500 步里程碑保留。11:14:59 标量快照到 step329，检查的标量全部有限；训练 reward 0.772→1.311，但 error_body_pos 0.101→0.116、error_joint_pos 0.201→0.216，不能据此认定跟踪改善。训练标量快照记录于 `data/manifests/a3_E005_status_20261009.json`，不等同固定条件评测。下一步为完成固定条件跟踪评测，不以训练 reward 上升宣称可遥操或真机部署。
 
 ## 保存与边界
+
+## 11:36 状态检查：E005 再次中断
+
+用户询问训练是否仍在运行。2026-10-09 北京时间 11:36:41 核验主机启动时间为 11:26:18，原 E005 user systemd 服务 LoadState=not-found、MainPID=0，GPU 利用率 0%、显存 97 MiB，且无正常 exit_code 文件。E005 已中断，不能把不存在服务的 ExecMainStatus=0 当成训练正常完成。日志尾部存在 NUL 字节，原因未定位；仍不能确认是电源故障。
+
+重新执行 selector，step600 模型大小、SHA、CPU 重载和网络 / 优化器有限性检查全部通过。路径 `data/training/a3_20261009/E005_resume_154to2000/model_step_000600.pt`，402081559 bytes，SHA-256 `757e96edd2754f298ae4daae95d25f9da52a4c11364a1ea45371a7ae41473aa0`。保留 step575 备份与 step500 里程碑，清单 `data/manifests/a3_E005_interruption_20261009.json`。
+
+本次只核验、记录状态，未启动新训练。下一次从已验证 step600、同样 64 环境恢复，以新 RUN_ID / service 名继续到累计 2,000；先重新检查当前进程和 Git 状态。断电之后 checkpoint 确实可读取，不代表硬件故障已解决或保证未来每次都能恢复。
+
+## 保存与同步
 
 模型留 hp3090 的 data，网盘仍为 LOCAL_ONLY。代码、结论与小清单提交 main；完整版本以本文件的 Git 提交历史为准，发布完成须核验 HEAD 与 refs/heads/main 一致。官方源码固定 fe6868ba37034f89b912f0fb851bce19f120266d；适配改动位于本项目 script/a3。与 Q1 工作区无关，不修改它。

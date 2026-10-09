@@ -1,0 +1,42 @@
+{
+  "date_local": "2026-10-09",
+  "timezone": "Asia/Shanghai",
+  "scope": "paper and source review; not transfer implementation or reproduction",
+  "report": "reports/README_A3_TRANSFER_20261009.md",
+  "project_base_commit": "be24e1797836e32f3ca498518b5dbd462e93c037",
+  "a3_vendor_commit": "fe6868ba37034f89b912f0fb851bce19f120266d",
+  "x2_repo": "https://github.com/meetsitaram/sonic-x2",
+  "x2_tree_commit": "c9959443f80276533083a8b31ecd3760a41eaa65",
+  "x2_tree_truncated": false,
+  "paper": "https://sonic-agibot-x2.github.io/sonic-transfer/static/pdfs/paper.pdf",
+  "author_version_date": "v0.2 / 2026-09-12; timezone unspecified",
+  "cached_directory": "data/research/2026-10-09/sonic_transfer_a3",
+  "cached_files": ["x2_tree.json", "x2_phi.json"],
+  "x2_tree_sha256": "5cf76e1cf5e03eb4cbd81b2dcd6d28505281153c3bdf6c8e9a4c7d97bb2128cd",
+  "x2_phi_sha256": "27c7b72ff26b3261647684ca120a92cff5381c83153d9c795a28a3e349cce0bb",
+  "incomplete_server_requests": [
+    "Initial source-cache sequence stopped after timeout; README/provenance/project HTML not fully cached.",
+    "Hugging Face A3 PT metadata request timed out; binary availability not independently verified."
+  ],
+  "a3_expected_release_pt": {
+    "source": "sonic-for-a3/sonic/035_step200000/model_step_200000.pt",
+    "bytes": 402050931,
+    "sha256": "9cf33be2f4e602858b68ce31d5824113ab1dda250acaab5842b6d3bf88b70f2d",
+    "evidence": "pinned a3_hf_manifest.json; not a downloaded file check",
+    "local_presence_verified": false,
+    "planned_destination": "data/pretrained/a3_035_step200000/model_step_200000.pt"
+  },
+  "recommendation": "official A3 PT evaluation, ordinary fine-tuning, then controlled sparse-parameter adaptation comparison",
+  "separate_conditional_route": "original G1 PT with newly verified G1-A3 codec and A3 actuator/foot constraints",
+  "limitations": [
+    "X2 quick-play tree is principally inference/evaluation; complete transfer training recipe not verified in this review.",
+    "Project page and PDF differ on novel500 held-out split description.",
+    "Generic PEFT code is not an enabled or verified A3 LoRA configuration.",
+    "A3-fast future-reference requirement is separate from LoRA adaptation.",
+    "Frozen base weights do not guarantee preservation of final-system skills.",
+    "No A3 transfer/LoRA experiment or true robot evaluation performed."
+  ],
+  "new_training_started": false,
+  "new_large_models_downloaded": false,
+  "q1_worktree_modified": false
+}

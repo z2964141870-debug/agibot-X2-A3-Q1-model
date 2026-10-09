@@ -1,6 +1,16 @@
 # A3 降低 CPU 额度后的受控续训
 
-记录日期：2026-10-09，北京时间。实验：R01 第三次启动。状态：15:12启动，15:14已核验1800→1825，服务运行中；不宣称长期稳定。
+记录日期：2026-10-09，北京时间。实验：R01 第三次启动。状态：15:20:33正常完成累计2000，15:22最终模型独立校验通过；不宣称策略效果或长期硬件稳定性通过。
+
+## 最终完成核验（15:22）
+
+本轮15:18:29巡检触发后发现完成事件：第三次启动从1800完成至2000，历时约8分24秒，returncode=0、reason=null、ledger complete/verified_step2000，systemd inactive/dead、Result=success、ExecMainStatus=0。boot_id保持 `91918243-d1e8-4a3b-a49b-85b19b112134`，没有本轮新重启证据。预算仍为3/3，未扩展。
+
+最终模型 `data/training/a3_20261009/E006_auto_03_s1800/model_step_002000.pt`：402081495 bytes，SHA-256 `c19f3e760245a611918dd91552ef181ba07cb6d00962d22a84dd4557f8ac41fc`。独立selector通过大小/SHA/CPU重载/网络和优化器有限性，备份仍LOCAL_ONLY。新训练指标13项标量均有限，Train/it=2000、累计3072000 timesteps。reward从0.882到1.731，但人体位置误差0.0837到0.1141，两端为不同采样，不构成统一条件策略评测，不能认定动作跟踪已改善或可部署。
+
+控制器100条约5秒健康采样（15:12:09至15:20:26）CPU43–71°C、GPU32–43°C，无CPU≥90采样；独立15:19:18巡检还读到CPU73°C，因此71只是该采样序列最高值，并非真实连续峰值。15:22结束后CPU54°C、GPU36°C/0%、MemAvailable31241879552 bytes。降低CPU额度后的这200次更新没有再触发保护，仍不能确认过去重启根因或更长训练稳定性。
+
+最终证据放 `logs/a3_watch_20261009/scheduled_20261009T071829Z/{final_summary.json,final_checkpoint_validation.log,final_metrics.json}`。达到既定目标后按授权暂停 `yuanqi-a3` 巡检；工具返回PAUSED且本地automation.toml回读确认，每日研究 `yuanqi` 回读仍ACTIVE。巡检未启动新训练或评测。
 
 ## 目标与授权
 
@@ -54,4 +64,4 @@ systemctl --user restart yuanqi-a3-autoresume.service
 
 本记录先落盘，再执行，现已补真实结果并更新索引/current state。发布前检查diff、scoped暂存和payload审计，推送main并比对远端；实际发布结果以Git历史与本地publication.log为准。
 
-现有10分钟巡检任务更新为读取本README及第三次启动状态；不得因空闲温度回落再次擅自解锁。完成2000或到期后保存最终记录并暂停本巡检，保留每日研究简报。
+2000已完成且重载通过，下一步另行做统一动作/初始状态/种子的仿真评测，再决定后续训练规模或官方PT基线；本轮巡检不启动评测或新训练。散热/供电实物检查仍待现场证据。

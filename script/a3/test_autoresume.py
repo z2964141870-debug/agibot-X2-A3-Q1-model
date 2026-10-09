@@ -1,4 +1,4 @@
-"""CPU recovery tests; real power loss and automatic boot remain untested."""
+"""CPU tests for recovery limits, authorization, and checkpoint integrity."""
 
 import fcntl
 import json
@@ -139,6 +139,49 @@ class RecoveryTests(unittest.TestCase):
     def test_temperature_blocks_even_with_sigkill(self):
         state = self.ledger([600])
         self.assertEqual(recovery.finish_attempt(self.config, state, state["attempts"][0], 625, -9, "temperature_stop"), 2)
+
+    def thermal_ledger(self, steps):
+        state = self.ledger(steps)
+        state.update(status="blocked", reason="temperature_stop", verified_step=1800)
+        return state
+
+    def test_explicit_rearm_preserves_attempts_and_config(self):
+        state = self.thermal_ledger([600, 950])
+        attempts = json.loads(json.dumps(state["attempts"]))
+        saved_hash = state["config_sha256"]
+        recovery.rearm_temperature(self.config, state, "User authorized reduced CPU quota", 100)
+        self.assertEqual(state["status"], "armed")
+        self.assertEqual(state["attempts"], attempts)
+        self.assertEqual(state["config_sha256"], saved_hash)
+        self.assertEqual(state["operator_authorizations"][0]["previous_reason"], "temperature_stop")
+        with self.assertRaises(ValueError):
+            recovery.rearm_temperature(self.config, state, "Repeated authorization", 101)
+
+    def test_rearm_cannot_extend_budget_or_expiry(self):
+        for steps, now in [([600, 950, 1800], 100), ([600, 950], 10000)]:
+            state = self.thermal_ledger(steps)
+            with self.assertRaises(ValueError):
+                recovery.rearm_temperature(self.config, state, "Authorized", now)
+            self.assertEqual(state["status"], "blocked")
+
+    def test_rearm_rejects_other_stop_and_missing_authorization(self):
+        state = self.thermal_ledger([600, 950])
+        with self.assertRaises(ValueError):
+            recovery.rearm_temperature(self.config, state, " ", 100)
+        state["reason"] = "controller_error"
+        with self.assertRaises(ValueError):
+            recovery.rearm_temperature(self.config, state, "Authorized", 100)
+
+    def test_rejected_cli_rearm_leaves_ledger_unchanged(self):
+        job = self.root / "data/training/job"
+        job.mkdir(parents=True)
+        atomic_json(job / "job.json", self.config)
+        atomic_json(job / "state.json", self.thermal_ledger([600, 950]))
+        previous = (job / "state.json").read_bytes()
+        with patch.object(recovery, "ROOT", self.root), patch("sys.argv", [
+                "autoresume", str(job), "--rearm-temperature", "Authorized but expired"]):
+            self.assertEqual(recovery.main(), 2)
+        self.assertEqual((job / "state.json").read_bytes(), previous)
 
     def test_complete_requires_success_exit(self):
         state = self.ledger([600])

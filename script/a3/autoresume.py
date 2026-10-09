@@ -79,6 +79,23 @@ def finish_attempt(config, state, attempt, step, returncode, reason):
     return 2
 
 
+def rearm_temperature(config, state, authorization, now):
+    if not authorization or not authorization.strip():
+        raise ValueError("Explicit authorization record is required")
+    if state.get("status") != "blocked" or state.get("reason") != "temperature_stop":
+        raise ValueError("Only a temperature protection stop can be rearmed here")
+    action = decision(config, state, state["verified_step"], now)
+    if action != "run":
+        raise ValueError(f"Cannot rearm: {action}")
+    state.setdefault("operator_authorizations", []).append({
+        "at": now, "authorization": authorization, "previous_reason": state["reason"],
+        "verified_step": state["verified_step"], "attempts_used": len(state["attempts"]),
+    })
+    state.update(status="armed")
+    state.pop("reason")
+    return state
+
+
 def monitor_child(child, log_dir, config):
     stopped = False
     high_temperature = 0
@@ -202,7 +219,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("job_dir", type=Path)
     parser.add_argument("--init", action="store_true")
+    parser.add_argument("--rearm-temperature", metavar="AUTHORIZATION",
+                        help="Record explicit authorization without resetting the budget or launching")
     options = parser.parse_args()
+    if options.init and options.rearm_temperature is not None:
+        parser.error("Init and rearm are mutually exclusive")
     job_dir = options.job_dir.resolve()
     if not job_dir.is_relative_to(ROOT / "data/training"):
         parser.error("Job directory must be inside this project's data/training")
@@ -225,6 +246,17 @@ def main():
             print("Another supervisor owns this job", flush=True)
             return 2
         try:
+            if options.rearm_temperature is not None:
+                try:
+                    config = json.loads((job_dir / "job.json").read_text())
+                    state = read_state(job_dir / "state.json", config)
+                    rearm_temperature(config, state, options.rearm_temperature, time.time())
+                except (ValueError, KeyError, OSError) as error:
+                    print(f"Rearm refused: {error}", flush=True)
+                    return 2
+                atomic_json(job_dir / "state.json", state)
+                print(json.dumps(state), flush=True)
+                return 0
             return run_job(job_dir)
         except Exception as error:
             # Preserve a valid ledger's budget and stop state, even after controller errors.

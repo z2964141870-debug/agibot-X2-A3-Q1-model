@@ -9,9 +9,155 @@ import statistics
 import subprocess
 import time
 
+import numpy as np
+
 from script.a3.autoresume import ROOT, VENDOR_COMMIT, monitor_child
 from script.a3.checkpoint_store import atomic_json, sha256
 from script.a3.host_health import command, sample
+from script.a3.evaluation_common import checkpoint_metadata, preflight
+
+
+def rollout_windows(summary, trace):
+    ticks = np.asarray(trace["policy_tick"])
+    state, reference = np.asarray(trace["q_state_29"]), np.asarray(trace["reference_q_29"])
+    n = summary["num_policy_steps"]
+    if state.shape != (n, 29) or reference.shape != state.shape or ticks.shape != (n,):
+        raise ValueError("Incomplete rollout timeseries")
+    if not np.array_equal(ticks, np.arange(n)) or not np.isfinite(state).all() or not np.isfinite(reference).all():
+        raise ValueError("Invalid rollout sequence or nonfinite joints")
+    result = {}
+    for label, mask in (("full_rollout", np.ones(n, dtype=bool)),
+                        ("before_first_fall", ticks < summary["fall_tick"] if summary["fall"] else np.ones(n, dtype=bool))):
+        count = int(mask.sum())
+        errors = state[mask] - reference[mask]
+        row = {"policy_steps": count,
+               "joint_rmse_rad": float(np.sqrt(np.mean(errors ** 2))) if count else None}
+        for key in ("root_pos_error_m", "root_quat_error_deg", "anchor_pos_error_m"):
+            values = np.asarray(trace[key], dtype=float)
+            if values.shape != (n,) or not np.isfinite(values).all():
+                raise ValueError("Invalid pose error timeseries")
+            row[key + "_mean"] = float(values[mask].mean()) if count else None
+        result[label] = row
+    if not math.isclose(result["full_rollout"]["joint_rmse_rad"], summary["tracking"]["all_29_rmse"], rel_tol=1e-6):
+        raise ValueError("Timeseries disagrees with published tracking metrics")
+    return result
+
+
+def summarize_explicit(output):
+    from script.a3.reference_contract import load_sim
+    sim = load_sim()
+    manifest = json.loads((output / "explicit_manifest.json").read_text())
+    protocol = manifest["protocol"]
+    rows = []
+    for motion in protocol["motions"]:
+        name = Path(motion["path"]).stem
+        run = manifest["runs"].get(name, {})
+        metrics_path = output / f"{name}.metrics.json"
+        if run.get("status") != "passed" or sha256(metrics_path) != run["metrics_sha256"]:
+            raise ValueError("Cannot summarize incomplete or altered motion")
+        timeseries_path = output / f"{name}.timeseries.json"
+        trace = json.loads(timeseries_path.read_text())["motions"][0]
+        summary = json.loads(metrics_path.read_text())["motions"][0]
+        if summary["motion_name"] != Path(motion["path"]).name or trace["motion_name"] != summary["motion_name"]:
+            raise ValueError("Motion identity mismatch")
+        if sha256(Path(motion["path"])) != motion["sha256"]:
+            raise ValueError("Reference changed since evaluation")
+        root, rotation, joints, _ = sim.load_a3_flat_csv(Path(motion["path"]),
+            source_fps=protocol["reference_fps_after_stride"], frame_stride=protocol["frame_stride"])
+        expected = len(sim.resample_csv_motion(root, rotation, joints,
+                       source_fps=protocol["reference_fps_after_stride"])[0])
+        cap = protocol["max_policy_steps"]
+        required = expected if cap is None else min(expected, cap)
+        if summary["num_policy_steps"] != required:
+            raise ValueError("Evaluation did not cover the requested policy steps")
+        rows.append({"motion": summary["motion_name"], "fall": summary["fall"],
+                     "first_fall_s": summary["fall_time_s"], "expected_full_policy_steps": expected,
+                     "full_replay_completed": required == expected,
+                     "motion_completed_without_fall": required == expected and not summary["fall"],
+                     "windows": rollout_windows(summary, trace), "timeseries_sha256": sha256(timeseries_path)})
+    report = {"protocol": protocol, "scope": "computational_completion_is_not_policy_acceptance", "motions": rows}
+    atomic_json(output / "explicit_summary.json", report)
+    return report
+
+
+def evaluate_explicit(args):
+    """Resume a motion-granular evaluation without changing legacy paired runs."""
+    output, logs = args.output.resolve(), args.logs.resolve()
+    if not output.is_relative_to(ROOT / "data") or not logs.is_relative_to(ROOT / "logs"):
+        raise ValueError("Output and logs must remain inside project directories")
+    checkpoint = args.checkpoint.resolve()
+    metadata = checkpoint_metadata(checkpoint)
+    motion_path = args.motion.resolve()
+    motions = sorted(motion_path.glob("*.csv")) if motion_path.is_dir() else [motion_path]
+    if not motions or any(not motion.is_file() or motion.suffix != ".csv" for motion in motions):
+        raise ValueError("Expected one CSV or a directory of CSV motions")
+    protocol = {"checkpoint": str(checkpoint), "checkpoint_sha256": metadata["sha256"],
+                "motions": [{"path": str(m), "sha256": sha256(m)} for m in motions],
+                "reference_fps_after_stride": args.reference_fps, "frame_stride": args.frame_stride,
+                "max_policy_steps": args.max_policy_steps, "action_delay_ms": args.action_delay_ms,
+                "encoder": "a3_fast", "vendor_commit": VENDOR_COMMIT}
+    output.mkdir(parents=True, exist_ok=True)
+    logs.mkdir(parents=True, exist_ok=True)
+    manifest_path = output / "explicit_manifest.json"
+    manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {"protocol": protocol, "runs": {}}
+    if manifest["protocol"] != protocol:
+        raise ValueError("Evaluation protocol changed: create a new output directory")
+    atomic_json(manifest_path, manifest)
+    if args.summarize_only:
+        print(json.dumps(summarize_explicit(output), indent=2))
+        return 0
+    vendor = ROOT / "script/vendor/sonic_for_a3"
+    environment = os.environ.copy()
+    environment.update(OMP_NUM_THREADS="1", MKL_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1",
+                       PYTHONPATH=str(ROOT) + os.pathsep + environment.get("PYTHONPATH", ""))
+    for motion in motions:
+        name = motion.stem
+        previous = manifest["runs"].get(name, {})
+        metrics_path = output / f"{name}.metrics.json"
+        if previous.get("status") == "passed" and metrics_path.exists():
+            if sha256(metrics_path) != previous["metrics_sha256"]:
+                raise ValueError("Completed metrics changed")
+            continue
+        health = preflight()
+        ordinal = int(previous.get("attempt", 0)) + 1
+        run_logs = logs / name / f"attempt_{ordinal:03d}"
+        run_logs.mkdir(parents=True, exist_ok=False)
+        argv = [str(ROOT / "data/environments/a3-sonic/bin/python"), "-m", "script.a3.sim_entry"]
+        if args.capture_inputs:
+            argv += ["--capture", str(output / f"{name}.inputs.npz")]
+        argv += ["--", "--checkpoint", str(checkpoint), "--motion", str(motion),
+                 "--encoder-mode", "a3_fast", "--csv-source-fps", str(args.reference_fps),
+                 "--csv-frame-stride", str(args.frame_stride), "--batch-once",
+                 "--action-delay-ms", str(args.action_delay_ms),
+                 "--mjcf", str(vendor / "gear_sonic/data/assets/robot_description/mjcf/a3_t2d5_loop_passive_foot_twostage_fit_optimized.xml"),
+                 "--metrics-out", str(metrics_path), "--timeseries-out", str(output / f"{name}.timeseries.json")]
+        if args.max_policy_steps is not None:
+            argv += ["--max-policy-steps", str(args.max_policy_steps)]
+        row = {"status": "running", "attempt": ordinal, "argv": argv, "started_at": time.time(),
+               "boot_id": Path("/proc/sys/kernel/random/boot_id").read_text().strip(), "initial_health": health}
+        manifest["runs"][name] = row
+        atomic_json(manifest_path, manifest)
+        with (run_logs / "console.log").open("w") as stream:
+            child = subprocess.Popen(argv, cwd=ROOT, env=environment, stdout=stream,
+                                     stderr=subprocess.STDOUT, start_new_session=True)
+            code, reason = monitor_child(child, run_logs, {"max_cpu_c": 90, "max_gpu_c": 85,
+                                                        "sample_seconds": 5, "expires_at": None})
+        row.update(returncode=code, reason=reason, finished_at=time.time())
+        if code != 0 or reason is not None:
+            row["status"] = "failed"
+            atomic_json(manifest_path, manifest)
+            return 2
+        payload = json.loads(metrics_path.read_text())
+        if payload["fps"] != 50 or len(payload["motions"]) != 1 or payload["motions"][0]["num_policy_steps"] <= 0:
+            raise ValueError("Incomplete evaluation output")
+        summary = payload["motions"][0]
+        if not math.isfinite(summary["tracking"]["all_29_rmse"]):
+            raise ValueError("Nonfinite tracking metric")
+        row.update(status="passed", metrics_sha256=sha256(metrics_path), summary=summary)
+        atomic_json(manifest_path, manifest)
+        print(json.dumps({"motion": name, "status": "passed", "fall": summary["fall"]}), flush=True)
+    summarize_explicit(output)
+    return 0
 
 
 def summarize(output, logs):
@@ -67,7 +213,18 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--logs", type=Path, required=True)
     parser.add_argument("--summarize-only", action="store_true")
+    parser.add_argument("--checkpoint", type=Path, help="Explicit checkpoint; omitting preserves legacy500/2000")
+    parser.add_argument("--motion", type=Path, default=ROOT / "script/vendor/sonic_for_a3/a3_data/agibot_a3")
+    parser.add_argument("--reference-fps", type=float, default=30, help="FPS after row stride selection")
+    parser.add_argument("--frame-stride", type=int, default=4)
+    parser.add_argument("--max-policy-steps", type=int)
+    parser.add_argument("--action-delay-ms", type=float, default=0)
+    parser.add_argument("--capture-inputs", action="store_true")
     args = parser.parse_args()
+    if args.reference_fps <= 0 or args.frame_stride < 1 or (args.max_policy_steps is not None and args.max_policy_steps < 1):
+        parser.error("Invalid sampling or rollout length")
+    if args.checkpoint is not None:
+        return evaluate_explicit(args)
     output, logs = args.output.resolve(), args.logs.resolve()
     if not output.is_relative_to(ROOT / "data") or not logs.is_relative_to(ROOT / "logs"):
         parser.error("Evaluation output and logs must stay inside project data and logs")

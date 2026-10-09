@@ -16,7 +16,10 @@ DATA = ROOT / "data/experiments/a3_fullchain_20261010"
 LOGS = ROOT / "logs/a3_fullchain_20261010"
 TASKS = ["official_pt", "input_audit", "retarget", "mujoco_baseline",
          "isaac_dependency", "isaac_baseline", "split", "finetune",
-         "paired_evaluation", "reference_buffer", "onnx", "rknn"]
+         "paired_evaluation", "reference_buffer", "onnx", "rknn",
+         "reference_contract", "retarget_visual", "reference_buffer_policy",
+         "mujoco_wrapper_check", "onnx_diagnostic", "finetune_preflight",
+         "motionlib", "mocap_quality", "mocap_finetune", "rknn_input_contract"]
 
 
 def digest(path):
@@ -42,7 +45,13 @@ def mark(name, status, **evidence):
         ledger = {"experiment": "a3_fullchain_20261010", "backup_status": "LOCAL_ONLY",
                   "tasks": {key: {"status": "pending"} for key in TASKS},
                   "old_training_restart": False, "hardware_control": False}
+    for key in TASKS:
+        ledger["tasks"].setdefault(key, {"status": "pending"})
     row = ledger["tasks"][name]
+    if status == "running" and row["status"] != "pending":
+        row.setdefault("history", []).append({key: value for key, value in row.items() if key != "history"})
+    row.pop("reason", None)
+    row.pop("user_action", None)
     row.update(status=status, **evidence,
                updated_utc=datetime.now(timezone.utc).isoformat())
     ledger["boot_id"] = Path("/proc/sys/kernel/random/boot_id").read_text().strip()

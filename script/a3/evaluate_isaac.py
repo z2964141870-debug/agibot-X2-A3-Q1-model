@@ -10,6 +10,7 @@ import time
 from script.a3.autoresume import ROOT, VENDOR_COMMIT, monitor_child
 from script.a3.checkpoint_store import atomic_json, sha256
 from script.a3.host_health import command, sample
+from script.a3.evaluation_common import checkpoint_metadata
 
 
 def main():
@@ -17,9 +18,11 @@ def main():
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--logs", type=Path, required=True)
+    parser.add_argument("--dataset", type=Path, default=ROOT / "data/training/a3_20261009/motionlib/agibot_a3")
+    parser.add_argument("--config", type=Path, default=ROOT / "script/a3/isaac_eval.yaml")
     args = parser.parse_args()
     checkpoint, output, logs = args.checkpoint.resolve(), args.output.resolve(), args.logs.resolve()
-    if (not checkpoint.is_relative_to(ROOT / "data/training") or
+    if (not checkpoint.is_relative_to(ROOT / "data") or
             not output.is_relative_to(ROOT / "data/evaluation") or
             not logs.is_relative_to(ROOT / "logs")):
         parser.error("Paths must stay inside the approved project directories")
@@ -36,13 +39,11 @@ def main():
             health["gpu_query"]["returncode"] != 0 or not health["gpus"] or
             any((g.get("temperature.gpu") or 85) >= 85 for g in health["gpus"])):
         raise RuntimeError("Cannot verify safe starting temperatures")
-    metadata = json.loads(checkpoint.with_suffix(".json").read_text())
-    if sha256(checkpoint) != metadata["sha256"] or checkpoint.stat().st_size != metadata["bytes"]:
-        raise ValueError("Checkpoint integrity mismatch")
+    metadata = checkpoint_metadata(checkpoint)
     logs.mkdir(parents=True)
     argv = [str(ROOT / "data/environments/a3-sonic/bin/python"), "-m", "gear_sonic.evaluation", "run",
-            "--config", str(ROOT / "script/a3/isaac_eval.yaml"), "--checkpoint", str(checkpoint),
-            "--dataset", str(ROOT / "data/training/a3_20261009/motionlib/agibot_a3"),
+            "--config", str(args.config.resolve()), "--checkpoint", str(checkpoint),
+            "--dataset", str(args.dataset.resolve()),
             "--output", str(output)]
     record = {"checkpoint": str(checkpoint), "checkpoint_sha256": metadata["sha256"],
               "vendor_commit": VENDOR_COMMIT, "argv": argv, "started_at": time.time()}

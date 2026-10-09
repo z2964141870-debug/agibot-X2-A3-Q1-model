@@ -87,7 +87,7 @@ class A3Retargeter:
     def __init__(self):
         self.model = mujoco.MjModel.from_xml_path(str(MJCF))
         self.data = mujoco.MjData(self.model)
-        self.data.qpos[:] = self.model.qpos0
+        self.data.qpos[:] = self.model.key_qpos[0] if self.model.nkey else self.model.qpos0
         mujoco.mj_forward(self.model, self.data)
         self.names = list(BODY_MAP)
         self.bodies = [mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_BODY, name)
@@ -123,6 +123,31 @@ class A3Retargeter:
             velocities.setdefault(name, 1e-8)
         self.limits = [mink.ConfigurationLimit(self.model, min_distance_from_limits=.001),
                        mink.VelocityLimit(self.model, velocities)]
+        self.foot_geometries = []
+        for side in ("left", "right"):
+            selected = []
+            for geom in range(self.model.ngeom):
+                body = mujoco.mj_id2name(self.model, mujoco.mjtObj.mjOBJ_BODY, int(self.model.geom_bodyid[geom]))
+                if body.startswith(side + "_") and ("ankle_roll" in body or "foot_" in body):
+                    kind = self.model.geom_type[geom]
+                    if kind == mujoco.mjtGeom.mjGEOM_MESH:
+                        mesh = self.model.geom_dataid[geom]
+                        start = self.model.mesh_vertadr[mesh]
+                        local = self.model.mesh_vert[start:start + self.model.mesh_vertnum[mesh]].copy()
+                    elif kind == mujoco.mjtGeom.mjGEOM_BOX:
+                        from itertools import product
+                        local = np.asarray(list(product((-1, 1), repeat=3))) * self.model.geom_size[geom]
+                    else:
+                        raise ValueError("Unsupported foot geometry in penetration check")
+                    selected.append((geom, local))
+            if not selected:
+                raise ValueError("No actual foot geometry available")
+            self.foot_geometries.append(selected)
+
+    def foot_min_z(self):
+        return [min(float((local @ self.configuration.data.geom_xmat[geom].reshape(3, 3).T +
+                           self.configuration.data.geom_xpos[geom])[:, 2].min())
+                    for geom, local in selected) for selected in self.foot_geometries]
 
     def targets(self, source, scale):
         cal_rotation = Rotation.from_quat(source.calibration_orientations, scalar_first=True).as_matrix()
@@ -142,7 +167,7 @@ class A3Retargeter:
     def solve(self, source, scale, directory):
         positions, rotations = self.targets(source, scale)
         self.configuration.update(self.data.qpos.copy())
-        qposes, actual, actual_rotations = [], [], []
+        qposes, actual, actual_rotations, foot_minima = [], [], [], []
         for frame in range(len(source.times)):
             q = self.configuration.data.qpos.copy()
             q[:3] = positions[frame, 0]
@@ -164,6 +189,7 @@ class A3Retargeter:
             qposes.append(q)
             actual.append(self.configuration.data.xpos[self.bodies].copy())
             actual_rotations.append(self.configuration.data.xmat[self.bodies].reshape(-1, 3, 3).copy())
+            foot_minima.append(self.foot_min_z())
             if frame % 300 == 0:
                 print(json.dumps({"frame": frame, "total": len(source.times)}), flush=True)
         qposes, actual = np.asarray(qposes), np.asarray(actual)
@@ -180,6 +206,7 @@ class A3Retargeter:
         np.savez_compressed(directory / "kinematic_trace.npz", time_s=source.times, qpos=qposes,
                             joint_names=np.asarray(self.joint_names), target_position_m=positions,
                             actual_position_m=actual, position_error_m=error,
+                            foot_geometry_min_z_m=np.asarray(foot_minima),
                             usage=np.asarray("TEST_ONLY"), training_allowed=np.asarray(False))
         fields = ["Frame", "root_translateX", "root_translateY", "root_translateZ",
                   "root_rotateX", "root_rotateY", "root_rotateZ", *self.joint_names,
@@ -197,6 +224,8 @@ class A3Retargeter:
                   "joint_velocity_max_rad_s": float(np.abs(velocities).max()),
                   "foot_ankle_min_z_m": float(foot_position[:, :, 2].min()),
                   "foot_speed_p95_m_s": float(np.percentile(foot_speed, 95)),
+                  "foot_geometry_min_z_m": float(np.min(foot_minima)),
+                  "foot_geometry_penetration_frames": int(np.count_nonzero(np.min(foot_minima, axis=1) < -.001)),
                   "foot_metrics_scope": "ANKLE_PROXY_NOT_SOLE_CONTACT_OR_SLIP_VALIDATION",
                   "scale": scale, "calibration": "FIRST_FRAME_RELATIVE_DIAGNOSTIC",
                   "physical_balance_verified": False, "high_fidelity_verified": False,
@@ -226,6 +255,29 @@ def retarget():
     neutral_result = prototype.solve(neutral, 1, neutral_dir)
     if neutral_result["ik_position_max_m"] > 1e-4:
         raise ValueError("Synthetic neutral mapping failed")
+    positions, rotations, expected = [], [], []
+    joint = prototype.joint_names.index("left_knee_joint")
+    for value in .1 * np.sin(np.pi * times):
+        q = prototype.data.qpos.copy()
+        q[prototype.q_indices[joint]] += value
+        prototype.data.qpos[:] = q
+        mujoco.mj_forward(prototype.model, prototype.data)
+        positions.append(prototype.data.xpos[prototype.bodies].copy())
+        rotations.append(Rotation.from_matrix(prototype.data.xmat[prototype.bodies].reshape(-1, 3, 3)).as_quat(scalar_first=True))
+        expected.append(q[prototype.q_indices].copy())
+        prototype.data.qpos[:] = prototype.model.key_qpos[0]
+    single = BodyReference(times, list(BODY_MAP), positions, rotations,
+                           neutral.calibration_positions, neutral.calibration_orientations,
+                           list(BODY_MAP), "SYNTHETIC_SINGLE_KNEE")
+    single_dir = DATA / "mocap/synthetic_single_joint"
+    single_dir.mkdir(parents=True, exist_ok=True)
+    single_result = A3Retargeter().solve(single, 1, single_dir)
+    with np.load(single_dir / "kinematic_trace.npz", allow_pickle=False) as arrays:
+        single_result["expected_active_joint_max_abs_error_rad"] = float(np.max(np.abs(
+            arrays["qpos"][:, prototype.q_indices] - np.asarray(expected))))
+    write_json(single_dir / "retarget_summary.json", single_result)
+    if single_result["expected_active_joint_max_abs_error_rad"] > .02:
+        raise ValueError("Synthetic single-joint mapping failed")
     outcomes = []
     for name in SOURCES:
         directory = DATA / "mocap" / name

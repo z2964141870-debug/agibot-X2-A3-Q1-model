@@ -99,6 +99,8 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 "$PY" script/q1/run_d
 
 本阶段报告、脚本、清单已保存，测试进程已结束。所有大型产物状态为 `LOCAL_ONLY`。发布流程为审核 diff / 暂存区、Git payload audit、仅本轮路径提交、显式推送 `origin Q1` 并核验远端 SHA；发布证据另存 `logs/session_records/q1_datasets_publication_20261009.json`，未推送前不记为已同步。保留既有 PredActor 暂存修改，未提交到本轮。
 
+发布核验：结果提交 `90aed9e0cce60511e44734f8aa019c2d358605d7` 已推送 `origin/Q1`，2026-10-09 08:33:32 北京时间核对本地 HEAD 与远端 `refs/heads/Q1` 一致；15 个本轮文件已发布，既有两份 PredActor 暂存修改保留。上述同步回执由后续独立提交保存。
+
 ## 下一步
 
 第一步先分离世界航向对齐与身体姿态校准，保留重力轴；再使用可复现的中立/配对姿态校准对照，检查同姿与幅度。随后在同一 AMASS 样本上建立 Q1 的 GMR 或 PhySINK 对照，处理地面/接触，最后进入无支撑跟踪策略训练。不能将本次支撑测试当作训练、平衡或真机验收。

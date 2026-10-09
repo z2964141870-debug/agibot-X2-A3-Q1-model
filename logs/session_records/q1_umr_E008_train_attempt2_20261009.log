@@ -1,0 +1,17 @@
+[TrainResidual] data=/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_umr_20261009_E008/correspondence.npz samples=2 names=['smplx_neutral_betas_219144f0c2', 'q1_pilot']
+[TrainResidual] template=smplx_neutral_betas_219144f0c2 sort=y_z_x
+[TrainResidual] device=cuda num_points=256 out=/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_umr_20261009_E008/correspondence_training
+[TrainResidual] normalize=per_sample_height
+[TrainResidual] training_mode=all_samples
+[TrainResidual] normalization_scales smplx_neutral_betas_219144f0c2=1.8562, q1_pilot=0.8993
+[TrainResidual] per_sample_heights smplx_neutral_betas_219144f0c2=1.856179, q1_pilot=0.899259
+[TrainResidual] chamfer_weight=1.0 repulsion_weight=0.002 residual_weight=0.0 edge_weight=0.4 edge_graph=geodesic repulsion_k=4 repulsion_radius=0.035 edge_k=8 edge_count=2048
+[TrainResidual] epoch=00001 loss=0.002030 chamfer=0.001654 repulsion=0.000377 residual=0.000000 edge=0.000000 lr=0.00099902
+[TrainResidual] epoch=00010 loss=0.001264 chamfer=0.000840 repulsion=0.000308 residual=0.000000 edge=0.000116 lr=0.00090546
+[TrainResidual] epoch=00020 loss=0.000844 chamfer=0.000342 repulsion=0.000314 residual=0.000000 edge=0.000188 lr=0.00065796
+[TrainResidual] epoch=00030 loss=0.000800 chamfer=0.000293 repulsion=0.000312 residual=0.000000 edge=0.000195 lr=0.00035204
+[TrainResidual] epoch=00040 loss=0.000776 chamfer=0.000301 repulsion=0.000313 residual=0.000000 edge=0.000161 lr=0.00010454
+[TrainResidual] epoch=00050 loss=0.000773 chamfer=0.000291 repulsion=0.000314 residual=0.000000 edge=0.000168 lr=0.00001000
+[TrainResidual] Saved final checkpoint and correspondence slots to /media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_umr_20261009_E008/correspondence_training
+[HumanoidPipeline] reuse correspondence dataset: /media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_umr_20261009_E008/correspondence.npz
+[HumanoidPipeline] /home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python /media/yu/FAFF-E9771/YuanQi_Q1/data/third_party/umr_q1_20261009/scripts/train_correspondence_template_residual_ae.py --data /media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_umr_20261009_E008/correspondence.npz --out-dir /media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_umr_20261009_E008/correspondence_training --template-name smplx_neutral_betas_219144f0c2 --template-sort y_z_x --num-points 256 --normalize per_sample_height --epochs 50 --batch-size 2 --lr 0.001 --lr-scheduler cosine --min-lr 1e-05 --chamfer-weight 1.0 --repulsion-weight 0.002 --repulsion-k 4 --repulsion-radius 0.035 --residual-weight 0.0 --edge-weight 0.4 --edge-graph geodesic --edge-k 8 --noise-std 0.002 --dropout-ratio 0.0 --resample-every 0 --log-every 10 --save-every 50 --seed 0 --device cuda

@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/media/yu/FAFF-E9771/YuanQi_Q1/data/third_party/umr_q1_20261009/scripts/humanoid_retarget_pipeline.py", line 1072, in <module>
+    main()
+  File "/media/yu/FAFF-E9771/YuanQi_Q1/data/third_party/umr_q1_20261009/scripts/humanoid_retarget_pipeline.py", line 1063, in main
+    run_pipeline(config, args)
+  File "/media/yu/FAFF-E9771/YuanQi_Q1/data/third_party/umr_q1_20261009/scripts/humanoid_retarget_pipeline.py", line 1038, in run_pipeline
+    dataset_path = dataset_out(config)
+                   ^^^^^^^^^^^^^^^^^^^
+  File "/media/yu/FAFF-E9771/YuanQi_Q1/data/third_party/umr_q1_20261009/scripts/humanoid_retarget_pipeline.py", line 326, in dataset_out
+    ROOT / f"data/correspondence_{robot['name']}{correspondence_cache_suffix(config)}.npz",
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/yu/FAFF-E9771/YuanQi_Q1/data/third_party/umr_q1_20261009/scripts/humanoid_retarget_pipeline.py", line 585, in correspondence_cache_suffix
+    template_cfg = smpl_template_config(config)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/yu/FAFF-E9771/YuanQi_Q1/data/third_party/umr_q1_20261009/scripts/humanoid_retarget_pipeline.py", line 625, in smpl_template_config
+    seq_key, sequence = _motion_sequence_for_template(config)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/yu/FAFF-E9771/YuanQi_Q1/data/third_party/umr_q1_20261009/scripts/humanoid_retarget_pipeline.py", line 603, in _motion_sequence_for_template
+    import smpl_surface_retarget_common as common
+  File "/media/yu/FAFF-E9771/YuanQi_Q1/data/third_party/umr_q1_20261009/scripts/smpl_surface_retarget_common.py", line 33, in <module>
+    from view_smpl_mujoco import dynamic_surface_template_to_world, model_faces  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'view_smpl_mujoco'

@@ -1,0 +1,163 @@
+{
+  "smplx_model_dir": "/media/yu/FAFF-E9771/data/humanplus-phuma/assets/body_models/smplx",
+  "smpl_template": {
+    "source": "motion",
+    "type": "smplx",
+    "use_betas": true,
+    "use_gender": true
+  },
+  "robot": {
+    "name": "q1_pilot",
+    "xml": "/media/yu/FAFF-E9771/YuanQi_Q1/data/references/q1/models/332a629e51fa/q1_v3/xml/q1_v3_mc.xml",
+    "point_cloud_center": "body:torso_link",
+    "tpose_qpos": {
+      "left_hip_pitch_joint": 0.0,
+      "left_hip_roll_joint": 0.0,
+      "left_hip_yaw_joint": 0.0,
+      "left_knee_joint": 0.01,
+      "left_ankle_pitch_joint": 0.0,
+      "left_ankle_roll_joint": 0.0,
+      "right_hip_pitch_joint": 0.0,
+      "right_hip_roll_joint": 0.0,
+      "right_hip_yaw_joint": 0.0,
+      "right_knee_joint": 0.01,
+      "right_ankle_pitch_joint": 0.0,
+      "right_ankle_roll_joint": 0.0,
+      "waist_roll_joint": 0.0,
+      "waist_yaw_joint": 0.0,
+      "left_shoulder_pitch_joint": 0.007318421797289484,
+      "left_shoulder_roll_joint": 0.5979032810562414,
+      "left_shoulder_yaw_joint": 1.5607999999999997,
+      "left_elbow_joint": 0.1672561722342704,
+      "right_shoulder_pitch_joint": 0.007318412915152043,
+      "right_shoulder_roll_joint": -0.5979032738738812,
+      "right_shoulder_yaw_joint": -1.5607999999999997,
+      "right_elbow_joint": 0.1672561619008736
+    },
+    "joint_limits": {
+      "left_hip_pitch_joint": [
+        -3.0443000000000002,
+        1.5608
+      ],
+      "left_hip_roll_joint": [
+        -0.68813,
+        1.5608
+      ],
+      "left_hip_yaw_joint": [
+        -1.5608,
+        1.5608
+      ],
+      "left_knee_joint": [
+        0.01,
+        2.4335
+      ],
+      "left_ankle_pitch_joint": [
+        -0.7754,
+        0.42633
+      ],
+      "left_ankle_roll_joint": [
+        -0.33907,
+        0.33907
+      ],
+      "right_hip_pitch_joint": [
+        -3.0443000000000002,
+        1.5608
+      ],
+      "right_hip_roll_joint": [
+        -1.5608,
+        0.68813
+      ],
+      "right_hip_yaw_joint": [
+        -1.5608,
+        1.5608
+      ],
+      "right_knee_joint": [
+        0.01,
+        2.4335
+      ],
+      "right_ankle_pitch_joint": [
+        -0.7754,
+        0.42633
+      ],
+      "right_ankle_roll_joint": [
+        -0.33907,
+        0.33907
+      ],
+      "waist_roll_joint": [
+        -0.25179999999999997,
+        0.25179999999999997
+      ],
+      "waist_yaw_joint": [
+        -1.5608,
+        1.5608
+      ],
+      "left_shoulder_pitch_joint": [
+        -3.1316,
+        1.5608
+      ],
+      "left_shoulder_roll_joint": [
+        -0.077266,
+        2.7825
+      ],
+      "left_shoulder_yaw_joint": [
+        -1.5608,
+        1.5608
+      ],
+      "left_elbow_joint": [
+        -0.86266,
+        1.6481
+      ],
+      "right_shoulder_pitch_joint": [
+        -3.1316,
+        1.5608
+      ],
+      "right_shoulder_roll_joint": [
+        -2.7825,
+        0.077266
+      ],
+      "right_shoulder_yaw_joint": [
+        -1.5608,
+        1.5608
+      ],
+      "right_elbow_joint": [
+        -0.86266,
+        1.6481
+      ]
+    }
+  },
+  "correspondence": {
+    "dataset": {
+      "out": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_umr_20261009_E008/correspondence.npz",
+      "num_points": 256,
+      "surface_oversample_ratio": 4,
+      "exterior_method": "first_hit"
+    },
+    "train": {
+      "out_dir": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_umr_20261009_E008/correspondence_training",
+      "epochs": 50,
+      "device": "cuda",
+      "log_every": 10,
+      "save_every": 50,
+      "edge_k": 8,
+      "repulsion_k": 4
+    }
+  },
+  "motion": {
+    "data": "/media/yu/FAFF-E9771/data/project_snapshots/HUMAN_PLUS_A3/2026-08-09/datasets/amass_sources",
+    "seq_key": "G3_-_front_kick_stageii",
+    "start": 0,
+    "stride": 4,
+    "max_frames": 32
+  },
+  "solver": {
+    "batch_size": 8
+  },
+  "retarget": {
+    "out": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_umr_20261009_E008/q1_retarget.npz",
+    "smplx_batch_size": 32,
+    "smplx_batch_size_max": 64
+  },
+  "view": {
+    "enabled": false
+  }
+}

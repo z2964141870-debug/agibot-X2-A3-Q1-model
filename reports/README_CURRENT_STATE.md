@@ -16,6 +16,8 @@
 
 ## 已完成，可从证据继续
 
+10/10新授权：用户要求重启训练并取消3次启动上限。新R03从独立验证的2700恢复至累计10000，无累计启动上限/到期时间，原温度、无进度和异常停止保护保留；配置与39项恢复/保存测试通过，实际启动验证待做。服务将指向R03，R01/R02账本不修改。最新入口见[持续续训README](README_A3_CONTINUOUS_20261010.md)，下方R02停训为历史状态。
+
 10/9 20:28最新A3：R02反复整机重启后在18:40:13因3/3启动预算用完停止，服务failed/exit2、总账本blocked/attempt_limit、GPU无计算进程；当前boot `a95a89b9…`。2700模型独立大小/SHA/CPU重载/网络和优化器有限性校验通过，LOCAL_ONLY，距10000尚差7300。三个run CPU采样最高76/67/67°C、GPU44/35/37°C，无temperature_stop证据，重启根因UNKNOWN；不能认定电源故障。本轮只诊断与记录，未重启训练或重置预算。最新入口见[长训故障与恢复](README_A3_LONGTRAIN_20261009.md)及[故障清单](../data/manifests/a3_R02_stop_20261009.json)。下面17:50运行状态为历史证据。
 
 10/9 17:50最新A3：用户授权测试失败后续训至累计10000；新R02已17:47从2000完整恢复，独立校验2050通过，`yuanqi-a3-longtrain.service` active/running/enabled、CPUQuota100%，第1/3次run `E007_long_01_s2000`。CPU69°C/GPU40°C、同boot，无新热停/重启证据。R02有效至10/10 17:47:35，温度CPU90/GPU85保护保持，普通异常/热停不自动解锁。原heartbeat yuanqi-a3已恢复ACTIVE/每10分钟、范围更新R02；R01complete及其3/3账本保留。见[累计10000续训](README_A3_LONGTRAIN_20261009.md)和[启动证据](../data/manifests/a3_longtrain_R02_20261009.json)。

@@ -1,6 +1,6 @@
 # A3 远程故障排查与有限自动续训
 
-记录日期：2026-10-09（北京时间）。实验 / 恢复编号：R01。状态：实现 / 测试 / 部署完成，实际 600→650 续训与新 checkpoint 校验通过，任务仍在运行；主机重启原因未定。
+记录日期：2026-10-09（北京时间）。实验 / 恢复编号：R01。最新状态（13:57）：真实重启后的自动950→1800续训已验证，13:47因CPU连续90°C保护停止，当前blocked。原始重启原因未定，10分钟巡检已配置，见[巡检与热保护](README_A3_LOOP_WATCH_20261009.md)。下文12:50–13:03为历史快照。
 
 ## 目标与当前证据
 
@@ -76,7 +76,7 @@
 
 12:52 训练指标快照到 step712，所选13项标量均有限；reward 0.857→1.334，body_pos error 0.0971→0.1093。两端数据来自不同训练采样，不能当作固定条件对照，reward 上升也不能直接认定跟踪变好。日志 `logs/a3_autoresume_20261009/metrics_snapshot.json`，未据此更改奖励或追加算法。
 
-尚未验证：真实重启后的服务自动运行、物理断电恢复、长期稳定性、累计2000完成与固定条件策略效果。不会人为断电 / 重启验证。
+截至12:52尚未验证真实重启后的服务自动运行；后续首轮巡检已确认一次真实boot后的950→1800自动恢复。物理断电过程、长期稳定性、累计2000完成与固定条件策略效果仍未验收。本代理没有主动断电 / 重启验证，详见[13:57最新记录](README_A3_LOOP_WATCH_20261009.md)。
 
 预定控制命令（安装后生效）：
 
@@ -115,6 +115,6 @@ data/environments/a3-sonic/bin/python -m script.a3.host_health logs/a3_diagnosti
 
 ## 下一步
 
-检查 R01 目标、退出原因及重启 / 无进展预算；完成后重载并独立评测，不以训练更新数直接认定站稳 / 动作跟踪。现场下次集中核对电源与开机行为。之后获取官方 PT 和 B0，而非立刻扩大从零训练规模。恢复时先读本报告与 current state，再重新核验进程、GPU、boot_id 和 ledger。
+当前先保持temperature_stop的blocked，按[循环巡检](README_A3_LOOP_WATCH_20261009.md)只读观察，现场核实CPU散热与温度读数。累计2000尚未完成，不以更新数直接认定站稳 / 动作跟踪。随后获取官方PT和B0；恢复时先读最新巡检记录、current state及本报告，重新核验service、boot_id与ledger。
 
 原始技术参考：[NVIDIA Xid 文档](https://docs.nvidia.com/deploy/xid-errors/introduction.html)、[Linux ramoops](https://www.kernel.org/doc/html/latest/admin-guide/ramoops.html)、[systemd service 官方文档源码](https://github.com/systemd/systemd/blob/main/man/systemd.service.xml)。Xid 可来自硬件 / 软件 / 应用，ramoops 需要支持的保留内存环境，不保证完全断电后保留。

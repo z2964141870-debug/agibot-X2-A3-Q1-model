@@ -16,7 +16,7 @@
 
 ## 已完成，可从证据继续
 
-10/9 12:50–52 最新 A3 快照：R01 服务 `yuanqi-a3-autoresume.service` enabled / active / running；第一次任务 `E006_auto_01_s600` 从 E005 step600 恢复，Actor / Critic 一致及优化器计数恢复已核验，新 step650 大小 / SHA / 重载 / 有限性检查通过，训练指标到712且13项抽查标量有限。最终28项 CPU 故障检查、bash / systemd unit 检查通过；最多3次启动、连续2次无保存进展停止、有效期至10/10 12:47:08，预算跨重启保留。主机重启原因未定，真实开机恢复尚未测试；见[自动恢复与排查](README_A3_AUTORECOVERY_20261009.md)。12:44 SSH 超时恢复时 boot 未变，不能把网络短断当作重启。模型仍 LOCAL_ONLY。
+10/9 13:57 最新 A3：主机新boot `91918243…` 后服务自动恢复第2次任务 `E006_auto_02_s950`，950→1800及Actor / Critic / optimizer恢复核验通过；13:47:27与13:47:32 CPU连续90°C、GPU42–43°C，触发temperature_stop，service failed、ledger blocked，当前不训练。本轮1800模型独立大小 / SHA / CPU重载 / 有限性校验通过，GPU空闲，CPU回落50°C；不据此解除保护或认定之前重启都由热导致。用户要求loop，已配置当前聊天10分钟heartbeat `yuanqi-a3`，首次定时触发待验证，去重清单 `data/manifests/a3_watch_state_20261009.json`。详见[巡检与CPU热保护](README_A3_LOOP_WATCH_20261009.md)。预算已用2/3次、有效期至10/10 12:47:08，模型仍LOCAL_ONLY。
 
 E001 / E002 / E005 的中断与 E003 / E004 续训历史保留在[续训 README](README_A3_RESUME_20261009.md)。当前任务为从零学习 / 对照，不是成熟预训练策略；2000更新 / 固定条件效果未验收。恢复前重新检查 service、ledger 与最新有效模型。Q1 副本未修改。
 
@@ -46,7 +46,7 @@ Q1新工作：用户于10/8指定 `/media/yu/FAFF-E977/YuanQi_Q1`，最终目标
 
 ## 下一项具体工作
 
-当前工程主线：检查 R01 累计2000目标 / 停止原因与新 checkpoint，完成后独立评测；诊断与有限恢复见[自动恢复](README_A3_AUTORECOVERY_20261009.md)。下一步按[迁移方法与 A3 结合评估](README_A3_TRANSFER_20261009.md)获取并核验官方035 PT / 配套配置，建立 B0 与 B1，再比较 B2。官方 PT 尚未下载，服务器 Hugging Face 曾超时；不要把第三方 X2 ONNX 当作 A3 可续训权重。实时未来参考接口另行核验。
+当前先保持R01的temperature_stop blocked，10分钟巡检只读观察；现场核实CPU散热 / 温度读数后再安排受控训练。累计2000尚未完成，恢复边界与记录见[循环巡检](README_A3_LOOP_WATCH_20261009.md)。随后按[迁移评估](README_A3_TRANSFER_20261009.md)获取官方035 PT / 配套配置，建立B0 / B1再考虑B2；官方PT尚未下载，实时未来参考接口另行核验。
 
 下一课：同一个关节的 Actor 输出 -> 目标角 -> PD -> 实际反馈，由本人解释并判断，再回到对应字段 / 代码。A3 公开工程来源本轮已确认智元官方组织发布、基于 NVIDIA SONIC；型号兼容和实际训练仍按资源审计推进，见[主线与来源记录](README_LEARNING_MAINLINE_20261009.md)。
 

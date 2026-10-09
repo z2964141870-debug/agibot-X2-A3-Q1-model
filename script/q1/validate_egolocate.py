@@ -20,6 +20,8 @@ from egolocate_input import convert_bundle, save_test_only
 from q1_retarget import Q1Retargeter
 from q1_sim import JointReference, Q1Sim
 
+HERE = Path(__file__).resolve().parent
+
 
 def leg_scale(source, retargeter):
     robot_lengths, human_lengths = [], []
@@ -142,6 +144,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--input-format", choices=("egolocate", "dataset-reference"), default="egolocate")
+    parser.add_argument("--retarget-config", type=Path, default=HERE / "retarget_config.json")
+    parser.add_argument("--calibration", choices=("first-frame", "smplx-standing"), default="first-frame")
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--render", action="store_true")
     parser.add_argument("--render-backend", choices=("egl", "cpu"), default="egl")
@@ -149,12 +153,17 @@ def main():
     if args.output_dir.exists():
         parser.error("Use a new output directory")
     args.output_dir.mkdir(parents=True)
-    retargeter = Q1Retargeter()
+    retargeter = Q1Retargeter(config=args.retarget_config)
     if args.input_format == "dataset-reference":
         from dataset_input import load_dataset_reference
         source, conversion = load_dataset_reference(args.input, retargeter.names)
     else:
         source, conversion = convert_bundle(args.input, retargeter.names, retargeter.sim.config["reference_hz"])
+    conversion = dict(conversion)
+    if args.calibration == "smplx-standing":
+        from dataset_input import paired_smplx_standing
+        source, recipe = paired_smplx_standing(source, conversion)
+        conversion["calibration"] = recipe
     print(f"Input decoded: {len(source.times)} frames", flush=True)
     save_test_only(source, args.output_dir / "body_reference.npz")
     scale, scaling = leg_scale(source, retargeter)
@@ -197,6 +206,8 @@ def main():
         "stage": args.output_dir.name, "usage": "TEST_ONLY", "training_allowed": False,
         "scope": "BODY_POSE_INPUT_KINEMATIC_IK_SUPPORTED_PD_REPLAY",
         "input_format": args.input_format,
+        "calibration_mode": args.calibration,
+        "root_translation_alignment": retargeter.translation_alignment,
         "render_backend": args.render_backend if args.render else None,
         "conversion": conversion, "scaling": scaling,
         "base_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip(),
@@ -204,7 +215,7 @@ def main():
         "source_files": [{"path": str(p.relative_to(root)), "sha256": hashlib.sha256(p.read_bytes()).hexdigest()}
                          for p in [Path(__file__).resolve(), root / "script/q1/egolocate_input.py",
                                    root / "script/q1/inspect_egolocate.py", root / "script/q1/q1_retarget.py",
-                                   root / "script/q1/q1_sim.py", root / "script/q1/retarget_config.json", root / "script/q1/sim_config.json"]],
+                                   root / "script/q1/q1_sim.py", retargeter.config_path, root / "script/q1/sim_config.json"]],
         "input_decoded": True, "finite_kinematic_output": bool(np.isfinite(qposes).all()),
         "kinematic_max_body_position_error_m": float(position_norms.max()),
         "kinematic_body_position_error_p95_m": float(np.quantile(position_norms, 0.95)),

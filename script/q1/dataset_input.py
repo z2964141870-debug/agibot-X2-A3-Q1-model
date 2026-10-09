@@ -12,7 +12,7 @@ import numpy as np
 from scipy.spatial.transform import Rotation
 
 from egolocate_input import SMPL_BODY_IDS, SMPL_TO_ROBOT_BASIS, resample, save_test_only
-from q1_retarget import BodyReference
+from q1_retarget import BodyReference, heading_rotation
 
 
 HERE = Path(__file__).resolve().parent
@@ -42,6 +42,52 @@ def knee_geometry(positions, names):
                         "knee_flexion_range_deg": float(np.rad2deg(np.ptp(flexion))),
                         "first_frame_knee_flexion_deg": float(np.rad2deg(flexion[0]))}
     return result
+
+
+def paired_smplx_standing(source, conversion):
+    """Pair a synthetic arms-down SMPL-X stance with the Q1 neutral stance."""
+    import smplx
+    import torch
+    from smplx.lbs import batch_rigid_transform
+
+    if conversion.get("format") != "SMPLX_STAGEII":
+        raise ValueError("Synthetic standing calibration requires original SMPL-X and shape parameters")
+    model_path = Path(conversion["model"]["path"])
+    if identity(model_path)["sha256"] != conversion["model"]["sha256"]:
+        raise ValueError("Calibration body model identity changed")
+    betas = np.asarray(conversion["betas"], dtype=float)
+    model = smplx.SMPLX(str(model_path), num_betas=len(betas), use_pca=False,
+                       flat_hand_mean=True, batch_size=1)
+    pose = np.zeros((55, 3))
+    pose[16, 2], pose[17, 2] = -np.pi / 2, np.pi / 2
+    pelvis = source.names.index("pelvis")
+    source_heading = heading_rotation(Rotation.from_quat(source.orientations[0, pelvis], scalar_first=True).as_matrix())
+    pose[0] = Rotation.from_matrix(source_heading @ SMPL_TO_ROBOT_BASIS).as_rotvec()
+    with torch.no_grad():
+        beta_tensor = torch.as_tensor(betas, dtype=model.v_template.dtype)
+        shaped = model.v_template + torch.einsum("l,vcl->vc", beta_tensor, model.shapedirs)
+        rest = torch.einsum("jv,vc->jc", model.J_regressor, shaped)
+        rotations = torch.as_tensor(Rotation.from_rotvec(pose).as_matrix()[None], dtype=rest.dtype)
+        joints, transforms = batch_rigid_transform(rotations, rest[None], model.parents)
+        expected = model(betas=beta_tensor[None], global_orient=torch.as_tensor(pose[None, 0], dtype=rest.dtype),
+                         body_pose=torch.as_tensor(pose[None, 1:22].reshape(1, 63), dtype=rest.dtype)).joints[0, :22].numpy()
+        fk_error = float(np.max(np.abs(joints[0, :22].numpy() - expected)))
+    if fk_error > 1e-5:
+        raise ValueError("Synthetic calibration FK disagrees with official SMPL-X forward")
+    ids = [SMPL_BODY_IDS[n] for n in source.names]
+    positions = joints[0, ids].numpy()
+    positions += source.positions[0, pelvis] - positions[pelvis]
+    body_rotations = transforms[0, ids, :3, :3].numpy() @ SMPL_TO_ROBOT_BASIS.T
+    quats = Rotation.from_matrix(body_rotations).as_quat(scalar_first=True)
+    calibrated = BodyReference(source.times, source.names, source.positions, source.orientations,
+                               positions, quats, source.names, source.source_kind + "_SYNTHETIC_STANDING_PAIR")
+    recipe = {"method": "MODEL_SYNTHESIZED_ARMS_DOWN_STANDING_PAIR_NOT_HARDWARE_CALIBRATION",
+              "root_heading": "SOURCE_FIRST_FRAME_WORLD_Z_HEADING_ONLY",
+              "translation_origin": "SOURCE_FIRST_FRAME_PELVIS",
+              "body_pose": "ZERO_EXCEPT_LEFT_SHOULDER_Z_MINUS_90_RIGHT_SHOULDER_Z_PLUS_90_DEG",
+              "fk_vs_official_forward_max_abs_error_m": fk_error,
+              "same_shape_as_input": True, "hardware_paired_pose_verified": False}
+    return calibrated, recipe
 
 
 def smplx_stageii(path, model_folder, seconds, names):

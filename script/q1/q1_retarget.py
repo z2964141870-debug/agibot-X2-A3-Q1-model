@@ -18,6 +18,17 @@ from q1_sim import JointReference, Q1Sim
 HERE = Path(__file__).resolve().parent
 
 
+def heading_rotation(rotation):
+    """Extract world-Z heading without rotating the world gravity axis."""
+    forward = rotation[:2, 0]
+    if np.linalg.norm(forward) > 1e-8:
+        yaw = np.arctan2(forward[1], forward[0])
+    else:
+        left = rotation[:2, 1]
+        yaw = np.arctan2(-left[0], left[1])
+    return Rotation.from_euler("z", yaw).as_matrix()
+
+
 class BodyReference:
     """Explicit world-space skeleton contract, not a raw SMPL pose decoder."""
 
@@ -80,6 +91,9 @@ class Q1Retargeter:
     def __init__(self, sim_config=HERE / "sim_config.json", config=HERE / "retarget_config.json"):
         self.config_path = Path(config).resolve()
         self.config = json.loads(self.config_path.read_text())
+        self.translation_alignment = self.config.get("root_translation_alignment", "gravity_preserving_heading")
+        if self.translation_alignment not in ("gravity_preserving_heading", "full_rotation_legacy_diagnostic"):
+            raise ValueError("Unknown root translation alignment")
         self.sim = Q1Sim(sim_config)
         self.names = list(self.config["body_map"])
         self.root = self.names.index(self.config["root_name"])
@@ -123,6 +137,10 @@ class Q1Retargeter:
         human_cal_rotation = Rotation.from_quat(source.calibration_orientations,
                                                scalar_first=True).as_matrix()
         alignment = robot_root_rotation @ human_cal_rotation[self.root].T
+        world_alignment = (heading_rotation(robot_root_rotation)
+                           @ heading_rotation(human_cal_rotation[self.root]).T)
+        if self.translation_alignment == "full_rotation_legacy_diagnostic":
+            world_alignment = alignment
         human_cal_local = ((source.calibration_positions - source.calibration_positions[self.root])
                            @ human_cal_rotation[self.root])
         robot_cal_local = ((self.robot_positions - self.robot_positions[self.root])
@@ -136,7 +154,7 @@ class Q1Retargeter:
         for frame in range(len(source.times)):
             human_rotations = Rotation.from_quat(source.orientations[frame], scalar_first=True).as_matrix()
             root_rotation = alignment @ human_rotations[self.root]
-            root_position = (self.robot_positions[self.root] + scale * alignment
+            root_position = (self.robot_positions[self.root] + scale * world_alignment
                              @ (source.positions[frame, self.root] - source.calibration_positions[self.root]))
             human_local = ((source.positions[frame] - source.positions[frame, self.root])
                            @ human_rotations[self.root])

@@ -1,0 +1,1661 @@
+{
+  "usage": "TEST_ONLY",
+  "training_allowed": false,
+  "scope": "CALIBRATION_ABLATION_IK_FIXED_PELVIS_PD",
+  "base_commit": "1e2932df9ebd784cfd584d2bd0caa349c6567842",
+  "driver": {
+    "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/run_calibration_comparison.py",
+    "bytes": 7063,
+    "sha256": "47a1b5faf61f53d3526d4e8fc961df5e67657baa000f7884b42c6c01a4f9b854"
+  },
+  "cases": [
+    {
+      "case": "amass_stand",
+      "mode": "legacy",
+      "status": "COMPLETE",
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/validate_egolocate.py",
+        "--input-format",
+        "dataset-reference",
+        "--input",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_datasets_20261009/amass_stand/body_reference.npz",
+        "--output-dir",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_stand/legacy",
+        "--retarget-config",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/retarget_legacy.json",
+        "--calibration",
+        "first-frame"
+      ],
+      "legacy_qpos_reproduction_max_abs_error": 0.0,
+      "summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_stand/legacy/summary.json",
+        "bytes": 9348,
+        "sha256": "9ab15aa40affe624d9dcf0db9b52911095b5eb20fe4ab6ddfced56ea349bacd7"
+      },
+      "source_scaled_z_range_m": 0.0013178286318339394,
+      "q1_root_z_range_m": 0.00236703953931372,
+      "root_vertical_delta_max_error_m": 0.0010988802672933784,
+      "ik_position_p95_m": 0.007308123211774963,
+      "q1_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 9.194368766837874,
+          "knee_flexion_max_deg": 10.001516407807824,
+          "knee_flexion_range_deg": 0.8071476409699504,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        },
+        "right": {
+          "knee_flexion_min_deg": 9.849294979493726,
+          "knee_flexion_max_deg": 10.024723573919527,
+          "knee_flexion_range_deg": 0.17542859442579994,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        }
+      },
+      "source_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 12.321165016403288,
+          "knee_flexion_max_deg": 13.534540593530648,
+          "knee_flexion_range_deg": 1.213375577127359,
+          "first_frame_knee_flexion_deg": 13.473895994837184
+        },
+        "right": {
+          "knee_flexion_min_deg": 8.97659023167303,
+          "knee_flexion_max_deg": 9.784537784739557,
+          "knee_flexion_range_deg": 0.8079475530665261,
+          "first_frame_knee_flexion_deg": 8.97659023167303
+        }
+      },
+      "joint_limit_violations": 0,
+      "max_joint_speed_rad_s": 1.999998,
+      "supported_max_joint_rmse_rad": 0.007098351159842645,
+      "gravity_preserving_root_check_passed": false,
+      "artifacts": [
+        {
+          "name": "body_reference.npz",
+          "bytes": 109209,
+          "sha256": "f969b31df895a2e36cc06cc3c0c15b75fe67e609542a8ad05f87dceba45ba063"
+        },
+        {
+          "name": "joint_reference.npz",
+          "bytes": 25853,
+          "sha256": "425c2bab2eb4948e794ebf552b6003cd67524a126974bf523e7dced71a02e592"
+        },
+        {
+          "name": "kinematic_trace.npz",
+          "bytes": 282167,
+          "sha256": "89684c541471dcee49b4d1163cf84e04b75437b65fb7ff52dbd1a438b7e61889"
+        },
+        {
+          "name": "supported_replay.npz",
+          "bytes": 76136,
+          "sha256": "1d25b097d67d0749da2adff2fbdb78b9f9a7842ebb01822d24da0965f2f0bfab"
+        }
+      ],
+      "source_files": [
+        {
+          "path": "script/q1/validate_egolocate.py",
+          "sha256": "ca2f174feb5638e5693b68e66044f5b758599ffe640aeea4836d35a01439cca8"
+        },
+        {
+          "path": "script/q1/egolocate_input.py",
+          "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+        },
+        {
+          "path": "script/q1/inspect_egolocate.py",
+          "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+        },
+        {
+          "path": "script/q1/q1_retarget.py",
+          "sha256": "c86b46bfc0c49293f531792ae44dcfebfed5108c19d6260e79e07c0cb8fbb0fa"
+        },
+        {
+          "path": "script/q1/q1_sim.py",
+          "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+        },
+        {
+          "path": "data/experiments/q1_calibration_20261009_E002/retarget_legacy.json",
+          "sha256": "ac25a39efa91c49014b3aebe4cab37452976786a6297fb05bbd4dc62a29f1a16"
+        },
+        {
+          "path": "script/q1/sim_config.json",
+          "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+        },
+        {
+          "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/dataset_input.py",
+          "bytes": 16453,
+          "sha256": "7328ad78ec04e3c283906d3fbd8f45fbb6873d4d0b0820400c0064dddf21643f"
+        }
+      ]
+    },
+    {
+      "case": "amass_stand",
+      "mode": "gravity_fixed",
+      "status": "COMPLETE",
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/validate_egolocate.py",
+        "--input-format",
+        "dataset-reference",
+        "--input",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_datasets_20261009/amass_stand/body_reference.npz",
+        "--output-dir",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_stand/gravity_fixed",
+        "--retarget-config",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/retarget_gravity_fixed.json",
+        "--calibration",
+        "first-frame"
+      ],
+      "summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_stand/gravity_fixed/summary.json",
+        "bytes": 9357,
+        "sha256": "9df9e0cbb82be1ec143df132235ad2c3eced91a01d133dbbfc2ea9ddea4c4967"
+      },
+      "source_scaled_z_range_m": 0.0013178286318339394,
+      "q1_root_z_range_m": 0.0013178286318339394,
+      "root_vertical_delta_max_error_m": 5.551115123125783e-17,
+      "ik_position_p95_m": 0.007308123211774941,
+      "q1_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 9.194368766837798,
+          "knee_flexion_max_deg": 10.001516407807824,
+          "knee_flexion_range_deg": 0.8071476409700267,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        },
+        "right": {
+          "knee_flexion_min_deg": 9.849294979493726,
+          "knee_flexion_max_deg": 10.024723573919603,
+          "knee_flexion_range_deg": 0.1754285944258763,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        }
+      },
+      "source_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 12.321165016403288,
+          "knee_flexion_max_deg": 13.534540593530648,
+          "knee_flexion_range_deg": 1.213375577127359,
+          "first_frame_knee_flexion_deg": 13.473895994837184
+        },
+        "right": {
+          "knee_flexion_min_deg": 8.97659023167303,
+          "knee_flexion_max_deg": 9.784537784739557,
+          "knee_flexion_range_deg": 0.8079475530665261,
+          "first_frame_knee_flexion_deg": 8.97659023167303
+        }
+      },
+      "joint_limit_violations": 0,
+      "max_joint_speed_rad_s": 1.999998,
+      "supported_max_joint_rmse_rad": 0.007098351159842652,
+      "gravity_preserving_root_check_passed": true,
+      "artifacts": [
+        {
+          "name": "body_reference.npz",
+          "bytes": 109209,
+          "sha256": "f969b31df895a2e36cc06cc3c0c15b75fe67e609542a8ad05f87dceba45ba063"
+        },
+        {
+          "name": "joint_reference.npz",
+          "bytes": 25853,
+          "sha256": "f623d694cb24946ff2cd352f93f12cf47e85d01bbd539a1b070be600136eba56"
+        },
+        {
+          "name": "kinematic_trace.npz",
+          "bytes": 282188,
+          "sha256": "55d709b44c306f0a28795134dccc2f47f6b6604e482ce7d5bb07e3681acdedcd"
+        },
+        {
+          "name": "supported_replay.npz",
+          "bytes": 76126,
+          "sha256": "124378af0daf48f0c5f72fc88d07fb9e841ce5d90cfad354c9c3d04531ebcbe3"
+        }
+      ],
+      "source_files": [
+        {
+          "path": "script/q1/validate_egolocate.py",
+          "sha256": "ca2f174feb5638e5693b68e66044f5b758599ffe640aeea4836d35a01439cca8"
+        },
+        {
+          "path": "script/q1/egolocate_input.py",
+          "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+        },
+        {
+          "path": "script/q1/inspect_egolocate.py",
+          "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+        },
+        {
+          "path": "script/q1/q1_retarget.py",
+          "sha256": "c86b46bfc0c49293f531792ae44dcfebfed5108c19d6260e79e07c0cb8fbb0fa"
+        },
+        {
+          "path": "script/q1/q1_sim.py",
+          "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+        },
+        {
+          "path": "data/experiments/q1_calibration_20261009_E002/retarget_gravity_fixed.json",
+          "sha256": "3b312acd676be941d7b23c858c2f61193ffd084af5507522bb7dae4056158397"
+        },
+        {
+          "path": "script/q1/sim_config.json",
+          "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+        },
+        {
+          "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/dataset_input.py",
+          "bytes": 16453,
+          "sha256": "7328ad78ec04e3c283906d3fbd8f45fbb6873d4d0b0820400c0064dddf21643f"
+        }
+      ]
+    },
+    {
+      "case": "amass_stand",
+      "mode": "standing_pair",
+      "status": "COMPLETE",
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/validate_egolocate.py",
+        "--input-format",
+        "dataset-reference",
+        "--input",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_datasets_20261009/amass_stand/body_reference.npz",
+        "--output-dir",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_stand/standing_pair",
+        "--retarget-config",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/retarget_standing_pair.json",
+        "--calibration",
+        "smplx-standing"
+      ],
+      "summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_stand/standing_pair/summary.json",
+        "bytes": 9760,
+        "sha256": "627a253fa0fe21cbd24aad65e7fdf05a1e4dd0ef3146d5878bb5d26a91e05476"
+      },
+      "source_scaled_z_range_m": 0.0013178286318339394,
+      "q1_root_z_range_m": 0.0013178286318339394,
+      "root_vertical_delta_max_error_m": 5.551115123125783e-17,
+      "ik_position_p95_m": 0.04535461714112896,
+      "q1_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 7.750195473952197,
+          "knee_flexion_max_deg": 10.259080591629962,
+          "knee_flexion_range_deg": 2.508885117677765,
+          "first_frame_knee_flexion_deg": 7.750195473952197
+        },
+        "right": {
+          "knee_flexion_min_deg": 5.4809089241089595,
+          "knee_flexion_max_deg": 7.788635388154355,
+          "knee_flexion_range_deg": 2.3077264640453956,
+          "first_frame_knee_flexion_deg": 7.3448230851678895
+        }
+      },
+      "source_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 12.321165016403288,
+          "knee_flexion_max_deg": 13.534540593530648,
+          "knee_flexion_range_deg": 1.213375577127359,
+          "first_frame_knee_flexion_deg": 13.473895994837184
+        },
+        "right": {
+          "knee_flexion_min_deg": 8.97659023167303,
+          "knee_flexion_max_deg": 9.784537784739557,
+          "knee_flexion_range_deg": 0.8079475530665261,
+          "first_frame_knee_flexion_deg": 8.97659023167303
+        }
+      },
+      "joint_limit_violations": 0,
+      "max_joint_speed_rad_s": 1.9999980000000017,
+      "supported_max_joint_rmse_rad": 0.01622782947744512,
+      "gravity_preserving_root_check_passed": true,
+      "artifacts": [
+        {
+          "name": "body_reference.npz",
+          "bytes": 108769,
+          "sha256": "247fefc9999ee9d16b64ed4d53a5d90db789ca3d4ef6ee39009a853612e9dc8f"
+        },
+        {
+          "name": "joint_reference.npz",
+          "bytes": 25884,
+          "sha256": "9fb2e048944654fc69eb07ac31490b62c1b7eee0fa94435ead8166a340ff7f64"
+        },
+        {
+          "name": "kinematic_trace.npz",
+          "bytes": 284655,
+          "sha256": "1de811a273202d6247e0c7c71e81b08a27831ffc4f676c61a3882f23635aaba5"
+        },
+        {
+          "name": "supported_replay.npz",
+          "bytes": 76127,
+          "sha256": "667865823b7c30af7b620d0928ccd2ba6645b602086206bf3537778072094713"
+        }
+      ],
+      "source_files": [
+        {
+          "path": "script/q1/validate_egolocate.py",
+          "sha256": "ca2f174feb5638e5693b68e66044f5b758599ffe640aeea4836d35a01439cca8"
+        },
+        {
+          "path": "script/q1/egolocate_input.py",
+          "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+        },
+        {
+          "path": "script/q1/inspect_egolocate.py",
+          "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+        },
+        {
+          "path": "script/q1/q1_retarget.py",
+          "sha256": "c86b46bfc0c49293f531792ae44dcfebfed5108c19d6260e79e07c0cb8fbb0fa"
+        },
+        {
+          "path": "script/q1/q1_sim.py",
+          "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+        },
+        {
+          "path": "data/experiments/q1_calibration_20261009_E002/retarget_standing_pair.json",
+          "sha256": "3b312acd676be941d7b23c858c2f61193ffd084af5507522bb7dae4056158397"
+        },
+        {
+          "path": "script/q1/sim_config.json",
+          "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+        },
+        {
+          "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/dataset_input.py",
+          "bytes": 16453,
+          "sha256": "7328ad78ec04e3c283906d3fbd8f45fbb6873d4d0b0820400c0064dddf21643f"
+        }
+      ]
+    },
+    {
+      "case": "amass_walk_turn",
+      "mode": "legacy",
+      "status": "COMPLETE",
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/validate_egolocate.py",
+        "--input-format",
+        "dataset-reference",
+        "--input",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_datasets_20261009/amass_walk_turn/body_reference.npz",
+        "--output-dir",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_walk_turn/legacy",
+        "--retarget-config",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/retarget_legacy.json",
+        "--calibration",
+        "first-frame"
+      ],
+      "legacy_qpos_reproduction_max_abs_error": 0.0,
+      "summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_walk_turn/legacy/summary.json",
+        "bytes": 9339,
+        "sha256": "61fc2dda19cc0558eece40d4197ec31a1c6f363b2d1f1169e5379515096f0f45"
+      },
+      "source_scaled_z_range_m": 0.03607640247465371,
+      "q1_root_z_range_m": 0.2307113448979557,
+      "root_vertical_delta_max_error_m": 0.19469856392904827,
+      "ik_position_p95_m": 0.04235341931051456,
+      "q1_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 0.009201755200135137,
+          "knee_flexion_max_deg": 37.04179862941113,
+          "knee_flexion_range_deg": 37.032596874210995,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        },
+        "right": {
+          "knee_flexion_min_deg": 0.06921749903386784,
+          "knee_flexion_max_deg": 34.43578215056803,
+          "knee_flexion_range_deg": 34.36656465153416,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        }
+      },
+      "source_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 7.871011606802834,
+          "knee_flexion_max_deg": 65.02824032945878,
+          "knee_flexion_range_deg": 57.15722872265595,
+          "first_frame_knee_flexion_deg": 11.459086044471151
+        },
+        "right": {
+          "knee_flexion_min_deg": 2.376161983402282,
+          "knee_flexion_max_deg": 59.6114206492967,
+          "knee_flexion_range_deg": 57.23525866589442,
+          "first_frame_knee_flexion_deg": 8.048172643627638
+        }
+      },
+      "joint_limit_violations": 0,
+      "max_joint_speed_rad_s": 1.999998000000051,
+      "supported_max_joint_rmse_rad": 0.045843692434077335,
+      "gravity_preserving_root_check_passed": false,
+      "artifacts": [
+        {
+          "name": "body_reference.npz",
+          "bytes": 287140,
+          "sha256": "656c7a46e53bf0b61013bd2ee6c33f1c899273091f089d8cc0e857c516872cd9"
+        },
+        {
+          "name": "joint_reference.npz",
+          "bytes": 67991,
+          "sha256": "60488f5d2a1c4eab424495b4468f2d7d0800fd80fe7d1a85573b1e6cbbf9ea22"
+        },
+        {
+          "name": "kinematic_trace.npz",
+          "bytes": 753545,
+          "sha256": "dd44af5d631b4e4a7a8dce7f43352d1afb8d53da4c664d68824632ba6c314359"
+        },
+        {
+          "name": "supported_replay.npz",
+          "bytes": 202077,
+          "sha256": "2dccc549e603b91979f4ce4742e15e421f138e5dc6d62c94b944f67e826d2a56"
+        }
+      ],
+      "source_files": [
+        {
+          "path": "script/q1/validate_egolocate.py",
+          "sha256": "ca2f174feb5638e5693b68e66044f5b758599ffe640aeea4836d35a01439cca8"
+        },
+        {
+          "path": "script/q1/egolocate_input.py",
+          "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+        },
+        {
+          "path": "script/q1/inspect_egolocate.py",
+          "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+        },
+        {
+          "path": "script/q1/q1_retarget.py",
+          "sha256": "c86b46bfc0c49293f531792ae44dcfebfed5108c19d6260e79e07c0cb8fbb0fa"
+        },
+        {
+          "path": "script/q1/q1_sim.py",
+          "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+        },
+        {
+          "path": "data/experiments/q1_calibration_20261009_E002/retarget_legacy.json",
+          "sha256": "ac25a39efa91c49014b3aebe4cab37452976786a6297fb05bbd4dc62a29f1a16"
+        },
+        {
+          "path": "script/q1/sim_config.json",
+          "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+        },
+        {
+          "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/dataset_input.py",
+          "bytes": 16453,
+          "sha256": "7328ad78ec04e3c283906d3fbd8f45fbb6873d4d0b0820400c0064dddf21643f"
+        }
+      ]
+    },
+    {
+      "case": "amass_walk_turn",
+      "mode": "gravity_fixed",
+      "status": "COMPLETE",
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/validate_egolocate.py",
+        "--input-format",
+        "dataset-reference",
+        "--input",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_datasets_20261009/amass_walk_turn/body_reference.npz",
+        "--output-dir",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_walk_turn/gravity_fixed",
+        "--retarget-config",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/retarget_gravity_fixed.json",
+        "--calibration",
+        "first-frame"
+      ],
+      "summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_walk_turn/gravity_fixed/summary.json",
+        "bytes": 9346,
+        "sha256": "7ba750d211d8cceec5220037a23086080e0c01f053ef2129a8c9d1a6f2e4d688"
+      },
+      "source_scaled_z_range_m": 0.03607640247465371,
+      "q1_root_z_range_m": 0.03607640247465371,
+      "root_vertical_delta_max_error_m": 5.551115123125783e-17,
+      "ik_position_p95_m": 0.04235341931051456,
+      "q1_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 0.00920175527934367,
+          "knee_flexion_max_deg": 37.04179862941113,
+          "knee_flexion_range_deg": 37.03259687413179,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        },
+        "right": {
+          "knee_flexion_min_deg": 0.06921749903386784,
+          "knee_flexion_max_deg": 34.4357821505681,
+          "knee_flexion_range_deg": 34.36656465153423,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        }
+      },
+      "source_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 7.871011606802834,
+          "knee_flexion_max_deg": 65.02824032945878,
+          "knee_flexion_range_deg": 57.15722872265595,
+          "first_frame_knee_flexion_deg": 11.459086044471151
+        },
+        "right": {
+          "knee_flexion_min_deg": 2.376161983402282,
+          "knee_flexion_max_deg": 59.6114206492967,
+          "knee_flexion_range_deg": 57.23525866589442,
+          "first_frame_knee_flexion_deg": 8.048172643627638
+        }
+      },
+      "joint_limit_violations": 0,
+      "max_joint_speed_rad_s": 1.999998000000051,
+      "supported_max_joint_rmse_rad": 0.04584369243407738,
+      "gravity_preserving_root_check_passed": true,
+      "artifacts": [
+        {
+          "name": "body_reference.npz",
+          "bytes": 287140,
+          "sha256": "656c7a46e53bf0b61013bd2ee6c33f1c899273091f089d8cc0e857c516872cd9"
+        },
+        {
+          "name": "joint_reference.npz",
+          "bytes": 67970,
+          "sha256": "520e6e4f052ac1047eb819ec4b4ac022201915dd18a557f4d3bb4ba3375dbd29"
+        },
+        {
+          "name": "kinematic_trace.npz",
+          "bytes": 753060,
+          "sha256": "1af0e2ba1b3405ff3a497f4bfc40c8b87834e8f1ff1c8ae1c8bfc362b4edbd7a"
+        },
+        {
+          "name": "supported_replay.npz",
+          "bytes": 202094,
+          "sha256": "b2230b9864088d03eefb492413b71567fd73c8f018756f1bec819b31472d75b9"
+        }
+      ],
+      "source_files": [
+        {
+          "path": "script/q1/validate_egolocate.py",
+          "sha256": "ca2f174feb5638e5693b68e66044f5b758599ffe640aeea4836d35a01439cca8"
+        },
+        {
+          "path": "script/q1/egolocate_input.py",
+          "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+        },
+        {
+          "path": "script/q1/inspect_egolocate.py",
+          "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+        },
+        {
+          "path": "script/q1/q1_retarget.py",
+          "sha256": "c86b46bfc0c49293f531792ae44dcfebfed5108c19d6260e79e07c0cb8fbb0fa"
+        },
+        {
+          "path": "script/q1/q1_sim.py",
+          "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+        },
+        {
+          "path": "data/experiments/q1_calibration_20261009_E002/retarget_gravity_fixed.json",
+          "sha256": "3b312acd676be941d7b23c858c2f61193ffd084af5507522bb7dae4056158397"
+        },
+        {
+          "path": "script/q1/sim_config.json",
+          "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+        },
+        {
+          "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/dataset_input.py",
+          "bytes": 16453,
+          "sha256": "7328ad78ec04e3c283906d3fbd8f45fbb6873d4d0b0820400c0064dddf21643f"
+        }
+      ]
+    },
+    {
+      "case": "amass_walk_turn",
+      "mode": "standing_pair",
+      "status": "COMPLETE",
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/validate_egolocate.py",
+        "--input-format",
+        "dataset-reference",
+        "--input",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_datasets_20261009/amass_walk_turn/body_reference.npz",
+        "--output-dir",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_walk_turn/standing_pair",
+        "--retarget-config",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/retarget_standing_pair.json",
+        "--calibration",
+        "smplx-standing"
+      ],
+      "summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_walk_turn/standing_pair/summary.json",
+        "bytes": 9739,
+        "sha256": "505accf77207ea58a4d152315091c91699eb7d223110b873a7484454cab36289"
+      },
+      "source_scaled_z_range_m": 0.03607640247465371,
+      "q1_root_z_range_m": 0.03607640247465366,
+      "root_vertical_delta_max_error_m": 5.551115123125783e-17,
+      "ik_position_p95_m": 0.05600246798370438,
+      "q1_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 0.01177872322267195,
+          "knee_flexion_max_deg": 32.11197608767259,
+          "knee_flexion_range_deg": 32.10019736444992,
+          "first_frame_knee_flexion_deg": 7.358583724448294
+        },
+        "right": {
+          "knee_flexion_min_deg": 0.07191755993488903,
+          "knee_flexion_max_deg": 37.44780126389672,
+          "knee_flexion_range_deg": 37.37588370396183,
+          "first_frame_knee_flexion_deg": 7.501487940942949
+        }
+      },
+      "source_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 7.871011606802834,
+          "knee_flexion_max_deg": 65.02824032945878,
+          "knee_flexion_range_deg": 57.15722872265595,
+          "first_frame_knee_flexion_deg": 11.459086044471151
+        },
+        "right": {
+          "knee_flexion_min_deg": 2.376161983402282,
+          "knee_flexion_max_deg": 59.6114206492967,
+          "knee_flexion_range_deg": 57.23525866589442,
+          "first_frame_knee_flexion_deg": 8.048172643627638
+        }
+      },
+      "joint_limit_violations": 0,
+      "max_joint_speed_rad_s": 1.999998000000049,
+      "supported_max_joint_rmse_rad": 0.05299092668744943,
+      "gravity_preserving_root_check_passed": true,
+      "artifacts": [
+        {
+          "name": "body_reference.npz",
+          "bytes": 286730,
+          "sha256": "d3eedfbb1f9c0912e3c8614add0171ee82927c2938f92fc04afc5b8c32b13af4"
+        },
+        {
+          "name": "joint_reference.npz",
+          "bytes": 68886,
+          "sha256": "871700cf75ea13ee5c3dfa372e4bc813ca87e38f112b3b8fb576710855ec5f3f"
+        },
+        {
+          "name": "kinematic_trace.npz",
+          "bytes": 755542,
+          "sha256": "790d082880f9a51ca20b3327118b78bfe77c6a587a80ad9757bade83793a8ccc"
+        },
+        {
+          "name": "supported_replay.npz",
+          "bytes": 202987,
+          "sha256": "9573c3db5f9bdf7f5c5f79f9198e11a2a0fe0b4d305eaf690ef5602a24a4c406"
+        }
+      ],
+      "source_files": [
+        {
+          "path": "script/q1/validate_egolocate.py",
+          "sha256": "ca2f174feb5638e5693b68e66044f5b758599ffe640aeea4836d35a01439cca8"
+        },
+        {
+          "path": "script/q1/egolocate_input.py",
+          "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+        },
+        {
+          "path": "script/q1/inspect_egolocate.py",
+          "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+        },
+        {
+          "path": "script/q1/q1_retarget.py",
+          "sha256": "c86b46bfc0c49293f531792ae44dcfebfed5108c19d6260e79e07c0cb8fbb0fa"
+        },
+        {
+          "path": "script/q1/q1_sim.py",
+          "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+        },
+        {
+          "path": "data/experiments/q1_calibration_20261009_E002/retarget_standing_pair.json",
+          "sha256": "3b312acd676be941d7b23c858c2f61193ffd084af5507522bb7dae4056158397"
+        },
+        {
+          "path": "script/q1/sim_config.json",
+          "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+        },
+        {
+          "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/dataset_input.py",
+          "bytes": 16453,
+          "sha256": "7328ad78ec04e3c283906d3fbd8f45fbb6873d4d0b0820400c0064dddf21643f"
+        }
+      ]
+    },
+    {
+      "case": "amass_kick",
+      "mode": "legacy",
+      "status": "COMPLETE",
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/validate_egolocate.py",
+        "--input-format",
+        "dataset-reference",
+        "--input",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_datasets_20261009/amass_kick/body_reference.npz",
+        "--output-dir",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_kick/legacy",
+        "--retarget-config",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/retarget_legacy.json",
+        "--calibration",
+        "first-frame"
+      ],
+      "legacy_qpos_reproduction_max_abs_error": 0.0,
+      "summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_kick/legacy/summary.json",
+        "bytes": 9316,
+        "sha256": "99d365990020f33214f35f63e26f189b77313d002c2f6269a50b3cae12432efb"
+      },
+      "source_scaled_z_range_m": 0.04996762932181342,
+      "q1_root_z_range_m": 0.04730398466100211,
+      "root_vertical_delta_max_error_m": 0.015560400388275775,
+      "ik_position_p95_m": 0.05574071969778299,
+      "q1_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 0.20737119315495722,
+          "knee_flexion_max_deg": 16.56450659341687,
+          "knee_flexion_range_deg": 16.35713540026191,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        },
+        "right": {
+          "knee_flexion_min_deg": 0.47976518816182634,
+          "knee_flexion_max_deg": 33.41253329821367,
+          "knee_flexion_range_deg": 32.93276811005184,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        }
+      },
+      "source_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 33.13967515710628,
+          "knee_flexion_max_deg": 65.18105410340127,
+          "knee_flexion_range_deg": 32.041378946294984,
+          "first_frame_knee_flexion_deg": 43.35910709284149
+        },
+        "right": {
+          "knee_flexion_min_deg": 25.42406587954068,
+          "knee_flexion_max_deg": 112.11577427715335,
+          "knee_flexion_range_deg": 86.69170839761267,
+          "first_frame_knee_flexion_deg": 36.39922107587394
+        }
+      },
+      "joint_limit_violations": 0,
+      "max_joint_speed_rad_s": 1.9999980000000233,
+      "supported_max_joint_rmse_rad": 0.057529359899398176,
+      "gravity_preserving_root_check_passed": false,
+      "artifacts": [
+        {
+          "name": "body_reference.npz",
+          "bytes": 86207,
+          "sha256": "63a754ce81c4f1c59e5866729d44541609179fa74c7a3c4f460cbfba00cbea67"
+        },
+        {
+          "name": "joint_reference.npz",
+          "bytes": 20712,
+          "sha256": "9003231789c1a6d11db8e13f5f3f82382e3805c9e01a6c4a6fef46b87a83033b"
+        },
+        {
+          "name": "kinematic_trace.npz",
+          "bytes": 219906,
+          "sha256": "58940373364c5cc4ce58b3f0b2130bbf9688d923417365d634834ab9ac6484e5"
+        },
+        {
+          "name": "supported_replay.npz",
+          "bytes": 59303,
+          "sha256": "e5721992e5fbc73785473ebb685474f6a5fbdcbb7a0e729c01a9450755a4cad3"
+        }
+      ],
+      "source_files": [
+        {
+          "path": "script/q1/validate_egolocate.py",
+          "sha256": "ca2f174feb5638e5693b68e66044f5b758599ffe640aeea4836d35a01439cca8"
+        },
+        {
+          "path": "script/q1/egolocate_input.py",
+          "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+        },
+        {
+          "path": "script/q1/inspect_egolocate.py",
+          "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+        },
+        {
+          "path": "script/q1/q1_retarget.py",
+          "sha256": "c86b46bfc0c49293f531792ae44dcfebfed5108c19d6260e79e07c0cb8fbb0fa"
+        },
+        {
+          "path": "script/q1/q1_sim.py",
+          "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+        },
+        {
+          "path": "data/experiments/q1_calibration_20261009_E002/retarget_legacy.json",
+          "sha256": "ac25a39efa91c49014b3aebe4cab37452976786a6297fb05bbd4dc62a29f1a16"
+        },
+        {
+          "path": "script/q1/sim_config.json",
+          "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+        },
+        {
+          "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/dataset_input.py",
+          "bytes": 16453,
+          "sha256": "7328ad78ec04e3c283906d3fbd8f45fbb6873d4d0b0820400c0064dddf21643f"
+        }
+      ]
+    },
+    {
+      "case": "amass_kick",
+      "mode": "gravity_fixed",
+      "status": "COMPLETE",
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/validate_egolocate.py",
+        "--input-format",
+        "dataset-reference",
+        "--input",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_datasets_20261009/amass_kick/body_reference.npz",
+        "--output-dir",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_kick/gravity_fixed",
+        "--retarget-config",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/retarget_gravity_fixed.json",
+        "--calibration",
+        "first-frame"
+      ],
+      "summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_kick/gravity_fixed/summary.json",
+        "bytes": 9312,
+        "sha256": "52abd2a9e0686bc1435c6be882c1f5a3c8be1d6044f3efac8b451c2c44c08e47"
+      },
+      "source_scaled_z_range_m": 0.04996762932181342,
+      "q1_root_z_range_m": 0.04996762932181348,
+      "root_vertical_delta_max_error_m": 5.551115123125783e-17,
+      "ik_position_p95_m": 0.05574071969778297,
+      "q1_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 0.20737119315671287,
+          "knee_flexion_max_deg": 16.564506593416894,
+          "knee_flexion_range_deg": 16.35713540026018,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        },
+        "right": {
+          "knee_flexion_min_deg": 0.47976518816182634,
+          "knee_flexion_max_deg": 33.41253329821362,
+          "knee_flexion_range_deg": 32.93276811005179,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        }
+      },
+      "source_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 33.13967515710628,
+          "knee_flexion_max_deg": 65.18105410340127,
+          "knee_flexion_range_deg": 32.041378946294984,
+          "first_frame_knee_flexion_deg": 43.35910709284149
+        },
+        "right": {
+          "knee_flexion_min_deg": 25.42406587954068,
+          "knee_flexion_max_deg": 112.11577427715335,
+          "knee_flexion_range_deg": 86.69170839761267,
+          "first_frame_knee_flexion_deg": 36.39922107587394
+        }
+      },
+      "joint_limit_violations": 0,
+      "max_joint_speed_rad_s": 1.9999980000000233,
+      "supported_max_joint_rmse_rad": 0.057529359899398266,
+      "gravity_preserving_root_check_passed": true,
+      "artifacts": [
+        {
+          "name": "body_reference.npz",
+          "bytes": 86207,
+          "sha256": "63a754ce81c4f1c59e5866729d44541609179fa74c7a3c4f460cbfba00cbea67"
+        },
+        {
+          "name": "joint_reference.npz",
+          "bytes": 20723,
+          "sha256": "a2e951ca3ffbf95d1eb8ebe945a2fd09093b55baf249a4af44bf846c65e1e19c"
+        },
+        {
+          "name": "kinematic_trace.npz",
+          "bytes": 219913,
+          "sha256": "23856019a5e3017a287f9b097199ae48e8b1939256bc97c777bbdce974d95e04"
+        },
+        {
+          "name": "supported_replay.npz",
+          "bytes": 59315,
+          "sha256": "6571664ad7bf86fdeabda7024f9ee947d518752ff4a3c899d09339c5868743ff"
+        }
+      ],
+      "source_files": [
+        {
+          "path": "script/q1/validate_egolocate.py",
+          "sha256": "ca2f174feb5638e5693b68e66044f5b758599ffe640aeea4836d35a01439cca8"
+        },
+        {
+          "path": "script/q1/egolocate_input.py",
+          "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+        },
+        {
+          "path": "script/q1/inspect_egolocate.py",
+          "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+        },
+        {
+          "path": "script/q1/q1_retarget.py",
+          "sha256": "c86b46bfc0c49293f531792ae44dcfebfed5108c19d6260e79e07c0cb8fbb0fa"
+        },
+        {
+          "path": "script/q1/q1_sim.py",
+          "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+        },
+        {
+          "path": "data/experiments/q1_calibration_20261009_E002/retarget_gravity_fixed.json",
+          "sha256": "3b312acd676be941d7b23c858c2f61193ffd084af5507522bb7dae4056158397"
+        },
+        {
+          "path": "script/q1/sim_config.json",
+          "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+        },
+        {
+          "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/dataset_input.py",
+          "bytes": 16453,
+          "sha256": "7328ad78ec04e3c283906d3fbd8f45fbb6873d4d0b0820400c0064dddf21643f"
+        }
+      ]
+    },
+    {
+      "case": "amass_kick",
+      "mode": "standing_pair",
+      "status": "COMPLETE",
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/validate_egolocate.py",
+        "--input-format",
+        "dataset-reference",
+        "--input",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_datasets_20261009/amass_kick/body_reference.npz",
+        "--output-dir",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_kick/standing_pair",
+        "--retarget-config",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/retarget_standing_pair.json",
+        "--calibration",
+        "smplx-standing"
+      ],
+      "summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_kick/standing_pair/summary.json",
+        "bytes": 9716,
+        "sha256": "05a11d59032bfc676a8aef46a40ae12bddc93e3113d7e713e90540de58d192fd"
+      },
+      "source_scaled_z_range_m": 0.04996762932181342,
+      "q1_root_z_range_m": 0.04996762932181348,
+      "root_vertical_delta_max_error_m": 5.551115123125783e-17,
+      "ik_position_p95_m": 0.11211801416048678,
+      "q1_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 0.5086204942450505,
+          "knee_flexion_max_deg": 41.5109152657575,
+          "knee_flexion_range_deg": 41.002294771512446,
+          "first_frame_knee_flexion_deg": 7.460897128174805
+        },
+        "right": {
+          "knee_flexion_min_deg": 0.9832209092111465,
+          "knee_flexion_max_deg": 64.5045717914621,
+          "knee_flexion_range_deg": 63.52135088225095,
+          "first_frame_knee_flexion_deg": 9.859263659024299
+        }
+      },
+      "source_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 33.13967515710628,
+          "knee_flexion_max_deg": 65.18105410340127,
+          "knee_flexion_range_deg": 32.041378946294984,
+          "first_frame_knee_flexion_deg": 43.35910709284149
+        },
+        "right": {
+          "knee_flexion_min_deg": 25.42406587954068,
+          "knee_flexion_max_deg": 112.11577427715335,
+          "knee_flexion_range_deg": 86.69170839761267,
+          "first_frame_knee_flexion_deg": 36.39922107587394
+        }
+      },
+      "joint_limit_violations": 0,
+      "max_joint_speed_rad_s": 1.9999980000000344,
+      "supported_max_joint_rmse_rad": 0.05757671823541186,
+      "gravity_preserving_root_check_passed": true,
+      "artifacts": [
+        {
+          "name": "body_reference.npz",
+          "bytes": 85768,
+          "sha256": "7f759644dc0b00f1c47f5f81e0e63e0e38ad82acbf3f2771f876970163665f98"
+        },
+        {
+          "name": "joint_reference.npz",
+          "bytes": 20532,
+          "sha256": "d5a393284cb8530b6095445622b5ed9f28b015f7e2fe01b2f4adb39fabf42d1b"
+        },
+        {
+          "name": "kinematic_trace.npz",
+          "bytes": 221263,
+          "sha256": "11647a79d8f08a30faa489c7de0ee5187320b6c5a67e5d1f7839c9096702bf19"
+        },
+        {
+          "name": "supported_replay.npz",
+          "bytes": 59124,
+          "sha256": "e55515a2593398f85801a3797fd70824e93ecdeedb5a8c3ab9de3228ba498c61"
+        }
+      ],
+      "source_files": [
+        {
+          "path": "script/q1/validate_egolocate.py",
+          "sha256": "ca2f174feb5638e5693b68e66044f5b758599ffe640aeea4836d35a01439cca8"
+        },
+        {
+          "path": "script/q1/egolocate_input.py",
+          "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+        },
+        {
+          "path": "script/q1/inspect_egolocate.py",
+          "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+        },
+        {
+          "path": "script/q1/q1_retarget.py",
+          "sha256": "c86b46bfc0c49293f531792ae44dcfebfed5108c19d6260e79e07c0cb8fbb0fa"
+        },
+        {
+          "path": "script/q1/q1_sim.py",
+          "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+        },
+        {
+          "path": "data/experiments/q1_calibration_20261009_E002/retarget_standing_pair.json",
+          "sha256": "3b312acd676be941d7b23c858c2f61193ffd084af5507522bb7dae4056158397"
+        },
+        {
+          "path": "script/q1/sim_config.json",
+          "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+        },
+        {
+          "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/dataset_input.py",
+          "bytes": 16453,
+          "sha256": "7328ad78ec04e3c283906d3fbd8f45fbb6873d4d0b0820400c0064dddf21643f"
+        }
+      ]
+    },
+    {
+      "case": "amass_swing_arms",
+      "mode": "legacy",
+      "status": "COMPLETE",
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/validate_egolocate.py",
+        "--input-format",
+        "dataset-reference",
+        "--input",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_datasets_20261009/amass_swing_arms/body_reference.npz",
+        "--output-dir",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_swing_arms/legacy",
+        "--retarget-config",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/retarget_legacy.json",
+        "--calibration",
+        "first-frame"
+      ],
+      "legacy_qpos_reproduction_max_abs_error": 0.0,
+      "summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_swing_arms/legacy/summary.json",
+        "bytes": 9371,
+        "sha256": "03a3a362b29c605b928198548535ea1feaa8301b22f636271bb24947218c6267"
+      },
+      "source_scaled_z_range_m": 0.0010547878548157752,
+      "q1_root_z_range_m": 0.0013120179947050947,
+      "root_vertical_delta_max_error_m": 0.00017651941527035975,
+      "ik_position_p95_m": 0.019656590511881726,
+      "q1_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 9.846377177117098,
+          "knee_flexion_max_deg": 9.963151188867121,
+          "knee_flexion_range_deg": 0.11677401175002225,
+          "first_frame_knee_flexion_deg": 9.852932169728915
+        },
+        "right": {
+          "knee_flexion_min_deg": 9.187896709777279,
+          "knee_flexion_max_deg": 9.97474510850882,
+          "knee_flexion_range_deg": 0.7868483987315418,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        }
+      },
+      "source_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 19.534825257883497,
+          "knee_flexion_max_deg": 20.447940211063667,
+          "knee_flexion_range_deg": 0.91311495318017,
+          "first_frame_knee_flexion_deg": 19.534825257883497
+        },
+        "right": {
+          "knee_flexion_min_deg": 15.697563109969789,
+          "knee_flexion_max_deg": 16.648857423237676,
+          "knee_flexion_range_deg": 0.9512943132678876,
+          "first_frame_knee_flexion_deg": 16.43185325797163
+        }
+      },
+      "joint_limit_violations": 0,
+      "max_joint_speed_rad_s": 1.6946593963803296,
+      "supported_max_joint_rmse_rad": 0.010718861277196883,
+      "gravity_preserving_root_check_passed": false,
+      "artifacts": [
+        {
+          "name": "body_reference.npz",
+          "bytes": 209662,
+          "sha256": "2824fa8bfcd7fd43508f45903f976ca18d56d03a4ab78d8281d8eff73707ebe2"
+        },
+        {
+          "name": "joint_reference.npz",
+          "bytes": 48526,
+          "sha256": "236f5e70fdd22572cf1a5f81757c4fc4141490b36855805196a137c35b290199"
+        },
+        {
+          "name": "kinematic_trace.npz",
+          "bytes": 540358,
+          "sha256": "9b9b02dd13174e87d95e53101f5ac071405be545cb214747b25e38f8fc771e65"
+        },
+        {
+          "name": "supported_replay.npz",
+          "bytes": 145446,
+          "sha256": "8ec9d75ad8595af92c0350b40e00f7f0a4ca71bc9d6f85a9f209f7203cd31e7c"
+        }
+      ],
+      "source_files": [
+        {
+          "path": "script/q1/validate_egolocate.py",
+          "sha256": "ca2f174feb5638e5693b68e66044f5b758599ffe640aeea4836d35a01439cca8"
+        },
+        {
+          "path": "script/q1/egolocate_input.py",
+          "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+        },
+        {
+          "path": "script/q1/inspect_egolocate.py",
+          "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+        },
+        {
+          "path": "script/q1/q1_retarget.py",
+          "sha256": "c86b46bfc0c49293f531792ae44dcfebfed5108c19d6260e79e07c0cb8fbb0fa"
+        },
+        {
+          "path": "script/q1/q1_sim.py",
+          "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+        },
+        {
+          "path": "data/experiments/q1_calibration_20261009_E002/retarget_legacy.json",
+          "sha256": "ac25a39efa91c49014b3aebe4cab37452976786a6297fb05bbd4dc62a29f1a16"
+        },
+        {
+          "path": "script/q1/sim_config.json",
+          "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+        },
+        {
+          "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/dataset_input.py",
+          "bytes": 16453,
+          "sha256": "7328ad78ec04e3c283906d3fbd8f45fbb6873d4d0b0820400c0064dddf21643f"
+        }
+      ]
+    },
+    {
+      "case": "amass_swing_arms",
+      "mode": "gravity_fixed",
+      "status": "COMPLETE",
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/validate_egolocate.py",
+        "--input-format",
+        "dataset-reference",
+        "--input",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_datasets_20261009/amass_swing_arms/body_reference.npz",
+        "--output-dir",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_swing_arms/gravity_fixed",
+        "--retarget-config",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/retarget_gravity_fixed.json",
+        "--calibration",
+        "first-frame"
+      ],
+      "summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_swing_arms/gravity_fixed/summary.json",
+        "bytes": 9377,
+        "sha256": "f139a653f649d6617f8c63c24bcb0698c9ca83ee1eb69bc12f2554577e626497"
+      },
+      "source_scaled_z_range_m": 0.0010547878548157752,
+      "q1_root_z_range_m": 0.0010547878548157752,
+      "root_vertical_delta_max_error_m": 5.551115123125783e-17,
+      "ik_position_p95_m": 0.01965659051188166,
+      "q1_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 9.846377177117098,
+          "knee_flexion_max_deg": 9.963151188867121,
+          "knee_flexion_range_deg": 0.11677401175002225,
+          "first_frame_knee_flexion_deg": 9.852932169728915
+        },
+        "right": {
+          "knee_flexion_min_deg": 9.187896709777279,
+          "knee_flexion_max_deg": 9.97474510850882,
+          "knee_flexion_range_deg": 0.7868483987315418,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        }
+      },
+      "source_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 19.534825257883497,
+          "knee_flexion_max_deg": 20.447940211063667,
+          "knee_flexion_range_deg": 0.91311495318017,
+          "first_frame_knee_flexion_deg": 19.534825257883497
+        },
+        "right": {
+          "knee_flexion_min_deg": 15.697563109969789,
+          "knee_flexion_max_deg": 16.648857423237676,
+          "knee_flexion_range_deg": 0.9512943132678876,
+          "first_frame_knee_flexion_deg": 16.43185325797163
+        }
+      },
+      "joint_limit_violations": 0,
+      "max_joint_speed_rad_s": 1.694659396380258,
+      "supported_max_joint_rmse_rad": 0.010718861277196873,
+      "gravity_preserving_root_check_passed": true,
+      "artifacts": [
+        {
+          "name": "body_reference.npz",
+          "bytes": 209662,
+          "sha256": "2824fa8bfcd7fd43508f45903f976ca18d56d03a4ab78d8281d8eff73707ebe2"
+        },
+        {
+          "name": "joint_reference.npz",
+          "bytes": 48507,
+          "sha256": "4fa4edb7c3ae07669e36ae5dfac592ffca4db8cb16e175309ead9adf4bc2f4a1"
+        },
+        {
+          "name": "kinematic_trace.npz",
+          "bytes": 540341,
+          "sha256": "a55d8f379934a3342103233431fd3ff15cd560e4ef97a30ceda1e6c647f0907a"
+        },
+        {
+          "name": "supported_replay.npz",
+          "bytes": 145440,
+          "sha256": "116e12050b674837e5ce772fc494a4ef349d8bc0f48843c3f2d3b97ea583f8f3"
+        }
+      ],
+      "source_files": [
+        {
+          "path": "script/q1/validate_egolocate.py",
+          "sha256": "ca2f174feb5638e5693b68e66044f5b758599ffe640aeea4836d35a01439cca8"
+        },
+        {
+          "path": "script/q1/egolocate_input.py",
+          "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+        },
+        {
+          "path": "script/q1/inspect_egolocate.py",
+          "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+        },
+        {
+          "path": "script/q1/q1_retarget.py",
+          "sha256": "c86b46bfc0c49293f531792ae44dcfebfed5108c19d6260e79e07c0cb8fbb0fa"
+        },
+        {
+          "path": "script/q1/q1_sim.py",
+          "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+        },
+        {
+          "path": "data/experiments/q1_calibration_20261009_E002/retarget_gravity_fixed.json",
+          "sha256": "3b312acd676be941d7b23c858c2f61193ffd084af5507522bb7dae4056158397"
+        },
+        {
+          "path": "script/q1/sim_config.json",
+          "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+        },
+        {
+          "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/dataset_input.py",
+          "bytes": 16453,
+          "sha256": "7328ad78ec04e3c283906d3fbd8f45fbb6873d4d0b0820400c0064dddf21643f"
+        }
+      ]
+    },
+    {
+      "case": "amass_swing_arms",
+      "mode": "standing_pair",
+      "status": "COMPLETE",
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/validate_egolocate.py",
+        "--input-format",
+        "dataset-reference",
+        "--input",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_datasets_20261009/amass_swing_arms/body_reference.npz",
+        "--output-dir",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_swing_arms/standing_pair",
+        "--retarget-config",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/retarget_standing_pair.json",
+        "--calibration",
+        "smplx-standing"
+      ],
+      "summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/amass_swing_arms/standing_pair/summary.json",
+        "bytes": 9768,
+        "sha256": "d32b352d6d9bed12a0931ae5f3cdc1d7bc20705a46eb59d22f9983b918851f86"
+      },
+      "source_scaled_z_range_m": 0.0010547878548157752,
+      "q1_root_z_range_m": 0.0010547878548157752,
+      "root_vertical_delta_max_error_m": 5.551115123125783e-17,
+      "ik_position_p95_m": 0.0484635670209821,
+      "q1_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 7.513970606824785,
+          "knee_flexion_max_deg": 11.50093753178845,
+          "knee_flexion_range_deg": 3.986966924963665,
+          "first_frame_knee_flexion_deg": 7.513970606824785
+        },
+        "right": {
+          "knee_flexion_min_deg": 7.366878156927851,
+          "knee_flexion_max_deg": 10.692901202694731,
+          "knee_flexion_range_deg": 3.3260230457668802,
+          "first_frame_knee_flexion_deg": 7.366878156927851
+        }
+      },
+      "source_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 19.534825257883497,
+          "knee_flexion_max_deg": 20.447940211063667,
+          "knee_flexion_range_deg": 0.91311495318017,
+          "first_frame_knee_flexion_deg": 19.534825257883497
+        },
+        "right": {
+          "knee_flexion_min_deg": 15.697563109969789,
+          "knee_flexion_max_deg": 16.648857423237676,
+          "knee_flexion_range_deg": 0.9512943132678876,
+          "first_frame_knee_flexion_deg": 16.43185325797163
+        }
+      },
+      "joint_limit_violations": 0,
+      "max_joint_speed_rad_s": 1.9999980000000042,
+      "supported_max_joint_rmse_rad": 0.015977198769725486,
+      "gravity_preserving_root_check_passed": true,
+      "artifacts": [
+        {
+          "name": "body_reference.npz",
+          "bytes": 209217,
+          "sha256": "512e8880c5e633181d9157b4490c36538f8c55af003fa8a709efd29c88a3b1a9"
+        },
+        {
+          "name": "joint_reference.npz",
+          "bytes": 46446,
+          "sha256": "69a4a51a4953285a1723f6d6297a067899a03240d90789d972469421d756ccb8"
+        },
+        {
+          "name": "kinematic_trace.npz",
+          "bytes": 542974,
+          "sha256": "4186d19f08bf834c98043993db51db6258e3ee320f50a4e9061d3caedf9c3130"
+        },
+        {
+          "name": "supported_replay.npz",
+          "bytes": 143177,
+          "sha256": "b57dbe4254350d7f1d0799b0e360045d82f38de9cf952efd438a0bc9f82d09ec"
+        }
+      ],
+      "source_files": [
+        {
+          "path": "script/q1/validate_egolocate.py",
+          "sha256": "ca2f174feb5638e5693b68e66044f5b758599ffe640aeea4836d35a01439cca8"
+        },
+        {
+          "path": "script/q1/egolocate_input.py",
+          "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+        },
+        {
+          "path": "script/q1/inspect_egolocate.py",
+          "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+        },
+        {
+          "path": "script/q1/q1_retarget.py",
+          "sha256": "c86b46bfc0c49293f531792ae44dcfebfed5108c19d6260e79e07c0cb8fbb0fa"
+        },
+        {
+          "path": "script/q1/q1_sim.py",
+          "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+        },
+        {
+          "path": "data/experiments/q1_calibration_20261009_E002/retarget_standing_pair.json",
+          "sha256": "3b312acd676be941d7b23c858c2f61193ffd084af5507522bb7dae4056158397"
+        },
+        {
+          "path": "script/q1/sim_config.json",
+          "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+        },
+        {
+          "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/dataset_input.py",
+          "bytes": 16453,
+          "sha256": "7328ad78ec04e3c283906d3fbd8f45fbb6873d4d0b0820400c0064dddf21643f"
+        }
+      ]
+    },
+    {
+      "case": "bones_jog",
+      "mode": "legacy",
+      "status": "COMPLETE",
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/validate_egolocate.py",
+        "--input-format",
+        "dataset-reference",
+        "--input",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_datasets_20261009/bones_jog/body_reference.npz",
+        "--output-dir",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/bones_jog/legacy",
+        "--retarget-config",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/retarget_legacy.json",
+        "--calibration",
+        "first-frame"
+      ],
+      "legacy_qpos_reproduction_max_abs_error": 0.0,
+      "summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/bones_jog/legacy/summary.json",
+        "bytes": 10124,
+        "sha256": "479db57615976ace60050477e749c5ef1a3664bced20695f1715a5fe3f2a2b99"
+      },
+      "source_scaled_z_range_m": 0.04926368629372557,
+      "q1_root_z_range_m": 0.7388808498872228,
+      "root_vertical_delta_max_error_m": 0.7315198985589283,
+      "ik_position_p95_m": 0.06896121121953819,
+      "q1_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 0.20439195001389418,
+          "knee_flexion_max_deg": 28.094501701365786,
+          "knee_flexion_range_deg": 27.89010975135189,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        },
+        "right": {
+          "knee_flexion_min_deg": 0.00714779113541118,
+          "knee_flexion_max_deg": 16.507923434153295,
+          "knee_flexion_range_deg": 16.50077564301788,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        }
+      },
+      "source_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 0.6531753198442578,
+          "knee_flexion_max_deg": 87.6464794526022,
+          "knee_flexion_range_deg": 86.99330413275794,
+          "first_frame_knee_flexion_deg": 19.478035688725022
+        },
+        "right": {
+          "knee_flexion_min_deg": 0.652645544116533,
+          "knee_flexion_max_deg": 92.94258457835724,
+          "knee_flexion_range_deg": 92.2899390342407,
+          "first_frame_knee_flexion_deg": 21.49865535155649
+        }
+      },
+      "joint_limit_violations": 0,
+      "max_joint_speed_rad_s": 1.9999980000000455,
+      "supported_max_joint_rmse_rad": 0.07285519334345118,
+      "gravity_preserving_root_check_passed": false,
+      "artifacts": [
+        {
+          "name": "body_reference.npz",
+          "bytes": 137041,
+          "sha256": "250d381e4ec5aa0f283ba2afd9f8b28b66631402881e2fd832f7db9faa3b85cc"
+        },
+        {
+          "name": "joint_reference.npz",
+          "bytes": 31775,
+          "sha256": "1855cb43c516f78b8c7fe5d7da2eb0eb5039a40e5166b15d129301306ad8169c"
+        },
+        {
+          "name": "kinematic_trace.npz",
+          "bytes": 340492,
+          "sha256": "8a67c5966293f25fa101517c115a780676d26f259dfe2416ff88220bb30bbb71"
+        },
+        {
+          "name": "supported_replay.npz",
+          "bytes": 91709,
+          "sha256": "25a2855429b835d49a190311898bf77eadbbac8a03be92e147004d6d071cebc1"
+        }
+      ],
+      "source_files": [
+        {
+          "path": "script/q1/validate_egolocate.py",
+          "sha256": "ca2f174feb5638e5693b68e66044f5b758599ffe640aeea4836d35a01439cca8"
+        },
+        {
+          "path": "script/q1/egolocate_input.py",
+          "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+        },
+        {
+          "path": "script/q1/inspect_egolocate.py",
+          "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+        },
+        {
+          "path": "script/q1/q1_retarget.py",
+          "sha256": "c86b46bfc0c49293f531792ae44dcfebfed5108c19d6260e79e07c0cb8fbb0fa"
+        },
+        {
+          "path": "script/q1/q1_sim.py",
+          "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+        },
+        {
+          "path": "data/experiments/q1_calibration_20261009_E002/retarget_legacy.json",
+          "sha256": "ac25a39efa91c49014b3aebe4cab37452976786a6297fb05bbd4dc62a29f1a16"
+        },
+        {
+          "path": "script/q1/sim_config.json",
+          "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+        },
+        {
+          "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/dataset_input.py",
+          "bytes": 16453,
+          "sha256": "7328ad78ec04e3c283906d3fbd8f45fbb6873d4d0b0820400c0064dddf21643f"
+        }
+      ]
+    },
+    {
+      "case": "bones_jog",
+      "mode": "gravity_fixed",
+      "status": "COMPLETE",
+      "command": [
+        "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/validate_egolocate.py",
+        "--input-format",
+        "dataset-reference",
+        "--input",
+        "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_datasets_20261009/bones_jog/body_reference.npz",
+        "--output-dir",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/bones_jog/gravity_fixed",
+        "--retarget-config",
+        "/media/yu/FAFF-E977/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/retarget_gravity_fixed.json",
+        "--calibration",
+        "first-frame"
+      ],
+      "summary": {
+        "path": "/media/yu/FAFF-E9771/YuanQi_Q1/data/experiments/q1_calibration_20261009_E002/bones_jog/gravity_fixed/summary.json",
+        "bytes": 10136,
+        "sha256": "943ce4c2886bef7ecd2246a8ae5633c6ad85ad900aa6e66b3954ee3365b8ee47"
+      },
+      "source_scaled_z_range_m": 0.04926368629372557,
+      "q1_root_z_range_m": 0.04926368629372557,
+      "root_vertical_delta_max_error_m": 5.551115123125783e-17,
+      "ik_position_p95_m": 0.06896121121953824,
+      "q1_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 0.20439195001389418,
+          "knee_flexion_max_deg": 28.09450170136589,
+          "knee_flexion_range_deg": 27.890109751351993,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        },
+        "right": {
+          "knee_flexion_min_deg": 0.00714779113541118,
+          "knee_flexion_max_deg": 16.507923434153547,
+          "knee_flexion_range_deg": 16.500775643018137,
+          "first_frame_knee_flexion_deg": 9.852932169728813
+        }
+      },
+      "source_leg_geometry": {
+        "left": {
+          "knee_flexion_min_deg": 0.6531753198442578,
+          "knee_flexion_max_deg": 87.6464794526022,
+          "knee_flexion_range_deg": 86.99330413275794,
+          "first_frame_knee_flexion_deg": 19.478035688725022
+        },
+        "right": {
+          "knee_flexion_min_deg": 0.652645544116533,
+          "knee_flexion_max_deg": 92.94258457835724,
+          "knee_flexion_range_deg": 92.2899390342407,
+          "first_frame_knee_flexion_deg": 21.49865535155649
+        }
+      },
+      "joint_limit_violations": 0,
+      "max_joint_speed_rad_s": 1.9999980000000455,
+      "supported_max_joint_rmse_rad": 0.07285519334345114,
+      "gravity_preserving_root_check_passed": true,
+      "artifacts": [
+        {
+          "name": "body_reference.npz",
+          "bytes": 137041,
+          "sha256": "250d381e4ec5aa0f283ba2afd9f8b28b66631402881e2fd832f7db9faa3b85cc"
+        },
+        {
+          "name": "joint_reference.npz",
+          "bytes": 31772,
+          "sha256": "e99769ae72b29e9d9499cd04bbb9c8f9bfab2db647db82856c0cea64184d2130"
+        },
+        {
+          "name": "kinematic_trace.npz",
+          "bytes": 340879,
+          "sha256": "363af6948090c55a572e94307967ad24939770b6e2a17514bb44acf9d91d8329"
+        },
+        {
+          "name": "supported_replay.npz",
+          "bytes": 91689,
+          "sha256": "ac15e3e9cb639a247a8e5f907d58343e77de349a793a4592772330035f99714a"
+        }
+      ],
+      "source_files": [
+        {
+          "path": "script/q1/validate_egolocate.py",
+          "sha256": "ca2f174feb5638e5693b68e66044f5b758599ffe640aeea4836d35a01439cca8"
+        },
+        {
+          "path": "script/q1/egolocate_input.py",
+          "sha256": "233dd400415231a87a921470f81c97c562bb41988ad7bb40a52f27a40fc548da"
+        },
+        {
+          "path": "script/q1/inspect_egolocate.py",
+          "sha256": "c0e6523db4bf47daee5bd3e9a66c50a4738d3a1ebd04d307290c10614ae255cb"
+        },
+        {
+          "path": "script/q1/q1_retarget.py",
+          "sha256": "c86b46bfc0c49293f531792ae44dcfebfed5108c19d6260e79e07c0cb8fbb0fa"
+        },
+        {
+          "path": "script/q1/q1_sim.py",
+          "sha256": "a4f94bb003fbba076d5dadaacaed337266231d38f1e0c4b63c261687b0928b9b"
+        },
+        {
+          "path": "data/experiments/q1_calibration_20261009_E002/retarget_gravity_fixed.json",
+          "sha256": "3b312acd676be941d7b23c858c2f61193ffd084af5507522bb7dae4056158397"
+        },
+        {
+          "path": "script/q1/sim_config.json",
+          "sha256": "ec34f22d18816acc5640f0405d7b92172b2e5320e9380b77359284066be209e7"
+        },
+        {
+          "path": "/media/yu/FAFF-E9771/YuanQi_Q1/script/q1/dataset_input.py",
+          "bytes": 16453,
+          "sha256": "7328ad78ec04e3c283906d3fbd8f45fbb6873d4d0b0820400c0064dddf21643f"
+        }
+      ]
+    }
+  ],
+  "policy_trained": false,
+  "hardware_control": false,
+  "backup_status": "LOCAL_ONLY",
+  "complete_count": 14,
+  "failed_count": 0
+}

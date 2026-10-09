@@ -8,7 +8,7 @@ import mujoco
 import numpy as np
 from scipy.spatial.transform import Rotation
 
-from q1_retarget import BodyReference, Q1Retargeter
+from q1_retarget import BodyReference, Q1Retargeter, heading_rotation
 
 
 class BodyContractTests(unittest.TestCase):
@@ -106,6 +106,25 @@ class RetargetContractTests(unittest.TestCase):
         np.testing.assert_allclose(q[1, :3] - q[0, :3], [0.03, 0, 0], atol=1e-7)
         np.testing.assert_allclose(reference.positions, np.tile(r.sim.neutral, (2, 1)), atol=1e-5)
         np.testing.assert_allclose(errors, 0, atol=1e-5)
+
+    def test_tilted_calibration_preserves_world_vertical_translation(self):
+        r = self.retargeter
+        source = self.source()
+        tilt = Rotation.from_euler("zyx", [0.7, 0.6, -0.2])
+        origin = source.positions[0, r.root].copy()
+        source.positions[:] = tilt.apply(source.positions.reshape(-1, 3) - origin).reshape(source.positions.shape) + origin
+        source.positions[1] += [0.12, -0.08, 0.025]
+        source.orientations[:] = (tilt * Rotation.from_quat(source.orientations.reshape(-1, 4),
+                                                          scalar_first=True)).as_quat(scalar_first=True).reshape(source.orientations.shape)
+        source.calibration_positions[:] = source.positions[0]
+        source.calibration_orientations[:] = source.orientations[0]
+        _, q, _, _, _ = r.retarget(source, 0.5)
+        self.assertAlmostEqual(q[1, 2] - q[0, 2], 0.0125, places=7)
+        self.assertAlmostEqual(np.linalg.norm(q[1, :2] - q[0, :2]), 0.5 * np.hypot(0.12, 0.08), places=7)
+
+    def test_heading_extraction_handles_vertical_forward_axis(self):
+        rotation = heading_rotation(Rotation.from_euler("y", np.pi / 2).as_matrix())
+        np.testing.assert_allclose(rotation, np.eye(3), atol=1e-8)
 
     def test_large_pose_jump_is_velocity_limited_across_all_iterations(self):
         r = self.retargeter

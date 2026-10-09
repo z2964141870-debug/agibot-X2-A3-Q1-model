@@ -106,7 +106,7 @@ tail -f /media/yu/FAFF-E9771/YUANQI/logs/a3_training_20261009/E002_64env_2000ite
 
 环境与动作、smoke checkpoints 仅在 hp3090；Mac 只接收小型说明、代码和清单。`data/manifests/a3_smoke_20261009.json` 保存两个 checkpoint 大小、SHA-256 与权重变化检查结果；backup_status=LOCAL_ONLY，尚未上传百度网盘。
 
-源码和数据许可说明已记录，vendor 全目录被忽略。阶段报告、包装入口、参数检查脚本与小清单按项目授权提交 `main`；同步结果以最终 Git 回执为准，未推送前不能写为已同步。Q1 专用工作区 / 分支没有修改，未操作真机。
+源码和数据许可说明已记录，vendor 全目录被忽略。阶段报告、入口、检查脚本与小清单已通过 Git 载荷审计，训练阶段提交 `ebf83e43c7e042a8b3d680250640a9fc1131764d` 推送 main，随后核验本地 HEAD 与远端 refs/heads/main 一致，工作区干净。此前学习主线提交 `13bfe34` 一并发布；小型回执见 `logs/session_records/a3_training_publication_20261009.json`。模型没有进入 Git，Q1 专用工作区 / 分支没有修改，未操作真机。
 
 ## 保存与边界
 

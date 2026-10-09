@@ -16,6 +16,19 @@ export OMP_NUM_THREADS="${OMP_NUM_THREADS:-8}"
 export ISAACLAB_APP_LAUNCHER_LOCK_TIMEOUT_SECONDS=180
 export HYDRA_FULL_ERROR=1
 export WANDB_MODE=disabled
+EXTRA_OVERRIDES=()
+if [[ "${RESUME_MODE:-false}" == true ]]; then
+    [[ -n "${CHECKPOINT:-}" && -f "$CHECKPOINT" ]] || { echo 'Resume requires CHECKPOINT' >&2; exit 2; }
+    export PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}"
+    export YUANQI_RESUME_LOG_DIR="$PROJECT_ROOT/logs/a3_training_20261009/$RUN_ID"
+    EXTRA_OVERRIDES=(
+        ++resume=true
+        ++resume_in_place=false
+        trainer._target_=script.a3.resumable_sonic.ResumableTrainer
+        callbacks.model_save._target_=script.a3.resumable_sonic.DurableModelSaveCallback
+        "+callbacks.model_save.target_global_step=$NUM_LEARNING_ITERATIONS"
+    )
+fi
 
 cd "$PROJECT_ROOT"
 LOG_DIR="$PROJECT_ROOT/logs/a3_training_20261009/$RUN_ID"
@@ -31,6 +44,7 @@ set +e
 bash "$REPO_DIR/train_a3_035_fromscratch.sh" \
     seed=0 callbacks.model_save.save_frequency="${SAVE_FREQUENCY:-1}" \
     +callbacks.model_save.save_last_frequency="${SAVE_LAST_FREQUENCY:-1}" \
+    "${EXTRA_OVERRIDES[@]}" \
     "$@" > "$LOG_DIR/console.log" 2>&1
 result=$?
 set -e

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-09T12:28:25.452380+00:00",
+  "task": "R02",
+  "status": "blocked",
+  "reason": "attempt_limit",
+  "target_step": 10000,
+  "verified_step": 2700,
+  "attempts_used": 3,
+  "attempt_limit": 3,
+  "service": "yuanqi-a3-longtrain.service",
+  "service_status": "failed/exit2",
+  "training_running": false,
+  "current_boot_id": "a95a89b9-df91-4c13-b609-86273fbd847d",
+  "health": {"cpu_c": 47, "gpu_c": 29, "memory_available_bytes": 31769821184, "gpu_utilization_percent": 0, "uptime_seconds": 6506.4},
+  "run_health_summary": [
+    {"run_id": "E007_long_01_s2000", "samples": 333, "first_at_utc": "2026-10-09T09:47:39.706414+00:00", "last_at_utc": "2026-10-09T10:15:27.119538+00:00", "max_cpu_c": 76, "max_gpu_c": 44, "min_memory_available_bytes": 24575004672},
+    {"run_id": "E007_long_02_s2675", "samples": 4, "first_at_utc": "2026-10-09T10:27:21.961759+00:00", "last_at_utc": "2026-10-09T10:27:37.034380+00:00", "max_cpu_c": 67, "max_gpu_c": 35, "min_memory_available_bytes": 25802792960},
+    {"run_id": "E007_long_03_s2675", "samples": 17, "first_at_utc": "2026-10-09T10:38:12.037187+00:00", "last_at_utc": "2026-10-09T10:39:32.389189+00:00", "max_cpu_c": 67, "max_gpu_c": 37, "min_memory_available_bytes": 25105670144}
+  ],
+  "temperature_stop_observed": false,
+  "host_reboot_observed": true,
+  "root_cause": "UNKNOWN",
+  "previous_boot_kernel_error_search": {"matches": 0, "scope": "Xid/OOM-kill/kernel panic/explicit machine-check/critical thermal; previous boot only", "absence_does_not_prove_hardware_health": true},
+  "last_attempt_stale_running_field": true,
+  "controller_stop_at_local": "2026-10-09T18:40:13+08:00",
+  "checkpoint": {
+    "path": "data/training/a3_20261009/E007_long_03_s2675/model_step_002700.pt",
+    "bytes": 402081749,
+    "sha256": "3b78444903cf347c0cee14e9536801745c395a387facf8e54cd669a9945e8e84",
+    "validation": "independent size/SHA256/CPU_reload/network_and_optimizer_finiteness/global_step",
+    "backup_status": "LOCAL_ONLY"
+  },
+  "checkpoint_effect_evaluated": false,
+  "logs": "logs/a3_watch_20261009/manual_stop_20261009T1227Z",
+  "training_restarted_by_this_check": false,
+  "budget_modified": false,
+  "monitoring_gap": "18:14 read not persisted; later received heartbeat messages are not evidence of completed checks",
+  "automation_should_remain_monitor_only_until_original_expiry": true
+}

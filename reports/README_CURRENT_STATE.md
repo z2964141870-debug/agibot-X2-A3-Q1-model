@@ -16,6 +16,8 @@
 
 ## 已完成，可从证据继续
 
+10/10最新A3：用户要求先停并核对官方HF模型；R03已01:09停止，service inactive/dead/disabled、无GPU计算进程，巡检yuanqi-a3 PAUSED，每日研究yuanqi ACTIVE。最近保存2950独立大小/SHA/CPU重载/有限性校验通过，LOCAL_ONLY。期间01:03出现新boot40497006，根因未知；账本running字段为历史持久值。官方035 step200000有PT/ONNX/RKNN，RKNN用于板端推理，PT支持评测/权重微调；未下载/评测，不含SMPL编码器。最新入口[官方模型与暂停](README_A3_PRETRAINED_20261010.md)，下方运行记录为历史证据。
+
 10/10 01:00:52 R03首次定时巡检已实际触发：service active/running/enabled、同boot/run、R03范围与CPUQuota100%核验，最新持久sidecar2900/大小匹配，本轮不重复哈希/重载；CPU73°C/GPU42°C，无新退出/热停，尚未到3000通知节点。日志 `logs/a3_watch_20261010/scheduled_20261009T165952Z/`，详情见[持续续训README](README_A3_CONTINUOUS_20261010.md)。下方为启动时独立模型验证证据。
 
 10/10 00:53:50最新A3：用户授权重启并取消3次启动上限；R03已00:52从2700完整恢复，新2725模型独立大小/SHA/CPU重载/有限性校验通过，LOCAL_ONLY。`yuanqi-a3-longtrain.service` active/running/enabled、CPUQuota100%，run `E008_cont_01_s2700`；CPU66°C/GPU37°C、同boot。无累计启动上限/到期时间，温度、连续2次无进度及异常停止保护保留；39项测试通过。原heartbeat ACTIVE/每10分钟已更新R03，到10000后停止并暂停巡检。R01/R02账本不修改，重启根因仍UNKNOWN；见[持续续训README](README_A3_CONTINUOUS_20261010.md)，下方R02停训为历史状态。
@@ -58,7 +60,7 @@ Q1新工作：用户于10/8指定 `/media/yu/FAFF-E977/YuanQi_Q1`，最终目标
 
 ## 下一项具体工作
 
-当前R03续训至累计10000，先按[持续续训README](README_A3_CONTINUOUS_20261010.md)核验服务、账本、最新sidecar与health。允许意外中断后控制器无累计次数上限恢复；巡检不主动重启或解除保护。保留现场供电/散热排查，重启根因仍未知。完成后独立校验最终模型，修复Isaac指标依赖并做2000与最终模型同条件评测。官方035 PT尚未下载，B0/B1安排保留，未操作真机。
+R03已由用户暂停，不自动续训。优先按[官方模型与暂停](README_A3_PRETRAINED_20261010.md)准备官方035 PT及配套配置，核验后先做仿真基线，再决定是否微调；官方微调是权重warm start，不能复用R03完整恢复计数。HF实时API当前超时，未下载模型；保留Isaac指标依赖与整机重启排查事项，未操作真机。
 
 下一课：同一个关节的 Actor 输出 -> 目标角 -> PD -> 实际反馈，由本人解释并判断，再回到对应字段 / 代码。A3 公开工程来源本轮已确认智元官方组织发布、基于 NVIDIA SONIC；型号兼容和实际训练仍按资源审计推进，见[主线与来源记录](README_LEARNING_MAINLINE_20261009.md)。
 

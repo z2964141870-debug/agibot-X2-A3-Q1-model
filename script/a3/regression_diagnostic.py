@@ -173,13 +173,22 @@ def report():
         ROOT / "script/a3/regression_diagnostic.py", ROOT / "script/a3/audit_finetune_updates.py",
         ROOT / "script/a3/fixed_input_diagnostic.py", ROOT / "script/a3/plot_regression.py",
         ROOT / "script/a3/a3-regression-e01.service")]
-    health = [read_line for path in LOGS.rglob("health.jsonl")
-              for line in path.read_text().splitlines() if line.strip()
-              for read_line in [json.loads(line)]]
+    health, rejected_health = [], []
+    for path in LOGS.rglob("health.jsonl"):
+        for ordinal, line in enumerate(path.read_text().splitlines(), 1):
+            try:
+                sample = json.loads(line)
+                if not isinstance(sample, dict) or not all(
+                        key in sample for key in ("boot_id", "temperatures_c", "gpus", "memory_bytes")):
+                    raise ValueError("Missing health fields")
+                health.append(sample)
+            except (ValueError, TypeError):
+                rejected_health.append(dict(path=str(path), line=ordinal))
     result["health"] = dict(samples=len(health), boot_ids=sorted({h["boot_id"] for h in health}),
                            cpu_max_c=max((h["temperatures_c"].get("x86_pkg_temp", 0) for h in health), default=None),
                            gpu_max_c=max((g["temperature.gpu"] for h in health for g in h["gpus"]), default=None),
                            ram_available_min_bytes=min((h["memory_bytes"]["MemAvailable"] for h in health), default=None),
+                           rejected_records=rejected_health,
                            scope="RECORDED_SAMPLES_ONLY_NOT_REBOOT_CAUSE_OR_HARDWARE_ACCEPTANCE")
     atomic_json(OUTPUT / "comparison.json", result)
     atomic_json(ROOT / "data/manifests/a3_regression_20261010_E01.json", result)

@@ -34,6 +34,8 @@ step10所属R05_002_s2/config.yaml为0字节，原文件不改。已读固定ven
 
 ## 恢复与下一步
 
+CPU固定输入诊断 `script/a3/fixed_input_diagnostic.py` 已执行：读取官方慢走最初100真实策略输入，官方适配器与原模拟器动作通过atol1e-4/rtol1e-3，step0编码和动作均与官方完全相等。step2量化编码元素变化27.3594%，动作输出对官方RMSE0.0905764（原始policy单位，不是rad）。仅在推理时交换部件：当前decoder配官方token误差0.0742825；官方decoder配当前token误差0.0355094。两部分都有变化，此小样本中decoder变化影响更大；不能据此声称冻结encoder会修复策略。200次对应0.499309/0.482526/0.136428，均只限同一慢走前2秒固定输入，不是闭环或因果验收。证据 `fixed_input_diagnostic.json` 与 `fixed_input_outputs.npz`。
+
 只读学习率审计 `script/a3/audit_finetune_updates.py` 已执行，证据 `update_audit.json`。step2/200的args.learning_rate均1e-5，optimizer两个参数组及scheduler._last_lr/base_lrs均2e-5；配置actor2e-5/critic1e-3/desiredKL0.01/adaptive下限1e-5。vendor KL handler逐minibatch写所有参数组，轮末lr_scheduler.step再次写入；故记录的自适应LR和checkpoint实际参数组LR不一致，不能把保存点2e-5认定为全程实际优化步长。该冲突值得下一轮前修正/验证，不是已经证明的退化根因。KL日志实际是旧采样策略对当前策略的高斯KL、按动作维求和；clipfrac为clipped surrogate更大的比例。
 
 step0与step2均完整20动作/24304步、无跌倒。step0各聚合指标与已有官方一致；step2关节RMSE0.0590597→0.0915286rad，根位置0.0841691→0.1528472m，手腕anchor相对0.0119790→0.0333251m，腿部anchor相对0.0189769→0.0262490m。故最早已观测的跟踪退化在step2，位于0→2更新区间；没有step1保存点，不能断定发生在第1还是第2次。step2属于初次连续2更新冒烟，早于后续恢复attempt，不能将全部退化归因于后续重启。

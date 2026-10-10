@@ -160,6 +160,27 @@ def report():
                   scope="SINGLE_R05_TRAJECTORY_SIM2SIM_DIAGNOSTIC_NOT_CAUSAL_ATTRIBUTION",
                   heldout_scope="WITHHELD_FROM_R05_ONLY_NOW_USED_FOR_DIAGNOSIS",
                   generated_utc=datetime.now(timezone.utc).isoformat())
+    for name in ("update_audit", "fixed_input_diagnostic"):
+        path = OUTPUT / f"{name}.json"
+        if path.exists():
+            result[name] = read(path)
+    result["state"] = read(OUTPUT / "state.json")
+    result["artifacts"] = [dict(path=str(p.relative_to(ROOT)), bytes=p.stat().st_size,
+                                 sha256=sha256(p), backup_status="LOCAL_ONLY")
+                           for p in sorted(OUTPUT.rglob("*"))
+                           if p.is_file() and p.name != "comparison.json"]
+    result["code"] = [dict(path=str(p.relative_to(ROOT)), sha256=sha256(p)) for p in (
+        ROOT / "script/a3/regression_diagnostic.py", ROOT / "script/a3/audit_finetune_updates.py",
+        ROOT / "script/a3/fixed_input_diagnostic.py", ROOT / "script/a3/plot_regression.py",
+        ROOT / "script/a3/a3-regression-e01.service")]
+    health = [read_line for path in LOGS.rglob("health.jsonl")
+              for line in path.read_text().splitlines() if line.strip()
+              for read_line in [json.loads(line)]]
+    result["health"] = dict(samples=len(health), boot_ids=sorted({h["boot_id"] for h in health}),
+                           cpu_max_c=max((h["temperatures_c"].get("x86_pkg_temp", 0) for h in health), default=None),
+                           gpu_max_c=max((g["temperature.gpu"] for h in health for g in h["gpus"]), default=None),
+                           ram_available_min_bytes=min((h["memory_bytes"]["MemAvailable"] for h in health), default=None),
+                           scope="RECORDED_SAMPLES_ONLY_NOT_REBOOT_CAUSE_OR_HARDWARE_ACCEPTANCE")
     atomic_json(OUTPUT / "comparison.json", result)
     atomic_json(ROOT / "data/manifests/a3_regression_20261010_E01.json", result)
     print(json.dumps(rows, indent=2), flush=True)

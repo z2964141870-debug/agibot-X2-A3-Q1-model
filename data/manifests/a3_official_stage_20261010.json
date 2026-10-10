@@ -1,0 +1,1197 @@
+{
+  "updated_utc": "2026-10-10T02:21:08.774560+00:00",
+  "stage": "OFFICIAL_FULLCHAIN_IN_NEW_A3_WORKSPACE",
+  "status": "IN_PROGRESS",
+  "tasks": {
+    "official_pt": {
+      "status": "passed",
+      "updated_utc": "2026-10-10T02:08:37.512224+00:00",
+      "checkpoint": "/media/yu/FAFF-E9771/YUANQI_A3/data/models/a3_official_035/checkpoints/035_step200000/model_step_200000.pt",
+      "evidence": "/media/yu/FAFF-E9771/YUANQI_A3/data/experiments/a3_fullchain_20261010/official_reload.json"
+    },
+    "input_audit": {
+      "status": "passed",
+      "reused_evidence": "/media/yu/FAFF-E9771/YUANQI_A3/data/experiments/a3_fullchain_20261010/reused_history.json",
+      "historical_evidence": {
+        "status": "passed",
+        "updated_utc": "2026-10-09T18:02:32.788001+00:00",
+        "valid_cases": 4,
+        "evidence": "/media/yu/FAFF-E9771/YUANQI/data/experiments/a3_fullchain_20261010/input_audit.json",
+        "scope": "structure_only_not_pose_fidelity"
+      },
+      "scope": "HASH_VERIFIED_HISTORY_REUSE",
+      "updated_utc": "2026-10-10T02:11:19.852607+00:00"
+    },
+    "retarget": {
+      "status": "passed",
+      "reused_evidence": "/media/yu/FAFF-E9771/YUANQI_A3/data/experiments/a3_fullchain_20261010/reused_history.json",
+      "historical_evidence": {
+        "status": "passed",
+        "updated_utc": "2026-10-09T18:02:45.220742+00:00",
+        "evidence": "/media/yu/FAFF-E9771/YUANQI/data/experiments/a3_fullchain_20261010/retarget_summary.json",
+        "scope": "kinematics_only_not_pose_fidelity_or_balance"
+      },
+      "scope": "HASH_VERIFIED_HISTORY_REUSE",
+      "updated_utc": "2026-10-10T02:11:19.854066+00:00"
+    },
+    "mujoco_baseline": {
+      "status": "pending"
+    },
+    "isaac_dependency": {
+      "status": "deferred",
+      "evidence": "/media/yu/FAFF-E9771/YUANQI_A3/data/experiments/a3_fullchain_20261010/dependencies.json",
+      "user_action": "Supply compatible smpl_sim metrics dependency; no substitute success metrics",
+      "updated_utc": "2026-10-10T02:08:39.189539+00:00"
+    },
+    "isaac_baseline": {
+      "status": "deferred",
+      "reason": "missing_smpl_sim_metrics",
+      "user_action": "Provide compatible smpl_sim.smpllib.smpl_eval; independent validate required",
+      "updated_utc": "2026-10-10T02:11:19.860011+00:00"
+    },
+    "split": {
+      "status": "passed",
+      "train_count": 16,
+      "heldout_count": 4,
+      "evidence": "/media/yu/FAFF-E9771/YUANQI_A3/data/experiments/a3_fullchain_20261010/split.json",
+      "updated_utc": "2026-10-10T02:08:38.354850+00:00"
+    },
+    "finetune": {
+      "status": "pending"
+    },
+    "paired_evaluation": {
+      "status": "pending"
+    },
+    "reference_buffer": {
+      "status": "passed",
+      "reused_evidence": "/media/yu/FAFF-E9771/YUANQI_A3/data/experiments/a3_fullchain_20261010/reused_history.json",
+      "historical_evidence": {
+        "status": "passed",
+        "evidence": "/media/yu/FAFF-E9771/YUANQI/data/experiments/a3_fullchain_20261010/buffer_summary.json",
+        "scope": "causal_reference_replay_only_policy_comparison_waits_for_official_pt",
+        "updated_utc": "2026-10-09T18:05:39.153354+00:00"
+      },
+      "scope": "HASH_VERIFIED_HISTORY_REUSE",
+      "updated_utc": "2026-10-10T02:11:19.856469+00:00"
+    },
+    "onnx": {
+      "status": "pending"
+    },
+    "rknn": {
+      "status": "deferred",
+      "reason": "rknn_toolkit_unavailable",
+      "user_action": "Provide compatible RKNN toolkit; board execution remains untested",
+      "updated_utc": "2026-10-10T02:11:19.861239+00:00"
+    },
+    "reference_contract": {
+      "status": "passed",
+      "cases": 26,
+      "evidence": "/media/yu/FAFF-E9771/YUANQI_A3/data/experiments/a3_fullchain_20261010/reference_contract.json",
+      "updated_utc": "2026-10-10T02:15:48.124324+00:00"
+    },
+    "retarget_visual": {
+      "status": "passed",
+      "reused_evidence": "/media/yu/FAFF-E9771/YUANQI_A3/data/experiments/a3_fullchain_20261010/reused_history.json",
+      "historical_evidence": {
+        "status": "passed",
+        "outputs": [
+          "/media/yu/FAFF-E9771/YUANQI/data/experiments/a3_fullchain_20261010/mocap/cloth_walk/body_a3_overview.png",
+          "/media/yu/FAFF-E9771/YUANQI/data/experiments/a3_fullchain_20261010/mocap/cloth_oneleg/body_a3_overview.png",
+          "/media/yu/FAFF-E9771/YUANQI/data/experiments/a3_fullchain_20261010/mocap/recording_0923/body_a3_overview.png",
+          "/media/yu/FAFF-E9771/YUANQI/data/experiments/a3_fullchain_20261010/mocap/recording_0924/body_a3_overview.png"
+        ],
+        "scope": "rendered_not_pose_fidelity_acceptance",
+        "updated_utc": "2026-10-09T18:13:37.851394+00:00"
+      },
+      "scope": "HASH_VERIFIED_HISTORY_REUSE",
+      "updated_utc": "2026-10-10T02:11:19.855261+00:00"
+    },
+    "reference_buffer_policy": {
+      "status": "pending"
+    },
+    "mujoco_wrapper_check": {
+      "status": "passed",
+      "evidence": "/media/yu/FAFF-E9771/YUANQI_A3/data/experiments/a3_fullchain_20261010/official_smoke/explicit_summary.json",
+      "scope": "OFFICIAL_10_STEP_SMOKE",
+      "updated_utc": "2026-10-10T02:11:19.862386+00:00"
+    },
+    "onnx_diagnostic": {
+      "status": "passed",
+      "reason": "official_100_actual_inputs_parity",
+      "updated_utc": "2026-10-10T02:21:07.600908+00:00"
+    },
+    "finetune_preflight": {
+      "status": "passed",
+      "reason": "fixed_official_16_motion_inputs_verified",
+      "updated_utc": "2026-10-10T02:16:53.498683+00:00"
+    },
+    "motionlib": {
+      "status": "passed",
+      "evidence": "/media/yu/FAFF-E9771/YUANQI_A3/data/experiments/a3_fullchain_20261010/motionlib_validation.json",
+      "scope": "format_only_mocap_training_not_allowed",
+      "updated_utc": "2026-10-10T02:11:20.823973+00:00"
+    },
+    "mocap_quality": {
+      "status": "failed",
+      "reused_evidence": "/media/yu/FAFF-E9771/YUANQI_A3/data/experiments/a3_fullchain_20261010/reused_history.json",
+      "historical_evidence": {
+        "status": "failed",
+        "reason": "ik_residual_and_foot_penetration",
+        "evidence": "/media/yu/FAFF-E9771/YUANQI/data/experiments/a3_fullchain_20261010/retarget_summary.json",
+        "user_action": "Verify personal calibration, reconstruction, root trajectory, ground and foot contacts",
+        "updated_utc": "2026-10-09T18:31:04.592242+00:00"
+      },
+      "scope": "HASH_VERIFIED_HISTORY_REUSE",
+      "updated_utc": "2026-10-10T02:11:19.857684+00:00"
+    },
+    "mocap_finetune": {
+      "status": "deferred",
+      "reused_evidence": "/media/yu/FAFF-E9771/YUANQI_A3/data/experiments/a3_fullchain_20261010/reused_history.json",
+      "historical_evidence": {
+        "status": "deferred",
+        "reason": "mocap_quality",
+        "user_action": "Resolve calibrated pose/root/contact quality before using clothing references for training",
+        "updated_utc": "2026-10-09T18:31:04.588094+00:00"
+      },
+      "scope": "HASH_VERIFIED_HISTORY_REUSE",
+      "updated_utc": "2026-10-10T02:11:19.858848+00:00"
+    },
+    "rknn_input_contract": {
+      "status": "passed",
+      "evidence": "/media/yu/FAFF-E9771/YUANQI_A3/data/experiments/a3_fullchain_20261010/rknn_input_contract.json",
+      "scope": "INPUT_CONTRACT_ONLY_NO_RKNN_PACKAGE_OR_RUNTIME",
+      "updated_utc": "2026-10-10T02:21:07.432356+00:00"
+    },
+    "mocap_policy": {
+      "status": "pending"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "data/experiments/a3_fullchain_20261010/a3_retarget_config.json",
+      "bytes": 2201,
+      "sha256": "16c2af98def08631be6509012830ed959771052a4777b51f52c1da6e0cb570ba",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/buffer_summary.json",
+      "bytes": 1738,
+      "sha256": "56b3d1127a273bf2b19b1b15dc9365a010027ce83f22b981b8f2c4be28363281",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/dependencies.json",
+      "bytes": 383,
+      "sha256": "edad6279bba13f980bd089b86c0553fb77f6cc81a647c58ee06faced625f45d0",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/input_audit.json",
+      "bytes": 10175,
+      "sha256": "df8eb58f8558cc4e25427da12e444a4e60739ef801f9740ce29b76e302d135e9",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/cloth_oneleg/body_a3_overview.png",
+      "bytes": 717424,
+      "sha256": "c9b2a3e04cebda142f91d7c91203923ee9c88d7a6c644519b5e3760fff860069",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/cloth_oneleg/body_reference.npz",
+      "bytes": 1076627,
+      "sha256": "f431b9b5ce9a7dabc831e994fb47a066d35c0e6e9e50b02fa4ab9cf6288200e9",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/cloth_oneleg/buffer_trace.npz",
+      "bytes": 24400,
+      "sha256": "9ccc5b0c3ba7377cc62e6185dd5423c56de755f15018e92932adae0f706de38c",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/cloth_oneleg/input_audit.json",
+      "bytes": 2402,
+      "sha256": "175fc6119e67d9c637101b120935cefea0c8c05e2029500918b609a67f81a150",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/cloth_oneleg/kinematic_trace.npz",
+      "bytes": 1807838,
+      "sha256": "db772835e0c714b8ffd28cee738b9949fb5e7392107397b9cc702fb6a0112364",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/cloth_oneleg/reference.csv",
+      "bytes": 1187800,
+      "sha256": "bb569b4de32730cef91da59e3f99b9e9291079490d1d2d1c206635315af9f1cd",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/cloth_oneleg/retarget_summary.json",
+      "bytes": 2345,
+      "sha256": "ed6e058a0d31d0183300e2a5b085f4c8987dc4f08b626f072ebb217b659f3fdf",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/cloth_walk/body_a3_overview.png",
+      "bytes": 707573,
+      "sha256": "4baa5421beb6906cf89edfa27281de376354260d94bdb2fff559f84d7433c23a",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/cloth_walk/body_reference.npz",
+      "bytes": 1080113,
+      "sha256": "5d9d895a8c9dabde3474addf5f3af9caaaa6eb123207ff9a31422a5a2fec9361",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/cloth_walk/buffer_trace.npz",
+      "bytes": 24524,
+      "sha256": "9cc8ad901a6332f400e18ac6004c1f37a56f2e41cf808da713ea79614a78f7a5",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/cloth_walk/input_audit.json",
+      "bytes": 2398,
+      "sha256": "f125bbc3421c5a70236745e5d112fc3ab1cabc7f2ee82d5e7bc810e3d664b837",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/cloth_walk/kinematic_trace.npz",
+      "bytes": 1833026,
+      "sha256": "1f4550ac0decc5172d3990d83190c09785553a886590b7ae74f57af2bc844858",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/cloth_walk/reference.csv",
+      "bytes": 1190953,
+      "sha256": "3fe720f031b8460a316bad3c75e307e87117e3cf0dafe3889f127b072e13261d",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/cloth_walk/retarget_summary.json",
+      "bytes": 2357,
+      "sha256": "2a6db00cedd9b174e7b12b98e5c4b16b61be33a881d8a15e7259567a429df8fb",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/recording_0923/body_a3_overview.png",
+      "bytes": 721136,
+      "sha256": "4f1a1a05b91ee62c621d3d26802895d05ac67df1906b65e4844ae4332fcd8754",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/recording_0923/body_reference.npz",
+      "bytes": 1361125,
+      "sha256": "0dc94c77f1796d369f73a046de2fac66be25a8f6f417f626cc963bb6223597e6",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/recording_0923/buffer_trace.npz",
+      "bytes": 31233,
+      "sha256": "12355910f52d0190934de5870a87fee0312a4d22602a9532f1c65a36c2c125fa",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/recording_0923/input_audit.json",
+      "bytes": 2083,
+      "sha256": "ed53ea1c96ee5ee67fe3785d4c7e7508b23b9c37cf764ecd2bc52b8302a4fa09",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/recording_0923/kinematic_trace.npz",
+      "bytes": 2168557,
+      "sha256": "12fa05b158025e57786791b78abb518f4361caed550ca7dfa2a12ed55ff8404b",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/recording_0923/reference.csv",
+      "bytes": 1468915,
+      "sha256": "5d11c231436f1c15f197c7c70b086d3c977832c1dae161102c269679ed134038",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/recording_0923/retarget_summary.json",
+      "bytes": 2341,
+      "sha256": "101c0af6a09088c4f3058f29edc1b2c7d8867fd609e7a8081e9b43ba153caaa8",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/recording_0924/body_a3_overview.png",
+      "bytes": 717825,
+      "sha256": "2667cbee94a6466db45a1e925dd4d5619d9bc6e174f7bb55752f29ef6d5f3645",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/recording_0924/body_reference.npz",
+      "bytes": 1369007,
+      "sha256": "13055031bb578e34b36991af4dc993bc2931ba4e70a2d6535a1f51f7dd8122c4",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/recording_0924/buffer_trace.npz",
+      "bytes": 31189,
+      "sha256": "b8607762ed926aa91188d8c34b39d533ef51ad917e89daa3b61988ad5c8aed19",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/recording_0924/input_audit.json",
+      "bytes": 2097,
+      "sha256": "2ac508e4f020545100693c6cc7d99fe120f67442eb3357de3e4a0a800bf26deb",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/recording_0924/kinematic_trace.npz",
+      "bytes": 2172329,
+      "sha256": "b611d22edcaee8b5d3a08e9d273f950804223ed8ed34d9932b3135f74074ce62",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/recording_0924/reference.csv",
+      "bytes": 1472456,
+      "sha256": "62f0db036506919089ec59723a1cd49ac4524d7be72f9d2ebcfd51f409527c84",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/recording_0924/retarget_summary.json",
+      "bytes": 2344,
+      "sha256": "c2865709a1eaf9c3d9b1e08d928220be6bc9e9bc0ebc5788e163e95200c30191",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/synthetic_neutral/kinematic_trace.npz",
+      "bytes": 10996,
+      "sha256": "46cb809684337edfc6ee87c69834c4638bd666babfb91d334409e6865595e9fa",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/synthetic_neutral/reference.csv",
+      "bytes": 22285,
+      "sha256": "38007d00438633468eb31d9193a0f1025cb8da75abc1b5684a574e1f60bde7cc",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/synthetic_neutral/retarget_summary.json",
+      "bytes": 2419,
+      "sha256": "ee40ac2f05cbdd6f5352a28c3a88b99b0249ff5d3aefe8616c9845a7641664bb",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/synthetic_single_joint/kinematic_trace.npz",
+      "bytes": 11119,
+      "sha256": "a1026c335cbe9595c07dcc6e9d2d143b817376d39ef3e94f7dba27e8fa4138ea",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/synthetic_single_joint/reference.csv",
+      "bytes": 21620,
+      "sha256": "25d2d03c7efd3d243b5a84b8822f1215fb30a08b19795db0fe99cba8dfde5f3c",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/mocap/synthetic_single_joint/retarget_summary.json",
+      "bytes": 2484,
+      "sha256": "3a0ad1f03319b86d961ecfef3c5bf0a8ae4d91195eb662d02f78da0f81db855b",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/heldout/heldout/001_walk_front_slow.pkl",
+      "bytes": 276291,
+      "sha256": "2ee18ddddfd589d1897797503954c0151e489cd4edbe704f7217324537c0b3c0",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/heldout/heldout/029_rotate_place_slow.pkl",
+      "bytes": 435898,
+      "sha256": "5c9998e7ac1b0067f9eb9d4c2d536275db91a2cf13156f53aab70c9f462e67e1",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/heldout/heldout/048_balance_right_singleleg.pkl",
+      "bytes": 94087,
+      "sha256": "ecd0f55dbe8e2389c1ebc19e7ba685d9f32d7b787bbd13dd61381a80a126daa3",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/heldout/heldout/050_march_place_slow.pkl",
+      "bytes": 138138,
+      "sha256": "128d86f065f1e09866bd612c80cec2e38f339c638ef01ef28aff82bc86632d27",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/mocap_diagnostic/cloth_oneleg.pkl",
+      "bytes": 481550,
+      "sha256": "060e5e399661a1b2d917e0372f4fbde694cb55c6fcfdc0ffb7aaf775d5fe91ff",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/mocap_diagnostic/cloth_walk.pkl",
+      "bytes": 518079,
+      "sha256": "92df283dc6c5adc3c22d034f8ddbdb1d74d11fd18bee081c0a618667acc50769",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/mocap_diagnostic/recording_0923.pkl",
+      "bytes": 594932,
+      "sha256": "db243fb1e9603fa331d267a7a38c242dac21ee0379455a41bb11ad96c37dfa86",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/mocap_diagnostic/recording_0924.pkl",
+      "bytes": 599987,
+      "sha256": "aa29de3a4f158408d04b0d7d86d3226046851570b536c054967c054f80e40da0",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/004_walk_frontleft_slow.pkl",
+      "bytes": 231542,
+      "sha256": "0d7786e5d2bf71da08f6813009c69ce488daefc71ddf3f02e94c4cae5964b1dc",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/009_walk_left_fast.pkl",
+      "bytes": 192368,
+      "sha256": "466f78e1570d0a1e1fa4d9f94604601127c531c1d139c8d7e7809e07fcd6857f",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/042_squat_shallow_repeated.pkl",
+      "bytes": 181922,
+      "sha256": "b30fe20e29c85b48beaac5542c7a9c51c77232886acb6082346ec25aea73467f",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/043_squat_deep_repeated.pkl",
+      "bytes": 96864,
+      "sha256": "af56480f9febe9c6c1f6c7b53a4e55315ee3643a9fd45e0629f4cc3c03e6d3e7",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/047_balance_left_singleleg.pkl",
+      "bytes": 86287,
+      "sha256": "3127aaff821dae91f3deb32a1a2418b1954ff75fd08fb7e20000772d36af391c",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/055_lunge_front_alternating.pkl",
+      "bytes": 243819,
+      "sha256": "3dbb5d78ac1bc0db51481392a46d306e048f9a16e492dcd8ed1e9afce34d5844",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/056_lunge_side_alternating.pkl",
+      "bytes": 215891,
+      "sha256": "e44f0e44d469fb97ef41690f1bf8c23d95ef21ab9ac12c93146651f00d2aad46",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/058_punch_front_alternating.pkl",
+      "bytes": 103494,
+      "sha256": "e915f74faa48db1b3c8712a23a757e05e45eb40b804aeaa89a49e12f5f13875a",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/062_bend_side_alternating.pkl",
+      "bytes": 191695,
+      "sha256": "99f09346158225802418f58784446365ea8db32c79789f465e8c740610cc3fed",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/063_twist_torso_alternating.pkl",
+      "bytes": 258698,
+      "sha256": "4bbdce3fccf774901f85152dd05eaa53dbd906742133424539e8b0da465ec542",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/073_squat_leg_sweep.pkl",
+      "bytes": 94532,
+      "sha256": "f0acf1a649ca885fc16fb0d6c3fed7d8c53c97d224e2eeb3c7fee8b128440a0a",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/077_reach_overhead_both.pkl",
+      "bytes": 110175,
+      "sha256": "827dbfe6738770037075e92cc2fd900abd4e1ed03cb2090e4e74f205887ad6b0",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/080_reach_front_both.pkl",
+      "bytes": 125642,
+      "sha256": "96ea094fe831d46f35715a0fa9f69e9fa7f3f1c11d49a4ff646e3ac2e164de0a",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/088_shift_frontback_weight.pkl",
+      "bytes": 389026,
+      "sha256": "d803d7206d09ec19fe85d566067fa1e1325d7ec4d07567cbcfed57b129f288b7",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/089_shift_leftright_weight.pkl",
+      "bytes": 277726,
+      "sha256": "7233b677f8941ad506b06656dd75dcc87ecfafe405a96fa4eebcd5599ff93b53",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib/train/train/091_step_threshold_forward.pkl",
+      "bytes": 154969,
+      "sha256": "3c242f063f88ce57b278584d6ca574d967e9daa12acf63a6784c8dab5255b667",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/motionlib_validation.json",
+      "bytes": 2558,
+      "sha256": "d31d99530d729016c475f1461645117117bad95f97792ecffaa3d54da41304b0",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/001_walk_front_slow.inputs.npz",
+      "bytes": 99075,
+      "sha256": "51b27bf73cf6c82cef7ed233026f89a70a217a9920eee04936740dde8b23c7a3",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/001_walk_front_slow.metrics.json",
+      "bytes": 7524,
+      "sha256": "877af16515b85e6af2ec46ae8f8b641662abac37587b39c746f5f93e6d4ed28b",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/001_walk_front_slow.timeseries.json",
+      "bytes": 39519525,
+      "sha256": "c8461e10a4c9ffff99a9970191a6f1c2d63d42770e1e21b754800294b9d737d2",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/004_walk_frontleft_slow.inputs.npz",
+      "bytes": 98916,
+      "sha256": "409d022d36ca40e9bf2bb3e1c347de32b61521e68545bcc2d420f0e6fddb9881",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/004_walk_frontleft_slow.metrics.json",
+      "bytes": 7552,
+      "sha256": "aff1dc8d5f007716684b89945207b6adc3d6182f158f6599cae8fbd8618dc930",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/004_walk_frontleft_slow.timeseries.json",
+      "bytes": 33528910,
+      "sha256": "b8248591842360bf2a3daa6eaf71f4201fec64d9bd86e8624a66af5c8241d730",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/009_walk_left_fast.inputs.npz",
+      "bytes": 99149,
+      "sha256": "ccc93fc244e3df72353b6f7382e9c83ca329838fd5c0aa75c06e57020e3246fc",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/009_walk_left_fast.metrics.json",
+      "bytes": 7518,
+      "sha256": "924d78c069cb2ccbdbc7f5b1a8b0544b1dab617bf391373abe570cd1f4126091",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/009_walk_left_fast.timeseries.json",
+      "bytes": 28187770,
+      "sha256": "f8754afeb1dae6b9f77f6bafab38871ffab53eb56ad76fce792db2769b101c43",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/029_rotate_place_slow.inputs.npz",
+      "bytes": 99028,
+      "sha256": "501d3063ff127a703aea83ba36809311fc48488a9ddaa7a79e391c68dbcc3742",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/029_rotate_place_slow.metrics.json",
+      "bytes": 7536,
+      "sha256": "3b4a291ea26c8f958105aa10e45e2913d677d646316bd73f15b3b60b68f56314",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/029_rotate_place_slow.timeseries.json",
+      "bytes": 62788981,
+      "sha256": "303af0bb4495cb1edbf919af2aa98cc575271bd09634cd1b9f2e39d35d8e8470",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/042_squat_shallow_repeated.inputs.npz",
+      "bytes": 99058,
+      "sha256": "a3f0048e0d0b9e65698eb90b899f1b6f7a4793f41df123e1815e8b3b94d25ae5",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/042_squat_shallow_repeated.metrics.json",
+      "bytes": 7560,
+      "sha256": "a1cfcd998f822d9868dc6d4fd0035df8b7501c7ebcceee757f804dfa0f27ee76",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/042_squat_shallow_repeated.timeseries.json",
+      "bytes": 27906381,
+      "sha256": "ccfdbd870f3005197d05b03a3061f8977d0805d657ba612f5f5ff81978e54673",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/043_squat_deep_repeated.inputs.npz",
+      "bytes": 99047,
+      "sha256": "7edc28e615d2959ecb4a4f1e10002dd6bbd950fad8e420bfbd9b99d46485ae53",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/043_squat_deep_repeated.metrics.json",
+      "bytes": 7536,
+      "sha256": "29e8467055690d062cc57db18bd9c1d94f63833ca051b8b3e9dbeda3d0410e52",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/043_squat_deep_repeated.timeseries.json",
+      "bytes": 15383619,
+      "sha256": "f99fe7038cbdbe9c570ccd7ec1273b63196b3a9defd8e9e28744f4037e870d43",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/047_balance_left_singleleg.inputs.npz",
+      "bytes": 99221,
+      "sha256": "fa36f2155f1fbf7317d79627f6bcd768be4345dc0ce47673fe9cdd8ed791c274",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/047_balance_left_singleleg.metrics.json",
+      "bytes": 7542,
+      "sha256": "5cac8b48fcc70b4d1749cdc5301c4050cf3a1521eede2a0ec34f990289790abf",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/047_balance_left_singleleg.timeseries.json",
+      "bytes": 14269600,
+      "sha256": "4e8d5b3386f6c83701fdaa155e8e5ca0cf958a7a8280d208b5d809c2e6b29828",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/048_balance_right_singleleg.inputs.npz",
+      "bytes": 99223,
+      "sha256": "2b3a3e049ab14f9aa8cca6f6b5996a5b0067b587343555da8a13a2abb96d8fd3",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/048_balance_right_singleleg.metrics.json",
+      "bytes": 7556,
+      "sha256": "7d4d4d168a988edef3228fd52b7ed317d29abd297cf4d77015ed354bf2972ed0",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/048_balance_right_singleleg.timeseries.json",
+      "bytes": 15368043,
+      "sha256": "6932a804d2799ee074e44aa27dcce5c82b1af13f164401bc4da6bed0fe6fa86a",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/050_march_place_slow.inputs.npz",
+      "bytes": 99013,
+      "sha256": "7e3dec3cb8e78a0323cc1739c785a3806c78beba8561c6b5fc8ea6c3b5301517",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/050_march_place_slow.metrics.json",
+      "bytes": 7528,
+      "sha256": "f78fe5dc71285f14a4524a8c392932d31cc931164591dae340334bd2a4e5608e",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/050_march_place_slow.timeseries.json",
+      "bytes": 21247915,
+      "sha256": "1edab71ba31a2adef1065c6364dccc0a45aae3cce18d90408dd1f9645d208be6",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/055_lunge_front_alternating.inputs.npz",
+      "bytes": 99281,
+      "sha256": "9a46ceeae887f9dcb3c1181d49bc6c196cebd898aa2e6c24ecee342de5b4eb00",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/055_lunge_front_alternating.metrics.json",
+      "bytes": 7548,
+      "sha256": "63679bc67d3ccca3dc2b77362452de2f6e19309cf8bd5e3edb6b778397c9c279",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/055_lunge_front_alternating.timeseries.json",
+      "bytes": 35052173,
+      "sha256": "78e449a18f57b8f777c54cbba662b7a4d42e07a4444bf697e71c1b11e74f6afb",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/056_lunge_side_alternating.inputs.npz",
+      "bytes": 99248,
+      "sha256": "bc72e1f62ae1d974d04c513958eb398525c09b15538949d3dece4b8906823f89",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/056_lunge_side_alternating.metrics.json",
+      "bytes": 7532,
+      "sha256": "74bc07998c7abaecb6ac6497d1e2ad3a62116bdd14a702881b849258f979376a",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/056_lunge_side_alternating.timeseries.json",
+      "bytes": 31339878,
+      "sha256": "603998089fde047f50c398de9bd419c8798f3eb8b5c00478914e50d977807192",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/058_punch_front_alternating.inputs.npz",
+      "bytes": 99051,
+      "sha256": "c93649dc036bfc9993a8f50735d4d4ab416def2193101d7ac7e1d216a20f45a6",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/058_punch_front_alternating.metrics.json",
+      "bytes": 7564,
+      "sha256": "8fe549dd124977ee550535c75bd367467c0a53758ed6150d8060b4c47f07d474",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/058_punch_front_alternating.timeseries.json",
+      "bytes": 16351681,
+      "sha256": "7257b3f7427948f7a20528a0dbc7fff91eb4250b279fe746db626f10b8dcaff1",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/062_bend_side_alternating.inputs.npz",
+      "bytes": 98681,
+      "sha256": "d2df4bbd1aeb8bb23dfec51165edbe04c9cc3a9040c01131e182876ab750909f",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/062_bend_side_alternating.metrics.json",
+      "bytes": 7552,
+      "sha256": "e14c927cbdb7ed754e584e1c733d054c93814f084c9231b3d9d1764498b5b68d",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/062_bend_side_alternating.timeseries.json",
+      "bytes": 29289524,
+      "sha256": "1279e2ffc60a5b86ee4bac0921ab7c5a9bbe5d50506c72861b76d29413413ac9",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/063_twist_torso_alternating.inputs.npz",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/063_twist_torso_alternating.metrics.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/063_twist_torso_alternating.timeseries.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/073_squat_leg_sweep.inputs.npz",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/073_squat_leg_sweep.metrics.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/073_squat_leg_sweep.timeseries.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/077_reach_overhead_both.inputs.npz",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/077_reach_overhead_both.metrics.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/077_reach_overhead_both.timeseries.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_baseline/explicit_manifest.json",
+      "bytes": 115231,
+      "sha256": "8c31883faeae0cc811f06e8117adec426eda1a72b1118152c3624a436bf1d357",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_download.json",
+      "bytes": 2884,
+      "sha256": "121ccb669d86668eefd6705cd23ff54583b4efc76864e66fd17fe1d46092ea64",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_reload.json",
+      "bytes": 364,
+      "sha256": "ec0a5552426e12fa0ca67cf1a9188659c5a49a169510e635c90cbfa06a71a23e",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_smoke/001_walk_front_slow.metrics.json",
+      "bytes": 7586,
+      "sha256": "814fdfc7e1169f3fd7eb5ea8c6f20c4daf4f48bd6a46713baa9ed7370fba661f",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_smoke/001_walk_front_slow.timeseries.json",
+      "bytes": 244509,
+      "sha256": "f97c5292ca1662b00637ee3df44274dd9d3cdc1d4c9fca0eedd4bd6a1773eb82",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_smoke/explicit_manifest.json",
+      "bytes": 7337,
+      "sha256": "1e5362241d199bfa0269143a1bb4f33c2e589cc9d42e1cd0370a29fb0727d84d",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/official_smoke/explicit_summary.json",
+      "bytes": 1711,
+      "sha256": "8b8d2b0261084636c12a1d45b92f40712cdb78837163c3172db300e110a70dd6",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/onnx_official/a3_fast.onnx",
+      "bytes": 57673235,
+      "sha256": "5fbb77310cbe63f1468f9f1cbbec8c056256b4806cf4c3a1b15ccba239f66122",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/onnx_official/parity.json",
+      "bytes": 1091,
+      "sha256": "78840b7ac213cb0635f8d9d115c1ffbc088673d8bc61047a1ac6ecb85ec2ac9f",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/onnx_official/parity.npz",
+      "bytes": 22179,
+      "sha256": "f7d93cdea2626feb7ddf76871eb904e9594d6d8f001598dab03cfb8ad4b3537a",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/reference_contract.json",
+      "bytes": 10940,
+      "sha256": "2d7ce3b28cf94eb7f414075eddc7dd245233a9df62d48933ec297893f3d23f98",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/retarget_qpos0_diagnostic.json",
+      "bytes": 9954,
+      "sha256": "7b1d06362e3803beedc2877c09a440ee79493a2fe8ee1705e015bef4660f642b",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/retarget_summary.json",
+      "bytes": 10340,
+      "sha256": "3913a775581611ccf95e93448001fcca9c4386981461670d5ac68381c55f08e6",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/reused_history.json",
+      "bytes": 32460,
+      "sha256": "b3bf93ca46af5099bc7e110662c2f61e46af67a8d632227c5759dea2e5839477",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/rknn_input_contract.json",
+      "bytes": 795,
+      "sha256": "9101aee50750f9537c49deb64a77764fd88fdbcd87599d4f3badaee71f1bcce5",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/split.json",
+      "bytes": 5426,
+      "sha256": "67e8c528b6e087a0c3ad931e435d4ceb0348a541a3533eb46f3500a3e63c9b02",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "data/experiments/a3_fullchain_20261010/tasks.json",
+      "bytes": 7424,
+      "sha256": "1fba451555f68fae5d6b4c1e420f782b3f61f9c9574b64fbf072fbb1b8f7f385",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/001_walk_front_slow/attempt_001/console.log",
+      "bytes": 8350,
+      "sha256": "5a52b32b9c0ee155e162b542de070f1d8a5bb3d5db3ad2ba3478dbb585e6b40d",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/001_walk_front_slow/attempt_001/health.jsonl",
+      "bytes": 1726,
+      "sha256": "277faa8563ac7aec7d41f5351543aafba083a6857fa6a7c74bce3f2958cc253a",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/004_walk_frontleft_slow/attempt_001/console.log",
+      "bytes": 7787,
+      "sha256": "4a31a8de4fb59890c6cc2264b4db68ca7617df1250d41424e4f611275dcbd07a",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/004_walk_frontleft_slow/attempt_001/health.jsonl",
+      "bytes": 1151,
+      "sha256": "3ccca316418d7fdac2ba7dfbcd17f835984f5cf25ddd0b82cdbd50c76dad2532",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/009_walk_left_fast/attempt_001/console.log",
+      "bytes": 6911,
+      "sha256": "49e042b6c13ae9efaf851c12b2791b1fa5b5cc8d269c2e5b414d4d36ddcfb860",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/009_walk_left_fast/attempt_001/health.jsonl",
+      "bytes": 1159,
+      "sha256": "e8d7feb180da7202fb0b560fb86c495fad029df005aae182fc238bbac10ed311",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/029_rotate_place_slow/attempt_001/console.log",
+      "bytes": 11633,
+      "sha256": "9130c470dd057a1bc03c71da7b0a2ac1ddc23d8c5329347278af03c54197e024",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/029_rotate_place_slow/attempt_001/health.jsonl",
+      "bytes": 2310,
+      "sha256": "1726cc52be2d62eb2b2386fbb4d4e8792c9de9bdb00de7e3e711f08ba1bf9370",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/042_squat_shallow_repeated/attempt_001/console.log",
+      "bytes": 7159,
+      "sha256": "3864cecb45877f2c761985818b9dc09c6122c6b1a32945aac6ed556d275e7e8d",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/042_squat_shallow_repeated/attempt_001/health.jsonl",
+      "bytes": 1154,
+      "sha256": "4a99d825896420e7795081d02c2577bf459191cc967af09e5b8358c9dec21466",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/043_squat_deep_repeated/attempt_001/console.log",
+      "bytes": 5436,
+      "sha256": "d292f7a09f59c6cb022a447852d937f571be1e1559ffa144f8b41b307517ec32",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/043_squat_deep_repeated/attempt_001/health.jsonl",
+      "bytes": 1158,
+      "sha256": "b6680e42e47954f08bbef8e851cd42c74b7947138d477bedf354b9a60faaf22b",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/047_balance_left_singleleg/attempt_001/console.log",
+      "bytes": 5140,
+      "sha256": "3f1c69bc41e32be2b577ad197bc57b98eba88615b4d9b7f1c0346919b66a1175",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/047_balance_left_singleleg/attempt_001/health.jsonl",
+      "bytes": 1152,
+      "sha256": "d30646cde8744fd671e18a2556f258a53448127ca7135f119ef980e2032eb26e",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/048_balance_right_singleleg/attempt_001/console.log",
+      "bytes": 5342,
+      "sha256": "bbf54aa577417e9e02c55e980490d2e232e4c2e6426e1eac73972a8dee90d4f4",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/048_balance_right_singleleg/attempt_001/health.jsonl",
+      "bytes": 1150,
+      "sha256": "dd3b3ad208516377588512f43e3e3a328b52510ce0b91fdebb837e70fe019d1c",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/050_march_place_slow/attempt_001/console.log",
+      "bytes": 6070,
+      "sha256": "c827c69cdaec7ead4acc6d8170df18e8a444271b05917da1bc8868d60e6ce09c",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/050_march_place_slow/attempt_001/health.jsonl",
+      "bytes": 1154,
+      "sha256": "b99db6fd3d5e0aafd5c8ce22020500652bb082b0316c0fddd86dcf884f9c62a4",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/055_lunge_front_alternating/attempt_001/console.log",
+      "bytes": 8110,
+      "sha256": "0e64c5ea26e3e61f27e6cd5acec904aca9d9b364ce53ee43156e284ef8fb739b",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/055_lunge_front_alternating/attempt_001/health.jsonl",
+      "bytes": 1738,
+      "sha256": "65f3cebcef599e16fad1e3e51b966af80c731ad6588b7a3ec3ea6cfdc2251671",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/056_lunge_side_alternating/attempt_001/console.log",
+      "bytes": 7526,
+      "sha256": "581acb19d96ba65964f281f6e9a0de23f53f13a4333f63c44e294b07ed1255b8",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/056_lunge_side_alternating/attempt_001/health.jsonl",
+      "bytes": 1152,
+      "sha256": "22685b072da29ccf12789805af56d920dfc1214407f29ebf1b46308843d9d641",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/058_punch_front_alternating/attempt_001/console.log",
+      "bytes": 5524,
+      "sha256": "4d6006f758cc468d55c7811516be63d6eb40fc0e6249dbb2dc9958055f4d2fc4",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/058_punch_front_alternating/attempt_001/health.jsonl",
+      "bytes": 1156,
+      "sha256": "98055c3720f5b8864ebb10f77c55ed49a6919a2dba450652156eaf0efeb24952",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/062_bend_side_alternating/attempt_001/console.log",
+      "bytes": 7310,
+      "sha256": "cbdff4c7314bfe1ab59b45e2f343f9e2af87cc327e0c7f6b275c3df373c3c7cb",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/062_bend_side_alternating/attempt_001/health.jsonl",
+      "bytes": 1154,
+      "sha256": "75d53984b1c6ea570390f948a588c92bf7770bd6b4426527d671bb6880e272cc",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/063_twist_torso_alternating/attempt_001/console.log",
+      "bytes": 8478,
+      "sha256": "0ab9a998b5e3981ee267d351f6b42c95b08623d36a6f24ba50656f043ae76cd5",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/063_twist_torso_alternating/attempt_001/health.jsonl",
+      "bytes": 1722,
+      "sha256": "3d0f5d940818179ced1ffb4002c8eee6e64ae57600a1345884dbb6f75ed3f2be",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/073_squat_leg_sweep/attempt_001/console.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/073_squat_leg_sweep/attempt_001/health.jsonl",
+      "bytes": 1159,
+      "sha256": "55b47ce97ac9a81a4faa7c1c02aac0ac5b356c8b6ea6e37a43f6224342f951ad",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/077_reach_overhead_both/attempt_001/console.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/077_reach_overhead_both/attempt_001/health.jsonl",
+      "bytes": 1156,
+      "sha256": "3514d488a1e3fdcc9451b8fefeb6d61894354dd9833e25ca45987a814f4d68f2",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/080_reach_front_both/attempt_001/console.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_baseline/080_reach_front_both/attempt_001/health.jsonl",
+      "bytes": 1149,
+      "sha256": "03a1a6b5251e1f8c5aab43a1b72fb452ae45e6b512772db8d8760a58ca7a7c60",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_smoke/001_walk_front_slow/attempt_001/console.log",
+      "bytes": 3301,
+      "sha256": "9a1f8c3196bd83568ef1c2b0dc85b23fabaebff0e3e2eeda476c05ff34838bcb",
+      "backup_status": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/a3_fullchain_20261010/official_smoke/001_walk_front_slow/attempt_001/health.jsonl",
+      "bytes": 576,
+      "sha256": "9f48ab6acd49557fc99f95ff9ff17b2bfc96dffa3de2921bb4158887971a96a6",
+      "backup_status": "LOCAL_ONLY"
+    }
+  ],
+  "host": {
+    "at_utc": "2026-10-10T02:21:08.774572+00:00",
+    "boot_id": "3f33490f-5dea-483f-8f83-a08e53a04b01",
+    "uptime_seconds": 279.73,
+    "load_average": [
+      0.16748046875,
+      0.1494140625,
+      0.078125
+    ],
+    "memory_bytes": {
+      "MemTotal": 33503985664,
+      "MemAvailable": 31766441984,
+      "SwapTotal": 0,
+      "SwapFree": 0
+    },
+    "temperatures_c": {
+      "x86_pkg_temp": 49.0,
+      "acpitz": 27.8,
+      "iwlwifi_1": 40.0
+    },
+    "gpu_query": {
+      "returncode": 0,
+      "stdout": "31, 23.51, 370.00, 0, 77",
+      "stderr": ""
+    },
+    "gpus": [
+      {
+        "temperature.gpu": 31.0,
+        "power.draw": 23.51,
+        "power.limit": 370.0,
+        "utilization.gpu": 0.0,
+        "memory.used": 77.0
+      }
+    ]
+  },
+  "boot_id": "3f33490f-5dea-483f-8f83-a08e53a04b01",
+  "old_lineages_restarted": false,
+  "hardware_control": false,
+  "git_parent": "6e2cb0d4739d336503f0ee474f3541554986a285",
+  "assets": {
+    "script/vendor/sonic_for_a3/gear_sonic/data/assets/robot_description/mjcf/a3_t2d5_loop_passive_foot_twostage_fit_optimized.xml": "ff8a14487096658f7786af1d64e45f37fe9b6bb4a92c13fe9c51685c9e02bddc"
+  }
+}

@@ -21,16 +21,17 @@ def load_sim():
     return module
 
 
-def causal_window(source_times, arrival_time, nominal_delay=.18):
+def causal_window(source_times, arrival_time, nominal_delay=.18, lookahead_s=.18):
     times = np.asarray(source_times, dtype=float)
     if times.ndim != 1 or not np.isfinite(times).all() or np.any(np.diff(times) <= 0):
         raise ValueError("Source times must be finite and strictly increasing")
-    if not np.isfinite(arrival_time) or not np.isfinite(nominal_delay) or nominal_delay < .18:
+    if (not np.isfinite(arrival_time) or not np.isfinite(nominal_delay) or
+            not np.isfinite(lookahead_s) or lookahead_s < .18 or nominal_delay < lookahead_s):
         raise ValueError("Finite arrival and at least180ms lookahead coverage are required")
     latest = np.searchsorted(times, arrival_time + 1e-10, side="right") - 1
     if latest < 0:
         return None
-    base = min(arrival_time - nominal_delay, times[latest] - .18)
+    base = min(arrival_time - nominal_delay, times[latest] - lookahead_s)
     base = np.floor((base + 1e-10) * 50) / 50
     if base < times[0] - 1e-10:
         return None

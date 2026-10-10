@@ -1,0 +1,17 @@
+[Unit]
+Description=YUANQI A3 official short fine-tune R04
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/media/yu/FAFF-E9771/YUANQI_A3
+ExecStart=/media/yu/FAFF-E9771/YUANQI_A3/data/environments/a3-sonic/bin/python -m script.a3.finetune_job
+CPUQuota=100%
+Restart=on-failure
+RestartPreventExitStatus=1 2
+RestartSec=30
+TimeoutStopSec=60
+KillMode=control-group
+
+[Install]
+WantedBy=default.target

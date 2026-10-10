@@ -13,9 +13,21 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--capture", type=Path)
     parser.add_argument("--capture-count", type=int, default=100)
+    parser.add_argument("--reference-buffer-ms", type=float, default=0)
+    parser.add_argument("--buffer-trace", type=Path)
     parser.add_argument("sim_args", nargs=argparse.REMAINDER)
     args = parser.parse_args()
+    if args.reference_buffer_ms and args.buffer_trace is None:
+        parser.error("--reference-buffer-ms requires --buffer-trace")
     sim = load_sim()
+    replay = None
+    if args.reference_buffer_ms:
+        from script.a3.causal_policy import CausalPolicyReplay
+        tokens = args.sim_args
+        fps = float(tokens[tokens.index("--csv-source-fps") + 1])
+        stride = int(tokens[tokens.index("--csv-frame-stride") + 1])
+        replay = CausalPolicyReplay(sim, fps, stride, args.reference_buffer_ms)
+        replay.install()
     observations, actions = [], []
     original = sim.A3Policy.act
 
@@ -35,6 +47,8 @@ def main():
     try:
         return sim.main()
     finally:
+        if replay and replay.rows:
+            replay.save(args.buffer_trace)
         if args.capture and observations:
             args.capture.parent.mkdir(parents=True, exist_ok=True)
             np.savez_compressed(args.capture, observations=np.asarray(observations), actions=np.asarray(actions),

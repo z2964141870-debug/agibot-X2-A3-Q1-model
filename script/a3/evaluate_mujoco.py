@@ -96,6 +96,9 @@ def evaluate_explicit(args):
                 "reference_fps_after_stride": args.reference_fps, "frame_stride": args.frame_stride,
                 "max_policy_steps": args.max_policy_steps, "action_delay_ms": args.action_delay_ms,
                 "encoder": "a3_fast", "vendor_commit": VENDOR_COMMIT}
+    if args.reference_buffer_ms:
+        protocol["reference_buffer_ms"] = args.reference_buffer_ms
+        protocol["buffer_scope"] = "SIMULATED_ARRIVALS_FORWARD_VELOCITY_GUARDED_TARGET_METRICS"
     output.mkdir(parents=True, exist_ok=True)
     logs.mkdir(parents=True, exist_ok=True)
     manifest_path = output / "explicit_manifest.json"
@@ -123,6 +126,9 @@ def evaluate_explicit(args):
         run_logs = logs / name / f"attempt_{ordinal:03d}"
         run_logs.mkdir(parents=True, exist_ok=False)
         argv = [str(ROOT / "data/environments/a3-sonic/bin/python"), "-m", "script.a3.sim_entry"]
+        if args.reference_buffer_ms:
+            argv += ["--reference-buffer-ms", str(args.reference_buffer_ms),
+                     "--buffer-trace", str(output / f"{name}.buffer.npz")]
         if args.capture_inputs:
             argv += ["--capture", str(output / f"{name}.inputs.npz")]
         argv += ["--", "--checkpoint", str(checkpoint), "--motion", str(motion),
@@ -219,8 +225,11 @@ def main():
     parser.add_argument("--frame-stride", type=int, default=4)
     parser.add_argument("--max-policy-steps", type=int)
     parser.add_argument("--action-delay-ms", type=float, default=0)
+    parser.add_argument("--reference-buffer-ms", type=float, default=0)
     parser.add_argument("--capture-inputs", action="store_true")
     args = parser.parse_args()
+    if args.reference_buffer_ms and args.reference_buffer_ms < 180:
+        parser.error("A3-fast causal replay requires at least180ms coverage")
     if args.reference_fps <= 0 or args.frame_stride < 1 or (args.max_policy_steps is not None and args.max_policy_steps < 1):
         parser.error("Invalid sampling or rollout length")
     if args.checkpoint is not None:

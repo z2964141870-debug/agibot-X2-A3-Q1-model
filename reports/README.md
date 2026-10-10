@@ -14,6 +14,11 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-10 | 每日研究检查与历史补同步 | MimicX、YOCO、VioLA 原文筛选，GNR 等候选；按服务器最新工程入口合并 10/6–8 与 PredActor 记录，未运行算法；见[阶段 README](README_RESEARCH_CHECK_20261010.md) |
+| 2026-10-08 | 每日研究检查与 OCLO 更正 | Beyond Retargeting、BRACE、BiGym 2.0；保留 10/7 接口说明的显式更正，历史连接失败见[阶段 README](README_RESEARCH_CHECK_20261008.md) |
+| 2026-10-08 | PredActor 指定论文阅读 | v3 方法/实验与公开 G1 评测代码静态核验，训练/智元迁移未复现，见[专题 README](README_PREDACTOR_20261008.md) |
+| 2026-10-07 | 每日研究检查 | OCLO、VICON、持续学习 LoRA，未复现；当日待同步、后续更正见[阶段 README](README_RESEARCH_CHECK_20261007.md) |
+| 2026-10-06 | 每日研究检查 | CoFiT、CriticHack、HexVIO，未复现；当日连接失败见[阶段 README](README_RESEARCH_CHECK_20261006.md) |
 | 2026-10-10 | A3全链路测试与短微调 | 独立可执行项完成：56+6测试、动捕结构/运动学与参考格式、旧2950 ONNX数值诊断通过；动捕质量失败，官方PT/Isaac指标/RKNN工具链搁置，实际官方微调0更新，见[执行README](README_A3_FULLCHAIN_20261010.md) |
 | 2026-10-10 | A3官方模型与动捕适配主线 | 用户赞成官方PT→数据适配→原模型基线→针对性微调；验收、会话隔离与未来参考延迟方案已登记，训练仍暂停，见[路线README](README_A3_MOCAP_ROUTE_20261010.md) |
 | 2026-10-10 | A3官方035模型与暂停 | 官方PT/ONNX/RKNN及PT微调流程核验；用户暂停R03，2950独立校验通过，service disabled、巡检PAUSED，见[阶段README](README_A3_PRETRAINED_20261010.md) |

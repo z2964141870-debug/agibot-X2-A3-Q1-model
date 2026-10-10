@@ -17,7 +17,7 @@
 
 ## 已完成，可从证据继续
 
-10/10 A3保守微调筛选准备：用户授权尽快找到长期优化方法。先E05/R08仅epochs5→1、官方初始化独立2更新；若仍退化，E06/R09在epochs1下LR整体缩小10倍，各最终step2完整selected20，旧账本不重启。模型/实际LR/aux目标先独立核验，结果决定后续；入口[筛选规则](README_A3_SEARCH_20261010.md)。
+10/10 A3 E05/R08完成官方初始化2更新：真实配置仅epochs5→1和输出路径变化；step0/1/2独立大小/SHA/CPU/模型优化器有限性、4/8optimizer计数和8真实step核验通过，保存LR一致1e-5。服务inactive/disabled，同boot，无新热停。下一项step2完整selected20；若仍退化再独立E06/R09 LR整体缩小10倍，旧账本不重启。入口[筛选规则](README_A3_SEARCH_20261010.md)。
 
 10/10 A3 E04/R07阶段完成：修正Accelerate钩子兼容，10 CPU契约、官方初始化2更新、step0/1/2独立模型/优化器有限性与40实际step/aux目标核验通过。step1/2各完整selected20无跌倒；关节RMSE官方0.05906、旧step2 0.09153、新step1 0.07991、新step2 0.08314rad。新step2较旧误差低9.16%但比官方高40.77%，20/20动作关节误差均高于官方，留出同样退化，尚无正向提升。首轮回合长度空统计NaN单列。训练/评测inactive/disabled、同boot、GPU空闲；E03/R06失败账本保留，LOCAL_ONLY。下一变量建议epochs5→1独立2更新，本轮未执行；见[完整结果](README_A3_CORRECTED_20261010.md)。
 

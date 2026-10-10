@@ -1,6 +1,6 @@
 # A3 保守微调快速筛选与长期优化流程
 
-记录日期：2026-10-10。E05/R08与条件分支E06/R09。状态：准备完成，试验尚未执行。
+记录日期：2026-10-10。E05/R08与条件分支E06/R09。状态：E05两更新和独立保存核验通过，效果待评测；E06未启动。
 
 ## 目标与选择依据
 
@@ -32,3 +32,7 @@ R09替换trial同理，只在R08证据保存后执行。训练服务`a3-search-t
 ## 当前验证、同步与下一步
 
 开始时main干净且HEAD7907b15，boot6a7552b6不变、GPU空闲、旧R07训练与E04评测inactive/disabled。先做入口/参数契约检查和R08试验。每个训练/评测阶段立即补同一README、索引/current state；审计后scoped提交推送main、核验远端。已搁置Isaac指标/RKNN/动捕质量依赖仍见官方全链路记录，不重复投入安装。
+
+E05/R08执行版本c2038a6，3项新入口契约通过。首次训练0→2正常完成，同boot，无重启或热停；独立step0/1/2 CPU重载/大小/SHA/网络优化器有限性、初始化权重和计数重置通过，optimizer计数4/8，8条真实step已记录，step1/2保存args/optimizer/scheduler均1e-5。Aux目标日志非零且有限；首轮回合长度空统计仍单列。训练服务inactive/disabled。
+
+实际Hydra配置逐项比较R07/R08仅`algo.config.num_learning_epochs:5→1`及3个输出路径变化，config_diff.json保留，不存在其他训练配置变量变化。step2 SHA `1d2b45c219fc06114a44ac69bab6e40517f3c3c295c65bc4bf6b152c4d63aff3`，402076373字节，LOCAL_ONLY。接下来仅该模型完整selected20；尚无策略效果结论。

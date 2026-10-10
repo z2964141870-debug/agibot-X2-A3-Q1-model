@@ -59,11 +59,27 @@ def verify_trial():
     receipt = json.loads((LOGS / "finetune/R05_001_s0/warm_start_loaded.json").read_text())
     if receipt["loaded_global_step"] != 0 or receipt["optimizer_state_entries"] != 0:
         raise ValueError("Initial counter/optimizer did not reset")
+    health = []
+    for attempt in state["attempts"]:
+        health_path = Path(attempt["logs"]) / "health.jsonl"
+        if health_path.exists():
+            for line in health_path.read_text().splitlines():
+                try:
+                    health.append(json.loads(line))
+                except json.JSONDecodeError:
+                    pass
+    cpu = [row["temperatures_c"]["x86_pkg_temp"] for row in health
+           if "x86_pkg_temp" in row["temperatures_c"]]
+    gpu = [g["temperature.gpu"] for row in health for g in row["gpus"]
+           if g.get("temperature.gpu") is not None]
     report = {"checkpoint": str(path), "sha256": digest(path), "bytes": path.stat().st_size,
               "verified_step": step, "target": 200, "target_completed": step == 200,
               "cpu_reload": True, "networks_finite": True, "optimizer_finite": True,
               "optimizer_steps": optimizer_steps, "num_envs": 16, "warm_start": receipt,
               "rejected_candidates": rejected, "attempts": state["attempts"],
+              "health_samples": len(health), "sampled_cpu_max_c": max(cpu) if cpu else None,
+              "sampled_gpu_max_c": max(gpu) if gpu else None,
+              "boot_ids": sorted({row["boot_id"] for row in state["attempts"]}),
               "backup_status": "LOCAL_ONLY", "scope": "TRAINING_CHAIN_NOT_POLICY_EFFECT"}
     write_json(DATA / "finetune_verification.json", report)
     del payload

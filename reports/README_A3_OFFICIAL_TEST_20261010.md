@@ -39,6 +39,10 @@ data/environments/a3-sonic/bin/python -m script.a3.reference_contract validate
 
 ## 短微调执行
 
+11:26–28 R05已实际完成200更新，16环境、save10、2次冒烟后完整恢复，10次独立attempt；重启恢复未重置预算或提高阈值。最终路径 `data/training/a3_finetune_20261010/R05_010_s120/model_step_000200.pt`，375295123字节，SHA `bba46271ef3c9962dcb01d525811a5b4f19b4d3cc2fe027afcf384e0f40e7a34`，独立CPU重载、网络/优化器有限性通过，优化器计数4000=200×5epoch×4minibatch，16环境检查通过。证据 `finetune_verification.json`，最后训练13项摘要标量有限 `final_training_metrics.json`；这些不证明策略改善。
+
+R05 ledger complete，训练服务正常退出并disable，旧R04及R01/02/03仍不恢复。微调模型完整selected20同条件评测已启动，输出 `finetuned_evaluation/`，服务 `a3-evaluation.service`，完成200后不会自动加训。随后四段动捕诊断、因果缓冲完整对照和微调ONNX；最终模型LOCAL_ONLY。
+
 R04第一次启动在加载训练前因vendor软链接路径导致本地 `gear_sonic/trl` 遮蔽已安装Hugging Face `trl`，退出1、实际更新0；已保留blocked账本，禁用其新服务。明确修正为REPO_DIR使用vendor物理路径，不安装或修改共享环境/第三方代码。
 
 独立R05使用相同16环境/固定16训练动作/官方035优化配置，旧账本不重置。10:30完成2次更新冒烟，保存 `data/training/a3_finetune_20261010/R05_001_s0/model_step_000002.pt`，375291345字节、SHA `324e573377f5c4b66ea698b59bf0cae985ffb0883696189d3f38352db4d2569e`；保存事务已CPU重载与网络/优化器有限性检查。初始化回执 `logs/a3_fullchain_20261010/finetune/R05_001_s0/warm_start_loaded.json` 检查官方源200000、加载计数0、两网络逐张量相等、优化器空状态。完整恢复回执和最终200还需实际核验，不把2次冒烟当200完成。

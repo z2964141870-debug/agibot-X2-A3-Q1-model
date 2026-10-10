@@ -3,7 +3,6 @@
 import argparse
 from datetime import datetime, timezone
 import json
-import math
 from pathlib import Path
 
 import numpy as np
@@ -36,9 +35,52 @@ def baseline():
          result=aggregate(payload["motions"]), scope="SELECTED20_SIM2SIM_ONLY")
 
 
-def compare():
+def verify_trial():
+    import torch
+    from script.a3.checkpoint_store import select_checkpoint, validate_payload
+    from script.a3.finetune_job import select_trial_checkpoint
+    torch.set_num_threads(1)
+    state_path = DATA / "finetune_R05/state.json"
+    state = json.loads(state_path.read_text())
+    step, checkpoint = select_trial_checkpoint(state["attempts"], "R05")
+    if checkpoint is None:
+        raise ValueError("No independently reloadable trial checkpoint")
+    path, payload, rejected = select_checkpoint(checkpoint.parent)
+    if path != checkpoint or validate_payload(payload) != step:
+        raise ValueError("Independent final reload disagrees")
+    if state["status"] == "complete" and step != 200:
+        raise ValueError("Complete trial has the wrong final counter")
+    optimizer = payload["optimizer_state_dict"]["state"]
+    optimizer_steps = sorted({int(row["step"]) for row in optimizer.values() if "step" in row})
+    if step > 0 and optimizer_steps != [step * 20]:
+        raise ValueError("16env 4minibatch 5epoch optimizer counter mismatch")
+    if payload["state"].cur_episode_length.numel() != 16:
+        raise ValueError("Final checkpoint environment count changed")
+    receipt = json.loads((LOGS / "finetune/R05_001_s0/warm_start_loaded.json").read_text())
+    if receipt["loaded_global_step"] != 0 or receipt["optimizer_state_entries"] != 0:
+        raise ValueError("Initial counter/optimizer did not reset")
+    report = {"checkpoint": str(path), "sha256": digest(path), "bytes": path.stat().st_size,
+              "verified_step": step, "target": 200, "target_completed": step == 200,
+              "cpu_reload": True, "networks_finite": True, "optimizer_finite": True,
+              "optimizer_steps": optimizer_steps, "num_envs": 16, "warm_start": receipt,
+              "rejected_candidates": rejected, "attempts": state["attempts"],
+              "backup_status": "LOCAL_ONLY", "scope": "TRAINING_CHAIN_NOT_POLICY_EFFECT"}
+    write_json(DATA / "finetune_verification.json", report)
+    del payload
+    print(json.dumps({key: report[key] for key in (
+        "checkpoint", "verified_step", "sha256", "bytes", "optimizer_steps")}, indent=2))
+    return report
+
+
+def compare(partial=False):
     base = json.loads((DATA / "official_baseline/explicit_summary.json").read_text())
-    tuned = json.loads((DATA / "finetuned_evaluation/explicit_summary.json").read_text())
+    tuned_dir = "finetuned_partial_evaluation" if partial else "finetuned_evaluation"
+    tuned = json.loads((DATA / tuned_dir / "explicit_summary.json").read_text())
+    from script.a3.evaluation_common import checkpoint_metadata
+    metadata = checkpoint_metadata(Path(tuned["protocol"]["checkpoint"]))
+    step = metadata["step"]
+    if not partial and step != 200:
+        raise ValueError("Formal comparison requires the independently verified step200 checkpoint")
     for field in ("motions", "reference_fps_after_stride", "frame_stride", "max_policy_steps",
                   "action_delay_ms", "encoder", "vendor_commit"):
         if base["protocol"][field] != tuned["protocol"][field]:
@@ -60,11 +102,15 @@ def compare():
                         "finetuned": aggregate([after[n] for n in names])}
     report = {"split_sha256": digest(DATA / "split.json"), "groups": groups, "motions": pairs,
               "scope": "SINGLE_SEED_SHORT_TRIAL_SIM2SIM_NOT_DEPLOYMENT_ACCEPTANCE",
+              "trial_step": step, "target_step": 200, "target_completed": step == 200,
               "official_checkpoint": base["protocol"]["checkpoint_sha256"],
               "finetuned_checkpoint": tuned["protocol"]["checkpoint_sha256"]}
-    write_json(DATA / "paired_comparison.json", report)
-    mark("paired_evaluation", "passed", evidence=str(DATA / "paired_comparison.json"),
-         scope=report["scope"])
+    path = DATA / ("paired_partial_comparison.json" if partial else "paired_comparison.json")
+    if partial:
+        report["scope"] = "PARTIAL_CHECKPOINT_DIAGNOSTIC_TARGET200_NOT_COMPLETED"
+    write_json(path, report)
+    mark("paired_evaluation", "deferred" if partial else "passed", evidence=str(path),
+         reason="target200_not_completed" if partial else None, scope=report["scope"])
     return report
 
 
@@ -130,12 +176,15 @@ def snapshot(final=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("baseline", "compare", "buffer", "snapshot", "final"))
+    parser.add_argument("action", choices=("baseline", "verify-trial", "compare", "buffer", "snapshot", "final"))
+    parser.add_argument("--partial", action="store_true")
     args = parser.parse_args()
     if args.action == "baseline":
         baseline()
+    elif args.action == "verify-trial":
+        verify_trial()
     elif args.action == "compare":
-        print(json.dumps(compare()["groups"], indent=2))
+        print(json.dumps(compare(partial=args.partial)["groups"], indent=2))
     elif args.action == "buffer":
         buffer()
     else:

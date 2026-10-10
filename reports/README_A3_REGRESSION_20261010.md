@@ -34,4 +34,10 @@ step10所属R05_002_s2/config.yaml为0字节，原文件不改。已读固定ven
 
 ## 恢复与下一步
 
+只读学习率审计 `script/a3/audit_finetune_updates.py` 已执行，证据 `update_audit.json`。step2/200的args.learning_rate均1e-5，optimizer两个参数组及scheduler._last_lr/base_lrs均2e-5；配置actor2e-5/critic1e-3/desiredKL0.01/adaptive下限1e-5。vendor KL handler逐minibatch写所有参数组，轮末lr_scheduler.step再次写入；故记录的自适应LR和checkpoint实际参数组LR不一致，不能把保存点2e-5认定为全程实际优化步长。该冲突值得下一轮前修正/验证，不是已经证明的退化根因。KL日志实际是旧采样策略对当前策略的高斯KL、按动作维求和；clipfrac为clipped surrogate更大的比例。
+
+step0与step2均完整20动作/24304步、无跌倒。step0各聚合指标与已有官方一致；step2关节RMSE0.0590597→0.0915286rad，根位置0.0841691→0.1528472m，手腕anchor相对0.0119790→0.0333251m，腿部anchor相对0.0189769→0.0262490m。故最早已观测的跟踪退化在step2，位于0→2更新区间；没有step1保存点，不能断定发生在第1还是第2次。step2属于初次连续2更新冒烟，早于后续恢复attempt，不能将全部退化归因于后续重启。
+
+审计同时读取全部可用R05 TensorBoard标量。首更新记录KL1.32985、clipfrac0.668229，第2次KL0.249387；Train/lr日志1e-5，与轮末scheduler/optimizer2e-5不一致。R05_002_s2和R05_006_s40事件缺所选标量，其他事件有尾部丢失；缺失不补造。训练标量不替代同条件评测，后续阶段评测仍进行中。
+
 先看本 README 与独立 `state.json`，再核验当前进程/GPU/boot；已验证完成动作跳过，中断动作完整重跑。完成后停用独立服务，更新 README/索引/current state，审计后 scoped 提交推送 main 并核验。根据退化时点和优化器真实参数提出单变量实验，尚未授权或启动新训练。

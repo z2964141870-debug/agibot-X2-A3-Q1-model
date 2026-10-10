@@ -17,6 +17,8 @@
 
 ## 已完成，可从证据继续
 
+10/10 A3 E03/R06准备：用户授权继续完整修正入口核验。新独立官方初始化2次更新，保持16环境/epochs5，保存step1/2；旧R05及历史账本不续训。训练完成后独立CPU/优化器/实际LR/辅助loss核验，再同条件selected20。当前未启动，入口[独立短试验](README_A3_CORRECTED_20261010.md)。
+
 10/10 A3优化器诊断E02完成：官方trainer为AuxLoss PPO，R05包装器继承基础PPO绕过辅助目标，哨兵梯度检查确认；constant scheduler与KL双重控制及恢复args LR变更均CPU复现。新增显式 `script.a3.verified_finetune.VerifiedFineTuneTrainer` 接回官方aux loss/stats，以KL唯一控LR并记录每个实际step，9项CPU契约通过。旧job/service/vendor/R05与E01不改，没有启动新训练。修正尚未证明策略改善，下一项为完整Isaac入口集成和独立短试验对照；见[最终诊断与证据](README_A3_OPTIMIZER_20261010.md)。
 
 10/10 A3退化定位E01完成：官方及0/2/10/20/40/80/120/200各20动作完整核验，共180回放。step0与官方完全一致；step2无跌倒但关节RMSE0.05906→0.09153rad，最早已观测退化在0→2；首次跌倒在2→10，20/40再次无跌倒。所有更新阶段共同跌倒前与留出总体误差仍高于官方；没有验证到改善方向。学习率日志/保存状态冲突、固定输入两部件变化仅为线索。模型最终CPU/有限性与产物SHA核验通过，诊断服务inactive/disabled，无新增训练，旧作业仍暂停，LOCAL_ONLY。下一轮先验证实际LR控制，再讨论单变量短试验；入口[最终诊断](README_A3_REGRESSION_20261010.md)。
@@ -73,7 +75,7 @@ Q1新工作：用户于10/8指定 `/media/yu/FAFF-E977/YuanQi_Q1`，最终目标
 
 ## 下一项具体工作
 
-后续A3在 `YUANQI_A3` 执行，官方基线/R05完整对照、保存阶段退化定位与优化器/目标诊断已完成。下一项是新独立修正trainer的完整Isaac集成核验及短试验同条件对照，先保持epochs等超参，不把工程修复与单变量调参混用。本轮未启动新训练，官方仍为基线，旧长训不恢复。入口[工程契约修正](README_A3_OPTIMIZER_20261010.md)；Isaac指标/RKNN/动捕质量和现场接口仍见[用户待办](README_A3_OFFICIAL_TEST_20261010.md)。
+后续A3在 `YUANQI_A3` 执行，新独立E03/R06先官方初始化2次更新，核验完整修正入口后评测step1/2对照官方/旧R05 step2。epochs5及既有超参保持，工程修复整体不作单因素归因。服务与恢复步骤见[短试验](README_A3_CORRECTED_20261010.md)。旧长训不恢复；Isaac指标/RKNN/动捕质量和现场接口仍见[用户待办](README_A3_OFFICIAL_TEST_20261010.md)。
 
 下一课：同一个关节的 Actor 输出 -> 目标角 -> PD -> 实际反馈，由本人解释并判断，再回到对应字段 / 代码。A3 公开工程来源本轮已确认智元官方组织发布、基于 NVIDIA SONIC；型号兼容和实际训练仍按资源审计推进，见[主线与来源记录](README_LEARNING_MAINLINE_20261009.md)。
 

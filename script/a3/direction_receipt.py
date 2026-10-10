@@ -19,7 +19,8 @@ def main():
     if stopped["status"] != "blocked" or len(stopped["attempts"]) != 2:
         raise ValueError("Expected the preserved two no-progress interruptions")
     names = ["reports/README_A3_DIRECTION_20261010.md",
-             "data/manifests/a3_gradient_20261010.json", "data/manifests/a3_likelihood_20261010.json"]
+             "data/manifests/a3_gradient_20261010.json", "data/manifests/a3_likelihood_20261010.json",
+             "script/a3/forecast_noise.py", "script/a3/test_forecast_noise.py"]
     for pattern in ("*gradient_probe.py", "*likelihood_probe.py", "direction_receipt.py", "*future_reference_probe.py"):
         names.extend(str(path.relative_to(ROOT)) for path in (ROOT / "script/a3").glob(pattern))
     for directory in (e09, e10, ROOT / "logs/a3_likelihood_20261010_E09", ROOT / "logs/a3_gradient_20261010_E10"):
@@ -50,6 +51,27 @@ def main():
         current_boot_id=Path("/proc/sys/kernel/random/boot_id").read_text().strip(),
         artifacts=[dict(path=name, bytes=(ROOT/name).stat().st_size, sha256=sha256(ROOT/name))
                    for name in sorted(set(names))], policy_improvement_verified=False, backup_status="LOCAL_ONLY")
+    result["forecast_conclusions"] = {}
+    for experiment in ("E11", "E12", "E14"):
+        directory = ROOT / "data/experiments" / f"a3_future_reference_20261010_{experiment}"
+        if (directory / "result.json").exists():
+            prediction = json.loads((directory / "result.json").read_text())
+            verified = json.loads((directory / "independent_verification.json").read_text())
+            if verified["status"] != "pass" or verified["model_sha256"] != prediction["model_sha256"]:
+                raise ValueError("Independent model verification changed")
+            result["forecast_conclusions"][experiment] = dict(
+                validation_rmse_rad=prediction["results"]["heldout"]["ridge"]["rmse_rad"],
+                clean_joint_prediction_gate=prediction["selected_joint_predictor"],
+                independent_verified_motions=verified["independent_interpolation_cases"],
+                normal_equation_relative_residual=verified["normal_equation_relative_residual"])
+    for experiment in ("E13", "E15"):
+        path = ROOT / "data/manifests" / f"a3_future_reference_20261010_{experiment}.json"
+        if path.exists():
+            stress = json.loads(path.read_text())
+            result["forecast_conclusions"][experiment] = dict(
+                robust_joint_prediction_gate=stress["robust_joint_prediction_gate"],
+                case_count=len(stress["cases"]), all_motions_improve_each_case=[
+                    case["all_motions_improve_vs_cv"] for case in stress["cases"]])
     atomic_json(ROOT / "data/manifests/a3_direction_20261010.json", result)
     print(json.dumps(dict(artifact_count=len(result["artifacts"]), e10="DEFERRED", e11=result["future_joint_predictor_status"])))
 

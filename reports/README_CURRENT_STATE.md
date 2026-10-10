@@ -17,7 +17,7 @@
 
 ## 已完成，可从证据继续
 
-10/10 A3目录划分完成：`YUANQI_A3` 独立Git工作副本和data/logs/script/reports已建立，固定vendor与Python环境通过复用链接使用，历史全链路仅在data/references中引用。用户放置的PT已复制至新目录并核对官方402050931字节/SHA、CPU重载及网络/优化器有限性，LOCAL_ONLY；原下载文件保留。匹配config.yaml/meta.yaml/model_config.yaml/LICENSE尚缺，未启动策略/训练。创建时连接中断后实际boot变化，已从未落盘部分恢复，不排查根因。入口见[目录与PT记录](README_A3_WORKSPACE_20261010.md)。下方凌晨模型不可得为历史状态。
+10/10 A3目录划分与官方包导入完成：`YUANQI_A3` 独立Git工作副本和四目录已建立，vendor/Python环境只读复用，历史全链路仅data/references引用。PT 402050931字节及4个匹配小文件均核对官方SHA；CPU重载、网络/优化器有限性通过，bundle_integrity_verified=true、LOCAL_ONLY。4文件来自用户Mac Downloads并SCP传入，配置缺失卡点解除；未启动策略/训练。原PT与旧账本保留；目录创建时boot变化只登记恢复。入口见[目录与完整包记录](README_A3_WORKSPACE_20261010.md)，下方模型不可得为历史状态。
 
 10/10 02:31 A3全链路独立可执行项已完成：22项台账为11通过/1质量失败/10搁置，无待做/运行中。56项项目测试及6项官方RKNN契约测试通过；四段SMPL结构/运动学、26CSV、24PKL、16/4整动作划分及输入preflight通过，均保留限定范围。参考TEST_ONLY、IK/脚穿地质量失败；因果输入年龄180–220ms，非现场/策略效果。旧2950仅100步诊断，1.88秒跌倒；其ONNX 100真实输入误差8.35e-7通过。官方PT下载超时，正式基线/2→200微调实际0更新；Isaac指标与RKNN工具链缺失。R03仍inactive/disabled、GPU空闲，同boot。最新任务/148项产物SHA及迁移待办见[Git清单](../data/manifests/a3_fullchain_20261010.json)，详情/恢复顺序见[执行入口](README_A3_FULLCHAIN_20261010.md)。
 
@@ -67,7 +67,7 @@ Q1新工作：用户于10/8指定 `/media/yu/FAFF-E977/YuanQi_Q1`，最终目标
 
 ## 下一项具体工作
 
-后续A3在 `YUANQI_A3` 执行：PT已到位并独立校验，先补齐[目录README](README_A3_WORKSPACE_20261010.md)中的4个匹配小文件；完整包校验后再官方10步冒烟/完整selected20→新R04 2→200→留出对照→导出。新目录不能直接复用旧目录带绝对路径的任务账本，需要独立初始化；旧R03不恢复。Isaac指标依赖/RKNN工具链/动捕质量分开搁置；重启只登记并恢复工作。
+后续A3在 `YUANQI_A3` 执行：官方完整包已通过校验，接着初始化新数据/实验台账，再官方10步冒烟/完整selected20→新R04 2→200→留出对照→导出。新目录不能直接复用旧目录带绝对路径的任务账本；旧R03不恢复。Isaac指标依赖/RKNN工具链/动捕质量分开搁置；重启只登记并恢复工作。
 
 下一课：同一个关节的 Actor 输出 -> 目标角 -> PD -> 实际反馈，由本人解释并判断，再回到对应字段 / 代码。A3 公开工程来源本轮已确认智元官方组织发布、基于 NVIDIA SONIC；型号兼容和实际训练仍按资源审计推进，见[主线与来源记录](README_LEARNING_MAINLINE_20261009.md)。
 

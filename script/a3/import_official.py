@@ -62,15 +62,17 @@ def run(source):
         configuration.append({"name": Path(row["remote"]).name, "path": str(path),
                               "bytes": row["size"], "sha256": row["sha256"],
                               "status": "verified" if checked else "missing_or_unverified"})
+    complete = all(row["status"] == "verified" for row in configuration)
     result = {"imported_at_utc": datetime.now(timezone.utc).isoformat(), "source": str(source),
               "checkpoint": str(target), "bytes": target.stat().st_size, "sha256": digest(target),
               "release_repo": manifest["repo_id"], "release_revision": manifest["revision"],
               "cpu_reload": "passed", "networks": networks,
               "source_global_step": int(payload["state"].global_step) if "state" in payload else None,
               "optimizer_tensor_count": len(optimizer_tensors), "optimizer_finite": True,
-              "configuration": configuration, "backup_status": "LOCAL_ONLY",
+              "configuration": configuration, "bundle_integrity_verified": complete, "backup_status": "LOCAL_ONLY",
               "inference_tested": False, "training_started": False,
-              "scope": "PT_INTEGRITY_AND_CPU_RELOAD_ONLY_NOT_COMPLETE_MODEL_BUNDLE"}
+              "scope": "RELEASE_BUNDLE_INTEGRITY_AND_CPU_RELOAD_NOT_POLICY_ACCEPTANCE" if complete
+                       else "PT_INTEGRITY_AND_CPU_RELOAD_ONLY_NOT_COMPLETE_MODEL_BUNDLE"}
     destination = ROOT / "data/manifests/a3_official_import_20261010.json"
     write_json(destination, result)
     print(json.dumps(result, indent=2))

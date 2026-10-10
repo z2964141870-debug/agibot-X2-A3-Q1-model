@@ -36,6 +36,11 @@ class CausalPolicyReplay:
         if window is None:
             raise ValueError("Buffer has not been filled")
         base = min(int(round(window["base"] * 50)), reference.num_frames - 1)
+        end_seen = arrival >= times[-1] - 1e-9
+        if end_seen:
+            # EOF is an arrived event; known terminal samples can now be held like the offline runner.
+            base = min(max(0, int(np.floor((arrival - self.prefill_s + 1e-10) * 50))),
+                       reference.num_frames - 1)
         last_read_frame = min(base + 10, reference.num_frames - 1)
         last_read_time = last_read_frame / 50
         upper = min(int(np.searchsorted(times, last_read_time - 1e-10)), len(times) - 1)
@@ -45,7 +50,7 @@ class CausalPolicyReplay:
         value = self.original(reference, base, anchor, on_end, frame_skip, history_frames,
                               valid_future_frames, zero_pad_invalid_frames)
         self.rows.append([ref_frame / 50, arrival, base / 50, arrival - base / 50,
-                          times[upper], upper])
+                          times[upper], upper, int(end_seen)])
         return value
 
     def install(self):
@@ -63,7 +68,7 @@ class CausalPolicyReplay:
             raise ValueError("No actual policy windows recorded")
         np.savez_compressed(path, rows=rows,
             columns=np.asarray(["policy_time_s", "arrival_time_s", "target_time_s", "age_s",
-                                "latest_source_read_s", "latest_source_index"]),
+                                "latest_source_read_s", "latest_source_index", "end_of_stream_seen"]),
             nominal_buffer_ms=self.nominal_delay_s * 1000,
             startup_prefill_ms=self.prefill_s * 1000,
             scope=np.asarray("SIMULATED_ARRIVALS_WITH_FORWARD_VELOCITY_GUARD"))

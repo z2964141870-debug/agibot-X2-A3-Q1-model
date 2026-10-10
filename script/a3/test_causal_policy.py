@@ -50,6 +50,13 @@ class ReplayTests(unittest.TestCase):
         replay.sim.LoopSimRunner()._record_metrics_step(2, 2, None)
         self.assertEqual(seen, [replay.last_target_frame])
 
+    def test_arrived_end_event_releases_terminal_window(self):
+        replay, reference, _ = self.make_replay()
+        replay.build(reference, 163, None)
+        self.assertEqual(replay.last_target_frame, 163)
+        self.assertEqual(replay.rows[-1][6], 1)
+        self.assertLessEqual(replay.rows[-1][4], replay.rows[-1][1])
+
 
 if __name__ == "__main__":
     unittest.main()

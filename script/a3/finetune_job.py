@@ -127,6 +127,9 @@ def run_locked(job_dir, trial="R04"):
                "checkpoint": str(checkpoint or official), "full_state_resume": checkpoint is not None}
         state["attempts"].append(row)
         state["status"] = "running"
+        state["boot_id"] = boot
+        state.pop("reason", None)
+        state.pop("cooldown_remaining_seconds", None)
         write_json(state_path, state)
         environment = os.environ.copy()
         environment.update(ISAAC_PYTHON=str(ROOT / "data/environments/a3-sonic/bin/python"),

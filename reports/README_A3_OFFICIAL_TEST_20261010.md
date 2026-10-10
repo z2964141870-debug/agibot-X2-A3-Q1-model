@@ -47,7 +47,13 @@ R05服务 `a3-finetune-r05.service`，CPUQuota100%、linger=yes，重启后按30
 
 10:31连接恢复实际boot `692bd7da-ce27-435a-8193-2babaa54f941`；R05服务activating/exit75且账本为recovery_cooldown，已识别保存step2，冷却后自行恢复。第二attempt源为独立step2并full_state_resume=true；本轮只登记重启，不定位根因。
 
+后续独立恢复到step10，回执恢复优化器计数200；第三attempt已保存step30。10:38后boot变为 `a6105f54-bd00-499d-b6ea-6783957f500e`，继续300秒保护冷却。实际初始化两个优化器参数组LR均为2e-5，step2恢复优化器计数40，网络逐张量相等；这是已运行官方035实现的实际值，而非仅抄配置字段。
+
+`script.a3.evaluation_job --stage finetuned_evaluation` 与 `a3-evaluation.service` 已登记，等待R05完成或保护停止，不并行使用GPU；只有冷却结束且训练退出后启动。其后每个评测阶段单独选择stage，按完整动作SHA恢复；普通失败exit1/2不自动解除，重启exit75等待。阶段可选微调selected20、四段动捕、官方selected20/动捕因果缓冲；训练未完成时入口实际返回75，未启动评测。
+
 实际缓冲100策略步冒烟退出0且无跌倒，证据 `buffer_smoke/`，完整selected20与4段动捕策略缓冲对照待微调结束后串行执行。
+
+已补缓冲EOF分支：只有源末帧与结束事件已到达后，允许按官方hold_last填末尾窗口，确保最后200ms不被恒定回退截掉。EOF边界与未来数据不变性共4项检查通过；实际输入轨迹增加 `end_of_stream_seen` 字段。评测监督锁覆盖所有stage，避免多个入口同时启动。最新有效微调step40，未完成200。
 
 10:16服务器连接中断后恢复，boot变为 `3f33490f-5dea-483f-8f83-a08e53a04b01`。磁盘持久完整动作16个，剩余4个按manifest恢复，不依赖中断前终端打印。GPU无计算进程；按300秒冷却等待后继续GPU任务，不排查重启根因。微调尚未启动。固定16动作输入preflight已通过。
 

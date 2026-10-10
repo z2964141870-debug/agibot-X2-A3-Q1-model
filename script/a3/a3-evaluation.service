@@ -1,0 +1,18 @@
+[Unit]
+Description=YUANQI A3 durable selected20 evaluation phase
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/media/yu/FAFF-E9771/YUANQI_A3
+ExecStart=/media/yu/FAFF-E9771/YUANQI_A3/data/environments/a3-sonic/bin/python -m script.a3.evaluation_job --stage finetuned_evaluation
+CPUQuota=100%
+Environment=OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+Restart=on-failure
+RestartPreventExitStatus=1 2
+RestartSec=30
+KillMode=control-group
+TimeoutStopSec=60
+
+[Install]
+WantedBy=default.target

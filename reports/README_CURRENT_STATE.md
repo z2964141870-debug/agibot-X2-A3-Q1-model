@@ -17,7 +17,7 @@
 
 ## 已完成，可从证据继续
 
-10/10 A3 E03/R06集成失败：trainer初始化中Accelerate包装器钩子挂错层，0更新、无checkpoint，blocked保留并停用服务。兼容修正和真实包装器契约已加入，新E04/R07独立官方初始化2次更新，保持16环境/epochs5，保存step1/2；旧账本不续训。训练后核验CPU/优化器/实际LR/辅助loss，再同条件selected20。入口[独立短试验](README_A3_CORRECTED_20261010.md)。
+10/10 A3 E04/R07完整入口通过：修正Accelerate钩子兼容并10 CPU契约通过，完成官方初始化2更新；step0/1/2大小/SHA/CPU/网络优化器有限性通过，40实际step与辅助loss已记录，step1/2保存LR一致1e-5。首轮回合长度NaN由空lenbuffer独立核实并单独登记，损失等有限；训练服务inactive/disabled。E03/R06初始化0更新失败及blocked账本保留。下一项同条件selected20的step1/2对照，入口[独立短试验](README_A3_CORRECTED_20261010.md)。
 
 10/10 A3优化器诊断E02完成：官方trainer为AuxLoss PPO，R05包装器继承基础PPO绕过辅助目标，哨兵梯度检查确认；constant scheduler与KL双重控制及恢复args LR变更均CPU复现。新增显式 `script.a3.verified_finetune.VerifiedFineTuneTrainer` 接回官方aux loss/stats，以KL唯一控LR并记录每个实际step，9项CPU契约通过。旧job/service/vendor/R05与E01不改，没有启动新训练。修正尚未证明策略改善，下一项为完整Isaac入口集成和独立短试验对照；见[最终诊断与证据](README_A3_OPTIMIZER_20261010.md)。
 

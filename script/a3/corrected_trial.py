@@ -150,7 +150,7 @@ def verify():
     if state["status"] != "complete" or state["verified_step"] != 2:
         raise ValueError("Training smoke has not completed")
     official = torch.load(OFFICIAL, map_location="cpu", weights_only=False)
-    records, audit, scalar_records, receipts = {}, [], [], []
+    records, audit, scalar_records, receipts, undefined_statistics = {}, [], [], [], []
     for attempt in state["attempts"]:
         directory, logs = Path(attempt["run_dir"]), Path(attempt["logs"])
         config = yaml.safe_load((directory / "config.yaml").read_text())
@@ -158,6 +158,7 @@ def verify():
                 config["algo"]["config"]["num_learning_epochs"] != 5 or
                 not config["algo"]["config"]["compute_aux_loss"]):
             raise ValueError("Full trainer config does not match the registered objective")
+        completed_episode_counts = {}
         for path in sorted(directory.glob("model_step_*.pt")):
             metadata = checkpoint_metadata(path)
             payload = torch.load(path, map_location="cpu", weights_only=False)
@@ -165,6 +166,7 @@ def verify():
             if step not in (0, 1, 2) or payload["state"].cur_episode_length.numel() != 16:
                 raise ValueError("Checkpoint escaped the short-trial lineage")
             optimizer = payload["optimizer_state_dict"]
+            completed_episode_counts[step] = len(payload["state"].lenbuffer)
             counters = sorted({int(s["step"]) for s in optimizer["state"].values() if "step" in s})
             if counters != ([step * 20] if step else []):
                 raise ValueError("Optimizer count disagrees with update count")
@@ -194,8 +196,17 @@ def verify():
         event.Reload()
         tags = event.Tags()["scalars"]
         scalars = {tag: [dict(step=e.step, value=e.value) for e in event.Scalars(tag)] for tag in tags}
-        if any(not math.isfinite(e["value"]) for values in scalars.values() for e in values):
-            raise ValueError("Nonfinite training scalar")
+        for tag, values in scalars.items():
+            for entry in values:
+                if math.isfinite(entry["value"]):
+                    continue
+                if (tag == "Objective/length" and math.isnan(entry["value"]) and
+                        completed_episode_counts.get(entry["step"]) == 0):
+                    undefined_statistics.append(dict(run=str(directory), tag=tag, step=entry["step"],
+                        reason="NO_COMPLETED_EPISODES_CHECKPOINT_LENBUFFER_EMPTY"))
+                    entry["value"] = None
+                else:
+                    raise ValueError(f"Nonfinite training scalar: {tag}/{entry['step']}")
         scalar_records.append(dict(run=str(directory), scalars=scalars))
         for name in ("warm_start_loaded.json", "resume_loaded.json", "verified_resume_lr.json"):
             if (logs / name).exists():
@@ -208,8 +219,13 @@ def verify():
     aux_tags = {tag for record in scalar_records for tag in record["scalars"] if "aux" in tag.lower()}
     if not any("total_aux_loss" in tag for tag in aux_tags):
         raise ValueError("Official auxiliary loss was not logged by the live trainer")
+    warm_starts = [r["receipt"] for r in receipts if r["path"].endswith("warm_start_loaded.json")]
+    if not warm_starts or any(r["loaded_global_step"] != 0 or r["optimizer_state_entries"] != 0 or
+                            not all(r["networks_match_source"].values()) for r in warm_starts):
+        raise ValueError("Missing verified official warm start with reset optimizer")
     result = dict(checkpoints=records, actual_optimizer_steps=audit, scalar_records=scalar_records,
                   auxiliary_tags=sorted(aux_tags), receipts=receipts,
+                  undefined_episode_statistics=undefined_statistics,
                   source_sha256=sha256(OFFICIAL), status="passed", backup_status="LOCAL_ONLY",
                   scope="FULL_TRAINER_INTEGRATION_AND_NUMERICAL_INTEGRITY_NOT_POLICY_IMPROVEMENT")
     atomic_json(OUTPUT / "verification.json", result)

@@ -70,7 +70,8 @@ class VerifiedFineTuneTrainer(FineTuneTrainer, TRLAuxLossPPOTrainer):
         self._pending_step_lrs = None
         self._last_step_lrs = None
         optimizer = self.optimizer
-        while not isinstance(optimizer, torch.optim.Optimizer) and hasattr(optimizer, "optimizer"):
+        # AcceleratedOptimizer subclasses Optimizer without owning its hook buffers.
+        while hasattr(optimizer, "optimizer"):
             optimizer = optimizer.optimizer
         if not isinstance(optimizer, torch.optim.Optimizer):
             raise TypeError("Cannot attach LR audit to underlying PyTorch optimizer")

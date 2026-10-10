@@ -1,4 +1,4 @@
-"""Independent R06 two-update integration trial and selected20 comparison."""
+"""Independent corrected two-update integration trials and selected20 evaluation."""
 
 import argparse
 from datetime import datetime, timezone
@@ -271,7 +271,13 @@ def evaluate():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=("train", "verify", "evaluate"))
-    action = parser.parse_args().action
+    parser.add_argument("--trial", choices=("R06", "R07"), default="R06")
+    args = parser.parse_args()
+    action = args.action
+    if args.trial == "R07":
+        TRIAL = "R07"
+        OUTPUT = ROOT / "data/experiments/a3_corrected_20261010_E04"
+        LOGS = ROOT / "logs/a3_corrected_20261010_E04"
     if action == "verify":
         verify()
     else:

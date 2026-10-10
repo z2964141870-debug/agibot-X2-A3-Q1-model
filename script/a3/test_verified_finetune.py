@@ -162,6 +162,25 @@ class VerifiedFineTuneTests(unittest.TestCase):
             self.assertTrue(torch.equal(before, parameter))
             self.assertEqual(len(path.read_text().splitlines()), 1)
 
+    def test_real_accelerate_wrapper_audits_underlying_step(self):
+        from accelerate import Accelerator
+        trainer = controller()
+        base = trainer.optimizer
+        trainer.optimizer = Accelerator(cpu=True).prepare_optimizer(base)
+        self.assertIsInstance(trainer.optimizer, torch.optim.Optimizer)
+        self.assertFalse(hasattr(trainer.optimizer, "_optimizer_step_pre_hooks"))
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "steps.jsonl"
+            trainer._install_optimizer_audit(path)
+            parameter = base.param_groups[0]["params"][0]
+            parameter.grad = torch.ones_like(parameter)
+            before = parameter.detach().clone()
+            trainer.optimizer.step()
+            self.assertFalse(torch.equal(before, parameter))
+            row = json.loads(path.read_text())
+            self.assertEqual(row["applied_group_lrs"], [2e-5])
+            self.assertEqual(row["attempt_optimizer_step"], 1)
+
 
 if __name__ == "__main__":
     program = unittest.main(exit=False, verbosity=2)

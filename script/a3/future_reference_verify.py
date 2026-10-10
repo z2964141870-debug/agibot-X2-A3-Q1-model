@@ -71,5 +71,5 @@ def main(experiment):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--experiment", choices=("E11", "E12"), required=True)
+    parser.add_argument("--experiment", choices=("E11", "E12", "E14"), required=True)
     main(parser.parse_args().experiment)

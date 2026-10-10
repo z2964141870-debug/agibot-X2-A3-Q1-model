@@ -30,7 +30,7 @@ def main():
         names.append(str(future_path.relative_to(ROOT)))
         names.extend(str(path.relative_to(ROOT)) for path in
                      (ROOT / "data/experiments/a3_future_reference_20261010_E11").rglob("*") if path.is_file())
-    for experiment in ("E12", "E13"):
+    for experiment in ("E12", "E13", "E14", "E15"):
         manifest_path = ROOT / "data/manifests" / f"a3_future_reference_20261010_{experiment}.json"
         if manifest_path.exists():
             names.append(str(manifest_path.relative_to(ROOT)))

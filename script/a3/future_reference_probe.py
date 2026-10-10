@@ -9,6 +9,7 @@ import numpy as np
 
 from script.a3.checkpoint_store import atomic_json, sha256
 from script.a3.fullchain_support import DATA, ROOT
+from script.a3.forecast_noise import noise_covariances
 from script.a3.reference_contract import load_sim
 
 
@@ -40,14 +41,20 @@ def windows(q):
     return feature.reshape(len(index), -1), target, cv, index
 
 
-def fit(x, target):
+def fit(x, target, noise_sigma=0.):
     mean = x.mean(0)
     std = x.std(0)
     std = np.where(std < 1e-8, 1, std)
     z = (x-mean) / std
     y = target.reshape(len(target), -1)
     bias = y.mean(0)
-    weights = np.linalg.solve(z.T @ z + np.eye(z.shape[1]) * RIDGE_ALPHA, z.T @ (y-bias))
+    matrix = z.T @ z + np.eye(z.shape[1]) * RIDGE_ALPHA
+    right = z.T @ (y-bias)
+    if noise_sigma:
+        covariance, cross = noise_covariances(std, target.shape[-1], target.shape[1], noise_sigma)
+        matrix += len(x) * covariance
+        right += len(x) * cross
+    weights = np.linalg.solve(matrix, right)
     if not np.isfinite(weights).all():
         raise ValueError("Nonfinite fitted predictor")
     return dict(mean=mean, std=std, weights=weights, bias=bias)
@@ -67,6 +74,7 @@ def metrics(target, prediction):
 
 def main(experiment="E11"):
     use_absolute_pose = experiment == "E11"
+    noise_sigma = .01 if experiment == "E14" else 0.
     output = ROOT / "data/experiments" / f"a3_future_reference_20261010_{experiment}"
     output.mkdir(parents=True, exist_ok=False)
     split_path = DATA / "split.json"
@@ -87,10 +95,11 @@ def main(experiment="E11"):
     train_x = np.concatenate([b["x"] for b in blocks["train"]])
     train_y = np.concatenate([b["y"] for b in blocks["train"]])
     dimensions = train_y.shape[-1]
-    model = fit(train_x, train_y)
+    model = fit(train_x, train_y, noise_sigma=noise_sigma)
     model_path = output / "ridge_joint_future.npz"
     np.savez_compressed(model_path, **model, horizons_s=HORIZONS, history_frames=HISTORY,
                         source_fps=FPS, ridge_alpha=RIDGE_ALPHA,
+                        assumed_training_noise_std_rad=noise_sigma,
                         usage=np.asarray("DIAGNOSTIC_OFFICIAL_SAMPLES_NOT_DEPLOYMENT"))
     with np.load(model_path, allow_pickle=False) as stored:
         reloaded = {key: stored[key].copy() for key in model}
@@ -126,6 +135,7 @@ def main(experiment="E11"):
                 for r in per_motion if r["split"] == "heldout"))
     receipt = dict(status="complete", experiment=experiment, source_fps=FPS, raw_fps=120, stride=4,
         use_absolute_pose=use_absolute_pose, feature_dimension=train_x.shape[1],
+        assumed_training_noise_std_rad=noise_sigma,
         history_frames=HISTORY, horizons_s=HORIZONS.tolist(), ridge_alpha=RIDGE_ALPHA,
         fit_motion_count=len(blocks["train"]), validation_motion_count=len(blocks["heldout"]),
         split_sha256=sha256(split_path), code_sha256=sha256(Path(__file__)), model_sha256=sha256(model_path),
@@ -145,5 +155,5 @@ def main(experiment="E11"):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--experiment", choices=("E11", "E12"), default="E11")
+    parser.add_argument("--experiment", choices=("E11", "E12", "E14"), default="E11")
     main(parser.parse_args().experiment)

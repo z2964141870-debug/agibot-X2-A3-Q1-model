@@ -1,0 +1,20 @@
+[Unit]
+Description=YUANQI A3 saved-checkpoint regression diagnosis E01
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/media/yu/FAFF-E9771/YUANQI_A3
+ExecStart=/media/yu/FAFF-E9771/YUANQI_A3/data/environments/a3-sonic/bin/python -m script.a3.regression_diagnostic run
+CPUQuota=100%
+Environment=OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+Restart=on-failure
+RestartPreventExitStatus=1 2
+RestartSec=30
+KillMode=control-group
+TimeoutStopSec=60
+StandardOutput=append:/media/yu/FAFF-E9771/YUANQI_A3/logs/a3_regression_20261010_E01/service.log
+StandardError=append:/media/yu/FAFF-E9771/YUANQI_A3/logs/a3_regression_20261010_E01/service.log
+
+[Install]
+WantedBy=default.target

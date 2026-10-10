@@ -17,6 +17,8 @@
 
 ## 已完成，可从证据继续
 
+10/10 A3官方执行已开始：完整包核验通过，官方10策略步冒烟退出0/数值有限/未跌倒（只0.2秒）；新YUANQI_A3独立台账已初始化，旧数据逐文件SHA复用、16/4整动作固定划分与24PKL/26CSV合同重新通过。下一步完整selected20→独立R04 2→200→对照/延迟/导出。Isaac指标、RKNN工具链和动捕质量搁置，旧R03暂停；当前入口见[官方执行记录](README_A3_OFFICIAL_TEST_20261010.md)。
+
 10/10 A3目录划分与官方包导入完成：`YUANQI_A3` 独立Git工作副本和四目录已建立，vendor/Python环境只读复用，历史全链路仅data/references引用。PT 402050931字节及4个匹配小文件均核对官方SHA；CPU重载、网络/优化器有限性通过，bundle_integrity_verified=true、LOCAL_ONLY。4文件来自用户Mac Downloads并SCP传入，配置缺失卡点解除；未启动策略/训练。原PT与旧账本保留；目录创建时boot变化只登记恢复。入口见[目录与完整包记录](README_A3_WORKSPACE_20261010.md)，下方模型不可得为历史状态。
 
 10/10 02:31 A3全链路独立可执行项已完成：22项台账为11通过/1质量失败/10搁置，无待做/运行中。56项项目测试及6项官方RKNN契约测试通过；四段SMPL结构/运动学、26CSV、24PKL、16/4整动作划分及输入preflight通过，均保留限定范围。参考TEST_ONLY、IK/脚穿地质量失败；因果输入年龄180–220ms，非现场/策略效果。旧2950仅100步诊断，1.88秒跌倒；其ONNX 100真实输入误差8.35e-7通过。官方PT下载超时，正式基线/2→200微调实际0更新；Isaac指标与RKNN工具链缺失。R03仍inactive/disabled、GPU空闲，同boot。最新任务/148项产物SHA及迁移待办见[Git清单](../data/manifests/a3_fullchain_20261010.json)，详情/恢复顺序见[执行入口](README_A3_FULLCHAIN_20261010.md)。

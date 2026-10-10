@@ -115,6 +115,14 @@ def evaluate_explicit(args):
     if args.reference_buffer_ms:
         protocol["reference_buffer_ms"] = args.reference_buffer_ms
         protocol["buffer_scope"] = "SIMULATED_ARRIVALS_FORWARD_VELOCITY_GUARDED_TARGET_METRICS"
+    joint_mode = getattr(args, "joint_reference_mode", None)
+    if joint_mode:
+        if args.reference_buffer_ms:
+            raise ValueError("Cannot combine joint ablation and buffer")
+        predictor = getattr(args, "joint_predictor", None)
+        protocol["joint_ablation"] = dict(mode=joint_mode, predictor_sha256=sha256(predictor) if predictor else None,
+            noise_std_rad=args.joint_noise_std, noise_seed=args.joint_noise_seed,
+            scope="JOINT_ONLY_FUTURE_ORIENTATION_ORACLE_NOT_FULL_CAUSAL_TELEOP")
     output.mkdir(parents=True, exist_ok=True)
     logs.mkdir(parents=True, exist_ok=True)
     manifest_path = output / "explicit_manifest.json"
@@ -145,6 +153,12 @@ def evaluate_explicit(args):
         if args.reference_buffer_ms:
             argv += ["--reference-buffer-ms", str(args.reference_buffer_ms),
                      "--buffer-trace", str(output / f"{name}.buffer.npz")]
+        if joint_mode:
+            argv += ["--joint-reference-mode", joint_mode, "--joint-noise-std", str(args.joint_noise_std),
+                     "--joint-noise-seed", str(args.joint_noise_seed),
+                     "--joint-trace", str(output / f"{name}.joint.npz")]
+            if args.joint_predictor:
+                argv += ["--joint-predictor", str(args.joint_predictor)]
         if args.capture_inputs:
             argv += ["--capture", str(output / f"{name}.inputs.npz")]
         argv += ["--", "--checkpoint", str(checkpoint), "--motion", str(motion),
@@ -176,7 +190,7 @@ def evaluate_explicit(args):
         if not math.isfinite(summary["tracking"]["all_29_rmse"]):
             raise ValueError("Nonfinite tracking metric")
         # Publish completion only after simulator outputs survive a host restart.
-        for suffix in ("metrics.json", "timeseries.json", "inputs.npz", "buffer.npz"):
+        for suffix in ("metrics.json", "timeseries.json", "inputs.npz", "buffer.npz", "joint.npz"):
             artifact = output / f"{name}.{suffix}"
             if artifact.exists():
                 with artifact.open("rb") as stream:
@@ -251,6 +265,10 @@ def main():
     parser.add_argument("--action-delay-ms", type=float, default=0)
     parser.add_argument("--reference-buffer-ms", type=float, default=0)
     parser.add_argument("--capture-inputs", action="store_true")
+    parser.add_argument("--joint-reference-mode", choices=("oracle_aligned", "hold", "cv", "smooth_cv", "E12", "E14"))
+    parser.add_argument("--joint-predictor", type=Path)
+    parser.add_argument("--joint-noise-std", type=float, default=0)
+    parser.add_argument("--joint-noise-seed", type=int, default=0)
     args = parser.parse_args()
     if args.reference_buffer_ms and args.reference_buffer_ms < 180:
         parser.error("A3-fast causal replay requires at least180ms coverage")

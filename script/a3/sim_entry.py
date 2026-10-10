@@ -15,10 +15,17 @@ def main():
     parser.add_argument("--capture-count", type=int, default=100)
     parser.add_argument("--reference-buffer-ms", type=float, default=0)
     parser.add_argument("--buffer-trace", type=Path)
+    parser.add_argument("--joint-reference-mode", choices=("oracle_aligned", "hold", "cv", "smooth_cv", "E12", "E14"))
+    parser.add_argument("--joint-predictor", type=Path)
+    parser.add_argument("--joint-noise-std", type=float, default=0)
+    parser.add_argument("--joint-noise-seed", type=int, default=0)
+    parser.add_argument("--joint-trace", type=Path)
     parser.add_argument("sim_args", nargs=argparse.REMAINDER)
     args = parser.parse_args()
     if args.reference_buffer_ms and args.buffer_trace is None:
         parser.error("--reference-buffer-ms requires --buffer-trace")
+    if args.joint_reference_mode and (args.joint_trace is None or args.reference_buffer_ms):
+        parser.error("Joint ablation needs its own trace and cannot combine with buffering")
     sim = load_sim()
     replay = None
     if args.reference_buffer_ms:
@@ -27,6 +34,11 @@ def main():
         fps = float(tokens[tokens.index("--csv-source-fps") + 1])
         stride = int(tokens[tokens.index("--csv-frame-stride") + 1])
         replay = CausalPolicyReplay(sim, fps, stride, args.reference_buffer_ms)
+        replay.install()
+    if args.joint_reference_mode:
+        from script.a3.joint_forecast_replay import JointForecastReplay
+        replay = JointForecastReplay(sim, args.joint_reference_mode, args.joint_predictor,
+                                     args.joint_noise_std, args.joint_noise_seed)
         replay.install()
     observations, actions = [], []
     original = sim.A3Policy.act
@@ -48,7 +60,7 @@ def main():
         return sim.main()
     finally:
         if replay and replay.rows:
-            replay.save(args.buffer_trace)
+            replay.save(args.joint_trace if args.joint_reference_mode else args.buffer_trace)
         if args.capture and observations:
             args.capture.parent.mkdir(parents=True, exist_ok=True)
             np.savez_compressed(args.capture, observations=np.asarray(observations), actions=np.asarray(actions),

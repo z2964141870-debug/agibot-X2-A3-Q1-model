@@ -37,6 +37,18 @@ data/environments/a3-sonic/bin/python -m script.a3.reference_contract validate
 
 ## 下一步与保护
 
+## 短微调执行
+
+R04第一次启动在加载训练前因vendor软链接路径导致本地 `gear_sonic/trl` 遮蔽已安装Hugging Face `trl`，退出1、实际更新0；已保留blocked账本，禁用其新服务。明确修正为REPO_DIR使用vendor物理路径，不安装或修改共享环境/第三方代码。
+
+独立R05使用相同16环境/固定16训练动作/官方035优化配置，旧账本不重置。10:30完成2次更新冒烟，保存 `data/training/a3_finetune_20261010/R05_001_s0/model_step_000002.pt`，375291345字节、SHA `324e573377f5c4b66ea698b59bf0cae985ffb0883696189d3f38352db4d2569e`；保存事务已CPU重载与网络/优化器有限性检查。初始化回执 `logs/a3_fullchain_20261010/finetune/R05_001_s0/warm_start_loaded.json` 检查官方源200000、加载计数0、两网络逐张量相等、优化器空状态。完整恢复回执和最终200还需实际核验，不把2次冒烟当200完成。
+
+R05服务 `a3-finetune-r05.service`，CPUQuota100%、linger=yes，重启后按300秒冷却自动恢复，无启动次数/有效期限制，原温度/异常/两次无保存进度保护不变。job与state位于 `data/experiments/a3_fullchain_20261010/finetune_R05/`；普通异常exit2不自动重启。达到200退出，不追加训练。最近SSH超时暂记UNKNOWN，恢复后重新核验boot/sidecar，而非依据旧PID。
+
+10:31连接恢复实际boot `692bd7da-ce27-435a-8193-2babaa54f941`；R05服务activating/exit75且账本为recovery_cooldown，已识别保存step2，冷却后自行恢复。第二attempt源为独立step2并full_state_resume=true；本轮只登记重启，不定位根因。
+
+实际缓冲100策略步冒烟退出0且无跌倒，证据 `buffer_smoke/`，完整selected20与4段动捕策略缓冲对照待微调结束后串行执行。
+
 10:16服务器连接中断后恢复，boot变为 `3f33490f-5dea-483f-8f83-a08e53a04b01`。磁盘持久完整动作16个，剩余4个按manifest恢复，不依赖中断前终端打印。GPU无计算进程；按300秒冷却等待后继续GPU任务，不排查重启根因。微调尚未启动。固定16动作输入preflight已通过。
 
 恢复独立SHA检查进一步确认：上述16个指标文件仅13个有效，3个SHA不符，另1个运行中动作中断。无效输出和原attempt保存在 `official_baseline/incomplete_artifacts/<boot>/`；13个有效动作跳过，其余完整重跑。包装器已补metrics/timeseries/input/buffer文件fsync及目录fsync后才登记passed，防止manifest先落盘。恢复入口 `python -m script.a3.recover_evaluation <output>`，只能在评测进程停止后执行。不能把中断前屏幕进度当持久完成数。

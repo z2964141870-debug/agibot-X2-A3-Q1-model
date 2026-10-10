@@ -1,11 +1,13 @@
 """Independent official-PT 2-to-200 update diagnostic job; no legacy resumes."""
 
+import argparse
 import fcntl
 import json
 import os
 from pathlib import Path
 import subprocess
 import time
+import re
 
 from script.a3.autoresume import monitor_child
 from script.a3.checkpoint_store import select_checkpoint
@@ -13,11 +15,11 @@ from script.a3.evaluation_common import checkpoint_metadata, preflight
 from script.a3.fullchain_support import DATA, LOGS, ROOT, VENDOR, digest, mark, write_json
 
 
-def select_trial_checkpoint(attempts):
+def select_trial_checkpoint(attempts, trial="R04"):
     valid = []
     for attempt in attempts:
         directory = Path(attempt["run_dir"]).resolve()
-        if directory.parent != ROOT / "data/training/a3_finetune_20261010" or not directory.name.startswith("R04_"):
+        if directory.parent != ROOT / "data/training/a3_finetune_20261010" or not directory.name.startswith(trial + "_"):
             raise ValueError("Checkpoint directory is outside this trial lineage")
         try:
             path, payload, _ = select_checkpoint(directory)
@@ -31,15 +33,17 @@ def select_trial_checkpoint(attempts):
     return max(valid, key=lambda row: row[0]) if valid else (0, None)
 
 
-def run():
-    job_dir = DATA / "finetune_R04"
+def run(trial="R04"):
+    if not re.fullmatch(r"R\d{2,}", trial):
+        raise ValueError("Invalid independent trial identity")
+    job_dir = DATA / f"finetune_{trial}"
     job_dir.mkdir(parents=True, exist_ok=True)
     with (job_dir / "supervisor.lock").open("a") as lock:
         try:
             fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
             raise RuntimeError("Another supervisor owns this trial")
-        return run_locked(job_dir)
+        return run_locked(job_dir, trial)
 
 
 def recovery_remaining(state, config, boot, uptime, now):
@@ -54,7 +58,7 @@ def recovery_remaining(state, config, boot, uptime, now):
     return 0
 
 
-def run_locked(job_dir):
+def run_locked(job_dir, trial="R04"):
     config = {"source": str(ROOT / "data/models/a3_official_035/checkpoints/035_step200000/model_step_200000.pt"),
               "target_step": 200, "smoke_target": 2, "num_envs": 16, "num_mini_batches": 4,
               "save_frequency": 10, "max_attempts": None, "expires_at": None,
@@ -80,7 +84,7 @@ def run_locked(job_dir):
         raise ValueError("This trial requires the released official PT")
     mark("finetune", "running", job=str(config_path))
     while True:
-        step, checkpoint = select_trial_checkpoint(state["attempts"])
+        step, checkpoint = select_trial_checkpoint(state["attempts"], trial)
         if step >= 200:
             state.update(status="complete", verified_step=step, checkpoint=str(checkpoint))
             write_json(state_path, state)
@@ -109,7 +113,7 @@ def run_locked(job_dir):
             return 75
         target = 2 if step < 2 else 200
         ordinal = len(state["attempts"]) + 1
-        run_dir = ROOT / "data/training/a3_finetune_20261010" / f"R04_{ordinal:03d}_s{step}"
+        run_dir = ROOT / "data/training/a3_finetune_20261010" / f"{trial}_{ordinal:03d}_s{step}"
         logs = LOGS / "finetune" / run_dir.name
         if run_dir.exists() or logs.exists():
             raise FileExistsError("Do not overwrite a previous training attempt")
@@ -126,6 +130,7 @@ def run_locked(job_dir):
         write_json(state_path, state)
         environment = os.environ.copy()
         environment.update(ISAAC_PYTHON=str(ROOT / "data/environments/a3-sonic/bin/python"),
+                           REPO_DIR=str(VENDOR.resolve()),
                            MOTION_FILE=config["dataset"], EXPERIMENT_DIR=str(run_dir),
                            CHECKPOINT=row["checkpoint"], NUM_ENVS="16", NUM_MINI_BATCHES="4",
                            NUM_LEARNING_ITERATIONS="200", NUM_PROCESSES="1",
@@ -143,7 +148,7 @@ def run_locked(job_dir):
             child = subprocess.Popen(argv, cwd=ROOT, env=environment, stdout=stream,
                                      stderr=subprocess.STDOUT, start_new_session=True)
             code, reason = monitor_child(child, logs, config)
-        new_step, _ = select_trial_checkpoint(state["attempts"])
+        new_step, _ = select_trial_checkpoint(state["attempts"], trial)
         row.update(status="finished", returncode=code, reason=reason, verified_step=new_step, finished_at=time.time())
         write_json(state_path, state)
         if code != 0 or reason is not None:
@@ -154,4 +159,6 @@ def run_locked(job_dir):
 
 
 if __name__ == "__main__":
-    raise SystemExit(run())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--trial", default="R04")
+    raise SystemExit(run(parser.parse_args().trial))

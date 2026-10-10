@@ -35,6 +35,15 @@ def baseline():
          result=aggregate(payload["motions"]), scope="SELECTED20_SIM2SIM_ONLY")
 
 
+def mocap():
+    path = DATA / "official_mocap/explicit_summary.json"
+    payload = json.loads(path.read_text())
+    if len(payload["motions"]) != 4 or not all(r["full_replay_completed"] for r in payload["motions"]):
+        raise ValueError("Mocap diagnostic coverage incomplete")
+    mark("mocap_policy", "passed", evidence=str(path), result=aggregate(payload["motions"]),
+         scope="TEST_ONLY_LOW_QUALITY_REFERENCE_DIAGNOSTIC_NOT_TRACKING_ACCEPTANCE")
+
+
 def verify_trial():
     import torch
     from script.a3.checkpoint_store import select_checkpoint, validate_payload
@@ -200,11 +209,13 @@ def snapshot(final=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("baseline", "verify-trial", "compare", "buffer", "snapshot", "final"))
+    parser.add_argument("action", choices=("baseline", "mocap", "verify-trial", "compare", "buffer", "snapshot", "final"))
     parser.add_argument("--partial", action="store_true")
     args = parser.parse_args()
     if args.action == "baseline":
         baseline()
+    elif args.action == "mocap":
+        mocap()
     elif args.action == "verify-trial":
         verify_trial()
     elif args.action == "compare":

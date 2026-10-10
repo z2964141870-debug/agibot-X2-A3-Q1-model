@@ -31,6 +31,10 @@
 
 ## 独立卡点
 
+## 动捕策略诊断
+
+11:35四段转换后的30Hz参考stride1完整MuJoCo回放结束。走路、单腿与9/23录制触发跌倒，9/24录制未触发，合计3/4；仅诊断完整覆盖通过，人体姿态/轨迹/接触质量仍失败，原数据TEST_ONLY/training_allowed=false不变。逐动作首次跌倒、回放完成、跌倒前与全程跟踪误差见 `official_mocap/explicit_summary.json`，对应源SHA与配置见 `reused_history.json`。不能与20个官方样例混为同一数据集验收。
+
 Isaac指标导入再次失败：`ModuleNotFoundError: No module named 'smpl_sim'`。评测需兼容 `smpl_sim.smpllib.smpl_eval` 和独立validate，暂时搁置，退出码不能代替指标。RKNN模块仍未安装，转换/包和板端推理搁置。此二项不阻止MuJoCo和短微调。动捕根轨迹、接触、个人标定与姿态质量待用户处理，结构测试不能证明高保真。
 
 ## 版本与复现

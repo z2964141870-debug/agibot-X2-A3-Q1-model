@@ -17,7 +17,7 @@
 
 ## 已完成，可从证据继续
 
-10/10 11:28 A3独立R05已完成200更新，最终step200大小/SHA/CPU重载/网络与优化器有限性通过，优化器计数4000；训练service退出并disable，模型LOCAL_ONLY。微调完整selected20对照运行中，官方基线20/20无跌倒/RMSE0.05906rad，官方ONNX100真实输入通过。随后动捕诊断、完整因果缓冲及微调ONNX；Isaac指标、RKNN与动捕质量搁置，旧账本保留暂停。见[执行记录](README_A3_OFFICIAL_TEST_20261010.md)与[清单](../data/manifests/a3_official_stage_20261010.json)。
+10/10 11:32 A3 R05完成200且独立重载/有限性通过；同条件20动作对照退化：官方0/20跌倒→微调5/20，4留出0/4→1/4，留出RMSE0.06632→0.21551rad，效果验收失败，不追加训练。官方/微调ONNX各100真实输入均通过容差、LOCAL_ONLY。训练与对照服务结束并disable；继续官方动捕诊断及完整因果缓冲。Isaac指标、RKNN与动捕质量搁置；见[执行记录](README_A3_OFFICIAL_TEST_20261010.md)与[清单](../data/manifests/a3_official_stage_20261010.json)。
 
 10/10 A3目录划分与官方包导入完成：`YUANQI_A3` 独立Git工作副本和四目录已建立，vendor/Python环境只读复用，历史全链路仅data/references引用。PT 402050931字节及4个匹配小文件均核对官方SHA；CPU重载、网络/优化器有限性通过，bundle_integrity_verified=true、LOCAL_ONLY。4文件来自用户Mac Downloads并SCP传入，配置缺失卡点解除；未启动策略/训练。原PT与旧账本保留；目录创建时boot变化只登记恢复。入口见[目录与完整包记录](README_A3_WORKSPACE_20261010.md)，下方模型不可得为历史状态。
 

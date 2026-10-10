@@ -19,7 +19,8 @@ TASKS = ["official_pt", "input_audit", "retarget", "mujoco_baseline",
          "paired_evaluation", "reference_buffer", "onnx", "rknn",
          "reference_contract", "retarget_visual", "reference_buffer_policy",
          "mujoco_wrapper_check", "onnx_diagnostic", "finetune_preflight",
-         "motionlib", "mocap_quality", "mocap_finetune", "rknn_input_contract", "mocap_policy"]
+         "motionlib", "mocap_quality", "mocap_finetune", "rknn_input_contract", "mocap_policy",
+         "policy_effect_acceptance"]
 
 
 def digest(path):

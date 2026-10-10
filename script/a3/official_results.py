@@ -127,6 +127,14 @@ def compare(partial=False):
     write_json(path, report)
     mark("paired_evaluation", "deferred" if partial else "passed", evidence=str(path),
          reason="target200_not_completed" if partial else None, scope=report["scope"])
+    if not partial:
+        hold = groups["heldout"]
+        improved = (hold["finetuned"]["falls"] <= hold["official"]["falls"] and
+                    hold["finetuned"]["full_rollout"]["joint_rmse_rad"] <
+                    hold["official"]["full_rollout"]["joint_rmse_rad"])
+        mark("policy_effect_acceptance", "passed" if improved else "failed", evidence=str(path),
+             reason="single_trial_heldout_improvement" if improved else "heldout_regression",
+             scope="SINGLE_SEED_SIM2SIM_ONLY_NOT_GENERAL_ACCEPTANCE")
     return report
 
 

@@ -46,6 +46,19 @@ def main():
         next_stage="REPEAT_CANDIDATE_WITH_OTHER_SEEDS_AND_UNSEEN_MOTIONS" if eligible else
                    "KEEP_OFFICIAL_AND_DIAGNOSE_UPDATE_DIRECTION_BEFORE_LONGER_TRAINING",
         scope="REUSABLE_DIAGNOSTIC_SELECTION_NOT_BLIND_FINAL_TEST_OR_DEPLOYMENT", backup_status="LOCAL_ONLY")
+    candidate_pairs = reports[-1]["pairs"]
+    result["per_motion_diagnostic"] = []
+    for pair in candidate_pairs:
+        base_motion = pair["results"]["official"]["windows"]["full_rollout"]
+        candidate_motion = pair["results"]["R09_step2"]["windows"]["full_rollout"]
+        result["per_motion_diagnostic"].append(dict(motion=pair["motion"], group=pair["group"],
+            changes={metric: candidate_motion[metric] - base_motion[metric] for metric in METRICS},
+            joint_rmse_improved=candidate_motion["joint_rmse_rad"] < base_motion["joint_rmse_rad"],
+            scope="POST_HOC_TARGET_CANDIDATE_NOT_UNSEEN_VALIDATION"))
+    result["code"] = [dict(path=str(path.relative_to(ROOT)), sha256=sha256(path)) for path in (
+        ROOT / "script/a3/search_selection.py", ROOT / "script/a3/test_search_selection.py")]
+    result["contract_log"] = dict(path=str((ROOT / "logs/a3_search_20261010_E06/selection_contracts.log").relative_to(ROOT)),
+                                  sha256=sha256(ROOT / "logs/a3_search_20261010_E06/selection_contracts.log"))
     atomic_json(OUTPUT / "selection.json", result)
     atomic_json(ROOT / "data/manifests/a3_search_selection_20261010.json", result)
     print(json.dumps(result, indent=2), flush=True)

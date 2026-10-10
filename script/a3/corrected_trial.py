@@ -50,15 +50,20 @@ def train():
             fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
             return 75
+        state_path = OUTPUT / "state.json"
+        state = read(state_path) if state_path.exists() else dict(status="pending", attempts=[])
+        if state["status"] == "blocked":
+            return 2
+        if state["status"] == "complete":
+            step, _ = select_trial_checkpoint(state["attempts"], TRIAL)
+            if step != 2:
+                raise ValueError("Completed trial no longer has a verified target checkpoint")
+            return 0
         config = configuration()
         path = OUTPUT / "job.json"
         if path.exists() and read(path) != config:
             raise ValueError("Registered trial changed; do not rewrite its ledger")
         write_json(path, config)
-        state_path = OUTPUT / "state.json"
-        state = read(state_path) if state_path.exists() else dict(status="pending", attempts=[])
-        if state["status"] in ("blocked", "complete"):
-            return 0 if state["status"] == "complete" else 2
         step, checkpoint = select_trial_checkpoint(state["attempts"], TRIAL)
         if step > config["target_step"]:
             raise ValueError("Checkpoint exceeded this short trial")

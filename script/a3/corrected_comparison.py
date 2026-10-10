@@ -118,6 +118,16 @@ def main():
         scope="SINGLE_SEED_ENGINEERING_FIX_BUNDLE_DIAGNOSTIC_NOT_SINGLE_FACTOR_ATTRIBUTION",
         heldout_scope="WITHHELD_FROM_FINETUNING_NOW_USED_FOR_DIAGNOSIS_NOT_FRESH_FINAL_TEST",
         backup_status="LOCAL_ONLY", generated_utc=datetime.now(timezone.utc).isoformat())
+    result["training"] = dict(job=read(OUTPUT / "job.json"), state=read(OUTPUT / "state.json"),
+                              actual_optimizer_steps=len(verification["actual_optimizer_steps"]),
+                              auxiliary_tags=verification["auxiliary_tags"],
+                              undefined_episode_statistics=verification["undefined_episode_statistics"])
+    result["failed_integration"] = dict(
+        job=read(ROOT / "data/experiments/a3_corrected_20261010_E03/job.json"),
+        state=read(ROOT / "data/experiments/a3_corrected_20261010_E03/state.json"),
+        reason="ACCELERATED_OPTIMIZER_SUBCLASS_WAS_NOT_UNWRAPPED_BEFORE_HOOK_REGISTRATION")
+    result["logs"] = [dict(path=str(path.relative_to(ROOT)), bytes=path.stat().st_size, sha256=sha256(path))
+                      for path in sorted(LOGS.rglob("*")) if path.is_file() and path.name != "comparison.log"]
     atomic_json(OUTPUT / "comparison.json", result)
     atomic_json(ROOT / "data/manifests/a3_corrected_20261010_E04.json", result)
     print(json.dumps(rows, indent=2), flush=True)

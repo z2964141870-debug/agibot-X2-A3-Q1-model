@@ -159,6 +159,14 @@ def evaluate_explicit(args):
         summary = payload["motions"][0]
         if not math.isfinite(summary["tracking"]["all_29_rmse"]):
             raise ValueError("Nonfinite tracking metric")
+        # Publish completion only after simulator outputs survive a host restart.
+        for suffix in ("metrics.json", "timeseries.json", "inputs.npz", "buffer.npz"):
+            artifact = output / f"{name}.{suffix}"
+            if artifact.exists():
+                with artifact.open("rb") as stream:
+                    os.fsync(stream.fileno())
+        from script.a3.checkpoint_store import fsync_directory
+        fsync_directory(output)
         row.update(status="passed", metrics_sha256=sha256(metrics_path), summary=summary)
         atomic_json(manifest_path, manifest)
         print(json.dumps({"motion": name, "status": "passed", "fall": summary["fall"]}), flush=True)

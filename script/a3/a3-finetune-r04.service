@@ -7,6 +7,7 @@ Type=simple
 WorkingDirectory=/media/yu/FAFF-E9771/YUANQI_A3
 ExecStart=/media/yu/FAFF-E9771/YUANQI_A3/data/environments/a3-sonic/bin/python -m script.a3.finetune_job
 CPUQuota=100%
+Environment=OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
 Restart=on-failure
 RestartPreventExitStatus=1 2
 RestartSec=30

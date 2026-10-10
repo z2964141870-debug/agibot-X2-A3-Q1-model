@@ -10,6 +10,12 @@
 
 新台账 `data/experiments/a3_fullchain_20261010/tasks.json` 独立初始化。按旧Git工件清单逐文件核验大小/SHA后复用人体参考、A3参考、运动学和MotionLib，见 `reused_history.json`。未复制旧训练账本。seed42整动作16训练/4留出与原固定分配一致。24个PKL格式/数值与26个CSV时长合同重新验证通过；120Hz官方CSV stride4，30Hz新参考stride1，转换后30Hz。动捕TEST_ONLY标识保持，IK/脚穿地质量仍失败，微调使用官方样例。
 
+## 官方完整基线
+
+10:25完成selected20全长度MuJoCo回放，20/20未触发跌倒，24304策略步完整覆盖。按步数加权的全29关节RMSE为0.059060 rad，根位置误差均值0.084169 m，根姿态误差均值2.067994°。未发生跌倒，因此跌倒前与全程统计一致。逐动作指标、时序SHA、完整覆盖校验见 `official_baseline/explicit_summary.json` 与 `official_baseline_aggregate.json`。此结论限于固定资产、离线参考和仿真，不代表真实衣服、高保真验收或真机安全。
+
+16/4划分只隔离本次R04微调，不能声称官方预训练阶段从未使用这4个动作。后续微调保持相同MuJoCo资产、动作、frame0初始化与延迟设置，单种子短试训不证明普遍改善。
+
 ## 独立卡点
 
 Isaac指标导入再次失败：`ModuleNotFoundError: No module named 'smpl_sim'`。评测需兼容 `smpl_sim.smpllib.smpl_eval` 和独立validate，暂时搁置，退出码不能代替指标。RKNN模块仍未安装，转换/包和板端推理搁置。此二项不阻止MuJoCo和短微调。动捕根轨迹、接触、个人标定与姿态质量待用户处理，结构测试不能证明高保真。
@@ -32,6 +38,8 @@ data/environments/a3-sonic/bin/python -m script.a3.reference_contract validate
 ## 下一步与保护
 
 10:16服务器连接中断后恢复，boot变为 `3f33490f-5dea-483f-8f83-a08e53a04b01`。磁盘持久完整动作16个，剩余4个按manifest恢复，不依赖中断前终端打印。GPU无计算进程；按300秒冷却等待后继续GPU任务，不排查重启根因。微调尚未启动。固定16动作输入preflight已通过。
+
+恢复独立SHA检查进一步确认：上述16个指标文件仅13个有效，3个SHA不符，另1个运行中动作中断。无效输出和原attempt保存在 `official_baseline/incomplete_artifacts/<boot>/`；13个有效动作跳过，其余完整重跑。包装器已补metrics/timeseries/input/buffer文件fsync及目录fsync后才登记passed，防止manifest先落盘。恢复入口 `python -m script.a3.recover_evaluation <output>`，只能在评测进程停止后执行。不能把中断前屏幕进度当持久完成数。
 
 新增因果策略回放钩子，保留官方vendor不修改。编码器速度采用前向差分，最后0–180ms姿态窗口还需要200ms处的位置，因此名义180ms缓冲实际先预填充200ms，并按30Hz到达量化记录实际年龄。逐策略步核验插值及速度所需的最后原始样本已到达；指标针对延迟后的目标帧，启动等待与模拟到达另记。新增3项未来数据扰动/速度边界/指标目标检查及已有17项检查通过，共20项。
 

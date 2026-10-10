@@ -1,0 +1,894 @@
+{
+  "scope": "CPU_CONTROL_AND_READ_ONLY_EVIDENCE_NOT_CAUSAL_POLICY_ACCEPTANCE",
+  "training_allowed": false,
+  "generated_utc": "2026-10-10T08:22:05.109507+00:00",
+  "vendor_source": {
+    "path": "/media/yu/FAFF-E9771/YUANQI/script/vendor/sonic_for_a3/gear_sonic/trl/trainer/ppo_trainer.py",
+    "sha256": "872b22d0ae6b1f124fe152e2831c496bfe6b4c80c92fde167129e0c3f1ce6fc1"
+  },
+  "config_sources": [
+    {
+      "path": "/media/yu/FAFF-E9771/YUANQI_A3/data/models/a3_official_035/checkpoints/035_step200000/config.yaml",
+      "sha256": "1043717530839e8ef9408e0c8dc470e137708089b64ec13d05b377382868b897"
+    },
+    {
+      "path": "/media/yu/FAFF-E9771/YUANQI_A3/data/training/a3_finetune_20261010/R05_001_s0/config.yaml",
+      "sha256": "07bb367fda959639fd1db86fbba1ae4211751482ad2fb488b4b510278efd534c"
+    }
+  ],
+  "configuration_differences": [
+    {
+      "path": "algo.config.adaptive_empty_cache_cooldown_ppo_epochs",
+      "official": 5,
+      "r05": null
+    },
+    {
+      "path": "algo.config.adaptive_empty_cache_enabled",
+      "official": true,
+      "r05": null
+    },
+    {
+      "path": "algo.config.adaptive_empty_cache_free_frac",
+      "official": 0.1,
+      "r05": null
+    },
+    {
+      "path": "algo.config.adaptive_empty_cache_min_reclaimable_mb",
+      "official": 1024,
+      "r05": null
+    },
+    {
+      "path": "algo.config.adaptive_empty_cache_reserved_frac",
+      "official": 0.9,
+      "r05": null
+    },
+    {
+      "path": "algo.config.benchmark_synchronized_timing",
+      "official": null,
+      "r05": false
+    },
+    {
+      "path": "algo.config.empty_cache_every_n_ppo_epoch",
+      "official": -1,
+      "r05": 1
+    },
+    {
+      "path": "algo.config.num_learning_iterations",
+      "official": 100000,
+      "r05": 200
+    },
+    {
+      "path": "algo.config.world_size",
+      "official": 32,
+      "r05": 1
+    },
+    {
+      "path": "algo.trl.logging_dir",
+      "official": "${experiment_dir}/tensorboard",
+      "r05": "/media/yu/FAFF-E9771/YUANQI_A3/data/training/a3_finetune_20261010/R05_001_s0/tensorboard"
+    },
+    {
+      "path": "algo.trl.output_dir",
+      "official": "${experiment_dir}",
+      "r05": "/media/yu/FAFF-E9771/YUANQI_A3/data/training/a3_finetune_20261010/R05_001_s0"
+    },
+    {
+      "path": "callbacks.model_save._target_",
+      "official": "gear_sonic.trl.callbacks.model_save_callback.ModelSaveCallback",
+      "r05": "script.a3.resumable_sonic.DurableModelSaveCallback"
+    },
+    {
+      "path": "callbacks.model_save.save_frequency",
+      "official": 2000,
+      "r05": 10
+    },
+    {
+      "path": "callbacks.model_save.save_last_frequency",
+      "official": null,
+      "r05": 10
+    },
+    {
+      "path": "callbacks.model_save.target_global_step",
+      "official": null,
+      "r05": 2
+    },
+    {
+      "path": "checkpoint",
+      "official": null,
+      "r05": "/media/yu/FAFF-E9771/YUANQI_A3/data/models/a3_official_035/checkpoints/035_step200000/model_step_200000.pt"
+    },
+    {
+      "path": "exp_var",
+      "official": "a3_035_step200000",
+      "r05": "a3_035_finetune_selected20"
+    },
+    {
+      "path": "experiment_dir",
+      "official": "${base_dir}/${project_name}/${experiment_name}",
+      "r05": "/media/yu/FAFF-E9771/YUANQI_A3/data/training/a3_finetune_20261010/R05_001_s0"
+    },
+    {
+      "path": "manager_env.commands.motion.motion_lib_cfg.motion_file",
+      "official": [
+        ".cache/motionlib_035_selected20"
+      ],
+      "r05": [
+        "/media/yu/FAFF-E9771/YUANQI_A3/data/experiments/a3_fullchain_20261010/motionlib/train"
+      ]
+    },
+    {
+      "path": "manager_env.config.robot.motor_model",
+      "official": null,
+      "r05": {
+        "enabled": false,
+        "tn_torque_scale": 1.0,
+        "parallel_torque_scale": 1.0
+      }
+    },
+    {
+      "path": "multi_gpu",
+      "official": true,
+      "r05": false
+    },
+    {
+      "path": "num_envs",
+      "official": 4096,
+      "r05": 16
+    },
+    {
+      "path": "resume_in_place",
+      "official": false,
+      "r05": null
+    },
+    {
+      "path": "trainer._target_",
+      "official": "gear_sonic.trl.trainer.ppo_trainer_aux_loss.TRLAuxLossPPOTrainer",
+      "r05": "script.a3.finetune_trainer.FineTuneTrainer"
+    }
+  ],
+  "lr_control": {
+    "steps": [
+      {
+        "index": 1,
+        "synthetic_kl": 0.0002903923741541803,
+        "optimizer_step_lrs": [
+          3.0000000000000004e-05,
+          3.0000000000000004e-05
+        ],
+        "args_learning_rate": 3.0000000000000004e-05
+      },
+      {
+        "index": 2,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          2e-05,
+          2e-05
+        ],
+        "args_learning_rate": 2e-05
+      },
+      {
+        "index": 3,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1.3333333333333335e-05,
+          1.3333333333333335e-05
+        ],
+        "args_learning_rate": 1.3333333333333335e-05
+      },
+      {
+        "index": 4,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 5,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 6,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 7,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 8,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 9,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 10,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 11,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 12,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 13,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 14,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 15,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 16,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 17,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 18,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 19,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      },
+      {
+        "index": 20,
+        "synthetic_kl": 0.03,
+        "optimizer_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "args_learning_rate": 1e-05
+      }
+    ],
+    "before_scheduler_lrs": [
+      1e-05,
+      1e-05
+    ],
+    "after_scheduler_lrs": [
+      2e-05,
+      2e-05
+    ],
+    "args_after_scheduler": 1e-05,
+    "resume_branches": [
+      {
+        "branch": "neutral",
+        "synthetic_kl": 0.01,
+        "saved_args_lr": 1e-05,
+        "saved_optimizer_lrs": [
+          2e-05,
+          2e-05
+        ],
+        "legacy_restored_args_lr": 2e-05,
+        "uninterrupted_next_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "legacy_resume_next_step_lrs": [
+          2e-05,
+          2e-05
+        ]
+      },
+      {
+        "branch": "high",
+        "synthetic_kl": 0.03,
+        "saved_args_lr": 1e-05,
+        "saved_optimizer_lrs": [
+          2e-05,
+          2e-05
+        ],
+        "legacy_restored_args_lr": 2e-05,
+        "uninterrupted_next_step_lrs": [
+          1e-05,
+          1e-05
+        ],
+        "legacy_resume_next_step_lrs": [
+          1.3333333333333335e-05,
+          1.3333333333333335e-05
+        ]
+      },
+      {
+        "branch": "low",
+        "synthetic_kl": 0.002,
+        "saved_args_lr": 1e-05,
+        "saved_optimizer_lrs": [
+          2e-05,
+          2e-05
+        ],
+        "legacy_restored_args_lr": 2e-05,
+        "uninterrupted_next_step_lrs": [
+          1.5000000000000002e-05,
+          1.5000000000000002e-05
+        ],
+        "legacy_resume_next_step_lrs": [
+          3.0000000000000004e-05,
+          3.0000000000000004e-05
+        ]
+      }
+    ],
+    "legacy_resume_source": {
+      "path": "/media/yu/FAFF-E9771/YUANQI_A3/script/a3/resumable_sonic.py",
+      "sha256": "e682dbfa42243becd15cbc48bd5c19bc5d3a46e6ad3bd767705f50ae2a0f51a9",
+      "lines": [
+        33,
+        34
+      ],
+      "scope": "ONLY_ACTUAL_OPTIMIZER_RESTORE_AND_ARGS_LR_ASSIGNMENTS_NOT_SIMULATOR_RESUME"
+    },
+    "identical_gaussian_kl_with_vendor_epsilon": 0.0002903923741541803,
+    "scope": "SYNTHETIC_KL_CPU_SCALAR_OPTIMIZERS_NOT_RECONSTRUCTED_HISTORICAL_STEP_LRS"
+  },
+  "auxiliary_loss": {
+    "total_loss": 9.0,
+    "total_after_auxiliary_100x": 9.0,
+    "main_leaf_gradient": 6.0,
+    "auxiliary_leaf_gradient": null,
+    "flag_compute_aux_loss": true,
+    "config_coefficient": 1.0,
+    "source": {
+      "path": "/media/yu/FAFF-E9771/YUANQI/script/vendor/sonic_for_a3/gear_sonic/trl/trainer/ppo_trainer.py",
+      "line": 1495,
+      "sha256": "872b22d0ae6b1f124fe152e2831c496bfe6b4c80c92fde167129e0c3f1ce6fc1",
+      "qualified_name": "TRLPPOTrainer._compute_loss"
+    },
+    "scope": "ACTUAL_PINNED_LOSS_METHOD_WITH_SENTINEL_TENSORS_NOT_POLICY_GRADIENT_ATTRIBUTION"
+  },
+  "optimizer_construction": {
+    "groups": [
+      {
+        "lr": 2e-05,
+        "weight_decay": 0.0,
+        "parameters": [
+          "policy.weight",
+          "value_model.weight"
+        ]
+      },
+      {
+        "lr": 2e-05,
+        "weight_decay": 0.0,
+        "parameters": [
+          "policy.bias",
+          "value_model.bias"
+        ]
+      }
+    ],
+    "source": {
+      "path": "/home/yu/miniconda3/envs/x2-sonic-isaaclab/lib/python3.11/site-packages/transformers/trainer.py",
+      "line": 1278,
+      "sha256": "c3eac8fa28bda6330fd4dee131e7fe7d9bdc0fa35d9de944fce52cb97b379bab",
+      "qualified_name": "Trainer.create_optimizer"
+    },
+    "scope": "ACTUAL_INHERITED_CONSTRUCTOR_ON_TINY_MODEL_NO_TRAIN_CALL"
+  },
+  "first_two_updates_scalars": {
+    "tags": [
+      "Policy/approxkl_avg",
+      "Policy/clipfrac_avg",
+      "Loss/policy_avg",
+      "Loss/value_avg",
+      "Loss/entropy_avg",
+      "Loss/weighted_ppo_loss_avg",
+      "Value/clipfrac_avg",
+      "Value/ratio",
+      "Value/ratio_var",
+      "Train/lr",
+      "Policy/mean_noise_std",
+      "Rewards/ankle_motor_speed",
+      "Rewards/ankle_motor_power",
+      "Rewards/ankle_motor_fixed_torque",
+      "Rewards/parallel_ankle_cross",
+      "Rewards/ankle_position_85"
+    ],
+    "scalars": {
+      "Policy/approxkl_avg": [
+        {
+          "step": 1,
+          "value": 1.3298513889312744
+        },
+        {
+          "step": 2,
+          "value": 0.24938684701919556
+        }
+      ],
+      "Policy/clipfrac_avg": [
+        {
+          "step": 1,
+          "value": 0.6682291626930237
+        },
+        {
+          "step": 2,
+          "value": 0.5177083015441895
+        }
+      ],
+      "Loss/policy_avg": [
+        {
+          "step": 1,
+          "value": 0.044602736830711365
+        },
+        {
+          "step": 2,
+          "value": -0.03173636645078659
+        }
+      ],
+      "Loss/value_avg": [
+        {
+          "step": 1,
+          "value": 0.2264731228351593
+        },
+        {
+          "step": 2,
+          "value": 0.7325146198272705
+        }
+      ],
+      "Loss/entropy_avg": [
+        {
+          "step": 1,
+          "value": 12.900629997253418
+        },
+        {
+          "step": 2,
+          "value": 12.906878471374512
+        }
+      ],
+      "Loss/weighted_ppo_loss_avg": [
+        {
+          "step": 1,
+          "value": 0.14206956326961517
+        },
+        {
+          "step": 2,
+          "value": 0.5717094540596008
+        }
+      ],
+      "Value/clipfrac_avg": [
+        {
+          "step": 1,
+          "value": 0.24583333730697632
+        },
+        {
+          "step": 2,
+          "value": 0.0703125
+        }
+      ],
+      "Value/ratio": [
+        {
+          "step": 1,
+          "value": 4.170001983642578
+        },
+        {
+          "step": 2,
+          "value": 1.4856916666030884
+        }
+      ],
+      "Value/ratio_var": [
+        {
+          "step": 1,
+          "value": 41.55463790893555
+        },
+        {
+          "step": 2,
+          "value": 0.37304186820983887
+        }
+      ],
+      "Train/lr": [
+        {
+          "step": 1,
+          "value": 9.999999747378752e-06
+        },
+        {
+          "step": 2,
+          "value": 9.999999747378752e-06
+        }
+      ],
+      "Policy/mean_noise_std": [
+        {
+          "step": 1,
+          "value": 0.38761067390441895
+        },
+        {
+          "step": 2,
+          "value": 0.38769352436065674
+        }
+      ],
+      "Rewards/ankle_motor_speed": [
+        {
+          "step": 1,
+          "value": 0.0
+        },
+        {
+          "step": 2,
+          "value": 0.0
+        }
+      ],
+      "Rewards/ankle_motor_power": [
+        {
+          "step": 1,
+          "value": 0.0
+        },
+        {
+          "step": 2,
+          "value": 0.0
+        }
+      ],
+      "Rewards/ankle_motor_fixed_torque": [
+        {
+          "step": 1,
+          "value": 0.0
+        },
+        {
+          "step": 2,
+          "value": -0.0045476034283638
+        }
+      ],
+      "Rewards/parallel_ankle_cross": [
+        {
+          "step": 1,
+          "value": 0.0
+        },
+        {
+          "step": 2,
+          "value": 0.0
+        }
+      ],
+      "Rewards/ankle_position_85": [
+        {
+          "step": 1,
+          "value": 0.0
+        },
+        {
+          "step": 2,
+          "value": -0.005098299123346806
+        }
+      ]
+    },
+    "sources": [
+      {
+        "path": "/media/yu/FAFF-E9771/YUANQI_A3/data/training/a3_finetune_20261010/R05_001_s0/tensorboard/events.out.tfevents.1791599407.yu-MS-7D31.5075.0",
+        "sha256": "a96c0ac83daca2ebe4646f6ee7f606dd00c01adc84d393225412769f7b541fc4"
+      }
+    ]
+  },
+  "checkpoints": {
+    "rows": [
+      {
+        "step": 0,
+        "checkpoint": "/media/yu/FAFF-E9771/YUANQI_A3/data/training/a3_finetune_20261010/R05_001_s0/model_step_000000.pt",
+        "sha256": "05895ee4a8995bcff9c784a7c0509f2a1c7e3cef518470e61cbf77f4b87dcaf4",
+        "std_raw_min": 0.24216310679912567,
+        "std_raw_max": 0.5000176429748535,
+        "std_effective_mean": 0.3875587284564972,
+        "clamp_changed_elements": 4,
+        "gaussian_kl_official_to_current_on_fixed_inputs_mean": 0.0,
+        "gaussian_kl_official_to_current_on_fixed_inputs_max": 0.0,
+        "args_learning_rate": 2e-05,
+        "optimizer_groups": [
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 30
+          },
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 29
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "checkpoint": "/media/yu/FAFF-E9771/YUANQI_A3/data/training/a3_finetune_20261010/R05_001_s0/model_step_000002.pt",
+        "sha256": "324e573377f5c4b66ea698b59bf0cae985ffb0883696189d3f38352db4d2569e",
+        "std_raw_min": 0.24228665232658386,
+        "std_raw_max": 0.5000090599060059,
+        "std_effective_mean": 0.387692391872406,
+        "clamp_changed_elements": 5,
+        "gaussian_kl_official_to_current_on_fixed_inputs_mean": 0.7441430687904358,
+        "gaussian_kl_official_to_current_on_fixed_inputs_max": 1.4829753637313843,
+        "args_learning_rate": 1e-05,
+        "optimizer_groups": [
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 30
+          },
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 29
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "checkpoint": "/media/yu/FAFF-E9771/YUANQI_A3/data/training/a3_finetune_20261010/R05_002_s2/model_step_000010.pt",
+        "sha256": "f9718f7d490a814c3bf9df0d733f438686564233510eac53d17aeb4325d3c34d",
+        "std_raw_min": 0.2424473911523819,
+        "std_raw_max": 0.5000126957893372,
+        "std_effective_mean": 0.38797345757484436,
+        "clamp_changed_elements": 6,
+        "gaussian_kl_official_to_current_on_fixed_inputs_mean": 1.8969782590866089,
+        "gaussian_kl_official_to_current_on_fixed_inputs_max": 2.9902167320251465,
+        "args_learning_rate": 1e-05,
+        "optimizer_groups": [
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 30
+          },
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 29
+          }
+        ]
+      },
+      {
+        "step": 20,
+        "checkpoint": "/media/yu/FAFF-E9771/YUANQI_A3/data/training/a3_finetune_20261010/R05_003_s10/model_step_000020.pt",
+        "sha256": "53110a4078a90fc95455d53c8c2d9340691beffb1bc69e231a1a789ab2c2126a",
+        "std_raw_min": 0.24316972494125366,
+        "std_raw_max": 0.5000066161155701,
+        "std_effective_mean": 0.3883398771286011,
+        "clamp_changed_elements": 5,
+        "gaussian_kl_official_to_current_on_fixed_inputs_mean": 2.2828972339630127,
+        "gaussian_kl_official_to_current_on_fixed_inputs_max": 3.5353591442108154,
+        "args_learning_rate": 1e-05,
+        "optimizer_groups": [
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 30
+          },
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 29
+          }
+        ]
+      },
+      {
+        "step": 40,
+        "checkpoint": "/media/yu/FAFF-E9771/YUANQI_A3/data/training/a3_finetune_20261010/R05_004_s30/model_step_000040.pt",
+        "sha256": "1dab05de6e49ca49c41f2f27a712fce6c6c2760e9cb07fd1da597cc027af71b9",
+        "std_raw_min": 0.24383336305618286,
+        "std_raw_max": 0.5000045299530029,
+        "std_effective_mean": 0.38884109258651733,
+        "clamp_changed_elements": 4,
+        "gaussian_kl_official_to_current_on_fixed_inputs_mean": 2.8393471240997314,
+        "gaussian_kl_official_to_current_on_fixed_inputs_max": 4.378864765167236,
+        "args_learning_rate": 1e-05,
+        "optimizer_groups": [
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 30
+          },
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 29
+          }
+        ]
+      },
+      {
+        "step": 80,
+        "checkpoint": "/media/yu/FAFF-E9771/YUANQI_A3/data/training/a3_finetune_20261010/R05_007_s50/model_step_000080.pt",
+        "sha256": "baf5c976156ae40e5cfefa23b514ced5ef121b23b3e5dfdd7f755a7eda9678bb",
+        "std_raw_min": 0.24541784822940826,
+        "std_raw_max": 0.5000054836273193,
+        "std_effective_mean": 0.3899291157722473,
+        "clamp_changed_elements": 4,
+        "gaussian_kl_official_to_current_on_fixed_inputs_mean": 7.002284049987793,
+        "gaussian_kl_official_to_current_on_fixed_inputs_max": 11.337433815002441,
+        "args_learning_rate": 1e-05,
+        "optimizer_groups": [
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 30
+          },
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 29
+          }
+        ]
+      },
+      {
+        "step": 120,
+        "checkpoint": "/media/yu/FAFF-E9771/YUANQI_A3/data/training/a3_finetune_20261010/R05_009_s80/model_step_000120.pt",
+        "sha256": "b9438563dc598a58147f0b451af361ffef9d2603ca8e1e4a32ab77c8cc76216b",
+        "std_raw_min": 0.24710381031036377,
+        "std_raw_max": 0.5000107884407043,
+        "std_effective_mean": 0.39132240414619446,
+        "clamp_changed_elements": 4,
+        "gaussian_kl_official_to_current_on_fixed_inputs_mean": 9.273837089538574,
+        "gaussian_kl_official_to_current_on_fixed_inputs_max": 13.673307418823242,
+        "args_learning_rate": 1e-05,
+        "optimizer_groups": [
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 30
+          },
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 29
+          }
+        ]
+      },
+      {
+        "step": 200,
+        "checkpoint": "/media/yu/FAFF-E9771/YUANQI_A3/data/training/a3_finetune_20261010/R05_010_s120/model_step_000200.pt",
+        "sha256": "bba46271ef3c9962dcb01d525811a5b4f19b4d3cc2fe027afcf384e0f40e7a34",
+        "std_raw_min": 0.2513096034526825,
+        "std_raw_max": 0.5000078082084656,
+        "std_effective_mean": 0.3939695954322815,
+        "clamp_changed_elements": 4,
+        "gaussian_kl_official_to_current_on_fixed_inputs_mean": 18.655366897583008,
+        "gaussian_kl_official_to_current_on_fixed_inputs_max": 22.207828521728516,
+        "args_learning_rate": 1e-05,
+        "optimizer_groups": [
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 30
+          },
+          {
+            "lr": 2e-05,
+            "weight_decay": 0.0,
+            "parameter_count": 29
+          }
+        ]
+      }
+    ],
+    "input_sha256": "51b27bf73cf6c82cef7ed233026f89a70a217a9920eee04936740dde8b23c7a3",
+    "scope": "100_IDENTICAL_OFFICIAL_WALK_INPUTS_NOT_R05_ROLLOUT_KL_OR_LOSS_REPLAY"
+  },
+  "limitations": [
+    "Historical minibatch inputs, KLs and pre-step LRs were not saved",
+    "Small CPU probes do not identify the cause of measured policy regression",
+    "Simulator collection and robot-policy optimization were not run"
+  ],
+  "corrected_entry": {
+    "target": "script.a3.verified_finetune.VerifiedFineTuneTrainer",
+    "sources": [
+      {
+        "path": "/media/yu/FAFF-E9771/YUANQI_A3/script/a3/verified_finetune.py",
+        "sha256": "52c92b1de4cab7685e08e00889e174efff63bad1220f8ef7cb896ced34102eea"
+      },
+      {
+        "path": "/media/yu/FAFF-E9771/YUANQI_A3/script/a3/test_verified_finetune.py",
+        "sha256": "6eb36e02eb1e74f853390907cc2c563e79dc64ff333346ec1e0c1f6eb85e41fd"
+      }
+    ],
+    "contracts": {
+      "tests_run": 9,
+      "successful": true,
+      "failures": [],
+      "errors": [],
+      "skipped": [],
+      "scope": "CPU_SCALAR_LOSS_OPTIMIZER_AND_MRO_NO_POLICY_TRAINING"
+    },
+    "contracts_sha256": "fe0f709ef66402c7431ab4877a7adbb81e2cbcc72f5930ca73fbea5190891721",
+    "official_auxiliary_trainer": {
+      "path": "/media/yu/FAFF-E9771/YUANQI/script/vendor/sonic_for_a3/gear_sonic/trl/trainer/ppo_trainer_aux_loss.py",
+      "line": 158,
+      "sha256": "483539b22fca693091670a22f90bc21018867dce50f5e39b14b3303dfbea2388",
+      "qualified_name": "TRLAuxLossPPOTrainer._compute_loss"
+    },
+    "integration_status": "CPU_CONTRACTS_PASSED_FULL_ISAAC_TRAINER_NOT_STARTED",
+    "training_started": false,
+    "policy_improvement_verified": false
+  },
+  "logs": [
+    {
+      "path": "/media/yu/FAFF-E9771/YUANQI_A3/logs/a3_optimizer_20261010_E02/contracts.log",
+      "bytes": 1829,
+      "sha256": "e7a275efff921afc8c22d2e24278dd9e5e0b59866a5f687040e3942429b52b02"
+    },
+    {
+      "path": "/media/yu/FAFF-E9771/YUANQI_A3/logs/a3_optimizer_20261010_E02/contracts_receipt.log",
+      "bytes": 1613,
+      "sha256": "f2b8299383d7783e9ba560716e690555e02f263396067749de70e04f1fb7b08e"
+    },
+    {
+      "path": "/media/yu/FAFF-E9771/YUANQI_A3/logs/a3_optimizer_20261010_E02/diagnostic.log",
+      "bytes": 7432,
+      "sha256": "33eddc7f942277074303a7f35b3ef91c398bbc63eb3fe43dec354b8199311d25"
+    }
+  ],
+  "diagnostic_source": {
+    "path": "/media/yu/FAFF-E9771/YUANQI_A3/script/a3/optimizer_diagnostic.py",
+    "sha256": "ad1bcbf9da82be87c5215d11f00a05846e619f3250185e5a4301a087e27e6291"
+  }
+}

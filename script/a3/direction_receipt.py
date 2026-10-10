@@ -30,6 +30,15 @@ def main():
         names.append(str(future_path.relative_to(ROOT)))
         names.extend(str(path.relative_to(ROOT)) for path in
                      (ROOT / "data/experiments/a3_future_reference_20261010_E11").rglob("*") if path.is_file())
+    for experiment in ("E12", "E13"):
+        manifest_path = ROOT / "data/manifests" / f"a3_future_reference_20261010_{experiment}.json"
+        if manifest_path.exists():
+            names.append(str(manifest_path.relative_to(ROOT)))
+            names.extend(str(path.relative_to(ROOT)) for path in
+                         (ROOT / "data/experiments" / f"a3_future_reference_20261010_{experiment}").rglob("*") if path.is_file())
+    names.extend(str(path.relative_to(ROOT)) for path in (ROOT / "script/a3").glob("future_reference_*.py"))
+    names.extend(str(path.relative_to(ROOT)) for directory in (ROOT / "logs").glob("a3_future_reference_20261010_*")
+                 for path in directory.rglob("*") if path.is_file())
     result = dict(status="E09_DIAGNOSTIC_E10_DEFERRED", e09_optimizer_steps=offline["optimizer_steps"],
         e09_sampling_reproduced=False, e10_status=stopped["status"], e10_reason=stopped["reason"],
         e10_attempts=stopped["attempts"], initial_ratio_root_cause="UNKNOWN",

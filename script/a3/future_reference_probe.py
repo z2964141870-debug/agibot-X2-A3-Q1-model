@@ -1,5 +1,6 @@
 """CPU causal joint-reference prediction with a fixed whole-motion split."""
 
+import argparse
 import json
 from pathlib import Path
 import time
@@ -64,8 +65,9 @@ def metrics(target, prediction):
                 absolute_error_p95_rad=float(np.quantile(np.abs(error), .95)))
 
 
-def main():
-    output = ROOT / "data/experiments/a3_future_reference_20261010_E11"
+def main(experiment="E11"):
+    use_absolute_pose = experiment == "E11"
+    output = ROOT / "data/experiments" / f"a3_future_reference_20261010_{experiment}"
     output.mkdir(parents=True, exist_ok=False)
     split_path = DATA / "split.json"
     split = json.loads(split_path.read_text())
@@ -79,6 +81,8 @@ def main():
                 raise ValueError("Registered source changed")
             _, _, q, _ = sim.load_a3_flat_csv(path, source_fps=FPS, frame_stride=4)
             x, y, cv, index = windows(q)
+            if not use_absolute_pose:
+                x = x[:, :-q.shape[-1]]
             blocks[part].append(dict(name=row["name"], sha256=row["sha256"], x=x, y=y, cv=cv, index=index))
     train_x = np.concatenate([b["x"] for b in blocks["train"]])
     train_y = np.concatenate([b["y"] for b in blocks["train"]])
@@ -120,7 +124,8 @@ def main():
                 validation["constant_velocity"]["rmse_rad"]) and all(
                 r["metrics"]["ridge"]["rmse_rad"] < r["metrics"]["constant_velocity"]["rmse_rad"]
                 for r in per_motion if r["split"] == "heldout"))
-    receipt = dict(status="complete", experiment="E11", source_fps=FPS, raw_fps=120, stride=4,
+    receipt = dict(status="complete", experiment=experiment, source_fps=FPS, raw_fps=120, stride=4,
+        use_absolute_pose=use_absolute_pose, feature_dimension=train_x.shape[1],
         history_frames=HISTORY, horizons_s=HORIZONS.tolist(), ridge_alpha=RIDGE_ALPHA,
         fit_motion_count=len(blocks["train"]), validation_motion_count=len(blocks["heldout"]),
         split_sha256=sha256(split_path), code_sha256=sha256(Path(__file__)), model_sha256=sha256(model_path),
@@ -132,9 +137,13 @@ def main():
         split_note="FOUR_REPEATED_DIAGNOSTIC_VALIDATION_MOTIONS_NOT_FRESH_FINAL_TEST",
         backup_status="LOCAL_ONLY")
     atomic_json(output / "result.json", receipt)
-    atomic_json(ROOT / "data/manifests/a3_future_reference_20261010.json", receipt)
+    manifest = ("a3_future_reference_20261010.json" if experiment == "E11" else
+                f"a3_future_reference_20261010_{experiment}.json")
+    atomic_json(ROOT / "data/manifests" / manifest, receipt)
     print(json.dumps(receipt, indent=2), flush=True)
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--experiment", choices=("E11", "E12"), default="E11")
+    main(parser.parse_args().experiment)

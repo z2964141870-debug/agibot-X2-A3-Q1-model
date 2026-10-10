@@ -14,6 +14,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-10 | A3专用目录与官方PT导入 | 已建立YUANQI_A3四目录及main工作副本；手动PT大小/SHA/CPU重载与有限性通过，配套4文件仍缺失，见[目录README](README_A3_WORKSPACE_20261010.md) |
 | 2026-10-10 | 每日研究检查与历史补同步 | MimicX、YOCO、VioLA 原文筛选，GNR 等候选；按服务器最新工程入口合并 10/6–8 与 PredActor 记录，未运行算法；见[阶段 README](README_RESEARCH_CHECK_20261010.md) |
 | 2026-10-08 | 每日研究检查与 OCLO 更正 | Beyond Retargeting、BRACE、BiGym 2.0；保留 10/7 接口说明的显式更正，历史连接失败见[阶段 README](README_RESEARCH_CHECK_20261008.md) |
 | 2026-10-08 | PredActor 指定论文阅读 | v3 方法/实验与公开 G1 评测代码静态核验，训练/智元迁移未复现，见[专题 README](README_PREDACTOR_20261008.md) |

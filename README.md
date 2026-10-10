@@ -8,6 +8,7 @@
 
 - 训练主机：`ssh hp3090`
 - 主项目目录：`/media/yu/FAFF-E9771/YUANQI`
+- A3专用工作目录：`/media/yu/FAFF-E9771/YUANQI_A3`，同样使用四目录；Q1继续 `/media/yu/FAFF-E9771/YuanQi_Q1`。最新目录与PT导入记录见 [A3工作目录](reports/README_A3_WORKSPACE_20261010.md)。
 - Git 远端：`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`
 - GitHub：[agibot-X2-A3-Q1-model](https://github.com/z2964141870-debug/agibot-X2-A3-Q1-model)
 - 大型工件备份：百度网盘；只有上传并完成校验后才标记为已备份。

@@ -6,6 +6,8 @@
 
 - 训练主机是 `ssh hp3090`，项目根为 `/media/yu/FAFF-E9771/YUANQI`。
 - 默认在该目录组织后续训练工作；GPU/软件状态以当前核验为准。
+- 2026-10-10 用户将A3工作细分到 `ssh hp3090` 的 `/media/yu/FAFF-E9771/YUANQI_A3`，沿用 `data / logs / script / reports`。`YUANQI` 保留通用研究/教学与历史实验；A3后续模型、评测及训练写新目录，Q1位置不变。新A3副本当前跟踪同仓库 `origin/main`，未另外创建A3分支。入口 `reports/README_A3_WORKSPACE_20261010.md`。
+- 新A3目录的既有Python环境和固定vendor源码使用指向YUANQI的复用链接，按只读资源使用；新生成工件写 `YUANQI_A3/data/`，不通过历史参考链接改写旧R01/R02/R03或全链路台账。原下载PT保留，副本位于 `YUANQI_A3/data/models/a3_official_035/checkpoints/035_step200000/`。
 - 2026-10-08 用户为 Q1 专门指定 `ssh hp3090` 的 `/media/yu/FAFF-E977/YuanQi_Q1`；Q1 开发使用该目录，沿用四目录和 Git/大文件规范。Mac 不新增大型文件，开发所需资料迁往服务器。已核验 `FAFF-E977` 是指向 `FAFF-E9771` 的软链接。
 - Q1 最终目标是 SMPL 驱动全身动作跟随，包括腿部和移动；先核实现有实时跟踪接口，不满足时训练类似 SONIC 的策略。设备输出字段、帧率和传输方式尚未确认，最新证据见 `reports/README_Q1_SMPL_20261008.md`。
 - `data/` 放产生的数据、checkpoint、导出模型、录制、视频和评测输出。

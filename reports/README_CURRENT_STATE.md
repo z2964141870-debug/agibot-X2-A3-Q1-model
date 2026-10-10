@@ -17,7 +17,7 @@
 
 ## 已完成，可从证据继续
 
-10/10 A3 E05/R08完成：epochs1官方初始化2更新、4/8optimizer计数和独立保存/aux/LR核验通过，完整20动作0跌倒。关节RMSE0.07730rad低于epochs5的0.08314但仍高于官方0.05906，根误差更差；固定输入漂移也下降，未证明整体改善。训练/评测inactive/disabled，同boot。下一项依规则E06/R09仅LR整体缩小10倍、官方独立2更新与完整selected20；入口[结果与筛选规则](README_A3_SEARCH_20261010.md)。
+10/10 A3 E05 epochs1完整20动作0跌倒、关节RMSE0.07730仍高于官方，根误差更差；E06/R09仅LR同比缩小10倍，从官方独立2更新完成，step0/1/2大小/SHA/CPU/有限性与4/8optimizer计数通过，实际8步与aux核验，保存LR约1.333e-6。真实配置差异核验通过，训练inactive/disabled、同boot。下一项完整selected20与严格官方非退化筛选，入口[结果与筛选规则](README_A3_SEARCH_20261010.md)。
 
 10/10 A3 E04/R07阶段完成：修正Accelerate钩子兼容，10 CPU契约、官方初始化2更新、step0/1/2独立模型/优化器有限性与40实际step/aux目标核验通过。step1/2各完整selected20无跌倒；关节RMSE官方0.05906、旧step2 0.09153、新step1 0.07991、新step2 0.08314rad。新step2较旧误差低9.16%但比官方高40.77%，20/20动作关节误差均高于官方，留出同样退化，尚无正向提升。首轮回合长度空统计NaN单列。训练/评测inactive/disabled、同boot、GPU空闲；E03/R06失败账本保留，LOCAL_ONLY。下一变量建议epochs5→1独立2更新，本轮未执行；见[完整结果](README_A3_CORRECTED_20261010.md)。
 

@@ -1,6 +1,6 @@
 # A3 官方模型全链路执行
 
-日期：2026-10-10，北京时间。独立工作根为 hp3090 的 `/media/yu/FAFF-E9771/YUANQI_A3`，main 分支。本阶段继续用户批准的官方 PT、基线、2→200 短微调、对照及导出计划。旧全链路记录和 R01/R02/R03 保留暂停。
+日期：2026-10-10，北京时间。独立工作根为 hp3090 的 `/media/yu/FAFF-E9771/YUANQI_A3`，main 分支。状态：当前可执行工作已结束，24任务18通过（限定范围）/2失败/4搁置，65检查通过；最终矩阵、工件和用户待办见文末。官方基线20/20无跌倒，200次短微调5/20跌倒，效果退化；缓冲与导出链路通过。旧全链路记录和 R01/R02/R03 保留暂停。下列阶段条目保留实际推进过程，最终状态以文末和新清单为准。
 
 ## 已完成与范围
 
@@ -29,11 +29,11 @@
 
 官方与step200 ONNX各100真实输入均通过容差，误差分别2.8610e-6、3.8147e-6；后者ONNX SHA `f1c982f68a7dd519fb53a2f97c78a4c0b8774756ff263abe9a834eaf3c664111`。导出正确不能证明策略性能通过。下一步仍用官方模型执行四段动捕和完整缓冲诊断；本轮不部署微调模型。
 
-## 独立卡点
-
 ## 动捕策略诊断
 
 11:35四段转换后的30Hz参考stride1完整MuJoCo回放结束。走路、单腿与9/23录制触发跌倒，9/24录制未触发，合计3/4；仅诊断完整覆盖通过，人体姿态/轨迹/接触质量仍失败，原数据TEST_ONLY/training_allowed=false不变。逐动作首次跌倒、回放完成、跌倒前与全程跟踪误差见 `official_mocap/explicit_summary.json`，对应源SHA与配置见 `reused_history.json`。不能与20个官方样例混为同一数据集验收。
+
+## 独立卡点
 
 Isaac指标导入再次失败：`ModuleNotFoundError: No module named 'smpl_sim'`。评测需兼容 `smpl_sim.smpllib.smpl_eval` 和独立validate，暂时搁置，退出码不能代替指标。RKNN模块仍未安装，转换/包和板端推理搁置。此二项不阻止MuJoCo和短微调。动捕根轨迹、接触、个人标定与姿态质量待用户处理，结构测试不能证明高保真。
 
@@ -51,8 +51,6 @@ data/environments/a3-sonic/bin/python -m script.a3.reference_contract validate
 ```
 
 以上download入口实际只核验5个已有文件。新工件留服务器LOCAL_ONLY，未进行网盘往返校验。
-
-## 下一步与保护
 
 ## 短微调执行
 
@@ -87,3 +85,55 @@ R05服务 `a3-finetune-r05.service`，CPUQuota100%、linger=yes，重启后按30
 开始官方完整selected20，逐动作可恢复且完整覆盖核验；然后独立R04从官方权重初始化，计数与优化器重置，16环境，2次冒烟后完整恢复至200，每10保存。无累计启动次数/到期限制，CPU90°C/GPU85°C连续2次、5秒采样、300秒恢复冷却、异常与连续2次无保存进度保护保留。评测和训练串行，不操作真机。
 
 每阶段更新本README、索引/current state，审计后scoped提交推送main并核验远端。发布版本以Git历史为准；后续更新实际结果后再报告完成。
+
+## 最终交付与测试矩阵
+
+11:43本轮当前可执行分支全部结束。新台账24项为18通过、2失败、4搁置，待做/运行中为0；通过项包含结构/计算/训练链路，不能合并解释成策略验收通过。65项项目检查通过，日志 `logs/a3_fullchain_20261010/final_tests.log`；2失败为动捕参考质量与微调策略效果，4搁置为Isaac指标依赖、Isaac基线、RKNN转换/包、动捕微调。
+
+| 分支 | 状态 | 实测与边界 |
+| --- | --- | --- |
+| 官方5文件身份、CPU重载 | 通过 | 固定发布SHA、网络/优化器有限；LOCAL_ONLY |
+| 4段SMPL结构/时序与A3重定向 | 通过（诊断） | frame_index/旋转/单位/29关节/合成检查；不代表高保真 |
+| 动捕参考质量 | 失败 | IK残差、脚穿地；原TEST_ONLY不变 |
+| 官方20动作MuJoCo | 通过（固定仿真） | 全24304步、0/20跌倒；RMSE0.05906rad |
+| 官方4动捕MuJoCo | 通过（诊断链路） | 全13390步、3/4跌倒；跟踪质量未验收 |
+| 独立R05 2→200 | 通过（训练链路） | 权重初始化/优化器计数重置，最终CPU重载、有限性及optimizer4000 |
+| 同条件20动作对照 | 通过（计算） | 16/4固定划分、完整回放及跌倒前统计；策略效果失败 |
+| 微调效果 | 失败 | 0/20→5/20跌倒，4留出0/4→1/4；留出RMSE0.06632→0.21551 |
+| 因果策略缓冲完整对照 | 通过（模拟回放） | 官方20动作0/20→0/20；4动捕3/4→2/4，无未来源帧读取 |
+| PT/ONNX | 通过（导出数值） | 官方/微调各100真实输入、1570→29、指定容差；无板端结论 |
+| RKNN输入契约 | 通过（格式） | 实际官方ONNX与固定转换器schema契约；无RKNN二进制/包 |
+| Isaac / RKNN / 衣服微调 | 搁置 | 依赖与质量卡点，后续处理见下表 |
+
+完整缓冲对照累计37694实际策略窗口均未读尚未到达源帧；名义180ms、速度前向差分需要200ms预填充，30Hz到达/50Hz策略实际目标年龄200–240ms。官方selected20缓冲关节RMSE0.059128rad，离线0.059060rad；动捕缓冲2/4跌倒仅诊断。结束事件必须已到达才允许hold_last，完整动作末尾已覆盖。证据 `policy_buffer_comparison.json` 与两目录 `*.buffer.npz`，不代表现场时钟/网络/端到端延迟。
+
+已有时序重算了躯干/手腕/腿部世界和anchor相对坐标误差，未额外运行仿真。4留出全程手腕anchor相对误差0.008556m→0.056926m，腿部0.022805m→0.051218m；跌倒前手腕0.008556m→0.039560m，腿部0.022805m→0.047691m，同样支持退化结论。原始与全部分组值见 `paired_comparison.json`。
+
+## 工件与恢复位置
+
+均以 `/media/yu/FAFF-E9771/YUANQI_A3/` 为根；大型模型、NPZ、PKL与完整轨迹仍LOCAL_ONLY，未确认百度网盘往返备份，不删除原件。
+
+| 工件 | 相对位置 |
+| --- | --- |
+| 官方完整模型包 | `data/models/a3_official_035/checkpoints/035_step200000/` |
+| 固定划分/人体与A3参考/来源SHA | `data/experiments/a3_fullchain_20261010/{split.json,mocap,reused_history.json}` |
+| 官方基线/微调对照 | 同实验根 `official_baseline/`、`finetuned_evaluation/`、`paired_comparison.json` |
+| 动捕与缓冲逐动作证据 | 同实验根 `official_mocap/`、`official_buffer_selected20/`、`official_buffer_mocap/` |
+| 最终微调权重与配置 | `data/training/a3_finetune_20261010/R05_010_s120/` |
+| 训练独立校验/台账 | 同实验根 `finetune_verification.json`、`finetune_R05/{job.json,state.json}` |
+| 两个ONNX与100输入数值证据 | 同实验根 `onnx_official/`、`onnx_finetuned/` |
+| 执行日志/保护采样/检查 | `logs/a3_fullchain_20261010/` |
+| Git小型清单/测试矩阵与全部文件SHA | `data/manifests/a3_official_stage_20261010.json` |
+
+训练保护134条采样CPU最高74°C、GPU40°C，仅说明这些采样，不能推断重启原因。R05共10次attempt完成，未修改R01/02/03、旧全链路台账或Q1副本。当前训练与评测都结束且服务disable，GPU计算任务为空；巡检yuanqi-a3仍PAUSED，每日研究yuanqi仍ACTIVE。最终提交由Git历史识别，审计后scoped推送main，核对HEAD与远端；失败时保留本地证据，不强推。
+
+## 用户后续事项
+
+| 卡点 | 证据/影响 | 后续处理 |
+| --- | --- | --- |
+| Isaac指标依赖 | `dependencies.json`，缺 `smpl_sim.smpllib.smpl_eval`，Isaac效果UNKNOWN | 提供与官方评测兼容的指标实现/依赖；随后独立validate后才能验收 |
+| RKNN工具链 | `rknn`导入缺失；无转换包与板端证据 | 提供兼容RKNN转换环境及目标平台信息；板端推理需另行测试，本轮不操作真机 |
+| 动捕质量/现场接口 | `retarget_summary.json`、`input_audit.json`；衣服微调搁置 | 核对个人标定、重建精度、世界根轨迹、地面/脚接触、现场协议与真实时间戳；质量验收前不修改TEST_ONLY |
+| 200次微调退化 | `paired_comparison.json`，5跌倒且留出误差增加 | 保留官方模型为当前仿真基线；后续独立设计稳定性/学习步长/数据分布诊断，不能直接部署该微调版本 |
+
+本轮已推进到剩余事项依赖上述资源/质量处理，停止追加训练和评测。恢复先读本README/current state及清单，已验收项跳过；不要重新恢复旧长训。

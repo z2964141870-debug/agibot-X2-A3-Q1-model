@@ -3,6 +3,8 @@
 import unittest
 
 from script.a3.official_results import aggregate
+from script.a3.evaluate_mujoco import rollout_windows
+import numpy as np
 
 
 class AggregationTests(unittest.TestCase):
@@ -22,6 +24,22 @@ class AggregationTests(unittest.TestCase):
     def test_empty_before_fall_has_no_error_value(self):
         result = aggregate([self.row(0, None, True)])
         self.assertIsNone(result["before_first_fall"]["joint_rmse_rad"])
+
+    def test_body_errors_use_same_before_fall_mask(self):
+        names = ["torso_Link", "left_wrist_yaw_Link", "right_wrist_yaw_Link", "left_knee_Link"]
+        points = np.zeros((2, 4, 3))
+        points[0, :, 0] = .1
+        points[1, :, 0] = 10
+        trace = {"policy_tick": [0, 1], "q_state_29": np.zeros((2, 29)),
+                 "reference_q_29": np.zeros((2, 29)), "root_pos_error_m": [0, 0],
+                 "root_quat_error_deg": [0, 0], "anchor_pos_error_m": [0, 0], "body_names": names,
+                 "sim_body_pos_w": points, "ref_body_pos_w": np.zeros_like(points),
+                 "sim_body_pos_anchor": points, "ref_body_pos_anchor": np.zeros_like(points)}
+        summary = {"num_policy_steps": 2, "fall": True, "fall_tick": 1,
+                   "tracking": {"all_29_rmse": 0}}
+        windows = rollout_windows(summary, trace)
+        self.assertAlmostEqual(windows["before_first_fall"]["wrists_world_mean_m"], .1)
+        self.assertAlmostEqual(windows["full_rollout"]["legs_anchor_local_mean_m"], 5.05)
 
 
 if __name__ == "__main__":

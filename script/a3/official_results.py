@@ -17,7 +17,10 @@ def aggregate(rows):
     for window in ("before_first_fall", "full_rollout"):
         n = sum(r["windows"][window]["policy_steps"] for r in rows)
         result[window] = {"policy_steps": n}
-        for metric in ("joint_rmse_rad", "root_pos_error_m_mean", "root_quat_error_deg_mean"):
+        metrics = {"joint_rmse_rad", "root_pos_error_m_mean", "root_quat_error_deg_mean"}
+        if rows:
+            metrics.update(key for key in rows[0]["windows"][window] if key.endswith("_mean_m"))
+        for metric in sorted(metrics):
             power = 2 if metric == "joint_rmse_rad" else 1
             weighted = sum(r["windows"][window]["policy_steps"] *
                            (r["windows"][window][metric] or 0) ** power for r in rows)
@@ -202,14 +205,31 @@ def snapshot(final=False):
               "old_lineages_restarted": False, "hardware_control": False,
               "git_parent": __import__("subprocess").check_output(
                   ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
+              "code": [{"path": str(p.relative_to(ROOT)), "sha256": digest(p)}
+                       for p in sorted((ROOT / "script/a3").iterdir())
+                       if p.is_file() and p.suffix in (".py", ".service")],
               "assets": {str(p.relative_to(ROOT)): digest(p) for p in (
                   VENDOR / "gear_sonic/data/assets/robot_description/mjcf/a3_t2d5_loop_passive_foot_twostage_fit_optimized.xml",)}}
     write_json(ROOT / "data/manifests/a3_official_stage_20261010.json", report)
 
 
+def summarize_completed():
+    from script.a3.evaluate_mujoco import summarize_explicit
+    for name in ("official_baseline", "finetuned_evaluation", "official_mocap",
+                 "official_buffer_selected20", "official_buffer_mocap"):
+        output = DATA / name
+        if (output / "explicit_summary.json").exists():
+            summarize_explicit(output)
+    baseline()
+    mocap()
+    compare()
+    if (DATA / "official_buffer_mocap/explicit_summary.json").exists():
+        buffer()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("baseline", "mocap", "verify-trial", "compare", "buffer", "snapshot", "final"))
+    parser.add_argument("action", choices=("baseline", "mocap", "verify-trial", "compare", "buffer", "summarize", "snapshot", "final"))
     parser.add_argument("--partial", action="store_true")
     args = parser.parse_args()
     if args.action == "baseline":
@@ -222,6 +242,8 @@ def main():
         print(json.dumps(compare(partial=args.partial)["groups"], indent=2))
     elif args.action == "buffer":
         buffer()
+    elif args.action == "summarize":
+        summarize_completed()
     else:
         snapshot(final=args.action == "final")
 

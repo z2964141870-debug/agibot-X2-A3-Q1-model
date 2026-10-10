@@ -37,6 +37,22 @@ def rollout_windows(summary, trace):
             if values.shape != (n,) or not np.isfinite(values).all():
                 raise ValueError("Invalid pose error timeseries")
             row[key + "_mean"] = float(values[mask].mean()) if count else None
+        if trace.get("sim_body_pos_w") is not None:
+            names = trace["body_names"]
+            groups = {"torso": ["torso_Link"],
+                      "wrists": ["left_wrist_yaw_Link", "right_wrist_yaw_Link"],
+                      "legs": [name for name in names if any(token in name for token in ("hip_", "knee_", "ankle_"))]}
+            for frame, sim_key, ref_key in (("world", "sim_body_pos_w", "ref_body_pos_w"),
+                                           ("anchor_local", "sim_body_pos_anchor", "ref_body_pos_anchor")):
+                sim_pos, ref_pos = np.asarray(trace[sim_key]), np.asarray(trace[ref_key])
+                if sim_pos.shape != (n, len(names), 3) or ref_pos.shape != sim_pos.shape:
+                    raise ValueError("Body tracking timeseries shape mismatch")
+                if not np.isfinite(sim_pos).all() or not np.isfinite(ref_pos).all():
+                    raise ValueError("Nonfinite body tracking timeseries")
+                errors_m = np.linalg.norm(sim_pos - ref_pos, axis=-1)
+                for group, bodies in groups.items():
+                    indices = [names.index(name) for name in bodies]
+                    row[f"{group}_{frame}_mean_m"] = float(errors_m[mask][:, indices].mean()) if count else None
         result[label] = row
     if not math.isclose(result["full_rollout"]["joint_rmse_rad"], summary["tracking"]["all_29_rmse"], rel_tol=1e-6):
         raise ValueError("Timeseries disagrees with published tracking metrics")

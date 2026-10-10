@@ -17,20 +17,24 @@ OUTPUT = ROOT / "data/experiments/a3_corrected_20261010_E04"
 LOGS = ROOT / "logs/a3_corrected_20261010_E04"
 
 
-def main():
+def main(output=OUTPUT, logs=LOGS, trial="R07", evaluated_steps=(1, 2), manifest_name=None):
+    OUTPUT, LOGS = output, logs
     verification = read(OUTPUT / "verification.json")
     if read(OUTPUT / "evaluation_state.json")["status"] != "complete":
         raise ValueError("The two evaluations have not completed")
     directories = dict(official=DATA / "official_baseline",
-                       R05_step2=ROOT / "data/experiments/a3_regression_20261010_E01/step002",
-                       R07_step1=OUTPUT / "step001", R07_step2=OUTPUT / "step002")
+                       R05_step2=ROOT / "data/experiments/a3_regression_20261010_E01/step002")
+    if trial != "R07":
+        directories["R07_step2"] = ROOT / "data/experiments/a3_corrected_20261010_E04/step002"
+    directories.update({f"{trial}_step{step}": OUTPUT / f"step{step:03d}" for step in evaluated_steps})
     summaries = {label: read(directory / "explicit_summary.json") for label, directory in directories.items()}
     base = summaries["official"]
     expected_shas = dict(official=verification["source_sha256"],
         R05_step2=next(r["sha256"] for r in read(
-            ROOT / "data/experiments/a3_regression_20261010_E01/plan.json")["checkpoints"] if r["step"] == 2),
-        R07_step1=verification["checkpoints"]["1"]["sha256"],
-        R07_step2=verification["checkpoints"]["2"]["sha256"])
+            ROOT / "data/experiments/a3_regression_20261010_E01/plan.json")["checkpoints"] if r["step"] == 2))
+    if trial != "R07":
+        expected_shas["R07_step2"] = read(ROOT / "data/experiments/a3_corrected_20261010_E04/verification.json")["checkpoints"]["2"]["sha256"]
+    expected_shas.update({f"{trial}_step{step}": verification["checkpoints"][str(step)]["sha256"] for step in evaluated_steps})
     artifacts = []
     for label, summary in summaries.items():
         for field in PROTOCOL_FIELDS:
@@ -51,7 +55,7 @@ def main():
                 path = directory / f"{stem}.{suffix}"
                 if sha256(path) != expected:
                     raise ValueError("Published evaluation artifact changed")
-                if label.startswith("R07"):
+                if label.startswith(trial):
                     artifacts.append(dict(path=str(path.relative_to(ROOT)), bytes=path.stat().st_size,
                                           sha256=expected))
     split = read(DATA / "split.json")
@@ -115,7 +119,8 @@ def main():
                     cpu_max_c=max((h["temperatures_c"].get("x86_pkg_temp", 0) for h in health), default=None),
                     gpu_max_c=max((g["temperature.gpu"] for h in health for g in h["gpus"]), default=None),
                     ram_available_min_bytes=min((h["memory_bytes"]["MemAvailable"] for h in health), default=None)),
-        scope="SINGLE_SEED_ENGINEERING_FIX_BUNDLE_DIAGNOSTIC_NOT_SINGLE_FACTOR_ATTRIBUTION",
+        scope="SINGLE_SEED_ENGINEERING_FIX_BUNDLE_DIAGNOSTIC_NOT_SINGLE_FACTOR_ATTRIBUTION" if trial == "R07" else
+              "CONTROLLED_CONSERVATIVE_UPDATE_DIAGNOSTIC_NOT_GENERAL_POLICY_ACCEPTANCE",
         heldout_scope="WITHHELD_FROM_FINETUNING_NOW_USED_FOR_DIAGNOSIS_NOT_FRESH_FINAL_TEST",
         backup_status="LOCAL_ONLY", generated_utc=datetime.now(timezone.utc).isoformat())
     result["training"] = dict(job=read(OUTPUT / "job.json"), state=read(OUTPUT / "state.json"),
@@ -129,7 +134,7 @@ def main():
     result["logs"] = [dict(path=str(path.relative_to(ROOT)), bytes=path.stat().st_size, sha256=sha256(path))
                       for path in sorted(LOGS.rglob("*")) if path.is_file() and path.name != "comparison.log"]
     atomic_json(OUTPUT / "comparison.json", result)
-    atomic_json(ROOT / "data/manifests/a3_corrected_20261010_E04.json", result)
+    atomic_json(ROOT / "data/manifests" / (manifest_name or "a3_corrected_20261010_E04.json"), result)
     print(json.dumps(rows, indent=2), flush=True)
     return result
 

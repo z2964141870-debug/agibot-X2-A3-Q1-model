@@ -23,6 +23,21 @@ LOGS = ROOT / "logs/a3_corrected_20261010_E03"
 TRAINING = ROOT / "data/training/a3_finetune_20261010"
 OFFICIAL = ROOT / "data/models/a3_official_035/checkpoints/035_step200000/model_step_200000.pt"
 TRIAL = "R06"
+EPOCHS = 5
+LR_SCALE = 1.0
+EVALUATED_STEPS = (1, 2)
+
+
+def configure_trial(trial):
+    global TRIAL, OUTPUT, LOGS, EPOCHS, LR_SCALE, EVALUATED_STEPS
+    experiments = {"R06": "a3_corrected_20261010_E03", "R07": "a3_corrected_20261010_E04",
+                   "R08": "a3_search_20261010_E05", "R09": "a3_search_20261010_E06"}
+    TRIAL = trial
+    OUTPUT = ROOT / "data/experiments" / experiments[trial]
+    LOGS = ROOT / "logs" / experiments[trial]
+    EPOCHS = 1 if trial in ("R08", "R09") else 5
+    LR_SCALE = 0.1 if trial == "R09" else 1.0
+    EVALUATED_STEPS = (2,) if trial in ("R08", "R09") else (1, 2)
 
 
 def read(path):
@@ -31,7 +46,7 @@ def read(path):
 
 def configuration():
     return dict(source=str(OFFICIAL), source_sha256=checkpoint_metadata(OFFICIAL)["sha256"],
-                target_step=2, num_envs=16, num_mini_batches=4, num_learning_epochs=5,
+                target_step=2, num_envs=16, num_mini_batches=4, num_learning_epochs=EPOCHS,
                 configured_num_learning_iterations=200, save_frequency=1,
                 max_attempts=None, expires_at=None, max_no_progress=2,
                 max_cpu_c=90, max_gpu_c=85, sample_seconds=5, cooldown_seconds=300,
@@ -39,7 +54,8 @@ def configuration():
                 trainer="script.a3.verified_finetune.VerifiedFineTuneTrainer",
                 trainer_sha256=sha256(ROOT / "script/a3/verified_finetune.py"),
                 job_sha256=sha256(Path(__file__)), old_lineages_allowed=False,
-                seed=0, backup_status="LOCAL_ONLY")
+                seed=0, lr_scale=LR_SCALE, evaluation_steps=list(EVALUATED_STEPS),
+                backup_status="LOCAL_ONLY")
 
 
 def train():
@@ -121,6 +137,12 @@ def train():
                 "callbacks.model_save._target_=script.a3.resumable_sonic.DurableModelSaveCallback",
                 "callbacks.model_save.save_frequency=1", "+callbacks.model_save.save_last_frequency=1",
                 "+callbacks.model_save.target_global_step=2"]
+        if EPOCHS != 5:
+            argv += [f"algo.config.num_learning_epochs={EPOCHS}"]
+        if LR_SCALE != 1:
+            argv += [f"algo.config.actor_learning_rate={2e-5 * LR_SCALE}",
+                     f"algo.config.adaptive_lr_min={1e-5 * LR_SCALE}",
+                     f"algo.config.adaptive_lr_max={2e-4 * LR_SCALE}"]
         if checkpoint:
             argv += ["++resume=true", "++resume_in_place=false"]
         row["argv"] = argv
@@ -160,9 +182,13 @@ def verify():
         directory, logs = Path(attempt["run_dir"]), Path(attempt["logs"])
         config = yaml.safe_load((directory / "config.yaml").read_text())
         if (config["trainer"]["_target_"] != configuration()["trainer"] or
-                config["algo"]["config"]["num_learning_epochs"] != 5 or
+                config["algo"]["config"]["num_learning_epochs"] != EPOCHS or
                 not config["algo"]["config"]["compute_aux_loss"]):
             raise ValueError("Full trainer config does not match the registered objective")
+        for key, expected in (("actor_learning_rate", 2e-5 * LR_SCALE),
+                              ("adaptive_lr_min", 1e-5 * LR_SCALE), ("adaptive_lr_max", 2e-4 * LR_SCALE)):
+            if not math.isclose(config["algo"]["config"][key], expected, rel_tol=1e-12):
+                raise ValueError("Learning rate scale differs from the registered trial")
         completed_episode_counts = {}
         for path in sorted(directory.glob("model_step_*.pt")):
             metadata = checkpoint_metadata(path)
@@ -173,7 +199,7 @@ def verify():
             optimizer = payload["optimizer_state_dict"]
             completed_episode_counts[step] = len(payload["state"].lenbuffer)
             counters = sorted({int(s["step"]) for s in optimizer["state"].values() if "step" in s})
-            if counters != ([step * 20] if step else []):
+            if counters != ([step * EPOCHS * 4] if step else []):
                 raise ValueError("Optimizer count disagrees with update count")
             rates = [float(g["lr"]) for g in optimizer["param_groups"]]
             args_lr = float(payload["args"].learning_rate)
@@ -219,7 +245,7 @@ def verify():
     if not all(str(step) in records for step in (0, 1, 2)):
         raise ValueError("Missing independently verified initial/first/second update")
     completed_audit = [row for row in audit if row["trainer_global_step"] <= 2]
-    if len(completed_audit) < 40:
+    if len(completed_audit) < 2 * EPOCHS * 4:
         raise ValueError("Missing actual optimizer step audit")
     aux_tags = {tag for record in scalar_records for tag in record["scalars"] if "aux" in tag.lower()}
     if not any("total_aux_loss" in tag for tag in aux_tags):
@@ -263,7 +289,7 @@ def evaluate():
             boot_id=Path("/proc/sys/kernel/random/boot_id").read_text().strip()))
         state["status"] = "running"
         atomic_json(state_path, state)
-        for step in (1, 2):
+        for step in EVALUATED_STEPS:
             output = OUTPUT / f"step{step:03d}"
             output.mkdir(parents=True, exist_ok=True)
             if (output / "explicit_manifest.json").exists():
@@ -292,13 +318,10 @@ def evaluate():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=("train", "verify", "evaluate"))
-    parser.add_argument("--trial", choices=("R06", "R07"), default="R06")
+    parser.add_argument("--trial", choices=("R06", "R07", "R08", "R09"), default="R06")
     args = parser.parse_args()
     action = args.action
-    if args.trial == "R07":
-        TRIAL = "R07"
-        OUTPUT = ROOT / "data/experiments/a3_corrected_20261010_E04"
-        LOGS = ROOT / "logs/a3_corrected_20261010_E04"
+    configure_trial(args.trial)
     if action == "verify":
         verify()
     else:

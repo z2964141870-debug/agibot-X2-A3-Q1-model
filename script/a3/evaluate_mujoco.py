@@ -123,6 +123,11 @@ def evaluate_explicit(args):
         protocol["joint_ablation"] = dict(mode=joint_mode, predictor_sha256=sha256(predictor) if predictor else None,
             noise_std_rad=args.joint_noise_std, noise_seed=args.joint_noise_seed,
             scope="JOINT_ONLY_FUTURE_ORIENTATION_ORACLE_NOT_FULL_CAUSAL_TELEOP")
+        if getattr(args, "causal_orientation", False):
+            protocol["joint_ablation"].update(orientation="CAUSAL_SO3_CONSTANT_ANGULAR_VELOCITY",
+                scope="FULL_POLICY_REFERENCE_CAUSAL_SIMULATED_ARRIVALS_NOT_LIVE_CLOCKS")
+    if getattr(args, "capture_count", None) is not None:
+        protocol["capture_count"] = args.capture_count
     output.mkdir(parents=True, exist_ok=True)
     logs.mkdir(parents=True, exist_ok=True)
     manifest_path = output / "explicit_manifest.json"
@@ -159,8 +164,12 @@ def evaluate_explicit(args):
                      "--joint-trace", str(output / f"{name}.joint.npz")]
             if args.joint_predictor:
                 argv += ["--joint-predictor", str(args.joint_predictor)]
+            if getattr(args, "causal_orientation", False):
+                argv += ["--causal-orientation"]
         if args.capture_inputs:
             argv += ["--capture", str(output / f"{name}.inputs.npz")]
+            if getattr(args, "capture_count", None) is not None:
+                argv += ["--capture-count", str(args.capture_count)]
         argv += ["--", "--checkpoint", str(checkpoint), "--motion", str(motion),
                  "--encoder-mode", "a3_fast", "--csv-source-fps", str(args.reference_fps),
                  "--csv-frame-stride", str(args.frame_stride), "--batch-once",
@@ -265,10 +274,12 @@ def main():
     parser.add_argument("--action-delay-ms", type=float, default=0)
     parser.add_argument("--reference-buffer-ms", type=float, default=0)
     parser.add_argument("--capture-inputs", action="store_true")
+    parser.add_argument("--capture-count", type=int)
     parser.add_argument("--joint-reference-mode", choices=("oracle_aligned", "hold", "cv", "smooth_cv", "E12", "E14"))
     parser.add_argument("--joint-predictor", type=Path)
     parser.add_argument("--joint-noise-std", type=float, default=0)
     parser.add_argument("--joint-noise-seed", type=int, default=0)
+    parser.add_argument("--causal-orientation", action="store_true")
     args = parser.parse_args()
     if args.reference_buffer_ms and args.reference_buffer_ms < 180:
         parser.error("A3-fast causal replay requires at least180ms coverage")

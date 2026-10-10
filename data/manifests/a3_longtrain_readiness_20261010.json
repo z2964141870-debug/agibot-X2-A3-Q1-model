@@ -1,5 +1,5 @@
 {
-  "utc": "2026-10-10T12:31:42.702711+00:00",
+  "utc": "2026-10-10T13:08:47.558519+00:00",
   "contract_sha256": "e812cc11469e3ac3d4fa8ae3198f23e0ae660ab88c3b6d6a0aa0ec28bd2f8353",
   "checks": {
     "official_bundle": {
@@ -199,7 +199,7 @@
     },
     "storage": {
       "passed": true,
-      "free_bytes": 600592105472,
+      "free_bytes": 599994441728,
       "short_trial_checkpoint_count": 21,
       "short_trial_reserved_bytes": 27623557342,
       "long_training_storage_estimate_pending": true
@@ -240,8 +240,11 @@
       "note": "R05-R09 have not passed effect acceptance"
     },
     "full_causal_input": {
-      "passed": false,
-      "note": "E16 changes joints only; future orientation remains oracle"
+      "passed": true,
+      "receipt": "/media/yu/FAFF-E9771/YUANQI_A3/data/manifests/a3_causal_inputs_verified_20261010_E18.json",
+      "sha256": "26ee4c6576e909f174ee4837e85edbf364b14b05f0555fc86b6ece7f75de7b47",
+      "scope": "POLICY_REFERENCE_TOKENS_ONLY",
+      "initialization": "MATCHED_OFFLINE_RESET_QVEL; CAUSAL_INITIALIZATION_NOT_VERIFIED"
     },
     "fresh_validation": {
       "passed": false,
@@ -254,42 +257,43 @@
     "blockers": [
       "initial_runtime_likelihood_unresolved",
       "no_accepted_finetuned_policy",
-      "full_causal_orientation_not_verified",
-      "fresh_final_validation_missing",
       "candidate_objective_and_parameter_scope_not_fixed",
       "long_training_budget_not_fixed"
+    ],
+    "final_acceptance_pending": [
+      "fresh_final_validation_missing"
     ],
     "launch_performed": false
   },
   "initial_health": {
-    "at_utc": "2026-10-10T12:31:43.650053+00:00",
+    "at_utc": "2026-10-10T13:08:48.524620+00:00",
     "boot_id": "f6e86267-d04c-4085-a5fc-e35dcc1fb2b5",
-    "uptime_seconds": 5750.6,
+    "uptime_seconds": 7975.47,
     "load_average": [
-      0.3369140625,
-      0.4990234375,
-      0.3798828125
+      0.072265625,
+      0.07275390625,
+      0.13037109375
     ],
     "memory_bytes": {
       "MemTotal": 33503973376,
-      "MemAvailable": 30758772736,
+      "MemAvailable": 30031872000,
       "SwapTotal": 0,
       "SwapFree": 0
     },
     "temperatures_c": {
-      "iwlwifi_1": 37.0,
+      "iwlwifi_1": 38.0,
       "acpitz": 27.8,
-      "x86_pkg_temp": 44.0
+      "x86_pkg_temp": 55.0
     },
     "gpu_query": {
       "returncode": 0,
-      "stdout": "32, 31.14, 370.00, 0, 92",
+      "stdout": "31, 33.32, 370.00, 0, 92",
       "stderr": ""
     },
     "gpus": [
       {
-        "temperature.gpu": 32.0,
-        "power.draw": 31.14,
+        "temperature.gpu": 31.0,
+        "power.draw": 33.32,
         "power.limit": 370.0,
         "utilization.gpu": 0.0,
         "memory.used": 92.0
@@ -298,7 +302,7 @@
   },
   "git_head": {
     "returncode": 0,
-    "stdout": "ebda26a0440389d2d5d073046036055626639942",
+    "stdout": "914938667b90617e79968c2c074d952e8c22529f",
     "stderr": ""
   },
   "policy_updates": 0,

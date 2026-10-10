@@ -25,6 +25,14 @@ class ReadinessTests(unittest.TestCase):
         checks["storage"]["passed"] = False
         self.assertFalse(evaluate_readiness(config, checks)["infrastructure_ready"])
 
+    def test_fresh_final_test_is_distinct_from_training_feasibility(self):
+        checks = {name: dict(passed=True) for name in ("official_bundle", "official_cpu_reload", "motion_split",
+            "motionlib", "storage", "vendor", "runtime_likelihood", "candidate_policy", "full_causal_input")}
+        config = dict(candidate_variable="fixed_test_variable", actor_update_scope="decoder", long_training_updates=1000)
+        result = evaluate_readiness(config, checks)
+        self.assertTrue(result["long_training_ready"])
+        self.assertEqual(result["final_acceptance_pending"], ["fresh_final_validation_missing"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,441 @@
+{
+  "status": "complete",
+  "experiment": "E19",
+  "code_sha256": "834fc875c916ef37a8dd1afc0c4b72a12752ee4192424b8e10c675e40892954d",
+  "scope": "FROZEN_DEPLOYMENT_MODEL_SAME_SAVED_CV_STATES_COUNTERFACTUAL_NOT_NEW_CLOSED_LOOP_OR_NATIVE_PPO",
+  "runtime_action_replays": 800,
+  "runtime_action_max_abs_difference": 0.0,
+  "policy_tensor_sha256": "05aee7b994b2c788c43f51e0eb7b929215ea52012c05550dfb295d53d3dbe1eb",
+  "policy_tensors_unchanged": true,
+  "policy_updates": 0,
+  "gradient_probe": {
+    "action_loss_input_gradient_norm": 0.0,
+    "prequant_latent_loss_input_gradient_norm": 0.0014009439619258046,
+    "input_gradients_finite": true,
+    "quantizer": "PINNED_DEPLOYMENT_TORCH_ROUND_NO_STRAIGHT_THROUGH",
+    "scope": "ONE_SAVED_STATE_FROZEN_DEPLOYMENT_NETWORK_NOT_NATIVE_PPO_DIAGNOSTIC"
+  },
+  "aggregate": {
+    "0.0": {
+      "hold": {
+        "q_rmse": 0.021816971233163784,
+        "velocity_rmse": 0.2269818028788029,
+        "latent_rmse": 0.04483667069318553,
+        "action_rmse": 0.06612207399294784,
+        "token_mismatch_fraction": 0.3044921875
+      },
+      "cv": {
+        "q_rmse": 0.015143245800593385,
+        "velocity_rmse": 0.1909287845014466,
+        "latent_rmse": 0.025691121051107154,
+        "action_rmse": 0.03721747125934124,
+        "token_mismatch_fraction": 0.211171875
+      },
+      "smooth_cv": {
+        "q_rmse": 0.018986851979107027,
+        "velocity_rmse": 0.2103017213628597,
+        "latent_rmse": 0.03283811702465444,
+        "action_rmse": 0.04517228429697371,
+        "token_mismatch_fraction": 0.2414453125
+      },
+      "E12": {
+        "q_rmse": 0.012383122167870905,
+        "velocity_rmse": 0.16749201699337699,
+        "latent_rmse": 0.0266104690429142,
+        "action_rmse": 0.04099388977294979,
+        "token_mismatch_fraction": 0.217734375
+      },
+      "E14": {
+        "q_rmse": 0.014814251054305247,
+        "velocity_rmse": 0.18231679018580443,
+        "latent_rmse": 0.034176963528715215,
+        "action_rmse": 0.048956857915720305,
+        "token_mismatch_fraction": 0.2648046875
+      }
+    },
+    "0.01": {
+      "hold": {
+        "q_rmse": 0.0239197673411682,
+        "velocity_rmse": 0.23462409487928707,
+        "latent_rmse": 0.057106693010284953,
+        "action_rmse": 0.08000907029616701,
+        "token_mismatch_fraction": 0.4709375
+      },
+      "cv": {
+        "q_rmse": 0.051339703284702685,
+        "velocity_rmse": 0.4618297350033946,
+        "latent_rmse": 0.15956367316774572,
+        "action_rmse": 0.2002327298990288,
+        "token_mismatch_fraction": 0.7827734375
+      },
+      "smooth_cv": {
+        "q_rmse": 0.023221154486458118,
+        "velocity_rmse": 0.22518593733118164,
+        "latent_rmse": 0.052730351358438655,
+        "action_rmse": 0.06945887733145252,
+        "token_mismatch_fraction": 0.4751953125
+      },
+      "E12": {
+        "q_rmse": 0.07210611590731643,
+        "velocity_rmse": 0.7342203347884496,
+        "latent_rmse": 0.22742476627340516,
+        "action_rmse": 0.30630526578133777,
+        "token_mismatch_fraction": 0.8388671875
+      },
+      "E14": {
+        "q_rmse": 0.020852647307473972,
+        "velocity_rmse": 0.21872304911696763,
+        "latent_rmse": 0.05154002810950247,
+        "action_rmse": 0.0705245375599458,
+        "token_mismatch_fraction": 0.4657421875
+      }
+    }
+  },
+  "per_motion": [
+    {
+      "motion": "048_balance_right_singleleg",
+      "noise_std_rad": 0.0,
+      "states": 100,
+      "metrics": {
+        "hold": {
+          "q_rmse": 0.014594880044706285,
+          "velocity_rmse": 0.15029835138012132,
+          "latent_rmse": 0.02516844078797255,
+          "action_rmse": 0.04941893933688518,
+          "token_mismatch_fraction": 0.1440625
+        },
+        "cv": {
+          "q_rmse": 0.009999917104340733,
+          "velocity_rmse": 0.11639953243912605,
+          "latent_rmse": 0.014621052646171424,
+          "action_rmse": 0.026427553138941115,
+          "token_mismatch_fraction": 0.1075
+        },
+        "smooth_cv": {
+          "q_rmse": 0.008487224826257217,
+          "velocity_rmse": 0.1003977372496638,
+          "latent_rmse": 0.014364276599113964,
+          "action_rmse": 0.027367646014274997,
+          "token_mismatch_fraction": 0.109375
+        },
+        "E12": {
+          "q_rmse": 0.008043351609750784,
+          "velocity_rmse": 0.11375327392549923,
+          "latent_rmse": 0.015919414328172243,
+          "action_rmse": 0.03124313700962087,
+          "token_mismatch_fraction": 0.1121875
+        },
+        "E14": {
+          "q_rmse": 0.010108691965625182,
+          "velocity_rmse": 0.12707074178605646,
+          "latent_rmse": 0.02076185468205385,
+          "action_rmse": 0.038013050241764164,
+          "token_mismatch_fraction": 0.12921875
+        }
+      }
+    },
+    {
+      "motion": "050_march_place_slow",
+      "noise_std_rad": 0.0,
+      "states": 100,
+      "metrics": {
+        "hold": {
+          "q_rmse": 0.024175661176761055,
+          "velocity_rmse": 0.24529760116295046,
+          "latent_rmse": 0.039068719112445756,
+          "action_rmse": 0.05504908788974535,
+          "token_mismatch_fraction": 0.29296875
+        },
+        "cv": {
+          "q_rmse": 0.014581244517278888,
+          "velocity_rmse": 0.1877194396659542,
+          "latent_rmse": 0.024495415590412073,
+          "action_rmse": 0.0377374900874703,
+          "token_mismatch_fraction": 0.1975
+        },
+        "smooth_cv": {
+          "q_rmse": 0.021415425717553716,
+          "velocity_rmse": 0.2309058175854197,
+          "latent_rmse": 0.03365650580480148,
+          "action_rmse": 0.047783827710200406,
+          "token_mismatch_fraction": 0.23515625
+        },
+        "E12": {
+          "q_rmse": 0.010902029299576052,
+          "velocity_rmse": 0.15153238226231888,
+          "latent_rmse": 0.024239459594685663,
+          "action_rmse": 0.03682757997914409,
+          "token_mismatch_fraction": 0.2053125
+        },
+        "E14": {
+          "q_rmse": 0.014098995274856082,
+          "velocity_rmse": 0.17517937388416324,
+          "latent_rmse": 0.030206544542324933,
+          "action_rmse": 0.04334302974561114,
+          "token_mismatch_fraction": 0.24890625
+        }
+      }
+    },
+    {
+      "motion": "001_walk_front_slow",
+      "noise_std_rad": 0.0,
+      "states": 100,
+      "metrics": {
+        "hold": {
+          "q_rmse": 0.02863628133224201,
+          "velocity_rmse": 0.30087368027008826,
+          "latent_rmse": 0.0690782029886439,
+          "action_rmse": 0.098538104778694,
+          "token_mismatch_fraction": 0.465625
+        },
+        "cv": {
+          "q_rmse": 0.020693442502281983,
+          "velocity_rmse": 0.26027131572100887,
+          "latent_rmse": 0.03588481547156654,
+          "action_rmse": 0.045901209382222294,
+          "token_mismatch_fraction": 0.31203125
+        },
+        "smooth_cv": {
+          "q_rmse": 0.025379916990009004,
+          "velocity_rmse": 0.2837231545278798,
+          "latent_rmse": 0.046123500652737404,
+          "action_rmse": 0.05664879725353467,
+          "token_mismatch_fraction": 0.365625
+        },
+        "E12": {
+          "q_rmse": 0.017079852319826335,
+          "velocity_rmse": 0.22955684240036742,
+          "latent_rmse": 0.03724552435708264,
+          "action_rmse": 0.05485306344483317,
+          "token_mismatch_fraction": 0.31765625
+        },
+        "E14": {
+          "q_rmse": 0.01960197160414656,
+          "velocity_rmse": 0.24372562603185235,
+          "latent_rmse": 0.04718622092816578,
+          "action_rmse": 0.06454029830770325,
+          "token_mismatch_fraction": 0.3821875
+        }
+      }
+    },
+    {
+      "motion": "029_rotate_place_slow",
+      "noise_std_rad": 0.0,
+      "states": 100,
+      "metrics": {
+        "hold": {
+          "q_rmse": 0.016923687829860132,
+          "velocity_rmse": 0.18110073525333745,
+          "latent_rmse": 0.03331208192940655,
+          "action_rmse": 0.04802210887146623,
+          "token_mismatch_fraction": 0.3153125
+        },
+        "cv": {
+          "q_rmse": 0.013283146357213105,
+          "velocity_rmse": 0.17113329903063113,
+          "latent_rmse": 0.023208064473218444,
+          "action_rmse": 0.036209196649407686,
+          "token_mismatch_fraction": 0.22765625
+        },
+        "smooth_cv": {
+          "q_rmse": 0.016346515285247696,
+          "velocity_rmse": 0.18168991545441587,
+          "latent_rmse": 0.02910150479325841,
+          "action_rmse": 0.04382661982350014,
+          "token_mismatch_fraction": 0.255625
+        },
+        "E12": {
+          "q_rmse": 0.01175141503239889,
+          "velocity_rmse": 0.1536752710436793,
+          "latent_rmse": 0.024581700757008853,
+          "action_rmse": 0.037158218044760175,
+          "token_mismatch_fraction": 0.23578125
+        },
+        "E14": {
+          "q_rmse": 0.013879608258659843,
+          "velocity_rmse": 0.16346461604119158,
+          "latent_rmse": 0.03319984872954497,
+          "action_rmse": 0.04580431667497028,
+          "token_mismatch_fraction": 0.29890625
+        }
+      }
+    },
+    {
+      "motion": "048_balance_right_singleleg",
+      "noise_std_rad": 0.01,
+      "states": 100,
+      "metrics": {
+        "hold": {
+          "q_rmse": 0.017580664223677232,
+          "velocity_rmse": 0.16104781914485924,
+          "latent_rmse": 0.03968473336483421,
+          "action_rmse": 0.06603442688477175,
+          "token_mismatch_fraction": 0.3596875
+        },
+        "cv": {
+          "q_rmse": 0.04926638143142949,
+          "velocity_rmse": 0.42959706899206174,
+          "latent_rmse": 0.14081250886600544,
+          "action_rmse": 0.19452240856013256,
+          "token_mismatch_fraction": 0.7515625
+        },
+        "smooth_cv": {
+          "q_rmse": 0.01566756146498313,
+          "velocity_rmse": 0.12743593386816346,
+          "latent_rmse": 0.03952336259791535,
+          "action_rmse": 0.0602545194332857,
+          "token_mismatch_fraction": 0.38328125
+        },
+        "E12": {
+          "q_rmse": 0.07164566299623157,
+          "velocity_rmse": 0.7255584971339323,
+          "latent_rmse": 0.19907161989673386,
+          "action_rmse": 0.28604678994264854,
+          "token_mismatch_fraction": 0.816875
+        },
+        "E14": {
+          "q_rmse": 0.017744875023926764,
+          "velocity_rmse": 0.1737926302381681,
+          "latent_rmse": 0.03933216382513392,
+          "action_rmse": 0.06269508239036888,
+          "token_mismatch_fraction": 0.3725
+        }
+      }
+    },
+    {
+      "motion": "050_march_place_slow",
+      "noise_std_rad": 0.01,
+      "states": 100,
+      "metrics": {
+        "hold": {
+          "q_rmse": 0.026052300298686038,
+          "velocity_rmse": 0.2521148981251949,
+          "latent_rmse": 0.0539112480469797,
+          "action_rmse": 0.07183391735042324,
+          "token_mismatch_fraction": 0.48046875
+        },
+        "cv": {
+          "q_rmse": 0.051133009210234726,
+          "velocity_rmse": 0.4574515468114779,
+          "latent_rmse": 0.16612889534836772,
+          "action_rmse": 0.2011613713500862,
+          "token_mismatch_fraction": 0.7996875
+        },
+        "smooth_cv": {
+          "q_rmse": 0.025353650811074335,
+          "velocity_rmse": 0.2451972546746527,
+          "latent_rmse": 0.05560750804281681,
+          "action_rmse": 0.07323078593281519,
+          "token_mismatch_fraction": 0.490625
+        },
+        "E12": {
+          "q_rmse": 0.07160697696094366,
+          "velocity_rmse": 0.7224449851227283,
+          "latent_rmse": 0.2343125925815113,
+          "action_rmse": 0.3092886423135711,
+          "token_mismatch_fraction": 0.8434375
+        },
+        "E14": {
+          "q_rmse": 0.02030709500833735,
+          "velocity_rmse": 0.2098008823822976,
+          "latent_rmse": 0.050775500499909504,
+          "action_rmse": 0.06752553991084931,
+          "token_mismatch_fraction": 0.47171875
+        }
+      }
+    },
+    {
+      "motion": "001_walk_front_slow",
+      "noise_std_rad": 0.01,
+      "states": 100,
+      "metrics": {
+        "hold": {
+          "q_rmse": 0.030226867669636698,
+          "velocity_rmse": 0.3069503436416705,
+          "latent_rmse": 0.07833003261917014,
+          "action_rmse": 0.10914211110114132,
+          "token_mismatch_fraction": 0.56765625
+        },
+        "cv": {
+          "q_rmse": 0.05314538824065732,
+          "velocity_rmse": 0.49579327913044213,
+          "latent_rmse": 0.16321686968322247,
+          "action_rmse": 0.1965904807774172,
+          "token_mismatch_fraction": 0.775
+        },
+        "smooth_cv": {
+          "q_rmse": 0.028708183107970565,
+          "velocity_rmse": 0.29550069987957134,
+          "latent_rmse": 0.06185162935847208,
+          "action_rmse": 0.0770369025278575,
+          "token_mismatch_fraction": 0.53046875
+        },
+        "E12": {
+          "q_rmse": 0.07279906858968052,
+          "velocity_rmse": 0.7545408005979548,
+          "latent_rmse": 0.23587263063638916,
+          "action_rmse": 0.30920671140568584,
+          "token_mismatch_fraction": 0.8409375
+        },
+        "E14": {
+          "q_rmse": 0.024550771417142275,
+          "velocity_rmse": 0.275146168196901,
+          "latent_rmse": 0.0622356808769198,
+          "action_rmse": 0.08353062867777945,
+          "token_mismatch_fraction": 0.53
+        }
+      }
+    },
+    {
+      "motion": "029_rotate_place_slow",
+      "noise_std_rad": 0.01,
+      "states": 100,
+      "metrics": {
+        "hold": {
+          "q_rmse": 0.019676266010250455,
+          "velocity_rmse": 0.1909896023922937,
+          "latent_rmse": 0.049272738993712324,
+          "action_rmse": 0.0645999046988956,
+          "token_mismatch_fraction": 0.4759375
+        },
+        "cv": {
+          "q_rmse": 0.05173845061416119,
+          "velocity_rmse": 0.4620825483996581,
+          "latent_rmse": 0.166659965520022,
+          "action_rmse": 0.20837442886182367,
+          "token_mismatch_fraction": 0.80484375
+        },
+        "smooth_cv": {
+          "q_rmse": 0.021081939988201664,
+          "velocity_rmse": 0.19787003541905326,
+          "latent_rmse": 0.0514008231593769,
+          "action_rmse": 0.06610675524500087,
+          "token_mismatch_fraction": 0.49640625
+        },
+        "E12": {
+          "q_rmse": 0.07236576014786071,
+          "velocity_rmse": 0.733910274494247,
+          "latent_rmse": 0.23816023699211925,
+          "action_rmse": 0.31968835246614624,
+          "token_mismatch_fraction": 0.85421875
+        },
+        "E14": {
+          "q_rmse": 0.02023196788378275,
+          "velocity_rmse": 0.2035519255943436,
+          "latent_rmse": 0.051254731037397236,
+          "action_rmse": 0.06653648449298251,
+          "token_mismatch_fraction": 0.48875
+        }
+      }
+    }
+  ],
+  "diagnostic_pair_bytes": 5421760,
+  "diagnostic_pair_sha256": "318bdc294e6cb82999003abe876ce3895b28f2088fd33c82df13437c0466a1a4",
+  "backup_status": "LOCAL_ONLY",
+  "selected_long_training_method": false,
+  "cuda_metadata": {
+    "torch_version": "2.8.0+cu128",
+    "allow_tf32": false,
+    "float32_matmul_precision": "highest"
+  }
+}

@@ -26,14 +26,14 @@ def evaluate_readiness(contract, checks):
         blockers.append("no_accepted_finetuned_policy")
     if not checks.get("full_causal_input", {}).get("passed"):
         blockers.append("full_causal_orientation_not_verified")
-    if not checks.get("fresh_validation", {}).get("passed"):
-        blockers.append("fresh_final_validation_missing")
     if contract.get("candidate_variable") is None or contract.get("actor_update_scope") is None:
         blockers.append("candidate_objective_and_parameter_scope_not_fixed")
     if contract.get("long_training_updates") is None:
         blockers.append("long_training_budget_not_fixed")
     return dict(infrastructure_ready=all(checks.get(n, {}).get("passed") for n in required),
-                long_training_ready=not blockers, blockers=blockers, launch_performed=False)
+                long_training_ready=not blockers, blockers=blockers,
+                final_acceptance_pending=[] if checks.get("fresh_validation", {}).get("passed") else ["fresh_final_validation_missing"],
+                launch_performed=False)
 
 
 def main():
@@ -102,7 +102,14 @@ def main():
     checks["runtime_likelihood"] = dict(passed=False, state=json.loads(deferred.read_text()),
         note="E10 remains blocked; no runtime consistency receipt. Do not relaunch to bypass no-progress stop.")
     checks["candidate_policy"] = dict(passed=False, selected="OFFICIAL_UNCHANGED", note="R05-R09 have not passed effect acceptance")
-    checks["full_causal_input"] = dict(passed=False, note="E16 changes joints only; future orientation remains oracle")
+    causal_path = ROOT / "data/manifests/a3_causal_inputs_verified_20261010_E18.json"
+    if causal_path.exists():
+        verified = json.loads(causal_path.read_text())
+        checks["full_causal_input"] = dict(passed=verified.get("status") == "passed",
+            receipt=str(causal_path), sha256=sha256(causal_path), scope="POLICY_REFERENCE_TOKENS_ONLY",
+            initialization="MATCHED_OFFLINE_RESET_QVEL; CAUSAL_INITIALIZATION_NOT_VERIFIED")
+    else:
+        checks["full_causal_input"] = dict(passed=False, note="E18 independent actual-input verification not yet available")
     checks["fresh_validation"] = dict(passed=False, note="Four reused diagnostic motions are not a fresh final test")
     result = dict(utc=started.isoformat(), contract_sha256=sha256(contract_path), checks=checks,
         readiness=evaluate_readiness(contract, checks), initial_health=sample(),

@@ -20,12 +20,15 @@ def main():
     parser.add_argument("--joint-noise-std", type=float, default=0)
     parser.add_argument("--joint-noise-seed", type=int, default=0)
     parser.add_argument("--joint-trace", type=Path)
+    parser.add_argument("--causal-orientation", action="store_true")
     parser.add_argument("sim_args", nargs=argparse.REMAINDER)
     args = parser.parse_args()
     if args.reference_buffer_ms and args.buffer_trace is None:
         parser.error("--reference-buffer-ms requires --buffer-trace")
     if args.joint_reference_mode and (args.joint_trace is None or args.reference_buffer_ms):
         parser.error("Joint ablation needs its own trace and cannot combine with buffering")
+    if args.causal_orientation and not args.joint_reference_mode:
+        parser.error("Causal orientation requires a causal joint mode")
     sim = load_sim()
     replay = None
     if args.reference_buffer_ms:
@@ -37,8 +40,12 @@ def main():
         replay.install()
     if args.joint_reference_mode:
         from script.a3.joint_forecast_replay import JointForecastReplay
-        replay = JointForecastReplay(sim, args.joint_reference_mode, args.joint_predictor,
-                                     args.joint_noise_std, args.joint_noise_seed)
+        replay_type = JointForecastReplay
+        if args.causal_orientation:
+            from script.a3.causal_orientation import FullCausalReplay
+            replay_type = FullCausalReplay
+        replay = replay_type(sim, args.joint_reference_mode, args.joint_predictor,
+                             args.joint_noise_std, args.joint_noise_seed)
         replay.install()
     observations, actions = [], []
     original = sim.A3Policy.act

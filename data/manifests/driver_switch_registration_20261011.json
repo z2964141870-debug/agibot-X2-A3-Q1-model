@@ -1,0 +1,40 @@
+{
+  "schema": "yuanqi.driver_switch_registration.v1",
+  "stage": "DRIVER_SWITCH_20261011",
+  "status": "blocked_waiting_for_root",
+  "host": "hp3090",
+  "project_root": "/media/yu/FAFF-E9771/YUANQI_A3",
+  "recorded_at_beijing": "2026-10-11",
+  "prechange": {
+    "boot_id": "7f9e3cd2-cfcf-4ca0-9493-527fc78a418d",
+    "os": "Ubuntu 22.04.5 LTS",
+    "kernel": "6.8.0-138-generic",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "driver": "595.84",
+    "package": "nvidia-driver-595-open=595.84-0ubuntu0.22.04.1",
+    "module": "/lib/modules/6.8.0-138-generic/kernel/nvidia-595-open/nvidia.ko",
+    "a3_autoresume": "disabled",
+    "a3_longtrain": "disabled",
+    "compute_processes": []
+  },
+  "candidate": {
+    "requested_package": "nvidia-driver-580",
+    "candidate_version": "580.178.04-0ubuntu0.22.04.1",
+    "reason": "apt package-managed branch; nvidia-driver-550 meta candidate resolves to this 580 series"
+  },
+  "planned_commands": [
+    "sudo apt-get install nvidia-driver-580",
+    "sudo reboot"
+  ],
+  "rollback": {
+    "package": "nvidia-driver-595-open=595.84-0ubuntu0.22.04.1",
+    "command": "sudo apt-get install nvidia-driver-595-open=595.84-0ubuntu0.22.04.1 && sudo reboot"
+  },
+  "safety": {
+    "no_a3_or_rl_training": true,
+    "no_isaac_or_robot": true,
+    "no_power_bios_pcie_changes": true,
+    "planned_reboot_is_not_failure": true,
+    "root_password_not_collected": true
+  }
+}

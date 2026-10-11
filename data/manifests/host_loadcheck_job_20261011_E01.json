@@ -1,0 +1,97 @@
+{
+  "experiment": "HOST_LOADCHECK_20261011_E01",
+  "initialized_at_utc": "2026-10-11T05:10:54.194581+00:00",
+  "initial_boot": "cb282100-387e-400f-bff0-dab2de7282b8",
+  "tool": "/media/yu/FAFF-E9771/YUANQI_A3/data/tools/host_loadcheck_20261011/root/usr/bin/stress-ng",
+  "version": "stress-ng, version 0.13.12 (gcc 11.3, x86_64 Linux 6.8.0-138-generic)",
+  "tool_sha256": "49ecc78dc70094601ab3bae0cc73e91fccc4a536f2d8f74796f4812775980cc7",
+  "code_sha256": "a1a76cd6631b474efccf947388a1fcff72636e2a3cb5fed31ad361888f1e672b",
+  "stages": [
+    {
+      "id": "cpu_w1_load25",
+      "kind": "cpu",
+      "workers": 1,
+      "load_percent_per_worker": 25,
+      "durations_seconds": [
+        30,
+        120,
+        600
+      ]
+    },
+    {
+      "id": "cpu_w1_load50",
+      "kind": "cpu",
+      "workers": 1,
+      "load_percent_per_worker": 50,
+      "durations_seconds": [
+        30,
+        120,
+        600
+      ]
+    },
+    {
+      "id": "cpu_w1_load100",
+      "kind": "cpu",
+      "workers": 1,
+      "load_percent_per_worker": 100,
+      "durations_seconds": [
+        30,
+        120,
+        600
+      ]
+    },
+    {
+      "id": "cpu_w2_load100",
+      "kind": "cpu",
+      "workers": 2,
+      "load_percent_per_worker": 100,
+      "durations_seconds": [
+        30,
+        120,
+        600
+      ]
+    },
+    {
+      "id": "cpu_w4_load100",
+      "kind": "cpu",
+      "workers": 4,
+      "load_percent_per_worker": 100,
+      "durations_seconds": [
+        30,
+        120,
+        600
+      ]
+    },
+    {
+      "id": "memory_256MiB",
+      "kind": "memory",
+      "mib": 256,
+      "durations_seconds": [
+        30,
+        120,
+        600
+      ]
+    },
+    {
+      "id": "memory_1024MiB",
+      "kind": "memory",
+      "mib": 1024,
+      "durations_seconds": [
+        30,
+        120,
+        600
+      ]
+    }
+  ],
+  "sample_seconds": 5,
+  "cooldown_seconds": 300,
+  "max_cpu_c": 90,
+  "max_gpu_c": 85,
+  "consecutive_hot_samples": 2,
+  "memory_reserve_gib": 4,
+  "auto_resume": false,
+  "a3_training_allowed": false,
+  "reinforcement_learning_allowed": false,
+  "stop_on_first_failure": true,
+  "backup_status": "LOCAL_ONLY"
+}

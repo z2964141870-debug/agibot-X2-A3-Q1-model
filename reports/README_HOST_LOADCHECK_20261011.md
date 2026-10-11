@@ -28,12 +28,17 @@ cd /media/yu/FAFF-E9771/YUANQI_A3
 /usr/bin/python3 -m script.diagnostics.host_loadcheck --initialize
 # 注册仅执行一次；已存在job不可覆盖，执行器只接受READY。
 /usr/bin/python3 -m script.diagnostics.host_loadcheck
+/usr/bin/python3 -m script.diagnostics.summarize_host_loadcheck
+systemctl --user show yuanqi-host-loadcheck-E01.service -p ActiveState -p Result
+# 如需停止当前独立诊断：
+systemctl --user stop yuanqi-host-loadcheck-E01.service
 ```
 
 ## 产物与日志
 
 - 固定参数：`data/experiments/host_loadcheck_20261011_E01/job.json`。
 - 状态与逐档结果：同目录 `state.json`。
+- 只读汇总入口：`script/diagnostics/summarize_host_loadcheck.py`；生成 `data/manifests/host_loadcheck_result_20261011_E01.json`。这份清单是带时间戳的快照，运行中须重新汇总，不把旧RUNNING快照当作当前状态。
 - 每5秒监测及单档stdout：`logs/host_loadcheck_20261011_E01/`。
 - 工具/依赖：`data/tools/host_loadcheck_20261011/`，LOCAL_ONLY。
 - 独立测试不加载A3模型，不改旧R01-R09/E10/E20/E21台账。
@@ -41,6 +46,8 @@ cd /media/yu/FAFF-E9771/YUANQI_A3
 ## 结果与边界
 
 2026-10-11北京时间13:11:40开始单worker25%首档，4保护契约通过。临时unit `yuanqi-host-loadcheck-E01.service`，CPUQuota410%、MemoryMax6G、RuntimeMaxSec3h、Restart=no；该CPUQuota为四worker档与监测的执行上限，不是单worker实际占用目标。首批实际CPU约40摄氏度、GPU30摄氏度，GPU利用率0、内核故障列表空。完整结果尚未生成，不能把启动成功记为稳定性通过。
+
+首两项30秒及120秒已实际完成，stress-ng返回0并报告successful run completed，stdout SHA独立复核一致；600秒仍运行。82条监测快照保持同boot、CPU采样最高49摄氏度、GPU空闲，没有关键内核事件。预计CPU/内存完整序列约118分钟，不含准备时间；最终结果以运行完成后的state/日志为准。GPU、小网络和YOLO未启动，等待本分支结果，不并行制造第二负载源。
 
 新boot是确认重启的证据，SSH失败只记UNKNOWN。温度采样不能排除间隔内峰值，各档未重启只支持有限窗口结论。
 

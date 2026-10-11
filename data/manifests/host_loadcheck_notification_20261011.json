@@ -1,19 +1,26 @@
 {
   "automation_id": "hp3090",
   "experiment": "HOST_LOADCHECK_20261011_E01",
-  "last_checked_at_utc": "2026-10-11T06:21:11.491493+00:00",
+  "last_checked_at_utc": "2026-10-11T06:28:33.234179+00:00",
   "known_boot_id": "cb282100-387e-400f-bff0-dab2de7282b8",
-  "last_observed_status": "COOLDOWN",
-  "last_verified_passed_trials": 12,
-  "last_observed_max_cpu_c": 72.0,
+  "last_observed_status": "STOPPED",
+  "last_verified_passed_trials": 14,
+  "last_observed_max_cpu_c": 90.0,
   "announced_event_keys": [
     "E01_LAUNCHED",
     "CPU_W1_LOAD25_COMPLETED",
     "CPU_W1_SWEEP_COMPLETED",
-    "CPU_W2_LOAD100_COMPLETED"
+    "CPU_W2_LOAD100_COMPLETED",
+    "E01_CPU_W4_TEMPERATURE_PROTECTION_STOPPED"
   ],
   "new_actionable_events": [],
   "cpu_memory_branch_complete": false,
   "gpu_branch_started": false,
-  "a3_training_paused": true
+  "a3_training_paused": true,
+  "heartbeat_status": "PAUSED",
+  "stop_reason": "TEMPERATURE_PROTECTION",
+  "stopped_at_utc": "2026-10-11T06:25:16.963990+00:00",
+  "confirmed_new_boot": false,
+  "remaining_branches_parked": ["memory", "gpu_matrix", "small_cnn", "yolo"],
+  "stop_manifest": "data/manifests/host_loadcheck_stop_20261011_E01.json"
 }

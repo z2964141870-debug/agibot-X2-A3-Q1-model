@@ -17,7 +17,7 @@
 
 ## 已完成，可从证据继续
 
-10/11最新工作：用户新授权非A3/RL逐级负载诊断。HOST_LOADCHECK_E01单worker int64的25/50/100%各30/120/600秒9项已通过；双worker各100%的30/120/600秒三项于14:17:05完成并通过stdout SHA核验。14:21共854采样、累计12通过、同boot、CPU最高72摄氏度、GPU空闲、无关键内核事件或保护触发。双worker600秒整机逻辑CPU平均10.09%，不代表全核心/其他算子稳定。按原job冷却后继续4worker及256/1024MiB内存验证，原90/85摄氏度保护、首故障停止、不重启续跑。unit yuanqi-host-loadcheck-E01.service，临时heartbeat hp3090跟进并在E01全部通过后继续独立GPU/普通网络分支；原A3训练/评测及yuanqi-a3仍暂停。证据/恢复见[负载排查](README_HOST_LOADCHECK_20261011.md)。
+10/11最新结果：HOST_LOADCHECK_E01在14:25:16因CPU温度保护STOPPED，四worker600秒档运行40.377秒后连续两次采样90摄氏度，GPU28摄氏度/空闲；最终909采样、14通过、1保护停止、6内存项未运行，15份stdout SHA及注册执行器SHA核验。全部同boot、无重启或关键内核事件；失败退出来自保护终止，未认定算术错误。14:27停载后CPU55摄氏度。unit failed/Restart=no且无残留计算；内存/GPU/小CNN/YOLO搁置，不重复恢复E01、不自动升档。hp3090 heartbeat已PAUSED，原A3训练/评测及yuanqi-a3保持暂停，每日研究保留。下一步用户检查CPU散热运行/安装情况后再决定独立新实验；历史重启根因仍UNKNOWN。见[最终测试矩阵](README_HOST_LOADCHECK_20261011.md)及[停止证据清单](../data/manifests/host_loadcheck_stop_20261011_E01.json)。
 
 10/11最新结果：北京时间10:44:35–12:44:35固定两小时空闲观察完成，122采样、同boot、0boot转换、无计算进程/采样错误，CPU37–49°C/GPU30–31°C，可用RAM29.55–29.62GiB。监测服务停止并disabled，A3 heartbeat到期暂停，训练自动启动入口仍disabled；结束后不恢复计算，每日研究保留。只证明该窗口未观察到重启，负载相关性仍是假设、根因未定位。E21两组各200/44保存点核验通过；GPU闭环3动作完成、050中断，效果仍UNKNOWN。见[最终观察记录](README_A3_IDLE_WATCH_20261011.md)，以下恢复建议暂停，继续计算须用户新指示。
 

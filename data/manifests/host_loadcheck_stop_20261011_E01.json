@@ -1,0 +1,237 @@
+{
+  "experiment": "HOST_LOADCHECK_20261011_E01",
+  "verified_at_utc": "2026-10-11T06:28:33.234179+00:00",
+  "status": "STOPPED_TEMPERATURE_PROTECTION",
+  "boot_id": "cb282100-387e-400f-bff0-dab2de7282b8",
+  "observed_boot_changes": 0,
+  "passed_trials": 14,
+  "failed_trials": 1,
+  "not_run_trials": [
+    "memory_256MiB_30s",
+    "memory_256MiB_120s",
+    "memory_256MiB_600s",
+    "memory_1024MiB_30s",
+    "memory_1024MiB_120s",
+    "memory_1024MiB_600s"
+  ],
+  "failed_stage": "cpu_w4_load100_600s",
+  "failed_stage_result": {
+    "status": "FAILED",
+    "started_at_utc": "2026-10-11T06:24:36.584924+00:00",
+    "boot_id": "cb282100-387e-400f-bff0-dab2de7282b8",
+    "command": [
+      "/media/yu/FAFF-E9771/YUANQI_A3/data/tools/host_loadcheck_20261011/root/usr/bin/stress-ng",
+      "--timeout",
+      "600s",
+      "--verify",
+      "--metrics-brief",
+      "--abort",
+      "--cpu",
+      "4",
+      "--cpu-load",
+      "100",
+      "--cpu-method",
+      "int64"
+    ],
+    "log": "logs/host_loadcheck_20261011_E01/cpu_w4_load100_600s.log",
+    "ended_at_utc": "2026-10-11T06:25:16.962411+00:00",
+    "elapsed_seconds": 40.377498365000065,
+    "returncode": 2,
+    "stop_reason": "TEMPERATURE_PROTECTION",
+    "log_sha256": "4ead986678786e359c07d1690cda3e44a71c6441f77da9bca5e0e2c56d71bf43",
+    "log_bytes": 985,
+    "samples": 10,
+    "first_sample_utc": "2026-10-11T06:24:36.559778+00:00",
+    "last_sample_utc": "2026-10-11T06:25:16.925666+00:00",
+    "max_cpu_c": 90.0,
+    "max_gpu_c": 28.0,
+    "min_available_ram_gib": 29.531166076660156,
+    "mean_whole_host_cpu_busy_percent": 20.33726126595126,
+    "critical_kernel_lines": [],
+    "actual_log_bytes": 985,
+    "actual_log_sha256": "4ead986678786e359c07d1690cda3e44a71c6441f77da9bca5e0e2c56d71bf43",
+    "log_integrity_passed": true
+  },
+  "trigger_samples": [
+    {
+      "at_utc": "2026-10-11T06:25:11.881939+00:00",
+      "cpu_c": 90.0,
+      "gpu_c": 28.0
+    },
+    {
+      "at_utc": "2026-10-11T06:25:16.925666+00:00",
+      "cpu_c": 90.0,
+      "gpu_c": 28.0
+    }
+  ],
+  "after_stop_health": {
+    "at_utc": "2026-10-11T06:27:14.584258+00:00",
+    "boot_id": "cb282100-387e-400f-bff0-dab2de7282b8",
+    "uptime_seconds": 14170.53,
+    "load_average": [
+      0.52734375,
+      1.52734375,
+      1.36083984375
+    ],
+    "memory_bytes": {
+      "MemTotal": 33503977472,
+      "MemAvailable": 31749869568,
+      "SwapTotal": 0,
+      "SwapFree": 0
+    },
+    "temperatures_c": {
+      "x86_pkg_temp": 55.0,
+      "acpitz": 27.8,
+      "iwlwifi_1": 38.0
+    },
+    "gpu_query": {
+      "returncode": 0,
+      "stdout": "28, 22.89, 370.00, 0, 92",
+      "stderr": ""
+    },
+    "gpus": [
+      {
+        "temperature.gpu": 28.0,
+        "power.draw": 22.89,
+        "power.limit": 370.0,
+        "utilization.gpu": 0.0,
+        "memory.used": 92.0
+      }
+    ]
+  },
+  "branches_parked": {
+    "memory": "PREVIOUS_CPU_TEMPERATURE_PROTECTION",
+    "gpu_matrix": "PREVIOUS_CPU_TEMPERATURE_PROTECTION",
+    "small_cnn": "PREVIOUS_CPU_TEMPERATURE_PROTECTION",
+    "yolo": "PREVIOUS_CPU_TEMPERATURE_PROTECTION; TOOLCHAIN_AND_DATA_NOT_CHECKED"
+  },
+  "evidence_checks": {
+    "all_samples_same_boot": true,
+    "consecutive_cpu_90c_verified": true,
+    "all_15_stdout_sha_verified": true,
+    "registered_executor_sha_verified": true,
+    "critical_kernel_events": 0
+  },
+  "automation_status": "PAUSED",
+  "a3_training_paused": true,
+  "auto_resume": false,
+  "interpretation": "CPU_TEMPERATURE_GUARD_TRIGGERED; NO_REBOOT_REPRODUCED; HISTORICAL_REBOOT_CAUSE_UNKNOWN",
+  "files": [
+    {
+      "path": "script/diagnostics/host_loadcheck.py",
+      "bytes": 10216,
+      "sha256": "a1a76cd6631b474efccf947388a1fcff72636e2a3cb5fed31ad361888f1e672b"
+    },
+    {
+      "path": "script/diagnostics/summarize_host_loadcheck.py",
+      "bytes": 4394,
+      "sha256": "d9a8209affbaf5166b44fd200cc87c85d77e7bdd0494e2199a66ee5f4a19bac0"
+    },
+    {
+      "path": "data/experiments/host_loadcheck_20261011_E01/job.json",
+      "bytes": 2150,
+      "sha256": "944f38e4a6dfefd7291b57cbbecc7740284c1f338df12583ca90724f8bd65d9f"
+    },
+    {
+      "path": "data/experiments/host_loadcheck_20261011_E01/state.json",
+      "bytes": 13083,
+      "sha256": "b3e5ad39051aeba3168e1783d99dd1a5677b1dd8ae32357d935592b33511361f"
+    },
+    {
+      "path": "data/manifests/host_loadcheck_result_20261011_E01.json",
+      "bytes": 21456,
+      "sha256": "2da055763ec58f9c2ae6f6f834a0c464b7b742165b4b532e71f6a93ebee4b639"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/health.jsonl",
+      "bytes": 889390,
+      "sha256": "32e014cda578576b34fff0690321f3e9dd10db2ea573f0b90fb9a1ba0133eb22"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/watch_20261011T062520Z.json",
+      "bytes": 3752,
+      "sha256": "87e2d01597a5f27c5fd551b6251e4eb2c7f7b2041d278e23c70162e9a7d3e065"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/after_protection_20261011T062520Z.json",
+      "bytes": 702,
+      "sha256": "3ea05f1cda44b2d9884d60062ae62c79daef8709e2c45197cf17bc070d7aadf4"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w1_load25_30s.log",
+      "bytes": 501,
+      "sha256": "ed156b56a6540e830ee653c49205f1c59c63b1066578f43b086d20ab49ab5959"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w1_load25_120s.log",
+      "bytes": 543,
+      "sha256": "5f858a618d3fd3a83715f9ac350bfae3d12304d1ccf6e9948e70faa1adabe19a"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w1_load25_600s.log",
+      "bytes": 545,
+      "sha256": "08fe22ef911a9e1c53fef2936b1f8d95a445a0d6066c3b3c501860f7b24c1515"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w1_load50_30s.log",
+      "bytes": 501,
+      "sha256": "9bc22a971060cbe0a02cca7c41f0fdeb5ec1b6ba097c47db31e8bad85fc26e8b"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w1_load50_120s.log",
+      "bytes": 543,
+      "sha256": "34b5497341799f3b9a7b622398b44a05ee7732c11a82623c223ebe4ae3703822"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w1_load50_600s.log",
+      "bytes": 545,
+      "sha256": "16237f329e685678f6025bec79cf535d715c004e64502a7294c41aa6a177a387"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w1_load100_30s.log",
+      "bytes": 501,
+      "sha256": "48128953ecf89bed6c4c79c92f0dbbabe28498188677a5c74647279660b9e096"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w1_load100_120s.log",
+      "bytes": 543,
+      "sha256": "65cebc5974f8ce1f94f663785064c704eebc27e43bf688303488c7bfd0e0e568"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w1_load100_600s.log",
+      "bytes": 545,
+      "sha256": "3836e102e26b097c00e2c279fe8fd0278429ab92ac3062b9a62af207813ebd72"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w2_load100_30s.log",
+      "bytes": 501,
+      "sha256": "f6e16f858eea172a10ae7c25b6aecbf5bdf9787d90f8f796bc4c5362fa7c0aa7"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w2_load100_120s.log",
+      "bytes": 543,
+      "sha256": "c4f8e87e2ec684f6fcddbc67a32f64ea122817162ce5172f7dc791733551c1e4"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w2_load100_600s.log",
+      "bytes": 545,
+      "sha256": "f95da79bd53e44a1163eb04cd90c9b9a2fbc1fce491a9846fdde397100a7e928"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w4_load100_30s.log",
+      "bytes": 501,
+      "sha256": "ab78d0393bb3f082c4c1618e2d66339c5f5bac7f986c204462f64234804e4379"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w4_load100_120s.log",
+      "bytes": 543,
+      "sha256": "cf6284f89029c4955a60a70400a10aa752c36d7fdd537b7288035dd934ff629e"
+    },
+    {
+      "path": "logs/host_loadcheck_20261011_E01/cpu_w4_load100_600s.log",
+      "bytes": 985,
+      "sha256": "4ead986678786e359c07d1690cda3e44a71c6441f77da9bca5e0e2c56d71bf43"
+    }
+  ],
+  "backup_status": "LOCAL_ONLY"
+}

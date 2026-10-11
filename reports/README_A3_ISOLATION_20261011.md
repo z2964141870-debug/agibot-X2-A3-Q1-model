@@ -71,3 +71,11 @@ E23于15:17:32已完成256矩阵30.0003435秒、2757次同步操作，数值检�
 该实验没有导入Isaac、A3或RL，没有加载官方权重。因此当前重启不需要A3专有代码即可发生，优先线索转为普通GPU执行链路；具体是PyTorch/CUDA/驱动还是该负载触发硬件问题仍UNKNOWN。单次重启没有定位物理元件，也不保证历史所有重启都同因。
 
 E24在新boot无service计算残留/GPU进程，旧autoresume/longtrain仍disabled。hp3090 heartbeat已PAUSED，yuanqi-a3保持PAUSED、日研不变。重启后只做读取日志/元数据/源代码及小清单，未再次运行任何GPU、加载模型或训练。所查前boot内核时间段输出`-- No entries --`，没有故障附近内核覆盖，不能用无匹配排除驱动/硬件错误。停止证据`data/manifests/a3_isolation_stop_20261011_E24.json`，包含最后阶段、时间区间、健康及校验；原始日志与内核查询留logs/LOCAL_ONLY。用户最新要求的A3细日志实现见[实现与暂停原因](README_A3_PHASE_TRACE_20261011.md)。
+
+## 继续测试前的怀疑顺序（尚未执行）
+
+用户询问“首先怀疑什么”。当前首要对象为普通GPU执行链路。驱动/CUDA/矩阵库的软件路径与显卡/PCIe/供电稳定性两类候选，现有证据不足给出可信的概率排序；A3/Isaac专有逻辑优先级降低，CPU常规过热/系统RAM耗尽也没有本次直接支持。未采到首轮运算后的温度/功率，不能排除瞬时变化；也不能据采样最高120.62W认定实际瞬时峰值。
+
+从信息增益与改动范围看，未来授权后先核验现有驱动/运行库版本和内核日志保存覆盖，再用新编号把原首轮区间拆成矩阵乘法、allclose、isfinite和同步各自开始/完成；设置进程级CUDA_LAUNCH_BLOCKING=1仅用于诊断，显式注明改变时序。已有其他兼容环境时可同一最小程序做软件对照，另行登记，不先升级/安装或同时改变多项。显卡/PCIe/供电保留为重要并行假设，当前没有足够证据建议购买或认定某个物理部件损坏。不重复整链A3；仍首故障停止、无开机恢复、同温度/内存保护。本次问答没有启动测试或修改驱动/功率/BIOS。
+
+官方资料于2026-10-11核验：NVIDIA将GPU错误解释为可能涉及硬件、NVIDIA软件或用户应用，要求结合内核Xid与其他证据，不能单凭GPU故障阶段定根因（本机该时间段没有可用Xid证据）：https://docs.nvidia.com/deploy/xid-errors/introduction.html ；日志采集说明：https://docs.nvidia.com/deploy/xid-errors/working-with-xid-errors.html 。PyTorch说明CUDA异步会影响异常定位，CUDA_LAUNCH_BLOCKING=1可强制同步：https://docs.pytorch.org/docs/main/notes/cuda.html 。这些文档提供诊断方法，优先对象和测试次序是根据E24证据作出的项目判断。

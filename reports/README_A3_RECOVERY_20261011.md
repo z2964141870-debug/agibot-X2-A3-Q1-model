@@ -1,6 +1,6 @@
 # A3 重启后恢复 E20 短试验
 
-记录日期：2026-10-11。状态：恢复完整性通过，剩余执行待启动。前序入口：[E20/E21合同](README_A3_CONTROLLER_ADAPTER_20261010.md)。
+记录日期：2026-10-11。状态：E20第三次启动后重启、无新增保存，GPU分支搁置；E21 CPU独立分支准备执行。前序入口：[E20/E21合同](README_A3_CONTROLLER_ADAPTER_20261010.md)。
 
 ## 目标与范围
 
@@ -18,7 +18,11 @@
 
 ## 决定与保护
 
-第二启动有保存进度，继续E20原GPU条件；不改为CPU混合对照。达到boot后300秒、检查无其他GPU进程后，由原监督入口自动登记旧attempt中断并恢复最新保存状态。两组各累计200更新，官方policy冻结。保留CPU90/GPU85连续2次5秒、CPUQuota100%、无保存进展2次及异常停止保护；不自动解除blocked。
+第二启动有保存进度，因此先尝试继续E20原GPU条件。第三启动完成前置短阶段后，在latent200阶段又确认boot变化：`68093698-a432-4729-8e94-6bd02d40125d` → `3477d824-73f0-4216-9dfe-919d3d41f028`；最新sidecar仍MSE200/latent2，无新增保存。最后可读health为CPU42/GPU31°C，只登记事件，不据此归因或排除热问题。
+
+按预案搁置E20 GPU分支，保留job/state及原7文件归档。state第三attempt仍running是旧boot持久字段，当前无该作业；不解除blocked，不修改历史起点或预算。新增独立E21 CPU两组从0至各200，CPU重新生成teacher标签，不沿用E20优化器/计数。原16训练动作、两档噪声、架构/超参/预算与效果门槛保持；GPU/CPU分支不能混合成目标损失的公平对照。
+
+达到新boot后300秒、检查GPU空闲再启动E21。官方policy冻结，保留CPU90/GPU85连续2次5秒、CPUQuota100%、无保存进展2次及异常停止保护。MuJoCo仍按原入口串行GPU前向；若再次卡住，登记受影响项继续独立工作。
 
 ## 版本、命令与产物
 
@@ -30,16 +34,26 @@ OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 data/environments/a3-
 systemd-run --user --unit=yuanqi-a3-controller-adapter-e20-resume03 --property=CPUQuota=100% --property=WorkingDirectory=/media/yu/FAFF-E9771/YUANQI_A3 --property=RemainAfterExit=yes --setenv=OMP_NUM_THREADS=1 --setenv=MKL_NUM_THREADS=1 --setenv=OPENBLAS_NUM_THREADS=1 /media/yu/FAFF-E9771/YUANQI_A3/data/environments/a3-sonic/bin/python -m script.a3.run_controller_adapter run
 ```
 
-启动命令仍待实际确认，不能仅凭命令存在记为已启动。
+2026-10-11 10:14:49北京时间启动前核验：uptime427.64秒、CPU40°C、GPU31°C、GPU空闲；systemd-run已返回 `Running as unit: yuanqi-a3-controller-adapter-e20-resume03.service`。这是启动确认，后续运行/保存进度以state和产物为准。
 
 回执 `data/experiments/a3_controller_adapter_20261010_E20/restart_verification_20261011.json`；训练/完整动作进度 `state.json`；执行日志 `logs/a3_controller_adapter_20261010_E20/`。模型、窗口、归档均LOCAL_ONLY。
+
+E21 CPU入口已实际传入服务器并注册，9项参考/旋转/残差契约检查全部通过；只允许固定E20/E21编号。训练数据和teacher标签由CPU重算，零初始化，预算各200；原E20代码以归档和前序Git提交保留。独立回放验证器改为从job读取实验编号，兼容归档旧入口；不改变实际策略输入或效果门槛。
+
+```bash
+A3_ADAPTER_EXPERIMENT=E21 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 data/environments/a3-sonic/bin/python -m script.a3.run_controller_adapter register
+systemd-run --user --unit=yuanqi-a3-controller-adapter-e21 --property=CPUQuota=100% --property=WorkingDirectory=/media/yu/FAFF-E9771/YUANQI_A3 --property=RemainAfterExit=yes --setenv=A3_ADAPTER_EXPERIMENT=E21 --setenv=OMP_NUM_THREADS=1 --setenv=MKL_NUM_THREADS=1 --setenv=OPENBLAS_NUM_THREADS=1 /media/yu/FAFF-E9771/YUANQI_A3/data/environments/a3-sonic/bin/python -m script.a3.run_controller_adapter run
+A3_ADAPTER_EXPERIMENT=E21 OMP_NUM_THREADS=1 data/environments/a3-sonic/bin/python -m script.a3.verify_adapter_rollout
+```
+
+E21产物 `data/experiments/a3_controller_adapter_20261010_E21/`，日志 `logs/a3_controller_adapter_20261010_E21/`；当前注册与契约通过不代表已完成训练或效果提升。
 
 ## 当前结果与下一步
 
 只证明保存状态可恢复。latent200、44保存点完整独立核验、16完整回放、实际输入及效果门槛仍待完成；不能据MSE200训练进度宣称提升。四动作是重复诊断集，非独立最终验收。
 
-恢复顺序：原监督入口完成剩余latent更新和内部核验/闭环；再独立复算实际输入与指标，读取固定门槛结果。失败项保存，不盲目增加预算。若重启继续，核验保存进度后恢复；连续两次无保存进度停止保留。
+恢复顺序：E21两组从0完成200和内部核验/闭环；再独立复算实际输入与指标，读取固定门槛结果。失败项保存，不盲目增加预算。若重启继续，核验保存进度后恢复；连续两次无保存进度停止保留。E20恢复必须使用归档内原登记源码，不能用新增E21配置回写旧job。
 
 ## 保存与同步
 
-本记录已保存；同步提交待执行，未经远端核验不记为完成。服务器旧的工程未提交修改属于本阶段前序源码，核验后scoped提交；本地学习/研究并行文件不覆盖服务器入口。
+原登记源码/恢复验证脚本/恢复前README共13文件审计通过，提交 `a2a759b42693d157351880611e062c6625eb836c` 已推送main，HEAD与refs/heads/main一致。此启动后更新及后续结果仍待同步。本地学习/研究并行文件不覆盖服务器入口。

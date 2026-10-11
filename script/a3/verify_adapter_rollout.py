@@ -15,6 +15,7 @@ from script.a3.reference_contract import load_sim
 
 def main():
     job = json.loads((OUTPUT / "job.json").read_text())
+    experiment = job["experiment"]
     sim = load_sim()
     with np.load(OUTPUT / "training_windows.npz", allow_pickle=False) as dataset:
         permutation = dataset["permutation"].copy()
@@ -96,7 +97,7 @@ def main():
                     max_abs_difference=max_difference, independent_joint_rmse_rad=rmse,
                     inputs_sha256=sha256(directory / f"{name}.inputs.npz"),
                     timeseries_sha256=sha256(directory / f"{name}.timeseries.json")))
-    result = dict(status="passed", experiment="E20", actual_reference_inputs_verified=sum(r["actual_reference_tokens_verified"] for r in rows),
+    result = dict(status="passed", experiment=experiment, actual_reference_inputs_verified=sum(r["actual_reference_tokens_verified"] for r in rows),
         zero_adapter_smoke_matches_e18_cv=True, rows=rows, proprio_independently_rebuilt=False,
         initialization_causal_verified=False, scope="RUNNING_REFERENCE_TOKENS_AND_RECOMPUTED_JOINT_METRICS_ONLY",
         code_sha256=sha256(Path(__file__)), backup_status="LOCAL_ONLY")

@@ -17,7 +17,7 @@
 
 ## 已完成，可从证据继续
 
-10/11重启恢复：SSH已恢复，boot68093698；E20第二启动实际保存MSE200/latent2，两保存点独立CPU重载/模型优化器有限性/导出及原登记源码SHA通过。原作业未运行，待300秒冷却后沿原E20代码恢复剩余latent200及闭环；E21不启动。官方policy更新0、旧E10 blocked保持，未证明提升，见[当天恢复记录](README_A3_RECOVERY_20261011.md)。
+10/11恢复：E20 MSE200/latent2独立CPU/有限性/源码SHA通过；第三启动latent200期间boot68093698→3477d824、无新增保存，GPU分支搁置、job/state与原源码归档保留。独立E21 CPU两组从0至各200准备执行，原16训练动作/两噪声/门槛保持，不混用GPU优化器。官方policy更新0、旧E10 blocked保持，未证明提升，见[当天恢复记录](README_A3_RECOVERY_20261011.md)。
 
 10/10最新执行E20：同16训练动作/两档噪声/seed/零初始化CV残差适配器，比较角度MSE与冻结teacher量化前latent目标，各2→200监督更新。官方policy更新0、R10未分配、E10 blocked保持；四重复诊断动作不参与训练、不当作最终验收，先独立checkpoint/export/标签核验再闭环。门槛与恢复见[独立阶段](README_A3_CONTROLLER_ADAPTER_20261010.md)，当前预登记，未声称改善。
 

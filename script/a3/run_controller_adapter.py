@@ -13,14 +13,14 @@ import numpy as np
 
 from script.a3.autoresume import monitor_child
 from script.a3.checkpoint_store import atomic_json, sha256
-from script.a3.controller_adapter_trial import OUTPUT
+from script.a3.controller_adapter_trial import DEVICE, EXPERIMENT, OUTPUT
 from script.a3.corrected_trial import OFFICIAL
 from script.a3.evaluate_mujoco import evaluate_explicit
 from script.a3.evaluation_common import checkpoint_metadata, preflight
 from script.a3.fullchain_support import DATA, ROOT, VENDOR
 
 
-LOGS = ROOT / "logs/a3_controller_adapter_20261010_E20"
+LOGS = ROOT / f"logs/a3_controller_adapter_20261010_{EXPERIMENT}"
 BASELINE = ROOT / "data/experiments/a3_causal_reference_20261010_E18"
 REFERENCES = ROOT / "data/experiments/a3_joint_ablation_20261010_E16/references"
 
@@ -33,7 +33,8 @@ def register():
         raise ValueError("Unexpected fixed motion split")
     if any(sha256(Path(row["path"])) != row["sha256"] for row in split["train"]+split["heldout"]):
         raise ValueError("Source motion identity changed")
-    spec = dict(experiment="E20", type="PAIRED_SUPERVISED_REFERENCE_ADAPTER_NOT_PPO", base_policy_updates=0,
+    spec = dict(experiment=EXPERIMENT, training_device=str(DEVICE),
+        type="PAIRED_SUPERVISED_REFERENCE_ADAPTER_NOT_PPO", base_policy_updates=0,
         base_policy_sha256=checkpoint_metadata(OFFICIAL)["sha256"], split_sha256=sha256(DATA / "split.json"),
         train_motions=split["train"], diagnostic_motions=split["heldout"], teacher_diagnostic_e19_used=False,
         code_sha256={name: sha256(ROOT / "script/a3" / name) for name in
@@ -52,7 +53,7 @@ def register():
         max_cpu_c=90, max_gpu_c=85, sample_seconds=5, cpu_quota_percent=100, backup_status="LOCAL_ONLY")
     path = OUTPUT / "job.json"
     if path.exists() and json.loads(path.read_text()) != spec:
-        raise ValueError("E20 registration changed")
+        raise ValueError("Adapter registration changed")
     if not path.exists():
         atomic_json(path, spec)
     return spec
@@ -140,14 +141,14 @@ def summarize():
             results[key] = dict(joint_rmse_rad=rmse, joint_change_percent=change,
                 falls=sum(m["fall"] for m in motions), diagnostic_gate_passed=not reasons,
                 gate_failure_reasons=reasons, motions=motions)
-    receipt = dict(experiment="E20", results=results,
+    receipt = dict(experiment=EXPERIMENT, training_device=str(DEVICE), results=results,
         objective_passed={objective: all(results[f"{objective}_noise{s:g}_seed0"]["diagnostic_gate_passed"]
             for s in (0., .01)) for objective in ("mse", "latent")},
         base_policy_updates=0, adapter_updates_each=200,
         independent_verification_sha256=sha256(OUTPUT / "independent_verification.json"),
         scope="REPEATED_FOUR_DIAGNOSTIC_MOTIONS_NOT_FRESH_FINAL_TEST", backup_status="LOCAL_ONLY")
     atomic_json(OUTPUT / "result.json", receipt)
-    atomic_json(ROOT / "data/manifests/a3_controller_adapter_20261010_E20.json", receipt)
+    atomic_json(ROOT / f"data/manifests/a3_controller_adapter_20261010_{EXPERIMENT}.json", receipt)
     print(json.dumps({k: {field: v[field] for field in
         ("joint_rmse_rad", "joint_change_percent", "falls", "diagnostic_gate_passed")}
         for k, v in results.items()}, indent=2), flush=True)

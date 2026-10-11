@@ -57,7 +57,7 @@ def main():
             cv = np.column_stack([np.interp(requested, np.r_[sample_times[native-1:native], native/30+np.arange(11)/50],
                 np.r_[observed[native-1, j], observed[native, j]+np.arange(11)/50*(observed[native, j]-observed[native-1, j])*30])
                 for j in range(29)])
-            x = (observed[native-5:native]-observed[native]).reshape(145)
+            x = (observed[native-5:native]-observed[native]).reshape(145).astype(np.float32)
             np.testing.assert_allclose(arrays["x"][row], (x-mean)/std, atol=2e-5, rtol=2e-6)
             np.testing.assert_allclose(arrays["baseline"][row], cv, atol=1e-6, rtol=2e-6)
             np.testing.assert_allclose(arrays["target"][row], clean, atol=1e-6, rtol=2e-6)

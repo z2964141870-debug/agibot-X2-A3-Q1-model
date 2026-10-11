@@ -18,8 +18,11 @@ from script.a3.fullchain_support import DATA, ROOT
 from script.a3.reference_contract import load_sim
 
 
-OUTPUT = ROOT / "data/experiments/a3_controller_adapter_20261010_E20"
-DEVICE = torch.device("cuda")
+EXPERIMENT = os.environ.get("A3_ADAPTER_EXPERIMENT", "E20")
+if EXPERIMENT not in ("E20", "E21"):
+    raise ValueError("Only preregistered E20 GPU or E21 CPU experiments are supported")
+OUTPUT = ROOT / f"data/experiments/a3_controller_adapter_20261010_{EXPERIMENT}"
+DEVICE = torch.device("cpu" if EXPERIMENT == "E21" else "cuda")
 LR = 1e-4
 
 

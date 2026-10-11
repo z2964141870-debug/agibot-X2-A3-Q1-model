@@ -1,6 +1,6 @@
 # A3重启链路分离排查
 
-记录日期：2026-10-11。实验E23，状态：普通GPU对照已登记READY，尚未执行；后续Isaac、policy与完整更新未执行。
+记录日期：2026-10-11。实验E23，状态：15:16:59普通GPU对照已启动RUNNING；后续Isaac、policy与完整更新未执行。
 
 ## 目标与授权
 
@@ -37,8 +37,10 @@ job/state/每项result：`data/experiments/a3_isolation_20261011_E23/`；健康/
 
 15:11:28只读核验boot740972e7-c88e-4588-8fa3-a86e8ed6bc64，CPU49°C/GPU30°C、GPU0%且无计算进程，RAM可用约29.6GiB。3项保护契约通过（一次启动/boot隔离、连续温度阈值与复位、缺失温度/内存保护），无CUDA测试。15:14:33登记READY，源码SHA固定在登记清单；尚不是GPU计算通过证据。后续需记录实际启动与每项结果。
 
+15:16:59实际启动unit，Restart=no。15:17:07确认state RUNNING/0_matrix_30s，同boot，4健康记录CPU最高51°C/GPU33°C；CUDA初始化和首次同步矩阵操作已完成，第一30秒测试当时未结束。已更新原hp3090 heartbeat为每5分钟只读巡检本次链路，ACTIVE；旧A3自动恢复不启用。不能将unit的Result=success默认值当作已完成，实际以state/每项result为准。
+
 ## 保存、同步与恢复
 
-登记前审阅diff、运行Git载荷审计、scoped提交推送main并核验远端。保留并行修改，不上传原始日志/模型。暂停的yuanqi-a3保持暂停，日研yuanqi保持不变。E23监测仅观察本次作业，状态未变静默，重启/故障立刻停止并记录；SSH失联记UNKNOWN，恢复后核验boot，不自动续跑。
+登记记录6文件64,488字节通过载荷审计，提交839c29d346efc48e75a850dbc813d8bb080d94d8推送main且远端SHA一致。启动记录另行审计同步，完整SHA以Git历史为准。保留并行修改，不上传原始日志/模型。暂停的yuanqi-a3保持暂停，日研yuanqi保持不变。E23监测仅观察本次作业，状态未变静默，重启/故障立刻停止并记录；SSH失联记UNKNOWN，恢复后核验boot，不自动续跑。
 
 E23全部通过后先保存结果，再独立登记Isaac无policy分支，随后无优化器policy前向，最后完整更新；本登记没有自动启动后续分支的代码。首故障则剩余全部搁置。恢复先读本README、job/state及日志，不能重置E23或将旧E22重新训练。

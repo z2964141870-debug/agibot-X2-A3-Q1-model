@@ -17,7 +17,7 @@
 
 ## 已完成，可从证据继续
 
-10/11当前：用户授权“开始排查/继续”，E23普通GPU对照15:14:33 READY，3无CUDA保护契约通过。矩阵256/1024低占空比，小CNN前向/反向/Adam分离，各30/120/600秒、档间300秒，首故障全链停止；无Isaac或A3权重、无自动续跑。入口[分离排查](README_A3_ISOLATION_20261011.md)，job/state在data/experiments/a3_isolation_20261011_E23/、日志同名logs/。后续Isaac无policy/仅policy/完整更新尚未执行；E01/E22保持停止、历史自动恢复disabled，日研保留。
+10/11当前：用户授权“开始排查/继续”，E23普通GPU对照15:16:59已启动RUNNING，unit yuanqi-a3-isolation-E23.service/Restart=no，原hp3090 heartbeat已更新ACTIVE每5分钟巡检。3无CUDA保护契约通过，15:17:07同boot/首矩阵操作完成，CPU最高51/GPU33°C，尚未完成第一30秒档。矩阵256/1024低占空比，小CNN前向/反向/Adam分离，各30/120/600秒、档间300秒，首故障全链停止；无Isaac或A3权重、无自动续跑。入口[分离排查](README_A3_ISOLATION_20261011.md)，job/state在data/experiments/a3_isolation_20261011_E23/、日志同名logs/。后续Isaac无policy/仅policy/完整更新尚未执行；E01/E22保持停止、历史自动恢复disabled，日研保留。
 
 10/11最新结果：用户授权“继续A3训练，若重启就停”已执行。E22/R10于14:51:33启动官方035保守2更新试跑，第一更新4optimizer步及step0/1大小SHA证据存在，无step2；14:53:09确认新boot740972e7，开机时间推算约14:52:29（非故障精确时刻）。仅5健康采样，CPU最高60/GPU34摄氏度，无保存的热保护事件；缺失间隔内峰值未排除。E22已STOPPED_REBOOT、详细state blocked，无训练进程，不再加载模型，旧自动恢复disabled/两个heartbeatPAUSED，日研保留。优先怀疑A3运行链路关联，尚不能定位代码/Isaac/CUDA或硬件根因；普通GPU/网络对照未做。后续计算需用户新指示，先分离执行环节，不继续整链盲试。见[本轮完整记录](README_A3_REBOOT_TRIAL_20261011.md)及[证据清单](../data/manifests/a3_reboot_trial_result_20261011_E22.json)。
 

@@ -1,6 +1,8 @@
 """Verify restart isolation and protective thresholds without CUDA."""
 import unittest
+from unittest.mock import patch
 from script.diagnostics.gpu_isolation import allowed
+from script.diagnostics import gpu_isolation
 from script.diagnostics.host_loadcheck import protection
 
 
@@ -27,6 +29,14 @@ class GuardTests(unittest.TestCase):
         self.assertEqual(protection(self.health(cpu=None),0)[0], "TELEMETRY_UNREADABLE")
         self.assertEqual(protection(self.health(gpu=None),0)[0], "TELEMETRY_UNREADABLE")
         self.assertEqual(protection(self.health(memory=4*1024**3-1),0)[0], "MEMORY_RESERVE_PROTECTION")
+
+    def test_result_metadata_marker(self):
+        with patch.object(gpu_isolation, "append_record") as record:
+            gpu_isolation.marker("test", "WORKER_COMPLETE", at_utc="worker_time", status="PASSED")
+            payload = record.call_args.args[1]
+            self.assertEqual(payload["phase"], "WORKER_COMPLETE")
+            self.assertEqual(payload["status"], "PASSED")
+            self.assertNotEqual(payload["at_utc"], "worker_time")
 
 
 if __name__ == "__main__":

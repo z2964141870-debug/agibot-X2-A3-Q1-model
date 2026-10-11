@@ -1,4 +1,4 @@
-"""One-shot E23 ordinary CUDA control; no Isaac, A3 weights or restart."""
+"""One-shot E24 ordinary CUDA control; no Isaac, A3 weights or restart."""
 
 import argparse
 import fcntl
@@ -15,8 +15,8 @@ from script.a3.idle_reboot_watch import save_json, utc
 from script.diagnostics.host_loadcheck import FATAL, protection, stop
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "data/experiments/a3_isolation_20261011_E23"
-LOG = ROOT / "logs/a3_isolation_20261011_E23"
+OUT = ROOT / "data/experiments/a3_isolation_20261011_E24"
+LOG = ROOT / "logs/a3_isolation_20261011_E24"
 PYTHON = ROOT / "data/environments/a3-sonic/bin/python"
 SOURCES = ("script/diagnostics/gpu_isolation.py", "script/diagnostics/host_loadcheck.py",
            "script/a3/host_health.py", "script/a3/idle_reboot_watch.py")
@@ -48,7 +48,7 @@ def register():
     stages = [dict(kind="matrix", size=256, duty=0.1),
               dict(kind="matrix", size=1024, duty=0.25)]
     stages += [dict(kind=k, size=32, duty=0.25) for k in ("forward", "backward", "optimizer")]
-    job = dict(experiment="A3_ISOLATION_20261011_E23", boot_id=health["boot_id"],
+    job = dict(experiment="A3_ISOLATION_20261011_E24", boot_id=health["boot_id"],
                registered_at_utc=utc(time.time()), stages=stages, durations=[30, 120, 600],
                cooldown_seconds=300, sample_seconds=5, seed=0, dtype="float32",
                max_cpu_c=90, max_gpu_c=85, consecutive_hot_samples=2, memory_reserve_gib=4,
@@ -59,13 +59,13 @@ def register():
     save_json(OUT / "job.json", job)
     save_json(OUT / "state.json", dict(status="READY", results=[]))
     append_record(LOG / "health.jsonl", dict(stage="registration", health=health))
-    save_json(ROOT / "data/manifests/a3_isolation_registration_20261011_E23.json", job)
+    save_json(ROOT / "data/manifests/a3_isolation_registration_20261011_E24.json", job)
     print(json.dumps(job), flush=True)
 
 
 def marker(name, phase, **details):
     append_record(LOG / (name + ".phases.jsonl"),
-                  dict(at_utc=utc(time.time()), phase=phase, **details))
+                  {**details, "at_utc":utc(time.time()), "phase":phase})
 
 
 def worker(index, seconds):
@@ -260,7 +260,7 @@ def summarize():
                   cpu_max_c=max(x for x in cpu if x is not None),
                   gpu_max_c=max(x for x in gpu if x is not None), backup_status="LOCAL_ONLY",
                   job_sha256=sha(OUT / "job.json"), health_sha256=sha(LOG / "health.jsonl"))
-    save_json(ROOT / "data/manifests/a3_isolation_result_20261011_E23.json", result)
+    save_json(ROOT / "data/manifests/a3_isolation_result_20261011_E24.json", result)
     print(json.dumps(result), flush=True)
 
 

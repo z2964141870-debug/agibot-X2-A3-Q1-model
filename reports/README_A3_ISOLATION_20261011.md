@@ -1,6 +1,6 @@
 # A3重启链路分离排查
 
-记录日期：2026-10-11。实验E23，状态：15:16:59普通GPU对照已启动RUNNING；后续Isaac、policy与完整更新未执行。
+记录日期：2026-10-11。E23因记录脚本异常停止，主机未重启；修复后新编号E24准备中。后续Isaac、policy与完整更新未执行。
 
 ## 目标与授权
 
@@ -43,4 +43,12 @@ job/state/每项result：`data/experiments/a3_isolation_20261011_E23/`；健康/
 
 登记记录6文件64,488字节通过载荷审计，提交839c29d346efc48e75a850dbc813d8bb080d94d8推送main且远端SHA一致。启动记录另行审计同步，完整SHA以Git历史为准。保留并行修改，不上传原始日志/模型。暂停的yuanqi-a3保持暂停，日研yuanqi保持不变。E23监测仅观察本次作业，状态未变静默，重启/故障立刻停止并记录；SSH失联记UNKNOWN，恢复后核验boot，不自动续跑。
 
-E23全部通过后先保存结果，再独立登记Isaac无policy分支，随后无优化器policy前向，最后完整更新；本登记没有自动启动后续分支的代码。首故障则剩余全部搁置。恢复先读本README、job/state及日志，不能重置E23或将旧E22重新训练。
+普通GPU分支全部通过后先保存结果，再独立登记Isaac无policy分支，随后无优化器policy前向，最后完整更新；本登记没有自动启动后续分支的代码。主机或计算首故障则剩余全部搁置。恢复先读本README、job/state及日志，不能重置E23或将旧E22重新训练。
+
+## E23记录代码异常与E24修复
+
+E23于15:17:32已完成256矩阵30.0003435秒、2757次同步操作，数值检查未报错，result已原子落盘PASSED。随后WORKER_COMPLETE日志把result内的at_utc再次作为显式dict参数传入，触发TypeError重复关键字，worker退出1，外层15:17:35 STOPPED/WORKER_FAILED_1，没有继续120秒。10采样CPU最高51/GPU34°C、原boot未变，无GPU残留计算。这是自编诊断日志代码缺陷，不是CUDA/数值错误或机器重启；E23整套未通过，14项未做，保留其job/state/结果，不重跑。
+
+原执行版本与登记SHA保留在Git提交839c29d，启动记录提交1615c6e。修复marker以合并字典记录，增加带at_utc的完成结果回归检查，不修改历史E23账本。新E24沿用相同负载参数，仅修复记录逻辑且使用独立路径。允许继续来自用户持续排查授权；不是在确认硬件/计算故障后自动重试。
+
+当前代码命令面向E24：`/usr/bin/python3 -m script.diagnostics.gpu_isolation register/run/summarize`（CLI每次只传一个action，不用斜杠），unit改为`yuanqi-a3-isolation-E24.service`。job/state/results在`data/experiments/a3_isolation_20261011_E24/`，日志同名logs目录，登记/汇总清单末尾E24。上面的E23旧命令仅说明历史，不可再启动；新E24仍一次启动、原boot、同保护与RuntimeMaxSec100min。E24实际登记/启动/结果需按下次采样确认，不能把准备中记为完成。

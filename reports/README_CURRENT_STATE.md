@@ -4,7 +4,7 @@
 
 ## 用户目标与固定约定
 
-10/11最新：用户“继续拆”授权新E26只执行一次1024矩阵，拆开matmul/allclose/isfinite/归约/标量读回及显式同步，CUDA_LAUNCH_BLOCKING=1改变诊断时序，结果以[新阶段记录](README_GPU_OPERATOR_SPLIT_20261011.md)及独立job/state为准；首故障停止、不可重复启动，无A3/Isaac计算，不恢复E24/E25/旧训练。本次短测直接只读监测，两个旧heartbeat保持PAUSED。
+10/11最新：E26于17:29:32–17:30:38完成单次1024矩阵同步拆分及60秒停载观察；17边界全部完成，56阶段记录与Mac镜像一致，无异常/新boot，15采样CPU最高47/GPU33°C。CUDA_LAUNCH_BLOCKING=1与额外同步/fsync改变时序，单次通过不能排除E24故障，根因UNKNOWN。unit已结束、无GPU计算进程，A3/Isaac未运行，旧heartbeat保持PAUSED。下一独立实验保留次数与日志，仅切换blocking对照，然后才延长矩阵循环；本阶段未执行这些分支，不重置E26或恢复旧训练。见[实际结果及小清单](README_GPU_OPERATOR_SPLIT_20261011.md)。
 
 - 10/9 用户确认六项能力正式纳入学习主线，见[最新教学入口](README_LEARNING_MAINLINE_20261009.md)。教学从关节控制链与必要 Python 开始，结合样本 / 训练代码逐步补坐标时间、RL、诊断与实验；每阶段亲自检查并总结，尚未宣称掌握。
 - 10/9 最新优先级：10/30 前确定 A3 或 Q1 遥操模型的训练方法、资源需求与本人能力要求；先形成有核验依据的路线。当前以[选型方案](README_MODEL_ROUTE_20261009.md)为准，不把旧完整人形训练 OKR 当成本次硬性截止，团队正式 OKR 尚未修改。

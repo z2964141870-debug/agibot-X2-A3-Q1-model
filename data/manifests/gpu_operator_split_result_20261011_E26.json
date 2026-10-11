@@ -1,0 +1,171 @@
+{
+  "experiment": "GPU_OPERATOR_SPLIT_20261011_E26",
+  "at_utc": "2026-10-11T09:31:04.578253+00:00",
+  "state": {
+    "status": "COMPLETED",
+    "boot_id": "c7805e85-7467-4691-9037-b805ccae131f",
+    "started_at_utc": "2026-10-11T09:29:32.785068+00:00",
+    "worker_pid": 6457,
+    "worker_completed_at_utc": "2026-10-11T09:29:37.856752+00:00",
+    "reason": null,
+    "ended_at_utc": "2026-10-11T09:30:38.347391+00:00",
+    "worker_exit": 0
+  },
+  "trace": {
+    "records": 56,
+    "last_completed": {
+      "experiment": "GPU_OPERATOR_SPLIT_20261011_E26",
+      "iteration": 0,
+      "at_utc": "2026-10-11T09:29:35.194426+00:00",
+      "monotonic_ns": 6555149811311,
+      "pid": 6457,
+      "thread_id": 133085707400256,
+      "boot_id": "c7805e85-7467-4691-9037-b805ccae131f",
+      "event": "END",
+      "phase": "RESULT_SAVE",
+      "call_id": "6457:17"
+    },
+    "incomplete": [],
+    "errors": [],
+    "partial_lines": [],
+    "scope": "LAST_DURABLE_BOUNDARIES_NOT_ROOT_CAUSE_PROOF"
+  },
+  "current_health": {
+    "at_utc": "2026-10-11T09:31:04.549177+00:00",
+    "boot_id": "c7805e85-7467-4691-9037-b805ccae131f",
+    "uptime_seconds": 6644.5,
+    "load_average": [
+      0.0,
+      0.0009765625,
+      0.0
+    ],
+    "memory_bytes": {
+      "MemTotal": 33503977472,
+      "MemAvailable": 31332208640,
+      "SwapTotal": 0,
+      "SwapFree": 0
+    },
+    "temperatures_c": {
+      "x86_pkg_temp": 50.0,
+      "acpitz": 27.8,
+      "iwlwifi_1": 41.0
+    },
+    "gpu_query": {
+      "returncode": 0,
+      "stdout": "30, 23.04, 370.00, 0, 92",
+      "stderr": ""
+    },
+    "gpus": [
+      {
+        "temperature.gpu": 30.0,
+        "power.draw": 23.04,
+        "power.limit": 370.0,
+        "utilization.gpu": 0.0,
+        "memory.used": 92.0
+      }
+    ]
+  },
+  "samples": 15,
+  "first_health": {
+    "phase": "registration",
+    "health": {
+      "at_utc": "2026-10-11T09:28:48.222404+00:00",
+      "boot_id": "c7805e85-7467-4691-9037-b805ccae131f",
+      "uptime_seconds": 6508.17,
+      "load_average": [
+        0.01513671875,
+        0.01416015625,
+        0.0
+      ],
+      "memory_bytes": {
+        "MemTotal": 33503977472,
+        "MemAvailable": 31793061888,
+        "SwapTotal": 0,
+        "SwapFree": 0
+      },
+      "temperatures_c": {
+        "x86_pkg_temp": 47.0,
+        "acpitz": 27.8,
+        "iwlwifi_1": 41.0
+      },
+      "gpu_query": {
+        "returncode": 0,
+        "stdout": "30, 22.95, 370.00, 0, 92",
+        "stderr": ""
+      },
+      "gpus": [
+        {
+          "temperature.gpu": 30.0,
+          "power.draw": 22.95,
+          "power.limit": 370.0,
+          "utilization.gpu": 0.0,
+          "memory.used": 92.0
+        }
+      ]
+    }
+  },
+  "last_health": {
+    "phase": "OBSERVING",
+    "health": {
+      "at_utc": "2026-10-11T09:30:38.304147+00:00",
+      "boot_id": "c7805e85-7467-4691-9037-b805ccae131f",
+      "uptime_seconds": 6618.25,
+      "load_average": [
+        0.0,
+        0.00341796875,
+        0.0
+      ],
+      "memory_bytes": {
+        "MemTotal": 33503977472,
+        "MemAvailable": 31304568832,
+        "SwapTotal": 0,
+        "SwapFree": 0
+      },
+      "temperatures_c": {
+        "x86_pkg_temp": 39.0,
+        "acpitz": 27.8,
+        "iwlwifi_1": 41.0
+      },
+      "gpu_query": {
+        "returncode": 0,
+        "stdout": "30, 23.07, 370.00, 0, 92",
+        "stderr": ""
+      },
+      "gpus": [
+        {
+          "temperature.gpu": 30.0,
+          "power.draw": 23.07,
+          "power.limit": 370.0,
+          "utilization.gpu": 0.0,
+          "memory.used": 92.0
+        }
+      ]
+    },
+    "critical_kernel_lines": []
+  },
+  "max_cpu_c": 47.0,
+  "max_gpu_c": 33.0,
+  "min_available_memory_bytes": 31289495552,
+  "worker_result": {
+    "status": "PASSED",
+    "at_utc": "2026-10-11T09:29:35.192560+00:00",
+    "boot_id": "c7805e85-7467-4691-9037-b805ccae131f",
+    "matrix_size": 1024,
+    "iterations": 1,
+    "allclose": true,
+    "all_finite": true,
+    "torch_version": "2.8.0+cu128",
+    "cuda_version": "12.8",
+    "cuda_launch_blocking": "1"
+  },
+  "worker_result_sha256": "cb8c706e3e612850366a3e619dc39d0e872373c3572243735fcbe17bf954b394",
+  "source_sha256": {
+    "script/diagnostics/gpu_operator_split.py": "f9edbbd7bc057d3d5451f5bae3307e9bfddf657c1c5a2a03c0114f58e18c363a",
+    "script/a3/phase_trace.py": "8f342cd5a7a56a8b995420da68394813e28702cee1dd2105440f0c6f002d4ee5",
+    "script/a3/host_health.py": "82ab6f18088719f1caa08607ce16de43e36dd44f066f727560a80627c796bc6e",
+    "script/a3/idle_reboot_watch.py": "3bc9138bc3c2e353b7d5c5759846b5b56a85e5a4168f9c7b207d001db98cf483",
+    "script/diagnostics/host_loadcheck.py": "a1a76cd6631b474efccf947388a1fcff72636e2a3cb5fed31ad361888f1e672b"
+  },
+  "backup_status": "LOCAL_ONLY",
+  "scope": "ONE_BLOCKING_ITERATION_WITH_EXTRA_SYNCS_NOT_ROOT_CAUSE_PROOF"
+}

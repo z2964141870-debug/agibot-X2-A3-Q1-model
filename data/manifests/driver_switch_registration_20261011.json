@@ -39,6 +39,26 @@
     "a3_longtrain": "inactive/disabled",
     "kernel_driver_load": "NVRM loading 580.178.04"
   },
+  "smoke_d01": {
+    "status": "STOPPED_REBOOT",
+    "registered_boot_id": "560a7f8b-e70c-45a7-b3d7-5388308339cb",
+    "confirmed_boot_id": "fbae4671-acc0-470e-8e39-60d8340b5da2",
+    "last_persisted_phase": "CHECK_BEGIN",
+    "persisted_phases": [
+      "PYTHON_BEGIN",
+      "TORCH_IMPORTED",
+      "CUDA_INIT_BEGIN",
+      "CUDA_INIT_END",
+      "ALLOC_BEGIN",
+      "ALLOC_SYNC_END",
+      "MATMUL_BEGIN",
+      "MATMUL_SYNC_END",
+      "CHECK_BEGIN"
+    ],
+    "result_saved": false,
+    "retry": false,
+    "interpretation": "New boot occurred during or after the single ordinary CUDA smoke; BIOS separately reported abnormal power supply. Exact failing API is unknown."
+  },
   "planned_commands": [
     "sudo apt-get install nvidia-driver-580",
     "sudo reboot"

@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-更新日期：2026-10-11（NVIDIA驱动已从595.84切换到580.178.04并完成计划内重启；A3仍暂停）。
+更新日期：2026-10-11（580驱动下D01普通CUDA单次检查确认新boot；现场BIOS提示异常供电，全部负载已停止；A3仍暂停）。
 
 ## 恢复上下文先读
 
@@ -14,6 +14,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-11 | 580驱动普通CUDA冒烟 D01 | Python/CUDA/1024矩阵乘与同步完成到CHECK_BEGIN后确认新boot；现场BIOS报告异常供电，未发现保存的Xid/MCE/AER，首故障停止，见[驱动切换记录](README_DRIVER_SWITCH_20261011.md) |
 | 2026-10-11 | NVIDIA驱动切换 | 已安装官方 `nvidia-driver-580` 580.178.04，DKMS/内核模块加载成功并完成计划内重启；空闲核验通过，尚未负载复测，见[切换记录](README_DRIVER_SWITCH_20261011.md) |
 | 2026-10-11 | 普通Ultralytics YOLOv10n训练排查 E01 | batch=32 训练在 TRAIN_BEGIN 后确认新boot，首故障停止；CPU/GPU温度低，见[阶段记录](README_YOLO_PROBE_20261011.md) |
 | 2026-10-11 | 既有CUDA11.7环境对照E30/E31 | E30 torch1.13.1+cu117单次与60秒观察通过，同boot；E31 30秒循环确认新boot后首故障停止，见[阶段记录](README_GPU_RUNTIME_COMPARE_20261011.md) |

@@ -50,14 +50,15 @@
 - 计划内重启后 boot ID 从 `7f9e3cd2-cfcf-4ca0-9493-527fc78a418d` 变为 `560a7f8b-e70c-45a7-b3d7-5388308339cb`；这是驱动切换动作，不计为负载触发故障。
 - `nvidia-smi` 已报告 `580.178.04`；`modinfo` 显示 DKMS 模块 `/lib/modules/6.8.0-138-generic/updates/dkms/nvidia.ko`，`dkms status` 为 installed。
 - 新系统已启动，GPU 29°C、23.28W、0%利用率、77MiB显存；未发现 A3/YOLO/Isaac/PyTorch 计算进程，A3 自动服务仍 inactive/disabled。
-- 切换后只完成空闲核验，尚未在 580 上重跑会导致重启的 GPU/YOLO 工作负载；因此目前只能确认驱动切换成功，不能宣称根因已消失。
+- 后续 D01 单次普通 CUDA 冒烟在 580.178.04 下完成 Python/Torch 导入、CUDA 初始化、1024 矩阵分配、一次矩阵乘及同步；持久化日志停在 `CHECK_BEGIN`，没有 `CHECK_END`/结果回执。随后确认 boot 从 `560a7f8b-e70c-45a7-b3d7-5388308339cb` 变为 `fbae4671-acc0-470e-8e39-60d8340b5da2`，因此 D01 为 `STOPPED_REBOOT`，不重试。
+- 580 驱动下的 D01 仍发生新 boot，且 BIOS 现场明确提示异常供电；这使“电源/主板保护触发”成为当前首要嫌疑。D01 未出现保存的 Xid/MCE/AER 错误，不能据此定位具体器件，也不能把 `CHECK_BEGIN` 后的缺失直接归因于 allclose 或驱动。
+- 用户随后提供了现场 BIOS 照片：MSI `E7D31IMS.A10` 明确显示“上次开机时检测到系统电源发生异常供电现象，已启动电源保护机制”。这是主板对供电异常的直接证据；在确认系统恢复前，不继续任何 GPU 负载、不按 F1 修改 BIOS。
 
 ## 下一步与恢复入口
 
-1. 在 580.178.04 上先做单次、低风险普通 CUDA 版本核验；不恢复 A3。
-2. 只有单次核验通过，才按已登记的首故障停止规则逐步重跑普通 GPU/YOLO 对照。
-3. 若新驱动仍复现重启，回退到 595.84 只作为软件版本对照，不把一次通过/失败解释为硬件已排除。
-4. 继续前重读本文件、`reports/README_CURRENT_STATE.md`、`data/manifests/driver_switch_registration_20261011.json`。
+1. 现场按任意键继续启动（不进入 F1 Setup）后，已确认新 boot 和持久化 D01 日志；保存前一 boot 内核只读记录，未发现 Xid/MCE/AER/panic。
+2. 证据已达到首故障停止条件：停止全部后续 GPU/A3/YOLO 负载，不回退、不重复试跑；优先现场检查 PSU、主板供电、显卡辅助供电线、插接和 PCIe 插槽/供电路径。
+3. 若以后需要版本对照，先完成供电链路检查，再由用户明确授权回退或换另一驱动；一次通过/失败都不能单独排除硬件。
 
 ## 保存与同步状态
 

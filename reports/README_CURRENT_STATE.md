@@ -4,7 +4,7 @@
 
 ## 用户目标与固定约定
 
-10/11最新：YOLO普通训练排查 E01 已登记但尚未启动，Ultralytics 8.4.175 的 YOLOv10n 架构、1800/200 合成检测数据、batch=32 和5秒保护监测均已准备；E31 后续不再加压，A3仍暂停。训练开始前需再次核对 boot、GPU空闲和 registration 清单，见[YOLO阶段记录](README_YOLO_PROBE_20261011.md)。
+10/11最新：YOLO普通训练排查 E01 已执行并确认新boot：Ultralytics 8.4.175 的 YOLOv10n 架构、1800/200合成数据、batch=32 只写到 TRAIN_BEGIN，0个epoch；重启前CPU40–47°C、GPU30–33°C、利用率采样0%，不属于已观测热保护。状态STOPPED_REBOOT，未重试、不恢复A3；普通YOLO初始化也能触发主机重启。见[YOLO阶段记录](README_YOLO_PROBE_20261011.md)。
 
 10/11最新：E30已用既有twist(torch1.13.1+cu117/CUDA11.7)完成同一单次1024矩阵与60秒观察，18:29:30–18:30:35，同boot34cc7c88，56阶段记录无异常，CPU49/GPU33°C，实时kernel follow可读。E31随后以同环境30秒循环运行，UTC10:36:19.326968完成MATMUL_SYNCHRONIZE后在ALLCLOSE BEGIN处失去持久化完成记录；UTC10:38:00.216198确认新boot c99ddfa9，状态STOPPED_REBOOT。重启前仅2个健康样本（CPU最高48/GPU30°C），没有可用旧boot内核错误记录；重启后只读快照，无GPU计算。E28（cu128）和E31（cu117）都出现“单次通过、循环重启”，但具体API/驱动/硬件根因仍UNKNOWN。随后只读检查未见Xid/MCE/AER/panic，GPU Recovery Action为None、PCIe replay为0；当前PCIe协商Gen1是待硬件核对线索，不能单独视为根因。E31首故障后不再增加GPU负载，不启动E32，不恢复A3。见[阶段记录](README_GPU_RUNTIME_COMPARE_20261011.md)。
 

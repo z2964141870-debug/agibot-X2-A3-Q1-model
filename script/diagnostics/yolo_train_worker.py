@@ -44,7 +44,7 @@ def main() -> int:
             workers=4,
             cache=False,
             amp=False,
-            pretrained=True,
+            pretrained=False,
             project=project,
             name=name,
             exist_ok=False,

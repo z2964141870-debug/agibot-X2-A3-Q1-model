@@ -14,6 +14,9 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-12 | A3学习：参考、执行目标与实际角 | 本人指出摩擦等执行因素；固定源码核对action缩放/PD/MuJoCo，仿真与真机、参考与目标区别已解释；下一项PD判断待回答，见[学习记录](README_LEARNING_SESSION_20261012.md) |
+| 2026-10-11 | A3学习首轮：膝关节控制链 | 首轮问题与当时静态阅读见[学习记录](README_LEARNING_SESSION_20261011.md)，10/12已收到反馈并接续教学 |
+| 2026-10-11 | 学习Agent任务卡与分工 | 学习Agent负责教学，工程Agent推进工程，见[任务卡](README_LEARNING_AGENT_TASK_20261011.md)；学习任务不启动工程计算 |
 | 2026-10-11 | 580驱动普通CUDA冒烟 D01 | Python/CUDA/1024矩阵乘与同步完成到CHECK_BEGIN后确认新boot；现场BIOS报告异常供电，未发现保存的Xid/MCE/AER，首故障停止，见[驱动切换记录](README_DRIVER_SWITCH_20261011.md) |
 | 2026-10-11 | NVIDIA驱动切换 | 已安装官方 `nvidia-driver-580` 580.178.04，DKMS/内核模块加载成功并完成计划内重启；空闲核验通过，尚未负载复测，见[切换记录](README_DRIVER_SWITCH_20261011.md) |
 | 2026-10-11 | 普通Ultralytics YOLOv10n训练排查 E01 | batch=32 训练在 TRAIN_BEGIN 后确认新boot，首故障停止；CPU/GPU温度低，见[阶段记录](README_YOLO_PROBE_20261011.md) |

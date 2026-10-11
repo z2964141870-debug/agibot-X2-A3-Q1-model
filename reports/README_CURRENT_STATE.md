@@ -4,7 +4,9 @@
 
 ## 用户目标与固定约定
 
-10/11最新：用户授权先尝试可改的软件层。已将官方 `nvidia-driver-595-open` 595.84 切换为 apt 的 `nvidia-driver-580` 580.178.04；DKMS 模块在6.8.0-138上安装成功，计划内重启后新 boot `560a7f8b-e70c-45a7-b3d7-5388308339cb`，GPU 29°C/23.28W/0%利用率，A3自动服务仍 inactive/disabled，无计算进程。用户所说“1404”是 sudo 密码，未写入项目。尚未在新驱动上复测负载，见[驱动切换记录](README_DRIVER_SWITCH_20261011.md)。
+- 10/12 教学：本人已指出摩擦等执行因素；策略前误差、策略后仿真及参考/执行目标区别已讲解，仍需核验理解。固定A3源码action缩放、PD与MuJoCo静态核对；下一项0.30/0.25/0.20rad的PD判断待回答。学习任务未运行工程计算，见[当天学习记录](README_LEARNING_SESSION_20261012.md)与[任务卡](README_LEARNING_AGENT_TASK_20261011.md)。
+
+10/11最新：用户授权先尝试可改的软件层。已将官方 `nvidia-driver-595-open` 595.84 切换为 apt 的 `nvidia-driver-580` 580.178.04；DKMS 模块在6.8.0-138上安装成功，计划内重启后新 boot `560a7f8b-e70c-45a7-b3d7-5388308339cb`，GPU 29°C/23.28W/0%利用率，A3自动服务仍 inactive/disabled，无计算进程。尚未在新驱动上复测负载，见[驱动切换记录](README_DRIVER_SWITCH_20261011.md)。
 
 10/11最新故障证据：580.178.04 下 D01 普通 CUDA 冒烟完成导入、初始化、1024 矩阵分配/乘法/同步，持久化日志停在 `CHECK_BEGIN`；随后确认 boot `fbae4671-acc0-470e-8e39-60d8340b5da2`，状态 `STOPPED_REBOOT`，不重试。用户现场 BIOS 同时提示“上次开机检测到系统电源发生异常供电现象，已启动电源保护机制”。前一 boot 内核只读记录未见 Xid/MCE/AER/panic；当前首要排查对象是 PSU/主板供电/显卡辅助供电线/PCIe 插接与供电路径。全部 GPU/A3/YOLO 负载保持停止，详见[驱动切换记录](README_DRIVER_SWITCH_20261011.md)。
 

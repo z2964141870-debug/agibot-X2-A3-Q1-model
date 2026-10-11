@@ -1,6 +1,6 @@
 # A3 单次训练重启观察 E22/R10
 
-记录日期：2026-10-11。状态：已注册，尚未启动。用户在CPU负载保护后明确重新授权A3训练，并要求确认重启后先停止。
+记录日期：2026-10-11。状态：E22/R10已实际启动并确认重启，按用户要求停止；有step1保存点，无step2，不自动恢复。
 
 ## 目标与授权
 
@@ -43,6 +43,36 @@ OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
 2026-10-11北京时间14:47:39注册成功，初始boot cb282100-387e-400f-bff0-dab2de7282b8。3项无重复启动/boot隔离/温度保护契约通过，source402050931字节，SHA256 `9cf33be2f4e602858b68ce31d5824113ab1dda250acaab5842b6d3bf88b70f2d`。preflight14:43 CPU51摄氏度/GPU30摄氏度、GPU空闲；启动前再次核验温度。登记成功不是训练开始或通过。
 
 确认新boot时只读取state、最后健康记录和保存点sidecar，标记中断并停止本轮，不CPU加载模型、不再启动训练。SSH不可达保存UNKNOWN与最后确认阶段，不能当作已重启；恢复SSH后只读核验boot。训练错误或温度保护同样停止；正常达到2则独立核验模型/优化器、8实际optimizer步和初始权重/计数，不追加200或10000，不做策略效果结论。
+
+## 实际结果与阶段定位
+
+临时服务在北京时间14:51:33启动，Restart=no、RuntimeMax15min、CPUQuotaPerSecUSec1s已实际回读。16环境Isaac场景创建、仿真启动和16动作加载均进入执行；`warm_start_loaded.json`确认官方policy/value与来源一致，global_step0、优化器条目0，初始重置已发生。不是只完成启动命令。
+
+14:51:56.012333至14:51:56.046451，4条实际optimizer返回日志保存（第一轮4 minibatches），实际LR从2e-6至1.333333e-6。step0与step1文件及sidecar均存在，大小/SHA独立读取核对一致，step1 PT402076373字节、SHA `aa2df97688e73c94ac8f1cc2d78ad141be157b4fdd2fdb0b8ef37bd3b3bf0bec`，mtime14:51:56.651651。没有step2或第二轮optimizer日志。只能确认第一更新有保存证据，不能据缺失日志判断第二轮绝未开始。
+
+14:53:09 SSH恢复后首次确认新boot `740972e7-c88e-4588-8fa3-a86e8ed6bc64`，uptime40.42秒；初始boot `cb282100-387e-400f-bff0-dab2de7282b8`。由UTC采样时间减uptime推算新boot约14:52:29，距离启动约55秒；这是开机开始估算，不是精确故障时刻。重启事件至少发生在第一轮保存后至14:53:09新boot确认之间。首次SSH超时先登记UNKNOWN，随后新boot证据才确认重启。
+
+本轮仅5条完整健康采样，14:51:34至14:51:54，CPU最高60摄氏度、GPU最高34摄氏度，没有保存下来的阈值触发；最后GPU利用率3%、功率113.56W、显存3735MiB，可用RAM约23.99GiB。最后采样之后及断连期间遥测缺失，不能排除间隔内温度/功率峰值。此前四workerCPU90摄氏度保护停止与本次重启是两件不同事件。
+
+本轮console日志含1686个零字节且可读正文止于动作加载；它比持久optimizer/sidecar证据更旧。故不能把console最后一行认定为故障调用点，也不能据此认定重启仍停在初始化。前一boot训练unit日志只有Started，所读内核段未见FATAL匹配，不等于不存在驱动/硬件问题。
+
+| 项目 | 状态 | 范围 |
+| --- | --- | --- |
+| 启动、官方初始化和训练执行 | 通过，限定证据 | 官方载入回执、实际4 optimizer步 |
+| step0/step1文件完整性 | 通过，大小/SHA | 未在重启后重载PT或检验数值有限性 |
+| 2次更新短试跑 | 失败/中断 | step1后确认新boot，无step2 |
+| 模型/优化器独立重载、效果评测 | 搁置 | 重启后按用户要求停止计算 |
+| CPU负载E01后续内存/GPU/小网络 | 保持搁置 | 没有普通GPU网络对照，不宣称已排除 |
+
+新外层`launch_state.json`已标记STOPPED_REBOOT，训练详细state标记blocked/CONFIRMED_NEW_BOOT_NO_RESUME；只修改新E22账本。服务在新boot inactive/dead，无训练进程或GPU计算进程；旧autoresume/longtrain仍disabled，两个heartbeat仍PAUSED。重启后只做日志、元数据和文件SHA读取，不重载模型、不再训练/评测。
+
+## 判断与后续假设
+
+用户怀疑“A3训练相关导致重启”，现有观察支持把A3执行链路列为优先关联线索：固定两小时空闲无新boot，单/双CPU整数档完成无新boot，重新启动A3约一分钟后出现新boot。该对照没有隔离GPU矩阵、小CNN、Isaac本体、policy前向和PPO更新，且历史重启也涉及CPU标签准备及GPU推理；不能直接认定A3算法错误或排除驱动、硬件/负载条件。
+
+当前可定位到“第一轮更新及保存后至下一持久保存前”，具体出错操作UNKNOWN。以后若用户重新授权，应分别登记普通PyTorch GPU计算、Isaac场景/步进、仅policy前向及完整更新对照，每次只改变一项、首故障停止，避免反复重启完整训练；本轮没有执行这些分支。CPU散热仍是另一已记录问题，不因此取消温度保护。
+
+最终证据入口：`data/manifests/a3_reboot_trial_result_20261011_E22.json`，包含boot转换、时间、4optimizer行、采样、文件SHA及检查范围；原始健康/console/训练日志与两个PT留服务器LOCAL_ONLY。该清单明确`cpu_reload=false`，不将SHA完整性当作模型有限性/效果验收。
 
 ## 同步
 

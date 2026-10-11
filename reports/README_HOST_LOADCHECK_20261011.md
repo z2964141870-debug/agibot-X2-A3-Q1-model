@@ -59,6 +59,12 @@ systemctl --user stop yuanqi-host-loadcheck-E01.service
 
 三个600秒窗口整机逻辑CPU平均占用约1.65%、2.36%、5.14%；单worker100%不是整机100%。这是一个worker的指定整数计算验证，没有逐物理核固定亲和性扫描，也未覆盖AVX、浮点/BLAS、全核心并发、GPU或普通网络训练，不能排除这些不同路径。现有控制器冷却300秒后按原job进入2/4worker与256/1024MiB内存分支，未重置/重启测试，A3继续暂停。
 
+### 双worker CPU档完成
+
+2026-10-11北京时间14:04:28.849319至14:17:05.134285，双worker各100%固定int64的30/120/600秒三次测试全部PASSED，均返回0，三份stdout SHA独立复核一致。14:21:11汇总854条记录，累计12项通过；boot仍为cb282100-387e-400f-bff0-dab2de7282b8，0日志解析错误、0关键内核事件、无保护触发。此档CPU采样最高72摄氏度，GPU最高29摄氏度、利用率0；可用RAM最低29.54GiB。
+
+600秒窗口整机逻辑CPU平均占用10.09%。结果仅覆盖两个worker的指定整数计算，不代表全核心、浮点/AVX、GPU或普通训练稳定性。核验时原unit处于300秒冷却，按原job继续四worker和内存档；未重启或重置实验，A3训练/评测继续暂停。快照为 `data/manifests/host_loadcheck_result_20261011_E01.json`，巡检证据为 `logs/host_loadcheck_20261011_E01/watch_20261011T062020Z.json`，原始日志LOCAL_ONLY。
+
 ## 同步与恢复
 
 阶段代码、说明及小型结果清单审计后scoped提交main并核验远端。原始日志留服务器、LOCAL_ONLY。若重启，先核验boot并登记最后RUNNING档为中断；不自动重启测试。每日研究yuanqi保持不变。

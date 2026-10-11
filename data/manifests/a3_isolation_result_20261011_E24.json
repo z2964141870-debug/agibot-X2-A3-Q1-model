@@ -1,7 +1,7 @@
 {
   "experiment": "A3_ISOLATION_20261011_E24",
   "state": {
-    "status": "RUNNING",
+    "status": "STOPPED_REBOOT",
     "results": [
       {
         "stage": "0_matrix_30s",
@@ -17,18 +17,50 @@
         },
         "at_utc": "2026-10-11T07:22:38.798051+00:00",
         "result_sha256": "42eb6ed486bb1661949925039c991bc9cfd8214cb375ba0424e902dc89a4f175"
+      },
+      {
+        "stage": "0_matrix_120s",
+        "status": "PASSED",
+        "iterations": 11497,
+        "elapsed_seconds": 120.00461206399996,
+        "active_seconds": 2.7064082460110512,
+        "optimizer_updates": 0,
+        "spec": {
+          "kind": "matrix",
+          "size": 256,
+          "duty": 0.1
+        },
+        "at_utc": "2026-10-11T07:24:44.086861+00:00",
+        "result_sha256": "9f45bfa7a0be5b6c2fc756f0c22d303d05faf759713878f18e1746714d9e0b99"
+      },
+      {
+        "stage": "0_matrix_600s",
+        "status": "PASSED",
+        "iterations": 57821,
+        "elapsed_seconds": 600.0086470759998,
+        "active_seconds": 13.116711090972558,
+        "optimizer_updates": 0,
+        "spec": {
+          "kind": "matrix",
+          "size": 256,
+          "duty": 0.1
+        },
+        "at_utc": "2026-10-11T07:34:49.965127+00:00",
+        "result_sha256": "31d55888bb7abb52a0c5d8763582878e648984cb9aea166c94aacb524168d82a"
       }
     ],
     "started_at_utc": "2026-10-11T07:22:07.819078+00:00",
-    "current_stage": "0_matrix_120s"
+    "current_stage": "1_matrix_30s",
+    "reason": "CONFIRMED_NEW_BOOT",
+    "observed_boot": "c7805e85-7467-4691-9037-b805ccae131f"
   },
-  "observed_at_utc": "2026-10-11T07:22:58.591805+00:00",
+  "observed_at_utc": "2026-10-11T07:42:19.894540+00:00",
   "initial_boot": "740972e7-c88e-4588-8fa3-a86e8ed6bc64",
-  "observed_boot": "740972e7-c88e-4588-8fa3-a86e8ed6bc64",
-  "samples": 15,
-  "cpu_max_c": 48.0,
-  "gpu_max_c": 36.0,
+  "observed_boot": "c7805e85-7467-4691-9037-b805ccae131f",
+  "samples": 221,
+  "cpu_max_c": 50.0,
+  "gpu_max_c": 46.0,
   "backup_status": "LOCAL_ONLY",
   "job_sha256": "3293332547b9f2b8d6138c0fc243799a60b4ffb26e55394fe23528abbf4b9980",
-  "health_sha256": "8bec99b4b83a760683a702adf9d53fae64eb1c045bf3ed9065b780f2118c4c22"
+  "health_sha256": "ea5b985a6d91af62dbf5152488034fcd6304c9be7f8d5d7f7fbb98ccdb48fa0a"
 }

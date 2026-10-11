@@ -17,7 +17,7 @@
 
 ## 已完成，可从证据继续
 
-10/11当前：E24普通GPU对照15:22:07启动，15:22:58第一30秒2828次通过且完成日志正常，120秒进行中，15样本CPU最高48/GPU36°C、boot740972e7未变。4无CUDA保护/记录契约通过，unit yuanqi-a3-isolation-E24.service/Restart=no，hp3090 heartbeat已更新E24/ACTIVE每5分钟。E23因完成日志重复at_utc TypeError停止，矩阵未报数值错误/未重启，旧账本保留不重跑。E24矩阵256/1024及小CNN前向/反向/Adam共15项，同保护/一次启动，job/state在data/experiments/a3_isolation_20261011_E24/，日志同名logs。入口[分离排查](README_A3_ISOLATION_20261011.md)。仅1/15通过，后续Isaac/policy/完整更新未做；主机/计算首故障全链停止，E01/E22保持停止、历史自动恢复disabled、日研保留。
+10/11当前：E24普通GPU也确认重启，STOPPED_REBOOT，全链停止。256矩阵30/120/600三档通过，冷却后1024档15:39:53.797最后MATRIX_FIRST_OPERATION_BEGIN，无首操作完成；15:42:19确认新boot c7805e85，开机推算约15:40:20（非故障精确时刻）。221样本CPU最高50/GPU46°C、末次44/34°C，无保存热停；无A3/Isaac/RL导入，重启无需A3专有链路即可发生，根因UNKNOWN。3通过/1中断/11未做；unit无残留GPU进程，旧自动恢复disabled、hp3090/yuanqi-a3 PAUSED、日研保留。见[最后区间与证据](README_A3_ISOLATION_20261011.md)。用户要求的[A3细日志版本](README_A3_PHASE_TRACE_20261011.md)已实现、5无CUDA契约/目标静态核验通过，但E25未登记/启动；不绕过E24失败继续计算。
 
 10/11最新结果：用户授权“继续A3训练，若重启就停”已执行。E22/R10于14:51:33启动官方035保守2更新试跑，第一更新4optimizer步及step0/1大小SHA证据存在，无step2；14:53:09确认新boot740972e7，开机时间推算约14:52:29（非故障精确时刻）。仅5健康采样，CPU最高60/GPU34摄氏度，无保存的热保护事件；缺失间隔内峰值未排除。E22已STOPPED_REBOOT、详细state blocked，无训练进程，不再加载模型，旧自动恢复disabled/两个heartbeatPAUSED，日研保留。优先怀疑A3运行链路关联，尚不能定位代码/Isaac/CUDA或硬件根因；普通GPU/网络对照未做。后续计算需用户新指示，先分离执行环节，不继续整链盲试。见[本轮完整记录](README_A3_REBOOT_TRIAL_20261011.md)及[证据清单](../data/manifests/a3_reboot_trial_result_20261011_E22.json)。
 

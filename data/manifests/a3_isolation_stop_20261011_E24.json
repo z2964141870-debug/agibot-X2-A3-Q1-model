@@ -1,0 +1,198 @@
+{
+  "experiment": "A3_ISOLATION_20261011_E24",
+  "status": "STOPPED_REBOOT",
+  "control_state": {
+    "status": "STOPPED_REBOOT",
+    "results": [
+      {
+        "stage": "0_matrix_30s",
+        "status": "PASSED",
+        "iterations": 2828,
+        "elapsed_seconds": 30.006793818999995,
+        "active_seconds": 0.709624212994413,
+        "optimizer_updates": 0,
+        "spec": {
+          "kind": "matrix",
+          "size": 256,
+          "duty": 0.1
+        },
+        "at_utc": "2026-10-11T07:22:38.798051+00:00",
+        "result_sha256": "42eb6ed486bb1661949925039c991bc9cfd8214cb375ba0424e902dc89a4f175"
+      },
+      {
+        "stage": "0_matrix_120s",
+        "status": "PASSED",
+        "iterations": 11497,
+        "elapsed_seconds": 120.00461206399996,
+        "active_seconds": 2.7064082460110512,
+        "optimizer_updates": 0,
+        "spec": {
+          "kind": "matrix",
+          "size": 256,
+          "duty": 0.1
+        },
+        "at_utc": "2026-10-11T07:24:44.086861+00:00",
+        "result_sha256": "9f45bfa7a0be5b6c2fc756f0c22d303d05faf759713878f18e1746714d9e0b99"
+      },
+      {
+        "stage": "0_matrix_600s",
+        "status": "PASSED",
+        "iterations": 57821,
+        "elapsed_seconds": 600.0086470759998,
+        "active_seconds": 13.116711090972558,
+        "optimizer_updates": 0,
+        "spec": {
+          "kind": "matrix",
+          "size": 256,
+          "duty": 0.1
+        },
+        "at_utc": "2026-10-11T07:34:49.965127+00:00",
+        "result_sha256": "31d55888bb7abb52a0c5d8763582878e648984cb9aea166c94aacb524168d82a"
+      }
+    ],
+    "started_at_utc": "2026-10-11T07:22:07.819078+00:00",
+    "current_stage": "1_matrix_30s",
+    "reason": "CONFIRMED_NEW_BOOT",
+    "observed_boot": "c7805e85-7467-4691-9037-b805ccae131f"
+  },
+  "observed_health": {
+    "at_utc": "2026-10-11T07:43:56.637320+00:00",
+    "boot_id": "c7805e85-7467-4691-9037-b805ccae131f",
+    "uptime_seconds": 216.59,
+    "load_average": [
+      0.00732421875,
+      0.02685546875,
+      0.001953125
+    ],
+    "memory_bytes": {
+      "MemTotal": 33503977472,
+      "MemAvailable": 31777443840,
+      "SwapTotal": 0,
+      "SwapFree": 0
+    },
+    "temperatures_c": {
+      "x86_pkg_temp": 52.0,
+      "acpitz": 27.8,
+      "iwlwifi_1": 40.0
+    },
+    "gpu_query": {
+      "returncode": 0,
+      "stdout": "32, 23.92, 370.00, 0, 77",
+      "stderr": ""
+    },
+    "gpus": [
+      {
+        "temperature.gpu": 32.0,
+        "power.draw": 23.92,
+        "power.limit": 370.0,
+        "utilization.gpu": 0.0,
+        "memory.used": 77.0
+      }
+    ]
+  },
+  "boot_start_estimate_utc": "2026-10-11T07:40:20.047320+00:00",
+  "last_health": {
+    "stage": "1_matrix_30s",
+    "health": {
+      "at_utc": "2026-10-11T07:39:52.933461+00:00",
+      "boot_id": "740972e7-c88e-4588-8fa3-a86e8ed6bc64",
+      "uptime_seconds": 2843.88,
+      "load_average": [
+        0.0390625,
+        0.0361328125,
+        0.001953125
+      ],
+      "memory_bytes": {
+        "MemTotal": 33503985664,
+        "MemAvailable": 31271071744,
+        "SwapTotal": 0,
+        "SwapFree": 0
+      },
+      "temperatures_c": {
+        "x86_pkg_temp": 44.0,
+        "acpitz": 27.8,
+        "iwlwifi_1": 39.0
+      },
+      "gpu_query": {
+        "returncode": 0,
+        "stdout": "34, 25.20, 370.00, 0, 93",
+        "stderr": ""
+      },
+      "gpus": [
+        {
+          "temperature.gpu": 34.0,
+          "power.draw": 25.2,
+          "power.limit": 370.0,
+          "utilization.gpu": 0.0,
+          "memory.used": 93.0
+        }
+      ]
+    },
+    "kernel_readable": true,
+    "critical_kernel_lines": []
+  },
+  "last_phase_markers": [
+    {
+      "at_utc": "2026-10-11T07:39:52.956387+00:00",
+      "phase": "TORCH_IMPORT_BEGIN"
+    },
+    {
+      "version": "2.8.0+cu128",
+      "cuda_version": "12.8",
+      "at_utc": "2026-10-11T07:39:53.566408+00:00",
+      "phase": "TORCH_IMPORT_END"
+    },
+    {
+      "at_utc": "2026-10-11T07:39:53.567991+00:00",
+      "phase": "CUDA_INIT_BEGIN"
+    },
+    {
+      "device": "NVIDIA GeForce RTX 3090",
+      "at_utc": "2026-10-11T07:39:53.787634+00:00",
+      "phase": "CUDA_INIT_END"
+    },
+    {
+      "at_utc": "2026-10-11T07:39:53.788997+00:00",
+      "phase": "ALLOCATION_BEGIN"
+    },
+    {
+      "at_utc": "2026-10-11T07:39:53.797219+00:00",
+      "phase": "ALLOCATION_END"
+    },
+    {
+      "at_utc": "2026-10-11T07:39:53.797792+00:00",
+      "phase": "MATRIX_FIRST_OPERATION_BEGIN"
+    }
+  ],
+  "stage_phase_records": 7,
+  "critical_previous_kernel_lines": [],
+  "kernel_readable": true,
+  "samples": 221,
+  "sample_min_memory_gib": 28.626590728759766,
+  "sample_max_gpu_power_w": 120.62,
+  "backup_status": "LOCAL_ONLY",
+  "remaining_branches": "STOPPED_NO_A3_OR_ISAAC_REPRODUCTION",
+  "a3_trace_implementation": "BUILT_CPU_CONTRACTS_ONLY_NOT_LAUNCHED",
+  "verified_result_files": [
+    {
+      "stage": "0_matrix_30s",
+      "sha256_matches": true
+    },
+    {
+      "stage": "0_matrix_120s",
+      "sha256_matches": true
+    },
+    {
+      "stage": "0_matrix_600s",
+      "sha256_matches": true
+    }
+  ],
+  "previous_kernel_line_count": 1,
+  "first_confirmed_new_boot_at_utc": "2026-10-11T07:42:19.894540+00:00",
+  "last_durable_operation_at_utc": "2026-10-11T07:39:53.797792+00:00",
+  "last_operation_scope": "MATMUL_PLUS_ALLCLOSE_ISFINITE_AND_CUDA_SYNC_NOT_SINGLE_API_PROOF",
+  "passed": 3,
+  "interrupted": 1,
+  "not_started": 11,
+  "previous_kernel_coverage": "NO_ENTRIES_FOR_QUERIED_INTERVAL_NOT_NEGATIVE_FAULT_PROOF"
+}

@@ -45,6 +45,8 @@ E31结果清单记录27条phase、0条ERROR，最后完成边界为`MATMUL_SYNCH
 
 E31与E28（当前2.8.0+cu128）都表现为：单次1024操作可完成，但30秒循环在第一轮/早期边界发生新boot。E30的旧环境单次操作通过，E31说明单次通过不代表循环稳定；两次跨运行库的循环故障共同指向“重复GPU调用/驱动或硬件响应”这一更宽范围，仍不能把原因归结为A3代码、某一CUDA版本或某个API。
 
+重启后的只读检查（北京时间18:xx）在当前 boot 与上一 boot 的 `journalctl -k` 过滤中都没有看到 NVIDIA Xid、MCE/机器检查、AER 错误或 kernel panic；`nvidia-smi -q` 显示 GPU Recovery Action 为 None、PCIe replay 为0、GPU约30°C、平均功耗约22W、无ECC/retired-page证据。当前链路协商为 PCIe Gen1（能力上限 Gen4、x16），这是需要硬件/固件侧核对的线索，但单次空闲快照不能证明它导致重启，也没有修改链路设置。
+
 ## 保存与恢复
 
 E30/E31结果、停止与证据清单和README/索引/current state在发布前审计，原始日志LOCAL_ONLY，两个旧heartbeat不启用，日研不变。E31首故障后不再增加GPU负载，不恢复A3。后续只保留只读内核/硬件证据收集，若要做新的计算对照需单独重新授权且不能重复E31触发路径。恢复先读本README、对应state与phases/live kernel；确认首故障即停，不绕过前置门禁。

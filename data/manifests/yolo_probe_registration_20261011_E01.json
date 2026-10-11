@@ -1,0 +1,58 @@
+{
+  "experiment": "YOLO_PROBE_20261011_E01",
+  "status": "READY",
+  "registered_at_utc": "2026-10-11T11:31:42Z",
+  "initial_boot_id": "c99ddfa9-8478-441a-ab73-a6495ef0feb3",
+  "model": "YOLOv10n architecture from Ultralytics 8.4.175 config",
+  "model_config": "data/tools/ultralytics_8.4.175/ultralytics/cfg/models/v10/yolov10n.yaml",
+  "ultralytics_version": "8.4.175",
+  "dataset": "synthetic_detection_probe",
+  "train_images": 1800,
+  "val_images": 200,
+  "classes": 3,
+  "batch": 32,
+  "epochs": 20,
+  "imgsz": 640,
+  "amp": false,
+  "workers": 4,
+  "python": "/home/yu/miniconda3/envs/x2-sonic-isaaclab/bin/python",
+  "pythonpath": "data/tools/ultralytics_8.4.175",
+  "a3_or_isaac_or_rl": false,
+  "auto_resume": false,
+  "stop_on_first_failure": true,
+  "thermal_limits_c": {
+    "cpu": 90,
+    "gpu": 85,
+    "consecutive_samples": 2
+  },
+  "memory_reserve_gib": 4,
+  "sample_seconds": 5,
+  "files": {
+    "data/datasets/yolo_probe_20261011_E01/data.yaml": {
+      "bytes": 203,
+      "sha256": "9de5b1c95c2f300c32579a1745904e8f7d0be6918f05d04ebc7ff208c72fc3c5"
+    },
+    "data/datasets/yolo_probe_20261011_E01/manifest.json": {
+      "bytes": 141,
+      "sha256": "4b43dfd995f95a0fc5382219c8d17f4a5bbe909ca0090afa016ba230f1e9db84"
+    },
+    "script/diagnostics/yolo_train_probe.py": {
+      "bytes": 6231,
+      "sha256": "6136734258cbf3cdc11e2a7f527d10bd5fc0a218c4056cedce5c8bf05e8a24d7"
+    },
+    "script/diagnostics/yolo_train_worker.py": {
+      "bytes": 1949,
+      "sha256": "0ad8ebf27c8be254344a7e141a25038a1e8895f729a3c852ab6fb0320c154592"
+    },
+    "script/diagnostics/make_synthetic_yolo.py": {
+      "bytes": 2182,
+      "sha256": "67f73af32dace39f49898695079eaf841b5c4724635ed809d265d1e5517561b5"
+    },
+    "data/tools/ultralytics_8.4.175/ultralytics/cfg/models/v10/yolov10n.yaml": {
+      "bytes": 1474,
+      "sha256": "88bf53e1752b4e77f4d358ba7bda85f70101094a2b6a5fdf1796e3205c4974c5"
+    }
+  },
+  "source": "https://ultralytics.com/assets/coco128.zip was attempted but unavailable through current network; synthetic dataset generated locally for reproducible hardware probe",
+  "interpretation": "HARDWARE_TRAINING_PROBE_NOT_MODEL_QUALITY_EVALUATION"
+}

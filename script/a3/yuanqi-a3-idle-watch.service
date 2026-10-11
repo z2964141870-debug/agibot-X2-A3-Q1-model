@@ -1,0 +1,15 @@
+[Unit]
+Description=YUANQI A3 passive two-hour reboot observation (no training)
+
+[Service]
+Type=simple
+WorkingDirectory=/media/yu/FAFF-E9771/YUANQI_A3
+ExecStart=/usr/bin/python3 -m script.a3.idle_reboot_watch
+CPUQuota=5%
+MemoryMax=128M
+Restart=on-failure
+RestartSec=60
+TimeoutStopSec=10
+
+[Install]
+WantedBy=default.target

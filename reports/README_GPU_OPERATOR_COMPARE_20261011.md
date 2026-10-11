@@ -1,6 +1,6 @@
 # GPU调用时序对照 E27–E29
 
-记录日期：2026-10-11。状态：E27通过，E28/E29尚未启动。
+记录日期：2026-10-11。状态：E27通过，E28确认重启并停止，E29未登记/启动。
 
 ## 目标与范围
 
@@ -41,7 +41,47 @@ Mac只读SSH镜像每秒复制阶段/健康/内核记录，前1MiB逐条fsync，
 
 56阶段记录全部完整、无ERROR/未完成/半行，Mac镜像56/56与主机逐条匹配；worker_result SHA独立核验通过，核验代码`script/diagnostics/record_gpu_operator_compare.py`及小清单`gpu_operator_compare_evidence_20261011_E27.json`。本轮仍保留中间显式同步和fsync，只有一次运算，不是完整异步长时间负载通过。它与E26均未复现重启，因此不能据此认定blocking是原重启的原因，也没有排除硬件或库问题。
 
-E28/E29未启动；先发布E27结果，再独立登记E28。对照记录均是单次不可恢复job，禁止以通过为理由重新运行E27。
+E27结果发布48c8ddbb11883a54d9ed5cabd090da0d934c6883并核验远端后，独立登记E28；登记提交912218bb3f263ea8c07d636872af6af8c56e6cb2已推main、远端SHA一致。所有case不可恢复，禁止重复运行E27。
+
+### E28：30秒计划中确认重启，全链停止
+
+18:00:33登记、18:01:04.257启动。原boot `c7805e85-7467-4691-9037-b805ccae131f`，18:02:45只读恢复核验确认新boot `34cc7c88-6bb0-491d-800a-3714e7db9f37`。该次uptime74.33秒，推算新boot约18:01:31，非故障精确时刻；确认观察区间为末次阶段18:01:05.596574至首次新boot读取18:02:45。18:04:10标准库只读总结把state保存为STOPPED_REBOOT/CONFIRMED_NEW_BOOT_NO_RESUME。没有worker_result，未完成30秒测试，没有计算错误返回或整体数值验收结果。
+
+| 操作阶段 | 最后持久化证据 |
+| --- | --- |
+| 导入、CUDA初始化、分配和分配同步 | 全部完成 |
+| 第1、2轮矩阵乘、校验、有限性、归约、标量读回及全部同步 | 全部完成，校验true |
+| 第3轮MATMUL与MATMUL_SYNCHRONIZE | 完成 |
+| 第3轮ALLCLOSE | 18:01:05.596197 END；18:01:05.596574 VALUE=true |
+| 下一预期ALLCLOSE_SYNCHRONIZE | 没有保存BEGIN，不能证明该调用已经进入或未进入 |
+| 第3轮后续操作、结果保存、60秒观察 | 未完成，无result |
+
+服务器94阶段记录、3个MATMUL BEGIN和END、前2个完整循环，无ERROR/半行；没有未闭合span，表明日志停在两调用边界之间，不能据此认定程序无故障。记录写入/fsync与GPU异步时序仍可能受故障影响，最后记录不是根因证明；第三轮allclose已经返回true，不能把它直接称为失败API。
+
+外部SSH镜像只收到13条记录，其中8条阶段日志，最后CUDA_INIT BEGIN；11条有offset的记录与服务器逐条匹配，但未覆盖后续86条阶段日志。初次巡检仅能报告镜像停在初始化；恢复后已明确更正为服务器保存的第3轮allclose完成。不能把较旧的镜像尾当实际最后阶段。
+
+仅2健康样本（登记与启动），CPU最高46/GPU30°C；最后启动采样CPU40/GPU30°C、21.93W、可用RAM约29.18GiB。采样未覆盖运算后空窗，不能排除瞬时温度/功率变化。仅1次运行内核查询为空；按UTC epoch再次查询前boot故障附近内核返回`-- No entries --`。前boot系统journal覆盖末端18:00:41、内核尾停于15:40启动段，没有故障附近崩溃证据，不能据无Xid/匹配排除驱动或硬件。`/sys/fs/pstore`普通读取权限不足；仅尝试sudo -n只读列目录，返回需要密码，未获取提权、不读取凭证。`/var/lib/systemd/pstore`可读但目录为空，无法取得崩溃转储。原始检查保存`after_reboot/pstore_access.json`。
+
+重启后只做标准库日志/元数据/哈希与nvidia-smi只读遥测，没有CUDA计算、模型加载或训练。unit inactive/dead/Restart=no，无GPU计算进程；旧A3自动恢复两个unit inactive/disabled。E29前置门禁不满足，确认没有E29实验目录，全部后续停止。
+
+### 结论与下一步边界
+
+| 对照 | 实测结果 |
+| --- | --- |
+| E26 blocking=1、单次、额外同步 | 通过及60秒观察同boot |
+| E27 blocking=0、单次、额外同步 | 通过及60秒观察同boot |
+| E28 blocking=0、循环30秒计划、额外同步 | 前2轮完成，第三轮校验后日志中断并确认新boot |
+| E29移除额外同步 | 未登记/启动，按首故障停止 |
+
+新的独立证据再次证明无需A3/Isaac/RL专有训练代码也能观察到重启，优先对象仍为通用GPU执行链路及其触发的系统问题。一次单次通过与一次循环重启不能建立单变量因果，也不能定位驱动/CUDA库、GPU/PCIe/供电或其他硬件。显式同步保留时仍会重启，不能据E26通过宣称问题已经解决。
+
+本轮不再升档或重复复现。下一轮计算前先改善故障附近内核证据覆盖，核对已有其他软件环境是否可作同程序对照；仍不升级/更换驱动、改变功率/BIOS或盲目恢复A3。项目卷只读核验为NVMe ext4，不能凭路径名称猜测外置NTFS问题。具体API/部件根因仍UNKNOWN。
+
+重启后仅读取已安装包METADATA，没有import torch或GPU计算。现有`/home/yu/miniconda3/envs/twist`登记torch1.13.1+cu117，是与当前x2-sonic-isaaclab的2.8.0+cu128不同的运行库候选；未验证它当前可导入、驱动兼容或能通过同程序。`h-gpt`登记torch2.8.0和同nvidia-cublas-cu12 12.8.4.1，不宜当作充分独立的CUDA版本对照；`xrobo-pico`登记CPU版2.13.0不作GPU对照。原始包清单`after_reboot/environments.json`。未来同一最小程序/日志/负载比较现有twist与当前环境，可帮助判断问题是否随软件栈变化，但两者仍共用驱动/硬件，单次通过也不能排除它们。本阶段未运行这个对照。
+
+### 最终保存与核验
+
+结果/镜像覆盖/停止证据分别为`gpu_operator_compare_result_20261011_E28.json`、`gpu_operator_compare_evidence_20261011_E28.json`、`gpu_operator_compare_stop_20261011_E28.json`。完整阶段日志29,828字节，SHA e7e7dbe1a69656a372ccb3a2376cfa8001729e52480e33ded469ec2497179f12，Mac下载SHA核验；外部镜像5,396字节。原始数据、内核与snapshot留logs/LOCAL_ONLY，小清单和README/索引/current state经审计scoped提交推main并核验远端；最终SHA由Git历史提供，保留并行修改。不启用自动重试或A3恢复。
 
 ## 保存、同步与下一步
 

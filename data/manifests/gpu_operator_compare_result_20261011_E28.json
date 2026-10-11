@@ -1,0 +1,159 @@
+{
+  "experiment": "GPU_OPERATOR_COMPARE_20261011_E28",
+  "at_utc": "2026-10-11T10:04:10.754282+00:00",
+  "state": {
+    "status": "STOPPED_REBOOT",
+    "boot_id": "c7805e85-7467-4691-9037-b805ccae131f",
+    "started_at_utc": "2026-10-11T10:01:04.256900+00:00",
+    "worker_pid": 8587,
+    "reason": "CONFIRMED_NEW_BOOT_NO_RESUME",
+    "confirmed_at_utc": "2026-10-11T10:04:10.721542+00:00",
+    "observed_boot": "34cc7c88-6bb0-491d-800a-3714e7db9f37"
+  },
+  "trace": {
+    "records": 94,
+    "last_completed": {
+      "experiment": "GPU_OPERATOR_COMPARE_20261011_E28",
+      "iteration": 2,
+      "at_utc": "2026-10-11T10:01:05.596197+00:00",
+      "monotonic_ns": 8445551583563,
+      "pid": 8587,
+      "thread_id": 132536391910464,
+      "boot_id": "c7805e85-7467-4691-9037-b805ccae131f",
+      "event": "END",
+      "phase": "ALLCLOSE",
+      "call_id": "8587:29"
+    },
+    "incomplete": [],
+    "errors": [],
+    "partial_lines": [],
+    "scope": "LAST_DURABLE_BOUNDARIES_NOT_ROOT_CAUSE_PROOF"
+  },
+  "current_health": {
+    "at_utc": "2026-10-11T10:04:10.721542+00:00",
+    "boot_id": "34cc7c88-6bb0-491d-800a-3714e7db9f37",
+    "uptime_seconds": 159.68,
+    "load_average": [
+      0.037109375,
+      0.0478515625,
+      0.013671875
+    ],
+    "memory_bytes": {
+      "MemTotal": 33503981568,
+      "MemAvailable": 31775993856,
+      "SwapTotal": 0,
+      "SwapFree": 0
+    },
+    "temperatures_c": {
+      "x86_pkg_temp": 48.0,
+      "acpitz": 27.8,
+      "iwlwifi_1": 41.0
+    },
+    "gpu_query": {
+      "returncode": 0,
+      "stdout": "30, 23.55, 370.00, 0, 77",
+      "stderr": ""
+    },
+    "gpus": [
+      {
+        "temperature.gpu": 30.0,
+        "power.draw": 23.55,
+        "power.limit": 370.0,
+        "utilization.gpu": 0.0,
+        "memory.used": 77.0
+      }
+    ]
+  },
+  "samples": 2,
+  "first_health": {
+    "phase": "registration",
+    "health": {
+      "at_utc": "2026-10-11T10:00:33.596116+00:00",
+      "boot_id": "c7805e85-7467-4691-9037-b805ccae131f",
+      "uptime_seconds": 8413.55,
+      "load_average": [
+        0.056640625,
+        0.04833984375,
+        0.0068359375
+      ],
+      "memory_bytes": {
+        "MemTotal": 33503977472,
+        "MemAvailable": 31347331072,
+        "SwapTotal": 0,
+        "SwapFree": 0
+      },
+      "temperatures_c": {
+        "x86_pkg_temp": 46.0,
+        "acpitz": 27.8,
+        "iwlwifi_1": 41.0
+      },
+      "gpu_query": {
+        "returncode": 0,
+        "stdout": "30, 23.12, 370.00, 0, 92",
+        "stderr": ""
+      },
+      "gpus": [
+        {
+          "temperature.gpu": 30.0,
+          "power.draw": 23.12,
+          "power.limit": 370.0,
+          "utilization.gpu": 0.0,
+          "memory.used": 92.0
+        }
+      ]
+    }
+  },
+  "last_health": {
+    "phase": "RUNNING",
+    "health": {
+      "at_utc": "2026-10-11T10:01:04.260371+00:00",
+      "boot_id": "c7805e85-7467-4691-9037-b805ccae131f",
+      "uptime_seconds": 8444.21,
+      "load_average": [
+        0.033203125,
+        0.04248046875,
+        0.00390625
+      ],
+      "memory_bytes": {
+        "MemTotal": 33503977472,
+        "MemAvailable": 31327244288,
+        "SwapTotal": 0,
+        "SwapFree": 0
+      },
+      "temperatures_c": {
+        "x86_pkg_temp": 40.0,
+        "acpitz": 27.8,
+        "iwlwifi_1": 42.0
+      },
+      "gpu_query": {
+        "returncode": 0,
+        "stdout": "30, 21.93, 370.00, 0, 92",
+        "stderr": ""
+      },
+      "gpus": [
+        {
+          "temperature.gpu": 30.0,
+          "power.draw": 21.93,
+          "power.limit": 370.0,
+          "utilization.gpu": 0.0,
+          "memory.used": 92.0
+        }
+      ]
+    },
+    "critical_kernel_lines": []
+  },
+  "max_cpu_c": 46.0,
+  "max_gpu_c": 30.0,
+  "min_available_memory_bytes": 31327244288,
+  "worker_result": null,
+  "worker_result_sha256": null,
+  "source_sha256": {
+    "script/diagnostics/gpu_operator_compare.py": "cd392c5d73d5d5625f5bed68f0f0fed9cffe0a926fcb492d96cf367a943b0c2d",
+    "script/a3/phase_trace.py": "8f342cd5a7a56a8b995420da68394813e28702cee1dd2105440f0c6f002d4ee5",
+    "script/a3/host_health.py": "82ab6f18088719f1caa08607ce16de43e36dd44f066f727560a80627c796bc6e",
+    "script/a3/idle_reboot_watch.py": "3bc9138bc3c2e353b7d5c5759846b5b56a85e5a4168f9c7b207d001db98cf483",
+    "script/diagnostics/host_loadcheck.py": "a1a76cd6631b474efccf947388a1fcff72636e2a3cb5fed31ad361888f1e672b"
+  },
+  "backup_status": "LOCAL_ONLY",
+  "scope": "FIXED_COMPARISON_WITH_DURABLE_BOUNDARIES_NOT_ROOT_CAUSE_PROOF"
+}

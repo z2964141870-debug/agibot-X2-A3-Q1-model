@@ -12,7 +12,7 @@ from script.a3.checkpoint_store import atomic_json, sha256
 from script.a3.fullchain_support import ROOT
 
 
-def verify(experiment):
+def verify(experiment, dataset_only=False):
     output = ROOT / f"data/experiments/a3_controller_adapter_20261010_{experiment}"
     job = json.loads((output / "job.json").read_text())
     if job["experiment"] != experiment:
@@ -32,7 +32,7 @@ def verify(experiment):
             if value.dtype.kind in "fiu" and not np.isfinite(value).all():
                 raise ValueError(f"Nonfinite dataset field: {name}")
     rows = []
-    for objective in job["objectives"]:
+    for objective in ([] if dataset_only else job["objectives"]):
         sidecars = sorted((output / objective).glob("adapter_step_*.json"))
         if not sidecars:
             raise ValueError(f"No saved state for {objective}")
@@ -76,7 +76,8 @@ def verify(experiment):
                    boot_id=Path("/proc/sys/kernel/random/boot_id").read_text().strip(),
                    registered_sources_verified=True, latest_checkpoints=rows,
                    dataset_sha256=metadata["sha256"], backup_status="LOCAL_ONLY",
-                   scope="RECOVERY_INTEGRITY_ONLY_NOT_EFFECT_ACCEPTANCE")
+                   scope=("DATASET_INTEGRITY_ONLY_NOT_CHECKPOINT_OR_LABEL_ACCURACY"
+                          if dataset_only else "RECOVERY_INTEGRITY_ONLY_NOT_EFFECT_ACCEPTANCE"))
     atomic_json(output / "restart_verification_20261011.json", receipt)
     print(json.dumps(receipt, indent=2), flush=True)
 
@@ -84,4 +85,6 @@ def verify(experiment):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--experiment", choices=("E20", "E21"), default="E20")
-    verify(parser.parse_args().experiment)
+    parser.add_argument("--dataset-only", action="store_true")
+    args = parser.parse_args()
+    verify(args.experiment, args.dataset_only)

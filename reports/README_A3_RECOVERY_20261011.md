@@ -1,6 +1,6 @@
 # A3 重启后恢复 E20 短试验
 
-记录日期：2026-10-11。状态：E20第三次启动后重启、无新增保存，GPU分支搁置；E21 CPU独立分支准备执行。前序入口：[E20/E21合同](README_A3_CONTROLLER_ADAPTER_20261010.md)。
+记录日期：2026-10-11。状态：E20 GPU分支搁置；E21 CPU标签已落盘并通过完整性核验，第一启动后再次重启、训练待恢复。前序入口：[E20/E21合同](README_A3_CONTROLLER_ADAPTER_20261010.md)。
 
 ## 目标与范围
 
@@ -46,7 +46,11 @@ systemd-run --user --unit=yuanqi-a3-controller-adapter-e21 --property=CPUQuota=1
 A3_ADAPTER_EXPERIMENT=E21 OMP_NUM_THREADS=1 data/environments/a3-sonic/bin/python -m script.a3.verify_adapter_rollout
 ```
 
-E21产物 `data/experiments/a3_controller_adapter_20261010_E21/`，日志 `logs/a3_controller_adapter_20261010_E21/`；当前注册与契约通过不代表已完成训练或效果提升。
+E21产物 `data/experiments/a3_controller_adapter_20261010_E21/`，日志 `logs/a3_controller_adapter_20261010_E21/`。实际已下发 `yuanqi-a3-controller-adapter-e21.service`；第一启动后boot `3477d824-73f0-4216-9dfe-919d3d41f028` → `dcb62ac7-6400-4c77-890d-ab8237ba8409`，未据服务inactive/ExecMainStatus0认定作业完成。
+
+重启后发现最终CPU标签文件已保存：21,878窗口、60,763,817bytes，SHA `97786ab18a33dcbfb760f242520d3379f17d5fd6f2bbef1308d6edcc59f21ed7`。2026-10-11 10:26:23北京时间，`verify_adapter_recovery --experiment E21 --dataset-only`独立检查源码登记、数据大小/SHA/各数值字段有限性通过；尚无模型保存点，这不是teacher标签精度或模型效果通过。第一启动有已保存数据进度，冷却后原入口跳过标签准备继续。
+
+E21源码/合同/阶段更新共9文件审计通过，提交 `1c678379d005e7a3bc24a6959099921bcb5f3c46`已推送main并比对远端一致。此后状态/数据核验更新待下一次同步。
 
 ## 当前结果与下一步
 

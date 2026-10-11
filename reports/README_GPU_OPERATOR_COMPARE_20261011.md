@@ -1,6 +1,6 @@
 # GPU调用时序对照 E27–E29
 
-记录日期：2026-10-11。状态：代码准备，尚未登记/运行新GPU任务。
+记录日期：2026-10-11。状态：E27通过，E28/E29尚未启动。
 
 ## 目标与范围
 
@@ -33,7 +33,15 @@ Mac只读SSH镜像每秒复制阶段/健康/内核记录，前1MiB逐条fsync，
 
 ## 实际验证与结论边界
 
-开始前确认原boot c7805e85，CPU48/GPU30°C、无GPU计算、可用RAM约29GiB；Git main干净。新case尚未登记/执行，不能预记成功。后续实测记录追加于本README。
+开始前确认原boot c7805e85，CPU48/GPU30°C、无GPU计算、可用RAM约29GiB；Git main干净。13项无CUDA安全/日志契约检查在Mac和服务器通过。代码/E27登记发布9bbf363f3fa2b65222153a3b887cb3b945ec769f，main远端SHA一致。
+
+### E27：关闭blocking的单次对照完成
+
+17:56:12登记，17:56:40.605启动，17:56:41.602所有调用完成、校验true，worker退出0。17:56:45开始独立停载观察，17:57:46.222完成超过60秒观察；unit inactive/dead、Restart=no，原boot不变。15采样CPU最高49/GPU30°C，无保护/记录关键内核事件。
+
+56阶段记录全部完整、无ERROR/未完成/半行，Mac镜像56/56与主机逐条匹配；worker_result SHA独立核验通过，核验代码`script/diagnostics/record_gpu_operator_compare.py`及小清单`gpu_operator_compare_evidence_20261011_E27.json`。本轮仍保留中间显式同步和fsync，只有一次运算，不是完整异步长时间负载通过。它与E26均未复现重启，因此不能据此认定blocking是原重启的原因，也没有排除硬件或库问题。
+
+E28/E29未启动；先发布E27结果，再独立登记E28。对照记录均是单次不可恢复job，禁止以通过为理由重新运行E27。
 
 ## 保存、同步与下一步
 

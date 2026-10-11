@@ -275,7 +275,7 @@ def main():
     parser.add_argument("--reference-buffer-ms", type=float, default=0)
     parser.add_argument("--capture-inputs", action="store_true")
     parser.add_argument("--capture-count", type=int)
-    parser.add_argument("--joint-reference-mode", choices=("oracle_aligned", "hold", "cv", "smooth_cv", "E12", "E14"))
+    parser.add_argument("--joint-reference-mode", choices=("oracle_aligned", "hold", "cv", "smooth_cv", "E12", "E14", "cv_residual"))
     parser.add_argument("--joint-predictor", type=Path)
     parser.add_argument("--joint-noise-std", type=float, default=0)
     parser.add_argument("--joint-noise-seed", type=int, default=0)

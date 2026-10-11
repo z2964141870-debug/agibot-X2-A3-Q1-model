@@ -3,7 +3,7 @@
 import numpy as np
 
 
-MODES = ("oracle_aligned", "hold", "cv", "smooth_cv", "E12", "E14")
+MODES = ("oracle_aligned", "hold", "cv", "smooth_cv", "E12", "E14", "cv_residual")
 HORIZONS = np.arange(1, 11, dtype=float) / 50
 
 
@@ -50,6 +50,9 @@ def forecast_window(arrived, times, query, mode, model=None, end_seen=False):
         x = (history[:-1] - history[-1]).reshape(-1)
         offset = ((x - model["mean"]) / model["std"]) @ model["weights"] + model["bias"]
         future = current + offset.reshape(10, 29)
+        if mode == "cv_residual":
+            velocity = (q[-1]-q[-2]) / (times[-1]-times[-2])
+            future += HORIZONS[:, None] * velocity
     support_t = np.concatenate((times[:-1], times[-1] + np.arange(11) / 50))
     support_q = np.concatenate((q[:-1], current[None], future))
     result = np.column_stack([np.interp(query, support_t, support_q[:, joint]) for joint in range(29)])
@@ -62,7 +65,7 @@ class JointForecastReplay:
     def __init__(self, sim, mode, model_path=None, noise_std=0., seed=0):
         if mode not in MODES or not np.isfinite(noise_std) or noise_std < 0:
             raise ValueError("Invalid joint ablation settings")
-        if (mode in ("E12", "E14")) != (model_path is not None):
+        if (mode in ("E12", "E14", "cv_residual")) != (model_path is not None):
             raise ValueError("Only learned modes require a predictor")
         if mode == "oracle_aligned" and noise_std:
             raise ValueError("Oracle comparator uses clean privileged references")

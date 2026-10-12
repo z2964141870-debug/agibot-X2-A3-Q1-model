@@ -94,7 +94,7 @@ def register():
         consecutive_hot_samples=2, memory_reserve_gib=4, per_motion_limit_seconds=900,
         total_limit_seconds=5400, backup_status='LOCAL_ONLY')
     OUT.mkdir(parents=True)
-    LOG.mkdir(parents=True)
+    LOG.mkdir(parents=True, exist_ok=True)
     for name, rows in (('diagnostic', diagnostic), ('selected20', training+diagnostic)):
         directory = OUT / 'references' / name
         directory.mkdir(parents=True)

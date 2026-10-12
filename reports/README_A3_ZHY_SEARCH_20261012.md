@@ -34,4 +34,6 @@ data/environments/a3-sonic/bin/python -m script.a3.zhy_search report
 
 ## 结果、保存与下一步
 
+首次登记在日志目录已含源码备份时触发FileExistsError，尚未生成job或启动GPU评测。空的输出目录保留为 `_registration_incomplete_01`；登记允许既有日志目录，仍拒绝重用已登记实验。此失败是目录处理问题，不是计算、主机或策略故障。
+
 新机3项选择/覆盖回归测试通过：帧数加权、缺失动作拒绝验收、关节改善不能掩盖身体误差退化。实际评测尚未执行，不把代码准备记为效果通过。完成实际运行后独立检查完整帧覆盖、真实参考token及joint/root/body指标，保存包括失败项的结果，再决定下一轮单变量微调。若adapter失败，优先检查训练标签与实际机器人anchor的分布差异以及官方行为保持约束，不盲目追加PPO长训。重要阶段保存README/索引/current state、scoped审计提交推送main并核验远端。

@@ -1,8 +1,10 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-12（E17滑动/贴地/root速度通过，定位直接设置root绕过地板约束；未训练人体分支或超过官方）。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
+更新：2026-10-12（E18连续base求解仍穿地；下一检查碰撞限制的速度/位移单位合同，未训练人体分支或超过官方）。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
 
 ## 用户目标与固定约定
+
+E18于21:43:56完成、21:44:05独立验收VERIFIED_QUALITY_REJECTION；2合成测试/2100帧复核，7/7root位置/滑动/贴地/速度通过，但7/7仍穿地1.56–6.11cm、squat位置P95 6.13cm超5cm，pair0/optimizer0。连续base未消除失败，root赋值不能视为充分解释。7健康样本同boot/CPU41/GPU27°C/OOM0；22:41恢复连接确认同boot、无活动E18，断连不认定重启。下一验证安装Mink碰撞h的速度单位与QP位移变量不一致，独立新实验不改历史注册/门槛；见[E18结果](README_A3_SMPL_BASE_20261012.md)及[清单](../data/manifests/a3_zhy_smpl_base_20261012_E18.json)。
 
 E17于21:26:45结束、21:26:55独立验收VERIFIED_QUALITY_REJECTION：4CPU契约/2100帧复核通过，7/7位置P95/连续接触滑动/贴地/root速度通过，root修正P99≤0.5m/s；但7/7仍穿地1.74–6.90cm，pair0/optimizer0。最差fjw帧实际碰撞geom已包含在6足/floor约束，真实minZ与mj_geomDistance一致；定位每帧先直接改root qpos再求IK，会在约束前造成穿透。下一变量将floating base和关节共同求解，不改宽几何/位置门槛。7健康样本同boot/CPU48/GPU27°C/OOM0，无CUDA/模型前向/策略回放，任务退出。见[E17机制](README_A3_SMPL_FLOOR_20261012.md)与[清单](../data/manifests/a3_zhy_smpl_floor_20261012_E17.json)。
 

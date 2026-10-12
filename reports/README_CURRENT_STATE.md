@@ -6,7 +6,7 @@
 
 10/12用户再次要求持续写README并思考反复排查背后的问题。工作理解是建立能自主判断失败与改进的完整实验链；尚未当作用户确认的选题。真实遥操中哪项缺陷值得微调、验收指标是什么仍需证据，见[实验依据与问题](README_A3_EXPERIMENT_DECISIONS_20261012.md)。
 
-E06于13:55:03–13:55:24完成、12变体CPU独立核验通过，0optimizer。实际runtime配置重建和CPU/CUDA4环境整段/逐帧、aux对照均复现采样（最大RMSE5.34e-7），却与E05真实首训练mean相差RMSE0.010159。范围缩到训练调用路径，下一项核验包装器自动混合精度/实际输入与梯度模式，见[E06结果](README_A3_ZHY_BATCH_20261012.md)。5健康样本同boot、CPU41/GPU30摄氏度、OOM0；GPU任务已结束。E05关闭TF32后真实4批ratio仍约0.53–1.94，**训练合同仍失败**，不长训，见[一致精度结果](README_A3_ZHY_PRECISION_20261012.md)。
+E06于13:55:03–13:55:24完成、12变体CPU独立核验通过，0optimizer。实际runtime配置重建和CPU/CUDA4环境整段/逐帧、aux对照均复现采样（最大RMSE5.34e-7），却与E05真实首训练mean相差RMSE0.010159。范围缩到训练调用路径，见[E06结果](README_A3_ZHY_BATCH_20261012.md)。启动脚本明确mixed_precision=no，不能先认定BF16；下一项E07复用数据，比较原PPO包装器/Accelerate和梯度模式，记录真实输入与精度，见[E07合同](README_A3_ZHY_WRAPPER_20261012.md)。5健康样本同boot、CPU41/GPU30摄氏度、OOM0。E05关闭TF32后真实4批ratio仍约0.53–1.94，**训练合同仍失败**，不长训，见[一致精度结果](README_A3_ZHY_PRECISION_20261012.md)。
 
 10/12最新授权：迁移及R11完成后，在新服务器ZHY继续A3探索与微调。E02 64完整回放+3冒烟核验通过、0跌倒，adapter/R11全部效果门槛失败，官方仍为基线。E03采集器TensorDict错误已保留，修正后4项CPU回归通过；E04有效完成0更新诊断，采样输入/mean与存储精确一致、12概率行CPU复算通过，实际首batch ratio0.52963–1.37392，见[诊断](README_A3_ZHY_LIKELIHOOD_20261012.md)。尚未定位具体层或历史退化唯一根因。原机不计算、旧账本保留，见[E02结果](README_A3_ZHY_SEARCH_20261012.md)。
 

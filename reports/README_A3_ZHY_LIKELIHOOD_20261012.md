@@ -1,6 +1,6 @@
 # A3 新机PPO概率合同诊断
 
-记录日期：2026-10-12。实验 E03/E04。状态：E03采集器类型处理失败、已停止；修正后的E04准备预登记。
+记录日期：2026-10-12。实验 E03/E04。状态：E03采集器失败保留；E04有效采集与CPU独立复算通过，但PPO概率合同失败。
 
 ## 目标与决定
 
@@ -44,6 +44,24 @@ OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 data/environments/a3-
 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 data/environments/a3-sonic/bin/python -m script.a3.zhy_likelihood verify --experiment E04
 ```
 
-E04尚未运行，不认定概率合同通过或训练退化根因定位。有效采集及同runtime概率证据形成后再决定修复或单变量微调；不因为主机不重启就认为策略效果通过。
+E04于13:14:55–13:15:42完成16环境×24步，0optimizer更新。独立CPU重载/哈希/全部12概率行复算及输入identity复算通过，state=VERIFIED。运行代码提交 `b41f36f233df60be4f1ad6f6546cf7d720634065`。
+
+11个去重健康样本同boot，CPU最高45/GPU34摄氏度，GPU采样最高115.84W，可用估计最低5.24GiB，OOM0，无新增关键内核错误。全部计算已结束，原机未执行计算。
+
+| 核验项 | 实测 | 含义 |
+| --- | --- | --- |
+| 采样输入vs存储 | actor_obs/critic_obs/tokenizer精确相同，24次sampling | 本次不是存储输入错位 |
+| 采样mean vs保存mean | 精确相同 | 保存分布确为实际采样输出 |
+| 旧Gaussian自行复算 | ratio 0.999996–1.000002 | 保存mean/std/actions/logprob自身一致 |
+| 实际首minibatch | mean RMSE0.009871，最大误差0.084514；ratio0.529630–1.373921 | 更新前合同失败 |
+| 同runtime CUDA/TF32开，逐帧16环境 | mean精确相同，ratio误差3.81e-6 | 同形状采样可复现 |
+| 同runtime CUDA/TF32开，整批16×24 | mean RMSE0.002012；ratio0.812118–1.193083 | 批形状影响输出 |
+| CUDA/TF32关，逐帧或整批 | 对原TF32开采样mean RMSE约0.002403 | 仅在回放时关闭不能修复旧采样概率 |
+| CPU完整精度，逐帧或整批 | 同上，ratio约0.82404–1.17704 | 和完整精度GPU结果接近 |
+| 同设备同精度train+aux vs eval | 整批输出一致 | 本次模式/aux本身未解释偏差 |
+
+采样与首训练前向均TF32开；Actor running_mean_std=false，唯一参数变化是已验证官方std限幅，诊断前后Actor参数SHA相同。捕获SHA `7a5364579d733051c45b0ae94f65a4788e23132dab6e7573e8cf87ba44eefc4d`；采样快照SHA `a028117af7f39b592cce53af8eaef5e40bb021788fecf0a3944101922117e36a`。完整行见E04小型清单；没有用均值或成功变体遮盖实际首批失败。
+
+证据把当前合同问题缩小到数值精度和批形状的敏感性，但还没有证明具体层、FSQ舍入、PPO历史退化唯一原因或旧机器重启根因。下一项独立E05只改采样与训练都禁用TF32，仍0更新，并补齐4个真实minibatch的覆盖；不是采样后切换精度，也不直接恢复长训。通过后才能登记匹配精度基线与短微调效果对照。
 
 每阶段保存README/索引/current state、小型清单，检查diff、运行payload审计、scoped提交推送main并核验远端。原机服务保持停止，Q1/学习/每日研究不变，无机器人或驱动/功率操作。

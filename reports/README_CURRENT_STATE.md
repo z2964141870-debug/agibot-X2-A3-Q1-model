@@ -4,7 +4,7 @@
 
 ## 用户目标与固定约定
 
-10/12最新授权：迁移及R11完成后，在新服务器ZHY继续未完成的A3探索和微调。E02于12:21:26–12:52:55完成64完整回放+3冒烟及独立输入/指标核验，0跌倒；角度MSE/latent两adapter相对匹配CV joint误差+7.50%至18.36%，R11相对官方oracle20 +1.27%，全部效果门槛失败。435健康样本同boot、CPU49/GPU36摄氏度、0OOM，记录已推送核对。保留官方模型；新E03零更新同runtime概率诊断3项CPU测试通过，接着register/run/verify，禁止optimizer更新，见[诊断合同](README_A3_ZHY_LIKELIHOOD_20261012.md)。不重训E21、不在原机计算、不改旧账本，见[新机方向对照](README_A3_ZHY_SEARCH_20261012.md)与[小型清单](../data/manifests/a3_zhy_search_20261012_E02.json)。
+10/12最新授权：迁移及R11完成后，在新服务器ZHY继续未完成的A3探索和微调。E02完成64完整回放+3冒烟及独立核验、0跌倒；adapter误差+7.50%至18.36%、R11+1.27%，全部效果门槛失败，官方仍为基线。E03于13:03:44–13:04:36因新增采集器未复制实际TensorDict而停止，0optimizer、同boot/0OOM，无效capture不用于归因。Mapping修正及真实容器回归测试后4项CPU测试通过，下一条为独立E04 register/run/verify，禁止参数更新，不重置E03/E10，见[失败与新诊断合同](README_A3_ZHY_LIKELIHOOD_20261012.md)。原机不计算，旧账本保留，见[E02结果](README_A3_ZHY_SEARCH_20261012.md)与[清单](../data/manifests/a3_zhy_search_20261012_E02.json)。
 
 - 10/12 记录问题：既有驱动 README 的一处凭据说明已从当前文件删除，Git 历史仍保留旧内容；对应主机密码轮换待用户，见[脱敏记录](README_RECORD_REDACTION_20261012.md)。只通知一次，不尝试验证密码或运行工程计算。
 

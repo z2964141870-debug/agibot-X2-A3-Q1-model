@@ -13,6 +13,7 @@ from script.a3.host_health import append_record, command
 from script.a3 import zhy_trial as guard
 
 ROOT = Path(__file__).resolve().parents[2]
+EXPERIMENT = 'E03'
 OUT = ROOT / 'data/experiments/a3_zhy_likelihood_20261012_E03'
 LOG = ROOT / 'logs/a3_zhy_likelihood_20261012_E03'
 RUN = OUT / 'initial_rollout'
@@ -29,6 +30,14 @@ def read(path):
     return json.loads(path.read_text())
 
 
+def configure(experiment):
+    global EXPERIMENT, OUT, LOG, RUN
+    EXPERIMENT = experiment
+    OUT = ROOT / f'data/experiments/a3_zhy_likelihood_20261012_{experiment}'
+    LOG = ROOT / f'logs/a3_zhy_likelihood_20261012_{experiment}'
+    RUN = OUT / 'initial_rollout'
+
+
 def register():
     if OUT.exists():
         raise FileExistsError('No reset of the probability diagnosis')
@@ -43,7 +52,16 @@ def register():
         raise RuntimeError('Kernel telemetry unavailable')
     if sha256(OFFICIAL) != guard.OFFICIAL_SHA:
         raise ValueError('Official checkpoint changed')
-    job = dict(experiment='A3_ZHY_LIKELIHOOD_20261012_E03', registered_at=time.time(),
+    if EXPERIMENT == 'E04':
+        failed = read(ROOT / 'data/experiments/a3_zhy_likelihood_20261012_E03/state.json')
+        receipt = read(ROOT / 'data/manifests/a3_zhy_likelihood_20261012_E03.json')
+        if (failed['status'] != 'STOPPED' or failed.get('reason') is not None
+            or failed.get('returncode') != 1 or receipt['failure'] != 'SNAPSHOT_TENSORDICT_NOT_COPIED'
+            or receipt['optimizer_steps_observed'] != 0
+            or receipt['health']['boot_ids'] != [value['boot_id']]
+            or receipt['health']['critical_kernel_errors']):
+            raise RuntimeError('E04 follows only the reviewed E03 snapshot integration error')
+    job = dict(experiment=f'A3_ZHY_LIKELIHOOD_20261012_{EXPERIMENT}', registered_at=time.time(),
         boot_id=value['boot_id'], baseline_oom_kill=value['container_memory']['oom_kill'],
         kernel_baseline=kernel['stdout'].splitlines(), source_sha256=sha256(OFFICIAL),
         code_sha256={p:sha256(ROOT / p) for p in SOURCES}, num_envs=16, policy_steps=24,
@@ -52,6 +70,7 @@ def register():
         max_cpu_c=90, max_gpu_c=85, memory_reserve_gib=4,
         instrumentation='CPU_COPIES_AT_SAMPLING_FORWARD_ALTER_TIMING_DIAGNOSTIC_ONLY',
         e10_ledger_modified=False, new_condition='MIGRATED_NEW_HOST_R11_AND_E02_VERIFIED',
+        preceding_diagnostic='E03_SNAPSHOT_TENSORDICT_INTEGRATION_ERROR' if EXPERIMENT == 'E04' else None,
         gate=dict(actual_initial_ratio_max_abs_deviation=.001, action_mean_rmse_max=1e-5,
                   exact_sampling_input_identity_required=True), backup_status='LOCAL_ONLY')
     OUT.mkdir(parents=True)
@@ -162,14 +181,52 @@ def verify():
         code_sha256=job['code_sha256'], scope='ZERO_UPDATE_DIAGNOSTIC_NOT_POLICY_IMPROVEMENT',
         backup_status='LOCAL_ONLY')
     atomic_json(OUT / 'independent_verification.json', result)
-    atomic_json(ROOT / 'data/manifests/a3_zhy_likelihood_20261012_E03.json', result)
+    atomic_json(ROOT / f'data/manifests/a3_zhy_likelihood_20261012_{EXPERIMENT}.json', result)
     state.update(status='VERIFIED', verified_at=time.time(), probability_contract_passed=passed)
     atomic_json(OUT / 'state.json', state)
     print(json.dumps(result, indent=2))
 
 
+def report():
+    state, job = read(OUT / 'state.json'), read(OUT / 'registration.json')
+    if state['status'] != 'STOPPED':
+        raise RuntimeError('Use verify for a completed diagnosis')
+    raw = [json.loads(line) for line in (LOG / 'health.jsonl').read_text().splitlines()]
+    unique = {}
+    for row in raw:
+        value = row.get('health', row)
+        if 'boot_id' in value:
+            unique[value['at_utc']] = value
+    samples = list(unique.values())
+    steps = LOG / 'actual_optimizer_steps.jsonl'
+    console = LOG / 'console.log'
+    capture = OUT / 'sampled_inputs.pt'
+    error = 'Expected all tensors to be on the same device'
+    result = dict(experiment=job['experiment'], status='STOPPED', state=state,
+        registered_code_sha256=job['code_sha256'], registration_sha256=sha256(OUT / 'registration.json'),
+        console_sha256=sha256(console), health_sha256=sha256(LOG / 'health.jsonl'),
+        failure='SNAPSHOT_TENSORDICT_NOT_COPIED' if error in console.read_text() else 'UNCLASSIFIED',
+        sampling_capture=dict(sha256=sha256(capture), bytes=capture.stat().st_size,
+            validity='INVALID_INPUT_SNAPSHOTS_DO_NOT_INFER_STORAGE_IDENTITY') if capture.exists() else None,
+        optimizer_steps_observed=len(steps.read_text().splitlines()) if steps.exists() else 0,
+        probability_contract='NOT_EVALUATED', previous_ledger_preserved=True,
+        health=dict(samples=len(samples), boot_ids=sorted({v['boot_id'] for v in samples}),
+            first_utc=samples[0]['at_utc'], last_utc=samples[-1]['at_utc'],
+            cpu_max_c=max(v['temperatures_c']['x86_pkg_temp'] for v in samples),
+            gpu_max_c=max(g['temperature.gpu'] for v in samples for g in v['gpus']),
+            available_min_bytes=min(v['container_memory']['available_estimate_bytes'] for v in samples),
+            oom_counts=sorted({v['container_memory']['oom_kill'] for v in samples}),
+            critical_kernel_errors=[e for r in raw for e in r.get('kernel_errors', [])]),
+        scope='DIAGNOSTIC_INTEGRATION_FAILURE_NOT_TRAINING_OR_HOST_ROOT_CAUSE', backup_status='LOCAL_ONLY')
+    atomic_json(ROOT / f'data/manifests/a3_zhy_likelihood_20261012_{EXPERIMENT}.json', result)
+    print(json.dumps(result, indent=2))
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=('register', 'run', 'verify'))
-    result = dict(register=register, run=run, verify=verify)[parser.parse_args().action]()
+    parser.add_argument('action', choices=('register', 'run', 'verify', 'report'))
+    parser.add_argument('--experiment', choices=('E03', 'E04'), default='E03')
+    args = parser.parse_args()
+    configure(args.experiment)
+    result = dict(register=register, run=run, verify=verify, report=report)[args.action]()
     raise SystemExit(result if isinstance(result, int) else 0)

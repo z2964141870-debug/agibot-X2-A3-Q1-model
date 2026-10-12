@@ -1,0 +1,63 @@
+{
+  "experiment": "A3_ZHY_LIKELIHOOD_20261012_E03",
+  "status": "STOPPED",
+  "state": {
+    "status": "STOPPED",
+    "started_at": 1791781424.222135,
+    "argv": [
+      "bash",
+      "/opt/data/private/hechengzhu/ZHY/script/vendor/sonic_for_a3/train_a3_035_fromscratch.sh",
+      "seed=0",
+      "trainer._target_=script.a3.zhy_likelihood_trainer.ZHYRuntimeLikelihoodTrainer",
+      "algo.config.num_learning_epochs=1",
+      "algo.config.actor_learning_rate=2e-6",
+      "algo.config.adaptive_lr_min=1e-6",
+      "algo.config.adaptive_lr_max=2e-5",
+      "callbacks.model_save._target_=script.a3.resumable_sonic.DurableModelSaveCallback",
+      "callbacks.model_save.save_frequency=1",
+      "+callbacks.model_save.target_global_step=2"
+    ],
+    "returncode": 1,
+    "reason": null,
+    "ended_at": 1791781476.066975
+  },
+  "registered_code_sha256": {
+    "script/a3/zhy_likelihood.py": "422afa870c59095ce194ab9db011ded1401d1544b4278328e0387e5888d5c68a",
+    "script/a3/zhy_likelihood_trainer.py": "7d52ad37bfb4d1ceee208e4148fe1f4a2117718fd4703a455f8fceee27e2f67f",
+    "script/a3/runtime_likelihood_probe.py": "fe13df98914505e1cf1c74810a094f732e92068b1cdfbca0409fa452d3b5ce24",
+    "script/a3/gradient_probe.py": "26a6d8956a72d2038664ea1cbf52243428aecc13d7c361445171f0768a703c9c",
+    "script/a3/likelihood_probe.py": "b18769c638163e934be9322813e7a0aa380cbd5158a68c580fcb729f7307b896",
+    "script/a3/verified_finetune.py": "11044839b5c3d97fceb634149bae4960176f73a326bcdeafa576bc7dda33e22a",
+    "script/a3/finetune_trainer.py": "197ebea4444861340d0e45df8f81c4141c388194790da5a1c2b5640a22210aeb",
+    "script/a3/zhy_trial.py": "3d8ee83efc8578ece03023d3da26ccb407ec7c7531cc369169abfb297bad4446"
+  },
+  "registration_sha256": "52e03679314b3a4895df43cc61ff005321f25c59d163e4505600e811545885b8",
+  "console_sha256": "09fc07d669987a0eb4e14ddf5420a92ad1df7d0e8b3a39e167a90e01df5a9d1a",
+  "health_sha256": "dce13246ce1864ab7edae1300182486172e02e7f11b1fa10aee0004b82e02e88",
+  "failure": "SNAPSHOT_TENSORDICT_NOT_COPIED",
+  "sampling_capture": {
+    "sha256": "109fd1764be5ac081d1a8963e88695ef752beba64dc2f177519f505fd6a38dc8",
+    "bytes": 372153,
+    "validity": "INVALID_INPUT_SNAPSHOTS_DO_NOT_INFER_STORAGE_IDENTITY"
+  },
+  "optimizer_steps_observed": 0,
+  "probability_contract": "NOT_EVALUATED",
+  "previous_ledger_preserved": true,
+  "health": {
+    "samples": 12,
+    "boot_ids": [
+      "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    ],
+    "first_utc": "2026-10-12T05:02:55.908005+00:00",
+    "last_utc": "2026-10-12T05:04:35.913561+00:00",
+    "cpu_max_c": 40.0,
+    "gpu_max_c": 34.0,
+    "available_min_bytes": 6294601728,
+    "oom_counts": [
+      0
+    ],
+    "critical_kernel_errors": []
+  },
+  "scope": "DIAGNOSTIC_INTEGRATION_FAILURE_NOT_TRAINING_OR_HOST_ROOT_CAUSE",
+  "backup_status": "LOCAL_ONLY"
+}

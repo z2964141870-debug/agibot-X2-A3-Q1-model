@@ -3,6 +3,7 @@
 import unittest
 
 import torch
+from tensordict import TensorDict
 
 from script.a3.zhy_likelihood_trainer import sampling_identity, snapshot
 
@@ -12,6 +13,13 @@ class SamplingIdentityTests(unittest.TestCase):
         value = torch.tensor([[1., 2.]])
         stored = snapshot({'obs':value})
         value.add_(10.)
+        self.assertTrue(torch.equal(stored['obs'], torch.tensor([[1., 2.]])))
+
+    def test_snapshot_copies_actual_tensordict_container(self):
+        value = TensorDict({'obs':torch.tensor([[1., 2.]])}, batch_size=[1])
+        stored = snapshot(value)
+        self.assertIsInstance(stored, dict)
+        value['obs'].add_(10.)
         self.assertTrue(torch.equal(stored['obs'], torch.tensor([[1., 2.]])))
 
     def test_detects_observation_shift_even_when_means_match(self):

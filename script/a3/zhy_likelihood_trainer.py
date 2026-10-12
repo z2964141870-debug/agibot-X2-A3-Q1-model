@@ -2,6 +2,7 @@
 
 import os
 from pathlib import Path
+from collections.abc import Mapping
 
 import torch
 
@@ -13,8 +14,10 @@ from script.a3.runtime_likelihood_probe import RuntimeLikelihoodTrainer
 def snapshot(value):
     if isinstance(value, torch.Tensor):
         return value.detach().to('cpu', copy=True)
-    if isinstance(value, dict):
+    if isinstance(value, Mapping):
         return {key:snapshot(v) for key,v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [snapshot(v) for v in value]
     return value
 
 

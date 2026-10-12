@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-12（ZHY文件迁移与完整SHA校验完成；运行环境未迁移，训练仍暂停）。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
+更新：2026-10-12（ZHY的A3文件/运行依赖迁移验收完成；独立短训练准备就绪，原机训练停止）。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
 
 ## 用户目标与固定约定
 
@@ -8,7 +8,7 @@
 
 - 10/12 教学：本人答对PD位置误差0.25-0.20=0.05rad；静止时也计算控制、PD输出力矩及速度阻尼已讲解，理解仍需核验。下一项“位置已到但仍在转动”判断待回答；学习任务未运行工程计算，见[当天学习记录](README_LEARNING_SESSION_20261012.md)与[任务卡](README_LEARNING_AGENT_TASK_20261011.md)。
 
-10/12：ZHY文件迁移完成：8440文件/22619100762字节（21.07GiB）大小与SHA全通过，68链接正确，源文件保留。新根 `/opt/data/private/hechengzhu/ZHY` 沿用 data/logs/script/reports；新机28 CPU等效/16GiB、RTX3090 24GB、驱动570.153.02。原机环境未迁移，296项包版本已保存；新机默认Python3.10.12不代表A3可运行。环境重建/新实验路径待处理，不启动训练。见[盘点](README_REMOTE_HOST_INSPECTION_20261012.md)、[迁移](README_ZHY_MIGRATION_20261012.md)与[回执](../data/manifests/zhy_migration_20261012.json)。
+10/12：用户新授权迁移后在ZHY进行一轮训练。A3数据8440文件/21.07GiB、运行环境173862文件/22.35GB及IsaacLab/overlay补充4147文件均SHA通过；短路径data/env、overlay和6个editable入口修正，Python3.11.15/torch2.8.0+cu128实际CPU导入、9项保护契约及16个motion入口通过，无断链。新机28 CPU等效/16GiB、RTX3090 24GB、驱动570.153.02。下一步新实验R11：官方035初始化，16env/epochs1/LR尺度0.1/2更新，5秒监测、90/85°C双采样/4GiB保留/900秒保护，一次启动、无自动恢复。原机仍停止训练，旧账本保留。运行/恢复见[阶段记录](README_ZHY_RUNTIME_20261012.md)与[验收清单](../data/manifests/zhy_runtime_20261012.json)。
 
 10/11最新：用户授权先尝试可改的软件层。已将官方 `nvidia-driver-595-open` 595.84 切换为 apt 的 `nvidia-driver-580` 580.178.04；DKMS 模块在6.8.0-138上安装成功，计划内重启后新 boot `560a7f8b-e70c-45a7-b3d7-5388308339cb`，GPU 29°C/23.28W/0%利用率，A3自动服务仍 inactive/disabled，无计算进程。尚未在新驱动上复测负载，见[驱动切换记录](README_DRIVER_SWITCH_20261011.md)。
 

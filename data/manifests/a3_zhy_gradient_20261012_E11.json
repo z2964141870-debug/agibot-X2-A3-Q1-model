@@ -1,0 +1,998 @@
+{
+  "status": "VERIFIED",
+  "experiment": "A3_ZHY_GRADIENT_20261012_E11",
+  "optimizer_steps": 0,
+  "probability_contract_passed": true,
+  "parameters_unchanged_during_gradients": true,
+  "cpu_independent_loss_recomputation": true,
+  "gradient_geometry_independently_recomputed": false,
+  "fresh_rollouts": 1,
+  "batches": [
+    {
+      "batch": 0,
+      "probability": {
+        "action_rmse": 4.328143745624402e-07,
+        "action_max_abs": 2.86102294921875e-06,
+        "changed_frames_over_1e_4": 0,
+        "ratio_mean": 0.9999999403953552,
+        "ratio_min": 0.9999866485595703,
+        "ratio_max": 1.000016212463379,
+        "max_abs_ratio_minus_one": 1.621246337890625e-05
+      },
+      "cpu_recomputed_losses": {
+        "policy": -0.5130366683006287,
+        "value": 0.8807165622711182,
+        "entropy": -0.12899627685546874,
+        "aux": 0.0050203935429453846
+      },
+      "gradient_geometry": {
+        "actor_decoder": {
+          "parameters": 13531293,
+          "gradient_norms": {
+            "policy": 164.25367099771714,
+            "value": 0.0,
+            "entropy": 0.0,
+            "aux": 0.035001735703372415
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": 0.0,
+            "policy_vs_entropy": null,
+            "value_vs_policy": null
+          }
+        },
+        "actor_encoder": {
+          "parameters": 8462464,
+          "gradient_norms": {
+            "policy": 40.80177628433733,
+            "value": 0.0,
+            "entropy": 0.0,
+            "aux": 0.13000707106485598
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": -0.05814698131783441,
+            "policy_vs_entropy": null,
+            "value_vs_policy": null
+          }
+        },
+        "actor_std": {
+          "parameters": 29,
+          "gradient_norms": {
+            "policy": 3.253011393178221,
+            "value": 0.0,
+            "entropy": 0.15075631213828558,
+            "aux": 0.0
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": null,
+            "policy_vs_entropy": -0.11910829721455357,
+            "value_vs_policy": null
+          }
+        },
+        "critic": {
+          "parameters": 11503105,
+          "gradient_norms": {
+            "policy": 0.0,
+            "value": 123.88165542634638,
+            "entropy": 0.0,
+            "aux": 0.0
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": null,
+            "policy_vs_entropy": null,
+            "value_vs_policy": null
+          }
+        }
+      },
+      "initial_value_explained_variance": 0.6438660025596619,
+      "normalized_advantage": {
+        "shape": [
+          4,
+          24,
+          1
+        ],
+        "mean": 0.5130366683006287,
+        "std": 1.673972249031067,
+        "min": -1.7692617177963257,
+        "max": 9.436535835266113
+      },
+      "critic_buffers_changed_during_forward": [
+        "value_model.running_mean_std.running_mean",
+        "value_model.running_mean_std.running_var"
+      ]
+    },
+    {
+      "batch": 1,
+      "probability": {
+        "action_rmse": 4.545934473298985e-07,
+        "action_max_abs": 2.86102294921875e-06,
+        "changed_frames_over_1e_4": 0,
+        "ratio_mean": 1.0000005960464478,
+        "ratio_min": 0.9999895095825195,
+        "ratio_max": 1.0000171661376953,
+        "max_abs_ratio_minus_one": 1.71661376953125e-05
+      },
+      "cpu_recomputed_losses": {
+        "policy": 0.5442822575569153,
+        "value": 0.07854032516479492,
+        "entropy": -0.12899627685546874,
+        "aux": 0.0011541972495615481
+      },
+      "gradient_geometry": {
+        "actor_decoder": {
+          "parameters": 13531293,
+          "gradient_norms": {
+            "policy": 52.65567818001481,
+            "value": 0.0,
+            "entropy": 0.0,
+            "aux": 0.059503617575174486
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": 0.0,
+            "policy_vs_entropy": null,
+            "value_vs_policy": null
+          }
+        },
+        "actor_encoder": {
+          "parameters": 8462464,
+          "gradient_norms": {
+            "policy": 13.46655526052624,
+            "value": 0.0,
+            "entropy": 0.0,
+            "aux": 0.05780571411002232
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": -0.003906662371351501,
+            "policy_vs_entropy": null,
+            "value_vs_policy": null
+          }
+        },
+        "actor_std": {
+          "parameters": 29,
+          "gradient_norms": {
+            "policy": 1.8163572931904148,
+            "value": 0.0,
+            "entropy": 0.15075631213828558,
+            "aux": 0.0
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": null,
+            "policy_vs_entropy": 0.056609788516452396,
+            "value_vs_policy": null
+          }
+        },
+        "critic": {
+          "parameters": 11503105,
+          "gradient_norms": {
+            "policy": 0.0,
+            "value": 6.1003499773871175,
+            "entropy": 0.0,
+            "aux": 0.0
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": null,
+            "policy_vs_entropy": null,
+            "value_vs_policy": null
+          }
+        }
+      },
+      "initial_value_explained_variance": 0.7953420877456665,
+      "normalized_advantage": {
+        "shape": [
+          4,
+          24,
+          1
+        ],
+        "mean": -0.5442818999290466,
+        "std": 0.5584987998008728,
+        "min": -2.2423250675201416,
+        "max": 0.3938407301902771
+      },
+      "critic_buffers_changed_during_forward": [
+        "value_model.running_mean_std.running_mean"
+      ]
+    },
+    {
+      "batch": 2,
+      "probability": {
+        "action_rmse": 3.516342417242413e-07,
+        "action_max_abs": 1.9073486328125e-06,
+        "changed_frames_over_1e_4": 0,
+        "ratio_mean": 0.9999991059303284,
+        "ratio_min": 0.9999885559082031,
+        "ratio_max": 1.0000104904174805,
+        "max_abs_ratio_minus_one": 1.1444091796875e-05
+      },
+      "cpu_recomputed_losses": {
+        "policy": -0.02472616918385029,
+        "value": 0.07848964631557465,
+        "entropy": -0.12899627685546874,
+        "aux": 0.0012349345395341515
+      },
+      "gradient_geometry": {
+        "actor_decoder": {
+          "parameters": 13531293,
+          "gradient_norms": {
+            "policy": 17.159407558938394,
+            "value": 0.0,
+            "entropy": 0.0,
+            "aux": 0.014346147520558504
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": 0.0,
+            "policy_vs_entropy": null,
+            "value_vs_policy": null
+          }
+        },
+        "actor_encoder": {
+          "parameters": 8462464,
+          "gradient_norms": {
+            "policy": 4.627318565934209,
+            "value": 0.0,
+            "entropy": 0.0,
+            "aux": 0.04018428405719144
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": 0.1614378147733128,
+            "policy_vs_entropy": null,
+            "value_vs_policy": null
+          }
+        },
+        "actor_std": {
+          "parameters": 29,
+          "gradient_norms": {
+            "policy": 0.7198943312992848,
+            "value": 0.0,
+            "entropy": 0.15075631213828558,
+            "aux": 0.0
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": null,
+            "policy_vs_entropy": -0.12004992441762502,
+            "value_vs_policy": null
+          }
+        },
+        "critic": {
+          "parameters": 11503105,
+          "gradient_norms": {
+            "policy": 0.0,
+            "value": 14.74827087638276,
+            "entropy": 0.0,
+            "aux": 0.0
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": null,
+            "policy_vs_entropy": null,
+            "value_vs_policy": null
+          }
+        }
+      },
+      "initial_value_explained_variance": -0.7787314653396606,
+      "normalized_advantage": {
+        "shape": [
+          4,
+          24,
+          1
+        ],
+        "mean": 0.024726465344429016,
+        "std": 0.3602936863899231,
+        "min": -0.47536927461624146,
+        "max": 0.8342788815498352
+      },
+      "critic_buffers_changed_during_forward": [
+        "value_model.running_mean_std.running_mean"
+      ]
+    },
+    {
+      "batch": 3,
+      "probability": {
+        "action_rmse": 3.7356437587732216e-07,
+        "action_max_abs": 2.384185791015625e-06,
+        "changed_frames_over_1e_4": 0,
+        "ratio_mean": 1.0000003576278687,
+        "ratio_min": 0.9999866485595703,
+        "ratio_max": 1.0000123977661133,
+        "max_abs_ratio_minus_one": 1.33514404296875e-05
+      },
+      "cpu_recomputed_losses": {
+        "policy": -0.006519171874970198,
+        "value": 0.08806032687425613,
+        "entropy": -0.12899627685546874,
+        "aux": 0.005822858621831984
+      },
+      "gradient_geometry": {
+        "actor_decoder": {
+          "parameters": 13531293,
+          "gradient_norms": {
+            "policy": 23.09878009769226,
+            "value": 0.0,
+            "entropy": 0.0,
+            "aux": 0.057142964828903235
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": 0.0,
+            "policy_vs_entropy": null,
+            "value_vs_policy": null
+          }
+        },
+        "actor_encoder": {
+          "parameters": 8462464,
+          "gradient_norms": {
+            "policy": 7.927695951147933,
+            "value": 0.0,
+            "entropy": 0.0,
+            "aux": 0.053678635115600566
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": 0.027422737273213565,
+            "policy_vs_entropy": null,
+            "value_vs_policy": null
+          }
+        },
+        "actor_std": {
+          "parameters": 29,
+          "gradient_norms": {
+            "policy": 0.5865561044504654,
+            "value": 0.0,
+            "entropy": 0.15075631213828558,
+            "aux": 0.0
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": null,
+            "policy_vs_entropy": -0.13484632527451254,
+            "value_vs_policy": null
+          }
+        },
+        "critic": {
+          "parameters": 11503105,
+          "gradient_norms": {
+            "policy": 0.0,
+            "value": 12.634343772791441,
+            "entropy": 0.0,
+            "aux": 0.0
+          },
+          "gradient_cosines": {
+            "policy_vs_aux": null,
+            "policy_vs_entropy": null,
+            "value_vs_policy": null
+          }
+        }
+      },
+      "initial_value_explained_variance": 0.7873839139938354,
+      "normalized_advantage": {
+        "shape": [
+          4,
+          24,
+          1
+        ],
+        "mean": 0.006518853362649679,
+        "std": 0.43077176809310913,
+        "min": -1.5303016901016235,
+        "max": 0.8951380848884583
+      },
+      "critic_buffers_changed_during_forward": [
+        "value_model.running_mean_std.running_mean"
+      ]
+    }
+  ],
+  "checkpoint_audit": {
+    "initial_networks_match_official": true,
+    "rows": [
+      {
+        "step": 0,
+        "path": "/opt/data/private/hechengzhu/ZHY/data/training/a3_zhy_fp32_20261012_E10/R12_001_s0/model_step_000000.pt",
+        "sha256": "172e622dbdc1667657ef020260e448017da54ddd39a4bf195dfd92d256527ced",
+        "optimizer_parameter_counters": [],
+        "std": [
+          0.29571136832237244,
+          0.29670047760009766,
+          0.26497647166252136,
+          0.33121567964553833,
+          0.3306804299354553,
+          0.47335851192474365,
+          0.24216310679912567,
+          0.24287009239196777,
+          0.3511257767677307,
+          0.32507649064064026,
+          0.3263707756996155,
+          0.40389910340309143,
+          0.40388914942741394,
+          0.292625367641449,
+          0.29365915060043335,
+          0.4011062681674957,
+          0.3986075520515442,
+          0.3550778329372406,
+          0.35375580191612244,
+          0.458890438079834,
+          0.45727816224098206,
+          0.46945637464523315,
+          0.47136664390563965,
+          0.49982598423957825,
+          0.49951621890068054,
+          0.5000176429748535,
+          0.5000160336494446,
+          0.5000172853469849,
+          0.5000163316726685
+        ]
+      },
+      {
+        "step": 1,
+        "path": "/opt/data/private/hechengzhu/ZHY/data/training/a3_zhy_fp32_20261012_E10/R12_001_s0/model_step_000001.pt",
+        "sha256": "71d2f3e0c5efbe441a1b754ad93f3b24058fdc6a533d5fe6be04d8d62c5405a2",
+        "optimizer_parameter_counters": [
+          4
+        ],
+        "std": [
+          0.29570260643959045,
+          0.2966958284378052,
+          0.26497915387153625,
+          0.3312230706214905,
+          0.3306868374347687,
+          0.47336384654045105,
+          0.24217389523983002,
+          0.24285952746868134,
+          0.3511161804199219,
+          0.3250744640827179,
+          0.32636183500289917,
+          0.4038954973220825,
+          0.40389126539230347,
+          0.2926257252693176,
+          0.29366374015808105,
+          0.40110641717910767,
+          0.39860180020332336,
+          0.3550871014595032,
+          0.35375115275382996,
+          0.4588925540447235,
+          0.45727306604385376,
+          0.46944740414619446,
+          0.471358060836792,
+          0.4998348653316498,
+          0.4995090365409851,
+          0.4999944865703583,
+          0.49999910593032837,
+          0.49999430775642395,
+          0.5000008344650269
+        ]
+      },
+      {
+        "step": 2,
+        "path": "/opt/data/private/hechengzhu/ZHY/data/training/a3_zhy_fp32_20261012_E10/R12_001_s0/model_step_000002.pt",
+        "sha256": "62e7db387e465abdb758d704f1ae0346a2ffb14304db4d3767cc46b2719f65cd",
+        "optimizer_parameter_counters": [
+          8
+        ],
+        "std": [
+          0.29570236802101135,
+          0.2966950535774231,
+          0.2649766504764557,
+          0.3312227129936218,
+          0.3306898772716522,
+          0.47336652874946594,
+          0.2421809732913971,
+          0.24285200238227844,
+          0.35111430287361145,
+          0.32507455348968506,
+          0.32636117935180664,
+          0.4038894474506378,
+          0.40389639139175415,
+          0.2926323413848877,
+          0.2936619222164154,
+          0.40111538767814636,
+          0.39859989285469055,
+          0.35509562492370605,
+          0.35375407338142395,
+          0.4589017331600189,
+          0.4572765827178955,
+          0.4694420397281647,
+          0.4713544547557831,
+          0.4998416006565094,
+          0.4995165765285492,
+          0.49998822808265686,
+          0.49999964237213135,
+          0.4999910295009613,
+          0.5000007748603821
+        ]
+      }
+    ],
+    "scope": "READ_ONLY_SAVED_CHECKPOINT_AUDIT_NO_OPTIMIZER_OR_CUDA"
+  },
+  "saved_update_deltas": [
+    {
+      "step": 1,
+      "versus_initial": {
+        "groups": {
+          "actor_std": {
+            "elements": 29,
+            "changed_elements": 29,
+            "max_abs_delta": 2.3156404495239258e-05,
+            "changed_tensors": [
+              "policy.std"
+            ],
+            "delta_l2": 5.214506522947896e-05,
+            "relative_l2": 2.4385191446546907e-05
+          },
+          "actor_encoder": {
+            "elements": 8462464,
+            "changed_elements": 8461713,
+            "max_abs_delta": 1.1002644896507263e-05,
+            "changed_tensors": [
+              "policy.actor_module.encoders.g1.module.0.weight",
+              "policy.actor_module.encoders.g1.module.0.bias",
+              "policy.actor_module.encoders.g1.module.2.weight",
+              "policy.actor_module.encoders.g1.module.2.bias",
+              "policy.actor_module.encoders.g1.module.4.weight",
+              "policy.actor_module.encoders.g1.module.4.bias",
+              "policy.actor_module.encoders.g1.module.6.weight",
+              "policy.actor_module.encoders.g1.module.6.bias",
+              "policy.actor_module.encoders.g1.module.8.weight",
+              "policy.actor_module.encoders.g1.module.8.bias",
+              "policy.actor_module.encoders.a3_fast.module.0.weight",
+              "policy.actor_module.encoders.a3_fast.module.0.bias",
+              "policy.actor_module.encoders.a3_fast.module.2.weight",
+              "policy.actor_module.encoders.a3_fast.module.2.bias",
+              "policy.actor_module.encoders.a3_fast.module.4.weight",
+              "policy.actor_module.encoders.a3_fast.module.4.bias",
+              "policy.actor_module.encoders.a3_fast.module.6.weight",
+              "policy.actor_module.encoders.a3_fast.module.6.bias",
+              "policy.actor_module.encoders.a3_fast.module.8.weight",
+              "policy.actor_module.encoders.a3_fast.module.8.bias"
+            ],
+            "delta_l2": 0.01719907516358115,
+            "relative_l2": 0.0001784767872109495
+          },
+          "actor_decoder": {
+            "elements": 13531293,
+            "changed_elements": 13524539,
+            "max_abs_delta": 1.1024298146367073e-05,
+            "changed_tensors": [
+              "policy.actor_module.decoders.g1_dyn.module.0.weight",
+              "policy.actor_module.decoders.g1_dyn.module.0.bias",
+              "policy.actor_module.decoders.g1_dyn.module.2.weight",
+              "policy.actor_module.decoders.g1_dyn.module.2.bias",
+              "policy.actor_module.decoders.g1_dyn.module.4.weight",
+              "policy.actor_module.decoders.g1_dyn.module.4.bias",
+              "policy.actor_module.decoders.g1_dyn.module.6.weight",
+              "policy.actor_module.decoders.g1_dyn.module.6.bias",
+              "policy.actor_module.decoders.g1_dyn.module.8.weight",
+              "policy.actor_module.decoders.g1_dyn.module.8.bias",
+              "policy.actor_module.decoders.g1_dyn.module.10.weight",
+              "policy.actor_module.decoders.g1_dyn.module.10.bias",
+              "policy.actor_module.decoders.g1_dyn.module.12.weight",
+              "policy.actor_module.decoders.g1_dyn.module.12.bias",
+              "policy.actor_module.decoders.g1_kin.module.0.weight",
+              "policy.actor_module.decoders.g1_kin.module.0.bias",
+              "policy.actor_module.decoders.g1_kin.module.2.weight",
+              "policy.actor_module.decoders.g1_kin.module.2.bias",
+              "policy.actor_module.decoders.g1_kin.module.4.weight",
+              "policy.actor_module.decoders.g1_kin.module.4.bias",
+              "policy.actor_module.decoders.g1_kin.module.6.weight",
+              "policy.actor_module.decoders.g1_kin.module.6.bias",
+              "policy.actor_module.decoders.g1_kin.module.8.weight",
+              "policy.actor_module.decoders.g1_kin.module.8.bias"
+            ],
+            "delta_l2": 0.020639420264690494,
+            "relative_l2": 0.00010441394831048222
+          },
+          "critic": {
+            "elements": 11503105,
+            "changed_elements": 11486921,
+            "max_abs_delta": 1.1018477380275726e-05,
+            "changed_tensors": [
+              "value_model.critic_module.module.0.weight",
+              "value_model.critic_module.module.0.bias",
+              "value_model.critic_module.module.2.weight",
+              "value_model.critic_module.module.2.bias",
+              "value_model.critic_module.module.4.weight",
+              "value_model.critic_module.module.4.bias",
+              "value_model.critic_module.module.6.weight",
+              "value_model.critic_module.module.6.bias",
+              "value_model.critic_module.module.8.weight",
+              "value_model.critic_module.module.8.bias",
+              "value_model.critic_module.module.10.weight",
+              "value_model.critic_module.module.10.bias",
+              "value_model.critic_module.module.12.weight",
+              "value_model.critic_module.module.12.bias"
+            ],
+            "delta_l2": 0.022312938369501403,
+            "relative_l2": 0.0001739779695042783
+          },
+          "buffers": {
+            "elements": 3291,
+            "changed_elements": 571,
+            "max_abs_delta": 9.5367431640625e-07,
+            "changed_tensors": [
+              "value_model.running_mean_std.running_mean",
+              "value_model.running_mean_std.running_var"
+            ],
+            "delta_l2": 2.96082036056311e-06,
+            "relative_l2": 3.011902222252512e-17
+          }
+        },
+        "changed_parameters": [
+          "policy.std",
+          "policy.actor_module.encoders.g1.module.0.weight",
+          "policy.actor_module.encoders.g1.module.0.bias",
+          "policy.actor_module.encoders.g1.module.2.weight",
+          "policy.actor_module.encoders.g1.module.2.bias",
+          "policy.actor_module.encoders.g1.module.4.weight",
+          "policy.actor_module.encoders.g1.module.4.bias",
+          "policy.actor_module.encoders.g1.module.6.weight",
+          "policy.actor_module.encoders.g1.module.6.bias",
+          "policy.actor_module.encoders.g1.module.8.weight",
+          "policy.actor_module.encoders.g1.module.8.bias",
+          "policy.actor_module.encoders.a3_fast.module.0.weight",
+          "policy.actor_module.encoders.a3_fast.module.0.bias",
+          "policy.actor_module.encoders.a3_fast.module.2.weight",
+          "policy.actor_module.encoders.a3_fast.module.2.bias",
+          "policy.actor_module.encoders.a3_fast.module.4.weight",
+          "policy.actor_module.encoders.a3_fast.module.4.bias",
+          "policy.actor_module.encoders.a3_fast.module.6.weight",
+          "policy.actor_module.encoders.a3_fast.module.6.bias",
+          "policy.actor_module.encoders.a3_fast.module.8.weight",
+          "policy.actor_module.encoders.a3_fast.module.8.bias",
+          "policy.actor_module.decoders.g1_dyn.module.0.weight",
+          "policy.actor_module.decoders.g1_dyn.module.0.bias",
+          "policy.actor_module.decoders.g1_dyn.module.2.weight",
+          "policy.actor_module.decoders.g1_dyn.module.2.bias",
+          "policy.actor_module.decoders.g1_dyn.module.4.weight",
+          "policy.actor_module.decoders.g1_dyn.module.4.bias",
+          "policy.actor_module.decoders.g1_dyn.module.6.weight",
+          "policy.actor_module.decoders.g1_dyn.module.6.bias",
+          "policy.actor_module.decoders.g1_dyn.module.8.weight",
+          "policy.actor_module.decoders.g1_dyn.module.8.bias",
+          "policy.actor_module.decoders.g1_dyn.module.10.weight",
+          "policy.actor_module.decoders.g1_dyn.module.10.bias",
+          "policy.actor_module.decoders.g1_dyn.module.12.weight",
+          "policy.actor_module.decoders.g1_dyn.module.12.bias",
+          "policy.actor_module.decoders.g1_kin.module.0.weight",
+          "policy.actor_module.decoders.g1_kin.module.0.bias",
+          "policy.actor_module.decoders.g1_kin.module.2.weight",
+          "policy.actor_module.decoders.g1_kin.module.2.bias",
+          "policy.actor_module.decoders.g1_kin.module.4.weight",
+          "policy.actor_module.decoders.g1_kin.module.4.bias",
+          "policy.actor_module.decoders.g1_kin.module.6.weight",
+          "policy.actor_module.decoders.g1_kin.module.6.bias",
+          "policy.actor_module.decoders.g1_kin.module.8.weight",
+          "policy.actor_module.decoders.g1_kin.module.8.bias",
+          "value_model.critic_module.module.0.weight",
+          "value_model.critic_module.module.0.bias",
+          "value_model.critic_module.module.2.weight",
+          "value_model.critic_module.module.2.bias",
+          "value_model.critic_module.module.4.weight",
+          "value_model.critic_module.module.4.bias",
+          "value_model.critic_module.module.6.weight",
+          "value_model.critic_module.module.6.bias",
+          "value_model.critic_module.module.8.weight",
+          "value_model.critic_module.module.8.bias",
+          "value_model.critic_module.module.10.weight",
+          "value_model.critic_module.module.10.bias",
+          "value_model.critic_module.module.12.weight",
+          "value_model.critic_module.module.12.bias"
+        ],
+        "changed_buffers": [
+          "value_model.running_mean_std.running_mean",
+          "value_model.running_mean_std.running_var"
+        ]
+      },
+      "initial_std_clamp_changed": true,
+      "std_delta_after_expected_clamp_l2": 3.4532639738258666e-05,
+      "scope": "SAVED_STATE_DELTA_INCLUDES_EXPECTED_INITIAL_STD_CLAMP"
+    },
+    {
+      "step": 2,
+      "versus_initial": {
+        "groups": {
+          "actor_std": {
+            "elements": 29,
+            "changed_elements": 29,
+            "max_abs_delta": 2.9414892196655273e-05,
+            "changed_tensors": [
+              "policy.std"
+            ],
+            "delta_l2": 6.814838646705825e-05,
+            "relative_l2": 3.186900703756368e-05
+          },
+          "actor_encoder": {
+            "elements": 8462464,
+            "changed_elements": 8461951,
+            "max_abs_delta": 2.2821128368377686e-05,
+            "changed_tensors": [
+              "policy.actor_module.encoders.g1.module.0.weight",
+              "policy.actor_module.encoders.g1.module.0.bias",
+              "policy.actor_module.encoders.g1.module.2.weight",
+              "policy.actor_module.encoders.g1.module.2.bias",
+              "policy.actor_module.encoders.g1.module.4.weight",
+              "policy.actor_module.encoders.g1.module.4.bias",
+              "policy.actor_module.encoders.g1.module.6.weight",
+              "policy.actor_module.encoders.g1.module.6.bias",
+              "policy.actor_module.encoders.g1.module.8.weight",
+              "policy.actor_module.encoders.g1.module.8.bias",
+              "policy.actor_module.encoders.a3_fast.module.0.weight",
+              "policy.actor_module.encoders.a3_fast.module.0.bias",
+              "policy.actor_module.encoders.a3_fast.module.2.weight",
+              "policy.actor_module.encoders.a3_fast.module.2.bias",
+              "policy.actor_module.encoders.a3_fast.module.4.weight",
+              "policy.actor_module.encoders.a3_fast.module.4.bias",
+              "policy.actor_module.encoders.a3_fast.module.6.weight",
+              "policy.actor_module.encoders.a3_fast.module.6.bias",
+              "policy.actor_module.encoders.a3_fast.module.8.weight",
+              "policy.actor_module.encoders.a3_fast.module.8.bias"
+            ],
+            "delta_l2": 0.027101394173189207,
+            "relative_l2": 0.000281234293993353
+          },
+          "actor_decoder": {
+            "elements": 13531293,
+            "changed_elements": 13527879,
+            "max_abs_delta": 2.3527070879936218e-05,
+            "changed_tensors": [
+              "policy.actor_module.decoders.g1_dyn.module.0.weight",
+              "policy.actor_module.decoders.g1_dyn.module.0.bias",
+              "policy.actor_module.decoders.g1_dyn.module.2.weight",
+              "policy.actor_module.decoders.g1_dyn.module.2.bias",
+              "policy.actor_module.decoders.g1_dyn.module.4.weight",
+              "policy.actor_module.decoders.g1_dyn.module.4.bias",
+              "policy.actor_module.decoders.g1_dyn.module.6.weight",
+              "policy.actor_module.decoders.g1_dyn.module.6.bias",
+              "policy.actor_module.decoders.g1_dyn.module.8.weight",
+              "policy.actor_module.decoders.g1_dyn.module.8.bias",
+              "policy.actor_module.decoders.g1_dyn.module.10.weight",
+              "policy.actor_module.decoders.g1_dyn.module.10.bias",
+              "policy.actor_module.decoders.g1_dyn.module.12.weight",
+              "policy.actor_module.decoders.g1_dyn.module.12.bias",
+              "policy.actor_module.decoders.g1_kin.module.0.weight",
+              "policy.actor_module.decoders.g1_kin.module.0.bias",
+              "policy.actor_module.decoders.g1_kin.module.2.weight",
+              "policy.actor_module.decoders.g1_kin.module.2.bias",
+              "policy.actor_module.decoders.g1_kin.module.4.weight",
+              "policy.actor_module.decoders.g1_kin.module.4.bias",
+              "policy.actor_module.decoders.g1_kin.module.6.weight",
+              "policy.actor_module.decoders.g1_kin.module.6.bias",
+              "policy.actor_module.decoders.g1_kin.module.8.weight",
+              "policy.actor_module.decoders.g1_kin.module.8.bias"
+            ],
+            "delta_l2": 0.03213787440866045,
+            "relative_l2": 0.0001625841382306366
+          },
+          "critic": {
+            "elements": 11503105,
+            "changed_elements": 11487955,
+            "max_abs_delta": 2.3377127945423126e-05,
+            "changed_tensors": [
+              "value_model.critic_module.module.0.weight",
+              "value_model.critic_module.module.0.bias",
+              "value_model.critic_module.module.2.weight",
+              "value_model.critic_module.module.2.bias",
+              "value_model.critic_module.module.4.weight",
+              "value_model.critic_module.module.4.bias",
+              "value_model.critic_module.module.6.weight",
+              "value_model.critic_module.module.6.bias",
+              "value_model.critic_module.module.8.weight",
+              "value_model.critic_module.module.8.bias",
+              "value_model.critic_module.module.10.weight",
+              "value_model.critic_module.module.10.bias",
+              "value_model.critic_module.module.12.weight",
+              "value_model.critic_module.module.12.bias"
+            ],
+            "delta_l2": 0.03468685630527711,
+            "relative_l2": 0.0002704596198198362
+          },
+          "buffers": {
+            "elements": 3291,
+            "changed_elements": 626,
+            "max_abs_delta": 9.5367431640625e-07,
+            "changed_tensors": [
+              "value_model.running_mean_std.running_mean",
+              "value_model.running_mean_std.running_var"
+            ],
+            "delta_l2": 2.9608366541270514e-06,
+            "relative_l2": 3.011918796922863e-17
+          }
+        },
+        "changed_parameters": [
+          "policy.std",
+          "policy.actor_module.encoders.g1.module.0.weight",
+          "policy.actor_module.encoders.g1.module.0.bias",
+          "policy.actor_module.encoders.g1.module.2.weight",
+          "policy.actor_module.encoders.g1.module.2.bias",
+          "policy.actor_module.encoders.g1.module.4.weight",
+          "policy.actor_module.encoders.g1.module.4.bias",
+          "policy.actor_module.encoders.g1.module.6.weight",
+          "policy.actor_module.encoders.g1.module.6.bias",
+          "policy.actor_module.encoders.g1.module.8.weight",
+          "policy.actor_module.encoders.g1.module.8.bias",
+          "policy.actor_module.encoders.a3_fast.module.0.weight",
+          "policy.actor_module.encoders.a3_fast.module.0.bias",
+          "policy.actor_module.encoders.a3_fast.module.2.weight",
+          "policy.actor_module.encoders.a3_fast.module.2.bias",
+          "policy.actor_module.encoders.a3_fast.module.4.weight",
+          "policy.actor_module.encoders.a3_fast.module.4.bias",
+          "policy.actor_module.encoders.a3_fast.module.6.weight",
+          "policy.actor_module.encoders.a3_fast.module.6.bias",
+          "policy.actor_module.encoders.a3_fast.module.8.weight",
+          "policy.actor_module.encoders.a3_fast.module.8.bias",
+          "policy.actor_module.decoders.g1_dyn.module.0.weight",
+          "policy.actor_module.decoders.g1_dyn.module.0.bias",
+          "policy.actor_module.decoders.g1_dyn.module.2.weight",
+          "policy.actor_module.decoders.g1_dyn.module.2.bias",
+          "policy.actor_module.decoders.g1_dyn.module.4.weight",
+          "policy.actor_module.decoders.g1_dyn.module.4.bias",
+          "policy.actor_module.decoders.g1_dyn.module.6.weight",
+          "policy.actor_module.decoders.g1_dyn.module.6.bias",
+          "policy.actor_module.decoders.g1_dyn.module.8.weight",
+          "policy.actor_module.decoders.g1_dyn.module.8.bias",
+          "policy.actor_module.decoders.g1_dyn.module.10.weight",
+          "policy.actor_module.decoders.g1_dyn.module.10.bias",
+          "policy.actor_module.decoders.g1_dyn.module.12.weight",
+          "policy.actor_module.decoders.g1_dyn.module.12.bias",
+          "policy.actor_module.decoders.g1_kin.module.0.weight",
+          "policy.actor_module.decoders.g1_kin.module.0.bias",
+          "policy.actor_module.decoders.g1_kin.module.2.weight",
+          "policy.actor_module.decoders.g1_kin.module.2.bias",
+          "policy.actor_module.decoders.g1_kin.module.4.weight",
+          "policy.actor_module.decoders.g1_kin.module.4.bias",
+          "policy.actor_module.decoders.g1_kin.module.6.weight",
+          "policy.actor_module.decoders.g1_kin.module.6.bias",
+          "policy.actor_module.decoders.g1_kin.module.8.weight",
+          "policy.actor_module.decoders.g1_kin.module.8.bias",
+          "value_model.critic_module.module.0.weight",
+          "value_model.critic_module.module.0.bias",
+          "value_model.critic_module.module.2.weight",
+          "value_model.critic_module.module.2.bias",
+          "value_model.critic_module.module.4.weight",
+          "value_model.critic_module.module.4.bias",
+          "value_model.critic_module.module.6.weight",
+          "value_model.critic_module.module.6.bias",
+          "value_model.critic_module.module.8.weight",
+          "value_model.critic_module.module.8.bias",
+          "value_model.critic_module.module.10.weight",
+          "value_model.critic_module.module.10.bias",
+          "value_model.critic_module.module.12.weight",
+          "value_model.critic_module.module.12.bias"
+        ],
+        "changed_buffers": [
+          "value_model.running_mean_std.running_mean",
+          "value_model.running_mean_std.running_var"
+        ]
+      },
+      "initial_std_clamp_changed": true,
+      "std_delta_after_expected_clamp_l2": 5.2902599761052084e-05,
+      "scope": "SAVED_STATE_DELTA_INCLUDES_EXPECTED_INITIAL_STD_CLAMP"
+    }
+  ],
+  "buffers_changed_during_rollout": [],
+  "buffers_changed_during_gradient_forwards": [
+    "value_model.running_mean_std.running_mean",
+    "value_model.running_mean_std.running_var"
+  ],
+  "actor_has_normalizer": false,
+  "critic_has_normalizer": true,
+  "precision": {
+    "initial": {
+      "mixed_precision": "no",
+      "native_amp": false,
+      "bf16": false,
+      "fp16": false,
+      "cuda_autocast": false,
+      "cpu_autocast": false,
+      "matmul_tf32": false,
+      "cudnn_tf32": false
+    },
+    "overrides": [
+      "++algo.trl.bf16=false",
+      "++algo.trl.fp16=false",
+      "++algo.trl.tf32=false"
+    ],
+    "checked_at_actual_actor_module": true,
+    "actor_calls": {
+      "rollout": 24,
+      "training": 4
+    },
+    "first_call_per_mode": [
+      {
+        "training": false,
+        "mixed_precision": "no",
+        "native_amp": false,
+        "bf16": false,
+        "fp16": false,
+        "cuda_autocast": false,
+        "cpu_autocast": false,
+        "matmul_tf32": false,
+        "cudnn_tf32": false
+      },
+      {
+        "training": true,
+        "mixed_precision": "no",
+        "native_amp": false,
+        "bf16": false,
+        "fp16": false,
+        "cuda_autocast": false,
+        "cpu_autocast": false,
+        "matmul_tf32": false,
+        "cudnn_tf32": false
+      }
+    ]
+  },
+  "health": {
+    "samples": 16,
+    "first_utc": "2026-10-12T10:11:04.877130+00:00",
+    "last_utc": "2026-10-12T10:12:57.854806+00:00",
+    "max_sample_gap_seconds": 43.364805936813354,
+    "boot_ids": [
+      "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    ],
+    "cpu_max_c": 40.0,
+    "gpu_max_c": 34.0,
+    "gpu_power_max_w": 130.23,
+    "available_min_bytes": 5447749632,
+    "oom_counts": [
+      0
+    ],
+    "critical_kernel_errors": [],
+    "telemetry_errors": []
+  },
+  "captures": {
+    "rollout.pt": {
+      "sha256": "5bbba73dbffd0a6f7d4737fd7afded4ac7f4e58f9c648f14d4c0cfd2963cf3a3",
+      "bytes": 7791609
+    },
+    "forward_evidence.pt": {
+      "sha256": "e1a9247fae24a2aaf246635c6a25e2e898a59d389fb68792ec88dd4c39823240",
+      "bytes": 275583
+    },
+    "gradient_diagnostic.json": {
+      "sha256": "bb493d8a355e8a597050b508fab32ca67f6ae81a1dcbc6f0b50e04f07e4c8585",
+      "bytes": 19449
+    }
+  },
+  "state": {
+    "status": "COMPLETE",
+    "monitor_pid": 1105730,
+    "started_at": 1791799908.2234206,
+    "phase": "ZERO_UPDATE_GRADIENT",
+    "argv": [
+      "bash",
+      "/opt/data/private/hechengzhu/ZHY/script/vendor/sonic_for_a3/train_a3_035_fromscratch.sh",
+      "seed=0",
+      "trainer._target_=script.a3.zhy_gradient_trainer.ZHYGradientTrainer",
+      "algo.config.num_learning_epochs=1",
+      "algo.config.actor_learning_rate=2e-6",
+      "algo.config.adaptive_lr_min=1e-6",
+      "algo.config.adaptive_lr_max=2e-5",
+      "callbacks.model_save._target_=script.a3.resumable_sonic.DurableModelSaveCallback",
+      "callbacks.model_save.save_frequency=1",
+      "+callbacks.model_save.target_global_step=2",
+      "++algo.trl.bf16=false",
+      "++algo.trl.fp16=false",
+      "++algo.trl.tf32=false"
+    ],
+    "probe_started_at": 1791799926.0324233,
+    "returncode": 0,
+    "reason": null,
+    "ended_at": 1791799978.0306082
+  },
+  "code_sha256": {
+    "script/a3/zhy_gradient.py": "c19f6190d7611ab4fa33d30459556926bb0f5a4fe7c2cc83378c5a0a3ebd7a1d",
+    "script/a3/zhy_gradient_trainer.py": "6c760301c0aed6e2889b8173db5a2f2de264ab9341dd8c07238574d975dfefb0",
+    "script/a3/gradient_probe.py": "26a6d8956a72d2038664ea1cbf52243428aecc13d7c361445171f0768a703c9c",
+    "script/a3/consistent_precision.py": "61dd22a41f87427e2ad82141956be2851aff57077d6f5145672aabe89c2c100a",
+    "script/a3/verified_finetune.py": "11044839b5c3d97fceb634149bae4960176f73a326bcdeafa576bc7dda33e22a",
+    "script/a3/finetune_trainer.py": "197ebea4444861340d0e45df8f81c4141c388194790da5a1c2b5640a22210aeb",
+    "script/a3/resumable_sonic.py": "e682dbfa42243becd15cbc48bd5c19bc5d3a46e6ad3bd767705f50ae2a0f51a9",
+    "script/a3/checkpoint_store.py": "b8d8fa36e3a19ca3e2205fad099db27b73cb634c25485187c26e2f8927aa42b5",
+    "script/a3/zhy_trial.py": "3d8ee83efc8578ece03023d3da26ccb407ec7c7531cc369169abfb297bad4446",
+    "script/a3/likelihood_probe.py": "b18769c638163e934be9322813e7a0aa380cbd5158a68c580fcb729f7307b896",
+    "script/a3/zhy_likelihood_trainer.py": "b055a56ab27d3a32ae5ae27fcf7ef6128a4cffd42ae8aab343b515ec686d9a8b"
+  },
+  "input_sha256": {
+    "/opt/data/private/hechengzhu/ZHY/data/models/a3_official_035/checkpoints/035_step200000/model_step_200000.pt": "9cf33be2f4e602858b68ce31d5824113ab1dda250acaab5842b6d3bf88b70f2d",
+    "/opt/data/private/hechengzhu/ZHY/data/experiments/a3_zhy_consistency_20261012_E09/independent_verification.json": "5b98eeea6180bb64313a2ac5d48fdeace2a1c77926bbd1e5f30b7141601336df",
+    "/opt/data/private/hechengzhu/ZHY/data/experiments/a3_zhy_fp32_20261012_E10/independent_verification.json": "2bc230e9cc4edcde9e37756c52fe660bdd52e96563763aeef9916aa34622bdaf",
+    "/opt/data/private/hechengzhu/ZHY/data/training/a3_zhy_fp32_20261012_E10/R12_001_s0/model_step_000000.pt": "172e622dbdc1667657ef020260e448017da54ddd39a4bf195dfd92d256527ced",
+    "/opt/data/private/hechengzhu/ZHY/data/training/a3_zhy_fp32_20261012_E10/R12_001_s0/model_step_000001.pt": "71d2f3e0c5efbe441a1b754ad93f3b24058fdc6a533d5fe6be04d8d62c5405a2",
+    "/opt/data/private/hechengzhu/ZHY/data/training/a3_zhy_fp32_20261012_E10/R12_001_s0/model_step_000002.pt": "62e7db387e465abdb758d704f1ae0346a2ffb14304db4d3767cc46b2719f65cd",
+    "/opt/data/private/hechengzhu/ZHY/data/training/a3_zhy_fp32_20261012_E10/R12_001_s0/config.yaml": "b56e2a16d151a01dac36f6c2aee110930559b6605bdcdf6f80ba45043ef3f79d"
+  },
+  "historical_causal_proof": false,
+  "policy_effect_acceptance": false,
+  "backup_status": "LOCAL_ONLY"
+}

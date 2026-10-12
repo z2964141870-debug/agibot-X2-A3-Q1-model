@@ -2,6 +2,8 @@
 
 记录日期：2026-10-12。独立实验 A3_ZHY_WRAPPER_20261012_E07。状态：6组回放完成并独立核验，重建包装器未复现真实训练偏差；0更新。
 
+2026-10-12后续更正：E08在真实Actor入口捕获autocast=true/bfloat16、Accelerator mixed_precision=bf16。E07显式指定mixed_precision=no，仅验证了关闭混合精度的离线路径，未重建真实入口的精度。下文6变体数值和核验保留；启动脚本no不能当成最终状态，见[真实入口证据](README_A3_ZHY_ENTRY_20261012.md)。
+
 ## 目标与依据
 
 E06证明同配置/权重的直接4环境整段与逐帧前向均复现采样；真实训练mean仍相差RMSE0.010159。此轮只重放E05已验证捕获，比较直接Actor、原PPO包装器和Accelerate包装后的前向；分别关闭/开启梯度，共6变体，无环境、rollout、loss.backward或optimizer。

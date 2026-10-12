@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-更新日期：2026-10-12（新增服务器系统/存储盘点，ZHY迁移进行中；训练仍暂停）。
+更新日期：2026-10-12（ZHY文件迁移与完整SHA校验完成；运行环境未迁移，训练仍暂停）。
 
 ## 恢复上下文先读
 
@@ -20,7 +20,7 @@
 | 2026-10-12 | A3学习：参考、执行目标与实际角 | 本人答对PD位置误差0.25-0.20=0.05rad；静止时也计算控制、PD输出力矩与速度阻尼已讲解，下一项“位置已到但仍在转动”判断待回答，见[学习记录](README_LEARNING_SESSION_20261012.md) |
 | 2026-10-11 | A3学习首轮：膝关节控制链 | 首轮问题与当时静态阅读见[学习记录](README_LEARNING_SESSION_20261011.md)，10/12已收到反馈并接续教学 |
 | 2026-10-11 | 学习Agent任务卡与分工 | 学习Agent负责教学，工程Agent推进工程，见[任务卡](README_LEARNING_AGENT_TASK_20261011.md)；学习任务不启动工程计算 |
-| 2026-10-12 | 新服务器与ZHY迁移 | 28 CPU等效/16GiB额度、RTX3090 24GB；目标 `/opt/data/private/hechengzhu/ZHY` 保持四目录结构，迁移进行中，见[盘点](README_REMOTE_HOST_INSPECTION_20261012.md)与[迁移](README_ZHY_MIGRATION_20261012.md) |
+| 2026-10-12 | 新服务器与ZHY迁移 | 8440文件/21.07GiB大小与SHA均通过，68链接正确，四目录保留；28 CPU等效/16GiB、RTX3090 24GB；运行环境未迁移、不启动训练，见[盘点](README_REMOTE_HOST_INSPECTION_20261012.md)与[迁移](README_ZHY_MIGRATION_20261012.md) |
 | 2026-10-11 | 580驱动普通CUDA冒烟 D01 | Python/CUDA/1024矩阵乘与同步完成到CHECK_BEGIN后确认新boot；现场BIOS报告异常供电，未发现保存的Xid/MCE/AER，首故障停止，见[驱动切换记录](README_DRIVER_SWITCH_20261011.md) |
 | 2026-10-11 | NVIDIA驱动切换 | 已安装官方 `nvidia-driver-580` 580.178.04，DKMS/内核模块加载成功并完成计划内重启；空闲核验通过，尚未负载复测，见[切换记录](README_DRIVER_SWITCH_20261011.md) |
 | 2026-10-11 | 普通Ultralytics YOLOv10n训练排查 E01 | batch=32 训练在 TRAIN_BEGIN 后确认新boot，首故障停止；CPU/GPU温度低，见[阶段记录](README_YOLO_PROBE_20261011.md) |

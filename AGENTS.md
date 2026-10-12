@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-12 用户确认新服务器经 `ssh hp3090` 后连接 `root@59.77.15.15:25115`，工作根指定为 `/opt/data/private/hechengzhu/ZHY`，沿用 `data / logs / script / reports`。当前授权从原 `YUANQI_A3` 迁移数据/代码/记录并核验，原机文件保留；迁移不自动授权启动训练。环境与容器实际额度以新核验为准，入口 `reports/README_ZHY_MIGRATION_20261012.md`。
+
 - 训练主机是 `ssh hp3090`，项目根为 `/media/yu/FAFF-E9771/YUANQI`。
 - 默认在该目录组织后续训练工作；GPU/软件状态以当前核验为准。
 - 2026-10-10 用户将A3工作细分到 `ssh hp3090` 的 `/media/yu/FAFF-E9771/YUANQI_A3`，沿用 `data / logs / script / reports`。`YUANQI` 保留通用研究/教学与历史实验；A3后续模型、评测及训练写新目录，Q1位置不变。新A3副本当前跟踪同仓库 `origin/main`，未另外创建A3分支。入口 `reports/README_A3_WORKSPACE_20261010.md`。

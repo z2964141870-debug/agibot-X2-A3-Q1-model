@@ -61,16 +61,26 @@ def register():
             or receipt['health']['boot_ids'] != [value['boot_id']]
             or receipt['health']['critical_kernel_errors']):
             raise RuntimeError('E04 follows only the reviewed E03 snapshot integration error')
+    if EXPERIMENT == 'E05':
+        prior = read(ROOT / 'data/experiments/a3_zhy_likelihood_20261012_E04/state.json')
+        evidence = read(ROOT / 'data/manifests/a3_zhy_likelihood_20261012_E04.json')
+        if (prior['status'] != 'VERIFIED' or evidence['probability_contract_passed']
+            or not evidence['sampling_identity']['all_inputs_exact']
+            or not evidence['precision']['cuda_matmul_tf32']):
+            raise RuntimeError('E05 requires the verified E04 numerical inconsistency')
+    sources = SOURCES + (('script/a3/zhy_precision_trainer.py',) if EXPERIMENT == 'E05' else ())
     job = dict(experiment=f'A3_ZHY_LIKELIHOOD_20261012_{EXPERIMENT}', registered_at=time.time(),
         boot_id=value['boot_id'], baseline_oom_kill=value['container_memory']['oom_kill'],
         kernel_baseline=kernel['stdout'].splitlines(), source_sha256=sha256(OFFICIAL),
-        code_sha256={p:sha256(ROOT / p) for p in SOURCES}, num_envs=16, policy_steps=24,
+        code_sha256={p:sha256(ROOT / p) for p in sources}, num_envs=16, policy_steps=24,
         minibatches=4, seed=0, optimizer_steps_allowed=0, auto_resume=False,
         repeat_allowed=False, runtime_limit_seconds=900, sample_seconds=5,
         max_cpu_c=90, max_gpu_c=85, memory_reserve_gib=4,
         instrumentation='CPU_COPIES_AT_SAMPLING_FORWARD_ALTER_TIMING_DIAGNOSTIC_ONLY',
         e10_ledger_modified=False, new_condition='MIGRATED_NEW_HOST_R11_AND_E02_VERIFIED',
         preceding_diagnostic='E03_SNAPSHOT_TENSORDICT_INTEGRATION_ERROR' if EXPERIMENT == 'E04' else None,
+        sampling_and_training_tf32=False if EXPERIMENT == 'E05' else True,
+        additional_minibatches=3 if EXPERIMENT == 'E05' else 0,
         gate=dict(actual_initial_ratio_max_abs_deviation=.001, action_mean_rmse_max=1e-5,
                   exact_sampling_input_identity_required=True), backup_status='LOCAL_ONLY')
     OUT.mkdir(parents=True)
@@ -99,8 +109,10 @@ def run():
             OMP_NUM_THREADS='1', MKL_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1',
             PYTHONPATH=str(ROOT), WANDB_MODE='disabled', YUANQI_RESUME_LOG_DIR=str(LOG),
             YUANQI_PROBE_OUTPUT=str(OUT))
+        trainer = ('script.a3.zhy_precision_trainer.ZHYFullPrecisionTrainer' if EXPERIMENT == 'E05'
+                   else 'script.a3.zhy_likelihood_trainer.ZHYRuntimeLikelihoodTrainer')
         argv = ['bash', str(VENDOR / 'train_a3_035_fromscratch.sh'), 'seed=0',
-            'trainer._target_=script.a3.zhy_likelihood_trainer.ZHYRuntimeLikelihoodTrainer',
+            'trainer._target_=' + trainer,
             'algo.config.num_learning_epochs=1', 'algo.config.actor_learning_rate=2e-6',
             'algo.config.adaptive_lr_min=1e-6', 'algo.config.adaptive_lr_max=2e-5',
             'callbacks.model_save._target_=script.a3.resumable_sonic.DurableModelSaveCallback',
@@ -172,9 +184,25 @@ def verify():
     passed = (sampling['all_inputs_exact'] and sampling['sampled_means_match_storage']
               and first['max_abs_ratio_minus_one'] <= job['gate']['actual_initial_ratio_max_abs_deviation']
               and first['action_rmse'] <= job['gate']['action_mean_rmse_max'])
+    batch_rows = None
+    if EXPERIMENT == 'E05':
+        from script.a3.zhy_precision_trainer import validate_initial_batches
+        batches = read(OUT / 'initial_batches.json')
+        batch_path = OUT / 'initial_batches.pt'
+        if sha256(batch_path) != batches['capture_sha256']:
+            raise ValueError('Initial minibatch capture changed')
+        batch_rows = validate_initial_batches(torch.load(batch_path, map_location='cpu', weights_only=False), source)
+        if batch_rows != batches['rows']:
+            raise ValueError('CPU initial minibatch recomputation mismatch')
+        if (precision['cuda_matmul_tf32'] or precision['cudnn_tf32']
+            or any(r['cuda_matmul_tf32'] or r['cudnn_tf32'] for r in precision['sampling_precision'])):
+            raise ValueError('Sampling and learning precision were not matched')
+        passed = passed and all(r['max_abs_ratio_minus_one'] <= .001
+                               and r['action_rmse'] <= 1e-5 for r in batch_rows)
     result = dict(experiment=job['experiment'], status='verified', optimizer_steps=0,
         probability_contract_passed=passed, actual_initial_minibatch=first,
         sampling_identity=sampling, variants=diagnostic['rows'],
+        initial_batch_coverage=batch_rows,
         capture_sha256=sha256(capture_path), precision=precision,
         all_probability_variants_independently_recomputed=True,
         sampling_independently_recomputed=True,
@@ -225,7 +253,7 @@ def report():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=('register', 'run', 'verify', 'report'))
-    parser.add_argument('--experiment', choices=('E03', 'E04'), default='E03')
+    parser.add_argument('--experiment', choices=('E03', 'E04', 'E05'), default='E03')
     args = parser.parse_args()
     configure(args.experiment)
     result = dict(register=register, run=run, verify=verify, report=report)[args.action]()

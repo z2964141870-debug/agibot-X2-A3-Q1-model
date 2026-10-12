@@ -1,6 +1,6 @@
 # ZHY运行环境迁移与首轮A3训练
 
-记录日期：2026-10-12。状态：A3文件与运行依赖迁移验收完成；独立短训练即将启动。
+记录日期：2026-10-12。状态：A3文件与运行依赖迁移验收完成；新机R11短训练及独立checkpoint核验通过，全部训练进程结束。
 
 ## 目标与授权
 
@@ -36,6 +36,23 @@
 
 数据8440文件/21.07GiB与68链接已在上一阶段通过，见[迁移记录](README_ZHY_MIGRATION_20261012.md)。最终no-archive处理175255条目并检查全部存在，解释器Python3.11.15、torch2.8.0+cu128/CUDA12.8、OpenSSL3.5.7实际CPU导入通过；overlay base_prefix确为ZHY/data/env，6个IsaacLab editable入口和overlay路径已修正。所有环境/IsaacLab链接扫描无断链。可选smpl_sim在原base环境亦未安装，当前False，仅涉及SMPL效果评测，不作为本轮训练验收前置。
 
-9项CPU契约（缓存可回收/实际内存压力/OOM记录/估算边界、原boot且READY才启动、历史checkpoint拒绝、遥测失败停子进程及既有温度保护）通过；官方launcher --preflight检查16个训练motion文件通过，未产生训练/仿真。已确认新机GPU空闲26°C、CPU包温41–43°C，dmesg可读；内存计费高主要是文件缓存，RSS约1GiB。验收清单见data/manifests/zhy_runtime_20261012.json。下一步只登记并启动R11一次，训练结果尚未产生。
+9项CPU契约（缓存可回收/实际内存压力/OOM记录/估算边界、原boot且READY才启动、历史checkpoint拒绝、遥测失败停子进程及既有温度保护）通过；官方launcher --preflight检查16个训练motion文件通过，当时未产生训练/仿真。CPU导入和预检查均通过后登记并启动R11一次。验收清单见data/manifests/zhy_runtime_20261012.json。
 
 验收命令：在新机根运行data/environments/a3-sonic/bin/python -m unittest script.a3.test_zhy_trial script.a3.test_reboot_trial；ISAAC_PYTHON显式指定overlay、MOTION_FILE指定新机data/experiments/a3_fullchain_20261010/motionlib/train，运行vendor/train_a3_035_fromscratch.sh --preflight。训练顺序为python -m script.a3.zhy_trial register、run，正常结束后verify、report；不重复register/run，不恢复原机旧实验。
+
+## 新机实际训练与核验
+
+- 运行代码main b76fe017b85c43b69a6b17258ea31642aa6a93a3，源/目标/GitHub启动前同版本；runner SHA3d8ee83efc8578ece03023d3da26ccb407ec7c7531cc369169abfb297bad4446，依赖SHA登记在registration.json。
+- 2026-10-12北京时间11:49:54.076–11:51:26.865（UTC03:49:54–03:51:26）运行92.789秒，包含Isaac初始化/场景/官方权重加载/两轮训练/耐久保存/退出后CPU检查。16env、4minibatches、epochs1、LR尺度0.1、seed0、2更新；console记录768环境步，底层optimizer审计8步。进程退出0，launch_state TRAINING_COMPLETE，详细state complete/verified_step2，未自动追加训练或效果评测。
+- step0/1/2独立SHA、CPU重载、网络与优化器有限性、计数分别0/4/8、实际应用LR与scheduler一致、official035权重精确匹配且优化器清零、官方total_aux_loss均通过。step2为402076373字节，SHA8e6162b41c09ec729681b6654cde603eeb24c54c55f3fc0f48e4a21ba24dbef0；三保存点完整SHA见[实验清单](../data/manifests/a3_zhy_20261012_E01.json)。
+- 18健康样本（含登记基线与运行监控），UTC03:49:28.532–03:51:17.750，boot始终d994e71f-bae0-46ba-a5f7-6c2163771c6c；CPU最高40°C/GPU最高35°C，采样功率最高131.09W、显存3993MiB，cgroup RSS最高5184110592字节（4.83GiB），估算可用内存最低8620228608字节（8.03GiB），OOM计数0、无新关键dmesg事件/遥测错误/保护停止。登记到运行有26.406秒间隔，5秒采样无法排除两点间的未采峰值，不宣称持续峰值覆盖。
+- 验证时第一次更新Objective/length为NaN；对应checkpoint lenbuffer为空，尚无完整episode，此项记录为统计未定义，不当成网络非有限，也不伪造有限数值。其余训练标量/参数检查通过。启动日志还报告容器kernel5.4低于Accelerate建议5.5；此短训正常完成，长训兼容性仍需关注，未更改宿主kernel/驱动。
+- 结束后新机GPU恢复26°C/33.22W/13MiB且无计算进程，boot未变；原机A3自动服务inactive/disabled，没有恢复原机训练。原件、runtime raw、截断档案/不完整输出与历史实验均保留。
+
+## 结论、保存和下一步
+
+本轮用户要求的A3工作区/依赖迁移和一轮新机训练已完成。只证明这台新机在该配置下通过一次短训练、保存与重载，不能证明长期高负载稳定、策略性能改善或旧机故障具体来自显卡/PSU/主板。新机没有复现旧机整机重启，但主机、驱动、容器/内存等都变了，不把它当成单一变量硬件归因。
+
+详细日志和checkpoint留新机data/logs，LOCAL_ONLY，不代表网盘备份；Mac仅小型代码/报告/清单。环境路径回执SHAec3a6ad50d7a07b9ac44f4c4fbeb59f07e49139d55ca422fe3ef785fee2de041，packing回执SHAb298cfe89e8fbc260c0c8f01a9e82e7fe786f7e08892f895e4ede837c6e3fb80，独立verification SHA72e165b54c6ca8d7308038016d6f3844035ff35f612bebe4b76cdefc14afa80b，health SHA41fc7ed070a93efd5d1b6ce2c37fd33844ac306ba0a4787af44cfbe4e76378de。最终报告/两清单/入口按scoped audit提交推送main，再核源/目标/GitHub一致；提交号由Git历史提供。
+
+本轮到此结束，不自动启动下一轮长训。后续可在新机独立编号扩大更新预算并进行既有动作集效果验收；继续前先核资源/进程/boot与该报告，旧R01-R10/E22/E25账本不恢复。

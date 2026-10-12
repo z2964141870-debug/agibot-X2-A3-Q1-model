@@ -1,0 +1,98 @@
+{
+  "stage": "A3_SMPL_ENCODER_20261012",
+  "date": "2026-10-12",
+  "status": "RELEASE_INTERFACE_AND_CHECKPOINT_INVENTORY_VERIFIED",
+  "custom_encoder_status": "DESIGN_CANDIDATE_NOT_IMPLEMENTED_OR_TRAINED",
+  "project_base_commit": "27d775089f27857b18202af174d19572e14b1661",
+  "vendor_commit": "fe6868ba37034f89b912f0fb851bce19f120266d",
+  "inspection": {
+    "target_root": "/opt/data/private/hechengzhu/ZHY",
+    "target_boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+    "checkpoint_sha_check_started_utc": "2026-10-12T10:51:08Z",
+    "method": "torch.load(map_location='cpu', weights_only=False, mmap=True); no model construction or forward",
+    "cuda_visible_devices": "",
+    "torch_threads": 1,
+    "optimizer_steps": 0,
+    "simulation_steps": 0,
+    "cuda_operations": 0,
+    "vendor_changed": false
+  },
+  "official_checkpoint": {
+    "relative_path": "data/models/a3_official_035/checkpoints/035_step200000/model_step_200000.pt",
+    "bytes": 402050931,
+    "sha256": "9cf33be2f4e602858b68ce31d5824113ab1dda250acaab5842b6d3bf88b70f2d",
+    "backup_status": "LOCAL_ONLY",
+    "policy_tensor_keys": 45,
+    "value_tensor_keys": 17,
+    "encoder_groups": {
+      "g1": {
+        "tensor_keys": 10,
+        "first_weight_shape": [2048, 640],
+        "last_weight_shape": [64, 512]
+      },
+      "a3_fast": {
+        "tensor_keys": 10,
+        "first_weight_shape": [2048, 640],
+        "last_weight_shape": [64, 512]
+      }
+    },
+    "smpl_policy_keys": [],
+    "teleop_policy_keys": []
+  },
+  "runtime_config_evidence": {
+    "relative_path": "data/experiments/a3_zhy_consistency_20261012_E09/runtime_model_config.json",
+    "active_encoders": ["g1", "a3_fast"],
+    "active_decoders": ["g1_dyn", "g1_kin"],
+    "encoder_sample_probs": {
+      "g1": 1.0,
+      "teleop": 0.0,
+      "smpl": 0.0,
+      "a3_fast": 1.0
+    },
+    "actor_proprioception_dimension": 930,
+    "active_reference_shapes": {
+      "command_multi_future_nonflat": [10, 58],
+      "command_multi_future_a3_fast_nonflat": [10, 58],
+      "motion_anchor_ori_b_mf_nonflat": [10, 6],
+      "motion_anchor_ori_a3_fast_b_mf_nonflat": [10, 6]
+    },
+    "reserved_not_active_smpl_input_shapes": {
+      "smpl_joints_multi_future_local_nonflat": [10, 72],
+      "smpl_root_ori_b_multi_future": [10, 6],
+      "joint_pos_multi_future_wrist_for_smpl": [10, 6]
+    },
+    "a3_fast_reference_seconds": {
+      "frames": 10,
+      "spacing": 0.02,
+      "first": 0.0,
+      "last": 0.18
+    }
+  },
+  "deployment_evidence": {
+    "scope": "OFFICIAL_ASSET_MANIFEST_ONLY_NOT_BINARY_EXECUTION",
+    "released_encoder_modes": ["g1", "a3_fast"],
+    "full_policy_onnx_input_shape": [1, 1570],
+    "full_policy_onnx_action_shape": [1, 29]
+  },
+  "source_sha256": {
+    "script/vendor/sonic_for_a3/README.md": "126e0ce8dd71206707c9a738fa8ae3c309215c13e7cddb0909914c1c8708031a",
+    "script/vendor/sonic_for_a3/gear_sonic/config/exp/manager/universal_token/all_modes/sonic_a3_035.yaml": "1b931907719188f6eaa60db74f693758cdb0142f177a2fcb0b6f1a10b15fdef8",
+    "script/vendor/sonic_for_a3/gear_sonic/trl/modules/universal_token_modules.py": "4bc5c48a63931c7199c81da624f9a8dd13f5dce424268cf46b6f62ea98187837"
+  },
+  "candidate": {
+    "input": "time-aligned, canonicalized human SMPL with required runtime-available anchor/state context",
+    "teacher_encoder": "official035 a3_fast",
+    "target": "teacher prequantization flattened 64-dimensional latent",
+    "frozen_components": ["official teacher", "FSQ quantizer", "A3 dynamics decoder"],
+    "paired_smpl_a3_training_data_verified": false,
+    "existing_motion_capture_use": "TEST_ONLY_UNCHANGED",
+    "online_future_contract_verified": false,
+    "teacher_loss_decline_proves_policy_improvement": false,
+    "new_interface_proves_official_baseline_improvement": false
+  },
+  "sources": [
+    "https://github.com/AgibotTech/sonic_for_a3/blob/fe6868ba37034f89b912f0fb851bce19f120266d/README.md",
+    "https://github.com/AgibotTech/sonic_for_a3/blob/fe6868ba37034f89b912f0fb851bce19f120266d/docs/a3_035_training_contract.md",
+    "https://github.com/NVlabs/GR00T-WholeBodyControl"
+  ]
+}

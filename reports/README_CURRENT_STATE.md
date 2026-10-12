@@ -1,8 +1,10 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-12（E16接触期贴地通过，摆动脚穿地/部分root修正速度失败；未训练人体分支或超过官方）。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
+更新：2026-10-12（E17滑动/贴地/root速度通过，定位直接设置root绕过地板约束；未训练人体分支或超过官方）。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
 
 ## 用户目标与固定约定
+
+E17于21:26:45结束、21:26:55独立验收VERIFIED_QUALITY_REJECTION：4CPU契约/2100帧复核通过，7/7位置P95/连续接触滑动/贴地/root速度通过，root修正P99≤0.5m/s；但7/7仍穿地1.74–6.90cm，pair0/optimizer0。最差fjw帧实际碰撞geom已包含在6足/floor约束，真实minZ与mj_geomDistance一致；定位每帧先直接改root qpos再求IK，会在约束前造成穿透。下一变量将floating base和关节共同求解，不改宽几何/位置门槛。7健康样本同boot/CPU48/GPU27°C/OOM0，无CUDA/模型前向/策略回放，任务退出。见[E17机制](README_A3_SMPL_FLOOR_20261012.md)与[清单](../data/manifests/a3_zhy_smpl_floor_20261012_E17.json)。
 
 E16于21:11:19结束、21:11:28独立验收VERIFIED_QUALITY_REJECTION：3CPU契约/2100帧复核通过，7/7位置P95/接触贴地通过（步行脚底P95约1mm），但7/7非支撑足穿地3.36–8.12cm、4/7root修正速度失败，pair0/真实optimizer0。root修正0.092–0.240m已逐帧保存；原滑动帧中心差分混入contact前后非接触位移，下一检查需连续两帧均contact的区间统计，阈值不放宽。7健康样本同boot/CPU40/GPU27°C/OOM0，无CUDA/模型前向/策略回放，任务退出；E14/E15不改，原机停载。见[E16结果](README_A3_SMPL_CONTACT_20261012.md)与[清单](../data/manifests/a3_zhy_smpl_contact_20261012_E16.json)。
 

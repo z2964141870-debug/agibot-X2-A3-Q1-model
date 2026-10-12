@@ -1,8 +1,10 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-12（ZHY E08真实入口确认BF16/float32路径不同，修正待独立验证）。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
+更新：2026-10-12（ZHY E09显式精度修正已实现，8项CPU回归通过，真实验收待执行）。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
 
 ## 用户目标与固定约定
+
+E09修正已实现：显式algo.trl.bf16/fp16/tf32=false及ACCELERATE_MIXED_PRECISION=no，ConsistentPrecisionTrainer在真正Actor入口拒绝AMP/错误dtype，记录固定大小精度证据。8项CPU回归通过；真实首batch+3补算覆盖16环境的零更新验收待执行，原门槛不变。E08证据表明本机TRL默认BF16被Transformers写回、覆盖启动no，尚未宣布修复成功，见[修正合同](README_A3_ZHY_CONSISTENCY_20261012.md)。
 
 用户要求通过代码修正采样/训练偏差。E08于16:06:16–16:07:07完成，0optimizer与CPU独立核验通过；Actor输入/权重/buffer稳定、包装未改输出，但真实Actor autocast=true/bfloat16、Accelerator=bf16，离线E07=no。启动脚本no不等于最终精度；首batch ratio仍0.534–1.301。下一项E09显式固定algo.trl.bf16/fp16=false并增加真实精度检查，原RMSE1e-5/ratio偏离0.001门槛不变，尚未修复。12健康样本同boot、CPU47/GPU35°C、OOM0、任务结束GPU空闲，原机不计算，见[真实入口证据](README_A3_ZHY_ENTRY_20261012.md)。
 

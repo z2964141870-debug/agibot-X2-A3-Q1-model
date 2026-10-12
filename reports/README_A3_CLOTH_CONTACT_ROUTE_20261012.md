@@ -85,4 +85,6 @@ sed -n '588,610p' script/vendor/sonic_for_a3/gear_sonic/envs/manager_env/mdp/obs
 
 ## 保存与同步
 
-Mac只留小代码/README/清单；原始数据、模型与数值工件在服务器，备份仍LOCAL_ONLY。更新报告索引/current state，检查scoped diff与暂存区，运行`/usr/bin/python3 script/project_tools/audit_git_payload.py`，提交推送main并核对远端；提交身份和推送结果以Git历史/实际回执为准，不在提交前预写已同步。原机停载，不自动恢复A3，不启动候选E22或学生训练。
+后续用户“继续”后，E22于23:56:44–23:57:26执行、23:58:12独立验收质量拒绝；消除停步但参考仍不合格。保存构型的诊断确认外接盒空角点引入约1.6cm保守间距，下一候选为真实mesh凸包顶点。详见[E22实际结果](README_A3_SMPL_ENVELOPE_20261012.md)。上文“未执行E22”描述的是本路线只读核验时点，不代表后续最新状态；学生和策略仍未训练。
+
+Mac只留小代码/README/清单；原始数据、模型与数值工件在服务器，备份仍LOCAL_ONLY。更新报告索引/current state，检查scoped diff与暂存区，运行`/usr/bin/python3 script/project_tools/audit_git_payload.py`，提交推送main并核对远端；提交身份和推送结果以Git历史/实际回执为准，不在提交前预写已同步。原机停载，不自动恢复A3，不重复E22或启动学生训练。

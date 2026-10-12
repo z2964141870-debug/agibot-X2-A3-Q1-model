@@ -12,6 +12,13 @@ from script.a3.zhy_gradient_trainer import ZHYGradientTrainer
 
 
 class ZHYGradientTests(unittest.TestCase):
+    def test_checkpoint_mapping_and_manifest_list_have_identical_coverage(self):
+        rows = [dict(step=step) for step in range(3)]
+        self.assertEqual(probe.checkpoint_rows({'checkpoints': rows}), rows)
+        self.assertEqual(probe.checkpoint_rows({'checkpoints': {str(r['step']): r for r in rows}}), rows)
+        with self.assertRaisesRegex(ValueError, 'three verified'):
+            probe.checkpoint_rows({'checkpoints': rows[:2]})
+
     def test_parameters_and_buffers_are_distinct(self):
         before = {'policy.encoder.weight': torch.tensor([1., 2.]),
             'value_model.running_mean': torch.tensor([0.]), 'empty': torch.empty(0)}

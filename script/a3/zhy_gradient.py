@@ -31,6 +31,14 @@ def read(path):
     return json.loads(path.read_text())
 
 
+def checkpoint_rows(receipt):
+    records = receipt['checkpoints']
+    rows = list(records.values()) if isinstance(records, dict) else records
+    if len(rows) != 3 or sorted(row['step'] for row in rows) != [0, 1, 2]:
+        raise ValueError('Requires the three verified R12 saving points')
+    return rows
+
+
 def buffer_changes(before, after):
     import torch
     if before.keys() != after.keys():
@@ -126,7 +134,7 @@ def register():
     inputs = [OFFICIAL, PRIOR / 'independent_verification.json', TRIAL / 'independent_verification.json']
     inputs += [RUN / f'model_step_{step:06d}.pt' for step in range(3)]
     inputs += [RUN / 'config.yaml']
-    for row in trial['checkpoints']:
+    for row in checkpoint_rows(trial):
         path = Path(row['checkpoint'])
         if sha256(path) != row['sha256']:
             raise ValueError('Previously verified R12 checkpoint changed')

@@ -1,20 +1,18 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-12（ZHY E09精度修正已通过，E10/R12两更新核验通过，4动作效果待验证）。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
+更新：2026-10-12（ZHY采样/训练精度偏差已修复，E10/R12两更新及4回放核验完成，效果未改善）。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
 
 ## 用户目标与固定约定
 
-E10/R12于17:07:03–17:08:06完成，8optimizer/3保存点/实际LR/官方辅助loss独立CPU核验通过，Actor48采样+8训练精度均FP32。13健康样本同boot、CPU44/GPU34°C、采样功率132.38W、OOM0；效果NOT_EVALUATED，下一步仅4个既有诊断动作，与E02同新机同boot已验证官方基线比较，不复跑20基线。無开机恢复/重复/长训、原机不计算，入口[训练结果](README_A3_ZHY_FP32_20261012.md)。
+E10/R12训练17:07:03–17:08:06、4完整回放17:15:20–17:17:20均独立核验；8optimizer/3保存点/官方辅助loss及实际精度通过，5775策略步/0跌倒，但四诊断动作等权平均关节误差0.057795→0.060468rad（+4.63%），3/4退化，效果门槛失败，不升级R12。复用E02同新机同boot官方基线，未重跑20基线。39健康样本同boot、CPU46/GPU35°C、OOM0，无新关键内核错误；最大441秒间隔为阶段间空档，任务已结束/GPU无计算进程。原机不计算、无恢复/长训；下一项新FP32入口损失/梯度与模块更新诊断，先明确要改善的真实缺陷，见[最终结果](README_A3_ZHY_FP32_20261012.md)。
 
-E09于16:40:41–16:41:38完成，8项CPU回归与独立四batch概率验收通过、0optimizer。显式algo.trl.bf16/fp16/tf32=false及ACCELERATE_MIXED_PRECISION=no，Actor31次调用实际精度检查通过；首batch mean RMSE4.328e-7、四批ratio约0.999987–1.000017，原门槛不变。支持E08偏差来自实际BF16/float32路径，尚无更新/策略收益证据。下一步用ConsistentPrecisionTrainer独立两更新短训及匹配诊断，原机不计算、旧账本保留，见[修正结果](README_A3_ZHY_CONSISTENCY_20261012.md)。
-
-用户要求通过代码修正采样/训练偏差。E08于16:06:16–16:07:07完成，0optimizer与CPU独立核验通过；Actor输入/权重/buffer稳定、包装未改输出，但真实Actor autocast=true/bfloat16、Accelerator=bf16，离线E07=no。启动脚本no不等于最终精度；首batch ratio仍0.534–1.301。下一项E09显式固定algo.trl.bf16/fp16=false并增加真实精度检查，原RMSE1e-5/ratio偏离0.001门槛不变，尚未修复。12健康样本同boot、CPU47/GPU35°C、OOM0、任务结束GPU空闲，原机不计算，见[真实入口证据](README_A3_ZHY_ENTRY_20261012.md)。
+E09于16:40:41–16:41:38完成，8项CPU回归与真实四batch概率验收通过、0optimizer；显式algo.trl.bf16/fp16/tf32=false及ACCELERATE_MIXED_PRECISION=no，Actor31次调用均FP32，首batch mean RMSE4.328e-7、四批ratio约0.999987–1.000017，原门槛不变。E08主体权重/输入稳定但真实BF16；本环境TRL默认BF16经Transformers覆盖启动no，已定位并修正这次概率偏差，后续E10证明仍有策略退化，见[修正结果](README_A3_ZHY_CONSISTENCY_20261012.md)。
 
 10/12用户再次要求持续写README并思考反复排查背后的问题。工作理解是建立能自主判断失败与改进的完整实验链；尚未当作用户确认的选题。真实遥操中哪项缺陷值得微调、验收指标是什么仍需证据，见[实验依据与问题](README_A3_EXPERIMENT_DECISIONS_20261012.md)。
 
-10/12只读核验官方A3说明/issue/曲线和版本：有训练不收敛讨论及语料/warm-start限制，未找到当前零更新偏差的直接解释；main `c9df753`只比固定vendor多1个下载元数据提交，无训练代码修复。未更新vendor或启动计算；尚不能认定官方bug，下一项仍需真实Actor入口证据，见[来源核验](README_A3_UPSTREAM_LIKELIHOOD_20261012.md)。
+10/12只读核验官方A3说明/issue/曲线和版本：有训练不收敛讨论及语料/warm-start限制，未找到零更新偏差直接说明；main `c9df753`只新增下载元数据，无训练修复，未更新vendor。后续E08/E09在本环境定位精度覆盖并修正，不扩大为官方所有环境均有同一问题，见[来源核验](README_A3_UPSTREAM_LIKELIHOOD_20261012.md)。
 
-E07于14:15:46–14:16:02完成、6变体CPU独立核验通过，0optimizer。直接Actor/原PPO包装器/Accelerate各开关梯度均复现采样，24次输入精确一致、float32/autocast=false/TF32=false/mixed_precision=no；与E05真实首训练mean仍相差RMSE0.010159。离线重建没有复现偏差，不能认定包装器或梯度开关是原因，见[E07结果](README_A3_ZHY_WRAPPER_20261012.md)。下一项真实训练入口零更新捕获：保存首batch实际输入/元数据/精度/调用参数，并在同Actor即时前向对比。4健康样本同boot、CPU40/GPU30摄氏度、OOM0；任务结束，GPU空闲。E06直接4环境12变体也通过，见[E06结果](README_A3_ZHY_BATCH_20261012.md)。E05真实4批ratio仍约0.53–1.94，**训练合同仍失败**，不长训，见[一致精度结果](README_A3_ZHY_PRECISION_20261012.md)。
+E04–E07历史诊断保留：E05实际4批ratio约0.53–1.94；E06/E07离线FP32回放复现采样，但未重建真实BF16精度。旧失败账本不改写，后续E08/E09更正此前完整精度推断并修复计算不一致，见[E07更正](README_A3_ZHY_WRAPPER_20261012.md)与[E05更正](README_A3_ZHY_PRECISION_20261012.md)。
 
 10/12最新授权：迁移及R11完成后，在新服务器ZHY继续A3探索与微调。E02 64完整回放+3冒烟核验通过、0跌倒，adapter/R11全部效果门槛失败，官方仍为基线。E03采集器TensorDict错误已保留，修正后4项CPU回归通过；E04有效完成0更新诊断，采样输入/mean与存储精确一致、12概率行CPU复算通过，实际首batch ratio0.52963–1.37392，见[诊断](README_A3_ZHY_LIKELIHOOD_20261012.md)。尚未定位具体层或历史退化唯一根因。原机不计算、旧账本保留，见[E02结果](README_A3_ZHY_SEARCH_20261012.md)。
 

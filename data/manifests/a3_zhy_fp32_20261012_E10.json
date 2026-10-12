@@ -1,5 +1,5 @@
 {
-  "status": "TRAINING_VERIFIED",
+  "status": "VERIFIED",
   "experiment": "A3_ZHY_FP32_20261012_E10",
   "checkpoints": {
     "0": {
@@ -221,15 +221,15 @@
     ]
   },
   "health": {
-    "samples": 13,
+    "samples": 39,
     "first_utc": "2026-10-12T09:05:37.710202+00:00",
-    "last_utc": "2026-10-12T09:07:59.898115+00:00",
-    "max_sample_gap_seconds": 85.40220308303833,
+    "last_utc": "2026-10-12T09:17:15.825412+00:00",
+    "max_sample_gap_seconds": 441.43115496635437,
     "boot_ids": [
       "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
     ],
-    "cpu_max_c": 44.0,
-    "gpu_max_c": 34.0,
+    "cpu_max_c": 46.0,
+    "gpu_max_c": 35.0,
     "gpu_power_max_w": 132.38,
     "available_min_bytes": 6160322560,
     "oom_counts": [
@@ -262,6 +262,135 @@
     "ended_at": 1791796086.14965
   },
   "independent_cpu_reload": true,
-  "policy_effect": "NOT_EVALUATED",
-  "backup_status": "LOCAL_ONLY"
+  "policy_effect": {
+    "diagnostic_gate_passed": false,
+    "mean_joint_improvement_percent": -4.625514106344797,
+    "mean_joint_baseline_rad": 0.057795064117255344,
+    "mean_joint_corrected_rad": 0.060468382960770006,
+    "rows": [
+      {
+        "motion": "001_walk_front_slow",
+        "source_sha256": "f5a1843ddd1c2ce7ea4383022605c8abfe7f1920fa5874ec8ea83bc4a4283d38",
+        "baseline_joint_rmse": 0.06568664781465099,
+        "corrected_joint_rmse": 0.06963222456575835,
+        "changes_percent": {
+          "joint_rmse_rad": 6.006664797754113,
+          "root_pos_error_m_mean": 26.867479303710695,
+          "root_quat_error_deg_mean": 4.276388047628266,
+          "anchor_pos_error_m_mean": 26.867479303710695,
+          "torso_world_mean_m": 26.9430498394992,
+          "wrists_world_mean_m": 26.946964915014206,
+          "legs_world_mean_m": 27.03348033698063,
+          "torso_anchor_local_mean_m": 28.648685948698226,
+          "wrists_anchor_local_mean_m": 9.973355916103177,
+          "legs_anchor_local_mean_m": 9.434335298773021
+        },
+        "action_delta_rms_change_percent": -5.173581670807037,
+        "baseline_fall": false,
+        "corrected_fall": false,
+        "policy_steps": 1652
+      },
+      {
+        "motion": "029_rotate_place_slow",
+        "source_sha256": "4bfa79523e8fda01c69a40ae24d54ae08b9f4da3e2413803086a08c4283366f9",
+        "baseline_joint_rmse": 0.07665362103452582,
+        "corrected_joint_rmse": 0.07863524421870327,
+        "changes_percent": {
+          "joint_rmse_rad": 2.5851657852991705,
+          "root_pos_error_m_mean": -9.637173975391732,
+          "root_quat_error_deg_mean": 2.6998343745828546,
+          "anchor_pos_error_m_mean": -9.637173975391732,
+          "torso_world_mean_m": -9.559113521549223,
+          "wrists_world_mean_m": -9.28635648310313,
+          "legs_world_mean_m": -8.510185188511377,
+          "torso_anchor_local_mean_m": -30.24508391581522,
+          "wrists_anchor_local_mean_m": 3.411249868841293,
+          "legs_anchor_local_mean_m": 2.4689453570445608
+        },
+        "action_delta_rms_change_percent": 1.1881170740174474,
+        "baseline_fall": false,
+        "corrected_fall": false,
+        "policy_steps": 2604
+      },
+      {
+        "motion": "048_balance_right_singleleg",
+        "source_sha256": "a4d84758910de743aded46778590dfd87ccb091fef1f663c378a969fb6ea82c4",
+        "baseline_joint_rmse": 0.0457697237361692,
+        "corrected_joint_rmse": 0.044922698273186,
+        "changes_percent": {
+          "joint_rmse_rad": -1.8506239361760546,
+          "root_pos_error_m_mean": -2.443123140392567,
+          "root_quat_error_deg_mean": 18.822537811880522,
+          "anchor_pos_error_m_mean": -2.443123140392567,
+          "torso_world_mean_m": -2.1016870021929757,
+          "wrists_world_mean_m": 3.469412041842168,
+          "legs_world_mean_m": 4.282773263137374,
+          "torso_anchor_local_mean_m": 73.93800971119815,
+          "wrists_anchor_local_mean_m": 13.865335502278931,
+          "legs_anchor_local_mean_m": 8.653693929757388
+        },
+        "action_delta_rms_change_percent": 0.5223164781616774,
+        "baseline_fall": false,
+        "corrected_fall": false,
+        "policy_steps": 637
+      },
+      {
+        "motion": "050_march_place_slow",
+        "source_sha256": "327dc98a101bfa6521fba8209c11f126d68c04233cde592a050f5e242dd89e87",
+        "baseline_joint_rmse": 0.04307026388367539,
+        "corrected_joint_rmse": 0.048683364785432386,
+        "changes_percent": {
+          "joint_rmse_rad": 13.032427469952168,
+          "root_pos_error_m_mean": 1.8500885170481762,
+          "root_quat_error_deg_mean": 29.83879419941424,
+          "anchor_pos_error_m_mean": 1.8500885170481762,
+          "torso_world_mean_m": 1.9259471302185194,
+          "wrists_world_mean_m": 4.119354987826918,
+          "legs_world_mean_m": 2.0730252344935973,
+          "torso_anchor_local_mean_m": 21.786899102566014,
+          "wrists_anchor_local_mean_m": 29.43292574136813,
+          "legs_anchor_local_mean_m": 8.52032804165852
+        },
+        "action_delta_rms_change_percent": 0.602148819705195,
+        "baseline_fall": false,
+        "corrected_fall": false,
+        "policy_steps": 882
+      }
+    ],
+    "baseline_reused": true,
+    "fresh_final_test": false,
+    "independent_metrics": [
+      {
+        "condition": "evaluation",
+        "motion": "001_walk_front_slow",
+        "policy_steps": 1652,
+        "metrics_sha256": "ea12a6941a212c9cf528702c0acbe2e3002a2b5ca64a3ab22d604b14eafb001b",
+        "timeseries_sha256": "433048013e6cffb72e6872d44093a7bffdce2babd15d952eb59b5d5e6b53764d"
+      },
+      {
+        "condition": "evaluation",
+        "motion": "029_rotate_place_slow",
+        "policy_steps": 2604,
+        "metrics_sha256": "966741f42f97ba8b865f2b94356e604104533b21ea7c775d98402e0e7f13bcca",
+        "timeseries_sha256": "2f4b177065c57ce395c6212990b716bfda0db8df6344a5687e251531219ed427"
+      },
+      {
+        "condition": "evaluation",
+        "motion": "048_balance_right_singleleg",
+        "policy_steps": 637,
+        "metrics_sha256": "33b0a71038c4bf352b5c800ff3186ae7e8a54f641a4ab4598de5be22d6b06f12",
+        "timeseries_sha256": "cb47247e39e1c4a7b2cdbd67a2334d8a44c6380907bf61f1ea596d6ecf646932"
+      },
+      {
+        "condition": "evaluation",
+        "motion": "050_march_place_slow",
+        "policy_steps": 882,
+        "metrics_sha256": "554b804e5652bf5506c5455964eab13e423cb01f4651c8b3be5dba3106a16385",
+        "timeseries_sha256": "9aadf619f7e5b2019b2b654f2cc92b65bea4437f4f0b3f0d8157eb2fb6b276e1"
+      }
+    ],
+    "scope": "FOUR_REUSED_ORACLE_DIAGNOSTICS_NOT_TELEOP_OR_ROBOT_ACCEPTANCE"
+  },
+  "backup_status": "LOCAL_ONLY",
+  "evaluation_summary_sha256": "3f05de7f78a66125dfa05338275bca6c1f34c996ac5dfe8d21076440655a5fe3"
 }

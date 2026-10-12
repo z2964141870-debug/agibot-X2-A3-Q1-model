@@ -8,7 +8,7 @@
 
 ## 实现与固定合同
 
-入口 `script/a3/zhy_entry_probe.py`，诊断trainer `script/a3/zhy_entry_trainer.py`。沿用官方035、16环境、24采样步、4小批次、seed0和E05的一致float32/TF32关闭；实际首batch进入Actor时记录输入值、shape/stride/dtype、调用选项、梯度/自动混合精度、随机状态、参数/buffer摘要和各模块train/eval状态，以及实际启用的编码器/解码器配置。
+入口 `script/a3/zhy_entry_probe.py`，诊断trainer `script/a3/zhy_entry_trainer.py`。沿用官方035、16环境、24采样步、4小批次、seed0和E05的TF32关闭设置；完整float32是当时的设计意图，实际AMP状态以下文捕获为准。首batch进入Actor时记录输入值、shape/stride/dtype、调用选项、梯度/自动混合精度、随机状态、参数/buffer摘要和各模块train/eval状态，以及实际启用的编码器/解码器配置。
 
 保存原始Actor输出和包装器mean/std/logprobs，并在同一个Actor即时比较同输入同选项、存储输入同选项、存储输入去episode mask三组。各组恢复首调用随机状态和精度上下文。首loss入口立即保存并退出，禁止backward和optimizer更新；只接受初始化时既有std钳位，不把Critic归一化buffer变化误判为Actor优化。
 

@@ -11,7 +11,7 @@
 - 已手动生成[首份简报](research/2026-09-29/README.md)；2026-09-30 北京时间 09:01:12 收到首次定时触发，并完成来源检查与[本期简报](research/2026-09-30/README.md)。本次运行证据见[阶段记录](README_RESEARCH_CHECK_20260930.md)，不能据一次成功保证未来每次整点完成。
 - 最近一次：2026-10-10 北京时间 09:04:23 触发，接续 10/8 成功检索；筛选 10/9 三类公告并补查 10/8 cs.RO，形成[MimicX、YOCO、VioLA 三条简报](research/2026-10-10/README.md)。服务器连接恢复，以最新 main 为基础补同步 10/6–8 历史和 PredActor 专题；过程见[阶段记录](README_RESEARCH_CHECK_20261010.md)，发布状态以[核验回执](../data/manifests/research_watch_sync_20261010.json)为准。旧 pending 清单保留失败历史，不用旧镜像覆盖工程入口。
 - 2026-10-11 检查：已查来源无确认的实质变化，静默。HF 未核验、SSH 超时，详见[当日检查](README_RESEARCH_CHECK_20261011.md)和[当时待同步清单](../data/manifests/research_watch_pending_sync_20261011.json)。10/12 连接恢复后补同步，不用旧镜像覆盖并行工作。
-- 2026-10-12 检查：三类完整公告仍为 10/9，已查版本/仓库/作者页未确认实质变化，静默，见[当日检查](README_RESEARCH_CHECK_20261012.md)。HF 当前元数据仍未核验；SSH 恢复，以服务器最新工程/教学入口合并 10/11 待同步研究记录及本次增量，实际发布仍待推送核验。
+- 2026-10-12 检查：已查来源未确认实质变化，静默，见[当日检查](README_RESEARCH_CHECK_20261012.md)。HF 当前元数据仍未核验；SSH 恢复，以服务器最新工程/教学入口补同步 10/11 与本次研究记录，已推送并[核验](../data/manifests/research_watch_sync_20261012.json)。原失败记录保留，不自动恢复计算。
 - 修改或暂停日程使用 Codex 自动任务功能，按标识更新原任务，避免创建重复任务。完整创建提示词保存在 [automation 配置快照](../script/research_watch/automation_snapshot.json)；它是审计记录，不会自行创建第二个调度器。
 
 ## 阅读与研究优先级

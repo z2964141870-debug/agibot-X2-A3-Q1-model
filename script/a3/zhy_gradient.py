@@ -303,6 +303,8 @@ def verify():
                 if key not in ('training', 'mixed_precision')):
             raise ValueError('Actual precision contract failed')
     named = set(evidence['parameter_names'])
+    import yaml
+    saved_config = yaml.safe_load((RUN / 'config.yaml').read_text())['algo']['config']
     initial = torch.load(RUN / 'model_step_000000.pt', map_location='cpu', weights_only=False)
     base = {prefix+name: tensor for key, prefix in (
         ('policy_state_dict', 'policy.'), ('value_state_dict', 'value_model.')) for name, tensor in initial[key].items()}
@@ -311,7 +313,11 @@ def verify():
         payload = torch.load(RUN / f'model_step_{step:06d}.pt', map_location='cpu', weights_only=False)
         current = {prefix+name: tensor for key, prefix in (
             ('policy_state_dict', 'policy.'), ('value_state_dict', 'value_model.')) for name, tensor in payload[key].items()}
-        audits.append(dict(step=step, versus_initial=state_delta(base, current, named)))
+        clamped_std = base['policy.std'].clamp(saved_config['std_clamp_min'], saved_config['std_clamp_max'])
+        audits.append(dict(step=step, versus_initial=state_delta(base, current, named),
+            initial_std_clamp_changed=not torch.equal(base['policy.std'], clamped_std),
+            std_delta_after_expected_clamp_l2=float((current['policy.std']-clamped_std).double().norm()),
+            scope='SAVED_STATE_DELTA_INCLUDES_EXPECTED_INITIAL_STD_CLAMP'))
         del payload, current
     import script.a3.zhy_fp32_trial as old
     previous_log = old.LOG

@@ -1,6 +1,6 @@
 # A3 修正精度后的更新与梯度排查
 
-记录日期：2026-10-12。独立实验 A3_ZHY_GRADIENT_20261012_E11。状态：已实现，等待CPU检查、登记与实际运行；不能据此声称梯度或效果通过。
+记录日期：2026-10-12。独立实验 A3_ZHY_GRADIENT_20261012_E11。状态：已实现，6项CPU检查通过，等待登记与实际运行；不能据此声称梯度或效果通过。
 
 ## 目标与范围
 
@@ -43,6 +43,8 @@ OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 data/environments/a3-
 实验`data/experiments/a3_zhy_gradient_20261012_E11/`；日志`logs/a3_zhy_gradient_20261012_E11/`；清单`data/manifests/a3_zhy_gradient_20261012_E11.json`。这些结果尚未生成。Mac只留小型代码/报告/清单。
 
 ## 结果、边界与下一步
+
+6项CPU检查通过，覆盖独立损失的PPO/value裁剪和padding、辅助系数、参数/buffer区分、状态形状不匹配拒绝、禁止optimizer及旧目录重置拒绝。保存点std变化会分别报告从初始加载的总差异和已知限幅后的剩余差异，避免把限幅误当成优化器更新。
 
 待实际诊断。此前源码已确认当前奖励包含身体/根跟踪、速度和动作平滑等项，不直接等于MuJoCo四动作关节RMSE；这是目标与验收需核对的依据，不是已经证明的唯一退化原因。
 

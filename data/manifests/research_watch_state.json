@@ -1248,7 +1248,7 @@
       "2026-10-08",
       "2026-10-11"
     ],
-    "last_notification_decision": "DONT_NOTIFY",
+    "last_notification_decision": "NOTIFY",
     "previous_sync_failure_20261011": {
       "scope": "record_sync_and_partial_source_gap",
       "ssh": "Three initial read-only requests and one later retry timed out",
@@ -1260,7 +1260,21 @@
       "same_ssh_problem_as_local_engineering_record": "reports/README_A3_CONTROLLER_ADAPTER_20261010.md"
     },
     "pending_sync_dates": [],
-    "latest_sync_receipt_path": "data/manifests/research_watch_sync_20261012.json"
+    "latest_sync_receipt_path": "data/manifests/research_watch_sync_20261012.json",
+    "last_notification_reason": "New historical credential-record issue requires user password rotation",
+    "user_action_issues": [
+      {
+        "id": "RECORD_CREDENTIAL_20261012",
+        "first_seen_on": "2026-10-12",
+        "report_path": "reports/README_RECORD_REDACTION_20261012.md",
+        "status": "CURRENT_FILE_REDACTED_USER_ROTATION_PENDING",
+        "git_history_still_contains_original": true,
+        "credential_validity_tested": false,
+        "user_action": "Rotate the corresponding host sudo credential previously written to Git; do not send its value in chat",
+        "notification_date": "2026-10-12",
+        "repeat_notification_only_if_material_change": true
+      }
+    ]
   },
   "dedup_rule": "同 ID/版本不重复转述；新版本或代码发布只有实质变化才再次报告，记录变化说明。",
   "latest_check_manifest": "data/manifests/research_watch_check_20261012.json"

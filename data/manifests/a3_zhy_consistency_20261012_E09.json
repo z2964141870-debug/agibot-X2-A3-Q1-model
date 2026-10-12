@@ -1,0 +1,948 @@
+{
+  "probability_contract_passed": true,
+  "flags": {
+    "actor_is_sampling_actor": true,
+    "actor_parameters_unchanged": true,
+    "actor_buffers_unchanged": true,
+    "raw_actor_matches_wrapper": true,
+    "loss_entry_matches_wrapper": true,
+    "actual_input_matches_stored": true,
+    "immediate_same_call_matches": true,
+    "sampling_and_training_tf32_off": true
+  },
+  "input_identity": {
+    "actor_vs_stored": {
+      "actor_obs": {
+        "exact": true,
+        "max_abs": 0.0,
+        "shape": [
+          4,
+          24,
+          930
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      "critic_obs": {
+        "exact": true,
+        "max_abs": 0.0,
+        "shape": [
+          4,
+          24,
+          1645
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      "tokenizer": {
+        "exact": true,
+        "max_abs": 0.0,
+        "shape": [
+          4,
+          24,
+          2402
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      }
+    },
+    "batch_vs_stored": {
+      "actor_obs": {
+        "exact": true,
+        "max_abs": 0.0,
+        "shape": [
+          4,
+          24,
+          930
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      "critic_obs": {
+        "exact": true,
+        "max_abs": 0.0,
+        "shape": [
+          4,
+          24,
+          1645
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      "tokenizer": {
+        "exact": true,
+        "max_abs": 0.0,
+        "shape": [
+          4,
+          24,
+          2402
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      }
+    },
+    "batch_after_vs_before": {
+      "actor_obs": {
+        "exact": true,
+        "max_abs": 0.0,
+        "shape": [
+          4,
+          24,
+          930
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      "critic_obs": {
+        "exact": true,
+        "max_abs": 0.0,
+        "shape": [
+          4,
+          24,
+          1645
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      "tokenizer": {
+        "exact": true,
+        "max_abs": 0.0,
+        "shape": [
+          4,
+          24,
+          2402
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      }
+    },
+    "live_after_vs_entry": {
+      "actor_obs": {
+        "exact": true,
+        "max_abs": 0.0,
+        "shape": [
+          4,
+          24,
+          930
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      "critic_obs": {
+        "exact": true,
+        "max_abs": 0.0,
+        "shape": [
+          4,
+          24,
+          1645
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      },
+      "tokenizer": {
+        "exact": true,
+        "max_abs": 0.0,
+        "shape": [
+          4,
+          24,
+          2402
+        ],
+        "dtype": "torch.float32",
+        "device": "cpu"
+      }
+    }
+  },
+  "rows": {
+    "actual_first_minibatch": {
+      "action_rmse": 4.328143745624402e-07,
+      "action_max_abs": 2.86102294921875e-06,
+      "changed_frames_over_1e_4": 0,
+      "ratio_mean": 0.9999999403953552,
+      "ratio_min": 0.9999866485595703,
+      "ratio_max": 1.000016212463379,
+      "max_abs_ratio_minus_one": 1.621246337890625e-05
+    },
+    "raw_actor_output": {
+      "action_rmse": 4.328143745624402e-07,
+      "action_max_abs": 2.86102294921875e-06,
+      "changed_frames_over_1e_4": 0,
+      "ratio_mean": 0.9999999403953552,
+      "ratio_min": 0.9999866485595703,
+      "ratio_max": 1.000016212463379,
+      "max_abs_ratio_minus_one": 1.621246337890625e-05
+    },
+    "same_live_inputs_and_options": {
+      "action_rmse": 4.328143745624402e-07,
+      "action_max_abs": 2.86102294921875e-06,
+      "changed_frames_over_1e_4": 0,
+      "ratio_mean": 0.9999999403953552,
+      "ratio_min": 0.9999866485595703,
+      "ratio_max": 1.000016212463379,
+      "max_abs_ratio_minus_one": 1.621246337890625e-05
+    },
+    "stored_inputs_same_options": {
+      "action_rmse": 4.328143745624402e-07,
+      "action_max_abs": 2.86102294921875e-06,
+      "changed_frames_over_1e_4": 0,
+      "ratio_mean": 0.9999999403953552,
+      "ratio_min": 0.9999866485595703,
+      "ratio_max": 1.000016212463379,
+      "max_abs_ratio_minus_one": 1.621246337890625e-05
+    },
+    "stored_inputs_without_episode_mask": {
+      "action_rmse": 4.328143745624402e-07,
+      "action_max_abs": 2.86102294921875e-06,
+      "changed_frames_over_1e_4": 0,
+      "ratio_mean": 0.9999999403953552,
+      "ratio_min": 0.9999866485595703,
+      "ratio_max": 1.000016212463379,
+      "max_abs_ratio_minus_one": 1.621246337890625e-05
+    }
+  },
+  "differences_from_actual": {
+    "raw_actor_output": {
+      "rmse": 0.0,
+      "max_abs": 0.0
+    },
+    "same_live_inputs_and_options": {
+      "rmse": 0.0,
+      "max_abs": 0.0
+    },
+    "stored_inputs_same_options": {
+      "rmse": 0.0,
+      "max_abs": 0.0
+    },
+    "stored_inputs_without_episode_mask": {
+      "rmse": 0.0,
+      "max_abs": 0.0
+    }
+  },
+  "actual_forward_flags": {
+    "grad": true,
+    "autocast": false,
+    "autocast_dtype": "torch.float16",
+    "matmul_tf32": false,
+    "cudnn_tf32": false
+  },
+  "actual_input_metadata": {
+    "actor_obs": {
+      "shape": [
+        4,
+        24,
+        930
+      ],
+      "stride": [
+        22320,
+        930,
+        1
+      ],
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "contiguous": true,
+      "storage_offset": 0
+    },
+    "critic_obs": {
+      "shape": [
+        4,
+        24,
+        1645
+      ],
+      "stride": [
+        39480,
+        1645,
+        1
+      ],
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "contiguous": true,
+      "storage_offset": 0
+    },
+    "tokenizer": {
+      "shape": [
+        4,
+        24,
+        2402
+      ],
+      "stride": [
+        57648,
+        2402,
+        1
+      ],
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "contiguous": true,
+      "storage_offset": 0
+    }
+  },
+  "actual_option_keys": [
+    "episode_attnmask",
+    "is_training"
+  ],
+  "accelerator_mixed_precision": "no",
+  "actor_states": [
+    {
+      "parameters": "3545909b9fa2bbc6ee020c86857cfc1d51add59974abc24917f748bf789d8d62",
+      "buffers": "b8dcf35a9ce94d03c09ccbdd1fd3aa5ab70f9bedebd936b79abafa70c08b73c8",
+      "module_modes": {
+        "": false,
+        "actor_module": false,
+        "actor_module.aux_loss_func": false,
+        "actor_module.aux_loss_func.g1_recon": false,
+        "actor_module.aux_loss_func.a3_fast_g1_latent": false,
+        "actor_module.aux_loss_func.reencoded_a3_fast_g1_latent": false,
+        "actor_module.quantizer": false,
+        "actor_module.quantizer.project_in": false,
+        "actor_module.quantizer.project_out": false,
+        "actor_module.encoders": false,
+        "actor_module.encoders.g1": false,
+        "actor_module.encoders.g1.module": false,
+        "actor_module.encoders.g1.module.0": false,
+        "actor_module.encoders.g1.module.1": false,
+        "actor_module.encoders.g1.module.2": false,
+        "actor_module.encoders.g1.module.4": false,
+        "actor_module.encoders.g1.module.6": false,
+        "actor_module.encoders.g1.module.8": false,
+        "actor_module.encoders.a3_fast": false,
+        "actor_module.encoders.a3_fast.module": false,
+        "actor_module.encoders.a3_fast.module.0": false,
+        "actor_module.encoders.a3_fast.module.1": false,
+        "actor_module.encoders.a3_fast.module.2": false,
+        "actor_module.encoders.a3_fast.module.4": false,
+        "actor_module.encoders.a3_fast.module.6": false,
+        "actor_module.encoders.a3_fast.module.8": false,
+        "actor_module.encoder_input_projectors": false,
+        "actor_module.decoders": false,
+        "actor_module.decoders.g1_dyn": false,
+        "actor_module.decoders.g1_dyn.module": false,
+        "actor_module.decoders.g1_dyn.module.0": false,
+        "actor_module.decoders.g1_dyn.module.1": false,
+        "actor_module.decoders.g1_dyn.module.2": false,
+        "actor_module.decoders.g1_dyn.module.4": false,
+        "actor_module.decoders.g1_dyn.module.6": false,
+        "actor_module.decoders.g1_dyn.module.8": false,
+        "actor_module.decoders.g1_dyn.module.10": false,
+        "actor_module.decoders.g1_dyn.module.12": false,
+        "actor_module.decoders.g1_kin": false,
+        "actor_module.decoders.g1_kin.module": false,
+        "actor_module.decoders.g1_kin.module.0": false,
+        "actor_module.decoders.g1_kin.module.1": false,
+        "actor_module.decoders.g1_kin.module.2": false,
+        "actor_module.decoders.g1_kin.module.4": false,
+        "actor_module.decoders.g1_kin.module.6": false,
+        "actor_module.decoders.g1_kin.module.8": false
+      },
+      "module_type": "gear_sonic.trl.modules.universal_token_modules.UniversalTokenModule",
+      "attributes": {
+        "encoders_to_iterate": [
+          "g1",
+          "a3_fast"
+        ],
+        "_active_decoders": [
+          "g1_dyn",
+          "g1_kin"
+        ],
+        "rollout_decoders": null,
+        "rollout_encoder_exclusions": {},
+        "cache_encoded_cpu": true
+      },
+      "actor_training": false,
+      "actor_running_mean_std": false
+    },
+    {
+      "parameters": "3545909b9fa2bbc6ee020c86857cfc1d51add59974abc24917f748bf789d8d62",
+      "buffers": "b8dcf35a9ce94d03c09ccbdd1fd3aa5ab70f9bedebd936b79abafa70c08b73c8",
+      "module_modes": {
+        "": true,
+        "actor_module": true,
+        "actor_module.aux_loss_func": true,
+        "actor_module.aux_loss_func.g1_recon": true,
+        "actor_module.aux_loss_func.a3_fast_g1_latent": true,
+        "actor_module.aux_loss_func.reencoded_a3_fast_g1_latent": true,
+        "actor_module.quantizer": true,
+        "actor_module.quantizer.project_in": true,
+        "actor_module.quantizer.project_out": true,
+        "actor_module.encoders": true,
+        "actor_module.encoders.g1": true,
+        "actor_module.encoders.g1.module": true,
+        "actor_module.encoders.g1.module.0": true,
+        "actor_module.encoders.g1.module.1": true,
+        "actor_module.encoders.g1.module.2": true,
+        "actor_module.encoders.g1.module.4": true,
+        "actor_module.encoders.g1.module.6": true,
+        "actor_module.encoders.g1.module.8": true,
+        "actor_module.encoders.a3_fast": true,
+        "actor_module.encoders.a3_fast.module": true,
+        "actor_module.encoders.a3_fast.module.0": true,
+        "actor_module.encoders.a3_fast.module.1": true,
+        "actor_module.encoders.a3_fast.module.2": true,
+        "actor_module.encoders.a3_fast.module.4": true,
+        "actor_module.encoders.a3_fast.module.6": true,
+        "actor_module.encoders.a3_fast.module.8": true,
+        "actor_module.encoder_input_projectors": true,
+        "actor_module.decoders": true,
+        "actor_module.decoders.g1_dyn": true,
+        "actor_module.decoders.g1_dyn.module": true,
+        "actor_module.decoders.g1_dyn.module.0": true,
+        "actor_module.decoders.g1_dyn.module.1": true,
+        "actor_module.decoders.g1_dyn.module.2": true,
+        "actor_module.decoders.g1_dyn.module.4": true,
+        "actor_module.decoders.g1_dyn.module.6": true,
+        "actor_module.decoders.g1_dyn.module.8": true,
+        "actor_module.decoders.g1_dyn.module.10": true,
+        "actor_module.decoders.g1_dyn.module.12": true,
+        "actor_module.decoders.g1_kin": true,
+        "actor_module.decoders.g1_kin.module": true,
+        "actor_module.decoders.g1_kin.module.0": true,
+        "actor_module.decoders.g1_kin.module.1": true,
+        "actor_module.decoders.g1_kin.module.2": true,
+        "actor_module.decoders.g1_kin.module.4": true,
+        "actor_module.decoders.g1_kin.module.6": true,
+        "actor_module.decoders.g1_kin.module.8": true
+      },
+      "module_type": "gear_sonic.trl.modules.universal_token_modules.UniversalTokenModule",
+      "attributes": {
+        "encoders_to_iterate": [
+          "g1",
+          "a3_fast"
+        ],
+        "_active_decoders": [
+          "g1_dyn",
+          "g1_kin"
+        ],
+        "rollout_decoders": null,
+        "rollout_encoder_exclusions": {},
+        "cache_encoded_cpu": true
+      },
+      "actor_training": true,
+      "actor_running_mean_std": false
+    },
+    {
+      "parameters": "3545909b9fa2bbc6ee020c86857cfc1d51add59974abc24917f748bf789d8d62",
+      "buffers": "b8dcf35a9ce94d03c09ccbdd1fd3aa5ab70f9bedebd936b79abafa70c08b73c8",
+      "module_modes": {
+        "": true,
+        "actor_module": true,
+        "actor_module.aux_loss_func": true,
+        "actor_module.aux_loss_func.g1_recon": true,
+        "actor_module.aux_loss_func.a3_fast_g1_latent": true,
+        "actor_module.aux_loss_func.reencoded_a3_fast_g1_latent": true,
+        "actor_module.quantizer": true,
+        "actor_module.quantizer.project_in": true,
+        "actor_module.quantizer.project_out": true,
+        "actor_module.encoders": true,
+        "actor_module.encoders.g1": true,
+        "actor_module.encoders.g1.module": true,
+        "actor_module.encoders.g1.module.0": true,
+        "actor_module.encoders.g1.module.1": true,
+        "actor_module.encoders.g1.module.2": true,
+        "actor_module.encoders.g1.module.4": true,
+        "actor_module.encoders.g1.module.6": true,
+        "actor_module.encoders.g1.module.8": true,
+        "actor_module.encoders.a3_fast": true,
+        "actor_module.encoders.a3_fast.module": true,
+        "actor_module.encoders.a3_fast.module.0": true,
+        "actor_module.encoders.a3_fast.module.1": true,
+        "actor_module.encoders.a3_fast.module.2": true,
+        "actor_module.encoders.a3_fast.module.4": true,
+        "actor_module.encoders.a3_fast.module.6": true,
+        "actor_module.encoders.a3_fast.module.8": true,
+        "actor_module.encoder_input_projectors": true,
+        "actor_module.decoders": true,
+        "actor_module.decoders.g1_dyn": true,
+        "actor_module.decoders.g1_dyn.module": true,
+        "actor_module.decoders.g1_dyn.module.0": true,
+        "actor_module.decoders.g1_dyn.module.1": true,
+        "actor_module.decoders.g1_dyn.module.2": true,
+        "actor_module.decoders.g1_dyn.module.4": true,
+        "actor_module.decoders.g1_dyn.module.6": true,
+        "actor_module.decoders.g1_dyn.module.8": true,
+        "actor_module.decoders.g1_dyn.module.10": true,
+        "actor_module.decoders.g1_dyn.module.12": true,
+        "actor_module.decoders.g1_kin": true,
+        "actor_module.decoders.g1_kin.module": true,
+        "actor_module.decoders.g1_kin.module.0": true,
+        "actor_module.decoders.g1_kin.module.1": true,
+        "actor_module.decoders.g1_kin.module.2": true,
+        "actor_module.decoders.g1_kin.module.4": true,
+        "actor_module.decoders.g1_kin.module.6": true,
+        "actor_module.decoders.g1_kin.module.8": true
+      },
+      "module_type": "gear_sonic.trl.modules.universal_token_modules.UniversalTokenModule",
+      "attributes": {
+        "encoders_to_iterate": [
+          "g1",
+          "a3_fast"
+        ],
+        "_active_decoders": [
+          "g1_dyn",
+          "g1_kin"
+        ],
+        "rollout_decoders": null,
+        "rollout_encoder_exclusions": {},
+        "cache_encoded_cpu": true
+      },
+      "actor_training": true,
+      "actor_running_mean_std": false
+    },
+    {
+      "parameters": "3545909b9fa2bbc6ee020c86857cfc1d51add59974abc24917f748bf789d8d62",
+      "buffers": "b8dcf35a9ce94d03c09ccbdd1fd3aa5ab70f9bedebd936b79abafa70c08b73c8",
+      "module_modes": {
+        "": true,
+        "actor_module": true,
+        "actor_module.aux_loss_func": true,
+        "actor_module.aux_loss_func.g1_recon": true,
+        "actor_module.aux_loss_func.a3_fast_g1_latent": true,
+        "actor_module.aux_loss_func.reencoded_a3_fast_g1_latent": true,
+        "actor_module.quantizer": true,
+        "actor_module.quantizer.project_in": true,
+        "actor_module.quantizer.project_out": true,
+        "actor_module.encoders": true,
+        "actor_module.encoders.g1": true,
+        "actor_module.encoders.g1.module": true,
+        "actor_module.encoders.g1.module.0": true,
+        "actor_module.encoders.g1.module.1": true,
+        "actor_module.encoders.g1.module.2": true,
+        "actor_module.encoders.g1.module.4": true,
+        "actor_module.encoders.g1.module.6": true,
+        "actor_module.encoders.g1.module.8": true,
+        "actor_module.encoders.a3_fast": true,
+        "actor_module.encoders.a3_fast.module": true,
+        "actor_module.encoders.a3_fast.module.0": true,
+        "actor_module.encoders.a3_fast.module.1": true,
+        "actor_module.encoders.a3_fast.module.2": true,
+        "actor_module.encoders.a3_fast.module.4": true,
+        "actor_module.encoders.a3_fast.module.6": true,
+        "actor_module.encoders.a3_fast.module.8": true,
+        "actor_module.encoder_input_projectors": true,
+        "actor_module.decoders": true,
+        "actor_module.decoders.g1_dyn": true,
+        "actor_module.decoders.g1_dyn.module": true,
+        "actor_module.decoders.g1_dyn.module.0": true,
+        "actor_module.decoders.g1_dyn.module.1": true,
+        "actor_module.decoders.g1_dyn.module.2": true,
+        "actor_module.decoders.g1_dyn.module.4": true,
+        "actor_module.decoders.g1_dyn.module.6": true,
+        "actor_module.decoders.g1_dyn.module.8": true,
+        "actor_module.decoders.g1_dyn.module.10": true,
+        "actor_module.decoders.g1_dyn.module.12": true,
+        "actor_module.decoders.g1_kin": true,
+        "actor_module.decoders.g1_kin.module": true,
+        "actor_module.decoders.g1_kin.module.0": true,
+        "actor_module.decoders.g1_kin.module.1": true,
+        "actor_module.decoders.g1_kin.module.2": true,
+        "actor_module.decoders.g1_kin.module.4": true,
+        "actor_module.decoders.g1_kin.module.6": true,
+        "actor_module.decoders.g1_kin.module.8": true
+      },
+      "module_type": "gear_sonic.trl.modules.universal_token_modules.UniversalTokenModule",
+      "attributes": {
+        "encoders_to_iterate": [
+          "g1",
+          "a3_fast"
+        ],
+        "_active_decoders": [
+          "g1_dyn",
+          "g1_kin"
+        ],
+        "rollout_decoders": null,
+        "rollout_encoder_exclusions": {},
+        "cache_encoded_cpu": true
+      },
+      "actor_training": true,
+      "actor_running_mean_std": false
+    },
+    {
+      "parameters": "3545909b9fa2bbc6ee020c86857cfc1d51add59974abc24917f748bf789d8d62",
+      "buffers": "b8dcf35a9ce94d03c09ccbdd1fd3aa5ab70f9bedebd936b79abafa70c08b73c8",
+      "module_modes": {
+        "": true,
+        "actor_module": true,
+        "actor_module.aux_loss_func": true,
+        "actor_module.aux_loss_func.g1_recon": true,
+        "actor_module.aux_loss_func.a3_fast_g1_latent": true,
+        "actor_module.aux_loss_func.reencoded_a3_fast_g1_latent": true,
+        "actor_module.quantizer": true,
+        "actor_module.quantizer.project_in": true,
+        "actor_module.quantizer.project_out": true,
+        "actor_module.encoders": true,
+        "actor_module.encoders.g1": true,
+        "actor_module.encoders.g1.module": true,
+        "actor_module.encoders.g1.module.0": true,
+        "actor_module.encoders.g1.module.1": true,
+        "actor_module.encoders.g1.module.2": true,
+        "actor_module.encoders.g1.module.4": true,
+        "actor_module.encoders.g1.module.6": true,
+        "actor_module.encoders.g1.module.8": true,
+        "actor_module.encoders.a3_fast": true,
+        "actor_module.encoders.a3_fast.module": true,
+        "actor_module.encoders.a3_fast.module.0": true,
+        "actor_module.encoders.a3_fast.module.1": true,
+        "actor_module.encoders.a3_fast.module.2": true,
+        "actor_module.encoders.a3_fast.module.4": true,
+        "actor_module.encoders.a3_fast.module.6": true,
+        "actor_module.encoders.a3_fast.module.8": true,
+        "actor_module.encoder_input_projectors": true,
+        "actor_module.decoders": true,
+        "actor_module.decoders.g1_dyn": true,
+        "actor_module.decoders.g1_dyn.module": true,
+        "actor_module.decoders.g1_dyn.module.0": true,
+        "actor_module.decoders.g1_dyn.module.1": true,
+        "actor_module.decoders.g1_dyn.module.2": true,
+        "actor_module.decoders.g1_dyn.module.4": true,
+        "actor_module.decoders.g1_dyn.module.6": true,
+        "actor_module.decoders.g1_dyn.module.8": true,
+        "actor_module.decoders.g1_dyn.module.10": true,
+        "actor_module.decoders.g1_dyn.module.12": true,
+        "actor_module.decoders.g1_kin": true,
+        "actor_module.decoders.g1_kin.module": true,
+        "actor_module.decoders.g1_kin.module.0": true,
+        "actor_module.decoders.g1_kin.module.1": true,
+        "actor_module.decoders.g1_kin.module.2": true,
+        "actor_module.decoders.g1_kin.module.4": true,
+        "actor_module.decoders.g1_kin.module.6": true,
+        "actor_module.decoders.g1_kin.module.8": true
+      },
+      "module_type": "gear_sonic.trl.modules.universal_token_modules.UniversalTokenModule",
+      "attributes": {
+        "encoders_to_iterate": [
+          "g1",
+          "a3_fast"
+        ],
+        "_active_decoders": [
+          "g1_dyn",
+          "g1_kin"
+        ],
+        "rollout_decoders": null,
+        "rollout_encoder_exclusions": {},
+        "cache_encoded_cpu": true
+      },
+      "actor_training": true,
+      "actor_running_mean_std": false
+    },
+    {
+      "parameters": "3545909b9fa2bbc6ee020c86857cfc1d51add59974abc24917f748bf789d8d62",
+      "buffers": "b8dcf35a9ce94d03c09ccbdd1fd3aa5ab70f9bedebd936b79abafa70c08b73c8",
+      "module_modes": {
+        "": true,
+        "actor_module": true,
+        "actor_module.aux_loss_func": true,
+        "actor_module.aux_loss_func.g1_recon": true,
+        "actor_module.aux_loss_func.a3_fast_g1_latent": true,
+        "actor_module.aux_loss_func.reencoded_a3_fast_g1_latent": true,
+        "actor_module.quantizer": true,
+        "actor_module.quantizer.project_in": true,
+        "actor_module.quantizer.project_out": true,
+        "actor_module.encoders": true,
+        "actor_module.encoders.g1": true,
+        "actor_module.encoders.g1.module": true,
+        "actor_module.encoders.g1.module.0": true,
+        "actor_module.encoders.g1.module.1": true,
+        "actor_module.encoders.g1.module.2": true,
+        "actor_module.encoders.g1.module.4": true,
+        "actor_module.encoders.g1.module.6": true,
+        "actor_module.encoders.g1.module.8": true,
+        "actor_module.encoders.a3_fast": true,
+        "actor_module.encoders.a3_fast.module": true,
+        "actor_module.encoders.a3_fast.module.0": true,
+        "actor_module.encoders.a3_fast.module.1": true,
+        "actor_module.encoders.a3_fast.module.2": true,
+        "actor_module.encoders.a3_fast.module.4": true,
+        "actor_module.encoders.a3_fast.module.6": true,
+        "actor_module.encoders.a3_fast.module.8": true,
+        "actor_module.encoder_input_projectors": true,
+        "actor_module.decoders": true,
+        "actor_module.decoders.g1_dyn": true,
+        "actor_module.decoders.g1_dyn.module": true,
+        "actor_module.decoders.g1_dyn.module.0": true,
+        "actor_module.decoders.g1_dyn.module.1": true,
+        "actor_module.decoders.g1_dyn.module.2": true,
+        "actor_module.decoders.g1_dyn.module.4": true,
+        "actor_module.decoders.g1_dyn.module.6": true,
+        "actor_module.decoders.g1_dyn.module.8": true,
+        "actor_module.decoders.g1_dyn.module.10": true,
+        "actor_module.decoders.g1_dyn.module.12": true,
+        "actor_module.decoders.g1_kin": true,
+        "actor_module.decoders.g1_kin.module": true,
+        "actor_module.decoders.g1_kin.module.0": true,
+        "actor_module.decoders.g1_kin.module.1": true,
+        "actor_module.decoders.g1_kin.module.2": true,
+        "actor_module.decoders.g1_kin.module.4": true,
+        "actor_module.decoders.g1_kin.module.6": true,
+        "actor_module.decoders.g1_kin.module.8": true
+      },
+      "module_type": "gear_sonic.trl.modules.universal_token_modules.UniversalTokenModule",
+      "attributes": {
+        "encoders_to_iterate": [
+          "g1",
+          "a3_fast"
+        ],
+        "_active_decoders": [
+          "g1_dyn",
+          "g1_kin"
+        ],
+        "rollout_decoders": null,
+        "rollout_encoder_exclusions": {},
+        "cache_encoded_cpu": true
+      },
+      "actor_training": true,
+      "actor_running_mean_std": false
+    }
+  ],
+  "parameter_changes_from_load": [
+    "policy.std"
+  ],
+  "scope": "ACTUAL_FIRST_ACTOR_ENTRY_ZERO_UPDATE_NOT_POLICY_IMPROVEMENT",
+  "optimizer_steps": 0,
+  "global_step": 0,
+  "capture_sha256": "a33976a2126badb3bd105713ea8b4fbc23b5ec0616544bc82293b399b375e3e8",
+  "capture_bytes": 15544825,
+  "backup_status": "LOCAL_ONLY",
+  "status": "VERIFIED",
+  "experiment": "A3_ZHY_CONSISTENCY_20261012_E09",
+  "independent_cpu_recomputation": true,
+  "sampling_identity": {
+    "sampling_calls": 24,
+    "all_inputs_exact": true,
+    "inputs": {
+      "actor_obs": {
+        "max_abs_difference": 0.0,
+        "exact": true,
+        "shape": [
+          16,
+          24,
+          930
+        ]
+      },
+      "critic_obs": {
+        "max_abs_difference": 0.0,
+        "exact": true,
+        "shape": [
+          16,
+          24,
+          1645
+        ]
+      },
+      "tokenizer": {
+        "max_abs_difference": 0.0,
+        "exact": true,
+        "shape": [
+          16,
+          24,
+          2402
+        ]
+      }
+    },
+    "sampled_means_match_storage": true,
+    "mean_max_abs_difference": 0.0,
+    "scope": "FIRST_FRESH_ROLLOUT_SAMPLING_INPUTS_COMPARED_WITH_TRAINING_STORAGE",
+    "capture_sha256": "267426e7ab73f0a41c3f90082dfb7943049839274e618f886b412af19da4d1ee",
+    "capture_bytes": 7717517
+  },
+  "initial_batches": {
+    "rows": [
+      {
+        "batch": 0,
+        "indices": [
+          5,
+          2,
+          0,
+          7
+        ],
+        "origin": "ACTUAL_FIRST_BATCH",
+        "action_rmse": 4.328143745624402e-07,
+        "action_max_abs": 2.86102294921875e-06,
+        "changed_frames_over_1e_4": 0,
+        "ratio_mean": 0.9999999403953552,
+        "ratio_min": 0.9999866485595703,
+        "ratio_max": 1.000016212463379,
+        "max_abs_ratio_minus_one": 1.621246337890625e-05
+      },
+      {
+        "batch": 1,
+        "indices": [
+          1,
+          3,
+          4,
+          6
+        ],
+        "origin": "EXTRA_DISJOINT_BATCH",
+        "action_rmse": 4.545934473298985e-07,
+        "action_max_abs": 2.86102294921875e-06,
+        "changed_frames_over_1e_4": 0,
+        "ratio_mean": 1.0000005960464478,
+        "ratio_min": 0.9999895095825195,
+        "ratio_max": 1.0000171661376953,
+        "max_abs_ratio_minus_one": 1.71661376953125e-05
+      },
+      {
+        "batch": 2,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "origin": "EXTRA_DISJOINT_BATCH",
+        "action_rmse": 3.516342417242413e-07,
+        "action_max_abs": 1.9073486328125e-06,
+        "changed_frames_over_1e_4": 0,
+        "ratio_mean": 0.9999991059303284,
+        "ratio_min": 0.9999885559082031,
+        "ratio_max": 1.0000104904174805,
+        "max_abs_ratio_minus_one": 1.1444091796875e-05
+      },
+      {
+        "batch": 3,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "origin": "EXTRA_DISJOINT_BATCH",
+        "action_rmse": 3.7356437587732216e-07,
+        "action_max_abs": 2.384185791015625e-06,
+        "changed_frames_over_1e_4": 0,
+        "ratio_mean": 1.0000003576278687,
+        "ratio_min": 0.9999866485595703,
+        "ratio_max": 1.0000123977661133,
+        "max_abs_ratio_minus_one": 1.33514404296875e-05
+      }
+    ],
+    "capture_sha256": "34d8a4a07b6f5272c6428038953904f571487ae9892d810e852c8c73e722b2cd",
+    "actor_precision_receipts": [
+      {
+        "training": false,
+        "mixed_precision": "no",
+        "native_amp": false,
+        "bf16": false,
+        "fp16": false,
+        "cuda_autocast": false,
+        "cpu_autocast": false,
+        "matmul_tf32": false,
+        "cudnn_tf32": false
+      },
+      {
+        "training": true,
+        "mixed_precision": "no",
+        "native_amp": false,
+        "bf16": false,
+        "fp16": false,
+        "cuda_autocast": false,
+        "cpu_autocast": false,
+        "matmul_tf32": false,
+        "cudnn_tf32": false
+      }
+    ],
+    "actor_precision_calls": {
+      "rollout": 24,
+      "training": 7
+    },
+    "coverage": "ONE_REAL_PLUS_THREE_DISJOINT_BATCHES_NOT_ORIGINAL_RANDOM_ORDER"
+  },
+  "precision_contract": {
+    "initial": {
+      "mixed_precision": "no",
+      "native_amp": false,
+      "bf16": false,
+      "fp16": false,
+      "cuda_autocast": false,
+      "cpu_autocast": false,
+      "matmul_tf32": false,
+      "cudnn_tf32": false
+    },
+    "overrides": [
+      "++algo.trl.bf16=false",
+      "++algo.trl.fp16=false",
+      "++algo.trl.tf32=false"
+    ],
+    "checked_at_actual_actor_module": true,
+    "actor_calls": {
+      "rollout": 24,
+      "training": 7
+    },
+    "first_call_per_mode": [
+      {
+        "training": false,
+        "mixed_precision": "no",
+        "native_amp": false,
+        "bf16": false,
+        "fp16": false,
+        "cuda_autocast": false,
+        "cpu_autocast": false,
+        "matmul_tf32": false,
+        "cudnn_tf32": false
+      },
+      {
+        "training": true,
+        "mixed_precision": "no",
+        "native_amp": false,
+        "bf16": false,
+        "fp16": false,
+        "cuda_autocast": false,
+        "cpu_autocast": false,
+        "matmul_tf32": false,
+        "cudnn_tf32": false
+      }
+    ]
+  },
+  "state": {
+    "status": "COMPLETE",
+    "started_at": 1791794441.440536,
+    "argv": [
+      "bash",
+      "/opt/data/private/hechengzhu/ZHY/script/vendor/sonic_for_a3/train_a3_035_fromscratch.sh",
+      "seed=0",
+      "trainer._target_=script.a3.zhy_consistency_trainer.ZHYConsistencyProbeTrainer",
+      "algo.config.num_learning_epochs=1",
+      "algo.config.actor_learning_rate=2e-6",
+      "algo.config.adaptive_lr_min=1e-6",
+      "algo.config.adaptive_lr_max=2e-5",
+      "callbacks.model_save._target_=script.a3.resumable_sonic.DurableModelSaveCallback",
+      "callbacks.model_save.save_frequency=1",
+      "+callbacks.model_save.target_global_step=2",
+      "++algo.trl.bf16=false",
+      "++algo.trl.fp16=false",
+      "++algo.trl.tf32=false"
+    ],
+    "returncode": 0,
+    "reason": null,
+    "ended_at": 1791794498.389506
+  },
+  "code_sha256": {
+    "script/a3/zhy_entry_probe.py": "62d9e4eef40ea0f05f9b99e144250d22e9b6728a53319e0f30cbd332c1b34f87",
+    "script/a3/zhy_entry_trainer.py": "a7a907eae6c41914a761a1e386df27a9312d45a9e569f2c7c1586e4d4c3984ca",
+    "script/a3/zhy_precision_trainer.py": "2c2d96b472c8c3df6f6b8dab9ac67c0e9487e8c42186db81ffad046c364e7839",
+    "script/a3/zhy_likelihood_trainer.py": "b055a56ab27d3a32ae5ae27fcf7ef6128a4cffd42ae8aab343b515ec686d9a8b",
+    "script/a3/runtime_likelihood_probe.py": "fe13df98914505e1cf1c74810a094f732e92068b1cdfbca0409fa452d3b5ce24",
+    "script/a3/gradient_probe.py": "26a6d8956a72d2038664ea1cbf52243428aecc13d7c361445171f0768a703c9c",
+    "script/a3/likelihood_probe.py": "b18769c638163e934be9322813e7a0aa380cbd5158a68c580fcb729f7307b896",
+    "script/a3/verified_finetune.py": "11044839b5c3d97fceb634149bae4960176f73a326bcdeafa576bc7dda33e22a",
+    "script/a3/finetune_trainer.py": "197ebea4444861340d0e45df8f81c4141c388194790da5a1c2b5640a22210aeb",
+    "script/a3/resumable_sonic.py": "e682dbfa42243becd15cbc48bd5c19bc5d3a46e6ad3bd767705f50ae2a0f51a9",
+    "script/a3/zhy_trial.py": "3d8ee83efc8578ece03023d3da26ccb407ec7c7531cc369169abfb297bad4446",
+    "script/a3/zhy_wrapper_probe.py": "bc2bcb88e79337afc61e9377195bcda93c2ae4f99af463bfb850c7b57e44a1b1",
+    "script/a3/zhy_consistency.py": "4ee0cd06bcd8751da9742913946efedca193f6e08a3f0a21bd20b31b0556a8d3",
+    "script/a3/consistent_precision.py": "61dd22a41f87427e2ad82141956be2851aff57077d6f5145672aabe89c2c100a",
+    "script/a3/zhy_consistency_trainer.py": "d8425e6fa1a95e41f0847f9850edb9059bbd549f969e24c5030f3793efb0351c"
+  },
+  "batch_capture_sha256": "34d8a4a07b6f5272c6428038953904f571487ae9892d810e852c8c73e722b2cd",
+  "health": {
+    "samples": 13,
+    "first_utc": "2026-10-12T08:39:50.997437+00:00",
+    "last_utc": "2026-10-12T08:41:38.230364+00:00",
+    "max_sample_gap_seconds": 50.45887589454651,
+    "boot_ids": [
+      "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    ],
+    "cpu_max_c": 42.0,
+    "gpu_max_c": 35.0,
+    "available_min_bytes": 6408839168,
+    "oom_counts": [
+      0
+    ],
+    "critical_kernel_errors": [],
+    "telemetry_errors": []
+  }
+}

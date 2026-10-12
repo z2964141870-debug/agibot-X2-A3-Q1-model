@@ -2,7 +2,7 @@
   "schema_version": 1,
   "automation_id": "yuanqi",
   "timezone": "Asia/Shanghai",
-  "last_successful_source_check_at": "2026-10-10T09:23:47.231611+08:00",
+  "last_successful_source_check_at": "2026-10-12T09:09:40+08:00",
   "last_report_date": "2026-10-10",
   "last_report_path": "reports/research/2026-10-10/README.md",
   "initial_check": {
@@ -1214,19 +1214,23 @@
   "operational_status": {
     "scheduled_task_config": "ACTIVE",
     "first_scheduled_run": "TRIGGER_AND_RESEARCH_VERIFIED",
-    "last_error": null,
+    "last_error": {
+      "scope": "partial_source_gap",
+      "huggingface": "One bounded metadata connection timeout; current assets not verified",
+      "recorded_at": "2026-10-12T09:09:40+08:00"
+    },
     "first_scheduled_trigger_at": "2026-09-30T01:01:12.375Z",
-    "last_scheduled_source_check_at": "2026-10-10T09:23:47.231611+08:00",
-    "last_coverage_note": "October 9 cs.RO/LG/CV RSS and October 8 cs.RO titles; seven original abstracts/history, four selected fulltext reviews, two author pages. October 8 LG/CV not exhaustively covered. Main A3 pretrained/mocap route used; no training.",
-    "last_scheduled_trigger_at": "2026-10-10T01:04:23.950Z",
+    "last_scheduled_source_check_at": "2026-10-12T09:09:40+08:00",
+    "last_coverage_note": "Three empty RSS feeds supplemented with unchanged October 9 RO/LG/CV lists (154/472/302); IDs and comparable versions unchanged. Five abstract/version pages, five repository heads, two release APIs and two byte-identical author pages rechecked. HF current metadata unavailable; 34 unversioned list entries and historical October 8 LG/CV remain gaps. Canonical clean main read at a9f9287; pending October 11 research merged onto latest engineering/learning records. No training or new brief.",
+    "last_scheduled_trigger_at": "2026-10-12T00:59:42.362Z",
     "last_run_interrupted": false,
     "last_run_resumed": false,
     "last_interrupted_check_manifest": "data/manifests/research_watch_check_20261003.json",
-    "last_check_outcome": "RESEARCH_AND_GIT_SYNC_VERIFIED",
+    "last_check_outcome": "NO_MATERIAL_CHANGE_CONFIRMED_IN_CHECKED_SOURCES",
     "last_resumed_from_trigger_at": "2026-10-03T01:01:32.212Z",
-    "publication_status": "GITHUB_VERIFIED",
-    "pending_sync_manifest": null,
-    "previous_sync_failure_resolved_connection_at": "2026-10-10T09:23:47.231611+08:00",
+    "publication_status": "PENDING_CANONICAL_AUDIT_AND_PUSH",
+    "pending_sync_manifest": "data/manifests/research_watch_pending_sync_20261011.json",
+    "previous_sync_failure_resolved_connection_at": "2026-10-12T09:09:40+08:00",
     "previous_sync_failure": {
       "scope": "record_sync",
       "ssh": "two bounded hp3090 connection timeouts",
@@ -1242,8 +1246,24 @@
       "2026-10-06",
       "2026-10-07",
       "2026-10-08"
-    ]
+    ],
+    "last_notification_decision": "DONT_NOTIFY",
+    "previous_sync_failure_20261011": {
+      "scope": "record_sync_and_partial_source_gap",
+      "ssh": "Three initial read-only requests and one later retry timed out",
+      "direct_github_ssh": "Permission denied (publickey)",
+      "canonical_git_status": "UNKNOWN",
+      "public_github_main": "e9e5a877e1a328b8b696ba89c6c51480d8e0ae65",
+      "huggingface": "Model metadata endpoint timed out twice; current assets not verified",
+      "recorded_at": "2026-10-11T09:08:48+08:00",
+      "same_ssh_problem_as_local_engineering_record": "reports/README_A3_CONTROLLER_ADAPTER_20261010.md"
+    },
+    "pending_sync_dates": [
+      "2026-10-11",
+      "2026-10-12"
+    ],
+    "latest_sync_receipt_path": "data/manifests/research_watch_sync_20261012.json"
   },
   "dedup_rule": "同 ID/版本不重复转述；新版本或代码发布只有实质变化才再次报告，记录变化说明。",
-  "latest_check_manifest": "data/manifests/research_watch_check_20261010.json"
+  "latest_check_manifest": "data/manifests/research_watch_check_20261012.json"
 }

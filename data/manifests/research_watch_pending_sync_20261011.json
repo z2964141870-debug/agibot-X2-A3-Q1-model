@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "created_at": "2026-10-11T01:13:07.298447+00:00",
+  "status": "LOCAL_ONLY_PENDING_SYNC",
+  "pending_dates": [
+    "2026-10-11"
+  ],
+  "target_project": "hp3090:/media/yu/FAFF-E9771/YUANQI",
+  "target_branch": "main",
+  "target_remote": "git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git",
+  "canonical_head_current": null,
+  "canonical_git_status": "UNKNOWN_SSH_TIMEOUT",
+  "last_public_github_main_read": "e9e5a877e1a328b8b696ba89c6c51480d8e0ae65",
+  "last_verified_research_documents_commit": "02086c314662e992f94be25a4942d7158132a66f",
+  "existing_historical_pending_dates_note": "October 6-8 were resolved on October 10; those snapshots remain historical, not current pending work.",
+  "must_reconcile_canonical_before_copy": true,
+  "shared_edit_base": "data/research/2026-10-11/local_edit_base.json",
+  "shared_pre_edit_archive": "data/research/2026-10-11/local_edit_base.tgz",
+  "research_only_incremental_diff": "logs/research_watch_20261011/research_only_changes.diff",
+  "local_payload_precheck_evidence": "logs/research_watch_20261011/staged_validation.log",
+  "canonical_staged_audit_status": "NOT_RUN_CANONICAL_UNREACHABLE",
+  "validation_log": "logs/research_watch_20261011/local_validation.log",
+  "files": [
+    {
+      "path": "reports/README_RESEARCH_CHECK_20261011.md",
+      "bytes": 7098,
+      "sha256": "25894677e06f7f2065ba1caca85ce11ec00ecffd2da869af64d3e91e6e546bfb",
+      "merge_mode": "VERIFY_DATE_SPECIFIC_PATH_BEFORE_ADD"
+    },
+    {
+      "path": "data/manifests/research_watch_check_20261011.json",
+      "bytes": 18740,
+      "sha256": "c92668f2ac3120f37ff2c7bc48d413152699a49ebecbea76f4476a014a37718a",
+      "merge_mode": "VERIFY_DATE_SPECIFIC_PATH_BEFORE_ADD"
+    },
+    {
+      "path": "reports/README.md",
+      "bytes": 16921,
+      "sha256": "8119bccd8c3187009ea636fd2471e18ceeca028f1d327a5323a45d5fa5746ffc",
+      "merge_mode": "APPLY_ONLY_OCT11_RESEARCH_HUNKS_TO_LATEST_CANONICAL",
+      "local_pre_edit_sha256": "657d1fae6f347375d2578047a13d9f5f67dec877409ae3ec817b6d86e697a445",
+      "public_base_sha256": "2de9c42684de550f1ec9fa0d2044451bc866f7ac58c7ec88c1990a88ae1ce4a8"
+    },
+    {
+      "path": "reports/README_CURRENT_STATE.md",
+      "bytes": 24042,
+      "sha256": "b70f1276a600b55ffd621e8543634c6277b7c69a4801aaf6de4aff40ac999df9",
+      "merge_mode": "APPLY_ONLY_OCT11_RESEARCH_HUNKS_TO_LATEST_CANONICAL",
+      "local_pre_edit_sha256": "be78af0bde94cd53b055291126a24fba333f274f341971e782cc22460eaf9e66",
+      "public_base_sha256": "ecbfeb47a179e846c7e67e7e9c2ba11b65ae779a77283099ab8284acf21d942b"
+    },
+    {
+      "path": "reports/README_RESEARCH_WATCH.md",
+      "bytes": 7579,
+      "sha256": "282fe287f401fa34b6d01e3e1a886acfb67f2c97081d1b07cdf35d7bba9dfa57",
+      "merge_mode": "APPLY_ONLY_OCT11_RESEARCH_HUNKS_TO_LATEST_CANONICAL",
+      "local_pre_edit_sha256": "9f60d213e16e6409629e3768efd4d249a2cf1980d3cd7dbcd86847f1498d3caa"
+    },
+    {
+      "path": "reports/research/README.md",
+      "bytes": 3996,
+      "sha256": "e2168373a47238f3c4bb29f33b5de284ba9c7bd0fff8465bc9b0eb0114805cf3",
+      "merge_mode": "APPLY_ONLY_OCT11_RESEARCH_HUNKS_TO_LATEST_CANONICAL",
+      "local_pre_edit_sha256": "9fd3c54c7dca71a8214fcaa81090316a28abf297858fc8bb3f9ac3ad7f4db65a",
+      "public_base_sha256": "9fd3c54c7dca71a8214fcaa81090316a28abf297858fc8bb3f9ac3ad7f4db65a"
+    },
+    {
+      "path": "data/manifests/research_watch_state.json",
+      "bytes": 71760,
+      "sha256": "2ab24fa961daa733ae444a68058928d5d8ed31eb6abdc61b13fc9597428e628d",
+      "merge_mode": "APPLY_ONLY_OCT11_RESEARCH_HUNKS_TO_LATEST_CANONICAL",
+      "local_pre_edit_sha256": "bf4aaac5edf7ef9c9d618982670e14f101e4b3a24b968fc4e0422d2550089bb7"
+    }
+  ],
+  "this_manifest_also_requires_sync": true,
+  "raw_source_cache": "data/research/2026-10-11/",
+  "cache_netdisk_status": "LOCAL_ONLY",
+  "failure_evidence": "logs/research_watch_20261011/observed_command_results.log",
+  "resume_steps": [
+    "Read latest canonical AGENTS, reports/current-state and git status; inspect YUANQI main and current GitHub head. Public e9e5a877 is only a dated read-only snapshot.",
+    "Verify date-specific stage/check paths, then add only this research stage/check and pending manifest.",
+    "Use the local pre-edit archive and research-only diff to merge the five shared file hunks onto current canonical records. Preserve E20/E21, learning/Q1 and all concurrent changes; do not copy whole local shared files.",
+    "Source dedup count remains 54. Advance only check time/coverage/publication fields, retaining newer independently added sources.",
+    "Check actual canonical diff and explicit staging paths, run script/project_tools/audit_git_payload.py, commit and push main without force, then verify refs/heads/main and staged file hashes.",
+    "Write a dated sync receipt only after verification; do not retroactively erase the original timeout or pending state."
+  ],
+  "notification_decision": "DONT_NOTIFY"
+}

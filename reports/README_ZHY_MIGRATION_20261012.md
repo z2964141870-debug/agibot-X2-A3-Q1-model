@@ -33,6 +33,7 @@ nice -n 15 /usr/bin/python3 -u script/project_tools/migrate_zhy.py \
 - 清单 `logs/zhy_migration_20261012/source_manifest.jsonl` 的SHA256为 `2180ac2b4573115c20b6bac96012713e86084c2cca288cafb64b35fe46267282`。完整state/batches/verification与296包版本metadata留服务器；小型回执见[清单](../data/manifests/zhy_migration_20261012.json)。
 - 源码快照为main `8baf73aea38ff3abf230bf1d772d79089aec8756`。开始前已快进合入当天学习/研究/脱敏记录，保留并行修改。最终文档更新在完整数据校验后单独同步，以最终Git提交和目标工作树核验为准。
 - 不搬运SSH钥匙、认证材料、原机服务或整个旧Git历史。目标Git由源最新提交的本地浅副本建立，远端仍使用指定仓库origin/main，避免旧凭据历史随数据迁移；没有给新机配置GitHub登录凭据。
+- 目标浅Git已建立并核验，源/目标/远端同提交，目标工作树干净、没有断链。复制时保留了原机uid1000，造成Git所有者检查拒绝；已只在本轮新建ZHY目录内统一为root:root，不修改全局safe.directory或其他用户目录。最终文档与回执另行同步后再次核验Git。
 - 原机环境未复制；其解释器/依赖路径不具备直接可移植保证。已导出296项包版本，仅metadata读取；例如torch2.8.0+cu128、numpy1.26.0、mujoco3.3.7。新机默认Python3.10.12不是原机Python3.11环境，不据此认为Isaac/A3可运行。
 - 历史JSON/README内原机绝对路径保留为来源证据，新实验需要独立初始化和路径适配；不将旧running状态视为目标任务已运行，不自动恢复旧账本。
 

@@ -45,6 +45,6 @@ data/environments/a3-sonic/bin/python -m script.a3.smpl_motor_domain_trace run
 
 ## 保存与恢复
 
-本README/索引/current state/小清单已写，scoped审计提交推送与目标同步待完成；原始保存状态LOCAL_ONLY，官方仍基线，七段仍开发参考。本轮E28–E31都已退出，没有并行计算、新机器故障或用户待补资源，长期heartbeat ACTIVE。
+本README/索引/current state/小清单已写，4文件scoped检查/audit PASS，124778字节；结果提交4f44cb181e1f0a91fc94ea6985e02d2f64d64139已推送并核对GitHub main，源机/ZHY同HEAD且工作区干净，13:32:41同boot/GPU空闲，E28–E31所有monitor PID均已不存在，incoming清单scoped stash保留。见[发布回执](../data/manifests/a3_zhy_smpl_motor_trace_20261013_sync.json)，本回执与发布段随后另作scoped提交，最新HEAD以Git为准。原始保存状态LOCAL_ONLY，官方仍基线，七段仍开发参考。无新机器故障或用户待补资源，长期heartbeat ACTIVE。
 
 恢复先读本README及E26/E28，再核验Git/boot/GPU和保护遥测。下一登记独立E32，先对保存状态/合格参考作动态支撑需求检查：精确固定q/v/加速度方法和接触假设，核验floating-base动力学残差与可支持接触力/力矩；离线逆动力学只算需求，不伪称实际执行力矩。若确需新回放，单独登记被动子步采样，不重跑未变条件的E26全量。仍未改善官方或完成未见验收，不自动追加大规模训练或真机操作。

@@ -39,4 +39,6 @@ data/environments/a3-sonic/bin/python -m script.a3.smpl_solver_domain run
 
 ## 保存与恢复
 
-本README、索引/current state和小型SHA清单已保存，结果scoped提交推送/ZHY同步待完成，原始工件LOCAL_ONLY。下一新E31优先逐帧对照六个并联电机实际qpos与各自有效域，记录最早越界/持续区间并与膝误差和倾斜排序；不重跑E26/E29/E30，不能从末端50Hz样本推断完整1ms子步覆盖。之后聚焦更早参考腿部时序/动态支撑可行性。未定位初始失稳、未改善官方，七段仍是开发集，工程heartbeat ACTIVE；没有新机器故障，无需用户补充资源。
+本README、索引/current state和小型SHA清单已保存，4文件scoped检查/audit PASS，107754字节；结果提交5cc6777f12c05a13e2ed6f1d0bd9f819c2efbcbb已推送核对GitHub main，源机/ZHY同HEAD且工作区干净，13:20:52仍同boot/GPU空闲。incoming清单scoped stash保留，10注册代码SHA与Mac镜像一致；见[发布回执](../data/manifests/a3_zhy_smpl_solver_domain_20261013_sync.json)。本回执与发布状态随后另作scoped提交，最新HEAD以Git历史为准，原始工件LOCAL_ONLY。
+
+下一新E31优先逐帧对照六个并联电机实际qpos与各自有效域，记录最早越界/持续区间并与膝误差和倾斜排序；不重跑E26/E29/E30，不能从末端50Hz样本推断完整1ms子步覆盖。之后聚焦更早参考腿部时序/动态支撑可行性。未定位初始失稳、未改善官方，七段仍是开发集，工程heartbeat ACTIVE；没有新机器故障，无需用户补充资源。

@@ -33,4 +33,4 @@ ZHY既有环境，0训练/0真机。六段仅一次回放，run/verify各900秒�
 
 ## 保存与恢复
 
-失败及SHA已保存，待本阶段scoped提交推送核验；原始工件LOCAL_ONLY。恢复不再run E25。下一独立[E26](README_A3_SMPL_FROZEN_VALIDATED_20261013.md)采用保留全部subprocess接口的透明启动适配，完整启动假工件测试已2项通过，未加载策略/未计算CUDA。保持原参考和门槛，长期工程heartbeat继续接续。
+失败及SHA已scoped提交8c2fe75297d86fe0fd32450b854fe8206e99c9af并核对远端main，最终同步见[回执](../data/manifests/a3_zhy_smpl_frozen_20261013_sync.json)；原始工件LOCAL_ONLY。恢复不再run E25。后续独立[E26](README_A3_SMPL_FROZEN_VALIDATED_20261013.md)已完成六段实际回放/独立核验，详情与边界见该报告；原参考和门槛保持，长期工程继续接续。

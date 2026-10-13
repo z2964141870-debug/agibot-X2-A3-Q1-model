@@ -52,4 +52,4 @@ zzx跌倒前283步单列：关节RMSE0.24282rad，根均误差0.61833m，手腕/
 
 下一优先：用保存轨迹拆zzx约5.2–5.66秒支撑/关节/控制异常的先后顺序；核对根位置指标与官方接口实际承诺的跟随目标，再做固定输入下根平移可辨识性检查。已知A3-fast无独立人体根平移通道，不能单凭字段缺失或全局误差认定编码器为根因。通过新片段验收仍未完成，旧下蹲质量拒绝保留。
 
-README/索引/current state和小型SHA清单已保存，待本阶段scoped审计提交推送核验；原始工件LOCAL_ONLY，未验证网盘备份。登记HEAD91b1624；启动修正代码阶段已提交8c2fe75297d86fe0fd32450b854fe8206e99c9af并核对远端。实际compute时target未跟随该提交，仅新增入口文件；注册按精确代码/输入SHA固定，未把旧HEAD当作全部运行源码。长期工程继续，无机器故障/未达最终验收，heartbeat保持ACTIVE。
+README/索引/current state和小型SHA清单已scoped审计提交492dcb2dcab9ff15cc21c95f6754008ea8a50edb，源机/GitHub main/ZHY HEAD均核验一致且工作区干净；[同步回执](../data/manifests/a3_zhy_smpl_frozen_20261013_sync.json)记录结果提交及清单SHA。bundle发送SSH回执超时，但目标文件与fast-forward独立核验成功，不把超时当作重启。原始工件LOCAL_ONLY，未验证网盘备份。登记HEAD91b1624；启动修正代码阶段8c2fe75。实际compute时target未跟随该提交，仅新增入口文件；注册按精确代码/输入SHA固定，未把旧HEAD当作全部运行源码。旧incoming复制文件保留scoped stash，未覆盖并行工作。长期工程继续，无机器故障/未达最终验收，heartbeat保持ACTIVE。

@@ -47,4 +47,4 @@ data/environments/a3-sonic/bin/python -m script.a3.smpl_frozen_probe verify
 
 ZHY入口py_compile及六段接口/身体FK/重采样脚几何验证通过；E24停止于入口参数错误，尚无策略实测结果。六段都参与过参考开发，旧partition为test也不代表未见最终验证；成功仅支持本开发集冻结官方闭环，不能证明策略改善或真机可用。任何后续回放用新编号，不能边改边重复E24。
 
-本次失败和ABI结果已落盘README/索引/current state及小型SHA清单，待完成本阶段scoped审计提交推送核验。原始数据/模型/执行日志LOCAL_ONLY，无网盘备份完成证据。持续工作入口[长期工程](README_A3_LONGTERM_20261013.md)。
+本次失败和ABI结果已scoped审计提交91b1624e88efa4473c46530dcd22787990bb2bf6并核对远端main，最终source/target/remote同步见[回执](../data/manifests/a3_zhy_smpl_frozen_20261013_sync.json)。原始数据/模型/执行日志LOCAL_ONLY，无网盘备份完成证据。持续工作入口[长期工程](README_A3_LONGTERM_20261013.md)。

@@ -176,3 +176,8 @@ H001 保持待验证。YOCO 已将 HyperNet/LoRA 用于遥操标定，SCOPE 摘�
 PriMo正文引用机器人task-priority redundancy control/IK/nullspace projection等先例；VICAR相关工作包括OmniRetarget的硬约束、SceneBot与ContactMimic。仅通过本轮原文识别查新入口，未逐篇独立复核，不能宣称排序目标或加入接触是本项目原创。Reflex的latent蒸馏、PanTact的源时间戳/丢弃过期动作亦已用于机器人；已有EgoLocate GRU、新鲜度门控与FGP fallback限制保持。
 
 Fly-by-Code仅摘要核验：对观测不足的失败主动安排诊断，而非反复推理同一日志；可作为工程记录方法背景。BiGym/Workhorse v2只观察版本，未核完差异不新增效果结论。每日候选不改变当前“参考质量→官方闭环→针对短板适配”的主线。
+
+
+### 2026-10-13 晚：工程结果触发的MimicX补查
+
+E44触发teacher漂移保护后，按用户要求补读候选与原文。MimicX作者公开仓库现已固定78a1ab7903c7f5fdfa30363944a3fd3d2da2ad26，8个小源码/说明已静态核验；修正10/10时“代码未核验”的当前资产状态，不改写当时记录。未安装、执行或下载权重，非A3复现。下一先让已知失败zzx进入明确的开发训练集合，仍保持原效果门；不同时搬入其奖励/窗口/更宽guard。PriMo作为优先级候选、D2R仍仅摘要，未引入新框架/新颖性声明。详细[工程研究与判据](../README_A3_OUTCOME_RESEARCH_20261013.md)。

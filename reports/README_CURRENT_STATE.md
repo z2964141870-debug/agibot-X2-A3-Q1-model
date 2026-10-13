@@ -42,3 +42,5 @@ teacher RMSE原.046055388→投影.046205418，MSE增加1.3841811e-5；实际舍
 - 学习Agent继续本人必要知识训练；下一检查Actor输出→目标角→PD→反馈，见[学习会话](README_LEARNING_SESSION_20261012.md)、[交接](README_LEARNING_AGENT_TASK_20261011.md)。工程不要求先完成理论推导。
 - 每日研究已有[10/13简报](research/2026-10-13/README.md)，去重与原文覆盖见[研究阶段](README_RESEARCH_CHECK_20261013.md)。本聊天针对性论文研究不新增每日任务。
 - 原机故障/空闲/负载试验及迁移历史见[报告索引](README.md)，旧细节保留在各阶段README与Git历史；本入口只保留当前恢复所需信息。
+
+独立侧支：[头环与衣服参考研究](README_HEADBAND_CURRENT_STATE.md)：HB01离线协议验证完成，下一时间/坐标与录制审计；独立heartbeat每小时，不接手主线实验。

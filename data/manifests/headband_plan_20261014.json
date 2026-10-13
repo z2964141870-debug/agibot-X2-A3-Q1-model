@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "branch": "HEADBAND_REFERENCE_SIDE",
+  "date": "2026-10-14",
+  "status": "OFFLINE_FEASIBILITY_IN_PROGRESS",
+  "goal": "Test whether headband plus clothing improves world-root observability and produces faithful feasible references for frozen official035, with actual robot outcomes required later.",
+  "scope": "Independent side conversation; do not resume main A3 experiments or use their experiment IDs.",
+  "hypothesis": "After time and dynamic head/pelvis compensation, weighting reference corrections by frozen-controller directional response sensitivity improves faithful tracking over calibrated geometric/uncertainty-only fusion. No timing changes in first comparison.",
+  "novelty": "Candidate only; visual-inertial mocap, head-body decoupling, uncertainty fusion and contact correction already exist.",
+  "phases": [
+    {
+      "id": "HB01",
+      "task": "Vendor metadata decoding, fault controls, primary-source novelty review and bounded recording inventory",
+      "budget": "stdlib only, BMP <=32MiB in RAM, no extracted image/video/model",
+      "gate": "Golden sample and corruption checks; distinguish vendor sample from user device",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "HB02",
+      "task": "Dynamic head-to-pelvis and clock/epoch contracts with analytical scalar examples; inspect actual recording timing and calibration availability",
+      "budget": "stdlib only, <=60 seconds per check, <=5MiB generated artifacts; no tensors/IK/SLAM",
+      "gate": "Pure head rotation must not invent pelvis translation; coordinate change must not create velocity; unknown clock gaps rejected"
+    },
+    {
+      "id": "HB03",
+      "task": "Freeze matched geometric, uncertainty-only and support-aware comparisons and data split",
+      "budget": "design/static review only",
+      "gate": "Session split, source SHA, metric units, real timestamp alignment, independent trajectory reference and exclusive compute window"
+    },
+    {
+      "id": "HB04",
+      "task": "After prerequisites, frozen035 offline comparison, then only a small reference residual/confidence learner if evidence requires",
+      "status": "NOT_REGISTERED_NOT_AUTHORIZED_BY_THIS_PLAN_ALONE",
+      "gate": "Register new experiment, existing ZHY environment, no concurrent compute, baseline and unchanged outcome gates"
+    }
+  ],
+  "evaluation": {
+    "fixed": [
+      "official035 weights",
+      "retargeting version",
+      "original human trajectory and wall-clock timing",
+      "same robot environment, seed and action horizon"
+    ],
+    "comparisons": [
+      "clothing only",
+      "headband geometric compensation",
+      "plus uncertainty correction only",
+      "plus robot support feedback only"
+    ],
+    "metrics": [
+      "world-root displacement/heading",
+      "foot slip/contact timing",
+      "root and wrist original-target error",
+      "fall rate",
+      "reference alteration",
+      "p95 latency",
+      "failure and fallback coverage"
+    ],
+    "prohibited_shortcuts": [
+      "winning by standing still or shortening steps",
+      "DTW-only scoring",
+      "noncausal teacher used as online input",
+      "SLAM map correction applied as physical motion",
+      "human contact equated with robot support",
+      "predicted poses treated as ground truth",
+      "reuse seven development clips as unseen test"
+    ]
+  },
+  "training_prerequisites": [
+    "verified real device layout/IMU population/scales",
+    "stereo and camera-to-head calibration",
+    "camera-to-clothing clock mapping with offset/drift and exposure semantics",
+    "paired sessions and independent evaluation reference",
+    "exclusive compute access and reliable telemetry"
+  ],
+  "loop": {
+    "interval_minutes": 60,
+    "next": "HB02",
+    "quiet_when_unchanged": true,
+    "stop": "After HB03 deliver bounded readiness decision. If prerequisites absent and no independent useful work remains, notify once and pause/remove own loop, do not repeat research.",
+    "automation_id": "automation",
+    "status": "ACTIVE",
+    "target_thread_id": "01a13600-59c3-7f31-89f9-d5d8a5b48269"
+  },
+  "compute": {
+    "now": "local standard-library protocol/metadata tests only",
+    "future": "/opt/data/private/hechengzhu/ZHY via hp3090",
+    "no_gpu_or_models_now": true,
+    "no_hardware_operation": true,
+    "no_subagents": true
+  },
+  "main_thread_automation": "Do not modify zhy-a3 or yuanqi",
+  "backup_status": "LOCAL_ONLY"
+}

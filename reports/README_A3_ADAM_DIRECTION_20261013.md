@@ -61,3 +61,35 @@ python3 -m script.a3.adam_direction_trial plan
 ```
 
 产物`data/experiments/a3_zhy_adam_direction_20261013_E47/{registration,state,mapping,pre_candidate,progress,result}.json`；日志`logs/a3_zhy_adam_direction_20261013_E47/`；累计清单`data/manifests/a3_zhy_adam_direction_20261013_E47.json`。已有COMPLETE/STOPPED禁止复跑。当前只有实现控制通过，0模型加载/运行结论；代码先scoped提交并同步再登记。
+
+## 登记后恢复状态
+
+E47已于2026-10-13晚以d26d9596235cf3666e18cca4c99bba23c95edd1a完成REGISTERED，0worker；上述登记前文字为历史，禁止重复register。用户新增内存排查/适当释放授权已执行，见[内存记录](README_ZHY_MEMORY_20261013.md)。固定E47代码/输入没有改动；下一仅run --stage probe，重做原三次5秒资源预检。
+
+## E47单次运行结果（23:07 COMPLETE）
+
+以d26d9596235cf3666e18cca4c99bba23c95edd1a登记并执行，登记和启动前各三次5秒原资源门通过；启动可用估计8.504–8.506GiB。实际1保存Actor+Critic、10Actor/decoder forward、1Critic forward、3autograd.grad，0optimizer/new rollout/可部署checkpoint。预算未扩展，禁止复跑。state returncode=0，结果及SHA见[结果小清单](../data/manifests/a3_adam_direction_result_20261013.json)与[累计清单](../data/manifests/a3_zhy_adam_direction_20261013_E47.json)。
+
+28个可训练参数按原完整wrapper分为两组各14，保存ID/shape/flags/moments均通过，全部历史step16。全Actor+Critic梯度范数24.16731262，Actor22.15118563、Critic9.66353403，原0.1裁剪系数0.0041378201；Actor逐张量与常数value控制梯度最大差0，吻合E46。
+
+| 量 | 实测 |
+| --- | --- |
+| 负原始Actor梯度对teacher MSE一阶变化 | -2.590118008 |
+| 保存Adam数学位移对teacher MSE一阶变化 | -0.00002732338422 |
+| 数学候选位移范数 | 0.002352611010 |
+| teacher RMSE | 0.04605538845 → 0.04579222913 |
+| teacher MSE有限变化 | -0.00002417055657 |
+| 候选teacher maxabs | 0.234682322，原0.5门通过 |
+| 原KL规则候选LR | 两组4.5e-6 → 3e-6；固定旧batch KL0.34723514 |
+
+结果为BOTH_ADAM_FIRST_ORDER_AND_FINITE_INWARD：此固定旧batch上，原始下降方向、Adam一阶及有限步都降低teacher偏差，不支持“Adam变换使该输入反向”的假设，也未发现一阶/有限步符号相反。不要因此宣称Adam对所有后续batch无问题，更不能用这个不可部署的数学候选证明衣服闭环改善。
+
+源Actor参数/buffer、输入、保存Actor/Critic/optimizer树和临时Critic参数前后摘要全部相等，所有.grad保持None。仅临时Critic的running_mean_std.running_mean按原train前向改变，已保存前后SHA；原checkpoint不变。fused未逐位重演，也没有重建历史17–19步。
+
+累计6健康样本同boot/OOM0，CPU最高40°C、GPU30°C、采样功率109.58W；运行最低原可用7.172GiB，进程VmHWM约2.165GiB。登记末次到计算首样本间隔1582.04秒，包括本次内存检查，不当连续监控。运行结束复核GPU0%/13MiB、同boot、oom_kill0及failcnt未增，无确认机器故障。
+
+## 下一步（由真实结果决定）
+
+停止继续用同一旧batch做Adam/权重试探。旧实际训练第17/18/19步LR是6.75e-6/1.0125e-5/1.0125e-5，E47的旧batch使原规则反而降到3e-6；输入来自不同策略/rollout，当前不能分离历史梯度方向、KL与步长作用。E45只保存初始rollout/batch，缺真实第5rollout完整张量，不能伪称历史重演。
+
+下一独立[E48新采样批次草案](README_A3_FRESH_BATCH_20261013.md)：同一保存step4状态与moments，只改变衣服batch的来源，先采一个当前策略batch，再零更新检查原始/Adam/有限teacher方向；不恢复E45，不新增效果回放或部署。草案尚未实现/登记，先核实编号和完整预算再启动。官方035仍baseline，无新效果提升。

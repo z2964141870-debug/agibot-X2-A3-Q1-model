@@ -1,0 +1,55 @@
+{
+  "status": "UNIMPLEMENTED_UNREGISTERED_PLAN",
+  "proposed_experiment": "A3_ZHY_FRESH_BATCH_20261013_E48",
+  "main_variable": "FRESH_STEP4_ON_POLICY_BATCH_INSTEAD_OF_SAVED_INITIAL_BATCH",
+  "source_reference_head": "d26d9596235cf3666e18cca4c99bba23c95edd1a",
+  "budget_draft": {
+    "saved_actor_critic_states": 1,
+    "actor_decoder_forwards": 40,
+    "critic_forwards": 8,
+    "autograd_grad_calls": 3,
+    "fresh_rollouts": 1,
+    "transitions": 384,
+    "mathematical_candidates": 1,
+    "optimizer_steps": 0,
+    "deployable_checkpoints": 0,
+    "stage_seconds": 900
+  },
+  "seed": 0,
+  "environments": 16,
+  "steps": 24,
+  "teacher_rmse_max": 0.05,
+  "teacher_maxabs_max": 0.5,
+  "inputs": [
+    {
+      "path": "data/training/a3_zhy_cloth_failure_20261013_E45/R19_001_s0/milestone_4/model_step_000004.pt",
+      "sha256": "3e679581fb1386e1fe718a1497af62615d8555a4bc03853e092a3b3b09edd645"
+    },
+    {
+      "path": "data/training/a3_zhy_cloth_failure_20261013_E45/R19_001_s0/config.yaml",
+      "sha256": "7b3e33e4324dc03cad437e4577d35909115a9feeaf156975d5ca7397fcbd6323"
+    },
+    {
+      "path": "data/experiments/a3_zhy_gradient_20261012_E11/rollout.pt",
+      "sha256": "5bbba73dbffd0a6f7d4737fd7afded4ac7f4e58f9c648f14d4c0cfd2963cf3a3"
+    },
+    {
+      "path": "data/experiments/a3_zhy_modules_20261012_E12/module_outputs.pt",
+      "sha256": "24e726f986613a73ccf2801e449e33e444cc16f994552c40f9c676d46510954c"
+    }
+  ],
+  "source_sha256": {
+    "script/vendor/sonic_for_a3/gear_sonic/trl/trainer/ppo_trainer.py": "872b22d0ae6b1f124fe152e2831c496bfe6b4c80c92fde167129e0c3f1ce6fc1",
+    "script/vendor/sonic_for_a3/gear_sonic/trl/trainer/ppo_trainer_aux_loss.py": "483539b22fca693091670a22f90bc21018867dce50f5e39b14b3303dfbea2388",
+    "script/a3/adam_direction_probe.py": "50953b82d939aac33ead441aa0e1345f7f4b48c49ac7776d6b6850d3af0a7d81",
+    "script/a3/adam_direction_protocol.py": "c5e42654ecc598edde476f7299c3008a4268c15ac09b39b24bf9b3bd524979f5",
+    "script/a3/cloth_cached_tokens.py": "87cb5b57cf53d3c6759a77264c07ef730b5ff9e7b64899ec55dec9068c4a8c60",
+    "script/a3/cloth_curve_trainer.py": "4eec945a5bddeb5cc416738f57c727b44f0fbfc6e6d8d7c7baaa0681a892f74f",
+    "script/a3/cloth_constrained_trainer.py": "b4ccfe6f564eb2e261c420ee1cc9b64b743cb63cabf578ed334746fe855f81fb"
+  },
+  "initial_number_availability_checked": true,
+  "number_must_be_rechecked": true,
+  "historical_failure_replay": false,
+  "repeat_after_stop": false,
+  "backup_status": "LOCAL_ONLY"
+}

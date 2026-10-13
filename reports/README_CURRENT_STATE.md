@@ -1,18 +1,18 @@
 # YUANQI 当前状态与下一步
 
-更新：E26完整启动契约2测试通过/登记READY，尚无策略结果；长期工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
+更新：E26六段/2994步独立核验通过，5/6不倒但根轨迹偏离，整体效果门失败；长期工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
 
 ## 用户目标与固定约定
 
 2026-10-13用户要求长期工作；工程heartbeat `zhy-a3`已创建ACTIVE，每30分钟接续，旧故障巡检暂停/日研不变。只在ZHY计算，原hp3090仅Git/标准库传输；首机器故障停止，不自动复跑/开机恢复。路线[持续工程](README_A3_LONGTERM_20261013.md)：参考合同→冻结官方闭环→实证短板的小微调/能力保留→未见验收，目标仍是衣服完整跟随和官方基线可验证提升。
 
-E26完整假工件启动契约2测试通过/登记READY：透明进程适配保留STDOUT等全部接口，原参考/模型/门槛不改，复用E24六段ABI，下一499步×6完整官方回放/0optimizer；尚无策略结果。恢复先核state。见[协议](README_A3_SMPL_FROZEN_VALIDATED_20261013.md)。
+E26于11:29:12独立验收VERIFIED_FROZEN_BASELINE：2启动契约/6×499=2994完整官方步，0optimizer，代码/输入/权重SHA与误差/动作/实际脚geometry核验一致；5/6不倒、zzx5.66秒roll越60°，整体0跌倒门失败。五段关节RMSE0.0876–0.1255rad，手腕骨盆相对1.47–3.54cm，但根世界均误差0.298–0.929m；姿态/全局移动分别验收，未证明改善官方。下一只读拆zzx5.2–5.66秒先行支撑/控制异常，核对根指标与实际接口目标再做根平移可辨识性检查，不扩大训练/重跑。25样本同boot/CPU41/GPU34°C/OOM0，最小可用7.54GB，阶段间152.34秒空档不算连续覆盖；作业退出/GPU空，非机器故障，工程ACTIVE。见[结果](README_A3_SMPL_FROZEN_VALIDATED_20261013.md)和[E26清单](../data/manifests/a3_zhy_smpl_frozen_20261013_E26.json)。
 
 E25于11:18:55再次入口错误停止：漏保留subprocess.STDOUT，在真正Popen前退出，manifest running并非执行证据，0回放。3样本同boot/CPU41/GPU26°C/OOM0，80.28秒是登记到启动空档，未确认机器故障。旧E24/E25不重复。见[失败](README_A3_SMPL_FROZEN_FOLLOWUP_20261013.md)。
 
 E24于11:08:52入口错误停止ENTRY_ERROR_BEFORE_POLICY：六段300→499帧ABI/FK误差≤1.65e-15、重采样脚最低-3.719mm通过原5mm门，但包装器漏传summarize_only在策略加载前退出，0回放/0optimizer；旧E24不改不重复。5健康样本同boot/CPU42/GPU26°C/OOM0，100.10秒间隔是登记到运行空档，未确认机器故障。失败/ABI已提交91b1624并核对远端；E25见上段。入口超时后恢复同boot。见[结果与协议](README_A3_SMPL_FROZEN_20261013.md)。
 
-E23于09:26:12完成、09:35:11独立验收VERIFIED_KINEMATIC_CORPUS；3CPU测试/2100帧复核、12geom/2739真实凸包顶点与mesh最低点差0，17584积分完整接受。6/7通过原运动学门，位置P95 2.845–4.603cm/接触脚底约1–1.5mm；下蹲仅P95 6.290cm失败，拒绝。只读误差分解定位双膝/髋，左膝局部P95 13.178cm，最差区间2.833–3.067秒，未证明具体根因。0optimizer/0策略回放/无CUDA；15健康样本同boot/CPU47/GPU26°C/OOM0，结束到验收538.59秒空档不算连续覆盖，任务退出。下一E24冻结官方测六段，尚未登记/启动；另拆下蹲腿目标/关节可行性。`training_ready`仅原分区运动学合同，七段已用于开发，不代表未见测试/平衡。见[E23结果](README_A3_SMPL_HULL_20261013.md)与[清单](../data/manifests/a3_zhy_smpl_hull_20261013_E23.json)。
+E23于09:26:12完成、09:35:11独立验收VERIFIED_KINEMATIC_CORPUS；3CPU测试/2100帧复核、12geom/2739真实凸包顶点与mesh最低点差0，17584积分完整接受。6/7通过原运动学门，位置P95 2.845–4.603cm/接触脚底约1–1.5mm；下蹲仅P95 6.290cm失败，拒绝。只读误差分解定位双膝/髋，左膝局部P95 13.178cm，最差区间2.833–3.067秒，未证明具体根因。0optimizer/0策略回放/无CUDA；15健康样本同boot/CPU47/GPU26°C/OOM0，结束到验收538.59秒空档不算连续覆盖，任务退出。后续六段官方闭环E26见上段；下蹲腿目标/关节可行性仍待拆。`training_ready`仅原分区运动学合同，七段已用于开发，不代表未见测试/平衡。见[E23结果](README_A3_SMPL_HULL_20261013.md)与[清单](../data/manifests/a3_zhy_smpl_hull_20261013_E23.json)。
 
 10/13研究：已读近期PriMoRetarget/Reflex/PanTact相关正文与资产入口，形成[三条简报](research/2026-10-13/README.md)；优先级不保证严格不穿地、冻结仅适用指定阶段、同钟采集不代替跨设备同步。VICAR及两个旧文v2仅候选/版本观察，未复现。当前仍先验参考质量再测官方策略；本heartbeat未启动计算。发布状态以[阶段记录](README_RESEARCH_CHECK_20261013.md)及[同步回执](../data/manifests/research_watch_sync_20261013.json)为准。
 

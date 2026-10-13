@@ -29,6 +29,6 @@ E23的2100开发帧独立核验，6/7片段通过原运动学门，下蹲仅位�
 
 ## 保存与恢复
 
-E23登记基线HEAD `9df0ef75776fb478d8796abaf30d06f6101cb374`。入口[真实脚凸包结果](README_A3_SMPL_HULL_20261013.md)、[衣服/接触路线](README_A3_CLOTH_CONTACT_ROUTE_20261012.md)。E24尚未登记/运行，恢复从current state继续，不重跑E23。
+E23登记基线HEAD `9df0ef75776fb478d8796abaf30d06f6101cb374`。入口[真实脚凸包结果](README_A3_SMPL_HULL_20261013.md)、[衣服/接触路线](README_A3_CLOTH_CONTACT_ROUTE_20261012.md)。后续E24/E25新增包装器在策略前失败保留；[E26冻结闭环](README_A3_SMPL_FROZEN_VALIDATED_20261013.md)已独立验收六段/2994步，5/6不倒但根世界轨迹偏离，zzx5.66秒跌倒，整体效果门失败/0optimizer。恢复从current state继续只读失稳区间与根目标合同，不重跑E23/E24/E25/E26，不扩大训练。尚未改善官方或完成未见验收，工程heartbeat保持ACTIVE。
 
 阶段立即写README、索引/current state及小SHA清单，检查diff/暂存、运行`script/project_tools/audit_git_payload.py`后scoped提交推送main并核验远端；保留并行修改、不强推。原始模型/数据/日志LOCAL_ONLY，未有网盘往返校验不称备份成功。本记录随E23阶段保存，提交号见Git历史；实际同步以HEAD/远端main一致的执行核验为准。

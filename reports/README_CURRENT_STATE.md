@@ -1,10 +1,10 @@
 # YUANQI 当前状态与下一步
 
-更新：E38/R15准备16:27:09通过13控制/900帧ABI与重载、0optimizer；同boot/OOM0、资源无保护。下一固定两更新训练与独立核验，衣服配方/4GiB保护/动态门保持，官方仍基线；长期工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
+更新：E38/R15训练16:45:18在第一实际batch概率门拒绝、0optimizer，同boot/OOM0且无资源保护。下一独立零优化保存首批/采样token边界，旧停止实验不复跑；官方仍基线、工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
 
 ## 用户目标与固定约定
 
-当前入口[E38/R15](README_A3_CLOTH_RESOURCE_20261013.md)：代码a69be1a、系统Pythoncontroller未导入torch；3被动快照/8GiB起始余量通过，准备21.29秒、5衣服/std+8checkpoint控制、三train各300帧ABI/重载通过。6健康/11阶段事件同boot/OOM0、CPU40/GPU26°C、阶段最低可用10.98GB，worker RSS最高1.30GB；全进程PSS部分PermissionError/已退出僵尸不宣称完整，自身与容器遥测有效。下一一次2更新/8optimizer，独立验冻结/初始概率后六衣服/四官方匹配对照；保留3GiB prepare RSS/4GiB线/温度/900秒/首异常停止。训练尚未开始、官方仍基线，未见会话仍待。E36/E37不复跑，E37瞬时原因未知。
+当前入口[E38停止与诊断](README_A3_CLOTH_RESOURCE_20261013.md)：13控制/900帧准备通过；一次train53.53秒完成暖启动、step0和24步采样，首batch1帧动作差>1e-4，RMSE6.889e-4/max.017823、ratio偏差.21693，原门未放宽。0optimizer、无step1/2；384锚点暖启动差0。17累计健康同boot/OOM0/CPU41/GPU34°C、最低可用7.33GB，无热/内存/内核异常；阶段间1035秒非连续覆盖。原代码失败后未保存首batch/训练精度回执，下一新编号零优化诊断先持久采样input/mean/token/latent及首训练batch再判据，核对输入/离散边界/调用路径。E38 STOPPED不复跑，E36/E37保留，官方仍基线，无新改善。
 
 E37于15:30:17 prepare STOPPED_MEMORY_RESERVE_PROTECTION：启动后0.21秒停止、console0字节、MotionLib0/训练目录无，0optimizer/新回放，准备门未验。2健康样本同boot/CPU40/GPU26°C/OOM0，最低可用4,257,181,696字节(3.964GiB)，原4GiB保留线未放宽；瞬时容器RSS8.56GB。15:35:53只读可用13.03GB/RSS0.36GB、GPU空闲，不能据此自动复跑或定位峰值原因。下一只读查controller/worker导入与容器记账并准备按PID阶段证据；新计算必须新编号/资源与遥测证据齐全。详细[停止与恢复](README_A3_CLOTH_CANONICAL_20261013.md)、[清单](../data/manifests/a3_cloth_resource_stop_20261013_E37.json)。无确认重启/OOM/热停，工程heartbeat ACTIVE、下一只读，不恢复原机计算。
 

@@ -1,6 +1,6 @@
 # A3衣服微调资源入口E38/R15
 
-记录日期：2026-10-13，北京时间。状态：E38/R15已登记，16:27:09准备通过，实际训练尚未启动。
+记录日期：2026-10-13，北京时间。状态：准备通过；16:45:18训练因第一实际batch概率合同拒绝STOPPED，0optimizer，不复跑。
 
 ## 目标与范围
 
@@ -39,4 +39,10 @@ data/experiments/a3_zhy_cloth_resource_20261013_E38/及logs/a3_zhy_cloth_resourc
 
 准备6个监督健康样本、11个阶段资源事件，同boot d994e71f-bae0-46ba-a5f7-6c2163771c6c、OOM0、CPU40/GPU26摄氏度，GPU最高33.54W。阶段事件最低容器可用10,976,686,080字节(10.22GiB)，prepare工作进程checkpoint载入后RSS最高1,302,716,416字节、PSS1,297,114,112字节，controller未导入torch。5秒采样不能保证捕获每个瞬时峰值，VmHWM另存；不能据本次未重现推定E37根因。全容器进程扫描记录PermissionError/ProcessLookupError，已抽查一条后者为仍留PID的已退出omni.telemetry僵尸；其他进程PSS缺失保留，不能称全进程PSS完整。自己的controller/worker阶段PSS及容器/温度/GPU/内核遥测有效。
 
-实际optimizer与新闭环仍0，没有新权重或提升。[准备小清单](../data/manifests/a3_zhy_cloth_resource_20261013_E38.json)保存测试回执/输入代码SHA/健康和采样边界，原始日志在ZHY。下一依固定协议启动一次两更新训练，独立核验冻结与第一实际batch概率，再进行六衣服/四官方匹配对照。拒绝不复跑、不降门槛；E37峰值原因仍未知。
+16:44:24–16:45:18的一次train运行53.53秒，实际完成环境/模型初始化、官方权重暖启动、step0保存和24步采样，但第一实际PPO batch在optimizer前拒绝。有效帧动作RMSE0.0006889391806907952、最大差0.017822980880737305、1帧动作差>1e-4；ratio0.78307044506073–1.0000152587890625、最大偏差0.21692955493927002，原RMSE1e-5/ratio0.001门保持。不存在model_step_1/2、actual_optimizer_steps日志，cloth_contract.optimizer_steps空；实际0optimizer/新效果回放，不能把step0称微调模型或宣称冻结解决了一致性。
+
+暖启动回执Actor/Critic与官方完全相同、optimizer空；384帧teacher动作最大差0。step0为134,048,471字节、SHA594b33a7fde0ca47cf135c5421f37c8c581ae905b8e372e47386cb516aaa1394，仍待独立数值核验。保存的precision回执覆盖24次rollout/0次training记录；实际training hook源码会检查FP32，但失败后尚未flush其记录，不能称已保存第一training精度回执。当前代码在概率断言成功之后才保存first batch，故此次拒绝没有原始batch文件，这是诊断证据缺口。
+
+prepare/train累计17健康样本同boot/OOM0、CPU最高41/GPU34摄氏度、GPU最高114.85W，可用最低7,333,621,760字节(6.83GiB)，无关键内核/遥测错误。阶段间1035.20秒非连续覆盖；实际train进程采样RSS最高5,875,990,528字节，VmHWM5,954,699,264字节，未触发资源保护。PSS扫描权限缺失当前抽查为pod/ssh-agent/gpg-agent，RSS均<2MiB；已退出僵尸另记，不宣称全进程PSS完整。不能据此认定硬件故障或E37峰值来源。
+
+[E38停止小清单](../data/manifests/a3_zhy_cloth_resource_20261013_E38.json)保存输入代码SHA、准备回执及健康/资源，原始console与step0在ZHY、LOCAL_ONLY。原E38保留STOPPED，不复跑或放宽门。下一独立零优化诊断：在任何概率断言之前持久保存采样输入/mean/token/latent和第一个训练batch，比较输入写入、编码器离散边界及实际执行路径。尚未定位单帧差异，官方仍基线，未来动态效果与未见会话仍待。

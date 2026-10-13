@@ -1,6 +1,6 @@
 # A3保存状态的能力保留梯度方向诊断 E46
 
-记录日期：2026-10-13。状态：实现和标准库控制完成，尚未登记/运行。官方035仍baseline，没有新效果提升。本实验独立于已STOPPED的E44/E45；禁止恢复其训练或效果评测。
+记录日期：2026-10-13。状态：COMPLETE，2026-10-13北京时间22:06:51–22:07:12单次运行通过。官方035仍baseline，没有新效果提升。本实验独立于已STOPPED的E44/E45；禁止恢复其训练或效果评测。
 
 ## 目标与范围
 
@@ -42,12 +42,38 @@ python3 -m script.a3.retention_direction_trial plan
 
 ## 结果与边界
 
-当前只有实现和静态/标准库测试结果，0新模型加载或forward。未测量梯度冲突，不能预判aux竞争或宣称性能改善。即使局部PPO下降方向提高teacher MSE，也只支持下一独立实际步保留约束设计，不能证明19步停止的唯一原因。若不支持冲突，则单独检查Adam/非线性；不扫teacher权重。
+**固定输入不支持“PPO原始梯度与teacher相反”的假设。** 这缩小了下一排查范围，没有取得新闭环效果提升。
+
+| 测量 | step0 | step4 |
+| --- | --- | --- |
+| 全384teacher动作RMSE | 0 | 0.0460553884493 |
+| PPO原始梯度范数 | 35.9230523 | 22.0194559 |
+| 有效aux对dyn梯度范数 | 0 | 0 |
+| 96帧teacher梯度范数 | 0 | 0.47150958 |
+| 384帧teacher梯度范数 | 0 | 0.37349082 |
+| PPO与384teacher梯度余弦 | null（teacher为0） | +0.29560357 |
+| 总Actor与384teacher梯度余弦 | null | +0.31307086 |
+| 384teacher沿负PPO梯度的一阶变化 | 0（一阶退化） | -2.431062815 |
+| 384teacher沿负总梯度的一阶变化 | 0（一阶退化） | -2.590118008 |
+
+- step4原始PPO下降方向和总Actor下降方向在该点均预测**降低**teacher MSE；不能据此断言实际Adam有限步也降低，或其他batch同样一致。
+- 有效g1_recon和a3_fast_g1_latent值均非零，但只依赖冻结部分；测得dyn梯度0。reencoded项虽requires_grad=True，系数0，合计aux梯度仍0。**本配置没有测到aux拖拽dyn的证据，不能用关aux解释停止。**
+- step0teacher输出完全相同、梯度0；没有一阶反向拉力不等于任意有限步仍满足teacher门。
+- step4复用旧首batch的KL为0.34723514，仅这个陈旧batch的反事实值；不是原第17–19batch或训练KL，不能用来反推真实调LR。
+- 原始梯度没有覆盖Adam历史一阶/二阶矩、全Actor+Critic裁剪及非线性有限步，因此下一按原决策检查这些差异；不提高teacher权重或恢复语料分支。
+
+合同证据：2状态/12Actor及decoder forward/10autograd.grad，0optimizer、新rollout或checkpoint；3标准库控制通过。原首概率RMSE3.7312e-7、最大ratio偏差1.1444e-5通过；step4teacher与保存第16optimizer指标差7.44e-10。两状态目标标量及梯度加和误差均0；Actor参数/buffer、输入与保存optimizer摘要前后相同，无.grad累积，全部登记代码/输入SHA复核不变。
+
+监测6样本、同boot d994e71f-bae0-46ba-a5f7-6c2163771c6c、OOM0；CPU最高42°C/GPU31°C、最高采样109.33W、最低可用6.60GiB，无内核/遥测异常。注册到计算之间最大采样间隙49.12秒，不能称全程连续覆盖；计算阶段仍按5秒监测。结束后GPU0%、13MiB，无持续计算。没有确认机器故障。
+
+证据：[完整累计小清单](../data/manifests/a3_zhy_retention_direction_20261013_E46.json)、[11个原始记录的SHA](../data/manifests/a3_retention_direction_result_files_20261013_E46.json)。原实验COMPLETE不复跑。E44/E45停止仍保留；E46没有E45闭环verify/evaluation或checkpoint选点。
 
 ## 保存与同步
 
-小型代码/README/清单将scoped审计、提交推送main并核对；同次提交号从Git历史取。旧数据/模型/日志保留ZHY LOCAL_ONLY，网盘未核验。实现登记以前推送状态以实际Git为准。
+实现提交d04e7504d57932799e2374f4e780fe469e98b9f4已推送核验main并同步ZHY，登记/运行采用同一代码。结束后标准库archive_retention_direction一次核验并保存11项SHA；结果/README/索引随后scoped审计提交，实际号从Git历史取。模型/原始日志ZHY LOCAL_ONLY，网盘未核验。
 
 ## 下一步与恢复
 
-先完成实现发布/同步，再按原门槛登记并单次运行E46。结果及健康核验后立即更新本README、索引/current state和小清单；不将梯度诊断当作超越baseline。只有后续独立训练和六衣服/四官方匹配开发效果通过原门，随后独立seed及真正未见会话验收，才可主张提升。
+E46已完成，禁止重新register/run。下一先静态核验step4保存Adam状态和参数ID映射，再为独立E47固定“历史Adam方向与teacher”有限诊断：以原保存moments/step/LR判断原始梯度与Adam方向的差异，不把当前固定batch伪装成历史第17–19batch；不擅自补Critic、猜测裁剪系数或做weight sweep。只有映射和优化器公式得到证实，才登记相应零更新计算预算；否则保留未证实边界。下一计划另存，不改E46登记或E45账本。
+
+官方仍baseline。之后任何训练方案仍须完整匹配效果、独立seed与真正未见会话，不能把诊断结论当作效果改善。

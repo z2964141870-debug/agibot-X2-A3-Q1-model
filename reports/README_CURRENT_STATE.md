@@ -1,8 +1,10 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-13晚。E46固定输入Actor梯度诊断已实现/3标准库测试通过，未登记运行，入口[实现与恢复](README_A3_RETENTION_DIRECTION_20261013.md)。E44/E45原teacher STOPPED保持，官方035仍baseline，无匹配效果提升。
+更新：2026-10-13晚22:07。E46固定输入零更新梯度诊断COMPLETE：step4 PPO与全teacher余弦+0.2956、总Actor+0.3131，下降方向局部降低teacher；aux对dyn梯度0。下一查Adam历史方向/有限步，见[结果与恢复](README_A3_RETENTION_DIRECTION_20261013.md)。官方035仍baseline，无新效果提升。
 
 ## 当前A3工作与恢复
+
+- E46已单次完成/禁止复跑：2状态、12forward、10grad、0optimizer/rollout，参数buffer/输入/保存optimizer未变，原概率门和step4保存teacher指标通过；6健康同boot/OOM0、CPU42/GPU31°C，最低可用6.60GiB。E45首batch在step4为局部反事实，非历史第19步或效果。证据见[累计清单](../data/manifests/a3_zhy_retention_direction_20261013_E46.json)。
 
 - 最新入口：[E45/R19停止](README_A3_CLOTH_FAILURE_20261013.md)。4整更新+第5次3batch、19optimizer/1920交互，step0/2/4仅存证，未到8/16/32；0新独立训练核验/效果回放。首次概率通过、冻结未变、实际已加载含zzx的4key；语料改变未避免原teacher早停，不能据此断言效果或相反梯度。
 - 累计20健康同boot/OOM0、CPU41/GPU35°C、最低可用4.72GiB，无确认机器故障；阶段间314.80秒无连续覆盖。停止后GPU空闲，实际state/console/合同为准。登记源码e3156ce；训练HEAD0ffe4ce只增记录。[停止清单](../data/manifests/a3_zhy_cloth_failure_stop_20261013_E45.json)及[配置差异](../data/manifests/a3_zhy_cloth_failure_config_20261013_E45.json)保留原raw比较，仅存储目录不同。
@@ -15,7 +17,7 @@
 
 ## 下一条具体工作
 
-按[E46实现入口](README_A3_RETENTION_DIRECTION_20261013.md)发布/同步并单次登记执行；先核验编号未占用和连续三次5秒>=8GiB及其他原资源门。最多2状态/24forward/12grad，0仿真/optimizer；值项使用保存常数，仅Actor偏导、不重演Critic/Adam。测固定batch上step4 PPO下降对384teacher的方向，前后Actor/optimizer/输入不变。E44/E45不恢复、不独立verify/效果回放；语料/曝光分支关闭，不扫权重。
+E46不复跑；按[结果入口](README_A3_RETENTION_DIRECTION_20261013.md)静态核验保存step4 Adam状态、参数ID与LR/更新公式，为独立E47固定历史Adam方向/有限步问题与预算。原始PPO/teacher方向未相反，aux实测0，不关aux或扫teacher权重。保存状态诊断不等于实际第17–19batch历史重演；若需当前完整Actor+Critic梯度必须另明确登记，不猜测裁剪尺度。E44/E45不恢复、不独立训练verify/闭环评测，语料/曝光分支关闭。
 
 官方仍baseline；开发结果通过后也必须独立seed和真正未见会话，不用代码/检查/checkpoint替代效果。工程heartbeat保持ACTIVE，待下一明确分支；不是机器故障停机。恢复必须查实际进程/boot/GPU/资源及原账本。
 

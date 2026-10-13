@@ -4,6 +4,8 @@
 
 ## 用户目标与固定约定
 
+10/13研究：已读近期PriMoRetarget/Reflex/PanTact相关正文与资产入口，形成[三条简报](research/2026-10-13/README.md)；优先级不保证严格不穿地、冻结仅适用指定阶段、同钟采集不代替跨设备同步。VICAR及两个旧文v2仅候选/版本观察，未复现。当前仍先验参考质量再测官方策略；本heartbeat未启动计算。发布状态以[阶段记录](README_RESEARCH_CHECK_20261013.md)及[同步回执](../data/manifests/research_watch_sync_20261013.json)为准。
+
 E22于2026-10-12北京时间23:57:26完成、23:58:12独立验收VERIFIED_QUALITY_REJECTION；2CPU契约/2100帧复核通过，7/7不穿地、0缩步/保持、全部root速度通过，但7/7位置P95 5.30–7.23cm超5cm，2段最大值/squat贴地与root跟踪失败，pair0/optimizer0。只读已存构型诊断确认12geom/96行；接触期外接盒约1mm而真实脚底约16.856/17.343mm，虚拟角点引入15.856/16.343mm保守间距。下一候选改真实mesh凸包实际顶点、保留非线性与旧门，尚未实现/注册/执行。11健康样本同boot/CPU43/GPU26°C/OOM0，注册到运行82秒空档不算连续覆盖；任务已退出。见[E22结果与机制](README_A3_SMPL_ENVELOPE_20261012.md)、[清单](../data/manifests/a3_zhy_smpl_envelope_20261012_E22.json)和[几何证据](../data/manifests/a3_zhy_smpl_envelope_20261012_E22_geometry.json)。
 
 用户问题转到不训练新编码器的路线：固定035源码/匹配配置确认已有闭环全身控制，但A3-fast640维只含机器人q/v/相对根朝向，没有独立人体根速度/接触输入；不能断言缺字段就必然无法迈步。现有FGP扩展已输出根速度/接触概率，可靠性未验收；LFP入口默认physics_optim=True走KinematicModel，并非简单脚速融合分支。建议先验上游根运动/支撑与重定向，再冻结官方闭环验证，参考合格仍失败才做衣服动作针对微调；该源码核验仅只读，后续CPU E22见上段。见[路线与源码证据](README_A3_CLOTH_CONTACT_ROUTE_20261012.md)。

@@ -9,14 +9,15 @@
 - 使用当前聊天的自动跟进任务，不另建每日聊天。简报最多 3–5 项，约 3 分钟可读；内容不足就少报，无实质变化时记录检查并保持安静。
 - 本地电脑需开机、Codex 应用运行且项目可用。hp3090 是训练和项目存储主机，仅服务器开着不能证明 Mac 上的任务会执行。参见 [OpenAI 官方自动任务说明](https://learn.chatgpt.com/docs/automations)。
 - 已手动生成[首份简报](research/2026-09-29/README.md)；2026-09-30 北京时间 09:01:12 收到首次定时触发，并完成来源检查与[本期简报](research/2026-09-30/README.md)。本次运行证据见[阶段记录](README_RESEARCH_CHECK_20260930.md)，不能据一次成功保证未来每次整点完成。
-- 最近一次：2026-10-10 北京时间 09:04:23 触发，接续 10/8 成功检索；筛选 10/9 三类公告并补查 10/8 cs.RO，形成[MimicX、YOCO、VioLA 三条简报](research/2026-10-10/README.md)。服务器连接恢复，以最新 main 为基础补同步 10/6–8 历史和 PredActor 专题；过程见[阶段记录](README_RESEARCH_CHECK_20261010.md)，发布状态以[核验回执](../data/manifests/research_watch_sync_20261010.json)为准。旧 pending 清单保留失败历史，不用旧镜像覆盖工程入口。
+- 2026-10-10 历史检查：北京时间 09:04:23 触发，接续 10/8 成功检索；筛选 10/9 三类公告并补查 10/8 cs.RO，形成[MimicX、YOCO、VioLA 三条简报](research/2026-10-10/README.md)。服务器连接恢复，以最新 main 为基础补同步 10/6–8 历史和 PredActor 专题；过程见[阶段记录](README_RESEARCH_CHECK_20261010.md)，发布状态以[核验回执](../data/manifests/research_watch_sync_20261010.json)为准。旧 pending 清单保留失败历史，不用旧镜像覆盖工程入口。
 - 2026-10-11 检查：已查来源无确认的实质变化，静默。HF 未核验、SSH 超时，详见[当日检查](README_RESEARCH_CHECK_20261011.md)和[当时待同步清单](../data/manifests/research_watch_pending_sync_20261011.json)。10/12 连接恢复后补同步，不用旧镜像覆盖并行工作。
 - 2026-10-12 检查：已查来源未确认实质变化，静默，见[当日检查](README_RESEARCH_CHECK_20261012.md)。HF 当前元数据仍未核验；SSH 恢复，以服务器最新工程/教学入口补同步 10/11 与本次研究记录，已推送并[核验](../data/manifests/research_watch_sync_20261012.json)。原失败记录保留，不自动恢复计算。
+- 最近一次：2026-10-13 09:01:26北京时间触发；原文/资产入口筛选形成[PriMoRetarget、Reflex、PanTact简报](research/2026-10-13/README.md)，四份相关正文，未复现。RO/LG RSS与三类10/12列表已查，CV RSS空由列表补充；HF当前资产仍未知。执行见[阶段记录](README_RESEARCH_CHECK_20261013.md)，发布以[回执](../data/manifests/research_watch_sync_20261013.json)为准；没有启动工程计算。
 - 修改或暂停日程使用 Codex 自动任务功能，按标识更新原任务，避免创建重复任务。完整创建提示词保存在 [automation 配置快照](../script/research_watch/automation_snapshot.json)；它是审计记录，不会自行创建第二个调度器。
 
 ## 阅读与研究优先级
 
-1. **工程计算当前暂停；研究侧继续关注官方 A3 控制器、因果参考、噪声与教师编码/控制目标对齐。** 官方限定仿真基线已运行，微调和参考预测尚无通过效果门槛的方案；证据以[当前状态](README_CURRENT_STATE.md)、[E16–E19 闭环记录](README_A3_CLOSED_LOOP_20261010.md)及[E20/E21 恢复记录](README_A3_RECOVERY_20261011.md)为准。研究优先动作跟踪、参考质量、延迟及独立评测；遵循最新停载约定，不自动恢复训练或评测，教学仍由学习任务推进。
+1. **研究侧关注合格衣服参考、接触/几何约束、官方 A3 控制器保留能力及独立评测。** 原hp3090保持停载；10/12工程侧已获ZHY独立探索与微调授权，本研究heartbeat仍不启动计算。当前参考质量尚未通过，微调也未证明优于官方；证据以[当前状态](README_CURRENT_STATE.md)、[E22几何结果](README_A3_SMPL_ENVELOPE_20261012.md)及[无需新编码器路线](README_A3_CLOTH_CONTACT_ROUTE_20261012.md)为准。继续关注因果参考、噪声、延迟与教师目标对齐，教学由学习任务推进。
 2. **直接相关：衣服与头环遥操。** 人体到机器人的重定向、跨本体迁移、X2/A3/Q1 接口、全身控制、手腕精度、遮挡、时间同步、SLAM 与延迟。
 3. **方法候选：跨领域借鉴。** 有选择地关注语言模型的记忆和测试时计算，以及状态估计、控制、不确定性、系统调度等方法；必须指出它解决本项目哪个具体问题。
 

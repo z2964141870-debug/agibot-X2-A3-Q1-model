@@ -1,8 +1,8 @@
 {
-  "status": "UNIMPLEMENTED_UNREGISTERED_PLAN",
+  "status": "IMPLEMENTED_UNREGISTERED",
   "proposed_experiment": "A3_ZHY_FRESH_BATCH_20261013_E48",
   "main_variable": "FRESH_STEP4_ON_POLICY_BATCH_INSTEAD_OF_SAVED_INITIAL_BATCH",
-  "source_reference_head": "d26d9596235cf3666e18cca4c99bba23c95edd1a",
+  "source_reference_head": "0e8a14398ec859eccfa230cca5e8b40f48965662",
   "budget_draft": {
     "saved_actor_critic_states": 1,
     "actor_decoder_forwards": 40,
@@ -36,6 +36,22 @@
     {
       "path": "data/experiments/a3_zhy_modules_20261012_E12/module_outputs.pt",
       "sha256": "24e726f986613a73ccf2801e449e33e444cc16f994552c40f9c676d46510954c"
+    },
+    {
+      "path": "data/experiments/a3_zhy_cloth_resource_20261013_E38/motionlib/G_0113_zj_train__183926_zj_walk.pkl",
+      "sha256": "73c8251eddb08bea8c486e34e144cfcb4e8533ed5edca78023fcc094985f4394"
+    },
+    {
+      "path": "data/experiments/a3_zhy_cloth_resource_20261013_E38/motionlib/G_0113_zj_train__192333_zj_warmUp.pkl",
+      "sha256": "e802ecfcd650085adb29d2794d00cdee8120d214afb730bbc7ef32d29f9c457e"
+    },
+    {
+      "path": "data/experiments/a3_zhy_cloth_resource_20261013_E38/motionlib/G_20251226_fjw__fjw_140008_walk.pkl",
+      "sha256": "f7a36df7e028fb8c0d2affff3e9784b4c8a49bd6dbd5a3ce41e9034e52de5329"
+    },
+    {
+      "path": "data/experiments/a3_zhy_cloth_failure_20261013_E45/motionlib/G_20251229_zzx__zzx_111505_walk.pkl",
+      "sha256": "82de6e17d9fc8466078e16069f239109dd2a8e9ef1c0878f32d9399532190a73"
     }
   ],
   "source_sha256": {
@@ -45,11 +61,56 @@
     "script/a3/adam_direction_protocol.py": "c5e42654ecc598edde476f7299c3008a4268c15ac09b39b24bf9b3bd524979f5",
     "script/a3/cloth_cached_tokens.py": "87cb5b57cf53d3c6759a77264c07ef730b5ff9e7b64899ec55dec9068c4a8c60",
     "script/a3/cloth_curve_trainer.py": "4eec945a5bddeb5cc416738f57c727b44f0fbfc6e6d8d7c7baaa0681a892f74f",
-    "script/a3/cloth_constrained_trainer.py": "b4ccfe6f564eb2e261c420ee1cc9b64b743cb63cabf578ed334746fe855f81fb"
+    "script/a3/cloth_constrained_trainer.py": "b4ccfe6f564eb2e261c420ee1cc9b64b743cb63cabf578ed334746fe855f81fb",
+    "script/vendor/sonic_for_a3/gear_sonic/train_agent_trl.py": "49981d01c4bd2de49455afa256e5451f1902febf5421603b6bc724d19f98e712",
+    "script/vendor/sonic_for_a3/gear_sonic/envs/wrapper/manager_env_wrapper.py": "c3f78032c2360510ccccad19c13eb745d2647ef9e7293c3464149c32367bc7ba",
+    "script/vendor/sonic_for_a3/gear_sonic/utils/common.py": "1636f063a9e3e5ad94582838a93c605c1df29e4b25328956d1c8f0c0df148b7d",
+    "script/vendor/sonic_for_a3/gear_sonic/utils/obs_utils.py": "a044340abd0e9a0e0a34e59b993a1243f8a48fdeed4778c9c17b8354666c521d",
+    "script/vendor/sonic_for_a3/gear_sonic/utils/config_utils.py": "90bbe6ee305c4984077154e289ebd562a2420362e762b300118185d84e881182",
+    "script/vendor/sonic_for_a3/gear_sonic/trl/modules/data_utils.py": "b1d749c208c24306712c09ed5a647e3f4b9c97125ef287b12f18b65e939b67c8",
+    "script/a3/fresh_batch_trial.py": "ab3197d8caf4c366a50ffa6d11eb30d64433a946bffcbe9441d65f11379ac622",
+    "script/a3/fresh_batch_probe.py": "7118e07c4c61ea76335a4d320220d166a532cdc833b8b55d48f42b092bf4834f",
+    "script/a3/fresh_batch_collect.py": "2db253673262935e894c68234837beb109f6edd0de394af440ed1a1a672d8fc3",
+    "script/a3/fresh_batch_protocol.py": "89dabf8613532d10232c3df0380cf6ed68a195b3c2613dd7e9e48a025bec5bd5",
+    "script/a3/test_fresh_batch_protocol.py": "829a45bce409eaddd0c6d3fd56829559bb7609624897e5f60c28316c973bf64c"
   },
   "initial_number_availability_checked": true,
   "number_must_be_rechecked": true,
   "historical_failure_replay": false,
   "repeat_after_stop": false,
-  "backup_status": "LOCAL_ONLY"
+  "backup_status": "LOCAL_ONLY",
+  "budget": {
+    "policy_states": 1,
+    "actor_forwards": 40,
+    "critic_forwards": 8,
+    "autograd_grad_calls": 3,
+    "fresh_rollouts": 1,
+    "environment_steps": 24,
+    "mathematical_candidates": 1
+  },
+  "expected_actor_forwards": 34,
+  "expected_critic_forwards": 2,
+  "initialization_actor_forwards": 0,
+  "value_rollout_shape": [
+    16,
+    25,
+    1645
+  ],
+  "value_chunk_size": 1024,
+  "controls": {
+    "stdlib_tests": 8,
+    "passed": true,
+    "tensor_or_model_test_before_registration": false
+  },
+  "sampling_semantics": {
+    "critic_collection": "VENDOR_EVAL_TRAIN_ROLLOUT",
+    "direction_critic": "RESTORE_SAVED_BUFFERS_THEN_TRAIN",
+    "first_batch": "FIRST_4_OF_ORIGINAL_RANDPERM_16",
+    "historical_rng_replay": false,
+    "environment_resets": "ORIGINAL_SPACE_DISCOVERY_RESET_THEN_RESET_ALL",
+    "optimizer_constructed": false,
+    "sampling_actor_precision": "FP32_TF32_FALSE",
+    "collection_calls": 24,
+    "direction_calls": 10
+  }
 }

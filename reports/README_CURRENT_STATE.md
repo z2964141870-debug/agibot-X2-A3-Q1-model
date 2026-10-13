@@ -21,7 +21,7 @@
 
 E46/E47不复跑；[E47结果](README_A3_ADAM_DIRECTION_20261013.md)与[小清单](../data/manifests/a3_adam_direction_result_20261013.json)已完成。1保存状态、10Actor+1Critic forward、3grad，0optimizer/新rollout；28个完整参数映射及源状态不变通过。仅临时Critic running_mean改变，源checkpoint不动。6健康同boot/OOM0、CPU40/GPU30°C、最低可用7.172GiB，登记到计算有1582秒间隙，非连续监控。
 
-下一按[E48新批次方向草案](README_A3_FRESH_BATCH_20261013.md)先核实真实第5rollout缺失和编号，再实现独立step4新采样零更新诊断；保持原规则/原teacher/原门，不盲调权重/LR。不恢复E44/E45、不执行其verify/evaluation；语料/曝光分支关闭。当前0worker。
+下一按[E48新批次方向实现](README_A3_FRESH_BATCH_20261013.md)实现已完成/8标准库控制通过，发布同步后登记并一次执行独立step4新采样零更新诊断；保持原规则/原teacher/原门，不盲调权重/LR。不恢复E44/E45、不执行其verify/evaluation；语料/曝光分支关闭。当前0worker。
 
 官方仍baseline；开发结果通过后也必须独立seed和真正未见会话，不用代码/检查/checkpoint替代效果。工程heartbeat保持ACTIVE，待下一明确分支；不是机器故障停机。恢复必须查实际进程/boot/GPU/资源及原账本。
 

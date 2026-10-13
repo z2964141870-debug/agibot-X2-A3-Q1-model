@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-最新阶段：[E47单次Adam方向诊断完成](README_A3_ADAM_DIRECTION_20261013.md)：同一旧batch上一阶与有限teacher偏差均下降，不支持该输入的Adam反向；下一[E48新采样batch草案](README_A3_FRESH_BATCH_20261013.md)。[内存定向释放575.59MiB与空闲维护](README_ZHY_MEMORY_20261013.md)完成；官方035仍baseline，无新闭环提升，E44/E45仍STOPPED。
+最新阶段：[E47单次Adam方向诊断完成](README_A3_ADAM_DIRECTION_20261013.md)：同一旧batch上一阶与有限teacher偏差均下降，不支持该输入的Adam反向；下一[E48新采样batch实现](README_A3_FRESH_BATCH_20261013.md)。[内存定向释放575.59MiB与空闲维护](README_ZHY_MEMORY_20261013.md)完成；官方035仍baseline，无新闭环提升，E44/E45仍STOPPED。
 
 ## 恢复上下文先读
 
@@ -16,7 +16,7 @@
 | --- | --- | --- |
 | 2026-10-13 | ZHY内存核验与定向释放 | 容器16GiB，两次释放闲置页缓存575.59MiB；加入30分钟空闲维护，无新OOM，见[记录](README_ZHY_MEMORY_20261013.md) |
 | 2026-10-13 | A3同输入Adam方向E47 | COMPLETE，10Actor+1Critic/3grad/0optimizer；原始/Adam一阶/有限teacher均向内，见[结果与恢复](README_A3_ADAM_DIRECTION_20261013.md) |
-| 2026-10-13 | A3当前策略新批次E48草案 | 待实现/未登记：固定step4，只换新采样batch，0optimizer；见[草案](README_A3_FRESH_BATCH_20261013.md) |
+| 2026-10-13 | A3当前策略新批次E48实现 | 实现/8标准库控制通过、未登记：固定step4，只换新采样batch，0optimizer；见[草案](README_A3_FRESH_BATCH_20261013.md) |
 | 2026-10-13 | A3保存状态保留梯度E46 | COMPLETE/12forward/10grad/0optimizer；未支持原始梯度冲突，aux梯度0，见[实现与恢复](README_A3_RETENTION_DIRECTION_20261013.md) |
 | 2026-10-13 | A3保留约束与更新方向审查 | 96帧软teacher/384帧后验保护、衣服KL自适应LR及全局裁剪已核实；下一E46零更新草案未实现，见[审查与恢复](README_A3_RETENTION_CONFLICT_20261013.md) |
 | 2026-10-13 | A3已知失败行走语料对照E45/R19 | 第19optimizer再次teacher停止，4整更新/1920交互，保留step2/4但不评测；语料分支关闭，见[实现与恢复](README_A3_CLOTH_FAILURE_20261013.md) |

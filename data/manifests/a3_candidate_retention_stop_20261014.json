@@ -1,0 +1,126 @@
+{
+  "experiment": "A3_ZHY_CANDIDATE_RETENTION_20261014_E49",
+  "status": "STOPPED_IMPLEMENTATION_JSON_COMPARISON",
+  "state": {
+    "status": "STOPPED",
+    "monitor_pid": 1168145,
+    "stage": "probe",
+    "stage_started_at": 1791910050.3960938,
+    "returncode": 1,
+    "reason": null,
+    "stage_ended_at": 1791910071.6866465
+  },
+  "progress": {
+    "counters": {
+      "policy_states": 1,
+      "actor_forwards": 10,
+      "critic_forwards": 1,
+      "autograd_grad_calls": 3,
+      "original_candidates": 1,
+      "projected_candidates": 0
+    },
+    "at": 1791910064.6319478,
+    "result_exists": false
+  },
+  "health": {
+    "samples": 6,
+    "first_utc": "2026-10-13T16:45:40.715887+00:00",
+    "last_utc": "2026-10-13T16:47:51.443323+00:00",
+    "max_sample_gap_seconds": 109.70061993598938,
+    "boot_ids": [
+      "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    ],
+    "cpu_max_c": 41.0,
+    "gpu_max_c": 30.0,
+    "gpu_power_max_w": 111.56,
+    "available_min_bytes": 7541739520,
+    "oom_counts": [
+      0
+    ],
+    "critical_kernel_errors": [],
+    "telemetry_errors": []
+  },
+  "implementation_head": "13749414180c277465cdd9d8e112af04d6dcabce",
+  "registered_at": 1791909942.3215687,
+  "registration_to_stage_seconds": 108.07452511787415,
+  "failure": "Direct comparison of in-memory Adam betas tuple with equivalent JSON list",
+  "saved_mapping_json_exact_equal": true,
+  "parameter_count": 28,
+  "checkpoint_metadata_evidence": {
+    "inspection": "STDLIB_ZIP_PICKLE_OPCODES_ONLY_NO_UNPICKLE",
+    "betas_opcode_windows": [
+      [
+        {
+          "opcode": "BINUNICODE",
+          "arg": "betas",
+          "offset": 20248
+        },
+        {
+          "opcode": "LONG_BINPUT",
+          "arg": 1380,
+          "offset": 20258
+        },
+        {
+          "opcode": "BINFLOAT",
+          "arg": 0.9,
+          "offset": 20263
+        },
+        {
+          "opcode": "BINFLOAT",
+          "arg": 0.999,
+          "offset": 20272
+        },
+        {
+          "opcode": "TUPLE2",
+          "arg": null,
+          "offset": 20281
+        },
+        {
+          "opcode": "LONG_BINPUT",
+          "arg": 1381,
+          "offset": 20282
+        },
+        {
+          "opcode": "BINUNICODE",
+          "arg": "eps",
+          "offset": 20287
+        },
+        {
+          "opcode": "LONG_BINPUT",
+          "arg": 1382,
+          "offset": 20295
+        }
+      ]
+    ]
+  },
+  "postexit_sha_check": {
+    "verified_files": 99,
+    "mismatches": []
+  },
+  "pre_candidate": {
+    "raw_total_direction": {
+      "dot": 0.6137541928995537,
+      "cosine": 0.059669147539401966,
+      "teacher_change_along_descent": -0.6137541928995537,
+      "interpretation": "LOCAL_TEACHER_DECREASE"
+    },
+    "candidate_teacher_directional_change": 6.256351608542673e-05,
+    "candidate_displacement_norm": 0.0054208678675349035,
+    "full_gradient_norm": 28.25528335571289,
+    "full_clip_factor": 0.0035391610581427813,
+    "candidate_lrs": [
+      6.749999999999999e-06,
+      6.749999999999999e-06
+    ]
+  },
+  "projected_candidates": 0,
+  "optimizer_steps": 0,
+  "new_rollouts": 0,
+  "deployable_checkpoints": 0,
+  "result_json_exists": false,
+  "projection_effect_known": false,
+  "machine_fault_confirmed": false,
+  "baseline_improvement_proven": false,
+  "automatic_retry_allowed": false,
+  "backup_status": "LOCAL_ONLY"
+}

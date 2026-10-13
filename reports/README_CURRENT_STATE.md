@@ -19,14 +19,13 @@
 
 ## 下一条具体工作
 
-E46/E47/E48均禁止复跑。最新入口：[E48新batch结果](README_A3_FRESH_BATCH_20261013.md)，[小清单](../data/manifests/a3_fresh_batch_result_20261014.json)。34Actor+2Critic/3grad/384交互/1候选/0optimizer；完整映射、概率门、保存teacher控制和状态不变通过。新KL .000290394使原规则LR升至6.75e-6；原始teacher方向-.613754，Adam一阶+6.25635e-5、有限MSE+7.63463e-5。
+最新[E49候选保留检验](README_A3_CANDIDATE_RETENTION_20261014.md)已STOPPED：2026-10-14 00:47:30–00:47:51，新增映射比较把Adam betas tuple和历史JSON list误判不同。10Actor/decoder+1Critic、3grad、1原候选、0投影/optimizer/新rollout/checkpoint。小清单[a3_candidate_retention_stop](../data/manifests/a3_candidate_retention_stop_20261014.json)。标准库两份mapping逐项相同、pickle操作码确认tuple，99文件SHA未变；不是机器故障证据，也没有投影效果结论。
 
-11健康同boot/OOM0、CPU43/GPU33°C，最低可用4.513GiB，登记至启动49.86秒缺口。app.close快速退出导致progress.json缺失，result已原子保存且独立标准库退出后SHA核验通过；不重跑补文件。
+原E48方向/全梯度/clip/LR精确复现；E49未保存完整原候选有限结果，result不存在，progress已落盘，不能当COMPLETE。6健康同boot/OOM0，CPU41/GPU30°C，最低可用7.024GiB，最大采样间隔109.70秒包含登记至启动间隙。E49代码/计划/账本冻结，禁止自动复跑，也不通过换编号绕过停止规则。
 
-下一固定E48 batch/同step4/moments，独立E49研究实际Adam位移的完整teacher一阶非增约束；单次数学投影加有限teacher/同batch目标检查，0optimizer/新rollout。草案入口[实际位移保留E49](README_A3_CANDIDATE_RETENTION_20261014.md)，预算/来源见对应计划；已实现/5标准库控制通过/容差固定，尚未登记，不能当已启动。当前0worker。不恢复E44/E45或其verify/evaluation，语料/曝光分支关闭。
+已准备独立betas跨JSON表示校验修正和E50接续代码，全部数值/flags/映射门保持严格，4项标准库回归控制通过。E50计划a3_candidate_retention_followup_plan_20261014.json未登记，缺明确重试授权不得启动。需明确继续已停止检验后再独立登记修正版；此前0worker、只做必要只读/缓存维护。E46–E48禁止复跑；E44/E45不恢复/不verify/evaluation，语料曝光分支关闭。工程heartbeat暂保持ACTIVE，状态未变不重复通知，不自行启动纠错复跑。
 
-用户新增明确要求：文件内容缓存压低8GiB启动余量时自行定向回收。E48后一次维护因未辨明进程可见性拒绝，0释放/删除；随后只读核验无大进程、GPU空闲、可用8.225GiB。已补维护失败PID留证和3控制，随后按原保护单次释放2闲置文件的129.77MiB页缓存，0删除；原可用估计8.324→8.450GiB，同boot/OOM0。见[10/14缓存记录](README_ZHY_MEMORY_20261014.md)，维护保护E49计划输入，不放宽门槛或全局drop_caches。
-官方仍baseline；开发结果通过后也必须独立seed和真正未见会话，不用代码/检查/checkpoint替代效果。工程heartbeat保持ACTIVE，待下一明确分支；不是机器故障停机。恢复必须查实际进程/boot/GPU/资源及原账本。
+用户授权缓存压低8GiB余量时自主定向回收，继续zhy_file_cache原限定范围和冷却；保护候选保留计划与可信E49登记输入，0原始数据删除。不放宽8GiB启动、4GiB运行余量。官方仍baseline，不能用诊断成功替代六衣服/四官方效果与最终未见测试。
 
 ## 固定执行与存储约定
 

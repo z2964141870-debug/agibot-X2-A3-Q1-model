@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-最新阶段：[E48新batch方向诊断完成](README_A3_FRESH_BATCH_20261013.md)：2026-10-14 00:02单次COMPLETE，原始总Actor下降向内、Adam一阶与有限步向外，支持研究实际位移保留约束；0optimizer，不是闭环提升。下一固定E48数据研究单次受约束候选；官方035仍baseline，E44/E45仍STOPPED。
+最新阶段：[E49候选保留检验停止](README_A3_CANDIDATE_RETENTION_20261014.md)：10Actor+1Critic/3grad后，原Adam映射tuple与JSON list比较误拒绝；已静态定位，0投影/optimizer/rollout。E49不复跑，投影效果未知，官方035仍baseline。
 
 ## 恢复上下文先读
 
@@ -14,7 +14,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
-| 2026-10-14 | A3实际候选位移保留E49实现 | 固定E48输入/原Adam规则，5标准库控制通过；单次投影/有限门，未登记，见[计划](README_A3_CANDIDATE_RETENTION_20261014.md) |
+| 2026-10-14 | A3实际候选位移保留E49停止 | JSON元组/列表表示差异误拒绝，10Actor+1Critic/0投影；不复跑，见[计划](README_A3_CANDIDATE_RETENTION_20261014.md) |
 | 2026-10-14 | ZHY缓存维护留证 | 用户明确低于8GiB时自主回收；补进程失败证据/3控制，单次释放129.77MiB/0删除，见[记录](README_ZHY_MEMORY_20261014.md) |
 | 2026-10-13 | ZHY内存核验与定向释放 | 容器16GiB，两次释放闲置页缓存575.59MiB；加入30分钟空闲维护，无新OOM，见[记录](README_ZHY_MEMORY_20261013.md) |
 | 2026-10-13 | A3同输入Adam方向E47 | COMPLETE，10Actor+1Critic/3grad/0optimizer；原始/Adam一阶/有限teacher均向内，见[结果与恢复](README_A3_ADAM_DIRECTION_20261013.md) |

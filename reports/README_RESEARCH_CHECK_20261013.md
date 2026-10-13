@@ -1,6 +1,6 @@
 # 每日研究检查 · 2026-10-13
 
-记录日期：2026-10-13，北京时间。阶段：research-watch-20261013。状态：**来源分析与本地记录完成；服务器/GitHub 发布待核验**。
+记录日期：2026-10-13，北京时间。阶段：research-watch-20261013。状态：**来源分析、三条简报与GitHub发布完成，已核验远端**。
 
 ## 目标与范围
 
@@ -47,7 +47,11 @@ ssh -o BatchMode=yes -o ConnectTimeout=12 hp3090 'git -C /media/yu/FAFF-E9771/YU
 
 ## 保存与同步状态
 
-简报、候选、研究状态和入口已在Mac保存。本次仅发布研究增量，提交前重新核对正式副本HEAD、工作区与共享基线，检查diff、Markdown链接、JSON一致性并运行`script/project_tools/audit_git_payload.py`。推送与远端完整提交号核验尚未完成，不提前声明同步成功。
+简报、候选、研究状态和入口已在Mac与正式服务器保存。发布准备期间两份本地入口曾回到服务器基线，研究增量重新应用后核验候选哈希；没有据旧镜像覆盖新增工程内容。正式副本HEAD、远端main和六份共享基线通过提交前检查。
+
+10份实际暂存文件、237,593字节，通过`script/project_tools/audit_git_payload.py`和diff空白检查；服务器289个Markdown本地链接均有效，61条来源的旧54条前缀不变，36份原始来源大小/SHA均通过。实际审核见`logs/research_watch_20261013/canonical_validation.json`与`canonical_research_changes.diff`。
+
+研究内容提交`700e1de99936c4ce8f64371a47bd833c3c03175a`已推送`origin/main`，于北京时间`2026-10-13T09:59:11.870284+08:00`核验服务器HEAD与GitHub完整提交号相同、工作区干净。见[同步回执](../data/manifests/research_watch_sync_20261013.json)和`logs/research_watch_20261013/document_verification.json`。本段、回执与最终状态在该核验后补写，经独立审核提交；其自身提交号由Git历史提供，不递归写入同次提交。
 
 原始来源当前为`LOCAL_ONLY`；只迁移小型研究缓存和日志，不上传网盘、不下载大型数据、不删除原件。同次提交号由Git历史提供，避免在同一提交写自身提交号。
 

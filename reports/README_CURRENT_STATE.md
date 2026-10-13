@@ -1,10 +1,10 @@
 # YUANQI 当前状态与下一步
 
-更新：E40结果已推送核验7a4d025；E41固定decoder单token干预已实现、尚未登记执行。只两次解码/0优化/新回放，官方仍基线、工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
+更新：E41于18:10:43干预通过，原训练mean重算差0，单token恢复后动作max2.86e-6/ratio偏差1.72e-5；0更新/state不变。下一冻结codec采样token复用修正与小微调，官方仍基线、工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
 
 ## 用户目标与固定约定
 
-下一[E41固定协议](README_A3_CLOTH_INTERVENTION_20261013.md)：载入已验官方step0/冻结Actor，4x24相同输入只把[3,2,1,24]的token-.4375改为-.375，原/修正各一次官方外部token decoder调用；原动作应复现实际失配，修正应<=1e-5/max且ratio<=.001、模型state不变。0encoder/quantizer/新rollout/backward/optimizer，保存输出CPU独立复算；尚未登记，成功仍不等于跌倒根因/策略提升。
+最新[E41通过](README_A3_CLOTH_INTERVENTION_20261013.md)：60d647b源，一次官方step0/两decoder forward、0encoder/quantizer/回放/optimizer。原训练token mean重算差0、动作max.017823/ratio偏差.21693；只恢复[3,2,1,24]到-.375后动作max2.861e-6/ratio偏差1.717e-5，原门通过，完整state SHA相同，保存重载CPU独立复算通过。5健康同boot/OOM0/CPU44/GPU28°C/最低可用8.31GB，无异常、已退出。定位此批token导致动作差，不扩大到跌倒或全部输入。下一冻结codec采样实际assembled token复用，小批仍decoder梯度/官方aux/Critic，首概率/冻结/teacher门保留，新编号固定两更新/8optimizer后匹配效果评测；官方仍基线。
 
 最新[E40结果](README_A3_CLOTH_TOKENS_20261013.md)：2映射控制通过，g1 native96帧token差0；a3_fast native48帧仅环境7/tick2/token1/channel24，latent -0.4401627480983734→-0.44016292691230774（差1.788e-7），离散token -0.375→-0.4375（跳.0625）。4x24/4x1均1变化，16x1无变化，与动作差帧完全重合；仅相关性，decoder干预/跌倒因果尚未验。3健康同boot/OOM0/CPU40/GPU26°C/最低可用9.13GB，无异常，已退出；0新模型/forward/回放/optimizer。下一新编号固定decoder/首批输入与4x24形状，只改该token坐标，验动作/初始概率恢复；之后才决定冻结codec采样token复用及小微调。原门不放宽。
 

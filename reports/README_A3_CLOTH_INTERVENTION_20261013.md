@@ -1,6 +1,6 @@
 # A3单token固定解码干预E41
 
-记录日期：2026-10-13，北京时间。状态：代码与固定协议已准备，尚未登记或运行。
+记录日期：2026-10-13，北京时间。状态：18:10:43 COMPLETE/VERIFIED_TOKEN_INTERVENTION，两次解码控制通过，0优化。
 
 ## 目标与依据
 
@@ -26,4 +26,10 @@ data/experiments/a3_zhy_cloth_intervention_20261013_E41/、logs/a3_zhy_cloth_int
 
 ## 当前结果与下一步
 
-尚未执行，不称已证明干预。通过后再把冻结codec的采样token复用等候选写成独立兼容修正，测试首实际PPO概率、参数冻结与锚点保持后才微调；不通过则保留失败并查decoder/拼合接口。最终仍需六衣服/四官方匹配开发门和真正未见会话，官方仍基线。
+代码60d647b已推送核验并同步ZHY。18:10:27–18:10:43一次独立干预15.89秒完成，官方step0只载一次，模型完整state前后SHA3545909b9fa2bbc6ee020c86857cfc1d51add59974abc24917f748bf789d8d62一致，0encoder/quantizer forward、0新rollout/backward/optimizer。
+
+原训练token通过官方外部token decoder重算与真实训练mean最大差严格0，复现动作RMSE0.0006889392/max0.0178229809、ratio最大偏差0.2169280052。固定4x24输入及权重、仅[3,2,1,24]由-.4375恢复-.375后，动作RMSE4.384823e-7/max2.861023e-6、ratio偏差1.716614e-5，均满足原1e-5/0.001门。重载保存输出后CPU概率独立复算逐项相等。这证明此一批动作/概率偏差由该离散token翻转足以解释；并未定位底层具体GEMM kernel或证明机器人跌倒/旧所有批次根因。
+
+5健康样本18:10:22–18:10:42、最大间隔5.22秒，同boot d994e71f-bae0-46ba-a5f7-6c2163771c6c/OOM0、CPU最高44/GPU28摄氏度、GPU最高47.26W，可用最低8,313,692,160字节，无新关键内核/遥测异常；已退出。[E41小清单](../data/manifests/a3_zhy_cloth_intervention_20261013_E41.json)登记两组数值、state SHA与输出SHA2fb4cd465928eeedcf0f5f7352d9cc1f71175538d66dec2c4a9216bd89b787ba，原始输出ZHY LOCAL_ONLY。
+
+下一独立修正仅适用于冻结codec：采样时直接保存实际assembled token，PPO小批使用该token构造动作分布，encoder/kin/std/buffer必须不变；官方aux及Critic仍保留，decoder梯度不截断。先验首实际batch概率及teacher约束，再两更新/8optimizer与独立验收。最终仍需六衣服/四官方匹配开发门和真正未见会话，官方仍基线，没有微调收益。

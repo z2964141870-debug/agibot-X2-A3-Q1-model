@@ -74,6 +74,6 @@ python3 -m script.a3.retention_direction_trial plan
 
 ## 下一步与恢复
 
-E46已完成，禁止重新register/run。下一先静态核验step4保存Adam状态和参数ID映射，再为独立E47固定“历史Adam方向与teacher”有限诊断：以原保存moments/step/LR判断原始梯度与Adam方向的差异，不把当前固定batch伪装成历史第17–19batch；不擅自补Critic、猜测裁剪系数或做weight sweep。只有映射和优化器公式得到证实，才登记相应零更新计算预算；否则保留未证实边界。下一计划另存，不改E46登记或E45账本。
+E46已完成，禁止重新register/run。下一先静态核验step4保存Adam状态和参数ID映射，再为独立E47固定“历史Adam方向与teacher”有限诊断：以原保存moments/step/LR判断原始梯度与Adam方向的差异，不把当前固定batch伪装成历史第17–19batch；不擅自补Critic、猜测裁剪系数或做weight sweep。只有映射和优化器公式得到证实，才登记相应零更新计算预算；否则保留未证实边界。下一[独立E47固定草案](README_A3_ADAM_DIRECTION_20261013.md)已保存（静态核验完成，尚未实现/登记），不改E46登记或E45账本。
 
 官方仍baseline。之后任何训练方案仍须完整匹配效果、独立seed与真正未见会话，不能把诊断结论当作效果改善。

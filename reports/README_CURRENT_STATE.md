@@ -17,7 +17,7 @@
 
 ## 下一条具体工作
 
-E46不复跑；按[结果入口](README_A3_RETENTION_DIRECTION_20261013.md)静态核验保存step4 Adam状态、参数ID与LR/更新公式，为独立E47固定历史Adam方向/有限步问题与预算。原始PPO/teacher方向未相反，aux实测0，不关aux或扫teacher权重。保存状态诊断不等于实际第17–19batch历史重演；若需当前完整Actor+Critic梯度必须另明确登记，不猜测裁剪尺度。E44/E45不恢复、不独立训练verify/闭环评测，语料/曝光分支关闭。
+E46不复跑；下一按[E47固定草案](README_A3_ADAM_DIRECTION_20261013.md)和[小清单](../data/manifests/a3_adam_direction_plan_20261013.json)实现独立同输入Adam方向/有限步诊断。静态完整参数分组/全Actor+Critic裁剪已核实，保存实际moments/ID尚未加载。最多1保存Actor+Critic状态、12Actor/decoder forward、1临时Critic forward、3grad，0optimizer/rollout/可部署checkpoint，900秒。临时Critic按train更新其局部norm buffer并留证，源checkpoint不动；完整梯度原0.1裁剪/原KL调LR后只计算1个保存Adam数学候选，不扫权重/LR或换batch。数学候选非实际第17–19步重演，fused非逐位复现。E47尚未实现登记，编号恢复重查。E44/E45不恢复、不独立训练verify/闭环评测，语料/曝光分支关闭。
 
 官方仍baseline；开发结果通过后也必须独立seed和真正未见会话，不用代码/检查/checkpoint替代效果。工程heartbeat保持ACTIVE，待下一明确分支；不是机器故障停机。恢复必须查实际进程/boot/GPU/资源及原账本。
 

@@ -19,13 +19,15 @@
 
 ## 下一条具体工作
 
-最新[E49候选保留检验](README_A3_CANDIDATE_RETENTION_20261014.md)已STOPPED：2026-10-14 00:47:30–00:47:51，新增映射比较把Adam betas tuple和历史JSON list误判不同。10Actor/decoder+1Critic、3grad、1原候选、0投影/optimizer/新rollout/checkpoint。小清单[a3_candidate_retention_stop](../data/manifests/a3_candidate_retention_stop_20261014.json)。标准库两份mapping逐项相同、pickle操作码确认tuple，99文件SHA未变；不是机器故障证据，也没有投影效果结论。
+最新[E50单次候选保留](README_A3_CANDIDATE_RETENTION_20261014.md)于2026-10-14 01:07 COMPLETE，候选LOCAL_PROJECTION_REJECTED。用户已明确同意纠错接续；E49仍STOPPED，E50的JSON类型修正验证通过，原E48全部11标量/方向对照差0。16Actor/decoder+1Critic、3grad、1原候选+1投影，0新rollout/optimizer/checkpoint，禁止复跑。
 
-原E48方向/全梯度/clip/LR精确复现；E49未保存完整原候选有限结果，result不存在，progress已落盘，不能当COMPLETE。6健康同boot/OOM0，CPU41/GPU30°C，最低可用7.024GiB，最大采样间隔109.70秒包含登记至启动间隙。E49代码/计划/账本冻结，禁止自动复跑，也不通过换编号绕过停止规则。
+teacher RMSE原.046055388→投影.046205418，MSE增加1.3841811e-5；实际舍入一阶变化1.24524e-9过门，有限teacher非增门失败。固定Actor目标下降.04469024、原.05/.5保护通过。只证明切平面约束不保证该有限步保留，不是机器故障或baseline提升。小清单[a3_candidate_retention_result_E50](../data/manifests/a3_candidate_retention_result_20261014_E50.json)。参数/输入/保存optimizer未变，退出前源SHA核验及progress/result齐全。
 
-已准备独立betas跨JSON表示校验修正和E50接续代码，全部数值/flags/映射门保持严格，4项标准库回归控制通过。E50计划a3_candidate_retention_followup_plan_20261014.json未登记；用户2026-10-14已明确回复“执行修正版一次”，可按原输入预算独立登记启动一次，不再次询问。修正版已推送同步ce79397；真实保存元数据的标准库比较通过。下一发布授权计划、按原两轮三次预检独立登记执行E50一次；当前0worker。E46–E48禁止复跑；E44/E45不恢复/不verify/evaluation，语料曝光分支关闭。工程heartbeat暂保持ACTIVE，状态未变不重复通知，仅执行此次明确授权的E50。
+6健康同boot/OOM0，CPU42/GPU30°C，最低可用7.008GiB；最大采样间隔61.57秒包含登记至启动间隙。当前0worker。此投影方法分支结束，不进入短训练，不缩步/换batch/扫LR，不自动追加同类零更新诊断。E46–E50方向链收束，E44/E45不恢复/不verify/evaluation。
 
-用户授权缓存压低8GiB余量时自主定向回收，继续zhy_file_cache原限定范围和冷却；保护E50接续计划与可信E49登记输入，0原始数据删除。E49后维护因额外Python父包装器拒绝，0释放；只读可用8.325GiB且无其他计算，不重试强清。不放宽8GiB启动、4GiB运行余量。官方仍baseline，不能用诊断成功替代六衣服/四官方效果与最终未见测试。
+下一优先本地reports/research与既有研究记录，针对有限实际更新的能力保留设计新的单变量训练方案，先区分原.05/.5绝对保护、E50诊断非增门与六衣服/四官方效果验收；不能倒改拒绝结果、放宽质量门或盲加轮数/数据/权重。形成可检验短训练方案后再独立登记，不把继续诊断当提升。
+
+缓存按用户授权自主定向回收，保护E50固定输入和后续新计划。E49后维护因同步Python父包装器拒绝，0释放；只读可用8.325GiB、无其他计算，未重试强清。后续从shell直接调用维护或exec替换父包装器，原空闲/额度/保护范围不变。可信最新基准E50登记，旧E49/E48不改。工程heartbeat保持ACTIVE，状态未变静默，官方035仍baseline。
 
 ## 固定执行与存储约定
 

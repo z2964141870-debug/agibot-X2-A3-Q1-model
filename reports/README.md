@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-最新阶段：[E49候选保留检验停止](README_A3_CANDIDATE_RETENTION_20261014.md)：10Actor+1Critic/3grad后，原Adam映射tuple与JSON list比较误拒绝；已静态定位，0投影/optimizer/rollout。E49不复跑，投影效果未知，官方035仍baseline。
+最新阶段：[E50单次保留投影完成并拒绝](README_A3_CANDIDATE_RETENTION_20261014.md)：原对照精确复现，一阶条件通过但有限teacher误差增加；0optimizer/新rollout，未进入训练。E49实现停止保持，方向诊断链收束，下一研究有限更新保留方案，官方035仍baseline。
 
 ## 恢复上下文先读
 
@@ -14,6 +14,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-14 | A3单次投影修正版E50 | COMPLETE/候选拒绝：一阶过门但有限teacher MSE+1.38418e-5，16Actor+1Critic/0optimizer，见[结果](README_A3_CANDIDATE_RETENTION_20261014.md) |
 | 2026-10-14 | A3实际候选位移保留E49停止 | JSON元组/列表表示差异误拒绝，10Actor+1Critic/0投影；不复跑，见[计划](README_A3_CANDIDATE_RETENTION_20261014.md) |
 | 2026-10-14 | ZHY缓存维护留证 | 用户明确低于8GiB时自主回收；补进程失败证据/3控制，单次释放129.77MiB/0删除，见[记录](README_ZHY_MEMORY_20261014.md) |
 | 2026-10-13 | ZHY内存核验与定向释放 | 容器16GiB，两次释放闲置页缓存575.59MiB；加入30分钟空闲维护，无新OOM，见[记录](README_ZHY_MEMORY_20261013.md) |

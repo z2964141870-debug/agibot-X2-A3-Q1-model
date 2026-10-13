@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-最新阶段：E38准备通过，但实际首训练batch一帧采样/重算动作失配，更新前概率门拒绝，0optimizer；机器同boot/OOM0、无热/内存保护。下一保存原始首批及token边界的零优化诊断，官方仍基线；长期工程ACTIVE。
+最新阶段：E38首batch概率门拒绝，0optimizer、机器无新故障；独立E39已实现先保存input/latent/token的零优化诊断，尚未登记。官方仍基线；长期工程ACTIVE。
 
 ## 恢复上下文先读
 
@@ -14,6 +14,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-13 | A3衣服首批持久诊断E39 | 24采样步/首batch/49固定输入forward，禁止optimizer/backward；尚未登记，见[协议与入口](README_A3_CLOTH_CAPTURE_20261013.md) |
 | 2026-10-13 | A3衣服微调资源入口E38/R15 | 准备13控制/900帧通过；实际首批1帧失配、ratio偏差21.7%，0optimizer，同boot/OOM0、无资源保护，见[停止与诊断入口](README_A3_CLOTH_RESOURCE_20261013.md) |
 | 2026-10-13 | A3运行std明确后的衣服微调E37/R14 | 准备瞬时可用3.964GiB触发保护，0优化/回放、同boot/OOM0；停载内存恢复但原因未明，见[停止与恢复入口](README_A3_CLOTH_CANONICAL_20261013.md) |
 | 2026-10-13 | A3衣服受约束解码器微调E36/R13 | 准备在官方std裁剪前置条件拒绝，0MotionLib/optimizer；非新机器故障，旧分支保留，见[失败与接续](README_A3_CLOTH_CONSTRAINED_20261013.md) |

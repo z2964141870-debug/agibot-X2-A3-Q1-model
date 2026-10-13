@@ -1,8 +1,10 @@
 # YUANQI 当前状态与下一步
 
-更新：E38/R15训练16:45:18在第一实际batch概率门拒绝、0optimizer，同boot/OOM0且无资源保护。下一独立零优化保存首批/采样token边界，旧停止实验不复跑；官方仍基线、工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
+更新：E38停止已推送核验5a76e86；独立E39已实现首batch先保存的零优化诊断，尚未登记/执行。下一新登记/一次采集与CPU独立核验；旧停止实验不复跑，官方仍基线、工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
 
 ## 用户目标与固定约定
+
+当前下一入口[E39固定协议](README_A3_CLOTH_CAPTURE_20261013.md)：复用E38已验PKL，24新采样步+第一真实batch+49固定输入forward，optimizer/backward禁止；先持久sampling/rollout/实际Actor输入、latent/token及精度，再判断，独立CPU核对官方step0与输入/动作/编码差异。编码cache的CPU复制会改时序，未复现不否定E38。尚未登记/运行；原内存/温度/首异常保护不变，暂不启动微调。
 
 当前入口[E38停止与诊断](README_A3_CLOTH_RESOURCE_20261013.md)：13控制/900帧准备通过；一次train53.53秒完成暖启动、step0和24步采样，首batch1帧动作差>1e-4，RMSE6.889e-4/max.017823、ratio偏差.21693，原门未放宽。0optimizer、无step1/2；384锚点暖启动差0。17累计健康同boot/OOM0/CPU41/GPU34°C、最低可用7.33GB，无热/内存/内核异常；阶段间1035秒非连续覆盖。原代码失败后未保存首batch/训练精度回执，下一新编号零优化诊断先持久采样input/mean/token/latent及首训练batch再判据，核对输入/离散边界/调用路径。E38 STOPPED不复跑，E36/E37保留，官方仍基线，无新改善。
 

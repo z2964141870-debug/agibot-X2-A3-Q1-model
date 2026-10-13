@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-最新阶段：E42/R17两更新/8optimizer及独立CPU训练验收通过，采样token修正保留冻结与decoder梯度；下一六衣服/四官方匹配效果。尚无策略改善，官方仍基线；工程ACTIVE。
+最新阶段：E42/R17训练合同通过，但完整匹配评测/独立复算拒绝：衣服均误差+9.63%/仍5/6不倒，三官方能力超退化预算。下一保存轨迹分解后决定单变量，官方仍基线；工程ACTIVE。
 
 ## 恢复上下文先读
 
@@ -14,7 +14,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
-| 2026-10-13 | A3冻结codec token复用微调E42/R17 | 两更新/8optimizer和独立CPU验收通过，冻结精确/初始概率门通过；动态效果待验，见[结果与入口](README_A3_CLOTH_CACHED_20261013.md) |
+| 2026-10-13 | A3冻结codec token复用微调E42/R17 | 训练合同通过，但六衣服/四官方匹配开发效果拒绝，均误差+9.63%/三官方超预算，见[结果与入口](README_A3_CLOTH_CACHED_20261013.md) |
 | 2026-10-13 | A3固定decoder单token干预E41 | 原训练mean重算差0，仅恢复1坐标后概率门通过、model state不变；0优化/新回放，见[结果与边界](README_A3_CLOTH_INTERVENTION_20261013.md) |
 | 2026-10-13 | A3保存compact编码token审计E40 | 2映射控制通过，1.79e-7 latent差对应1 token翻转/同动作帧；0模型加载/forward，见[结果与边界](README_A3_CLOTH_TOKENS_20261013.md) |
 | 2026-10-13 | A3衣服首批持久诊断E39 | 0optimizer/输入逐值稳定，16环境动作精确复现、4环境一帧失配；a3_fast compact token待映射，见[结果与恢复](README_A3_CLOTH_CAPTURE_20261013.md) |

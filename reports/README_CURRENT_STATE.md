@@ -1,10 +1,10 @@
 # YUANQI 当前状态与下一步
 
-更新：E42/R17于18:25:57两更新/8optimizer及独立CPU训练验收通过；采样token修正概率门通过，冻结部分未变化，尚未动态评测。下一六衣服/四官方匹配效果验收，官方仍基线、工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
+更新：E42/R17于18:40:46完整评测/独立复算完成、开发效果拒绝：六衣服均误差+9.63%/仍5/6不倒，三官方动作超过2%预算。训练合同修正通过不等于效果，官方仍基线、工程ACTIVE。下一只分析已保存候选/基线轨迹，避免盲目增加训练。详细过程见阶段README，旧进程/机器信息不是实时状态。
 
 ## 用户目标与固定约定
 
-当前下一[E42/R17](README_A3_CLOTH_CACHED_20261013.md)：代码5a76b56、prepare3控制/900帧PKL SHA通过，18:25:38训练两更新/8optimizer完成、18:25:57 CPU验收通过。首批采样token identity精确、修正动作max2.861e-6/ratio偏差1.717e-5（原重新编码max.017823）；step1/2均仅14个dyn Actor张量变化、encoder/kin/std/buffer精确冻结，8批decoder梯度有效；末teacher RMSE.02823/max.12586在原预算内。22健康同boot/OOM0/CPU40/GPU34°C/最低可用4.066GiB接近保护、无异常，已退出；最长189.40秒为阶段间隙。step2 SHA8429914489ea0c2ecd58623dfafb2c33ca23898282df0c8db2ae0b9457b5da59/LOCAL_ONLY。下一只做六衣服/四官方匹配效果门，不重复注册/训练；尚无策略改善/未见泛化，官方仍基线。
+最新[E42/R17](README_A3_CLOTH_CACHED_20261013.md)：两更新/8optimizer、采样token identity/原概率门/精确冻结与CPU训练核验通过；六衣服2994步/四官方5775步及独立效果复算完成。衣服均RMSE .1413798→.1549925rad（+9.63%），zzx5.86秒仍倒；warmUp/fjw/zls超2%关节预算，warmUp/zls/zzx超5%世界根/腕预算。官方仍4/4不倒，但转身/单腿/踏步关节+4.93/+14.53/+5.85%超2%预算；候选REJECTED，不晋级。72健康同boot/OOM0/CPU43/GPU35°C，最低可用4.066GiB在训练、阶段间最大518.72秒空档，无机器故障、已退出。step2 SHA8429914489ea0c2ecd58623dfafb2c33ca23898282df0c8db2ae0b9457b5da59/LOCAL_ONLY。下一独立保存轨迹分解：共同跌倒前/关节分组/初始输入与原参考一致性，再决定单变量；不复跑E42/不增更新或降门。官方仍基线，未见会话待验。
 
 最新[E41通过](README_A3_CLOTH_INTERVENTION_20261013.md)：60d647b源，一次官方step0/两decoder forward、0encoder/quantizer/回放/optimizer。原训练token mean重算差0、动作max.017823/ratio偏差.21693；只恢复[3,2,1,24]到-.375后动作max2.861e-6/ratio偏差1.717e-5，原门通过，完整state SHA相同，保存重载CPU独立复算通过。5健康同boot/OOM0/CPU44/GPU28°C/最低可用8.31GB，无异常、已退出。定位此批token导致动作差，不扩大到跌倒或全部输入。下一冻结codec采样实际assembled token复用，小批仍decoder梯度/官方aux/Critic，首概率/冻结/teacher门保留，新编号固定两更新/8optimizer后匹配效果评测；官方仍基线。
 

@@ -1,10 +1,12 @@
 # YUANQI 当前状态与下一步
 
-更新：E36准备因官方std裁剪前置条件拒绝、0优化；下一E37明确运行边界后执行受约束衣服微调，尚未开始。官方仍基线；长期工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
+更新：E37准备触发原4GiB内存保留保护，0优化/回放、同boot/OOM0；瞬时资源来源未定位。下一只读拆controller/worker内存与容器记账，不复跑E36/E37。官方仍基线；长期工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
 
 ## 用户目标与固定约定
 
-E36于15:14:49准备STOPPED：官方序列化std不等于运行clamp(.001,.5)，前置拒绝，0MotionLib/optimizer；5健康样本同boot/CPU42/GPU27°C/OOM0，可用最低10.71GB，已退出、非机器故障。旧登记/停止清单不改，旧源97b3856可恢复。[失败](README_A3_CLOTH_CONSTRAINED_20261013.md)。下一独立[E37](README_A3_CLOTH_CANONICAL_20261013.md)只明确官方运行边界：warm load仍精确匹配原件，step0允许std规范化，之后encoder/kin/std/buffer冻结。三段train、2更新/8optimizer/FP32、官方384帧锚点、原概率/六衣服+四官方开发效果门保持；尚未登记或计算。确定性基线不受std影响，复用E26/E02，不重复旧回放；通过开发门仍需未见会话。
+E37于15:30:17 prepare STOPPED_MEMORY_RESERVE_PROTECTION：启动后0.21秒停止、console0字节、MotionLib0/训练目录无，0optimizer/新回放，准备门未验。2健康样本同boot/CPU40/GPU26°C/OOM0，最低可用4,257,181,696字节(3.964GiB)，原4GiB保留线未放宽；瞬时容器RSS8.56GB。15:35:53只读可用13.03GB/RSS0.36GB、GPU空闲，不能据此自动复跑或定位峰值原因。下一只读查controller/worker导入与容器记账并准备按PID阶段证据；新计算必须新编号/资源与遥测证据齐全。详细[停止与恢复](README_A3_CLOTH_CANONICAL_20261013.md)、[清单](../data/manifests/a3_cloth_resource_stop_20261013_E37.json)。无确认重启/OOM/热停，工程heartbeat ACTIVE、下一只读，不恢复原机计算。
+
+E36准备因官方std运行clamp前置条件拒绝、0更新，旧源97b3856和停止账本保留。[失败](README_A3_CLOTH_CONSTRAINED_20261013.md)。E37固定了规范化后冻结std的入口，但尚未实际验收：三段train、2更新/8optimizer/FP32、encoder/kin/std/buffer冻结、官方384帧锚点及六衣服/四官方开发门均保留。确定性基线可复用E26/E02；未取得新模型或策略提升，真正未见会话验证仍待执行。
 
 E35于14:38:26 COMPLETE：5裁剪边界控制/2994保存步通过，clip(captured)/执行目标/独立足geometry差0，六段初始1570输入与E26完全相等。E34仍5/6不倒、zzx6.06秒倒（E26为5.66秒）；均RMSE0.1413798054到0.1497577774rad，退化5.9259%，开发效果拒绝。五段原不倒动作均保留2%误差预算；四裁剪帧都是zzx晚期左腕pitch，不认定跌倒因果。0新回放/权重加载/装配复算/optimizer/mj_step；5健康样本同boot/CPU40/GPU27°C/OOM0、可用最低9.72GB，已退出。旧E34失败语义断言/STOPPED保留。恢复[E35结果](README_A3_SMPL_ASSEMBLY_AUDIT_20261013.md)、[小清单](../data/manifests/a3_zhy_smpl_assembly_audit_20261013_E35.json)。下一核查冻结encoder/官方行为保持的受约束衣服微调入口与数据划分，尚未登记E36或开始新训练。
 

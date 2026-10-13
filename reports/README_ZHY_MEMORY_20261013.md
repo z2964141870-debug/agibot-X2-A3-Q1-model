@@ -33,3 +33,20 @@ cd /opt/data/private/hechengzhu/ZHY
 按原三次5秒门启动已登记E47一次，不重复register。保留当前需要的输入缓存，避免继续盲目清缓存。剩余kmem虽大，本次没有可验证安全的容器专属强制回收手段，不改内核参数或重启共享服务。后续仍以实时容器快照为准，不能拿本次释放后的数值作未来预检。
 
 后续23:07：E47已单次COMPLETE，运行最低可用7.172GiB，同boot/OOM0；见[计算结果](README_A3_ADAM_DIRECTION_20261013.md)。本次释放没有改E47任何保护门。
+
+## 用户后续要求：缓存增长时自动回收（23:24）
+
+已新增标准库维护脚本script/project_tools/zhy_file_cache.py，接入现有zhy-a3工程heartbeat，不另开自启服务。计算结束后与每30分钟巡检，只有GPU空闲、无其他计算/大进程、同boot/OOM、遥测可靠时才执行。总file cache超过4GiB触发检查，每次最多32文件/2GiB驻留页，成功释放后至少30分钟间隔；这些是维护界限，不改原实验8GiB/4GiB资源门。
+
+只考虑有COMPLETE/STOPPED/REJECTED/FAILED账本的项目工件/日志目录。保护未终结实验输入、下一阶段计划输入、可见打开/映射文件；按inode去重，不跟随目录或文件软链接，不扫描环境/宿主目录，不删任何文件、不动进程，不全局drop_caches。仅给只读fd发送DONTNEED；没有写入工件的代码路径。三小基础进程FD/maps可见性缺口仍明确记录。调用前后状态异常则拒绝并记证，不强制清空全部cache。
+
+实际先inspect选出9个闲置文件，然后单次trim释放161,927,168字节（154.43MiB），所有目标fincore驻留降为0，文件inode/大小/mtime/ctime不变。本轮两次定向释放累计603,549,696字节（575.59MiB），不把同期其他内存波动计入。第二次后原可用估计约8.597GiB、OOM0/failcnt未增；仍有约5.17GiB其他file cache，当前不在合格闲置项目目标中，没有声称全部清零。紧接一次维护调用验证COOLDOWN，不再次释放。
+
+使用最新计划/登记作为保护列表与boot/OOM基线，后续阶段更新这两个参数：
+```bash
+cd /opt/data/private/hechengzhu/ZHY
+/usr/bin/python3 -m script.project_tools.zhy_file_cache --trim \
+  --protect-plan data/manifests/a3_fresh_batch_plan_20261013.json \
+  --baseline data/experiments/a3_zhy_adam_direction_20261013_E47/registration.json
+```
+不加--trim只检查。每次小receipt保存在logs/zhy_file_cache/，[本次策略/实测SHA清单](../data/manifests/zhy_file_cache_policy_20261013.json)。本脚本不自动启动任何训练或切换实验；E48仍是待实现草案，主线状态按最新README。

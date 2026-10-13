@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-13晚23:07。E47单次COMPLETE：固定旧batch上原始梯度、保存Adam一阶和有限步均降低teacher，RMSE .046055→.045792，不支持该输入的Adam反向。内存已核验并释放旧checkpoint缓存421.16MiB。官方035仍baseline，无新闭环提升。
+更新：2026-10-13晚23:07。E47单次COMPLETE：固定旧batch上原始梯度、保存Adam一阶和有限步均降低teacher，RMSE .046055→.045792，不支持该输入的Adam反向。内存已核验，两次释放闲置文件页缓存共575.59MiB，并加入空闲期定向维护。官方035仍baseline，无新闭环提升。
 
 ## 当前A3工作与恢复
 
@@ -28,7 +28,7 @@ E46/E47不复跑；[E47结果](README_A3_ADAM_DIRECTION_20261013.md)与[小清�
 ## 固定执行与存储约定
 
 - 模型/张量/IK/仿真/训练仅在经ssh hp3090连接root@59.77.15.15:25115的/opt/data/private/hechengzhu/ZHY，既有data/environments/a3-sonic环境；原hp3090的/media/yu/FAFF-E9771/YUANQI_A3只Git/代码/标准库传输，绝不恢复原机训练。Mac只小型代码/README/清单。
-- 无真机/驱动/功率/BIOS授权；不并行计算、不自动开机恢复。新计算三次5秒预检可用估计>=8GiB、无其他RSS>1GiB/计算、GPU空闲、可靠遥测；不改记账/门槛，不终止他人进程。用户最新授权适当释放内存，已定向释放两个旧checkpoint页缓存421.16MiB，不作全局drop_caches；见[内存核验](README_ZHY_MEMORY_20261013.md)。CPU90/GPU85两次5秒保护、4GiB保留、900秒/阶段；首真实机器故障或计算异常停分支，不自动复跑。SSH失败记UNKNOWN。
+- 无真机/驱动/功率/BIOS授权；不并行计算、不自动开机恢复。新计算三次5秒预检可用估计>=8GiB、无其他RSS>1GiB/计算、GPU空闲、可靠遥测；不改记账/门槛，不终止他人进程。用户最新要求缓存增长时回收，现有heartbeat空闲期调用zhy_file_cache：cache>4GiB时只对已结束项目闲置文件限32个/2GiB释放，至少间隔30分钟；保护当前/下一阶段输入、打开/映射文件。两次共575.59MiB，0文件删除，不作全局drop_caches；见[内存核验](README_ZHY_MEMORY_20261013.md)。CPU90/GPU85两次5秒保护、4GiB保留、900秒/阶段；首真实机器故障或计算异常停分支，不自动复跑。SSH失败记UNKNOWN。
 - 每重要阶段立即模板README、索引、current state、小SHA清单；审diff/暂存、audit_git_payload.py后scoped提交推送指定GitHub main并核对远端。保留并行修改/旧账本，不强推。大型工件LOCAL_ONLY，网盘未核验，不写凭据或代发消息。
 - 本工程zhy-a3 ACTIVE/每30分钟，恢复以真实README/state为准，旧yuanqi-a3与hp3090保持PAUSED；每日研究yuanqi不变。只通知新结论/阶段/异常/需用户处理的新阻塞，状态不变静默。机器首故障或可验收目标达成后保存入口并暂停工程heartbeat。
 

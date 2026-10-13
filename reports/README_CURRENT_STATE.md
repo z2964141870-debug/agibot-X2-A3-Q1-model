@@ -1,8 +1,10 @@
 # YUANQI 当前状态与下一步
 
-更新：E40于17:55:58 COMPLETE，保存审计确认a3_fast1坐标token翻转0.0625对应latent差1.79e-7/同动作帧。0模型加载/forward/optimizer；下一固定decoder/token干预，官方仍基线、工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
+更新：E40结果已推送核验7a4d025；E41固定decoder单token干预已实现、尚未登记执行。只两次解码/0优化/新回放，官方仍基线、工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
 
 ## 用户目标与固定约定
+
+下一[E41固定协议](README_A3_CLOTH_INTERVENTION_20261013.md)：载入已验官方step0/冻结Actor，4x24相同输入只把[3,2,1,24]的token-.4375改为-.375，原/修正各一次官方外部token decoder调用；原动作应复现实际失配，修正应<=1e-5/max且ratio<=.001、模型state不变。0encoder/quantizer/新rollout/backward/optimizer，保存输出CPU独立复算；尚未登记，成功仍不等于跌倒根因/策略提升。
 
 最新[E40结果](README_A3_CLOTH_TOKENS_20261013.md)：2映射控制通过，g1 native96帧token差0；a3_fast native48帧仅环境7/tick2/token1/channel24，latent -0.4401627480983734→-0.44016292691230774（差1.788e-7），离散token -0.375→-0.4375（跳.0625）。4x24/4x1均1变化，16x1无变化，与动作差帧完全重合；仅相关性，decoder干预/跌倒因果尚未验。3健康同boot/OOM0/CPU40/GPU26°C/最低可用9.13GB，无异常，已退出；0新模型/forward/回放/optimizer。下一新编号固定decoder/首批输入与4x24形状，只改该token坐标，验动作/初始概率恢复；之后才决定冻结codec采样token复用及小微调。原门不放宽。
 

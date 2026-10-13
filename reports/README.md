@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-最新阶段：E40保存审计确认A3 latent仅差1.79e-7，1个离散token翻转0.0625，恰与首批失配帧重合；下一固定decoder/token干预，未证明跌倒根因或微调收益。官方仍基线；工程ACTIVE。
+最新阶段：E40确认单坐标token翻转与动作失配重合；独立E41两次固定decoder单token干预已实现、尚未登记。未证明跌倒根因或微调收益，官方仍基线；工程ACTIVE。
 
 ## 恢复上下文先读
 
@@ -14,6 +14,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-13 | A3固定decoder单token干预E41 | 固定4x24输入/权重，只恢复1坐标，两次解码/0优化/新回放；尚未运行，见[协议](README_A3_CLOTH_INTERVENTION_20261013.md) |
 | 2026-10-13 | A3保存compact编码token审计E40 | 2映射控制通过，1.79e-7 latent差对应1 token翻转/同动作帧；0模型加载/forward，见[结果与边界](README_A3_CLOTH_TOKENS_20261013.md) |
 | 2026-10-13 | A3衣服首批持久诊断E39 | 0optimizer/输入逐值稳定，16环境动作精确复现、4环境一帧失配；a3_fast compact token待映射，见[结果与恢复](README_A3_CLOTH_CAPTURE_20261013.md) |
 | 2026-10-13 | A3衣服微调资源入口E38/R15 | 准备13控制/900帧通过；实际首批1帧失配、ratio偏差21.7%，0optimizer，同boot/OOM0、无资源保护，见[停止与诊断入口](README_A3_CLOTH_RESOURCE_20261013.md) |

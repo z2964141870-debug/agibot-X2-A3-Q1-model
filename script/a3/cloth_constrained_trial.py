@@ -18,6 +18,9 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'data/experiments/a3_zhy_cloth_constrained_20261013_E36'
 LOG = ROOT / 'logs/a3_zhy_cloth_constrained_20261013_E36'
 RUN = ROOT / 'data/training/a3_zhy_cloth_constrained_20261013_E36/R13_001_s0'
+MANIFEST = ROOT / 'data/manifests/a3_zhy_cloth_constrained_20261013_E36.json'
+EXPERIMENT = 'A3_ZHY_CLOTH_CONSTRAINED_20261013_E36'
+TRIAL = 'R13'
 OFFICIAL = ROOT / 'data/models/a3_official_035/checkpoints/035_step200000/model_step_200000.pt'
 CORPUS = ROOT / 'data/experiments/a3_zhy_smpl_hull_20261013_E23'
 BASELINE = ROOT / 'data/experiments/a3_zhy_smpl_frozen_20261013_E26'
@@ -25,6 +28,8 @@ OLD = ROOT / 'data/experiments/a3_zhy_search_20261012_E02'
 ANCHOR = ROOT / 'data/experiments/a3_zhy_gradient_20261012_E11/rollout.pt'
 TARGETS = ROOT / 'data/experiments/a3_zhy_modules_20261012_E12/module_outputs.pt'
 TRAINER = 'script.a3.cloth_constrained_trainer.ClothConstrainedTrainer'
+MODULE = 'script.a3.cloth_constrained_trial'
+CANONICAL_STD = False
 CODE = ('script/a3/cloth_constrained_trial.py', 'script/a3/cloth_constrained_trainer.py',
     'script/a3/test_cloth_constrained.py', 'script/a3/consistent_precision.py',
     'script/a3/verified_finetune.py', 'script/a3/finetune_trainer.py',
@@ -86,7 +91,7 @@ def register():
     kernel = command(['dmesg', '--color=never'])
     if kernel['returncode']:
         raise RuntimeError('Reliable kernel telemetry required')
-    job = dict(experiment='A3_ZHY_CLOTH_CONSTRAINED_20261013_E36', trial='R13',
+    job = dict(experiment=EXPERIMENT, trial=TRIAL,
         registered_at=time.time(), project_head=command(['git', 'rev-parse', 'HEAD'])['stdout'],
         boot_id=value['boot_id'], baseline_oom_kill=value['container_memory']['oom_kill'],
         kernel_baseline=kernel['stdout'].splitlines(),
@@ -111,7 +116,8 @@ def register():
         fresh_final_test=False, final_test_sessions_not_yet_selected=True,
         max_cpu_c=90, max_gpu_c=85, consecutive_hot_samples=2, sample_seconds=5,
         memory_reserve_gib=4, runtime_limit_seconds=900, auto_resume=False,
-        repeat_allowed=False, backup_status='LOCAL_ONLY')
+        repeat_allowed=False, std_canonicalization=CANONICAL_STD,
+        contract_tests=5 if CANONICAL_STD else 3, backup_status='LOCAL_ONLY')
     OUT.mkdir(parents=True)
     LOG.mkdir(parents=True)
     for name in ('motionlib', 'cloth_references', 'official_references'):
@@ -130,6 +136,8 @@ def register():
 
 def prepare(job):
     from script.a3 import test_cloth_constrained as tests
+    if job.get('std_canonicalization', False):
+        from script.a3 import test_cloth_std_contract as tests
     from gear_sonic.data_process.convert_soma_csv_to_motion_lib import load_a3_flat_csv, convert_sequence
     from script.a3.reference_contract import load_sim
     from scipy.spatial.transform import Rotation
@@ -139,12 +147,19 @@ def prepare(job):
     stream = io.StringIO()
     result = unittest.TextTestRunner(stream=stream, verbosity=2).run(
         unittest.defaultTestLoader.loadTestsFromModule(tests))
-    if not result.wasSuccessful() or result.testsRun != 3:
+    if not result.wasSuccessful() or result.testsRun != job['contract_tests']:
         raise ValueError('Freeze/likelihood controls failed: ' + stream.getvalue())
     source = torch.load(OFFICIAL, map_location='cpu', weights_only=False)
     std = source['policy_state_dict']['std']
-    if not torch.equal(std, std.clamp(.001, .5)):
+    if not job.get('std_canonicalization', False) and not torch.equal(std, std.clamp(.001, .5)):
         raise ValueError('Official std needs clamping; register a separate baseline contract first')
+    from script.a3.cloth_std_contract import canonical_policy_state
+    canonical = canonical_policy_state(source['policy_state_dict'])
+    std_boundary = dict(source_min=float(std.min()), source_max=float(std.max()),
+        runtime_min=float(canonical['std'].min()), runtime_max=float(canonical['std'].max()),
+        changed_coordinates=int((std != canonical['std']).sum()),
+        semantics='OFFICIAL_GET_STD_CLAMP_BEFORE_FROZEN_DIGEST_NOT_OPTIMIZER_UPDATE',
+        deterministic_mean_uses_std=False)
     del source
     sim, rows = load_sim(), []
     for sequence in job['training_sequences']:
@@ -172,8 +187,8 @@ def prepare(job):
         rows.append(dict(sequence=sequence, partition='train', frames=count, fps=30,
             joint_max_error=joint_error, root_max_error_m=root_error, rotation_max_error_rad=angle_error,
             path=str(target.relative_to(ROOT)), sha256=sha256(target), bytes=target.stat().st_size))
-    atomic_json(OUT / 'prepare.json', dict(tests=3, tests_passed=True, test_output=stream.getvalue(),
-        motions=rows, excludes_other_partitions=True, dynamics_acceptance=False))
+    atomic_json(OUT / 'prepare.json', dict(tests=result.testsRun, tests_passed=True, test_output=stream.getvalue(),
+        motions=rows, excludes_other_partitions=True, std_boundary=std_boundary, dynamics_acceptance=False))
 
 
 def train(job):
@@ -222,6 +237,9 @@ def verify_training(job):
             raise ValueError('Checkpoint step changed')
         payloads.append(payload)
     source = torch.load(OFFICIAL, map_location='cpu', weights_only=False)
+    if job.get('std_canonicalization', False):
+        from script.a3.cloth_std_contract import canonical_policy_state
+        source['policy_state_dict'] = canonical_policy_state(source['policy_state_dict'])
     for key in ('policy_state_dict', 'value_state_dict'):
         if source[key].keys() != payloads[0][key].keys() or any(
                 not torch.equal(v, payloads[0][key][n]) for n, v in source[key].items()):
@@ -362,7 +380,7 @@ def run(stage):
         try:
             with (directory / 'console.log').open('w') as stream:
                 child = subprocess.Popen([str(ROOT / 'data/environments/a3-sonic/bin/python'), '-m',
-                    'script.a3.cloth_constrained_trial', 'worker', '--stage', stage], cwd=ROOT,
+                    MODULE, 'worker', '--stage', stage], cwd=ROOT,
                     env=dict(os.environ, OMP_NUM_THREADS='1', MKL_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1',
                         YUANQI_E36_MONITOR_PID=str(os.getpid()),
                         PYTHONPATH=str(ROOT / 'script/vendor/sonic_for_a3') + ':' + str(ROOT)),
@@ -390,7 +408,7 @@ def run(stage):
         for name in ('prepare', 'training_verification', 'effect_verification'):
             if (OUT / (name + '.json')).exists():
                 receipt[name] = read(OUT / (name + '.json'))
-        atomic_json(ROOT / 'data/manifests/a3_zhy_cloth_constrained_20261013_E36.json', receipt)
+        atomic_json(MANIFEST, receipt)
         print(json.dumps(state))
         return 0 if state['status'] != 'STOPPED' else 2
 

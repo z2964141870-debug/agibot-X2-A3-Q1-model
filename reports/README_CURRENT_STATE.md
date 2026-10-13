@@ -8,6 +8,8 @@
 
 E23于09:26:12完成、09:35:11独立验收VERIFIED_KINEMATIC_CORPUS；3CPU测试/2100帧复核、12geom/2739真实凸包顶点与mesh最低点差0，17584积分完整接受。6/7通过原运动学门，位置P95 2.845–4.603cm/接触脚底约1–1.5mm；下蹲仅P95 6.290cm失败，拒绝。只读误差分解定位双膝/髋，左膝局部P95 13.178cm，最差区间2.833–3.067秒，未证明具体根因。0optimizer/0策略回放/无CUDA；15健康样本同boot/CPU47/GPU26°C/OOM0，结束到验收538.59秒空档不算连续覆盖，任务退出。下一E24冻结官方测六段，尚未登记/启动；另拆下蹲腿目标/关节可行性。`training_ready`仅原分区运动学合同，七段已用于开发，不代表未见测试/平衡。见[E23结果](README_A3_SMPL_HULL_20261013.md)与[清单](../data/manifests/a3_zhy_smpl_hull_20261013_E23.json)。
 
+10/13研究：已读近期PriMoRetarget/Reflex/PanTact相关正文与资产入口，形成[三条简报](research/2026-10-13/README.md)；优先级不保证严格不穿地、冻结仅适用指定阶段、同钟采集不代替跨设备同步。VICAR及两个旧文v2仅候选/版本观察，未复现。当前仍先验参考质量再测官方策略；本heartbeat未启动计算。发布状态以[阶段记录](README_RESEARCH_CHECK_20261013.md)及[同步回执](../data/manifests/research_watch_sync_20261013.json)为准。
+
 E22历史7/7质量失败，几何诊断确认AABB空角点使真实脚约1.6cm悬空。下一变量已由E23实现/验证，不重复E22。详见[E22机制](README_A3_SMPL_ENVELOPE_20261012.md)与[几何证据](../data/manifests/a3_zhy_smpl_envelope_20261012_E22_geometry.json)。
 
 用户问题转到不训练新编码器的路线：固定035源码/匹配配置确认已有闭环全身控制，但A3-fast640维只含机器人q/v/相对根朝向，没有独立人体根速度/接触输入；不能断言缺字段就必然无法迈步。现有FGP扩展已输出根速度/接触概率，可靠性未验收；LFP入口默认physics_optim=True走KinematicModel，并非简单脚速融合分支。建议先验上游根运动/支撑与重定向，再冻结官方闭环验证，参考合格仍失败才做衣服动作针对微调；该源码核验仅只读，后续CPU E22见上段。见[路线与源码证据](README_A3_CLOTH_CONTACT_ROUTE_20261012.md)。

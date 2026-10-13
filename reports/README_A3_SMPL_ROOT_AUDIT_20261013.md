@@ -47,6 +47,6 @@ zzx跌倒前含首次跌倒帧有16个双脚法向力各≤1N的离散采样，�
 
 ## 保存与下一步
 
-登记前保存协议，实际结果后已更新本README、索引/current state和SHA清单；审计scoped diff/暂存、运行script/project_tools/audit_git_payload.py、提交推送main并核验远端。提交结果以Git实际历史为准；写本段时待推送，不能据此称已同步。
+登记前保存协议，实际结果后已更新本README、索引/current state和SHA清单。6个scoped文件暂存检查通过、audit_git_payload PASS，128,589字节；结果提交5f834d914fa516677e369bfc488f6396661fa41d已推送并核对GitHub main，12:12源机/ZHY HEAD同该提交且工作区干净。Mac与ZHY的注册代码/结果清单SHA一致，见[发布回执](../data/manifests/a3_zhy_smpl_root_audit_20261013_sync.json)。目标旧incoming三文件已scoped stash保留；原始数据和数值工件LOCAL_ONLY，未核验网盘备份。本段和回执随后另作记录提交，最新HEAD以Git历史为准。
 
 下一优先从保存的4.4–4.9秒区间细分关节误差、q_des/实际关节/速度与左右脚接触，先定位哪条腿/哪个执行关节最早偏离，核验SDK/策略/闭环motor角映射和模型限位。若用末端qpos/qvel重建PD，只能标为后验估计，不能当实际子步力矩或饱和证据；需要精确力矩时应在新的单变量实验被动采样。root接口问题与跌倒分开处理，不扩大训练或放宽门。七段仍是开发参考，官方基线保留；未完成衣服完整跟随/未见验收，工程heartbeat继续，旧巡检与日研不变。

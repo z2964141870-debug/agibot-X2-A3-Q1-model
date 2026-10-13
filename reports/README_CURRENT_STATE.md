@@ -1,10 +1,10 @@
 # YUANQI 当前状态与下一步
 
-更新：E38停止已推送核验5a76e86；独立E39已实现首batch先保存的零优化诊断，尚未登记/执行。下一新登记/一次采集与CPU独立核验；旧停止实验不复跑，官方仍基线、工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
+更新：E39于17:24:01独立核验完成、0optimizer；输入/权重稳定，16环境动作精确相同、4环境一帧失配。下一保存工件a3_fast compact token映射审计，不新仿真/forward；官方仍基线、工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
 
 ## 用户目标与固定约定
 
-当前下一入口[E39固定协议](README_A3_CLOTH_CAPTURE_20261013.md)：复用E38已验PKL，24新采样步+第一真实batch+49固定输入forward，optimizer/backward禁止；先持久sampling/rollout/实际Actor输入、latent/token及精度，再判断，独立CPU核对官方step0与输入/动作/编码差异。编码cache的CPU复制会改时序，未复现不否定E38。尚未登记/运行；原内存/温度/首异常保护不变，暂不启动微调。
+当前[E39完成](README_A3_CLOTH_CAPTURE_20261013.md)：dd0dfc1源、24采样步/首batch/49forward已捕获并独立CPU核验，官方step0精确（std运行clamp）/0optimizer。actor/critic/tokenizer输入及old_mu保存差0、实际Actor输入差0；环境[5,2,0,7]有效96帧仅[3,2]失配。实际/4x24无aux/4x1无aux动作max约.017823、ratio偏差.21693，16x1回放动作严格0差/ratio偏差3.81e-6；g1 token差0、a3_fast compact mask尚未映射，不能宣称量化根因。16健康同boot/OOM0/CPU41/GPU34°C/最低可用5.99GB，无保护；已退出。下一独立只读保存工件mask映射/latent-token审计，0新仿真/模型加载/forward；随后才决定边界修正与微调。官方仍基线。
 
 当前入口[E38停止与诊断](README_A3_CLOTH_RESOURCE_20261013.md)：13控制/900帧准备通过；一次train53.53秒完成暖启动、step0和24步采样，首batch1帧动作差>1e-4，RMSE6.889e-4/max.017823、ratio偏差.21693，原门未放宽。0optimizer、无step1/2；384锚点暖启动差0。17累计健康同boot/OOM0/CPU41/GPU34°C、最低可用7.33GB，无热/内存/内核异常；阶段间1035秒非连续覆盖。原代码失败后未保存首batch/训练精度回执，下一新编号零优化诊断先持久采样input/mean/token/latent及首训练batch再判据，核对输入/离散边界/调用路径。E38 STOPPED不复跑，E36/E37保留，官方仍基线，无新改善。
 

@@ -23,7 +23,7 @@ E46/E47/E48均禁止复跑。最新入口：[E48新batch结果](README_A3_FRESH_
 
 11健康同boot/OOM0、CPU43/GPU33°C，最低可用4.513GiB，登记至启动49.86秒缺口。app.close快速退出导致progress.json缺失，result已原子保存且独立标准库退出后SHA核验通过；不重跑补文件。
 
-下一固定E48 batch/同step4/moments，独立E49研究实际Adam位移的完整teacher一阶非增约束；单次数学投影加有限teacher/同batch目标检查，0optimizer/新rollout。草案入口[实际位移保留E49](README_A3_CANDIDATE_RETENTION_20261014.md)，预算/来源见对应计划；尚未实现登记，不能当已启动。当前0worker。不恢复E44/E45或其verify/evaluation，语料/曝光分支关闭。
+下一固定E48 batch/同step4/moments，独立E49研究实际Adam位移的完整teacher一阶非增约束；单次数学投影加有限teacher/同batch目标检查，0optimizer/新rollout。草案入口[实际位移保留E49](README_A3_CANDIDATE_RETENTION_20261014.md)，预算/来源见对应计划；已实现/5标准库控制通过/容差固定，尚未登记，不能当已启动。当前0worker。不恢复E44/E45或其verify/evaluation，语料/曝光分支关闭。
 
 用户新增明确要求：文件内容缓存压低8GiB启动余量时自行定向回收。E48后一次维护因未辨明进程可见性拒绝，0释放/删除；随后只读核验无大进程、GPU空闲、可用8.225GiB。已补维护失败PID留证和3控制，随后按原保护单次释放2闲置文件的129.77MiB页缓存，0删除；原可用估计8.324→8.450GiB，同boot/OOM0。见[10/14缓存记录](README_ZHY_MEMORY_20261014.md)，维护保护E49计划输入，不放宽门槛或全局drop_caches。
 官方仍baseline；开发结果通过后也必须独立seed和真正未见会话，不用代码/检查/checkpoint替代效果。工程heartbeat保持ACTIVE，待下一明确分支；不是机器故障停机。恢复必须查实际进程/boot/GPU/资源及原账本。

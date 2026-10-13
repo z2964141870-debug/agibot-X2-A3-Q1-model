@@ -1,5 +1,5 @@
 {
-  "status": "UNIMPLEMENTED_UNREGISTERED_PLAN",
+  "status": "IMPLEMENTED_UNREGISTERED",
   "proposed_experiment": "A3_ZHY_CANDIDATE_RETENTION_20261014_E49",
   "main_variable": "PROJECT_ADAM_DISPLACEMENT_ONTO_FULL_TEACHER_NONINCREASE_HALFSPACE",
   "inputs": [
@@ -40,7 +40,12 @@
   "source_sha256": {
     "script/a3/adam_direction_probe.py": "50953b82d939aac33ead441aa0e1345f7f4b48c49ac7776d6b6850d3af0a7d81",
     "script/a3/adam_direction_protocol.py": "c5e42654ecc598edde476f7299c3008a4268c15ac09b39b24bf9b3bd524979f5",
-    "script/a3/fresh_batch_probe.py": "7118e07c4c61ea76335a4d320220d166a532cdc833b8b55d48f42b092bf4834f"
+    "script/a3/fresh_batch_probe.py": "7118e07c4c61ea76335a4d320220d166a532cdc833b8b55d48f42b092bf4834f",
+    "script/a3/candidate_retention_trial.py": "b86840740dcf7381900da602af603adefd9051f93064fe87b30a412cda1c8f75",
+    "script/a3/candidate_retention_probe.py": "edc24bd18b3b718234840d4f9d893ef6629cff449a346c8bb2c185373772c9a8",
+    "script/a3/candidate_retention_protocol.py": "e2552668dce85c0993baec53d2fc3543672bcb9b4a66f3f20b671c9af9ac4f07",
+    "script/a3/test_candidate_retention_protocol.py": "6c98f08b26782485817fdb06dcb54dfcc48474935859bd8acd8bbe63b6e25206",
+    "script/a3/fresh_batch_collect.py": "2db253673262935e894c68234837beb109f6edd0de394af440ed1a1a672d8fc3"
   },
   "budget_draft": {
     "policy_states": 1,
@@ -76,5 +81,31 @@
     "Scope is local candidate, no historical-step causality or baseline quality proof",
     "Number availability must be checked before implementation/registration"
   ],
-  "backup_status": "LOCAL_ONLY"
+  "backup_status": "LOCAL_ONLY",
+  "budget": {
+    "policy_states": 1,
+    "actor_forwards": 16,
+    "critic_forwards": 1,
+    "autograd_grad_calls": 3,
+    "original_candidates": 1,
+    "projected_candidates": 1
+  },
+  "tolerances": {
+    "control_atol": 1e-07,
+    "control_rtol": 1e-05,
+    "direction_control_atol": 1e-08,
+    "direction_control_rtol": 0.0001,
+    "rounded_direction_max": 1e-08,
+    "finite_mse_increase_max": 1e-09,
+    "actor_objective_increase_max": 1e-07
+  },
+  "stage_seconds": 900,
+  "finite_objective_definition": "Original fixed-batch Actor partial objective: cached-token PPO/entropy/aux plus first96 teacher; saved Critic values constant in both comparisons. Clothing-only loss also reported.",
+  "projection_precision": "FP64 projection of actual original FP32 displacement, FP64 addition to original parameter, single FP32 rounding; gate evaluates actual rounded displacement.",
+  "local_validation": {
+    "stdlib_tests": 5,
+    "tensor_tests_on_mac_or_bastion": 0,
+    "number_available": true,
+    "budget_changed_from_draft": false
+  }
 }

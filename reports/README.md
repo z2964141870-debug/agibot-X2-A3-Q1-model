@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-最新阶段：[有限更新保留研究与E51实现](README_A3_FINITE_RETENTION_20261014.md)：补读D2R方法/CPO固定源码，独立候选验收后提交的短训练已实现、未登记。E50拒绝与官方035基线不改；资源及事务控制通过后执行。
+最新阶段：[ZHY外部容器OOM与E51启动阻塞](README_ZHY_KERNEL_BLOCK_20261014.md)：ZHY自身OOM0/同boot，但原宿主级内核门匹配另一容器新OOM，工程自动执行暂停；E51仍未登记/0worker，官方035仍baseline。
 
 ## 恢复上下文先读
 
@@ -16,6 +16,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-14 | ZHY宿主内核事件归属 | 外部容器MEMCG OOM、ZHY OOM0；原内核门阻塞，E51未登记/自动执行暂停，见[恢复入口](README_ZHY_KERNEL_BLOCK_20261014.md) |
 | 2026-10-14 | A3有限更新保留研究与E51实现 | 新8更新/32提案及最终10回放计划；3标准库控制通过、张量控制/实际训练待执行，见[入口](README_A3_FINITE_RETENTION_20261014.md) |
 | 2026-10-14 | A3单次投影修正版E50 | COMPLETE/候选拒绝：一阶过门但有限teacher MSE+1.38418e-5，16Actor+1Critic/0optimizer，见[结果](README_A3_CANDIDATE_RETENTION_20261014.md) |
 | 2026-10-14 | A3实际候选位移保留E49停止 | JSON元组/列表表示差异误拒绝，10Actor+1Critic/0投影；不复跑，见[计划](README_A3_CANDIDATE_RETENTION_20261014.md) |

@@ -1,8 +1,10 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-14。E50完成但有限非增门拒绝，一阶投影分支关闭；最新[E51有限候选接受短训练](README_A3_FINITE_RETENTION_20261014.md)已实现、未登记/未执行，3项标准库控制通过，0worker。官方035仍baseline，暂无效果提升。
+更新：2026-10-14 03:35。E51仍未登记/0worker；新增宿主内核OOM已证实来自另一个容器，ZHY自身OOM0/同boot。原宿主级内核门被触发，暂停本工程自动执行，入口[内核归属与启动阻塞](README_ZHY_KERNEL_BLOCK_20261014.md)。官方035仍baseline，暂无效果提升。
 
 ## 当前A3工作与恢复
+
+最新状态为BLOCKED_NEW_HOST_KERNEL_EVENT，覆盖下方较早WAIT_EXTERNAL_COMPUTE恢复动作。E51登记门不区分cgroup，原基准/门槛保持，未实际执行register或创建STOPPED账本。其他计算仍占GPU46%/3879MiB；不维护缓存、不干预。按原新增内核异常停分支规则暂停zhy-a3，保留旧监控/每日研究设置。恢复先读[证据与范围](README_ZHY_KERNEL_BLOCK_20261014.md)，再明确处理宿主级门；不因ZHY OOM0自行过滤外部事件。
 
 - 23:01内存核验/定向释放完成，原可用估计约8.087→8.509GiB，16GiB容器RSS仅约0.34GiB，主要文件cache和文件系统kmem；同boot/OOM0，无正在运行训练残留。[记录](README_ZHY_MEMORY_20261013.md)。
 
@@ -18,6 +20,8 @@
 - 基线为[E26](README_A3_SMPL_FROZEN_VALIDATED_20261013.md)六衣服、E02四官方。六衣服中zzx5.66s跌倒；七段衣服反复用于开发，不能当真正未见最终测试。E23运动学6/7通过不等于动力学平衡，下蹲仍不合格。
 
 ## 下一条具体工作
+
+先处理上述已留证的外部容器OOM造成的宿主级内核门阻塞；自动执行暂停。下述E51流程仅为阻塞解除后的原方案，当前不得直接启动。
 
 最新[E50单次候选保留](README_A3_CANDIDATE_RETENTION_20261014.md)于2026-10-14 01:07 COMPLETE，候选LOCAL_PROJECTION_REJECTED。用户已明确同意纠错接续；E49仍STOPPED，E50的JSON类型修正验证通过，原E48全部11标量/方向对照差0。16Actor/decoder+1Critic、3grad、1原候选+1投影，0新rollout/optimizer/checkpoint，禁止复跑。
 
@@ -37,7 +41,7 @@ E51/R20实现完成但尚未登记：从官方035/空Adam开始、E45相同4段�
 - 模型/张量/IK/仿真/训练仅在经ssh hp3090连接root@59.77.15.15:25115的/opt/data/private/hechengzhu/ZHY，既有data/environments/a3-sonic环境；原hp3090的/media/yu/FAFF-E9771/YUANQI_A3只Git/代码/标准库传输，绝不恢复原机训练。Mac只小型代码/README/清单。
 - 无真机/驱动/功率/BIOS授权；不并行计算、不自动开机恢复。新计算三次5秒预检可用估计>=8GiB、无其他RSS>1GiB/计算、GPU空闲、可靠遥测；不改记账/门槛，不终止他人进程。用户最新要求缓存增长时回收，现有heartbeat空闲期调用zhy_file_cache：cache>4GiB时只对已结束项目闲置文件限32个/2GiB释放，至少间隔30分钟；保护当前/下一阶段输入、打开/映射文件。两次共575.59MiB，0文件删除，不作全局drop_caches；见[内存核验](README_ZHY_MEMORY_20261013.md)。CPU90/GPU85两次5秒保护、4GiB保留、900秒/阶段；首真实机器故障或计算异常停分支，不自动复跑。SSH失败记UNKNOWN。
 - 每重要阶段立即模板README、索引、current state、小SHA清单；审diff/暂存、audit_git_payload.py后scoped提交推送指定GitHub main并核对远端。保留并行修改/旧账本，不强推。大型工件LOCAL_ONLY，网盘未核验，不写凭据或代发消息。
-- 本工程zhy-a3 ACTIVE/每30分钟，恢复以真实README/state为准，旧yuanqi-a3与hp3090保持PAUSED；每日研究yuanqi不变。只通知新结论/阶段/异常/需用户处理的新阻塞，状态不变静默。机器首故障或可验收目标达成后保存入口并暂停工程heartbeat。
+- 本工程zhy-a3因新增宿主内核事件暂停（保留每30分钟配置），恢复以本次阻塞README与真实state为准，旧yuanqi-a3与hp3090保持PAUSED；每日研究yuanqi不变。只通知新结论/阶段/异常/需用户处理的新阻塞，状态不变静默。机器首故障或可验收目标达成后保存入口并暂停工程heartbeat。
 
 ## 其他工作入口（本轮未修改）
 

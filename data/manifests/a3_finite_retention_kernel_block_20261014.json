@@ -1,0 +1,56 @@
+{
+  "recorded_at_utc": "2026-10-13T19:34:53.811209+00:00",
+  "status": "BLOCKED_NEW_HOST_KERNEL_EVENT",
+  "experiment": "E51",
+  "experiment_state": "IMPLEMENTED_UNREGISTERED",
+  "e51_registered": false,
+  "e51_workers": 0,
+  "new_tensor_tests": 0,
+  "new_optimizer_steps": 0,
+  "new_rollouts": 0,
+  "cache_maintenance_attempted": false,
+  "file_deletions": 0,
+  "boot": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+  "boot_unchanged": true,
+  "own_container_oom_kill": 0,
+  "own_container_oom_unchanged": true,
+  "external_memcg_oom_confirmed": true,
+  "global_host_oom_confirmed": false,
+  "hardware_failure_confirmed": false,
+  "source_commit": "da57c84e265be3f53cc21c22bd7621d376ec81ff",
+  "original_guard": "finite_retention_trial.py:97-100 compares all host FATAL lines against E50 baseline",
+  "guard_changed": false,
+  "old_ledger_changed": false,
+  "oom_event_approx_beijing": "2026-10-14T02:06:22.808534+08:00",
+  "event_time_method": "current epoch minus current uptime plus kernel monotonic timestamp; approximate wall clock",
+  "own_cgroup_differs_from_oom_memcg": true,
+  "available_estimate_bytes": 10824708096,
+  "gpu": [
+    {
+      "temperature.gpu": 55.0,
+      "power.draw": 213.11,
+      "power.limit": 350.0,
+      "utilization.gpu": 46.0,
+      "memory.used": 3879.0
+    }
+  ],
+  "other_compute_present": true,
+  "cache_failcnt_observed": 100119960,
+  "failcnt_is_oom_kill_counter": false,
+  "automation_action": "PAUSE_ZHY_A3_PER_ORIGINAL_NEW_KERNEL_EVENT_RULE",
+  "recovery": "Review external-container scope with explicit new direction before any guard change or fresh E51 startup; retain original baseline and all ledgers",
+  "evidence": [
+    {
+      "path": "logs/zhy_a3_heartbeat/20261014T033220_health.json",
+      "bytes": 1709,
+      "sha256": "5cb2d889413725eb56462461dc2beae8b8bbe8b7cd32f763ca0d8a736c9b854e",
+      "storage": "LOCAL_ONLY"
+    },
+    {
+      "path": "logs/zhy_a3_heartbeat/20261014T033220_kernel_review.json",
+      "bytes": 3828,
+      "sha256": "4e1e25c717207c325ed8b51ace27eaec7219047a7d837f26709db7716f4df02f",
+      "storage": "LOCAL_ONLY"
+    }
+  ]
+}

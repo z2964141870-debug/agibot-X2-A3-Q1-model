@@ -1,6 +1,6 @@
 # A3有限更新能力保留：原文审查与E51短训练
 
-记录：2026-10-14。研究与独立实现完成，E51/R20尚未登记、未执行；标准库3项控制和静态语法检查通过，ZHY张量控制待原资源门。官方035仍baseline，E50拒绝不改。
+记录：2026-10-14。03:35新增宿主内核事件阻塞，见[外部容器OOM归属](README_ZHY_KERNEL_BLOCK_20261014.md)，工程自动执行暂停。研究与独立实现完成，E51/R20尚未登记、未执行；标准库3项控制和静态语法检查通过，ZHY张量控制待原资源门。官方035仍baseline，E50拒绝不改。
 
 ## 目标与已完成内容
 
@@ -90,3 +90,7 @@ D2R正文PDF16906920字节、SHA256 `9efd28116d1f9c86f4d19c314b181c81a369aab2281
 实现及研究已scoped审计通过（13文件/115879字节），提交 `d0b1ae3fdd3cc012c3f51edaf651bf7cd0638615` 已推送main并比对远端，同提交快进同步到ZHY，既有E48/E49/E50未跟踪完整receipt保留。精简同步与SHA记录 `a3_finite_retention_publish_20261014.json`；3项标准库测试通过，张量测试实际0次。
 
 01:56再次只读：E51 OUT仍不存在，计划的全部源码SHA与ZHY一致；同boot/OOM0，GPU43%/4284MiB/56°C、CPU51°C，可见其他Python RSS约4.74GiB及1.17GiB。原可用估计约9.80GiB，但GPU/其他计算门不满足。维持WAIT_EXTERNAL_COMPUTE/未登记，未重试缓存维护，工程heartbeat继续ACTIVE。待空闲后按原三次预检推进，无需用户操作。旧原机训练和旧巡检不恢复。
+
+## 北京时间03:35新增宿主内核事件阻塞
+
+只读发现E50 kernel_baseline外1条新OOM FATAL；相邻CONSTRAINT_MEMCG路径明确属于另一容器，ZHY自身OOM0且boot未变。原登记门按宿主全部FATAL行拦截，未做cgroup过滤，不能直接继续register。保存[归属证据与恢复入口](README_ZHY_KERNEL_BLOCK_20261014.md)并暂停zhy-a3，未创建E51 OUT/账本、0张量控制/训练/评测，不改原基准或阈值。其他计算仍占GPU，缓存维护未执行。此状态覆盖前文资源空闲后即可直接推进的旧恢复步骤。

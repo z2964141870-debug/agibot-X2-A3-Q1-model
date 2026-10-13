@@ -1,0 +1,158 @@
+{
+  "status": "STATIC_REVIEW_COMPLETE_NEXT_OFFLINE_PROBE_NOT_IMPLEMENTED_OR_REGISTERED",
+  "recorded_at": 1791898374.6126955,
+  "source_head": "4875463124d3a921295f22bc77a73db2edec90c7",
+  "sources": [
+    {
+      "path": "script/a3/cloth_constrained_trainer.py",
+      "sha256": "b4ccfe6f564eb2e261c420ee1cc9b64b743cb63cabf578ed334746fe855f81fb",
+      "methods": [
+        {
+          "name": "restrict_policy",
+          "line": 18
+        },
+        {
+          "name": "_compute_loss",
+          "line": 90
+        },
+        {
+          "name": "_after_optimizer_step",
+          "line": 122
+        }
+      ]
+    },
+    {
+      "path": "script/a3/cloth_cached_tokens.py",
+      "sha256": "87cb5b57cf53d3c6759a77264c07ef730b5ff9e7b64899ec55dec9068c4a8c60",
+      "methods": []
+    },
+    {
+      "path": "script/a3/cloth_curve_trainer.py",
+      "sha256": "4eec945a5bddeb5cc416738f57c727b44f0fbfc6e6d8d7c7baaa0681a892f74f",
+      "methods": []
+    },
+    {
+      "path": "script/a3/verified_finetune.py",
+      "sha256": "11044839b5c3d97fceb634149bae4960176f73a326bcdeafa576bc7dda33e22a",
+      "methods": [
+        {
+          "name": "_after_optimizer_step",
+          "line": 92
+        }
+      ]
+    },
+    {
+      "path": "script/a3/resumable_sonic.py",
+      "sha256": "e682dbfa42243becd15cbc48bd5c19bc5d3a46e6ad3bd767705f50ae2a0f51a9",
+      "methods": []
+    },
+    {
+      "path": "script/vendor/sonic_for_a3/gear_sonic/trl/trainer/ppo_trainer.py",
+      "sha256": "872b22d0ae6b1f124fe152e2831c496bfe6b4c80c92fde167129e0c3f1ce6fc1",
+      "methods": [
+        {
+          "name": "_compute_loss",
+          "line": 1495
+        },
+        {
+          "name": "_compute_ppo_loss",
+          "line": 1523
+        },
+        {
+          "name": "_gradient_clipping",
+          "line": 2301
+        },
+        {
+          "name": "_adjust_learning_rate_based_on_kl",
+          "line": 2460
+        }
+      ]
+    },
+    {
+      "path": "script/vendor/sonic_for_a3/gear_sonic/trl/trainer/ppo_trainer_aux_loss.py",
+      "sha256": "483539b22fca693091670a22f90bc21018867dce50f5e39b14b3303dfbea2388",
+      "methods": [
+        {
+          "name": "_compute_loss",
+          "line": 158
+        }
+      ]
+    },
+    {
+      "path": "script/vendor/sonic_for_a3/gear_sonic/trl/losses/token_losses.py",
+      "sha256": "f108049a768ed30d3cd606812d692d28b936ade36cacf4291b720b4ddcb9f5c9",
+      "methods": [
+        {
+          "name": "G1ReconLoss",
+          "line": 528
+        },
+        {
+          "name": "A3FastG1LatentLoss",
+          "line": 696
+        }
+      ]
+    },
+    {
+      "path": "script/vendor/sonic_for_a3/gear_sonic/trl/modules/universal_token_modules.py",
+      "sha256": "4bc5c48a63931c7199c81da624f9a8dd13f5dce424268cf46b6f62ea98187837",
+      "methods": []
+    }
+  ],
+  "proposed_input_files": [
+    {
+      "path": "data/training/a3_zhy_cloth_failure_20261013_E45/R19_001_s0/milestone_0/model_step_000000.pt",
+      "bytes": 134048599,
+      "sha256": "62f7e48e0f40d357b903ca0645d9beaa5e2f9a5940f5e6705833a1dc7ed61c21"
+    },
+    {
+      "path": "data/training/a3_zhy_cloth_failure_20261013_E45/R19_001_s0/milestone_4/model_step_000004.pt",
+      "bytes": 307570895,
+      "sha256": "3e679581fb1386e1fe718a1497af62615d8555a4bc03853e092a3b3b09edd645"
+    },
+    {
+      "path": "data/training/a3_zhy_cloth_failure_20261013_E45/R19_001_s0/config.yaml",
+      "bytes": 37548,
+      "sha256": "7b3e33e4324dc03cad437e4577d35909115a9feeaf156975d5ca7397fcbd6323"
+    },
+    {
+      "path": "logs/a3_zhy_cloth_failure_20261013_E45/training/initial_token_repair.pt",
+      "bytes": 2015713,
+      "sha256": "b06ba7bc1cd297362c618e02160b6706048f36fd3668d8eb4b9cd0ca06cb2d67"
+    },
+    {
+      "path": "data/experiments/a3_zhy_gradient_20261012_E11/rollout.pt",
+      "bytes": 7791609,
+      "sha256": "5bbba73dbffd0a6f7d4737fd7afded4ac7f4e58f9c648f14d4c0cfd2963cf3a3"
+    },
+    {
+      "path": "data/experiments/a3_zhy_modules_20261012_E12/module_outputs.pt",
+      "bytes": 863573,
+      "sha256": "24e726f986613a73ccf2801e449e33e444cc16f994552c40f9c676d46510954c"
+    },
+    {
+      "path": "data/manifests/a3_zhy_cloth_failure_stop_20261013_E45.json",
+      "bytes": 19454,
+      "sha256": "84bb63ddbac8e3bb611c02c9b01ef868350c902f0a283bb216ae2f6589e2bdfd"
+    },
+    {
+      "path": "data/manifests/a3_zhy_cloth_curve_stop_20261013_E44.json",
+      "bytes": 15741,
+      "sha256": "8ca67655bbbaceac27e83fcbfaf2c855efcbd6a7f600b48a10c6a0702166eb42"
+    }
+  ],
+  "next_experiment": "E46_CHECK_AVAILABILITY_BEFORE_REGISTRATION",
+  "main_question": "DIRECTIONAL_TEACHER_CHANGE_FROM_FIXED_SAVED_CLOTHING_PPO_GRADIENT_AT_E45_STEP4",
+  "budget": {
+    "policy_states": 2,
+    "max_actor_forwards": 24,
+    "max_autograd_grad_calls": 12,
+    "optimizer_steps": 0,
+    "new_simulation_rollouts": 0,
+    "stage_seconds": 900
+  },
+  "first_batch_at_step4_is_counterfactual_not_historical_step19": true,
+  "corpus_and_exposure_branches_closed": true,
+  "no_teacher_weight_sweep": true,
+  "no_effect_claim": true,
+  "backup_status": "LOCAL_ONLY"
+}

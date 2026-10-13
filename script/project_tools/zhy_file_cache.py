@@ -65,6 +65,19 @@ def protected_paths(value):
     return result
 
 
+def missing_process_evidence(pid, fields):
+    """Keep the existing idle gate and identify any visibility rejection."""
+    state = fields['State'].strip()
+    name = fields['Name'].strip()
+    if state.startswith('Z'):
+        return dict(pid=pid, comm=name, state='ZOMBIE')
+    rss = int(fields.get('VmRSS', '0').split()[0]) if 'VmRSS' in fields else None
+    record = dict(pid=pid, comm=name, state=state, rss_kib=rss)
+    if name not in ('pod', 'ssh-agent', 'gpg-agent') or rss is None or rss > 16384:
+        raise RuntimeError('Unresolved process visibility: ' + json.dumps(record))
+    return record
+
+
 def require_idle(baseline):
     health = guard.health()
     if (health['boot_id'] != baseline['boot_id'] or
@@ -87,12 +100,9 @@ def require_idle(baseline):
         p = Path('/proc') / str(err['pid']) / 'status'
         try:
             fields = dict(x.split(':', 1) for x in p.read_text().splitlines() if ':' in x)
-        except FileNotFoundError:
+        except (FileNotFoundError, ProcessLookupError):
             continue
-        if fields['State'].strip().startswith('Z'):
-            continue
-        if fields['Name'].strip() not in ('pod', 'ssh-agent', 'gpg-agent') or int(fields['VmRSS'].split()[0]) > 16384:
-            raise RuntimeError('Unresolved process visibility')
+        missing_process_evidence(err['pid'], fields)
     kernel = guard.command(['dmesg', '--color=never'])
     if kernel['returncode'] or any(FATAL.search(line) and line not in baseline['kernel_baseline']
                                   for line in kernel['stdout'].splitlines()):
@@ -227,6 +237,16 @@ if __name__ == '__main__':
     LOG.mkdir(exist_ok=True)
     with (LOG / 'maintenance.lock').open('a') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        result = maintain(options)
+        try:
+            result = maintain(options)
+        except Exception as exc:
+            atomic_json(LOG / ('blocked_' + str(time.time_ns()) + '.json'), dict(
+                at=time.time(), status='BLOCKED_MAINTENANCE',
+                error_type=type(exc).__name__, error=str(exc),
+                protect_plan=options.protect_plan, baseline=options.baseline,
+                scope='MAINTENANCE_ONLY_NOT_EXPERIMENT_FAILURE',
+                file_deletions=0, global_drop_caches=False, accounting_changed=False,
+                note='Check any preceding intent receipt; no automatic retry'))
+            raise
         atomic_json(LOG / ('receipt_' + str(time.time_ns()) + '.json'), result)
         print(json.dumps(result, indent=2))

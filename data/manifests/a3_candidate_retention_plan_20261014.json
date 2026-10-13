@@ -1,0 +1,80 @@
+{
+  "status": "UNIMPLEMENTED_UNREGISTERED_PLAN",
+  "proposed_experiment": "A3_ZHY_CANDIDATE_RETENTION_20261014_E49",
+  "main_variable": "PROJECT_ADAM_DISPLACEMENT_ONTO_FULL_TEACHER_NONINCREASE_HALFSPACE",
+  "inputs": [
+    {
+      "path": "data/training/a3_zhy_cloth_failure_20261013_E45/R19_001_s0/milestone_4/model_step_000004.pt",
+      "sha256": "3e679581fb1386e1fe718a1497af62615d8555a4bc03853e092a3b3b09edd645"
+    },
+    {
+      "path": "data/training/a3_zhy_cloth_failure_20261013_E45/R19_001_s0/config.yaml",
+      "sha256": "7b3e33e4324dc03cad437e4577d35909115a9feeaf156975d5ca7397fcbd6323"
+    },
+    {
+      "path": "data/experiments/a3_zhy_gradient_20261012_E11/rollout.pt",
+      "sha256": "5bbba73dbffd0a6f7d4737fd7afded4ac7f4e58f9c648f14d4c0cfd2963cf3a3"
+    },
+    {
+      "path": "data/experiments/a3_zhy_modules_20261012_E12/module_outputs.pt",
+      "sha256": "24e726f986613a73ccf2801e449e33e444cc16f994552c40f9c676d46510954c"
+    },
+    {
+      "path": "data/experiments/a3_zhy_fresh_batch_20261013_E48/capture.json",
+      "sha256": "211e405ad7773c993bec4ea51ca0a6a772119206e37d319feb8a32d087ce907e"
+    },
+    {
+      "path": "data/experiments/a3_zhy_fresh_batch_20261013_E48/fresh_rollout.pt",
+      "sha256": "30a05c7fdad3c2cd7d022c567e33cd8a07b939b3344143127c9f9486dc8818c0"
+    },
+    {
+      "path": "data/experiments/a3_zhy_fresh_batch_20261013_E48/mapping.json",
+      "sha256": "d719a7fe6982b108419a6dc4a2b38dbff1d806ec85a3d3f54db488dde6274352"
+    },
+    {
+      "path": "data/experiments/a3_zhy_fresh_batch_20261013_E48/result.json",
+      "sha256": "b9ba20eb70cb9d37237ebb7371aa096d0075bce9760199231c2236de75c0865a"
+    }
+  ],
+  "source_reference_head": "a049156cae1aa0fd26357506011feae3d94abf6e",
+  "source_sha256": {
+    "script/a3/adam_direction_probe.py": "50953b82d939aac33ead441aa0e1345f7f4b48c49ac7776d6b6850d3af0a7d81",
+    "script/a3/adam_direction_protocol.py": "c5e42654ecc598edde476f7299c3008a4268c15ac09b39b24bf9b3bd524979f5",
+    "script/a3/fresh_batch_probe.py": "7118e07c4c61ea76335a4d320220d166a532cdc833b8b55d48f42b092bf4834f"
+  },
+  "budget_draft": {
+    "policy_states": 1,
+    "actor_decoder_forwards": 16,
+    "critic_forwards": 1,
+    "autograd_grad_calls": 3,
+    "original_candidates": 1,
+    "projected_candidates": 1,
+    "optimizer_steps": 0,
+    "new_rollouts": 0,
+    "new_checkpoints": 0,
+    "stage_seconds": 900
+  },
+  "projection": "delta_projected = delta - max(0, dot(g_teacher, delta)) / dot(g_teacher, g_teacher) * g_teacher",
+  "acceptance": {
+    "original_teacher_rmse_max": 0.05,
+    "original_teacher_maxabs_max": 0.5,
+    "finite_teacher_mse_must_not_increase": true,
+    "fixed_cloth_actor_objective_must_not_increase": true,
+    "no_backtracking_or_weight_lr_search": true,
+    "no_deployment": true
+  },
+  "constraints": [
+    "Only saved E48 first batch and E45 step4; do not replay E48",
+    "Reproduce original E48 scalar/direction within predetermined tolerance before projection",
+    "Keep full original Actor+Critic clip and KL-based LR; source input and saved states unchanged",
+    "First failed contract STOPPED; projected finite candidate rejection is evidence, no retries",
+    "Record progress and post-input verification before SimulationApp-style shutdown (no simulator needed here)",
+    "Guard/controller resource checks unchanged"
+  ],
+  "notes": [
+    "Tangent projection only provides first-order condition; finite nonlinear check may reject it",
+    "Scope is local candidate, no historical-step causality or baseline quality proof",
+    "Number availability must be checked before implementation/registration"
+  ],
+  "backup_status": "LOCAL_ONLY"
+}

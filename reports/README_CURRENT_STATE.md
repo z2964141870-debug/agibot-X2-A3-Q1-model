@@ -4,7 +4,7 @@
 
 ## 用户目标与固定约定
 
-下一[E43保存轨迹分解](README_A3_CLOTH_EFFECT_AUDIT_20261013.md)：代码0c4e41b同步；额外8GiB预检拒绝，OUT/账本不存在、0worker/模型/forward/仿真/optimizer。18:51:21可用8,543,608,832字节<8,589,934,592，同boot/OOM0、RSS370.86MB/GPU空闲，缓存归属未确认、未丢缓存/改门。[预检清单](../data/manifests/a3_zhy_cloth_effect_preflight_20261013_E43.json)。恢复先3个5秒被动预检齐全且OUT不存在再登记一次；固定十动作首输入/五类参考/共同跌倒前/腿腰臂MSE/膝事件，结果后决定下一单变量。无机器首故障证据，工程ACTIVE、不重新跑E42。
+下一[E43保存轨迹分解](README_A3_CLOTH_EFFECT_AUDIT_20261013.md)：代码0c4e41b同步；额外8GiB预检拒绝，OUT/账本不存在、0worker/模型/forward/仿真/optimizer。18:51:21可用8,543,608,832字节<8,589,934,592，同boot/OOM0、RSS370.86MB/GPU空闲，缓存归属未确认、未丢缓存/改门；18:53三个5秒只读快照仍不足，未再登记。[预检清单](../data/manifests/a3_zhy_cloth_effect_preflight_20261013_E43.json)。恢复先3个5秒被动预检齐全且OUT不存在再登记一次；固定十动作首输入/五类参考/共同跌倒前/腿腰臂MSE/膝事件，结果后决定下一单变量。zhy-a3已更新本恢复入口、回读ACTIVE/原30分钟；无机器首故障证据，不重跑E42/不改每日研究。
 
 最新[E42/R17](README_A3_CLOTH_CACHED_20261013.md)：两更新/8optimizer、采样token identity/原概率门/精确冻结与CPU训练核验通过；六衣服2994步/四官方5775步及独立效果复算完成。衣服均RMSE .1413798→.1549925rad（+9.63%），zzx5.86秒仍倒；warmUp/fjw/zls超2%关节预算，warmUp/zls/zzx超5%世界根/腕预算。官方仍4/4不倒，但转身/单腿/踏步关节+4.93/+14.53/+5.85%超2%预算；候选REJECTED，不晋级。72健康同boot/OOM0/CPU43/GPU35°C，最低可用4.066GiB在训练、阶段间最大518.72秒空档，无机器故障、已退出。step2 SHA8429914489ea0c2ecd58623dfafb2c33ca23898282df0c8db2ae0b9457b5da59/LOCAL_ONLY。下一独立保存轨迹分解：共同跌倒前/关节分组/初始输入与原参考一致性，再决定单变量；不复跑E42/不增更新或降门。官方仍基线，未见会话待验。
 

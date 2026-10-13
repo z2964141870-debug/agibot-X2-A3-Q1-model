@@ -1,8 +1,10 @@
 # YUANQI 当前状态与下一步
 
-更新：E41于18:10:43干预通过，原训练mean重算差0，单token恢复后动作max2.86e-6/ratio偏差1.72e-5；0更新/state不变。下一冻结codec采样token复用修正与小微调，官方仍基线、工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
+更新：E41结果已推送07c26a1；E42/R17冻结codec token复用已实现，尚未登记或测试。下一3控制/两更新/独立概率和冻结验收，再匹配动态评测；官方仍基线、工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
 
 ## 用户目标与固定约定
+
+当前下一[E42/R17](README_A3_CLOTH_CACHED_20261013.md)：采样保存实际assembled token，PPO mini按相同env indices复用；encoder/kin/std/buffer必须冻结，dyn gradient/官方aux/Critic保留，原初始概率/teacher门不变。复用三900帧已验PKL、3新CPU控制，独立2更新/8optimizer/FP32、后续六衣服/四官方效果门；尚未登记或运行。错误/故障不重试、不降门；旧实验保留。
 
 最新[E41通过](README_A3_CLOTH_INTERVENTION_20261013.md)：60d647b源，一次官方step0/两decoder forward、0encoder/quantizer/回放/optimizer。原训练token mean重算差0、动作max.017823/ratio偏差.21693；只恢复[3,2,1,24]到-.375后动作max2.861e-6/ratio偏差1.717e-5，原门通过，完整state SHA相同，保存重载CPU独立复算通过。5健康同boot/OOM0/CPU44/GPU28°C/最低可用8.31GB，无异常、已退出。定位此批token导致动作差，不扩大到跌倒或全部输入。下一冻结codec采样实际assembled token复用，小批仍decoder梯度/官方aux/Critic，首概率/冻结/teacher门保留，新编号固定两更新/8optimizer后匹配效果评测；官方仍基线。
 

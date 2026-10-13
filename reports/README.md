@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-最新阶段：E41单token恢复使动作max差.017823降至2.86e-6、ratio偏差.21693降至1.72e-5，干预通过；下一冻结codec采样token复用修正和小微调。未证明跌倒根因或微调收益，官方仍基线；工程ACTIVE。
+最新阶段：E41单token因果干预已通过；E42/R17冻结codec采样token复用修正已实现，尚未登记/测试。固定两更新和原动态质量门，官方仍基线；工程ACTIVE。
 
 ## 恢复上下文先读
 
@@ -14,6 +14,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-13 | A3冻结codec token复用微调E42/R17 | 仅PPO动作复用实际采样token、保留decoder梯度/aux/Critic，3控制及两更新待验，见[协议](README_A3_CLOTH_CACHED_20261013.md) |
 | 2026-10-13 | A3固定decoder单token干预E41 | 原训练mean重算差0，仅恢复1坐标后概率门通过、model state不变；0优化/新回放，见[结果与边界](README_A3_CLOTH_INTERVENTION_20261013.md) |
 | 2026-10-13 | A3保存compact编码token审计E40 | 2映射控制通过，1.79e-7 latent差对应1 token翻转/同动作帧；0模型加载/forward，见[结果与边界](README_A3_CLOTH_TOKENS_20261013.md) |
 | 2026-10-13 | A3衣服首批持久诊断E39 | 0optimizer/输入逐值稳定，16环境动作精确复现、4环境一帧失配；a3_fast compact token待映射，见[结果与恢复](README_A3_CLOTH_CAPTURE_20261013.md) |

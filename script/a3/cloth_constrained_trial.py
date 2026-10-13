@@ -134,22 +134,43 @@ def register():
     print(json.dumps(dict(status='REGISTERED', experiment=job['experiment'], training_sequences=job['training_sequences'])))
 
 
+def phase(job, name):
+    if job.get('resource_evidence_required'):
+        from script.a3.stage_resources import stage_event
+        stage_event(LOG / 'stage_resources.jsonl', name, guard.health(),
+                    job['prepare_process_budget_bytes'] if name.startswith('prepare/') else None)
+
+
 def prepare(job):
+    phase(job, 'prepare/before_contract_imports')
     from script.a3 import test_cloth_constrained as tests
     if job.get('std_canonicalization', False):
         from script.a3 import test_cloth_std_contract as tests
+    phase(job, 'prepare/after_contract_imports')
     from gear_sonic.data_process.convert_soma_csv_to_motion_lib import load_a3_flat_csv, convert_sequence
     from script.a3.reference_contract import load_sim
     from scipy.spatial.transform import Rotation
     import joblib
     import numpy as np
     import torch
+    phase(job, 'prepare/after_conversion_imports')
     stream = io.StringIO()
     result = unittest.TextTestRunner(stream=stream, verbosity=2).run(
         unittest.defaultTestLoader.loadTestsFromModule(tests))
     if not result.wasSuccessful() or result.testsRun != job['contract_tests']:
         raise ValueError('Freeze/likelihood controls failed: ' + stream.getvalue())
+    phase(job, 'prepare/after_contract_tests')
+    checkpoint_tests = None
+    if job.get('resource_evidence_required'):
+        from script.a3 import test_checkpoint_store
+        checked = unittest.TextTestRunner(stream=stream, verbosity=2).run(
+            unittest.defaultTestLoader.loadTestsFromModule(test_checkpoint_store))
+        if not checked.wasSuccessful() or checked.testsRun != 8:
+            raise ValueError('Checkpoint transaction controls failed: ' + stream.getvalue())
+        checkpoint_tests = checked.testsRun
+        phase(job, 'prepare/after_checkpoint_tests')
     source = torch.load(OFFICIAL, map_location='cpu', weights_only=False)
+    phase(job, 'prepare/after_official_load')
     std = source['policy_state_dict']['std']
     if not job.get('std_canonicalization', False) and not torch.equal(std, std.clamp(.001, .5)):
         raise ValueError('Official std needs clamping; register a separate baseline contract first')
@@ -162,6 +183,7 @@ def prepare(job):
         deterministic_mean_uses_std=False)
     del source
     sim, rows = load_sim(), []
+    phase(job, 'prepare/after_sim_module_import')
     for sequence in job['training_sequences']:
         name = sequence.replace('/', '__')
         path = CORPUS / 'sequences' / name / 'reference.csv'
@@ -187,12 +209,15 @@ def prepare(job):
         rows.append(dict(sequence=sequence, partition='train', frames=count, fps=30,
             joint_max_error=joint_error, root_max_error_m=root_error, rotation_max_error_rad=angle_error,
             path=str(target.relative_to(ROOT)), sha256=sha256(target), bytes=target.stat().st_size))
+        phase(job, 'prepare/converted/' + name)
     atomic_json(OUT / 'prepare.json', dict(tests=result.testsRun, tests_passed=True, test_output=stream.getvalue(),
-        motions=rows, excludes_other_partitions=True, std_boundary=std_boundary, dynamics_acceptance=False))
+        checkpoint_tests=checkpoint_tests, motions=rows, excludes_other_partitions=True,
+        std_boundary=std_boundary, dynamics_acceptance=False))
+    phase(job, 'prepare/complete')
 
 
 def train(job):
-    from script.a3.consistent_precision import precision_overrides
+    phase(job, 'train/before_launch')
     for row in read(OUT / 'prepare.json')['motions']:
         if sha256(ROOT / row['path']) != row['sha256']:
             raise ValueError('Prepared training input changed')
@@ -212,13 +237,14 @@ def train(job):
         'algo.config.adaptive_lr_max=2e-5',
         'callbacks.model_save._target_=script.a3.resumable_sonic.DurableModelSaveCallback',
         'callbacks.model_save.save_frequency=1', '+callbacks.model_save.target_global_step=2',
-        *precision_overrides()]
+        '++algo.trl.bf16=false', '++algo.trl.fp16=false', '++algo.trl.tf32=false']
     atomic_json(OUT / 'training_launch.json', dict(argv=argv, motion_file=str(OUT / 'motionlib')))
     with (directory / 'console.log').open('w') as stream:
         child = subprocess.Popen(argv, cwd=ROOT, env=environment, stdout=stream,
             stderr=subprocess.STDOUT, start_new_session=False)
         if child.wait():
             raise RuntimeError('Clothing training exited unsuccessfully; no retry')
+    phase(job, 'train/complete')
 
 
 def verify_training(job):

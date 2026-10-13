@@ -40,7 +40,7 @@ class CheckpointStoreTests(unittest.TestCase):
 
     def test_failed_serialization_preserves_previous(self):
         save_checkpoint(self.directory, payload(1))
-        with patch("script.a3.checkpoint_store.torch.save", side_effect=OSError("injected write failure")):
+        with patch("torch.save", side_effect=OSError("injected write failure")):
             with self.assertRaises(OSError):
                 save_checkpoint(self.directory, payload(2))
         self.assertEqual(select_checkpoint(self.directory)[1]["state"].global_step, 1)

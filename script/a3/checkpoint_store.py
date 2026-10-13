@@ -6,8 +6,6 @@ import os
 from pathlib import Path
 import tempfile
 
-import torch
-
 
 def fsync_directory(path):
     descriptor = os.open(path, os.O_RDONLY | os.O_DIRECTORY)
@@ -26,6 +24,8 @@ def sha256(path):
 
 
 def validate_payload(payload):
+    import torch
+
     required = ["policy_state_dict", "value_state_dict", "optimizer_state_dict", "state"]
     if any(payload.get(key) is None for key in required):
         raise ValueError("Incomplete actor/critic/optimizer/trainer checkpoint")
@@ -59,6 +59,8 @@ def atomic_json(path, payload):
 
 
 def save_checkpoint(directory, payload, milestone_interval=500):
+    import torch
+
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=True)
     step = validate_payload(payload)
@@ -123,6 +125,8 @@ def save_checkpoint(directory, payload, milestone_interval=500):
 
 
 def select_checkpoint(directory):
+    import torch
+
     directory = Path(directory)
     candidates = sorted(directory.glob("model_step_*.json"), reverse=True)
     failures = []

@@ -1,8 +1,10 @@
 # YUANQI 当前状态与下一步
 
-更新：E37准备触发原4GiB内存保留保护，0优化/回放、同boot/OOM0；瞬时资源来源未定位。下一只读拆controller/worker内存与容器记账，不复跑E36/E37。官方仍基线；长期工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
+更新：E37停止证据已推送核验1f1458b；独立E38/R15实现轻量监督与按PID阶段内存证据，尚未登记/计算。衣服配方、4GiB保护和动态门保持，官方仍基线；长期工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
 
 ## 用户目标与固定约定
+
+当前入口[E38/R15固定协议](README_A3_CLOTH_RESOURCE_20261013.md)：checkpoint数值操作局部导入torch，训练启动包装器保留相同FP32值而不预载Trainer；系统Python监督拒绝tensor导入，工作worker仍既有环境。3次被动起始快照/8GiB额外起始余量、prepare RSS<=3GiB，逐阶段记录PID/RSS/PSS及cgroup记账；原CPU90/GPU85两次5秒/4GiB线/900秒保留。下一先验轻量入口，然后新登记与一次准备；5衣服/std+8checkpoint控制及三train ABI合格后2更新/8optimizer，再六衣服/四官方匹配对照。仍需未见会话，无新效果证据。E36/E37不复跑，不能把导入冗余说成E37峰值根因。
 
 E37于15:30:17 prepare STOPPED_MEMORY_RESERVE_PROTECTION：启动后0.21秒停止、console0字节、MotionLib0/训练目录无，0optimizer/新回放，准备门未验。2健康样本同boot/CPU40/GPU26°C/OOM0，最低可用4,257,181,696字节(3.964GiB)，原4GiB保留线未放宽；瞬时容器RSS8.56GB。15:35:53只读可用13.03GB/RSS0.36GB、GPU空闲，不能据此自动复跑或定位峰值原因。下一只读查controller/worker导入与容器记账并准备按PID阶段证据；新计算必须新编号/资源与遥测证据齐全。详细[停止与恢复](README_A3_CLOTH_CANONICAL_20261013.md)、[清单](../data/manifests/a3_cloth_resource_stop_20261013_E37.json)。无确认重启/OOM/热停，工程heartbeat ACTIVE、下一只读，不恢复原机计算。
 

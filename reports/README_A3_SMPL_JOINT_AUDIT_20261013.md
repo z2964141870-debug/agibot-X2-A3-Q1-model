@@ -53,4 +53,6 @@ zzx的solver逻辑角与MuJoCo被动关节角连续5帧差>0.02rad：左踝roll�
 
 ## 保存、同步与恢复
 
-原始证据LOCAL_ONLY，Mac只留小代码/README/清单。本README、索引/current state和结果清单已写，scoped检查/audit/提交推送核验尚待完成，不先称同步成功。下一E29只对保存状态的并联FK/dfk做独立数值核验；若需要精确实际力矩/动态支撑则另登记子步采样或动力学检查。官方仍为基线，没有模型提升或未见验证，工程heartbeat保持ACTIVE。
+原始证据LOCAL_ONLY，Mac只留小代码/README/清单。本README、索引/current state和结果清单已写，5文件scoped检查/audit PASS，364050字节；结果提交3d459a7bc7cc37ee652fa129ca3e70b54cc0aaf7已推送GitHub main，源机/ZHY快进并核验同HEAD、工作区干净，12:56:22仍同boot/GPU空闲。incoming三文件scoped stash保留，8代码SHA与Mac镜像一致，见[发布回执](../data/manifests/a3_zhy_smpl_joint_audit_20261013_sync.json)。本发布回执与后续记录随后另作scoped提交，最新HEAD以Git历史为准。
+
+下一E29只对保存状态的并联FK/dfk做独立数值核验；若需要精确实际力矩/动态支撑则另登记子步采样或动力学检查。官方仍为基线，没有模型提升或未见验证，工程heartbeat保持ACTIVE。

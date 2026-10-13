@@ -1,0 +1,109 @@
+{
+  "stage": "A3_ZHY_CLOTH_CURVE_20261013_E44",
+  "status": "PREPARED_NOT_REGISTERED",
+  "trial": "R18",
+  "as_of_date": "2026-10-13",
+  "parent_experiment": "A3_ZHY_CLOTH_CACHED_20261013_E42",
+  "e43_directory_exists": false,
+  "e44_directory_exists": false,
+  "model_loads_this_turn": 0,
+  "new_rollouts_this_turn": 0,
+  "optimizer_steps_this_turn": 0,
+  "planned": {
+    "updates": 32,
+    "optimizer_steps": 128,
+    "transitions": 12288,
+    "effect_checkpoints": [
+      8,
+      16,
+      32
+    ],
+    "max_new_evaluation_rollouts": 30,
+    "main_variable": "TRAINING_EXPOSURE_ONLY",
+    "requires_e43_completed": true,
+    "preflight_extra_available_bytes": 8589934592,
+    "memory_reserve_gib": 4,
+    "max_cpu_c": 90,
+    "max_gpu_c": 85,
+    "sample_seconds": 5,
+    "consecutive_hot_samples": 2,
+    "runtime_limit_seconds_per_stage": 900,
+    "auto_resume": false,
+    "automatic_extension": false,
+    "unseen_validation_required": true
+  },
+  "checks": {
+    "standard_library_acceptance_controls": 4,
+    "passed": true,
+    "python_static_compile": "PASSED",
+    "controller_plan_tensor_imports": false,
+    "model_runtime": "NOT_RUN_RESOURCE_AND_E43_PREREQUISITES_PENDING",
+    "zhy_tensor_runtime_controls": {
+      "required": 2,
+      "status": "PENDING_GUARDED_PREPARE"
+    }
+  },
+  "last_preflight": {
+    "at_utc": [
+      "2026-10-13T11:26:21.694790+00:00",
+      "2026-10-13T11:26:26.880375+00:00",
+      "2026-10-13T11:26:32.064134+00:00"
+    ],
+    "available_bytes": [
+      8542740480,
+      8542167040,
+      8542486528
+    ],
+    "all_eligible": false,
+    "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+    "oom_kill": 0,
+    "gpu_idle": true,
+    "confirmed_machine_fault": false
+  },
+  "source_evidence": [
+    {
+      "path": "data/training/a3_zhy_cloth_cached_20261013_E42/R17_001_s0/config.yaml",
+      "bytes": 37541,
+      "sha256": "91d0409ac3d5806c36ecd44502c3800db4c5f3bad74c469d86a5df34f08cc5df"
+    },
+    {
+      "path": "data/experiments/a3_zhy_cloth_cached_20261013_E42/effect_verification.json",
+      "bytes": 7300,
+      "sha256": "c1697b775ad0ec85860e82a5113d25e2f84a527d05249dbe6db91efe37147aaf"
+    },
+    {
+      "path": "data/experiments/a3_zhy_cloth_cached_20261013_E42/training_verification.json",
+      "bytes": 15482,
+      "sha256": "90bf5099f1e18b25d7404b2dc98560b71e91c0cc6aada055aa6fde8dae35c7ac"
+    },
+    {
+      "path": "script/vendor/sonic_for_a3/gear_sonic/envs/manager_env/mdp/commands.py",
+      "bytes": 212787,
+      "sha256": "a93bea124f075cb0064a828bb9e22b1f298589047c6765bf167771efe073cfef"
+    },
+    {
+      "path": "script/vendor/sonic_for_a3/gear_sonic/trl/modules/universal_token_modules.py",
+      "bytes": 74020,
+      "sha256": "4bc5c48a63931c7199c81da624f9a8dd13f5dce424268cf46b6f62ea98187837"
+    },
+    {
+      "path": "script/vendor/sonic_for_a3/gear_sonic/scripts/sim2sim_a3_mujoco.py",
+      "bytes": 185881,
+      "sha256": "4a9e7d4a06b0c2857ae303d9dfa24bb4a129d04629b267ebe46c6b3eb317c105"
+    },
+    {
+      "path": "script/a3/cloth_effect_audit.py",
+      "bytes": 11616,
+      "sha256": "1dd254842269183e273b5d817b15dd47c81a8dc14a38b84add8e5d88b111164e"
+    }
+  ],
+  "backup_status": "LOCAL_ONLY",
+  "verified_policy_improvement": false,
+  "prepared_code_sha256": {
+    "script/a3/cloth_curve_protocol.py": "92c6dc23df7318d18a6b456b1e29d2c90c612402823af138c086d0e2795d83a7",
+    "script/a3/cloth_curve_trainer.py": "4eec945a5bddeb5cc416738f57c727b44f0fbfc6e6d8d7c7baaa0681a892f74f",
+    "script/a3/cloth_learning_curve.py": "c8c3615750448cc611eb64e86340db0217d4b0913044d440f7c6dab39277b661",
+    "script/a3/test_cloth_curve_protocol.py": "99754dd0b4b82e918b42ccd3608f8961639fb3c934e98d7d136cc431ae4c004c",
+    "script/a3/test_cloth_curve_runtime.py": "e75666ef740d2cc4b115bc6dee342416946c3adbd4cb227ee7dc2731e44597c3"
+  }
+}

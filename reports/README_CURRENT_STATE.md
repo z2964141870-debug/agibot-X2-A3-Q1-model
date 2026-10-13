@@ -1,8 +1,10 @@
 # YUANQI 当前状态与下一步
 
-更新：E35完成保存数据独立核验，E34补全被动机构初始化仍5/6不倒、均关节误差+5.93%，效果拒绝。结束该改善分支，下一项受约束衣服微调候选；官方仍基线，长期工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
+更新：E36/R13已登记受约束衣服解码器两轮微调，下一prepare。E35被动初始化效果拒绝，官方仍基线；长期工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
 
 ## 用户目标与固定约定
+
+E36/R13 REGISTERED：三段E23合格train参考、16环境/2更新/8optimizer/FP32；Actor仅g1_dyn可更新，encoder/kin/std及buffer冻结，固定E11/E12官方384帧锚点MSE和逐步漂移上限。第一optimizer前概率合同、训练CPU独立验收，再匹配E26六衣服/E02四官方开发闭环；不复跑旧基线、不使用E34初始化、不把开发分区当未见。下一`cloth_constrained_trial run --stage prepare`，尚未优化。入口[固定协议](README_A3_CLOTH_CONSTRAINED_20261013.md)；首异常停止，无自动恢复。
 
 E35于14:38:26 COMPLETE：5裁剪边界控制/2994保存步通过，clip(captured)/执行目标/独立足geometry差0，六段初始1570输入与E26完全相等。E34仍5/6不倒、zzx6.06秒倒（E26为5.66秒）；均RMSE0.1413798054到0.1497577774rad，退化5.9259%，开发效果拒绝。五段原不倒动作均保留2%误差预算；四裁剪帧都是zzx晚期左腕pitch，不认定跌倒因果。0新回放/权重加载/装配复算/optimizer/mj_step；5健康样本同boot/CPU40/GPU27°C/OOM0、可用最低9.72GB，已退出。旧E34失败语义断言/STOPPED保留。恢复[E35结果](README_A3_SMPL_ASSEMBLY_AUDIT_20261013.md)、[小清单](../data/manifests/a3_zhy_smpl_assembly_audit_20261013_E35.json)。下一核查冻结encoder/官方行为保持的受约束衣服微调入口与数据划分，尚未登记E36或开始新训练。
 

@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-13晚，北京时间21:09。官方035仍基线，尚无同条件验证提升。[E45/R19语料3→4](README_A3_CLOTH_FAILURE_20261013.md)再次第19optimizer原teacher RMSE0.050773>0.05停止。语料分支关闭，不续跑或评测；已完成[能力保留静态审查](README_A3_RETENTION_CONFLICT_20261013.md)，下一独立E46保存状态零更新梯度草案待实现。
+更新：2026-10-13晚。E46固定输入Actor梯度诊断已实现/3标准库测试通过，未登记运行，入口[实现与恢复](README_A3_RETENTION_DIRECTION_20261013.md)。E44/E45原teacher STOPPED保持，官方035仍baseline，无匹配效果提升。
 
 ## 当前A3工作与恢复
 
@@ -15,7 +15,7 @@
 
 ## 下一条具体工作
 
-阅读[E45停止与恢复](README_A3_CLOTH_FAILURE_20261013.md)，禁止该分支register/prepare/train/verify/evaluation或用step2/4续训。E44同样不复跑。静态审查已完成：96帧teacher软项/384帧后验保护、衣服本轮KL调整LR、全模型裁剪0.1；aux有效项静态不直接读dyn输出，不能先判其冲突。下一按[固定草案](README_A3_RETENTION_CONFLICT_20261013.md)实现独立E46：step0/4、保存首衣服batch与384teacher，最多24forward/12grad、0新仿真/optimizer；只测局部目标方向，非第19步重演或效果评测。尚未实现/登记，先确认编号未占用和资源；不加数据/轮数/扫权重，不重复旧E11。
+按[E46实现入口](README_A3_RETENTION_DIRECTION_20261013.md)发布/同步并单次登记执行；先核验编号未占用和连续三次5秒>=8GiB及其他原资源门。最多2状态/24forward/12grad，0仿真/optimizer；值项使用保存常数，仅Actor偏导、不重演Critic/Adam。测固定batch上step4 PPO下降对384teacher的方向，前后Actor/optimizer/输入不变。E44/E45不恢复、不独立verify/效果回放；语料/曝光分支关闭，不扫权重。
 
 官方仍baseline；开发结果通过后也必须独立seed和真正未见会话，不用代码/检查/checkpoint替代效果。工程heartbeat保持ACTIVE，待下一明确分支；不是机器故障停机。恢复必须查实际进程/boot/GPU/资源及原账本。
 

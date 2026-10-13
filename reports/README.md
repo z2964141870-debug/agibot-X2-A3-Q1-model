@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-最新阶段：E45/R19加入zzx后仍在第19次optimizer触发原teacher门（0.050773>0.05），语料分支关闭、0新效果回放；已完成[保留机制静态审查](README_A3_RETENTION_CONFLICT_20261013.md)，下一保存状态零更新梯度分解。官方035仍baseline，见[E45停止入口](README_A3_CLOTH_FAILURE_20261013.md)。
+最新阶段：E46保存状态零更新梯度诊断已实现，待资源门与单次登记；见[实现与恢复](README_A3_RETENTION_DIRECTION_20261013.md)。E44/E45均原teacher门STOPPED，语料分支关闭；官方035仍baseline，无新效果提升。
 
 ## 恢复上下文先读
 
@@ -14,6 +14,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-13 | A3保存状态保留梯度E46 | 实现/3标准库控制通过，固定step0/4和保存batch，0optimizer；待登记，见[实现与恢复](README_A3_RETENTION_DIRECTION_20261013.md) |
 | 2026-10-13 | A3保留约束与更新方向审查 | 96帧软teacher/384帧后验保护、衣服KL自适应LR及全局裁剪已核实；下一E46零更新草案未实现，见[审查与恢复](README_A3_RETENTION_CONFLICT_20261013.md) |
 | 2026-10-13 | A3已知失败行走语料对照E45/R19 | 第19optimizer再次teacher停止，4整更新/1920交互，保留step2/4但不评测；语料分支关闭，见[实现与恢复](README_A3_CLOTH_FAILURE_20261013.md) |
 | 2026-10-13 | A3效果受限后的论文与代码研究 | MimicX固定源码8文件核验，明确zzx未进旧训练及下一语料单变量；0新计算，见[研究与决策](README_A3_OUTCOME_RESEARCH_20261013.md) |

@@ -28,3 +28,9 @@ cache>4GiB才检查，每次最多32文件/2GiB，成功释放间隔>=1800秒，
 释放对象为已结束实验中不再作为下一步输入的工件，具体路径与页驻留前后见`data/manifests/zhy_file_cache_20261014.json`。仍有约7.22GiB文件cache，不能称全部清空；其余不是本次可释放闲置候选，未触碰环境/待用输入或宿主缓存。维护后已达到启动余量，继续主线，不为追求“cache归零”额外扫描或反复清理。
 
 自动巡检保持30分钟，若缓存积累使可用估计低于8GiB，会自主执行该有保护的维护并重新核验三次。没有合格对象或仍不足时保存WAIT，不把保护线降下去。
+
+## E49停止后维护入口记录（01:00附近）
+
+E49后调用缓存维护被原空闲门拒绝：`Other compute/large process; defer cache maintenance`，在require_idle首检查处停止，0目标释放/0删除。此处执行包装器同步启动了缓存维护子进程，父进程本身是Python；现有门明确拒绝任何其他Python，包括该标准库父控制器，因此这次调用方式自身不满足门，不能当作训练占用或系统内存故障。
+
+随后独立只读快照无其他大进程或Python计算，OOM0，可用估计8938430464 bytes（8.325GiB）仍过8GiB线，file cache7896920064 bytes、RSS369504256 bytes。没有重试清理、没有终止进程/改阈值。以后维护从shell直接启动模块或用exec替换标准库包装进程，不能放宽闲置保护。保护计划已更新为E50候选保留接续，可信基准E49 registration；完整小证据见`data/manifests/a3_candidate_retention_followup_readiness_20261014.json`。

@@ -1,0 +1,39 @@
+{
+  "status": "IMPLEMENTED_UNREGISTERED_USER_AUTHORIZED_ONCE",
+  "experiment": "A3_ZHY_CANDIDATE_RETENTION_FOLLOWUP_20261014_E50",
+  "implementation_head": "ce79397b91f14c2589348f7fab77870e04773f06",
+  "stdlib_regression_tests": 4,
+  "actual_saved_metadata_comparison": "PASS_TUPLE_BETAS_RECONSTRUCTED_FROM_PICKLE_OPCODE_EVIDENCE",
+  "e50_registered": false,
+  "e50_started": false,
+  "e49_frozen": true,
+  "memory_after": {
+    "limit_bytes": 17179869184,
+    "usage_bytes": 11095052288,
+    "reclaimable_inactive_file_bytes": 2853613568,
+    "available_estimate_bytes": 8938430464,
+    "rss_bytes": 369504256,
+    "oom_kill": 0,
+    "cache_bytes": 7896920064,
+    "kernel_bytes": 2822291456,
+    "failcnt": 99539871
+  },
+  "other_large_or_compute_processes": [],
+  "cache_maintenance": {
+    "at": 1791910791.2802863,
+    "status": "BLOCKED_MAINTENANCE",
+    "error_type": "RuntimeError",
+    "error": "Other compute/large process; defer cache maintenance",
+    "protect_plan": "data/manifests/a3_candidate_retention_followup_plan_20261014.json",
+    "baseline": "data/experiments/a3_zhy_candidate_retention_20261014_E49/registration.json",
+    "scope": "MAINTENANCE_ONLY_NOT_EXPERIMENT_FAILURE",
+    "file_deletions": 0,
+    "global_drop_caches": false,
+    "accounting_changed": false,
+    "note": "Check any preceding intent receipt; no automatic retry"
+  },
+  "maintenance_diagnosis": "The submitted command synchronously spawned maintenance under an additional standard-library Python controller. The unchanged idle rule rejects other Python processes, including that live parent. A later read-only process snapshot has no other large/Python workers; no retry or release performed.",
+  "input_plan": "data/manifests/a3_candidate_retention_followup_plan_20261014.json",
+  "backup_status": "LOCAL_ONLY",
+  "explicit_user_reply": "执行修正版一次"
+}

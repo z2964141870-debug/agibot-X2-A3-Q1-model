@@ -45,4 +45,6 @@ data/environments/a3-sonic/bin/python -m script.a3.smpl_differential_audit run
 
 ## 保存与恢复
 
-本README/索引/current state/小型清单已保存，结果scoped提交推送与目标同步尚待完成。下一E30只对右踝up电机边界做固定输入扫描，确认FK平台与DFK在域内/域外的合同；不重跑E29，不改控制或放宽门。随后仍须独立定位4.4–4.9秒更早的膝/支撑偏离。官方仍基线，开发七段不能充当未见验收，工程heartbeat ACTIVE。
+本README/索引/current state/小型清单已保存，4文件scoped检查/audit PASS，222612字节；结果提交a16f2295cca4600c3a5030b4c75c92fda6b6dac9已推送并核对GitHub main，ZHY已快进/工作区干净、13:11:16同boot/GPU空闲，incoming清单scoped stash保留。见[发布回执](../data/manifests/a3_zhy_smpl_differential_20261013_sync.json)，回执与本段随后另作scoped提交，最新HEAD以Git为准。
+
+下一E30只对右踝up电机边界做固定输入扫描，确认FK平台与DFK在域内/域外的合同；不重跑E29，不改控制或放宽门。随后仍须独立定位4.4–4.9秒更早的膝/支撑偏离。官方仍基线，开发七段不能充当未见验收，工程heartbeat ACTIVE。

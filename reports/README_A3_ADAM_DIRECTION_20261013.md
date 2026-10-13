@@ -1,6 +1,6 @@
 # A3同输入Adam方向与有限步诊断草案 E47
 
-记录日期：2026-10-13。状态：静态审查/下一单变量设计完成；E47编号核验未占用，尚未实现、登记或计算。入口为[E46结果](README_A3_RETENTION_DIRECTION_20261013.md)。官方035仍baseline，无新效果提升。
+记录日期：2026-10-13。状态：独立实现和4项标准库控制完成；E47编号已核验未占用，尚未登记/计算。入口为[E46结果](README_A3_RETENTION_DIRECTION_20261013.md)。官方035仍baseline，无新效果提升。
 
 ## 目标与依据
 
@@ -39,3 +39,25 @@ E46在E45 step4和同一保存首batch上，负PPO及负总Actor梯度均局部�
 本次只标准库读源码、JSON与SHA，0新模型/张量计算。E46实现d04e750、结果71babfcc6ff34552d842c095672be11b17948cd5已推送核验并同步ZHY；该静态草案随后scoped审计/提交，实际号见Git。模型/原始日志ZHY LOCAL_ONLY，网盘未核验。
 
 下一实现独立E47，不改或复跑E46/E44/E45。需要先读本README、草案清单与最新current state，确认未有更新的实现/真实state，避免重复。当前没有E47注册目录或worker。
+
+## E47实现完成（登记前）
+
+新增`adam_direction_trial.py`、`adam_direction_probe.py`、`adam_direction_protocol.py`和4项标准库测试；[实现SHA清单](../data/manifests/a3_adam_direction_implementation_20261013.json)。没有修改E46及E44/E45代码/账本。预算维持原上限，计划10次Actor/decoder forward、1次临时Critic forward、3次grad、1个数学候选。
+
+第三次grad是同一已构建计算图上的保存常数值项Actor偏导控制，不增forward，用于逐张量核对完整Critic目标没有改变Actor偏导，再对照E46已存标量/摘要；不会重启E46。首次Actor/输入摘要必须与E46 step4完全一致。候选使用torch.func.functional_call临时替换参数，仅4个teacher块，无checkpoint输出；源Actor以及保存Actor/Critic/optimizer tensor-tree前后摘要不变。
+
+LR规则直接调用固定vendor方法，接收者只含复制的param_groups标量metadata，不是Optimizer；原payload args及moments不写。数学Adam公式通过首步偏差校正/decay、历史动量反向、全局裁剪、ID与预算拦截4项控制。标量clip公式另与FP32张量原式交叉核对；承认非fused逐位复现。临时Critic参数保持不变，仅running_mean_std buffer允许原train前向变化，并列出实际变化名和摘要。
+
+本地只标准库执行并通过：
+```bash
+python3 -m unittest script.a3.test_adam_direction_protocol -v
+python3 -m py_compile script/a3/adam_direction_protocol.py script/a3/adam_direction_trial.py script/a3/adam_direction_probe.py
+python3 -m script.a3.adam_direction_trial plan
+```
+发布同步后，仅ZHY根目录、OUT和LOG不存在且三次原资源门通过才单次执行：
+```bash
+/usr/bin/python3 -m script.a3.adam_direction_trial register
+/usr/bin/python3 -m script.a3.adam_direction_trial run --stage probe
+```
+
+产物`data/experiments/a3_zhy_adam_direction_20261013_E47/{registration,state,mapping,pre_candidate,progress,result}.json`；日志`logs/a3_zhy_adam_direction_20261013_E47/`；累计清单`data/manifests/a3_zhy_adam_direction_20261013_E47.json`。已有COMPLETE/STOPPED禁止复跑。当前只有实现控制通过，0模型加载/运行结论；代码先scoped提交并同步再登记。

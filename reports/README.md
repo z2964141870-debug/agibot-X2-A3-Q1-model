@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-最新阶段：E46零更新诊断COMPLETE：step4固定batch的PPO/总Actor下降方向均局部降低teacher MSE，aux对dyn梯度0；[E47同输入Adam有限步草案](README_A3_ADAM_DIRECTION_20261013.md)已固定待实现，见[E46结果](README_A3_RETENTION_DIRECTION_20261013.md)。官方035仍baseline，无新效果提升；E44/E45仍STOPPED。
+最新阶段：E46零更新诊断COMPLETE：step4固定batch的PPO/总Actor下降方向均局部降低teacher MSE，aux对dyn梯度0；[E47同输入Adam有限步诊断](README_A3_ADAM_DIRECTION_20261013.md)已实现待登记，见[E46结果](README_A3_RETENTION_DIRECTION_20261013.md)。官方035仍baseline，无新效果提升；E44/E45仍STOPPED。
 
 ## 恢复上下文先读
 
@@ -14,7 +14,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
-| 2026-10-13 | A3同输入Adam方向E47草案 | 静态核验完整分组/全局裁剪；拟1保存状态/最多12Actor+1Critic/3grad/0optimizer，未实现登记，见[计划与恢复](README_A3_ADAM_DIRECTION_20261013.md) |
+| 2026-10-13 | A3同输入Adam方向E47草案 | 实现/4标准库控制通过；1保存状态/最多12Actor+1Critic/3grad/0optimizer，待登记，见[计划与恢复](README_A3_ADAM_DIRECTION_20261013.md) |
 | 2026-10-13 | A3保存状态保留梯度E46 | COMPLETE/12forward/10grad/0optimizer；未支持原始梯度冲突，aux梯度0，见[实现与恢复](README_A3_RETENTION_DIRECTION_20261013.md) |
 | 2026-10-13 | A3保留约束与更新方向审查 | 96帧软teacher/384帧后验保护、衣服KL自适应LR及全局裁剪已核实；下一E46零更新草案未实现，见[审查与恢复](README_A3_RETENTION_CONFLICT_20261013.md) |
 | 2026-10-13 | A3已知失败行走语料对照E45/R19 | 第19optimizer再次teacher停止，4整更新/1920交互，保留step2/4但不评测；语料分支关闭，见[实现与恢复](README_A3_CLOTH_FAILURE_20261013.md) |

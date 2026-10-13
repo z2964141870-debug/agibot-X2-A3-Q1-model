@@ -14,6 +14,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-13 | A3保存候选/官方效果分解E43 | 固定共同跌倒前/关节分组/初始输入合同，代码准备、尚未运行，见[方案与入口](README_A3_CLOTH_EFFECT_AUDIT_20261013.md) |
 | 2026-10-13 | A3冻结codec token复用微调E42/R17 | 训练合同通过，但六衣服/四官方匹配开发效果拒绝，均误差+9.63%/三官方超预算，见[结果与入口](README_A3_CLOTH_CACHED_20261013.md) |
 | 2026-10-13 | A3固定decoder单token干预E41 | 原训练mean重算差0，仅恢复1坐标后概率门通过、model state不变；0优化/新回放，见[结果与边界](README_A3_CLOTH_INTERVENTION_20261013.md) |
 | 2026-10-13 | A3保存compact编码token审计E40 | 2映射控制通过，1.79e-7 latent差对应1 token翻转/同动作帧；0模型加载/forward，见[结果与边界](README_A3_CLOTH_TOKENS_20261013.md) |

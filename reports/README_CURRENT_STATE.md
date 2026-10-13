@@ -4,6 +4,8 @@
 
 ## 用户目标与固定约定
 
+下一[E43保存轨迹分解](README_A3_CLOTH_EFFECT_AUDIT_20261013.md)：固定E42/E26/E02十动作，先验首输入/五类参考/保存步数，再比较共同跌倒前、腿腰臂MSE贡献/膝事件和zzx4.4–4.9秒；0模型加载/forward/仿真/optimizer。尚未登记运行，新编号不改旧账本，原门不放宽；结果后决定下一训练或参考单变量。
+
 最新[E42/R17](README_A3_CLOTH_CACHED_20261013.md)：两更新/8optimizer、采样token identity/原概率门/精确冻结与CPU训练核验通过；六衣服2994步/四官方5775步及独立效果复算完成。衣服均RMSE .1413798→.1549925rad（+9.63%），zzx5.86秒仍倒；warmUp/fjw/zls超2%关节预算，warmUp/zls/zzx超5%世界根/腕预算。官方仍4/4不倒，但转身/单腿/踏步关节+4.93/+14.53/+5.85%超2%预算；候选REJECTED，不晋级。72健康同boot/OOM0/CPU43/GPU35°C，最低可用4.066GiB在训练、阶段间最大518.72秒空档，无机器故障、已退出。step2 SHA8429914489ea0c2ecd58623dfafb2c33ca23898282df0c8db2ae0b9457b5da59/LOCAL_ONLY。下一独立保存轨迹分解：共同跌倒前/关节分组/初始输入与原参考一致性，再决定单变量；不复跑E42/不增更新或降门。官方仍基线，未见会话待验。
 
 最新[E41通过](README_A3_CLOTH_INTERVENTION_20261013.md)：60d647b源，一次官方step0/两decoder forward、0encoder/quantizer/回放/optimizer。原训练token mean重算差0、动作max.017823/ratio偏差.21693；只恢复[3,2,1,24]到-.375后动作max2.861e-6/ratio偏差1.717e-5，原门通过，完整state SHA相同，保存重载CPU独立复算通过。5健康同boot/OOM0/CPU44/GPU28°C/最低可用8.31GB，无异常、已退出。定位此批token导致动作差，不扩大到跌倒或全部输入。下一冻结codec采样实际assembled token复用，小批仍decoder梯度/官方aux/Critic，首概率/冻结/teacher门保留，新编号固定两更新/8optimizer后匹配效果评测；官方仍基线。

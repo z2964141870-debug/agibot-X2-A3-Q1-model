@@ -29,7 +29,7 @@ teacher RMSE原.046055388→投影.046205418，MSE增加1.3841811e-5；实际舍
 
 E51/R20实现完成但尚未登记：从官方035/空Adam开始、E45相同4段，唯一变量为隔离原生AdamW提案→固定8比例实际teacher/同batch目标接受→参数和历史矩一次提交。原.05/.5保护与六衣服四官方效果门不变，不将E50改成通过。预算8更新/32提案/3072交互，保存0/2/4/8，仅最终8做10完整评测。先4项ZHY合成事务控制；任一STOPPED不续跑/不评测早期点、不延伸同类诊断。计划[a3_finite_retention_plan](../data/manifests/a3_finite_retention_plan_20261014.json)。
 
-北京时间01:29预检同boot/OOM0/GPU空闲，但原available约6.68GiB低于8GiB。01:46定向维护因GPU忙在空闲检查拒绝，0释放/删除，未重试。01:47新见其他Python计算/GPU19%/5286MiB，原available约8.63GiB但仍不得并行。E51 WAIT_EXTERNAL_COMPUTE，未登记/0本实验worker；恢复低频核验，无需用户处理。发布后保护新计划输入，维护可信基准E50登记；只定向终结工件缓存、32文件/2GiB/30分钟、不删数据或全局drop。再三次5秒原预检，未通过WAIT、不建账本；通过才各阶段一次执行。维护由shell直接运行，避免Python父包装器被判其他计算。旧E44/E45和E46–E50禁止重跑。
+北京时间01:29预检同boot/OOM0/GPU空闲，但原available约6.68GiB低于8GiB。01:46定向维护因GPU忙在空闲检查拒绝，0释放/删除，未重试。01:47新见其他Python计算/GPU19%/5286MiB，原available约8.63GiB但仍不得并行。E51 WAIT_EXTERNAL_COMPUTE，未登记/0本实验worker；恢复低频核验，无需用户处理。发布后保护新计划输入，维护可信基准E50登记；只定向终结工件缓存、32文件/2GiB/30分钟、不删数据或全局drop。再三次5秒原预检，未通过WAIT、不建账本；通过才各阶段一次执行。维护由shell直接运行，避免Python父包装器被判其他计算。旧E44/E45和E46–E50禁止重跑。 实现d0b1ae3已推送并同步ZHY，源码SHA全部一致；01:56复核仍有其他Python/GPU43%/4284MiB，available约9.80GiB也不能并行，E51 OUT仍不存在；[发布收据](../data/manifests/a3_finite_retention_publish_20261014.json)。
 
 
 ## 固定执行与存储约定

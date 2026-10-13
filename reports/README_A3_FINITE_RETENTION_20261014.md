@@ -84,3 +84,9 @@ D2R正文PDF16906920字节、SHA256 `9efd28116d1f9c86f4d19c314b181c81a369aab2281
 01:47只读核验：同boot/OOM0、CPU41/GPU40°C；GPU19%/5286MiB，PID1183477可见RSS约5.84GiB，另有小型Python进程。原available估计约8.63GiB，但其他计算占用使启动门仍不满足；不终止或干预这些任务。**E51未登记、OUT/训练目录尚未创建、0本实验worker、4张量事务控制尚未执行**。状态WAIT_EXTERNAL_COMPUTE，不是机器故障，也不要求用户审批新方案。
 
 恢复时低频重新核验现场；资源/GPU/其他进程三次原预检通过后只登记一次，依次prepare/train/verify/最终效果。若OUT已存在则读真实state，不重复登记。不因本次等待回到旧E50或另加零更新实验。小清单`a3_finite_retention_readiness_20261014.json`记录本次资源证据。
+
+## 发布核验与01:56恢复快照
+
+实现及研究已scoped审计通过（13文件/115879字节），提交 `d0b1ae3fdd3cc012c3f51edaf651bf7cd0638615` 已推送main并比对远端，同提交快进同步到ZHY，既有E48/E49/E50未跟踪完整receipt保留。精简同步与SHA记录 `a3_finite_retention_publish_20261014.json`；3项标准库测试通过，张量测试实际0次。
+
+01:56再次只读：E51 OUT仍不存在，计划的全部源码SHA与ZHY一致；同boot/OOM0，GPU43%/4284MiB/56°C、CPU51°C，可见其他Python RSS约4.74GiB及1.17GiB。原可用估计约9.80GiB，但GPU/其他计算门不满足。维持WAIT_EXTERNAL_COMPUTE/未登记，未重试缓存维护，工程heartbeat继续ACTIVE。待空闲后按原三次预检推进，无需用户操作。旧原机训练和旧巡检不恢复。

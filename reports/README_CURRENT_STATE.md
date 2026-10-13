@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-13晚23:07。E47单次COMPLETE：固定旧batch上原始梯度、保存Adam一阶和有限步均降低teacher，RMSE .046055→.045792，不支持该输入的Adam反向。内存已核验，两次释放闲置文件页缓存共575.59MiB，并加入空闲期定向维护。官方035仍baseline，无新闭环提升。
+更新：2026-10-14 00:02。E48单次COMPLETE：新batch上原始总Actor下降方向减小teacher偏差，但保存Adam候选一阶和有限步均增大偏差，RMSE .046055→.046877（仍过原门）。这支持研究实际位移保留约束，不是历史第19步复现或闭环提升；官方035仍baseline。
 
 ## 当前A3工作与恢复
 
@@ -19,10 +19,13 @@
 
 ## 下一条具体工作
 
-E46/E47不复跑；[E47结果](README_A3_ADAM_DIRECTION_20261013.md)与[小清单](../data/manifests/a3_adam_direction_result_20261013.json)已完成。1保存状态、10Actor+1Critic forward、3grad，0optimizer/新rollout；28个完整参数映射及源状态不变通过。仅临时Critic running_mean改变，源checkpoint不动。6健康同boot/OOM0、CPU40/GPU30°C、最低可用7.172GiB，登记到计算有1582秒间隙，非连续监控。
+E46/E47/E48均禁止复跑。最新入口：[E48新batch结果](README_A3_FRESH_BATCH_20261013.md)，[小清单](../data/manifests/a3_fresh_batch_result_20261014.json)。34Actor+2Critic/3grad/384交互/1候选/0optimizer；完整映射、概率门、保存teacher控制和状态不变通过。新KL .000290394使原规则LR升至6.75e-6；原始teacher方向-.613754，Adam一阶+6.25635e-5、有限MSE+7.63463e-5。
 
-下一按[E48新批次方向实现](README_A3_FRESH_BATCH_20261013.md)实现已完成/8标准库控制通过，发布同步后登记并一次执行独立step4新采样零更新诊断；保持原规则/原teacher/原门，不盲调权重/LR。不恢复E44/E45、不执行其verify/evaluation；语料/曝光分支关闭。当前0worker。
+11健康同boot/OOM0、CPU43/GPU33°C，最低可用4.513GiB，登记至启动49.86秒缺口。app.close快速退出导致progress.json缺失，result已原子保存且独立标准库退出后SHA核验通过；不重跑补文件。
 
+下一固定E48 batch/同step4/moments，独立E49研究实际Adam位移的完整teacher一阶非增约束；单次数学投影加有限teacher/同batch目标检查，0optimizer/新rollout。草案待固定预算与实现，不能当已启动。当前0worker。不恢复E44/E45或其verify/evaluation，语料/曝光分支关闭。
+
+用户新增明确要求：文件内容缓存压低8GiB启动余量时自行定向回收。E48后一次维护因未辨明进程可见性拒绝，0释放/删除；随后只读核验无大进程、GPU空闲、可用8.225GiB。先补维护失败PID留证，不放宽保护或全局drop_caches，保护下一计划输入。
 官方仍baseline；开发结果通过后也必须独立seed和真正未见会话，不用代码/检查/checkpoint替代效果。工程heartbeat保持ACTIVE，待下一明确分支；不是机器故障停机。恢复必须查实际进程/boot/GPU/资源及原账本。
 
 ## 固定执行与存储约定

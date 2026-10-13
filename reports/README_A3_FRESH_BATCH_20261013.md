@@ -1,6 +1,6 @@
 # A3当前策略新批次方向诊断：E48实现与固定合同
 
-记录：2026-10-13晚。状态：实现与静态控制完成，尚未登记、0worker。E48目录目前未发现；启动时仍须重查。E47已完成并禁止复跑。
+记录：2026-10-13晚。状态：2026-10-14北京时间00:02:36单次COMPLETE，0worker；E48禁止复跑，E47保持COMPLETE。编号与文件名沿登记时固定20261013，实际跨日时间明确记录。
 
 ## 目标与依据
 
@@ -8,7 +8,7 @@ E46/E47同一E45首batch在step4上原始/Adam/有限teacher都向内，不能�
 
 本轮不再在旧batch上追加权重/LR试探。下一主变量固定为：**同一个保存step4 Actor/Critic/Adam状态，诊断batch从旧官方初始策略数据换成当前step4策略新采数据**。新采不等于历史失败样本；若不能复现向外，结论仅为当前采样未复现，不能换seed/batch反复挑结果。
 
-## 固定实现合同（登记前）
+## 固定实现合同（已执行，历史登记条件保留）
 
 1. 新编号E48，单一独立任务，绝不调用E44/E45 run/verify/evaluation，不加载其训练恢复入口。加载E45 milestone4同一SHA，只读其Actor/Critic/optimizer；四衣服语料、原原生reset分布、16环境、24步、seed0，1个新rollout/384交互。奖励、路由、teacher、梯度裁剪和自适应LR规则都不改。
 2. 在新环境reset后由当前step4策略采样，用原rollout/GAE/索引切片逻辑，保存实际token、动作、logprob、old_mu/sigma、obs、dones、returns/advantages及采样初末状态摘要。固定取原randperm产生的第一个4环境batch，不看结果再选batch。采样/诊断严格串行，Actor frozen codec/std/参数buffer保持不变，禁止optimizer.step或保存新策略checkpoint。
@@ -38,3 +38,32 @@ E46/E47同一E45首batch在step4上原始/Adam/有限teacher都向内，不能�
 - Mac仅AST及标准库检查：`python3 -m unittest script.a3.test_fresh_batch_protocol script.a3.test_adam_direction_protocol -v`，8项通过；`fresh_batch_trial plan`通过，无torch导入。尚未实际启动模型或仿真，因此不能宣称运行合同通过。
 - 仅在ZHY根目录用系统Python登记/监护：`/usr/bin/python3 -m script.a3.fresh_batch_trial register`，然后`/usr/bin/python3 -m script.a3.fresh_batch_trial run`。登记与启动各三次5秒原资源门；目录存在/状态非REGISTERED禁止重复。原始输出`data/experiments/a3_zhy_fresh_batch_20261013_E48/`，日志`logs/a3_zhy_fresh_batch_20261013_E48/probe/console.log`。
 - 本次恢复缓存维护返回COOLDOWN，未重复释放；可用估计约8.598GiB、OOM0、boot未变，但启动须重新三次核验。Git发布状态以提交与远端核验为准，原始工件仍LOCAL_ONLY。
+
+## 单次结果（2026-10-14北京时间00:02:36）
+
+代码固定提交`a049156cae1aa0fd26357506011feae3d94abf6e`，登记/启动前分别三次5秒预检通过；阶段00:01:48–00:02:36，共48.07秒。34Actor/decoder、2Critic、3autograd.grad、1rollout/384交互、1数学候选；0Optimizer构造/更新、0可部署checkpoint。实际四段MotionLib已加载，唯一首batch环境索引[7,10,9,12]。全部原始证据在ZHY LOCAL_ONLY，小型清单见`data/manifests/a3_fresh_batch_result_20261014.json`。
+
+| 同一step4状态下的比较 | E47保存旧batch | E48当前策略新batch |
+| --- | ---: | ---: |
+| 原KL规则的KL | 0.347235 | 0.000290394 |
+| 同一规则后的LR | 3e-6 | 6.75e-6 |
+| 沿负总Actor原始梯度的teacher一阶变化 | -2.590118 | -0.613754 |
+| 沿Adam候选位移的teacher一阶变化 | -2.732338e-5 | +6.256352e-5 |
+| 有限候选teacher MSE变化 | -2.417056e-5 | +7.634633e-5 |
+| teacher RMSE | .046055388→.045792229 | .046055388→.046876915 |
+
+**该固定新batch上，原始总Actor下降方向向内，而保存Adam变换后的候选向外。**有限步也增大teacher偏差，因此这次支持研究实际参数位移的保留约束。候选RMSE仍小于原.05、maxabs .239271小于.5，未触发保护。不能将其称为历史第19步复现，不能把Adam历史矩、逐坐标缩放、完整clip和自适应LR各自贡献拆开归因；LR是同一规则对新KL的结果，不是另扫的变量。总Actor含原teacher96软项，不把它误称为仅PPO梯度。
+
+首概率RMSE2.9845e-7、ratio最大偏离1.1444e-5，通过原1e-5/.001门。完整Actor+Critic梯度范数28.25528、clip .00353916；Actor与常数value控制梯度最大差0。完整teacher起点与E47一致。Actor参数/buffer、保存Actor/Critic/optimizer、输入均未变；采样Critic eval buffers未变，恢复后train只改变临时running_mean。最终结论`RAW_DESCENT_INWARD_ADAM_OUTWARD`。**这仍是局部诊断，没有新闭环收益，官方035仍baseline。**
+
+11健康样本同boot`d994e71f-bae0-46ba-a5f7-6c2163771c6c`，OOM0，无新严重内核/遥测错误；CPU最高43°C、GPU33°C/127.36W，最低原可用估计4.513GiB。登记到启动存在49.86秒间隙，不能声称全程连续监控。采集期间MotionLib短暂子进程属于本次作业，未与其他计算任务并行。
+
+## 退出核验与未解决项
+
+`result.json`已在app.close前原子写入；退出码0。IsaacSim默认fast_shutdown使app.close之后的打印/finally及worker末尾SHA检查未执行，`progress.json`缺失，不捏造补写。已用独立标准库在退出后核对全部登记源码/输入SHA和最终计数，保存`postexit_verification.json`；无模型重放，既有result保留。下个独立实验必须把最终progress/文件核验放在app.close之前或父监护结束后，而非修改或重跑E48。
+
+计算结束后的缓存维护在可见进程检查处拒绝（`Unresolved process visibility`），没有释放/删除文件；只读复核当前为176个僵尸及原3个小基础休眠进程、无RSS>1GiB进程，GPU26°C/0%/13MiB、同boot/OOM0，可用估计8.225GiB。旧错误未记录PID，所以不声称查明当时身份；先补充维护失败的PID/comm/阶段留证，按现有范围再处理，不能放宽检查或盲复跑。
+
+## 下一单变量
+
+不再重复E46–E48，不恢复E44/E45。下一独立设计E49：固定E48保存batch与E45 step4/moments，只改变数学候选位移是否满足完整teacher一阶非增约束；不重采样、不扫LR/权重、不部署。原Adam方向向外才做一次半空间投影，再以完整384teacher有限步原门和固定batch目标检查；有限步不合格即拒绝，不连续试缩放。研究这个约束能否修正局部位移后，再另登记短训练与原六衣服/四官方效果评测，不能把投影通过直接算baseline收益。

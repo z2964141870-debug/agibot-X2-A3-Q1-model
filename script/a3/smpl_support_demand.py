@@ -30,6 +30,7 @@ def register():
         raise FileExistsError('Do not reset or repeat E32')
     value = guard.preflight()
     parent = read(parent_stage.OUT / 'verification.json')
+    parent_job = read(parent_stage.OUT / 'registration.json')
     if (parent['status'] != 'VERIFIED_SAVED_MOTOR_RANGE_TRACE'
             or parent['health']['boot_ids'] != [value['boot_id']]):
         raise ValueError('Requires verified same-boot E31')
@@ -37,7 +38,8 @@ def register():
     if kernel['returncode']:
         raise RuntimeError('Kernel telemetry unavailable')
     files = dict(parent['input_sha256'])
-    paths = [parent_stage.OUT / 'verification.json', evidence.PRIOR / 'registration.json']
+    paths = [parent_stage.OUT / 'verification.json', parent_stage.OUT / 'registration.json',
+             evidence.PRIOR / 'registration.json']
     selection = read(evidence.PRIOR / 'registration.json')['selection']
     paths += [ROOT / row['source'] / name for row in selection
               for name in ('reference.csv', 'kinematic_trace.npz')]
@@ -68,7 +70,7 @@ def register():
         consecutive_hot_samples=2, sample_seconds=5, memory_reserve_gib=4,
         runtime_limit_seconds=900, auto_resume=False, repeat_allowed=False,
         state_time_convention='ACTUAL=(TICK+1)/50_REFERENCE=TICK/50',
-        bridge_path=parent['bridge_path'], bridge_sha256=parent['bridge_sha256'],
+        bridge_path=parent_job['bridge_path'], bridge_sha256=parent_job['bridge_sha256'],
         code_sha256={name:sha256(ROOT / name) for name in dict.fromkeys(CODE)},
         input_sha256=files, baseline_oom_kill=value['container_memory']['oom_kill'],
         kernel_baseline=kernel['stdout'].splitlines(), backup_status='LOCAL_ONLY')

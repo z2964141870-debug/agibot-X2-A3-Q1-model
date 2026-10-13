@@ -1,6 +1,6 @@
 # A3以基线收益为准的推进调整与E44有限学习曲线
 
-记录日期：2026-10-13，北京时间。状态：E44/R18已一次登记，20:00:31–20:00:52 prepare通过、PREPARED；实际训练尚未开始。登记源码2708fff，下一仅执行train，不重跑登记/准备。
+记录日期：2026-10-13，北京时间。状态：E44/R18于20:09 STOPPED；第19次optimizer后官方锚点RMSE 0.050075超过原0.05门，4次完整更新加第5次的3个batch；不恢复、不追加曝光。官方仍基线，下一按用户要求研究已有论文。
 
 ## 目标与当前交付差距
 
@@ -72,3 +72,17 @@ OUT：data/experiments/a3_zhy_cloth_curve_20261013_E44/；训练：data/training
 累计6健康样本同boot d994e71f-bae0-46ba-a5f7-6c2163771c6c、OOM0、CPU最高43°C/GPU26°C，最小可用10,740,817,920字节；登记至准备最大空档57.25秒，不记作连续监测。prepare已退出、0optimizer/新策略回放；小清单data/manifests/a3_zhy_cloth_curve_20261013_E44.json保留实际回执及SHA，原始日志/工件LOCAL_ONLY。
 
 下一在原资源/遥测门满足后仅执行`/usr/bin/python3 -m script.a3.cloth_learning_curve run --stage train`，成功后verify-training及预定完整曲线评测。训练失败立即保存证据，不为完成32更新放宽teacher或健康门；本轮无可靠提升则研究本地reports/research已有候选与原文，不无限追加曝光。
+
+## E44实际停止结果（20:09）
+
+训练前20:08:01/06/11三次快照可用估计均约10.49GiB，原8GiB门通过、无其他大进程/计算；train于20:08:13–20:09:28一次执行。第19次实际optimizer（第5次更新第3个batch）后官方384帧锚点动作RMSE从第18次0.0482491升到0.0500751，超过预先固定0.05，最大绝对偏差0.223674仍低于0.5。控制器returncode=1、state.reason=null；具体原因以training/console.log的“Official action anchor drift budget exceeded”及先落盘的cloth_contract.json为准，未改写旧state。
+
+实际4次完整更新、19次optimizer、5批rollout共1920交互；原生路由g1=1180、a3_fast=740，配置各1/2不代表有限样本均分。首概率RMSE4.3848e-7/max2.8610e-6、ratio最大偏差1.5259e-5，初始官方锚点差0；19次保存的冻结摘要相同。最后实际LR1.0125e-5是原自适应规则的结果，未人为调大。尚未运行独立训练核验，不能把这些在线记录提升为完整训练验收。
+
+只存在milestone_0的官方暖启动保存；未到8/16/32，0新增效果轨迹，后续训练核验和曲线评测均未启动。**本轮没有取得策略提升，也没有获得足以评判32更新效果的完整曲线。**证据只支持“当前配方在原能力保留约束下提前停止”，不证明延长训练必定无效，也不将0.05锚点门解释为完整闭环能力保证。
+
+累计21健康样本同boot/OOM0、CPU最高43°C/GPU35°C、GPU采样功率最高127.58W、最小可用6,648,303,616字节（约6.19GiB），无记录内核/遥测错误；阶段间最大441.19秒空档，不计作连续覆盖。已退出，无新机器首故障；工程heartbeat可继续只读研究与新方案准备，禁止自动重跑E44。
+
+停止小清单：data/manifests/a3_zhy_cloth_curve_stop_20261013_E44.json；累计清单：data/manifests/a3_zhy_cloth_curve_20261013_E44.json。两者保存配置、日志、合同的SHA与实际计数；raw仍LOCAL_ONLY。登记源码2708fff，运行时HEAD a78e597仅新增阶段记录、已登记代码SHA未变。scoped审计/提交推送后的完整号以Git历史与远端核验为准。
+
+下一工作：先读reports/research的MimicX、PriMoRetarget、Reflex与能力保留候选，再核验相关原文/公开代码。将论文的可借鉴机制与本项目已证据化短板逐项对齐，选一个能改变完整评测结果的主要变量；不因论文存在即换框架，不放宽原门，不把只做诊断当baseline收益。

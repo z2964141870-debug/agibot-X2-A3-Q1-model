@@ -49,7 +49,7 @@ zzx参考4.4–4.9秒有13帧共同越包络，实际5帧；实际第一次共�
 
 8健康样本同boot d994e71f-bae0-46ba-a5f7-6c2163771c6c，CPU40/GPU26摄氏度，最低可用8,604,766,208字节，OOM0，无新关键内核/遥测异常，最大间隔5.198秒；任务正常退出。0策略权重/前向/新回放/optimizer/mj_step/CUDA。代码基线a391ee44c039ef81fd422a7cd00326206fbe572c，清单SHA c21b3c13fcd2ed64cbd3471a2f69752117f887955127219b56a70f2e431aa3f6。登记前bridge元数据读取错误已修正到E31 registration，修正前未创建E32目录/账本或启动worker，旧实验未重置。
 
-本结果README/索引/current state与小清单已保存，推送待本阶段scoped audit与核验；Git提交记录提供最终提交号。大型参考/保存状态/新轨迹仍LOCAL_ONLY；Mac只留小代码、记录和清单。
+本结果README/索引/current state与小清单已保存，4文件scoped audit PASS，153945字节，结果提交91f42fe59367a8089a5d5a7bab0357d222766020已核对GitHub与源机/ZHY；生成清单scoped stash保留。大型参考/保存状态/新轨迹仍LOCAL_ONLY；Mac只留小代码、记录和清单。后续E33见[装配与闭环入口](README_A3_SMPL_ASSEMBLY_20261013.md)。
 
 ## 下一步与恢复
 

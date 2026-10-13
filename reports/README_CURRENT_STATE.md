@@ -1,12 +1,16 @@
 # YUANQI 当前状态与下一步
 
-更新：E24六段ABI通过但入口缺参数在策略前停止，0回放；准备独立E25接续，长期工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
+更新：E26完整启动契约2测试通过/登记READY，尚无策略结果；长期工程ACTIVE。详细过程见阶段README，旧进程/机器信息不是实时状态。
 
 ## 用户目标与固定约定
 
 2026-10-13用户要求长期工作；工程heartbeat `zhy-a3`已创建ACTIVE，每30分钟接续，旧故障巡检暂停/日研不变。只在ZHY计算，原hp3090仅Git/标准库传输；首机器故障停止，不自动复跑/开机恢复。路线[持续工程](README_A3_LONGTERM_20261013.md)：参考合同→冻结官方闭环→实证短板的小微调/能力保留→未见验收，目标仍是衣服完整跟随和官方基线可验证提升。
 
-E24于11:08:52入口错误停止ENTRY_ERROR_BEFORE_POLICY：六段300→499帧ABI/FK误差≤1.65e-15、重采样脚最低-3.719mm通过原5mm门，但包装器漏传summarize_only在策略加载前退出，0回放/0optimizer；旧E24不改不重复。5健康样本同boot/CPU42/GPU26°C/OOM0，100.10秒间隔是登记到运行空档，未确认机器故障。已保存失败SHA清单，下一E25补全参数、复用ABI、固定六段官方035完整零延迟，独立验收。入口超时后恢复同boot；基线26a3b4c。见[结果与协议](README_A3_SMPL_FROZEN_20261013.md)。
+E26完整假工件启动契约2测试通过/登记READY：透明进程适配保留STDOUT等全部接口，原参考/模型/门槛不改，复用E24六段ABI，下一499步×6完整官方回放/0optimizer；尚无策略结果。恢复先核state。见[协议](README_A3_SMPL_FROZEN_VALIDATED_20261013.md)。
+
+E25于11:18:55再次入口错误停止：漏保留subprocess.STDOUT，在真正Popen前退出，manifest running并非执行证据，0回放。3样本同boot/CPU41/GPU26°C/OOM0，80.28秒是登记到启动空档，未确认机器故障。旧E24/E25不重复。见[失败](README_A3_SMPL_FROZEN_FOLLOWUP_20261013.md)。
+
+E24于11:08:52入口错误停止ENTRY_ERROR_BEFORE_POLICY：六段300→499帧ABI/FK误差≤1.65e-15、重采样脚最低-3.719mm通过原5mm门，但包装器漏传summarize_only在策略加载前退出，0回放/0optimizer；旧E24不改不重复。5健康样本同boot/CPU42/GPU26°C/OOM0，100.10秒间隔是登记到运行空档，未确认机器故障。失败/ABI已提交91b1624并核对远端；E25见上段。入口超时后恢复同boot。见[结果与协议](README_A3_SMPL_FROZEN_20261013.md)。
 
 E23于09:26:12完成、09:35:11独立验收VERIFIED_KINEMATIC_CORPUS；3CPU测试/2100帧复核、12geom/2739真实凸包顶点与mesh最低点差0，17584积分完整接受。6/7通过原运动学门，位置P95 2.845–4.603cm/接触脚底约1–1.5mm；下蹲仅P95 6.290cm失败，拒绝。只读误差分解定位双膝/髋，左膝局部P95 13.178cm，最差区间2.833–3.067秒，未证明具体根因。0optimizer/0策略回放/无CUDA；15健康样本同boot/CPU47/GPU26°C/OOM0，结束到验收538.59秒空档不算连续覆盖，任务退出。下一E24冻结官方测六段，尚未登记/启动；另拆下蹲腿目标/关节可行性。`training_ready`仅原分区运动学合同，七段已用于开发，不代表未见测试/平衡。见[E23结果](README_A3_SMPL_HULL_20261013.md)与[清单](../data/manifests/a3_zhy_smpl_hull_20261013_E23.json)。
 

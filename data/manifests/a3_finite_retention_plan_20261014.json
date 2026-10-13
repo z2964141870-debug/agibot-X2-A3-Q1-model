@@ -1,0 +1,217 @@
+{
+  "experiment": "A3_ZHY_FINITE_RETENTION_20261014_E51",
+  "trial": "R20",
+  "status": "IMPLEMENTED_UNREGISTERED",
+  "main_variable": "FINITE_ACTUAL_ADAM_CANDIDATE_ACCEPTANCE_BEFORE_COMMIT",
+  "source_state": "FRESH_OFFICIAL_035_EMPTY_ADAM",
+  "limits": {
+    "updates": 8,
+    "optimizer_proposals": 32,
+    "committed_steps": 32,
+    "transitions": 3072,
+    "candidates_per_proposal": 8,
+    "candidate_evaluations": 256,
+    "baseline_evaluations": 32,
+    "effect_rollouts": 10,
+    "runtime_seconds_per_stage": 900
+  },
+  "scales": [
+    1.0,
+    0.5,
+    0.25,
+    0.125,
+    0.0625,
+    0.03125,
+    0.015625,
+    0.0078125
+  ],
+  "teacher_rmse_max": 0.05,
+  "teacher_max_abs": 0.5,
+  "same_batch_objective_tolerance": 1e-07,
+  "e50_gate_unchanged": true,
+  "e50_method_closed": true,
+  "unseen_test": false,
+  "train_sequences": [
+    "G_0113_zj_train/183926_zj_walk",
+    "G_0113_zj_train/192333_zj_warmUp",
+    "G_20251226_fjw/fjw_140008_walk",
+    "G_20251229_zzx/zzx_111505_walk"
+  ],
+  "motion_roles": [
+    {
+      "sequence": "G_0113_zj_train/183926_zj_walk",
+      "partition": "train",
+      "frames": 300,
+      "fps": 30,
+      "joint_max_error": 5.956388315908612e-08,
+      "root_max_error_m": 1.7476023606022295e-07,
+      "rotation_max_error_rad": 7.484566280686065e-08,
+      "path": "data/experiments/a3_zhy_cloth_resource_20261013_E38/motionlib/G_0113_zj_train__183926_zj_walk.pkl",
+      "sha256": "73c8251eddb08bea8c486e34e144cfcb4e8533ed5edca78023fcc094985f4394",
+      "bytes": 90160,
+      "original_partition": "train",
+      "experiment_role": "DEVELOPMENT_TRAIN",
+      "reused": true
+    },
+    {
+      "sequence": "G_0113_zj_train/192333_zj_warmUp",
+      "partition": "train",
+      "frames": 300,
+      "fps": 30,
+      "joint_max_error": 9.190648997403628e-08,
+      "root_max_error_m": 8.938796836055474e-08,
+      "rotation_max_error_rad": 7.23878548823876e-08,
+      "path": "data/experiments/a3_zhy_cloth_resource_20261013_E38/motionlib/G_0113_zj_train__192333_zj_warmUp.pkl",
+      "sha256": "e802ecfcd650085adb29d2794d00cdee8120d214afb730bbc7ef32d29f9c457e",
+      "bytes": 91342,
+      "original_partition": "train",
+      "experiment_role": "DEVELOPMENT_TRAIN",
+      "reused": true
+    },
+    {
+      "sequence": "G_20251226_fjw/fjw_140008_walk",
+      "partition": "train",
+      "frames": 300,
+      "fps": 30,
+      "joint_max_error": 5.895858934401588e-08,
+      "root_max_error_m": 9.352170438070573e-08,
+      "rotation_max_error_rad": 1.2901009668194785e-08,
+      "path": "data/experiments/a3_zhy_cloth_resource_20261013_E38/motionlib/G_20251226_fjw__fjw_140008_walk.pkl",
+      "sha256": "f7a36df7e028fb8c0d2affff3e9784b4c8a49bd6dbd5a3ce41e9034e52de5329",
+      "bytes": 90710,
+      "original_partition": "train",
+      "experiment_role": "DEVELOPMENT_TRAIN",
+      "reused": true
+    },
+    {
+      "sequence": "G_20251229_zzx/zzx_111505_walk",
+      "original_partition": "test",
+      "experiment_role": "DEVELOPMENT_TRAIN",
+      "reused": false,
+      "frames": 300,
+      "fps": 30,
+      "joint_max_error": 5.939452951686519e-08,
+      "root_max_error_m": 1.1325398907580109e-07,
+      "rotation_max_error_rad": 7.351886231727406e-08,
+      "path": "data/experiments/a3_zhy_cloth_failure_20261013_E45/motionlib/G_20251229_zzx__zzx_111505_walk.pkl",
+      "sha256": "82de6e17d9fc8466078e16069f239109dd2a8e9ef1c0878f32d9399532190a73",
+      "bytes": 90299
+    }
+  ],
+  "inputs": [
+    {
+      "path": "data/models/a3_official_035/checkpoints/035_step200000/model_step_200000.pt",
+      "sha256": "9cf33be2f4e602858b68ce31d5824113ab1dda250acaab5842b6d3bf88b70f2d"
+    },
+    {
+      "path": "data/experiments/a3_zhy_gradient_20261012_E11/rollout.pt",
+      "sha256": "5bbba73dbffd0a6f7d4737fd7afded4ac7f4e58f9c648f14d4c0cfd2963cf3a3"
+    },
+    {
+      "path": "data/experiments/a3_zhy_modules_20261012_E12/module_outputs.pt",
+      "sha256": "24e726f986613a73ccf2801e449e33e444cc16f994552c40f9c676d46510954c"
+    },
+    {
+      "path": "data/training/a3_zhy_cloth_failure_20261013_E45/R19_001_s0/config.yaml",
+      "sha256": "7b3e33e4324dc03cad437e4577d35909115a9feeaf156975d5ca7397fcbd6323"
+    },
+    {
+      "path": "data/experiments/a3_zhy_cloth_failure_20261013_E45/prepare.json",
+      "sha256": "9a67b0c499eaa35c5df26122ea17cb6b666449961b546a51c2d944b318b9d31b"
+    },
+    {
+      "path": "data/experiments/a3_zhy_candidate_retention_followup_20261014_E50/result.json",
+      "sha256": "7f0b1b93713fc6ee8ca01363a459c71c0b9d39e61edf494d31811092b29506a1"
+    },
+    {
+      "path": "data/experiments/a3_zhy_cloth_resource_20261013_E38/motionlib/G_0113_zj_train__183926_zj_walk.pkl",
+      "sha256": "73c8251eddb08bea8c486e34e144cfcb4e8533ed5edca78023fcc094985f4394"
+    },
+    {
+      "path": "data/experiments/a3_zhy_cloth_resource_20261013_E38/motionlib/G_0113_zj_train__192333_zj_warmUp.pkl",
+      "sha256": "e802ecfcd650085adb29d2794d00cdee8120d214afb730bbc7ef32d29f9c457e"
+    },
+    {
+      "path": "data/experiments/a3_zhy_cloth_resource_20261013_E38/motionlib/G_20251226_fjw__fjw_140008_walk.pkl",
+      "sha256": "f7a36df7e028fb8c0d2affff3e9784b4c8a49bd6dbd5a3ce41e9034e52de5329"
+    },
+    {
+      "path": "data/experiments/a3_zhy_cloth_failure_20261013_E45/motionlib/G_20251229_zzx__zzx_111505_walk.pkl",
+      "sha256": "82de6e17d9fc8466078e16069f239109dd2a8e9ef1c0878f32d9399532190a73"
+    }
+  ],
+  "source_sha256": {
+    "script/a3/cloth_constrained_trial.py": "2c0afc4fa34e8f8dedf8078ee59da4c9b94ce8588a6bbc9e1802096b67fe3b76",
+    "script/a3/cloth_constrained_trainer.py": "b4ccfe6f564eb2e261c420ee1cc9b64b743cb63cabf578ed334746fe855f81fb",
+    "script/a3/test_cloth_constrained.py": "4c1ffbcb5a662687c48bbf579d27a5b7df09503a166e460ca03377762dc1828b",
+    "script/a3/consistent_precision.py": "61dd22a41f87427e2ad82141956be2851aff57077d6f5145672aabe89c2c100a",
+    "script/a3/verified_finetune.py": "11044839b5c3d97fceb634149bae4960176f73a326bcdeafa576bc7dda33e22a",
+    "script/a3/finetune_trainer.py": "197ebea4444861340d0e45df8f81c4141c388194790da5a1c2b5640a22210aeb",
+    "script/a3/resumable_sonic.py": "e682dbfa42243becd15cbc48bd5c19bc5d3a46e6ad3bd767705f50ae2a0f51a9",
+    "script/a3/checkpoint_store.py": "c4bef83e48eabc2950fadeaa2f21b11d8ee5abc48ead0d759f3a0cadaff9e5c8",
+    "script/a3/zhy_trial.py": "3d8ee83efc8578ece03023d3da26ccb407ec7c7531cc369169abfb297bad4446",
+    "script/a3/host_health.py": "82ab6f18088719f1caa08607ce16de43e36dd44f066f727560a80627c796bc6e",
+    "script/a3/likelihood_probe.py": "b18769c638163e934be9322813e7a0aa380cbd5158a68c580fcb729f7307b896",
+    "script/a3/gradient_probe.py": "26a6d8956a72d2038664ea1cbf52243428aecc13d7c361445171f0768a703c9c",
+    "script/a3/zhy_likelihood_trainer.py": "b055a56ab27d3a32ae5ae27fcf7ef6128a4cffd42ae8aab343b515ec686d9a8b",
+    "script/a3/evaluate_mujoco.py": "504989afc5025356912f644d4ecab7dd05fdab5e402c86132f51e732aab82a6c",
+    "script/a3/frozen_evaluation_launch.py": "137ced1ef724fe7423a1ad364e11ee9b64480f9ae8230777296461e8ffa1e3d8",
+    "script/a3/smpl_frozen_entry.py": "cf8916f95e6d4f29459aff3f959e260142b9931090a346d1ddc1d149159f17cd",
+    "script/a3/sim_entry.py": "27e5cc16883140a704823a3e334863316eabf897bd4727ff33f7540258d8ac15",
+    "script/a3/verify_zhy_search.py": "689c0b24510d87172944bfa5b1ea2333d6bc5c7490358c71d57639b2d536e3b2",
+    "script/a3/zhy_fp32_trial.py": "8055a1fbc9d473990f0b09478110a726e7a3c9fd74d49a6760da1b21ef96d025",
+    "script/a3/cloth_resource_trial.py": "91cb0309b6eab98f05008d534a0b17f243ebf967a46907c61294f0fe727ed73c",
+    "script/a3/stage_resources.py": "58788c6e89e2765eeaef60187145c65dbe77774570b153467845abd8538adbd3",
+    "script/a3/cloth_std_contract.py": "010a4cfba40b8aaef8362be5b0f648cf7a2cb7181a474ab6a7eeab7622134a05",
+    "script/a3/test_cloth_std_contract.py": "f99eaf9dad6b6168ac461f3c7289e008b30ed1348a5758dc634e303a3ea4d6e8",
+    "script/a3/test_checkpoint_store.py": "02dbad1b1fad58cf0295b74ce0d4090a5a92f7476c29ce570053dbd0e5b32ea0",
+    "script/diagnostics/host_loadcheck.py": "a1a76cd6631b474efccf947388a1fcff72636e2a3cb5fed31ad361888f1e672b",
+    "script/a3/idle_reboot_watch.py": "3bc9138bc3c2e353b7d5c5759846b5b56a85e5a4168f9c7b207d001db98cf483",
+    "script/a3/cloth_cached_trial.py": "0490cefb0d0327c9868b44ac6aa20914d6ef73e48a1a535151efa5fa76e29781",
+    "script/a3/cloth_cached_tokens.py": "87cb5b57cf53d3c6759a77264c07ef730b5ff9e7b64899ec55dec9068c4a8c60",
+    "script/a3/test_cloth_cached_tokens.py": "32cd4a53225955287c2edf0615add53863708fcfb61e86b69d30329eb421b655",
+    "script/a3/cloth_curve_trainer.py": "4eec945a5bddeb5cc416738f57c727b44f0fbfc6e6d8d7c7baaa0681a892f74f",
+    "script/a3/cloth_curve_protocol.py": "92c6dc23df7318d18a6b456b1e29d2c90c612402823af138c086d0e2795d83a7",
+    "script/a3/cloth_failure_protocol.py": "1aec29cd194919cec33b8365c718f31d454400e117b60b6bb35b8834b46a5b60",
+    "script/a3/retention_direction_probe.py": "705edf26a210fe2d18e10a45326eba3aaadace0ce1b93c923107cb25286e493a",
+    "script/a3/retention_direction_protocol.py": "bb83f71c43440a381d349526bffa93120d00b35c2e1c57db72b51d35ac13d041",
+    "script/a3/finite_adam.py": "ab8d270563a8b214474a1b2314dfca0c07e635baac1c0bb9e5a87b4690ced9e3",
+    "script/a3/finite_retention_protocol.py": "4c64cfa9bb3c579bb8356311d88d987ae071000fb501c94a5b23de63b04bcc8a",
+    "script/a3/finite_retention_trainer.py": "a86ceb7f5de8c86521b34442db16104d4ef287f0a219cf9989c3af6ca5c81a7e",
+    "script/a3/finite_retention_trial.py": "b68002768a5496e22dd782e347de5efadc06728bedf8f9386c2a2b9e377f9ef1",
+    "script/a3/test_finite_adam.py": "d61668a1b8cda1e42ff93877e15690efe2e8a564347e00837c7364adaab959d1",
+    "script/a3/test_finite_retention_protocol.py": "1b27809928e29d7d2c19b76d85d03c512e985ef239477e316265c74260a5f66f",
+    "data/env/lib/python3.11/site-packages/torch/optim/adam.py": "46296644b82ae5f2ecae17ee30ce4691f4cc2078a0e478ec2beef10ffbe8018e",
+    "data/env/lib/python3.11/site-packages/torch/optim/adamw.py": "3112d8799ef9ab608b855a5708087d5576971463923c41d4a6a227006871f551",
+    "data/env/lib/python3.11/site-packages/torch/optim/optimizer.py": "22e21ad10aa7cd994189a9fa7d19c169df4dc9d0c4f4a8dc3fca6aa4568fcabe",
+    "data/env/lib/python3.11/site-packages/accelerate/optimizer.py": "a79a9f08e322f03023bf1e9e102ca9a387a3de9be643f53f6e09ab10029ce216",
+    "script/vendor/sonic_for_a3/gear_sonic/trl/trainer/ppo_trainer.py": "872b22d0ae6b1f124fe152e2831c496bfe6b4c80c92fde167129e0c3f1ce6fc1",
+    "script/vendor/sonic_for_a3/gear_sonic/trl/trainer/ppo_trainer_aux_loss.py": "483539b22fca693091670a22f90bc21018867dce50f5e39b14b3303dfbea2388",
+    "script/vendor/sonic_for_a3/gear_sonic/trl/modules/universal_token_modules.py": "4bc5c48a63931c7199c81da624f9a8dd13f5dce424268cf46b6f62ea98187837",
+    "script/vendor/sonic_for_a3/gear_sonic/trl/modules/actor_critic_modules.py": "4338bcb069b4efd31ad0e98c5f926c3a804b0b9e86ccd50e98ca79547bec449e",
+    "script/vendor/sonic_for_a3/train_a3_035_fromscratch.sh": "f99f55e9b7dc8b333e6444e3ad649dad1d4203a297cee8683957111d31a0823b"
+  },
+  "stage_sequence": [
+    "prepare",
+    "train",
+    "verify-training",
+    "evaluate-cloth",
+    "evaluate-official",
+    "verify-effect"
+  ],
+  "evaluation_checkpoint": 8,
+  "saved_checkpoints": [
+    0,
+    2,
+    4,
+    8
+  ],
+  "runtime_controls_required": 4,
+  "toy_native_optimizer_calls_max": 20,
+  "standard_library_controls_passed": 3,
+  "no_model_runtime_tests_yet": true,
+  "resource_gate_bytes": 8589934592,
+  "resource_samples": 3,
+  "reserve_bytes": 4294967296,
+  "backup_status": "LOCAL_ONLY"
+}

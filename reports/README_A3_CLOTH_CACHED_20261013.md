@@ -1,6 +1,6 @@
 # A3冻结codec采样token复用微调E42/R17
 
-记录日期：2026-10-13，北京时间。状态：18:21:24 prepare通过，3项token/冻结/梯度控制成功；实际训练尚未启动。
+记录日期：2026-10-13，北京时间。状态：18:25:57 TRAINING_VERIFIED，两轮微调/8次真实optimizer及独立CPU验收通过；动态效果尚未评测，官方仍为基线。
 
 ## 目标与单变量
 
@@ -33,6 +33,16 @@ data/experiments/a3_zhy_cloth_cached_20261013_E42/、logs/a3_zhy_cloth_cached_20
 
 ## 当前结果与下一步
 
-代码5a76b56推送核验并同步ZHY。18:21:08–18:21:24一次准备15.97秒通过，3CPU控制0.159秒成功，复用的三900帧PKL逐文件SHA与E38准备回执一致，原13控制/ABI不重做。5健康样本同boot d994e71f-bae0-46ba-a5f7-6c2163771c6c/OOM0、CPU40/GPU26摄氏度，最高GPU33.55W，可用最低8,615,362,560字节；无新关键内核/遥测异常，controller未导入tensor。当前0真实optimizer/新动态回放，尚无修正训练或效果结论。
+代码5a76b56、准备记录ba6ccfb推送核验并同步ZHY。18:21:08–18:21:24一次准备15.97秒通过，3CPU控制0.159秒成功，复用的三900帧PKL逐文件SHA与E38准备回执一致，原13控制/ABI不重做。18:24:33–18:25:38一次train 64.67秒完成两更新；18:25:41–18:25:57独立CPU核验16.08秒通过，无复跑。
 
-[E42准备小清单](../data/manifests/a3_zhy_cloth_cached_20261013_E42.json)保存测试回执与输入/代码SHA，raw LOCAL_ONLY。下一一次两更新/8optimizer与独立核验后匹配动态评测；拒绝及时保存，不跳过原概率门，官方仍基线。
+实际8次optimizer/8个token批均保留decoder梯度，首批token与采样identity逐值一致。修正前重新编码动作max仍为0.01782298；复用采样token后独立CPU动作RMSE 4.384823e-7、max 2.861023e-6、ratio最大偏差1.716614e-5，原门通过。step1/2均仅14个g1_dyn Actor张量改变，encoder/kin/std/buffer全部精确冻结；官方step0精确核验（仅采用官方运行std clamp）、optimizer初态为空。第8次teacher动作漂移RMSE 0.02823073、max 0.12585819，未超过0.05/0.5预算；这不是能力保留或策略效果证明。
+
+| 保存点 | 字节 | SHA-256 |
+| --- | ---: | --- |
+| step0 | 134048471 | d245a7cc7d0b3faf39783399635504c541cc8f7fe0efa941820ff4a8fcc249db |
+| step1 | 307570767 | e23433ee5a23ffafab021a6d0919188b03b27049e520abf34b8aa39e8ef03dd5 |
+| step2 | 307570831 | 8429914489ea0c2ecd58623dfafb2c33ca23898282df0c8db2ae0b9457b5da59 |
+
+22累计健康样本同boot d994e71f-bae0-46ba-a5f7-6c2163771c6c/OOM0、CPU最高40/GPU34摄氏度，GPU最高122.53W；可用最低4,365,545,472字节（约4.066GiB），接近但未触发4GiB保护。最长189.40秒采样间隔在阶段之间，不声称连续监测覆盖。无关键内核/遥测异常，controller未导入tensor；进程扫描的权限/消失错误另存资源清单，不声称整个容器PSS完整覆盖。本轮恢复核验作业已退出、GPU空闲、boot不变；三次相隔5秒额外预检均保留至少8GiB余量。
+
+[E42小清单](../data/manifests/a3_zhy_cloth_cached_20261013_E42.json)保存训练/独立验收、健康及输入/代码SHA，raw LOCAL_ONLY。下一仅执行尚未进行的evaluate-cloth/evaluate-official/verify-effect，step2与E26/E02匹配，原初始化不改、原门不放宽。无需再register/prepare/train；训练合同通过不能证明改善，真正未见会话仍待验。

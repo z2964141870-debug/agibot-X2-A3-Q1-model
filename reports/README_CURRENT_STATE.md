@@ -50,7 +50,7 @@ E51/R20实现完成但尚未登记：从官方035/空Adam开始、E45相同4段�
 ## 其他工作入口（本轮未修改）
 
 - Q1在原机/media/yu/FAFF-E977/YuanQi_Q1、origin/Q1；恢复须读该副本状态，不以main旧记录启动工作。见[Q1入口](README_Q1_SMPL_20261008.md)。
-- 学习Agent继续本人必要知识训练；下一检查Actor输出→目标角→PD→反馈，见[学习会话](README_LEARNING_SESSION_20261012.md)、[交接](README_LEARNING_AGENT_TASK_20261011.md)。工程不要求先完成理论推导。
+- 学习Agent继续本人必要知识训练；控制链待答项见[学习会话](README_LEARNING_SESSION_20261012.md)、[交接](README_LEARNING_AGENT_TASK_20261011.md)。10/14用户决定至少跟一遍课程，采用Agent+平板笔记+上课；视频配套10章PDF已检查，见[资料与学习安排](README_LEARNING_COURSE_20261014.md)。尚无新增掌握证据，课程不调度工程计算。
 - 每日研究已保存[10/14简报](research/2026-10-14/README.md)：SONIC部署更新和浏览器教学素材，未复现、公告/HF有缺口；去重、Git发布状态见[研究阶段](README_RESEARCH_CHECK_20261014.md)及[回执](../data/manifests/research_watch_sync_20261014.json)。工程与教学主线不由新闻调度。
 - 原机故障/空闲/负载试验及迁移历史见[报告索引](README.md)，旧细节保留在各阶段README与Git历史；本入口只保留当前恢复所需信息。
 

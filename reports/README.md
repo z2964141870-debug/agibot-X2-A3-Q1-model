@@ -16,6 +16,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-14 | 强化学习课程与平板资料 | 用户决定至少跟完一遍课；10章视频配套PDF下载/解析及首页检查通过，未新增掌握证据，见[课程记录](README_LEARNING_COURSE_20261014.md) |
 | 2026-10-14 | ZHY GPU占用归属 | root PID1183477运行hxr/taco_multiview/replay20.py，约3.73GiB显存；仅定位任务、未确认自然人，见[记录](README_ZHY_GPU_OCCUPANCY_20261014.md) |
 | 2026-10-14 | 用户重申缓存自主回收 | 09:57原可用9.97GiB，GPU仍由其他计算占用；无需清理/0释放，不改保护或自动任务，见[内存记录](README_ZHY_MEMORY_20261014.md) |
 | 2026-10-14 | 每日研究检查 | SONIC Orin/IsaacTeleop1.4部署变更、Isaac Lab浏览器教学素材；代码/发行核验未复现，公告与HF有缺口，见[简报](research/2026-10-14/README.md)与[阶段记录](README_RESEARCH_CHECK_20261014.md) |

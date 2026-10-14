@@ -2,7 +2,7 @@
   "schema_version": 1,
   "branch": "HEADBAND_REFERENCE_SIDE",
   "date": "2026-10-14",
-  "status": "PUBLIC_DATA_PREPARATION_NO_DEVICE_NO_NEW_RECORDINGS",
+  "status": "REPLAY_CORE_COMPLETE_WAIT_PUBLIC_DATA",
   "goal": "Test whether headband plus clothing improves world-root observability and produces faithful feasible references for frozen official035, with actual robot outcomes required later.",
   "scope": "Independent side conversation; do not resume main A3 experiments or use their experiment IDs.",
   "hypothesis": "After time and dynamic head/pelvis compensation, weighting reference corrections by frozen-controller directional response sensitivity improves faithful tracking over calibrated geometric/uncertainty-only fusion. No timing changes in first comparison.",
@@ -44,8 +44,9 @@
     {
       "id": "HB06",
       "task": "Independent bounded temporal matching and root/local error decomposition core",
-      "status": "PLANNED_NOT_RUN",
-      "plan": "data/manifests/headband_public_data_plan_20261014.json"
+      "status": "COMPLETE_SCALAR_CONTROLS_ONLY",
+      "plan": "data/manifests/headband_public_data_plan_20261014.json",
+      "result": "data/manifests/headband_hb06_result_20261014.json"
     }
   ],
   "evaluation": {
@@ -89,11 +90,11 @@
   ],
   "loop": {
     "interval_minutes": 60,
-    "next": "HB06 independent replay tooling; source data/rights verification before actual replay, no device dependence for tooling",
+    "next": "After admissible public bundle or verified device data is available, validate source SHA/content/usage/time/session contracts and register a new real-data run; do not repeat HB06.",
     "quiet_when_unchanged": true,
-    "stop": "After bounded useful tooling/source work, if all further work depends on unavailable inputs or protected compute, save recovery and end this side loop; no repeated audits or broad research.",
+    "stop": "HB06 and bounded source check completed. Both download paths unavailable and no connected device/new data; paused at saved recovery point.",
     "automation_id": "automation",
-    "status": "ACTIVE",
+    "status": "PAUSED",
     "target_thread_id": "01a13600-59c3-7f31-89f9-d5d8a5b48269"
   },
   "compute": {

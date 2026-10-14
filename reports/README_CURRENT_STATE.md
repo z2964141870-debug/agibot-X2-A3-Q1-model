@@ -54,4 +54,4 @@ E51/R20实现完成但尚未登记：从官方035/空Adam开始、E45相同4段�
 - 每日研究已保存[10/14简报](research/2026-10-14/README.md)：SONIC部署更新和浏览器教学素材，未复现、公告/HF有缺口；去重、Git发布状态见[研究阶段](README_RESEARCH_CHECK_20261014.md)及[回执](../data/manifests/research_watch_sync_20261014.json)。工程与教学主线不由新闻调度。
 - 原机故障/空闲/负载试验及迁移历史见[报告索引](README.md)，旧细节保留在各阶段README与Git历史；本入口只保留当前恢复所需信息。
 
-独立侧支：[头环与衣服参考研究](README_HEADBAND_CURRENT_STATE.md)：HB01离线协议验证完成，下一时间/坐标与录制审计；独立heartbeat每小时，不接手主线实验。
+独立侧支：[头环与衣服参考研究](README_HEADBAND_CURRENT_STATE.md)：HB06离线计分工具9项控制通过；公开评测包两端连接超时、WAIT_DATA，独立heartbeat已暂停并保存获取/恢复入口；不接手主线实验，尚未训练或证明效果提升。

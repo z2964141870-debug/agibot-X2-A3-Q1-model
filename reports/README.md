@@ -10,7 +10,7 @@
 
 用户明确要求：每完成重要部分立即写 README，不能只保留聊天。执行规则见根目录 [AGENTS.md](../AGENTS.md)，新记录使用[阶段模板](README_STAGE_TEMPLATE.md)。
 
-独立侧支：[头环与衣服参考研究](README_HEADBAND_CURRENT_STATE.md)，HB01协议验证完成，尚未训练；不接手A3当前实验。
+独立侧支：[头环与衣服参考研究](README_HEADBAND_CURRENT_STATE.md)，HB06离线计分工具9项控制通过；公开数据下载阻塞、本侧循环暂停，尚未训练或验证机器人提升，不接手A3当前实验。
 
 ## 阶段记录索引
 

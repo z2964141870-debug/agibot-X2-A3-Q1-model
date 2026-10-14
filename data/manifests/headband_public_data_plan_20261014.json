@@ -1,7 +1,7 @@
 {
   "id": "HB06_PUBLIC_REPLAY_CORE",
   "date": "2026-10-14",
-  "status": "PLANNED_NOT_IMPLEMENTED_NOT_RUN",
+  "status": "IMPLEMENTED_REGISTERED_CONTROLS_NOT_RUN",
   "goal": "Prepare a bounded temporal evaluation core and exact root/local squared-error decomposition before loading any real model or public motion array.",
   "single_main_variable": "Evaluation contract only, no new pose predictor, no policy update",
   "source_review": "reports/README_HEADBAND_PUBLIC_DATA_20261014.md",
@@ -23,7 +23,7 @@
     "fixed GT-axis coverage plus common-method coverage; no silent deletion of unmatched frames",
     "50ms maximum nearest-match error fixed for public-data comparison based on author flag, not a validated device latency threshold",
     "world joint MSE = root MSE + root-relative joint MSE + root/local cross term; MPJPE reported separately",
-    "GT-root replacement labelled oracle, not deployed sensor",
+    "GT-root replacement is an undeployable counterfactual, not a guaranteed upper/lower bound on whole-body error",
     "root-only baseline claim requires checking local joint equality first"
   ],
   "controls": [
@@ -38,5 +38,11 @@
   "actual_public_replay": "NOT_REGISTERED: require source download, SHA, data rights, shape/split check; no training on published evaluation bundle",
   "compute_boundary": "Small synthetic scalar controls on Mac only; tensor/model/IK/simulation/training on exclusive healthy ZHY only, do not alter main-thread protection.",
   "after_controls": "One bounded check of the selected public bundle access/content/data terms. If no admissible data remains, save a concrete recovery point and stop repeating source queries.",
-  "novelty": "Tooling and geometry are established methods; intended control-sensitive contribution remains an untested hypothesis."
+  "novelty": "Tooling and geometry are established methods; intended control-sensitive contribution remains an untested hypothesis.",
+  "preregistration_clarification": "Before any HB06 execution: an analytically negative root/local cross term means replacing root with ground truth is not a guaranteed error bound; code and controls record the cross term and counterfactual without an upper-bound claim.",
+  "control_cases": 9,
+  "implementation_files": [
+    "script/headband/evaluation_core.py",
+    "script/headband/test_evaluation_core.py"
+  ]
 }

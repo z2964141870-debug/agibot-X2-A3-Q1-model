@@ -1,0 +1,47 @@
+{
+  "id": "HB06_PUBLIC_REPLAY_CORE",
+  "registered_at_utc": "2026-10-14T04:56:31.094524+00:00",
+  "status": "REGISTERED_NOT_RUN",
+  "input_source": "HAND_AUTHORED_SYNTHETIC_SCALAR_CONTROLS_ONLY",
+  "public_dataset_loaded": false,
+  "budget": {
+    "language": "Python standard library only",
+    "control_checks_seconds": 60,
+    "generated_artifacts_max_mib": 5,
+    "model_loads": 0,
+    "tensor_operations": 0,
+    "ik": 0,
+    "slam": 0,
+    "rollouts": 0,
+    "optimizer_steps": 0,
+    "max_control_frames": 100,
+    "max_joints": 22
+  },
+  "control_cases": 9,
+  "max_frames_per_control_series": 4,
+  "max_joints_per_control_series": 3,
+  "clock_edge_case": "int nanoseconds near 1.8e18; no float cast",
+  "single_main_variable": "Evaluation contract only, no new pose predictor, no policy update",
+  "files": [
+    {
+      "path": "data/manifests/headband_public_data_plan_20261014.json",
+      "bytes": 2943,
+      "sha256": "cf7543bc0afb88f6aba99172c762e7de4bc01ddbea282d262445bad0cd40b4aa"
+    },
+    {
+      "path": "script/headband/evaluation_core.py",
+      "bytes": 11279,
+      "sha256": "36c0602c9e017be38fa9467afbf6dc2e502987ba35a5dd85dcfaab2ad2affa78"
+    },
+    {
+      "path": "script/headband/test_evaluation_core.py",
+      "bytes": 7078,
+      "sha256": "b56032fe1f070f17e04500c9a35e10dc356813ead9f09c2868291fc065a13b6b"
+    }
+  ],
+  "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest script.headband.test_evaluation_core -v",
+  "timeout_seconds": 60,
+  "models": 0,
+  "rollouts": 0,
+  "optimizer_steps": 0
+}

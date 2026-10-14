@@ -4,6 +4,8 @@
 
 ## 当前A3工作与恢复
 
+09:57按用户重申的缓存授权复查：原可用9.97GiB，高于8GiB；GPU45%/3879MiB且存在其他计算，因此本次无需且不符合空闲清理条件，0维护/0释放。以后条件满足直接清理不再询问。本轮没有修改内核保护、基准、E51计划或暂停状态，见[内存记录](README_ZHY_MEMORY_20261014.md)。
+
 最新状态为BLOCKED_NEW_HOST_KERNEL_EVENT，覆盖下方较早WAIT_EXTERNAL_COMPUTE恢复动作。E51登记门不区分cgroup，原基准/门槛保持，未实际执行register或创建STOPPED账本。其他计算仍占GPU46%/3879MiB；不维护缓存、不干预。按原新增内核异常停分支规则暂停zhy-a3，保留旧监控/每日研究设置。恢复先读[证据与范围](README_ZHY_KERNEL_BLOCK_20261014.md)，再明确处理宿主级门；不因ZHY OOM0自行过滤外部事件。
 
 - 23:01内存核验/定向释放完成，原可用估计约8.087→8.509GiB，16GiB容器RSS仅约0.34GiB，主要文件cache和文件系统kmem；同boot/OOM0，无正在运行训练残留。[记录](README_ZHY_MEMORY_20261013.md)。

@@ -47,7 +47,7 @@ E51/R20实现完成但尚未登记：从官方035/空Adam开始、E45相同4段�
 
 - Q1在原机/media/yu/FAFF-E977/YuanQi_Q1、origin/Q1；恢复须读该副本状态，不以main旧记录启动工作。见[Q1入口](README_Q1_SMPL_20261008.md)。
 - 学习Agent继续本人必要知识训练；下一检查Actor输出→目标角→PD→反馈，见[学习会话](README_LEARNING_SESSION_20261012.md)、[交接](README_LEARNING_AGENT_TASK_20261011.md)。工程不要求先完成理论推导。
-- 每日研究已有[10/13简报](research/2026-10-13/README.md)，去重与原文覆盖见[研究阶段](README_RESEARCH_CHECK_20261013.md)。本聊天针对性论文研究不新增每日任务。
+- 每日研究已保存[10/14简报](research/2026-10-14/README.md)：SONIC部署更新和浏览器教学素材，未复现、公告/HF有缺口；去重、Git发布状态见[研究阶段](README_RESEARCH_CHECK_20261014.md)及[回执](../data/manifests/research_watch_sync_20261014.json)。工程与教学主线不由新闻调度。
 - 原机故障/空闲/负载试验及迁移历史见[报告索引](README.md)，旧细节保留在各阶段README与Git历史；本入口只保留当前恢复所需信息。
 
 独立侧支：[头环与衣服参考研究](README_HEADBAND_CURRENT_STATE.md)：HB01离线协议验证完成，下一时间/坐标与录制审计；独立heartbeat每小时，不接手主线实验。

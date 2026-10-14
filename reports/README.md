@@ -16,6 +16,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-14 | 每日研究检查 | SONIC Orin/IsaacTeleop1.4部署变更、Isaac Lab浏览器教学素材；代码/发行核验未复现，公告与HF有缺口，见[简报](research/2026-10-14/README.md)与[阶段记录](README_RESEARCH_CHECK_20261014.md) |
 | 2026-10-14 | ZHY宿主内核事件归属 | 外部容器MEMCG OOM、ZHY OOM0；原内核门阻塞，E51未登记/自动执行暂停，见[恢复入口](README_ZHY_KERNEL_BLOCK_20261014.md) |
 | 2026-10-14 | A3有限更新保留研究与E51实现 | 新8更新/32提案及最终10回放计划；3标准库控制通过、张量控制/实际训练待执行，见[入口](README_A3_FINITE_RETENTION_20261014.md) |
 | 2026-10-14 | A3单次投影修正版E50 | COMPLETE/候选拒绝：一阶过门但有限teacher MSE+1.38418e-5，16Actor+1Critic/0optimizer，见[结果](README_A3_CANDIDATE_RETENTION_20261014.md) |

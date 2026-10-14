@@ -2,9 +2,9 @@
   "schema_version": 1,
   "automation_id": "yuanqi",
   "timezone": "Asia/Shanghai",
-  "last_successful_source_check_at": "2026-10-13T09:28:40+08:00",
-  "last_report_date": "2026-10-13",
-  "last_report_path": "reports/research/2026-10-13/README.md",
+  "last_successful_source_check_at": "2026-10-14T09:15:16+08:00",
+  "last_report_date": "2026-10-14",
+  "last_report_path": "reports/research/2026-10-14/README.md",
   "initial_check": {
     "mode": "manual",
     "source_scope": "arXiv cs.RO 2026-09-29 推送筛选与三篇原始页面核对；不是全领域或系统查新。",
@@ -1355,6 +1355,54 @@
       "disposition": "VERSION_OBSERVED_NOT_REPORTED",
       "reported_in": null,
       "related_links": ["https://hybridrobotics.github.io/workhorse/"]
+    },
+    {
+      "id": "repo:NVlabs/GR00T-WholeBodyControl",
+      "version": "45c03facbf848e0c743091b7d9c17952096ff908",
+      "title": "SONIC deployment: AGX Orin, IsaacTeleop 1.4 and split-host setup",
+      "url": "https://github.com/NVlabs/GR00T-WholeBodyControl/commit/45c03facbf848e0c743091b7d9c17952096ff908",
+      "published_at": "2026-10-13T20:34:46Z",
+      "publication_kind": "CODE_MERGE_TIME_NOT_METHOD_FIRST_PUBLICATION",
+      "first_seen_on": "2026-10-14",
+      "last_fetched_at": "2026-10-14T09:15:16+08:00",
+      "dedup_key": "repo:NVlabs/GR00T-WholeBodyControl@45c03facbf848e0c743091b7d9c17952096ff908",
+      "previous_head": "b042411fae38ee4d1af9aac82a37a1f8d14d6dd0",
+      "change_kind": "SUBSTANTIVE_DEPLOYMENT_CODE_AND_DOCUMENTATION_UPDATE",
+      "verification_level": "Official compare14 files; five fixed-commit source/documentation files read in relevant sections; no test execution or reproduction.",
+      "code_status": "PUBLIC_FIXED_COMMIT_STATICALLY_CHECKED",
+      "asset_status": "No new policy weights observed in inspected14-file diff; A3/Q1 compatibility and hardware runtime unverified.",
+      "recommendation": "NOW_FOR_INTERFACE_CHECKLIST_AFTER_BASELINE_FOR_DEPLOYMENT",
+      "notes": "FullBodyTracker replaces FullBodyTrackerPico; 24x7 position/XYZW conversion, invalid samples and split-host setup. Host monotonic timestamp is not exposure/cross-host clock calibration. README News dates this feature September14 while merge is October13 UTC; first capability release date not resolved. G1 stack, not verified A3/Q1 adaptation.",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-14/README.md",
+      "related_links": [
+        "https://github.com/NVlabs/GR00T-WholeBodyControl/pull/276",
+        "https://github.com/NVlabs/GR00T-WholeBodyControl/blob/45c03facbf848e0c743091b7d9c17952096ff908/docs/source/tutorials/isaac_teleop_publisher_setup.md"
+      ]
+    },
+    {
+      "id": "release:isaac-sim/IsaacLab/browser-demos",
+      "version": "browser-demos-v3",
+      "title": "Isaac Lab interactive browser demos: PD tuning, Cartpole and fixed-policy robot previews",
+      "url": "https://github.com/isaac-sim/IsaacLab/releases/tag/browser-demos-v3",
+      "first_release_published_at": "2026-10-13T14:29:13Z",
+      "version_published_at": "2026-10-13T23:02:34Z",
+      "first_seen_on": "2026-10-14",
+      "last_fetched_at": "2026-10-14T09:15:16+08:00",
+      "dedup_key": "release:isaac-sim/IsaacLab/browser-demos@browser-demos-v3",
+      "change_kind": "NEW_PRERELEASE_ASSET_SERIES_V1_V2_V3_GROUPED",
+      "verification_level": "Official release bodies/API, asset size/digest metadata and latest non-prerelease endpoint; no asset download or browser/runtime reproduction.",
+      "code_status": "PUBLIC_REFERENCE_PR_AND_SOURCE_REVISIONS_LISTED_NOT_INSPECTED",
+      "asset_status": "Public v3 archive metadata verified:18992636 bytes SHA256 a860b7e59793d553545b76abf2b09d15ff20685972ec803c6c07163e6678f64a; archive not downloaded or hash-verified locally.",
+      "recommendation": "NOW_FOR_LEARNING_RESOURCE_NO_TRAINING_STACK_CHANGE",
+      "notes": "v1 lists PD/Cartpole/G1 examples; v2 adds MicroDuck; v3 UI-only controls reusing physics/policy assets. Authors report12 demos validation, not our reproduction or policy benchmark. Browser demos prerelease does not mean new IsaacLab core/GA release; latest non-prerelease API remains September16 v3.0.0-EA.",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-14/README.md",
+      "related_links": [
+        "https://github.com/isaac-sim/IsaacLab/releases/tag/browser-demos-v1",
+        "https://github.com/isaac-sim/IsaacLab/releases/tag/browser-demos-v2",
+        "https://github.com/isaac-sim/IsaacLab/pull/8543"
+      ]
     }
   ],
   "idea_ids": [
@@ -1365,20 +1413,21 @@
     "first_scheduled_run": "TRIGGER_AND_RESEARCH_VERIFIED",
     "last_error": {
       "scope": "partial_source_gap",
-      "huggingface": "One bounded metadata connection timeout; current assets not verified",
-      "recorded_at": "2026-10-13T09:28:40+08:00"
+      "huggingface": "One bounded metadata connection timeout; unchanged unresolved gap",
+      "arxiv": "Oct13 RSS empty, new/recent latest Oct12; October13/14 announcement coverage not confirmed",
+      "recorded_at": "2026-10-14T09:15:16+08:00"
     },
     "first_scheduled_trigger_at": "2026-09-30T01:01:12.375Z",
-    "last_scheduled_source_check_at": "2026-10-13T09:28:40+08:00",
-    "last_coverage_note": "October12 RO/LG RSS132/413 and RO/LG/CV complete lists132/413/237; CV RSS empty despite populated list. Seven selected abstracts, four related fulltexts, three new author pages and VICAR default website README; three-item brief and seven new source/version records. Five watched paper versions, five repo heads, two releases and two old author pages unchanged. HF metadata unknown. Canonical fast-forwarded to clean remote9df0ef7; no engineering computation.",
-    "last_scheduled_trigger_at": "2026-10-13T01:01:26.574Z",
+    "last_scheduled_source_check_at": "2026-10-14T09:15:16+08:00",
+    "last_coverage_note": "44 successful cached sources; three RSS empty for Oct13, new/recent lists latestOct12 with132/413/237 new-list entries and no comparable HTML key changes;6/19/8 HTML versions unavailable. Twelve watched abstracts and four author pages unchanged. SONIC merge and browser-demo releases reported; PredActor contacts/VICAR viewer changes not repeated. Five pinned source/docs static checks, no reproduction. HF metadata unknown.",
+    "last_scheduled_trigger_at": "2026-10-14T00:58:21.706Z",
     "last_run_interrupted": false,
     "last_run_resumed": false,
     "last_interrupted_check_manifest": "data/manifests/research_watch_check_20261003.json",
-    "last_check_outcome": "NEW_RELEVANT_RECENT_PAPERS_FIRST_VERIFIED",
+    "last_check_outcome": "TWO_VERIFIED_RELEVANT_SOFTWARE_UPDATES_WITH_SOURCE_GAPS",
     "last_resumed_from_trigger_at": "2026-10-03T01:01:32.212Z",
-    "publication_status": "GITHUB_VERIFIED",
-    "pending_sync_manifest": null,
+    "publication_status": "LOCAL_ONLY_PENDING_SYNC",
+    "pending_sync_manifest": "data/manifests/research_watch_sync_20261014.json",
     "previous_sync_failure_resolved_connection_at": "2026-10-12T09:09:40+08:00",
     "previous_sync_failure": {
       "scope": "record_sync",
@@ -1408,9 +1457,11 @@
       "recorded_at": "2026-10-11T09:08:48+08:00",
       "same_ssh_problem_as_local_engineering_record": "reports/README_A3_CONTROLLER_ADAPTER_20261010.md"
     },
-    "pending_sync_dates": [],
+    "pending_sync_dates": [
+      "2026-10-14"
+    ],
     "latest_sync_receipt_path": "data/manifests/research_watch_sync_20261013.json",
-    "last_notification_reason": "Three relevant recent papers verified with project-specific limitations; no repeat of unchanged operational issue",
+    "last_notification_reason": "Verified SONIC deployment update and browser teaching assets; no repeated old methods or unchanged engineering blocker",
     "user_action_issues": [
       {
         "id": "RECORD_CREDENTIAL_20261012",
@@ -1426,5 +1477,5 @@
     ]
   },
   "dedup_rule": "同 ID/版本不重复转述；新版本或代码发布只有实质变化才再次报告，记录变化说明。",
-  "latest_check_manifest": "data/manifests/research_watch_check_20261013.json"
+  "latest_check_manifest": "data/manifests/research_watch_check_20261014.json"
 }

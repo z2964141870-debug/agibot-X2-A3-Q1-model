@@ -12,12 +12,13 @@
 - 2026-10-10 历史检查：北京时间 09:04:23 触发，接续 10/8 成功检索；筛选 10/9 三类公告并补查 10/8 cs.RO，形成[MimicX、YOCO、VioLA 三条简报](research/2026-10-10/README.md)。服务器连接恢复，以最新 main 为基础补同步 10/6–8 历史和 PredActor 专题；过程见[阶段记录](README_RESEARCH_CHECK_20261010.md)，发布状态以[核验回执](../data/manifests/research_watch_sync_20261010.json)为准。旧 pending 清单保留失败历史，不用旧镜像覆盖工程入口。
 - 2026-10-11 检查：已查来源无确认的实质变化，静默。HF 未核验、SSH 超时，详见[当日检查](README_RESEARCH_CHECK_20261011.md)和[当时待同步清单](../data/manifests/research_watch_pending_sync_20261011.json)。10/12 连接恢复后补同步，不用旧镜像覆盖并行工作。
 - 2026-10-12 检查：已查来源未确认实质变化，静默，见[当日检查](README_RESEARCH_CHECK_20261012.md)。HF 当前元数据仍未核验；SSH 恢复，以服务器最新工程/教学入口补同步 10/11 与本次研究记录，已推送并[核验](../data/manifests/research_watch_sync_20261012.json)。原失败记录保留，不自动恢复计算。
-- 最近一次：2026-10-13 09:01:26北京时间触发；原文/资产入口筛选形成[PriMoRetarget、Reflex、PanTact简报](research/2026-10-13/README.md)，四份相关正文，未复现。RO/LG RSS与三类10/12列表已查，CV RSS空由列表补充；HF当前资产仍未知。执行见[阶段记录](README_RESEARCH_CHECK_20261013.md)，发布以[回执](../data/manifests/research_watch_sync_20261013.json)为准；没有启动工程计算。
+- 2026-10-13检查：09:01:26北京时间触发；原文/资产入口筛选形成[PriMoRetarget、Reflex、PanTact简报](research/2026-10-13/README.md)，四份相关正文，未复现。RO/LG RSS与三类10/12列表已查，CV RSS空由列表补充；HF当前资产仍未知。执行见[阶段记录](README_RESEARCH_CHECK_20261013.md)，发布以[回执](../data/manifests/research_watch_sync_20261013.json)为准；没有启动工程计算。
+- 最近一次：2026-10-14北京时间08:58:21触发、来源分析截至09:15:16；形成[SONIC部署与浏览器教学素材两条简报](research/2026-10-14/README.md)，44份成功缓存/五份固定代码文档相关段落静态核验，未运行或复现。十二关注摘要未变；三类RSS均10/13空表，new/recent最新仍10/12，保留公告及HF缺口。执行见[阶段记录](README_RESEARCH_CHECK_20261014.md)，发布以[回执](../data/manifests/research_watch_sync_20261014.json)为准。
 - 修改或暂停日程使用 Codex 自动任务功能，按标识更新原任务，避免创建重复任务。完整创建提示词保存在 [automation 配置快照](../script/research_watch/automation_snapshot.json)；它是审计记录，不会自行创建第二个调度器。
 
 ## 阅读与研究优先级
 
-1. **研究侧关注合格衣服参考、接触/几何约束、官方 A3 控制器保留能力及独立评测。** 原hp3090保持停载；10/12工程侧已获ZHY独立探索与微调授权，本研究heartbeat仍不启动计算。当前参考质量尚未通过，微调也未证明优于官方；证据以[当前状态](README_CURRENT_STATE.md)、[E22几何结果](README_A3_SMPL_ENVELOPE_20261012.md)及[无需新编码器路线](README_A3_CLOTH_CONTACT_ROUTE_20261012.md)为准。继续关注因果参考、噪声、延迟与教师目标对齐，教学由学习任务推进。
+1. **研究侧关注官方能力保留、有限候选接受、参考质量与独立闭环评测。** 10/14 03:35工程记录为E51未登记/宿主级内核门阻塞，本研究不恢复计算。运动学[E23](README_A3_SMPL_HULL_20261013.md)6/7通过，冻结[E26](README_A3_SMPL_FROZEN_VALIDATED_20261013.md)仍有跌倒；[E42/E43](README_A3_CLOTH_EFFECT_AUDIT_20261013.md)未证明提升，[E50](README_A3_CANDIDATE_RETENTION_20261014.md)一阶过门但有限teacher保留失败。以[最新工程入口](README_CURRENT_STATE.md)及[有限保留研究](README_A3_FINITE_RETENTION_20261014.md)为准，先看保存证据，不把旧参考全失败或新候选实现当实时结果。继续关注接触/速度保持、失败语料、噪声、时间同步与延迟；教学由学习任务推进。
 2. **直接相关：衣服与头环遥操。** 人体到机器人的重定向、跨本体迁移、X2/A3/Q1 接口、全身控制、手腕精度、遮挡、时间同步、SLAM 与延迟。
 3. **方法候选：跨领域借鉴。** 有选择地关注语言模型的记忆和测试时计算，以及状态估计、控制、不确定性、系统调度等方法；必须指出它解决本项目哪个具体问题。
 

@@ -1,0 +1,72 @@
+{
+  "stage": "HB05",
+  "date": "2026-10-14",
+  "status": "COMPLETE_STATIC_REVIEW",
+  "actual_public_dataset_replays": 0,
+  "training_steps": 0,
+  "user_data_status": "NO_CONNECTED_HEADBAND_NO_NEW_RECORDINGS",
+  "roshi": {
+    "paper": "https://arxiv.org/abs/2604.07331",
+    "project": "https://roshi-mocap.github.io/",
+    "project_html_sha256": "b05212c2b70355d0d2c230d0e1cce647cc99c06d192579af0790ce08bd80cbcc",
+    "evaluation_docs": "https://roshi-mocap.github.io/documentation/pipeline/evaluation.html",
+    "evaluation_docs_html_sha256": "4772e5b1ff0eeca4a9a2114f47e9b42c87ba919dd9ba4674d532c2142861139c",
+    "repository": "https://github.com/Jirl-upenn/RoSHI-MoCap",
+    "commit": "f3c9b2338233b38ea0be6af5846f1e1dbcd14674",
+    "commit_date_utc": "2026-07-31T22:12:57Z",
+    "files": [
+      {
+        "path": "evaluation/compute_metrics.py",
+        "blob": "d0c9709d2c664ef417e0268906eaf5ffa947e0b7",
+        "sha256": "e137a9ada1e26678d178e307ae3e6b9c0b0f7bfd0b1c522b4400c3e5cee9f210"
+      },
+      {
+        "path": "evaluation/eval_utils.py",
+        "blob": "097c17ddd9a32959f828976470f441474a37c527",
+        "sha256": "a0d4d577e827a99fc9a217cd951e8b8d5ae1ee20992c02eb2df5408748088768"
+      }
+    ],
+    "declared_benchmark_mb": 27,
+    "declared_activities": 11,
+    "software_license": "MIT verified",
+    "data_license": "NOT_VERIFIED; website license and software MIT do not establish bundle rights",
+    "download_status": "NOT_OBTAINED; public landing timed out; bounded-range status recorded separately",
+    "executed_author_code": false,
+    "limitations": [
+      "Processed predictions + OptiTrack SMPL-X fit; raw sensor/pose world trajectories not established",
+      "Activities may concatenate takes; not independent train/test sessions",
+      "50ms mask is reported, not applied to author aggregate errors",
+      "JAE in code is bend-angle difference, not full joint SO(3) geodesic"
+    ],
+    "bounded_range_check": {
+      "status": "TIMEOUT",
+      "downloaded_dataset": false,
+      "max_response_bytes": 65536
+    }
+  },
+  "adt": {
+    "repo_commit": "419a334b5c90d873dc34b169e0b0e1357dd355f6",
+    "trajectory_sha256": "7ff3c6b9db8767a52a58df034295edbf6f5cb304aaf6b72ed4fe01cfccd46197",
+    "trajectory_rows": 6,
+    "trajectory_span_seconds": 0.16664,
+    "utc_timestamp_value": -1,
+    "metadata_sha256": "128eb082bb9e89694fc47db643da675e91533f70d8dc28c10ac6f565bd124096",
+    "skeleton_body_read": "TIMEOUT",
+    "association_read": "CONNECTION_RESET",
+    "download_docs": "https://facebookresearch.github.io/projectaria_tools/docs/open_datasets/aria_digital_twin_dataset/dataset_download",
+    "dataset_license": "https://www.projectaria.com/datasets/adt/license/",
+    "full_dataset_downloaded": false,
+    "sign_up_or_agreement_submission": false,
+    "admission": "NOT_A_USABLE_MOTION_BENCHMARK; tiny fixture only"
+  },
+  "controller_evidence_reused": {
+    "path": "reports/README_A3_SMPL_ROOT_AUDIT_20261013.md",
+    "stage": "E27",
+    "rerun": false,
+    "root_only_input_max_difference": 0,
+    "root_final_difference_m": 1.992
+  },
+  "source_access": "web search/open returned no usable body; primary sources fetched read-only via hp3090 urllib/API; no models or data code executed",
+  "openai_docs": "Official automation page fetched but HTTP403; app tool/local config are evidence for automation status, not a documentation claim",
+  "backup_status": "LOCAL_ONLY"
+}

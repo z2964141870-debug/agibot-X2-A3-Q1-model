@@ -1,0 +1,97 @@
+{
+  "sources": [
+    {
+      "member": "EgoLocate/configs/glasses_rtsp_calibration.json",
+      "sha256": "7899ad3cdc58afa7b3894cbbeb23d7f2d135b16cb62f990a606bf37401372ffa",
+      "bytes": 887
+    },
+    {
+      "member": "EgoLocate/configs/camera_smpl_calibration.json",
+      "sha256": "d0de62b778f8ed2138ce952ce2ba1736b0636906f91709064c8c9a2309129d01",
+      "bytes": 2840
+    },
+    {
+      "member": "EgoLocate/configs/camera_smpl_calibration_new.json",
+      "sha256": "819ba1a362c472696154fac9a4da0a9211c618d09fc768d573f5225486f33781",
+      "bytes": 3086
+    },
+    {
+      "member": "EgoLocate/slam/CameraSettings/4.yaml",
+      "sha256": "f3c69586c6b43ae984914231c8f0a6beb1c04e26a762a60237fc3e6ffb9f3833",
+      "bytes": 1503
+    },
+    {
+      "member": "EgoLocate/slam/wrapper.py",
+      "sha256": "93254cb44a5c6a373ae2ba6e2dc3a17280b1a889c51353a52b7d1b984838aa9c",
+      "bytes": 2720
+    },
+    {
+      "member": "EgoLocate/slam/src/SLAM.cc",
+      "sha256": "f99b6e8a6f812ec458e67a173976abff158252ea8fba96aa97ad02b65f990a69",
+      "bytes": 4247
+    },
+    {
+      "member": "EgoLocate/slam/src/System.cc",
+      "sha256": "9507aed34b8834cf252efaa6a185bb9214acbf2d0485b5ebfee86183784acc0a",
+      "bytes": 62079
+    }
+  ],
+  "camera_intrinsics": {
+    "image_size": [
+      1280,
+      720
+    ],
+    "camera_matrix": [
+      [
+        961.985992014084,
+        0.0,
+        651.1191767408744
+      ],
+      [
+        0.0,
+        961.3947495078589,
+        365.4296378156493
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "distortion": [
+      [
+        -0.1290121602935935,
+        0.34543185721225556,
+        0.001484878785626829,
+        0.005365460149219948,
+        -0.3577873503313321
+      ]
+    ],
+    "rms_px": 0.3895667559149102
+  },
+  "slam_settings_4": {
+    "Camera1.fx": 320.0,
+    "Camera1.fy": 312.0,
+    "Camera1.cx": 320.0,
+    "Camera1.cy": 180.0,
+    "Camera.width": 640.0,
+    "Camera.height": 360.0,
+    "Camera.newWidth": 640.0,
+    "Camera.newHeight": 360.0,
+    "Camera.fps": 30.0,
+    "Camera.RGB": 1.0
+  },
+  "calibration_position_override": {
+    "source": "configs/camera_smpl_calibration.json",
+    "field": "smpl_root_camera[:3,3]",
+    "applied_at": "2026-08-06T15:23:50Z",
+    "note": "translation copied from previous calibration; rotation kept from this calibration"
+  },
+  "extrinsic_kind": "smpl_root_camera, not fixed head_camera",
+  "new_extrinsic_translation_matches_old": true,
+  "snapshot_matches_runtime": false,
+  "snapshot_note": "No recorded source/binary hashes prove this snapshot was the executed runtime. Treat mismatch as provenance gap, not confirmed historical root cause.",
+  "logged_cam_pos_provenance": "fgp_mocap_adapter.py forward_frame: FK head joint plus network tran; not cam_pos_opt from SLAM",
+  "recorded_cam_world_independent": false,
+  "intrinsics_match_verified": false
+}

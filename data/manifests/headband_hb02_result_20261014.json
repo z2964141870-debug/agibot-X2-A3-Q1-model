@@ -1,0 +1,174 @@
+{
+  "id": "HB02",
+  "date": "2026-10-14",
+  "status": "COMPLETE",
+  "data_readiness": "REJECTED_FOR_FORMAL_SYNC_ROOT_COMPARISON",
+  "analytical_controls": {
+    "passed": 12,
+    "domain": "planar synthetic scalar examples only"
+  },
+  "media_table_controls": {
+    "passed": 3,
+    "decoded_video": false
+  },
+  "actual_models": 0,
+  "actual_rollouts": 0,
+  "optimizer_steps": 0,
+  "sessions": [
+    {
+      "name": "ble_transport_smoke_20260824",
+      "counts": {
+        "frames": 638,
+        "camera_records": 638,
+        "matched": 638,
+        "unique_camera_host_timestamps": 3,
+        "consecutive_reused_camera_timestamps": 635,
+        "backward_camera_timestamps": 0,
+        "nonpositive_body_time_gaps": 0,
+        "negative_camera_ages": 0,
+        "valid_imu_rows": 638,
+        "identical_consecutive_imu_rows": 0,
+        "body_indices_start_zero_contiguous": true,
+        "video_indices_start_zero_contiguous": true
+      },
+      "host_timing_stats": {
+        "n": 638,
+        "min": 0.18494034499963163,
+        "p50": 16.634605433999695,
+        "p95": 28.40918480414984,
+        "max": 30.17174911300026
+      },
+      "body_span_s": 77.57016485799977,
+      "training_ready": false
+    },
+    {
+      "name": "manual_full_test_001",
+      "counts": {
+        "frames": 9475,
+        "camera_records": 9475,
+        "matched": 9475,
+        "unique_camera_host_timestamps": 7985,
+        "consecutive_reused_camera_timestamps": 1490,
+        "backward_camera_timestamps": 0,
+        "nonpositive_body_time_gaps": 0,
+        "negative_camera_ages": 0,
+        "valid_imu_rows": 9475,
+        "identical_consecutive_imu_rows": 0,
+        "body_indices_start_zero_contiguous": true,
+        "video_indices_start_zero_contiguous": true
+      },
+      "host_timing_stats": {
+        "n": 9475,
+        "min": 0.0252217830002337,
+        "p50": 0.07613878099982685,
+        "p95": 0.13923119400033102,
+        "max": 1.261260606000178
+      },
+      "body_span_s": 577.5841190009996,
+      "training_ready": false
+    },
+    {
+      "name": "worn_acceptance_retry_20260824",
+      "counts": {
+        "frames": 4611,
+        "camera_records": 18,
+        "matched": 18,
+        "unique_camera_host_timestamps": 9,
+        "consecutive_reused_camera_timestamps": 9,
+        "backward_camera_timestamps": 0,
+        "nonpositive_body_time_gaps": 0,
+        "negative_camera_ages": 0,
+        "valid_imu_rows": 4611,
+        "identical_consecutive_imu_rows": 0,
+        "body_indices_start_zero_contiguous": true,
+        "video_indices_start_zero_contiguous": true
+      },
+      "host_timing_stats": {
+        "n": 18,
+        "min": 0.17274152000027243,
+        "p50": 0.7050514034999651,
+        "p95": 1.381327567649804,
+        "max": 1.9896671879996575
+      },
+      "body_span_s": 213.34800279400042,
+      "training_ready": false
+    }
+  ],
+  "new_conclusions": [
+    "smoke638 body/camera entries have only3 distinct camera host timestamps",
+    "manual9475 bodies and video samples match but original577.584s differs from MP4 315.833s",
+    "retry4611 body records have only18 camera entries",
+    "all14724 body records have fgp_fallback fusion state",
+    "cam_pos originates from body FK, not independent SLAM world pose",
+    "effective recording-time SLAM calibration/source version not verified"
+  ],
+  "next": "User confirms no connected device/no new recording. HB03 design complete; HB05 source review complete; HB06 independent replay core planned. No training started.",
+  "files": [
+    {
+      "path": "script/headband/recording_audit.py",
+      "bytes": 9501,
+      "sha256": "d98ab1a77c2fa96533863052efecfe38c493835a0cc217154d3ecc9912ac4507"
+    },
+    {
+      "path": "script/headband/reference_contract.py",
+      "bytes": 2811,
+      "sha256": "5c5dabe62c56483cb90a95ec38e2fe55d43eaf8fcb9d1f85313ecf31504a440a"
+    },
+    {
+      "path": "script/headband/test_reference_contract.py",
+      "bytes": 3595,
+      "sha256": "db6b38f5ae23af3371905b74c92adfbf0952a20f456e75d497c2894807211a90"
+    },
+    {
+      "path": "script/headband/mp4_inventory.py",
+      "bytes": 5037,
+      "sha256": "975b23f0861529f281f7d48ebdaf26437207aaff1f565626bdaa663cd92af06b"
+    },
+    {
+      "path": "reports/README_HEADBAND_DATA_AUDIT_20261014.md",
+      "bytes": 7318,
+      "sha256": "db8d9a78329e2dff9348ae8029f01dce5c2b42d00207c26d25b9f8f6d1d16271"
+    },
+    {
+      "path": "reports/README_HEADBAND_EXPERIMENT_PLAN_20261014.md",
+      "bytes": 6881,
+      "sha256": "26bef15b9ba9c610b42bb211ee00c5d6631f54982be03beef8396180574f50ec"
+    },
+    {
+      "path": "data/manifests/headband_hb02_ble_transport_smoke_20260824.json",
+      "bytes": 3507,
+      "sha256": "0c6833538b59a87c9005c706900a3a57e140c4393edf77b6aef5aa7529b35c9b"
+    },
+    {
+      "path": "data/manifests/headband_hb02_calibration_20261014.json",
+      "bytes": 2883,
+      "sha256": "20338468ae70ffd39229af32e024421c61c548d97f1582dbd22c17cd064510ed"
+    },
+    {
+      "path": "data/manifests/headband_hb02_manual_full_test_001.json",
+      "bytes": 3578,
+      "sha256": "7c65447dfa42f59e41c079ac870f4923a6e96fb6c81103d25ad08be7a532e6c6"
+    },
+    {
+      "path": "data/manifests/headband_hb02_media_20261014.json",
+      "bytes": 2502,
+      "sha256": "985e468591775d10f37ce2815914ff77f63d416f38092938198bfb580bc138bd"
+    },
+    {
+      "path": "data/manifests/headband_hb02_media_registration_20261014.json",
+      "bytes": 359,
+      "sha256": "016e4e02bcf3c9383f7cb395d0c058c72277c2271a528e5c952cbe32e1bb93c3"
+    },
+    {
+      "path": "data/manifests/headband_hb02_registration_20261014.json",
+      "bytes": 4571,
+      "sha256": "eed85da4524906f58d1724f7ea772517e8b102e3c9dfd0f8e9a0d837dce9f86d"
+    },
+    {
+      "path": "data/manifests/headband_hb02_worn_acceptance_retry_20260824.json",
+      "bytes": 3539,
+      "sha256": "e65554a9d28457d31507c01a1101e85f3df44fc5fd91d343db967fc4a58ee4a4"
+    }
+  ],
+  "record_update": "2026-10-14 publication preparation: updated next-step/design report digests after user data clarification; original HB02 registrations, checks, input digests and measured results unchanged."
+}

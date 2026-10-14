@@ -1,0 +1,136 @@
+{
+  "id": "HB02",
+  "date": "2026-10-14",
+  "status": "REGISTERED",
+  "hypothesis": "Existing recordings may support paired root-motion comparison only if timestamps, source roles and calibration evidence are sufficient. Analytical contracts test head/body and clock separation.",
+  "budget": {
+    "per_session_seconds": 60,
+    "max_member_mib": 256,
+    "max_line_bytes": 262144,
+    "max_rows": 30000,
+    "no_video_decode": true,
+    "no_models_tensors_ik_slam_training": true
+  },
+  "source_archive": {
+    "name": "EgoLocate_副本.zip",
+    "bytes": 715703021,
+    "sha256": "cbaf340f86f54c2c2c557ab70cc338aa58e0af522229b040403f883cd6c28c67"
+  },
+  "sessions": [
+    "ble_transport_smoke_20260824",
+    "manual_full_test_001",
+    "worn_acceptance_retry_20260824"
+  ],
+  "source_files": [
+    {
+      "member": "EgoLocate/egolocate_fgp_web_demo.py",
+      "bytes": 58776,
+      "sha256": "9c0c5146775ab51aa74bc320dd9d304790998602071121e0a50e7c6454f5922d"
+    },
+    {
+      "member": "EgoLocate/fgp_mocap_adapter.py",
+      "bytes": 20495,
+      "sha256": "3aa8608ccab78650782210ea61b1bc4694393b1c94bcf8644eaae576dbba0c9b"
+    },
+    {
+      "member": "EgoLocate/camera_backend.py",
+      "bytes": 19429,
+      "sha256": "5a48ddf61c9a4d4c66aaa1fa5e8e1011e72d473e99f6751c41edb0a157ac6877"
+    },
+    {
+      "member": "EgoLocate/egolocate.py",
+      "bytes": 4995,
+      "sha256": "c045cdabea5212b4200f52957edfcf8b24806917e65ceaf65f80f402f8beb747"
+    },
+    {
+      "member": "EgoLocate/configs/glasses_rtsp_calibration.json",
+      "bytes": 887,
+      "sha256": "7899ad3cdc58afa7b3894cbbeb23d7f2d135b16cb62f990a606bf37401372ffa"
+    },
+    {
+      "member": "EgoLocate/configs/camera_smpl_calibration.json",
+      "bytes": 2840,
+      "sha256": "d0de62b778f8ed2138ce952ce2ba1736b0636906f91709064c8c9a2309129d01"
+    },
+    {
+      "member": "EgoLocate/configs/camera_smpl_calibration_new.json",
+      "bytes": 3086,
+      "sha256": "819ba1a362c472696154fac9a4da0a9211c618d09fc768d573f5225486f33781"
+    },
+    {
+      "member": "EgoLocate/slam/CameraSettings/4.yaml",
+      "bytes": 1503,
+      "sha256": "f3c69586c6b43ae984914231c8f0a6beb1c04e26a762a60237fc3e6ffb9f3833"
+    },
+    {
+      "member": "EgoLocate/recordings/ble_transport_smoke_20260824/manifest.json",
+      "bytes": 4075,
+      "zip_crc32_expected": "dc414793"
+    },
+    {
+      "member": "EgoLocate/recordings/ble_transport_smoke_20260824/frames.jsonl",
+      "bytes": 9786394,
+      "zip_crc32_expected": "06cc0199"
+    },
+    {
+      "member": "EgoLocate/recordings/ble_transport_smoke_20260824/camera_frames.jsonl",
+      "bytes": 107430,
+      "zip_crc32_expected": "837d690c"
+    },
+    {
+      "member": "EgoLocate/recordings/manual_full_test_001/manifest.json",
+      "bytes": 3989,
+      "zip_crc32_expected": "cd20807d"
+    },
+    {
+      "member": "EgoLocate/recordings/manual_full_test_001/frames.jsonl",
+      "bytes": 144844315,
+      "zip_crc32_expected": "eb7fdaf7"
+    },
+    {
+      "member": "EgoLocate/recordings/manual_full_test_001/camera_frames.jsonl",
+      "bytes": 1614477,
+      "zip_crc32_expected": "c47649a2"
+    },
+    {
+      "member": "EgoLocate/recordings/worn_acceptance_retry_20260824/manifest.json",
+      "bytes": 4144,
+      "zip_crc32_expected": "7dbc3634"
+    },
+    {
+      "member": "EgoLocate/recordings/worn_acceptance_retry_20260824/frames.jsonl",
+      "bytes": 70749429,
+      "zip_crc32_expected": "3c465fc7"
+    },
+    {
+      "member": "EgoLocate/recordings/worn_acceptance_retry_20260824/camera_frames.jsonl",
+      "bytes": 2983,
+      "zip_crc32_expected": "9fb0a0ee"
+    }
+  ],
+  "code": [
+    {
+      "path": "script/headband/recording_audit.py",
+      "bytes": 9501,
+      "sha256": "d98ab1a77c2fa96533863052efecfe38c493835a0cc217154d3ecc9912ac4507"
+    },
+    {
+      "path": "script/headband/reference_contract.py",
+      "bytes": 2811,
+      "sha256": "5c5dabe62c56483cb90a95ec38e2fe55d43eaf8fcb9d1f85313ecf31504a440a"
+    },
+    {
+      "path": "script/headband/test_reference_contract.py",
+      "bytes": 3595,
+      "sha256": "db6b38f5ae23af3371905b74c92adfbf0952a20f456e75d497c2894807211a90"
+    }
+  ],
+  "acceptance": [
+    "same video index and host timestamp match across streams",
+    "unknown exposure timing never promoted to synchronized",
+    "camera world pose must be independent rather than body FK",
+    "dynamic head/body compensation removes apparent motion while preserving actual translation",
+    "map epoch changes do not produce velocity",
+    "training readiness reported separately from file integrity"
+  ]
+}

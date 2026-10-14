@@ -2,7 +2,7 @@
   "schema_version": 1,
   "branch": "HEADBAND_REFERENCE_SIDE",
   "date": "2026-10-14",
-  "status": "OFFLINE_FEASIBILITY_IN_PROGRESS",
+  "status": "PUBLIC_DATA_PREPARATION_NO_DEVICE_NO_NEW_RECORDINGS",
   "goal": "Test whether headband plus clothing improves world-root observability and produces faithful feasible references for frozen official035, with actual robot outcomes required later.",
   "scope": "Independent side conversation; do not resume main A3 experiments or use their experiment IDs.",
   "hypothesis": "After time and dynamic head/pelvis compensation, weighting reference corrections by frozen-controller directional response sensitivity improves faithful tracking over calibrated geometric/uncertainty-only fusion. No timing changes in first comparison.",
@@ -19,19 +19,33 @@
       "id": "HB02",
       "task": "Dynamic head-to-pelvis and clock/epoch contracts with analytical scalar examples; inspect actual recording timing and calibration availability",
       "budget": "stdlib only, <=60 seconds per check, <=5MiB generated artifacts; no tensors/IK/SLAM",
-      "gate": "Pure head rotation must not invent pelvis translation; coordinate change must not create velocity; unknown clock gaps rejected"
+      "gate": "Pure head rotation must not invent pelvis translation; coordinate change must not create velocity; unknown clock gaps rejected",
+      "status": "COMPLETE_DATA_REJECTED_FOR_FORMAL_COMPARISON"
     },
     {
       "id": "HB03",
       "task": "Freeze matched geometric, uncertainty-only and support-aware comparisons and data split",
       "budget": "design/static review only",
-      "gate": "Session split, source SHA, metric units, real timestamp alignment, independent trajectory reference and exclusive compute window"
+      "gate": "Session split, source SHA, metric units, real timestamp alignment, independent trajectory reference and exclusive compute window",
+      "status": "COMPLETE_DESIGN_ONLY"
     },
     {
       "id": "HB04",
       "task": "After prerequisites, frozen035 offline comparison, then only a small reference residual/confidence learner if evidence requires",
       "status": "NOT_REGISTERED_NOT_AUTHORIZED_BY_THIS_PLAN_ALONE",
       "gate": "Register new experiment, existing ZHY environment, no concurrent compute, baseline and unchanged outcome gates"
+    },
+    {
+      "id": "HB05",
+      "task": "Public-source availability, author metric code, and frozen035 information-path review",
+      "status": "COMPLETE_STATIC_ONLY",
+      "result": "reports/README_HEADBAND_PUBLIC_DATA_20261014.md"
+    },
+    {
+      "id": "HB06",
+      "task": "Independent bounded temporal matching and root/local error decomposition core",
+      "status": "PLANNED_NOT_RUN",
+      "plan": "data/manifests/headband_public_data_plan_20261014.json"
     }
   ],
   "evaluation": {
@@ -68,16 +82,16 @@
   },
   "training_prerequisites": [
     "verified real device layout/IMU population/scales",
-    "stereo and camera-to-head calibration",
+    "verified visual calibration and head-camera extrinsics; stereo extrinsics only for stereo route",
     "camera-to-clothing clock mapping with offset/drift and exposure semantics",
     "paired sessions and independent evaluation reference",
     "exclusive compute access and reliable telemetry"
   ],
   "loop": {
     "interval_minutes": 60,
-    "next": "HB02",
+    "next": "HB06 independent replay tooling; source data/rights verification before actual replay, no device dependence for tooling",
     "quiet_when_unchanged": true,
-    "stop": "After HB03 deliver bounded readiness decision. If prerequisites absent and no independent useful work remains, notify once and pause/remove own loop, do not repeat research.",
+    "stop": "After bounded useful tooling/source work, if all further work depends on unavailable inputs or protected compute, save recovery and end this side loop; no repeated audits or broad research.",
     "automation_id": "automation",
     "status": "ACTIVE",
     "target_thread_id": "01a13600-59c3-7f31-89f9-d5d8a5b48269"
@@ -90,5 +104,8 @@
     "no_subagents": true
   },
   "main_thread_automation": "Do not modify zhy-a3 or yuanqi",
-  "backup_status": "LOCAL_ONLY"
+  "backup_status": "LOCAL_ONLY",
+  "user_update": "2026-10-14: headband disconnected, no new recordings; continue independent public-data and analytical work.",
+  "controller_information_gate": "Reuse completed E27: root-only changes leave fixed A3-fast inputs invariant. Require root-informed feasible q/v or a separately registered explicit command adapter before controller sensitivity experiments.",
+  "training_prerequisites_scope": "Listed hardware prerequisites apply to actual headband/clothing-domain training/evaluation. Public/synthetic work needs its own source rights, data/split/measurement contract and registered budget; cannot establish device validity."
 }

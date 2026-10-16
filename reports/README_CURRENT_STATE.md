@@ -47,11 +47,11 @@ E51/R20实现完成但尚未登记：从官方035/空Adam开始、E45相同4段�
 - 每重要阶段立即模板README、索引、current state、小SHA清单；审diff/暂存、audit_git_payload.py后scoped提交推送指定GitHub main并核对远端。保留并行修改/旧账本，不强推。大型工件LOCAL_ONLY，网盘未核验，不写凭据或代发消息。
 - 本工程zhy-a3因新增宿主内核事件暂停（保留每30分钟配置），恢复以本次阻塞README与真实state为准，旧yuanqi-a3与hp3090保持PAUSED；每日研究yuanqi不变。只通知新结论/阶段/异常/需用户处理的新阻塞，状态不变静默。机器首故障或可验收目标达成后保存入口并暂停工程heartbeat。
 
-## 其他工作入口（本轮未修改）
+## 其他工作入口
 
 - Q1在原机/media/yu/FAFF-E977/YuanQi_Q1、origin/Q1；恢复须读该副本状态，不以main旧记录启动工作。见[Q1入口](README_Q1_SMPL_20261008.md)。
 - 学习Agent继续本人必要知识训练；控制链待答项见[学习会话](README_LEARNING_SESSION_20261012.md)、[交接](README_LEARNING_AGENT_TASK_20261011.md)。10/14用户决定至少跟一遍课程，采用Agent+平板笔记+上课；视频配套10章PDF已检查，见[资料与学习安排](README_LEARNING_COURSE_20261014.md)。尚无新增掌握证据，课程不调度工程计算。
-- 每日研究已保存[10/14简报](research/2026-10-14/README.md)：SONIC部署更新和浏览器教学素材，未复现、公告/HF有缺口；去重、Git发布状态见[研究阶段](README_RESEARCH_CHECK_20261014.md)及[回执](../data/manifests/research_watch_sync_20261014.json)。工程与教学主线不由新闻调度。
+- 每日研究已保存[10/16简报](research/2026-10-16/README.md)：TRACE跨本体适配、C-GMT参考修正、CoWear共同目标/对时；原文相关段落及TRACE部署文档已核验，未复现，训练资产/历史公告/HF仍有缺口。去重与Git状态见[研究阶段](README_RESEARCH_CHECK_20261016.md)及[回执](../data/manifests/research_watch_sync_20261016.json)。工程与教学主线不由新闻调度。
 - 原机故障/空闲/负载试验及迁移历史见[报告索引](README.md)，旧细节保留在各阶段README与Git历史；本入口只保留当前恢复所需信息。
 
 独立侧支：[头环与衣服参考研究](README_HEADBAND_CURRENT_STATE.md)：HB06离线计分工具9项控制通过；公开评测包两端连接超时、WAIT_DATA，独立heartbeat已暂停并保存获取/恢复入口；不接手主线实验，尚未训练或证明效果提升。

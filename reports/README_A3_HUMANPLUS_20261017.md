@@ -36,6 +36,8 @@ humanplus到59.77.15.15:25115的TCP端口可达，但没有已验证SSH连接：
 
 用户已选择“提供59服务器直接登录方式”，实际认证信息仍待提供，已只追问缺失的认证入口及可用主机指纹，没有重复询问选择。23:24只读复验：同boot，MemAvailable 19,460,734,976字节，CPU封装68°C；EgoLocate PID808677仍占3278MiB计算显存/RSS 3,882,487,808字节，GPU总4599MiB/6%/50°C。没有启动张量控制、仿真或训练，也没有清缓存、终止既有任务；内存有余量，当前阻塞不是文件缓存不足。该快照不是三次启动验收或连续内核监控。
 
+用户随后明确“通过那台humanplus的机器连接”。已实际从humanplus执行到59的SSH只读连接；目标有效配置仍为root/59.77.15.15/25115，没有ControlMaster或该用户可复用socket，目标known_hosts无匹配。StrictHostKeyChecking=yes返回Host key verification failed，认证尚未发生，不能宣称密码错误或无可用密钥。没有关闭主机校验、猜密码或读取私钥。已提供由用户在humanplus登录并建立临时复用会话的命令：`ssh -M -S /tmp/yuanqi-zhy-source.sock -o ControlPersist=30m -p 25115 root@59.77.15.15`；完成登录后代理可经humanplus复用该socket，只执行所需源清单/传输，不恢复ZHY计算。仍可由用户提供59本身的认证方式。该命令尚未由代理或用户确认成功执行，不能把提供命令记为连接完成。
+
 静态补查cloth_constrained_trial.register确认，旧13项直接输入之外还读取E12 independent_verification.json、E35 result.json、E23 independent_verification.json和六份合格reference.csv、E26 registration/independent_verification、E02 job/independent_verification，以及两组explicit_summary/metrics/timeseries。四官方CSV路径由E02 job.diagnostic_motions给出，六衣服顺序由E26 registration.selection给出。源连接建立后先读取这些小合同并核验原清单，再列精确路径/大小/SHA选择性迁移；不整目录搬迁。旧评测输出只作来源和历史证据，新机比较仍必须重新测035，旧ZHY内核审查材料不进入新机健康基准。
 
 ## 决定与下一步

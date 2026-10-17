@@ -4,6 +4,8 @@
 
 ## 当前A3工作与恢复
 
+最新迁移入口：用户明确经humanplus跳转59。实际从humanplus连接仍在主机密钥校验前停止，未进行认证；用户可在humanplus建立/tmp/yuanqi-zhy-source.sock临时已认证会话后继续，命令见新机README。尚未验证该socket存在，不把humanplus登录成功当成59登录成功。当前本地提交3298615已保存96网格阶段，领先旧origin/main三提交；写权限仍未恢复。
+
 最新授权目标为humanplus，新机只读盘点/内核日志完成，现有FATAL匹配0但不是连续运行验收。候选x2-sonic-isaaclab环境仅METADATA/关键4源码SHA核验，不修改共享环境；新机需独立环境/资源门、输入SHA及匹配035基线，不沿用ZHY boot/cgroup v1/历史效果数值。旧E51未在新机登记，旧STOPPED账本不动。长期任务仍用zhy-a3 id转向新根，旧巡检/每日研究不变；恢复先读新机README与小清单，再处理数据/认证和资源，不直接运行旧finite_retention_trial。下方旧现场只作来源。
 
 10/17 22:21用户要求先查上游：GitHub main仍10/9 c9df753，仅比固定vendor多1个下载统计/元数据提交；旧14项发布条目包括035 PT SHA全部未变，只有main分支、无tags/releases。HF在线API超时，未全面核验模型站；不升级vendor，不把此更新当策略修复。见[检查](README_A3_UPSTREAM_UPDATE_20261017.md)与[a3_upstream_update小清单](../data/manifests/a3_upstream_update_20261017.json)。本次合并到humanplus阶段保存；先前transport清单的文档SHA是20:31历史快照，恢复同步时保留后续增补并核对实际diff。

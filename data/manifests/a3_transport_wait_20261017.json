@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "checked_at_beijing": "2026-10-17 20:28-20:31",
+  "status": "SSH_UNKNOWN",
+  "automation_id": "zhy-a3",
+  "automation_status_changed": false,
+  "last_verified_automation_status": "ACTIVE",
+  "entry": "hp3090",
+  "entry_host": "100.70.125.121",
+  "entry_port": 22,
+  "ssh_queries": [
+    {"purpose": "ZHY resource and E51 state", "connect_timeout_seconds": 12, "exit_code": 255, "error": "ssh: connect to host 100.70.125.121 port 22: Operation timed out"},
+    {"purpose": "bastion Git and GitHub main", "connect_timeout_seconds": 12, "exit_code": 255, "error": "ssh: connect to host 100.70.125.121 port 22: Operation timed out"}
+  ],
+  "mac_route_interface": "utun5",
+  "tailscale": {
+    "backend_state": "Running",
+    "self_online": true,
+    "target_hostname": "yu-MS-7D31",
+    "target_online": false,
+    "target_active": true,
+    "target_last_seen_utc": "2026-10-17T12:10:00.1Z"
+  },
+  "ping": {"sent": 2, "received": 0, "exit_code": 2},
+  "current_remote": {
+    "boot": "UNKNOWN",
+    "oom": "UNKNOWN",
+    "kernel": "UNKNOWN",
+    "memory": "UNKNOWN",
+    "gpu": "UNKNOWN",
+    "other_compute": "UNKNOWN",
+    "e51_out_state": "UNKNOWN",
+    "git": "UNKNOWN"
+  },
+  "last_successful_observation_only": {
+    "head": "48449c427cd37f247f7918a624b0eb5b99d212f3",
+    "at_beijing": "2026-10-17 19:58",
+    "github_main_and_zhy_head_matched": true,
+    "zhy_source_sha_count": 52,
+    "e51_out_exists": false,
+    "publication_log_zhy": "logs/zhy_a3_resume/20261017_publication.jsonl"
+  },
+  "this_check_actions": {"cache_trim": 0, "registration": 0, "tensor_controls": 0, "training": 0, "effect_evaluation": 0, "other_processes_terminated": 0},
+  "machine_failure_confirmed": false,
+  "reboot_inferred": false,
+  "pending_files": [
+    "reports/README_A3_RESUME_20261017.md",
+    "reports/README_CURRENT_STATE.md",
+    "reports/README.md",
+    "data/manifests/a3_transport_wait_20261017.json"
+  ],
+  "pending_document_sha256": {
+    "reports/README_A3_RESUME_20261017.md": "ab621730e53f66f173b4b436e57c552e767998f01cec2a20adc4651b2d990465",
+    "reports/README_CURRENT_STATE.md": "9a380806d4a3fd521fc6291b58ee0c2e724845a0d41fc7cb9ceee853f0f145af",
+    "reports/README.md": "6b180968c2609c27efbb3920c5079195491f7f4af9862bbca4ac191d18d4bd40"
+  },
+  "publication": "MAC_ONLY_PENDING_GIT_AUDIT_COMMIT_PUSH_AND_ZHY_SYNC",
+  "resume": "Low-frequency reconnect through hp3090; first verify actual state, boot/OOM/kernel and resources; audit and publish pending scoped records preserving concurrent edits; then follow the unchanged 20261017 plan. Do not infer machine fault, reset ledgers or start from stale snapshots."
+}

@@ -1,6 +1,18 @@
 # A3继续测试：历史外部OOM审查与E51恢复
 
-记录：2026-10-17，北京时间19:31起。状态：启动误拦截修正完成；WAIT_EXTERNAL_COMPUTE_AND_MEMORY，E51仍未登记/0worker。官方035仍baseline，尚无新效果提升。
+22:39后用户已指定切换humanplus工作机；当前恢复入口为[新机HP01](README_A3_HUMANPLUS_20261017.md)，覆盖下文旧ZHY启动动作。本报告保留换机前证据，本次与HP01一起保存，发布状态以新机回执为准。
+
+记录：2026-10-17，北京时间19:31起；20:31更新。当前状态：SSH_UNKNOWN，入口hp3090不可达，远端资源/作业/E51账本未能重新核验。19:58前E51未登记/0worker是最后成功快照，不当作当前现场。官方035仍baseline，尚无新效果提升。
+
+## 20:28巡检：入口不可达
+
+本次仅做只读连接检查。两条独立查询（远端资源/E51状态、Git与远端main）均在连接hp3090的100.70.125.121:22时超时，退出码255；尚未连接ZHY。Mac路由仍指向utun5，Tailscale本机BackendState=Running/self_online=true；目标yu-MS-7D31显示online=false，LastSeen=2026-10-17T12:10:00.1Z（北京时间20:10:00）。ping两包均丢失。目标active=true不代替online判断。
+
+这些证据只支持入口当前不可达，原因未知；不能据此认定重启、OOM、温度保护或机器首故障。当前boot/GPU/容器内存/GraspGenX是否仍运行及E51 OUT/state均UNKNOWN，不能沿用19:58数值。本次未清缓存、未登记或执行E51、无模型/张量/训练/评测。工程heartbeat保持ACTIVE，未修改旧巡检及每日研究。
+
+最后成功同步为48449c427cd37f247f7918a624b0eb5b99d212f3：GitHub main与ZHY HEAD核验一致、52项source SHA通过；19:58发布回执位于ZHY logs/zhy_a3_resume/20261017_publication.jsonl。该时点E51 OUT不存在。本次连接证据及待同步清单为data/manifests/a3_transport_wait_20261017.json；本段、索引、current state及该清单只保存Mac，尚未提交/推送/同步，不能称GitHub已保存本次阻塞。
+
+下一次低频重查hp3090。连接恢复后先读取实际OUT/state、boot/容器OOM/完整内核及资源，禁止仅凭网络恢复启动；按原计划处理缓存和三次5秒预检。若账本仍不存在且所有门通过才register一次，否则按实际state继续；新真实故障依原停止规则留证，不自动复跑。本次没有新增实验或修改计划、预算、门槛。
 
 ## 目标与本轮范围
 

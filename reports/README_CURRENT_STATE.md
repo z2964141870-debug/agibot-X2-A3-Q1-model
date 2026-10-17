@@ -1,10 +1,18 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-17 19:41。用户要求继续测试，入口[A3恢复与E51](README_A3_RESUME_20261017.md)。五条已存证历史外部OOM的精确审查实现并通过标准库/真实记录核验；恢复资源巡检。原可用约3.18GiB且GraspGenX仍占用，E51未登记/0worker。官方035仍baseline，暂无效果提升。
+更新：2026-10-17 22:39起。用户指定改在humanplus@100.101.30.68工作，新根/home/humanplus/YUANQI_A3；[新机入口](README_A3_HUMANPLUS_20261017.md)覆盖下方旧ZHY启动指令。工程48449c4和固定vendor已clone，LFS未实化、11/13直接输入缺失，0张量/训练/仿真。RTX5060 Laptop 8GiB，EgoLocate占约3.2GiB计算显存；内存可用约18.1GiB。WAIT_INPUT_TRANSFER_AND_EXTERNAL_COMPUTE，不终止现有任务。已询问59源数据迁移入口，尚无认证路径；GitHub SSH鉴权也失败，记录先本地审计提交、推送待实际核验。官方035仍baseline，暂无效果提升。
 
 ## 当前A3工作与恢复
 
-最新WAIT_EXTERNAL_COMPUTE_AND_MEMORY覆盖下方10/14暂停及旧恢复动作。新计划`data/manifests/a3_finite_retention_plan_20261017.json`保留原计划/SHA、训练预算和效果门；只增加五条历史外部OOM的逐条审查，无未来异常豁免。E51登记前及实际捕获基准再次检查，登记后原监控不改。10标准库审查+3协议控制通过，ZHY实际5条匹配；4项张量事务/训练/效果实际仍0次。
+最新授权目标为humanplus，新机只读盘点/内核日志完成，现有FATAL匹配0但不是连续运行验收。候选x2-sonic-isaaclab环境仅METADATA/关键4源码SHA核验，不修改共享环境；新机需独立环境/资源门、输入SHA及匹配035基线，不沿用ZHY boot/cgroup v1/历史效果数值。旧E51未在新机登记，旧STOPPED账本不动。长期任务仍用zhy-a3 id转向新根，旧巡检/每日研究不变；恢复先读新机README与小清单，再处理数据/认证和资源，不直接运行旧finite_retention_trial。下方旧现场只作来源。
+
+10/17 22:21用户要求先查上游：GitHub main仍10/9 c9df753，仅比固定vendor多1个下载统计/元数据提交；旧14项发布条目包括035 PT SHA全部未变，只有main分支、无tags/releases。HF在线API超时，未全面核验模型站；不升级vendor，不把此更新当策略修复。见[检查](README_A3_UPSTREAM_UPDATE_20261017.md)与[a3_upstream_update小清单](../data/manifests/a3_upstream_update_20261017.json)。本次合并到humanplus阶段保存；先前transport清单的文档SHA是20:31历史快照，恢复同步时保留后续增补并核对实际diff。
+
+## ZHY历史入口
+
+以下为换机前的现场与旧计划，不能用于humanplus启动。当前迁移/计算规则以本页顶部和新机README为准。
+
+最新SSH_UNKNOWN覆盖19:58及下方旧资源快照；19:58成功同步48449c4至GitHub/ZHY、52项source SHA通过且E51 OUT不存在，当前仍须重查。新计划`data/manifests/a3_finite_retention_plan_20261017.json`保留原计划/SHA、训练预算和效果门；只增加五条历史外部OOM的逐条审查，无未来异常豁免。E51登记前及实际捕获基准再次检查，登记后原监控不改。10标准库审查+3协议控制通过，ZHY实际5条匹配；最后确认的4项张量事务/训练/效果均0次。本次审计/提交/推送因Git工作副本所在入口不可达尚未执行；连接恢复后先同步这四个已保存文件并核验，保留并行修改。
 
 19:41 root PID1451734/父1367698在`/opt/data/private/hechengzhu/hxr/GraspGenX`执行`batch/run_batch100_worker.py`，worker约5.47GiB RSS；GPU瞬时0%但非空闲，原available约3.18GiB/同boot/OOM0。未清缓存或干预。待无其他计算，若仍不足8GiB则按新计划+E50登记自主有限回收，再各3次5秒原预检，OUT不存在才register一次；任一STOPPED不续跑/扩预算/评测早期点。恢复工程heartbeat ACTIVE，变化才通知；下一直接prepare控制→原8更新→最终六衣服四官方效果，不重复旧方向诊断。
 

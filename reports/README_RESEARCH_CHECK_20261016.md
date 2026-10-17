@@ -1,6 +1,6 @@
 # 每日研究检查 · 2026-10-16
 
-记录日期：2026-10-16，北京时间。阶段：research-watch-20261016。状态：**三条简报内容已推送并独立核验；最后的回执/状态补写仅在Mac，SSH中断后未完成同步核验**。
+记录日期：2026-10-16，北京时间。阶段：research-watch-20261016。状态：**三条简报内容已推送并独立核验；10/16回执中断已于10/17恢复发布，历史失败保留**。
 
 ## 目标与范围
 
@@ -51,11 +51,11 @@ Mac与正式服务器已保存本次README、索引、候选和小清单；仅�
 
 内容提交`9990639803462378bd8577b20deebb367024b018`已推送`origin/main`，北京时间`2026-10-16T13:13:47+08:00`独立核验服务器HEAD与GitHub `refs/heads/main`完整SHA一致、工作区干净。本段、最终状态和[回执](../data/manifests/research_watch_sync_20261016.json)在该核验后补写；补写的最终发布仍须另行核验，不递归填自身提交号。
 
-**最终补写尚未同步：** 三份回执/阶段/状态的`receipt.patch`与核验工具已传到服务器日志目录。调用`apply_receipt.py`的SSH返回connection reset，随后两次只读status/HEAD均连接超时，故不能确认补丁是否已落盘；没有执行后续暂存、第二次提交或推送。当前服务器工作区记UNKNOWN，最后一次已确认HEAD为上述内容提交。Mac已保存最终失败说明与恢复补丁；服务器/GitHub已发布的三条简报和检查清单不因回执失败而撤回。恢复先核实HEAD、工作区及`receipt_files.json`三文件哈希，再合并当前本地补写，不能盲目重复应用旧补丁或覆盖并行修改。证据`logs/research_watch/2026-10-16/receipt_network_failure.json`；本节的失败说明本身也待同步。
+**10/16最终补写未同步（历史失败）：** 三份回执/阶段/状态的`receipt.patch`与核验工具已传到服务器日志目录。调用`apply_receipt.py`的SSH返回connection reset，随后两次只读status/HEAD均连接超时，故当时不能确认补丁是否已落盘；没有执行后续暂存、第二次提交或推送。当时服务器工作区记UNKNOWN，最后一次已确认HEAD为上述内容提交。Mac保存最终失败说明与恢复补丁；服务器/GitHub已发布的三条简报和检查清单不因回执失败而撤回。恢复要求先核实HEAD、工作区及`receipt_files.json`三文件哈希，再合并本地补写，不能盲目重复应用旧补丁或覆盖并行修改。证据`logs/research_watch/2026-10-16/receipt_network_failure.json`；该失败说明于10/17发布。
 
 SSH失败后，Mac独立读取GitHub公开REST `git/ref/heads/main`成功，仍指向内容提交`9990639803462378bd8577b20deebb367024b018`；原始响应`logs/research_watch/2026-10-16/github_main_final.json`。这再次确认内容在GitHub，不代替服务器工作区或回执发布核验。
 
-**10/17恢复核验：** 服务器连接恢复，HEAD及独立GitHub REST仍为上述内容提交，工作区干净；三份回执文件哈希全部匹配昨日`receipt_files.json`的before，确认旧补丁未落盘。已据新快照合并本节、失败说明与回执，随[10/17研究检查](README_RESEARCH_CHECK_20261017.md)补同步；发布最终结果以[10/17回执](../data/manifests/research_watch_sync_20261017.json)及Git历史为准。本段不将昨天失败改成昨天成功，也不运行旧硬编码补丁脚本。
+**10/17恢复核验：** 服务器连接恢复，HEAD及独立GitHub REST仍为上述内容提交，工作区干净；三份回执文件哈希全部匹配昨日`receipt_files.json`的before，确认旧补丁未落盘。据新快照合并本节、失败说明与回执后，随[10/17研究检查](README_RESEARCH_CHECK_20261017.md)发布到`ad3bc532c6a2e113d5edd48cb0e215064f64f993`；10/17 09:21:31北京时间独立核验服务器HEAD与GitHub main一致、工作区干净。最终回执字段随小型后续提交保存，见[10/17回执](../data/manifests/research_watch_sync_20261017.json)及Git历史。保留昨日失败，不运行旧硬编码补丁脚本。
 
 原始来源缓存`LOCAL_ONLY`；无大型模型工件、无百度网盘上传，也不删除原件。
 

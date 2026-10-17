@@ -1,6 +1,6 @@
 # 每日研究检查 · 2026-10-17
 
-日期：北京时间2026-10-17。阶段：research-watch-20261017。状态：**一项代码发布更新完成核验与成文；Git发布待核验**。
+日期：北京时间2026-10-17。阶段：research-watch-20261017。状态：**一项代码发布更新已成文、推送并独立核验；昨日回执已恢复，最终回执随本次后续提交保存**。
 
 ## 目标与范围
 
@@ -46,7 +46,9 @@ ssh -o BatchMode=yes -o ConnectTimeout=10 hp3090 'git -C /media/yu/FAFF-E9771/YU
 
 ## 保存与同步状态
 
-本地简报、阶段、入口/候选及小清单已保存；10/16最终回执/失败说明作为恢复增量一并纳入。发布须再次检查HEAD/工作区和逐文件基线哈希，只暂存本次文件，检查diff并运行`script/project_tools/audit_git_payload.py`后提交推送，再核验远端完整SHA。当前未把待发布预写成成功，以[本次回执](../data/manifests/research_watch_sync_20261017.json)及Git历史为准。
+本地与正式服务器已保存简报、阶段、入口/候选、小清单与原始小型来源；10/16最终回执/失败说明作为恢复增量一并纳入。以99906398干净基线和逐文件哈希应用12份文件，暂存311,736字节；审查diff、空白检查和`script/project_tools/audit_git_payload.py`通过。服务器288个本地Markdown链接有效，39份来源响应/16份解码文件大小与SHA匹配，73条旧来源对象及用户问题记录完整保留。
+
+内容提交`ad3bc532c6a2e113d5edd48cb0e215064f64f993`已推送`origin/main`，北京时间`2026-10-17T09:21:31+08:00`独立核验服务器HEAD与`git ls-remote origin refs/heads/main`完整SHA一致、工作区干净；证据`logs/research_watch/2026-10-17/documents_verification.json`。本段和最终状态/[回执](../data/manifests/research_watch_sync_20261017.json)通过小型后续提交保存；其自身提交号由Git历史及单独final verification日志提供，不递归改写。
 
 原始小型来源缓存`LOCAL_ONLY`，无大模型、网盘上传或删除。执行日志不作为源代码发行承诺。
 

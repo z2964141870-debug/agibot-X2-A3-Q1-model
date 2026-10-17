@@ -2,7 +2,7 @@
   "schema_version": 1,
   "automation_id": "yuanqi",
   "report_date": "2026-10-16",
-  "status": "GITHUB_DOCUMENTS_VERIFIED_RECEIPT_RECOVERY_PENDING_PUBLICATION",
+  "status": "GITHUB_VERIFIED",
   "canonical_host": "hp3090",
   "canonical_root": "/media/yu/FAFF-E9771/YUANQI",
   "branch": "main",
@@ -23,16 +23,12 @@
     "fixed_commit_document_hashes_verified": 4,
     "old_source_objects_preserved": 63
   },
-  "receipt_note": "October16 content push remains independently verified. The prior SSH failure is retained; October17 confirmed the old receipt patch never applied. Merged recovery publication is still pending.",
+  "receipt_note": "October16 content was independently verified that day. The final Mac receipt/failure annotations were recovered in the independently verified October17 documents commit; the original SSH failure remains in previous_receipt_publication_failure. Final receipt fields are in a followup commit identified by Git history.",
   "receipt_publication": {
-    "status": "NOT_COMPLETED_SSH_FAILED",
-    "recorded_at": "2026-10-16T13:34:45+08:00",
-    "patch_uploaded": true,
-    "patch_application": "UNKNOWN_AFTER_CONNECTION_RESET",
-    "subsequent_read_only_checks": "Two SSH connections timed out",
-    "canonical_worktree_current": "UNKNOWN",
-    "receipt_commit_created": false,
-    "resume_requirement": "Read current HEAD/status and compare the three receipt_files.json hashes before merging final local amendments"
+    "status": "RECOVERED_IN_FOLLOWUP_DOCUMENTS_COMMIT",
+    "documents_commit": "ad3bc532c6a2e113d5edd48cb0e215064f64f993",
+    "verified_at": "2026-10-17T09:21:31+08:00",
+    "canonical_head_matches_github_main": true
   },
   "scope": "October16 research documentation and compact source manifests only",
   "raw_source_backup_status": "LOCAL_ONLY",
@@ -44,7 +40,19 @@
     "all_three_files_match_original_before_patch": true,
     "old_patch_application": "NOT_APPLIED_CONFIRMED",
     "action": "Merge final Mac failure annotations and receipt into October17 scoped publication",
-    "publication_status": "PENDING_PUBLICATION",
-    "followup_receipt": "data/manifests/research_watch_sync_20261017.json"
+    "publication_status": "GITHUB_VERIFIED",
+    "followup_receipt": "data/manifests/research_watch_sync_20261017.json",
+    "documents_commit": "ad3bc532c6a2e113d5edd48cb0e215064f64f993",
+    "verified_at": "2026-10-17T09:21:31+08:00"
+  },
+  "previous_receipt_publication_failure": {
+    "status": "NOT_COMPLETED_SSH_FAILED",
+    "recorded_at": "2026-10-16T13:34:45+08:00",
+    "patch_uploaded": true,
+    "patch_application": "UNKNOWN_AFTER_CONNECTION_RESET",
+    "subsequent_read_only_checks": "Two SSH connections timed out",
+    "canonical_worktree_current": "UNKNOWN",
+    "receipt_commit_created": false,
+    "resume_requirement": "Read current HEAD/status and compare the three receipt_files.json hashes before merging final local amendments"
   }
 }

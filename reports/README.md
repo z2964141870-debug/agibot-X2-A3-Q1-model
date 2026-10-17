@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-最新阶段：[A3切换humanplus工作机](README_A3_HUMANPLUS_20261017.md)：用户指定新主机100.101.30.68，新根/home/humanplus/YUANQI_A3代码/固定vendor就位；GPU仍被EgoLocate占用，已验输入待迁移、环境未运行验收，0新训练。覆盖旧ZHY启动安排，官方035仍baseline；本地提交/推送以实际回执为准。
+最新阶段：[A3切换humanplus工作机](README_A3_HUMANPLUS_20261017.md)：用户指定新主机100.101.30.68，新根/home/humanplus/YUANQI_A3代码/固定vendor就位；GPU仍被EgoLocate占用，已验输入待迁移、环境未运行验收，0新训练。覆盖旧ZHY启动安排，官方035仍baseline；10文件审计通过并本地提交，SSH push失败，GitHub未同步。
 
 ## 恢复上下文先读
 

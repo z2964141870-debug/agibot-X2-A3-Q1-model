@@ -44,4 +44,6 @@ humanplus到59.77.15.15:25115的TCP端口可达，但没有已验证SSH连接：
 
 工程可HTTPS读取，但新机和Mac的GitHub SSH鉴权均Permission denied(publickey)，新机未配置提交身份；提交时使用该仓库既有提交身份，仅本次命令指定，不改全局账号。代码/记录先scoped审diff、audit_git_payload.py、本地提交，再尝试用户指定SSH远端；推送实际结果由logs/a3_humanplus_20261017/publication记录。未成功核对远端前不称已同步。
 
+实际发布：10文件/95815字节暂存审计及diff检查通过，已在新机main提交084387e1554482ce60fa77d80afd2026f9cb149a，包含HP01、前述transport/upstream未推送记录和新增盘点代码。指定SSH push失败Permission denied(publickey)，GitHub未同步；不新增密钥、不复制原机私钥。此次补充状态也在新机保存为后续本地提交，准确版本由Git历史提供，不为写入自身hash循环提交。日志/内核仍LOCAL_ONLY。
+
 长期任务沿用zhy-a3的原id，更新目标为此工作根，不另建自动任务、不继续旧ZHY启动。heartbeat复用Mac临时SSH socket /tmp/yuanqi-humanplus-a3.sock，失效时记SSH_UNKNOWN，不保存密码。旧yuanqi-a3/hp3090巡检仍PAUSED，每日研究yuanqi不变。原暂停设置在迁移前读取为PAUSED，本次按用户继续在新机工作的指示恢复本工程；只报新结论/阶段/需处理阻塞。

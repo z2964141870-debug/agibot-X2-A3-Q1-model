@@ -1,8 +1,10 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-18接续：[humanplus只读遥测适配](README_A3_HUMANPLUS_TELEMETRY_20261018.md)。cgroup v2/内核前缀核验14项标准库控制及固定两采样元数据探针通过，未集成完整运行保护、0模型训练；01:09外部GPU计算已退出但仍须启动前重查，035 PT尚未到位，WAIT_USER_LARGE_TRANSFER。
+
 2026-10-18最新：[HP02/HP03输入迁移](README_A3_INPUT_MIGRATION_20261018.md)。经humanplus登录59成功，HP02批量传输超时不续传；独立HP03已迁52小文件并逐文件大小/SHA通过，关键训练输入齐9/10，待035 PT和10历史轨迹按[精确清单](../data/manifests/a3_humanplus_large_transfer_handoff_20261018.json)交接。0训练，无策略提升。
 
-工作区阶段：[A3切换humanplus工作机](README_A3_HUMANPLUS_20261017.md)：固定MJCF的96网格/19.9MB大小/SHA通过，vendor干净；EgoLocate仍占GPU，0新训练。新根/home/humanplus/YUANQI_A3覆盖旧ZHY启动安排；本地提交保留，SSH push鉴权未恢复，GitHub未同步。
+工作区阶段：[A3切换humanplus工作机](README_A3_HUMANPLUS_20261017.md)：固定MJCF的96网格/19.9MB大小/SHA通过，vendor干净；当时EgoLocate占GPU为历史，0新训练。新根/home/humanplus/YUANQI_A3覆盖旧ZHY启动安排；本地提交保留，SSH push鉴权未恢复，GitHub未同步。
 
 ## 恢复上下文先读
 
@@ -18,6 +20,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-18 | humanplus只读遥测适配 | 14项标准库控制/两次只读采样通过；完整监督器与运行验证未完成，0训练，见[遥测记录](README_A3_HUMANPLUS_TELEMETRY_20261018.md) |
 | 2026-10-18 | humanplus输入迁移HP02/HP03 | HP02批量超时不续传；独立HP03的52项/15.9MB逐文件SHA通过并放入工程，035 PT/10历史轨迹待交接，见[迁移记录](README_A3_INPUT_MIGRATION_20261018.md) |
 | 2026-10-17 | humanplus工作机HP01 | 独立工作区/只读盘点及96固定MJCF网格SHA完成，GPU有其他任务；已从humanplus尝试到59，主机身份/认证未完成、源数据待迁移，0张量训练，见[新机入口](README_A3_HUMANPLUS_20261017.md) |
 | 2026-10-17 | SONIC for A3更新核验 | main仍10/9 c9df753，仅下载统计/元数据；原14项资产清单未变，HF在线超时，保持固定vendor，见[检查](README_A3_UPSTREAM_UPDATE_20261017.md)；记录已并入HP01，推送待核验 |

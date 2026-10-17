@@ -1,0 +1,28 @@
+{
+  "stage": "HUMANPLUS_TELEMETRY_READONLY_ADAPTATION",
+  "root": "/home/humanplus/YUANQI_A3",
+  "expected_boot_id": "afb6796b-3883-4df4-99ea-bc381c52ea13",
+  "scope": "standard-library controls and read-only metadata; not scientific runtime registration",
+  "source_sha256": {
+    "script/a3/humanplus_health.py": "36b20feb2a2d7d3e177c9352763e1f5414590069102f49c6b86bb99251e67fa0",
+    "script/a3/test_humanplus_health.py": "df85aa54f0ca34fcfe5f071e4a1f6532984890e0374266a2183eab49f56ed0fb"
+  },
+  "probe_budget": {
+    "snapshots": 2,
+    "between_samples_seconds": 5,
+    "max_wall_seconds": 60,
+    "automatic_retry": false,
+    "tensor_imports": 0,
+    "model_loads": 0,
+    "simulation_steps": 0,
+    "optimizer_steps": 0
+  },
+  "accounting": "min(physical MemAvailable, every finite visible memory.max/high minus memory.current); no page-cache credit",
+  "root_without_memory_controller_files": "root recorded explicitly; physical MemAvailable and full-boot journal retained; missing nonroot or partial root files rejected",
+  "kernel": "full current-boot JSON kernel journal, unique cursors, boot/monotonic validation, immutable historical prefix SHA; any FATAL/OOM rejected, no historical exceptions",
+  "startup_available_bytes": 8589934592,
+  "running_reserve_bytes": 4294967296,
+  "raw_receipt": "logs/a3_humanplus_20261017/telemetry_readonly_probe_20261018.json",
+  "runtime_supervisor_integrated": false,
+  "thermal_process_gpu_stage_limits_verified": false
+}

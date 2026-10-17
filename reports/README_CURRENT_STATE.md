@@ -1,10 +1,12 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-18。[HP02/HP03输入迁移](README_A3_INPUT_MIGRATION_20261018.md)为最新恢复入口。已经humanplus认证59，源E51仍不存在，E45 STOPPED/E50 COMPLETE保留。HP02批量120秒超时、不续传，部分归档未验收；独立HP03已单次迁入52项/15,874,540字节，逐文件大小/SHA通过、0覆盖。10项关键训练输入已齐9项，缺035 PT 402,050,931字节；另10历史轨迹待按[大文件交接清单](../data/manifests/a3_humanplus_large_transfer_handoff_20261018.json)迁移。新根/home/humanplus/YUANQI_A3和96已验MJCF网格保留，EgoLocate仍占GPU，0本工程张量/训练；官方035仍baseline，无效果提升。GitHub写权限未恢复，阶段只本地提交，不称已推送。
+更新：2026-10-18北京时间01:16。最新[新机只读遥测适配](README_A3_HUMANPLUS_TELEMETRY_20261018.md)：14项标准库控制及固定两采样元数据探针通过，v2祖先限额/事件、journal历史前缀核验完成，0新增OOM/FATAL；完整阶段监督器、模型环境与科学运行未验收。01:09EgoLocate计算进程已退出，无GPU/可见计算、可用约21.1GiB；资源是历史快照，启动前重查。0本工程张量/训练，035仍baseline，无新效果，GitHub未同步。
+
+当前WAIT_USER_LARGE_TRANSFER：[HP02/HP03迁移](README_A3_INPUT_MIGRATION_20261018.md)已迁52项并逐文件大小/SHA通过、0覆盖，10项关键训练输入齐9项，缺035 PT 402,050,931字节及10份历史轨迹，见[交接清单](../data/manifests/a3_humanplus_large_transfer_handoff_20261018.json)。HP02超时部分归档未验收、不续传；HP03完成不复跑。新根/home/humanplus/YUANQI_A3与96个已验MJCF网格保留，源E51仍不存在、E45 STOPPED/E50 COMPLETE保留。
 
 ## 当前A3工作与恢复
 
-源连接：humanplus的/tmp/yuanqi-zhy-source.sock已认证验证，优先复用；失效后记连接UNKNOWN，不推断源重启，不在报告/自动任务保存密码。HP02/HP03不可复跑，迁入文件不可覆盖；模型/历史轨迹到位后只按交接清单核验，不把旧ZHY基准当新机通过证据。00:33同boot，新机可用约18.1GiB、EgoLocate仍占3278MiB计算显存，journal原FATAL匹配0，无需清缓存；journal读取入口和cgroup v2元数据已查，连续保护尚未实现/验收。
+源连接：humanplus的/tmp/yuanqi-zhy-source.sock曾认证验证，使用前重查；失效后记连接UNKNOWN，不推断源重启，不在报告/自动任务保存密码。迁入文件不可覆盖，到位后按交接清单核验，不把旧ZHY基准当新机通过证据。新计划/结果a3_humanplus_telemetry_{plan,result}_20261018.json及只读收据保留，已完成探针不重跑。当前内存充足不清缓存；连续阶段保护仍须独立登记集成和验收，不能直接启动旧ZHY登记器。
 
 最新授权目标为humanplus，新机只读盘点/内核日志完成，现有FATAL匹配0但不是连续运行验收。候选x2-sonic-isaaclab环境仅METADATA/关键4源码SHA核验，不修改共享环境；新机需独立环境/资源门、输入SHA及匹配035基线，不沿用ZHY boot/cgroup v1/历史效果数值。旧E51未在新机登记，旧STOPPED账本不动。长期任务仍用zhy-a3 id转向新根，旧巡检/每日研究不变；恢复先读新机README与小清单，再处理数据/认证和资源，不直接运行旧finite_retention_trial。下方旧现场只作来源。
 

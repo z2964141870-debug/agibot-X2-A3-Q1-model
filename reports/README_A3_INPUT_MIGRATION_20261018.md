@@ -1,6 +1,8 @@
 # A3已验输入迁移到humanplus
 
-记录：2026-10-18。HP02批量传输STOPPED_TRANSFER_TIMEOUT_NO_RETRY；独立HP03小文件迁移COMPLETE_SMALL_FILES_ONLY，52项大小/SHA通过且已放入工程。等待大文件交接和其他计算结束，未启动训练。
+10/18北京时间01:16接续：01:09外部EgoLocate计算已退出，035 PT/10历史轨迹仍未到位，转WAIT_USER_LARGE_TRANSFER；后续启动重新核验资源。[只读遥测适配](README_A3_HUMANPLUS_TELEMETRY_20261018.md)完成标准库代码/14控制及两采样元数据探针，不代表完整运行保护或环境通过。下文00:33及更早占用是历史。
+
+记录：2026-10-18。HP02批量传输STOPPED_TRANSFER_TIMEOUT_NO_RETRY；独立HP03小文件迁移COMPLETE_SMALL_FILES_ONLY，52项大小/SHA通过且已放入工程。等待大文件交接，未启动训练。
 
 ## 目标与范围
 

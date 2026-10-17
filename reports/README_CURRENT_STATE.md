@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-17 22:39起。用户指定改在humanplus@100.101.30.68工作，新根/home/humanplus/YUANQI_A3；[新机入口](README_A3_HUMANPLUS_20261017.md)覆盖下方旧ZHY启动指令。工程48449c4和固定vendor已clone，LFS未实化、11/13直接输入缺失，0张量/训练/仿真。RTX5060 Laptop 8GiB，EgoLocate占约3.2GiB计算显存；内存可用约18.1GiB。WAIT_INPUT_TRANSFER_AND_EXTERNAL_COMPUTE，不终止现有任务。已询问59源数据迁移入口，尚无认证路径；10文件审计通过并本地提交084387e，SSH push明确publickey拒绝，GitHub未同步；后续状态补充以新机Git历史为准。zhy-a3已ACTIVE并改向humanplus，旧任务/每日研究未改。官方035仍baseline，暂无效果提升。
+更新：2026-10-17 23:29。用户指定humanplus@100.101.30.68工作，新根/home/humanplus/YUANQI_A3；[新机入口](README_A3_HUMANPLUS_20261017.md)覆盖旧ZHY启动指令。固定评测MJCF的96网格/19,912,414字节已一次实化并逐文件SHA通过，vendor干净；仅网格齐全，模型/参考等11/13旧直接输入仍缺，0张量/训练/仿真。23:24同boot，EgoLocate仍占3278MiB计算显存，可用内存约18.1GiB，无需清缓存。WAIT_INPUT_TRANSFER_AND_EXTERNAL_COMPUTE。用户已选提供59直接登录方式，实际认证入口仍待提供；源小合同还需补齐E12/E35及E23/E26/E02来源证据。恢复HEAD f071316领先远端两提交，SSH push已知publickey拒绝，后续网格阶段另本地提交，GitHub未同步。zhy-a3保持ACTIVE/humanplus；官方035仍baseline，无效果提升。
 
 ## 当前A3工作与恢复
 

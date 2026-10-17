@@ -1,6 +1,6 @@
 # A3切换humanplus工作机
 
-记录：2026-10-17，北京时间22:33起。阶段HP01：代码工作区建立、只读盘点完成；WAIT_INPUT_TRANSFER_AND_EXTERNAL_COMPUTE，运行验收/训练未启动。
+记录：2026-10-17，北京时间22:33起，23:29补充。阶段HP01：代码工作区、只读盘点及固定MJCF的96网格实化完成；WAIT_INPUT_TRANSFER_AND_EXTERNAL_COMPUTE，运行验收/训练未启动。
 
 ## 目标与授权
 
@@ -13,6 +13,8 @@
 SSH登录成功，建立仅保存在Mac进程中的复用连接；没有保存密码、复制私钥或新增authorized_keys。GitHub HTTPS只读clone成功，工程HEAD为48449c427cd37f247f7918a624b0eb5b99d212f3/main，725个跟踪文件落地。
 
 官方vendor独立clone，固定fe6868ba37034f89b912f0fb851bce19f120266d，工作树干净。跳过LFS实化，模型/mesh等大型资产尚未迁入；LFS指针存在不算资产齐全。没有升级到仅下载统计变更的main。
+
+23:29后续仅补齐固定评测MJCF所引用的网格。标准库ElementTree读取compiler.meshdir及asset/mesh，确认无include，按固定Git对象中的LFS指针得到96个路径、预期大小和SHA；合计19,912,414字节。限定这96个路径执行一次git-lfs pull，返回0，再逐文件核验实际大小/SHA，96/96通过、vendor工作树仍干净。未下载模型、XR工具链或完整文档资产。清单为data/manifests/a3_humanplus_mjcf_assets_20261017.json；这只证明MJCF网格闭包齐全，不证明MuJoCo/Isaac运行通过或训练资产全部齐全。来源与许可已读固定vendor的docs/THIRD_PARTY_NOTICES.md及LICENSE；机器人资产声明MulanPSL-2.0，既有声明保留，工件LOCAL_ONLY、不进本项目Git。
 
 新增script/project_tools/humanplus_inventory.py：只读主机/GPU/可见进程/包METADATA/旧计划输入是否存在，不import torch/Isaac，不加载模型或计算张量，不遍历凭据。22:39实际执行完成，原始JSON保存在新机logs/a3_humanplus_20261017/inventory.json。
 
@@ -32,6 +34,10 @@ SSH登录成功，建立仅保存在Mac进程中的复用连接；没有保存�
 
 humanplus到59.77.15.15:25115的TCP端口可达，但没有已验证SSH连接：严格主机密钥校验缺少已信任键而停止，认证尚未测试，不关闭StrictHostKeyChecking、不猜密码。hp3090离线，旧复用socket仅在旧机，不能当现有迁移入口。已向用户询问恢复hp3090或提供59直接迁移登录方式，不请求私钥。暂未传大型文件，后续仅按原输入SHA选择性迁移，不复制整套旧缓存。
 
+用户已选择“提供59服务器直接登录方式”，实际认证信息仍待提供，已只追问缺失的认证入口及可用主机指纹，没有重复询问选择。23:24只读复验：同boot，MemAvailable 19,460,734,976字节，CPU封装68°C；EgoLocate PID808677仍占3278MiB计算显存/RSS 3,882,487,808字节，GPU总4599MiB/6%/50°C。没有启动张量控制、仿真或训练，也没有清缓存、终止既有任务；内存有余量，当前阻塞不是文件缓存不足。该快照不是三次启动验收或连续内核监控。
+
+静态补查cloth_constrained_trial.register确认，旧13项直接输入之外还读取E12 independent_verification.json、E35 result.json、E23 independent_verification.json和六份合格reference.csv、E26 registration/independent_verification、E02 job/independent_verification，以及两组explicit_summary/metrics/timeseries。四官方CSV路径由E02 job.diagnostic_motions给出，六衣服顺序由E26 registration.selection给出。源连接建立后先读取这些小合同并核验原清单，再列精确路径/大小/SHA选择性迁移；不整目录搬迁。旧评测输出只作来源和历史证据，新机比较仍必须重新测035，旧ZHY内核审查材料不进入新机健康基准。
+
 ## 决定与下一步
 
 先保留新机现有任务，继续可独立完成的代码/清单工作。源连接建立后取回已验证参考、teacher锚点及必要合同，逐文件大小/SHA核验；传输缓慢按既有规范提供具体源/目标/大小，不持续强传。官方vendor必需LFS资产也必须实化并核验，不能用指针运行。
@@ -45,5 +51,7 @@ humanplus到59.77.15.15:25115的TCP端口可达，但没有已验证SSH连接：
 工程可HTTPS读取，但新机和Mac的GitHub SSH鉴权均Permission denied(publickey)，新机未配置提交身份；提交时使用该仓库既有提交身份，仅本次命令指定，不改全局账号。代码/记录先scoped审diff、audit_git_payload.py、本地提交，再尝试用户指定SSH远端；推送实际结果由logs/a3_humanplus_20261017/publication记录。未成功核对远端前不称已同步。
 
 实际发布：10文件/95815字节暂存审计及diff检查通过，已在新机main提交084387e1554482ce60fa77d80afd2026f9cb149a，包含HP01、前述transport/upstream未推送记录和新增盘点代码。指定SSH push失败Permission denied(publickey)，GitHub未同步；不新增密钥、不复制原机私钥。此次补充状态也在新机保存为后续本地提交，准确版本由Git历史提供，不为写入自身hash循环提交。日志/内核仍LOCAL_ONLY。
+
+23:24恢复核验HEAD为f0713161e0d5c0d7829955fa22d462775d5f378a、main领先origin/main两提交且工作树干净。本次网格阶段的清单/README更新将另作scoped审计和本地提交；已知SSH写权限未恢复，不循环尝试同一失败推送，仍为LOCAL_COMMITTED_UNPUSHED。旧文提到的publication目录当时没有独立回执文件，不能作为既有证据；此次生成明确小回执，实际提交号以Git历史为准。
 
 长期任务沿用zhy-a3的原id，更新目标为此工作根，不另建自动任务、不继续旧ZHY启动。heartbeat复用Mac临时SSH socket /tmp/yuanqi-humanplus-a3.sock，失效时记SSH_UNKNOWN，不保存密码。旧yuanqi-a3/hp3090巡检仍PAUSED，每日研究yuanqi不变。原暂停设置在迁移前读取为PAUSED，本次按用户继续在新机工作的指示恢复本工程；只报新结论/阶段/需处理阻塞。

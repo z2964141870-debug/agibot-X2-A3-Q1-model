@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-最新阶段：[A3切换humanplus工作机](README_A3_HUMANPLUS_20261017.md)：用户指定新主机100.101.30.68，新根/home/humanplus/YUANQI_A3代码/固定vendor就位；GPU仍被EgoLocate占用，已验输入待迁移、环境未运行验收，0新训练。覆盖旧ZHY启动安排，官方035仍baseline；10文件审计通过并本地提交，SSH push失败，GitHub未同步。
+最新阶段：[A3切换humanplus工作机](README_A3_HUMANPLUS_20261017.md)：固定MJCF的96网格/19.9MB实化并逐文件SHA通过，vendor干净；EgoLocate仍占GPU，模型/参考待59直接认证后迁移，0新训练。新根/home/humanplus/YUANQI_A3覆盖旧ZHY启动安排，官方035仍baseline；本地提交保留，SSH push鉴权未恢复，GitHub未同步。
 
 ## 恢复上下文先读
 
@@ -16,7 +16,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
-| 2026-10-17 | humanplus工作机HP01 | 独立代码工作区/只读盘点完成，8GiB GPU有其他任务，缺已验输入/认证路径，0张量训练，见[新机入口](README_A3_HUMANPLUS_20261017.md) |
+| 2026-10-17 | humanplus工作机HP01 | 独立工作区/只读盘点及96固定MJCF网格SHA完成，GPU有其他任务，源认证/模型参考待迁移，0张量训练，见[新机入口](README_A3_HUMANPLUS_20261017.md) |
 | 2026-10-17 | SONIC for A3更新核验 | main仍10/9 c9df753，仅下载统计/元数据；原14项资产清单未变，HF在线超时，保持固定vendor，见[检查](README_A3_UPSTREAM_UPDATE_20261017.md)；记录已并入HP01，推送待核验 |
 | 2026-10-17 | A3恢复测试与历史OOM审查 | 10+3标准库控制/真实5条通过；20:31入口SSH_UNKNOWN、未取得新现场，无新增计算，本次记录未推送，见[恢复入口](README_A3_RESUME_20261017.md) |
 | 2026-10-17 | 每日研究检查与回执恢复 | PredActor采集/标注/BC训练发布变化，固定16文件静态核验、未运行/HF未知；10/16回执补丁未落盘已识别，见[简报](research/2026-10-17/README.md)与[阶段](README_RESEARCH_CHECK_20261017.md) |

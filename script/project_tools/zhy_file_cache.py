@@ -11,7 +11,7 @@ import time
 from script.a3 import zhy_trial as guard
 from script.a3.checkpoint_store import atomic_json
 from script.a3.stage_resources import processes
-from script.diagnostics.host_loadcheck import FATAL
+from script.a3.kernel_review import check_kernel
 
 ROOT = Path('/opt/data/private/hechengzhu/ZHY')
 LOG = ROOT / 'logs/zhy_file_cache'
@@ -78,7 +78,7 @@ def missing_process_evidence(pid, fields):
     return record
 
 
-def require_idle(baseline):
+def require_idle(baseline, review_reference=None):
     health = guard.health()
     if (health['boot_id'] != baseline['boot_id'] or
             health['container_memory']['oom_kill'] != baseline['baseline_oom_kill']):
@@ -104,9 +104,8 @@ def require_idle(baseline):
             continue
         missing_process_evidence(err['pid'], fields)
     kernel = guard.command(['dmesg', '--color=never'])
-    if kernel['returncode'] or any(FATAL.search(line) and line not in baseline['kernel_baseline']
-                                  for line in kernel['stdout'].splitlines()):
-        raise RuntimeError('Kernel evidence unavailable or new critical event')
+    check_kernel(ROOT, kernel, baseline, review_reference,
+                 boot_id=health['boot_id'], cgroup_text=Path('/proc/self/cgroup').read_text())
     return health['boot_id']
 
 
@@ -123,8 +122,9 @@ def maintain(args):
     if Path.cwd().resolve() != ROOT:
         raise RuntimeError('Only authorized ZHY working directory')
     baseline = json.loads(inside(ROOT / args.baseline).read_text())
-    boot = require_idle(baseline)
     plan = json.loads(inside(ROOT / args.protect_plan).read_text())
+    review_reference = plan.get('entry_kernel_review')
+    boot = require_idle(baseline, review_reference)
     protect = set(key(p) for p in protected_paths(plan) if p.is_file())
     roots = []
     for directory in (ROOT / 'data/experiments').iterdir():
@@ -204,7 +204,7 @@ def maintain(args):
                   candidate_resident_bytes=total, inspected_artifacts=len(paths))
     if not args.trim or not total:
         return record
-    require_idle(baseline)
+    require_idle(baseline, review_reference)
     atomic_json(LOG / ('intent_' + str(time.time_ns()) + '.json'), record)
     for row in record['targets']:
         p = Path(row['file'])

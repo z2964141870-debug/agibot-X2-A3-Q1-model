@@ -14,7 +14,7 @@ from script.a3.checkpoint_store import atomic_json, sha256
 from script.a3.cloth_failure_protocol import TRAINING, corpus_roles
 from script.a3.finite_retention_protocol import CHECKPOINTS, UPDATES, STEPS, TRANSITIONS, LIMITS, SCALES
 from script.a3.host_health import append_record, command
-from script.diagnostics.host_loadcheck import FATAL
+from script.a3.kernel_review import check_kernel
 
 runtime, shared = cached.runtime, cached.shared
 OUT = shared.ROOT / 'data/experiments/a3_zhy_finite_retention_20261014_E51'
@@ -26,7 +26,7 @@ shared.EXPERIMENT = 'A3_ZHY_FINITE_RETENTION_20261014_E51'
 shared.TRIAL = 'R20'
 shared.MODULE = 'script.a3.finite_retention_trial'
 shared.TRAINER = 'script.a3.finite_retention_trainer.FiniteRetentionTrainer'
-PLAN = shared.ROOT / 'data/manifests/a3_finite_retention_plan_20261014.json'
+PLAN = shared.ROOT / 'data/manifests/a3_finite_retention_plan_20261017.json'
 PRIOR = shared.ROOT / 'data/experiments/a3_zhy_cloth_failure_20261013_E45'
 E50 = shared.ROOT / 'data/experiments/a3_zhy_candidate_retention_followup_20261014_E50'
 OLD_RUN = shared.ROOT / 'data/training/a3_zhy_cloth_failure_20261013_E45/R19_001_s0'
@@ -35,7 +35,8 @@ shared.CODE += ('script/a3/cloth_curve_trainer.py', 'script/a3/cloth_curve_proto
     'script/a3/retention_direction_protocol.py', 'script/a3/finite_adam.py',
     'script/a3/finite_retention_protocol.py', 'script/a3/finite_retention_trainer.py',
     'script/a3/finite_retention_trial.py', 'script/a3/test_finite_adam.py',
-    'script/a3/test_finite_retention_protocol.py')
+    'script/a3/test_finite_retention_protocol.py', 'script/a3/kernel_review.py',
+    'script/a3/test_kernel_review.py')
 shared.STAGES = {'prepare': ('REGISTERED', 'PREPARED'), 'train': ('PREPARED', 'TRAINED'),
     'verify-training': ('TRAINED', 'TRAINING_VERIFIED'),
     'evaluate-cloth': ('TRAINING_VERIFIED', 'CLOTH_EVALUATED'),
@@ -95,11 +96,23 @@ def register():
     baseline = shared.read(E50 / 'registration.json')
     rows = preflight(baseline)
     kernel = command(['dmesg', '--color=never'])
-    if kernel['returncode'] or any(FATAL.search(line) for line in kernel['stdout'].splitlines()
-                                 if line not in baseline['kernel_baseline']):
-        raise RuntimeError('Unreliable or new fatal kernel evidence')
+    kernel_review = check_kernel(shared.ROOT, kernel, baseline, plan.get('entry_kernel_review'),
+        boot_id=rows[-1]['boot_id'], cgroup_text=Path('/proc/self/cgroup').read_text())
     shared.register()
     job = shared.read(OUT / 'registration.json')
+    try:
+        if (job['boot_id'] != baseline['boot_id'] or
+                job['baseline_oom_kill'] != baseline['baseline_oom_kill']):
+            raise RuntimeError('Boot or container OOM changed while registering')
+        kernel_review = check_kernel(shared.ROOT,
+            dict(returncode=0, stdout='\n'.join(job['kernel_baseline'])), baseline,
+            plan.get('entry_kernel_review'), boot_id=job['boot_id'],
+            cgroup_text=Path('/proc/self/cgroup').read_text())
+    except Exception:
+        state = shared.read(OUT / 'state.json')
+        state.update(status='STOPPED', reason='POST_REGISTRATION_KERNEL_REVIEW_FAILED')
+        atomic_json(OUT / 'state.json', state)
+        raise
     roles = corpus_roles(shared.read(shared.CORPUS / 'independent_verification.json')['sequences'])
     job.update(main_variable='FINITE_ACTUAL_ADAM_CANDIDATE_ACCEPTANCE_BEFORE_COMMIT',
         updates=UPDATES, optimizer_steps=STEPS, sampled_transitions=TRANSITIONS,
@@ -112,7 +125,8 @@ def register():
         preflight_extra_available_bytes=8 * 1024**3, preflight_samples=3,
         controller_tensor_import_allowed=False, toy_transaction_controls=4,
         toy_native_optimizer_calls_max=20, preflight_samples_before_each_stage=3,
-        selection_rule='FINAL_STEP8_ONLY_TEN_FULL_MATCHED_DEVELOPMENT_MOTIONS')
+        selection_rule='FINAL_STEP8_ONLY_TEN_FULL_MATCHED_DEVELOPMENT_MOTIONS',
+        historical_kernel_review=kernel_review)
     job['input_sha256'].update(inputs)
     job['input_sha256'].update(plan['source_sha256'])
     job['input_sha256'][str(PLAN.relative_to(shared.ROOT))] = sha256(PLAN)

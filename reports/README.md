@@ -16,6 +16,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-17 | 每日研究检查与回执恢复 | PredActor采集/标注/BC训练发布变化，固定16文件静态核验、未运行/HF未知；10/16回执补丁未落盘已识别，见[简报](research/2026-10-17/README.md)与[阶段](README_RESEARCH_CHECK_20261017.md) |
 | 2026-10-16 | 每日研究检查 | TRACE跨本体适配、C-GMT参考修正、CoWear共同目标/对时；9摘要、5篇相关正文及TRACE固定部署文档核验，未复现，见[简报](research/2026-10-16/README.md)与[阶段](README_RESEARCH_CHECK_20261016.md) |
 | 2026-10-14 | 强化学习课程与平板资料 | 用户决定至少跟完一遍课；10章视频配套PDF下载/解析及首页检查通过，未新增掌握证据，见[课程记录](README_LEARNING_COURSE_20261014.md) |
 | 2026-10-14 | ZHY GPU占用归属 | root PID1183477运行hxr/taco_multiview/replay20.py，约3.73GiB显存；仅定位任务、未确认自然人，见[记录](README_ZHY_GPU_OCCUPANCY_20261014.md) |

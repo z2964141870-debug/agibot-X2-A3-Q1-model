@@ -50,3 +50,9 @@ README/索引/current state/小清单及审查脚本scoped审diff和audit_git_pa
 /usr/bin/python3 -B -m script.project_tools.humanplus_route_audit --stage train
 # 只在train与独立审计成功后依序verify-training/cloth/official/effect，每阶段单次审计保存。
 ```
+
+## 18:32 真实训练与独立审计完成
+
+HP19单次train完成8更新/32提案32提交/3072交互，全部8个rollout实际a3_fast384、G1独占0，原生配对mask为[1,0,0,1]。64候选含live检查，推导外层调用872/2440；fresh035对D02固定preclip标签maxabs2.0265579223632812e-6。原E11硬teacher最高RMSE0.017082905396819115/maxabs0.07597750425338745，不放宽阈值。
+
+原生16环境cuda:0完成/CUDA同步、专属Kit日志实际设置/native PID/清回调/正常关闭退出0通过。train独立审计verified=true，60.162秒，13健康同boot、CPU最高88/GPU46°C、最低可用19223252992字节，0FATAL/新增OOM/自有组残留；未到温度停止门，旧快照不是未来启动证据。保存0/2/4/8尚待独立张量核验，0新效果回放，无035改善证据。下一仅新合同verify-training。

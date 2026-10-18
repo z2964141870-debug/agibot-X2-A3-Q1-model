@@ -1,0 +1,95 @@
+{
+  "experiment": "A3_HUMANPLUS_RUNTIME_20261018_HP05",
+  "status": "STOPPED",
+  "started_at_utc": "2026-10-18T02:39:08.388315+00:00",
+  "stages": [
+    {
+      "stage": "tensor",
+      "state": {
+        "status": "COMPLETE",
+        "argv": [
+          "/home/humanplus/anaconda3/envs/x2-sonic-isaaclab/bin/python",
+          "-B",
+          "-m",
+          "script.a3.humanplus_runtime",
+          "worker",
+          "--stage",
+          "tensor"
+        ],
+        "started_at": 1792291148.416617,
+        "supervisor_pid": 2737816,
+        "seconds_limit": 900.0,
+        "interval_seconds": 5.0,
+        "no_automatic_retry": true,
+        "worker_pid": 2737909,
+        "launched_at": 1792291158.5879698,
+        "returncode": 0,
+        "finished_at": 1792291163.604528,
+        "elapsed_seconds": 15.18791160301771
+      },
+      "receipt": {
+        "status": "COMPLETE",
+        "stage": "tensor",
+        "at_utc": "2026-10-18T02:39:18.663214+00:00",
+        "policy_model_loaded": false,
+        "policy_optimizer_calls": 0,
+        "tests_passed": 4,
+        "torch_version": "2.8.0+cu128",
+        "cuda_version": "12.8",
+        "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+        "capability": [
+          12,
+          0
+        ],
+        "allocator_peak_bytes": 12288
+      },
+      "health_sha256": "4099047a9e2db27876b915a6ae452a9813b26a2edbf215659c5cb91384a27dfd",
+      "console_sha256": "6e15027cba2b47db1b662a7292aa0680effada7e889dd9a718d9b97e42d731f9"
+    },
+    {
+      "stage": "mujoco",
+      "state": {
+        "status": "COMPLETE",
+        "argv": [
+          "/home/humanplus/anaconda3/envs/x2-sonic-isaaclab/bin/python",
+          "-B",
+          "-m",
+          "script.a3.humanplus_runtime",
+          "worker",
+          "--stage",
+          "mujoco"
+        ],
+        "started_at": 1792291163.660708,
+        "supervisor_pid": 2737816,
+        "seconds_limit": 900.0,
+        "interval_seconds": 5.0,
+        "no_automatic_retry": true,
+        "worker_pid": 2738051,
+        "launched_at": 1792291173.8443396,
+        "returncode": 0,
+        "finished_at": 1792291178.8290157,
+        "elapsed_seconds": 15.16830887796823
+      },
+      "receipt": {
+        "status": "COMPLETE",
+        "stage": "mujoco",
+        "at_utc": "2026-10-18T02:39:33.892064+00:00",
+        "policy_model_loaded": false,
+        "policy_optimizer_calls": 0,
+        "mujoco_version": "3.3.7",
+        "model_nq": 72,
+        "model_nv": 65,
+        "steps": 10,
+        "simulated_seconds": 0.010000000000000002,
+        "scope": "UNCONTROLLED_10_STEPS_NOT_POLICY_OR_BALANCE_VALIDATION"
+      },
+      "health_sha256": "38b2d894eeeb0ec554750decacd5e525423b73cfbfd23b1231c51ae3d2fbfc82",
+      "console_sha256": "1868bb058a2b079e906f45282e0193a0c9940c1b84cd85281cec8ab476b29531"
+    }
+  ],
+  "training_started": false,
+  "policy_model_loaded": false,
+  "backup_status": "LOCAL_ONLY",
+  "reason": "RuntimeError:WORKER_EXIT:1",
+  "finished_at_utc": "2026-10-18T02:39:54.062296+00:00"
+}

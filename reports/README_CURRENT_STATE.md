@@ -1,5 +1,9 @@
 # YUANQI 当前状态与下一步
 
+最新：2026-10-18北京时间10:40，[HP05运行验收](README_A3_HUMANPLUS_RUNTIME_20261018.md)STOPPED_ENVIRONMENT_BOOTSTRAP_EULA_EOF。新监督器13项标准库两端通过；CPU/fused CUDA4事务与固定MJCF无策略10步通过，PhysX在EULA提示EOF处退出、未进入仿真。原因是新入口漏配非交互启动变量，非已证实硬件故障。12健康同boot、CPU最高81/GPU42°C、可用最小22,350,381,056字节、0FATAL/新增OOM；worker全部退出。已存在小张量/合成optimizer及MuJoCo仿真，0策略模型/rollout/训练，不再沿用下方历史0张量描述。
+
+当前完整环境验收未完成，035仍baseline、无新效果；输入63/63、必需10/10已齐。HP05原账本不恢复/覆盖，不重跑已通过阶段，zhy-a3按异常停止规则暂停。恢复方案：先明确解除此次STOPPED约束，仅将遗漏的Isaac Sim启动变量纳入独立PhysX验收登记；通过后才新035匹配基线与原8更新训练。计划/结果/终态独立审计data/manifests/a3_humanplus_runtime_20261018_HP05_{plan,result,audit}.json；原始logs同前缀目录，LOCAL_ONLY。代码与证据scoped提交，GitHub写权限未恢复、尚未同步。下方10:20及更早文字为历史现场。
+
 更新：2026-10-18北京时间10:20。用户明确要求代理直接迁移、允许慢传后，[HP04迁移完成](README_A3_INPUT_MIGRATION_20261018.md)：11大文件613,119,744字节单次112.032秒迁完；与HP03合计63文件628,994,284字节独立大小/SHA通过、训练必需输入齐10/10。当前INPUTS_VERIFIED_WAIT_RUNTIME_VALIDATION。完整阶段监督器、模型环境与科学运行未验收，0本工程张量/训练，035仍baseline，无新效果，GitHub未同步。
 
 035 PT 402,050,931字节及10历史轨迹现均在目标路径、0覆盖；证据为data/manifests/a3_humanplus_large_transfer_{plan,result,verification}_20261018_HP04.json。旧交接清单保留为固定来源证据，HP02超时部分归档未复用；HP03不复跑。新根/home/humanplus/YUANQI_A3与96个已验MJCF网格保留，源E51旧记录不存在、E45 STOPPED/E50 COMPLETE不变。10:19只读复核同boot、可用22,611,034,112字节、GPU1396MiB/0%/43°C，无GPU/可见计算；journal1410条、0FATAL/新增OOM。此快照不等于三次启动门，启动前重查。

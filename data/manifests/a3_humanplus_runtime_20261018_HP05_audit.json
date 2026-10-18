@@ -1,0 +1,192 @@
+{
+  "experiment": "A3_HUMANPLUS_RUNTIME_20261018_HP05",
+  "at_utc": "2026-10-18T02:42:06.963576+00:00",
+  "status": "STOPPED_ENVIRONMENT_BOOTSTRAP_EULA_EOF",
+  "no_retry_performed": true,
+  "failure_is_confirmed_hardware_fault": false,
+  "cause": "New launcher omitted the existing noninteractive Isaac Sim bootstrap setting; EOF before PhysX context",
+  "correction_for_review": "Existing fresh_batch_trial.py worker sets OMNI_KIT_ACCEPT_EULA=YES; keep HP05 terminal and do not rerun its successful tensor/MuJoCo stages",
+  "plan_sha256": "0b8dc72c95e0a8529d12af0494cdb86cbf975a3e743b6df92e15372fb07954fc",
+  "result_sha256": "eff61ab9d344ed64d0774d23e1a64ad9cbd8668e14d9f790c349033d731fd68e",
+  "code_unchanged": true,
+  "stages": [
+    {
+      "stage": "tensor",
+      "state": {
+        "status": "COMPLETE",
+        "argv": [
+          "/home/humanplus/anaconda3/envs/x2-sonic-isaaclab/bin/python",
+          "-B",
+          "-m",
+          "script.a3.humanplus_runtime",
+          "worker",
+          "--stage",
+          "tensor"
+        ],
+        "started_at": 1792291148.416617,
+        "supervisor_pid": 2737816,
+        "seconds_limit": 900.0,
+        "interval_seconds": 5.0,
+        "no_automatic_retry": true,
+        "worker_pid": 2737909,
+        "launched_at": 1792291158.5879698,
+        "returncode": 0,
+        "finished_at": 1792291163.604528,
+        "elapsed_seconds": 15.18791160301771
+      },
+      "samples": 4,
+      "files": {
+        "health.jsonl": {
+          "bytes": 255255,
+          "sha256": "4099047a9e2db27876b915a6ae452a9813b26a2edbf215659c5cb91384a27dfd"
+        },
+        "result.json": {
+          "bytes": 362,
+          "sha256": "82703352a20ddd8a4e1721ec74b1fdee92edbdf5ed122e6bab40a26509f055e0"
+        },
+        "state.json": {
+          "bytes": 512,
+          "sha256": "7aa754df96894261b9992fa2b3b6b44bf75047bafac0aee9e8a6fb127a7dc142"
+        },
+        "console.log": {
+          "bytes": 989,
+          "sha256": "6e15027cba2b47db1b662a7292aa0680effada7e889dd9a718d9b97e42d731f9"
+        }
+      },
+      "receipt": {
+        "status": "COMPLETE",
+        "stage": "tensor",
+        "at_utc": "2026-10-18T02:39:18.663214+00:00",
+        "policy_model_loaded": false,
+        "policy_optimizer_calls": 0,
+        "tests_passed": 4,
+        "torch_version": "2.8.0+cu128",
+        "cuda_version": "12.8",
+        "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+        "capability": [
+          12,
+          0
+        ],
+        "allocator_peak_bytes": 12288
+      }
+    },
+    {
+      "stage": "mujoco",
+      "state": {
+        "status": "COMPLETE",
+        "argv": [
+          "/home/humanplus/anaconda3/envs/x2-sonic-isaaclab/bin/python",
+          "-B",
+          "-m",
+          "script.a3.humanplus_runtime",
+          "worker",
+          "--stage",
+          "mujoco"
+        ],
+        "started_at": 1792291163.660708,
+        "supervisor_pid": 2737816,
+        "seconds_limit": 900.0,
+        "interval_seconds": 5.0,
+        "no_automatic_retry": true,
+        "worker_pid": 2738051,
+        "launched_at": 1792291173.8443396,
+        "returncode": 0,
+        "finished_at": 1792291178.8290157,
+        "elapsed_seconds": 15.16830887796823
+      },
+      "samples": 4,
+      "files": {
+        "health.jsonl": {
+          "bytes": 255286,
+          "sha256": "38b2d894eeeb0ec554750decacd5e525423b73cfbfd23b1231c51ae3d2fbfc82"
+        },
+        "result.json": {
+          "bytes": 353,
+          "sha256": "c2a9901aa1947431c06120b6dc917c90812354326dd4e0c97ccb2c1cd446ed96"
+        },
+        "state.json": {
+          "bytes": 513,
+          "sha256": "d0e51fe4c0fbaea4bf3e3a537835ab1f14c4d1e54b085e3b7f92df43f7a376e6"
+        },
+        "console.log": {
+          "bytes": 329,
+          "sha256": "1868bb058a2b079e906f45282e0193a0c9940c1b84cd85281cec8ab476b29531"
+        }
+      },
+      "receipt": {
+        "status": "COMPLETE",
+        "stage": "mujoco",
+        "at_utc": "2026-10-18T02:39:33.892064+00:00",
+        "policy_model_loaded": false,
+        "policy_optimizer_calls": 0,
+        "mujoco_version": "3.3.7",
+        "model_nq": 72,
+        "model_nv": 65,
+        "steps": 10,
+        "simulated_seconds": 0.010000000000000002,
+        "scope": "UNCONTROLLED_10_STEPS_NOT_POLICY_OR_BALANCE_VALIDATION"
+      }
+    },
+    {
+      "stage": "physx",
+      "state": {
+        "status": "STOPPED",
+        "argv": [
+          "/home/humanplus/anaconda3/envs/x2-sonic-isaaclab/bin/python",
+          "-B",
+          "-m",
+          "script.a3.humanplus_runtime",
+          "worker",
+          "--stage",
+          "physx"
+        ],
+        "started_at": 1792291178.8809335,
+        "supervisor_pid": 2737816,
+        "seconds_limit": 900.0,
+        "interval_seconds": 5.0,
+        "no_automatic_retry": true,
+        "worker_pid": 2738173,
+        "launched_at": 1792291189.0682669,
+        "reason": "RuntimeError:WORKER_EXIT:1",
+        "launched": true,
+        "finished_at": 1792291194.041885,
+        "elapsed_seconds": 15.16095230699284
+      },
+      "samples": 4,
+      "files": {
+        "health.jsonl": {
+          "bytes": 255383,
+          "sha256": "2d58fba70e97a444f9395ffd9aa327121a05e83eaeb76c5f71f6a21927b7ee82"
+        },
+        "state.json": {
+          "bytes": 554,
+          "sha256": "16e8e75815a99b650fd5b133d3c74a90a46bf4a0b7a9aca7a938dcc5904f8055"
+        },
+        "console.log": {
+          "bytes": 302,
+          "sha256": "70b7fdf3ba0185e7cbf910e42512c6b6337db77c4ed2c5f8b4a0195db1217386"
+        }
+      }
+    }
+  ],
+  "samples": 12,
+  "boot_ids": [
+    "afb6796b-3883-4df4-99ea-bc381c52ea13"
+  ],
+  "min_available_bytes": 22350381056,
+  "max_cpu_c": 81.0,
+  "max_gpu_c": 42.0,
+  "fatal_matches": 0,
+  "new_oom_matches": 0,
+  "max_collection_seconds": 0.12159111502114683,
+  "after_health_reasons": [],
+  "after_boot": "afb6796b-3883-4df4-99ea-bc381c52ea13",
+  "policy_model_loads": 0,
+  "policy_rollouts": 0,
+  "policy_optimizer_calls": 0,
+  "physx_steps": 0,
+  "completed_mujoco_steps": 10,
+  "completed_transaction_tests": 4,
+  "next": "Save STOPPED and pause heartbeat; explicit rearm before correcting only the incomplete PhysX validation",
+  "backup_status": "LOCAL_ONLY"
+}

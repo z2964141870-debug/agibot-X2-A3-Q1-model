@@ -1,5 +1,7 @@
 # humanplus内存与内核日志适配
 
+10/18北京时间10:40接续：[HP05运行验收](README_A3_HUMANPLUS_RUNTIME_20261018.md)已集成温度/进程/GPU/三次启动门/900秒监督器，13标准库控制Mac/新机各通过。CPU/fused CUDA4事务及固定MJCF10步通过；PhysX在EULA EOF启动错误处STOPPED，完整环境仍未验收，旧遥测探针不复跑。12实际监督采样无OOM/内核异常、CPU最高81/GPU42°C。当前0策略训练，但已有合成张量/optimizer及MuJoCo仿真；覆盖下文历史“尚未集成/0张量”状态。
+
 10/18北京时间10:20接续：[HP04直接迁移](README_A3_INPUT_MIGRATION_20261018.md)已完成，035 PT及10历史轨迹与52小文件共63项独立大小/SHA通过，输入10/10。当前INPUTS_VERIFIED_WAIT_RUNTIME_VALIDATION，覆盖下文历史WAIT_USER_LARGE_TRANSFER；本遥测探针不复跑。完整监督器和环境小运行仍须独立登记验收，0张量/模型/训练。
 
 记录：2026-10-18。状态：标准库代码及只读元数据检查完成；科学运行保护集成、环境验证和训练未开始。此为基础设施适配，不是新的策略实验。

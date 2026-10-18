@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+最新HP23 verify-training完整通过/独立verified=true，step0/256精确大小SHA、仅原decoder14参数变化、冻结/28optimizer所有权和矩1024计数/实际token/原配方通过。最终PT307574417字节SHA47dd293511428d373c95c316ec8674e2b0f57bd581a09a632252dab1c09c599f；4健康无新增kernel/OOM/残留。下一首次最终Isaac499步→审计→MuJoCo499步→效果，不重训/重放基线，[恢复](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)，035仍baseline，GitHub未同步。
+
 最新HP23/D07独立完成入口实施，源配置归属校验前置且绑定HP21/motionlib，3控制两端和实际YAML四配方无张量预检通过；冻结353源码133输入11环境。HP21训练完整成功，HP22后置配置路径错误STOPPED，均不改/重训。下一HP23登记→完整保存核验→最终Isaac/MuJoCo各499，新增训练0，[恢复入口](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)，035无新效果证据，GitHub未同步。
 
 最新HP22 completion独立实现/3标准库两端通过，D06固定347源码133实际输入11环境。仅verify-training/isaac-final/mujoco/effect，源HP21完成256训练和基线原样保留，导入失败STOPPED不改；新增训练/交互0。不复跑原失败核验或基线，下一独立登记→首次真实保存验证→最终双模拟器。[恢复](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)，035仍baseline、GitHub未同步。

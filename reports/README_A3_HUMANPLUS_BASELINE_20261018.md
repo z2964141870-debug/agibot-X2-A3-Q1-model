@@ -1,5 +1,11 @@
 # humanplus 035匹配基线入口
 
+更新2026-10-18北京时间13:03：独立HP11的reference-only校验已通过，15.162秒。新入口先创建并SHA核验六个明确别名，2项标准库路径/缺源/逃逸控制Mac与新机通过；不重复HP10模型诊断，不补旧收据。六段均300行/499策略步，CSV/姿态/时长误差<=1.34e-15，模型body FK误差<=1.66e-15m，重采样脚底最低-3.719mm，符合原5mm门。
+
+HP11 validate独立审计verified=true，4健康同boot、CPU最高82/GPU44°C、可用最小22,208,077,824字节，无FATAL/新增OOM/after issues/自有组残留。0新模型诊断加载/策略forward/回放/optimizer。源码humanplus_baseline_reference.py及其测试/审计入口，旧HP10文件不改；只复用纯数值ABI与固定评测函数，使用已生成并SHA固定的solver桥接缓存，不改旧STOPPED工件。
+
+HP11计划/结果/validate审计：data/manifests/a3_humanplus_baseline_reference_20261018_HP11_{plan,result,validate_audit}.json；新根data/experiments及logs同名前缀。单次登记后按validate→cloth→official顺序各执行一次，监督器/保护/8769步原预算不变；运行命令为/usr/bin/python3 -B -m script.a3.humanplus_baseline_reference run --stage cloth，待本阶段README/索引/状态与scoped提交保存后执行。旧HP10以下记录保留，不重跑。
+
 记录日期2026-10-18。HP10状态STOPPED，尚未开始策略回放或训练。输入迁移与HP09运行控制已完成，不能把旧ZHY效果当新机基线。
 
 ## 目标与范围

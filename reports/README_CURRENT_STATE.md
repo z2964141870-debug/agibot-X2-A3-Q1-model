@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+最新2026-10-18北京时间13:03：[HP11参考校验通过](README_A3_HUMANPLUS_BASELINE_20261018.md)，六段300行/499步，body FK<=1.66e-15m、脚底最低-3.719mm，15.162秒；4健康同boot、CPU最高82/GPU44°C/可用最小22,208,077,824字节、0新增异常/无残留。不重复HP10模型诊断，旧STOPPED及缺失收据不补填。HP11状态IN_PROGRESS/validate完成，下一仅新登记cloth→official两阶段共10完整回放8769步；先保存阶段记录，原保护/预算不变。前台执行中zhy-a3暂停，0策略回放/训练；以下12:55为历史。
+
 最新2026-10-18北京时间12:55：[HP10匹配基线入口](README_A3_HUMANPLUS_BASELINE_20261018.md)STOPPED，validate漏建validation/references链接，0策略forward/回放/optimizer。103静态资产20,107,958字节SHA通过（新实化33,578字节solver）；模型构建/同步已执行但无最终模型收据，不补填。4健康同boot、CPU最高79/GPU44°C/可用最小22,235,348,992字节、0FATAL/新增OOM/无残留。HP10源码/终态冻结，不复跑；先保存再独立纠正参考入口，避免重复模型诊断。前台纠错中zhy-a3暂停，输入迁移63/63、HP09基础运行控制仍通过，以下12:03为历史。
 
 最新2026-10-18北京时间12:03：[HP09修复验收通过](README_A3_HUMANPLUS_PHYSX_NATIVE_20261018.md)。十步/CUDA同步/公开clear_instance注销STOP回调/原生正常关闭/真实退出0均存证，独立审计verified_control_and_exit=true，阶段15.160秒。4健康同boot、CPU最高81/GPU44°C、可用最小22,461,792,256字节、0FATAL/新增OOM，无自有组残留，代码/环境/输入SHA未变。

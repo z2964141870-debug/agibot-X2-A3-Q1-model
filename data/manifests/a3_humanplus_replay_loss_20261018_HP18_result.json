@@ -1,5 +1,5 @@
 {
-  "status": "IN_PROGRESS",
+  "status": "COMPLETE_MATCHED_EFFECT",
   "stages": [
     {
       "stage": "train",
@@ -3599,12 +3599,479 @@
         ],
         "optimizer_calls": 0
       }
+    },
+    {
+      "stage": "effect",
+      "state": {
+        "status": "COMPLETE",
+        "argv": [
+          "/home/humanplus/anaconda3/envs/x2-sonic-isaaclab/bin/python",
+          "-B",
+          "-u",
+          "-m",
+          "script.a3.humanplus_replay_loss",
+          "worker",
+          "--stage",
+          "effect"
+        ],
+        "started_at": 1792317616.9581628,
+        "supervisor_pid": 2932953,
+        "seconds_limit": 900.0,
+        "interval_seconds": 5.0,
+        "no_automatic_retry": true,
+        "worker_pid": 2933077,
+        "launched_at": 1792317627.1385546,
+        "returncode": 0,
+        "finished_at": 1792317632.1209333,
+        "elapsed_seconds": 15.162771710020024
+      },
+      "receipt": {
+        "status": "COMPLETE",
+        "matched_development_gate_passed": false,
+        "baseline_clothing_arithmetic_mean_rmse_rad": 0.13932748084287783,
+        "final_clothing_arithmetic_mean_rmse_rad": 0.1530324633190027,
+        "relative_mean_improvement": -0.09836524993644447,
+        "outcomes": [
+          {
+            "key": "G_0113_zj_train__183926_zj_walk",
+            "group": "cloth",
+            "fall": false,
+            "before": {
+              "policy_steps": 499,
+              "joint_rmse_rad": 0.09151692688034635,
+              "root_pos_error_m_mean": 0.40692367229575666,
+              "root_quat_error_deg_mean": 4.693919758875352,
+              "anchor_pos_error_m_mean": 0.40692367229575666,
+              "torso_world_mean_m": 0.40766512839594193,
+              "wrists_world_mean_m": 0.39851063399222647,
+              "legs_world_mean_m": 0.37925016591798943,
+              "torso_anchor_local_mean_m": 0.0007063047224185406,
+              "wrists_anchor_local_mean_m": 0.014669831304779347,
+              "legs_anchor_local_mean_m": 0.025928402092546425
+            },
+            "after": {
+              "policy_steps": 499,
+              "joint_rmse_rad": 0.08989995096106186,
+              "root_pos_error_m_mean": 0.3864451191778864,
+              "root_quat_error_deg_mean": 4.717127591265382,
+              "anchor_pos_error_m_mean": 0.3864451191778864,
+              "torso_world_mean_m": 0.38712557998900216,
+              "wrists_world_mean_m": 0.37862198827604504,
+              "legs_world_mean_m": 0.36027202568502614,
+              "torso_anchor_local_mean_m": 0.0007132055882993718,
+              "wrists_anchor_local_mean_m": 0.015114281695315005,
+              "legs_anchor_local_mean_m": 0.025337642800017917
+            },
+            "relative_change": {
+              "joint_rmse_rad": -0.01766859939908827,
+              "root_pos_error_m_mean": -0.05032529319893253,
+              "wrists_world_mean_m": -0.04990744040363393
+            },
+            "gates": {
+              "no_new_fall": true,
+              "joint_regression": true,
+              "root_regression": true,
+              "wrist_regression": true,
+              "clothing_no_fall": true
+            }
+          },
+          {
+            "key": "G_0113_zj_train__192333_zj_warmUp",
+            "group": "cloth",
+            "fall": false,
+            "before": {
+              "policy_steps": 499,
+              "joint_rmse_rad": 0.1259040929861347,
+              "root_pos_error_m_mean": 0.2923555483993547,
+              "root_quat_error_deg_mean": 6.86185162519206,
+              "anchor_pos_error_m_mean": 0.2923555483993547,
+              "torso_world_mean_m": 0.2926680029276866,
+              "wrists_world_mean_m": 0.2929913447099088,
+              "legs_world_mean_m": 0.3005181573126527,
+              "torso_anchor_local_mean_m": 0.0011513087296540173,
+              "wrists_anchor_local_mean_m": 0.0353986533243074,
+              "legs_anchor_local_mean_m": 0.030789636859131313
+            },
+            "after": {
+              "policy_steps": 499,
+              "joint_rmse_rad": 0.12873518741433695,
+              "root_pos_error_m_mean": 0.3360696483377196,
+              "root_quat_error_deg_mean": 7.493166258380721,
+              "anchor_pos_error_m_mean": 0.3360696483377196,
+              "torso_world_mean_m": 0.3363386451262745,
+              "wrists_world_mean_m": 0.3425089803802593,
+              "legs_world_mean_m": 0.3479052316877268,
+              "torso_anchor_local_mean_m": 0.001178824938464809,
+              "wrists_anchor_local_mean_m": 0.03605803150594735,
+              "legs_anchor_local_mean_m": 0.03507099643044219
+            },
+            "relative_change": {
+              "joint_rmse_rad": 0.022486119085215472,
+              "root_pos_error_m_mean": 0.14952375686967256,
+              "wrists_world_mean_m": 0.1690071620353768
+            },
+            "gates": {
+              "no_new_fall": true,
+              "joint_regression": false,
+              "root_regression": false,
+              "wrist_regression": false,
+              "clothing_no_fall": true
+            }
+          },
+          {
+            "key": "G_20251226_fjw__fjw_140008_walk",
+            "group": "cloth",
+            "fall": false,
+            "before": {
+              "policy_steps": 499,
+              "joint_rmse_rad": 0.0876522388971874,
+              "root_pos_error_m_mean": 0.42395025462033564,
+              "root_quat_error_deg_mean": 3.532656752863729,
+              "anchor_pos_error_m_mean": 0.42395025462033564,
+              "torso_world_mean_m": 0.42387735916837826,
+              "wrists_world_mean_m": 0.4247802867471422,
+              "legs_world_mean_m": 0.4288908879191438,
+              "torso_anchor_local_mean_m": 0.0009229521445727661,
+              "wrists_anchor_local_mean_m": 0.020928458537091514,
+              "legs_anchor_local_mean_m": 0.023198744476259123
+            },
+            "after": {
+              "policy_steps": 499,
+              "joint_rmse_rad": 0.08986382888140042,
+              "root_pos_error_m_mean": 0.3826714383039037,
+              "root_quat_error_deg_mean": 3.464006541837434,
+              "anchor_pos_error_m_mean": 0.3826714383039037,
+              "torso_world_mean_m": 0.3826214672663673,
+              "wrists_world_mean_m": 0.3840229927815299,
+              "legs_world_mean_m": 0.38880553726262906,
+              "torso_anchor_local_mean_m": 0.0009157489504788885,
+              "wrists_anchor_local_mean_m": 0.02098090583148794,
+              "legs_anchor_local_mean_m": 0.02390712686714531
+            },
+            "relative_change": {
+              "joint_rmse_rad": 0.025231414645404904,
+              "root_pos_error_m_mean": -0.09736712236061462,
+              "wrists_world_mean_m": -0.09594911825527763
+            },
+            "gates": {
+              "no_new_fall": true,
+              "joint_regression": false,
+              "root_regression": true,
+              "wrist_regression": true,
+              "clothing_no_fall": true
+            }
+          },
+          {
+            "key": "G_20251226_zls__zls_155013_walk",
+            "group": "cloth",
+            "fall": false,
+            "before": {
+              "policy_steps": 499,
+              "joint_rmse_rad": 0.0916226209594751,
+              "root_pos_error_m_mean": 0.38622962358583907,
+              "root_quat_error_deg_mean": 5.164598573136766,
+              "anchor_pos_error_m_mean": 0.38622962358583907,
+              "torso_world_mean_m": 0.38632710182965024,
+              "wrists_world_mean_m": 0.3853809700710429,
+              "legs_world_mean_m": 0.38810416794300734,
+              "torso_anchor_local_mean_m": 0.0006726668502292123,
+              "wrists_anchor_local_mean_m": 0.014951134290404908,
+              "legs_anchor_local_mean_m": 0.025076096721249226
+            },
+            "after": {
+              "policy_steps": 499,
+              "joint_rmse_rad": 0.09222030163952859,
+              "root_pos_error_m_mean": 0.3712605371520934,
+              "root_quat_error_deg_mean": 5.34131179606368,
+              "anchor_pos_error_m_mean": 0.3712605371520934,
+              "torso_world_mean_m": 0.3713051355717714,
+              "wrists_world_mean_m": 0.3706143656269144,
+              "legs_world_mean_m": 0.37274205189694687,
+              "torso_anchor_local_mean_m": 0.0006709891081639816,
+              "wrists_anchor_local_mean_m": 0.01573925904201563,
+              "legs_anchor_local_mean_m": 0.02422293299739726
+            },
+            "relative_change": {
+              "joint_rmse_rad": 0.006523287303883629,
+              "root_pos_error_m_mean": -0.03875696093626746,
+              "wrists_world_mean_m": -0.03831690091341644
+            },
+            "gates": {
+              "no_new_fall": true,
+              "joint_regression": true,
+              "root_regression": true,
+              "wrist_regression": true,
+              "clothing_no_fall": true
+            }
+          },
+          {
+            "key": "G_20251229_yy__yy_125106_walk",
+            "group": "cloth",
+            "fall": false,
+            "before": {
+              "policy_steps": 499,
+              "joint_rmse_rad": 0.1209900634196794,
+              "root_pos_error_m_mean": 0.9049938672501929,
+              "root_quat_error_deg_mean": 6.057710149518814,
+              "anchor_pos_error_m_mean": 0.9049938672501929,
+              "torso_world_mean_m": 0.9044665797174725,
+              "wrists_world_mean_m": 0.9059576690914589,
+              "legs_world_mean_m": 0.9132580783965422,
+              "torso_anchor_local_mean_m": 0.0009751377279930958,
+              "wrists_anchor_local_mean_m": 0.01742904000015024,
+              "legs_anchor_local_mean_m": 0.03467243611989028
+            },
+            "after": {
+              "policy_steps": 499,
+              "joint_rmse_rad": 0.12724121954754097,
+              "root_pos_error_m_mean": 1.0606869629271227,
+              "root_quat_error_deg_mean": 6.473791965061736,
+              "anchor_pos_error_m_mean": 1.0606869629271227,
+              "torso_world_mean_m": 1.0599468748946244,
+              "wrists_world_mean_m": 1.0609545359716823,
+              "legs_world_mean_m": 1.0672316919852303,
+              "torso_anchor_local_mean_m": 0.00105343866155688,
+              "wrists_anchor_local_mean_m": 0.01866594988790966,
+              "legs_anchor_local_mean_m": 0.03592584979865262
+            },
+            "relative_change": {
+              "joint_rmse_rad": 0.0516666902320575,
+              "root_pos_error_m_mean": 0.17203773562576763,
+              "wrists_world_mean_m": 0.1710862131512858
+            },
+            "gates": {
+              "no_new_fall": true,
+              "joint_regression": false,
+              "root_regression": false,
+              "wrist_regression": false,
+              "clothing_no_fall": true
+            }
+          },
+          {
+            "key": "G_20251229_zzx__zzx_111505_walk",
+            "group": "cloth",
+            "fall": true,
+            "before": {
+              "policy_steps": 499,
+              "joint_rmse_rad": 0.31827894191444406,
+              "root_pos_error_m_mean": 1.8539308630775435,
+              "root_quat_error_deg_mean": 58.24046519411773,
+              "anchor_pos_error_m_mean": 1.8539308630775435,
+              "torso_world_mean_m": 1.8549220676402414,
+              "wrists_world_mean_m": 1.8332118804393667,
+              "legs_world_mean_m": 1.640893037214381,
+              "torso_anchor_local_mean_m": 0.004062085296109252,
+              "wrists_anchor_local_mean_m": 0.14104046045644497,
+              "legs_anchor_local_mean_m": 0.08565242276198799
+            },
+            "after": {
+              "policy_steps": 499,
+              "joint_rmse_rad": 0.3902342914701473,
+              "root_pos_error_m_mean": 2.5849764743033714,
+              "root_quat_error_deg_mean": 55.70631245813896,
+              "anchor_pos_error_m_mean": 2.5849764743033714,
+              "torso_world_mean_m": 2.587105667859731,
+              "wrists_world_mean_m": 2.6020344436492806,
+              "legs_world_mean_m": 2.413435307838424,
+              "torso_anchor_local_mean_m": 0.0033175253193753543,
+              "wrists_anchor_local_mean_m": 0.13716995025382964,
+              "legs_anchor_local_mean_m": 0.11318789301995373
+            },
+            "relative_change": {
+              "joint_rmse_rad": 0.22607637540483427,
+              "root_pos_error_m_mean": 0.3943219382044727,
+              "wrists_world_mean_m": 0.41938554479891876
+            },
+            "gates": {
+              "no_new_fall": true,
+              "joint_regression": true,
+              "root_regression": false,
+              "wrist_regression": false,
+              "clothing_no_fall": false
+            }
+          },
+          {
+            "key": "048_balance_right_singleleg",
+            "group": "official",
+            "fall": false,
+            "before": {
+              "policy_steps": 637,
+              "joint_rmse_rad": 0.04577225258227995,
+              "root_pos_error_m_mean": 0.022848180301865362,
+              "root_quat_error_deg_mean": 1.31112998780848,
+              "anchor_pos_error_m_mean": 0.022848180301865362,
+              "torso_world_mean_m": 0.02285615909856308,
+              "wrists_world_mean_m": 0.025606850689076616,
+              "legs_world_mean_m": 0.02689229207339869,
+              "torso_anchor_local_mean_m": 0.00012658695264330063,
+              "wrists_anchor_local_mean_m": 0.013721587046048816,
+              "legs_anchor_local_mean_m": 0.017265322713021145
+            },
+            "after": {
+              "policy_steps": 637,
+              "joint_rmse_rad": 0.04650561603347728,
+              "root_pos_error_m_mean": 0.023040150087608718,
+              "root_quat_error_deg_mean": 1.2531036004400196,
+              "anchor_pos_error_m_mean": 0.023040150087608718,
+              "torso_world_mean_m": 0.023020773855147177,
+              "wrists_world_mean_m": 0.02551454019138101,
+              "legs_world_mean_m": 0.02685937295797293,
+              "torso_anchor_local_mean_m": 0.00010730442840304297,
+              "wrists_anchor_local_mean_m": 0.012446112827042803,
+              "legs_anchor_local_mean_m": 0.017425538608389884
+            },
+            "relative_change": {
+              "joint_rmse_rad": 0.016022009182944164,
+              "root_pos_error_m_mean": 0.008401972638831356,
+              "wrists_world_mean_m": -0.0036049141230390935
+            },
+            "gates": {
+              "no_new_fall": true,
+              "joint_regression": true,
+              "root_regression": true,
+              "wrist_regression": true,
+              "clothing_no_fall": true
+            }
+          },
+          {
+            "key": "050_march_place_slow",
+            "group": "official",
+            "fall": false,
+            "before": {
+              "policy_steps": 882,
+              "joint_rmse_rad": 0.04307360367553418,
+              "root_pos_error_m_mean": 0.05677759745483648,
+              "root_quat_error_deg_mean": 1.1002061988703296,
+              "anchor_pos_error_m_mean": 0.05677759745483648,
+              "torso_world_mean_m": 0.05681914166733958,
+              "wrists_world_mean_m": 0.05610144815618423,
+              "legs_world_mean_m": 0.04885757438843139,
+              "torso_anchor_local_mean_m": 0.00011827770766515973,
+              "wrists_anchor_local_mean_m": 0.0062235745124640095,
+              "legs_anchor_local_mean_m": 0.014443224344277542
+            },
+            "after": {
+              "policy_steps": 882,
+              "joint_rmse_rad": 0.046523982788533036,
+              "root_pos_error_m_mean": 0.08489211739072682,
+              "root_quat_error_deg_mean": 1.3057057855944523,
+              "anchor_pos_error_m_mean": 0.08489211739072682,
+              "torso_world_mean_m": 0.08491841528950884,
+              "wrists_world_mean_m": 0.08339485887092919,
+              "legs_world_mean_m": 0.07509971186441329,
+              "torso_anchor_local_mean_m": 0.00011609763547795727,
+              "wrists_anchor_local_mean_m": 0.007162243687433481,
+              "legs_anchor_local_mean_m": 0.016977978171303722
+            },
+            "relative_change": {
+              "joint_rmse_rad": 0.08010425918829434,
+              "root_pos_error_m_mean": 0.49516924273264507,
+              "wrists_world_mean_m": 0.48650100152069475
+            },
+            "gates": {
+              "no_new_fall": true,
+              "joint_regression": false,
+              "root_regression": false,
+              "wrist_regression": false,
+              "clothing_no_fall": true
+            }
+          },
+          {
+            "key": "001_walk_front_slow",
+            "group": "official",
+            "fall": false,
+            "before": {
+              "policy_steps": 1652,
+              "joint_rmse_rad": 0.06567667938192939,
+              "root_pos_error_m_mean": 0.13960360445860703,
+              "root_quat_error_deg_mean": 1.7884602389834534,
+              "anchor_pos_error_m_mean": 0.13960360445860703,
+              "torso_world_mean_m": 0.1395892048629592,
+              "wrists_world_mean_m": 0.14350995187073326,
+              "legs_world_mean_m": 0.14009959452214132,
+              "torso_anchor_local_mean_m": 0.00022461642460611588,
+              "wrists_anchor_local_mean_m": 0.008732634526227008,
+              "legs_anchor_local_mean_m": 0.017885219552883858
+            },
+            "after": {
+              "policy_steps": 1652,
+              "joint_rmse_rad": 0.06895450889746552,
+              "root_pos_error_m_mean": 0.17764147119761914,
+              "root_quat_error_deg_mean": 1.9666147288601894,
+              "anchor_pos_error_m_mean": 0.17764147119761914,
+              "torso_world_mean_m": 0.17757829911560258,
+              "wrists_world_mean_m": 0.18268064475118778,
+              "legs_world_mean_m": 0.1781769367706214,
+              "torso_anchor_local_mean_m": 0.00022478857983635405,
+              "wrists_anchor_local_mean_m": 0.009703332342763332,
+              "legs_anchor_local_mean_m": 0.01956790146850735
+            },
+            "relative_change": {
+              "joint_rmse_rad": 0.04990857556111461,
+              "root_pos_error_m_mean": 0.27247052027435625,
+              "wrists_world_mean_m": 0.2729475717177967
+            },
+            "gates": {
+              "no_new_fall": true,
+              "joint_regression": false,
+              "root_regression": false,
+              "wrist_regression": false,
+              "clothing_no_fall": true
+            }
+          },
+          {
+            "key": "029_rotate_place_slow",
+            "group": "official",
+            "fall": false,
+            "before": {
+              "policy_steps": 2604,
+              "joint_rmse_rad": 0.07607355721245389,
+              "root_pos_error_m_mean": 0.14714304703634531,
+              "root_quat_error_deg_mean": 4.67755039480357,
+              "anchor_pos_error_m_mean": 0.14714304703634531,
+              "torso_world_mean_m": 0.14722772670732742,
+              "wrists_world_mean_m": 0.14948924618209175,
+              "legs_world_mean_m": 0.1506470640107638,
+              "torso_anchor_local_mean_m": 0.00018199030713747215,
+              "wrists_anchor_local_mean_m": 0.007979120988377757,
+              "legs_anchor_local_mean_m": 0.029976100349942074
+            },
+            "after": {
+              "policy_steps": 2604,
+              "joint_rmse_rad": 0.07849294493368265,
+              "root_pos_error_m_mean": 0.12060188522040048,
+              "root_quat_error_deg_mean": 4.76806756621465,
+              "anchor_pos_error_m_mean": 0.12060188522040048,
+              "torso_world_mean_m": 0.12060860852524725,
+              "wrists_world_mean_m": 0.12571759523476927,
+              "legs_world_mean_m": 0.12734795906358412,
+              "torso_anchor_local_mean_m": 0.0001709538144855307,
+              "wrists_anchor_local_mean_m": 0.009260847595354737,
+              "legs_anchor_local_mean_m": 0.030899863952140266
+            },
+            "relative_change": {
+              "joint_rmse_rad": 0.03180326791439558,
+              "root_pos_error_m_mean": -0.1803765950924544,
+              "wrists_world_mean_m": -0.15901913719175764
+            },
+            "gates": {
+              "no_new_fall": true,
+              "joint_regression": false,
+              "root_regression": true,
+              "wrist_regression": true,
+              "clothing_no_fall": true
+            }
+          }
+        ],
+        "truly_unseen_final_test": false,
+        "deploy_allowed": false
+      }
     }
   ],
   "experiment": "A3_HUMANPLUS_REPLAY_LOSS_20261018_HP18",
-  "current_stage": "official",
-  "started_at_utc": "2026-10-18T09:56:55.976036+00:00",
-  "updated_at_utc": "2026-10-18T09:57:56.159894+00:00",
+  "current_stage": "effect",
+  "started_at_utc": "2026-10-18T10:00:16.943678+00:00",
+  "updated_at_utc": "2026-10-18T10:00:32.129376+00:00",
   "backup_status": "LOCAL_ONLY",
   "github_synced": false
 }

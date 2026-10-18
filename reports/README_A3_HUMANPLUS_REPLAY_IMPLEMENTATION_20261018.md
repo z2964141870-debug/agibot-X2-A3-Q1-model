@@ -57,3 +57,11 @@ cloth单次6×499=2994步、独立审计verified=true，preclip FP32经固定ven
 ## 17:59 四官方完整回放完成
 
 单次official 637/882/1652/2604共5775完整步、4/4不倒，独立审计verified=true。加已完成六衣服总8769步/十项各单次；无额外训练或重复动作。累计42健康同boot/最高CPU81 GPU47°C/最低可用18947629056字节，0新增FATAL/OOM/残留；阶段间不作连续证明。下一只原效果公式effect汇总及审计，衣服已未达标，035仍baseline。用户新增授权可清理确定淘汰权重；先完成本轮全部收据，再按精确清单核对SHA/硬链接/FD/maps/用途后删除，保留035/必要输入/记录与指标；不把未备份淘汰权重删除称备份。
+
+## 18:03 十项完整对照完成，候选拒绝
+
+HP18终态COMPLETE_MATCHED_EFFECT、effect独立verified=true但matched_development_gate_passed=false。六衣服算术均RMSE0.1530324633190027rad，比HP11 .13932748084287783恶化9.836524993644447%，仍5/6不倒。四官方4/4不倒，关节相对基线singleleg+1.6022%/march+8.0104%/front_walk+4.9909%/rotate+3.1803%；后三项超+2%，march和front世界根/腕也超+5%。10动作8769步各执行一次，新增8更新32提交3072交互仅本轮一次。效果相较上轮部分回归减少不构成对035改善或因果证明；不采用候选，035仍baseline，D02该配方关闭不续训/扩预算/选早期点。
+
+最终8：226206039字节/SHA dd7fd16aca2f1ab59b6a7af843e999e7a286264b61e1cb39f51c8c21818fc257，来自HP18/R24，仅历史拒绝候选。46健康同boot afb6796b-3883-4df4-99ea-bc381c52ea13，CPU最高81/GPU47°C、最低可用18947629056字节，0新增FATAL/OOM/残留；阶段间不作连续证明，无活动科学计算。HP18所有register/train/verify-training/cloth/official/effect/对应独立审计均单次完成，禁止复跑/覆盖。本轮不是机器故障，持续优化heartbeat保持ACTIVE。
+
+恢复先本README及data/manifests/a3_humanplus_replay_loss_20261018_HP18_{plan,result,train_audit,verify-training_audit,cloth_audit,official_audit,effect_audit}.json。下阶段先按用户新存储授权审查清理闭环拒绝/永久关闭权重并留删除清单；必要输入/035/日志/配置/指标保持。其后仅从保存结果与既有研究去重选择实质不同方法，不能重做D01/D02或E46–E50同配方。GitHub LOCAL_COMMITTED_UNPUSHED，网盘未核验；终态大文件删除后以新存储清单作为实际存在状态，不把历史SHA收据当当前可用。

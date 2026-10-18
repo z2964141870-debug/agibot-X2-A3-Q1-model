@@ -1,5 +1,9 @@
 # humanplus 035匹配基线入口
 
+更新2026-10-18北京时间13:04：HP11六衣服完整基线完成，45.162秒，6×499=2994步全部保留。新机结果5/6不倒，zzx首跌倒5.66s；六段全程关节RMSE依次0.09151693、0.12590409、0.08765224、0.09162262、0.12099006、0.31827894rad（顺序见selection）。这是未更新035的新机开发基线，不能解释为训练改善，也不把旧主机差异当提升。
+
+逐段输入1570维、动作29维、完整tick/关节/根/身体/接触捕获已检查，独立标准库从timeseries重算全程RMSE及第一跌倒时刻，cloth审计verified=true。累计validate+cloth共14健康同boot、CPU最高82/GPU46°C/可用最小20,130,357,248字节，无FATAL/新增OOM/after issues/自有组残留；阶段间不宣称连续监督。small result与cloth_audit已保存。下一原计划四官方5775步，0optimizer/训练，旧HP10不动。
+
 更新2026-10-18北京时间13:03：独立HP11的reference-only校验已通过，15.162秒。新入口先创建并SHA核验六个明确别名，2项标准库路径/缺源/逃逸控制Mac与新机通过；不重复HP10模型诊断，不补旧收据。六段均300行/499策略步，CSV/姿态/时长误差<=1.34e-15，模型body FK误差<=1.66e-15m，重采样脚底最低-3.719mm，符合原5mm门。
 
 HP11 validate独立审计verified=true，4健康同boot、CPU最高82/GPU44°C、可用最小22,208,077,824字节，无FATAL/新增OOM/after issues/自有组残留。0新模型诊断加载/策略forward/回放/optimizer。源码humanplus_baseline_reference.py及其测试/审计入口，旧HP10文件不改；只复用纯数值ABI与固定评测函数，使用已生成并SHA固定的solver桥接缓存，不改旧STOPPED工件。

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+最新2026-10-18北京时间12:55：[HP10匹配基线入口](README_A3_HUMANPLUS_BASELINE_20261018.md)STOPPED，validate漏建validation/references链接，0策略forward/回放/optimizer。103静态资产20,107,958字节SHA通过（新实化33,578字节solver）；模型构建/同步已执行但无最终模型收据，不补填。4健康同boot、CPU最高79/GPU44°C/可用最小22,235,348,992字节、0FATAL/新增OOM/无残留。HP10源码/终态冻结，不复跑；先保存再独立纠正参考入口，避免重复模型诊断。前台纠错中zhy-a3暂停，输入迁移63/63、HP09基础运行控制仍通过，以下12:03为历史。
+
 最新2026-10-18北京时间12:03：[HP09修复验收通过](README_A3_HUMANPLUS_PHYSX_NATIVE_20261018.md)。十步/CUDA同步/公开clear_instance注销STOP回调/原生正常关闭/真实退出0均存证，独立审计verified_control_and_exit=true，阶段15.160秒。4健康同boot、CPU最高81/GPU44°C、可用最小22,461,792,256字节、0FATAL/新增OOM，无自有组残留，代码/环境/输入SHA未变。
 
 HP07栈确认app.close触发STOP回调循环，HP08解决循环但原生退出绕过Python后置收据；HP09以标准库父进程验收修复。旧STOPPED原样保留、不复跑，本轮新增11标准库控制Mac/新机各通过；HP05旧CPU/CUDA及MuJoCo控制复用。当前基础运行控制齐全，输入63/63/关键10/10已齐，0策略模型/rollout/训练，无新035效果。下一新登记先核训练资产/035模型并做新机六衣服四官方匹配基线，再原8更新训练；不再重复空场景控制。原zhy-a3恢复原30分钟主线节奏，真实资源启动前重查；原始日志LOCAL_ONLY，scoped提交未同步GitHub。下方HP08及更早为历史。

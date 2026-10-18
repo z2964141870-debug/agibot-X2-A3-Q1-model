@@ -47,3 +47,9 @@ README/索引/current state、代码与小清单scoped审diff和audit_git_payloa
 单次verify-training及独立审计verified=true。0/2/4/8文件大小/SHA、Actor/Critic原架构/FP32/有限性、step0 fresh035/空Adam、非head Actor逐值不变和两head变化已验；2/4/8实际变化仅原weight/bias两key。每个保存状态Adam组整数ID→owner、矩形状/有限性/二阶非负/4×step计数通过，实际32提交/token/teacher/route/配方一致。初始动作RMSE3.7591067e-7、最大ratio偏差1.4305115e-5，均在原门内。
 
 本阶段仅验证已验收训练工件，0新optimizer/训练交互/效果回放。5健康同boot、CPU最高83/GPU43°C、可用最低23363317760字节、0FATAL/新增OOM/残留。验证状态COMPLETE/VERIFIED_HEAD_TRAINING_NOT_EFFECT，不代表效果改善。下一仅最终8六衣服完整2994步；保存结果和独立审计后再四官方。原HP14 STOPPED保留，GitHub未同步、原日志模型LOCAL_ONLY。
+
+## 16:34 评测打包入口缺失配置
+
+单次cloth在evaluate_explicit最前的checkpoint_metadata拒绝：Missing matching checkpoint config.yaml。来源milestone_8只有PT/sidecar/head_owners，原完整训练config位于run根；最终策略架构已通过verify，但保存回调未生成评测器要求的同目录配置。失败发生explicit_manifest/仿真子进程/策略forward之前，0回放/0新增训练。原verify-training COMPLETE及独立verified=true不变；HP15整试验STOPPED保留，不修改源码/模型或重跑verify。cloth_audit verified=false，累计9健康CPU最高83/GPU43°C、0FATAL/新增OOM/残留。
+
+下一独立最终效果合同只做此前尚未开始的10完整回放，不重训、不重复已通过模型验证。构建只读身份明确的最终8评测包：原已验证PT硬链接（同SHA、非symlink以避免resolve回旧缺配置目录）、原官方配置/sidecar固定SHA。固定vendor实际从state构建原Actor、不使用该config改变物理；metadata要求配置存在用于来源审计。登记前标准库直接调用checkpoint_metadata验包并一次审查完整评测入口；原HP15/HP14结果保持。不能把包齐全当效果通过，科学门不变。

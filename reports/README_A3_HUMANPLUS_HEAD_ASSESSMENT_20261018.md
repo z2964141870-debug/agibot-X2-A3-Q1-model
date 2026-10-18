@@ -53,3 +53,7 @@ README/索引/current state、代码与小清单scoped审diff和audit_git_payloa
 单次cloth在evaluate_explicit最前的checkpoint_metadata拒绝：Missing matching checkpoint config.yaml。来源milestone_8只有PT/sidecar/head_owners，原完整训练config位于run根；最终策略架构已通过verify，但保存回调未生成评测器要求的同目录配置。失败发生explicit_manifest/仿真子进程/策略forward之前，0回放/0新增训练。原verify-training COMPLETE及独立verified=true不变；HP15整试验STOPPED保留，不修改源码/模型或重跑verify。cloth_audit verified=false，累计9健康CPU最高83/GPU43°C、0FATAL/新增OOM/残留。
 
 下一独立最终效果合同只做此前尚未开始的10完整回放，不重训、不重复已通过模型验证。构建只读身份明确的最终8评测包：原已验证PT硬链接（同SHA、非symlink以避免resolve回旧缺配置目录）、原官方配置/sidecar固定SHA。固定vendor实际从state构建原Actor、不使用该config改变物理；metadata要求配置存在用于来源审计。登记前标准库直接调用checkpoint_metadata验包并一次审查完整评测入口；原HP15/HP14结果保持。不能把包齐全当效果通过，科学门不变。
+
+## 16:37 最终效果包与独立入口
+
+[HP16最终效果实施](README_A3_HUMANPLUS_HEAD_EFFECT_20261018.md)已完成：只对已完整验证的最终8构建同SHA硬链接/原官方config/sidecar包，真实checkpoint_metadata标准库控制通过。新6控制Mac/新机各通过，508来源SHA已核；0新训练/重复模型验证/回放，旧HP15 STOPPED及已通过验证不改。下一HP16单次登记直接验包，再当前资源门执行尚未开始的10完整效果；原科学门不变。

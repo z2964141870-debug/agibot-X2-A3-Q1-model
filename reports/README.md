@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-18北京时间16:37：[HP16最终效果入口及打包修复完成](README_A3_HUMANPLUS_HEAD_EFFECT_20261018.md)。真实checkpoint_metadata控制通过、6新标准库控制两端通过、原效果函数AST不变。只评已验最终8，0新训练/重复验证，下一独立登记验包和十项完整回放。旧HP14/HP15终态保留，035无闭环改善，GitHub未同步。
+
 2026-10-18北京时间16:34：[HP15评测打包缺配置已定位](README_A3_HUMANPLUS_HEAD_ASSESSMENT_20261018.md)。保存模型验证通过；cloth在启动仿真/回放前因同目录config.yaml缺失STOPPED，0回放。累计9健康无新增异常/残留，原验证保留。下一构建独立最终8评测包并只做尚未开始的十项效果，不重训/重复模型验证；035无改善证据，GitHub未同步。
 
 2026-10-18北京时间16:31：[HP15保存模型验证与审计通过](README_A3_HUMANPLUS_HEAD_ASSESSMENT_20261018.md)。0/2/4/8 Actor/Critic/Adam/token/配方完整核验，仅两head变化、其余Actor不变，5健康无新增异常/残留。0新训练/交互，下一最终8六衣服2994步及四官方5775步，035无闭环改善证据，GitHub未同步。

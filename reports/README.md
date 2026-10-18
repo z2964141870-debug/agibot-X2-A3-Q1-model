@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-18北京时间17:50：[HP18/R24已独立登记](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。执行代码87dd1dd，307源码/453输入/10环境SHA，fresh035新384保留loss+原384硬门、8更新32提案3072交互。下一实时三次5秒门后单次train；0新科学运行，035仍baseline，GitHub未同步。
+
 2026-10-18北京时间17:49：[D02独立实施与冻结完成](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。10标准库控制两端通过，307源码/451输入/10环境SHA固定；最多2440外层调用，8更新32提案3072交互不扩。只改新384样本loss，原384硬门保留，0新模型/仿真/optimizer；下一单次HP18登记及实时资源门。原候选拒绝/035仍baseline，GitHub未同步。
 
 2026-10-18北京时间17:01：[持续优化已恢复原30分钟主线](README_A3_HUMANPLUS_REPLAY_LOSS_20261018.md)。zhy-a3应用实际ACTIVE；HP17完整十项候选拒绝，035仍baseline。D02未实现/登记，下一只改teacher损失样本覆盖且保留原384硬保护，独立实现后登记推进；旧终态/其他任务不改，GitHub未同步。

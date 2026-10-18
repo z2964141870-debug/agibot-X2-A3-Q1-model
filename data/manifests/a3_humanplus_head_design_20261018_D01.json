@@ -1,0 +1,116 @@
+{
+  "design_id": "A3_HUMANPLUS_HEAD_DESIGN_20261018_D01",
+  "status": "REVIEWABLE_DESIGN_NOT_IMPLEMENTED_NOT_REGISTERED",
+  "date_beijing": "2026-10-18",
+  "parent_head": "cfa0647dacd4c4735cbfac5838ddafa3348a4ce3",
+  "host": "humanplus@100.101.30.68",
+  "root": "/home/humanplus/YUANQI_A3",
+  "vendor_commit": "fe6868ba37034f89b912f0fb851bce19f120266d",
+  "single_variable": "ACTOR_TRAINABLE_SCOPE_FULL_G1_DYN_TO_EXISTING_FINAL_LINEAR_ONLY",
+  "actor_trainable_shapes_from_source_only": {
+    "actor_module.decoders.g1_dyn.module.12.weight": [29, 512],
+    "actor_module.decoders.g1_dyn.module.12.bias": [29]
+  },
+  "actor_trainable_parameter_count_from_source_only": 14877,
+  "actual_model_shape_verified_this_stage": false,
+  "implementation_code_sha256": null,
+  "initialization": "EXACT_FRESH_035_HEAD_WEIGHT_AND_BIAS_EMPTY_ADAM",
+  "runtime_architecture_change": false,
+  "lora_or_extra_residual_module": false,
+  "all_other_actor_parameters_and_buffers_frozen": true,
+  "critic": "ORIGINAL_TRAINABLE_FRESH_035",
+  "evaluation_identity_gating": false,
+  "training_sequences": [
+    "G_0113_zj_train/183926_zj_walk",
+    "G_0113_zj_train/192333_zj_warmUp",
+    "G_20251226_fjw/fjw_140008_walk",
+    "G_20251229_zzx/zzx_111505_walk"
+  ],
+  "seed": 0,
+  "num_envs": 16,
+  "rollout_steps": 24,
+  "teacher_coefficient": 1.0,
+  "max_grad_norm": 0.1,
+  "loss_reward_reset_routes_actual_tokens_and_nominal_lr_unchanged": true,
+  "limits": {
+    "updates": 8,
+    "optimizer_proposals": 32,
+    "committed_steps": 32,
+    "transitions": 3072,
+    "candidate_evaluations": 256,
+    "baseline_evaluations": 32,
+    "candidate_mechanism_extra_forwards": 1728,
+    "effect_rollouts": 10,
+    "runtime_seconds_per_stage": 900
+  },
+  "scales": [1.0, 0.5, 0.25, 0.125, 0.0625, 0.03125, 0.015625, 0.0078125],
+  "acceptance": {
+    "full_teacher_frames": 384,
+    "teacher_rmse_max": 0.05,
+    "teacher_max_abs_max": 0.5,
+    "same_batch_fixed_critic_actor_objective_increase_max": 1e-7,
+    "actual_full_fp32_forward_required": true,
+    "first_accepted_scale_only": true,
+    "one_moment_and_step_commit": true
+  },
+  "saved_steps": [0, 2, 4, 8],
+  "effect_steps": [8],
+  "effect_gates": {
+    "cloth_no_fall_count": 6,
+    "cloth_arithmetic_mean_rmse_improvement_min_fraction": 0.01,
+    "previous_nonfall_and_official_joint_regression_max_fraction": 0.02,
+    "world_root_wrist_regression_max_fraction": 0.05,
+    "new_official_falls_max": 0,
+    "development_only": true
+  },
+  "safety": {
+    "preflight_samples": 3,
+    "interval_seconds": 5,
+    "preflight_available_bytes_min": 8589934592,
+    "runtime_available_bytes_min": 4294967296,
+    "cpu_temperature_limit_c": 90,
+    "gpu_temperature_limit_c": 85,
+    "temperature_consecutive_samples": 2,
+    "original_humanplus_cgroup_and_journal_checks": true,
+    "new_health_evidence_collected_this_stage": false
+  },
+  "scientific_stop": "PRESERVE_TERMINAL_NO_RESTART_NO_EARLY_OR_FINAL_EFFECT",
+  "inputs_are_references_not_revalidated_large_payloads_this_stage": true,
+  "official_checkpoint": {
+    "path": "data/models/a3_official_035/checkpoints/035_step200000/model_step_200000.pt",
+    "bytes": 402050931,
+    "sha256": "9cf33be2f4e602858b68ce31d5824113ab1dda250acaab5842b6d3bf88b70f2d"
+  },
+  "read_source_sha256": {
+    "script/vendor/sonic_for_a3/gear_sonic/trl/modules/base_module.py": "462dfc4be982f5d6e2d08275df00fccbc49a81f882bdb60fc257be81da8593b6",
+    "script/vendor/sonic_for_a3/gear_sonic/config/actor_critic/decoders/g1_dyn_mlp.yaml": "4e10d2267500a917c6523280e24518a4826df0135cb6f6879f67a3f7dddac6a4",
+    "script/vendor/sonic_for_a3/gear_sonic/scripts/sim2sim_a3_mujoco.py": "4a9e7d4a06b0c2857ae303d9dfa24bb4a129d04629b267ebe46c6b3eb317c105",
+    "script/a3/cloth_constrained_trainer.py": "b4ccfe6f564eb2e261c420ee1cc9b64b743cb63cabf578ed334746fe855f81fb",
+    "script/a3/finite_retention_trainer.py": "a86ceb7f5de8c86521b34442db16104d4ef287f0a219cf9989c3af6ca5c81a7e",
+    "script/a3/finite_retention_protocol.py": "4c64cfa9bb3c579bb8356311d88d987ae071000fb501c94a5b23de63b04bcc8a",
+    "script/a3/humanplus_finite.py": "378b798fd67b6508702d70aba67947d1115c08cabec41d8ae1e529e0aca3e643"
+  },
+  "evidence_sha256": {
+    "data/manifests/a3_humanplus_finite_20261018_HP12_plan.json": "d851d1023169c8ecc307370918a7dfdb73dac1d87bf309e1d3f8ec7a23d97210",
+    "data/manifests/a3_humanplus_finite_20261018_HP12_result.json": "cb08d81c6d2349e59596d274748e5a40940ae2e04cf1202fb2fd6a4e0afc1ff7",
+    "data/manifests/a3_humanplus_finite_20261018_HP12_stop_verification.json": "36c3e642c409ca524da914713ebf1f31bb8aacf1e56f2e337dc4b4b6e54224f2",
+    "data/manifests/a3_humanplus_baseline_reference_20261018_HP11_contract.json": "3be04e74cee457a8ad3b351347c4f1cc85b0233e6a1dbc4d4101c6105c7a7094"
+  },
+  "claims": {
+    "new_algorithm_or_literature_novelty": false,
+    "frozen_backbone_guarantees_retention": false,
+    "closed_loop_improvement_demonstrated": false,
+    "feasible_update_direction_guaranteed": false,
+    "fixed_teacher_affine_head_relation_is_exact_arithmetic_derivation_only": true
+  },
+  "this_stage_activity": {
+    "tensor_deserialization": 0,
+    "model_loads": 0,
+    "simulation_steps": 0,
+    "optimizer_steps": 0,
+    "new_tests_or_old_audit_reexecutions": 0
+  },
+  "next": "READ_ONLY_REVIEW_OF_INDEPENDENT_SCOPE_ENFORCEMENT_AND_AUDIT_DESIGN_BEFORE_IMPLEMENTATION_OR_REGISTRATION",
+  "github_status": "LOCAL_COMMITTED_UNPUSHED",
+  "raw_and_model_storage": "LOCAL_ONLY"
+}

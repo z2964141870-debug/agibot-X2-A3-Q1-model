@@ -1,5 +1,9 @@
 # YUANQI 当前状态与下一步
 
+最新2026-10-18北京时间14:19：[D01输出头方案](README_A3_HUMANPLUS_HEAD_DESIGN_20261018.md)及data/manifests/a3_humanplus_head_design_20261018_D01.json已形成可审查设计。唯一变量为Actor从整个g1_dyn改为既有末层module.12.weight/bias，源码推导512→29/14,877参数，实际模型未重载。其余Actor冻结、Critic及原损失/数据/token/预算/teacher与闭环门保持；不引入任务标签、LoRA因子或额外残差/merge。不能保证防遗忘或有效方向。
+
+本轮0张量反序列化/模型/仿真/optimizer/旧审计复跑；D01未实现、未占新HP编号、未登记或运行。下一先只读审查独立冻结白名单及optimizer所有权、两key保存审计、完整调用预算与输入SHA闭包；不能更改HP12旧共享行为或把设计当执行登记。HP12及E46–E50关闭不变，035无新改善；zhy-a3仍30分钟ACTIVE、变化才通知，GitHub未同步。以下14:00及更早为历史。
+
 最新2026-10-18北京时间14:00：[HP12固定短训练STOPPED](README_A3_HUMANPLUS_FINITE_20261018.md)。16环境cuda:0与fresh035 Actor/Critic/空Adam已实跑，6整更新+第7次3batch、28提案/27提交/2688交互。第28次1至1/128全部teacher RMSE超0.05，最小0.0500001531092；目标均降低、maxabs通过，参数/Adam拒绝前后摘要不变。step0/2/4仅存证，step8不存在、0效果回放，无新035改善。
 
 HP12 register/train/train_audit/stop_verification均单次完成；禁止复跑/verify-training/追加比例或预算/早期效果/换编号同类重试。11健康同boot、CPU最高81/GPU48°C、可用最低18,439,405,568字节，0FATAL/新增OOM/残留，属于算法保护停止而非机器故障证据。恢复读data/manifests/a3_humanplus_finite_20261018_HP12_{plan,result,train_audit,stop_verification}.json。下一仅从已有失败与本地研究论证实质不同方法并形成可审查固定计划，不重复E46–E50；此前无新科学执行。zhy-a3保留30分钟ACTIVE、状态未变静默，模型/原始日志LOCAL_ONLY，GitHub未同步。以下为历史。

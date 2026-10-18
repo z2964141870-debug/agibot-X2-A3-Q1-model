@@ -39,3 +39,14 @@ README/索引/current state/小清单及审查脚本scoped审diff和audit_git_pa
 8项新标准库控制Mac及新机各通过，覆盖存储字段/唯一采样概率允许、奖励LR及配对偷改拒绝、网络/路由变更拒绝、完整及部分预算/顺序、真实采样mask与缓存链继承、独立绑定、原最终效果与preclip边界不变。不是数值或仿真成功证明。
 
 新freeze仅单次，319源码/456实际存在输入/10环境源码SHA及大小通过，输入PT仅035和E11/E12三份必要资产，无任何已删训练PT。配置、D02标签来源和D03差异记录纳入新闭包；固定外层调用上限2440，无新增forward。readiness为data/manifests/a3_humanplus_route_readiness_20261018.json。新执行编号HP19/R25已核对无占用，下一提交实际源码与冻结记录后独立register，再按实时资源门执行train。原基线8769步与旧科学阶段不重跑。
+
+## HP19单次登记
+
+实现提交05794c6后独立register完成，319源码/458输入/10环境来源固定。新目录data/experiments/a3_humanplus_route_20261018_HP19、data/training同名/R25_001_s0、logs同名。计划data/manifests/a3_humanplus_route_20261018_HP19_plan.json。登记资源采样不是启动门，下一supervisor三次5秒实时核验后单次train；0新训练尚未记成功。
+
+```bash
+/usr/bin/python3 -B -m script.a3.humanplus_route_trial register
+/usr/bin/python3 -B -m script.a3.humanplus_route_trial run --stage train
+/usr/bin/python3 -B -m script.project_tools.humanplus_route_audit --stage train
+# 只在train与独立审计成功后依序verify-training/cloth/official/effect，每阶段单次审计保存。
+```

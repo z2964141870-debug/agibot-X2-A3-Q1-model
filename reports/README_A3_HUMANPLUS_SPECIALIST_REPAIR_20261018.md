@@ -49,3 +49,9 @@ HP21 train实际256更新/98304交互/1024Adam，6144 rollout Actor+1024原训�
 随后的verify-training在导入cloth_constrained_trainer→训练基类→gear_sonic时ModuleNotFoundError，发生在torch.load之前；未开始任何checkpoint反序列化或验证、0最终回放。该模块不应作为纯保存概率检查依赖，已有humanplus_saved_probability纯函数可替代。HP21整个合同保持STOPPED、单次verify审计verified=false，不重跑或改其注册源码/结果。累计82健康CPU最高87/GPU54°C，after_issues空/无自有组残留，0新增kernel/OOM；不是新机器故障。
 
 下一独立完成合同只接纳HP21已成功完整训练阶段及0/256精确大小SHA，采用纯概率核验器，不新增训练/交互、不重放HP21基线、不加载旧失败或淘汰模型。独立登记后才首次实际保存验证及最终Isaac/MuJoCo效果，原256训练预算和双模拟器门保持。不得为这个导入错误重训256更新或把HP21 STOPPED改成通过。用户本轮修复后继续优化授权有效。
+
+## HP22独立完成合同实施
+
+保存故障提交cfd8f8c后，新增completion/entry/verification及freeze/audit，完成阶段仅verify-training/isaac-final/mujoco/effect；不含train或isaac-baseline，直接拒绝原生训练或基线入口。源合同精确要求HP21基线和训练各COMPLETE且审计true、verify在PT加载前gear_sonic导入失败且审计false，原终态不改。新verifier仅用humanplus_saved_probability，未引入训练或Isaac依赖；三项标准库控制Mac/新机各通过，不把静态控制当模型通过。
+
+D06冻结347源码/133现存输入/11环境，精确纳入源0/256权重及sidecar/所有权、初始token概率、原配方、实际optimizer提交账、成功基线/训练及失败入口证据。没有递归采用旧STOPPED全产物链、已删PT或新训练；新合同只核验已完成训练，首次最终Isaac/MuJoCo各499步。下一scoped提交后独立登记HP22，新增训练更新/交互/optimizer均0，原HP21预算不扩，原专家及统一效果门不变。

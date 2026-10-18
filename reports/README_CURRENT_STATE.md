@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+最新HP22 completion独立实现/3标准库两端通过，D06固定347源码133实际输入11环境。仅verify-training/isaac-final/mujoco/effect，源HP21完成256训练和基线原样保留，导入失败STOPPED不改；新增训练/交互0。不复跑原失败核验或基线，下一独立登记→首次真实保存验证→最终双模拟器。[恢复](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)，035仍baseline、GitHub未同步。
+
 最新HP21 train完整256更新98304交互1024Adam/8192外层调用、正常关闭0及独立verified=true；verify-training在checkpoint加载前因ModuleNotFoundError gear_sonic停止，HP21终态STOPPED/verify审计false，0最终效果。82健康无新增kernel/OOM/残留、非机器故障。下一独立完成合同采用现有纯概率核验器，只复用已成功train/Isaac基线证据和实际0/256权重，不重训/重跑旧核验。[恢复入口](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)，035仍baseline，GitHub未同步。
 
 最新HP21 isaac-baseline完整499步/原生关闭0/独立verified=true，55.214秒；12健康CPU87/GPU48、新增kernel/OOM0/无组残留，原历史Xid43仍留存。Isaac035整段不倒/RMSE0.10478640565rad，不与MuJoCo混比。修复真实入口已通过，下一单次256更新98304交互专项训练→保存验证→最终双模拟器；恢复读[修复README19:56节](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)/HP21_result/isaac-baseline_audit，不复跑HP20/旧审计、不放松资源门，GitHub未同步。

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+最新HP20/R26已单次登记，实施d63556a/v2冻结329源码/111输入/11环境，0新模型/仿真/optimizer；下一实时资源门后isaac-baseline499步及独立审计，通过后train256更新。恢复读[专项README](README_A3_HUMANPLUS_SPECIALIST_20261018.md)及HP20_plan.json。全部原资源保护/900秒/不复跑STOPPED保持，035仍baseline，GitHub未同步。
+
 最新[D04专项专家](README_A3_HUMANPLUS_SPECIALIST_20261018.md)已独立实施并v2冻结329源码/111现存输入/11环境源码，7标准库humanplus通过/Mac6+1跳过，0新模型/仿真/optimizer。下一核对HP20/R26空账本后独立登记，顺序Isaac035 zzx整段基线/train/verify-training/Isaac最终/MuJoCo最终/effect，各一次与独立审计。新专家固定256更新98304交互/1024Adam/8192调用、只保存0/256；原自适应采样已开不改，原奖励/物理保持，取消原统一teacher约束仅限新专家制度，不声称单一因果/收敛。专家成功仍非统一门、035不替换。D04_v1登记前Hydra CLI静态问题失效保留，只用D04_v2；旧HP19等与S01/S02不复跑，GitHub未同步。
 
 2026-10-18：最新用户方向为先证明zzx整段专项专家胜过035，再考虑学生访问状态纠正标签及统一蒸馏，无动作身份切换。现有失败自适应采样enable=true，不是新变量；8更新不是收敛证明。先核对奖励/输入与Isaac和MuJoCo完整评测、固定独立预算及专家门，尚未实现/登记/训练新专家。[S02清理](README_A3_HUMANPLUS_STORAGE_20261018.md)已单次删除HP19九路径/释放812695552字节，三必要输入和128证据SHA保持；HP19历史PT不可加载/恢复/重建，旧阶段均不复跑。035仍baseline，GitHub未同步。

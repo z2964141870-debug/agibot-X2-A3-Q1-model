@@ -55,3 +55,7 @@ DAgger核对PMLR原始摘要页面，AISTATS2011，出版元数据2011-06-14、6
 S02清理已完成并审计，含S01累计释放4.01GB，HP19权重删除不再加载/恢复/重建。全部旧数组/配置/日志/指标保持；035仍baseline，无新改进模型。新模型和大数据仅LOCAL_ONLY，未网盘独立校验不称备份。
 
 重要阶段README/索引/current state/清单审diff与audit_git_payload后scoped本地提交，GitHub已知SSHpublickey失败不重复push，LOCAL_COMMITTED_UNPUSHED。下一完成独立实施边界复核、冻结与登记；真实模型形状/梯度/模拟器及效果只能在登记后留证。
+
+## HP20/R26独立登记完成
+
+实施提交d63556a后单次register已完成，data/manifests/a3_humanplus_specialist_20261018_HP20_plan.json固定329源码/111实际输入/11环境源码、v2设计及256更新预算。0新模型/仿真/optimizer。下一supervisor实时三次5秒门后单次isaac-baseline；登记资源快照不能代替启动门。HP20/R26此前无占用，旧账本/STOPPED/清理均保持。

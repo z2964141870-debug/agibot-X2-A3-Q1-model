@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-18北京时间13:56：[HP12已REGISTERED](README_A3_HUMANPLUS_FINITE_20261018.md)，执行代码34ac253、精确SHA见data/manifests/a3_humanplus_finite_20261018_HP12_plan.json。0新增训练，下一单次run --stage train，原三次5秒启动门与900秒监督保持；完成或停止后独立train审计、立即README，不复跑register/run或评测早期点。GitHub未同步，以下为历史。
+
 2026-10-18北京时间13:55：[HP12固定8更新新机适配](README_A3_HUMANPLUS_FINITE_20261018.md)已实现，4新标准库控制两端通过、vendor AST静态通过；尚未登记/训练。独立humanplus_finite入口重建路径，不调用旧ZHY登记器；仅存储/日志/原生关闭适配，算法和固定预算不变。下一实际SHA/资源核验后单次register→train→独立审计，逐阶段README后再接verify-training及最终step8十项效果；HP11及旧控制不复跑，原始日志LOCAL_ONLY，GitHub未同步。下方为历史。
 
 最新2026-10-18北京时间13:08：[HP11新机035匹配基线完成](README_A3_HUMANPLUS_BASELINE_20261018.md)，10完整动作/8769步，六衣服5/6不倒（zzx5.66s首倒）、算术均RMSE0.1393274808rad，四官方4/4不倒。final audit verified=true，对照合同data/manifests/a3_humanplus_baseline_reference_20261018_HP11_contract.json包含输入SHA/逐段完整窗口/原效果门。26健康同boot、CPU最高82/GPU46°C/可用最小20,130,357,248字节、0FATAL/新增OOM/残留，阶段间不作连续健康证明。0optimizer/训练，035无新改善。

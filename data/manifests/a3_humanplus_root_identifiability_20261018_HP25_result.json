@@ -1,0 +1,98 @@
+{
+  "experiment": "A3_HUMANPLUS_ROOT_IDENTIFIABILITY_20261018_HP25",
+  "trial": "HP25",
+  "status": "FAILED_POSITIVE_CONTROL",
+  "verdict": "IMPLEMENTATION_DEFECT_POSITIVE_CONTROL_FAILED",
+  "closed_at_utc": "2026-10-18T14:32:15+00:00",
+  "git_head": "d87e05a7abc741c7ed158a4f39abbc037f29967a",
+  "host": "Legion-Y9000P",
+  "plan_manifest": "data/manifests/a3_humanplus_root_identifiability_20261018_HP25_plan.json",
+  "key_numbers": {
+    "main_true_per_horizon": {
+      "0.1": {
+        "rmse_hold": 0.041127469702450736,
+        "rmse_cv": 0.016815615338101532,
+        "rmse_ridge": 0.05165316670615229,
+        "r2_ridge": -1.2555656893813256,
+        "improvement_vs_cv_pct": -207.17381236186085,
+        "n_val": 1452
+      },
+      "0.5": {
+        "rmse_hold": 0.1904882791994388,
+        "rmse_cv": 0.13127780957984175,
+        "rmse_ridge": 0.229299370978947,
+        "r2_ridge": -1.2887608205996282,
+        "improvement_vs_cv_pct": -74.66727370971984,
+        "n_val": 1392
+      },
+      "2.0": {
+        "rmse_hold": 0.6087166071749198,
+        "rmse_cv": 0.8226669633904475,
+        "rmse_ridge": 0.8079719303415068,
+        "r2_ridge": -1.628535214534129,
+        "improvement_vs_cv_pct": 1.7862675545372872,
+        "n_val": 1167
+      },
+      "4.9": {
+        "rmse_hold": 1.0427524046641679,
+        "rmse_cv": 1.9971716340498042,
+        "rmse_ridge": 1.200847967144961,
+        "r2_ridge": -0.3458444877371918,
+        "improvement_vs_cv_pct": 39.8725704555538,
+        "n_val": 732
+      }
+    },
+    "best_improvement_vs_cv_pct": 39.8725704555538,
+    "best_horizon_s": 4.9,
+    "max_r2_true": -0.3458444877371918,
+    "positive_control": {
+      "gate": {
+        "0.5": {
+          "rmse_ridge": 0.2393936012982433,
+          "rmse_cv": 0.13127780957984175,
+          "passed": false
+        },
+        "2.0": {
+          "rmse_ridge": 0.7508060677155446,
+          "rmse_cv": 0.8226669633904475,
+          "passed": false
+        },
+        "4.9": {
+          "rmse_ridge": 1.0694022462451034,
+          "rmse_cv": 1.9971716340498042,
+          "passed": false
+        }
+      },
+      "passed": false
+    }
+  },
+  "outputs": [
+    {
+      "path": "data/experiments/a3_humanplus_root_identifiability_20261018_HP25/registration.json",
+      "sha256": "ab46fb58db8801ca014cba5785e7b8edc7656baeeabf875b8edaaa97980b0c5d",
+      "bytes": 14408
+    },
+    {
+      "path": "data/experiments/a3_humanplus_root_identifiability_20261018_HP25/result.json",
+      "sha256": "104c3e0d12733d74183051cd5964f4ffa7c6a734724245019e4d60ba81412207",
+      "bytes": 10901
+    },
+    {
+      "path": "data/experiments/a3_humanplus_root_identifiability_20261018_HP25/identifiability_summary.csv",
+      "sha256": "5e9403c4db0e652eba30aae90c353b6864498118c29647fad3ad237d1eae559d",
+      "bytes": 3299
+    },
+    {
+      "path": "data/experiments/a3_humanplus_root_identifiability_20261018_HP25/rmse_by_horizon_true.png",
+      "sha256": "ba949805cedab5b919ea4e1af5ab4cd1bd65c7848b3db499d1a6439302bb1a5b",
+      "bytes": 61440
+    },
+    {
+      "path": "data/experiments/a3_humanplus_root_identifiability_20261018_HP25/rmse_by_horizon_ref.png",
+      "sha256": "703b50ebc487bf6a537ee974d00348dfc698cdf38d02ce1d629e8acc3e009f0d",
+      "bytes": 53279
+    }
+  ],
+  "logs": "logs/a3_humanplus_root_identifiability_20261018_HP25/console.log",
+  "note": "positive control failed; contract 2.4 single bug-fix budget consumed (HP24->HP25); branch STOPPED, pre-registered criteria not applicable (precondition: positive control pass)"
+}

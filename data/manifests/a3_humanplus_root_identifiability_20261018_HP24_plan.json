@@ -1,0 +1,227 @@
+{
+  "experiment": "A3_HUMANPLUS_ROOT_IDENTIFIABILITY_20261018_HP24",
+  "trial": "HP24",
+  "registered_at_utc": "2026-10-18T14:17:38+00:00",
+  "contract": "analysis/EXP_CONTRACTS.md section 2 (Exp-2a); criteria pre-registered in section 2.4",
+  "hypothesis": "H2 input information bottleneck: world root translation not statistically recoverable from policy-allowed inputs (BOTTLENECK_HYPOTHESES.md H2 minimal experiment Exp-2a)",
+  "main_variable": "feature whitelist (allowed inputs only) vs positive control adding current true root position",
+  "host": "Legion-Y9000P",
+  "git_head": "d87e05a7abc741c7ed158a4f39abbc037f29967a",
+  "environment": {
+    "python": "/home/humanplus/anaconda3/envs/x2-sonic-isaaclab/bin/python",
+    "python_version": "3.11.15",
+    "numpy": "1.26.0"
+  },
+  "feature_spec": {
+    "dimension_base": 180,
+    "blocks": [
+      "4x29 arrived-reference joint relative diffs reference_q_29[t-d]-reference_q_29[t], d in {2,3,5,10} ticks (~30Hz frame lags 1,2,3,6)",
+      "29 robot joint velocity proxy q_state_29[t]-q_state_29[t-5] (100 ms)",
+      "29 last action raw_action_29[t-1]",
+      "3 gravity direction in sim anchor frame R(sim_anchor_quat)^T @ (0,0,-1)",
+      "3 relative anchor orientation rotvec of R(ref_anchor_quat)^T @ R(sim_anchor_quat)"
+    ],
+    "exclusions": "no sim/ref root position or root orientation anywhere in main features; no future reference of any kind; positive control appends current TRUE world root position (3 dims) and is reported separately",
+    "source_arrays": [
+      "reference_q_29",
+      "q_state_29",
+      "raw_action_29",
+      "ref_anchor_quat_wxyz",
+      "sim_anchor_quat_wxyz"
+    ],
+    "allowed_input_rationale": "joint q/v history + relative anchor orientation + action history are policy-observable (proprioception930/orientation60/command stream); root translation excluded per E27"
+  },
+  "label_spec": {
+    "definition": "delta_root(t -> t+H), world frame, meters",
+    "sets": [
+      "true: sim_root_pos_w",
+      "ref: ref_root_pos_w"
+    ],
+    "horizons_s": [
+      0.1,
+      0.5,
+      2.0,
+      4.9
+    ],
+    "horizons_ticks": [
+      5,
+      25,
+      100,
+      245
+    ]
+  },
+  "model": {
+    "ridge_alpha": 1.0,
+    "normalization": "train-only z-score; y centered by train mean",
+    "solver": "closed form (X^T X + alpha I)^-1 X^T y"
+  },
+  "split": {
+    "train": [
+      "zj_walk",
+      "zj_warmUp",
+      "fjw_walk"
+    ],
+    "val": [
+      "zls",
+      "yy",
+      "zzx"
+    ],
+    "note": "train/val identical to E36 development partition; no tuning on validation"
+  },
+  "criteria": [
+    "val ridge improvement vs CV < 5% AND R2 < 0.2 consistently across H -> H2 behavioral upper bound confirmed (Exp-2b high priority)",
+    "improvement >= 10% at some H -> indirect cues exist; H2 identifiability limited to independent counterfactual (E27 boundary); Exp-2b priority lowered",
+    "else (5-10% band) -> report only, no verdict inflation",
+    "positive control failure -> implementation defect; save evidence and stop"
+  ],
+  "budget": {
+    "compute": "CPU only (numpy/matplotlib)",
+    "gpu": false,
+    "simulation": false,
+    "wall_clock_cap_min": 30,
+    "runs": "single run; after COMPLETE/STOPPED no re-run, no budget extension, no early-point evaluation, no same-recipe re-registration under a new number"
+  },
+  "status": "REGISTERED",
+  "inputs_digest": [
+    {
+      "role": "hp11_contract_manifest",
+      "sha256": "3be04e74cee457a8ad3b351347c4f1cc85b0233e6a1dbc4d4101c6105c7a7094",
+      "bytes": 21942
+    },
+    {
+      "role": "reference_csv:zj_walk",
+      "sha256": "ea4224065520049ae0cb31ace29c20d95a99805688f30b41e7608b9dde2accc4",
+      "bytes": 201456
+    },
+    {
+      "role": "trajectory_inputs:zj_walk",
+      "sha256": "3e6adfe6b6f165527e1f631d547ee382e8e96b17e1394590e808abca351219f5",
+      "bytes": 481725
+    },
+    {
+      "role": "trajectory_timeseries:zj_walk",
+      "sha256": "8b55d829405561475ea2e7e7f724eaed68e5c759461a9979ac8a66a39c4f378b",
+      "bytes": 12013961
+    },
+    {
+      "role": "trajectory_metrics:zj_walk",
+      "sha256": "b928fdf733d89557c99ee1723d9519f75f4caaefe5aaeb7a97a850611688ca63",
+      "bytes": 7532
+    },
+    {
+      "role": "reference_csv:zj_warmUp",
+      "sha256": "66637221f72a97593acb750117a97686e676931407281d3e9b13c521ac4e5493",
+      "bytes": 202805
+    },
+    {
+      "role": "trajectory_inputs:zj_warmUp",
+      "sha256": "367c5e862bca72bfd4f79c4e466ad2573542f42f624c7ee5fa38efc2ee982fb4",
+      "bytes": 482835
+    },
+    {
+      "role": "trajectory_timeseries:zj_warmUp",
+      "sha256": "ba913c05fdd441c18981ff0441371566ba3ebfab13f1abbe11271f08d6131be1",
+      "bytes": 12038083
+    },
+    {
+      "role": "trajectory_metrics:zj_warmUp",
+      "sha256": "e779823c4d69df89fff57318487ea2d076b80055f43c196b1c8b259ac447f966",
+      "bytes": 7528
+    },
+    {
+      "role": "reference_csv:fjw_walk",
+      "sha256": "632f029917b833e286f2d56116f338ca46c9ee8b5e150a7fb52d961ed175f159",
+      "bytes": 201379
+    },
+    {
+      "role": "trajectory_inputs:fjw_walk",
+      "sha256": "7f6cd0933a0e458114fab315a617ab1ea46b588f0adcbf25181ef3202a64ebba",
+      "bytes": 482577
+    },
+    {
+      "role": "trajectory_timeseries:fjw_walk",
+      "sha256": "309bc13da465266de9cc031774284cb01bef92cb651d9ae8bcd4ed82e7202c65",
+      "bytes": 12046469
+    },
+    {
+      "role": "trajectory_metrics:fjw_walk",
+      "sha256": "616ef75827b865d8d4b61b7a15696fb02efe89943c913ed17db376c44f9d4de3",
+      "bytes": 7524
+    },
+    {
+      "role": "reference_csv:zls",
+      "sha256": "419cd3f09b15be73ea36799357b548a2507dfe2099b1f81cad2c8d99fcd806b2",
+      "bytes": 201027
+    },
+    {
+      "role": "trajectory_inputs:zls",
+      "sha256": "3011ff3c5236d6ba57d96c3f631b942e6212762ccbe8a4028910b7ec1e48b563",
+      "bytes": 481955
+    },
+    {
+      "role": "trajectory_timeseries:zls",
+      "sha256": "3ab01ff8a10c87475663df4bc0b38927950c00914cbc8ac187dafb45ceec0884",
+      "bytes": 12021148
+    },
+    {
+      "role": "trajectory_metrics:zls",
+      "sha256": "999dbdac852efd7b77cd6d62ae6be9059abbd78589b2cae036d285c18cee4864",
+      "bytes": 7524
+    },
+    {
+      "role": "reference_csv:yy",
+      "sha256": "0515954e7e7fee4151e5da5ca1f268b83e89b66d43cb6c6af359de51abe058cc",
+      "bytes": 201182
+    },
+    {
+      "role": "trajectory_inputs:yy",
+      "sha256": "8ee24b72671b785e39f89535218449ecfd234688401f19b1850e098de1127cfc",
+      "bytes": 482643
+    },
+    {
+      "role": "trajectory_timeseries:yy",
+      "sha256": "26e61f9882dcc4f63b7099fe1734cf8cec39932a2cbc808b3e9a4e11ab8b0f66",
+      "bytes": 12022438
+    },
+    {
+      "role": "trajectory_metrics:yy",
+      "sha256": "5178f02ea8bc29f578895d878a734a03b4743d4ad2f6977b262bff5c30e385eb",
+      "bytes": 7518
+    },
+    {
+      "role": "reference_csv:zzx",
+      "sha256": "8473b15a41f981824f57eae1e7ea159c19ff0f611e3b61b27d5529718fdfc73f",
+      "bytes": 200817
+    },
+    {
+      "role": "trajectory_inputs:zzx",
+      "sha256": "5f5f27da7101308ca3d21ff6c999573e195ad6fdf9e929713c9f1db1cac23c57",
+      "bytes": 482186
+    },
+    {
+      "role": "trajectory_timeseries:zzx",
+      "sha256": "0ea09aed9273b260b24c127e088dd9d073fb79a18ccdbd33250e6f8d7091d632",
+      "bytes": 12003137
+    },
+    {
+      "role": "trajectory_metrics:zzx",
+      "sha256": "39d10fc0f820789ebbe9d5462cc8a24b59300e3f7ff68e8280742ba998fcfcfe",
+      "bytes": 7502
+    },
+    {
+      "role": "code",
+      "sha256": "66c4c4294f08ef279049155db51ca906dc7dec2c16f4fbf14deaab005042779f",
+      "bytes": 16459
+    },
+    {
+      "role": "code",
+      "sha256": "3b85a8a2041a4e68a64779eb8cdc539d796245f04e09a835a2d60b6a5cd4fd18",
+      "bytes": 3410
+    },
+    {
+      "role": "environment_python",
+      "sha256": "e3289a8abd702241721e211a33a566ed228102e5bfab5baa4f840fee65cb1f58",
+      "bytes": 25548416
+    }
+  ]
+}

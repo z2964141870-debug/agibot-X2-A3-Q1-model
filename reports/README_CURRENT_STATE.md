@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-18北京时间22:35：[Exp-2a根位移可辨识性HP24/HP25两轮STOPPED](README_A3_HUMANPLUS_ROOT_IDENT_20261018.md)：纯CPU零仿真两轮28输入SHA全PASS；两轮阳性对照均未过门（HP25 pc/CV=1.824/0.913/0.535 @H0.5/2.0/4.9），按合同2.4单次修复预算耗尽停止上报，预登记判据不适用（前提为阳性对照通过）。分段显示zls/yy线性可读出良好、zzx摔倒段主导池化误差；已知当前真实根位移对线性读出增益≈0（支持H2的观察但不足定论）。改规格（分段评估/剔除摔倒帧/非线性读出）属合同修订需lead与用户批准。0 GPU/仿真/训练，GitHub未同步。
+
 2026-10-18北京时间20:24：用户明确STOP，覆盖下文全部继续训练/评测/修复安排；zhy-a3保持PAUSED，不自动恢复。HP23 MuJoCo先前已因KeyError num_policy_steps STOPPED，未独立审计/不补完整分数；只读核对supervisor PID2997018和worker PGID2997136均无残留。已验收Isaac完整499步：035 RMSE0.1047864→专项0.1656438rad，恶化58.08%，均不倒；专项未成功/未蒸馏，035仍baseline。当前只讨论目标与路线，不再科学执行；保留现存权重与证据。见[停止记录](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)及data/manifests/a3_humanplus_user_stop_20261018.json，GitHub未同步。以下均为历史，不是恢复许可。
 
 最新HP23 verify-training完整通过/独立verified=true，step0/256精确大小SHA、仅原decoder14参数变化、冻结/28optimizer所有权和矩1024计数/实际token/原配方通过。最终PT307574417字节SHA47dd293511428d373c95c316ec8674e2b0f57bd581a09a632252dab1c09c599f；4健康无新增kernel/OOM/残留。下一首次最终Isaac499步→审计→MuJoCo499步→效果，不重训/重放基线，[恢复](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)，035仍baseline，GitHub未同步。

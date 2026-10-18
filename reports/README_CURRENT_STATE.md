@@ -1,5 +1,8 @@
 # YUANQI 当前状态与下一步
 
+2026-10-18北京时间16:16：[HP14/R23显式Kit日志修复已实施](README_A3_HUMANPLUS_HEAD_LOGGED_20261018.md)。用户已恢复持续优化；固定本次Kit路径/实际设置/native PID/有序关闭收据，8项新标准库控制两端通过，286代码/435输入/10环境来源冻结。尚未登记/科学运行，下一新登记及实时三次5秒门；HP13停止不改不评测，035无改善证据，GitHub未同步。
+
+
 最新2026-10-18北京时间15:44：[HP13/R22训练后日志验收STOPPED](README_A3_HUMANPLUS_HEAD_20261018.md)。实际16环境cuda:0、fresh035/空Adam、两head形状/梯度收据齐全，完成8更新/32提案及提交/3072交互，32候选均首比例1接受、32live基线；teacher RMSE最高0.01891756/maxabs0.08703947。0/2/4/8已存，step8为226205975字节/SHA63f6989b73b4b29639e854e36112a7cc5202f1b7aaa080dad1c1a925393fecd8，仅未验收存证，035无闭环改善证据。
 
 原生完成/CUDA同步/clear_instance/native_close_begin及退出0已有证据，但broker仅匹配到/tmp/isaaclab/logs/isaaclab_2026-10-18_15-39-35.log并误要求Kit路径，抛Exactly one authorized native Kit log required，关闭日志未验、train_audit verified=false。12健康同boot、CPU最高79/GPU46°C/可用最小19017109504字节、0FATAL/新增OOM/残留；55.164秒，未证实机器故障。新terminal_receipt_audit仅读JSON与4checkpoint大小SHA，0停止后张量/模型验证/效果，不补成功。恢复读data/manifests/a3_humanplus_head_20261018_HP13_{plan,result,train_audit,terminal_receipt_audit}.json；执行源码7816390/登记86712ca。HP13各阶段已单次执行，禁止重跑/扩预算/verify-training/效果，原源码终态不改；HP12及旧关闭链同样保留。zhy-a3已PAUSED，原30分钟节奏留存；下一仅只读固定未来独立Kit日志/关闭契约，未实施新修复或HP14，不自动新科学运行。GitHub未同步，模型/原日志LOCAL_ONLY。以下为历史。

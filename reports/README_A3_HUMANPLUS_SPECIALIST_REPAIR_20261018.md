@@ -1,0 +1,33 @@
+# A3 humanplus 专项入口修复与恢复
+
+记录日期：2026-10-18。RC01/D05/HP21/R27。19:50已完成独立修复、标准库控制和闭包冻结，尚未登记或运行新科学阶段。用户明确要求“修，修好了继续优化”；HP20始终保留STOPPED，本文件不把旧失败改成通过。
+
+## 目标与范围
+
+修正HP20参考身体重复索引及潜在关节顺序假设，先完成真实Isaac整段035基线，再继续原zzx专项专家路线；专家可靠优于035后才讨论学生访问状态上的纠正与统一蒸馏。仅在humanplus:/home/humanplus/YUANQI_A3计算，Mac只代码/记录；不动共享包、vendor、驱动或其他任务。
+
+## 修复与依据
+
+新humanplus_specialist_repaired_entry/trial/verification及独立audit绑定HP21/R27；复用未变的专家trainer/protocol。原HP20五注册模块不改。reference body已按cfg.body_names筛选，直接取该顺序；机器人身体独立按名字对应。参考关节在原生has_dof_mismatch时用body_joint_indices恢复显式源名字，否则用完整robot.joint_names，再分别映射到action_term的29个动作关节。CPU检查names/shape/原生action ids/body ids一致后才GPU取值。评测增加同步定位、bridge_metadata和每步同步后的replay_progress，禁止把未知步数补成零。科学配方/预算/效果门保持，CUDA_LAUNCH_BLOCKING仅在两个Isaac评测阶段开启，不增加模型forward或交互。
+
+## RC01历史故障的显式恢复处理
+
+本次用户修复并继续的指示是恢复授权。NVIDIA Xid目录原文将43描述为应用软件故障后必须退出，不单凭此认定驱动/硬件坏；已只读核对https://docs.nvidia.com/deploy/xid-errors/analyzing-xid-catalog.html。结合HP20越界断言、同PID Xid43、原组已退出，采用新应用进程恢复方式，不reset GPU/重启/改权限；唯一因果仍未同步定位证明。
+
+RC01 metadata-only三次5秒间隔采样实际完成，原guard每次仍报告CRITICAL_KERNEL_EVENT，精确等于保存的cursor/message和pid2970870那一条；无其他内核事件/新增OOM/旧组残留，驱动gpu_recovery_action每次None，原资源启动门其余全部通过。RC01结果SHA3fb53aec80768d36bbb5422d885ec3df8000d965196bbc9db1c5a50ab70286cb；记录gpu_execution_recovery_verified=false，不能把元数据当真实执行恢复。
+
+新recovered_health/supervisor只用于独立HP21，原health/supervisor行为不改。原HP20故障前baseline文件逐值保留，原cgroup内存/限额/计数连续核验；同一全boot journal同时验证故障前和故障后前缀SHA/boot/cursor/单调时间。每采样完整保存历史fatal，并明确标为已处理的历史事件；只允许RC01固定的一条cursor/message，新增、缺失、修改、OOM或boot变化一律拒绝。该处理是明确记录的历史事件恢复授权，不能称“全boot没有FATAL”、悄悄清零或为后续事件自动豁免。原8GiB/4GiB、三次5秒启动、CPU90/GPU85两次5秒及900秒期限均保持。
+
+## 版本、控制与入口
+
+前提交46fc550。新增6项标准库控制Mac5通过/真实vendor缺失1跳过，humanplus6全部通过：历史事件精确匹配、新事件/日志变化/新OOM/boot/授权拒绝，参考31/29关节和反向顺序/被动关节，独立绑定与原生vendor AST匹配。没有运行旧控制、旧审计或孤立GPU诊断。D05冻结341源码、112现存输入、11环境源码；输入含RC01及其固定证据链，不继承已删权重。
+
+准备清单data/manifests/a3_humanplus_specialist_repaired_design_20261018_D05.json与a3_humanplus_recovery_20261018_RC01.json，原始元数据logs/a3_humanplus_recovery_20261018_RC01/metadata_samples.json。控制命令`/usr/bin/python3 -B -m unittest script.a3.test_humanplus_recovery script.a3.test_humanplus_specialist_repaired -v`。闭包固定后代码不可改写，下一单次`/usr/bin/python3 -B -m script.a3.humanplus_specialist_repaired_trial register`，阶段为isaac-baseline/train/verify-training/isaac-final/mujoco/effect，每阶段通过独立humanplus_specialist_repaired_audit才继续。
+
+## 固定预算与验收
+
+沿用专项256更新/16env×24步=98304交互/1024原生Adam提交/8192外层Actor+decoder调用；只保存0/256，只最终256评测。fresh035/空Adam、全原decoder可训、codec/std冻结、原奖励/物理/reset/已开启失败采样/实际cached token/配对路由/KL LR保持。任何科学STOPPED不续跑/扩预算/评早期。Isaac匹配前后各499步，MuJoCo最终499步与现存HP11比较、不重放HP11。两模拟器整段不倒且关节RMSE各改善至少1%、MuJoCo根腕<=+5%才达专家中间门；不算统一策略验收、收敛或部署批准。
+
+## 保存与下一步
+
+当前0新模型/仿真/optimizer，RC01仅明确可开始受监督的新进程，不等于修复真实验收。先保存README/索引/current state/小清单与scoped提交，再独立登记HP21，按三次启动门完成499步基线和正常Kit关闭。基线通过后才训练；首新增内核/温度/OOM异常停自有组、暂停自动任务并保存入口。zhy-a3前台修复期间保持PAUSED，修复实际通过后恢复原30分钟。GitHub已知写鉴权失败不重复push，LOCAL_COMMITTED_UNPUSHED。大数据日志LOCAL_ONLY；035及必要输入保护，已删权重不恢复，继续按精确清单管理淘汰权重。

@@ -1,6 +1,6 @@
 # A3 humanplus zzx 专项专家与统一学生
 
-记录日期：2026-10-18。D04独立制度，拟HP20/R26（登记前核对账本）。当前为实施与必要控制阶段，未登记、未启动新模型/仿真/optimizer；下文命令只是有前置条件的下一步骤，不能当作已执行。
+记录日期：2026-10-18。D04/HP20/R26已单次登记，但19:25第一阶段isaac-baseline发生CUDA设备断言和新NVRM Xid43，STOPPED；独立审计verified=false、无自有组残留，zhy-a3已PAUSED。035已真实加载，专项训练/optimizer/最终效果均未开始。下面实施与命令保留为历史，禁止重跑HP20或把计划当完成。
 
 ## 目标与范围
 
@@ -59,3 +59,17 @@ S02清理已完成并审计，含S01累计释放4.01GB，HP19权重删除不再�
 ## HP20/R26独立登记完成
 
 实施提交d63556a后单次register已完成，data/manifests/a3_humanplus_specialist_20261018_HP20_plan.json固定329源码/111实际输入/11环境源码、v2设计及256更新预算。0新模型/仿真/optimizer。下一supervisor实时三次5秒门后单次isaac-baseline；登记资源快照不能代替启动门。HP20/R26此前无占用，旧账本/STOPPED/清理均保持。
+
+## 19:25 计算异常停止与恢复入口
+
+登记提交7e4141c后单次isaac-baseline于2026-10-18T11:25:16.184033Z开始，supervisor先通过三次5秒启动门，native PID2970870、worker组2970867。Isaac创建了1环境，真实加载035，motion库加载单zzx/499帧/9.960秒。随后IndexKernel.cu:113出现index out of bounds/device-side assert，异步堆栈在policy.rollout的create_encoder_masks处报错，PhysX也报告CUDA错误。11:25:40左右内核新增NVRM Xid43，明确pid2970870/namepython，与本次native进程一致。
+
+监督器在25.677323531秒以CRITICAL_KERNEL_EVENT终止自有组，HP20_result及state均STOPPED、stages空。未完成499步基线，没有完整轨迹或正常关闭收据；实际仿真步数未知，不填成0。没有执行专项训练、optimizer、训练保存验证或最终效果。不能把这一工程故障当作专家学不会或方法失败，也没有035改善证据。
+
+单次独立审计已完成，verified=false、6健康同boot afb6796b-3883-4df4-99ea-bc381c52ea13、CPU最高76/GPU44°C、最低可用19732905984字节、0新增OOM、1条新增Xid43；after_issues仍CRITICAL_KERNEL_EVENT、自有组残留空。温度正常/组已清理不能证明GPU恢复或硬件损坏，未推断重启。审计SHA b8b9271f83b01539c4627f2084b56604b8b72f03bb0af0747e1d0e65a16750b6；原日志/内核收据/Kit/注册源码保持，不读删既有crash dump，不触碰共享环境/驱动权限。
+
+恢复先读data/manifests/a3_humanplus_specialist_20261018_HP20_{plan,result,isaac-baseline_audit}.json与logs/a3_humanplus_specialist_20261018_HP20/isaac-baseline/{native_console.log,state.json,health.jsonl}及isaac-baseline_after_health.json。独立审计不再复跑，STOPPED后不加载PT或调用旧checked全产物链。zhy-a3应用已实际PAUSED，原30分钟设置保留；旧hp3090/yuanqi-a3及每日研究不变。
+
+只读源码发现明确适配缺陷：motion_lib_base在1878行已用body_indexes筛选body_pos_w，get_body_pos_w直接返回筛选后数据；commands.body_pos_w沿用该数据。本次replay又用完整机器人body_indexes_data索引一次，属于重复索引，具有越界风险。CUDA报错异步且无同步定位，本轮不把它断言为唯一触发原因。后续独立桥接应直接用筛选后的参考并先按CPU名字/shape验证，动作29关节则按原EvalDebugDumper的action_term关节名/索引处理，不能直接假定motion全关节与动作29顺序相同。
+
+下一仅保存及静态修复论证；原HP20源码/输入闭包不改。处理新内核事件的恢复门并固定独立新合同前不再科学计算，不换编号直接重跑、不豁免Xid/重建健康基准。机器首故障暂停要求已执行。用户路线仍为专项专家到统一学生，没有新增专家成果。

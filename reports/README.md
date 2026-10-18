@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-18北京时间19:25：[HP20首次Isaac专项基线STOPPED](README_A3_HUMANPLUS_SPECIALIST_20261018.md)，CUDA越界断言及本次native PID对应新NVRM Xid43触发保护，25.677秒；0专项训练/optimizer/最终效果，035已加载但整段基线未完成。6健康CPU最高76/GPU44、0OOM、独立verified=false/无组残留。zhy-a3已实际PAUSED；保留旧账本与原源码，不自动复跑。只读已发现参考身体重复索引缺陷，唯一因果尚未证实，GitHub未同步。
+
 2026-10-18：[HP20/R26专项专家已独立登记](README_A3_HUMANPLUS_SPECIALIST_20261018.md)，实施d63556a/v2闭包固定，预算256更新98304交互/1024提交。0新模型/仿真，下一当前三次5秒门后单次Isaac035 zzx完整499步基线，再依序训练与最终双模拟器验收；035仍baseline、GitHub未同步。
 
 2026-10-18：[D04专项专家独立实施](README_A3_HUMANPLUS_SPECIALIST_20261018.md)完成，7标准库控制humanplus通过（Mac6通过/无vendor1跳过）；v2冻结329源码/111现存输入/11环境源码。固定zzx完整动作、完整decoder、原生PPO无统一teacher约束，256更新98304交互/1024提交/8192调用上限；同合同双模拟器整段验收。v1登记前CLI组成问题已静态修正保留失效来源，尚未登记或科学运行。035仍baseline，GitHub未同步。

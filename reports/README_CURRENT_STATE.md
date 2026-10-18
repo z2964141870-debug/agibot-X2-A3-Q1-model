@@ -1,22 +1,10 @@
 # YUANQI 当前状态与下一步
 
-2026-10-18北京时间18:12：[S01淘汰权重清理完成](README_A3_HUMANPLUS_STORAGE_20261018.md)。15唯一权重inode/17常规路径及15last指针已删除，释放3187286016字节（约3.19GB/2.97GiB），可用空间约243.10GB；独立核对32路径消失、17sidecar及035/E11/E12输入SHA保留。HP18十项拒绝、035仍baseline；下一保存失败证据选实质不同方法，旧权重不复验/重建，GitHub未同步。
+2026-10-18北京时间18:15：本轮[D02/HP18闭环](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)已完成并拒绝：8更新32提交3072交互，十项8769完整步；衣服均RMSE相对035恶化9.8365%/5of6不倒，四官方4of4不倒但3项关节超门，035仍baseline。46健康无新增异常/残留，旧快照不作启动证据。HP18全部阶段/审计单次完成，禁止复跑。
 
-2026-10-18北京时间18:10：[淘汰权重S01清理计划已固定](README_A3_HUMANPLUS_STORAGE_20261018.md)。用户授权后精确选HP12/13关闭权重及HP14/18拒绝候选，17常规路径/15唯一inode+15last指针，预计释放3187286016字节；大小SHA/硬链接/相关FD/maps/活动输入检查通过。7标准库控制两端通过，尚未删除；035/必要输入/配置日志指标保持，GitHub未同步。
+用户新存储授权已实施：[S01](README_A3_HUMANPLUS_STORAGE_20261018.md)删除HP12/13关闭权重及HP14/18拒绝候选共15唯一权重（17常规路径+15last指针），释放3187286016字节。32路径消失/17sidecar保留、035及E11/E12必要PT大小SHA不变；配置/日志/指标/原数组保留。已删权重/旧artifact SHA不能当当前输入，不运行旧checked/复验/重建。GitHub未同步，必要大型工件LOCAL_ONLY。
 
-2026-10-18北京时间18:03：[HP18 D02十项完整效果拒绝](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。COMPLETE_MATCHED_EFFECT/独立verified=true、gate=false；衣服均RMSE.15303246rad恶化9.8365%/5of6不倒，四官方4of4不倒但march/front/rotate关节+8.01/+4.99/+3.18%超门。46健康0新增异常/残留，035仍baseline。本轮闭环关闭不续训/重放；下一按用户新授权清理确定淘汰权重并保留审计记录，GitHub未同步。
-
-2026-10-18北京时间17:59：[HP18四官方完整回放及审计通过](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。5775步/4of4不倒，十项合计8769步各单次，累计42健康无新增异常/残留。下一仅原效果公式汇总和独立审计；衣服均RMSE已不达标、035不替换，GitHub未同步。
-
-2026-10-18北京时间17:56：[HP18六衣服完整回放完成但效果未达标](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。2994步/5of6不倒、均RMSE.1530324633rad，高于035的.1393274808。独立审计verified=true、累计29健康0新增异常/残留；下一只补四官方5775步和原十项总汇，035不替换，GitHub未同步。
-
-2026-10-18北京时间17:54：[HP18保存模型与独立审计通过](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。0/2/4/8架构/两key/冻结/Adam矩计数/token/配方及D02新loss与旧硬门证据齐全。下一最终8六衣服+四官方8769完整步；训练通过尚不代表改善，035仍baseline，GitHub未同步。
-
-2026-10-18北京时间17:52：[HP18 D02训练与独立审计通过](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。8更新32提交3072交互、新384标签重建maxabs2.03e-6、原teacher最高RMSE.01708323/maxabs.08512035、Kit正常退出0。13健康CPU最高81/GPU47/可用最低18.947GB，0新增异常/残留；下一保存0/2/4/8验证及最终十项完整效果，035仍baseline，GitHub未同步。
-
-2026-10-18北京时间17:50：[HP18/R24已独立登记](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。执行代码87dd1dd，307源码/453输入/10环境SHA，fresh035新384保留loss+原384硬门、8更新32提案3072交互。下一实时三次5秒门后单次train；0新科学运行，035仍baseline，GitHub未同步。
-
-2026-10-18北京时间17:49：[D02独立实施与冻结完成](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。10标准库控制两端通过，307源码/451输入/10环境SHA固定；最多2440外层调用，8更新32提案3072交互不扩。只改新384样本loss，原384硬门保留，0新模型/仿真/optimizer；下一单次HP18登记及实时资源门。原候选拒绝/035仍baseline，GitHub未同步。
+原zhy-a3应用已更新为ACTIVE/30分钟、只变化通知，恢复提示包含HP18拒绝与S01实际删除；旧hp3090/yuanqi-a3/daily不变。下一从保存轨迹/收据和既有研究一次收束实质不同变量，再实现/登记短训练与完整效果；不重复D01/D02/E46–E50，不新零更新诊断，不反复索取许可/迁移/认证。重要阶段先README/审计/scoped提交；首真实机器故障留证并暂停。
 
 2026-10-18北京时间17:01：[持续优化已恢复原30分钟主线](README_A3_HUMANPLUS_REPLAY_LOSS_20261018.md)。zhy-a3应用实际ACTIVE；HP17完整十项候选拒绝，035仍baseline。D02未实现/登记，下一只改teacher损失样本覆盖且保留原384硬保护，独立实现后登记推进；旧终态/其他任务不改，GitHub未同步。
 

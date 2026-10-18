@@ -1,5 +1,13 @@
 # YUANQI 当前状态与下一步
 
+最新2026-10-18北京时间12:03：[HP09修复验收通过](README_A3_HUMANPLUS_PHYSX_NATIVE_20261018.md)。十步/CUDA同步/公开clear_instance注销STOP回调/原生正常关闭/真实退出0均存证，独立审计verified_control_and_exit=true，阶段15.160秒。4健康同boot、CPU最高81/GPU44°C、可用最小22,461,792,256字节、0FATAL/新增OOM，无自有组残留，代码/环境/输入SHA未变。
+
+HP07栈确认app.close触发STOP回调循环，HP08解决循环但原生退出绕过Python后置收据；HP09以标准库父进程验收修复。旧STOPPED原样保留、不复跑，本轮新增11标准库控制Mac/新机各通过；HP05旧CPU/CUDA及MuJoCo控制复用。当前基础运行控制齐全，输入63/63/关键10/10已齐，0策略模型/rollout/训练，无新035效果。下一新登记先核训练资产/035模型并做新机六衣服四官方匹配基线，再原8更新训练；不再重复空场景控制。原zhy-a3恢复原30分钟主线节奏，真实资源启动前重查；原始日志LOCAL_ONLY，scoped提交未同步GitHub。下方HP08及更早为历史。
+
+HP08更新：[注销回调已消除死循环](README_A3_HUMANPLUS_PHYSX_CALLBACK_20261018.md)，十步/同步/清理完成，原生关闭退出0而不返回Python，旧监督器因缺失后置收据STOPPED，保留终态。4健康无异常/无残留。用户快修授权内继续HP09，以标准库父进程确认真实退出码、十步及关闭日志后写最终收据，物理/预算/保护不变；不等待用户再许可，不进入训练。
+
+HP07更新：2026-10-18北京时间11:53，[退出定位](README_A3_HUMANPLUS_PHYSX_EXIT_20261018.md)取得十步及CUDA同步完成收据；app.close触发STOP回调render循环，30秒Python栈已确认。核对自有监督器后主动SIGTERM并清理，29健康无新增异常/无残留，终态STOPPED保留。用户“快修”授权内继续独立HP08：在关闭前用公开SimulationContext.clear_instance注销回调，原预算/保护不变，不重跑HP05控制或旧阶段。前台修复中zhy-a3仍暂停，0策略/训练；下方HP06为历史。
+
 最新：2026-10-18北京时间11:05，[HP06剩余PhysX验收](README_A3_HUMANPLUS_PHYSX_20261018.md)已STOPPED：STAGE_DEADLINE_900_SECONDS，实际896.670秒含采样截止余量。EULA修复有效、CUDA PhysX上下文已创建，但无十步完成收据，实际步数未知；不能记为完整环境通过。181健康同boot、CPU最高78/GPU44°C、可用最小20,334,821,376字节、0FATAL/新增OOM，停止后无自有进程组残留，代码/环境源码SHA未变。
 
 输入迁移63/63、关键10/10已完成；HP05已通过CPU/CUDA四事务及MuJoCo10步不重跑，HP05/HP06终态不改。当前0策略模型/rollout/训练、035无新提升。zhy-a3保持PAUSED，不自动追加PhysX或基线/训练。恢复先读HP06 README及data/manifests/a3_humanplus_physx_20261018_HP06_{plan,result,audit}.json；优先只读审查STOP回调/退出合同，卡点尚未确认。原始日志LOCAL_ONLY，GitHub写权限未恢复，scoped本地提交尚未同步。下方10:40及更早内容均为历史。

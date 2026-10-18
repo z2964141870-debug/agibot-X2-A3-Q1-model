@@ -1,5 +1,11 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-18北京时间12:03：[HP09 PhysX修复通过](README_A3_HUMANPLUS_PHYSX_NATIVE_20261018.md)，十步同步/回调清理/原生关闭与实际退出0独立核验，15.160秒、健康无异常/无残留。基础运行控制齐全，0策略/训练；接续独立新机035匹配基线，原30分钟主线恢复，不复跑旧控制。以下较早故障记录保留。
+
+HP08回调修复后，十步/同步/清理完成，原生关闭直接退出0，旧验收器因Python后置收据缺失而STOPPED，见[HP08](README_A3_HUMANPLUS_PHYSX_CALLBACK_20261018.md)。下一[HP09原生退出协议](README_A3_HUMANPLUS_PHYSX_NATIVE_20261018.md)修正父进程收据验收，原物理条件及资源门不变。
+
+HP07退出定位：十步/CUDA同步已通过，30秒栈确认app.close触发STOP回调循环；主动终止自有组，29健康无异常，完整退出未通过。用户要求快修，下一独立HP08用公开clear_instance注销回调后关闭，见[定位与修复依据](README_A3_HUMANPLUS_PHYSX_EXIT_20261018.md)。不重跑旧控制，前台修复中。
+
 2026-10-18北京时间11:05：[HP06剩余PhysX验收](README_A3_HUMANPLUS_PHYSX_20261018.md)STOPPED/900秒期限。EULA修复有效、CUDA上下文创建，但无十步收据且实际步数未知；181健康无新增OOM/内核异常、自有组已清理。迁移已完成，完整环境/035新基线/训练仍未完成，zhy-a3保持暂停、不自动复跑。以下较早现场仅作历史。
 
 2026-10-18北京时间10:40：[HP05新机运行验收](README_A3_HUMANPLUS_RUNTIME_20261018.md)单次执行后STOPPED。监督器13项标准库控制两端通过，CPU/fused CUDA四事务及固定MJCF10步通过；PhysX因新入口漏配非交互启动变量在EULA提示处EOF退出，0PhysX/0策略训练。12健康无OOM/内核异常，非已证实机器故障；保留终态、暂停zhy-a3，不自动复跑。完整环境、035新基线及短训练尚未完成。
@@ -24,6 +30,9 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-18 | humanplus原生退出协议HP09 | 十步/同步/回调清理/原生关闭及退出0独立通过，15.160秒、0训练，见[修复结果](README_A3_HUMANPLUS_PHYSX_NATIVE_20261018.md) |
+| 2026-10-18 | humanplus STOP回调修复HP08 | 公开clear_instance消除循环；原生退出使后置收据缺失，STOPPED保留，见[阶段](README_A3_HUMANPLUS_PHYSX_CALLBACK_20261018.md) |
+| 2026-10-18 | humanplus退出定位HP07 | 十步/同步通过，30秒栈定位关闭触发STOP回调循环，主动终止并保存，见[定位](README_A3_HUMANPLUS_PHYSX_EXIT_20261018.md) |
 | 2026-10-18 | humanplus剩余PhysX验收HP06 | EULA修复有效，900秒期限停止；实际步数未知、181健康无异常/自有组清理，见[终态与恢复](README_A3_HUMANPLUS_PHYSX_20261018.md) |
 | 2026-10-18 | humanplus运行验收HP05 | 13标准库两端、4CPU/CUDA事务及固定MJCF10步通过；PhysX在EULA EOF前未启动，STOPPED/不重跑，见[运行记录](README_A3_HUMANPLUS_RUNTIME_20261018.md) |
 | 2026-10-18 | humanplus直接大文件迁移HP04 | 用户再授权慢传；11大文件单次完成，与52小文件合计63项独立大小/SHA通过、输入10/10，0训练，见[迁移记录](README_A3_INPUT_MIGRATION_20261018.md) |

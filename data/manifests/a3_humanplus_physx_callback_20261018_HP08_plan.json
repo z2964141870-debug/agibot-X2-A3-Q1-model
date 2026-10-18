@@ -1,0 +1,63 @@
+{
+  "experiment": "A3_HUMANPLUS_PHYSX_CALLBACK_20261018_HP08",
+  "status": "REGISTERED",
+  "registered_at_utc": "2026-10-18T03:55:47.602459+00:00",
+  "authorization": "2026-10-18 user quick-fix request; continue confirmed callback lifecycle repair",
+  "main_variable": "Public SimulationContext.clear_instance unsubscribes STOP callback before app.close",
+  "parent_head": "1183ad501e24610b9b0109e1abed06831b2927ae",
+  "boot_id": "afb6796b-3883-4df4-99ea-bc381c52ea13",
+  "bootstrap_environment": {
+    "OMNI_KIT_ACCEPT_EULA": "YES"
+  },
+  "code_sha256": {
+    "script/a3/humanplus_runtime.py": "62360f7b100da28944cb13773e83ffa4054b5ec2282096688638176a758bc5f5",
+    "script/a3/humanplus_supervisor.py": "878e97f3cad109946c9e92276fec68783deec3e29c69d6872fe0d70c17f59735",
+    "script/a3/test_humanplus_supervisor.py": "7fdd756d8cb9594dc65864af290357ffa483c30252efd449ed8ad7493308c84e",
+    "script/a3/humanplus_health.py": "36b20feb2a2d7d3e177c9352763e1f5414590069102f49c6b86bb99251e67fa0",
+    "script/a3/finite_adam.py": "ab8d270563a8b214474a1b2314dfca0c07e635baac1c0bb9e5a87b4690ced9e3",
+    "script/a3/test_finite_adam.py": "d61668a1b8cda1e42ff93877e15690efe2e8a564347e00837c7364adaab959d1",
+    "script/a3/checkpoint_store.py": "c4bef83e48eabc2950fadeaa2f21b11d8ee5abc48ead0d759f3a0cadaff9e5c8",
+    "script/project_tools/humanplus_inventory.py": "b6693b2e631623c94ae5b7cb1e5967f015d1de232a9ff4ae4727752eb92c5530",
+    "script/a3/humanplus_physx_validation.py": "4b24410f6d791b4a1221639cbc4205fead41836a63ca3cffd90c3918a1f8d790",
+    "script/a3/humanplus_physx_exit_validation.py": "0c910e67d1e017ae906f0a06b565efea151fed38d601a687a8ed6954939e02b4",
+    "script/a3/humanplus_physx_callback_validation.py": "0d6b8eb4c76ba91f1433c2570d2b8f66e4a4377f5bbf3363e3fdaca559f9c51b"
+  },
+  "environment_source_sha256": {
+    "/home/humanplus/anaconda3/envs/x2-sonic-isaaclab/bin/python3.11": "e3289a8abd702241721e211a33a566ed228102e5bfab5baa4f840fee65cb1f58",
+    "/home/humanplus/x2_teleop_final/third_party/IsaacLab-v2.3.2/scripts/tutorials/00_sim/create_empty.py": "5e758f02eeccd8b8a77bccab15c3734253b43f4349f58c3fe7bc5366d8f8e88c",
+    "/home/humanplus/x2_teleop_final/third_party/IsaacLab-v2.3.2/source/isaaclab/isaaclab/sim/simulation_cfg.py": "d8035df355c576ad7c876789bba54be4ebb361f5c16786a4ec8578143eebc118",
+    "/home/humanplus/x2_teleop_final/third_party/IsaacLab-v2.3.2/source/isaaclab/isaaclab/sim/simulation_context.py": "d95f2eaa138b4fff845ac72439caa2eca5deab4f0d5609e06f163d20eef4df93",
+    "/home/humanplus/x2_teleop_final/third_party/IsaacLab-v2.3.2/source/isaaclab/isaaclab/app/app_launcher.py": "7ab2c742cfa64e2c4e2ea4601d9441e5e8c9bb8f556a121b0d10c337f9b6093e",
+    "/home/humanplus/anaconda3/envs/x2-sonic-isaaclab/lib/python3.11/site-packages/isaacsim/kit/kit_app.py": "ad2b2b878363485100e8a26c4aa57210df758efbb559d4c4ad980250e92938d1",
+    "/home/humanplus/anaconda3/envs/x2-sonic-isaaclab/lib/python3.11/site-packages/isaacsim/exts/isaacsim.simulation_app/isaacsim/simulation_app/simulation_app.py": "7cbaa6f00e935a6f14bf1c28ec0db089fd924e931f3b0deee07a822f9b7d0090"
+  },
+  "input_sha256": {
+    "data/manifests/a3_humanplus_physx_exit_20261018_HP07_plan.json": "d7ff63b6dbd358ccc27bf4dd56e763c5a0ce6008aa5032c673ddab37a94b98f5",
+    "data/manifests/a3_humanplus_physx_exit_20261018_HP07_result.json": "eb96a42897156ed81112d699a8e3a949a722a3438dac5c49cdeb376fab8b13b6",
+    "data/manifests/a3_humanplus_physx_exit_20261018_HP07_audit.json": "abd7c41ee91ded8c0952f6ca634d2f287a4743e3fa934b79ca5d18d77df891b2",
+    "data/experiments/a3_humanplus_physx_callback_20261018_HP08/baseline.json": "838619b344e5d0c6ad57c2edee4fa5f129384df6e6bed9413613f188a44eb4c0"
+  },
+  "budget": {
+    "stage_seconds": 900,
+    "startup_samples": 3,
+    "sample_seconds": 5,
+    "available_startup_gib": 8,
+    "memory_reserve_gib": 4,
+    "cpu_limit_c": 90,
+    "gpu_limit_c": 85,
+    "hot_samples": 2,
+    "physx_steps": 10,
+    "physx_dt": 0.01,
+    "robot_environments": 0,
+    "policy_model_loads": 0,
+    "policy_rollouts": 0,
+    "policy_optimizer_calls": 0
+  },
+  "criterion": "Ten synchronized CUDA steps, public callback cleanup, normal app shutdown and exit",
+  "no_automatic_retry": true,
+  "repeat_passed_controls": false,
+  "policy_model_loads": 0,
+  "policy_rollouts": 0,
+  "policy_optimizer_calls": 0,
+  "backup_status": "LOCAL_ONLY"
+}

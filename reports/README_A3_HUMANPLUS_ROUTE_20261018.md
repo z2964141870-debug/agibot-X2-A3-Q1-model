@@ -60,3 +60,7 @@ HP19单次train完成8更新/32提案32提交/3072交互，全部8个rollout实�
 ## 保存状态核验通过
 
 单次verify-training及独立审计verified=true。0/2/4/8大小SHA、fresh035 Actor/Critic和空Adam、原两key变化/其他Actor参数与buffer冻结、Adam整数ID所有权/矩形状/有限性/4倍step计数、实际cached token/首概率、D02 loss及旧teacher收据均通过。完整manager_env/algo配置只允许原存储字段与登记g1采样概率差异，两个encoder及原配对保留；8次真实路由共3072个a3_fast。累计17健康/0新增异常/无残留，阶段间不作连续证明。下一仅最终8六衣服2994步完整回放，不评早期点。
+
+## 六衣服完整效果完成
+
+六段各499步共2994完整步已单次完成，cloth独立审计verified=true，5/6不倒、zzx仍跌倒。算术均RMSE0.1525250051006924rad，高于035的0.13932748084287783；当前候选不满足衣服门。累计28健康同boot、CPU最高88/GPU46°C、0FATAL/新增OOM/残留。原始preclip捕获按固定float64+clip边界与轨迹严格相等，所有观察/接触/状态/tick完整；不重放衣服。下一仅原预算剩余四官方5775步及十项汇总，不能用训练/部分动作改善冒称整体提升。

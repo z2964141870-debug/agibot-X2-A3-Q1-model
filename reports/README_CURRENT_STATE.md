@@ -1,8 +1,8 @@
 # YUANQI 当前状态与下一步
 
-最新2026-10-18北京时间14:46：[D01输出头方案及实施审查](README_A3_HUMANPLUS_HEAD_DESIGN_20261018.md)一次收束，同一data/manifests/a3_humanplus_head_design_20261018_D01.json保存来源SHA。唯一变量仍为Actor只训练末层module.12.weight/bias（静态512→29/14,877参数）；父类restrict_policy会解冻全decoder，且原entry/verifier/auditors硬绑定HP12，必须独立覆盖/绑定，不能仅改trainer字符串或构造完再替换optimizer。
+最新2026-10-18北京时间15:35：[D01独立实施完成](README_A3_HUMANPLUS_HEAD_20261018.md)。新humanplus_head训练器在通用creator前冻结两head，原空AdamW组超参及两head+原Critic完整所有权保持；独立entry/verifier/审计路径不写HP12。保存整数ID→名称映射、非空两key变化子集与按实际k次事务推导停止审计已实现，拒绝时核对batch buffer摘要恢复。
 
-本轮0张量/模型/仿真/optimizer/旧审计复跑、只更新记录；D01未实现/未占HP编号/未登记。已固定两Actor key加原Critic完整所有权、保存ID到名称映射及非空两key子集变化、按新收据推导停止计数；候选额外32*9*6=1728，原路径训练外层总上限2148，预算未扩。下一独立实现及必要标准库控制，完整新代码/输入SHA和预算登记前不运行科学试验，不重复同类设计。HP12及E46–E50保持关闭、035无改善；zhy-a3仍30分钟ACTIVE、变化才通知，GitHub未同步。以下14:00及更早为历史。
+14项新标准库控制Mac/新机各通过，278源码/433输入大小SHA/8环境源码冻结，readiness SHA b123704feef4950522846ab43a882fcb0d71044f82efdea9b3ef4636bfafbf96。0张量/模型/仿真/optimizer/旧控制复跑，无新资源启动证据，尚未登记或运行；静态形状及fakes不冒充实际16环境。下一scoped保存后独立HP13/R22 register→原三次5秒资源门→训练及独立审计；预算8更新/32提案/3072交互/256候选+32基线、1728额外/2148总外层调用及原teacher/HP11效果门不变，STOPPED不恢复/早期效果。HP12及E46–E50关闭，035无新改善；zhy-a3仍30分钟ACTIVE，GitHub未同步。以下为历史。
 
 最新2026-10-18北京时间14:00：[HP12固定短训练STOPPED](README_A3_HUMANPLUS_FINITE_20261018.md)。16环境cuda:0与fresh035 Actor/Critic/空Adam已实跑，6整更新+第7次3batch、28提案/27提交/2688交互。第28次1至1/128全部teacher RMSE超0.05，最小0.0500001531092；目标均降低、maxabs通过，参数/Adam拒绝前后摘要不变。step0/2/4仅存证，step8不存在、0效果回放，无新035改善。
 

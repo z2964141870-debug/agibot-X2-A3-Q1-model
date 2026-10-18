@@ -37,3 +37,7 @@ step8来源data/training/a3_humanplus_head_logged_20261018_HP14/R23_001_s0/miles
 
 README/索引/current state、代码与小清单scoped审diff和audit_git_payload后本地提交。GitHub已知publickey写失败不重复push，LOCAL_COMMITTED_UNPUSHED；原始日志/模型LOCAL_ONLY，未验网盘。下一单次独立登记→verify-training→audit→完整效果及独立审计，每重要阶段即时保存。前台原zhy-a3暂停避免重叠，完成后恢复原30分钟持续优化，其他自动任务不变。
 
+
+## 16:30 独立登记完成
+
+代码c611022，HP15单次register完成；291源码/494输入（含HP14已验工件及故障收据）和原10环境来源固定。来源step8 c508fe2a...，预算0新optimizer/0训练交互，仅最终8完整效果8769步。登记资源元数据通过但不是未来三次启动门。原HP14 STOPPED和成功训练阶段保持，下一新合同verify-training，不调用旧命令。LOCAL_COMMITTED_UNPUSHED。

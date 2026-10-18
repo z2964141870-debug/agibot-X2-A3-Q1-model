@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+最新HP21 isaac-baseline完整499步/原生关闭0/独立verified=true，55.214秒；12健康CPU87/GPU48、新增kernel/OOM0/无组残留，原历史Xid43仍留存。Isaac035整段不倒/RMSE0.10478640565rad，不与MuJoCo混比。修复真实入口已通过，下一单次256更新98304交互专项训练→保存验证→最终双模拟器；恢复读[修复README19:56节](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)/HP21_result/isaac-baseline_audit，不复跑HP20/旧审计、不放松资源门，GitHub未同步。
+
 最新HP21/R27已独立登记，实施f94e9e9/D05冻结341代码112输入11环境，RC01明确历史Xid43处理。0本合同模型/仿真/optimizer；下一实时三次5秒启动门后isaac-baseline499步→独立审计→原固定专家训练。恢复读[专项修复README](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)及HP21_plan/RC01/D05，旧HP20不复跑，035仍baseline，GitHub未同步。
 
 最新19:50：[专项修复RC01/D05](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)实施并冻结341源码/112现存输入/11环境，6标准库服务器通过/Mac5+1skip。RC01在用户“修，修好了继续优化”授权下精确处理历史同PID Xid43，原故障前baseline和双journal前缀保留，任何新增事件仍拒绝，0新GPU执行。下一独立HP21/R27登记→真实499步Isaac基线/关闭审计→原256更新专项训练，不能复跑HP20或旧审计。恢复先读本README与RC01/D05清单；前台修复自动任务仍PAUSED，真实通过后恢复原30分钟，035仍baseline，GitHub未同步。

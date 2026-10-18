@@ -64,3 +64,7 @@ HP11基线六衣服均RMSE0.13932748084287783rad、5/6不倒，四官方4/4不�
 HP14 verify-training单次启动后在函数导入initial_probability时，经cloth_constrained_trainer→consistent_precision→verified_finetune导入gear_sonic，因该验证worker的PYTHONPATH只有工程根而ModuleNotFoundError退出1。异常发生在读取官方/保存PT之前；0保存模型反序列化、0效果回放。原train COMPLETE及关闭独立验收不变，整个HP14 result保留STOPPED，不重跑或修改其注册源码。verify-training_audit verified=false，累计16健康CPU最高82/GPU47°C、0FATAL/新增OOM/残留，无已证实机器故障。
 
 用户已恢复持续推进。下一修复评估入口的纯数值函数依赖，在新独立只读模型评估合同中明确使用HP14已完成且独立验收的训练工件，不恢复HP14、不重新训练或追加交互。新合同登记前仅代码/标准库/SHA；原HP14失败验证没有已完成的张量检查可复跑。新评估仍须完整最终checkpoint/所有权/Adam/token/配方检查和全部10项匹配效果；任何科学失败保持拒绝，不因工程修复放宽门。HP13/HP12原停止模型仍不评测。
+
+## 16:29 剩余评估独立合同实施
+
+[HP15实施与预算](README_A3_HUMANPLUS_HEAD_ASSESSMENT_20261018.md)已保存：只读接受本HP14已独立验收的完整训练工件，在新合同完成此前未开始的保存PT验证与最终10项效果，0新训练/optimizer/交互。新6标准库控制Mac/新机各通过，来源493项SHA核验通过。纯概率公式/门及原效果/Adam验证AST保持。HP14原结果/代码/故障不改，不重跑原验证或训练。下一新合同登记并重查实时资源，未登记前0新增张量/模型/仿真；035无新改善证据。

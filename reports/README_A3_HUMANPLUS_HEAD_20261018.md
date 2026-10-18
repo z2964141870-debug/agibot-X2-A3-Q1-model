@@ -1,6 +1,6 @@
 # A3 humanplus 原动作输出头独立短训练
 
-记录日期：2026-10-18。阶段：D01实施完成、独立HP13/R22已于15:37北京时间单次登记，尚未训练。下方15:35为实施阶段证据。
+记录日期：2026-10-18。阶段：独立HP13/R22。15:44北京时间终态STOPPED_BROKER_LOG_PATH；实际8更新完成但关闭日志验收失败，不是已验收训练模型。下方15:35/15:37为历史阶段证据。
 
 ## 目标与范围
 
@@ -33,7 +33,7 @@ readiness为data/manifests/a3_humanplus_head_readiness_20261018.json，SHA b1237
 
 ## 命令、产物与下一步
 
-以下在服务器工程根执行，readiness和标准库控制本阶段已完成，不重复；新实验尚未登记，不能直接跳到worker/native。
+以下为服务器工程根本次已各单次执行的历史命令，终态STOPPED后禁止重跑；不能直接跳到worker/native或后续成功验证。
 
 ```bash
 /usr/bin/python3 -B -m script.a3.humanplus_head register
@@ -41,7 +41,7 @@ readiness为data/manifests/a3_humanplus_head_readiness_20261018.json，SHA b1237
 /usr/bin/python3 -B -m script.project_tools.humanplus_head_audit --stage train
 ```
 
-科学阶段必须逐次保存记录并独立审计；STOPPED则只运行新的只读停止收据审计，不调用verify-training/效果。成功才依次verify-training、cloth、official、effect及其独立审计。
+科学阶段必须逐次保存记录并独立审计；本次STOPPED后只完成新的终态JSON收据审计，没有调用verify-training/效果。候选拒绝专用humanplus_head_stop_audit不适用于本次日志验收故障，未调用。
 
 预定输出data/experiments/a3_humanplus_head_20261018_HP13、data/training/a3_humanplus_head_20261018_HP13/R22_001_s0、logs/a3_humanplus_head_20261018_HP13；登记前账本确认无HP13现存计划。实际两key形状/梯度/16环境尚未验收，不以fakes冒充。下一先scoped审diff/载荷审计/本地提交，再独立register及真实启动门。
 
@@ -54,3 +54,21 @@ README、索引/current state、代码与小清单scoped保存。GitHub SSH publ
 执行源码781639070298fc7e17d99b0f19e34e433565efc0，独立计划data/manifests/a3_humanplus_head_20261018_HP13_plan.json状态REGISTERED。register重新核对readiness全部代码与输入身份、D01继承来源和环境SHA；包含输入大小、8更新/32提案/3072交互和2148外层调用预算。原HP11合同/teacher/效果门及无恢复/早期效果规则不变。登记仅采元数据，没有加载模型/张量或运行仿真/optimizer；尚无未来阶段三次启动门证明。
 
 下一仅本计划train，经原supervisor三次5秒资源门才允许创建16环境；每阶段及独立审计后保存README。任何科学STOPPED只读新停止收据，不调用成功验证或早期效果。
+
+## 15:44 训练后日志验收故障与终态
+
+登记提交86712ca后，单次train由原监督器三次5秒启动门通过再创建16环境cuda:0。fresh035 Actor/Critic精确匹配、空Adam、实际两head形状29×512/29与梯度、其余Actor冻结保护有运行JSON证据。完成8整更新、32原生提案/32提交、8rollout/3072交互；32候选均首比例1接受，加32live基线共64完整候选机制检查。提交后teacher RMSE最大及最终值0.01891755871474743，maxabs最大0.08703947067260742，均在原0.05/0.5门内。固定源码和事件推导外层Actor/decoder804次，低于2148上限；不是kernel仪表计数。
+
+保存0/2/4/8，step8为226,205,975字节，SHA 63f6989b73b4b29639e854e36112a7cc5202f1b7aaa080dad1c1a925393fecd8。它是未最终验收的存证模型，不是已通过效果的新策略。停止后没有张量反序列化、模型验证或效果回放。
+
+训练子进程留下native_training.json（8/32/3072、CUDA同步）、training_complete/context_clear_returned/native_close_begin，native_exit.json实际returncode=0；app.close未返回Python，因此没有native_close_returned。这与此前原生退出行为一致，但本次完整Kit关闭日志仍未验收，不能仅凭退出0补成功。
+
+故障在标准库broker：复用了旧入口中从stdout匹配`Logging to file:`并要求唯一ENV/isaacsim/kit/logs路径的逻辑。当前匹配到的是IsaacLab环境日志`/tmp/isaaclab/logs/isaaclab_2026-10-18_15-39-35.log`，并非已证实的Kit日志，因此抛`ValueError: Exactly one authorized native Kit log required`，worker退出1、监督器终态STOPPED。没有发现足以证明当前Kit完整关闭的日志，不将/tmp日志重新命名/移动来满足门。实施时标准库控制覆盖了参数/调用/保存隔离，但没有覆盖日志提示所属组件与路径的这个组合；不能把此前控制通过当本次关闭已通过。
+
+12健康样本同boot afb6796b-3883-4df4-99ea-bc381c52ea13，CPU最高79/GPU46°C、可用最小19,017,109,504字节，0FATAL/新增OOM/自有组残留；阶段55.164秒。单次阶段审计verified=false，after_issues和remaining_own_group_processes均空；没有已证实机器故障。这是运行/验收异常，按原异常停止约定保存并暂停zhy-a3，不当作teacher科学拒绝。
+
+证据为data/manifests/a3_humanplus_head_20261018_HP13_{plan,result,train_audit,terminal_receipt_audit}.json。新增独立humanplus_head_terminal_audit.py只读现有JSON与checkpoint字节SHA，验证32事务/所有权/梯度收据、teacher门、8rollout、4份checkpoint sidecar及无后续阶段；不修改注册源码或终态、不加载PT、不复跑旧审计。其状态VERIFIED_STOPPED_BROKER_LOG_RECEIPTS_NOT_MODEL_OR_EFFECT_ACCEPTANCE，不能代替成功张量验证。原生progress/console/health及训练目录原样保留，模型/原始日志LOCAL_ONLY。
+
+zhy-a3已通过应用工具更新为PAUSED，30分钟原节奏保留，其他任务不变。没有自有作业残留，没有开机恢复。HP13全部register/train/阶段审计/terminal审计已单次执行，禁止重跑、扩预算、verify-training和任何早期/最终效果；HP12和E46–E50同样保持关闭。
+
+恢复入口仅先只读定位未来独立契约的Kit日志输出地址及可可靠绑定的关闭收据，必须显式约定自有日志路径或运行时身份，不扫描任意旧日志充当本次证据，不降低关闭验收。本轮尚未实施未来日志修复或登记HP14，不自动再次训练。035仍baseline，无闭环改善证据；后续推进须新的明确恢复指示，不能把这份故障审计当训练重试许可。

@@ -1,8 +1,8 @@
 # YUANQI 当前状态与下一步
 
-最新2026-10-18北京时间15:37：[HP13/R22输出头独立训练已单次登记](README_A3_HUMANPLUS_HEAD_20261018.md)，执行源码7816390，计划data/manifests/a3_humanplus_head_20261018_HP13_plan.json固定278代码/435输入大小SHA/8环境来源。仅两head及原Critic可训练，其他Actor冻结；独立entry/保存名映射/成功与泛化停止审计不写HP12。
+最新2026-10-18北京时间15:44：[HP13/R22训练后日志验收STOPPED](README_A3_HUMANPLUS_HEAD_20261018.md)。实际16环境cuda:0、fresh035/空Adam、两head形状/梯度收据齐全，完成8更新/32提案及提交/3072交互，32候选均首比例1接受、32live基线；teacher RMSE最高0.01891756/maxabs0.08703947。0/2/4/8已存，step8为226205975字节/SHA63f6989b73b4b29639e854e36112a7cc5202f1b7aaa080dad1c1a925393fecd8，仅未验收存证，035无闭环改善证据。
 
-14项新标准库控制两端通过，readiness SHA b123704feef4950522846ab43a882fcb0d71044f82efdea9b3ef4636bfafbf96。登记同boot、CPU81/GPU42°C/可用24,317,837,312字节、0GPU计算/FATAL/新增OOM，仅快照，不等于三次启动门；0模型/仿真/optimizer。下一scoped保存后仅train→新阶段审计；原三次5秒资源门、8更新/32提案/3072交互/256候选+32基线/2148外层调用与原teacher/HP11效果门保持。科学STOPPED不恢复/早期效果，HP12及E46–E50关闭，035无新改善；zhy-a3仍30分钟ACTIVE，GitHub未同步。以下为历史。
+原生完成/CUDA同步/clear_instance/native_close_begin及退出0已有证据，但broker仅匹配到/tmp/isaaclab/logs/isaaclab_2026-10-18_15-39-35.log并误要求Kit路径，抛Exactly one authorized native Kit log required，关闭日志未验、train_audit verified=false。12健康同boot、CPU最高79/GPU46°C/可用最小19017109504字节、0FATAL/新增OOM/残留；55.164秒，未证实机器故障。新terminal_receipt_audit仅读JSON与4checkpoint大小SHA，0停止后张量/模型验证/效果，不补成功。恢复读data/manifests/a3_humanplus_head_20261018_HP13_{plan,result,train_audit,terminal_receipt_audit}.json；执行源码7816390/登记86712ca。HP13各阶段已单次执行，禁止重跑/扩预算/verify-training/效果，原源码终态不改；HP12及旧关闭链同样保留。zhy-a3已PAUSED，原30分钟节奏留存；下一仅只读固定未来独立Kit日志/关闭契约，未实施新修复或HP14，不自动新科学运行。GitHub未同步，模型/原日志LOCAL_ONLY。以下为历史。
 
 最新2026-10-18北京时间14:00：[HP12固定短训练STOPPED](README_A3_HUMANPLUS_FINITE_20261018.md)。16环境cuda:0与fresh035 Actor/Critic/空Adam已实跑，6整更新+第7次3batch、28提案/27提交/2688交互。第28次1至1/128全部teacher RMSE超0.05，最小0.0500001531092；目标均降低、maxabs通过，参数/Adam拒绝前后摘要不变。step0/2/4仅存证，step8不存在、0效果回放，无新035改善。
 

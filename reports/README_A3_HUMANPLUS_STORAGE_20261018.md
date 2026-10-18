@@ -36,3 +36,9 @@ S01 execute于2026-10-18T10:11:25.820289Z至10:11:26.305331Z单次完成，COMPL
 计划SHA6d92bf77aef290bded4e53bd8cb46c9162a8d09691fb086fae2046f334a26653；结果SHA b3a88738925e036c0ba72eb30754b96887c0e4003c9674a5c655d97306672333。data/manifests/a3_humanplus_weight_prune_20261018_S01_{plan,result,audit}.json保存逐路径/大小SHA/硬链接/删除进度/独立核验。最终进程检查明确排除系统sd-pam/ssh-agent/sshd登录凭据服务，其他可见相关同UID任务FD/maps无选中文件；未检查其他UID进程内存，不宣称全系统句柄扫描。数据/配置/原始日志/指标/JSON均保留，未改历史终态；历史artifact SHA不代表被删权重现在仍存在。
 
 用户存储授权已写AGENTS.md和README_STORAGE.md。HP12/HP13/HP14/HP18及HP16 bundle选中权重已永久弃用，不再运行旧checked链/复验/恢复/重放或为缺失文件重建。新科学计划仅纳入实际必要且存在的输入，不能继承历史审计全部artifact作为当前依赖。GitHub仍LOCAL_COMMITTED_UNPUSHED；删除未备份弃用权重不称备份，必要模型和数据仍LOCAL_ONLY。下一持续主线先保存数组/指标与既有研究去重选择实质不同方法，不重复已拒绝D01/D02配方。
+
+## S02：HP19淘汰权重计划
+
+HP19/D03已完成十项匹配效果且独立审计verified=true/gate=false，候选弃用，原终态提交b302e10。按同一用户存储授权，仅选择HP19/R25保存0/2/4/8四权重及最终8 bundle硬链接、四last符号链接，共9路径/4唯一inode。逐路径大小SHA及全部硬链接已核对，计划释放812695552分配字节（逻辑812666268字节）；不是网盘备份。
+
+新独立prune_humanplus_route_weights复用S01文件系统保护语义，但S01源码/终态不改、不复跑。2项新增范围/完整拒绝门控制Mac和新机各通过；接受候选、未验或STOPPED均拒绝删除。计划固定035/E11/E12三必要输入和HP19的128非选中证据文件大小SHA，保留配置、全部原始轨迹/日志指标、sidecar及独立审计。148相关同UID非登录任务FD/maps无选中文件，系统登录凭据服务/其他UID内存不检查，未扩权。先scoped保存代码与S02_plan，再单次execute和audit；不加载任何张量或复跑科学审计。

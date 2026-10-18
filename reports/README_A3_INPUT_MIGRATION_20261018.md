@@ -1,5 +1,25 @@
 # A3已验输入迁移到humanplus
 
+10/18北京时间10:20最新：用户明确“直接迁移，慢一点也没关系”，覆盖本次旧手动交接等待与120秒慢传截止。HP04直接迁移COMPLETE_VERIFIED，11文件613,119,744字节单次112.032秒完成；035 PT已到位。连同HP03共63文件628,994,284字节独立大小/SHA通过，关键训练输入10/10。当前INPUTS_VERIFIED_WAIT_RUNTIME_VALIDATION，未启动模型/训练。下方01:16及更早缺失/等待状态均为历史。
+
+## HP04直接迁移与独立验收
+
+用户在本次对话明确由代理搬迁剩余文件，允许慢传，不再要求用户手动搬迁。此前源socket已失效、BatchMode连接拒绝；随后使用用户当前会话提供的认证，通过交互SSH恢复临时master，ControlPersist为12小时。密码没有写入脚本、日志、Git或自动任务，也未复制私钥或修改认证配置。主机校验保持StrictHostKeyChecking=yes。
+
+新增script/project_tools/humanplus_large_transfer.py，6项Mac标准库文件/路径控制通过。传输前固定data/manifests/a3_humanplus_large_transfer_plan_20261018_HP04.json，包括代码SHA、原11文件路径/大小/SHA、单文件六小时网络上限和0自动失败重试；不再使用120秒慢传截止。此HP04是用户明确再授权后的直接迁移，不改HP02停止结果、不复用其部分归档，也不复跑HP03。
+
+使用系统OpenSSH SFTP，humanplus直接从59读取，Mac只存小代码/清单。先在源逐文件核验大小/SHA，再逐文件下载到data/migrations/a3_humanplus_large_inputs_20261018_HP04/{00..10}.part，核验普通文件/路径无软链接/大小/SHA后以不覆盖硬链接放入工程，最终路径再次核验。共11文件，0既有文件覆盖、0源文件删除；没有下载整套环境或启动模型。大型暂存/模型/轨迹均LOCAL_ONLY，尚无网盘备份核验证据。
+
+10:19:26传输完成，结果data/manifests/a3_humanplus_large_transfer_result_20261018_HP04.json，耗时112.032秒。035 PT为402,050,931字节，SHA256 9cf33be2f4e602858b68ce31d5824113ab1dda250acaab5842b6d3bf88b70f2d。10:19:57另用独立标准库流式SHA重新核验HP03的52文件和HP04的11文件，共63/63、628,994,284字节通过。小清单data/manifests/a3_humanplus_large_transfer_verification_20261018_HP04.json；原始源校验/SFTP/逐文件收据/独立验收在logs/a3_humanplus_20261018_HP04/。
+
+执行命令为在/home/humanplus/YUANQI_A3运行/usr/bin/python3 script/project_tools/humanplus_large_transfer.py register，再execute；两者均已单次执行完成，禁止将命令当作复跑指示。started.json与最终result已存在，脚本拒绝再次执行有效载荷传输。
+
+独立验收同时只读核验新机同boot afb6796b-3883-4df4-99ea-bc381c52ea13，可用22,611,034,112字节；GPU1396MiB/0%/43°C、无GPU计算应用/可见计算，journal1410条、0FATAL/新增OOM。没有清缓存或干预其他工程。该快照及文件通过不等于三次启动验收、ABI/PhysX/fused CUDA或完整监督器通过。历史轨迹仅来源证据，新机035匹配基线仍须重测，0张量/模型/仿真/optimizer。
+
+阶段代码/清单/README/索引/current state按scoped审计本地提交；既有GitHub写权限未恢复，不循环重试相同失败push，仍LOCAL_COMMITTED_UNPUSHED。旧HP02/HP03计划、结果和partial保留。zhy-a3沿用原id/30分钟，提示更新为输入已齐与下一步独立新机运行验证，不再等待用户搬文件。下一步先独立登记监督器集成和环境小验证，再重测035六衣服/四官方完整匹配基线，最后原预算8更新短训练及最终checkpoint匹配评测；本轮只完成迁移。
+
+## HP02/HP03历史记录
+
 10/18北京时间01:16接续：01:09外部EgoLocate计算已退出，035 PT/10历史轨迹仍未到位，转WAIT_USER_LARGE_TRANSFER；后续启动重新核验资源。[只读遥测适配](README_A3_HUMANPLUS_TELEMETRY_20261018.md)完成标准库代码/14控制及两采样元数据探针，不代表完整运行保护或环境通过。下文00:33及更早占用是历史。
 
 记录：2026-10-18。HP02批量传输STOPPED_TRANSFER_TIMEOUT_NO_RETRY；独立HP03小文件迁移COMPLETE_SMALL_FILES_ONLY，52项大小/SHA通过且已放入工程。等待大文件交接，未启动训练。

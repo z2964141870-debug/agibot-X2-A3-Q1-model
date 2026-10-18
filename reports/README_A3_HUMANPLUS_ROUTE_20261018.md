@@ -56,3 +56,7 @@ README/索引/current state/小清单及审查脚本scoped审diff和audit_git_pa
 HP19单次train完成8更新/32提案32提交/3072交互，全部8个rollout实际a3_fast384、G1独占0，原生配对mask为[1,0,0,1]。64候选含live检查，推导外层调用872/2440；fresh035对D02固定preclip标签maxabs2.0265579223632812e-6。原E11硬teacher最高RMSE0.017082905396819115/maxabs0.07597750425338745，不放宽阈值。
 
 原生16环境cuda:0完成/CUDA同步、专属Kit日志实际设置/native PID/清回调/正常关闭退出0通过。train独立审计verified=true，60.162秒，13健康同boot、CPU最高88/GPU46°C、最低可用19223252992字节，0FATAL/新增OOM/自有组残留；未到温度停止门，旧快照不是未来启动证据。保存0/2/4/8尚待独立张量核验，0新效果回放，无035改善证据。下一仅新合同verify-training。
+
+## 保存状态核验通过
+
+单次verify-training及独立审计verified=true。0/2/4/8大小SHA、fresh035 Actor/Critic和空Adam、原两key变化/其他Actor参数与buffer冻结、Adam整数ID所有权/矩形状/有限性/4倍step计数、实际cached token/首概率、D02 loss及旧teacher收据均通过。完整manager_env/algo配置只允许原存储字段与登记g1采样概率差异，两个encoder及原配对保留；8次真实路由共3072个a3_fast。累计17健康/0新增异常/无残留，阶段间不作连续证明。下一仅最终8六衣服2994步完整回放，不评早期点。

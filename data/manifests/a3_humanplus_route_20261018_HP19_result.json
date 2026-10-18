@@ -78,12 +78,3113 @@
           }
         }
       }
+    },
+    {
+      "stage": "verify-training",
+      "state": {
+        "status": "COMPLETE",
+        "argv": [
+          "/home/humanplus/anaconda3/envs/x2-sonic-isaaclab/bin/python",
+          "-B",
+          "-u",
+          "-m",
+          "script.a3.humanplus_route_trial",
+          "worker",
+          "--stage",
+          "verify-training"
+        ],
+        "started_at": 1792319640.860467,
+        "supervisor_pid": 2948243,
+        "seconds_limit": 900.0,
+        "interval_seconds": 5.0,
+        "no_automatic_retry": true,
+        "worker_pid": 2948352,
+        "launched_at": 1792319651.0453973,
+        "returncode": 0,
+        "finished_at": 1792319656.0334203,
+        "elapsed_seconds": 15.17295447998913
+      },
+      "receipt": {
+        "status": "COMPLETE",
+        "replay_regularizer": {
+          "replay_frames": 384,
+          "replay_batches": 32,
+          "fresh035_replay_label_max_abs": 2.0265579223632812e-06,
+          "legacy_hard_guard_unchanged": true
+        },
+        "scope": "VERIFIED_HEAD_TRAINING_NOT_EFFECT",
+        "checkpoints": [
+          {
+            "writer": "yuanqi_durable_v1",
+            "step": 0,
+            "file": "model_step_000000.pt",
+            "bytes": 134048535,
+            "sha256": "f2c4e4d05ca888f4512094c86d6f44df85abd52bc5bf30ea1a584bda55e25c3d",
+            "backup_status": "LOCAL_ONLY",
+            "path": "data/training/a3_humanplus_route_20261018_HP19/R25_001_s0/milestone_0/model_step_000000.pt",
+            "changed_actor_names": [],
+            "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8"
+          },
+          {
+            "writer": "yuanqi_durable_v1",
+            "step": 2,
+            "file": "model_step_000002.pt",
+            "bytes": 226205847,
+            "sha256": "a57e8a59d3173dbe442698768501ea2eddb9c6b798c110703bab3f63fcd5f6c7",
+            "backup_status": "LOCAL_ONLY",
+            "path": "data/training/a3_humanplus_route_20261018_HP19/R25_001_s0/milestone_2/model_step_000002.pt",
+            "changed_actor_names": [
+              "actor_module.decoders.g1_dyn.module.12.weight",
+              "actor_module.decoders.g1_dyn.module.12.bias"
+            ],
+            "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8"
+          },
+          {
+            "writer": "yuanqi_durable_v1",
+            "step": 4,
+            "file": "model_step_000004.pt",
+            "bytes": 226205911,
+            "sha256": "a1febf0c18e3d2e249175dbdccfd293d614fc848c86bc26e262376b9013d7c68",
+            "backup_status": "LOCAL_ONLY",
+            "path": "data/training/a3_humanplus_route_20261018_HP19/R25_001_s0/milestone_4/model_step_000004.pt",
+            "changed_actor_names": [
+              "actor_module.decoders.g1_dyn.module.12.weight",
+              "actor_module.decoders.g1_dyn.module.12.bias"
+            ],
+            "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8"
+          },
+          {
+            "writer": "yuanqi_durable_v1",
+            "step": 8,
+            "file": "model_step_000008.pt",
+            "bytes": 226205975,
+            "sha256": "f92ace494e64cdff842db7afd742b8310c1aa48dd77413cd32e1eb414ae77ae9",
+            "backup_status": "LOCAL_ONLY",
+            "path": "data/training/a3_humanplus_route_20261018_HP19/R25_001_s0/milestone_8/model_step_000008.pt",
+            "changed_actor_names": [
+              "actor_module.decoders.g1_dyn.module.12.weight",
+              "actor_module.decoders.g1_dyn.module.12.bias"
+            ],
+            "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8"
+          }
+        ],
+        "optimizer_steps": 32,
+        "updates": 8,
+        "native_route": {
+          "rollouts": 8,
+          "a3_fast_transitions": 3072,
+          "g1_exclusive_transitions": 0,
+          "native_pair_route": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "deployment_identity_gating": false
+        },
+        "initial_probability": {
+          "action_rmse": 3.8325450191223354e-07,
+          "action_max_abs": 2.384185791015625e-06,
+          "changed_frames_over_1e_4": 0,
+          "ratio_mean": 1.0000003576278687,
+          "ratio_min": 0.9999752044677734,
+          "ratio_max": 1.0000152587890625,
+          "max_abs_ratio_minus_one": 2.47955322265625e-05
+        },
+        "finite_contract": {
+          "proposals": 32,
+          "committed": 32,
+          "evaluations": 64,
+          "rows": [
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.3137897253036499,
+                "teacher_mse": 1.7593402863030905e-13,
+                "teacher_rmse": 4.1944490535743674e-07,
+                "teacher_max_abs": 2.86102294921875e-06,
+                "replay_retention_loss": 1.5442240043107847e-13,
+                "replay_quarter": 0
+              },
+              "candidates": [
+                {
+                  "objective": -0.3180828392505646,
+                  "teacher_mse": 1.9541160156677506e-07,
+                  "teacher_rmse": 0.00044205384464652615,
+                  "teacher_max_abs": 0.001294255256652832,
+                  "replay_retention_loss": 1.7101288563026174e-07,
+                  "replay_quarter": 0,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "825d94d9f2aed74f6382a9f9fe21e49241f0f07b594f0303b34b4fb54380154e",
+                  "max_abs": 0.004486350808292627
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "9170909cf094f21c079341fe1e02cba477ba41befca66ec0ee1ffae6eedcce16",
+                  "max_abs": 0.002684761304408312
+                }
+              },
+              "proposal": 1,
+              "global_step": 0,
+              "nominal_group_lrs": [
+                3e-06,
+                3e-06
+              ],
+              "full_gradient_norm": 19.178146362304688,
+              "evaluations": 2,
+              "at": 1792319497.4560893,
+              "parameters_and_optimizer_before_sha256": "8697a3bf0c1123129e5a75e4ed4acd31fbf0b7fece7e0e0724e30c8cb7934850",
+              "parameters_and_optimizer_now_sha256": "677b0629a04b029389b82a686850d5fb7ea3239761e3a59953220b4a982e4754"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.1927405595779419,
+                "teacher_mse": 1.9541160156677506e-07,
+                "teacher_rmse": 0.00044205384464652615,
+                "teacher_max_abs": 0.001294255256652832,
+                "replay_retention_loss": 1.0241838310776075e-07,
+                "replay_quarter": 1
+              },
+              "candidates": [
+                {
+                  "objective": 0.1868356615304947,
+                  "teacher_mse": 7.168279125835397e-07,
+                  "teacher_rmse": 0.0008466569037003949,
+                  "teacher_max_abs": 0.0027744174003601074,
+                  "replay_retention_loss": 3.803641561717086e-07,
+                  "replay_quarter": 1,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "d45f1e5255dcef8c2abb3c5168a3fab3be93c21e27cae5d71f4f511e6bb226f4",
+                  "max_abs": 0.008671864867210388
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "0b0f5df14db5882b4bdf5c520292d46bd4b1a8b12d80fb574b3292747711e6cc",
+                  "max_abs": 0.004213113337755203
+                }
+              },
+              "proposal": 2,
+              "global_step": 0,
+              "nominal_group_lrs": [
+                4.5e-06,
+                4.5e-06
+              ],
+              "full_gradient_norm": 34.67909622192383,
+              "evaluations": 2,
+              "at": 1792319498.0579882,
+              "parameters_and_optimizer_before_sha256": "265d4306344a1062a48d85a3447acdf7ecd57716cb2013f94f751fb47ca85697",
+              "parameters_and_optimizer_now_sha256": "d64f4d37584824df393d0ff6ebc084d70f066b462cea3e02a755e02c6cbddad8"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.199715256690979,
+                "teacher_mse": 7.168279125835397e-07,
+                "teacher_rmse": 0.0008466569037003949,
+                "teacher_max_abs": 0.0027744174003601074,
+                "replay_retention_loss": 4.3022649265367363e-07,
+                "replay_quarter": 2
+              },
+              "candidates": [
+                {
+                  "objective": 0.1905655413866043,
+                  "teacher_mse": 1.8064887399305007e-06,
+                  "teacher_rmse": 0.0013440568216896564,
+                  "teacher_max_abs": 0.004578590393066406,
+                  "replay_retention_loss": 1.096980213333154e-06,
+                  "replay_quarter": 2,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "ca04b6504d5f0bd666c12fedebaecd49be707c2014fa28fa9f642846882c263c",
+                  "max_abs": 0.0084370207041502
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "c1fb9d20c9c2f2f3cd88419cf1905ab0a14fe4309e4c409829e373be91b0319a",
+                  "max_abs": 0.002044127555564046
+                }
+              },
+              "proposal": 3,
+              "global_step": 0,
+              "nominal_group_lrs": [
+                6.75e-06,
+                6.75e-06
+              ],
+              "full_gradient_norm": 41.85388946533203,
+              "evaluations": 2,
+              "at": 1792319498.664496,
+              "parameters_and_optimizer_before_sha256": "1e380c061123f5290ef61f161f254770827053178685afe7d6be726c2a84beda",
+              "parameters_and_optimizer_now_sha256": "9752bc4c1d524d7eb079eeb3dd3c455807cd0fc448741ac758e1d4fe9e2ea4de"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.35958877205848694,
+                "teacher_mse": 1.8064887399305007e-06,
+                "teacher_rmse": 0.0013440568216896564,
+                "teacher_max_abs": 0.004578590393066406,
+                "replay_retention_loss": 9.862500292001641e-07,
+                "replay_quarter": 3
+              },
+              "candidates": [
+                {
+                  "objective": -0.3639536201953888,
+                  "teacher_mse": 3.685014462462277e-06,
+                  "teacher_rmse": 0.001919639149023138,
+                  "teacher_max_abs": 0.007775306701660156,
+                  "replay_retention_loss": 1.9918218185921432e-06,
+                  "replay_quarter": 3,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "788d94b2ea4284d71ae756c48232b30a1e005a53c7638636f9f6992737866cdc",
+                  "max_abs": 0.0057911342009902
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "cb212443aaaf3e9f161de964cca8ba5b6fb7eed9112d647a01aed8ca45e5ec28",
+                  "max_abs": 0.003421901725232601
+                }
+              },
+              "proposal": 4,
+              "global_step": 0,
+              "nominal_group_lrs": [
+                1.0124999999999999e-05,
+                1.0124999999999999e-05
+              ],
+              "full_gradient_norm": 13.799554824829102,
+              "evaluations": 2,
+              "at": 1792319499.2853117,
+              "parameters_and_optimizer_before_sha256": "a2f866800cd4481d1cadc0e91e898601c10530ef748388c62b90baa62b9f68b7",
+              "parameters_and_optimizer_now_sha256": "5872b31b5e2d738d71ec85d29959476dcd2ee44607135e774aa6f3d410721c4d"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.03300594910979271,
+                "teacher_mse": 3.685014462462277e-06,
+                "teacher_rmse": 0.001919639149023138,
+                "teacher_max_abs": 0.007775306701660156,
+                "replay_retention_loss": 3.32955482917896e-06,
+                "replay_quarter": 0
+              },
+              "candidates": [
+                {
+                  "objective": 0.025074422359466553,
+                  "teacher_mse": 7.378410373348743e-06,
+                  "teacher_rmse": 0.0027163229508563123,
+                  "teacher_max_abs": 0.011423289775848389,
+                  "replay_retention_loss": 6.701442543999292e-06,
+                  "replay_quarter": 0,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "962ad8a6e617386a6b6633ac0ae378e2e14559bd1700eb27401a091161452280",
+                  "max_abs": 0.010350707918405533
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "fbe13e709592721cccffbad02695868430ab755ca725c8b1186284667e8895d1",
+                  "max_abs": 0.0027148097287863493
+                }
+              },
+              "proposal": 5,
+              "global_step": 1,
+              "nominal_group_lrs": [
+                1.5187499999999998e-05,
+                1.5187499999999998e-05
+              ],
+              "full_gradient_norm": 40.58808898925781,
+              "evaluations": 2,
+              "at": 1792319500.9490416,
+              "parameters_and_optimizer_before_sha256": "0b9359c92dcc782fb889f64035f8bfb6868dc15a9699ccb1f708c3d2da96b11d",
+              "parameters_and_optimizer_now_sha256": "076fb30619ddaaa052e410a7efdf4aa1f5a3fcda14b33deb1374a30102c62b1c"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.28996655344963074,
+                "teacher_mse": 7.378410373348743e-06,
+                "teacher_rmse": 0.0027163229508563123,
+                "teacher_max_abs": 0.011423289775848389,
+                "replay_retention_loss": 4.001013166998746e-06,
+                "replay_quarter": 1
+              },
+              "candidates": [
+                {
+                  "objective": -0.2999519109725952,
+                  "teacher_mse": 1.3794860933558084e-05,
+                  "teacher_rmse": 0.0037141433647017563,
+                  "teacher_max_abs": 0.017739534378051758,
+                  "replay_retention_loss": 7.52584764995845e-06,
+                  "replay_quarter": 1,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "073fcc5eb5ee45ac3873afdcf7bca19eefa5adba8805b28f685dac63c238e0cb",
+                  "max_abs": 0.00575948366895318
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "c584ec0183c3d1f9782e4cf351c46396eb9c6056b05dbf4e68745f6a94a568d7",
+                  "max_abs": 0.002217578236013651
+                }
+              },
+              "proposal": 6,
+              "global_step": 1,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 21.342891693115234,
+              "evaluations": 2,
+              "at": 1792319501.549139,
+              "parameters_and_optimizer_before_sha256": "fffec36a017c0a17b8a765b5fc2cead3f5ae36fa4ae9fdb08c534e96f48df2f2",
+              "parameters_and_optimizer_now_sha256": "f8a439a130abb93010ace915fbedf26f9ab0770a2133f461b1608d7be2e1e596"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.037191230803728104,
+                "teacher_mse": 1.3794860933558084e-05,
+                "teacher_rmse": 0.0037141433647017563,
+                "teacher_max_abs": 0.017739534378051758,
+                "replay_retention_loss": 8.474188689433504e-06,
+                "replay_quarter": 2
+              },
+              "candidates": [
+                {
+                  "objective": -0.046340856701135635,
+                  "teacher_mse": 2.1347639631130733e-05,
+                  "teacher_rmse": 0.004620350596126957,
+                  "teacher_max_abs": 0.022188901901245117,
+                  "replay_retention_loss": 1.3282316103868652e-05,
+                  "replay_quarter": 2,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "3c4c94e020e62f8f57049da1e2e94bd834df08ebe2647e2b42beb5a893341077",
+                  "max_abs": 0.005979605484753847
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "d405b3614bc01f4dea9dbd0e5ca90a6d30484179475e728f7f21f08079bfd6e6",
+                  "max_abs": 0.003069497412070632
+                }
+              },
+              "proposal": 7,
+              "global_step": 1,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 26.410383224487305,
+              "evaluations": 2,
+              "at": 1792319502.156349,
+              "parameters_and_optimizer_before_sha256": "f8a439a130abb93010ace915fbedf26f9ab0770a2133f461b1608d7be2e1e596",
+              "parameters_and_optimizer_now_sha256": "e6973fece5c9d93f79eceb5c8969c0953e706604ee950e48868eb8f0b96a4596"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.10997723042964935,
+                "teacher_mse": 2.1347639631130733e-05,
+                "teacher_rmse": 0.004620350596126957,
+                "teacher_max_abs": 0.022188901901245117,
+                "replay_retention_loss": 1.1650234228000045e-05,
+                "replay_quarter": 3
+              },
+              "candidates": [
+                {
+                  "objective": -0.11730100214481354,
+                  "teacher_mse": 3.175237725372426e-05,
+                  "teacher_rmse": 0.005634924778000525,
+                  "teacher_max_abs": 0.027067899703979492,
+                  "replay_retention_loss": 1.744779001455754e-05,
+                  "replay_quarter": 3,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "036d796389a2e70cbfef57a7b6417140ee5a4eca54c1c1495f99ed842488ba41",
+                  "max_abs": 0.007136228494346142
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "031ec89ccd9bfcc10979d613068c8aa4a1038cfbf413a8134dc59d81ed1561e9",
+                  "max_abs": 0.0040018148720264435
+                }
+              },
+              "proposal": 8,
+              "global_step": 1,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 13.872941970825195,
+              "evaluations": 2,
+              "at": 1792319502.753664,
+              "parameters_and_optimizer_before_sha256": "e6973fece5c9d93f79eceb5c8969c0953e706604ee950e48868eb8f0b96a4596",
+              "parameters_and_optimizer_now_sha256": "8da215a2b0d04811f932cdfa688cb3bc076284225c6a6da2359fe4ab224f1f80"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.31374141573905945,
+                "teacher_mse": 3.175237725372426e-05,
+                "teacher_rmse": 0.005634924778000525,
+                "teacher_max_abs": 0.027067899703979492,
+                "replay_retention_loss": 2.964459781651385e-05,
+                "replay_quarter": 0
+              },
+              "candidates": [
+                {
+                  "objective": -0.3154233992099762,
+                  "teacher_mse": 4.316017293604091e-05,
+                  "teacher_rmse": 0.006569640244034745,
+                  "teacher_max_abs": 0.03224015235900879,
+                  "replay_retention_loss": 4.0070775867206976e-05,
+                  "replay_quarter": 0,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "e7c9d71af0e0b4f8d5dec0672d28c1e30873ee460ebc7f0135160e545f2f62e5",
+                  "max_abs": 0.004167568404227495
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "7e33a82bc8b6c4f62f9574e552a621af32258e43f205d3c57d32dfb9db4993c6",
+                  "max_abs": 0.002479871502146125
+                }
+              },
+              "proposal": 9,
+              "global_step": 2,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 6.27653169631958,
+              "evaluations": 2,
+              "at": 1792319504.9674804,
+              "parameters_and_optimizer_before_sha256": "8da215a2b0d04811f932cdfa688cb3bc076284225c6a6da2359fe4ab224f1f80",
+              "parameters_and_optimizer_now_sha256": "d37edab4659f46df736f2727285c7b79db89db389b1904cf95341a74d3d61846"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.36751294136047363,
+                "teacher_mse": 4.316017293604091e-05,
+                "teacher_rmse": 0.006569640244034745,
+                "teacher_max_abs": 0.03224015235900879,
+                "replay_retention_loss": 2.418008261884097e-05,
+                "replay_quarter": 1
+              },
+              "candidates": [
+                {
+                  "objective": -0.3694719970226288,
+                  "teacher_mse": 5.5837343097664416e-05,
+                  "teacher_rmse": 0.0074724388988913395,
+                  "teacher_max_abs": 0.037027597427368164,
+                  "replay_retention_loss": 3.131018820567988e-05,
+                  "replay_quarter": 1,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "22c9e265f6c8150e0f9c2604e94fa98b5c9165f16cc771d3be8579eb7ff512f9",
+                  "max_abs": 0.004921295680105686
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "6138121a416024bc4fac5723977478011b6265cfa282ae6ac31421884a69cfbb",
+                  "max_abs": 0.0032415285240858793
+                }
+              },
+              "proposal": 10,
+              "global_step": 2,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 5.903520584106445,
+              "evaluations": 2,
+              "at": 1792319505.5765457,
+              "parameters_and_optimizer_before_sha256": "d37edab4659f46df736f2727285c7b79db89db389b1904cf95341a74d3d61846",
+              "parameters_and_optimizer_now_sha256": "3fa1d3f0e30a274329a6ad5cebb9c1c038bf5b5ed13740df4b9ba86c17966a1c"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 8.727912902832031,
+                "teacher_mse": 5.5837343097664416e-05,
+                "teacher_rmse": 0.0074724388988913395,
+                "teacher_max_abs": 0.037027597427368164,
+                "replay_retention_loss": 3.547093001543544e-05,
+                "replay_quarter": 2
+              },
+              "candidates": [
+                {
+                  "objective": 8.721893310546875,
+                  "teacher_mse": 7.029619155218825e-05,
+                  "teacher_rmse": 0.008384282411285313,
+                  "teacher_max_abs": 0.041930198669433594,
+                  "replay_retention_loss": 4.4616761442739516e-05,
+                  "replay_quarter": 2,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "754de658ae83cac3259fa6779fd9008e3f2c4cb8400ca7dfaf44b4e9d3b15681",
+                  "max_abs": 0.0025620637461543083
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "395d7654443580b22534895cdb200e54ee96adb68dfa1556e4762d0bc134e5d2",
+                  "max_abs": 0.0010744775645434856
+                }
+              },
+              "proposal": 11,
+              "global_step": 2,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 89.31269073486328,
+              "evaluations": 2,
+              "at": 1792319506.1800551,
+              "parameters_and_optimizer_before_sha256": "3fa1d3f0e30a274329a6ad5cebb9c1c038bf5b5ed13740df4b9ba86c17966a1c",
+              "parameters_and_optimizer_now_sha256": "450c4dfac1a175411375661ebf2aabccd165ad167c30741e0f43372ef694b70e"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.28800463676452637,
+                "teacher_mse": 7.029619155218825e-05,
+                "teacher_rmse": 0.008384282411285313,
+                "teacher_max_abs": 0.041930198669433594,
+                "replay_retention_loss": 3.892070526489988e-05,
+                "replay_quarter": 3
+              },
+              "candidates": [
+                {
+                  "objective": -0.28900983929634094,
+                  "teacher_mse": 8.537904068361968e-05,
+                  "teacher_rmse": 0.009240077958741457,
+                  "teacher_max_abs": 0.04731011390686035,
+                  "replay_retention_loss": 4.7104294935707e-05,
+                  "replay_quarter": 3,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "9a48e15732ef9499ac2313191862ea17a84a2a3667972ab24e118d79ff3857aa",
+                  "max_abs": 0.004388650879263878
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "05f8cf75546ae98f1f81c25e15c21a4a51b93dacfab40c42a680e404e607bc77",
+                  "max_abs": 0.0024456370156258345
+                }
+              },
+              "proposal": 12,
+              "global_step": 2,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 7.593332767486572,
+              "evaluations": 2,
+              "at": 1792319506.8033514,
+              "parameters_and_optimizer_before_sha256": "450c4dfac1a175411375661ebf2aabccd165ad167c30741e0f43372ef694b70e",
+              "parameters_and_optimizer_now_sha256": "36d184bd4cdeeb7b133919b80b5e02ffd6a98c438b3f14e4f75e57ea8814e842"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.2538231909275055,
+                "teacher_mse": 8.537904068361968e-05,
+                "teacher_rmse": 0.009240077958741457,
+                "teacher_max_abs": 0.04731011390686035,
+                "replay_retention_loss": 7.818546873750165e-05,
+                "replay_quarter": 0
+              },
+              "candidates": [
+                {
+                  "objective": -0.25893187522888184,
+                  "teacher_mse": 0.00010084664972964674,
+                  "teacher_rmse": 0.01004224326182386,
+                  "teacher_max_abs": 0.05141758918762207,
+                  "replay_retention_loss": 9.208900155499578e-05,
+                  "replay_quarter": 0,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "528b57859dc18e31a7a03d73fd60f16653a1e3f5254f6f8b23dd60c8da97f098",
+                  "max_abs": 0.009601331315934658
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "4a18c65c3dfde773c7381472f87434a1464c048cad9b001361221b5800ab0eab",
+                  "max_abs": 0.0030726040713489056
+                }
+              },
+              "proposal": 13,
+              "global_step": 3,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 17.197847366333008,
+              "evaluations": 2,
+              "at": 1792319508.4628968,
+              "parameters_and_optimizer_before_sha256": "36d184bd4cdeeb7b133919b80b5e02ffd6a98c438b3f14e4f75e57ea8814e842",
+              "parameters_and_optimizer_now_sha256": "6a456cdb799687ad6e04faab3721afd9f094b6ca8b5cc85fa2582ad9669afcbd"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.24246862530708313,
+                "teacher_mse": 0.00010084664972964674,
+                "teacher_rmse": 0.01004224326182386,
+                "teacher_max_abs": 0.05141758918762207,
+                "replay_retention_loss": 5.5924330808920786e-05,
+                "replay_quarter": 1
+              },
+              "candidates": [
+                {
+                  "objective": -0.24519585072994232,
+                  "teacher_mse": 0.0001130968303186819,
+                  "teacher_rmse": 0.010634699352529055,
+                  "teacher_max_abs": 0.053374528884887695,
+                  "replay_retention_loss": 6.219380156835541e-05,
+                  "replay_quarter": 1,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "9a252f4f450746e14b1f5ee0ab9c92593f82b9467cfa2e3eec0bde07cd4d6392",
+                  "max_abs": 0.004591022152453661
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "cf26e5bddcc701c146ba9ad4d7009f1e9820d59b3e9947e05bed6b0cc7d2fd05",
+                  "max_abs": 0.0028815707191824913
+                }
+              },
+              "proposal": 14,
+              "global_step": 3,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 10.536575317382812,
+              "evaluations": 2,
+              "at": 1792319509.0603395,
+              "parameters_and_optimizer_before_sha256": "6a456cdb799687ad6e04faab3721afd9f094b6ca8b5cc85fa2582ad9669afcbd",
+              "parameters_and_optimizer_now_sha256": "ba0e48e928cdb36a4451a59f017cff9148635d1ef43ffc4a37ac3652c948ca2f"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.5136719942092896,
+                "teacher_mse": 0.0001130968303186819,
+                "teacher_rmse": 0.010634699352529055,
+                "teacher_max_abs": 0.053374528884887695,
+                "replay_retention_loss": 7.06914288457483e-05,
+                "replay_quarter": 2
+              },
+              "candidates": [
+                {
+                  "objective": 0.4966258406639099,
+                  "teacher_mse": 0.00012754302588291466,
+                  "teacher_rmse": 0.011293494848049238,
+                  "teacher_max_abs": 0.055149078369140625,
+                  "replay_retention_loss": 7.906615064712241e-05,
+                  "replay_quarter": 2,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "dea895c45917297937bb70bcb05e2b7c1635ef0ea37d2628138940ff60d8034f",
+                  "max_abs": 0.00529444357380271
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "c7254c0a79fde508ff1961ccd6b1e4a76292fc8fb1159b192fe1e22ca18594ce",
+                  "max_abs": 0.0014756473246961832
+                }
+              },
+              "proposal": 15,
+              "global_step": 3,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 43.163536071777344,
+              "evaluations": 2,
+              "at": 1792319509.6762347,
+              "parameters_and_optimizer_before_sha256": "ba0e48e928cdb36a4451a59f017cff9148635d1ef43ffc4a37ac3652c948ca2f",
+              "parameters_and_optimizer_now_sha256": "cca5f00ec1798d70ca266c7f9440078d1bdf6d683929d54631a3201e1dcd7ef3"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.4253213405609131,
+                "teacher_mse": 0.00012754302588291466,
+                "teacher_rmse": 0.011293494848049238,
+                "teacher_max_abs": 0.055149078369140625,
+                "replay_retention_loss": 6.918826693436131e-05,
+                "replay_quarter": 3
+              },
+              "candidates": [
+                {
+                  "objective": -0.4297378659248352,
+                  "teacher_mse": 0.00014099825057201087,
+                  "teacher_rmse": 0.011874268422602332,
+                  "teacher_max_abs": 0.056242942810058594,
+                  "replay_retention_loss": 7.604107668157667e-05,
+                  "replay_quarter": 3,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "4f81c0b669975e9cf836bf5b70f7c16c4df1423662b837d090eb8f9293d260c1",
+                  "max_abs": 0.007541925646364689
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "05aa6c4da668bee42c78eb9ec522e4d77996e0bd2a146badf7df70ee09242f54",
+                  "max_abs": 0.002331321593374014
+                }
+              },
+              "proposal": 16,
+              "global_step": 3,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 21.45167350769043,
+              "evaluations": 2,
+              "at": 1792319510.2884953,
+              "parameters_and_optimizer_before_sha256": "cca5f00ec1798d70ca266c7f9440078d1bdf6d683929d54631a3201e1dcd7ef3",
+              "parameters_and_optimizer_now_sha256": "842382ad6f35c6bd97255c8f0492dce1b6fe419d9413cc754ca07f56eb6751c2"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.1968599557876587,
+                "teacher_mse": 0.00014099825057201087,
+                "teacher_rmse": 0.011874268422602332,
+                "teacher_max_abs": 0.056242942810058594,
+                "replay_retention_loss": 0.00012839346891269088,
+                "replay_quarter": 0
+              },
+              "candidates": [
+                {
+                  "objective": -0.20121362805366516,
+                  "teacher_mse": 0.00015420405543409288,
+                  "teacher_rmse": 0.012417892552043317,
+                  "teacher_max_abs": 0.05734753608703613,
+                  "replay_retention_loss": 0.00014087039744481444,
+                  "replay_quarter": 0,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "5eac132a38c8bdea809afdecb271db9f888d19a3fa39c5ee4ecc56bcef7f1a52",
+                  "max_abs": 0.006957639940083027
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "fa8d2a77dd7b51c5c29264e72b79ac11d29032b1c6877d9dc76b4b1a67cbb6b0",
+                  "max_abs": 0.0035287474747747183
+                }
+              },
+              "proposal": 17,
+              "global_step": 4,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 15.886256217956543,
+              "evaluations": 2,
+              "at": 1792319512.4919739,
+              "parameters_and_optimizer_before_sha256": "842382ad6f35c6bd97255c8f0492dce1b6fe419d9413cc754ca07f56eb6751c2",
+              "parameters_and_optimizer_now_sha256": "f64a1a21240f5b18928f8ac49be56200b4a36a430534c2c29d18dde5d488ef11"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.21385043859481812,
+                "teacher_mse": 0.00015420405543409288,
+                "teacher_rmse": 0.012417892552043317,
+                "teacher_max_abs": 0.05734753608703613,
+                "replay_retention_loss": 8.279393659904599e-05,
+                "replay_quarter": 1
+              },
+              "candidates": [
+                {
+                  "objective": -0.2186857908964157,
+                  "teacher_mse": 0.00016808256623335183,
+                  "teacher_rmse": 0.012964666067174727,
+                  "teacher_max_abs": 0.05832052230834961,
+                  "replay_retention_loss": 8.991787035483867e-05,
+                  "replay_quarter": 1,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "d452d20e7118fc4ede468651ddf6b39915ab73e565f4b5e8aa0924c4231749ec",
+                  "max_abs": 0.007385915145277977
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "3b3e7a012ab52fe7c3c96c59c1d89335ea2f64b922d8c1ea44d7eeeec087cfd5",
+                  "max_abs": 0.0025217835791409016
+                }
+              },
+              "proposal": 18,
+              "global_step": 4,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 17.76449203491211,
+              "evaluations": 2,
+              "at": 1792319513.1007943,
+              "parameters_and_optimizer_before_sha256": "f64a1a21240f5b18928f8ac49be56200b4a36a430534c2c29d18dde5d488ef11",
+              "parameters_and_optimizer_now_sha256": "10dbb99cfa05b6fde2577e18ec4f2580ea4cb310bd3e9982d9555e5a454b124a"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.16306160390377045,
+                "teacher_mse": 0.00016808256623335183,
+                "teacher_rmse": 0.012964666067174727,
+                "teacher_max_abs": 0.05832052230834961,
+                "replay_retention_loss": 0.00010275173553964123,
+                "replay_quarter": 2
+              },
+              "candidates": [
+                {
+                  "objective": -0.16872538626194,
+                  "teacher_mse": 0.00018227531109005213,
+                  "teacher_rmse": 0.013500937415233512,
+                  "teacher_max_abs": 0.05916118621826172,
+                  "replay_retention_loss": 0.00011099402036052197,
+                  "replay_quarter": 2,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "f9326f3e508da16533490701d7b6b00db732e82308aad0c465fbdec5068243c0",
+                  "max_abs": 0.010696565732359886
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "ef9c5aa116c75ba1276d3d4923f52db42d764d08485098d2b1d6e0b5b3dc6a2d",
+                  "max_abs": 0.003335205838084221
+                }
+              },
+              "proposal": 19,
+              "global_step": 4,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 25.87156105041504,
+              "evaluations": 2,
+              "at": 1792319513.705291,
+              "parameters_and_optimizer_before_sha256": "10dbb99cfa05b6fde2577e18ec4f2580ea4cb310bd3e9982d9555e5a454b124a",
+              "parameters_and_optimizer_now_sha256": "95cb0b189204003040e23519f6f2c9d794b64b23dc66a5a9f108e3dc81e4faee"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.15514545142650604,
+                "teacher_mse": 0.00018227531109005213,
+                "teacher_rmse": 0.013500937415233512,
+                "teacher_max_abs": 0.05916118621826172,
+                "replay_retention_loss": 9.743554255692288e-05,
+                "replay_quarter": 3
+              },
+              "candidates": [
+                {
+                  "objective": 0.14748959243297577,
+                  "teacher_mse": 0.0001983547699637711,
+                  "teacher_rmse": 0.014083847839414167,
+                  "teacher_max_abs": 0.05818343162536621,
+                  "replay_retention_loss": 0.00010575367195997387,
+                  "replay_quarter": 3,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "fb22704154d5808b0005b8300ca5137b0093fcfbd9e7ea23c0c33b7190000c83",
+                  "max_abs": 0.007333019282668829
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "50cf89cc099c03e96123b665e6eda3c6ac6d2609d8176c80adf724590874166b",
+                  "max_abs": 0.004516255110502243
+                }
+              },
+              "proposal": 20,
+              "global_step": 4,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 23.650907516479492,
+              "evaluations": 2,
+              "at": 1792319514.3063002,
+              "parameters_and_optimizer_before_sha256": "95cb0b189204003040e23519f6f2c9d794b64b23dc66a5a9f108e3dc81e4faee",
+              "parameters_and_optimizer_now_sha256": "7b2e0a0bfd399099901b2206af44cc7f07542d322db17572d347c69ca6358a8a"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.021187178790569305,
+                "teacher_mse": 0.0001983547699637711,
+                "teacher_rmse": 0.014083847839414167,
+                "teacher_max_abs": 0.05818343162536621,
+                "replay_retention_loss": 0.00018253499001730233,
+                "replay_quarter": 0
+              },
+              "candidates": [
+                {
+                  "objective": 0.019498590379953384,
+                  "teacher_mse": 0.0002164828183595091,
+                  "teacher_rmse": 0.014713355102066596,
+                  "teacher_max_abs": 0.05885162949562073,
+                  "replay_retention_loss": 0.00019929480913560838,
+                  "replay_quarter": 0,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "f930c1661fb2bd3803c1403682770240568bf902a0f9b017dd189c0043aa6d04",
+                  "max_abs": 0.003789508482441306
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "420cdfb17769d13c7ebd55d22282f4c71b1e8f2ba9d0a8e5a1008aa1b3be5a79",
+                  "max_abs": 0.002218265552073717
+                }
+              },
+              "proposal": 21,
+              "global_step": 5,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 7.889260768890381,
+              "evaluations": 2,
+              "at": 1792319516.1071901,
+              "parameters_and_optimizer_before_sha256": "7b2e0a0bfd399099901b2206af44cc7f07542d322db17572d347c69ca6358a8a",
+              "parameters_and_optimizer_now_sha256": "5e52ee362264b7796df1ec978ec75ab00031f42df6aeb48e88c445b9e59c07bf"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.007519124541431665,
+                "teacher_mse": 0.0002164828183595091,
+                "teacher_rmse": 0.014713355102066596,
+                "teacher_max_abs": 0.05885162949562073,
+                "replay_retention_loss": 0.00011437891225796193,
+                "replay_quarter": 1
+              },
+              "candidates": [
+                {
+                  "objective": -0.008694788441061974,
+                  "teacher_mse": 0.00023066112771630287,
+                  "teacher_rmse": 0.015187531982396049,
+                  "teacher_max_abs": 0.06226992607116699,
+                  "replay_retention_loss": 0.00012167367822257802,
+                  "replay_quarter": 1,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "d914bef221ec3c410b419fc0f0db016edb0aae3fbf51394c3a165b5b1db0550b",
+                  "max_abs": 0.008275128901004791
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "f5528291afc2444ac4b93df4bb6acf6bc19909495fd37510957673aa5c36838c",
+                  "max_abs": 0.002208310179412365
+                }
+              },
+              "proposal": 22,
+              "global_step": 5,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 8.278203010559082,
+              "evaluations": 2,
+              "at": 1792319516.7322378,
+              "parameters_and_optimizer_before_sha256": "5e52ee362264b7796df1ec978ec75ab00031f42df6aeb48e88c445b9e59c07bf",
+              "parameters_and_optimizer_now_sha256": "c60107045bd3f5dd726668653150ae8be188d1449683d3066288afbcfb7f8a01"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.20057004690170288,
+                "teacher_mse": 0.00023066112771630287,
+                "teacher_rmse": 0.015187531982396049,
+                "teacher_max_abs": 0.06226992607116699,
+                "replay_retention_loss": 0.00013964867684990168,
+                "replay_quarter": 2
+              },
+              "candidates": [
+                {
+                  "objective": -0.2099655121564865,
+                  "teacher_mse": 0.0002443953126203269,
+                  "teacher_rmse": 0.015633147879436402,
+                  "teacher_max_abs": 0.06528538465499878,
+                  "replay_retention_loss": 0.00014795585593674332,
+                  "replay_quarter": 2,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "21314b268e05072283f3d3488e237a00c01c17b18d8cadd7fea3752ac40a39a7",
+                  "max_abs": 0.005034736357629299
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "6b0f906baed969407f3226c13746884947c32849286303d9d143a805425869a4",
+                  "max_abs": 0.0019922934006899595
+                }
+              },
+              "proposal": 23,
+              "global_step": 5,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 54.021331787109375,
+              "evaluations": 2,
+              "at": 1792319517.3548455,
+              "parameters_and_optimizer_before_sha256": "c60107045bd3f5dd726668653150ae8be188d1449683d3066288afbcfb7f8a01",
+              "parameters_and_optimizer_now_sha256": "490bd0580e52707fd6b1e3504f226a0070c01aa160bc67e49ff180df7376e5df"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.16419734060764313,
+                "teacher_mse": 0.0002443953126203269,
+                "teacher_rmse": 0.015633147879436402,
+                "teacher_max_abs": 0.06528538465499878,
+                "replay_retention_loss": 0.00013016110460739583,
+                "replay_quarter": 3
+              },
+              "candidates": [
+                {
+                  "objective": 0.16311700642108917,
+                  "teacher_mse": 0.0002538792323321104,
+                  "teacher_rmse": 0.01593358818132659,
+                  "teacher_max_abs": 0.06806826591491699,
+                  "replay_retention_loss": 0.00013492857397068292,
+                  "replay_quarter": 3,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "ee6890e8d08264478a22e0838fbb04e307775b4c44119432c366b64009431b1c",
+                  "max_abs": 0.0044572739861905575
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "82f5e2a20d381b7ce232eb094f2b817268ceee1a971f8a2bc473dfe13cbc4b76",
+                  "max_abs": 0.004212636966258287
+                }
+              },
+              "proposal": 24,
+              "global_step": 5,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 7.2816691398620605,
+              "evaluations": 2,
+              "at": 1792319517.9687917,
+              "parameters_and_optimizer_before_sha256": "490bd0580e52707fd6b1e3504f226a0070c01aa160bc67e49ff180df7376e5df",
+              "parameters_and_optimizer_now_sha256": "dd8171edfbf266ffee8cf3af4d21622df63fb84f01cbc812c572a4207df4a47b"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.00863363966345787,
+                "teacher_mse": 0.0002538792323321104,
+                "teacher_rmse": 0.01593358818132659,
+                "teacher_max_abs": 0.06806826591491699,
+                "replay_retention_loss": 0.00023523636627942324,
+                "replay_quarter": 0
+              },
+              "candidates": [
+                {
+                  "objective": 0.0044847815297544,
+                  "teacher_mse": 0.00026000168872997165,
+                  "teacher_rmse": 0.016124567861805526,
+                  "teacher_max_abs": 0.06985139846801758,
+                  "replay_retention_loss": 0.00024167106312233955,
+                  "replay_quarter": 0,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "66de624ff00e21df8f64c1cdb394c05b4d55d4f7a7b4e2c0dba68969b8015466",
+                  "max_abs": 0.008830193430185318
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "7aafe0f0bee011fc14480abeb33f68dfdc6d4cc0949a427143db203cb7b9109c",
+                  "max_abs": 0.0029805158264935017
+                }
+              },
+              "proposal": 25,
+              "global_step": 6,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 22.600446701049805,
+              "evaluations": 2,
+              "at": 1792319519.635603,
+              "parameters_and_optimizer_before_sha256": "dd8171edfbf266ffee8cf3af4d21622df63fb84f01cbc812c572a4207df4a47b",
+              "parameters_and_optimizer_now_sha256": "1d80f42174bb4ec5945cb0187b417389f25a31ddcabe40aa1eac846688ee62df"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.12546294927597046,
+                "teacher_mse": 0.00026000168872997165,
+                "teacher_rmse": 0.016124567861805526,
+                "teacher_max_abs": 0.06985139846801758,
+                "replay_retention_loss": 0.00013623015547636896,
+                "replay_quarter": 1
+              },
+              "candidates": [
+                {
+                  "objective": 0.11925577372312546,
+                  "teacher_mse": 0.00026731850812211633,
+                  "teacher_rmse": 0.016349877923768005,
+                  "teacher_max_abs": 0.07143357396125793,
+                  "replay_retention_loss": 0.00013937565381638706,
+                  "replay_quarter": 1,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "50ac89c091d580eec4c11dbfc5a154278d878427cc3ef4270765eacc6b64a1ad",
+                  "max_abs": 0.00859277043491602
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "1226d8f549aa6e8546613ca230968e5a486858542e930916634701d50a21985a",
+                  "max_abs": 0.0022742634173482656
+                }
+              },
+              "proposal": 26,
+              "global_step": 6,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 29.67353057861328,
+              "evaluations": 2,
+              "at": 1792319520.2516706,
+              "parameters_and_optimizer_before_sha256": "1d80f42174bb4ec5945cb0187b417389f25a31ddcabe40aa1eac846688ee62df",
+              "parameters_and_optimizer_now_sha256": "802290f5a413c3ce13e40b3fe7b40386246cd88000f639306162e06e3f2c87d4"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.6383225321769714,
+                "teacher_mse": 0.00026731850812211633,
+                "teacher_rmse": 0.016349877923768005,
+                "teacher_max_abs": 0.07143357396125793,
+                "replay_retention_loss": 0.00016053140279836953,
+                "replay_quarter": 2
+              },
+              "candidates": [
+                {
+                  "objective": -0.6427056193351746,
+                  "teacher_mse": 0.0002748506376519799,
+                  "teacher_rmse": 0.016578619895877337,
+                  "teacher_max_abs": 0.07320588827133179,
+                  "replay_retention_loss": 0.00016466528177261353,
+                  "replay_quarter": 2,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "49861d90a49680fafda5b6e750df3644ecc5a329fd3475a75eea721bda56ba6a",
+                  "max_abs": 0.005659519694745541
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "b01e7debe1321846ad5d1ecbbf8c03497e56ae98701bdb536a79f59f9115fd2b",
+                  "max_abs": 0.003333130618557334
+                }
+              },
+              "proposal": 27,
+              "global_step": 6,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 15.091552734375,
+              "evaluations": 2,
+              "at": 1792319520.8592863,
+              "parameters_and_optimizer_before_sha256": "802290f5a413c3ce13e40b3fe7b40386246cd88000f639306162e06e3f2c87d4",
+              "parameters_and_optimizer_now_sha256": "88859882ad0438ade04ee90e6d93dfe99b53f1e9e2ea72515e6b19b5871d813c"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.08626993745565414,
+                "teacher_mse": 0.0002748506376519799,
+                "teacher_rmse": 0.016578619895877337,
+                "teacher_max_abs": 0.07320588827133179,
+                "replay_retention_loss": 0.0001453524164389819,
+                "replay_quarter": 3
+              },
+              "candidates": [
+                {
+                  "objective": 0.07992042601108551,
+                  "teacher_mse": 0.00028127437690272927,
+                  "teacher_rmse": 0.016771236594322114,
+                  "teacher_max_abs": 0.07443100214004517,
+                  "replay_retention_loss": 0.00014816084876656532,
+                  "replay_quarter": 3,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "97b2af13a173a4e5e45cda0819a98a7b4ef3d3adc5e1a91e8735552557ba7f9a",
+                  "max_abs": 0.005429169628769159
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "12bb7a1dc58f07a5caa1db96f1fa9df4d2fc3c68661028fe8bd4ea5c38690e54",
+                  "max_abs": 0.0032442156225442886
+                }
+              },
+              "proposal": 28,
+              "global_step": 6,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 25.93339729309082,
+              "evaluations": 2,
+              "at": 1792319521.4697604,
+              "parameters_and_optimizer_before_sha256": "88859882ad0438ade04ee90e6d93dfe99b53f1e9e2ea72515e6b19b5871d813c",
+              "parameters_and_optimizer_now_sha256": "e96209788b585aff3debc4cef9360e9ce21dfe87b1e07b5b6bd454b3955ac77e"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.010919658467173576,
+                "teacher_mse": 0.00028127437690272927,
+                "teacher_rmse": 0.016771236594322114,
+                "teacher_max_abs": 0.07443100214004517,
+                "replay_retention_loss": 0.00026118356618098915,
+                "replay_quarter": 0
+              },
+              "candidates": [
+                {
+                  "objective": 0.007216792553663254,
+                  "teacher_mse": 0.00028712407220155,
+                  "teacher_rmse": 0.016944735825664265,
+                  "teacher_max_abs": 0.07533028721809387,
+                  "replay_retention_loss": 0.00026615874958224595,
+                  "replay_quarter": 0,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "37889920bee9f8b2fd898613627af6c5fac33019db7fa18c80a5caefa4ab93a7",
+                  "max_abs": 0.0057968138717114925
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "e8bd4540064138cd32d1b9c9c9942cb32994d792637c2657fd7674a2a3566636",
+                  "max_abs": 0.002096719341352582
+                }
+              },
+              "proposal": 29,
+              "global_step": 7,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 18.03179359436035,
+              "evaluations": 2,
+              "at": 1792319523.1404202,
+              "parameters_and_optimizer_before_sha256": "e96209788b585aff3debc4cef9360e9ce21dfe87b1e07b5b6bd454b3955ac77e",
+              "parameters_and_optimizer_now_sha256": "b40adf790297f588f3005bc76bc38221c472729eab45d8f6f1687710ba5a9ab5"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.23166340589523315,
+                "teacher_mse": 0.00028712407220155,
+                "teacher_rmse": 0.016944735825664265,
+                "teacher_max_abs": 0.07533028721809387,
+                "replay_retention_loss": 0.00014697693404741585,
+                "replay_quarter": 1
+              },
+              "candidates": [
+                {
+                  "objective": 0.2298320084810257,
+                  "teacher_mse": 0.00028848121291957796,
+                  "teacher_rmse": 0.016984734702655144,
+                  "teacher_max_abs": 0.07597750425338745,
+                  "replay_retention_loss": 0.00014698816812597215,
+                  "replay_quarter": 1,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "9b113d5b521ccda85cc8a78dd10101f4d3111437e1410d61b5db2a9286c2ef25",
+                  "max_abs": 0.005545461550354958
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "910fdac07fb7ade2829dfe3f2747db9423b581c35dac22c99df2847d925cd18e",
+                  "max_abs": 0.004449191968888044
+                }
+              },
+              "proposal": 30,
+              "global_step": 7,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 8.776129722595215,
+              "evaluations": 2,
+              "at": 1792319523.7581844,
+              "parameters_and_optimizer_before_sha256": "b40adf790297f588f3005bc76bc38221c472729eab45d8f6f1687710ba5a9ab5",
+              "parameters_and_optimizer_now_sha256": "599d0d38e27fa57e8e8a224a8263dc5f238ea9c344a03f118be4bb6e365a7524"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.19358478486537933,
+                "teacher_mse": 0.00028848121291957796,
+                "teacher_rmse": 0.016984734702655144,
+                "teacher_max_abs": 0.07597750425338745,
+                "replay_retention_loss": 0.00017028283036779612,
+                "replay_quarter": 2
+              },
+              "candidates": [
+                {
+                  "objective": -0.19564788043498993,
+                  "teacher_mse": 0.0002887316804844886,
+                  "teacher_rmse": 0.016992106416936326,
+                  "teacher_max_abs": 0.075542151927948,
+                  "replay_retention_loss": 0.00016973305901046842,
+                  "replay_quarter": 2,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "c11c9f97230bce7eda5a93bda8c08605e4ecc912acea73b189784943b702ae20",
+                  "max_abs": 0.005747474730014801
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "6fa13c510f56dd962529aefebf2dc639317d06c937ce7ad4181271d0280378f1",
+                  "max_abs": 0.0028288026805967093
+                }
+              },
+              "proposal": 31,
+              "global_step": 7,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 7.402583599090576,
+              "evaluations": 2,
+              "at": 1792319524.3854043,
+              "parameters_and_optimizer_before_sha256": "599d0d38e27fa57e8e8a224a8263dc5f238ea9c344a03f118be4bb6e365a7524",
+              "parameters_and_optimizer_now_sha256": "6823418178e5f66a6341deb1333e705d0ae3fbe1e6da767e60409cbf6a935c45"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.45698651671409607,
+                "teacher_mse": 0.0002887316804844886,
+                "teacher_rmse": 0.016992106416936326,
+                "teacher_max_abs": 0.075542151927948,
+                "replay_retention_loss": 0.000150930936797522,
+                "replay_quarter": 3
+              },
+              "candidates": [
+                {
+                  "objective": -0.4689248502254486,
+                  "teacher_mse": 0.0002918256795965135,
+                  "teacher_rmse": 0.017082906064148265,
+                  "teacher_max_abs": 0.07522070407867432,
+                  "replay_retention_loss": 0.00015200029883999377,
+                  "replay_quarter": 3,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "e09317d6a67532fa650c143a460ee85e30b71ae6c16303541ef8af325246aa9d",
+                  "max_abs": 0.01027853973209858
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "7c17d7d4413bbbb7ece7dd47abfc4bbc8831fceb1dadf6ad00b2a723e7aa15f7",
+                  "max_abs": 0.0019074267474934459
+                }
+              },
+              "proposal": 32,
+              "global_step": 7,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 51.9488639831543,
+              "evaluations": 2,
+              "at": 1792319525.01472,
+              "parameters_and_optimizer_before_sha256": "6823418178e5f66a6341deb1333e705d0ae3fbe1e6da767e60409cbf6a935c45",
+              "parameters_and_optimizer_now_sha256": "417b1c13ce9b52a50fdd4d74381e51598b4013ddc2a78f5989782b474e485521"
+            }
+          ],
+          "original_absolute_teacher_guard": true,
+          "e50_nonincrease_gate_not_used": true,
+          "same_batch_objective_tolerance": 1e-07,
+          "checkpoint_effect_not_proven": true
+        },
+        "head_contract": {
+          "ownership": {
+            "groups": [
+              [
+                "policy.actor_module.decoders.g1_dyn.module.12.weight",
+                "value_model.critic_module.module.0.weight",
+                "value_model.critic_module.module.2.weight",
+                "value_model.critic_module.module.4.weight",
+                "value_model.critic_module.module.6.weight",
+                "value_model.critic_module.module.8.weight",
+                "value_model.critic_module.module.10.weight",
+                "value_model.critic_module.module.12.weight"
+              ],
+              [
+                "policy.actor_module.decoders.g1_dyn.module.12.bias",
+                "value_model.critic_module.module.0.bias",
+                "value_model.critic_module.module.2.bias",
+                "value_model.critic_module.module.4.bias",
+                "value_model.critic_module.module.6.bias",
+                "value_model.critic_module.module.8.bias",
+                "value_model.critic_module.module.10.bias",
+                "value_model.critic_module.module.12.bias"
+              ]
+            ],
+            "shapes": {
+              "policy.actor_module.decoders.g1_dyn.module.12.bias": [
+                29
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.12.weight": [
+                29,
+                512
+              ],
+              "value_model.critic_module.module.0.bias": [
+                2048
+              ],
+              "value_model.critic_module.module.0.weight": [
+                2048,
+                1645
+              ],
+              "value_model.critic_module.module.10.bias": [
+                512
+              ],
+              "value_model.critic_module.module.10.weight": [
+                512,
+                512
+              ],
+              "value_model.critic_module.module.12.bias": [
+                1
+              ],
+              "value_model.critic_module.module.12.weight": [
+                1,
+                512
+              ],
+              "value_model.critic_module.module.2.bias": [
+                2048
+              ],
+              "value_model.critic_module.module.2.weight": [
+                2048,
+                2048
+              ],
+              "value_model.critic_module.module.4.bias": [
+                1024
+              ],
+              "value_model.critic_module.module.4.weight": [
+                1024,
+                2048
+              ],
+              "value_model.critic_module.module.6.bias": [
+                1024
+              ],
+              "value_model.critic_module.module.6.weight": [
+                1024,
+                1024
+              ],
+              "value_model.critic_module.module.8.bias": [
+                512
+              ],
+              "value_model.critic_module.module.8.weight": [
+                512,
+                1024
+              ]
+            },
+            "actor_keys": [
+              "actor_module.decoders.g1_dyn.module.12.weight",
+              "actor_module.decoders.g1_dyn.module.12.bias"
+            ],
+            "actor_parameters": 14877,
+            "critic_keys": [
+              "critic_module.module.0.bias",
+              "critic_module.module.0.weight",
+              "critic_module.module.10.bias",
+              "critic_module.module.10.weight",
+              "critic_module.module.12.bias",
+              "critic_module.module.12.weight",
+              "critic_module.module.2.bias",
+              "critic_module.module.2.weight",
+              "critic_module.module.4.bias",
+              "critic_module.module.4.weight",
+              "critic_module.module.6.bias",
+              "critic_module.module.6.weight",
+              "critic_module.module.8.bias",
+              "critic_module.module.8.weight"
+            ]
+          },
+          "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+          "native_group_options": [
+            {
+              "weight_decay": 0.0,
+              "betas": [
+                0.9,
+                0.999
+              ],
+              "eps": 1e-08,
+              "amsgrad": false,
+              "maximize": false,
+              "foreach": null,
+              "capturable": false,
+              "differentiable": false,
+              "fused": true,
+              "decoupled_weight_decay": true
+            },
+            {
+              "weight_decay": 0.0,
+              "betas": [
+                0.9,
+                0.999
+              ],
+              "eps": 1e-08,
+              "amsgrad": false,
+              "maximize": false,
+              "foreach": null,
+              "capturable": false,
+              "differentiable": false,
+              "fused": true,
+              "decoupled_weight_decay": true
+            }
+          ],
+          "initial_actor_sha256": "6b998391fb2f7b28c267dfc24df10e337243cadffa0683e02ec7a943829d44a6",
+          "scope": "EXACT_ORIGINAL_OUTPUT_HEAD_AND_ORIGINAL_CRITIC",
+          "steps": [
+            {
+              "commit": 1,
+              "proposal": 1,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "825d94d9f2aed74f6382a9f9fe21e49241f0f07b594f0303b34b4fb54380154e",
+                  "max_abs": 0.004486350808292627
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "9170909cf094f21c079341fe1e02cba477ba41befca66ec0ee1ffae6eedcce16",
+                  "max_abs": 0.002684761304408312
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 2,
+              "proposal": 2,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "d45f1e5255dcef8c2abb3c5168a3fab3be93c21e27cae5d71f4f511e6bb226f4",
+                  "max_abs": 0.008671864867210388
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "0b0f5df14db5882b4bdf5c520292d46bd4b1a8b12d80fb574b3292747711e6cc",
+                  "max_abs": 0.004213113337755203
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 3,
+              "proposal": 3,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "ca04b6504d5f0bd666c12fedebaecd49be707c2014fa28fa9f642846882c263c",
+                  "max_abs": 0.0084370207041502
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "c1fb9d20c9c2f2f3cd88419cf1905ab0a14fe4309e4c409829e373be91b0319a",
+                  "max_abs": 0.002044127555564046
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 4,
+              "proposal": 4,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "788d94b2ea4284d71ae756c48232b30a1e005a53c7638636f9f6992737866cdc",
+                  "max_abs": 0.0057911342009902
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "cb212443aaaf3e9f161de964cca8ba5b6fb7eed9112d647a01aed8ca45e5ec28",
+                  "max_abs": 0.003421901725232601
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 5,
+              "proposal": 5,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "962ad8a6e617386a6b6633ac0ae378e2e14559bd1700eb27401a091161452280",
+                  "max_abs": 0.010350707918405533
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "fbe13e709592721cccffbad02695868430ab755ca725c8b1186284667e8895d1",
+                  "max_abs": 0.0027148097287863493
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 6,
+              "proposal": 6,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "073fcc5eb5ee45ac3873afdcf7bca19eefa5adba8805b28f685dac63c238e0cb",
+                  "max_abs": 0.00575948366895318
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "c584ec0183c3d1f9782e4cf351c46396eb9c6056b05dbf4e68745f6a94a568d7",
+                  "max_abs": 0.002217578236013651
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 7,
+              "proposal": 7,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "3c4c94e020e62f8f57049da1e2e94bd834df08ebe2647e2b42beb5a893341077",
+                  "max_abs": 0.005979605484753847
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "d405b3614bc01f4dea9dbd0e5ca90a6d30484179475e728f7f21f08079bfd6e6",
+                  "max_abs": 0.003069497412070632
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 8,
+              "proposal": 8,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "036d796389a2e70cbfef57a7b6417140ee5a4eca54c1c1495f99ed842488ba41",
+                  "max_abs": 0.007136228494346142
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "031ec89ccd9bfcc10979d613068c8aa4a1038cfbf413a8134dc59d81ed1561e9",
+                  "max_abs": 0.0040018148720264435
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 9,
+              "proposal": 9,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "e7c9d71af0e0b4f8d5dec0672d28c1e30873ee460ebc7f0135160e545f2f62e5",
+                  "max_abs": 0.004167568404227495
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "7e33a82bc8b6c4f62f9574e552a621af32258e43f205d3c57d32dfb9db4993c6",
+                  "max_abs": 0.002479871502146125
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 10,
+              "proposal": 10,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "22c9e265f6c8150e0f9c2604e94fa98b5c9165f16cc771d3be8579eb7ff512f9",
+                  "max_abs": 0.004921295680105686
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "6138121a416024bc4fac5723977478011b6265cfa282ae6ac31421884a69cfbb",
+                  "max_abs": 0.0032415285240858793
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 11,
+              "proposal": 11,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "754de658ae83cac3259fa6779fd9008e3f2c4cb8400ca7dfaf44b4e9d3b15681",
+                  "max_abs": 0.0025620637461543083
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "395d7654443580b22534895cdb200e54ee96adb68dfa1556e4762d0bc134e5d2",
+                  "max_abs": 0.0010744775645434856
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 12,
+              "proposal": 12,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "9a48e15732ef9499ac2313191862ea17a84a2a3667972ab24e118d79ff3857aa",
+                  "max_abs": 0.004388650879263878
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "05f8cf75546ae98f1f81c25e15c21a4a51b93dacfab40c42a680e404e607bc77",
+                  "max_abs": 0.0024456370156258345
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 13,
+              "proposal": 13,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "528b57859dc18e31a7a03d73fd60f16653a1e3f5254f6f8b23dd60c8da97f098",
+                  "max_abs": 0.009601331315934658
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "4a18c65c3dfde773c7381472f87434a1464c048cad9b001361221b5800ab0eab",
+                  "max_abs": 0.0030726040713489056
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 14,
+              "proposal": 14,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "9a252f4f450746e14b1f5ee0ab9c92593f82b9467cfa2e3eec0bde07cd4d6392",
+                  "max_abs": 0.004591022152453661
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "cf26e5bddcc701c146ba9ad4d7009f1e9820d59b3e9947e05bed6b0cc7d2fd05",
+                  "max_abs": 0.0028815707191824913
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 15,
+              "proposal": 15,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "dea895c45917297937bb70bcb05e2b7c1635ef0ea37d2628138940ff60d8034f",
+                  "max_abs": 0.00529444357380271
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "c7254c0a79fde508ff1961ccd6b1e4a76292fc8fb1159b192fe1e22ca18594ce",
+                  "max_abs": 0.0014756473246961832
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 16,
+              "proposal": 16,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "4f81c0b669975e9cf836bf5b70f7c16c4df1423662b837d090eb8f9293d260c1",
+                  "max_abs": 0.007541925646364689
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "05aa6c4da668bee42c78eb9ec522e4d77996e0bd2a146badf7df70ee09242f54",
+                  "max_abs": 0.002331321593374014
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 17,
+              "proposal": 17,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "5eac132a38c8bdea809afdecb271db9f888d19a3fa39c5ee4ecc56bcef7f1a52",
+                  "max_abs": 0.006957639940083027
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "fa8d2a77dd7b51c5c29264e72b79ac11d29032b1c6877d9dc76b4b1a67cbb6b0",
+                  "max_abs": 0.0035287474747747183
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 18,
+              "proposal": 18,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "d452d20e7118fc4ede468651ddf6b39915ab73e565f4b5e8aa0924c4231749ec",
+                  "max_abs": 0.007385915145277977
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "3b3e7a012ab52fe7c3c96c59c1d89335ea2f64b922d8c1ea44d7eeeec087cfd5",
+                  "max_abs": 0.0025217835791409016
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 19,
+              "proposal": 19,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "f9326f3e508da16533490701d7b6b00db732e82308aad0c465fbdec5068243c0",
+                  "max_abs": 0.010696565732359886
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "ef9c5aa116c75ba1276d3d4923f52db42d764d08485098d2b1d6e0b5b3dc6a2d",
+                  "max_abs": 0.003335205838084221
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 20,
+              "proposal": 20,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "fb22704154d5808b0005b8300ca5137b0093fcfbd9e7ea23c0c33b7190000c83",
+                  "max_abs": 0.007333019282668829
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "50cf89cc099c03e96123b665e6eda3c6ac6d2609d8176c80adf724590874166b",
+                  "max_abs": 0.004516255110502243
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 21,
+              "proposal": 21,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "f930c1661fb2bd3803c1403682770240568bf902a0f9b017dd189c0043aa6d04",
+                  "max_abs": 0.003789508482441306
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "420cdfb17769d13c7ebd55d22282f4c71b1e8f2ba9d0a8e5a1008aa1b3be5a79",
+                  "max_abs": 0.002218265552073717
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 22,
+              "proposal": 22,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "d914bef221ec3c410b419fc0f0db016edb0aae3fbf51394c3a165b5b1db0550b",
+                  "max_abs": 0.008275128901004791
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "f5528291afc2444ac4b93df4bb6acf6bc19909495fd37510957673aa5c36838c",
+                  "max_abs": 0.002208310179412365
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 23,
+              "proposal": 23,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "21314b268e05072283f3d3488e237a00c01c17b18d8cadd7fea3752ac40a39a7",
+                  "max_abs": 0.005034736357629299
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "6b0f906baed969407f3226c13746884947c32849286303d9d143a805425869a4",
+                  "max_abs": 0.0019922934006899595
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 24,
+              "proposal": 24,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "ee6890e8d08264478a22e0838fbb04e307775b4c44119432c366b64009431b1c",
+                  "max_abs": 0.0044572739861905575
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "82f5e2a20d381b7ce232eb094f2b817268ceee1a971f8a2bc473dfe13cbc4b76",
+                  "max_abs": 0.004212636966258287
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 25,
+              "proposal": 25,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "66de624ff00e21df8f64c1cdb394c05b4d55d4f7a7b4e2c0dba68969b8015466",
+                  "max_abs": 0.008830193430185318
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "7aafe0f0bee011fc14480abeb33f68dfdc6d4cc0949a427143db203cb7b9109c",
+                  "max_abs": 0.0029805158264935017
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 26,
+              "proposal": 26,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "50ac89c091d580eec4c11dbfc5a154278d878427cc3ef4270765eacc6b64a1ad",
+                  "max_abs": 0.00859277043491602
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "1226d8f549aa6e8546613ca230968e5a486858542e930916634701d50a21985a",
+                  "max_abs": 0.0022742634173482656
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 27,
+              "proposal": 27,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "49861d90a49680fafda5b6e750df3644ecc5a329fd3475a75eea721bda56ba6a",
+                  "max_abs": 0.005659519694745541
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "b01e7debe1321846ad5d1ecbbf8c03497e56ae98701bdb536a79f59f9115fd2b",
+                  "max_abs": 0.003333130618557334
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 28,
+              "proposal": 28,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "97b2af13a173a4e5e45cda0819a98a7b4ef3d3adc5e1a91e8735552557ba7f9a",
+                  "max_abs": 0.005429169628769159
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "12bb7a1dc58f07a5caa1db96f1fa9df4d2fc3c68661028fe8bd4ea5c38690e54",
+                  "max_abs": 0.0032442156225442886
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 29,
+              "proposal": 29,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "37889920bee9f8b2fd898613627af6c5fac33019db7fa18c80a5caefa4ab93a7",
+                  "max_abs": 0.0057968138717114925
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "e8bd4540064138cd32d1b9c9c9942cb32994d792637c2657fd7674a2a3566636",
+                  "max_abs": 0.002096719341352582
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 30,
+              "proposal": 30,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "9b113d5b521ccda85cc8a78dd10101f4d3111437e1410d61b5db2a9286c2ef25",
+                  "max_abs": 0.005545461550354958
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "910fdac07fb7ade2829dfe3f2747db9423b581c35dac22c99df2847d925cd18e",
+                  "max_abs": 0.004449191968888044
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 31,
+              "proposal": 31,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "c11c9f97230bce7eda5a93bda8c08605e4ecc912acea73b189784943b702ae20",
+                  "max_abs": 0.005747474730014801
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "6fa13c510f56dd962529aefebf2dc639317d06c937ce7ad4181271d0280378f1",
+                  "max_abs": 0.0028288026805967093
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 32,
+              "proposal": 32,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "e09317d6a67532fa650c143a460ee85e30b71ae6c16303541ef8af325246aa9d",
+                  "max_abs": 0.01027853973209858
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "7c17d7d4413bbbb7ece7dd47abfc4bbc8831fceb1dadf6ad00b2a723e7aa15f7",
+                  "max_abs": 0.0019074267474934459
+                }
+              },
+              "frozen_actor_unchanged": true
+            }
+          ]
+        },
+        "actual_optimizer_steps": [
+          {
+            "utc": "2026-10-18T10:31:37.511128+00:00",
+            "trainer_global_step": 0,
+            "attempt_optimizer_step": 1,
+            "applied_group_lrs": [
+              3e-06,
+              3e-06
+            ],
+            "adaptive_args_lr": 3e-06,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:38.113237+00:00",
+            "trainer_global_step": 0,
+            "attempt_optimizer_step": 2,
+            "applied_group_lrs": [
+              4.5e-06,
+              4.5e-06
+            ],
+            "adaptive_args_lr": 4.5e-06,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:38.721910+00:00",
+            "trainer_global_step": 0,
+            "attempt_optimizer_step": 3,
+            "applied_group_lrs": [
+              6.75e-06,
+              6.75e-06
+            ],
+            "adaptive_args_lr": 6.75e-06,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:39.357609+00:00",
+            "trainer_global_step": 0,
+            "attempt_optimizer_step": 4,
+            "applied_group_lrs": [
+              1.0124999999999999e-05,
+              1.0124999999999999e-05
+            ],
+            "adaptive_args_lr": 1.0124999999999999e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:41.005073+00:00",
+            "trainer_global_step": 1,
+            "attempt_optimizer_step": 5,
+            "applied_group_lrs": [
+              1.5187499999999998e-05,
+              1.5187499999999998e-05
+            ],
+            "adaptive_args_lr": 1.5187499999999998e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:41.608575+00:00",
+            "trainer_global_step": 1,
+            "attempt_optimizer_step": 6,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:42.210200+00:00",
+            "trainer_global_step": 1,
+            "attempt_optimizer_step": 7,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:42.807354+00:00",
+            "trainer_global_step": 1,
+            "attempt_optimizer_step": 8,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:45.022192+00:00",
+            "trainer_global_step": 2,
+            "attempt_optimizer_step": 9,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:45.634122+00:00",
+            "trainer_global_step": 2,
+            "attempt_optimizer_step": 10,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:46.236169+00:00",
+            "trainer_global_step": 2,
+            "attempt_optimizer_step": 11,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:46.859526+00:00",
+            "trainer_global_step": 2,
+            "attempt_optimizer_step": 12,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:48.517426+00:00",
+            "trainer_global_step": 3,
+            "attempt_optimizer_step": 13,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:49.118656+00:00",
+            "trainer_global_step": 3,
+            "attempt_optimizer_step": 14,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:49.733672+00:00",
+            "trainer_global_step": 3,
+            "attempt_optimizer_step": 15,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:50.347189+00:00",
+            "trainer_global_step": 3,
+            "attempt_optimizer_step": 16,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:52.548112+00:00",
+            "trainer_global_step": 4,
+            "attempt_optimizer_step": 17,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:53.158701+00:00",
+            "trainer_global_step": 4,
+            "attempt_optimizer_step": 18,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:53.761162+00:00",
+            "trainer_global_step": 4,
+            "attempt_optimizer_step": 19,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:54.361800+00:00",
+            "trainer_global_step": 4,
+            "attempt_optimizer_step": 20,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:56.163436+00:00",
+            "trainer_global_step": 5,
+            "attempt_optimizer_step": 21,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:56.788854+00:00",
+            "trainer_global_step": 5,
+            "attempt_optimizer_step": 22,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:57.414733+00:00",
+            "trainer_global_step": 5,
+            "attempt_optimizer_step": 23,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:58.024216+00:00",
+            "trainer_global_step": 5,
+            "attempt_optimizer_step": 24,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:31:59.691193+00:00",
+            "trainer_global_step": 6,
+            "attempt_optimizer_step": 25,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:32:00.308013+00:00",
+            "trainer_global_step": 6,
+            "attempt_optimizer_step": 26,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:32:00.915461+00:00",
+            "trainer_global_step": 6,
+            "attempt_optimizer_step": 27,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:32:01.523297+00:00",
+            "trainer_global_step": 6,
+            "attempt_optimizer_step": 28,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:32:03.196752+00:00",
+            "trainer_global_step": 7,
+            "attempt_optimizer_step": 29,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:32:03.815428+00:00",
+            "trainer_global_step": 7,
+            "attempt_optimizer_step": 30,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:32:04.443108+00:00",
+            "trainer_global_step": 7,
+            "attempt_optimizer_step": 31,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T10:32:05.073377+00:00",
+            "trainer_global_step": 7,
+            "attempt_optimizer_step": 32,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          }
+        ],
+        "routes": [
+          {
+            "update": 1,
+            "trainer_global_step": 0,
+            "routes": {
+              "a3_fast": 384
+            },
+            "transitions": 384
+          },
+          {
+            "update": 2,
+            "trainer_global_step": 1,
+            "routes": {
+              "a3_fast": 384
+            },
+            "transitions": 384
+          },
+          {
+            "update": 3,
+            "trainer_global_step": 2,
+            "routes": {
+              "a3_fast": 384
+            },
+            "transitions": 384
+          },
+          {
+            "update": 4,
+            "trainer_global_step": 3,
+            "routes": {
+              "a3_fast": 384
+            },
+            "transitions": 384
+          },
+          {
+            "update": 5,
+            "trainer_global_step": 4,
+            "routes": {
+              "a3_fast": 384
+            },
+            "transitions": 384
+          },
+          {
+            "update": 6,
+            "trainer_global_step": 5,
+            "routes": {
+              "a3_fast": 384
+            },
+            "transitions": 384
+          },
+          {
+            "update": 7,
+            "trainer_global_step": 6,
+            "routes": {
+              "a3_fast": 384
+            },
+            "transitions": 384
+          },
+          {
+            "update": 8,
+            "trainer_global_step": 7,
+            "routes": {
+              "a3_fast": 384
+            },
+            "transitions": 384
+          }
+        ],
+        "derived_outer_actor_decoder_calls": {
+          "rollout": 192,
+          "training_batch": 96,
+          "initial_teacher": 4,
+          "committed_teacher": 128,
+          "finite_candidates": 384,
+          "replay_initial": 4,
+          "replay_candidates": 64,
+          "total": 872
+        },
+        "call_count_basis": "PINNED_SOURCE_PATHS_AND_COMPLETED_JSON_RECEIPTS_NOT_KERNEL_INSTRUMENTATION",
+        "recipe_unchanged_except_registered_storage_and_training_route": true,
+        "deploy_allowed": false,
+        "final_effect_step": 8
+      }
     }
   ],
   "experiment": "A3_HUMANPLUS_ROUTE_20261018_HP19",
-  "current_stage": "train",
-  "started_at_utc": "2026-10-18T10:31:11.530781+00:00",
-  "updated_at_utc": "2026-10-18T10:32:11.713773+00:00",
+  "current_stage": "verify-training",
+  "started_at_utc": "2026-10-18T10:34:00.848288+00:00",
+  "updated_at_utc": "2026-10-18T10:34:16.042362+00:00",
   "backup_status": "LOCAL_ONLY",
   "github_synced": false
 }

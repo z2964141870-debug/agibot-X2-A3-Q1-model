@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-18北京时间18:10：[淘汰权重S01清理计划已固定](README_A3_HUMANPLUS_STORAGE_20261018.md)。用户授权后精确选HP12/13关闭权重及HP14/18拒绝候选，17常规路径/15唯一inode+15last指针，预计释放3187286016字节；大小SHA/硬链接/相关FD/maps/活动输入检查通过。7标准库控制两端通过，尚未删除；035/必要输入/配置日志指标保持，GitHub未同步。
+
 2026-10-18北京时间18:03：[HP18 D02十项完整效果拒绝](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。COMPLETE_MATCHED_EFFECT/独立verified=true、gate=false；衣服均RMSE.15303246rad恶化9.8365%/5of6不倒，四官方4of4不倒但march/front/rotate关节+8.01/+4.99/+3.18%超门。46健康0新增异常/残留，035仍baseline。本轮闭环关闭不续训/重放；下一按用户新授权清理确定淘汰权重并保留审计记录，GitHub未同步。
 
 2026-10-18北京时间17:59：[HP18四官方完整回放及审计通过](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。5775步/4of4不倒，十项合计8769步各单次，累计42健康无新增异常/残留。下一仅原效果公式汇总和独立审计；衣服均RMSE已不达标、035不替换，GitHub未同步。

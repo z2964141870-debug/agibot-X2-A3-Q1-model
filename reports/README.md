@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-18：[HP23源配置归属修正](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)独立实施，3控制两端及实际源YAML四配方预检通过，D07冻结353源码/133输入/11环境。HP22因配置源目标误比较STOPPED保留；HP23新增训练0，下一独立登记和完整保存验证后最终效果，GitHub未同步。
+
 2026-10-18：[HP22独立完成合同实施](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)，隔离保存核验训练依赖，3标准库两端通过，D06冻结347源码/133现存输入/11环境。只接纳HP21成功训练证据，新增训练预算0；下一独立登记后首次保存验证及最终双模拟器，不重训/重放基线，GitHub未同步。
 
 2026-10-18北京时间20:05：[HP21专项训练完成，保存验证入口STOPPED](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)：256更新98304交互/1024Adam/Kit正常关闭及train审计通过，verify因训练模块导入gear_sonic缺失在PT加载前停止。0最终效果/新增机器异常，不重训；下一独立纯概率验证与效果完成合同，035仍baseline，GitHub未同步。

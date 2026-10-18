@@ -63,3 +63,5 @@ HP22已在实施提交10f9f51后单次登记，固定上述D06和阶段/源证�
 登记c4ec0d7后单次verify执行了0/256网络、冻结范围、Adam矩/计数和初始token概率检查，随后validate_config错误地拿completion输出HP22/motionlib比对源训练配置中HP21/motionlib而停止；无最终成功收据，不能补称完整验证通过。原因是新完成合同的源/目标目录引用错误，不是模型科学失败或机器异常。单次审计verified=false，4健康最高CPU83/GPU43、0新增kernel/OOM/残留；未启动Isaac最终或MuJoCo，不重复此旧核验。
 
 独立修正须将源配置/配方检查前置到权重加载之前，精确绑定source HP21/motionlib；源PT及sidecar不改，不重复训练或基线。新控制须固定源目录表达式防止再次误用目标OUT。后续新合同完整模型核验即使部分检查重复，也明确计入新核验成本，不伪称此前没有张量加载；不扩大科学交互/optimizer/评测预算。
+
+HP23/D07独立final完成入口已实施，3控制Mac/新机各通过，新增控制固定源motionlib表达式且validate_config必须在torch.load之前；真实源config YAML/原rewards/events/terminations/actions四节无torch导入预检通过。D07固定353源码/133输入/11环境，仍0新增训练更新/交互，源0/256权重不改。原HP22停止提交c911796保留；下一独立登记HP23后完整保存核验，全部通过才最终双模拟器。未把部分通过或静态预检当成完整模型验收。

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+最新HP23/D07独立完成入口实施，源配置归属校验前置且绑定HP21/motionlib，3控制两端和实际YAML四配方无张量预检通过；冻结353源码133输入11环境。HP21训练完整成功，HP22后置配置路径错误STOPPED，均不改/重训。下一HP23登记→完整保存核验→最终Isaac/MuJoCo各499，新增训练0，[恢复入口](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)，035无新效果证据，GitHub未同步。
+
 最新HP22 completion独立实现/3标准库两端通过，D06固定347源码133实际输入11环境。仅verify-training/isaac-final/mujoco/effect，源HP21完成256训练和基线原样保留，导入失败STOPPED不改；新增训练/交互0。不复跑原失败核验或基线，下一独立登记→首次真实保存验证→最终双模拟器。[恢复](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)，035仍baseline、GitHub未同步。
 
 最新HP21 train完整256更新98304交互1024Adam/8192外层调用、正常关闭0及独立verified=true；verify-training在checkpoint加载前因ModuleNotFoundError gear_sonic停止，HP21终态STOPPED/verify审计false，0最终效果。82健康无新增kernel/OOM/残留、非机器故障。下一独立完成合同采用现有纯概率核验器，只复用已成功train/Isaac基线证据和实际0/256权重，不重训/重跑旧核验。[恢复入口](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)，035仍baseline，GitHub未同步。

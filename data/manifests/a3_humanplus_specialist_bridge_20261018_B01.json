@@ -1,0 +1,42 @@
+{
+  "id": "B01",
+  "recorded_at": "2026-10-18T11:34:02Z",
+  "status": "CPU_CONTRACT_ONLY_UNINTEGRATED",
+  "root": "/home/humanplus/YUANQI_A3",
+  "base_commit": "566da36",
+  "scientific_trial": null,
+  "sources": [
+    {
+      "path": "script/a3/humanplus_specialist_bridge.py",
+      "bytes": 2327,
+      "sha256": "ae852d2b031fce9605235ef733f9e55ee4140eb2d228673ab7201617cac506c0"
+    },
+    {
+      "path": "script/a3/test_humanplus_specialist_bridge.py",
+      "bytes": 2155,
+      "sha256": "2caebd09f10b46cf84d4ba7611cab497b3a8c6e98429f3abd1f71e67c1b8c19e"
+    }
+  ],
+  "controls": {
+    "command": "/usr/bin/python3 -B -m unittest script.a3.test_humanplus_specialist_bridge -v",
+    "mac": {"passed": 3, "failed": 0},
+    "humanplus": {"passed": 3, "failed": 0, "exit_code": 0},
+    "scope": ["selected_reference_and_full_robot_have_separate_body_indices", "explicit_joint_names_handle_permutation_and_passive_joints", "ambiguous_missing_or_wrong_shape_metadata_rejected"],
+    "uses_tensors_or_simulator": false
+  },
+  "existing_evidence": [
+    {"path": "data/manifests/a3_humanplus_specialist_20261018_HP20_plan.json", "sha256": "d960cbe93102f352a322690814874eea1cf0e93b596df287e7c85f9264e1be26"},
+    {"path": "data/manifests/a3_humanplus_specialist_20261018_HP20_result.json", "sha256": "54749929b4bf4e23b48b342a979a63516a83000420d11b8ac6a13658191369b2"},
+    {"path": "data/manifests/a3_humanplus_specialist_20261018_HP20_isaac-baseline_audit.json", "sha256": "b8b9271f83b01539c4627f2084b56604b8b72f03bb0af0747e1d0e65a16750b6"}
+  ],
+  "registered_modules_diff_from_7e4141c": [],
+  "new_tensor_loads": 0,
+  "new_simulations": 0,
+  "new_optimizer_steps": 0,
+  "old_audits_repeated": false,
+  "gpu_recovery_verified": false,
+  "cause_proven_unique": false,
+  "automation": {"id": "zhy-a3", "required_status": "PAUSED", "interval_minutes": 30},
+  "next": "Handle the recorded kernel event and define recovery evidence before an independently registered entry integrates the bridge. Do not retry HP20 or exempt the Xid event.",
+  "publication": "LOCAL_COMMITTED_UNPUSHED"
+}

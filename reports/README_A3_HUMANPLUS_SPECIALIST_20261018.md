@@ -73,3 +73,13 @@ S02清理已完成并审计，含S01累计释放4.01GB，HP19权重删除不再�
 只读源码发现明确适配缺陷：motion_lib_base在1878行已用body_indexes筛选body_pos_w，get_body_pos_w直接返回筛选后数据；commands.body_pos_w沿用该数据。本次replay又用完整机器人body_indexes_data索引一次，属于重复索引，具有越界风险。CUDA报错异步且无同步定位，本轮不把它断言为唯一触发原因。后续独立桥接应直接用筛选后的参考并先按CPU名字/shape验证，动作29关节则按原EvalDebugDumper的action_term关节名/索引处理，不能直接假定motion全关节与动作29顺序相同。
 
 下一仅保存及静态修复论证；原HP20源码/输入闭包不改。处理新内核事件的恢复门并固定独立新合同前不再科学计算，不换编号直接重跑、不豁免Xid/重建健康基准。机器首故障暂停要求已执行。用户路线仍为专项专家到统一学生，没有新增专家成果。
+
+## 19:34 CPU桥接准备完成，科学计算仍暂停
+
+新增独立humanplus_specialist_bridge.correspondence，仅用标准库按名称和shape生成各自源数组的索引，不导入torch/Isaac或加载权重。已选参考身体使用自身0..N-1索引，完整机器人身体另按名称映射；29个动作关节分别映射到显式参考关节名和机器人关节名，排除被动关节并拒绝名称缺失、歧义或shape不符。三项测试覆盖3个已选参考身体对9个完整身体、参考31关节含被动/反向顺序、无效元数据在索引前拒绝。Mac与humanplus各3项通过；没有将这些合成数组控制当作真实模型或数值验收。
+
+准备清单data/manifests/a3_humanplus_specialist_bridge_20261018_B01.json固定两新增源码的大小SHA及HP20三份既有JSON收据SHA。已核对HP20五个注册模块对登记提交7e4141c无diff，未改写旧行为或重跑旧审计。新桥接尚未接入任何执行入口，未登记新科学阶段；下一独立入口必须以原生command/robot/action_term元数据验证参考与机器人两套顺序，再取值。当前测试不能证明真实关节名来源正确、消除全部CUDA越界或GPU恢复，也不证明本次重复索引是唯一触发点。
+
+本阶段0新张量反序列化/模型/仿真/optimizer，无实时GPU恢复验收。zhy-a3保持PAUSED/原30分钟设置，HP20 STOPPED和未知实际步数保持。恢复需先明确本次Xid43的处理及可核验恢复条件，再在独立合同中接入桥接与必要同步定位；不能仅因bridge控制通过就重启。后续路线仍是专项完整能力先验证、可靠后才统一学生，不复跑已拒绝配方。
+
+复现CPU控制：`/usr/bin/python3 -B -m unittest script.a3.test_humanplus_specialist_bridge -v`。代码/记录经payload审查后scoped本地提交，GitHub仍LOCAL_COMMITTED_UNPUSHED，不重复已知失败push。没有新增权重或存储清理，S01/S02累计4.01GB释放与官方035/必要输入保护保持。

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+最新19:34：专项独立CPU桥接与3标准库控制Mac/humanplus各通过，清单a3_humanplus_specialist_bridge_20261018_B01.json固定大小SHA；参考已选身体和完整机器人分别索引，29动作关节按显式源名称对应。尚未接入新入口/登记/真实数值验收，HP20注册模块未改、旧审计不复跑。HP20/Xid43仍STOPPED且恢复未验证，zhy-a3保持PAUSED；恢复先读[专项README19:25/19:34节](README_A3_HUMANPLUS_SPECIALIST_20261018.md)与B01/HP20小清单，不自动模型/仿真、不豁免Xid或重建健康基准。035仍baseline，GitHub未同步。
+
 最新HP20/R26 isaac-baseline已STOPPED/CRITICAL_KERNEL_EVENT，25.677秒；native2970870 CUDA索引断言和新NVRM Xid43，实际仿真步数未知，035已加载、0专项训练/optimizer/最终效果。单次审计verified=false/6健康/CPU76/GPU44/0OOM/无自有组残留，zhy-a3已PAUSED，不能把温度正常当恢复。恢复读[专项README19:25节](README_A3_HUMANPLUS_SPECIALIST_20261018.md)及HP20_{plan,result,isaac-baseline_audit}.json；只读查参考身体重复索引/动作关节映射，原源码账本不改。处理新内核事件与独立合同前不启动科学计算，不复跑旧阶段/审计、加载STOPPED权重或豁免Xid。035仍baseline，GitHub未同步。
 
 最新HP20/R26已单次登记，实施d63556a/v2冻结329源码/111输入/11环境，0新模型/仿真/optimizer；下一实时资源门后isaac-baseline499步及独立审计，通过后train256更新。恢复读[专项README](README_A3_HUMANPLUS_SPECIALIST_20261018.md)及HP20_plan.json。全部原资源保护/900秒/不复跑STOPPED保持，035仍baseline，GitHub未同步。

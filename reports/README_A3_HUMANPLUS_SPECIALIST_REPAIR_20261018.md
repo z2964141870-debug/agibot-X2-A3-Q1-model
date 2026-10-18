@@ -1,5 +1,7 @@
 # A3 humanplus 专项入口修复与恢复
 
+最新状态（2026-10-18北京时间20:24）：用户明确STOP，覆盖下文所有继续执行安排。zhy-a3保持PAUSED；不再训练、评测、验证、修复重跑或自动推进蒸馏。20:24只读进程核对未见HP23 supervisor PID2997018或worker PGID2997136残留，无需发送终止信号。下一步仅讨论目标与技术路线，恢复计算需用户新明确指示。
+
 记录日期：2026-10-18。RC01/D05/HP21/R27。19:50已完成独立修复、标准库控制和闭包冻结，尚未登记或运行新科学阶段。用户明确要求“修，修好了继续优化”；HP20始终保留STOPPED，本文件不把旧失败改成通过。
 
 ## 目标与范围
@@ -77,3 +79,11 @@ HP23已在实施90d1201后单次登记，D07及源权重/配方/RC01闭包固定
 HP23 isaac-final单次499同步步/55.193523秒、正常Kit退出0/独立verified=true。最终不倒但关节RMSE0.16564378302564237rad，比同合同035的0.10478640564907678差，未过至少改善1%门；trace SHA70aa91002830b18fe873bc116a1a2fd76be6c4c9acfc3472510c7d48462c6449。不能将无跌倒单独当专家优于035，也不能只归因sim2sim迁移，因为训练模拟器内已退化。
 
 HP23累计16健康最高CPU83/GPU48、新增kernel/OOM0、after_issues空/无组残留。此为效果不通过，执行阶段成功，继续已登记MuJoCo完整499步以补齐双模拟器合同，不续训/换早期点/扩大预算。035仍baseline，未开始蒸馏。
+
+## 20:24 用户停止与最终保存
+
+HP23 MuJoCo在用户STOP前已因summary字段KeyError: num_policy_steps停止；result为STOPPED/RuntimeError:WORKER_EXIT:1，阶段20.209595秒。console曾输出fall=true，但没有独立MuJoCo审计或完整499步/最终效果收据，不能据此补报已验收分数或步数。不修复、不重跑、不追加审计，保留原终态。证据：data/manifests/a3_humanplus_specialist_final_20261018_HP23_result.json及logs/a3_humanplus_specialist_final_20261018_HP23/mujoco/console.log、state.json。
+
+已独立验收的Isaac完整499步：035关节RMSE0.10478640564907678rad，最终专项0.16564378302564237rad，相对恶化58.07755023144243%，两者均不倒。专项未胜过035，未开始蒸馏；训练执行/保存验证通过不代表能力改善，也不能仅用sim2sim解释训练模拟器内退化。原因尚未证明，不能据此断言035不可改善或PPO普遍无效。
+
+用户质疑持续修改强基线是否有收益，当前证据不足以继续以试验次数代替改进依据。保留035及现存HP21权重、配置、日志、指标与历史账本，本次不删权重或新增模型加载。停止清单：data/manifests/a3_humanplus_user_stop_20261018.json。记录仅本地提交，GitHub未同步，已知SSH写权限失败不重复推送。

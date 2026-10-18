@@ -1,0 +1,43 @@
+{
+  "status": "USER_STOPPED",
+  "recorded_at": "2026-10-18T20:24:07+08:00",
+  "automation_id": "zhy-a3",
+  "automation_status": "PAUSED",
+  "no_automatic_resume": true,
+  "user_instruction": "stop; reconsider whether further fine-tuning of official035 is justified",
+  "source_head_before_stop_record": "973b9f488c3a2f06001b8076045a69c9c9b9768d",
+  "process_observation": {
+    "supervisor_pid": 2997018,
+    "worker_pgid": 2997136,
+    "matching_rows": 0,
+    "signal_sent": false,
+    "scope": "HP23 supervisor PID and worker PGID only; not a whole-system idle claim"
+  },
+  "isaac_matched_result": {
+    "independent_audits_previously_passed": true,
+    "steps_each": 499,
+    "baseline_joint_rmse_rad": 0.10478640564907678,
+    "specialist_joint_rmse_rad": 0.16564378302564237,
+    "regression_percent": 58.07755023144243,
+    "baseline_fall": false,
+    "specialist_fall": false,
+    "specialist_gate_passed": false
+  },
+  "mujoco": {
+    "status": "STOPPED",
+    "reason": "KeyError: num_policy_steps; RuntimeError:WORKER_EXIT:1",
+    "elapsed_seconds": 20.209595472959336,
+    "independent_audit_run": false,
+    "verified_full_steps": null,
+    "verified_final_score": null,
+    "result": "data/manifests/a3_humanplus_specialist_final_20261018_HP23_result.json",
+    "console": "logs/a3_humanplus_specialist_final_20261018_HP23/mujoco/console.log"
+  },
+  "distillation_started": false,
+  "official035_remains_baseline": true,
+  "weights_deleted_this_stop": 0,
+  "new_scientific_work_after_stop": false,
+  "next_action": "Discuss goals and evidence; no compute until new explicit user instruction",
+  "github_synced": false,
+  "backup_status": "LOCAL_ONLY"
+}

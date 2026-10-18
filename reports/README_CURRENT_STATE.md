@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-18北京时间20:24：用户明确STOP，覆盖下文全部继续训练/评测/修复安排；zhy-a3保持PAUSED，不自动恢复。HP23 MuJoCo先前已因KeyError num_policy_steps STOPPED，未独立审计/不补完整分数；只读核对supervisor PID2997018和worker PGID2997136均无残留。已验收Isaac完整499步：035 RMSE0.1047864→专项0.1656438rad，恶化58.08%，均不倒；专项未成功/未蒸馏，035仍baseline。当前只讨论目标与路线，不再科学执行；保留现存权重与证据。见[停止记录](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)及data/manifests/a3_humanplus_user_stop_20261018.json，GitHub未同步。以下均为历史，不是恢复许可。
+
 最新HP23 verify-training完整通过/独立verified=true，step0/256精确大小SHA、仅原decoder14参数变化、冻结/28optimizer所有权和矩1024计数/实际token/原配方通过。最终PT307574417字节SHA47dd293511428d373c95c316ec8674e2b0f57bd581a09a632252dab1c09c599f；4健康无新增kernel/OOM/残留。下一首次最终Isaac499步→审计→MuJoCo499步→效果，不重训/重放基线，[恢复](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)，035仍baseline，GitHub未同步。
 
 最新HP23/D07独立完成入口实施，源配置归属校验前置且绑定HP21/motionlib，3控制两端和实际YAML四配方无张量预检通过；冻结353源码133输入11环境。HP21训练完整成功，HP22后置配置路径错误STOPPED，均不改/重训。下一HP23登记→完整保存核验→最终Isaac/MuJoCo各499，新增训练0，[恢复入口](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)，035无新效果证据，GitHub未同步。

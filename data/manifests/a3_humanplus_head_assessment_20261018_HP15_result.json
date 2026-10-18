@@ -1,0 +1,2972 @@
+{
+  "status": "IN_PROGRESS",
+  "stages": [
+    {
+      "stage": "verify-training",
+      "state": {
+        "status": "COMPLETE",
+        "argv": [
+          "/home/humanplus/anaconda3/envs/x2-sonic-isaaclab/bin/python",
+          "-B",
+          "-u",
+          "-m",
+          "script.a3.humanplus_head_assessment",
+          "worker",
+          "--stage",
+          "verify-training"
+        ],
+        "started_at": 1792312207.7119114,
+        "supervisor_pid": 2892888,
+        "seconds_limit": 900.0,
+        "interval_seconds": 5.0,
+        "no_automatic_retry": true,
+        "worker_pid": 2892977,
+        "launched_at": 1792312217.896387,
+        "returncode": 0,
+        "finished_at": 1792312227.894977,
+        "elapsed_seconds": 20.183066612982657
+      },
+      "receipt": {
+        "status": "COMPLETE",
+        "scope": "VERIFIED_HEAD_TRAINING_NOT_EFFECT",
+        "checkpoints": [
+          {
+            "writer": "yuanqi_durable_v1",
+            "step": 0,
+            "file": "model_step_000000.pt",
+            "bytes": 134048535,
+            "sha256": "004f5c317fb6a4a837fb1b8ffd58ba8ee8b1911c9379f8fe0aff5e0baefb9b0b",
+            "backup_status": "LOCAL_ONLY",
+            "path": "data/training/a3_humanplus_head_logged_20261018_HP14/R23_001_s0/milestone_0/model_step_000000.pt",
+            "changed_actor_names": [],
+            "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8"
+          },
+          {
+            "writer": "yuanqi_durable_v1",
+            "step": 2,
+            "file": "model_step_000002.pt",
+            "bytes": 226205911,
+            "sha256": "34763d45466d9ec3a887e7054204141aa8f0c4209ec6349eb8ff8f4c3f0d42dd",
+            "backup_status": "LOCAL_ONLY",
+            "path": "data/training/a3_humanplus_head_logged_20261018_HP14/R23_001_s0/milestone_2/model_step_000002.pt",
+            "changed_actor_names": [
+              "actor_module.decoders.g1_dyn.module.12.weight",
+              "actor_module.decoders.g1_dyn.module.12.bias"
+            ],
+            "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8"
+          },
+          {
+            "writer": "yuanqi_durable_v1",
+            "step": 4,
+            "file": "model_step_000004.pt",
+            "bytes": 226205911,
+            "sha256": "0760fcfcbfbbc38866e393750d485f1008b27e037e2b7fdc92a18608c31844e1",
+            "backup_status": "LOCAL_ONLY",
+            "path": "data/training/a3_humanplus_head_logged_20261018_HP14/R23_001_s0/milestone_4/model_step_000004.pt",
+            "changed_actor_names": [
+              "actor_module.decoders.g1_dyn.module.12.weight",
+              "actor_module.decoders.g1_dyn.module.12.bias"
+            ],
+            "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8"
+          },
+          {
+            "writer": "yuanqi_durable_v1",
+            "step": 8,
+            "file": "model_step_000008.pt",
+            "bytes": 226205975,
+            "sha256": "c508fe2abf6613d4c9842333b3843d7303523349b9ce65ae5f0f36ff5287626a",
+            "backup_status": "LOCAL_ONLY",
+            "path": "data/training/a3_humanplus_head_logged_20261018_HP14/R23_001_s0/milestone_8/model_step_000008.pt",
+            "changed_actor_names": [
+              "actor_module.decoders.g1_dyn.module.12.weight",
+              "actor_module.decoders.g1_dyn.module.12.bias"
+            ],
+            "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8"
+          }
+        ],
+        "optimizer_steps": 32,
+        "updates": 8,
+        "initial_probability": {
+          "action_rmse": 3.759106732559303e-07,
+          "action_max_abs": 1.9073486328125e-06,
+          "changed_frames_over_1e_4": 0,
+          "ratio_mean": 1.0000003576278687,
+          "ratio_min": 0.9999856948852539,
+          "ratio_max": 1.0000104904174805,
+          "max_abs_ratio_minus_one": 1.430511474609375e-05
+        },
+        "finite_contract": {
+          "proposals": 32,
+          "committed": 32,
+          "evaluations": 64,
+          "rows": [
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.2686188817024231,
+                "teacher_mse": 1.7593402863030905e-13,
+                "teacher_rmse": 4.1944490535743674e-07,
+                "teacher_max_abs": 2.86102294921875e-06
+              },
+              "candidates": [
+                {
+                  "objective": -0.2727801501750946,
+                  "teacher_mse": 1.8921647892966575e-07,
+                  "teacher_rmse": 0.0004349902055560168,
+                  "teacher_max_abs": 0.0013135671615600586,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "817a77c5be728b5c7ef746fad0394c27393392a20e366a0c48bdfb9dc072c785",
+                  "max_abs": 0.004066980443894863
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "d0e67de52b1996a2d76d02ec25923a6df22b773becfc2dd143979c69f4aeac6e",
+                  "max_abs": 0.0025289447512477636
+                }
+              },
+              "proposal": 1,
+              "global_step": 0,
+              "nominal_group_lrs": [
+                3e-06,
+                3e-06
+              ],
+              "full_gradient_norm": 18.711837768554688,
+              "evaluations": 2,
+              "at": 1792311576.261167,
+              "parameters_and_optimizer_before_sha256": "8697a3bf0c1123129e5a75e4ed4acd31fbf0b7fece7e0e0724e30c8cb7934850",
+              "parameters_and_optimizer_now_sha256": "efa8fe8e170deed1d8d5c59802af997e6d973850472526322fa6653e3c4a1b3a"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.13882949948310852,
+                "teacher_mse": 1.8921647892966575e-07,
+                "teacher_rmse": 0.0004349902055560168,
+                "teacher_max_abs": 0.0013135671615600586
+              },
+              "candidates": [
+                {
+                  "objective": 0.13332688808441162,
+                  "teacher_mse": 6.923791033841553e-07,
+                  "teacher_rmse": 0.0008320932059476001,
+                  "teacher_max_abs": 0.0028398633003234863,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "1fc2de384695e8c2a194167ac3d0349a4f7bfca07ea45a2888ca461a03998768",
+                  "max_abs": 0.008827077224850655
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "d8ab22d7330f3af3bad63b7977b87e55f2e45574b7429ed15489e19ba1414f68",
+                  "max_abs": 0.004308757372200489
+                }
+              },
+              "proposal": 2,
+              "global_step": 0,
+              "nominal_group_lrs": [
+                4.5e-06,
+                4.5e-06
+              ],
+              "full_gradient_norm": 33.87247085571289,
+              "evaluations": 2,
+              "at": 1792311576.792883,
+              "parameters_and_optimizer_before_sha256": "ad942b763bfc8be6de5ed074cfc0bf662175c50c7a5b49ce9eb2a5732364b590",
+              "parameters_and_optimizer_now_sha256": "d078d5e67ebadcda5c8d5dd5e0e6b2a5afe2a54583c5b668e4791cc136aaf2bd"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.27500101923942566,
+                "teacher_mse": 6.923791033841553e-07,
+                "teacher_rmse": 0.0008320932059476001,
+                "teacher_max_abs": 0.0028398633003234863
+              },
+              "candidates": [
+                {
+                  "objective": 0.265411376953125,
+                  "teacher_mse": 1.7526828059999389e-06,
+                  "teacher_rmse": 0.0013238892725601862,
+                  "teacher_max_abs": 0.004711449146270752,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "dc9e87803bae4c7684af5567ef1ca901242548d30e98a46848a63934c56570a8",
+                  "max_abs": 0.00862709991633892
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "7e556e24760f06cd4600f7865cef9bdee83c6826a70919e0c180f359b103b064",
+                  "max_abs": 0.0020803348161280155
+                }
+              },
+              "proposal": 3,
+              "global_step": 0,
+              "nominal_group_lrs": [
+                6.75e-06,
+                6.75e-06
+              ],
+              "full_gradient_norm": 45.11299514770508,
+              "evaluations": 2,
+              "at": 1792311577.318831,
+              "parameters_and_optimizer_before_sha256": "1e0494ecbe7511c81ca583e5ff4a3fa465566a06f096bce9f85caeb906652f00",
+              "parameters_and_optimizer_now_sha256": "9405dea4f5eb6f794cd24cdcffb67fe93a2efdd988ce3dc5ebdf1816dcb87368"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.3884149491786957,
+                "teacher_mse": 1.7526828059999389e-06,
+                "teacher_rmse": 0.0013238892725601862,
+                "teacher_max_abs": 0.004711449146270752
+              },
+              "candidates": [
+                {
+                  "objective": -0.39269402623176575,
+                  "teacher_mse": 3.6845312934019603e-06,
+                  "teacher_rmse": 0.0019195132959690486,
+                  "teacher_max_abs": 0.008081495761871338,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "622b7705d26b212517a210a1ab64e983ae66ec602f19a1caa596255407e09a35",
+                  "max_abs": 0.0056808870285749435
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "78e163f68793659387dbd467500f802a40d8d52b0db468069612ff6e9cd94a8b",
+                  "max_abs": 0.00324853602796793
+                }
+              },
+              "proposal": 4,
+              "global_step": 0,
+              "nominal_group_lrs": [
+                1.0124999999999999e-05,
+                1.0124999999999999e-05
+              ],
+              "full_gradient_norm": 13.781073570251465,
+              "evaluations": 2,
+              "at": 1792311577.8511024,
+              "parameters_and_optimizer_before_sha256": "0f4cb0511bd3bce0dc75d9a87e45dc2454deea77762d6364ea12fa8803b2541d",
+              "parameters_and_optimizer_now_sha256": "16a2b56ae0d4165f9d87088fb5628212283c970068d1b930de2b9dd6f4f89627"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.15849466621875763,
+                "teacher_mse": 3.6845312934019603e-06,
+                "teacher_rmse": 0.0019195132959690486,
+                "teacher_max_abs": 0.008081495761871338
+              },
+              "candidates": [
+                {
+                  "objective": 0.15092650055885315,
+                  "teacher_mse": 7.447495590895414e-06,
+                  "teacher_rmse": 0.002729010001977899,
+                  "teacher_max_abs": 0.01204383373260498,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "89950231830a43fbaba2bc52d7497123746dde1fea1392ab45d152fa2bd89108",
+                  "max_abs": 0.010962659493088722
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "1a371f781b6644d52963b59816ba18531e353f25c51d7e5afb23caf6f71dd5b8",
+                  "max_abs": 0.0028267360758036375
+                }
+              },
+              "proposal": 5,
+              "global_step": 1,
+              "nominal_group_lrs": [
+                1.5187499999999998e-05,
+                1.5187499999999998e-05
+              ],
+              "full_gradient_norm": 40.33432388305664,
+              "evaluations": 2,
+              "at": 1792311579.4850771,
+              "parameters_and_optimizer_before_sha256": "7df384c06c75cd76d3726fcb5e471c58a13e18137b6e8a474e0a6243ffee34e3",
+              "parameters_and_optimizer_now_sha256": "dd4c47fba748c32b25f77b7ac8a1cc489fcd2d5ce9722de2bc01cdb83d39ddfa"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.21381160616874695,
+                "teacher_mse": 7.447495590895414e-06,
+                "teacher_rmse": 0.002729010001977899,
+                "teacher_max_abs": 0.01204383373260498
+              },
+              "candidates": [
+                {
+                  "objective": -0.22327332198619843,
+                  "teacher_mse": 1.3614468116429634e-05,
+                  "teacher_rmse": 0.0036897788709392377,
+                  "teacher_max_abs": 0.017498493194580078,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "6acf3561400a6b04e73a2052c73720087ce8a1e1222f5307e0b17e5e501a6e42",
+                  "max_abs": 0.00509937247261405
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "9901b3f3e0a153845a657b2cb7f69e6256ecd76a3efee4c1a837e6ed06b4fcf2",
+                  "max_abs": 0.002055186778306961
+                }
+              },
+              "proposal": 6,
+              "global_step": 1,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 20.93226432800293,
+              "evaluations": 2,
+              "at": 1792311580.0122814,
+              "parameters_and_optimizer_before_sha256": "c22cbd1a8f54ff2a976f7e95e0ed1073d446dfae753e4b5f4cfe964eb888297c",
+              "parameters_and_optimizer_now_sha256": "c4c71ab273addc64017df616a0126feb766ae12651d53ba913f7b0c1053a9919"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.2956583797931671,
+                "teacher_mse": 1.3614468116429634e-05,
+                "teacher_rmse": 0.0036897788709392377,
+                "teacher_max_abs": 0.017498493194580078
+              },
+              "candidates": [
+                {
+                  "objective": -0.3067716062068939,
+                  "teacher_mse": 2.189087354054209e-05,
+                  "teacher_rmse": 0.0046787683785951715,
+                  "teacher_max_abs": 0.022568702697753906,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "38051bc24be4aeb6fba27e106078198c3dcf0ab591210a9bc8a6e312f481c5b1",
+                  "max_abs": 0.007861193269491196
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "4951bedff93694a49313a9bc565dbc6ebdf2a50aa505da8743ad9ecdece512c9",
+                  "max_abs": 0.0024394779466092587
+                }
+              },
+              "proposal": 7,
+              "global_step": 1,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 27.265003204345703,
+              "evaluations": 2,
+              "at": 1792311580.5462503,
+              "parameters_and_optimizer_before_sha256": "c4c71ab273addc64017df616a0126feb766ae12651d53ba913f7b0c1053a9919",
+              "parameters_and_optimizer_now_sha256": "821375a16bb83deabe282ccfb506bf4bd3259de394bb6ad94ba11976695e66f4"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.05841560289263725,
+                "teacher_mse": 2.189087354054209e-05,
+                "teacher_rmse": 0.0046787683785951715,
+                "teacher_max_abs": 0.022568702697753906
+              },
+              "candidates": [
+                {
+                  "objective": -0.06504876166582108,
+                  "teacher_mse": 3.27906891470775e-05,
+                  "teacher_rmse": 0.005726315494895256,
+                  "teacher_max_abs": 0.02842426300048828,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "1f84352e6f345355d1f6b1a18bcebe0c16f4b70fed65d654aaf34bdee0050cc6",
+                  "max_abs": 0.006721646059304476
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "806848cb13edcc5a09ac5a61b446cf0dc2f76edd6ed7dbaca02ea660559c57b0",
+                  "max_abs": 0.003689913544803858
+                }
+              },
+              "proposal": 8,
+              "global_step": 1,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 12.511382102966309,
+              "evaluations": 2,
+              "at": 1792311581.0934868,
+              "parameters_and_optimizer_before_sha256": "821375a16bb83deabe282ccfb506bf4bd3259de394bb6ad94ba11976695e66f4",
+              "parameters_and_optimizer_now_sha256": "1d85896ae6d0b012325017111a9268b16281159674b81b3d7f6f4b1a99ff2f4e"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.16105376183986664,
+                "teacher_mse": 3.27906891470775e-05,
+                "teacher_rmse": 0.005726315494895256,
+                "teacher_max_abs": 0.02842426300048828
+              },
+              "candidates": [
+                {
+                  "objective": 0.15763774514198303,
+                  "teacher_mse": 4.495489702094346e-05,
+                  "teacher_rmse": 0.006704841312137332,
+                  "teacher_max_abs": 0.03127884864807129,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "c906f20bbadc369df8a7f8d2d9e30bbeb025ed21a13b604511659d5c1749743e",
+                  "max_abs": 0.0072556775994598866
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "09d647a23d9437a311d5784da49eee6ce77852bdde2fb1c3decea6ff6c8bf78b",
+                  "max_abs": 0.0027874689549207687
+                }
+              },
+              "proposal": 9,
+              "global_step": 2,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 11.801010131835938,
+              "evaluations": 2,
+              "at": 1792311583.269834,
+              "parameters_and_optimizer_before_sha256": "1d85896ae6d0b012325017111a9268b16281159674b81b3d7f6f4b1a99ff2f4e",
+              "parameters_and_optimizer_now_sha256": "1f7ef0b77ffe5170dbf8c72146ddf3195198094674067f1b294eb25694ba211e"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.3705790340900421,
+                "teacher_mse": 4.495489702094346e-05,
+                "teacher_rmse": 0.006704841312137332,
+                "teacher_max_abs": 0.03127884864807129
+              },
+              "candidates": [
+                {
+                  "objective": 0.3580910861492157,
+                  "teacher_mse": 5.830285954289138e-05,
+                  "teacher_rmse": 0.007635630919766315,
+                  "teacher_max_abs": 0.03472256660461426,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "4c49853e7b68ba99e1d1bf5fb09220ccd35cb1d9b2709e29f3c3510816e2c41f",
+                  "max_abs": 0.009871077723801136
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "70b2e7b48748aa402e2971300c1cd96bc7d9452263b9ec0921129ac08d731e36",
+                  "max_abs": 0.002731950953602791
+                }
+              },
+              "proposal": 10,
+              "global_step": 2,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 41.98859786987305,
+              "evaluations": 2,
+              "at": 1792311583.7926602,
+              "parameters_and_optimizer_before_sha256": "1f7ef0b77ffe5170dbf8c72146ddf3195198094674067f1b294eb25694ba211e",
+              "parameters_and_optimizer_now_sha256": "b40804f80718f6c86aec75d395ff0ddac1cb73e9005c0057d0d872c79cc469d3"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.18604032695293427,
+                "teacher_mse": 5.830285954289138e-05,
+                "teacher_rmse": 0.007635630919766315,
+                "teacher_max_abs": 0.03472256660461426
+              },
+              "candidates": [
+                {
+                  "objective": -0.19110172986984253,
+                  "teacher_mse": 7.146086863940582e-05,
+                  "teacher_rmse": 0.008453453060105427,
+                  "teacher_max_abs": 0.036496877670288086,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "936702cc026a23016bd0032743818d3b9a487a7f176d61fa86a1eb0ab1df954c",
+                  "max_abs": 0.006021257024258375
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "080a6bee48d143879822a98e17453ee141d00d755854b648d9447bc6e318a634",
+                  "max_abs": 0.003457253333181143
+                }
+              },
+              "proposal": 11,
+              "global_step": 2,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 14.593335151672363,
+              "evaluations": 2,
+              "at": 1792311584.3147404,
+              "parameters_and_optimizer_before_sha256": "b40804f80718f6c86aec75d395ff0ddac1cb73e9005c0057d0d872c79cc469d3",
+              "parameters_and_optimizer_now_sha256": "230cf6a1b6f3ecd50a6037af71810e3f94aa462a2ad5b31c34fd696c147ca567"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.764136552810669,
+                "teacher_mse": 7.146086863940582e-05,
+                "teacher_rmse": 0.008453453060105427,
+                "teacher_max_abs": 0.036496877670288086
+              },
+              "candidates": [
+                {
+                  "objective": -0.7681751847267151,
+                  "teacher_mse": 8.486978185828775e-05,
+                  "teacher_rmse": 0.009212479680210304,
+                  "teacher_max_abs": 0.037001609802246094,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "99056dddef379580275b7a983b761bc2a953c9484e7a0e6fae8df03e4435f1aa",
+                  "max_abs": 0.0055846464820206165
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "40785f8c2565f2fb99fea304cc0f0766e28a20566e7d0b8fa54427d9e011ed4f",
+                  "max_abs": 0.004126464016735554
+                }
+              },
+              "proposal": 12,
+              "global_step": 2,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 11.363956451416016,
+              "evaluations": 2,
+              "at": 1792311584.8276148,
+              "parameters_and_optimizer_before_sha256": "230cf6a1b6f3ecd50a6037af71810e3f94aa462a2ad5b31c34fd696c147ca567",
+              "parameters_and_optimizer_now_sha256": "1a586247213e3a01e5362767474cbe52f90cd7bee5f3c4ec705a6097eaabc5a5"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.4568447470664978,
+                "teacher_mse": 8.486978185828775e-05,
+                "teacher_rmse": 0.009212479680210304,
+                "teacher_max_abs": 0.037001609802246094
+              },
+              "candidates": [
+                {
+                  "objective": -0.45890671014785767,
+                  "teacher_mse": 9.534663695376366e-05,
+                  "teacher_rmse": 0.009764560253988076,
+                  "teacher_max_abs": 0.037322998046875,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "5023b69a30073d0249c2eb35b8c8d4cb14ea256ae1d916bee361b8fe728229ca",
+                  "max_abs": 0.0070001594722270966
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "85f33159621ba22f378f239efef11a46ce694f92fc6250c31355110f9661f18e",
+                  "max_abs": 0.003318019676953554
+                }
+              },
+              "proposal": 13,
+              "global_step": 3,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 11.624066352844238,
+              "evaluations": 2,
+              "at": 1792311586.4333632,
+              "parameters_and_optimizer_before_sha256": "1a586247213e3a01e5362767474cbe52f90cd7bee5f3c4ec705a6097eaabc5a5",
+              "parameters_and_optimizer_now_sha256": "2454252a91950cd2d40857e5c78e7e00c260e0e2110137a08772085959c463a2"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.05094049870967865,
+                "teacher_mse": 9.534663695376366e-05,
+                "teacher_rmse": 0.009764560253988076,
+                "teacher_max_abs": 0.037322998046875
+              },
+              "candidates": [
+                {
+                  "objective": -0.056878793984651566,
+                  "teacher_mse": 0.00010979983198922127,
+                  "teacher_rmse": 0.010478541501049718,
+                  "teacher_max_abs": 0.04000687599182129,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "657542c84fc1092a1d303c943f73722d75c9b805c2ae9c962713aab77d4a1816",
+                  "max_abs": 0.004017986357212067
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "e96df9de797638b5ef7030dff777c512482dd7be0b3c4bcf329caac49ffc7fb5",
+                  "max_abs": 0.0038440856151282787
+                }
+              },
+              "proposal": 14,
+              "global_step": 3,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 14.283957481384277,
+              "evaluations": 2,
+              "at": 1792311586.9503856,
+              "parameters_and_optimizer_before_sha256": "2454252a91950cd2d40857e5c78e7e00c260e0e2110137a08772085959c463a2",
+              "parameters_and_optimizer_now_sha256": "02c5ca15f14d07596f26b47439883e0906da3d89d8d1498df97084a50c798512"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.14899374544620514,
+                "teacher_mse": 0.00010979983198922127,
+                "teacher_rmse": 0.010478541501049718,
+                "teacher_max_abs": 0.04000687599182129
+              },
+              "candidates": [
+                {
+                  "objective": -0.1529669314622879,
+                  "teacher_mse": 0.00012545796926133335,
+                  "teacher_rmse": 0.011200802170439996,
+                  "teacher_max_abs": 0.04294753074645996,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "bb945ee3487b13345266ac54f18431954e423b05f64e1779375c76647f1a239a",
+                  "max_abs": 0.010853777639567852
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "58d3d322301feb59f6bc427085f042b8aa049561fc09a11d04010bb264b51c6a",
+                  "max_abs": 0.004118453245609999
+                }
+              },
+              "proposal": 15,
+              "global_step": 3,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 13.845531463623047,
+              "evaluations": 2,
+              "at": 1792311587.468605,
+              "parameters_and_optimizer_before_sha256": "02c5ca15f14d07596f26b47439883e0906da3d89d8d1498df97084a50c798512",
+              "parameters_and_optimizer_now_sha256": "3eb5d40a39e350fe4a247187206aa151d80a94f3d5323acba83fe8a15b2ae223"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.29098477959632874,
+                "teacher_mse": 0.00012545796926133335,
+                "teacher_rmse": 0.011200802170439996,
+                "teacher_max_abs": 0.04294753074645996
+              },
+              "candidates": [
+                {
+                  "objective": 0.27597159147262573,
+                  "teacher_mse": 0.00014380415086634457,
+                  "teacher_rmse": 0.01199183684288377,
+                  "teacher_max_abs": 0.04474997520446777,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "c6bce12f2cc70a863a46c5b4dd42f9b91da1587676d45dc871276108a47ea52b",
+                  "max_abs": 0.004636025056242943
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "53364bdc3d5d430e3a01bcb4c5cc425e847345becbbf2fd3240a4a350689bc73",
+                  "max_abs": 0.0018152827396988869
+                }
+              },
+              "proposal": 16,
+              "global_step": 3,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 47.397220611572266,
+              "evaluations": 2,
+              "at": 1792311587.9927838,
+              "parameters_and_optimizer_before_sha256": "3eb5d40a39e350fe4a247187206aa151d80a94f3d5323acba83fe8a15b2ae223",
+              "parameters_and_optimizer_now_sha256": "c3ddc33115f8fec3d59ee1f185c19fae45e71a832f6e71cc322ceee1f80f4ba0"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.09682276844978333,
+                "teacher_mse": 0.00014380415086634457,
+                "teacher_rmse": 0.01199183684288377,
+                "teacher_max_abs": 0.04474997520446777
+              },
+              "candidates": [
+                {
+                  "objective": 0.08957803249359131,
+                  "teacher_mse": 0.00016312733350787312,
+                  "teacher_rmse": 0.01277213112631847,
+                  "teacher_max_abs": 0.046297550201416016,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "aeaa5a506a32882aec406dd738a57dca97638e29b4c290cee04b8a2c2683362e",
+                  "max_abs": 0.006439452525228262
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "67d7f81a9cddc08c495875239fe2ec28d516a4a8681bf63529215b605b548c6b",
+                  "max_abs": 0.002313314937055111
+                }
+              },
+              "proposal": 17,
+              "global_step": 4,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 28.974559783935547,
+              "evaluations": 2,
+              "at": 1792311590.284731,
+              "parameters_and_optimizer_before_sha256": "c3ddc33115f8fec3d59ee1f185c19fae45e71a832f6e71cc322ceee1f80f4ba0",
+              "parameters_and_optimizer_now_sha256": "11d1cb5c8063395ba23481b750e931bfbfa9a90403d573f6f2435221f3213458"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.62770676612854,
+                "teacher_mse": 0.00016312733350787312,
+                "teacher_rmse": 0.01277213112631847,
+                "teacher_max_abs": 0.046297550201416016
+              },
+              "candidates": [
+                {
+                  "objective": -0.6314890384674072,
+                  "teacher_mse": 0.00018120711320079863,
+                  "teacher_rmse": 0.013461319147869522,
+                  "teacher_max_abs": 0.047304391860961914,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "d37a16645f4c76f2aeff2b3918fb4645353a25e1e367dfb43bde4b4582354b5c",
+                  "max_abs": 0.0044547864235937595
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "cce380d0ddf185b265003d70b48132a2c0047c1cf7badf4ab0f41c3a33db724c",
+                  "max_abs": 0.0035170046612620354
+                }
+              },
+              "proposal": 18,
+              "global_step": 4,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 18.009742736816406,
+              "evaluations": 2,
+              "at": 1792311590.8116055,
+              "parameters_and_optimizer_before_sha256": "11d1cb5c8063395ba23481b750e931bfbfa9a90403d573f6f2435221f3213458",
+              "parameters_and_optimizer_now_sha256": "d4dcd03a53ce83a4bb27ef682a375468e2ea634acbd2a481d0a2a4caddf5099b"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.5825096964836121,
+                "teacher_mse": 0.00018120711320079863,
+                "teacher_rmse": 0.013461319147869522,
+                "teacher_max_abs": 0.047304391860961914
+              },
+              "candidates": [
+                {
+                  "objective": 0.576568603515625,
+                  "teacher_mse": 0.00019847703515551984,
+                  "teacher_rmse": 0.014088187788197594,
+                  "teacher_max_abs": 0.04986846446990967,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "c493b82ea5555f502f8afed05441217481e27b67bc5282e79bb4e49a5a15cbbe",
+                  "max_abs": 0.006324978079646826
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "125219b77f0e70d155199c426bd4d3cffcca50faa963be4ff127a5efe3c8178f",
+                  "max_abs": 0.004426256287842989
+                }
+              },
+              "proposal": 19,
+              "global_step": 4,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 19.01912498474121,
+              "evaluations": 2,
+              "at": 1792311591.3516662,
+              "parameters_and_optimizer_before_sha256": "d4dcd03a53ce83a4bb27ef682a375468e2ea634acbd2a481d0a2a4caddf5099b",
+              "parameters_and_optimizer_now_sha256": "e447c4f048bd4ed43e66b4b44e7ca4f696a947bdde0220c8f9badfa078531f03"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.4949530363082886,
+                "teacher_mse": 0.00019847703515551984,
+                "teacher_rmse": 0.014088187788197594,
+                "teacher_max_abs": 0.04986846446990967
+              },
+              "candidates": [
+                {
+                  "objective": -0.49839580059051514,
+                  "teacher_mse": 0.00021249304700177163,
+                  "teacher_rmse": 0.014577141249290673,
+                  "teacher_max_abs": 0.052796363830566406,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "d85af3a0f6205a61f8728479db1869b5330c45f269957bc53f9c284e3c0fb855",
+                  "max_abs": 0.006343137938529253
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "c11b7c399dfebac1906af46ad856addf22eed86ce28345610fdd67bbd58cec3e",
+                  "max_abs": 0.002294862875714898
+                }
+              },
+              "proposal": 20,
+              "global_step": 4,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 22.201786041259766,
+              "evaluations": 2,
+              "at": 1792311591.881212,
+              "parameters_and_optimizer_before_sha256": "e447c4f048bd4ed43e66b4b44e7ca4f696a947bdde0220c8f9badfa078531f03",
+              "parameters_and_optimizer_now_sha256": "ce38e75197df36d7dcbd154e15353530d5793104768d1500346436bdc33310c5"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.1486426740884781,
+                "teacher_mse": 0.00021249304700177163,
+                "teacher_rmse": 0.014577141249290673,
+                "teacher_max_abs": 0.052796363830566406
+              },
+              "candidates": [
+                {
+                  "objective": -0.15530629456043243,
+                  "teacher_mse": 0.0002235173451481387,
+                  "teacher_rmse": 0.014950496485004728,
+                  "teacher_max_abs": 0.05540817975997925,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "61aa2844bb70d63389c5c96dfa2fcd5278c917116906a1f7fdfb9f6611e3f5f3",
+                  "max_abs": 0.005775316618382931
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "5057da25a3712e8fb5beb1d5875fa067e61317112fb84007e17a5c26b895ca75",
+                  "max_abs": 0.0024271556176245213
+                }
+              },
+              "proposal": 21,
+              "global_step": 5,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 30.753807067871094,
+              "evaluations": 2,
+              "at": 1792311593.5934792,
+              "parameters_and_optimizer_before_sha256": "ce38e75197df36d7dcbd154e15353530d5793104768d1500346436bdc33310c5",
+              "parameters_and_optimizer_now_sha256": "9cf52e36a9511cb3a4a1ec504d9b856140c3f372fe64afdcfcbd5f7400d5e605"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.03282523155212402,
+                "teacher_mse": 0.0002235173451481387,
+                "teacher_rmse": 0.014950496485004728,
+                "teacher_max_abs": 0.05540817975997925
+              },
+              "candidates": [
+                {
+                  "objective": -0.03736553341150284,
+                  "teacher_mse": 0.0002356869517825544,
+                  "teacher_rmse": 0.015352099263050457,
+                  "teacher_max_abs": 0.05832719802856445,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "fcae9b7842287cd4f7bf0c4c4017f469d2029a1efd60d8bc1ea17c96d2b08204",
+                  "max_abs": 0.006815778091549873
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "c5c151e29e5008993d864da580da91c5769db2de7f00ca1b1d9ddf6d56ae770b",
+                  "max_abs": 0.0026225086767226458
+                }
+              },
+              "proposal": 22,
+              "global_step": 5,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 19.65848159790039,
+              "evaluations": 2,
+              "at": 1792311594.1098547,
+              "parameters_and_optimizer_before_sha256": "9cf52e36a9511cb3a4a1ec504d9b856140c3f372fe64afdcfcbd5f7400d5e605",
+              "parameters_and_optimizer_now_sha256": "8857b65919a0fda89e3dffed416a486a05e6f5b46ea837e3899dfe4e75bd83d7"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.06259538978338242,
+                "teacher_mse": 0.0002356869517825544,
+                "teacher_rmse": 0.015352099263050457,
+                "teacher_max_abs": 0.05832719802856445
+              },
+              "candidates": [
+                {
+                  "objective": -0.06556101143360138,
+                  "teacher_mse": 0.00024821871193125844,
+                  "teacher_rmse": 0.01575495832845198,
+                  "teacher_max_abs": 0.061832427978515625,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "6db8a807e42699724f36b36e7217339c4c643a8e2a1951c94f5d622e741694e0",
+                  "max_abs": 0.005725592840462923
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "6c98feb4970825c6ed25fbea494221b74d16c58b72aa73bdfea6ba23bfa4d84d",
+                  "max_abs": 0.004686484578996897
+                }
+              },
+              "proposal": 23,
+              "global_step": 5,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 12.599119186401367,
+              "evaluations": 2,
+              "at": 1792311594.627028,
+              "parameters_and_optimizer_before_sha256": "8857b65919a0fda89e3dffed416a486a05e6f5b46ea837e3899dfe4e75bd83d7",
+              "parameters_and_optimizer_now_sha256": "824d60e7fc749f802f4d22632f9b85e1d128a81c5fdaba5db3efab51e20e62a7"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.20033752918243408,
+                "teacher_mse": 0.00024821871193125844,
+                "teacher_rmse": 0.01575495832845198,
+                "teacher_max_abs": 0.061832427978515625
+              },
+              "candidates": [
+                {
+                  "objective": -0.20525747537612915,
+                  "teacher_mse": 0.00026103289565071464,
+                  "teacher_rmse": 0.016156512484156803,
+                  "teacher_max_abs": 0.06531000137329102,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "44c2cb4ea476fc6b89b468a9b2bd82e4df58426cb4aae09f7e0ac2df997b33ff",
+                  "max_abs": 0.006924126762896776
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "ec17cffcd99f2e175d2273e93085e2a0d50de902bca6ff6f7c47972da035ec73",
+                  "max_abs": 0.0029932751785963774
+                }
+              },
+              "proposal": 24,
+              "global_step": 5,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 17.50326156616211,
+              "evaluations": 2,
+              "at": 1792311595.1587875,
+              "parameters_and_optimizer_before_sha256": "824d60e7fc749f802f4d22632f9b85e1d128a81c5fdaba5db3efab51e20e62a7",
+              "parameters_and_optimizer_now_sha256": "fb4bb3563025f143dc937f87a34e2a187fec605be6ecdd9b87b33c3cc3759f5f"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.2066320925951004,
+                "teacher_mse": 0.00026103289565071464,
+                "teacher_rmse": 0.016156512484156803,
+                "teacher_max_abs": 0.06531000137329102
+              },
+              "candidates": [
+                {
+                  "objective": 0.20162050426006317,
+                  "teacher_mse": 0.00027546982164494693,
+                  "teacher_rmse": 0.016597283562226287,
+                  "teacher_max_abs": 0.06883478164672852,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "bc0bb9dc264aa73603f57b775b4da057b5dbc84d9bedfab6c05eb0823ea6bb1e",
+                  "max_abs": 0.010398710146546364
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "f4ec38bc03cb8bc189fd435cbba640fb341d1dae3d18af567a5fd9bad061adbb",
+                  "max_abs": 0.0035053668543696404
+                }
+              },
+              "proposal": 25,
+              "global_step": 6,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 31.619457244873047,
+              "evaluations": 2,
+              "at": 1792311596.766012,
+              "parameters_and_optimizer_before_sha256": "fb4bb3563025f143dc937f87a34e2a187fec605be6ecdd9b87b33c3cc3759f5f",
+              "parameters_and_optimizer_now_sha256": "48bcf94e35b7ea8c3fc3f990bafd8720d43b2c21f012a6d63d08735c40d535a0"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.8570773601531982,
+                "teacher_mse": 0.00027546982164494693,
+                "teacher_rmse": 0.016597283562226287,
+                "teacher_max_abs": 0.06883478164672852
+              },
+              "candidates": [
+                {
+                  "objective": -0.8611428141593933,
+                  "teacher_mse": 0.00028944859514012933,
+                  "teacher_rmse": 0.017013188858651083,
+                  "teacher_max_abs": 0.07257986068725586,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "5aefe6b552975f8743ae7b1a332af72e9a547363a7061bff34e62491bde9fcf2",
+                  "max_abs": 0.004211707040667534
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "f4c5eb0b6e5626b0a6ef5c1941550b9fa453953a96ec2ccf5261acc5561245d2",
+                  "max_abs": 0.003365864045917988
+                }
+              },
+              "proposal": 26,
+              "global_step": 6,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 16.422393798828125,
+              "evaluations": 2,
+              "at": 1792311597.2860425,
+              "parameters_and_optimizer_before_sha256": "48bcf94e35b7ea8c3fc3f990bafd8720d43b2c21f012a6d63d08735c40d535a0",
+              "parameters_and_optimizer_now_sha256": "b52d7d4f7e2d5405a7f2ba46befa50eb80176244ecb2d637045f016d7267bff3"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.10822809487581253,
+                "teacher_mse": 0.00028944859514012933,
+                "teacher_rmse": 0.017013188858651083,
+                "teacher_max_abs": 0.07257986068725586
+              },
+              "candidates": [
+                {
+                  "objective": 0.10100661218166351,
+                  "teacher_mse": 0.0003012022643815726,
+                  "teacher_rmse": 0.017355179756532994,
+                  "teacher_max_abs": 0.07631587982177734,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "1e7cadc92d5a72ddf519a4ddacd35328f40b2d248a962d8ec4214d1d2ac7f9b7",
+                  "max_abs": 0.007212696596980095
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "2acaf1f83c99188e53534c1922e51b5a22b1e7e3b8255b78a13f4d3740cdbcb7",
+                  "max_abs": 0.0034296386875212193
+                }
+              },
+              "proposal": 27,
+              "global_step": 6,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 25.80083465576172,
+              "evaluations": 2,
+              "at": 1792311597.8114438,
+              "parameters_and_optimizer_before_sha256": "b52d7d4f7e2d5405a7f2ba46befa50eb80176244ecb2d637045f016d7267bff3",
+              "parameters_and_optimizer_now_sha256": "a1f3d35bf9d9b989cc5d58063c91cc62b4c1711b38949917dddcd8e76d3bb437"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.08568877726793289,
+                "teacher_mse": 0.0003012022643815726,
+                "teacher_rmse": 0.017355179756532994,
+                "teacher_max_abs": 0.07631587982177734
+              },
+              "candidates": [
+                {
+                  "objective": 0.07850354164838791,
+                  "teacher_mse": 0.00031329752528108656,
+                  "teacher_rmse": 0.01770021257728524,
+                  "teacher_max_abs": 0.07935523986816406,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "de21af2bb88ae61fc8445c5667afe457bfbcda450074469ceeab486970bc50a2",
+                  "max_abs": 0.006158601026982069
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "5ea7f9d0c19dd7f3da6976de364995fb6b2a14bc091128a8e91ce9123713760f",
+                  "max_abs": 0.0021179516334086657
+                }
+              },
+              "proposal": 28,
+              "global_step": 6,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 25.62554359436035,
+              "evaluations": 2,
+              "at": 1792311598.338252,
+              "parameters_and_optimizer_before_sha256": "a1f3d35bf9d9b989cc5d58063c91cc62b4c1711b38949917dddcd8e76d3bb437",
+              "parameters_and_optimizer_now_sha256": "51a33d5cefa0871b435172cdf5f44e171325af6d144553e01764684860a531b2"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.09446832537651062,
+                "teacher_mse": 0.00031329752528108656,
+                "teacher_rmse": 0.01770021257728524,
+                "teacher_max_abs": 0.07935523986816406
+              },
+              "candidates": [
+                {
+                  "objective": 0.08907812088727951,
+                  "teacher_mse": 0.00032252451637759805,
+                  "teacher_rmse": 0.017958967575492698,
+                  "teacher_max_abs": 0.08196163177490234,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "10f9e3a058884db94d93228c45a81e1c7b10b33d773304ba24cd48a40c05a8a3",
+                  "max_abs": 0.006776113528758287
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "9eaba3d4a709a66d0e920459ef22589158da8ef9fbc5b162b1954e4ade338b7d",
+                  "max_abs": 0.00346567970700562
+                }
+              },
+              "proposal": 29,
+              "global_step": 7,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 27.874038696289062,
+              "evaluations": 2,
+              "at": 1792311599.913427,
+              "parameters_and_optimizer_before_sha256": "51a33d5cefa0871b435172cdf5f44e171325af6d144553e01764684860a531b2",
+              "parameters_and_optimizer_now_sha256": "1ae04629cb110412cd4f7212e75f40f24787177dee2e1d95712be7d221e60b80"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.4991573691368103,
+                "teacher_mse": 0.00032252451637759805,
+                "teacher_rmse": 0.017958967575492698,
+                "teacher_max_abs": 0.08196163177490234
+              },
+              "candidates": [
+                {
+                  "objective": -0.5021941661834717,
+                  "teacher_mse": 0.00033203064231202006,
+                  "teacher_rmse": 0.018221707996563332,
+                  "teacher_max_abs": 0.08410167694091797,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "e4aca104401eacd0e2a47b2661f08beb35b7869144ba52c00bcdeb397654c0e7",
+                  "max_abs": 0.004762772936373949
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "337c09cb04f3121fab06a959f5b1790f466b367a226c85a234727c64af35bff7",
+                  "max_abs": 0.004241935443133116
+                }
+              },
+              "proposal": 30,
+              "global_step": 7,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 11.820383071899414,
+              "evaluations": 2,
+              "at": 1792311600.4377434,
+              "parameters_and_optimizer_before_sha256": "1ae04629cb110412cd4f7212e75f40f24787177dee2e1d95712be7d221e60b80",
+              "parameters_and_optimizer_now_sha256": "3ae110a613c53eeb9ab1fb994ac31b0445a2492512c9535ded12f564daf61454"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": 0.14676310122013092,
+                "teacher_mse": 0.00033203064231202006,
+                "teacher_rmse": 0.018221707996563332,
+                "teacher_max_abs": 0.08410167694091797
+              },
+              "candidates": [
+                {
+                  "objective": 0.1405153125524521,
+                  "teacher_mse": 0.00034290365874767303,
+                  "teacher_rmse": 0.018517658025454325,
+                  "teacher_max_abs": 0.08585023880004883,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "4b15a1924e2987fd74eda76cb296e560ebd95a354e19ff128e65d15c1e204873",
+                  "max_abs": 0.006855251267552376
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "85ba747dff43fef3e6eaaf50f904fdff2a456d43fa13b4156e0570fc9a0e81e4",
+                  "max_abs": 0.002824246883392334
+                }
+              },
+              "proposal": 31,
+              "global_step": 7,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 22.502803802490234,
+              "evaluations": 2,
+              "at": 1792311600.9780107,
+              "parameters_and_optimizer_before_sha256": "3ae110a613c53eeb9ab1fb994ac31b0445a2492512c9535ded12f564daf61454",
+              "parameters_and_optimizer_now_sha256": "a6c84bd43fb02dc8390c287281de2835b2f62dfe8d843b0ae8e4b9b2f00eab4a"
+            },
+            {
+              "status": "COMMITTED",
+              "before": {
+                "objective": -0.18317608535289764,
+                "teacher_mse": 0.00034290365874767303,
+                "teacher_rmse": 0.018517658025454325,
+                "teacher_max_abs": 0.08585023880004883
+              },
+              "candidates": [
+                {
+                  "objective": -0.18666839599609375,
+                  "teacher_mse": 0.0003578740288503468,
+                  "teacher_rmse": 0.018917558744466656,
+                  "teacher_max_abs": 0.08703947067260742,
+                  "scale": 1.0,
+                  "accepted": true
+                }
+              ],
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "head_gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "e445c23b025e3e367c4ff087a7154d5f9fe9453b73eac39cc9cdc0875b61c9c5",
+                  "max_abs": 0.005880977958440781
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "4f18175fc3fc143ac2aa1853a20525505854292d277f93b30e9e1cec1eee4af1",
+                  "max_abs": 0.00445147231221199
+                }
+              },
+              "proposal": 32,
+              "global_step": 7,
+              "nominal_group_lrs": [
+                2e-05,
+                2e-05
+              ],
+              "full_gradient_norm": 12.277706146240234,
+              "evaluations": 2,
+              "at": 1792311601.51166,
+              "parameters_and_optimizer_before_sha256": "a6c84bd43fb02dc8390c287281de2835b2f62dfe8d843b0ae8e4b9b2f00eab4a",
+              "parameters_and_optimizer_now_sha256": "882140f1b086e4a0ce1d632ed64aafd87ef2817f78e4acc1af2c15c015c8c741"
+            }
+          ],
+          "original_absolute_teacher_guard": true,
+          "e50_nonincrease_gate_not_used": true,
+          "same_batch_objective_tolerance": 1e-07,
+          "checkpoint_effect_not_proven": true
+        },
+        "head_contract": {
+          "ownership": {
+            "groups": [
+              [
+                "policy.actor_module.decoders.g1_dyn.module.12.weight",
+                "value_model.critic_module.module.0.weight",
+                "value_model.critic_module.module.2.weight",
+                "value_model.critic_module.module.4.weight",
+                "value_model.critic_module.module.6.weight",
+                "value_model.critic_module.module.8.weight",
+                "value_model.critic_module.module.10.weight",
+                "value_model.critic_module.module.12.weight"
+              ],
+              [
+                "policy.actor_module.decoders.g1_dyn.module.12.bias",
+                "value_model.critic_module.module.0.bias",
+                "value_model.critic_module.module.2.bias",
+                "value_model.critic_module.module.4.bias",
+                "value_model.critic_module.module.6.bias",
+                "value_model.critic_module.module.8.bias",
+                "value_model.critic_module.module.10.bias",
+                "value_model.critic_module.module.12.bias"
+              ]
+            ],
+            "shapes": {
+              "policy.actor_module.decoders.g1_dyn.module.12.bias": [
+                29
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.12.weight": [
+                29,
+                512
+              ],
+              "value_model.critic_module.module.0.bias": [
+                2048
+              ],
+              "value_model.critic_module.module.0.weight": [
+                2048,
+                1645
+              ],
+              "value_model.critic_module.module.10.bias": [
+                512
+              ],
+              "value_model.critic_module.module.10.weight": [
+                512,
+                512
+              ],
+              "value_model.critic_module.module.12.bias": [
+                1
+              ],
+              "value_model.critic_module.module.12.weight": [
+                1,
+                512
+              ],
+              "value_model.critic_module.module.2.bias": [
+                2048
+              ],
+              "value_model.critic_module.module.2.weight": [
+                2048,
+                2048
+              ],
+              "value_model.critic_module.module.4.bias": [
+                1024
+              ],
+              "value_model.critic_module.module.4.weight": [
+                1024,
+                2048
+              ],
+              "value_model.critic_module.module.6.bias": [
+                1024
+              ],
+              "value_model.critic_module.module.6.weight": [
+                1024,
+                1024
+              ],
+              "value_model.critic_module.module.8.bias": [
+                512
+              ],
+              "value_model.critic_module.module.8.weight": [
+                512,
+                1024
+              ]
+            },
+            "actor_keys": [
+              "actor_module.decoders.g1_dyn.module.12.weight",
+              "actor_module.decoders.g1_dyn.module.12.bias"
+            ],
+            "actor_parameters": 14877,
+            "critic_keys": [
+              "critic_module.module.0.bias",
+              "critic_module.module.0.weight",
+              "critic_module.module.10.bias",
+              "critic_module.module.10.weight",
+              "critic_module.module.12.bias",
+              "critic_module.module.12.weight",
+              "critic_module.module.2.bias",
+              "critic_module.module.2.weight",
+              "critic_module.module.4.bias",
+              "critic_module.module.4.weight",
+              "critic_module.module.6.bias",
+              "critic_module.module.6.weight",
+              "critic_module.module.8.bias",
+              "critic_module.module.8.weight"
+            ]
+          },
+          "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+          "native_group_options": [
+            {
+              "weight_decay": 0.0,
+              "betas": [
+                0.9,
+                0.999
+              ],
+              "eps": 1e-08,
+              "amsgrad": false,
+              "maximize": false,
+              "foreach": null,
+              "capturable": false,
+              "differentiable": false,
+              "fused": true,
+              "decoupled_weight_decay": true
+            },
+            {
+              "weight_decay": 0.0,
+              "betas": [
+                0.9,
+                0.999
+              ],
+              "eps": 1e-08,
+              "amsgrad": false,
+              "maximize": false,
+              "foreach": null,
+              "capturable": false,
+              "differentiable": false,
+              "fused": true,
+              "decoupled_weight_decay": true
+            }
+          ],
+          "initial_actor_sha256": "6b998391fb2f7b28c267dfc24df10e337243cadffa0683e02ec7a943829d44a6",
+          "scope": "EXACT_ORIGINAL_OUTPUT_HEAD_AND_ORIGINAL_CRITIC",
+          "steps": [
+            {
+              "commit": 1,
+              "proposal": 1,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "817a77c5be728b5c7ef746fad0394c27393392a20e366a0c48bdfb9dc072c785",
+                  "max_abs": 0.004066980443894863
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "d0e67de52b1996a2d76d02ec25923a6df22b773becfc2dd143979c69f4aeac6e",
+                  "max_abs": 0.0025289447512477636
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 2,
+              "proposal": 2,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "1fc2de384695e8c2a194167ac3d0349a4f7bfca07ea45a2888ca461a03998768",
+                  "max_abs": 0.008827077224850655
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "d8ab22d7330f3af3bad63b7977b87e55f2e45574b7429ed15489e19ba1414f68",
+                  "max_abs": 0.004308757372200489
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 3,
+              "proposal": 3,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "dc9e87803bae4c7684af5567ef1ca901242548d30e98a46848a63934c56570a8",
+                  "max_abs": 0.00862709991633892
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "7e556e24760f06cd4600f7865cef9bdee83c6826a70919e0c180f359b103b064",
+                  "max_abs": 0.0020803348161280155
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 4,
+              "proposal": 4,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "622b7705d26b212517a210a1ab64e983ae66ec602f19a1caa596255407e09a35",
+                  "max_abs": 0.0056808870285749435
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "78e163f68793659387dbd467500f802a40d8d52b0db468069612ff6e9cd94a8b",
+                  "max_abs": 0.00324853602796793
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 5,
+              "proposal": 5,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "89950231830a43fbaba2bc52d7497123746dde1fea1392ab45d152fa2bd89108",
+                  "max_abs": 0.010962659493088722
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "1a371f781b6644d52963b59816ba18531e353f25c51d7e5afb23caf6f71dd5b8",
+                  "max_abs": 0.0028267360758036375
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 6,
+              "proposal": 6,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "6acf3561400a6b04e73a2052c73720087ce8a1e1222f5307e0b17e5e501a6e42",
+                  "max_abs": 0.00509937247261405
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "9901b3f3e0a153845a657b2cb7f69e6256ecd76a3efee4c1a837e6ed06b4fcf2",
+                  "max_abs": 0.002055186778306961
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 7,
+              "proposal": 7,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "38051bc24be4aeb6fba27e106078198c3dcf0ab591210a9bc8a6e312f481c5b1",
+                  "max_abs": 0.007861193269491196
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "4951bedff93694a49313a9bc565dbc6ebdf2a50aa505da8743ad9ecdece512c9",
+                  "max_abs": 0.0024394779466092587
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 8,
+              "proposal": 8,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "1f84352e6f345355d1f6b1a18bcebe0c16f4b70fed65d654aaf34bdee0050cc6",
+                  "max_abs": 0.006721646059304476
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "806848cb13edcc5a09ac5a61b446cf0dc2f76edd6ed7dbaca02ea660559c57b0",
+                  "max_abs": 0.003689913544803858
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 9,
+              "proposal": 9,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "c906f20bbadc369df8a7f8d2d9e30bbeb025ed21a13b604511659d5c1749743e",
+                  "max_abs": 0.0072556775994598866
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "09d647a23d9437a311d5784da49eee6ce77852bdde2fb1c3decea6ff6c8bf78b",
+                  "max_abs": 0.0027874689549207687
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 10,
+              "proposal": 10,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "4c49853e7b68ba99e1d1bf5fb09220ccd35cb1d9b2709e29f3c3510816e2c41f",
+                  "max_abs": 0.009871077723801136
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "70b2e7b48748aa402e2971300c1cd96bc7d9452263b9ec0921129ac08d731e36",
+                  "max_abs": 0.002731950953602791
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 11,
+              "proposal": 11,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "936702cc026a23016bd0032743818d3b9a487a7f176d61fa86a1eb0ab1df954c",
+                  "max_abs": 0.006021257024258375
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "080a6bee48d143879822a98e17453ee141d00d755854b648d9447bc6e318a634",
+                  "max_abs": 0.003457253333181143
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 12,
+              "proposal": 12,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "99056dddef379580275b7a983b761bc2a953c9484e7a0e6fae8df03e4435f1aa",
+                  "max_abs": 0.0055846464820206165
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "40785f8c2565f2fb99fea304cc0f0766e28a20566e7d0b8fa54427d9e011ed4f",
+                  "max_abs": 0.004126464016735554
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 13,
+              "proposal": 13,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "5023b69a30073d0249c2eb35b8c8d4cb14ea256ae1d916bee361b8fe728229ca",
+                  "max_abs": 0.0070001594722270966
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "85f33159621ba22f378f239efef11a46ce694f92fc6250c31355110f9661f18e",
+                  "max_abs": 0.003318019676953554
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 14,
+              "proposal": 14,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "657542c84fc1092a1d303c943f73722d75c9b805c2ae9c962713aab77d4a1816",
+                  "max_abs": 0.004017986357212067
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "e96df9de797638b5ef7030dff777c512482dd7be0b3c4bcf329caac49ffc7fb5",
+                  "max_abs": 0.0038440856151282787
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 15,
+              "proposal": 15,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "bb945ee3487b13345266ac54f18431954e423b05f64e1779375c76647f1a239a",
+                  "max_abs": 0.010853777639567852
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "58d3d322301feb59f6bc427085f042b8aa049561fc09a11d04010bb264b51c6a",
+                  "max_abs": 0.004118453245609999
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 16,
+              "proposal": 16,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "c6bce12f2cc70a863a46c5b4dd42f9b91da1587676d45dc871276108a47ea52b",
+                  "max_abs": 0.004636025056242943
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "53364bdc3d5d430e3a01bcb4c5cc425e847345becbbf2fd3240a4a350689bc73",
+                  "max_abs": 0.0018152827396988869
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 17,
+              "proposal": 17,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "aeaa5a506a32882aec406dd738a57dca97638e29b4c290cee04b8a2c2683362e",
+                  "max_abs": 0.006439452525228262
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "67d7f81a9cddc08c495875239fe2ec28d516a4a8681bf63529215b605b548c6b",
+                  "max_abs": 0.002313314937055111
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 18,
+              "proposal": 18,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "d37a16645f4c76f2aeff2b3918fb4645353a25e1e367dfb43bde4b4582354b5c",
+                  "max_abs": 0.0044547864235937595
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "cce380d0ddf185b265003d70b48132a2c0047c1cf7badf4ab0f41c3a33db724c",
+                  "max_abs": 0.0035170046612620354
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 19,
+              "proposal": 19,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "c493b82ea5555f502f8afed05441217481e27b67bc5282e79bb4e49a5a15cbbe",
+                  "max_abs": 0.006324978079646826
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "125219b77f0e70d155199c426bd4d3cffcca50faa963be4ff127a5efe3c8178f",
+                  "max_abs": 0.004426256287842989
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 20,
+              "proposal": 20,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "d85af3a0f6205a61f8728479db1869b5330c45f269957bc53f9c284e3c0fb855",
+                  "max_abs": 0.006343137938529253
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "c11b7c399dfebac1906af46ad856addf22eed86ce28345610fdd67bbd58cec3e",
+                  "max_abs": 0.002294862875714898
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 21,
+              "proposal": 21,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "61aa2844bb70d63389c5c96dfa2fcd5278c917116906a1f7fdfb9f6611e3f5f3",
+                  "max_abs": 0.005775316618382931
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "5057da25a3712e8fb5beb1d5875fa067e61317112fb84007e17a5c26b895ca75",
+                  "max_abs": 0.0024271556176245213
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 22,
+              "proposal": 22,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "fcae9b7842287cd4f7bf0c4c4017f469d2029a1efd60d8bc1ea17c96d2b08204",
+                  "max_abs": 0.006815778091549873
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "c5c151e29e5008993d864da580da91c5769db2de7f00ca1b1d9ddf6d56ae770b",
+                  "max_abs": 0.0026225086767226458
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 23,
+              "proposal": 23,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "6db8a807e42699724f36b36e7217339c4c643a8e2a1951c94f5d622e741694e0",
+                  "max_abs": 0.005725592840462923
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "6c98feb4970825c6ed25fbea494221b74d16c58b72aa73bdfea6ba23bfa4d84d",
+                  "max_abs": 0.004686484578996897
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 24,
+              "proposal": 24,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "44c2cb4ea476fc6b89b468a9b2bd82e4df58426cb4aae09f7e0ac2df997b33ff",
+                  "max_abs": 0.006924126762896776
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "ec17cffcd99f2e175d2273e93085e2a0d50de902bca6ff6f7c47972da035ec73",
+                  "max_abs": 0.0029932751785963774
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 25,
+              "proposal": 25,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "bc0bb9dc264aa73603f57b775b4da057b5dbc84d9bedfab6c05eb0823ea6bb1e",
+                  "max_abs": 0.010398710146546364
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "f4ec38bc03cb8bc189fd435cbba640fb341d1dae3d18af567a5fd9bad061adbb",
+                  "max_abs": 0.0035053668543696404
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 26,
+              "proposal": 26,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "5aefe6b552975f8743ae7b1a332af72e9a547363a7061bff34e62491bde9fcf2",
+                  "max_abs": 0.004211707040667534
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "f4c5eb0b6e5626b0a6ef5c1941550b9fa453953a96ec2ccf5261acc5561245d2",
+                  "max_abs": 0.003365864045917988
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 27,
+              "proposal": 27,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "1e7cadc92d5a72ddf519a4ddacd35328f40b2d248a962d8ec4214d1d2ac7f9b7",
+                  "max_abs": 0.007212696596980095
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "2acaf1f83c99188e53534c1922e51b5a22b1e7e3b8255b78a13f4d3740cdbcb7",
+                  "max_abs": 0.0034296386875212193
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 28,
+              "proposal": 28,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "de21af2bb88ae61fc8445c5667afe457bfbcda450074469ceeab486970bc50a2",
+                  "max_abs": 0.006158601026982069
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "5ea7f9d0c19dd7f3da6976de364995fb6b2a14bc091128a8e91ce9123713760f",
+                  "max_abs": 0.0021179516334086657
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 29,
+              "proposal": 29,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "10f9e3a058884db94d93228c45a81e1c7b10b33d773304ba24cd48a40c05a8a3",
+                  "max_abs": 0.006776113528758287
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "9eaba3d4a709a66d0e920459ef22589158da8ef9fbc5b162b1954e4ade338b7d",
+                  "max_abs": 0.00346567970700562
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 30,
+              "proposal": 30,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "e4aca104401eacd0e2a47b2661f08beb35b7869144ba52c00bcdeb397654c0e7",
+                  "max_abs": 0.004762772936373949
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "337c09cb04f3121fab06a959f5b1790f466b367a226c85a234727c64af35bff7",
+                  "max_abs": 0.004241935443133116
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 31,
+              "proposal": 31,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "4b15a1924e2987fd74eda76cb296e560ebd95a354e19ff128e65d15c1e204873",
+                  "max_abs": 0.006855251267552376
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "85ba747dff43fef3e6eaaf50f904fdff2a456d43fa13b4156e0570fc9a0e81e4",
+                  "max_abs": 0.002824246883392334
+                }
+              },
+              "frozen_actor_unchanged": true
+            },
+            {
+              "commit": 32,
+              "proposal": 32,
+              "owner_sha256": "71e6bdd83ac5e6c4fe040eeffc087842c8f2874b9189624ea61c1f14962bdcf8",
+              "gradients": {
+                "actor_module.decoders.g1_dyn.module.12.weight": {
+                  "shape": [
+                    29,
+                    512
+                  ],
+                  "sha256": "e445c23b025e3e367c4ff087a7154d5f9fe9453b73eac39cc9cdc0875b61c9c5",
+                  "max_abs": 0.005880977958440781
+                },
+                "actor_module.decoders.g1_dyn.module.12.bias": {
+                  "shape": [
+                    29
+                  ],
+                  "sha256": "4f18175fc3fc143ac2aa1853a20525505854292d277f93b30e9e1cec1eee4af1",
+                  "max_abs": 0.00445147231221199
+                }
+              },
+              "frozen_actor_unchanged": true
+            }
+          ]
+        },
+        "actual_optimizer_steps": [
+          {
+            "utc": "2026-10-18T08:19:36.318001+00:00",
+            "trainer_global_step": 0,
+            "attempt_optimizer_step": 1,
+            "applied_group_lrs": [
+              3e-06,
+              3e-06
+            ],
+            "adaptive_args_lr": 3e-06,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:36.849698+00:00",
+            "trainer_global_step": 0,
+            "attempt_optimizer_step": 2,
+            "applied_group_lrs": [
+              4.5e-06,
+              4.5e-06
+            ],
+            "adaptive_args_lr": 4.5e-06,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:37.375374+00:00",
+            "trainer_global_step": 0,
+            "attempt_optimizer_step": 3,
+            "applied_group_lrs": [
+              6.75e-06,
+              6.75e-06
+            ],
+            "adaptive_args_lr": 6.75e-06,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:37.907609+00:00",
+            "trainer_global_step": 0,
+            "attempt_optimizer_step": 4,
+            "applied_group_lrs": [
+              1.0124999999999999e-05,
+              1.0124999999999999e-05
+            ],
+            "adaptive_args_lr": 1.0124999999999999e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:39.540762+00:00",
+            "trainer_global_step": 1,
+            "attempt_optimizer_step": 5,
+            "applied_group_lrs": [
+              1.5187499999999998e-05,
+              1.5187499999999998e-05
+            ],
+            "adaptive_args_lr": 1.5187499999999998e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:40.068954+00:00",
+            "trainer_global_step": 1,
+            "attempt_optimizer_step": 6,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:40.603703+00:00",
+            "trainer_global_step": 1,
+            "attempt_optimizer_step": 7,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:41.150463+00:00",
+            "trainer_global_step": 1,
+            "attempt_optimizer_step": 8,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:43.325691+00:00",
+            "trainer_global_step": 2,
+            "attempt_optimizer_step": 9,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:43.851204+00:00",
+            "trainer_global_step": 2,
+            "attempt_optimizer_step": 10,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:44.368823+00:00",
+            "trainer_global_step": 2,
+            "attempt_optimizer_step": 11,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:44.882322+00:00",
+            "trainer_global_step": 2,
+            "attempt_optimizer_step": 12,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:46.487735+00:00",
+            "trainer_global_step": 3,
+            "attempt_optimizer_step": 13,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:47.006597+00:00",
+            "trainer_global_step": 3,
+            "attempt_optimizer_step": 14,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:47.522307+00:00",
+            "trainer_global_step": 3,
+            "attempt_optimizer_step": 15,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:48.047454+00:00",
+            "trainer_global_step": 3,
+            "attempt_optimizer_step": 16,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:50.341372+00:00",
+            "trainer_global_step": 4,
+            "attempt_optimizer_step": 17,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:50.868051+00:00",
+            "trainer_global_step": 4,
+            "attempt_optimizer_step": 18,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:51.411702+00:00",
+            "trainer_global_step": 4,
+            "attempt_optimizer_step": 19,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:51.936699+00:00",
+            "trainer_global_step": 4,
+            "attempt_optimizer_step": 20,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:53.648797+00:00",
+            "trainer_global_step": 5,
+            "attempt_optimizer_step": 21,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:54.165839+00:00",
+            "trainer_global_step": 5,
+            "attempt_optimizer_step": 22,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:54.683463+00:00",
+            "trainer_global_step": 5,
+            "attempt_optimizer_step": 23,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:55.214959+00:00",
+            "trainer_global_step": 5,
+            "attempt_optimizer_step": 24,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:56.822747+00:00",
+            "trainer_global_step": 6,
+            "attempt_optimizer_step": 25,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:57.345365+00:00",
+            "trainer_global_step": 6,
+            "attempt_optimizer_step": 26,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:57.867008+00:00",
+            "trainer_global_step": 6,
+            "attempt_optimizer_step": 27,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:58.396101+00:00",
+            "trainer_global_step": 6,
+            "attempt_optimizer_step": 28,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:19:59.969192+00:00",
+            "trainer_global_step": 7,
+            "attempt_optimizer_step": 29,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:20:00.493126+00:00",
+            "trainer_global_step": 7,
+            "attempt_optimizer_step": 30,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:20:01.040396+00:00",
+            "trainer_global_step": 7,
+            "attempt_optimizer_step": 31,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          },
+          {
+            "utc": "2026-10-18T08:20:01.568225+00:00",
+            "trainer_global_step": 7,
+            "attempt_optimizer_step": 32,
+            "applied_group_lrs": [
+              2e-05,
+              2e-05
+            ],
+            "adaptive_args_lr": 2e-05,
+            "scope": "UNDERLYING_OPTIMIZER_STEP_RETURNED_NOT_POLICY_EFFECT"
+          }
+        ],
+        "routes": [
+          {
+            "update": 1,
+            "trainer_global_step": 0,
+            "routes": {
+              "a3_fast": 144,
+              "g1": 240
+            },
+            "transitions": 384
+          },
+          {
+            "update": 2,
+            "trainer_global_step": 1,
+            "routes": {
+              "a3_fast": 144,
+              "g1": 240
+            },
+            "transitions": 384
+          },
+          {
+            "update": 3,
+            "trainer_global_step": 2,
+            "routes": {
+              "a3_fast": 144,
+              "g1": 240
+            },
+            "transitions": 384
+          },
+          {
+            "update": 4,
+            "trainer_global_step": 3,
+            "routes": {
+              "a3_fast": 144,
+              "g1": 240
+            },
+            "transitions": 384
+          },
+          {
+            "update": 5,
+            "trainer_global_step": 4,
+            "routes": {
+              "a3_fast": 144,
+              "g1": 240
+            },
+            "transitions": 384
+          },
+          {
+            "update": 6,
+            "trainer_global_step": 5,
+            "routes": {
+              "a3_fast": 124,
+              "g1": 260
+            },
+            "transitions": 384
+          },
+          {
+            "update": 7,
+            "trainer_global_step": 6,
+            "routes": {
+              "g1": 264,
+              "a3_fast": 120
+            },
+            "transitions": 384
+          },
+          {
+            "update": 8,
+            "trainer_global_step": 7,
+            "routes": {
+              "g1": 264,
+              "a3_fast": 120
+            },
+            "transitions": 384
+          }
+        ],
+        "derived_outer_actor_decoder_calls": {
+          "rollout": 192,
+          "training_batch": 96,
+          "initial_teacher": 4,
+          "committed_teacher": 128,
+          "finite_candidates": 384,
+          "total": 804
+        },
+        "call_count_basis": "PINNED_SOURCE_PATHS_AND_COMPLETED_JSON_RECEIPTS_NOT_KERNEL_INSTRUMENTATION",
+        "recipe_unchanged_except_registered_storage_and_actor_trainable_scope": true,
+        "deploy_allowed": false,
+        "final_effect_step": 8
+      }
+    }
+  ],
+  "experiment": "A3_HUMANPLUS_HEAD_ASSESSMENT_20261018_HP15",
+  "current_stage": "verify-training",
+  "started_at_utc": "2026-10-18T08:30:07.702165+00:00",
+  "updated_at_utc": "2026-10-18T08:30:27.903122+00:00",
+  "backup_status": "LOCAL_ONLY",
+  "github_synced": false
+}

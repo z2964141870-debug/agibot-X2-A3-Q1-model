@@ -41,3 +41,9 @@ README/索引/current state、代码与小清单scoped审diff和audit_git_payloa
 ## 16:30 独立登记完成
 
 代码c611022，HP15单次register完成；291源码/494输入（含HP14已验工件及故障收据）和原10环境来源固定。来源step8 c508fe2a...，预算0新optimizer/0训练交互，仅最终8完整效果8769步。登记资源元数据通过但不是未来三次启动门。原HP14 STOPPED和成功训练阶段保持，下一新合同verify-training，不调用旧命令。LOCAL_COMMITTED_UNPUSHED。
+
+## 16:31 保存训练状态验证通过
+
+单次verify-training及独立审计verified=true。0/2/4/8文件大小/SHA、Actor/Critic原架构/FP32/有限性、step0 fresh035/空Adam、非head Actor逐值不变和两head变化已验；2/4/8实际变化仅原weight/bias两key。每个保存状态Adam组整数ID→owner、矩形状/有限性/二阶非负/4×step计数通过，实际32提交/token/teacher/route/配方一致。初始动作RMSE3.7591067e-7、最大ratio偏差1.4305115e-5，均在原门内。
+
+本阶段仅验证已验收训练工件，0新optimizer/训练交互/效果回放。5健康同boot、CPU最高83/GPU43°C、可用最低23363317760字节、0FATAL/新增OOM/残留。验证状态COMPLETE/VERIFIED_HEAD_TRAINING_NOT_EFFECT，不代表效果改善。下一仅最终8六衣服完整2994步；保存结果和独立审计后再四官方。原HP14 STOPPED保留，GitHub未同步、原日志模型LOCAL_ONLY。

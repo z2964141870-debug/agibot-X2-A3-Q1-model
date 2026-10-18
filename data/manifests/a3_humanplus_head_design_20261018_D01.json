@@ -1,6 +1,6 @@
 {
   "design_id": "A3_HUMANPLUS_HEAD_DESIGN_20261018_D01",
-  "status": "REVIEWABLE_DESIGN_NOT_IMPLEMENTED_NOT_REGISTERED",
+  "status": "STATIC_IMPLEMENTATION_REVIEW_COMPLETE_NOT_IMPLEMENTED_NOT_REGISTERED",
   "date_beijing": "2026-10-18",
   "parent_head": "cfa0647dacd4c4735cbfac5838ddafa3348a4ce3",
   "host": "humanplus@100.101.30.68",
@@ -110,7 +110,52 @@
     "optimizer_steps": 0,
     "new_tests_or_old_audit_reexecutions": 0
   },
-  "next": "READ_ONLY_REVIEW_OF_INDEPENDENT_SCOPE_ENFORCEMENT_AND_AUDIT_DESIGN_BEFORE_IMPLEMENTATION_OR_REGISTRATION",
+  "static_implementation_review": {
+    "reviewed_at_beijing": "2026-10-18T14:46:00+08:00",
+    "parent_head": "671dafadeacd3fa32015ce35b047176e5c11c0b4",
+    "existing_experiment_code_modified": false,
+    "independent_trainer_implementation_present": false,
+    "decisions": [
+      "OVERRIDE_CREATE_OPTIMIZER_BEFORE_SCHEDULER_CALLBACK_AND_ACCELERATE_PREPARE",
+      "USE_PINNED_GENERIC_TRANSFORMERS_CREATOR_BYPASS_CLOTH_RESTRICTION_WITHOUT_MUTATING_PARENT",
+      "EXACT_UNIQUE_OPTIMIZER_OWNERSHIP_TWO_HEAD_KEYS_PLUS_ORIGINAL_CRITIC",
+      "KEEP_FRESH_LOAD_CHAIN_AND_FINITE_BEHAVIOR_WITHOUT_LATE_OPTIMIZER_REPLACEMENT",
+      "INDEPENDENT_TRIAL_BINDINGS_FOR_ENTRY_VERIFIER_AND_AUDITORS_NO_HP12_WRITES",
+      "NONEMPTY_CHANGED_ACTOR_KEY_SUBSET_OF_TWO_ALLOWED_HEAD_KEYS",
+      "CHECKPOINT_OPTIMIZER_NAME_ORDER_TO_SERIALIZED_ID_MAPPING_REQUIRED",
+      "STOP_AUDIT_DERIVES_COUNTS_FROM_NEW_RECEIPTS_NOT_HP12_27_COMMIT_CONSTANTS"
+    ],
+    "actor_decoder_outer_call_upper_bounds": {
+      "rollout": 192,
+      "ordinary_training_batches": 96,
+      "initial_teacher": 4,
+      "post_commit_teacher": 128,
+      "candidate_mechanism": 1728,
+      "total_training": 2148,
+      "final_effect_stage_included": false,
+      "internal_submodule_calls_or_kernels_included": false
+    },
+    "source_sha256": {
+      "script/a3/consistent_precision.py": "61dd22a41f87427e2ad82141956be2851aff57077d6f5145672aabe89c2c100a",
+      "script/a3/verified_finetune.py": "11044839b5c3d97fceb634149bae4960176f73a326bcdeafa576bc7dda33e22a",
+      "script/a3/finetune_trainer.py": "197ebea4444861340d0e45df8f81c4141c388194790da5a1c2b5640a22210aeb",
+      "script/a3/resumable_sonic.py": "e682dbfa42243becd15cbc48bd5c19bc5d3a46e6ad3bd767705f50ae2a0f51a9",
+      "script/a3/cloth_cached_tokens.py": "87cb5b57cf53d3c6759a77264c07ef730b5ff9e7b64899ec55dec9068c4a8c60",
+      "script/a3/cloth_curve_trainer.py": "4eec945a5bddeb5cc416738f57c727b44f0fbfc6e6d8d7c7baaa0681a892f74f",
+      "script/a3/finite_adam.py": "ab8d270563a8b214474a1b2314dfca0c07e635baac1c0bb9e5a87b4690ced9e3",
+      "script/a3/retention_direction_probe.py": "705edf26a210fe2d18e10a45326eba3aaadace0ce1b93c923107cb25286e493a",
+      "script/a3/humanplus_finite_verification.py": "7d8adef69c37fb587b9a27a44b10f6ffc52fac0f328e4675117b1159b0958e45",
+      "script/a3/humanplus_training_entry.py": "0adb3153b7c6380e9de662ad27c0de67bb31cf068b8c481079141369771b0cd2",
+      "script/project_tools/humanplus_finite_stop_audit.py": "5b06a2c2792b02bf37f8fb3ad31024b3da9efb77a0943605a57eddb5c813ae15",
+      "script/project_tools/humanplus_finite_audit.py": "1975c7c25d0ec7bb9ca5b68e85c852ecdc8b1a02ff8c236a9b6fc886ca34fa4e",
+      "script/a3/checkpoint_store.py": "c4bef83e48eabc2950fadeaa2f21b11d8ee5abc48ead0d759f3a0cadaff9e5c8",
+      "script/vendor/sonic_for_a3/gear_sonic/trl/trainer/ppo_trainer.py": "872b22d0ae6b1f124fe152e2831c496bfe6b4c80c92fde167129e0c3f1ce6fc1",
+      "script/vendor/sonic_for_a3/gear_sonic/trl/modules/actor_critic_modules.py": "4338bcb069b4efd31ad0e98c5f926c3a804b0b9e86ccd50e98ca79547bec449e",
+      "/home/humanplus/anaconda3/envs/x2-sonic-isaaclab/lib/python3.11/site-packages/transformers/trainer.py": "c3eac8fa28bda6330fd4dee131e7fe7d9bdc0fa35d9de944fce52cb97b379bab"
+    },
+    "actual_new_tests_or_model_execution": 0
+  },
+  "next": "INDEPENDENT_IMPLEMENTATION_AND_NECESSARY_STDLIB_CONTROLS_THEN_COMPLETE_CODE_INPUT_SHA_REGISTRATION_BEFORE_ANY_SCIENTIFIC_EXECUTION",
   "github_status": "LOCAL_COMMITTED_UNPUSHED",
   "raw_and_model_storage": "LOCAL_ONLY"
 }

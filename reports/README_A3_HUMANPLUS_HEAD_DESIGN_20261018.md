@@ -1,6 +1,6 @@
 # A3 冻结特征骨干、仅训练动作输出头的独立方案
 
-记录日期：2026-10-18。设计编号：D01（不是科学实验编号）。状态：只读论证完成，设计可审查；未实现、未登记、未运行。
+记录日期：2026-10-18。设计编号：D01（不是科学实验编号）。状态：方案及14:46静态实施审查完成，设计可审查；未实现、未登记、未运行。
 
 ## 目标与范围
 
@@ -59,7 +59,7 @@ ssh -S /tmp/yuanqi-humanplus-a3.sock -o BatchMode=yes humanplus@100.101.30.68 'c
 
 ## 实施缺口与下一步
 
-设计已具备明确单一变量和固定判据，但执行实现未完成，没有可声称已冻结的新执行代码SHA。后续先只读审查以下实施要求，形成独立入口及审计方案后才可能进入实现；不得自动把HP12 run参数或全局DECODER常量改成另一层：
+设计已具备明确单一变量和固定判据，但执行实现未完成，没有可声称已冻结的新执行代码SHA。下面五项已于14:46完成一次静态实施审查，具体决策见后节；后续须独立实现，不得只把HP12 run参数或全局DECODER常量改成另一层：
 
 1. 独立trainer在create_optimizer前白名单冻结Actor，确保父类restrict_policy不会重新解冻整个decoder；所有optimizer组只拥有两项Actor加原Critic，原超参不变。不得修改旧HP12共享模块的行为。
 2. 注册前锁定新代码闭包、四MotionLib、anchors/targets、035、HP11合同及环境源码SHA，重建新根路径；新实验编号须与实际账本核对，D01不占HP编号。
@@ -68,6 +68,49 @@ ssh -S /tmp/yuanqi-humanplus-a3.sock -o BatchMode=yes humanplus@100.101.30.68 'c
 5. 沿用已验broker与正常关闭协议，但任务成功和科学拒绝退出分别记录；不给HP12补正常关闭收据。新行为的标准库控制应验证白名单、所有权和预算合同，不能重跑旧控制或以mock当作16环境实测。
 
 方案不证明短训练会改善，也不声称LoRA/持续学习复现或新算法贡献。本轮没有可验收新模型，HP12停止状态不变。
+
+## 14:46 静态实施审查收束
+
+本次起点HEAD为671dafadeacd3fa32015ce35b047176e5c11c0b4，worktree干净、SSH可用。仅读取代码和小JSON，没有import项目训练模块/torch，也没有运行测试、旧register/run/审计或加载任何PT。下述是待实现要求，不是代码已通过的声明；不再为同一组缺口追加重复设计阶段。
+
+### 优化器必须在父类初始化期间就固定
+
+固定vendor的TRLPPOTrainer先在_init_trl构造PolicyAndValueWrapper，再调用create_optimizer_and_scheduler；随后构造callback handler、accelerator.prepare，最后才load_checkpoint。VerifiedFineTuneTrainer的step hooks在其super初始化返回后安装。因此不能等完整trainer构造完再删参数、替换optimizer或重新冻结，这会留下scheduler/callback/Accelerate/hook引用不一致。
+
+ClothConstrainedTrainer.create_optimizer逐参数调用restrict_policy，会把所有DECODER前缀重新设为requires_grad=True。新trainer若先冻结head再调用FiniteRetentionTrainer.create_optimizer，仍会经过这一步，方案失效。选定的实施方式为独立HeadOnly trainer继承现有有限候选行为，但完整覆盖create_optimizer：先执行两key/形状/计数白名单，再显式调用固定Transformers Trainer.create_optimizer这一层通用创建器，绕过上述cloth范围重置；立刻核对原生空AdamW及两组超参，然后以原FiniteAdamW方式包装，必须在scheduler/callback/prepare之前返回最终optimizer。该直接祖先调用是有意的局部范围覆盖，须由固定源码SHA及标准库调用顺序控制防漂移；不改父类源码、不全局monkeypatch。
+
+把wrapper参数映射到稳定名称：policy.<两head key>以及value_model中原可训练参数。优化器参数ID列表必须无重复、与此集合精确相等；不能只检查“没有冻结参数”，否则漏掉Critic或head仍可能通过。拒绝额外disc/reward模型、意外param override或不同optimizer类型。两组weight_decay、betas、eps、lr、fused/foreach等来自原通用创建器，除params外不能重新配置。再次调用create_optimizer时只允许返回同一已核验FiniteAdamW，不重置矩或重新创建；其他既有optimizer拒绝。
+
+load_checkpoint继续走现有fresh035、空Adam、FP32、teacher/概率/token检查链，不能调用ResumableTrainer的resume=true分支。_cloth_scope必须记录两key，冻结摘要由原load_checkpoint覆盖所有其余Actor，包括前置g1_dyn层。首次batch及每次事务/提交前后检查requires_grad、完整所有权、冻结参数/Actor buffer摘要和冻结梯度None；这些检查不新增forward。Critic原有buffer可按原配方变化，不能误把整个wrapper buffer都要求静态；拒绝时仍恢复该未提交batch的完整wrapper buffer。
+
+### 保存与停止审计必须独立绑定
+
+humanplus_training_entry.environment/finish在函数体import humanplus_finite，humanplus_finite_verification.verify和两份HP12审计器也绑定该模块。只换trainer字符串会把USD、progress、checkpoint和关闭收据写回HP12目录；禁止直接复用这些绑定函数或修改HP12模块常量。新入口须独立绑定自身trial，并复用已验AST形状与broker/关闭协议，保持URDF/物理、环境与日志约束不变。共用纯函数可复用，不能通过调用旧register/run/审计获得新收据。
+
+保存仍使用原架构原keyset，不新增adapter/merge。独立保存审计须记录checkpoint的optimizer group参数名顺序，建立序列化整数ID到完整名称的映射，核对只有两head加原Critic、无重复/漏项/额外矩，矩形状/有限性正确、所有step计数等于4*global_step。Actor实际变化集应为两key的非空子集，不强求每个head张量都变化；其余所有Actor参数与buffer逐值相同。step0必须精确035运行规范Actor、原Critic、空Adam。只有完整训练成功后才执行原verify-training及step8效果；STOPPED不加载保存PT。
+
+HP12 stop审计写死了55事务记录、27提交、第28拒绝及7rollout，不能搬到新实验。新只读停止审计应从新登记预算和已有JSON收据推导k次COMMITTED、相配k次PENDING以及至多一次REJECTED，逐对验证顺序、原比例和首次通过、所有权/参数+Adam摘要、未提交buffer恢复、已发生交互及无禁止效果。科学拒绝不补正常关闭证明。正常完成仍须32提交/8更新、step8、CUDA同步、真实原生退出0和关闭日志，再独立验收效果。
+
+### 调用预算展开
+
+计数单位沿用原合同：一次外层policy.forward或一次实际缓存token的dynamics decoder调用；内部子层、kernel、参数摘要不冒充独立策略调用。保留原调用形状，不为head另加前向或缓存teacher特征。
+
+| 训练路径 | 固定推导上限 | 口径 |
+| --- | ---: | --- |
+| 8次rollout，每次24次policy.rollout | 192 | 每次包含16环境，共3072交互 |
+| 32训练batch：原policy、cached decode、teacher96 | 96 | 原配方3次/batch |
+| 初始teacher384，4环境分组 | 4 | 原暖启动保护 |
+| 32提交后teacher384，每次4组 | 128 | 原提交后第二保护 |
+| 32提案的live基线+至多8候选，每次2衣服+4teacher | 1728 | 32*9*6，原候选机制额外上限 |
+| 上述Actor/decoder外层调用合计 | 2148 | 设计成功路径上限，不含独立最终效果阶段 |
+
+对应Critic只有原训练batch32次及每次rollout末尾24步/末状态的原价值估计；候选始终复用固定Critic值，ActorLossHarness不拥有optimizer且KL只记录，不新算Critic/更新LR。这里没有把训练基础调用挪入1728，也没有扩大候选、交互或效果预算。零位移候选不执行检查、提前接受或STOPPED只会减少调用。保存及成功后的原独立验证只读已有张量/JSON，不增加policy forward；新代码若产生另一条调用路径必须在登记前拒绝或说明，不能运行后补预算。
+
+### SHA闭包与实施出口
+
+本次新增静态阅读的16份来源SHA已加入同一D01清单，其中含实际Transformers trainer.py；它们是审查来源，不是已实现的新执行源码。原HP12登记中的input_sha256、environment_source_sha256和四MotionLib仅作来源合同，尚未在本轮重哈希大型输入或运行环境。新实验必须显式重建自己的代码闭包（包括新trainer/protocol/entry/verifier/auditor、继承模块、hook/candidate/loss及通用创建器），重查输入大小SHA、资产、环境源码和HP11合同；不能整体照搬旧code_sha256把新文件漏掉。
+
+静态审查已一次收束，可进入独立实现及必要标准库控制；本轮只读范围内未写训练实现，仍没有执行代码SHA或新HP登记。实现时优先验证两key白名单、重复/缺失/其他模型拒绝、祖先调用和optimizer/scheduler绑定顺序、保存名映射、泛化停止事务及上表算术，不能重跑HP05/HP09/HP12控制。实际两key梯度、数值暖启动和16环境行为只能在之后完整登记的真实训练内留证，不能用mock充当实测。本设计不是科学启动凭据；新代码与输入SHA/预算未完整登记前不运行科学试验。
 
 ## 保存与同步
 

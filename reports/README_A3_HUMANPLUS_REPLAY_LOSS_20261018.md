@@ -30,3 +30,9 @@ HP14末层两key训练完整通过固定384原teacher门，HP15保存状态已�
 
 本任务zhy-a3按用户持续优化指示恢复原30分钟ACTIVE；先实际Git/README和资源核对，状态未变静默，仅重要进展/故障/新阻塞通知。首真实机器故障或达原可验收模型目标保存并暂停；旧hp3090/yuanqi-a3保持PAUSED，daily yuanqi不变。
 
+
+## 17:01 持续工作已实际恢复
+
+已通过Codex应用automation_update将原zhy-a3恢复ACTIVE，保留原30分钟节奏、同一thread与“状态未变静默/仅重要进展或故障通知”；没有创建重复任务，旧hp3090/yuanqi-a3及每日研究未更改。保存提示已指向HP17拒绝终态和本D02下一独立实现，移除旧暂停优先含义；未把D02草案当已登记执行许可。
+
+本轮最后核验humanplus HEAD c1881d6e64b5fa05f0723c42d2281f35e643804a、worktree干净（当前记录提交后以Git为准），D02小清单SHA590202a6e2f3e30634ee6247ce76482611e8961e31f6a851d34eed1829f798a1。模型目标未达到，035不替换；无活动科学作业。GitHub仍LOCAL_COMMITTED_UNPUSHED，不重复已知失败push。恢复先本README/小清单与实际Git，再一次收束桥接/新loss实现和预算、标准库控制、固定执行闭包及新登记；不重跑已完成阶段。

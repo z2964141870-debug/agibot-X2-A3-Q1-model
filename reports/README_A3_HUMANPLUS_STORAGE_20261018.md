@@ -28,3 +28,11 @@ GitHub LOCAL_COMMITTED_UNPUSHED，不重复同一publickey失败push。后续每
 ## 下一步
 
 提交本计划后单次execute；核对删除路径不存在、035SHA不变、实际空间变化和记录留存，立即追加README/索引/current state并提交。之后继续长期优化，只从保存失败证据/既有研究去重选择实质不同方向；HP12/13/14/18权重删除后不复验/恢复/重放。
+
+## 18:12 删除及独立核对完成
+
+S01 execute于2026-10-18T10:11:25.820289Z至10:11:26.305331Z单次完成，COMPLETE_REJECTED_WEIGHTS_DELETED。17常规路径（15唯一权重inode）及15last符号链接共32路径均消失，释放实际分配3187286016字节（约3.19GB/2.97GiB）；文件系统可用空间从239912800256增至243100086272字节，增加与本次分配释放相同。各训练目录现仅184/236KiB配置与sidecar，未删除目录或数据。保留17个checkpoint sidecar；035402050931字节及E11/E12 teacher两PT均重新大小SHA通过，035 SHA9cf33be2...70f2d未变。0新张量反序列化/策略forward/仿真/optimizer/旧科学审计复跑。
+
+计划SHA6d92bf77aef290bded4e53bd8cb46c9162a8d09691fb086fae2046f334a26653；结果SHA b3a88738925e036c0ba72eb30754b96887c0e4003c9674a5c655d97306672333。data/manifests/a3_humanplus_weight_prune_20261018_S01_{plan,result,audit}.json保存逐路径/大小SHA/硬链接/删除进度/独立核验。最终进程检查明确排除系统sd-pam/ssh-agent/sshd登录凭据服务，其他可见相关同UID任务FD/maps无选中文件；未检查其他UID进程内存，不宣称全系统句柄扫描。数据/配置/原始日志/指标/JSON均保留，未改历史终态；历史artifact SHA不代表被删权重现在仍存在。
+
+用户存储授权已写AGENTS.md和README_STORAGE.md。HP12/HP13/HP14/HP18及HP16 bundle选中权重已永久弃用，不再运行旧checked链/复验/恢复/重放或为缺失文件重建。新科学计划仅纳入实际必要且存在的输入，不能继承历史审计全部artifact作为当前依赖。GitHub仍LOCAL_COMMITTED_UNPUSHED；删除未备份弃用权重不称备份，必要模型和数据仍LOCAL_ONLY。下一持续主线先保存数组/指标与既有研究去重选择实质不同方法，不重复已拒绝D01/D02配方。

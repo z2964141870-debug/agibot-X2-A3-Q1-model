@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-18北京时间18:12：[S01淘汰权重清理完成](README_A3_HUMANPLUS_STORAGE_20261018.md)。15唯一权重inode/17常规路径及15last指针已删除，释放3187286016字节（约3.19GB/2.97GiB），可用空间约243.10GB；独立核对32路径消失、17sidecar及035/E11/E12输入SHA保留。HP18十项拒绝、035仍baseline；下一保存失败证据选实质不同方法，旧权重不复验/重建，GitHub未同步。
+
 2026-10-18北京时间18:10：[淘汰权重S01清理计划已固定](README_A3_HUMANPLUS_STORAGE_20261018.md)。用户授权后精确选HP12/13关闭权重及HP14/18拒绝候选，17常规路径/15唯一inode+15last指针，预计释放3187286016字节；大小SHA/硬链接/相关FD/maps/活动输入检查通过。7标准库控制两端通过，尚未删除；035/必要输入/配置日志指标保持，GitHub未同步。
 
 2026-10-18北京时间18:03：[HP18 D02十项完整效果拒绝](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。COMPLETE_MATCHED_EFFECT/独立verified=true、gate=false；衣服均RMSE.15303246rad恶化9.8365%/5of6不倒，四官方4of4不倒但march/front/rotate关节+8.01/+4.99/+3.18%超门。46健康0新增异常/残留，035仍baseline。本轮闭环关闭不续训/重放；下一按用户新授权清理确定淘汰权重并保留审计记录，GitHub未同步。

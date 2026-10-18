@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-18北京时间16:44：[最终head六衣服实测不达标](README_A3_HUMANPLUS_HEAD_EFFECT_20261018.md)。6×499完整，5/6不倒、均RMSE0.1576253rad，相对035恶化13.13%，zzx6.22s仍倒。保存数组审计确认preclip捕获与postclip轨迹按原±20规则精确一致，0新PT/forward/仿真。原HP16终态STOPPED保留；下一只补尚未开始四官方与总汇，不重放cloth/重训，候选不采用，GitHub未同步。
+
 2026-10-18北京时间16:38：[HP16已登记并验收评测包](README_A3_HUMANPLUS_HEAD_EFFECT_20261018.md)。294代码/512输入SHA固定，真实metadata通过、最终8 c508fe2a...与原官方config10437175...匹配；0新训练/重复验证。下一当前资源门后六衣服/四官方完整效果，尚无035改善证据，GitHub未同步。
 
 2026-10-18北京时间16:37：[HP16最终效果入口及打包修复完成](README_A3_HUMANPLUS_HEAD_EFFECT_20261018.md)。真实checkpoint_metadata控制通过、6新标准库控制两端通过、原效果函数AST不变。只评已验最终8，0新训练/重复验证，下一独立登记验包和十项完整回放。旧HP14/HP15终态保留，035无闭环改善，GitHub未同步。

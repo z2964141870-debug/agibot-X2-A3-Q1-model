@@ -45,3 +45,13 @@ scoped README/索引/current state/代码/小清单经diff及audit_git_payload�
 ## 16:38 单次登记与真实评测包验收
 
 执行代码830f7fa，HP16已REGISTERED，294源码/512输入及原环境来源SHA固定。新bundle通过真实checkpoint_metadata，最终模型226205975字节/SHA c508fe2abf6613d4c9842333b3843d7303523349b9ce65ae5f0f36ff5287626a，config SHA1043717530839e8ef9408e0c8dc470e137708089b64ec13d05b377382868b897。模型仅硬链接，旧目录不改；登记0张量/仿真，0新训练/模型验证。下一原三次5秒启动门后单次cloth，实际效果未知。
+
+## 16:44 六衣服原始回放与动作边界审计
+
+单次cloth实际6×499=2994步全部完成，各motion manifest attempt1/returncode0。随后verify_replays直接比较capture前裁剪float32动作与trace中已转float64且按vendor ACTION_CLIP=20裁剪后的raw_action_29，因6/14471元素差异触发AssertionError，整HP16 STOPPED保留；cloth_audit verified=false。不是已证实机器故障，11健康同boot、CPU最高88/GPU44°C、可用最低22229442560字节、0FATAL/新增OOM/残留。没有继续official或重跑cloth。
+
+新增humanplus_saved_cloth_audit只读保存JSON/NPZ与固定vendor源码，AST确认ACTION_CLIP=20及_step_policy唯一原clip语句；按float32→float64→clip精确逐值比对全部捕获动作与trace。六段动作/1570观察/499tick/全状态/足底接触有限性覆盖齐全，独立关节RMSE与首跌倒核验通过。只有yy6个、zzx3个标量被原控制器裁剪；其他0。没有改控制器、阈值、日志或原结果，没有新PT读取/forward/仿真/optimizer，也没有复跑原阶段审计。
+
+单次保存数组审计data/manifests/a3_humanplus_saved_cloth_20261018_HP16_audit.json verified=true，范围仅6已保存完整轨迹，不冒充十项最终效果。六衣服均RMSE0.1576253134917267rad，相对HP11 0.13932748084287783恶化13.1329674%；仍5/6不倒，zzx首倒6.22s（baseline5.66s），不能以延迟跌倒代替全程不倒。原全不倒/改善门明确未满足；候选不采用，035保持baseline。
+
+下一只补完原计划未开始的四官方5775步及最终十项汇总，在独立剩余效果合同中明确引用这些已审保存cloth结果，不重训、不重验证、不重放cloth或评测早期点。新验证器按实际前/后裁剪边界严格逐值核对，物理和效果门保持；HP16原STOPPED不改。完成后用失败证据决定新方向，不重复同一head配方或无穷零更新诊断。

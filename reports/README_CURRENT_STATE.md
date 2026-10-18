@@ -1,5 +1,9 @@
 # YUANQI 当前状态与下一步
 
+最新2026-10-18北京时间14:00：[HP12固定短训练STOPPED](README_A3_HUMANPLUS_FINITE_20261018.md)。16环境cuda:0与fresh035 Actor/Critic/空Adam已实跑，6整更新+第7次3batch、28提案/27提交/2688交互。第28次1至1/128全部teacher RMSE超0.05，最小0.0500001531092；目标均降低、maxabs通过，参数/Adam拒绝前后摘要不变。step0/2/4仅存证，step8不存在、0效果回放，无新035改善。
+
+HP12 register/train/train_audit/stop_verification均单次完成；禁止复跑/verify-training/追加比例或预算/早期效果/换编号同类重试。11健康同boot、CPU最高81/GPU48°C、可用最低18,439,405,568字节，0FATAL/新增OOM/残留，属于算法保护停止而非机器故障证据。恢复读data/manifests/a3_humanplus_finite_20261018_HP12_{plan,result,train_audit,stop_verification}.json。下一仅从已有失败与本地研究论证实质不同方法并形成可审查固定计划，不重复E46–E50；此前无新科学执行。zhy-a3保留30分钟ACTIVE、状态未变静默，模型/原始日志LOCAL_ONLY，GitHub未同步。以下为历史。
+
 2026-10-18北京时间13:56：[HP12已REGISTERED](README_A3_HUMANPLUS_FINITE_20261018.md)，执行代码34ac253、精确SHA见data/manifests/a3_humanplus_finite_20261018_HP12_plan.json。0新增训练，下一单次run --stage train，原三次5秒启动门与900秒监督保持；完成或停止后独立train审计、立即README，不复跑register/run或评测早期点。GitHub未同步，以下为历史。
 
 2026-10-18北京时间13:55：[HP12固定8更新新机适配](README_A3_HUMANPLUS_FINITE_20261018.md)已实现，4新标准库控制两端通过、vendor AST静态通过；尚未登记/训练。独立humanplus_finite入口重建路径，不调用旧ZHY登记器；仅存储/日志/原生关闭适配，算法和固定预算不变。下一实际SHA/资源核验后单次register→train→独立审计，逐阶段README后再接verify-training及最终step8十项效果；HP11及旧控制不复跑，原始日志LOCAL_ONLY，GitHub未同步。下方为历史。

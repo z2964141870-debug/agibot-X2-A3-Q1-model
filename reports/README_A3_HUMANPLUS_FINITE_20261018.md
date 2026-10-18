@@ -1,6 +1,6 @@
 # humanplus 固定有限更新与匹配效果 HP12
 
-记录日期：2026-10-18。实验：HP12 / R21_001_s0。状态：REGISTERED，尚未执行训练。
+记录日期：2026-10-18。实验：HP12 / R21_001_s0。状态：STOPPED，有限候选全部触及teacher RMSE保护门；终态保存，不恢复或评测早期点。
 
 ## 目标与范围
 
@@ -39,7 +39,15 @@ vendor `train_agent_trl.py` 原结尾 `os._exit(0)` 跳过正常关闭；HP09已
 
 ## 结果与边界
 
-北京时间13:56单次登记完成，执行源码父HEAD为34ac253，计划固定全部源代码/输入/环境SHA及新boot基准；原四motionlib仅在新实验建立只读别名。尚未执行训练、0新增策略/rollout/optimizer，完整16环境与训练模型仍待实际执行。HP11六衣服5/6不倒、算术均RMSE0.1393274808rad、四官方4/4不倒保持，035没有新改善证据。
+北京时间13:56单次登记完成，执行源码父HEAD为34ac253，登记记录提交a42229f；计划SHA d851d1023169c8ecc307370918a7dfdb73dac1d87bf309e1d3f8ec7a23d97210。13:56:39开始监督，13:56:49通过三采样后启动；URDF转换写新data成功，16环境cuda:0创建，warm_start_loaded.json实证035 Actor/Critic完全匹配、global_step0/空Adam。13:57:29原生训练退出1，阶段50.163秒后STOPPED，未进入正常完成关闭协议。
+
+实际6次整更新+第7次3batch：28次原生Adam提案，27次提交，7组rollout/2688交互，71候选检查、28基线检查（合计99次候选/基线评估）。step0/2/4已耐久保存；step8不存在，0最终效果回放、0停止后张量反序列化/模型验证。该结果不是完整8更新训练通过，不能比较早期模型或宣称改善。
+
+第28次提案前teacher RMSE为0.049996716421312044。1至1/128八个固定比例均降低同batch固定Critic值Actor目标、均满足maxabs≤0.5，但RMSE均超过0.05；最小比例仍为0.050000153109196845，超门1.5310919684e-7。没有放宽门槛、增加比例或跳过batch。拒绝前后参数/Adam摘要均70d73b3b271c74f8f4cda03416bd1e247d9ec4b181c0dc0d8a094514b872a32a，未提交batch的buffer已恢复。该证据支持“固定有限缩步仍在累计teacher漂移边界耗尽可接受候选”，不能证明不存在其他方向，也不是新机性能或硬件故障。
+
+独立标准库train审计：11健康同boot afb6796b-3883-4df4-99ea-bc381c52ea13、CPU最高81/GPU48°C、可用最小18,439,405,568字节、0FATAL/新增OOM/停止后问题/自有组残留；verified=false对应科学STOPPED，不能改为成功。另新增一次只读stop_verification，仅核已有JSON/大小/SHA，核对27提交、拒绝事务未写活状态及step0/2/4身份，未反序列化模型、未调用verify-training或效果阶段。两项审计均禁止复跑。
+
+HP11六衣服5/6不倒、算术均RMSE0.1393274808rad、四官方4/4不倒仍是当前匹配035基线；HP12没有新的策略效果证据。
 
 启动与运行使用已验humanplus_health/supervisor：三次5秒启动门（≥8GiB/无其他计算/GPU空闲/遥测可靠），运行保留≥4GiB，CPU90/GPU85连续两次5秒、每阶段900秒；全boot journal与cgroupv2保留原门。首新增boot/温度/OOM/内核/计算异常停止自有组、留证、暂停heartbeat，不自动重跑。阶段之间不是连续健康证明。
 
@@ -51,4 +59,6 @@ vendor `train_agent_trl.py` 原结尾 `os._exit(0)` 跳过正常关闭；HP09已
 
 ## 下一步与恢复入口
 
-先核实际HEAD、代码/输入SHA、HP11合同和实时资源，再单次HP12登记与train。每个重要阶段立即更新本README、索引和current state后才能继续下一阶段；任何STOPPED不续跑。
+恢复先读本README与HP12 plan/result/train_audit/stop_verification。register、train、train审计、stop审计均已单次执行；禁止复跑、执行verify-training、最终效果或早期checkpoint评测，不扩预算，也不换编号重做相同有限缩步。HP12没有活动计算。
+
+下一步为方法选择：仅由现有失败证据与本地既有研究论证实质不同的短训练方案，不重复E46–E50投影/零更新诊断，不直接改teacher门、扫描LR/权重/batch或追加小比例。新方法须独立固定唯一变量、输入/实现SHA、预算和匹配效果门，再按授权范围审查；在形成可审查新计划前无新科学执行。此次为算法保护停止，无机器异常证据，zhy-a3保留原30分钟ACTIVE、状态不变静默，旧hp3090与每日研究任务不变。

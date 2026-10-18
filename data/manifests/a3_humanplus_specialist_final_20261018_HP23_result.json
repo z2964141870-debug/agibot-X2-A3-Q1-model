@@ -315,12 +315,68 @@
         "saved_expert_verified": true,
         "deploy_allowed": false
       }
+    },
+    {
+      "stage": "isaac-final",
+      "state": {
+        "status": "COMPLETE",
+        "argv": [
+          "/usr/bin/python3",
+          "-B",
+          "-u",
+          "-m",
+          "script.a3.humanplus_specialist_final",
+          "worker",
+          "--stage",
+          "isaac-final"
+        ],
+        "started_at": 1792325804.9329064,
+        "supervisor_pid": 2995428,
+        "seconds_limit": 900.0,
+        "interval_seconds": 5.0,
+        "no_automatic_retry": true,
+        "worker_pid": 2995560,
+        "launched_at": 1792325815.1455357,
+        "returncode": 0,
+        "finished_at": 1792325860.1264286,
+        "elapsed_seconds": 55.193523271009326
+      },
+      "receipt": {
+        "status": "COMPLETE",
+        "native_pid": 2995563,
+        "cuda_synchronized": true,
+        "isaac": {
+          "full_policy_steps": 499,
+          "joint_rmse_rad": 0.16564378302564237,
+          "fall": false,
+          "first_fall_tick": null,
+          "trace_sha256": "70aa91002830b18fe873bc116a1a2fd76be6c4c9acfc3472510c7d48462c6449",
+          "poststep_state_vs_precommand_reference": true,
+          "physical_continuation_after_fall": true,
+          "training_simulator": true,
+          "not_numerically_interchangeable_with_mujoco": true
+        },
+        "native_returncode": 0,
+        "native_shutdown_verified": true,
+        "kit_log": "/home/humanplus/YUANQI_A3/logs/a3_humanplus_specialist_final_20261018_HP23/isaac-final/kit.log",
+        "kit_log_bytes": 1010782,
+        "kit_log_sha256": "7095134a576408d20b56b3104d0966d6b0af03f5de51ab658730f69f02bc9bbd",
+        "kit_binding": {
+          "path": "/home/humanplus/YUANQI_A3/logs/a3_humanplus_specialist_final_20261018_HP23/isaac-final/kit.log",
+          "native_pid": 2995563,
+          "settings": {
+            "file": "/home/humanplus/YUANQI_A3/logs/a3_humanplus_specialist_final_20261018_HP23/isaac-final/kit.log",
+            "level": "info",
+            "fileLogLevel": "info"
+          }
+        }
+      }
     }
   ],
   "experiment": "a3_humanplus_specialist_final_20261018_HP23",
-  "current_stage": "verify-training",
-  "started_at_utc": "2026-10-18T12:15:39.464188+00:00",
-  "updated_at_utc": "2026-10-18T12:15:54.671086+00:00",
+  "current_stage": "isaac-final",
+  "started_at_utc": "2026-10-18T12:16:44.921491+00:00",
+  "updated_at_utc": "2026-10-18T12:17:40.134735+00:00",
   "backup_status": "LOCAL_ONLY",
   "github_synced": false
 }

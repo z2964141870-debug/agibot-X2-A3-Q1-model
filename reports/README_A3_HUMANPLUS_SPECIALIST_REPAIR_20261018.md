@@ -71,3 +71,9 @@ HP23已在实施90d1201后单次登记，D07及源权重/配方/RC01闭包固定
 ## HP23完整保存验证通过
 
 登记396d81e后，verify-training及独立audit单次完成/verified=true；step0为134048343字节/SHAa886811d797eba407bcc6bc343b6f6986c877af941ed329ed57d58cfa15a7228，step256为307574417字节/SHA47dd293511428d373c95c316ec8674e2b0f57bd581a09a632252dab1c09c599f。初始Actor/Critic匹配035、最终14个原decoder参数变化且冻结部分保持、28个optimizer参数所有权/ID/矩/1024计数、实际token及初始概率、原奖励/reset/物理四配方节全部通过。4健康最高CPU81/GPU43，0新增kernel/OOM/残留；仍保存RC01历史事件。只有保存验证成功，无新训练或效果证据。下一首次最终Isaac499步及独立审计，通过后MuJoCo499步与原HP11比较。
+
+## 20:17 Isaac最终完整回放完成，专项效果门失败
+
+HP23 isaac-final单次499同步步/55.193523秒、正常Kit退出0/独立verified=true。最终不倒但关节RMSE0.16564378302564237rad，比同合同035的0.10478640564907678差，未过至少改善1%门；trace SHA70aa91002830b18fe873bc116a1a2fd76be6c4c9acfc3472510c7d48462c6449。不能将无跌倒单独当专家优于035，也不能只归因sim2sim迁移，因为训练模拟器内已退化。
+
+HP23累计16健康最高CPU83/GPU48、新增kernel/OOM0、after_issues空/无组残留。此为效果不通过，执行阶段成功，继续已登记MuJoCo完整499步以补齐双模拟器合同，不续训/换早期点/扩大预算。035仍baseline，未开始蒸馏。

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-18：[HP21/R27修复合同已独立登记](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)，实施f94e9e9/D05和RC01证据固定；0本合同模型/仿真，下一实时三次5秒门后单次499步Isaac基线及独立审计，通过再训练。HP20停止保留，GitHub未同步。
+
 2026-10-18北京时间19:50：[专项入口独立修复与RC01恢复](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)实施完成；6标准库控制humanplus通过/Mac5+1skip，D05冻结341源码/112输入/11环境。原参考身体/关节按名字shape桥接，保留HP20原STOPPED；RC01三metadata采样精确留存历史Xid43、无新增事件/原资源门其余通过，尚未真实GPU验收。下一独立HP21/R27登记及499步整段基线，通过后原专项训练预算；GitHub未同步。
 
 2026-10-18北京时间19:34：[专项CPU桥接准备](README_A3_HUMANPLUS_SPECIALIST_20261018.md)完成，3项名称/shape/关节映射控制Mac与humanplus各通过；B01固定源码和HP20既有收据SHA。桥接尚未接入新入口/登记/模型验收，HP20原注册模块无改动，Xid43恢复未验证；zhy-a3保持PAUSED，不自动重启科学计算，035仍baseline，GitHub未同步。

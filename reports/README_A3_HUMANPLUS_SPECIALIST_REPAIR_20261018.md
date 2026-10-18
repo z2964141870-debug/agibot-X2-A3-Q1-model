@@ -41,3 +41,11 @@ RC01 metadata-only三次5秒间隔采样实际完成，原guard每次仍报告CR
 登记提交7d1d7c6后，HP21 isaac-baseline单次完成55.213977秒，native PID2984506/原生退出0、Kit关闭验证和独立审计verified=true。实际499步每步同步/进度收据齐全，身体与29动作关节桥接真实元数据一致。035整段不倒、匹配Isaac关节RMSE0.10478640564907678rad，trace SHA39b1f73fa9327c0430695a34a652cdfbc6303daccf983e67c0a978a48a8a76f8；不能与MuJoCo数值等同或称模型提升。
 
 12健康同原boot，CPU最高87/GPU48°C，新增kernel/OOM均0、审计after_issues空、自有组残留空；每样本仍保存RC01处理的原历史Xid43，未称全boot无FATAL。当前应用执行与原生退出修复已在完整阶段通过，非硬件终身健康保证。下一按已登记256更新预算单次train，完成后独立审计与保存验证，通过才最终双模拟器效果；旧HP20/旧审计不复跑，原保护不放松。
+
+## 20:05 训练完成，保存验证入口依赖故障
+
+HP21 train实际256更新/98304交互/1024Adam，6144 rollout Actor+1024原训练Actor+1024 cached decoder=8192外层调用完成，325.196653秒，native PID2986694退出0/Kit正常关闭/独立train审计verified=true。初始实际token概率max_abs_ratio_minus_one1.52587890625e-5、action maxabs2.384185791015625e-6，通过原门；冻结参数/Actor buffer检查保持。保存0/256存在，仅训练成功，不代表效果。
+
+随后的verify-training在导入cloth_constrained_trainer→训练基类→gear_sonic时ModuleNotFoundError，发生在torch.load之前；未开始任何checkpoint反序列化或验证、0最终回放。该模块不应作为纯保存概率检查依赖，已有humanplus_saved_probability纯函数可替代。HP21整个合同保持STOPPED、单次verify审计verified=false，不重跑或改其注册源码/结果。累计82健康CPU最高87/GPU54°C，after_issues空/无自有组残留，0新增kernel/OOM；不是新机器故障。
+
+下一独立完成合同只接纳HP21已成功完整训练阶段及0/256精确大小SHA，采用纯概率核验器，不新增训练/交互、不重放HP21基线、不加载旧失败或淘汰模型。独立登记后才首次实际保存验证及最终Isaac/MuJoCo效果，原256训练预算和双模拟器门保持。不得为这个导入错误重训256更新或把HP21 STOPPED改成通过。用户本轮修复后继续优化授权有效。

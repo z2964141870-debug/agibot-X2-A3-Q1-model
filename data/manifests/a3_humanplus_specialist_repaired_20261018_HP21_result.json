@@ -1,5 +1,5 @@
 {
-  "status": "IN_PROGRESS",
+  "status": "STOPPED",
   "stages": [
     {
       "stage": "isaac-baseline",
@@ -56,12 +56,301 @@
           }
         }
       }
+    },
+    {
+      "stage": "train",
+      "state": {
+        "status": "COMPLETE",
+        "argv": [
+          "/usr/bin/python3",
+          "-B",
+          "-u",
+          "-m",
+          "script.a3.humanplus_specialist_repaired_trial",
+          "worker",
+          "--stage",
+          "train"
+        ],
+        "started_at": 1792324769.6504729,
+        "supervisor_pid": 2986575,
+        "seconds_limit": 900.0,
+        "interval_seconds": 5.0,
+        "no_automatic_retry": true,
+        "worker_pid": 2986691,
+        "launched_at": 1792324779.84796,
+        "returncode": 0,
+        "finished_at": 1792325094.847125,
+        "elapsed_seconds": 325.19665320200147
+      },
+      "receipt": {
+        "status": "COMPLETE",
+        "native_pid": 2986694,
+        "cuda_synchronized": true,
+        "training": {
+          "updates": 256,
+          "interactions": 98304,
+          "optimizer_steps": 1024,
+          "rollout_actor_calls": 6144,
+          "native_training_actor_calls": 1024,
+          "cached_decoder_calls": 1024,
+          "teacher_retention_calls": 0,
+          "initial_probability": {
+            "action_rmse": 3.5174255685888056e-07,
+            "action_max_abs": 2.384185791015625e-06,
+            "changed_frames_over_1e_4": 0,
+            "ratio_mean": 0.9999999403953552,
+            "ratio_min": 0.9999847412109375,
+            "ratio_max": 1.0000123977661133,
+            "max_abs_ratio_minus_one": 1.52587890625e-05
+          },
+          "scope": {
+            "trainable": [
+              "actor_module.decoders.g1_dyn.module.0.weight",
+              "actor_module.decoders.g1_dyn.module.0.bias",
+              "actor_module.decoders.g1_dyn.module.2.weight",
+              "actor_module.decoders.g1_dyn.module.2.bias",
+              "actor_module.decoders.g1_dyn.module.4.weight",
+              "actor_module.decoders.g1_dyn.module.4.bias",
+              "actor_module.decoders.g1_dyn.module.6.weight",
+              "actor_module.decoders.g1_dyn.module.6.bias",
+              "actor_module.decoders.g1_dyn.module.8.weight",
+              "actor_module.decoders.g1_dyn.module.8.bias",
+              "actor_module.decoders.g1_dyn.module.10.weight",
+              "actor_module.decoders.g1_dyn.module.10.bias",
+              "actor_module.decoders.g1_dyn.module.12.weight",
+              "actor_module.decoders.g1_dyn.module.12.bias"
+            ],
+            "frozen": [
+              "std",
+              "actor_module.encoders.g1.module.0.weight",
+              "actor_module.encoders.g1.module.0.bias",
+              "actor_module.encoders.g1.module.2.weight",
+              "actor_module.encoders.g1.module.2.bias",
+              "actor_module.encoders.g1.module.4.weight",
+              "actor_module.encoders.g1.module.4.bias",
+              "actor_module.encoders.g1.module.6.weight",
+              "actor_module.encoders.g1.module.6.bias",
+              "actor_module.encoders.g1.module.8.weight",
+              "actor_module.encoders.g1.module.8.bias",
+              "actor_module.encoders.a3_fast.module.0.weight",
+              "actor_module.encoders.a3_fast.module.0.bias",
+              "actor_module.encoders.a3_fast.module.2.weight",
+              "actor_module.encoders.a3_fast.module.2.bias",
+              "actor_module.encoders.a3_fast.module.4.weight",
+              "actor_module.encoders.a3_fast.module.4.bias",
+              "actor_module.encoders.a3_fast.module.6.weight",
+              "actor_module.encoders.a3_fast.module.6.bias",
+              "actor_module.encoders.a3_fast.module.8.weight",
+              "actor_module.encoders.a3_fast.module.8.bias",
+              "actor_module.decoders.g1_kin.module.0.weight",
+              "actor_module.decoders.g1_kin.module.0.bias",
+              "actor_module.decoders.g1_kin.module.2.weight",
+              "actor_module.decoders.g1_kin.module.2.bias",
+              "actor_module.decoders.g1_kin.module.4.weight",
+              "actor_module.decoders.g1_kin.module.4.bias",
+              "actor_module.decoders.g1_kin.module.6.weight",
+              "actor_module.decoders.g1_kin.module.6.bias",
+              "actor_module.decoders.g1_kin.module.8.weight",
+              "actor_module.decoders.g1_kin.module.8.bias"
+            ]
+          },
+          "frozen_parameter_digest": "2a55d342e6a57091bd54354004433f731e1c9c46d223487bce1eba80a58f8b54",
+          "all_actor_buffers_unchanged": true,
+          "decoder_prefix": "actor_module.decoders.g1_dyn.",
+          "actual_sampled_tokens": true,
+          "original_auxiliary_objective_preserved": true,
+          "ownership": {
+            "groups": [
+              [
+                "policy.actor_module.decoders.g1_dyn.module.0.weight",
+                "policy.actor_module.decoders.g1_dyn.module.2.weight",
+                "policy.actor_module.decoders.g1_dyn.module.4.weight",
+                "policy.actor_module.decoders.g1_dyn.module.6.weight",
+                "policy.actor_module.decoders.g1_dyn.module.8.weight",
+                "policy.actor_module.decoders.g1_dyn.module.10.weight",
+                "policy.actor_module.decoders.g1_dyn.module.12.weight",
+                "value_model.critic_module.module.0.weight",
+                "value_model.critic_module.module.2.weight",
+                "value_model.critic_module.module.4.weight",
+                "value_model.critic_module.module.6.weight",
+                "value_model.critic_module.module.8.weight",
+                "value_model.critic_module.module.10.weight",
+                "value_model.critic_module.module.12.weight"
+              ],
+              [
+                "policy.actor_module.decoders.g1_dyn.module.0.bias",
+                "policy.actor_module.decoders.g1_dyn.module.2.bias",
+                "policy.actor_module.decoders.g1_dyn.module.4.bias",
+                "policy.actor_module.decoders.g1_dyn.module.6.bias",
+                "policy.actor_module.decoders.g1_dyn.module.8.bias",
+                "policy.actor_module.decoders.g1_dyn.module.10.bias",
+                "policy.actor_module.decoders.g1_dyn.module.12.bias",
+                "value_model.critic_module.module.0.bias",
+                "value_model.critic_module.module.2.bias",
+                "value_model.critic_module.module.4.bias",
+                "value_model.critic_module.module.6.bias",
+                "value_model.critic_module.module.8.bias",
+                "value_model.critic_module.module.10.bias",
+                "value_model.critic_module.module.12.bias"
+              ]
+            ],
+            "shapes": {
+              "policy.actor_module.decoders.g1_dyn.module.0.bias": [
+                2048
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.0.weight": [
+                2048,
+                994
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.10.bias": [
+                512
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.10.weight": [
+                512,
+                512
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.12.bias": [
+                29
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.12.weight": [
+                29,
+                512
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.2.bias": [
+                2048
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.2.weight": [
+                2048,
+                2048
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.4.bias": [
+                1024
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.4.weight": [
+                1024,
+                2048
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.6.bias": [
+                1024
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.6.weight": [
+                1024,
+                1024
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.8.bias": [
+                512
+              ],
+              "policy.actor_module.decoders.g1_dyn.module.8.weight": [
+                512,
+                1024
+              ],
+              "value_model.critic_module.module.0.bias": [
+                2048
+              ],
+              "value_model.critic_module.module.0.weight": [
+                2048,
+                1645
+              ],
+              "value_model.critic_module.module.10.bias": [
+                512
+              ],
+              "value_model.critic_module.module.10.weight": [
+                512,
+                512
+              ],
+              "value_model.critic_module.module.12.bias": [
+                1
+              ],
+              "value_model.critic_module.module.12.weight": [
+                1,
+                512
+              ],
+              "value_model.critic_module.module.2.bias": [
+                2048
+              ],
+              "value_model.critic_module.module.2.weight": [
+                2048,
+                2048
+              ],
+              "value_model.critic_module.module.4.bias": [
+                1024
+              ],
+              "value_model.critic_module.module.4.weight": [
+                1024,
+                2048
+              ],
+              "value_model.critic_module.module.6.bias": [
+                1024
+              ],
+              "value_model.critic_module.module.6.weight": [
+                1024,
+                1024
+              ],
+              "value_model.critic_module.module.8.bias": [
+                512
+              ],
+              "value_model.critic_module.module.8.weight": [
+                512,
+                1024
+              ]
+            },
+            "actor_keys": [
+              "actor_module.decoders.g1_dyn.module.0.bias",
+              "actor_module.decoders.g1_dyn.module.0.weight",
+              "actor_module.decoders.g1_dyn.module.10.bias",
+              "actor_module.decoders.g1_dyn.module.10.weight",
+              "actor_module.decoders.g1_dyn.module.12.bias",
+              "actor_module.decoders.g1_dyn.module.12.weight",
+              "actor_module.decoders.g1_dyn.module.2.bias",
+              "actor_module.decoders.g1_dyn.module.2.weight",
+              "actor_module.decoders.g1_dyn.module.4.bias",
+              "actor_module.decoders.g1_dyn.module.4.weight",
+              "actor_module.decoders.g1_dyn.module.6.bias",
+              "actor_module.decoders.g1_dyn.module.6.weight",
+              "actor_module.decoders.g1_dyn.module.8.bias",
+              "actor_module.decoders.g1_dyn.module.8.weight"
+            ],
+            "critic_keys": [
+              "critic_module.module.0.bias",
+              "critic_module.module.0.weight",
+              "critic_module.module.10.bias",
+              "critic_module.module.10.weight",
+              "critic_module.module.12.bias",
+              "critic_module.module.12.weight",
+              "critic_module.module.2.bias",
+              "critic_module.module.2.weight",
+              "critic_module.module.4.bias",
+              "critic_module.module.4.weight",
+              "critic_module.module.6.bias",
+              "critic_module.module.6.weight",
+              "critic_module.module.8.bias",
+              "critic_module.module.8.weight"
+            ]
+          },
+          "role": "INTERMEDIATE_ZZX_EXPERT_NOT_UNIFIED_POLICY"
+        },
+        "native_returncode": 0,
+        "native_shutdown_verified": true,
+        "kit_log": "/home/humanplus/YUANQI_A3/logs/a3_humanplus_specialist_repaired_20261018_HP21/train/kit.log",
+        "kit_log_bytes": 1011522,
+        "kit_log_sha256": "f02dabca17c1a6381c5d6d42e6c591965e700423834ec27fc4c59aff3c3ba06c",
+        "kit_binding": {
+          "path": "/home/humanplus/YUANQI_A3/logs/a3_humanplus_specialist_repaired_20261018_HP21/train/kit.log",
+          "native_pid": 2986694,
+          "settings": {
+            "file": "/home/humanplus/YUANQI_A3/logs/a3_humanplus_specialist_repaired_20261018_HP21/train/kit.log",
+            "level": "info",
+            "fileLogLevel": "info"
+          }
+        }
+      }
     }
   ],
   "experiment": "a3_humanplus_specialist_repaired_20261018_HP21",
-  "current_stage": "isaac-baseline",
-  "started_at_utc": "2026-10-18T11:55:38.218690+00:00",
-  "updated_at_utc": "2026-10-18T11:56:33.451808+00:00",
+  "current_stage": "verify-training",
+  "started_at_utc": "2026-10-18T12:05:15.023314+00:00",
+  "updated_at_utc": "2026-10-18T12:05:30.230846+00:00",
   "backup_status": "LOCAL_ONLY",
-  "github_synced": false
+  "github_synced": false,
+  "reason": "RuntimeError:WORKER_EXIT:1"
 }

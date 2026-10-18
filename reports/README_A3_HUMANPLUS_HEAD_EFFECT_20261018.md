@@ -41,3 +41,7 @@ HP15 cloth在checkpoint_metadata拒绝Missing matching checkpoint config.yaml，
 
 scoped README/索引/current state/代码/小清单经diff及audit_git_payload后本地提交。GitHub已知publickey写失败不重复push，LOCAL_COMMITTED_UNPUSHED；模型/原日志LOCAL_ONLY，网盘未核验。下一新登记验包→实时资源门→完整cloth→审计并保存→official→审计并保存→effect→独立审计。前台原zhy-a3暂停避免重叠，阶段完成后按原30分钟持续主线，其他自动任务不变。
 
+
+## 16:38 单次登记与真实评测包验收
+
+执行代码830f7fa，HP16已REGISTERED，294源码/512输入及原环境来源SHA固定。新bundle通过真实checkpoint_metadata，最终模型226205975字节/SHA c508fe2abf6613d4c9842333b3843d7303523349b9ce65ae5f0f36ff5287626a，config SHA1043717530839e8ef9408e0c8dc470e137708089b64ec13d05b377382868b897。模型仅硬链接，旧目录不改；登记0张量/仿真，0新训练/模型验证。下一原三次5秒启动门后单次cloth，实际效果未知。

@@ -49,3 +49,7 @@ trainer继承原HeadOnlyTrainer精确两key所有权、冻结、Adam影子提案
 ## 17:54 保存状态验证通过
 
 单次verify-training及独立审计verified=true，0/2/4/8真实PT大小SHA/原Actor+Critic架构/FP32/step0精确035+空Adam/后续仅两head非空变化/其余Actor参数与buffer不变、optimizer整数ID映射/矩形状/计数、actual sampled tokens和初始概率/原配方/routes及32个新loss quarter收据均通过。累计18健康无新增异常/残留，阶段间不作连续证明。训练验证data/experiments/a3_humanplus_replay_loss_20261018_HP18/training_verification.json；小审计a3_humanplus_replay_loss_20261018_HP18_verify-training_audit.json。下一最终8实际bundle/config核验后六衣服2994步及四官方5775步，0新增训练/不评早期点。035仍baseline，GitHub未同步。
+
+## 17:56 六衣服完整效果
+
+cloth单次6×499=2994步、独立审计verified=true，preclip FP32经固定vendor float64/±20 clip后逐值等于轨迹，实际最终8 bundle+官方config/checkpoint_metadata通过。5/6不倒，zzx仍倒；六项joint RMSE依次0.08989995096106186/0.12873518741433695/0.08986382888140042/0.09222030163952859/0.12724121954754097/0.3902342914701473rad，算术均0.1530324633190027rad，对HP11 .13932748084287783仍恶化。不能采用候选。累计29健康无新增异常/残留；下一只补原四官方5775步及效果总汇，不重训/重复cloth。保存HP18_result/cloth_audit与OUT/cloth，GitHub未同步。

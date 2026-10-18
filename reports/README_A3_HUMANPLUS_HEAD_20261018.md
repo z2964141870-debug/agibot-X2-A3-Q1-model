@@ -1,6 +1,6 @@
 # A3 humanplus 原动作输出头独立短训练
 
-记录日期：2026-10-18。阶段：D01实施完成、待独立HP13/R22登记。15:35北京时间状态：IMPLEMENTED_STDLIB_CONTROLLED_NOT_REGISTERED_NOT_SCIENTIFICALLY_RUN。
+记录日期：2026-10-18。阶段：D01实施完成、独立HP13/R22已于15:37北京时间单次登记，尚未训练。下方15:35为实施阶段证据。
 
 ## 目标与范围
 
@@ -48,3 +48,9 @@ readiness为data/manifests/a3_humanplus_head_readiness_20261018.json，SHA b1237
 ## 保存与同步
 
 README、索引/current state、代码与小清单scoped保存。GitHub SSH publickey写权限此前已失败，不重试同一失败push；LOCAL_COMMITTED_UNPUSHED。所有模型/轨迹/原始日志LOCAL_ONLY，无新增网盘核验。zhy-a3沿用30分钟ACTIVE、仅变化通知，旧其他任务不变。
+
+## 15:37 单次登记
+
+执行源码781639070298fc7e17d99b0f19e34e433565efc0，独立计划data/manifests/a3_humanplus_head_20261018_HP13_plan.json状态REGISTERED。register重新核对readiness全部代码与输入身份、D01继承来源和环境SHA；包含输入大小、8更新/32提案/3072交互和2148外层调用预算。原HP11合同/teacher/效果门及无恢复/早期效果规则不变。登记仅采元数据，没有加载模型/张量或运行仿真/optimizer；尚无未来阶段三次启动门证明。
+
+下一仅本计划train，经原supervisor三次5秒资源门才允许创建16环境；每阶段及独立审计后保存README。任何科学STOPPED只读新停止收据，不调用成功验证或早期效果。

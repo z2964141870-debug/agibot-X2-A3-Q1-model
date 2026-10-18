@@ -39,3 +39,9 @@ trainer继承原HeadOnlyTrainer精确两key所有权、冻结、Adam影子提案
 ## 17:50 HP18/R24单次登记
 
 实现提交87dd1dd；HP18计划data/manifests/a3_humanplus_replay_loss_20261018_HP18_plan.json已单次生成，307源码/453输入/10环境SHA及大小核验。新384正则来自四官方各96，原384硬门不变。登记资源检查通过，仅是登记快照；实际run仍需三次5秒启动门。0新科学执行；下一单次train及独立审计，成功再保存模型验证和最终十项完整对照。不能重登记/复跑/覆盖或评STOPPED早期点。GitHub未同步。
+
+## 17:52 HP18真实训练完成
+
+单次train COMPLETE且独立train审计verified=true：16环境cuda:0，fresh035/两key/空Adam链已留证，8更新/32提案32提交/3072交互，32候选均scale1、64含live检查、推导外层调用872（上限2440）。新384 preclip标签fresh035重建maxabs2.0265579223632812e-6，原teacher最高RMSE0.01708323135972023/maxabs0.08512035012245178。Kit专属路径/实际settings/native PID/关闭标记及原生退出0齐全。
+
+13健康同boot，CPU最高81/GPU47°C、最低可用18947629056字节，0新增FATAL/OOM/自有进程组残留；仅本阶段连续证据。结果与审计data/manifests/a3_humanplus_replay_loss_20261018_HP18_{result,train_audit}.json，原始logs/a3_humanplus_replay_loss_20261018_HP18/train，模型data/training/a3_humanplus_replay_loss_20261018_HP18/R24_001_s0/milestone_{0,2,4,8}。仍无效果改善证据，下一成功保存状态验证后最终8十项，GitHub未同步。

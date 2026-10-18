@@ -58,3 +58,9 @@ HP11基线六衣服均RMSE0.13932748084287783rad、5/6不倒，四官方4/4不�
 本次Kit运行设置/实际native PID2887701/自有日志路径绑定一致，三条有序关闭标记齐全、原生退出0，broker及独立审计均通过。Kit日志1002968字节/SHA c715ceb13c2fc13bb75bf8a0e14b65980cecae48f706ead07688453208a02c0c；只核本次自有日志。step8为226205975字节/SHA c508fe2abf6613d4c9842333b3843d7303523349b9ce65ae5f0f36ff5287626a。0/2/4/8保存，尚未成功后张量审计/效果。
 
 12健康同boot afb6796b-3883-4df4-99ea-bc381c52ea13、CPU最高81/GPU47°C、可用最低18987188224字节、0FATAL/新增OOM/残留。原阶段日志与result/train_audit清单保存，LOCAL_ONLY/GitHub未同步。HP13原终态不变。下一仅本HP14成功训练后的verify-training，之后完整最终效果；不将训练通过当效果改善。
+
+## 16:23 验证入口依赖故障保留
+
+HP14 verify-training单次启动后在函数导入initial_probability时，经cloth_constrained_trainer→consistent_precision→verified_finetune导入gear_sonic，因该验证worker的PYTHONPATH只有工程根而ModuleNotFoundError退出1。异常发生在读取官方/保存PT之前；0保存模型反序列化、0效果回放。原train COMPLETE及关闭独立验收不变，整个HP14 result保留STOPPED，不重跑或修改其注册源码。verify-training_audit verified=false，累计16健康CPU最高82/GPU47°C、0FATAL/新增OOM/残留，无已证实机器故障。
+
+用户已恢复持续推进。下一修复评估入口的纯数值函数依赖，在新独立只读模型评估合同中明确使用HP14已完成且独立验收的训练工件，不恢复HP14、不重新训练或追加交互。新合同登记前仅代码/标准库/SHA；原HP14失败验证没有已完成的张量检查可复跑。新评估仍须完整最终checkpoint/所有权/Adam/token/配方检查和全部10项匹配效果；任何科学失败保持拒绝，不因工程修复放宽门。HP13/HP12原停止模型仍不评测。

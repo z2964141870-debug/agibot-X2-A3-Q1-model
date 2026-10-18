@@ -1,5 +1,9 @@
 # YUANQI 当前状态与下一步
 
+最新：2026-10-18北京时间11:05，[HP06剩余PhysX验收](README_A3_HUMANPLUS_PHYSX_20261018.md)已STOPPED：STAGE_DEADLINE_900_SECONDS，实际896.670秒含采样截止余量。EULA修复有效、CUDA PhysX上下文已创建，但无十步完成收据，实际步数未知；不能记为完整环境通过。181健康同boot、CPU最高78/GPU44°C、可用最小20,334,821,376字节、0FATAL/新增OOM，停止后无自有进程组残留，代码/环境源码SHA未变。
+
+输入迁移63/63、关键10/10已完成；HP05已通过CPU/CUDA四事务及MuJoCo10步不重跑，HP05/HP06终态不改。当前0策略模型/rollout/训练、035无新提升。zhy-a3保持PAUSED，不自动追加PhysX或基线/训练。恢复先读HP06 README及data/manifests/a3_humanplus_physx_20261018_HP06_{plan,result,audit}.json；优先只读审查STOP回调/退出合同，卡点尚未确认。原始日志LOCAL_ONLY，GitHub写权限未恢复，scoped本地提交尚未同步。下方10:40及更早内容均为历史。
+
 最新：2026-10-18北京时间10:40，[HP05运行验收](README_A3_HUMANPLUS_RUNTIME_20261018.md)STOPPED_ENVIRONMENT_BOOTSTRAP_EULA_EOF。新监督器13项标准库两端通过；CPU/fused CUDA4事务与固定MJCF无策略10步通过，PhysX在EULA提示EOF处退出、未进入仿真。原因是新入口漏配非交互启动变量，非已证实硬件故障。12健康同boot、CPU最高81/GPU42°C、可用最小22,350,381,056字节、0FATAL/新增OOM；worker全部退出。已存在小张量/合成optimizer及MuJoCo仿真，0策略模型/rollout/训练，不再沿用下方历史0张量描述。
 
 当前完整环境验收未完成，035仍baseline、无新效果；输入63/63、必需10/10已齐。HP05原账本不恢复/覆盖，不重跑已通过阶段，zhy-a3按异常停止规则暂停。恢复方案：先明确解除此次STOPPED约束，仅将遗漏的Isaac Sim启动变量纳入独立PhysX验收登记；通过后才新035匹配基线与原8更新训练。计划/结果/终态独立审计data/manifests/a3_humanplus_runtime_20261018_HP05_{plan,result,audit}.json；原始logs同前缀目录，LOCAL_ONLY。代码与证据scoped提交，GitHub写权限未恢复、尚未同步。下方10:20及更早文字为历史现场。

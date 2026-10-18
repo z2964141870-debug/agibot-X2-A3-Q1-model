@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-18北京时间11:05：[HP06剩余PhysX验收](README_A3_HUMANPLUS_PHYSX_20261018.md)STOPPED/900秒期限。EULA修复有效、CUDA上下文创建，但无十步收据且实际步数未知；181健康无新增OOM/内核异常、自有组已清理。迁移已完成，完整环境/035新基线/训练仍未完成，zhy-a3保持暂停、不自动复跑。以下较早现场仅作历史。
+
 2026-10-18北京时间10:40：[HP05新机运行验收](README_A3_HUMANPLUS_RUNTIME_20261018.md)单次执行后STOPPED。监督器13项标准库控制两端通过，CPU/fused CUDA四事务及固定MJCF10步通过；PhysX因新入口漏配非交互启动变量在EULA提示处EOF退出，0PhysX/0策略训练。12健康无OOM/内核异常，非已证实机器故障；保留终态、暂停zhy-a3，不自动复跑。完整环境、035新基线及短训练尚未完成。
 
 2026-10-18北京时间10:20接续：[HP04直接迁移完成](README_A3_INPUT_MIGRATION_20261018.md)。用户明确允许慢传后，11大文件613,119,744字节单次112.032秒迁完；035模型已到位，与HP03合计63文件628,994,284字节独立大小/SHA通过、训练输入齐10/10。当前INPUTS_VERIFIED_WAIT_RUNTIME_VALIDATION，0模型训练，GitHub未同步。
@@ -22,6 +24,7 @@
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-18 | humanplus剩余PhysX验收HP06 | EULA修复有效，900秒期限停止；实际步数未知、181健康无异常/自有组清理，见[终态与恢复](README_A3_HUMANPLUS_PHYSX_20261018.md) |
 | 2026-10-18 | humanplus运行验收HP05 | 13标准库两端、4CPU/CUDA事务及固定MJCF10步通过；PhysX在EULA EOF前未启动，STOPPED/不重跑，见[运行记录](README_A3_HUMANPLUS_RUNTIME_20261018.md) |
 | 2026-10-18 | humanplus直接大文件迁移HP04 | 用户再授权慢传；11大文件单次完成，与52小文件合计63项独立大小/SHA通过、输入10/10，0训练，见[迁移记录](README_A3_INPUT_MIGRATION_20261018.md) |
 | 2026-10-18 | humanplus只读遥测适配 | 14项标准库控制/两次只读采样通过；完整监督器与运行验证未完成，0训练，见[遥测记录](README_A3_HUMANPLUS_TELEMETRY_20261018.md) |

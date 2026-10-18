@@ -33,3 +33,7 @@ HP14最终8已训练/保存状态独立验证。HP16六衣服6×499完整，但�
 
 README/索引/current state、代码与小清单scoped审diff/audit_git_payload后本地提交，GitHub已知publickey失败不重试，LOCAL_COMMITTED_UNPUSHED。原始日志/模型LOCAL_ONLY。下一剩余官方→审计保存→十项effect→独立审计保存，再用完整失败证据选择实质不同短训练变量，不重复当前head配方/旧方向链或无限零更新诊断。前台原zhy-a3暂停避免重叠，完成后恢复原30分钟持续主线，其他自动任务不变。
 
+
+## 16:49 单次登记完成
+
+代码f9a7192，HP17已REGISTERED；298源码/543输入大小SHA及原环境来源冻结，source_cloth_audit固定。原6衣服2994步不重放，新增仅四官方5775完整步和十项汇总，0新训练/保存模型验证/早期效果。下一实时三次5秒门后单次official。上一阶段索引分钟笔误已按实际08:47 UTC登记时间修正为北京时间16:47，原始收据时间为准。

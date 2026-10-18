@@ -45,3 +45,7 @@ trainer继承原HeadOnlyTrainer精确两key所有权、冻结、Adam影子提案
 单次train COMPLETE且独立train审计verified=true：16环境cuda:0，fresh035/两key/空Adam链已留证，8更新/32提案32提交/3072交互，32候选均scale1、64含live检查、推导外层调用872（上限2440）。新384 preclip标签fresh035重建maxabs2.0265579223632812e-6，原teacher最高RMSE0.01708323135972023/maxabs0.08512035012245178。Kit专属路径/实际settings/native PID/关闭标记及原生退出0齐全。
 
 13健康同boot，CPU最高81/GPU47°C、最低可用18947629056字节，0新增FATAL/OOM/自有进程组残留；仅本阶段连续证据。结果与审计data/manifests/a3_humanplus_replay_loss_20261018_HP18_{result,train_audit}.json，原始logs/a3_humanplus_replay_loss_20261018_HP18/train，模型data/training/a3_humanplus_replay_loss_20261018_HP18/R24_001_s0/milestone_{0,2,4,8}。仍无效果改善证据，下一成功保存状态验证后最终8十项，GitHub未同步。
+
+## 17:54 保存状态验证通过
+
+单次verify-training及独立审计verified=true，0/2/4/8真实PT大小SHA/原Actor+Critic架构/FP32/step0精确035+空Adam/后续仅两head非空变化/其余Actor参数与buffer不变、optimizer整数ID映射/矩形状/计数、actual sampled tokens和初始概率/原配方/routes及32个新loss quarter收据均通过。累计18健康无新增异常/残留，阶段间不作连续证明。训练验证data/experiments/a3_humanplus_replay_loss_20261018_HP18/training_verification.json；小审计a3_humanplus_replay_loss_20261018_HP18_verify-training_audit.json。下一最终8实际bundle/config核验后六衣服2994步及四官方5775步，0新增训练/不评早期点。035仍baseline，GitHub未同步。

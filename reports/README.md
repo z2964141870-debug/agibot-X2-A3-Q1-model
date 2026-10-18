@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-18北京时间17:54：[HP18保存模型与独立审计通过](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。0/2/4/8架构/两key/冻结/Adam矩计数/token/配方及D02新loss与旧硬门证据齐全。下一最终8六衣服+四官方8769完整步；训练通过尚不代表改善，035仍baseline，GitHub未同步。
+
 2026-10-18北京时间17:52：[HP18 D02训练与独立审计通过](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。8更新32提交3072交互、新384标签重建maxabs2.03e-6、原teacher最高RMSE.01708323/maxabs.08512035、Kit正常退出0。13健康CPU最高81/GPU47/可用最低18.947GB，0新增异常/残留；下一保存0/2/4/8验证及最终十项完整效果，035仍baseline，GitHub未同步。
 
 2026-10-18北京时间17:50：[HP18/R24已独立登记](README_A3_HUMANPLUS_REPLAY_IMPLEMENTATION_20261018.md)。执行代码87dd1dd，307源码/453输入/10环境SHA，fresh035新384保留loss+原384硬门、8更新32提案3072交互。下一实时三次5秒门后单次train；0新科学运行，035仍baseline，GitHub未同步。

@@ -53,3 +53,7 @@ HP17 effect与独立effect_audit均单次完成，状态COMPLETE_MATCHED_EFFECT�
 候选不采用，035仍baseline、没有新提升模型。当前head配方方向闭合，不复跑/加预算/扫LR或追加相同比例。下一围绕固定teacher覆盖不足与真实闭环偏移形成不同单变量短训练方案，优先已保存baseline输入/原动作，不以无限零更新诊断代替训练。必须先固定新来源/分区/预算/效果门与实现，不能把失败证据当理论结论或自动更换框架。
 
 原HP14/HP15/HP16 STOPPED均保持，HP17全部register/official/effect及审计已各单次执行，不重复或覆盖。原始模型/数据/日志LOCAL_ONLY；GitHub未同步，所有关键记录scoped本地提交。阶段间不作连续健康证明，未来启动仍实时重查。
+
+## 16:58 接续D02单变量草案
+
+[多动作teacher损失覆盖草案](README_A3_HUMANPLUS_REPLAY_LOSS_20261018.md)已保存，17来源SHA与四官方各96个固定tick（共384）已仅标准库核验。拟只替换teacher loss样本，保留原384硬teacher门，原head/Critic/配方/8更新3072交互/效果门不变；候选objective须同步新loss，额外检查最多288+4个前向需显式登记。尚未实现/登记/占HP编号，0新模型/仿真/optimizer，不宣称覆盖不足为唯一退化原因。下一独立实现及原生a3_fast桥接一次收束后登记，不重复原head配方或旧终态。

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-18北京时间16:58：[D02多动作teacher损失草案已保存](README_A3_HUMANPLUS_REPLAY_LOSS_20261018.md)。只改变loss样本覆盖，四官方各96固定tick，保留原384硬teacher门及8更新3072交互/原效果门。17来源SHA/整数选择核对通过，未实现/登记/运行。下一原生桥接与独立实现后新登记；原head十项已拒绝、035仍baseline，原30分钟主线恢复，GitHub未同步。
+
 2026-10-18北京时间16:54：[原输出头候选十项完整效果已拒绝](README_A3_HUMANPLUS_HEAD_COMPLETION_20261018.md)。HP17 COMPLETE_MATCHED_EFFECT/独立verified=true但科学gate=false。六衣服均RMSE0.1576253rad相对035恶化13.13%、仍5/6不倒；四官方4/4不倒但关节全超+2%（+2.77%至+7.26%）。10动作8769步各单次，0额外训练/重放。035仍baseline；该head配方关闭，下一不同变量方案按真实效果推进，GitHub未同步。
 
 2026-10-18北京时间16:51：[最终head四官方完整效果完成](README_A3_HUMANPLUS_HEAD_COMPLETION_20261018.md)。5775完整步/4of4不倒、独立审计通过，与已审cloth2994步组成实际十项8769步，各执行一次。0新增训练/重复模型验证/cloth重放；下一原公式汇总退化门，候选衣服已恶化13.13%/5of6，035仍baseline，GitHub未同步。

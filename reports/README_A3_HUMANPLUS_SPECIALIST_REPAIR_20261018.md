@@ -55,3 +55,5 @@ HP21 train实际256更新/98304交互/1024Adam，6144 rollout Actor+1024原训�
 保存故障提交cfd8f8c后，新增completion/entry/verification及freeze/audit，完成阶段仅verify-training/isaac-final/mujoco/effect；不含train或isaac-baseline，直接拒绝原生训练或基线入口。源合同精确要求HP21基线和训练各COMPLETE且审计true、verify在PT加载前gear_sonic导入失败且审计false，原终态不改。新verifier仅用humanplus_saved_probability，未引入训练或Isaac依赖；三项标准库控制Mac/新机各通过，不把静态控制当模型通过。
 
 D06冻结347源码/133现存输入/11环境，精确纳入源0/256权重及sidecar/所有权、初始token概率、原配方、实际optimizer提交账、成功基线/训练及失败入口证据。没有递归采用旧STOPPED全产物链、已删PT或新训练；新合同只核验已完成训练，首次最终Isaac/MuJoCo各499步。下一scoped提交后独立登记HP22，新增训练更新/交互/optimizer均0，原HP21预算不扩，原专家及统一效果门不变。
+
+HP22已在实施提交10f9f51后单次登记，固定上述D06和阶段/源证据。当前0本合同张量验证或最终回放，下一单次verify-training及独立audit，通过后才isaac-final。新增训练预算0，不把源合同STOPPED改写为成功。

@@ -57,3 +57,9 @@ HP21 train实际256更新/98304交互/1024Adam，6144 rollout Actor+1024原训�
 D06冻结347源码/133现存输入/11环境，精确纳入源0/256权重及sidecar/所有权、初始token概率、原配方、实际optimizer提交账、成功基线/训练及失败入口证据。没有递归采用旧STOPPED全产物链、已删PT或新训练；新合同只核验已完成训练，首次最终Isaac/MuJoCo各499步。下一scoped提交后独立登记HP22，新增训练更新/交互/optimizer均0，原HP21预算不扩，原专家及统一效果门不变。
 
 HP22已在实施提交10f9f51后单次登记，固定上述D06和阶段/源证据。当前0本合同张量验证或最终回放，下一单次verify-training及独立audit，通过后才isaac-final。新增训练预算0，不把源合同STOPPED改写为成功。
+
+## HP22保存验证配置归属错误停止
+
+登记c4ec0d7后单次verify执行了0/256网络、冻结范围、Adam矩/计数和初始token概率检查，随后validate_config错误地拿completion输出HP22/motionlib比对源训练配置中HP21/motionlib而停止；无最终成功收据，不能补称完整验证通过。原因是新完成合同的源/目标目录引用错误，不是模型科学失败或机器异常。单次审计verified=false，4健康最高CPU83/GPU43、0新增kernel/OOM/残留；未启动Isaac最终或MuJoCo，不重复此旧核验。
+
+独立修正须将源配置/配方检查前置到权重加载之前，精确绑定source HP21/motionlib；源PT及sidecar不改，不重复训练或基线。新控制须固定源目录表达式防止再次误用目标OUT。后续新合同完整模型核验即使部分检查重复，也明确计入新核验成本，不伪称此前没有张量加载；不扩大科学交互/optimizer/评测预算。

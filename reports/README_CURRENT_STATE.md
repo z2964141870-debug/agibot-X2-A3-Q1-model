@@ -1,5 +1,9 @@
 # YUANQI 当前状态与下一步
 
+最新2026-10-18北京时间13:08：[HP11新机035匹配基线完成](README_A3_HUMANPLUS_BASELINE_20261018.md)，10完整动作/8769步，六衣服5/6不倒（zzx5.66s首倒）、算术均RMSE0.1393274808rad，四官方4/4不倒。final audit verified=true，对照合同data/manifests/a3_humanplus_baseline_reference_20261018_HP11_contract.json包含输入SHA/逐段完整窗口/原效果门。26健康同boot、CPU最高82/GPU46°C/可用最小20,130,357,248字节、0FATAL/新增OOM/残留，阶段间不作连续健康证明。0optimizer/训练，035无新改善。
+
+HP10漏参考链接STOPPED保留，不补模型诊断收据；HP11全部register/run/audit/publish已完成，禁止复跑、扩预算或覆盖终态。输入63/63及103静态资产闭包已齐；HP09基础控制仍有效，但16训练环境/完整训练模型未验收。下一独立登记humanplus原8更新/32提案/3072交互/最终step8十项完整对照，重建路径与原生关闭监督，不调用ZHY旧登记器或重复空场景/模型诊断。真实资源启动前重查，原保护/预算/效果门保持。原zhy-a3恢复30分钟主线，旧hp3090/其他自动任务不变；日志LOCAL_ONLY，scoped本地提交尚未同步GitHub。下方13:04及更早为历史。
+
 最新2026-10-18北京时间13:04：[HP11六衣服完成](README_A3_HUMANPLUS_BASELINE_20261018.md)，6×499=2994完整步，5/6不倒、zzx5.66s首倒；独立全程RMSE/跌倒/捕获审计verified=true。累计14健康同boot、CPU最高82/GPU46°C、可用最小20,130,357,248字节，0FATAL/新增OOM/残留；阶段间不作连续健康证明。HP11 IN_PROGRESS/cloth完成，下一仅原计划official四动作5775步；0optimizer/训练，新机基线不是改善。前台中zhy-a3暂停，HP10停止保留，以下13:03为历史。
 
 最新2026-10-18北京时间13:03：[HP11参考校验通过](README_A3_HUMANPLUS_BASELINE_20261018.md)，六段300行/499步，body FK<=1.66e-15m、脚底最低-3.719mm，15.162秒；4健康同boot、CPU最高82/GPU44°C/可用最小22,208,077,824字节、0新增异常/无残留。不重复HP10模型诊断，旧STOPPED及缺失收据不补填。HP11状态IN_PROGRESS/validate完成，下一仅新登记cloth→official两阶段共10完整回放8769步；先保存阶段记录，原保护/预算不变。前台执行中zhy-a3暂停，0策略回放/训练；以下12:55为历史。

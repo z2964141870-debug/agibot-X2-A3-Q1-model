@@ -1,5 +1,15 @@
 # humanplus 035匹配基线入口
 
+更新2026-10-18北京时间13:08：HP11终态COMPLETE_MATCHED_BASELINE，独立final audit verified=true，十项8769步已完成。四官方阶段55.160秒，右单腿637步/RMSE0.04577225、原地慢踏882步/0.04307360、前行1652步/0.06567668、原地旋转2604步/0.07607356rad，均未跌倒。六衣服2994步、5/6未倒、zzx5.66s首倒，全程六段算术均RMSE0.1393274808rad；按所有步/关节合并RMSE0.1613716665rad，二者不混用。0optimizer/训练，不宣称035改善或最终未见验收通过。
+
+最终累计26健康，三阶段均三次5秒启动门，阶段内最大采样间隔5.015秒；同boot、CPU最高82/GPU46°C、可用最小20,130,357,248字节、0FATAL/新增OOM/after issues/自有组残留。阶段间未连续监督，之后每新阶段须重查。固定代码/环境源码/输入SHA未变，10次真实完整策略回放成功加载035；HP10缺失的模型诊断收据仍不补填。
+
+对照合同data/manifests/a3_humanplus_baseline_reference_20261018_HP11_contract.json由独立标准库publisher读取已有final audit聚合，不重跑审计或回放。合同包含实际新根输入SHA、逐段完整/跌倒前窗口、根/身体/腕世界误差、原效果门及最终step8选择限制。完整轨迹/输入/动作/接触位于data/experiments/a3_humanplus_baseline_reference_20261018_HP11/{cloth,official}，原始日志位于logs同名目录；全部LOCAL_ONLY。HP11 register/run/audit/publish均已单次完成，禁止重跑/覆盖。
+
+下一步独立登记humanplus固定8更新短训练及最终10项对照，显式重建新根路径/监督器，不调用旧finite_retention_trial的register/run。E45四段包括zzx作为DEVELOPMENT_TRAIN、fresh035 Actor+Critic/空Adam、seed0/16env24步、原reset/奖励/路由/cached实际token/teacher1/fullclip.1/KL名义LR不变；隔离原生Adam提案的8实际位移比例与完整384 teacher .05/.5、同batch固定Critic值Actor目标1e-7门不变。8更新/32提案提交/3072交互/256候选/1728额外forward，保存0/2/4/8，仅最终8完整10回放。HP05已验四事务不重跑，旧科学STOPPED不恢复、不扩预算、不评测早期点。
+
+静态训练URDF资产齐全仍不等于完整训练任务/模型及16环境已验收。需在新登记内明确原生Kit退出的父进程收据、公开clear_instance回调清理、共享包只读、生成缓存/日志位置及同环境协议比较；不能把HP09空场景或HP11 MuJoCo成功冒充训练通过。当前0训练worker，zhy-a3恢复原30分钟主线节奏；真实新异常或最终模型目标达成后保存并暂停。记录scoped本地提交，GitHub写权限未恢复、不重复失败push。以下为本日逐阶段历史。
+
 更新2026-10-18北京时间13:04：HP11六衣服完整基线完成，45.162秒，6×499=2994步全部保留。新机结果5/6不倒，zzx首跌倒5.66s；六段全程关节RMSE依次0.09151693、0.12590409、0.08765224、0.09162262、0.12099006、0.31827894rad（顺序见selection）。这是未更新035的新机开发基线，不能解释为训练改善，也不把旧主机差异当提升。
 
 逐段输入1570维、动作29维、完整tick/关节/根/身体/接触捕获已检查，独立标准库从timeseries重算全程RMSE及第一跌倒时刻，cloth审计verified=true。累计validate+cloth共14健康同boot、CPU最高82/GPU46°C/可用最小20,130,357,248字节，无FATAL/新增OOM/after issues/自有组残留；阶段间不宣称连续监督。small result与cloth_audit已保存。下一原计划四官方5775步，0optimizer/训练，旧HP10不动。

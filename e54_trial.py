@@ -59,7 +59,7 @@ CODE_FILES = [
 ]
 LOCAL_CODE = ["e53_protocol.py", "e53_trainer.py", "e53_anchor_probe.py",
               "e54_protocol.py", "e54_obs_terms.py", "e54_channel_stats.py",
-              "e54_trial.py", "test_e54_controls.py"]
+              "e54_callback.py", "e54_trial.py", "test_e54_controls.py"]
 
 
 def read(path):
@@ -235,9 +235,10 @@ def cell_launch_argv(arm, tier):
             "algo.config.actor_learning_rate=2e-6",
             "algo.config.adaptive_lr_min=1e-6",
             "algo.config.adaptive_lr_max=2e-5",
-            "callbacks.model_save._target_=script.a3.finite_retention_trainer.FiniteCheckpointCallback",
-            "callbacks.model_save.save_frequency=" + str(tier),
+            "callbacks.model_save._target_=e54_callback.E54MilestoneCallback",
+            "callbacks.model_save.save_frequency=8",
             "+callbacks.model_save.target_global_step=" + str(tier),
+            "callbacks.model_save.save_dir=" + str(TRAIN_ROOT / run_cell(arm, tier) / "checkpoints"),
             "++algo.trl.bf16=false", "++algo.trl.fp16=false", "++algo.trl.tf32=false",
             "manager_env.observations.tokenizer.motion_anchor_ori_b_mf_nonflat.func=" + P.FUNC_BY_ARM[arm],
             ]

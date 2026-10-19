@@ -88,20 +88,27 @@ def _stat_tensors(device):
     return _TENSOR_CACHE
 
 
+def _stem(name):
+    text = str(name)
+    text = text[:-4] if text.endswith(".csv") else text
+    return os.path.splitext(os.path.basename(text))[0] if "/" in text or text != os.path.basename(text) else text
+
+
 def _resolve_stats(name, cache):
-    if name in cache:
-        return cache[name]
-    stem = os.path.splitext(os.path.basename(str(name)))[0]
+    text = str(name)
+    if text in cache:
+        return cache[text]
+    stem = _stem(text)
     if stem in cache:
         return cache[stem]
-    raise ValueError("E54 P arm: motion stats missing for " + repr(name))
+    raise ValueError("E54 P arm: motion stats missing for " + repr(text))
 
 
 def e54_root_channels_standardized(env):
     command = _tracking_command(env)
     raw = _raw_channels(command, env)
     cache = _stat_tensors(raw.device)
-    keys = list(command.motion_lib._motion_data_keys)  # noqa: SLF001 - read-only name order
+    keys = [_stem(k) for k in command.motion_lib._motion_data_keys]  # noqa: SLF001 - read-only name order
     ids = command.motion_ids.tolist() if hasattr(command.motion_ids, "tolist") else list(command.motion_ids)
     mus, sigmas = [], []
     for i in ids:

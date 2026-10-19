@@ -52,7 +52,8 @@ def main():
         for f in sorted(directory.glob("*.timeseries.json")):
             ts = json.loads(f.read_text())["motions"][0]
             name = ts["motion_name"]
-            manifest[name] = stats_from_trace(ts)
+            key = name[:-4] if name.endswith(".csv") else name
+            manifest[key] = stats_from_trace(ts)
             manifest[name]["source_file"] = str(f)
     if len(manifest) != 10:
         raise SystemExit("E54 stats: expected 10 motions, got %d" % len(manifest))

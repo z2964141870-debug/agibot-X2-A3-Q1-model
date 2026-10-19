@@ -134,7 +134,9 @@ def e54_root_channels_errorform(env):
         env._e54_prev_ref = ref.detach().clone()
         env._e54_origin_sim = sim.detach().clone()
         env._e54_prev_sim = sim.detach().clone()
-        return torch.zeros_like(sim)
+        # 6-wide zeros: steady state is cat([err_disp(3), err_vel(3)]); a 3-wide
+        # reset return corrupts the tokenizer spec probe (2432 net) — E54-I8 bug.
+        return torch.zeros_like(torch.cat([sim, sim], dim=-1))
     dt = max(float(getattr(env, "step_dt", 0.02)), 1e-6)
     rt = rot.transpose(1, 2)
     err_disp = torch.bmm(rt, ((ref - origin_ref) - (sim - origin_sim)).unsqueeze(-1)).squeeze(-1)

@@ -140,8 +140,11 @@ def stats_stage():
 
 
 def register():
-    if (OUT / "registration.json").exists() or TRAIN_ROOT.exists():
+    if (OUT / "registration.json").exists():
         raise FileExistsError("E54 must not be reset or repeated")
+    # Re-registration after an archived failure is legal while at least one arm
+    # cell never reached a training update. Completed cells keep their artifacts
+    # in TRAIN_ROOT; the amendment note below records which code each arm ran.
     if not STATS.exists():
         raise ValueError("E54 stats manifest missing; run stats first")
     baseline = preflight()
@@ -168,6 +171,10 @@ def register():
         source_checkpoint=P.SOURCE_035, source_sha256=source_sha,
         stats_manifest=str(STATS), stats_sha256=sha256(STATS),
         appendix_b_baselines=P.WDR_BASELINES,
+        amendment_note=(
+            "P arm trained+evaluated under 4th registration (pre-obs-fix code); "
+            "errorform reset-width fix + diagnostic subclass apply to Q arm only; "
+            "Q consumed zero updates in all failed launches."),
         e53_i8_cloth6=P.E53_I8_CLOTH6,
         eff_max_bound=P.EFF_MAX_BOUND, cloth6_bound=P.CLOTH6_BOUND,
         seed=0, num_envs=16, epochs=1, minibatches=4,

@@ -148,8 +148,7 @@ def register():
     source_sha = sha256(SOURCE)
     inputs = {P.SOURCE_035: source_sha,
               "data/experiments/a3_zhy_gradient_20261012_E11/rollout.pt": sha256(ANCHOR),
-              "E53_anchors_035.pt": sha256(ANCHOR_TARGETS),
-              "yuanqi_ops_data/experiments/" + P.E53_NS + "/anchors_035.pt": sha256(ANCHOR_TARGETS)}
+              "yuanqi_ops/data/experiments/" + P.E53_NS + "/anchors_035.pt": sha256(ANCHOR_TARGETS)}
     for rel in MOTIONLIB_SOURCES:
         inputs[rel] = sha256(ROOT / rel)
     code = {}

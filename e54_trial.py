@@ -140,7 +140,7 @@ def stats_stage():
 
 
 def register():
-    if OUT.exists() or TRAIN_ROOT.exists():
+    if (OUT / "registration.json").exists() or TRAIN_ROOT.exists():
         raise FileExistsError("E54 must not be reset or repeated")
     if not STATS.exists():
         raise ValueError("E54 stats manifest missing; run stats first")

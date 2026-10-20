@@ -25,6 +25,7 @@
 | **README_P2_NOISE_AUDIT.md** | P2 门禁定标 (seed=1 复刻) | warmUp 跨种子仅 0.06°(最可信指标);zj_walk ±2.7°(高噪声);均值带 ±0.6°。历次贴线判罚据此重审。 |
 | **README_P2_M11_REPORT.md** | P2 主格线 (M11 真·靶向) | **PASS 新现役最佳**:真 warm-up 窗×6 替换伪金标,warmUp 22.72 新低,yy 13.37 大优,均值 15.99 全血统最佳。狩猎→审计→靶向全链路首闭环。 |
 | **README_P2_M11_REPORT.md 附:M11C** | P2 主格线 (M11C 巩固) | REJECTED:128 步巩固侵蚀 warmUp(25.52),zzx 15.95 史上最佳;与 M9L 同构的剂量模式。现役仍 M11@32。 |
+| **M11D(64 剂量)** | P2 主格线 | **PASS 全史最佳**:均值 15.21/zzx 14.95/fjw 9.56 三史 best,warmUp 22.75 稳;真窗系甜点=64。 |
 | **README_P2_M1_REPORT.md** | P2 主格线 (M1 微调) | 金区微调 64 步：跌倒率 1/6→0/6，zzx_walk 治愈（178°→21.4°）。STRONG PASS。 |
 | **README_P2_M0_BASELINE.md** | P2 主格线 (M0 基线) | 035 本地基线复现：5/6 通过 + zzx 缺陷精确复现。PASS。 |
 

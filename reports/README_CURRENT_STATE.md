@@ -184,7 +184,7 @@ E51/R20实现完成但尚未登记：从官方035/空Adam开始、E45相同4段�
 
 - Q1在原机/media/yu/FAFF-E977/YuanQi_Q1、origin/Q1；恢复须读该副本状态，不以main旧记录启动工作。见[Q1入口](README_Q1_SMPL_20261008.md)。
 - 学习Agent继续本人必要知识训练；控制链待答项见[学习会话](README_LEARNING_SESSION_20261012.md)、[交接](README_LEARNING_AGENT_TASK_20261011.md)。10/14用户决定至少跟一遍课程，采用Agent+平板笔记+上课；视频配套10章PDF已检查，见[资料与学习安排](README_LEARNING_COURSE_20261014.md)。尚无新增掌握证据，课程不调度工程计算。
-- 每日研究已保存[10/17简报](research/2026-10-17/README.md)：PredActor补出采集/标注/离线BC训练入口，固定16文件静态核验；仍限G1、DAgger/部署待发布、HF资产未核验。三类公告与其余关注源码无实质变化。昨日回执旧补丁未落盘已识别，补同步以[研究阶段](README_RESEARCH_CHECK_20261017.md)及[回执](../data/manifests/research_watch_sync_20261017.json)为准；无复现、无新假设，工程与教学主线不由新闻调度。
+- 每日研究最近[10/20三项简报](research/2026-10-20/README.md)：BeJEPA世界目标、异步上身参考、IMEP记忆验证；五摘要/三相关正文，79条去重，无新假设/复现/训练。10/19公告本次新可见，匿名包401/HF未知。正式SSH超时，GitHub直连可读，基于89872e4独立副本保留远端工程，仅合并[10/18–20研究增量](../data/manifests/research_watch_pending_sync_20261020.json)，发布待核验；见[阶段](README_RESEARCH_CHECK_20261020.md)，不恢复工程计算。
 - 原机故障/空闲/负载试验及迁移历史见[报告索引](README.md)，旧细节保留在各阶段README与Git历史；本入口只保留当前恢复所需信息。
 
 独立侧支：[头环与衣服参考研究](README_HEADBAND_CURRENT_STATE.md)：HB06离线计分工具9项控制通过；公开评测包两端连接超时、WAIT_DATA，独立heartbeat已暂停并保存获取/恢复入口；不接手主线实验，尚未训练或证明效果提升。

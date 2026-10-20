@@ -137,6 +137,9 @@ HP07退出定位：十步/CUDA同步已通过，30秒栈确认app.close触发STO
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-20 | 每日研究简报 | BeJEPA世界目标、异步上身参考、IMEP记忆验证；五摘要/三相关正文，79条去重，未复现；研究发布待核验，见[简报](research/2026-10-20/README.md)与[阶段](README_RESEARCH_CHECK_20261020.md) |
+| 2026-10-19 | 每日研究静默检查 | 已查论文/六仓库/两组发行/两作者页无实质变化；较新公开工程记录已读取，10/18–19研究本地保存待同步，见[阶段](README_RESEARCH_CHECK_20261019.md) |
+| 2026-10-18 | 每日研究静默检查 | 三类new/recent逐条、六仓库/两组发行/两作者页无实质变化；RSS空表、HF/SSH未完成，本地记录保存、待同步，见[阶段](README_RESEARCH_CHECK_20261018.md) |
 | 2026-10-18 | humanplus匹配基线HP11/HP10入口纠错 | HP10漏参考链接停止保留；HP11参考ABI及8769完整步/6衣服4官方独立通过，5/6与4/4不倒，0训练，见[基线合同与下一步](README_A3_HUMANPLUS_BASELINE_20261018.md) |
 | 2026-10-18 | humanplus原生退出协议HP09 | 十步/同步/回调清理/原生关闭及退出0独立通过，15.160秒、0训练，见[修复结果](README_A3_HUMANPLUS_PHYSX_NATIVE_20261018.md) |
 | 2026-10-18 | humanplus STOP回调修复HP08 | 公开clear_instance消除循环；原生退出使后置收据缺失，STOPPED保留，见[阶段](README_A3_HUMANPLUS_PHYSX_CALLBACK_20261018.md) |

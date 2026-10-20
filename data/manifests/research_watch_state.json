@@ -2,9 +2,9 @@
   "schema_version": 1,
   "automation_id": "yuanqi",
   "timezone": "Asia/Shanghai",
-  "last_successful_source_check_at": "2026-10-17T09:16:53+08:00",
-  "last_report_date": "2026-10-17",
-  "last_report_path": "reports/research/2026-10-17/README.md",
+  "last_successful_source_check_at": "2026-10-20T09:23:44+08:00",
+  "last_report_date": "2026-10-20",
+  "last_report_path": "reports/research/2026-10-20/README.md",
   "initial_check": {
     "mode": "manual",
     "source_scope": "arXiv cs.RO 2026-09-29 推送筛选与三篇原始页面核对；不是全领域或系统查新。",
@@ -1659,7 +1659,7 @@
       "published_at": "2026-10-15T16:47:05Z",
       "updated_at": "2026-10-15T16:54:42Z",
       "first_seen_on": "2026-10-16",
-      "last_fetched_at": "2026-10-16T12:55:35+08:00",
+      "last_fetched_at": "2026-10-20T09:23:44+08:00",
       "dedup_key": "release:isaac-sim/IsaacLab/interactive-demos@2026-10-15T16:54:42Z",
       "change_kind": "PACKAGING_CHANGE_TO_PREVIOUSLY_REPORTED_TOOL",
       "verification_level": "Official release API/body and remote asset metadata only; no download or runtime checks.",
@@ -1668,7 +1668,15 @@
       "recommendation": "BACKGROUND_NO_STACK_CHANGE",
       "disposition": "OBSERVED_NOT_SEPARATELY_REPORTED",
       "reported_in": null,
-      "notes": "Permanent commit-named demo asset container; not a new core training framework or algorithm. Previously covered browser-demos are not repeated as a major item."
+      "notes": "Permanent commit-named demo asset container; not a new core training framework or algorithm. Previously covered browser-demos are not repeated as a major item.",
+      "last_observation": {
+        "checked_on": "2026-10-20",
+        "updated_at_utc": "2026-10-19T21:35:11Z",
+        "updated_at_beijing": "2026-10-20T05:35:11+08:00",
+        "change": "Four GIF preview assets added; prior archives and release body unchanged; not a new framework release",
+        "evidence": "data/research/2026-10-20/sources/isaaclab_releases.json",
+        "reported_separately": false
+      }
     },
     {
       "id": "github:MasterYip/PredActor",
@@ -1696,6 +1704,132 @@
       "disposition": "REPORTED",
       "reported_in": "reports/research/2026-10-17/README.md",
       "notes": "G1-specific. Author recipe targets 152x50 episodes and 50 BC epochs, not independently verified results or minimum hardware requirements. Reliable target-body teacher needed. Experimental encoder requires retargeted AMASS/BABEL and does not initialize from released G1 checkpoint. No A3/Q1 reproduction, novel hypothesis or engineering unpause."
+    },
+    {
+      "id": "arxiv:2610.23127",
+      "version": "v1",
+      "title": "BeJEPA: A Goal-Conditioned Humanoid Behavior World Model via Unsupervised RL",
+      "first_submitted_at": "2026-10-16T08:33:08Z",
+      "first_submitted_at_beijing": "2026-10-16T16:33:08+08:00",
+      "project_url": "https://ylyem9x.github.io/BeJEPA-project/",
+      "verification_level": "Original abstract/history, selected representation/training/world-tracking/deployment/limits sections and author page; no implementation execution or reproduction.",
+      "code_status": "AUTHOR_PAGE_PLANS_BEFORE_MID_NOVEMBER",
+      "asset_status": "RUNNABLE_CODE_AND_WEIGHTS_UNCONFIRMED",
+      "recommendation": "NOW_FOR_GOAL_AND_METRIC_SEPARATION_AFTER_BASELINE_FOR_METHOD",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-20/README.md",
+      "notes": "G1 posture/world-position/heading model, physical predictor and successor representation. Requires target-body training/state estimation, not a 035 plug-in. World gains do not imply every local metric wins. No A3 compute budget verified. HP24/25 failed positive controls cannot establish an input-information limit.",
+      "url": "https://arxiv.org/abs/2610.23127v1",
+      "first_seen_on": "2026-10-20",
+      "last_fetched_at": "2026-10-20T09:23:44+08:00",
+      "feed_announced_on": "2026-10-19",
+      "announcement_timezone": "America/New_York; arXiv daily listing date; RSS UTC-04:00",
+      "dedup_key": "arxiv:2610.23127@v1",
+      "related_links": [
+        "https://arxiv.org/html/2610.23127v1"
+      ],
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1"
+    },
+    {
+      "id": "arxiv:2606.25706",
+      "version": "v2",
+      "title": "Learning Asynchronous Upper-body Task-space Trajectory Tracking Policy for Humanoid Robots",
+      "first_submitted_at": "2026-06-24T11:19:38Z",
+      "first_submitted_at_beijing": "2026-06-24T19:19:38+08:00",
+      "version_updated_at": "2026-10-16T06:50:52Z",
+      "version_updated_at_beijing": "2026-10-16T14:50:52+08:00",
+      "change_kind": "FIRST_DISCOVERY_OF_OLD_PAPER_RECENT_V2_NOT_VERIFIED_VERSION_DIFF",
+      "verification_level": "Original abstract/history, selected distillation/cache/index/global-reward/MPC/self-guidance/experiments/ablation/limits sections; no v1-v2 semantic diff or reproduction.",
+      "code_status": "PUBLIC_RUNNABLE_IMPLEMENTATION_NOT_CONFIRMED",
+      "asset_status": "WEIGHTS_NOT_CONFIRMED",
+      "recommendation": "NOW_FOR_TIME_COORDINATE_CONTRACT_AFTER_BASELINE_FOR_METHOD",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-20/README.md",
+      "notes": "G1 upper-body sparse task-space tracking uses cached future trajectory and execution index, teacher distillation, global reward and MPC plus action/FK self-guidance. Approximately 2-second future reference is not automatically available in causal live teleoperation. Not proof of A3/Q1 adaptation or cross-device clock alignment.",
+      "url": "https://arxiv.org/abs/2606.25706v2",
+      "first_seen_on": "2026-10-20",
+      "last_fetched_at": "2026-10-20T09:23:44+08:00",
+      "feed_announced_on": "2026-10-19",
+      "announcement_timezone": "America/New_York; arXiv daily listing date; RSS UTC-04:00",
+      "dedup_key": "arxiv:2606.25706@v2",
+      "related_links": [
+        "https://arxiv.org/html/2606.25706v2"
+      ]
+    },
+    {
+      "id": "arxiv:2610.23372",
+      "version": "v1",
+      "title": "Beyond Success Rate: Interventional Evaluation of Memory in Vision-Language-Action Systems",
+      "first_submitted_at": "2026-10-16T12:23:56Z",
+      "first_submitted_at_beijing": "2026-10-16T20:23:56+08:00",
+      "project_url": "https://anonymous.4open.science/r/IMEP-ChainBench-DC83/",
+      "verification_level": "Original abstract/history, selected IMEP protocol/experiments/controls/limitations sections. Anonymous package link inspected but content not obtained; no reproduction.",
+      "code_status": "AUTHOR_ANONYMOUS_PACKAGE_LINK_DIRECT_HTTP401_CONTENT_NOT_VERIFIED",
+      "asset_status": "PACKAGE_CONTENT_AND_ASSETS_UNCONFIRMED",
+      "recommendation": "NOW_FOR_EXPERIMENT_DESIGN_AFTER_AUTHORIZATION_FOR_EXPERIMENTS",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-20/README.md",
+      "notes": "Fact substitutions require fact-preserving/replica/numerical and installation controls; decision correctness separated from motor execution. VLA manipulation evidence, not humanoid gains. Existing memory interventions and EgoLocate GRU preclude claiming memory addition itself as novel.",
+      "url": "https://arxiv.org/abs/2610.23372v1",
+      "first_seen_on": "2026-10-20",
+      "last_fetched_at": "2026-10-20T09:23:44+08:00",
+      "feed_announced_on": "2026-10-19",
+      "announcement_timezone": "America/New_York; arXiv daily listing date; RSS UTC-04:00",
+      "dedup_key": "arxiv:2610.23372@v1",
+      "related_links": [
+        "https://arxiv.org/html/2610.23372v1"
+      ],
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1"
+    },
+    {
+      "id": "arxiv:2610.22556",
+      "version": "v1",
+      "title": "When Plans Change, Remember: Replanning-Guided Visual Memory for Vision-Language-Action Models",
+      "first_submitted_at": "2026-10-15T18:49:42Z",
+      "first_submitted_at_beijing": "2026-10-16T02:49:42+08:00",
+      "verification_level": "Original abstract and submission history only; full method/implementation/assets not checked.",
+      "code_status": "NOT_CHECKED",
+      "asset_status": "NOT_CHECKED",
+      "recommendation": "BACKGROUND_FOR_EXISTING_ROBOT_MEMORY_WRITE_SIGNALS",
+      "disposition": "SCREENED_BACKGROUND_OR_METHOD_CANDIDATE",
+      "reported_in": null,
+      "background_mentioned_in": "reports/research/2026-10-20/README.md",
+      "notes": "RePlanMem uses temporally aligned action-chunk disagreement to trigger visual-memory writes. Direct robot precedent for event-conditioned memory; not evidence about asynchronous wearable clocks or new H001 novelty.",
+      "url": "https://arxiv.org/abs/2610.22556v1",
+      "first_seen_on": "2026-10-20",
+      "last_fetched_at": "2026-10-20T09:23:44+08:00",
+      "feed_announced_on": "2026-10-19",
+      "announcement_timezone": "America/New_York; arXiv daily listing date; RSS UTC-04:00",
+      "dedup_key": "arxiv:2610.22556@v1",
+      "related_links": [
+        "https://arxiv.org/html/2610.22556v1"
+      ],
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1"
+    },
+    {
+      "id": "arxiv:2610.22852",
+      "version": "v1",
+      "title": "Sample-Efficient Reinforcement Learning for Policy Improvement via Flow-Reversed Action Anchors",
+      "first_submitted_at": "2026-10-16T02:51:48Z",
+      "first_submitted_at_beijing": "2026-10-16T10:51:48+08:00",
+      "verification_level": "Original abstract and submission history only; full method/implementation/assets not checked.",
+      "code_status": "NOT_CHECKED",
+      "asset_status": "NOT_CHECKED",
+      "recommendation": "BACKGROUND_NOT_DIRECT_035_PPO_ADAPTATION",
+      "disposition": "SCREENED_BACKGROUND_OR_METHOD_CANDIDATE",
+      "reported_in": null,
+      "background_mentioned_in": "reports/research/2026-10-20/README.md",
+      "notes": "AnchorQ reverses flow to obtain action anchors, then refines/selects local particles with values. Requires a flow policy; abstract does not establish direct applicability to SONIC035 or a new humanoid training recipe.",
+      "url": "https://arxiv.org/abs/2610.22852v1",
+      "first_seen_on": "2026-10-20",
+      "last_fetched_at": "2026-10-20T09:23:44+08:00",
+      "feed_announced_on": "2026-10-19",
+      "announcement_timezone": "America/New_York; arXiv daily listing date; RSS UTC-04:00",
+      "dedup_key": "arxiv:2610.22852@v1",
+      "related_links": [
+        "https://arxiv.org/html/2610.22852v1"
+      ],
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1"
     }
   ],
   "idea_ids": [
@@ -1705,22 +1839,25 @@
     "scheduled_task_config": "ACTIVE",
     "first_scheduled_run": "TRIGGER_AND_RESEARCH_VERIFIED",
     "last_error": {
-      "scope": "partial_source_gap",
-      "huggingface": "One bounded metadata connection timeout; current PredActor binary assets remain author-manifest only",
-      "arxiv": "Current RO/LG/CV new/recent/RSS unchanged from October16; historical replacements, unexposed October13 partition and missing HTML versions remain incomplete",
-      "recorded_at": "2026-10-17T09:16:53+08:00"
+      "scope": "canonical_worktree_and_partial_source_gap",
+      "recorded_at": "2026-10-20T09:23:44+08:00",
+      "ssh": "Two bounded canonical status timeouts; canonical worktree UNKNOWN",
+      "direct_github_ssh": "Read-only ls-remote and isolated filtered clone succeeded; publication not yet verified",
+      "huggingface": "One bounded metadata connection timeout; current PredActor binary assets remain unverified",
+      "anonymous_package": "IMEP author link direct HTTP401; implementation content not verified",
+      "arxiv": "October19 current RSS/new/recent visible; earlier unexposed October13 partition, historical replacements and some missing versions remain incomplete"
     },
     "first_scheduled_trigger_at": "2026-09-30T01:01:12.375Z",
-    "last_scheduled_source_check_at": "2026-10-17T09:16:53+08:00",
-    "last_coverage_note": "39 successful primary network responses; 16 pinned PredActor files Git-blob verified; paper remains v3, 13-commit/129-file release diff and complete 412-entry tree. RO/LG/CV listings unchanged, other five watched repo heads and two release sets unchanged; C-GMT citation-only update. No model download, execution, reproduction or new hypothesis.",
-    "last_scheduled_trigger_at": "2026-10-17T00:59:02.207Z",
+    "last_scheduled_source_check_at": "2026-10-20T09:23:44+08:00",
+    "last_coverage_note": "32 primary HTTP requests: 30 successful caches, HF timeout and anonymous package HTTP401. October19 RO/LG/CV RSS/new/recent visible; five abstracts/history and three selected full texts plus BeJEPA author page checked. Six heads unchanged; Isaac demo adds GIFs only. Canonical SSH unavailable; isolated clean public main research publication prepared. No code execution, simulation, model download, reproduction or new hypothesis.",
+    "last_scheduled_trigger_at": "2026-10-20T01:03:38.780Z",
     "last_run_interrupted": false,
     "last_run_resumed": false,
     "last_interrupted_check_manifest": "data/manifests/research_watch_check_20261003.json",
-    "last_check_outcome": "ONE_MATERIAL_PREDACTOR_CODE_RELEASE_UPDATE",
+    "last_check_outcome": "THREE_RELEVANT_ITEMS_VERIFIED_SELECTED_TEXT_NOT_REPRODUCED",
     "last_resumed_from_trigger_at": "2026-10-03T01:01:32.212Z",
-    "publication_status": "GITHUB_VERIFIED",
-    "pending_sync_manifest": null,
+    "publication_status": "LOCAL_ONLY_PENDING_SYNC",
+    "pending_sync_manifest": "data/manifests/research_watch_pending_sync_20261020.json",
     "previous_sync_failure_resolved_connection_at": "2026-10-12T09:09:40+08:00",
     "previous_sync_failure": {
       "scope": "record_sync",
@@ -1751,9 +1888,13 @@
       "recorded_at": "2026-10-11T09:08:48+08:00",
       "same_ssh_problem_as_local_engineering_record": "reports/README_A3_CONTROLLER_ADAPTER_20261010.md"
     },
-    "pending_sync_dates": [],
+    "pending_sync_dates": [
+      "2026-10-18",
+      "2026-10-19",
+      "2026-10-20"
+    ],
     "latest_sync_receipt_path": "data/manifests/research_watch_sync_20261017.json",
-    "last_notification_reason": "PredActor collection/labeling/BC source release changes earlier evaluation-only asset judgment; G1-specific and HF unverified. No unchanged engineering or credential alert.",
+    "last_notification_reason": "Newly visible October19 announcements support three useful readings; no new engineering alert or repeated unchanged issue.",
     "user_action_issues": [
       {
         "id": "RECORD_CREDENTIAL_20261012",
@@ -1790,6 +1931,36 @@
       "arxiv": "October14-16 titles visible; historical replacements, unexposed October13 partition and some missing HTML versions remain incomplete",
       "recorded_at": "2026-10-16T12:55:35+08:00"
     },
+    "previous_partial_source_gap_20261017": {
+      "scope": "partial_source_gap",
+      "huggingface": "One bounded metadata connection timeout; current PredActor binary assets remain author-manifest only",
+      "arxiv": "Current RO/LG/CV new/recent/RSS unchanged from October16; historical replacements, unexposed October13 partition and missing HTML versions remain incomplete",
+      "recorded_at": "2026-10-17T09:16:53+08:00"
+    },
+    "record_sync_failure_20261018": {
+      "recorded_at": "2026-10-18T09:03:53+08:00",
+      "canonical_git_status": "UNKNOWN_TWO_SSH_TIMEOUTS",
+      "public_github_main_snapshot": "48449c427cd37f247f7918a624b0eb5b99d212f3",
+      "direct_github_ssh": "NOT_RETRIED_PREVIOUS_PUBLICKEY_FAILURE",
+      "publication": "LOCAL_ONLY_PENDING_SYNC",
+      "pending_manifest": "data/manifests/research_watch_pending_sync_20261018.json",
+      "same_connection_and_authentication_conditions_already_in_project_records": true
+    },
+    "record_sync_failure_20261019": {
+      "recorded_at": "2026-10-19T09:09:16+08:00",
+      "canonical_git_status": "UNKNOWN_TWO_SSH_TIMEOUTS",
+      "public_github_main_snapshot": "89872e451af3a18c1c7cc0175a6c06a10eb1cde3",
+      "public_project_records_newer_than_local": true,
+      "public_research_state_last_check": "2026-10-17T09:16:53+08:00",
+      "direct_github_ssh": "READ_ONLY_LS_REMOTE_CONNECT_TIMEOUT_WRITE_ACCESS_UNKNOWN",
+      "publication": "LOCAL_ONLY_PENDING_SYNC",
+      "pending_manifest": "data/manifests/research_watch_pending_sync_20261019.json",
+      "pending_dates": [
+        "2026-10-18",
+        "2026-10-19"
+      ],
+      "preserve_newer_remote_engineering_records_and_local_research_increments": true
+    },
     "receipt_recovery_20261017": {
       "checked_at": "2026-10-17T09:16:53+08:00",
       "canonical_head": "9990639803462378bd8577b20deebb367024b018",
@@ -1800,8 +1971,15 @@
       "evidence": "logs/research_watch/2026-10-17/source_comparison.json",
       "documents_commit": "ad3bc532c6a2e113d5edd48cb0e215064f64f993",
       "verified_at": "2026-10-17T09:21:31+08:00"
+    },
+    "record_sync_recovery_attempt_20261020": {
+      "checked_at": "2026-10-20T09:23:44+08:00",
+      "public_main": "89872e451af3a18c1c7cc0175a6c06a10eb1cde3",
+      "canonical_worktree": "UNKNOWN_TWO_SSH_TIMEOUTS",
+      "github_read_and_isolated_clone": "SUCCEEDED",
+      "publication": "PENDING_REVIEW_AUDIT_PUSH_AND_INDEPENDENT_VERIFICATION"
     }
   },
   "dedup_rule": "同 ID/版本不重复转述；新版本或代码发布只有实质变化才再次报告，记录变化说明。",
-  "latest_check_manifest": "data/manifests/research_watch_check_20261017.json"
+  "latest_check_manifest": "data/manifests/research_watch_check_20261020.json"
 }

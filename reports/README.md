@@ -26,6 +26,7 @@
 | **README_P2_M11_REPORT.md** | P2 主格线 (M11 真·靶向) | **PASS 新现役最佳**:真 warm-up 窗×6 替换伪金标,warmUp 22.72 新低,yy 13.37 大优,均值 15.99 全血统最佳。狩猎→审计→靶向全链路首闭环。 |
 | **README_P2_M11_REPORT.md 附:M11C** | P2 主格线 (M11C 巩固) | REJECTED:128 步巩固侵蚀 warmUp(25.52),zzx 15.95 史上最佳;与 M9L 同构的剂量模式。现役仍 M11@32。 |
 | **M11D(64 剂量)** | P2 主格线 | **PASS 全史最佳**:均值 15.21/zzx 14.95/fjw 9.56 三史 best,warmUp 22.75 稳;真窗系甜点=64。 |
+| **M12(AMASS 首混)** | P2 主格线 | REJECTED 0.07 度贴线:warmUp 23.88;AMASS 管线全链贯通;泛化判据缺位教训入册 |
 | **README_GEN_AUDIT_VERDICT.md** | 泛化审计 | **GT 级开卷:全体近乎全摔(含 035),泛化墙普遍**;血统持平未破坏;AMASS 升级为主力弹药。v1-v7 方法学链全部留档。 |
 | **README_P2_M1_REPORT.md** | P2 主格线 (M1 微调) | 金区微调 64 步：跌倒率 1/6→0/6，zzx_walk 治愈（178°→21.4°）。STRONG PASS。 |
 | **README_P2_M0_BASELINE.md** | P2 主格线 (M0 基线) | 035 本地基线复现：5/6 通过 + zzx 缺陷精确复现。PASS。 |

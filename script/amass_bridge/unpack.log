@@ -1,0 +1,72 @@
+[2026-10-20 17:00:28] validate: sandbox /tmp/amass_split_test.vMQyPO
+[2026-10-20 17:00:28] validate: volumes test.z01 test.z02 test.z03 test.z04 test.zip 
+volumes=5 total_bytes=5001229
+central_dir: offset_in_final=806678 size=225 entries=3 (eocd n_total=3)
+SPLIT_EXTRACT_DONE entries=3 ok=3 skipped=0 dirs=0 seconds=0
+[2026-10-20 17:00:29] validate PASS: split -> split_zip_extract sha256 identical (3 files)
+[2026-10-20 17:00:29] gate1 waiting: ALL_DOWNLOADS_DONE not yet (volumes: 25); next poll 600s
+[2026-10-20 17:10:29] gate1 waiting: ALL_DOWNLOADS_DONE not yet (volumes: 29); next poll 600s
+[2026-10-20 17:13:46] validate: sandbox /tmp/amass_split_test.hhSdlW
+[2026-10-20 17:13:46] validate: volumes test.z01 test.z02 test.z03 test.z04 test.z05 test.zip  (+injected ghost test.z05)
+WARNING: ignoring 1 extra volume file(s) beyond declared set: /tmp/amass_split_test.hhSdlW/test.z05
+volumes=5 (declared 5) total_bytes=5001229
+Traceback (most recent call last):
+  File "/opt/data/private/yuanqi_ops/script/amass_bridge/split_zip_extract.py", line 264, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/opt/data/private/yuanqi_ops/script/amass_bridge/split_zip_extract.py", line 213, in main
+    % (cd_off, cd_size, len(entries), n_total), flush=True)
+                                      ^^^^^^^
+NameError: name 'n_total' is not defined
+[2026-10-20 17:13:46] validate FAIL: split_zip_extract
+[2026-10-20 17:14:55] validate: sandbox /tmp/amass_split_test.xE6qsk
+[2026-10-20 17:14:55] validate: volumes test.z01 test.z02 test.z03 test.z04 test.z05 test.zip  (+injected ghost test.z05)
+WARNING: ignoring 1 extra volume file(s) beyond declared set: /tmp/amass_split_test.xE6qsk/test.z05
+volumes=5 (declared 5) total_bytes=5001229
+central_dir: offset_in_final=806678 size=225 entries=3 (eocd n_total=3)
+SPLIT_EXTRACT_DONE entries=3 ok=3 skipped=0 dirs=0 seconds=0
+[2026-10-20 17:14:55] validate PASS: split -> split_zip_extract sha256 identical (3 files)
+[2026-10-20 17:20:29] gate1 open: ALL_DOWNLOADS_DONE present
+[2026-10-20 17:21:59] gate2 open: volume set stable (29 parts, 93283081923 bytes)
+[2026-10-20 17:21:59] disk ok: need ~107275544211, have 2183370153984
+[2026-10-20 17:21:59] extracting split set -> /opt/data/private/yuanqi_ops/script/amass_bridge/data/amass_raw (split_zip_extract.py, per-entry CRC32)
+volumes=29 (declared 29) total_bytes=93283081923
+central_dir: offset_in_final=3086480150 size=2288459 entries=18469 (eocd n_total=18469)
+[17:23:01] 500/18469 entries (ok=494 skip=0 dir=6, 62s, CRC-verified)
+[17:23:53] 1000/18469 entries (ok=990 skip=0 dir=10, 114s, CRC-verified)
+[17:24:57] 1500/18469 entries (ok=1476 skip=0 dir=24, 178s, CRC-verified)
+[17:25:15] 2000/18469 entries (ok=1954 skip=0 dir=46, 196s, CRC-verified)
+[17:25:35] 2500/18469 entries (ok=2432 skip=0 dir=68, 216s, CRC-verified)
+[17:25:56] 3000/18469 entries (ok=2911 skip=0 dir=89, 237s, CRC-verified)
+[17:26:14] 3500/18469 entries (ok=3388 skip=0 dir=112, 255s, CRC-verified)
+[17:26:35] 4000/18469 entries (ok=3861 skip=0 dir=139, 276s, CRC-verified)
+[17:27:05] 4500/18469 entries (ok=4343 skip=0 dir=157, 306s, CRC-verified)
+[17:27:38] 5000/18469 entries (ok=4827 skip=0 dir=173, 339s, CRC-verified)
+[17:28:12] 5500/18469 entries (ok=5310 skip=0 dir=190, 373s, CRC-verified)
+[17:28:43] 6000/18469 entries (ok=5792 skip=0 dir=208, 404s, CRC-verified)
+[17:29:14] 6500/18469 entries (ok=6276 skip=0 dir=224, 435s, CRC-verified)
+[17:29:46] 7000/18469 entries (ok=6759 skip=0 dir=241, 467s, CRC-verified)
+[17:30:54] 7500/18469 entries (ok=7241 skip=0 dir=259, 535s, CRC-verified)
+[17:31:18] 8000/18469 entries (ok=7726 skip=0 dir=274, 559s, CRC-verified)
+[17:32:20] 8500/18469 entries (ok=8199 skip=0 dir=301, 621s, CRC-verified)
+[17:33:17] 9000/18469 entries (ok=8676 skip=0 dir=324, 678s, CRC-verified)
+[17:33:58] 9500/18469 entries (ok=9154 skip=0 dir=346, 719s, CRC-verified)
+[17:34:29] 10000/18469 entries (ok=9640 skip=0 dir=360, 750s, CRC-verified)
+[17:35:02] 10500/18469 entries (ok=10139 skip=0 dir=361, 783s, CRC-verified)
+[17:35:38] 11000/18469 entries (ok=10638 skip=0 dir=362, 819s, CRC-verified)
+[17:36:06] 11500/18469 entries (ok=11137 skip=0 dir=363, 847s, CRC-verified)
+[17:36:38] 12000/18469 entries (ok=11636 skip=0 dir=364, 879s, CRC-verified)
+[17:37:53] 12500/18469 entries (ok=12103 skip=0 dir=397, 954s, CRC-verified)
+[17:38:12] 13000/18469 entries (ok=12579 skip=0 dir=421, 973s, CRC-verified)
+[17:38:33] 13500/18469 entries (ok=13076 skip=0 dir=424, 994s, CRC-verified)
+[17:38:52] 14000/18469 entries (ok=13568 skip=0 dir=432, 1013s, CRC-verified)
+[17:39:13] 14500/18469 entries (ok=14062 skip=0 dir=438, 1034s, CRC-verified)
+[17:39:40] 15000/18469 entries (ok=14554 skip=0 dir=446, 1061s, CRC-verified)
+[17:40:05] 15500/18469 entries (ok=15045 skip=0 dir=455, 1086s, CRC-verified)
+[17:40:36] 16000/18469 entries (ok=15537 skip=0 dir=463, 1117s, CRC-verified)
+[17:40:57] 16500/18469 entries (ok=16034 skip=0 dir=466, 1138s, CRC-verified)
+[17:41:17] 17000/18469 entries (ok=16524 skip=0 dir=476, 1158s, CRC-verified)
+[17:41:50] 17500/18469 entries (ok=17005 skip=0 dir=495, 1191s, CRC-verified)
+[17:42:56] 18000/18469 entries (ok=17497 skip=0 dir=503, 1257s, CRC-verified)
+SPLIT_EXTRACT_DONE entries=18469 ok=17951 skipped=0 dirs=518 seconds=1296
+[2026-10-20 17:43:35] DONE npz=17928 -> /opt/data/private/yuanqi_ops/script/amass_bridge/data/amass_raw

@@ -1,0 +1,17 @@
+/opt/data/private/yuanqi_ops/script/amass_bridge/smplx2smpl24.py:109: DeprecationWarning: Please import `csc_matrix` from the `scipy.sparse` namespace; the `scipy.sparse.csc` namespace is deprecated and will be removed in SciPy 2.0.0.
+  d = pickle.load(f, encoding="latin1")
+/opt/data/private/yuanqi_ops/script/amass_bridge/smplx2smpl24.py:113: DeprecationWarning: Please import `csc_matrix` from the `scipy.sparse` namespace; the `scipy.sparse.csc` namespace is deprecated and will be removed in SciPy 2.0.0.
+  d = pickle.load(f, encoding="latin1")
+Traceback (most recent call last):
+  File "/opt/data/private/yuanqi_ops/script/amass_bridge/smplx2smpl24.py", line 581, in <module>
+    main()
+  File "/opt/data/private/yuanqi_ops/script/amass_bridge/smplx2smpl24.py", line 577, in main
+    sys.exit(args.fn(args))
+             ^^^^^^^^^^^^^
+  File "/opt/data/private/yuanqi_ops/script/amass_bridge/smplx2smpl24.py", line 543, in verify_cli
+    d = np.load(args.input, allow_pickle=True)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/hechengzhu/ZHY/data/env/lib/python3.11/site-packages/numpy/lib/npyio.py", line 427, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+IsADirectoryError: [Errno 21] Is a directory: 'm12_pkls'

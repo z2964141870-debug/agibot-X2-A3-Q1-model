@@ -1,0 +1,17 @@
+[2026-10-20 17:02:06] waiting for unpack_DONE
+[2026-10-20 17:44:06] unpack_DONE seen: 2026-10-20 17:43:35 DONE npz=17928
+[2026-10-20 17:44:06] npz count: 17928
+[2026-10-20 17:44:06] smoke rc=0
+[2026-10-20 17:44:06] triage (scan-frames 50)
+Traceback (most recent call last):
+  File "/opt/data/private/yuanqi_ops/script/amass_bridge/triage.py", line 207, in <module>
+    main()
+  File "/opt/data/private/yuanqi_ops/script/amass_bridge/triage.py", line 188, in main
+    fps = sorted(set(round(r[1], 1) for r in res if r[1] is not None))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/yuanqi_ops/script/amass_bridge/triage.py", line 188, in <genexpr>
+    fps = sorted(set(round(r[1], 1) for r in res if r[1] is not None))
+                     ^^^^^^^^^^^^^^
+TypeError: type str doesn't define __round__ method
+[2026-10-20 17:44:11] triage rc=1
+[2026-10-20 17:44:11] PIPELINE_DONE smoke_rc=0 triage_rc=1

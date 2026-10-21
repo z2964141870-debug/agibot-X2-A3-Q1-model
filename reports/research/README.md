@@ -2,7 +2,7 @@
 
 每天北京时间 09:00 在当前 Codex 聊天检查。最多 3–5 项，无实质新内容时不凑简报。运行条件、核验标准和记录规则见[研究跟踪说明](../README_RESEARCH_WATCH.md)。
 
-最近检查：**2026-10-21**，见[四项简报](2026-10-21/README.md)和[当天检查](../README_RESEARCH_CHECK_20261021.md)：PredActor G1部署发布、SWAP分层避障、K-AoI时间语义、Isaac Lab3.0正式版；六新摘要/两相关正文/12固定文本，87条去重，无新假设或复现。今天记录待GitHub审计核验，正式hp3090仍未知；[10/18–20成功回执](../../data/manifests/research_watch_sync_20261020.json)保留。
+最近检查：**2026-10-21**，见[四项简报](2026-10-21/README.md)和[当天检查](../README_RESEARCH_CHECK_20261021.md)：PredActor G1部署发布、SWAP分层避障、K-AoI时间语义、Isaac Lab3.0正式版；六新摘要/两相关正文/12固定文本，87条去重，无新假设或复现。研究内容7078f6743f7a7ae0d3eca7ac393e201f6b430d2f已推送main并独立核验，见[回执](../../data/manifests/research_watch_sync_20261021.json)，正式hp3090仍未知；[10/18–20成功回执](../../data/manifests/research_watch_sync_20261020.json)保留。
 
 | 简报日期（北京时间） | 内容 | 核验范围 |
 | --- | --- | --- |

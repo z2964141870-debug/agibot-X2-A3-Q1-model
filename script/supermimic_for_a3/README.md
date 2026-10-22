@@ -29,7 +29,8 @@ envs/supermimic_a3_20261023/bin/python script/supermimic_for_a3/train.py \
   --root /opt/data/private/hechengzhu/ZHY \
   --motions data/supermimic_for_a3/motions_20261023_M02 \
   --backend-receipt data/supermimic_for_a3/source_audit_20261023/backend_V04.json \
-  --output data/supermimic_for_a3/NEW_RUN --steps 3000 --compile \
+  --output data/supermimic_for_a3/NEW_RUN --steps 3000 \
+  --num-envs 16 --threads 4 --compile \
   --clips 001_walk_front_slow 042_squat_shallow_repeated \
     058_punch_front_alternating 077_reach_overhead_both
 

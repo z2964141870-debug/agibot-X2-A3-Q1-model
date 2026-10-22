@@ -53,6 +53,7 @@ def main():
     p.add_argument("--backend-receipt", type=Path, required=True)
     p.add_argument("--steps", type=int, default=10000)
     p.add_argument("--num-envs", type=int, default=64)
+    p.add_argument("--threads", type=int, default=4)
     p.add_argument("--batch", type=int, default=64)
     p.add_argument("--wm-batch", type=int, default=128)
     p.add_argument("--wm-batches", type=int, default=10)
@@ -89,7 +90,7 @@ def main():
             raise ValueError("Motion hash mismatch")
     heads = assets.heads(args.device)
     lib = MotionLibrary(files, TRACKED, assets.q0, device=args.device, active_indices=assets.active_indices)
-    scfg = SimCfg(num_envs=args.num_envs)
+    scfg = SimCfg(num_envs=args.num_envs, threads=args.threads)
     sim = A3Sim(assets, lib, scfg, heads, args.seed)
     buffer = ReplayBuffer(args.num_envs, 1000, 83, 29, 33, args.device)
     wcfg = WorldModelCfg()
@@ -138,12 +139,12 @@ def main():
         os.replace(tmp, destination)
 
     save("step_000000.pt")
-    atomic_json(args.output / "status.json", {"status": "RUNNING", "step": 0, "pid": os.getpid(), "health": health()})
     status = "FAILED"
     error = None
     accumulated = 0.
     last_metrics = {}
     try:
+        atomic_json(args.output / "status.json", {"status": "RUNNING", "step": 0, "pid": os.getpid(), "health": health()})
         for step in range(1, args.steps + 1):
             with torch.no_grad():
                 obs, goal = sim.policy_inputs()

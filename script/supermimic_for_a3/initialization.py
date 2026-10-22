@@ -61,6 +61,7 @@ def load_initialization(checkpoint_path, calibration_audit, contract, wm, policy
     if not all(torch.isfinite(value).all() for module in (wm, policy, critic) for value in module.state_dict().values()):
         raise ValueError("Nonfinite initialization network state")
     return {"type": "warm_start_in_new_run", "source_checkpoint": source_id,
+            "initialization_entry": identity(__file__),
             "source_receipt": identity(receipt_path), "model_source": model_source,
             "calibration_audit": audit_id, "initial_optimizer_steps": initial_steps,
             "source_counters": {name: source[name] for name in ("step", "wm_updates", "policy_updates")},

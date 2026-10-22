@@ -62,6 +62,8 @@ def main():
                        "critic_opt": final["policy_updates"] * cfg["critic_epochs"] * cfg["critic_minibatches"]}
     initialization = manifest.get("initialization")
     if initialization is not None:
+        require(identity(initialization["initialization_entry"]["path"]) == initialization["initialization_entry"],
+                "Initialization implementation changed")
         require(identity(initialization["source_checkpoint"]["path"]) == initialization["source_checkpoint"],
                 "Initialization checkpoint changed")
         require(identity(initialization["source_receipt"]["path"]) == initialization["source_receipt"],

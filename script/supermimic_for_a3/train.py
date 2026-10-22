@@ -148,6 +148,9 @@ def main():
                     "torch_rng": torch.get_rng_state(), "cuda_rng": torch.cuda.get_rng_state_all(),
                     "manifest": manifest}, tmp)
         os.replace(tmp, destination)
+        with destination.open("rb") as stream:
+            os.fsync(stream.fileno())
+            os.posix_fadvise(stream.fileno(), 0, 0, os.POSIX_FADV_DONTNEED)
 
     save("step_000000.pt")
     status = "FAILED"

@@ -1,5 +1,8 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-22：用户授权新目标模式提升传感衣遥操，指定huanyu(25893)计算；旧STOPPED不改。新轮仅本地合同/身份/时序审查，无训练或仿真，huanyu经Windows握手超时。[重启入口](README_TELEOP_RESTART_20261022.md)、[公平配对合同](README_TELEOP_EXPERIMENT_CONTRACT_20261022.md)、[时钟基线](README_TELEOP_SOURCE_CLOCK_20261022.md)。不得沿用旧onset强结论。
+
+
 2026-10-18：[Exp-2a根位移可辨识性HP24/HP25两轮STOPPED](README_A3_HUMANPLUS_ROOT_IDENT_20261018.md)：阳性对照两轮未过门，按合同2.4停止上报；判据不适用，分段观察与全部数字见阶段README与manifests，GitHub未同步。
 
 2026-10-18北京时间20:24：[用户明确停止](README_A3_HUMANPLUS_SPECIALIST_REPAIR_20261018.md)，zhy-a3保持PAUSED/无HP23组残留，不自动训练、评测或修复。已验收专项Isaac误差比035恶化58.08%；MuJoCo包装器缺字段STOPPED，未独立审计、不重跑。035仍baseline，下一只讨论目标与路线；下文执行安排均为历史，GitHub未同步。

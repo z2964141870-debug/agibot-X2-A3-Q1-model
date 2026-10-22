@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：C01通过，R02仍8/8早倒。R03半程PT216005351字节/SHA4e39d0b1…已核对；04:22快照1525/3000步、24400env-step/559次联合更新，61条指标均有限，GPU39℃/OOM14无新增。训练703916/start_ticks3598955095、完成704836/3599058278实际活跃，同boot；完成流程waiting_for_training，两个终态receipt尚无。保持原3000步预算、30GiB/86℃保护，无自动重启。完成后核对R03_completion_20261023/receipt.json、eval_step0/eval_final、matched_audit.json、policy_assessment.json和真实进程；阶段末节及半程快照给出证据。原件LOCAL_ONLY，main维护，尚无R03最终效果，目标active、旧STOPPED保持。
+2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：R03训练/完成流程均实际退出0，原两PID为Z/RSS0；3000采集步/48000新env-step、1149次联合更新、100.65分钟。八段完整配对及审计通过，最终Adam32980/2098/41960；训练完成率4.854→10.764%、开发5.119→12.971%，八段仍5.28–10.66秒提前失败，三项可用门全false，尚非可用策略。final215997267字节/SHA11f7dbe9…；120条记录有限、GPU最高40℃/OOM14无新增。完整证据在huanyu:/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R03_completion_20261023，及阶段末节链接。下一只基于保存轨迹核查实际行为/H1-H8-H32模型误差，再选下一独立训练方向；不重跑原完成阶段，原件LOCAL_ONLY，维护main，目标active，旧STOPPED保持。
 
 2026-10-22（10/23补记）：[A3解剖肩点候选T13](README_TELEOP_A3_SHOULDER_PROBE_20261022.md)实际退出1，FAILED_PRE_IK；roll/yaw静止朝向重合假设不成立，0新增IK/动力学/训练，无候选通过或遗留作业。保存失败证据，用户新目标转入SuperMimic论文与A3训练。
 

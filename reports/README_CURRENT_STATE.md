@@ -2,6 +2,8 @@
 
 2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：C01完整/独立重算通过，32步根误差17.78→8.78cm，三个候选门均过；策略不变、R02仍8/8早倒。R03运行中，PID/PGID703916，同boot，R02 actor/critic/Adam加C01 WM/Adam，预算3000步/48000env-step，seed5921、模型预热0、H32/k8保持；最新保存快照275步/4400env-step/59次联合更新，指标有限，GPU39℃，OOM14无新增，尚无完整预算或新效果。恢复查R03/status.json、receipt.json、日志及PID，完成后step0/final八段评测与继承状态/计数审计。huanyu:/opt/data/private/yuanqi_ops，30GiB/86℃保护；原件LOCAL_ONLY，维护main，旧STOPPED不动。
 
+R03后续完成流程已实现：`complete_run.py`绑定真实进程退出，顺序执行两次完整评测/审计/可用门，3聚合控制及R02存量门回归通过；尚未启动完成进程，下一发布核验→启动。详见阶段README末节，不能仅凭流水线状态认定策略可用。
+
 2026-10-22（10/23补记）：[A3解剖肩点候选T13](README_TELEOP_A3_SHOULDER_PROBE_20261022.md)实际退出1，FAILED_PRE_IK；roll/yaw静止朝向重合假设不成立，0新增IK/动力学/训练，无候选通过或遗留作业。保存失败证据，用户新目标转入SuperMimic论文与A3训练。
 
 2026-10-22：[A3肩任务点诊断T12](README_TELEOP_A3_LANDMARK_20261022.md)：T10目标重建/独立FK最大差0；肩点误配到roll枢轴下游14.75cm的yaw原点，标签肩P95达7.52/8.76cm，目标肘半径也冲突。下一独立位置/朝向分离候选；未重解IK/动力学/训练，不放宽5cm门。

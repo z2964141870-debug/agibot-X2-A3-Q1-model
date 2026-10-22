@@ -103,3 +103,17 @@ fresh. The learning rate schedule continues from the source collection count.
 Local update counters start at zero and the audit checks optimizer increments
 against inherited counts. In this mode `step_000000.pt` is a trained parent
 initialization, not a random policy. Choose model warmup explicitly for the new run.
+
+`complete_run.py --run RUN_DIRECTORY --launch TRAINING_LAUNCH.json
+--output NEW_COMPLETION_DIRECTORY --log-dir NEW_LOG_DIRECTORY` waits for that exact
+PID/start time/boot and command to exit successfully, then runs step-zero and final
+eight-clip evaluation, matched auditing and `assess_policy.py`. It never starts or
+restarts training. Each stage runs once; a failure stops the pipeline and retains
+its logs. `launch.py --entry complete_run` records the independent process.
+
+The policy assessment checks the preregistered engineering gate: all four known
+training clips finish without termination, mean full-clip return is at least 0.5,
+and every training clip has executed joint RMSE at most 0.15 rad. It reports the
+four previously inspected development clips separately. Passing this limited gate
+does not establish generalization, hardware readiness or paper-scale performance.
+Focused controls: `python script/supermimic_for_a3/test_completion.py -v`.

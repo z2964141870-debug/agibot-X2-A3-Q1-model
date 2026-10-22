@@ -258,3 +258,11 @@ CPU控制验证继承张量/三种Adam状态与学习率偏移，拒绝仿真合
 下一：完成既定3000步预算→独立step0/final八段物理评测→继承状态、Adam计数、轨迹及完整片段指标审计→按预登记可用门决定。当前所有大工件仍`LOCAL_ONLY`。
 
 首轮联合更新已实际通过：[启动进度快照](../data/manifests/supermimic_a3_R03_startup_progress_20261023.json)记录275采集步、4400env-step、59次WM与59次actor更新，指标有限，GPU39℃/usage31240204288字节；最近核查OOM仍14。只是进行中证据，未完成3000步预算，没有R03最终权重/完整效果，目标继续保持未达。下一可执行步骤是读取R03/status.json、receipt.json和日志；收到完整训练终态后，按原README命令分别评测本轮step0与final，再用audit_run.py核验及计算上文门。
+
+## R03完成流程实现（04时前后）
+
+本次恢复实时确认R03进程仍活跃且更新增加，上一goal turn属于实际进展（完成C01并启动R03），本次不重启/复训。为使既定预算直接进入效果闭环，新增`complete_run.py`：绑定训练boot、PID/start ticks、完整命令及admission，等待该进程真实退出；仅在成功终态及预算匹配后，顺序执行本轮step0/final八段完整评测→匹配审计→`assess_policy.py`。各阶段一次，失败留证退出，不启动或恢复训练；完成流程本身不是目标达成声明。
+
+`assess_policy.py`逐条核对审计/评测/轨迹身份并重算回报和关节指标，按R03预登记门输出结果。四开发片段另报，不当未触及测试。真实R02存量轨迹门复核实际退出0，完整性/均回报/每段关节三个门均false：[R02门回归](../data/manifests/supermimic_a3_R02_policy_gate_regression_20261023.json)，0新物理/optimizer。
+
+语法检查和服务器3个聚合控制测试通过：全门达标接受，早倒/低回报/某段高关节误差拒绝，篡改轨迹拒绝；进程真实身份接受，boot/命令/起始tick变化拒绝。对真实活跃R03的同类只读控制也通过。见[控制记录](../logs/session_records/supermimic_a3_completion_controls_20261023.log)。源码已实现但此时完成流程尚未实际启动或完成；先发布并核验后启动独立等待进程，不把测试替代真实八段评测。

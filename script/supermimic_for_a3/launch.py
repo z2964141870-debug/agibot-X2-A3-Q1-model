@@ -13,7 +13,7 @@ def main():
     p.add_argument("--python", type=Path, required=True)
     p.add_argument("--log", type=Path, required=True)
     p.add_argument("--record", type=Path, required=True)
-    p.add_argument("--entry", choices=("train", "calibrate_world_model"), default="train")
+    p.add_argument("--entry", choices=("train", "calibrate_world_model", "complete_run"), default="train")
     p.add_argument("training_args", nargs=argparse.REMAINDER)
     args = p.parse_args()
     command_args = args.training_args

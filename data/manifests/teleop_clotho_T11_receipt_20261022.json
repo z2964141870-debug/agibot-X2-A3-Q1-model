@@ -1,0 +1,688 @@
+{
+  "experiment": "T11",
+  "utc": "2026-10-22T15:25:03.792769+00:00",
+  "inputs": {
+    "source_archive": {
+      "path": "/opt/data/private/yuanqi_ops/data/fgp/CLOTHO-mocap-main_974bd8d9.zip",
+      "bytes": 12043763,
+      "sha256": "974bd8d94c5384cc47b7021d0e1f13092f34948d480a933603c8aeb6db57977b"
+    },
+    "data": {
+      "path": "/opt/data/private/yuanqi_ops/data/fgp/train_released.zip",
+      "bytes": 1896104195,
+      "sha256": "8015e969dc2ef9629e3a4e02d16d2846449d7db2ebd2eb94ca063c814358f952"
+    },
+    "canonicalizer": {
+      "path": "/opt/data/private/yuanqi_ops/script/tools/FGP_Full/FGP-main/checkpoints/canonicalization/U100hL7.07h_residual.pth",
+      "bytes": 384845450,
+      "sha256": "b613eb8226b26b9dc82904c22f4aec78773992503337c3cbde674c998f61ce12"
+    },
+    "lip": {
+      "path": "/opt/data/private/yuanqi_ops/script/tools/FGP_Full/FGP-main/checkpoints/LIP/LIP_10_real_denoised_7.07_10imu_10.pth",
+      "bytes": 26748498,
+      "sha256": "efc4bb8583bf053890d9ae754e97415c8658dba237893982aa51b9541edbb9a2"
+    },
+    "driver": {
+      "path": "/opt/data/private/yuanqi_ops/script/teleop_research/clotho_offline_diagnostic.py",
+      "bytes": 18710,
+      "sha256": "522731b4f2edaf8d08addcc17ba07f77147bf9aa9e6a72add12cf0e7e9b4fe6c"
+    }
+  },
+  "host": "huanyu",
+  "python": "3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0]",
+  "torch": "2.8.0+cu128",
+  "numpy": "2.2.6",
+  "cpu_threads": 2,
+  "device": "cpu",
+  "sequences": [
+    {
+      "sequence": "G_0113_zj_train/183926_zj_walk",
+      "source_entries": [
+        {
+          "entry": "train_released/G_0113_zj_train/183926_zj_walk/acc.pt",
+          "bytes": 242445,
+          "shape": [
+            1825,
+            11,
+            3,
+            1
+          ],
+          "sha256": "26570a7c78f5154f56af3f852dce0c6d691922aafe44a41473a88299c0144931"
+        },
+        {
+          "entry": "train_released/G_0113_zj_train/183926_zj_walk/rot.pt",
+          "bytes": 724237,
+          "shape": [
+            1825,
+            11,
+            3,
+            3
+          ],
+          "sha256": "6fe92d616c10dab249588e41e24ddcb21e248e02d1ff0af5c7293c8c56b87cc1"
+        },
+        {
+          "entry": "train_released/G_0113_zj_train/183926_zj_walk/pose.pt",
+          "bytes": 527124,
+          "shape": [
+            1825,
+            24,
+            3
+          ],
+          "sha256": "e46187dc500e87b35099f0e2b9540724c4f638eaed298285ebd19e8f93a61b13"
+        },
+        {
+          "entry": "train_released/G_0113_zj_train/183926_zj_walk/joint.pt",
+          "bytes": 527131,
+          "shape": [
+            1825,
+            24,
+            3
+          ],
+          "sha256": "5acad5370d6fd1cc392a1bc00da2880443600dfde260fec5dd2d97cbcbd6883c"
+        },
+        {
+          "entry": "train_released/G_0113_zj_train/183926_zj_walk/device2bone.pt",
+          "bytes": 1989,
+          "shape": [
+            11,
+            3,
+            3
+          ],
+          "sha256": "832b72425ba00dc0139c36921d4f6af2fd181edaa75bc22be5afdce849ead806"
+        }
+      ],
+      "source_rotation_orthogonality_max": 7.215147661554511e-07,
+      "label_fk_consistency_p95_m": 1.2254835016741547e-07,
+      "denoiser_reset_first_output_maxabs": 0.0,
+      "denoiser_forward_median_ms": 116.91959947347641,
+      "denoiser_forward_p95_ms": 149.57762509584427,
+      "arms": {
+        "tanh": {
+          "local_rotation_mean_rad": 0.045310987686026614,
+          "local_rotation_p95_rad": 0.10556171093325356,
+          "local_rotation_per_joint_mean_rad": [
+            0.07795774649610286,
+            0.055125601350245475,
+            0.06722567036336106,
+            0.028486178552375667,
+            0.08166577176237194,
+            0.07325012823989524,
+            0.029725604210081972,
+            0.026330259635382762,
+            0.027229318452902742,
+            0.021256548024304295,
+            0.03565565041858138,
+            0.04596788587126388,
+            0.05238852611757377,
+            0.042720530660049695,
+            0.02985996375586052,
+            0.053537379165988316,
+            0.03912119654657178,
+            0.03796220650896055,
+            0.06244889284219757,
+            0.06117417051820059,
+            0.04941726087833371,
+            0.04105850246595024,
+            0.021541938258625163,
+            0.026356773369457676
+          ],
+          "rootrelative_mpjpe_m": 0.02973895302565297,
+          "rootrelative_p95_m": 0.08641027014390168,
+          "wrist_mean_m": 0.04239845566819743,
+          "ankle_mean_m": 0.05835373418419347,
+          "torso_mean_m": 0.00934947945794158,
+          "per_joint_mean_m": [
+            0.0,
+            0.006028628445438408,
+            0.00491050150919173,
+            0.005620058139735088,
+            0.032190938440509985,
+            0.0302322584975936,
+            0.010140682853795144,
+            0.05810316855770899,
+            0.05860429981067794,
+            0.012287697380294501,
+            0.06629029108095828,
+            0.0622677164144649,
+            0.021307630250752854,
+            0.018423930987719547,
+            0.01800948507004673,
+            0.02619659072033021,
+            0.025900062057266453,
+            0.023190077311347496,
+            0.03026908268180218,
+            0.023314943946211867,
+            0.0488559883944154,
+            0.035940922941979495,
+            0.053274881429937936,
+            0.04237503569349283
+          ],
+          "oracle_label_root_orientation_mpjpe_m": 0.020912029617660595,
+          "rootrelative_acceleration_error_m_s2": 2.9702847418872316,
+          "world_root_metrics": null,
+          "forward_median_ms": 1.5408098697662354,
+          "reset_first_frame_maxabs": 0.0,
+          "finite": true
+        },
+        "relu": {
+          "local_rotation_mean_rad": 0.14384038095322213,
+          "local_rotation_p95_rad": 0.304323231122007,
+          "local_rotation_per_joint_mean_rad": [
+            0.5691764950844269,
+            0.18879861340825826,
+            0.17703882420363357,
+            0.07960151427867751,
+            0.14820814510202956,
+            0.16427035217399671,
+            0.09836883603981969,
+            0.04973425183917387,
+            0.1055253422028403,
+            0.042993876112241876,
+            0.0628612709452641,
+            0.17491259489833183,
+            0.10639572154250386,
+            0.16220468442833305,
+            0.14471540148642012,
+            0.10551502952038284,
+            0.11113977670497459,
+            0.15851921772378952,
+            0.14811803989071096,
+            0.19729432016902426,
+            0.13914019151533363,
+            0.09515125596526117,
+            0.10695506077664368,
+            0.11553032686525995
+          ],
+          "rootrelative_mpjpe_m": 0.126502554687373,
+          "rootrelative_p95_m": 0.37969583689429653,
+          "wrist_mean_m": 0.26493990743332185,
+          "ankle_mean_m": 0.1513906376675408,
+          "torso_mean_m": 0.02900949308453653,
+          "per_joint_mean_m": [
+            0.0,
+            0.035214046364191606,
+            0.034272257661641076,
+            0.025325412775742302,
+            0.110290409262407,
+            0.10892457921561449,
+            0.028128296537047418,
+            0.15499792765781473,
+            0.1477833476772669,
+            0.033574769940819864,
+            0.1980924481822394,
+            0.1788640032813416,
+            0.05591300757344281,
+            0.06387438394969065,
+            0.06491596602092398,
+            0.07355208176779979,
+            0.1258151457817165,
+            0.12681563679646587,
+            0.17771375844541729,
+            0.1759981483684364,
+            0.25754172815658577,
+            0.272338086710058,
+            0.28256829149935886,
+            0.30354757887093003
+          ],
+          "oracle_label_root_orientation_mpjpe_m": 0.06961308157531805,
+          "rootrelative_acceleration_error_m_s2": 3.131848448108101,
+          "world_root_metrics": null,
+          "forward_median_ms": 1.4816820621490479,
+          "reset_first_frame_maxabs": 0.0,
+          "finite": true
+        }
+      },
+      "artifact": {
+        "path": "/opt/data/private/yuanqi_ops/data/experiments/teleop_20261022_T11_clotho_activation/183926_zj_walk.npz",
+        "bytes": 927482,
+        "sha256": "1bccb2b22d9070c462bf85baa987da1e10a3ebf5d38107923c267e59f563764b"
+      }
+    },
+    {
+      "sequence": "G_0109_yy_train/193310_yy_oneLegStand",
+      "source_entries": [
+        {
+          "entry": "train_released/G_0109_yy_train/193310_yy_oneLegStand/acc.pt",
+          "bytes": 242573,
+          "shape": [
+            1826,
+            11,
+            3,
+            1
+          ],
+          "sha256": "065c3739fdc2661c5718889a54fa31230c473c32fd96c74c3007b77b6f260ea4"
+        },
+        {
+          "entry": "train_released/G_0109_yy_train/193310_yy_oneLegStand/rot.pt",
+          "bytes": 724621,
+          "shape": [
+            1826,
+            11,
+            3,
+            3
+          ],
+          "sha256": "e903763d1947971374da2be73acd4625e68df51acec992d2bd64d26a60a98bc9"
+        },
+        {
+          "entry": "train_released/G_0109_yy_train/193310_yy_oneLegStand/pose.pt",
+          "bytes": 527380,
+          "shape": [
+            1826,
+            24,
+            3
+          ],
+          "sha256": "118c7ac091600a3f1bc6552d3e970def8f68a54f46ec44e23a162a201a59cb4a"
+        },
+        {
+          "entry": "train_released/G_0109_yy_train/193310_yy_oneLegStand/joint.pt",
+          "bytes": 527387,
+          "shape": [
+            1826,
+            24,
+            3
+          ],
+          "sha256": "b6fc0643b668118b570cc85ee871f061352f5de2ad39d27927eda14b1a3cb661"
+        },
+        {
+          "entry": "train_released/G_0109_yy_train/193310_yy_oneLegStand/device2bone.pt",
+          "bytes": 1584,
+          "shape": [
+            11,
+            3,
+            3
+          ],
+          "sha256": "ed2df5fca19b86a03f3bad9efa91a42208d61a278da1e7a9a8a05b77b9b8611a"
+        }
+      ],
+      "source_rotation_orthogonality_max": 7.337214356084587e-07,
+      "label_fk_consistency_p95_m": 9.147456343986207e-08,
+      "denoiser_reset_first_output_maxabs": 0.0,
+      "denoiser_forward_median_ms": 83.25191587209702,
+      "denoiser_forward_p95_ms": 96.37236967682838,
+      "arms": {
+        "tanh": {
+          "local_rotation_mean_rad": 0.05527961141528747,
+          "local_rotation_p95_rad": 0.11502146797837622,
+          "local_rotation_per_joint_mean_rad": [
+            0.06952344516608329,
+            0.05150765537102244,
+            0.07521024544851053,
+            0.03030443372262515,
+            0.05643113900384052,
+            0.08852153035659686,
+            0.02632970838007253,
+            0.038397615658575905,
+            0.06040242204492095,
+            0.02844957135156166,
+            0.04350100788497975,
+            0.0551739018686395,
+            0.05104973711944894,
+            0.06153755040839355,
+            0.060745379193432675,
+            0.06035691559995924,
+            0.07012899697083948,
+            0.06279829774963606,
+            0.08845524583554078,
+            0.07105286951828256,
+            0.0631959316594546,
+            0.04780848908287215,
+            0.02887723036047782,
+            0.03695135421113212
+          ],
+          "rootrelative_mpjpe_m": 0.027682057606058373,
+          "rootrelative_p95_m": 0.08534596338394267,
+          "wrist_mean_m": 0.03910382184943493,
+          "ankle_mean_m": 0.04617171381872456,
+          "torso_mean_m": 0.011747826895434218,
+          "per_joint_mean_m": [
+            0.0,
+            0.005568048575666736,
+            0.006477348658479692,
+            0.006808967434730235,
+            0.023497714905928613,
+            0.04179035061556874,
+            0.01318430436036936,
+            0.03356990710582201,
+            0.05877352053162713,
+            0.015250208891203059,
+            0.035941876649751896,
+            0.06753195620953557,
+            0.02244535135398302,
+            0.01919413721338537,
+            0.019480066582144098,
+            0.02444272438526016,
+            0.02537016561581619,
+            0.024057956989205244,
+            0.027677812104995585,
+            0.026232690966077506,
+            0.04102473439629527,
+            0.03718290930257458,
+            0.046604669495567165,
+            0.04226196020141373
+          ],
+          "oracle_label_root_orientation_mpjpe_m": 0.02129238642769676,
+          "rootrelative_acceleration_error_m_s2": 1.8260475169827208,
+          "world_root_metrics": null,
+          "forward_median_ms": 1.4836639165878296,
+          "reset_first_frame_maxabs": 0.0,
+          "finite": true
+        },
+        "relu": {
+          "local_rotation_mean_rad": 0.19930563622052455,
+          "local_rotation_p95_rad": 0.6353842092757389,
+          "local_rotation_per_joint_mean_rad": [
+            0.12349241551352336,
+            0.221848248771989,
+            0.4139378991887006,
+            0.11915127478374143,
+            0.17590613285709614,
+            0.6640472978017855,
+            0.08543197255798815,
+            0.2479148833504553,
+            0.2661585005991843,
+            0.05785374592791141,
+            0.19689256959756415,
+            0.1973696487907938,
+            0.12563033774515642,
+            0.11871434266101569,
+            0.09029012090662487,
+            0.16583512509374362,
+            0.2195258505282952,
+            0.2324228807150966,
+            0.3088048083101748,
+            0.2853592419957036,
+            0.14045281743929222,
+            0.15337872443285347,
+            0.09788248436280914,
+            0.07503394536109016
+          ],
+          "rootrelative_mpjpe_m": 0.08508191705212421,
+          "rootrelative_p95_m": 0.266337858474648,
+          "wrist_mean_m": 0.1468183816322297,
+          "ankle_mean_m": 0.1586638943006565,
+          "torso_mean_m": 0.021313825711910532,
+          "per_joint_mean_m": [
+            0.0,
+            0.01065430683693292,
+            0.008973708788582908,
+            0.013624361303967198,
+            0.04000373565229057,
+            0.1962389353310474,
+            0.02299905272646395,
+            0.06826024033852801,
+            0.24906754826278496,
+            0.027318063105300463,
+            0.07295879863380876,
+            0.24012556052358544,
+            0.044276723379538745,
+            0.0334082591353817,
+            0.040445817953071,
+            0.060391487200066186,
+            0.04768298509681049,
+            0.052609744072545976,
+            0.05523652027939975,
+            0.1081427468695966,
+            0.13728128576326767,
+            0.1563554775011918,
+            0.17418083130484824,
+            0.1817298191919705
+          ],
+          "oracle_label_root_orientation_mpjpe_m": 0.0888511560898751,
+          "rootrelative_acceleration_error_m_s2": 1.5869383532112302,
+          "world_root_metrics": null,
+          "forward_median_ms": 1.4630034565925598,
+          "reset_first_frame_maxabs": 0.0,
+          "finite": true
+        }
+      },
+      "artifact": {
+        "path": "/opt/data/private/yuanqi_ops/data/experiments/teleop_20261022_T11_clotho_activation/193310_yy_oneLegStand.npz",
+        "bytes": 923428,
+        "sha256": "b6b818350b0e0ee20fae5bc7e0a250773b48f1d4032daed2929505938da5b50b"
+      }
+    },
+    {
+      "sequence": "G_0113_zj_train/192333_zj_warmUp",
+      "source_entries": [
+        {
+          "entry": "train_released/G_0113_zj_train/192333_zj_warmUp/acc.pt",
+          "bytes": 239885,
+          "shape": [
+            1806,
+            11,
+            3,
+            1
+          ],
+          "sha256": "55d7ec36c95f7b62fe3e62d2fc8a65978bdae0cc055fd5920a328d2aacaac0eb"
+        },
+        {
+          "entry": "train_released/G_0113_zj_train/192333_zj_warmUp/rot.pt",
+          "bytes": 716685,
+          "shape": [
+            1806,
+            11,
+            3,
+            3
+          ],
+          "sha256": "cc7ed3e7cef35246e75899a5fab3aac128f03105a99423cf2f7369a8edbef6ef"
+        },
+        {
+          "entry": "train_released/G_0113_zj_train/192333_zj_warmUp/pose.pt",
+          "bytes": 521620,
+          "shape": [
+            1806,
+            24,
+            3
+          ],
+          "sha256": "91c098a947b5f9493e8d15203b6e17482643c6fce5dc91d6232cf4a668fb436c"
+        },
+        {
+          "entry": "train_released/G_0113_zj_train/192333_zj_warmUp/joint.pt",
+          "bytes": 521627,
+          "shape": [
+            1806,
+            24,
+            3
+          ],
+          "sha256": "139e1be86bec99966f453edf40f62b9011a77b6f7ee056d94d5c5ae768417095"
+        },
+        {
+          "entry": "train_released/G_0113_zj_train/192333_zj_warmUp/device2bone.pt",
+          "bytes": 1989,
+          "shape": [
+            11,
+            3,
+            3
+          ],
+          "sha256": "5c1d23832e3691b75e023d23d41fcbbd421f4d0b02923005fb30cd1a1674b15e"
+        }
+      ],
+      "source_rotation_orthogonality_max": 1.111910250983783e-06,
+      "label_fk_consistency_p95_m": 9.91161681794754e-08,
+      "denoiser_reset_first_output_maxabs": 0.0,
+      "denoiser_forward_median_ms": 83.76122266054153,
+      "denoiser_forward_p95_ms": 91.84873849153519,
+      "arms": {
+        "tanh": {
+          "local_rotation_mean_rad": 0.05523414085629008,
+          "local_rotation_p95_rad": 0.148600084114816,
+          "local_rotation_per_joint_mean_rad": [
+            0.05272383817597616,
+            0.04576036246094769,
+            0.041286525521949176,
+            0.03567122502732389,
+            0.054853184676323045,
+            0.04616805413586824,
+            0.027897150601302455,
+            0.03230066445987327,
+            0.03630615779846628,
+            0.018423846498751912,
+            0.03228492408189527,
+            0.04041636310508103,
+            0.06439226357442528,
+            0.0602670214500846,
+            0.06447828233903866,
+            0.05940140304960643,
+            0.06746271486047022,
+            0.103262112825898,
+            0.12015587707625747,
+            0.134335989368741,
+            0.0536745689094474,
+            0.07250415187730892,
+            0.027014583672054747,
+            0.03457811500387083
+          ],
+          "rootrelative_mpjpe_m": 0.03096193835896498,
+          "rootrelative_p95_m": 0.09484350976620079,
+          "wrist_mean_m": 0.06341989523842607,
+          "ankle_mean_m": 0.03761135556324885,
+          "torso_mean_m": 0.010360581420637867,
+          "per_joint_mean_m": [
+            0.0,
+            0.004445395780791098,
+            0.004742676061086107,
+            0.005812284879839827,
+            0.02149799370166736,
+            0.020263757582298255,
+            0.011301877548543273,
+            0.03964288407516538,
+            0.035579827051332336,
+            0.013967581833530498,
+            0.04267327809579793,
+            0.04098780911604783,
+            0.025272969937106465,
+            0.02055160273707726,
+            0.020468581742172705,
+            0.029820997365257108,
+            0.023123848774685072,
+            0.02499924852753218,
+            0.033464058042794155,
+            0.05280096370326176,
+            0.052651350364144325,
+            0.07418844011270782,
+            0.06150829674577885,
+            0.08332079683654195
+          ],
+          "oracle_label_root_orientation_mpjpe_m": 0.024473467088708293,
+          "rootrelative_acceleration_error_m_s2": 2.735783516234718,
+          "world_root_metrics": null,
+          "forward_median_ms": 1.4881715178489685,
+          "reset_first_frame_maxabs": 0.0,
+          "finite": true
+        },
+        "relu": {
+          "local_rotation_mean_rad": 0.16084928832773568,
+          "local_rotation_p95_rad": 0.4858098480287603,
+          "local_rotation_per_joint_mean_rad": [
+            0.20245140344988957,
+            0.1860750732676806,
+            0.24691543021875142,
+            0.19902817809582915,
+            0.09845172999906478,
+            0.401168168355483,
+            0.04063714272020582,
+            0.13041627500593272,
+            0.12222087857577807,
+            0.055525389529234796,
+            0.09501130702490887,
+            0.15814895283943634,
+            0.13600113520528556,
+            0.20316644350699542,
+            0.2172574319781465,
+            0.15317966415304154,
+            0.15814840182815723,
+            0.27869076423255945,
+            0.19384975935838186,
+            0.24673244508637857,
+            0.10301522432491508,
+            0.10931373375778965,
+            0.060154529329288296,
+            0.06482345802252153
+          ],
+          "rootrelative_mpjpe_m": 0.11817094684161923,
+          "rootrelative_p95_m": 0.3759477976499515,
+          "wrist_mean_m": 0.21603366199206245,
+          "ankle_mean_m": 0.17582984844755006,
+          "torso_mean_m": 0.03461475168274995,
+          "per_joint_mean_m": [
+            0.0,
+            0.01567476392583908,
+            0.014079188702916261,
+            0.02129670176840076,
+            0.11835480282515949,
+            0.12106490707840113,
+            0.036115849472362294,
+            0.19302345883873392,
+            0.15863623805636629,
+            0.046431703807486756,
+            0.21608494528153213,
+            0.1677185878112048,
+            0.09515657711733679,
+            0.06379242369688887,
+            0.08153776058710545,
+            0.10885327732090398,
+            0.075314284005768,
+            0.1068214866085951,
+            0.09830253741239872,
+            0.17511800190271698,
+            0.18358334831691225,
+            0.2484839756672127,
+            0.21543842455777118,
+            0.27521947943684866
+          ],
+          "oracle_label_root_orientation_mpjpe_m": 0.09880589550167596,
+          "rootrelative_acceleration_error_m_s2": 2.610903330182901,
+          "world_root_metrics": null,
+          "forward_median_ms": 1.6023889183998108,
+          "reset_first_frame_maxabs": 0.0,
+          "finite": true
+        }
+      },
+      "artifact": {
+        "path": "/opt/data/private/yuanqi_ops/data/experiments/teleop_20261022_T11_clotho_activation/192333_zj_warmUp.npz",
+        "bytes": 926164,
+        "sha256": "e54d6035c0b805a0f28b82a3170414ecff2e421979af6a0836a20cc108c08564"
+      }
+    }
+  ],
+  "source_frames": [
+    0,
+    300
+  ],
+  "first_output_source_frame": 29,
+  "scored_source_frames": [
+    59,
+    300
+  ],
+  "assumed_fps": 30,
+  "time_alignment": "released_PT_same_index_no_future_IMU_and_no_label_input_to_predictor",
+  "source_semantics": "released_PT_used_as_in_cano_eval; online_raw_calibration_equivalence_unverified",
+  "slots": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "root_imu_after_selection": 9,
+  "acc_units": "released_acc_assumed_m_s2_scale_30",
+  "common_skeleton": "label_calibrated_first_30_frames_offline_oracle",
+  "stage_tran": "off_missing_two_weights",
+  "display_postprocessing": false,
+  "label_independent_test": false,
+  "development_only": true,
+  "world_root_metrics": null,
+  "training_started": false,
+  "policy_loaded": false,
+  "dynamics_step_executed": false,
+  "hardware_connected": false,
+  "network_audit_guard": true,
+  "strict_load_missing": [],
+  "strict_load_unexpected": [],
+  "wall_s": 86.3035319969058
+}

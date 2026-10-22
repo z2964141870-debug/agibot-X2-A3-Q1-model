@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：V04后端/H32梯度通过，M02共20段。R01在首个采集步前被30GiB保护拦停，0参数更新；已定位64份A3模型占用，R02改16环境/4线程，保留保护与完整网络。四段训练/四段预留，尚无策略效果；huanyu:/opt/data/private/yuanqi_ops，维护main，不恢复旧停止实验。
+2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：V04后端/H32梯度通过，M02共20段；R01首步前内存保护停止，独立R02已启动（16环境/4线程/完整网络，目标3000步）。huanyu:/opt/data/private/yuanqi_ops，PID/PGID692767，精确命令/日志见阶段与清单；已真实采集2000env-step，首次模型编译中，尚无策略效果。下一核查实际进程/状态→完成训练→本轮step0/final八段匹配评测；维护main，不恢复旧停止实验。
 
 2026-10-22（10/23补记）：[A3解剖肩点候选T13](README_TELEOP_A3_SHOULDER_PROBE_20261022.md)实际退出1，FAILED_PRE_IK；roll/yaw静止朝向重合假设不成立，0新增IK/动力学/训练，无候选通过或遗留作业。保存失败证据，用户新目标转入SuperMimic论文与A3训练。
 

@@ -1,5 +1,7 @@
 # 训练服务器与固定目录
 
+2026-10-23 SuperMimic独立任务当前工作机为huanyu，根`/opt/data/private/yuanqi_ops`，GPU/boot/独立环境及输入SHA证据见[阶段](README_SUPERMIMIC_FOR_A3_20261023.md)。本轮存储检查未找到下文旧hp3090的已知网盘入口；原件保持`LOCAL_ONLY`，见[本机收据](../data/manifests/supermimic_a3_storage_20261023.json)。本条只描述本轮SuperMimic，不恢复历史停止实验。下方为原主机历史盘点。
+
 用户于 2026-09-29 指定后续训练在 `ssh hp3090` 上运行，项目放在 `/media/yu/FAFF-E9771/YUANQI`。
 
 ## 本次实测

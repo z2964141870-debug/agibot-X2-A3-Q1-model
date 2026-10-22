@@ -119,6 +119,7 @@ def main():
                  "decision_rule": "Final 32-step root RMSE <= 0.8*initial; 1-step state MSE and 32-step active-joint RMSE <= 1.1*initial. All must pass.",
                  "boot_id": Path("/proc/sys/kernel/random/boot_id").read_text().strip()}
     atomic_json(args.output / "admission.json", admission)
+    del ck
     started = time.monotonic()
     status, error = "FAILED", None
     collected = updates = 0
@@ -163,6 +164,7 @@ def main():
                             raise InterruptedError("Stop requested")
             finally:
                 sim.close()
+                del sim
             transitions = replay.valid & ~replay.terminal
             count = torch.bincount(replay.clip[transitions], minlength=lib.num_clips)
             counts[split] = {files[i].stem: int(n) for i, n in enumerate(count)}

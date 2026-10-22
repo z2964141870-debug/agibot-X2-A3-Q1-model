@@ -400,3 +400,13 @@ envs/supermimic_a3_20261023/bin/python script/supermimic_for_a3/launch.py \
 ```
 
 下一继续原训练与等待进程。恢复先核对实际boot/PID/start_ticks/命令、R04_20261023/status.json及receipt.json、R04_completion_20261023/status.json及receipt.json；成功后读取eval_step0/eval_final/receipt.json、matched_audit.json、policy_assessment.json和逐阶段日志，失败不自动重跑。保持原6000步/96000新交互与三项可用门、30GiB/86℃保护，旧R03/STOPPED终态不改，所有大型工件LOCAL_ONLY。
+
+## R04父检查点缓存维护与保存初态独立核验（05:36）
+
+实时核查R04仍在运行，但容器usage约31.7GB，距30GiB保护约0.5GB。复用既有`release_checkpoint_cache.py --run data/supermimic_for_a3/R03_20261023`，只处理已完成R03的8份常规PT；先核对终态清单及大小，并确认活跃R04没有这些父文件的FD/maps。fsync/fadvise前后usage31722033152→29993619456字节，下降1728413696字节（约1.73GB，运行中快照，不声称独占精确回收），0文件删除、未操作全局缓存。见[维护001原始收据](../data/manifests/supermimic_a3_R04_parent_cache_001_20261023.json)，服务器日志`logs/supermimic_a3_R04_parent_cache_001_20261023.json`。
+
+随后有余量执行只读CPU/mmap核验实际R04 step0及R03 final，实际退出0：[独立初态收据](../data/manifests/supermimic_a3_R04_initial_state_audit_20261023.json)，[实际执行命令记录](../logs/session_records/supermimic_a3_R04_initial_state_audit_command_20261023.log)。三网络WM15/actor22/critic7状态张量逐一完全相同且有限；三Adam的参数组与每个参数所有状态/矩完全相同，14/20/6组实际step32980/2098/41960。step/wm_updates/policy_updates均0，学习率偏移6000正确；父PT、step0和admission大小/SHA与登记一致。没有新增物理、推理或optimizer更新。
+
+首个核验尝试在清单比较处因PT的tuple/TorchVersion和JSON的list/str表示差异而断言失败，尚未进行张量比较；随后逐字段确认仅有这些类型差异，使用保留全部字段的排序JSON序列化严格比较后通过，再执行完整张量/Adam核验。未改训练/输入/可用门，不能把这次读取器断言写成训练失败或隐藏它。
+
+CPU核验后仅对读过的两份PT fsync/fadvise；健康前后usage30267146240/30294253568字节、GPU40℃，仍在原保护内，OOM保持14。核验结束实时400/6000采集步、6400新env-step、109次联合更新，训练709634与完成709693均真实活跃，完成仍waiting_for_training。初态通过不替代最终预算、配对效果和完整audit_run；R04仍没有最终结果，目标active，继续原作业。

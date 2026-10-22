@@ -1,0 +1,49 @@
+# Successful read-only CPU audit executed on huanyu, 2026-10-23 05:36 Beijing.
+# Native exit: 0. Receipt: data/supermimic_for_a3/R04_initial_state_audit_20261023.json
+# Historical invocation; the exclusive receipt path already exists after this run.
+cd /opt/data/private/yuanqi_ops && envs/supermimic_a3_20261023/bin/python - <<'PY'
+import datetime,gc,importlib.util,json,os
+from pathlib import Path
+import torch
+spec=importlib.util.spec_from_file_location('initial_state_audit','script/supermimic_for_a3/complete_run.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+torch.set_num_threads(2)
+b=Path('data/supermimic_for_a3');run=b/'R04_20261023';parent=b/'R03_20261023/final.pt';initial=run/'step_000000.pt'
+health_before=m.health()
+def audit():
+ a=torch.load(initial,map_location='cpu',mmap=True,weights_only=False)
+ p=torch.load(parent,map_location='cpu',mmap=True,weights_only=False)
+ admission=json.loads((run/'admission.json').read_text());assert json.dumps(a['manifest'],sort_keys=True)==json.dumps(admission,sort_keys=True)
+ assert all(a[k]==0 for k in ['step','wm_updates','policy_updates'])
+ assert admission['learning_rate_step_offset']==6000 and admission['initialization']['calibration_audit'] is None
+ source_id=m.identity(parent);assert source_id==admission['initialization']['source_checkpoint']==admission['initialization']['model_source']
+ networks={}
+ for name in ['wm','policy','critic']:
+  assert a[name].keys()==p[name].keys()
+  for key,value in a[name].items():
+   assert torch.equal(value,p[name][key]),(name,key)
+   assert torch.isfinite(value).all(),(name,key)
+  networks[name]={'tensors':len(a[name]),'all_exactly_equal_to_r03_final':True,'all_finite':True}
+ optimizers={}
+ expected={'wm_opt':32980,'policy_opt':2098,'critic_opt':41960}
+ for name in expected:
+  first,source=a[name],p[name]
+  assert first['param_groups']==source['param_groups']
+  assert first['state'].keys()==source['state'].keys()
+  steps=set()
+  for key,state in first['state'].items():
+   assert state.keys()==source['state'][key].keys()
+   for field,value in state.items():
+    other=source['state'][key][field]
+    if torch.is_tensor(value):assert torch.equal(value,other) and torch.isfinite(value).all(),(name,key,field)
+    else:assert value==other,(name,key,field)
+   steps.add(int(state['step']))
+  assert steps=={expected[name]}
+  optimizers[name]={'parameter_states':len(first['state']),'steps':sorted(steps),'param_groups_and_all_states_exactly_equal':True}
+ return {'networks':networks,'optimizers':optimizers,'initial_checkpoint':m.identity(initial),'source_checkpoint':source_id,'admission':m.identity(run/'admission.json')}
+result=audit();gc.collect()
+for p in [initial,parent]:
+ with p.open('rb') as f:os.fsync(f.fileno());os.posix_fadvise(f.fileno(),0,0,os.POSIX_FADV_DONTNEED)
+result.update(status='R04_SAVED_INITIAL_STATE_INDEPENDENTLY_VERIFIED',utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),learning_rate_step_offset=6000,manifest_json_representation_matches=True,health_before=health_before,health_after=m.health(),new_physics_steps=0,new_optimizer_steps=0,storage_status='LOCAL_ONLY',scope='Saved initialization tensors and optimizer states only; final training and policy effect remain unverified.')
+with (b/'R04_initial_state_audit_20261023.json').open('x') as f:json.dump(result,f,indent=2);f.write('\n')
+print(json.dumps(result,indent=2))
+PY

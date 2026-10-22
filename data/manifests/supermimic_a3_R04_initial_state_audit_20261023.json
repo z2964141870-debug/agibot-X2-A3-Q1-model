@@ -1,0 +1,73 @@
+{
+  "networks": {
+    "wm": {
+      "tensors": 15,
+      "all_exactly_equal_to_r03_final": true,
+      "all_finite": true
+    },
+    "policy": {
+      "tensors": 22,
+      "all_exactly_equal_to_r03_final": true,
+      "all_finite": true
+    },
+    "critic": {
+      "tensors": 7,
+      "all_exactly_equal_to_r03_final": true,
+      "all_finite": true
+    }
+  },
+  "optimizers": {
+    "wm_opt": {
+      "parameter_states": 14,
+      "steps": [
+        32980
+      ],
+      "param_groups_and_all_states_exactly_equal": true
+    },
+    "policy_opt": {
+      "parameter_states": 20,
+      "steps": [
+        2098
+      ],
+      "param_groups_and_all_states_exactly_equal": true
+    },
+    "critic_opt": {
+      "parameter_states": 6,
+      "steps": [
+        41960
+      ],
+      "param_groups_and_all_states_exactly_equal": true
+    }
+  },
+  "initial_checkpoint": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_20261023/step_000000.pt",
+    "bytes": 216004839,
+    "sha256": "19f37d105edeef5c7f2cab33a5a92d4adba05ac01e043cb2034328d04319cf36"
+  },
+  "source_checkpoint": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R03_20261023/final.pt",
+    "bytes": 215997267,
+    "sha256": "11f7dbe9b397be1abf88802a56c6e538e79f719b4f270f6e1909d76f14eea51e"
+  },
+  "admission": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_20261023/admission.json",
+    "bytes": 16180,
+    "sha256": "bc4c6ac08999fb165ee45cb3b0e9dfdb193101a02439e7e6e7539abdd2fa1399"
+  },
+  "status": "R04_SAVED_INITIAL_STATE_INDEPENDENTLY_VERIFIED",
+  "utc": "2026-10-22T21:36:19.324293+00:00",
+  "learning_rate_step_offset": 6000,
+  "manifest_json_representation_matches": true,
+  "health_before": {
+    "cgroup_memory_bytes": 30267146240,
+    "gpu_temperature_c": 40
+  },
+  "health_after": {
+    "cgroup_memory_bytes": 30294253568,
+    "gpu_temperature_c": 40
+  },
+  "new_physics_steps": 0,
+  "new_optimizer_steps": 0,
+  "storage_status": "LOCAL_ONLY",
+  "scope": "Saved initialization tensors and optimizer states only; final training and policy effect remain unverified."
+}

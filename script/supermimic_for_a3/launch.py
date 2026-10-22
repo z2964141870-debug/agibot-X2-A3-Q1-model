@@ -20,7 +20,7 @@ def main():
         command_args = command_args[1:]
     if not command_args:
         raise ValueError("Explicit training arguments are required")
-    command = [str(args.python.resolve()), "-u", str(Path(__file__).with_name("train.py")), *command_args]
+    command = [str(args.python.absolute()), "-u", str(Path(__file__).with_name("train.py")), *command_args]
     args.log.parent.mkdir(parents=True, exist_ok=True)
     args.record.parent.mkdir(parents=True, exist_ok=True)
     if args.record.exists():

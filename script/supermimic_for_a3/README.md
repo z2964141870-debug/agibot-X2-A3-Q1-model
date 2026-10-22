@@ -117,3 +117,12 @@ and every training clip has executed joint RMSE at most 0.15 rad. It reports the
 four previously inspected development clips separately. Passing this limited gate
 does not establish generalization, hardware readiness or paper-scale performance.
 Focused controls: `python script/supermimic_for_a3/test_completion.py -v`.
+
+`MUJOCO_GL=egl python script/supermimic_for_a3/render_trace.py
+--evaluation EVALUATION/receipt.json --admission RUN/admission.json --clip CLIP_NAME
+--output NEW_RENDER_DIRECTORY` renders the saved policy state and reference target
+side by side with the same camera. It uses no physics integration, policy inference
+or optimizer updates. It displays full clip duration and early termination status.
+Optional `--max-seconds` explicitly makes a truncated preview; the default includes
+the complete executed trace. Outputs are an MP4, last-frame PNG and hash receipt.
+The verified environment has EGL, Pillow and ffmpeg; the viewer needs no model weights.

@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：C01通过，32步根误差17.78→8.78cm；R02仍8/8早倒。R03训练PID703916与完成PID704836真实活跃，同boot，最新750/3000步、12000env-step/249次联合更新，GPU40℃、OOM14无新增。实际step0独立核验通过，actor/critic=R02、WM=C01，所有Adam状态与初始计数一致（21490/949/18980），未新增物理/优化。完成进程waiting_for_training，绑定start_ticks3598955095，无自动重启；预算结束后顺序step0/final八段完整物理评测→匹配审计→可用门。恢复查R03_20261023与R03_completion_20261023的status/receipt及真实两PID，勿重复启动。huanyu:/opt/data/private/yuanqi_ops，30GiB/86℃保护，原件LOCAL_ONLY，维护main。尚无R03最终效果，目标active，旧STOPPED保持。
+2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：C01通过，R02仍8/8早倒。R03训练703916与完成704836真实活跃，同boot，最新1025/3000步/359次联合更新；1000步PT216005351字节/SHA25b5cb00…已登记，GPU39℃/OOM14无新增。实际step0三网络/优化器继承已独立核验。完成流程waiting_for_training，绑定start_ticks3598955095，无自动重启；预算结束后顺序八段step0/final物理评测/匹配审计/可用门。已实现保存轨迹并排视频并实际渲染核查R02早倒，0新物理/推理/优化。恢复查huanyu:/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R03_20261023与R03_completion_20261023的status/receipt及真实两PID；详见阶段末节。30GiB/86℃保护，原件LOCAL_ONLY，main维护，尚无R03最终效果，目标active、旧STOPPED保持。
 
 2026-10-22（10/23补记）：[A3解剖肩点候选T13](README_TELEOP_A3_SHOULDER_PROBE_20261022.md)实际退出1，FAILED_PRE_IK；roll/yaw静止朝向重合假设不成立，0新增IK/动力学/训练，无候选通过或遗留作业。保存失败证据，用户新目标转入SuperMimic论文与A3训练。
 

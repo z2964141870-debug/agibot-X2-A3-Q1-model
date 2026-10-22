@@ -296,3 +296,16 @@ envs/supermimic_a3_20261023/bin/python script/supermimic_for_a3/launch.py \
 - 后置完整audit_run仍必须执行；本节只证明保存初态继承正确，不代表R03训练预算已完成或策略有效。当前真实训练750/3000步、249次联合更新，两个PID均活跃；不改变/重启运行中的作业。
 
 下一继续等待原训练与已启动完成进程，完整效果出来后才选择新实验；不因短期采样reward或模型内部回报提前改预算/奖励。
+
+## 保存轨迹的真实A3渲染与R03三分之一进度（04:04）
+
+新增`render_trace.py`，从评测收据绑定的原始NPZ状态与目标NPZ、A3 MJCF生成同相机并排视频；只做保存状态的FK/渲染，不执行mj_step、policy推理或optimizer。头部明确完整参考长度、实际执行时间与提前失败；默认播放全部已执行轨迹，若显式截短则收据标注。它是效果判读工具，不代替原物理评测。
+
+首个实际V01使用R02最终001走路轨迹，退出0；EGL/实际网格/Pillow/ffmpeg入口通过。生成80帧/25FPS/3.2秒、1280×544 H264，ffprobe独立确认帧数/尺寸/时长。两面板最小像素标准差26.58，实际检查PNG可见完整参考机器人与明显倾倒的策略机器人，文字无重叠，和原3.18秒提前失败一致。原参考132.14秒在画面保留，未把3秒预览当完整动作成功。0新物理/推理/优化；采样最高GPU40℃、usage30961815552字节，保护未放宽。
+
+- [渲染收据](../data/manifests/supermimic_a3_R02_trace_render_V01_20261023.json)绑定源码/资产/轨迹/视频身份。
+- 服务器`data/supermimic_for_a3/R02_trace_render_V01_20261023/`保存原件；日志`logs/supermimic_a3_R02_trace_render_V01_20261023.log`。
+- MP4为183031字节、PNG186215字节；Mac仅复制这两个小预览至`data/research/2026-10-23/supermimic/R02_trace_comparison.mp4`和`R02_trace_last_frame.png`，未复制大模型/数据。Git只存代码/小收据，原件`LOCAL_ONLY`。
+- 复现命令见代码README的render_trace入口，输入R02_eval_final_20261023/receipt.json、R02_20261023/admission.json、clip001_walk_front_slow。下一用于本轮完整评测后的实际轨迹，不改正在运行的训练/完成流程源码。
+
+同轮实时R03已到1025/3000采集步、16400env-step/359次联合更新；训练703916和完成704836均活跃，后者继续waiting_for_training。step_001000.pt已保存216005351字节、SHA`25b5cb007dd9204754fdbe5d09ef7efacdb3dd182bc55f91b2f50006617c4997`。GPU39℃，usage30222344192字节，OOM仍14无新增；[本轮进度快照](../data/manifests/supermimic_a3_R03_progress_20261023.json)是进行中证据，未完成预算、尚无R03最终效果。上一goal turn完成实际保存初态核验，属进展；本轮又完成轨迹渲染入口及视觉验证，不将等待重复记成科学完成。

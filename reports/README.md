@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-22（10/23补记）：[A3解剖肩点候选T13](README_TELEOP_A3_SHOULDER_PROBE_20261022.md)实际退出1，FAILED_PRE_IK；roll/yaw静止朝向重合假设不成立，0新增IK/动力学/训练，无候选通过或遗留作业。保存失败证据，用户新目标转入SuperMimic论文与A3训练。
+
 2026-10-22：[A3肩任务点诊断T12](README_TELEOP_A3_LANDMARK_20261022.md)：T10目标重建/独立FK最大差0；肩点误配到roll枢轴下游14.75cm的yaw原点，标签肩P95达7.52/8.76cm，目标肘半径也冲突。下一独立位置/朝向分离候选；未重解IK/动力学/训练，不放宽5cm门。
 
 2026-10-22：[新版CLOTHO离线诊断T11](README_TELEOP_CLOTHO_DIAGNOSTIC_20261022.md)：三段CPU配对及独立复算通过；tanh MPJPE2.77–3.10cm，ReLU8.51–12.65cm，旧LIP负结论不能套用新版。仅训练发布集开发窗口，CPU83–117ms不达30Hz；StageTran缺两权重，035仍基线，下一肩/膝重定向诊断。

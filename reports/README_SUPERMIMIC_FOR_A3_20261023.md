@@ -188,3 +188,25 @@ R02最近2125/3000采集步、34000env-step、799次WM更新、599次策略更�
 - 当前完成实现与语法检查，尚未实际运行C01或判据。原始replay/校准模型均`LOCAL_ONLY`，新模型尚不能作为可用策略；下一先实际执行、核验独立验证结果，再决定R03方向。
 
 启动前复核：显式删除已关闭模拟器，确保第二组采集创建前释放第一组16份MjModel；加载所需状态后释放源checkpoint的CPU副本。两项仅调整生命周期，训练/验证采样、更新预算和判据不变。首份C01实现已同步并独立核验远端main=`3fe5a8e08a5ffbcaf012be12150203792dc9f4c8`；本次生命周期修正通过语法检查后同步，实际启动仍以新收据为准。
+
+## C01实际启动（03:11）
+
+生命周期修正已发布并独立核验main=`eafe0befe27bd311f2b9cd4724086a8189d8ac57`；本机/服务器入口SHA一致，`calibrate_world_model.py`为`bb4a044ef6562d38baedb3bc8308585db95d4ade2fa6baad7177174e0020571d`。本轮启动前boot/GPU UUID/输入SHA再次一致，usage27324932096字节、GPU38℃/6348MiB，无活跃SuperMimic作业；历史OOM14不变。原C01输出/日志/启动记录均不存在。
+
+实际PID/PGID702742，独立作业、无自动重启；[启动清单](../data/manifests/supermimic_a3_C01_launch_20261023.json)与[admission](../data/manifests/supermimic_a3_C01_admission_20261023.json)已复制小文件留证。实际命令：
+
+```bash
+env TORCHINDUCTOR_CACHE_DIR=/opt/data/private/yuanqi_ops/data/tools/torchinductor_supermimic_a3 \
+  envs/supermimic_a3_20261023/bin/python script/supermimic_for_a3/launch.py \
+  --entry calibrate_world_model --python envs/supermimic_a3_20261023/bin/python \
+  --log logs/supermimic_a3_C01_20261023.log \
+  --record data/supermimic_for_a3/C01_20261023_launch.json -- \
+  --checkpoint data/supermimic_for_a3/R02_20261023/final.pt \
+  --root /opt/data/private/hechengzhu/ZHY \
+  --output data/supermimic_for_a3/C01_20261023 \
+  --collection-steps 1024 --num-envs 16 --threads 4 --updates 1000 --seed 4911 --compile
+```
+
+03:12快照：fitting第640采集步、10240env-step，0WM/actor更新；usage30325219328字节，GPU38℃，无新增OOM。此时仍在运行，尚无最终校准或策略效果。恢复以实际C01/status.json、receipt.json和PID为准，不把启动记录当完成证明。
+
+C01运行期间新增独立`audit_calibration.py`：检查保存的数据计数/两种子、每个完整验证窗口属于验证replay且不属于fitting、输入/工件SHA、WM Adam实际计数，最后从初始/最终权重重新计算固定窗口误差与预登记判据。语法检查和服务器CPU三项控制通过（合法窗口接受、动作篡改拒绝、跨episode拒绝），不增加物理/optimizer或改变运行中的入口。此时尚未实际验收C01；actor冻结的独立证据限于hash绑定源码和其运行时逐张量检查，没有额外保存最终actor快照，明确不夸大为独立actor快照验证。

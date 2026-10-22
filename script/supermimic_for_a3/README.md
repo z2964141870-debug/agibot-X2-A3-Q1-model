@@ -85,3 +85,10 @@ and critic updates are zero. The candidate decision is a 20% improvement in
 
 Use `launch.py --entry calibrate_world_model` with an explicit new log/record to
 launch that calibration with the same recoverable process record as training.
+
+`audit_calibration.py --calibration CALIBRATION_DIRECTORY --output NEW_AUDIT.json`
+checks saved replay counts, separate collection seeds, complete validation-window
+membership and exclusion from fitting, artifact identities and Adam update counts.
+It recomputes initial/final model errors from the saved weights and fixed windows.
+The actor freeze evidence remains the hash-bound calibration entry's runtime
+tensor-equality check; no independent final actor snapshot is exported by C01.

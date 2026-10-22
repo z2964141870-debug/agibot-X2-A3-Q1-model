@@ -69,7 +69,7 @@ curl -fSL --connect-timeout 6 --max-time 25 'https://api.github.com/repos/zita-c
 
 ## 保存与同步状态
 
-本地报告、来源清单及索引/current新增调查入口已保存。本段在提交前不预写推送成功；提交号由Git历史提供。审diff、暂存与audit_git_payload.py后普通推送main，并以独立远端SHA/内容核对；核验结果另写本轮执行回执。正式hp3090工作树仍未知。没有运行中的本任务科学作业，不改每日检查时间或既有去重清单。
+本地报告、来源清单及索引/current新增调查入口已保存。研究内容提交a952eedcbcb65e7e0d5d5d2b074c9a768139ee18已普通推送main；独立GitHub API分支SHA一致，两份新文档的固定远端内容逐字节/Git-blob/SHA256与本地提交相符，发布副本干净。四份暂存文件120,927字节的diff/暂存区和audit_git_payload.py通过。发布核验见data/manifests/supermimic_open_source_20261022.json的publication字段及logs/supermimic_20261022/publication_verification.json。本次回执更新另行审计提交，提交号由Git历史提供。正式hp3090工作树仍未知，未改写它。没有运行中的本任务科学作业，不改每日检查时间或既有去重清单。
 
 ## 下一步
 

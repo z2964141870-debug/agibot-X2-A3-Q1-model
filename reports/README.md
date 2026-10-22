@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：C01完整/独立验收通过，32步根误差17.78→8.78cm（-50.60%），策略不变。独立R03已实际启动，PID703916，预算3000步/48000env-step，等待联合更新和完整评测；尚非可用策略，原件LOCAL_ONLY，维护main。
+2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：C01完整/独立验收通过，32步根误差17.78→8.78cm（-50.60%），策略不变。独立R03运行中，PID703916，预算3000步/48000env-step；已保存275步/59次联合更新快照，等待完整预算及八段评测，尚非可用策略。原件LOCAL_ONLY，维护main。
 
 2026-10-22（10/23补记）：[A3解剖肩点候选T13](README_TELEOP_A3_SHOULDER_PROBE_20261022.md)实际退出1，FAILED_PRE_IK；roll/yaw静止朝向重合假设不成立，0新增IK/动力学/训练，无候选通过或遗留作业。保存失败证据，用户新目标转入SuperMimic论文与A3训练。
 

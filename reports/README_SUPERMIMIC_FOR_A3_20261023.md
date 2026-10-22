@@ -256,3 +256,5 @@ CPU控制验证继承张量/三种Adam状态与学习率偏移，拒绝仿真合
 第一份125采集步快照：2000env-step，0WM/actor更新，正在进入编译/首次更新；step0已保存，usage30556114944字节、GPU38℃。这不是训练完成或策略有效证据。恢复先读本段，然后核对实际status.json/receipt.json和PID；不凭过期PID重复启动。
 
 下一：完成既定3000步预算→独立step0/final八段物理评测→继承状态、Adam计数、轨迹及完整片段指标审计→按预登记可用门决定。当前所有大工件仍`LOCAL_ONLY`。
+
+首轮联合更新已实际通过：[启动进度快照](../data/manifests/supermimic_a3_R03_startup_progress_20261023.json)记录275采集步、4400env-step、59次WM与59次actor更新，指标有限，GPU39℃/usage31240204288字节；最近核查OOM仍14。只是进行中证据，未完成3000步预算，没有R03最终权重/完整效果，目标继续保持未达。下一可执行步骤是读取R03/status.json、receipt.json和日志；收到完整训练终态后，按原README命令分别评测本轮step0与final，再用audit_run.py核验及计算上文门。

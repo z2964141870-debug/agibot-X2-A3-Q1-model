@@ -1,6 +1,6 @@
 # SuperMimic for A3：论文、实现与训练
 
-记录日期：2026-10-23（北京时间）。阶段：SM-A3-P01/P02/R01/R02/C01/R03。状态：R02八段全提前失败；C01完成且独立验收通过，长视野根误差降低50.60%。已实现独立模型初始化入口，R03尚待实际启动与物理评测，尚非可用跟踪策略。
+记录日期：2026-10-23（北京时间）。阶段：SM-A3-P01/P02/R01/R02/C01/R03。状态：R02八段全提前失败；C01完成且独立验收通过，长视野根误差降低50.60%。R03已实际启动，尚待预算完成与完整物理评测，尚非可用跟踪策略。
 
 ## 目标与范围
 
@@ -246,3 +246,13 @@ CPU控制验证继承张量/三种Adam状态与学习率偏移，拒绝仿真合
 - 当前为实现/预登记，尚无R03训练或效果；下一核对源码/输入SHA与实时资源，发布后实际启动。
 
 启动前补充：新run的每次PT保存后fsync并仅建议释放该文件页缓存，避免已完成检查点写入继续挤占32GiB共享额度；不删除文件或操作全局缓存。初始化manifest另绑定`initialization.py`本身大小/SHA，由后置审计核对。算法/预算/保护不变。
+
+## R03实际启动与恢复入口（03:32）
+
+实现/合同已发布并独立核验main=`5cc5557e2b6cf87ee092bf1cd2f75990a7a1fa8c`。服务器和发布副本三源码SHA一致：train `6ee24b056db6a2a5edea3c5086ded7c4d3b67f8748765f9904076f772ccd901a`、initialization `5e724982736c641af73e6c26e51090d827279d2fa6ce6f8cce5ac98518a4d0da`、audit_run `e0a051ed1b09c61f31bb05b68a1a43368b77e9264c1adaa54dc70a1ea7717507`。启动前同boot/GPU UUID、usage27487219712字节、GPU38℃/6348MiB、OOM14且无本轮作业；R03三个目标路径不存在。
+
+实际PID/PGID703916；完整命令见[启动清单](../data/manifests/supermimic_a3_R03_launch_20261023.json)，[admission](../data/manifests/supermimic_a3_R03_admission_20261023.json)已保存实际初始化来源/计数。新目录`data/supermimic_for_a3/R03_20261023`，日志`logs/supermimic_a3_R03_20261023.log`，无自动恢复。
+
+第一份125采集步快照：2000env-step，0WM/actor更新，正在进入编译/首次更新；step0已保存，usage30556114944字节、GPU38℃。这不是训练完成或策略有效证据。恢复先读本段，然后核对实际status.json/receipt.json和PID；不凭过期PID重复启动。
+
+下一：完成既定3000步预算→独立step0/final八段物理评测→继承状态、Adam计数、轨迹及完整片段指标审计→按预登记可用门决定。当前所有大工件仍`LOCAL_ONLY`。

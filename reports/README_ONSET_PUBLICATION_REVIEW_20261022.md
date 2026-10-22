@@ -139,7 +139,7 @@ https://xbpeng.github.io/projects/DeepMimic/index.html
 
 ## 保存与同步状态
 
-本评估、只读审计脚本及简要证据清单按项目规范保存；报告索引和当前状态已加入本次研究审查入口。原始来源文本留在被忽略的data/；Git只提交必要代码、结论和小清单。GitHub同步结果见本阶段独立发布回执，未经远端核验不记为已同步。无新增大型模型/数据备份声明。
+本评估、只读审计脚本及简要证据清单已保存；报告索引和当前状态已加入本次研究审查入口。内容提交 acf3df2db41fa62f0ace918982ac63cd89b45b94 已推送指定GitHub main，并通过 git ls-remote 独立比对完整提交号一致。发布回执为 data/manifests/onset_publication_review_sync_20261022.json。原始来源文本留在被忽略的data/；Git只提交必要代码、结论和小清单。无新增大型模型/数据备份声明。
 
 ## 下一步与恢复入口
 

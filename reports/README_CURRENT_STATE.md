@@ -182,6 +182,7 @@ E51/R20实现完成但尚未登记：从官方035/空Adam开始、E45相同4段�
 
 ## 其他工作入口
 
+- 10/22用户指定[SuperMimic开源调查](README_SUPERMIMIC_OPEN_SOURCE_20261022.md)：官方Demo明确专有，未核验到官方训练/权重发布；两个独立MIT复现仅固定文档/许可与目录核验、未运行。H100三小时不等于A3/Q1预算；hp3090未知，本轮研究发布见执行回执，不改变每日检查时间或工程状态。
 - Q1在原机/media/yu/FAFF-E977/YuanQi_Q1、origin/Q1；恢复须读该副本状态，不以main旧记录启动工作。见[Q1入口](README_Q1_SMPL_20261008.md)。
 - 学习Agent继续本人必要知识训练；控制链待答项见[学习会话](README_LEARNING_SESSION_20261012.md)、[交接](README_LEARNING_AGENT_TASK_20261011.md)。10/14用户决定至少跟一遍课程，采用Agent+平板笔记+上课；视频配套10章PDF已检查，见[资料与学习安排](README_LEARNING_COURSE_20261014.md)。尚无新增掌握证据，课程不调度工程计算。
 - 每日研究最近[10/21四项简报](research/2026-10-21/README.md)：PredActor部署、SWAP、K-AoI接收年龄限制、Isaac Lab3.0；50请求48成功/12固定文本/87条去重，无新假设或复现。正式hp3090工作树UNKNOWN，main184a347与干净独立副本已核；内容7078f6743f7a7ae0d3eca7ac393e201f6b430d2f已推送并独立核验，见[阶段](README_RESEARCH_CHECK_20261021.md)与[同步回执](../data/manifests/research_watch_sync_20261021.json)。[10/18–20成功回执](../data/manifests/research_watch_sync_20261020.json)保留，不恢复工程计算。

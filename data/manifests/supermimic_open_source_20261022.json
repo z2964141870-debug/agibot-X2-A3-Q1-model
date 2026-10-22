@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "topic": "SuperMimic open-source availability",
+  "checked_at": "2026-10-22T08:20:00+08:00",
+  "kind": "user_directed_single_project_check",
+  "daily_watch_timestamp_changed": false,
+  "conclusion": "Official reproducible training/authorized weight release not verified; official browser demo is proprietary; two independent third-party MIT implementations found.",
+  "evidence_level": [
+    "official_project_page",
+    "arxiv_abstract_and_submission_history",
+    "official_demo_terms",
+    "github_tree_metadata",
+    "pinned_third_party_readmes_and_licenses"
+  ],
+  "official": {
+    "project_url": "https://supermimic.github.io/#compute",
+    "paper_url": "https://arxiv.org/abs/2610.28480v1",
+    "paper_submitted_utc": "2026-10-20T16:29:30Z",
+    "paper_submitted_beijing": "2026-10-21T00:29:30+08:00",
+    "demo_terms_url": "https://supermimic.github.io/demo/LICENSE.html",
+    "demo_license_status": "proprietary; personal noncommercial browser evaluation only according to sections 1-3",
+    "demo_materials_cached": false,
+    "training_code_status": "NOT_VERIFIED_RELEASED",
+    "deployment_code_status": "NOT_VERIFIED_RELEASED",
+    "downloadable_weights_status": "NOT_VERIFIED_RELEASED",
+    "huggingface_status": "UNKNOWN_CONNECTION_TIMEOUT",
+    "compute_claim": {
+      "attribution": "authors project page; not reproduced",
+      "gpu": "1 NVIDIA H100",
+      "hours": 3,
+      "includes": [
+        "simulation transition collection",
+        "world model fitting",
+        "policy updates"
+      ],
+      "excludes": [
+        "post-training checkpoint evaluation"
+      ],
+      "portable_to_a3_q1": false
+    }
+  },
+  "snapshots": [
+    {
+      "path": "data/research/2026-10-22/supermimic/project.html",
+      "size_bytes": 39930,
+      "sha256": "12ef8489aedd405b2fc7f81f6aabbe0825cf3907a91e49ddd729db0300590f5b"
+    },
+    {
+      "path": "data/research/2026-10-22/supermimic/arxiv_abs.html",
+      "size_bytes": 43108,
+      "sha256": "66941feb2b3924f3957c2be0163386b69fbf3bf491e63d5e3dabd149a3ba7529"
+    }
+  ],
+  "third_party": [
+    {
+      "repository": "zita-ch/supermimic_vibed",
+      "url": "https://github.com/zita-ch/supermimic_vibed",
+      "commit": "a1508d42c9d1699a52e8233ab16d08c488441ab9",
+      "commit_time_utc": "2026-10-21T20:39:38Z",
+      "tree": "99ea05421d4c209ccd63059a1f9072c196c1fe72",
+      "license": "MIT (repository code)",
+      "official": false,
+      "implementation_source_reviewed": false,
+      "executed": false,
+      "readme": {
+        "blob": "b58b85c8957f813db80950a5567d63496df9bda2",
+        "size_bytes": 11140,
+        "sha256": "311e2aa03b821327e48ba16dae8682ae1683e637c7c241b7f845efee2cbb1342"
+      },
+      "license_file": {
+        "blob": "46e96afd1585089c6c45d380c5e817d2c88f004b",
+        "size_bytes": 1080,
+        "sha256": "e2cae9ced357038c7a3ae8b580d9afa6fea8e96c2cb1d703dadde48973d620ab"
+      },
+      "limits": [
+        "Maintainer calls it unofficial and unreviewed fast AI-assisted code",
+        "40-clip LAFAN1 target, modified observation/precision/collision settings",
+        "No independent result or weight verification"
+      ]
+    },
+    {
+      "repository": "CuboiLeo/SuperMimic-Reproduced",
+      "url": "https://github.com/CuboiLeo/SuperMimic-Reproduced",
+      "commit": "4c27c13f4d6a625376700fadbdc3d7cb2a4d81a1",
+      "commit_time_utc": "2026-10-22T00:11:53Z",
+      "tree": "4bc7e14118eec6976ff5396151253f4f6b043145",
+      "license": "MIT (repository code)",
+      "official": false,
+      "implementation_source_reviewed": false,
+      "executed": false,
+      "readme": {
+        "blob": "f7cf7fe55452ce849af024e586994221cf6b2235",
+        "size_bytes": 9232,
+        "sha256": "83ae1f5887b465933f0917b638cdca93a6efe4da0d3a37557628ca9f8cca14fa"
+      },
+      "license_file": {
+        "blob": "18712360d5fd9b770a49a582a995df061015fa02",
+        "size_bytes": 1065,
+        "sha256": "9892007d6c8f8b28c00a48557289fa42a285915cb500b5cf01ec2bb0c15f197f"
+      },
+      "limits": [
+        "Independent reproduction; results under additional anchor observations not paper-matched",
+        "README states ONNX export and real-robot validation not done",
+        "No independent result or weight verification"
+      ]
+    }
+  ],
+  "limitations": [
+    "Search absence does not prove universal absence",
+    "Hugging Face timed out",
+    "Official demo materials not retained or extracted",
+    "No execution, model downloads, simulation or robot access",
+    "Canonical hp3090 Git state unknown due to SSH timeout"
+  ],
+  "publication": {
+    "repository": "git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git",
+    "branch": "main",
+    "base_head": "a57632e80cd0931459858ba08238ffebc8042bc7",
+    "status": "PENDING_PREPUBLICATION_AUDIT",
+    "receipt_log": "logs/supermimic_20261022/publication_verification.json"
+  }
+}

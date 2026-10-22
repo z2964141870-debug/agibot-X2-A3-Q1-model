@@ -2,7 +2,7 @@
 
 每天北京时间 09:00 在当前 Codex 聊天检查。最多 3–5 项，无实质新内容时不凑简报。运行条件、核验标准和记录规则见[研究跟踪说明](../README_RESEARCH_WATCH.md)。
 
-最近检查：**2026-10-22**，见[三项简报](2026-10-22/README.md)和[当天检查](../README_RESEARCH_CHECK_20261022.md)：FRDV参考可执行性、多视角动作预训练、PointHand操作者显示；38请求37成功，六新摘要/三相关正文及作者页，96条去重，无新假设或复现。早上SuperMimic只补去重。正式hp3090工作树仍未知；研究增量待审计推送，不覆盖较新的Onset/工程入口。[10/21成功回执](../../data/manifests/research_watch_sync_20261021.json)保留。
+最近检查：**2026-10-22**，见[三项简报](2026-10-22/README.md)和[当天检查](../README_RESEARCH_CHECK_20261022.md)：FRDV参考可执行性、多视角动作预训练、PointHand操作者显示；38请求37成功，六新摘要/三相关正文及作者页，96条去重，无新假设或复现。早上SuperMimic只补去重。正式hp3090工作树仍未知；研究内容6e5666984d1ceb669c031631622632236071d02f已普通推送main并独立核验，见[回执](../../data/manifests/research_watch_sync_20261022.json)，保留较新的Onset/工程入口。[10/21成功回执](../../data/manifests/research_watch_sync_20261021.json)保留。
 
 | 简报日期（北京时间） | 内容 | 核验范围 |
 | --- | --- | --- |

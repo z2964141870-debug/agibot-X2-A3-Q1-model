@@ -1,0 +1,104 @@
+{
+  "status": "R03_SAVED_INITIAL_STATE_INDEPENDENTLY_VERIFIED",
+  "checkpoint": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R03_20261023/step_000000.pt",
+    "bytes": 216005351,
+    "sha256": "65a93e9570af4efce76fafaf0d95abdd7dd5a13fa22ec07d2f3b5cdb3eaf2962"
+  },
+  "initialization": {
+    "type": "warm_start_in_new_run",
+    "source_checkpoint": {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_20261023/final.pt",
+      "bytes": 215995283,
+      "sha256": "a491c07634a2fca4346b053e32d7d73f41f7f666864c2504f32b6ad1e59aa6d3"
+    },
+    "initialization_entry": {
+      "path": "/opt/data/private/yuanqi_ops/script/supermimic_for_a3/initialization.py",
+      "bytes": 4384,
+      "sha256": "5e724982736c641af73e6c26e51090d827279d2fa6ce6f8cce5ac98518a4d0da"
+    },
+    "source_receipt": {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_20261023/receipt.json",
+      "bytes": 2023,
+      "sha256": "858613a780bb4383c93fffea52cddd192d7b4735d3a9710598a7bd1c82672c6c"
+    },
+    "model_source": {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/C01_20261023/calibrated_world_model.pt",
+      "bytes": 106400425,
+      "sha256": "3c4783ee92d90d0162d143898c8e48a799dc735b2ae301fe8364817be35a384c"
+    },
+    "calibration_audit": {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/C01_audit_20261023.json",
+      "bytes": 5923,
+      "sha256": "db53714af4f1914d0e9d167942c3c34f581a7f8cffeb9bcce7dfbab032445767"
+    },
+    "initial_optimizer_steps": {
+      "wm_opt": [
+        21490
+      ],
+      "policy_opt": [
+        949
+      ],
+      "critic_opt": [
+        18980
+      ]
+    },
+    "source_counters": {
+      "step": 3000,
+      "wm_updates": 1149,
+      "policy_updates": 949
+    },
+    "learning_rate_step_offset": 3000,
+    "replay_and_random_seed": "Fresh replay, adaptive sampler, simulator episodes and explicit run seed; no exact process resume."
+  },
+  "networks": {
+    "policy": {
+      "tensors": 22,
+      "all_exactly_match_source": true
+    },
+    "critic": {
+      "tensors": 7,
+      "all_exactly_match_source": true
+    },
+    "wm": {
+      "tensors": 15,
+      "all_exactly_match_source": true
+    }
+  },
+  "optimizers": {
+    "policy_opt": {
+      "parameters": 20,
+      "steps": [
+        949
+      ],
+      "all_moments_exactly_match_source": true
+    },
+    "critic_opt": {
+      "parameters": 6,
+      "steps": [
+        18980
+      ],
+      "all_moments_exactly_match_source": true
+    },
+    "wm_opt": {
+      "parameters": 14,
+      "steps": [
+        21490
+      ],
+      "all_moments_exactly_match_source": true
+    }
+  },
+  "learning_rate_step_offset": 3000,
+  "initial_health": {
+    "gpu_temperature_c": 40,
+    "cgroup_memory_bytes": 29913178112
+  },
+  "final_health": {
+    "gpu_temperature_c": 40,
+    "cgroup_memory_bytes": 30499733504
+  },
+  "new_physics_steps": 0,
+  "new_optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY",
+  "not_a_policy_effect_result": true
+}

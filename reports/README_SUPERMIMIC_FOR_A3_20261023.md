@@ -285,3 +285,14 @@ envs/supermimic_a3_20261023/bin/python script/supermimic_for_a3/launch.py \
 ```
 
 恢复先读本节并实时核对两个PID/boot；查`R03_20261023/status.json`与`R03_completion_20261023/status.json`。后者成功后查看`matched_audit.json`、`policy_assessment.json`及eval_step0/eval_final/receipt.json；失败时读取自身receipt和逐阶段日志，不自动重跑失败阶段或训练。权重和轨迹仍LOCAL_ONLY，Git仅保存小记录。下一真正决定为完整物理效果是否达门，目标保持active。
+
+## R03实际保存初态独立核验（03:54）
+
+本轮step0为216005351字节，SHA`65a93e9570af4efce76fafaf0d95abdd7dd5a13fa22ec07d2f3b5cdb3eaf2962`。已只读CPU/mmap载入实际保存PT、R02父PT和C01模型，实际退出0；[独立收据](../data/manifests/supermimic_a3_R03_initial_state_audit_20261023.json)状态`R03_SAVED_INITIAL_STATE_INDEPENDENTLY_VERIFIED`。
+
+- 本轮step/wm_updates/policy_updates均0；actor22个/critic7个状态张量逐一等于R02，WM15个张量逐一等于C01，全部有限。
+- 三优化器param_groups与每个step/exp_avg/exp_avg_sq逐值匹配来源；WM14个参数状态21490、actor20个949、critic6个18980；学习率偏移3000正确。
+- 初始化源码/来源checkpoint/来源终态/C01校准审计等五项身份重新通过。只读核验新增物理0、optimizer0；GPU40℃，健康检查前后usage29913178112/30499733504字节。
+- 后置完整audit_run仍必须执行；本节只证明保存初态继承正确，不代表R03训练预算已完成或策略有效。当前真实训练750/3000步、249次联合更新，两个PID均活跃；不改变/重启运行中的作业。
+
+下一继续等待原训练与已启动完成进程，完整效果出来后才选择新实验；不因短期采样reward或模型内部回报提前改预算/奖励。

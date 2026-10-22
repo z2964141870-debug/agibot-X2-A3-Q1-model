@@ -2,9 +2,9 @@
   "schema_version": 1,
   "automation_id": "yuanqi",
   "timezone": "Asia/Shanghai",
-  "last_successful_source_check_at": "2026-10-21T09:23:00+08:00",
-  "last_report_date": "2026-10-21",
-  "last_report_path": "reports/research/2026-10-21/README.md",
+  "last_successful_source_check_at": "2026-10-22T09:13:36+08:00",
+  "last_report_date": "2026-10-22",
+  "last_report_path": "reports/research/2026-10-22/README.md",
   "initial_check": {
     "mode": "manual",
     "source_scope": "arXiv cs.RO 2026-09-29 推送筛选与三篇原始页面核对；不是全领域或系统查新。",
@@ -1997,6 +1997,206 @@
       "disposition": "REPORTED",
       "reported_in": "reports/research/2026-10-21/README.md",
       "notes": "WXYZ->XYZW, ProxyArray, actuator/sensor/training/import contracts change. Multi-backend/Kit-less supported workflows do not establish checkpoint compatibility or repair prior host/Kit issues."
+    },
+    {
+      "id": "arxiv:2610.28470",
+      "version": "v1",
+      "title": "Fast Motion Retargeting Pipeline for Scalable Humanoid Robot Learning",
+      "url": "https://arxiv.org/abs/2610.28470v1",
+      "first_submitted_at": "2026-10-20T16:22:00Z",
+      "first_submitted_timezone": "UTC",
+      "first_submitted_at_beijing": "2026-10-21T00:22:00+08:00",
+      "feed_announced_on": "2026-10-21",
+      "first_seen_on": "2026-10-22",
+      "last_fetched_at": "2026-10-22T09:13:36+08:00",
+      "verification_level": "原摘要/提交历史、方法/实验/限制相关正文及作者页；未读实现、未复现。",
+      "code_status": "COMING_SOON_KINEMATICS_ONLY_DYNAMICS_EXCLUDED",
+      "project_url": "https://daroslab.github.io/frdv/",
+      "notes": "FRDV先约束运动学，再可选CI-iLQR动力学/力矩验证；无有效rollout参考排除。9,156FPS为20CPU进程且无边界细化、不含动力学；边界不连续/高成本限制。作者计划只公开运动学、不含动力学验证；G1/Dash非A3/Q1。现在借鉴诊断，基线后再试。",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-22/README.md",
+      "check_manifest": "data/manifests/research_watch_check_20261022.json",
+      "dedup_key": "arxiv:2610.28470@v1",
+      "cache_paths": [
+        "data/research/2026-10-22/sources/frdv_abs.html",
+        "data/research/2026-10-22/sources/frdv_full.html",
+        "data/research/2026-10-22/sources/frdv_project.html"
+      ]
+    },
+    {
+      "id": "arxiv:2610.27794",
+      "version": "v1",
+      "title": "Multi-View Latent Action Pretraining for Cross-Embodiment Robot Learning from Videos",
+      "url": "https://arxiv.org/abs/2610.27794v1",
+      "first_submitted_at": "2026-10-20T07:55:43Z",
+      "first_submitted_timezone": "UTC",
+      "first_submitted_at_beijing": "2026-10-20T15:55:43+08:00",
+      "feed_announced_on": "2026-10-21",
+      "first_seen_on": "2026-10-22",
+      "last_fetched_at": "2026-10-22T09:13:36+08:00",
+      "verification_level": "原摘要/提交历史、方法/实验/限制相关正文及作者页；未读实现、未复现。",
+      "code_status": "CODE_WEIGHTS_NOT_IDENTIFIED_ON_CHECKED_PAGES",
+      "project_url": "https://learnsyslab.github.io/multiview_latent_action_pretraining/",
+      "notes": "同步静止多视角先共同编码再压缩动作。离线当前/未来帧为监督，下游外部相机加腕相机而非单流；仍需目标动作标注。移动头环外参/对时/SLAM未解决，操纵非人形控制；基线后再试。作者报告动作解码R2 0.54→0.63，17%相对改善非成功率17百分点；未以摘要数字推断成本。",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-22/README.md",
+      "check_manifest": "data/manifests/research_watch_check_20261022.json",
+      "dedup_key": "arxiv:2610.27794@v1",
+      "cache_paths": [
+        "data/research/2026-10-22/sources/multiview_abs.html",
+        "data/research/2026-10-22/sources/multiview_full.html",
+        "data/research/2026-10-22/sources/multiview_project.html"
+      ]
+    },
+    {
+      "id": "arxiv:2610.27907",
+      "version": "v1",
+      "title": "What Novice Operators See Changes What the Policy Learns: A User Study of Keypoint Hand Visual Representation for Teleoperated Demonstration",
+      "url": "https://arxiv.org/abs/2610.27907v1",
+      "first_submitted_at": "2026-10-20T09:22:21Z",
+      "first_submitted_timezone": "UTC",
+      "first_submitted_at_beijing": "2026-10-20T17:22:21+08:00",
+      "feed_announced_on": "2026-10-21",
+      "first_seen_on": "2026-10-22",
+      "last_fetched_at": "2026-10-22T09:13:36+08:00",
+      "verification_level": "原摘要/提交历史、方法/实验/限制相关正文及作者页；未读实现、未复现。",
+      "code_status": "CODE_DATA_WEIGHTS_NOT_IDENTIFIED_ON_CHECKED_PAGES",
+      "project_url": "https://omron-sinicx.github.io/point-hand/",
+      "notes": "PointHand通过拇指/食指突出显示减少操作者遮挡；显示与policy输入不同。作者18新手/4专家仿真研究；同演示预算策略同时改观测与编码器，5seed只变演示抽样、初始化固定；真值检测框使相关增益为上限，单手任务/无力或滑移表示，不代表头环真机AR。基线后再考虑界面。",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-22/README.md",
+      "check_manifest": "data/manifests/research_watch_check_20261022.json",
+      "dedup_key": "arxiv:2610.27907@v1",
+      "cache_paths": [
+        "data/research/2026-10-22/sources/pointhand_abs.html",
+        "data/research/2026-10-22/sources/pointhand_full.html",
+        "data/research/2026-10-22/sources/pointhand_project.html"
+      ]
+    },
+    {
+      "id": "arxiv:2610.27998",
+      "version": "v1",
+      "title": "LocoPilot: Single-Operator Bilateral Teleoperation for Loco-Manipulation Policy Learning",
+      "url": "https://arxiv.org/abs/2610.27998v1",
+      "first_submitted_at": "2026-10-20T10:37:39Z",
+      "first_submitted_timezone": "UTC",
+      "first_submitted_at_beijing": "2026-10-20T18:37:39+08:00",
+      "feed_announced_on": "2026-10-21",
+      "first_seen_on": "2026-10-22",
+      "last_fetched_at": "2026-10-22T09:13:36+08:00",
+      "verification_level": "原摘要/提交历史核验；未读完整正文、未复现。",
+      "code_status": "OFFICIAL_REPO_API_METADATA_AND_HEAD_ONLY_LICENSE_CONTENT_UNREAD",
+      "project_url": "https://github.com/iit-DLSLab/LocoPilot",
+      "notes": "Go2四足加Piper机械臂，共同11维接口/力估计/被动性。API仓库头93c48fc3ff12de4ee5b96b7d64644454ea7b0d48、MIT元数据；未读许可正文或实现，不作为人形policy。只背景。",
+      "disposition": "SCREENED_BACKGROUND",
+      "reported_in": null,
+      "check_manifest": "data/manifests/research_watch_check_20261022.json",
+      "dedup_key": "arxiv:2610.27998@v1",
+      "cache_paths": [
+        "data/research/2026-10-22/sources/locopilot_abs.html"
+      ]
+    },
+    {
+      "id": "arxiv:2610.27917",
+      "version": "v1",
+      "title": "EventSync: Event-Driven Memory Updates for History-Dependent Manipulation",
+      "url": "https://arxiv.org/abs/2610.27917v1",
+      "first_submitted_at": "2026-10-20T09:29:49Z",
+      "first_submitted_timezone": "UTC",
+      "first_submitted_at_beijing": "2026-10-20T17:29:49+08:00",
+      "feed_announced_on": "2026-10-21",
+      "first_seen_on": "2026-10-22",
+      "last_fetched_at": "2026-10-22T09:13:36+08:00",
+      "verification_level": "原摘要/提交历史核验；未读完整正文、未复现。",
+      "code_status": "NOT_VERIFIED",
+      "project_url": null,
+      "notes": "VLM/VLA事件监测器用视觉/末端轨迹确认子任务完成再更新历史；非传感融合/SLAM，不搬用摘要性能；机器人门控记忆已有先例，H001不升级。只背景。",
+      "disposition": "SCREENED_BACKGROUND",
+      "reported_in": null,
+      "check_manifest": "data/manifests/research_watch_check_20261022.json",
+      "dedup_key": "arxiv:2610.27917@v1",
+      "cache_paths": [
+        "data/research/2026-10-22/sources/eventsync_abs.html"
+      ]
+    },
+    {
+      "id": "arxiv:2610.27688",
+      "version": "v1",
+      "title": "Adaptive Traversal Tubes for Posture-Aware Navigation of Bipedal Humanoids",
+      "url": "https://arxiv.org/abs/2610.27688v1",
+      "first_submitted_at": "2026-10-20T06:03:44Z",
+      "first_submitted_timezone": "UTC",
+      "first_submitted_at_beijing": "2026-10-20T14:03:44+08:00",
+      "feed_announced_on": "2026-10-21",
+      "first_seen_on": "2026-10-22",
+      "last_fetched_at": "2026-10-22T09:13:36+08:00",
+      "verification_level": "原摘要/提交历史核验；未读完整正文、未复现。",
+      "code_status": "NOT_VERIFIED",
+      "project_url": null,
+      "notes": "姿态感知导航与穿越管道，摘要明确量化评测计划后补，不能当已验证改进。只背景。",
+      "disposition": "SCREENED_BACKGROUND",
+      "reported_in": null,
+      "check_manifest": "data/manifests/research_watch_check_20261022.json",
+      "dedup_key": "arxiv:2610.27688@v1",
+      "cache_paths": [
+        "data/research/2026-10-22/sources/att_abs.html"
+      ]
+    },
+    {
+      "id": "arxiv:2610.28480",
+      "version": "v1",
+      "title": "SuperMimic: Scaling Humanoid Whole-Body Control with One Differentiable World Model",
+      "url": "https://arxiv.org/abs/2610.28480v1",
+      "first_submitted_at": "2026-10-20T16:29:30Z",
+      "first_submitted_at_beijing": "2026-10-21T00:29:30+08:00",
+      "feed_announced_on": "2026-10-21",
+      "first_seen_on": "2026-10-22",
+      "last_fetched_at": "2026-10-22T08:20:00+08:00",
+      "verification_level": [
+        "official_project_page",
+        "arxiv_abstract_and_submission_history",
+        "official_demo_terms",
+        "github_tree_metadata",
+        "pinned_third_party_readmes_and_licenses"
+      ],
+      "code_status": "OFFICIAL_DEMO_PROPRIETARY_TRAINING_AND_WEIGHTS_RELEASE_NOT_VERIFIED",
+      "project_url": "https://supermimic.github.io/#compute",
+      "notes": "早上用户指定调查已报告，复用现有证据补去重，非本轮重新核验或新的发行变化。",
+      "disposition": "ALREADY_REPORTED_ADHOC_DEDUP_ONLY",
+      "reported_in": "reports/README_SUPERMIMIC_OPEN_SOURCE_20261022.md",
+      "dedup_key": "arxiv:2610.28480@v1"
+    },
+    {
+      "id": "github:zita-ch/supermimic_vibed",
+      "version": "a1508d42c9d1699a52e8233ab16d08c488441ab9",
+      "title": "zita-ch/supermimic_vibed",
+      "url": "https://github.com/zita-ch/supermimic_vibed",
+      "commit_time_utc": "2026-10-21T20:39:38Z",
+      "first_seen_on": "2026-10-22",
+      "last_fetched_at": "2026-10-22T08:20:00+08:00",
+      "verification_level": "复用早上专题固定README/LICENSE与目录、Git-blob/SHA核验；未审实现，未运行。",
+      "code_status": "THIRD_PARTY_MIT_DOCS_LICENSE_STATIC_ONLY",
+      "official": false,
+      "notes": "Maintainer calls it unofficial and unreviewed fast AI-assisted code; 40-clip LAFAN1 target, modified observation/precision/collision settings; No independent result or weight verification",
+      "disposition": "ALREADY_REPORTED_ADHOC_DEDUP_ONLY",
+      "reported_in": "reports/README_SUPERMIMIC_OPEN_SOURCE_20261022.md",
+      "dedup_key": "github:zita-ch/supermimic_vibed@a1508d42c9d1699a52e8233ab16d08c488441ab9"
+    },
+    {
+      "id": "github:CuboiLeo/SuperMimic-Reproduced",
+      "version": "4c27c13f4d6a625376700fadbdc3d7cb2a4d81a1",
+      "title": "CuboiLeo/SuperMimic-Reproduced",
+      "url": "https://github.com/CuboiLeo/SuperMimic-Reproduced",
+      "commit_time_utc": "2026-10-22T00:11:53Z",
+      "first_seen_on": "2026-10-22",
+      "last_fetched_at": "2026-10-22T08:20:00+08:00",
+      "verification_level": "复用早上专题固定README/LICENSE与目录、Git-blob/SHA核验；未审实现，未运行。",
+      "code_status": "THIRD_PARTY_MIT_DOCS_LICENSE_STATIC_ONLY",
+      "official": false,
+      "notes": "Independent reproduction; results under additional anchor observations not paper-matched; README states ONNX export and real-robot validation not done; No independent result or weight verification",
+      "disposition": "ALREADY_REPORTED_ADHOC_DEDUP_ONLY",
+      "reported_in": "reports/README_SUPERMIMIC_OPEN_SOURCE_20261022.md",
+      "dedup_key": "github:CuboiLeo/SuperMimic-Reproduced@4c27c13f4d6a625376700fadbdc3d7cb2a4d81a1"
     }
   ],
   "idea_ids": [
@@ -2007,21 +2207,21 @@
     "first_scheduled_run": "TRIGGER_AND_RESEARCH_VERIFIED",
     "last_error": {
       "scope": "canonical_worktree_and_partial_source_gap",
-      "recorded_at": "2026-10-21T09:23:00+08:00",
+      "recorded_at": "2026-10-22T09:13:36+08:00",
       "ssh": "One bounded canonical Git status connection timed out; worktree/HEAD unknown",
       "huggingface": "One bounded metadata connection timeout; asset contents unverified",
-      "arxiv": "DUET HTML404 and date anomaly; csLG recent2000 truncation; older unexposed partitions/replacements/version gaps retained"
+      "arxiv": "csLG RSS817 vs current new408; used current list for screening. Older unexposed partitions/replacement/version gaps retained"
     },
     "first_scheduled_trigger_at": "2026-09-30T01:01:12.375Z",
-    "last_scheduled_source_check_at": "2026-10-21T09:23:00+08:00",
-    "last_coverage_note": "50 primary/project HTTP requests,48 successful. Oct20 RO/LG/CV current announcements; six new abstracts/history,two selected full texts,12 fixed decoded static files. PredActor deployment/Isaac3.0 material releases. No implementation execution, simulation, model download or new hypothesis. csLG recent2000 truncation/date anomaly/older history gaps retained.",
-    "last_scheduled_trigger_at": "2026-10-21T01:03:12.564Z",
+    "last_scheduled_source_check_at": "2026-10-22T09:13:36+08:00",
+    "last_coverage_note": "38 primary/project source requests,37 successful; October21 visible RO/LG/CV announcements. Six new abstracts/history and three selected full texts/author pages. Current csLG list screened separately from inconsistent817-entry RSS. Six monitored heads/two releases/four older pages unchanged. SuperMimic3 entries reused from earlier ad-hoc review;87→96 dedup. No implementation execution or new hypothesis.",
+    "last_scheduled_trigger_at": "2026-10-22T00:59:16.553Z",
     "last_run_interrupted": false,
     "last_run_resumed": false,
     "last_interrupted_check_manifest": "data/manifests/research_watch_check_20261003.json",
-    "last_check_outcome": "FOUR_RELEVANT_ITEMS_STATICALLY_VERIFIED_NOT_REPRODUCED",
+    "last_check_outcome": "THREE_RELEVANT_NEW_READINGS_STATICALLY_VERIFIED_NOT_REPRODUCED",
     "last_resumed_from_trigger_at": "2026-10-03T01:01:32.212Z",
-    "publication_status": "GITHUB_DOCUMENTS_VERIFIED",
+    "publication_status": "CURRENT_RECORDS_PENDING_AUDIT_PUSH_VERIFY",
     "pending_sync_manifest": null,
     "previous_sync_failure_resolved_connection_at": "2026-10-12T09:09:40+08:00",
     "previous_sync_failure": {
@@ -2056,9 +2256,11 @@
       "recorded_at": "2026-10-11T09:08:48+08:00",
       "same_ssh_problem_as_local_engineering_record": "reports/README_A3_CONTROLLER_ADAPTER_20261010.md"
     },
-    "pending_sync_dates": [],
+    "pending_sync_dates": [
+      "2026-10-22"
+    ],
     "latest_sync_receipt_path": "data/manifests/research_watch_sync_20261021.json",
-    "last_notification_reason": "New deployment and official release changes plus two useful readings; no repeated unchanged engineering/connectivity alert.",
+    "last_notification_reason": "Three useful new readings about motion feasibility, complementary views and operator display. Do not repeat morning SuperMimic or unchanged connection alerts.",
     "user_action_issues": [
       {
         "id": "RECORD_CREDENTIAL_20261012",
@@ -2155,5 +2357,5 @@
     }
   },
   "dedup_rule": "同 ID/版本不重复转述；新版本或代码发布只有实质变化才再次报告，记录变化说明。",
-  "latest_check_manifest": "data/manifests/research_watch_check_20261021.json"
+  "latest_check_manifest": "data/manifests/research_watch_check_20261022.json"
 }

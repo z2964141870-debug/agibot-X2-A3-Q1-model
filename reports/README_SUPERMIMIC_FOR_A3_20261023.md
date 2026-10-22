@@ -266,3 +266,22 @@ CPU控制验证继承张量/三种Adam状态与学习率偏移，拒绝仿真合
 `assess_policy.py`逐条核对审计/评测/轨迹身份并重算回报和关节指标，按R03预登记门输出结果。四开发片段另报，不当未触及测试。真实R02存量轨迹门复核实际退出0，完整性/均回报/每段关节三个门均false：[R02门回归](../data/manifests/supermimic_a3_R02_policy_gate_regression_20261023.json)，0新物理/optimizer。
 
 语法检查和服务器3个聚合控制测试通过：全门达标接受，早倒/低回报/某段高关节误差拒绝，篡改轨迹拒绝；进程真实身份接受，boot/命令/起始tick变化拒绝。对真实活跃R03的同类只读控制也通过。见[控制记录](../logs/session_records/supermimic_a3_completion_controls_20261023.log)。源码已实现但此时完成流程尚未实际启动或完成；先发布并核验后启动独立等待进程，不把测试替代真实八段评测。
+
+## R03完成流程实际启动（03:49）
+
+源码/记录已发布并独立核验main=`01570666a5c1b84a906501dc1bca2c884276864b`；complete_run/assess_policy/launch两端SHA一致。新增完成进程PID/PGID704836实际活跃，RSS约18MiB，`waiting_for_training`；绑定训练PID703916/start_ticks3598955095/既有boot，尚未执行新评测/optimizer。[启动清单](../data/manifests/supermimic_a3_R03_completion_launch_20261023.json)、[admission](../data/manifests/supermimic_a3_R03_completion_admission_20261023.json)、[启动快照](../data/manifests/supermimic_a3_R03_completion_startup_20261023.json)已保存。
+
+实际R03训练快照600/3000采集步、9600env-step、189次WM/actor更新；GPU40℃、usage29615190016字节，OOM仍14。训练和等待进程都已重新查验为活跃，不因旧状态文件假定存活。此时仍无R03最终效果，不能称可用策略。
+
+```bash
+envs/supermimic_a3_20261023/bin/python script/supermimic_for_a3/launch.py \
+  --entry complete_run --python envs/supermimic_a3_20261023/bin/python \
+  --log logs/supermimic_a3_R03_completion_20261023.log \
+  --record data/supermimic_for_a3/R03_completion_20261023_launch.json -- \
+  --run data/supermimic_for_a3/R03_20261023 \
+  --launch data/supermimic_for_a3/R03_20261023_launch.json \
+  --output data/supermimic_for_a3/R03_completion_20261023 \
+  --log-dir logs/supermimic_a3_R03_completion_20261023
+```
+
+恢复先读本节并实时核对两个PID/boot；查`R03_20261023/status.json`与`R03_completion_20261023/status.json`。后者成功后查看`matched_audit.json`、`policy_assessment.json`及eval_step0/eval_final/receipt.json；失败时读取自身receipt和逐阶段日志，不自动重跑失败阶段或训练。权重和轨迹仍LOCAL_ONLY，Git仅保存小记录。下一真正决定为完整物理效果是否达门，目标保持active。

@@ -1,8 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：C01完整/独立重算通过，32步根误差17.78→8.78cm，三个候选门均过；策略不变、R02仍8/8早倒。R03运行中，PID/PGID703916，同boot，R02 actor/critic/Adam加C01 WM/Adam，预算3000步/48000env-step，seed5921、模型预热0、H32/k8保持；最新保存快照275步/4400env-step/59次联合更新，指标有限，GPU39℃，OOM14无新增，尚无完整预算或新效果。恢复查R03/status.json、receipt.json、日志及PID，完成后step0/final八段评测与继承状态/计数审计。huanyu:/opt/data/private/yuanqi_ops，30GiB/86℃保护；原件LOCAL_ONLY，维护main，旧STOPPED不动。
-
-R03后续完成流程已实现：`complete_run.py`绑定真实进程退出，顺序执行两次完整评测/审计/可用门，3聚合控制及R02存量门回归通过；尚未启动完成进程，下一发布核验→启动。详见阶段README末节，不能仅凭流水线状态认定策略可用。
+2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：C01完整/独立验收通过，32步根误差17.78→8.78cm；策略不变、R02仍8/8早倒。R03训练PID703916与完成进程PID704836均已实时确认活跃，同boot。训练最新600/3000步、9600env-step、189次WM/actor更新，GPU40℃、OOM14无新增；完成进程waiting_for_training，绑定start_ticks3598955095，无自动重启。预算结束后它顺序执行本轮step0/final八段物理评测→匹配审计→预登记可用门。恢复查R03_20261023与R03_completion_20261023的status/receipt及真实两个PID，勿重复启动。huanyu:/opt/data/private/yuanqi_ops，30GiB/86℃保护，原件LOCAL_ONLY，维护main。尚无R03最终效果，目标active，历史STOPPED保持。
 
 2026-10-22（10/23补记）：[A3解剖肩点候选T13](README_TELEOP_A3_SHOULDER_PROBE_20261022.md)实际退出1，FAILED_PRE_IK；roll/yaw静止朝向重合假设不成立，0新增IK/动力学/训练，无候选通过或遗留作业。保存失败证据，用户新目标转入SuperMimic论文与A3训练。
 

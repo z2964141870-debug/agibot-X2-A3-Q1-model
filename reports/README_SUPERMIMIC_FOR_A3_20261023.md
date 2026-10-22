@@ -130,7 +130,7 @@ R02最近2125/3000采集步、34000env-step、799次WM更新、599次策略更�
 
 实际终态`TRAINING_FINISHED_PENDING_EVALUATION`，error=null；3000采集步、48000真实env-step、1149次WM更新、949次策略更新，用时5268.134秒（87.80分钟）。PID692767已为Zs/RSS0，`/proc/692767/stat`退出字段0，无存活计算；历史oom_kill仍14、memory.failcnt仍158689333，未新增。训练完成不等于跟踪效果通过，最终权重和配对审计尚未执行。
 
-- [训练终态/全部PT大小SHA清单](../data/manifests/supermimic_a3_R02_training_20261023.json)；[120条训练指标记录](../logs/supermimic_a3_R02_metrics_20261023.jsonl)。原始日志保留服务器`logs/supermimic_a3_R02_20261023.log`。
+- [训练终态/全部PT大小SHA清单](../data/manifests/supermimic_a3_R02_training_20261023.json)；[120条训练指标记录](../logs/session_records/supermimic_a3_R02_metrics_20261023.log)。原始JSONL与stdout保留服务器本轮目录及`logs/supermimic_a3_R02_20261023.log`。Git小副本使用仓库获准的`logs/session_records/*.log`位置；首次位置检查失败后已修正，未改变指标内容。
 - 120个采样记录中GPU最高43℃、容器usage最高31748255744字节，均未越86℃/30GiB保护；这是采样最大值，不能代表未采样时刻的连续峰值。最终WM八步误差0.03613，高于热身末0.01573，联合训练中的分布变化和模型有效性仍需真实评测判断。
 - `final.pt`大小215995283字节，SHA-256 `a491c07634a2fca4346b053e32d7d73f41f7f666864c2504f32b6ad1e59aa6d3`；step3000独立保存216003303字节，完整身份见清单。权重/输入/轨迹仍`LOCAL_ONLY`，没有Mac大型复制或Git权重提交。
 - step2500后的[缓存维护005](../data/manifests/supermimic_a3_R02_cache_005_20261023.json)仍仅本轮六个PT、0删除；usage29775970304→29556363264。

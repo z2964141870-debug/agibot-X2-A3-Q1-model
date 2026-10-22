@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)为当前用户明确目标；全文19页及公式/超参已核，固定两份MIT实现，A3实际83维状态/29维动作。正在实现物理采集与GPU世界模型/BPTT训练闭环，尚无新策略效果。工作根huanyu:/opt/data/private/yuanqi_ops，代码/结论维护本仓库main，历史停止实验不恢复。
+
 2026-10-22（10/23补记）：[A3解剖肩点候选T13](README_TELEOP_A3_SHOULDER_PROBE_20261022.md)实际退出1，FAILED_PRE_IK；roll/yaw静止朝向重合假设不成立，0新增IK/动力学/训练，无候选通过或遗留作业。保存失败证据，用户新目标转入SuperMimic论文与A3训练。
 
 2026-10-22：[A3肩任务点诊断T12](README_TELEOP_A3_LANDMARK_20261022.md)：T10目标重建/独立FK最大差0；肩点误配到roll枢轴下游14.75cm的yaw原点，标签肩P95达7.52/8.76cm，目标肘半径也冲突。下一独立位置/朝向分离候选；未重解IK/动力学/训练，不放宽5cm门。

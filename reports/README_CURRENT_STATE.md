@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：V04通过/M02共20段；R01内存保护停止，R02以16环境/4线程完整网络进行联合训练，最近13600env-step/289次WM/89次策略更新。huanyu:/opt/data/private/yuanqi_ops，PID/PGID692767，目标3000采集步；恢复先查实际进程/状态，再完成训练→本轮step0/final八段匹配评测→终态审计。本轮checkpoint可定向释放页缓存，保留30GiB/86℃保护；代码/证据维护main，尚无最终效果，不恢复旧停止实验。
+2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：R02已半程1500/3000采集步、24000env-step、549次WM/349次策略更新，step1500保存；完整网络16环境/4线程，huanyu:/opt/data/private/yuanqi_ops，PID/PGID692767。未训练step0八段确定性评测退出0，均提前失败，训练/预留平均完成率2.538%/2.100%；无最终效果。恢复先查实际进程/状态→剩余预算→同八段最终评测→audit_run.py配对/轨迹核验。保护保持，V04/M02与旧STOPPED不改；代码/清单维护main。
 
 2026-10-22（10/23补记）：[A3解剖肩点候选T13](README_TELEOP_A3_SHOULDER_PROBE_20261022.md)实际退出1，FAILED_PRE_IK；roll/yaw静止朝向重合假设不成立，0新增IK/动力学/训练，无候选通过或遗留作业。保存失败证据，用户新目标转入SuperMimic论文与A3训练。
 

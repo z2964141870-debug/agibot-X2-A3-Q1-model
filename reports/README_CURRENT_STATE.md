@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：R02训练48000env-step/949次策略更新、八段配对物理评测/参数轨迹审计/D01诊断均完成。7/8改善，训练/预留完成率2.538→4.854%/2.100→5.119%，8/8提前失败（3.02–4.62秒），001走路退步，目标未达。D01零新仿真/optimizer：32步根位置RMSE约19/17cm且差于恒速度，整体状态/关节仍有学习收益，非唯一因果。下一独立检验更充分WM拟合/采集，R03未实现启动；无本轮活跃作业，final.pt a491c076…/215995283字节，huanyu:/opt/data/private/yuanqi_ops，原件LOCAL_ONLY/main维护，旧STOPPED保持。
+2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：R02训练/评测/D01完成，8/8提前失败，目标未达。当前已实现C01：冻结R02策略，四训练动作各两组独立16×1024采集，32768env-step；固定验证窗口，仅WM额外1000更新，预登记32步根误差降20%且一步状态/32步关节不恶化>10%。尚未实际启动/通过C01，R03未实现启动。huanyu:/opt/data/private/yuanqi_ops，输入SHA已重核，资源/保护见阶段；原件LOCAL_ONLY，维护main，旧STOPPED不动。
 
 2026-10-22（10/23补记）：[A3解剖肩点候选T13](README_TELEOP_A3_SHOULDER_PROBE_20261022.md)实际退出1，FAILED_PRE_IK；roll/yaw静止朝向重合假设不成立，0新增IK/动力学/训练，无候选通过或遗留作业。保存失败证据，用户新目标转入SuperMimic论文与A3训练。
 

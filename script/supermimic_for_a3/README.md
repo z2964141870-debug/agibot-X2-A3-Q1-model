@@ -74,3 +74,14 @@ termination counts and full-clip denominator in the figure.
 existing physical traces, with a constant-velocity integration comparison. It
 performs no new physics steps or optimizer updates and does not identify a
 unique cause of tracking failure.
+
+`calibrate_world_model.py --checkpoint RUN/final.pt --root A3_ASSET_ROOT
+--output NEW_CALIBRATION --compile` collects two independent frozen-policy replay
+sets from the checkpoint's training clips, then fits only the world model for
+1000 updates. The fixed 1/8/32-step validation windows never enter fitting. Policy
+and critic updates are zero. The candidate decision is a 20% improvement in
+32-step root RMSE with no more than 10% regression in one-step state MSE or
+32-step active-joint RMSE. This does not establish policy performance.
+
+Use `launch.py --entry calibrate_world_model` with an explicit new log/record to
+launch that calibration with the same recoverable process record as training.

@@ -1,6 +1,6 @@
 # 传感衣遥操资源盘点与FGP版本核对
 
-记录日期：2026-10-22（北京时间）。阶段：TELEOP-RESOURCE-01。状态：已完成可访问资源的只读盘点；新Windows跳板登录与FGP“最新版”身份尚未确认。
+记录日期：2026-10-22（北京时间）。阶段：TELEOP-RESOURCE-01及02。状态：资源盘点与当前FGP代码来源核对完成；用户确认CLOTHO-mocap-main代码、主干权重基本复用；新增StageTran两份权重尚未定位，新Windows登录仍未完成。
 
 ## 目标与范围
 
@@ -49,7 +49,7 @@
 
 ## FGP代码、权重及版本身份
 
-已找到代码和权重，不是缺失整个FGP系统；尚未找到能证实比已有交付更新的版本或发布说明。
+初次盘点找到下列代码和权重；随后用户确认当前代码为CLOTHO-mocap-main.zip、权重基本复用，详见下一节。下表旧包继续作为可核验的权重与历史代码来源。
 
 | 包 | Mac位置 | huanyu位置 | 核验 |
 | --- | --- | --- | --- |
@@ -79,9 +79,34 @@
 
 包内位置为`mocap_teleop/x2_pc1_ble_teleop/onnx_models/`。Mac另有同SHA副本：`/Users/yu/project/YAMAHA/YAMAHA_fixed/g1_teleop_release/onnx_models/`。该G1目录还有`Math/LFPX.onnx`（13,605,870字节），本轮只核文件，不宣称在线入口采用它或它更好。
 
-ONNX链的120维输入/循环状态与旧Canonicalizer+LIP分支不同，不能混用性能结论；两者均缺少本轮独立查明的发布编号、训练清单和最新版证明。旧Q1离线速度扩展`clotho_v2_displacement/last.pt`在当前核查的FGP包中未定位；不将GlobalPose/ASIP权重当同一速度头替代。
+ONNX链的120维输入/循环状态与Canonicalizer+LIP分支不同，不能混用性能结论。用户已确认后者的当前代码来源，训练清单及数值验证仍待核；旧Q1离线速度扩展`clotho_v2_displacement/last.pt`未定位，不将GlobalPose/ASIP权重替代它，也不等同于新包stage_tran的根速度模型。
 
-搜索覆盖Mac的project、Human+、Downloads、Public相关文件名，huanyu的FGP包和两份展开源码。新Windows尚未成功登录，所以未排除其本地或其他未列位置存在更新交付。
+初次搜索覆盖Mac的project、Human+、Downloads、Public相关文件名，huanyu的FGP包和两份展开源码。随后用户直接提供当前代码包，代码身份缺项已解决；新Windows尚未成功登录，不影响对本次附件来源的确认。
+
+## 用户补充：当前FGP代码来源已确认
+
+阶段补充：TELEOP-RESOURCE-02。用户本轮明确“FGP的代码是这份，然后权重基本复用”，当前代码以`/Users/yu/Downloads/CLOTHO-mocap-main.zip`为准，已有FGP-main和遥操ONNX包保留为权重来源与历史分支。不再要求用户重复证明哪份是当前代码；用户确认来源与数值加载/效果验证分开记录。
+
+新包实际12,043,763字节、226个ZIP条目，解压逻辑总量70,222,273字节，SHA-256为`974bd8d94c5384cc47b7021d0e1f13092f34948d480a933603c8aeb6db57977b`。包含160个Python文件，未包含任何PT/PTH/ONNX/PKL权重或SMPL资产。本轮流式读取、未展开到工作区、未传服务器或执行包内代码。
+
+与旧FGP-main.zip去掉顶层目录、缓存及pyc后比较：158个同路径文件中148个字节相同、10个不同，新包额外28个文件均在stage_tran下。旧包额外还有权重、录制、Unity等资产，不将缺少这些大文件理解为代码退化。主要差异：
+
+- `neural_backbone.py`与`PoseReconstruction/LIP_model.py`字节相同；当前LIP入口仍引用已有Canonicalizer和LIP权重的同名路径。按用户指示登记为复用，未实际加载或验证精度。
+- `Aplus/models/lstms.py`支持可选激活函数；`online_fgp+LIP.py`中两级EasyLSTM显式设置`act_func="tanh"`，旧实现为ReLU。即使模型参数文件相同，推理行为也可能变化，旧LIP退化数字不能直接当本代码结果，更不能套到独立ONNX分支。
+- 新增`stage_tran`，LIP入口默认`online_guarded`。源码包括根速度/接触、下肢几何修正、平地高度反馈及异常IMU处理；合同为30Hz、29帧预热、显式共同平地假设。该合同独立于旧Q1导出从源帧59开始的合同。
+- `stage_tran/CURRENT.json`声明版本`20261018_online_guarded`，并要求下列两份特定权重；这是包内配置声明，尚未核到实际文件：
+
+| 包内期望路径 | 配置声明的SHA-256 | 本轮状态 |
+| --- | --- | --- |
+| `stage_tran/weights/root_velocity.pth` | `f1cfacb960a462b8409af8434559d58549c638bcbf2005c84fa68ab6f294bce7` | 新旧ZIP及所查目录未找到 |
+| `stage_tran/weights/foot_geometry.pth` | `35dc017a07218ff610ac676848950386e3a74f7ff6412fbcb2dad7adba3b7078` | 新旧ZIP及所查目录未找到 |
+
+源码在OnlineGuarded构造时先读取这两文件并核SHA；默认模式不能只放已有Canonicalizer/LIP就称依赖齐备。已有SMPL_male.pkl可作为待配对资产，但不能替代这两模型。代码提供关闭stage_tran的入口选项，本轮没有执行或改变默认设置。
+
+本地文件名检索覆盖`/Users/yu/project`、`/Users/yu/Human+`、`/Users/yu/Downloads`及`/Users/yu/Documents/ChatGPT`；服务器只读检索`/opt/data/private/yuanqi_ops`和`/opt/data/private/hechengzhu/ZHY`，深度上限8、排除envs/environments/vendor/.git等，查看45,894个文件条目，未找到两指定文件名或旧clotho_v2_displacement目录中的PT/PTH。该范围不覆盖新Windows、其他共享盘目录或被改名的权重，不声称全盘绝对缺失。
+
+stage_tran README还明确该移植未经过测试/硬件回放或新精度评测，历史46片段成绩不等于此部署效果；本轮只核源码，不将附带说明视为通过证明或执行指令。需要补充的FGP资源已缩小为新增StageTran两份权重或其可验证对应来源；主干代码已确认、主干权重复用，不自动开展推理、部署或训练。
+
 
 ## 控制策略、仿真与工程工具
 
@@ -97,7 +122,7 @@ ONNX链的120维输入/循环状态与旧Canonicalizer+LIP分支不同，不能�
 
 ## 关键决定与仍需补充的资源
 
-1. 当前不需要重新提供已有三份ZIP。若用户所说新版是另一交付，仍需其文件位置、发布编号或代码提交号以及权重身份；本轮没有找到足以证明更新的版本。
+1. 用户已提供并确认CLOTHO-mocap-main.zip当前代码，主干权重基本复用；不再将代码来源列为缺项。新增StageTran的root_velocity.pth、foot_geometry.pth暂未定位，需其文件或与CURRENT.json指纹对应的来源，之后再固定完整输入身份。
 2. 最关键的数据缺口是与实际在线模型训练会话隔离、同场同步的原始IMU和可信人体姿态/世界轨迹。已有训练标签、FGP预测和开发集不能替代该证据。
 3. 需要实物机器人具体型号/版本、可用时段、SDK和控制接口；传感衣需要布局、采样率、时间戳、标定流程和实时输出协议。发布数据中的11槽/取10传感器合同不等于当前现场设备已核验。
 4. 数据和模型的训练/公开发表授权、训练来源列表与当前可分配GPU时段尚未形成完整清单。

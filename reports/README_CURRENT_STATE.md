@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-22：[传感衣遥操资源盘点与FGP核对](README_TELEOP_RESOURCE_INVENTORY_20261022.md)：实测huanyu为RTX3090 24GiB/32GiB容器，SMB已连通；三ZIP两端SHA相同，FGP代码/权重齐，但核心PTH与10/8相同，最新版身份未确认。PHUMA有G1/H1_2各73076文件；v7实际10段，Demo100无GT派生池不当真值；AMASS原库本轮未定位。用户新增Windows入口100.65.183.91登录断开，暂以原可用跳板核查。只读盘点，无训练/仿真；详见报告和未补资源。
+2026-10-22：[传感衣遥操资源盘点与FGP核对](README_TELEOP_RESOURCE_INVENTORY_20261022.md)：用户已确认当前FGP代码为CLOTHO-mocap-main.zip，主干权重基本复用；静态比较新增stage_tran，在线LIP改用tanh，新增root_velocity/foot_geometry两权重暂未定位，未运行。huanyu实测RTX3090 24GiB/32GiB容器、SMB连通；PHUMA有G1/H1_2各73076文件，v7实际10段，Demo100无GT派生池不当真值；AMASS原库未定位。新Windows登录断开，核查用原可用跳板；无训练/仿真。
 
 2026-10-22：[传感衣遥操档案上下文](README_TELEOP_CONTEXT_REVIEW_20261022.md)已读：包中用户将主线转回上衣/裤子IMU→FGP→SMPL→重定向→运控→机器人，头环暂不纳入，A3先验证。最后30帧离线/标签辅助的两臂A3转换自身IK P95约6.4/6.1cm，均超5cm门，随后定位肩/膝重定向误差，尚未进入该新链路的035动力学回放；21:19由用户中断。本轮仅整理档案，不代表实时服务器状态或恢复旧任务；onset/DIO保留历史审查，非包中当前主线。
 

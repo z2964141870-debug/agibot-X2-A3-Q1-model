@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-22：[传感衣遥操资源盘点与FGP核对](README_TELEOP_RESOURCE_INVENTORY_20261022.md)：实测huanyu为RTX3090 24GiB/32GiB容器，SMB已连通；三ZIP两端SHA相同，FGP代码/权重齐，但核心PTH与10/8相同，最新版身份未确认。PHUMA有G1/H1_2各73076文件；v7实际10段，Demo100无GT派生池不当真值；AMASS原库本轮未定位。用户新增Windows入口100.65.183.91登录断开，暂以原可用跳板核查。只读盘点，无训练/仿真；详见报告和未补资源。
+2026-10-22：[传感衣遥操资源盘点与FGP核对](README_TELEOP_RESOURCE_INVENTORY_20261022.md)：用户已确认当前FGP代码为CLOTHO-mocap-main.zip，主干权重基本复用；静态比较新增stage_tran，在线LIP改用tanh，新增root_velocity/foot_geometry两权重暂未定位，未运行。huanyu实测RTX3090 24GiB/32GiB容器、SMB连通；PHUMA有G1/H1_2各73076文件，v7实际10段，Demo100无GT派生池不当真值；AMASS原库未定位。新Windows登录断开，核查用原可用跳板；无训练/仿真。
 
 2026-10-18：[Exp-2a根位移可辨识性HP24/HP25两轮STOPPED](README_A3_HUMANPLUS_ROOT_IDENT_20261018.md)：阳性对照两轮未过门，按合同2.4停止上报；判据不适用，分段观察与全部数字见阶段README与manifests，GitHub未同步。
 

@@ -137,6 +137,7 @@ HP07退出定位：十步/CUDA同步已通过，30秒栈确认app.close触发STO
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-22 | Onset论文可行性与证据审查 | 值得有限验证，原投稿摘要证据不足；重复计数/CI/特征列/CV/条件救回及因果混淆见[评估](README_ONSET_PUBLICATION_REVIEW_20261022.md)，0新训练/仿真 |
 | 2026-10-22 | SuperMimic开源状态专项核验 | 官方Demo专有、未核验到官方训练/权重发布；两个独立MIT复现的固定README/许可核验、未运行，见[调查](README_SUPERMIMIC_OPEN_SOURCE_20261022.md)与[小清单](../data/manifests/supermimic_open_source_20261022.json) |
 | 2026-10-21 | 每日研究简报 | PredActor G1部署、SWAP分层避障、K-AoI时间语义、Isaac Lab3.0兼容边界；50请求48成功/12固定文本/87条去重，未复现；正式服务器未知，main内容7078f67已独立核验，见[简报](research/2026-10-21/README.md)与[阶段](README_RESEARCH_CHECK_20261021.md) |
 | 2026-10-20 | 每日研究简报 | BeJEPA世界目标、异步上身参考、IMEP记忆验证；五摘要/三相关正文，79条去重，未复现；10/18–20研究内容main提交e327717已独立核验，正式服务器工作树未知，见[简报](research/2026-10-20/README.md)、[阶段](README_RESEARCH_CHECK_20261020.md)与[回执](../data/manifests/research_watch_sync_20261020.json) |

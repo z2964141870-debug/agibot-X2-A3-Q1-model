@@ -1,0 +1,79 @@
+cd /opt/data/private/yuanqi_ops && python3 - <<'PY'
+import importlib.util,json
+from pathlib import Path
+spec=importlib.util.spec_from_file_location('completion_poll','script/supermimic_for_a3/complete_run.py')
+m=importlib.util.module_from_spec(spec)
+spec.loader.exec_module(m)
+base=Path('data/supermimic_for_a3')
+run=base/'R04_20261023'
+out=base/'R04_completion_20261023'
+launch=json.loads((base/'R04_20261023_launch.json').read_text())
+cl=json.loads((base/'R04_completion_20261023_launch.json').read_text())
+tp=m.process_snapshot(launch,3599637468)
+cp=m.process_snapshot(cl,3599641134)
+s=json.loads((run/'status.json').read_text())
+c=json.loads((out/'status.json').read_text())
+result={'training':{k:s.get(k) for k in ('status','step','env_steps','wm_updates','policy_updates','seconds','health','error')},'training_process':tp,'completion_phase':c.get('phase',c.get('status')),'completion_process':cp,'checkpoints':{p.name:p.stat().st_size for p in sorted(run.glob('*.pt'))},'oom':Path('/sys/fs/cgroup/memory/memory.oom_control').read_text().strip()}
+for label,path in [('training_receipt',run/'receipt.json'),('completion_receipt',out/'receipt.json'),('assessment',out/'policy_assessment.json')]:
+ if path.exists():result[label]=json.loads(path.read_text())
+
+from datetime import datetime, timezone
+import math, os, socket
+assert s['status'] == 'RUNNING' and s['step'] >= 3000
+assert tp['state'] not in ('Z','MISSING') and cp['state'] not in ('Z','MISSING')
+plan=json.loads((out/'admission.json').read_text())
+bound=plan['entries']
+for entry in bound.values():
+ if m.identity(entry['path']) != entry: raise ValueError('Completion entry changed')
+admission=json.loads((run/'admission.json').read_text())
+if m.identity(admission['training_entry']['path']) != admission['training_entry']:
+ raise ValueError('Training entry changed')
+backend_path=Path(admission['backend_receipt']['path'])
+if m.identity(backend_path) != admission['backend_receipt']: raise ValueError('Backend receipt changed')
+backend=json.loads(backend_path.read_text())
+for entry in backend['source_files']:
+ if m.identity(entry['path'])['sha256'] != entry['sha256']: raise ValueError('Backend source changed')
+checkpoint=m.identity(run/'step_003000.pt')
+with open(checkpoint['path'],'rb') as stream:
+ os.fsync(stream.fileno())
+ os.posix_fadvise(stream.fileno(),0,0,os.POSIX_FADV_DONTNEED)
+raw=(run/'metrics.jsonl').read_text()
+rows=[json.loads(line) for line in raw.split('\n')[:-1] if line.strip()]
+def finite(value):
+ if isinstance(value,dict): return all(finite(v) for v in value.values())
+ if isinstance(value,list): return all(finite(v) for v in value)
+ return not isinstance(value,float) or math.isfinite(value)
+snapshot={
+ 'status':'R04_LIVE_MIDPOINT_SNAPSHOT_NOT_COMPLETION',
+ 'utc':datetime.now(timezone.utc).isoformat(),
+ 'host':socket.gethostname(),
+ 'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
+ 'training':s,
+ 'training_process':m.process_snapshot(launch,3599637468),
+ 'completion_phase':c.get('phase',c.get('status')),
+ 'completion_process':m.process_snapshot(cl,3599641134),
+ 'checkpoint':checkpoint,
+ 'metric_rows':len(rows),
+ 'all_recorded_metric_values_finite':all(finite(row) for row in rows),
+ 'max_recorded_gpu_temperature_c':max(row['health']['gpu_temperature_c'] for row in rows),
+ 'max_recorded_cgroup_memory_bytes':max(row['health']['cgroup_memory_bytes'] for row in rows),
+ 'memory_oom_control':Path('/sys/fs/cgroup/memory/memory.oom_control').read_text(),
+ 'current_cgroup_memory_bytes':int(Path('/sys/fs/cgroup/memory/memory.usage_in_bytes').read_text()),
+ 'bound_completion_entries_unchanged':len(bound),
+ 'training_entry_unchanged':admission['training_entry'],
+ 'verified_backend_source_count':len(backend['source_files']),
+ 'training_receipt_exists':(run/'receipt.json').exists(),
+ 'completion_receipt_exists':(out/'receipt.json').exists(),
+ 'storage_status':'LOCAL_ONLY',
+ 'new_physics_steps_from_this_check':0,
+ 'new_optimizer_steps_from_this_check':0,
+ 'not_a_goal_completion_claim':True,
+}
+assert snapshot['all_recorded_metric_values_finite']
+assert snapshot['training_process']['state'] not in ('Z','MISSING')
+assert snapshot['completion_process']['state'] not in ('Z','MISSING')
+print('MIDPOINT_JSON_BEGIN')
+print(json.dumps(snapshot,indent=2,allow_nan=False))
+print('MIDPOINT_JSON_END')
+
+PY

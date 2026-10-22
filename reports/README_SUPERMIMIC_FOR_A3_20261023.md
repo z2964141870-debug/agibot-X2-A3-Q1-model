@@ -1,6 +1,6 @@
 # SuperMimic for A3：论文、实现与训练
 
-记录日期：2026-10-23（北京时间）。阶段：SM-A3-P01/P02/R01/R02/C01/R03。状态：C01校准验收通过；R03预算、完整配对物理评测和证据审计全部完成，八段回报/完成率均改善，但仍全部提前失败、可用门三项均拒绝。下一检查实际轨迹与新策略分布的模型误差，目标active，尚非可用跟踪策略。
+记录日期：2026-10-23（北京时间）。阶段：SM-A3-P01/P02/R01/R02/C01/R03/R04。状态：R03预算/完整配对/审计全部完成，八段均改善但仍全部提前失败、可用门三项拒绝；D02/V02已核查真实轨迹与预测。独立R04已实际启动并完成首批联合更新，完成流程绑定原进程等待；目标active，尚非可用跟踪策略。
 
 ## 目标与范围
 
@@ -377,3 +377,26 @@ env TORCHINDUCTOR_CACHE_DIR=/opt/data/private/yuanqi_ops/data/tools/torchinducto
  --initialize-from data/supermimic_for_a3/R03_20261023/final.pt \
  --clips 001_walk_front_slow 042_squat_shallow_repeated 058_punch_front_alternating 077_reach_overhead_both
 ```
+
+## R04实际启动、联合更新与恢复入口（05:29）
+
+预登记与D02/V02已发布，独立核验main=`d58786d4fe0b872ba0bf12dcfe1304de0201c489`。启动前[实时预检](../data/manifests/supermimic_a3_R04_preflight_20261023.json)通过：同boot/GPU UUID，usage27966128128字节、GPU38℃/6348MiB/0%，历史OOM14，无活跃SuperMimic作业；父R03 final大小/SHA与匹配审计相符，V04和执行源码SHA未改，所有R04新路径不存在。未干预其他占用。
+
+原入口已实际单次启动训练PID/PGID709634、start_ticks3599637468；[launch](../data/manifests/supermimic_a3_R04_launch_20261023.json)与[admission](../data/manifests/supermimic_a3_R04_admission_20261023.json)保存完整命令、父工件和配置。全部三网络及Adam从R03继承，admission初始32980/2098/41960、LR偏移6000正确，未再次注入C01；实际保存step0的逐张量/Adam独立审计仍待后置audit_run，不能仅凭admission宣称已经完成。
+
+完成进程PID/PGID709693、start_ticks3599641134也已实际启动；[完成launch](../data/manifests/supermimic_a3_R04_completion_launch_20261023.json)和[admission](../data/manifests/supermimic_a3_R04_completion_admission_20261023.json)绑定训练709634/既有boot/命令/起始tick及四个执行源码身份，当前`waiting_for_training`，不启动/重启训练。各评测/审计/可用门只在本次6000步预算成功后顺序各一次，失败留证停止。
+
+[05:29启动核验](../data/manifests/supermimic_a3_R04_startup_20261023.json)记录175/6000采集步、2800新env-step、19次WM与19次actor联合更新；两进程实际活跃，7条指标均有限，GPU39℃、usage31720005632字节，OOM仍14。step0为216004839字节、SHA`19f37d105edeef5c7f2cab33a5a92d4adba05ac01e043cb2034328d04319cf36`；读取身份后仅对本文件fsync/fadvise，不删除或改变参数。当前没有R04最终效果、终态或可用证明，不能将首批更新当完成。
+
+```bash
+envs/supermimic_a3_20261023/bin/python script/supermimic_for_a3/launch.py \
+ --entry complete_run --python envs/supermimic_a3_20261023/bin/python \
+ --log logs/supermimic_a3_R04_completion_20261023.log \
+ --record data/supermimic_for_a3/R04_completion_20261023_launch.json -- \
+ --run data/supermimic_for_a3/R04_20261023 \
+ --launch data/supermimic_for_a3/R04_20261023_launch.json \
+ --output data/supermimic_for_a3/R04_completion_20261023 \
+ --log-dir logs/supermimic_a3_R04_completion_20261023
+```
+
+下一继续原训练与等待进程。恢复先核对实际boot/PID/start_ticks/命令、R04_20261023/status.json及receipt.json、R04_completion_20261023/status.json及receipt.json；成功后读取eval_step0/eval_final/receipt.json、matched_audit.json、policy_assessment.json和逐阶段日志，失败不自动重跑。保持原6000步/96000新交互与三项可用门、30GiB/86℃保护，旧R03/STOPPED终态不改，所有大型工件LOCAL_ONLY。

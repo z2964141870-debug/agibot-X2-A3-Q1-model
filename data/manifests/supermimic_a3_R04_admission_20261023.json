@@ -1,0 +1,727 @@
+{
+  "status": "ADMITTED_NOT_TRAINED",
+  "args": {
+    "root": "/opt/data/private/hechengzhu/ZHY",
+    "motions": "data/supermimic_for_a3/motions_20261023_M02",
+    "output": "data/supermimic_for_a3/R04_20261023",
+    "backend_receipt": "data/supermimic_for_a3/source_audit_20261023/backend_V04.json",
+    "steps": 6000,
+    "num_envs": 16,
+    "threads": 4,
+    "batch": 64,
+    "wm_batch": 128,
+    "wm_batches": 10,
+    "warmup_steps": 128,
+    "model_warmup_updates": 0,
+    "checkpoint_every": 500,
+    "compile": true,
+    "seed": 6921,
+    "device": "cuda:0",
+    "clips": [
+      "001_walk_front_slow",
+      "042_squat_shallow_repeated",
+      "058_punch_front_alternating",
+      "077_reach_overhead_both"
+    ],
+    "initialize_from": "data/supermimic_for_a3/R03_20261023/final.pt",
+    "calibration_audit": null
+  },
+  "assets": {
+    "mjcf": {
+      "path": "/opt/data/private/hechengzhu/ZHY/script/vendor/sonic_for_a3/gear_sonic/data/assets/robot_description/mjcf/a3_t2d5_passive_foot_twostage_fit_optimized.xml",
+      "bytes": 50220,
+      "sha256": "3915053acd573f0cc093a080d64197574fdc146ad4cf91ec1b0ceff71983b75f"
+    },
+    "control_source": {
+      "path": "/opt/data/private/hechengzhu/ZHY/script/vendor/sonic_for_a3/gear_sonic/scripts/sim2sim_a3_mujoco.py",
+      "bytes": 185881,
+      "sha256": "4a9e7d4a06b0c2857ae303d9dfa24bb4a129d04629b267ebe46c6b3eb317c105"
+    },
+    "nq": 42,
+    "nv": 41,
+    "full_joint_names": [
+      "waist_yaw_joint",
+      "waist_roll_joint",
+      "waist_pitch_joint",
+      "head_yaw_joint",
+      "head_pitch_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint",
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "left_foot_forefoot_joint",
+      "left_foot_toe_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "right_foot_forefoot_joint",
+      "right_foot_toe_joint"
+    ],
+    "active_joint_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "waist_yaw_joint",
+      "waist_roll_joint",
+      "waist_pitch_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint"
+    ],
+    "active_indices": [
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      0,
+      1,
+      2,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "controls": [
+      {
+        "kp": 80.0,
+        "kd": 3.0,
+        "effort": 220.0,
+        "armature": 0.06646569890856839,
+        "friction": 0.15
+      },
+      {
+        "kp": 120.0,
+        "kd": 4.0,
+        "effort": 220.0,
+        "armature": 0.06646569890856839,
+        "friction": 0.15
+      },
+      {
+        "kp": 80.0,
+        "kd": 3.0,
+        "effort": 220.0,
+        "armature": 0.06646569890856839,
+        "friction": 0.15
+      },
+      {
+        "kp": 250.0,
+        "kd": 8.0,
+        "effort": 320.0,
+        "armature": 0.12034039999999999,
+        "friction": 0.15
+      },
+      {
+        "kp": 50.0,
+        "kd": 2.0,
+        "effort": 118.2,
+        "armature": 0.06444060531016461,
+        "friction": 0.25
+      },
+      {
+        "kp": 50.0,
+        "kd": 2.0,
+        "effort": 54.75,
+        "armature": 0.02012630058442085,
+        "friction": 0.25
+      },
+      {
+        "kp": 80.0,
+        "kd": 3.0,
+        "effort": 220.0,
+        "armature": 0.06646569890856839,
+        "friction": 0.15
+      },
+      {
+        "kp": 120.0,
+        "kd": 4.0,
+        "effort": 220.0,
+        "armature": 0.06646569890856839,
+        "friction": 0.15
+      },
+      {
+        "kp": 80.0,
+        "kd": 3.0,
+        "effort": 220.0,
+        "armature": 0.06646569890856839,
+        "friction": 0.15
+      },
+      {
+        "kp": 250.0,
+        "kd": 8.0,
+        "effort": 320.0,
+        "armature": 0.12034039999999999,
+        "friction": 0.15
+      },
+      {
+        "kp": 50.0,
+        "kd": 2.0,
+        "effort": 118.2,
+        "armature": 0.06444060531016461,
+        "friction": 0.25
+      },
+      {
+        "kp": 50.0,
+        "kd": 2.0,
+        "effort": 54.75,
+        "armature": 0.02012630058442085,
+        "friction": 0.25
+      },
+      {
+        "kp": 85.0,
+        "kd": 3.0,
+        "effort": 220.0,
+        "armature": 0.06646569890856839,
+        "friction": 0.15
+      },
+      {
+        "kp": 50.0,
+        "kd": 2.0,
+        "effort": 46.0,
+        "armature": 0.014620876134502001,
+        "friction": 0.15
+      },
+      {
+        "kp": 50.0,
+        "kd": 2.0,
+        "effort": 115.0,
+        "armature": 0.08820859155526001,
+        "friction": 0.15
+      },
+      {
+        "kp": 40.0,
+        "kd": 3.0,
+        "effort": 60.0,
+        "armature": 0.012083368706200002,
+        "friction": 0.1
+      },
+      {
+        "kp": 40.0,
+        "kd": 3.0,
+        "effort": 60.0,
+        "armature": 0.012083368706200002,
+        "friction": 0.1
+      },
+      {
+        "kp": 30.0,
+        "kd": 2.0,
+        "effort": 24.0,
+        "armature": 0.0049673513029504,
+        "friction": 0.1
+      },
+      {
+        "kp": 30.0,
+        "kd": 2.0,
+        "effort": 24.0,
+        "armature": 0.0049673513029504,
+        "friction": 0.1
+      },
+      {
+        "kp": 30.0,
+        "kd": 2.0,
+        "effort": 24.0,
+        "armature": 0.0049673513029504,
+        "friction": 0.1
+      },
+      {
+        "kp": 20.0,
+        "kd": 2.0,
+        "effort": 6.0,
+        "armature": 0.0008100893337749999,
+        "friction": 0.1
+      },
+      {
+        "kp": 20.0,
+        "kd": 2.0,
+        "effort": 6.0,
+        "armature": 0.0008100893337749999,
+        "friction": 0.1
+      },
+      {
+        "kp": 40.0,
+        "kd": 3.0,
+        "effort": 60.0,
+        "armature": 0.012083368706200002,
+        "friction": 0.1
+      },
+      {
+        "kp": 40.0,
+        "kd": 3.0,
+        "effort": 60.0,
+        "armature": 0.012083368706200002,
+        "friction": 0.1
+      },
+      {
+        "kp": 30.0,
+        "kd": 2.0,
+        "effort": 24.0,
+        "armature": 0.0049673513029504,
+        "friction": 0.1
+      },
+      {
+        "kp": 30.0,
+        "kd": 2.0,
+        "effort": 24.0,
+        "armature": 0.0049673513029504,
+        "friction": 0.1
+      },
+      {
+        "kp": 30.0,
+        "kd": 2.0,
+        "effort": 24.0,
+        "armature": 0.0049673513029504,
+        "friction": 0.1
+      },
+      {
+        "kp": 20.0,
+        "kd": 2.0,
+        "effort": 6.0,
+        "armature": 0.0008100893337749999,
+        "friction": 0.1
+      },
+      {
+        "kp": 20.0,
+        "kd": 2.0,
+        "effort": 6.0,
+        "armature": 0.0008100893337749999,
+        "friction": 0.1
+      }
+    ],
+    "q0": [
+      -0.1311,
+      0.0056,
+      -0.0348,
+      0.2468,
+      -0.1204,
+      -0.0078,
+      -0.1311,
+      -0.0056,
+      0.0348,
+      0.2468,
+      -0.1204,
+      0.0078,
+      0.0,
+      0.0,
+      0.0,
+      0.3,
+      0.12,
+      0.0,
+      0.8,
+      0.0,
+      0.0,
+      0.0,
+      0.3,
+      -0.12,
+      0.0,
+      0.8,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "action_scale": [
+      0.6875,
+      0.4583333333333333,
+      0.6875,
+      0.32,
+      0.591,
+      0.27375,
+      0.6875,
+      0.4583333333333333,
+      0.6875,
+      0.32,
+      0.591,
+      0.27375,
+      0.6470588235294118,
+      0.23,
+      0.575,
+      0.375,
+      0.375,
+      0.2,
+      0.2,
+      0.2,
+      0.075,
+      0.075,
+      0.375,
+      0.375,
+      0.2,
+      0.2,
+      0.2,
+      0.075,
+      0.075
+    ],
+    "action_clip": 20.0,
+    "dt": 0.02,
+    "physics_dt": 0.001,
+    "substeps": 20,
+    "tracked_bodies": [
+      "pelvis_link",
+      "left_hip_roll_Link",
+      "left_knee_Link",
+      "left_ankle_roll_Link",
+      "right_hip_roll_Link",
+      "right_knee_Link",
+      "right_ankle_roll_Link",
+      "torso_Link",
+      "left_shoulder_roll_Link",
+      "left_elbow_Link",
+      "left_wrist_yaw_Link",
+      "right_shoulder_roll_Link",
+      "right_elbow_Link",
+      "right_wrist_yaw_Link"
+    ],
+    "reward_anchor": "pelvis_link",
+    "self_collision": "retained from input model",
+    "head_control": "PD hold zero, kp=40 kd=2, original torque limit",
+    "foot_geoms": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "sim": {
+    "num_envs": 16,
+    "threads": 4,
+    "domain_randomization": true,
+    "observation_noise": true,
+    "action_noise": 0.1,
+    "episode_steps": 500,
+    "history": 10
+  },
+  "world_model": {
+    "hidden": [
+      2048,
+      2048,
+      2048
+    ],
+    "term_hidden": [
+      64,
+      64
+    ],
+    "state_spec": {
+      "dt": 0.02,
+      "err_scale": [
+        0.05,
+        0.1,
+        0.5,
+        1.0,
+        0.1,
+        2.0
+      ],
+      "out_scale": [
+        0.3,
+        0.5,
+        2.0,
+        0.01,
+        0.02,
+        0.02
+      ],
+      "in_scale": [
+        1.0,
+        1.0,
+        1.0,
+        2.0,
+        1.0,
+        5.0
+      ],
+      "explicit_integration": true,
+      "xi_offset": [
+        0.75,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "xi_scale": [
+        0.45,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.01,
+        0.05,
+        0.05,
+        0.05
+      ]
+    },
+    "term_loss_weight": 1.0,
+    "height_threshold": 0.25,
+    "tilt_threshold": 0.8
+  },
+  "policy": {
+    "encoder_hidden": [
+      2048,
+      1024,
+      512,
+      256
+    ],
+    "decoder_hidden": [
+      2048,
+      1024,
+      512,
+      256
+    ],
+    "latent_dim": 32,
+    "history": 10,
+    "obs_term_scale": [
+      1.0,
+      5.0,
+      2.0,
+      1.0,
+      1.0
+    ],
+    "goal_term_scale": [
+      1.0,
+      5.0,
+      1.0,
+      2.0,
+      1.0,
+      1.0
+    ],
+    "decoder_last_gain": 0.01,
+    "goal_dim": 680
+  },
+  "critic": {
+    "hidden": [
+      256,
+      128
+    ]
+  },
+  "wm_trainer": {
+    "window": 8,
+    "batches_per_update": 10,
+    "batch_size": 128,
+    "lr": 0.0002,
+    "grad_clip": 1.0,
+    "weight_decay": 0.0,
+    "compile": "default"
+  },
+  "policy_trainer": {
+    "horizon": 32,
+    "batch_size": 64,
+    "history": 10,
+    "future_frames": 10,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "lr": 0.0002,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "grad_clip_norm": 1.0,
+    "grad_clip_value": 0.1,
+    "critic_lr": 0.0002,
+    "critic_grad_clip": 1.0,
+    "critic_epochs": 5,
+    "critic_minibatches": 4,
+    "use_critic": true,
+    "obs_noise": true,
+    "compile": "default",
+    "anchor_obs": false
+  },
+  "train_clips": [
+    {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/motions_20261023_M02/001_walk_front_slow.npz",
+      "bytes": 7217364,
+      "sha256": "47e791944e0ac0b0c78af67d172290fd4c09bb9c697f4a8ea21d44c8b38bf7c4"
+    },
+    {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/motions_20261023_M02/042_squat_shallow_repeated.npz",
+      "bytes": 4907222,
+      "sha256": "6673a76eb2c3203811122ac0d1968ae063c089cc567389ac0c31eeefa759e017"
+    },
+    {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/motions_20261023_M02/058_punch_front_alternating.npz",
+      "bytes": 2702787,
+      "sha256": "99de40b05a8544baebdecdaa2792367aadbc8394e18112b6cc386e16bd69549a"
+    },
+    {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/motions_20261023_M02/077_reach_overhead_both.npz",
+      "bytes": 2945531,
+      "sha256": "738663dc792c0a0d6954117b37b97c9931ff3ea95cbdb012f51d1d2f7c35bad9"
+    }
+  ],
+  "heldout_clips": [
+    "004_walk_frontleft_slow",
+    "048_balance_right_singleleg",
+    "056_lunge_side_alternating",
+    "080_reach_front_both"
+  ],
+  "backend_receipt": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/source_audit_20261023/backend_V04.json",
+    "bytes": 17322,
+    "sha256": "94d3900643b1f680e7d0d352aecf4055d9bdef5af3ad6ffbf541b3ea28cacd4a"
+  },
+  "training_entry": {
+    "path": "/opt/data/private/yuanqi_ops/script/supermimic_for_a3/train.py",
+    "bytes": 11279,
+    "sha256": "6ee24b056db6a2a5edea3c5086ded7c4d3b67f8748765f9904076f772ccd901a"
+  },
+  "library_summary": "MotionLibrary(full): 4 clips, 16907 frames (0.094 h @50Hz), 341 bins, 0.02 GB on cuda:0",
+  "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+  "versions": {
+    "torch": "2.8.0+cu128",
+    "cuda": "12.8"
+  },
+  "paper_deviations": [
+    "CPU MuJoCo backend; implicit PD with original A3 gains and contact geometry",
+    "Full A3 state including head and passive feet; active 29-joint actor",
+    "Smaller environment and update batch on shared RTX3090",
+    "Pelvis reward anchor",
+    "No pose/velocity reset noise in this first adaptation",
+    "Model-only warmup before BPTT"
+  ],
+  "initialization": {
+    "type": "warm_start_in_new_run",
+    "source_checkpoint": {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R03_20261023/final.pt",
+      "bytes": 215997267,
+      "sha256": "11f7dbe9b397be1abf88802a56c6e538e79f719b4f270f6e1909d76f14eea51e"
+    },
+    "initialization_entry": {
+      "path": "/opt/data/private/yuanqi_ops/script/supermimic_for_a3/initialization.py",
+      "bytes": 4384,
+      "sha256": "5e724982736c641af73e6c26e51090d827279d2fa6ce6f8cce5ac98518a4d0da"
+    },
+    "source_receipt": {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R03_20261023/receipt.json",
+      "bytes": 2025,
+      "sha256": "aa8b1100180cefe4adac4747393896b9fdccc7b7c82dae8b471681be70be8682"
+    },
+    "model_source": {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R03_20261023/final.pt",
+      "bytes": 215997267,
+      "sha256": "11f7dbe9b397be1abf88802a56c6e538e79f719b4f270f6e1909d76f14eea51e"
+    },
+    "calibration_audit": null,
+    "initial_optimizer_steps": {
+      "wm_opt": [
+        32980
+      ],
+      "policy_opt": [
+        2098
+      ],
+      "critic_opt": [
+        41960
+      ]
+    },
+    "source_counters": {
+      "step": 3000,
+      "wm_updates": 1149,
+      "policy_updates": 1149
+    },
+    "learning_rate_step_offset": 6000,
+    "replay_and_random_seed": "Fresh replay, adaptive sampler, simulator episodes and explicit run seed; no exact process resume."
+  },
+  "learning_rate_step_offset": 6000
+}

@@ -309,3 +309,11 @@ envs/supermimic_a3_20261023/bin/python script/supermimic_for_a3/launch.py \
 - 复现命令见代码README的render_trace入口，输入R02_eval_final_20261023/receipt.json、R02_20261023/admission.json、clip001_walk_front_slow。下一用于本轮完整评测后的实际轨迹，不改正在运行的训练/完成流程源码。
 
 同轮实时R03已到1025/3000采集步、16400env-step/359次联合更新；训练703916和完成704836均活跃，后者继续waiting_for_training。step_001000.pt已保存216005351字节、SHA`25b5cb007dd9204754fdbe5d09ef7efacdb3dd182bc55f91b2f50006617c4997`。GPU39℃，usage30222344192字节，OOM仍14无新增；[本轮进度快照](../data/manifests/supermimic_a3_R03_progress_20261023.json)是进行中证据，未完成预算、尚无R03最终效果。上一goal turn完成实际保存初态核验，属进展；本轮又完成轨迹渲染入口及视觉验证，不将等待重复记成科学完成。
+
+## R03半程检查点与真实进程核验（04:22）
+
+训练持续按原合同运行，半程`step_001500.pt`已完成，216005351字节、SHA`4e39d0b15133ebd546eb9eacbe494d3ded0e48c556f5800b2d5dfd1aedd435a5`。北京时间04:22:41的[独立小快照](../data/manifests/supermimic_a3_R03_midpoint_20261023.json)记录1525/3000采集步、24400新增env-step、559次WM和actor联合更新；61条已记录指标均有限，GPU39℃、容器usage30654042112字节，历史OOM仍14。快照只覆盖已采样记录，不代表连续资源峰值或最终策略效果。
+
+核对实际`/proc`状态、完整命令、boot及start_ticks：训练703916/3598955095与完成704836/3599058278均活跃，后者仍`waiting_for_training`；两个终态receipt尚未产生。检查未调用物理、推理或optimizer，未改配方/预算/源码，没有重启训练。原件保持服务器`LOCAL_ONLY`，Git只保存小快照与恢复记录。
+
+下一继续原作业剩余预算；完成流程退出后先看自身receipt及逐阶段日志，再看eval_step0/eval_final、matched_audit和policy_assessment。仅成功训练或证据审计不能证明跟踪可用；必须依据同八段完整物理评测及原预登记门决定后续实验，目标继续active。

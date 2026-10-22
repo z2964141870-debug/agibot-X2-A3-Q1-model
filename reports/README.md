@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：C01校准通过；R03训练PID703916运行中，已过1000/3000步并保存检查点，实际step0继承已独立核验。完成PID704836等待训练后顺序完整评测/审计/可用门；新增同相机保存轨迹视频入口并实际核查R02早倒。尚无R03最终效果，目标未达，原件LOCAL_ONLY，维护main。
+2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：R03半程PT已核对大小/SHA；04:22快照1525/3000步、24400env-step/559次联合更新，训练703916与完成704836实际活跃，GPU39℃/OOM14无新增。完成流程等待原预算后顺序step0/final八段完整评测、匹配审计与可用门；尚无R03最终效果，目标active，原件LOCAL_ONLY，维护main。
 
 2026-10-22（10/23补记）：[A3解剖肩点候选T13](README_TELEOP_A3_SHOULDER_PROBE_20261022.md)实际退出1，FAILED_PRE_IK；roll/yaw静止朝向重合假设不成立，0新增IK/动力学/训练，无候选通过或遗留作业。保存失败证据，用户新目标转入SuperMimic论文与A3训练。
 

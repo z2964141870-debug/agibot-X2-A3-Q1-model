@@ -137,6 +137,7 @@ HP07退出定位：十步/CUDA同步已通过，30秒栈确认app.close触发STO
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-22 | 传感衣遥操会话档案理解 | 包中主线已转回衣服IMU→FGP→SMPL→重定向→运控；30帧A3参考质量门未过，最后定位重定向误差，见[目标与进度](README_TELEOP_CONTEXT_REVIEW_20261022.md)；本轮只读档案，不恢复任务 |
 | 2026-10-22 | Onset团队说明与DIO再评估 | 完整任务热身跌倒62/80→59/80，非78%→13%；MLP历史栈非RNN，DIO4/8与会话留出2/4不倒可保留但算法贡献未证，见[复核与投入门](README_ONSET_TEAM_REVIEW_20261022.md)，0新训练/仿真 |
 | 2026-10-22 | Onset论文可行性与证据审查 | 首次审查的去重/列定义/分组CV已有修正；历史问题及因果边界见[原评估](README_ONSET_PUBLICATION_REVIEW_20261022.md)，最新结论见团队说明复核 |
 | 2026-10-22 | SuperMimic开源状态专项核验 | 官方Demo专有、未核验到官方训练/权重发布；两个独立MIT复现的固定README/许可核验、未运行，见[调查](README_SUPERMIMIC_OPEN_SOURCE_20261022.md)与[小清单](../data/manifests/supermimic_open_source_20261022.json) |

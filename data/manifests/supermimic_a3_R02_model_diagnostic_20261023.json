@@ -1,0 +1,552 @@
+{
+  "status": "FROZEN_MODEL_TRACE_DIAGNOSTIC_COMPLETED",
+  "checkpoint": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_20261023/final.pt",
+    "bytes": 215995283,
+    "sha256": "a491c07634a2fca4346b053e32d7d73f41f7f666864c2504f32b6ad1e59aa6d3"
+  },
+  "evaluation": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_eval_final_20261023/receipt.json",
+    "bytes": 8076,
+    "sha256": "67c427fd9c7270017d9868f55965e7e2629091bf65dc0f44e8fb93428f53a396"
+  },
+  "entry": {
+    "path": "/opt/data/private/yuanqi_ops/script/supermimic_for_a3/diagnose_model.py",
+    "bytes": 6116,
+    "sha256": "cc966f863534c592ed58f6dc52a0a9fc8ab95ca58deac8b1380aaaf5ed055443"
+  },
+  "groups": {
+    "training": {
+      "1": {
+        "learned": {
+          "normalized_state_mse": 0.035043938318267465,
+          "root_position_rmse_m": 0.001398593609337695,
+          "active_joint_rmse_rad": 0.005786635156255215
+        },
+        "constant_velocity_prior": {
+          "normalized_state_mse": 0.08075862028636038,
+          "root_position_rmse_m": 0.0009356933878734708,
+          "active_joint_rmse_rad": 0.008316283230669796
+        }
+      },
+      "8": {
+        "learned": {
+          "normalized_state_mse": 0.08740656869485974,
+          "root_position_rmse_m": 0.020101636415347457,
+          "active_joint_rmse_rad": 0.02586594270542264
+        },
+        "constant_velocity_prior": {
+          "normalized_state_mse": 1.4961972683668137,
+          "root_position_rmse_m": 0.029205833096057177,
+          "active_joint_rmse_rad": 0.14724579267203808
+        }
+      },
+      "32": {
+        "learned": {
+          "normalized_state_mse": 0.5305110439658165,
+          "root_position_rmse_m": 0.18965978175401688,
+          "active_joint_rmse_rad": 0.06131459679454565
+        },
+        "constant_velocity_prior": {
+          "normalized_state_mse": 6.211023807525635,
+          "root_position_rmse_m": 0.12954582273960114,
+          "active_joint_rmse_rad": 0.35981782525777817
+        }
+      }
+    },
+    "heldout": {
+      "1": {
+        "learned": {
+          "normalized_state_mse": 0.02202236873563379,
+          "root_position_rmse_m": 0.0009989028767449781,
+          "active_joint_rmse_rad": 0.004166470258496702
+        },
+        "constant_velocity_prior": {
+          "normalized_state_mse": 0.03155195771250874,
+          "root_position_rmse_m": 0.0006358543832902797,
+          "active_joint_rmse_rad": 0.005371529550757259
+        }
+      },
+      "8": {
+        "learned": {
+          "normalized_state_mse": 0.04801256861537695,
+          "root_position_rmse_m": 0.016792563954368234,
+          "active_joint_rmse_rad": 0.02040004078298807
+        },
+        "constant_velocity_prior": {
+          "normalized_state_mse": 0.5447158850729465,
+          "root_position_rmse_m": 0.020935339853167534,
+          "active_joint_rmse_rad": 0.08981316443532705
+        }
+      },
+      "32": {
+        "learned": {
+          "normalized_state_mse": 0.3900187015533447,
+          "root_position_rmse_m": 0.1721089892089367,
+          "active_joint_rmse_rad": 0.055962163023650646
+        },
+        "constant_velocity_prior": {
+          "normalized_state_mse": 2.794466018676758,
+          "root_position_rmse_m": 0.11768235825002193,
+          "active_joint_rmse_rad": 0.255680575966835
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "clip": "001_walk_front_slow",
+      "split": "training",
+      "executed_steps": 159,
+      "trace": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_eval_final_20261023/001_walk_front_slow.npz",
+        "bytes": 70005,
+        "sha256": "5896781ab0de70db1cb18a209d771797043f43af7566338a98fa2eca700cd1d0"
+      },
+      "reference": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/motions_20261023_M02/001_walk_front_slow.npz",
+        "bytes": 7217364,
+        "sha256": "47e791944e0ac0b0c78af67d172290fd4c09bb9c697f4a8ea21d44c8b38bf7c4"
+      },
+      "horizons": {
+        "1": {
+          "windows": 159,
+          "learned": {
+            "normalized_state_mse": 0.014741097576916218,
+            "root_position_rmse_m": 0.000893397897016257,
+            "active_joint_rmse_rad": 0.0038554598577320576
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 0.016707338392734528,
+            "root_position_rmse_m": 0.0006714395713061094,
+            "active_joint_rmse_rad": 0.005312795285135508
+          }
+        },
+        "8": {
+          "windows": 152,
+          "learned": {
+            "normalized_state_mse": 0.03608642891049385,
+            "root_position_rmse_m": 0.015189040452241898,
+            "active_joint_rmse_rad": 0.019636066630482674
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 0.3439834415912628,
+            "root_position_rmse_m": 0.0234678965061903,
+            "active_joint_rmse_rad": 0.07855170965194702
+          }
+        },
+        "32": {
+          "windows": 128,
+          "learned": {
+            "normalized_state_mse": 0.4242265224456787,
+            "root_position_rmse_m": 0.187437042593956,
+            "active_joint_rmse_rad": 0.056428369134664536
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 3.897672653198242,
+            "root_position_rmse_m": 0.12859050929546356,
+            "active_joint_rmse_rad": 0.3104098439216614
+          }
+        }
+      }
+    },
+    {
+      "clip": "042_squat_shallow_repeated",
+      "split": "training",
+      "executed_steps": 157,
+      "trace": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_eval_final_20261023/042_squat_shallow_repeated.npz",
+        "bytes": 69326,
+        "sha256": "7e569cd24868ff9622b63b065ba67c159f94ab811a98ca16776a300b6d341183"
+      },
+      "reference": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/motions_20261023_M02/042_squat_shallow_repeated.npz",
+        "bytes": 4907222,
+        "sha256": "6673a76eb2c3203811122ac0d1968ae063c089cc567389ac0c31eeefa759e017"
+      },
+      "horizons": {
+        "1": {
+          "windows": 157,
+          "learned": {
+            "normalized_state_mse": 0.06152920424938202,
+            "root_position_rmse_m": 0.0020877718925476074,
+            "active_joint_rmse_rad": 0.008573472499847412
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 0.1674472540616989,
+            "root_position_rmse_m": 0.0013665282167494297,
+            "active_joint_rmse_rad": 0.012569821439683437
+          }
+        },
+        "8": {
+          "windows": 150,
+          "learned": {
+            "normalized_state_mse": 0.16616754233837128,
+            "root_position_rmse_m": 0.027645403519272804,
+            "active_joint_rmse_rad": 0.03498443588614464
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 2.9756014347076416,
+            "root_position_rmse_m": 0.038145944476127625,
+            "active_joint_rmse_rad": 0.23739144206047058
+          }
+        },
+        "32": {
+          "windows": 126,
+          "learned": {
+            "normalized_state_mse": 0.7808032631874084,
+            "root_position_rmse_m": 0.22375920414924622,
+            "active_joint_rmse_rad": 0.07384894043207169
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 9.327561378479004,
+            "root_position_rmse_m": 0.15298010408878326,
+            "active_joint_rmse_rad": 0.4272023141384125
+          }
+        }
+      }
+    },
+    {
+      "clip": "058_punch_front_alternating",
+      "split": "training",
+      "executed_steps": 231,
+      "trace": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_eval_final_20261023/058_punch_front_alternating.npz",
+        "bytes": 101182,
+        "sha256": "52fbe2bfa7699b8967c6fa72da22e12fef4f0ca787fb98016b525489dda44d9f"
+      },
+      "reference": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/motions_20261023_M02/058_punch_front_alternating.npz",
+        "bytes": 2702787,
+        "sha256": "99de40b05a8544baebdecdaa2792367aadbc8394e18112b6cc386e16bd69549a"
+      },
+      "horizons": {
+        "1": {
+          "windows": 231,
+          "learned": {
+            "normalized_state_mse": 0.05083855986595154,
+            "root_position_rmse_m": 0.001813787966966629,
+            "active_joint_rmse_rad": 0.0075795515440404415
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 0.1283508986234665,
+            "root_position_rmse_m": 0.0011856809724122286,
+            "active_joint_rmse_rad": 0.011019031517207623
+          }
+        },
+        "8": {
+          "windows": 224,
+          "learned": {
+            "normalized_state_mse": 0.12422977387905121,
+            "root_position_rmse_m": 0.023106014356017113,
+            "active_joint_rmse_rad": 0.03103584051132202
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 2.522205352783203,
+            "root_position_rmse_m": 0.03722605109214783,
+            "active_joint_rmse_rad": 0.22120383381843567
+          }
+        },
+        "32": {
+          "windows": 200,
+          "learned": {
+            "normalized_state_mse": 0.5488202571868896,
+            "root_position_rmse_m": 0.1740984320640564,
+            "active_joint_rmse_rad": 0.06102149933576584
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 9.068206787109375,
+            "root_position_rmse_m": 0.12288558483123779,
+            "active_joint_rmse_rad": 0.4429815113544464
+          }
+        }
+      }
+    },
+    {
+      "clip": "077_reach_overhead_both",
+      "split": "training",
+      "executed_steps": 151,
+      "trace": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_eval_final_20261023/077_reach_overhead_both.npz",
+        "bytes": 66636,
+        "sha256": "cc43b591b178d594d76831020ee61cbc50e315e9c994e13365bbbb803d54e664"
+      },
+      "reference": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/motions_20261023_M02/077_reach_overhead_both.npz",
+        "bytes": 2945531,
+        "sha256": "738663dc792c0a0d6954117b37b97c9931ff3ea95cbdb012f51d1d2f7c35bad9"
+      },
+      "horizons": {
+        "1": {
+          "windows": 151,
+          "learned": {
+            "normalized_state_mse": 0.013066891580820084,
+            "root_position_rmse_m": 0.0007994166808202863,
+            "active_joint_rmse_rad": 0.0031380567234009504
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 0.0105289900675416,
+            "root_position_rmse_m": 0.0005191247910261154,
+            "active_joint_rmse_rad": 0.004363484680652618
+          }
+        },
+        "8": {
+          "windows": 144,
+          "learned": {
+            "normalized_state_mse": 0.023142529651522636,
+            "root_position_rmse_m": 0.014466087333858013,
+            "active_joint_rmse_rad": 0.017807427793741226
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 0.1429988443851471,
+            "root_position_rmse_m": 0.017983440309762955,
+            "active_joint_rmse_rad": 0.05183618515729904
+          }
+        },
+        "32": {
+          "windows": 120,
+          "learned": {
+            "normalized_state_mse": 0.3681941330432892,
+            "root_position_rmse_m": 0.1733444482088089,
+            "active_joint_rmse_rad": 0.05395957827568054
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 2.550654411315918,
+            "root_position_rmse_m": 0.11372709274291992,
+            "active_joint_rmse_rad": 0.2586776316165924
+          }
+        }
+      }
+    },
+    {
+      "clip": "004_walk_frontleft_slow",
+      "split": "heldout",
+      "executed_steps": 162,
+      "trace": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_eval_final_20261023/004_walk_frontleft_slow.npz",
+        "bytes": 71442,
+        "sha256": "b7a64616a8e7d7e00ae7f135fe4bc981c5946cac0e1f876ae7acd428a30a8f6d"
+      },
+      "reference": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/motions_20261023_M02/004_walk_frontleft_slow.npz",
+        "bytes": 6047568,
+        "sha256": "e3fe82ab65d7c479cb4522fb05379c59a22ca9f439814b95f000d014e701f764"
+      },
+      "horizons": {
+        "1": {
+          "windows": 162,
+          "learned": {
+            "normalized_state_mse": 0.005264273378998041,
+            "root_position_rmse_m": 0.0008136408869177103,
+            "active_joint_rmse_rad": 0.0031365894246846437
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 0.007002333644777536,
+            "root_position_rmse_m": 0.000562570639885962,
+            "active_joint_rmse_rad": 0.00405720854178071
+          }
+        },
+        "8": {
+          "windows": 155,
+          "learned": {
+            "normalized_state_mse": 0.018700934946537018,
+            "root_position_rmse_m": 0.013343241065740585,
+            "active_joint_rmse_rad": 0.018360532820224762
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 0.14351700246334076,
+            "root_position_rmse_m": 0.017962081357836723,
+            "active_joint_rmse_rad": 0.05630507320165634
+          }
+        },
+        "32": {
+          "windows": 131,
+          "learned": {
+            "normalized_state_mse": 0.27794066071510315,
+            "root_position_rmse_m": 0.1474371701478958,
+            "active_joint_rmse_rad": 0.05281917378306389
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 2.823676824569702,
+            "root_position_rmse_m": 0.11024319380521774,
+            "active_joint_rmse_rad": 0.2740454375743866
+          }
+        }
+      }
+    },
+    {
+      "clip": "048_balance_right_singleleg",
+      "split": "heldout",
+      "executed_steps": 212,
+      "trace": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_eval_final_20261023/048_balance_right_singleleg.npz",
+        "bytes": 92891,
+        "sha256": "f9674bbfe30e706fd9f8e0c2c47a0571dd0d35f296244f8601f64c7b75fed8d9"
+      },
+      "reference": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/motions_20261023_M02/048_balance_right_singleleg.npz",
+        "bytes": 2491905,
+        "sha256": "47b82145b5fc6da365c903341a679b61318905d6db3f8de1114defc042818202"
+      },
+      "horizons": {
+        "1": {
+          "windows": 212,
+          "learned": {
+            "normalized_state_mse": 0.009639539755880833,
+            "root_position_rmse_m": 0.000821003457531333,
+            "active_joint_rmse_rad": 0.003136103041470051
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 0.009079141542315483,
+            "root_position_rmse_m": 0.0004749866493511945,
+            "active_joint_rmse_rad": 0.0036524918396025896
+          }
+        },
+        "8": {
+          "windows": 205,
+          "learned": {
+            "normalized_state_mse": 0.023177891969680786,
+            "root_position_rmse_m": 0.013000098057091236,
+            "active_joint_rmse_rad": 0.01667756773531437
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 0.15158700942993164,
+            "root_position_rmse_m": 0.017124462872743607,
+            "active_joint_rmse_rad": 0.05301859602332115
+          }
+        },
+        "32": {
+          "windows": 181,
+          "learned": {
+            "normalized_state_mse": 0.2737157940864563,
+            "root_position_rmse_m": 0.14899234473705292,
+            "active_joint_rmse_rad": 0.04837966710329056
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 2.016803741455078,
+            "root_position_rmse_m": 0.10282767564058304,
+            "active_joint_rmse_rad": 0.22570884227752686
+          }
+        }
+      }
+    },
+    {
+      "clip": "056_lunge_side_alternating",
+      "split": "heldout",
+      "executed_steps": 197,
+      "trace": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_eval_final_20261023/056_lunge_side_alternating.npz",
+        "bytes": 86450,
+        "sha256": "954101f193862549730814ebbbae7de33ffd28c1494329cee4ac58bd3043e761"
+      },
+      "reference": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/motions_20261023_M02/056_lunge_side_alternating.npz",
+        "bytes": 5617847,
+        "sha256": "6c7a71f6a64853cab84d3ca68d68fc648048f7b711507524fce0d777c96d4817"
+      },
+      "horizons": {
+        "1": {
+          "windows": 197,
+          "learned": {
+            "normalized_state_mse": 0.057038359344005585,
+            "root_position_rmse_m": 0.0015537728322669864,
+            "active_joint_rmse_rad": 0.006932064425200224
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 0.08499599248170853,
+            "root_position_rmse_m": 0.0009101528557948768,
+            "active_joint_rmse_rad": 0.008974682539701462
+          }
+        },
+        "8": {
+          "windows": 190,
+          "learned": {
+            "normalized_state_mse": 0.1127813309431076,
+            "root_position_rmse_m": 0.024861911311745644,
+            "active_joint_rmse_rad": 0.028149127960205078
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 1.4629279375076294,
+            "root_position_rmse_m": 0.027353404089808464,
+            "active_joint_rmse_rad": 0.16531775891780853
+          }
+        },
+        "32": {
+          "windows": 166,
+          "learned": {
+            "normalized_state_mse": 0.6089670062065125,
+            "root_position_rmse_m": 0.21156492829322815,
+            "active_joint_rmse_rad": 0.06880856305360794
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 3.6130666732788086,
+            "root_position_rmse_m": 0.13790419697761536,
+            "active_joint_rmse_rad": 0.2728065848350525
+          }
+        }
+      }
+    },
+    {
+      "clip": "080_reach_front_both",
+      "split": "heldout",
+      "executed_steps": 188,
+      "trace": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_eval_final_20261023/080_reach_front_both.npz",
+        "bytes": 82482,
+        "sha256": "515f1e91e4fed68aea635b2864eabfeab7498b5b57c8960003406a9f64a497e5"
+      },
+      "reference": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/motions_20261023_M02/080_reach_front_both.npz",
+        "bytes": 3427035,
+        "sha256": "f00c5faedd0b1f256d27af6ffaf5214075346d69f68f753079185851b8039f0f"
+      },
+      "horizons": {
+        "1": {
+          "windows": 188,
+          "learned": {
+            "normalized_state_mse": 0.016147302463650703,
+            "root_position_rmse_m": 0.0008071943302638829,
+            "active_joint_rmse_rad": 0.0034611241426318884
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 0.025130363181233406,
+            "root_position_rmse_m": 0.0005957073881290853,
+            "active_joint_rmse_rad": 0.004801735281944275
+          }
+        },
+        "8": {
+          "windows": 181,
+          "learned": {
+            "normalized_state_mse": 0.03739011660218239,
+            "root_position_rmse_m": 0.01596500538289547,
+            "active_joint_rmse_rad": 0.018412934616208076
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 0.4208315908908844,
+            "root_position_rmse_m": 0.02130141109228134,
+            "active_joint_rmse_rad": 0.08461122959852219
+          }
+        },
+        "32": {
+          "windows": 157,
+          "learned": {
+            "normalized_state_mse": 0.399451345205307,
+            "root_position_rmse_m": 0.18044151365756989,
+            "active_joint_rmse_rad": 0.0538412481546402
+          },
+          "constant_velocity_prior": {
+            "normalized_state_mse": 2.7243168354034424,
+            "root_position_rmse_m": 0.1197543665766716,
+            "active_joint_rmse_rad": 0.25016143918037415
+          }
+        }
+      }
+    }
+  ],
+  "protocol": "All valid overlapping 1/8/32-step windows of saved deterministic final-policy traces; logged actions clamped as executed; friction 1 and zero bias/COM offset.",
+  "aggregation": "Window-mean metrics within each clip, then equal clip means within each group.",
+  "new_simulation_steps": 0,
+  "optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY",
+  "interpretation": "Offline prediction evidence, not independent causal identification or tracking success; reserved clips are now development diagnostics."
+}

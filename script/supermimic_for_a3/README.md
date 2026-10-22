@@ -68,3 +68,9 @@ the reported returns, completion and failures determine the performance result.
 `plot_matched.py --audit MATCHED_AUDIT.json --output NEW_FIGURE_DIRECTORY`
 renders the verified per-clip comparison as PNG and PDF, retaining the early
 termination counts and full-clip denominator in the figure.
+
+`diagnose_model.py --evaluation FINAL_EVALUATION/receipt.json --root A3_ASSET_ROOT
+--output NEW_DIAGNOSTIC.json` measures 1/8/32-step frozen-model errors on the
+existing physical traces, with a constant-velocity integration comparison. It
+performs no new physics steps or optimizer updates and does not identify a
+unique cause of tracking failure.

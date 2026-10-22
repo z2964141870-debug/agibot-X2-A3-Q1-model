@@ -340,3 +340,40 @@ envs/supermimic_a3_20261023/bin/python script/supermimic_for_a3/launch.py \
 - step0物理指标与R02 final完全一致，符合actor精确继承；R03 step0绑定本轮PT，未用旧文件替代。模型/轨迹原件仍在服务器且LOCAL_ONLY，Mac只接收小清单/日志。
 
 下一先基于本轮保存轨迹核查实际跟踪和H1/H8/H32模型预测，再按证据选择下一独立训练变量。原R03已结束，不恢复或重跑其完成阶段；不得将执行完成/增益或三项门失败改写为目标完成。原始可用SuperMimic for A3目标继续active。
+
+## D02新策略轨迹诊断与V02实际渲染
+
+既有`diagnose_model.py`使用R03最终保存轨迹实际退出0，逐文件身份和V04后端源码合同通过；0新物理/optimizer。所有有效重叠窗口内先按片段平均，再等权汇总。本轮H32根位置RMSE训练0.06053148米、开发0.05481941米，低于同轨迹恒速度0.07914635/0.07263191米；H8为0.01501049/0.01262554米，H1为0.00092106/0.00090956米。H32主动关节RMSE为0.05205442/0.04660527rad。
+
+这些数值来自R03访问轨迹，与D01的R02轨迹分布不同，不能直接当固定数据集上的模型改善比例或早倒唯一因果。它们支持模型在当前访问状态上已有实质多步预测能力，尚未测反事实动作梯度。见[D02收据](../data/manifests/supermimic_a3_R03_model_diagnostic_D02_20261023.json)，服务器原件`data/supermimic_for_a3/R03_model_diagnostic_D02_20261023.json`，日志`logs/supermimic_a3_R03_model_diagnostic_D02_20261023.log`。
+
+`render_trace.py`对R03最终001走路完整已执行9.50秒实际退出0：238帧、25FPS、9.52秒H264、1280×544；ffprobe核对尺寸/帧数/时长一致，面板最小像素标准差22.90，PNG已实际目视检查，末帧策略明显侧倾而参考直立。画面保留完整132.14秒分母与提前失败说明，未截短或包装成成功。0新物理/策略推理/optimizer，采样最高GPU39℃、usage28740141056字节。
+
+- [V02渲染收据](../data/manifests/supermimic_a3_R03_trace_render_V02_20261023.json)绑定实际模型、轨迹及工件；服务器`data/supermimic_for_a3/R03_trace_render_V02_20261023/`，日志`logs/supermimic_a3_R03_trace_render_V02_20261023.log`。
+- PNG183618字节、SHA`32c5b92f961f6bb581824904c6a27860b19b3783f7f6a208f86fef7da85d9fd9`；MP4352833字节、SHA`81278752db58716592d8a48059ec0b4d701811111a4c88bc9c0e7479bd364dc7`。Mac仅复制这两个小预览至`data/research/2026-10-23/supermimic/R03_trace_last_frame.png`及`R03_trace_comparison.mp4`，大小/SHA再核对一致。
+
+## R04预登记：保持配方，增加联合训练预算
+
+选择理由：R03八段完整分母回报/完成率均改善，执行时间延长，D02未显示当前H32根预测比恒速度更差；目前优先检验更多策略/模型联合训练是否继续改善，不再重复单独WM校准，也不同时更换奖励、horizon或物理。此为工程预算检验，不是C01因果消融或保证收敛。
+
+- 独立新run，全部三网络与三Adam继承已审计R03 final；不再注入C01旧WM，不改R03原件/终态。新replay、adaptive sampler和episode，显式新种子6921；学习率偏移6000，新采集计数归零，累计schedule到12000。
+- 本轮6000采集步×16环境=96000新真实env-step，4物理线程；128步填新replay、模型预热0，预计2349次WM与2349次actor更新，以实际收据为准。初始Adam32980/2098/41960，预期最终56470/4447/88940。
+- 四训练/四开发片段、83维状态/29动作、H32/k8、网络宽度、批量、奖励、控制/随机化/原1ms×20物理保持。检查点每500步；30GiB/86℃保护及定向已保存PT缓存建议保持，无自动重启。按R03吞吐粗估约3.4小时，不作完成时限承诺。
+- 新目录`data/supermimic_for_a3/R04_20261023`，日志`logs/supermimic_a3_R04_20261023.log`，启动清单`data/supermimic_for_a3/R04_20261023_launch.json`。后续独立完成目录`R04_completion_20261023`，原`complete_run.py`等待本轮实际PID/boot/start_ticks，预算成功后各一次step0/final八段完整评测、审计与原三项可用门。
+- 原三项门不放宽；同源开发片段不当最终未见测试。模型/轨迹原件继续LOCAL_ONLY，不复制大型文件到Mac或放Git。当前仅预登记，尚未启动R04；下一实时资源/输入SHA核对、发布并核验后实际启动。
+
+```bash
+env TORCHINDUCTOR_CACHE_DIR=/opt/data/private/yuanqi_ops/data/tools/torchinductor_supermimic_a3 \
+ envs/supermimic_a3_20261023/bin/python script/supermimic_for_a3/launch.py \
+ --python envs/supermimic_a3_20261023/bin/python \
+ --log logs/supermimic_a3_R04_20261023.log \
+ --record data/supermimic_for_a3/R04_20261023_launch.json -- \
+ --root /opt/data/private/hechengzhu/ZHY \
+ --motions data/supermimic_for_a3/motions_20261023_M02 \
+ --backend-receipt data/supermimic_for_a3/source_audit_20261023/backend_V04.json \
+ --output data/supermimic_for_a3/R04_20261023 --steps 6000 --num-envs 16 --threads 4 \
+ --batch 64 --wm-batch 128 --wm-batches 10 --warmup-steps 128 \
+ --model-warmup-updates 0 --checkpoint-every 500 --seed 6921 --compile \
+ --initialize-from data/supermimic_for_a3/R03_20261023/final.pt \
+ --clips 001_walk_front_slow 042_squat_shallow_repeated 058_punch_front_alternating 077_reach_overhead_both
+```

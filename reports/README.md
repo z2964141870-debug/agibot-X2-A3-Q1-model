@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：R02最近2125/3000采集步、34000env-step、599次策略更新，step2000保存；step0八段基线已完成（全提前失败），无最终效果。16环境/4线程完整网络继续训练，PID/PGID692767；下一同八段最终评测及配对审计。网盘已知入口本机未找到，原件LOCAL_ONLY，空间充足；保护保持，维护main。
+2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：R02训练预算完成3000步/48000env-step、949次策略更新、87.80分钟，原生退出0/final.pt已存。step0八段基线全提前失败；最终效果未知，下一final同八段评测及配对审计。代码/小清单维护main，权重LOCAL_ONLY，网盘已知入口本机未找到。
 
 2026-10-22（10/23补记）：[A3解剖肩点候选T13](README_TELEOP_A3_SHOULDER_PROBE_20261022.md)实际退出1，FAILED_PRE_IK；roll/yaw静止朝向重合假设不成立，0新增IK/动力学/训练，无候选通过或遗留作业。保存失败证据，用户新目标转入SuperMimic论文与A3训练。
 
@@ -149,7 +149,7 @@ HP07退出定位：十步/CUDA同步已通过，30秒栈确认app.close触发STO
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
-| 2026-10-23 | SuperMimic A3适配与R02训练 | V04通过/M02共20段；R02最近599次策略更新，step0八段基线已完成/全提前失败，尚无最终效果；网盘入口/LOCAL_ONLY已记录，见[阶段与恢复](README_SUPERMIMIC_FOR_A3_20261023.md) |
+| 2026-10-23 | SuperMimic A3适配与R02训练 | V04通过/M02共20段；R02完成48000env-step/949次策略更新/原生退出0，step0基线已完成，最终效果待评测；见[阶段与恢复](README_SUPERMIMIC_FOR_A3_20261023.md) |
 | 2026-10-22 | 传感衣遥操会话档案理解 | 包中主线已转回衣服IMU→FGP→SMPL→重定向→运控；30帧A3参考质量门未过，最后定位重定向误差，见[目标与进度](README_TELEOP_CONTEXT_REVIEW_20261022.md)；本轮只读档案，不恢复任务 |
 | 2026-10-22 | Onset团队说明与DIO再评估 | 完整任务热身跌倒62/80→59/80，非78%→13%；MLP历史栈非RNN，DIO4/8与会话留出2/4不倒可保留但算法贡献未证，见[复核与投入门](README_ONSET_TEAM_REVIEW_20261022.md)，0新训练/仿真 |
 | 2026-10-22 | Onset论文可行性与证据审查 | 首次审查的去重/列定义/分组CV已有修正；历史问题及因果边界见[原评估](README_ONSET_PUBLICATION_REVIEW_20261022.md)，最新结论见团队说明复核 |

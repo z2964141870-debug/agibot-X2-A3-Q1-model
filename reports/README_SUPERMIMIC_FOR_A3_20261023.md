@@ -1,6 +1,6 @@
 # SuperMimic for A3：论文、实现与训练
 
-记录日期：2026-10-23（北京时间）。阶段：SM-A3-P01/P02/R01/R02。状态：全文/A3后端验证完成；R01首步前内存保护停止，独立R02联合训练进行中，未训练step0八段基线完成，尚无最终策略效果。
+记录日期：2026-10-23（北京时间）。阶段：SM-A3-P01/P02/R01/R02。状态：全文/A3后端验证与R02训练预算已完成，step0八段基线完成；最终策略评测和配对审计待执行，尚无效果结论。
 
 ## 目标与范围
 
@@ -125,3 +125,13 @@ R02最近2125/3000采集步、34000env-step、799次WM更新、599次策略更�
 本机存储入口已独立核查，[收据](../data/manifests/supermimic_a3_storage_20261023.json)固定UTC2026-10-22T18:08:46（北京时间10/23 02:08）、huanyu与当前boot：项目所在盘可用2056311394304字节，约1.87TiB；`/opt/baidunetdisk/baidunetdisk`不可执行，PATH中BaiduPCS-Go/baidupcs-go/bypy/rclone均未找到。范围仅为已知路径与PATH，未据此断言所有可能入口不存在。未读取认证材料、安装客户端或更换账号，原始执行收据在`logs/supermimic_a3_storage_20261023.json`。旧hp3090客户端8.7.0记录不能作为huanyu已具备传输的证明。
 
 当前权重、动作和评测轨迹保持服务器原件及`LOCAL_ONLY`，没有网盘上传/下载校验或备份完成证据；Git仅保存代码、报告和小型清单。本机空间充足，无需删除checkpoint。下一完成剩余875个采集步，然后执行同八段最终评测和`audit_run.py`，先读实际终态，不能重启R01或复用旧STOPPED账本。
+
+## R02训练预算完成（02:38）
+
+实际终态`TRAINING_FINISHED_PENDING_EVALUATION`，error=null；3000采集步、48000真实env-step、1149次WM更新、949次策略更新，用时5268.134秒（87.80分钟）。PID692767已为Zs/RSS0，`/proc/692767/stat`退出字段0，无存活计算；历史oom_kill仍14、memory.failcnt仍158689333，未新增。训练完成不等于跟踪效果通过，最终权重和配对审计尚未执行。
+
+- [训练终态/全部PT大小SHA清单](../data/manifests/supermimic_a3_R02_training_20261023.json)；[120条训练指标记录](../logs/supermimic_a3_R02_metrics_20261023.jsonl)。原始日志保留服务器`logs/supermimic_a3_R02_20261023.log`。
+- 120个采样记录中GPU最高43℃、容器usage最高31748255744字节，均未越86℃/30GiB保护；这是采样最大值，不能代表未采样时刻的连续峰值。最终WM八步误差0.03613，高于热身末0.01573，联合训练中的分布变化和模型有效性仍需真实评测判断。
+- `final.pt`大小215995283字节，SHA-256 `a491c07634a2fca4346b053e32d7d73f41f7f666864c2504f32b6ad1e59aa6d3`；step3000独立保存216003303字节，完整身份见清单。权重/输入/轨迹仍`LOCAL_ONLY`，没有Mac大型复制或Git权重提交。
+- step2500后的[缓存维护005](../data/manifests/supermimic_a3_R02_cache_005_20261023.json)仍仅本轮六个PT、0删除；usage29775970304→29556363264。
+- 下一立即在新目录`data/supermimic_for_a3/R02_eval_final_20261023`使用final.pt执行与step0相同八段/协议的真实MuJoCo评测，再`audit_run.py`核验参数/optimizer/保存轨迹与配对，最后报告真实效果。无需恢复或追加训练。

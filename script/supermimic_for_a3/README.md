@@ -64,3 +64,7 @@ The audit checks actual network changes, finite parameters/optimizer states,
 optimizer step counts, artifact identities, and matching evaluation clips and
 protocols. Its verification status confirms the training/evaluation evidence;
 the reported returns, completion and failures determine the performance result.
+
+`plot_matched.py --audit MATCHED_AUDIT.json --output NEW_FIGURE_DIRECTORY`
+renders the verified per-clip comparison as PNG and PDF, retaining the early
+termination counts and full-clip denominator in the figure.

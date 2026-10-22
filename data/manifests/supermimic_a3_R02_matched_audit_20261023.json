@@ -1,0 +1,273 @@
+{
+  "status": "TRAINING_AND_MATCHED_EVALUATION_VERIFIED",
+  "run_receipt": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_20261023/receipt.json",
+    "bytes": 2023,
+    "sha256": "858613a780bb4383c93fffea52cddd192d7b4735d3a9710598a7bd1c82672c6c"
+  },
+  "initial_checkpoint": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_20261023/step_000000.pt",
+    "bytes": 72021227,
+    "sha256": "009cacf08df91b04f7a21ed90221f10ab73e2782d53d04b283d6f7ba4a7959f3"
+  },
+  "final_checkpoint": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_20261023/final.pt",
+    "bytes": 215995283,
+    "sha256": "a491c07634a2fca4346b053e32d7d73f41f7f666864c2504f32b6ad1e59aa6d3"
+  },
+  "audit_entry": {
+    "path": "/opt/data/private/yuanqi_ops/script/supermimic_for_a3/audit_run.py",
+    "bytes": 8288,
+    "sha256": "b7a39cb432e955cb5533521584fe05e81204bfd7be7f5eaa2476a0fec089d045"
+  },
+  "networks": {
+    "wm": {
+      "tensors": 15,
+      "changed_tensors": 14,
+      "max_abs_delta": 0.6360131874680519
+    },
+    "policy": {
+      "tensors": 22,
+      "changed_tensors": 20,
+      "max_abs_delta": 0.06577907409518957
+    },
+    "critic": {
+      "tensors": 7,
+      "changed_tensors": 6,
+      "max_abs_delta": 1.5582076696446165
+    }
+  },
+  "optimizers": {
+    "wm_opt": {
+      "parameter_states": 14,
+      "steps_per_parameter": 11490
+    },
+    "policy_opt": {
+      "parameter_states": 20,
+      "steps_per_parameter": 949
+    },
+    "critic_opt": {
+      "parameter_states": 6,
+      "steps_per_parameter": 18980
+    }
+  },
+  "groups": {
+    "training": {
+      "clips": 4,
+      "mean_return_delta": 0.016457694630318466,
+      "initial": {
+        "clips": 4,
+        "failures": 4,
+        "mean_normalized_return": 0.01813476186412847,
+        "mean_completion": 0.025378443114108893
+      },
+      "trained": {
+        "clips": 4,
+        "failures": 4,
+        "mean_normalized_return": 0.034592456494446935,
+        "mean_completion": 0.04854001310342332
+      }
+    },
+    "heldout": {
+      "clips": 4,
+      "mean_return_delta": 0.02392823587529646,
+      "initial": {
+        "clips": 4,
+        "failures": 4,
+        "mean_normalized_return": 0.014320501691725798,
+        "mean_completion": 0.020997670549053587
+      },
+      "trained": {
+        "clips": 4,
+        "failures": 4,
+        "mean_normalized_return": 0.03824873756702226,
+        "mean_completion": 0.05119001412322048
+      }
+    }
+  },
+  "rows": [
+    {
+      "clip": "001_walk_front_slow",
+      "split": "training",
+      "normalized_return": {
+        "initial": 0.021120624390360408,
+        "trained": 0.017895287992969768
+      },
+      "full_clip_completion": {
+        "initial": 0.027092477675192978,
+        "trained": 0.024065385197517785
+      },
+      "failed": {
+        "initial": true,
+        "trained": true
+      },
+      "executed_steps": {
+        "initial": 179,
+        "trained": 159
+      },
+      "return_delta": -0.00322533639739064
+    },
+    {
+      "clip": "042_squat_shallow_repeated",
+      "split": "training",
+      "normalized_return": {
+        "initial": 0.012829545406174515,
+        "trained": 0.02276386864124195
+      },
+      "full_clip_completion": {
+        "initial": 0.018158236057068743,
+        "trained": 0.033938607868568955
+      },
+      "failed": {
+        "initial": true,
+        "trained": true
+      },
+      "executed_steps": {
+        "initial": 84,
+        "trained": 157
+      },
+      "return_delta": 0.009934323235067436
+    },
+    {
+      "clip": "058_punch_front_alternating",
+      "split": "training",
+      "normalized_return": {
+        "initial": 0.020921456003918763,
+        "trained": 0.05915672912201941
+      },
+      "full_clip_completion": {
+        "initial": 0.0306047197640118,
+        "trained": 0.08517699115044247
+      },
+      "failed": {
+        "initial": true,
+        "trained": true
+      },
+      "executed_steps": {
+        "initial": 83,
+        "trained": 231
+      },
+      "return_delta": 0.03823527311810064
+    },
+    {
+      "clip": "077_reach_overhead_both",
+      "split": "training",
+      "normalized_return": {
+        "initial": 0.017667421656060188,
+        "trained": 0.038553940221556615
+      },
+      "full_clip_completion": {
+        "initial": 0.025658338960162053,
+        "trained": 0.05097906819716408
+      },
+      "failed": {
+        "initial": true,
+        "trained": true
+      },
+      "executed_steps": {
+        "initial": 76,
+        "trained": 151
+      },
+      "return_delta": 0.020886518565496427
+    },
+    {
+      "clip": "004_walk_frontleft_slow",
+      "split": "heldout",
+      "normalized_return": {
+        "initial": 0.010454134764866186,
+        "trained": 0.021939795998925413
+      },
+      "full_clip_completion": {
+        "initial": 0.014957264957264958,
+        "trained": 0.028846153846153848
+      },
+      "failed": {
+        "initial": true,
+        "trained": true
+      },
+      "executed_steps": {
+        "initial": 84,
+        "trained": 162
+      },
+      "return_delta": 0.011485661234059226
+    },
+    {
+      "clip": "048_balance_right_singleleg",
+      "split": "heldout",
+      "normalized_return": {
+        "initial": 0.019910345310707005,
+        "trained": 0.06419828769569305
+      },
+      "full_clip_completion": {
+        "initial": 0.029423303256178895,
+        "trained": 0.08316987053746568
+      },
+      "failed": {
+        "initial": true,
+        "trained": true
+      },
+      "executed_steps": {
+        "initial": 75,
+        "trained": 212
+      },
+      "return_delta": 0.04428794238498605
+    },
+    {
+      "clip": "056_lunge_side_alternating",
+      "split": "heldout",
+      "normalized_return": {
+        "initial": 0.009976848394566114,
+        "trained": 0.025750981197574387
+      },
+      "full_clip_completion": {
+        "initial": 0.015319800842589047,
+        "trained": 0.037725009574875526
+      },
+      "failed": {
+        "initial": true,
+        "trained": true
+      },
+      "executed_steps": {
+        "initial": 80,
+        "trained": 197
+      },
+      "return_delta": 0.015774132803008274
+    },
+    {
+      "clip": "080_reach_front_both",
+      "split": "heldout",
+      "normalized_return": {
+        "initial": 0.01694067829676389,
+        "trained": 0.04110588537589618
+      },
+      "full_clip_completion": {
+        "initial": 0.024290313140181447,
+        "trained": 0.05501902253438689
+      },
+      "failed": {
+        "initial": true,
+        "trained": true
+      },
+      "executed_steps": {
+        "initial": 83,
+        "trained": 188
+      },
+      "return_delta": 0.02416520707913229
+    }
+  ],
+  "evaluation_receipts": [
+    {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_eval_step0_20261023/receipt.json",
+      "bytes": 8080,
+      "sha256": "2622cab800d0fe41e78ebed4ac9a34b05e22626ef66014676cd69667b0e6689f"
+    },
+    {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R02_eval_final_20261023/receipt.json",
+      "bytes": 8076,
+      "sha256": "67c427fd9c7270017d9868f55965e7e2629091bf65dc0f44e8fb93428f53a396"
+    }
+  ],
+  "storage_status": "LOCAL_ONLY",
+  "not_hardware_validated": true,
+  "interpretation": "Verification confirms execution and matched evaluation; performance is reported without a success override."
+}

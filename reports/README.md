@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-22：[传感衣遥操下一阶段计划](README_TELEOP_NEXT_PLAN_20261022.md)：先固定CLOTHO新代码/复用权重和无硬件离线入口，建立配对人体基线，解释标签臂肩/膝重定向误差；参考过既有质量门后才用冻结035做匹配动力学比较，再按证据选择一个改进变量和独立测试。stage_tran两权重待补不阻塞姿态/几何核查。本轮仅计划，无推理/仿真/训练。
+
 2026-10-22：[传感衣遥操资源盘点与FGP核对](README_TELEOP_RESOURCE_INVENTORY_20261022.md)：用户已确认当前FGP代码为CLOTHO-mocap-main.zip，主干权重基本复用；静态比较新增stage_tran，在线LIP改用tanh，新增root_velocity/foot_geometry两权重暂未定位，未运行。huanyu实测RTX3090 24GiB/32GiB容器、SMB连通；PHUMA有G1/H1_2各73076文件，v7实际10段，Demo100无GT派生池不当真值；AMASS原库未定位。新Windows登录断开，核查用原可用跳板；无训练/仿真。
 
 2026-10-18：[Exp-2a根位移可辨识性HP24/HP25两轮STOPPED](README_A3_HUMANPLUS_ROOT_IDENT_20261018.md)：阳性对照两轮未过门，按合同2.4停止上报；判据不适用，分段观察与全部数字见阶段README与manifests，GitHub未同步。

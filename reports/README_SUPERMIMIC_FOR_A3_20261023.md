@@ -1,6 +1,6 @@
 # SuperMimic for A3：论文、实现与训练
 
-记录日期：2026-10-23（北京时间）。阶段：SM-A3-P01/P02/R01/R02。状态：R02训练、八段配对物理评测、参数/轨迹审计和离线模型诊断完成；7/8片段对随机初始化改善，但八段全提前失败，尚非可用跟踪策略。
+记录日期：2026-10-23（北京时间）。阶段：SM-A3-P01/P02/R01/R02/C01/R03。状态：R02八段全提前失败；C01完成且独立验收通过，长视野根误差降低50.60%。已实现独立模型初始化入口，R03尚待实际启动与物理评测，尚非可用跟踪策略。
 
 ## 目标与范围
 
@@ -210,3 +210,37 @@ env TORCHINDUCTOR_CACHE_DIR=/opt/data/private/yuanqi_ops/data/tools/torchinducto
 03:12快照：fitting第640采集步、10240env-step，0WM/actor更新；usage30325219328字节，GPU38℃，无新增OOM。此时仍在运行，尚无最终校准或策略效果。恢复以实际C01/status.json、receipt.json和PID为准，不把启动记录当完成证明。
 
 C01运行期间新增独立`audit_calibration.py`：检查保存的数据计数/两种子、每个完整验证窗口属于验证replay且不属于fitting、输入/工件SHA、WM Adam实际计数，最后从初始/最终权重重新计算固定窗口误差与预登记判据。语法检查和服务器CPU三项控制通过（合法窗口接受、动作篡改拒绝、跨episode拒绝），不增加物理/optimizer或改变运行中的入口。此时尚未实际验收C01；actor冻结的独立证据限于hash绑定源码和其运行时逐张量检查，没有额外保存最终actor快照，明确不夸大为独立actor快照验证。
+
+## C01实际完成与独立验收
+
+C01原生wait status=0，PID702742为Z且RSS0；完整32768env-step、1000次WM更新（10000个Adam step），717.552秒；0 actor/critic更新，运行时逐张量确认actor不变。WM14个可训练张量变化，实际Adam11490→21490。四训练动作均出现在两组独立采集中，各组16384转移；两种子4911/4912。日志采样最高GPU42℃、容器30348595200字节；完成后OOM仍14，无新增。
+
+`audit_calibration.py`实际退出0，状态`WORLD_MODEL_CALIBRATION_INDEPENDENTLY_VERIFIED`。1/8/32各256完整验证窗口逐一匹配validation replay，未出现在fitting replay；计数/大小/SHA/参数/优化器及重新计算指标一致，三项预登记判据全通过。
+
+| 固定验证指标 | R02原WM | C01最终WM | 改善 |
+| --- | --- | --- | --- |
+| 1步标准化状态MSE | 0.06386335 | 0.03121058 | 51.13% |
+| 8步根位置RMSE（米） | 0.02458826 | 0.01201112 | 51.15% |
+| 32步根位置RMSE（米） | 0.17778267 | 0.08782202 | 50.60% |
+| 32步主动关节RMSE（弧度） | 0.07648224 | 0.04535765 | 40.70% |
+
+该结果只支持冻结R02访问分布上模型校准有效，未测新策略访问状态或反事实动作梯度。C01没有更新策略，机器人跟踪能力仍是R02的八段早倒；不能把这张表写成policy提升或论文结果复现。
+
+- [实际校准收据](../data/manifests/supermimic_a3_C01_calibration_20261023.json)、[独立验收](../data/manifests/supermimic_a3_C01_audit_20261023.json)、[有界逐阶段指标](../logs/session_records/supermimic_a3_C01_metrics_20261023.log)。
+- 校准WM：`data/supermimic_for_a3/C01_20261023/calibrated_world_model.pt`，106400425字节，SHA`3c4783ee92d90d0162d143898c8e48a799dc735b2ae301fe8364817be35a384c`。
+- 两组replay各约24MB、固定窗口约6.45MB，精确大小/SHA见收据；全部留服务器且`LOCAL_ONLY`，未复制大文件到Mac。
+- 复现验收：`audit_calibration.py --calibration data/supermimic_for_a3/C01_20261023 --output NEW_AUDIT.json`。原日志`logs/supermimic_a3_C01_audit_20261023.log`。
+
+## R03实现与预登记：校准模型后的策略训练
+
+依据C01通过结果推进实际策略闭环。新增`initialization.py`和`train.py --initialize-from ... --calibration-audit ...`：只接受已完成run的最终状态；资产、仿真、网络、训练器、引用和后端合同必须一致，采用校准WM须独立验收且候选门通过。继承R02 actor/critic及其Adam，WM/Adam改用C01；新replay、采样记忆、episode和显式种子，不伪装原进程恢复。step0是已训练父模型初始化；本轮计数归零，Adam累计计数和学习率起点继承并记录。R02原件/终态不改。
+
+CPU控制验证继承张量/三种Adam状态与学习率偏移，拒绝仿真合同变化和失败校准；语法检查通过。[控制记录](../logs/session_records/supermimic_a3_initialization_controls_20261023.log)。修改`audit_run.py`逐张量/逐optimizer状态核对新run初始化来源并检查新增计数。原R02新输出回归验收退出0、效果数字不变，未重新仿真或优化：[回归收据](../data/manifests/supermimic_a3_R02_audit_regression_W01_20261023.json)。
+
+真实R02/C01全宽网络初始化控制实际退出0：原A3资产/默认三网络配置匹配，actor/critic逐张量与R02相同，初始Adam21490/949/18980与schedule偏移3000一致，有限性/健康通过（GPU38℃、usage28894048256字节）。该控制仅分配/加载CUDA张量，0物理/optimizer更新；退出后再启动真实R03。
+
+- R03固定3000采集步/16环境/4线程/48000新env-step，种子5921；四训练/四开发动作、H32/k8/网络/奖励/物理与批量保持。128步填新replay，已有校准WM不重复200次模型预热，`--model-warmup-updates 0`。预期1149次WM/actor更新，以实际收据为准。
+- 初始Adam WM21490、actor949、critic18980；预期最终32980/2098/41960。学习率schedule起点3000，新增采集计数到6000。每500步保存，独立新目录`data/supermimic_for_a3/R03_20261023`和对应R03日志/launch.json，保持30GiB/86℃保护，无自动重启。
+- 保存step0/final后按原协议八段完整确定性评测，独立审计继承状态/实际更新/早倒分母。当前四开发片段已看过，不当未触及最终测试。此轮比较自身step0/final检验组合训练是否改善，不能把新增策略预算的影响单独归因于C01。
+- 初步可用门：四训练片段均完整不提前终止、均值完整片段归一化回报≥0.5、每片段存活段主动关节RMSE≤0.15rad；仍另报四开发结果。门仅限定这四片段的离线物理任务，不能称通用或真机通过。未达门则保存失败结论，再依据轨迹选择下一变量。
+- 当前为实现/预登记，尚无R03训练或效果；下一核对源码/输入SHA与实时资源，发布后实际启动。

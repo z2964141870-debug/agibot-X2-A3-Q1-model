@@ -14,6 +14,7 @@ import time
 import numpy as np
 import torch
 
+from initialization import load_initialization
 from supermimic.a3_assets import A3Assets, TRACKED, identity
 from supermimic.a3_sim import A3Sim, SimCfg
 from supermimic.data.replay_buffer import ReplayBuffer
@@ -64,7 +65,11 @@ def main():
     p.add_argument("--seed", type=int, default=1404)
     p.add_argument("--device", default="cuda:0")
     p.add_argument("--clips", nargs="+", default=None)
+    p.add_argument("--initialize-from", type=Path)
+    p.add_argument("--calibration-audit", type=Path)
     args = p.parse_args()
+    if args.calibration_audit is not None and args.initialize_from is None:
+        raise ValueError("A calibrated model requires an explicit completed source policy")
     receipt = json.loads(args.backend_receipt.read_text())
     if receipt["status"] != "BACKEND_AND_GRADIENT_CONTRACT_PASSED":
         raise ValueError("A3 backend has not passed numerical and gradient verification")
@@ -115,6 +120,12 @@ def main():
                     "Full A3 state including head and passive feet; active 29-joint actor",
                     "Smaller environment and update batch on shared RTX3090", "Pelvis reward anchor",
                     "No pose/velocity reset noise in this first adaptation", "Model-only warmup before BPTT"]}
+    manifest["initialization"] = None
+    manifest["learning_rate_step_offset"] = 0
+    if args.initialize_from is not None:
+        manifest["initialization"] = load_initialization(args.initialize_from, args.calibration_audit,
+                                                        manifest, wm, policy, critic, wt, pt)
+        manifest["learning_rate_step_offset"] = manifest["initialization"]["learning_rate_step_offset"]
     atomic_json(args.output / "admission.json", manifest)
     step = updates = policy_updates = 0
     started = time.monotonic()
@@ -153,7 +164,8 @@ def main():
                 accumulated += .4
                 if accumulated >= 1.:
                     accumulated -= 1.
-                    lr = 2e-4 * (.03 + .97 * .5 * (1 + math.cos(math.pi * min(step / 250000., 1.))))
+                    schedule_step = manifest["learning_rate_step_offset"] + step
+                    lr = 2e-4 * (.03 + .97 * .5 * (1 + math.cos(math.pi * min(schedule_step / 250000., 1.))))
                     wt.set_lr(lr)
                     pt.set_lr(lr)
                     wm_metrics = wt.update(buffer)

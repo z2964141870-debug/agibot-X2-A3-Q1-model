@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：R02/D01完成但8/8提前失败；C01已实际启动，PID702742，正采集冻结策略的独立训练/验证数据。预算32768env-step/1000额外WM更新，0策略/critic更新；判据已预登记，尚无最终结果。R03未启动，原件LOCAL_ONLY，维护main。
+2026-10-23：[SuperMimic for A3](README_SUPERMIMIC_FOR_A3_20261023.md)：C01实际32768env-step/1000 WM更新完成，独立验收通过；32步根误差17.78→8.78cm（-50.60%），策略不变，R02仍8/8早倒。已实现并预登记独立R03初始化/3000步策略训练及完整评测，尚未启动；原件LOCAL_ONLY，维护main。
 
 2026-10-22（10/23补记）：[A3解剖肩点候选T13](README_TELEOP_A3_SHOULDER_PROBE_20261022.md)实际退出1，FAILED_PRE_IK；roll/yaw静止朝向重合假设不成立，0新增IK/动力学/训练，无候选通过或遗留作业。保存失败证据，用户新目标转入SuperMimic论文与A3训练。
 

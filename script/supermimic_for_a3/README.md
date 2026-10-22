@@ -48,7 +48,7 @@ envs/supermimic_a3_20261023/bin/python script/supermimic_for_a3/audit_run.py \
 ```
 
 Output directories must be new. Failed runs and receipts are retained. There is no
-automatic restart. `step_000000.pt` is the untrained baseline. `final.pt` is saved
+automatic restart. `step_000000.pt` is this run's baseline. `final.pt` is saved
 after actual training and still requires deterministic physics evaluation.
 `status.json` is an atomic progress snapshot; `metrics.jsonl` contains training
 metrics. SIGTERM/SIGINT requests a checkpointed stop after the current update.
@@ -92,3 +92,14 @@ membership and exclusion from fitting, artifact identities and Adam update count
 It recomputes initial/final model errors from the saved weights and fixed windows.
 The actor freeze evidence remains the hash-bound calibration entry's runtime
 tensor-equality check; no independent final actor snapshot is exported by C01.
+
+For a new run, `train.py --initialize-from COMPLETED_RUN/final.pt` inherits the
+completed policy, critic, world model and their Adam states. References, backend,
+simulator and network/trainer contracts must match. Optional
+`--calibration-audit VERIFIED_CALIBRATION.json` substitutes only the calibrated
+world model and its Adam state, and requires a passed independently verified gate.
+Use an explicit fresh output directory and seed; replay, sampler and episodes are
+fresh. The learning rate schedule continues from the source collection count.
+Local update counters start at zero and the audit checks optimizer increments
+against inherited counts. In this mode `step_000000.pt` is a trained parent
+initialization, not a random policy. Choose model warmup explicitly for the new run.

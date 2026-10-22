@@ -31,7 +31,7 @@ def main():
     initial = torch.load(initial_path, map_location="cpu", weights_only=False)
     final = torch.load(final_path, map_location="cpu", weights_only=False)
     require(initial["step"] == initial["policy_updates"] == initial["wm_updates"] == 0,
-            "Baseline is not this run's untrained initialization")
+            "Baseline is not this run's step-zero state")
     require(initial["manifest"] == final["manifest"], "Checkpoint contracts differ")
     manifest = final["manifest"]
     require(final["step"] == manifest["args"]["steps"] == receipt["step"], "Collection budget mismatch")
@@ -57,18 +57,60 @@ def main():
         networks[name] = {"tensors": len(after), "changed_tensors": changed, "max_abs_delta": max_delta}
 
     cfg = manifest["policy_trainer"]
-    expected_steps = {"wm_opt": final["wm_updates"] * manifest["wm_trainer"]["batches_per_update"],
-                      "policy_opt": final["policy_updates"],
-                      "critic_opt": final["policy_updates"] * cfg["critic_epochs"] * cfg["critic_minibatches"]}
+    step_increments = {"wm_opt": final["wm_updates"] * manifest["wm_trainer"]["batches_per_update"],
+                       "policy_opt": final["policy_updates"],
+                       "critic_opt": final["policy_updates"] * cfg["critic_epochs"] * cfg["critic_minibatches"]}
+    initialization = manifest.get("initialization")
+    if initialization is not None:
+        require(identity(initialization["source_checkpoint"]["path"]) == initialization["source_checkpoint"],
+                "Initialization checkpoint changed")
+        require(identity(initialization["source_receipt"]["path"]) == initialization["source_receipt"],
+                "Initialization receipt changed")
+        source = torch.load(initialization["source_checkpoint"]["path"], map_location="cpu", weights_only=False)
+        model_source = source
+        if initialization["calibration_audit"] is not None:
+            audit_id = initialization["calibration_audit"]
+            require(identity(audit_id["path"]) == audit_id, "Calibration audit changed")
+            calibration = json.loads(Path(audit_id["path"]).read_text())
+            require(calibration["status"] == "WORLD_MODEL_CALIBRATION_INDEPENDENTLY_VERIFIED"
+                    and calibration["passed_for_candidate"] is True, "Calibration candidate gate failed")
+            require(calibration["source_checkpoint"] == initialization["source_checkpoint"],
+                    "Calibration source policy differs")
+            require(initialization["model_source"] in calibration["artifacts"], "Calibrated model is not bound to audit")
+            require(identity(initialization["model_source"]["path"]) == initialization["model_source"],
+                    "Calibrated model changed")
+            model_source = torch.load(initialization["model_source"]["path"], map_location="cpu", weights_only=False)
+        for name in ("wm", "policy", "critic", "wm_opt", "policy_opt", "critic_opt"):
+            expected = model_source[name] if name in ("wm", "wm_opt") else source[name]
+            actual = initial[name]
+            if name.endswith("_opt"):
+                require(expected["param_groups"] == actual["param_groups"], f"{name} initial groups differ")
+                expected, actual = expected["state"], actual["state"]
+                require(expected.keys() == actual.keys(), f"{name} initial state keys differ")
+                for parameter in expected:
+                    require(expected[parameter].keys() == actual[parameter].keys(), f"{name} initial moments differ")
+                    for key, value in expected[parameter].items():
+                        other = actual[parameter][key]
+                        require(torch.equal(value, other) if torch.is_tensor(value) else value == other,
+                                f"{name} initial state differs: {parameter}/{key}")
+            else:
+                require(expected.keys() == actual.keys() and all(torch.equal(v, actual[k]) for k, v in expected.items()),
+                        f"{name} initial tensors differ from source")
+        del source, model_source
     optimizers = {}
-    for name, expected in expected_steps.items():
+    for name, increment in step_increments.items():
         states = final[name]["state"]
         counts = [int(state["step"]) for state in states.values()]
-        require(counts and all(count == expected for count in counts), f"{name} step count mismatch")
+        before_states = initial[name]["state"]
+        require(not before_states or before_states.keys() == states.keys(), f"{name} optimizer parameter keys differ")
+        require(counts and all(int(state["step"]) == (int(before_states[key]["step"]) if key in before_states else 0) + increment
+                               for key, state in states.items()), f"{name} step count mismatch")
         for state in states.values():
             require(all(bool(torch.isfinite(value).all()) for value in state.values() if torch.is_tensor(value)),
                     f"Nonfinite {name} state")
-        optimizers[name] = {"parameter_states": len(states), "steps_per_parameter": expected}
+        optimizers[name] = {"parameter_states": len(states), "steps_per_parameter": counts[0],
+                            "additional_steps_per_parameter": increment,
+                            "initial_steps": sorted({int(s["step"]) for s in before_states.values()})}
 
     evaluations = [json.loads(path.read_text()) for path in (args.baseline, args.trained)]
     for evaluation, path in zip(evaluations, (initial_path, final_path)):

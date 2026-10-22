@@ -92,3 +92,11 @@ R01失败/资源调整已发布并独立核验`main=b6ebd8d9fb7a3fb12d99382eda6f
 - 首125个采集步/2000个真实env-step已完成，0模型/策略更新，随后进入首次世界模型编译。最近状态内存30206095360字节、GPU39℃；这些是启动快照，不是持续健康或训练完成证明。
 - 启动后核查使用`status.json`、`metrics.jsonl`、`receipt.json`及实际PID/PGID；以真实终态为准，不因启动记录存在就续跑或称为完成。无自动重启。
 - 下一步：完成预定3000步与联合更新；核验最终权重和收据；用本轮step0与final在相同八个完整片段进行确定性物理评测，保留早倒分母，再报告训练/留出集效果。原始权重/NPZ仍为`LOCAL_ONLY`。
+
+## R02联合训练与文件缓存维护
+
+R02已完成首次想象入口编译并进行真实策略/critic更新；最近核查850采集步、13600env-step、289次WM更新、89次策略更新，全部记录指标有限。每次联合更新约5.1秒；这是当前共享3090/CPU后端的实测吞吐，不使用论文H100耗时作本机承诺。运行进程未设置`CUDA_LAUNCH_BLOCKING`，GPU实际SM时钟1695MHz；当前不改变科学配置或中途缩减预算。
+
+容器保护读取usage，包括本轮文件页缓存。为保留原30GiB保护又避免checkpoint缓存累计占额，新增`script/supermimic_for_a3/release_checkpoint_cache.py`，仅针对明确指定的本轮目录中已原子完成的常规PT文件，先`fsync`再`POSIX_FADV_DONTNEED`；不删除文件、不处理全局缓存或其他目录。首次对step0和step500执行成功，分别72021227/142947221字节；操作前后容器usage31744638976→31524446208字节（运行中快照，不能当精确独占回收量）。记录见服务器`logs/supermimic_a3_R02_cache_001.json`及[小副本](../data/manifests/supermimic_a3_R02_cache_001_20261023.json)。后续完成checkpoint按需同样处理，不放宽保护。
+
+新增`script/supermimic_for_a3/audit_run.py`核验最终预算、三个网络实际变化/有限性、三个optimizer的精确step计数和有限状态、checkpoint/轨迹/参考SHA，以及两次评测完全匹配的片段与协议；从保存轨迹独立复算完整片段分母的回报和完成率，并复算分组统计。语法检查通过，实际权重/评测审计尚待R02完成，不能预先标成通过。

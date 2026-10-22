@@ -39,6 +39,12 @@ envs/supermimic_a3_20261023/bin/python script/supermimic_for_a3/evaluate.py \
   --motions data/supermimic_for_a3/motions_20261023_M02 \
   --checkpoint data/supermimic_for_a3/RUN/final.pt \
   --output data/supermimic_for_a3/NEW_EVALUATION
+
+envs/supermimic_a3_20261023/bin/python script/supermimic_for_a3/audit_run.py \
+  --run data/supermimic_for_a3/RUN \
+  --baseline data/supermimic_for_a3/BASELINE_EVALUATION/receipt.json \
+  --trained data/supermimic_for_a3/TRAINED_EVALUATION/receipt.json \
+  --output data/supermimic_for_a3/NEW_MATCHED_AUDIT.json
 ```
 
 Output directories must be new. Failed runs and receipts are retained. There is no
@@ -52,3 +58,9 @@ observation/action noise, or reset noise. The return denominator includes the
 entire reference clip, including the part lost after early termination. The
 reserved complete clips are 004/048/056/080. They are not claimed to be independent
 subjects or recordings from a different source distribution.
+
+Evaluate the same eight clips for this run's `step_000000.pt` and `final.pt`.
+The audit checks actual network changes, finite parameters/optimizer states,
+optimizer step counts, artifact identities, and matching evaluation clips and
+protocols. Its verification status confirms the training/evaluation evidence;
+the reported returns, completion and failures determine the performance result.

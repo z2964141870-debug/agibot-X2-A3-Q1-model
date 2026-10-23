@@ -1,6 +1,6 @@
 # Q1修正摩擦后的批量训练对照
 
-记录日期：2026-10-23，北京时间。阶段：SM-Q1-R02。状态：启动准备中，尚未登记或开始新训练。
+记录日期：2026-10-23，北京时间。阶段：SM-Q1-R02。状态：首轮已启动后触发容器内存保护并停止；第二臂未启动，正在诊断资源余量。
 
 ## 目标与范围
 
@@ -37,3 +37,15 @@ $PY -u script/supermimic_for_q1/run_batch_pair.py execute --plan data/supermimic
 运行时查看`plan.json`、`started.json`、`status.json`、`events.jsonl`和活动臂的`status.json`。用boot/PID/start_ticks核对实际进程后再判断是否仍运行，不以旧PID自动恢复。若失败，读取controller和最后阶段日志并记录原因；不重用现有输出目录。顺序任务结束后读取`receipt.json`和`comparison.json`，再决定独立长预算试验。
 
 本阶段README与索引/当前状态随启动证据更新，先审查diff和payload audit，再显式推送Q1并核对远端。新控制器准备记录保存后再执行登记和训练；此处尚未宣称已同步或策略改善。
+
+## 首轮实际启动与保护停止
+
+发布版本`873c13408caaf2d8533641e2f3ae2e414bf7daa0`已推送并独立核对远端Q1一致。服务器逐文件核对部署SHA，冻结计划45401字节，SHA`0bef71276121958d6f91004234e0954d1cd464983c1c94aff7af2e0e1c9f972a`；小副本`data/manifests/supermimic_q1_R02_plan_20261023.json`，release清单`logs/session_records/supermimic_q1_R02_release_20261023.json`。
+
+北京时间19:29:56启动R02A，controller PID751224/start_ticks3604700222、训练PID751227/start_ticks3604700252、boot仍d994e71f-bae0-46ba-a5f7-6c2163771c6c。19:30:28控制器确认终止：监测到容器32225853440字节，超过30GiB保护线32212254720字节；GPU41摄氏度，可用17205MiB，OOM仍14。控制器发SIGTERM，训练保存final并原生退出0，收据为`STOPPED_SIGNAL`，不是完成。累计140轮/2240新交互、5组WM更新、0actor更新、训练22.0679秒。第二臂和评测均未启动，没有自动重启。
+
+首轮终态证据`data/manifests/supermimic_q1_R02_pair_stopped_20261023.json`与`supermimic_q1_R02A_stopped_20261023.json`，原始日志/工件保留原R02目录，不能用保存的final当学成策略。step0为68432619字节/SHA`0edd78ab9297131c0d493a641fa1b8ffdb81146224b26beb78d5fd5c7d2169ca`，final138272469字节/SHA`ca7bdcfa01d625f74a8a03b15976604946877a48c9077a3ed0ed467a25d3791f`，LOCAL_ONLY。
+
+停止后读取容器内存约28184068096字节，其中rss15405191168、cache11918667776（含shmem6202675200）。存在六个约3GiB RSS的其他Python进程，本阶段不停止它们。R01入场26671681536字节，本轮驱动入场28921434112字节；GPU资源不能替代容器内存余量。额外一次只构造/释放预检asset的0积分/0optimizer诊断：进程RSS529140→1174092→1051416KiB，说明构造与内存分配存在显著CPU开销，但尚不能单独归因为唯一根因。
+
+下一步先检查本项目历史权重文件的可回收页缓存，不改权重字节、30GiB门或旧停止终态。若有可核验修复，使用独立新登记，不恢复旧R02；资源不足时保持停止并明确所缺内存。

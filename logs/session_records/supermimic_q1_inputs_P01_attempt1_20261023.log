@@ -1,0 +1,14 @@
+SM-Q1-P01 initial verification
+Host: huanyu; root: /opt/data/private/YuanQi_Q1
+Command: existing supermimic_a3_20261023 Python, script/supermimic_for_q1/verify_inputs.py
+Archive transfer completed; four size/SHA comparisons passed before extraction.
+Initial verifier exited 1: ValueError: Unexpected Q1 dimensions.
+Cause: our verifier incorrectly required nu=22 for all three supplied XMLs.
+Independent read-only inspection:
+  q1_v3.xml: nq=29 nv=28 nu=0
+  q1_v3_full_range.xml: nq=29 nv=28 nu=0
+  q1_v3_mc.xml: nq=29 nv=28 nu=22
+No physics step, inference, optimization or hardware operation ran.
+Correction: keep all source files unchanged, require the supplied dimensions per XML,
+and use only the actuator-bearing q1_v3_mc.xml for control. Existing extracted files
+must match their ZIP bytes before reuse. The failed attempt is preserved here.

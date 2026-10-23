@@ -21,6 +21,7 @@ class ControllerTest(unittest.TestCase):
         self.state = {"status": "RUNNING"}
         self.verify = patch.object(runner, "verify_frozen").start()
         patch.object(runner, "health", return_value={"oom_kill": 14}).start()
+        patch.object(runner, "reclaim_checkpoint_cache", return_value={}).start()
         patch.object(runner, "process_identity", side_effect=lambda pid: {"pid": pid}).start()
         self.addCleanup(patch.stopall)
         runner.STOP_REQUESTED = False
@@ -62,6 +63,28 @@ class ControllerTest(unittest.TestCase):
         with self.assertRaises(InterruptedError):
             runner.run_stage(self.plan, self.stage("B", "raise AssertionError('must not run')"), self.state)
         self.assertFalse((self.root / "logs/B.log").exists())
+
+
+class CacheScopeTest(unittest.TestCase):
+    def test_only_project_checkpoints_are_advised_and_bytes_are_preserved(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            base = root / "data/supermimic_for_q1"
+            base.mkdir(parents=True)
+            checkpoint = base / "saved.pt"
+            checkpoint.write_bytes(b"saved model contents")
+            (base / "writing.tmp").write_bytes(b"in progress")
+            external = root / "unrelated.pt"
+            external.write_bytes(b"unrelated")
+            (base / "external.pt").symlink_to(external)
+            with patch.object(runner.os, "posix_fadvise", create=True) as advise:
+                with patch.object(runner.os, "POSIX_FADV_DONTNEED", 4, create=True):
+                    result = runner.reclaim_checkpoint_cache(root)
+            self.assertEqual(advise.call_count, 1)
+            self.assertEqual(result["files"], 1)
+            self.assertEqual(checkpoint.read_bytes(), b"saved model contents")
+            self.assertEqual(external.read_bytes(), b"unrelated")
+            self.assertEqual(result["files_deleted"], 0)
 
 
 if __name__ == "__main__":

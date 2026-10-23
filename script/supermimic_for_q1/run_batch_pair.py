@@ -92,6 +92,24 @@ def process_identity(pid):
             "boot_id": Path("/proc/sys/kernel/random/boot_id").read_text().strip()}
 
 
+def reclaim_checkpoint_cache(root):
+    base = (root / "data/supermimic_for_q1").resolve()
+    memory = Path("/sys/fs/cgroup/memory/memory.usage_in_bytes")
+    before = int(memory.read_text()) if memory.exists() else None
+    count = advised_bytes = 0
+    for path in sorted(base.rglob("*.pt")):
+        if path.is_symlink() or not path.is_file() or not path.resolve().is_relative_to(base):
+            continue
+        with path.open("rb") as stream:
+            os.posix_fadvise(stream.fileno(), 0, 0, os.POSIX_FADV_DONTNEED)
+        count += 1
+        advised_bytes += path.stat().st_size
+    after = int(memory.read_text()) if memory.exists() else None
+    return {"scope": str(base), "files": count, "advised_file_bytes": advised_bytes,
+            "cgroup_before_bytes": before, "cgroup_after_bytes": after,
+            "contents_changed": False, "files_deleted": 0}
+
+
 def verify_frozen(plan):
     root = Path(plan["root"])
     if process_identity(os.getpid())["boot_id"] != plan["boot_id"]:
@@ -186,6 +204,7 @@ def register(root, output, release_path):
             "packages": {name: importlib.metadata.version(name) for name in ("torch", "numpy", "mujoco")},
             "boot_id": process_identity(os.getpid())["boot_id"], "baseline_health": health(root),
             "proposal": proposal, "stages": stages, "arms": arms, "automatic_restart": False,
+            "cache_policy": "Advise DONTNEED on project-local completed .pt files before stages and health samples; no content changes or global cache drops.",
             "storage_status": "LOCAL_ONLY"}
     verify_frozen(plan)
     output.mkdir(parents=True, exist_ok=False)
@@ -198,13 +217,14 @@ def run_stage(plan, stage, state):
     if STOP_REQUESTED:
         raise InterruptedError("Stop requested before next stage")
     verify_frozen(plan)
+    cache_advice = reclaim_checkpoint_cache(Path(plan["root"]))
     sample = health(Path(plan["root"]), plan["baseline_health"]["oom_kill"])
     log = Path(plan["logs"]) / (stage["name"] + ".log")
     env = {**os.environ, "OPENBLAS_NUM_THREADS": "1", "OMP_NUM_THREADS": "2"}
     if stage["cpu"]:
         env["CUDA_VISIBLE_DEVICES"] = ""
     child = None
-    event = {"stage": stage["name"], "start_utc": utc(), "log": str(log)}
+    event = {"stage": stage["name"], "start_utc": utc(), "log": str(log), "cache_advice": cache_advice}
     try:
         with log.open("x") as stream:
             child = subprocess.Popen(stage["argv"], cwd=plan["root"], env=env,
@@ -212,7 +232,7 @@ def run_stage(plan, stage, state):
             event["child"] = process_identity(child.pid)
             while True:
                 state.update({"utc": utc(), "stage": stage["name"], "child": event["child"],
-                              "log": str(log), "health": sample})
+                              "log": str(log), "health": sample, "cache_advice": cache_advice})
                 write_json(Path(plan["output"]) / "status.json", state)
                 try:
                     code = child.wait(timeout=15)
@@ -220,6 +240,7 @@ def run_stage(plan, stage, state):
                 except subprocess.TimeoutExpired:
                     if STOP_REQUESTED:
                         raise InterruptedError("Stop requested during stage")
+                    cache_advice = reclaim_checkpoint_cache(Path(plan["root"]))
                     sample = health(Path(plan["root"]), plan["baseline_health"]["oom_kill"])
             if code != 0:
                 raise RuntimeError(f"{stage['name']} exited {code}; see {log}")
@@ -227,6 +248,7 @@ def run_stage(plan, stage, state):
             if result["status"] != stage["expected_status"]:
                 raise RuntimeError(f"Unexpected result for {stage['name']}: {result['status']}")
             event["result"] = identity(stage["result"])
+            reclaim_checkpoint_cache(Path(plan["root"]))
             health(Path(plan["root"]), plan["baseline_health"]["oom_kill"])
     finally:
         if child is not None and child.poll() is None:

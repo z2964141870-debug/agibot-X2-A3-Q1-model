@@ -1,6 +1,6 @@
 # Q1修正摩擦后的批量训练对照
 
-记录日期：2026-10-23，北京时间。阶段：SM-Q1-R02。状态：首轮已启动后触发容器内存保护并停止；第二臂未启动，正在诊断资源余量。
+记录日期：2026-10-23，北京时间。阶段：SM-Q1-R02。状态：页缓存修正后的独立新登记已启动，A臂运行中；首轮停止终态保留。
 
 ## 目标与范围
 
@@ -36,7 +36,7 @@ $PY -u script/supermimic_for_q1/run_batch_pair.py execute --plan data/supermimic
 
 运行时查看`plan.json`、`started.json`、`status.json`、`events.jsonl`和活动臂的`status.json`。用boot/PID/start_ticks核对实际进程后再判断是否仍运行，不以旧PID自动恢复。若失败，读取controller和最后阶段日志并记录原因；不重用现有输出目录。顺序任务结束后读取`receipt.json`和`comparison.json`，再决定独立长预算试验。
 
-本阶段README与索引/当前状态随启动证据更新，先审查diff和payload audit，再显式推送Q1并核对远端。新控制器准备记录保存后再执行登记和训练；此处尚未宣称已同步或策略改善。
+本阶段README与索引/当前状态随启动证据更新，先审查diff和payload audit，再显式推送Q1并核对远端。启动准备、首轮停止和缓存修正均已先保存再进入下一阶段；当前运行证据见末节，记录发布状态以实际Git核验为准。
 
 ## 首轮实际启动与保护停止
 
@@ -58,4 +58,16 @@ $PY -u script/supermimic_for_q1/run_batch_pair.py execute --plan data/supermimic
 
 修正后6项控制器测试实际通过，新增检查只触碰项目内完成PT、排除外部symlink/其他文件且前后字节一致。没有新物理/optimizer测试；实际训练继续由新登记后的运行验证。
 
-使用独立新目录`data/supermimic_for_q1/R02_cachefixed_pair_20261023/`登记同一预算的两臂，从零初始化，不读取旧停止权重作为初始化；原`R02_batch_pair_20261023`的FAILED/STOPPED_SIGNAL账本不复用、不解锁。新目录中的两臂仍名为R02A_batch32/R02B_batch128。新发布清单使用`supermimic_q1_R02_cachefixed_release_20261023.json`，实际登记与启动证据随后补记。没有循环重试或自动恢复机制。
+使用独立新目录`data/supermimic_for_q1/R02_cachefixed_pair_20261023/`登记同一预算的两臂，从零初始化，不读取旧停止权重作为初始化；原`R02_batch_pair_20261023`的FAILED/STOPPED_SIGNAL账本不复用、不解锁。新目录中的两臂仍名为R02A_batch32/R02B_batch128。新发布清单使用`supermimic_q1_R02_cachefixed_release_20261023.json`，实际登记与启动证据见下节。没有循环重试或自动恢复机制。
+
+## 新登记的运行检查点
+
+冻结代码`6b43cc0fb4e42482a570fe74e08f19ec3c43c9c0`已推送并独立核对Q1远端；部署全源码SHA通过。新计划45902字节，SHA`e27a1a45d02293a26c60ee8034d2539c6c74a0956e32f07f9db40b6fb878da9f`，Git小副本`data/manifests/supermimic_q1_R02_cachefixed_plan_20261023.json`。新controller PID751815/start_ticks3604769075、A训练PID751818/start_ticks3604769102，同boot，均由脱离SSH会话的独立session运行。
+
+新A臂已生成step0/admission，实际协议`Q1_FOOT_PRIORITY_V2`、batch32、16环境、3000轮。350轮时5600交互/89组WM/39次actor更新，当前WM/actor/critic损失和梯度指标有限，GPU42摄氏度、容器30983843840字节、OOM仍14。启动核验另存`launch_verification.json`，重新核对源码/输入、boot/PID/start_ticks及命令匹配；不把在线奖励当完整策略评测成绩。
+
+北京时间19:47:39独立核验实际通过：训练快照375轮/6000交互/99组WM/49次actor、326.004秒，所有已报告数值有限；controller与child的boot/PID/start_ticks及命令匹配，冻结源码/输入逐文件一致。收据4517字节，SHA`ba777cdf1db99031ff3fb32a1e49c14eb7c2c0f1c542bba8310ea0bd2f939841`，Git小副本`data/manifests/supermimic_q1_R02_cachefixed_launch_20261023.json`。当时实时容器30998523904字节、GPU42摄氏度/空闲16981MiB，OOM仍14；该操作本身不做物理/optimizer更新，不代表训练已完成。源码冻结提交与后续仅记录提交分开保留。
+
+新运行入口为`$PY -u script/supermimic_for_q1/run_batch_pair.py execute --plan data/supermimic_for_q1/R02_cachefixed_pair_20261023/plan.json`，已执行，不重复运行。实际使用`subprocess.Popen(..., stdin=DEVNULL, stdout=controller.log, stderr=STDOUT, start_new_session=True)`；控制器不依赖Mac/SSH会话。主日志`logs/supermimic_q1_R02_cachefixed_pair_20261023/controller.log`，A日志同目录`R02A_batch32_train.log`；源代码保持冻结，后续只更新记录。
+
+从新目录的`status.json`/`R02A_batch32/status.json`查看最新进度，按`started.json`中的boot/PID/start_ticks核对；不要用此静态快照当实时证明。预计完成1149组WM/1099次actor，之后保存审计和step0/final三片评测，再B；失败即停止，未授权无限追加预算。训练、仿真评测和真机结果分开，当前没有新最终策略效果。

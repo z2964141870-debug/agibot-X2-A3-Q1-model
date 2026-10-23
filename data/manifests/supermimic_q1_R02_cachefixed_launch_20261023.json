@@ -1,0 +1,127 @@
+{
+  "status": "TRAINING_START_VERIFIED_RUNNING",
+  "observed_utc": "2026-10-23T11:47:39.339705+00:00",
+  "plan": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/plan.json",
+    "bytes": 45902,
+    "sha256": "e27a1a45d02293a26c60ee8034d2539c6c74a0956e32f07f9db40b6fb878da9f"
+  },
+  "code_commit": "6b43cc0fb4e42482a570fe74e08f19ec3c43c9c0",
+  "controller": {
+    "status": "RUNNING",
+    "runner": {
+      "pid": 751815,
+      "start_ticks": 3604769075,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    },
+    "plan": {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/plan.json",
+      "bytes": 45902,
+      "sha256": "e27a1a45d02293a26c60ee8034d2539c6c74a0956e32f07f9db40b6fb878da9f"
+    },
+    "utc": "2026-10-23T11:47:26.719041+00:00",
+    "stage": "R02A_batch32_train",
+    "child": {
+      "pid": 751818,
+      "start_ticks": 3604769102,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    },
+    "log": "/opt/data/private/YuanQi_Q1/logs/supermimic_q1_R02_cachefixed_pair_20261023/R02A_batch32_train.log",
+    "health": {
+      "utc": "2026-10-23T11:47:26.718997+00:00",
+      "gpu_temperature_c": 42,
+      "gpu_free_mib": 16981,
+      "cgroup_memory_bytes": 30984134656,
+      "cgroup_limit_bytes": 34359738368,
+      "oom_kill": 14,
+      "disk_free_bytes": 2046451613696
+    },
+    "cache_advice": {
+      "scope": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1",
+      "files": 11,
+      "advised_file_bytes": 1780144467,
+      "cgroup_before_bytes": 30983843840,
+      "cgroup_after_bytes": 30983843840,
+      "contents_changed": false,
+      "files_deleted": 0
+    }
+  },
+  "training": {
+    "status": "RUNNING",
+    "step": 375,
+    "env_steps": 6000,
+    "wm_updates": 99,
+    "policy_updates": 49,
+    "seconds": 326.00404876470566,
+    "pid": 751818,
+    "reward_mean": 0.06098619103431702,
+    "termination_fraction": 0.0,
+    "joint_rmse_rad": 0.39930498600006104,
+    "health": {
+      "gpu_temperature_c": 42,
+      "cgroup_memory_bytes": 30983299072,
+      "oom_kill": 14
+    },
+    "imag_objective": 2.3211822509765625,
+    "imag_return_undisc": 1.1094412803649902,
+    "imag_reward_mean": 0.033307917416095734,
+    "imag_survival_H": 0.8333781361579895,
+    "imag_dhat_mean": 0.008835015818476677,
+    "policy_grad_norm": 0.08790262788534164,
+    "action_abs_mean": 0.2884904444217682,
+    "imag_r/motion_global_root_pos": 0.006612241733819246,
+    "imag_r/motion_global_root_ori": 0.004941956605762243,
+    "imag_r/motion_body_pos": 0.014394611120223999,
+    "imag_r/motion_body_ori": 0.0006045904010534286,
+    "imag_r/motion_body_lin_vel": 0.013469131663441658,
+    "imag_r/motion_body_ang_vel": 0.01398240216076374,
+    "imag_r/action_rate_l2": -0.0015932334354147315,
+    "imag_r/joint_limit": -0.01910378783941269,
+    "critic_loss": 0.1069548949599266,
+    "critic_value_mean": 1.812956690788269,
+    "critic_target_mean": 2.026082754135132,
+    "wm/state_loss": 2.2569759368896483,
+    "wm/term_bce": 0.010136143118143082,
+    "wm/nse_1step": 0.0169744610786438,
+    "wm/nse_kstep": 0.06887474060058593,
+    "wm/term_acc": 0.9986328125,
+    "wm/loss": 2.2671123504638673,
+    "wm/grad_norm": 15.660801696777344
+  },
+  "processes_rechecked": {
+    "runner": {
+      "pid": 751815,
+      "start_ticks": 3604769075,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    },
+    "child": {
+      "pid": 751818,
+      "start_ticks": 3604769102,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    }
+  },
+  "command_checks": {
+    "controller": true,
+    "training": true
+  },
+  "frozen_sources_and_inputs_verified": true,
+  "corrected_contact_protocol": "Q1_FOOT_PRIORITY_V2",
+  "initial_checkpoint": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/R02A_batch32/step_000000.pt",
+    "bytes": 68432619,
+    "sha256": "540d8fd97f7ce3cd9a217b1255ab20bdd83b44a4a038748d0cbf90d5aaae83bc"
+  },
+  "live_health": {
+    "utc": "2026-10-23T11:47:39.398791+00:00",
+    "gpu_temperature_c": 42,
+    "gpu_free_mib": 16981,
+    "cgroup_memory_bytes": 30998523904,
+    "cgroup_limit_bytes": 34359738368,
+    "oom_kill": 14,
+    "disk_free_bytes": 2046451572736
+  },
+  "snapshot_operation_physics_steps": 0,
+  "snapshot_operation_optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY",
+  "limits": "Running snapshot with finite reported losses and nonzero actor update count; no claim of final evaluation or policy usability."
+}

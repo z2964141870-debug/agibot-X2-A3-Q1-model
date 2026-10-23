@@ -44,3 +44,13 @@ native测试前后容器31005589504/31004872704字节，GPU40–41摄氏度、OO
 ## 保存与恢复
 
 本阶段代码、小日志与结论按Q1分支提交并推送，发布核验以实际Git输出为准。大工件保留服务器LOCAL_ONLY。恢复先读R02运行README和实时进程/status；E01只是准备，不能当作R03已登记/启动或目标完成。后续实际长预算阶段使用独立README/清单，不重写旧停止或R01结果。
+
+## 追加独立审计控制
+
+初版代码发布为`9f77d0f2769ff5fecf20890531a2a74cd9e49b13`，已独立核对Q1远端。继续审查时发现新audit只逐个核对声明的父文件SHA、未主动重建完整父谱系；现改为重新执行`validated_parent`并与manifest证据完全比较，缺少或改变父pair/事件/收据即拒绝。worker及当前R02核心未修改。
+
+北京时间21:06服务器新11项控制全部通过，耗时2.754秒，原生退出0。新增用小型合成保存数组与预设计数覆盖独立audit正例；final actor Adam少1次、step0清空优化器状态均准确给失败门；删除父成功事件会直接拒绝。该合成审计fixture没有执行3000轮训练、物理或optimizer更新，不能当真实Q1续训/audit结果。原3次玩具Adam状态继承控制也随套件通过，不计为Q1更新。
+
+日志`logs/supermimic_q1_extension_controls_E02_20261023.log`及Git小副本`logs/session_records/supermimic_q1_extension_controls_E02_20261023.log`，1548字节/SHA`b23db7b3c9027632e77d430490b0e9492aff796b5a11428854a71f06db9a0615`。控制前后容器30995984384/30996811776字节、GPU40摄氏度、OOM仍14；源文件在独立extension目录，R02训练继续存活。
+
+本地无PyTorch，最新套件9项通过/2项native跳过；服务器11项无跳过。下一仍是等R02两臂最终物理与匹配比较，再登记固定长预算；不因为fixture正例通过提前启动。

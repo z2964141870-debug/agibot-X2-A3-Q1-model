@@ -5,7 +5,7 @@ import argparse
 import json
 from pathlib import Path
 
-from initialization import identity, check_identity, validate_contract, MODEL_KEYS, OPTIMIZER_KEYS
+from initialization import identity, check_identity, validate_contract, validated_parent, MODEL_KEYS, OPTIMIZER_KEYS
 
 
 def equal_tree(left, right):
@@ -44,6 +44,10 @@ def audit_run(run):
     final = torch.load(run / "final.pt", map_location="cpu", mmap=True, weights_only=False)
     manifest = final["manifest"]
     evidence = manifest["initialization"]["evidence"]
+    observed_parent = validated_parent(Path(evidence["comparison"]["path"]).parent,
+                                       Path(evidence["checkpoint"]["path"]).parent)
+    if observed_parent != evidence:
+        raise ValueError("Continuation parent lineage differs from its completed pair")
     for item in evidence.values():
         if isinstance(item, dict) and {"path", "bytes", "sha256"} <= item.keys():
             check_identity(item)

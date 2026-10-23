@@ -112,6 +112,70 @@ class LineageTest(unittest.TestCase):
 
 
 @unittest.skipUnless(importlib.util.find_spec("torch"), "Tiny tensor fixture requires PyTorch")
+class NativeAuditTest(unittest.TestCase):
+    def test_independent_audit_accepts_retention_and_rejects_reset_counters(self):
+        import copy
+        import torch
+        from audit import audit_run
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            fixture = ParentFixture(root)
+            fixture.manifest.update({"sim": {"num_envs": 16}, "wm_trainer": {"batches_per_update": 10},
+                "policy_trainer": {"critic_epochs": 5, "critic_minibatches": 4}})
+            fixture.write(fixture.run / "admission.json", fixture.manifest)
+            parent = {"step": 1, "wm_updates": 1, "policy_updates": 1, "manifest": fixture.manifest,
+                      "bin_return": torch.tensor([.1]), "bin_memory": torch.tensor([1.])}
+            for key in init.MODEL_KEYS:
+                parent[key] = {"weight": torch.tensor([.2, .3])}
+            for key in init.OPTIMIZER_KEYS:
+                parent[key] = {"state": {0: {"step": torch.tensor(1.), "exp_avg": torch.tensor([.2]),
+                                             "exp_avg_sq": torch.tensor([.3])}}, "param_groups": []}
+            torch.save(parent, fixture.run / "final.pt")
+            fixture.finish()
+            evidence = init.validated_parent(fixture.pair, fixture.run)
+            manifest = {**fixture.manifest, "initialization": {"evidence": evidence},
+                "args": {"steps": 3000}, "warmup_steps": 128, "model_warmup_updates": 50,
+                "learning_rate_step_offset": 1, "baseline_health": {"oom_kill": 14}, "code_commit": "0" * 40}
+            initial = {**copy.deepcopy(parent), "step": 0, "wm_updates": 0, "policy_updates": 0,
+                       "manifest": manifest}
+            final = {**copy.deepcopy(initial), "step": 3000, "wm_updates": 1149,
+                     "policy_updates": 1099, "total_collection_rounds": 3001}
+            for key in init.MODEL_KEYS:
+                final[key]["weight"] += .1
+            # Synthetic saved-state counters exercise the verifier; no optimizer runs.
+            for key, increment in zip(init.OPTIMIZER_KEYS, (11490, 1099, 21980)):
+                final[key]["state"][0]["step"] += increment
+            run = root / "extension"
+            run.mkdir()
+            fixture.write(run / "admission.json", manifest)
+            metrics = [{"step": step, "health": {"oom_kill": 14}} for step in range(25, 3001, 25)]
+            (run / "metrics.jsonl").write_text("\n".join(json.dumps(row) for row in metrics) + "\n")
+
+            def save_fixture():
+                torch.save(initial, run / "step_000000.pt")
+                torch.save(final, run / "final.pt")
+                fixture.write(run / "receipt.json", {"status": "TRAINING_FINISHED_PENDING_EVALUATION",
+                    "step": 3000, "env_steps": 48000, "wm_updates": 1149, "policy_updates": 1099,
+                    "total_collection_rounds": 3001,
+                    "artifacts": [init.identity(run / name) for name in ("step_000000.pt", "final.pt")]})
+
+            save_fixture()
+            report = audit_run(run)
+            self.assertEqual(report["status"], "CONTINUATION_SAVE_AUDIT_PASSED")
+            final["policy_opt"]["state"][0]["step"] -= 1
+            save_fixture()
+            self.assertFalse(audit_run(run)["gates"]["optimizer_counters"])
+            final["policy_opt"]["state"][0]["step"] += 1
+            initial["policy_opt"]["state"] = {}
+            save_fixture()
+            self.assertFalse(audit_run(run)["gates"]["parent_state_retained"])
+            (fixture.pair / "events.jsonl").write_text("")
+            with self.assertRaisesRegex(ValueError, "does not bind"):
+                audit_run(run)
+
+
+@unittest.skipUnless(importlib.util.find_spec("torch"), "Tiny tensor fixture requires PyTorch")
 class NativeRetentionTest(unittest.TestCase):
     def test_networks_adam_moments_and_sampler_are_exactly_retained(self):
         import torch

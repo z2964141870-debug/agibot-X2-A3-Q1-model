@@ -8,7 +8,7 @@
 
 更新：2026-10-23，Q1运行中检查点；详细过程在阶段README，静态PID不证明仍在运行。通用研究独立待同步项未在本次合并。
 
-[E01后续入口准备](README_SUPERMIMIC_Q1_EXTENSION_PREP_20261023.md)：独立script/supermimic_q1_extension实现固定追加预算、父网络/三组Adam/采样统计继承和独立保存审计。10项CPU控制、真实配置全宽构造和未完成pair拒绝通过；真实Q1续训/新audit正例尚未运行。先等R02成对结果，再选父臂/预算并独立登记，不能把准备代码当作已训练。原pair冻结文件不改。
+[E01后续入口准备](README_SUPERMIMIC_Q1_EXTENSION_PREP_20261023.md)：独立script/supermimic_q1_extension实现固定追加预算、父网络/三组Adam/采样统计继承和独立保存审计。最新11项CPU控制通过，含合成保存审计正例、重置Adam/错误累计计数/缺失父事件拒绝；真实配置全宽构造和未完成pair拒绝也已通过。真实Q1续训/audit尚未运行。21:06当前A已2700轮/43200交互/979次actor并存活，先等成对结果再选父臂/预算，原pair冻结文件不改。
 
 ## 用户目标与固定约定
 

@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-23最新：[SuperMimic for Q1](README_SUPERMIMIC_FOR_Q1_20261023.md)。用户停止当前A3目标推进，改训supermimic_for_q1，继续世界模型/只做复现。独立huanyu:/opt/data/private/YuanQi_Q1，Q1分支，原hp3090只作历史来源。P01四ZIP共34995419字节服务器独立大小/SHA匹配，24网格/三MJCF编译通过，MC版22执行器；初次检查器误要求展示版22执行器的失败保留。SDK仅接口说明内容变，下一核对Q1物理/梯度合同和原速参考，冻结后独立训练。当前0Q1物理/推理/optimizer，无训练效果；A3旧STOPPED保持。
+2026-10-23最新：[SuperMimic for Q1](README_SUPERMIMIC_FOR_Q1_20261023.md)。用户将A3目标换为Q1，世界模型方法复现；独立huanyu:/opt/data/private/YuanQi_Q1、Q1分支。P01四包大小/SHA及22执行器模型通过，发布dd654815已独立核验。P02B物理/FK/H32梯度合同通过，两轮累计164控制步/3280子步、0optimizer；不是训练效果。原速四段参考P02A退出2、0/4合格，共同地面偏移10.07–12.14cm，过头动作IK P95另达5.496cm。下一检查中立根/足底和逐身体误差，保留失败，在独立新目录修正并验证后训练。尚无Q1训练/checkpoint；A3旧STOPPED保持。
 
 更新：2026-10-09（Q1阶段；通用研究记录的独立待同步项未在本次合并）。此文件用于恢复工作；只保留最新摘要，详细过程见阶段 README。旧机器/进程信息不是实时状态，执行前重新核实。
 

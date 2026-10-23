@@ -1,0 +1,116 @@
+{
+  "status": "R04_TRAINING_AND_COMPLETION_PROCESSES_EXITED_ZERO",
+  "utc": "2026-10-23T00:51:26.078175+00:00",
+  "host": "huanyu",
+  "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+  "training_process": {
+    "pid": 709634,
+    "state": "Z",
+    "start_ticks": 3599637468,
+    "native_wait_status": 0
+  },
+  "completion_process": {
+    "pid": 709693,
+    "state": "Z",
+    "start_ticks": 3599641134,
+    "native_wait_status": 0
+  },
+  "metric_rows": 240,
+  "all_recorded_metrics_finite": true,
+  "maximum_recorded_gpu_temperature_c": 40,
+  "maximum_recorded_cgroup_memory_bytes": 31711920128,
+  "current_health": {
+    "cgroup_memory_bytes": 29317435392,
+    "gpu_temperature_c": 38
+  },
+  "oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 14\n",
+  "metrics": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_20261023/metrics.jsonl",
+    "bytes": 321099,
+    "sha256": "7f42d36491c8024c14f733f6a6465ef4085be4d289072367cadd19cb78df8f62"
+  },
+  "receipts": [
+    {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_20261023/receipt.json",
+      "bytes": 3340,
+      "sha256": "ae3052424b7687fb02d98ada6539adb95e41975d471a556456f2f35be7c42d29"
+    },
+    {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_completion_20261023/receipt.json",
+      "bytes": 2076,
+      "sha256": "4c36e28b20102f1be3b25bbddcd32d0a70e379e56a3a5703611aab7fa1a2d943"
+    },
+    {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_completion_20261023/eval_step0/receipt.json",
+      "bytes": 8165,
+      "sha256": "386a6209d6f8793880b80282b8fef1b3fffbce0503ac841a4adf5b7038067c23"
+    },
+    {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_completion_20261023/eval_final/receipt.json",
+      "bytes": 8161,
+      "sha256": "ea7dac5df3bd1256755250d9100bacd120df2f9e392f1cc343a3a7157d5f5f4d"
+    },
+    {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_completion_20261023/matched_audit.json",
+      "bytes": 7614,
+      "sha256": "448f647efdab9b15bb0fd3e69c2135ebdddb3674ab17d950091fce0d5a00c288"
+    },
+    {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_completion_20261023/policy_assessment.json",
+      "bytes": 3835,
+      "sha256": "9058119d33c40168461b772df640033bc620f1f2f9bef717516c90341cc27460"
+    }
+  ],
+  "final_checkpoint": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_20261023/final.pt",
+    "bytes": 215996819,
+    "sha256": "d7e14eeda38b2fd2400bb364281335167e0eecaede6d4204e092d41e53931e08"
+  },
+  "groups": {
+    "training": {
+      "clips": 4,
+      "mean_return_delta": 0.11759258803995354,
+      "initial": {
+        "clips": 4,
+        "failures": 4,
+        "mean_normalized_return": 0.08176776679964945,
+        "mean_completion": 0.1076434025623852
+      },
+      "trained": {
+        "clips": 4,
+        "failures": 4,
+        "mean_normalized_return": 0.199360354839603,
+        "mean_completion": 0.25188886691686935
+      }
+    },
+    "heldout": {
+      "clips": 4,
+      "mean_return_delta": 0.24195428491841198,
+      "initial": {
+        "clips": 4,
+        "failures": 4,
+        "mean_normalized_return": 0.09778724486964845,
+        "mean_completion": 0.12970857813486442
+      },
+      "trained": {
+        "clips": 4,
+        "failures": 4,
+        "mean_normalized_return": 0.3397415297880604,
+        "mean_completion": 0.4315644482033607
+      }
+    }
+  },
+  "policy_decision": {
+    "four_training_clips_complete": false,
+    "mean_full_clip_return_at_least_half": false,
+    "every_training_joint_rmse_at_most_015rad": false
+  },
+  "passed_four_training_clip_gate": false,
+  "training_entry_unchanged": true,
+  "verified_backend_source_count": 28,
+  "bound_completion_entries_unchanged": 4,
+  "new_physics_steps_from_this_check": 0,
+  "new_optimizer_steps_from_this_check": 0,
+  "storage_status": "LOCAL_ONLY",
+  "not_a_policy_success_claim": true
+}

@@ -1,0 +1,115 @@
+{
+  "status": "VERIFIED_TRACE_POLICY_ASSESSMENT_COMPLETED",
+  "audit": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_completion_20261023/matched_audit.json",
+    "bytes": 7614,
+    "sha256": "448f647efdab9b15bb0fd3e69c2135ebdddb3674ab17d950091fce0d5a00c288"
+  },
+  "assessment_entry": {
+    "path": "/opt/data/private/yuanqi_ops/script/supermimic_for_a3/assess_policy.py",
+    "bytes": 4749,
+    "sha256": "f7523d4a28ac4ada6ce4f329f0f66479b7fb410aef0138be238975715abb0e18"
+  },
+  "final_evaluation": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_completion_20261023/eval_final/receipt.json",
+    "bytes": 8161,
+    "sha256": "ea7dac5df3bd1256755250d9100bacd120df2f9e392f1cc343a3a7157d5f5f4d"
+  },
+  "criteria": {
+    "training_clips": 4,
+    "maximum_early_failures": 0,
+    "minimum_mean_full_clip_normalized_return": 0.5,
+    "maximum_each_training_executed_joint_rmse_rad": 0.15
+  },
+  "decision": {
+    "four_training_clips_complete": false,
+    "mean_full_clip_return_at_least_half": false,
+    "every_training_joint_rmse_at_most_015rad": false
+  },
+  "passed_four_training_clip_gate": false,
+  "rows": [
+    {
+      "clip": "001_walk_front_slow",
+      "split": "training",
+      "failed": true,
+      "executed_steps": 782,
+      "expected_steps": 6607,
+      "normalized_return": 0.10177596658129942,
+      "executed_joint_rmse_rad": 0.17403597867049905,
+      "complete_without_failure": false
+    },
+    {
+      "clip": "042_squat_shallow_repeated",
+      "split": "training",
+      "failed": true,
+      "executed_steps": 974,
+      "expected_steps": 4626,
+      "normalized_return": 0.18358586256791323,
+      "executed_joint_rmse_rad": 0.19528120608655944,
+      "complete_without_failure": false
+    },
+    {
+      "clip": "058_punch_front_alternating",
+      "split": "training",
+      "failed": true,
+      "executed_steps": 1119,
+      "expected_steps": 2712,
+      "normalized_return": 0.31389675660307487,
+      "executed_joint_rmse_rad": 0.34386322034005423,
+      "complete_without_failure": false
+    },
+    {
+      "clip": "077_reach_overhead_both",
+      "split": "training",
+      "failed": true,
+      "executed_steps": 788,
+      "expected_steps": 2962,
+      "normalized_return": 0.19818283360612446,
+      "executed_joint_rmse_rad": 0.5098722996020438,
+      "complete_without_failure": false
+    },
+    {
+      "clip": "004_walk_frontleft_slow",
+      "split": "heldout",
+      "failed": true,
+      "executed_steps": 1289,
+      "expected_steps": 5616,
+      "normalized_return": 0.18975326403603354,
+      "executed_joint_rmse_rad": 0.17487050233543971,
+      "complete_without_failure": false
+    },
+    {
+      "clip": "048_balance_right_singleleg",
+      "split": "heldout",
+      "failed": true,
+      "executed_steps": 2388,
+      "expected_steps": 2549,
+      "normalized_return": 0.7564316988126519,
+      "executed_joint_rmse_rad": 0.2922780717791465,
+      "complete_without_failure": false
+    },
+    {
+      "clip": "056_lunge_side_alternating",
+      "split": "heldout",
+      "failed": true,
+      "executed_steps": 1718,
+      "expected_steps": 5222,
+      "normalized_return": 0.2435728811831201,
+      "executed_joint_rmse_rad": 0.2655713168558994,
+      "complete_without_failure": false
+    },
+    {
+      "clip": "080_reach_front_both",
+      "split": "heldout",
+      "failed": true,
+      "executed_steps": 789,
+      "expected_steps": 3417,
+      "normalized_return": 0.16920827512043607,
+      "executed_joint_rmse_rad": 0.41111274367409245,
+      "complete_without_failure": false
+    }
+  ],
+  "development_failures": 4,
+  "scope": "Four known training clips in deterministic MuJoCo only; development clips were examined previously. Not a generalization, hardware or paper-reproduction claim.",
+  "storage_status": "LOCAL_ONLY"
+}

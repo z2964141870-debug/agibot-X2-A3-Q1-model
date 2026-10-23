@@ -1,0 +1,186 @@
+{
+  "status": "R04_OFFLINE_DIAGNOSTIC_AND_SAVED_TRACE_RENDERS_EXITED_ZERO",
+  "diagnostic": {
+    "utc": "2026-10-23T00:58:12.205410+00:00",
+    "command": [
+      "/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python",
+      "-u",
+      "/opt/data/private/yuanqi_ops/script/supermimic_for_a3/diagnose_model.py",
+      "--evaluation",
+      "data/supermimic_for_a3/R04_completion_20261023/eval_final/receipt.json",
+      "--root",
+      "/opt/data/private/hechengzhu/ZHY",
+      "--output",
+      "data/supermimic_for_a3/R04_model_diagnostic_D03_20261023.json"
+    ],
+    "child_pid": 719028,
+    "native_exit_code": 0,
+    "seconds": 9.513813875615597,
+    "error": null,
+    "health": [
+      {
+        "cgroup_memory_bytes": 29319172096,
+        "gpu_temperature_c": 38
+      },
+      {
+        "cgroup_memory_bytes": 29319319552,
+        "gpu_temperature_c": 38
+      },
+      {
+        "cgroup_memory_bytes": 30596104192,
+        "gpu_temperature_c": 38
+      }
+    ],
+    "final_health": {
+      "cgroup_memory_bytes": 29319798784,
+      "gpu_temperature_c": 41
+    },
+    "log": {
+      "path": "/opt/data/private/yuanqi_ops/logs/supermimic_a3_R04_model_diagnostic_D03_20261023.log",
+      "bytes": 2748,
+      "sha256": "887a06689a90f415f86aeeda29c1b01dde18802727fa5c1dc1543a3a4069c40d"
+    }
+  },
+  "renders": [
+    {
+      "utc": "2026-10-23T01:00:05.415921+00:00",
+      "command": [
+        "/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python",
+        "-u",
+        "/opt/data/private/yuanqi_ops/script/supermimic_for_a3/render_trace.py",
+        "--evaluation",
+        "data/supermimic_for_a3/R04_completion_20261023/eval_final/receipt.json",
+        "--admission",
+        "data/supermimic_for_a3/R04_20261023/admission.json",
+        "--clip",
+        "001_walk_front_slow",
+        "--output",
+        "data/supermimic_for_a3/R04_trace_render_V03_20261023"
+      ],
+      "child_pid": 719115,
+      "native_exit_code": 0,
+      "seconds": 18.8869656547904,
+      "error": null,
+      "health": [
+        {
+          "cgroup_memory_bytes": 29320343552,
+          "gpu_temperature_c": 38
+        },
+        {
+          "cgroup_memory_bytes": 29320757248,
+          "gpu_temperature_c": 38
+        },
+        {
+          "cgroup_memory_bytes": 30095187968,
+          "gpu_temperature_c": 38
+        },
+        {
+          "cgroup_memory_bytes": 30100119552,
+          "gpu_temperature_c": 38
+        },
+        {
+          "cgroup_memory_bytes": 30100918272,
+          "gpu_temperature_c": 38
+        }
+      ],
+      "final_health": {
+        "cgroup_memory_bytes": 29325111296,
+        "gpu_temperature_c": 38
+      },
+      "log": {
+        "path": "/opt/data/private/yuanqi_ops/logs/supermimic_a3_R04_trace_render_V03_20261023.log",
+        "bytes": 3443,
+        "sha256": "29d2b4bab0f7604228f3240277767f8a7eb2903033cc8e391b246dfb3d577279"
+      }
+    },
+    {
+      "utc": "2026-10-23T01:02:12.538954+00:00",
+      "command": [
+        "/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python",
+        "-u",
+        "/opt/data/private/yuanqi_ops/script/supermimic_for_a3/render_trace.py",
+        "--evaluation",
+        "data/supermimic_for_a3/R04_completion_20261023/eval_final/receipt.json",
+        "--admission",
+        "data/supermimic_for_a3/R04_20261023/admission.json",
+        "--clip",
+        "077_reach_overhead_both",
+        "--output",
+        "data/supermimic_for_a3/R04_trace_render_V04_20261023"
+      ],
+      "child_pid": 719372,
+      "native_exit_code": 0,
+      "seconds": 18.82944466918707,
+      "error": null,
+      "health": [
+        {
+          "cgroup_memory_bytes": 29325283328,
+          "gpu_temperature_c": 38
+        },
+        {
+          "cgroup_memory_bytes": 29325692928,
+          "gpu_temperature_c": 38
+        },
+        {
+          "cgroup_memory_bytes": 30100172800,
+          "gpu_temperature_c": 38
+        },
+        {
+          "cgroup_memory_bytes": 30104166400,
+          "gpu_temperature_c": 38
+        },
+        {
+          "cgroup_memory_bytes": 30103101440,
+          "gpu_temperature_c": 38
+        }
+      ],
+      "final_health": {
+        "cgroup_memory_bytes": 29326880768,
+        "gpu_temperature_c": 38
+      },
+      "log": {
+        "path": "/opt/data/private/yuanqi_ops/logs/supermimic_a3_R04_trace_render_V04_20261023.log",
+        "bytes": 3455,
+        "sha256": "4cf8cf4cfa3936fa83e8baa4b70d0a9e062257076249aff7aae4278bf6ca7502"
+      }
+    }
+  ],
+  "ffprobe_checks": [
+    {
+      "programs": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 544,
+          "avg_frame_rate": "25/1",
+          "nb_read_frames": "391"
+        }
+      ],
+      "format": {
+        "duration": "15.640000"
+      }
+    },
+    {
+      "programs": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 544,
+          "avg_frame_rate": "25/1",
+          "nb_read_frames": "394"
+        }
+      ],
+      "format": {
+        "duration": "15.760000"
+      }
+    }
+  ],
+  "new_physics_steps": 0,
+  "new_policy_inference": 0,
+  "new_optimizer_updates": 0,
+  "visual_inspection": "Both last-frame PNGs inspected: the policy robot is visibly tilted relative to the upright reference; the overhead-reach robot also does not match the raised reference arms. This does not identify the unique cause of failure.",
+  "previews_copied_to_mac_bytes": 1470262,
+  "preview_copy_size_and_sha256_verified": true,
+  "storage_status": "LOCAL_ONLY",
+  "not_a_goal_completion_claim": true
+}

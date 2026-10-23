@@ -442,3 +442,26 @@ CPU核验后仅对读过的两份PT fsync/fadvise；健康前后usage30267146240
 - 大型模型与轨迹保留服务器原件且LOCAL_ONLY，无云端往返校验；Mac只复制小收据与321099字节指标日志，未复制权重或原始NPZ。GitHub同步以本阶段提交及独立远端核验为准。
 
 下一先在已保存R04轨迹上核查H1/H8/H32模型误差与实际跟踪画面，0新增物理/optimizer，再按证据选择下一独立训练方向。R04及其成功完成阶段不恢复或重跑，原预算不追加、性能门不放宽；可用SuperMimic for A3目标保持active。
+
+## D03与V03/V04：R04保存轨迹诊断及下一动作响应检查
+
+`diagnose_model.py`实际退出0、9.514秒，D03绑定R04 final和八段最终轨迹，资产/后端/轨迹身份通过；只重放已执行动作到冻结WM，没有新物理或参数更新。每片段内先平均全部有效重叠窗口，再等权平均片段：
+
+| 组别 | H1根位置RMSE：学习/CV（米） | H8：学习/CV（米） | H32：学习/CV（米） |
+| --- | --- | --- | --- |
+| 四训练片段 | 0.00045664/0.00027862 | 0.00630197/0.00953855 | 0.06173307/0.04554071 |
+| 四开发片段 | 0.00043639/0.00020613 | 0.00492917/0.00651816 | 0.05952967/0.03638820 |
+
+H32主动关节RMSE学习/CV为0.036994/0.098506rad（训练）、0.035966/0.075125rad（开发），整体标准化状态MSE也优于CV；不能概括成模型没有学会动力学。但H32根位置误差在八段上都大于各自同轨迹CV。该基线只是零残差恒速度积分，且R04与D02访问轨迹/存活长度不同，不能直接把跨轮数字当固定分布退化比例或把此误差当早倒唯一原因。**尚未实测真实物理下动作响应或反事实梯度。**
+
+- [D03原始诊断](../data/manifests/supermimic_a3_R04_model_diagnostic_D03_20261023.json)；服务器`data/supermimic_for_a3/R04_model_diagnostic_D03_20261023.json`，原始stdout日志`logs/supermimic_a3_R04_model_diagnostic_D03_20261023.log`。
+- V03走路实际退出0、18.887秒，391帧/25FPS/15.64秒；V04举臂退出0、18.829秒，394帧/25FPS/15.76秒，均1280×544。独立ffprobe确认帧数、尺寸、时长；面板最小像素标准差25.986/29.769，PNG已实际目视核对，均明显侧倾，举臂也未跟随目标双臂。画面保留原完整132.14/59.24秒与提前失败说明，没有截短。
+- [V03收据](../data/manifests/supermimic_a3_R04_trace_render_V03_20261023.json)、[V04收据](../data/manifests/supermimic_a3_R04_trace_render_V04_20261023.json)及[三次原生执行与资源/ffprobe记录](../data/manifests/supermimic_a3_R04_diagnostic_render_execution_20261023.json)。渲染只对保存状态做FK和图像生成，0新物理/策略推理/optimizer，不是新的跟踪效果评测。
+- 原件在`data/supermimic_for_a3/R04_trace_render_V03_20261023/`和`R04_trace_render_V04_20261023/`；对应stdout在`logs/supermimic_a3_R04_trace_render_V0{3,4}_20261023.log`。Mac仅复制四份小PNG/MP4，共1470262字节，分别在本机`data/research/2026-10-23/supermimic/R04_{walk,overhead}_{last_frame.png,comparison.mp4}`，逐文件大小/SHA与收据一致。原模型与NPZ未复制，所有工件仍LOCAL_ONLY。
+- 三次监督执行原生退出0，均按原30GiB/86℃保护；D03记录最大usage30596104192字节，末次GPU41℃；综合渲染与监督器采样最高usage30104166400字节/GPU39℃。以上是采样而非连续峰值。
+
+复现入口：`diagnose_model.py --evaluation data/supermimic_for_a3/R04_completion_20261023/eval_final/receipt.json --root /opt/data/private/hechengzhu/ZHY --output NEW_D03.json`；渲染入口为`render_trace.py --evaluation 同一收据 --admission data/supermimic_for_a3/R04_20261023/admission.json --clip 001_walk_front_slow或077_reach_overhead_both --output NEW_RENDER_DIRECTORY`。解释器与环境变量、实际命令数组及退出状态见执行清单；不得覆盖既有结果。
+
+下一选择独立J01动作响应诊断，先验证BPTT依赖的动作敏感性，再决定是否增加联合训练或改变模型拟合。拟定范围为四训练片段各2个保存状态（有效H32窗口的25%/65%位置）、每状态4个固定seed的单位动作方向、±0.05/±0.10两幅度，只扰动首个动作、随后使用原已记录动作，统一H32回放并读取H1/H8/H32响应。8状态×(1无扰动+4方向×2幅度×2符号)×32=4352新控制步，即87040个原1ms物理子步；1环境顺序运行，0新policy推理、0 optimizer，不改R04/旧STOPPED或物理/奖励。
+
+J01须先证明无扰动回放复现原保存轨迹，再比较真实物理有限差分与冻结WM响应/自动微分，分别报告根位置和29主动关节、两幅度一致性及退化响应；无效/终止样本必须留证。它是局部、固定后续动作的模型敏感性诊断，不是完整闭环策略梯度的正确性证明。当前仅登记下一范围，代码、输入/源码冻结、具体种子与数值控制尚未实施，**未运行J01或下一轮训练，也没有动作梯度错误结论**。目标继续active，原三项可用门不变。

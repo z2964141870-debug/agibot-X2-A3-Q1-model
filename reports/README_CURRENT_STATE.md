@@ -6,7 +6,7 @@
 
 前序证据：[S01/P07接触修正与J01/T01/B01/C01](README_SUPERMIMIC_Q1_IMPROVEMENT_20261023.md)、[D02奖励诊断](README_SUPERMIMIC_Q1_LEARNING_DIAGNOSIS_20261023.md)、[V01动力学视频](README_SUPERMIMIC_Q1_VISUAL_20261023.md)、[R01完整记录](README_SUPERMIMIC_FOR_Q1_20261023.md)。R01三段关节RMSE0.328/0.338/0.290rad，未过0.15门，走路最大位移policy0.041m/参考1.126m；回报增量89%/89%/94%来自限位惩罚减少。R01实际摩擦0.6与新协议分开，不追改原结果。视频页http://127.0.0.1:18863/保留供看旧结果。
 
-更新：2026-10-23，Q1运行中检查点；详细过程在阶段README，静态PID不证明仍在运行。通用研究独立待同步项未在本次合并。
+21:42:54补充核验：B已825轮/13200交互/229次actor，原boot/PID/start_ticks、非僵尸及冻结源码/输入/运行时通过；GPU41摄氏度、容器31015268352字节、OOM仍14。旧跳板100.85.145.78超时，已通过用户提供Windows yu@100.65.183.91恢复SSH和报告同步，训练未停止或重启。详细过程在阶段README；静态PID不证明仍在运行，通用研究独立待同步项未在本次合并。
 
 [E01后续入口准备](README_SUPERMIMIC_Q1_EXTENSION_PREP_20261023.md)：独立script/supermimic_q1_extension实现固定追加预算、父网络/三组Adam/采样统计继承和独立保存审计。11项CPU控制通过，真实配置全宽构造和未完成pair拒绝通过，代码24715a9已发布并核对Q1远端。真实Q1续训/audit尚未运行；先等B完成及成对结果，再选父臂/预算，原pair冻结文件不改。
 

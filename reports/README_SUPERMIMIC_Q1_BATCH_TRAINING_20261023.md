@@ -101,3 +101,9 @@ A保存/最终评测/最终重算小副本为`data/manifests/supermimic_q1_R02A_
 北京时间21:24:11独立核验A全部9个阶段的成功事件与产物SHA逐一绑定，冻结源码/输入/包通过；原controller751815/start3604769075继续运行。B已由其启动，PID756622/start3605356394，同boot，核验为非僵尸且命令匹配，325轮/5200交互/79组WM/29次actor；GPU40摄氏度、容器31014244352字节、OOM仍14。B初期动作/梯度较大但记录有限，当前不改超参数或提前选赢家。
 
 该新核验不加载权重或新增物理/optimizer。收据`A_completed_B_live_verification.json`为5255字节/SHA`fd5d10665ad92c9d2dec1b7a3b6608d58d82482b4cb22acb7cfa9f3b0353286e`，Git小副本`data/manifests/supermimic_q1_R02A_complete_B_live_20261023.json`。接下来等待B相同预算和完整评测、再读取成对比较决定固定长预算，不能以A保存成功代替效果成功。后续入口代码已发布`24715a94986045862c0bf1638ec6c873babeae9a`并独立核对Q1远端，仍未开始真实续训。
+
+## 21:42连接恢复检查点
+
+此前经yu@100.85.145.78的SSH/SCP出现连接超时；改用用户已提供的Windows yu@100.65.183.91作跳板后恢复。认证仅用于临时SSH会话，未写凭据文件。原训练没有收到停止/重启信号，21:42:54再次核对同一boot/controller/B子进程start_ticks、非僵尸状态、冻结源码/输入/运行时均通过。
+
+B已825轮/13200交互/279组WM/229次actor，记录数值有限；GPU41摄氏度、可用16659MiB、容器31015268352字节、OOM仍14。只恢复连接和报告同步，0新增诊断物理或optimizer。收据`connectivity_recovered_verification.json`为2883字节/SHA`fd6dbf1e0eee8ce335219f5dfc3a96c047858a58e3c430f0956aef109723bf76`，小副本`data/manifests/supermimic_q1_R02B_connectivity_20261023.json`。A完成记录已发布`1bd1089a294b51d7dcc1645c0067fdbaf44cc723`并核对远端；后续连接继续使用可用Windows跳板，不因观察超时重复启动训练。

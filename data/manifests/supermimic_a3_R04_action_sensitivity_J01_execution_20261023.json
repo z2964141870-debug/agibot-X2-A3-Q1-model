@@ -1,0 +1,74 @@
+{
+  "diagnostic": {
+    "record_format": "Summary of actual supervisor tool output; full physics arrays and diagnostic receipt retained on server",
+    "utc": "2026-10-23T01:29:32.158309+00:00",
+    "command": [
+      "envs/supermimic_a3_20261023/bin/python",
+      "-u",
+      "script/supermimic_for_a3/diagnose_action_response.py",
+      "--execute",
+      "--output",
+      "data/supermimic_for_a3/R04_action_sensitivity_J01_20261023"
+    ],
+    "child_pid": 720709,
+    "native_exit_code": 0,
+    "seconds": 114.90177829563618,
+    "error": null,
+    "max_sampled_cgroup_memory_bytes": 31812046848,
+    "max_sampled_gpu_temperature_c_including_final": 41,
+    "final_health": {
+      "cgroup_memory_bytes": 29342928896,
+      "gpu_temperature_c": 41
+    },
+    "log": {
+      "path": "/opt/data/private/yuanqi_ops/logs/supermimic_a3_R04_action_sensitivity_J01_20261023.log",
+      "bytes": 6193,
+      "sha256": "2ae53cf07d0f053b6125319030c212e9a8fad7a7b208ebb4d2d969e208ce767e"
+    },
+    "protection": {
+      "memory_bytes": 32212254720,
+      "gpu_temperature_c": 86,
+      "wall_time_limit_seconds": 900,
+      "automatic_restart": false
+    }
+  },
+  "audit": {
+    "utc": "2026-10-23T01:30:13.672769+00:00",
+    "command": [
+      "envs/supermimic_a3_20261023/bin/python",
+      "-u",
+      "script/supermimic_for_a3/audit_action_response.py",
+      "--diagnostic",
+      "data/supermimic_for_a3/R04_action_sensitivity_J01_20261023",
+      "--output",
+      "data/supermimic_for_a3/R04_action_sensitivity_J01_20261023_audit.json"
+    ],
+    "child_pid": 720870,
+    "native_exit_code": 0,
+    "seconds": 7.614332266151905,
+    "error": null,
+    "health": [
+      {
+        "cgroup_memory_bytes": 29343211520,
+        "gpu_temperature_c": 39
+      },
+      {
+        "cgroup_memory_bytes": 29343911936,
+        "gpu_temperature_c": 39
+      },
+      {
+        "cgroup_memory_bytes": 29636300800,
+        "gpu_temperature_c": 39
+      }
+    ],
+    "final_health": {
+      "cgroup_memory_bytes": 29342470144,
+      "gpu_temperature_c": 39
+    },
+    "log": {
+      "path": "/opt/data/private/yuanqi_ops/logs/supermimic_a3_R04_action_sensitivity_J01_audit_20261023.log",
+      "bytes": 1518,
+      "sha256": "f4e133e90bca5974adf53cec4330064ffcdb3e49747334eb8f2f84f8b1b2f5fa"
+    }
+  }
+}

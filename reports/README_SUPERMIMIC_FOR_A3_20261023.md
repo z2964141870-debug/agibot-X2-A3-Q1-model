@@ -494,3 +494,27 @@ python script/supermimic_for_a3/audit_action_response.py \
 ```
 
 09:22同boot/RTX3090 UUID已实测，无SuperMimic活跃作业；GPU38℃/6348MiB为既有其他占用，容器29327175680字节，OOM14未增。执行前再次核对，外部监督维持30GiB/86℃并给单次900秒壁钟上限，失败保存不自动重试。准备日志`logs/supermimic_a3_R04_action_sensitivity_J01_prepare_20261023.log`。本节与报告入口、源码/清单同次提交并独立核验GitHub后再执行；原件LOCAL_ONLY，目标active。
+
+## J01实际完成：局部动作响应有方向收益，但长期幅度不准（09:30）
+
+状态：完成，策略目标仍未达。实现/预登记已推送`main=aaccc2208959a0da55cff2b2c7dc07931229d50b`并独立核验后，单次执行子进程720709正常退出0；诊断自身111.578秒，监督器114.902秒。八个基线H32窗口均与保存轨迹逐坐标完全相同（位置/速度最大差都0），后续全部128个扰动窗口完整32步，无终止、超时或动作裁剪；实际4352控制步/87040子步，0策略推理/optimizer，WM逐张量未变。
+
+下表为真实物理中央差分对WM float32 JVP的64个响应中位数（8状态×4方向×2幅度）；同方向两幅度并非独立随机样本，不能据此当64独立统计重复。根与主动关节分别比较：
+
+| 时域 | 根cosine / 模型与物理范数比 / 相对L2误差 | 29关节cosine / 范数比 / 相对L2误差 |
+| --- | --- | --- |
+| H1 | .8961 / 1.2971 / .6382 | .9410 / 1.5642 / .7107 |
+| H8 | .9180 / 1.2118 / .6292 | .6492 / .9251 / .8659 |
+| H32 | .8183 / 1.5960 / 1.0012 | .6401 / 1.5045 / 1.1307 |
+
+根正cosine比例H1/H8/H32为95.3125%/92.1875%/85.9375%，关节100%/100%/95.3125%；全部响应非退化。方向多数正确，不能判成模型完全不懂动作或反向传播断开；H32幅度与误差也不足以信任长期物理响应。模型FD与JVP结果接近；192组数值控制均通过（各组含两个双精度FD控制及float32/64 JVP对照），排除了本次读出下明显的自动微分数值实现不一致，不能证明完整闭环actor梯度正确。
+
+真实物理的.05与.10幅度响应也并非完全线性：根H1/H8/H32 cosine中位数.9896/.9911/.9829，相对L2差.3133/.2715/.3372；关节cosine .9856/.9723/.9558，相对差.3677/.3583/.4049。接触、摩擦等非平滑响应和离散化均可能影响有限差分，这里没有辨明其各自贡献。两幅度/局部状态的结果不能直接推断所有状态、动作或整条策略梯度，也不是早倒唯一原因证明。
+
+`audit_action_response.py`子进程720870实际退出0，监督7.614秒，独立验收`ACTION_RESPONSE_EVIDENCE_INDEPENDENTLY_VERIFIED`：重新核对全部输入/代码/原数组、种子与采样、基线精度、384响应行、192数值控制行、聚合分母和4352/87040实际计数。此审计0新物理/optimizer。证据：
+
+- [完整动作响应JSON](../data/manifests/supermimic_a3_R04_action_sensitivity_J01_result_20261023.json)、[独立验收](../data/manifests/supermimic_a3_R04_action_sensitivity_J01_audit_20261023.json)、[实际监督执行及资源](../data/manifests/supermimic_a3_R04_action_sensitivity_J01_execution_20261023.json)。
+- [诊断stdout](../logs/session_records/supermimic_a3_R04_action_sensitivity_J01_20261023.log)、[验收stdout](../logs/session_records/supermimic_a3_R04_action_sensitivity_J01_audit_20261023.log)。原件`data/supermimic_for_a3/R04_action_sensitivity_J01_20261023/{plan,admission,receipt}.json`、八组`sample_XX_{baseline,native,responses}.npz`；服务器独立审计`R04_action_sensitivity_J01_20261023_audit.json`。复现入口仍为上节固定命令，不覆盖或重跑本次完成结果。
+- 监督采样最高容器31812046848字节，GPU含最终快照最高41℃；诊断后29342928896字节，审计后29342470144字节/GPU39℃，OOM14未增。仍是采样峰值，不是连续峰值。没有放宽30GiB/86℃保护或自动重启。
+
+下一先核对actor时域/critic/初始化合同，再登记H8对H32的受控后续试验：依据是J01短时根响应及长期联合误差，而非已证明H8会改善。用同一R04父模型、匹配新交互/更新预算和既定完整片段门，分别评估，避免把更多训练与时域变化混为单一因果。当前尚无该后续代码/输入冻结或训练，R04及旧STOPPED不改；目标active，模型仍不可用，原件LOCAL_ONLY。本节/清单同次提交，GitHub同步以实际推送与独立远端SHA为准。

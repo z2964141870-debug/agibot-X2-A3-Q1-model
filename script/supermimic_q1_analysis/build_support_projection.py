@@ -63,6 +63,17 @@ def shifted_states(qpos, qvel, shift, dt):
     return poses, velocities
 
 
+def compare_self_collisions(before, after, collision_tolerance):
+    if not np.isfinite(collision_tolerance) or collision_tolerance <= 0:
+        raise ValueError("Positive registered collision tolerance required")
+    error = float(np.max(np.abs(before["self_contact_depth_m"] - after["self_contact_depth_m"])))
+    if (not np.array_equal(before["self_contact_count"], after["self_contact_count"])
+            or not np.isfinite(error) or error > collision_tolerance):
+        raise ValueError("Vertical translation changed self-collision counts or depth beyond collision tolerance")
+    return {"counts_unchanged": True, "maximum_depth_difference_m": error,
+            "registered_ccd_tolerance_m": float(collision_tolerance)}
+
+
 def geometry(model, feet, floor, qpos, qvel, body_names, trace_ids, targets, mj, oom):
     data = mj.MjData(model)
     body_ids = [model.body(name).id for name in body_names]
@@ -171,10 +182,7 @@ def build(root, admission_path, diagnostic_path, audit_path, output):
         qpos, qvel = shifted_states(source["qpos"], source["qvel"], shift, .02)
         after_arrays, after = geometry(model, feet, floor, qpos, qvel, names, trace_ids, targets,
                                        mj, baseline["oom_kill"])
-        if (not np.array_equal(before_arrays["self_contact_count"], after_arrays["self_contact_count"])
-                or not np.allclose(before_arrays["self_contact_depth_m"], after_arrays["self_contact_depth_m"],
-                                   rtol=0, atol=1e-10)):
-            raise ValueError("Vertical translation unexpectedly changed robot self collisions")
+        collision_check = compare_self_collisions(before_arrays, after_arrays, model.opt.ccd_tolerance)
         candidate = {**source, "qpos": qpos, "qvel": qvel,
                      **{key: after_arrays[key] for key in BODY_FIELDS}}
         path = output / (row["clip"] + ".npz")
@@ -190,6 +198,7 @@ def build(root, admission_path, diagnostic_path, audit_path, output):
         result = {"clip": row["clip"], "parent": row["output"], "candidate": identity(path),
                   "projection_arrays": identity(correction), "frames": len(times),
                   "solver": solver, "root_correction_m": describe(shift), "before": before, "after": after,
+                  "self_collision_invariance": collision_check,
                   "qualified_for_training_pilot": False,
                   "reason": "Separate candidate pending independent export audit and matched physics evaluation"}
         clips.append(result)

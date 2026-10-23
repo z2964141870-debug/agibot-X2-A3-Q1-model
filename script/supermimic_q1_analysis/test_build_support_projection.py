@@ -8,7 +8,7 @@ import unittest
 
 import numpy as np
 
-from build_support_projection import SETTINGS, shifted_states, support_shift
+from build_support_projection import SETTINGS, compare_self_collisions, shifted_states, support_shift
 from audit_support_projection import file_id, run as audit_projection
 
 
@@ -57,6 +57,20 @@ class SupportProjectionTests(unittest.TestCase):
         for count, dt in ((4, .02), (8, 0)):
             with self.assertRaises(ValueError):
                 shifted_states(np.zeros((count, 29)), np.zeros((count, 28)), np.zeros(count), dt)
+
+    def test_registered_collision_tolerance_keeps_real_changes_rejected(self):
+        before = {"self_contact_count": np.array([0, 2]), "self_contact_depth_m": np.array([0., .005])}
+        after = {"self_contact_count": np.array([0, 2]), "self_contact_depth_m": np.array([0., .00500045])}
+        self.assertTrue(compare_self_collisions(before, after, 1e-6)["counts_unchanged"])
+        with self.assertRaises(ValueError):
+            compare_self_collisions(before, after, 1e-10)
+        after["self_contact_depth_m"][1] = .005002
+        with self.assertRaises(ValueError):
+            compare_self_collisions(before, after, 1e-6)
+        after["self_contact_depth_m"][1] = .005
+        after["self_contact_count"][1] = 1
+        with self.assertRaises(ValueError):
+            compare_self_collisions(before, after, 1e-6)
 
 
 class ProjectionArtifactTests(unittest.TestCase):

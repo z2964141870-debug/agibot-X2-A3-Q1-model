@@ -1,0 +1,655 @@
+{
+  "status": "REFERENCE_INVERSE_CONTACT_DIAGNOSTIC_COMPLETED",
+  "admission": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R03_B128_extend12000_20261023/run/admission.json",
+    "bytes": 26749,
+    "sha256": "a94e3f9dfc5d4fe80a92b132cc6dc7b25c3068275b586dc0f1dcbfadca098339"
+  },
+  "active_joint_names": [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_joint",
+    "left_ankle_pitch_joint",
+    "left_ankle_roll_joint",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_joint",
+    "right_ankle_pitch_joint",
+    "right_ankle_roll_joint",
+    "waist_roll_joint",
+    "waist_yaw_joint",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_joint"
+  ],
+  "effective_effort_nm": [
+    9.0,
+    9.0,
+    9.0,
+    9.0,
+    5.5,
+    5.5,
+    9.0,
+    9.0,
+    9.0,
+    9.0,
+    5.5,
+    5.5,
+    9.0,
+    9.0,
+    5.5,
+    5.5,
+    5.5,
+    5.5,
+    5.5,
+    5.5,
+    5.5,
+    5.5
+  ],
+  "contact_protocol": "Q1_FOOT_PRIORITY_V2",
+  "friction": 1.0,
+  "clips": [
+    {
+      "clip": "001_walk_front_slow",
+      "reference": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/D05B_support_projection_20261024/001_walk_front_slow.npz",
+        "bytes": 2721280,
+        "sha256": "e3ca86f7a72648810b922ff282c01baf1573e21e237a93cf9b43b633c41e42fd"
+      },
+      "source_frames": 1652,
+      "excluded_boundary_frames": [
+        0,
+        1,
+        1650,
+        1651
+      ],
+      "dt_s": 0.02,
+      "body_weight_N": 165.95859528,
+      "raw_arrays": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/D05B_support_projection_20261024/dynamics/001_walk_front_slow.npz",
+        "bytes": 1263135,
+        "sha256": "309cde00ea141024468c09ad3bd7a56629977abe5177209389fab0c31ae136d3"
+      },
+      "analyzed_frames": 1648,
+      "foot_floor_contact_fraction": 1.0,
+      "minimum_foot_gap_m": -0.000500000000000075,
+      "lower_foot_gap_m": {
+        "count": 1648,
+        "mean": -0.0002885833446778151,
+        "p50": -0.0002735466532285246,
+        "p95": -4.99999999999997e-05,
+        "max": -4.999999999989041e-05
+      },
+      "proximity": {
+        "0.001": {
+          "frame_any_foot_fraction": 1.0,
+          "point_tangent_speed_m_s": {
+            "count": 1945,
+            "mean": 0.09299783813258482,
+            "p50": 0.01294474449588331,
+            "p95": 0.5320975711493693,
+            "max": 0.7827358515163052
+          },
+          "point_speed_above_0_05_fraction": 0.28740359897172235
+        },
+        "0.01": {
+          "frame_any_foot_fraction": 1.0,
+          "point_tangent_speed_m_s": {
+            "count": 2978,
+            "mean": 0.08425098292314423,
+            "p50": 0.00981306574781982,
+            "p95": 0.5206110252615965,
+            "max": 0.7827358515163052
+          },
+          "point_speed_above_0_05_fraction": 0.2364002686366689
+        },
+        "0.03": {
+          "frame_any_foot_fraction": 1.0,
+          "point_tangent_speed_m_s": {
+            "count": 3296,
+            "mean": 0.08284406447592049,
+            "p50": 0.010257888806054365,
+            "p95": 0.5198443393752269,
+            "max": 0.7827358515163052
+          },
+          "point_speed_above_0_05_fraction": 0.22512135922330098
+        }
+      },
+      "inverse": {
+        "central3": {
+          "root_force_N": {
+            "count": 1648,
+            "mean": 154.10594356498538,
+            "p50": 152.09535052336315,
+            "p95": 201.87735214509846,
+            "max": 569.5751330972857
+          },
+          "root_force_body_weights": {
+            "count": 1648,
+            "mean": 0.9285806698049163,
+            "p50": 0.9164656417267981,
+            "p95": 1.21643203718673,
+            "max": 3.432031538567297
+          },
+          "root_torque_Nm": {
+            "count": 1648,
+            "mean": 19.78613845732095,
+            "p50": 4.422353706143507,
+            "p95": 96.0889235478188,
+            "max": 267.6029386836969
+          },
+          "active_effort_over_cap": {
+            "count": 36256,
+            "mean": 0.22215008818567888,
+            "p50": 0.02551564965382826,
+            "p95": 0.6725560387717505,
+            "max": 25.619676571300225
+          },
+          "frames_any_active_effort_over_cap_fraction": 0.2942961165048544,
+          "per_joint_effort_over_cap_fraction": [
+            0.15351941747572814,
+            0.06371359223300971,
+            0.0012135922330097086,
+            0.12742718446601942,
+            0.10983009708737865,
+            0.003033980582524272,
+            0.13531553398058252,
+            0.05279126213592233,
+            0.010315533980582525,
+            0.09890776699029126,
+            0.0825242718446602,
+            0.003033980582524272,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "joint_acceleration_rad_s2": {
+            "count": 36256,
+            "mean": 2.310388433918321,
+            "p50": 1.2486615218222141,
+            "p95": 8.155972277745605,
+            "max": 77.51405835151672
+          },
+          "inverse_rne_decomposition_max_error": 1.1368683772161603e-13
+        },
+        "central5": {
+          "root_force_N": {
+            "count": 1648,
+            "mean": 154.131969700336,
+            "p50": 151.97885310920802,
+            "p95": 203.3891098079638,
+            "max": 572.0775084467319
+          },
+          "root_force_body_weights": {
+            "count": 1648,
+            "mean": 0.9287374928685647,
+            "p50": 0.915763674986488,
+            "p95": 1.2255412831424142,
+            "max": 3.4471098497883834
+          },
+          "root_torque_Nm": {
+            "count": 1648,
+            "mean": 19.84481915588012,
+            "p50": 4.51132317710587,
+            "p95": 96.38886703432186,
+            "max": 268.1257807073579
+          },
+          "active_effort_over_cap": {
+            "count": 36256,
+            "mean": 0.2230474871790966,
+            "p50": 0.02608575599657917,
+            "p95": 0.6734851451705216,
+            "max": 25.657666964661274
+          },
+          "frames_any_active_effort_over_cap_fraction": 0.2924757281553398,
+          "per_joint_effort_over_cap_fraction": [
+            0.1529126213592233,
+            0.06492718446601942,
+            0.0012135922330097086,
+            0.12742718446601942,
+            0.1104368932038835,
+            0.003033980582524272,
+            0.1341019417475728,
+            0.05218446601941747,
+            0.010315533980582525,
+            0.09890776699029126,
+            0.0825242718446602,
+            0.003033980582524272,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "joint_acceleration_rad_s2": {
+            "count": 36256,
+            "mean": 2.8276957084953347,
+            "p50": 1.5350045345257968,
+            "p95": 10.040692360295605,
+            "max": 91.10736126701038
+          },
+          "inverse_rne_decomposition_max_error": 8.526512829121202e-14
+        }
+      },
+      "inverse_calls": 3296
+    },
+    {
+      "clip": "042_squat_shallow_repeated",
+      "reference": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/D05B_support_projection_20261024/042_squat_shallow_repeated.npz",
+        "bytes": 1876896,
+        "sha256": "deb5d048e85a5986ab1e414534fda201d928be549b59198b24bfb8194f33abf9"
+      },
+      "source_frames": 1157,
+      "excluded_boundary_frames": [
+        0,
+        1,
+        1155,
+        1156
+      ],
+      "dt_s": 0.02,
+      "body_weight_N": 165.95859528,
+      "raw_arrays": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/D05B_support_projection_20261024/dynamics/042_squat_shallow_repeated.npz",
+        "bytes": 878930,
+        "sha256": "1796776ce134bd5c8a4a14900aa4da1e7867a0ad021c5989bbfb970af4ec08e1"
+      },
+      "analyzed_frames": 1153,
+      "foot_floor_contact_fraction": 1.0,
+      "minimum_foot_gap_m": -0.0005000000000000126,
+      "lower_foot_gap_m": {
+        "count": 1153,
+        "mean": -0.00025225601094602964,
+        "p50": -0.00025000000040802627,
+        "p95": -0.0001927307416683299,
+        "max": -4.9999999999944186e-05
+      },
+      "proximity": {
+        "0.001": {
+          "frame_any_foot_fraction": 1.0,
+          "point_tangent_speed_m_s": {
+            "count": 2267,
+            "mean": 0.002621393798867199,
+            "p50": 0.0019120615020330836,
+            "p95": 0.005765249285163113,
+            "max": 0.1486191391071193
+          },
+          "point_speed_above_0_05_fraction": 0.002646669607410675
+        },
+        "0.01": {
+          "frame_any_foot_fraction": 1.0,
+          "point_tangent_speed_m_s": {
+            "count": 2306,
+            "mean": 0.0026190448960060953,
+            "p50": 0.0019123729730100487,
+            "p95": 0.005755329235512396,
+            "max": 0.1486191391071193
+          },
+          "point_speed_above_0_05_fraction": 0.0026019080659150044
+        },
+        "0.03": {
+          "frame_any_foot_fraction": 1.0,
+          "point_tangent_speed_m_s": {
+            "count": 2306,
+            "mean": 0.0026190448960060953,
+            "p50": 0.0019123729730100487,
+            "p95": 0.005755329235512396,
+            "max": 0.1486191391071193
+          },
+          "point_speed_above_0_05_fraction": 0.0026019080659150044
+        }
+      },
+      "inverse": {
+        "central3": {
+          "root_force_N": {
+            "count": 1153,
+            "mean": 153.37804754519576,
+            "p50": 154.16960859017894,
+            "p95": 159.6615388282303,
+            "max": 168.24809445450873
+          },
+          "root_force_body_weights": {
+            "count": 1153,
+            "mean": 0.924194660038073,
+            "p50": 0.9289642897378647,
+            "p95": 0.9620564608832372,
+            "max": 1.0137956046846863
+          },
+          "root_torque_Nm": {
+            "count": 1153,
+            "mean": 2.1663116399852322,
+            "p50": 1.7811689126935273,
+            "p95": 4.380632344299744,
+            "max": 52.468918882513684
+          },
+          "active_effort_over_cap": {
+            "count": 25366,
+            "mean": 0.045133686622919784,
+            "p50": 0.02220313455722802,
+            "p95": 0.16005436159982173,
+            "max": 2.6515793577899585
+          },
+          "frames_any_active_effort_over_cap_fraction": 0.0026019080659150044,
+          "per_joint_effort_over_cap_fraction": [
+            0.0026019080659150044,
+            0.0,
+            0.0,
+            0.0026019080659150044,
+            0.0017346053772766695,
+            0.0,
+            0.0017346053772766695,
+            0.0008673026886383347,
+            0.0,
+            0.0008673026886383347,
+            0.0008673026886383347,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "joint_acceleration_rad_s2": {
+            "count": 25366,
+            "mean": 0.8078560717417315,
+            "p50": 0.4622375941835344,
+            "p95": 2.4357148562557995,
+            "max": 82.94212818145752
+          },
+          "inverse_rne_decomposition_max_error": 8.526512829121202e-14
+        },
+        "central5": {
+          "root_force_N": {
+            "count": 1153,
+            "mean": 153.36740574797594,
+            "p50": 154.16164035542798,
+            "p95": 159.7905710186138,
+            "max": 170.54372891761352
+          },
+          "root_force_body_weights": {
+            "count": 1153,
+            "mean": 0.9241305368319094,
+            "p50": 0.9289162763479133,
+            "p95": 0.9628339571627508,
+            "max": 1.027628178160207
+          },
+          "root_torque_Nm": {
+            "count": 1153,
+            "mean": 2.177877246546273,
+            "p50": 1.8066437865950475,
+            "p95": 4.461752216772833,
+            "max": 43.20568458898062
+          },
+          "active_effort_over_cap": {
+            "count": 25366,
+            "mean": 0.04540421699714102,
+            "p50": 0.022707109400513216,
+            "p95": 0.1599260780018011,
+            "max": 2.2772220059336736
+          },
+          "frames_any_active_effort_over_cap_fraction": 0.0026019080659150044,
+          "per_joint_effort_over_cap_fraction": [
+            0.0026019080659150044,
+            0.0,
+            0.0,
+            0.0026019080659150044,
+            0.0017346053772766695,
+            0.0,
+            0.0017346053772766695,
+            0.0008673026886383347,
+            0.0,
+            0.0017346053772766695,
+            0.0008673026886383347,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "joint_acceleration_rad_s2": {
+            "count": 25366,
+            "mean": 1.014942641476035,
+            "p50": 0.5809205526020378,
+            "p95": 3.1340144894784316,
+            "max": 98.37941726048788
+          },
+          "inverse_rne_decomposition_max_error": 8.526512829121202e-14
+        }
+      },
+      "inverse_calls": 2306
+    },
+    {
+      "clip": "058_punch_front_alternating",
+      "reference": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/D05B_support_projection_20261024/058_punch_front_alternating.npz",
+        "bytes": 1059548,
+        "sha256": "816ce863ed73e81e62acc38fd29f8372647b3c77956edbda6dd69dc69f434b99"
+      },
+      "source_frames": 678,
+      "excluded_boundary_frames": [
+        0,
+        1,
+        676,
+        677
+      ],
+      "dt_s": 0.02,
+      "body_weight_N": 165.95859528,
+      "raw_arrays": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/D05B_support_projection_20261024/dynamics/058_punch_front_alternating.npz",
+        "bytes": 500185,
+        "sha256": "92193f98810931063204365a331f67d921e48077826bb214cc75d2dde3bc7510"
+      },
+      "analyzed_frames": 674,
+      "foot_floor_contact_fraction": 1.0,
+      "minimum_foot_gap_m": -0.0005000000000000473,
+      "lower_foot_gap_m": {
+        "count": 674,
+        "mean": -0.0002645498059181252,
+        "p50": -0.0002500000035097396,
+        "p95": -7.849315016485299e-05,
+        "max": -4.999999999992337e-05
+      },
+      "proximity": {
+        "0.001": {
+          "frame_any_foot_fraction": 1.0,
+          "point_tangent_speed_m_s": {
+            "count": 1056,
+            "mean": 0.012385605316186148,
+            "p50": 0.003233721586794399,
+            "p95": 0.05044565725619236,
+            "max": 0.14182386097104877
+          },
+          "point_speed_above_0_05_fraction": 0.05113636363636364
+        },
+        "0.01": {
+          "frame_any_foot_fraction": 1.0,
+          "point_tangent_speed_m_s": {
+            "count": 1348,
+            "mean": 0.014145578962280666,
+            "p50": 0.00560209745940683,
+            "p95": 0.05218037738859029,
+            "max": 0.14182386097104877
+          },
+          "point_speed_above_0_05_fraction": 0.05712166172106825
+        },
+        "0.03": {
+          "frame_any_foot_fraction": 1.0,
+          "point_tangent_speed_m_s": {
+            "count": 1348,
+            "mean": 0.014145578962280666,
+            "p50": 0.00560209745940683,
+            "p95": 0.05218037738859029,
+            "max": 0.14182386097104877
+          },
+          "point_speed_above_0_05_fraction": 0.05712166172106825
+        }
+      },
+      "inverse": {
+        "central3": {
+          "root_force_N": {
+            "count": 674,
+            "mean": 146.7478088394334,
+            "p50": 151.1999534017452,
+            "p95": 158.71186868500288,
+            "max": 177.29186966523864
+          },
+          "root_force_body_weights": {
+            "count": 674,
+            "mean": 0.884243498155942,
+            "p50": 0.9110703374335358,
+            "p95": 0.9563341291075003,
+            "max": 1.0682897705064176
+          },
+          "root_torque_Nm": {
+            "count": 674,
+            "mean": 5.522084530056233,
+            "p50": 3.4944935660277494,
+            "p95": 17.97219787039304,
+            "max": 37.55959825490213
+          },
+          "active_effort_over_cap": {
+            "count": 14828,
+            "mean": 0.23739263517858267,
+            "p50": 0.02687096687425674,
+            "p95": 0.5710413874135031,
+            "max": 42.48787418588409
+          },
+          "frames_any_active_effort_over_cap_fraction": 0.22106824925816024,
+          "per_joint_effort_over_cap_fraction": [
+            0.05192878338278932,
+            0.032640949554896145,
+            0.0,
+            0.02225519287833828,
+            0.016320474777448073,
+            0.0,
+            0.0771513353115727,
+            0.019287833827893175,
+            0.0,
+            0.017804154302670624,
+            0.011869436201780416,
+            0.0,
+            0.10089020771513353,
+            0.050445103857566766,
+            0.025222551928783383,
+            0.025222551928783383,
+            0.016320474777448073,
+            0.02373887240356083,
+            0.04896142433234421,
+            0.0712166172106825,
+            0.04896142433234421,
+            0.04302670623145401
+          ],
+          "joint_acceleration_rad_s2": {
+            "count": 14828,
+            "mean": 3.260682020345546,
+            "p50": 0.4619167818418646,
+            "p95": 15.98893357440829,
+            "max": 99.99989867210388
+          },
+          "inverse_rne_decomposition_max_error": 8.526512829121202e-14
+        },
+        "central5": {
+          "root_force_N": {
+            "count": 674,
+            "mean": 146.84197299691573,
+            "p50": 151.12858206728836,
+            "p95": 159.02767611548236,
+            "max": 178.24919329499062
+          },
+          "root_force_body_weights": {
+            "count": 674,
+            "mean": 0.8848108936398785,
+            "p50": 0.9106402823686781,
+            "p95": 0.9582370581480036,
+            "max": 1.074058219125405
+          },
+          "root_torque_Nm": {
+            "count": 674,
+            "mean": 5.610998140494007,
+            "p50": 3.486330086395574,
+            "p95": 18.1809445237786,
+            "max": 39.66220396938513
+          },
+          "active_effort_over_cap": {
+            "count": 14828,
+            "mean": 0.23883945896645967,
+            "p50": 0.02704160277273207,
+            "p95": 0.5781375101006144,
+            "max": 43.20935846241299
+          },
+          "frames_any_active_effort_over_cap_fraction": 0.22403560830860533,
+          "per_joint_effort_over_cap_fraction": [
+            0.050445103857566766,
+            0.03115727002967359,
+            0.0,
+            0.02373887240356083,
+            0.016320474777448073,
+            0.0,
+            0.07863501483679525,
+            0.020771513353115726,
+            0.0,
+            0.017804154302670624,
+            0.011869436201780416,
+            0.0,
+            0.10385756676557864,
+            0.05341246290801187,
+            0.025222551928783383,
+            0.025222551928783383,
+            0.016320474777448073,
+            0.02373887240356083,
+            0.04896142433234421,
+            0.0712166172106825,
+            0.04896142433234421,
+            0.04302670623145401
+          ],
+          "joint_acceleration_rad_s2": {
+            "count": 14828,
+            "mean": 3.602018807491181,
+            "p50": 0.5850205081515014,
+            "p95": 16.981092230416834,
+            "max": 121.54925813277563
+          },
+          "inverse_rne_decomposition_max_error": 8.526512829121202e-14
+        }
+      },
+      "inverse_calls": 1348
+    }
+  ],
+  "source": {
+    "path": "/opt/data/private/YuanQi_Q1/script/supermimic_q1_analysis/build_support_projection.py",
+    "bytes": 15116,
+    "sha256": "3ac4fd96686232928efd2f93d55cbea365dfcda7cbcc312652675f23c36ac57e"
+  },
+  "new_physics_steps": 0,
+  "storage_status": "LOCAL_ONLY"
+}

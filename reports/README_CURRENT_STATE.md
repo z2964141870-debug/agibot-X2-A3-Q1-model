@@ -1,10 +1,10 @@
 # YUANQI 当前状态与下一步
 
-2026-10-23 22:33:23核验：[Q1 R02批量对照](README_SUPERMIMIC_Q1_BATCH_TRAINING_20261023.md)B batch128为2225/3000轮、35600交互、839组WM/789次actor；原controller751815/start3604769075、B756622/start3605356394在boot d994e71f-bae0-46ba-a5f7-6c2163771c6c下均非僵尸且命令匹配，冻结源码/输入/运行时通过。GPU40摄氏度/容器31023022080字节/OOM14，pair无终态。平台huanyu:/opt/data/private/YuanQi_Q1，目录`R02_cachefixed_pair_20261023`、冻结核心6b43cc0，每臂3000轮/48000交互；无自动重启或追加预算。
+2026-10-23 23:07:21核验：[Q1 R02批量对照](README_SUPERMIMIC_Q1_BATCH_TRAINING_20261023.md)两臂18阶段及比较重算通过，终态PAIR_COMPLETED；B3000轮/48000交互/101.847分钟，三片完整、关节RMSE0.363888/0.386939/0.311051rad，腿部0.178007/0.251199/0.110641，仍未过0.15门。走路最大位移0.030115m/参考1.126480m，未学会移动跟随。原controller/A/B已退出或僵尸，未当作活跃作业。主机huanyu:/opt/data/private/YuanQi_Q1，核心6b43cc0，GPU39摄氏度/空闲17788MiB、容器26910662656字节/OOM14。
 
-[D03前缀分析](README_SUPERMIMIC_Q1_PREFIX_DIAGNOSIS_20261023.md)独立代码2ca9661发布/部署，两端3控制及A实际只读分析完成。相同走路前700步全身0.374801→0.346602rad、腿部0.216716→0.237951rad、水平根0.628437→0.561301m，最终仍失败；浅蹲与开发出拳水平误差增大。JSON与存活证据在data/manifests/*D03*，0新物理/推理/optimizer。B全流程结束后用同脚本比较四份配对轨迹，再选择固定长预算，R03尚未登记；不改R02/E03源码集合。
+[D03前缀分析](README_SUPERMIMIC_Q1_PREFIX_DIAGNOSIS_20261023.md)A/B四份真实比较完成：同前700步A/B全身0.346602/0.356039rad、腿部0.237951/0.183202、水平根0.561301/0.622730m；B并非所有指标更好。13小证据为data/manifests/supermimic_q1_R02_complete_*_20261023.json，逐项大小/SHA通过，模型/轨迹留服务器LOCAL_ONLY。选择B作[R03追加12000轮](README_SUPERMIMIC_Q1_R03_CONTINUATION_20261023.md)起点，累计15000轮/240000交互，保留模型/Adam/采样统计，新seed20261024与fresh replay；尚未登记/启动，先发布记录再执行既有E03 pipeline。
 
-A batch32已完成95.087分钟训练、保存审计11门及step0/final三片动力学/独立重算。final关节RMSE走路0.346602rad（仅42.373%前缀，提前失败）、浅蹲0.369294、开发出拳0.300410，未过跟随门；不能按回报或走路截断误差选赢家。B完整评测及匹配comparison完成后才选父臂/固定追加预算。
+A batch32已完成95.087分钟训练、保存审计11门及完整配对评测/重算；走路只42.373%后失败。B腿部和稳定性较好而上肢误差较大，选择起点不代表单种子证明batch128普遍更优。出拳仍是复用开发；训练效果、仿真与真机分开报告。
 
 原`R02_batch_pair_20261023`已在140轮因容器30GiB保护保存STOPPED_SIGNAL/0actor；终态和权重保留，不能重用或恢复。缓存建议使容器观察下降1711742976字节，6项控制器测试通过；新运行仍保留30GiB/86摄氏度/OOM保护。A3停止，R01冻结工件保留，大文件LOCAL_ONLY，当前没有新最终策略成绩。Q1分支及本地代码副本`/tmp/yuanqi-supermimic-q1-20261023`维护。
 
@@ -12,7 +12,7 @@ A batch32已完成95.087分钟训练、保存审计11门及step0/final三片动�
 
 可用连接经用户Windows yu@100.65.183.91跳转huanyu；旧100.85.145.78路线超时，未因此停止/重启训练。凭据只用于临时SSH，不写文件。静态PID不证明仍在运行，详细过程在阶段README，通用研究独立待同步项未在本次合并。
 
-[E01/E03后续入口准备](README_SUPERMIMIC_Q1_EXTENSION_PREP_20261023.md)：父网络/Adam/采样统计继承及独立审计已有11项CPU控制通过；pipeline固定预算登记→训练→审计→三片配对评测另5项两端通过，实际未完成pair登记退出1且无输出。发布代码d5f9476/61项release已逐文件核验部署。真实R03注册/训练/完整生命周期未运行；待B及comparison完成后使用pipeline.py register/execute，不能用准备检查替代训练效果。
+[E01/E03后续入口准备](README_SUPERMIMIC_Q1_EXTENSION_PREP_20261023.md)：父状态继承/审计11控制及完整流程5控制的两端证据保留，d5f9476/61项release已逐文件核验部署。R02完成后的实际父校验已通过，下一按R03已选参数使用pipeline.py register/execute；真实R03尚未登记/训练，不能用准备检查替代训练效果。
 
 ## 用户目标与固定约定
 

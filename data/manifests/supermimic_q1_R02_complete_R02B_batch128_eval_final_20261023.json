@@ -1,0 +1,104 @@
+{
+  "status": "DETERMINISTIC_PHYSICS_EVALUATION_COMPLETED",
+  "checkpoint": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/R02B_batch128/final.pt",
+    "bytes": 205221971,
+    "sha256": "b2990bc9af730127e5bda6d88fe1f3b214980e061e3badade555eedd02c51095"
+  },
+  "training_step": 3000,
+  "policy_updates": 1099,
+  "groups": {
+    "training": {
+      "clips": 2,
+      "failures": 0,
+      "mean_normalized_return": 0.7605588628891016,
+      "mean_completion": 1.0
+    },
+    "heldout": {
+      "clips": 1,
+      "failures": 0,
+      "mean_normalized_return": 0.7501399067057445,
+      "mean_completion": 1.0
+    }
+  },
+  "rows": [
+    {
+      "clip": "001_walk_front_slow",
+      "split": "training",
+      "expected_steps": 1652,
+      "executed_steps": 1652,
+      "failed": false,
+      "normalized_return": 0.7200299063133702,
+      "full_clip_completion": 1.0,
+      "executed_joint_rmse_rad": 0.3638883016321251,
+      "executed_body_error_mean_m": 0.5101969723074447,
+      "reference": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/motions_P03_20261023/001_walk_front_slow.npz",
+        "bytes": 1606579,
+        "sha256": "8f6a5ed1789fd0891a56dbe24f1d39d2b657feef54fdc7b2b979d61a0705d9e0"
+      },
+      "trace": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/R02B_batch128_eval_final/001_walk_front_slow.npz",
+        "bytes": 432937,
+        "sha256": "f2a97bb4686e1dcd691f7b6b141c2e1799606c4c5ff9a975aee66298f6d0d200"
+      }
+    },
+    {
+      "clip": "042_squat_shallow_repeated",
+      "split": "training",
+      "expected_steps": 1157,
+      "executed_steps": 1157,
+      "failed": false,
+      "normalized_return": 0.8010878194648331,
+      "full_clip_completion": 1.0,
+      "executed_joint_rmse_rad": 0.3869389294995346,
+      "executed_body_error_mean_m": 0.048773020672528984,
+      "reference": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/motions_P03_20261023/042_squat_shallow_repeated.npz",
+        "bytes": 1113973,
+        "sha256": "67c8cb59ae69c004cc4b8518ebedbdb09a11e1fa451497309646eddf43004e0e"
+      },
+      "trace": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/R02B_batch128_eval_final/042_squat_shallow_repeated.npz",
+        "bytes": 330294,
+        "sha256": "52887db0887a96ad8ee88c95ec06a99ac75efc203777938fd7c7a81f3020d1d9"
+      }
+    },
+    {
+      "clip": "058_punch_front_alternating",
+      "split": "heldout",
+      "expected_steps": 678,
+      "executed_steps": 678,
+      "failed": false,
+      "normalized_return": 0.7501399067057445,
+      "full_clip_completion": 1.0,
+      "executed_joint_rmse_rad": 0.3110512754842593,
+      "executed_body_error_mean_m": 0.05231850724845883,
+      "reference": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/motions_P03_20261023/058_punch_front_alternating.npz",
+        "bytes": 623319,
+        "sha256": "05e1edd63d0f7460b4dda7341f3d4ce12e0632cee98c57ff36403e726ee33927"
+      },
+      "trace": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/R02B_batch128_eval_final/058_punch_front_alternating.npz",
+        "bytes": 201220,
+        "sha256": "4c4ad0bf5180f957a405a43fd2bf361aa8d157bebe963a0dbe086f82b05c6de3"
+      }
+    }
+  ],
+  "seconds": 55.20467349886894,
+  "simulator": "MuJoCo 3.3.7 CPU native rollout",
+  "protocol": "Reference frame0 initial state; n targets/controls; complete frame denominator including early failures; no noise or DR; friction1; free base",
+  "usability_gates": {
+    "all_complete_without_early_failure": true,
+    "mean_full_clip_return_at_least_0p5": true,
+    "each_full_clip_joint_rmse_at_most_0p15": false
+  },
+  "evaluation_entry": {
+    "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/evaluate.py",
+    "bytes": 7130,
+    "sha256": "d7f5b491c4522686b21c41033ea142146c586294a897abd65a138b72f61636de"
+  },
+  "storage_status": "LOCAL_ONLY",
+  "not_hardware_validated": true
+}

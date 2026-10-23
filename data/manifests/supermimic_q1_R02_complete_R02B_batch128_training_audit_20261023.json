@@ -1,0 +1,89 @@
+{
+  "status": "TRAINING_SAVE_AUDIT_PASSED",
+  "gates": {
+    "native_finished": true,
+    "fixed_budget": true,
+    "initial_is_step_zero": true,
+    "update_counters": true,
+    "optimizer_steps": true,
+    "all_networks_changed": true,
+    "finite": true,
+    "source_unchanged": true,
+    "input_unchanged": true,
+    "metrics_reach_budget": true,
+    "no_new_oom": true
+  },
+  "initial": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/R02B_batch128/step_000000.pt",
+    "bytes": 68432619,
+    "sha256": "7d657b201a0c664afff1b39b08de2fbe72f0a61fb2d6721bfe8f6701f7df7cc5"
+  },
+  "final": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/R02B_batch128/final.pt",
+    "bytes": 205221971,
+    "sha256": "b2990bc9af730127e5bda6d88fe1f3b214980e061e3badade555eedd02c51095"
+  },
+  "training_receipt": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/R02B_batch128/receipt.json",
+    "bytes": 2255,
+    "sha256": "d783b2dafa70de8fac5eab33e77e6d121073bb634c8140fa4e12f34617a5c6ee"
+  },
+  "code_commit": "6b43cc0fb4e42482a570fe74e08f19ec3c43c9c0",
+  "optimizer_counters": {
+    "wm_opt": {
+      "expected": 11490,
+      "actual_distinct": [
+        11490
+      ],
+      "parameter_states": 14,
+      "initial_states": 0,
+      "passed": true
+    },
+    "policy_opt": {
+      "expected": 1099,
+      "actual_distinct": [
+        1099
+      ],
+      "parameter_states": 20,
+      "initial_states": 0,
+      "passed": true
+    },
+    "critic_opt": {
+      "expected": 21980,
+      "actual_distinct": [
+        21980
+      ],
+      "parameter_states": 6,
+      "initial_states": 0,
+      "passed": true
+    }
+  },
+  "parameter_changes": {
+    "wm": {
+      "max_abs": 0.47911152243614197,
+      "changed_tensors": 14,
+      "tensors": 15
+    },
+    "policy": {
+      "max_abs": 0.07892613112926483,
+      "changed_tensors": 20,
+      "tensors": 22
+    },
+    "critic": {
+      "max_abs": 1.642791748046875,
+      "changed_tensors": 6,
+      "tensors": 7
+    }
+  },
+  "changed_sources": [],
+  "changed_inputs": [],
+  "metrics_rows": 120,
+  "physics_steps": 0,
+  "optimizer_updates": 0,
+  "source": {
+    "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/audit_training.py",
+    "bytes": 5797,
+    "sha256": "993ee5b07f86abfdd2b97bc01dbc6273d7800423074e0e5c0b054aca3f7a575f"
+  },
+  "storage_status": "LOCAL_ONLY"
+}

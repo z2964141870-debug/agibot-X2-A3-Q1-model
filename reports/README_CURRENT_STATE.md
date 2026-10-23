@@ -1,8 +1,8 @@
 # YUANQI 当前状态与下一步
 
-22:21:24恢复核验：原R02 controller/B身份及冻结源码/输入/运行时通过，B1900/3000轮、30400交互、659次actor，GPU40摄氏度/OOM14，无终态。[D03前缀分析](README_SUPERMIMIC_Q1_PREFIX_DIAGNOSIS_20261023.md)独立代码与3项本地控制通过，真实轨迹待分析；不改R02或E03源码集合，R03尚未登记。
+2026-10-23 22:33:23核验：[Q1 R02批量对照](README_SUPERMIMIC_Q1_BATCH_TRAINING_20261023.md)B batch128为2225/3000轮、35600交互、839组WM/789次actor；原controller751815/start3604769075、B756622/start3605356394在boot d994e71f-bae0-46ba-a5f7-6c2163771c6c下均非僵尸且命令匹配，冻结源码/输入/运行时通过。GPU40摄氏度/容器31023022080字节/OOM14，pair无终态。平台huanyu:/opt/data/private/YuanQi_Q1，目录`R02_cachefixed_pair_20261023`、冻结核心6b43cc0，每臂3000轮/48000交互；无自动重启或追加预算。
 
-2026-10-23 22:08:19核验：[Q1 R02批量对照](README_SUPERMIMIC_Q1_BATCH_TRAINING_20261023.md)B batch128为1525/3000轮、24400交互、559组WM/509次actor；原controller751815/start3604769075、B756622/start3605356394在boot d994e71f-bae0-46ba-a5f7-6c2163771c6c下均非僵尸，冻结源码/输入/运行时通过。step1500大小205230119字节/SHA c7a723ce…已核对，GPU40摄氏度/容器31212642304字节/OOM14。平台huanyu:/opt/data/private/YuanQi_Q1，目录`R02_cachefixed_pair_20261023`、冻结核心6b43cc0，每臂3000轮/48000交互；B/pair无终态，无自动重启或追加预算。
+[D03前缀分析](README_SUPERMIMIC_Q1_PREFIX_DIAGNOSIS_20261023.md)独立代码2ca9661发布/部署，两端3控制及A实际只读分析完成。相同走路前700步全身0.374801→0.346602rad、腿部0.216716→0.237951rad、水平根0.628437→0.561301m，最终仍失败；浅蹲与开发出拳水平误差增大。JSON与存活证据在data/manifests/*D03*，0新物理/推理/optimizer。B全流程结束后用同脚本比较四份配对轨迹，再选择固定长预算，R03尚未登记；不改R02/E03源码集合。
 
 A batch32已完成95.087分钟训练、保存审计11门及step0/final三片动力学/独立重算。final关节RMSE走路0.346602rad（仅42.373%前缀，提前失败）、浅蹲0.369294、开发出拳0.300410，未过跟随门；不能按回报或走路截断误差选赢家。B完整评测及匹配comparison完成后才选父臂/固定追加预算。
 

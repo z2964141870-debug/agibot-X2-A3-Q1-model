@@ -518,3 +518,40 @@ python script/supermimic_for_a3/audit_action_response.py \
 - 监督采样最高容器31812046848字节，GPU含最终快照最高41℃；诊断后29342928896字节，审计后29342470144字节/GPU39℃，OOM14未增。仍是采样峰值，不是连续峰值。没有放宽30GiB/86℃保护或自动重启。
 
 下一先核对actor时域/critic/初始化合同，再登记H8对H32的受控后续试验：依据是J01短时根响应及长期联合误差，而非已证明H8会改善。用同一R04父模型、匹配新交互/更新预算和既定完整片段门，分别评估，避免把更多训练与时域变化混为单一因果。当前尚无该后续代码/输入冻结或训练，R04及旧STOPPED不改；目标active，模型仍不可用，原件LOCAL_ONLY。本节/清单同次提交，GitHub同步以实际推送与独立远端SHA为准。
+
+## R05配对试验实现与冻结：H32对H8（09:44）
+
+状态：实现/控制/准备完成，尚未启动训练。J01结果已发布`main=f62b9e82d517f6bd70bdbb031a4f0925c8fc11b4`并独立核验后，选择一次时域配对试验。它测试整个想象时域的训练效果，**不是只改变actor梯度长度而保持critic数据不变**；时域会同时改变critic目标、minibatch样本数、目标归一化和想象计算量。仍为原WM冻结权重、保留动作/状态梯度的BPTT及原critic/GAE，不替换PPO，也不改28后端/物理/奖励。
+
+实现：`train.py --policy-horizon`仅支持8或32，默认32。新的`--allow-policy-horizon-change`仅允许从完整H32父训练显式初始化到H8；初始化逐字段核验其余合同、加载全部三网络/三Adam并记录唯一变化，禁止同时注入新校准模型。未显式声明仍要求全合同相同。`audit_run.py`独立复核唯一H32→H8声明及原全部张量/Adam/预算/效果，launcher新增配对入口；原历史工件和终态保留，源码历史可由Git恢复，不重跑旧成功阶段。
+
+实际控制：四项合同控制服务器退出0，覆盖默认严格比较、显式唯一变化、无效时域及所有其他合同字段拒绝；Mac七文件AST通过，无本机torch数值结果。`check_horizon_gradient.py`721444实际退出0，监督12.280秒：在J01首个保存状态/原R04全宽三网络上，eager H8+critic bootstrap反向传播的20个actor梯度有限，范数.296353，WM梯度0，三网络逐张量未变。该控制有8次想象policy调用与1次critic调用，0新物理、0 optimizer；batch1/eager不冒称batch64编译训练已通过。
+
+准备进程721516实际退出0、3.516秒，0新增物理/optimizer。[计划](../data/manifests/supermimic_a3_R05_horizon_pair_plan_20261023.json)固定39源码与21输入身份、父R04 final完整SHA、J01独立验收/H8梯度控制/父匹配审计及全部命令；[实际监督收据](../data/manifests/supermimic_a3_R05_horizon_controls_execution_20261023.json)、[梯度结果](../data/manifests/supermimic_a3_R05_horizon_gradient_control_20261023.json)、[合同控制stdout](../logs/session_records/supermimic_a3_R05_horizon_contract_controls_20261023.log)。
+
+| 设置 | R05A_H32对照 | R05B_H8候选 |
+| --- | --- | --- |
+| 父初始化 | R04 final三网络及三Adam | 相同R04 final，不继承R05A |
+| 随机种子 / 环境 / 采集步 | 8723 / 16 / 3000 | 相同 |
+| 新物理训练env-step / WM及actor更新 | 48000 / 各1149 | 相同 |
+| H / 想象转移数（非真实物理） | 32 / 2353152 | 8 / 588288 |
+| 初始Adam WM/actor/critic | 56470/4447/88940 | 相同 |
+| 预期最终Adam | 67960/5596/111920 | 相同 |
+| 日程偏移起点→终点 | 12000→15000 | 相同 |
+
+两臂采用相同batch64、WM窗口8/每更新10批128、critic每次20提交、填replay128步/无模型再预热，其他配置保持。每500采集步保存。真实交互/更新次数匹配，计算量和critic每minibatch样本数不匹配；改变时域后随机数流消耗及访问状态也会分叉。单种子只是方向筛选，不能当统计稳健或独立最终测试。
+
+`run_horizon_pair.py`先R05A训练→自身step0/final各八段完整评测/独立审计/原可用门，再R05B同流程。任一失败或停止即退出，不自动续训或补跑，不在R05A未完成时并行R05B。两臂总新增训练预算96000env-step、2298次策略更新；四次全八段评测的最大预算134844控制步，提前失败按真实长度计数及完整参考分母保留，不能与训练交互相混。配对比较报告所有片段/组别和原三项可用门；只有一方训练完整回报与完成率均更高时登记探索性偏好，否则记MIXED，仍不能把门未过者称可用。
+
+服务器独立目录`data/supermimic_for_a3/R05_horizon_pair_20261023/`保存plan、admission、各训练launch、status和receipt。两臂输出`R05A_H32_20261023`与`R05B_H8_20261023`，完成目录后缀`_completion`；日志`logs/supermimic_a3_R05{A_H32,B_H8}_{train,complete}_20261023.log`及各完成阶段目录。总控日志`logs/supermimic_a3_R05_horizon_pair_20261023.log`，启动记录`R05_horizon_pair_20261023_launch.json`。
+
+```bash
+# prepare已完成，不重复。工作根/解释器同前文，先发布并复核源码/资源。
+python script/supermimic_for_a3/launch.py --entry run_horizon_pair \
+ --python envs/supermimic_a3_20261023/bin/python \
+ --log logs/supermimic_a3_R05_horizon_pair_20261023.log \
+ --record data/supermimic_for_a3/R05_horizon_pair_20261023_launch.json -- \
+ --execute --output data/supermimic_for_a3/R05_horizon_pair_20261023
+```
+
+39源码/21输入与实时boot/RTX3090 UUID在执行准入及各阶段前再核验；30GiB/86℃保护保持，每臂训练壁钟上限10800秒、每臂完成流程3600秒，无自动重启。准备末次29343494144字节/GPU38℃，不是未来实时启动证明。下一完成本节发布/远端SHA核验后实际启动；当前0新增R05训练或效果，目标active、R04尚不可用，原件LOCAL_ONLY。

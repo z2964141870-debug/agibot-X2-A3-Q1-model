@@ -67,9 +67,13 @@ def main():
     p.add_argument("--clips", nargs="+", default=None)
     p.add_argument("--initialize-from", type=Path)
     p.add_argument("--calibration-audit", type=Path)
+    p.add_argument("--policy-horizon", type=int, choices=(8, 32), default=32)
+    p.add_argument("--allow-policy-horizon-change", action="store_true")
     args = p.parse_args()
     if args.calibration_audit is not None and args.initialize_from is None:
         raise ValueError("A calibrated model requires an explicit completed source policy")
+    if args.allow_policy_horizon_change and (args.initialize_from is None or args.policy_horizon != 8):
+        raise ValueError("Horizon-change permission requires an explicit source and H8")
     receipt = json.loads(args.backend_receipt.read_text())
     if receipt["status"] != "BACKEND_AND_GRADIENT_CONTRACT_PASSED":
         raise ValueError("A3 backend has not passed numerical and gradient verification")
@@ -103,7 +107,8 @@ def main():
     ccfg = CriticCfg()
     wtcfg = WMTrainerCfg(batch_size=args.wm_batch, batches_per_update=args.wm_batches,
                         compile="default" if args.compile else None)
-    ptcfg = PolicyTrainerCfg(batch_size=args.batch, compile="default" if args.compile else None)
+    ptcfg = PolicyTrainerCfg(batch_size=args.batch, horizon=args.policy_horizon,
+                             compile="default" if args.compile else None)
     wm = WorldModel(wcfg, heads, args.device)
     policy = Policy(pcfg).to(args.device)
     critic = Critic(ccfg, pcfg=pcfg).to(args.device)
@@ -124,7 +129,8 @@ def main():
     manifest["learning_rate_step_offset"] = 0
     if args.initialize_from is not None:
         manifest["initialization"] = load_initialization(args.initialize_from, args.calibration_audit,
-                                                        manifest, wm, policy, critic, wt, pt)
+                                                        manifest, wm, policy, critic, wt, pt,
+                                                        allow_policy_horizon_change=args.allow_policy_horizon_change)
         manifest["learning_rate_step_offset"] = manifest["initialization"]["learning_rate_step_offset"]
     atomic_json(args.output / "admission.json", manifest)
     step = updates = policy_updates = 0

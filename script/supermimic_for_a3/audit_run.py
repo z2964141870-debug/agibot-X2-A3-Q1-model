@@ -69,6 +69,22 @@ def main():
         require(identity(initialization["source_receipt"]["path"]) == initialization["source_receipt"],
                 "Initialization receipt changed")
         source = torch.load(initialization["source_checkpoint"]["path"], map_location="cpu", weights_only=False)
+        expected_changes = {}
+        for field in ("assets", "sim", "world_model", "policy", "critic", "wm_trainer", "policy_trainer",
+                      "train_clips", "heldout_clips", "backend_receipt"):
+            before, after = source["manifest"][field], manifest[field]
+            if before == after:
+                continue
+            if field == "policy_trainer" and manifest["args"].get("allow_policy_horizon_change", False):
+                old, new = dict(before), dict(after)
+                old_h, new_h = old.pop("horizon"), new.pop("horizon")
+                require(old == new and old_h == 32 and new_h == 8, "Unregistered trainer contract change")
+                expected_changes[field + ".horizon"] = {"source": 32, "target": 8}
+            else:
+                raise ValueError(f"Unregistered inherited contract change: {field}")
+        require(initialization.get("contract_changes", {}) == expected_changes, "Contract change receipt differs")
+        require(bool(expected_changes) == manifest["args"].get("allow_policy_horizon_change", False),
+                "Horizon-change permission does not match actual change")
         model_source = source
         if initialization["calibration_audit"] is not None:
             audit_id = initialization["calibration_audit"]

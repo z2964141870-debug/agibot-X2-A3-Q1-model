@@ -1,0 +1,87 @@
+{
+  "gradient": {
+    "utc": "2026-10-23T01:42:39.653691+00:00",
+    "command": [
+      "envs/supermimic_a3_20261023/bin/python",
+      "-u",
+      "script/supermimic_for_a3/check_horizon_gradient.py",
+      "--diagnostic",
+      "data/supermimic_for_a3/R04_action_sensitivity_J01_20261023",
+      "--output",
+      "data/supermimic_for_a3/R05_horizon_gradient_control_20261023.json"
+    ],
+    "child_pid": 721444,
+    "native_exit_code": 0,
+    "seconds": 12.280462428927422,
+    "error": null,
+    "health": [
+      {
+        "cgroup_memory_bytes": 29343420416,
+        "gpu_temperature_c": 38
+      },
+      {
+        "cgroup_memory_bytes": 29343830016,
+        "gpu_temperature_c": 38
+      },
+      {
+        "cgroup_memory_bytes": 30429274112,
+        "gpu_temperature_c": 38
+      },
+      {
+        "cgroup_memory_bytes": 30896742400,
+        "gpu_temperature_c": 38
+      }
+    ],
+    "final_health": {
+      "cgroup_memory_bytes": 29344219136,
+      "gpu_temperature_c": 38
+    },
+    "log": {
+      "path": "/opt/data/private/yuanqi_ops/logs/supermimic_a3_R05_horizon_gradient_control_20261023.log",
+      "bytes": 1138,
+      "sha256": "c00ac2541fc16f6ff9d05538ade1568a619ec4a2aaebab1295812e4088ec1e7e"
+    }
+  },
+  "preparation": {
+    "utc": "2026-10-23T01:43:51.049383+00:00",
+    "command": [
+      "envs/supermimic_a3_20261023/bin/python",
+      "-u",
+      "script/supermimic_for_a3/run_horizon_pair.py",
+      "--prepare",
+      "--parent",
+      "data/supermimic_for_a3/R04_20261023/final.pt",
+      "--parent-audit",
+      "data/supermimic_for_a3/R04_completion_20261023/matched_audit.json",
+      "--gradient-check",
+      "data/supermimic_for_a3/R05_horizon_gradient_control_20261023.json",
+      "--diagnostic-audit",
+      "data/supermimic_for_a3/R04_action_sensitivity_J01_20261023_audit.json",
+      "--output",
+      "data/supermimic_for_a3/R05_horizon_pair_20261023"
+    ],
+    "child_pid": 721516,
+    "native_exit_code": 0,
+    "seconds": 3.515859119594097,
+    "error": null,
+    "health": [
+      {
+        "cgroup_memory_bytes": 29344497664,
+        "gpu_temperature_c": 38
+      },
+      {
+        "cgroup_memory_bytes": 29344923648,
+        "gpu_temperature_c": 38
+      }
+    ],
+    "final_health": {
+      "cgroup_memory_bytes": 29343494144,
+      "gpu_temperature_c": 38
+    },
+    "log": {
+      "path": "/opt/data/private/yuanqi_ops/logs/supermimic_a3_R05_horizon_pair_prepare_20261023.log",
+      "bytes": 5008,
+      "sha256": "ef182aed848fdb8973880d1d802430b48be8304f1a87b9aaaa863f57bfac8da9"
+    }
+  }
+}

@@ -140,3 +140,19 @@ local open-loop response, not full actor-gradient correctness or tracking succes
 `audit_action_response.py --diagnostic DIAGNOSTIC --output NEW_AUDIT.json`
 independently recomputes response metrics, sample/input identity and actual budgets
 from the saved arrays without physics. Controls: `test_action_response.py -v`.
+
+The explicit `train.py --policy-horizon 8 --allow-policy-horizon-change` warm start
+admits only a 32-to-8 policy-trainer horizon change from a completed parent. All
+other inherited contracts remain strict; the audit independently checks the
+declared change and all inherited network/Adam tensors. Default horizon remains 32.
+Controls: `test_horizon_contract.py -v` and the saved-state, gradient-only
+`check_horizon_gradient.py --diagnostic J01_DIRECTORY --output NEW_CONTROL.json`.
+
+`run_horizon_pair.py --prepare --parent FINAL.pt --parent-audit MATCHED_AUDIT.json
+--gradient-check H8_CONTROL.json --diagnostic-audit J01_AUDIT.json --output NEW_PAIR`
+freezes the registered R05 experiment. Launch its `--execute --output PAIR` mode
+with `launch.py --entry run_horizon_pair`. It runs H32 and H8 sequentially from the
+same parent, each for 3000 collection steps and its own complete evaluation/audit.
+Any failure stops the pair. New physics/update budgets match; imagined computation,
+critic targets/minibatches and random-stream consumption differ with horizon.
+This one-seed comparison selects a direction and does not establish broad success.

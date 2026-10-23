@@ -8,7 +8,26 @@ import torch
 from supermimic.a3_assets import identity
 
 
-def load_initialization(checkpoint_path, calibration_audit, contract, wm, policy, critic, wt, pt):
+def validate_contract(source, target, allow_policy_horizon_change=False):
+    changes = {}
+    for name in ("assets", "sim", "world_model", "policy", "critic", "wm_trainer", "policy_trainer",
+                 "train_clips", "heldout_clips", "backend_receipt"):
+        if source[name] == target[name]:
+            continue
+        if name == "policy_trainer" and allow_policy_horizon_change:
+            before, after = dict(source[name]), dict(target[name])
+            old_horizon, new_horizon = before.pop("horizon"), after.pop("horizon")
+            if before == after and old_horizon == 32 and new_horizon == 8:
+                changes["policy_trainer.horizon"] = {"source": 32, "target": 8}
+                continue
+        raise ValueError(f"Initialization contract differs: {name}")
+    if allow_policy_horizon_change and not changes:
+        raise ValueError("Explicit horizon-change permission requires a 32-to-8 change")
+    return changes
+
+
+def load_initialization(checkpoint_path, calibration_audit, contract, wm, policy, critic, wt, pt,
+                        allow_policy_horizon_change=False):
     checkpoint_path = Path(checkpoint_path)
     source_id = identity(checkpoint_path)
     receipt_path = checkpoint_path.parent / "receipt.json"
@@ -19,10 +38,9 @@ def load_initialization(checkpoint_path, calibration_audit, contract, wm, policy
     if any(source[key] != receipt[key] for key in ("step", "wm_updates", "policy_updates")):
         raise ValueError("Initialization must be the completed run's final state")
     source_contract = source["manifest"]
-    for name in ("assets", "sim", "world_model", "policy", "critic", "wm_trainer", "policy_trainer",
-                 "train_clips", "heldout_clips", "backend_receipt"):
-        if source_contract[name] != contract[name]:
-            raise ValueError(f"Initialization contract differs: {name}")
+    changes = validate_contract(source_contract, contract, allow_policy_horizon_change)
+    if changes and calibration_audit is not None:
+        raise ValueError("Horizon trial cannot simultaneously substitute a calibrated model")
     model_source = source_id
     audit_id = None
     wm_state, wm_opt = source["wm"], source["wm_opt"]
@@ -61,6 +79,7 @@ def load_initialization(checkpoint_path, calibration_audit, contract, wm, policy
     if not all(torch.isfinite(value).all() for module in (wm, policy, critic) for value in module.state_dict().values()):
         raise ValueError("Nonfinite initialization network state")
     return {"type": "warm_start_in_new_run", "source_checkpoint": source_id,
+            "contract_changes": changes,
             "initialization_entry": identity(__file__),
             "source_receipt": identity(receipt_path), "model_source": model_source,
             "calibration_audit": audit_id, "initial_optimizer_steps": initial_steps,

@@ -1,6 +1,6 @@
 # SuperMimic for Q1
 
-记录日期：2026-10-23，北京时间。阶段 SM-Q1-P01–P04。状态：模型/物理/梯度通过，P03三段参考独立质检通过、过头动作拒绝；R01已登记，尚未训练。
+记录日期：2026-10-23，北京时间。阶段 SM-Q1-P01–P04/R01。状态：模型/物理/梯度通过，三段参考独立质检通过、过头动作拒绝；R01训练正在运行，尚无完整效果结论。
 
 ## 目标与范围
 
@@ -114,3 +114,13 @@ $PY script/supermimic_for_q1/verify_backend.py --root "$PWD" --output data/super
 ```bash
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 $PY -u script/supermimic_for_q1/train.py --root "$PWD" --motions data/supermimic_for_q1/motions_P03_20261023 --output data/supermimic_for_q1/R01_20261023 --backend-receipt data/supermimic_for_q1/P04_backend_20261023/receipt.json --reference-receipt data/supermimic_for_q1/P03_independent_reference_20261023.json --steps 3000 --num-envs 16 --threads 4 --batch 32 --wm-batch 64 --wm-batches 10 --warmup-steps 128 --model-warmup-updates 50 --checkpoint-every 500 --seed 20261023 --device cuda:0 --clips 001_walk_front_slow 042_squat_shallow_repeated --code-commit cc3ecb61f8ab00cab112ed52a6c40147d30f5eb8
 ```
+
+### R01完成核验与诊断规格
+
+训练仍在原作业进行，未改预算/参数/学习模块。独立保存核验、评测重算和渲染工具已在`19b3b73fc7be99ac96d52a481c1d334f510a5bd8`发布，远端独立核验一致；这些工具尚未完成实际R01运行，不能记为结果。后续新增的只读脚本不改训练已冻结文件。
+
+完成后依序运行：`audit_training.py`读取step0/final及原receipt，独立核对预算、初始空优化器、各网络有限且变化、WM/actor/critic实际Adam计数和源码/输入SHA；`evaluate.py`分别评测step0与final的三合格整片，失败后的未执行帧保留在分母中；`audit_evaluation.py`从保存state/action/参考重新计算奖励、关节/身体误差、终止和三个可用性门。核验通过与可用性通过分别报告。
+
+世界模型诊断使用final评测已保存轨迹，固定H=1/8/32、stride8，给定相同真实初态、执行动作及无随机化context，对比已学模型与零残差恒速积分。报告根位置逐坐标RMSE、根旋转角、关节角、分项速度和归一化状态误差；不跨已终止片段、不生成新物理数据。窗口重叠且复用开发评测，不称独立最终测试或统计泛化证据。此规格在看到R01完整效果前固定，预计输出`data/supermimic_for_q1/R01_world_model_20261023.json`。
+
+`plot_training.py`绘制采样回报/关节误差和在线batch模型误差，标明分布随策略变化，不能当整片成绩；输出拟为`R01_curves_20261023/`。`render_trace.py`只渲染保存轨迹与对应参考，共用相机、显示提前终止与整片分母；0新推理/物理/optimizer，实际图像还需目视核验。所有结果仍待R01训练结束后实际执行。

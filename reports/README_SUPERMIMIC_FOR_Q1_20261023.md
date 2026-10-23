@@ -1,6 +1,6 @@
 # SuperMimic for Q1
 
-记录日期：2026-10-23，北京时间。阶段 SM-Q1-P01–P05/R01。状态：模型/物理/梯度通过，三段参考独立质检通过、过头动作拒绝；P05发现实际接触摩擦固定0.6，脚摩擦随机化未生效。R01训练正在运行，尚无完整效果结论。
+记录日期：2026-10-23，北京时间。阶段 SM-Q1-P01–P06/R01。状态：模型/物理/梯度通过，三段参考独立质检通过、过头动作拒绝；P05发现摩擦随机化未生效，P06局部修正候选检查通过但未接入。R01按原固定接触摩擦0.6继续，尚无完整效果结论。
 
 ## 目标与范围
 
@@ -136,3 +136,9 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 $PY -u script/supermimic_for_q1/train.p
 因此，R01虽然记录了0.3–1.2脚摩擦context，实际没有实现这项接触随机化；其他编码偏置/COM设置不能由本检查推断通过或失败。后续`evaluate.py`原冻结收据中的`friction1`应理解为请求脚参数1，实际有效脚地摩擦仍0.6，不能用其声称已测摩擦1或鲁棒性。`measure_world_model.py`仅修正说明字符串，学习模块、R01输入/权重/超参数及原评测入口均未改。该缺口未触发已登记的运行停止条件；继续完成当前固定试验，结果明确标注此限制，下一独立试验先修复参数合同并重新验证。此检查不支持将摩擦问题认定为策略成败的唯一原因。
 
 复核命令（服务器Q1根，新输出路径）：`OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES='' $PY script/supermimic_for_q1/audit_contacts.py --root "$PWD" --output data/supermimic_for_q1/P05_contact_audit_20261023.json`。
+
+### P06：接触优先级修正候选
+
+在独立模型副本中仅将脚geom priority设为floor priority+1。三个摩擦设置各14个实际接触分别得到0.3/1.0/1.2，且匹配摩擦0.6条件下，修正前后接触geom、距离、维数、五项摩擦和solref/solimp完全一致。0控制步/optimizer，未加载策略、未将修正应用于R01或训练冻结文件。此检查验证候选接触参数合同，不能替代新后端动力学/梯度检查或证明训练改善。
+
+命令在P05基础上增加`--verify-priority-correction`，输出为`data/supermimic_for_q1/P06_contact_candidate_20261023.json`，27721字节/SHA`5ac76ca7169de1037cb0d5af3cc1b306afad3b5ab5b8438e50abf75a8139c55e`；小副本见[候选检查](../data/manifests/supermimic_q1_contacts_candidate_P06_20261023.json)。P05原输出保留，其执行源码可从提交`7c1e7fb34b1fc72afe245fe47cd786eea971e76d`恢复；新版检查入口增加候选模式和求解参数检查。先完成并封存R01训练/完整评测，再以新协议接入修正，重新验证后才进入下一独立训练。

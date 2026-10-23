@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-24 00:07:26实核：R03原controller762428/start3606081278、worker762431/start3606081380同boot存活，1550/12000轮、24800新交互、569组WM/519次actor，累计4550轮，冻结条件通过，GPU40摄氏度/OOM14；仍等待原固定预算及最终评测。[V02新协议渲染准备](README_SUPERMIMIC_Q1_RENDER_PREP_20261024.md)新增独立分析入口和本地4项元数据控制，服务器实际预检/完整渲染待执行；不改两个训练源码目录。以下R03早期检查点证据保留，不能当作实时进度。
+
 2026-10-23 23:41:35：[R03追加12000轮](README_SUPERMIMIC_Q1_R03_CONTINUATION_20261023.md)实时800轮/12800新交互/269组WM/219次actor，累计3800轮。独立CPU读取第500轮与step0：149组WM/99次actor及Adam12980/1198/23960精确匹配，三网络有限且变化，manifest/20条前缀日志/冻结61项源码/输入/运行时通过。此前真实父final→step0的3网络/3Adam/bin共8项精确一致；原controller762428/start3606081278、worker762431/start3606081380同boot d994e71f-bae0-46ba-a5f7-6c2163771c6c，非僵尸/实际argv精确匹配。输出data/supermimic_for_q1/R03_B128_extend12000_20261023，日志logs/supermimic_q1_R03_B128_extend12000_20261023/；GPU40摄氏度/CPU核验后容器31738470400字节/OOM14，小证据data/manifests/supermimic_q1_R03_checkpoint500_20261023.json。训练进行中、尚无最终跟随效果，LOCAL_ONLY，无自动恢复或追加预算。
 
 2026-10-23 23:07:21核验：[Q1 R02批量对照](README_SUPERMIMIC_Q1_BATCH_TRAINING_20261023.md)两臂18阶段及比较重算通过，终态PAIR_COMPLETED；B3000轮/48000交互/101.847分钟，三片完整、关节RMSE0.363888/0.386939/0.311051rad，腿部0.178007/0.251199/0.110641，仍未过0.15门。走路最大位移0.030115m/参考1.126480m，未学会移动跟随。原controller/A/B已退出或僵尸，未当作活跃作业。主机huanyu:/opt/data/private/YuanQi_Q1，核心6b43cc0，GPU39摄氏度/空闲17788MiB、容器26910662656字节/OOM14。

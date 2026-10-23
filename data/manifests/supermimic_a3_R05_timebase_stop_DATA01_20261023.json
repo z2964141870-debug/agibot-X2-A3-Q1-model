@@ -1,0 +1,146 @@
+{
+  "utc_before": "2026-10-23T03:01:23.648581+00:00",
+  "reason": "DATA01: source CSV documented 120Hz but M02 converter assumed 30Hz; stop current wrong-timebase pair, retain historical artifacts and prohibit automatic restart.",
+  "before": {
+    "pair": {
+      "pid": 721781,
+      "state": "S",
+      "start_ticks": 3601225703,
+      "native_wait_status": null
+    },
+    "A": {
+      "pid": 721791,
+      "state": "S",
+      "start_ticks": 3601225810,
+      "native_wait_status": null
+    }
+  },
+  "action": "SIGTERM to verified pair controller only; its handler stops its child and permits checkpoint save.",
+  "after": {
+    "pair": {
+      "pid": 721781,
+      "state": "Z",
+      "start_ticks": 3601225703,
+      "native_wait_status": 256
+    },
+    "A": {
+      "state": "MISSING",
+      "pid": 721791,
+      "start_ticks": null
+    }
+  },
+  "utc_after": "2026-10-23T03:01:31.667004+00:00",
+  "all_recorded_processes_terminal": true,
+  "pair_receipt": {
+    "status": "FAILED",
+    "plan": {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05_horizon_pair_20261023/plan.json",
+      "bytes": 19697,
+      "sha256": "3e0fa3e998d236511fc61bb5fbd996abcee902322983d8340f5c7b667004fd3d"
+    },
+    "stages": [
+      {
+        "arm": "R05A_H32",
+        "phase": "train",
+        "native_exit_code": 0,
+        "child_pid": 721791,
+        "seconds": 4238.50964807719,
+        "max_sampled_memory_bytes": 30391562240,
+        "max_sampled_gpu_c": 41,
+        "log": {
+          "path": "/opt/data/private/yuanqi_ops/logs/supermimic_a3_R05A_H32_train_20261023.log",
+          "bytes": 104930,
+          "sha256": "c610ae517bffab9c8b0aa9d55f266e2f793cad2cdb1667f73037d1f5bc6d1a1b"
+        }
+      }
+    ],
+    "storage_status": "LOCAL_ONLY",
+    "goal_achieved": false,
+    "error": "InterruptedError('Pair stop requested')",
+    "seconds": 4239.019630521536
+  },
+  "training_receipt": {
+    "status": "STOPPED_SIGNAL",
+    "step": 2002,
+    "env_steps": 32032,
+    "wm_updates": 750,
+    "policy_updates": 750,
+    "seconds": 4224.595690920949,
+    "error": null,
+    "artifacts": [
+      {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05A_H32_20261023/final.pt",
+        "bytes": 215996947,
+        "sha256": "e3e9be77c2a136db568c3284af9e7ef1023542aaae96ef250fe8232a24140e09"
+      },
+      {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05A_H32_20261023/step_000000.pt",
+        "bytes": 216004967,
+        "sha256": "9d5cb7664a02c27c49ceca991cd18dc39385bb6d683f85e9ba3582ba092eba20"
+      },
+      {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05A_H32_20261023/step_000500.pt",
+        "bytes": 216004967,
+        "sha256": "d061195ca284e72af8d9c797a1dc02101c4c275b7fffd6b156089b084a00c63c"
+      },
+      {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05A_H32_20261023/step_001000.pt",
+        "bytes": 216004967,
+        "sha256": "c9c1942040a8dc2ca7756bebd40853b99dbb8852888bfa44a9ce8cfe702c953d"
+      },
+      {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05A_H32_20261023/step_001500.pt",
+        "bytes": 216004967,
+        "sha256": "d716f1a7e1b0a2783af171edf3fb5633b9b911064c466399de92537a551da8a3"
+      },
+      {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05A_H32_20261023/step_002000.pt",
+        "bytes": 216004967,
+        "sha256": "5c996b2cbb90208bdbb509041f8e8c2cec1d2f2279ccb9749721671e50187fdc"
+      }
+    ],
+    "storage_status": "LOCAL_ONLY",
+    "not_hardware_validated": true
+  },
+  "pair_status": {
+    "status": "FAILED",
+    "plan": {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05_horizon_pair_20261023/plan.json",
+      "bytes": 19697,
+      "sha256": "3e0fa3e998d236511fc61bb5fbd996abcee902322983d8340f5c7b667004fd3d"
+    },
+    "stages": [
+      {
+        "arm": "R05A_H32",
+        "phase": "train",
+        "native_exit_code": 0,
+        "child_pid": 721791,
+        "seconds": 4238.50964807719,
+        "max_sampled_memory_bytes": 30391562240,
+        "max_sampled_gpu_c": 41,
+        "log": {
+          "path": "/opt/data/private/yuanqi_ops/logs/supermimic_a3_R05A_H32_train_20261023.log",
+          "bytes": 104930,
+          "sha256": "c610ae517bffab9c8b0aa9d55f266e2f793cad2cdb1667f73037d1f5bc6d1a1b"
+        }
+      }
+    ],
+    "storage_status": "LOCAL_ONLY",
+    "goal_achieved": false,
+    "error": "InterruptedError('Pair stop requested')",
+    "seconds": 4239.019630521536
+  },
+  "B_directory_exists": false,
+  "A_completion_directory_exists": false,
+  "health_after": {
+    "cgroup_memory_bytes": 27817934848,
+    "gpu_temperature_c": 40
+  },
+  "oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 14\n",
+  "saved_final_verification": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05A_H32_20261023/final.pt",
+    "bytes": 215996947,
+    "sha256": "e3e9be77c2a136db568c3284af9e7ef1023542aaae96ef250fe8232a24140e09",
+    "matches_training_receipt": true
+  }
+}

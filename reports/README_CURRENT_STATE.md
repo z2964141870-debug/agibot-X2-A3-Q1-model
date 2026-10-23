@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-23：[SuperMimic DATA01关键纠正](README_SUPERMIMIC_DATA_20261023.md)：vendor明确selected20源120Hz而本转换按30Hz，20源身份与M02全同，旧R02-R05只支持四倍慢放条件。11:01核身份后仅向自有R05总控721781发SIGTERM，A721791正常退出0/STOPPED_SIGNAL，2002步/32032env-step/750次WM及actor更新；final215996947字节/SHAe3e9be77…独立匹配，父Z/子消失，无B及最终评测。总控原生FAILED/InterruptedError保留，不恢复旧实验、不改冻结源码/M02。20A3、90历史拟合、PHUMA两机器人各73076同名片段、FGP206/197完整会话的用途与资格见报告；原速须独立新数据/基线，当前不启动新训练，LOCAL_ONLY。恢复先读DATA01及supermimic_a3_R05_timebase_stop_DATA01_20261023.json。
+
 2026-10-23：[R05首批更新通过](README_SUPERMIMIC_FOR_A3_20261023.md)：09:57:41 A H32已175采集步/2800新env-step、19次WM与19次actor更新，指标有限/梯度非零，记录GPU39℃/末次40℃、OOM14未增。总控721781与训练721791同boot/start_tick/命令匹配活跃；仍原3000步预算，H8尚未启动、没有新最终效果或可用证明。下一由既定顺序总控完成A训练/八段配对评测/审计，再B从R04父H8同预算并比较；不重启/扩预算，目标active、LOCAL_ONLY。恢复读pair/run的status与receipt及本阶段末节，不凭旧PID重新启动。
 
 2026-10-23：[R05配对已实际启动](README_SUPERMIMIC_FOR_A3_20261023.md)：实现main fd091590已发布并独立核验，39源码/21输入SHA通过。总控721781/start3601225703与A训练721791/3601225810同boot命令匹配活跃；A H32正确继承R04/Adam56470-4447-88940/LR偏移12000，step0 SHA9d5cb766…。09:53:59最近落盘125步/2000新env-step、0WM/actor更新，首次编译中，5条有限，GPU38℃/usage29820243968/OOM14未增。B尚未启动、无最终效果；下一继续既定A3000步→A完整评测/独立审计→B同R04父/H8同预算→配对比较，无重启。恢复读pair/status、run/status及launch核对实际PID，目标active、尚无可用模型、LOCAL_ONLY。

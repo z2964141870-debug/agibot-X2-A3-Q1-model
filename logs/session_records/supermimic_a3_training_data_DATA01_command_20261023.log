@@ -1,0 +1,50 @@
+Actual read-only huanyu inventory command; UTC timestamp and results are in the DATA01 manifest.
+
+cd /opt/data/private/yuanqi_ops && python3 - <<'PY'
+import json,hashlib,zipfile
+from collections import Counter
+from pathlib import Path
+from datetime import datetime,timezone
+root=Path("/opt/data/private/yuanqi_ops")
+old=Path("/opt/data/private/hechengzhu/ZHY")
+def ident(p):
+ p=Path(p)
+ return {"path":str(p),"bytes":p.stat().st_size,"sha256":hashlib.sha256(p.read_bytes()).hexdigest()}
+out={"stage":"SM_A3_DATA01","utc":datetime.now(timezone.utc).isoformat(),"host":"huanyu","root":str(root),"scope":"Read-only directories, ZIP central directories and small metadata. No checkpoint deserialization, new inference, physics, IK or optimization."}
+manifest=root/"data/supermimic_for_a3/motions_20261023_M02/manifest.json"
+d=json.loads(manifest.read_text())
+rows=d["motions"]
+out["a3_reference"]={"source_directory":str(old/"script/vendor/sonic_for_a3/a3_data/agibot_a3"),"source_csv_count":len(list((old/"script/vendor/sonic_for_a3/a3_data/agibot_a3").glob("*.csv"))),"prepared_directory":str(manifest.parent),"prepared_count":len(rows),"manifest":ident(manifest),"all_source_csv_identities_match_M02":all(ident(x["source"]["path"])==x["source"] for x in rows),"motions":[{"name":Path(x["source"]["path"]).stem,"prepared_frames":x["frames"]} for x in rows]}
+source=old/"script/vendor/sonic_for_a3/docs/a3_training2sim2deploy.md"
+code=root/"script/supermimic_for_a3/prepare_motion.py"
+out["timing_correction"]={"source_document":ident(source),"source_document_lines":[{"line":i+1,"text":s} for i,s in enumerate(source.read_text().splitlines()) if "120 Hz with 38 columns" in s or "--fps_source 120" in s],"converter":ident(code),"converter_lines":[{"line":i+1,"text":s} for i,s in enumerate(code.read_text().splitlines()) if "source_t = " in s or "source_hz" in s],"documented_source_hz":120,"M02_assumed_source_hz":30,"M02_output_hz":50,"playback_speed_relative_to_documented_source":0.25,"interpretation":"R02-R05 references are retimed to one quarter source speed. Historical metrics remain slow-reference results; they do not establish native-speed tracking."}
+p=root/"data/training/p2_main/fgp_fitted_motionlib"
+m=p/"fgp_fitted_manifest.json"
+dd=json.loads(m.read_text())
+files=list(p.glob("*.pkl"))
+out["fgp_fitted"]={"directory":str(p),"pkl_count":len(files),"pkl_bytes":sum(x.stat().st_size for x in files),"manifest":ident(m),"manifest_n":dd["n"],"provenance":dd["provenance"],"eligibility":"Candidate derived references; not qualified for this SuperMimic input contract."}
+p=root/"data/phuma/data.zip"
+with zipfile.ZipFile(p) as z:
+ npys=[x for x in z.infolist() if x.filename.lower().endswith(".npy")]
+ g1={x.filename.split("/",2)[2] for x in npys if x.filename.split("/")[1].lower()=="g1"}
+ h1={x.filename.split("/",2)[2] for x in npys if x.filename.split("/")[1].lower()=="h1_2"}
+ out["phuma"]={"path":str(p),"archive_bytes":p.stat().st_size,"robot_npy_counts":dict(Counter(x.filename.split("/")[1].lower() for x in npys)),"matching_relative_names_between_robots":len(g1 & h1),"uncompressed_npy_bytes":sum(x.file_size for x in npys),"extracted_npy_count":len(list((root/"data/phuma").rglob("*.npy"))),"eligibility":"G1/H1_2 references require A3 retargeting and qualification; matching filenames are not independent captures."}
+p=root/"data/fgp/train_released.zip"
+with zipfile.ZipFile(p) as z:
+ groups={}
+ for x in z.infolist():
+  if x.is_dir():continue
+  for field in ["acc","rot","device2bone","pose","joint"]:
+   if Path(x.filename).name==field+".pt":groups.setdefault(str(Path(x.filename).parent),set()).add(field)
+ out["fgp_released"]={"path":str(p),"archive_bytes":p.stat().st_size,"candidate_sessions":len(groups),"five_field_complete_sessions":sum(len(x)==5 for x in groups.values()),"eligibility":"Released garment training inputs and human labels; complete fields do not prove independent GT, root quality or qualified A3 reference."}
+for label,rel in [("demo100_raw","data/demo100_ingest/raw"),("demo100_smpl","data/demo100_ingest/smpl_pool"),("humanplus_preview","data/humanplus_preview"),("v7_development","data/gen_audit/sequences_v7")]:
+ p=root/rel
+ files=[x for x in p.rglob("*") if x.is_file()]
+ out[label]={"directory":str(p),"file_count":len(files),"suffix_counts":dict(Counter(x.suffix for x in files))}
+for rel in ["data/motionx","data/motion_pool"]:
+ p=root/rel
+ out[rel]={"directory":str(p),"top_entries":sorted(x.name for x in p.iterdir())}
+out["storage_status"]="LOCAL_ONLY"
+out["limitations"]=["Large archive full hashes were not recomputed in this read-only inventory.","No full SMB rescan or old hp3090 dataset verification.","No train/test admission or new data conversion was performed."]
+print(json.dumps(out,indent=2))
+PY

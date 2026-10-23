@@ -1,0 +1,49 @@
+cd /opt/data/private/yuanqi_ops && python3 - <<'PY'
+import importlib.util,json,os,signal,time,hashlib
+from pathlib import Path
+from datetime import datetime,timezone
+spec=importlib.util.spec_from_file_location("completion","script/supermimic_for_a3/complete_run.py")
+m=importlib.util.module_from_spec(spec)
+spec.loader.exec_module(m)
+base=Path("data/supermimic_for_a3")
+pair=base/"R05_horizon_pair_20261023"
+run=base/"R05A_H32_20261023"
+launches={"pair":json.loads((base/"R05_horizon_pair_20261023_launch.json").read_text()),"A":json.loads((pair/"R05A_H32_train_launch.json").read_text())}
+out={"utc_before":datetime.now(timezone.utc).isoformat(),"reason":"DATA01: source CSV documented 120Hz but M02 converter assumed 30Hz; stop current wrong-timebase pair, retain historical artifacts and prohibit automatic restart.","before":{}}
+expected={"pair":(721781,3601225703),"A":(721791,3601225810)}
+for name,l in launches.items():
+ snap=m.process_snapshot(l)
+ if (snap["pid"],snap["start_ticks"])!=expected[name]:raise RuntimeError("Unexpected process identity")
+ out["before"][name]=snap
+if out["before"]["pair"]["state"] not in ["Z","MISSING"]:
+ os.kill(launches["pair"]["pid"],signal.SIGTERM)
+ out["action"]="SIGTERM to verified pair controller only; its handler stops its child and permits checkpoint save."
+else:
+ out["action"]="Pair already terminal; no signal sent."
+deadline=time.monotonic()+45
+while True:
+ current={k:m.process_snapshot(v) for k,v in launches.items()}
+ if all(x["state"] in ["Z","MISSING"] for x in current.values()) or time.monotonic()>=deadline:
+  out["after"]=current
+  break
+ time.sleep(1)
+out["utc_after"]=datetime.now(timezone.utc).isoformat()
+out["all_recorded_processes_terminal"]=all(x["state"] in ["Z","MISSING"] for x in out["after"].values())
+for label,p in [("pair_receipt",pair/"receipt.json"),("training_receipt",run/"receipt.json"),("pair_status",pair/"status.json")]:
+ if p.exists():out[label]=json.loads(p.read_text())
+ else:out[label]=None
+out["B_directory_exists"]=(base/"R05B_H8_20261023").exists()
+out["A_completion_directory_exists"]=(base/"R05A_H32_20261023_completion").exists()
+out["health_after"]=m.health()
+out["oom_control"]=Path("/sys/fs/cgroup/memory/memory.oom_control").read_text()
+receipt=out["training_receipt"]
+if receipt:
+ final=run/"final.pt"
+ item=next((x for x in receipt["artifacts"] if Path(x["path"])==final.resolve()),None)
+ if item:
+  h=hashlib.sha256()
+  with final.open("rb") as f:
+   for b in iter(lambda:f.read(8*1024*1024),b""):h.update(b)
+  out["saved_final_verification"]={"path":str(final.resolve()),"bytes":final.stat().st_size,"sha256":h.hexdigest(),"matches_training_receipt":final.stat().st_size==item["bytes"] and h.hexdigest()==item["sha256"]}
+print(json.dumps(out,indent=2))
+PY

@@ -1,0 +1,237 @@
+{
+  "stage": "SM_A3_DATA01",
+  "utc": "2026-10-23T02:57:13.882939+00:00",
+  "host": "huanyu",
+  "root": "/opt/data/private/yuanqi_ops",
+  "scope": "Read-only directories, ZIP central directories and small metadata. No checkpoint deserialization, new inference, physics, IK or optimization.",
+  "a3_reference": {
+    "source_directory": "/opt/data/private/hechengzhu/ZHY/script/vendor/sonic_for_a3/a3_data/agibot_a3",
+    "source_csv_count": 20,
+    "prepared_directory": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/motions_20261023_M02",
+    "prepared_count": 20,
+    "manifest": {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/motions_20261023_M02/manifest.json",
+      "bytes": 27065,
+      "sha256": "4a806c5b5bf45d2e0bdb6db9b0d33fc5ad5d3396f935abc587ba9d56a3894cba"
+    },
+    "all_source_csv_identities_match_M02": true,
+    "motions": [
+      {
+        "name": "001_walk_front_slow",
+        "prepared_frames": 6607
+      },
+      {
+        "name": "004_walk_frontleft_slow",
+        "prepared_frames": 5616
+      },
+      {
+        "name": "009_walk_left_fast",
+        "prepared_frames": 4706
+      },
+      {
+        "name": "029_rotate_place_slow",
+        "prepared_frames": 10416
+      },
+      {
+        "name": "042_squat_shallow_repeated",
+        "prepared_frames": 4626
+      },
+      {
+        "name": "043_squat_deep_repeated",
+        "prepared_frames": 2557
+      },
+      {
+        "name": "047_balance_left_singleleg",
+        "prepared_frames": 2372
+      },
+      {
+        "name": "048_balance_right_singleleg",
+        "prepared_frames": 2549
+      },
+      {
+        "name": "050_march_place_slow",
+        "prepared_frames": 3532
+      },
+      {
+        "name": "055_lunge_front_alternating",
+        "prepared_frames": 5839
+      },
+      {
+        "name": "056_lunge_side_alternating",
+        "prepared_frames": 5222
+      },
+      {
+        "name": "058_punch_front_alternating",
+        "prepared_frames": 2712
+      },
+      {
+        "name": "062_bend_side_alternating",
+        "prepared_frames": 4861
+      },
+      {
+        "name": "063_twist_torso_alternating",
+        "prepared_frames": 6331
+      },
+      {
+        "name": "073_squat_leg_sweep",
+        "prepared_frames": 2506
+      },
+      {
+        "name": "077_reach_overhead_both",
+        "prepared_frames": 2962
+      },
+      {
+        "name": "080_reach_front_both",
+        "prepared_frames": 3417
+      },
+      {
+        "name": "088_shift_frontback_weight",
+        "prepared_frames": 9722
+      },
+      {
+        "name": "089_shift_leftright_weight",
+        "prepared_frames": 6889
+      },
+      {
+        "name": "091_step_threshold_forward",
+        "prepared_frames": 3824
+      }
+    ]
+  },
+  "timing_correction": {
+    "source_document": {
+      "path": "/opt/data/private/hechengzhu/ZHY/script/vendor/sonic_for_a3/docs/a3_training2sim2deploy.md",
+      "bytes": 28775,
+      "sha256": "7240718c9ee7bf626d9b39e8ed64142c3ed4b06b24e6fe1f931d43a453a70635"
+    },
+    "source_document_lines": [
+      {
+        "line": 236,
+        "text": "`a3_data/agibot_a3/` contains 20 A3 flat CSV files at 120 Hz with 38 columns."
+      },
+      {
+        "line": 247,
+        "text": "  --fps_source 120 \\"
+      }
+    ],
+    "converter": {
+      "path": "/opt/data/private/yuanqi_ops/script/supermimic_for_a3/prepare_motion.py",
+      "bytes": 5171,
+      "sha256": "d2bda2d483adc1064b0f31d687892ff5bdb91c48371210af0ac97ec64a5d4134"
+    },
+    "converter_lines": [
+      {
+        "line": 29,
+        "text": "    source_t = np.arange(n) / 30."
+      },
+      {
+        "line": 71,
+        "text": "    receipt = {\"source\": identity(path), \"frames\": len(times), \"source_hz\": 30, \"target_hz\": 50,"
+      }
+    ],
+    "documented_source_hz": 120,
+    "M02_assumed_source_hz": 30,
+    "M02_output_hz": 50,
+    "playback_speed_relative_to_documented_source": 0.25,
+    "interpretation": "R02-R05 references are retimed to one quarter source speed. Historical metrics remain slow-reference results; they do not establish native-speed tracking."
+  },
+  "fgp_fitted": {
+    "directory": "/opt/data/private/yuanqi_ops/data/training/p2_main/fgp_fitted_motionlib",
+    "pkl_count": 90,
+    "pkl_bytes": 127874712,
+    "manifest": {
+      "path": "/opt/data/private/yuanqi_ops/data/training/p2_main/fgp_fitted_motionlib/fgp_fitted_manifest.json",
+      "bytes": 46584,
+      "sha256": "3f651829875c07213d098e68fad5a6d80a967939db5c88d35359c6da704e4a02"
+    },
+    "manifest_n": 90,
+    "provenance": {
+      "recipe": "SEQ+shift3",
+      "wire_feed": "drop_u4_l1st",
+      "d2b": "identity",
+      "mpjpe_mean_m": 0.2936,
+      "baseline_reference": 0.33,
+      "wire_grid_evidence": "/opt/data/private/yuanqi_ops/data/experiments/p15b_fgp_pilot/WIRE_GRID.json",
+      "notes": "root_trans borrowed from GT annotation; joints 24-31 zero-padded; see per-row fields"
+    },
+    "eligibility": "Candidate derived references; not qualified for this SuperMimic input contract."
+  },
+  "phuma": {
+    "path": "/opt/data/private/yuanqi_ops/data/phuma/data.zip",
+    "archive_bytes": 3416370206,
+    "robot_npy_counts": {
+      "g1": 73076,
+      "h1_2": 73076
+    },
+    "matching_relative_names_between_robots": 73076,
+    "uncompressed_npy_bytes": 4290810000,
+    "extracted_npy_count": 10,
+    "eligibility": "G1/H1_2 references require A3 retargeting and qualification; matching filenames are not independent captures."
+  },
+  "fgp_released": {
+    "path": "/opt/data/private/yuanqi_ops/data/fgp/train_released.zip",
+    "archive_bytes": 1896104195,
+    "candidate_sessions": 206,
+    "five_field_complete_sessions": 197,
+    "eligibility": "Released garment training inputs and human labels; complete fields do not prove independent GT, root quality or qualified A3 reference."
+  },
+  "demo100_raw": {
+    "directory": "/opt/data/private/yuanqi_ops/data/demo100_ingest/raw",
+    "file_count": 368,
+    "suffix_counts": {
+      ".jsonl": 184,
+      ".csv": 92,
+      ".json": 92
+    }
+  },
+  "demo100_smpl": {
+    "directory": "/opt/data/private/yuanqi_ops/data/demo100_ingest/smpl_pool",
+    "file_count": 98,
+    "suffix_counts": {
+      ".pkl": 95,
+      ".json": 3
+    }
+  },
+  "humanplus_preview": {
+    "directory": "/opt/data/private/yuanqi_ops/data/humanplus_preview",
+    "file_count": 734,
+    "suffix_counts": {
+      ".log": 1,
+      ".npz": 183,
+      ".hdf5": 91,
+      ".json": 183,
+      ".txt": 274,
+      ".npy": 2
+    }
+  },
+  "v7_development": {
+    "directory": "/opt/data/private/yuanqi_ops/data/gen_audit/sequences_v7",
+    "file_count": 31,
+    "suffix_counts": {
+      ".json": 11,
+      ".npz": 10,
+      ".csv": 10
+    }
+  },
+  "data/motionx": {
+    "directory": "/opt/data/private/yuanqi_ops/data/motionx",
+    "top_entries": [
+      "dl.log",
+      "dl_err.log",
+      "dl_progress.log"
+    ]
+  },
+  "data/motion_pool": {
+    "directory": "/opt/data/private/yuanqi_ops/data/motion_pool",
+    "top_entries": [
+      "README.md",
+      "pool_index.json"
+    ]
+  },
+  "storage_status": "LOCAL_ONLY",
+  "limitations": [
+    "Large archive full hashes were not recomputed in this read-only inventory.",
+    "No full SMB rescan or old hp3090 dataset verification.",
+    "No train/test admission or new data conversion was performed."
+  ]
+}

@@ -2517,7 +2517,7 @@ mc_em_post() {
     local http_rc=0
     if command -v curl &>/dev/null; then
         if curl -fsS -X POST -H 'Content-Type: application/json' \
-            --connect-timeout 3 --max-time 5 \
+            --connect-timeout 3 --max-time 30 \
             -d '{"app_name":"mc"}' \
             "$url" >/dev/null 2>&1; then
             return 0
@@ -2534,7 +2534,7 @@ req = urllib.request.Request(
     method="POST",
 )
 try:
-    with urllib.request.urlopen(req, timeout=5) as r:
+    with urllib.request.urlopen(req, timeout=30) as r:
         r.read()
 except Exception:
     sys.exit(1)

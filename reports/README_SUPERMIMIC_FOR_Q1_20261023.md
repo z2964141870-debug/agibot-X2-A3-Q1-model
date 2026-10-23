@@ -1,6 +1,6 @@
 # SuperMimic for Q1
 
-记录日期：2026-10-23，北京时间。阶段 SM-Q1-P01–P04/R01。状态：模型/物理/梯度通过，三段参考独立质检通过、过头动作拒绝；R01训练正在运行，尚无完整效果结论。
+记录日期：2026-10-23，北京时间。阶段 SM-Q1-P01–P05/R01。状态：模型/物理/梯度通过，三段参考独立质检通过、过头动作拒绝；P05发现实际接触摩擦固定0.6，脚摩擦随机化未生效。R01训练正在运行，尚无完整效果结论。
 
 ## 目标与范围
 
@@ -128,3 +128,11 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 $PY -u script/supermimic_for_q1/train.p
 ### R01监督检查点：北京时间13:58
 
 恢复后实核原PID735033存在，原前台SSH训练会话仍未退出；没有重复启动、恢复或更改学习参数。`status.json`为2000/3000轮、32000新控制步、749组WM/699次actor、3725.39秒。该在线采样奖励0.0730（单步上限0.1）、关节RMSE0.3474rad，随机起点及训练分布下的快照不能作为完整动作效果。GPU41°C、容器内存30727634944字节，OOM14与入场基线一致。已确认服务器六个保存审计/评测/重算/模型诊断/绘图/渲染入口与发布副本SHA一致；ffmpeg和渲染字体存在，未据此声称渲染运行通过。继续原固定预算，结束后执行上述独立核验。
+
+### P05：实际接触摩擦审查
+
+独立进程运行`audit_contacts.py`，在同一Q1默认中立姿态将根降低1cm以产生可检查接触，分别设置脚geom滑动摩擦0.3/1.0/1.2，仅读取`mj_forward`后的contact，0新增控制步/optimizer、时间恒0。三个设置各14个脚地接触的有效滑动摩擦均为0.6。模型floor priority1、脚priority0，显式pair0、全局override关闭；本模型地面参数覆盖脚摩擦设置。服务器收据`data/supermimic_for_q1/P05_contact_audit_20261023.json`，小副本见[接触审查](../data/manifests/supermimic_q1_contacts_P05_20261023.json)。
+
+因此，R01虽然记录了0.3–1.2脚摩擦context，实际没有实现这项接触随机化；其他编码偏置/COM设置不能由本检查推断通过或失败。后续`evaluate.py`原冻结收据中的`friction1`应理解为请求脚参数1，实际有效脚地摩擦仍0.6，不能用其声称已测摩擦1或鲁棒性。`measure_world_model.py`仅修正说明字符串，学习模块、R01输入/权重/超参数及原评测入口均未改。该缺口未触发已登记的运行停止条件；继续完成当前固定试验，结果明确标注此限制，下一独立试验先修复参数合同并重新验证。此检查不支持将摩擦问题认定为策略成败的唯一原因。
+
+复核命令（服务器Q1根，新输出路径）：`OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 CUDA_VISIBLE_DEVICES='' $PY script/supermimic_for_q1/audit_contacts.py --root "$PWD" --output data/supermimic_for_q1/P05_contact_audit_20261023.json`。

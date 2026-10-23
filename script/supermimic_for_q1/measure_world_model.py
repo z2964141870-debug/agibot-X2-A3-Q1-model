@@ -91,8 +91,8 @@ def main():
                "checkpoint": identity(args.checkpoint), "evaluation": identity(args.evaluation),
                "source": identity(__file__), "stride": args.stride, "new_physics_steps": 0,
                "new_optimizer_updates": 0, "storage_status": "LOCAL_ONLY",
-               "protocol": "Actual saved policy actions and initial states; friction1/encoder bias0/COM offset0; overlapping windows; no post-terminal targets",
-               "limits": "Post-training diagnostic on the same policy evaluation traces; development evidence, not an independent model test set"}
+               "protocol": "Actual saved policy actions and initial states; context foot-friction parameter1/encoder bias0/COM offset0; overlapping windows; no post-terminal targets",
+               "limits": "Post-training diagnostic on the same policy evaluation traces; development evidence, not an independent model test set. Context friction is a requested geom parameter; effective contact friction requires the separate contact audit."}
     with args.output.open("x") as stream:
         json.dump(receipt, stream, indent=2, allow_nan=False)
         stream.write("\n")

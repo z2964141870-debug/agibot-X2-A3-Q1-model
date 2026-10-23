@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_extension/pipeline.py", line 243, in <module>
+    main()
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_extension/pipeline.py", line 236, in main
+    register(args.root.resolve(), args.output.resolve(), args.release.resolve(), args.pair.resolve(),
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_extension/pipeline.py", line 94, in register
+    evidence = initialization.validated_parent(pair, parent_run)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_extension/initialization.py", line 40, in validated_parent
+    terminal = json.loads((pair / "receipt.json").read_text())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/hechengzhu/ZHY/data/env/lib/python3.11/pathlib.py", line 1058, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/hechengzhu/ZHY/data/env/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/receipt.json'

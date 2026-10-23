@@ -54,3 +54,29 @@ native测试前后容器31005589504/31004872704字节，GPU40–41摄氏度、OO
 日志`logs/supermimic_q1_extension_controls_E02_20261023.log`及Git小副本`logs/session_records/supermimic_q1_extension_controls_E02_20261023.log`，1548字节/SHA`b23db7b3c9027632e77d430490b0e9492aff796b5a11428854a71f06db9a0615`。控制前后容器30995984384/30996811776字节、GPU40摄氏度、OOM仍14；源文件在独立extension目录，R02训练继续存活。
 
 本地无PyTorch，最新套件9项通过/2项native跳过；服务器11项无跳过。下一仍是等R02两臂最终物理与匹配比较，再登记固定长预算；不因为fixture正例通过提前启动。
+
+## E03续训登记与完整收尾流程
+
+新增同一独立目录下的`pipeline.py`，使用已有R02子进程执行/缓存建议/资源保护实现release、register和execute。它先验证已完成的匹配pair及选定父臂，固定代码、输入、父证据、追加轮数、新seed与选择理由；执行时同时占用pair和extension文件锁，按训练→续训保存审计→step0/final各三段完整动力学/轨迹审计/分肢诊断推进。源码文件集合与内容、Python、包版本和boot在各阶段核验。失败或信号保存终态，不重复启动，没有自动增加预算。
+
+评测片段直接继承父最终评测中注册的完整列表。实际父manifest的`heldout_clips`为空，不能据该字段只评测两段训练动作；本流程仍含已复用的出拳开发片段，不将其改称独立测试。执行完成状态与原有跟随门分别保留，科学效果失败不伪装成工程执行失败或成功跟随。原`analyze_learning.py`的3000轮专用统计未套用到长预算；完整JSONL和分肢/位移结果仍保存。
+
+本地新增5项控制实际通过，0.158秒；服务器确认5项全部通过，0.155秒、退出0：发布后源码改动拒绝，开发片段不遗漏，未完成pair在创建输出前拒绝，pair锁阻止并发启动，子进程退出7阻止后续评测并保存FAILED、再次执行拒绝且终态字节不变。它们只使用临时Git/小文件/短CPU子进程，0机器人物理/策略/optimizer更新；之前11项状态继承与审计控制的证据保持，不把两批检查称为一次新完整Q1训练。
+
+首次服务器测试在SCP尚未完成时提前调用，只发现0项，日志`supermimic_q1_extension_pipeline_E03_20261023.log`保留，不计通过。确认传输完成及两端源码SHA相同后，新独立E03B测试显式断言`countTestCases()==5`，排除0项退出0被误记通过。有效日志`logs/supermimic_q1_extension_pipeline_E03B_20261023.log`及Git小副本`logs/session_records/`，914字节/SHA`08aa52ed10998c42b9409bd0f4f37a46e6ef92c3aeee1c1cb46d56896af68a70`。
+
+实际服务器CLI阴性控制：`pipeline.py register`以当前缺少pair完成收据的R02和A父臂请求登记，原生退出1，明确缺少该pair的`receipt.json`；预定`data/supermimic_for_q1/E03_unfinished_pair_rejected_20261023`不存在。6000轮/seed20261024仅为阴性参数，尚非已选预算。小收据`logs/session_records/supermimic_q1_extension_pipeline_rejection_E03_20261023.json`为2521字节/SHA`766e16282b99f5de48e5ae4acc8534dafb3089ed53ffc4c363dfb0df52d4912e`，绑定入口SHA、原生退出、输出不存在、资源和仍运行的R02身份；对应原始log亦保存小副本。
+
+22:01:46再次核验R02冻结源码/输入/运行时和controller/B的boot/PID/start_ticks及非僵尸状态通过。B为1350轮/21600交互/439次actor，GPU40–41摄氏度、实时容器31018258432字节、OOM仍14。本阶段没有启动真实Q1续训；base核心相对冻结`6b43cc0`的Git差异为零。
+
+发布并独立核对GitHub Q1后，实际使用以下入口；`<...>`参数必须待匹配对照完成后按结果填写，不执行占位命令：
+
+```bash
+# Q1本地发布副本生成release；服务器按SHA核对部署。
+python3 script/supermimic_q1_extension/pipeline.py release --root "$PWD" --output <新release.json>
+# 服务器root为/opt/data/private/YuanQi_Q1；登记后执行一次。
+$PY script/supermimic_q1_extension/pipeline.py register --root "$PWD" --release <release.json> --pair <已完成pair> --parent-run <选定父臂> --output <独立R03目录> --steps <固定追加轮数> --seed <新seed> --reason <选择依据>
+$PY -u script/supermimic_q1_extension/pipeline.py execute --plan <独立R03目录/plan.json>
+```
+
+输出为R03目录下plan/started/status/events/receipt/summary，训练工件在其`run/`，评测在`eval_initial/`和`eval_final/`；stdout在`logs/supermimic_q1_<R03目录名>/`。真正注册/启动/完整生命周期仍未运行，后续必须独立记录实际预算、父臂、发布版本、保存审计和效果，不能把E03检查替代它们。

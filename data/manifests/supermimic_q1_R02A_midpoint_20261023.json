@@ -1,0 +1,124 @@
+{
+  "status": "TRAINING_MIDPOINT_VERIFIED_RUNNING",
+  "observed_utc": "2026-10-23T12:29:07.250424+00:00",
+  "plan": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/plan.json",
+    "bytes": 45902,
+    "sha256": "e27a1a45d02293a26c60ee8034d2539c6c74a0956e32f07f9db40b6fb878da9f"
+  },
+  "code_commit": "6b43cc0fb4e42482a570fe74e08f19ec3c43c9c0",
+  "controller": {
+    "status": "RUNNING",
+    "runner": {
+      "pid": 751815,
+      "start_ticks": 3604769075,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    },
+    "plan": {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/plan.json",
+      "bytes": 45902,
+      "sha256": "e27a1a45d02293a26c60ee8034d2539c6c74a0956e32f07f9db40b6fb878da9f"
+    },
+    "utc": "2026-10-23T12:28:52.970370+00:00",
+    "stage": "R02A_batch32_train",
+    "child": {
+      "pid": 751818,
+      "start_ticks": 3604769102,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    },
+    "log": "/opt/data/private/YuanQi_Q1/logs/supermimic_q1_R02_cachefixed_pair_20261023/R02A_batch32_train.log",
+    "health": {
+      "utc": "2026-10-23T12:28:52.970320+00:00",
+      "gpu_temperature_c": 40,
+      "gpu_free_mib": 16981,
+      "cgroup_memory_bytes": 30981869568,
+      "cgroup_limit_bytes": 34359738368,
+      "oom_kill": 14,
+      "disk_free_bytes": 2045555511296
+    },
+    "cache_advice": {
+      "scope": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1",
+      "files": 14,
+      "advised_file_bytes": 2395834632,
+      "cgroup_before_bytes": 30981578752,
+      "cgroup_after_bytes": 30981578752,
+      "contents_changed": false,
+      "files_deleted": 0
+    }
+  },
+  "training": {
+    "status": "RUNNING",
+    "step": 1625,
+    "env_steps": 26000,
+    "wm_updates": 599,
+    "policy_updates": 549,
+    "seconds": 2847.177849382162,
+    "pid": 751818,
+    "reward_mean": 0.06571852415800095,
+    "termination_fraction": 0.0,
+    "joint_rmse_rad": 0.35037118196487427,
+    "health": {
+      "gpu_temperature_c": 41,
+      "cgroup_memory_bytes": 30982381568,
+      "oom_kill": 14
+    },
+    "imag_objective": 6.1360321044921875,
+    "imag_return_undisc": 1.9930577278137207,
+    "imag_reward_mean": 0.06197982281446457,
+    "imag_survival_H": 0.9316023588180542,
+    "imag_dhat_mean": 0.05294260010123253,
+    "policy_grad_norm": 0.4584009647369385,
+    "action_abs_mean": 0.5009652972221375,
+    "imag_r/motion_global_root_pos": 0.007873107679188251,
+    "imag_r/motion_global_root_ori": 0.00586738483980298,
+    "imag_r/motion_body_pos": 0.017661625519394875,
+    "imag_r/motion_body_ori": 0.0021093962714076042,
+    "imag_r/motion_body_lin_vel": 0.018223820254206657,
+    "imag_r/motion_body_ang_vel": 0.017433546483516693,
+    "imag_r/action_rate_l2": -0.0012666118564084172,
+    "imag_r/joint_limit": -0.005922446958720684,
+    "critic_loss": 0.11177702993154526,
+    "critic_value_mean": 6.055094242095947,
+    "critic_target_mean": 6.12033748626709,
+    "wm/state_loss": 0.5156856060028077,
+    "wm/term_bce": 0.001972881145775318,
+    "wm/nse_1step": 0.0044057052582502365,
+    "wm/nse_kstep": 0.018737900257110595,
+    "wm/term_acc": 0.99921875,
+    "wm/loss": 0.5176585197448731,
+    "wm/grad_norm": 5.448148345947265
+  },
+  "processes_rechecked": {
+    "runner": {
+      "pid": 751815,
+      "start_ticks": 3604769075,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    },
+    "child": {
+      "pid": 751818,
+      "start_ticks": 3604769102,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    }
+  },
+  "frozen_sources_and_inputs_verified": true,
+  "all_logged_scalar_metrics_finite": true,
+  "logged_rows": 65,
+  "midpoint_checkpoint": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/R02A_batch32/step_001500.pt",
+    "bytes": 205230055,
+    "sha256": "5099f0e8c828a866705a732202c0b2d938bbf1850bb8fc74a3f7e6b9f3e1f2a4"
+  },
+  "live_health": {
+    "utc": "2026-10-23T12:29:07.322771+00:00",
+    "gpu_temperature_c": 40,
+    "gpu_free_mib": 16981,
+    "cgroup_memory_bytes": 30995947520,
+    "cgroup_limit_bytes": 34359738368,
+    "oom_kill": 14,
+    "disk_free_bytes": 2045555179520
+  },
+  "verification_physics_steps": 0,
+  "verification_optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY",
+  "limits": "Verified live progress and checkpoint identity; no checkpoint tensors loaded or standalone policy evaluation run."
+}

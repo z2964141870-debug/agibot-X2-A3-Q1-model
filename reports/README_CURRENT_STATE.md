@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-23当前：[Q1 R02批量对照](README_SUPERMIMIC_Q1_BATCH_TRAINING_20261023.md)页缓存修正后，在huanyu:/opt/data/private/YuanQi_Q1独立`R02_cachefixed_pair_20261023`运行A batch32。冻结代码6b43cc0，controller751815/start3604769075、训练751818/start3604769102，同boot d994e71f-bae0-46ba-a5f7-6c2163771c6c；19:47:39核验快照375轮/6000交互/99组WM/49次actor，进入联合学习且所报损失/梯度有限，启动核验收据已保存。每臂3000轮/48000交互，A保存审计/step0+final三片动力学评测后才B batch128；无自动重启、无追加预算。最新进度与进程以新目录status/started及logs/supermimic_q1_R02_cachefixed_pair_20261023为准。
+2026-10-23当前：[Q1 R02批量对照](README_SUPERMIMIC_Q1_BATCH_TRAINING_20261023.md)页缓存修正后，在huanyu:/opt/data/private/YuanQi_Q1独立`R02_cachefixed_pair_20261023`运行A batch32。冻结代码6b43cc0，controller751815/start3604769075、训练751818/start3604769102，同boot d994e71f-bae0-46ba-a5f7-6c2163771c6c；20:29:07独立核验快照1625轮/26000交互/599组WM/549次actor，全部日志标量有限，进程/源码/输入核验通过，step1500大小/SHA已保存。GPU40–41摄氏度/OOM仍14，pair与A无终态收据。每臂3000轮/48000交互，A保存审计/step0+final三片动力学评测后才B batch128；无自动重启、pair不自动追加预算。最新进度与进程以新目录status/started及logs/supermimic_q1_R02_cachefixed_pair_20261023为准。
 
 原`R02_batch_pair_20261023`已在140轮因容器30GiB保护保存STOPPED_SIGNAL/0actor；终态和权重保留，不能重用或恢复。缓存建议使容器观察下降1711742976字节，6项控制器测试通过；新运行仍保留30GiB/86摄氏度/OOM保护。A3停止，R01冻结工件保留，大文件LOCAL_ONLY，当前没有新最终策略成绩。Q1分支及本地代码副本`/tmp/yuanqi-supermimic-q1-20261023`维护。
 

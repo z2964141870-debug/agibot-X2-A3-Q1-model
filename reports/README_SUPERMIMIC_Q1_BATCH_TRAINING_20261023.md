@@ -71,3 +71,13 @@ $PY -u script/supermimic_for_q1/run_batch_pair.py execute --plan data/supermimic
 新运行入口为`$PY -u script/supermimic_for_q1/run_batch_pair.py execute --plan data/supermimic_for_q1/R02_cachefixed_pair_20261023/plan.json`，已执行，不重复运行。实际使用`subprocess.Popen(..., stdin=DEVNULL, stdout=controller.log, stderr=STDOUT, start_new_session=True)`；控制器不依赖Mac/SSH会话。主日志`logs/supermimic_q1_R02_cachefixed_pair_20261023/controller.log`，A日志同目录`R02A_batch32_train.log`；源代码保持冻结，后续只更新记录。
 
 从新目录的`status.json`/`R02A_batch32/status.json`查看最新进度，按`started.json`中的boot/PID/start_ticks核对；不要用此静态快照当实时证明。预计完成1149组WM/1099次actor，之后保存审计和step0/final三片评测，再B；失败即停止，未授权无限追加预算。训练、仿真评测和真机结果分开，当前没有新最终策略效果。
+
+## 20:29中途检查点
+
+本轮继续目标时先以实时进程核对运行，未重复启动：controller/child的boot、PID、start_ticks与原登记完全一致，均为非僵尸进程；实际轮数从先前675继续增加。北京时间20:29:07的新独立收据`midpoint_verification.json`为4437字节/SHA`0ef828aeab679e1e9460682a7d45682541ccb20c933b3cc43b3b209fcde3e7c2`，小副本`data/manifests/supermimic_q1_R02A_midpoint_20261023.json`。
+
+当时A训练1625轮/26000新交互、599组WM/549次actor、2847.178秒；全部已记录标量有限，冻结源码/输入逐文件核验通过。step1500已实际保存，205230055字节，SHA`5099f0e8c828a866705a732202c0b2d938bbf1850bb8fc74a3f7e6b9f3e1f2a4`。核验仅统计已有日志、进程和文件SHA，0新物理/策略推理/optimizer，不载入检查点张量。
+
+GPU40–41摄氏度、实时可用16981MiB；容器30995947520字节低于30GiB保护，OOM仍14。无训练或pair终态收据，B尚未启动，不能记为完成。继续等待该活跃训练句柄结束，由原控制器执行保存审计/独立整片评测；不另跑中期动力学或变更训练设置。成对结果完成后才根据腿部/水平根跟踪、位移和完整率登记独立长预算或方案调整，现有pair不会自动扩展预算。
+
+本轮web工具未返回可用原文内容；复核使用服务器已保存的原论文PDF（SHA仍为`fe213017ab062f4acc3965da89abd3c29969163e144a2628a662b8ce46691009`）第13–16页，确认Algorithm A.1/Table A.5的采集、k8模型拟合、H32冻结模型内策略梯度、GAE critic与0.4更新比例。该静态复核不证明Q1学习成功或达到原文训练规模，当前小批量和数据差异仍见S01记录。

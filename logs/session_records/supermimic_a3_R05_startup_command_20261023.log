@@ -1,0 +1,35 @@
+Published implementation: fd091590e00c61ea56835658cd6454c68c36cbbe
+
+Launch remote command:
+cd /opt/data/private/yuanqi_ops && envs/supermimic_a3_20261023/bin/python script/supermimic_for_a3/launch.py --entry run_horizon_pair --python envs/supermimic_a3_20261023/bin/python --log logs/supermimic_a3_R05_horizon_pair_20261023.log --record data/supermimic_for_a3/R05_horizon_pair_20261023_launch.json -- --execute --output data/supermimic_for_a3/R05_horizon_pair_20261023
+
+Read-only startup command (step0 cache advice only):
+cd /opt/data/private/yuanqi_ops && python3 - <<'PY'
+import importlib.util,json,subprocess,os
+from datetime import datetime,timezone
+from pathlib import Path
+spec=importlib.util.spec_from_file_location('completion','script/supermimic_for_a3/complete_run.py')
+m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+base=Path('data/supermimic_for_a3');pair=base/'R05_horizon_pair_20261023';run=base/'R05A_H32_20261023'
+value={'utc':datetime.now(timezone.utc).isoformat(),'health':m.health(),'oom':Path('/sys/fs/cgroup/memory/memory.oom_control').read_text(),'gpu':subprocess.check_output(['nvidia-smi','--query-gpu=uuid,temperature.gpu,memory.used,utilization.gpu','--format=csv,noheader,nounits'],text=True).strip(),'processes':{}}
+for label,path in [('pair',base/'R05_horizon_pair_20261023_launch.json'),('training',pair/'R05A_H32_train_launch.json')]:
+ launch=json.loads(path.read_text());value['processes'][label]={'record':m.identity(path),**m.process_snapshot(launch)}
+for label,path in [('pair_status',pair/'status.json'),('training_status',run/'status.json')]:
+ d=json.loads(path.read_text());d.pop('child',None);value[label]=d
+value['terminal_receipts_exist']={'pair':(pair/'receipt.json').exists(),'training':(run/'receipt.json').exists()}
+value['admission']=m.identity(run/'admission.json')
+d=json.loads((run/'admission.json').read_text())
+value['initialization']={'source_checkpoint':d['initialization']['source_checkpoint'],'contract_changes':d['initialization']['contract_changes'],'initial_optimizer_steps':d['initialization']['initial_optimizer_steps'],'learning_rate_step_offset':d['learning_rate_step_offset']}
+step0=run/'step_000000.pt';value['step0']=m.identity(step0)
+with step0.open('rb') as stream:
+ os.fsync(stream.fileno());os.posix_fadvise(stream.fileno(),0,0,os.POSIX_FADV_DONTNEED)
+value['step0_cache_advice']='fsync and POSIX_FADV_DONTNEED only for completed step0, no deletion'
+rows=[json.loads(x) for x in (run/'metrics.jsonl').read_text().splitlines()]
+import math
+value['metrics_rows']=len(rows)
+value['metrics_all_finite']=all(math.isfinite(v) for row in rows for v in row.values() if isinstance(v,(int,float)))
+value['health_after_advice']=m.health()
+print(json.dumps(value,indent=2))
+PY
+
+This command performs zero new simulation, inference or optimizer updates. It reads health, actual boot/PID/command identities and saved JSON/PT identities.

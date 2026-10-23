@@ -1,0 +1,125 @@
+{
+  "utc": "2026-10-23T01:57:41.258711+00:00",
+  "health": {
+    "cgroup_memory_bytes": 30338289664,
+    "gpu_temperature_c": 39
+  },
+  "oom": "oom_kill_disable 0\nunder_oom 0\noom_kill 14\n",
+  "gpu": "GPU-2225f49c-1e19-9891-6cae-d084e5f828cf, 39, 7307, 17",
+  "processes": {
+    "pair": {
+      "record": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05_horizon_pair_20261023_launch.json",
+        "bytes": 522,
+        "sha256": "5886313c0db97e55c97025122256006de37c6727fa7381bd0b9a3dca1e4af54a"
+      },
+      "pid": 721781,
+      "state": "S",
+      "start_ticks": 3601225703,
+      "native_wait_status": null
+    },
+    "training": {
+      "record": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05_horizon_pair_20261023/R05A_H32_train_launch.json",
+        "bytes": 1330,
+        "sha256": "489eccaa47bfa69c39cca86efa4ae627c1d2920cd1793ef32104a5450b6168e0"
+      },
+      "pid": 721791,
+      "state": "S",
+      "start_ticks": 3601225810,
+      "native_wait_status": null
+    }
+  },
+  "pair_status": {
+    "status": "RUNNING",
+    "arm": "R05A_H32",
+    "phase": "train",
+    "health": {
+      "cgroup_memory_bytes": 30328836096,
+      "gpu_temperature_c": 39
+    },
+    "stage_seconds": 402.4197475835681
+  },
+  "training_status": {
+    "status": "RUNNING",
+    "step": 175,
+    "env_steps": 2800,
+    "wm_updates": 19,
+    "policy_updates": 19,
+    "seconds": 375.0091919824481,
+    "pid": 721791,
+    "reward_mean": 0.0705663412809372,
+    "termination_fraction": 0,
+    "joint_rmse_rad": 0.2830822467803955,
+    "health": {
+      "gpu_temperature_c": 39,
+      "cgroup_memory_bytes": 30329266176
+    },
+    "imag_objective": 7.517880439758301,
+    "imag_return_undisc": 2.41062068939209,
+    "imag_reward_mean": 0.07524751126766205,
+    "imag_survival_H": 0.953125,
+    "imag_dhat_mean": 0.026358073577284813,
+    "policy_grad_norm": 0.11421255767345428,
+    "action_abs_mean": 0.7353078722953796,
+    "imag_r/motion_global_root_pos": 0.008823305368423462,
+    "imag_r/motion_global_root_ori": 0.007184320595115423,
+    "imag_r/motion_body_pos": 0.015097426250576973,
+    "imag_r/motion_body_ori": 0.009800625964999199,
+    "imag_r/motion_body_lin_vel": 0.01801123656332493,
+    "imag_r/motion_body_ang_vel": 0.017635878175497055,
+    "imag_r/action_rate_l2": -0.0010418695164844394,
+    "imag_r/joint_limit": -0.0002634167030919343,
+    "critic_loss": 0.014952003955841064,
+    "critic_value_mean": 7.525397300720215,
+    "critic_target_mean": 7.52513313293457,
+    "wm/state_loss": 0.19770370721817015,
+    "wm/term_bce": 0.000019692128989845515,
+    "wm/nse_1step": 0.001715763472020626,
+    "wm/nse_kstep": 0.003362508863210678,
+    "wm/term_acc": 1,
+    "wm/loss": 0.19772340059280397,
+    "wm/grad_norm": 11.23755340576172
+  },
+  "terminal_receipts_exist": {
+    "pair": false,
+    "training": false
+  },
+  "admission": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05A_H32_20261023/admission.json",
+    "bytes": 16312,
+    "sha256": "a8a84af3ddc109ff02d1fec8eca946c1764dfa51e4b7366f50b3244709fded18"
+  },
+  "initialization": {
+    "source_checkpoint": {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_20261023/final.pt",
+      "bytes": 215996819,
+      "sha256": "d7e14eeda38b2fd2400bb364281335167e0eecaede6d4204e092d41e53931e08"
+    },
+    "contract_changes": {},
+    "initial_optimizer_steps": {
+      "wm_opt": [
+        56470
+      ],
+      "policy_opt": [
+        4447
+      ],
+      "critic_opt": [
+        88940
+      ]
+    },
+    "learning_rate_step_offset": 12000
+  },
+  "step0": {
+    "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05A_H32_20261023/step_000000.pt",
+    "bytes": 216004967,
+    "sha256": "9d5cb7664a02c27c49ceca991cd18dc39385bb6d683f85e9ba3582ba092eba20"
+  },
+  "step0_cache_advice": "fsync and POSIX_FADV_DONTNEED only for completed step0, no deletion",
+  "metrics_rows": 7,
+  "metrics_all_finite": true,
+  "health_after_advice": {
+    "cgroup_memory_bytes": 30338228224,
+    "gpu_temperature_c": 40
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "implementation_main": "fd091590e00c61ea56835658cd6454c68c36cbbe",
+  "remote_commit_verified": true,
+  "preflight": {
+    "sources": 39,
+    "inputs": 21,
+    "memory_bytes": 26320343040,
+    "oom": "oom_kill_disable 0\nunder_oom 0\noom_kill 14\n",
+    "gpu": "GPU-2225f49c-1e19-9891-6cae-d084e5f828cf, 38, 6348, 0",
+    "boot": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+  },
+  "progress": {
+    "utc": "2026-10-23T01:53:59.094798+00:00",
+    "health": {
+      "cgroup_memory_bytes": 29820243968,
+      "gpu_temperature_c": 38
+    },
+    "oom": "oom_kill_disable 0\nunder_oom 0\noom_kill 14\n",
+    "gpu": "GPU-2225f49c-1e19-9891-6cae-d084e5f828cf, 38, 7071, 0",
+    "processes": {
+      "pair": {
+        "record": {
+          "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05_horizon_pair_20261023_launch.json",
+          "bytes": 522,
+          "sha256": "5886313c0db97e55c97025122256006de37c6727fa7381bd0b9a3dca1e4af54a"
+        },
+        "pid": 721781,
+        "state": "S",
+        "start_ticks": 3601225703,
+        "native_wait_status": null
+      },
+      "training": {
+        "record": {
+          "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05_horizon_pair_20261023/R05A_H32_train_launch.json",
+          "bytes": 1330,
+          "sha256": "489eccaa47bfa69c39cca86efa4ae627c1d2920cd1793ef32104a5450b6168e0"
+        },
+        "pid": 721791,
+        "state": "S",
+        "start_ticks": 3601225810,
+        "native_wait_status": null
+      }
+    },
+    "pair_status": {
+      "status": "RUNNING",
+      "arm": "R05A_H32",
+      "phase": "train",
+      "health": {
+        "cgroup_memory_bytes": 29801193472,
+        "gpu_temperature_c": 38
+      },
+      "stage_seconds": 180.99752040952444
+    },
+    "training_status": {
+      "status": "RUNNING",
+      "step": 125,
+      "env_steps": 2000,
+      "wm_updates": 0,
+      "policy_updates": 0,
+      "seconds": 12.196661315858364,
+      "pid": 721791,
+      "reward_mean": 0.08109495043754578,
+      "termination_fraction": 0,
+      "joint_rmse_rad": 0.2590720057487488,
+      "health": {
+        "gpu_temperature_c": 38,
+        "cgroup_memory_bytes": 29360574464
+      }
+    },
+    "terminal_receipts_exist": {
+      "pair": false,
+      "training": false
+    },
+    "admission": {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05A_H32_20261023/admission.json",
+      "bytes": 16312,
+      "sha256": "a8a84af3ddc109ff02d1fec8eca946c1764dfa51e4b7366f50b3244709fded18"
+    },
+    "initialization": {
+      "source_checkpoint": {
+        "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_20261023/final.pt",
+        "bytes": 215996819,
+        "sha256": "d7e14eeda38b2fd2400bb364281335167e0eecaede6d4204e092d41e53931e08"
+      },
+      "contract_changes": {},
+      "initial_optimizer_steps": {
+        "wm_opt": [
+          56470
+        ],
+        "policy_opt": [
+          4447
+        ],
+        "critic_opt": [
+          88940
+        ]
+      },
+      "learning_rate_step_offset": 12000
+    },
+    "step0": {
+      "path": "/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R05A_H32_20261023/step_000000.pt",
+      "bytes": 216004967,
+      "sha256": "9d5cb7664a02c27c49ceca991cd18dc39385bb6d683f85e9ba3582ba092eba20"
+    },
+    "step0_cache_advice": "fsync and POSIX_FADV_DONTNEED only for completed step0, no deletion",
+    "metrics_rows": 5,
+    "metrics_all_finite": true,
+    "health_after_advice": {
+      "cgroup_memory_bytes": 29815619584,
+      "gpu_temperature_c": 38
+    }
+  }
+}

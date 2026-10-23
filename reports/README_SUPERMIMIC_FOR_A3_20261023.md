@@ -555,3 +555,15 @@ python script/supermimic_for_a3/launch.py --entry run_horizon_pair \
 ```
 
 39源码/21输入与实时boot/RTX3090 UUID在执行准入及各阶段前再核验；30GiB/86℃保护保持，每臂训练壁钟上限10800秒、每臂完成流程3600秒，无自动重启。准备末次29343494144字节/GPU38℃，不是未来实时启动证明。下一完成本节发布/远端SHA核验后实际启动；当前0新增R05训练或效果，目标active、R04尚不可用，原件LOCAL_ONLY。
+
+## R05实际启动与恢复入口（09:54）
+
+实现原提交9f6e2ee首次推送遇远端研究简报更新而拒绝；随后读取并普通合并770d5e5，保留该日报及全部工程记录，audit/diff检查通过后推送`main=fd091590e00c61ea56835658cd6454c68c36cbbe`，独立ls-remote全SHA一致。没有强推或覆盖远端内容。39源码/21输入重新逐一大小/SHA通过；实际启动前同boot/RTX3090 UUID、26320343040字节、GPU38℃/6348MiB、OOM14。该其他GPU占用保留，没有清理无关进程。
+
+总控PID/PGID721781、start_ticks3601225703；R05A H32训练721791、start_ticks3601225810，实际命令/boot与launch均匹配且活跃。见[总控launch](../data/manifests/supermimic_a3_R05_pair_launch_20261023.json)、[总控准入](../data/manifests/supermimic_a3_R05_pair_admission_20261023.json)、[A训练launch](../data/manifests/supermimic_a3_R05A_H32_launch_20261023.json)、[A准入](../data/manifests/supermimic_a3_R05A_H32_admission_20261023.json)。A实际H32/batch64、初始化变化声明空、Adam56470/4447/88940和日程偏移12000均正确；实际保存step0为216004967字节、SHA`9d5cb7664a02c27c49ceca991cd18dc39385bb6d683f85e9ba3582ba092eba20`。这些启动检查不替代后置逐张量/Adam及实际效果审计。
+
+[09:53:59启动快照](../data/manifests/supermimic_a3_R05_startup_20261023.json)最近落盘125/3000采集步、2000新env-step、0落盘WM/actor更新；首次编译尚未完成，不能据此称已发生策略更新或改善。5条落盘指标均有限，总控RUNNING/R05A_H32/train；两个进程真实活跃，无训练/配对终态，B尚未启动。CPU时钟只读核对训练进程累计218.33 CPU秒，未据此改变运行预算或重启。GPU38℃、容器29820243968字节，OOM14未增；读取已完成step0身份后仅对该文件fsync/fadvise，0删除/全局缓存操作，末次29815619584字节。以上为采样证据，不当连续峰值或完成证明；[实际检查命令](../logs/session_records/supermimic_a3_R05_startup_command_20261023.log)。
+
+恢复先读本节和`R05_horizon_pair_20261023/{plan,admission,status,receipt}.json`、总控launch与A训练launch，重新核对boot/PID/start_ticks/命令。A当前原预算运行；若完成，总控将按计划首次执行A完整配对评测/独立审计/原门，通过流程后再从R04开始B H8，最后给配对比较。任一失败保留证据退出，不能重启旧失败阶段或把H8尚未启动记成已训。模型和大型轨迹LOCAL_ONLY，目标active，原三门保持，当前仍没有可用SuperMimic for A3。
+
+首批更新已实际通过：[09:57:41首更新快照](../data/manifests/supermimic_a3_R05_first_updates_20261023.json)记录A采集175步/2800新env-step、19次WM与19次actor更新，actor梯度范数.11421、WM梯度11.23755，全部落盘指标有限。首次编译已越过，尚非3000步预算完成或策略改善证明；总控仍R05A_H32/train，H8没有启动。记录GPU39℃、末次现场40℃，OOM仍14，实际进程/启动tick/命令匹配，继续既定两臂顺序流程。完整来源/时间/资源以快照为准；训练、配对终态及最终评测尚未产生。

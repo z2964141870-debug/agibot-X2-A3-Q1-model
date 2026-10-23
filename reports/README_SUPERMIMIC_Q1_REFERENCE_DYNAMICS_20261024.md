@@ -1,6 +1,6 @@
 # Q1参考接触与逆动力学诊断
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-D04。状态：独立实现、本地4项/服务器7项控制及真实三片分析完成；保存数组的独立统计重算待执行。发现精确参考接触缺口，未证明训练失败根因或近似跟随不可行。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-D04。状态：独立实现、本地4项/服务器7项控制、真实三片分析及276项保存数组重算完成；三个峰值帧碰撞定位待执行。发现精确参考接触缺口，未证明训练失败根因或近似跟随不可行。
 
 ## 目标与范围
 
@@ -63,6 +63,20 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 $PY script/supermimic_q1_analysis/audit
   --output data/supermimic_for_q1/D04_reference_dynamics_20261024/summary_audit.json
 ```
 
-该重算尚未执行。下一完成统计重算并定位出拳高力矩对应关节，再等待R03完整配对评测与V02渲染；如继续未过门，优先把接触一致性作为独立参考候选的待验证因素，保持匹配基线，不在正在运行的R03内替换输入。参考动力学缺口已确认，是否为学习失败主因仍未确认。
+重算代码`de09192c56dc0f4323bdd70eb04efdf5ec368b08`已推送/独立核对Q1，部署SHA`e07c0a597500cb64e8b78279e4d6e39bd21272bad34b4d641e53d803641bedf6`一致。上述命令实际原生退出0，276项统计/加速度差分检查通过，最大绝对差1.77636e-15；0新MuJoCo/inverse/积分/推理/optimizer。审计13611字节/SHA`a1290fd078437ad9a3047e04a4c1d65613ef338212a8a6124416bf40443c32b0`，日志344字节/SHA`ce69ad81f45fedc42be9a1702b4fc4b72cd858d8d3cb9b3cb110d44ab2c9fac2`。
+
+峰值定位：走路25.08秒右髋pitch为-14.1887Nm/cap9Nm；浅蹲0.10秒左肩pitch为-1.9554Nm/cap5.5Nm；出拳7.64秒左肩pitch为233.6832Nm/cap5.5Nm。出拳该关节q=0.156747rad、dq=1.999998rad/s、差分ddq=-20.2531rad/s2，原始限位[-3.1416,1.5708]，不能仅凭该大力矩认定需要提高cap。还需检查该帧其他接触/约束贡献。
+
+新增`inspect_reference_contacts.py`对三片各自中央三点峰值帧做一次同协议inverse重算，要求与保存广义力最大差<1e-7，再列接触几何/身体、穿透距离、局部力和峰值关节constraint/passive/惯性偏置分解。只覆盖3帧、0积分/策略/optimizer，源码部署核验后执行一次：
+
+```bash
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 $PY script/supermimic_q1_analysis/inspect_reference_contacts.py \
+  --root "$PWD" \
+  --receipt data/supermimic_for_q1/D04_reference_dynamics_20261024/receipt.json \
+  --audit data/supermimic_for_q1/D04_reference_dynamics_20261024/summary_audit.json \
+  --output data/supermimic_for_q1/D04_reference_dynamics_20261024/peak_contacts.json
+```
+
+该三帧补充尚未执行。01:02:22原R03仍3175/12000追加轮、50800新交互、累计6175轮，原进程/冻结条件通过，GPU39摄氏度/OOM14。等待其完整配对评测与V02渲染；如继续未过门，优先把接触一致性作为独立参考候选的待验证因素，保持匹配基线，不在正在运行的R03内替换输入。参考动力学缺口已确认，是否为学习失败主因仍未确认。
 
 MuJoCo官方方法依据：`https://mujoco.readthedocs.io/en/stable/computation/index.html`及`https://mujoco.readthedocs.io/en/stable/APIreference/APIfunctions.html`，2026-10-24核对。论文项目入口`https://supermimic.github.io/`本轮复核仍列策略通过可微世界模型内回报反传的路线；本诊断不替代该学习方法。

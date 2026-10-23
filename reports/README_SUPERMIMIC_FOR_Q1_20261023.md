@@ -1,6 +1,6 @@
 # SuperMimic for Q1
 
-记录日期：2026-10-23，北京时间。阶段 SM-Q1-P01–P06/R01。状态：模型/物理/梯度通过，三段参考独立质检通过、过头动作拒绝；P05发现摩擦随机化未生效，P06局部修正候选检查通过但未接入。R01按原固定接触摩擦0.6继续，尚无完整效果结论。
+记录日期：2026-10-23，北京时间。阶段 SM-Q1-P01–P06/R01。状态：R01训练与独立保存审计完成，完整动作评测待执行。P05发现摩擦随机化未生效，P06局部修正候选检查通过但未接入；R01实际接触摩擦固定0.6，尚无可用策略结论。
 
 ## 目标与范围
 
@@ -142,3 +142,15 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 $PY -u script/supermimic_for_q1/train.p
 在独立模型副本中仅将脚geom priority设为floor priority+1。三个摩擦设置各14个实际接触分别得到0.3/1.0/1.2，且匹配摩擦0.6条件下，修正前后接触geom、距离、维数、五项摩擦和solref/solimp完全一致。0控制步/optimizer，未加载策略、未将修正应用于R01或训练冻结文件。此检查验证候选接触参数合同，不能替代新后端动力学/梯度检查或证明训练改善。
 
 命令在P05基础上增加`--verify-priority-correction`，输出为`data/supermimic_for_q1/P06_contact_candidate_20261023.json`，27721字节/SHA`5ac76ca7169de1037cb0d5af3cc1b306afad3b5ab5b8438e50abf75a8139c55e`；小副本见[候选检查](../data/manifests/supermimic_q1_contacts_candidate_P06_20261023.json)。P05原输出保留，其执行源码可从提交`7c1e7fb34b1fc72afe245fe47cd786eea971e76d`恢复；新版检查入口增加候选模式和求解参数检查。先完成并封存R01训练/完整评测，再以新协议接入修正，重新验证后才进入下一独立训练。
+
+R01冻结源码归档已保存到服务器`data/supermimic_for_q1/R01_20261023/R01_source_cc3ecb61.tar.gz`，69086字节/SHA`222d301a630c270b253ddc71b9b3dfea39ba003025d658a500c2cce00581713a`。由Git固定提交导出，服务器独立逐个归档成员核对入场38个Python文件，0不一致；不加载权重/推进仿真。此为本地可复现源码快照，网盘状态仍`LOCAL_ONLY`。
+
+## R01训练完成与保存审计
+
+北京时间14:32后核实：原前台SSH会话原生退出0，训练收据`TRAINING_FINISHED_PENDING_EVALUATION`、error=null。实际3000采集轮、48000新控制步/960000个1ms物理子步，1149组WM、1099次actor；训练循环5794.384949秒，即96.5731分钟。没有自动恢复或追加训练。120条训练健康记录中GPU最高41°C、容器内存最高30736556032字节，OOM计数始终14，均为采样证据。
+
+新CPU进程运行`audit_training.py`实际退出0，状态`TRAINING_SAVE_AUDIT_PASSED`，11项门均通过：精确预算、step0/初始空优化器、实际更新计数、网络参数有限并变化、全部checkpoint大小/SHA、冻结源码与训练输入、末尾指标及无新增OOM。实际Adam计数WM11490、actor1099、critic21980，参数状态分别14/20/6，step0均0。最大参数变化WM0.42636、actor0.11060、critic1.23678；这证明参数更新，不证明动作跟随有效。
+
+最终模型服务器`data/supermimic_for_q1/R01_20261023/final.pt`，205218451字节/SHA`a3f2e09591b573d49b4029e1c5aecd2680ba49eb98f0699480a2bf4d28c2aa71`。step0为68429099字节/SHA`94e63acbd9c81c26c3b76b4bfee88c6fae102e5c1c928d2f393726ca88732d3f`；其余500轮间隔保存身份见[训练收据](../data/manifests/supermimic_q1_R01_training_20261023.json)。[独立保存审计](../data/manifests/supermimic_q1_R01_training_audit_20261023.json)，原始输出与120条在线指标见`logs/session_records/supermimic_q1_R01_20261023.log`、`supermimic_q1_R01_save_audit_20261023.log`、`supermimic_q1_R01_metrics_20261023.jsonl`。
+
+可复核命令（新输出路径，不重训）：`OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 $PY script/supermimic_for_q1/audit_training.py --run data/supermimic_for_q1/R01_20261023 --output data/supermimic_for_q1/R01_training_audit_20261023.json`。审计0新物理步/optimizer。下一步按已登记规格评测step0/final三合格完整片段，再从轨迹独立重算；P05摩擦限制持续适用，过头动作不提升为合格输入。全部模型/轨迹仍`LOCAL_ONLY`，未做真机验证。

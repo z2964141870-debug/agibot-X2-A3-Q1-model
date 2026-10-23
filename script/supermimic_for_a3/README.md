@@ -126,3 +126,17 @@ or optimizer updates. It displays full clip duration and early termination statu
 Optional `--max-seconds` explicitly makes a truncated preview; the default includes
 the complete executed trace. Outputs are an MP4, last-frame PNG and hash receipt.
 The verified environment has EGL, Pillow and ffmpeg; the viewer needs no model weights.
+
+`diagnose_action_response.py --prepare --evaluation EVALUATION/receipt.json
+--root A3_ASSET_ROOT --output NEW_DIAGNOSTIC` freezes eight visited states, four
+unit directions each, the checkpoint and all backend/input identities. Preparation
+performs no physics. `--execute --output DIAGNOSTIC` first replays all eight
+unperturbed H32 windows, then perturbs only the first action by +/-0.05 and +/-0.10.
+Maximum native budget is 4352 control steps; failed or terminated cases remain in
+the saved evidence. It compares root and active-joint finite differences with the
+frozen model and its JVP, including float64 numerical controls. Run it with the
+same external 30 GiB/86 C supervisor; it has no automatic restart. This diagnoses
+local open-loop response, not full actor-gradient correctness or tracking success.
+`audit_action_response.py --diagnostic DIAGNOSTIC --output NEW_AUDIT.json`
+independently recomputes response metrics, sample/input identity and actual budgets
+from the saved arrays without physics. Controls: `test_action_response.py -v`.

@@ -465,3 +465,32 @@ H32主动关节RMSE学习/CV为0.036994/0.098506rad（训练）、0.035966/0.075
 下一选择独立J01动作响应诊断，先验证BPTT依赖的动作敏感性，再决定是否增加联合训练或改变模型拟合。拟定范围为四训练片段各2个保存状态（有效H32窗口的25%/65%位置）、每状态4个固定seed的单位动作方向、±0.05/±0.10两幅度，只扰动首个动作、随后使用原已记录动作，统一H32回放并读取H1/H8/H32响应。8状态×(1无扰动+4方向×2幅度×2符号)×32=4352新控制步，即87040个原1ms物理子步；1环境顺序运行，0新policy推理、0 optimizer，不改R04/旧STOPPED或物理/奖励。
 
 J01须先证明无扰动回放复现原保存轨迹，再比较真实物理有限差分与冻结WM响应/自动微分，分别报告根位置和29主动关节、两幅度一致性及退化响应；无效/终止样本必须留证。它是局部、固定后续动作的模型敏感性诊断，不是完整闭环策略梯度的正确性证明。当前仅登记下一范围，代码、输入/源码冻结、具体种子与数值控制尚未实施，**未运行J01或下一轮训练，也没有动作梯度错误结论**。目标继续active，原三项可用门不变。
+
+## J01实现、数值控制与实际输入冻结（09:22）
+
+状态：实现与准备完成，尚未实际执行物理诊断。新增独立`diagnose_action_response.py`、`audit_action_response.py`及四项科学控制，不改既有28份后端、R04模型或训练入口。服务器控制实际退出0：反向响应即使幅度一致也判为负cosine；零响应不报cosine；非有限值拒绝；提前终止留在分母、不产生无效响应分数。Mac仅AST通过，系统Python没有torch，未假称Mac数值通过。
+
+准备子进程720509实际退出0、4.620秒，0新物理/策略推理/optimizer；[准备监督收据](../data/manifests/supermimic_a3_R04_action_sensitivity_J01_prepare_execution_20261023.json)。[冻结计划](../data/manifests/supermimic_a3_R04_action_sensitivity_J01_plan_20261023.json)绑定R04 final完整SHA、评测/轨迹/参考、28后端及独立入口身份，包含八状态索引和全部方向。PCG64种子20261023；每片段取`floor(fraction*(executed_steps-32))`，fraction=.25/.65，不替换采样。输出独立为`huanyu:/opt/data/private/yuanqi_ops/data/supermimic_for_a3/R04_action_sensitivity_J01_20261023/`；plan状态PREPARED_NOT_EXECUTED。
+
+- 八个H32无扰动窗口须全部复现保存轨迹：42个位置/四元数坐标绝对容差2e-6，41速度坐标2e-5，不使用相对容差；任何一个未过立即停止，尚未准入扰动执行。保持保存的全83状态、前一动作、frame和原物理控制；后续动作固定，不调用policy。
+- 每状态四单位方向，首个原动作±.05/±.10，仍按原生[-20,20]裁剪并报告裁剪坐标。1环境/1线程顺序运行，每段32控制步/640原1ms子步；上限4352控制步/87040子步，提前终止保留实际长度和掩码，不替换或补跑。根3和主动关节29分别报告幅度、相对误差和cosine；L2范数≤1e-6米/动作或1e-5弧度/动作时不报对应cosine。
+- WM参数冻结，float32模型FD/JVP与实际float32控制边界配对；同权重float64副本对全部方向额外做±1e-4/±2e-4中央差分。双精度数值控制逐坐标要求`abs(FD-JVP)<=1e-7+1e-3*abs(JVP)`；float32/64 JVP要求`abs(diff)<=1e-5+.02*abs(JVP64)`。不同幅度的物理/模型响应一致性单独报告，不把数值控制通过当物理梯度正确。
+- `audit_action_response.py`不运行物理，独立从NPZ重建方向/扰动、原状态与动作、基线误差、终止有效性、384响应行/192数值控制行、聚合指标和实际预算。原始数组留服务器，Git只存小JSON。实现冻结与逐张量参数未变的运行时证据不等同于policy成功。
+
+复现命令（工作根`/opt/data/private/yuanqi_ops`，解释器`envs/supermimic_a3_20261023/bin/python`）：
+
+```bash
+python script/supermimic_for_a3/test_action_response.py -v
+python script/supermimic_for_a3/diagnose_action_response.py --prepare \
+ --evaluation data/supermimic_for_a3/R04_completion_20261023/eval_final/receipt.json \
+ --root /opt/data/private/hechengzhu/ZHY \
+ --output data/supermimic_for_a3/R04_action_sensitivity_J01_20261023
+# 上一步已完成，不重复；下面须经原30GiB/86℃监督器单次执行。
+python script/supermimic_for_a3/diagnose_action_response.py --execute \
+ --output data/supermimic_for_a3/R04_action_sensitivity_J01_20261023
+python script/supermimic_for_a3/audit_action_response.py \
+ --diagnostic data/supermimic_for_a3/R04_action_sensitivity_J01_20261023 \
+ --output data/supermimic_for_a3/R04_action_sensitivity_J01_20261023_audit.json
+```
+
+09:22同boot/RTX3090 UUID已实测，无SuperMimic活跃作业；GPU38℃/6348MiB为既有其他占用，容器29327175680字节，OOM14未增。执行前再次核对，外部监督维持30GiB/86℃并给单次900秒壁钟上限，失败保存不自动重试。准备日志`logs/supermimic_a3_R04_action_sensitivity_J01_prepare_20261023.log`。本节与报告入口、源码/清单同次提交并独立核验GitHub后再执行；原件LOCAL_ONLY，目标active。

@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-23当前：[Q1 R02批量对照](README_SUPERMIMIC_Q1_BATCH_TRAINING_20261023.md)页缓存修正后，在huanyu:/opt/data/private/YuanQi_Q1独立`R02_cachefixed_pair_20261023`运行A batch32。冻结代码6b43cc0，controller751815/start3604769075、训练751818/start3604769102，同boot d994e71f-bae0-46ba-a5f7-6c2163771c6c；20:29:07独立核验快照1625轮/26000交互/599组WM/549次actor，全部日志标量有限，进程/源码/输入核验通过，step1500大小/SHA已保存。GPU40–41摄氏度/OOM仍14，pair与A无终态收据。每臂3000轮/48000交互，A保存审计/step0+final三片动力学评测后才B batch128；无自动重启、pair不自动追加预算。最新进度与进程以新目录status/started及logs/supermimic_q1_R02_cachefixed_pair_20261023为准。
+2026-10-23 21:24核验：[Q1 R02批量对照](README_SUPERMIMIC_Q1_BATCH_TRAINING_20261023.md)A batch32完成3000轮/48000交互/95.087分钟，保存审计11门和step0/final三片动力学及重算通过。final关节RMSE走路0.346602rad（仅42.373%前缀，提前失败）、浅蹲0.369294、开发出拳0.300410；未过跟随门。B batch128已运行325轮/5200交互/29次actor，GPU40摄氏度/容器31014244352字节/OOM14。huanyu:/opt/data/private/YuanQi_Q1，独立`R02_cachefixed_pair_20261023`，冻结代码6b43cc0；controller751815/start3604769075、B756622/start3605356394，同boot d994e71f-bae0-46ba-a5f7-6c2163771c6c，非僵尸与源码/输入/成功事件核验通过。每臂3000轮，B完成后再匹配比较；无自动重启/追加预算，实时以status和进程身份为准。
 
 原`R02_batch_pair_20261023`已在140轮因容器30GiB保护保存STOPPED_SIGNAL/0actor；终态和权重保留，不能重用或恢复。缓存建议使容器观察下降1711742976字节，6项控制器测试通过；新运行仍保留30GiB/86摄氏度/OOM保护。A3停止，R01冻结工件保留，大文件LOCAL_ONLY，当前没有新最终策略成绩。Q1分支及本地代码副本`/tmp/yuanqi-supermimic-q1-20261023`维护。
 
@@ -8,7 +8,7 @@
 
 更新：2026-10-23，Q1运行中检查点；详细过程在阶段README，静态PID不证明仍在运行。通用研究独立待同步项未在本次合并。
 
-[E01后续入口准备](README_SUPERMIMIC_Q1_EXTENSION_PREP_20261023.md)：独立script/supermimic_q1_extension实现固定追加预算、父网络/三组Adam/采样统计继承和独立保存审计。最新11项CPU控制通过，含合成保存审计正例、重置Adam/错误累计计数/缺失父事件拒绝；真实配置全宽构造和未完成pair拒绝也已通过。真实Q1续训/audit尚未运行。21:06当前A已2700轮/43200交互/979次actor并存活，先等成对结果再选父臂/预算，原pair冻结文件不改。
+[E01后续入口准备](README_SUPERMIMIC_Q1_EXTENSION_PREP_20261023.md)：独立script/supermimic_q1_extension实现固定追加预算、父网络/三组Adam/采样统计继承和独立保存审计。11项CPU控制通过，真实配置全宽构造和未完成pair拒绝通过，代码24715a9已发布并核对Q1远端。真实Q1续训/audit尚未运行；先等B完成及成对结果，再选父臂/预算，原pair冻结文件不改。
 
 ## 用户目标与固定约定
 

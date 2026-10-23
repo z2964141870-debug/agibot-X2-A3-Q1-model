@@ -1,0 +1,117 @@
+{
+  "status": "R02A_COMPLETE_AND_R02B_LIVE_VERIFIED",
+  "utc": "2026-10-23T13:24:11.235796+00:00",
+  "plan": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/plan.json",
+    "bytes": 45902,
+    "sha256": "e27a1a45d02293a26c60ee8034d2539c6c74a0956e32f07f9db40b6fb878da9f"
+  },
+  "frozen_sources_inputs_runtime_verified": true,
+  "A_completed_stages": 9,
+  "A_stage_names": [
+    "R02A_batch32_train",
+    "R02A_batch32_save_audit",
+    "R02A_batch32_eval_initial",
+    "R02A_batch32_eval_initial_audit",
+    "R02A_batch32_tracking_initial",
+    "R02A_batch32_eval_final",
+    "R02A_batch32_eval_final_audit",
+    "R02A_batch32_tracking_final",
+    "R02A_batch32_learning"
+  ],
+  "A_training_receipt": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/R02A_batch32/receipt.json",
+    "bytes": 2248,
+    "sha256": "cc6b45bb63a82ab02a9dbcf4a5eb5e4c4b7a67413574b3c6e24f0e0beae13fc1"
+  },
+  "A_final_evaluation": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/R02A_batch32_eval_final/receipt.json",
+    "bytes": 4111,
+    "sha256": "e1a164c0dc2e6ad58e770d886f2912e464a893af5b2f50588eef925b0e228b6b"
+  },
+  "A_final_trace_audit": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/R02A_batch32_eval_final_audit.json",
+    "bytes": 3103,
+    "sha256": "c4e1e089970b6e32862db8b678ca89ab3e1303d931ec1bd2281083355687304a"
+  },
+  "events_snapshot_identity": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/events.jsonl",
+    "bytes": 7624,
+    "sha256": "b13e0e4d7337dffb5faebeae54d0cf1ef56fc8db31890e9e6dbfa5b7efc8fd33"
+  },
+  "processes": {
+    "controller": {
+      "identity": {
+        "pid": 751815,
+        "start_ticks": 3604769075,
+        "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+      },
+      "state": "S",
+      "command": "/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python -u /opt/data/private/YuanQi_Q1/script/supermimic_for_q1/run_batch_pair.py execute --plan /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/plan.json "
+    },
+    "child": {
+      "identity": {
+        "pid": 756622,
+        "start_ticks": 3605356394,
+        "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+      },
+      "state": "S",
+      "command": "/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python -u /opt/data/private/YuanQi_Q1/script/supermimic_for_q1/run_contact_corrected.py train --root /opt/data/private/YuanQi_Q1 --motions /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/motions_P03_20261023 --output /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023/R02B_batch128 --backend-receipt /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/P07_backend_20261023/receipt.json --reference-receipt /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/P03_independent_reference_20261023.json --steps 3000 --num-envs 16 --threads 4 --batch 128 --wm-batch 64 --wm-batches 10 --warmup-steps 128 --model-warmup-updates 50 --checkpoint-every 500 --seed 20261023 --device cuda:0 --clips 001_walk_front_slow 042_squat_shallow_repeated --code-commit 6b43cc0fb4e42482a570fe74e08f19ec3c43c9c0 "
+    }
+  },
+  "B_progress": {
+    "status": "RUNNING",
+    "step": 325,
+    "env_steps": 5200,
+    "wm_updates": 79,
+    "policy_updates": 29,
+    "seconds": 265.33220086991787,
+    "pid": 756622,
+    "reward_mean": -0.03675762191414833,
+    "termination_fraction": 0.0,
+    "joint_rmse_rad": 0.8554338216781616,
+    "health": {
+      "gpu_temperature_c": 40,
+      "cgroup_memory_bytes": 30999154688,
+      "oom_kill": 14
+    },
+    "imag_objective": -43.61720275878906,
+    "imag_return_undisc": -48.77174377441406,
+    "imag_reward_mean": -3.4676482677459717,
+    "imag_survival_H": 0.1436939239501953,
+    "imag_dhat_mean": 0.08112531900405884,
+    "policy_grad_norm": 86.99528503417969,
+    "action_abs_mean": 26.617284774780273,
+    "imag_r/motion_global_root_pos": 0.004456765484064817,
+    "imag_r/motion_global_root_ori": 0.0021666185930371284,
+    "imag_r/motion_body_pos": 0.007830759510397911,
+    "imag_r/motion_body_ori": 7.516612822655588e-05,
+    "imag_r/motion_body_lin_vel": 0.0038711437955498695,
+    "imag_r/motion_body_ang_vel": 0.0012468290515244007,
+    "imag_r/action_rate_l2": -2.0227460861206055,
+    "imag_r/joint_limit": -1.4645494222640991,
+    "critic_loss": 848.4144287109375,
+    "critic_value_mean": -11.143633842468262,
+    "critic_target_mean": -33.24688720703125,
+    "wm/state_loss": 0.6335845470428467,
+    "wm/term_bce": 0.008772359788417816,
+    "wm/nse_1step": 0.0063363626599311825,
+    "wm/nse_kstep": 0.020689480006694794,
+    "wm/term_acc": 0.9990234375,
+    "wm/loss": 0.6423569679260254,
+    "wm/grad_norm": 4.328177261352539
+  },
+  "health": {
+    "utc": "2026-10-23T13:24:11.284836+00:00",
+    "gpu_temperature_c": 40,
+    "gpu_free_mib": 16659,
+    "cgroup_memory_bytes": 31014244352,
+    "cgroup_limit_bytes": 34359738368,
+    "oom_kill": 14,
+    "disk_free_bytes": 2054349488128
+  },
+  "new_physics_steps": 0,
+  "new_policy_inference": 0,
+  "new_optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY"
+}

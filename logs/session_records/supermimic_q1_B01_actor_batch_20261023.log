@@ -1,0 +1,66 @@
+{"batch": 32, "trial": 0, "warmup": true, "seconds": 10.29423289746046, "peak_allocated_bytes": 250762752, "peak_reserved_bytes": 304087040, "loss": -0.2313334196805954, "gradient_norm": 0.11147391606544381, "gradients_finite": true, "wm_critic_parameter_gradients_absent": true}
+{"batch": 32, "trial": 1, "warmup": false, "seconds": 3.7374182268977165, "peak_allocated_bytes": 250762752, "peak_reserved_bytes": 304087040, "loss": -0.2310905158519745, "gradient_norm": 0.11981299375168293, "gradients_finite": true, "wm_critic_parameter_gradients_absent": true}
+{"batch": 32, "trial": 2, "warmup": false, "seconds": 3.4078817665576935, "peak_allocated_bytes": 250762752, "peak_reserved_bytes": 304087040, "loss": -0.23117780685424805, "gradient_norm": 0.11827603531293138, "gradients_finite": true, "wm_critic_parameter_gradients_absent": true}
+{"batch": 128, "trial": 0, "warmup": true, "seconds": 7.653750658035278, "peak_allocated_bytes": 551920128, "peak_reserved_bytes": 658505728, "loss": -0.22979959845542908, "gradient_norm": 0.11148279208591261, "gradients_finite": true, "wm_critic_parameter_gradients_absent": true}
+{"batch": 128, "trial": 1, "warmup": false, "seconds": 4.121606461703777, "peak_allocated_bytes": 551920128, "peak_reserved_bytes": 658505728, "loss": -0.23003605008125305, "gradient_norm": 0.10650763342926335, "gradients_finite": true, "wm_critic_parameter_gradients_absent": true}
+{"batch": 128, "trial": 2, "warmup": false, "seconds": 3.7311083525419235, "peak_allocated_bytes": 551920128, "peak_reserved_bytes": 658505728, "loss": -0.23032569885253906, "gradient_norm": 0.09673071162968705, "gradients_finite": true, "wm_critic_parameter_gradients_absent": true}
+{
+  "status": "ACTOR_BATCH_RESOURCE_BENCHMARK_COMPLETED",
+  "source": {
+    "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/benchmark_actor_batch.py",
+    "bytes": 9240,
+    "sha256": "b1218e676f0d4331ef2d3a123ecab1e610248e176b75d5f49feb255a9802170e"
+  },
+  "evaluation": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_eval_final_20261023/receipt.json",
+    "bytes": 3968,
+    "sha256": "cca2590e31aa19046a6ffff6d911bdbbecfb24ae37b4c3b4e43637044e1316e5"
+  },
+  "checkpoint": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_20261023/final.pt",
+    "bytes": 205218451,
+    "sha256": "a3f2e09591b573d49b4029e1c5aecd2680ba49eb98f0699480a2bf4d28c2aa71"
+  },
+  "trace": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_eval_final_20261023/001_walk_front_slow.npz",
+    "bytes": 493259,
+    "sha256": "ddfb72829b729bf62b1910384d68a1092b36f78fb1701d9a50751b97d5a6af59"
+  },
+  "reference": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/motions_P03_20261023/001_walk_front_slow.npz",
+    "bytes": 1606579,
+    "sha256": "8f6a5ed1789fd0891a56dbe24f1d39d2b657feef54fdc7b2b979d61a0705d9e0"
+  },
+  "protocol": "Full-width R01 H32 actor objective with critic bootstrap, observation noise and TF32 as in R01. Batch32/128, one warmup then two measured trials each; no optimizer instantiated or called.",
+  "new_physics_steps": 0,
+  "optimizer_updates": 0,
+  "limits": "Actor portion only; excludes replay allocation, WM/critic updates and optimizer state. Resource feasibility is not a learning result.",
+  "storage_status": "LOCAL_ONLY",
+  "initial_health": {
+    "cgroup_memory_bytes": 28225482752,
+    "cgroup_limit_bytes": 34359738368,
+    "oom_kill": 14,
+    "gpu_temperature_c": 40,
+    "cuda_free_bytes": 18379636736,
+    "cuda_total_bytes": 25307578368
+  },
+  "parameters_before": {
+    "wm": "cfa2c76994c78c9a7c04823cad43264997cd1b39befb7a9f3ec8fbb8d1cad2e6",
+    "policy": "1657429635ae5d4568c53e0d59617748ea310d76965b10f5799d26ef1b04827e",
+    "critic": "8a8e70175d777022e86dbc02286ebac8021e885e0fa5d5a857fd4421e8969fa9"
+  },
+  "parameters_after": {
+    "wm": "cfa2c76994c78c9a7c04823cad43264997cd1b39befb7a9f3ec8fbb8d1cad2e6",
+    "policy": "1657429635ae5d4568c53e0d59617748ea310d76965b10f5799d26ef1b04827e",
+    "critic": "8a8e70175d777022e86dbc02286ebac8021e885e0fa5d5a857fd4421e8969fa9"
+  },
+  "final_health": {
+    "cgroup_memory_bytes": 29885272064,
+    "cgroup_limit_bytes": 34359738368,
+    "oom_kill": 14,
+    "gpu_temperature_c": 40,
+    "cuda_free_bytes": 17656119296,
+    "cuda_total_bytes": 25307578368
+  },
+  "seconds": 38.19296133518219
+}

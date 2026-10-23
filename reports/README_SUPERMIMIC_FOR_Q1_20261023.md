@@ -172,3 +172,23 @@ R01冻结源码归档已保存到服务器`data/supermimic_for_q1/R01_20261023/R
 小型证据：[初始评测](../data/manifests/supermimic_q1_R01_eval_initial_20261023.json)、[最终评测](../data/manifests/supermimic_q1_R01_eval_final_20261023.json)、[初始重算](../data/manifests/supermimic_q1_R01_eval_initial_audit_20261023.json)、[最终重算](../data/manifests/supermimic_q1_R01_eval_final_audit_20261023.json)。完整NPZ仅在服务器`R01_eval_{initial,final}_20261023/`，stdout在服务器`logs/supermimic_q1_R01_eval_{initial,final}_20261023.log`及对应`_audit_`日志，全部LOCAL_ONLY。
 
 可复现入口是`evaluate.py --root "$PWD" --motions data/supermimic_for_q1/motions_P03_20261023 --checkpoint <step0或final路径> --output <新目录>`及`audit_evaluation.py --root "$PWD" --evaluation <评测目录> --output <新JSON>`。学习/评测冻结代码与输入保持原样。下一用已有轨迹完成H1/H8/H32模型对比、训练曲线、根/关节描述诊断及抽帧目视检查；新增`inspect_tracking.py`仅作事后描述，不增加通过门或新物理步。
+
+## D01：保存轨迹诊断与画面核验
+
+整片结果已发布为`e3d0e0dd73fa467aabba7a2300ab730e781f8ec1`并独立核对远端一致。之后`measure_world_model.py`、`plot_training.py`、两组`inspect_tracking.py`及三组`render_trace.py`均原生退出0。此阶段0新物理采样/策略推理/optimizer；只读取原final和评测轨迹。追加的B版位移描述保留A版，并逐项确认原指标没有变化；源码A版可在上述提交恢复。
+
+| final保存轨迹 / H32=0.64s | 根位置逐坐标RMSE，模型/CV cm | 关节预测RMSE，模型/CV rad | 归一化状态MSE，模型/CV |
+| --- | --- | --- | --- |
+| 走路（203窗口） | 0.984/1.051 | 0.00875/0.08288 | 0.00986/0.27700 |
+| 浅蹲（141窗口） | 1.203/1.378 | 0.01096/0.08853 | 0.01912/0.32904 |
+| 开发出拳（81窗口） | 1.142/1.819 | 0.01138/0.11754 | 0.01936/0.58115 |
+
+固定stride8的H1/H8整体状态误差也优于CV，但不代表各项都更好：H1根位置三段均差于CV；H32根线速度、角速度三段均略差或更差，走路根朝向也较差。模型在当前策略较小动作/近原地轨迹上学到部分动力学，不能由此证明广泛动作预测、策略动作梯度准确或泛化。此为重叠开发窗口，同真实初态/执行动作，非独立测试集。模型预测误差与相对参考的跟踪误差是两种不同指标。
+
+走路完整参考最大水平离起点1.12648m、路径2.43909m，而final仅0.04130m/0.15753m；初始为0.02274m/0.04755m。参考终点回到离起点0.11814m，不能只用净位移代替路程。final根位置三维范数RMSE0.63065m/P95 1.09177m，与初始0.63494m基本相当，未学会移动跟随。走路腿部RMSE0.20757→0.22835，浅蹲0.29527→0.25353，开发出拳0.13803→0.16444；三段上肢0.57880/0.58167/0.50501→0.46447/0.46552/0.42899。总体误差下降不能概括为所有身体部分改善。实际动作绝对值最大约2.79，未达到clip20；此描述不单独构成唯一根因判断。
+
+训练图已实际目视检查，显示在线奖励/关节误差及模型拟合总体改善，明确不是整片独立成绩。三段比较视频均只渲染前12秒、每段300帧、25fps、1280×548；ffprobe通过，服务器独立大小/SHA与render收据逐项一致，画面像素std最低73.49/73.64/73.63。每段首/中/末三张共9张PNG已实际目视：无空白、模型完整且并排未遮挡；走路reference在移动而policy大体原地，三段上肢跟随幅度不足。抽帧可证明这些时点的可见差异，不代替完整轨迹数值。仅小PNG/曲线图取回Mac，模型/NPZ/MP4保留服务器，全部LOCAL_ONLY。
+
+证据小副本：`data/manifests/supermimic_q1_R01_world_model_20261023.json`、`supermimic_q1_R01_tracking_{initial,final}_20261023.json`及`_B_20261023.json`、`supermimic_q1_R01_curves_20261023.json`、`supermimic_q1_R01_render_{walk,squat,punch}_20261023.json`。原图/视频在服务器`data/supermimic_for_q1/R01_curves_20261023/`及`R01_render_{walk,squat,punch}_20261023/`；Mac小预览在本工作副本`data/supermimic_for_q1/previews_R01_20261023/`。执行日志在服务器`logs/supermimic_q1_R01_{world_model,curves,tracking_initial,tracking_final,render_walk,render_squat,render_punch}_20261023.log`。
+
+复核入口：`measure_world_model.py --root "$PWD" --checkpoint <final.pt> --evaluation <final评测receipt.json> --output <新JSON>`；`inspect_tracking.py`同root/evaluation/output；`plot_training.py --run <R01> --output <新目录>`；`render_trace.py --root "$PWD" --evaluation <final评测receipt.json> --clip <片段名> --output <新目录>`。不重跑已完成输出。R01阶段结论为训练闭环确实完成且有部分改善，尚未得到可用动作跟随，更不是完整论文数值复现。下一先将P06接触修正接入新版本并重新验证后端；原R01结果与源码归档保留，不将新参数追记为旧模型训练条件。

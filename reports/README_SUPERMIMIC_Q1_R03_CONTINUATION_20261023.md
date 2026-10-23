@@ -1,6 +1,6 @@
 # Q1从B128追加固定训练预算
 
-记录日期：2026-10-23，北京时间。阶段：SM-Q1-R03。状态：父臂及固定预算已选择并记录；尚未登记或启动。
+记录日期：2026-10-23，北京时间。阶段：SM-Q1-R03。状态：已登记并启动；真实父状态继承及第500轮保存状态核验通过，固定追加12000轮进行中，尚无最终效果。
 
 ## 目标与范围
 
@@ -26,7 +26,7 @@ B最后两个在线窗口真实关节误差尚未改善，模型k8误差仍下�
 
 父final205221971字节/SHA`b2990bc9af730127e5bda6d88fe1f3b214980e061e3badade555eedd02c51095`；release服务器`logs/supermimic_q1_extension_release_E03_20261023.json`，11363字节/SHA`c141ff85ecde79ac83bcde4edda7fe326e2f22cf5c8cf5932da718eb19386454`。当前主机boot d994e71f-bae0-46ba-a5f7-6c2163771c6c，已重查RTX3090 24576MiB/驱动570.153.02；23:07容器26910662656字节、空闲17788MiB、GPU39摄氏度、OOM14。旧训练无活跃进程；启动仍由登记入口重查输入、运行时、源码和资源。
 
-以下命令待本记录发布后执行一次，尚未执行；不能重复现有输出：
+父选择/预算记录已发布`0cd14de5a07cf33eab5a59a3f3b8226654bff57f`，独立核对Q1远端一致后，下列登记/执行已实际各调用一次；当前正在运行，不能重复现有输出：
 
 ```bash
 $PY script/supermimic_q1_extension/pipeline.py register \
@@ -44,6 +44,30 @@ $PY -u script/supermimic_q1_extension/pipeline.py execute \
 
 ## 结果、保存与下一步
 
-当前只是已选择预算/父臂，不存在真实R03计划、进程或结果。启动后补实际plan大小/SHA、boot/PID/start_ticks、继承检查与首轮进度。结束后同时核对0.15rad等既有门、腿部与水平根轨迹、实际/参考位移和画面，不把流程成功或站住当成移动跟随。
+真实计划37578字节/SHA`fa92a82c7bb0e4cd8a3ba7e23636f00cbae6a72dd145bf28922b70155fe7ce9d`，Git小副本`data/manifests/supermimic_q1_R03_plan_20261023.json`。23:20:07由脱离SSH的独立session启动controller762428/start3606081278，随后训练worker762431/start3606081380，同boot；原生启动记录`native_launch.json`，小副本`supermimic_q1_R03_launch_20261023.json`。日志`logs/supermimic_q1_R03_B128_extend12000_20261023/{controller,train}.log`，输出run/admission、step0与status已实际生成。
+
+23:22:40独立CPU读取父final与本轮step0，三个网络、三组完整Adam和bin_return/bin_memory共8项树逐张量精确一致；step0本地计数全0、累计3000，学习率偏移3000，初始Adam计数11490/1099/21980未清零，配置合同和admission/初始manifest一致。step0为205233831字节/SHA`eca79942bef1530d8aa679a8f02f38540046991271450220483efadaef61e006`。这是实际Q1父模型的继承正例，0新增物理/推理/optimizer；不能替代未来完整保存审计或跟随效果。
+
+实际核验中原controller/worker均非僵尸、boot/PID/start_ticks/命令匹配，全部冻结源码/输入/运行时通过。训练快照250/12000轮、4000新交互、49组WM/0本阶段actor，累计3250轮；当时仍处原50组模型预热。GPU40摄氏度/空闲16671MiB、容器31511310336字节（含独立CPU读检查点开销）、OOM仍14。收据`launch_verification.json`3088字节/SHA`7d34f4541a89575066e5c1145be9f6e4df5b73b1fc0177c223a7a9fb0d704a8c`，小副本`data/manifests/supermimic_q1_R03_initial_retention_20261023.json`；admission26749字节/SHA`a94e3f9dfc5d4fe80a92b132cc6dc7b25c3068275b586dc0f1dcbfadca098339`也保存小副本。未将在线关节误差或模型损失当作最终成绩。
+
+结束后同时核对0.15rad等既有门、腿部与水平根轨迹、实际/参考位移和画面，不把流程成功或站住当成移动跟随。此新阶段尚未完成，不能调用只适用于final的audit_run把启动误记为全流程成功。
 
 代码/计划清单/小证据按Q1分支同步GitHub，先审查diff与payload；大型模型与轨迹仅服务器LOCAL_ONLY。恢复先读本记录与新目录status/started/日志，重新核对进程身份；无自动恢复，不重复注册或启动。
+
+## 23:41第500轮保存状态核验
+
+23:41:35独立CPU进程以`torch.load(map_location="cpu", mmap=True, weights_only=False)`实际读取step0与`run/step_000500.pt`，未创建网络实例、调用推理或推进物理/optimizer。第500轮模型205233831字节/SHA`8a91c026d43c5bb8048823969d60f58c905748108ae3d3ba2c3e3bfd1cd447d9`；读取前后大小/SHA相同，manifest与admission/step0一致。绑定真实plan、native_launch及23:22父状态继承收据，14项检查全部通过。
+
+使用独立整数公式`(500-128+1)*2//5=149`计算WM组数，扣除50组预热得到99次actor更新；checkpoint本地500轮/8000新交互、累计3500轮及实际更新计数精确一致。
+
+| Adam状态 | 继承初始计数 | 本阶段新增 | 第500轮实际计数 | 参数状态数 |
+| --- | --- | --- | --- | --- |
+| WM | 11490 | 1490 | 12980 | 14 |
+| policy | 1099 | 99 | 1198 | 20 |
+| critic | 21980 | 1980 | 23960 | 6 |
+
+每个参数的Adam状态键、参数映射及计数逐一核对；三个网络的键/shape/dtype相同、数值有限且相对step0均已变化，最大绝对变化WM0.0623695、policy0.0161643、critic0.2215345。完整优化器/采样统计有限；前500轮共20条指标按25轮间隔齐全且有限，OOM计数仍14。源码、输入和运行时重新核验通过，未修改冻结的两个训练源码目录。
+
+当时实时训练800/12000轮、12800新交互、269组WM/219次actor，累计3800轮；原controller762428/start3606081278与worker762431/start3606081380同boot且非僵尸，实际argv分别与native_launch/登记训练阶段精确匹配。GPU39至40摄氏度/空闲16671MiB，CPU核验后容器31738470400字节，低于30GiB保护线32212254720字节；诊断期间未新增OOM，未停止或重启训练。临时SSH重连的首个观察会话无响应，取消该观察会话后同路线重连成功；未把观察失败当作训练终止。
+
+服务器证据`checkpoint500_verification.json`6517字节/SHA`f7822f15d58564b25f8bb197a05a64836039f557886527512f936ee3c8b68720`，Git小副本`data/manifests/supermimic_q1_R03_checkpoint500_20261023.json`。只取回小JSON，checkpoint仍留服务器LOCAL_ONLY。这项核验确认真实继承后的训练更新，不能证明跟随效果；仍等待原12000轮训练、完整保存审计、初始/final三片动力学评测与独立重算，不追加预算或用在线回报宣布完成。

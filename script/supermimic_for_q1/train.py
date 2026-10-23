@@ -55,6 +55,7 @@ def main():
     p.add_argument("--motions", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--backend-receipt", type=Path, required=True)
+    p.add_argument("--reference-receipt", type=Path, required=True)
     p.add_argument("--steps", type=int, default=600)
     p.add_argument("--num-envs", type=int, default=16)
     p.add_argument("--threads", type=int, default=4)
@@ -91,15 +92,27 @@ def main():
     if not files:
         raise FileNotFoundError("No training clips")
     source_manifest = json.loads((args.motions / "manifest.json").read_text())
-    if source_manifest["status"] != "KINEMATIC_REFERENCE_PASSED":
-        raise ValueError("The Q1 reference dataset has not passed the frozen kinematic gates")
+    reference_receipt = json.loads(args.reference_receipt.read_text())
+    if reference_receipt["status"] != "INDEPENDENT_REFERENCE_CHECK_COMPLETED":
+        raise ValueError("Independent Q1 reference checks are missing")
+    if identity(args.motions / "manifest.json")["sha256"] != reference_receipt["input_manifest"]["sha256"]:
+        raise ValueError("Reference checks belong to a different dataset")
+    reference_checks = {row["clip"]: row for row in reference_receipt["clips"]}
     source_by_path = {m["output"]["path"]: m for m in source_manifest["motions"]}
+    action_coverage = {}
     for path in files:
         record = source_by_path[str(path.resolve())]
         if not record["qualified_for_training_pilot"]:
             raise ValueError("Unqualified Q1 reference")
+        if not reference_checks[path.stem]["qualified_for_training_pilot"]:
+            raise ValueError("Q1 reference failed independent verification")
         if identity(path)["sha256"] != record["output"]["sha256"]:
             raise ValueError("Motion hash mismatch")
+        with np.load(path, allow_pickle=False) as reference:
+            required_action = np.abs((reference["joint_pos"] - assets.q0) / assets.scale)
+        action_coverage[path.stem] = float(required_action.max())
+        if required_action.max() > 20.:
+            raise ValueError("Q1 reference lies outside the registered PD target range")
     heads = assets.heads(args.device)
     lib = MotionLibrary(files, TRACKED, assets.q0, device=args.device, active_indices=assets.active_indices)
     scfg = SimCfg(num_envs=args.num_envs, threads=args.threads)
@@ -121,7 +134,9 @@ def main():
                 "assets": assets.manifest(), "sim": asdict(scfg), "world_model": asdict(wcfg),
                 "policy": asdict(pcfg), "critic": asdict(ccfg), "wm_trainer": asdict(wtcfg), "policy_trainer": asdict(ptcfg),
                 "train_clips": [identity(f) for f in files], "heldout_clips": list(HELDOUT),
+                "reference_max_required_normalized_actions": action_coverage,
                 "backend_receipt": identity(args.backend_receipt), "training_entry": identity(__file__),
+                "reference_receipt": identity(args.reference_receipt),
                 "library_summary": lib.summary(), "boot_id": Path("/proc/sys/kernel/random/boot_id").read_text().strip(),
                 "versions": {"torch": torch.__version__, "cuda": torch.version.cuda},
                 "code_commit": args.code_commit, "baseline_health": baseline_health,
@@ -131,7 +146,7 @@ def main():
                     "Q1 free-root 57-state and 22-joint actor; no artificial support",
                     "Smaller environment and update batch on shared RTX3090", "Pelvis reward anchor",
                     "No pose/velocity reset noise in this first adaptation", "Model-only warmup before BPTT",
-                    "Four native-time robot references retargeted to Q1; not the paper G1 corpus"]}
+                    "Qualified native-time robot references retargeted to Q1; not the paper G1 corpus"]}
     manifest["initialization"] = "RANDOM_FROM_SCRATCH_NO_A3_WEIGHTS"
     manifest["learning_rate_step_offset"] = 0
     atomic_json(args.output / "admission.json", manifest)

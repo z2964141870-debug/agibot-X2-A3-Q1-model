@@ -37,15 +37,24 @@ def main():
         if identity(source["path"])["sha256"] != source["sha256"]:
             raise ValueError("Backend changed since verification")
     heads = assets.heads(args.device)
-    names = args.clips or [f.stem for f in sorted(args.motions.glob("*.npz"))]
+    source_manifest = json.loads((args.motions / "manifest.json").read_text())
+    expected = {Path(row["output"]["path"]).stem: row for row in source_manifest["motions"] if "output" in row}
+    checks_path = Path(ck["manifest"]["reference_receipt"]["path"])
+    if identity(checks_path)["sha256"] != ck["manifest"]["reference_receipt"]["sha256"]:
+        raise ValueError("Independent reference receipt changed since training")
+    checked = json.loads(checks_path.read_text())
+    if identity(args.motions / "manifest.json")["sha256"] != checked["input_manifest"]["sha256"]:
+        raise ValueError("Evaluation references differ from the independently verified dataset")
+    qualified = {row["clip"] for row in checked["clips"] if row["qualified_for_training_pilot"]}
+    names = args.clips or sorted(qualified)
+    if not names or not set(names) <= qualified:
+        raise ValueError("Evaluation requires independently qualified references")
     training_names = {Path(r["path"]).stem for r in ck["manifest"]["train_clips"]}
     rows = []
     started = time.monotonic()
     with torch.no_grad():
         for name in names:
             file = args.motions / (name + ".npz")
-            source_manifest = json.loads((args.motions / "manifest.json").read_text())
-            expected = {Path(row["output"]["path"]).stem: row for row in source_manifest["motions"]}
             if identity(file)["sha256"] != expected[name]["output"]["sha256"]:
                 raise ValueError("Q1 evaluation reference identity differs from the prepared library")
             lib = MotionLibrary([file], TRACKED, assets.q0, device=args.device, active_indices=assets.active_indices)

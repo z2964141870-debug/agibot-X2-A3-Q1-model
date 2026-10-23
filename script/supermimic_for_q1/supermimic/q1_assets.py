@@ -63,7 +63,8 @@ class Q1Assets:
         self.effort = bounds[:, 1].copy() * .25
         limits = m.jnt_range[self.jids]
         self.q0 = np.clip(m.qpos0[self.qadr], limits[:, 0] + .01, limits[:, 1] - .01)
-        self.scale = .25 * self.effort / self.kp
+        # Normalize actions by the model rating, independently of the trial torque cap.
+        self.scale = .25 * bounds[:, 1] / self.kp
         center = limits.mean(-1)
         width = np.diff(limits)[:, 0]
         self.soft_limits = np.stack([center - .45 * width, center + .45 * width], axis=-1)
@@ -95,6 +96,7 @@ class Q1Assets:
                 "q0": self.q0.tolist(), "kp": self.kp.tolist(), "kd": self.kd.tolist(),
                 "torque_fraction_of_model": .25, "effective_effort_nm": self.effort.tolist(),
                 "action_scale": self.scale.tolist(), "action_clip": 20.,
+                "action_scale_basis": "0.25 * full_model_effort / kp; independent of trial torque cap",
                 "dt": .02, "physics_dt": .001, "substeps": 20,
                 "tracked_bodies": list(TRACKED), "support": "free base; no weld",
                 "control_scope": "simulation only; not manufacturer-verified hardware gains",

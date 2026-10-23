@@ -1,6 +1,6 @@
 # SuperMimic for Q1
 
-记录日期：2026-10-23，北京时间。阶段 SM-Q1-P01/P02。状态：目标切换、四包核验、模型编译及Q1物理/梯度合同通过；首轮四段参考质量失败，正在诊断，尚无Q1训练或optimizer更新。
+记录日期：2026-10-23，北京时间。阶段 SM-Q1-P01–P04。状态：模型/物理/梯度通过，P03三段参考独立质检通过、过头动作拒绝；R01已登记，尚未训练。
 
 ## 目标与范围
 
@@ -76,3 +76,31 @@ P02首轮实际后端检查保留为`P02_backend_20261023/receipt.json`：已执
 四段其余已配置数值/限位/2rad/s/足碰撞地面/根高度门均通过；这不证明动力学可跟踪。服务器原始manifest为18285字节、SHA`ac303012ef83c000334bf2e110eefde0dcb69d2fb1cc606602d047835619f0f1`，路径`data/supermimic_for_q1/motions_P02A_20261023/manifest.json`，日志`logs/supermimic_q1_motions_P02A_20261023.log`，原始IK诊断在同产物目录`diagnostics/`。保留全部失败输出。
 
 下一条工作是独立核对源/Q1中立根高和足底几何、逐身体残差，定位共同约10cm地面偏移和过头动作误差。根因尚未证实；上述门是本项目拟定标准，不能静默放宽或把失败输出改成通过。修正转换须使用新协议/新输出目录，之后独立检查时间、FK、速度与几何再冻结训练输入。当前训练/evaluate入口只完成语法检查，未实际运行；没有Q1 checkpoint。
+
+### P02D只读诊断与P03修正协议
+
+P02代码、backend两轮及参考失败已发布至`Q1`提交`dca6fd01362ae0367a4e02ec314fe7ebe8834461`，独立`ls-remote`一致。诊断`diagnose_reference.py`实际退出0，0物理步/optimizer；原始IK误差逐项独立FK重算差0，根目标公式最大差约1e-17。源默认根高1.3m而足碰撞最低点0.2250673763m，Q1默认根高0.419m而足底-0.0016113788m。源动作实际根高约1.06m；旧标定把源悬空的默认姿态当落地姿态，将约24cm的源原点差乘0.38357584后压入Q1根高，是约10cm共同地面偏移的主要原因。诊断收据`data/supermimic_for_q1/P02_reference_diagnostic_20261023.json`，33591字节、SHA`ba693fb8dea21fced87258ac5a8c386a6e01f1c5f66f590e3ee09202bca6b20a`，小副本见[诊断](../data/manifests/supermimic_q1_reference_diagnostic_P02_20261023.json)。
+
+过头动作误差独立存在：右肘/右腕P95约6.58/8.73cm，非地面平移所致；当前2rad/s受限IK也有初始化/追踪延迟，不能把根高修复描述成全部保真问题解决。各片段、各身体和旧门结果全部保留。
+
+P03协议在新目录中仅纠正源标定姿态的固定地面原点与Q1中立足底原点，不更改原120Hz时间、50Hz输出、2rad/s限制、IK目标公式、5cm残差或10cm末端地面调整门。不重跑旧输出。生成完整四段及逐段通过/失败后，新增独立质检。首轮训练可明确只接纳经验证的合格参考，任何未通过片段继续列入拒绝清单；这属于训练原料筛选，不报告四段全合格或未见泛化。预选走路/浅蹲用于训练、出拳用于开发评测；过头动作在修复前不进入训练或可用性分母，单独报告其输入不合格。上述划分在P03新结果前固定，不能按策略效果挑选。
+
+### P03结果与R01训练登记
+
+P03四段转换退出2，状态`KINEMATIC_REFERENCE_PARTIAL`；前三段通过，过头动作仍因IK残差5.496cm被拒绝。共同末端地面调整分别3.344/1.440/1.275/1.667cm。此修正改变中立标定原点，最终落地轨迹与P02A几乎相同，不能宣称动作保真提升。manifest SHA`ce72f44b2f653043784044b9c1c6d3911735eb87014d9ef380f588a95714eb9c`。独立`verify_reference.py`完成，前三段逐项通过，最后一段同样拒绝；时长损失均小于0.02s，FK导出最大差3.40e-7，qvel独立重算差小于1.17e-5。收据7427字节/SHA`832b09da7997558216f5bb4adeb10ddc5dbc7201ef22b0f4a8683dc68271c497`。两份小清单保存在`data/manifests/supermimic_q1_{motions,reference_verified}_P03_20261023.json`。
+
+训练前动作覆盖检查发现原Q1动作缩放错误地以已乘25%试验力矩的effort再次计算0.25*effort/kp：手臂目标范围仅±0.55rad，走路/浅蹲约10.7%/10.5%关节帧超范围，最大需归一化动作43.84/42.62，超过clip20。P04将归一化比例定义为0.25*模型完整力矩/kp，腿0.18/手臂0.11rad；实际力矩仍限制模型25%，kp50/kd2不变。这样三合格动作所需最大动作分别10.96/10.66/11.69，均覆盖。此为仿真接口适配，非厂家参数或真机验证，原P02B收据不覆盖新scale，须新后端检查。
+
+R01预算预登记：固定走路/浅蹲训练、出拳开发、过头输入拒绝；随机初始化，16环境/4线程，3000采集轮=48000新控制步，k8世界模型每组10次batch64，H32策略batch32。128采集轮后以0.4更新组/采集轮执行，先50组世界模型预热，再联合actor/critic；预计1149组WM/1099次actor、11490次WM Adam和21980次critic Adam，实际计数以checkpoint优化器状态审计为准。保存step0及500/1000/1500/2000/2500/3000与final，主网络宽度保持；不compile、不加载A3权重、不用教师/行为克隆替代模型内学习。
+
+启动前重新核对GPU/内存/OOM/作业和输入/源码身份，冻结发布提交作为`--code-commit`。GPU>=86°C、容器内存>=30GiB、新OOM计数、非有限物理/损失或异常触发停止；不自动恢复失败轮。训练输出拟为`data/supermimic_for_q1/R01_20261023/`，日志`logs/supermimic_q1_R01_20261023.log`。结束后新进程分别对step0/final执行三合格片段从首帧开始的完整评测，提前失败按整片分母计入；独立核对权重变化、优化器计数及评测轨迹。尚未启动R01，不把预算写成实际完成。
+
+P04新后端实际退出0，`BACKEND_AND_GRADIENT_CONTRACT_PASSED`；新动作scale下原生/显式PD最大差7.668e-9，H32动作方向梯度误差4.075e-13、actor梯度非零且WM参数无梯度。新增82控制步/1640子步，Q1累计246控制步/4920子步，仍0optimizer。训练将绑定此新收据`data/supermimic_for_q1/P04_backend_20261023/receipt.json`，不是P02B旧版本。现有阶段产物全部`LOCAL_ONLY`。
+
+可复现P03/P04命令（在服务器Q1根，`PY=/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python`，所有输出须为新路径）：
+
+```bash
+$PY script/supermimic_for_q1/prepare_motion.py --root "$PWD" --source-vendor /opt/data/private/hechengzhu/ZHY/script/vendor/sonic_for_a3 --source-hz 120 --clips 001_walk_front_slow 042_squat_shallow_repeated 058_punch_front_alternating 077_reach_overhead_both --output data/supermimic_for_q1/motions_P03_20261023
+$PY script/supermimic_for_q1/verify_reference.py --root "$PWD" --motions data/supermimic_for_q1/motions_P03_20261023 --output data/supermimic_for_q1/P03_independent_reference_20261023.json
+$PY script/supermimic_for_q1/verify_backend.py --root "$PWD" --output data/supermimic_for_q1/P04_backend_20261023
+```

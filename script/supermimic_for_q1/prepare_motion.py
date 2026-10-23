@@ -28,6 +28,21 @@ SOURCE_BODIES = {"pelvis": "pelvis_link", "spine3": "torso_Link",
                  "left_wrist": "left_wrist_yaw_Link", "right_wrist": "right_wrist_yaw_Link"}
 SOURCE_XML_SHA = "3915053acd573f0cc093a080d64197574fdc146ad4cf91ec1b0ceff71983b75f"
 SOURCE_DOC_SHA = "7240718c9ee7bf626d9b39e8ed64142c3ed4b06b24e6fe1f931d43a453a70635"
+REFERENCE_PROTOCOL = "P03_NATIVE_TIME_GROUNDED_CALIBRATION_V2"
+
+
+def source_foot_geometries(model):
+    ankles = {model.body(name).id for name in ("left_ankle_roll_Link", "right_ankle_roll_Link")}
+    gids = []
+    for gid in range(model.ngeom):
+        body = int(model.geom_bodyid[gid])
+        while body and body not in ankles:
+            body = int(model.body_parentid[body])
+        if body in ankles and (model.geom_contype[gid] or model.geom_conaffinity[gid]):
+            gids.append(gid)
+    if not gids:
+        raise ValueError("No source foot collision geometry")
+    return gids
 
 
 def support_height(model, data, gids):
@@ -74,6 +89,9 @@ def source_reference(model, path, names, source_hz):
     data = mujoco.MjData(model)
     mujoco.mj_forward(model, data)
     cal_pos, cal_quat = data.xpos[ids].copy(), data.xquat[ids].copy()
+    source_calibration_floor = support_height(model, data, source_foot_geometries(model))
+    # The source XML's default pose is suspended above its motion floor.
+    cal_pos[:, 2] -= source_calibration_floor
     positions, orientations = [], []
     for state in qpos:
         data.qpos[:] = state
@@ -85,6 +103,7 @@ def source_reference(model, path, names, source_hz):
     return reference, {"source": identity(path), "source_frames": len(rows), "source_hz": source_hz,
                        "source_duration_s": float(source_t[-1]), "target_frames": len(times),
                        "target_duration_s": float(times[-1]), "target_hz": 50,
+                       "source_calibration_floor_m": source_calibration_floor,
                        "source_joint_fields": joint_names,
                        "unobserved_source_hinges": [model.joint(j).name for j in range(1, model.njnt)
                                                      if model.joint(j).name not in joint_names]}
@@ -179,8 +198,15 @@ def main():
         item = {"clip": name, "qualified_for_training_pilot": False}
         try:
             solver = Q1Retargeter(HERE / "retarget_control.json", HERE / "retarget_mapping.json")
+            target_calibration_floor = support_height(solver.sim.model, solver.sim.data, assets.foot_geoms)
+            solver.sim.data.qpos[2] -= target_calibration_floor
+            mujoco.mj_forward(solver.sim.model, solver.sim.data)
+            solver.robot_positions = solver.sim.data.xpos[solver.bodies].copy()
+            solver.robot_rotations = solver.sim.data.xmat[solver.bodies].reshape(-1, 3, 3).copy()
+            solver.posture.set_target(solver.sim.data.qpos)
             reference, details = source_reference(source_model, path, solver.names, args.source_hz)
             item.update(details)
+            item["target_calibration_floor_m"] = target_calibration_floor
             result = solver.retarget(reference, scale)
             qpos, residual = result[1], result[4]
             trace_dir = args.output / "diagnostics"
@@ -199,11 +225,16 @@ def main():
         motions.append(item)
         print(json.dumps({"name": name, **item.get("diagnostics", {}),
                           "gates": item.get("kinematic_gates"), "error": item.get("error")}), flush=True)
-    receipt = {"status": "KINEMATIC_REFERENCE_PASSED" if all(m["qualified_for_training_pilot"] for m in motions) else "REFERENCE_QUALITY_FAILED",
+    qualified = sum(m["qualified_for_training_pilot"] for m in motions)
+    status = ("KINEMATIC_REFERENCE_PASSED" if qualified == len(motions) else
+              "KINEMATIC_REFERENCE_PARTIAL" if qualified else "REFERENCE_QUALITY_FAILED")
+    receipt = {"status": status, "reference_protocol": REFERENCE_PROTOCOL,
+               "qualified_clips": [m["clip"] for m in motions if m["qualified_for_training_pilot"]],
+               "rejected_clips": [m["clip"] for m in motions if not m["qualified_for_training_pilot"]],
                "scale": scale, "source_model": identity(xml), "timebase_source": identity(doc),
                "q1_assets": assets.manifest(), "motions": motions,
                "sources": [identity(path) for path in (Path(__file__), HERE / "retarget_control.json", HERE / "retarget_mapping.json", HERE.parent / "q1/q1_retarget.py", HERE.parent / "q1/q1_sim.py")],
-               "note": "Robot-reference retargeting; native timing preserved; global floor origin only; not human GT or dynamics validation",
+               "note": "Robot-reference retargeting; native timing; grounded canonical poses and one clip floor shift; not human GT or dynamics validation",
                "storage_status": "LOCAL_ONLY"}
     with (args.output / "manifest.json").open("x") as stream:
         json.dump(receipt, stream, indent=2, allow_nan=False)

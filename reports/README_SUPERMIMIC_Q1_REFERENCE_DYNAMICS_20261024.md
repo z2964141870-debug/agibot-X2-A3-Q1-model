@@ -1,6 +1,6 @@
 # Q1参考接触与逆动力学诊断
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-D04。状态：独立实现及本地4项控制通过；3项MuJoCo控制和真实参考分析待服务器执行，尚无真实参考动力学结果。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-D04。状态：独立实现、本地4项/服务器7项控制及真实三片分析完成；保存数组的独立统计重算待执行。发现精确参考接触缺口，未证明训练失败根因或近似跟随不可行。
 
 ## 目标与范围
 
@@ -30,12 +30,39 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 $PY -u script/supermimic_q1_analysis/in
   --output data/supermimic_for_q1/D04_reference_dynamics_20261024
 ```
 
-输出必须使用新目录；上述真实诊断命令尚未执行。日志拟保存到`logs/supermimic_q1_D04_reference_dynamics_20261024.log`，NPZ仅服务器LOCAL_ONLY，Git只保存源码/配置说明和小JSON/日志。
+输出必须使用新目录；上述真实诊断命令已实际执行一次，原生退出0。日志`logs/supermimic_q1_D04_reference_dynamics_20261024.log`12037字节/SHA`df4bd478b1834ee1fe2377b34bfe6f6656c0efc1b753b02f7dbdaa1f653eeab6`，收据26307字节/SHA`d8d7efd272be4e0f8d985fbe1c50a5408eedebfb6d4f1f7fc54eef085f030e06`。逐帧NPZ仅服务器LOCAL_ONLY，Git只保存源码/配置说明和小JSON/日志。
 
 ## 验证、未解决项与下一步
 
 本地unittest原生退出0：7项中4项通过、3项因本地未安装MuJoCo明确跳过，不将其记为7项已通过。已通过中心差分解析例子、非法速度拒绝、近地/力矩统计分母及空集、输入篡改/越界拒绝。服务器继续实际执行静态重力/自由落体、软接触分解和非零armature三项阳性对照，要求0跳过后才运行真实参考分析。
 
-先发布并核对部署SHA，再执行服务器控制和一次真实三片分析、独立从保存数组重算并记录实际内存与R03进程身份。尚无真实结果，不按诊断准备声称已解决行走；R03完整配对评测和V02渲染仍等待原训练结束。
+源码提交`503ffe8350c766c7984402e0b4bc6eaee03133a7`已推送并独立核对远端Q1。服务器部署大小/SHA逐项一致：诊断15962字节/SHA`ee36f6f9c89663b61c2655d06d58db7be44c356658cad440f1cbbe80f2c9e6ba`，测试5300字节/SHA`bbe9834780a5b51f9b52f049b59e47e8b2a7480cad28f4751c46aa4a3358eec8`。
+
+服务器控制实际原生退出0，7项全部通过、0跳过，包括静态重力/自由落体、软接触分解和非零armature。日志`logs/supermimic_q1_D04_controls_20261024.log`1252字节/SHA`a6555bbf7197af1779a9bed67989bec2cb1ba259a4a816dd226cb32779554714`。
+
+实际三片输入共3487帧，每片首尾各排除2帧，共分析3475帧，6950次inverse调用；91项源码/模型/参考/mesh身份前后一致，0积分/策略推理/optimizer、未导入Torch。实际峰值RSS709900KiB；进/出时容器31048278016/31726620672字节，OOM均14，未触发诊断或训练保护。该峰值包含模型编译，先前55284KiB只导入测量不能冒充完整峰值。
+
+| 片段/用途 | 分析帧数 | 实际活跃脚地接触帧 | 较低脚底离地中位/P95 mm | 距地面30mm内帧比例 |
+| --- | --- | --- | --- | --- |
+| 走路/训练 | 1648 | 1/1648，0.06068% | 21.5335 / 26.5487 | 100% |
+| 浅蹲/训练 | 1153 | 0/1153 | 3.8753 / 7.2152 | 100% |
+| 出拳/复用开发 | 674 | 0/674 | 3.7184 / 4.6992 | 100% |
+
+走路较低脚底平均离地19.6819mm。此前运动学门只要求距地面3cm以内，因而其通过不能证明实际支撑接触。小于等于10mm的走路足点样本共189个，切向速度P95为0.307234m/s，其中90.476%超过0.05m/s；这是近地候选点速度，不等同实际接触滑移率，更不能套用到全部走路帧。
+
+两种差分下，三段精确参考所需根外力的中位数均约1倍体重，主要反映当前原始几何几乎无支撑接触。中央三点/五点主动关节所需力矩超过当前cap的帧比例，走路均为0.06068%，浅蹲均0，出拳为12.3145%/12.9080%；出拳峰值42.4879/43.2093倍cap。未优化接触力，也未分离软关节限位等约束贡献；这些数字不证明增加力矩就能跟随。出拳仍为复用开发片段。全部inverse与RNE+armature分解误差通过1e-7检查，数据time始终0。
+
+00:54:11只读核验R03原controller/worker同boot且非僵尸、冻结源码/输入/运行时通过，2950/12000追加轮、47200新交互、1129组WM/1079次actor，累计5950轮；GPU39摄氏度/空闲16671MiB，诊断进程退出后容器31037546496字节、OOM14，无终态收据。没有停止/重启训练或读取checkpoint张量。
+
+新增独立重算脚本`audit_reference_dynamics.py`从不可变NPZ/参考重新计算两种速度差分、全部统计分母/分位数/力矩比例，另列峰值对应关节/时刻供定位；不导入原统计函数，也不再次调用MuJoCo。命令：
+
+```bash
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 $PY script/supermimic_q1_analysis/audit_reference_dynamics.py \
+  --root "$PWD" \
+  --receipt data/supermimic_for_q1/D04_reference_dynamics_20261024/receipt.json \
+  --output data/supermimic_for_q1/D04_reference_dynamics_20261024/summary_audit.json
+```
+
+该重算尚未执行。下一完成统计重算并定位出拳高力矩对应关节，再等待R03完整配对评测与V02渲染；如继续未过门，优先把接触一致性作为独立参考候选的待验证因素，保持匹配基线，不在正在运行的R03内替换输入。参考动力学缺口已确认，是否为学习失败主因仍未确认。
 
 MuJoCo官方方法依据：`https://mujoco.readthedocs.io/en/stable/computation/index.html`及`https://mujoco.readthedocs.io/en/stable/APIreference/APIfunctions.html`，2026-10-24核对。论文项目入口`https://supermimic.github.io/`本轮复核仍列策略通过可微世界模型内回报反传的路线；本诊断不替代该学习方法。

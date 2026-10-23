@@ -1,6 +1,6 @@
 # SuperMimic for Q1
 
-记录日期：2026-10-23，北京时间。阶段 SM-Q1-P01–P06/R01。状态：R01训练与独立保存审计完成，完整动作评测待执行。P05发现摩擦随机化未生效，P06局部修正候选检查通过但未接入；R01实际接触摩擦固定0.6，尚无可用策略结论。
+记录日期：2026-10-23，北京时间。阶段 SM-Q1-P01–P06/R01。状态：R01训练/保存审计及step0/final三段完整物理评测与重算完成；关节误差改善但均未过0.15rad门，尚非可用跟随策略。P05摩擦随机化缺口保留，P06候选未接入；实际接触摩擦0.6。
 
 ## 目标与范围
 
@@ -151,6 +151,24 @@ R01冻结源码归档已保存到服务器`data/supermimic_for_q1/R01_20261023/R
 
 新CPU进程运行`audit_training.py`实际退出0，状态`TRAINING_SAVE_AUDIT_PASSED`，11项门均通过：精确预算、step0/初始空优化器、实际更新计数、网络参数有限并变化、全部checkpoint大小/SHA、冻结源码与训练输入、末尾指标及无新增OOM。实际Adam计数WM11490、actor1099、critic21980，参数状态分别14/20/6，step0均0。最大参数变化WM0.42636、actor0.11060、critic1.23678；这证明参数更新，不证明动作跟随有效。
 
-最终模型服务器`data/supermimic_for_q1/R01_20261023/final.pt`，205218451字节/SHA`a3f2e09591b573d49b4029e1c5aecd2680ba49eb98f0699480a2bf4d28c2aa71`。step0为68429099字节/SHA`94e63acbd9c81c26c3b76b4bfee88c6fae102e5c1c928d2f393726ca88732d3f`；其余500轮间隔保存身份见[训练收据](../data/manifests/supermimic_q1_R01_training_20261023.json)。[独立保存审计](../data/manifests/supermimic_q1_R01_training_audit_20261023.json)，原始输出与120条在线指标见`logs/session_records/supermimic_q1_R01_20261023.log`、`supermimic_q1_R01_save_audit_20261023.log`、`supermimic_q1_R01_metrics_20261023.jsonl`。
+最终模型服务器`data/supermimic_for_q1/R01_20261023/final.pt`，205218451字节/SHA`a3f2e09591b573d49b4029e1c5aecd2680ba49eb98f0699480a2bf4d28c2aa71`。step0为68429099字节/SHA`94e63acbd9c81c26c3b76b4bfee88c6fae102e5c1c928d2f393726ca88732d3f`；其余500轮间隔保存身份见[训练收据](../data/manifests/supermimic_q1_R01_training_20261023.json)。[独立保存审计](../data/manifests/supermimic_q1_R01_training_audit_20261023.json)，原始输出与120条在线指标见`logs/session_records/supermimic_q1_R01_20261023.log`、`supermimic_q1_R01_save_audit_20261023.log`。原始JSONL在服务器run/metrics.jsonl；Mac临时小副本被忽略，Git训练stdout已包含相同120条指标，未强制绕过JSONL忽略规则。
 
 可复核命令（新输出路径，不重训）：`OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 $PY script/supermimic_for_q1/audit_training.py --run data/supermimic_for_q1/R01_20261023 --output data/supermimic_for_q1/R01_training_audit_20261023.json`。审计0新物理步/optimizer。下一步按已登记规格评测step0/final三合格完整片段，再从轨迹独立重算；P05摩擦限制持续适用，过头动作不提升为合格输入。全部模型/轨迹仍`LOCAL_ONLY`，未做真机验证。
+
+## R01完整片段结果
+
+训练/保存阶段已发布为`67bc878e1d28bfa992e460e1050664a347ec9cf4`并独立核对远端`refs/heads/Q1`一致。随后依次运行step0/final新进程`evaluate.py`，均原生退出0，耗时55.971/65.757秒。每组3487控制步，两组共6974个新评测控制步，不计为训练交互。三段完整分母1652/1157/678，所有提前终止计入完整分母；本次两组均无提前终止。有效接触摩擦0.6，原收据的friction1标签按P05解释。
+
+| 片段 / 用途 | 整片关节RMSE，初始→最终rad | 整片归一化回报，初始→最终 | 无提前终止，初始/最终 |
+| --- | --- | --- | --- |
+| 走路 / 训练 | 0.381417→0.328451 | 0.581429→0.742204 | 是/是 |
+| 浅蹲 / 训练 | 0.413089→0.338428 | 0.658596→0.818988 | 是/是 |
+| 出拳 / 开发 | 0.324210→0.290379 | 0.607825→0.759509 | 是/是 |
+
+训练两段平均回报0.620012→0.780596，开发0.607825→0.759509。三段关节误差均改善，但最终均高于预设0.15rad，不能称可用策略。初始随机策略也完整不倒且回报超过0.5，说明前两项门在这三段不能单独识别动作跟随；“完成率100%”这里只表示未触发高度/倾斜终止，不能直接表述为学会走路/下蹲/出拳。走路平均全局body误差0.522693→0.525784m仍大，随后用保存轨迹描述根位移与分关节差异，不追改原门。
+
+两组`audit_evaluation.py`均新CPU进程退出0、`EVALUATION_TRACE_AUDIT_PASSED`。从保存state/action/参考独立重算奖励、终止、关节/身体误差、完整分母及分组，指标/三个可用门与原评测一致。可用门初始/最终均为true/true/false；审计通过与跟随通过不同。代码的heldout标签为既定出拳开发集，不是未使用的最终测试集。
+
+小型证据：[初始评测](../data/manifests/supermimic_q1_R01_eval_initial_20261023.json)、[最终评测](../data/manifests/supermimic_q1_R01_eval_final_20261023.json)、[初始重算](../data/manifests/supermimic_q1_R01_eval_initial_audit_20261023.json)、[最终重算](../data/manifests/supermimic_q1_R01_eval_final_audit_20261023.json)。完整NPZ仅在服务器`R01_eval_{initial,final}_20261023/`，stdout在服务器`logs/supermimic_q1_R01_eval_{initial,final}_20261023.log`及对应`_audit_`日志，全部LOCAL_ONLY。
+
+可复现入口是`evaluate.py --root "$PWD" --motions data/supermimic_for_q1/motions_P03_20261023 --checkpoint <step0或final路径> --output <新目录>`及`audit_evaluation.py --root "$PWD" --evaluation <评测目录> --output <新JSON>`。学习/评测冻结代码与输入保持原样。下一用已有轨迹完成H1/H8/H32模型对比、训练曲线、根/关节描述诊断及抽帧目视检查；新增`inspect_tracking.py`仅作事后描述，不增加通过门或新物理步。

@@ -1,0 +1,99 @@
+{
+  "status": "EVALUATION_TRACE_AUDIT_PASSED",
+  "verified": true,
+  "usability_gates": {
+    "all_complete_without_early_failure": true,
+    "mean_full_clip_return_at_least_0p5": true,
+    "each_full_clip_joint_rmse_at_most_0p15": false
+  },
+  "groups": {
+    "training": {
+      "clips": 2,
+      "failures": 0,
+      "mean_normalized_return": 0.6200123917429103,
+      "mean_completion": 1.0
+    },
+    "heldout": {
+      "clips": 1,
+      "failures": 0,
+      "mean_normalized_return": 0.6078253175436923,
+      "mean_completion": 1.0
+    }
+  },
+  "group_max_error": 1.3131923104481302e-08,
+  "clips": [
+    {
+      "clip": "001_walk_front_slow",
+      "split": "training",
+      "passed": true,
+      "recomputed": {
+        "expected_steps": 1652,
+        "executed_steps": 1652,
+        "failed": false,
+        "normalized_return": 0.5814291332503352,
+        "full_clip_completion": 1.0,
+        "executed_joint_rmse_rad": 0.3814170831051634,
+        "executed_body_error_mean_m": 0.5226928705767306
+      },
+      "max_scalar_error": 2.8072864255435093e-08,
+      "trace_field_errors": {
+        "reward": 1.862645149230957e-08,
+        "joint_rmse": 8.940696716308594e-08,
+        "body_error": 2.384185791015625e-07
+      }
+    },
+    {
+      "clip": "042_squat_shallow_repeated",
+      "split": "training",
+      "passed": true,
+      "recomputed": {
+        "expected_steps": 1157,
+        "executed_steps": 1157,
+        "failed": false,
+        "normalized_return": 0.6585956502354856,
+        "full_clip_completion": 1.0,
+        "executed_joint_rmse_rad": 0.41308858332903275,
+        "executed_body_error_mean_m": 0.04391665674235701
+      },
+      "max_scalar_error": 6.5703550933271515e-09,
+      "trace_field_errors": {
+        "reward": 1.4901161193847656e-08,
+        "joint_rmse": 8.940696716308594e-08,
+        "body_error": 3.725290298461914e-08
+      }
+    },
+    {
+      "clip": "058_punch_front_alternating",
+      "split": "heldout",
+      "passed": true,
+      "recomputed": {
+        "expected_steps": 678,
+        "executed_steps": 678,
+        "failed": false,
+        "normalized_return": 0.6078253175436923,
+        "full_clip_completion": 1.0,
+        "executed_joint_rmse_rad": 0.3242102779975062,
+        "executed_body_error_mean_m": 0.045917538845647886
+      },
+      "max_scalar_error": 1.3131923104481302e-08,
+      "trace_field_errors": {
+        "reward": 1.4901161193847656e-08,
+        "joint_rmse": 5.960464477539063e-08,
+        "body_error": 5.21540641784668e-08
+      }
+    }
+  ],
+  "receipt": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_eval_initial_20261023/receipt.json",
+    "bytes": 3975,
+    "sha256": "318b0caf8a841ef181bf1b7ee09fd3ba80b6c090ea719caba1a120aaccd361e0"
+  },
+  "source": {
+    "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/audit_evaluation.py",
+    "bytes": 6000,
+    "sha256": "f2986efbed288a74c7247ec788607d58f6c3b636cd936e69280acd45d640d26d"
+  },
+  "physics_steps": 0,
+  "optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY"
+}

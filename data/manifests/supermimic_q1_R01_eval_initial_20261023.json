@@ -1,0 +1,104 @@
+{
+  "status": "DETERMINISTIC_PHYSICS_EVALUATION_COMPLETED",
+  "checkpoint": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_20261023/step_000000.pt",
+    "bytes": 68429099,
+    "sha256": "94e63acbd9c81c26c3b76b4bfee88c6fae102e5c1c928d2f393726ca88732d3f"
+  },
+  "training_step": 0,
+  "policy_updates": 0,
+  "groups": {
+    "training": {
+      "clips": 2,
+      "failures": 0,
+      "mean_normalized_return": 0.6200123951886641,
+      "mean_completion": 1.0
+    },
+    "heldout": {
+      "clips": 1,
+      "failures": 0,
+      "mean_normalized_return": 0.6078253306756154,
+      "mean_completion": 1.0
+    }
+  },
+  "rows": [
+    {
+      "clip": "001_walk_front_slow",
+      "split": "training",
+      "expected_steps": 1652,
+      "executed_steps": 1652,
+      "failed": false,
+      "normalized_return": 0.5814291355053535,
+      "full_clip_completion": 1.0,
+      "executed_joint_rmse_rad": 0.38141708891046033,
+      "executed_body_error_mean_m": 0.5226928986495949,
+      "reference": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/motions_P03_20261023/001_walk_front_slow.npz",
+        "bytes": 1606579,
+        "sha256": "8f6a5ed1789fd0891a56dbe24f1d39d2b657feef54fdc7b2b979d61a0705d9e0"
+      },
+      "trace": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_eval_initial_20261023/001_walk_front_slow.npz",
+        "bytes": 441428,
+        "sha256": "8f8e44c369f79d4ccd8d401780815c4168d05e7b2abeadb6b14327bffe8f41ce"
+      }
+    },
+    {
+      "clip": "042_squat_shallow_repeated",
+      "split": "training",
+      "expected_steps": 1157,
+      "executed_steps": 1157,
+      "failed": false,
+      "normalized_return": 0.6585956548719748,
+      "full_clip_completion": 1.0,
+      "executed_joint_rmse_rad": 0.41308858989938785,
+      "executed_body_error_mean_m": 0.04391665529305165,
+      "reference": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/motions_P03_20261023/042_squat_shallow_repeated.npz",
+        "bytes": 1113973,
+        "sha256": "67c8cb59ae69c004cc4b8518ebedbdb09a11e1fa451497309646eddf43004e0e"
+      },
+      "trace": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_eval_initial_20261023/042_squat_shallow_repeated.npz",
+        "bytes": 317446,
+        "sha256": "28d18877b8d2e659156fa255a9d91144e1383b3ad0dbc165845d23a6aaae5975"
+      }
+    },
+    {
+      "clip": "058_punch_front_alternating",
+      "split": "heldout",
+      "expected_steps": 678,
+      "executed_steps": 678,
+      "failed": false,
+      "normalized_return": 0.6078253306756154,
+      "full_clip_completion": 1.0,
+      "executed_joint_rmse_rad": 0.32421028239248756,
+      "executed_body_error_mean_m": 0.04591753825086518,
+      "reference": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/motions_P03_20261023/058_punch_front_alternating.npz",
+        "bytes": 623319,
+        "sha256": "05e1edd63d0f7460b4dda7341f3d4ce12e0632cee98c57ff36403e726ee33927"
+      },
+      "trace": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_eval_initial_20261023/058_punch_front_alternating.npz",
+        "bytes": 195434,
+        "sha256": "db4a4c344c4735825d04a26c2a9114e4534e97cd1975af49f71e45868be58498"
+      }
+    }
+  ],
+  "seconds": 55.97087823599577,
+  "simulator": "MuJoCo 3.3.7 CPU native rollout",
+  "protocol": "Reference frame0 initial state; n targets/controls; complete frame denominator including early failures; no noise or DR; friction1; free base",
+  "usability_gates": {
+    "all_complete_without_early_failure": true,
+    "mean_full_clip_return_at_least_0p5": true,
+    "each_full_clip_joint_rmse_at_most_0p15": false
+  },
+  "evaluation_entry": {
+    "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/evaluate.py",
+    "bytes": 7130,
+    "sha256": "d7f5b491c4522686b21c41033ea142146c586294a897abd65a138b72f61636de"
+  },
+  "storage_status": "LOCAL_ONLY",
+  "not_hardware_validated": true
+}

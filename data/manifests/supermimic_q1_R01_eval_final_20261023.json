@@ -1,0 +1,104 @@
+{
+  "status": "DETERMINISTIC_PHYSICS_EVALUATION_COMPLETED",
+  "checkpoint": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_20261023/final.pt",
+    "bytes": 205218451,
+    "sha256": "a3f2e09591b573d49b4029e1c5aecd2680ba49eb98f0699480a2bf4d28c2aa71"
+  },
+  "training_step": 3000,
+  "policy_updates": 1099,
+  "groups": {
+    "training": {
+      "clips": 2,
+      "failures": 0,
+      "mean_normalized_return": 0.7805958367631144,
+      "mean_completion": 1.0
+    },
+    "heldout": {
+      "clips": 1,
+      "failures": 0,
+      "mean_normalized_return": 0.7595086593873206,
+      "mean_completion": 1.0
+    }
+  },
+  "rows": [
+    {
+      "clip": "001_walk_front_slow",
+      "split": "training",
+      "expected_steps": 1652,
+      "executed_steps": 1652,
+      "failed": false,
+      "normalized_return": 0.7422035180266774,
+      "full_clip_completion": 1.0,
+      "executed_joint_rmse_rad": 0.32845070220722455,
+      "executed_body_error_mean_m": 0.5257837560527324,
+      "reference": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/motions_P03_20261023/001_walk_front_slow.npz",
+        "bytes": 1606579,
+        "sha256": "8f6a5ed1789fd0891a56dbe24f1d39d2b657feef54fdc7b2b979d61a0705d9e0"
+      },
+      "trace": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_eval_final_20261023/001_walk_front_slow.npz",
+        "bytes": 493259,
+        "sha256": "ddfb72829b729bf62b1910384d68a1092b36f78fb1701d9a50751b97d5a6af59"
+      }
+    },
+    {
+      "clip": "042_squat_shallow_repeated",
+      "split": "training",
+      "expected_steps": 1157,
+      "executed_steps": 1157,
+      "failed": false,
+      "normalized_return": 0.8189881554995514,
+      "full_clip_completion": 1.0,
+      "executed_joint_rmse_rad": 0.3384278454825425,
+      "executed_body_error_mean_m": 0.04111131344855076,
+      "reference": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/motions_P03_20261023/042_squat_shallow_repeated.npz",
+        "bytes": 1113973,
+        "sha256": "67c8cb59ae69c004cc4b8518ebedbdb09a11e1fa451497309646eddf43004e0e"
+      },
+      "trace": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_eval_final_20261023/042_squat_shallow_repeated.npz",
+        "bytes": 345051,
+        "sha256": "e9425e386ddfefd3234029e854d2bac083357ad7ece2d3fd84cb90c180867c72"
+      }
+    },
+    {
+      "clip": "058_punch_front_alternating",
+      "split": "heldout",
+      "expected_steps": 678,
+      "executed_steps": 678,
+      "failed": false,
+      "normalized_return": 0.7595086593873206,
+      "full_clip_completion": 1.0,
+      "executed_joint_rmse_rad": 0.2903787014062858,
+      "executed_body_error_mean_m": 0.04698255217007765,
+      "reference": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/motions_P03_20261023/058_punch_front_alternating.npz",
+        "bytes": 623319,
+        "sha256": "05e1edd63d0f7460b4dda7341f3d4ce12e0632cee98c57ff36403e726ee33927"
+      },
+      "trace": {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_eval_final_20261023/058_punch_front_alternating.npz",
+        "bytes": 202212,
+        "sha256": "7d7426e16aa53b0da6f8ced33559d6f3b966f621cf368cde0b481b95ef0406aa"
+      }
+    }
+  ],
+  "seconds": 65.75703397393227,
+  "simulator": "MuJoCo 3.3.7 CPU native rollout",
+  "protocol": "Reference frame0 initial state; n targets/controls; complete frame denominator including early failures; no noise or DR; friction1; free base",
+  "usability_gates": {
+    "all_complete_without_early_failure": true,
+    "mean_full_clip_return_at_least_0p5": true,
+    "each_full_clip_joint_rmse_at_most_0p15": false
+  },
+  "evaluation_entry": {
+    "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/evaluate.py",
+    "bytes": 7130,
+    "sha256": "d7f5b491c4522686b21c41033ea142146c586294a897abd65a138b72f61636de"
+  },
+  "storage_status": "LOCAL_ONLY",
+  "not_hardware_validated": true
+}

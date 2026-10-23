@@ -1,6 +1,6 @@
 # SuperMimic for Q1
 
-记录日期：2026-10-23，北京时间。阶段 SM-Q1-P01–P06/R01。状态：R01训练/保存审计及step0/final三段完整物理评测与重算完成；关节误差改善但均未过0.15rad门，尚非可用跟随策略。P05摩擦随机化缺口保留，P06候选未接入；实际接触摩擦0.6。
+记录日期：2026-10-23，北京时间。阶段 SM-Q1-P01–P06/R01/D01。状态：R01训练/保存审计及step0/final三段完整物理评测与重算、D01模型/位移/画面诊断完成；关节误差改善但均未过0.15rad门，走路主要原地站立，尚非可用跟随策略。P05摩擦随机化缺口保留，P06候选未接入；实际接触摩擦0.6。
 
 ## 目标与范围
 
@@ -192,3 +192,5 @@ R01冻结源码归档已保存到服务器`data/supermimic_for_q1/R01_20261023/R
 证据小副本：`data/manifests/supermimic_q1_R01_world_model_20261023.json`、`supermimic_q1_R01_tracking_{initial,final}_20261023.json`及`_B_20261023.json`、`supermimic_q1_R01_curves_20261023.json`、`supermimic_q1_R01_render_{walk,squat,punch}_20261023.json`。原图/视频在服务器`data/supermimic_for_q1/R01_curves_20261023/`及`R01_render_{walk,squat,punch}_20261023/`；Mac小预览在本工作副本`data/supermimic_for_q1/previews_R01_20261023/`。执行日志在服务器`logs/supermimic_q1_R01_{world_model,curves,tracking_initial,tracking_final,render_walk,render_squat,render_punch}_20261023.log`。
 
 复核入口：`measure_world_model.py --root "$PWD" --checkpoint <final.pt> --evaluation <final评测receipt.json> --output <新JSON>`；`inspect_tracking.py`同root/evaluation/output；`plot_training.py --run <R01> --output <新目录>`；`render_trace.py --root "$PWD" --evaluation <final评测receipt.json> --clip <片段名> --output <新目录>`。不重跑已完成输出。R01阶段结论为训练闭环确实完成且有部分改善，尚未得到可用动作跟随，更不是完整论文数值复现。下一先将P06接触修正接入新版本并重新验证后端；原R01结果与源码归档保留，不将新参数追记为旧模型训练条件。
+
+收尾核验：D01代码与结果记录已发布为`3013c18009c767d534429bfa6c24317e9f14023f`，本地HEAD与独立读取的GitHub `refs/heads/Q1`一致。北京时间15:09重新查询huanyu，`pgrep -af '[p]ython.*script/supermimic_for_q1'`无匹配；原训练及后续评测/诊断均已结束，R02未登记或启动。下一恢复时仍须重新核实实际作业。当前恢复入口为本README，代码工作副本`/tmp/yuanqi-supermimic-q1-20261023`，服务器根`/opt/data/private/YuanQi_Q1`；不重复R01、不自动恢复A3。

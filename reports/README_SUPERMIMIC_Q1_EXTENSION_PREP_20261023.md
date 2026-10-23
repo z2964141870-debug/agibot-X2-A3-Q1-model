@@ -80,3 +80,7 @@ $PY -u script/supermimic_q1_extension/pipeline.py execute --plan <独立R03目�
 ```
 
 输出为R03目录下plan/started/status/events/receipt/summary，训练工件在其`run/`，评测在`eval_initial/`和`eval_final/`；stdout在`logs/supermimic_q1_<R03目录名>/`。真正注册/启动/完整生命周期仍未运行，后续必须独立记录实际预算、父臂、发布版本、保存审计和效果，不能把E03检查替代它们。
+
+E03代码已发布`d5f9476125f2c3c7ed2d7c1e6ac898e1f69d6429`并独立核对GitHub `refs/heads/Q1`。实际生成release为`logs/session_records/supermimic_q1_extension_release_E03_20261023.json`，11363字节/SHA`c141ff85ecde79ac83bcde4edda7fe326e2f22cf5c8cf5932da718eb19386454`，服务器同名副本在`logs/`。22:08:19逐项核对61个发布源码/配置大小及SHA全部一致，R02冻结合同及原controller/B存活身份通过，实际B为1525轮/24400交互/509次actor。step1500为205230119字节/SHA`c7a723ce1d2a91314136df9cfce5bdb22182411e690f3cd51a8456df17f31bd4`。GPU40摄氏度、实时容器31212642304字节、OOM14；检查点SHA读取会产生短期页缓存，原有缓存建议/30GiB保护继续使用。
+
+核验小收据`logs/session_records/supermimic_q1_extension_release_verification_E03_20261023.json`为3022字节/SHA`8e2b3cd1d4f1f911074a7e61f6330351abcb892a90c7639a09472af7d2edd649`。该登记入口已具备可用发布清单，但仍须等完整pair后选择父臂/固定预算；没有执行真实R03注册或训练。

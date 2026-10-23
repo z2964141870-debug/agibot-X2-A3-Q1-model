@@ -1,14 +1,16 @@
 # YUANQI 当前状态与下一步
 
-2026-10-23 21:24核验：[Q1 R02批量对照](README_SUPERMIMIC_Q1_BATCH_TRAINING_20261023.md)A batch32完成3000轮/48000交互/95.087分钟，保存审计11门和step0/final三片动力学及重算通过。final关节RMSE走路0.346602rad（仅42.373%前缀，提前失败）、浅蹲0.369294、开发出拳0.300410；未过跟随门。B batch128已运行325轮/5200交互/29次actor，GPU40摄氏度/容器31014244352字节/OOM14。huanyu:/opt/data/private/YuanQi_Q1，独立`R02_cachefixed_pair_20261023`，冻结代码6b43cc0；controller751815/start3604769075、B756622/start3605356394，同boot d994e71f-bae0-46ba-a5f7-6c2163771c6c，非僵尸与源码/输入/成功事件核验通过。每臂3000轮，B完成后再匹配比较；无自动重启/追加预算，实时以status和进程身份为准。
+2026-10-23 22:08:19核验：[Q1 R02批量对照](README_SUPERMIMIC_Q1_BATCH_TRAINING_20261023.md)B batch128为1525/3000轮、24400交互、559组WM/509次actor；原controller751815/start3604769075、B756622/start3605356394在boot d994e71f-bae0-46ba-a5f7-6c2163771c6c下均非僵尸，冻结源码/输入/运行时通过。step1500大小205230119字节/SHA c7a723ce…已核对，GPU40摄氏度/容器31212642304字节/OOM14。平台huanyu:/opt/data/private/YuanQi_Q1，目录`R02_cachefixed_pair_20261023`、冻结核心6b43cc0，每臂3000轮/48000交互；B/pair无终态，无自动重启或追加预算。
+
+A batch32已完成95.087分钟训练、保存审计11门及step0/final三片动力学/独立重算。final关节RMSE走路0.346602rad（仅42.373%前缀，提前失败）、浅蹲0.369294、开发出拳0.300410，未过跟随门；不能按回报或走路截断误差选赢家。B完整评测及匹配comparison完成后才选父臂/固定追加预算。
 
 原`R02_batch_pair_20261023`已在140轮因容器30GiB保护保存STOPPED_SIGNAL/0actor；终态和权重保留，不能重用或恢复。缓存建议使容器观察下降1711742976字节，6项控制器测试通过；新运行仍保留30GiB/86摄氏度/OOM保护。A3停止，R01冻结工件保留，大文件LOCAL_ONLY，当前没有新最终策略成绩。Q1分支及本地代码副本`/tmp/yuanqi-supermimic-q1-20261023`维护。
 
 前序证据：[S01/P07接触修正与J01/T01/B01/C01](README_SUPERMIMIC_Q1_IMPROVEMENT_20261023.md)、[D02奖励诊断](README_SUPERMIMIC_Q1_LEARNING_DIAGNOSIS_20261023.md)、[V01动力学视频](README_SUPERMIMIC_Q1_VISUAL_20261023.md)、[R01完整记录](README_SUPERMIMIC_FOR_Q1_20261023.md)。R01三段关节RMSE0.328/0.338/0.290rad，未过0.15门，走路最大位移policy0.041m/参考1.126m；回报增量89%/89%/94%来自限位惩罚减少。R01实际摩擦0.6与新协议分开，不追改原结果。视频页http://127.0.0.1:18863/保留供看旧结果。
 
-21:42:54补充核验：B已825轮/13200交互/229次actor，原boot/PID/start_ticks、非僵尸及冻结源码/输入/运行时通过；GPU41摄氏度、容器31015268352字节、OOM仍14。旧跳板100.85.145.78超时，已通过用户提供Windows yu@100.65.183.91恢复SSH和报告同步，训练未停止或重启。详细过程在阶段README；静态PID不证明仍在运行，通用研究独立待同步项未在本次合并。
+可用连接经用户Windows yu@100.65.183.91跳转huanyu；旧100.85.145.78路线超时，未因此停止/重启训练。凭据只用于临时SSH，不写文件。静态PID不证明仍在运行，详细过程在阶段README，通用研究独立待同步项未在本次合并。
 
-[E01/E03后续入口准备](README_SUPERMIMIC_Q1_EXTENSION_PREP_20261023.md)：父网络/Adam/采样统计继承及独立保存审计已有11项CPU控制通过。新增pipeline.py串联固定预算登记、训练、保存审计和完整三片配对评测，另5项本地/服务器控制通过；实际未完成pair登记退出1且未创建输出。22:01:46核验B为1350轮/21600交互/439次actor，原进程身份和冻结条件通过，GPU40–41摄氏度、OOM14。真实Q1续训及完整生命周期仍未运行；先等B及匹配比较，再选父臂/预算，不修改R02冻结核心。
+[E01/E03后续入口准备](README_SUPERMIMIC_Q1_EXTENSION_PREP_20261023.md)：父网络/Adam/采样统计继承及独立审计已有11项CPU控制通过；pipeline固定预算登记→训练→审计→三片配对评测另5项两端通过，实际未完成pair登记退出1且无输出。发布代码d5f9476/61项release已逐文件核验部署。真实R03注册/训练/完整生命周期未运行；待B及comparison完成后使用pipeline.py register/execute，不能用准备检查替代训练效果。
 
 ## 用户目标与固定约定
 

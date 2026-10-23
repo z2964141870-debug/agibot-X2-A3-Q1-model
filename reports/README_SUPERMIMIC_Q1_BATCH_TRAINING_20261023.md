@@ -107,3 +107,9 @@ A保存/最终评测/最终重算小副本为`data/manifests/supermimic_q1_R02A_
 此前经yu@100.85.145.78的SSH/SCP出现连接超时；改用用户已提供的Windows yu@100.65.183.91作跳板后恢复。认证仅用于临时SSH会话，未写凭据文件。原训练没有收到停止/重启信号，21:42:54再次核对同一boot/controller/B子进程start_ticks、非僵尸状态、冻结源码/输入/运行时均通过。
 
 B已825轮/13200交互/279组WM/229次actor，记录数值有限；GPU41摄氏度、可用16659MiB、容器31015268352字节、OOM仍14。只恢复连接和报告同步，0新增诊断物理或optimizer。收据`connectivity_recovered_verification.json`为2883字节/SHA`fd6dbf1e0eee8ce335219f5dfc3a96c047858a58e3c430f0956aef109723bf76`，小副本`data/manifests/supermimic_q1_R02B_connectivity_20261023.json`。A完成记录已发布`1bd1089a294b51d7dcc1645c0067fdbaf44cc723`并核对远端；后续连接继续使用可用Windows跳板，不因观察超时重复启动训练。
+
+## 22:08 B过半检查点
+
+controller751815/start3604769075与B756622/start3605356394在原boot下仍非僵尸，冻结源码/输入/运行时再次核验通过。B已1525轮/24400交互/559组WM/509次actor，日志数值有限；step1500已保存205230119字节，SHA`c7a723ce1d2a91314136df9cfce5bdb22182411e690f3cd51a8456df17f31bd4`。GPU40摄氏度/空闲16659MiB、容器31212642304字节、OOM仍14。B及pair均尚无终态收据，不据在线奖励选择父臂。
+
+同一只读核验还确认独立E03续训流程发布清单61项逐文件大小/SHA与部署一致；代码`d5f9476125f2c3c7ed2d7c1e6ac898e1f69d6429`已推送并独立核对Q1。它不修改R02核心，尚未选父臂或登记真实长预算。详细准备、5项新控制和原生拒绝证据见[E01/E03记录](README_SUPERMIMIC_Q1_EXTENSION_PREP_20261023.md)，本次联合核验小收据`logs/session_records/supermimic_q1_extension_release_verification_E03_20261023.json`为3022字节/SHA`8e2b3cd1d4f1f911074a7e61f6330351abcb892a90c7639a09472af7d2edd649`。0新增诊断物理/optimizer，完整模型仍LOCAL_ONLY。

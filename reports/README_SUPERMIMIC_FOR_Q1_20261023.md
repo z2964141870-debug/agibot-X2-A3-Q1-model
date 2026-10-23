@@ -104,3 +104,13 @@ $PY script/supermimic_for_q1/prepare_motion.py --root "$PWD" --source-vendor /op
 $PY script/supermimic_for_q1/verify_reference.py --root "$PWD" --motions data/supermimic_for_q1/motions_P03_20261023 --output data/supermimic_for_q1/P03_independent_reference_20261023.json
 $PY script/supermimic_for_q1/verify_backend.py --root "$PWD" --output data/supermimic_for_q1/P04_backend_20261023
 ```
+
+### R01运行检查点
+
+代码/输入及P03/P04记录已发布为`cc3ecb61f8ab00cab112ed52a6c40147d30f5eb8`，独立远端`refs/heads/Q1`一致。Git archive部署后，服务器train入口及资产适配SHA与本地相同，backend入口再次在训练前核对全部冻结模块。R01实际启动，native PID735033；250采集轮/4000控制步时49组WM/0actor，GPU40°C，容器OOM仍14（历史计数），当时内存约28.4GiB。此为运行快照，不代表完成或有效策略。进程、资源与结果继续以服务器`R01_20261023/status.json`及日志为准。
+
+实际启动命令：
+
+```bash
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 $PY -u script/supermimic_for_q1/train.py --root "$PWD" --motions data/supermimic_for_q1/motions_P03_20261023 --output data/supermimic_for_q1/R01_20261023 --backend-receipt data/supermimic_for_q1/P04_backend_20261023/receipt.json --reference-receipt data/supermimic_for_q1/P03_independent_reference_20261023.json --steps 3000 --num-envs 16 --threads 4 --batch 32 --wm-batch 64 --wm-batches 10 --warmup-steps 128 --model-warmup-updates 50 --checkpoint-every 500 --seed 20261023 --device cuda:0 --clips 001_walk_front_slow 042_squat_shallow_repeated --code-commit cc3ecb61f8ab00cab112ed52a6c40147d30f5eb8
+```

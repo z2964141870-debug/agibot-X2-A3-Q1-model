@@ -207,7 +207,7 @@ E51/R20实现完成但尚未登记：从官方035/空Adam开始、E45相同4段�
 - 10/22用户指定[SuperMimic开源调查](README_SUPERMIMIC_OPEN_SOURCE_20261022.md)：官方Demo明确专有，未核验到官方训练/权重发布；两个独立MIT复现仅固定文档/许可与目录核验、未运行。H100三小时不等于A3/Q1预算；hp3090未知，本轮研究发布见执行回执，不改变每日检查时间或工程状态。
 - Q1在原机/media/yu/FAFF-E977/YuanQi_Q1、origin/Q1；恢复须读该副本状态，不以main旧记录启动工作。见[Q1入口](README_Q1_SMPL_20261008.md)。
 - 学习Agent继续本人必要知识训练；控制链待答项见[学习会话](README_LEARNING_SESSION_20261012.md)、[交接](README_LEARNING_AGENT_TASK_20261011.md)。10/14用户决定至少跟一遍课程，采用Agent+平板笔记+上课；视频配套10章PDF已检查，见[资料与学习安排](README_LEARNING_COURSE_20261014.md)。尚无新增掌握证据，课程不调度工程计算。
-- 每日研究最近[10/22三项简报](research/2026-10-22/README.md)：FRDV参考可执行性、多视角动作预训练、PointHand示教界面；38请求37成功/六摘要/三相关正文/96条去重，无新假设或复现。SuperMimic早上专题只补去重；正式hp3090工作树UNKNOWN，以较新main131475d作研究合并底稿，保留Onset/工程记录。内容6e5666984d1ceb669c031631622632236071d02f已推送并独立核验，见[阶段](README_RESEARCH_CHECK_20261022.md)与[回执](../data/manifests/research_watch_sync_20261022.json)；[10/21回执](../data/manifests/research_watch_sync_20261021.json)保留，不恢复工程计算。
+- 每日研究最近[10/23三项简报](research/2026-10-23/README.md)：SMR因果参考、A2I-Calib++标定条件、VLA核方差诊断边界；48请求45成功/三摘要/三相关正文/五固定文本/102条去重，无新假设或复现。研究背景已按R04/D03与已实现待执行的J01更新，本日报不调度工程；正式hp3090工作树UNKNOWN，以最新main aaccc22合并研究增量，保留并行工程。GitHub待发布核验，见[阶段](README_RESEARCH_CHECK_20261023.md)与[清单](../data/manifests/research_watch_check_20261023.json)；[10/22回执](../data/manifests/research_watch_sync_20261022.json)保留。
 - 原机故障/空闲/负载试验及迁移历史见[报告索引](README.md)，旧细节保留在各阶段README与Git历史；本入口只保留当前恢复所需信息。
 
 独立侧支：[头环与衣服参考研究](README_HEADBAND_CURRENT_STATE.md)：HB06离线计分工具9项控制通过；公开评测包两端连接超时、WAIT_DATA，独立heartbeat已暂停并保存获取/恢复入口；不接手主线实验，尚未训练或证明效果提升。

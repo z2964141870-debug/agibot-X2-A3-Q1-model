@@ -48,3 +48,9 @@ Run focused source-exclusion controls locally and on the server, then select/con
 真实选择原生退出0。[原样选择](../data/manifests/supermimic_q1_P10_walking_selection_20261025.json)30228字节/SHA`1b23939b731dcdfedc8b27732e4f22f92a4faf07412dff0dbea8529e6d969ba9`；未用52块、17个原事件候选、15个目录候选，按固定seed每目录一块得到15候选。额外排除treadmill后与初步只读调查的54/19/17不同，不代表转换准入或语义认证。全部15目录已预留补充test，三份旧PHUMA选择和16个AMASS诊断来源参与排除；其余命名空间仍有未解身份，全源独立保持false。
 
 下一独立新目录执行15片原速Q1转换及十九门，不将原source split改写为官方test，也不修改R02D输入；当前0新Q1准入/物理/optimizer。训练部署时实读R02D950新增轮，盘余948.50GB，仍按原保护运行。
+
+## P10首次转换完成、检查入口失败
+
+05:26:20至05:26:57首次guard执行，15片转换完成、原转换器初检13片通过；调用独立检查时误导入`supermimic_for_q1/verify_reference.py`同名模块，`AttributeError: module 'verify_reference' has no attribute 'verify'`，guard为WORKER_FAILED、worker原生退出1且回收。没有独立十九门或completion，不把13称准入。原失败目录`PHUMA_P10_walking_holdout_20261025`保留，转换manifest56320字节/SHA`e315b2240e369d4d5a72780c7827f921cf3698fd249e6d865e3fbe0375ada26b`；来源/轨迹约9.2MB，内存15.47GB/OOM14/盘余935.82GB，R02D继续1000新增轮。
+
+修正仅对新wrapper按绝对路径独立加载原PHUMA检查器，沿用旧prepare_expansion_batch的同名模块隔离做法。新增`--verify-existing-from`要求旧guard失败且worker已回收、转换完整、15条源记录及selection完全一致、没有原独立check/completion；新目录重新做原扫描核对及十九门，保留旧失败，不重复IK或复制大型工件。新执行须使用`PHUMA_P10B_walking_check_20261025`并显式引用原失败目录；实际补检尚待。

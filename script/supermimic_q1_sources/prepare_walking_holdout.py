@@ -4,6 +4,7 @@
 import argparse
 import collections
 from datetime import datetime, timezone
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -17,12 +18,20 @@ from prepare_amass_body import identity
 from runtime_guard import StorageBudget, guarded_run
 
 
+def load_verifier():
+    path = HERE.parent / "supermimic_q1_phuma/verify_reference.py"
+    spec = importlib.util.spec_from_file_location("q1_supplementary_walking_geometry_verifier", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def worker(args):
     import audit_scan
     import retarget
-    import verify_reference
     from prepare_expansion_batch import uncached_identity
 
+    verify_reference = load_verifier()
     selected = json.loads(args.selection.read_text())
     contract = selected["walking_holdout"]
     if (selected["status"] != "PHUMA_P10_SUPPLEMENTARY_WALKING_HOLDOUT_SELECTED"
@@ -44,14 +53,32 @@ def worker(args):
     output.mkdir()
     audit_scan.audit(args.selection, output / "scan_check.json")
     vendor = args.root / "data/references/phuma_source_2faf15b5"
-    retarget.convert(args.root, args.selection, vendor, output / "references", False)
-    verify_reference.verify(args.root, output / "references", output / "reference_check.json")
+    references = output / "references"
+    reused = []
+    if args.verify_existing_from:
+        prior = args.verify_existing_from.resolve(strict=True)
+        guard = json.loads((prior / "guard.json").read_text())
+        references = prior / "batch/references"
+        manifest = json.loads((references / "manifest.json").read_text())
+        if (guard["status"] != "WORKER_FAILED" or not guard["cleanup"]["worker_reaped"]
+                or manifest["status"] != "PHUMA_RETARGETING_COMPLETED"
+                or manifest["selection"] != identity(args.selection)
+                or [row["phuma_source"] for row in manifest["motions"]] != selected["selected"]
+                or (prior / "batch/reference_check.json").exists()
+                or (prior / "batch/completion.json").exists()):
+            raise ValueError("Require an unchanged failed wrapper with a complete matching conversion only")
+        reused = [identity(prior / "guard.json"), identity(references / "manifest.json")]
+    else:
+        retarget.convert(args.root, args.selection, vendor, references, False)
+    verify_reference.verify(args.root, references, output / "reference_check.json")
+    if any(identity(record["path"]) != record for record in reused):
+        raise ValueError("Reused failed-wrapper inputs changed during independent checking")
     check = json.loads((output / "reference_check.json").read_text())
     admitted = [row for row in check["clips"] if row["qualified_for_training_pilot"]]
     receipt = {"status": "SUPPLEMENTARY_WALKING_GEOMETRY_PREPARATION_COMPLETED",
                "captured_utc": datetime.now(timezone.utc).isoformat(),
                "selection": identity(args.selection), "scan_check": identity(output / "scan_check.json"),
-               "manifest": identity(output / "references/manifest.json"),
+               "manifest": identity(references / "manifest.json"),
                "reference_check": identity(output / "reference_check.json"),
                "candidate_count": len(selected["selected"]), "qualified_count": len(admitted),
                "qualified_clips": [row["clip"] for row in admitted],
@@ -63,6 +90,8 @@ def worker(args):
                "conversion_error_count": sum("conversion_error" in row for row in check["clips"]),
                "source_isolation_certified": False, "new_physics_steps": 0, "new_optimizer_updates": 0,
                "new_training_references": 0, "storage_status": "LOCAL_ONLY",
+               "reused_failed_wrapper_inputs": reused,
+               "new_ik_conversion_in_this_invocation": not bool(reused),
                "sources": [identity(__file__), identity(HERE.parent / "supermimic_q1_phuma/audit_scan.py"),
                            identity(HERE.parent / "supermimic_q1_phuma/retarget.py"),
                            identity(HERE.parent / "supermimic_q1_phuma/verify_reference.py")],
@@ -100,6 +129,8 @@ def main(args):
     command = [sys.executable, "-u", str(Path(__file__).resolve()), "--root", str(args.root),
                "--selection", str(args.selection), "--output", str(args.output),
                "--expected-oom-kill", str(args.expected_oom_kill), "--worker"]
+    if args.verify_existing_from:
+        command.extend(["--verify-existing-from", str(args.verify_existing_from.resolve(strict=True))])
     result = guarded_run(command, args.root, budget, args.output / "guard.json",
                          args.root / "logs" / (args.output.name + ".log"),
                          check_interval_s=.25, grace_s=5., stop_requested=lambda: stop,
@@ -114,5 +145,7 @@ if __name__ == "__main__":
     parser.add_argument("--selection", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--expected-oom-kill", type=int, required=True)
+    parser.add_argument("--verify-existing-from", type=Path,
+                        help="Independently check a complete conversion left by a failed wrapper, in a new output directory")
     parser.add_argument("--worker", action="store_true", help=argparse.SUPPRESS)
     sys.exit(main(parser.parse_args()))

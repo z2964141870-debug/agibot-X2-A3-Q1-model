@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 05:27：[P10首次wrapper失败](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)：15转换完成后独立检查同名模块误导入，0十九门准入，原WORKER_FAILED保留/worker回收。新wrapper已修为绝对路径加载，可在P10B新目录复用原转换补检；尚待执行。R02D1000新轮/64000转移继续，OOM14。
+
 2026-10-25 05:25：[P10来源选择完成](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)源码afb29d9已核远端/部署SHA、服务器4控制0跳过，52未用walking块/17原事件候选/15目录候选固定选15片，原split保留、全部只供补充test；转换/十九门与动力学待，全源隔离仍false。R02D950新增轮继续、未改输入。
 
 2026-10-25：[P10独立步行补充测试准备](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)新增固定HumanML来源/镜像/原事件/目录候选排除和原split保留的选择、转换入口，本地四项来源控制通过，服务器真实选择及十九门待。只供补充test、不改[R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)340/6/7与7000新增轮；05:16实读725轮、500保存已存在、进程身份匹配，尚无修正后移动效果。BONES交师兄。

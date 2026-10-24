@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+05:27：[P10 wrapper独立检查前失败](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)，15原速转换完成但0十九门准入，同名模块误导入；原guard WORKER_FAILED/worker回收保留。新wrapper修为绝对路径加载、P10B新目录可只补独立检查，尚待发布部署执行。[R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)1000新增轮/64000转移/累计6000，actor梯度0.04653、critic0.00689、WM0.18876有限，OOM14；实际效果仍待。
+
 05:25：[P10真实来源选择完成](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)，服务器4控制0跳过/3源码SHA通过，15候选来自52未用块/17事件候选/15目录候选，一律补充test角色，原split保留。原样选择/控制收据已存，转换十九门待；全源隔离false。[R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)最近950新增轮，盘余948.50GB，原340输入/7000预算保持，无新移动效果证明。
 
 05:16现场恢复：[R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)三实际进程boot/start_ticks/cmdline保持，新增725/7000轮、46400转移、累计5725；step500已保存，未作该保存张量审计。actor梯度0.07506/critic0.00818/WM0.14639有限，OOM14、GPU40、内存14.63GB、盘余991.67GB。继续固定预算。[P10补充步行测试](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)独立来源选择/转换入口和本地四项排除控制已准备，服务器待；原split作为来源保留，新角色一律补充test，不混训练，不声称全源独立或真实步行已通过。

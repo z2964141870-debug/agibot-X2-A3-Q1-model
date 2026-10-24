@@ -121,3 +121,11 @@ B001结束后本地18864转发消失，首次B002调用和completion复制均在
 核验原件`data/supermimic_for_q1/AMASS_P03_body_verification_20261025.json`，15086字节/SHA`6597c67312a713058d08a178c0aa56e44b6d5101d4fdf32719db36b42b4c2561`；[原样小副本](../data/manifests/supermimic_q1_amass_P03_body_verification_20261025.json)。当时R02为3275轮/209600交互、WM1259组/actor1209次、6522.67秒，GPU40摄氏度/OOM14；共享内存29262217216字节、盘余1965530808320字节。原12000轮预算和自动终态配对评测保持。
 
 P03人体准备阶段完成；Q1转换/独立几何门转入[AMASS P04](README_SUPERMIMIC_Q1_AMASS_RETARGET_20261025.md)。HumanML来源别名和受试者隔离仍未解决，所有AMASS片split未分配/不可训练，不能称未见移动测试或可用策略。
+
+## HumanML元数据恢复接收
+
+SSH/中继恢复后，在新目录`data/references/humanml3d_metadata_9176e8fb_B_20261025`使用原固定提交和接收代码再次执行，01:07:41原生退出0。接收index.csv、MIT LICENSE、README及预处理Notebook，未执行上游代码、未下载动作。旧失败目录保留。此前网络失败为历史快照，当前不再缺索引本体。
+
+索引1029011字节/SHA`80226910d7259655ab5f411fd807b7651037341b4806fde025946a74d62b1065`，14616行，列source_path/start_frame/end_frame/new_name；这只是接收与CSV结构读取，不等于PHUMA别名、裁片时间、镜像关系或受试者隔离核验。原始索引和文档只留服务器被忽略references目录，不随Git分发；[接收小收据](../data/manifests/supermimic_q1_humanml_metadata_20261025.json)3098字节/SHA`b04549a05a9f4d8a20e9c19b11b4677135b6f0aabda213f7b30498f0e2e623b5`。结束共享内存29284909056字节/OOM14。
+
+下一可在固定索引上核对KIT原动作与PHUMA humanml编号、划分及受试者，仍不混库。BONES获取继续停止，元数据接收不涉及BONES。

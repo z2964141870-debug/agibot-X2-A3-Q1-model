@@ -106,3 +106,17 @@ P12及P12B准备阶段13份已提交文件共423250字节机械同步用户恢�
 准备发布`b24284fd0cc692a4188915bf87fef285fb812ed4`已独立核Q1远端，新两文件部署SHA一致且不在516冻结。首次服务器控制原生退出1，原八项通过，新足地控制ERROR：测试将两只脚直接作为world子刚体，Mink的父子刚体过滤删除了这两组；现场读取`_are_geom_bodies_parent_child`确认该规则。它没有执行真实P12C转换，未创建其输出目录，不能称真实Q1足地失败。
 
 原生[失败日志A](../logs/session_records/supermimic_q1_P12C_floor_controls_A_20261025.log)保留，服务器原件`logs/PHUMA_P12C_floor_controls_20261025.log`/SHA`90b435470789da569c450629fda533be5a17ab3880e1639d7ff3d8374188c177`。修正只把测试骨架改成与Q1相符的浮动骨盆/子足关节并增加硬根约束，另查真实Q1的十份足部几何均获得原生平面配对；不改Mink、P12C生产者或原训练。修正后新B日志/真实对照待。
+
+控制B（发布`0f3c984664d25c11198f5bc16fa0055977552a76`）原生退出1：九项通过，包括真实Q1十个足地配对；合成向地内求解在quadprog报Hessian非正定。该测试遗漏生产者实际`.001`阻尼，默认极小阻尼与200代价/浮根零空间不适配。仅将测试阻尼对齐实际生产设置，不改原生边界或生产代码；原[失败日志B](../logs/session_records/supermimic_q1_P12C_floor_controls_B_20261025.log)/SHA`3dae225a0b5ed245cc568dc25925e758d8a390644031a0825f77d37264aa0e1f`保留。C控制采用新日志，真实P12C尚未创建。
+
+控制C（测试工作树SHA`1f94e07332a32cfd0fada8832ef27770276277297b8a534fa796aa84d429166b`）九项通过，一项实际非穿透FAIL，生产者仍为b24284f版本/SHA`b9184c30...`，真实动作对照仍未创建。[失败日志C](../logs/session_records/supermimic_q1_P12C_floor_controls_C_20261025.log)/SHA`82fdf32976a49007679a703ed5de7510190d9b169fa6115fec6ee3c1f1651039`与[该次测试源码原样文本](../logs/session_records/supermimic_q1_P12C_floor_control_C_source_20261025.txt)保留。额外只读原生QP探针确认：前17次距离从40mm收敛至3.82e-16m，此时witness连线近零，法线被归一化为X，足部Z约束系数归零；下一次目标下沉130mm。这是零余隙边界的实际数值退化，不将其归为测试骨架错误。
+
+后续候选仅把原生足地余隙从0改为0.5mm，保留真实Mink距离/Jacobian/约束计算、原根/速度/任务权重；测试同时加强为始终至少0.5mm余隙。该余隙不等于实际物理接触，仍须后检/逆动力学，不修改原十九门或声称根残余力已改善。D控制和真实动作对照待；旧失败原件不覆盖。
+
+## P12C控制D通过
+
+服务器两份候选源码与本地SHA分别一致：producer`955ad849af3d7658cbebdd649e66a559970c7831831a0f5b88b4980a125ffc5c`，test`37639eb54ac27078f6a7f265779e9b44d9af8d8a59ac36eae845b30b3c8ed006`。新D日志不覆盖A/B/C；相同三模块`unittest`原生退出0、十项全过/0跳过，双地面原点各30次向内目标均保持至少0.5mm余隙，真实Q1十个足地配对均登记。原样[日志D](../logs/session_records/supermimic_q1_P12C_floor_controls_D_20261025.log)SHA`7d54a3714cdcd8509f0ca33d6b83dfeb5f59d59e1f3b616160420f1f032f6250`，服务器原件`logs/PHUMA_P12C_floor_controls_D_20261025.log`。
+
+06:57:18重新核验R02D原boot/ticks、三个非Z实际进程与三状态RUNNING，新增3475/7000轮、222400转移、累计8475轮；日志有限、OOM仍14、GPU39摄氏度/1228MiB。共享盘余464317157376字节，本R02D分配约1.438GB；仍保留100GiB盘余停止线，不把整盘变化归本任务。BONES继续交师兄，未做获取或凭据操作。
+
+下一在记录发布、独立核远端后执行P12C新目录24组train诊断，再用未改独立auditor复算成功变体。此处控制通过不等于实际动作约束通过、数据准入或动力学跟随成功。

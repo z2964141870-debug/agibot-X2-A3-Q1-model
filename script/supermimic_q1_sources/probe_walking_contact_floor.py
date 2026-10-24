@@ -20,7 +20,7 @@ def floor_limit(mink, model, dt):
         if model.body(int(model.geom_bodyid[gid])).name in ("left_ankle_roll_link", "right_ankle_roll_link")
         and (model.geom_contype[gid] or model.geom_conaffinity[gid])]
     limit = mink.CollisionAvoidanceLimit(model, [(feet, [floor])], gain=.85 * dt,
-        minimum_distance_from_collisions=0., collision_detection_distance=.05)
+        minimum_distance_from_collisions=.0005, collision_detection_distance=.05)
     if len(limit.geom_id_pairs) != len(feet) or not feet:
         raise ValueError("Every registered foot collision shape must have a native floor constraint")
     return limit
@@ -98,7 +98,7 @@ def worker(args):
             raise ValueError("The P12C adapter changed during execution")
         value = dict(value)
         value["effective_floor_adapter"] = {"protocol": "P12C_NATIVE_FOOT_FLOOR_AND_PRIORITIZED_ANKLES",
-            "floor_clearance_m": 0., "detection_distance_m": .05,
+            "floor_clearance_m": .0005, "detection_distance_m": .05,
             "foot_position_cost": 200., "foot_orientation_cost": 10.,
             "floor_coordinate": "Same per-bound baseline constant origin as ground_origin_shift_m; no root projection",
             "stance_solver_includes_floor": True, "collision_solver_also_includes_original_wrist_limit": True,

@@ -32,10 +32,11 @@ class FloorConstraintTests(unittest.TestCase):
             for _ in range(30):
                 bound = floor_limit(mink, model, .005)
                 self.assertEqual(len(bound.geom_id_pairs), 2)
-                velocity = mink.solve_ik(configuration, tasks, .005, "quadprog", limits=[bound], constraints=[root])
+                velocity = mink.solve_ik(configuration, tasks, .005, "quadprog", damping=.001,
+                                         limits=[bound], constraints=[root])
                 configuration.integrate_inplace(velocity, .005)
                 gids = [gid for gid in range(model.ngeom) if model.geom_bodyid[gid]]
-                self.assertGreaterEqual(float((configuration.data.geom_xpos[gids, 2] - .03 - floor).min()), -1e-8)
+                self.assertGreaterEqual(float((configuration.data.geom_xpos[gids, 2] - .03 - floor).min()), .0005 - 1e-8)
 
     def test_real_q1_has_all_registered_foot_floor_pairs(self):
         import mink

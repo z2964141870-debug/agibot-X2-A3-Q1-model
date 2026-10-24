@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Separate mapped foot targets and shared-body IK conflicts in fixed AMASS clips."""
+"""Separate mapped foot targets and rigid-link IK conflicts in fixed AMASS clips."""
 
 import argparse
 from datetime import datetime, timezone
@@ -19,10 +19,11 @@ from analyze_phuma_support import curve_stats, pose_min_z
 from prepare_amass_body import identity
 
 
-def shared_frame_bound(first, second, actual):
-    separation_squared = np.sum((np.asarray(first) - second) ** 2, axis=-1)
-    observed_squared = np.sum((np.asarray(first) - actual) ** 2 + (np.asarray(second) - actual) ** 2, axis=-1)
-    return separation_squared / 2., observed_squared
+def rigid_pair_bound(first, second, actual_first, actual_second, length):
+    separation = np.linalg.norm(np.asarray(first) - second, axis=-1)
+    observed_squared = np.sum((np.asarray(first) - actual_first) ** 2
+                              + (np.asarray(second) - actual_second) ** 2, axis=-1)
+    return (separation - length) ** 2 / 2., observed_squared
 
 
 def worker(args):
@@ -102,13 +103,18 @@ def worker(args):
             conflicts = []
             for side in ("left", "right"):
                 elbow, wrist = (names.index(side + "_" + part) for part in ("elbow", "wrist"))
-                if ids[elbow] != ids[wrist]:
-                    raise ValueError("The hypothesized legacy duplicate-body mapping changed")
-                bound, observed = shared_frame_bound(targets[:, elbow], targets[:, wrist], actual[:, elbow])
+                if (ids[elbow] == ids[wrist] or model.body_parentid[ids[wrist]] != ids[elbow]
+                        or model.body_jntnum[ids[wrist]] != 0):
+                    raise ValueError("Expected the actual distinct wrist body fixed to its elbow")
+                length = float(np.linalg.norm(model.body_pos[ids[wrist]]))
+                if np.abs(np.linalg.norm(actual[:, elbow] - actual[:, wrist], axis=-1) - length).max() > 1e-9:
+                    raise ValueError("Solved elbow-to-wrist distance is not rigid")
+                bound, observed = rigid_pair_bound(targets[:, elbow], targets[:, wrist],
+                                                    actual[:, elbow], actual[:, wrist], length)
                 if np.min(observed - bound) < -1e-10:
-                    raise ValueError("Shared-frame least-squares bound failed")
-                conflicts.append({"side": side, "shared_robot_body": mapping[side + "_elbow"],
-                                  "available_distinct_wrist_body": model.body(side + "_wrist_yaw_link").name,
+                    raise ValueError("Rigid-pair least-squares bound failed")
+                conflicts.append({"side": side, "robot_elbow_body": mapping[side + "_elbow"],
+                                  "robot_wrist_body": mapping[side + "_wrist"], "robot_fixed_distance_m": length,
                                   "target_separation_p95_m": float(np.quantile(np.linalg.norm(targets[:, elbow] - targets[:, wrist], axis=-1), .95)),
                                   "minimum_pair_mean_squared_residual_m2": float(bound.mean()),
                                   "observed_pair_mean_squared_residual_m2": float(observed.mean())})
@@ -131,7 +137,7 @@ def worker(args):
                       "solved_existing_reference_m": curve_stats(solved_curve),
                       "solved_constant_grounded_m": curve_stats(solved_grounded),
                       "solved_desired_curve_rmse_m": float(np.sqrt(np.mean((solved_grounded - desired_grounded) ** 2))),
-                      "shared_frame_conflicts": conflicts, "rigid_query_max_error_m": rigid_error,
+                      "rigid_link_conflicts": conflicts, "rigid_query_max_error_m": rigid_error,
                       "arrays": identity(path)}
             rows.append(result)
             print(json.dumps(result, allow_nan=False), flush=True)

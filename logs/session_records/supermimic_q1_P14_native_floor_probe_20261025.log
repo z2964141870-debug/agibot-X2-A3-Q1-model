@@ -1,0 +1,43 @@
+2026-10-25 Beijing time. Read-only follow-up after completed and audited P14.
+First one-off attempt exited 1 at import: ModuleNotFoundError: No module named 'inspect_reference_dynamics'. No P14 arrays were loaded and no IK/physics ran. Corrected the Python import path to the existing analysis directory and reran; final native exit code 0.
+
+The command used the existing server Python with CUDA_VISIBLE_DEVICES='', OMP_NUM_THREADS=1, OPENBLAS_NUM_THREADS=1, MKL_NUM_THREADS=1 and the following -c source:
+
+import sys,json,pathlib,hashlib,inspect,numpy as np,mujoco as mj,mink
+root=pathlib.Path('/opt/data/private/YuanQi_Q1')
+sys.path.insert(0,str(root/'script/supermimic_q1_sources'))
+sys.path.insert(0,str(root/'script/supermimic_q1_phuma'))
+sys.path.insert(0,str(root/'script/supermimic_q1_analysis'))
+from probe_walking_contact_floor import floor_limit
+from retarget import ContactCorrectedAssets,grounded_solver
+from inspect_reference_dynamics import bottom_point
+exp=root/'data/supermimic_for_q1/PHUMA_P14_walking_root_offset_20261025'
+receipt=exp/'probe/receipt.json'
+report=json.loads(receipt.read_text())
+assets=ContactCorrectedAssets(root); model=assets.model; data=mj.MjData(model)
+feet=[np.array([gid for gid in assets.foot_geoms if model.geom_bodyid[gid]==model.body(side+'_ankle_roll_link').id]) for side in ('left','right')]
+results=[]
+for row in report['rows']:
+ with np.load(row['prior_arrays']['path'],allow_pickle=False) as a:
+  start=a['qpos'][0].copy(); shift=float(a['common_ground_origin_shift_m'])
+ start[2]+=row['decision']['root_delta_z_m']
+ with np.load(row['arrays']['path'],allow_pickle=False) as a:
+  gaps=a['all_frame_foot_height_m']; worst=int(np.argmin(gaps.min(axis=1))); bad=a['qpos'][worst].copy()
+ samples=[]
+ for label,state in [('translated_initial_pose',start),('saved_worst_frame',bad)]:
+  data.qpos[:]=state; mj.mj_forward(model,data)
+  true_gap=min(bottom_point(model,data,ids,mj)[0] for ids in feet)
+  solver,_=grounded_solver(assets); solver.sim.model.geom_pos[solver.sim.model.geom('floor').id,2]=-shift
+  state=state.copy(); state[2]-=shift; solver.configuration.update(state)
+  limit=floor_limit(mink,solver.sim.model,.02)
+  con=limit.compute_qp_inequalities(solver.configuration,.02)
+  finite=np.isfinite(con.h)
+  zero_feasible=bool(np.all(con.G @ np.zeros(solver.sim.model.nv)<=con.h+1e-12))
+  samples.append({'case':label,'true_foot_min_m':float(true_gap),'finite_floor_bounds':int(finite.sum()),'floor_h_min_m':float(con.h[finite].min()),'zero_displacement_satisfies_floor_bounds':zero_feasible})
+ results.append({'motion':row['original_motion_key'],'bound_rad_s':row['bound_rad_s'],'worst_frame':worst,'samples':samples})
+source=pathlib.Path(inspect.getsourcefile(mink.CollisionAvoidanceLimit))
+print(json.dumps({'status':'READ_ONLY_P14_PENETRATED_FLOOR_INEQUALITY_CHECK_COMPLETED','receipt':{'path':str(receipt),'bytes':receipt.stat().st_size,'sha256':hashlib.sha256(receipt.read_bytes()).hexdigest()},'native_mink_limit_source':{'path':str(source),'bytes':source.stat().st_size,'sha256':hashlib.sha256(source.read_bytes()).hexdigest()},'rows':results,'new_ik_solves':0,'new_physics_steps':0,'new_optimizer_updates':0,'limit':'Shows whether the floor inequality itself allows the already penetrated pose to stay. It does not establish why soft IK objectives did not restore clearance or that a corrected trajectory is feasible.'}))
+
+Native final output:
+{"status": "READ_ONLY_P14_PENETRATED_FLOOR_INEQUALITY_CHECK_COMPLETED", "receipt": {"path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P14_walking_root_offset_20261025/probe/receipt.json", "bytes": 104258, "sha256": "fca8e09c4508125fdb1cde4ac175f3e0136862dfd5a6b6e139f79ac5a2bb10da"}, "native_mink_limit_source": {"path": "/opt/data/private/hechengzhu/ZHY/data/env/lib/python3.11/site-packages/mink/limits/collision_avoidance_limit.py", "bytes": 15228, "sha256": "53389b365ff9c09a4a92cbe23ce773480ebce9c80cb3acf23ba23d66be1763f9"}, "rows": [{"motion": "KIT/10/WalkInCounterClockwiseCircle06", "bound_rad_s": 2, "worst_frame": 42, "samples": [{"case": "translated_initial_pose", "true_foot_min_m": -0.061420310100733386, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}, {"case": "saved_worst_frame", "true_foot_min_m": -0.02822695820377942, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}]}, {"motion": "KIT/10/WalkInCounterClockwiseCircle06", "bound_rad_s": 8, "worst_frame": 45, "samples": [{"case": "translated_initial_pose", "true_foot_min_m": -0.06339952408935784, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}, {"case": "saved_worst_frame", "true_foot_min_m": -0.02837993428838855, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}]}, {"motion": "KIT/359/walking_fast02", "bound_rad_s": 2, "worst_frame": 64, "samples": [{"case": "translated_initial_pose", "true_foot_min_m": -0.027716984074097027, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}, {"case": "saved_worst_frame", "true_foot_min_m": -0.04016160857488464, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}]}, {"motion": "KIT/359/walking_fast02", "bound_rad_s": 8, "worst_frame": 57, "samples": [{"case": "translated_initial_pose", "true_foot_min_m": -0.027733843808043127, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}, {"case": "saved_worst_frame", "true_foot_min_m": -0.03930371103559911, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}]}, {"motion": "KIT/11/WalkInCounterClockwiseCircle02", "bound_rad_s": 2, "worst_frame": 0, "samples": [{"case": "translated_initial_pose", "true_foot_min_m": -0.04247570837749977, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}, {"case": "saved_worst_frame", "true_foot_min_m": -0.019532259119188128, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}]}, {"motion": "KIT/11/WalkInCounterClockwiseCircle02", "bound_rad_s": 8, "worst_frame": 0, "samples": [{"case": "translated_initial_pose", "true_foot_min_m": -0.04226696542084591, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}, {"case": "saved_worst_frame", "true_foot_min_m": -0.019532259119186393, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}]}, {"motion": "KIT/167/walking_slow02", "bound_rad_s": 2, "worst_frame": 62, "samples": [{"case": "translated_initial_pose", "true_foot_min_m": -0.06079341859705135, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}, {"case": "saved_worst_frame", "true_foot_min_m": -0.06325054152026188, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}]}, {"motion": "KIT/167/walking_slow02", "bound_rad_s": 8, "worst_frame": 62, "samples": [{"case": "translated_initial_pose", "true_foot_min_m": -0.060793218261829915, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}, {"case": "saved_worst_frame", "true_foot_min_m": -0.06325084809646181, "finite_floor_bounds": 10, "floor_h_min_m": 0.0, "zero_displacement_satisfies_floor_bounds": true}]}], "new_ik_solves": 0, "new_physics_steps": 0, "new_optimizer_updates": 0, "limit": "Shows whether the floor inequality itself allows the already penetrated pose to stay. It does not establish why soft IK objectives did not restore clearance or that a corrected trajectory is feasible."}
+

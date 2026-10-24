@@ -2,6 +2,8 @@
 
 记录日期：2026-10-24，北京时间。阶段：SM-Q1-DATA02。状态：新增来源登记、AMASS全库头部索引及独立算术核验完成；缺少SMPL-X男女身体模型及完整BONES-SEED原包，尚未进行新增重定向或训练。
 
+19:47:48后续更新：用户提供的smplx_lockedhead_20230207.zip已从Windows D:\tmp直接迁huanyu，三模型完整性及男女实际16betas/FK验证通过，固定版本和预定入口就绪，见[接收阶段](README_SUPERMIMIC_Q1_SMPLX_INTAKE_20261024.md)。下方模型缺项表与原可用性清单为接收前快照；原拟合模型字节一致性及Q1参考质量仍待验证。
+
 ## 目标与范围
 
 用户明确AMASS与BONES-SEED都可用于当前Q1任务，缺少的资料要告知。这扩展此前PHUMA-only的后续数据范围，继续SuperMimic可微世界模型方法复现，不恢复旧A3动作或已停止实验。历史PHUMA R01输入、代码及终态不变。

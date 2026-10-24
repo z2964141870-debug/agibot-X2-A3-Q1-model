@@ -1,6 +1,6 @@
 # 现有资源继续推进SuperMimic for Q1
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-EXISTING-R02。状态：23:08独立PHUMA R02已登记并经存储guard启动，23:12:30核验300轮/19200交互、WM69组/actor19次，469冻结输入与活跃进程身份通过；尚无最终配对评测或移动效果。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-EXISTING-R02。状态：23:08独立PHUMA R02启动，23:51第1000轮16项CPU保存检查通过；23:52:14实际1425轮/91200交互、WM519组/actor469次/OOM14。469冻结文件未变，尚无最终配对评测或移动效果。
 
 ## 目标与范围
 
@@ -79,3 +79,22 @@ PY=/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python
 本入口适配R02的1000/12000轮、64环境、b6d3108训练版本及469冻结文件；用独立2/5整数节奏重算WM349组、actor299次，并按已存manifest重算三优化器Adam次数。CPU/mmap、单线程、无新物理步/策略调用/optimizer；初始内存须低于28.75GiB，逐张量/冻结文件在29.5GiB前终止且OOM固定14，低于原30GiB训练线。只检查原step0与step1000，保存前后SHA，不读取尚未完成的metrics末行；此诊断不能代替最终动力学效果。
 
 发布部署并确认无转换worker后执行，输出使用新`checkpoint1000_audit.json`排他创建；随后立即记录真实结果，不把准备记为通过。
+
+## 第1000轮真实检查完成
+
+新入口随`765211a33756025f5d2ee143d7e69ced08ed87af`推送Q1并独立核验远端，部署SHA`3d5499d420b654cce05036b7eebb197d3dbcb511277b356af4af56476f911f03`一致，且入口不在469冻结清单内。确认B016已完成且/proc无guard_phuma_batch.py或prepare_expansion_batch.py worker后，23:51:22完成CPU只读检查，3.55秒、原生退出0，16项检查均通过。
+
+第1000轮实际64000控制转移、WM349组/actor299次；WM Adam3490、policy299、critic5980步与manifest节奏完全一致。WM14/15、policy20/22、critic6/7个保存张量发生变化，三网络初始/当前及优化器张量均有限；全部469冻结文件逐大小/SHA一致，初末保存前后SHA稳定，40条日志前缀完整且数值有限，未初始化CUDA。
+
+step0为68550763字节/SHA`3aac44805d1df27e848264d144fd3c444c669fa24eae17bab0b638db386b4299`；step1000为205348199字节/SHA`020763a6fe018b0a0f9a80caa53c29786cdef063aa9abb75aa4764f52c82b7ed`。共享内存开始28788592640字节、采样最高29321924608字节、结束29293604864字节；OOM保持14。0新物理步/策略调用/optimizer，此结果只证明中间保存和实际更新，不证明动力学跟随成功。
+
+实际命令如下，由外层单线程/无CUDA环境执行，日志`logs/PHUMA_R02_expanded64_H32_12000_20261024/checkpoint1000_audit.log`。输出`data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024/checkpoint1000_audit.json`为3101字节/SHA`dc2da346096da2ea29936b19983ebf5159c8c2c3514bb0abf3ebf6d393feda66`，已保留[原样小副本](../data/manifests/supermimic_q1_phuma_R02_checkpoint1000_20261024.json)。不覆盖原输出重跑。
+
+```bash
+/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python -u \
+  /opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/audit_phuma_R02_checkpoint.py \
+  --root /opt/data/private/YuanQi_Q1 \
+  --output /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024/checkpoint1000_audit.json
+```
+
+23:52:14原trainer仍RUNNING到1425轮/91200交互、WM519组/actor469次、GPU39摄氏度/OOM14。下一维持原有限流水线，另用P06 B017 offset160/count128继续扩库；不为重复保存检查打断训练或放宽保护线。

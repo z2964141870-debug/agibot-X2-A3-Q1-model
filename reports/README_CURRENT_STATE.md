@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-24 23:46:44：[P06 B015/B016](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)共160候选完成，40片合格/141.72秒（移动3/9.24秒），两worker均退出0回收/OOM14。与原库算术380训练片/1368.82秒（22.81分钟），未合库且未混入R02。原trainer仍RUNNING至1275轮/81600交互/WM459组/actor409次/GPU39，第1000轮权重已生成。下一先无转换worker时运行新CPU只读检查入口（仅语法通过），再B017新offset160；469冻结条件与30分钟/1小时和独立移动目标保持。BONES不再获取。
+2026-10-24 23:52:14：[现有资源R02](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)仍RUNNING至1425轮/91200交互、WM519组/actor469次、GPU39摄氏度/OOM14。23:51第1000轮16项CPU只读保存检查全部通过：三网络有限且变化、Adam3490/299/5980、469冻结文件未变，0新物理/optimizer，不等于移动成功。[P06 B015/B016](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)160候选共40片合格/141.72秒（移动3/9.24秒），两worker退出0回收；与原库算术380训练片/22.81分钟、未合库或混入R02。下一B017新offset160/count128；30分钟/1小时和独立移动目标保持，BONES不再获取。
 
 2026-10-24最新用户指示：停止BONES获取，交由师兄解决，用户到位后另行通知。[现有资源R02](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)已于23:08独立登记启动：PHUMA训练340片/1227.10秒、移动62片/221.76秒；dev6/test7隔离，64环境/4槽/H32/12000轮。23:12:30独立核验300轮/19200交互、WM69组/actor19次、critic及梯度有限，469冻结文件/三个进程身份通过；OOM14/GPU40，最近盘余1.9657TB。guard825182/controller825183/trainer825189，boot/start_ticks与核验方法见阶段README；100GiB余量/12GiB实验/250GiB源目录保护运行，无自动重启。发布b6d3108已独立核远端；启动小收据已保存。AMASS原始17265动作及16维SMPL-X到位、尚未Q1准入。BONES令牌/18866已清理，0新BONES参考/训练；原STOPPED不恢复。下一读取原作业进度与最终配对评测，不重复启动。
 

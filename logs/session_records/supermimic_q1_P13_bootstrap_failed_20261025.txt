@@ -1,0 +1,19 @@
+Unified-exec terminal receipt excerpt, exit code 1. No experiment directory or server log was created.
+Source commit: 024a68f9cd96788dd24be7b569369b641bffe3eb
+Producer SHA256: a6dd647a36fb10130e0f8d1fb6d5419d04b6e2678accd76f99009db8ad41d223
+
+Traceback (most recent call last):
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/diagnose_walking_reach.py", line 223, in <module>
+    sys.exit(main(parser.parse_args()))
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/diagnose_walking_reach.py", line 197, in main
+    budget.check()
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/guard_phuma_batch.py", line 35, in check
+    evidence = self.storage.check()
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/runtime_guard.py", line 54, in check
+    experiment = allocated_tree(self.experiment)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/runtime_guard.py", line 25, in allocated_tree
+    raise ValueError(f"Budget root must be a real directory: {root}")
+ValueError: Budget root must be a real directory: /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P13_walking_reach_20261025

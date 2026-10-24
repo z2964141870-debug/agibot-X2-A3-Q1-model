@@ -194,7 +194,7 @@ def main(args):
     budget = MemoryBoundBudget(StorageBudget(args.output,
         args.root / "data/references/phuma_source_2faf15b5", 100 * 1024 ** 3,
         32 * 1024 ** 2, 512 * 1024 ** 2), int(28.75 * 1024 ** 3), args.expected_oom_kill)
-    budget.check()
+    budget.memory()
     args.output.mkdir()
     os.nice(10)
     stopped = False

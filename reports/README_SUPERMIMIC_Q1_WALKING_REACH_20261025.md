@@ -41,3 +41,9 @@ env CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THR
 准备发布`024a68f9cd96788dd24be7b569369b641bffe3eb`已独立核Q1远端。首次Git推送因本机6234代理连接关闭而原生失败128；原会话结束后，用当前SSH配置/10秒连接超时重新推送退出0，独立ls-remote完整号一致，未强推或改远端。两新文件部署前均不存在，部署后SHA：producer`a6dd647a36fb10130e0f8d1fb6d5419d04b6e2678accd76f99009db8ad41d223`、test`1e9ad7a7e9d370105beef8c45c42b0ebce5550a4f23fa02928d452bc9106dca5`，与发布一致。
 
 服务器四控制原生退出0、0跳过；真实Q1 256组关节限位内姿态的双侧外球上界及hip中心固定前提通过。原样[控制日志](../logs/session_records/supermimic_q1_P13_reach_controls_20261025.log)SHA`28cfbe5ff7d15fd67984332a1432e8aa0a5f310f5f2ee0c0817c9c0dff2e87c8`，服务器`logs/PHUMA_P13_reach_controls_20261025.log`。这没有读取正式24组数组或改变参考，正式P13待执行。
+
+## 首次启动预检失败
+
+正式入口首次原生退出1：新main在输出目录创建前调用完整`budget.check()`，而现有StorageBudget的allocated_tree要求目录已存在。错误发生在mkdir/worker/正式数组读取前，没有创建预定实验目录，也无guard或服务器日志。[终端回执节录](../logs/session_records/supermimic_q1_P13_bootstrap_failed_20261025.txt)保留，不能称真实P13已运行或四控制覆盖了启动顺序。
+
+修正对齐既有P12包装器：建目录前仅检查内存，建目录后由未改guard完整核100GiB盘余/32MiB输出及共享内存再启动worker；worker继续独立完整检查。未放宽任何停止线，当前R02D未变。修正发布/逐SHA部署后才运行正式P13。

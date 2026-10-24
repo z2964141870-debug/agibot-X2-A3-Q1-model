@@ -1,0 +1,809 @@
+{
+  "status": "PHUMA_P10_SUPPLEMENTARY_WALKING_HOLDOUT_SELECTED",
+  "archive": {
+    "path": "/opt/data/private/yuanqi_ops/data/phuma/data.zip",
+    "bytes": 3416370206,
+    "sha256": "7bd38634f1ec075af907a2bce10616b083a5414885674ce6630664124e22e495"
+  },
+  "upstream_commit": "2faf15b52a3498bfcc3352ecb443dc0b5cd642ac",
+  "source_receipt": {
+    "path": "/opt/data/private/YuanQi_Q1/data/references/phuma_source_2faf15b5/source_receipt.json",
+    "bytes": 11838,
+    "sha256": "533242e77229686dce1d19ac8d4f659c39ca711d45bb7488900b2b47fbe68986"
+  },
+  "official_splits": {
+    "train": {
+      "path": "/opt/data/private/YuanQi_Q1/data/references/phuma_source_2faf15b5/data/split/phuma_train.txt",
+      "bytes": 3214977,
+      "sha256": "469809a0f89d1a02293a5ac553836650f4705403bd6d98d9a176069ee0acd268"
+    },
+    "test": {
+      "path": "/opt/data/private/YuanQi_Q1/data/references/phuma_source_2faf15b5/data/split/phuma_test.txt",
+      "bytes": 355876,
+      "sha256": "3dc6a8186bb037b08e59aaec95a9b1c983ec53a3c50cc79cea1934709a8e1520"
+    }
+  },
+  "raw_g1_members": 73076,
+  "counts": {
+    "schema_valid": 73076,
+    "category/EgoBody": 2116,
+    "split/train": 33440,
+    "split/test": 35249,
+    "split/development": 3864,
+    "category/GRAB": 1726,
+    "category/aist": 1745,
+    "category/animation": 115,
+    "category/custom": 523,
+    "split/unlisted": 523,
+    "category/dance": 117,
+    "category/fitness": 19655,
+    "category/game_motion": 6249,
+    "category/haa500": 1763,
+    "category/humanml": 21731,
+    "category/humman": 498,
+    "category/idea400": 9939,
+    "category/kungfu": 1933,
+    "category/music": 3088,
+    "category/perform": 1878
+  },
+  "errors": [],
+  "source_groups": 23225,
+  "official_train_test_overlapping_source_groups": 4184,
+  "group_rule": "Strip chunk and clip suffixes; reserve every official-test group from training.",
+  "development_rule": "Fixed seed hash reserves 10 percent of remaining official-train groups.",
+  "candidate_rule": {
+    "minimum_duration_s": 1.98,
+    "max_root_tilt_rad": 0.6,
+    "joint_speed_p95_cap_rad_s": 4,
+    "joint_speed_max_cap_rad_s": 12
+  },
+  "seed": 2026102405,
+  "requested_quotas": {
+    "train": {
+      "locomotion": 32,
+      "squat": 16,
+      "upper": 16,
+      "other": 16
+    },
+    "development": {
+      "locomotion": 6,
+      "squat": 3,
+      "upper": 3,
+      "other": 4
+    },
+    "test": {
+      "locomotion": 6,
+      "squat": 3,
+      "upper": 3,
+      "other": 4
+    }
+  },
+  "available_source_groups": {
+    "train/locomotion": 7713,
+    "train/squat": 26,
+    "train/upper": 406,
+    "train/other": 7114,
+    "development/locomotion": 866,
+    "development/squat": 4,
+    "development/upper": 41,
+    "development/other": 818,
+    "test/locomotion": 2646,
+    "test/squat": 64,
+    "test/upper": 214,
+    "test/other": 2746
+  },
+  "selected_counts": {
+    "test/locomotion": 2,
+    "train/locomotion": 11,
+    "development/locomotion": 2
+  },
+  "selected": [
+    {
+      "member": "data/g1/humanml/002678_chunk_0002.npy",
+      "source_key": "humanml/002678_chunk_0002",
+      "source_group": "humanml/002678",
+      "split": "test",
+      "official_group_splits": [
+        "test",
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "feafe40231183fc6db72e78517792e2c457f9ac4c2aa14026269ef617ae6a0f4",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 2.376268242493351,
+        "horizontal_path_m": 3.0056679787039204,
+        "root_height_min_m": 0.7272488662017663,
+        "max_tilt_rad": 0.20235408634793658,
+        "source_joint_speed_p95_rad_s": 2.661563300046294,
+        "source_joint_speed_max_rad_s": 5.888915363730734
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/006041_chunk_0002.npy",
+      "source_key": "humanml/006041_chunk_0002",
+      "source_group": "humanml/006041",
+      "split": "test",
+      "official_group_splits": [
+        "test",
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "3455fbd699882452ae68b2b000aea23290ee5e8cd125084b4d22b115ac0c72b5",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 2.343539580694455,
+        "horizontal_path_m": 3.0178434905659173,
+        "root_height_min_m": 0.7440701228355613,
+        "max_tilt_rad": 0.21124445535889672,
+        "source_joint_speed_p95_rad_s": 2.257507501186884,
+        "source_joint_speed_max_rad_s": 7.284217557394032
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/008100_chunk_0000.npy",
+      "source_key": "humanml/008100_chunk_0000",
+      "source_group": "humanml/008100",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "827d0edcaba805dc266e933af52390b0203bcd12b9a694d7d1cd41ea7c2ed600",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 2.060586802399485,
+        "horizontal_path_m": 2.984322872145274,
+        "root_height_min_m": 0.7502345425091435,
+        "max_tilt_rad": 0.2753756497222665,
+        "source_joint_speed_p95_rad_s": 2.2440270896413983,
+        "source_joint_speed_max_rad_s": 7.083205729782879
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/008831_chunk_0000.npy",
+      "source_key": "humanml/008831_chunk_0000",
+      "source_group": "humanml/008831",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 30174,
+      "sha256": "84da6227d06519c0fcf247c70475a93e09d1ea2a0cfdda21d9440921586a45c7",
+      "source_statistics": {
+        "source_frames": 103,
+        "source_hz": 30.0,
+        "source_duration_s": 3.4,
+        "max_horizontal_displacement_m": 0.2646873578047221,
+        "horizontal_path_m": 0.9339191361897928,
+        "root_height_min_m": 0.7191601445684909,
+        "max_tilt_rad": 0.15791350891713096,
+        "source_joint_speed_p95_rad_s": 3.227776415263585,
+        "source_joint_speed_max_rad_s": 7.260417220421048
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/010856_chunk_0002.npy",
+      "source_key": "humanml/010856_chunk_0002",
+      "source_group": "humanml/010856",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "6ce8073f84e6f3e74fa7baa1f531160c0e8baf6c9096a4b9b58c5a30e51b8af4",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 1.9441197942157609,
+        "horizontal_path_m": 2.449881874619064,
+        "root_height_min_m": 0.7485037651951537,
+        "max_tilt_rad": 0.10866632171922537,
+        "source_joint_speed_p95_rad_s": 2.200022781092427,
+        "source_joint_speed_max_rad_s": 4.885424702834232
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/010278_chunk_0001.npy",
+      "source_key": "humanml/010278_chunk_0001",
+      "source_group": "humanml/010278",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "fae22f1ee77efc11113cd8e2f979c1fa1fb896b7dc9da16c072bf82c3d97609f",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 2.733909433385822,
+        "horizontal_path_m": 3.9063357051159517,
+        "root_height_min_m": 0.7414392254062885,
+        "max_tilt_rad": 0.17527708770015923,
+        "source_joint_speed_p95_rad_s": 2.393348967228243,
+        "source_joint_speed_max_rad_s": 6.305992569984978
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/006270_chunk_0000.npy",
+      "source_key": "humanml/006270_chunk_0000",
+      "source_group": "humanml/006270",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "8b3f319db4c7c4058eebda75988c342ca66bf5cb7d499d25094ae3a5accadc56",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 2.5752829236802497,
+        "horizontal_path_m": 3.4847848726846227,
+        "root_height_min_m": 0.7358398312917036,
+        "max_tilt_rad": 0.16639237475344398,
+        "source_joint_speed_p95_rad_s": 2.0963208915869678,
+        "source_joint_speed_max_rad_s": 5.915054836268907
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/011122_chunk_0000.npy",
+      "source_key": "humanml/011122_chunk_0000",
+      "source_group": "humanml/011122",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "57d0f4101ad30907a59480bd66b98a6aad00d49a99f796189f464e0f13d58660",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 3.433250000520074,
+        "horizontal_path_m": 4.532019743549252,
+        "root_height_min_m": 0.6980314464952582,
+        "max_tilt_rad": 0.3776301020017722,
+        "source_joint_speed_p95_rad_s": 3.2129820629502035,
+        "source_joint_speed_max_rad_s": 8.450764951260762
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/006733_chunk_0000.npy",
+      "source_key": "humanml/006733_chunk_0000",
+      "source_group": "humanml/006733",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "982fabe78f89cf421a1c36e1fa6934be72851b6e6dea14ec57ae8c8518f326b2",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 1.9843836174609515,
+        "horizontal_path_m": 2.9919862546131006,
+        "root_height_min_m": 0.7316376885838066,
+        "max_tilt_rad": 0.21027057217129144,
+        "source_joint_speed_p95_rad_s": 2.112148725009197,
+        "source_joint_speed_max_rad_s": 5.987035617610423
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/007871_chunk_0001.npy",
+      "source_key": "humanml/007871_chunk_0001",
+      "source_group": "humanml/007871",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "07d6d21174a6393b924f856274878ed411347d45e6691247e952a73cf071a161",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 2.4621984632417915,
+        "horizontal_path_m": 4.701513379283737,
+        "root_height_min_m": 0.7303673905061246,
+        "max_tilt_rad": 0.24294542448099557,
+        "source_joint_speed_p95_rad_s": 2.694150407169012,
+        "source_joint_speed_max_rad_s": 7.1388523718341945
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/000948_chunk_0000.npy",
+      "source_key": "humanml/000948_chunk_0000",
+      "source_group": "humanml/000948",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "d622f5e967e770cc601e0964bc6ced22269dbead1b90334c70dd944434918c56",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 2.4599546378926855,
+        "horizontal_path_m": 3.8699509358849666,
+        "root_height_min_m": 0.7441130677450045,
+        "max_tilt_rad": 0.16446540838160684,
+        "source_joint_speed_p95_rad_s": 2.3343891105195396,
+        "source_joint_speed_max_rad_s": 6.383625796590679
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/008802_chunk_0000.npy",
+      "source_key": "humanml/008802_chunk_0000",
+      "source_group": "humanml/008802",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 26718,
+      "sha256": "6e1cad19a1c93e3a04ed1ff053c06b2648ec2a7f159958774bd5e6b42282239e",
+      "source_statistics": {
+        "source_frames": 91,
+        "source_hz": 30.0,
+        "source_duration_s": 3.0,
+        "max_horizontal_displacement_m": 0.2858760449949646,
+        "horizontal_path_m": 1.402944753429742,
+        "root_height_min_m": 0.7647283347827994,
+        "max_tilt_rad": 0.10349352243813296,
+        "source_joint_speed_p95_rad_s": 2.4807212886969685,
+        "source_joint_speed_max_rad_s": 7.027376701918904
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/012755_chunk_0000.npy",
+      "source_key": "humanml/012755_chunk_0000",
+      "source_group": "humanml/012755",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35934,
+      "sha256": "3172e0d9d889d27a0eb450cd6be8b52d885583dc50f1283145aa75f3bf5caad1",
+      "source_statistics": {
+        "source_frames": 123,
+        "source_hz": 30.0,
+        "source_duration_s": 4.066666666666666,
+        "max_horizontal_displacement_m": 0.26592719987870517,
+        "horizontal_path_m": 1.0494181675573306,
+        "root_height_min_m": 0.7264270070708467,
+        "max_tilt_rad": 0.26395387694633665,
+        "source_joint_speed_p95_rad_s": 2.911147531209364,
+        "source_joint_speed_max_rad_s": 6.884256575028381
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/002501_chunk_0000.npy",
+      "source_key": "humanml/002501_chunk_0000",
+      "source_group": "humanml/002501",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "c9c84cf714e4a8821b43fe07d83d7332ce8ec14df319e6e16480014049d95485",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 3.86892023469081,
+        "horizontal_path_m": 6.19050531380595,
+        "root_height_min_m": 0.7578455970635485,
+        "max_tilt_rad": 0.17901078332609247,
+        "source_joint_speed_p95_rad_s": 3.4187450207396854,
+        "source_joint_speed_max_rad_s": 8.256184784299315
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/010782_chunk_0000.npy",
+      "source_key": "humanml/010782_chunk_0000",
+      "source_group": "humanml/010782",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 29886,
+      "sha256": "dfed05c45ee8c8331f813ff00eb4957f37275cd5651f9cc3a6e81a2c3777f4d3",
+      "source_statistics": {
+        "source_frames": 102,
+        "source_hz": 30.0,
+        "source_duration_s": 3.3666666666666667,
+        "max_horizontal_displacement_m": 5.23408110425554,
+        "horizontal_path_m": 5.241718415638647,
+        "root_height_min_m": 0.7229083921594938,
+        "max_tilt_rad": 0.17579767236328755,
+        "source_joint_speed_p95_rad_s": 3.1543176336938212,
+        "source_joint_speed_max_rad_s": 6.159986823530089
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    }
+  ],
+  "all_records": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P02_scan_20261024/all_chunks.jsonl",
+    "bytes": 58784303,
+    "sha256": "e622821aa514508d2ed451b84f9a17f9b3a1c0d968a47821d44b7bfb90e2c53a"
+  },
+  "elapsed_s": 54.53017492592335,
+  "oom_kill": 14,
+  "sources": [
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_q1_phuma/scan_corpus.py",
+      "bytes": 8910,
+      "sha256": "c4771b53cd3230ad921d39ac55a3930b5fa49da80cedf7b313b3670c58ff23e4"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_q1_phuma/motion_io.py",
+      "bytes": 5049,
+      "sha256": "a6323e0d9684da9d519f7b5209b9f1c0be5a2bfe10f252a0ebb2c3164e449050"
+    }
+  ],
+  "qualified_for_training_pilot": false,
+  "new_physics_steps": 0,
+  "new_optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY",
+  "limits": "Walking names are semantic candidates only. Original PHUMA splits are immutable provenance, not the supplementary evaluation role. Collection renames only support conservative exclusion; unresolved namespaces and cross-collection identities prevent a full source-independence claim. Geometry and actual dynamics remain unverified.",
+  "captured_utc": "2026-10-24T21:25:08.295498+00:00",
+  "walking_holdout": {
+    "selection_seed": 2026102510,
+    "role": "SUPPLEMENTARY_TEST_ONLY_NEVER_TRAIN",
+    "source_split_preserved": true,
+    "inputs": [
+      {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P02_scan_20261024/selection.json",
+        "bytes": 113320,
+        "sha256": "b26fa28ea35d06321369bc8f50fa487d399182f0711ac3c2f6389340afd8935e"
+      },
+      {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_selection_20261024.json",
+        "bytes": 1803556,
+        "sha256": "c4dbc3054ed1a99c67a05667e1dc085af187e802d9740f331036b619baa88f4f"
+      },
+      {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_additional_selection_20261024.json",
+        "bytes": 983994,
+        "sha256": "631cd06bd0272e279ef587abead63e8849357d34e234ee3c7dfa74af60703a20"
+      },
+      {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P02_moving_candidates_20261025/selection.json",
+        "bytes": 81611,
+        "sha256": "acffdda17a9c6cc3467cf69322b0cd4e4be4dfd8bb1bafaf553e6e4115c9736f"
+      },
+      {
+        "path": "/opt/data/private/YuanQi_Q1/data/references/humanml3d_metadata_9176e8fb_B_20261025/index.csv",
+        "bytes": 1029011,
+        "sha256": "80226910d7259655ab5f411fd807b7651037341b4806fde025946a74d62b1065"
+      },
+      {
+        "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P02_scan_20261024/all_chunks.jsonl",
+        "bytes": 58784303,
+        "sha256": "e622821aa514508d2ed451b84f9a17f9b3a1c0d968a47821d44b7bfb90e2c53a"
+      }
+    ],
+    "proof": {
+      "eligible_unused_chunks": 52,
+      "eligible_original_event_candidates": 17,
+      "reserved_directory_candidates": [
+        "ACCAD/s011",
+        "BMLrub/rub001",
+        "BMLrub/rub010",
+        "BMLrub/rub014",
+        "BMLrub/rub026",
+        "BMLrub/rub034",
+        "BMLrub/rub041",
+        "BMLrub/rub045",
+        "BMLrub/rub058",
+        "BMLrub/rub063",
+        "BMLrub/rub073",
+        "BMLrub/rub100",
+        "Eyes_Japan_Dataset/frederic",
+        "SSM/20160330_03333",
+        "TotalCapture/s3"
+      ],
+      "selected_count": 15,
+      "exclusion_counts": {
+        "previous_original_event_candidate": 154,
+        "previous_directory_subject_candidate": 1087,
+        "previous_group_or_exact_bytes": 283
+      },
+      "previous_unresolved_namespace_counts": {
+        "idea400": 837,
+        "EgoBody": 95,
+        "music": 117,
+        "game_motion": 84,
+        "kungfu": 98,
+        "fitness": 105,
+        "humman": 26,
+        "GRAB": 134,
+        "perform": 56,
+        "aist": 7,
+        "haa500": 56,
+        "animation": 7,
+        "dance": 3
+      }
+    },
+    "selected_lineage": [
+      {
+        "member": "data/g1/humanml/002678_chunk_0002.npy",
+        "humanml_original_id": "002678.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/BioMotionLab_NTroje/rub014/0027_circle_walk_poses.npy",
+          "start_frame": "21",
+          "end_frame": "221",
+          "new_name": "002678.npy"
+        },
+        "original_motion_key": "BioMotionLab_NTroje/rub014/0027_circle_walk",
+        "exclusion_event_key": "BMLrub/rub014/0027_circle_walk",
+        "directory_subject_candidate": "BMLrub/rub014"
+      },
+      {
+        "member": "data/g1/humanml/006041_chunk_0002.npy",
+        "humanml_original_id": "006041.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/BioMotionLab_NTroje/rub001/0017_circle_walk_poses.npy",
+          "start_frame": "20",
+          "end_frame": "220",
+          "new_name": "006041.npy"
+        },
+        "original_motion_key": "BioMotionLab_NTroje/rub001/0017_circle_walk",
+        "exclusion_event_key": "BMLrub/rub001/0017_circle_walk",
+        "directory_subject_candidate": "BMLrub/rub001"
+      },
+      {
+        "member": "data/g1/humanml/008100_chunk_0000.npy",
+        "humanml_original_id": "008100.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/BioMotionLab_NTroje/rub100/0026_circle_walk_poses.npy",
+          "start_frame": "26",
+          "end_frame": "226",
+          "new_name": "008100.npy"
+        },
+        "original_motion_key": "BioMotionLab_NTroje/rub100/0026_circle_walk",
+        "exclusion_event_key": "BMLrub/rub100/0026_circle_walk",
+        "directory_subject_candidate": "BMLrub/rub100"
+      },
+      {
+        "member": "data/g1/humanml/008831_chunk_0000.npy",
+        "humanml_original_id": "008831.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/BioMotionLab_NTroje/rub034/0007_normal_walk3_poses.npy",
+          "start_frame": "0",
+          "end_frame": "69",
+          "new_name": "008831.npy"
+        },
+        "original_motion_key": "BioMotionLab_NTroje/rub034/0007_normal_walk3",
+        "exclusion_event_key": "BMLrub/rub034/0007_normal_walk3",
+        "directory_subject_candidate": "BMLrub/rub034"
+      },
+      {
+        "member": "data/g1/humanml/010856_chunk_0002.npy",
+        "humanml_original_id": "010856.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/BioMotionLab_NTroje/rub010/0027_circle_walk_poses.npy",
+          "start_frame": "147",
+          "end_frame": "347",
+          "new_name": "010856.npy"
+        },
+        "original_motion_key": "BioMotionLab_NTroje/rub010/0027_circle_walk",
+        "exclusion_event_key": "BMLrub/rub010/0027_circle_walk",
+        "directory_subject_candidate": "BMLrub/rub010"
+      },
+      {
+        "member": "data/g1/humanml/010278_chunk_0001.npy",
+        "humanml_original_id": "010278.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/BioMotionLab_NTroje/rub026/0027_circle_walk_poses.npy",
+          "start_frame": "175",
+          "end_frame": "375",
+          "new_name": "010278.npy"
+        },
+        "original_motion_key": "BioMotionLab_NTroje/rub026/0027_circle_walk",
+        "exclusion_event_key": "BMLrub/rub026/0027_circle_walk",
+        "directory_subject_candidate": "BMLrub/rub026"
+      },
+      {
+        "member": "data/g1/humanml/006270_chunk_0000.npy",
+        "humanml_original_id": "006270.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/BioMotionLab_NTroje/rub073/0027_circle_walk_poses.npy",
+          "start_frame": "21",
+          "end_frame": "221",
+          "new_name": "006270.npy"
+        },
+        "original_motion_key": "BioMotionLab_NTroje/rub073/0027_circle_walk",
+        "exclusion_event_key": "BMLrub/rub073/0027_circle_walk",
+        "directory_subject_candidate": "BMLrub/rub073"
+      },
+      {
+        "member": "data/g1/humanml/011122_chunk_0000.npy",
+        "humanml_original_id": "011122.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/ACCAD/s011/walkdog_poses.npy",
+          "start_frame": "2",
+          "end_frame": "202",
+          "new_name": "011122.npy"
+        },
+        "original_motion_key": "ACCAD/s011/walkdog",
+        "exclusion_event_key": "ACCAD/s011/walkdog",
+        "directory_subject_candidate": "ACCAD/s011"
+      },
+      {
+        "member": "data/g1/humanml/006733_chunk_0000.npy",
+        "humanml_original_id": "006733.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/Eyes_Japan_Dataset/frederic/walk-06-catwalk-frederic_poses.npy",
+          "start_frame": "0",
+          "end_frame": "102",
+          "new_name": "006733.npy"
+        },
+        "original_motion_key": "Eyes_Japan_Dataset/frederic/walk-06-catwalk-frederic",
+        "exclusion_event_key": "Eyes_Japan_Dataset/frederic/walk-06-catwalk-frederic",
+        "directory_subject_candidate": "Eyes_Japan_Dataset/frederic"
+      },
+      {
+        "member": "data/g1/humanml/007871_chunk_0001.npy",
+        "humanml_original_id": "007871.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/BioMotionLab_NTroje/rub063/0027_circle_walk_poses.npy",
+          "start_frame": "3",
+          "end_frame": "203",
+          "new_name": "007871.npy"
+        },
+        "original_motion_key": "BioMotionLab_NTroje/rub063/0027_circle_walk",
+        "exclusion_event_key": "BMLrub/rub063/0027_circle_walk",
+        "directory_subject_candidate": "BMLrub/rub063"
+      },
+      {
+        "member": "data/g1/humanml/000948_chunk_0000.npy",
+        "humanml_original_id": "000948.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/BioMotionLab_NTroje/rub045/0028_circle_walk_poses.npy",
+          "start_frame": "171",
+          "end_frame": "320",
+          "new_name": "000948.npy"
+        },
+        "original_motion_key": "BioMotionLab_NTroje/rub045/0028_circle_walk",
+        "exclusion_event_key": "BMLrub/rub045/0028_circle_walk",
+        "directory_subject_candidate": "BMLrub/rub045"
+      },
+      {
+        "member": "data/g1/humanml/008802_chunk_0000.npy",
+        "humanml_original_id": "008802.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/SSM_synced/20160330_03333/walking_01_poses.npy",
+          "start_frame": "0",
+          "end_frame": "181",
+          "new_name": "008802.npy"
+        },
+        "original_motion_key": "SSM_synced/20160330_03333/walking_01",
+        "exclusion_event_key": "SSM/20160330_03333/walking_01",
+        "directory_subject_candidate": "SSM/20160330_03333"
+      },
+      {
+        "member": "data/g1/humanml/012755_chunk_0000.npy",
+        "humanml_original_id": "012755.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/BioMotionLab_NTroje/rub041/0007_normal_walk3_poses.npy",
+          "start_frame": "0",
+          "end_frame": "82",
+          "new_name": "012755.npy"
+        },
+        "original_motion_key": "BioMotionLab_NTroje/rub041/0007_normal_walk3",
+        "exclusion_event_key": "BMLrub/rub041/0007_normal_walk3",
+        "directory_subject_candidate": "BMLrub/rub041"
+      },
+      {
+        "member": "data/g1/humanml/002501_chunk_0000.npy",
+        "humanml_original_id": "002501.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/TotalCapture/s3/walking1_poses.npy",
+          "start_frame": "26",
+          "end_frame": "226",
+          "new_name": "002501.npy"
+        },
+        "original_motion_key": "TotalCapture/s3/walking1",
+        "exclusion_event_key": "TotalCapture/s3/walking1",
+        "directory_subject_candidate": "TotalCapture/s3"
+      },
+      {
+        "member": "data/g1/humanml/010782_chunk_0000.npy",
+        "humanml_original_id": "010782.npy",
+        "mirrored_variant": false,
+        "humanml_index_row": {
+          "source_path": "./pose_data/BioMotionLab_NTroje/rub058/0008_normal_walk4_poses.npy",
+          "start_frame": "0",
+          "end_frame": "68",
+          "new_name": "010782.npy"
+        },
+        "original_motion_key": "BioMotionLab_NTroje/rub058/0008_normal_walk4",
+        "exclusion_event_key": "BMLrub/rub058/0008_normal_walk4",
+        "directory_subject_candidate": "BMLrub/rub058"
+      }
+    ],
+    "method": "Name-filtered walking, excluding treadmill and listed interactions; seeded one chunk per directory candidate, excluding every previous selected group, byte hash, known original event and directory candidate. No Q1 geometry or policy score used for selection.",
+    "sources": [
+      {
+        "path": "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/select_walking_holdout.py",
+        "bytes": 7954,
+        "sha256": "645621beb31b6df649caf7214190869c8b5f04b385160bae9b3d6833ebe177e7"
+      },
+      {
+        "path": "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/audit_humanml_aliases.py",
+        "bytes": 8935,
+        "sha256": "c7c6b6d79dd88af7f3d66beba9957f97a67be8b2996737dda04f8b3b8d8e359c"
+      }
+    ]
+  },
+  "source_isolation_certified": false
+}

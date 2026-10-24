@@ -40,3 +40,11 @@ The OOM baseline must be rechecked before execution. Main outputs: selection; `b
 ## Next step
 
 Run focused source-exclusion controls locally and on the server, then select/convert/check the fixed pool. Review admitted references and their semantic/physical boundaries. A separate evaluation adapter must bind both the original checkpoint contract and the new reference receipt; the existing evaluator requires its original training library and must not be tricked with a replaced manifest. R02D remains the sole training run and retains its fixed 7000-new-round budget.
+
+## 05:25真实来源选择完成
+
+源码发布`afb29d9bdf272de4bcbe0accdb70c2a1ddea62f5`，Q1独立远端与本地HEAD一致。服务器三份新文件部署前确认不存在且不在R02D冻结列表，部署后逐SHA与本地一致；真实四项控制全部通过、0跳过。[控制原样收据](../data/manifests/supermimic_q1_P10_walking_controls_20261025.json)及[控制日志](../logs/session_records/supermimic_q1_P10_walking_controls_20261025.log)已取回。
+
+真实选择原生退出0。[原样选择](../data/manifests/supermimic_q1_P10_walking_selection_20261025.json)30228字节/SHA`1b23939b731dcdfedc8b27732e4f22f92a4faf07412dff0dbea8529e6d969ba9`；未用52块、17个原事件候选、15个目录候选，按固定seed每目录一块得到15候选。额外排除treadmill后与初步只读调查的54/19/17不同，不代表转换准入或语义认证。全部15目录已预留补充test，三份旧PHUMA选择和16个AMASS诊断来源参与排除；其余命名空间仍有未解身份，全源独立保持false。
+
+下一独立新目录执行15片原速Q1转换及十九门，不将原source split改写为官方test，也不修改R02D输入；当前0新Q1准入/物理/optimizer。训练部署时实读R02D950新增轮，盘余948.50GB，仍按原保护运行。

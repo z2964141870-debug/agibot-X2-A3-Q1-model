@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25：[P10独立步行补充测试准备](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)新增固定HumanML来源/镜像/原事件/目录候选排除和原split保留的选择、转换入口，本地四项来源控制通过，服务器真实选择及十九门待。只供补充test、不改[R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)340/6/7与7000新增轮；05:16实读725轮、500保存已存在、进程身份匹配，尚无修正后移动效果。BONES交师兄。
+
 2026-10-25：[S02动作域修正验证完成](README_SUPERMIMIC_Q1_ACTION_DOMAIN_20261025.md)服务器5控制、1500保存15门、真实replay H32/BPTT7门均通过，原496冻结保持；正常探针未重现崩溃，下一原5000父/340片/相同seed/7000轮独立R02D，登记启动待，不宣称跟随改善。
 
 2026-10-25 04:17：[R02C实际数值FAILED](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md)于04:07:44新增1810轮退出，累计6810、未完成最终配对；496冻结保持、原worker回收/OOM14。最后日志动作惩罚/critic爆大，先定位真实/想象动作域不一致，不盲目续跑；step1500待张量审计。下方RUNNING为历史快照。

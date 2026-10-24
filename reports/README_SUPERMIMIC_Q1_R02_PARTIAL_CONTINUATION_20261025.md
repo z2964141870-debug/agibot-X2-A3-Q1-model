@@ -59,3 +59,5 @@ PY=/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python
 [启动核验原件](../data/manifests/supermimic_q1_R02C_startup_20261025.json)于03:16:43保存，496冻结逐SHA未变、三个进程实际/proc活跃，guard/controller start_ticks及boot匹配；trainer实际start_ticks3616116127。实际最新300新轮/19200新转移、累计5300轮，WM69组/actor19次，actor梯度0.13746、critic loss0.00441685与世界模型指标有限，OOM14。此累计5300是5000父保存加本次300新轮，不包含旧失败未保存的300轮。
 
 最新训练健康GPU39摄氏度/余22909MiB、内存18642915328字节，核验时guard盘余1619915890688字节、R02C分配205643776字节。PHUMA B018另一单数据worker已开始独立扩库，数据worker在28.75GiB先退，R02C原30GiB/新OOM/86摄氏度保护保持。下一继续固定7000新轮、每500轮保存及7阶段评测；新增参考不会改本轮固定340训练片，完成后不追加预算。所有RUNNING均是本时刻快照，恢复时仍须重核进程/状态/资源。
+
+记录发布`476166d4e74aa198a57e80f851a52ae734d2c968`已独立核远端Q1；本轮39份代码/README/小证据共813210字节已机械同步到用户恢复镜像`/Users/yu/Documents/ChatGPT/元启`并逐SHA一致，复制前对照镜像原bc89746内容，未覆盖未知修改。Mac没有新增大型训练资产，BONES下载脚本保留未执行/未提交。

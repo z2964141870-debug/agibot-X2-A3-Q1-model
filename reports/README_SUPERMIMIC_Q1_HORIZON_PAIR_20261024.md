@@ -1,6 +1,14 @@
 # Q1 R04想象时域匹配训练
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-R04。状态：原R04在真实采集前FAILED，0训练交互/optimizer；原终态与源码保留。下一独立R04V2修正同名模块导入，不能重跑原计划。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-R04/R04V2。状态：原R04在真实采集前FAILED，0训练交互/optimizer；独立R04V2修复入口、本地8控制通过/1跳过，服务器与新登记待进行。
+
+## R04V2独立修复准备
+
+原`script/supermimic_q1_horizon/`4文件不编辑。独立复制到`script/supermimic_q1_horizon_v2/`，健康检查显式使用已持有的`continuation.runner`，不再解析同名train模块；原子JSON同样直接使用runner API。新增针对依赖导入完成后health(root, oom)的绑定控制。其余训练公式、合同、父权重、seed、预算与16阶段相同。
+
+本地9项控制中8通过、1PyTorch fixture跳过，退出0；服务器必须9项/0跳过再登记新`R04V2_H32_H8_matched3000_20261024`。新增只读`script/supermimic_q1_analysis/audit_horizon_initial.py`，用于独立检查真实step0的8项父状态保留、7门及日程offset，无物理/网络前向/optimizer。该入口随V2 release冻结。
+
+新计划release为`data/manifests/supermimic_q1_R04V2_release_20261024.json`，执行入口改为`script/supermimic_q1_horizon_v2/run_horizon_pair.py`；复用下文register参数但output改为R04V2、release改为R04V2。新注册/启动日志与小证据都使用R04V2前缀。旧R04不重启、不修改终态；启动新计划前重新核对真实资源及源SHA。
 
 ## 10:51原R04启动失败
 

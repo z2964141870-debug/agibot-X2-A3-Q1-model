@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+R04V2独立修复入口已准备：显式runner健康/JSON API，8本地控制通过/1PyTorch跳过，新增真实step0只读7门核验入口；同R03父、seed/预算和单变量不变。下一发布→服务器9控制→新R04V2登记/启动；原R04 FAILED及4源码保留。见[R04V2记录](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)。
+
 R04原计划10:51:09已FAILED：同名train模块导致health签名错误，发生在构造仿真/step0之前，0训练交互/optimizer；后续15阶段未运行。原终态/目录/4源码保留，见[R04失败与修复入口](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)。下一独立R04V2消除同名导入并加控制，不能重跑原R04。下方“已登记”是失败前记录，A3停止。
 
 [R04匹配H32/H8已登记](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)：源码21c38b0已发布核对，两端控制通过（服务器8项/0跳过），10:46:06真实登记退出0。计划63317字节/SHA74e715be...14c69f，55core/6extension/4horizon及133输入冻结；同R03三网络/Adam/bin、seed2026102404，各3000轮/48000控制转移，仅改policy horizon。16阶段/三片覆盖已核对；下一单次启动并检查实际继承/采集，尚无训练。旧科学源码不改、A3停止。

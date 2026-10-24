@@ -2,7 +2,7 @@
 
 PHUMA R01于14:36:50完成固定3000轮/48000转移训练及全部配对流水线，97.6787分钟；7阶段原生退出0、11项保存审计及两份18片轨迹重算通过。14:38:44独立核验121冻结文件、三划分算术、日志身份与原进程组无活跃成员，GPU38摄氏度/OOM14。最终16/18完整但0/18过跟随门；test三非移动片完整关节误差0.272425→0.240971rad，开发移动根误差0.262304→0.263104m、位移0.066904/参考0.373315m，移动仍不足。见[PHUMA主阶段](README_SUPERMIMIC_Q1_PHUMA_20261024.md)及[完成核验](../data/manifests/supermimic_q1_phuma_R01_completion_verification_20261024.json)。final205225043字节/SHA7db966ff…，LOCAL_ONLY，训练发布ed421738不变。
 
-[V01图表](README_SUPERMIMIC_Q1_PHUMA_PLOTS_20261024.md)实际退出0，全部18片/36组根部及关节RMSE从数组重算一致；两张小图已目视、大小/SHA核验，三段移动仍提前失败或位移不足。小证据和日志已保存。下一新资源核验及独立[D02C足底诊断](README_SUPERMIMIC_Q1_PHUMA_SUPPORT_MAPPING_20261024.md)；D02导入错误已修正、D02B内存保护失败保留，无样本归因结论。不重跑已完成训练/张量审计或旧停止轮；不修改冻结输入、保护线和本轮终态，下一训练方向须以实际train/development结果登记独立试验。目标仍未达。
+[V01图表](README_SUPERMIMIC_Q1_PHUMA_PLOTS_20261024.md)18片/36组误差重算及两图目视/身份通过。[D02C足底诊断](README_SUPERMIMIC_Q1_PHUMA_SUPPORT_MAPPING_20261024.md)实际退出0，8训练片/1536帧、32几何检查和264统计重算通过，121冻结未变/OOM14。四支撑失败片源固定落地后已有17.68–20.45mm波动、映射20.81–27.61mm，IK/目标曲线RMSE0.56–3.04mm；源与映射贡献筛选缺口，但两合格移动参考也学习失败，不能据此认定策略主因。下一PHUMA训练/开发奖励和H1/H8/H32模型诊断，再登记独立训练；当前无新训练，不放宽门/重跑终态，目标仍未达。
 
 2026-10-24 11:26用户要求停止当前整轮并改用PHUMA；[R04V2已停止](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)。11:26:30总控/worker均STOPPED_SIGNAL，原生退出0；A实际932轮/14912新控制转移、322组WM/272次actor，B未启动，无完整对照/最终评测。11:27:30–32核验原worker缺失、controller Z/RSS0、两个进程组无活跃成员，3份权重大小/SHA及冻结条件通过；GPU38摄氏度/OOM14。停止证据`data/manifests/supermimic_q1_R04V2_user_stop_20261024.json`。
 

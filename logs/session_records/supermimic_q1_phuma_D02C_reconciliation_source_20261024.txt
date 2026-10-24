@@ -1,0 +1,44 @@
+import pathlib,hashlib,json,datetime
+import numpy as np
+r=pathlib.Path("/opt/data/private/YuanQi_Q1"); out=r/"data/supermimic_for_q1/PHUMA_D02C_support_mapping_20261024"
+p=out/"receipt.json"; doc=json.loads(p.read_text())
+def identity(path):
+ path=pathlib.Path(path); return {"path":str(path.resolve()),"bytes":path.stat().st_size,"sha256":hashlib.sha256(path.read_bytes()).hexdigest()}
+assert doc["status"]=="PHUMA_SUPPORT_MAPPING_DIAGNOSIS_COMPLETED" and len(doc["rows"])==8
+assert doc["training_code_commit"]=="ed4217384e7abfc8a9cea0b23b95592d4a3e19b0" and doc["code_commit"]=="248c2cf26ae179be50e989486e0763bd0adc2d77"
+assert not doc["references_modified"]
+for key in ["new_physics_integrations","new_IK_solves","new_policy_calls","new_optimizer_updates"]: assert doc[key]==0
+spec=json.loads(pathlib.Path(doc["training_spec"]["path"]).read_text())
+assert identity(doc["training_spec"]["path"])==doc["training_spec"]
+for x in spec["frozen_files"]: assert identity(x["path"])==x
+assert doc["selected_training_clips"]==[row["clip"] for row in doc["rows"]]
+total_frames=0; checks=0; rows=[]
+for row in doc["rows"]:
+ assert row["split"]=="train" and all(row["checks"].values())
+ assert identity(row["arrays"]["path"])==row["arrays"]
+ with np.load(row["arrays"]["path"],allow_pickle=False) as x:
+  n=len(x["time_s"]); total_frames+=n
+  assert n>1 and np.allclose(np.diff(x["time_s"]),.02,rtol=0,atol=1e-9)
+  for field in x.files: assert np.isfinite(x[field]).all()
+  curves={}
+  for array,kind in [("source_foot_z_m","source_original_world_m"),("desired_foot_z_m","desired_with_existing_shift_m"),("solved_foot_z_m","solved_existing_reference_m")]:
+   a=x[array]; assert a.shape==(n,2); curves[kind]=np.minimum(a[:,0],a[:,1])
+  for array,kind in [("source_equivalent_grounded_m","source_equivalent_constant_grounded_m"),("desired_constant_grounded_m","desired_constant_grounded_m"),("solved_constant_grounded_m","solved_constant_grounded_m")]:
+   a=x[array]; assert a.shape==(n,); curves[kind]=a
+  source=curves["source_original_world_m"]; desired=curves["desired_with_existing_shift_m"]; solved=curves["solved_existing_reference_m"]
+  assert np.allclose(curves["source_equivalent_constant_grounded_m"],doc["scale"]*(source-source.min()),rtol=0,atol=1e-12)
+  assert np.allclose(curves["desired_constant_grounded_m"],desired-desired.min(),rtol=0,atol=1e-12)
+  assert np.allclose(curves["solved_constant_grounded_m"],solved-solved.min(),rtol=0,atol=1e-12)
+  for kind,a in curves.items():
+   vals={"min_m":float(min(a)),"max_m":float(max(a)),"p95_m":float(np.quantile(a,.95)),"fraction_at_most_15mm":sum(v<=.015 for v in a)/n,"fraction_at_most_30mm":sum(v<=.03 for v in a)/n}
+   for key,value in vals.items():
+    assert abs(value-row[kind][key])<1e-12,(row["clip"],kind,key); checks+=1
+  src=curves["source_equivalent_constant_grounded_m"]; dst=curves["desired_constant_grounded_m"]; slv=curves["solved_constant_grounded_m"]
+  for name,a in [("mapped_source_shape_rmse_m",dst-src),("solved_mapped_shape_rmse_m",slv-dst)]:
+   expected=float(np.linalg.norm(a)/np.sqrt(n)); assert abs(expected-row[name])<1e-12; checks+=1
+  expected=float(np.quantile(np.abs(x["ankle_task_vertical_error_m"]),.95))
+  assert abs(expected-row["ankle_task_vertical_error_abs_p95_m"])<1e-12; checks+=1
+ rows.append({"clip":row["clip"],"frames":n,"originally_qualified":row["originally_qualified"],"source_grounded_within15mm_fraction":row["source_equivalent_constant_grounded_m"]["fraction_at_most_15mm"],"desired_grounded_within15mm_fraction":row["desired_constant_grounded_m"]["fraction_at_most_15mm"],"solved_within15mm_fraction":row["solved_existing_reference_m"]["fraction_at_most_15mm"],"mapped_source_shape_rmse_m":row["mapped_source_shape_rmse_m"],"solved_mapped_shape_rmse_m":row["solved_mapped_shape_rmse_m"]})
+cg=pathlib.Path("/sys/fs/cgroup/memory"); oom=dict(line.split() for line in (cg/"memory.oom_control").read_text().splitlines())
+assert int(oom["oom_kill"])==14
+print(json.dumps({"status":"PHUMA_D02C_ARRAY_RECONCILIATION_PASSED","captured_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"receipt":identity(p),"log":identity(r/"logs/PHUMA_D02C_support_mapping_20261024.log"),"clips":len(rows),"frames":total_frames,"scalar_statistics_recomputed":checks,"frozen_files_unchanged":len(spec["frozen_files"]),"sampled_diagnostic_memory_max":doc["max_sampled_cgroup_bytes"],"current_memory_bytes":int((cg/"memory.usage_in_bytes").read_text()),"oom_kill":int(oom["oom_kill"]),"rows":rows,"new_physics_integrations":0,"new_policy_calls":0,"new_optimizer_updates":0}))

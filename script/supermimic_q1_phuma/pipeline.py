@@ -48,6 +48,15 @@ def register(args):
     files.update(CORE.glob("*.py"))
     files.update([manifest_path, args.reference_receipt, args.scan_check, args.backend_receipt])
     files.update(Path(row["output"]["path"]) for row in manifest["motions"] if row["clip"] in sum(admitted.values(), []))
+    asset_receipt = args.root.resolve() / "data/manifests/supermimic_q1_inputs_verified_P01_20261023.json"
+    if identity(asset_receipt)["sha256"] != "fce1d288912e26cd02713edbb622c116acaaf56f7cf6f5be1cae9339a72079ca":
+        raise ValueError("Registered Q1 model/mesh identity receipt differs")
+    asset_records = json.loads(asset_receipt.read_text())
+    for record in asset_records["mesh_files"] + [row["input"] for row in asset_records["models"]]:
+        if identity(record["path"]) != record:
+            raise ValueError("A Q1 model or mesh differs from its verified input identity")
+        files.add(Path(record["path"]))
+    files.add(asset_receipt)
     log_directory = args.root.resolve() / "logs" / args.experiment.name
     if log_directory.exists():
         raise FileExistsError(log_directory)
@@ -60,6 +69,7 @@ def register(args):
             "split_clips": admitted, "frozen_files": [identity(p) for p in sorted(files)],
             "evaluation_clips": sum(admitted.values(), []), "auto_restart": False,
             "initialization": "RANDOM_NO_PARENT_CHECKPOINT", "storage_status": "LOCAL_ONLY"}
+    spec["q1_model_mesh_identity_receipt"] = identity(asset_receipt)
     args.experiment.mkdir(parents=True)
     log_directory.mkdir(parents=True)
     save(args.experiment / "spec.json", spec)

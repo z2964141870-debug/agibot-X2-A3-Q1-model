@@ -67,7 +67,7 @@ def analyze(args):
     import mujoco
     from scipy.spatial.transform import Rotation
     from retarget import BODY_MAP, decode_g1, resample_qpos, source_feet
-    from verify_reference import foot_bottom
+    from verify_reference import lowest_foot
     from contact_protocol import ContactCorrectedAssets
 
     manifest_path = args.motions / "manifest.json"
@@ -157,10 +157,10 @@ def analyze(args):
                     source_fk_error = max(source_fk_error, float(np.abs(source_data.xpos[source_trace_ids] - trace["source_position_m_world"][frame]).max()))
                     target_data.qpos[:], target_data.qvel[:] = saved["qpos"][frame], saved["qvel"][frame]
                     mujoco.mj_fwdPosition(assets.model, target_data)
-                    source_low.append([foot_bottom(source_model, source_data, ids) for ids in source_sides])
+                    source_low.append([lowest_foot(source_model, source_data, ids) for ids in source_sides])
                     actual, desired, error = [], [], []
                     for side, (body, index) in enumerate(zip(target_bodies, target_indices)):
-                        low = foot_bottom(assets.model, target_data, target_sides[side])
+                        low = lowest_foot(assets.model, target_data, target_sides[side])
                         rigid = pose_min_z(local_geometries[side], target_data.xpos[body], target_data.xmat[body].reshape(3, 3))
                         rigid_error = max(rigid_error, abs(low - rigid))
                         target_position = trace["target_position_m_world"][frame, index].copy()

@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-25 02:51实核：[资源恢复完成](README_SUPERMIMIC_Q1_RESOURCE_RECOVERY_20261025.md)，六个10月21日失败G1残留在boot/start_ticks/日志及无进展复核后经pidfd TERM/KILL精确回收，均Z/RSS释放；0删文件/0全局清缓存。容器33968070656→12764688384字节、GPU6348→14MiB/39摄氏度、OOM14，盘余1.753TB。R02三个FAILED原件及训练日志已两端SHA核验，旧目录不重启。下一469冻结/5000保存/Adam审计→新目录step0/5000六段development配对动力学，test不调方向。若后续续原12000目标，应从5000新登记7000轮，不能取5300失败计数；当前尚未新训练。资源观察发布50f5291已核远端Q1。
+2026-10-25 02:53实核：[资源恢复/5000保存审计](README_SUPERMIMIC_Q1_RESOURCE_RECOVERY_20261025.md)完成，六个旧G1失败残留已精确回收，内存34→12.76GB、GPU6348→14MiB、OOM14，0文件删除。5000权重16门、469冻结、1949组WM/1899次actor与Adam计数全过，SHA d6e0f870…；原R02 FAILED保留。新六段development配对入口已实现/语法检查，下一独立目录实际初始/5000自由根MuJoCo及两次轨迹审计，尚无本轮效果/新训练。盘余1.753TB且外部写入归因未定；BONES交师兄。若续原12000目标须从5000新登记7000轮，不能取5300失败计数。
 
 现有数据进展：[AMASS P04](README_SUPERMIMIC_Q1_AMASS_RETARGET_20261025.md)16段/64秒人体FK及Q1独立门完成但0/16准入；[P05B](README_SUPERMIMIC_Q1_AMASS_MAPPING_20261025.md)804帧/20对账确认目标刚性长度不兼容及足底目标/IK偏差，A错误肘腕共用假设已撤回；[P06局部偏移](README_SUPERMIMIC_Q1_AMASS_LOCAL_OFFSET_20261025.md)真实4片仍0准入且有支撑/自碰撞退步，新配置不采用。[P07来源审计](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md)两端4控制通过，但正式运行在内存预检退出1、输出未创建；95 HumanML的轻量探查不等于全源隔离完成。[PHUMA P06](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)40新增合格/算术22.81分钟未合库，B017失败保留。BONES由师兄处理，代理不再获取；30分钟/1小时合格库与移动策略有效性目标仍未达。
 

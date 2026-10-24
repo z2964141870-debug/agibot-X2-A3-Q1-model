@@ -1,0 +1,105 @@
+{
+  "status": "PARTIAL_TRAINING_CHECKPOINT_AUDIT_PASSED",
+  "captured_utc": "2026-10-24T18:53:52.418330+00:00",
+  "checkpoint_step": 5000,
+  "collection_transitions": 320000,
+  "wm_updates": 1949,
+  "policy_updates": 1899,
+  "gates": {
+    "checkpoint_5000_within_fixed_budget": true,
+    "initial_step_zero_empty_optimizers": true,
+    "saved_manifest_unchanged": true,
+    "phuma_train_split_only": true,
+    "random_initialization": true,
+    "published_code_identity": true,
+    "local_update_counts": true,
+    "all_optimizer_steps_match": true,
+    "all_networks_changed": true,
+    "saved_network_optimizer_tensors_finite": true,
+    "saved_files_stable": true,
+    "all_469_frozen_files_unchanged": true,
+    "logging_complete_to_checkpoint": true,
+    "logged_metrics_finite": true,
+    "no_new_oom": true,
+    "no_cuda_context": true
+  },
+  "networks": {
+    "wm": {
+      "same_parameter_keys_and_shapes": true,
+      "tensors": 15,
+      "changed_tensors": 14,
+      "max_abs_change": 0.7261725664138794
+    },
+    "policy": {
+      "same_parameter_keys_and_shapes": true,
+      "tensors": 22,
+      "changed_tensors": 20,
+      "max_abs_change": 0.11729740351438522
+    },
+    "critic": {
+      "same_parameter_keys_and_shapes": true,
+      "tensors": 7,
+      "changed_tensors": 6,
+      "max_abs_change": 2.2799084186553955
+    }
+  },
+  "optimizer_counters": {
+    "wm_opt": {
+      "expected": 19490,
+      "actual_distinct": [
+        19490
+      ],
+      "parameter_states": 14,
+      "initial_parameter_states": 0,
+      "passed": true
+    },
+    "policy_opt": {
+      "expected": 1899,
+      "actual_distinct": [
+        1899
+      ],
+      "parameter_states": 20,
+      "initial_parameter_states": 0,
+      "passed": true
+    },
+    "critic_opt": {
+      "expected": 37980,
+      "actual_distinct": [
+        37980
+      ],
+      "parameter_states": 6,
+      "initial_parameter_states": 0,
+      "passed": true
+    }
+  },
+  "files": [
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024/run/step_000000.pt",
+      "bytes": 68550763,
+      "sha256": "3aac44805d1df27e848264d144fd3c444c669fa24eae17bab0b638db386b4299"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024/run/step_005000.pt",
+      "bytes": 205348199,
+      "sha256": "d6e0f870ada2327d21b41b703a0ba35999aa80a5dbab1a12ea409ed3f8deb15c"
+    }
+  ],
+  "frozen_changes": [],
+  "source": {
+    "path": "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/audit_phuma_R02_checkpoint.py",
+    "bytes": 8907,
+    "sha256": "6815e092a9f4b71ec7b308c9f957f08037bb20c81a418b2f9a577373d6b7ea3e"
+  },
+  "memory_before_bytes": 12766138368,
+  "max_sampled_cgroup_bytes": 13576286208,
+  "memory_after_bytes": 13576216576,
+  "memory_guard_bytes": 31675383808,
+  "oom_kill": 14,
+  "elapsed_seconds": 4.196640275418758,
+  "new_physics_steps": 0,
+  "new_policy_calls": 0,
+  "new_optimizer_updates": 0,
+  "final_budget_completed": false,
+  "tracking_effectiveness_proven": false,
+  "storage_status": "LOCAL_ONLY"
+}

@@ -48,3 +48,11 @@ R02三个原生终态分别原样保存为[controller](../data/manifests/supermi
 [原样回收收据](../data/manifests/supermimic_q1_resource_cleanup_A_20261025.json)服务器位置为`RESOURCE_RECOVERY_A_20261025/cleanup.json`，预信号快照同目录`cleanup_before_signal.json`。容器内存33968070656→12764688384字节，实际下降21203382272字节（约19.75GiB）；RSS15424708608→571363328、shmem6203080704→12021760字节。GPU6348→14MiB/39摄氏度，OOM保持14，磁盘余1752820707328字节。此为回收前后实测，不能把差值全当单个权重或R02自有内存。
 
 下一只读检查第5000轮保存、469冻结输入与三优化器，再进行六段development配对评测。原5300失败计数不能冒充5000权重轮数，剩余原目标预算若续训应为7000轮并新登记。
+
+## 02:53第5000轮实际审计通过
+
+发布`2d9f0de`保留原1000默认行为，为独立审计新增显式`--checkpoint-step 5000`，没有修改原469冻结文件。真实CPU/mmap检查4.20秒退出0、16门全过，5000轮/320000转移、WM1949组/actor1899次；Adam分别19490/1899/37980步，三网络有更新且保存张量有限。全部469冻结逐SHA未变、200条日志前缀完整，初始/5000保存前后字节稳定，未初始化CUDA。容器采样12.766→最高13.576GB，OOM14。
+
+[原样审计收据](../data/manifests/supermimic_q1_phuma_R02_checkpoint5000_20261025.json)服务器`RESOURCE_RECOVERY_A_20261025/checkpoint5000_audit.json`，5000权重205348199字节/SHA`d6e0f870ada2327d21b41b703a0ba35999aa80a5dbab1a12ea409ed3f8deb15c`与失败终态一致。该权重有效，不代表移动策略有效或12000预算完成。
+
+新开发评测入口`script/supermimic_q1_sources/evaluate_phuma_R02_checkpoint.py`已实现并语法检查，正式运行待。只绑定上述审计、原six development及初始/5000字节，在独立目录顺序调用保留的接触修正评测与两次轨迹独立重算；每阶段检查28.75GiB/OOM14，600秒阶段超时。六段全片、自由根、原帧率、无噪声/DR；不读取test结果、不训练。额外重算关节/腿部/根RMSE、实际/参考水平位移及既定0.15rad/0.10m完整跟随门，不能把前缀误差低或原地站稳当通过。

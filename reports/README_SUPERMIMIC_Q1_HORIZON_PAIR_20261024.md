@@ -1,6 +1,14 @@
 # Q1 R04想象时域匹配训练
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-R04。状态：本地7通过/1跳过、服务器8项全通过；真实固定计划登记并核对，训练尚未启动。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-R04。状态：原R04在真实采集前FAILED，0训练交互/optimizer；原终态与源码保留。下一独立R04V2修正同名模块导入，不能重跑原计划。
+
+## 10:51原R04启动失败
+
+登记记录`77ddf4493c28aa40dd03e4280994f86b32ee65c4`已推送并在启动前独立核对Q1。10:51:02派发controller792833/start3610226784，worker792837/start3610227019；10:51:09保存FAILED，A_H32_train原生退出1，后续15阶段未运行。没有run目录、admission或step0，0真实控制步/optimizer，不能称训练开始或训练效果失败。
+
+实际错误为`TypeError: health() takes 0 positional arguments but 2 were given`：`train_horizon.py`使用`from train import health, atomic_json`，依赖导入会将core目录置前，命中同名core/train.py而非extension/train.py。这是本次入口错误，已有8项控制未覆盖模块解析后的健康检查调用；不是GPU/数据或SuperMimic方法失败。错误发生于parent元数据只读验证之后、资产/仿真构造之前。下次必须加针对实际health绑定的控制。
+
+原目录`R04_H32_H8_matched3000_20261024`、其plan/receipt/events/日志与4份`script/supermimic_q1_horizon/`原码保持原样；小证据`data/manifests/supermimic_q1_R04_{receipt,dispatch,started}_20261024.json`与`logs/session_records/supermimic_q1_R04_failed_*`。下一在独立`supermimic_q1_horizon_v2/`修正显式runner API，登记新R04V2，保持原共同父模型、单变量和预算；不解锁或自动重试原失败计划。
 
 ## 10:46真实登记
 

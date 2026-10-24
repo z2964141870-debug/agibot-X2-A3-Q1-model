@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-24 10:51：[Q1 R04启动前失败](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)：同名train模块让health调用签名错误，0训练交互/optimizer，无run/admission/step0；原终态及源码保留。下一独立R04V2修正并补控制，不重跑原计划。
+
 2026-10-24 10:46：[Q1 R04匹配时域已登记](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)：服务器8控制全通过，55core/6extension/4horizon与133输入冻结；同R03父权重/Adam/bin与相同fresh seed，H32/H8各3000轮，仅改想象时域。16阶段/三片覆盖已核对，下一单次启动，尚无训练。
 
 2026-10-24 10:24：[Q1 D08动作响应完成](README_SUPERMIMIC_Q1_ACTION_RESPONSE_20261024.md)：4基线精确复现、2176控制步/192响应独立审计通过；走路根位置H8为16/16正向、相对误差0.441，H32为11/16/0.760。下一同R03父权重/种子的H32-H8等预算匹配试验，0新增训练。

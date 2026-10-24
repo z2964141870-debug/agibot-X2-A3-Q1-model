@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 04:17：[R02C实际数值FAILED](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md)于04:07:44新增1810轮退出，累计6810、未完成最终配对；496冻结保持、原worker回收/OOM14。最后日志动作惩罚/critic爆大，先定位真实/想象动作域不一致，不盲目续跑；step1500待张量审计。下方RUNNING为历史快照。
+
 2026-10-25：[P09来源排除视图登记准备](README_SUPERMIMIC_Q1_SOURCE_VIEW_REGISTRATION_20261025.md)新独立入口和四项本地控制通过，显式绑定排除前/后来源证据且保留原几何/held-out，不伪造组库状态；服务器真实预检待，未登记或启动第二训练。R02C继续原固定340输入与7000新预算，BONES交师兄。
 
 2026-10-25 04:01：[PHUMA P08B-V2真实完成](README_SUPERMIMIC_Q1_PHUMA_LIBRARY_20261025.md)，排除4条训练目录候选冲突后train612片/36.52分钟，dev6/test7不变；保存时轴/原trainer准入及独立HumanML复审通过，全源隔离仍false。[R02C](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md)1625新增轮/累计6625、三进程身份及496冻结通过，GPU40/OOM14/盘余1.385TB，未热改340输入，无新效果结论。

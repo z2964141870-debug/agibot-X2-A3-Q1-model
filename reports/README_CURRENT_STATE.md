@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-25 04:17终态复核：[R02C于04:07:44非有限数值FAILED](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md)，新增1810轮/115840转移、累计6810、WM673组/actor623次；未进入最终配对或生成final。controller/trainer均回收，guard Z/RSS0，496冻结全部保持，OOM14/GPU28/14MiB，非本次资源保护。第1800轮想象action-rate骤降-1693.55、critic loss1.92e10；源码真实动作裁[-20,20]而想象未裁，作为候选接口缺口须独立验证。最后step1500未审计；不重启失败目录。下一定位动作域/梯度稳定性，P09真实预检后补，不启动第二训练。下方R02C RUNNING为失败前快照。
+
 [P09来源排除视图登记](README_SUPERMIMIC_Q1_SOURCE_VIEW_REGISTRATION_20261025.md)：新增独立check/register/run入口，完整验证原几何、原参考、排除前/后来源审计及不变held-out；四项本地控制通过、真实服务器预检待。旧训练源码不改；未登记或启动第二训练。下一发布逐SHA部署并真实只读预检，再以R02C配对结果决定下一实验，BONES仍交师兄。
 
 2026-10-25 04:01：[R02C仍正常续训](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md)，1625/7000新增轮、104000新转移/累计6625轮，WM599组/actor549次；三个实际进程boot/start_ticks及全部496冻结大小/SHA通过，OOM14。最新GPU40、内存17.81GB、盘余1.385TB，100GiB余量/12GiB实验/30GiB/86摄氏度/900秒无进展保护，无自动重启。训练发布d21a880，固定340片输入不改，尚无续训后实际动力学效果证明。[进度原件](../data/manifests/supermimic_q1_R02C_progress_20261025T0402.json)。

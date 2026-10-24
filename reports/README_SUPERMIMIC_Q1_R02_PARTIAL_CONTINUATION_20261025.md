@@ -1,6 +1,6 @@
 # PHUMA R02审计保存的独立续训
 
-记录日期：2026-10-25。阶段：R02C。状态：已独立启动，初始12门与496冻结通过，03:16核实新世界模型/actor/critic更新。
+记录日期：2026-10-25。阶段：R02C。状态：04:07:44新增1810轮时非有限数值FAILED；原终态保留，未进入最终配对评测。此前运行记录均为历史快照。
 
 ## 目标与选择
 
@@ -69,3 +69,15 @@ PY=/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python
 训练最新健康GPU40摄氏度、内存17812459520字节、盘余1384569880576字节，当前任务约每500轮保存，100GiB余量/12GiB实验/30GiB内存/86摄氏度及900秒无进展保护保持，无自动重启。磁盘是共享挂载，较早观测下降不能全部归因于本任务；本轮扩库/视图仅增加小型NPZ/JSON/链接，未删除任何文件。
 
 后续数据已独立完成[P08/P08B](README_SUPERMIMIC_Q1_PHUMA_LIBRARY_20261025.md)：新view训练612片/36.52分钟，排除4条与开发集同HumanML受试者目录候选；它不会热改本次340输入。另[D04](README_SUPERMIMIC_Q1_PHUMA_REFERENCE_DYNAMICS_20261025.md)确认现有静态过门参考仍有浮脚/近地滑动，支持后续单独检查接触/速度一致性，尚不能据此认定唯一训练失败原因。继续原固定预算及自动7阶段配对流程，完成后不自动追加预算；BONES仍等待用户通知。
+
+## 04:07实际失败与04:17终态复核
+
+训练实际于04:07:44退出1，新增1810/7000轮、115840转移、累计6810轮，WM673组/actor623次，3296.263秒（54.94分钟）。`Nonfinite continuation training metrics`触发，controller FAILED且phase=train；guard为WORKER_FAILED、worker_reaped=true/return_code1。未执行其余六阶段、未生成final.pt，不把失败当作达到12000预算或跟随效果。
+
+04:17:29再次实核全部496冻结大小/SHA保持，原controller835012与trainer835015均不存在，guard835011为Z/RSS0，无活跃训练；GPU14MiB/28摄氏度。最近健康04:07:21内存17813172224字节/OOM14/GPU40，guard终态盘余1350688239616字节、实验分配821727232字节。现有证据支持数值错误停止，不是本次OOM、温度或磁盘保护。
+
+最后04:07:21第1800轮日志已有异常：想象action-rate项-1693.5538（此前约-0.0004）、critic loss1.9235944e10，世界模型loss0.19879及真实在线reward0.07419仍有限。当前源码中真实仿真把策略动作裁到[-20,20]，想象rollout直接使用未裁动作；这是实际接口不一致，也是应独立验证的数值异常候选原因，尚不能据此认定崩溃唯一根因。优先定位并构造极端动作/梯度控制，不盲目加训练时长、放宽非有限检查或重启FAILED目录。
+
+原样小证据已取回：[训练终态](../data/manifests/supermimic_q1_R02C_failure_20261025.json)SHA`78ba30cd115e971a2fb634546fb02a9d749e8cd3d024f4eac9b0af24015fb7d3`，[controller](../data/manifests/supermimic_q1_R02C_controller_terminal_20261025.json)SHA`487cc06569663cb220deb35b2846464b6c5e1b293d024a45e823d011e55b5356`，[guard](../data/manifests/supermimic_q1_R02C_guard_terminal_20261025.json)SHA`b846c4813bb6da93cdefbc671b91267d51dde5e41fbb81faf79b1e619df6c78c`，[完整训练stdout](../logs/session_records/supermimic_q1_R02C_failure_train_20261025.log)103800字节/SHA`77b8c26abb9251207af3682dbaa8634e9e01dc5d3c67c0b0d73359470ca27f4b`。
+
+step1500为最后保存，205323367字节/SHA`0af72fee30f6d6c354d984400ce6c1ea909f698c05b13ce7f4d2dd0b073a64a6`；尚未独立审计该保存的张量与Adam，不能将失败进度1810视为可恢复权重。原5000父和本次step0/500/1000/1500均保留，仍LOCAL_ONLY。P09来源视图入口已实现发布但真实预检待，不启动第二训练；下一先保存失败结论，再处理动作接口一致性与数值保护。

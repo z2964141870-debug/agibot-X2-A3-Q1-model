@@ -1,6 +1,6 @@
 # PHUMA P10 supplemental walking evaluation
 
-Date: 2026-10-25, Beijing time. Status: implementation and four local source-exclusion controls passed; server selection, conversion and actual dynamics pending.
+Date: 2026-10-25, Beijing time. Status: P10B independent checking completed, zero of fifteen references admitted; supplementary dynamics unavailable. Original P10 wrapper failure retained.
 
 ## Goal and reason
 
@@ -54,3 +54,13 @@ Run focused source-exclusion controls locally and on the server, then select/con
 05:26:20至05:26:57首次guard执行，15片转换完成、原转换器初检13片通过；调用独立检查时误导入`supermimic_for_q1/verify_reference.py`同名模块，`AttributeError: module 'verify_reference' has no attribute 'verify'`，guard为WORKER_FAILED、worker原生退出1且回收。没有独立十九门或completion，不把13称准入。原失败目录`PHUMA_P10_walking_holdout_20261025`保留，转换manifest56320字节/SHA`e315b2240e369d4d5a72780c7827f921cf3698fd249e6d865e3fbe0375ada26b`；来源/轨迹约9.2MB，内存15.47GB/OOM14/盘余935.82GB，R02D继续1000新增轮。
 
 修正仅对新wrapper按绝对路径独立加载原PHUMA检查器，沿用旧prepare_expansion_batch的同名模块隔离做法。新增`--verify-existing-from`要求旧guard失败且worker已回收、转换完整、15条源记录及selection完全一致、没有原独立check/completion；新目录重新做原扫描核对及十九门，保留旧失败，不重复IK或复制大型工件。新执行须使用`PHUMA_P10B_walking_check_20261025`并显式引用原失败目录；实际补检尚待。
+
+## 05:30独立补检完成：0/15准入
+
+修正发布`b7ad46cd24308fbc60fb3988b49fbe200004ab2d`已推送并独立核Q1远端，wrapper逐SHA部署一致。真实导入预检刻意把同名旧目录放搜索首位，仍正确加载PHUMA检查器、verify/check可调用且无CUDA上下文。05:29:45至05:30:14新P10B guard/worker均原生退出0并回收，重新扫描核对15原始成员、对原转换逐片执行全部十九门，0重复IK/积分/optimizer。原P10 WORKER_FAILED保持。
+
+[补检完成收据](../data/manifests/supermimic_q1_P10B_completion_20261025.json)、[完整十九门](../data/manifests/supermimic_q1_P10B_reference_check_20261025.json)、[扫描核对](../data/manifests/supermimic_q1_P10B_scan_check_20261025.json)及[guard](../data/manifests/supermimic_q1_P10B_guard_20261025.json)已原样取回。十九门收据38300字节/SHA`b9a819074a6c28356247b479532d01bec62534e619e0544e1fb813440fcfc2fb`；准入0/15，足底15mm内比例失败15、最大30mm间隙失败14、自穿透3mm失败6、转换初检失败2，计数重叠。没有转换错误；足底15mm内比例3.51%至45.64%，而既有要求90%。
+
+该固定池包含circle_walk、normal_walk、walking1等名字，但零准入意味着仍没有可交付的补充步行动力学测试，不能把原fitness移动测试升格为步行证明。也不能仅由此断言限速是唯一原因；源足底、形态映射、硬root和速度限制都须用train样本区分。接触缺口已在D02C/D04发现，本次不重复其相同样本诊断、不放宽门或逐帧根高硬投影。
+
+下一以已使用训练划分的明确walking来源做有限映射/限速归因，排除本15个预留目录及所有dev/test来源候选；不根据这15片选修补参数。R02D保持原340输入与固定7000新轮，主目标未达。补检结束内存14.25GB/OOM14、盘余918.30GB；P10/B新资产合计不足10MB，所有大型原件LOCAL_ONLY。

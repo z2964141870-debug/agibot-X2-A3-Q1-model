@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+05:30：[P10B补检完成](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)guard/worker退出0并回收、重新扫描和15片十九门完成，准入0/15；全部15mm支撑比例失败、14最大间隙、6自碰撞，完整小证据已存。15目录继续预留补充test，无可用新walking动力学评测；下一仅train明确walking来源做映射/限速归因，不放宽门/不热改R02D。R02D最近1100新增轮/累计6100，日志有限，OOM14；盘余918.30GB，新P10/B不足10MB。
+
 05:27：[P10 wrapper独立检查前失败](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)，15原速转换完成但0十九门准入，同名模块误导入；原guard WORKER_FAILED/worker回收保留。新wrapper修为绝对路径加载、P10B新目录可只补独立检查，尚待发布部署执行。[R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)1000新增轮/64000转移/累计6000，actor梯度0.04653、critic0.00689、WM0.18876有限，OOM14；实际效果仍待。
 
 05:25：[P10真实来源选择完成](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)，服务器4控制0跳过/3源码SHA通过，15候选来自52未用块/17事件候选/15目录候选，一律补充test角色，原split保留。原样选择/控制收据已存，转换十九门待；全源隔离false。[R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)最近950新增轮，盘余948.50GB，原340输入/7000预算保持，无新移动效果证明。

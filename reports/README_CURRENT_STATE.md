@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-24用户已指定[BONES-SEED主线新目标](README_SUPERMIMIC_Q1_BONES_GOAL_20261024.md)：训练SuperMimic for Q1平地全身移动跟随，覆盖此前AMASS优先建议。先30分钟再1小时合格参考/移动至少50%，固定独立开发和测试各20原动作组，最终至少80%完整移动片同时过全身/腿0.15rad、根0.10m和位移70%至130%工程门槛。[P01接收](README_SUPERMIMIC_Q1_BONES_METADATA_20261024.md)三metadata大小/SHA完整一致、parquet142220行；语义/来源组审计待完成，完整包预计20:30待核。20:09:56实核huanyu空闲、OOM14/GPU38/盘余1.965TB。磁盘/worker停止保护待实现，未登记/启动BONES训练。旧A3/STOPPED不恢复；下方数据优先级/缺项为历史快照，恢复以本目标和各实际收据为准。
+
 2026-10-24：[三数据源优先级建议](README_SUPERMIMIC_Q1_DATASET_PRIORITY_20261024.md)完成官方来源/本地证据复核。新增准备建议先AMASS移动子集，BONES-SEED作后续论文数据对齐，PHUMA保留现成库与基线；立即无需转换的训练以PHUMA成本最低。此为建议，未启动/切换实验，三库在Q1无公平性能排名；身体模型到位只证明有限样本载入。D:\tmp复查仍只有BONES metadata、未见完整G1/SOMA包。原始数据和旧实验不变。
 
 2026-10-24 19:47:48：[SMPL-X接收与16维AMASS验证完成](README_SUPERMIMIC_Q1_SMPLX_INTAKE_20261024.md)。Windows D:\tmp的smplx_lockedhead_20230207.zip已直接迁huanyu，411448739字节/两端SHA一致；三模型包内MD5、16betas和男女真实AMASS各三帧/中性零姿态有限FK通过，OOM14。模型固定在data/references/body_models/smplx_lockedhead_20230207/smplx，预定smplx入口软链接就绪；非原拟合模型字节身份或Q1质量证明。新增约0.823GB/盘余1.965TB，0新Q1参考/训练。BONES metadata在D:\tmp，完整动作包尚未核验；下一独立AMASS候选的Q1重定向/准入。下方“缺SMPL-X”是接收前历史快照，以本条为准。

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25：[AMASS P05B真实归因](README_SUPERMIMIC_Q1_AMASS_MAPPING_20261025.md)804帧/20对账通过，实际固定肘腕12.698cm而目标P95为16.31–25.08cm，目标长度不兼容；三圆走足底目标本身与IK均有偏差。A错误“共用连杆”判断已撤回，原映射/参考未改；下一独立小样本尺度/校准、跨源隔离核对。
+
 2026-10-25：[AMASS P05A失败与B修正](README_SUPERMIMIC_Q1_AMASS_MAPPING_20261025.md)：交接肘腕共用判断有误，实际映射已用独立腕部连杆，A前提检查退出1/回收。B查实际固定连杆与足底，四项Mac控制通过，真实执行待。原R02 01:27继续4175轮/139.12分钟/OOM14；参考与预算不改，BONES交师兄。
 
 2026-10-25：[AMASS P04真实检查](README_SUPERMIMIC_Q1_AMASS_RETARGET_20261025.md)16段Q1候选转换/独立22门完成，0/16全通过，足底支撑15/残差11/最大间隙10项失败，0新增训练准入。人体FK/时轴正确，但仍须修适配质量，下一源/目标/IK归因。[P03](README_SUPERMIMIC_Q1_AMASS_PILOT_20261025.md)固定HumanML索引01:07接收成功，来源别名/受试者隔离未核完，不合库。[原R02](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)01:10:25继续3650轮/233600交互、121.33分钟、GPU40/OOM14，最终动力学待。[P06](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)40新增合格/算术22.81分钟未合库，B017待资源释放。BONES交师兄不再获取，原预算保持，移动目标未达。
@@ -92,7 +94,7 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
-| 2026-10-25 | AMASS P05映射/支撑归因 | A错误前提退出1/回收；实际映射正确，B四项Mac控制通过，真实诊断待，见[阶段记录](README_SUPERMIMIC_Q1_AMASS_MAPPING_20261025.md) |
+| 2026-10-25 | AMASS P05映射/支撑归因 | A错误前提退出1/回收；B804帧/20对账通过，目标刚性长度与支撑存在缺口，见[阶段记录](README_SUPERMIMIC_Q1_AMASS_MAPPING_20261025.md) |
 | 2026-10-25 | AMASS P02原速移动候选 | 43探查选16个KIT四秒原始窗口/64秒，16betas/120Hz，尚未FK/Q1准入或分配split，见[阶段记录](README_SUPERMIMIC_Q1_AMASS_PILOT_20261025.md) |
 | 2026-10-24 | PHUMA P06独立扩库与资源隔离 | B015/B016新增40合格/141.72秒；B017提前内存保护回收、未完成不计入，原R02继续，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md) |
 | 2026-10-24 | Q1扩库训练与低内存仿真准备 | 多名单组库两端6控制通过，真实组库/后端验证/新训练待执行，见[阶段记录](README_SUPERMIMIC_Q1_EXPANDED_RUN_20261024.md) |

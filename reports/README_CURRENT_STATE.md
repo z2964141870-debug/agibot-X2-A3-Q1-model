@@ -1,10 +1,12 @@
 # YUANQI 当前状态与下一步
 
-2026-10-25 03:26：[B018真实完成](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)，384候选中94合格/328.50秒、移动13/44.54秒，worker已回收/四绑定SHA通过。新增167片，加基础算术507训练片/1821.02秒（30.35分钟），尚未完整组库或新来源审计；下一独立B019 offset672/count352完成固定1024名单后组库，不把候选或算术量当验收结果。数据末内存17.16GB/OOM14、盘余1.572TB，保护线不变。
+2026-10-25 03:30：[B018真实完成/B019已启动](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)，B018的384候选中94合格/328.50秒、移动13/44.54秒，worker已回收/四绑定SHA通过。新增167片，加基础算术507训练片/1821.02秒（30.35分钟），尚未完整组库或新来源审计。B019 offset672/count352正在完成固定1024名单，guard835770/start_ticks3616223022；日志/启动收据见阶段README，不重复启动。启动内存17.16GB/OOM14、盘余1.547TB，保护线不变。`locomotion`仅源位移阈值标签，现test三段fitness名称不证明步行能力。
 
 [R02C](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md)从原5000保存加固定7000新轮；03:25:33实读575新轮/36800转移/累计5575、WM179组/actor129次，数值正常。03:24三进程boot/start_ticks一致，03:16最近496冻结通过；step0八类状态相同/12门全过，第500轮文件已生成但未做新张量审计。训练发布d21a880，原R02 FAILED保留；内存约18.8GB/OOM14/GPU39，100GiB/12GiB/30GiB保护及无自动重启保持。仍用原340训练片，不混新参考；固定预算后的全部353片初末动力学/轨迹审计尚待，未有续训后效果结论。BONES交师兄，不恢复获取。
 
 [R02-DEV-A](README_SUPERMIMIC_Q1_R02_DEVELOPMENT_20261025.md)原始/5000六段开发配对及轨迹审计已完成，完整5→6/6、跟随0/6，移动仅0.078251/参考0.521165m；续训效果尚待新评测，test未用于选方向。[资源恢复](README_SUPERMIMIC_Q1_RESOURCE_RECOVERY_20261025.md)已精确回收六个10月21日失败G1残留，实际释放21.20GB，原失败/停止实验与文件保留。
+
+[PHUMA-D04参考动力学](README_SUPERMIMIC_Q1_PHUMA_REFERENCE_DYNAMICS_20261025.md)新入口及Mac三项选择控制通过，固定8段已准入train位移候选，复用原接触/inverse helper及独立统计审计；服务器执行待。0积分/策略/optimizer，不改496冻结或测试方向。03:36 R02C900新轮/累计5900、内存19.00GB/OOM14，B019352段转换结束、独立检查待完成。
 
 数据：[P07](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md)正式审计完成，95 HumanML中原动作/目录候选跨split0，12未解匹配及其他258段使全源隔离仍false；该结果仅覆盖基础353参考，不能替代新增库审计。[AMASS P04/P06](README_SUPERMIMIC_Q1_AMASS_LOCAL_OFFSET_20261025.md)16段初版/4段局部偏移均0准入，不采用退步配置；肘腕共用的旧假设已在P05B撤回。PHUMA原库340片/20.45分钟用于R02C，新增参考完整组库与来源核对后再用于独立实验；完整30分钟/1小时库及有效移动策略目标尚未达。BONES等用户通知。
 

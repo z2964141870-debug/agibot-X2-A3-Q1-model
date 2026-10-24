@@ -24,6 +24,8 @@ final服务器`data/supermimic_for_q1/R03_B128_extend12000_20261023/run/final.pt
 
 主机huanyu:/opt/data/private/YuanQi_Q1；Python`/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python`。当前PHUMA训练发布`ed4217384e7abfc8a9cea0b23b95592d4a3e19b0`，Mac代码副本`/tmp/yuanqi-supermimic-q1-20261023`，分支Q1。R01旧接触、R02/R03及R04V2历史保留，A3停止。目标未完成，不把训练完成或审计通过当作可用策略。下方A3/教学条目为其他阶段历史，以各自最新入口为准。
 
+[PHUMA D03共同轨迹模型诊断](README_SUPERMIMIC_Q1_PHUMA_MODEL_20261024.md)入口已实现、本地四项控制通过，真实执行待发布/部署及资源门；11训练/4开发用于奖励分量与H1/H8/H32比较，两模型使用同一最终轨迹，早停奖励保留完整分母。0新训练，test不用于方向筛选。
+
 ## 用户目标与固定约定
 
 - 长期目标：衣服与头环自然遥操 X2 / A3 / Q1，并形成自主策略训练能力和科研课题。

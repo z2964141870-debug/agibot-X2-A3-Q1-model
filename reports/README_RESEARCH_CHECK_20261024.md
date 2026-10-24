@@ -1,6 +1,6 @@
 # 每日研究检查 · 2026-10-24
 
-日期：北京时间2026-10-24。阶段：research-watch-20261024。状态：**来源分析与本地研究记录完成，GitHub发布待实际核验**。
+日期：北京时间2026-10-24。阶段：research-watch-20261024。状态：**来源分析、研究文档发布与main/Q1固定内容核验完成**。
 
 ## 目标与范围
 
@@ -54,7 +54,7 @@ python3 logs/research_watch/2026-10-24/inspect_text.py diffdreamer_full.html 'st
 
 ## 保存与同步状态
 
-本地研究记录已保存，原始资料只在忽略目录LOCAL_ONLY，未网盘备份。main与Q1发布均需逐个审查diff/暂存区、diff --cached --check、运行实际script/project_tools/audit_git_payload.py后普通推送，再独立核对分支ref和固定内容字节。当前尚未将新记录写为已推送；完成后补回执。旧成功/失败记录保留，不强推，不覆盖并行工作。
+研究文档已普通推送并于北京时间09:25:57独立核验：main为ce88294d4110974a311aa4b2d440456cc867c5c3，Q1为229abe5c71ba01a4ea7835d5ea1b149ad982f48d。GitHub REST分支ref均与对应干净副本HEAD相同；两分支各五份固定内容经base64解码、字节数、Git-blob/SHA256与提交内容逐项一致。main九文件404,965字节、Q1八文件119,758字节，diff/暂存区审查、diff --cached --check和实际audit_git_payload.py均通过；各分支工程入口仅研究行改变。详情见[同步回执](../data/manifests/research_watch_sync_20261024.json)。本次后续提交只补回执及研究状态，其最终ref/内容核验另存logs/research_watch/2026-10-24/receipt_{main,Q1}_verification.json，不在回执里循环嵌入自身提交号。原始资料LOCAL_ONLY，未网盘备份；正式hp3090工作树未知，未修改科学主机作业。没有强推或覆盖并行工作。
 
 ## 下一步与恢复入口
 

@@ -40,7 +40,7 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
-| 2026-10-24 | 每日研究简报与Q1研究记录 | PhysibleMDM/MPBRS/DiffDreamer三项；8摘要/3相关正文/4固定文本，111条去重，未复现；见[简报](research/2026-10-24/README.md)和[阶段](README_RESEARCH_CHECK_20261024.md)，发布以[回执](../data/manifests/research_watch_sync_20261024.json)为准 |
+| 2026-10-24 | 每日研究简报与Q1研究记录 | PhysibleMDM/MPBRS/DiffDreamer三项；8摘要/3相关正文/4固定文本，111条去重，未复现；见[简报](research/2026-10-24/README.md)和[阶段](README_RESEARCH_CHECK_20261024.md)，main/Q1文档独立核验通过，见[回执](../data/manifests/research_watch_sync_20261024.json) |
 | 2026-10-24 | Q1 D05/D05B根高支撑候选 | 三片/54导出/276统计通过，走路动力学变坏、保留失败对照不接入训练，见[阶段记录](README_SUPERMIMIC_Q1_SUPPORT_PROJECTION_20261024.md) |
 | 2026-10-24 | Q1 D04参考动力学诊断 | 两端控制、3475帧分析、276项重算及三峰值帧复现完成，确认支撑缺口/出拳峰值自碰撞，见[诊断记录](README_SUPERMIMIC_Q1_REFERENCE_DYNAMICS_20261024.md) |
 | 2026-10-24 | Q1 V02新协议渲染准备 | 两端各4控制及三片真实只读预检通过，小证据SHA一致；EGL/完整渲染待执行，见[准备记录](README_SUPERMIMIC_Q1_RENDER_PREP_20261024.md) |

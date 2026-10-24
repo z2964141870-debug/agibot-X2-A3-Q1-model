@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-24当前[BONES主线目标](README_SUPERMIMIC_Q1_BONES_GOAL_20261024.md)：Q1平地全身移动跟随，30分钟再1小时合格参考、固定独立移动开发/测试及80%工程门槛。[P01](README_SUPERMIMIC_Q1_BONES_METADATA_20261024.md)142220行/352703事件与71117来源组通过，固定train1024/dev128/test128候选；[P00](README_SUPERMIMIC_Q1_BONES_RUNTIME_20261024.md)预算/worker保护8控制通过。[P02-F01](README_SUPERMIMIC_Q1_BONES_FORMAT_20261024.md)公开源码120Hz/厘米/度格式、独立原速CSV接口及服务器9控制通过；Mac缺scipy仅语法通过，实际CSV/匹配模型未核验，事件标签不替代真实边界。20:51 Windows仍crdownload/huanyu无原包，同boot/OOM14、GPU39/17788MiB空闲、盘余1.965TB。下一流式原包接入及实际Q1重定向，0新BONES参考或训练；旧A3/STOPPED不恢复，下方是历史快照。
+2026-10-24当前[BONES主线目标](README_SUPERMIMIC_Q1_BONES_GOAL_20261024.md)：Q1平地全身移动跟随，30分钟再1小时合格参考、固定独立移动开发/测试及80%工程门槛。P01固定train1024/dev128/test128来源隔离候选，P00保护通过；[P02-F01](README_SUPERMIMIC_Q1_BONES_FORMAT_20261024.md)原速CSV服务器9控制、[P02-A01](README_SUPERMIMIC_Q1_BONES_ARCHIVE_20261024.md)完整gzip/hash与按名单流式提取两端11控制通过。真实CSV/匹配模型未核验，事件标签不替代边界。用户确认仍在D:\tmp下载；21:16最大partial2720542770字节与20:51相同，未查浏览器状态、不判下载终态。21:22服务器无原包、OOM14/GPU38/17788MiB空闲、盘余1.965TB。下一源模型/重定向准备及完整原包接入；0新BONES参考或训练，旧A3/STOPPED不恢复，下方是历史快照。
 
 2026-10-24：[三数据源优先级建议](README_SUPERMIMIC_Q1_DATASET_PRIORITY_20261024.md)完成官方来源/本地证据复核。新增准备建议先AMASS移动子集，BONES-SEED作后续论文数据对齐，PHUMA保留现成库与基线；立即无需转换的训练以PHUMA成本最低。此为建议，未启动/切换实验，三库在Q1无公平性能排名；身体模型到位只证明有限样本载入。D:\tmp复查仍只有BONES metadata、未见完整G1/SOMA包。原始数据和旧实验不变。
 

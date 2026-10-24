@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-24：[BONES P02-A01原包接入准备](README_SUPERMIMIC_Q1_BONES_ARCHIVE_20261024.md)。完整SHA/gzip CRC、成员索引和仅冻结名单提取两端11控制通过；真实原包尚未到位、0新Q1参考/训练。21:16 Windows最大partial与20:51同大小，未验证浏览器下载状态；21:22服务器无原包/OOM14/GPU38/盘余1.965TB。现有G1模型仅载入/FK候选，尚非源模型身份通过。下一源模型与独立重定向准备。
+
 2026-10-24：[BONES P02-F01独立CSV/原速准备](README_SUPERMIMIC_Q1_BONES_FORMAT_20261024.md)。固定官方查看器/NVlabs来源确认文档120Hz/厘米/度，按列名解析及120→50时间插值服务器9控制通过；Mac缺scipy仅语法通过。实际原包/模型未验证，事件时段存在端点偏差、不参与裁片。下一流式原包接入，0新BONES参考或训练。
 
 2026-10-24：[BONES-SEED主线目标](README_SUPERMIMIC_Q1_BONES_GOAL_20261024.md)已开始。[P01元数据审计](README_SUPERMIMIC_Q1_BONES_METADATA_20261024.md)142220行/352703事件及71117来源组隔离通过，固定train1024/dev128/test128独立候选。[P00存储/worker保护](README_SUPERMIMIC_Q1_BONES_RUNTIME_20261024.md)两端8控制及真实预算非GPU探针通过，磁盘余1.965TB/OOM14；仅对显式新调用生效。用户确认完整包仍在D:\tmp下载，下一P02原包接入，尚无BONES参考/训练。未知fps不算合格秒数，此前AMASS优先建议被新目标覆盖。

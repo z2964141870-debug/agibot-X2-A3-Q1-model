@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 03:48：[PHUMA P08真实组库及别名审计完成](README_SUPERMIMIC_Q1_PHUMA_LIBRARY_20261025.md)，train616片/36.73分钟、dev6/test7不变；211段HumanML发现4条新增训练片与dev共享CMU/137目录候选。P08B独立排除入口及三项Mac控制通过、实际执行待，全源隔离仍false，R02C不改输入。
+
 2026-10-25 03:41：[PHUMA B019完成](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)，额外1024来源全部处理完，算术616训练片/36.73分钟待完整组库。[PHUMA-D04](README_SUPERMIMIC_Q1_PHUMA_REFERENCE_DYNAMICS_20261025.md)8片/1441帧及736独立重算通过，发现静态过门参考仍浮脚/近地滑动，不据此宣称唯一失败原因。[R02C](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md)继续1025新轮/累计6025，OOM14，尚无新效果证明。下一P08组库与新增来源审计。
 
 2026-10-25 03:30：[PHUMA B018完成/B019启动](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)，B018新增94片/328.50秒，worker回收及四绑定SHA通过；各批算术507训练片/30.35分钟，B019正处理最后352候选，完整组库/新增来源审计待。`locomotion`仅位移阈值标签，不代表步行语义。[R02C](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md)575新轮/累计5575，固定340输入与7000预算保持，OOM14。BONES交师兄，无新效果结论。
@@ -118,6 +120,7 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-25 | PHUMA P08完整扩展库 | 2885候选完整组库/时轴/准入及来源审计完成，4条新增train目录候选冲突待P08B排除，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_LIBRARY_20261025.md) |
 | 2026-10-25 | PHUMA D04参考接触与逆动力学 | 8段train/1441帧/2882次inverse及736独立重算完成，浮脚/近地滑动缺口确认，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_REFERENCE_DYNAMICS_20261025.md) |
 | 2026-10-25 | R02C独立续训 | 5000父保存继承12门/496冻结通过，固定7000新轮进行中，最终跟随效果待，见[阶段记录](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md) |
 | 2026-10-25 | R02六段开发对照 | 真实初始/5000动力学及两次轨迹审计完成，完整5→6/6、跟随0/6，见[阶段记录](README_SUPERMIMIC_Q1_R02_DEVELOPMENT_20261025.md) |

@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-24当前[BONES主线目标](README_SUPERMIMIC_Q1_BONES_GOAL_20261024.md)：Q1平地全身移动跟随，30分钟再1小时合格训练参考、独立移动开发/测试及80%工程门槛。P01固定train1024/dev128/test128隔离候选，P00保护/P02-A01流式接入通过；[F02](README_SUPERMIMIC_Q1_BONES_FORMAT_V2_20261024.md)纠正V1列名、11控制通过；[M01](README_SUPERMIMIC_Q1_BONES_G1_MODEL_20261024.md)现有G1与宇树官方骨架/足碰撞数组及64随机FK差0，仍非BONES原生成模型证明。21:35–36 Windows D:\tmp最大partial已6894708545字节、较21:16增长4.174GB，仍未完成。21:22服务器OOM14/GPU38/盘余1.965TB。下一BONES专用原速重定向/独立质检及完整原包接入，0新BONES参考或训练；旧A3/STOPPED不恢复，下方为历史快照。
+2026-10-24当前[BONES主线目标](README_SUPERMIMIC_Q1_BONES_GOAL_20261024.md)：Q1平地全身移动跟随，30分钟再1小时合格训练参考、独立移动开发/测试及80%工程门槛。P01固定train1024/dev128/test128隔离候选，P00/P02-A01保护和流式接入通过；F02列名已纠正/11控制，M01官方G1骨架/足碰撞和64随机FK一致。[C01重定向](README_SUPERMIMIC_Q1_BONES_RETARGET_20261024.md)原速源FK/Q1 IK及合成全链路5控制通过，初次路径类型故障已修/失败保留，输出不可训练。Windows D:\tmp 21:35–36最大partial6.895GB且增长，尚无完整包。下一BONES独立质检及完整原包接入/实际小批；0新真实BONES参考或训练。旧A3/STOPPED不恢复，下方为历史快照。
 
 2026-10-24：[三数据源优先级建议](README_SUPERMIMIC_Q1_DATASET_PRIORITY_20261024.md)完成官方来源/本地证据复核。新增准备建议先AMASS移动子集，BONES-SEED作后续论文数据对齐，PHUMA保留现成库与基线；立即无需转换的训练以PHUMA成本最低。此为建议，未启动/切换实验，三库在Q1无公平性能排名；身体模型到位只证明有限样本载入。D:\tmp复查仍只有BONES metadata、未见完整G1/SOMA包。原始数据和旧实验不变。
 

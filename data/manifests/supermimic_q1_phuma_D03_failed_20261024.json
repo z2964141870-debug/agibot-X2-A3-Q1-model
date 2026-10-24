@@ -1,0 +1,47 @@
+{
+  "status": "PHUMA_D03_FAILED_METADATA_BEFORE_MODEL_LOADING",
+  "native_exit_code": 1,
+  "diagnostic_code_commit": "0206e6bc108bdff92b455ed2d79dafa6247620ff",
+  "preflight_stdout": {
+    "status": "PHUMA_D03_POST_COMPLETION_PREFLIGHT_PASSED",
+    "captured_utc": "2026-10-24T07:20:03.261847+00:00",
+    "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+    "controller_status": "PHUMA_TRAINING_AND_MATCHED_EVALUATION_COMPLETED",
+    "original_active_process_group_members": [],
+    "memory_bytes": 27366604800,
+    "headroom_to_30GiB_bytes": 4845649920,
+    "oom_kill": 14,
+    "source_sha256": "a09ed657f4c397d0590875fbf9e269b5564c9a1b4385bafe3128aa37c570e7c5",
+    "reports": {
+      "README.md": {
+        "bytes": 24912,
+        "sha256": "4835a01a31b28b371ccef1c536319388364b539291206541a2be37ab8c42a4cc"
+      },
+      "README_CURRENT_STATE.md": {
+        "bytes": 18781,
+        "sha256": "13efe5db7e7c9450b8fb1c212f0c7fe26e9b05be97b72f0efb8cf9435406d053"
+      },
+      "README_SUPERMIMIC_Q1_PHUMA_20261024.md": {
+        "bytes": 24868,
+        "sha256": "287d294bdd7e75b4e2570edcfdeefb451fbbf1b26b6e26d82a7c228f2fa6b279"
+      },
+      "README_SUPERMIMIC_Q1_PHUMA_PLOTS_20261024.md": {
+        "bytes": 6836,
+        "sha256": "eba98518f8142c3336b639c589aa7c25fe97c02510aab45a02882ca2fd844c5c"
+      }
+    },
+    "gpu": "38, 6348 MiB, 0 %"
+  },
+  "log": {
+    "path": "/opt/data/private/YuanQi_Q1/logs/PHUMA_D03_common_models_20261024.log",
+    "bytes": 742,
+    "sha256": "22b172deb48334223e5ef53d8e218d07029f543665922fcc9ec41bc47f6709ef"
+  },
+  "output_directory_created": false,
+  "failure": "Core evaluation labels train rows as training, and both development/test rows as heldout. The new diagnostic incorrectly required the three registered PHUMA labels directly in each raw row.",
+  "correction": "Require the actual core labels, derive true split from the unchanged registered clip identity, and retain evaluation_split separately in the diagnostic view. Local controls re-run; real D03B deferred while prioritizing the user's paper/data-scale review.",
+  "new_physics_steps": 0,
+  "new_policy_calls": 0,
+  "new_optimizer_updates": 0,
+  "checkpoint_tensors_loaded": false
+}

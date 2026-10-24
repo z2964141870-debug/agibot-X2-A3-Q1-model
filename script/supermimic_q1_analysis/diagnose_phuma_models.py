@@ -24,7 +24,8 @@ def diagnostic_rows(initial, final, splits):
         rows = {row["clip"]: row for row in receipt["rows"]}
         if len(rows) != len(receipt["rows"]) or rows.keys() != expected.keys():
             raise ValueError("Paired receipt coverage differs from the specification")
-        if any(row["split"] != expected[name] for name, row in rows.items()):
+        if any(row["split"] != ("training" if expected[name] == "train" else "heldout")
+               for name, row in rows.items()):
             raise ValueError("A diagnostic row has a different registered split")
         indexed.append(rows)
     for name in expected:
@@ -34,7 +35,8 @@ def diagnostic_rows(initial, final, splits):
     selected = splits["train"] + splits["development"]
     if not selected:
         raise ValueError("No train/development diagnostic clips")
-    return [[rows[name] for name in selected] for rows in indexed]
+    return [[dict(rows[name], split=expected[name], evaluation_split=rows[name]["split"])
+             for name in selected] for rows in indexed]
 
 
 def full_denominator_terms(row, maximum):

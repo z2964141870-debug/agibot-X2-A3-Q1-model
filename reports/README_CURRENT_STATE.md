@@ -1,12 +1,14 @@
 # YUANQI 当前状态与下一步
 
+2026-10-24当前优先：[SuperMimic数据用法复核](README_SUPERMIMIC_Q1_PHUMA_DATA_USE_20261024.md)。论文BONES-SEED主库129514段/264.56h，LAFAN1对照40段/2.45h；R01实际11训练片/41.30s，只有2移动，属于小样本闭环。代码已有1秒50/40/10采样，但首轮只选112候选，19门后留18片。现有源端温和训练候选26246片/标称26.44h，未去重或Q1准入。下一先准备独立P04扩量/筛选协议，以合格30分钟再1小时为工程目标，同时核查小库可学习性与在线交互预算；尚未扩量或启动新训练，不把量少当唯一失败因果。
+
 PHUMA R01于14:36:50完成固定3000轮/48000转移训练及全部配对流水线，97.6787分钟；7阶段原生退出0、11项保存审计及两份18片轨迹重算通过。14:38:44独立核验121冻结文件、三划分算术、日志身份与原进程组无活跃成员，GPU38摄氏度/OOM14。最终16/18完整但0/18过跟随门；test三非移动片完整关节误差0.272425→0.240971rad，开发移动根误差0.262304→0.263104m、位移0.066904/参考0.373315m，移动仍不足。见[PHUMA主阶段](README_SUPERMIMIC_Q1_PHUMA_20261024.md)及[完成核验](../data/manifests/supermimic_q1_phuma_R01_completion_verification_20261024.json)。final205225043字节/SHA7db966ff…，LOCAL_ONLY，训练发布ed421738不变。
 
-[V01图表](README_SUPERMIMIC_Q1_PHUMA_PLOTS_20261024.md)18片/36组误差重算及两图目视/身份通过。[D02C足底诊断](README_SUPERMIMIC_Q1_PHUMA_SUPPORT_MAPPING_20261024.md)实际退出0，8训练片/1536帧、32几何检查和264统计重算通过，121冻结未变/OOM14。四支撑失败片源固定落地后已有17.68–20.45mm波动、映射20.81–27.61mm，IK/目标曲线RMSE0.56–3.04mm；源与映射贡献筛选缺口，但两合格移动参考也学习失败，不能据此认定策略主因。下一PHUMA训练/开发奖励和H1/H8/H32模型诊断，再登记独立训练；当前无新训练，不放宽门/重跑终态，目标仍未达。
+[V01图表](README_SUPERMIMIC_Q1_PHUMA_PLOTS_20261024.md)18片/36组误差重算及两图目视/身份通过。[D02C足底诊断](README_SUPERMIMIC_Q1_PHUMA_SUPPORT_MAPPING_20261024.md)实际退出0，8训练片/1536帧、32几何检查和264统计重算通过，121冻结未变/OOM14。四支撑失败片源固定落地后已有17.68–20.45mm波动、映射20.81–27.61mm，IK/目标曲线RMSE0.56–3.04mm；源与映射贡献筛选缺口，但两合格移动参考也学习失败，不能据此认定策略主因。后续模型诊断已延后，先核论文数据用法；当前无新训练，不追改门或原终态，目标仍未达。
 
 2026-10-24 11:26用户要求停止当前整轮并改用PHUMA；[R04V2已停止](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)。11:26:30总控/worker均STOPPED_SIGNAL，原生退出0；A实际932轮/14912新控制转移、322组WM/272次actor，B未启动，无完整对照/最终评测。11:27:30–32核验原worker缺失、controller Z/RSS0、两个进程组无活跃成员，3份权重大小/SHA及冻结条件通过；GPU38摄氏度/OOM14。停止证据`data/manifests/supermimic_q1_R04V2_user_stop_20261024.json`。
 
-本轮PHUMA-only参考来自全G1 73076片扫描及固定112候选筛选，18合格（train11/development4/test3）；不是全量PHUMA训练。旧A3动作/权重不参与，原始30Hz按原速重采样50Hz、三网络随机初始化、16环境/B128/H32。[D01输入诊断](README_SUPERMIMIC_Q1_PHUMA_DIAGNOSIS_20261024.md)保留85支撑比例/44自碰撞失败的重叠计数，D02C将核查其映射来源；不据输入筛选瓶颈直接认定策略移动失败原因。
+本轮PHUMA-only参考来自全G1 73076片扫描及固定112候选筛选，18合格（train11/development4/test3）；不是全量PHUMA训练。旧A3动作/权重不参与，原始30Hz按原速重采样50Hz、三网络随机初始化、16环境/B128/H32。[D01输入诊断](README_SUPERMIMIC_Q1_PHUMA_DIAGNOSIS_20261024.md)保留85支撑比例/44自碰撞失败的重叠计数，D02C已核查其映射来源；不据输入筛选瓶颈直接认定策略移动失败原因。
 
 R04V2及原R04停止/失败终态、日志、源码和权重保留，不执行原流水线后续阶段、不解锁或重启。停止保存final为205227539字节/SHA `b9e3914e8bddcbcabef7a7383cf7e2d097bd5a184a000358a2937b11859e6fb8`，未做完整张量/最终效果审计。A3保持停止，全部大型原件LOCAL_ONLY。以下D08/R03/V02为历史证据，不是续跑许可。
 
@@ -24,7 +26,7 @@ final服务器`data/supermimic_for_q1/R03_B128_extend12000_20261023/run/final.pt
 
 主机huanyu:/opt/data/private/YuanQi_Q1；Python`/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python`。当前PHUMA训练发布`ed4217384e7abfc8a9cea0b23b95592d4a3e19b0`，Mac代码副本`/tmp/yuanqi-supermimic-q1-20261023`，分支Q1。R01旧接触、R02/R03及R04V2历史保留，A3停止。目标未完成，不把训练完成或审计通过当作可用策略。下方A3/教学条目为其他阶段历史，以各自最新入口为准。
 
-[PHUMA D03共同轨迹模型诊断](README_SUPERMIMIC_Q1_PHUMA_MODEL_20261024.md)入口已实现、本地四项控制通过，真实执行待发布/部署及资源门；11训练/4开发用于奖励分量与H1/H8/H32比较，两模型使用同一最终轨迹，早停奖励保留完整分母。0新训练，test不用于方向筛选。
+[PHUMA D03共同轨迹模型诊断](README_SUPERMIMIC_Q1_PHUMA_MODEL_20261024.md)已发布入口首次真实执行因training/heldout与三划分标签接口不匹配退出1，模型张量尚未加载、输出未创建。新诊断标签适配已修，本地四项控制通过；D03B延后于数据规模复核，无真实模型数值结果、0新训练，test不用于方向筛选。
 
 ## 用户目标与固定约定
 

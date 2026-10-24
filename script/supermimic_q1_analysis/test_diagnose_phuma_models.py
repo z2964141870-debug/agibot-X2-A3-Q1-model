@@ -9,7 +9,7 @@ from diagnose_phuma_models import diagnostic_rows, full_denominator_terms, windo
 class PhumaDiagnosticTests(unittest.TestCase):
     def fixture(self):
         splits = {"train": ["walk"], "development": ["dev"], "test": ["unseen"]}
-        rows = [{"clip": name, "split": split, "reference": {"sha256": name},
+        rows = [{"clip": name, "split": "training" if split == "train" else "heldout", "reference": {"sha256": name},
                  "expected_steps": 20} for split, names in splits.items() for name in names]
         return {"rows": rows}, {"rows": copy.deepcopy(rows)}, splits
 
@@ -17,6 +17,8 @@ class PhumaDiagnosticTests(unittest.TestCase):
         rows = diagnostic_rows(*self.fixture())
         self.assertEqual([[row["clip"] for row in phase] for phase in rows],
                          [["walk", "dev"], ["walk", "dev"]])
+        self.assertEqual([row["split"] for row in rows[0]], ["train", "development"])
+        self.assertEqual([row["evaluation_split"] for row in rows[0]], ["training", "heldout"])
 
     def test_changed_pair_or_split_rejected(self):
         for field, value in (("reference", {"sha256": "changed"}),

@@ -1,0 +1,26 @@
+import pathlib,json,collections,hashlib,datetime
+r=pathlib.Path("/opt/data/private/YuanQi_Q1"); base=r/"data/supermimic_for_q1/PHUMA_P02_scan_20261024"
+p=base/"selection.json"; raw=p.read_bytes()
+assert hashlib.sha256(raw).hexdigest()=="b26fa28ea35d06321369bc8f50fa487d399182f0711ac3c2f6389340afd8935e"
+doc=json.loads(raw); index=pathlib.Path(doc["all_records"]["path"]); h=hashlib.sha256(); groups=collections.defaultdict(set); agg={}; frames=collections.Counter()
+def add(key,row):
+ a=agg.setdefault(key,{"chunks":0,"nominal_duration_s":0.,"locomotion_chunks":0,"locomotion_nominal_duration_s":0.})
+ a["chunks"]+=1; a["nominal_duration_s"]+=row["source_statistics"]["source_duration_s"]
+ if row["bucket"]=="locomotion":
+  a["locomotion_chunks"]+=1; a["locomotion_nominal_duration_s"]+=row["source_statistics"]["source_duration_s"]
+ groups[key].add(row["source_group"])
+with index.open("rb") as f:
+ for line in f:
+  h.update(line); row=json.loads(line)
+  assert row["source_schema_valid"]
+  frames[row["source_statistics"]["source_frames"]]+=1
+  add("all",row); add(row["split"],row)
+  if row["moderate_motion_candidate"]: add("moderate/"+row["split"],row)
+assert index.stat().st_size==doc["all_records"]["bytes"] and h.hexdigest()==doc["all_records"]["sha256"]
+assert agg["all"]["chunks"]==73076
+for key,a in agg.items():
+ a["source_groups"]=len(groups[key]); a["nominal_hours"]=a["nominal_duration_s"]/3600
+ a["locomotion_nominal_hours"]=a["locomotion_nominal_duration_s"]/3600
+cg=pathlib.Path("/sys/fs/cgroup/memory"); oom=dict(line.split() for line in (cg/"memory.oom_control").read_text().splitlines())
+assert int(oom["oom_kill"])==14
+print(json.dumps({"status":"PHUMA_EXISTING_CORPUS_DURATION_INVENTORY_COMPLETED","captured_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"selection": {"path":str(p),"bytes":len(raw),"sha256":hashlib.sha256(raw).hexdigest()},"index":doc["all_records"],"aggregates":agg,"source_frame_length_counts":dict(sorted(frames.items())),"oom_kill":14,"memory_bytes":int((cg/"memory.usage_in_bytes").read_text()),"new_training_steps":0,"new_physics_steps":0,"new_retargeting":0,"limits":"Nominal sum of packaged chunk durations, not independent or deduplicated unique hours. Moderate-source candidates have not passed Q1 retargeting or dynamic validation. Group identity is name-based, not subject-disjoint."}))

@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-25：[AMASS P06局部偏移对照准备](README_SUPERMIMIC_Q1_AMASS_LOCAL_OFFSET_20261025.md)，按固定官方GMR局部位置偏移思路、同四段/原速/原根轨迹/22门进行对照，真实运行待。01:48:58原R02 4750轮/160.37分钟，469冻结和原进程身份通过，OOM14；P05B实测缺口作为依据，BONES交师兄。
+2026-10-25：[AMASS P06局部偏移真实对照](README_SUPERMIMIC_Q1_AMASS_LOCAL_OFFSET_20261025.md)01:57完成、0/4准入；两圆走残差下降但慢走支撑恶化/新增自碰撞，新配置不采用。服务器4控制通过、worker回收/OOM14。下一已有PHUMA来源审计，不盲目恢复B017；原R02继续，BONES交师兄。
 
 2026-10-25：[AMASS P05B真实归因](README_SUPERMIMIC_Q1_AMASS_MAPPING_20261025.md)804帧/20对账通过，实际固定肘腕12.698cm而目标P95为16.31–25.08cm，目标长度不兼容；三圆走足底目标本身与IK均有偏差。A错误“共用连杆”判断已撤回，原映射/参考未改；下一独立小样本尺度/校准、跨源隔离核对。
 
@@ -96,7 +96,7 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
-| 2026-10-25 | AMASS P06局部偏移对照 | 实现/语法通过，服务器数值控制/四段实际对照待，见[阶段记录](README_SUPERMIMIC_Q1_AMASS_LOCAL_OFFSET_20261025.md) |
+| 2026-10-25 | AMASS P06局部偏移对照 | 真实4片/22门完成，0准入，新配置不采用，见[阶段记录](README_SUPERMIMIC_Q1_AMASS_LOCAL_OFFSET_20261025.md) |
 | 2026-10-25 | AMASS P05映射/支撑归因 | A错误前提退出1/回收；B804帧/20对账通过，目标刚性长度与支撑存在缺口，见[阶段记录](README_SUPERMIMIC_Q1_AMASS_MAPPING_20261025.md) |
 | 2026-10-25 | AMASS P02原速移动候选 | 43探查选16个KIT四秒原始窗口/64秒，16betas/120Hz，尚未FK/Q1准入或分配split，见[阶段记录](README_SUPERMIMIC_Q1_AMASS_PILOT_20261025.md) |
 | 2026-10-24 | PHUMA P06独立扩库与资源隔离 | B015/B016新增40合格/141.72秒；B017提前内存保护回收、未完成不计入，原R02继续，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md) |

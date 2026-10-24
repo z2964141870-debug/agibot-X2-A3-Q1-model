@@ -12,6 +12,7 @@ import traceback
 import zipfile
 
 import mujoco
+import mink
 import numpy as np
 from scipy.spatial.transform import Rotation, Slerp
 
@@ -20,7 +21,7 @@ sys.path.insert(0, str(HERE.parent / "supermimic_for_q1"))
 sys.path.insert(0, str(HERE.parent / "q1"))
 from contact_protocol import ContactCorrectedAssets
 from prepare_motion import export_q1, support_height
-from q1_retarget import BodyReference, Q1Retargeter
+from q1_retarget import BodyReference, Q1Retargeter, heading_rotation
 from supermimic.q1_assets import identity
 
 from acquire_source import COMMIT
@@ -28,7 +29,7 @@ from motion_io import JOINT_NAMES_23, decode_g1
 from scan_corpus import ARCHIVE_SHA, resource_check
 
 
-PROTOCOL = "PHUMA_G1_30HZ_TO_Q1_50HZ_NATIVE_TIME_V1"
+PROTOCOL = "PHUMA_G1_30HZ_TO_Q1_50HZ_NATIVE_TIME_V2"
 BODY_MAP = json.loads((HERE / "retarget_mapping.json").read_text())["body_map"]
 
 
@@ -89,6 +90,54 @@ def source_reference(model, motion, names):
                        "source_horizontal_origin_m": motion["root_trans"][0, :2].tolist()}
 
 
+def grounded_solver(assets):
+    solver = Q1Retargeter(HERE / "retarget_control.json", HERE / "retarget_mapping.json")
+    floor = support_height(solver.sim.model, solver.sim.data, assets.foot_geoms)
+    solver.sim.data.qpos[2] -= floor
+    mujoco.mj_forward(solver.sim.model, solver.sim.data)
+    solver.robot_positions = solver.sim.data.xpos[solver.bodies].copy()
+    solver.robot_rotations = solver.sim.data.xmat[solver.bodies].reshape(-1, 3, 3).copy()
+    solver.posture.set_target(solver.sim.data.qpos)
+    return solver, floor
+
+
+def initialize_first_pose(solver, source, scale):
+    root = solver.root
+    cal = Rotation.from_quat(source.calibration_orientations, scalar_first=True).as_matrix()
+    rotations = Rotation.from_quat(source.orientations[0], scalar_first=True).as_matrix()
+    alignment = solver.robot_rotations[root] @ cal[root].T
+    heading = heading_rotation(solver.robot_rotations[root]) @ heading_rotation(cal[root]).T
+    root_rotation = alignment @ rotations[root]
+    root_position = solver.robot_positions[root] + scale * heading @ (source.positions[0, root] - source.calibration_positions[root])
+    source_cal_local = (source.calibration_positions - source.calibration_positions[root]) @ cal[root]
+    robot_cal_local = (solver.robot_positions - solver.robot_positions[root]) @ solver.robot_rotations[root]
+    local = (source.positions[0] - source.positions[0, root]) @ rotations[root]
+    targets = root_position + (robot_cal_local + scale * (local - source_cal_local)) @ root_rotation.T
+    target_rotations = alignment @ rotations @ cal.transpose(0, 2, 1) @ alignment.T @ solver.robot_rotations
+    q = solver.sim.data.qpos.copy()
+    q[:3], q[3:7] = root_position, Rotation.from_matrix(root_rotation).as_quat(scalar_first=True)
+    solver.configuration.update(q)
+    solver.root_task.set_target(mink.SE3.from_rotation_and_translation(mink.SO3.from_matrix(root_rotation), root_position))
+    for index, task in solver.tasks:
+        task.set_target(mink.SE3.from_rotation_and_translation(mink.SO3.from_matrix(target_rotations[index]), targets[index]))
+    if not isinstance(solver.limits[0], mink.ConfigurationLimit):
+        raise ValueError("Expected the established joint configuration limit")
+    # Fit a static initial pose before applying temporal speed limits to real frames.
+    for iteration in range(32):
+        velocity = mink.solve_ik(solver.configuration, [task for _, task in solver.tasks] + [solver.posture],
+                                 .02, solver.config["solver"], damping=solver.config["damping"],
+                                 safety_break=True, limits=[solver.limits[0]], constraints=[solver.root_task])
+        solver.configuration.integrate_inplace(velocity, .02)
+        if np.linalg.norm(velocity) < 1e-5:
+            break
+    solver.sim.data.qpos[:] = solver.configuration.data.qpos
+    mujoco.mj_forward(solver.sim.model, solver.sim.data)
+    residual = np.linalg.norm(solver.sim.data.xpos[solver.bodies] - targets, axis=-1)
+    return {"method": "static_initial_pose_IK_without_temporal_velocity_limit",
+            "iterations": iteration + 1, "initial_body_error_p95_m": float(np.quantile(residual, .95)),
+            "added_reference_frames": 0, "time_scale": 1.0}
+
+
 def convert(root, selection_path, vendor, output, pilot):
     if output.exists():
         raise FileExistsError(output)
@@ -136,16 +185,11 @@ def convert(root, selection_path, vendor, output, pilot):
                 raw = package.read(row["member"])
                 if len(raw) != row["bytes"] or hashlib.sha256(raw).hexdigest() != row["sha256"]:
                     raise ValueError("Selected PHUMA source bytes changed")
-                solver = Q1Retargeter(HERE / "retarget_control.json", HERE / "retarget_mapping.json")
-                floor = support_height(solver.sim.model, solver.sim.data, assets.foot_geoms)
-                solver.sim.data.qpos[2] -= floor
-                mujoco.mj_forward(solver.sim.model, solver.sim.data)
-                solver.robot_positions = solver.sim.data.xpos[solver.bodies].copy()
-                solver.robot_rotations = solver.sim.data.xmat[solver.bodies].reshape(-1, 3, 3).copy()
-                solver.posture.set_target(solver.sim.data.qpos)
+                solver, floor = grounded_solver(assets)
                 reference, details = source_reference(model, decode_g1(raw), solver.names)
                 item.update(details)
                 item["target_calibration_floor_m"] = floor
+                item["first_pose_initialization"] = initialize_first_pose(solver, reference, scale)
                 result = solver.retarget(reference, scale)
                 trace = output / "diagnostics" / (clip + ".npz")
                 np.savez_compressed(trace, time_s=reference.times,

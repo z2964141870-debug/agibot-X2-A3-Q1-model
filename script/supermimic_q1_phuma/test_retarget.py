@@ -7,7 +7,7 @@ import os
 import mujoco
 import numpy as np
 
-from retarget import resample_qpos
+from retarget import ContactCorrectedAssets, grounded_solver, initialize_first_pose, resample_qpos, source_reference
 
 
 class ResampleTests(unittest.TestCase):
@@ -42,6 +42,20 @@ class ResampleTests(unittest.TestCase):
         model = mujoco.MjModel.from_xml_string('<mujoco><worldbody><body><freejoint/><geom size=".1"/></body></worldbody></mujoco>')
         with self.assertRaises(ValueError):
             resample_qpos(model, self.fixture())
+
+    def test_initial_crouch_fitted_before_temporal_speed_limits(self):
+        assets = ContactCorrectedAssets(Path(os.environ["PHUMA_VENDOR"]).resolve().parents[2])
+        solver, _ = grounded_solver(assets)
+        motion = self.fixture()
+        motion["root_trans"][:, 2] = .68
+        motion["dof_pos_23"][:, [0, 6]] = -.35
+        motion["dof_pos_23"][:, [3, 9]] = .7
+        motion["dof_pos_23"][:, [4, 10]] = -.35
+        reference, _ = source_reference(self.model, motion, solver.names)
+        result = initialize_first_pose(solver, reference, .50818)
+        self.assertEqual(result["added_reference_frames"], 0)
+        self.assertGreater(np.abs(solver.sim.data.qpos[7:] - assets.q0).max(), .1)
+        np.testing.assert_allclose(solver.sim.data.qpos[:2], [0., 0.], atol=1e-8)
 
 
 if __name__ == "__main__":

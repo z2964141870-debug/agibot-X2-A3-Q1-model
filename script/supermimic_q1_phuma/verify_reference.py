@@ -19,7 +19,7 @@ from supermimic.q1_assets import TRACKED, identity
 from motion_io import decode_g1
 
 
-PROTOCOL = "PHUMA_G1_30HZ_TO_Q1_50HZ_NATIVE_TIME_V1"
+PROTOCOL = "PHUMA_G1_30HZ_TO_Q1_50HZ_NATIVE_TIME_V2"
 
 
 def foot_bottom(model, data, gids):

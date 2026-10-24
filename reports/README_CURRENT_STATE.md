@@ -2,7 +2,7 @@
 
 2026-10-24 11:26用户要求停止当前整轮并改用PHUMA；[R04V2已停止](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)。11:26:30总控/worker均STOPPED_SIGNAL，原生退出0；A实际932轮/14912新控制转移、322组WM/272次actor，B未启动，无完整对照/最终评测。11:27:30–32核验原worker缺失、controller Z/RSS0、两个进程组无活跃成员，3份权重大小/SHA及冻结条件通过；GPU38摄氏度/OOM14。停止证据`data/manifests/supermimic_q1_R04V2_user_stop_20261024.json`。
 
-下一主线见[PHUMA阶段](README_SUPERMIMIC_Q1_PHUMA_20261024.md)：huanyu原ZIP3416370206字节/SHA `7bd38634f1ec075af907a2bce10616b083a5414885674ce6630664124e22e495`；固定源46文件独立核验通过。11:58:43全G1 73076片格式/30Hz扫描退出0、六项两端控制通过；官方文件级划分5213来源组重叠已整体留test，112候选80/16/16足额且分组隔离。清单 `data/manifests/supermimic_q1_phuma_selection_20261024.json`。下一原速Q1重定向/质检后随机初始化训练SuperMimic for Q1；旧A3来源参考/权重退出新输入，PHUMA训练尚未启动。
+下一主线见[PHUMA阶段](README_SUPERMIMIC_Q1_PHUMA_20261024.md)：固定源46文件核验通过；P02全G1 73076片格式/30Hz、分组/候选原字节独立审计通过，4184官方混合来源组整体留test，112候选80/16/16零组交集。P01漏处理_clip_17，已被P02替代。12:13:43 P02首批12片Q1独立几何质量0合格，主要支撑间隙/自碰撞；首帧每关节仅走0.04rad、下蹲首帧穿地142.85mm导致整片抬高。下一P03只加静态首帧Mink初始化，同12片保持原速/2rad/s和原质量门复核；参考通过后从随机初始化训练。PHUMA训练尚未启动，旧A3来源动作/权重不进入新实验。
 
 R04V2及原R04停止/失败终态、日志、源码和权重保留，不执行原流水线后续阶段、不解锁或重启。停止保存final为205227539字节/SHA `b9e3914e8bddcbcabef7a7383cf7e2d097bd5a184a000358a2937b11859e6fb8`，未做完整张量/最终效果审计。A3保持停止，全部大型原件LOCAL_ONLY。以下D08/R03/V02为历史证据，不是续跑许可。
 

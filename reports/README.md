@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25：[S02真实/想象动作域修正准备](README_SUPERMIMIC_Q1_ACTION_DOMAIN_20261025.md)确认clip20接口差异及动作惩罚越界，独立修正/三Adam拒绝坏梯度/保存审计/真实replay H32探针已实现；Mac五项缺torch全部skip，服务器验证待。旧FAILED/496冻结保留，无新训练。
+
 2026-10-25 04:17：[R02C实际数值FAILED](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md)于04:07:44新增1810轮退出，累计6810、未完成最终配对；496冻结保持、原worker回收/OOM14。最后日志动作惩罚/critic爆大，先定位真实/想象动作域不一致，不盲目续跑；step1500待张量审计。下方RUNNING为历史快照。
 
 2026-10-25：[P09来源排除视图登记](README_SUPERMIMIC_Q1_SOURCE_VIEW_REGISTRATION_20261025.md)独立入口已发布，两端四项控制及真实预检通过，显式绑定排除前/后来源证据且保留原几何/held-out；612训练/dev6/test7，未登记或启动第二训练。R02C已FAILED，先处理数值异常，BONES交师兄。
@@ -124,6 +126,7 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-25 | S02动作域一致性与数值失败 | 已确认真实clip/想象无界差异，新修正及探针实现；服务器控制/审计/真实BPTT待，见[阶段记录](README_SUPERMIMIC_Q1_ACTION_DOMAIN_20261025.md) |
 | 2026-10-25 | P09来源排除视图训练登记 | 两端四项控制及真实服务器预检通过，612训练/dev6/test7；无第二训练，见[阶段记录](README_SUPERMIMIC_Q1_SOURCE_VIEW_REGISTRATION_20261025.md) |
 | 2026-10-25 | PHUMA P08/P08B扩展库与来源排除 | P08完整组库，P08B-V2排除4条冲突后612训练片/36.52分钟；准入/保存时轴及独立HumanML复审通过，全源隔离仍false，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_LIBRARY_20261025.md) |
 | 2026-10-25 | PHUMA D04参考接触与逆动力学 | 8段train/1441帧/2882次inverse及736独立重算完成，浮脚/近地滑动缺口确认，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_REFERENCE_DYNAMICS_20261025.md) |

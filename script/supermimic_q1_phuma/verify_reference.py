@@ -78,7 +78,8 @@ def check(assets, row, scale, package):
         fk_error = {name: 0. for name in ("body_pos_w", "body_quat_w", "body_lin_vel_w", "body_ang_vel_w")}
         for frame in range(len(q)):
             data.qpos[:], data.qvel[:] = q[frame], v[frame]
-            mujoco.mj_forward(model, data)
+            mujoco.mj_fwdPosition(model, data)
+            mujoco.mj_fwdVelocity(model, data)
             velocities = np.empty((len(TRACKED), 6))
             for i, bid in enumerate(assets.body_ids):
                 mujoco.mj_objectVelocity(model, data, mujoco.mjtObj.mjOBJ_XBODY, int(bid), velocities[i], 0)

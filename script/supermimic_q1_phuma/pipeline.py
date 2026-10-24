@@ -9,6 +9,7 @@ from pathlib import Path
 import signal
 import subprocess
 import sys
+import time
 
 from run_training import admitted_clips, identity
 
@@ -114,7 +115,26 @@ def run(experiment):
                 save(experiment / "controller_status.json", {"status": "RUNNING", "phase": phase,
                      "process": process_identity, "child_pid": child.pid, "started_utc": started,
                      "events": events, "log": str(log)})
-                code = child.wait()
+                last_progress = time.monotonic()
+                last_marker = None
+                while True:
+                    try:
+                        code = child.wait(timeout=30)
+                        break
+                    except subprocess.TimeoutExpired:
+                        if phase == "train":
+                            progress = experiment / "run/status.json"
+                            marker = progress.stat().st_mtime_ns if progress.exists() else None
+                            if marker != last_marker:
+                                last_progress, last_marker = time.monotonic(), marker
+                            if time.monotonic() - last_progress > 900:
+                                child.terminate()
+                                try:
+                                    child.wait(timeout=90)
+                                except subprocess.TimeoutExpired:
+                                    child.kill()
+                                    child.wait()
+                                raise RuntimeError("PHUMA training stopped after 900 seconds without progress")
             events.append({"phase": phase, "exit_code": code, "started_utc": started,
                            "ended_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(), "log": identity(log)})
             print(json.dumps(events[-1]), flush=True)

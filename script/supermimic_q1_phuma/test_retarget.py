@@ -57,6 +57,22 @@ class ResampleTests(unittest.TestCase):
         self.assertGreater(np.abs(solver.sim.data.qpos[7:] - assets.q0).max(), .1)
         np.testing.assert_allclose(solver.sim.data.qpos[:2], [0., 0.], atol=1e-8)
 
+    def test_geometry_and_body_velocity_do_not_require_constraint_acceleration(self):
+        assets = ContactCorrectedAssets(Path(os.environ["PHUMA_VENDOR"]).resolve().parents[2])
+        rng = np.random.default_rng(2026102407)
+        for _ in range(8):
+            full, kinematic = mujoco.MjData(assets.model), mujoco.MjData(assets.model)
+            full.qpos[7:] = assets.q0 + rng.normal(0, .03, 22)
+            full.qvel[:] = rng.normal(0, .1, 28)
+            kinematic.qpos[:], kinematic.qvel[:] = full.qpos, full.qvel
+            mujoco.mj_forward(assets.model, full)
+            mujoco.mj_fwdPosition(assets.model, kinematic)
+            mujoco.mj_fwdVelocity(assets.model, kinematic)
+            for key in ("xpos", "xquat", "geom_xpos", "geom_xmat", "cvel"):
+                np.testing.assert_array_equal(getattr(full, key), getattr(kinematic, key))
+            self.assertEqual(full.ncon, kinematic.ncon)
+            np.testing.assert_array_equal([c.dist for c in full.contact], [c.dist for c in kinematic.contact])
+
 
 if __name__ == "__main__":
     unittest.main()

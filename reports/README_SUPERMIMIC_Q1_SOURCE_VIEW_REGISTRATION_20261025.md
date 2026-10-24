@@ -1,6 +1,6 @@
 # PHUMA来源排除视图的训练登记
 
-记录日期：2026-10-25，北京时间。阶段P09。状态：独立入口及四项控制完成，服务器真实预检待；未登记或启动第二轮训练。
+记录日期：2026-10-25，北京时间。阶段P09。状态：两端四项控制及服务器真实只读预检通过；未登记或启动第二轮训练。
 
 ## 目标与范围
 
@@ -45,3 +45,9 @@ P09当前只完成实现与本地控制；不登记新实验、不启动新训�
 代码、本文、索引与当前状态按Q1审查、payload审计后提交并显式推送，独立核远端。大型NPZ和模型仍服务器LOCAL_ONLY，Mac只保留小记录。本阶段从476166d以来已发布25份文件/732699字节机械同步到用户恢复镜像、逐字节一致，未覆盖未知内容或加入BONES脚本。
 
 准备代码已发布`ec58cf2b414da04ef0311ecdae3d12b0d8037d32`并独立核远端Q1，三份新文件未部署。04:17复核发现R02C已于04:07:44非有限数值失败，本阶段不据先前RUNNING快照继续登记新实验。失败证据先入[R02C记录](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md)，优先解决动作接口/数值异常；P09真实只读预检仍可随后完成，四项本地控制不等同服务器结果。
+
+## 真实预检通过
+
+ec58cf2三个新文件逐SHA部署后，服务器同四项控制原生退出0。随后上述check命令实际退出0，状态`PHUMA_SOURCE_EXCLUSION_REGISTRATION_PREFLIGHT_PASSED`，612训练/dev6/test7；完整继承记录比较、排除前后同索引证据、无已知HumanML跨split冲突及原trainer逐参考字节准入通过。0积分、optimizer及新训练；未创建第二训练实验。
+
+原样[预检小收据](../data/manifests/supermimic_q1_phuma_P09_registration_check_20261025.json)32178字节/SHA`0cf4893f297fa38e06cbc81467f258173a0b25059499d589d447d3b46d8de599`已取回核同；[四项控制stdout](../logs/session_records/supermimic_q1_phuma_P09_controls_20261025.log)保存。新源SHA分别为`phuma_source_view.py`的`1d5df855ccf861f1fb40ef82a2f0e88170ea7686cac35b5f850ce272ffcca2ff`、`register_phuma_view.py`的`8ed2eb3dfe85aa5b7c2f12b4c7350d644dbb257150bc815749bfba328ccf3583`。保留来源未解/几何未重跑限制，后续独立新实验可真实登记此view，不冒称参考动力学或移动策略改善。

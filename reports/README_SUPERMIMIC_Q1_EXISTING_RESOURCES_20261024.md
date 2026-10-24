@@ -1,6 +1,6 @@
 # 现有资源继续推进SuperMimic for Q1
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-EXISTING-R02。状态：23:08独立PHUMA R02启动，23:51第1000轮16项CPU保存检查通过；23:52:14实际1425轮/91200交互、WM519组/actor469次/OOM14。469冻结文件未变，尚无最终配对评测或移动效果。
+记录日期：2026-10-24，北京时间，10月25日继续更新。阶段：SM-Q1-EXISTING-R02。状态：23:08独立PHUMA R02启动，23:51第1000轮16项CPU保存检查通过；10月25日00:08:22实际1875轮/120000交互、WM699组/actor649次/OOM14，三个角色身份匹配。469冻结文件未变，尚无最终配对评测或移动效果。
 
 ## 目标与范围
 
@@ -98,3 +98,11 @@ step0为68550763字节/SHA`3aac44805d1df27e848264d144fd3c444c669fa24eae17bab0b63
 ```
 
 23:52:14原trainer仍RUNNING到1425轮/91200交互、WM519组/actor469次、GPU39摄氏度/OOM14。下一维持原有限流水线，另用P06 B017 offset160/count128继续扩库；不为重复保存检查打断训练或放宽保护线。
+
+## 10月25日恢复快照
+
+00:08:22独立轻量核验原guard/controller/trainer实际/proc命令、boot d994e71f…和原三个start_ticks均匹配且活跃；训练1875轮/120000交互、WM699组/actor649次，3605.05秒、GPU40摄氏度/OOM14，存储guard仍RUNNING。未重复重型保存审计或训练/物理。新[进度/资源快照](../data/manifests/supermimic_q1_existing_resources_progress_A_20261025.json)保存当时controller、guard和进程身份，不能把旧PID作为未来活跃证明。
+
+[P06](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)B015/B016额外40片合格/141.72秒未混入本轮输入；B017触发提前内存保护、退出-15已回收，7个未完成参考不计合格，0新OOM。暂缓并行PHUMA转换，保留失败目录，待资源释放再以新目录从原固定offset160完整处理，不放宽线。
+
+[AMASS P02](README_SUPERMIMIC_Q1_AMASS_PILOT_20261025.md)在无torch/机器人模型的轻量步骤中完成43个原动作探查，选出16个KIT四秒原始移动窗口/64秒，均16betas、原120Hz、split未分配且不可训练；还没有FK/Q1重定向/几何质检，不能加到合格参考时长。下一先核HumanML别名与PHUMA来源隔离，再独立准备AMASS小样本；原R02继续固定12000轮及全部353片初末动力学配对流水线。

@@ -1,0 +1,146 @@
+{
+  "captured_utc": "2026-10-24T16:08:22.353532+00:00",
+  "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+  "training": {
+    "status": "RUNNING",
+    "step": 1875,
+    "env_steps": 120000,
+    "wm_updates": 699,
+    "policy_updates": 649,
+    "seconds": 3605.0514359399676,
+    "pid": 825189,
+    "reward_mean": 0.07348434627056122,
+    "termination_fraction": 0.0,
+    "joint_rmse_rad": 0.2807638347148895,
+    "health": {
+      "gpu_temperature_c": 40,
+      "cgroup_memory_bytes": 29025325056,
+      "oom_kill": 14
+    },
+    "imag_objective": 7.032203674316406,
+    "imag_return_undisc": 2.2993435859680176,
+    "imag_reward_mean": 0.07196290791034698,
+    "imag_survival_H": 0.9686844944953918,
+    "imag_dhat_mean": 0.020314520224928856,
+    "policy_grad_norm": 0.21728919446468353,
+    "action_abs_mean": 0.6160470247268677,
+    "imag_r/motion_global_root_pos": 0.00894126482307911,
+    "imag_r/motion_global_root_ori": 0.007413649931550026,
+    "imag_r/motion_body_pos": 0.018541773781180382,
+    "imag_r/motion_body_ori": 0.003479952923953533,
+    "imag_r/motion_body_lin_vel": 0.018721159547567368,
+    "imag_r/motion_body_ang_vel": 0.016900500282645226,
+    "imag_r/action_rate_l2": -0.0007326886407099664,
+    "imag_r/joint_limit": -0.001302710734307766,
+    "critic_loss": 0.022195443511009216,
+    "critic_value_mean": 7.062402248382568,
+    "critic_target_mean": 7.042818546295166,
+    "wm/state_loss": 0.42600212097167967,
+    "wm/term_bce": 0.00018881165888160468,
+    "wm/nse_1step": 0.007092205435037613,
+    "wm/nse_kstep": 0.0088980533182621,
+    "wm/term_acc": 1.0,
+    "wm/loss": 0.4261909484863281,
+    "wm/grad_norm": 3.2535980224609373
+  },
+  "controller": {
+    "status": "RUNNING",
+    "phase": "train",
+    "process": {
+      "pid": 825183,
+      "pgid": 825183,
+      "start_ticks": 3614648887,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    },
+    "child_pid": 825189,
+    "started_utc": "2026-10-24T15:08:06.084851+00:00",
+    "events": [],
+    "log": "/opt/data/private/YuanQi_Q1/logs/PHUMA_R02_expanded64_H32_12000_20261024/train.log"
+  },
+  "storage_guard": {
+    "status": "RUNNING",
+    "command": [
+      "/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python",
+      "-u",
+      "/opt/data/private/YuanQi_Q1/script/supermimic_q1_expanded/expanded_pipeline.py",
+      "run",
+      "--experiment",
+      "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024"
+    ],
+    "cwd": "/opt/data/private/YuanQi_Q1",
+    "started_utc": "2026-10-24T15:08:03.296200+00:00",
+    "controller_pid": 825182,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "experiment": {
+        "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024",
+        "unique_allocated_bytes": 274350080,
+        "unique_logical_bytes": 274321116,
+        "unique_inodes": 15,
+        "symlinks_not_followed": 0
+      },
+      "source": {
+        "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_base_library_20261024",
+        "unique_allocated_bytes": 14360576,
+        "unique_logical_bytes": 12940462,
+        "unique_inodes": 362,
+        "symlinks_not_followed": 353
+      },
+      "free_bytes": {
+        "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024": 1965490769920,
+        "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_base_library_20261024": 1965490769920
+      }
+    },
+    "error": null,
+    "worker_pid": 825183,
+    "worker_group": 825183
+  },
+  "processes": {
+    "825182": {
+      "state": "S",
+      "start_ticks": "3614648876",
+      "expected_start_ticks": "3614648876",
+      "identity_matches": true,
+      "command": "/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python -u /opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/runtime_guard.py --goal-config /opt/data/private/YuanQi_Q1/script/supermimic_q1_expanded/phuma_R02_20261024.json --experiment-root /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024 --source-root /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_base_library_20261024 --workdir /opt/data/private/YuanQi_Q1 --status /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024/storage_guard.json --log /opt/data/private/YuanQi_Q1/logs/PHUMA_R02_expanded64_H32_12000_20261024/pipeline.log -- /opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python -u /opt/data/private/YuanQi_Q1/script/supermimic_q1_expanded/expanded_pipeline.py run --experiment /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024 "
+    },
+    "825183": {
+      "state": "S",
+      "start_ticks": "3614648887",
+      "expected_start_ticks": "3614648887",
+      "identity_matches": true,
+      "command": "/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python -u /opt/data/private/YuanQi_Q1/script/supermimic_q1_expanded/expanded_pipeline.py run --experiment /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024 "
+    },
+    "825189": {
+      "state": "S",
+      "start_ticks": "3614649166",
+      "expected_start_ticks": "3614649166",
+      "identity_matches": true,
+      "command": "/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python /opt/data/private/YuanQi_Q1/script/supermimic_q1_expanded/train_expanded.py --model-slots 4 --slot-binding-output /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024/slot_binding.json --scan-check /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_base_library_20261024/scan_check.json --binding-output /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024/phuma_binding.json --root /opt/data/private/YuanQi_Q1 --motions /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_base_library_20261024/references --output /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024/run --backend-receipt /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_slots_V01_20261024/receipt.json --reference-receipt /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_base_library_20261024/reference_check.json --steps 12000 --num-envs 64 --threads 4 --batch 128 --wm-batch 64 --wm-batches 10 --checkpoint-every 1000 --seed 20261024 --code-commit b6d310897b89d1b8664f6165867bf1256cf49208 "
+    }
+  },
+  "amass_selection": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P02_moving_candidates_20261025/selection.json",
+    "bytes": 81611,
+    "sha256": "acffdda17a9c6cc3467cf69322b0cd4e4be4dfd8bb1bafaf553e6e4115c9736f"
+  },
+  "amass_reconciliation": {
+    "selected_sixteen": true,
+    "unique_sources": true,
+    "raw_numeric_candidate_gates": true,
+    "four_seconds_explicit_timebase": true,
+    "sixteen_betas": true,
+    "unassigned_and_not_training_admitted": true,
+    "no_new_q1_physics_or_training": true,
+    "duration_sum": true
+  },
+  "prior_cpu_checkpoint_audit": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024/checkpoint1000_audit.json",
+    "bytes": 3101,
+    "sha256": "dc2da346096da2ea29936b19983ebf5159c8c2c3514bb0abf3ebf6d393feda66"
+  },
+  "memory_bytes": 29031690240,
+  "oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 14\n",
+  "new_physics_steps": 0,
+  "new_optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY"
+}

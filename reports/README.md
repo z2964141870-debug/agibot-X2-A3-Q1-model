@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-24：[R02第1000轮16项保存检查通过](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)，三网络有限且变化、Adam3490/299/5980、469冻结文件未变/OOM14。原训练最近1525轮；[P06](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)B015/B016共40片合格/141.72秒，与原库算术380训练片/22.81分钟、未合库。B017触发28.75GiB提前内存保护、worker退出-15回收，未完成7份不计合格，原训练继续/无新增OOM。暂缓并行转换，待资源释放新目录从offset160完整重做；BONES不再获取，策略目标未达。
+2026-10-25：[AMASS P02轻量移动候选](README_SUPERMIMIC_Q1_AMASS_PILOT_20261025.md)两端4控制及真实43原动作探查完成，选16个KIT四秒窗口/64秒，120Hz/16betas、未分配split/不可训练；八项小清单重算通过、0新Q1参考。[原R02](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)00:08继续1875轮/60.08分钟，三个进程身份匹配、GPU40/OOM14，第1000轮16项保存检查已通过。[P06](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)新增40合格/141.72秒、与原库算术22.81分钟未合库；B017提前内存保护退出并回收，未完成不计合格。下一跨源别名与AMASS FK/Q1质检；原训练有限预算保持，BONES不再获取，策略目标未达。
 
 2026-10-24当前：[现有资源R02实际启动](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)。23:08独立PHUMA340训练片/20.45分钟、64环境/4槽/H32/12000轮启动；23:12核验300轮/19200交互、WM69组/actor19次、critic与梯度有限、469冻结文件及进程身份通过/OOM14。冻结spec、启动及核验收据已保存，尚无效果结论。BONES交师兄处理，临时凭据/18866已清理；AMASS与16维SMPL-X到位但未Q1准入。[D03B](README_SUPERMIMIC_Q1_PHUMA_MODEL_20261024.md)和[模型槽](README_SUPERMIMIC_Q1_EXPANDED_RUN_20261024.md)实际完成证据已恢复；下方等待条目为历史状态。
 
@@ -90,6 +90,8 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-25 | AMASS P02原速移动候选 | 43探查选16个KIT四秒原始窗口/64秒，16betas/120Hz，尚未FK/Q1准入或分配split，见[阶段记录](README_SUPERMIMIC_Q1_AMASS_PILOT_20261025.md) |
+| 2026-10-24 | PHUMA P06独立扩库与资源隔离 | B015/B016新增40合格/141.72秒；B017提前内存保护回收、未完成不计入，原R02继续，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md) |
 | 2026-10-24 | Q1扩库训练与低内存仿真准备 | 多名单组库两端6控制通过，真实组库/后端验证/新训练待执行，见[阶段记录](README_SUPERMIMIC_Q1_EXPANDED_RUN_20261024.md) |
 | 2026-10-24 | PHUMA P04分批扩量 | 原1861候选转换完成；train340/1227.10s为批次累计，新增1024训练候选已选出；0新训练，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_EXPANSION_20261024.md) |
 | 2026-10-24 | AMASS/BONES-SEED来源扩展 | AMASS17265动作/标称56.34h索引与独立算术通过；缺身体模型/BONES原包，0新训练，见[阶段记录](README_SUPERMIMIC_Q1_SOURCE_EXPANSION_20261024.md) |

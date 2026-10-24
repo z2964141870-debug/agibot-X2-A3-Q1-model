@@ -6,7 +6,7 @@
 
 final服务器`data/supermimic_for_q1/R03_B128_extend12000_20261023/run/final.pt`为205225747字节/SHA`10d0838663b5d24215f493ce0738228597452e899b1a378df6d6b453b7e10ea7`，原件LOCAL_ONLY。小证据`data/manifests/supermimic_q1_R03_completion_verification_20261024.json`，读取日志`logs/session_records/supermimic_q1_R03_completion_read_20261024.log`。观察时controller762428为Z、worker不存在，GPU38摄氏度/空闲17788MiB、容器25031303168字节/OOM14。连接经Windows跳板恢复18864转发；断线没有触发重启。
 
-下一条工作：[V02入口](README_SUPERMIMIC_Q1_RENDER_PREP_20261024.md)对R03 final三段保存物理轨迹实际渲染，再核验ffprobe、首/中/末画面与播放；原18863页是R01。随后选择独立改进实验，不自动追加R03预算。[D04](README_SUPERMIMIC_Q1_REFERENCE_DYNAMICS_20261024.md)已确认参考支撑/出拳自碰撞问题；[D05B](README_SUPERMIMIC_Q1_SUPPORT_PROJECTION_20261024.md)仅改根高使动力学变坏、仍无训练资格，不能接入训练。D04/D05/D06不重复，冻结源码/输入保留。
+[V02/R03完整回放](README_SUPERMIMIC_Q1_VISUAL_R03_20261024.md)已完成：三视频826/579/339帧，ffprobe/SHA、九帧目视与浏览器三动作播放通过，桌面/手机无溢出。新入口`http://127.0.0.1:18865/`，原18863为R01；视频与评测一致、走路仍近原地。09:52收尾冻结条件通过，GPU38摄氏度/空闲17788MiB、容器25255591936字节/OOM14。小证据`data/manifests/supermimic_q1_V02_R03_verification_20261024.json`，大视频LOCAL_ONLY。下一核查参考、奖励和世界模型动作响应后选择独立改进，不自动追加R03预算。[D04](README_SUPERMIMIC_Q1_REFERENCE_DYNAMICS_20261024.md)的参考支撑/自碰撞缺口保留；[D05B](README_SUPERMIMIC_Q1_SUPPORT_PROJECTION_20261024.md)无训练资格，不能接入。已完成D04/D05/D06不重复，冻结源码/输入保留。
 
 主机huanyu:/opt/data/private/YuanQi_Q1；Python`/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python`。科学发布`d5f9476125f2c3c7ed2d7c1e6ac898e1f69d6429`，Mac代码副本`/tmp/yuanqi-supermimic-q1-20261023`，分支Q1。R01旧接触、R02修正接触32/128对照及停止账本保留，A3停止。目标未完成，不把训练完成或审计通过当作可用策略。下方A3/教学条目为其他阶段历史，以各自最新入口为准。
 

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Q1 / R03 / MuJoCo</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #202321; background: #f5f6f5; font: 15px/1.5 system-ui, sans-serif; letter-spacing: 0; }
+    header { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; padding: 18px 24px; border-bottom: 1px solid #d9dedb; background: #fff; }
+    h1 { margin: 0; font-size: 24px; font-weight: 650; }
+    header span { color: #5b635f; font-size: 14px; }
+    main { max-width: 1440px; margin: 0 auto; padding: 22px 24px; }
+    nav { display: flex; flex-wrap: wrap; border-bottom: 1px solid #cdd4cf; margin-bottom: 18px; }
+    button { min-height: 44px; padding: 8px 22px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: #555f59; font: inherit; cursor: pointer; }
+    button[aria-selected="true"] { color: #951c36; border-bottom-color: #b92241; font-weight: 650; }
+    button:hover { background: #e9edea; }
+    button:focus-visible { outline: 2px solid #287c50; outline-offset: -4px; }
+    video { display: block; width: 100%; aspect-ratio: 1280 / 548; background: #181b19; }
+    footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; padding-top: 14px; color: #536158; font-size: 13px; }
+    dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 22px 0 0; border-top: 1px solid #d9dedb; }
+    dl div { padding: 14px 18px 0 0; min-width: 0; }
+    dt { color: #5b635f; font-size: 13px; }
+    dd { margin: 4px 0 0; font-size: 20px; font-variant-numeric: tabular-nums; }
+    .outcome { margin: 18px 0 0; color: #912b3d; font-size: 14px; }
+    #playback-error { color: #912b3d; }
+    @media (max-width: 600px) {
+      header { padding: 14px 12px; }
+      main { padding: 14px 8px; }
+      button { padding: 8px 12px; flex: 1; }
+      dl { grid-template-columns: 1fr; gap: 0; }
+      dl div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 10px 0 0; }
+      dd { font-size: 18px; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <header><h1>Q1</h1><span>MuJoCo / R03 / 15,000 rounds / October 24, 2026</span></header>
+  <main>
+    <nav role="tablist" aria-label="Motion">
+      <button type="button" role="tab" id="walk" aria-selected="true" aria-controls="simulation-panel" tabindex="0">Walk</button>
+      <button type="button" role="tab" id="squat" aria-selected="false" aria-controls="simulation-panel" tabindex="-1">Squat</button>
+      <button type="button" role="tab" id="punch" aria-selected="false" aria-controls="simulation-panel" tabindex="-1">Punch (development)</button>
+    </nav>
+    <section id="simulation-panel" role="tabpanel" aria-labelledby="walk">
+      <video id="simulation" controls autoplay muted loop playsinline preload="metadata" src="render_walk/comparison.mp4" aria-label="Reference and saved Q1 physical evaluation"></video>
+      <p id="playback-error" role="status" hidden>Video unavailable.</p>
+      <footer><span id="timing">33.04 s / 1,652 control steps</span><span>Free base / 50 Hz control / 1 ms physics</span></footer>
+      <dl>
+        <div><dt>Full-body joint RMSE</dt><dd id="joint-error">0.1885 rad</dd></div>
+        <div><dt>Leg joint RMSE</dt><dd id="leg-error">0.1761 rad</dd></div>
+        <div><dt>Maximum excursion / reference</dt><dd id="excursion">0.029 / 1.126 m</dd></div>
+      </dl>
+      <p class="outcome" id="outcome">Tracking target unmet. Walking remains near the start.</p>
+    </section>
+  </main>
+  <script>
+    const video = document.querySelector('video');
+    const buttons = [...document.querySelectorAll('[role="tab"]')];
+    const panel = document.getElementById('simulation-panel');
+    const clips = {
+      walk: { timing: '33.04 s / 1,652 control steps', joint: '0.1885 rad', legs: '0.1761 rad', excursion: '0.029 / 1.126 m', outcome: 'Tracking target unmet. Walking remains near the start.' },
+      squat: { timing: '23.16 s video / 1,157 control steps', joint: '0.2011 rad', legs: '0.1893 rad', excursion: '0.033 / 0.013 m', outcome: 'Tracking target unmet.' },
+      punch: { timing: '13.56 s / 678 control steps', joint: '0.2625 rad', legs: '0.1174 rad', excursion: '0.032 / 0.016 m', outcome: 'Tracking target unmet. Reused development clip.' }
+    };
+    function select(button) {
+      const playing = !video.paused;
+      const clip = clips[button.id];
+      buttons.forEach(tab => {
+        tab.setAttribute('aria-selected', String(tab === button));
+        tab.tabIndex = tab === button ? 0 : -1;
+      });
+      panel.setAttribute('aria-labelledby', button.id);
+      document.getElementById('playback-error').hidden = true;
+      video.autoplay = playing;
+      video.src = 'render_' + button.id + '/comparison.mp4';
+      document.getElementById('timing').textContent = clip.timing;
+      document.getElementById('joint-error').textContent = clip.joint;
+      document.getElementById('leg-error').textContent = clip.legs;
+      document.getElementById('excursion').textContent = clip.excursion;
+      document.getElementById('outcome').textContent = clip.outcome;
+      video.load();
+      if (playing) video.play().catch(() => {});
+    }
+    video.addEventListener('error', () => { document.getElementById('playback-error').hidden = false; });
+    buttons.forEach((button, index) => {
+      button.addEventListener('click', () => select(button));
+      button.addEventListener('keydown', event => {
+        let next;
+        if (event.key === 'ArrowRight') next = buttons[(index + 1) % buttons.length];
+        if (event.key === 'ArrowLeft') next = buttons[(index + buttons.length - 1) % buttons.length];
+        if (event.key === 'Home') next = buttons[0];
+        if (event.key === 'End') next = buttons[buttons.length - 1];
+        if (next) { event.preventDefault(); next.focus(); select(next); }
+      });
+    });
+  </script>
+</body>
+</html>

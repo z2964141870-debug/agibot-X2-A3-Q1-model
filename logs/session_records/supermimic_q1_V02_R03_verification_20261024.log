@@ -1,0 +1,55 @@
+V02 native render exit codes: walk=0 squat=0 punch=0
+File verification native exit_code=0
+All ffprobe frame counts, durations, dimensions and output identities passed.
+Browser and visual checks: data/manifests/supermimic_q1_V02_R03_verification_20261024.json
+
+Exact render commands:
+cd /opt/data/private/YuanQi_Q1 && MUJOCO_GL=egl OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 /opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python -u script/supermimic_q1_analysis/render_audited_trace.py --root /opt/data/private/YuanQi_Q1 --evaluation data/supermimic_for_q1/R03_B128_extend12000_20261023/eval_final/receipt.json --audit data/supermimic_for_q1/R03_B128_extend12000_20261023/eval_final_audit.json --clip 001_walk_front_slow --output data/supermimic_for_q1/V02_R03_final_20261024/render_walk > logs/supermimic_q1_V02_R03_render_walk_20261024.log 2>&1
+cd /opt/data/private/YuanQi_Q1 && MUJOCO_GL=egl OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 /opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python -u script/supermimic_q1_analysis/render_audited_trace.py --root /opt/data/private/YuanQi_Q1 --evaluation data/supermimic_for_q1/R03_B128_extend12000_20261023/eval_final/receipt.json --audit data/supermimic_for_q1/R03_B128_extend12000_20261023/eval_final_audit.json --clip 042_squat_shallow_repeated --output data/supermimic_for_q1/V02_R03_final_20261024/render_squat > logs/supermimic_q1_V02_R03_render_squat_20261024.log 2>&1
+cd /opt/data/private/YuanQi_Q1 && MUJOCO_GL=egl OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 /opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python -u script/supermimic_q1_analysis/render_audited_trace.py --root /opt/data/private/YuanQi_Q1 --evaluation data/supermimic_for_q1/R03_B128_extend12000_20261023/eval_final/receipt.json --audit data/supermimic_for_q1/R03_B128_extend12000_20261023/eval_final_audit.json --clip 058_punch_front_alternating --output data/supermimic_for_q1/V02_R03_final_20261024/render_punch > logs/supermimic_q1_V02_R03_render_punch_20261024.log 2>&1
+
+Independent output verification source:
+import pathlib,json,hashlib,subprocess,datetime
+from PIL import Image
+root=pathlib.Path('/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/V02_R03_final_20261024')
+def identity(p):
+ p=pathlib.Path(p);return {'path':str(p),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
+rows=[];documents={};images=[]
+for name,expected in [('walk',826),('squat',579),('punch',339)]:
+ directory=root/('render_'+name)
+ receipt_path=directory/'receipt.json';audit_path=directory/'audited_render.json'
+ receipt=json.loads(receipt_path.read_text());audit=json.loads(audit_path.read_text())
+ assert receipt['status']=='SAVED_TRACE_RENDER_COMPLETED'
+ assert audit['status']=='AUDITED_SAVED_TRACE_RENDER_COMPLETED'
+ assert audit['render_receipt']==identity(receipt_path)
+ assert receipt['rendered_frames']==expected==audit['rendered_frames_expected']
+ assert all(identity(item['path'])==item for item in receipt['artifacts'])
+ video=directory/'comparison.mp4'
+ probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-count_frames','-select_streams','v:0','-show_entries','stream=width,height,r_frame_rate,avg_frame_rate,nb_read_frames,nb_frames,duration:format=duration','-of','json',str(video)],text=True))
+ stream,=probe['streams']
+ assert int(stream['nb_read_frames'])==expected
+ assert (stream['width'],stream['height'])==(1280,548)
+ assert stream['r_frame_rate']=='25/1'
+ assert abs(float(probe['format']['duration'])-expected/25)<0.001
+ pngs=sorted(directory.glob('frame_*.png'));assert len(pngs)==3
+ assert all(Image.open(p).size==(1280,548) for p in pngs)
+ assert len({identity(p)['sha256'] for p in pngs})==3
+ images.append([Image.open(p).convert('RGB').resize((640,274)) for p in pngs])
+ rows.append({'motion':name,'render_receipt':identity(receipt_path),'audit':identity(audit_path),'video':identity(video),'ffprobe':probe,'screenshots':[identity(p) for p in pngs],'pixel_std_min':receipt['pixel_std_min'],'checks_passed':True})
+ documents[name]={'render':receipt,'audited_render':audit}
+sheet=Image.new('RGB',(1920,822),'white')
+for row,panels in enumerate(images):
+ for col,panel in enumerate(panels):sheet.paste(panel,(col*640,row*274))
+sheet_path=root/'contact_sheet.png';assert not sheet_path.exists();sheet.save(sheet_path)
+result={'status':'R03_V02_RENDER_FILES_VERIFIED','utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'rows':rows,'documents':documents,'contact_sheet':identity(sheet_path),'new_physics_steps':0,'new_policy_inference':0,'new_optimizer_updates':0,'browser_playback_verified':False,'human_visual_review_complete':False,'storage_status':'LOCAL_ONLY'}
+print(json.dumps(result,separators=(',',':'),allow_nan=False))
+
+
+Post-render frozen/health verification source:
+import pathlib,json,hashlib,sys,datetime
+root=pathlib.Path('/opt/data/private/YuanQi_Q1');sys.path.insert(0,str(root/'script/supermimic_q1_extension'));import pipeline
+plan=json.loads((root/'data/supermimic_for_q1/R03_B128_extend12000_20261023/plan.json').read_text());pipeline.verify_plan(plan)
+base=root/'data/supermimic_for_q1/V02_R03_final_20261024'
+page=base/'index.html';launch=base/'viewer_server_launch.json';p=json.loads(launch.read_text());stat=pathlib.Path('/proc/{}/stat'.format(p['pid'])).read_text().split(')')[-1].split()
+assert int(stat[19])==p['start_ticks'] and stat[0]!='Z'
+print(json.dumps({'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'frozen_verified':True,'health':pipeline.runner.health(root,plan['baseline_health']['oom_kill']),'viewer':p,'page':{'path':str(page),'bytes':page.stat().st_size,'sha256':hashlib.sha256(page.read_bytes()).hexdigest()}},separators=(',',':')))

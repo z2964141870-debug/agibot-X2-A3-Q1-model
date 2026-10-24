@@ -1,6 +1,8 @@
 # YUANQI 当前状态与下一步
 
-2026-10-24当前[BONES主线目标](README_SUPERMIMIC_Q1_BONES_GOAL_20261024.md)：Q1移动跟随、先30分钟再1小时合格库、独立移动集及80%工程门槛。P01固定1024/128/128隔离候选，P00保护/P02流式接入及F02列名修正通过，M01官方G1骨架/64FK一致；C01转换5控制、[V01独立源FK/映射/导出验收](README_SUPERMIMIC_Q1_BONES_INDEPENDENT_20261024.md)8控制通过。均为准备/合成验证，0新真实BONES参考/训练。22:05 D:\tmp旧6.895GB partial消失且无完整包，用户确认下载失败并要求代理Git获取，当前核官方Git/LFS/Hub直连与权限。22:07服务器同boot/OOM14、GPU38/盘余1.965TB，无原包；旧A3/STOPPED不恢复。
+2026-10-24最新用户指示：停止BONES获取，交由师兄解决，用户到位后另行通知。当前恢复[现有资源推进](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)：PHUMA现成训练340片/1227.10秒、移动62片/221.76秒；dev6/test7隔离，AMASS原始17265标准动作及16维SMPL-X模型已到位、未获Q1准入。先独立PHUMA R02，拟64环境/4槽/H32/12000轮，尚未登记启动。BONES临时令牌已撤销、下载转发18866已停止、失败收据保留，0新BONES参考/训练。22:52:59实核huanyu同boot/OOM14，RTX3090空闲38摄氏度、磁盘余1.9658TB。
+
+[PHUMA D03B](README_SUPERMIMIC_Q1_PHUMA_MODEL_20261024.md)原执行实际已于19:28完成，收据SHA73fb400d…已与服务器重新核对。15个train/dev参考、90组共同轨迹预测，0新物理步/optimizer；开发移动H32根坐标26.26mm/CV20.91mm、根速度0.09287/CV0.03626m/s，关节0.02367rad。关节预测有学习而长时域根部仍弱，不据此断言动作梯度或唯一失败原因。[模型槽](README_SUPERMIMIC_Q1_EXPANDED_RUN_20261024.md)数值/梯度/64环境验证已通过，不重复完整验证。以下BONES等待、缺身体模型及D03B待执行为历史快照，以上述新状态为准。
 
 2026-10-24：[三数据源优先级建议](README_SUPERMIMIC_Q1_DATASET_PRIORITY_20261024.md)完成官方来源/本地证据复核。新增准备建议先AMASS移动子集，BONES-SEED作后续论文数据对齐，PHUMA保留现成库与基线；立即无需转换的训练以PHUMA成本最低。此为建议，未启动/切换实验，三库在Q1无公平性能排名；身体模型到位只证明有限样本载入。D:\tmp复查仍只有BONES metadata、未见完整G1/SOMA包。原始数据和旧实验不变。
 

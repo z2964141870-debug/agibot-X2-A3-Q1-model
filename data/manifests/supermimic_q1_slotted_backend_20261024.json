@@ -1,0 +1,675 @@
+{
+  "status": "BACKEND_AND_GRADIENT_CONTRACT_PASSED",
+  "optimizer_updates": 0,
+  "physics_control_steps": 4928,
+  "model_slots": 4,
+  "baseline_backend": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/P07_backend_20261023/receipt.json",
+    "bytes": 13909,
+    "sha256": "1b7cf656cab62adbb9266f8b7ba311f44671b0440668f8003b25ca0949dad3f7"
+  },
+  "storage_status": "LOCAL_ONLY",
+  "hardware_control": false,
+  "assets": {
+    "robot": "Q1 v3",
+    "mjcf": {
+      "path": "/opt/data/private/YuanQi_Q1/data/references/q1/model_20261023_P01/q1_v3/xml/q1_v3_mc.xml",
+      "bytes": 30489,
+      "sha256": "d9442f0de18071b100d927e310bc58b04e7be305fea8f126893b2700e8c4bd3b"
+    },
+    "adapter": {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/q1_assets.py",
+      "bytes": 5554,
+      "sha256": "0387e8aaef65e87b40f0e70020f19b1eada903101cb5603f692740370d179889"
+    },
+    "nq": 29,
+    "nv": 28,
+    "nu": 22,
+    "full_joint_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "waist_roll_joint",
+      "waist_yaw_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint"
+    ],
+    "active_joint_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "waist_roll_joint",
+      "waist_yaw_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint"
+    ],
+    "active_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "q0": [
+      0.0,
+      0.0,
+      0.0,
+      0.01,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.01,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "kp": [
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0
+    ],
+    "kd": [
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0
+    ],
+    "torque_fraction_of_model": 0.25,
+    "effective_effort_nm": [
+      9.0,
+      9.0,
+      9.0,
+      9.0,
+      5.5,
+      5.5,
+      9.0,
+      9.0,
+      9.0,
+      9.0,
+      5.5,
+      5.5,
+      9.0,
+      9.0,
+      5.5,
+      5.5,
+      5.5,
+      5.5,
+      5.5,
+      5.5,
+      5.5,
+      5.5
+    ],
+    "action_scale": [
+      0.18,
+      0.18,
+      0.18,
+      0.18,
+      0.11,
+      0.11,
+      0.18,
+      0.18,
+      0.18,
+      0.18,
+      0.11,
+      0.11,
+      0.18,
+      0.18,
+      0.11,
+      0.11,
+      0.11,
+      0.11,
+      0.11,
+      0.11,
+      0.11,
+      0.11
+    ],
+    "action_clip": 20.0,
+    "action_scale_basis": "0.25 * full_model_effort / kp; independent of trial torque cap",
+    "dt": 0.02,
+    "physics_dt": 0.001,
+    "substeps": 20,
+    "tracked_bodies": [
+      "pelvis",
+      "left_hip_yaw_link",
+      "left_knee_link",
+      "left_ankle_roll_link",
+      "right_hip_yaw_link",
+      "right_knee_link",
+      "right_ankle_roll_link",
+      "torso_link",
+      "left_shoulder_yaw_link",
+      "left_elbow_link",
+      "left_wrist_yaw_link",
+      "right_shoulder_yaw_link",
+      "right_elbow_link",
+      "right_wrist_yaw_link"
+    ],
+    "support": "free base; no weld",
+    "control_scope": "simulation only; not manufacturer-verified hardware gains",
+    "self_collision": "retained from input model",
+    "contact_protocol": {
+      "version": "Q1_FOOT_PRIORITY_V2",
+      "source": {
+        "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/contact_protocol.py",
+        "bytes": 887,
+        "sha256": "5ee4d42c84520f9c71d665512ab309bd9c6a2317930ec0e82b9f09b0c0b4a3e2"
+      },
+      "floor_priority": 1,
+      "foot_priorities": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "semantics": "Foot contact friction follows the episode context; R01 assets remain separate."
+    }
+  },
+  "references": [
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B006_20261024/references/train_locomotion_a03d85df8874339f.npz",
+      "bytes": 203083,
+      "sha256": "34395f21054d9f925f380553ee4c14e09cd80fa1f328f98a6cd50d92601c9dbd"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B006_20261024/references/train_locomotion_cd836877a8c0a036.npz",
+      "bytes": 203691,
+      "sha256": "8df1ce6ef4e30185a29b4f0d3413b0ba23d47b407cf660b5b10af2a2091bc346"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B006_20261024/references/train_other_bfab7998b69b97cc.npz",
+      "bytes": 205044,
+      "sha256": "7b67400a460fdafbc0b5f504b588b031750bc49ef1dd874678663c0ea78d1f40"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B006_20261024/references/train_squat_88b81a4a59e617a5.npz",
+      "bytes": 195375,
+      "sha256": "31b6d19f9151df1f549e9a3056f01a533886dc956b94395fc5d415437442c821"
+    }
+  ],
+  "motion_manifest": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_base_library_20261024/references/manifest.json",
+    "bytes": 5998816,
+    "sha256": "ef021c285a3431dc9a6c8f847a63964bc85ab938bd6828f2ad01fc84e2176f1d"
+  },
+  "cases": [
+    {
+      "legacy": {
+        "kind": "legacy",
+        "environments": 7,
+        "slots": 7,
+        "control_steps": 672,
+        "automatic_resets": 82,
+        "explicit_partial_resets": 9,
+        "unique_models": 7,
+        "model_buffer_bytes": 879366488,
+        "sampled_peak_cgroup_memory_bytes": 28007084032,
+        "seconds": 4.37126350402832
+      },
+      "slotted": {
+        "kind": "slotted",
+        "environments": 7,
+        "slots": 3,
+        "control_steps": 672,
+        "automatic_resets": 82,
+        "explicit_partial_resets": 9,
+        "unique_models": 3,
+        "model_buffer_bytes": 376871352,
+        "sampled_peak_cgroup_memory_bytes": 27507253248,
+        "seconds": 4.2769205421209335
+      },
+      "max_abs_errors": {
+        "post_state": 0.0,
+        "post_frame": 0,
+        "post_hist": 0.0,
+        "post_context": 0.0,
+        "post_previous_action": 0.0,
+        "post_steps": 0,
+        "post_ep_start": 0,
+        "post_bin_return": 0.0,
+        "post_bin_memory": 0.0,
+        "result_reward": 0.0,
+        "result_terminated": 0,
+        "result_timeout": 0,
+        "result_state": 0.0,
+        "result_frames": 0,
+        "result_joint_rmse": 0.0,
+        "result_body_error_m": 0.0,
+        "reward_term_motion_global_root_pos": 0.0,
+        "reward_term_motion_global_root_ori": 0.0,
+        "reward_term_motion_body_pos": 0.0,
+        "reward_term_motion_body_ori": 0.0,
+        "reward_term_motion_body_lin_vel": 0.0,
+        "reward_term_motion_body_ang_vel": 0.0,
+        "reward_term_action_rate_l2": 0.0,
+        "reward_term_joint_limit": 0.0,
+        "reward_term_total": 0.0,
+        "replay_s": 0.0,
+        "replay_a": 0.0,
+        "replay_a_exec": 0.0,
+        "replay_xi": 0.0,
+        "replay_r": 0.0,
+        "replay_done": 0.0,
+        "replay_frame": 0,
+        "replay_clip": 0,
+        "replay_ep_id": 0,
+        "replay_terminal": 0,
+        "replay_ep_start": 0,
+        "replay_valid": 0,
+        "replay_ptr": 0,
+        "replay_ep_counter": 0,
+        "replay__env_ar": 0,
+        "replay_total_rows": 0
+      },
+      "arrays": [
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_slots_V01_20261024/case0_legacy.npz",
+          "bytes": 890799,
+          "sha256": "8a9b51254e9bb4e59c6680b585f317a33a68fd2ee02aeb92b395af17c6885660"
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_slots_V01_20261024/case0_slotted.npz",
+          "bytes": 890799,
+          "sha256": "8a9b51254e9bb4e59c6680b585f317a33a68fd2ee02aeb92b395af17c6885660"
+        }
+      ]
+    },
+    {
+      "legacy": {
+        "kind": "legacy",
+        "environments": 8,
+        "slots": 8,
+        "control_steps": 768,
+        "automatic_resets": 95,
+        "explicit_partial_resets": 9,
+        "unique_models": 8,
+        "model_buffer_bytes": 1004990272,
+        "sampled_peak_cgroup_memory_bytes": 28144570368,
+        "seconds": 4.128898456692696
+      },
+      "slotted": {
+        "kind": "slotted",
+        "environments": 8,
+        "slots": 4,
+        "control_steps": 768,
+        "automatic_resets": 95,
+        "explicit_partial_resets": 9,
+        "unique_models": 4,
+        "model_buffer_bytes": 502495136,
+        "sampled_peak_cgroup_memory_bytes": 27641126912,
+        "seconds": 4.1031482592225075
+      },
+      "max_abs_errors": {
+        "post_state": 0.0,
+        "post_frame": 0,
+        "post_hist": 0.0,
+        "post_context": 0.0,
+        "post_previous_action": 0.0,
+        "post_steps": 0,
+        "post_ep_start": 0,
+        "post_bin_return": 0.0,
+        "post_bin_memory": 0.0,
+        "result_reward": 0.0,
+        "result_terminated": 0,
+        "result_timeout": 0,
+        "result_state": 0.0,
+        "result_frames": 0,
+        "result_joint_rmse": 0.0,
+        "result_body_error_m": 0.0,
+        "reward_term_motion_global_root_pos": 0.0,
+        "reward_term_motion_global_root_ori": 0.0,
+        "reward_term_motion_body_pos": 0.0,
+        "reward_term_motion_body_ori": 0.0,
+        "reward_term_motion_body_lin_vel": 0.0,
+        "reward_term_motion_body_ang_vel": 0.0,
+        "reward_term_action_rate_l2": 0.0,
+        "reward_term_joint_limit": 0.0,
+        "reward_term_total": 0.0,
+        "replay_s": 0.0,
+        "replay_a": 0.0,
+        "replay_a_exec": 0.0,
+        "replay_xi": 0.0,
+        "replay_r": 0.0,
+        "replay_done": 0.0,
+        "replay_frame": 0,
+        "replay_clip": 0,
+        "replay_ep_id": 0,
+        "replay_terminal": 0,
+        "replay_ep_start": 0,
+        "replay_valid": 0,
+        "replay_ptr": 0,
+        "replay_ep_counter": 0,
+        "replay__env_ar": 0,
+        "replay_total_rows": 0
+      },
+      "arrays": [
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_slots_V01_20261024/case1_legacy.npz",
+          "bytes": 1015325,
+          "sha256": "30af90a953180bdca519d2f9b67659da7c5ab40416dd67d08fc40fe9dda6095e"
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_slots_V01_20261024/case1_slotted.npz",
+          "bytes": 1015325,
+          "sha256": "30af90a953180bdca519d2f9b67659da7c5ab40416dd67d08fc40fe9dda6095e"
+        }
+      ]
+    }
+  ],
+  "graph": {
+    "horizon": 32,
+    "world_model_fitted": false,
+    "optimizer_updates": 0,
+    "action_gradient_norm": 0.00022158038335571263,
+    "action_gradient_fd_abs": 3.986705124283275e-12,
+    "actor_terminal_state_gradient_norm": 0.0077563633974918585,
+    "world_model_parameter_gradients": 0,
+    "fixture_networks": "64-wide; verifies differentiation, not learned model accuracy or main training performance"
+  },
+  "resource_probe64": {
+    "kind": "slotted",
+    "environments": 64,
+    "slots": 4,
+    "control_steps": 2048,
+    "automatic_resets": 236,
+    "explicit_partial_resets": 3,
+    "unique_models": 4,
+    "model_buffer_bytes": 502495136,
+    "sampled_peak_cgroup_memory_bytes": 27762212864,
+    "seconds": 4.39488460868597,
+    "arrays": {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_slots_V01_20261024/probe64.npz",
+      "bytes": 4046112,
+      "sha256": "414f497edc52260d8d216d589a866665cb48688a6e3889cbe314422db9ad1834"
+    },
+    "policy_training_executed": false,
+    "device": "cpu"
+  },
+  "versions": {
+    "mujoco": "3.3.7",
+    "torch": "2.8.0+cu128"
+  },
+  "oom_kill": 14,
+  "source_files": [
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/audit_contacts.py",
+      "bytes": 5083,
+      "sha256": "5e105b61ca649d61b335667b3b9dc58209b0bcb0508cfcdf4f7aa7d173e81572"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/contact_protocol.py",
+      "bytes": 887,
+      "sha256": "5ee4d42c84520f9c71d665512ab309bd9c6a2317930ec0e82b9f09b0c0b4a3e2"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/__init__.py",
+      "bytes": 70,
+      "sha256": "c8f3fd9c80ab055587fd905b1c40b53073c34ae80ea90adf939895f43a1edfd5"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/data/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/data/replay_buffer.py",
+      "bytes": 7721,
+      "sha256": "5dad1edaf97563fa719840b468c1ad7035872a1822bafc3adc9d26b55ffc4fca"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/envs/__init__.py",
+      "bytes": 81,
+      "sha256": "e11b2f61fcc3259eaac2da273df642dc0514e9e3c83ceb08c1a9cb6af0c7574b"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/envs/mdp/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/envs/mdp/motion_library.py",
+      "bytes": 12109,
+      "sha256": "7c1ce7253db480de28fd2a9bbef3473a4bad3d9b7428500c4839732d17dfb0f5"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/envs/mdp/rewards.py",
+      "bytes": 5386,
+      "sha256": "c23a3336865b75e098e67eb58af4e7e25b1a679ace9dc0c67882af6eb6149fd3"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/imagination/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/imagination/compiled.py",
+      "bytes": 2332,
+      "sha256": "09dfc191535da4d481ae2cb34a5bdf953d53e1ec76bcb3b949323fa86bf68193"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/imagination/objective.py",
+      "bytes": 1384,
+      "sha256": "3c93ec24c0f26db7bd4d60c5da50bc4a4d711a70a72ba0c9dfc7b078f082f774"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/imagination/policy_trainer.py",
+      "bytes": 5937,
+      "sha256": "f902e07d5fa7ba5d408c75c42ea9b89b99befcb5111f7757ad37373ace8055d8"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/imagination/rollout.py",
+      "bytes": 5184,
+      "sha256": "eec126cdc4d323f691c32c1d6785d1efc9207aac40ac37fc633a3a817b5e6f0d"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/kinematics/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/kinematics/g1_fk.py",
+      "bytes": 7265,
+      "sha256": "5eb7ef1490eed06251e63d027cb09c3e0d8407cf4c47765a0d425858f93c87fd"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/kinematics/lab_math.py",
+      "bytes": 73489,
+      "sha256": "85e267ee202dc8dc2b340be07ec7abe9b10da9b82c3bf33e16889f422fcf9ca8"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/kinematics/rotations.py",
+      "bytes": 3682,
+      "sha256": "3cd102aa3da312c060527e783f3bf9b359ce6854173396e36a1e2e82c76ea9d2"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/policy/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/policy/nets.py",
+      "bytes": 3811,
+      "sha256": "2b133f35625ddab468fb2b061c5f296af5202ee40223dfeef08b5f91c5bcb739"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/q1_assets.py",
+      "bytes": 5554,
+      "sha256": "0387e8aaef65e87b40f0e70020f19b1eada903101cb5603f692740370d179889"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/q1_sim.py",
+      "bytes": 9293,
+      "sha256": "f2ddc919d33db78df3f4291e060dd2c26ed8c587b1433795eb1ca01e2fa099b1"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/robot_spec.py",
+      "bytes": 459,
+      "sha256": "fb3c53c78b021148e48864631ae5f5dee330b9f7e31d28c996e8d3db16b4ae1a"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/training/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/training/distributed.py",
+      "bytes": 3011,
+      "sha256": "ebf2d6d37ce6102f55941c0ab328c9deb4021964c46f7bd35a8bc1bb767f5a21"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/world_model/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/world_model/dynamics.py",
+      "bytes": 1574,
+      "sha256": "2d85dfa0efd29d2ca64f9e09f2a33348b3e9077f2e55067ddb40015fc556caca"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/world_model/heads.py",
+      "bytes": 6800,
+      "sha256": "6d80be049de2e5e1360b94428dc3145cd0f52be523f262aeaf1178e20c3273be"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/world_model/state_spec.py",
+      "bytes": 6051,
+      "sha256": "acb1ea06b5123b2e90392af72a1eb7cc6bff9413db01c683b42af9d68d42b8b4"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/world_model/wm_trainer.py",
+      "bytes": 2892,
+      "sha256": "e5014cbe41325d2f5578e4b702dd6f562c76b9fae5daafce0f2e737fa749d2c2"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/supermimic/world_model/world_model.py",
+      "bytes": 5734,
+      "sha256": "ce17d7a9b19aa6d9db768d0187054ff3d3f412deb6417d7a567ab819dc86fbb8"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/verify_backend.py",
+      "bytes": 10793,
+      "sha256": "2c710e9e1f1d329459f4bdbf4486477ad79b8d80ab795057bdfd8546f07578e5"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_for_q1/verify_contact_protocol.py",
+      "bytes": 5575,
+      "sha256": "9b79c8a8c62d639606358213faa8279d48aba9910ebf160c64d23cf31d48cbf4"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_q1_expanded/slotted_sim.py",
+      "bytes": 4233,
+      "sha256": "c0e5ccb86a7247b5e4dadc46fbc462581011d90dda1cf9fcbdc823e357ca9c4c"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_q1_expanded/verify_slotted_backend.py",
+      "bytes": 10212,
+      "sha256": "29cafaf5c2a29545b0baae31028beaf27c1476538bc06c5dc1893daf9215b756"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/P07_backend_20261023/receipt.json",
+      "bytes": 13909,
+      "sha256": "1b7cf656cab62adbb9266f8b7ba311f44671b0440668f8003b25ca0949dad3f7"
+    }
+  ]
+}

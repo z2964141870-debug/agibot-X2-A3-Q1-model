@@ -69,3 +69,11 @@ B012已退出0，新增18训练参考/64.94秒，算术累计329片/1186.22秒�
 输出`data/supermimic_for_q1/PHUMA_P05_base_library_20261024/`，日志`logs/PHUMA_P05_base_library_20261024.log`。manifest5998816字节/SHA`ef021c285a3431dc9a6c8f847a63964bc85ab938bd6828f2ad01fc84e2176f1d`，reference_check4588319字节/SHA`56a29556388ae47b31b906f19ab092914fa94578b1f57c1686c595ea2f6c7d5c`，reconciliation SHA`d6c6660d72aecfa096fe5db7ec2fa7f83837081e3617c96aeef8c84feb77fd19`。所有合格参考仅建立软链接，无重复大数据拷贝；OOM14、0新optimizer。
 
 下一空闲时实际验证模型槽逐状态/梯度/64环境资源；同时复用已发布PHUMA诊断修正`a6c18f132bd39efe63e688a9fd757ac058906c68`检查小库移动未学好的模型因素。扩量不是唯一方案，不把更多候选或运行完成当作模型效果。新训练前落实磁盘余量和有限产物预算，保持旧训练及STOPPED终态。
+
+## 模型槽真实验证完成
+
+原句柄18408原生退出0，`PHUMA_P05_slots_V01_20261024/receipt.json`状态BACKEND_AND_GRADIENT_CONTRACT_PASSED。4928个控制步、0optimizer，7环境/3槽与8环境/4槽的96轮对照及64环境/4槽32轮完成；原有连续DR、噪声、自动和显式部分reset均保留。H32动作梯度有限差分绝对误差3.9867e-12，动作梯度范数0.00022158，actor末端状态梯度0.00775636，冻结WM参数梯度为0。
+
+64环境实际只保留4个模型，模型buffer502495136字节（约0.468GiB）；资源探针2048控制步用时4.3949秒、自动reset236次，抽样cgroup峰值27762212864字节，OOM14。此为CPU后端与64宽fixture的梯度验证，不代表完整训练吞吐或拟合精度。原后端/冻结源码未变；完整收据小副本`data/manifests/supermimic_q1_slotted_backend_20261024.json`，原数组留服务器LOCAL_ONLY。
+
+记录发布e0387f05c3b094e9826bc07925be775e3f8d0220已用直连SSH推送并独立核验Q1远端，覆盖此前两份未同步记录。下一先执行PHUMA自己的共同轨迹模型诊断，不能以旧A3诊断代替；仍无新训练。

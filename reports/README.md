@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-24当前：[现有资源继续推进](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)。用户停止代理获取BONES、交师兄处理；临时令牌已撤销、18866转发已停止。PHUMA340训练片/20.45分钟、62移动片可直接用；AMASS与16维SMPL-X已到位但尚非Q1合格库。恢复已完成的[D03B模型诊断](README_SUPERMIMIC_Q1_PHUMA_MODEL_20261024.md)与[64环境模型槽验证](README_SUPERMIMIC_Q1_EXPANDED_RUN_20261024.md)证据，下一独立有限PHUMA R02；下方BONES等待条目为历史状态。
+
 2026-10-24：[BONES V01独立准入准备](README_SUPERMIMIC_Q1_BONES_INDEPENDENT_20261024.md)22项源FK/映射/原速/几何/导出门及数值指纹已实现，服务器8控制通过；不等于真实参考或动力学跟随。用户确认Windows下载失败，要求代理Git获取；下一官方Git/LFS/Hub权限/服务器直连，0新真实BONES参考/训练，22:07盘余1.965TB/OOM14。
 
 2026-10-24：[BONES C01专用原速重定向](README_SUPERMIMIC_Q1_BONES_RETARGET_20261024.md)实现及服务器5控制通过，含合成tar→名单→G1 FK→Q1 IK/导出，训练标志保持false。收据路径类型故障A保留，修正B通过；原120Hz时间/位移及既有门不改。真实包与独立BONES准入仍待，0新真实参考或训练。

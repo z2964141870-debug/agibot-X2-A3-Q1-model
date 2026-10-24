@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-24 用户明确停止代理继续处理BONES获取，由师兄解决，完成后用户另行通知。当前继续利用已有PHUMA、AMASS及已接收SMPL-X推进SuperMimic for Q1；不再自动查询下载、创建凭据或尝试获取BONES。先复用已合格PHUMA扩展库和已验证模型槽后端开展独立有限训练，AMASS按原速/16维形体独立准入后再接库。入口`reports/README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md`。
+
 - 2026-10-24 用户告知BONES-SEED约20分钟后下载完成，要求重新定目标并开始工作。当前新增主线改为BONES-SEED到Q1的原速接入、质检、独立移动评测与SuperMimic世界模型训练；此前“新增准备优先AMASS”为建议，现由此目标覆盖。目标/预登记验收及有限预算见`reports/README_SUPERMIMIC_Q1_BONES_GOAL_20261024.md`。下载完成不等于Q1训练就绪；保留PHUMA/AMASS与旧实验，不恢复旧A3或STOPPED。
 
 - 2026-10-24 用户进一步明确AMASS和BONES-SEED也可用于当前SuperMimic for Q1扩库，缺少的文件或访问条件须明确告知。本条扩展此前PHUMA-only的新实验数据范围；旧A3动作与已停止实验不恢复。原始人体/其他机器人动作须按真实帧率、来源与重复身份先登记，再转换为Q1参考；原有R01输入与终态保留。入口`reports/README_SUPERMIMIC_Q1_SOURCE_EXPANSION_20261024.md`。

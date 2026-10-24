@@ -1,0 +1,31 @@
+{
+  "goal": "SuperMimic for Q1 with existing qualified PHUMA references; BONES acquisition deferred by user",
+  "experiment": "PHUMA_R02_expanded64_H32_12000_20261024",
+  "initialization": "RANDOM_NO_PARENT_CHECKPOINT",
+  "training": {
+    "steps": 12000,
+    "environments": 64,
+    "model_slots": 4,
+    "threads": 4,
+    "actor_batch": 128,
+    "world_model_batch": 64,
+    "world_model_batches_per_update": 10,
+    "horizon": 32,
+    "seed": 20261024,
+    "checkpoint_every": 1000,
+    "automatic_restart": false
+  },
+  "storage": {
+    "minimum_free_bytes": 107374182400,
+    "maximum_experiment_unique_allocated_bytes": 12884901888,
+    "maximum_new_source_unique_allocated_bytes": 268435456000
+  },
+  "evaluation": {
+    "matched_initial_and_final": true,
+    "all_registered_clips": true,
+    "train_development_test_isolated": true,
+    "joint_rmse_cap_rad": 0.15,
+    "root_position_rmse_cap_m": 0.1,
+    "complete_without_early_failure": true
+  }
+}

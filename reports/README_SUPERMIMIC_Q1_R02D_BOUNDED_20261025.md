@@ -89,3 +89,9 @@ A原件保留`intermediate1500_audit.json`，保存1500为205325095字节/SHA`2b
 复用未改的已发布auditor，先确认实时3050新增轮且step3000文件完整，再独立CPU/mmap审计。06:42:32原生退出0，十三门全过；三网络已更新、三Adam/两采样器有限、计数19490至30980、1899至2998、37980至59960准确，原340/6/7、7000预算和全部516冻结保持。0CUDA/积分/策略/optimizer，不能作为跟随改善证据。
 
 保存3000为205325095字节/SHA`edf972e0406b356a991cb8888e7baaad5fb092dbc20f60525f32d62ba879de06`；[原样审计](../data/manifests/supermimic_q1_R02D_intermediate3000_audit_20261025.json)SHA`a7acda2f6b9330f1c92edf03fd0d0df751dfab785fc1cdee62a40f168ad62197`。服务器原件实验根`intermediate3000_audit.json`，stdout同名logs目录`intermediate3000_audit.log`。结束内存14,931,582,976字节/OOM14，实验分配1,437,843,456字节、盘余541,350,809,600字节。共享盘下降继续监控，100GiB停止线不变；未删未知文件。
+
+## 07:06继续原预算
+
+[原生现场记录](../logs/session_records/supermimic_q1_R02D_after_P12C_20261025.log)重新核三实际非Z进程的原boot/start_ticks/组/cmdline及三个状态RUNNING，新增3700/7000轮、236800转移、累计8700轮；WM1429组/actor1379次，最新actor梯度0.12496、critic loss0.01623、WM loss0.27923有限。07:06共享内存13815267328字节/OOM14、GPU39摄氏度/1228MiB，盘余418098790400字节；共享盘其他写入持续，100GiB停止线保持，不删除未知资产。
+
+并行的[P12C离线train参考诊断](README_SUPERMIMIC_Q1_WALKING_CONTACT_20261025.md)24组和独立重算完成，无新增合格参考，没有执行策略/积分或optimizer，也未改本轮340/6/7输入、7000新轮和终态规则。本轮仍待训练终态及既定七阶段353片真实动力学配对；数值有限及诊断可复算均不能替代实际移动效果。

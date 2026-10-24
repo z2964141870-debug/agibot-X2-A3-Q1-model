@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 07:06：[P12C真实24组与独立核验完成](README_SUPERMIMIC_Q1_WALKING_CONTACT_20261025.md)，无穿地但悬空8至34mm、近地0至15.08%，0准入；三轮共72组，后续量化可达性/根足兼容。原[R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)3700新轮/236800转移、原进程身份保持/OOM14/盘余418.10GB，原预算及100GiB保护不变，尚无有效步行结论。
+
 2026-10-25：[P12C足地控制D十项通过](README_SUPERMIMIC_Q1_WALKING_CONTACT_20261025.md)，保留A/B/C原件及零距离退化证据，0.5mm余隙/双地面各30次向内求解与真实Q1十个配对通过，24组真实动作待。06:57原[R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)3475新轮/222400转移、三实际身份保持/OOM14，盘余464.32GB，100GiB停止线不变。
 
 2026-10-25 06:42：[R02D保存3000独立十三门通过](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)，三Adam计数、原340/6/7与516冻结保持，执行前3050新增轮，尚无最终动力学效果。[P12C足地原生约束](README_SUPERMIMIC_Q1_WALKING_CONTACT_20261025.md)准备，固定原根/时轴，真实控制/24组待；P12/B失败原件均保留。
@@ -152,7 +154,7 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
-| 2026-10-25 | P12/P12B训练步行接触一致性 | 两轮48组及两次独立FK/inverse通过；速度条件减轻失真但仍浮脚/穿地/滑动，均0准入，见[阶段记录](README_SUPERMIMIC_Q1_WALKING_CONTACT_20261025.md) |
+| 2026-10-25 | P12/P12B/P12C训练步行接触一致性 | 三轮72组及三次独立FK/inverse通过；足地约束消穿地但更浮脚，均0准入，见[阶段记录](README_SUPERMIMIC_Q1_WALKING_CONTACT_20261025.md) |
 | 2026-10-25 | R02D动作域匹配试验 | 04:56独立启动，初始继承12门/运行10门通过，275新轮/WM59组/actor9次、516冻结；固定7000新轮进行中，效果待，见[阶段记录](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md) |
 | 2026-10-25 | S02动作域一致性与数值失败 | 5控制、1500保存15门、真实replay H32/BPTT7门通过，未精确重现崩溃/证明移动改善，见[阶段记录](README_SUPERMIMIC_Q1_ACTION_DOMAIN_20261025.md) |
 | 2026-10-25 | P09来源排除视图训练登记 | 两端四项控制及真实服务器预检通过，612训练/dev6/test7；无第二训练，见[阶段记录](README_SUPERMIMIC_Q1_SOURCE_VIEW_REGISTRATION_20261025.md) |

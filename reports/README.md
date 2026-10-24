@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-24：[BONES V01独立准入准备](README_SUPERMIMIC_Q1_BONES_INDEPENDENT_20261024.md)22项源FK/映射/原速/几何/导出门及数值指纹已实现，服务器8控制通过；不等于真实参考或动力学跟随。用户确认Windows下载失败，要求代理Git获取；下一官方Git/LFS/Hub权限/服务器直连，0新真实BONES参考/训练，22:07盘余1.965TB/OOM14。
+
 2026-10-24：[BONES C01专用原速重定向](README_SUPERMIMIC_Q1_BONES_RETARGET_20261024.md)实现及服务器5控制通过，含合成tar→名单→G1 FK→Q1 IK/导出，训练标志保持false。收据路径类型故障A保留，修正B通过；原120Hz时间/位移及既有门不改。真实包与独立BONES准入仍待，0新真实参考或训练。
 
 2026-10-24：[BONES M01源G1模型核对](README_SUPERMIMIC_Q1_BONES_G1_MODEL_20261024.md)。现有候选与宇树官方固定版本骨架/关节轴/限位/足碰撞数组差0，64随机姿态FK差0；不证明BONES生成用FBX身份，实际动作待核。Windows D:\tmp最大partial已6.895GB，下载文件写入推进，仍无完整包。下一BONES专用重定向/独立质检，0新真实参考或训练。

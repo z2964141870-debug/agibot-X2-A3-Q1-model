@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+[P11训练walking限速归因](README_SUPERMIMIC_Q1_WALKING_RETARGET_20261025.md)入口已准备，固定四个train目录、排全部已知旧held-out/P10，比较2/4/8rad/s且原root/任务/原速保持，0新准入/训练；真实执行待。原Q1 URDF标32/36rad/s不是硬件实测。R02D最新1200新增轮，actor梯度0.03428/critic0.01152有限、GPU40/OOM14/盘余902.33GB；原340输入/7000预算继续。
+
 05:30：[P10B补检完成](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)guard/worker退出0并回收、重新扫描和15片十九门完成，准入0/15；全部15mm支撑比例失败、14最大间隙、6自碰撞，完整小证据已存。15目录继续预留补充test，无可用新walking动力学评测；下一仅train明确walking来源做映射/限速归因，不放宽门/不热改R02D。R02D最近1100新增轮/累计6100，日志有限，OOM14；盘余918.30GB，新P10/B不足10MB。
 
 05:27：[P10 wrapper独立检查前失败](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)，15原速转换完成但0十九门准入，同名模块误导入；原guard WORKER_FAILED/worker回收保留。新wrapper修为绝对路径加载、P10B新目录可只补独立检查，尚待发布部署执行。[R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)1000新增轮/64000转移/累计6000，actor梯度0.04653、critic0.00689、WM0.18876有限，OOM14；实际效果仍待。

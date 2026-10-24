@@ -60,6 +60,9 @@ class MotionIOTests(unittest.TestCase):
         self.assertEqual({source_group(key) for key in keys}, {"idea400/walking"})
         self.assertEqual(source_split("idea400/walking", {"train", "test"}), "test")
         self.assertIn(source_split("idea400/walking", {"train"}), ("train", "development"))
+        fitness = [f"fitness/subset_0021/Squat_clip_{clip}_chunk_{chunk:04d}"
+                   for clip, chunk in ((17, 0), (17, 1), (18, 0))]
+        self.assertEqual({source_group(key) for key in fitness}, {"fitness/subset_0021/Squat"})
 
     def test_external_archive_member_rejected(self):
         for path in ("data/h1_2/foo.npy", "data/g1/../foo.npy", "/data/g1/foo.npy"):

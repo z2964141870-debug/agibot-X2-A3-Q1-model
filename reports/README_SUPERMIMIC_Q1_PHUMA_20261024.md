@@ -1,6 +1,6 @@
 # PHUMA驱动的SuperMimic for Q1
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-PHUMA-P01。状态：旧R04V2已按用户要求停止；固定官方源模型/划分获取和独立核验完成，全库扫描代码两端验证待部署；新训练尚未启动。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-PHUMA-P01。状态：旧R04V2已按用户要求停止；固定官方源模型/划分、全库格式扫描及112候选分组选择完成，Q1重定向待执行；新训练尚未启动。
 
 ## 目标与范围
 
@@ -28,7 +28,13 @@ PHUMA原包 `/opt/data/private/yuanqi_ops/data/phuma/data.zip` 实测3,416,370,2
 
 新增 `motion_io.py` / `scan_corpus.py` / `test_motion_io.py`：受限NumPy解码，验证30Hz、长度、有限值、单位xyzw和六零列。官方test涉及的整个来源组保留test，其余官方train组固定hash留10%development；移除chunk和clip后缀，候选每源组最多一片。固定seed2026102405，首批候选配额train80/development16/test16，分别覆盖移动/下蹲/上肢/其他；时长至少1.98s、根倾斜不超0.6rad、源关节速度P95不超4且最大不超12rad/s。该配额是输入候选，不能称为已合格Q1参考或全库训练。本地六项针对性控制全部通过，无跳过；服务器控制与全库扫描待执行。
 
-下一核对全库源帧率、根轨迹、关节语义与源片段分组；依据官方train/test并对相邻chunk/同源clip做分组隔离，固定首批覆盖移动/下蹲/上肢的候选名单后才进行Q1重定向。30→50Hz仅重采样，不慢放。来源、未通过参考和质量门全部记录；Q1接触/限位/速度、FK/时间导出和原地替代移动风险分别核验。新参考合格后才登记随机初始化的独立训练与完整动力学评测。
+11:57:30–11:58:43全库扫描原生退出0，服务器六项控制亦全部通过。73,076个G1 NPY均通过字段/30Hz/单位四元数/六补零列/有限值检查，0格式拒绝；15类别、35,023来源组。官方文件级train/test在5,213个来源组中混合，本轮将这些组整体留test。最终train49,548/development5,438/test17,567/unlisted523片；112候选足额选出（80/16/16），每个来源组仅一片，尚不是Q1合格参考。OOM计数保持14，0物理积分/optimizer更新。
+
+选择清单 `data/manifests/supermimic_q1_phuma_selection_20261024.json` 为114,601字节/SHA `cf22cc86981f088cf4c9ffbe7a5f5b2afbee12a6948295a3fe5acaeb13e0cc11`，执行日志 `logs/session_records/supermimic_q1_phuma_scan_20261024.log` 为5,328字节/SHA `600ceb3a8ba255f08d25946b1f47294858d5eccffa2ee7a2e1cb308305a2a6bf`，取回一致。完整58,852,874字节JSONL留服务器 `data/supermimic_for_q1/PHUMA_P01_scan_20261024/all_chunks.jsonl`，SHA `512df6cd955fe7c7a8b90330e8a429e951f8a6b6237606f2bbc0afed468281d8`。
+
+选后复核发现fitness存在 `_clip_17` 后缀，P01仅处理 `_clip17`，因此P01分组不是最终训练名单。保留该扫描终态/索引；修正为两种clip后缀均移除，在新 `PHUMA_P02_scan_20261024` 重新选择，再独立复核全索引、分组计数和候选原字节。分组只按命名来源茎，尚非subject-disjoint或全库语义去重证明。
+
+新增独立 `retarget.py`、两份配置、`verify_reference.py` 与三项重采样控制，代码已完成、尚待两端数值验证和12候选小批运行。复用只读Mink/quadprog通用求解及Q1导出，输入仅PHUMA G1 FK，不读取A3动作；按中立位落地/腿长比例约0.5082缩放，水平原点归零而保留位移，30→50Hz仅重采样、不慢放。独立验证器显式检查PHUMA 30Hz、Q1 FK/速度导出/源位移，并追加90%帧支撑脚15mm内、最大支撑间隙30mm、自碰撞穿透不超3mm的固定几何门。尚未实测参考是否通过，不把运动学门作为动力学跟随证明。
 
 ## 版本、命令与产物
 
@@ -38,7 +44,7 @@ PHUMA原包 `/opt/data/private/yuanqi_ops/data/phuma/data.zip` 实测3,416,370,2
 $PY script/supermimic_q1_phuma/acquire_source.py --output data/references/phuma_source_2faf15b5
 ```
 
-上述获取已完成；完整数据/模型文件不进Git。全库扫描下一执行：
+上述获取和以下全库扫描均已完成；完整数据/模型文件不进Git：
 
 ```bash
 $PY script/supermimic_q1_phuma/scan_corpus.py \
@@ -51,4 +57,4 @@ $PY script/supermimic_q1_phuma/scan_corpus.py \
 
 ## 保存与下一步
 
-停止阶段 `307826c8ff7e26af6c7ecd47b83dcdd0a70189a3` 和获取入口 `3f5fbb2` 已推送并独立核验Q1一致。扫描源码与获取结果准备发布，之后部署并运行全库检查。无PHUMA训练作业、无新效果结论。所有大型工件LOCAL_ONLY；旧R03/R04V2与D05B不作为本轮输入或通过证明。
+停止阶段 `307826c8`、获取入口 `3f5fbb2` 和扫描源码 `400c230fa383e0c9a0c993cb61ac63dc917207e4` 已推送并独立核验Q1一致。下一发布扫描结果与Q1重定向入口后部署；尚无PHUMA训练作业、无新效果结论。所有大型工件LOCAL_ONLY；旧R03/R04V2与D05B不作为本轮输入或通过证明。

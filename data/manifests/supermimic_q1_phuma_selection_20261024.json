@@ -1,0 +1,2947 @@
+{
+  "status": "PHUMA_G1_CORPUS_SCAN_AND_GROUPED_SELECTION_COMPLETED",
+  "archive": {
+    "path": "/opt/data/private/yuanqi_ops/data/phuma/data.zip",
+    "bytes": 3416370206,
+    "sha256": "7bd38634f1ec075af907a2bce10616b083a5414885674ce6630664124e22e495"
+  },
+  "upstream_commit": "2faf15b52a3498bfcc3352ecb443dc0b5cd642ac",
+  "source_receipt": {
+    "path": "/opt/data/private/YuanQi_Q1/data/references/phuma_source_2faf15b5/source_receipt.json",
+    "bytes": 11838,
+    "sha256": "533242e77229686dce1d19ac8d4f659c39ca711d45bb7488900b2b47fbe68986"
+  },
+  "official_splits": {
+    "train": {
+      "path": "/opt/data/private/YuanQi_Q1/data/references/phuma_source_2faf15b5/data/split/phuma_train.txt",
+      "bytes": 3214977,
+      "sha256": "469809a0f89d1a02293a5ac553836650f4705403bd6d98d9a176069ee0acd268"
+    },
+    "test": {
+      "path": "/opt/data/private/YuanQi_Q1/data/references/phuma_source_2faf15b5/data/split/phuma_test.txt",
+      "bytes": 355876,
+      "sha256": "3dc6a8186bb037b08e59aaec95a9b1c983ec53a3c50cc79cea1934709a8e1520"
+    }
+  },
+  "raw_g1_members": 73076,
+  "counts": {
+    "schema_valid": 73076,
+    "category/EgoBody": 2116,
+    "split/train": 49548,
+    "split/test": 17567,
+    "split/development": 5438,
+    "category/GRAB": 1726,
+    "category/aist": 1745,
+    "category/animation": 115,
+    "category/custom": 523,
+    "split/unlisted": 523,
+    "category/dance": 117,
+    "category/fitness": 19655,
+    "category/game_motion": 6249,
+    "category/haa500": 1763,
+    "category/humanml": 21731,
+    "category/humman": 498,
+    "category/idea400": 9939,
+    "category/kungfu": 1933,
+    "category/music": 3088,
+    "category/perform": 1878
+  },
+  "errors": [],
+  "source_groups": 35023,
+  "official_train_test_overlapping_source_groups": 5213,
+  "group_rule": "Strip chunk and clip suffixes; reserve every official-test group from training.",
+  "development_rule": "Fixed seed hash reserves 10 percent of remaining official-train groups.",
+  "candidate_rule": {
+    "minimum_duration_s": 1.98,
+    "max_root_tilt_rad": 0.6,
+    "joint_speed_p95_cap_rad_s": 4,
+    "joint_speed_max_cap_rad_s": 12
+  },
+  "seed": 2026102405,
+  "requested_quotas": {
+    "train": {
+      "locomotion": 32,
+      "squat": 16,
+      "upper": 16,
+      "other": 16
+    },
+    "development": {
+      "locomotion": 6,
+      "squat": 3,
+      "upper": 3,
+      "other": 4
+    },
+    "test": {
+      "locomotion": 6,
+      "squat": 3,
+      "upper": 3,
+      "other": 4
+    }
+  },
+  "available_source_groups": {
+    "train/locomotion": 10680,
+    "train/squat": 522,
+    "train/upper": 1106,
+    "train/other": 10372,
+    "development/locomotion": 1152,
+    "development/squat": 51,
+    "development/upper": 119,
+    "development/other": 1157,
+    "test/locomotion": 2825,
+    "test/squat": 146,
+    "test/upper": 317,
+    "test/other": 3302
+  },
+  "selected_counts": {
+    "train/locomotion": 32,
+    "train/squat": 16,
+    "train/upper": 16,
+    "train/other": 16,
+    "development/locomotion": 6,
+    "development/squat": 3,
+    "development/upper": 3,
+    "development/other": 4,
+    "test/locomotion": 6,
+    "test/squat": 3,
+    "test/upper": 3,
+    "test/other": 4
+  },
+  "selected": [
+    {
+      "member": "data/g1/humanml/002056_chunk_0000.npy",
+      "source_key": "humanml/002056_chunk_0000",
+      "source_group": "humanml/002056",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "58c9ff693365b8bb00ef15d6b03ef70cf3ba6322d06a39cb0d1effaf5ddb5707",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 1.3140042950457562,
+        "horizontal_path_m": 2.161056003484956,
+        "root_height_min_m": 0.7254579320359712,
+        "max_tilt_rad": 0.12678613368742905,
+        "source_joint_speed_p95_rad_s": 1.6354815833270953,
+        "source_joint_speed_max_rad_s": 8.182825729064408
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/006287_chunk_0000.npy",
+      "source_key": "humanml/006287_chunk_0000",
+      "source_group": "humanml/006287",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 25854,
+      "sha256": "66662f2f83cb981286c7d093052d7e7108c8152fac6d2afbb07e5c1047b18dcf",
+      "source_statistics": {
+        "source_frames": 88,
+        "source_hz": 30.0,
+        "source_duration_s": 2.9,
+        "max_horizontal_displacement_m": 0.9323653011410669,
+        "horizontal_path_m": 1.1113601039505607,
+        "root_height_min_m": 0.7436494453800493,
+        "max_tilt_rad": 0.20339940020738467,
+        "source_joint_speed_p95_rad_s": 1.7443930419446552,
+        "source_joint_speed_max_rad_s": 5.2807888057838746
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0021/Knee_Tuck_Arm_Circle_clip_17_chunk_0001.npy",
+      "source_key": "fitness/subset_0021/Knee_Tuck_Arm_Circle_clip_17_chunk_0001",
+      "source_group": "fitness/subset_0021/Knee_Tuck_Arm_Circle_clip_17",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "eeff6f016c2ee4d895fce1e38e7f88a7a6a556914516566f36131ee1801842ee",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.2873835118377723,
+        "horizontal_path_m": 0.9832382039207298,
+        "root_height_min_m": 0.7413788048332269,
+        "max_tilt_rad": 0.4118474022705783,
+        "source_joint_speed_p95_rad_s": 2.8159359728209026,
+        "source_joint_speed_max_rad_s": 6.167994558218953
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/idea400/Number_3_and_walking_at_the_same_time_1_clip1_chunk_0001.npy",
+      "source_key": "idea400/Number_3_and_walking_at_the_same_time_1_clip1_chunk_0001",
+      "source_group": "idea400/Number_3_and_walking_at_the_same_time_1",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 32478,
+      "sha256": "305293797229f8436fb27c26e2fede5c3b2af7a024c1fee0ae3a2d0f1f268645",
+      "source_statistics": {
+        "source_frames": 111,
+        "source_hz": 30.0,
+        "source_duration_s": 3.6666666666666665,
+        "max_horizontal_displacement_m": 1.7718713525783258,
+        "horizontal_path_m": 3.0056568858739237,
+        "root_height_min_m": 0.7584175377607831,
+        "max_tilt_rad": 0.18842207151586965,
+        "source_joint_speed_p95_rad_s": 1.7798848043398143,
+        "source_joint_speed_max_rad_s": 4.8481694237706074
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/010455_chunk_0002.npy",
+      "source_key": "humanml/010455_chunk_0002",
+      "source_group": "humanml/010455",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "148b05597fb69797451aa3014308aa010e629b93ac8e6f11006f4f7f0660d620",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 2.4908480670167994,
+        "horizontal_path_m": 2.5117643504537557,
+        "root_height_min_m": 0.7403136474013803,
+        "max_tilt_rad": 0.17163341824780842,
+        "source_joint_speed_p95_rad_s": 1.9697025074940764,
+        "source_joint_speed_max_rad_s": 6.659905118514834
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/004171_chunk_0000.npy",
+      "source_key": "humanml/004171_chunk_0000",
+      "source_group": "humanml/004171",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "369f2494854946ff6195e696f6a8c9aa888dfddf88bc3b2bb27ef1e760534289",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.9568243038943671,
+        "horizontal_path_m": 2.220014012115933,
+        "root_height_min_m": 0.564651532851074,
+        "max_tilt_rad": 0.18685788248790064,
+        "source_joint_speed_p95_rad_s": 2.3133750496600047,
+        "source_joint_speed_max_rad_s": 8.212345235679805
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/010456_chunk_0001.npy",
+      "source_key": "humanml/010456_chunk_0001",
+      "source_group": "humanml/010456",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "1b648aa3095cd240d745ccd96d5fcf59471c74e5124ea2f241f86b97d8a846f8",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.8582091795665276,
+        "horizontal_path_m": 2.647320332337421,
+        "root_height_min_m": 0.671817546367888,
+        "max_tilt_rad": 0.26212142381745585,
+        "source_joint_speed_p95_rad_s": 1.679483622678078,
+        "source_joint_speed_max_rad_s": 5.492391130900995
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/EgoBody/recording_20220215_S21_S22_01/body_idx_1/004_chunk_0003.npy",
+      "source_key": "EgoBody/recording_20220215_S21_S22_01/body_idx_1/004_chunk_0003",
+      "source_group": "EgoBody/recording_20220215_S21_S22_01/body_idx_1/004",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "d30fd024f892aa6d31212452f506e37f1ee5693eac1d1103e25b265eb15a0ca0",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.5671252349163444,
+        "horizontal_path_m": 0.7445416849688103,
+        "root_height_min_m": 0.7694020126076314,
+        "max_tilt_rad": 0.13570123083683258,
+        "source_joint_speed_p95_rad_s": 0.7980853308464733,
+        "source_joint_speed_max_rad_s": 3.612835970300417
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/idea400/Tennis_Serve_during_standing_clip1_chunk_0000.npy",
+      "source_key": "idea400/Tennis_Serve_during_standing_clip1_chunk_0000",
+      "source_group": "idea400/Tennis_Serve_during_standing",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "81b68a0523dc27cc2b620f991ac245d39953670b1f96ab743f096801833866b8",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.3599274059482726,
+        "horizontal_path_m": 1.2250004573447086,
+        "root_height_min_m": 0.7240056460223211,
+        "max_tilt_rad": 0.20725872922548583,
+        "source_joint_speed_p95_rad_s": 2.0386784387506496,
+        "source_joint_speed_max_rad_s": 7.4230766807260276
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/music/Play_Sax_49_clip2_chunk_0000.npy",
+      "source_key": "music/Play_Sax_49_clip2_chunk_0000",
+      "source_group": "music/Play_Sax_49",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 32190,
+      "sha256": "bb3485c1b62a3666c9f841ebaea09a8cbbd4ba1b8fbcfc849892457b006b2873",
+      "source_statistics": {
+        "source_frames": 110,
+        "source_hz": 30.0,
+        "source_duration_s": 3.6333333333333333,
+        "max_horizontal_displacement_m": 0.31621637481911974,
+        "horizontal_path_m": 0.5081224362742275,
+        "root_height_min_m": 0.7571127607471941,
+        "max_tilt_rad": 0.17620823151871803,
+        "source_joint_speed_p95_rad_s": 0.41173700078383707,
+        "source_joint_speed_max_rad_s": 2.6177046162152564
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/idea400/walking_during_Putting_on_socks_clip1_chunk_0000.npy",
+      "source_key": "idea400/walking_during_Putting_on_socks_clip1_chunk_0000",
+      "source_group": "idea400/walking_during_Putting_on_socks",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "06be321d711ea26bcd30414284e57ca183e68199f5a026b02a465b1ad920f5ca",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 3.0601420380440487,
+        "horizontal_path_m": 3.125746500611946,
+        "root_height_min_m": 0.740844491130434,
+        "max_tilt_rad": 0.13500673401293703,
+        "source_joint_speed_p95_rad_s": 1.4072438502193665,
+        "source_joint_speed_max_rad_s": 5.123291807247657
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/008651_chunk_0000.npy",
+      "source_key": "humanml/008651_chunk_0000",
+      "source_group": "humanml/008651",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "7024326e813d0441f049ad4699c81023a5faf0ef41a1bebb7ee3cbe773184623",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.9137791776028703,
+        "horizontal_path_m": 1.382120441956672,
+        "root_height_min_m": 0.5366724562435994,
+        "max_tilt_rad": 0.22189173144846105,
+        "source_joint_speed_p95_rad_s": 1.6776311559221888,
+        "source_joint_speed_max_rad_s": 4.635654609897334
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/game_motion/subset_0021/Maruta_Giga_clip_2_chunk_0000.npy",
+      "source_key": "game_motion/subset_0021/Maruta_Giga_clip_2_chunk_0000",
+      "source_group": "game_motion/subset_0021/Maruta_Giga_clip_2",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "f3805e3f544fd3761bd9ebf327896f55179f916b4403448567b27a47c2e976d5",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.45185891612462087,
+        "horizontal_path_m": 0.9001015773268196,
+        "root_height_min_m": 0.6580317417049214,
+        "max_tilt_rad": 0.3175619741315297,
+        "source_joint_speed_p95_rad_s": 2.15626062101424,
+        "source_joint_speed_max_rad_s": 4.547814364350947
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0079/Swing_To_Step_Back_clip_21_chunk_0000.npy",
+      "source_key": "fitness/subset_0079/Swing_To_Step_Back_clip_21_chunk_0000",
+      "source_group": "fitness/subset_0079/Swing_To_Step_Back_clip_21",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "390ee9c38e96477dd02ac086e094976652415b648e057a5ddfb9c43924311b12",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.34162209368679014,
+        "horizontal_path_m": 1.5860313375241761,
+        "root_height_min_m": 0.6745986103108881,
+        "max_tilt_rad": 0.2802910701098654,
+        "source_joint_speed_p95_rad_s": 1.1235655429425144,
+        "source_joint_speed_max_rad_s": 2.2816255358476374
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0105/Oblique_Crunch_R_clip_2_chunk_0001.npy",
+      "source_key": "fitness/subset_0105/Oblique_Crunch_R_clip_2_chunk_0001",
+      "source_group": "fitness/subset_0105/Oblique_Crunch_R_clip_2",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "540453529f05372b4dbfff1dc61c168a2d90b010e463ce12b5bc9b7f5d819d18",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.4184780369828099,
+        "horizontal_path_m": 1.8233587565491216,
+        "root_height_min_m": 0.6978039158158652,
+        "max_tilt_rad": 0.4103968728337119,
+        "source_joint_speed_p95_rad_s": 1.7192512201898722,
+        "source_joint_speed_max_rad_s": 4.4426184970698035
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/idea400/walking_while_Lifting_Weights_1_clip1_chunk_0002.npy",
+      "source_key": "idea400/walking_while_Lifting_Weights_1_clip1_chunk_0002",
+      "source_group": "idea400/walking_while_Lifting_Weights_1",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 18654,
+      "sha256": "725bc1b176435747c4d4b717ef041e27e20d20f82b881f741d750f9e99e1799c",
+      "source_statistics": {
+        "source_frames": 63,
+        "source_hz": 30.0,
+        "source_duration_s": 2.066666666666667,
+        "max_horizontal_displacement_m": 1.3170189726327628,
+        "horizontal_path_m": 1.4552184099064747,
+        "root_height_min_m": 0.6613039858711485,
+        "max_tilt_rad": 0.26165615505135775,
+        "source_joint_speed_p95_rad_s": 2.2556817476734823,
+        "source_joint_speed_max_rad_s": 4.891287550162027
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/kungfu/Shaolin_Kung_Fu_Wushu_Basic_Tiger_Sword_Training_10_clip1_chunk_0001.npy",
+      "source_key": "kungfu/Shaolin_Kung_Fu_Wushu_Basic_Tiger_Sword_Training_10_clip1_chunk_0001",
+      "source_group": "kungfu/Shaolin_Kung_Fu_Wushu_Basic_Tiger_Sword_Training_10",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "7ebe80b4d2f2dfa028088eb48a246192c6f4e8f011bb97a693f2f11ae6d1cf28",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.5288524334423351,
+        "horizontal_path_m": 0.8998113221562797,
+        "root_height_min_m": 0.6802081751389615,
+        "max_tilt_rad": 0.15660742806751926,
+        "source_joint_speed_p95_rad_s": 3.815338068295003,
+        "source_joint_speed_max_rad_s": 9.557207013661435
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/011044_chunk_0000.npy",
+      "source_key": "humanml/011044_chunk_0000",
+      "source_group": "humanml/011044",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 31902,
+      "sha256": "3ccee82fc83552f27517a3049d3151f708cd7940bd81d6177a076bb3736aef05",
+      "source_statistics": {
+        "source_frames": 109,
+        "source_hz": 30.0,
+        "source_duration_s": 3.6,
+        "max_horizontal_displacement_m": 2.861311943627789,
+        "horizontal_path_m": 2.8935413692116763,
+        "root_height_min_m": 0.7080802971935896,
+        "max_tilt_rad": 0.13842165988936445,
+        "source_joint_speed_p95_rad_s": 2.4084648411690406,
+        "source_joint_speed_max_rad_s": 6.738392212342735
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0090/Back_To_Side_Butt_Pulse_Rr_clip_36_chunk_0001.npy",
+      "source_key": "fitness/subset_0090/Back_To_Side_Butt_Pulse_Rr_clip_36_chunk_0001",
+      "source_group": "fitness/subset_0090/Back_To_Side_Butt_Pulse_Rr_clip_36",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "478352a319b452f8720970043297276ee2758a6ce322acb3a91a93c3714d0867",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.34454939200646373,
+        "horizontal_path_m": 0.8704019173955709,
+        "root_height_min_m": 0.7160931957720225,
+        "max_tilt_rad": 0.21826472914045691,
+        "source_joint_speed_p95_rad_s": 2.378840995239243,
+        "source_joint_speed_max_rad_s": 5.362465440749997
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/001574_chunk_0001.npy",
+      "source_key": "humanml/001574_chunk_0001",
+      "source_group": "humanml/001574",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "c15124d1de89f538130c831def295ac5900d02922a4500c4c53574e9cd51cad4",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.836454213933811,
+        "horizontal_path_m": 1.7815878949129764,
+        "root_height_min_m": 0.7319468140983745,
+        "max_tilt_rad": 0.41489526097396295,
+        "source_joint_speed_p95_rad_s": 2.5648291059216968,
+        "source_joint_speed_max_rad_s": 6.321209262937115
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/idea400/Simultaneously_Hug_and_walking_clip1_chunk_0001.npy",
+      "source_key": "idea400/Simultaneously_Hug_and_walking_clip1_chunk_0001",
+      "source_group": "idea400/Simultaneously_Hug_and_walking",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 39102,
+      "sha256": "1d32fcd9fdfc553477f6a5a625b5d29513ec4ffb269e721b3e9514afacd2441c",
+      "source_statistics": {
+        "source_frames": 134,
+        "source_hz": 30.0,
+        "source_duration_s": 4.433333333333334,
+        "max_horizontal_displacement_m": 1.9056699906257168,
+        "horizontal_path_m": 3.352569647949707,
+        "root_height_min_m": 0.7561415372624234,
+        "max_tilt_rad": 0.1488784829155218,
+        "source_joint_speed_p95_rad_s": 2.4291214840387987,
+        "source_joint_speed_max_rad_s": 4.49932723715725
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0105/Oblique_Crunches_clip_2_chunk_0002.npy",
+      "source_key": "fitness/subset_0105/Oblique_Crunches_clip_2_chunk_0002",
+      "source_group": "fitness/subset_0105/Oblique_Crunches_clip_2",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "3190a9a42137f697e28bf2102d95ea5fe1d0b704611bf3b4e01d7a33649370be",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 0.29947800872253316,
+        "horizontal_path_m": 1.0206651305226635,
+        "root_height_min_m": 0.7239995608115196,
+        "max_tilt_rad": 0.5139620287646814,
+        "source_joint_speed_p95_rad_s": 3.619748528082925,
+        "source_joint_speed_max_rad_s": 5.302829564201581
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/007310_chunk_0000.npy",
+      "source_key": "humanml/007310_chunk_0000",
+      "source_group": "humanml/007310",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "973d7c5ac9f09a074d4f3049eded69df5a422ba2b24a1714035b28b14a671b1a",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 2.533409022412047,
+        "horizontal_path_m": 2.5569435920094588,
+        "root_height_min_m": 0.7320503129964889,
+        "max_tilt_rad": 0.24166348153429984,
+        "source_joint_speed_p95_rad_s": 1.7856903294048276,
+        "source_joint_speed_max_rad_s": 3.6159735643080926
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/001593_chunk_0000.npy",
+      "source_key": "humanml/001593_chunk_0000",
+      "source_group": "humanml/001593",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "dc2b2a6bdbd412eaa79000f247fefaf927dee7c4351436e3f898fca367997c8d",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.5336158567317747,
+        "horizontal_path_m": 1.2509804787710737,
+        "root_height_min_m": 0.7330057342599037,
+        "max_tilt_rad": 0.10668314831853748,
+        "source_joint_speed_p95_rad_s": 2.027534330834694,
+        "source_joint_speed_max_rad_s": 6.074272766634878
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0090/Back_To_Side_Butt_Pulse_Rr_clip_56_chunk_0000.npy",
+      "source_key": "fitness/subset_0090/Back_To_Side_Butt_Pulse_Rr_clip_56_chunk_0000",
+      "source_group": "fitness/subset_0090/Back_To_Side_Butt_Pulse_Rr_clip_56",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 28734,
+      "sha256": "06ccf1d01463a989467e86b44cbfa1e5bae96271f282ed2fd9e4e463c99757e7",
+      "source_statistics": {
+        "source_frames": 98,
+        "source_hz": 30.0,
+        "source_duration_s": 3.2333333333333334,
+        "max_horizontal_displacement_m": 0.26390537091173055,
+        "horizontal_path_m": 0.49173214112647257,
+        "root_height_min_m": 0.5121452010747545,
+        "max_tilt_rad": 0.25251844413151203,
+        "source_joint_speed_p95_rad_s": 1.9118506473535106,
+        "source_joint_speed_max_rad_s": 3.7523402017400738
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/idea400/Bow_your_head_during_walking_1_clip1_chunk_0000.npy",
+      "source_key": "idea400/Bow_your_head_during_walking_1_clip1_chunk_0000",
+      "source_group": "idea400/Bow_your_head_during_walking_1",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 33918,
+      "sha256": "28172f219dfa95c579eaaf4d04977c26cc1c6dbefec8a452e044b0371e77c36a",
+      "source_statistics": {
+        "source_frames": 116,
+        "source_hz": 30.0,
+        "source_duration_s": 3.8333333333333335,
+        "max_horizontal_displacement_m": 1.834367994581526,
+        "horizontal_path_m": 1.9817406802917465,
+        "root_height_min_m": 0.7610901140256144,
+        "max_tilt_rad": 0.19156868808881852,
+        "source_joint_speed_p95_rad_s": 0.9523406409158286,
+        "source_joint_speed_max_rad_s": 3.273838549593517
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/game_motion/subset_0013/Katana_Ansteigende_clip_5_chunk_0000.npy",
+      "source_key": "game_motion/subset_0013/Katana_Ansteigende_clip_5_chunk_0000",
+      "source_group": "game_motion/subset_0013/Katana_Ansteigende_clip_5",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 30750,
+      "sha256": "0b4ead54c2e3fc4e523dcabd6d860ba6e1b622a28a8613e74c6ee1c31ac9b0bb",
+      "source_statistics": {
+        "source_frames": 105,
+        "source_hz": 30.0,
+        "source_duration_s": 3.466666666666667,
+        "max_horizontal_displacement_m": 1.1449773316712506,
+        "horizontal_path_m": 1.5197375499226249,
+        "root_height_min_m": 0.48523247487458554,
+        "max_tilt_rad": 0.29396955471191855,
+        "source_joint_speed_p95_rad_s": 2.5967203918672945,
+        "source_joint_speed_max_rad_s": 8.019327164404796
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/idea400/Supporting_Someone_and_walking_at_the_same_time_clip1_chunk_0001.npy",
+      "source_key": "idea400/Supporting_Someone_and_walking_at_the_same_time_clip1_chunk_0001",
+      "source_group": "idea400/Supporting_Someone_and_walking_at_the_same_time",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35646,
+      "sha256": "eeabd024f584c168f83074d24f9bb1556b5505e1e3d744d0ca79882d85d79195",
+      "source_statistics": {
+        "source_frames": 122,
+        "source_hz": 30.0,
+        "source_duration_s": 4.033333333333333,
+        "max_horizontal_displacement_m": 3.3263185088174256,
+        "horizontal_path_m": 3.441964054736164,
+        "root_height_min_m": 0.7625816950730321,
+        "max_tilt_rad": 0.13010514373915613,
+        "source_joint_speed_p95_rad_s": 2.0213092673460142,
+        "source_joint_speed_max_rad_s": 5.793748601301055
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0088/Step_Out_To_Knee_Strike_clip_63_chunk_0001.npy",
+      "source_key": "fitness/subset_0088/Step_Out_To_Knee_Strike_clip_63_chunk_0001",
+      "source_group": "fitness/subset_0088/Step_Out_To_Knee_Strike_clip_63",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 24414,
+      "sha256": "6ebdd678d54c9f1a065aa4edeb4393144376d875f41267b3823ef6bd52bfb306",
+      "source_statistics": {
+        "source_frames": 83,
+        "source_hz": 30.0,
+        "source_duration_s": 2.7333333333333334,
+        "max_horizontal_displacement_m": 0.4011715820496959,
+        "horizontal_path_m": 0.7477164946974166,
+        "root_height_min_m": 0.570065719396779,
+        "max_tilt_rad": 0.41700996211207714,
+        "source_joint_speed_p95_rad_s": 1.7425904256657163,
+        "source_joint_speed_max_rad_s": 4.230960669686395
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/001576_chunk_0002.npy",
+      "source_key": "humanml/001576_chunk_0002",
+      "source_group": "humanml/001576",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 25566,
+      "sha256": "d4a0c5116dd3abdc01bcd7e63886b05fb62716f327e5ffd2f1219772ea1e8555",
+      "source_statistics": {
+        "source_frames": 87,
+        "source_hz": 30.0,
+        "source_duration_s": 2.8666666666666667,
+        "max_horizontal_displacement_m": 0.39028615274565315,
+        "horizontal_path_m": 0.49196094420633335,
+        "root_height_min_m": 0.7041632866043489,
+        "max_tilt_rad": 0.4460503898443984,
+        "source_joint_speed_p95_rad_s": 2.5376945813200473,
+        "source_joint_speed_max_rad_s": 11.515209177466211
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/013490_chunk_0000.npy",
+      "source_key": "humanml/013490_chunk_0000",
+      "source_group": "humanml/013490",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 31614,
+      "sha256": "0dbb50eb6289f33cb111c178b47610bf0fb100c01cc7486a0f2ba97044e12702",
+      "source_statistics": {
+        "source_frames": 108,
+        "source_hz": 30.0,
+        "source_duration_s": 3.566666666666667,
+        "max_horizontal_displacement_m": 0.38739218609702664,
+        "horizontal_path_m": 0.4512037394463981,
+        "root_height_min_m": 0.750292219526618,
+        "max_tilt_rad": 0.12065259048426298,
+        "source_joint_speed_p95_rad_s": 0.6065881709293408,
+        "source_joint_speed_max_rad_s": 2.4790641360950967
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/014273_chunk_0001.npy",
+      "source_key": "humanml/014273_chunk_0001",
+      "source_group": "humanml/014273",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "4b18d4b5090e62d94ebc87166361cfdea1f58ac8ad344c66225fb6dbad1f513c",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 1.0945686405945918,
+        "horizontal_path_m": 1.5530170381253738,
+        "root_height_min_m": 0.7332367764992271,
+        "max_tilt_rad": 0.34785547287046276,
+        "source_joint_speed_p95_rad_s": 1.0875941385305163,
+        "source_joint_speed_max_rad_s": 5.260474980084671
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0087/Squat_Walk_clip_1_chunk_0001.npy",
+      "source_key": "fitness/subset_0087/Squat_Walk_clip_1_chunk_0001",
+      "source_group": "fitness/subset_0087/Squat_Walk_clip_1",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "ab3389502fc8a1ddc772cedbb29c46e8527d51ff267512b440c5953af296ecce",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.46318284925689823,
+        "horizontal_path_m": 1.4810608563807972,
+        "root_height_min_m": 0.49985799099138756,
+        "max_tilt_rad": 0.28167684404155646,
+        "source_joint_speed_p95_rad_s": 1.9941226654609534,
+        "source_joint_speed_max_rad_s": 3.2370965545383443
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0047/Squat_To_Crunch_clip_23_chunk_0000.npy",
+      "source_key": "fitness/subset_0047/Squat_To_Crunch_clip_23_chunk_0000",
+      "source_group": "fitness/subset_0047/Squat_To_Crunch_clip_23",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "4b0150794e0c4a2bfda09dcb5ffd3e7bf76a5b6b84f0c74d406138ab13d3565f",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.07990339767911171,
+        "horizontal_path_m": 0.3992084649789502,
+        "root_height_min_m": 0.520202637930617,
+        "max_tilt_rad": 0.17649890959810663,
+        "source_joint_speed_p95_rad_s": 2.178827543324314,
+        "source_joint_speed_max_rad_s": 7.41260375857688
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0026/Warrior_Squat_To_Pulse_Rf_clip_3_chunk_0001.npy",
+      "source_key": "fitness/subset_0026/Warrior_Squat_To_Pulse_Rf_clip_3_chunk_0001",
+      "source_group": "fitness/subset_0026/Warrior_Squat_To_Pulse_Rf_clip_3",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "3b8a34f13d38d224cc9bd267790244c57ce3313afae49877fac8112485c476f1",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.2583237266662927,
+        "horizontal_path_m": 0.4259682425649448,
+        "root_height_min_m": 0.670684457979131,
+        "max_tilt_rad": 0.18407018312301107,
+        "source_joint_speed_p95_rad_s": 0.9045900841984884,
+        "source_joint_speed_max_rad_s": 1.6173327569541596
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0036/Split_Squat_Back_Squeeze_R_clip_17_chunk_0000.npy",
+      "source_key": "fitness/subset_0036/Split_Squat_Back_Squeeze_R_clip_17_chunk_0000",
+      "source_group": "fitness/subset_0036/Split_Squat_Back_Squeeze_R_clip_17",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 27006,
+      "sha256": "ae5df4bdcbd02bd7fefefcdfa585ef2c3e4a4aa25fd66ec79dc218046424961d",
+      "source_statistics": {
+        "source_frames": 92,
+        "source_hz": 30.0,
+        "source_duration_s": 3.033333333333333,
+        "max_horizontal_displacement_m": 0.26468468924159566,
+        "horizontal_path_m": 0.888740962425074,
+        "root_height_min_m": 0.5995645447128284,
+        "max_tilt_rad": 0.464398888200702,
+        "source_joint_speed_p95_rad_s": 3.2126748423309595,
+        "source_joint_speed_max_rad_s": 6.335868372083915
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0062/Lateral_Squat_Walk_To_Wmp_Rack_clip_12_chunk_0000.npy",
+      "source_key": "fitness/subset_0062/Lateral_Squat_Walk_To_Wmp_Rack_clip_12_chunk_0000",
+      "source_group": "fitness/subset_0062/Lateral_Squat_Walk_To_Wmp_Rack_clip_12",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "4ae2e16124b7dd49bd0143d9e456896848a6105c44054d7e8546aa152adc1de1",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.1470288206254237,
+        "horizontal_path_m": 1.175155734142173,
+        "root_height_min_m": 0.6498877733701992,
+        "max_tilt_rad": 0.22624429161360377,
+        "source_joint_speed_p95_rad_s": 2.224319812730612,
+        "source_joint_speed_max_rad_s": 4.2082632068243
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0009/Lateral_Squat_Walk_Totwist_Cruinch_clip_1_chunk_0002.npy",
+      "source_key": "fitness/subset_0009/Lateral_Squat_Walk_Totwist_Cruinch_clip_1_chunk_0002",
+      "source_group": "fitness/subset_0009/Lateral_Squat_Walk_Totwist_Cruinch_clip_1",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 21246,
+      "sha256": "44925643a340f693cc0f4013bcb939734205feb51364e041b05c5257c50999ea",
+      "source_statistics": {
+        "source_frames": 72,
+        "source_hz": 30.0,
+        "source_duration_s": 2.3666666666666667,
+        "max_horizontal_displacement_m": 0.6564513541219429,
+        "horizontal_path_m": 0.7966352734190502,
+        "root_height_min_m": 0.6150274691186914,
+        "max_tilt_rad": 0.452362569157511,
+        "source_joint_speed_p95_rad_s": 2.1649192833507986,
+        "source_joint_speed_max_rad_s": 3.9086738389196984
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0094/Knee_Tap_To_X_Reach_Squat_clip_21_chunk_0000.npy",
+      "source_key": "fitness/subset_0094/Knee_Tap_To_X_Reach_Squat_clip_21_chunk_0000",
+      "source_group": "fitness/subset_0094/Knee_Tap_To_X_Reach_Squat_clip_21",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "b11950e19309f8461c03680bff6f44c8f85c9db1c94e65f81368e596cc400898",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.20298773731662556,
+        "horizontal_path_m": 1.2155872784701236,
+        "root_height_min_m": 0.713609839005438,
+        "max_tilt_rad": 0.15164374372305003,
+        "source_joint_speed_p95_rad_s": 2.098678273898354,
+        "source_joint_speed_max_rad_s": 4.08361401697729
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0036/Squat_Side_Up_Punch_clip_11_chunk_0000.npy",
+      "source_key": "fitness/subset_0036/Squat_Side_Up_Punch_clip_11_chunk_0000",
+      "source_group": "fitness/subset_0036/Squat_Side_Up_Punch_clip_11",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "eff971dd7755acc7f9c4ea4d783484b278a94ee611e9d90f6a358ba6237afdc1",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.24880391234752988,
+        "horizontal_path_m": 1.1470522264510423,
+        "root_height_min_m": 0.7173795119666889,
+        "max_tilt_rad": 0.41733580861289327,
+        "source_joint_speed_p95_rad_s": 2.2071532994373952,
+        "source_joint_speed_max_rad_s": 5.925803783863325
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0087/Split_Squat_Back_Squeeze_R_clip_31_chunk_0002.npy",
+      "source_key": "fitness/subset_0087/Split_Squat_Back_Squeeze_R_clip_31_chunk_0002",
+      "source_group": "fitness/subset_0087/Split_Squat_Back_Squeeze_R_clip_31",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "ac28261fa72a2f1647ddc2728e41cc00f34651ec577b9b25b1253ccf1145b567",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 0.18831805976305072,
+        "horizontal_path_m": 0.9276144638181393,
+        "root_height_min_m": 0.7495789636293955,
+        "max_tilt_rad": 0.29203107367525044,
+        "source_joint_speed_p95_rad_s": 2.092191273683145,
+        "source_joint_speed_max_rad_s": 5.044716009481396
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0012/Side_Kick_To_Squat_R_clip_13_chunk_0002.npy",
+      "source_key": "fitness/subset_0012/Side_Kick_To_Squat_R_clip_13_chunk_0002",
+      "source_group": "fitness/subset_0012/Side_Kick_To_Squat_R_clip_13",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "2a3d1da52a5a69a10f9212145eadf6df305027405e24ab1598a3112c10f05eb8",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 0.3297078863391448,
+        "horizontal_path_m": 0.9197021294065735,
+        "root_height_min_m": 0.5170643177413828,
+        "max_tilt_rad": 0.40208390092854507,
+        "source_joint_speed_p95_rad_s": 2.07707495773408,
+        "source_joint_speed_max_rad_s": 4.036970407022192
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0087/Squat_Crunch_Toe_Touch_clip_5_chunk_0000.npy",
+      "source_key": "fitness/subset_0087/Squat_Crunch_Toe_Touch_clip_5_chunk_0000",
+      "source_group": "fitness/subset_0087/Squat_Crunch_Toe_Touch_clip_5",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 28158,
+      "sha256": "c2e5e396b4462dea85d991d9b8d3cb03c2613d0cc271367d5fa3565ac900078d",
+      "source_statistics": {
+        "source_frames": 96,
+        "source_hz": 30.0,
+        "source_duration_s": 3.1666666666666665,
+        "max_horizontal_displacement_m": 0.38371756942937507,
+        "horizontal_path_m": 0.8009890009215911,
+        "root_height_min_m": 0.6311517127538752,
+        "max_tilt_rad": 0.5623093485834776,
+        "source_joint_speed_p95_rad_s": 2.3441903628994245,
+        "source_joint_speed_max_rad_s": 4.5710955399968505
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0025/Squat_To_Side_Crunch_clip_15_chunk_0000.npy",
+      "source_key": "fitness/subset_0025/Squat_To_Side_Crunch_clip_15_chunk_0000",
+      "source_group": "fitness/subset_0025/Squat_To_Side_Crunch_clip_15",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 22974,
+      "sha256": "ffae97fb70ea217246aee53322d922ce0f141779f631c1caec69befd5e0b5d5c",
+      "source_statistics": {
+        "source_frames": 78,
+        "source_hz": 30.0,
+        "source_duration_s": 2.566666666666667,
+        "max_horizontal_displacement_m": 0.4108770436559236,
+        "horizontal_path_m": 1.0589460170719727,
+        "root_height_min_m": 0.584249078133335,
+        "max_tilt_rad": 0.41534919114575236,
+        "source_joint_speed_p95_rad_s": 3.822724609925874,
+        "source_joint_speed_max_rad_s": 9.432553412979702
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0091/Cross_Crunch_To_Squat_R_clip_12_chunk_0001.npy",
+      "source_key": "fitness/subset_0091/Cross_Crunch_To_Squat_R_clip_12_chunk_0001",
+      "source_group": "fitness/subset_0091/Cross_Crunch_To_Squat_R_clip_12",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "d7907e34dd2b41c9f9001e511a6f3405b2c8f547105ac6c2e2b2d5964a006f86",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.22842783964549632,
+        "horizontal_path_m": 0.8371946674609013,
+        "root_height_min_m": 0.55436922965188,
+        "max_tilt_rad": 0.40244252792039437,
+        "source_joint_speed_p95_rad_s": 2.709558727524185,
+        "source_joint_speed_max_rad_s": 6.149740462230966
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0091/Calf_Raise_To_Squat_clip_3_chunk_0000.npy",
+      "source_key": "fitness/subset_0091/Calf_Raise_To_Squat_clip_3_chunk_0000",
+      "source_group": "fitness/subset_0091/Calf_Raise_To_Squat_clip_3",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "8c1d667ef86a750e087ae4a53c7e0b95780c9e64fdda42d9e1018f86f3b5a0ad",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.06950707156781337,
+        "horizontal_path_m": 0.28110977994627795,
+        "root_height_min_m": 0.7123028095638558,
+        "max_tilt_rad": 0.11964000154240373,
+        "source_joint_speed_p95_rad_s": 1.050987492348398,
+        "source_joint_speed_max_rad_s": 2.6756180695891105
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0029/Fast_Feet_To_Step_Out_Squat_clip_6_chunk_0000.npy",
+      "source_key": "fitness/subset_0029/Fast_Feet_To_Step_Out_Squat_clip_6_chunk_0000",
+      "source_group": "fitness/subset_0029/Fast_Feet_To_Step_Out_Squat_clip_6",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 36222,
+      "sha256": "8faeba172bfba206f0b81c567c17c5c07987fcba2c8a9d52c22bc3459e87b548",
+      "source_statistics": {
+        "source_frames": 124,
+        "source_hz": 30.0,
+        "source_duration_s": 4.1,
+        "max_horizontal_displacement_m": 0.1750386542489223,
+        "horizontal_path_m": 0.9107299703749119,
+        "root_height_min_m": 0.5985518404399806,
+        "max_tilt_rad": 0.3556318231688792,
+        "source_joint_speed_p95_rad_s": 2.0227259280256296,
+        "source_joint_speed_max_rad_s": 3.6777115889209524
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0032/Out_Up_Plie_Squat_clip_3_chunk_0002.npy",
+      "source_key": "fitness/subset_0032/Out_Up_Plie_Squat_clip_3_chunk_0002",
+      "source_group": "fitness/subset_0032/Out_Up_Plie_Squat_clip_3",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "e1b46dbc45fd24f38e66b81af8059a98b9c73f01b614cdf14ec1f798aa3c1300",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 0.046218875846828024,
+        "horizontal_path_m": 0.45814276964664763,
+        "root_height_min_m": 0.5827894437167624,
+        "max_tilt_rad": 0.10893131527719568,
+        "source_joint_speed_p95_rad_s": 3.4706369038834235,
+        "source_joint_speed_max_rad_s": 6.757808290060952
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/GRAB/s8/alarmclock_lift_chunk_0004.npy",
+      "source_key": "GRAB/s8/alarmclock_lift_chunk_0004",
+      "source_group": "GRAB/s8/alarmclock_lift",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "02914be04a0f996448fecd94627c4b2bfd8641e916ecd7f76af0a4f831218528",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.041629386880208195,
+        "horizontal_path_m": 0.10117931918842236,
+        "root_height_min_m": 0.7837023709296455,
+        "max_tilt_rad": 0.13167495347426422,
+        "source_joint_speed_p95_rad_s": 0.5658230319521093,
+        "source_joint_speed_max_rad_s": 1.950154309975266
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/idea400/Touch_your_ear_with_your_hand_and_standing_at_the_same_time_clip1_chunk_0000.npy",
+      "source_key": "idea400/Touch_your_ear_with_your_hand_and_standing_at_the_same_time_clip1_chunk_0000",
+      "source_group": "idea400/Touch_your_ear_with_your_hand_and_standing_at_the_same_time",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "51fd5546b50e19d6693ead83859ef83ac0c0f86bba1d0577c4249ee93ada2ef7",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.043879837576268815,
+        "horizontal_path_m": 0.19161982771243302,
+        "root_height_min_m": 0.7453277735128112,
+        "max_tilt_rad": 0.14488668932333815,
+        "source_joint_speed_p95_rad_s": 1.6010177386655198,
+        "source_joint_speed_max_rad_s": 9.325458990839824
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0037/Step_Out_Side_Reach_clip_23_chunk_0000.npy",
+      "source_key": "fitness/subset_0037/Step_Out_Side_Reach_clip_23_chunk_0000",
+      "source_group": "fitness/subset_0037/Step_Out_Side_Reach_clip_23",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 27582,
+      "sha256": "595411cd117071593eed1f0e28301fb438f61c86a604c68e8a7acdb93c7ccf73",
+      "source_statistics": {
+        "source_frames": 94,
+        "source_hz": 30.0,
+        "source_duration_s": 3.1,
+        "max_horizontal_displacement_m": 0.1837477923646365,
+        "horizontal_path_m": 0.7270500325136015,
+        "root_height_min_m": 0.6728952689922649,
+        "max_tilt_rad": 0.5381866673724073,
+        "source_joint_speed_p95_rad_s": 2.633338495119271,
+        "source_joint_speed_max_rad_s": 7.547870950370329
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0024/Side_Step_Arm_Swing_clip_5_chunk_0000.npy",
+      "source_key": "fitness/subset_0024/Side_Step_Arm_Swing_clip_5_chunk_0000",
+      "source_group": "fitness/subset_0024/Side_Step_Arm_Swing_clip_5",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "1dac510b98e12f27b036bfc60eb5073f17ba9a62826a382c6e588f572f04bd91",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.12704953877988215,
+        "horizontal_path_m": 1.141761848662629,
+        "root_height_min_m": 0.7239979657882162,
+        "max_tilt_rad": 0.1415834651448586,
+        "source_joint_speed_p95_rad_s": 3.098270774474218,
+        "source_joint_speed_max_rad_s": 9.696032842555027
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0088/Step_Out_Punch_To_Fast_Ffft_Pi_clip_1_chunk_0000.npy",
+      "source_key": "fitness/subset_0088/Step_Out_Punch_To_Fast_Ffft_Pi_clip_1_chunk_0000",
+      "source_group": "fitness/subset_0088/Step_Out_Punch_To_Fast_Ffft_Pi_clip_1",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "b1e78cee88772a1b272200068ffbea466005919d2a3a654a15607f146c841eed",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.1437866000468707,
+        "horizontal_path_m": 0.6734181465878571,
+        "root_height_min_m": 0.7301879548700076,
+        "max_tilt_rad": 0.1638645141938125,
+        "source_joint_speed_p95_rad_s": 1.4028010103231927,
+        "source_joint_speed_max_rad_s": 4.127137246056566
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/idea400/Hand_touches_thigh_and_standing_at_the_same_time_clip1_chunk_0001.npy",
+      "source_key": "idea400/Hand_touches_thigh_and_standing_at_the_same_time_clip1_chunk_0001",
+      "source_group": "idea400/Hand_touches_thigh_and_standing_at_the_same_time",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 20958,
+      "sha256": "27525d66a9278536e4c9008b1019dd34cd9cb88b0129f051ec16da66427f6d40",
+      "source_statistics": {
+        "source_frames": 71,
+        "source_hz": 30.0,
+        "source_duration_s": 2.3333333333333335,
+        "max_horizontal_displacement_m": 0.10553956811109175,
+        "horizontal_path_m": 0.25910799476689667,
+        "root_height_min_m": 0.7437145081852858,
+        "max_tilt_rad": 0.3169311933634469,
+        "source_joint_speed_p95_rad_s": 0.7466417804349809,
+        "source_joint_speed_max_rad_s": 2.2038961617715613
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0046/Single_To_Double_Clap_Undef_clip_20_chunk_0001.npy",
+      "source_key": "fitness/subset_0046/Single_To_Double_Clap_Undef_clip_20_chunk_0001",
+      "source_group": "fitness/subset_0046/Single_To_Double_Clap_Undef_clip_20",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "adb0b25923cec69be200882d7c7c06041da605da34b2f9195dbe0d961c368427",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.10913098744735084,
+        "horizontal_path_m": 0.45097421518982417,
+        "root_height_min_m": 0.7416738490264594,
+        "max_tilt_rad": 0.4134377549758071,
+        "source_joint_speed_p95_rad_s": 1.688143361007146,
+        "source_joint_speed_max_rad_s": 3.9930827885984415
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humman/Alternating_arm_before_1_clip1_chunk_0000.npy",
+      "source_key": "humman/Alternating_arm_before_1_clip1_chunk_0000",
+      "source_group": "humman/Alternating_arm_before_1",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 24414,
+      "sha256": "a675036e403cc5e89653993290e622cae839b6cbe55773fe30234bd415554df5",
+      "source_statistics": {
+        "source_frames": 83,
+        "source_hz": 30.0,
+        "source_duration_s": 2.7333333333333334,
+        "max_horizontal_displacement_m": 0.03323324420946504,
+        "horizontal_path_m": 0.13089183036182178,
+        "root_height_min_m": 0.779115219447514,
+        "max_tilt_rad": 0.09885302570772858,
+        "source_joint_speed_p95_rad_s": 1.4856653078748332,
+        "source_joint_speed_max_rad_s": 3.205866325085136
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0099/X_Step_Out_Punch_Up_Down_clip_7_chunk_0000.npy",
+      "source_key": "fitness/subset_0099/X_Step_Out_Punch_Up_Down_clip_7_chunk_0000",
+      "source_group": "fitness/subset_0099/X_Step_Out_Punch_Up_Down_clip_7",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "8ea6268b1c2d4f5ffce9e55d93290f93e0d90bc4e471910d174800fec2603704",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.17913389816860806,
+        "horizontal_path_m": 1.1014782267290795,
+        "root_height_min_m": 0.6944672351995019,
+        "max_tilt_rad": 0.18070786708431857,
+        "source_joint_speed_p95_rad_s": 2.265922791793214,
+        "source_joint_speed_max_rad_s": 6.510469533491806
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0104/Knee_Tuck_Front_Back_Clap_R_clip_14_chunk_0002.npy",
+      "source_key": "fitness/subset_0104/Knee_Tuck_Front_Back_Clap_R_clip_14_chunk_0002",
+      "source_group": "fitness/subset_0104/Knee_Tuck_Front_Back_Clap_R_clip_14",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "b305e0159fa1ac80b592e15c5ebd3ac5adadf27f04a02cafd7ad6b56d01f2a76",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 0.19904201276547726,
+        "horizontal_path_m": 0.857020413302735,
+        "root_height_min_m": 0.7429322863779143,
+        "max_tilt_rad": 0.36129648379145024,
+        "source_joint_speed_p95_rad_s": 3.1764144737466737,
+        "source_joint_speed_max_rad_s": 5.7021170329722315
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/idea400/standing_and_Hand_pockets_at_the_same_time_3_clip1_chunk_0001.npy",
+      "source_key": "idea400/standing_and_Hand_pockets_at_the_same_time_3_clip1_chunk_0001",
+      "source_group": "idea400/standing_and_Hand_pockets_at_the_same_time_3",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 30462,
+      "sha256": "7e63b97c8b782f1b9a8b1643d7db7ca750519d5770dbc7d54d1afb0f3b39bb67",
+      "source_statistics": {
+        "source_frames": 104,
+        "source_hz": 30.0,
+        "source_duration_s": 3.433333333333333,
+        "max_horizontal_displacement_m": 0.009466333454236513,
+        "horizontal_path_m": 0.042982992704836805,
+        "root_height_min_m": 0.7673489351340761,
+        "max_tilt_rad": 0.08241587879083724,
+        "source_joint_speed_p95_rad_s": 0.33598185708166173,
+        "source_joint_speed_max_rad_s": 3.395274955679164
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/game_motion/subset_0011/Hand_Messer_chunk_0001.npy",
+      "source_key": "game_motion/subset_0011/Hand_Messer_chunk_0001",
+      "source_group": "game_motion/subset_0011/Hand_Messer",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 29886,
+      "sha256": "6709f2ba5ca417cc73173427764520d6504651680ac3f307f2860537894f4e3a",
+      "source_statistics": {
+        "source_frames": 102,
+        "source_hz": 30.0,
+        "source_duration_s": 3.3666666666666667,
+        "max_horizontal_displacement_m": 0.22422429541259356,
+        "horizontal_path_m": 0.6490680147212292,
+        "root_height_min_m": 0.7617900725948672,
+        "max_tilt_rad": 0.44946451758232314,
+        "source_joint_speed_p95_rad_s": 1.1601232569888,
+        "source_joint_speed_max_rad_s": 2.4327982340941023
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0018/Butt_Kicks_Arm_Swing_clip_14_chunk_0001.npy",
+      "source_key": "fitness/subset_0018/Butt_Kicks_Arm_Swing_clip_14_chunk_0001",
+      "source_group": "fitness/subset_0018/Butt_Kicks_Arm_Swing_clip_14",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 27870,
+      "sha256": "475227615cf730ff0d112a6f650d51a01ea5616e72ae64587bbc53bbcaa73881",
+      "source_statistics": {
+        "source_frames": 95,
+        "source_hz": 30.0,
+        "source_duration_s": 3.1333333333333333,
+        "max_horizontal_displacement_m": 0.10407326109981598,
+        "horizontal_path_m": 0.7939615672231436,
+        "root_height_min_m": 0.7363102515477735,
+        "max_tilt_rad": 0.1733079828858575,
+        "source_joint_speed_p95_rad_s": 2.009695099585626,
+        "source_joint_speed_max_rad_s": 4.017201874172204
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/idea400/Hand_touching_elbow_while_standing_clip1_chunk_0000.npy",
+      "source_key": "idea400/Hand_touching_elbow_while_standing_clip1_chunk_0000",
+      "source_group": "idea400/Hand_touching_elbow_while_standing",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "b3cc883454eec2b5c728d25413d221264a881181201895b4a54e98cc6557f1f1",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.05709365379629184,
+        "horizontal_path_m": 0.1806212717070731,
+        "root_height_min_m": 0.7600764733169024,
+        "max_tilt_rad": 0.10405595471324322,
+        "source_joint_speed_p95_rad_s": 0.6595927387813771,
+        "source_joint_speed_max_rad_s": 3.1288139661310455
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0018/Butt_Kick_Arm_Swing_clip_4_chunk_0000.npy",
+      "source_key": "fitness/subset_0018/Butt_Kick_Arm_Swing_clip_4_chunk_0000",
+      "source_group": "fitness/subset_0018/Butt_Kick_Arm_Swing_clip_4",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "6818332b4bef502cd4c9909bd3385f5f44ef67e5ef75cfe06282f506cae41eb5",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.16403068007446278,
+        "horizontal_path_m": 1.426678527942915,
+        "root_height_min_m": 0.6580641135659221,
+        "max_tilt_rad": 0.49571501256826717,
+        "source_joint_speed_p95_rad_s": 1.3490335279473853,
+        "source_joint_speed_max_rad_s": 4.742231393400283
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0034/Shuffle_Punch_Down_Combc_clip_2_chunk_0001.npy",
+      "source_key": "fitness/subset_0034/Shuffle_Punch_Down_Combc_clip_2_chunk_0001",
+      "source_group": "fitness/subset_0034/Shuffle_Punch_Down_Combc_clip_2",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "8d05e751dc17899de6717a5b472b22a9c79940eb9db024854057682c4e1e62ad",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.08392294432590211,
+        "horizontal_path_m": 0.8461717320662148,
+        "root_height_min_m": 0.7370262683222905,
+        "max_tilt_rad": 0.16878655159335038,
+        "source_joint_speed_p95_rad_s": 1.932150004527146,
+        "source_joint_speed_max_rad_s": 7.277915292133414
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0052/Leg_Swing_To_Hip_Opener_R_clip_5_chunk_0001.npy",
+      "source_key": "fitness/subset_0052/Leg_Swing_To_Hip_Opener_R_clip_5_chunk_0001",
+      "source_group": "fitness/subset_0052/Leg_Swing_To_Hip_Opener_R_clip_5",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "1ef5ea12ee06f723bf8b2d16b62b5c0beecc43e638cfebad6738c005286c67ee",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.07458820165916243,
+        "horizontal_path_m": 0.3870300964340288,
+        "root_height_min_m": 0.7293653285150882,
+        "max_tilt_rad": 0.39074059620620283,
+        "source_joint_speed_p95_rad_s": 1.0814417598727804,
+        "source_joint_speed_max_rad_s": 4.157025294816493
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/007541_chunk_0000.npy",
+      "source_key": "humanml/007541_chunk_0000",
+      "source_group": "humanml/007541",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "618c8a6fc9fc6582e8a42b8642a63dabe2643d1fd51e15447bf0989d39d1d160",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.10423319939344454,
+        "horizontal_path_m": 0.42178052584090275,
+        "root_height_min_m": 0.754991132016777,
+        "max_tilt_rad": 0.07563627756899324,
+        "source_joint_speed_p95_rad_s": 1.0032913642157404,
+        "source_joint_speed_max_rad_s": 5.832030755661575
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/EgoBody/recording_20220215_S21_S22_01/body_idx_0/000_chunk_0003.npy",
+      "source_key": "EgoBody/recording_20220215_S21_S22_01/body_idx_0/000_chunk_0003",
+      "source_group": "EgoBody/recording_20220215_S21_S22_01/body_idx_0/000",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "f6915895c84aa958f6f7a438ffded4d1fb91efc051d0d15edd8ba24ed2775a87",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.03111624701313062,
+        "horizontal_path_m": 0.10861342014780895,
+        "root_height_min_m": 0.7758952071501147,
+        "max_tilt_rad": 0.13967741603616196,
+        "source_joint_speed_p95_rad_s": 0.3603627944854756,
+        "source_joint_speed_max_rad_s": 1.8062152943418501
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/004055_chunk_0001.npy",
+      "source_key": "humanml/004055_chunk_0001",
+      "source_group": "humanml/004055",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "288619eaabbeeb1748ce8821b96edda4dff598dc2f9c766bc0196fbbaccf9280",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.08273310494739251,
+        "horizontal_path_m": 0.8230966558330156,
+        "root_height_min_m": 0.7310503951223484,
+        "max_tilt_rad": 0.1510990522074554,
+        "source_joint_speed_p95_rad_s": 1.8910629161974501,
+        "source_joint_speed_max_rad_s": 5.094324729289988
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0105/Leg_Lift_To_Hip_Opener_R_chunk_0000.npy",
+      "source_key": "fitness/subset_0105/Leg_Lift_To_Hip_Opener_R_chunk_0000",
+      "source_group": "fitness/subset_0105/Leg_Lift_To_Hip_Opener_R",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "5825a4d88a7e73fb66e28bef4552ae5beb4af84db9c07cb9f31064f9b1a12489",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.027792886945055252,
+        "horizontal_path_m": 0.19863359229854047,
+        "root_height_min_m": 0.5588059839654024,
+        "max_tilt_rad": 0.20829707612348727,
+        "source_joint_speed_p95_rad_s": 1.3445781551914664,
+        "source_joint_speed_max_rad_s": 5.837530035936078
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0110/Warrior_Ii_Flow_R_clip_1_chunk_0000.npy",
+      "source_key": "fitness/subset_0110/Warrior_Ii_Flow_R_clip_1_chunk_0000",
+      "source_group": "fitness/subset_0110/Warrior_Ii_Flow_R_clip_1",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "47855fe56af9ffb1a892a4ef08df95370d23b7eec47c3732287f2258a0a17081",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.07074454051896595,
+        "horizontal_path_m": 0.26042158355847533,
+        "root_height_min_m": 0.5521919314564233,
+        "max_tilt_rad": 0.235562992990224,
+        "source_joint_speed_p95_rad_s": 2.130471024845358,
+        "source_joint_speed_max_rad_s": 4.622003015378144
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/idea400/standing_during_Take_it_out_of_the_bag_2_clip1_chunk_0001.npy",
+      "source_key": "idea400/standing_during_Take_it_out_of_the_bag_2_clip1_chunk_0001",
+      "source_group": "idea400/standing_during_Take_it_out_of_the_bag_2",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 22686,
+      "sha256": "e064a0d248f24f32a1affb803e6994590de6a11a3a5e137bad0b96205e2da2b6",
+      "source_statistics": {
+        "source_frames": 77,
+        "source_hz": 30.0,
+        "source_duration_s": 2.533333333333333,
+        "max_horizontal_displacement_m": 0.11880922812139336,
+        "horizontal_path_m": 0.19035859581560483,
+        "root_height_min_m": 0.7579985398545852,
+        "max_tilt_rad": 0.18210241230933377,
+        "source_joint_speed_p95_rad_s": 1.612812881159417,
+        "source_joint_speed_max_rad_s": 5.736613202796251
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/aist/subset_0009/Dance_Pop_Walk_clip_1_chunk_0001.npy",
+      "source_key": "aist/subset_0009/Dance_Pop_Walk_clip_1_chunk_0001",
+      "source_group": "aist/subset_0009/Dance_Pop_Walk_clip_1",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "72db524e84747b1d6ecc5ee1a0fbde09b990340861322be319aabdf547a771fa",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.11996536885725698,
+        "horizontal_path_m": 0.3814368543550845,
+        "root_height_min_m": 0.7131781422007926,
+        "max_tilt_rad": 0.07988826174180154,
+        "source_joint_speed_p95_rad_s": 1.1840637896082438,
+        "source_joint_speed_max_rad_s": 3.000836620659426
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/014560_chunk_0000.npy",
+      "source_key": "humanml/014560_chunk_0000",
+      "source_group": "humanml/014560",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "5363e0c5d49d2b37d602f2d789dac04348678aa4257292e96fed5b7cbd632332",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.017638144461206418,
+        "horizontal_path_m": 0.06257267109809526,
+        "root_height_min_m": 0.7748669921701509,
+        "max_tilt_rad": 0.055588537562408245,
+        "source_joint_speed_p95_rad_s": 1.0123082635592118,
+        "source_joint_speed_max_rad_s": 7.5135563489236326
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0046/Side_To_Side_Crunch_R_clip_60_chunk_0000.npy",
+      "source_key": "fitness/subset_0046/Side_To_Side_Crunch_R_clip_60_chunk_0000",
+      "source_group": "fitness/subset_0046/Side_To_Side_Crunch_R_clip_60",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "831cddb2097d01bd2779b5b610c5ea87793557048cf3c04d88b337af0254dab5",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.05610522829384409,
+        "horizontal_path_m": 0.3793288886335508,
+        "root_height_min_m": 0.5966374237387999,
+        "max_tilt_rad": 0.13863172188918793,
+        "source_joint_speed_p95_rad_s": 1.403308836686856,
+        "source_joint_speed_max_rad_s": 2.4490712288784486
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0019/Dynamic_Crunches_R_clip_25_chunk_0001.npy",
+      "source_key": "fitness/subset_0019/Dynamic_Crunches_R_clip_25_chunk_0001",
+      "source_group": "fitness/subset_0019/Dynamic_Crunches_R_clip_25",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "14421b6c3a0249937774b2871a7e1666428774bdaf0c0c7559e965635ba49bfd",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.08579611274760247,
+        "horizontal_path_m": 0.707953595090758,
+        "root_height_min_m": 0.7750964958154934,
+        "max_tilt_rad": 0.5244766456678657,
+        "source_joint_speed_p95_rad_s": 3.094193634490309,
+        "source_joint_speed_max_rad_s": 7.047185099211635
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0079/Swing_To_Step_Back_clip_20_chunk_0001.npy",
+      "source_key": "fitness/subset_0079/Swing_To_Step_Back_clip_20_chunk_0001",
+      "source_group": "fitness/subset_0079/Swing_To_Step_Back_clip_20",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "bdf04e7a9add5fc236625b66c0ffb6dfb80ca69ef58acd47074a9c87b501bcc8",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.17040841426665254,
+        "horizontal_path_m": 1.031206508373648,
+        "root_height_min_m": 0.7313738599535784,
+        "max_tilt_rad": 0.16717716553124617,
+        "source_joint_speed_p95_rad_s": 2.090757739515489,
+        "source_joint_speed_max_rad_s": 4.8205752182545805
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/010626_chunk_0000.npy",
+      "source_key": "humanml/010626_chunk_0000",
+      "source_group": "humanml/010626",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "7dd059a6def391cbd1b6ab787083a0b09ca930245e49c8fcdcdcb75a1e801c34",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.085312519548748,
+        "horizontal_path_m": 0.30319987448943403,
+        "root_height_min_m": 0.7630129997048958,
+        "max_tilt_rad": 0.09654532163449049,
+        "source_joint_speed_p95_rad_s": 1.7863938619976045,
+        "source_joint_speed_max_rad_s": 3.6955643344253404
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/001485_chunk_0001.npy",
+      "source_key": "humanml/001485_chunk_0001",
+      "source_group": "humanml/001485",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "c27b2f0d91f310259c11eb79d77856d8f6c69802e5c6a0e3e58a2ee57a8d890e",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.15174634474919435,
+        "horizontal_path_m": 0.28645215360838333,
+        "root_height_min_m": 0.7243980440113866,
+        "max_tilt_rad": 0.20192649977359564,
+        "source_joint_speed_p95_rad_s": 1.0179315574616836,
+        "source_joint_speed_max_rad_s": 2.646331932301843
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0005/Balancing_Leg_Swing_R_clip_7_chunk_0000.npy",
+      "source_key": "fitness/subset_0005/Balancing_Leg_Swing_R_clip_7_chunk_0000",
+      "source_group": "fitness/subset_0005/Balancing_Leg_Swing_R_clip_7",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "79efa13f93a82c6e103ab5ba61d3c9412b9b2bc790aaa6ed332592a42bd4815e",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.12661374355486407,
+        "horizontal_path_m": 1.0841619999056025,
+        "root_height_min_m": 0.7698886862003909,
+        "max_tilt_rad": 0.5563283376383447,
+        "source_joint_speed_p95_rad_s": 0.9110950459322072,
+        "source_joint_speed_max_rad_s": 4.159992183182326
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/007576_chunk_0000.npy",
+      "source_key": "humanml/007576_chunk_0000",
+      "source_group": "humanml/007576",
+      "split": "train",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 36222,
+      "sha256": "08c05eb1f7ab34ebe5ac109c0354178735b09125b782691d4a45eeef3487d1d3",
+      "source_statistics": {
+        "source_frames": 124,
+        "source_hz": 30.0,
+        "source_duration_s": 4.1,
+        "max_horizontal_displacement_m": 0.01855130779456065,
+        "horizontal_path_m": 0.0859588941177607,
+        "root_height_min_m": 0.7616307737339972,
+        "max_tilt_rad": 0.07285937564135181,
+        "source_joint_speed_p95_rad_s": 0.4653985139546863,
+        "source_joint_speed_max_rad_s": 3.54470634256361
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/010063_chunk_0001.npy",
+      "source_key": "humanml/010063_chunk_0001",
+      "source_group": "humanml/010063",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 38526,
+      "sha256": "446bbfaf80d73444749848c346185df557183e7671c3f9239ab384cc6f1d51f7",
+      "source_statistics": {
+        "source_frames": 132,
+        "source_hz": 30.0,
+        "source_duration_s": 4.366666666666666,
+        "max_horizontal_displacement_m": 1.4723060348832286,
+        "horizontal_path_m": 1.7445131248822279,
+        "root_height_min_m": 0.6025527868243146,
+        "max_tilt_rad": 0.13953040913581,
+        "source_joint_speed_p95_rad_s": 2.087344527238051,
+        "source_joint_speed_max_rad_s": 5.476474444999331
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/005844_chunk_0000.npy",
+      "source_key": "humanml/005844_chunk_0000",
+      "source_group": "humanml/005844",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "12a6dd50c2e01f78cf9161be6d8a8920cfbeb1083693599afb450ec1f10a7083",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 1.6344978829611478,
+        "horizontal_path_m": 2.50916976810735,
+        "root_height_min_m": 0.7133456012145557,
+        "max_tilt_rad": 0.21612467794042384,
+        "source_joint_speed_p95_rad_s": 2.4188137514509975,
+        "source_joint_speed_max_rad_s": 6.602424942470031
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/001253_chunk_0001.npy",
+      "source_key": "humanml/001253_chunk_0001",
+      "source_group": "humanml/001253",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "2f57f02e8dd22dc6a1ec0c4e1fe6a76ad4480950c3bbfb335c6f073110f3a782",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.488686479917112,
+        "horizontal_path_m": 0.6435370809507672,
+        "root_height_min_m": 0.7609425113528444,
+        "max_tilt_rad": 0.14765311268300904,
+        "source_joint_speed_p95_rad_s": 0.7626392570928107,
+        "source_joint_speed_max_rad_s": 3.747554436687568
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/idea400/walking_during_Neck_Pain_clip1_chunk_0001.npy",
+      "source_key": "idea400/walking_during_Neck_Pain_clip1_chunk_0001",
+      "source_group": "idea400/walking_during_Neck_Pain",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "916cafa7146d03d1805d01d722e9a1202102876ba174859e259117a6f7a92b12",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.7443618715549961,
+        "horizontal_path_m": 1.2027982434318836,
+        "root_height_min_m": 0.7401876655026034,
+        "max_tilt_rad": 0.22880662241977515,
+        "source_joint_speed_p95_rad_s": 0.9116542881497793,
+        "source_joint_speed_max_rad_s": 4.391567676582922
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/game_motion/subset_0015/Katana_One_clip_1_chunk_0000.npy",
+      "source_key": "game_motion/subset_0015/Katana_One_clip_1_chunk_0000",
+      "source_group": "game_motion/subset_0015/Katana_One_clip_1",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "35b52bc063c25e7839e797cdf152c7692dbcbdf4f8831a5205f90d87a95f1fbb",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 0.41486810623365716,
+        "horizontal_path_m": 1.1526460239494787,
+        "root_height_min_m": 0.5414690621255809,
+        "max_tilt_rad": 0.37189050602157236,
+        "source_joint_speed_p95_rad_s": 1.730266785021896,
+        "source_joint_speed_max_rad_s": 5.813778163859679
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/000884_chunk_0002.npy",
+      "source_key": "humanml/000884_chunk_0002",
+      "source_group": "humanml/000884",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "a5c3e6dae143f03083cbb8cbd3aa67d0ade0583564100eef9bcf5aa0d13bc542",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 2.3617936787850304,
+        "horizontal_path_m": 2.5286409363095323,
+        "root_height_min_m": 0.7325588594295523,
+        "max_tilt_rad": 0.1726106677125158,
+        "source_joint_speed_p95_rad_s": 1.9859828773029775,
+        "source_joint_speed_max_rad_s": 5.323300513977039
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0026/Warrior_Squat_To_Pulse_Rf_clip_1_chunk_0000.npy",
+      "source_key": "fitness/subset_0026/Warrior_Squat_To_Pulse_Rf_clip_1_chunk_0000",
+      "source_group": "fitness/subset_0026/Warrior_Squat_To_Pulse_Rf_clip_1",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "cc22beae842d331c58eaef02438c9876b7212b7fa04b13a1bb993e9f27a0dde3",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.290484890944055,
+        "horizontal_path_m": 0.576393877533089,
+        "root_height_min_m": 0.6512401195684021,
+        "max_tilt_rad": 0.2189065837209394,
+        "source_joint_speed_p95_rad_s": 1.0665499070983497,
+        "source_joint_speed_max_rad_s": 2.068154413042651
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0083/Lateral_Squat_Walk_chunk_0002.npy",
+      "source_key": "fitness/subset_0083/Lateral_Squat_Walk_chunk_0002",
+      "source_group": "fitness/subset_0083/Lateral_Squat_Walk",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "2eaac68b8511c47f566b8f28786b4908722c058b6addd81e30feccbc76e5fa8c",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 0.7478458864231834,
+        "horizontal_path_m": 0.8770211188862073,
+        "root_height_min_m": 0.5778780825391634,
+        "max_tilt_rad": 0.3996887175829764,
+        "source_joint_speed_p95_rad_s": 1.3455898225014669,
+        "source_joint_speed_max_rad_s": 2.705051049687782
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0036/Squat_Side_Up_Punch_clip_9_chunk_0001.npy",
+      "source_key": "fitness/subset_0036/Squat_Side_Up_Punch_clip_9_chunk_0001",
+      "source_group": "fitness/subset_0036/Squat_Side_Up_Punch_clip_9",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "955ac2fe31df8bb415a484a83973031b023088b46b1a3bd4db284dd57746af84",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.16352611693975785,
+        "horizontal_path_m": 1.145761185372926,
+        "root_height_min_m": 0.7143085341565402,
+        "max_tilt_rad": 0.37093800615599853,
+        "source_joint_speed_p95_rad_s": 2.1010138666473663,
+        "source_joint_speed_max_rad_s": 6.662068798197678
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0080/Box_Swing_Punches_clip_11_chunk_0000.npy",
+      "source_key": "fitness/subset_0080/Box_Swing_Punches_clip_11_chunk_0000",
+      "source_group": "fitness/subset_0080/Box_Swing_Punches_clip_11",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "8321739994216be272abc01cb2532f23abbcb686ccdcd1e33649351ac85d8bae",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.15737327253840241,
+        "horizontal_path_m": 1.2542478871024467,
+        "root_height_min_m": 0.6327291893772908,
+        "max_tilt_rad": 0.37682293724767124,
+        "source_joint_speed_p95_rad_s": 2.2120921058069216,
+        "source_joint_speed_max_rad_s": 6.2645499938180045
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0091/Calf_Raise_clip_10_chunk_0001.npy",
+      "source_key": "fitness/subset_0091/Calf_Raise_clip_10_chunk_0001",
+      "source_group": "fitness/subset_0091/Calf_Raise_clip_10",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "c5c1be0b5edabcfbf42a40bee33958f33904682a17539dd0eab1d43e90d36560",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.0646006650927892,
+        "horizontal_path_m": 0.29505223369044564,
+        "root_height_min_m": 0.777561663621847,
+        "max_tilt_rad": 0.2874135216179105,
+        "source_joint_speed_p95_rad_s": 0.8392230484575269,
+        "source_joint_speed_max_rad_s": 3.645501701316972
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/idea400/Hand_touches_armpit_during_standing_clip1_chunk_0001.npy",
+      "source_key": "idea400/Hand_touches_armpit_during_standing_clip1_chunk_0001",
+      "source_group": "idea400/Hand_touches_armpit_during_standing",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 30462,
+      "sha256": "f46c0f9bf9d2b01c525d658ea216943fe6cd8968aefaf58f6fa195e45af8bfc1",
+      "source_statistics": {
+        "source_frames": 104,
+        "source_hz": 30.0,
+        "source_duration_s": 3.433333333333333,
+        "max_horizontal_displacement_m": 0.029929982311516227,
+        "horizontal_path_m": 0.10325371389939714,
+        "root_height_min_m": 0.7638452390579996,
+        "max_tilt_rad": 0.10834773330597476,
+        "source_joint_speed_p95_rad_s": 1.1246741131274107,
+        "source_joint_speed_max_rad_s": 5.614344297377928
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/perform/eat_banana_1_clip1_chunk_0003.npy",
+      "source_key": "perform/eat_banana_1_clip1_chunk_0003",
+      "source_group": "perform/eat_banana_1",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 23838,
+      "sha256": "551d2d356a92b5502715cdd6e169f067cf00be2b6e7151d67151d8a37ee518fa",
+      "source_statistics": {
+        "source_frames": 81,
+        "source_hz": 30.0,
+        "source_duration_s": 2.6666666666666665,
+        "max_horizontal_displacement_m": 0.10093828819131777,
+        "horizontal_path_m": 0.1920120471608922,
+        "root_height_min_m": 0.7574659765595272,
+        "max_tilt_rad": 0.10861628425527937,
+        "source_joint_speed_p95_rad_s": 1.0298862597628284,
+        "source_joint_speed_max_rad_s": 4.175623592975303
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/011946_chunk_0001.npy",
+      "source_key": "humanml/011946_chunk_0001",
+      "source_group": "humanml/011946",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "55ec08e2beed571f8fdaee6bfff95c3966794c2738021ef4790df489db13d72c",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.06421389767539784,
+        "horizontal_path_m": 0.1353529634257653,
+        "root_height_min_m": 0.7724500465468047,
+        "max_tilt_rad": 0.042444091829828584,
+        "source_joint_speed_p95_rad_s": 1.3165851997506381,
+        "source_joint_speed_max_rad_s": 3.934041263033464
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0103/Half_Hip_Circle_Snap_clip_10_chunk_0002.npy",
+      "source_key": "fitness/subset_0103/Half_Hip_Circle_Snap_clip_10_chunk_0002",
+      "source_group": "fitness/subset_0103/Half_Hip_Circle_Snap_clip_10",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "b2a2208dcb2f74b7afafb2fe29ed9e68821d32235d15ab99775d2a67655a5c3e",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 0.0745284769397839,
+        "horizontal_path_m": 0.3990452581566047,
+        "root_height_min_m": 0.5485564501847646,
+        "max_tilt_rad": 0.5314007837473499,
+        "source_joint_speed_p95_rad_s": 2.912622687470557,
+        "source_joint_speed_max_rad_s": 5.794500245131054
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/music/Play_Triangle_14_clip1_chunk_0000.npy",
+      "source_key": "music/Play_Triangle_14_clip1_chunk_0000",
+      "source_group": "music/Play_Triangle_14",
+      "split": "development",
+      "official_group_splits": [
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "d8625906868f9a98272d70a7bbf5396cf3e8b54b3f15fd0d4cb6c100f0fbdc66",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.023205214139610426,
+        "horizontal_path_m": 0.05808254700903335,
+        "root_height_min_m": 0.7505612427800312,
+        "max_tilt_rad": 0.08621023953841676,
+        "source_joint_speed_p95_rad_s": 0.31604234229189604,
+        "source_joint_speed_max_rad_s": 1.7239961317927002
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/000597_chunk_0000.npy",
+      "source_key": "humanml/000597_chunk_0000",
+      "source_group": "humanml/000597",
+      "split": "test",
+      "official_group_splits": [
+        "test",
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "2b7b0b927477bea81562df539646a595f274fbe6455939bfc6fe5b1d64bf37e8",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 1.6541572386153358,
+        "horizontal_path_m": 2.0358913560993086,
+        "root_height_min_m": 0.6507923356036297,
+        "max_tilt_rad": 0.2117828036136003,
+        "source_joint_speed_p95_rad_s": 1.7397221149558328,
+        "source_joint_speed_max_rad_s": 5.554375956053735
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/007148_chunk_0001.npy",
+      "source_key": "humanml/007148_chunk_0001",
+      "source_group": "humanml/007148",
+      "split": "test",
+      "official_group_splits": [
+        "test"
+      ],
+      "bytes": 19806,
+      "sha256": "3e9c4334fab70eea3e2b345b1b31e19305fd3450742b6da78daf7ae0e27be90e",
+      "source_statistics": {
+        "source_frames": 67,
+        "source_hz": 30.0,
+        "source_duration_s": 2.2,
+        "max_horizontal_displacement_m": 2.1397798234793064,
+        "horizontal_path_m": 2.182943345158369,
+        "root_height_min_m": 0.7188266754651979,
+        "max_tilt_rad": 0.20343805124147732,
+        "source_joint_speed_p95_rad_s": 2.287326992634196,
+        "source_joint_speed_max_rad_s": 4.254990026844213
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/000126_chunk_0000.npy",
+      "source_key": "humanml/000126_chunk_0000",
+      "source_group": "humanml/000126",
+      "split": "test",
+      "official_group_splits": [
+        "test",
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "7705c32fd4b640f59ae2a8247f4761b23401e1076d3bed9212f15085260c183e",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 1.744279769819882,
+        "horizontal_path_m": 1.765540231641076,
+        "root_height_min_m": 0.7339206769052539,
+        "max_tilt_rad": 0.07216950535999339,
+        "source_joint_speed_p95_rad_s": 1.1304916972611643,
+        "source_joint_speed_max_rad_s": 3.300260274016612
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/010604_chunk_0000.npy",
+      "source_key": "humanml/010604_chunk_0000",
+      "source_group": "humanml/010604",
+      "split": "test",
+      "official_group_splits": [
+        "test"
+      ],
+      "bytes": 35070,
+      "sha256": "68db5774c93f34e3e3c998ea4a3132bab43bebc11c6a8ac466f38df0b41749fe",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 2.2060233405582084,
+        "horizontal_path_m": 2.422933404454763,
+        "root_height_min_m": 0.740516491422712,
+        "max_tilt_rad": 0.15623134414977466,
+        "source_joint_speed_p95_rad_s": 1.7591919174998591,
+        "source_joint_speed_max_rad_s": 5.637276701727366
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/006253_chunk_0002.npy",
+      "source_key": "humanml/006253_chunk_0002",
+      "source_group": "humanml/006253",
+      "split": "test",
+      "official_group_splits": [
+        "test",
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "a3b43241761587db460331044b20b194cd798b315ef8baa6530658fb51cb4210",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 1.2798349658990957,
+        "horizontal_path_m": 1.941840700871553,
+        "root_height_min_m": 0.7183179888332628,
+        "max_tilt_rad": 0.40058049718668365,
+        "source_joint_speed_p95_rad_s": 2.3130826477230797,
+        "source_joint_speed_max_rad_s": 5.770183756388658
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/humanml/009332_chunk_0002.npy",
+      "source_key": "humanml/009332_chunk_0002",
+      "source_group": "humanml/009332",
+      "split": "test",
+      "official_group_splits": [
+        "test",
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "1a4b80b1667d827277c149cda95ca9ec00d7f348a62b284c36b014650bf0e8e5",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 1.5011331428979313,
+        "horizontal_path_m": 2.668326841921169,
+        "root_height_min_m": 0.7332083304118098,
+        "max_tilt_rad": 0.2597267772619421,
+        "source_joint_speed_p95_rad_s": 3.081188068581951,
+        "source_joint_speed_max_rad_s": 7.419525202161397
+      },
+      "bucket": "locomotion",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0091/Cross_Crunch_To_Squat_R_clip_14_chunk_0000.npy",
+      "source_key": "fitness/subset_0091/Cross_Crunch_To_Squat_R_clip_14_chunk_0000",
+      "source_group": "fitness/subset_0091/Cross_Crunch_To_Squat_R_clip_14",
+      "split": "test",
+      "official_group_splits": [
+        "test"
+      ],
+      "bytes": 22974,
+      "sha256": "d9a6623fab860f6fbae41d0f903be549a969002ff157d90c22c118b9e3776927",
+      "source_statistics": {
+        "source_frames": 78,
+        "source_hz": 30.0,
+        "source_duration_s": 2.566666666666667,
+        "max_horizontal_displacement_m": 0.26461427890615263,
+        "horizontal_path_m": 0.5904933152484954,
+        "root_height_min_m": 0.5709359520605358,
+        "max_tilt_rad": 0.43083490867910673,
+        "source_joint_speed_p95_rad_s": 2.654792075797132,
+        "source_joint_speed_max_rad_s": 5.202011535027314
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0008/Heel_Lift_To_Plie_Squat_Var_clip_1_chunk_0001.npy",
+      "source_key": "fitness/subset_0008/Heel_Lift_To_Plie_Squat_Var_clip_1_chunk_0001",
+      "source_group": "fitness/subset_0008/Heel_Lift_To_Plie_Squat_Var_clip_1",
+      "split": "test",
+      "official_group_splits": [
+        "test",
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "7a2b6d7c18c2b8a9156c4a257b531dd72f36be211c6d310dce5e516dee72c8c5",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.13909866977639046,
+        "horizontal_path_m": 0.35344652083734057,
+        "root_height_min_m": 0.6678177625039099,
+        "max_tilt_rad": 0.12712513124306232,
+        "source_joint_speed_p95_rad_s": 1.104140955736606,
+        "source_joint_speed_max_rad_s": 2.4234692393830692
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0017/Yogi_Squat_To_Hamstring_Stretch_chunk_0002.npy",
+      "source_key": "fitness/subset_0017/Yogi_Squat_To_Hamstring_Stretch_chunk_0002",
+      "source_group": "fitness/subset_0017/Yogi_Squat_To_Hamstring_Stretch",
+      "split": "test",
+      "official_group_splits": [
+        "test",
+        "train"
+      ],
+      "bytes": 26430,
+      "sha256": "8b6836063545ff1b7902119fb6959c5b41d4485d75f1079c92e78f2a17bd676f",
+      "source_statistics": {
+        "source_frames": 90,
+        "source_hz": 30.0,
+        "source_duration_s": 2.966666666666667,
+        "max_horizontal_displacement_m": 0.08831163454176777,
+        "horizontal_path_m": 0.22747131796440956,
+        "root_height_min_m": 0.5406057952336198,
+        "max_tilt_rad": 0.13600581473707923,
+        "source_joint_speed_p95_rad_s": 1.6475066600050254,
+        "source_joint_speed_max_rad_s": 2.353871496546306
+      },
+      "bucket": "squat",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0009/Leg_Lift_Side_Reach_L_clip_7_chunk_0000.npy",
+      "source_key": "fitness/subset_0009/Leg_Lift_Side_Reach_L_clip_7_chunk_0000",
+      "source_group": "fitness/subset_0009/Leg_Lift_Side_Reach_L_clip_7",
+      "split": "test",
+      "official_group_splits": [
+        "test",
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "9b20d015426038d9fce15e92f8ff8fb7f866a162cc460ce8c560017f97d157c8",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.18620784047363725,
+        "horizontal_path_m": 0.4133192561367453,
+        "root_height_min_m": 0.5703975103989419,
+        "max_tilt_rad": 0.17039258635329846,
+        "source_joint_speed_p95_rad_s": 3.01484622957624,
+        "source_joint_speed_max_rad_s": 5.516385804465254
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0037/Swing_Reach_Up_clip_39_chunk_0000.npy",
+      "source_key": "fitness/subset_0037/Swing_Reach_Up_clip_39_chunk_0000",
+      "source_group": "fitness/subset_0037/Swing_Reach_Up_clip_39",
+      "split": "test",
+      "official_group_splits": [
+        "test"
+      ],
+      "bytes": 22398,
+      "sha256": "79cf87e180456ab94bab830c120989a62bd7683de90d3939a1aa308ff5951c43",
+      "source_statistics": {
+        "source_frames": 76,
+        "source_hz": 30.0,
+        "source_duration_s": 2.5,
+        "max_horizontal_displacement_m": 0.06180964948643823,
+        "horizontal_path_m": 0.5980677421312424,
+        "root_height_min_m": 0.7232995601375116,
+        "max_tilt_rad": 0.14223200431566393,
+        "source_joint_speed_p95_rad_s": 3.9784727618486437,
+        "source_joint_speed_max_rad_s": 8.600939916999124
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0054/Side_Step_Arm_Swing_clip_18_chunk_0001.npy",
+      "source_key": "fitness/subset_0054/Side_Step_Arm_Swing_clip_18_chunk_0001",
+      "source_group": "fitness/subset_0054/Side_Step_Arm_Swing_clip_18",
+      "split": "test",
+      "official_group_splits": [
+        "test",
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "c40f156f20bb7e90776427e852d10ba8ba0643888db9ee2f4a04cb298176fa43",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.24957989288735982,
+        "horizontal_path_m": 1.7521636755636845,
+        "root_height_min_m": 0.6710510053285772,
+        "max_tilt_rad": 0.22886640089255528,
+        "source_joint_speed_p95_rad_s": 2.9764942784756814,
+        "source_joint_speed_max_rad_s": 7.279764995247148
+      },
+      "bucket": "upper",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/perform/look_for_job_1_clip1_chunk_0001.npy",
+      "source_key": "perform/look_for_job_1_clip1_chunk_0001",
+      "source_group": "perform/look_for_job_1",
+      "split": "test",
+      "official_group_splits": [
+        "test",
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "04f154e8ae198bc72cc6e9c0d2849aadc805a6ff2dcbf9831016ee28a1902b1a",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.13170056602439423,
+        "horizontal_path_m": 0.29241217006898085,
+        "root_height_min_m": 0.7709132189874518,
+        "max_tilt_rad": 0.23797479615071904,
+        "source_joint_speed_p95_rad_s": 0.5991528208566909,
+        "source_joint_speed_max_rad_s": 2.4376269159929915
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/perform/fried_eggs_clip8_chunk_0004.npy",
+      "source_key": "perform/fried_eggs_clip8_chunk_0004",
+      "source_group": "perform/fried_eggs",
+      "split": "test",
+      "official_group_splits": [
+        "test",
+        "train"
+      ],
+      "bytes": 23838,
+      "sha256": "df507f22dc2fae6498a3a25c0b5a8738d95426edf69c276d87b46c6910ecece3",
+      "source_statistics": {
+        "source_frames": 81,
+        "source_hz": 30.0,
+        "source_duration_s": 2.6666666666666665,
+        "max_horizontal_displacement_m": 0.11470850030566461,
+        "horizontal_path_m": 0.4357013925922918,
+        "root_height_min_m": 0.7646807846804341,
+        "max_tilt_rad": 0.21946107430712233,
+        "source_joint_speed_p95_rad_s": 1.2645408802552005,
+        "source_joint_speed_max_rad_s": 5.582381355239304
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/perform/hesitate_1_clip1_chunk_0002.npy",
+      "source_key": "perform/hesitate_1_clip1_chunk_0002",
+      "source_group": "perform/hesitate_1",
+      "split": "test",
+      "official_group_splits": [
+        "test",
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "231ccae679032648a9529d6d7f7a4e015c3d5acd1c7f7a299eaf203953c06092",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.04199011581764384,
+        "horizontal_path_m": 0.10143636960032767,
+        "root_height_min_m": 0.7738126316439207,
+        "max_tilt_rad": 0.1127734358923141,
+        "source_joint_speed_p95_rad_s": 0.5157935165088258,
+        "source_joint_speed_max_rad_s": 5.053861694243474
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    },
+    {
+      "member": "data/g1/fitness/subset_0045/Reverse_Lunge_Twist_R_clip_5_chunk_0000.npy",
+      "source_key": "fitness/subset_0045/Reverse_Lunge_Twist_R_clip_5_chunk_0000",
+      "source_group": "fitness/subset_0045/Reverse_Lunge_Twist_R_clip_5",
+      "split": "test",
+      "official_group_splits": [
+        "test",
+        "train"
+      ],
+      "bytes": 35070,
+      "sha256": "5b32bdb7896ad9f7a1cd6c556503fbc46b445763160dfc3ec1fb11ee654a9121",
+      "source_statistics": {
+        "source_frames": 120,
+        "source_hz": 30.0,
+        "source_duration_s": 3.966666666666667,
+        "max_horizontal_displacement_m": 0.12981025512698038,
+        "horizontal_path_m": 0.54720755502552,
+        "root_height_min_m": 0.7644436445582157,
+        "max_tilt_rad": 0.3600476391395375,
+        "source_joint_speed_p95_rad_s": 2.043891463471016,
+        "source_joint_speed_max_rad_s": 3.729749398594729
+      },
+      "bucket": "other",
+      "source_schema_valid": true,
+      "moderate_motion_candidate": true
+    }
+  ],
+  "all_records": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P01_scan_20261024/all_chunks.jsonl",
+    "bytes": 58852874,
+    "sha256": "512df6cd955fe7c7a8b90330e8a429e951f8a6b6237606f2bbc0afed468281d8"
+  },
+  "elapsed_s": 66.60522698611021,
+  "oom_kill": 14,
+  "sources": [
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_q1_phuma/scan_corpus.py",
+      "bytes": 8910,
+      "sha256": "c4771b53cd3230ad921d39ac55a3930b5fa49da80cedf7b313b3670c58ff23e4"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/script/supermimic_q1_phuma/motion_io.py",
+      "bytes": 5047,
+      "sha256": "883b4232afcd90eff21c960de79146784adc6dd793b52de62e1daf5a950565ff"
+    }
+  ],
+  "qualified_for_training_pilot": false,
+  "new_physics_steps": 0,
+  "new_optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY",
+  "limits": "Source schema and moderate-motion selection only; Q1 retargeting and physics remain unverified."
+}

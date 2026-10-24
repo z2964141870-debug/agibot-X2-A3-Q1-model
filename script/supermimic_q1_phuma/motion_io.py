@@ -91,7 +91,7 @@ def member_key(name):
 def source_group(key):
     path = PurePosixPath(key)
     stem = re.sub(r"_chunk_\d+$", "", path.name)
-    stem = re.sub(r"_clip\d+$", "", stem)
+    stem = re.sub(r"_clip_?\d+$", "", stem)
     return str(path.parent / stem)
 
 

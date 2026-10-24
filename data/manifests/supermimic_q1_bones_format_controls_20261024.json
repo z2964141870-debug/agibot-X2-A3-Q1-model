@@ -1,0 +1,52 @@
+{
+  "stage": "SM-Q1-BONES-P02-F01",
+  "recorded_beijing": "2026-10-24T21:04:00+08:00",
+  "status": "DOCUMENTED_FORMAT_DECODER_CONTROLS_PASSED_PENDING_REAL_ARCHIVE",
+  "server": "huanyu",
+  "root": "/opt/data/private/YuanQi_Q1",
+  "server_tests_native_exit_code": 0,
+  "server_tests_passed": 9,
+  "local_validation": {
+    "syntax_compile": true,
+    "default_python_tests_executed": false,
+    "reason": "Default Mac Python has no scipy; import failed before tests. No packages installed."
+  },
+  "source_sha256": {
+    "bones_g1_csv.py": "499669b3006e9d2ffb51406e62071bcafe35fbafe840c0e8882654e404ba3666",
+    "test_bones_g1_csv.py": "614eccf38f5bc59bc9dd41bcde126335e138acadee6c275f8679828e3713c6d4",
+    "bones_g1_format_v1.json": "5f0854ad0cc1576b28a0a469965877f6241f652d8c44ddf9738dec01cf3e6401"
+  },
+  "controls_log": "test_120_to_50_hz_preserves_native_time_and_linear_velocity (test_bones_g1_csv.BonesG1CsvTests.test_120_to_50_hz_preserves_native_time_and_linear_velocity) ... ok\ntest_columns_are_named_and_can_be_reordered (test_bones_g1_csv.BonesG1CsvTests.test_columns_are_named_and_can_be_reordered) ... ok\ntest_fractional_endpoint_is_not_padded_or_time_stretched (test_bones_g1_csv.BonesG1CsvTests.test_fractional_endpoint_is_not_padded_or_time_stretched) ... ok\ntest_missing_extra_or_duplicate_columns_are_rejected (test_bones_g1_csv.BonesG1CsvTests.test_missing_extra_or_duplicate_columns_are_rejected) ... ok\ntest_multiaxis_rotation_matches_independent_zyx_matrix (test_bones_g1_csv.BonesG1CsvTests.test_multiaxis_rotation_matches_independent_zyx_matrix) ... ok\ntest_nonfinite_gapped_fractional_or_duplicate_frames_are_rejected (test_bones_g1_csv.BonesG1CsvTests.test_nonfinite_gapped_fractional_or_duplicate_frames_are_rejected) ... ok\ntest_orientation_wrap_uses_shortest_slerp (test_bones_g1_csv.BonesG1CsvTests.test_orientation_wrap_uses_shortest_slerp) ... ok\ntest_rate_and_count_must_be_explicit_and_output_is_bounded (test_bones_g1_csv.BonesG1CsvTests.test_rate_and_count_must_be_explicit_and_output_is_bounded) ... ok\ntest_units_origin_quaternion_order_and_nonzero_frame_start (test_bones_g1_csv.BonesG1CsvTests.test_units_origin_quaternion_order_and_nonzero_frame_start) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.174s\n\nOK\n",
+  "source_hz_documented": 120,
+  "translation_cm_to_m": 0.01,
+  "angles_degree_to_radian": true,
+  "quaternion_wxyz": true,
+  "target_hz": 50,
+  "time_scale": 1,
+  "metadata_temporal_corroboration": {
+    "rows_with_positive_event_end": 142220,
+    "within_20ms_at_120Hz": 12282,
+    "within_20ms_at_50Hz": 0,
+    "within_20ms_at_30Hz": 0,
+    "implied_hz_quantiles": {
+      "min": 114.78255879019183,
+      "p01": 119.1044687235471,
+      "p50": 121.36054421768708,
+      "p99": 140.58823529411765,
+      "max": 383.75
+    },
+    "duration_120Hz_minus_event_end_s": {
+      "min": -0.04166700000000034,
+      "p01": -0.033333666666666595,
+      "p50": 0.06666666666666643,
+      "p99": 0.516666666666667,
+      "max": 10.983333333333334
+    },
+    "used_for_training_segmentation": false,
+    "limits": "Labels are not exact CSV endpoints. These metadata-derived values do not verify actual CSV timing."
+  },
+  "new_q1_references": 0,
+  "new_optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY",
+  "limitations": "Synthetic format/time controls and pinned public-source contract only. No actual downloaded archive, CSV numeric validation, matching G1 model/FK or Q1 reference qualification yet."
+}

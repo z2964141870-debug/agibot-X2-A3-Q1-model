@@ -1,0 +1,36 @@
+{
+  "schema": "BONES_G1_NAMED_CSV_DEG_CM_EXPLICIT_NATIVE_HZ_V1",
+  "scope": "Documented G1 single-CSV decoder; actual downloaded archive acceptance is pending",
+  "source_native_hz_documented": 120,
+  "frame_column": "Frame",
+  "source_translation_unit": "cm",
+  "source_rotation_unit": "degree",
+  "source_root_euler": "intrinsic ZYX, stored X/Y/Z angle columns",
+  "source_up_axis": "Z",
+  "decoded_root_quaternion": "wxyz",
+  "decoded_translation_unit": "m",
+  "decoded_joint_unit": "radian",
+  "target_control_hz": 50,
+  "resampling": "Explicit native timestamps, linear translation/joint interpolation and scipy Slerp; no integer decimation, padding or time stretching",
+  "source_joint_mapping": "Named _dof columns to explicit 29-joint model order; never CSV column position alone",
+  "sources": [
+    {
+      "repository": "bones-studio/seed-viewer",
+      "commit": "d9963c21bee413e7eb63c1b88ae01cdcb2cf3601",
+      "path": "frontend/public/src/g1_animation.ts",
+      "url": "https://github.com/bones-studio/seed-viewer/blob/d9963c21bee413e7eb63c1b88ae01cdcb2cf3601/frontend/public/src/g1_animation.ts",
+      "evidence": "120 fps; cm to m, degree angles; root Euler order ZYX"
+    },
+    {
+      "repository": "NVlabs/ProtoMotions",
+      "commit": "f69fdcaabff31846b4d2247207417b57dc788828",
+      "path": "data/scripts/convert_g1_csv_to_proto.py",
+      "url": "https://github.com/NVlabs/ProtoMotions/blob/f69fdcaabff31846b4d2247207417b57dc788828/data/scripts/convert_g1_csv_to_proto.py",
+      "evidence": "Named Hips transform and 29 _dof columns, explicit 120 Hz, cm/degree conversion, scipy xyz Euler"
+    }
+  ],
+  "actual_motion_archive_verified": false,
+  "matching_source_mjcf_verified": false,
+  "q1_training_qualification": false,
+  "limits": "Documentation/source-backed decoder contract. Synthetic tests do not verify actual archive schema, frame-rate, source geometry, numeric duplicates or Q1 reference quality. Supplied archive must be independently accepted before use."
+}

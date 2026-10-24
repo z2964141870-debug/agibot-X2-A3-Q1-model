@@ -1,0 +1,24 @@
+2026-10-25 07:47 Beijing time. Server huanyu, via the existing 18864 SSH forward.
+Published Q1 commit: 0f5a8d5a123f4953718361d9d6f8f73454e5ac2a
+Independent refs/heads/Q1 check returned the same full commit.
+
+Deployment sha256sum, each matched its published local file:
+3dba53a2ca5f0b1fc8e392cd6a2f3e6ec8b131de10c28368ac33a5932db2ace3  probe_walking_root_offset.py
+24f6977875674766dd1cc682201ae543d17b941cc15d75672eb4bebf22109916  test_walking_root_offset.py
+707a7574f6a08b20b9cc0fd2af03c0f77d57760aa3565f2c903230ccb580dcb1  audit_walking_root_offset.py
+
+Command:
+env CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 /opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python -m unittest discover -s /opt/data/private/YuanQi_Q1/script/supermimic_q1_sources -p test_walking_root_offset.py -v
+
+Native test output (the split tool chunks rejoined):
+test_cap_empty_common_interval_and_invalid_frame_rejected (test_walking_root_offset.RootOffsetTests.test_cap_empty_common_interval_and_invalid_frame_rejected) ... ok
+test_real_q1_constant_translation_moves_hips_and_keeps_joint_limits (test_walking_root_offset.RootOffsetTests.test_real_q1_constant_translation_moves_hips_and_keeps_joint_limits) ... ok
+test_registered_constant_covers_every_interval (test_walking_root_offset.RootOffsetTests.test_registered_constant_covers_every_interval) ... ok
+test_transform_preserves_root_shape_foot_anchors_and_relative_nonfeet (test_walking_root_offset.RootOffsetTests.test_transform_preserves_root_shape_foot_anchors_and_relative_nonfeet) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 4.327s
+
+OK
+
+Native SSH/command exit code: 0. No tests skipped. No formal P14 arrays read or new IK run by this control suite.

@@ -21,7 +21,7 @@
 - [P11训练步行限速归因](README_SUPERMIMIC_Q1_WALKING_RETARGET_20261025.md)：排全部已知held-out/P10后固定四个train目录，十二组2/4/8rad/s保持root/任务/原速。2rad/s贡献解算失真，但提到4/8仍支撑不足、两片约9mm自穿透，0准入。服务器三控制、真实worker退出0，保存数组188项独立重算误差0。下一解决train接触/映射一致性，不只提高限速、不重复旧逐帧根高投影。
 - [P12/P12B训练步行接触对照](README_SUPERMIMIC_Q1_WALKING_CONTACT_20261025.md)：两轮共48组、两次各8940项独立核验/8436新inverse完成。速度条件减轻锁脚失真，但最高83.42%近地仍伴22.13mm穿地/91.96%滑动，全部修正无准入；两轮加避碰共16组自穿透0。下一须原生足地/可达性约束，不再只靠软脚目标；不改R02D/P10测试。
 - 同README的P12C控制D十项通过后，07:02实际24组及独立8940核验/8436 fresh inverse完成；16修正变体无穿地，但最低脚底仍悬空8.01至33.88mm、近地比例0至15.08%，0准入。加避碰7/8自穿透0，一组仍2.39mm。下一量化腿部可达性与根/足目标兼容，不只增权重、不重复旧逐帧根高投影；原训练不改。
-- [P13可达性诊断](README_SUPERMIMIC_Q1_WALKING_REACH_20261025.md)24组4314帧及独立6068核验/fresh FK完成：腿链保守半径408.27mm，原目标0外球冲突、16修正变体每帧至少一踝超球，最大101.98mm；水平未超球/逐帧Z区间有交集。[P14](README_SUPERMIMIC_Q1_WALKING_ROOT_OFFSET_20261025.md)实现及本地三控制通过；先求整段共同Z区间，固定单个delta（upper最小值减5mm、共同区间内且不超120mm），同移根/非足目标而保留足世界锚点；服务器控制、八组IK/独立核验待，0新参考，不把必要条件当实际可达。
+- [P13可达性诊断](README_SUPERMIMIC_Q1_WALKING_REACH_20261025.md)24组4314帧及独立6068核验/fresh FK完成：腿链保守半径408.27mm，原目标0外球冲突、16修正变体每帧至少一踝超球，最大101.98mm；水平未超球/逐帧Z区间有交集。[P14](README_SUPERMIMIC_Q1_WALKING_ROOT_OFFSET_20261025.md)实现/本地三控制/服务器四控制通过且逐SHA部署；先求整段共同Z区间，固定单个delta（upper最小值减5mm、共同区间内且不超120mm），同移根/非足目标而保留足世界锚点；真实八组IK/独立核验待，0新参考，不把必要条件当实际可达。
 - [AMASS和SMPL-X](README_SUPERMIMIC_Q1_SMPLX_INTAKE_20261024.md)：17265标准SMPL-X动作/120Hz/16betas原始库与身体模型到位；[P04/P06](README_SUPERMIMIC_Q1_AMASS_LOCAL_OFFSET_20261025.md)16片初版/4片局部偏移均0准入，失败配置不接库。
 
 原R02 step5000开发对照完整5→6/6、跟随0/6，移动0.078251/参考0.521165m；R02C新增1810时数值FAILED保留。现有三个test_locomotion是fitness名字，位移标签不能当步行认证。源足底、映射及浮脚缺口见[D02C](README_SUPERMIMIC_Q1_PHUMA_SUPPORT_MAPPING_20261024.md)和[D04](README_SUPERMIMIC_Q1_PHUMA_REFERENCE_DYNAMICS_20261025.md)，不重复相同样本诊断，不据此声称唯一失败原因。

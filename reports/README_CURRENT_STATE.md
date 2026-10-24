@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-24当前推进：[PHUMA P04分批扩量](README_SUPERMIMIC_Q1_PHUMA_EXPANSION_20261024.md)。已实现全索引确定选择和有限批次V2转换/独立19门，4项本地来源隔离控制通过；排除旧112候选组、跨划分相同字节留test再dev。新名单/实际Q1参考尚待服务器执行，0新训练。下一核验部署和实时资源，生成名单后先四个32片独立批次；按实际合格秒数而非候选小时判断扩量。AMASS缺SMPL-X男女模型、完整BONES G1包仍待补，但PHUMA可独立推进。
+
 2026-10-24当前优先：[AMASS/BONES-SEED接入](README_SUPERMIMIC_Q1_SOURCE_EXPANSION_20261024.md)。用户已扩展新实验数据范围。huanyu的`script/amass_bridge/data/amass_raw/AMASS_smplxg`找到17928个NPZ，头部索引及独立重算完成：17265标准SMPL-X动作、120Hz、16betas、标称56.34h；另490静态/173待处理，不是Q1合格时长。旧桥接缺字段时默认30Hz，禁止直接复用其PKL。四控制通过、实际索引退出0/OOM14，0新重定向/训练。
 
 当前缺SMPLX_MALE.npz、SMPLX_FEMALE.npz及完整BONES-SEED g1.tar.gz（23499973647字节）/metadata。目标均在`/opt/data/private/YuanQi_Q1/data/references/`，精确路径见[缺项清单](../data/manifests/supermimic_q1_source_readiness_20261024.json)。BONES本机24个混合派生PKL不是全库，官方匿名下载401/GatedRepo；旧hp3090连接超时。AMASS无需用户再迁移，补身体模型后从原始字段构造Q1参考；PHUMA继续可用，跨源先查重/固定移动评测，目标30分钟再1小时合格库。新训练尚未启动。

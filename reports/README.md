@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-24：[BONES-SEED主线新目标与验收](README_SUPERMIMIC_Q1_BONES_GOAL_20261024.md)已获用户授权开始。先建立30分钟至1小时Q1合格参考与独立移动评测，以实际动力学移动结果验收；[P01元数据接收](README_SUPERMIMIC_Q1_BONES_METADATA_20261024.md)三文件完整大小/SHA一致、parquet142220行，语义/来源组待审计，完整动作包约20:30待核。有限64环境/H32训练与磁盘预算已拟定，保护和输入尚待验证，未启动新训练；此前AMASS优先建议被本目标覆盖。
+2026-10-24：[BONES-SEED主线目标](README_SUPERMIMIC_Q1_BONES_GOAL_20261024.md)已开始。[P01元数据审计](README_SUPERMIMIC_Q1_BONES_METADATA_20261024.md)20:30:22完成：142220行CSV/parquet全字段一致、时序覆盖/区间通过，71117来源组隔离，固定train1024/dev128/test128独立候选；两端6控制与独立索引重算通过。20:31 D:\tmp仍无完整动作包，已询问实际路径；下一磁盘/worker保护与原包接入，尚无BONES参考/训练。未知fps不算合格秒数，此前AMASS优先建议被新目标覆盖。
 
 2026-10-24：[PHUMA/BONES-SEED/AMASS价值与优先级](README_SUPERMIMIC_Q1_DATASET_PRIORITY_20261024.md)。建议当前新增准备优先AMASS小移动库，BONES-SEED负责论文数据对齐，PHUMA保留现成基线；严格来源复现优先BONES、立即现成闭环PHUMA成本最低。尚无Q1公平排名，未新转换/训练。
 

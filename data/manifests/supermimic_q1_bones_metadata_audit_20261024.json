@@ -1,0 +1,96 @@
+{
+  "status": "METADATA_AUDIT_AND_CANDIDATE_SPLITS_COMPLETED",
+  "captured_utc": "2026-10-24T12:30:22.230250+00:00",
+  "source_files": {
+    "seed_metadata_v004.parquet": {
+      "path": "/opt/data/private/YuanQi_Q1/data/references/bones_seed/metadata/seed_metadata_v004.parquet",
+      "bytes": 4499876,
+      "sha256": "7cbe5624f91ae19af3feee69cff74b2cf553fb26367c8edc4b674c3d8ea97e7d"
+    },
+    "seed_metadata_v004.csv": {
+      "path": "/opt/data/private/YuanQi_Q1/data/references/bones_seed/metadata/seed_metadata_v004.csv",
+      "bytes": 146411608,
+      "sha256": "71d09422034946d17dbb0db027d569408c486545bdb12f7979d55e6ffd9bbc39"
+    },
+    "seed_metadata_v002_temporal_labels.jsonl": {
+      "path": "/opt/data/private/YuanQi_Q1/data/references/bones_seed/metadata/seed_metadata_v002_temporal_labels.jsonl",
+      "bytes": 58447630,
+      "sha256": "302da3c319bbed4f712fa22a4d71b5288493911140cd72579e29de2ac324d634"
+    }
+  },
+  "intake_receipt": {
+    "path": "/opt/data/private/YuanQi_Q1/data/manifests/supermimic_q1_bones_metadata_intake_20261024.json",
+    "bytes": 1926,
+    "sha256": "38a5b27cd03c91d2043a153d2014da20a75009dc75a107932ead080512fd3a9d"
+  },
+  "code": {
+    "path": "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/inventory_bones.py",
+    "bytes": 14746,
+    "sha256": "982dcf7df3f68e3680e02b9368a0197355a92d97fc9a41b63fa84ec66c66cd18"
+  },
+  "seed": "Q1_BONES_G00_20261024_v1",
+  "csv_parquet_all_fields_equal": true,
+  "rows": 142220,
+  "source_groups": {
+    "train": 56808,
+    "development": 7234,
+    "test": 7075
+  },
+  "mirror_rows": 71088,
+  "quarantined_rows": 15306,
+  "candidate_rows": {
+    "train/locomotion_candidate": 4639,
+    "development/locomotion_candidate": 600,
+    "test/locomotion_candidate": 568
+  },
+  "selected_candidate_groups": {
+    "train": 1024,
+    "development": 128,
+    "test": 128
+  },
+  "selected_kinds": {
+    "locomotion_candidate": 1280
+  },
+  "selected_source_frames": {
+    "train": 784237,
+    "development": 96910,
+    "test": 95071
+  },
+  "temporal_v002": {
+    "rows": 142220,
+    "unique_filenames": 142220,
+    "events": 352703,
+    "covered_metadata_filenames": 142220,
+    "metadata_filenames_without_v002_labels": 0,
+    "v002_filenames_outside_v004_metadata": 0,
+    "anomaly_rows": {},
+    "examples": [],
+    "used_for_training_or_segmentation": false,
+    "duration_comparison": "Pending actual CSV native-time evidence; no frame-rate default"
+  },
+  "all_splits": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/BONES_P01_metadata_20261024/all_source_splits.csv",
+    "bytes": 24852439,
+    "sha256": "90805cb3c3345f6115e3f447fbe378f469668ce79e853fa53869561f38838a6a"
+  },
+  "selected_candidates": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/BONES_P01_metadata_20261024/selected_candidates.jsonl",
+    "bytes": 3013245,
+    "sha256": "8afa5b6f232d4cecb338bfadf08747b9b92b442abaab799deeb56053b1ed5649"
+  },
+  "health_before": {
+    "available": true,
+    "memory_bytes": 26954158080,
+    "oom_kill": 14
+  },
+  "health_after": {
+    "available": true,
+    "memory_bytes": 28502233088,
+    "oom_kill": 14
+  },
+  "elapsed_s": 36.608898527920246,
+  "storage_status": "LOCAL_ONLY",
+  "limits": "Metadata grouping and preconversion candidates only. Corrected and original capture aliases are unioned within actor/date, and mirror filename identities are unioned. Future crops must inherit the group. Numeric motion duplicates/cross-source overlap, actual rate/schema/model, Q1 conversion and qualified seconds are not yet verified. v002 event labels do not select or segment references.",
+  "new_q1_references": 0,
+  "new_optimizer_updates": 0
+}

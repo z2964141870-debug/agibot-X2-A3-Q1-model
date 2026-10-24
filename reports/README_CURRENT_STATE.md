@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-24用户已指定[BONES-SEED主线新目标](README_SUPERMIMIC_Q1_BONES_GOAL_20261024.md)：训练SuperMimic for Q1平地全身移动跟随，覆盖此前AMASS优先建议。先30分钟再1小时合格参考/移动至少50%，固定独立开发和测试各20原动作组，最终至少80%完整移动片同时过全身/腿0.15rad、根0.10m和位移70%至130%工程门槛。[P01接收](README_SUPERMIMIC_Q1_BONES_METADATA_20261024.md)三metadata大小/SHA完整一致、parquet142220行；语义/来源组审计待完成，完整包预计20:30待核。20:09:56实核huanyu空闲、OOM14/GPU38/盘余1.965TB。磁盘/worker停止保护待实现，未登记/启动BONES训练。旧A3/STOPPED不恢复；下方数据优先级/缺项为历史快照，恢复以本目标和各实际收据为准。
+2026-10-24当前[BONES-SEED主线目标](README_SUPERMIMIC_Q1_BONES_GOAL_20261024.md)：Q1平地全身移动跟随，先30分钟再1小时合格参考/移动至少50%，固定独立开发和测试各20原动作组及预登记80%工程门槛。[P01](README_SUPERMIMIC_Q1_BONES_METADATA_20261024.md)20:30:22实际完成：三metadata完整SHA、142220行全字段一致、142220动作/352703事件审计通过；71117来源组不跨划分，固定train1024/dev128/test128独立候选，两端6控制及保存索引独立重算通过/OOM14。未知真实fps，不算候选合格时长。20:31 D:\tmp仍无完整G1/SOMA包，已问实际完成路径。下一磁盘/worker保护及P02原包检查，尚无新BONES训练或Q1参考；旧A3/STOPPED不恢复，下方优先级/缺项是历史快照。
 
 2026-10-24：[三数据源优先级建议](README_SUPERMIMIC_Q1_DATASET_PRIORITY_20261024.md)完成官方来源/本地证据复核。新增准备建议先AMASS移动子集，BONES-SEED作后续论文数据对齐，PHUMA保留现成库与基线；立即无需转换的训练以PHUMA成本最低。此为建议，未启动/切换实验，三库在Q1无公平性能排名；身体模型到位只证明有限样本载入。D:\tmp复查仍只有BONES metadata、未见完整G1/SOMA包。原始数据和旧实验不变。
 

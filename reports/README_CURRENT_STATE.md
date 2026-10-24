@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-[S02动作域修正准备](README_SUPERMIMIC_Q1_ACTION_DOMAIN_20261025.md)：真实clean/执行动作clip20而想象无界已确认，22维原奖励有界下界-70.4与失败前-1693.55不相容。独立BoundedPolicy保持state_dict、域内梯度及真实clean合同，三个Adam增加写入前坏梯度拒绝；保存1500审计/真实train replay H32探针已实现，Mac五项因缺torch全skip，服务器验证待。原496冻结不改，无新训练；先验证再新独立匹配试验，不将612片同时混入。
+[S02动作域修正验证完成](README_SUPERMIMIC_Q1_ACTION_DOMAIN_20261025.md)：服务器五项控制0跳过、保存1500独立15门及真实2048控制转移/六对H32/一次actor backward的7门均通过，梯度0.25272，原496冻结保持。真实clip20与想象无界差异确认；正常探针原动作均<6.64，没有重现1810崩溃，不宣称唯一因果或移动改善。下一独立R02D复用原5000父/340训练片/相同seed20261025/固定7000新轮，仅动作域修正及坏梯度写入前拒绝，不混612片、不重启原FAILED；登记/启动尚待。BONES交师兄。
 
 2026-10-25 04:17终态复核：[R02C于04:07:44非有限数值FAILED](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md)，新增1810轮/115840转移、累计6810、WM673组/actor623次；未进入最终配对或生成final。controller/trainer均回收，guard Z/RSS0，496冻结全部保持，OOM14/GPU28/14MiB，非本次资源保护。第1800轮想象action-rate骤降-1693.55、critic loss1.92e10；源码真实动作裁[-20,20]而想象未裁，作为候选接口缺口须独立验证。最后step1500未审计；不重启失败目录。下一定位动作域/梯度稳定性，P09真实预检后补，不启动第二训练。下方R02C RUNNING为失败前快照。
 

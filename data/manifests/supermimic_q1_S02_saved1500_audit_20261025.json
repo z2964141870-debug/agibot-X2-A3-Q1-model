@@ -1,0 +1,176 @@
+{
+  "status": "FAILED_R02C_SAVED1500_AUDIT_PASSED",
+  "captured_utc": "2026-10-24T20:36:54.071946+00:00",
+  "gates": {
+    "original_failure_retained": true,
+    "saved1500_not_unsaved1810": true,
+    "initial_zero_retained_parent_counters": true,
+    "saved_local_updates": true,
+    "three_adam_counters_match": true,
+    "three_networks_changed": true,
+    "saved_tensors_finite": true,
+    "manifest_matches_initial_and_admission": true,
+    "code_commit_matches_spec": true,
+    "registered_train_and_heldout_lists": true,
+    "checkpoint_bound_to_failure": true,
+    "all496_frozen_unchanged": true,
+    "complete_finite_prefix": true,
+    "input_identities_unchanged": true,
+    "no_cuda_context": true
+  },
+  "inputs": [
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025/run/step_000000.pt",
+      "bytes": 205323367,
+      "sha256": "497eb3da1abba210242d03b2d092252a14be2966f23d3999e009645f7cbc5a11"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025/run/step_001500.pt",
+      "bytes": 205323367,
+      "sha256": "0af72fee30f6d6c354d984400ce6c1ea909f698c05b13ce7f4d2dd0b073a64a6"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025/run/receipt.json",
+      "bytes": 1343,
+      "sha256": "78ba30cd115e971a2fb634546fb02a9d749e8cd3d024f4eac9b0af24015fb7d3"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025/spec.json",
+      "bytes": 154640,
+      "sha256": "949d9e52289a4f251a3c2e36298495fb63d669a86bf444d9bb57f9db6c801d2b"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025/run/admission.json",
+      "bytes": 114758,
+      "sha256": "81cfcb851b74ef83a940a395566e6b2b4dfd4ce54e13758d967802863f63f20e"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025/run/metrics.jsonl",
+      "bytes": 102110,
+      "sha256": "9d2f76a991b8a63ebe70b420a2ce8101195c7688d5c249a28b17d58c3e9e7a62"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025/controller_status.json",
+      "bytes": 759,
+      "sha256": "487cc06569663cb220deb35b2846464b6c5e1b293d024a45e823d011e55b5356"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025/storage_guard.json",
+      "bytes": 1613,
+      "sha256": "b846c4813bb6da93cdefbc671b91267d51dde5e41fbb81faf79b1e619df6c78c"
+    }
+  ],
+  "checkpoint": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025/run/step_001500.pt",
+    "bytes": 205323367,
+    "sha256": "0af72fee30f6d6c354d984400ce6c1ea909f698c05b13ce7f4d2dd0b073a64a6"
+  },
+  "source": {
+    "path": "/opt/data/private/YuanQi_Q1/script/supermimic_q1_stability/audit_failed_checkpoint.py",
+    "bytes": 7761,
+    "sha256": "76dd5e2d99db646a35cb256b4b9520db27776fdf9dac08547a68f17ae0797239"
+  },
+  "optimizer_counters": {
+    "wm_opt": {
+      "increment": 5490,
+      "passed": true,
+      "initial_distinct": [
+        19490
+      ],
+      "saved_distinct": [
+        24980
+      ]
+    },
+    "policy_opt": {
+      "increment": 499,
+      "passed": true,
+      "initial_distinct": [
+        1899
+      ],
+      "saved_distinct": [
+        2398
+      ]
+    },
+    "critic_opt": {
+      "increment": 9980,
+      "passed": true,
+      "initial_distinct": [
+        37980
+      ],
+      "saved_distinct": [
+        47960
+      ]
+    }
+  },
+  "networks": {
+    "wm": {
+      "same_keys_shapes": true,
+      "changed_tensors": 14,
+      "max_abs_change": 0.12868162989616394
+    },
+    "policy": {
+      "same_keys_shapes": true,
+      "changed_tensors": 20,
+      "max_abs_change": 0.050718750804662704
+    },
+    "critic": {
+      "same_keys_shapes": true,
+      "changed_tensors": 6,
+      "max_abs_change": 0.42027294635772705
+    }
+  },
+  "frozen_changes": [],
+  "health_before": {
+    "experiment": {
+      "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025",
+      "unique_allocated_bytes": 821727232,
+      "unique_logical_bytes": 821688710,
+      "unique_inodes": 16,
+      "symlinks_not_followed": 0
+    },
+    "source": {
+      "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025",
+      "unique_allocated_bytes": 821727232,
+      "unique_logical_bytes": 821688710,
+      "unique_inodes": 16,
+      "symlinks_not_followed": 0
+    },
+    "free_bytes": {
+      "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025": 1199197835264
+    },
+    "shared_memory": {
+      "shared_bytes": 13330497536,
+      "oom_kill": 14,
+      "maximum_bytes": 30870077440
+    }
+  },
+  "health_after": {
+    "experiment": {
+      "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025",
+      "unique_allocated_bytes": 821727232,
+      "unique_logical_bytes": 821688710,
+      "unique_inodes": 16,
+      "symlinks_not_followed": 0
+    },
+    "source": {
+      "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025",
+      "unique_allocated_bytes": 821727232,
+      "unique_logical_bytes": 821688710,
+      "unique_inodes": 16,
+      "symlinks_not_followed": 0
+    },
+    "free_bytes": {
+      "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025": 1198895435776
+    },
+    "shared_memory": {
+      "shared_bytes": 13223866368,
+      "oom_kill": 14,
+      "maximum_bytes": 30870077440
+    }
+  },
+  "training_terminal": "FAILED_UNCHANGED",
+  "new_physics_steps": 0,
+  "new_optimizer_updates": 0,
+  "tracking_effectiveness_proven": false,
+  "storage_status": "LOCAL_ONLY"
+}

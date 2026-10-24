@@ -1,6 +1,6 @@
 # PHUMA P13步行目标可达性
 
-记录日期：2026-10-25，北京时间。阶段P13。状态：只读诊断与控制已实现，正式服务器运行待。
+记录日期：2026-10-25，北京时间。阶段P13。状态：四控制及正式24组/4314帧诊断完成，独立复算待；0新参考。
 
 ## 目标与范围
 
@@ -47,3 +47,22 @@ env CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THR
 正式入口首次原生退出1：新main在输出目录创建前调用完整`budget.check()`，而现有StorageBudget的allocated_tree要求目录已存在。错误发生在mkdir/worker/正式数组读取前，没有创建预定实验目录，也无guard或服务器日志。[终端回执节录](../logs/session_records/supermimic_q1_P13_bootstrap_failed_20261025.txt)保留，不能称真实P13已运行或四控制覆盖了启动顺序。
 
 修正对齐既有P12包装器：建目录前仅检查内存，建目录后由未改guard完整核100GiB盘余/32MiB输出及共享内存再启动worker；worker继续独立完整检查。未放宽任何停止线，当前R02D未变。修正发布/逐SHA部署后才运行正式P13。
+
+## 07:25正式24组完成
+
+修正发布`3ba499978d8d6d5323e6914fdb1b87d60ae9acdb`已独立核Q1远端；22端口连续连接超时后用同账号/同host-key别名的443端口推送，未更改仓库、账号、凭据或主机密钥校验。部署前确认旧producer SHA且预定实验目录不存在；新SHA`8febe3606a26854aaee159efabca10393431c26adec7fef715624bc91855857d`与发布一致。07:25:06至12，guard846120/worker846122原生退出0并回收，共24组4314帧/8628次实际FK外球检查完成；输入前后SHA保持。
+
+Q1每侧hip_pitch到ankle_roll的保守最大半径为408.270844mm。全部原映射目标均未超外球；全部16组接触修正变体每帧至少一踝目标超球，最大超出101.98mm，证明这组固定根+修正踝目标无法同时精确满足。它没有证明原目标实际可达、当前训练参考全部不可达，或这是策略失败的唯一原因。
+
+各帧水平跨度均未超球，左右脚必要根Z区间逐帧都有交集；因此仅这个必要条件尚未排除降低根Z的方向，仍不能由此宣称降低后足姿态/关节范围/速度或动力学可行。8rad/s加避碰四片的必要降低量如下；2rad/s对应最大必要降低57.98至102.14mm。
+
+| 固定train事件 | 修正目标帧外球冲突 | 必要降低中位数 | 必要降低P95 | 必要降低最大 |
+| --- | ---: | ---: | ---: | ---: |
+| Circle06 | 100% | 32.93mm | 73.70mm | 83.42mm |
+| walking_fast02 | 100% | 18.31mm | 42.12mm | 47.17mm |
+| Circle02 | 100% | 21.54mm | 46.93mm | 51.19mm |
+| walking_slow02 | 100% | 30.68mm | 64.67mm | 83.23mm |
+
+原样[receipt](../data/manifests/supermimic_q1_P13_reach_receipt_20261025.json)SHA`527dd2fb9473182c14fb04a30b239313273acb98cf70370492dea8bd968cf3d4`、[guard](../data/manifests/supermimic_q1_P13_reach_guard_20261025.json)SHA`9c41bf67b83caee2efa50238a6f030780748dfcb7d6d0a5ce1374e939e41c656`。服务器输出`PHUMA_P13_walking_reach_20261025/diagnosis`，stdout同名logs/；实验分配884736字节，结束共享内存13820329984/OOM14、盘余317262221312字节。0新IK/积分/optimizer/准入。
+
+新增独立`audit_walking_reach.py`不导入P13计算函数：从原模型显式链和根变换重算半径/hip中心，fresh FK重算实际脚踝，再从P12C原目标重算外球距离、Z区间和全部关键统计，并检查输入前后SHA。发布部署后结果待。下一先独立核验，再探索整段统一常数高度适配，保留root XY/方向/时轴；不重复逐帧根高硬投影，不以质量门降低换通过。

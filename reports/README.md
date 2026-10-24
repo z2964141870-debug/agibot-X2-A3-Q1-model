@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-24：[BONES P02-F02列名勘误](README_SUPERMIMIC_Q1_BONES_FORMAT_V2_20261024.md)。V1误用Hips及短关节名，真实官方G1协议为root_*与完整joint名加_dof；此前测试共用错误常量。现V2以独立表头及全29关节回归，服务器11控制/SHA通过，旧收据保留。此前无真实BONES输入/Q1参考/训练；实际原包仍待接收。
+
 2026-10-24：[BONES P02-A01原包接入准备](README_SUPERMIMIC_Q1_BONES_ARCHIVE_20261024.md)。完整SHA/gzip CRC、成员索引和仅冻结名单提取两端11控制通过；真实原包尚未到位、0新Q1参考/训练。21:16 Windows最大partial与20:51同大小，未验证浏览器下载状态；21:22服务器无原包/OOM14/GPU38/盘余1.965TB。现有G1模型仅载入/FK候选，尚非源模型身份通过。下一源模型与独立重定向准备。
 
 2026-10-24：[BONES P02-F01独立CSV/原速准备](README_SUPERMIMIC_Q1_BONES_FORMAT_20261024.md)。固定官方查看器/NVlabs来源确认文档120Hz/厘米/度，按列名解析及120→50时间插值服务器9控制通过；Mac缺scipy仅语法通过。实际原包/模型未验证，事件时段存在端点偏差、不参与裁片。下一流式原包接入，0新BONES参考或训练。

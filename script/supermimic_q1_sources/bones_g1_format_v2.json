@@ -1,0 +1,42 @@
+{
+  "schema": "BONES_G1_NAMED_CSV_DEG_CM_EXPLICIT_NATIVE_HZ_V2",
+  "supersedes": "BONES_G1_NAMED_CSV_DEG_CM_EXPLICIT_NATIVE_HZ_V1",
+  "erratum": "V1 incorrectly used Hips transform names and removed _joint from joint names. Official G1 viewer consumes root transforms and full joint-name-plus-_dof columns. V1 had no admitted real CSV, Q1 references or training.",
+  "scope": "Documented G1 single-CSV decoder; actual downloaded archive acceptance pending",
+  "source_native_hz_documented": 120,
+  "frame_column": "Frame",
+  "root_columns": ["root_translateX", "root_translateY", "root_translateZ", "root_rotateX", "root_rotateY", "root_rotateZ"],
+  "joint_columns": "Full model joint name + _dof, for example left_knee_joint_dof",
+  "source_translation_unit": "cm",
+  "source_rotation_unit": "degree",
+  "source_root_euler": "intrinsic ZYX, stored X/Y/Z components; Rz @ Ry @ Rx",
+  "source_up_axis": "Z",
+  "decoded_root_quaternion": "wxyz",
+  "decoded_translation_unit": "m",
+  "decoded_joint_unit": "radian",
+  "target_control_hz": 50,
+  "resampling": "Explicit native timestamps, linear positions/joints and scipy Slerp; no integer decimation, padding or time stretching",
+  "sources": [
+    {
+      "repository": "bones-studio/seed-viewer",
+      "commit": "d9963c21bee413e7eb63c1b88ae01cdcb2cf3601",
+      "path": "frontend/public/src/g1_animation.ts",
+      "evidence": "G1Animation.setFrame reads jointData.root_translateX/Y/Z and root_rotateX/Y/Z; uses 120 fps, centimeter/degree units and Euler order ZYX"
+    },
+    {
+      "repository": "bones-studio/seed-viewer",
+      "commit": "d9963c21bee413e7eb63c1b88ae01cdcb2cf3601",
+      "path": "frontend/public/src/models.ts",
+      "evidence": "CSV parse preserves raw column names; setFrame gets each joint with frameData[jointName + _dof], G1 jointNames retain _joint"
+    },
+    {
+      "repository": "NVlabs/ProtoMotions",
+      "commit": "f69fdcaabff31846b4d2247207417b57dc788828",
+      "path": "data/scripts/convert_g1_csv_to_proto.py",
+      "evidence": "Header is skipped and columns are positional. Confirms 120Hz, centimeter/degree and scipy xyz conversion, not Hips or shortened joint column names"
+    }
+  ],
+  "actual_motion_archive_verified": false,
+  "matching_source_mjcf_verified": false,
+  "q1_training_qualification": false
+}

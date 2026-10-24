@@ -9,9 +9,9 @@ import numpy as np
 from scipy.spatial.transform import Rotation, Slerp
 
 
-PROTOCOL = "BONES_G1_NAMED_CSV_DEG_CM_EXPLICIT_NATIVE_HZ_V1"
-ROOT_COLUMNS = ("Hips_translateX", "Hips_translateY", "Hips_translateZ",
-                "Hips_rotateX", "Hips_rotateY", "Hips_rotateZ")
+PROTOCOL = "BONES_G1_NAMED_CSV_DEG_CM_EXPLICIT_NATIVE_HZ_V2"
+ROOT_COLUMNS = ("root_translateX", "root_translateY", "root_translateZ",
+                "root_rotateX", "root_rotateY", "root_rotateZ")
 JOINT_NAMES_29 = (
     "left_hip_pitch_joint", "left_hip_roll_joint", "left_hip_yaw_joint", "left_knee_joint",
     "left_ankle_pitch_joint", "left_ankle_roll_joint", "right_hip_pitch_joint",
@@ -51,7 +51,7 @@ def decode_bones_g1(payload, *, source_hz, expected_frames=None, joint_names=JOI
     if fields is None:
         raise ValueError("CSV header is missing")
     header = [item.strip() for item in fields]
-    joint_columns = tuple(name.removesuffix("_joint") + "_dof" for name in joint_names)
+    joint_columns = tuple(name + "_dof" for name in joint_names)
     expected = ("Frame", *ROOT_COLUMNS, *joint_columns)
     if len(header) != len(expected) or len(set(header)) != len(header) or set(header) != set(expected):
         raise ValueError("CSV columns differ from the named BONES G1 schema")

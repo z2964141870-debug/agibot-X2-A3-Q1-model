@@ -1,5 +1,7 @@
 # BONES G1独立格式与原速重采样准备
 
+勘误：21:29复查发现本阶段V1列名判断错误。G1原始列应为root_translate/rotate XYZ及完整关节名加_dof（如left_knee_joint_dof），不是Hips或left_knee_dof。NVlabs转换器跳过表头、按位置取列，不支持V1命名结论；此前合成测试共用了错误表头，未发现此问题。本页其余内容保留原阶段记录，使用新[V2勘误记录](README_SUPERMIMIC_Q1_BONES_FORMAT_V2_20261024.md)及bones_g1_format_v2.json。V1未接入真实CSV或产生Q1参考/训练。
+
 记录日期：2026-10-24，北京时间。阶段：SM-Q1-BONES-P02-F01。状态：公开源码格式核验、解析器实现及服务器9项控制完成；真实动作包尚未接收，未做Q1转换或训练。
 
 ## 目标与范围

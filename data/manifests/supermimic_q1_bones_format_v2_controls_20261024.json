@@ -1,0 +1,47 @@
+{
+  "stage": "SM-Q1-BONES-P02-F02",
+  "status": "DOCUMENTED_G1_SCHEMA_CORRECTED_SYNTHETIC_CONTROLS_PASSED",
+  "recorded_at": "2026-10-24T21:29:51+08:00",
+  "preceding_published_commit": "c0e77b725e804d2031cb2a704eab7094b6f488b2",
+  "correction": {
+    "old_protocol": "BONES_G1_NAMED_CSV_DEG_CM_EXPLICIT_NATIVE_HZ_V1",
+    "new_protocol": "BONES_G1_NAMED_CSV_DEG_CM_EXPLICIT_NATIVE_HZ_V2",
+    "wrong_root_prefix": "Hips_",
+    "correct_root_prefix": "root_",
+    "wrong_joint_example": "left_knee_dof",
+    "correct_joint_example": "left_knee_joint_dof",
+    "cause": "V1 conflated SOMA naming and G1 data; ProtoMotions skips headers and cannot establish named columns. Tests built headers from the same wrong constants.",
+    "impact": "No real BONES CSV was admitted, no Q1 reference or training was produced using V1."
+  },
+  "primary_evidence": {
+    "viewer_commit": "d9963c21bee413e7eb63c1b88ae01cdcb2cf3601",
+    "viewer_files": [
+      "frontend/public/src/g1_animation.ts",
+      "frontend/public/src/models.ts"
+    ],
+    "protomotions_commit": "f69fdcaabff31846b4d2247207417b57dc788828"
+  },
+  "source_sha256": {
+    "bones_g1_csv.py": "b707164d957b0b671855b3ffc3817a674ffcb1f1c9b8cf53d253f9df609b86b1",
+    "test_bones_g1_csv.py": "cf8fcd2b54eed7003f10bd683fd69ff441dcdf57f0c187ad03130000d3ba9088",
+    "bones_g1_format_v2.json": "f108bf43145c2358d952c230e81baa8856a4a2b28051aa648ed71b6e07eac990"
+  },
+  "controls": {
+    "server_count": 11,
+    "server_seconds": 0.121,
+    "server_exit_code": 0,
+    "server_log": "/opt/data/private/YuanQi_Q1/logs/BONES_P02_format_v2_controls_20261024.log",
+    "local": "Syntax compilation passed; numerical tests not run on Mac because scipy is absent",
+    "regressions": [
+      "Literal independent named G1 header accepted",
+      "Prior wrong Hips and shortened joint aliases refused",
+      "All 29 named joints map correctly under reordered input"
+    ],
+    "native_time_and_unit_controls": "Passed again in the 11-test suite"
+  },
+  "actual_archive_verified": false,
+  "source_model_match_verified": false,
+  "new_q1_references": 0,
+  "new_optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY"
+}

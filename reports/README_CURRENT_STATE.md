@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-25 01:27：[原R02](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)继续4175/12000轮、267200交互、139.12分钟，三个原PID活跃、OOM14/GPU38–39、盘余1.9654TB；最终动力学未到。[AMASS P05](README_SUPERMIMIC_Q1_AMASS_MAPPING_20261025.md)发现冻结肘腕共用elbow_link而实际腕部连杆存在，新只读四段归因入口/两项Mac控制完成；服务器控制与真实诊断待，未修改参考/原训练。下一实际量化肘腕冲突与目标足底、再独立试验，P04仍0/16准入，BONES不再获取。
+
 2026-10-25 01:10:25：[原R02](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)仍RUNNING，3650轮/233600交互、WM1409组/actor1359次，121.33分钟、GPU40摄氏度/OOM14、盘余1.9655TB，最终动力学待；原进程身份/469冻结最近00:56核对通过。[AMASS P03](README_SUPERMIMIC_Q1_AMASS_PILOT_20261025.md)16段人体FK/64秒及身份/时轴核验完成；[P04](README_SUPERMIMIC_Q1_AMASS_RETARGET_20261025.md)16段真实Q1转换/独立22门完成回收、0/16全通过（足底支撑15、残差11、最大间隙10失败），0新增合格时长/训练。下一先源/目标/IK归因，不盲目扩同配置。HumanML固定来源索引01:07已接收，跨源别名/受试者隔离仍待，AMASS split未分配不合库。[PHUMA P06](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)40新增合格/算术22.81分钟未合库，B017待资源释放后重做。BONES交师兄不再获取，原12000轮预算保持，30分钟/1小时合格库与移动成功目标未达。
 
 2026-10-24最新用户指示：停止BONES获取，交由师兄解决，用户到位后另行通知。[现有资源R02](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)已于23:08独立登记启动：PHUMA训练340片/1227.10秒、移动62片/221.76秒；dev6/test7隔离，64环境/4槽/H32/12000轮。23:12:30独立核验300轮/19200交互、WM69组/actor19次、critic及梯度有限，469冻结文件/三个进程身份通过；OOM14/GPU40，最近盘余1.9657TB。guard825182/controller825183/trainer825189，boot/start_ticks与核验方法见阶段README；100GiB余量/12GiB实验/250GiB源目录保护运行，无自动重启。发布b6d3108已独立核远端；启动小收据已保存。AMASS原始17265动作及16维SMPL-X到位、尚未Q1准入。BONES令牌/18866已清理，0新BONES参考/训练；原STOPPED不恢复。下一读取原作业进度与最终配对评测，不重复启动。

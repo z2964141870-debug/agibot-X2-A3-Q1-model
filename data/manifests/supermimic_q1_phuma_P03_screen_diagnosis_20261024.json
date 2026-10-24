@@ -1,0 +1,370 @@
+{
+  "status": "PHUMA_FIXED_SCREEN_SUMMARY_RECONCILED",
+  "captured_utc": "2026-10-24T05:19:54.405584+00:00",
+  "inputs": {
+    "manifest": {
+      "path": "/private/tmp/yuanqi-supermimic-q1-20261023/data/manifests/supermimic_q1_phuma_P03_references_20261024.json",
+      "bytes": 369238,
+      "sha256": "ec7f808eba1e08b955fe16b392b306ded75dc1def3b957dbe51352cda3bf3f34"
+    },
+    "screen_receipt": {
+      "path": "/private/tmp/yuanqi-supermimic-q1-20261023/data/manifests/supermimic_q1_phuma_P03_reference_check_20261024.json",
+      "bytes": 275066,
+      "sha256": "04b28919b2cc748fcf5e69c0ebd8844ce0fc4159197e497433a54b1795b891ae"
+    }
+  },
+  "candidates": 112,
+  "qualified": 18,
+  "rejected": 94,
+  "independent_gates": 19,
+  "unique_source_groups": 112,
+  "qualified_split_counts": {
+    "train": 11,
+    "development": 4,
+    "test": 3
+  },
+  "failure_counts": {
+    "support_within_15mm": 85,
+    "support_gap_at_most_30mm": 47,
+    "self_penetration_at_most_3mm": 44,
+    "converter_gates": 30,
+    "cartesian_residual": 10,
+    "action_coverage": 3,
+    "ground_origin_shift": 1
+  },
+  "groups": {
+    "development/locomotion": {
+      "candidates": 6,
+      "qualified": 1,
+      "failure_counts": {
+        "converter_gates": 1,
+        "self_penetration_at_most_3mm": 4,
+        "support_gap_at_most_30mm": 4,
+        "support_within_15mm": 4
+      }
+    },
+    "development/other": {
+      "candidates": 4,
+      "qualified": 2,
+      "failure_counts": {
+        "support_gap_at_most_30mm": 1,
+        "support_within_15mm": 2
+      }
+    },
+    "development/squat": {
+      "candidates": 3,
+      "qualified": 0,
+      "failure_counts": {
+        "support_gap_at_most_30mm": 1,
+        "support_within_15mm": 3
+      }
+    },
+    "development/upper": {
+      "candidates": 3,
+      "qualified": 1,
+      "failure_counts": {
+        "self_penetration_at_most_3mm": 2,
+        "support_within_15mm": 1
+      }
+    },
+    "test/locomotion": {
+      "candidates": 6,
+      "qualified": 0,
+      "failure_counts": {
+        "cartesian_residual": 1,
+        "converter_gates": 1,
+        "self_penetration_at_most_3mm": 3,
+        "support_gap_at_most_30mm": 3,
+        "support_within_15mm": 5
+      }
+    },
+    "test/other": {
+      "candidates": 4,
+      "qualified": 2,
+      "failure_counts": {
+        "self_penetration_at_most_3mm": 1,
+        "support_within_15mm": 2
+      }
+    },
+    "test/squat": {
+      "candidates": 3,
+      "qualified": 0,
+      "failure_counts": {
+        "cartesian_residual": 1,
+        "converter_gates": 2,
+        "support_gap_at_most_30mm": 2,
+        "support_within_15mm": 3
+      }
+    },
+    "test/upper": {
+      "candidates": 3,
+      "qualified": 1,
+      "failure_counts": {
+        "cartesian_residual": 1,
+        "converter_gates": 2,
+        "support_gap_at_most_30mm": 1,
+        "support_within_15mm": 2
+      }
+    },
+    "train/locomotion": {
+      "candidates": 32,
+      "qualified": 2,
+      "failure_counts": {
+        "action_coverage": 1,
+        "cartesian_residual": 3,
+        "converter_gates": 8,
+        "self_penetration_at_most_3mm": 16,
+        "support_gap_at_most_30mm": 15,
+        "support_within_15mm": 28
+      }
+    },
+    "train/other": {
+      "candidates": 16,
+      "qualified": 4,
+      "failure_counts": {
+        "converter_gates": 3,
+        "self_penetration_at_most_3mm": 7,
+        "support_gap_at_most_30mm": 4,
+        "support_within_15mm": 10
+      }
+    },
+    "train/squat": {
+      "candidates": 16,
+      "qualified": 1,
+      "failure_counts": {
+        "action_coverage": 1,
+        "cartesian_residual": 3,
+        "converter_gates": 9,
+        "ground_origin_shift": 1,
+        "self_penetration_at_most_3mm": 6,
+        "support_gap_at_most_30mm": 12,
+        "support_within_15mm": 15
+      }
+    },
+    "train/upper": {
+      "candidates": 16,
+      "qualified": 4,
+      "failure_counts": {
+        "action_coverage": 1,
+        "cartesian_residual": 1,
+        "converter_gates": 4,
+        "self_penetration_at_most_3mm": 5,
+        "support_gap_at_most_30mm": 4,
+        "support_within_15mm": 10
+      }
+    }
+  },
+  "failure_patterns": [
+    {
+      "failed_gates": [
+        "support_within_15mm"
+      ],
+      "clips": 18
+    },
+    {
+      "failed_gates": [],
+      "clips": 18
+    },
+    {
+      "failed_gates": [
+        "self_penetration_at_most_3mm",
+        "support_within_15mm"
+      ],
+      "clips": 17
+    },
+    {
+      "failed_gates": [
+        "converter_gates",
+        "support_gap_at_most_30mm",
+        "support_within_15mm"
+      ],
+      "clips": 14
+    },
+    {
+      "failed_gates": [
+        "support_gap_at_most_30mm",
+        "support_within_15mm"
+      ],
+      "clips": 12
+    },
+    {
+      "failed_gates": [
+        "self_penetration_at_most_3mm",
+        "support_gap_at_most_30mm",
+        "support_within_15mm"
+      ],
+      "clips": 8
+    },
+    {
+      "failed_gates": [
+        "self_penetration_at_most_3mm"
+      ],
+      "clips": 8
+    },
+    {
+      "failed_gates": [
+        "converter_gates",
+        "self_penetration_at_most_3mm",
+        "support_gap_at_most_30mm",
+        "support_within_15mm"
+      ],
+      "clips": 6
+    },
+    {
+      "failed_gates": [
+        "cartesian_residual",
+        "converter_gates",
+        "support_gap_at_most_30mm",
+        "support_within_15mm"
+      ],
+      "clips": 3
+    },
+    {
+      "failed_gates": [
+        "cartesian_residual",
+        "converter_gates",
+        "self_penetration_at_most_3mm",
+        "support_gap_at_most_30mm",
+        "support_within_15mm"
+      ],
+      "clips": 2
+    },
+    {
+      "failed_gates": [
+        "action_coverage",
+        "cartesian_residual",
+        "converter_gates",
+        "support_within_15mm"
+      ],
+      "clips": 1
+    },
+    {
+      "failed_gates": [
+        "cartesian_residual",
+        "converter_gates",
+        "ground_origin_shift",
+        "self_penetration_at_most_3mm",
+        "support_gap_at_most_30mm",
+        "support_within_15mm"
+      ],
+      "clips": 1
+    },
+    {
+      "failed_gates": [
+        "action_coverage",
+        "cartesian_residual",
+        "converter_gates",
+        "self_penetration_at_most_3mm",
+        "support_gap_at_most_30mm",
+        "support_within_15mm"
+      ],
+      "clips": 1
+    },
+    {
+      "failed_gates": [
+        "action_coverage"
+      ],
+      "clips": 1
+    },
+    {
+      "failed_gates": [
+        "cartesian_residual",
+        "converter_gates",
+        "self_penetration_at_most_3mm",
+        "support_within_15mm"
+      ],
+      "clips": 1
+    },
+    {
+      "failed_gates": [
+        "cartesian_residual",
+        "converter_gates",
+        "support_within_15mm"
+      ],
+      "clips": 1
+    }
+  ],
+  "training_locomotion_single_failure_examples": [
+    {
+      "clip": "train_locomotion_8eb5dcb353b510ec",
+      "failed_gate": "support_within_15mm",
+      "duration_s": 2.9,
+      "support_fraction": 0.410958904109589,
+      "support_gap_max_m": 0.022883615353292322,
+      "self_penetration_max_m": 0.0,
+      "IK_position_p95_m": 0.020097475552662006,
+      "horizontal_displacement_m": 0.47381279735274473
+    },
+    {
+      "clip": "train_locomotion_fe9abef3042c3c39",
+      "failed_gate": "support_within_15mm",
+      "duration_s": 2.96,
+      "support_fraction": 0.4228187919463087,
+      "support_gap_max_m": 0.02775553012777142,
+      "self_penetration_max_m": 0.0,
+      "IK_position_p95_m": 0.011259310845759169,
+      "horizontal_displacement_m": 1.2645515658287212
+    },
+    {
+      "clip": "train_locomotion_1f75cd47fbf61bb7",
+      "failed_gate": "support_within_15mm",
+      "duration_s": 3.62,
+      "support_fraction": 0.1043956043956044,
+      "support_gap_max_m": 0.027224373456234782,
+      "self_penetration_max_m": 0.0,
+      "IK_position_p95_m": 0.007746379919268721,
+      "horizontal_displacement_m": 0.16036754900597341
+    },
+    {
+      "clip": "train_locomotion_e58365d7f3329709",
+      "failed_gate": "support_within_15mm",
+      "duration_s": 3.96,
+      "support_fraction": 0.7688442211055276,
+      "support_gap_max_m": 0.02399430824917531,
+      "self_penetration_max_m": 0.0,
+      "IK_position_p95_m": 0.026828411181490684,
+      "horizontal_displacement_m": 0.22919411545473062
+    },
+    {
+      "clip": "train_locomotion_007047b45054fd5a",
+      "failed_gate": "self_penetration_at_most_3mm",
+      "duration_s": 4.42,
+      "support_fraction": 0.9819819819819819,
+      "support_gap_max_m": 0.017337063746829473,
+      "self_penetration_max_m": 0.02524624656583573,
+      "IK_position_p95_m": 0.018401364521178413,
+      "horizontal_displacement_m": 0.9684052112452207
+    },
+    {
+      "clip": "train_locomotion_cb95d99b7e0e0766",
+      "failed_gate": "support_within_15mm",
+      "duration_s": 3.96,
+      "support_fraction": 0.6984924623115578,
+      "support_gap_max_m": 0.02378008696497568,
+      "self_penetration_max_m": 0.0,
+      "IK_position_p95_m": 0.018172889250208064,
+      "horizontal_displacement_m": 0.27117485540077957
+    },
+    {
+      "clip": "train_locomotion_6cafc84ec90e5186",
+      "failed_gate": "self_penetration_at_most_3mm",
+      "duration_s": 4.02,
+      "support_fraction": 1.0,
+      "support_gap_max_m": 0.013155204086448056,
+      "self_penetration_max_m": 0.004004276165213749,
+      "IK_position_p95_m": 0.02135379703425743,
+      "horizontal_displacement_m": 1.689034938163939
+    }
+  ],
+  "new_physics_steps": 0,
+  "new_policy_calls": 0,
+  "new_optimizer_updates": 0,
+  "reference_or_gate_changes": false,
+  "storage_status": "LOCAL_ONLY",
+  "limits": "Failure counts overlap. Single-failure examples are not qualified. Summary of existing geometry evidence; no new FK, dynamics or tracking evaluation.",
+  "source": {
+    "path": "/private/tmp/yuanqi-supermimic-q1-20261023/script/supermimic_q1_analysis/analyze_phuma_screen.py",
+    "bytes": 5898,
+    "sha256": "d5f4fb1da7193334f35337a48a32186c69583463f278ffbbd06455ebaba0ecdd"
+  }
+}

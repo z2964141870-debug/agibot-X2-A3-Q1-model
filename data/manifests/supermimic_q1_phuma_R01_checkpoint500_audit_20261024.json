@@ -1,0 +1,99 @@
+{
+  "status": "PARTIAL_TRAINING_CHECKPOINT_AUDIT_PASSED",
+  "captured_utc": "2026-10-24T05:17:09.205219+00:00",
+  "checkpoint_step": 500,
+  "collection_transitions": 8000,
+  "wm_updates": 149,
+  "policy_updates": 99,
+  "gates": {
+    "checkpoint_500_local_budget": true,
+    "initial_step_zero_empty_optimizers": true,
+    "saved_manifest_unchanged": true,
+    "phuma_train_split_only": true,
+    "random_initialization_record": true,
+    "published_code_identity": true,
+    "local_update_counts": true,
+    "all_optimizer_steps_match": true,
+    "all_networks_changed": true,
+    "all_saved_network_optimizer_tensors_finite": true,
+    "saved_files_stable": true,
+    "all_121_frozen_files_unchanged": true,
+    "logging_complete_to_checkpoint": true,
+    "no_new_oom": true,
+    "no_cuda_context": true
+  },
+  "networks": {
+    "wm": {
+      "same_parameter_keys": true,
+      "tensors": 15,
+      "changed_tensors": 14,
+      "max_abs_change": 0.22897380590438843
+    },
+    "policy": {
+      "same_parameter_keys": true,
+      "tensors": 22,
+      "changed_tensors": 20,
+      "max_abs_change": 0.016573376953601837
+    },
+    "critic": {
+      "same_parameter_keys": true,
+      "tensors": 7,
+      "changed_tensors": 6,
+      "max_abs_change": 0.30488190054893494
+    }
+  },
+  "optimizer_counters": {
+    "wm_opt": {
+      "expected": 1490,
+      "actual_distinct": [
+        1490
+      ],
+      "parameter_states": 14,
+      "initial_parameter_states": 0,
+      "passed": true
+    },
+    "policy_opt": {
+      "expected": 99,
+      "actual_distinct": [
+        99
+      ],
+      "parameter_states": 20,
+      "initial_parameter_states": 0,
+      "passed": true
+    },
+    "critic_opt": {
+      "expected": 1980,
+      "actual_distinct": [
+        1980
+      ],
+      "parameter_states": 6,
+      "initial_parameter_states": 0,
+      "passed": true
+    }
+  },
+  "files": [
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024/run/step_000000.pt",
+      "bytes": 68435755,
+      "sha256": "9e4d66cb26a1eab515745715f850bc93edb445bec53becba7dee978c6270abfc"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024/run/step_000500.pt",
+      "bytes": 205233191,
+      "sha256": "bffc42838072fc6920c5c1acf32bc44afe348eebb449103c5260920e4a4437c7"
+    }
+  ],
+  "frozen_changes": [],
+  "memory_before_bytes": 30715731968,
+  "max_sampled_cgroup_bytes": 31219302400,
+  "memory_after_bytes": 31150612480,
+  "memory_guard_bytes": 32212254720,
+  "oom_kill": 14,
+  "elapsed_seconds": 3.0880581587553024,
+  "new_physics_steps": 0,
+  "new_policy_calls": 0,
+  "new_optimizer_updates": 0,
+  "final_budget_completed": false,
+  "tracking_effectiveness_proven": false,
+  "storage_status": "LOCAL_ONLY"
+}

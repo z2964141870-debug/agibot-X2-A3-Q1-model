@@ -1,0 +1,103 @@
+import datetime, gc, hashlib, json, os, time
+from pathlib import Path
+ROOT = Path("/opt/data/private/YuanQi_Q1")
+RUN = ROOT / "data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024/run"
+CG = Path("/sys/fs/cgroup/memory")
+GUARD = 30 * 1024 ** 3
+observed_memory = []
+def sample_memory():
+    used = int((CG / "memory.usage_in_bytes").read_text())
+    observed_memory.append(used)
+    if used >= GUARD - 256 * 1024 ** 2:
+        raise RuntimeError("Diagnostic stopped before approaching the unchanged training memory guard")
+    return used
+def identity(path):
+    h = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            h.update(block)
+    return {"path": str(path), "bytes": path.stat().st_size, "sha256": h.hexdigest()}
+started = time.monotonic()
+before = sample_memory()
+if GUARD - before < 1024 ** 3:
+    raise RuntimeError("Less than 1 GiB diagnostic headroom")
+import torch
+torch.set_num_threads(2)
+sample_memory()
+initial_path, checkpoint_path = RUN / "step_000000.pt", RUN / "step_000500.pt"
+before_identity = [identity(path) for path in (initial_path, checkpoint_path)]
+initial = torch.load(initial_path, map_location="cpu", mmap=True, weights_only=False)
+current = torch.load(checkpoint_path, map_location="cpu", mmap=True, weights_only=False)
+sample_memory()
+manifest = current["manifest"]
+admission = json.loads((RUN / "admission.json").read_text())
+spec = json.loads((RUN.parent / "spec.json").read_text())
+steps = current["step"]
+wm_expected = max(0, steps - manifest["args"]["warmup_steps"] + 1) * 2 // 5
+actor_expected = max(0, wm_expected - manifest["args"]["model_warmup_updates"])
+expected = {"wm_opt": wm_expected * manifest["wm_trainer"]["batches_per_update"],
+            "policy_opt": actor_expected,
+            "critic_opt": actor_expected * manifest["policy_trainer"]["critic_epochs"] * manifest["policy_trainer"]["critic_minibatches"]}
+networks, optimizers = {}, {}
+finite = True
+for name in ("wm", "policy", "critic"):
+    deltas = []
+    for key, value in current[name].items():
+        finite = finite and bool(torch.isfinite(value).all()) and bool(torch.isfinite(initial[name][key]).all())
+        if value.is_floating_point():
+            deltas.append(float((value - initial[name][key]).abs().max()))
+        sample_memory()
+    networks[name] = {"same_parameter_keys": current[name].keys() == initial[name].keys(),
+                      "tensors": len(current[name]), "changed_tensors": sum(value > 0 for value in deltas),
+                      "max_abs_change": max(deltas)}
+for name, count in expected.items():
+    states = current[name]["state"]
+    counters = sorted({int(state["step"].item()) for state in states.values()})
+    for state in states.values():
+        for value in state.values():
+            if isinstance(value, torch.Tensor):
+                finite = finite and bool(torch.isfinite(value).all())
+        sample_memory()
+    optimizers[name] = {"expected": count, "actual_distinct": counters,
+                        "parameter_states": len(states), "initial_parameter_states": len(initial[name]["state"]),
+                        "passed": bool(states) and counters == [count] and not initial[name]["state"]}
+metrics = [json.loads(line) for line in (RUN / "metrics.jsonl").read_text().splitlines()]
+prefix = [row for row in metrics if row["step"] <= steps]
+frozen_changes = [row["path"] for row in spec["frozen_files"] if identity(Path(row["path"])) != row]
+after_identity = [identity(path) for path in (initial_path, checkpoint_path)]
+oom = dict(line.split() for line in (CG / "memory.oom_control").read_text().splitlines())
+gates = {
+    "checkpoint_500_local_budget": steps == 500 and steps < manifest["args"]["steps"] == spec["steps"] == 3000,
+    "initial_step_zero_empty_optimizers": initial["step"] == initial["wm_updates"] == initial["policy_updates"] == 0 and all(not initial[name]["state"] for name in expected),
+    "saved_manifest_unchanged": initial["manifest"] == manifest and json.loads(json.dumps(manifest)) == admission,
+    "phuma_train_split_only": sorted(Path(row["path"]).stem for row in manifest["train_clips"]) == spec["split_clips"]["train"] and sorted(manifest["heldout_clips"]) == sorted(spec["split_clips"]["development"] + spec["split_clips"]["test"]),
+    "random_initialization_record": manifest["initialization"] == "RANDOM_FROM_SCRATCH_NO_A3_WEIGHTS" and spec["initialization"] == "RANDOM_NO_PARENT_CHECKPOINT",
+    "published_code_identity": manifest["code_commit"] == spec["code_commit"] == "ed4217384e7abfc8a9cea0b23b95592d4a3e19b0",
+    "local_update_counts": current["wm_updates"] == wm_expected and current["policy_updates"] == actor_expected,
+    "all_optimizer_steps_match": all(row["passed"] for row in optimizers.values()),
+    "all_networks_changed": all(row["same_parameter_keys"] and row["changed_tensors"] > 0 for row in networks.values()),
+    "all_saved_network_optimizer_tensors_finite": finite,
+    "saved_files_stable": before_identity == after_identity,
+    "all_121_frozen_files_unchanged": not frozen_changes and len(spec["frozen_files"]) == 121,
+    "logging_complete_to_checkpoint": [row["step"] for row in prefix] == list(range(25, steps + 1, 25)) and prefix[-1]["wm_updates"] == wm_expected and prefix[-1]["policy_updates"] == actor_expected,
+    "no_new_oom": int(oom["oom_kill"]) == manifest["baseline_health"]["oom_kill"] == 14,
+    "no_cuda_context": not torch.cuda.is_initialized()
+}
+del initial, current
+gc.collect()
+for path in (initial_path, checkpoint_path):
+    with path.open("rb") as stream:
+        os.posix_fadvise(stream.fileno(), 0, 0, os.POSIX_FADV_DONTNEED)
+after = sample_memory()
+print(json.dumps({"status": "PARTIAL_TRAINING_CHECKPOINT_AUDIT_PASSED" if all(gates.values()) else "PARTIAL_TRAINING_CHECKPOINT_AUDIT_FAILED",
+                  "captured_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                  "checkpoint_step": steps, "collection_transitions": steps * manifest["args"]["num_envs"],
+                  "wm_updates": wm_expected, "policy_updates": actor_expected,
+                  "gates": gates, "networks": networks, "optimizer_counters": optimizers,
+                  "files": after_identity, "frozen_changes": frozen_changes,
+                  "memory_before_bytes": before, "max_sampled_cgroup_bytes": max(observed_memory), "memory_after_bytes": after,
+                  "memory_guard_bytes": GUARD, "oom_kill": int(oom["oom_kill"]),
+                  "elapsed_seconds": time.monotonic() - started,
+                  "new_physics_steps": 0, "new_policy_calls": 0, "new_optimizer_updates": 0,
+                  "final_budget_completed": False, "tracking_effectiveness_proven": False,
+                  "storage_status": "LOCAL_ONLY"}, allow_nan=False))

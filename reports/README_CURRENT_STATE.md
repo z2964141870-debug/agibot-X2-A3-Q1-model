@@ -2,7 +2,7 @@
 
 2026-10-24 11:26用户要求停止当前整轮并改用PHUMA；[R04V2已停止](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)。11:26:30总控/worker均STOPPED_SIGNAL，原生退出0；A实际932轮/14912新控制转移、322组WM/272次actor，B未启动，无完整对照/最终评测。11:27:30–32核验原worker缺失、controller Z/RSS0、两个进程组无活跃成员，3份权重大小/SHA及冻结条件通过；GPU38摄氏度/OOM14。停止证据`data/manifests/supermimic_q1_R04V2_user_stop_20261024.json`。
 
-当前主线见[PHUMA阶段](README_SUPERMIMIC_Q1_PHUMA_20261024.md)：P02全G1 73076片分组审计、P03固定112候选转换/19项独立几何门及17数值/隔离控制完成，18片合格（train11/development4/test3）、94片拒绝保留。`PHUMA_R01_B128_3000_20261024`已于12:56:33随机初始化启动，3000轮/16环境/B128/H32、仅11片训练，旧A3来源动作/权重不参与。13:04:22实核400轮/6400转移/109组WM/59次actor，16项启动核查与121冻结文件通过，GPU39摄氏度/OOM14、内存30656466944字节。controller799647/worker799650身份见[小证据](../data/manifests/supermimic_q1_phuma_R01_launch_verification_20261024.json)，恢复须重核。后续自动保存审计和同18片初始/最终完整配对；尚无最终效果，test无移动片。训练发布ed421738已推送/独立核验Q1，全部大工件LOCAL_ONLY。
+当前主线见[PHUMA阶段](README_SUPERMIMIC_Q1_PHUMA_20261024.md)：P02全G1 73076片审计、P03固定112候选/19项几何门及17数值控制完成，18片合格（train11/development4/test3）。`PHUMA_R01_B128_3000_20261024`于12:56:33随机启动，3000轮/16环境/B128/H32、仅11片训练，旧A3来源动作/权重不参与。13:21:05原controller799647/worker799650身份通过，875轮/14000转移/299组WM/249次actor，GPU40摄氏度/OOM14、内存30845796352字节。[D01](README_SUPERMIMIC_Q1_PHUMA_DIAGNOSIS_20261024.md)第500轮15项保存审计通过，Adam1490/99/1980、三网络变化/有限、121冻结文件未变；112片筛选统计独立重算，85支撑比例/44自碰撞失败（重叠），仍18合格/94拒绝。后续原流水线自动同18片初始/最终完整配对；尚无最终效果，test无移动片。训练发布ed421738已核验Q1，大工件LOCAL_ONLY。
 
 R04V2及原R04停止/失败终态、日志、源码和权重保留，不执行原流水线后续阶段、不解锁或重启。停止保存final为205227539字节/SHA `b9e3914e8bddcbcabef7a7383cf7e2d097bd5a184a000358a2937b11859e6fb8`，未做完整张量/最终效果审计。A3保持停止，全部大型原件LOCAL_ONLY。以下D08/R03/V02为历史证据，不是续跑许可。
 

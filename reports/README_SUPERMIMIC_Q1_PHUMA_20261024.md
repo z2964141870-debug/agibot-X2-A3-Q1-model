@@ -1,6 +1,6 @@
 # PHUMA驱动的SuperMimic for Q1
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-PHUMA-P01/P02/P03/R01。状态：旧轮已停止；P03固定112候选完成，18片合格（train11/development4/test3）；PHUMA R01于12:56:33启动。13:04:22实核400/3000轮、6400控制转移、109组WM/59次actor更新，训练进行中，完整配对评测尚未执行。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-PHUMA-P01/P02/P03/R01/D01。状态：旧轮已停止；P03固定112候选完成，18片合格（train11/development4/test3）；PHUMA R01于12:56:33启动。13:21:05实核875/3000轮、14000控制转移、299组WM/249次actor更新；第500轮保存15项审计通过，训练继续，完整配对评测尚未执行。
 
 ## 目标与范围
 
@@ -110,3 +110,7 @@ $PY -u script/supermimic_q1_phuma/pipeline.py run \
 - [启动与学习实核](../data/manifests/supermimic_q1_phuma_R01_launch_verification_20261024.json)、[原生日志前缀](../logs/session_records/supermimic_q1_phuma_R01_training_prefix_20261024.log)、[本次只读核查源码](../logs/session_records/supermimic_q1_phuma_R01_verification_source_20261024.txt)。
 
 后续按原3000轮预算继续，controller自动执行保存审计、同18片初始/最终完整动力学评测、独立轨迹重算和train/development/test配对比较。尚无final或最终跟随成功结论；test不含移动片，保留该泛化限制。下一恢复先读本节，再读取实验 `controller_status.json`、`run/status.json` 和日志；如果保护停止则保留终态并定位，不自动重启或追加预算。训练代码已发布核验，本次启动记录随本阶段文档提交，发布身份以Q1 Git历史和独立远端核验为准。
+
+## D01部分保存与数据瓶颈
+
+13:17:09第500轮CPU只读审计原生退出0、15项全过：三网络参数均变化、Adam为1490/99/1980且与149组WM/99次actor一致，初始空Adam、保存有限/manifest/121冻结文件及无新增OOM通过。权重仅留服务器，完整预算审计仍待原流水线。新增固定112候选筛选汇总/独立重算一致：支撑比例85片、间隙47片、自碰撞44片失败（原因重叠），18合格/94拒绝不变；训练移动仅2/32、test移动0/6。原训练未改门或输入，13:21仍原进程875轮，GPU40摄氏度/OOM14。详见[D01核查与数据诊断](README_SUPERMIMIC_Q1_PHUMA_DIAGNOSIS_20261024.md)；这些结果支持后续检查重定向合格率，不是最终学习效果或新增候选放行。

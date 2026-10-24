@@ -1,0 +1,22 @@
+import collections, json
+from pathlib import Path
+base = Path(".")
+original = json.loads((base / "data/manifests/supermimic_q1_phuma_P03_reference_check_20261024.json").read_text())
+summary = json.loads((base / "data/manifests/supermimic_q1_phuma_P03_screen_diagnosis_20261024.json").read_text())
+rows = original["clips"]
+counts = {key: sum(row["gates"][key] is False for row in rows) for key in rows[0]["gates"]}
+counts = {key: value for key, value in counts.items() if value}
+qualified = [row for row in rows if all(row["gates"].values())]
+assert counts == summary["failure_counts"]
+assert (len(rows), len(qualified), len(rows) - len(qualified)) == (summary["candidates"], summary["qualified"], summary["rejected"])
+assert {row["clip"] for row in rows if not all(row["gates"].values())} == set(original["rejected_clips"])
+for key, values in summary["groups"].items():
+    split, bucket = key.split("/")
+    selected = [row for row in rows if row["split"] == split and row["bucket"] == bucket]
+    assert (len(selected), sum(all(row["gates"].values()) for row in selected)) == (values["candidates"], values["qualified"])
+    for gate, count in values["failure_counts"].items():
+        assert count == sum(row["gates"][gate] is False for row in selected)
+assert sum(row["clips"] for row in summary["failure_patterns"]) == len(rows)
+assert len(set(row["source_group"] for row in rows)) == summary["unique_source_groups"] == len(rows)
+assert summary["independent_gates"] == 19
+print(json.dumps({"status": "PHUMA_SCREEN_SUMMARY_INDEPENDENT_COUNTS_PASSED", "candidates": len(rows), "qualified": len(qualified), "rejected": len(rows) - len(qualified), "groups_recomputed": len(summary["groups"]), "gate_counts_recomputed": len(rows[0]["gates"]), "failure_counts": counts, "new_physics_steps": 0, "new_optimizer_updates": 0}, allow_nan=False))

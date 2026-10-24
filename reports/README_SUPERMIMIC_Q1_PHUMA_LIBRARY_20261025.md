@@ -1,6 +1,6 @@
 # PHUMA扩展库P08组装与来源核对
 
-记录日期：2026-10-25，北京时间。阶段P08，状态：完整组库/保存时轴重算/原trainer准入通过；来源审计完成，新增4条同开发受试者目录候选需独立排除后再用于新实验。
+记录日期：2026-10-25，北京时间。阶段P08/P08B，状态：完整组库及来源审计完成；P08B修正V2独立排除4条训练目录候选冲突、保存时轴/trainer准入及独立HumanML复审通过。612训练片/36.52分钟，仍未证明全源身份隔离或动态跟随。
 
 ## 目标与输入
 
@@ -86,3 +86,15 @@ env CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THR
 修正为启动时先检查内存/OOM，完成输入核验后排他创建输出目录，立即执行完整存储检查再写链接/记录；后续每32片检查保持。实际修正再验证使用新路径`PHUMA_P08B_subject_excluded_library_V2_20261025`，原计划路径保持不存在，不伪称首次成功。首次终端错误已收集退出1；直接执行没有生成此前预定的服务器stdout日志，真实完成原件将在新目录completion.json保存，命令及错误以本记录和Git历史为据。
 
 首次错误及独立03:57:40现场核验已保存[小终端记录](../logs/session_records/supermimic_q1_P08B_preflight_failure_20261025.log)。修正producer SHA`df9853f01a8aeaf00095596c10a012e79fbcd6035149d46faeec701968cba351`，三项选择控制再次通过；两输出路径实际均不存在、原P08 manifest SHA不变。同期R02C正常1500新轮/累计6500、WM549组/actor499次，GPU40/OOM14、内存17.79GB、盘余1.407TB。下一部署修正源并在V2新目录真实构造、独立重审计。
+
+## 04:00 P08B-V2真实完成及独立来源复查
+
+修正发布`482db6b5c09eeda4b84641296309737cd05b4b3d`已推送并独立核远端Q1；部署前原producer SHA匹配、部署后修正SHA一致。04:00:14 V2实际原生退出0，新目录`data/supermimic_for_q1/PHUMA_P08B_subject_excluded_library_V2_20261025/`保存完整收据；stdout已保存`logs/PHUMA_P08B_subject_excluded_library_V2_20261025.log`。首次预检失败的原计划路径实际仍不存在，没有覆盖旧输出或改写失败。
+
+625参考保留，其中train612片/2191.34秒（36.52分钟）、位移候选103片/363.06秒；dev6/21.26秒、test7/27.56秒不变。实际逐片字节/保存时轴/原19门核验及原trainer准入通过，训练差集恰为4条CMU/137候选/12.24秒。原P08六份绑定前后SHA一致，原几何门未改，资格变动只明确增加已知来源排除；全部NPZ留在原处，625软链接未新增动作字节。进出内存18086141952→18167484416字节/OOM14，无新转换/积分/optimizer。
+
+[V2完成小收据](../data/manifests/supermimic_q1_phuma_P08B_view_20261025.json)30682字节/SHA`54b77e00701f78878da72b39acdf9bed74bcac08d8359c6f8607d03df0560dbc`已取回、两端一致。新manifest9300165字节/SHA`8e3b97685f04d01ab2c1907f8a1d868eadde87e9ffbf5007d810ec9589540ec6`，reference_check7119210字节/SHA`24fbc53eb032135cbba336e25ec10edad53601011ee05bc8f67dafd172644d69`。
+
+04:00:47原别名auditor在V2实际再次执行退出0，独立输出`SOURCE_P08B_aliases_20261025/receipt.json`。207段HumanML（train206/dev1）内原动作跨split0、目录受试者候选跨split0；168相对事件名匹配、13集合更名候选、26未解。另418段其他来源和跨集合身份仍未解决，`source_isolation_certified=false`保持，不能称完整独立测试认证。[独立复审小收据](../data/manifests/supermimic_q1_source_P08B_receipt_20261025.json)202523字节/SHA`b48b6cd58d06ce84a3f50378098815c9e11802d70e9f5e5892576aed43b032a2`已核两端相同。
+
+本阶段30分钟几何合格库目标已达到，1小时及可用移动策略仍未达；该view供后续独立实验准备，尚未替换R02C或启动第二个训练。接触/滑动缺口按D04继续独立处理，不因时长变多跳过动力学与来源限制。新view状态明确为`PHUMA_SOURCE_EXCLUSION_VIEW_AND_TRAINER_ADMISSION_PASSED`；后续训练登记须显式接受其来源排除证据，不能伪造原组库状态。代码、小收据和说明按Q1审核发布；大型模型/数组仍LOCAL_ONLY。

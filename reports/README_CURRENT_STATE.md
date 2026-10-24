@@ -1,6 +1,8 @@
 # YUANQI 当前状态与下一步
 
-2026-10-25 03:48：[PHUMA P08完整组库及来源审计完成](README_SUPERMIMIC_Q1_PHUMA_LIBRARY_20261025.md)，2885候选/629合格，train616/36.73分钟、dev6/test7不变。新HumanML211段原动作跨split0，但4条新增训练片与dev共享CMU/137目录候选；下一P08B独立排除（算术612片/2191.34秒），新入口三项Mac控制通过，实际执行待。原19门/参考/340训练输入不改，全源隔离仍false，原P08不可忽略该冲突直接用于后续实验。库新占约22.7MB，无新训练，OOM14/盘余1.464TB。
+2026-10-25 04:01：[R02C仍正常续训](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md)，1625/7000新增轮、104000新转移/累计6625轮，WM599组/actor549次；三个实际进程boot/start_ticks及全部496冻结大小/SHA通过，OOM14。最新GPU40、内存17.81GB、盘余1.385TB，100GiB余量/12GiB实验/30GiB/86摄氏度/900秒无进展保护，无自动重启。训练发布d21a880，固定340片输入不改，尚无续训后实际动力学效果证明。[进度原件](../data/manifests/supermimic_q1_R02C_progress_20261025T0402.json)。
+
+[PHUMA P08/P08B完成](README_SUPERMIMIC_Q1_PHUMA_LIBRARY_20261025.md)：2885候选完整重算，V2独立排除4条CMU/137训练目录候选冲突后，train612片/2191.34秒（36.52分钟）、位移候选103/363.06秒，dev6/test7不变；保存时轴/原trainer准入及独立HumanML复审通过。HumanML207段内部已知原动作/目录候选跨split0；26未解、13集合更名候选及其他418参考使全源隔离仍false。该view未用于新训练，后续登记需显式接受来源排除证据；首次预算预检失败保留，实际成功目录为PHUMA_P08B_subject_excluded_library_V2_20261025。
 
 2026-10-25 03:41：[PHUMA额外1024来源转换全部完成](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)，B019新增109片/382.56秒，worker回收/四绑定SHA通过。新增276片，加基础算术616训练片/2203.58秒（36.73分钟），位移候选104/366.02秒；尚未完整组库或新来源审计。下一新P08目录组库，再重跑HumanML别名，不重复B015至B019转换。最新盘余约1.491TB、内存17.37GB/OOM14，保护线保持。`locomotion`仅源位移阈值标签，现test三段fitness名称不证明步行能力。
 

@@ -8,7 +8,7 @@
 
 07:53:48[现场原生记录](../logs/session_records/supermimic_q1_R02D_after_P14_20261025.log)重新读取三状态及原boot/ticks/cmdline/组，三个实际非Z进程保持，新增4975/7000轮、318400新转移、累计9975轮；WM1939组/actor1889次，最新数值有限，尚未完成新配对评测。越过原数值失败位置不能作为稳定性保证或移动效果证明。
 
-07:20[保存4000独立审计](../data/manifests/supermimic_q1_R02D_intermediate4000_audit_20261025.json)十三门全过，三Adam计数34980/3398/67960及原输入/516冻结保持，执行前实际4075新轮。结束OOM14/盘余340.03GB，尚未最终配对，原预算/100GiB停止线不变。
+07:56[保存5000独立审计](../data/manifests/supermimic_q1_R02D_intermediate5000_audit_20261025.json)十三门全过，三Adam计数38980/3798/75960及原输入/516冻结保持，执行前实际5050新轮/RUNNING。结束OOM14/盘余152.34GB、实验分配2.259GB，尚未最终配对，原预算/100GiB停止线不变。
 
 主机`huanyu:/opt/data/private/YuanQi_Q1`；Python`/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python`。当前可经既有18864 SSH转发访问，不写入连接凭据。04:56启动身份：boot`d994e71f-bae0-46ba-a5f7-6c2163771c6c`；guard839210/start_ticks3616742247，controller839211/3616742257，trainer839214/3616742577。恢复须重新核`/proc`非Z、boot/ticks/cmdline/组及以下三状态，不能凭旧PID认定活跃。
 

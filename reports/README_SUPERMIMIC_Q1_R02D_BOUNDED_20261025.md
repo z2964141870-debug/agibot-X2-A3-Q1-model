@@ -103,3 +103,11 @@ A原件保留`intermediate1500_audit.json`，保存1500为205325095字节/SHA`2b
 保存4000为205325095字节/SHA`cdf5e259fe9c73dea58e8a86e9330750f1280f3cac73c0a21a2deb4506100f8c`；[原样审计](../data/manifests/supermimic_q1_R02D_intermediate4000_audit_20261025.json)SHA`625fb3ab2c62d463d2c1389af3b1a49e3af165991badf9fbde36223d95df9b40`。原件实验根`intermediate4000_audit.json`，stdout同名logs目录`intermediate4000_audit.log`。结束共享内存14929911808字节/OOM14、实验分配1848569856字节、盘余340030201856字节；100GiB停止线及原预算保持。
 
 07:31:41[再次现场核验](../logs/session_records/supermimic_q1_R02D_after_P13_20261025.log)：原三个实际非Z进程身份/组/cmdline与三状态保持，4375新增轮/280000转移、累计9375轮，最新日志有限；GPU39摄氏度/1228MiB、共享内存13805584384/OOM14、盘余283457986560字节。本训练分配1848594432字节，P13诊断不足1MB，不能把共享盘下降归本任务。继续原预算和100GiB保护，若触发即保留终态，不自动重启或追加；仍无新移动效果证明。
+
+## 07:56保存5000独立审计通过
+
+07:56:20实时5050新增轮后，复用未改已发布auditor独立CPU/mmap审计完整step5000，07:56:48原生退出0，十三门全过。三网络/三Adam/两采样器有限，三Adam计数38980/3798/75960正确；原340/6/7、7000新轮及全部516冻结保持，0CUDA/物理/策略/optimizer。保存205325095字节/SHA`3a01c001aa3ae77bca419f48fb7c6dbad88400e4f9c3aa68a38cd2759da2048b`，[原样收据](../data/manifests/supermimic_q1_R02D_intermediate5000_audit_20261025.json)由服务器实验根`intermediate5000_audit.json`取回。最终预算未完成、未进行最终353片配对，不能称步行改善。
+
+审计结束实验分配2259296256字节、盘余152343687168字节/OOM14、共享内存14933757952字节。07:53原三进程身份重核及4975进度保存在[原生现场记录](../logs/session_records/supermimic_q1_R02D_after_P14_20261025.log)；07:56:20实读5050轮/RUNNING、盘余154736656384字节。共享盘持续下降，本轮自身约2.259GB，100GiB停止线及不自动恢复规则保持，不能删除未知文件来续跑。
+
+[P14](README_SUPERMIMIC_Q1_WALKING_ROOT_OFFSET_20261025.md)八组常数降根诊断及独立复算已完成，穿地/滑动、0新参考，不修改本训练输入；原生足地不等式允许已有穿地零步的机制已核，后续P15先验证恢复约束与初始化，尚未实施。BONES继续由师兄处理。

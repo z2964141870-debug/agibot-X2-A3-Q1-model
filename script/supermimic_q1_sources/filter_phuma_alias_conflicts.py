@@ -55,7 +55,7 @@ def run(args):
     budget = MemoryBoundBudget(StorageBudget(output, library, 100 * 1024 ** 3,
                                             64 * 1024 ** 2, 64 * 1024 ** 2),
                                int(28.75 * 1024 ** 3), args.expected_oom_kill)
-    before = budget.check()
+    before = budget.memory()
     os.nice(10)
     paths = [library / "references/manifest.json", library / "reference_check.json",
              library / "completion.json", library / "scan_check.json", args.aliases.resolve(strict=True),
@@ -99,6 +99,7 @@ def run(args):
                    rejected_clips=[row["clip"] for row in checked["clips"] if row["clip"] not in set(accepted)])
     budget.memory()
     output.mkdir()
+    budget.check()
     references = output / "references"
     references.mkdir()
     durations = {split: 0. for split in original}

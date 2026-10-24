@@ -1,0 +1,24 @@
+PHUMA P08B initial source-exclusion view invocation, 2026-10-25 Asia/Shanghai.
+Published producer: 2d2b356660396bdfc344fc13fd6a0debd451f77c
+Producer SHA256: 3aa0f5b666f9d3312a02879e1feb8ef1ebe45798bce70956535e88165b09f169
+Native exit code: 1. Output directory was not created.
+
+Traceback (most recent call last):
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/filter_phuma_alias_conflicts.py", line 158, in <module>
+    run(parser.parse_args())
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/filter_phuma_alias_conflicts.py", line 58, in run
+    before = budget.check()
+             ^^^^^^^^^^^^^^
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/guard_phuma_batch.py", line 35, in check
+    evidence = self.storage.check()
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/runtime_guard.py", line 54, in check
+    experiment = allocated_tree(self.experiment)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/runtime_guard.py", line 25, in allocated_tree
+    raise ValueError(f"Budget root must be a real directory: {root}")
+ValueError: Budget root must be a real directory: /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P08B_subject_excluded_library_20261025
+
+2026-10-25 03:57:40 verification: initial output absent; V2 output absent.
+Original P08 manifest SHA256 remained 181f28896b93be7525986a89f85c5dfadbb6b2d16b79cc873e13699926eafd8b.
+R02C remained RUNNING at 1500 new rounds / 6500 cumulative rounds, oom_kill=14.

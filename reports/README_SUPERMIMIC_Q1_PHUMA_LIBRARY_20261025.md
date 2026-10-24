@@ -78,3 +78,11 @@ env CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THR
 ```
 
 实际输出/日志预定上述新目录及`logs/PHUMA_P08B_subject_excluded_library_20261025.log`。完成后再对新view运行原别名审计，独立`SOURCE_P08B_aliases_20261025`，不把排除算法自身结果当新审计。P08两份完成小原件及P08别名小收据的本地SHA已与服务器一致；本阶段新增代码/记录待审核发布。
+
+## P08B首次预检失败与顺序修正
+
+准备发布`2d2b356660396bdfc344fc13fd6a0debd451f77c`已推送并独立核远端；服务器两文件SHA一致、三项控制通过。首次真实入口原生退出1：在创建新目录前调用完整`StorageBudget.check()`，其`allocated_tree()`要求预算根为真实目录，因而明确拒绝。错误发生在读取库输入和创建输出之前，尚未创建P08B目录，不是资源/OOM失败，也未改变参考或R02C。
+
+修正为启动时先检查内存/OOM，完成输入核验后排他创建输出目录，立即执行完整存储检查再写链接/记录；后续每32片检查保持。实际修正再验证使用新路径`PHUMA_P08B_subject_excluded_library_V2_20261025`，原计划路径保持不存在，不伪称首次成功。首次终端错误已收集退出1；直接执行没有生成此前预定的服务器stdout日志，真实完成原件将在新目录completion.json保存，命令及错误以本记录和Git历史为据。
+
+首次错误及独立03:57:40现场核验已保存[小终端记录](../logs/session_records/supermimic_q1_P08B_preflight_failure_20261025.log)。修正producer SHA`df9853f01a8aeaf00095596c10a012e79fbcd6035149d46faeec701968cba351`，三项选择控制再次通过；两输出路径实际均不存在、原P08 manifest SHA不变。同期R02C正常1500新轮/累计6500、WM549组/actor499次，GPU40/OOM14、内存17.79GB、盘余1.407TB。下一部署修正源并在V2新目录真实构造、独立重审计。

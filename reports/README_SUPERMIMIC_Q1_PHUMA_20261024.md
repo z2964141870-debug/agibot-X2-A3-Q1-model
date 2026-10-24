@@ -1,6 +1,6 @@
 # PHUMA驱动的SuperMimic for Q1
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-PHUMA-P01/P02/P03。状态：旧轮已停止；P02全库分组/独立审计通过、12片Q1几何0合格；P03首帧修正后1/12合格。下一固定112候选批量筛选；新训练尚未启动。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-PHUMA-P01/P02/P03。状态：旧轮已停止；P03固定112候选全部转换/独立检查完成，18片合格（train11/development4/test3）。下一登记和启动随机初始化训练；新训练尚未启动。
 
 ## 目标与范围
 
@@ -46,6 +46,10 @@ P03实际12:21:15–12:23:05三进程原生退出0、10项数值控制通过。�
 
 下一用相同首帧算法转换固定112候选并独立筛选。验证器只需位置/速度/接触几何，改用MuJoCo fwdPosition/fwdVelocity以避免无关约束加速度求解；新增八种Q1状态与完整mj_forward逐数组/接触精确一致的控制，待服务器实跑。新增四项训练输入合同控制，拒绝旧A3协议、pilot、跨划分同源和已变参考；首轮计划3000轮/16环境/batch128/H32，原生MuJoCo在线交互和可微世界模型BPTT，三网络随机初始化，完成后匹配全片评测；900秒无进度停止、温度/OOM保护、无自动重启/追加。尚未登记/启动训练。
 
+P03批量实际12:30:16–12:43:31三进程均原生退出0，15项控制全过，包括八种状态位置/姿态/几何/速度/接触与完整forward精确一致及四项训练隔离阴性控制。112片全部转换无异常；转换器初门通过56/15/11片，独立19门进一步筛选为11/4/3片，共18片合格、94片保留拒绝；训练输入仅11片，不是全73,076片训练。服务器 `data/supermimic_for_q1/PHUMA_P03_references_20261024/`；manifest 369,238字节/SHA `ec7f808eba1e08b955fe16b392b306ded75dc1def3b957dbe51352cda3bf3f34`，独立收据275,066字节/SHA `04b28919b2cc748fcf5e69c0ebd8844ce0fc4159197e497433a54b1795b891ae`。代码 `9ec6e0264fc74ee10c5d42f8508c2d6c42dfb3ac` 推送首次因SSH代理断连失败，重试推送及独立远端核验后通过。三份原生日志及执行收据已留logs；0物理积分/optimizer。
+
+合格训练片实际总时长41.30s，包含2移动/1蹲/4上肢/4其他，移动参考最大水平离起点0.90044m/0.28814m；development为1移动/1上肢/2其他，test为1上肢/2其他。该首轮是小规模PHUMA训练闭环，test没有移动片，不能据此声称独立移动测试泛化。不同数据不能直接与旧A3来源参考按总回报作公平改进结论；本轮采用同18片初始/最终完整配对比较。
+
 ## 版本、命令与产物
 
 服务器Python `/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python`；运行前重新核验资源和其他作业。源码与小清单先审核/推送Q1并独立核对，再部署/验证身份。获取入口：
@@ -67,4 +71,25 @@ $PY script/supermimic_q1_phuma/scan_corpus.py \
 
 ## 保存与下一步
 
-停止阶段 `307826c8`、获取入口 `3f5fbb2` 和扫描源码 `400c230fa383e0c9a0c993cb61ac63dc917207e4` 已推送并独立核验Q1一致。下一发布扫描结果与Q1重定向入口后部署；尚无PHUMA训练作业、无新效果结论。所有大型工件LOCAL_ONLY；旧R03/R04V2与D05B不作为本轮输入或通过证明。
+首轮登记计划为 `data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024`；只使用P03独立检查合格的train片段，全部合格development/test仅评测，原A3来源动作与旧Q1权重均不参与初始化。训练源保持可微世界模型+actor BPTT/critic，H32/B128、16环境、WM batch64/每组10更新，seed2026102406。匹配评测除原完整率/回报/关节门外另报根位置RMSE、参考/策略最大水平位移和腿/腰/臂误差，按三种真实划分分别汇总；跟随门为完整无早停、关节RMSE不超0.15rad、根位置RMSE不超0.10m。该门是仿真研究门，不代表真机验收。
+
+登记和启动分开执行，以下命令须先有合格train/development/test及已核验的发布代码；本段只是复现入口，当前是否已启动以执行结果/状态文件为准：
+
+```bash
+$PY script/supermimic_q1_phuma/pipeline.py register \
+  --experiment data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024 \
+  --root /opt/data/private/YuanQi_Q1 \
+  --motions data/supermimic_for_q1/PHUMA_P03_references_20261024 \
+  --reference-receipt data/supermimic_for_q1/PHUMA_P03_references_20261024/independent_check.json \
+  --scan-check data/supermimic_for_q1/PHUMA_P02_scan_20261024/independent_check.json \
+  --backend-receipt data/supermimic_for_q1/P07_backend_20261023/receipt.json \
+  --steps 3000 --seed 2026102406 --code-commit "$CODE_COMMIT"
+$PY -u script/supermimic_q1_phuma/pipeline.py run \
+  --experiment data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024
+```
+
+控制器依次训练→保存审计→初始全片评测/独立重算→最终全片评测/独立重算→三划分配对汇总；达到预算后不自动追加/恢复。代码/配置/输入绑定于spec，阶段前再次逐文件核验；stdout/stderr统一写 `logs/PHUMA_R01_B128_3000_20261024/`。spec、controller_status、run/status、权重与评测数组在实验data目录；三个网络/Adam及冷启动检查由独立保存审计确认，尚未执行的阶段不预写通过。
+
+批量验证期间源ZIP顺序哈希的只读页缓存使cgroup usage升至30,429,323,264字节；仅对PHUMA ZIP和两份全索引发出POSIX_FADV_DONTNEED后为26,922,516,480字节，实际释放3,506,806,784字节读缓存。数据字节保持，OOM仍14、GPU39摄氏度/空闲17,788MiB。该动作不是删除模型或网盘备份，全部资产仍LOCAL_ONLY。
+
+停止、固定源获取、P02分组与P03数值/批量转换代码和记录均已保存，最近已独立核验发布 `9ec6e0264fc74ee10c5d42f8508c2d6c42dfb3ac`。下一发布完整批量结果/最后训练流水线，部署并验证后登记启动。新增两项汇总控制针对“关节0误差但根不移动”“早停前缀0误差”误报成功，尚待服务器执行。当前无PHUMA训练作业、无新策略效果结论。所有大型工件LOCAL_ONLY；旧R03/R04V2与D05B不作为本轮输入或通过证明。

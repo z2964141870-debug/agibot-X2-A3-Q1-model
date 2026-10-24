@@ -48,7 +48,11 @@ def register(args):
     files.update(CORE.glob("*.py"))
     files.update([manifest_path, args.reference_receipt, args.scan_check, args.backend_receipt])
     files.update(Path(row["output"]["path"]) for row in manifest["motions"] if row["clip"] in sum(admitted.values(), []))
+    log_directory = args.root.resolve() / "logs" / args.experiment.name
+    if log_directory.exists():
+        raise FileExistsError(log_directory)
     spec = {"status": "REGISTERED_NOT_STARTED", "root": str(args.root.resolve()),
+            "log_directory": str(log_directory),
             "motions": str(args.motions.resolve()), "reference_receipt": str(args.reference_receipt.resolve()),
             "scan_check": str(args.scan_check.resolve()), "backend_receipt": str(args.backend_receipt.resolve()),
             "code_commit": args.code_commit, "steps": args.steps, "seed": args.seed,
@@ -57,6 +61,7 @@ def register(args):
             "evaluation_clips": sum(admitted.values(), []), "auto_restart": False,
             "initialization": "RANDOM_NO_PARENT_CHECKPOINT", "storage_status": "LOCAL_ONLY"}
     args.experiment.mkdir(parents=True)
+    log_directory.mkdir(parents=True)
     save(args.experiment / "spec.json", spec)
     print(json.dumps({"status": spec["status"], "spec": identity(args.experiment / "spec.json"),
                       "split_counts": {k: len(v) for k, v in admitted.items()}}), flush=True)
@@ -97,6 +102,7 @@ def run(experiment):
                      "--clips", *spec["evaluation_clips"]]))
         tasks.append(("audit_" + label, [str(CORE / "audit_evaluation.py"), "--root", spec["root"],
                      "--evaluation", str(destination), "--output", str(experiment / ("evaluation_audit_" + label + ".json"))]))
+    tasks.append(("compare", [str(HERE / "compare.py"), "--experiment", str(experiment)]))
     events, status, error = [], "FAILED", None
     active_phase = None
     try:
@@ -106,7 +112,7 @@ def run(experiment):
                 break
             verify_bindings(spec)
             active_phase = phase
-            log = experiment / (phase + ".log")
+            log = Path(spec["log_directory"]) / (phase + ".log")
             started = datetime.datetime.now(datetime.timezone.utc).isoformat()
             with log.open("x") as stream:
                 child = subprocess.Popen([sys.executable, *arguments], cwd=spec["root"], stdout=stream, stderr=subprocess.STDOUT)

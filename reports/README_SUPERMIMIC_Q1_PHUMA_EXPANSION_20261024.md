@@ -162,3 +162,5 @@ completion为2,228字节/SHA`8c37909f6143eab03a44eb0e2b7395dad6bec29edd9258406f4
 B011固定offset1085/count256，原句柄76516原生退出0，用时409.743秒，转换异常0/OOM14。18:15:26核完整completion，接纳train50/179.90秒，其中移动9/34.28秒、其他41。retarget manifest为831,909字节/SHA`99b295dff9d5c77fabc301cf16d94c6f7655317fbbbf110e91451f9fe996e967`，reference_check为628,204字节/SHA`9f9f423453722ff6e740b4ce15a371117fe21f6a86741ff4b0d731e2c652736f`。批次算术累计1341候选/train311/1121.28秒（移动34/119.90秒），尚余520训练候选，下一新offset1341/B012/count256。资源内存26,152,128,512字节、OOM14。
 
 同次从既有selection核得可选命名来源组train移动7664、上肢390、其他7082、下蹲8；P04配额不是全库容量。新增来源/更多候选仍要独立登记、去重和检查，不因原料数量充足而把它们加到合格时长。
+
+B012固定offset1341/count256，原句柄8737退出0，用时406.659秒，转换异常0/OOM14。18:25:01核完整completion：train18/64.94秒，其中移动17/60.98秒、其他1。retarget manifest为836,315字节/SHA`590e6db55eec595c6030fc5a2278bc1b6f9cfb473f80540027fb5bfba18b0a6a`；reference_check为632,547字节/SHA`4e1394099b3f33a64c8ee41d9a4018ccbf102278bd5d506aab73d697c0887851`。已完成批次算术累计1597候选/train329/1186.22秒（移动51/180.88秒）；余264训练候选，下一新offset1597/B013/count256，再B014/offset1853/count8。资源内存26,314,252,288字节/OOM14，0新训练。

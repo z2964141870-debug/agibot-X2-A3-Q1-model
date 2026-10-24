@@ -3,7 +3,7 @@
 import copy
 import unittest
 
-from assemble_library import combine
+from assemble_library import combine, compose_selections
 
 
 class AssemblyTests(unittest.TestCase):
@@ -59,6 +59,24 @@ class AssemblyTests(unittest.TestCase):
         selection["selected"][2]["sha256"] = "0"
         with self.assertRaisesRegex(ValueError, "Repeated source group"):
             combine(selection, bundles)
+
+    def test_additional_train_selection_preserves_heldout_rows(self):
+        selection, _ = self.fixture()
+        selection.update({"archive": {}, "all_records": {}, "official_splits": {}, "seed": 1})
+        extra = {**selection, "selected": [{"source_group": "new", "sha256": "new", "split": "train"}]}
+        combined = compose_selections([selection, extra])
+        self.assertEqual([row for row in combined["selected"] if row["split"] != "train"],
+                         [row for row in selection["selected"] if row["split"] != "train"])
+
+    def test_parts_cannot_mix_corpora_or_reuse_prior_bytes(self):
+        selection, _ = self.fixture()
+        selection.update({"archive": {}, "all_records": {}, "official_splits": {}, "seed": 1})
+        extra = copy.deepcopy(selection)
+        extra["archive"] = {"changed": True}
+        with self.assertRaisesRegex(ValueError, "different corpora"):
+            compose_selections([selection, extra])
+        with self.assertRaisesRegex(ValueError, "reuse a source group"):
+            compose_selections([selection, selection])
 
 
 if __name__ == "__main__":

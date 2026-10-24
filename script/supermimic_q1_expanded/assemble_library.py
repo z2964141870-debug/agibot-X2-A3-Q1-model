@@ -74,6 +74,20 @@ def combine(selection, bundles):
     return manifest, receipt, inherited
 
 
+def compose_selections(selections):
+    first = selections[0]
+    for selection in selections[1:]:
+        if any(selection[key] != first[key] for key in ("archive", "all_records", "official_splits", "seed")):
+            raise ValueError("Composed selections use different corpora or split protocols")
+    combined = dict(first)
+    combined["selected"] = [row for selection in selections for row in selection["selected"]]
+    groups = [row["source_group"] for row in combined["selected"]]
+    hashes = [row["sha256"] for row in combined["selected"]]
+    if len(set(groups)) != len(groups) or len(set(hashes)) != len(hashes):
+        raise ValueError("Selections reuse a source group or exact source bytes")
+    return combined
+
+
 def assemble(args):
     import audit_scan
     from prepare_expansion_batch import uncached_identity
@@ -87,20 +101,54 @@ def assemble(args):
         raise RuntimeError("Resource/OOM state changed before library assembly")
     started = time.monotonic()
     output.mkdir(parents=True)
-    selection_path = args.selection.resolve()
     progress_path = output / "batch_reconciliation.json"
-    summarize(selection_path, [p.resolve() for p in args.batches], progress_path, args.expected_oom_kill)
-    progress = json.loads(progress_path.read_text())
-    selection = json.loads(selection_path.read_text())
+    selection_paths = [args.selection.resolve(), *[p.resolve() for p in args.additional_selection]]
+    selections = [json.loads(path.read_text()) for path in selection_paths]
+    selection = compose_selections(selections)
+    grouped = {str(path): [] for path in selection_paths}
+    for batch in args.batches:
+        record = json.loads((batch / "selection.json").read_text())["batch"]["full_selection"]
+        if record["path"] not in grouped or file_id(record["path"]) != record:
+            raise ValueError("Batch belongs to an unknown or changed full selection")
+        grouped[record["path"]].append(batch.resolve())
+    parts = []
+    for index, path in enumerate(selection_paths):
+        destination = output / f"batch_reconciliation_part{index}.json"
+        summarize(path, grouped[str(path)], destination, args.expected_oom_kill)
+        parts.append(json.loads(destination.read_text()))
+    progress = {"candidate_count": sum(part["candidate_count"] for part in parts),
+                "batches": [row for part in parts for row in part["batches"]],
+                "qualified_references": [row for part in parts for row in part["qualified_references"]],
+                "qualified_duration_s": {split: sum(part["qualified_duration_s"][split] for part in parts)
+                                         for split in ("train", "development", "test")},
+                "qualified_locomotion_duration_s": {split: sum(part["qualified_locomotion_duration_s"][split] for part in parts)
+                                         for split in ("train", "development", "test")},
+                "parts": [file_id(output / f"batch_reconciliation_part{index}.json") for index in range(len(parts))],
+                "source": file_id(__file__), "new_ik_conversions": 0, "new_physics_steps": 0,
+                "new_optimizer_updates": 0, "limits": "Composed checked parts; original per-part saved-time reconciliations retained."}
+    write_new(progress_path, progress)
+    selection_path = output / "composed_selection.json"
+    selection.update({"status": "PHUMA_CHECKED_SELECTION_PARTS_COMPOSED",
+                      "selected_counts": dict(collections.Counter(row["split"] + "/" + row["bucket"] for row in selection["selected"])),
+                      "expansion": {"base_selection": selections[0]["expansion"]["base_selection"],
+                                    "composed_selections": [file_id(path) for path in selection_paths],
+                                    "source_selection_proofs": [item["expansion"]["proof"] for item in selections]},
+                      "sources": [file_id(__file__)]})
+    write_new(selection_path, selection)
     bundles, receipts = [], []
-    for entry in progress["batches"]:
-        done = json.loads(Path(entry["completion"]["path"]).read_text())
-        for key in ("selection", "retarget_manifest", "reference_check"):
-            if file_id(done[key]["path"]) != done[key]:
-                raise ValueError("Batch input changed after reconciliation")
-        bundles.append(tuple(json.loads(Path(done[key]["path"]).read_text())
-                             for key in ("selection", "retarget_manifest", "reference_check")))
-        receipts.append({key: done[key] for key in ("selection", "scan_check", "retarget_manifest", "reference_check")})
+    offset = 0
+    for part, original_selection in zip(parts, selections):
+        for entry in part["batches"]:
+            done = json.loads(Path(entry["completion"]["path"]).read_text())
+            for key in ("selection", "retarget_manifest", "reference_check"):
+                if file_id(done[key]["path"]) != done[key]:
+                    raise ValueError("Batch input changed after reconciliation")
+            batch, manifest, checked = tuple(json.loads(Path(done[key]["path"]).read_text())
+                                            for key in ("selection", "retarget_manifest", "reference_check"))
+            batch["batch"] = {**batch["batch"], "offset": batch["batch"]["offset"] + offset}
+            bundles.append((batch, manifest, checked))
+            receipts.append({key: done[key] for key in ("selection", "scan_check", "retarget_manifest", "reference_check")})
+        offset += len(original_selection["selected"])
     manifest, checked, inherited = combine(selection, bundles)
     archive = Path(selection["archive"]["path"]).resolve()
     original_file_id = audit_scan.file_id
@@ -155,6 +203,7 @@ def assemble(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__, allow_abbrev=False)
     parser.add_argument("--selection", type=Path, required=True)
+    parser.add_argument("--additional-selection", type=Path, nargs="*", default=[])
     parser.add_argument("--batches", type=Path, nargs="+", required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--expected-oom-kill", type=int, required=True)

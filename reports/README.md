@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 05:55最新：[R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)1825新增轮/116800转移、三实际进程身份保持，越过原1810数值失败位置但效果仍待；保存1500审计B十三门全过/516冻结保持，A元数据断言失败保留。[P11](README_SUPERMIMIC_Q1_WALKING_RETARGET_20261025.md)188项保存数组独立重算误差0，限速单独不足以解决步行支撑；[P10/B](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)0/15新walking准入，不以test调参。共享盘余785GB/本轮0.822GB，100GiB停止线保持。当前恢复入口已精简，旧全文移[历史归档](README_CURRENT_STATE_ARCHIVE_20261025.md)。
+
 2026-10-25 05:40：[P11真实十二组对照完成](README_SUPERMIMIC_Q1_WALKING_RETARGET_20261025.md)，2rad/s确实截断部分步态，但4/8仍支撑不足、两片约9mm自穿透；不采用提高上限即准入，下一train接触一致性。服务器3控制0跳过、guard退出0/worker回收/0新参考。R02D1400新增轮继续，中间保存独立审计入口已准备、结果待。
 
 2026-10-25：[P11训练walking限速诊断准备](README_SUPERMIMIC_Q1_WALKING_RETARGET_20261025.md)以固定四个train目录比较2/4/8rad/s，只改内存中IK限速，原root/目标/时轴/位置限位保持；排旧dev/test及P10预留目录，不导出准入、不改R02D。Q1 URDF标32/36仅元数据，真实控制与诊断结果待。

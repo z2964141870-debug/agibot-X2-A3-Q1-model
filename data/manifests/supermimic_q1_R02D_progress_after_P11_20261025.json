@@ -1,0 +1,170 @@
+{
+  "status": "BOUNDED_R02D_LIVE_PROGRESS_AND_IDENTITY_CONFIRMED",
+  "captured_utc": "2026-10-24T21:55:27.879114+00:00",
+  "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+  "processes": [
+    {
+      "pid": 839210,
+      "state": "S",
+      "start_ticks": 3616742247,
+      "pgrp": 839210,
+      "script": "runtime_guard.py"
+    },
+    {
+      "pid": 839211,
+      "state": "S",
+      "start_ticks": 3616742257,
+      "pgrp": 839211,
+      "script": "pipeline_bounded.py"
+    },
+    {
+      "pid": 839214,
+      "state": "R",
+      "start_ticks": 3616742577,
+      "pgrp": 839211,
+      "script": "train_bounded.py"
+    }
+  ],
+  "training": {
+    "status": "RUNNING",
+    "step": 1825,
+    "env_steps": 116800,
+    "total_collection_rounds": 6825,
+    "wm_updates": 679,
+    "policy_updates": 629,
+    "seconds": 3476.7791893184185,
+    "pid": 839214,
+    "reward_mean": 0.07784110307693481,
+    "termination_fraction": 0.0,
+    "joint_rmse_rad": 0.2272353172302246,
+    "health": {
+      "utc": "2026-10-24T21:55:06.679182+00:00",
+      "gpu_temperature_c": 40,
+      "gpu_free_mib": 22909,
+      "cgroup_memory_bytes": 13723136000,
+      "cgroup_limit_bytes": 34359738368,
+      "oom_kill": 14,
+      "disk_free_bytes": 786910978048
+    },
+    "imag_objective": 7.82856559753418,
+    "imag_return_undisc": 2.512366533279419,
+    "imag_reward_mean": 0.07839109003543854,
+    "imag_survival_H": 0.9751695394515991,
+    "imag_dhat_mean": 0.013937430456280708,
+    "policy_grad_norm": 0.08102093636989594,
+    "action_abs_mean": 1.1775962114334106,
+    "imag_r/motion_global_root_pos": 0.009166642092168331,
+    "imag_r/motion_global_root_ori": 0.007678823079913855,
+    "imag_r/motion_body_pos": 0.018885770812630653,
+    "imag_r/motion_body_ori": 0.0071821054443717,
+    "imag_r/motion_body_lin_vel": 0.019071806222200394,
+    "imag_r/motion_body_ang_vel": 0.017492249608039856,
+    "imag_r/action_rate_l2": -0.0009161689667962492,
+    "imag_r/joint_limit": -0.00017013360047712922,
+    "critic_loss": 0.01310746930539608,
+    "critic_value_mean": 7.81383752822876,
+    "critic_target_mean": 7.825891494750977,
+    "wm/state_loss": 0.20477666854858398,
+    "wm/term_bce": 0.0001428277464583516,
+    "wm/nse_1step": 0.003093220107257366,
+    "wm/nse_kstep": 0.005157334730029106,
+    "wm/term_acc": 1.0,
+    "wm/loss": 0.20491950511932372,
+    "wm/grad_norm": 3.546070861816406
+  },
+  "controller": {
+    "status": "RUNNING",
+    "phase": "train",
+    "process": {
+      "pid": 839211,
+      "pgid": 839211,
+      "start_ticks": 3616742257,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    },
+    "child_pid": 839214,
+    "started_utc": "2026-10-24T20:57:00.200670+00:00",
+    "events": [],
+    "log": "/opt/data/private/YuanQi_Q1/logs/PHUMA_R02D_bounded_partial5000_extend7000_20261025/train.log"
+  },
+  "storage_guard": {
+    "status": "RUNNING",
+    "command": [
+      "/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python",
+      "-u",
+      "/opt/data/private/YuanQi_Q1/script/supermimic_q1_stability/pipeline_bounded.py",
+      "run",
+      "--experiment",
+      "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025"
+    ],
+    "cwd": "/opt/data/private/YuanQi_Q1",
+    "started_utc": "2026-10-24T20:56:56.990847+00:00",
+    "controller_pid": 839210,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "experiment": {
+        "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025",
+        "unique_allocated_bytes": 821764096,
+        "unique_logical_bytes": 821716152,
+        "unique_inodes": 17,
+        "symlinks_not_followed": 0
+      },
+      "source": {
+        "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_base_library_20261024",
+        "unique_allocated_bytes": 14360576,
+        "unique_logical_bytes": 12940462,
+        "unique_inodes": 362,
+        "symlinks_not_followed": 353
+      },
+      "free_bytes": {
+        "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025": 785359077376,
+        "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_base_library_20261024": 785359077376
+      }
+    },
+    "error": null,
+    "worker_pid": 839211,
+    "worker_group": 839211
+  },
+  "latest_immutable_save_audit": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/intermediate1500_audit_B.json",
+    "bytes": 4889,
+    "sha256": "f443e4f78499fead84a2e24dda7442179f056bdfb549365413583124febb364a"
+  },
+  "current_cgroup_bytes": 13735399424,
+  "current_oom_kill": 14,
+  "current_disk_free_bytes": 784996777984,
+  "gpu": "NVIDIA GeForce RTX 3090, 40, 1228 MiB, 22909 MiB, 20 %",
+  "allocations": [
+    {
+      "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025",
+      "unique_allocated_bytes": 821764096,
+      "unique_logical_bytes": 821716152,
+      "unique_inodes": 17,
+      "symlinks_not_followed": 0
+    },
+    {
+      "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P10_walking_holdout_20261025",
+      "unique_allocated_bytes": 9207808,
+      "unique_logical_bytes": 9166915,
+      "unique_inodes": 37,
+      "symlinks_not_followed": 0
+    },
+    {
+      "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P10B_walking_check_20261025",
+      "unique_allocated_bytes": 61440,
+      "unique_logical_bytes": 53543,
+      "unique_inodes": 6,
+      "symlinks_not_followed": 0
+    },
+    {
+      "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P11_walking_velocity_probe_20261025",
+      "unique_allocated_bytes": 598016,
+      "unique_logical_bytes": 581577,
+      "unique_inodes": 10,
+      "symlinks_not_followed": 0
+    }
+  ],
+  "new_physics_steps_in_check": 0,
+  "new_optimizer_updates_in_check": 0,
+  "tracking_effectiveness_proven": false,
+  "storage_status": "LOCAL_ONLY"
+}

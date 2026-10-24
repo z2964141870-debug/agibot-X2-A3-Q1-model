@@ -75,3 +75,11 @@ EXP="$ROOT/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_2026
 A原件保留`intermediate1500_audit.json`，保存1500为205325095字节/SHA`2b006ce1ac0fb5cdebc4d2b69aba87cf3624715e5027b598b44dc0d5065282e4`。三网络/三Adam/两采样器有限，Adam计数19490→24980、1899→2398、37980→47960；516冻结不变，manifest与initial/admission完全相同、50Hz采样对应完整日志前缀，无CUDA/物理/optimizer。不能把A称全部通过。
 
 修正审计按源码严格要求注册声明加上指定BoundedPolicy类和三个各一项的真实hook声明，不删除运行字段或放宽其内容。使用新`intermediate1500_audit_B.json`补检同一immutable保存，原A失败保留；执行结果待。
+
+## 保存1500审计B及05:55活跃核验
+
+修正发布`132af69bd50fd64a478e2aee20f4c381c34874d5`已独立核Q1远端、部署SHA一致。05:48:44新B审计原生退出0，十三门全过；同一保存1500、原spec/initial/admission及全部516冻结未变。实际BoundedPolicy/三个各一项的指定hook声明完整匹配，三网络已更新且三Adam计数正确，保存张量与采样器有限、日志前缀完整，无CUDA/物理/optimizer。[原样B收据](../data/manifests/supermimic_q1_R02D_intermediate1500_audit_B_20261025.json)4889字节/SHA`f443e4f78499fead84a2e24dda7442179f056bdfb549365413583124febb364a`；原A失败保留。
+
+05:55:27[真实进度与身份](../data/manifests/supermimic_q1_R02D_progress_after_P11_20261025.json)重新核原boot/ticks/cmdline/进程组及三实际非Z进程，新增1825/7000轮、116800转移、累计6825；WM679组/actor629次、用时3476.78秒。actor梯度0.08102、critic loss0.013107、WM loss0.204920均有限；已越过原R02C1810失败位置，但不能推出固定预算必然完成、唯一因果或移动改善。
+
+当次GPU40摄氏度/1228MiB、共享内存13735399424字节/OOM14、共享盘余784996777984字节。R02D分配821764096字节、P10/B/P11共9867264字节；共享盘余下降不全部归本任务，100GiB/12GiB/30GiB等原停止线不变。没有新训练/积分/optimizer由此次检查引入，唯一R02D继续原预算和七阶段配对。P10/B补充walking零准入及P11限速不足结论均已记录，不能由训练数值替代实际步行验收。

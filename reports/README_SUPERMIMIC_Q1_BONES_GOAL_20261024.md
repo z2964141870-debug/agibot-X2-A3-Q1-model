@@ -46,6 +46,6 @@ Mac只放代码、报告及小型清单，Windows到服务器直接迁模型/原
 
 新目标配置在`script/supermimic_q1_sources/bones_goal_20261024.json`。metadata目标`data/references/bones_seed/metadata/`，原包目标`data/references/bones_seed/archives/`，新实验与索引在`data/supermimic_for_q1/BONES_*_20261024/`，stdout/stderr在`logs/BONES_*_20261024.log`。具体运行命令、代码SHA与真实结果随各阶段立即补记，不把拟定命令写成已执行。
 
-原预计下载完成约北京时间20:30；20:31复查未见完整包，用户随后确认仍在D:\tmp下载，按实际稳定文件验收。P01审计/候选划分及P00存储/worker保护已完成，下一P02原包接收和真实格式/时间/模型核验。当前没有新的BONES训练进程。
+原预计下载完成约北京时间20:30；20:31复查未见完整包，用户随后确认仍在D:\tmp下载。21:35–36最大partial已6894708545字节，较21:16增长4174165775字节，文件写入推进，仍无完整包，不预估完成时间。[M01](README_SUPERMIMIC_Q1_BONES_G1_MODEL_20261024.md)已实核源G1候选与宇树官方骨架/足碰撞及64随机FK一致，仍须实际源模型/CSV核验。P01/P00/P02准备记录继续，当前没有新的BONES参考或训练进程。
 
 README、当前状态和索引同次更新，Q1审计提交推送并独立核远端；大文件不进Git。本报告保存实际状态，不将目标定义记为目标达成。

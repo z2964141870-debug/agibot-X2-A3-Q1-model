@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-24：[BONES M01源G1模型核对](README_SUPERMIMIC_Q1_BONES_G1_MODEL_20261024.md)。现有候选与宇树官方固定版本骨架/关节轴/限位/足碰撞数组差0，64随机姿态FK差0；不证明BONES生成用FBX身份，实际动作待核。Windows D:\tmp最大partial已6.895GB，下载文件写入推进，仍无完整包。下一BONES专用重定向/独立质检，0新真实参考或训练。
+
 2026-10-24：[BONES P02-F02列名勘误](README_SUPERMIMIC_Q1_BONES_FORMAT_V2_20261024.md)。V1误用Hips及短关节名，真实官方G1协议为root_*与完整joint名加_dof；此前测试共用错误常量。现V2以独立表头及全29关节回归，服务器11控制/SHA通过，旧收据保留。此前无真实BONES输入/Q1参考/训练；实际原包仍待接收。
 
 2026-10-24：[BONES P02-A01原包接入准备](README_SUPERMIMIC_Q1_BONES_ARCHIVE_20261024.md)。完整SHA/gzip CRC、成员索引和仅冻结名单提取两端11控制通过；真实原包尚未到位、0新Q1参考/训练。21:16 Windows最大partial与20:51同大小，未验证浏览器下载状态；21:22服务器无原包/OOM14/GPU38/盘余1.965TB。现有G1模型仅载入/FK候选，尚非源模型身份通过。下一源模型与独立重定向准备。

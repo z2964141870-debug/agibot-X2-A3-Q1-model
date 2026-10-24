@@ -1,0 +1,23 @@
+import ast,pathlib
+import numpy as np
+path=pathlib.Path("script/supermimic_q1_analysis/plot_phuma_evaluation.py")
+module=ast.parse(path.read_text())
+function=next(node for node in module.body if isinstance(node,ast.FunctionDef) and node.name=="trajectory_errors")
+namespace={"np":np}
+exec(compile(ast.Module(body=[function],type_ignores=[]),str(path),"exec"),namespace)
+reference=np.zeros((3,29))
+state=np.zeros((2,57))
+state[0,0]=.3
+state[1,1]=.4
+state[0,7]=.22
+state[1,8]=.44
+root,joint=namespace["trajectory_errors"](state,reference)
+assert np.allclose(root,[.3,.4],atol=1e-12,rtol=0)
+assert abs(np.linalg.norm(root)/np.sqrt(2)-np.sqrt(.125))<1e-12
+assert abs(np.linalg.norm(joint)/np.sqrt(2)-np.sqrt(.0055))<1e-12
+invalid=[(np.zeros((0,57)),reference),(np.zeros((4,57)),reference),(np.zeros((2,56)),reference),(state,np.zeros((3,28))),(state+np.nan,reference)]
+for bad_state,bad_reference in invalid:
+ try: namespace["trajectory_errors"](bad_state,bad_reference)
+ except ValueError: pass
+ else: raise AssertionError("Malformed or nonfinite trace accepted")
+print("PASS: hand-calculated root/joint RMS, executed-prefix denominator and five invalid input cases. No plotting imports or rendering.")

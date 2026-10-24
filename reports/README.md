@@ -126,11 +126,12 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-25 | R02D动作域匹配试验 | 新独立入口已实现；保持5000父/340片/相同seed/H32/7000预算，服务器预检/登记/启动待，见[阶段记录](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md) |
 | 2026-10-25 | S02动作域一致性与数值失败 | 5控制、1500保存15门、真实replay H32/BPTT7门通过，未精确重现崩溃/证明移动改善，见[阶段记录](README_SUPERMIMIC_Q1_ACTION_DOMAIN_20261025.md) |
 | 2026-10-25 | P09来源排除视图训练登记 | 两端四项控制及真实服务器预检通过，612训练/dev6/test7；无第二训练，见[阶段记录](README_SUPERMIMIC_Q1_SOURCE_VIEW_REGISTRATION_20261025.md) |
 | 2026-10-25 | PHUMA P08/P08B扩展库与来源排除 | P08完整组库，P08B-V2排除4条冲突后612训练片/36.52分钟；准入/保存时轴及独立HumanML复审通过，全源隔离仍false，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_LIBRARY_20261025.md) |
 | 2026-10-25 | PHUMA D04参考接触与逆动力学 | 8段train/1441帧/2882次inverse及736独立重算完成，浮脚/近地滑动缺口确认，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_REFERENCE_DYNAMICS_20261025.md) |
-| 2026-10-25 | R02C独立续训 | 5000父保存继承12门/496冻结通过，固定7000新轮进行中，最终跟随效果待，见[阶段记录](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md) |
+| 2026-10-25 | R02C独立续训 | 新增1810轮数值FAILED，未执行最终配对；最后1500保存已独立15门通过，原终态保留，见[阶段记录](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md) |
 | 2026-10-25 | R02六段开发对照 | 真实初始/5000动力学及两次轨迹审计完成，完整5→6/6、跟随0/6，见[阶段记录](README_SUPERMIMIC_Q1_R02_DEVELOPMENT_20261025.md) |
 | 2026-10-25 | G1失败残留资源恢复 | 精确回收六个旧失败进程，释放21.20GB，0文件删除/无新OOM，见[阶段记录](README_SUPERMIMIC_Q1_RESOURCE_RECOVERY_20261025.md) |
 | 2026-10-25 | P07跨源原动作别名 | 正式353参考审计完成，HumanML95段内部跨split0，全源隔离仍未证明，见[阶段记录](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md) |

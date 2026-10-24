@@ -1,0 +1,31 @@
+{
+  "goal": "Test the real/imagined clip20 correction using the matched PHUMA R02C budget",
+  "experiment": "PHUMA_R02D_bounded_partial5000_extend7000_20261025",
+  "parent": "PHUMA_R02_expanded64_H32_12000_20261024/run/step_005000.pt",
+  "parent_terminal": "FAILED_UNCHANGED",
+  "training": {
+    "parent_step": 5000,
+    "additional_steps": 7000,
+    "additional_transitions": 448000,
+    "environments": 64,
+    "model_slots": 4,
+    "horizon": 32,
+    "seed": 20261025,
+    "fresh_replay": true,
+    "retain_networks_optimizers_and_sampler": true,
+    "automatic_restart": false
+  },
+  "storage": {
+    "minimum_free_bytes": 107374182400,
+    "maximum_experiment_unique_allocated_bytes": 12884901888,
+    "maximum_new_source_unique_allocated_bytes": 268435456000
+  },
+  "evaluation": {
+    "matched_initial_and_final": true,
+    "all_original_353_clips": true,
+    "test_used_for_direction_selection": false,
+    "joint_rmse_cap_rad": 0.15,
+    "root_position_rmse_cap_m": 0.1,
+    "complete_without_early_failure": true
+  }
+}

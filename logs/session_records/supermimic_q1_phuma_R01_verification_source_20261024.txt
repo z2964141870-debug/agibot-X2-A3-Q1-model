@@ -1,0 +1,90 @@
+import datetime, hashlib, json, math, subprocess, time
+from pathlib import Path
+root = Path("/opt/data/private/YuanQi_Q1")
+experiment = root / "data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024"
+def read_json(path):
+    return json.loads(path.read_text())
+def identity(path):
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1048576), b""):
+            digest.update(chunk)
+    return {"path": str(path), "bytes": path.stat().st_size, "sha256": digest.hexdigest()}
+spec = read_json(experiment / "spec.json")
+launch = read_json(experiment / "launch_receipt.json")
+binding = read_json(experiment / "phuma_binding.json")
+admission = read_json(experiment / "run/admission.json")
+controller = read_json(experiment / "controller_status.json")
+status = read_json(experiment / "run/status.json")
+frozen_errors = []
+for record in spec["frozen_files"]:
+    try:
+        if identity(Path(record["path"])) != record:
+            frozen_errors.append(record["path"])
+    except Exception as exc:
+        frozen_errors.append(record["path"] + ": " + str(exc))
+boot = Path("/proc/sys/kernel/random/boot_id").read_text().strip()
+processes = []
+for pid in (controller["process"]["pid"], controller["child_pid"]):
+    proc = Path("/proc") / str(pid)
+    fields = (proc / "stat").read_text().rsplit(")", 1)[1].split()
+    command = (proc / "cmdline").read_bytes().decode().rstrip("\x00").split("\x00")
+    processes.append({"pid": pid, "ppid": int(fields[1]), "pgid": int(fields[2]),
+                      "state": fields[0], "start_ticks": int(fields[19]), "argv": command})
+cg = Path("/sys/fs/cgroup/memory")
+oom = dict(line.split() for line in (cg / "memory.oom_control").read_text().splitlines())
+gpu = subprocess.check_output(["nvidia-smi", "--query-gpu=index,name,temperature.gpu,memory.used,memory.free,utilization.gpu", "--format=csv,noheader"], text=True).strip()
+train_path = root / "logs/PHUMA_R01_B128_3000_20261024/train.log"
+raw_log = train_path.read_bytes()
+metrics = []
+for line in raw_log.decode().splitlines():
+    try:
+        value = json.loads(line)
+        if value.get("status") == "RUNNING" and "step" in value:
+            metrics.append(value)
+    except (json.JSONDecodeError, AttributeError):
+        pass
+all_clips = sum(spec["split_clips"].values(), [])
+def finite(value):
+    if isinstance(value, float):
+        return math.isfinite(value)
+    if isinstance(value, dict):
+        return all(finite(v) for v in value.values())
+    if isinstance(value, list):
+        return all(finite(v) for v in value)
+    return True
+checks = {
+    "spec_matches_launch_sha": identity(experiment / "spec.json")["sha256"] == launch["spec_sha256"],
+    "frozen_files_unchanged": not frozen_errors and len(spec["frozen_files"]) == 121,
+    "controller_identity_matches_launch": all(controller["process"][key] == launch[key] for key in ("pid", "pgid", "start_ticks", "boot_id")),
+    "controller_live_identity_matches": processes[0]["start_ticks"] == launch["start_ticks"] and processes[0]["pgid"] == launch["pgid"] and boot == launch["boot_id"] and processes[0]["state"] not in ("Z", "X"),
+    "worker_is_live_child": processes[1]["ppid"] == launch["pid"] and processes[1]["pgid"] == launch["pgid"] and processes[1]["state"] not in ("Z", "X") and status["pid"] == processes[1]["pid"],
+    "status_fresh_under_120_seconds": time.time() - (experiment / "run/status.json").stat().st_mtime < 120,
+    "random_initialization_no_parent": spec["initialization"] == binding["initialization"] == "RANDOM_NO_PARENT_CHECKPOINT" and binding["parent_checkpoint"] is None and admission["initialization"] == "RANDOM_FROM_SCRATCH_NO_A3_WEIGHTS",
+    "phuma_only_zero_a3_source": binding["a3_source_motions"] == 0 and binding["reference_protocol"] == "PHUMA_G1_30HZ_TO_Q1_50HZ_NATIVE_TIME_V2",
+    "training_only_train_split": sorted(admission["args"]["clips"]) == sorted(spec["split_clips"]["train"]) and binding["split_clips"] == spec["split_clips"] and len(all_clips) == len(set(all_clips)),
+    "published_training_code_identity": spec["code_commit"] == launch["code_commit"] == binding["code_commit"] == admission["args"]["code_commit"] == "ed4217384e7abfc8a9cea0b23b95592d4a3e19b0",
+    "finite_3000_budget_no_auto_restart": spec["steps"] == 3000 and spec["auto_restart"] is False,
+    "actual_world_model_and_actor_updates": status["env_steps"] > 0 and status["wm_updates"] > 0 and status["policy_updates"] > 0,
+    "online_metrics_finite": all(finite(row) for row in metrics) and finite(status),
+    "no_new_oom": int(oom["oom_kill"]) == status["health"]["oom_kill"] == admission["baseline_health"]["oom_kill"] == 14,
+    "below_30_gib_memory_guard": int((cg / "memory.usage_in_bytes").read_text()) < 30 * 1024 ** 3,
+    "controller_training_running": controller["status"] == status["status"] == "RUNNING" and controller["phase"] == "train"
+}
+files = [identity(experiment / name) for name in ("spec.json", "launch_receipt.json", "phuma_binding.json", "run/admission.json")]
+initial = experiment / "run/step_000000.pt"
+result = {"status": "PHUMA_R01_LAUNCH_AND_ACTIVE_LEARNING_VERIFIED" if all(checks.values()) else "PHUMA_R01_VERIFICATION_FAILED",
+          "captured_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+          "root": str(root), "experiment": str(experiment), "checks": checks,
+          "frozen_file_count": len(spec["frozen_files"]), "frozen_errors": frozen_errors,
+          "processes": processes, "boot_id": boot, "controller_snapshot": controller,
+          "worker_snapshot": status,
+          "health": {"gpu_csv": gpu, "cgroup_memory_bytes": int((cg / "memory.usage_in_bytes").read_text()),
+                     "cgroup_limit_bytes": int((cg / "memory.limit_in_bytes").read_text()), "oom_kill": int(oom["oom_kill"])},
+          "split_counts": {k: len(v) for k, v in spec["split_clips"].items()},
+          "initial_checkpoint_identity_only": identity(initial) if initial.exists() else None,
+          "files": files, "training_log_prefix": {"path": str(train_path), "bytes": len(raw_log), "sha256": hashlib.sha256(raw_log).hexdigest(), "metric_rows": len(metrics)},
+          "storage_status": "LOCAL_ONLY",
+          "not_yet_performed": ["final_checkpoint_tensor_and_optimizer_audit", "matched_complete_clip_evaluations", "final_tracking_success_decision"],
+          "train_log_snapshot_text": raw_log.decode()}
+print(json.dumps(result, allow_nan=False))

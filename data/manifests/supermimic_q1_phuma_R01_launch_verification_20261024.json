@@ -1,0 +1,195 @@
+{
+  "status": "PHUMA_R01_LAUNCH_AND_ACTIVE_LEARNING_VERIFIED",
+  "captured_utc": "2026-10-24T05:04:22.406276+00:00",
+  "root": "/opt/data/private/YuanQi_Q1",
+  "experiment": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024",
+  "checks": {
+    "spec_matches_launch_sha": true,
+    "frozen_files_unchanged": true,
+    "controller_identity_matches_launch": true,
+    "controller_live_identity_matches": true,
+    "worker_is_live_child": true,
+    "status_fresh_under_120_seconds": true,
+    "random_initialization_no_parent": true,
+    "phuma_only_zero_a3_source": true,
+    "training_only_train_split": true,
+    "published_training_code_identity": true,
+    "finite_3000_budget_no_auto_restart": true,
+    "actual_world_model_and_actor_updates": true,
+    "online_metrics_finite": true,
+    "no_new_oom": true,
+    "below_30_gib_memory_guard": true,
+    "controller_training_running": true
+  },
+  "frozen_file_count": 121,
+  "frozen_errors": [],
+  "processes": [
+    {
+      "pid": 799647,
+      "ppid": 1,
+      "pgid": 799647,
+      "state": "S",
+      "start_ticks": 3610979946,
+      "argv": [
+        "/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python",
+        "-u",
+        "/opt/data/private/YuanQi_Q1/script/supermimic_q1_phuma/pipeline.py",
+        "run",
+        "--experiment",
+        "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024"
+      ]
+    },
+    {
+      "pid": 799650,
+      "ppid": 799647,
+      "pgid": 799647,
+      "state": "S",
+      "start_ticks": 3610980180,
+      "argv": [
+        "/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python",
+        "/opt/data/private/YuanQi_Q1/script/supermimic_q1_phuma/run_training.py",
+        "--scan-check",
+        "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P02_scan_20261024/independent_check.json",
+        "--binding-output",
+        "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024/phuma_binding.json",
+        "--root",
+        "/opt/data/private/YuanQi_Q1",
+        "--motions",
+        "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P03_references_20261024",
+        "--output",
+        "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024/run",
+        "--backend-receipt",
+        "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/P07_backend_20261023/receipt.json",
+        "--reference-receipt",
+        "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P03_references_20261024/independent_check.json",
+        "--steps",
+        "3000",
+        "--num-envs",
+        "16",
+        "--threads",
+        "4",
+        "--batch",
+        "128",
+        "--wm-batch",
+        "64",
+        "--wm-batches",
+        "10",
+        "--checkpoint-every",
+        "500",
+        "--seed",
+        "2026102406",
+        "--code-commit",
+        "ed4217384e7abfc8a9cea0b23b95592d4a3e19b0"
+      ]
+    }
+  ],
+  "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+  "controller_snapshot": {
+    "status": "RUNNING",
+    "phase": "train",
+    "process": {
+      "pid": 799647,
+      "pgid": 799647,
+      "start_ticks": 3610979946,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    },
+    "child_pid": 799650,
+    "started_utc": "2026-10-24T04:56:36.225669+00:00",
+    "events": [],
+    "log": "/opt/data/private/YuanQi_Q1/logs/PHUMA_R01_B128_3000_20261024/train.log"
+  },
+  "worker_snapshot": {
+    "status": "RUNNING",
+    "step": 400,
+    "env_steps": 6400,
+    "wm_updates": 109,
+    "policy_updates": 59,
+    "seconds": 425.8223142325878,
+    "pid": 799650,
+    "reward_mean": 0.043787166476249695,
+    "termination_fraction": 0,
+    "joint_rmse_rad": 0.3293140232563019,
+    "health": {
+      "gpu_temperature_c": 39,
+      "cgroup_memory_bytes": 30646239232,
+      "oom_kill": 14
+    },
+    "imag_objective": 0.14558406174182892,
+    "imag_return_undisc": 1.6222003698349,
+    "imag_reward_mean": 0.05126701295375824,
+    "imag_survival_H": 0.9661752581596375,
+    "imag_dhat_mean": 0.0010828316444531083,
+    "policy_grad_norm": 1.045161247253418,
+    "action_abs_mean": 0.2093212902545929,
+    "imag_r/motion_global_root_pos": 0.008148825727403164,
+    "imag_r/motion_global_root_ori": 0.006339399144053459,
+    "imag_r/motion_body_pos": 0.016256747767329216,
+    "imag_r/motion_body_ori": 0.003822000464424491,
+    "imag_r/motion_body_lin_vel": 0.016077890992164612,
+    "imag_r/motion_body_ang_vel": 0.015599964186549187,
+    "imag_r/action_rate_l2": -0.00037230487214401364,
+    "imag_r/joint_limit": -0.014605512842535973,
+    "critic_loss": 0.5517942905426025,
+    "critic_value_mean": -0.7652302384376526,
+    "critic_target_mean": -0.8102243542671204,
+    "wm/state_loss": 0.7464102268218994,
+    "wm/term_bce": 0.0022202745079994203,
+    "wm/nse_1step": 0.00832294523715973,
+    "wm/nse_kstep": 0.022121042013168335,
+    "wm/term_acc": 0.9998046875,
+    "wm/loss": 0.7486305236816406,
+    "wm/grad_norm": 4.206716537475586
+  },
+  "health": {
+    "gpu_csv": "0, NVIDIA GeForce RTX 3090, 39, 7477 MiB, 16659 MiB, 19 %",
+    "cgroup_memory_bytes": 30656466944,
+    "cgroup_limit_bytes": 34359738368,
+    "oom_kill": 14
+  },
+  "split_counts": {
+    "train": 11,
+    "development": 4,
+    "test": 3
+  },
+  "initial_checkpoint_identity_only": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024/run/step_000000.pt",
+    "bytes": 68435755,
+    "sha256": "9e4d66cb26a1eab515745715f850bc93edb445bec53becba7dee978c6270abfc"
+  },
+  "files": [
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024/spec.json",
+      "bytes": 29763,
+      "sha256": "66bd6b397592decee46ff772450d2e3f182d2e358e99e64af82a761d99a9058c"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024/launch_receipt.json",
+      "bytes": 744,
+      "sha256": "763a5d5bbab209d39b3d8406440b02c2e04dc5d5281848e2317bc01343d0d5e0"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024/phuma_binding.json",
+      "bytes": 2189,
+      "sha256": "1380d533863fb9a7bf01bd0606e4e47123a20ce595530c9f7a7c4115f5ccc7de"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024/run/admission.json",
+      "bytes": 26125,
+      "sha256": "a520f5605bdd852fcea287f825c162b1919eb7f36f28306f23516938e874b873"
+    }
+  ],
+  "training_log_prefix": {
+    "path": "/opt/data/private/YuanQi_Q1/logs/PHUMA_R01_B128_3000_20261024/train.log",
+    "bytes": 13024,
+    "sha256": "7ec27ad3353161f8280275f92961e9d6ae00de6553a221f93df8c5434c748dc2",
+    "metric_rows": 16
+  },
+  "storage_status": "LOCAL_ONLY",
+  "not_yet_performed": [
+    "final_checkpoint_tensor_and_optimizer_audit",
+    "matched_complete_clip_evaluations",
+    "final_tracking_success_decision"
+  ],
+  "local_log_snapshot": "logs/session_records/supermimic_q1_phuma_R01_training_prefix_20261024.log",
+  "verification_source": "logs/session_records/supermimic_q1_phuma_R01_verification_source_20261024.txt"
+}

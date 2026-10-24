@@ -1,6 +1,6 @@
 # PHUMA驱动的SuperMimic for Q1
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-PHUMA-P01/P02/P03。状态：旧轮已停止；P03固定112候选全部转换/独立检查完成，18片合格（train11/development4/test3）。下一登记和启动随机初始化训练；新训练尚未启动。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-PHUMA-P01/P02/P03/R01。状态：旧轮已停止；P03固定112候选完成，18片合格（train11/development4/test3）；PHUMA R01于12:56:33启动。13:04:22实核400/3000轮、6400控制转移、109组WM/59次actor更新，训练进行中，完整配对评测尚未执行。
 
 ## 目标与范围
 
@@ -71,11 +71,13 @@ $PY script/supermimic_q1_phuma/scan_corpus.py \
 
 ## 保存与下一步
 
-首轮登记计划为 `data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024`；只使用P03独立检查合格的train片段，全部合格development/test仅评测，原A3来源动作与旧Q1权重均不参与初始化。训练源保持可微世界模型+actor BPTT/critic，H32/B128、16环境、WM batch64/每组10更新，seed2026102406。匹配评测除原完整率/回报/关节门外另报根位置RMSE、参考/策略最大水平位移和腿/腰/臂误差，按三种真实划分分别汇总；跟随门为完整无早停、关节RMSE不超0.15rad、根位置RMSE不超0.10m。该门是仿真研究门，不代表真机验收。
+首轮已登记并启动 `data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024`；只使用P03独立检查合格的train片段，全部合格development/test仅评测，原A3来源动作与旧Q1权重均不参与初始化。训练源保持可微世界模型+actor BPTT/critic，H32/B128、16环境、WM batch64/每组10更新，seed2026102406。匹配评测除原完整率/回报/关节门外另报根位置RMSE、参考/策略最大水平位移和腿/腰/臂误差，按三种真实划分分别汇总；跟随门为完整无早停、关节RMSE不超0.15rad、根位置RMSE不超0.10m。该门是仿真研究门，不代表真机验收。
 
-登记和启动分开执行，以下命令须先有合格train/development/test及已核验的发布代码；本段只是复现入口，当前是否已启动以执行结果/状态文件为准：
+登记和启动分开执行，以下是本轮实际使用的复现入口；既有实验已启动，不能再次登记或启动同一路径。须先有合格train/development/test及已核验的发布代码：
 
 ```bash
+PY=/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python
+CODE_COMMIT=ed4217384e7abfc8a9cea0b23b95592d4a3e19b0
 $PY script/supermimic_q1_phuma/pipeline.py register \
   --experiment data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024 \
   --root /opt/data/private/YuanQi_Q1 \
@@ -92,4 +94,19 @@ $PY -u script/supermimic_q1_phuma/pipeline.py run \
 
 批量验证期间源ZIP顺序哈希的只读页缓存使cgroup usage升至30,429,323,264字节；仅对PHUMA ZIP和两份全索引发出POSIX_FADV_DONTNEED后为26,922,516,480字节，实际释放3,506,806,784字节读缓存。数据字节保持，OOM仍14、GPU39摄氏度/空闲17,788MiB。该动作不是删除模型或网盘备份，全部资产仍LOCAL_ONLY。
 
-停止、源获取、分组/重定向代码及全部批量小结果已保存并发布，`3d6a9a2c0b44ee9832bd84df9995014525b9d21d` 推送/独立Q1远端核验通过。服务器新增两项汇总控制原生退出0：关节0误差但根不移动时根RMSE0.7071m且拒绝成功；早停前缀0误差仍按0.5完整率拒绝成功。合计17项控制全部通过。最后登记入口将Q1原始24网格/3模型与既有P01固定输入身份再比对并冻结，不把旧编译收据当作新训练效果。下一发布登记入口后启动；当前无PHUMA训练作业、无新策略效果结论。所有大型工件LOCAL_ONLY；旧R03/R04V2与D05B不作为本轮输入或通过证明。
+停止、源获取、分组/重定向代码及全部批量小结果已保存并发布，`3d6a9a2c0b44ee9832bd84df9995014525b9d21d` 推送/独立Q1远端核验通过。服务器新增两项汇总控制原生退出0：关节0误差但根不移动时根RMSE0.7071m且拒绝成功；早停前缀0误差仍按0.5完整率拒绝成功。合计17项控制全部通过。登记入口将Q1原始24网格/3模型与既有P01固定输入身份再比对并冻结，不把旧编译收据当作新训练效果。训练发布 `ed4217384e7abfc8a9cea0b23b95592d4a3e19b0` 已推送并独立核验Q1远端，实际启动与实时核查如下。所有大型工件LOCAL_ONLY；旧R03/R04V2与D05B不作为本轮输入或通过证明。
+
+## R01实际启动与运行核查
+
+12:56:33.895已派发独立后台controller，12:56:36进入train阶段。controller PID/PGID799647、start_ticks3610979946，worker PID799650、start_ticks3610980180，boot_id `d994e71f-bae0-46ba-a5f7-6c2163771c6c`；这些是核查时身份，恢复必须重读状态及/proc确认，不能只按旧PID操作。spec共121个冻结源码/配置/模型网格/参考输入，29,763字节/SHA `66bd6b397592decee46ff772450d2e3f182d2e358e99e64af82a761d99a9058c`。
+
+13:04:22独立只读核查16项全部通过：spec与launch SHA相同、121冻结文件未变、controller启动身份/worker父子关系/存活状态一致、状态新鲜、PHUMA-only与无父权重随机初始化、实际只训练11片且划分互斥、发布身份/3000轮预算匹配、已有真实WM和actor更新、日志数值有限、OOM无新增、内存低于30GiB保护线、控制器处于训练阶段。worker已400/3000轮、6400控制转移、109组WM/59次actor更新，在线计时425.82秒。该快照只证明训练已发生，不是匹配效果结论。
+
+同次GPU为RTX3090、39摄氏度、使用7477MiB/空闲16659MiB；cgroup使用30,656,466,944字节，额度34,359,738,368字节，OOM仍14。内存保护为32,212,254,720字节（30GiB）；训练未改保护阈值或其他作业，冻结源码保持不动。初始step0为68,435,755字节/SHA `9e4d66cb26a1eab515745715f850bc93edb445bec53becba7dee978c6270abfc`，本次仅核身份，完整张量/Adam保存审计留在训练完成后的流水线。
+
+小证据已取回，四份原始JSON和训练日志13,024字节前缀均独立与服务器大小/SHA一致：
+
+- [spec](../data/manifests/supermimic_q1_phuma_R01_spec_20261024.json)、[launch](../data/manifests/supermimic_q1_phuma_R01_launch_20261024.json)、[PHUMA绑定](../data/manifests/supermimic_q1_phuma_R01_binding_20261024.json)、[训练准入](../data/manifests/supermimic_q1_phuma_R01_admission_20261024.json)。
+- [启动与学习实核](../data/manifests/supermimic_q1_phuma_R01_launch_verification_20261024.json)、[原生日志前缀](../logs/session_records/supermimic_q1_phuma_R01_training_prefix_20261024.log)、[本次只读核查源码](../logs/session_records/supermimic_q1_phuma_R01_verification_source_20261024.txt)。
+
+后续按原3000轮预算继续，controller自动执行保存审计、同18片初始/最终完整动力学评测、独立轨迹重算和train/development/test配对比较。尚无final或最终跟随成功结论；test不含移动片，保留该泛化限制。下一恢复先读本节，再读取实验 `controller_status.json`、`run/status.json` 和日志；如果保护停止则保留终态并定位，不自动重启或追加预算。训练代码已发布核验，本次启动记录随本阶段文档提交，发布身份以Q1 Git历史和独立远端核验为准。

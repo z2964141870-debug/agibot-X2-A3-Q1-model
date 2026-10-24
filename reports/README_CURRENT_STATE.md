@@ -2,13 +2,13 @@
 
 2026-10-24 11:26用户要求停止当前整轮并改用PHUMA；[R04V2已停止](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)。11:26:30总控/worker均STOPPED_SIGNAL，原生退出0；A实际932轮/14912新控制转移、322组WM/272次actor，B未启动，无完整对照/最终评测。11:27:30–32核验原worker缺失、controller Z/RSS0、两个进程组无活跃成员，3份权重大小/SHA及冻结条件通过；GPU38摄氏度/OOM14。停止证据`data/manifests/supermimic_q1_R04V2_user_stop_20261024.json`。
 
-下一主线见[PHUMA阶段](README_SUPERMIMIC_Q1_PHUMA_20261024.md)：P02全G1 73076片格式/30Hz/分组审计通过，固定112候选零组交集。P03静态首帧初始化后，12:43:31全112片转换/19项独立几何门完成、15数值/隔离控制通过：18片合格（train11/development4/test3），94片拒绝保留，0新物理/optimizer。下一登记 `PHUMA_R01_B128_3000_20261024`，随机初始化3000轮/16环境/B128/H32及匹配完整评测；尚未登记/启动。旧A3来源动作/权重不进入新实验；大型原件LOCAL_ONLY。
+当前主线见[PHUMA阶段](README_SUPERMIMIC_Q1_PHUMA_20261024.md)：P02全G1 73076片分组审计、P03固定112候选转换/19项独立几何门及17数值/隔离控制完成，18片合格（train11/development4/test3）、94片拒绝保留。`PHUMA_R01_B128_3000_20261024`已于12:56:33随机初始化启动，3000轮/16环境/B128/H32、仅11片训练，旧A3来源动作/权重不参与。13:04:22实核400轮/6400转移/109组WM/59次actor，16项启动核查与121冻结文件通过，GPU39摄氏度/OOM14、内存30656466944字节。controller799647/worker799650身份见[小证据](../data/manifests/supermimic_q1_phuma_R01_launch_verification_20261024.json)，恢复须重核。后续自动保存审计和同18片初始/最终完整配对；尚无最终效果，test无移动片。训练发布ed421738已推送/独立核验Q1，全部大工件LOCAL_ONLY。
 
 R04V2及原R04停止/失败终态、日志、源码和权重保留，不执行原流水线后续阶段、不解锁或重启。停止保存final为205227539字节/SHA `b9e3914e8bddcbcabef7a7383cf7e2d097bd5a184a000358a2937b11859e6fb8`，未做完整张量/最终效果审计。A3保持停止，全部大型原件LOCAL_ONLY。以下D08/R03/V02为历史证据，不是续跑许可。
 
 [D08动作响应](README_SUPERMIMIC_Q1_ACTION_RESPONSE_20261024.md)已完成2176步/192响应独立数组审计，走路根H8为16/16正向/相对误差0.4412，H32为11/16/0.7595。[D07奖励/模型诊断](README_SUPERMIMIC_Q1_REWARD_MODEL_20261024.md)显示走路95.47%回报增量来自身体朝向项、根位置项下降，最终H32走路根预测41.371mm/CV9.665mm。两项支持本次时域试验，不证明短时域必然有效；不重复已完成诊断、不接入未合格D05B。
 
-下方R03/V02为已完成历史证据；实时训练以上方R04V2为准。
+下方R03/V02为已完成历史证据；当前训练以上方PHUMA R01为准，R04V2保持停止。
 
 2026-10-24 09:28:12实核：[R03原固定追加预算已完成](README_SUPERMIMIC_Q1_R03_CONTINUATION_20261023.md)。06:08:22训练退出0，06:11:04八阶段流水线完成；追加12000轮/192000转移，累计15000轮/240000转移，训练约6小时48分。13项保存审计、两份完整动力学评测/独立重算、61项冻结条件、八个原生退出0事件与summary重算通过。初始三片轨迹大小/SHA及标量与R02B final一致。本次只读复核，没有重复重型张量审计或新训练。
 
@@ -18,7 +18,7 @@ final服务器`data/supermimic_for_q1/R03_B128_extend12000_20261023/run/final.pt
 
 [V02/R03完整回放](README_SUPERMIMIC_Q1_VISUAL_R03_20261024.md)已完成：三视频826/579/339帧，ffprobe/SHA、九帧目视与浏览器三动作播放通过，桌面/手机无溢出。新入口`http://127.0.0.1:18865/`，原18863为R01；视频与评测一致、走路仍近原地。09:52收尾冻结条件通过，GPU38摄氏度/空闲17788MiB、容器25255591936字节/OOM14。小证据`data/manifests/supermimic_q1_V02_R03_verification_20261024.json`，大视频LOCAL_ONLY。下一核查参考、奖励和世界模型动作响应后选择独立改进，不自动追加R03预算。[D04](README_SUPERMIMIC_Q1_REFERENCE_DYNAMICS_20261024.md)的参考支撑/自碰撞缺口保留；[D05B](README_SUPERMIMIC_Q1_SUPPORT_PROJECTION_20261024.md)无训练资格，不能接入。已完成D04/D05/D06不重复，冻结源码/输入保留。
 
-主机huanyu:/opt/data/private/YuanQi_Q1；Python`/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python`。科学发布`d5f9476125f2c3c7ed2d7c1e6ac898e1f69d6429`，Mac代码副本`/tmp/yuanqi-supermimic-q1-20261023`，分支Q1。R01旧接触、R02修正接触32/128对照及停止账本保留，A3停止。目标未完成，不把训练完成或审计通过当作可用策略。下方A3/教学条目为其他阶段历史，以各自最新入口为准。
+主机huanyu:/opt/data/private/YuanQi_Q1；Python`/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python`。当前PHUMA训练发布`ed4217384e7abfc8a9cea0b23b95592d4a3e19b0`，Mac代码副本`/tmp/yuanqi-supermimic-q1-20261023`，分支Q1。R01旧接触、R02/R03及R04V2历史保留，A3停止。目标未完成，不把训练完成或审计通过当作可用策略。下方A3/教学条目为其他阶段历史，以各自最新入口为准。
 
 ## 用户目标与固定约定
 

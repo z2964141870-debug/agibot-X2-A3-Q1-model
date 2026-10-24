@@ -1,0 +1,59 @@
+import datetime,hashlib,json,math,pathlib,subprocess
+root=pathlib.Path("/opt/data/private/YuanQi_Q1")
+e=root/"data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024"
+def ident(path):
+ p=pathlib.Path(path).resolve();h=hashlib.sha256()
+ with p.open("rb") as stream:
+  for block in iter(lambda:stream.read(1024*1024),b""): h.update(block)
+ return {"path":str(p),"bytes":p.stat().st_size,"sha256":h.hexdigest()}
+c=json.loads((e/"controller_status.json").read_text());s=json.loads((e/"spec.json").read_text())
+r=json.loads((e/"run/receipt.json").read_text());a=json.loads((e/"training_audit.json").read_text())
+v=json.loads((e/"comparison.json").read_text())
+expected=["train","train_audit","evaluate_initial","audit_initial","evaluate_final","audit_final","compare"]
+assert c["status"]=="PHUMA_TRAINING_AND_MATCHED_EVALUATION_COMPLETED" and c["error"] is None
+assert [row["phase"] for row in c["events"]]==expected and all(row["exit_code"]==0 for row in c["events"])
+assert all(ident(row["log"]["path"])==row["log"] for row in c["events"])
+changed=[row["path"] for row in s["frozen_files"] if ident(row["path"])!=row]
+assert not changed and len(s["frozen_files"])==121
+assert s["code_commit"]=="ed4217384e7abfc8a9cea0b23b95592d4a3e19b0"
+assert s["initialization"]=="RANDOM_NO_PARENT_CHECKPOINT" and s["steps"]==3000 and s["num_envs"]==16 and s["auto_restart"] is False
+assert r["status"]=="TRAINING_FINISHED_PENDING_EVALUATION" and r["step"]==3000 and r["env_steps"]==48000
+assert a["status"]=="TRAINING_SAVE_AUDIT_PASSED" and all(a["gates"].values())
+assert a["training_receipt"]==ident(e/"run/receipt.json") and a["final"]==r["artifacts"][0]
+assert v["status"]=="PHUMA_MATCHED_PHYSICS_COMPARISON_COMPLETED" and v["spec"]==ident(e/"spec.json")
+names=[name for split in ("train","development","test") for name in s["split_clips"][split]]
+assert len(names)==18 and len(set(names))==18 and sorted(row["clip"] for row in v["pairs"])==sorted(names)
+for label in ("initial","final"):
+ er=json.loads((e/("evaluation_"+label)/"receipt.json").read_text())
+ ea=json.loads((e/("evaluation_audit_"+label+".json")).read_text())
+ assert ea["status"]=="EVALUATION_TRACE_AUDIT_PASSED" and ea["verified"] is True
+ assert ea["receipt"]==ident(e/("evaluation_"+label)/"receipt.json")
+ assert sorted(row["clip"] for row in er["rows"])==sorted(names) and len(er["rows"])==18
+ assert er["checkpoint"]==a["initial" if label=="initial" else "final"]
+for rec in v["evidence"]: assert ident(rec["path"])==rec
+for split in ("train","development","test"):
+ rows=[row for row in v["pairs"] if row["split"]==split]
+ assert sorted(row["clip"] for row in rows)==sorted(s["split_clips"][split])
+ assert len(rows)==v["summary"][split]["clips"]
+ for label in ("initial","final"):
+  target=v["summary"][split][label]
+  assert target["failures"]==sum(row[label]["failed"] for row in rows)
+  assert target["tracking_gates_passed"]==sum(row[label]["meets_registered_tracking_gates"] for row in rows)
+  for key,field in (("mean_completion","full_clip_completion"),("mean_normalized_return","normalized_return"),("mean_executed_joint_rmse_rad","executed_joint_rmse_rad"),("mean_executed_root_rmse_m","root_position_rmse_m")):
+   assert abs(math.fsum(row[label][field] for row in rows)/len(rows)-target[key])<1e-12
+groups=[row["source_group"] for row in v["pairs"]]
+assert len(set(groups))==18
+boot=pathlib.Path("/proc/sys/kernel/random/boot_id").read_text().strip()
+assert boot==c["process"]["boot_id"]
+active=[]
+for p in pathlib.Path("/proc").iterdir():
+ if not p.name.isdigit(): continue
+ try: stat=(p/"stat").read_text().rsplit(")",1)[1].split()
+ except (FileNotFoundError,PermissionError,ProcessLookupError): continue
+ if int(stat[2])==c["process"]["pgid"] and stat[0] not in ("Z","X"): active.append(int(p.name))
+assert not active
+paths=[e/"controller_status.json",e/"run/receipt.json",e/"training_audit.json",e/"comparison.json",e/"evaluation_initial/receipt.json",e/"evaluation_final/receipt.json",e/"evaluation_audit_initial.json",e/"evaluation_audit_final.json"]
+compact=[]
+for row in v["pairs"]:
+ compact.append({key:row[key] for key in ("clip","split","bucket")}|{label:{key:row[label][key] for key in ("executed_steps","expected_steps","failed","normalized_return","executed_joint_rmse_rad","root_position_rmse_m","reference_max_horizontal_displacement_m","policy_max_horizontal_displacement_m","meets_registered_tracking_gates","joint_group_rmse_rad")} for label in ("initial","final")})
+print(json.dumps({"status":"PHUMA_R01_COMPLETION_VERIFIED","captured_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"controller":c,"frozen_file_count":121,"changed_frozen_files":changed,"initialization":s["initialization"],"split_counts":{key:len(value) for key,value in s["split_clips"].items()},"training_seconds":r["seconds"],"training_code_commit":s["code_commit"],"training_steps":r["step"],"control_transitions":r["env_steps"],"world_model_update_groups":r["wm_updates"],"actor_updates":r["policy_updates"],"training_save_gates":a["gates"],"final":a["final"],"summary":v["summary"],"pairs":compact,"small_files":[ident(p) for p in paths],"active_original_process_group_members":active,"current_memory_bytes":int(pathlib.Path("/sys/fs/cgroup/memory/memory.usage_in_bytes").read_text()),"current_oom":pathlib.Path("/sys/fs/cgroup/memory/memory.oom_control").read_text(),"gpu":subprocess.check_output(["nvidia-smi","--query-gpu=name,temperature.gpu,memory.used,memory.total","--format=csv,noheader"],text=True).strip(),"new_physics_steps":0,"new_policy_calls":0,"new_optimizer_updates":0,"limits":"Original seven-stage pipeline and three-split arithmetic verified; raw-state root/joint recheck is performed separately by V01. No checkpoint tensor audit repeated."},allow_nan=False))

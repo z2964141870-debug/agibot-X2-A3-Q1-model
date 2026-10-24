@@ -1,8 +1,24 @@
 # Q1 R04想象时域匹配训练
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-R04/R04V2。状态：原R04在真实采集前FAILED，0训练交互/optimizer；独立R04V2修复入口、本地8控制通过/1跳过，服务器与新登记待进行。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-R04/R04V2。状态：原R04在采集前FAILED并保留；独立R04V2已启动，A_H32真实采集/策略更新、step0独立继承审计及进程/冻结核验通过，B_H8与最终效果待完成。
 
-## R04V2独立修复准备
+## 10:58启动与11:03核验
+
+R04V2源码发布`6db6bb92521cf606dc534ff0dc5ebc7dcb8f742f`已推送并独立核对。10:58:58派发原controller793182/start3610274454，A worker793185/start3610274671，boot `d994e71f-bae0-46ba-a5f7-6c2163771c6c`。11:03:26独立实核原进程分别S/R、PGID各自匹配；stage为A_H32_train，未出现终态或B run目录。
+
+当次最新trainer记录300/3000轮、4800控制转移、累计15300轮、69组WM/19次actor更新；记录中全部标量有限，已越过预热。其数值来自trainer实时日志，不冒充最终保存参数/Adam计数审计，也不把在线reward/RMSE称整片效果。B将从同一R03父重新开始，同seed与预算，仅H8；只有A的完整保存/评测/独立审计通过后才启动。
+
+真实A step0只读审计原生退出0，7门全通过。三网络、完整Adam（含矩/组参数/计数）和bin_return/bin_memory共8项与R03精确一致；初始本地计数0，manifest匹配admission/登记，日程offset与总轮数15000，张量有限。继承Adam为58980/5798/115960。step0为205235623字节/SHA `40eead5da33d78a0bc2d4dff698af50dea72bdc9ef05402567770a1f1c1a6bfa`；审计1864字节/SHA `e24da0ad591384526c255149f1ff7ef4cb975ee33d4e3ef2fbf790fe5b7bf7eb`，0新增物理/网络前向/optimizer。后续保存及效果仍须完整流水线审计。
+
+计划冻结条件复核通过；11:03:26 GPU39摄氏度/空闲16671MiB、容器29363347456字节、OOM14未变、磁盘约1.998TB可用。保护线不放宽。原R04失败证据/4份源码保留；V2不是修改或重试旧计划。全部大原件LOCAL_ONLY，未下载权重/数组至Mac，未验证网盘备份。
+
+小证据`data/manifests/supermimic_q1_R04V2_{release,plan,dispatch,started,initial_audit,startup}_20261024.json`；控制/登记/初态审计原日志`logs/session_records/supermimic_q1_R04V2_*`。运行原日志在服务器`logs/supermimic_q1_R04V2_H32_H8_matched3000_20261024/{controller,A_H32_train}.log`；运行工件`data/supermimic_for_q1/R04V2_H32_H8_matched3000_20261024`。新阶段记录按Q1审核/推送，提交身份由Git历史给出。
+
+恢复时先读取status/receipt与原日志，再核对PID/start_ticks/boot和资源/冻结条件；原controller负责本预算及16阶段，不重新execute，不创建自动恢复或额外训练。initial审计已存在，不重复运行。最终若失败则保留终态；效果未达时不追加预算或改门槛。A3保持停止，当前可用移动跟随目标尚未达。
+
+## 以下为R04V2准备登记
+
+R04V2源码`6db6bb92521cf606dc534ff0dc5ebc7dcb8f742f`已推送并独立核对Q1；服务器9项全通过、无跳过，原生退出0/2.758秒。新register退出0，计划63694字节/SHA `49219c4ab37a31b66a0ca39345f441a4706d2b22dab22ede1dbb180680113c89`，68份发布文件核对通过，55core/6extension/4horizon及134输入冻结；16阶段、V2入口、原同父/预算/seed逐项核对。此时尚未启动；下一只启动该V2计划一次，旧R04不重试。
 
 原`script/supermimic_q1_horizon/`4文件不编辑。独立复制到`script/supermimic_q1_horizon_v2/`，健康检查显式使用已持有的`continuation.runner`，不再解析同名train模块；原子JSON同样直接使用runner API。新增针对依赖导入完成后health(root, oom)的绑定控制。其余训练公式、合同、父权重、seed、预算与16阶段相同。
 

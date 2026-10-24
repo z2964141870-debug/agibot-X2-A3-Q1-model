@@ -1,10 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-24：[Q1 R04V2独立修复准备](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)：显式runner API修正同名导入，8本地控制通过/1张量控制待服务器；新计划未登记。原R04终态/源码保留，0训练交互。
-
-2026-10-24 10:51：[Q1 R04启动前失败](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)：同名train模块让health调用签名错误，0训练交互/optimizer，无run/admission/step0；原终态及源码保留。下一独立R04V2修正并补控制，不重跑原计划。
-
-2026-10-24 10:46：[Q1 R04匹配时域已登记](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)：服务器8控制全通过，55core/6extension/4horizon与133输入冻结；同R03父权重/Adam/bin与相同fresh seed，H32/H8各3000轮，仅改想象时域。16阶段/三片覆盖已核对，下一单次启动，尚无训练。
+2026-10-24 11:03：[Q1 R04V2匹配训练运行中](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)：A_H32已300/3000轮、4800控制转移、69组WM/19次actor；真实step0三网络/Adam/bin精确继承、7门通过。B_H8待A完整审计/评测后启动，仅改H、各3000轮；原R04导入失败保留。GPU39摄氏度/OOM14，冻结条件通过，尚无最终效果。
 
 2026-10-24 10:24：[Q1 D08动作响应完成](README_SUPERMIMIC_Q1_ACTION_RESPONSE_20261024.md)：4基线精确复现、2176控制步/192响应独立审计通过；走路根位置H8为16/16正向、相对误差0.441，H32为11/16/0.760。下一同R03父权重/种子的H32-H8等预算匹配试验，0新增训练。
 
@@ -54,7 +50,7 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
-| 2026-10-24 | Q1 R04 H32/H8等预算对照 | 两端控制/真实登记通过，下一单次启动，见[阶段记录](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md) |
+| 2026-10-24 | Q1 R04/R04V2 H32/H8等预算对照 | 原R04采集前失败保留；V2已启动A300轮/19次actor，真实初态继承7门通过，B及最终结果待完成，见[阶段记录](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md) |
 | 2026-10-24 | Q1 D08最终模型动作响应 | 2176步/192响应与数组独立审计完成，支持H8/H32匹配试验，见[阶段记录](README_SUPERMIMIC_Q1_ACTION_RESPONSE_20261024.md) |
 | 2026-10-24 | Q1 D07最终奖励/世界模型诊断 | 六段奖励与18项模型预测完成，走路根位置H32误差4.28倍CV，见[诊断记录](README_SUPERMIMIC_Q1_REWARD_MODEL_20261024.md) |
 | 2026-10-24 | Q1 V02/R03完整轨迹回放 | 三段完整EGL/ffprobe/九帧目视/浏览器播放通过，走路仍近原地，见[回放记录](README_SUPERMIMIC_Q1_VISUAL_R03_20261024.md) |

@@ -1,0 +1,97 @@
+{
+  "reason": "User requested stopping the whole R04V2 pair and switching new training input to PHUMA.",
+  "signal_time": "2026-10-24T11:26:23.784671+08:00",
+  "verified_time": "2026-10-24T11:27:30.943707+08:00",
+  "verification_command": "cd /opt/data/private/YuanQi_Q1\n/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python - <<'PY'\nimport json,pathlib,hashlib,datetime,sys,subprocess\nroot=pathlib.Path.cwd(); p=root/'data/supermimic_for_q1/R04V2_H32_H8_matched3000_20261024'\ndef fid(path):\n path=pathlib.Path(path).resolve();h=hashlib.sha256()\n with path.open('rb') as f:\n  for b in iter(lambda:f.read(1024*1024),b''):h.update(b)\n return {'path':str(path),'bytes':path.stat().st_size,'sha256':h.hexdigest()}\nplan=json.loads((p/'plan.json').read_text())\nout={'status':'USER_STOP_TERMINAL_VERIFIED','observed_at':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(),'reason':'USER_SWITCH_TO_PHUMA_AND_RESTART_FROM_NEW_DATA','plan':fid(p/'plan.json')}\nfor label in ('receipt.json','status.json','started.json','events.jsonl','A_H32/run/receipt.json'):\n out[label]=fid(p/label)\nr=json.loads((p/'receipt.json').read_text());tr=json.loads((p/'A_H32/run/receipt.json').read_text())\nassert r['status']==tr['status']=='STOPPED_SIGNAL'\nassert not (p/'B_H8/run').exists()\nout['training_receipt']=tr\nfor item in tr['artifacts']:assert fid(item['path'])==item\nout['artifact_identities_verified']=True\nsys.path.insert(0,str(root/'script/supermimic_q1_horizon_v2'))\nimport run_horizon_pair as pair\npair.verify_plan(plan)\nout['frozen_plan_verified']=True\nout['health']=pair.runner.health(root,plan['baseline_health']['oom_kill'])\nout['remaining_group_members']=[]\nfor proc in pathlib.Path('/proc').iterdir():\n if not proc.name.isdigit():continue\n try:\n  st=(proc/'stat').read_text();v=st[st.rfind(')')+2:].split()\n  if int(v[2]) in (793182,793185):\n   out['remaining_group_members'].append({'pid':int(proc.name),'state':v[0],'pgid':int(v[2]),'start_ticks':int(v[19]),'rss_pages':int(v[21])})\n except (FileNotFoundError,ProcessLookupError,PermissionError):pass\nassert all(x['state'] in ('Z','X') and x['rss_pages']==0 for x in out['remaining_group_members'])\nout['no_live_pair_processes']=True\nout['new_evaluation_steps']=out['new_optimizer_updates_for_verification']=0\nout['second_arm_started']=False;out['complete_horizon_comparison']=False\nout['storage_status']='LOCAL_ONLY'\nprint(json.dumps(out))\nbase=pathlib.Path('/opt/data/private/yuanqi_ops/data/phuma')\nprint('PHUMA_DIRECTORY')\nfor f in sorted(base.iterdir()):\n print(json.dumps({'name':f.name,'is_dir':f.is_dir(),'bytes':f.stat().st_size}))\nPY",
+  "verification_exit_code": 0,
+  "result": {
+    "status": "USER_STOP_TERMINAL_VERIFIED",
+    "observed_at": "2026-10-24T11:27:30.943707+08:00",
+    "reason": "USER_SWITCH_TO_PHUMA_AND_RESTART_FROM_NEW_DATA",
+    "plan": {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R04V2_H32_H8_matched3000_20261024/plan.json",
+      "bytes": 63694,
+      "sha256": "49219c4ab37a31b66a0ca39345f441a4706d2b22dab22ede1dbb180680113c89"
+    },
+    "receipt.json": {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R04V2_H32_H8_matched3000_20261024/receipt.json",
+      "bytes": 1319,
+      "sha256": "c33cd89c053ca37a35c9eed866b407eb84ad9c8a8f8f70b9ef6618960f6a4827"
+    },
+    "status.json": {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R04V2_H32_H8_matched3000_20261024/status.json",
+      "bytes": 1319,
+      "sha256": "c33cd89c053ca37a35c9eed866b407eb84ad9c8a8f8f70b9ef6618960f6a4827"
+    },
+    "started.json": {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R04V2_H32_H8_matched3000_20261024/started.json",
+      "bytes": 422,
+      "sha256": "85bf06df5c1e0f9dc0e87443c11aec6a3b79ace62ab5b27775c3764162cfd329"
+    },
+    "events.jsonl": {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R04V2_H32_H8_matched3000_20261024/events.jsonl",
+      "bytes": 595,
+      "sha256": "5d9b3eaa199d13f1a1531bc00919de8d8c6acc84f458219be2285d01aaec1fd2"
+    },
+    "A_H32/run/receipt.json": {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R04V2_H32_H8_matched3000_20261024/A_H32/run/receipt.json",
+      "bytes": 1032,
+      "sha256": "8e037848b982ac9e5d372d2149b56c620e36803ef729c070579c7834265e3c75"
+    },
+    "training_receipt": {
+      "status": "STOPPED_SIGNAL",
+      "step": 932,
+      "env_steps": 14912,
+      "wm_updates": 322,
+      "policy_updates": 272,
+      "total_collection_rounds": 15932,
+      "seconds": 1636.0169130638242,
+      "error": null,
+      "artifacts": [
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R04V2_H32_H8_matched3000_20261024/A_H32/run/final.pt",
+          "bytes": 205227539,
+          "sha256": "b9e3914e8bddcbcabef7a7383cf7e2d097bd5a184a000358a2937b11859e6fb8"
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R04V2_H32_H8_matched3000_20261024/A_H32/run/step_000000.pt",
+          "bytes": 205235623,
+          "sha256": "40eead5da33d78a0bc2d4dff698af50dea72bdc9ef05402567770a1f1c1a6bfa"
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R04V2_H32_H8_matched3000_20261024/A_H32/run/step_000500.pt",
+          "bytes": 205235623,
+          "sha256": "0389f622abfaf6a85a6a82d8c0fa2692813ea3eed8ca858967284db19f177341"
+        }
+      ],
+      "storage_status": "LOCAL_ONLY",
+      "not_hardware_validated": true
+    },
+    "artifact_identities_verified": true,
+    "frozen_plan_verified": true,
+    "health": {
+      "utc": "2026-10-24T03:27:32.598409+00:00",
+      "gpu_temperature_c": 38,
+      "gpu_free_mib": 17788,
+      "cgroup_memory_bytes": 25815982080,
+      "cgroup_limit_bytes": 34359738368,
+      "oom_kill": 14,
+      "disk_free_bytes": 1997396881408
+    },
+    "remaining_group_members": [
+      {
+        "pid": 793182,
+        "state": "Z",
+        "pgid": 793182,
+        "start_ticks": 3610274454,
+        "rss_pages": 0
+      }
+    ],
+    "no_live_pair_processes": true,
+    "new_evaluation_steps": 0,
+    "new_optimizer_updates_for_verification": 0,
+    "second_arm_started": false,
+    "complete_horizon_comparison": false,
+    "storage_status": "LOCAL_ONLY"
+  }
+}

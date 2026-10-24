@@ -1,10 +1,10 @@
 # YUANQI 当前状态与下一步
 
-2026-10-24 11:03:26实核：[R04V2 H32/H8匹配训练正在运行](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)。10:58:58派发，controller793182/start3610274454、A worker793185/start3610274671同boot原进程活跃；A_H32日志已300/3000轮、4800控制转移、69组WM/19次actor更新，累计15300轮，指标有限。B_H8尚未启动，无终态/最终效果；A完整保存/整片评测与独立审计通过后再B，各3000轮/48000转移，仅policy horizon不同。
+2026-10-24 11:26用户要求停止当前整轮并改用PHUMA；[R04V2已停止](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)。11:26:30总控/worker均STOPPED_SIGNAL，原生退出0；A实际932轮/14912新控制转移、322组WM/272次actor，B未启动，无完整对照/最终评测。11:27:30–32核验原worker缺失、controller Z/RSS0、两个进程组无活跃成员，3份权重大小/SHA及冻结条件通过；GPU38摄氏度/OOM14。停止证据`data/manifests/supermimic_q1_R04V2_user_stop_20261024.json`。
 
-真实step0独立7门通过：三网络、完整Adam及bin共8项与R03精确一致，继承Adam58980/5798/115960、学习率offset15000；仅验证初态，尚非后续参数/最终效果审计。服务器9项控制/68发布文件通过，源码6db6bb9，计划63694字节/SHA49219c4a...0113c89，134输入/55core/6extension/4V2源码冻结条件实核通过。GPU39摄氏度/空闲16671MiB、容器29363347456字节/OOM14。证据`data/manifests/supermimic_q1_R04V2_{startup,initial_audit,plan}_20261024.json`；日志`logs/supermimic_q1_R04V2_H32_H8_matched3000_20261024/`。
+下一主线：核验huanyu `/opt/data/private/yuanqi_ops/data/phuma/data.zip`（实核3416370206字节）的源格式、帧率/单位/根轨迹与模型身体语义，建立PHUMA→Q1独立重定向/质检、固定训练与评测划分，然后从随机初始化训练SuperMimic for Q1。旧A3来源参考与由其训练的Q1权重退出新实验输入；新PHUMA训练尚未启动，继续世界模型路线。
 
-恢复先读上述README，重新核对status、PID/start/boot、GPU与冻结条件，观察原流水线及其最终16阶段；不重启或追加预算。原R04于10:51:09因同名导入在仿真构造前FAILED，0训练交互/optimizer，原终态与4源码保留；V2独立修复。旧科学目录不改，A3停止，全部大型原件LOCAL_ONLY。
+R04V2及原R04停止/失败终态、日志、源码和权重保留，不执行原流水线后续阶段、不解锁或重启。停止保存final为205227539字节/SHA `b9e3914e8bddcbcabef7a7383cf7e2d097bd5a184a000358a2937b11859e6fb8`，未做完整张量/最终效果审计。A3保持停止，全部大型原件LOCAL_ONLY。以下D08/R03/V02为历史证据，不是续跑许可。
 
 [D08动作响应](README_SUPERMIMIC_Q1_ACTION_RESPONSE_20261024.md)已完成2176步/192响应独立数组审计，走路根H8为16/16正向/相对误差0.4412，H32为11/16/0.7595。[D07奖励/模型诊断](README_SUPERMIMIC_Q1_REWARD_MODEL_20261024.md)显示走路95.47%回报增量来自身体朝向项、根位置项下降，最终H32走路根预测41.371mm/CV9.665mm。两项支持本次时域试验，不证明短时域必然有效；不重复已完成诊断、不接入未合格D05B。
 

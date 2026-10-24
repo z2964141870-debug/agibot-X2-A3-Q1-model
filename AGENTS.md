@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-24 用户停止当前Q1 R04V2整轮训练，要求重新开始并改用PHUMA数据集，不再使用目前A3来源动作。旧R04V2已STOPPED_SIGNAL、B未启动，保留历史终态不重启；新主线为PHUMA到Q1的独立输入核验/重定向/质检后训练SuperMimic for Q1，继续世界模型方法。入口 `reports/README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md` 的11:26停止记录；新实验实际状态以最新README/收据为准。
+
 - 2026-10-23 用户将当前SuperMimic复现目标由A3切换为Q1，继续世界模型路线、只做方法复现。沿用该会话当前huanyu训练平台，独立根为`/opt/data/private/YuanQi_Q1`，遵循四目录与`Q1`分支；原hp3090 Q1目录保留为历史来源，不恢复原A3训练/停止账本。先读`reports/README_SUPERMIMIC_FOR_Q1_20261023.md`并重新核验输入、平台、实际作业与Q1仿真，不复用A3通过收据或权重冒充Q1验证。
 
 - 训练主机是 `ssh hp3090`，项目根为 `/media/yu/FAFF-E9771/YUANQI`。

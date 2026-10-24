@@ -1,0 +1,32 @@
+R03 completion evidence read: native exit_code=0
+Observed UTC: 2026-10-24T01:28:12.663132+00:00
+Scientific release: d5f9476125f2c3c7ed2d7c1e6ac898e1f69d6429
+Full parsed output: data/manifests/supermimic_q1_R03_completion_verification_20261024.json
+Method: read saved receipts/audits, verify frozen plan and stage result identities, recompute summary; no checkpoint tensor load, inference or physics integration in this read.
+
+Remote Python source:
+import hashlib,json,pathlib,sys,datetime
+root=pathlib.Path('/opt/data/private/YuanQi_Q1');sys.path.insert(0,str(root/'script/supermimic_q1_extension'))
+import pipeline
+out=root/'data/supermimic_for_q1/R03_B128_extend12000_20261023'
+plan=json.loads((out/'plan.json').read_text());pipeline.verify_plan(plan)
+recomputed=pipeline.summarize(plan)
+names=['run/receipt.json','training_audit.json','eval_initial/receipt.json','eval_initial_audit.json','eval_final/receipt.json','eval_final_audit.json','tracking_initial.json','tracking_final.json','summary.json','receipt.json','status.json','native_launch.json']
+documents={};identities=[]
+for name in names:
+    path=out/name;raw=path.read_bytes();documents[name]=json.loads(raw);identities.append({'path':str(path),'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()})
+assert documents['summary.json']==recomputed
+assert documents['receipt.json']['status']=='CONTINUATION_PIPELINE_COMPLETED'
+events=[json.loads(line) for line in (out/'events.jsonl').read_text().splitlines()]
+checks={}
+for stage in plan['stages']:
+    actual=pipeline.initialization.identity(stage['result'])
+    matches=[event for event in events if event.get('stage')==stage['name'] and event.get('result')==actual and event.get('exit_code')==0]
+    assert len(matches)==1;checks[stage['name']]=matches[0]
+processes={}
+for pid in (762428,762431):
+    path=pathlib.Path('/proc/{}/stat'.format(pid))
+    processes[str(pid)]={'exists':path.exists(),'state':path.read_text().split(')')[-1].split()[0] if path.exists() else None}
+print(json.dumps({'status':'R03_TERMINAL_AND_STAGE_BINDINGS_VERIFIED','observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'frozen_verified':True,'summary_recomputed_equal':True,'stage_checks':checks,'identities':identities,'original_processes':processes,'health':pipeline.runner.health(root,plan['baseline_health']['oom_kill']),'documents':documents},separators=(',',':'),allow_nan=False))
+
+Independent parent evaluation read native exit_code=0; all three scalar/reference/trace identity comparisons passed.

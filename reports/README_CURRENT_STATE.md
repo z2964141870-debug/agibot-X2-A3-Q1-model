@@ -1,26 +1,14 @@
 # YUANQI 当前状态与下一步
 
-2026-10-24 02:38:46实核：原R03 controller762428/start3606081278、worker762431/start3606081380同boot非僵尸，追加5975/12000轮、95600新交互，累计8975轮；2339组WM/2289次actor，冻结条件通过，GPU40摄氏度/空闲16671MiB、容器31070232576字节/OOM14，无终态收据。[D06只读在线趋势](README_SUPERMIMIC_Q1_BUDGET_TREND_20261024.md)350条前缀完整/有限，150条选定记录45个均值独立重算通过；R03早/后窗口关节0.376→0.250rad、在线奖励+18.61%，仅为变化训练状态上的趋势，未证明移动或整片跟随。继续原预算→完整评测/重算→V02实际渲染。[D05B根高候选](README_SUPERMIMIC_Q1_SUPPORT_PROJECTION_20261024.md)因逆动力学恶化仍不接入训练，D04/D05不重复，两个训练源码目录保持冻结。
+2026-10-24 09:28:12实核：[R03原固定追加预算已完成](README_SUPERMIMIC_Q1_R03_CONTINUATION_20261023.md)。06:08:22训练退出0，06:11:04八阶段流水线完成；追加12000轮/192000转移，累计15000轮/240000转移，训练约6小时48分。13项保存审计、两份完整动力学评测/独立重算、61项冻结条件、八个原生退出0事件与summary重算通过。初始三片轨迹大小/SHA及标量与R02B final一致。本次只读复核，没有重复重型张量审计或新训练。
 
-2026-10-24 01:14:16实核：R03原controller762428/start3606081278、worker762431/start3606081380同boot非僵尸，3525/12000追加轮、56400新交互、1359组WM/1309次actor，累计6525轮，冻结条件通过，GPU39摄氏度/空闲16671MiB、容器31055925248字节/OOM14，无终态收据。[D04独立参考诊断](README_SUPERMIMIC_Q1_REFERENCE_DYNAMICS_20261024.md)两端控制、3475帧/6950次inverse、276项保存数组重算通过；另三峰值帧inverse与保存数组最大差0，所有证据SHA通过，0积分/推理/optimizer/无Torch。走路较低脚底平均离地19.68mm、实际接触1/1648；出拳7.64秒左腕/左髋约5mm穿透，峰值左肩233.68Nm主要来自自碰撞约束，不宜据此增cap。小证据data/manifests/supermimic_q1_D04_*_20261024.json，NPZ仅服务器LOCAL_ONLY。精确参考质量缺口确认，学习失败主因未定；R03源码/输入/预算不变，等待最终完整评测与V02实际渲染。
+三片全身RMSE走路0.363888→0.188527、浅蹲0.386939→0.201056、开发出拳0.311051→0.262525rad，均完整且不早停，但全未达0.15门。走路腿部0.178007→0.176143rad几乎不变，最大水平离起点距离0.030115→0.029120m/参考1.126480m，全根位置RMSE0.629545→0.645016m；全身改善主要来自上肢。三片腰部误差变大。已有学习收益，仍不是可用移动跟随；出拳为复用开发数据，无独立未见测试/真机验证。
 
-2026-10-24 00:28:01实核：R03原controller762428/start3606081278、worker762431/start3606081380同boot非僵尸存活，2150/12000追加轮、34400新交互、809组WM/759次actor，累计5150轮，冻结源码/输入/运行时通过，GPU39摄氏度/空闲16671MiB、容器31050973184字节/OOM14；无终态收据，等待原固定预算及最终评测。[V02新协议渲染准备](README_SUPERMIMIC_Q1_RENDER_PREP_20261024.md)两端各4项控制及R02B三片真实只读预检通过，小收据/日志已取回并逐项大小/SHA一致，0新物理/推理/渲染；EGL、完整视频及画面待执行。两个训练源码目录保持冻结。轮次口径：R01旧接触batch32基线，R02修正接触下32/128从零对照，R03继承B固定追加12000轮，详见[R02对照记录](README_SUPERMIMIC_Q1_BATCH_TRAINING_20261023.md)。以下为早期检查点，不能当作实时进度。
+final服务器`data/supermimic_for_q1/R03_B128_extend12000_20261023/run/final.pt`为205225747字节/SHA`10d0838663b5d24215f493ce0738228597452e899b1a378df6d6b453b7e10ea7`，原件LOCAL_ONLY。小证据`data/manifests/supermimic_q1_R03_completion_verification_20261024.json`，读取日志`logs/session_records/supermimic_q1_R03_completion_read_20261024.log`。观察时controller762428为Z、worker不存在，GPU38摄氏度/空闲17788MiB、容器25031303168字节/OOM14。连接经Windows跳板恢复18864转发；断线没有触发重启。
 
-2026-10-23 23:41:35：[R03追加12000轮](README_SUPERMIMIC_Q1_R03_CONTINUATION_20261023.md)实时800轮/12800新交互/269组WM/219次actor，累计3800轮。独立CPU读取第500轮与step0：149组WM/99次actor及Adam12980/1198/23960精确匹配，三网络有限且变化，manifest/20条前缀日志/冻结61项源码/输入/运行时通过。此前真实父final→step0的3网络/3Adam/bin共8项精确一致；原controller762428/start3606081278、worker762431/start3606081380同boot d994e71f-bae0-46ba-a5f7-6c2163771c6c，非僵尸/实际argv精确匹配。输出data/supermimic_for_q1/R03_B128_extend12000_20261023，日志logs/supermimic_q1_R03_B128_extend12000_20261023/；GPU40摄氏度/CPU核验后容器31738470400字节/OOM14，小证据data/manifests/supermimic_q1_R03_checkpoint500_20261023.json。训练进行中、尚无最终跟随效果，LOCAL_ONLY，无自动恢复或追加预算。
+下一条工作：[V02入口](README_SUPERMIMIC_Q1_RENDER_PREP_20261024.md)对R03 final三段保存物理轨迹实际渲染，再核验ffprobe、首/中/末画面与播放；原18863页是R01。随后选择独立改进实验，不自动追加R03预算。[D04](README_SUPERMIMIC_Q1_REFERENCE_DYNAMICS_20261024.md)已确认参考支撑/出拳自碰撞问题；[D05B](README_SUPERMIMIC_Q1_SUPPORT_PROJECTION_20261024.md)仅改根高使动力学变坏、仍无训练资格，不能接入训练。D04/D05/D06不重复，冻结源码/输入保留。
 
-2026-10-23 23:07:21核验：[Q1 R02批量对照](README_SUPERMIMIC_Q1_BATCH_TRAINING_20261023.md)两臂18阶段及比较重算通过，终态PAIR_COMPLETED；B3000轮/48000交互/101.847分钟，三片完整、关节RMSE0.363888/0.386939/0.311051rad，腿部0.178007/0.251199/0.110641，仍未过0.15门。走路最大位移0.030115m/参考1.126480m，未学会移动跟随。原controller/A/B已退出或僵尸，未当作活跃作业。主机huanyu:/opt/data/private/YuanQi_Q1，核心6b43cc0，GPU39摄氏度/空闲17788MiB、容器26910662656字节/OOM14。
-
-[D03前缀分析](README_SUPERMIMIC_Q1_PREFIX_DIAGNOSIS_20261023.md)A/B四份真实比较完成：同前700步A/B全身0.346602/0.356039rad、腿部0.237951/0.183202、水平根0.561301/0.622730m；B并非所有指标更好。13小证据为data/manifests/supermimic_q1_R02_complete_*_20261023.json，逐项大小/SHA通过，模型/轨迹留服务器LOCAL_ONLY。以B作为已启动R03的父模型，累计目标15000轮/240000交互，保留模型/Adam/采样统计，新seed20261024与fresh replay；真实结果待完整流程。
-
-A batch32已完成95.087分钟训练、保存审计11门及完整配对评测/重算；走路只42.373%后失败。B腿部和稳定性较好而上肢误差较大，选择起点不代表单种子证明batch128普遍更优。出拳仍是复用开发；训练效果、仿真与真机分开报告。
-
-原`R02_batch_pair_20261023`已在140轮因容器30GiB保护保存STOPPED_SIGNAL/0actor；终态和权重保留，不能重用或恢复。缓存建议使容器观察下降1711742976字节，6项控制器测试通过；新运行仍保留30GiB/86摄氏度/OOM保护。A3停止，R01冻结工件保留，大文件LOCAL_ONLY，当前没有新最终策略成绩。Q1分支及本地代码副本`/tmp/yuanqi-supermimic-q1-20261023`维护。
-
-前序证据：[S01/P07接触修正与J01/T01/B01/C01](README_SUPERMIMIC_Q1_IMPROVEMENT_20261023.md)、[D02奖励诊断](README_SUPERMIMIC_Q1_LEARNING_DIAGNOSIS_20261023.md)、[V01动力学视频](README_SUPERMIMIC_Q1_VISUAL_20261023.md)、[R01完整记录](README_SUPERMIMIC_FOR_Q1_20261023.md)。R01三段关节RMSE0.328/0.338/0.290rad，未过0.15门，走路最大位移policy0.041m/参考1.126m；回报增量89%/89%/94%来自限位惩罚减少。R01实际摩擦0.6与新协议分开，不追改原结果。视频页http://127.0.0.1:18863/保留供看旧结果。
-
-可用连接经用户Windows yu@100.65.183.91跳转huanyu；旧100.85.145.78路线超时，未因此停止/重启训练。凭据只用于临时SSH，不写文件。静态PID不证明仍在运行，详细过程在阶段README，通用研究独立待同步项未在本次合并。
-
-[E01/E03后续入口准备](README_SUPERMIMIC_Q1_EXTENSION_PREP_20261023.md)：原11+5控制的证据保留，d5f9476/61项release用于真实R03；登记与启动、实际父状态继承已通过，完整续训保存审计/评测仍待结束，不能用启动检查替代训练效果。
+主机huanyu:/opt/data/private/YuanQi_Q1；Python`/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python`。科学发布`d5f9476125f2c3c7ed2d7c1e6ac898e1f69d6429`，Mac代码副本`/tmp/yuanqi-supermimic-q1-20261023`，分支Q1。R01旧接触、R02修正接触32/128对照及停止账本保留，A3停止。目标未完成，不把训练完成或审计通过当作可用策略。下方A3/教学条目为其他阶段历史，以各自最新入口为准。
 
 ## 用户目标与固定约定
 

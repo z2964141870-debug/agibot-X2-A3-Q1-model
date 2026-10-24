@@ -1,0 +1,151 @@
+{
+  "status": "BOUNDED_R02D_INTERMEDIATE_SAVE_AUDIT_PASSED",
+  "captured_utc": "2026-10-24T22:42:32.454629+00:00",
+  "checkpoint_step": 3000,
+  "gates": {
+    "registered_bounded_R02D": true,
+    "requested_save_and_cumulative_counts": true,
+    "initial_parent_offset_retained": true,
+    "local_update_counts": true,
+    "three_adam_counters_match": true,
+    "three_networks_updated": true,
+    "saved_network_optimizer_sampler_tensors_finite": true,
+    "manifest_matches_initial_and_admission": true,
+    "train_and_heldout_inputs_retained": true,
+    "all516_frozen_files_unchanged": true,
+    "complete_finite_logged_prefix": true,
+    "immutable_input_identities_unchanged": true,
+    "no_cuda_context": true
+  },
+  "inputs": [
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/run/step_000000.pt",
+      "bytes": 205325095,
+      "sha256": "3a1bc5dff4966f2754a97e11c5d283b283733bea12b15d4a92a57961e7ba5b38"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/run/step_003000.pt",
+      "bytes": 205325095,
+      "sha256": "edf972e0406b356a991cb8888e7baaad5fb092dbc20f60525f32d62ba879de06"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/run/admission.json",
+      "bytes": 117844,
+      "sha256": "3c962d4719df49c5516d15c97de83cd1c7187a03ef976b5a4574bb068cf45204"
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/spec.json",
+      "bytes": 160813,
+      "sha256": "fb42496059a517c5e2fa40934dc25ca3b13690e0400964bdb23965e58277c25d"
+    }
+  ],
+  "source": {
+    "path": "/opt/data/private/YuanQi_Q1/script/supermimic_q1_stability/audit_bounded_progress.py",
+    "bytes": 7594,
+    "sha256": "9c2d2e9a333407923b4d5a1a3cb0c396f2de1ce7ae0489b679a552a2031f710f"
+  },
+  "networks": {
+    "wm": {
+      "same_keys_shapes": true,
+      "changed_tensors": 14,
+      "max_abs_change": 0.17357923090457916
+    },
+    "policy": {
+      "same_keys_shapes": true,
+      "changed_tensors": 20,
+      "max_abs_change": 0.0699470266699791
+    },
+    "critic": {
+      "same_keys_shapes": true,
+      "changed_tensors": 6,
+      "max_abs_change": 0.7147087454795837
+    }
+  },
+  "optimizer_counters": {
+    "wm_opt": {
+      "increment": 11490,
+      "passed": true,
+      "initial_distinct": [
+        19490
+      ],
+      "saved_distinct": [
+        30980
+      ]
+    },
+    "policy_opt": {
+      "increment": 1099,
+      "passed": true,
+      "initial_distinct": [
+        1899
+      ],
+      "saved_distinct": [
+        2998
+      ]
+    },
+    "critic_opt": {
+      "increment": 21980,
+      "passed": true,
+      "initial_distinct": [
+        37980
+      ],
+      "saved_distinct": [
+        59960
+      ]
+    }
+  },
+  "frozen_changes": [],
+  "health_before": {
+    "experiment": {
+      "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025",
+      "unique_allocated_bytes": 1437839360,
+      "unique_logical_bytes": 1437773355,
+      "unique_inodes": 21,
+      "symlinks_not_followed": 0
+    },
+    "source": {
+      "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025",
+      "unique_allocated_bytes": 1437839360,
+      "unique_logical_bytes": 1437773355,
+      "unique_inodes": 21,
+      "symlinks_not_followed": 0
+    },
+    "free_bytes": {
+      "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025": 541753470976
+    },
+    "shared_memory": {
+      "shared_bytes": 13812490240,
+      "oom_kill": 14,
+      "maximum_bytes": 30870077440
+    }
+  },
+  "health_after": {
+    "experiment": {
+      "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025",
+      "unique_allocated_bytes": 1437843456,
+      "unique_logical_bytes": 1437774919,
+      "unique_inodes": 21,
+      "symlinks_not_followed": 0
+    },
+    "source": {
+      "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025",
+      "unique_allocated_bytes": 1437843456,
+      "unique_logical_bytes": 1437774919,
+      "unique_inodes": 21,
+      "symlinks_not_followed": 0
+    },
+    "free_bytes": {
+      "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025": 541350809600
+    },
+    "shared_memory": {
+      "shared_bytes": 14931582976,
+      "oom_kill": 14,
+      "maximum_bytes": 30870077440
+    }
+  },
+  "new_physics_steps": 0,
+  "new_policy_calls": 0,
+  "new_optimizer_updates": 0,
+  "final_budget_completed": false,
+  "tracking_effectiveness_proven": false,
+  "storage_status": "LOCAL_ONLY"
+}

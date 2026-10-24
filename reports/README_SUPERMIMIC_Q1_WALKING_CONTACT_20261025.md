@@ -92,3 +92,11 @@ P12及P12B准备阶段13份已提交文件共423250字节机械同步用户恢�
 原独立auditor未改，针对新P12B另起CPU进程原生退出0，再次8940项数值核验和8436次fresh inverse全过；不是重复IK或动力学rollout。[原样审计](../data/manifests/supermimic_q1_P12B_contact_audit_20261025.json)6636字节/SHA`c97df012fc64e0d60c59aa47e5e5d1f9bb8c5635651a94daf5cd24515809af47`，服务器实验根`independent_audit.json`，stdout`logs/PHUMA_P12B_contact_audit_20261025.log`。两轮诊断所有大型原件LOCAL_ONLY。
 
 决定：不采用上述两种锁脚修正，不放宽原十九门。后续若继续接触适配，必须在同train小样本把足地不穿透和可达性放进原生求解约束，并验证摆动/支撑转换与实际动力学代价；不能继续只靠软目标贴地。R02D原340/7000预算与终态规则保持，最终353片配对尚待。
+
+## P12C原生足地约束准备
+
+新增`probe_walking_contact_floor.py`和原生几何控制，复用P12B速度标签/目标及相同四个train、2/8rad/s和三个变体。baseline继续复现原P11；两个修正变体均加原生足地距离下界0、激活50mm，并将踝部任务位置/方向代价20/1提高至200/10。加避碰变体另保留原腕部2mm约束。这是足地约束与脚任务权重的联合候选，不能当纯单变量因果消融。
+
+每个solver的平面只按对应baseline地面原点做同一个常数坐标平移；根位置/方向和原速不变，不做逐帧根高投影。初始静态拟合也执行足地约束；时序帧保留硬根、关节位置/速度限位。Mink采用已控制的dt缩放，仅约束每次QP的一阶位移，最终几何仍可能失败，必须查全帧实际足底/自碰撞和fresh inverse，不能因为使用约束就认定不穿透。
+
+新薄适配器在选择和receipt显式登记源/test/有效足代价/实际solve hook，与P12B的实际标签hook同时绑定，保留全部原生产者、旧输出和516训练冻结。两份新代码本地语法通过；Mac无Mink/MuJoCo，真实控制和24组结果待。服务器先运行原生双脚到平面控制，覆盖0/-40mm两种平面原点和每种30次向地内目标求解；通过后入口换为`probe_walking_contact_floor.py`，新目录`PHUMA_P12C_walking_floor_probe_20261025`。预算、无CUDA/无积分/0训练资格等保持。

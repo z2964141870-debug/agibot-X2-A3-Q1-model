@@ -1,6 +1,6 @@
 # PHUMA驱动的SuperMimic for Q1
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-PHUMA-P01。状态：旧R04V2已按用户要求停止；PHUMA原包身份/两份格式抽查完成，官方模型映射已核对，独立输入准备进行中，新训练尚未启动。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-PHUMA-P01。状态：旧R04V2已按用户要求停止；固定官方源模型/划分获取和独立核验完成，全库扫描代码两端验证待部署；新训练尚未启动。
 
 ## 目标与范围
 
@@ -22,6 +22,12 @@ PHUMA原包 `/opt/data/private/yuanqi_ops/data/phuma/data.zip` 实测3,416,370,2
 
 新增 `acquire_source.py`：只下载固定官方元数据、划分文件、G1 XML与其引用网格；逐文件核对Git blob身份/大小并登记SHA256，不执行官方安装或下载脚本。源代码许可证已读取为Apache-2.0；原始动作来源与外部资产不据此自动宣称可重新分发，仍留忽略目录。
 
+获取代码 `3f5fbb2050d8063f3537423decfcb32f7c793be8` 已发布并核验Q1远端。11:43:02–11:45:21获取原生退出0，46文件/22,780,139字节；独立逐文件复核大小/SHA及MuJoCo编译通过，模型nq30/nv29/nu23，实际铰链顺序与恢复23列约定一致。源收据服务器 `data/references/phuma_source_2faf15b5/source_receipt.json`、Git小收据 `data/manifests/supermimic_q1_phuma_source_20261024.json`，11,838字节/SHA `533242e77229686dce1d19ac8d4f659c39ca711d45bb7488900b2b47fbe68986`；两份执行记录取回后大小/SHA与服务器一致。0新物理积分/optimizer更新。
+
+服务器请求Hugging Face元数据失败（网络地址不可分配），尚未独立比对官方LFS对象身份；当前原包SHA是已在本机独立读取的固定输入身份，不能称为官方LFS匹配通过。
+
+新增 `motion_io.py` / `scan_corpus.py` / `test_motion_io.py`：受限NumPy解码，验证30Hz、长度、有限值、单位xyzw和六零列。官方test涉及的整个来源组保留test，其余官方train组固定hash留10%development；移除chunk和clip后缀，候选每源组最多一片。固定seed2026102405，首批候选配额train80/development16/test16，分别覆盖移动/下蹲/上肢/其他；时长至少1.98s、根倾斜不超0.6rad、源关节速度P95不超4且最大不超12rad/s。该配额是输入候选，不能称为已合格Q1参考或全库训练。本地六项针对性控制全部通过，无跳过；服务器控制与全库扫描待执行。
+
 下一核对全库源帧率、根轨迹、关节语义与源片段分组；依据官方train/test并对相邻chunk/同源clip做分组隔离，固定首批覆盖移动/下蹲/上肢的候选名单后才进行Q1重定向。30→50Hz仅重采样，不慢放。来源、未通过参考和质量门全部记录；Q1接触/限位/速度、FK/时间导出和原地替代移动风险分别核验。新参考合格后才登记随机初始化的独立训练与完整动力学评测。
 
 ## 版本、命令与产物
@@ -32,8 +38,17 @@ PHUMA原包 `/opt/data/private/yuanqi_ops/data/phuma/data.zip` 实测3,416,370,2
 $PY script/supermimic_q1_phuma/acquire_source.py --output data/references/phuma_source_2faf15b5
 ```
 
-此命令尚待执行；完整数据/模型文件不进Git。官方来源为PHUMA GitHub、Hugging Face数据卡及固定提交的 `src/curation/preprocess_g1_folder.py` / `asset/humanoid_model/g1/custom.xml`。获取收据/全库扫描/重定向及新训练的实际结果在执行后补记，当前不预写通过。
+上述获取已完成；完整数据/模型文件不进Git。全库扫描下一执行：
+
+```bash
+$PY script/supermimic_q1_phuma/scan_corpus.py \
+  --archive /opt/data/private/yuanqi_ops/data/phuma/data.zip \
+  --vendor data/references/phuma_source_2faf15b5 \
+  --output data/supermimic_for_q1/PHUMA_P01_scan_20261024
+```
+
+官方来源为PHUMA GitHub、Hugging Face数据卡及固定提交的 `src/curation/preprocess_g1_folder.py` / `asset/humanoid_model/g1/custom.xml`。全库扫描/重定向及新训练的实际结果在执行后补记，当前不预写通过。
 
 ## 保存与下一步
 
-停止阶段 `307826c8ff7e26af6c7ecd47b83dcdd0a70189a3` 已推送并独立核验Q1一致。本阶段新源码/准备记录尚待审核发布；无PHUMA训练作业、无新效果结论。所有大型工件LOCAL_ONLY；旧R03/R04V2与D05B不作为本轮输入或通过证明。
+停止阶段 `307826c8ff7e26af6c7ecd47b83dcdd0a70189a3` 和获取入口 `3f5fbb2` 已推送并独立核验Q1一致。扫描源码与获取结果准备发布，之后部署并运行全库检查。无PHUMA训练作业、无新效果结论。所有大型工件LOCAL_ONLY；旧R03/R04V2与D05B不作为本轮输入或通过证明。

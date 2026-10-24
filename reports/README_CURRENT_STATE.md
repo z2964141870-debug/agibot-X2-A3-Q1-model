@@ -2,7 +2,7 @@
 
 2026-10-24 11:26用户要求停止当前整轮并改用PHUMA；[R04V2已停止](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)。11:26:30总控/worker均STOPPED_SIGNAL，原生退出0；A实际932轮/14912新控制转移、322组WM/272次actor，B未启动，无完整对照/最终评测。11:27:30–32核验原worker缺失、controller Z/RSS0、两个进程组无活跃成员，3份权重大小/SHA及冻结条件通过；GPU38摄氏度/OOM14。停止证据`data/manifests/supermimic_q1_R04V2_user_stop_20261024.json`。
 
-下一主线见[PHUMA阶段](README_SUPERMIMIC_Q1_PHUMA_20261024.md)：huanyu原ZIP3416370206字节/SHA `7bd38634f1ec075af907a2bce10616b083a5414885674ce6630664124e22e495`；G1/H1-2各73076个NPY，两份格式抽查30Hz。官方G1 23铰链，NPY为补零腕部的29列，须显式恢复映射。下一获取固定源模型/官方划分，按同源chunk分组隔离，原速重定向/质检后随机初始化训练SuperMimic for Q1；旧A3来源参考/权重退出新输入，PHUMA训练尚未启动。
+下一主线见[PHUMA阶段](README_SUPERMIMIC_Q1_PHUMA_20261024.md)：huanyu原ZIP3416370206字节/SHA `7bd38634f1ec075af907a2bce10616b083a5414885674ce6630664124e22e495`；G1/H1-2各73076个NPY。固定源模型/官方划分46文件获取退出0、逐文件SHA及MuJoCo编译通过（23铰链，29列恢复映射）；小收据 `data/manifests/supermimic_q1_phuma_source_20261024.json`。扫描六项本地控制通过；下一部署全库分组扫描，原速重定向/质检后随机初始化训练SuperMimic for Q1；旧A3来源参考/权重退出新输入，PHUMA训练尚未启动。
 
 R04V2及原R04停止/失败终态、日志、源码和权重保留，不执行原流水线后续阶段、不解锁或重启。停止保存final为205227539字节/SHA `b9e3914e8bddcbcabef7a7383cf7e2d097bd5a184a000358a2937b11859e6fb8`，未做完整张量/最终效果审计。A3保持停止，全部大型原件LOCAL_ONLY。以下D08/R03/V02为历史证据，不是续跑许可。
 

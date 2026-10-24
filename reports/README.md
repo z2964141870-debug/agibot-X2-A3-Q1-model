@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 05:40：[P11真实十二组对照完成](README_SUPERMIMIC_Q1_WALKING_RETARGET_20261025.md)，2rad/s确实截断部分步态，但4/8仍支撑不足、两片约9mm自穿透；不采用提高上限即准入，下一train接触一致性。服务器3控制0跳过、guard退出0/worker回收/0新参考。R02D1400新增轮继续，中间保存独立审计入口已准备、结果待。
+
 2026-10-25：[P11训练walking限速诊断准备](README_SUPERMIMIC_Q1_WALKING_RETARGET_20261025.md)以固定四个train目录比较2/4/8rad/s，只改内存中IK限速，原root/目标/时轴/位置限位保持；排旧dev/test及P10预留目录，不导出准入、不改R02D。Q1 URDF标32/36仅元数据，真实控制与诊断结果待。
 
 2026-10-25 05:30：[P10B十九门完成、0/15准入](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)：原速步行候选全部足底支撑比例失败，14最大间隙/6自穿透失败；补检/guard原生退出0并回收，原P10 wrapper失败保留。没有可用补充walking评测，不放宽门；下一只用train来源区分映射与限速，不以新test调参。R02D最近1100新增轮继续，OOM14。

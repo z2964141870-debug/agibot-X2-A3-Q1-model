@@ -63,3 +63,7 @@ EXP="$ROOT/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_2026
 05:00:34[独立启动核验](../data/manifests/supermimic_q1_R02D_startup_20261025.json)10门全过，SHA`cb6bca4b7bbee9865b7dd82be1b9a6adeeca32cf5b35ef2bb404d20d8482f721`。三个实际/proc进程身份/组及脚本匹配、全部516冻结保持、实际BoundedPolicy与三个Adam指定hook在父状态加载后仍绑定，admission和发布入口一致。读到的05:00:02进度为275新增轮/17600转移、累计5275轮、WM59组/actor9次；actor梯度0.131855、critic loss0.0100401、WM loss0.196068及其余日志指标有限。检查本身0新增物理/optimizer。
 
 核验健康GPU39摄氏度/余22909MiB、内存15038775296/OOM14、盘余1074733170688字节，新实验分配约205.65MB。该通过只证明正确初始化、入口保护与首批数值更新，不证明已避开此前1810崩溃或学会移动。继续原7000新增轮，不混612片，固定结束后原7阶段完整配对；后续需要保存/Adam计数及真实动力学轨迹证据，不能由在线均值代替。当前主目标仍未达，所有大型工件LOCAL_ONLY。
+
+## 中间保存审计入口
+
+新增独立`script/supermimic_q1_stability/audit_bounded_progress.py`，不在原516冻结内；CPU/mmap读immutable的500倍数保存，核对三网络、三Adam继承计数、两采样器有限性、原manifest/340/6/7及全部516冻结、完整有限日志前缀。沿用28.75GiB/OOM14/100GiB保护，0CUDA/物理/optimizer。该检查不更改运行预算、终态或参考，不能以审计通过称移动有效。发布部署后实际审计1500保存，执行结果待。

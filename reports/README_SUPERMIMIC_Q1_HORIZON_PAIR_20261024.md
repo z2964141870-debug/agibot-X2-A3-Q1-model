@@ -1,6 +1,14 @@
 # Q1 R04想象时域匹配训练
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-R04。状态：独立入口与本地7控制通过、1项PyTorch继承控制跳过；服务器控制、真实计划登记与训练尚未进行。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-R04。状态：本地7通过/1跳过、服务器8项全通过；真实固定计划登记并核对，训练尚未启动。
+
+## 10:46真实登记
+
+源码发布`21c38b0202dead227cc04eac8cb733baf3d707ca`已推送并独立核对Q1。4份新增源码与release SHA部署一致；服务器8项控制原生退出0、无跳过，含三套微型网络/非零Adam状态及return bins精确继承。控制耗时2.857秒，不当作真实Q1训练。
+
+10:46:06 register原生退出0；真实计划63317字节/SHA `74e715bedaf4c06deb953746cf5f6d37f74f7d1b2b48b15dd07be01bbc14c69f`。冻结55份core、6份原extension、4份新horizon源码、133项输入；release另包含两个analysis依赖，共67文件。实际parent、seed、3000轮/臂、H32/H8顺序、16阶段和三片评测覆盖已逐项核对。GPU38摄氏度/空闲17788MiB、容器25411137536字节/OOM14。尚无started或训练成绩；下一仅启动此固定计划一次。
+
+小release/plan与服务器控制/登记原日志保存到`data/manifests/supermimic_q1_R04_{release,plan}_20261024.json`及`logs/session_records/supermimic_q1_R04_{controls,register}_20261024.log`。训练启动/继承与最终效果仍须分别验证。
 
 ## 目标与单变量
 

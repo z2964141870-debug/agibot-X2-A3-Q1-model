@@ -1,6 +1,6 @@
 # PHUMA独立扩库与训练资源隔离
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-P06。状态：B015/B016共160候选真实完成，40片合格/141.72秒，两批原生退出0、worker已回收/OOM14；与原库算术380训练片/1368.82秒，尚未完整合库。23:46:44原R02继续到1275轮。新参考未混入R02。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-P06。状态：B015/B016共160候选真实完成，40片合格/141.72秒；与原库算术380训练片/1368.82秒，尚未完整合库。B017于23:54触发28.75GiB提前内存保护，worker退出-15已回收，7份未完成参考不计合格；OOM14，原R02继续到1525轮。新参考未混入R02。
 
 ## 目标与范围
 
@@ -65,3 +65,15 @@ worker826112独立进程组，guard826110；实际检查时见/proc活跃、8个
 产物`data/supermimic_for_q1/PHUMA_P06_B016_20261024/batch/`，worker日志`logs/PHUMA_P06_B016_20261024.log`、guard stdout为同名`_guard.log`。completion2255字节/SHA`baceb73e71573236920981a08c3f9621506274793596ae57ac055135ae0a2ad7`；guard1940字节/SHA`95e4fcbb0189c7ce201313b6f37d41a3df92cbf3d5e90c3f598be173aeebfa40`。已取回[完成小收据](../data/manifests/supermimic_q1_phuma_P06_B016_20261024.json)与[guard小收据](../data/manifests/supermimic_q1_phuma_P06_B016_guard_20261024.json)。
 
 下一先在无转换worker的间隙执行R02第1000轮CPU只读张量/Adam检查，再以新B017目录处理offset160起的下一切片。不改原R02的469冻结文件或输入，不恢复BONES获取。
+
+## B017内存保护终止
+
+R02第1000轮16项CPU保存检查于23:51完成并已发布01de432，见[训练阶段](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)。随后B017独立offset160/count128，23:54:00启动；23:54:38共享内存30930849792字节超过数据worker线30870077440字节，guard按既定规则只终止本worker组827074，回收return_code=-15。guard827073结束、原exec11186已收集退出1；原输出保留，未覆盖或重启。
+
+本批仅产生7份NPZ及对应诊断，未形成完整manifest、reference_check或completion，0新增合格参考，不计入380片/22.81分钟的已完成批次算术。触线前最近存储检查分配4313088字节、盘余1965633273856字节。OOM始终14，不能把提前保护记成实际OOM；没有向原训练发信号。
+
+23:55:52独立检查数据worker已不存在，原trainer仍RUNNING至1525轮/97600交互、WM559组/actor509次、GPU39摄氏度/OOM14。23:57:17共享内存29021405184字节；rss18726244352、cache9494237184（其中shmem6219571200）。这些是共享cgroup统计，不能全部归因于本数据worker，也不足以认定某一转换函数泄漏。
+
+[原样guard收据](../data/manifests/supermimic_q1_phuma_P06_B017_guard_20261024.json)为2007字节/SHA`b1d2c3a259520eb3c970730881e51acff6ad5f136424f9793d85e69cf66c83ea`。日志`logs/PHUMA_P06_B017_20261024_guard.log`与`logs/PHUMA_P06_B017_20261024.log`，失败目录`data/supermimic_for_q1/PHUMA_P06_B017_20261024/`均保留LOCAL_ONLY。
+
+下一先暂停并行PHUMA转换；不放宽线、不清全机页缓存、不停止原训练，也不以缩小count盲目重试相同入口。待原训练释放资源后，以新目录从原固定offset160重新做完整转换/核验，不能跳过本次未完成的128来源。当前可推进AMASS轻量来源选择/数值协议准备，尚未Q1准入，不改变R02输入。

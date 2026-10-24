@@ -69,10 +69,15 @@ def main(args):
     lines = (run / "metrics.jsonl").read_bytes().split(b"\n")[:-1]
     prefix = [row for line in lines if line and (row := json.loads(line))["step"] <= step]
     frozen_changes = [record["path"] for record in spec["frozen_files"] if identity(record["path"]) != record]
+    correction = {**spec["action_domain_correction"],
+                  "runtime_policy_class": "bounded_policy.BoundedPolicy",
+                  "runtime_optimizer_guards": {key: {"registered_pre_step_hooks": 1,
+                    "callback": "bounded_policy.reject_nonfinite_gradients.<locals>.before_step"}
+                    for key in ("wm_opt", "policy_opt", "critic_opt")}}
     gates = {
         "registered_bounded_R02D": manifest["code_commit"] == spec["code_commit"]
             == "39397087493088605e080494d7728ff458d69939" and spec["steps"] == 7000
-            and manifest["action_domain_correction"] == spec["action_domain_correction"],
+            and manifest["action_domain_correction"] == correction,
         "requested_save_and_cumulative_counts": step == args.step
             and saved["total_collection_rounds"] == 5000 + step and manifest["sim"]["num_envs"] == 64,
         "initial_parent_offset_retained": initial["step"] == initial["wm_updates"] == initial["policy_updates"] == 0

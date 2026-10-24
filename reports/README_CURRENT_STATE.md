@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+05:46：[R02D保存1500审计A](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)十二/十三门通过，动作声明断言遗漏实际类/三hook元数据，A退出2保留；张量有限、三Adam计数正确、516冻结未变，原训练继续1600新轮。新审计修为严格核指定运行字段，B补检待发布执行，不把A称全过。P11已完成、0新准入；BONES仍交师兄。
+
 05:40：[P11真实完成](README_SUPERMIMIC_Q1_WALKING_RETARGET_20261025.md)，四train片十二组2/4/8rad/s保持原root/任务，前三片解后误差明显降低但所有组支撑未达90%、两片约9mm自碰撞；0准入/物理/optimizer，worker回收，下一train接触一致性而非继续提限速。R02D1400新增轮/89600转移/累计6400，actor梯度0.02746/critic0.00507有限/OOM14；1500中间保存CPU审计入口待发布执行。P10仍0可用补充步行test，主目标未达。
 
 [P11训练walking限速归因](README_SUPERMIMIC_Q1_WALKING_RETARGET_20261025.md)入口已准备，固定四个train目录、排全部已知旧held-out/P10，比较2/4/8rad/s且原root/任务/原速保持，0新准入/训练；真实执行待。原Q1 URDF标32/36rad/s不是硬件实测。R02D最新1200新增轮，actor梯度0.03428/critic0.01152有限、GPU40/OOM14/盘余902.33GB；原340输入/7000预算继续。

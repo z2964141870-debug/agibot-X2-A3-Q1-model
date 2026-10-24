@@ -67,3 +67,11 @@ EXP="$ROOT/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_2026
 ## 中间保存审计入口
 
 新增独立`script/supermimic_q1_stability/audit_bounded_progress.py`，不在原516冻结内；CPU/mmap读immutable的500倍数保存，核对三网络、三Adam继承计数、两采样器有限性、原manifest/340/6/7及全部516冻结、完整有限日志前缀。沿用28.75GiB/OOM14/100GiB保护，0CUDA/物理/optimizer。该检查不更改运行预算、终态或参考，不能以审计通过称移动有效。发布部署后实际审计1500保存，执行结果待。
+
+## 中间审计A元数据断言失败
+
+审计入口发布`2b828a0d7afceb8fa902d667c7e3d749e44de072`已推送并独立核Q1，逐SHA部署。05:46:28审计1500原生退出2：十三门中十二门通过，只有动作声明整对象相等断言失败。实际训练manifest在注册声明上增加真实`runtime_optimizer_guards`三项和`runtime_policy_class`，与train_bounded源码一致；审计错误地要求无这些运行证据。不是训练数值失败，原训练继续1600新轮，不更改其状态。
+
+A原件保留`intermediate1500_audit.json`，保存1500为205325095字节/SHA`2b006ce1ac0fb5cdebc4d2b69aba87cf3624715e5027b598b44dc0d5065282e4`。三网络/三Adam/两采样器有限，Adam计数19490→24980、1899→2398、37980→47960；516冻结不变，manifest与initial/admission完全相同、50Hz采样对应完整日志前缀，无CUDA/物理/optimizer。不能把A称全部通过。
+
+修正审计按源码严格要求注册声明加上指定BoundedPolicy类和三个各一项的真实hook声明，不删除运行字段或放宽其内容。使用新`intermediate1500_audit_B.json`补检同一immutable保存，原A失败保留；执行结果待。

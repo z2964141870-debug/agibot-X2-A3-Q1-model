@@ -101,3 +101,5 @@ A原件保留`intermediate1500_audit.json`，保存1500为205325095字节/SHA`2b
 实时已4075新轮后，复用未改已发布auditor对immutable step4000作CPU/mmap检查，07:20:49原生退出0，十三门全过。三网络、三Adam、两采样器有限；Adam计数34980/3398/67960正确，原340/6/7、7000新轮及全部516冻结保持。0CUDA/积分/策略/optimizer，尚无最终动力学效果。
 
 保存4000为205325095字节/SHA`cdf5e259fe9c73dea58e8a86e9330750f1280f3cac73c0a21a2deb4506100f8c`；[原样审计](../data/manifests/supermimic_q1_R02D_intermediate4000_audit_20261025.json)SHA`625fb3ab2c62d463d2c1389af3b1a49e3af165991badf9fbde36223d95df9b40`。原件实验根`intermediate4000_audit.json`，stdout同名logs目录`intermediate4000_audit.log`。结束共享内存14929911808字节/OOM14、实验分配1848569856字节、盘余340030201856字节；100GiB停止线及原预算保持。
+
+07:31:41[再次现场核验](../logs/session_records/supermimic_q1_R02D_after_P13_20261025.log)：原三个实际非Z进程身份/组/cmdline与三状态保持，4375新增轮/280000转移、累计9375轮，最新日志有限；GPU39摄氏度/1228MiB、共享内存13805584384/OOM14、盘余283457986560字节。本训练分配1848594432字节，P13诊断不足1MB，不能把共享盘下降归本任务。继续原预算和100GiB保护，若触发即保留终态，不自动重启或追加；仍无新移动效果证明。

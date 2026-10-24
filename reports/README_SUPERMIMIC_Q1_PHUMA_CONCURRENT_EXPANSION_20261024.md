@@ -1,6 +1,6 @@
 # PHUMA独立扩库与训练资源隔离
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-P06。状态：B015真实32片转换/独立19门完成，9片合格/31.08秒，原生退出0、worker已回收/OOM14；R02继续，900轮。新参考未混入R02，完整扩展库尚未组装。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-P06。状态：B015/B016共160候选真实完成，40片合格/141.72秒，两批原生退出0、worker已回收/OOM14；与原库算术380训练片/1368.82秒，尚未完整合库。23:46:44原R02继续到1275轮。新参考未混入R02。
 
 ## 目标与范围
 
@@ -40,7 +40,7 @@ env CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THR
 
 ## 结果、保存与下一步
 
-当前仅完成保护入口，0新Q1参考/optimizer；原R02继续有限预算及配对评测。下一发布部署、小批真实执行，检查本worker的原生退出/guard清理、原训练身份与进度、OOM和合格秒数；通过后按固定名单继续互不重叠的独立批次。新参考必须完整跨批时轴/来源隔离重算后才登记新库，不改变正在训练的R02。失败同样立即登记，保留原目录；数据/数组全部LOCAL_ONLY。
+本节为入口发布时的安排；真实执行结果逐批记在下方。原R02继续有限预算及配对评测。新参考必须完整跨批时轴/来源隔离重算后才登记新库，不改变正在训练的R02。失败同样立即登记，保留原目录；数据/数组全部LOCAL_ONLY。
 
 ## B015真实完成
 
@@ -53,3 +53,15 @@ worker826112独立进程组，guard826110；实际检查时见/proc活跃、8个
 实际产物`data/supermimic_for_q1/PHUMA_P06_B015_20261024/batch/`，stdout`logs/PHUMA_P06_B015_20261024.log`，guard stdout另`logs/PHUMA_P06_B015_20261024_guard.log`。completion为2195字节，SHA`ba4d19cc325f705032a96cad43c0ba4701b5422c56575d6f71005bb4ea47a87d`；[小收据](../data/manifests/supermimic_q1_phuma_P06_B015_20261024.json)及[guard收据](../data/manifests/supermimic_q1_phuma_P06_B015_guard_20261024.json)。原manifest/reference_check的大小/SHA均在completion中，未重做本批几何。
 
 下一独立B016从offset32/count128开始；仍单数据worker、同一来源/门/资源提前停止线，与B015不重叠。若内存保护停止，保留失败目录，不放宽保护线或动原R02。
+
+## B016真实完成
+
+沿用同一已发布guard及固定名单，实际offset32/count128；23:39:15至23:43:40，guard原生退出0。worker826504及guard826502在23:46:44独立检查时均已不存在，guard记录worker_reaped=true/return_code0。原exec会话44417已收集退出0，未重复启动。
+
+128候选中31片通过原19门/110.64秒，其中other29片、移动2片/7.18秒；0转换异常，转换/核验256.60秒。主要重叠拒绝计数为支撑15mm比例79、自碰撞50、支撑间隙43、转换初门22，门槛未调整。加B015及原库，算术训练380片/1368.82秒（22.81分钟），移动65片/231.00秒；尚未做完整合库/跨批保存时轴重算，不宣称30分钟已达。
+
+批次末实际分配79691776字节，盘余1965308944384字节，共享内存28818477056字节/OOM14；运行中采样30655176704字节，低于30870077440字节线。原训练23:46:44仍RUNNING到1275轮/81600交互、WM459组/actor409次、GPU39摄氏度/OOM14；1000轮中间权重205348199字节已存在，尚未做张量检查。
+
+产物`data/supermimic_for_q1/PHUMA_P06_B016_20261024/batch/`，worker日志`logs/PHUMA_P06_B016_20261024.log`、guard stdout为同名`_guard.log`。completion2255字节/SHA`baceb73e71573236920981a08c3f9621506274793596ae57ac055135ae0a2ad7`；guard1940字节/SHA`95e4fcbb0189c7ce201313b6f37d41a3df92cbf3d5e90c3f598be173aeebfa40`。已取回[完成小收据](../data/manifests/supermimic_q1_phuma_P06_B016_20261024.json)与[guard小收据](../data/manifests/supermimic_q1_phuma_P06_B016_guard_20261024.json)。
+
+下一先在无转换worker的间隙执行R02第1000轮CPU只读张量/Adam检查，再以新B017目录处理offset160起的下一切片。不改原R02的469冻结文件或输入，不恢复BONES获取。

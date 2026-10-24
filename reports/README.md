@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-24：[P06 B015扩库真实完成](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)。固定32候选中9片通过原19门/31.08秒（移动1/2.06秒），worker原生退出0已回收/OOM14；与原库算术20.97分钟、未合库。R02仍RUNNING到900轮，不改冻结输入。下一新offset32/count128，30分钟/1小时及策略目标未达。
+2026-10-24：[P06 B015/B016扩库真实完成](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)。160候选共40片通过原19门/141.72秒（移动3/9.24秒），两worker原生退出0已回收/OOM14；与原库算术380训练片/22.81分钟、未合库。R02仍RUNNING到1275轮，第1000轮权重已保存；新CPU只读审计入口仅语法通过。下一先审计，再新offset160，冻结输入及30分钟/1小时和策略目标保持。
 
 2026-10-24当前：[现有资源R02实际启动](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)。23:08独立PHUMA340训练片/20.45分钟、64环境/4槽/H32/12000轮启动；23:12核验300轮/19200交互、WM69组/actor19次、critic与梯度有限、469冻结文件及进程身份通过/OOM14。冻结spec、启动及核验收据已保存，尚无效果结论。BONES交师兄处理，临时凭据/18866已清理；AMASS与16维SMPL-X到位但未Q1准入。[D03B](README_SUPERMIMIC_Q1_PHUMA_MODEL_20261024.md)和[模型槽](README_SUPERMIMIC_Q1_EXPANDED_RUN_20261024.md)实际完成证据已恢复；下方等待条目为历史状态。
 

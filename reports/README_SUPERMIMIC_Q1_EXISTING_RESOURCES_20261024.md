@@ -71,3 +71,11 @@ PY=/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python
 实际300/12000轮、19200交互，WM69组更新（每组10批）、actor19次；actor梯度范数0.06262、critic loss0.08216均有限，证明采集及世界模型/BPTT/critic更新路径已运行，未做新权重张量审计或固定片效果评测。全部469个冻结文件逐SHA相符，spec/config与启动收据相符，guard/controller/trainer活跃、boot/start_ticks/命令匹配。实际温度40摄氏度、cgroup29916872704字节、OOM14，约227.49秒训练；不据早期在线回报宣称学会移动。
 
 当前停止/恢复必须先读本文件及新实验`controller_status.json`、`storage_guard.json`、`run/status.json`。无信号时原有限流水线继续到12000轮并自动做训练保存审计、全部353片初末评测/轨迹审计和比较；任一非零退出即停止后续阶段，失败不自动重启。若长时域根部仍差，依据development和同轮配对结果另立方案；test只作最终报告，不据其调参。当前还没有达到30分钟库或策略成功目标，AMASS准入为后续独立数据工作。
+
+## 第1000轮检查准备
+
+23:46:44原trainer实际1275轮/81600交互、WM459组/actor409次，GPU39摄氏度/OOM14；第1000轮权重已保存205348199字节。独立扩库B016已退出0且worker回收，细节见[P06](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)。准备新独立只读入口`script/supermimic_q1_sources/audit_phuma_R02_checkpoint.py`，不改469冻结文件；本地语法检查通过，尚未实际运行。
+
+本入口适配R02的1000/12000轮、64环境、b6d3108训练版本及469冻结文件；用独立2/5整数节奏重算WM349组、actor299次，并按已存manifest重算三优化器Adam次数。CPU/mmap、单线程、无新物理步/策略调用/optimizer；初始内存须低于28.75GiB，逐张量/冻结文件在29.5GiB前终止且OOM固定14，低于原30GiB训练线。只检查原step0与step1000，保存前后SHA，不读取尚未完成的metrics末行；此诊断不能代替最终动力学效果。
+
+发布部署并确认无转换worker后执行，输出使用新`checkpoint1000_audit.json`排他创建；随后立即记录真实结果，不把准备记为通过。

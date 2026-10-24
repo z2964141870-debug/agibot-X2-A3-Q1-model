@@ -35,3 +35,9 @@ env CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THR
 ## 保存与下一步
 
 大型原件保留服务器LOCAL_ONLY，Mac仅收小证据；代码、README、索引、当前状态及小收据审计后按Q1规范发布并核远端，再同步恢复镜像。当前目标未达、训练最终配对待。优先完成正式可达性证据，再决定参考映射或根高度的独立有限试验；不重复单纯增加脚任务权重。
+
+## 服务器控制通过
+
+准备发布`024a68f9cd96788dd24be7b569369b641bffe3eb`已独立核Q1远端。首次Git推送因本机6234代理连接关闭而原生失败128；原会话结束后，用当前SSH配置/10秒连接超时重新推送退出0，独立ls-remote完整号一致，未强推或改远端。两新文件部署前均不存在，部署后SHA：producer`a6dd647a36fb10130e0f8d1fb6d5419d04b6e2678accd76f99009db8ad41d223`、test`1e9ad7a7e9d370105beef8c45c42b0ebce5550a4f23fa02928d452bc9106dca5`，与发布一致。
+
+服务器四控制原生退出0、0跳过；真实Q1 256组关节限位内姿态的双侧外球上界及hip中心固定前提通过。原样[控制日志](../logs/session_records/supermimic_q1_P13_reach_controls_20261025.log)SHA`28cfbe5ff7d15fd67984332a1432e8aa0a5f310f5f2ee0c0817c9c0dff2e87c8`，服务器`logs/PHUMA_P13_reach_controls_20261025.log`。这没有读取正式24组数组或改变参考，正式P13待执行。

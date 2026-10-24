@@ -97,3 +97,27 @@ env CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THR
   --output /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P03_body_B001_20261025 \
   --offset 0 --count 4 --expected-oom-kill 14
 ```
+
+## P03 B001真实人体FK结果
+
+准备代码发布`19944a9b9660f7e2d082a1a86b70ff248d9a1319`已独立核对远端Q1。00:37:32至00:37:50，B001守护原生退出0、worker828833返回0并回收，输出4份人体参考/804帧/16秒，女3/男1、全部16betas和50Hz各201帧。完整SMPL-X forward三帧核对最大误差1.984910569e-7m，站姿标定核对最大1.788139343e-7m；输出不是Q1参考。
+
+新独立只读进程按BodyReference合同重新载入4份：原动作和输出SHA均未变，时间网格与arange(201)/50差0，各4秒；骨盆最大水平位移1.864906/1.933449/1.588049/1.857843m，未丢移动。split均UNASSIGNED_DIAGNOSTIC_ONLY且训练标志false。此复核没有重复SMPL-X全forward或执行物理/optimizer。
+
+服务器输出`data/supermimic_for_q1/AMASS_P03_body_B001_20261025/body/`，完整manifest17640字节/SHA`5fcb1f8979ae08653027a437f64a70c3b4bee2c50fcd85ef82fd8f10e01b37c9`；[不含形体数值的completion摘要](../data/manifests/supermimic_q1_amass_P03_body_B001_20261025.json)另收Git。守护证据在上层guard.json，worker stdout为`logs/AMASS_P03_body_B001_20261025.log`。结束共享内存29195739136字节、OOM14、盘余1966008000512字节，实验分配634880字节；守护期间未触发保护，未采集完整峰值，不能把结束值称峰值。
+
+下一使用同版入口、新B002目录处理offset4/count12；之后另阶段加载Q1做映射/原几何门，不同时驻留人体模型。来源别名与受试者隔离未完成，0新合格训练时长、0新Q1参考、0新物理步/optimizer；R02输入/预算保持。
+
+## P03 B002及16段完整身体参考核验
+
+B001结束后本地18864转发消失，首次B002调用和completion复制均在SSH banner阶段超时，未启动worker/未创建B002。Tailscale曾报告Tokyo relay异常，直连训练端和两个已知跳板端点均暂时失败；未修改系统网络或训练状态。中继恢复后按原Windows路线重建18864，认证仅交互临时使用。00:50:44实核原boot和三个start_ticks匹配、R02仍3075轮/196800交互；B002目录不存在后才执行，未重复启动。
+
+00:51:24至00:52:11，B002 offset4/count12真实原生退出0、worker829365返回0并回收；12段人体参考/2412帧/48秒，FK误差最大4.093703314e-7m、标定误差最大1.788139343e-7m。结束共享内存29251350528字节、OOM14、盘余1965564698624字节，目录分配1851392字节。B001/B002合计16段/3216帧/64秒，均201帧、50Hz、16betas；只是人体参考，未增加Q1合格库时长。
+
+两批完整manifest原件均留服务器，B002为48856字节/SHA`70ae560f03603fdee4da3bf042e8df63f4d3f74941602c9cf8e56a7b66804cc9`。Git仅收原样completion：B001 SHA`cfbc583bae5169324b3fc7484e6e34f865927fdf1c9a72abaff955369a83ee19`；[B002摘要](../data/manifests/supermimic_q1_amass_P03_body_B002_20261025.json)8336字节/SHA`0bf088257d4af4a9a4d74493c0c4a78d6f7175f358c6f967182d0d2c708b7bdd`。日志`logs/AMASS_P03_body_B002_20261025.log`，守护证据为B002上层guard.json。派生身体数组和完整形体值未复制Mac或Git，原件LOCAL_ONLY。
+
+00:56:59独立轻量进程完成16段源/身体SHA、201帧精确时间网格、数值有限、单位四元数、16betas、分割未分配和男女模型身份检查；16个来源SHA和clip均唯一。重新核对原R02全部469冻结文件未变、三个原进程活跃且start_ticks/boot匹配。此为数组与身份复核，没有重复完整mesh forward、Q1重定向或动力学。
+
+核验原件`data/supermimic_for_q1/AMASS_P03_body_verification_20261025.json`，15086字节/SHA`6597c67312a713058d08a178c0aa56e44b6d5101d4fdf32719db36b42b4c2561`；[原样小副本](../data/manifests/supermimic_q1_amass_P03_body_verification_20261025.json)。当时R02为3275轮/209600交互、WM1259组/actor1209次、6522.67秒，GPU40摄氏度/OOM14；共享内存29262217216字节、盘余1965530808320字节。原12000轮预算和自动终态配对评测保持。
+
+P03人体准备阶段完成；Q1转换/独立几何门转入[AMASS P04](README_SUPERMIMIC_Q1_AMASS_RETARGET_20261025.md)。HumanML来源别名和受试者隔离仍未解决，所有AMASS片split未分配/不可训练，不能称未见移动测试或可用策略。

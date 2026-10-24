@@ -18,7 +18,7 @@
 
 parquet真实142220行，含filename、move_duration_frames、move_g1_path、is_mirror、take_name/org_name/actor/date和动作/道具/姿态标签。动作路径是`g1/csv/<date>/<filename>.csv`；不能直接采用旧的`qpos_29dof.csv`加`time.csv`目录解析器。重复`(1).parquet`未迁入。
 
-首对body_check原动作/镜像共享take与actor/date，虽然package为Locomotion，实际标签standing且horizontal_move=0。因此选移动不能只靠package，最终必须以真实轨迹检验。JSONL首条含filename及秒单位事件区间，完整覆盖/时轴一致性尚未核查。
+首对body_check原动作/镜像共享take与actor/date，虽然package为Locomotion，实际标签standing且horizontal_move=0。因此选移动不能只靠package，最终必须以真实轨迹检验。接收时先读JSONL首条的filename和秒单位事件区间；后续完整覆盖审计结果见下方P01，真实CSV时轴一致性仍待原包。
 
 收据：[supermimic_q1_bones_metadata_intake_20261024.json](../data/manifests/supermimic_q1_bones_metadata_intake_20261024.json)。20:18:50恢复检查时接收和验证已完成；不回填未经记录的精确传输完成时间。
 

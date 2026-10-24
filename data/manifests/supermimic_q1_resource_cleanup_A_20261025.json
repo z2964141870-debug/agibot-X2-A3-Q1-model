@@ -1,0 +1,447 @@
+{
+  "captured_utc": "2026-10-24T18:51:00.999321+00:00",
+  "boot": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+  "source": {
+    "path": "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/recover_legacy_g1_resources.py",
+    "bytes": 7027,
+    "sha256": "9483ebd22f5c868619f64d231b171dc00b4bbd363feb653adaf63667749532b1"
+  },
+  "before": {
+    "memory": {
+      "memory.usage_in_bytes": "33968070656\n",
+      "memory.limit_in_bytes": "34359738368\n",
+      "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 14\n",
+      "memory.stat": "cache 17798062080\nrss 15424708608\nrss_huge 314572800\nshmem 6203080704\nmapped_file 143413248\ndirty 0\nwriteback 8515584\npgpgin 2245424445\npgpgout 2237391434\npgfault 2524997211\npgmajfault 1270764\ninactive_anon 108134400\nactive_anon 21517406208\ninactive_file 11288064000\nactive_file 312819712\nunevictable 0\nhierarchical_memory_limit 34359738368\ntotal_cache 17798062080\ntotal_rss 15424708608\ntotal_rss_huge 314572800\ntotal_shmem 6203080704\ntotal_mapped_file 143413248\ntotal_dirty 0\ntotal_writeback 8515584\ntotal_pgpgin 2245424445\ntotal_pgpgout 2237391434\ntotal_pgfault 2524997211\ntotal_pgmajfault 1270764\ntotal_inactive_anon 108134400\ntotal_active_anon 21517406208\ntotal_inactive_file 11288064000\ntotal_active_file 312819712\ntotal_unevictable 0\n"
+    },
+    "disk_available_bytes": 1754271875072,
+    "gpu": "39, 6348 MiB, 0 %"
+  },
+  "processes": [
+    {
+      "pid": 399565,
+      "state": "S",
+      "ppid": 1,
+      "start_ticks": 3587246244,
+      "cpu_ticks": 4863,
+      "cmdline": [
+        "/opt/data/private/hechengzhu/ZHY/data/env/bin/python",
+        "eval_smoke.py",
+        "checkpoint=sonic_release/last.pt",
+        "+headless=true",
+        "eval_name=onset_walk_onset_f0",
+        "algo.config.eval.num_eval_episodes=1",
+        "+run_once=true",
+        "+manager_env.commands.motion.motion_lib_cfg.motion_file=data/motion_lib_bones_seed/robot_filtered",
+        "+manager_env.commands.motion.motion_lib_cfg.smpl_motion_file=data/motion_lib_bones_seed/bones_seed_smpl"
+      ],
+      "cwd": "/opt/data/private/yuanqi_ops/data/g1_leg/run",
+      "stdout": "/opt/data/private/yuanqi_ops/data/g1_leg/onset_pilot/walk_onset_f0.log",
+      "io": "rchar: 341\nwchar: 445\nsyscr: 24\nsyscw: 13\nread_bytes: 707067904\nwrite_bytes: 0\ncancelled_write_bytes: 0\n",
+      "rss_bytes": 3148062720,
+      "log": {
+        "path": "/opt/data/private/yuanqi_ops/data/g1_leg/onset_pilot/walk_onset_f0.log",
+        "bytes": 15343,
+        "sha256": "b38c4b5e97a311b56d448f8559fc2a9c696fc483ec2a485f529084950bcbeeaa"
+      },
+      "log_tail": "create_manager_env\n    env = ManagerBasedRLEnv(\n          ^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_rl_env.py\", line 80, in __init__\n    super().__init__(cfg=cfg)\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_env.py\", line 180, in __init__\n    self.load_managers()\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_rl_env.py\", line 113, in load_managers\n    self.command_manager: CommandManager = CommandManager(self.cfg.commands, self)\n                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/command_manager.py\", line 254, in __init__\n    super().__init__(cfg, env)\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/manager_base.py\", line 177, in __init__\n    self._prepare_terms()\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/command_manager.py\", line 419, in _prepare_terms\n    term = term_cfg.class_type(term_cfg, self._env)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/envs/manager_env/mdp/commands.py\", line 241, in __init__\n    self.motion_lib.load_motions_for_training(max_num_seqs=self.max_num_load_motions)\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 974, in load_motions_for_training\n    self.load_motions(random_sample=not load_unique, num_motions_to_load=max_num_seqs)\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 1224, in load_motions\n    res_acc.update(self.load_motion_with_skeleton(*jobs[0], None, 0))\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 1888, in load_motion_with_skeleton\n    if curr_smpl_data[\"fps\"] != self.target_fps:\n       ~~~~~~~~~~~~~~^^^^^^^\nKeyError: 'fps'\n\nSet the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.\n",
+      "log_mtime": 1792580457.7001002,
+      "identity_matches": true,
+      "second": {
+        "pid": 399565,
+        "state": "S",
+        "ppid": 1,
+        "start_ticks": 3587246244,
+        "cpu_ticks": 4863,
+        "cmdline": [
+          "/opt/data/private/hechengzhu/ZHY/data/env/bin/python",
+          "eval_smoke.py",
+          "checkpoint=sonic_release/last.pt",
+          "+headless=true",
+          "eval_name=onset_walk_onset_f0",
+          "algo.config.eval.num_eval_episodes=1",
+          "+run_once=true",
+          "+manager_env.commands.motion.motion_lib_cfg.motion_file=data/motion_lib_bones_seed/robot_filtered",
+          "+manager_env.commands.motion.motion_lib_cfg.smpl_motion_file=data/motion_lib_bones_seed/bones_seed_smpl"
+        ],
+        "cwd": "/opt/data/private/yuanqi_ops/data/g1_leg/run",
+        "stdout": "/opt/data/private/yuanqi_ops/data/g1_leg/onset_pilot/walk_onset_f0.log",
+        "io": "rchar: 341\nwchar: 445\nsyscr: 24\nsyscw: 13\nread_bytes: 707067904\nwrite_bytes: 0\ncancelled_write_bytes: 0\n",
+        "rss_bytes": 3148062720
+      },
+      "no_progress": true
+    },
+    {
+      "pid": 400254,
+      "state": "S",
+      "ppid": 1,
+      "start_ticks": 3587250492,
+      "cpu_ticks": 5068,
+      "cmdline": [
+        "/opt/data/private/hechengzhu/ZHY/data/env/bin/python",
+        "eval_smoke.py",
+        "checkpoint=sonic_release/last.pt",
+        "+headless=true",
+        "eval_name=onset_walk_onset_f50",
+        "algo.config.eval.num_eval_episodes=1",
+        "+run_once=true",
+        "+manager_env.commands.motion.motion_lib_cfg.motion_file=data/motion_lib_bones_seed/robot_filtered",
+        "+manager_env.commands.motion.motion_lib_cfg.smpl_motion_file=data/motion_lib_bones_seed/bones_seed_smpl"
+      ],
+      "cwd": "/opt/data/private/yuanqi_ops/data/g1_leg/run",
+      "stdout": "/opt/data/private/yuanqi_ops/data/g1_leg/onset_pilot/walk_onset_f50.log",
+      "io": "rchar: 341\nwchar: 445\nsyscr: 24\nsyscw: 13\nread_bytes: 723296256\nwrite_bytes: 0\ncancelled_write_bytes: 0\n",
+      "rss_bytes": 3155890176,
+      "log": {
+        "path": "/opt/data/private/yuanqi_ops/data/g1_leg/onset_pilot/walk_onset_f50.log",
+        "bytes": 15344,
+        "sha256": "2d025407983b5d93f15048d9351eae059caa3e9e3ca5052a5f410c24f986e169"
+      },
+      "log_tail": "create_manager_env\n    env = ManagerBasedRLEnv(\n          ^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_rl_env.py\", line 80, in __init__\n    super().__init__(cfg=cfg)\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_env.py\", line 180, in __init__\n    self.load_managers()\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_rl_env.py\", line 113, in load_managers\n    self.command_manager: CommandManager = CommandManager(self.cfg.commands, self)\n                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/command_manager.py\", line 254, in __init__\n    super().__init__(cfg, env)\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/manager_base.py\", line 177, in __init__\n    self._prepare_terms()\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/command_manager.py\", line 419, in _prepare_terms\n    term = term_cfg.class_type(term_cfg, self._env)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/envs/manager_env/mdp/commands.py\", line 241, in __init__\n    self.motion_lib.load_motions_for_training(max_num_seqs=self.max_num_load_motions)\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 974, in load_motions_for_training\n    self.load_motions(random_sample=not load_unique, num_motions_to_load=max_num_seqs)\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 1224, in load_motions\n    res_acc.update(self.load_motion_with_skeleton(*jobs[0], None, 0))\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 1888, in load_motion_with_skeleton\n    if curr_smpl_data[\"fps\"] != self.target_fps:\n       ~~~~~~~~~~~~~~^^^^^^^\nKeyError: 'fps'\n\nSet the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.\n",
+      "log_mtime": 1792580500.2673018,
+      "identity_matches": true,
+      "second": {
+        "pid": 400254,
+        "state": "S",
+        "ppid": 1,
+        "start_ticks": 3587250492,
+        "cpu_ticks": 5068,
+        "cmdline": [
+          "/opt/data/private/hechengzhu/ZHY/data/env/bin/python",
+          "eval_smoke.py",
+          "checkpoint=sonic_release/last.pt",
+          "+headless=true",
+          "eval_name=onset_walk_onset_f50",
+          "algo.config.eval.num_eval_episodes=1",
+          "+run_once=true",
+          "+manager_env.commands.motion.motion_lib_cfg.motion_file=data/motion_lib_bones_seed/robot_filtered",
+          "+manager_env.commands.motion.motion_lib_cfg.smpl_motion_file=data/motion_lib_bones_seed/bones_seed_smpl"
+        ],
+        "cwd": "/opt/data/private/yuanqi_ops/data/g1_leg/run",
+        "stdout": "/opt/data/private/yuanqi_ops/data/g1_leg/onset_pilot/walk_onset_f50.log",
+        "io": "rchar: 341\nwchar: 445\nsyscr: 24\nsyscw: 13\nread_bytes: 723296256\nwrite_bytes: 0\ncancelled_write_bytes: 0\n",
+        "rss_bytes": 3155890176
+      },
+      "no_progress": true
+    },
+    {
+      "pid": 400945,
+      "state": "S",
+      "ppid": 1,
+      "start_ticks": 3587254861,
+      "cpu_ticks": 5213,
+      "cmdline": [
+        "/opt/data/private/hechengzhu/ZHY/data/env/bin/python",
+        "eval_smoke.py",
+        "checkpoint=sonic_release/last.pt",
+        "+headless=true",
+        "eval_name=onset_walk_onset_f100",
+        "algo.config.eval.num_eval_episodes=1",
+        "+run_once=true",
+        "+manager_env.commands.motion.motion_lib_cfg.motion_file=data/motion_lib_bones_seed/robot_filtered",
+        "+manager_env.commands.motion.motion_lib_cfg.smpl_motion_file=data/motion_lib_bones_seed/bones_seed_smpl"
+      ],
+      "cwd": "/opt/data/private/yuanqi_ops/data/g1_leg/run",
+      "stdout": "/opt/data/private/yuanqi_ops/data/g1_leg/onset_pilot/walk_onset_f100.log",
+      "io": "rchar: 341\nwchar: 445\nsyscr: 24\nsyscw: 13\nread_bytes: 899547136\nwrite_bytes: 0\ncancelled_write_bytes: 0\n",
+      "rss_bytes": 3153666048,
+      "log": {
+        "path": "/opt/data/private/yuanqi_ops/data/g1_leg/onset_pilot/walk_onset_f100.log",
+        "bytes": 15344,
+        "sha256": "00b0fccc3e2fc7a198b50e1735935d0356370550696100e2d25142d18e579715"
+      },
+      "log_tail": "create_manager_env\n    env = ManagerBasedRLEnv(\n          ^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_rl_env.py\", line 80, in __init__\n    super().__init__(cfg=cfg)\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_env.py\", line 180, in __init__\n    self.load_managers()\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_rl_env.py\", line 113, in load_managers\n    self.command_manager: CommandManager = CommandManager(self.cfg.commands, self)\n                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/command_manager.py\", line 254, in __init__\n    super().__init__(cfg, env)\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/manager_base.py\", line 177, in __init__\n    self._prepare_terms()\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/command_manager.py\", line 419, in _prepare_terms\n    term = term_cfg.class_type(term_cfg, self._env)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/envs/manager_env/mdp/commands.py\", line 241, in __init__\n    self.motion_lib.load_motions_for_training(max_num_seqs=self.max_num_load_motions)\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 974, in load_motions_for_training\n    self.load_motions(random_sample=not load_unique, num_motions_to_load=max_num_seqs)\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 1224, in load_motions\n    res_acc.update(self.load_motion_with_skeleton(*jobs[0], None, 0))\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 1888, in load_motion_with_skeleton\n    if curr_smpl_data[\"fps\"] != self.target_fps:\n       ~~~~~~~~~~~~~~^^^^^^^\nKeyError: 'fps'\n\nSet the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.\n",
+      "log_mtime": 1792580543.8584852,
+      "identity_matches": true,
+      "second": {
+        "pid": 400945,
+        "state": "S",
+        "ppid": 1,
+        "start_ticks": 3587254861,
+        "cpu_ticks": 5213,
+        "cmdline": [
+          "/opt/data/private/hechengzhu/ZHY/data/env/bin/python",
+          "eval_smoke.py",
+          "checkpoint=sonic_release/last.pt",
+          "+headless=true",
+          "eval_name=onset_walk_onset_f100",
+          "algo.config.eval.num_eval_episodes=1",
+          "+run_once=true",
+          "+manager_env.commands.motion.motion_lib_cfg.motion_file=data/motion_lib_bones_seed/robot_filtered",
+          "+manager_env.commands.motion.motion_lib_cfg.smpl_motion_file=data/motion_lib_bones_seed/bones_seed_smpl"
+        ],
+        "cwd": "/opt/data/private/yuanqi_ops/data/g1_leg/run",
+        "stdout": "/opt/data/private/yuanqi_ops/data/g1_leg/onset_pilot/walk_onset_f100.log",
+        "io": "rchar: 341\nwchar: 445\nsyscr: 24\nsyscw: 13\nread_bytes: 899547136\nwrite_bytes: 0\ncancelled_write_bytes: 0\n",
+        "rss_bytes": 3153666048
+      },
+      "no_progress": true
+    },
+    {
+      "pid": 401666,
+      "state": "S",
+      "ppid": 1,
+      "start_ticks": 3587259231,
+      "cpu_ticks": 5158,
+      "cmdline": [
+        "/opt/data/private/hechengzhu/ZHY/data/env/bin/python",
+        "eval_smoke.py",
+        "checkpoint=sonic_release/last.pt",
+        "+headless=true",
+        "eval_name=onset_walk_onset_f200",
+        "algo.config.eval.num_eval_episodes=1",
+        "+run_once=true",
+        "+manager_env.commands.motion.motion_lib_cfg.motion_file=data/motion_lib_bones_seed/robot_filtered",
+        "+manager_env.commands.motion.motion_lib_cfg.smpl_motion_file=data/motion_lib_bones_seed/bones_seed_smpl"
+      ],
+      "cwd": "/opt/data/private/yuanqi_ops/data/g1_leg/run",
+      "stdout": "/opt/data/private/yuanqi_ops/data/g1_leg/onset_pilot/walk_onset_f200.log",
+      "io": "rchar: 341\nwchar: 445\nsyscr: 24\nsyscw: 13\nread_bytes: 900460544\nwrite_bytes: 0\ncancelled_write_bytes: 0\n",
+      "rss_bytes": 3154018304,
+      "log": {
+        "path": "/opt/data/private/yuanqi_ops/data/g1_leg/onset_pilot/walk_onset_f200.log",
+        "bytes": 15816,
+        "sha256": "b5009dc52da8d441ca63bcfa91c091f7f15d3e3915feaeebe9ef49cbde9e38e0"
+      },
+      "log_tail": "create_manager_env\n    env = ManagerBasedRLEnv(\n          ^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_rl_env.py\", line 80, in __init__\n    super().__init__(cfg=cfg)\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_env.py\", line 180, in __init__\n    self.load_managers()\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_rl_env.py\", line 113, in load_managers\n    self.command_manager: CommandManager = CommandManager(self.cfg.commands, self)\n                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/command_manager.py\", line 254, in __init__\n    super().__init__(cfg, env)\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/manager_base.py\", line 177, in __init__\n    self._prepare_terms()\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/command_manager.py\", line 419, in _prepare_terms\n    term = term_cfg.class_type(term_cfg, self._env)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/envs/manager_env/mdp/commands.py\", line 241, in __init__\n    self.motion_lib.load_motions_for_training(max_num_seqs=self.max_num_load_motions)\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 974, in load_motions_for_training\n    self.load_motions(random_sample=not load_unique, num_motions_to_load=max_num_seqs)\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 1224, in load_motions\n    res_acc.update(self.load_motion_with_skeleton(*jobs[0], None, 0))\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 1888, in load_motion_with_skeleton\n    if curr_smpl_data[\"fps\"] != self.target_fps:\n       ~~~~~~~~~~~~~~^^^^^^^\nKeyError: 'fps'\n\nSet the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.\n",
+      "log_mtime": 1792580587.6336663,
+      "identity_matches": true,
+      "second": {
+        "pid": 401666,
+        "state": "S",
+        "ppid": 1,
+        "start_ticks": 3587259231,
+        "cpu_ticks": 5158,
+        "cmdline": [
+          "/opt/data/private/hechengzhu/ZHY/data/env/bin/python",
+          "eval_smoke.py",
+          "checkpoint=sonic_release/last.pt",
+          "+headless=true",
+          "eval_name=onset_walk_onset_f200",
+          "algo.config.eval.num_eval_episodes=1",
+          "+run_once=true",
+          "+manager_env.commands.motion.motion_lib_cfg.motion_file=data/motion_lib_bones_seed/robot_filtered",
+          "+manager_env.commands.motion.motion_lib_cfg.smpl_motion_file=data/motion_lib_bones_seed/bones_seed_smpl"
+        ],
+        "cwd": "/opt/data/private/yuanqi_ops/data/g1_leg/run",
+        "stdout": "/opt/data/private/yuanqi_ops/data/g1_leg/onset_pilot/walk_onset_f200.log",
+        "io": "rchar: 341\nwchar: 445\nsyscr: 24\nsyscw: 13\nread_bytes: 900460544\nwrite_bytes: 0\ncancelled_write_bytes: 0\n",
+        "rss_bytes": 3154018304
+      },
+      "no_progress": true
+    },
+    {
+      "pid": 439955,
+      "state": "S",
+      "ppid": 1,
+      "start_ticks": 3588563843,
+      "cpu_ticks": 3682,
+      "cmdline": [
+        "/opt/data/private/hechengzhu/ZHY/data/env/bin/python",
+        "eval_smoke.py",
+        "checkpoint=sonic_release/last.pt",
+        "+headless=true",
+        "eval_name=phuma_test1",
+        "algo.config.eval.num_eval_episodes=1",
+        "+run_once=true",
+        "+manager_env.commands.motion.motion_lib_cfg.motion_file=data/motion_lib_bones_seed/robot_filtered_stage",
+        "+manager_env.commands.motion.motion_lib_cfg.smpl_motion_file=data/motion_lib_bones_seed/bones_seed_smpl_stage"
+      ],
+      "cwd": "/opt/data/private/yuanqi_ops/data/g1_leg/run",
+      "stdout": "/opt/data/private/yuanqi_ops/data/g1_leg/phuma_test1.log",
+      "io": "rchar: 341\nwchar: 445\nsyscr: 24\nsyscw: 13\nread_bytes: 1241088\nwrite_bytes: 0\ncancelled_write_bytes: 0\n",
+      "rss_bytes": 3154370560,
+      "log": {
+        "path": "/opt/data/private/yuanqi_ops/data/g1_leg/phuma_test1.log",
+        "bytes": 15681,
+        "sha256": "6aac9c131cc15d3cafa9b363111380e6b7d89240f7f51d7e77f8e4701cedc817"
+      },
+      "log_tail": "ic/train_agent_trl.py\", line 147, in create_manager_env\n    env = ManagerBasedRLEnv(\n          ^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_rl_env.py\", line 80, in __init__\n    super().__init__(cfg=cfg)\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_env.py\", line 180, in __init__\n    self.load_managers()\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_rl_env.py\", line 113, in load_managers\n    self.command_manager: CommandManager = CommandManager(self.cfg.commands, self)\n                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/command_manager.py\", line 254, in __init__\n    super().__init__(cfg, env)\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/manager_base.py\", line 177, in __init__\n    self._prepare_terms()\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/command_manager.py\", line 419, in _prepare_terms\n    term = term_cfg.class_type(term_cfg, self._env)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/envs/manager_env/mdp/commands.py\", line 241, in __init__\n    self.motion_lib.load_motions_for_training(max_num_seqs=self.max_num_load_motions)\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 970, in load_motions_for_training\n    self.load_motions(random_sample=False, num_motions_to_load=self._num_unique_motions)\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 1224, in load_motions\n    res_acc.update(self.load_motion_with_skeleton(*jobs[0], None, 0))\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 1913, in load_motion_with_skeleton\n    curr_motion[\"smpl_joints\"].shape[0]\nAssertionError\n\nSet the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.\n",
+      "log_mtime": 1792593633.925879,
+      "identity_matches": true,
+      "second": {
+        "pid": 439955,
+        "state": "S",
+        "ppid": 1,
+        "start_ticks": 3588563843,
+        "cpu_ticks": 3682,
+        "cmdline": [
+          "/opt/data/private/hechengzhu/ZHY/data/env/bin/python",
+          "eval_smoke.py",
+          "checkpoint=sonic_release/last.pt",
+          "+headless=true",
+          "eval_name=phuma_test1",
+          "algo.config.eval.num_eval_episodes=1",
+          "+run_once=true",
+          "+manager_env.commands.motion.motion_lib_cfg.motion_file=data/motion_lib_bones_seed/robot_filtered_stage",
+          "+manager_env.commands.motion.motion_lib_cfg.smpl_motion_file=data/motion_lib_bones_seed/bones_seed_smpl_stage"
+        ],
+        "cwd": "/opt/data/private/yuanqi_ops/data/g1_leg/run",
+        "stdout": "/opt/data/private/yuanqi_ops/data/g1_leg/phuma_test1.log",
+        "io": "rchar: 341\nwchar: 445\nsyscr: 24\nsyscw: 13\nread_bytes: 1241088\nwrite_bytes: 0\ncancelled_write_bytes: 0\n",
+        "rss_bytes": 3154370560
+      },
+      "no_progress": true
+    },
+    {
+      "pid": 452846,
+      "state": "S",
+      "ppid": 1,
+      "start_ticks": 3588655310,
+      "cpu_ticks": 3720,
+      "cmdline": [
+        "/opt/data/private/hechengzhu/ZHY/data/env/bin/python",
+        "eval_smoke.py",
+        "checkpoint=sonic_release/last.pt",
+        "+headless=true",
+        "eval_name=phuma_Ways_to_Catch_A_Cold_clip1_chunk_0000",
+        "algo.config.eval.num_eval_episodes=1",
+        "+run_once=true",
+        "+manager_env.commands.motion.motion_lib_cfg.motion_file=data/motion_lib_bones_seed/robot_filtered_stage",
+        "+manager_env.commands.motion.motion_lib_cfg.smpl_motion_file=data/motion_lib_bones_seed/bones_seed_smpl_stage"
+      ],
+      "cwd": "/opt/data/private/yuanqi_ops/data/g1_leg/run",
+      "stdout": "/opt/data/private/yuanqi_ops/data/g1_leg/phuma_Ways_to_Catch_A_Cold_clip1_chunk_0000.log",
+      "io": "rchar: 341\nwchar: 445\nsyscr: 24\nsyscw: 13\nread_bytes: 13643776\nwrite_bytes: 0\ncancelled_write_bytes: 0\n",
+      "rss_bytes": 3152375808,
+      "log": {
+        "path": "/opt/data/private/yuanqi_ops/data/g1_leg/phuma_Ways_to_Catch_A_Cold_clip1_chunk_0000.log",
+        "bytes": 15716,
+        "sha256": "600f920d55f420fecebb64ec7590bc7b9cc4cd8c8f470e5ef700be2d35101807"
+      },
+      "log_tail": "ic/train_agent_trl.py\", line 147, in create_manager_env\n    env = ManagerBasedRLEnv(\n          ^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_rl_env.py\", line 80, in __init__\n    super().__init__(cfg=cfg)\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_env.py\", line 180, in __init__\n    self.load_managers()\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_rl_env.py\", line 113, in load_managers\n    self.command_manager: CommandManager = CommandManager(self.cfg.commands, self)\n                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/command_manager.py\", line 254, in __init__\n    super().__init__(cfg, env)\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/manager_base.py\", line 177, in __init__\n    self._prepare_terms()\n  File \"/opt/data/private/hechengzhu/ZHY/script/vendor/IsaacLab/source/isaaclab/isaaclab/managers/command_manager.py\", line 419, in _prepare_terms\n    term = term_cfg.class_type(term_cfg, self._env)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/envs/manager_env/mdp/commands.py\", line 241, in __init__\n    self.motion_lib.load_motions_for_training(max_num_seqs=self.max_num_load_motions)\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 970, in load_motions_for_training\n    self.load_motions(random_sample=False, num_motions_to_load=self._num_unique_motions)\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 1224, in load_motions\n    res_acc.update(self.load_motion_with_skeleton(*jobs[0], None, 0))\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/utils/motion_lib/motion_lib_base.py\", line 1913, in load_motion_with_skeleton\n    curr_motion[\"smpl_joints\"].shape[0]\nAssertionError\n\nSet the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.\n",
+      "log_mtime": 1792594548.4144933,
+      "identity_matches": true,
+      "second": {
+        "pid": 452846,
+        "state": "S",
+        "ppid": 1,
+        "start_ticks": 3588655310,
+        "cpu_ticks": 3720,
+        "cmdline": [
+          "/opt/data/private/hechengzhu/ZHY/data/env/bin/python",
+          "eval_smoke.py",
+          "checkpoint=sonic_release/last.pt",
+          "+headless=true",
+          "eval_name=phuma_Ways_to_Catch_A_Cold_clip1_chunk_0000",
+          "algo.config.eval.num_eval_episodes=1",
+          "+run_once=true",
+          "+manager_env.commands.motion.motion_lib_cfg.motion_file=data/motion_lib_bones_seed/robot_filtered_stage",
+          "+manager_env.commands.motion.motion_lib_cfg.smpl_motion_file=data/motion_lib_bones_seed/bones_seed_smpl_stage"
+        ],
+        "cwd": "/opt/data/private/yuanqi_ops/data/g1_leg/run",
+        "stdout": "/opt/data/private/yuanqi_ops/data/g1_leg/phuma_Ways_to_Catch_A_Cold_clip1_chunk_0000.log",
+        "io": "rchar: 341\nwchar: 445\nsyscr: 24\nsyscw: 13\nread_bytes: 13643776\nwrite_bytes: 0\ncancelled_write_bytes: 0\n",
+        "rss_bytes": 3152375808
+      },
+      "no_progress": true
+    }
+  ],
+  "all_confirmed_failed_residuals": true,
+  "signals": [
+    {
+      "pid": 399565,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 400254,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 400945,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 401666,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 439955,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 452846,
+      "signal": "SIGTERM"
+    },
+    {
+      "pid": 399565,
+      "signal": "SIGKILL"
+    },
+    {
+      "pid": 400254,
+      "signal": "SIGKILL"
+    },
+    {
+      "pid": 400945,
+      "signal": "SIGKILL"
+    },
+    {
+      "pid": 401666,
+      "signal": "SIGKILL"
+    },
+    {
+      "pid": 439955,
+      "signal": "SIGKILL"
+    },
+    {
+      "pid": 452846,
+      "signal": "SIGKILL"
+    }
+  ],
+  "file_deletions": 0,
+  "storage_status": "LOCAL_ONLY",
+  "after_processes": [
+    {
+      "pid": 399565,
+      "state": "Z",
+      "ppid": 1,
+      "start_ticks": 3587246244,
+      "cpu_ticks": 5966
+    },
+    {
+      "pid": 400254,
+      "state": "Z",
+      "ppid": 1,
+      "start_ticks": 3587250492,
+      "cpu_ticks": 5183
+    },
+    {
+      "pid": 400945,
+      "state": "Z",
+      "ppid": 1,
+      "start_ticks": 3587254861,
+      "cpu_ticks": 5315
+    },
+    {
+      "pid": 401666,
+      "state": "Z",
+      "ppid": 1,
+      "start_ticks": 3587259231,
+      "cpu_ticks": 5224
+    },
+    {
+      "pid": 439955,
+      "state": "Z",
+      "ppid": 1,
+      "start_ticks": 3588563843,
+      "cpu_ticks": 3805
+    },
+    {
+      "pid": 452846,
+      "state": "Z",
+      "ppid": 1,
+      "start_ticks": 3588655310,
+      "cpu_ticks": 3815
+    }
+  ],
+  "all_released": true,
+  "after": {
+    "memory": {
+      "memory.usage_in_bytes": "12764688384\n",
+      "memory.limit_in_bytes": "34359738368\n",
+      "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 14\n",
+      "memory.stat": "cache 11620388864\nrss 571363328\nrss_huge 0\nshmem 12021760\nmapped_file 43659264\ndirty 0\nwriteback 8515584\npgpgin 2245434510\npgpgout 2242459350\npgfault 2525010972\npgmajfault 1271061\ninactive_anon 8650752\nactive_anon 573255680\ninactive_file 11298336768\nactive_file 315658240\nunevictable 0\nhierarchical_memory_limit 34359738368\ntotal_cache 11620388864\ntotal_rss 571363328\ntotal_rss_huge 0\ntotal_shmem 12021760\ntotal_mapped_file 43659264\ntotal_dirty 0\ntotal_writeback 8515584\ntotal_pgpgin 2245434510\ntotal_pgpgout 2242459350\ntotal_pgfault 2525010972\ntotal_pgmajfault 1271061\ntotal_inactive_anon 8650752\ntotal_active_anon 573255680\ntotal_inactive_file 11298336768\ntotal_active_file 315658240\ntotal_unevictable 0\n"
+    },
+    "disk_available_bytes": 1752820707328,
+    "gpu": "39, 14 MiB, 0 %"
+  }
+}

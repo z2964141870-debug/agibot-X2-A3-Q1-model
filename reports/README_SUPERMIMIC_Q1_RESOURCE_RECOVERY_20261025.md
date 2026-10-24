@@ -1,6 +1,6 @@
 # Q1 R02失败后资源恢复
 
-记录日期：2026-10-25。阶段：RECOVERY-A。状态：现场诊断完成，回收及模型评测待执行。
+记录日期：2026-10-25。阶段：RECOVERY-A。状态：精确回收完成，模型审计/开发评测待执行。
 
 ## 目标与范围
 
@@ -40,3 +40,11 @@ README、索引和当前状态已在本地保存，代码及原样小证据随�
 R02三个原生终态分别原样保存为[controller](../data/manifests/supermimic_q1_R02_failed_controller_20261025.json)、[guard](../data/manifests/supermimic_q1_R02_failed_guard_20261025.json)、[trainer](../data/manifests/supermimic_q1_R02_failed_trainer_20261025.json)，SHA依次`219e6cc1…`、`137d6e0d…`、`9a3de402…`；[原训练日志](../logs/session_records/supermimic_q1_R02_failed_train_20261025.log)284839字节/SHA`ac085172…`，5份原件两端SHA一致，替代此前仅有衍生故障观察的证据缺口。
 
 原guard终态明确R02分配仅1095950336字节，结束时盘余1965468422144字节；02:48观察盘余1765965627392字节，外部磁盘写入仍在发生，不能将约200GB下降归到这个约1.10GB实验。内存33966661632字节，OOM14，尚待精准回收。
+
+## 02:51精确回收完成
+
+前阶段发布`50f529140792882bc60f546295b90c4afd69b9b1`已显式推送Q1、独立远端ref一致。按原观察收据再次核验六个进程与日志身份，pidfd逐个TERM后等待10秒仍未退，向相同pidfd发KILL。02:51实际退出0，六个均为Z、RSS资源已释放；PID1尚未收尸不等于仍运行。0文件删除、0全局缓存清理，未操作其他任务，原R02失败目录及日志不变。
+
+[原样回收收据](../data/manifests/supermimic_q1_resource_cleanup_A_20261025.json)服务器位置为`RESOURCE_RECOVERY_A_20261025/cleanup.json`，预信号快照同目录`cleanup_before_signal.json`。容器内存33968070656→12764688384字节，实际下降21203382272字节（约19.75GiB）；RSS15424708608→571363328、shmem6203080704→12021760字节。GPU6348→14MiB/39摄氏度，OOM保持14，磁盘余1752820707328字节。此为回收前后实测，不能把差值全当单个权重或R02自有内存。
+
+下一只读检查第5000轮保存、469冻结输入与三优化器，再进行六段development配对评测。原5300失败计数不能冒充5000权重轮数，剩余原目标预算若续训应为7000轮并新登记。

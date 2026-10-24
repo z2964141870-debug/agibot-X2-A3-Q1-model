@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read the first R02 checkpoint without simulation or optimizer updates."""
+"""Read a saved R02 checkpoint without simulation or optimizer updates."""
 
 import argparse
 from datetime import datetime, timezone
@@ -24,6 +24,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, allow_abbrev=False)
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--checkpoint-step", type=int, choices=(1000, 5000), default=1000)
     args = parser.parse_args()
     if args.output.exists():
         raise FileExistsError(args.output)
@@ -49,7 +50,7 @@ def main():
 
     torch.set_num_threads(1)
     sample_memory()
-    paths = (run / "step_000000.pt", run / "step_001000.pt")
+    paths = (run / "step_000000.pt", run / f"step_{args.checkpoint_step:06d}.pt")
     before_files = [identity(path) for path in paths]
     initial = torch.load(paths[0], map_location="cpu", mmap=True, weights_only=False)
     current = torch.load(paths[1], map_location="cpu", mmap=True, weights_only=False)
@@ -109,7 +110,8 @@ def main():
         sample_memory()
     after_files = [identity(path) for path in paths]
     gates = {
-        "checkpoint_1000_within_fixed_budget": step == 1000 < manifest["args"]["steps"] == spec["steps"] == 12000,
+        f"checkpoint_{args.checkpoint_step}_within_fixed_budget": step == args.checkpoint_step
+            < manifest["args"]["steps"] == spec["steps"] == 12000,
         "initial_step_zero_empty_optimizers": initial["step"] == initial["wm_updates"] == initial["policy_updates"] == 0
             and all(not initial[name]["state"] for name in expected),
         "saved_manifest_unchanged": initial["manifest"] == manifest and json.loads(json.dumps(manifest)) == admission,
@@ -120,8 +122,8 @@ def main():
             and spec["initialization"] == "RANDOM_NO_PARENT_CHECKPOINT",
         "published_code_identity": manifest["code_commit"] == spec["code_commit"]
             == "b6d310897b89d1b8664f6165867bf1256cf49208",
-        "local_update_counts": current["wm_updates"] == wm_updates == 349
-            and current["policy_updates"] == actor_updates == 299,
+        "local_update_counts": current["wm_updates"] == wm_updates == {1000: 349, 5000: 1949}[args.checkpoint_step]
+            and current["policy_updates"] == actor_updates == {1000: 299, 5000: 1899}[args.checkpoint_step],
         "all_optimizer_steps_match": all(row["passed"] for row in optimizers.values()),
         "all_networks_changed": all(row["same_parameter_keys_and_shapes"] and row["changed_tensors"] > 0
                                     for row in networks.values()),

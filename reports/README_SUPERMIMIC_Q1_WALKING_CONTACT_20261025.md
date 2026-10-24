@@ -55,3 +55,17 @@ env CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THR
 原生避碰启用后，全部八组stance_collision的模型自穿透最大值为0；无避碰stance六组有6.68至18.20mm穿透。这个小样本结果支持保留避碰方向，但不能证明全部动作可避碰或动力学可行，且它未修复落地。根残余外力中位数仍约一倍体重。下一先独立FK/差分/数组重算，再在同四个train中加入固定脚水平速度条件，避免把低高度摆动当站立；保留首轮原件/生产者，不以P10测试调参。
 
 新增独立`audit_walking_contact.py`不调用原IK/producer统计；重读原数组并使用独立脚底查询、新MuJoCo状态逐帧FK和inverse，核全部速度/三五点加速度、任务误差、足底、穿透及关键结果。原始生产者/helper保持不变；审计发布部署后实际结果待。
+
+## 06:27独立几何与inverse核验
+
+审计发布`a7f85730514bb5bba370f8ad58c9e35ac273f075`已独立核Q1远端；auditor部署SHA`c7f1e14d00350630e4db40321141fcd16c786ab448d2b6040ea7f06c9298fb91`一致。独立CPU进程原生退出0，24组共8940项数值核验通过，重新运行8436次MuJoCo inverse，所有保存数组与原输入前后SHA保持；原根轨迹、非足任务、时轴、速度/加速度、逐帧足底/穿透及任务残差已核。未重新运行IK/策略或积分，不把统计/逆动力学一致提升为跟随效果。
+
+[原样独立收据](../data/manifests/supermimic_q1_P12_contact_audit_20261025.json)6626字节/SHA`590c0f01038c34b782e6b014ef2b56fb21c011593ec84cbf11f648ef38c2ed6a`，服务器原件为实验根`independent_audit.json`，stdout`logs/PHUMA_P12_contact_audit_20261025.log`。高度单判方案的失败结论保持，所有输出无训练资格。
+
+## P12B速度条件准备
+
+新增薄适配器`probe_walking_contact_velocity.py`及三项标签控制，保留原P12生产者/helper/原件。复用同一发动程序、四个train、两种限速、三个变体及全部任务/物理设置，唯一新增标签条件为映射踝部世界XY速度不大于0.15m/s，再去短于4帧的内部支撑段；不强行补足无接触帧。速度来自原50Hz目标的二阶边界/中央差分，阈值预定、不按测试选型。
+
+适配器显式替换本worker的接触目标回调，只修改本地推断标签，不改原任务/源数组；选择与最终receipt记录实际hook、适配器/控制/基生产者SHA和有效标签规则，输入前后绑定。若某脚没有支撑或求解失败，保留真实失败，不补虚假接触。原输出继续无资格，8rad/s仍不符合原速度门。
+
+本地三项速度标签控制及两份新代码语法通过。代码发布/服务器标签控制后，以上命令只将入口换为`probe_walking_contact_velocity.py`、新目录换为`PHUMA_P12B_walking_contact_velocity_probe_20261025`，其余预算、无CUDA和停止保护不变。真实P12B与独立auditor执行待；不改R02D或预留P10。

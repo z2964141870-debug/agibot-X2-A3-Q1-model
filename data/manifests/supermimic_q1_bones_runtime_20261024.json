@@ -1,0 +1,76 @@
+{
+  "stage": "SM-Q1-BONES-P00-RUNTIME",
+  "recorded_beijing": "2026-10-24T20:42:00+08:00",
+  "entry": {
+    "path": "script/supermimic_q1_sources/runtime_guard.py",
+    "sha256": "020e80d36da018ef240f80c38d1d49af2d6d1ed0e4d7b0297bd4f7b934182c74"
+  },
+  "controls_entry": {
+    "path": "script/supermimic_q1_sources/test_runtime_guard.py",
+    "sha256": "738d8500d425bf872619af450603022c504220f9b6d945084afacc8c69bffc1c"
+  },
+  "goal_config": {
+    "path": "script/supermimic_q1_sources/bones_goal_20261024.json",
+    "sha256": "570fb1b21761b7f7a79380e0afe7823c34250c77a0d667bc8f7b7a1349dc523d"
+  },
+  "deployed_source_sha_matched": true,
+  "local_controls_passed": 8,
+  "server_controls_passed": 8,
+  "server_controls_native_exit_code": 0,
+  "server_controls_log": "logs/BONES_P00_runtime_controls_20261024.log",
+  "production_budget_no_gpu_probe_native_exit_code": 0,
+  "probe": {
+    "status": "WORKER_COMPLETED",
+    "command": [
+      "/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python",
+      "-c",
+      "import json,os; print(json.dumps({'probe':'no_gpu_no_optimizer','pid':os.getpid()}),flush=True)"
+    ],
+    "cwd": "/opt/data/private/YuanQi_Q1",
+    "started_utc": "2026-10-24T12:40:36.332279+00:00",
+    "controller_pid": 818276,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "experiment": {
+        "root": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/BONES_P00_runtime_probe_20261024",
+        "unique_allocated_bytes": 8192,
+        "unique_logical_bytes": 5293,
+        "unique_inodes": 2,
+        "symlinks_not_followed": 0
+      },
+      "source": {
+        "root": "/opt/data/private/YuanQi_Q1/data/references/bones_seed",
+        "unique_allocated_bytes": 209379328,
+        "unique_logical_bytes": 209371402,
+        "unique_inodes": 6,
+        "symlinks_not_followed": 0
+      },
+      "free_bytes": {
+        "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/BONES_P00_runtime_probe_20261024": 1965380427776,
+        "/opt/data/private/YuanQi_Q1/data/references/bones_seed": 1965380427776
+      }
+    },
+    "error": null,
+    "worker_pid": 818277,
+    "worker_group": 818277,
+    "cleanup": {
+      "worker_started": true,
+      "worker_pid": 818277,
+      "worker_group": 818277,
+      "worker_reaped": true,
+      "worker_return_code": 0
+    },
+    "ended_utc": "2026-10-24T12:40:36.399638+00:00"
+  },
+  "health": {
+    "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+    "disk_free_bytes": 1965380427776,
+    "memory_bytes": 26966880256,
+    "oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 14\n",
+    "gpu": "NVIDIA GeForce RTX 3090, 39, 17788",
+    "controls_log": "test_broken_status_io_also_cleans_up_worker (test_runtime_guard.RuntimeGuardTests.test_broken_status_io_also_cleans_up_worker) ... ok\ntest_exception_during_active_worker_terminates_and_reaps_it (test_runtime_guard.RuntimeGuardTests.test_exception_during_active_worker_terminates_and_reaps_it) ... ok\ntest_free_reserve_and_source_cap_are_checked_separately (test_runtime_guard.RuntimeGuardTests.test_free_reserve_and_source_cap_are_checked_separately) ... ok\ntest_hardlinks_are_unique_and_external_symlink_is_not_followed (test_runtime_guard.RuntimeGuardTests.test_hardlinks_are_unique_and_external_symlink_is_not_followed) ... ok\ntest_nonzero_exit_and_single_use_are_preserved (test_runtime_guard.RuntimeGuardTests.test_nonzero_exit_and_single_use_are_preserved) ... ok\ntest_preflight_refuses_to_start_when_budget_fails (test_runtime_guard.RuntimeGuardTests.test_preflight_refuses_to_start_when_budget_fails) ... ok\ntest_signal_to_guard_stops_and_reaps_owned_worker (test_runtime_guard.RuntimeGuardTests.test_signal_to_guard_stops_and_reaps_owned_worker) ... ok\ntest_stalled_progress_terminates_worker (test_runtime_guard.RuntimeGuardTests.test_stalled_progress_terminates_worker) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 1.535s\n\nOK\n"
+  },
+  "new_optimizer_updates": 0,
+  "new_physics_steps": 0,
+  "limitations": "Guard tested and available only for commands launched through it. Existing experiments were not modified. No BONES input or training registration has occurred; this probe proves storage/lifecycle behavior, not training capacity or motion tracking."
+}

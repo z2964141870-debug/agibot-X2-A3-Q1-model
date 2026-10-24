@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-24：[BONES-SEED主线目标](README_SUPERMIMIC_Q1_BONES_GOAL_20261024.md)已开始。[P01元数据审计](README_SUPERMIMIC_Q1_BONES_METADATA_20261024.md)20:30:22完成：142220行CSV/parquet全字段一致、时序覆盖/区间通过，71117来源组隔离，固定train1024/dev128/test128独立候选；两端6控制与独立索引重算通过。20:31 D:\tmp仍无完整动作包，已询问实际路径；下一磁盘/worker保护与原包接入，尚无BONES参考/训练。未知fps不算合格秒数，此前AMASS优先建议被新目标覆盖。
+2026-10-24：[BONES-SEED主线目标](README_SUPERMIMIC_Q1_BONES_GOAL_20261024.md)已开始。[P01元数据审计](README_SUPERMIMIC_Q1_BONES_METADATA_20261024.md)142220行/352703事件及71117来源组隔离通过，固定train1024/dev128/test128独立候选。[P00存储/worker保护](README_SUPERMIMIC_Q1_BONES_RUNTIME_20261024.md)两端8控制及真实预算非GPU探针通过，磁盘余1.965TB/OOM14；仅对显式新调用生效。用户确认完整包仍在D:\tmp下载，下一P02原包接入，尚无BONES参考/训练。未知fps不算合格秒数，此前AMASS优先建议被新目标覆盖。
 
 2026-10-24：[PHUMA/BONES-SEED/AMASS价值与优先级](README_SUPERMIMIC_Q1_DATASET_PRIORITY_20261024.md)。建议当前新增准备优先AMASS小移动库，BONES-SEED负责论文数据对齐，PHUMA保留现成基线；严格来源复现优先BONES、立即现成闭环PHUMA成本最低。尚无Q1公平排名，未新转换/训练。
 

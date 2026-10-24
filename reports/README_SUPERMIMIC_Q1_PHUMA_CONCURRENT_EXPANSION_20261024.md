@@ -1,6 +1,6 @@
 # PHUMA独立扩库与训练资源隔离
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-P06。状态：低优先级有限数据worker入口已实现，本地3项控制通过，真实新批次尚未执行；R02原训练继续。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-P06。状态：B015真实32片转换/独立19门完成，9片合格/31.08秒，原生退出0、worker已回收/OOM14；R02继续，900轮。新参考未混入R02，完整扩展库尚未组装。
 
 ## 目标与范围
 
@@ -41,3 +41,15 @@ env CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THR
 ## 结果、保存与下一步
 
 当前仅完成保护入口，0新Q1参考/optimizer；原R02继续有限预算及配对评测。下一发布部署、小批真实执行，检查本worker的原生退出/guard清理、原训练身份与进度、OOM和合格秒数；通过后按固定名单继续互不重叠的独立批次。新参考必须完整跨批时轴/来源隔离重算后才登记新库，不改变正在训练的R02。失败同样立即登记，保留原目录；数据/数组全部LOCAL_ONLY。
+
+## B015真实完成
+
+发布`0ca9a975905ece75807d29c52eefc89b79423f5e`已显式推送Q1并独立核远端；guard入口SHA`29bd2509cffccad91752e7c8119ab40262261fdba8d6ae098f9f0eb356cdf3ea`、测试SHAa989f93a…两端一致，服务器3项控制通过，固定额外名单SHA631cd06b…一致。上方命令已实际执行，23:30:23至23:31:45，guard原生退出0。
+
+32个固定train候选(offset0/count32)，转换无异常；原19门接纳9片/31.08秒，其中other8、移动1/2.06秒。转换/独立检查计时73.76秒，guard全程82.28秒。仍主要被支撑比例20、30mm间隙16、自碰撞11、转换初门10、残差5拒绝，计数重叠。新片与原库的合格训练时长算术为1258.18秒（20.97分钟），尚未作完整跨部分合库/时轴重算，不宣称30分钟达成。
+
+worker826112独立进程组，guard826110；实际检查时见/proc活跃、8个中间NPZ，采样共享内存30448566272字节，低于28.75GiB上限30870077440。结束后guard明确worker_reaped=true/return_code0，OOM14，内存28714233856字节、批次实际分配19795968字节、盘余1965634822144字节。没有给训练发信号。完成后原trainer825189仍RUNNING并到900轮/57600交互、WM309组/actor259次、GPU40摄氏度/OOM14。
+
+实际产物`data/supermimic_for_q1/PHUMA_P06_B015_20261024/batch/`，stdout`logs/PHUMA_P06_B015_20261024.log`，guard stdout另`logs/PHUMA_P06_B015_20261024_guard.log`。completion为2195字节，SHA`ba4d19cc325f705032a96cad43c0ba4701b5422c56575d6f71005bb4ea47a87d`；[小收据](../data/manifests/supermimic_q1_phuma_P06_B015_20261024.json)及[guard收据](../data/manifests/supermimic_q1_phuma_P06_B015_guard_20261024.json)。原manifest/reference_check的大小/SHA均在completion中，未重做本批几何。
+
+下一独立B016从offset32/count128开始；仍单数据worker、同一来源/门/资源提前停止线，与B015不重叠。若内存保护停止，保留失败目录，不放宽保护线或动原R02。

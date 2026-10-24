@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 06:17：[P12步行接触对照准备](README_SUPERMIMIC_Q1_WALKING_CONTACT_20261025.md)，复用P11四个train来源，固定根/时轴比较支撑脚目标及Mink避碰，2/8rad/s共24组；本地三项来源/标签控制通过，服务器几何/原生不等式控制和真实结果待。R02D最后实读06:03为2050新增轮，唯一训练保持，BONES交师兄。
+
 2026-10-25 05:55最新：[R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)1825新增轮/116800转移、三实际进程身份保持，越过原1810数值失败位置但效果仍待；保存1500审计B十三门全过/516冻结保持，A元数据断言失败保留。[P11](README_SUPERMIMIC_Q1_WALKING_RETARGET_20261025.md)188项保存数组独立重算误差0，限速单独不足以解决步行支撑；[P10/B](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)0/15新walking准入，不以test调参。共享盘余785GB/本轮0.822GB，100GiB停止线保持。当前恢复入口已精简，旧全文移[历史归档](README_CURRENT_STATE_ARCHIVE_20261025.md)。
 
 2026-10-25 05:40：[P11真实十二组对照完成](README_SUPERMIMIC_Q1_WALKING_RETARGET_20261025.md)，2rad/s确实截断部分步态，但4/8仍支撑不足、两片约9mm自穿透；不采用提高上限即准入，下一train接触一致性。服务器3控制0跳过、guard退出0/worker回收/0新参考。R02D1400新增轮继续，中间保存独立审计入口已准备、结果待。
@@ -140,6 +142,7 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-25 | P12训练步行接触一致性 | 固定P11四个train来源，来源/标签三控制通过；服务器几何/避碰时间步控制及真实24组待，见[阶段记录](README_SUPERMIMIC_Q1_WALKING_CONTACT_20261025.md) |
 | 2026-10-25 | R02D动作域匹配试验 | 04:56独立启动，初始继承12门/运行10门通过，275新轮/WM59组/actor9次、516冻结；固定7000新轮进行中，效果待，见[阶段记录](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md) |
 | 2026-10-25 | S02动作域一致性与数值失败 | 5控制、1500保存15门、真实replay H32/BPTT7门通过，未精确重现崩溃/证明移动改善，见[阶段记录](README_SUPERMIMIC_Q1_ACTION_DOMAIN_20261025.md) |
 | 2026-10-25 | P09来源排除视图训练登记 | 两端四项控制及真实服务器预检通过，612训练/dev6/test7；无第二训练，见[阶段记录](README_SUPERMIMIC_Q1_SOURCE_VIEW_REGISTRATION_20261025.md) |

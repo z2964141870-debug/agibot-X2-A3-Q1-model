@@ -95,3 +95,5 @@ git log -3 --oneline
 ```
 
 先确认当前文件版本，再读本文件及相关阶段 README。只复核会变化的状态和仍未解决的问题，不重复已完成的静态盘点。
+
+- 每日研究最近[10/24三项简报](research/2026-10-24/README.md)：PhysibleMDM参考可行性、MPBRS折扣/许可边界、DiffDreamer模型分工；53请求52成功、8摘要/3相关正文/4固定文本/111条去重，无新假设或科学计算。最新Q1背景核至cf61084保存记录，不把02:38快照当实时；主线以Q1阶段为准。通用研究main与Q1相关记录待实际推送核验，见[检查](README_RESEARCH_CHECK_20261024.md)及[回执](../data/manifests/research_watch_sync_20261024.json)。

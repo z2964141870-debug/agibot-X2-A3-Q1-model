@@ -1,5 +1,7 @@
 # YUANQI 具身智能研究跟踪
 
+2026-10-24当前入口：工程已于10/23改为[SuperMimic for Q1](README_SUPERMIMIC_FOR_Q1_20261023.md)，huanyu:/opt/data/private/YuanQi_Q1，Q1分支。今天[三项研究简报](research/2026-10-24/README.md)已保存；通用完整日报/候选/去重由[main研究入口](https://github.com/z2964141870-debug/agibot-X2-A3-Q1-model/blob/main/reports/README_RESEARCH_WATCH.md)维护，Q1旧研究状态不是当前完整去重源。下文早期工程背景按历史理解，当前科学状态见[最新状态](README_CURRENT_STATE.md)。本日报不调度训练；发布以[回执](../data/manifests/research_watch_sync_20261024.json)为准。
+
 建立：2026-09-29。用户已选择每天上午 9:00 自动检查。目标是减少资讯阅读负担，把值得借鉴的进展转成有依据的实验候选。
 
 ## 运行方式

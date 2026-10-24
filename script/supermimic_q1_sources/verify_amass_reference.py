@@ -41,7 +41,7 @@ def independent_mapping(body, robot_positions, robot_rotations, scale):
     return positions, target_rotations, root_positions, root_quaternions
 
 
-def check(assets, row, body):
+def check(assets, row, body, target_builder=independent_mapping):
     import mujoco
     import numpy as np
     from supermimic.q1_assets import TRACKED
@@ -71,7 +71,7 @@ def check(assets, row, body):
         robot_lengths.append(np.linalg.norm(np.diff(robot_cal[chain], axis=0), axis=-1).sum())
         source_lengths.append(np.median(np.linalg.norm(np.diff(body.positions[:, chain], axis=1), axis=-1).sum(-1)))
     scale = float(np.mean(robot_lengths) / np.mean(source_lengths))
-    expected_pos, expected_rot, roots, root_quats = independent_mapping(body, robot_cal, robot_rot, scale)
+    expected_pos, expected_rot, roots, root_quats = target_builder(body, robot_cal, robot_rot, scale)
     with np.load(row["output"]["path"], allow_pickle=False) as saved, np.load(row["kinematic_trace"]["path"], allow_pickle=False) as trace:
         q, v, times = saved["qpos"].astype(float), saved["qvel"].astype(float), saved["time_s"].astype(float)
         if (q.shape != (201, 29) or v.shape != (201, 28)

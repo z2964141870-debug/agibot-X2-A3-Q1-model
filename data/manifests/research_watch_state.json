@@ -2,9 +2,9 @@
   "schema_version": 1,
   "automation_id": "yuanqi",
   "timezone": "Asia/Shanghai",
-  "last_successful_source_check_at": "2026-10-23T09:17:01+08:00",
-  "last_report_date": "2026-10-23",
-  "last_report_path": "reports/research/2026-10-23/README.md",
+  "last_successful_source_check_at": "2026-10-24T09:10:53+08:00",
+  "last_report_date": "2026-10-24",
+  "last_report_path": "reports/research/2026-10-24/README.md",
   "initial_check": {
     "mode": "manual",
     "source_scope": "arXiv cs.RO 2026-09-29 推送筛选与三篇原始页面核对；不是全领域或系统查新。",
@@ -2327,6 +2327,215 @@
       "disposition": "ALREADY_REPORTED_ENGINEERING_DEDUP_ONLY",
       "reported_in": "reports/README_SUPERMIMIC_FOR_A3_20261023.md",
       "dedup_key": "github:CuboiLeo/SuperMimic-Reproduced@d9be385b3eeb13a638fb33fb200d3bfd9be9839f"
+    },
+    {
+      "id": "arxiv:2610.30334",
+      "version": "v1",
+      "title": "MPBRS: Multi-Potential-Based Reward Shaping for Unified Reward Configuration in Humanoid Locomotion",
+      "url": "https://arxiv.org/abs/2610.30334v1",
+      "first_submitted_at": "2026-10-21T18:52:28Z",
+      "first_submitted_timezone": "UTC",
+      "first_submitted_at_beijing": "2026-10-22T02:52:28+08:00",
+      "feed_announced_on": "2026-10-23",
+      "feed_timezone": "America/New_York",
+      "first_seen_on": "2026-10-24",
+      "reproduced": false,
+      "last_fetched_at": "2026-10-24T09:10:53+08:00",
+      "check_manifest": "data/manifests/research_watch_check_20261024.json",
+      "verification_level": "原摘要/提交历史及相关方法、实验、限制正文；作者固定树和README/奖励/环境/PPO配置四文本大小/Git-blob/SHA256核验；未运行或复现。",
+      "code_status": "AUTHOR_PUBLIC_CODE_NO_LICENSE_OR_WEIGHTS_IDENTIFIED_IN_PINNED_TREE",
+      "notes": "三势能差分用于九人形，主要作者报告降低调权敏感性；PPO gamma0.99而塑形gamma1.0，不能直接套经典策略不变性保证，需匹配终止处理。无Q1验证；基线后再评估，当前只借独立行为/奖励拆分。",
+      "project_url": "https://github.com/aralab-unr/MPBRS",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-24/README.md",
+      "dedup_key": "arxiv:2610.30334@v1",
+      "cache_paths": [
+        "data/research/2026-10-24/sources/mpbrs_abs.html",
+        "data/research/2026-10-24/sources/mpbrs_full.html"
+      ]
+    },
+    {
+      "id": "arxiv:2610.30500",
+      "version": "v1",
+      "title": "PhysibleMDM: Enforcing Inference-Time Physical Feasibility Constraints on Motion Diffusion Models via Noise Optimization",
+      "url": "https://arxiv.org/abs/2610.30500v1",
+      "first_submitted_at": "2026-10-21T22:31:27Z",
+      "first_submitted_timezone": "UTC",
+      "first_submitted_at_beijing": "2026-10-22T06:31:27+08:00",
+      "feed_announced_on": "2026-10-23",
+      "feed_timezone": "America/New_York",
+      "first_seen_on": "2026-10-24",
+      "reproduced": false,
+      "last_fetched_at": "2026-10-24T09:10:53+08:00",
+      "check_manifest": "data/manifests/research_watch_check_20261024.json",
+      "verification_level": "原摘要/提交历史及相关方法、实验、限制和附录接触/动力学段落；未核实现或复现。",
+      "code_status": "NOT_LOCATED_IN_CHECKED_ABSTRACT_AND_FULLTEXT",
+      "notes": "冻结MDM，Sep-CMA-ES搜索初始/后验噪声，几何检查加受限逆动力学合法接触力/浮动基座残差。软惩罚无严格保证、非Q1、实时成本；与现有MuJoCo软接触inverse区别。现在借诊断项，匹配MDM和基线后再试。",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-24/README.md",
+      "dedup_key": "arxiv:2610.30500@v1",
+      "cache_paths": [
+        "data/research/2026-10-24/sources/physible_abs.html",
+        "data/research/2026-10-24/sources/physible_full.html"
+      ]
+    },
+    {
+      "id": "arxiv:2610.31617",
+      "version": "v1",
+      "title": "DiffDreamer: Coupling World Models with Differentiable Simulation for Agile Quadrotor Control",
+      "url": "https://arxiv.org/abs/2610.31617v1",
+      "first_submitted_at": "2026-10-22T17:41:13Z",
+      "first_submitted_timezone": "UTC",
+      "first_submitted_at_beijing": "2026-10-23T01:41:13+08:00",
+      "feed_announced_on": "2026-10-23",
+      "feed_timezone": "America/New_York",
+      "first_seen_on": "2026-10-24",
+      "reproduced": false,
+      "last_fetched_at": "2026-10-24T09:10:53+08:00",
+      "check_manifest": "data/manifests/research_watch_check_20261024.json",
+      "verification_level": "原摘要/提交历史及相关双路径actor、实验/动捕与限制正文；未核实现或复现。",
+      "code_status": "NOT_LOCATED_IN_CHECKED_ABSTRACT_AND_FULLTEXT",
+      "notes": "世界模型处理外部/历史特征，可微物理处理自身，分离critic离散奖励和显式运动反传；actor latent输入detach。仅四旋翼/动捕真机，接触非平滑未验证；Q1仅背景，不替代SuperMimic复现。",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-24/README.md",
+      "dedup_key": "arxiv:2610.31617@v1",
+      "cache_paths": [
+        "data/research/2026-10-24/sources/diffdreamer_abs.html",
+        "data/research/2026-10-24/sources/diffdreamer_full.html"
+      ]
+    },
+    {
+      "id": "arxiv:2610.31156",
+      "version": "v1",
+      "title": "Calibration-free IMU-based Relative Orientation Estimation under Dynamic Human Motion",
+      "url": "https://arxiv.org/abs/2610.31156v1",
+      "first_submitted_at": "2026-10-22T12:14:16Z",
+      "first_submitted_timezone": "UTC",
+      "first_submitted_at_beijing": "2026-10-22T20:14:16+08:00",
+      "feed_announced_on": "2026-10-23",
+      "feed_timezone": "America/New_York",
+      "first_seen_on": "2026-10-24",
+      "reproduced": false,
+      "last_fetched_at": "2026-10-24T09:10:53+08:00",
+      "check_manifest": "data/manifests/research_watch_check_20261024.json",
+      "verification_level": "仅原摘要/提交历史；全文、代码、资产未核。",
+      "code_status": "NOT_CHECKED",
+      "notes": "EKF联合相对朝向/传感器位置，依赖运动激励和刚体约束；不能由calibration-free名称推断柔性传感衣免标定，背景候选。",
+      "disposition": "ABSTRACT_BACKGROUND_ONLY",
+      "dedup_key": "arxiv:2610.31156@v1",
+      "cache_paths": [
+        "data/research/2026-10-24/sources/calfree_abs.html"
+      ]
+    },
+    {
+      "id": "arxiv:2610.30540",
+      "version": "v1",
+      "title": "Motion Retargeting with Spatiotemporal Preferences for Humanoid Loco-Manipulation",
+      "url": "https://arxiv.org/abs/2610.30540v1",
+      "first_submitted_at": "2026-10-21T23:54:17Z",
+      "first_submitted_timezone": "UTC",
+      "first_submitted_at_beijing": "2026-10-22T07:54:17+08:00",
+      "feed_announced_on": "2026-10-23",
+      "feed_timezone": "America/New_York",
+      "first_seen_on": "2026-10-24",
+      "reproduced": false,
+      "last_fetched_at": "2026-10-24T09:10:53+08:00",
+      "check_manifest": "data/manifests/research_watch_check_20261024.json",
+      "verification_level": "仅原摘要/提交历史；未请求正文或核验代码。",
+      "code_status": "NOT_CHECKED",
+      "notes": "VLM关键身体/时段分配优化预算，接触锚点及STRL；G1仿真/R1实机作者摘要，Q1未知。仅候选，不因有VLM换当前IK/训练路线。",
+      "disposition": "ABSTRACT_BACKGROUND_ONLY",
+      "dedup_key": "arxiv:2610.30540@v1",
+      "cache_paths": [
+        "data/research/2026-10-24/sources/str_abs.html"
+      ]
+    },
+    {
+      "id": "arxiv:2610.31608",
+      "version": "v1",
+      "title": "Humanoid Mobility via Attention-based Contacts",
+      "url": "https://arxiv.org/abs/2610.31608v1",
+      "first_submitted_at": "2026-10-22T17:37:36Z",
+      "first_submitted_timezone": "UTC",
+      "first_submitted_at_beijing": "2026-10-23T01:37:36+08:00",
+      "feed_announced_on": "2026-10-23",
+      "feed_timezone": "America/New_York",
+      "first_seen_on": "2026-10-24",
+      "reproduced": false,
+      "last_fetched_at": "2026-10-24T09:10:53+08:00",
+      "check_manifest": "data/manifests/research_watch_check_20261024.json",
+      "verification_level": "仅原摘要/提交历史；全文/代码/训练资产未核。",
+      "code_status": "NOT_CHECKED",
+      "notes": "注意力预测未来接触、接触条件跟踪，部署不输入动作参考；与SMPL直接跟随要求不同，仅阅读候选。",
+      "disposition": "ABSTRACT_BACKGROUND_ONLY",
+      "dedup_key": "arxiv:2610.31608@v1",
+      "cache_paths": [
+        "data/research/2026-10-24/sources/contacts_abs.html"
+      ]
+    },
+    {
+      "id": "arxiv:2610.31166",
+      "version": "v1",
+      "title": "Memory before Goal: Role of Pre-History Memory for Humanoid Loco-Manipulation",
+      "url": "https://arxiv.org/abs/2610.31166v1",
+      "first_submitted_at": "2026-10-22T12:24:25Z",
+      "first_submitted_timezone": "UTC",
+      "first_submitted_at_beijing": "2026-10-22T20:24:25+08:00",
+      "feed_announced_on": "2026-10-23",
+      "feed_timezone": "America/New_York",
+      "first_seen_on": "2026-10-24",
+      "reproduced": false,
+      "last_fetched_at": "2026-10-24T09:10:53+08:00",
+      "check_manifest": "data/manifests/research_watch_check_20261024.json",
+      "verification_level": "仅原摘要/提交历史；项目页/代码/数字未进一步核验。",
+      "code_status": "NOT_CHECKED",
+      "notes": "对象事件选择历史帧用于人形VLA，说明记忆选帧有人形先行应用；不等同异步衣服/手腕估计，H001仍待查证。",
+      "project_url": "https://memory-before-goal.github.io",
+      "disposition": "ABSTRACT_BACKGROUND_ONLY",
+      "dedup_key": "arxiv:2610.31166@v1",
+      "cache_paths": [
+        "data/research/2026-10-24/sources/wholebodymem_abs.html"
+      ]
+    },
+    {
+      "id": "arxiv:2610.30876",
+      "version": "v1",
+      "title": "LocoManiLab: A Unified Testbed for Data, Policies, Controllers, and Deployment in Humanoid Loco-Manipulation",
+      "url": "https://arxiv.org/abs/2610.30876v1",
+      "first_submitted_at": "2026-10-22T07:56:54Z",
+      "first_submitted_timezone": "UTC",
+      "first_submitted_at_beijing": "2026-10-22T15:56:54+08:00",
+      "feed_announced_on": "2026-10-23",
+      "feed_timezone": "America/New_York",
+      "first_seen_on": "2026-10-24",
+      "reproduced": false,
+      "last_fetched_at": "2026-10-24T09:10:53+08:00",
+      "check_manifest": "data/manifests/research_watch_check_20261024.json",
+      "verification_level": "仅原摘要/提交历史；全文/代码/资产未核。",
+      "code_status": "NOT_CHECKED",
+      "notes": "统一任务/控制器/策略和仿真实机对照测试台，当前Q1基础跟随之前不扩为家居任务平台。",
+      "disposition": "ABSTRACT_BACKGROUND_ONLY",
+      "dedup_key": "arxiv:2610.30876@v1",
+      "cache_paths": [
+        "data/research/2026-10-24/sources/locomanilab_abs.html"
+      ]
+    },
+    {
+      "id": "github:aralab-unr/MPBRS",
+      "version": "a0dffb3444584b5ef4f6dbd265303fe845b036c2",
+      "title": "MPBRS author code",
+      "url": "https://github.com/aralab-unr/MPBRS/tree/a0dffb3444584b5ef4f6dbd265303fe845b036c2",
+      "commit_time_utc": "2026-10-21T18:43:12Z",
+      "first_seen_on": "2026-10-24",
+      "last_fetched_at": "2026-10-24T09:10:53+08:00",
+      "official": true,
+      "verification_level": "完整固定树114项/85blob与四文本大小/Git-blob/SHA256通过；仅静态相关段落，未运行。",
+      "code_status": "PUBLIC_CODE_LICENSE_NOT_IDENTIFIED_NO_WEIGHTS_IN_PINNED_TREE",
+      "notes": "公开训练入口、奖励/PPO配置/USD；树中未见LICENSE/权重，匿名401。仓库首次发现而非今日新增发布。未下载USD、视频或模型。",
+      "disposition": "ASSET_STATUS_FOR_REPORTED_PAPER",
+      "reported_in": "reports/research/2026-10-24/README.md",
+      "dedup_key": "github:aralab-unr/MPBRS@a0dffb3444584b5ef4f6dbd265303fe845b036c2",
+      "reproduced": false
     }
   ],
   "idea_ids": [
@@ -2337,22 +2546,22 @@
     "first_scheduled_run": "TRIGGER_AND_RESEARCH_VERIFIED",
     "last_error": {
       "scope": "canonical_worktree_and_partial_source_gap",
-      "recorded_at": "2026-10-23T09:17:01+08:00",
-      "ssh": "One bounded canonical Git status timeout; HEAD/worktree unknown; same existing connectivity condition",
-      "huggingface": "NOT_RECHECKED_TODAY_CURRENT_ASSETS_UNKNOWN",
-      "arxiv": "October22 RSS counts match current new for all three categories; older unexposed partitions/replacement/missing-version gaps retained",
-      "raw_text": "Three raw.githubusercontent.com resets recovered using pinned contents API"
+      "recorded_at": "2026-10-24T09:10:53+08:00",
+      "ssh": "One bounded hp3090 Git status timeout;worktree unknown;unchanged connectivity condition",
+      "huggingface": "NOT_REQUESTED_CURRENT_ASSET_METADATA_UNKNOWN",
+      "arxiv": "Current October23 counts agree;historical partitions/replacement/missing-version gaps retained",
+      "anonymous_code": "MPBRS anonymous portal401;public author GitHub contents verified"
     },
     "first_scheduled_trigger_at": "2026-09-30T01:01:12.375Z",
-    "last_scheduled_source_check_at": "2026-10-23T09:17:01+08:00",
-    "last_coverage_note": "48 source requests,45 successful; three raw-domain reset failures recovered with pinned contents API. October22 RO/LG/CV current RSS/new agree. Three new abstracts/history and three relevant full texts;five pinned README/license/implementation texts. Six original repo heads/two releases/seven older author pages/PredActor abstract unchanged;SuperMimic page unchanged vs prior ad-hoc cache.96→102 dedup;d9be third-party version already engineering-known. No new hypothesis or scientific execution.",
-    "last_scheduled_trigger_at": "2026-10-23T01:03:20.444Z",
+    "last_scheduled_source_check_at": "2026-10-24T09:10:53+08:00",
+    "last_coverage_note": "53 research HTTP requests,52 successful;anonymous code portal401. October23 RO/LG/CV RSS/new107/339/192 agree.8 abstracts/history;3 relevant full texts;4 pinned author texts.8 original repo heads/2 releases/8 old author pages/PredActor and SMR abstracts unchanged;PredActor README and SMR affiliation/site/PDF changes not promoted as new method.102→111;no new hypothesis. Q1 method reproduction context from cf61084;no live scientific host check.",
+    "last_scheduled_trigger_at": "2026-10-24T00:55:24.396Z",
     "last_run_interrupted": false,
     "last_run_resumed": false,
     "last_interrupted_check_manifest": "data/manifests/research_watch_check_20261003.json",
-    "last_check_outcome": "THREE_NEW_RELEVANT_READINGS_AND_AUTHOR_CODE_STATICALLY_VERIFIED_NOT_REPRODUCED",
+    "last_check_outcome": "THREE_NEW_RELEVANT_READINGS_FOR_Q1_NO_SCIENTIFIC_EXECUTION",
     "last_resumed_from_trigger_at": "2026-10-03T01:01:32.212Z",
-    "publication_status": "GITHUB_DOCUMENTS_VERIFIED",
+    "publication_status": "LOCAL_SAVED_PENDING_MAIN_AND_Q1_PUBLICATION",
     "pending_sync_manifest": null,
     "previous_sync_failure_resolved_connection_at": "2026-10-12T09:09:40+08:00",
     "previous_sync_failure": {
@@ -2387,9 +2596,11 @@
       "recorded_at": "2026-10-11T09:08:48+08:00",
       "same_ssh_problem_as_local_engineering_record": "reports/README_A3_CONTROLLER_ADAPTER_20261010.md"
     },
-    "pending_sync_dates": [],
-    "latest_sync_receipt_path": "data/manifests/research_watch_sync_20261023.json",
-    "last_notification_reason": "Useful new readings about causal retargeting, active calibration prerequisites and uncertainty limitations; do not repeat existing SSH/HF condition or engineering-known SuperMimic release.",
+    "pending_sync_dates": [
+      "2026-10-24"
+    ],
+    "latest_sync_receipt_path": "data/manifests/research_watch_sync_20261024.json",
+    "last_notification_reason": "Three concrete readings on reference dynamics, reward shaping caveat and learned/physical model separation;preserve current Q1 baseline and budget.",
     "user_action_issues": [
       {
         "id": "RECORD_CREDENTIAL_20261012",
@@ -2503,5 +2714,5 @@
     }
   },
   "dedup_rule": "同 ID/版本不重复转述；新版本或代码发布只有实质变化才再次报告，记录变化说明。",
-  "latest_check_manifest": "data/manifests/research_watch_check_20261023.json"
+  "latest_check_manifest": "data/manifests/research_watch_check_20261024.json"
 }

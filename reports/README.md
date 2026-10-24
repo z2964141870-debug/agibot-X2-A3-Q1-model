@@ -163,6 +163,7 @@ HP07退出定位：十步/CUDA同步已通过，30秒栈确认app.close触发STO
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-24 | 每日研究简报与Q1研究记录 | PhysibleMDM/MPBRS/DiffDreamer三项；8摘要/3相关正文/4固定文本，111条去重，未复现；见[简报](research/2026-10-24/README.md)和[阶段](README_RESEARCH_CHECK_20261024.md)，发布以[回执](../data/manifests/research_watch_sync_20261024.json)为准 |
 | 2026-10-23 | SuperMimic A3适配与R02训练 | 48000env-step/949次策略更新、配对物理评测/审计/D01完成；7/8改善但8/8提前失败，32步根位置误差17–19cm，尚非可用策略，见[结果与恢复](README_SUPERMIMIC_FOR_A3_20261023.md) |
 | 2026-10-22 | 传感衣遥操会话档案理解 | 包中主线已转回衣服IMU→FGP→SMPL→重定向→运控；30帧A3参考质量门未过，最后定位重定向误差，见[目标与进度](README_TELEOP_CONTEXT_REVIEW_20261022.md)；本轮只读档案，不恢复任务 |
 | 2026-10-22 | Onset团队说明与DIO再评估 | 完整任务热身跌倒62/80→59/80，非78%→13%；MLP历史栈非RNN，DIO4/8与会话留出2/4不倒可保留但算法贡献未证，见[复核与投入门](README_ONSET_TEAM_REVIEW_20261022.md)，0新训练/仿真 |

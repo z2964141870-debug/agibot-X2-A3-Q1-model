@@ -4,11 +4,11 @@
 
 Before changing control code or touching the robot, read:
 
-For the October v0.2 task, start with
-`reports/HANDOFF_TASK_CARD_20261020.md`, then the latest section of
-`reports/X2_SSH_TAKEOVER_20261020.md` and
-`reports/SONIC_V02_KEYBOARD_WALK_REVIEW_20261019.md`.
-These supersede August live-state, model/tuning, and stage claims below.
+For the live keyboard-walk task (first walk achieved 2026-10-23), start with
+`script/project_tools/x2_field_deploy/FIELD_CARD.md` (v3), then
+`script/project_tools/x2_field_deploy/x2_end_to_end_runbook.md` and
+`reports/X2_MISSING_JOINT_TOPICS_20261023.md` (closed).
+These supersede all earlier live-state, model/tuning, and stage claims below.
 Do not add runtime thresholds stricter than the pinned upstream Sonic-X2
 configuration; the extra 100 ms runtime freshness abort was removed at the
 user's request. This does not remove upstream protections, physical E-stop,

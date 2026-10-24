@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25：[R02第5000轮真实开发对照](README_SUPERMIMIC_Q1_R02_DEVELOPMENT_20261025.md)四阶段退出0，完整5→6/6、跟随仍0/6；移动只走0.078/参考0.521m。下一PHUMA扩库及移动模型诊断，原失败不重启。[P07](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md)02:57正式审计完成，HumanML内部原动作跨split0但全源隔离未证明。BONES继续交师兄。
+
 2026-10-25 02:53：[5000轮保存真实审计通过](README_SUPERMIMIC_Q1_RESOURCE_RECOVERY_20261025.md)，16门/469冻结/三Adam计数通过，原R02失败保留。六段development初始/5000动力学对照入口已准备，真实结果待；不以保存可用宣称策略成功。
 
 2026-10-25 02:51：[六个旧失败G1残留已精确回收](README_SUPERMIMIC_Q1_RESOURCE_RECOVERY_20261025.md)，容器内存下降21.20GB至12.76GB，GPU6348→14MiB/OOM14，0文件删除；原R02 FAILED保留。下一审计5000保存、六段开发初末动力学对照，尚无新训练或效果结论。

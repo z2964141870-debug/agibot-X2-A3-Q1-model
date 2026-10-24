@@ -1,6 +1,6 @@
 # PHUMA 与 AMASS 原动作别名审计
 
-记录日期：2026-10-25。阶段P07，状态：两端4控制通过；正式运行在内存预检退出1，未完成。
+记录日期：2026-10-25。阶段P07，状态：首次内存预检拒绝保留；资源恢复后正式审计完成，全源隔离仍未证明。
 
 ## 目标与范围
 
@@ -43,3 +43,9 @@ env CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THR
 同次实核原R02已在02:08:57内存保护FAILED至5300轮，随后SSH路由超时，详见[训练故障记录](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)。预检拒绝发生在R02终止之后，不把本次未读取输入的审计归因为此前训练内存上涨；真实进程归因待连接恢复。没有放宽任何保护或盲目重试。
 
 恢复原SSH路由并核资源后，仍可在本未创建的输出路径首次完成审计；若路径已由外部创建则用独立新目录。后续AMASS合库/测试候选应保守排除全部已使用原动作与受试者候选，并继续查其他PHUMA来源。原R02 FAILED不重启；先独立5000轮权重核验/配对开发评测，再登记新训练。AMASS P06新映射0/4不采用，PHUMA B017失败保留，移动有效性仍待实测。
+
+## 02:57正式运行完成
+
+[资源恢复](README_SUPERMIMIC_Q1_RESOURCE_RECOVERY_20261025.md)回收六个已失败旧G1残留后，按上述原命令/原保护线执行，原生退出0，首次正式输出`SOURCE_P07_aliases_20261025/receipt.json`，已保存[原样小收据](../data/manifests/supermimic_q1_source_P07_receipt_20261025.json)。开始13.513GB、结束13.691GB/OOM14，输入四份前后SHA未变，0新物理/参考/optimizer。
+
+353合格参考中95段HumanML（train94/development1）；74个AMASS相对事件名精确匹配、9个集合更名候选、12个未解。95段内部原动作及目录受试者候选跨split均0，开发移动`CMU/137/137_07`保持保守排除。另258段属于GRAB、idea400、game_motion等十个来源命名空间，跨集合生物身份、动作重复与未解匹配未完成；`source_isolation_certified=false`保持，不能声称已通过全源隔离。

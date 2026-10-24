@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-25 02:53实核：[资源恢复/5000保存审计](README_SUPERMIMIC_Q1_RESOURCE_RECOVERY_20261025.md)完成，六个旧G1失败残留已精确回收，内存34→12.76GB、GPU6348→14MiB、OOM14，0文件删除。5000权重16门、469冻结、1949组WM/1899次actor与Adam计数全过，SHA d6e0f870…；原R02 FAILED保留。新六段development配对入口已实现/语法检查，下一独立目录实际初始/5000自由根MuJoCo及两次轨迹审计，尚无本轮效果/新训练。盘余1.753TB且外部写入归因未定；BONES交师兄。若续原12000目标须从5000新登记7000轮，不能取5300失败计数。
+2026-10-25最新：[R02-DEV-A](README_SUPERMIMIC_Q1_R02_DEVELOPMENT_20261025.md)初始/5000六段开发MuJoCo及两次轨迹审计真实完成，四阶段退出0；完整5→6/6但仍0/6过门。移动参考0.521165m、策略仅0.078251m，根RMSE0.256907m/关节0.452543rad，不能称学会移动。原R02 FAILED/5000权重保留、469冻结及16门审计通过；test未用于选方向。下一现有PHUMA独立扩库及移动训练参考/世界模型诊断，再选新实验，不直接重启失败目录。[P07](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md)02:57正式审计退出0，95 HumanML中未见内部跨split原动作/目录候选，但其他258段与12未解匹配使全源隔离仍false。资源已清理六个旧失败G1残留、内存约13.44GB/OOM14，盘余最近1.753TB，BONES交师兄。若续原12000目标，应从5000另登记7000轮。
 
 现有数据进展：[AMASS P04](README_SUPERMIMIC_Q1_AMASS_RETARGET_20261025.md)16段/64秒人体FK及Q1独立门完成但0/16准入；[P05B](README_SUPERMIMIC_Q1_AMASS_MAPPING_20261025.md)804帧/20对账确认目标刚性长度不兼容及足底目标/IK偏差，A错误肘腕共用假设已撤回；[P06局部偏移](README_SUPERMIMIC_Q1_AMASS_LOCAL_OFFSET_20261025.md)真实4片仍0准入且有支撑/自碰撞退步，新配置不采用。[P07来源审计](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md)两端4控制通过，但正式运行在内存预检退出1、输出未创建；95 HumanML的轻量探查不等于全源隔离完成。[PHUMA P06](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)40新增合格/算术22.81分钟未合库，B017失败保留。BONES由师兄处理，代理不再获取；30分钟/1小时合格库与移动策略有效性目标仍未达。
 

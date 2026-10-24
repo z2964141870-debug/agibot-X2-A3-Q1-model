@@ -1,0 +1,25 @@
+test_bad_shape_and_nonfinite_rejected (test_walking_contact_targets.MaskTests.test_bad_shape_and_nonfinite_rejected) ... ok
+test_relative_height_translation_invariant_and_input_preserved (test_walking_contact_targets.MaskTests.test_relative_height_translation_invariant_and_input_preserved) ... ok
+test_native_collision_bound_matches_displacement_at_both_time_steps (test_walking_contact_targets.ServerGeometryTests.test_native_collision_bound_matches_displacement_at_both_time_steps) ... ok
+test_planted_geometry_and_continuous_swing_without_mutating_source (test_walking_contact_targets.ServerGeometryTests.test_planted_geometry_and_continuous_swing_without_mutating_source) ... ok
+test_reuses_p11_exact_selection_and_rejects_changed_roles (test_walking_contact_targets.SourceTests.test_reuses_p11_exact_selection_and_rejects_changed_roles) ... ok
+test_low_feet_moving_fast_are_not_stance (test_walking_contact_velocity.VelocityStanceTests.test_low_feet_moving_fast_are_not_stance) ... ok
+test_no_label_forced_for_missing_contact_and_bad_shape_rejected (test_walking_contact_velocity.VelocityStanceTests.test_no_label_forced_for_missing_contact_and_bad_shape_rejected) ... ok
+test_stationary_contact_preserved_and_inputs_unchanged (test_walking_contact_velocity.VelocityStanceTests.test_stationary_contact_preserved_and_inputs_unchanged) ... ok
+test_both_feet_registered_and_constraint_blocks_penetration (test_walking_contact_floor.FloorConstraintTests.test_both_feet_registered_and_constraint_blocks_penetration) ... ERROR
+
+======================================================================
+ERROR: test_both_feet_registered_and_constraint_blocks_penetration (test_walking_contact_floor.FloorConstraintTests.test_both_feet_registered_and_constraint_blocks_penetration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/test_walking_contact_floor.py", line 28, in test_both_feet_registered_and_constraint_blocks_penetration
+    bound = floor_limit(mink, model, .005)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/probe_walking_contact_floor.py", line 25, in floor_limit
+    raise ValueError("Every registered foot collision shape must have a native floor constraint")
+ValueError: Every registered foot collision shape must have a native floor constraint
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.531s
+
+FAILED (errors=1)

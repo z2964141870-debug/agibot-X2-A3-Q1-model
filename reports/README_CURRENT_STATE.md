@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-24当前推进：[PHUMA P04分批扩量](README_SUPERMIMIC_Q1_PHUMA_EXPANSION_20261024.md)。已实现全索引确定选择和有限批次V2转换/独立19门，4项本地来源隔离控制通过；排除旧112候选组、跨划分相同字节留test再dev。新名单/实际Q1参考尚待服务器执行，0新训练。下一核验部署和实时资源，生成名单后先四个32片独立批次；按实际合格秒数而非候选小时判断扩量。AMASS缺SMPL-X男女模型、完整BONES G1包仍待补，但PHUMA可独立推进。
+2026-10-24当前推进：[PHUMA P04分批扩量](README_SUPERMIMIC_Q1_PHUMA_EXPANSION_20261024.md)。两端4来源隔离控制通过，实际1861新候选，train1800/标称109.31分钟，不是Q1合格时长。B001–4四路内存保护退出1，各仅首片/无manifest；B005单路32片完整转换后误导入通用verify_reference退出1，已修明确PHUMA文件绑定及受限verify-existing入口。下一部署新版、负控拒绝B001缺manifest，再只补B005未开始的校验，不重做IK。OOM14/0新训练；旧实验与失败证据保留，之后B006新offset单路扩量。AMASS男女模型及完整BONES仍缺。
 
 2026-10-24当前优先：[AMASS/BONES-SEED接入](README_SUPERMIMIC_Q1_SOURCE_EXPANSION_20261024.md)。用户已扩展新实验数据范围。huanyu的`script/amass_bridge/data/amass_raw/AMASS_smplxg`找到17928个NPZ，头部索引及独立重算完成：17265标准SMPL-X动作、120Hz、16betas、标称56.34h；另490静态/173待处理，不是Q1合格时长。旧桥接缺字段时默认30Hz，禁止直接复用其PKL。四控制通过、实际索引退出0/OOM14，0新重定向/训练。
 

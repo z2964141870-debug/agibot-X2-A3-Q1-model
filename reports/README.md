@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 02:46：[连接与资源恢复](README_SUPERMIMIC_Q1_RESOURCE_RECOVERY_20261025.md)18864已恢复，R02 FAILED原样确认；六个10月21日G1失败评测残留身份/错误日志/无进展已核，尚未回收。下一原样证据→精确回收→5000保存及六段开发配对评测。BONES继续交师兄，原FAILED不重启，盘余约1.807TB/OOM14。
+
 2026-10-25 02:20:13最新实核：[原PHUMA R02内存保护FAILED](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)，02:08:57第5300轮/180.61分钟退出1，未执行配对评测；5000权重待独立核验。OOM14/盘余约1.965TB，之后SSH转发及直连超时，Mac Tailscale中继异常，现场归因待恢复。[P07](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md)两端4控制过但正式审计内存预检退出1，未创建输出。已保存[衍生故障收据](../data/manifests/supermimic_q1_R02_failure_observation_20261025.json)，不重启/改写失败实验或放宽保护；下方RUNNING条目为历史快照。
 
 2026-10-25：[P07来源别名审计准备](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md)严格以353片独立准入名单连接95 HumanML，区分事件名/镜像/裁片/受试者候选，4项本地控制通过，正式服务器收据待；不把名字不同当独立测试。原R02继续，AMASS P06 0/4不采用，B017保护暂停。

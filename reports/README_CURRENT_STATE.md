@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-25 02:20:13实核：[PHUMA R02](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)已于02:08:57第5300轮/339200交互、180.61分钟因容器内存保护FAILED，训练退出1、guard回收，后续评测未执行。最近5000权重205348199字节/SHA d6e0f870…待独立核验，不重启原FAILED目录。共享内存接近32GiB、OOM仍14，含约11.48GB inactive_file但归因未定；最后01:48:58的469冻结/三个原进程身份通过不能替代失败后现场核对。随后18864转发丢失，Windows与训练直连超时；Mac Tailscale中继报错、Windows仍标在线，不能说已关机。[衍生故障收据](../data/manifests/supermimic_q1_R02_failure_observation_20261025.json)保留实读结果，尚非原样远端副本。下一恢复连接→核进程/GPU/内存/原终态/469冻结/5000张量→独立配对开发评测→资源归因后登记新训练；不放宽保护。盘余最近约1.965TB。
+2026-10-25 02:46实核：[连接及资源恢复](README_SUPERMIMIC_Q1_RESOURCE_RECOVERY_20261025.md)18864已恢复，原R02 FAILED/train原样确认，guard为Z、controller/trainer不存在，不重启原目录。六个10月21日失败G1评测残留已核boot/start_ticks/命令/错误日志与无CPU/I/O进展，回收待执行；未发信号/删文件。容器约33.96GB/上限32GiB，OOM14，GPU39摄氏度/6348MiB/0%，盘余约1.807TB，磁盘变化归因未定。下一保存原样证据→精确回收→469冻结/5000保存/Adam审计→新目录step0/5000六段development配对动力学评测，test不用于选择。原R02第5300轮/180.61分钟退出1，5000权重待审，原终态/469冻结输入保留。
 
 现有数据进展：[AMASS P04](README_SUPERMIMIC_Q1_AMASS_RETARGET_20261025.md)16段/64秒人体FK及Q1独立门完成但0/16准入；[P05B](README_SUPERMIMIC_Q1_AMASS_MAPPING_20261025.md)804帧/20对账确认目标刚性长度不兼容及足底目标/IK偏差，A错误肘腕共用假设已撤回；[P06局部偏移](README_SUPERMIMIC_Q1_AMASS_LOCAL_OFFSET_20261025.md)真实4片仍0准入且有支撑/自碰撞退步，新配置不采用。[P07来源审计](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md)两端4控制通过，但正式运行在内存预检退出1、输出未创建；95 HumanML的轻量探查不等于全源隔离完成。[PHUMA P06](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)40新增合格/算术22.81分钟未合库，B017失败保留。BONES由师兄处理，代理不再获取；30分钟/1小时合格库与移动策略有效性目标仍未达。
 

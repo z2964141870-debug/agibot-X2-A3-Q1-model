@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25：[P09来源排除视图登记准备](README_SUPERMIMIC_Q1_SOURCE_VIEW_REGISTRATION_20261025.md)新独立入口和四项本地控制通过，显式绑定排除前/后来源证据且保留原几何/held-out，不伪造组库状态；服务器真实预检待，未登记或启动第二训练。R02C继续原固定340输入与7000新预算，BONES交师兄。
+
 2026-10-25 04:01：[PHUMA P08B-V2真实完成](README_SUPERMIMIC_Q1_PHUMA_LIBRARY_20261025.md)，排除4条训练目录候选冲突后train612片/36.52分钟，dev6/test7不变；保存时轴/原trainer准入及独立HumanML复审通过，全源隔离仍false。[R02C](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md)1625新增轮/累计6625、三进程身份及496冻结通过，GPU40/OOM14/盘余1.385TB，未热改340输入，无新效果结论。
 
 2026-10-25 03:41：[PHUMA B019完成](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)，额外1024来源全部处理完，算术616训练片/36.73分钟待完整组库。[PHUMA-D04](README_SUPERMIMIC_Q1_PHUMA_REFERENCE_DYNAMICS_20261025.md)8片/1441帧及736独立重算通过，发现静态过门参考仍浮脚/近地滑动，不据此宣称唯一失败原因。[R02C](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md)继续1025新轮/累计6025，OOM14，尚无新效果证明。下一P08组库与新增来源审计。
@@ -120,6 +122,7 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-25 | P09来源排除视图训练登记 | 独立入口及四项控制通过，服务器真实预检待；无第二训练，见[阶段记录](README_SUPERMIMIC_Q1_SOURCE_VIEW_REGISTRATION_20261025.md) |
 | 2026-10-25 | PHUMA P08/P08B扩展库与来源排除 | P08完整组库，P08B-V2排除4条冲突后612训练片/36.52分钟；准入/保存时轴及独立HumanML复审通过，全源隔离仍false，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_LIBRARY_20261025.md) |
 | 2026-10-25 | PHUMA D04参考接触与逆动力学 | 8段train/1441帧/2882次inverse及736独立重算完成，浮脚/近地滑动缺口确认，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_REFERENCE_DYNAMICS_20261025.md) |
 | 2026-10-25 | R02C独立续训 | 5000父保存继承12门/496冻结通过，固定7000新轮进行中，最终跟随效果待，见[阶段记录](README_SUPERMIMIC_Q1_R02_PARTIAL_CONTINUATION_20261025.md) |

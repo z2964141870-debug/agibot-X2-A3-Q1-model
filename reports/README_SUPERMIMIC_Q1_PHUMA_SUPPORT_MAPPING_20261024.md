@@ -1,6 +1,6 @@
 # PHUMA足底高度映射诊断
 
-记录日期：2026-10-24，北京时间。阶段：SM-Q1-PHUMA-D02。状态：两端四项刚体几何控制通过；首个真实执行因导入函数名错误退出1，尚无八片分析结果。已修正为既有lowest_foot，待发布及真实运行。PHUMA R01原训练继续，源码/输入/3000轮预算不改。
+记录日期：2026-10-24，北京时间。阶段：SM-Q1-PHUMA-D02/D02B。状态：两端四项刚体几何控制通过；D02导入失败已修正，D02B通过真实依赖导入后因内存余量保护退出1，两次均未创建样本输出。八片分析未完成，移至原训练流水线结束后。PHUMA R01继续，源码/输入/3000轮预算不改。
 
 ## 目标与范围
 
@@ -12,7 +12,7 @@
 
 三种足底曲线各保留原始世界高度。另用每条整片曲线一个固定平移比较时间变化；源曲线乘既有腿长比例表达为Q1米。该诊断平移不写回轨迹，不是逐帧根高投影，也不证明动力学可行。Q1目标脚是任务给定的刚体姿态，不保证双脚/全部关节能同时到达。
 
-新刚体几何查询支持sphere/box/mesh，四项控制覆盖带局部平移的旋转球、旋转盒垂直投影、网格顶点/多几何最低点和未知/空几何拒绝。Mac已原生退出0、4项通过。真实分析将逐帧把刚体查询与MuJoCo实际几何比较，同时复现原PHUMA源FK和既有支撑统计；这些运行尚未发生，不预写通过。CPU进程禁用CUDA，至少1GiB初始余量，距原30GiB训练保护线不足256MiB时停止诊断，OOM增量亦拒绝。
+新刚体几何查询支持sphere/box/mesh，四项控制覆盖带局部平移的旋转球、旋转盒垂直投影、网格顶点/多几何最低点和未知/空几何拒绝。Mac和服务器均原生退出0、4项通过。真实分析拟逐帧把刚体查询与MuJoCo实际几何比较，同时复现原PHUMA源FK和既有支撑统计；两次真实尝试均在样本处理前失败，不能宣称逐帧检查通过。CPU进程禁用CUDA，至少1GiB初始余量，距原30GiB训练保护线不足256MiB时停止诊断，OOM增量亦拒绝。
 
 ## 固定样本与产物
 
@@ -27,7 +27,7 @@
 - `train_squat_04ebe3a321c47d2f`。
 - `train_upper_a5678394f936531f`。
 
-服务器预定输出 `data/supermimic_for_q1/PHUMA_D02_support_mapping_20261024/receipt.json` 和逐片诊断NPZ，原件留服务器LOCAL_ONLY；Mac只取回小型JSON/日志。真实执行stdout/stderr放 `logs/PHUMA_D02_support_mapping_20261024.log`；控制输出单独保存。
+首次预定输出`PHUMA_D02_support_mapping_20261024/receipt.json`和修正后D02B目录均未创建；D02B日志包含真实stdout/stderr，已取回并核对大小/SHA。未来独立D02C的NPZ仍只留服务器，Mac仅取小型JSON/日志，不重复既有输出目录。
 
 ## 版本与复现
 
@@ -40,12 +40,12 @@ CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 "$PY" \
   --root /opt/data/private/YuanQi_Q1 \
   --motions /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P03_references_20261024 \
   --training-spec /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024/spec.json \
-  --output /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_D02_support_mapping_20261024 \
+  --output /opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_D02C_support_mapping_20261024 \
   --code-commit "$DIAGNOSTIC_COMMIT" \
   --clips train_locomotion_1bc87468bec5a472 train_locomotion_26832240824d6963 train_locomotion_fe9abef3042c3c39 train_locomotion_1f75cd47fbf61bb7 train_locomotion_6cafc84ec90e5186 train_locomotion_007047b45054fd5a train_squat_04ebe3a321c47d2f train_upper_a5678394f936531f
 ```
 
-输出排他创建，不能重跑覆盖同一目录。先服务器四项控制、资源门和当前进程身份复核，再执行一次真实八片分析；保存结果/失败后更新本README和两个入口，提交推送并独立核验Q1。随后继续等待原训练与既定匹配评测，不把诊断准备记为跟随提升。
+上述为训练流水线结束且重新核验内存余量后的D02C恢复入口，当前未执行。输出排他创建，不能重跑覆盖同一目录。先查原controller终态及真实依赖/资源门，再执行真实八片分析；保存结果/失败后更新本README和两个入口、审计推送Q1。当前先等待原训练与既定匹配评测，不把诊断准备记为跟随提升。
 
 ## 首次执行失败与修正
 
@@ -54,3 +54,13 @@ CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 "$PY" \
 本修正只改变分析脚本三处函数引用，不改R01冻结的既有验证器、参考或训练入口。后续采用独立`PHUMA_D02B_support_mapping_20261024`输出目录和日志，先在服务器执行包含真实依赖的导入检查，再分析原定八片。首次失败的退出码与原日志必须保留。
 
 13:47:38只读核查原controller799647/worker799650仍为同一父子进程、同一启动时间和boot；1625轮/26000控制转移/599组WM/549次actor。GPU40摄氏度、cgroup30,838,591,488字节、OOM仍14。该快照不代表最终效果。
+
+## D02B资源保护停止
+
+修正发布`248c2cf26ae179be50e989486e0763bd0adc2d77`已推送并独立核验Q1远端；服务器分析源码SHA`8b445549ce41fc850600ca872f0f689a8602fd6fa0763363ac35afa13fa648c3`与发布一致。13:52:03真实依赖导入、原boot/start_ticks/父子进程及至少1GiB余量检查通过：cgroup31,133,540,352字节，OOM14，训练1775轮。
+
+D02B实际运行原生退出1，在源/目标MuJoCo模型创建后的`health()`因距训练30GiB保护线不足256MiB主动中止。它尚未创建输出目录、读取八个选定成员或形成样本结果；没有新IK、物理积分、策略调用、optimizer更新或参考修改。错误日志未打印触发时具体内存，因此不编造峰值。两次失败均保留，不覆盖重跑。
+
+13:52:53立即复查原训练仍为同一controller/worker及启动身份，status RUNNING、1775轮/28400控制转移/659组WM/609次actor；cgroup已回落30,843,056,128字节，OOM仍14。D02和D02B两个预定输出目录均不存在。结构化[失败及训练核查](../data/manifests/supermimic_q1_phuma_D02B_memory_guard_20261024.json)、[原生失败日志](../logs/session_records/supermimic_q1_phuma_D02B_memory_guard_20261024.log)已保存，日志588字节/SHA`2dc224c05a9e28476af412b873b5837eb790d30ac8050e5926b91d8a94d45c46`与服务器一致。
+
+决定：停止在本轮训练期间并行尝试这项模型诊断，不放宽训练/诊断保护、不干扰其他作业。等待原3000轮及匹配评测流水线结束，再用独立D02C目录和最新资源核验恢复。D01的支撑/碰撞筛选计数仍有效，但源轨迹、目标映射和IK残差的具体归因尚无新证据。本阶段代码和失败记录随Q1提交，完整提交号由Git历史提供；大型源数据/权重仍LOCAL_ONLY。

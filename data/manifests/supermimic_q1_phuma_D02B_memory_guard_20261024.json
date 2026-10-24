@@ -1,0 +1,130 @@
+{
+  "status": "D02B_ABORTED_MEMORY_GUARD",
+  "code_commit": "248c2cf26ae179be50e989486e0763bd0adc2d77",
+  "native_exit_code": 1,
+  "original_training_code_commit": "ed4217384e7abfc8a9cea0b23b95592d4a3e19b0",
+  "selected_training_clips": [
+    "train_locomotion_1bc87468bec5a472",
+    "train_locomotion_26832240824d6963",
+    "train_locomotion_fe9abef3042c3c39",
+    "train_locomotion_1f75cd47fbf61bb7",
+    "train_locomotion_6cafc84ec90e5186",
+    "train_locomotion_007047b45054fd5a",
+    "train_squat_04ebe3a321c47d2f",
+    "train_upper_a5678394f936531f"
+  ],
+  "completed_clips": 0,
+  "output_directory_created": false,
+  "abort_location": "health() after source/target MuJoCo model creation, before output mkdir or selected-member reads",
+  "guard": {
+    "training_limit_bytes": 32212254720,
+    "diagnostic_margin_bytes": 268435456,
+    "initial_required_headroom_bytes": 1073741824,
+    "peak_at_abort_bytes": null
+  },
+  "preflight": {
+    "status": "PASS",
+    "captured_utc": "2026-10-24T05:52:03.656308+00:00",
+    "native_dependency_import": true,
+    "loaded_geometry_module": "verify_reference",
+    "code_sha256": "8b445549ce41fc850600ca872f0f689a8602fd6fa0763363ac35afa13fa648c3",
+    "boot": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+    "controller_pid": 799647,
+    "worker_pid": 799650,
+    "step": 1775,
+    "env_steps": 28400,
+    "memory_bytes": 31133540352,
+    "oom_kill": 14,
+    "first_failed_run_output_directory_absent": true
+  },
+  "post_failure": {
+    "captured_utc": "2026-10-24T05:52:53.130008+00:00",
+    "controller": {
+      "status": "RUNNING",
+      "phase": "train",
+      "process": {
+        "pid": 799647,
+        "pgid": 799647,
+        "start_ticks": 3610979946,
+        "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+      },
+      "child_pid": 799650,
+      "started_utc": "2026-10-24T04:56:36.225669+00:00",
+      "events": [],
+      "log": "/opt/data/private/YuanQi_Q1/logs/PHUMA_R01_B128_3000_20261024/train.log"
+    },
+    "worker": {
+      "status": "RUNNING",
+      "step": 1775,
+      "env_steps": 28400,
+      "wm_updates": 659,
+      "policy_updates": 609,
+      "seconds": 3317.6010524854064,
+      "pid": 799650,
+      "reward_mean": 0.07106750458478928,
+      "termination_fraction": 0,
+      "joint_rmse_rad": 0.2841448485851288,
+      "health": {
+        "gpu_temperature_c": 40,
+        "cgroup_memory_bytes": 31119040512,
+        "oom_kill": 14
+      },
+      "imag_objective": 6.149626731872559,
+      "imag_return_undisc": 2.0434274673461914,
+      "imag_reward_mean": 0.0641612857580185,
+      "imag_survival_H": 0.8669705986976624,
+      "imag_dhat_mean": 0.05375564470887184,
+      "policy_grad_norm": 0.09944908320903778,
+      "action_abs_mean": 0.7395395040512085,
+      "imag_r/motion_global_root_pos": 0.008214188739657402,
+      "imag_r/motion_global_root_ori": 0.006594106554985046,
+      "imag_r/motion_body_pos": 0.017367566004395485,
+      "imag_r/motion_body_ori": 0.003837621072307229,
+      "imag_r/motion_body_lin_vel": 0.01689036376774311,
+      "imag_r/motion_body_ang_vel": 0.015678970143198967,
+      "imag_r/action_rate_l2": -0.0006710240850225091,
+      "imag_r/joint_limit": -0.0037505095824599266,
+      "critic_loss": 0.032665036618709564,
+      "critic_value_mean": 6.063625812530518,
+      "critic_target_mean": 6.099109649658203,
+      "wm/state_loss": 0.5934336185455322,
+      "wm/term_bce": 0.0005173713900148869,
+      "wm/nse_1step": 0.006303702294826507,
+      "wm/nse_kstep": 0.017154987156391143,
+      "wm/term_acc": 0.9998046875,
+      "wm/loss": 0.5939510345458985,
+      "wm/grad_norm": 6.150514602661133
+    },
+    "memory_bytes": 30843056128,
+    "oom": "oom_kill_disable 0\nunder_oom 0\noom_kill 14\n",
+    "diagnostic_outputs": {
+      "PHUMA_D02_support_mapping_20261024": {
+        "exists": false,
+        "files": []
+      },
+      "PHUMA_D02B_support_mapping_20261024": {
+        "exists": false,
+        "files": []
+      }
+    },
+    "logs": [
+      {
+        "path": "/opt/data/private/YuanQi_Q1/logs/PHUMA_D02_support_mapping_20261024.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/opt/data/private/YuanQi_Q1/logs/PHUMA_D02B_support_mapping_20261024.log",
+        "bytes": 588,
+        "sha256": "2dc224c05a9e28476af412b873b5837eb790d30ac8050e5926b91d8a94d45c46"
+      }
+    ]
+  },
+  "new_IK_solves": 0,
+  "new_physics_integrations": 0,
+  "new_policy_calls": 0,
+  "new_optimizer_updates": 0,
+  "references_modified": false,
+  "decision": "Keep R01 original training and memory guard. Do not repeat the eight-clip diagnostic during training. Run an independent D02C only after the original pipeline and with newly verified headroom.",
+  "limits": "Memory at abort was not printed; no claim of a measured peak or completed eight-clip analysis. Post-failure state is a timestamped snapshot, not a result of matched policy evaluation."
+}

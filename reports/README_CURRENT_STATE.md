@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-PHUMA D02两端四项刚体控制通过，首次真实运行因导入函数名错误退出1，未产生样本结果，见[足底映射阶段](README_SUPERMIMIC_Q1_PHUMA_SUPPORT_MAPPING_20261024.md)。已修正分析脚本为既有lowest_foot，下一发布后真实依赖检查及独立D02B八片运行，原失败日志保留。不改R01冻结输入/源码/预算；13:47:38原controller799647/worker799650仍运行，1625/3000轮，GPU40摄氏度/OOM14。完整跟随仍待原3000轮流水线。
+PHUMA R01继续，13:52:53原controller799647/worker799650身份一致、1775/3000轮/28400转移/659组WM/609次actor，cgroup30,843,056,128字节/OOM14。[D02足底诊断](README_SUPERMIMIC_Q1_PHUMA_SUPPORT_MAPPING_20261024.md)两端4控制通过，D02导入失败修正后D02B因内存余量保护退出1，均无样本输出；日志与小收据已保存。训练期间不再并行重试，不改121冻结输入/源码/预算或保护线。下一等原流水线完成保存审计、18片初始/最终完整配对后，再以独立D02C及最新资源门恢复诊断；尚无跟随提升结论。
 
 2026-10-24 11:26用户要求停止当前整轮并改用PHUMA；[R04V2已停止](README_SUPERMIMIC_Q1_HORIZON_PAIR_20261024.md)。11:26:30总控/worker均STOPPED_SIGNAL，原生退出0；A实际932轮/14912新控制转移、322组WM/272次actor，B未启动，无完整对照/最终评测。11:27:30–32核验原worker缺失、controller Z/RSS0、两个进程组无活跃成员，3份权重大小/SHA及冻结条件通过；GPU38摄氏度/OOM14。停止证据`data/manifests/supermimic_q1_R04V2_user_stop_20261024.json`。
 

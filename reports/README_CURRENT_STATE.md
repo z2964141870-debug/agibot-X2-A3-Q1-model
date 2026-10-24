@@ -1,6 +1,10 @@
 # YUANQI 当前状态与下一步
 
-2026-10-24当前优先：[SuperMimic数据用法复核](README_SUPERMIMIC_Q1_PHUMA_DATA_USE_20261024.md)。论文BONES-SEED主库129514段/264.56h，LAFAN1对照40段/2.45h；R01实际11训练片/41.30s，只有2移动，属于小样本闭环。代码已有1秒50/40/10采样，但首轮只选112候选，19门后留18片。现有源端温和训练候选26246片/标称26.44h，未去重或Q1准入。下一先准备独立P04扩量/筛选协议，以合格30分钟再1小时为工程目标，同时核查小库可学习性与在线交互预算；尚未扩量或启动新训练，不把量少当唯一失败因果。
+2026-10-24当前优先：[AMASS/BONES-SEED接入](README_SUPERMIMIC_Q1_SOURCE_EXPANSION_20261024.md)。用户已扩展新实验数据范围。huanyu的`script/amass_bridge/data/amass_raw/AMASS_smplxg`找到17928个NPZ，头部索引及独立重算完成：17265标准SMPL-X动作、120Hz、16betas、标称56.34h；另490静态/173待处理，不是Q1合格时长。旧桥接缺字段时默认30Hz，禁止直接复用其PKL。四控制通过、实际索引退出0/OOM14，0新重定向/训练。
+
+当前缺SMPLX_MALE.npz、SMPLX_FEMALE.npz及完整BONES-SEED g1.tar.gz（23499973647字节）/metadata。目标均在`/opt/data/private/YuanQi_Q1/data/references/`，精确路径见[缺项清单](../data/manifests/supermimic_q1_source_readiness_20261024.json)。BONES本机24个混合派生PKL不是全库，官方匿名下载401/GatedRepo；旧hp3090连接超时。AMASS无需用户再迁移，补身体模型后从原始字段构造Q1参考；PHUMA继续可用，跨源先查重/固定移动评测，目标30分钟再1小时合格库。新训练尚未启动。
+
+2026-10-24上一阶段：[SuperMimic数据用法复核](README_SUPERMIMIC_Q1_PHUMA_DATA_USE_20261024.md)。论文BONES-SEED主库129514段/264.56h，LAFAN1对照40段/2.45h；R01实际11训练片/41.30s，只有2移动，属于小样本闭环。代码已有1秒50/40/10采样，但首轮只选112候选，19门后留18片。现有源端温和训练候选26246片/标称26.44h，未去重或Q1准入。下一先准备独立P04扩量/筛选协议，以合格30分钟再1小时为工程目标，同时核查小库可学习性与在线交互预算；尚未扩量或启动新训练，不把量少当唯一失败因果。
 
 PHUMA R01于14:36:50完成固定3000轮/48000转移训练及全部配对流水线，97.6787分钟；7阶段原生退出0、11项保存审计及两份18片轨迹重算通过。14:38:44独立核验121冻结文件、三划分算术、日志身份与原进程组无活跃成员，GPU38摄氏度/OOM14。最终16/18完整但0/18过跟随门；test三非移动片完整关节误差0.272425→0.240971rad，开发移动根误差0.262304→0.263104m、位移0.066904/参考0.373315m，移动仍不足。见[PHUMA主阶段](README_SUPERMIMIC_Q1_PHUMA_20261024.md)及[完成核验](../data/manifests/supermimic_q1_phuma_R01_completion_verification_20261024.json)。final205225043字节/SHA7db966ff…，LOCAL_ONLY，训练发布ed421738不变。
 

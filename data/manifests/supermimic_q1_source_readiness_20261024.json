@@ -1,0 +1,162 @@
+{
+  "status": "ADDITIONAL_SOURCES_REGISTERED_MISSING_Q1_DEPENDENCIES",
+  "recorded_date": "2026-10-24",
+  "user_scope": "AMASS and BONES-SEED are authorized in addition to PHUMA for new SuperMimic for Q1 data preparation. Existing stopped runs and frozen R01 inputs remain unchanged.",
+  "amass": {
+    "source_root": "/opt/data/private/yuanqi_ops/script/amass_bridge/data/amass_raw/AMASS_smplxg",
+    "inventory_summary": {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P01_inventory_20261024/summary.json",
+      "bytes": 71718,
+      "sha256": "4eca7619c242ea63711cbe095523343ef0904b9bf86fa915b7b5b6107f398b2b"
+    },
+    "index": {
+      "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P01_inventory_20261024/all_files.jsonl",
+      "bytes": 12198595,
+      "sha256": "501e723765a71167e7186f90df0791b506191cb83fbe98a103810d86caf2a233"
+    },
+    "npz_files": 17928,
+    "metadata_accepted_motions": 17265,
+    "static_shape_assets": 490,
+    "metadata_pending_or_rejected": 173,
+    "motion_nominal_hours": 56.3379814814815,
+    "logical_bytes": 180217118833,
+    "source_hz_counts": {
+      "120.0": 17265
+    },
+    "gender_counts": {
+      "female": 6060,
+      "male": 11205
+    },
+    "required_betas": 16,
+    "body_model_files_found": false,
+    "q1_training_ready": false,
+    "legacy_bridge": {
+      "path": "/opt/data/private/yuanqi_ops/script/amass_bridge/smplx2smpl24.py",
+      "sha256": "a6cbbd09c900d2c5741230666ea57c176dfee331f70114d2fcbd03d09d40e69c",
+      "limitation": "Line 267 reads mocap_framerate only and otherwise silently assumes 30 Hz; the accepted raw corpus stores mocap_frame_rate=120. Do not reuse its derived PKLs as correctly timed references without a separate audit."
+    },
+    "independent_index_reconciliation": {
+      "status": "AMASS_METADATA_INDEX_ARITHMETIC_RECONCILED",
+      "captured_utc": "2026-10-24T08:17:08.047397+00:00",
+      "counts": {
+        "smplx_motion": 17265,
+        "shape_or_static_asset": 490,
+        "rejected_metadata": 173
+      },
+      "motion_nominal_hours": 56.33798148148161,
+      "betas_shape_counts": {
+        "[16]": 17265
+      },
+      "required_body_models": [
+        "SMPLX_MALE.npz",
+        "SMPLX_FEMALE.npz"
+      ],
+      "index_sha256": "501e723765a71167e7186f90df0791b506191cb83fbe98a103810d86caf2a233",
+      "unsupported_example": {
+        "relative_path": "MOYO_YOGI_2_latest_smplx_female/YOGI_2_latest_smplx_female/train/220923_yogi_body_hands_03596_Boat_Pose_or_Paripurna_Navasana_-a_stageii.npz",
+        "gender": "female",
+        "model": "smplx_locked_head",
+        "source_hz": 60,
+        "poses_shape": [
+          892,
+          165
+        ],
+        "trans_shape": [
+          892,
+          3
+        ],
+        "betas_shape": [
+          300
+        ]
+      },
+      "new_physics_steps": 0,
+      "new_optimizer_updates": 0
+    }
+  },
+  "bones_seed": {
+    "official_repository": "https://huggingface.co/datasets/bones-studio/seed",
+    "official_revision": "2f59b2077b9da34dd4e43618e705c7cb962c9a66",
+    "gated": "auto",
+    "local_processed_root": "/opt/data/private/yuanqi_ops/data/g1_leg/run/data/motion_lib_bones_seed",
+    "local_processed_pkl_files": 24,
+    "local_processed_bytes": 15817101,
+    "local_processed_limitation": "Contains PHUMA-named inputs, cropped walk_onset files, mirrored motion, staging and filtered copies. This is not the complete BONES-SEED corpus.",
+    "archives": [
+      {
+        "name": "g1.tar.gz",
+        "bytes": 23499973647,
+        "intended_path": "/opt/data/private/YuanQi_Q1/data/references/bones_seed/archives/g1.tar.gz",
+        "role": "Preferred first route for matching the paper's G1 source; still requires G1-to-Q1 retargeting."
+      },
+      {
+        "name": "soma_uniform.tar.gz",
+        "bytes": 45188088297,
+        "intended_path": "/opt/data/private/YuanQi_Q1/data/references/bones_seed/archives/soma_uniform.tar.gz",
+        "role": "Alternative raw human motion route; requires a SOMA-to-Q1 adapter, not an additional mandatory package for the G1 route."
+      },
+      {
+        "name": "soma_proportional.tar.gz",
+        "bytes": 45468083856,
+        "role": "Optional alternative raw human motion representation."
+      }
+    ],
+    "anonymous_head_probes": [
+      {
+        "file": "g1.tar.gz",
+        "http_status": 401,
+        "error_type": "GatedRepo"
+      },
+      {
+        "file": "soma_uniform.tar.gz",
+        "http_status": 401,
+        "error_type": "GatedRepo"
+      }
+    ],
+    "hash_limit": "The anonymous metadata API masks archive LFS object IDs; no whole-archive SHA has been verified.",
+    "metadata_required": [
+      "metadata/seed_metadata_v004.csv",
+      "metadata/seed_metadata_v002_temporal_labels.jsonl"
+    ],
+    "q1_training_ready": false
+  },
+  "missing_required_for_selected_routes": [
+    {
+      "file": "SMPLX_MALE.npz",
+      "target": "/opt/data/private/YuanQi_Q1/data/references/body_models/smplx/SMPLX_MALE.npz",
+      "requirement": "Official SMPL-X model compatible with at least 16 shape coefficients. Existing SMPL_male.pkl is not this model."
+    },
+    {
+      "file": "SMPLX_FEMALE.npz",
+      "target": "/opt/data/private/YuanQi_Q1/data/references/body_models/smplx/SMPLX_FEMALE.npz",
+      "requirement": "Official SMPL-X model compatible with at least 16 shape coefficients."
+    },
+    {
+      "file": "g1.tar.gz and matching BONES-SEED metadata",
+      "target": "/opt/data/private/YuanQi_Q1/data/references/bones_seed/",
+      "requirement": "A normally authorized download or an existing source file. A raw SOMA package is an alternate route, not required in addition to g1.tar.gz."
+    }
+  ],
+  "search_scope": {
+    "server": "huanyu",
+    "roots": [
+      "/opt/data/private/yuanqi_ops/data",
+      "/opt/data/private/yuanqi_ops/script",
+      "/opt/data/private/hechengzhu/ZHY/data",
+      "/opt/data/private/YuanQi_Q1/data"
+    ],
+    "directory_scan_count": 4952,
+    "archive_candidates_checked": 15,
+    "old_hp3090": {
+      "host": "100.70.125.121",
+      "result": "SSH connect timeout; historical AMASS/BONES paths not re-verified."
+    },
+    "mac": "Downloads, project, Public and Documents/ChatGPT filename search found only prior plots, not additional raw archives.",
+    "smb": "Authenticated read-only share listing succeeded; HumanPlus1000 is exposed. No claim that its entire sensor archive was searched.",
+    "network": "Direct Hugging Face requests from huanyu failed with network address error; public metadata and anonymous HEAD probes were performed on Mac."
+  },
+  "new_retargeting": 0,
+  "new_physics_steps": 0,
+  "new_optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY",
+  "limits": "Metadata inventory only; 56.34 nominal hours are not deduplicated or Q1-qualified reference hours. SMPL-X locked-head/300-beta MOYO inputs remain separate. Source identities, cross-dataset overlaps, splits, native-time conversion, collision/contact quality and tracking must be resolved before training."
+}

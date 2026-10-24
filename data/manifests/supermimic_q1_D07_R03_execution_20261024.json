@@ -1,0 +1,47 @@
+{
+  "status": "D07_NATIVE_COMPLETION_AND_ARITHMETIC_VERIFIED",
+  "scientific_entry_commit": "02ee6e3275553b0c19bf95cb453da11370f407da",
+  "native_exit_code": 0,
+  "command": "cd /opt/data/private/YuanQi_Q1 && OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 /opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python -u script/supermimic_q1_analysis/diagnose_completed_run.py --root /opt/data/private/YuanQi_Q1 --experiment data/supermimic_for_q1/R03_B128_extend12000_20261023 --output data/supermimic_for_q1/D07_R03_reward_model_20261024 --device cuda:0 > logs/supermimic_q1_D07_R03_reward_model_20261024.log 2>&1",
+  "server_controls": {
+    "native_exit_code": 0,
+    "passed": 3,
+    "skipped": 0
+  },
+  "receipt": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/D07_R03_reward_model_20261024/receipt.json",
+    "bytes": 60816,
+    "sha256": "59cdf35644d60a2bd82bd2745ad6661a854bf44a0ba8364b4fee7b465c177358"
+  },
+  "local_transfer_hashes_matched": true,
+  "arithmetic": {
+    "reward_delta_sum_max_error": 5.423162183215702e-9,
+    "model_ratio_max_error": 0,
+    "model_metric_rows": 18,
+    "reward_trace_rows": 6
+  },
+  "source_sha256": "05bdbfd8471d698032abad1624e287fc0a5cfa1c7d95fe5b0c84bc6c1621af55",
+  "frozen_before_after": true,
+  "initial_health": {
+    "utc": "2026-10-24T02:05:15.156175+00:00",
+    "gpu_temperature_c": 38,
+    "gpu_free_mib": 17788,
+    "cgroup_memory_bytes": 25464430592,
+    "cgroup_limit_bytes": 34359738368,
+    "oom_kill": 14,
+    "disk_free_bytes": 2010041511936
+  },
+  "final_health": {
+    "utc": "2026-10-24T02:05:26.057880+00:00",
+    "gpu_temperature_c": 38,
+    "gpu_free_mib": 17461,
+    "cgroup_memory_bytes": 27180425216,
+    "cgroup_limit_bytes": 34359738368,
+    "oom_kill": 14,
+    "disk_free_bytes": 2010041421824
+  },
+  "new_physics_steps": 0,
+  "new_policy_inference": 0,
+  "new_optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY"
+}

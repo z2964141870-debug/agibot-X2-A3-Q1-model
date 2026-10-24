@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-24：[三数据源优先级建议](README_SUPERMIMIC_Q1_DATASET_PRIORITY_20261024.md)完成官方来源/本地证据复核。新增准备建议先AMASS移动子集，BONES-SEED作后续论文数据对齐，PHUMA保留现成库与基线；立即无需转换的训练以PHUMA成本最低。此为建议，未启动/切换实验，三库在Q1无公平性能排名；身体模型到位只证明有限样本载入。D:\tmp复查仍只有BONES metadata、未见完整G1/SOMA包。原始数据和旧实验不变。
+
 2026-10-24 19:47:48：[SMPL-X接收与16维AMASS验证完成](README_SUPERMIMIC_Q1_SMPLX_INTAKE_20261024.md)。Windows D:\tmp的smplx_lockedhead_20230207.zip已直接迁huanyu，411448739字节/两端SHA一致；三模型包内MD5、16betas和男女真实AMASS各三帧/中性零姿态有限FK通过，OOM14。模型固定在data/references/body_models/smplx_lockedhead_20230207/smplx，预定smplx入口软链接就绪；非原拟合模型字节身份或Q1质量证明。新增约0.823GB/盘余1.965TB，0新Q1参考/训练。BONES metadata在D:\tmp，完整动作包尚未核验；下一独立AMASS候选的Q1重定向/准入。下方“缺SMPL-X”是接收前历史快照，以本条为准。
 
 2026-10-24用户已恢复探索/训练并将引入新数据，入口[资源与解决方案](README_SUPERMIMIC_Q1_RESOURCES_FIXES_20261024.md)。19:13:16真实基础库组装退出0，1861候选完整重算、train340/1227.10s（移动62/221.76s）、dev6/21.26s、test7/27.56s，见[P05](README_SUPERMIMIC_Q1_EXPANDED_RUN_20261024.md)。无新训练。Windows yu无法读取lzl的Downloads，不能称文件不存在；已验证可读写接收C:\Users\yu\YuanQi_inbox，当前空。SMPL-X官方入口和Q1 SDK已找到，缺项仍待补。下一模型槽数值/梯度/资源、PHUMA模型诊断、磁盘预算与独立训练；19:12磁盘可用1.965TB/OOM14/GPU38。暂停盘点留为历史，不是当前停止指示；Git本地记录尚待恢复同步。

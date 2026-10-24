@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-24当前推进：[PHUMA P04首批扩量完成](README_SUPERMIMIC_Q1_PHUMA_EXPANSION_20261024.md)。固定1861候选，实际前317个不同来源完成转换/独立19门及79个NPZ时轴重算；train66/243.76s（移动6/23.76s），dev6/21.26s（移动1），test7/27.56s（移动3）。新训练参考为原41.30s的5.9倍，仍未达30分钟。B005只补校验、B006/B007及汇总原生退出0；两端4隔离控制/缺manifest拒绝/重复批次拒绝通过。B001–4内存失败与B005原导入失败保留，0新训练。17:17内存27469729792/OOM14/GPU39，无自有转换进程。下一B008从新offset317继续单路（余1544训练候选），优先核移动仅6/83通过的筛选缺口，再绑定固定评测与新世界模型/H32训练。小清单见P04_{progress,execution}，AMASS模型及完整BONES仍缺。
+2026-10-24当前推进：[PHUMA P04扩量](README_SUPERMIMIC_Q1_PHUMA_EXPANSION_20261024.md)。B008/B009及新跨批汇总原生退出0；累计829个不同候选/209个合格NPZ实际时轴重算完成：train196/708.38s（移动16/57.14s）、dev6/21.26s、test7/27.56s。训练参考11.81分钟，仍未达30分钟，尚未组装新库/启动训练。17:47:23无转换/汇总进程；内存27766009856/OOM14/GPU39，原失败保留。新证据P04_progress_B009/P04_B009_execution；下一个offset829/B010/count256单路，余1032训练候选。AMASS缺男女SMPL-X模型、BONES缺完整G1包/metadata，已告知用户。模型每环境约125.6MB，仅做0物理步元数据查询，尚无新后端或扩环境。
 
 2026-10-24当前优先：[AMASS/BONES-SEED接入](README_SUPERMIMIC_Q1_SOURCE_EXPANSION_20261024.md)。用户已扩展新实验数据范围。huanyu的`script/amass_bridge/data/amass_raw/AMASS_smplxg`找到17928个NPZ，头部索引及独立重算完成：17265标准SMPL-X动作、120Hz、16betas、标称56.34h；另490静态/173待处理，不是Q1合格时长。旧桥接缺字段时默认30Hz，禁止直接复用其PKL。四控制通过、实际索引退出0/OOM14，0新重定向/训练。
 

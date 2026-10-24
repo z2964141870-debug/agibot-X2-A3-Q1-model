@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-24当前推进：[PHUMA P04首批扩量](README_SUPERMIMIC_Q1_PHUMA_EXPANSION_20261024.md)。317候选转换/独立19门/实际时轴汇总完成，79合格：train66/243.76s、dev6/21.26s、test7/27.56s；移动各6/1/3片。训练参考约为原41.30s的5.9倍，仍未达30分钟，无新训练。OOM14/无自有转换残留，失败及补验保留；下一新offset317单路扩量并优先补移动覆盖。
+2026-10-24当前推进：[PHUMA P04扩量](README_SUPERMIMIC_Q1_PHUMA_EXPANSION_20261024.md)。截至B009，829候选转换/独立19门/209个合格NPZ时轴汇总完成：train196/708.38s（移动16/57.14s）、dev6/21.26s、test7/27.56s。训练参考11.81分钟，仍未达30分钟，无新训练。17:47无转换/汇总进程，OOM14；下一新offset829/B010单路，余1032训练候选。
 
 2026-10-24当前优先：[AMASS与BONES-SEED接入盘点](README_SUPERMIMIC_Q1_SOURCE_EXPANSION_20261024.md)。当前服务器已找到AMASS原库，17928 NPZ中17265标准动作/标称56.34h，490静态/173待处理；全头部索引及独立重算完成。缺SMPL-X男女模型及完整BONES G1包/metadata，精确清单已登记；BONES匿名下载401。用户已授权三源扩库，尚未新增Q1参考/训练。
 
@@ -66,6 +66,7 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-24 | PHUMA P04分批扩量 | 截至B009累计829候选/209合格时轴重算完成，train196/708.38s、移动16/57.14s；0新训练，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_EXPANSION_20261024.md) |
 | 2026-10-24 | AMASS/BONES-SEED来源扩展 | AMASS17265动作/标称56.34h索引与独立算术通过；缺身体模型/BONES原包，0新训练，见[阶段记录](README_SUPERMIMIC_Q1_SOURCE_EXPANSION_20261024.md) |
 | 2026-10-24 | SuperMimic数据用法与PHUMA扩量路线 | 原文/源码/既有索引复核完成，41.30秒小库差距与标称26.44h源候选已登记，扩量/训练未运行，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_DATA_USE_20261024.md) |
 | 2026-10-24 | PHUMA D03奖励/共同轨迹模型 | 真实执行元数据失败保留，新入口适配及本地四控制通过，D03B延后，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_MODEL_20261024.md) |

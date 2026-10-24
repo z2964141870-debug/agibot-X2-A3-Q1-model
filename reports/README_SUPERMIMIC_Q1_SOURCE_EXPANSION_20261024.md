@@ -39,6 +39,8 @@ AMASS原库已在当前训练服务器找到：
 
 所需身体模型对应原始库中的男女形体，不能仅用SMPL男性近似模型绕过。BONES-SEED选择G1包优先与论文训练原料对齐，再转换Q1；如果用户已有原人体SOMA包，也可采用独立SOMA到Q1路线。`soma_uniform.tar.gz`45,188,088,297字节、`soma_proportional.tar.gz`45,468,083,856字节是替代/可选来源，不要求与G1包全部重复准备。
 
+北京时间2026-10-24 17:41前再次检查上述两个SMPL-X模型与`bones_seed/archives/g1.tar.gz`指定接入路径，三者仍不存在。本次是目标路径复核，不冒充重新全盘搜索；AMASS原库及此前完整头部索引已经在手，不需要再次迁移180GB原数据。BONES配套文件为`metadata/seed_metadata_v004.csv`及`metadata/seed_metadata_v002_temporal_labels.jsonl`。已在当前聊天明确告知缺项，文件到位后先核大小/SHA和格式，再接Q1。
+
 现有`data/g1_leg/run/data/motion_lib_bones_seed`只有24个PKL，共15,817,101字节，含PHUMA命名动作、walk_onset裁片、镜像及stage/filtered副本；不能当完整BONES-SEED或24个独立原始动作。本轮未反序列化这些历史PKL。
 
 官方仓库`bones-studio/seed`固定revision`2f59b2077b9da34dd4e43618e705c7cb962c9a66`，API标为gated=auto。公开元数据能读取不等于原包可下载；g1/SOMA匿名HEAD均为401，本轮没有接受授权条款、读取token或尝试绕过。匿名API的LFS对象ID被掩码，不能登记为已核验原包SHA。文件到位后先核大小、计算完整SHA，再按固定版本读取官方说明和匹配metadata。

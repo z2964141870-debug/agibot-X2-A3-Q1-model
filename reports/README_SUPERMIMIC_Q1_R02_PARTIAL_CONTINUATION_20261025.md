@@ -1,6 +1,6 @@
 # PHUMA R02审计保存的独立续训
 
-记录日期：2026-10-25。阶段：R02C。状态：入口实现/本地语法检查完成，服务器验证、登记与训练待执行。
+记录日期：2026-10-25。阶段：R02C。状态：已独立启动，初始12门与496冻结通过，03:16核实新世界模型/actor/critic更新。
 
 ## 目标与选择
 
@@ -39,3 +39,23 @@ PY=/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python
 ## 保存、边界与下一步
 
 先完成服务器控制与真实只读parent验证，结果立即补此README/索引/当前状态，audit提交并推送Q1、独立核远端后启动。模型/轨迹仍LOCAL_ONLY，无真机结果；训练完成不等于移动成功，最终必须报告各划分完整率、关节/根误差和实际/参考位移。目标仍未达。
+
+## 03:12实际登记与启动
+
+发布`d21a8804d64c338a5caf3851fdcaba6bbe9aa355`已显式推送Q1并独立核远端；七份部署SHA一致。登记实际退出0，496个冻结文件，7000新轮/448000转移，父5000轮/原FAILED；spec154640字节/SHA`949d9e52289a4f251a3c2e36298495fb63d669a86bf444d9bb57f9db6c801d2b`。[原样spec](../data/manifests/supermimic_q1_R02C_spec_20261025.json)与[启动收据](../data/manifests/supermimic_q1_R02C_launch_20261025.json)已保存。
+
+03:12:33通过Popen独立session启动runtime_guard，stdin关闭，无自动重启。guard835011/start_ticks3616115871、controller835012/start_ticks3616115885、trainer835015；boot`d994e71f-bae0-46ba-a5f7-6c2163771c6c`。完整命令在launch.json，guard输出`logs/PHUMA_R02C_partial5000_extend7000_20261025/guard.log`，原训练stdout同目录train.log，状态为新目录storage_guard.json/controller_status.json/run/status.json。恢复必须核实际/proc身份，不能凭这些旧PID认定活跃。
+
+03:12:55实际50/7000新轮、3200新转移、累计5050轮；WM/actor均0，仍在新replay预热，不冒充已更新。温度33摄氏度、GPU余23473MiB、内存16347291648字节/OOM14、盘余1639530557440字节，存储guard新实验分配约205.63MB。原5000权重及R02三个FAILED原件不变。下一立即独立step0 CPU八类状态继承审计，随后核首批真实世界模型/BPTT/critic更新；若审计失败，停止本新实验并保存终态，不放宽或重写父证据。
+
+## 初始继承审计真实通过
+
+独立CPU/mmap入口退出0、12项全过；父wm/policy/critic、wm_opt/policy_opt/critic_opt和bin_return/bin_memory八树逐张量/容器完全相同。局部计数均0、累计offset5000、固定7000新预算、新seed及code_commit/manifest相符；全部496冻结无变化、张量有限、未初始化CUDA。初始205323367字节/SHA`497eb3da1abba210242d03b2d092252a14be2966f23d3999e009645f7cbc5a11`，与原父文件字节不同是新manifest/局部计数不同，不是网络或Adam重置。[原样小收据](../data/manifests/supermimic_q1_R02C_initial_retention_20261025.json)。
+
+03:14:38实际250/7000新轮、16000新转移/累计5250轮，49组世界模型更新，actor0仍按预定50组模型预热；WM梯度和loss有限。GPU38摄氏度/余23373MiB、内存16583479296字节/OOM14、盘余1630483546112字节。此为本轮真实新世界模型更新，尚非actor更新、保存后效果或完成证明。
+
+## 03:16独立运行核验通过
+
+[启动核验原件](../data/manifests/supermimic_q1_R02C_startup_20261025.json)于03:16:43保存，496冻结逐SHA未变、三个进程实际/proc活跃，guard/controller start_ticks及boot匹配；trainer实际start_ticks3616116127。实际最新300新轮/19200新转移、累计5300轮，WM69组/actor19次，actor梯度0.13746、critic loss0.00441685与世界模型指标有限，OOM14。此累计5300是5000父保存加本次300新轮，不包含旧失败未保存的300轮。
+
+最新训练健康GPU39摄氏度/余22909MiB、内存18642915328字节，核验时guard盘余1619915890688字节、R02C分配205643776字节。PHUMA B018另一单数据worker已开始独立扩库，数据worker在28.75GiB先退，R02C原30GiB/新OOM/86摄氏度保护保持。下一继续固定7000新轮、每500轮保存及7阶段评测；新增参考不会改本轮固定340训练片，完成后不追加预算。所有RUNNING均是本时刻快照，恢复时仍须重核进程/状态/资源。

@@ -1,0 +1,77 @@
+{
+  "record_type": "DERIVED_FROM_READ_ONLY_REMOTE_COMMAND_OUTPUT_NOT_RAW_RECEIPT_COPY",
+  "captured_utc": "2026-10-24T18:20:13.134056+00:00",
+  "server_root": "/opt/data/private/YuanQi_Q1",
+  "experiment": "data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024",
+  "training_status": {
+    "status": "FAILED",
+    "step": 5300,
+    "env_steps": 339200,
+    "wm_updates": 2069,
+    "policy_updates": 2019,
+    "seconds": 10836.636944077909,
+    "error": "RuntimeError: Container memory protection: 33833570304 bytes"
+  },
+  "controller_status": {
+    "status": "FAILED",
+    "phase": "train",
+    "train_exit_code": 1,
+    "train_ended_utc": "2026-10-24T18:08:57.011798+00:00",
+    "error": "RuntimeError: Expanded phase train exited 1",
+    "subsequent_phases_executed": false
+  },
+  "guard_status": {
+    "status": "WORKER_FAILED",
+    "worker_pid": 825183,
+    "worker_reaped": true,
+    "worker_return_code": 1,
+    "ended_utc": "2026-10-24T18:08:57.672532+00:00"
+  },
+  "latest_checkpoint_reported_by_failed_run": {
+    "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024/run/step_005000.pt",
+    "bytes": 205348199,
+    "sha256": "d6e0f870ada2327d21b41b703a0ba35999aa80a5dbab1a12ea409ed3f8deb15c",
+    "independent_tensor_and_optimizer_audit_completed": false,
+    "fresh_independent_byte_hash_after_failure_completed": false
+  },
+  "observed_shared_cgroup": {
+    "memory_usage_bytes": 34359603200,
+    "memory_limit_bytes": 34359738368,
+    "oom_kill": 14,
+    "rss_bytes": 15430299648,
+    "cache_bytes": 17944576000,
+    "shmem_bytes_in_cache": 6203080704,
+    "inactive_file_bytes": 11480760320,
+    "active_file_bytes": 265670656,
+    "attribution": "Shared cgroup; cannot attribute its usage or increase to Q1. Cache includes shmem. Process and file ownership diagnosis remains pending."
+  },
+  "last_guard_disk_free_bytes": 1965468422144,
+  "last_successful_full_frozen_check": {
+    "captured_utc": "2026-10-24T17:48:58.269556+00:00",
+    "files_checked": 469,
+    "mismatches": 0,
+    "training_step": 4750,
+    "process_boot_and_start_ticks_matched": true
+  },
+  "source_P07_preflight": {
+    "server_unit_controls_passed": 4,
+    "run_exit_code": 1,
+    "error": "MemoryLimit: Data worker reserve reached: shared_bytes=34359721984, oom_kill=14",
+    "output_directory_created": false,
+    "formal_source_isolation_audit_completed": false
+  },
+  "connectivity_after_observation": {
+    "forward_18864": "Banner timeout then connection reset; original local SSH process no longer present",
+    "windows_bridge_100_65_183_91_port_22": "ConnectTimeout",
+    "training_public_59_77_15_15_port_25893": "ConnectTimeout",
+    "tailscale_bridge_peer_online_flag": true,
+    "tailscale_local_health": "Could not connect to Tokyo relay",
+    "cause_confirmed": false,
+    "fresh_process_and_gpu_checks_completed": false
+  },
+  "original_experiment_restarted": false,
+  "memory_threshold_relaxed": false,
+  "new_training_or_evaluation_launched": false,
+  "storage_status": "LOCAL_ONLY",
+  "next_step": "Restore existing SSH route; collect raw failure receipts and current process/GPU/cgroup state; verify 469 frozen files and checkpoint5000; register a new bounded evaluation or continuation only after resource diagnosis. Do not restart or rewrite the failed R02 directory."
+}

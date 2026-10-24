@@ -1,14 +1,10 @@
 # YUANQI 当前状态与下一步
 
-2026-10-25：[P07来源别名](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md)现有合格353片中的95 HumanML原动作/镜像/裁片审计已实现、本地4控制通过，正式服务器输出待。开发移动009636对应CMU/137/137_07；跨源事件名/目录受试者候选只能保守排除，未认证全源隔离。AMASS P06新映射0/4不采用；PHUMA B017内存保护暂停保留。原R02继续原预算，不恢复BONES获取。
+2026-10-25 02:20:13实核：[PHUMA R02](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)已于02:08:57第5300轮/339200交互、180.61分钟因容器内存保护FAILED，训练退出1、guard回收，后续评测未执行。最近5000权重205348199字节/SHA d6e0f870…待独立核验，不重启原FAILED目录。共享内存接近32GiB、OOM仍14，含约11.48GB inactive_file但归因未定；最后01:48:58的469冻结/三个原进程身份通过不能替代失败后现场核对。随后18864转发丢失，Windows与训练直连超时；Mac Tailscale中继报错、Windows仍标在线，不能说已关机。[衍生故障收据](../data/manifests/supermimic_q1_R02_failure_observation_20261025.json)保留实读结果，尚非原样远端副本。下一恢复连接→核进程/GPU/内存/原终态/469冻结/5000张量→独立配对开发评测→资源归因后登记新训练；不放宽保护。盘余最近约1.965TB。
 
-2026-10-25 01:57：[AMASS P06局部偏移](README_SUPERMIMIC_Q1_AMASS_LOCAL_OFFSET_20261025.md)四段/独立22门实际完成、worker回收、服务器4控制通过；0/4准入。两圆走残差下降，但慢走支撑98.51%→26.87%，两圆走新增自碰撞失败，新配置不采用/不扩大，原参考不改。OOM14/盘余1.9653TB。下一现有PHUMA来源审计；原PHUMA B017内存保护暂停不盲目重试，原R02继续，01:48:58为4750轮/160.37分钟及469冻结/原进程通过。BONES交师兄。
+现有数据进展：[AMASS P04](README_SUPERMIMIC_Q1_AMASS_RETARGET_20261025.md)16段/64秒人体FK及Q1独立门完成但0/16准入；[P05B](README_SUPERMIMIC_Q1_AMASS_MAPPING_20261025.md)804帧/20对账确认目标刚性长度不兼容及足底目标/IK偏差，A错误肘腕共用假设已撤回；[P06局部偏移](README_SUPERMIMIC_Q1_AMASS_LOCAL_OFFSET_20261025.md)真实4片仍0准入且有支撑/自碰撞退步，新配置不采用。[P07来源审计](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md)两端4控制通过，但正式运行在内存预检退出1、输出未创建；95 HumanML的轻量探查不等于全源隔离完成。[PHUMA P06](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)40新增合格/算术22.81分钟未合库，B017失败保留。BONES由师兄处理，代理不再获取；30分钟/1小时合格库与移动策略有效性目标仍未达。
 
-2026-10-25 01:38：[AMASS P05B](README_SUPERMIMIC_Q1_AMASS_MAPPING_20261025.md)四段804帧只读归因完成、20对账通过/worker回收/OOM14。实际映射已用独立腕部，A错误前提撤回；真实固定肘腕12.698cm而目标P95为16.31–25.08cm，存在长度不兼容。三圆走目标足底跨度20.23–26.76mm且IK再增加偏差；下一小样本尺度/校准对照，原质量门与R02不改。仍0/16 AMASS准入，跨源原动作/受试者隔离待。
-
-2026-10-25 01:32：[AMASS P05A](README_SUPERMIMIC_Q1_AMASS_MAPPING_20261025.md)因交接中错误肘腕共用前提退出1并回收；实际冻结映射已用独立腕部连杆，该假设撤回。B改查真实固定连杆距离/各部位/足底，四项Mac控制通过，服务器待；原参考未改。01:27[原R02](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)继续4175/12000轮、139.12分钟、OOM14/GPU38–39、盘余1.9654TB，最终动力学待。P04仍0/16准入，BONES不再获取。
-
-2026-10-25 01:10:25：[原R02](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)仍RUNNING，3650轮/233600交互、WM1409组/actor1359次，121.33分钟、GPU40摄氏度/OOM14、盘余1.9655TB，最终动力学待；原进程身份/469冻结最近00:56核对通过。[AMASS P03](README_SUPERMIMIC_Q1_AMASS_PILOT_20261025.md)16段人体FK/64秒及身份/时轴核验完成；[P04](README_SUPERMIMIC_Q1_AMASS_RETARGET_20261025.md)16段真实Q1转换/独立22门完成回收、0/16全通过（足底支撑15、残差11、最大间隙10失败），0新增合格时长/训练。下一先源/目标/IK归因，不盲目扩同配置。HumanML固定来源索引01:07已接收，跨源别名/受试者隔离仍待，AMASS split未分配不合库。[PHUMA P06](README_SUPERMIMIC_Q1_PHUMA_CONCURRENT_EXPANSION_20261024.md)40新增合格/算术22.81分钟未合库，B017待资源释放后重做。BONES交师兄不再获取，原12000轮预算保持，30分钟/1小时合格库与移动成功目标未达。
+以下为既有阶段历史快照，RUNNING/“下一评测”以本页顶部最新FAILED及恢复步骤为准。
 
 2026-10-24最新用户指示：停止BONES获取，交由师兄解决，用户到位后另行通知。[现有资源R02](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)已于23:08独立登记启动：PHUMA训练340片/1227.10秒、移动62片/221.76秒；dev6/test7隔离，64环境/4槽/H32/12000轮。23:12:30独立核验300轮/19200交互、WM69组/actor19次、critic及梯度有限，469冻结文件/三个进程身份通过；OOM14/GPU40，最近盘余1.9657TB。guard825182/controller825183/trainer825189，boot/start_ticks与核验方法见阶段README；100GiB余量/12GiB实验/250GiB源目录保护运行，无自动重启。发布b6d3108已独立核远端；启动小收据已保存。AMASS原始17265动作及16维SMPL-X到位、尚未Q1准入。BONES令牌/18866已清理，0新BONES参考/训练；原STOPPED不恢复。下一读取原作业进度与最终配对评测，不重复启动。
 

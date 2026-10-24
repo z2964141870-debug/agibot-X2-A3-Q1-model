@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 02:20:13最新实核：[原PHUMA R02内存保护FAILED](README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md)，02:08:57第5300轮/180.61分钟退出1，未执行配对评测；5000权重待独立核验。OOM14/盘余约1.965TB，之后SSH转发及直连超时，Mac Tailscale中继异常，现场归因待恢复。[P07](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md)两端4控制过但正式审计内存预检退出1，未创建输出。已保存[衍生故障收据](../data/manifests/supermimic_q1_R02_failure_observation_20261025.json)，不重启/改写失败实验或放宽保护；下方RUNNING条目为历史快照。
+
 2026-10-25：[P07来源别名审计准备](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md)严格以353片独立准入名单连接95 HumanML，区分事件名/镜像/裁片/受试者候选，4项本地控制通过，正式服务器收据待；不把名字不同当独立测试。原R02继续，AMASS P06 0/4不采用，B017保护暂停。
 
 2026-10-25：[AMASS P06局部偏移真实对照](README_SUPERMIMIC_Q1_AMASS_LOCAL_OFFSET_20261025.md)01:57完成、0/4准入；两圆走残差下降但慢走支撑恶化/新增自碰撞，新配置不采用。服务器4控制通过、worker回收/OOM14。下一已有PHUMA来源审计，不盲目恢复B017；原R02继续，BONES交师兄。
@@ -98,7 +100,7 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
-| 2026-10-25 | P07跨源原动作别名 | 本地4控制通过，正式服务器审计待，见[阶段记录](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md) |
+| 2026-10-25 | P07跨源原动作别名 | 两端4控制通过，正式运行内存预检退出1/无输出，网络待恢复，见[阶段记录](README_SUPERMIMIC_Q1_SOURCE_ALIASES_20261025.md) |
 | 2026-10-25 | AMASS P06局部偏移对照 | 真实4片/22门完成，0准入，新配置不采用，见[阶段记录](README_SUPERMIMIC_Q1_AMASS_LOCAL_OFFSET_20261025.md) |
 | 2026-10-25 | AMASS P05映射/支撑归因 | A错误前提退出1/回收；B804帧/20对账通过，目标刚性长度与支撑存在缺口，见[阶段记录](README_SUPERMIMIC_Q1_AMASS_MAPPING_20261025.md) |
 | 2026-10-25 | AMASS P02原速移动候选 | 43探查选16个KIT四秒原始窗口/64秒，16betas/120Hz，尚未FK/Q1准入或分配split，见[阶段记录](README_SUPERMIMIC_Q1_AMASS_PILOT_20261025.md) |

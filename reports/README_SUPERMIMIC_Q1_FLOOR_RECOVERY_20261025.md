@@ -1,6 +1,6 @@
 # PHUMA P15足地间隙恢复
 
-记录日期：2026-10-25，北京时间。阶段P15。状态：新适配器和控制实现、本地两项解析控制完成；服务器真实控制、八组对照及独立复核待。
+记录日期：2026-10-25，北京时间。阶段P15。状态：首轮服务器控制失败，四项中两通过/一错误/一失败；正式八组未启动。已发现地面sameframe缓存及错误球体前提，修正与补检待。
 
 ## 目标与范围
 
@@ -39,3 +39,17 @@ env CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THR
 服务器控制和正式结果待，不能称恢复可行、支撑改善、十九门准入或策略成功。复用独立`audit_walking_root_offset.py`核相同P14变换不变量、fresh FK/滑动/两差分inverse，因本阶段根和目标协议不变，无需修改旧auditor。发生新失败仍保留真实结果，不自动热改旧记录。
 
 关键代码、README、索引及小收据审计后提交推送Q1、独立核远端并同步用户镜像；大工件仍服务器LOCAL_ONLY。下一先实际四控制，再据资源和结果决定八组求解，不提前声明通过。
+
+## 首轮服务器控制失败及新定位
+
+源码发布`03642f0b18b7923ff18aac46dd60e0ff5b923522`已推Q1、独立核远端，两个新文件部署前不存在、部署SHA与发布一致。[原生A控制和QP跟踪](../logs/session_records/supermimic_q1_P15_controls_A_20261025.log)退出1：解析两项通过，toy实际QP发生NoSolutionFound，真实Q1导数检查因“十个foot geom全为sphere”断言失败。实际为每脚一个mesh和四个2mm sphere，旧控制错误假设不能用来证明恢复机制失败或可行。
+
+toy跟踪显示第151次QP才失败：地面配置Z=-0.04时，模型实际仍在Z=0，foot恰好接触错误的平面，引起witness法线退化。新的[只读地面探针](../logs/session_records/supermimic_q1_P15_floor_position_20261025.log)在真实Q1中确认：仅改geom_pos使配置Z=-0.04但data.geom_xpos仍0、geom_sameframe=1；将sameframe显式置mjSAMEFRAME_NONE后实际Z才为-0.04。MuJoCo3.3.7最小控制还确认mj_setConst不会自动清这个标记。该问题同样存在于P12C/P14的运行时floor位置改写；其保存数组及失败结果仍是真实结果，不能重写为按预期floor求解成功。
+
+下一只在新P15入口处理floor优化标记并显式核实际地面位置，按真实mesh+sphere处理足底导数。保持P12C/P14文件与结果字节；修正比较会包含地面坐标和恢复界两个变化，不能再称单变量因果对照。位置、速度、根/脚目标及原准入门不放宽。A失败完整保留，正式对照尚未运行。
+
+## 训练存储停止
+
+08:05:45 R02D共享盘低于100GiB保护，storage_guard终态STOPPED_STORAGE，controller/train为STOPPED_SIGNAL；新增5282/7000轮、338048转移、累计10282轮，未完成最终配对。保存final.pt205316947字节/SHA`8749a520441374b4c5818529090b9e33fa07ae70d6d304237bb5d3ef0a053d01`。原训练停止记录和下一步见[R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)，不自动恢复或改写终态。
+
+后续df现场共享盘已余约73GiB，正式P15的100GiB保护不满足，因此不启动正式八组；只继续无大文件输出的内存控制，并已询问用户可用存储资源。大工件仍原地LOCAL_ONLY，不删除未知资产。

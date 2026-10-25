@@ -1,0 +1,27 @@
+2026-10-25 Beijing time. Read-only floor position and geometry follow-up, native exit code 0.
+No new reference/physics/optimizer. The model changed only in this short-lived process.
+Source passed to the existing server Python -c:
+
+import sys,json,pathlib,numpy as np,mujoco as mj,mink
+r=pathlib.Path('/opt/data/private/YuanQi_Q1')
+sys.path.insert(0,str(r/'script/supermimic_q1_phuma'))
+from retarget import ContactCorrectedAssets,grounded_solver
+a=ContactCorrectedAssets(r);s,_=grounded_solver(a);m=s.sim.model
+f=m.geom('floor').id
+before={'configured':m.geom_pos[f].tolist(),'actual':s.configuration.data.geom_xpos[f].tolist(),'sameframe':int(m.geom_sameframe[f])}
+m.geom_pos[f,2]=-.04;s.configuration.update(s.configuration.data.qpos.copy())
+after={'configured':m.geom_pos[f].tolist(),'actual':s.configuration.data.geom_xpos[f].tolist(),'sameframe':int(m.geom_sameframe[f])}
+m.geom_sameframe[f]=0;s.configuration.update(s.configuration.data.qpos.copy())
+corrected={'configured':m.geom_pos[f].tolist(),'actual':s.configuration.data.geom_xpos[f].tolist(),'sameframe':int(m.geom_sameframe[f])}
+receipt=json.loads((r/'data/supermimic_for_q1/PHUMA_P14_walking_root_offset_20261025/probe/receipt.json').read_text())
+shifts=[]
+for row in receipt['rows']:
+ with np.load(row['prior_arrays']['path'],allow_pickle=False) as x:
+  shifts.append({'motion':row['original_motion_key'],'bound':row['bound_rad_s'],'common_ground_origin_shift_m':float(x['common_ground_origin_shift_m'])})
+print(json.dumps({'before':before,'after_geom_pos_change':after,'after_disabling_sameframe_optimization':corrected,'foot_geometries':[{'name':m.geom(g).name,'id':int(g),'type':int(m.geom_type[g]),'size':m.geom_size[g].tolist()} for g in a.foot_geoms],'P14_shifts':shifts}))
+
+Native output:
+/root/.bashrc: line 1: /generate_container_user: No such file or directory
+{"before": {"configured": [0.0, 0.0, 0.0], "actual": [0.0, 0.0, 0.0], "sameframe": 1}, "after_geom_pos_change": {"configured": [0.0, 0.0, -0.04], "actual": [0.0, 0.0, 0.0], "sameframe": 1}, "after_disabling_sameframe_optimization": {"configured": [0.0, 0.0, -0.04], "actual": [0.0, 0.0, -0.04], "sameframe": 0}, "foot_geometries": [{"name": "", "id": 15, "type": 7, "size": [0.04317058853337498, 0.033048400890399086, 0.09078139876044226]}, {"name": "", "id": 16, "type": 2, "size": [0.002, 0.0, 0.0]}, {"name": "", "id": 17, "type": 2, "size": [0.002, 0.0, 0.0]}, {"name": "", "id": 18, "type": 2, "size": [0.002, 0.0, 0.0]}, {"name": "", "id": 19, "type": 2, "size": [0.002, 0.0, 0.0]}, {"name": "", "id": 31, "type": 7, "size": [0.043170588533374986, 0.033048400890399086, 0.09078139876044225]}, {"name": "", "id": 32, "type": 2, "size": [0.002, 0.0, 0.0]}, {"name": "", "id": 33, "type": 2, "size": [0.002, 0.0, 0.0]}, {"name": "", "id": 34, "type": 2, "size": [0.002, 0.0, 0.0]}, {"name": "", "id": 35, "type": 2, "size": [0.002, 0.0, 0.0]}], "P14_shifts": [{"motion": "KIT/10/WalkInCounterClockwiseCircle06", "bound": 2, "common_ground_origin_shift_m": 0.052265189407580306}, {"motion": "KIT/10/WalkInCounterClockwiseCircle06", "bound": 8, "common_ground_origin_shift_m": 0.03354935568513536}, {"motion": "KIT/359/walking_fast02", "bound": 2, "common_ground_origin_shift_m": 0.03523200664998756}, {"motion": "KIT/359/walking_fast02", "bound": 8, "common_ground_origin_shift_m": 0.02441669113422732}, {"motion": "KIT/11/WalkInCounterClockwiseCircle02", "bound": 2, "common_ground_origin_shift_m": 0.0447675342681015}, {"motion": "KIT/11/WalkInCounterClockwiseCircle02", "bound": 8, "common_ground_origin_shift_m": 0.030617433534451136}, {"motion": "KIT/167/walking_slow02", "bound": 2, "common_ground_origin_shift_m": 0.037184187870541986}, {"motion": "KIT/167/walking_slow02", "bound": 8, "common_ground_origin_shift_m": 0.03593831741053899}]}
+
+Additional minimal MuJoCo 3.3.7 check: mj_setConst followed by mj_kinematics left geom_sameframe=1 and actual floor Z=0 despite configured Z=-0.04. mjtSameFrame.mjSAMEFRAME_NONE is 0. No package files changed.

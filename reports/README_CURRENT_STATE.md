@@ -1,18 +1,18 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-25 07:53现场核验，北京时间。当前目标是SuperMimic for Q1的世界模型、想象BPTT和critic复现，最终必须由未见步行动作的真实MuJoCo跟随支持；尚未达成。BONES获取交由师兄处理，等用户通知；不再查询下载或处理凭据。现有PHUMA、AMASS和SMPL-X继续使用，旧A3/STOPPED/FAILED不恢复。
+更新：2026-10-25 08:05训练存储终态及P15控制失败，北京时间。当前目标是SuperMimic for Q1的世界模型、想象BPTT和critic复现，最终必须由未见步行动作的真实MuJoCo跟随支持；尚未达成。BONES获取交由师兄处理，等用户通知；不再查询下载或处理凭据。现有PHUMA、AMASS和SMPL-X继续使用，旧A3/STOPPED/FAILED不恢复。
 
 ## 唯一训练与恢复
 
 [PHUMA R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)保持340 train/dev6/test7、seed20261025、64环境/4槽/H32，从原R02已审计step5000继承三网络/三Adam/两采样器，固定新增7000轮，不混612新库。真实与想象统一clip20，坏梯度写入前拒绝；训练源码固定`39397087493088605e080494d7728ff458d69939`，516冻结不能修改。
 
-07:53:48[现场原生记录](../logs/session_records/supermimic_q1_R02D_after_P14_20261025.log)重新读取三状态及原boot/ticks/cmdline/组，三个实际非Z进程保持，新增4975/7000轮、318400新转移、累计9975轮；WM1939组/actor1889次，最新数值有限，尚未完成新配对评测。越过原数值失败位置不能作为稳定性保证或移动效果证明。
+08:05:45原guard[STOPPED_STORAGE](../data/manifests/supermimic_q1_R02D_storage_terminal_20261025.json)，余盘106970607616字节低于100GiB；[controller](../data/manifests/supermimic_q1_R02D_controller_terminal_20261025.json)/[train](../data/manifests/supermimic_q1_R02D_train_terminal_20261025.json)终态STOPPED_SIGNAL，实际5282/7000新轮/338048转移、累计10282轮、WM2062组/actor2012次。guard已回收worker，原controller/trainer的/proc入口消失；不自动恢复。退出final.pt205316947字节/SHA8749a520441374b4c5818529090b9e33fa07ae70d6d304237bb5d3ef0a053d01，张量待核，最终动力学配对未执行，不能称预算完成或步行改善。
 
 07:56[保存5000独立审计](../data/manifests/supermimic_q1_R02D_intermediate5000_audit_20261025.json)十三门全过，三Adam计数38980/3798/75960及原输入/516冻结保持，执行前实际5050新轮/RUNNING。结束OOM14/盘余152.34GB、实验分配2.259GB，尚未最终配对，原预算/100GiB停止线不变。
 
 主机`huanyu:/opt/data/private/YuanQi_Q1`；Python`/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python`。当前可经既有18864 SSH转发访问，不写入连接凭据。04:56启动身份：boot`d994e71f-bae0-46ba-a5f7-6c2163771c6c`；guard839210/start_ticks3616742247，controller839211/3616742257，trainer839214/3616742577。恢复须重新核`/proc`非Z、boot/ticks/cmdline/组及以下三状态，不能凭旧PID认定活跃。
 
-实验：`data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/`；读取`storage_guard.json`、`controller_status.json`、`run/status.json`，stdout在同名`logs/`。完成后既定七阶段保存审计、353片初始/最终MuJoCo评测及独立轨迹重算、比较；不追加预算、不自动重启。
+实验：`data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/`；终态读取`storage_guard.json`、`controller_status.json`、`run/status.json`，stdout在同名`logs/`。原七阶段未完成，下一安全资源条件下单独审计退出保存，再独立评测，不能重启旧controller或改写原终态。
 
 ## 当前数据与发现
 
@@ -28,9 +28,9 @@
 
 ## 资源与下一步
 
-07:53 GPU38摄氏度/1228MiB、共享内存13.81GB/OOM14、共享盘余168.26GB；盘余持续下降，本R02D约2.054GB、P14约4.9MB，不能把整盘变化全归本任务。100GiB余量、12GiB实验、250GiB来源、训练30GiB内存/86摄氏度/新OOM/900秒无进展停止保护保持，无自动恢复。所有大型原件LOCAL_ONLY；不声称网盘备份，不删未知文件或干扰其他任务。
+08:05原训练已因100GiB余盘保护停止；后续df实读共享7TB盘约73GiB余量、使用99%，自身训练约2.259GB加退出保存约205MB，不把整盘变化归本任务。OOM仍14；正式转换/评测的100GiB条件不满足，只继续小型只读内存控制，并已询问用户可用存储资源。所有大型原件LOCAL_ONLY，不声称网盘备份、不删未知文件、不干扰其他任务。
 
-下一继续既定R02D至真实终态/配对评测。[P15恢复型足地约束](README_SUPERMIMIC_Q1_FLOOR_RECOVERY_20261025.md)适配器和四控制已实现，本地两解析控制通过，服务器真实控制/八组待；保持P14输入、原限制/初始化，先验证恢复符号及真实Q1距离导数。08:02又实读R02D5200新轮/RUNNING、盘余123.97GB/OOM14；100GiB保护保持。若资源先触发停止，保留真实终态、不自动恢复。不使用P10补充test调参、不启动第二训练，尚无新可用移动策略或可交付论文结果。
+下一保持R02D真实终态，核退出保存后独立评测。[P15](README_SUPERMIMIC_Q1_FLOOR_RECOVERY_20261025.md)首轮服务器四控制为两通过/一错误/一失败，正式八组未启动；已定位MuJoCo3.3.7仅改floor.geom_pos不清sameframe缓存，实际floor仍Z=0，且Q1脚为mesh+四sphere而非全sphere。只在新入口修正并核实际地面/真实形状，不热改P12C/P14。正式转换/评测等待100GiB盘余恢复，不使用P10调参或启动第二训练，目标尚未达。
 
 Git权威副本`/tmp/yuanqi-supermimic-q1-20261023`，分支`Q1`；远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。重要阶段立即README/索引、小收据、payload audit、提交推送并独立核远端，再同步用户恢复镜像。Mac不新增大工件。唯一未跟踪旧BONES下载脚本不执行/提交/删除。
 

@@ -1,6 +1,6 @@
 # PHUMA R02D动作域修正匹配试验
 
-记录日期：2026-10-25，北京时间。状态：04:56:56独立启动，初始继承12门及05:00:34实际运行10门核验通过，固定7000新增轮进行中；配对评测尚待。用户要求继续已有资源；BONES由师兄解决，不再处理其下载与凭据。
+记录日期：2026-10-25，北京时间。状态：08:05:45存储保护STOPPED_STORAGE，实际5282/7000新增轮；controller/train为STOPPED_SIGNAL，最终配对未执行，不自动恢复。用户要求继续已有资源；BONES由师兄解决，不再处理其下载与凭据。
 
 ## 目标与依据
 
@@ -111,3 +111,13 @@ A原件保留`intermediate1500_audit.json`，保存1500为205325095字节/SHA`2b
 审计结束实验分配2259296256字节、盘余152343687168字节/OOM14、共享内存14933757952字节。07:53原三进程身份重核及4975进度保存在[原生现场记录](../logs/session_records/supermimic_q1_R02D_after_P14_20261025.log)；07:56:20实读5050轮/RUNNING、盘余154736656384字节。共享盘持续下降，本轮自身约2.259GB，100GiB停止线及不自动恢复规则保持，不能删除未知文件来续跑。
 
 [P14](README_SUPERMIMIC_Q1_WALKING_ROOT_OFFSET_20261025.md)八组常数降根诊断及独立复算已完成，穿地/滑动、0新参考，不修改本训练输入；原生足地不等式允许已有穿地零步的机制已核，后续P15先验证恢复约束与初始化，尚未实施。BONES继续由师兄处理。
+
+## 08:05:45共享盘保护实际停止
+
+08:05:45.813原guard终态STOPPED_STORAGE，余盘检查106970607616字节，低于原100GiB=107374182400字节保护。自身实验在保护前约2.259GB，不把共享盘全部写入归本任务。guard向原controller组发送信号并回收；controller原生退出0但科学终态为STOPPED_SIGNAL，train同为STOPPED_SIGNAL，不能以exit0称训练完成。
+
+实际5282/7000新轮、338048转移、累计10282轮，WM2062组/actor2012次。退出保存`run/final.pt`205316947字节/SHA`8749a520441374b4c5818529090b9e33fa07ae70d6d304237bb5d3ef0a053d01`，另有0至5000的十一份周期保存；最后5000已十三门审计通过，退出保存张量仍待核，不提前称已通过。未执行最终保存审计、353片初始/最终动力学及轨迹配对，效果尚未知。
+
+原样[storage终态](../data/manifests/supermimic_q1_R02D_storage_terminal_20261025.json)、[controller终态](../data/manifests/supermimic_q1_R02D_controller_terminal_20261025.json)、[train终态](../data/manifests/supermimic_q1_R02D_train_terminal_20261025.json)已取回。08:05:56读原controller/trainer已无/proc入口，guard记录worker_reaped=true；guard本身的/proc残留还须核是否Z，不凭目录存在称仍运行。后续共享盘余量继续下降到约73GiB，不能在不满足100GiB保护时重启训练、转换或正式评测，不删未知文件。
+
+保持原终态与7000预算历史，不自动续训；下一在安全资源条件下对现有退出权重做独立只读张量/输入审计，再以新独立评测记录评估其效果。现阶段[P15](README_SUPERMIMIC_Q1_FLOOR_RECOVERY_20261025.md)只进行小型内存控制，发现真实地面位置缓存问题，不增加训练或数据输出。

@@ -1,0 +1,16 @@
+# P17 preparation: read-only resource observation
+/root/.bashrc: line 1: /generate_container_user: No such file or directory
+{"observed_at": "2026-10-25T00:47:04+0000", "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c", "storage": {"path": "/opt/data/private/YuanQi_Q1", "available_bytes": 0, "capacity_bytes": 7619864297472}, "terminal": {"guard": {"status": "STOPPED_STORAGE", "state": null}, "controller": {"status": "STOPPED_SIGNAL", "state": null}, "train": {"status": "STOPPED_SIGNAL", "state": null}}, "processes": {"839210": {"exists": true, "stat": "839210 (python) Z 1 839210 839210 0 -1 4227076 17716 38264904 0 13 3114 1823 1222756 14367 20 0 1 0 3616742247 0 0 18446744073709551615 0 0 0 0 0 0 0 16781312 0 0 0 0 17 81 0 0 0 0 0 0 0 0 0 0 0 0 256\n"}, "839211": {"exists": false, "stat": null}, "839214": {"exists": false, "stat": null}}, "p15_exists": false, "memory_bytes": "13493166080", "oom": "oom_kill_disable 0\nunder_oom 0\noom_kill 14"}
+
+# Mac local controls: PYTHONDONTWRITEBYTECODE=1 python3 -B -m unittest discover -s script/supermimic_q1_sources -p test_filter_phuma_directory_conflicts.py -v
+# Native exit code 0
+test_changes_to_parent_coverage_source_or_gates_are_rejected (test_filter_phuma_directory_conflicts.DirectoryExclusionTests) ... ok
+test_documents_preserve_reference_gates_history_and_heldout (test_filter_phuma_directory_conflicts.DirectoryExclusionTests) ... ok
+test_only_qualified_grab_directory_candidates_are_excluded (test_filter_phuma_directory_conflicts.DirectoryExclusionTests) ... ok
+test_reserved_walking_groups_bytes_events_and_directories_are_rejected (test_filter_phuma_directory_conflicts.DirectoryExclusionTests) ... ok
+test_storage_rejection_precedes_parent_reads_or_output_creation (test_filter_phuma_directory_conflicts.DirectoryExclusionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.004s
+
+OK

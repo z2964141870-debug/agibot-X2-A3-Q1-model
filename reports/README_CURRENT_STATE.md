@@ -16,6 +16,7 @@
 
 ## 当前数据与发现
 
+- [P17目录排除新入口](README_SUPERMIMIC_Q1_DIRECTORY_EXCLUSION_VIEW_20261025.md)实现/本地五控制通过，保留旧来源链/十九门/held-out且检查P10预留来源；实际父库内存预览待，正式593片新库尚未创建或准入。08:47盘余0、原停止身份保持，不部署服务器新文件。
 - [P16全625片命名目录复核](README_SUPERMIMIC_Q1_SOURCE_DIRECTORY_AUDIT_20261025.md)：相同source_group/原动作SHA跨split0，但GRAB/s1与s10新增19片train目录候选与held-out重叠，原R02 train含11片；不宣称原训练受试者独立。下一新视图保守排除后候选593片/2116.10秒=35.27分钟，未建库/重读NPZ/准入，旧输入/终态不改。通用game_motion/subset_0026重叠只登记，不据此推断身份。全源隔离仍false。
 - [PHUMA P08B-V2](README_SUPERMIMIC_Q1_PHUMA_LIBRARY_20261025.md)：612 train/2191.34秒=36.52分钟、位移候选103段/363.06秒，dev6/test7不变；[P09注册入口](README_SUPERMIMIC_Q1_SOURCE_VIEW_REGISTRATION_20261025.md)真实预检通过，未训练。HumanML原事件/目录候选已保守排除；26未解、13集合更名候选及其他命名空间未全核，`source_isolation_certified=false`。
 - [P10/P10B补充步行来源](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)：52未用块/17事件候选/15目录候选固定选15片，原source split保留、另行预留仅供补充test。转换/十九门实际完成，0/15准入：全部支撑比例失败，14最大间隙/6自穿透失败。原P10导入错误的wrapper失败与成功P10B补检均保留。15目录继续预留，新扩库须排除；没有可用的新walking动力学测试。

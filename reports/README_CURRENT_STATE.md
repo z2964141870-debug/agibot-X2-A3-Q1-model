@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-最新用户指示：BONES已拷入huanyu统一根，接收使用；见[真实接收A02](README_SUPERMIMIC_Q1_BONES_RECEIPT_20261025.md)。11:58完整SHA/EOF-CRC与142220 CSV目录覆盖通过，冻结train1024/dev128/test128提取完成、CSV402.82MB，整个实验分配435.14MB。原包23.50GB同盘归档至`data/references/bones_seed/archives/g1.tar.gz`无副本；[原样收据](../data/manifests/supermimic_q1_BONES_A02_intake_20261025.json)/[guard完成回收](../data/manifests/supermimic_q1_BONES_A02_intake_guard_20261025.json)已双端核小收据SHA。结束盘余2.094TB/内存21.38GB/OOM14；下一仅首8个冻结train来源原速Q1小批及原22门，尚无BONES合格参考/训练。下方暂停BONES为此前历史状态。
+最新用户指示：BONES已拷入huanyu统一根，接收使用；见[真实接收A02](README_SUPERMIMIC_Q1_BONES_RECEIPT_20261025.md)。11:58完整SHA/EOF-CRC与142220 CSV目录覆盖通过，冻结train1024/dev128/test128提取402.82MB。12:03首8个train原速转换及[独立22门](../data/manifests/supermimic_q1_BONES_A02_reference_check_20261025.json)完成：3098帧/61.80秒、0/8准入；全部支撑/最大间隙失败、7/8自穿透失败，时轴/源FK/映射/原2rad/s/导出均过。下一比较同8个train的G1/映射/Q1足底与碰撞，不盲目扩量/训练。原包23.50GB同盘归档无副本，A02共446.51MB、盘余2.094TB/OOM14；尚无BONES合格参考或训练。下方暂停BONES为此前历史状态。
 
 本轮完成：[M02/DEV-B/P15R](README_SUPERMIMIC_Q1_RELOCATED_DIAGNOSTICS_20261025.md)。11:31已完成统一根显式迁移适配及原5000父/累计10282退出策略真实开发配对、两次独立重算；两者6/6完整、0/6严格跟随，移动0.07825至0.07258m/参考0.52117m。11:34 P15R八组/独立756项及321帧FK/626新inverse完成，6组QP无解、2个8rad/s变体几何子集通过，但滑脚约50%-53%、原2rad/s门不通过，0正式参考。原冻结和终态保持，两新实验共约6.07MB、盘余2.118TB/OOM14。
 

@@ -1,55 +1,33 @@
 # YUANQI 当前状态与下一步
 
-最新用户纠正：[优先论文复现](README_SUPERMIMIC_Q1_PAPER_FIRST_20261025.md)。取消代理额外19/22项物理硬门槛及统一2rad/s裁速，自定规模/未见测试配额不再阻止训练；旧结果只作诊断。12:37新PF01冻结train前128片全部转换/IO组库，39694帧/791.32秒=13.19分钟、0转换/IO错误，取消统一裁速，分配142.74MB/盘余2.094TB/OOM14。下一直接64环境500轮世界模型/BPTT有限训练。旧PHUMA/A02/D01与停止终态保留；以下“0准入”为此前旧门结果，不能据此再阻止新主线。
+更新日期：2026-10-25，北京时间。当前目标：在Q1上复现SuperMimic的可微世界模型、想象BPTT和critic训练方法，优先推进原方法复现。入口：[论文优先主线](README_SUPERMIMIC_Q1_PAPER_FIRST_20261025.md)。
 
-[BONES D01](README_SUPERMIMIC_Q1_BONES_SUPPORT_20261025.md)只读比较入口已实现，下一同8个train的原G1/映射目标/Q1导出前后足底及自碰撞定位，真实结果待；0新准入/训练。
+## 用户纠正已落实
 
-最新用户指示：BONES已拷入huanyu统一根，接收使用；见[真实接收A02](README_SUPERMIMIC_Q1_BONES_RECEIPT_20261025.md)。11:58完整SHA/EOF-CRC与142220 CSV目录覆盖通过，冻结train1024/dev128/test128提取402.82MB。12:03首8个train原速转换及[独立22门](../data/manifests/supermimic_q1_BONES_A02_reference_check_20261025.json)完成：3098帧/61.80秒、0/8准入；全部支撑/最大间隙失败、7/8自穿透失败，时轴/源FK/映射/原2rad/s/导出均过。下一比较同8个train的G1/映射/Q1足底与碰撞，不盲目扩量/训练。原包23.50GB同盘归档无副本，A02共446.51MB、盘余2.094TB/OOM14；尚无BONES合格参考或训练。下方暂停BONES为此前历史状态。
+代理额外制定的90%帧15mm支撑、30mm最大间隙、3mm自穿透、统一2rad/s、IK残差及30分钟/1小时、独立测试配额等不再阻止数据或训练。旧19/22门与失败收据仅作历史诊断。新入口只保留可读、数值有限、Q1维度/身体顺序及原速时间轴等运行必要条件，原几何flags保持原样。原论文过滤的来源和适用范围须明确，不能冒称已完整复现官方G1过滤代码。
 
-本轮完成：[M02/DEV-B/P15R](README_SUPERMIMIC_Q1_RELOCATED_DIAGNOSTICS_20261025.md)。11:31已完成统一根显式迁移适配及原5000父/累计10282退出策略真实开发配对、两次独立重算；两者6/6完整、0/6严格跟随，移动0.07825至0.07258m/参考0.52117m。11:34 P15R八组/独立756项及321帧FK/626新inverse完成，6组QP无解、2个8rad/s变体几何子集通过，但滑脚约50%-53%、原2rad/s门不通过，0正式参考。原冻结和终态保持，两新实验共约6.07MB、盘余2.118TB/OOM14。
+## 最新执行
 
-更新：2026-10-25 10:52[清理与统一目录完成](README_Q1_STORAGE_CONSOLIDATION_20261025.md)。删除178938项/文件块180.70GB，剩余约299.58GB全部位于huanyu唯一实体根`/opt/data/private/ZHY`，旧三个根仅兼容软链接。280057常规文件与516冻结/5关键文件核验保持，依赖导入及三份Q1模型加载/forward通过；盘余约2.142TB，存储阻塞已解除但未新训练。下一显式绑定新根后继续P15与独立评测；SuperMimic for Q1目标尚未达成，旧A3/STOPPED/FAILED不恢复。BONES由师兄处理，等通知，不再查询下载或处理凭据。
+- PF01已完成：冻结train前128个BONES动作，128/128转换并通过基本IO、0转换/IO错误；39694帧/791.32秒=13.19分钟。120Hz至50Hz保持原速，取消统一速度cap，Q1实际XML关节范围保持。实验分配142741504字节。
+- RF01已完成：12:42:02至12:53:46，64环境/4模型槽、500/500采集轮/32000真实转移，训练计时689.58秒。三网络随机初始化，世界模型8步、H32想象BPTT；WM149组/actor99次，guard完成且worker已回收。
+- [保存核对](../data/manifests/supermimic_q1_BONES_RF01_training_audit_20261025.json)通过：三网络参数真实改变且有限，三Adam实际1490/99/1980步，输入/源码保持。此核对0动力积分/optimizer更新，不是新增数据质量门。最终模型205621779字节/SHA`6e467822f7e6c800bcb12f00b90e9029998c2d26a629d83df6e44c2325a17bee`，保留服务器。
+- RF01目录：`data/supermimic_for_q1/BONES_RF01_500_20261025/`；终态`guard.json`为`WORKER_COMPLETED`、`run/status.json`和`run/receipt.json`为`TRAINING_FINISHED_PENDING_EVALUATION`，日志`logs/BONES_RF01_500_20261025.log`。`run/admission.json`是启动快照，不是当前运行状态。
+- 训练源码发布：`22962d3f09fa8c29345761e54f93888874358b11`；主入口`script/supermimic_q1_reproduction/run_reproduction.py`。PF01报告发布`e7ee33791d4b6f63cd3bcbfe99b5834cf4f7a0b0`已独立核Q1远端。
 
-## 唯一训练与恢复
+本轮证明取消额外数据门后的有限训练链路已完成，尚无本轮动力学跟随效果结论，也不是原论文完整数据/算力配置复现。下一沿原方法扩库、增加交互训练并做实际回放；不再为自定几何门或配额等待。5份原样小收据已取回并逐一与服务器SHA一致，完整命令和边界见阶段README。
 
-[PHUMA R02D](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)保持340 train/dev6/test7、seed20261025、64环境/4槽/H32，从原R02已审计step5000继承三网络/三Adam/两采样器，固定新增7000轮，不混612新库。真实与想象统一clip20，坏梯度写入前拒绝；训练源码固定`39397087493088605e080494d7728ff458d69939`，516冻结不能修改。
+## 平台、资源与恢复
 
-08:05:45原guard[STOPPED_STORAGE](../data/manifests/supermimic_q1_R02D_storage_terminal_20261025.json)，余盘106970607616字节低于100GiB；[controller](../data/manifests/supermimic_q1_R02D_controller_terminal_20261025.json)/[train](../data/manifests/supermimic_q1_R02D_train_terminal_20261025.json)终态STOPPED_SIGNAL，实际5282/7000新轮/338048转移、累计10282轮、WM2062组/actor2012次。原controller/trainer已消失、guard只余匹配原身份的Z，不自动恢复。退出final.pt205316947字节/SHA8749a520441374b4c5818529090b9e33fa07ae70d6d304237bb5d3ef0a053d01，08:19[只读十五门](../data/manifests/supermimic_q1_R02D_exit_save_readonly_audit_20261025.json)全过，三网络/三Adam/两采样器有限、计数40110/3911/78220、516冻结保持。最终动力学配对未执行，不能称预算完成或步行改善。
+唯一实体根：`huanyu:/opt/data/private/ZHY`，沿用`data / logs / script / reports`。Python：`data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python`。连接可经现有18864 SSH转发；boot基线`d994e71f-bae0-46ba-a5f7-6c2163771c6c`、OOM基线14，恢复时重新读取现场，凭据不落盘。
 
-07:56[保存5000独立审计](../data/manifests/supermimic_q1_R02D_intermediate5000_audit_20261025.json)十三门全过，三Adam计数38980/3798/75960及原输入/516冻结保持，执行前实际5050新轮/RUNNING。结束OOM14/盘余152.34GB、实验分配2.259GB，尚未最终配对，原预算/100GiB停止线不变。
+RF01结束盘余2094026186752字节，约2.094TB；本轮唯一分配274984960字节，采样最高GPU39摄氏度、OOM14保持。100GiB余盘、单实验12GiB及温度/内存/OOM保护继续作为资源管理。Mac只放代码和小收据，不拉模型。原包及大型产物`LOCAL_ONLY`，不声称网盘已备份。
 
-主机`huanyu:/opt/data/private/ZHY`；Python`/opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python`，基础环境实体为`ZHY/data/legacy_a3/env`，旧绝对路径只经兼容链接访问。当前可经既有18864 SSH转发访问，不写入连接凭据。04:56启动身份：boot`d994e71f-bae0-46ba-a5f7-6c2163771c6c`；guard839210/start_ticks3616742247，controller839211/3616742257，trainer839214/3616742577。恢复须重新核`/proc`非Z、boot/ticks/cmdline/组及以下三状态，不能凭旧PID认定活跃。
+BONES原包位于`data/references/bones_seed/archives/g1.tar.gz`，23499973647字节，SHA`52580ea8bced72ea9e2ff1e7b68f01c51c7f1099581e9a46b7c87e1dec106d8a`；完整SHA、gzip EOF/CRC及142220 CSV目录覆盖通过，仅提取冻结1280候选，没有全量展开或原包副本。见[接收](README_SUPERMIMIC_Q1_BONES_RECEIPT_20261025.md)。AMASS/SMPL-X、PHUMA及必要依赖仍保留于统一根，见[存储归拢](README_Q1_STORAGE_CONSOLIDATION_20261025.md)。
 
-实验：`data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/`；终态读取`storage_guard.json`、`controller_status.json`、`run/status.json`，stdout在同名`logs/`。原七阶段未完成；退出保存审计已过，下一安全资源条件下独立评测，不能重启旧controller或改写原终态。
+旧PHUMA R02D已因磁盘保护停止，不重启或修改终态；保存的累计10282策略与父5000开发配对均0/6严格跟随，不能称已有移动改善。见[停止记录](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)及[DEV-B历史结果](README_SUPERMIMIC_Q1_RELOCATED_DIAGNOSTICS_20261025.md)。旧A3停止实验不恢复。
 
-## 当前数据与发现
+## Git与历史
 
-- [P17目录排除新入口](README_SUPERMIMIC_Q1_DIRECTORY_EXCLUSION_VIEW_20261025.md)实现/本地五控制/真实父库只读预览通过；发布49bef24代码仅内存执行未部署，625父参考/207别名/P10十五预留目录核验通过，两份各2885行仅19条train资格变化，保留旧来源链/十九门/held-out。候选593片/2116.10秒，正式新库未建/时轴未重读/未新准入；[原生预览JSON](../data/manifests/supermimic_q1_P17_readonly_preview_20261025.json)，0新服务器文件/积分/optimizer。
-- [P16全625片命名目录复核](README_SUPERMIMIC_Q1_SOURCE_DIRECTORY_AUDIT_20261025.md)：相同source_group/原动作SHA跨split0，但GRAB/s1与s10新增19片train目录候选与held-out重叠，原R02 train含11片；不宣称原训练受试者独立。下一新视图保守排除后候选593片/2116.10秒=35.27分钟，未建库/重读NPZ/准入，旧输入/终态不改。通用game_motion/subset_0026重叠只登记，不据此推断身份。全源隔离仍false。
-- [PHUMA P08B-V2](README_SUPERMIMIC_Q1_PHUMA_LIBRARY_20261025.md)：612 train/2191.34秒=36.52分钟、位移候选103段/363.06秒，dev6/test7不变；[P09注册入口](README_SUPERMIMIC_Q1_SOURCE_VIEW_REGISTRATION_20261025.md)真实预检通过，未训练。HumanML原事件/目录候选已保守排除；26未解、13集合更名候选及其他命名空间未全核，`source_isolation_certified=false`。
-- [P10/P10B补充步行来源](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)：52未用块/17事件候选/15目录候选固定选15片，原source split保留、另行预留仅供补充test。转换/十九门实际完成，0/15准入：全部支撑比例失败，14最大间隙/6自穿透失败。原P10导入错误的wrapper失败与成功P10B补检均保留。15目录继续预留，新扩库须排除；没有可用的新walking动力学测试。
-- [P11训练步行限速归因](README_SUPERMIMIC_Q1_WALKING_RETARGET_20261025.md)：排全部已知held-out/P10后固定四个train目录，十二组2/4/8rad/s保持root/任务/原速。2rad/s贡献解算失真，但提到4/8仍支撑不足、两片约9mm自穿透，0准入。服务器三控制、真实worker退出0，保存数组188项独立重算误差0。下一解决train接触/映射一致性，不只提高限速、不重复旧逐帧根高投影。
-- [P12/P12B训练步行接触对照](README_SUPERMIMIC_Q1_WALKING_CONTACT_20261025.md)：两轮共48组、两次各8940项独立核验/8436新inverse完成。速度条件减轻锁脚失真，但最高83.42%近地仍伴22.13mm穿地/91.96%滑动，全部修正无准入；两轮加避碰共16组自穿透0。下一须原生足地/可达性约束，不再只靠软脚目标；不改R02D/P10测试。
-- 同README的P12C控制D十项通过后，07:02实际24组及独立8940核验/8436 fresh inverse完成；16修正变体无穿地，但最低脚底仍悬空8.01至33.88mm、近地比例0至15.08%，0准入。加避碰7/8自穿透0，一组仍2.39mm。下一量化腿部可达性与根/足目标兼容，不只增权重、不重复旧逐帧根高投影；原训练不改。
-- [P13可达性诊断](README_SUPERMIMIC_Q1_WALKING_REACH_20261025.md)24组4314帧/独立6068核验完成，修正目标有腿长外球冲突。[P14](README_SUPERMIMIC_Q1_WALKING_ROOT_OFFSET_20261025.md)四控制/八组1438帧/独立3188核验及2812新inverse完成，恒定降根52至107mm后全部穿地20至63mm、0准入。16状态只读确认原生足地不等式允许已有穿地零步；另发现运行时floor移动未清sameframe优化标记，使actual位置仍0。新P15修正及五控制已过，正式八组等盘余；旧失败原件保持，不能改写为成功。训练资产floor=0，不涉及该运行时移动操作。
-- [AMASS和SMPL-X](README_SUPERMIMIC_Q1_SMPLX_INTAKE_20261024.md)：17265标准SMPL-X动作/120Hz/16betas原始库与身体模型到位；[P04/P06](README_SUPERMIMIC_Q1_AMASS_LOCAL_OFFSET_20261025.md)16片初版/4片局部偏移均0准入，失败配置不接库。
+权威副本`/tmp/yuanqi-supermimic-q1-20261023`，分支`Q1`，远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。阶段结束更新README/索引，核对diff和暂存区、运行payload audit、显式push Q1并独立核远端，再同步用户镜像及服务器。唯一既有未跟踪`script/supermimic_q1_sources/download_bones.py`不执行、提交或删除。
 
-原R02 step5000开发对照完整5→6/6、跟随0/6，移动0.078251/参考0.521165m；R02C新增1810时数值FAILED保留。现有三个test_locomotion是fitness名字，位移标签不能当步行认证。源足底、映射及浮脚缺口见[D02C](README_SUPERMIMIC_Q1_PHUMA_SUPPORT_MAPPING_20261024.md)和[D04](README_SUPERMIMIC_Q1_PHUMA_REFERENCE_DYNAMICS_20261025.md)，不重复相同样本诊断，不据此声称唯一失败原因。
-
-## 资源与下一步
-
-10:52最新状态：[清理与归拢](README_Q1_STORAGE_CONSOLIDATION_20261025.md)完成，唯一实体根`/opt/data/private/ZHY`、四目录、约299.58GB。AMASS原料在`data/datasets/amass_bridge/amass_raw`；PHUMA/FGP/预览资源在`data/yuanqi_ops`，依赖与重要旧A3参考保留。原三根无新副本，迁移0复制，138相对链接修复；逐文件/冻结/环境及三XML均通过。后续新任务先完成新根路径登记，原严格路径身份检查不绕过。以下09时盘余0与未清理条目保留为历史现场证据，不能当当前状态。
-
-09:34至09:42[完整private盘点](README_Q1_PRIVATE_STORAGE_INVENTORY_20261025.md)：五个一级目录合计831.41GB，两次相同；Q1为19.97GB、yuanqi_ops366.02GB、旧ZHY94.38GB，相关合计480.36GB，纠正仅Q1约20GB的范围。AMASS原库180.26GB/历史training106.73GB为主要项；两组旧A3 checkpoint独立文件SHA相同，环境也有重复，尚未清理或完成可删依赖审计。整盘同期已用增27.73GB至7.56TB、可用0，private仅绑定其中子目录；约6.73TB差额不能从此容器归属，具体写入者未定位，需平台侧核查。[原生日志](../logs/session_records/q1_private_storage_inventory_20261025.log)及[本机整理汇总](../data/manifests/q1_private_storage_inventory_20261025.json)已保存，0服务器新增/删除/移动及训练。
-
-09:06:56最终原生复核盘余仍0/OOM14、内存13.51GB，原三停止终态/进程身份保持，P15目录未建；[P17完整日志](../logs/session_records/supermimic_q1_P17_real_preview_20261025.log)。09:02只读du确认Q1 data目录实际约19.95GB、R02D2.465GB，不跟随外部数据链接；[整理收据](../data/manifests/supermimic_q1_P17_owned_storage_summary_20261025.json)仅限本树、不归因全盘。即使清空此目录也不足恢复100GiB，正式科学执行须等待外部空间，资源协调问题已提出；本轮没有删除资产或改正式存储。已完成可用的准备和真实只读核验，不重复已过控制代替动力学结果。
-
-08:26/08:32[共享盘0可用及停止身份](README_SUPERMIMIC_Q1_STORAGE_FULL_20261025.md)复核，08:44的[P16日志D](../logs/session_records/supermimic_q1_source_P16_readonly_20261025.log)再读盘余仍0、内存13.49GB/OOM14。原三终态保持，controller/trainer不存在、guard仅Z，P15正式目录仍未创建。正式转换/评测和新训练等待至少100GiB盘余；资源协调问题已提出，不重复索取。R02D自身约2.259GB加退出保存约205MB，不把整盘变化归本任务；本阶段只读元数据，0服务器新文件，没有迁移到overlay/tmp。所有大型原件LOCAL_ONLY，不删未知文件、不干扰其他任务。
-
-下一保持R02D真实终态，盘余恢复后新独立评测。[P15](README_SUPERMIMIC_Q1_FLOOR_RECOVERY_20261025.md)A/B失败保留，C五控制全部通过/0跳过：floor.sameframe缓存修正和实际坐标拒绝检查、真实mesh+sphere有符号导数、穿地恢复QP。源码发布af72dd1、生产者SHA d411fedc2c2ff03ba17f04f2700ba458668b8fb6f7c4bffcfa1b8ce96a4188c0，控制SHA135fc332eee140aad7b25c82b99702e9b88fc1ed17e75a7f82293a973fde2a75。正式八组0启动/目录未建；恢复100GiB盘余后重新核资源/绑定再运行新P15并独立复算，不热改P12C/P14。不使用P10调参或启动第二训练，目标尚未达。
-
-Git权威副本`/tmp/yuanqi-supermimic-q1-20261023`，分支`Q1`；远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。重要阶段立即README/索引、小收据、payload audit、提交推送并独立核远端，再同步用户恢复镜像。Mac不新增大工件。唯一未跟踪旧BONES下载脚本不执行/提交/删除。
-
-历史快照完整保存在[当前状态历史归档](README_CURRENT_STATE_ARCHIVE_20261025.md)；其他项目与教学的既有入口可由[报告索引](README.md)恢复，不能用历史运行条目替代现场核验。
-
-- 每日研究最近检查10/25：43请求均成功，六份arXiv列表逐条未变；SMR仅项目页标识/CSS，111条去重与H001保持，静默、不新增简报。最新有内容仍为[10/24](research/2026-10-24/README.md)；见[检查](README_RESEARCH_CHECK_20261025.md)与[同步回执](../data/manifests/research_watch_sync_20261025.json)，main/Q1文档已推送，09:21:54独立内容核验通过。当前Q1工程以自身最新状态为准，日报不调度计算。
+详细旧记录见[本次完成前快照](README_CURRENT_STATE_BEFORE_PAPER_FIRST_20261025.md)、[更早归档](README_CURRENT_STATE_ARCHIVE_20261025.md)和[报告索引](README.md)。每日研究最近10/25检查无实质更新，静默；自动研究不调度训练。

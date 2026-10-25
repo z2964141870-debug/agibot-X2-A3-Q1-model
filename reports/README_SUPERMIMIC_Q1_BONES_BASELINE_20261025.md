@@ -148,6 +148,7 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 | `run/step_003000.pt` | 205920167 | `1b15a4246597fb92bda1422862f26b904abdfa5518d3075e0e6486badda91bae` | 1149 / 1099 |
 | `run/step_004000.pt` | 205920167 | `08462bfd6dac6e33c6573def39d90db6d41f2c1c1ba11547a285904548588ae1` | 1549 / 1499 |
 | `run/step_005000.pt` | 205920167 | `3d0c95a3b5573b2aa788100611d6e29eec46df58cacf70d7d574d4937934f39b` | 1949 / 1899 |
+| `run/step_006000.pt` | 205920167 | `f4462ce221ea646b73ad9ad38782b6d647d50b02e43fac0c9ed578b4a7e73f0d` | 2349 / 2299 |
 
 3000模型mtime为15:36:37，训练目录实际分配687841280字节。15:38取回的[原样保存后状态](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_3000_status_20261025.json)已继续3050轮/195200真实转移、WM1169组/actor1119次、RUNNING，训练计时5697.48秒、GPU40摄氏度、内存26439262208字节/OOM14。权重保留服务器LOCAL_ONLY，Mac只取小状态；本次观察会话正常结束，原训练控制器继续。
 
@@ -160,6 +161,10 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 16:43:38有界观察实际达到5000轮/320000真实转移，WM1949组/actor1899次，训练及绘图回调四进程身份匹配，GPU40摄氏度/OOM14。5000保存mtime为16:42:55，文件大小与完整SHA已登记上表；本次只核文件身份和日志轮数，不读取权重张量，不重复1000轮的独立CPU参数/Adam审计。
 
 16:45:36[原样5000保存后观测](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_5000_observation_20261025.json)已继续5075轮/324800转移、WM1979组/actor1929次，pipeline/guard/training均RUNNING，四进程boot/start_ticks匹配。训练计时9724.19秒，GPU40摄氏度、共享内存25298948096字节/OOM14；训练目录分配1099816960字节、盘余2076855734272字节。权重留服务器LOCAL_ONLY，Mac仅取小观测收据。有界观察正常结束，训练与唯一绘图回调独立继续，完整12000轮/固定8片评测及真实回放仍未完成。
+
+17:16:21有界观察实际达到6000轮/384000真实转移、WM2349组/actor2299次，四进程boot/start_ticks匹配，GPU40摄氏度/OOM14，完成本次采集预算一半。6000保存mtime17:16:04，205920167字节及完整SHA如上；仅核文件身份和对应日志，没有重复参数/Adam审计或新增评测。
+
+17:18:15[原样6000保存后观测](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_6000_observation_20261025.json)已继续6050轮/387200转移、WM2369组/actor2319次，pipeline/guard/training均RUNNING。四进程身份保持，内存25404534784字节/OOM14，训练目录分配1305796608字节、盘余2076433354752字节；nvidia-smi实际GPU为RTX3090，采样39摄氏度/1544MiB显存。`final.pt`实际尚不存在，绘图回调日志继续等待6025/6050轮。小收据取回并核SHA，权重留服务器LOCAL_ONLY；观察正常结束，原训练继续，完整12000/固定8片物理比较/真实回放仍待。
 
 ## RF02核心链路只读审阅
 

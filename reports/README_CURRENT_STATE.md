@@ -10,7 +10,9 @@
 
 - [BONES PF02完整合库](README_SUPERMIMIC_Q1_BONES_BASELINE_20261025.md)已完成：复用128并新增896，1024/1024个冻结train来源、326883帧/6517.18秒=108.62分钟，0转换/IO错误；独立来源集合缺项/额外均0、全部120→50Hz原速、1024数组链接。新7批总分配1.031GB；原false几何标记保留，不阻止训练。
 
-- RF02于14:02:53进入独立训练，14:30实际保存1000轮/64000真实转移、WM349组/actor299次，独立CPU核对13项通过，三Adam3490/299/5980、三网络真实变化且有限、1024输入/源码保持；14:31:41已继续1025轮/RUNNING。仍按64环境12000采集轮/768000转移及固定前8train初始/最终真实动力学比较、回放；完整目标未完成。控制器861470/start_ticks3619874227，包装862406/3620017857，worker862408/3620018050，boot保持，实际身份已读；目前无运行子agent，最多一个。
+- RF02于14:02:53进入独立训练，14:30实际保存1000轮/64000真实转移并完成独立CPU13项核对。最新[原样观察](../data/manifests/supermimic_q1_BONES_RF02_review_status_20261025.json)为1625轮/104000转移、WM599组/actor549次、RUNNING，GPU40摄氏度、内存27.105GB/OOM14。仍按64环境12000采集轮/768000转移及固定前8train初始/最终真实动力学比较、回放；完整目标未完成。控制器861470/start_ticks3619874227，包装862406/3620017857，worker862408/3620018050，boot保持；恢复时重新匹配实时身份。目前无运行子agent，最多一个。
+
+- [唯一子agent的只读方法审阅](README_SUPERMIMIC_Q1_RF02_METHOD_REVIEW_20261025.md)已完成，未发现要求中止的8步/H32/critic或replay错误。确认500步人工截断的采样回报缺bootstrap/样本排除，86/1024段存在长度触发条件，影响尚未量化；登记为后续独立修正，当前不热改或重启。学习核心是第三方固定SuperMimic-Reproduced，不冒称作者官方训练源码。
 
 - 发布代码`d66ac1cd21de1682ca6f069227c070ebf98da02f`已独立核远端Q1，12个服务器reproduction源码逐SHA与发布本一致。恢复先读`data/supermimic_for_q1/BONES_BASELINE_G02_20261025/status.json`、当前阶段guard/progress和日志，核实boot/PID/start_ticks，不因连接超时重启既有流程。启动[plan](../data/manifests/supermimic_q1_BONES_G02_plan_20261025.json)/[launch](../data/manifests/supermimic_q1_BONES_G02_launch_20261025.json)/[状态快照](../data/manifests/supermimic_q1_BONES_G02_launch_status_20261025.json)已保存。
 

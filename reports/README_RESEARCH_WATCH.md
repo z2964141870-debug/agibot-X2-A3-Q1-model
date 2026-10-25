@@ -1,6 +1,6 @@
 # YUANQI 具身智能研究跟踪
 
-2026-10-25当前入口：[今天检查](README_RESEARCH_CHECK_20261025.md)无实质新内容，静默；最近有内容为[10/24](research/2026-10-24/README.md)。通用完整日报/候选/去重由[main研究入口](https://github.com/z2964141870-debug/agibot-X2-A3-Q1-model/blob/main/reports/README_RESEARCH_WATCH.md)维护，Q1旧研究状态不是完整去重源。当前PHUMA/AMASS/SMPL-X路线和资源状态见[Q1最新状态](README_CURRENT_STATE.md)，下文早期工程背景按历史理解；日报不调度计算、不重复资源询问。发布待核验，见[回执](../data/manifests/research_watch_sync_20261025.json)。
+2026-10-25当前入口：[今天检查](README_RESEARCH_CHECK_20261025.md)无实质新内容，静默；最近有内容为[10/24](research/2026-10-24/README.md)。通用完整日报/候选/去重由[main研究入口](https://github.com/z2964141870-debug/agibot-X2-A3-Q1-model/blob/main/reports/README_RESEARCH_WATCH.md)维护，Q1旧研究状态不是完整去重源。当前PHUMA/AMASS/SMPL-X路线和资源状态见[Q1最新状态](README_CURRENT_STATE.md)，下文早期工程背景按历史理解；日报不调度计算、不重复资源询问。main/Q1文档已推送，09:21:54独立内容核验通过，见[回执](../data/manifests/research_watch_sync_20261025.json)。
 
 建立：2026-09-29。用户已选择每天上午 9:00 自动检查。目标是减少资讯阅读负担，把值得借鉴的进展转成有依据的实验候选。
 

@@ -1,0 +1,81 @@
+{
+  "status": "SAVED_TRACE_MOVEMENT_SPEED_ANALYSIS_COMPLETED",
+  "comparison": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF04_UP01_E2048_T02H_20261025/comparison.json",
+    "bytes": 5920,
+    "sha256": "b2a91de5723f1276c28a0ffeeb7f6eba902ee2b04349bb1c3aa8457b19117252"
+  },
+  "fullbody": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF04_UP01_E2048_T02H_20261025/fullbody_analysis.json",
+    "bytes": 17135,
+    "sha256": "286d009d8d754d196478290f01c65d84b1d6736556805cac30bbad7ba57a823e"
+  },
+  "reference": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0768_20261025/converted/train_3419f09ba93c91d75fc1.npz",
+    "bytes": 371993,
+    "sha256": "f9bce4c3452720cda88a5adc4111fe2354440dd04e8c8ecb50cbf94d7181b8c3"
+  },
+  "common_prefix_steps": 122,
+  "dt_seconds": 0.02,
+  "definitions": {
+    "speed": "Mean norm of root world-XY linear velocity: saved state[:,29:31] vs reference qvel[:,0:2], same reference-frame indices as original evaluator.",
+    "velocity_rmse": "sqrt(mean(sum((actual_xy_velocity-reference_xy_velocity)^2, axis=1)))",
+    "path": "Sum of post-control root XY increments including saved initial state. Reference path uses successive saved reference poses.",
+    "limits": "Common prefix separates different termination lengths; partial prefix amplitude/peak timing does not prove the full raised-arm gesture. No new simulation or optimizer update."
+  },
+  "reference_full": {
+    "steps": 365,
+    "mean_xy_speed_mps": 0.22920896057918677,
+    "xy_displacement_m": 1.6015037991152772,
+    "xy_path_m": 1.6730306854646801
+  },
+  "evaluations": {
+    "initial": {
+      "executed": {
+        "steps": 365,
+        "seconds": 7.3,
+        "actual_mean_xy_speed_mps": 0.008503469950184028,
+        "reference_mean_xy_speed_mps": 0.22920896057918677,
+        "xy_velocity_rmse_mps": 0.3386964351922857,
+        "actual_xy_displacement_m": 0.022874746773155326,
+        "actual_xy_path_length_m": 0.061790527189941685,
+        "reference_xy_displacement_m": 1.6015037991152772
+      },
+      "common_prefix": {
+        "steps": 122,
+        "seconds": 2.44,
+        "actual_mean_xy_speed_mps": 0.022920779386282196,
+        "reference_mean_xy_speed_mps": 0.2460348862216664,
+        "xy_velocity_rmse_mps": 0.3455236202536492,
+        "actual_xy_displacement_m": 0.022129311361785593,
+        "actual_xy_path_length_m": 0.05559919790105848,
+        "reference_xy_displacement_m": 0.57460166467276
+      }
+    },
+    "final": {
+      "executed": {
+        "steps": 122,
+        "seconds": 2.44,
+        "actual_mean_xy_speed_mps": 0.21963717516309617,
+        "reference_mean_xy_speed_mps": 0.2460348862216664,
+        "xy_velocity_rmse_mps": 0.4297391919850245,
+        "actual_xy_displacement_m": 0.45659211355101736,
+        "actual_xy_path_length_m": 0.5274141978947574,
+        "reference_xy_displacement_m": 0.57460166467276
+      },
+      "common_prefix": {
+        "steps": 122,
+        "seconds": 2.44,
+        "actual_mean_xy_speed_mps": 0.21963717516309617,
+        "reference_mean_xy_speed_mps": 0.2460348862216664,
+        "xy_velocity_rmse_mps": 0.4297391919850245,
+        "actual_xy_displacement_m": 0.45659211355101736,
+        "actual_xy_path_length_m": 0.5274141978947574,
+        "reference_xy_displacement_m": 0.57460166467276
+      }
+    }
+  },
+  "new_physics_steps": 0,
+  "new_optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY"
+}

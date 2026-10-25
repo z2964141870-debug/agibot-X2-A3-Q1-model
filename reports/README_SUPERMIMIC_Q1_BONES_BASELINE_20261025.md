@@ -153,6 +153,7 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 | `run/step_008000.pt` | 205920167 | `a0162ba19ffbb6182fd39bc2930ef0b26b2be372d85f137fa3f803f8a044c976` | 3149 / 3099 |
 | `run/step_009000.pt` | 205920167 | `3fb641bb6f2d7840c09064156e89a87847c9fd0552ea97b3a28f22e8c9446f44` | 3549 / 3499 |
 | `run/step_010000.pt` | 205920167 | `34a571e7ac6eec767fdee9172a4d1dbc7db17cfd4addfd2b7ab0cb8df55d43fc` | 3949 / 3899 |
+| `run/step_011000.pt` | 205920167 | `9d848be182b61a1e155aa99120754f9274426f0467b55620b8111ec021b632da` | 4349 / 4299 |
 
 3000模型mtime为15:36:37，训练目录实际分配687841280字节。15:38取回的[原样保存后状态](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_3000_status_20261025.json)已继续3050轮/195200真实转移、WM1169组/actor1119次、RUNNING，训练计时5697.48秒、GPU40摄氏度、内存26439262208字节/OOM14。权重保留服务器LOCAL_ONLY，Mac只取小状态；本次观察会话正常结束，原训练控制器继续。
 
@@ -185,6 +186,10 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 19:29:17有界只读观察达到10000轮/640000真实转移、WM3949组/actor3899次，完成本次预算83.33%；保存mtime19:29:06，205920167字节及完整SHA见上表。本次只登记文件身份，没有重复参数/Adam审计。四进程boot/start_ticks匹配，观察正常结束，训练与绘图回调独立继续。
 
 19:33:05[10000保存后观测收据](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_10000_observation_20261025.json)已继续10100轮/646400真实转移、WM3989组/actor3939次，pipeline/guard/training均RUNNING。实测GPU0为NVIDIA GeForce RTX3090、41摄氏度、1544MiB显存；内存25714364416字节/OOM14，训练目录分配2129735680字节、盘余2065182425088字节。源码本次未重复重哈希，最近68份逐SHA核验为18:58的9000观测，训练版本保持d66ac1c；没有修改训练代码或配置。`final.pt`仍不存在，唯一绘图回调等待10100轮，权重保留服务器LOCAL_ONLY；完整目标未完成。
+
+20:02:05只读观察达到11000轮/704000真实转移、WM4349组/actor4299次，完成本次预算91.67%；保存mtime20:02:02，实际205920167字节及完整SHA见上表。仍只核文件身份，不重复参数/Adam审计；当前观察会话78493继续跟踪训练及pipeline终后阶段，没有重启训练。
+
+20:03:52[11000保存后精简观测](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_11000_observation_20261025.json)已继续11050轮/707200真实转移、WM4369组/actor4319次，pipeline/guard/training均RUNNING，四进程boot/start_ticks保持。该收据保留直接SSH观测的必要字段，完整标量仍在原status与日志；GPU40摄氏度、内存24798355456字节/OOM14，训练分配2335711232字节、盘余1915540201472字节。源码未在本次重哈希，最近68份逐SHA核验仍为18:58；`final.pt`尚不存在，绘图回调继续等待，完整目标仍未完成。
 
 ## RF02核心链路只读审阅
 
@@ -235,7 +240,7 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 | --- | --- | --- |
 | 1024个冻结训练来源的原速Q1库，复用128并新增896，仅运行必要IO条件 | 本文PF02合库、[合库收据](../data/manifests/supermimic_q1_BONES_PF02_1024_admission_20261025.json)、[RF02训练输入](../data/manifests/supermimic_q1_BONES_RF02_admission_20261025.json) | 已完成；最终保存核对还要核输入身份 |
 | 可微世界模型8步拟合、H32想象BPTT及critic实际更新 | 训练输入配置、[1000保存核对](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_1000_audit_20261025.json)、[方法审阅](README_SUPERMIMIC_Q1_RF02_METHOD_REVIEW_20261025.md) | 中间保存已验证；最终三网络及Adam计数待 |
-| RTX3090、64环境、12000采集轮/768000转移及初始/中间/最终保存 | 本文保存表及10000观测，实际初始与1000至10000保存已存在 | 训练进行中；final.pt尚不存在 |
+| RTX3090、64环境、12000采集轮/768000转移及初始/中间/最终保存 | 本文保存表及最新观测，实际初始与1000至11000保存已存在 | 训练进行中；final.pt尚不存在 |
 | 同一固定8条参考的初始/最终MuJoCo动力学比较，含误差/回报/提前终止/移动 | [提前保存的具体名单](../data/manifests/supermimic_q1_BONES_RF02_evaluation_selection_20261025.json)、既有pipeline评测与独立算术核对阶段 | 待训练结束；还要核两份实际名单/参考SHA及566帧整片覆盖 |
 | 首片初始/最终真实物理轨迹视频与可访问回放 | 本文回放准备、[页面源码](../script/supermimic_q1_reproduction/replay.html)、pipeline两项render阶段 | 待实际视频、18863服务及桌面/移动播放核验 |
 | 每轮六宫格PNG/PDF/CSV及来源收据 | [图表阶段](README_SUPERMIMIC_Q1_TRAINING_DASHBOARD_20261025.md)、已目视预览、唯一终后绘图回调 | 待最终图检查；本轮未记录三项回合统计须留缺 |

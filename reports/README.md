@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 20:03：[RF02第11000轮保存身份登记](README_SUPERMIMIC_Q1_BONES_BASELINE_20261025.md)，704000真实转移、WM4349组/actor4299次，完成本次预算91.67%；205.92MB保存及完整SHA已读，未重复张量审计。[保存后精简观测](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_11000_observation_20261025.json)已继续11050轮/707200转移、四进程身份匹配、RUNNING/OOM14，训练分配2.336GB/盘余1.916TB。前台会话78493继续观察整个pipeline，训练与绘图回调独立运行；完整12000轮及终后交付仍待。
+
 2026-10-25 19:33：[RF02第10000轮保存身份登记](README_SUPERMIMIC_Q1_BONES_BASELINE_20261025.md)，640000真实转移、WM3949组/actor3899次，完成本次预算83.33%；205.92MB保存及完整SHA已读，未重复张量审计。[保存后观测](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_10000_observation_20261025.json)已继续10100轮/646400转移、四进程身份匹配、RUNNING/OOM14，实测RTX3090为41摄氏度，训练分配2.130GB/盘余2.065TB。目标交付进度表已关联数据、训练、固定8片比较、视频、曲线和资源证据；完整12000轮及终后交付仍待，训练独立继续。
 
 2026-10-25 18:58：[RF02第9000轮保存身份登记](README_SUPERMIMIC_Q1_BONES_BASELINE_20261025.md)，576000真实转移、WM3549组/actor3499次，完成本次预算75%；205.92MB保存及完整SHA已读，未重复张量审计。[保存后观测](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_9000_observation_20261025.json)已继续9050轮/579200转移，四进程身份及68源码SHA保持、RUNNING/OOM14，训练分配1.924GB/盘余2.066TB。观察正常退出，训练及绘图回调独立继续；完整12000轮/固定8片物理比较、最终图与回放仍待。

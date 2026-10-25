@@ -215,7 +215,7 @@ E51/R20实现完成但尚未登记：从官方035/空Adam开始、E45相同4段�
 - 10/22用户指定[SuperMimic开源调查](README_SUPERMIMIC_OPEN_SOURCE_20261022.md)：官方Demo明确专有，未核验到官方训练/权重发布；两个独立MIT复现仅固定文档/许可与目录核验、未运行。H100三小时不等于A3/Q1预算；hp3090未知，本轮研究发布见执行回执，不改变每日检查时间或工程状态。
 - Q1在原机/media/yu/FAFF-E977/YuanQi_Q1、origin/Q1；恢复须读该副本状态，不以main旧记录启动工作。见[Q1入口](README_Q1_SMPL_20261008.md)。
 - 学习Agent继续本人必要知识训练；控制链待答项见[学习会话](README_LEARNING_SESSION_20261012.md)、[交接](README_LEARNING_AGENT_TASK_20261011.md)。10/14用户决定至少跟一遍课程，采用Agent+平板笔记+上课；视频配套10章PDF已检查，见[资料与学习安排](README_LEARNING_COURSE_20261014.md)。尚无新增掌握证据，课程不调度工程计算。
-- 每日研究最近[10/24三项简报](research/2026-10-24/README.md)：PhysibleMDM参考可行性、MPBRS折扣/许可边界、DiffDreamer模型分工；53请求52成功、8摘要/3相关正文/4固定文本/111条去重，无新假设或科学计算。最新Q1背景核至cf61084保存记录，不把02:38快照当实时；主线以Q1阶段为准。通用研究main ce88294与Q1 229abe5研究文档已推送，09:25:57独立ref/各五份固定内容核验通过，见[检查](README_RESEARCH_CHECK_20261024.md)及[回执](../data/manifests/research_watch_sync_20261024.json)。
+- 每日研究最近检查10/25：43请求均成功，六份arXiv列表逐条未变；SMR仅项目页标识/CSS，111条去重与H001保持，静默、不新增简报。最新有内容仍为[10/24](research/2026-10-24/README.md)；见[检查](README_RESEARCH_CHECK_20261025.md)与[同步回执](../data/manifests/research_watch_sync_20261025.json)，发布待核验。当前Q1工程以自身最新状态为准，日报不调度计算。
 - 原机故障/空闲/负载试验及迁移历史见[报告索引](README.md)，旧细节保留在各阶段README与Git历史；本入口只保留当前恢复所需信息。
 
 独立侧支：[头环与衣服参考研究](README_HEADBAND_CURRENT_STATE.md)：HB06离线计分工具9项控制通过；公开评测包两端连接超时、WAIT_DATA，独立heartbeat已暂停并保存获取/恢复入口；不接手主线实验，尚未训练或证明效果提升。

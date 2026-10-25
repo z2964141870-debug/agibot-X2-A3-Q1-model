@@ -150,6 +150,7 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 | `run/step_005000.pt` | 205920167 | `3d0c95a3b5573b2aa788100611d6e29eec46df58cacf70d7d574d4937934f39b` | 1949 / 1899 |
 | `run/step_006000.pt` | 205920167 | `f4462ce221ea646b73ad9ad38782b6d647d50b02e43fac0c9ed578b4a7e73f0d` | 2349 / 2299 |
 | `run/step_007000.pt` | 205920167 | `6cd192ee69347d84e073481368750250265f4cce311d0fb6e2e675b787291d33` | 2749 / 2699 |
+| `run/step_008000.pt` | 205920167 | `a0162ba19ffbb6182fd39bc2930ef0b26b2be372d85f137fa3f803f8a044c976` | 3149 / 3099 |
 
 3000模型mtime为15:36:37，训练目录实际分配687841280字节。15:38取回的[原样保存后状态](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_3000_status_20261025.json)已继续3050轮/195200真实转移、WM1169组/actor1119次、RUNNING，训练计时5697.48秒、GPU40摄氏度、内存26439262208字节/OOM14。权重保留服务器LOCAL_ONLY，Mac只取小状态；本次观察会话正常结束，原训练控制器继续。
 
@@ -170,6 +171,10 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 17:49:48有界观察达到7000轮/448000真实转移、WM2749组/actor2699次，四进程boot/start_ticks匹配，GPU41摄氏度/OOM14。保存mtime17:49:27，实际205920167字节、完整SHA已登记上表；本次仍仅核文件身份，不重复参数/Adam审计。
 
 17:52:13[原样7000保存后观测](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_7000_observation_20261025.json)已继续7075轮/452800转移、WM2779组/actor2729次，pipeline/guard/training均RUNNING。重新逐SHA核68份训练源码，变化0，训练版本仍d66ac1c；四进程身份保持、GPU41摄氏度、内存25611862016字节/OOM14。训练分配1511780352字节、盘余2068079329280字节，`final.pt`仍不存在，唯一绘图回调仍等待。观测会话正常结束，未重启/改配置；完整12000轮、固定8片实际比较及回放未完成。
+
+18:22:53有界观察达到8000轮/512000真实转移、WM3149组/actor3099次，完成本次采集预算三分之二；实际保存mtime18:22:50，205920167字节及完整SHA已登记上表。本次仅核文件身份及对应日志，没有重复参数/Adam审计。四进程boot/start_ticks匹配、GPU41摄氏度/OOM14，观察随后正常退出，原训练和绘图回调独立继续。
+
+18:23:53[原样8000保存后观测](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_8000_observation_20261025.json)已继续8025轮/513600真实转移、WM3159组/actor3109次，pipeline/guard/training均RUNNING；内存25777135616字节/OOM14，训练目录分配1717760000字节、盘余2067066073088字节。`final.pt`仍不存在，唯一绘图回调等待8000轮。训练源码没有本次重哈希，最近68份逐SHA核验仍为17:52的7000观测；没有修改训练源码或配置。权重留服务器LOCAL_ONLY，Mac/Git只取小收据，完整12000轮、同8片实际比较、最终图和真实回放均未完成。
 
 ## RF02核心链路只读审阅
 

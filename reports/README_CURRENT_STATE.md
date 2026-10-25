@@ -1,8 +1,8 @@
 # YUANQI 当前状态与下一步
 
-更新日期：2026-10-25，北京时间。新主线[RF03-UP01双臂单动作可学习性](README_SUPERMIMIC_Q1_RF03_UP01_20261025.md)：用户已确认继续，训练目标和自动流程已实现，尚未启动。选择原train内`train_3419f09ba93c91d75fc1`365帧/50Hz，从零64环境/12000轮，仅改参考范围，保持RF02世界模型/H32/奖励/控制；终后接固定初始/最终MuJoCo、上肢/移动分解、六宫格和本地MP4。先控制/发布/现场核验再启动，不恢复旧RF02或FAILED/STOPPED。
+更新日期：2026-10-25，北京时间。新主线[RF03-UP01双臂单动作可学习性](README_SUPERMIMIC_Q1_RF03_UP01_20261025.md)22:35:23已启动：原train内`train_3419f09ba93c91d75fc1`365帧/50Hz，从零64环境/12000轮，仅改参考范围，保持RF02世界模型/H32/奖励/控制。两端3控制通过；逐实际admission确认配置/共同源码完全相同、实际仅1参考。375轮/24000转移、WM99组/actor49次，GPU40/OOM14/盘余1.111TB。controller883459/start_ticks3623092904、worker883460/start_ticks3623092915，现场须重核。冻结发布`adb25ba3a63851eccb30b305128671ac5a835f20`；终后自动接固定初始/最终MuJoCo、上肢/移动分解、六宫格和本地MP4，尚无本轮效果结论，不恢复旧终态。
 
-最新完成：[RF02全身诊断D02](README_SUPERMIMIC_Q1_RF02_FULLBODY_20261025.md)。固定4条上肢片肩肘0.63631→0.28769rad，但中途抬手事件实际幅度仅目标8.45–13.16%、目标高于肩时均未达到；1024来源全部locomotion桶，源G1高于肩片数左5/右4、Q1左4/右3。原8片根位置奖励贡献几乎未增，双脚承重片均97.86%、腿力矩饱和0.51%。6状态H1/8/32局部开环奖励方向各12/12一致，剥离精确动作率项仍成立，但H32微调根XY仅约0.07mm，不能证明会迈步或完整actor梯度正确。全部10483控制步/209660子步，4聚焦单测及原数组审计通过，0optimizer更新；工件约6.73MB，全部作业退出/OOM14。下一建议仅改变训练参考范围，用已有`train_3419f09ba93c91d75fc1`做双臂主动抬起的单动作学习对照；新训练尚未启动，不恢复RF02。
+最新完成：[RF02全身诊断D02](README_SUPERMIMIC_Q1_RF02_FULLBODY_20261025.md)。固定4条上肢片肩肘0.63631→0.28769rad，但中途抬手事件实际幅度仅目标8.45–13.16%、目标高于肩时均未达到；1024来源全部locomotion桶，源G1高于肩片数左5/右4、Q1左4/右3。原8片根位置奖励贡献几乎未增，双脚承重片均97.86%、腿力矩饱和0.51%。6状态H1/8/32局部开环奖励方向各12/12一致，剥离精确动作率项仍成立，但H32微调根XY仅约0.07mm，不能证明会迈步或完整actor梯度正确。全部10483控制步/209660子步，4聚焦单测及原数组审计通过，0optimizer更新；工件约6.73MB，D02全部作业退出/OOM14。其单动作建议现已作为上方独立RF03启动，原RF02不恢复。
 
 ## 本轮终态与证据
 
@@ -28,7 +28,7 @@ BONES原包`data/references/bones_seed/archives/g1.tar.gz`，23.50GB、SHA`52580
 
 背景讨论见[奖励、重定向与接触梯度归因](README_SUPERMIMIC_Q1_RF02_GRADIENT_REASONING_20261025.md)；原建议的本轮分项/接触/局部收益方向已在D02完成。现有局部收益方向结果不能外推脚支撑切换、critic或全闭环；当前不凭讨论直接更改奖励/接触参数。保持SuperMimic优先和无新增数据门。
 
-本轮训练、评测和绘图都已结束，不重启或自动追加预算。[只读方法审阅](README_SUPERMIMIC_Q1_RF02_METHOD_REVIEW_20261025.md)登记的500步reset回报缺bootstrap/截断样本排除问题仍待，86/1024段超过500帧、影响未量化；建议单动作365帧先避开这一触发条件。方法核心来自第三方固定SuperMimic-Reproduced，不能称作者官方训练源码。
+原RF02训练、评测和绘图都已结束，不重启或自动追加预算；新RF03独立运行。[只读方法审阅](README_SUPERMIMIC_Q1_RF02_METHOD_REVIEW_20261025.md)登记的500步reset回报缺bootstrap/截断样本排除问题仍待，86/1024段超过500帧、影响未量化；本次单动作365帧先避开这一触发条件。方法核心来自第三方固定SuperMimic-Reproduced，不能称作者官方训练源码。
 
 旧PHUMA R02D磁盘保护停止、旧A3及所有FAILED/STOPPED实验不恢复、不改终态。最多一个子agent；本轮结束没有执行中的子任务。RF01的500轮失败及各时点RUNNING快照见整轮README和报告索引，不作为当前状态。
 
@@ -36,4 +36,4 @@ BONES原包`data/references/bones_seed/archives/g1.tar.gz`，23.50GB、SHA`52580
 
 权威副本`/tmp/yuanqi-supermimic-q1-20261023`，分支`Q1`，远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。训练冻结版本`d66ac1cd21de1682ca6f069227c070ebf98da02f`；本轮结果随Q1阶段提交保存并独立比对远端。服务器/用户镜像同步报告、小收据和各自AGENTS新增偏好。唯一既有未跟踪`script/supermimic_q1_sources/download_bones.py`不执行、不提交、不删除。
 
-恢复先读此文件、整轮README与服务器流程`BONES_BASELINE_G02_20261025/status.json`、训练`BONES_RF02_12000_20261025/run/receipt.json`，重新核资源/进程/Git状态。详细历史见[报告索引](README.md)、[论文优先前快照](README_CURRENT_STATE_BEFORE_PAPER_FIRST_20261025.md)和[更早归档](README_CURRENT_STATE_ARCHIVE_20261025.md)。每日研究最近10/25检查无实质更新，静默；自动研究不调度训练。
+恢复先读此文件、新[RF03-UP01](README_SUPERMIMIC_Q1_RF03_UP01_20261025.md)及服务器`BONES_RF03_UP01_12000_20261025/{status.json,train_guard.json,run/status.json}`，重新核资源/进程/Git状态；训练在后台独立运行，不能重启、覆盖或追加预算。RF02历史证据继续由整轮README和`BONES_BASELINE_G02_20261025/status.json`恢复。详细历史见[报告索引](README.md)、[论文优先前快照](README_CURRENT_STATE_BEFORE_PAPER_FIRST_20261025.md)和[更早归档](README_CURRENT_STATE_ARCHIVE_20261025.md)。每日研究最近10/25检查无实质更新，静默；自动研究不调度训练。

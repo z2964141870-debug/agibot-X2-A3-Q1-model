@@ -1,0 +1,268 @@
+{
+  "status": "PLANNED",
+  "source": {
+    "path": "/opt/data/private/ZHY/script/project_tools/run_q1_single_motion.py",
+    "bytes": 10956,
+    "sha256": "f854eba3991b72656e9d6e44261bc4cc045f8cee8b767c2312b890d1bbe76862"
+  },
+  "code_commit": "adb25ba3a63851eccb30b305128671ac5a835f20",
+  "reference": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0768_20261025/converted/train_3419f09ba93c91d75fc1.npz",
+    "bytes": 371993,
+    "sha256": "f9bce4c3452720cda88a5adc4111fe2354440dd04e8c8ecb50cbf94d7181b8c3"
+  },
+  "reference_frames": 365,
+  "reference_fps": 50,
+  "library": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_1024_20261025/library/admission.json",
+    "bytes": 194407,
+    "sha256": "557fb8725a1ed605f703b33e53402105a58b704a32e06dd579d8ebff92c9693d"
+  },
+  "backend": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/PHUMA_P05_slots_V01_20261024/receipt.json",
+    "bytes": 20910,
+    "sha256": "5ed98f8c8c15781caca01e9a638bd6d5a496735009ee3832ee2aaf867a4a86aa"
+  },
+  "entries": [
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/audit_q1_checkpoint.py",
+      "bytes": 8245,
+      "sha256": "ecdb504efd54eec6bf319585c474b70f1585b2a8d7a9e1c8697250f4a3653425"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/plot_training_dashboard.py",
+      "bytes": 14899,
+      "sha256": "70f03b41529832c4b582550424195bc9df3477b79db58791ee58e5da45a19e7b"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/run_q1_single_motion.py",
+      "bytes": 10956,
+      "sha256": "f854eba3991b72656e9d6e44261bc4cc045f8cee8b767c2312b890d1bbe76862"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/train_q1_with_dashboard.py",
+      "bytes": 6140,
+      "sha256": "dcfbb728c6da9d0c6206712d7b0e174a744f1ad7615f2b139769888e3a3563e8"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/supermimic_q1_analysis/diagnose_fullbody.py",
+      "bytes": 17189,
+      "sha256": "41ba3414c9e9a8e6f992b9d216b41d6764f391a6b075a952b5ae05bd0e2f519c"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/supermimic_q1_reproduction/audit_reproduction_evaluation.py",
+      "bytes": 6402,
+      "sha256": "eea8267500e2f326fc7118915094ccaecc837b717f6450a26cf8ebccf8f24bd4"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/supermimic_q1_reproduction/evaluate_reproduction.py",
+      "bytes": 11440,
+      "sha256": "4a76821ce0b3b4ce32c7e133df918435977daa682d357b9a5c777fd0e3a76eae"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/supermimic_q1_reproduction/render_reproduction.py",
+      "bytes": 2654,
+      "sha256": "b4b547b2526657035e6f5c975e568d7f4f762a87de889ace4afbcd073d91557d"
+    }
+  ],
+  "phases": [
+    {
+      "name": "train",
+      "command": [
+        "/opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/project_tools/train_q1_with_dashboard.py",
+        "--root",
+        "/opt/data/private/ZHY",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/run",
+        "--dashboard-label",
+        "RF03-UP01",
+        "--motions",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_1024_20261025/library/references",
+        "--reference-receipt",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_1024_20261025/library/admission.json",
+        "--backend-receipt",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/PHUMA_P05_slots_V01_20261024/receipt.json",
+        "--steps",
+        "12000",
+        "--num-envs",
+        "64",
+        "--threads",
+        "4",
+        "--batch",
+        "128",
+        "--wm-batch",
+        "64",
+        "--wm-batches",
+        "10",
+        "--warmup-steps",
+        "128",
+        "--model-warmup-updates",
+        "50",
+        "--checkpoint-every",
+        "1000",
+        "--seed",
+        "2026102513",
+        "--device",
+        "cuda:0",
+        "--clips",
+        "train_3419f09ba93c91d75fc1",
+        "--code-commit",
+        "adb25ba3a63851eccb30b305128671ac5a835f20"
+      ]
+    },
+    {
+      "name": "save_check",
+      "command": [
+        "/opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/project_tools/audit_q1_checkpoint.py",
+        "--root",
+        "/opt/data/private/ZHY",
+        "--run",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/run",
+        "--checkpoint",
+        "final.pt",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/training_audit.json",
+        "--expected-oom-kill",
+        "14"
+      ]
+    },
+    {
+      "name": "evaluate_initial",
+      "command": [
+        "/opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/supermimic_q1_reproduction/evaluate_reproduction.py",
+        "--root",
+        "/opt/data/private/ZHY",
+        "--motions",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_1024_20261025/library/references",
+        "--checkpoint",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/run/step_000000.pt",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/evaluation_initial",
+        "--device",
+        "cpu",
+        "--count",
+        "1",
+        "--clips",
+        "train_3419f09ba93c91d75fc1"
+      ]
+    },
+    {
+      "name": "audit_initial",
+      "command": [
+        "/opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/supermimic_q1_reproduction/audit_reproduction_evaluation.py",
+        "--root",
+        "/opt/data/private/ZHY",
+        "--evaluation",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/evaluation_initial",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/evaluation_initial/audit.json"
+      ]
+    },
+    {
+      "name": "evaluate_final",
+      "command": [
+        "/opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/supermimic_q1_reproduction/evaluate_reproduction.py",
+        "--root",
+        "/opt/data/private/ZHY",
+        "--motions",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_1024_20261025/library/references",
+        "--checkpoint",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/run/final.pt",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/evaluation_final",
+        "--device",
+        "cpu",
+        "--count",
+        "1",
+        "--clips",
+        "train_3419f09ba93c91d75fc1"
+      ]
+    },
+    {
+      "name": "audit_final",
+      "command": [
+        "/opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/supermimic_q1_reproduction/audit_reproduction_evaluation.py",
+        "--root",
+        "/opt/data/private/ZHY",
+        "--evaluation",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/evaluation_final",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/evaluation_final/audit.json"
+      ]
+    },
+    {
+      "name": "fullbody",
+      "command": [
+        "/opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/supermimic_q1_analysis/diagnose_fullbody.py",
+        "--root",
+        "/opt/data/private/ZHY",
+        "analyze",
+        "--evaluation",
+        "initial",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/evaluation_initial/receipt.json",
+        "--evaluation",
+        "final",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/evaluation_final/receipt.json",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/fullbody_analysis.json"
+      ]
+    },
+    {
+      "name": "render_initial",
+      "command": [
+        "/opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/supermimic_q1_reproduction/render_reproduction.py",
+        "--root",
+        "/opt/data/private/ZHY",
+        "--evaluation",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/evaluation_initial/receipt.json",
+        "--clip",
+        "train_3419f09ba93c91d75fc1",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/render_initial",
+        "--max-seconds",
+        "8.3"
+      ]
+    },
+    {
+      "name": "render_final",
+      "command": [
+        "/opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/supermimic_q1_reproduction/render_reproduction.py",
+        "--root",
+        "/opt/data/private/ZHY",
+        "--evaluation",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/evaluation_final/receipt.json",
+        "--clip",
+        "train_3419f09ba93c91d75fc1",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/render_final",
+        "--max-seconds",
+        "8.3"
+      ]
+    }
+  ],
+  "training_steps": 12000,
+  "num_envs": 64,
+  "main_variable": "TRAINING_REFERENCE_SCOPE_ONLY",
+  "preserved": "RF02 world model, H32 BPTT, reward, control, network, optimizer, seed and budget",
+  "evaluation_selection": "Fixed same single reference and frame-zero start, initial and final",
+  "no_automatic_retry_or_budget_extension": true,
+  "storage_status": "LOCAL_ONLY"
+}

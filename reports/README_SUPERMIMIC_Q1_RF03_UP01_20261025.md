@@ -1,6 +1,6 @@
 # RF03-UP01 双臂单动作可学习性实验
 
-记录日期：2026-10-25，北京时间。状态：目标与自动流程已实现，尚未启动训练；实际状态以本文件后续记录和服务器收据为准。
+记录日期：2026-10-25，北京时间。状态：22:35:23已启动，已观察到世界模型和策略真实更新；训练与终后评测仍进行中，尚无本轮效果结论。
 
 ## 目标与范围
 
@@ -27,20 +27,24 @@
 4. 核对原数组与身份，复用`diagnose_fullbody.py analyze`报告肩肘、腰腿、腕相对躯干轨迹、左右抬手幅度/峰值时序/目标高于肩时的跟踪，以及根移动与完成度。平均误差与主动抬手事件分别报告。
 5. 初始和最终都以保存的真实动力学轨迹渲染短MP4，不另建网站；与六宫格图一起复制到Mac的对应`data/`目录并核大小/SHA。图像工作保持简短，优先报告结果。
 
-入口同时冻结训练包装器、绘图、评测、分析和渲染源码身份，训练自身仍保存核心源码/配置/输入身份。3项聚焦控制覆盖停止/部分预算不得冒充完成、多动作实际准入不得冒充单动作、配对身份变化不得比较；本机`python3 -m unittest discover -s script/project_tools -p test_q1_single_motion.py -v`已3/3通过，`git diff --check`通过。服务器验证待。
+入口同时冻结训练包装器、绘图、评测、分析和渲染源码身份，训练自身仍保存核心源码/配置/输入身份。3项聚焦控制覆盖停止/部分预算不得冒充完成、多动作实际准入不得冒充单动作、配对身份变化不得比较；Mac及服务器`python3 -m unittest discover -s script/project_tools -p test_q1_single_motion.py -v`均3/3通过，`git diff --check`通过。
 
 ## 版本、命令与产物
 
-权威代码副本`/tmp/yuanqi-supermimic-q1-20261023`，Q1分支，准备基于已发布`109e4616a04bfb5e5e5e6366995703fe506fe9a9`。执行前先提交并核对远端，再把其40位SHA传入。唯一实体服务器根`huanyu:/opt/data/private/ZHY`。
+权威代码副本`/tmp/yuanqi-supermimic-q1-20261023`，Q1分支，训练冻结提交`adb25ba3a63851eccb30b305128671ac5a835f20`，已推送并独立核对`refs/heads/Q1`；五个部署文件逐SHA与服务器一致。唯一实体服务器根`huanyu:/opt/data/private/ZHY`。服务器没有rsync，首次同步退出127，已改scp完成，没有安装软件。
 
 ```sh
-data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python -u script/project_tools/run_q1_single_motion.py --root /opt/data/private/ZHY --code-commit PUBLISHED_40_CHARACTER_SHA --expected-oom-kill 14 --detach
+data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python -u script/project_tools/run_q1_single_motion.py --root /opt/data/private/ZHY --code-commit adb25ba3a63851eccb30b305128671ac5a835f20 --expected-oom-kill 14 --detach
 ```
 
 产物根`data/supermimic_for_q1/BONES_RF03_UP01_12000_20261025/`：`launch.json`、`plan.json`、`status.json`、各阶段`*_guard.json`、`run/`权重与逐轮指标、`run_dashboard/`六宫格、`evaluation_{initial,final}/`、`fullbody_analysis.json`、`comparison.json`、`render_{initial,final}/comparison.mp4`。日志`logs/BONES_RF03_UP01_12000_20261025_*.log`。大型模型及完整轨迹只留服务器，状态`LOCAL_ONLY`。
 
-## 当前验证与下一步
+## 启动观察与证据
 
-新入口尚未在服务器执行，训练与效果均未完成。先跑聚焦控制、发布/同步代码、重新核GPU/盘余/共享内存及OOM，然后实际启动并观察真实更新；后续完成固定评测、图与本地MP4，再依据主动抬手和移动的结果决定下一步。旧RF02以及FAILED/STOPPED终态保持。
+22:35:23实际启动独立controller883459，start_ticks3623092904；训练worker883460，start_ticks3623092915，boot仍`d994e71f-bae0-46ba-a5f7-6c2163771c6c`。实际准入只有选中1条/365帧，从零初始化。逐项比较RF02/RF03实际admission：资产、仿真、WM、actor、critic及两个trainer配置全相同，所有共同训练源码SHA相同、无新增训练源码；参数只有`clips`、输出目录和发布提交号不同。[范围与配置核对](../data/manifests/supermimic_q1_RF03_UP01_scope_check_20261025.json)。
+
+已原样取回第375轮/24000转移状态，WM99组/actor49次、数值有限、GPU40摄氏度/容器24.697GB/OOM14。同期guard RUNNING、盘余1111389138944字节，温度/内存/存储仍在预算内；这是启动观察，不是跟踪改善证据。训练已脱离前台SSH独立运行；此处PID不能代替后续实时核验。
+
+小收据：[启动](../data/manifests/supermimic_q1_RF03_UP01_launch_20261025.json)、[完整计划](../data/manifests/supermimic_q1_RF03_UP01_plan_20261025.json)、[375轮原样状态](../data/manifests/supermimic_q1_RF03_UP01_start_status_20261025.json)、[同期guard](../data/manifests/supermimic_q1_RF03_UP01_start_guard_20261025.json)。完整admission438926字节/SHA`540bb3c4ac5cb40af9744f662cacb8173a273574575d5f9c32cbf81bc673a95f`保留服务器；Mac仅有小副本，没有下载权重。后续完成固定评测、图与本地MP4，再依据主动抬手和移动的结果决定下一步。旧RF02以及FAILED/STOPPED终态保持，本轮无自动重试或延长预算。
 
 恢复先读本文件、`README_CURRENT_STATE.md`和服务器本轮`status.json`/`train_guard.json`/`run/status.json`，重新核实进程身份与资源，不根据历史RUNNING快照重启或追加预算。

@@ -151,6 +151,7 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 | `run/step_006000.pt` | 205920167 | `f4462ce221ea646b73ad9ad38782b6d647d50b02e43fac0c9ed578b4a7e73f0d` | 2349 / 2299 |
 | `run/step_007000.pt` | 205920167 | `6cd192ee69347d84e073481368750250265f4cce311d0fb6e2e675b787291d33` | 2749 / 2699 |
 | `run/step_008000.pt` | 205920167 | `a0162ba19ffbb6182fd39bc2930ef0b26b2be372d85f137fa3f803f8a044c976` | 3149 / 3099 |
+| `run/step_009000.pt` | 205920167 | `3fb641bb6f2d7840c09064156e89a87847c9fd0552ea97b3a28f22e8c9446f44` | 3549 / 3499 |
 
 3000模型mtime为15:36:37，训练目录实际分配687841280字节。15:38取回的[原样保存后状态](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_3000_status_20261025.json)已继续3050轮/195200真实转移、WM1169组/actor1119次、RUNNING，训练计时5697.48秒、GPU40摄氏度、内存26439262208字节/OOM14。权重保留服务器LOCAL_ONLY，Mac只取小状态；本次观察会话正常结束，原训练控制器继续。
 
@@ -175,6 +176,10 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 18:22:53有界观察达到8000轮/512000真实转移、WM3149组/actor3099次，完成本次采集预算三分之二；实际保存mtime18:22:50，205920167字节及完整SHA已登记上表。本次仅核文件身份及对应日志，没有重复参数/Adam审计。四进程boot/start_ticks匹配、GPU41摄氏度/OOM14，观察随后正常退出，原训练和绘图回调独立继续。
 
 18:23:53[原样8000保存后观测](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_8000_observation_20261025.json)已继续8025轮/513600真实转移、WM3159组/actor3109次，pipeline/guard/training均RUNNING；内存25777135616字节/OOM14，训练目录分配1717760000字节、盘余2067066073088字节。`final.pt`仍不存在，唯一绘图回调等待8000轮。训练源码没有本次重哈希，最近68份逐SHA核验仍为17:52的7000观测；没有修改训练源码或配置。权重留服务器LOCAL_ONLY，Mac/Git只取小收据，完整12000轮、同8片实际比较、最终图和真实回放均未完成。
+
+18:56:27有界只读观察达到9000轮/576000真实转移、WM3549组/actor3499次，完成本次预算75%；保存mtime18:56:02，实际205920167字节及完整SHA见上表。仅登记文件身份，不重复中间参数/Adam审计。四进程boot/start_ticks匹配、GPU41摄氏度/OOM14；观察正常退出，训练没有重启。
+
+18:58:18[9000保存后观测收据](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_9000_observation_20261025.json)已继续9050轮/579200真实转移、WM3569组/actor3519次，pipeline/guard/training均RUNNING；重新逐SHA核对68份训练源码，变化0、code_commit仍d66ac1c。内存25902755840字节/OOM14，训练目录分配1923743744字节、盘余2066297643008字节，`final.pt`仍不存在，唯一绘图回调等待9050轮。没有修改训练配置、来源或评测选择；权重留服务器LOCAL_ONLY，完整12000轮、固定8片动力学比较、最终图及真实回放均未完成。
 
 ## RF02核心链路只读审阅
 
@@ -214,6 +219,8 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 页面源码SHA`a6d863014adc4526cdae15199939e781ec947cc67d03de106c4d973e82f005b8`已与服务器逐SHA一致，仅复制到`script/supermimic_q1_reproduction/replay.html`，没有提前启动回放服务。15:20:39有界只读观察结束时为2500轮/160000交互、WM949组/actor899次，三进程boot/start_ticks匹配；guard/pipeline RUNNING、GPU39摄氏度、内存26709639168字节/OOM14、盘余2087439777792字节。原控制器继续运行。
 
 15:21取回的[原样状态](../data/manifests/supermimic_q1_BONES_RF02_replay_preparation_status_20261025.json)已继续2525轮/161600交互、WM959组/actor909次，训练计时4649.31秒，内存26702372864字节/OOM14；这些训练指标不是固定参考动力学比较结果，尚无RF02跟随效果结论。
+
+18:36只读确认Mac已有bundled Playwright及其Chromium可执行文件，无需下载浏览器；此项只证明文件存在，尚未以真实RF02页面验证浏览器运行、视频画面或桌面/移动布局。后续实际核验仍待本轮视频生成，不用工具存在代替回放通过。
 
 ## 计划产物与恢复
 

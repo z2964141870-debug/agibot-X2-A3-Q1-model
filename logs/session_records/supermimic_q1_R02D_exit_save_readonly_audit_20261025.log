@@ -1,0 +1,80 @@
+2026-10-25 08:19 Beijing time. CPU/mmap read-only audit, native server command exit code 0.
+Environment: PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1.
+Interpreter: /opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python
+The following source was passed as the Python -c argument. No new server file was written. Its stdout was saved as the corresponding local data/manifests JSON; the original 100GiB guard and stopped records were not changed.
+
+import pathlib,sys,json,math,hashlib,datetime,shutil
+root=pathlib.Path('/opt/data/private/YuanQi_Q1')
+sys.path.insert(0,str(root/'script/supermimic_q1_sources'))
+from guard_phuma_batch import MemoryBoundBudget
+memory=MemoryBoundBudget(None,int(28.75*1024**3),14)
+before=memory.memory()
+exp=root/'data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025'
+run=exp/'run'
+def identity(path):
+ path=pathlib.Path(path).resolve(strict=True)
+ h=hashlib.sha256()
+ with path.open('rb') as stream:
+  while block:=stream.read(1024*1024):h.update(block)
+ return {'path':str(path),'bytes':path.stat().st_size,'sha256':h.hexdigest()}
+paths=[run/'final.pt',run/'step_000000.pt',exp/'spec.json',run/'admission.json',exp/'storage_guard.json',exp/'controller_status.json',run/'status.json']
+inputs=[identity(path) for path in paths]
+spec,admission,guard,controller,status=[json.loads(path.read_text()) for path in paths[2:]]
+import torch
+torch.set_num_threads(1)
+saved,initial=[torch.load(path,map_location='cpu',mmap=True,weights_only=False) for path in paths[:2]]
+manifest=saved['manifest'];step=saved['step']
+groups=max(0,step-manifest['warmup_steps']+1)*2//5
+actor=max(0,groups-manifest['model_warmup_updates'])
+increments={'wm_opt':groups*manifest['wm_trainer']['batches_per_update'],'policy_opt':actor,'critic_opt':actor*manifest['policy_trainer']['critic_epochs']*manifest['policy_trainer']['critic_minibatches']}
+def finite(value):
+ if torch.is_tensor(value):return bool(torch.isfinite(value).all())
+ if isinstance(value,dict):return all(finite(v) for v in value.values())
+ if isinstance(value,(list,tuple)):return all(finite(v) for v in value)
+ if isinstance(value,float):return math.isfinite(value)
+ return True
+networks={}
+for key in ['wm','policy','critic']:
+ current,original=saved[key],initial[key]
+ same=current.keys()==original.keys() and all(current[k].shape==original[k].shape for k in current)
+ changed=sum(bool(torch.any(current[k]!=original[k])) for k in current) if same else 0
+ networks[key]={'same_keys_shapes':same,'changed_tensors':changed,'finite':finite(current)}
+ memory.memory()
+counters={}
+for key,inc in increments.items():
+ first,last=initial[key]['state'],saved[key]['state']
+ matched=bool(first) and first.keys()==last.keys() and all(int(last[k]['step'])==int(first[k]['step'])+inc for k in last)
+ counters[key]={'increment':inc,'passed':matched,'saved_distinct':sorted({int(v['step']) for v in last.values()}),'finite':finite(saved[key])}
+ memory.memory()
+changes=[r['path'] for r in spec['frozen_files'] if identity(r['path'])!=r]
+prefix=[json.loads(line) for line in (run/'metrics.jsonl').read_text().splitlines() if line]
+prefix=[row for row in prefix if row['step']<=step]
+processes=[]
+for pid,expected in [(839210,'3616742247'),(839211,'3616742257'),(839214,'3616742577')]:
+ p=pathlib.Path('/proc')/str(pid)
+ if p.exists():
+  fields=p.joinpath('stat').read_text().rsplit(')',1)[1].split()
+  processes.append({'pid':pid,'state':fields[0],'start_ticks':fields[19],'same_original_identity':fields[19]==expected})
+gates={
+ 'actual_storage_stop_and_reaped_worker':guard['status']=='STOPPED_STORAGE' and guard['cleanup']['worker_reaped'] and controller['status']==status['status']=='STOPPED_SIGNAL',
+ 'original_worker_processes_absent':not pathlib.Path('/proc/839211').exists() and not pathlib.Path('/proc/839214').exists(),
+ 'original_guard_only_z_or_absent':all(p['state']=='Z' and p['same_original_identity'] for p in processes if p['pid']==839210),
+ 'final_exact_exit_counts':step==status['step']==5282 and saved['total_collection_rounds']==status['total_collection_rounds']==10282 and status['env_steps']==64*step,
+ 'final_artifact_identity_matches_stop':status['artifacts'][0]==inputs[0],
+ 'three_networks_finite_and_updated':all(r['same_keys_shapes'] and r['changed_tensors']>0 and r['finite'] for r in networks.values()),
+ 'three_adam_finite_and_counts_retained':all(r['passed'] and r['finite'] for r in counters.values()),
+ 'two_sampler_tensors_finite':finite(saved['bin_return']) and finite(saved['bin_memory']),
+ 'model_and_policy_update_counts':saved['wm_updates']==status['wm_updates']==groups and saved['policy_updates']==status['policy_updates']==actor,
+ 'original_manifest_and_action_correction_retained':initial['manifest']==manifest and json.loads(json.dumps(manifest))==admission and manifest['code_commit']==spec['code_commit']=='39397087493088605e080494d7728ff458d69939',
+ 'original340_and_heldout_6_7_retained':sorted(pathlib.Path(r['path']).stem for r in manifest['train_clips'])==spec['split_clips']['train'] and sorted(manifest['heldout_clips'])==sorted(spec['split_clips']['development']+spec['split_clips']['test']) and {k:len(v) for k,v in spec['split_clips'].items()}=={'train':340,'development':6,'test':7},
+ 'all516_frozen_inputs_unchanged':not changes and len(spec['frozen_files'])==516,
+ 'complete_finite_logged_prefix':[r['step'] for r in prefix]==list(range(25,step+1,25)) and all(math.isfinite(v) for row in prefix for v in row.values() if isinstance(v,(int,float))),
+ 'immutable_inputs_unchanged':inputs==[identity(path) for path in paths],
+ 'no_cuda_context':not torch.cuda.is_initialized(),
+}
+result={'status':'STOPPED_R02D_EXIT_SAVE_READ_ONLY_AUDIT_PASSED' if all(gates.values()) else 'STOPPED_R02D_EXIT_SAVE_READ_ONLY_AUDIT_FAILED','captured_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'gates':gates,'inputs':inputs,'networks':networks,'optimizer_counters':counters,'frozen_changes':changes,'processes':processes,'health_before':before,'health_after':memory.memory(),'disk_free_bytes':shutil.disk_usage(root).free,'final_budget_completed':False,'new_server_output_files':0,'new_physics_steps':0,'new_optimizer_updates':0,'new_policy_calls':0,'storage_status':'LOCAL_ONLY','limits':'CPU/mmap read-only exit-save and terminal-input check. No server artifact written; original 100GiB guard is not lowered and all stopped states remain unchanged. No dynamic tracking evaluation or policy success claim.'}
+print(json.dumps(result,allow_nan=False))
+sys.exit(0 if all(gates.values()) else 2)
+
+Native stdout:
+{"status": "STOPPED_R02D_EXIT_SAVE_READ_ONLY_AUDIT_PASSED", "captured_utc": "2026-10-25T00:19:24.509435+00:00", "gates": {"actual_storage_stop_and_reaped_worker": true, "original_worker_processes_absent": true, "original_guard_only_z_or_absent": true, "final_exact_exit_counts": true, "final_artifact_identity_matches_stop": true, "three_networks_finite_and_updated": true, "three_adam_finite_and_counts_retained": true, "two_sampler_tensors_finite": true, "model_and_policy_update_counts": true, "original_manifest_and_action_correction_retained": true, "original340_and_heldout_6_7_retained": true, "all516_frozen_inputs_unchanged": true, "complete_finite_logged_prefix": true, "immutable_inputs_unchanged": true, "no_cuda_context": true}, "inputs": [{"path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/run/final.pt", "bytes": 205316947, "sha256": "8749a520441374b4c5818529090b9e33fa07ae70d6d304237bb5d3ef0a053d01"}, {"path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/run/step_000000.pt", "bytes": 205325095, "sha256": "3a1bc5dff4966f2754a97e11c5d283b283733bea12b15d4a92a57961e7ba5b38"}, {"path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/spec.json", "bytes": 160813, "sha256": "fb42496059a517c5e2fa40934dc25ca3b13690e0400964bdb23965e58277c25d"}, {"path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/run/admission.json", "bytes": 117844, "sha256": "3c962d4719df49c5516d15c97de83cd1c7187a03ef976b5a4574bb068cf45204"}, {"path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/storage_guard.json", "bytes": 2441, "sha256": "be3cf16845a32467a4bbb03e69b4f557888e35f8d92331c263bc8d6e42ae8a70"}, {"path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/controller_status.json", "bytes": 734, "sha256": "0bf08b5c4466ae1ec03d798ac805281614496759f9846c4a0c2eb9afd3915ebd"}, {"path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/run/status.json", "bytes": 3408, "sha256": "029454b7fbd205a888f0fe6a3eeb0aba643d8ae180144cc542cee63836e3ceaf"}], "networks": {"wm": {"same_keys_shapes": true, "changed_tensors": 14, "finite": true}, "policy": {"same_keys_shapes": true, "changed_tensors": 20, "finite": true}, "critic": {"same_keys_shapes": true, "changed_tensors": 6, "finite": true}}, "optimizer_counters": {"wm_opt": {"increment": 20620, "passed": true, "saved_distinct": [40110], "finite": true}, "policy_opt": {"increment": 2012, "passed": true, "saved_distinct": [3911], "finite": true}, "critic_opt": {"increment": 40240, "passed": true, "saved_distinct": [78220], "finite": true}}, "frozen_changes": [], "processes": [{"pid": 839210, "state": "Z", "start_ticks": "3616742247", "same_original_identity": true}], "health_before": {"shared_bytes": 13085851648, "oom_kill": 14, "maximum_bytes": 30870077440}, "health_after": {"shared_bytes": 13791105024, "oom_kill": 14, "maximum_bytes": 30870077440}, "disk_free_bytes": 35711246336, "final_budget_completed": false, "new_server_output_files": 0, "new_physics_steps": 0, "new_optimizer_updates": 0, "new_policy_calls": 0, "storage_status": "LOCAL_ONLY", "limits": "CPU/mmap read-only exit-save and terminal-input check. No server artifact written; original 100GiB guard is not lowered and all stopped states remain unchanged. No dynamic tracking evaluation or policy success claim."}

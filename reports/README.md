@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 08:19：[P15-C五项服务器控制全部通过](README_SUPERMIMIC_Q1_FLOOR_RECOVERY_20261025.md)，修正实际地面缓存/验证mesh+sphere导数及恢复QP；A/B失败保留，正式八组因余盘不足100GiB未启动。[R02D退出保存十五项只读核验通过](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)，计数/516冻结/停止身份保持，0服务器新文件；盘余35.71GB，原STOPPED_STORAGE不恢复，目标未达。
+
 2026-10-25 08:05：[R02D存储保护停止](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)，5282/7000新轮/338048转移，guard STOPPED_STORAGE、controller/train STOPPED_SIGNAL，退出权重保存、最终配对未执行，不自动恢复。共享盘随后约73GiB，不删未知文件。[P15首轮控制失败及地面缓存定位](README_SUPERMIMIC_Q1_FLOOR_RECOVERY_20261025.md)：配置floor移动但sameframe仍使实际Z=0，且Q1脚含mesh；正式八组0启动，下一修正新入口控制。
 
 2026-10-25：[P15恢复型足地约束](README_SUPERMIMIC_Q1_FLOOR_RECOVERY_20261025.md)适配器/四控制已实现，本地两解析控制通过，服务器控制与八组待；保持P14固定输入/原限制及R02D预算。08:02原训练5200新轮/RUNNING，盘余123.97GB，100GiB保护不变。
@@ -174,11 +176,11 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
-| 2026-10-25 | P15足地间隙恢复 | 首轮四控制两通过/一错误/一失败，定位实际floor缓存与mesh前提，八组未运行，见[阶段记录](README_SUPERMIMIC_Q1_FLOOR_RECOVERY_20261025.md) |
+| 2026-10-25 | P15足地间隙恢复 | C五控制全过、A/B失败保留，修正实际floor缓存/mesh+sphere导数；八组因余盘不足未运行，见[阶段记录](README_SUPERMIMIC_Q1_FLOOR_RECOVERY_20261025.md) |
 | 2026-10-25 | P14整段常数根高度适配 | 八组1438帧/独立3188核验和2812新inverse完成，0准入；16状态确认原生约束允许已有穿地零步，见[阶段记录](README_SUPERMIMIC_Q1_WALKING_ROOT_OFFSET_20261025.md) |
 | 2026-10-25 | P13步行目标可达性 | 实际24组/4314帧及独立6068核验/fresh FK完成，修正目标每帧有外球冲突；P14常数高度候选待，见[阶段记录](README_SUPERMIMIC_Q1_WALKING_REACH_20261025.md) |
 | 2026-10-25 | P12/P12B/P12C训练步行接触一致性 | 三轮72组及三次独立FK/inverse通过；足地约束消穿地但更浮脚，均0准入，见[阶段记录](README_SUPERMIMIC_Q1_WALKING_CONTACT_20261025.md) |
-| 2026-10-25 | R02D动作域匹配试验 | 08:05存储保护停止于5282/7000新轮；5000保存十三门通过，退出保存待核/配对未执行，不自动恢复，见[阶段记录](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md) |
+| 2026-10-25 | R02D动作域匹配试验 | 08:05存储保护停止于5282/7000新轮；5000保存十三门/退出保存十五门通过，配对未执行，不自动恢复，见[阶段记录](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md) |
 | 2026-10-25 | S02动作域一致性与数值失败 | 5控制、1500保存15门、真实replay H32/BPTT7门通过，未精确重现崩溃/证明移动改善，见[阶段记录](README_SUPERMIMIC_Q1_ACTION_DOMAIN_20261025.md) |
 | 2026-10-25 | P09来源排除视图训练登记 | 两端四项控制及真实服务器预检通过，612训练/dev6/test7；无第二训练，见[阶段记录](README_SUPERMIMIC_Q1_SOURCE_VIEW_REGISTRATION_20261025.md) |
 | 2026-10-25 | PHUMA P08/P08B扩展库与来源排除 | P08完整组库，P08B-V2排除4条冲突后612训练片/36.52分钟；准入/保存时轴及独立HumanML复审通过，全源隔离仍false，见[阶段记录](README_SUPERMIMIC_Q1_PHUMA_LIBRARY_20261025.md) |

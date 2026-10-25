@@ -121,3 +121,11 @@ A原件保留`intermediate1500_audit.json`，保存1500为205325095字节/SHA`2b
 原样[storage终态](../data/manifests/supermimic_q1_R02D_storage_terminal_20261025.json)、[controller终态](../data/manifests/supermimic_q1_R02D_controller_terminal_20261025.json)、[train终态](../data/manifests/supermimic_q1_R02D_train_terminal_20261025.json)已取回。08:05:56读原controller/trainer已无/proc入口，guard记录worker_reaped=true；guard本身的/proc残留还须核是否Z，不凭目录存在称仍运行。后续共享盘余量继续下降到约73GiB，不能在不满足100GiB保护时重启训练、转换或正式评测，不删未知文件。
 
 保持原终态与7000预算历史，不自动续训；下一在安全资源条件下对现有退出权重做独立只读张量/输入审计，再以新独立评测记录评估其效果。现阶段[P15](README_SUPERMIMIC_Q1_FLOOR_RECOVERY_20261025.md)只进行小型内存控制，发现真实地面位置缓存问题，不增加训练或数据输出。
+
+## 08:19退出保存只读核验通过
+
+新独立CPU/mmap只读检查原生退出0、十五项全部通过；服务器不写新文件，PYTHONDONTWRITEBYTECODE=1、无CUDA/策略/积分/optimizer，原100GiB保护及三份停止记录字节完全不变。stdout[原样收据](../data/manifests/supermimic_q1_R02D_exit_save_readonly_audit_20261025.json)及[可复现源码与原生输出](../logs/session_records/supermimic_q1_R02D_exit_save_readonly_audit_20261025.log)保存在Mac小记录，未称服务器存在新audit文件。
+
+退出final.pt与train终态登记的205316947字节/SHA完全相同；三网络键/形状保持并有更新，三Adam/两采样器有限，计数40110/3911/78220正确，WM2062组/actor2012次、5282新轮/累计10282/338048转移准确。原manifest/action修正声明、340/6/7及516冻结保持，完整25轮日志前缀有限，七份审计输入前后SHA保持。原controller/trainer已无/proc，guard只余匹配原start_ticks的Z状态，不是仍训练。
+
+核验结束共享内存13791105024字节/OOM14，盘余35711246336字节。张量检查通过不等于固定7000预算完成、动力学跟随改善或最终配对通过；这些仍未达。下一正式转换/独立评测须先恢复100GiB以上盘余。P15新入口五控制已通过，实际八组仍0启动；BONES继续由师兄处理。

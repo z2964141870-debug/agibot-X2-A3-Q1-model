@@ -7,7 +7,7 @@ import unittest
 
 import numpy as np
 
-from probe_walking_floor_recovery import RecoveringFloorLimit, restoring_upper_bound
+from probe_walking_floor_recovery import RecoveringFloorLimit, configure_floor, restoring_upper_bound
 from probe_walking_contact_floor import floor_limit
 
 
@@ -39,7 +39,7 @@ class RecoveryTests(unittest.TestCase):
             for dt in (.02, .005):
                 for start_gap in (-.01, .04):
                     model = mj.MjModel.from_xml_string(xml)
-                    model.geom_pos[model.geom("floor").id, 2] = floor
+                    configure_floor(model, floor, mj)
                     configuration = mink.Configuration(model)
                     q = configuration.data.qpos.copy()
                     q[7:] = floor + start_gap - .04
@@ -62,14 +62,40 @@ class RecoveryTests(unittest.TestCase):
                     low = float((configuration.data.geom_xpos[feet, 2] - .03 - floor).min())
                     self.assertGreaterEqual(low, .0005 - 1e-8)
 
+    def test_runtime_floor_position_cache_and_mismatch_rejection(self):
+        import mink
+        import mujoco as mj
+
+        xml = """<mujoco><worldbody><geom name="floor" type="plane" size="1 1 .1"/>
+        <body name="left_ankle_roll_link" pos="0 .1 .1"><freejoint/>
+        <geom type="sphere" size=".03" mass="1"/></body>
+        <body name="right_ankle_roll_link" pos="0 -.1 .1"><freejoint/>
+        <geom type="sphere" size=".03" mass="1"/></body></worldbody></mujoco>"""
+        for height in (-.04, .04):
+            model = mj.MjModel.from_xml_string(xml)
+            configuration = mink.Configuration(model)
+            floor = model.geom("floor").id
+            model.geom_pos[floor, 2] = height
+            configuration.update(configuration.data.qpos.copy())
+            self.assertAlmostEqual(configuration.data.geom_xpos[floor, 2], 0)
+            bound = RecoveringFloorLimit(floor_limit(mink, model, .005), mj)
+            with self.assertRaisesRegex(ValueError, "effective floor position"):
+                bound.compute_qp_inequalities(configuration, .005)
+            configure_floor(model, height, mj)
+            configuration.update(configuration.data.qpos.copy())
+            self.assertAlmostEqual(configuration.data.geom_xpos[floor, 2], height)
+            bound.compute_qp_inequalities(configuration, .005)
+
     def test_real_q1_signed_distance_derivatives_after_root_changes(self):
         import mink
         import mujoco as mj
 
         root = Path("/opt/data/private/YuanQi_Q1")
         sys.path.insert(0, str(root / "script/supermimic_q1_phuma"))
+        sys.path.insert(0, str(root / "script/supermimic_q1_sources"))
         from retarget import ContactCorrectedAssets
         from guard_phuma_batch import MemoryBoundBudget
+        from audit_walking_root_offset import support_point
 
         memory = MemoryBoundBudget(None, int(28.75 * 1024 ** 3), 14)
         memory.memory()
@@ -97,7 +123,10 @@ class RecoveryTests(unittest.TestCase):
                 self.assertTrue(np.any(constraint.h < 0))
                 self.assertFalse(np.all(constraint.G @ np.zeros(model.nv) <= constraint.h))
                 foot_ids = [second if first == floor else first for first, second in bound.geom_id_pairs]
-                self.assertTrue(np.all(model.geom_type[foot_ids] == mj.mjtGeom.mjGEOM_SPHERE))
+                self.assertEqual(set(map(int, model.geom_type[foot_ids])),
+                    {int(mj.mjtGeom.mjGEOM_SPHERE), int(mj.mjtGeom.mjGEOM_MESH)})
+                base_distance = np.array([support_point(model, configuration.data, [gid], mj)[0][2]
+                    - model.geom_pos[floor, 2] for gid in foot_ids])
                 for _ in range(8):
                     direction = rng.normal(size=model.nv)
                     direction /= np.linalg.norm(direction)
@@ -106,10 +135,13 @@ class RecoveryTests(unittest.TestCase):
                         moved = state.copy()
                         mj.mj_integratePos(model, moved, direction, sign * 1e-6)
                         configuration.update(moved)
-                        distance.append(configuration.data.geom_xpos[foot_ids, 2]
-                            - model.geom_size[foot_ids, 0] - model.geom_pos[floor, 2])
-                    derivative = (distance[0] - distance[1]) / 2e-6
-                    np.testing.assert_allclose((constraint.G @ direction)[active], -derivative[active], rtol=0, atol=2e-7)
+                        distance.append(np.array([support_point(model, configuration.data, [gid], mj)[0][2]
+                            - model.geom_pos[floor, 2] for gid in foot_ids]))
+                    forward = (distance[0] - base_distance) / 1e-6
+                    backward = (base_distance - distance[1]) / 1e-6
+                    derivative = -(constraint.G @ direction)
+                    self.assertTrue(np.all(derivative[active] >= np.minimum(forward, backward)[active] - 2e-7))
+                    self.assertTrue(np.all(derivative[active] <= np.maximum(forward, backward)[active] + 2e-7))
         memory.memory()
 
 

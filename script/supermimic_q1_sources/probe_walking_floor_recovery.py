@@ -19,6 +19,16 @@ def restoring_upper_bound(distance, clearance, gain, dt, relaxation=0.):
     return gain * (distance - clearance) / dt
 
 
+def configure_floor(model, height, mj):
+    floor = model.geom("floor").id
+    if (not math.isfinite(height) or model.geom_type[floor] != mj.mjtGeom.mjGEOM_PLANE
+            or model.geom_bodyid[floor] != 0):
+        raise ValueError("A finite world-plane floor height is required")
+    model.geom_pos[floor, 2] = height
+    # Runtime position changes invalidate the compiled same-frame shortcut.
+    model.geom_sameframe[floor] = mj.mjtSameFrame.mjSAMEFRAME_NONE
+
+
 class RecoveringFloorLimit:
     """Reuse Mink's signed normal Jacobian, including a restoring bound below clearance."""
 
@@ -36,6 +46,9 @@ class RecoveringFloorLimit:
         self.native.gain = value
 
     def compute_qp_inequalities(self, configuration, dt):
+        floor = self.native.model.geom("floor").id
+        if max(abs(configuration.data.geom_xpos[floor] - self.native.model.geom_pos[floor])) > 1e-12:
+            raise ValueError("The effective floor position does not match its configured world position")
         constraint = self.native.compute_qp_inequalities(configuration, dt)
         h = constraint.h.copy()
         for index, (first, second) in enumerate(self.geom_id_pairs):
@@ -60,6 +73,7 @@ def worker(args):
     limits = []
 
     def recovering_floor(mink, model, dt):
+        configure_floor(model, float(model.geom_pos[model.geom("floor").id, 2]), mj)
         limit = RecoveringFloorLimit(original_floor(mink, model, dt), mj)
         limits.append(limit)
         return limit
@@ -75,9 +89,11 @@ def worker(args):
             "floor_limits_created": len(limits), "inequality_calls": sum(limit.calls for limit in limits),
             "restoring_rows": sum(limit.restoring_rows for limit in limits),
             "clearance_m": .0005, "displacement_recovery_fraction": .85,
+            "floor_sameframe": "mjSAMEFRAME_NONE after runtime geom_pos change",
+            "effective_floor_position_checked_at_each_qp": True,
             "time_scaling": "gain=0.85*dt, h=gain*(distance-clearance)/dt for both signs",
             "root_offset_and_targets": "Identical to P14; initialization still uses its static 32-step fit",
-            "limits": "Linear recovery can be infeasible under fixed root, position and speed limits. Never relax those limits or admit a failed or penetrated result."}
+            "limits": "Compared with P14, both the effective floor coordinate and the restoring bound are corrected. Linear recovery can be infeasible under fixed root, position and speed limits. Never relax those limits or admit a failed or penetrated result."}
         if "frozen_inputs" in value:
             value["frozen_inputs"] = [*value["frozen_inputs"], *fixed]
         original_save(path, value)

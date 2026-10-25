@@ -8,7 +8,9 @@
 
 ## 最新执行
 
-- 最新目标已登记：[BONES G02复现基线](README_SUPERMIMIC_Q1_BONES_BASELINE_20261025.md)。复用128段并扩至现有1024个train来源，独立64环境12000采集轮/768000转移，再固定前8train初始/最终真实动力学比较及回放；这是本轮预算而非新准入门。合库/串行流程/评测/回放已实现并完成必要控制，RF02尚未启动，最多一个子agent；目前没有运行中的子agent。
+- [BONES G02复现基线](README_SUPERMIMIC_Q1_BONES_BASELINE_20261025.md)13:38:56实际启动扩库：控制器861470/start_ticks3619874227、boot保持，首次prepare包装861471/worker861474，实际进程身份及42/128进度已确认。复用128并扩至1024个train来源，再独立64环境12000采集轮/768000转移与固定前8train初始/最终真实动力学比较、回放；这是本轮预算而非新准入门。RF02训练尚未开始；最多一个子agent，目前没有运行中的子agent。
+
+- 发布代码`d66ac1cd21de1682ca6f069227c070ebf98da02f`已独立核远端Q1，12个服务器reproduction源码逐SHA与发布本一致。恢复先读`data/supermimic_for_q1/BONES_BASELINE_G02_20261025/status.json`、当前阶段guard/progress和日志，核实boot/PID/start_ticks，不因连接超时重启既有流程。启动[plan](../data/manifests/supermimic_q1_BONES_G02_plan_20261025.json)/[launch](../data/manifests/supermimic_q1_BONES_G02_launch_20261025.json)/[状态快照](../data/manifests/supermimic_q1_BONES_G02_launch_status_20261025.json)已保存。
 
 - RF01 E01实际动力学评测及算术复算完成：固定前2片初始/最终整片回报0.27296→0.14400、完成比例62.03%→32.49%、提前终止1/2→2/2，执行段关节RMSE0.44609→0.44551rad。第一片最终视频真实倒地、71/266步提前终止，不能称整体改善或有效步行。五份[原样收据](README_SUPERMIMIC_Q1_BONES_BASELINE_20261025.md)已取回且服务器SHA逐一一致；结果仅覆盖500轮小试两片训练动作。
 

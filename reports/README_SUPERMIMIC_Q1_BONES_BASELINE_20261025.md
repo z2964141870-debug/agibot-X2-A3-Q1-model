@@ -1,6 +1,6 @@
 # BONES到Q1的首版SuperMimic复现基线
 
-记录日期：2026-10-25，北京时间。阶段：BONES-G02 / PF02 / RF02。状态：目标已登记，扩库与新训练准备中，尚未启动RF02。
+记录日期：2026-10-25，北京时间。阶段：BONES-G02 / PF02 / RF02。状态：扩库串行流程已实际启动，PF02转换进行中，RF02训练尚未开始。
 
 ## 目标与用户决定
 
@@ -48,7 +48,7 @@
 
 E01真实输出根`data/supermimic_for_q1/BONES_RF01_E01_20261025/`；执行日志`logs/BONES_RF01_E01_{initial,final,initial_audit,final_audit,final_first_render}_20261025.log`。评测使用`evaluate_reproduction.py --root /opt/data/private/ZHY --motions /opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF01_128_20261025/library/references --checkpoint <RF01/run/step_000000.pt或final.pt> --output <新评测目录> --device cpu --count 2`，再以`audit_reproduction_evaluation.py --root /opt/data/private/ZHY --evaluation <新评测目录> --output <新评测目录>/audit.json`复算；新目录要求用于防止覆盖原证据。
 
-计划启动命令（发布代码后实际执行，执行前不称已启动）：
+实际启动命令（13:38:56北京时间执行）：
 
 ```bash
 ROOT=/opt/data/private/ZHY
@@ -57,10 +57,14 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
   "$PY" -u "$ROOT/script/supermimic_q1_reproduction/pipeline_baseline.py" \
   --root "$ROOT" --intake "$ROOT/data/supermimic_for_q1/BONES_A02_received_20261025/intake/receipt.json" \
   --backend-receipt "$ROOT/data/supermimic_for_q1/PHUMA_P05_slots_V01_20261024/receipt.json" \
-  --code-commit PUBLISHED_Q1_COMMIT --expected-oom-kill 14 --detach
+  --code-commit d66ac1cd21de1682ca6f069227c070ebf98da02f --expected-oom-kill 14 --detach
 ```
 
-新增代码、测试、阶段报告与五份原样收据本次准备提交Q1；实际提交号由Git历史提供，发布后核对远端。发布提交、实际启动身份与各阶段终态在完成后补记，不预写结果。
+新增代码、测试、阶段报告与五份原样收据已发布`d66ac1cd21de1682ca6f069227c070ebf98da02f`，独立`git ls-remote origin refs/heads/Q1`与本地HEAD完全一致；17文件/1035808字节的暂存payload检查及diff检查通过。服务器全部12个reproduction源码SHA与发布前本地逐一一致；原PF01/RF01源码未改，旧下载器仍不执行、不提交、不删除。
+
+实际启动身份：[原样launch](../data/manifests/supermimic_q1_BONES_G02_launch_20261025.json)，控制器PID861470/start_ticks3619874227、boot`d994e71f-bae0-46ba-a5f7-6c2163771c6c`；首次prepare包装进程PID861471/start_ticks3619874236、worker861474。启动后实际读取`/proc`确认控制器与包装进程存活且start_ticks匹配，状态为RUNNING/prepare_0128，不能仅用LAUNCHED收据推断运行。首批进度实读42/128、65.85秒，guard为RUNNING、OOM14，盘余2092641165312字节、共享内存24778801152字节；RF02尚未开始。
+
+[原样plan](../data/manifests/supermimic_q1_BONES_G02_plan_20261025.json)和[初次状态快照](../data/manifests/supermimic_q1_BONES_G02_launch_status_20261025.json)已取回。快照是启动观测，不代表恢复时实时状态；须再读服务器`status.json`及当前阶段guard/progress、匹配boot/PID/start_ticks。控制器日志`logs/BONES_BASELINE_G02_20261025_controller.log`；转换实际worker日志`logs/BONES_PF02_0128_20261025.log`，包装进程日志见status事件。发生SSH超时先重读状态，不重新启动旧输出。
 
 保留100GiB余盘、单实验12GiB和温度/内存/OOM保护，控制模型保存量；不全量解压原包、不复制23.5GB归档、不把模型拉到Mac。原PHUMA/A3停止或失败实验不重启、不改终态，大型资产均LOCAL_ONLY。
 
@@ -73,4 +77,4 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 - 流程状态：`data/supermimic_for_q1/BONES_BASELINE_G02_20261025/status.json`，计划与进程身份同目录保存。
 - 日志：统一`logs/BONES_*_20261025*.log`，模型/参考/视频只写data。
 
-后续立即运行新增代码必要控制、发布Q1并部署，转换余896个来源、合库、训练、保存核对、动力学比较和回放。每完成重要阶段更新本README/当前状态/索引并同步GitHub；未执行项目不记成完成。
+后续继续观测既有流程：完成余896个来源转换、合库、训练、保存核对、动力学比较和回放。每完成重要阶段更新本README/当前状态/索引并同步GitHub；本次只确认扩库已运行，训练/评测/完整目标未完成。代码、README及小收据已同步用户镜像与服务器，服务器AGENTS仅增补单子agent限制，保留其余历史差异。

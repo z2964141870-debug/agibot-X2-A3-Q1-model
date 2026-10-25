@@ -1,0 +1,2319 @@
+{
+  "status": "PAIRED_FULLBODY_ANALYSIS_COMPLETED",
+  "source": {
+    "path": "/opt/data/private/ZHY/script/supermimic_q1_analysis/diagnose_fullbody.py",
+    "bytes": 13903,
+    "sha256": "0e165d880bbaca3f84fe8e255e6acb069221ba207dd6418f4d89bca7679c9fd6"
+  },
+  "evaluations": {
+    "initial": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_initial/receipt.json",
+      "bytes": 455082,
+      "sha256": "46277d34304f21ec26e4ca7fab61752afc6de236243e007026a643e4d43ac5d6"
+    },
+    "final": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_final/receipt.json",
+      "bytes": 455027,
+      "sha256": "3cf73f19adbce9427f9a7cd109d2c555e6d5be94a32b9b73bd416949c7d0342a"
+    }
+  },
+  "summary": {
+    "initial": {
+      "clips": 8,
+      "mean_common_prefix_joint_rmse_rad": {
+        "all_joints_rmse_rad": 0.4395198457339372,
+        "legs_rmse_rad": 0.31615221354963075,
+        "waist_rmse_rad": 0.05481367586128235,
+        "arms_rmse_rad": 0.6130890476313979
+      },
+      "mean_common_prefix_wrist_torso_relative_rmse_m": {
+        "left": 0.12909805867820978,
+        "right": 0.1233299057930708
+      },
+      "mean_full_reference_reward_terms": {
+        "motion_global_root_pos": 0.03115469605315279,
+        "motion_global_root_ori": 0.046643886103205634,
+        "motion_body_pos": 0.1541965699279128,
+        "motion_body_ori": 0.007775788652168648,
+        "motion_body_lin_vel": 0.13512143407165356,
+        "motion_body_ang_vel": 0.11457840673560656,
+        "action_rate_l2": -3.409611984698611e-11,
+        "joint_limit": -0.10948897864415441,
+        "total": 0.3799818036349111
+      },
+      "mean_root_position_score_below_0p01_fraction": 0.36123384907861034
+    },
+    "final": {
+      "clips": 8,
+      "mean_common_prefix_joint_rmse_rad": {
+        "all_joints_rmse_rad": 0.2741799404579815,
+        "legs_rmse_rad": 0.2611125251809542,
+        "waist_rmse_rad": 0.06601642431034253,
+        "arms_rmse_rad": 0.3006950207716038
+      },
+      "mean_common_prefix_wrist_torso_relative_rmse_m": {
+        "left": 0.07552057737484574,
+        "right": 0.06084274593740702
+      },
+      "mean_full_reference_reward_terms": {
+        "motion_global_root_pos": 0.0318412861142888,
+        "motion_global_root_ori": 0.06006987191624657,
+        "motion_body_pos": 0.19080398579030095,
+        "motion_body_ori": 0.07472311165968201,
+        "motion_body_lin_vel": 0.16404004739007033,
+        "motion_body_ang_vel": 0.13759329891492658,
+        "action_rate_l2": -0.004130590300586652,
+        "joint_limit": -0.000655704167838955,
+        "total": 0.6542853072519327
+      },
+      "mean_root_position_score_below_0p01_fraction": 0.4977896453192522
+    }
+  },
+  "rows": [
+    {
+      "clip": "train_0052d4522747ef665036",
+      "reference": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0512_20261025/converted/train_0052d4522747ef665036.npz",
+        "bytes": 244550,
+        "sha256": "831992d5c6b6de644fc7d260055f5297138f5e24d61a1014a356efa6f5b79854"
+      },
+      "expected_steps": 244,
+      "common_prefix_steps": 87,
+      "evaluations": {
+        "initial": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_initial/train_0052d4522747ef665036.npz",
+            "bytes": 29209,
+            "sha256": "19124e8b3ddc689ec3196b1d3f188805ab11b9360f736b5fed962acd480e4434"
+          },
+          "executed_steps": 87,
+          "failed": true,
+          "full_clip_completion": 0.35655737704918034,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.020373125787217266,
+            "motion_global_root_ori": 0.02371994608639331,
+            "motion_body_pos": 0.06216891977332959,
+            "motion_body_ori": 0.021362112516600553,
+            "motion_body_lin_vel": 0.04507373969467093,
+            "motion_body_ang_vel": 0.04053828241131802,
+            "action_rate_l2": -3.369156925068213e-11,
+            "joint_limit": -0.04352791877997825,
+            "total": 0.1697082087000618
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.05713842174805762,
+            "motion_global_root_ori": 0.06652490626528698,
+            "motion_body_pos": 0.17435880947922322,
+            "motion_body_ori": 0.05991213165575328,
+            "motion_body_lin_vel": 0.1264137067298817,
+            "motion_body_ang_vel": 0.11369357365932871,
+            "action_rate_l2": -9.449129766857976e-11,
+            "joint_limit": -0.1220783009461459,
+            "total": 0.47596325198638023
+          },
+          "root_position_score_below_0p01_fraction": 0.13793103448275862,
+          "recorded_reward_max_abs_error": 0.0,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.3387912029143968,
+            "legs_rmse_rad": 0.25973595307290437,
+            "waist_rmse_rad": 0.05798653714903152,
+            "arms_rmse_rad": 0.46217833151591703,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.43386290478846407,
+              "left_shoulder_roll_joint": 0.13370480523580988,
+              "left_shoulder_yaw_joint": 0.8611538125118507,
+              "left_elbow_joint": 0.2682665517036295,
+              "right_shoulder_pitch_joint": 0.6152309872248112,
+              "right_shoulder_roll_joint": 0.10650303083159622,
+              "right_shoulder_yaw_joint": 0.48036754074739435,
+              "right_elbow_joint": 0.2619133767102831
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.10742608457803726,
+                "wrist_world_rmse_m": 0.41675373911857605,
+                "reference_height_peak_m": -0.1450820416212082,
+                "actual_height_peak_m": -0.08026142418384552,
+                "actual_height_at_reference_peak_m": -0.08026142418384552,
+                "reference_height_span_m": 0.009033367037773132,
+                "actual_height_span_m": 0.08084441721439362,
+                "height_span_ratio": 8.949533089527051,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 86,
+                "actual_peak_frame": 86,
+                "peak_time_difference_s": 0.0,
+                "joint_rmse_rad": 0.5048927674915935
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.061090439558029175,
+                "wrist_world_rmse_m": 0.4720762372016907,
+                "reference_height_peak_m": -0.14283186197280884,
+                "actual_height_peak_m": -0.12958699464797974,
+                "actual_height_at_reference_peak_m": -0.12958699464797974,
+                "reference_height_span_m": 0.008302882313728333,
+                "actual_height_span_m": 0.015853404998779297,
+                "height_span_ratio": 1.9093857289253173,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 55,
+                "actual_peak_frame": 55,
+                "peak_time_difference_s": 0.0,
+                "joint_rmse_rad": 0.41509145206852127
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.3387912029143968,
+            "legs_rmse_rad": 0.25973595307290437,
+            "waist_rmse_rad": 0.05798653714903152,
+            "arms_rmse_rad": 0.46217833151591703,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.43386290478846407,
+              "left_shoulder_roll_joint": 0.13370480523580988,
+              "left_shoulder_yaw_joint": 0.8611538125118507,
+              "left_elbow_joint": 0.2682665517036295,
+              "right_shoulder_pitch_joint": 0.6152309872248112,
+              "right_shoulder_roll_joint": 0.10650303083159622,
+              "right_shoulder_yaw_joint": 0.48036754074739435,
+              "right_elbow_joint": 0.2619133767102831
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.10742608457803726,
+                "wrist_world_rmse_m": 0.41675373911857605,
+                "reference_height_peak_m": -0.1450820416212082,
+                "actual_height_peak_m": -0.08026142418384552,
+                "actual_height_at_reference_peak_m": -0.08026142418384552,
+                "reference_height_span_m": 0.009033367037773132,
+                "actual_height_span_m": 0.08084441721439362,
+                "height_span_ratio": 8.949533089527051,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 86,
+                "actual_peak_frame": 86,
+                "peak_time_difference_s": 0.0,
+                "joint_rmse_rad": 0.5048927674915935
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.061090439558029175,
+                "wrist_world_rmse_m": 0.4720762372016907,
+                "reference_height_peak_m": -0.14283186197280884,
+                "actual_height_peak_m": -0.12958699464797974,
+                "actual_height_at_reference_peak_m": -0.12958699464797974,
+                "reference_height_span_m": 0.008302882313728333,
+                "actual_height_span_m": 0.015853404998779297,
+                "height_span_ratio": 1.9093857289253173,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 55,
+                "actual_peak_frame": 55,
+                "peak_time_difference_s": 0.0,
+                "joint_rmse_rad": 0.41509145206852127
+              }
+            }
+          }
+        },
+        "final": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_final/train_0052d4522747ef665036.npz",
+            "bytes": 76094,
+            "sha256": "1b94a3f9fbbfa64924c03723b5a4ab87d1e11f38d7506bf88ed32c5adac58e13"
+          },
+          "executed_steps": 244,
+          "failed": false,
+          "full_clip_completion": 1.0,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.025183622193310665,
+            "motion_global_root_ori": 0.08948799533784756,
+            "motion_body_pos": 0.1866382739094437,
+            "motion_body_ori": 0.009039396196594232,
+            "motion_body_lin_vel": 0.1538983217562686,
+            "motion_body_ang_vel": 0.12514308070526342,
+            "action_rate_l2": -0.0034914074644719416,
+            "joint_limit": -0.003965189226007959,
+            "total": 0.5819340938793831
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.0698178442296754,
+            "motion_global_root_ori": 0.09205827007776703,
+            "motion_body_pos": 0.18853765623322846,
+            "motion_body_ori": 0.022503790992911603,
+            "motion_body_lin_vel": 0.16669270207827117,
+            "motion_body_ang_vel": 0.1292118612755807,
+            "action_rate_l2": -0.009791984109839202,
+            "joint_limit": -0.01112076058788439,
+            "total": 0.647909378782771
+          },
+          "root_position_score_below_0p01_fraction": 0.569672131147541,
+          "recorded_reward_max_abs_error": 0.0,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.4292006412279101,
+            "legs_rmse_rad": 0.2810662966753146,
+            "waist_rmse_rad": 0.05654654688877014,
+            "arms_rmse_rad": 0.6223258800679194,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.15655693829683848,
+              "left_shoulder_roll_joint": 0.1591647659966567,
+              "left_shoulder_yaw_joint": 1.106344934510345,
+              "left_elbow_joint": 0.39023332163695573,
+              "right_shoulder_pitch_joint": 0.28214148875858364,
+              "right_shoulder_roll_joint": 0.08511499931558683,
+              "right_shoulder_yaw_joint": 1.000475974043831,
+              "right_elbow_joint": 0.7644545725522
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.14948077499866486,
+                "wrist_world_rmse_m": 0.9724287390708923,
+                "reference_height_peak_m": -0.1438841074705124,
+                "actual_height_peak_m": -0.1372094303369522,
+                "actual_height_at_reference_peak_m": -0.17880773544311523,
+                "reference_height_span_m": 0.01256147027015686,
+                "actual_height_span_m": 0.05334649980068207,
+                "height_span_ratio": 4.2468356532611455,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 103,
+                "actual_peak_frame": 6,
+                "peak_time_difference_s": -1.94,
+                "joint_rmse_rad": 0.597102306371396
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.1024363785982132,
+                "wrist_world_rmse_m": 1.0869265794754028,
+                "reference_height_peak_m": -0.13421796262264252,
+                "actual_height_peak_m": -0.13946719467639923,
+                "actual_height_at_reference_peak_m": -0.19618801772594452,
+                "reference_height_span_m": 0.018992602825164795,
+                "actual_height_span_m": 0.056750908493995667,
+                "height_span_ratio": 2.988053244540128,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 178,
+                "actual_peak_frame": 4,
+                "peak_time_difference_s": -3.48,
+                "joint_rmse_rad": 0.6465661897521247
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.39598055662044024,
+            "legs_rmse_rad": 0.24075859470421854,
+            "waist_rmse_rad": 0.06831507248298821,
+            "arms_rmse_rad": 0.5857370269079192,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.26084126417038417,
+              "left_shoulder_roll_joint": 0.14013666290615331,
+              "left_shoulder_yaw_joint": 1.0392537121210665,
+              "left_elbow_joint": 0.3577990165649684,
+              "right_shoulder_pitch_joint": 0.312182049685005,
+              "right_shoulder_roll_joint": 0.09802581378857869,
+              "right_shoulder_yaw_joint": 0.9528615524294528,
+              "right_elbow_joint": 0.65874594747745
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.1349024921655655,
+                "wrist_world_rmse_m": 0.18926678597927094,
+                "reference_height_peak_m": -0.1450820416212082,
+                "actual_height_peak_m": -0.1372094303369522,
+                "actual_height_at_reference_peak_m": -0.1788274347782135,
+                "reference_height_span_m": 0.009033367037773132,
+                "actual_height_span_m": 0.05334649980068207,
+                "height_span_ratio": 5.905494548999619,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 86,
+                "actual_peak_frame": 6,
+                "peak_time_difference_s": -1.6,
+                "joint_rmse_rad": 0.5691539474950412
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.09043829888105392,
+                "wrist_world_rmse_m": 0.27189549803733826,
+                "reference_height_peak_m": -0.14283186197280884,
+                "actual_height_peak_m": -0.13946719467639923,
+                "actual_height_at_reference_peak_m": -0.195860356092453,
+                "reference_height_span_m": 0.008302882313728333,
+                "actual_height_span_m": 0.05662450194358826,
+                "height_span_ratio": 6.819860839164604,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 55,
+                "actual_peak_frame": 4,
+                "peak_time_difference_s": -1.02,
+                "joint_rmse_rad": 0.6018633677444314
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "clip": "train_00660a3755173f532abb",
+      "reference": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0384_20261025/converted/train_00660a3755173f532abb.npz",
+        "bytes": 477950,
+        "sha256": "73acce55881d85ae71499a2587540c74309c03c043500262713c6e6c8f887e17"
+      },
+      "expected_steps": 474,
+      "common_prefix_steps": 474,
+      "evaluations": {
+        "initial": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_initial/train_00660a3755173f532abb.npz",
+            "bytes": 143243,
+            "sha256": "4f474adf6a165594c06754b5de5147319a5dfea96294187e8521638e230f1fc6"
+          },
+          "executed_steps": 474,
+          "failed": false,
+          "full_clip_completion": 1.0,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.039609562072969014,
+            "motion_global_root_ori": 0.08923334703203054,
+            "motion_body_pos": 0.19111230513591804,
+            "motion_body_ori": 0.007552855709746464,
+            "motion_body_lin_vel": 0.18169084080506728,
+            "motion_body_ang_vel": 0.1650154292224095,
+            "action_rate_l2": -1.840852434206537e-11,
+            "joint_limit": -0.14253786298149668,
+            "total": 0.5316764789040078
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.039609562072969014,
+            "motion_global_root_ori": 0.08923334703203054,
+            "motion_body_pos": 0.19111230513591804,
+            "motion_body_ori": 0.007552855709746464,
+            "motion_body_lin_vel": 0.18169084080506728,
+            "motion_body_ang_vel": 0.1650154292224095,
+            "action_rate_l2": -1.840852434206537e-11,
+            "joint_limit": -0.14253786298149668,
+            "total": 0.5316764789040078
+          },
+          "root_position_score_below_0p01_fraction": 0.4767932489451477,
+          "recorded_reward_max_abs_error": 7.450580596923828e-09,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.41885071882630687,
+            "legs_rmse_rad": 0.297300291380998,
+            "waist_rmse_rad": 0.0460731012930841,
+            "arms_rmse_rad": 0.5910473037499481,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.08895853444165859,
+              "left_shoulder_roll_joint": 0.1517667010921498,
+              "left_shoulder_yaw_joint": 0.2865225897539025,
+              "left_elbow_joint": 1.059965820034096,
+              "right_shoulder_pitch_joint": 0.16706201429457965,
+              "right_shoulder_roll_joint": 0.2236558435915546,
+              "right_shoulder_yaw_joint": 0.5035724801331891,
+              "right_elbow_joint": 1.1075237875233763
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.12588761746883392,
+                "wrist_world_rmse_m": 1.030955195426941,
+                "reference_height_peak_m": -0.1557236909866333,
+                "actual_height_peak_m": -0.08203239738941193,
+                "actual_height_at_reference_peak_m": -0.08232377469539642,
+                "reference_height_span_m": 0.04013815522193909,
+                "actual_height_span_m": 0.09904611110687256,
+                "height_span_ratio": 2.4676298788324735,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 360,
+                "actual_peak_frame": 12,
+                "peak_time_difference_s": -6.96,
+                "joint_rmse_rad": 0.556005729846878
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.11652349680662155,
+                "wrist_world_rmse_m": 0.9949032664299011,
+                "reference_height_peak_m": -0.14454945921897888,
+                "actual_height_peak_m": -0.08203445374965668,
+                "actual_height_at_reference_peak_m": -0.08231769502162933,
+                "reference_height_span_m": 0.04909440875053406,
+                "actual_height_span_m": 0.09880641102790833,
+                "height_span_ratio": 2.012579712080421,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 386,
+                "actual_peak_frame": 17,
+                "peak_time_difference_s": -7.38,
+                "joint_rmse_rad": 0.6241245540095399
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.41885071882630687,
+            "legs_rmse_rad": 0.297300291380998,
+            "waist_rmse_rad": 0.0460731012930841,
+            "arms_rmse_rad": 0.5910473037499481,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.08895853444165859,
+              "left_shoulder_roll_joint": 0.1517667010921498,
+              "left_shoulder_yaw_joint": 0.2865225897539025,
+              "left_elbow_joint": 1.059965820034096,
+              "right_shoulder_pitch_joint": 0.16706201429457965,
+              "right_shoulder_roll_joint": 0.2236558435915546,
+              "right_shoulder_yaw_joint": 0.5035724801331891,
+              "right_elbow_joint": 1.1075237875233763
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.12588761746883392,
+                "wrist_world_rmse_m": 1.030955195426941,
+                "reference_height_peak_m": -0.1557236909866333,
+                "actual_height_peak_m": -0.08203239738941193,
+                "actual_height_at_reference_peak_m": -0.08232377469539642,
+                "reference_height_span_m": 0.04013815522193909,
+                "actual_height_span_m": 0.09904611110687256,
+                "height_span_ratio": 2.4676298788324735,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 360,
+                "actual_peak_frame": 12,
+                "peak_time_difference_s": -6.96,
+                "joint_rmse_rad": 0.556005729846878
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.11652349680662155,
+                "wrist_world_rmse_m": 0.9949032664299011,
+                "reference_height_peak_m": -0.14454945921897888,
+                "actual_height_peak_m": -0.08203445374965668,
+                "actual_height_at_reference_peak_m": -0.08231769502162933,
+                "reference_height_span_m": 0.04909440875053406,
+                "actual_height_span_m": 0.09880641102790833,
+                "height_span_ratio": 2.012579712080421,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 386,
+                "actual_peak_frame": 17,
+                "peak_time_difference_s": -7.38,
+                "joint_rmse_rad": 0.6241245540095399
+              }
+            }
+          }
+        },
+        "final": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_final/train_00660a3755173f532abb.npz",
+            "bytes": 140802,
+            "sha256": "cbc098889cdacb13326398d63fd477803f63cc912b287f4fbfb6ed221ea51b5d"
+          },
+          "executed_steps": 474,
+          "failed": false,
+          "full_clip_completion": 1.0,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.039685359459536246,
+            "motion_global_root_ori": 0.08739291441740805,
+            "motion_body_pos": 0.19308130044631563,
+            "motion_body_ori": 0.12083556806621482,
+            "motion_body_lin_vel": 0.18159397820773127,
+            "motion_body_ang_vel": 0.16500553607836047,
+            "action_rate_l2": -0.0021117155827546697,
+            "joint_limit": -5.220234952081104e-06,
+            "total": 0.7854777210655343
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.039685359459536246,
+            "motion_global_root_ori": 0.08739291441740805,
+            "motion_body_pos": 0.19308130044631563,
+            "motion_body_ori": 0.12083556806621482,
+            "motion_body_lin_vel": 0.18159397820773127,
+            "motion_body_ang_vel": 0.16500553607836047,
+            "action_rate_l2": -0.0021117155827546697,
+            "joint_limit": -5.220234952081104e-06,
+            "total": 0.7854777210655343
+          },
+          "root_position_score_below_0p01_fraction": 0.47890295358649787,
+          "recorded_reward_max_abs_error": 7.450580596923828e-09,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.19205476734497695,
+            "legs_rmse_rad": 0.21638265372946505,
+            "waist_rmse_rad": 0.058813730216845855,
+            "arms_rmse_rad": 0.17417491092807547,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.16562640152389901,
+              "left_shoulder_roll_joint": 0.22947929191572447,
+              "left_shoulder_yaw_joint": 0.19259208815797213,
+              "left_elbow_joint": 0.27037279516425883,
+              "right_shoulder_pitch_joint": 0.116973225712033,
+              "right_shoulder_roll_joint": 0.09072530271205169,
+              "right_shoulder_yaw_joint": 0.13605497153135687,
+              "right_elbow_joint": 0.10947334983672406
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.04597247391939163,
+                "wrist_world_rmse_m": 0.9699881076812744,
+                "reference_height_peak_m": -0.1557236909866333,
+                "actual_height_peak_m": -0.15759098529815674,
+                "actual_height_at_reference_peak_m": -0.17960819602012634,
+                "reference_height_span_m": 0.04013815522193909,
+                "actual_height_span_m": 0.024367451667785645,
+                "height_span_ratio": 0.6070894771582989,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 360,
+                "actual_peak_frame": 4,
+                "peak_time_difference_s": -7.12,
+                "joint_rmse_rad": 0.21810892409864874
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.042642828077077866,
+                "wrist_world_rmse_m": 0.9646632671356201,
+                "reference_height_peak_m": -0.14454945921897888,
+                "actual_height_peak_m": -0.16145221889019012,
+                "actual_height_at_reference_peak_m": -0.1851380467414856,
+                "reference_height_span_m": 0.04909440875053406,
+                "actual_height_span_m": 0.024007156491279602,
+                "height_span_ratio": 0.4889998087820632,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 386,
+                "actual_peak_frame": 3,
+                "peak_time_difference_s": -7.66,
+                "joint_rmse_rad": 0.11446526294966493
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.19205476734497695,
+            "legs_rmse_rad": 0.21638265372946505,
+            "waist_rmse_rad": 0.058813730216845855,
+            "arms_rmse_rad": 0.17417491092807547,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.16562640152389901,
+              "left_shoulder_roll_joint": 0.22947929191572447,
+              "left_shoulder_yaw_joint": 0.19259208815797213,
+              "left_elbow_joint": 0.27037279516425883,
+              "right_shoulder_pitch_joint": 0.116973225712033,
+              "right_shoulder_roll_joint": 0.09072530271205169,
+              "right_shoulder_yaw_joint": 0.13605497153135687,
+              "right_elbow_joint": 0.10947334983672406
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.04597247391939163,
+                "wrist_world_rmse_m": 0.9699881076812744,
+                "reference_height_peak_m": -0.1557236909866333,
+                "actual_height_peak_m": -0.15759098529815674,
+                "actual_height_at_reference_peak_m": -0.17960819602012634,
+                "reference_height_span_m": 0.04013815522193909,
+                "actual_height_span_m": 0.024367451667785645,
+                "height_span_ratio": 0.6070894771582989,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 360,
+                "actual_peak_frame": 4,
+                "peak_time_difference_s": -7.12,
+                "joint_rmse_rad": 0.21810892409864874
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.042642828077077866,
+                "wrist_world_rmse_m": 0.9646632671356201,
+                "reference_height_peak_m": -0.14454945921897888,
+                "actual_height_peak_m": -0.16145221889019012,
+                "actual_height_at_reference_peak_m": -0.1851380467414856,
+                "reference_height_span_m": 0.04909440875053406,
+                "actual_height_span_m": 0.024007156491279602,
+                "height_span_ratio": 0.4889998087820632,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 386,
+                "actual_peak_frame": 3,
+                "peak_time_difference_s": -7.66,
+                "joint_rmse_rad": 0.11446526294966493
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "clip": "train_0081d048da3e3d090c08",
+      "reference": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0640_20261025/converted/train_0081d048da3e3d090c08.npz",
+        "bytes": 196915,
+        "sha256": "8aa976d0342d62072fe654cf296bac9d38c451297a812527ed4e3f243cd52e6f"
+      },
+      "expected_steps": 192,
+      "common_prefix_steps": 192,
+      "evaluations": {
+        "initial": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_initial/train_0081d048da3e3d090c08.npz",
+            "bytes": 61005,
+            "sha256": "f3d759f2eb894ebdacee0d6bae3a3bf18acbf1bd500bd9126f81efbf5b2316da"
+          },
+          "executed_steps": 192,
+          "failed": false,
+          "full_clip_completion": 1.0,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.055099224412898815,
+            "motion_global_root_ori": 0.02279722324503829,
+            "motion_body_pos": 0.18898829371513176,
+            "motion_body_ori": 0.006727933229816092,
+            "motion_body_lin_vel": 0.15875810364377682,
+            "motion_body_ang_vel": 0.13104861451810554,
+            "action_rate_l2": -4.4742535233398795e-11,
+            "joint_limit": -0.13794015926881303,
+            "total": 0.4254792371648363
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.055099224412898815,
+            "motion_global_root_ori": 0.02279722324503829,
+            "motion_body_pos": 0.18898829371513176,
+            "motion_body_ori": 0.006727933229816092,
+            "motion_body_lin_vel": 0.15875810364377682,
+            "motion_body_ang_vel": 0.13104861451810554,
+            "action_rate_l2": -4.4742535233398795e-11,
+            "joint_limit": -0.13794015926881303,
+            "total": 0.4254792371648363
+          },
+          "root_position_score_below_0p01_fraction": 0.25,
+          "recorded_reward_max_abs_error": 3.725290298461914e-09,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.4434570810881545,
+            "legs_rmse_rad": 0.2794614518524173,
+            "waist_rmse_rad": 0.04829777570258951,
+            "arms_rmse_rad": 0.6504366066099184,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.20039375413079696,
+              "left_shoulder_roll_joint": 0.285857403024092,
+              "left_shoulder_yaw_joint": 0.5575114353431854,
+              "left_elbow_joint": 1.2352741193481769,
+              "right_shoulder_pitch_joint": 0.11921356956726059,
+              "right_shoulder_roll_joint": 0.19456383372892003,
+              "right_shoulder_yaw_joint": 0.24297087634116565,
+              "right_elbow_joint": 1.1466678526946694
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.1365397721529007,
+                "wrist_world_rmse_m": 0.6479081511497498,
+                "reference_height_peak_m": -0.1533622145652771,
+                "actual_height_peak_m": -0.08199724555015564,
+                "actual_height_at_reference_peak_m": -0.08224142342805862,
+                "reference_height_span_m": 0.04199346899986267,
+                "actual_height_span_m": 0.0990820974111557,
+                "height_span_ratio": 2.3594644541388026,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 187,
+                "actual_peak_frame": 13,
+                "peak_time_difference_s": -3.48,
+                "joint_rmse_rad": 0.699748751700949
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.1411101520061493,
+                "wrist_world_rmse_m": 0.48894646763801575,
+                "reference_height_peak_m": -0.16425330936908722,
+                "actual_height_peak_m": -0.08199459314346313,
+                "actual_height_at_reference_peak_m": -0.08233548700809479,
+                "reference_height_span_m": 0.033409059047698975,
+                "actual_height_span_m": 0.09761300683021545,
+                "height_span_ratio": 2.9217526507062304,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 161,
+                "actual_peak_frame": 15,
+                "peak_time_difference_s": -2.92,
+                "joint_rmse_rad": 0.597065526495556
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.4434570810881545,
+            "legs_rmse_rad": 0.2794614518524173,
+            "waist_rmse_rad": 0.04829777570258951,
+            "arms_rmse_rad": 0.6504366066099184,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.20039375413079696,
+              "left_shoulder_roll_joint": 0.285857403024092,
+              "left_shoulder_yaw_joint": 0.5575114353431854,
+              "left_elbow_joint": 1.2352741193481769,
+              "right_shoulder_pitch_joint": 0.11921356956726059,
+              "right_shoulder_roll_joint": 0.19456383372892003,
+              "right_shoulder_yaw_joint": 0.24297087634116565,
+              "right_elbow_joint": 1.1466678526946694
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.1365397721529007,
+                "wrist_world_rmse_m": 0.6479081511497498,
+                "reference_height_peak_m": -0.1533622145652771,
+                "actual_height_peak_m": -0.08199724555015564,
+                "actual_height_at_reference_peak_m": -0.08224142342805862,
+                "reference_height_span_m": 0.04199346899986267,
+                "actual_height_span_m": 0.0990820974111557,
+                "height_span_ratio": 2.3594644541388026,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 187,
+                "actual_peak_frame": 13,
+                "peak_time_difference_s": -3.48,
+                "joint_rmse_rad": 0.699748751700949
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.1411101520061493,
+                "wrist_world_rmse_m": 0.48894646763801575,
+                "reference_height_peak_m": -0.16425330936908722,
+                "actual_height_peak_m": -0.08199459314346313,
+                "actual_height_at_reference_peak_m": -0.08233548700809479,
+                "reference_height_span_m": 0.033409059047698975,
+                "actual_height_span_m": 0.09761300683021545,
+                "height_span_ratio": 2.9217526507062304,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 161,
+                "actual_peak_frame": 15,
+                "peak_time_difference_s": -2.92,
+                "joint_rmse_rad": 0.597065526495556
+              }
+            }
+          }
+        },
+        "final": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_final/train_0081d048da3e3d090c08.npz",
+            "bytes": 60248,
+            "sha256": "49a20421ce1dbc5d76c616391e16818e53451166a228ae0c125c79d619f7bf49"
+          },
+          "executed_steps": 192,
+          "failed": false,
+          "full_clip_completion": 1.0,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.05522999030466199,
+            "motion_global_root_ori": 0.023159316910041573,
+            "motion_body_pos": 0.19299157720524815,
+            "motion_body_ori": 0.09443558449371872,
+            "motion_body_lin_vel": 0.158932970080059,
+            "motion_body_ang_vel": 0.13085904785763583,
+            "action_rate_l2": -0.0052536840048073965,
+            "joint_limit": 0.0,
+            "total": 0.6503548042383044
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.05522999030466199,
+            "motion_global_root_ori": 0.023159316910041573,
+            "motion_body_pos": 0.19299157720524815,
+            "motion_body_ori": 0.09443558449371872,
+            "motion_body_lin_vel": 0.158932970080059,
+            "motion_body_ang_vel": 0.13085904785763583,
+            "action_rate_l2": -0.0052536840048073965,
+            "joint_limit": 0.0,
+            "total": 0.6503548042383044
+          },
+          "root_position_score_below_0p01_fraction": 0.25,
+          "recorded_reward_max_abs_error": 7.450580596923828e-09,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.2273571496281532,
+            "legs_rmse_rad": 0.2325200242024254,
+            "waist_rmse_rad": 0.05029834125091243,
+            "arms_rmse_rad": 0.24580516435494734,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.282236725264961,
+              "left_shoulder_roll_joint": 0.09454320975349938,
+              "left_shoulder_yaw_joint": 0.20426048419245857,
+              "left_elbow_joint": 0.45715323539868075,
+              "right_shoulder_pitch_joint": 0.12629491624844913,
+              "right_shoulder_roll_joint": 0.06504440618156686,
+              "right_shoulder_yaw_joint": 0.31415092887963164,
+              "right_elbow_joint": 0.15868846898892203
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.04461059719324112,
+                "wrist_world_rmse_m": 0.6908948421478271,
+                "reference_height_peak_m": -0.1533622145652771,
+                "actual_height_peak_m": -0.1579270362854004,
+                "actual_height_at_reference_peak_m": -0.17953462898731232,
+                "reference_height_span_m": 0.04199346899986267,
+                "actual_height_span_m": 0.024349883198738098,
+                "height_span_ratio": 0.5798492903460233,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 187,
+                "actual_peak_frame": 5,
+                "peak_time_difference_s": -3.64,
+                "joint_rmse_rad": 0.29125049941450853
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.05584285780787468,
+                "wrist_world_rmse_m": 0.4679867625236511,
+                "reference_height_peak_m": -0.16425330936908722,
+                "actual_height_peak_m": -0.16090650856494904,
+                "actual_height_at_reference_peak_m": -0.1850891411304474,
+                "reference_height_span_m": 0.033409059047698975,
+                "actual_height_span_m": 0.024640247225761414,
+                "height_span_ratio": 0.7375319128438157,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 161,
+                "actual_peak_frame": 3,
+                "peak_time_difference_s": -3.16,
+                "joint_rmse_rad": 0.18977224306500867
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.2273571496281532,
+            "legs_rmse_rad": 0.2325200242024254,
+            "waist_rmse_rad": 0.05029834125091243,
+            "arms_rmse_rad": 0.24580516435494734,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.282236725264961,
+              "left_shoulder_roll_joint": 0.09454320975349938,
+              "left_shoulder_yaw_joint": 0.20426048419245857,
+              "left_elbow_joint": 0.45715323539868075,
+              "right_shoulder_pitch_joint": 0.12629491624844913,
+              "right_shoulder_roll_joint": 0.06504440618156686,
+              "right_shoulder_yaw_joint": 0.31415092887963164,
+              "right_elbow_joint": 0.15868846898892203
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.04461059719324112,
+                "wrist_world_rmse_m": 0.6908948421478271,
+                "reference_height_peak_m": -0.1533622145652771,
+                "actual_height_peak_m": -0.1579270362854004,
+                "actual_height_at_reference_peak_m": -0.17953462898731232,
+                "reference_height_span_m": 0.04199346899986267,
+                "actual_height_span_m": 0.024349883198738098,
+                "height_span_ratio": 0.5798492903460233,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 187,
+                "actual_peak_frame": 5,
+                "peak_time_difference_s": -3.64,
+                "joint_rmse_rad": 0.29125049941450853
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.05584285780787468,
+                "wrist_world_rmse_m": 0.4679867625236511,
+                "reference_height_peak_m": -0.16425330936908722,
+                "actual_height_peak_m": -0.16090650856494904,
+                "actual_height_at_reference_peak_m": -0.1850891411304474,
+                "reference_height_span_m": 0.033409059047698975,
+                "actual_height_span_m": 0.024640247225761414,
+                "height_span_ratio": 0.7375319128438157,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 161,
+                "actual_peak_frame": 3,
+                "peak_time_difference_s": -3.16,
+                "joint_rmse_rad": 0.18977224306500867
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "clip": "train_008ad0df4aced3b85225",
+      "reference": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0256_20261025/converted/train_008ad0df4aced3b85225.npz",
+        "bytes": 232141,
+        "sha256": "a27356016591e1cba2d23cc7a760f627a6dc556b2983dd40e763028a85e458a3"
+      },
+      "expected_steps": 228,
+      "common_prefix_steps": 228,
+      "evaluations": {
+        "initial": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_initial/train_008ad0df4aced3b85225.npz",
+            "bytes": 72216,
+            "sha256": "c57a44397f79c51406eff1a36da6a58c9db700387aa8c01e1c9b23c523f38301"
+          },
+          "executed_steps": 228,
+          "failed": false,
+          "full_clip_completion": 1.0,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.022540780192658073,
+            "motion_global_root_ori": 0.011075367127201037,
+            "motion_body_pos": 0.18914526050681607,
+            "motion_body_ori": 0.0090997668616055,
+            "motion_body_lin_vel": 0.1457349884144047,
+            "motion_body_ang_vel": 0.11477610941451699,
+            "action_rate_l2": -3.8652640181243857e-11,
+            "joint_limit": -0.1376927716110163,
+            "total": 0.3546795017788546
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.022540780192658073,
+            "motion_global_root_ori": 0.011075367127201037,
+            "motion_body_pos": 0.18914526050681607,
+            "motion_body_ori": 0.0090997668616055,
+            "motion_body_lin_vel": 0.1457349884144047,
+            "motion_body_ang_vel": 0.11477610941451699,
+            "action_rate_l2": -3.8652640181243857e-11,
+            "joint_limit": -0.1376927716110163,
+            "total": 0.3546795017788546
+          },
+          "root_position_score_below_0p01_fraction": 0.6140350877192983,
+          "recorded_reward_max_abs_error": 7.450580596923828e-09,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.4433457320166295,
+            "legs_rmse_rad": 0.32836832621680073,
+            "waist_rmse_rad": 0.05828362018095791,
+            "arms_rmse_rad": 0.6147679018774146,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.30796076332277006,
+              "left_shoulder_roll_joint": 0.2600283105302364,
+              "left_shoulder_yaw_joint": 0.5700291642365647,
+              "left_elbow_joint": 1.223547449306925,
+              "right_shoulder_pitch_joint": 0.137644136400273,
+              "right_shoulder_roll_joint": 0.24509888325094767,
+              "right_shoulder_yaw_joint": 0.3546753404588584,
+              "right_elbow_joint": 0.9133709293791605
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.1182938814163208,
+                "wrist_world_rmse_m": 1.0629401206970215,
+                "reference_height_peak_m": -0.12947188317775726,
+                "actual_height_peak_m": -0.08195044100284576,
+                "actual_height_at_reference_peak_m": -0.08237873762845993,
+                "reference_height_span_m": 0.0640830248594284,
+                "actual_height_span_m": 0.0959211140871048,
+                "height_span_ratio": 1.49682563046167,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 166,
+                "actual_peak_frame": 15,
+                "peak_time_difference_s": -3.02,
+                "joint_rmse_rad": 0.704353633271184
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.12121555954217911,
+                "wrist_world_rmse_m": 1.1656129360198975,
+                "reference_height_peak_m": -0.13386251032352448,
+                "actual_height_peak_m": -0.08198308944702148,
+                "actual_height_at_reference_peak_m": -0.08225271105766296,
+                "reference_height_span_m": 0.05944463610649109,
+                "actual_height_span_m": 0.09052938222885132,
+                "height_span_ratio": 1.5229192767985658,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 192,
+                "actual_peak_frame": 12,
+                "peak_time_difference_s": -3.6,
+                "joint_rmse_rad": 0.5096715664574583
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.4433457320166295,
+            "legs_rmse_rad": 0.32836832621680073,
+            "waist_rmse_rad": 0.05828362018095791,
+            "arms_rmse_rad": 0.6147679018774146,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.30796076332277006,
+              "left_shoulder_roll_joint": 0.2600283105302364,
+              "left_shoulder_yaw_joint": 0.5700291642365647,
+              "left_elbow_joint": 1.223547449306925,
+              "right_shoulder_pitch_joint": 0.137644136400273,
+              "right_shoulder_roll_joint": 0.24509888325094767,
+              "right_shoulder_yaw_joint": 0.3546753404588584,
+              "right_elbow_joint": 0.9133709293791605
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.1182938814163208,
+                "wrist_world_rmse_m": 1.0629401206970215,
+                "reference_height_peak_m": -0.12947188317775726,
+                "actual_height_peak_m": -0.08195044100284576,
+                "actual_height_at_reference_peak_m": -0.08237873762845993,
+                "reference_height_span_m": 0.0640830248594284,
+                "actual_height_span_m": 0.0959211140871048,
+                "height_span_ratio": 1.49682563046167,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 166,
+                "actual_peak_frame": 15,
+                "peak_time_difference_s": -3.02,
+                "joint_rmse_rad": 0.704353633271184
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.12121555954217911,
+                "wrist_world_rmse_m": 1.1656129360198975,
+                "reference_height_peak_m": -0.13386251032352448,
+                "actual_height_peak_m": -0.08198308944702148,
+                "actual_height_at_reference_peak_m": -0.08225271105766296,
+                "reference_height_span_m": 0.05944463610649109,
+                "actual_height_span_m": 0.09052938222885132,
+                "height_span_ratio": 1.5229192767985658,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 192,
+                "actual_peak_frame": 12,
+                "peak_time_difference_s": -3.6,
+                "joint_rmse_rad": 0.5096715664574583
+              }
+            }
+          }
+        },
+        "final": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_final/train_008ad0df4aced3b85225.npz",
+            "bytes": 70695,
+            "sha256": "933518433c39a6896607cad2d03e36f08caf07de3fb92395af57b8c96d462b7a"
+          },
+          "executed_steps": 228,
+          "failed": false,
+          "full_clip_completion": 1.0,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.02347082086362835,
+            "motion_global_root_ori": 0.011000726297169692,
+            "motion_body_pos": 0.19076115026939333,
+            "motion_body_ori": 0.08540682096377407,
+            "motion_body_lin_vel": 0.14558397025164022,
+            "motion_body_ang_vel": 0.11474759602247343,
+            "action_rate_l2": -0.004234366504498024,
+            "joint_limit": 0.0,
+            "total": 0.5667367185416974
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.02347082086362835,
+            "motion_global_root_ori": 0.011000726297169692,
+            "motion_body_pos": 0.19076115026939333,
+            "motion_body_ori": 0.08540682096377407,
+            "motion_body_lin_vel": 0.14558397025164022,
+            "motion_body_ang_vel": 0.11474759602247343,
+            "action_rate_l2": -0.004234366504498024,
+            "joint_limit": 0.0,
+            "total": 0.5667367185416974
+          },
+          "root_position_score_below_0p01_fraction": 0.6008771929824561,
+          "recorded_reward_max_abs_error": 7.450580596923828e-09,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.25366265903667395,
+            "legs_rmse_rad": 0.2700373820348511,
+            "waist_rmse_rad": 0.06816159269853757,
+            "arms_rmse_rad": 0.25769413147591114,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.4003051540205103,
+              "left_shoulder_roll_joint": 0.11212344339145154,
+              "left_shoulder_yaw_joint": 0.17683063982508426,
+              "left_elbow_joint": 0.4579746374831732,
+              "right_shoulder_pitch_joint": 0.14783414721101854,
+              "right_shoulder_roll_joint": 0.10968777459927628,
+              "right_shoulder_yaw_joint": 0.2250526440437222,
+              "right_elbow_joint": 0.18135424162571837
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.0754973292350769,
+                "wrist_world_rmse_m": 1.0479011535644531,
+                "reference_height_peak_m": -0.12947188317775726,
+                "actual_height_peak_m": -0.15870705246925354,
+                "actual_height_at_reference_peak_m": -0.17955109477043152,
+                "reference_height_span_m": 0.0640830248594284,
+                "actual_height_span_m": 0.020943939685821533,
+                "height_span_ratio": 0.3268250793679583,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 166,
+                "actual_peak_frame": 5,
+                "peak_time_difference_s": -3.22,
+                "joint_rmse_rad": 0.3216464389092987
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.054837532341480255,
+                "wrist_world_rmse_m": 1.1900242567062378,
+                "reference_height_peak_m": -0.13386251032352448,
+                "actual_height_peak_m": -0.15875738859176636,
+                "actual_height_at_reference_peak_m": -0.1851109266281128,
+                "reference_height_span_m": 0.05944463610649109,
+                "actual_height_span_m": 0.026834756135940552,
+                "height_span_ratio": 0.45142434866398845,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 192,
+                "actual_peak_frame": 2,
+                "peak_time_difference_s": -3.8000000000000003,
+                "joint_rmse_rad": 0.17133621663622414
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.25366265903667395,
+            "legs_rmse_rad": 0.2700373820348511,
+            "waist_rmse_rad": 0.06816159269853757,
+            "arms_rmse_rad": 0.25769413147591114,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.4003051540205103,
+              "left_shoulder_roll_joint": 0.11212344339145154,
+              "left_shoulder_yaw_joint": 0.17683063982508426,
+              "left_elbow_joint": 0.4579746374831732,
+              "right_shoulder_pitch_joint": 0.14783414721101854,
+              "right_shoulder_roll_joint": 0.10968777459927628,
+              "right_shoulder_yaw_joint": 0.2250526440437222,
+              "right_elbow_joint": 0.18135424162571837
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.0754973292350769,
+                "wrist_world_rmse_m": 1.0479011535644531,
+                "reference_height_peak_m": -0.12947188317775726,
+                "actual_height_peak_m": -0.15870705246925354,
+                "actual_height_at_reference_peak_m": -0.17955109477043152,
+                "reference_height_span_m": 0.0640830248594284,
+                "actual_height_span_m": 0.020943939685821533,
+                "height_span_ratio": 0.3268250793679583,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 166,
+                "actual_peak_frame": 5,
+                "peak_time_difference_s": -3.22,
+                "joint_rmse_rad": 0.3216464389092987
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.054837532341480255,
+                "wrist_world_rmse_m": 1.1900242567062378,
+                "reference_height_peak_m": -0.13386251032352448,
+                "actual_height_peak_m": -0.15875738859176636,
+                "actual_height_at_reference_peak_m": -0.1851109266281128,
+                "reference_height_span_m": 0.05944463610649109,
+                "actual_height_span_m": 0.026834756135940552,
+                "height_span_ratio": 0.45142434866398845,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 192,
+                "actual_peak_frame": 2,
+                "peak_time_difference_s": -3.8000000000000003,
+                "joint_rmse_rad": 0.17133621663622414
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "clip": "train_00aeab45fa5f744d3138",
+      "reference": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0256_20261025/converted/train_00aeab45fa5f744d3138.npz",
+        "bytes": 573421,
+        "sha256": "ce81a5f6146bae123593eb444271488fd906388d965173a0fce949842f3884e9"
+      },
+      "expected_steps": 566,
+      "common_prefix_steps": 566,
+      "evaluations": {
+        "initial": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_initial/train_00aeab45fa5f744d3138.npz",
+            "bytes": 171899,
+            "sha256": "a503b29d3fc702ba625154aedb9bbfadea1baa2bcf2422c8e6dd664c35860640"
+          },
+          "executed_steps": 566,
+          "failed": false,
+          "full_clip_completion": 1.0,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.017569951931959604,
+            "motion_global_root_ori": 0.07351233992489935,
+            "motion_body_pos": 0.18332939413984967,
+            "motion_body_ori": 0.001041077745428289,
+            "motion_body_lin_vel": 0.16256853538259283,
+            "motion_body_ang_vel": 0.13232905579532359,
+            "action_rate_l2": -1.5894085540249464e-11,
+            "joint_limit": -0.13888178946937405,
+            "total": 0.4314685629700498
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.017569951931959604,
+            "motion_global_root_ori": 0.07351233992489935,
+            "motion_body_pos": 0.18332939413984967,
+            "motion_body_ori": 0.001041077745428289,
+            "motion_body_lin_vel": 0.16256853538259283,
+            "motion_body_ang_vel": 0.13232905579532359,
+            "action_rate_l2": -1.5894085540249464e-11,
+            "joint_limit": -0.13888178946937405,
+            "total": 0.4314685629700498
+          },
+          "root_position_score_below_0p01_fraction": 0.7385159010600707,
+          "recorded_reward_max_abs_error": 0.0,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.5466797570518298,
+            "legs_rmse_rad": 0.28300472307952923,
+            "waist_rmse_rad": 0.03126708468220517,
+            "arms_rmse_rad": 0.8375438278347401,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.16762518149130892,
+              "left_shoulder_roll_joint": 0.08061170239720501,
+              "left_shoulder_yaw_joint": 1.3957929251304348,
+              "left_elbow_joint": 0.8952053847240258,
+              "right_shoulder_pitch_joint": 0.139020744934019,
+              "right_shoulder_roll_joint": 0.17109253570654762,
+              "right_shoulder_yaw_joint": 1.5206144941687771,
+              "right_elbow_joint": 0.6831854993070634
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.19227221608161926,
+                "wrist_world_rmse_m": 2.140580654144287,
+                "reference_height_peak_m": -0.1778903752565384,
+                "actual_height_peak_m": -0.08073259145021439,
+                "actual_height_at_reference_peak_m": -0.08232451975345612,
+                "reference_height_span_m": 0.009407207369804382,
+                "actual_height_span_m": 0.10045578330755234,
+                "height_span_ratio": 10.678597734541198,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 419,
+                "actual_peak_frame": 21,
+                "peak_time_difference_s": -7.96,
+                "joint_rmse_rad": 0.8343001586234472
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.18917445838451385,
+                "wrist_world_rmse_m": 2.1253061294555664,
+                "reference_height_peak_m": -0.16844084858894348,
+                "actual_height_peak_m": -0.0796937569975853,
+                "actual_height_at_reference_peak_m": -0.08235850930213928,
+                "reference_height_span_m": 0.008386418223381042,
+                "actual_height_span_m": 0.09449271112680435,
+                "height_span_ratio": 11.267350209575998,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 272,
+                "actual_peak_frame": 16,
+                "peak_time_difference_s": -5.12,
+                "joint_rmse_rad": 0.84077498322026
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.5466797570518298,
+            "legs_rmse_rad": 0.28300472307952923,
+            "waist_rmse_rad": 0.03126708468220517,
+            "arms_rmse_rad": 0.8375438278347401,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.16762518149130892,
+              "left_shoulder_roll_joint": 0.08061170239720501,
+              "left_shoulder_yaw_joint": 1.3957929251304348,
+              "left_elbow_joint": 0.8952053847240258,
+              "right_shoulder_pitch_joint": 0.139020744934019,
+              "right_shoulder_roll_joint": 0.17109253570654762,
+              "right_shoulder_yaw_joint": 1.5206144941687771,
+              "right_elbow_joint": 0.6831854993070634
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.19227221608161926,
+                "wrist_world_rmse_m": 2.140580654144287,
+                "reference_height_peak_m": -0.1778903752565384,
+                "actual_height_peak_m": -0.08073259145021439,
+                "actual_height_at_reference_peak_m": -0.08232451975345612,
+                "reference_height_span_m": 0.009407207369804382,
+                "actual_height_span_m": 0.10045578330755234,
+                "height_span_ratio": 10.678597734541198,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 419,
+                "actual_peak_frame": 21,
+                "peak_time_difference_s": -7.96,
+                "joint_rmse_rad": 0.8343001586234472
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.18917445838451385,
+                "wrist_world_rmse_m": 2.1253061294555664,
+                "reference_height_peak_m": -0.16844084858894348,
+                "actual_height_peak_m": -0.0796937569975853,
+                "actual_height_at_reference_peak_m": -0.08235850930213928,
+                "reference_height_span_m": 0.008386418223381042,
+                "actual_height_span_m": 0.09449271112680435,
+                "height_span_ratio": 11.267350209575998,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 272,
+                "actual_peak_frame": 16,
+                "peak_time_difference_s": -5.12,
+                "joint_rmse_rad": 0.84077498322026
+              }
+            }
+          }
+        },
+        "final": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_final/train_00aeab45fa5f744d3138.npz",
+            "bytes": 169400,
+            "sha256": "ded511f9479c857e413cc1b1a6d64920b48f6f071e164f8835cdd881931e86d4"
+          },
+          "executed_steps": 566,
+          "failed": false,
+          "full_clip_completion": 1.0,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.01866208848579788,
+            "motion_global_root_ori": 0.07295775011963068,
+            "motion_body_pos": 0.18873175270460518,
+            "motion_body_ori": 0.006362693300330204,
+            "motion_body_lin_vel": 0.16315259909843072,
+            "motion_body_ang_vel": 0.13443256451632757,
+            "action_rate_l2": -0.001163716636088212,
+            "joint_limit": -0.0005385457962696266,
+            "total": 0.5825971877169482
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.01866208848579788,
+            "motion_global_root_ori": 0.07295775011963068,
+            "motion_body_pos": 0.18873175270460518,
+            "motion_body_ori": 0.006362693300330204,
+            "motion_body_lin_vel": 0.16315259909843072,
+            "motion_body_ang_vel": 0.13443256451632757,
+            "action_rate_l2": -0.001163716636088212,
+            "joint_limit": -0.0005385457962696266,
+            "total": 0.5825971877169482
+          },
+          "root_position_score_below_0p01_fraction": 0.7314487632508834,
+          "recorded_reward_max_abs_error": 0.0,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.37553350961378734,
+            "legs_rmse_rad": 0.2614799904441607,
+            "waist_rmse_rad": 0.07355644007195054,
+            "arms_rmse_rad": 0.5328316626710553,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.10661738841712881,
+              "left_shoulder_roll_joint": 0.2925524993215959,
+              "left_shoulder_yaw_joint": 0.9723730837895205,
+              "left_elbow_joint": 0.11913170529594039,
+              "right_shoulder_pitch_joint": 0.20253120429702087,
+              "right_shoulder_roll_joint": 0.038192381112604284,
+              "right_shoulder_yaw_joint": 0.9905185076842349,
+              "right_elbow_joint": 0.4370539732654222
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.134090393781662,
+                "wrist_world_rmse_m": 2.1842105388641357,
+                "reference_height_peak_m": -0.1778903752565384,
+                "actual_height_peak_m": -0.17205855250358582,
+                "actual_height_at_reference_peak_m": -0.1789495348930359,
+                "reference_height_span_m": 0.009407207369804382,
+                "actual_height_span_m": 0.018137410283088684,
+                "height_span_ratio": 1.928033429060663,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 419,
+                "actual_peak_frame": 4,
+                "peak_time_difference_s": -8.3,
+                "joint_rmse_rad": 0.5139688730013866
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.08837494999170303,
+                "wrist_world_rmse_m": 2.251298666000366,
+                "reference_height_peak_m": -0.16844084858894348,
+                "actual_height_peak_m": -0.16980406641960144,
+                "actual_height_at_reference_peak_m": -0.1965443640947342,
+                "reference_height_span_m": 0.008386418223381042,
+                "actual_height_span_m": 0.026864588260650635,
+                "height_span_ratio": 3.2033446872173745,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 272,
+                "actual_peak_frame": 2,
+                "peak_time_difference_s": -5.4,
+                "joint_rmse_rad": 0.5510491439747339
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.37553350961378734,
+            "legs_rmse_rad": 0.2614799904441607,
+            "waist_rmse_rad": 0.07355644007195054,
+            "arms_rmse_rad": 0.5328316626710553,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.10661738841712881,
+              "left_shoulder_roll_joint": 0.2925524993215959,
+              "left_shoulder_yaw_joint": 0.9723730837895205,
+              "left_elbow_joint": 0.11913170529594039,
+              "right_shoulder_pitch_joint": 0.20253120429702087,
+              "right_shoulder_roll_joint": 0.038192381112604284,
+              "right_shoulder_yaw_joint": 0.9905185076842349,
+              "right_elbow_joint": 0.4370539732654222
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.134090393781662,
+                "wrist_world_rmse_m": 2.1842105388641357,
+                "reference_height_peak_m": -0.1778903752565384,
+                "actual_height_peak_m": -0.17205855250358582,
+                "actual_height_at_reference_peak_m": -0.1789495348930359,
+                "reference_height_span_m": 0.009407207369804382,
+                "actual_height_span_m": 0.018137410283088684,
+                "height_span_ratio": 1.928033429060663,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 419,
+                "actual_peak_frame": 4,
+                "peak_time_difference_s": -8.3,
+                "joint_rmse_rad": 0.5139688730013866
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.08837494999170303,
+                "wrist_world_rmse_m": 2.251298666000366,
+                "reference_height_peak_m": -0.16844084858894348,
+                "actual_height_peak_m": -0.16980406641960144,
+                "actual_height_at_reference_peak_m": -0.1965443640947342,
+                "reference_height_span_m": 0.008386418223381042,
+                "actual_height_span_m": 0.026864588260650635,
+                "height_span_ratio": 3.2033446872173745,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 272,
+                "actual_peak_frame": 2,
+                "peak_time_difference_s": -5.4,
+                "joint_rmse_rad": 0.5510491439747339
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "clip": "train_00e98fc0d7a57764c762",
+      "reference": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0640_20261025/converted/train_00e98fc0d7a57764c762.npz",
+        "bytes": 258602,
+        "sha256": "8f3137f08986a861529d73aedce27a4c8050853102014ea4a73f789bfb022947"
+      },
+      "expected_steps": 253,
+      "common_prefix_steps": 253,
+      "evaluations": {
+        "initial": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_initial/train_00e98fc0d7a57764c762.npz",
+            "bytes": 79709,
+            "sha256": "04ea7c25389264aacd7addf96579f3a7dca23c640489cb778a6423173d400a52"
+          },
+          "executed_steps": 253,
+          "failed": false,
+          "full_clip_completion": 1.0,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.03178636708382814,
+            "motion_global_root_ori": 0.0853683267951954,
+            "motion_body_pos": 0.19042306053249733,
+            "motion_body_ori": 0.007739109073141166,
+            "motion_body_lin_vel": 0.17176054462260407,
+            "motion_body_ang_vel": 0.1502013498950406,
+            "action_rate_l2": -3.487974451823102e-11,
+            "joint_limit": -0.12898471109337162,
+            "total": 0.5082940481043615
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.03178636708382814,
+            "motion_global_root_ori": 0.0853683267951954,
+            "motion_body_pos": 0.19042306053249733,
+            "motion_body_ori": 0.007739109073141166,
+            "motion_body_lin_vel": 0.17176054462260407,
+            "motion_body_ang_vel": 0.1502013498950406,
+            "action_rate_l2": -3.487974451823102e-11,
+            "joint_limit": -0.12898471109337162,
+            "total": 0.5082940481043615
+          },
+          "root_position_score_below_0p01_fraction": 0.5059288537549407,
+          "recorded_reward_max_abs_error": 0.0,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.43352281053900854,
+            "legs_rmse_rad": 0.3386925838583186,
+            "waist_rmse_rad": 0.04966392085451628,
+            "arms_rmse_rad": 0.5866472101347759,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.07856990852485615,
+              "left_shoulder_roll_joint": 0.26730961688967303,
+              "left_shoulder_yaw_joint": 0.4528439647384294,
+              "left_elbow_joint": 0.9354189457066368,
+              "right_shoulder_pitch_joint": 0.19064228932403723,
+              "right_shoulder_roll_joint": 0.26470019779885046,
+              "right_shoulder_yaw_joint": 0.7195092653464855,
+              "right_elbow_joint": 0.9856122011035495
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.11882048100233078,
+                "wrist_world_rmse_m": 0.8101508021354675,
+                "reference_height_peak_m": -0.15987110137939453,
+                "actual_height_peak_m": -0.08189166337251663,
+                "actual_height_at_reference_peak_m": -0.08253273367881775,
+                "reference_height_span_m": 0.027613013982772827,
+                "actual_height_span_m": 0.0901838168501854,
+                "height_span_ratio": 3.2659896129574686,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 209,
+                "actual_peak_frame": 13,
+                "peak_time_difference_s": -3.92,
+                "joint_rmse_rad": 0.5379832530372679
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.10084937512874603,
+                "wrist_world_rmse_m": 0.8125878572463989,
+                "reference_height_peak_m": -0.15349774062633514,
+                "actual_height_peak_m": -0.0818495824933052,
+                "actual_height_at_reference_peak_m": -0.08265488594770432,
+                "reference_height_span_m": 0.03154487907886505,
+                "actual_height_span_m": 0.09025879949331284,
+                "height_span_ratio": 2.861282151935269,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 123,
+                "actual_peak_frame": 12,
+                "peak_time_difference_s": -2.22,
+                "joint_rmse_rad": 0.631572575219405
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.43352281053900854,
+            "legs_rmse_rad": 0.3386925838583186,
+            "waist_rmse_rad": 0.04966392085451628,
+            "arms_rmse_rad": 0.5866472101347759,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.07856990852485615,
+              "left_shoulder_roll_joint": 0.26730961688967303,
+              "left_shoulder_yaw_joint": 0.4528439647384294,
+              "left_elbow_joint": 0.9354189457066368,
+              "right_shoulder_pitch_joint": 0.19064228932403723,
+              "right_shoulder_roll_joint": 0.26470019779885046,
+              "right_shoulder_yaw_joint": 0.7195092653464855,
+              "right_elbow_joint": 0.9856122011035495
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.11882048100233078,
+                "wrist_world_rmse_m": 0.8101508021354675,
+                "reference_height_peak_m": -0.15987110137939453,
+                "actual_height_peak_m": -0.08189166337251663,
+                "actual_height_at_reference_peak_m": -0.08253273367881775,
+                "reference_height_span_m": 0.027613013982772827,
+                "actual_height_span_m": 0.0901838168501854,
+                "height_span_ratio": 3.2659896129574686,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 209,
+                "actual_peak_frame": 13,
+                "peak_time_difference_s": -3.92,
+                "joint_rmse_rad": 0.5379832530372679
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.10084937512874603,
+                "wrist_world_rmse_m": 0.8125878572463989,
+                "reference_height_peak_m": -0.15349774062633514,
+                "actual_height_peak_m": -0.0818495824933052,
+                "actual_height_at_reference_peak_m": -0.08265488594770432,
+                "reference_height_span_m": 0.03154487907886505,
+                "actual_height_span_m": 0.09025879949331284,
+                "height_span_ratio": 2.861282151935269,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 123,
+                "actual_peak_frame": 12,
+                "peak_time_difference_s": -2.22,
+                "joint_rmse_rad": 0.631572575219405
+              }
+            }
+          }
+        },
+        "final": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_final/train_00e98fc0d7a57764c762.npz",
+            "bytes": 76779,
+            "sha256": "bb68477edfe9413173e7ff806a765b4199cc7f1d85fbddc95db568cb2808c2d6"
+          },
+          "executed_steps": 253,
+          "failed": false,
+          "full_clip_completion": 1.0,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.033152337875888414,
+            "motion_global_root_ori": 0.09098101561896414,
+            "motion_body_pos": 0.19317895129853085,
+            "motion_body_ori": 0.1137694605099766,
+            "motion_body_lin_vel": 0.17183219318245002,
+            "motion_body_ang_vel": 0.1493460089256736,
+            "action_rate_l2": -0.003960821251654831,
+            "joint_limit": 0.0,
+            "total": 0.7482991450035524
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.033152337875888414,
+            "motion_global_root_ori": 0.09098101561896414,
+            "motion_body_pos": 0.19317895129853085,
+            "motion_body_ori": 0.1137694605099766,
+            "motion_body_lin_vel": 0.17183219318245002,
+            "motion_body_ang_vel": 0.1493460089256736,
+            "action_rate_l2": -0.003960821251654831,
+            "joint_limit": 0.0,
+            "total": 0.7482991450035524
+          },
+          "root_position_score_below_0p01_fraction": 0.49407114624505927,
+          "recorded_reward_max_abs_error": 1.4901161193847656e-08,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.22841883408378047,
+            "legs_rmse_rad": 0.2837345490323767,
+            "waist_rmse_rad": 0.05751798969559885,
+            "arms_rmse_rad": 0.14797526514579193,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.1548298933422823,
+              "left_shoulder_roll_joint": 0.10945136590725765,
+              "left_shoulder_yaw_joint": 0.12319888775131595,
+              "left_elbow_joint": 0.16500433675541892,
+              "right_shoulder_pitch_joint": 0.13072713405411474,
+              "right_shoulder_roll_joint": 0.12517217201801648,
+              "right_shoulder_yaw_joint": 0.22579582345864083,
+              "right_elbow_joint": 0.11434915032504325
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.034475624561309814,
+                "wrist_world_rmse_m": 0.8305245041847229,
+                "reference_height_peak_m": -0.15987110137939453,
+                "actual_height_peak_m": -0.15426790714263916,
+                "actual_height_at_reference_peak_m": -0.17972737550735474,
+                "reference_height_span_m": 0.027613013982772827,
+                "actual_height_span_m": 0.02566806972026825,
+                "height_span_ratio": 0.9295642169406793,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 209,
+                "actual_peak_frame": 2,
+                "peak_time_difference_s": -4.14,
+                "joint_rmse_rad": 0.13996097175874062
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.03806816041469574,
+                "wrist_world_rmse_m": 0.8308191299438477,
+                "reference_height_peak_m": -0.15349774062633514,
+                "actual_height_peak_m": -0.15617258846759796,
+                "actual_height_at_reference_peak_m": -0.18521681427955627,
+                "reference_height_span_m": 0.03154487907886505,
+                "actual_height_span_m": 0.029730841517448425,
+                "height_span_ratio": 0.9424934374647191,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 123,
+                "actual_peak_frame": 2,
+                "peak_time_difference_s": -2.42,
+                "joint_rmse_rad": 0.15557726239487524
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.22841883408378047,
+            "legs_rmse_rad": 0.2837345490323767,
+            "waist_rmse_rad": 0.05751798969559885,
+            "arms_rmse_rad": 0.14797526514579193,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.1548298933422823,
+              "left_shoulder_roll_joint": 0.10945136590725765,
+              "left_shoulder_yaw_joint": 0.12319888775131595,
+              "left_elbow_joint": 0.16500433675541892,
+              "right_shoulder_pitch_joint": 0.13072713405411474,
+              "right_shoulder_roll_joint": 0.12517217201801648,
+              "right_shoulder_yaw_joint": 0.22579582345864083,
+              "right_elbow_joint": 0.11434915032504325
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.034475624561309814,
+                "wrist_world_rmse_m": 0.8305245041847229,
+                "reference_height_peak_m": -0.15987110137939453,
+                "actual_height_peak_m": -0.15426790714263916,
+                "actual_height_at_reference_peak_m": -0.17972737550735474,
+                "reference_height_span_m": 0.027613013982772827,
+                "actual_height_span_m": 0.02566806972026825,
+                "height_span_ratio": 0.9295642169406793,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 209,
+                "actual_peak_frame": 2,
+                "peak_time_difference_s": -4.14,
+                "joint_rmse_rad": 0.13996097175874062
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.03806816041469574,
+                "wrist_world_rmse_m": 0.8308191299438477,
+                "reference_height_peak_m": -0.15349774062633514,
+                "actual_height_peak_m": -0.15617258846759796,
+                "actual_height_at_reference_peak_m": -0.18521681427955627,
+                "reference_height_span_m": 0.03154487907886505,
+                "actual_height_span_m": 0.029730841517448425,
+                "height_span_ratio": 0.9424934374647191,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 123,
+                "actual_peak_frame": 2,
+                "peak_time_difference_s": -2.42,
+                "joint_rmse_rad": 0.15557726239487524
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "clip": "train_0122791b8661dc86bc7b",
+      "reference": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF01_128_20261025/converted/train_0122791b8661dc86bc7b.npz",
+        "bytes": 270994,
+        "sha256": "3d8304ac28645da453d69b7cba7b200a78f668fbd1fb342f00596121303729ef"
+      },
+      "expected_steps": 266,
+      "common_prefix_steps": 64,
+      "evaluations": {
+        "initial": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_initial/train_0122791b8661dc86bc7b.npz",
+            "bytes": 22116,
+            "sha256": "5aa1d0bfd56074d04c5df03339ecb492d3483320fdbd6864ad671ace895df77e"
+          },
+          "executed_steps": 64,
+          "failed": true,
+          "full_clip_completion": 0.24060150375939848,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.0159429030709977,
+            "motion_global_root_ori": 0.006096602165825436,
+            "motion_body_pos": 0.039533030878948536,
+            "motion_body_ori": 0.0017232955616281118,
+            "motion_body_lin_vel": 0.03212273829547457,
+            "motion_body_ang_vel": 0.020113875180619585,
+            "action_rate_l2": -3.791438325203466e-11,
+            "joint_limit": -0.029055200218699197,
+            "total": 0.08647724506410216
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.06626269088883419,
+            "motion_global_root_ori": 0.02533900275171197,
+            "motion_body_pos": 0.16430915959062986,
+            "motion_body_ori": 0.00716244717801684,
+            "motion_body_lin_vel": 0.1335101310405662,
+            "motion_body_ang_vel": 0.08359829371945016,
+            "action_rate_l2": -1.5758165539126906e-10,
+            "joint_limit": -0.12076067590896855,
+            "total": 0.35942104979767464
+          },
+          "root_position_score_below_0p01_fraction": 0.0,
+          "recorded_reward_max_abs_error": 1.862645149230957e-09,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.4608073155901995,
+            "legs_rmse_rad": 0.39199174505677653,
+            "waist_rmse_rad": 0.11829663572562714,
+            "arms_rmse_rad": 0.5915737358808199,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.31202599108715645,
+              "left_shoulder_roll_joint": 0.44461542952593114,
+              "left_shoulder_yaw_joint": 0.5355693238235654,
+              "left_elbow_joint": 0.9792763959252784,
+              "right_shoulder_pitch_joint": 0.1492361413141244,
+              "right_shoulder_roll_joint": 0.14798794926928557,
+              "right_shoulder_yaw_joint": 0.10983227816220477,
+              "right_elbow_joint": 1.0966225567708692
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.12727323174476624,
+                "wrist_world_rmse_m": 0.19162684679031372,
+                "reference_height_peak_m": -0.11551481485366821,
+                "actual_height_peak_m": -0.08131459355354309,
+                "actual_height_at_reference_peak_m": -0.08246239274740219,
+                "reference_height_span_m": 0.06437458097934723,
+                "actual_height_span_m": 0.07437191903591156,
+                "height_span_ratio": 1.1552994661009397,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 13,
+                "actual_peak_frame": 63,
+                "peak_time_difference_s": 1.0,
+                "joint_rmse_rad": 0.6206568817639267
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.16403701901435852,
+                "wrist_world_rmse_m": 0.43901005387306213,
+                "reference_height_peak_m": -0.18267355859279633,
+                "actual_height_peak_m": -0.07972275465726852,
+                "actual_height_at_reference_peak_m": -0.08203878998756409,
+                "reference_height_span_m": 0.01441200077533722,
+                "actual_height_span_m": 0.10557494312524796,
+                "height_span_ratio": 7.325488304574259,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 51,
+                "actual_peak_frame": 63,
+                "peak_time_difference_s": 0.24,
+                "joint_rmse_rad": 0.5609848528142797
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.4608073155901995,
+            "legs_rmse_rad": 0.39199174505677653,
+            "waist_rmse_rad": 0.11829663572562714,
+            "arms_rmse_rad": 0.5915737358808199,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.31202599108715645,
+              "left_shoulder_roll_joint": 0.44461542952593114,
+              "left_shoulder_yaw_joint": 0.5355693238235654,
+              "left_elbow_joint": 0.9792763959252784,
+              "right_shoulder_pitch_joint": 0.1492361413141244,
+              "right_shoulder_roll_joint": 0.14798794926928557,
+              "right_shoulder_yaw_joint": 0.10983227816220477,
+              "right_elbow_joint": 1.0966225567708692
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.12727323174476624,
+                "wrist_world_rmse_m": 0.19162684679031372,
+                "reference_height_peak_m": -0.11551481485366821,
+                "actual_height_peak_m": -0.08131459355354309,
+                "actual_height_at_reference_peak_m": -0.08246239274740219,
+                "reference_height_span_m": 0.06437458097934723,
+                "actual_height_span_m": 0.07437191903591156,
+                "height_span_ratio": 1.1552994661009397,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 13,
+                "actual_peak_frame": 63,
+                "peak_time_difference_s": 1.0,
+                "joint_rmse_rad": 0.6206568817639267
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.16403701901435852,
+                "wrist_world_rmse_m": 0.43901005387306213,
+                "reference_height_peak_m": -0.18267355859279633,
+                "actual_height_peak_m": -0.07972275465726852,
+                "actual_height_at_reference_peak_m": -0.08203878998756409,
+                "reference_height_span_m": 0.01441200077533722,
+                "actual_height_span_m": 0.10557494312524796,
+                "height_span_ratio": 7.325488304574259,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 51,
+                "actual_peak_frame": 63,
+                "peak_time_difference_s": 0.24,
+                "joint_rmse_rad": 0.5609848528142797
+              }
+            }
+          }
+        },
+        "final": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_final/train_0122791b8661dc86bc7b.npz",
+            "bytes": 82913,
+            "sha256": "ad4442e7b737882f32541c321e2698047572c682c805030b00aa40fabbc57a79"
+          },
+          "executed_steps": 266,
+          "failed": false,
+          "full_clip_completion": 1.0,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.014675553282217042,
+            "motion_global_root_ori": 0.024280345320782125,
+            "motion_body_pos": 0.18708676898053714,
+            "motion_body_ori": 0.02975481973927734,
+            "motion_body_lin_vel": 0.15634195609508375,
+            "motion_body_ang_vel": 0.12014296910274766,
+            "action_rate_l2": -0.007493477691053001,
+            "joint_limit": -0.0005229845090727217,
+            "total": 0.524265952478338
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.05963675365819654,
+            "motion_global_root_ori": 0.03326590495817072,
+            "motion_body_pos": 0.18884197401348501,
+            "motion_body_ori": 0.03693658763950225,
+            "motion_body_lin_vel": 0.14243160578189418,
+            "motion_body_ang_vel": 0.09625592274609573,
+            "action_rate_l2": -0.031144409446486332,
+            "joint_limit": -0.0021736543658334995,
+            "total": 0.5240506867994554
+          },
+          "root_position_score_below_0p01_fraction": 0.6691729323308271,
+          "recorded_reward_max_abs_error": 7.450580596923828e-09,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.3057142693862674,
+            "legs_rmse_rad": 0.3051604480161193,
+            "waist_rmse_rad": 0.10473479916242127,
+            "arms_rmse_rad": 0.33851387977976155,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.4392957345137087,
+              "left_shoulder_roll_joint": 0.1175547082046916,
+              "left_shoulder_yaw_joint": 0.30199489985803013,
+              "left_elbow_joint": 0.27410982295367486,
+              "right_shoulder_pitch_joint": 0.26724699590821327,
+              "right_shoulder_roll_joint": 0.05889368681331301,
+              "right_shoulder_yaw_joint": 0.6649443015155708,
+              "right_elbow_joint": 0.16295969065670693
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.10823702067136765,
+                "wrist_world_rmse_m": 1.1067368984222412,
+                "reference_height_peak_m": -0.10060114413499832,
+                "actual_height_peak_m": -0.14444991946220398,
+                "actual_height_at_reference_peak_m": -0.17939375340938568,
+                "reference_height_span_m": 0.08207061141729355,
+                "actual_height_span_m": 0.034949541091918945,
+                "height_span_ratio": 0.4258472123987922,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 254,
+                "actual_peak_frame": 2,
+                "peak_time_difference_s": -5.04,
+                "joint_rmse_rad": 0.30542469053884036
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.07743366062641144,
+                "wrist_world_rmse_m": 1.2798688411712646,
+                "reference_height_peak_m": -0.17839379608631134,
+                "actual_height_peak_m": -0.16525161266326904,
+                "actual_height_at_reference_peak_m": -0.18518200516700745,
+                "reference_height_span_m": 0.01933884620666504,
+                "actual_height_span_m": 0.020896777510643005,
+                "height_span_ratio": 1.080559682171785,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 174,
+                "actual_peak_frame": 3,
+                "peak_time_difference_s": -3.42,
+                "joint_rmse_rad": 0.3686448860575002
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.3023125935627981,
+            "legs_rmse_rad": 0.31347604985340155,
+            "waist_rmse_rad": 0.10832602895151476,
+            "arms_rmse_rad": 0.3177986842935173,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.4189478026150191,
+              "left_shoulder_roll_joint": 0.14638379612183586,
+              "left_shoulder_yaw_joint": 0.3205846716003631,
+              "left_elbow_joint": 0.3264656198994967,
+              "right_shoulder_pitch_joint": 0.1797733616654853,
+              "right_shoulder_roll_joint": 0.03381186407937832,
+              "right_shoulder_yaw_joint": 0.5564960743562715,
+              "right_elbow_joint": 0.24190625393752338
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.09275348484516144,
+                "wrist_world_rmse_m": 0.24931272864341736,
+                "reference_height_peak_m": -0.11551481485366821,
+                "actual_height_peak_m": -0.14444991946220398,
+                "actual_height_at_reference_peak_m": -0.17085379362106323,
+                "reference_height_span_m": 0.06437458097934723,
+                "actual_height_span_m": 0.034779176115989685,
+                "height_span_ratio": 0.5402625630627034,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 13,
+                "actual_peak_frame": 2,
+                "peak_time_difference_s": -0.22,
+                "joint_rmse_rad": 0.3187082559820453
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.06986731290817261,
+                "wrist_world_rmse_m": 0.3713012635707855,
+                "reference_height_peak_m": -0.18267355859279633,
+                "actual_height_peak_m": -0.16525161266326904,
+                "actual_height_at_reference_peak_m": -0.1850622594356537,
+                "reference_height_span_m": 0.01441200077533722,
+                "actual_height_span_m": 0.020896777510643005,
+                "height_span_ratio": 1.4499567295613092,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 51,
+                "actual_peak_frame": 3,
+                "peak_time_difference_s": -0.96,
+                "joint_rmse_rad": 0.31688650183664263
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "clip": "train_0124097cf15003106ad9",
+      "reference": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0896_20261025/converted/train_0124097cf15003106ad9.npz",
+        "bytes": 189408,
+        "sha256": "7164e9a80cb2d6ec9cfe3e073ddf26cdcae4d18cabd23e7532178e1c6248943d"
+      },
+      "expected_steps": 186,
+      "common_prefix_steps": 186,
+      "evaluations": {
+        "initial": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_initial/train_0124097cf15003106ad9.npz",
+            "bytes": 59359,
+            "sha256": "a05dcf6c3e7680ec7ee2cd64bf317acfbec8f36b5aba6718ffd45b1d281c4895"
+          },
+          "executed_steps": 186,
+          "failed": false,
+          "full_clip_completion": 1.0,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.046315653872693714,
+            "motion_global_root_ori": 0.06134793644906172,
+            "motion_body_pos": 0.18887229474081146,
+            "motion_body_ori": 0.006960158519383009,
+            "motion_body_lin_vel": 0.18326198171463703,
+            "motion_body_ang_vel": 0.16260453744751865,
+            "action_rate_l2": -4.858547645798356e-11,
+            "joint_limit": -0.11729141573048626,
+            "total": 0.5320711463930144
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.046315653872693714,
+            "motion_global_root_ori": 0.06134793644906172,
+            "motion_body_pos": 0.18887229474081146,
+            "motion_body_ori": 0.006960158519383009,
+            "motion_body_lin_vel": 0.18326198171463703,
+            "motion_body_ang_vel": 0.16260453744751865,
+            "action_rate_l2": -4.858547645798356e-11,
+            "joint_limit": -0.11729141573048626,
+            "total": 0.5320711463930144
+          },
+          "root_position_score_below_0p01_fraction": 0.16666666666666666,
+          "recorded_reward_max_abs_error": 0.0,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.4307041478449725,
+            "legs_rmse_rad": 0.3506626338793016,
+            "waist_rmse_rad": 0.02864073130224715,
+            "arms_rmse_rad": 0.5705174634476498,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.07238297909659894,
+              "left_shoulder_roll_joint": 0.25230808646780817,
+              "left_shoulder_yaw_joint": 0.46075654796226095,
+              "left_elbow_joint": 0.8956466725296363,
+              "right_shoulder_pitch_joint": 0.21783352378789472,
+              "right_shoulder_roll_joint": 0.2735198497209319,
+              "right_shoulder_yaw_joint": 0.6694308382385477,
+              "right_elbow_joint": 0.974751755404673
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.1062711849808693,
+                "wrist_world_rmse_m": 0.42462918162345886,
+                "reference_height_peak_m": -0.1685740351676941,
+                "actual_height_peak_m": -0.08189745992422104,
+                "actual_height_at_reference_peak_m": -0.08270345628261566,
+                "reference_height_span_m": 0.012239649891853333,
+                "actual_height_span_m": 0.08842866867780685,
+                "height_span_ratio": 7.22477108897246,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 98,
+                "actual_peak_frame": 12,
+                "peak_time_difference_s": -1.72,
+                "joint_rmse_rad": 0.5204272823035545
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.09263874590396881,
+                "wrist_world_rmse_m": 0.4027094841003418,
+                "reference_height_peak_m": -0.16395647823810577,
+                "actual_height_peak_m": -0.08182617276906967,
+                "actual_height_at_reference_peak_m": -0.08249399811029434,
+                "reference_height_span_m": 0.01643817126750946,
+                "actual_height_span_m": 0.08551429957151413,
+                "height_span_ratio": 5.202178404147407,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 61,
+                "actual_peak_frame": 13,
+                "peak_time_difference_s": -0.96,
+                "joint_rmse_rad": 0.6165515355845098
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.4307041478449725,
+            "legs_rmse_rad": 0.3506626338793016,
+            "waist_rmse_rad": 0.02864073130224715,
+            "arms_rmse_rad": 0.5705174634476498,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.07238297909659894,
+              "left_shoulder_roll_joint": 0.25230808646780817,
+              "left_shoulder_yaw_joint": 0.46075654796226095,
+              "left_elbow_joint": 0.8956466725296363,
+              "right_shoulder_pitch_joint": 0.21783352378789472,
+              "right_shoulder_roll_joint": 0.2735198497209319,
+              "right_shoulder_yaw_joint": 0.6694308382385477,
+              "right_elbow_joint": 0.974751755404673
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.1062711849808693,
+                "wrist_world_rmse_m": 0.42462918162345886,
+                "reference_height_peak_m": -0.1685740351676941,
+                "actual_height_peak_m": -0.08189745992422104,
+                "actual_height_at_reference_peak_m": -0.08270345628261566,
+                "reference_height_span_m": 0.012239649891853333,
+                "actual_height_span_m": 0.08842866867780685,
+                "height_span_ratio": 7.22477108897246,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 98,
+                "actual_peak_frame": 12,
+                "peak_time_difference_s": -1.72,
+                "joint_rmse_rad": 0.5204272823035545
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.09263874590396881,
+                "wrist_world_rmse_m": 0.4027094841003418,
+                "reference_height_peak_m": -0.16395647823810577,
+                "actual_height_peak_m": -0.08182617276906967,
+                "actual_height_at_reference_peak_m": -0.08249399811029434,
+                "reference_height_span_m": 0.01643817126750946,
+                "actual_height_span_m": 0.08551429957151413,
+                "height_span_ratio": 5.202178404147407,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 61,
+                "actual_peak_frame": 13,
+                "peak_time_difference_s": -0.96,
+                "joint_rmse_rad": 0.6165515355845098
+              }
+            }
+          }
+        },
+        "final": {
+          "trace": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_final/train_0124097cf15003106ad9.npz",
+            "bytes": 57741,
+            "sha256": "b1bdbadce4e11261326662612ab6c604e5cdf7d4e23854dfac77216864c80e6e"
+          },
+          "executed_steps": 186,
+          "failed": false,
+          "full_clip_completion": 1.0,
+          "full_reference_normalized_reward_terms": {
+            "motion_global_root_pos": 0.04467051644926976,
+            "motion_global_root_ori": 0.08129891130812866,
+            "motion_body_pos": 0.19396211150833353,
+            "motion_body_ori": 0.13818055000757015,
+            "motion_body_lin_vel": 0.18098439044889902,
+            "motion_body_ang_vel": 0.16106958811093056,
+            "action_rate_l2": -0.005335533269365139,
+            "joint_limit": -0.00021369357640925113,
+            "total": 0.7946168350917037
+          },
+          "common_prefix_normalized_reward_terms": {
+            "motion_global_root_pos": 0.04467051644926976,
+            "motion_global_root_ori": 0.08129891130812866,
+            "motion_body_pos": 0.19396211150833353,
+            "motion_body_ori": 0.13818055000757015,
+            "motion_body_lin_vel": 0.18098439044889902,
+            "motion_body_ang_vel": 0.16106958811093056,
+            "action_rate_l2": -0.005335533269365139,
+            "joint_limit": -0.00021369357640925113,
+            "total": 0.7946168350917037
+          },
+          "root_position_score_below_0p01_fraction": 0.1881720430107527,
+          "recorded_reward_max_abs_error": 1.4901161193847656e-08,
+          "executed_kinematics": {
+            "all_joints_rmse_rad": 0.2181194537732417,
+            "legs_rmse_rad": 0.27051095744673453,
+            "waist_rmse_rad": 0.043142199114392044,
+            "arms_rmse_rad": 0.14354332039561313,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.17457153466827122,
+              "left_shoulder_roll_joint": 0.12091375951562972,
+              "left_shoulder_yaw_joint": 0.09801702428808313,
+              "left_elbow_joint": 0.14653844443750538,
+              "right_shoulder_pitch_joint": 0.15607753496123394,
+              "right_shoulder_roll_joint": 0.13370291650307475,
+              "right_shoulder_yaw_joint": 0.18188683032263844,
+              "right_elbow_joint": 0.11550663223671621
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.04186222329735756,
+                "wrist_world_rmse_m": 0.38186168670654297,
+                "reference_height_peak_m": -0.1685740351676941,
+                "actual_height_peak_m": -0.1515589952468872,
+                "actual_height_at_reference_peak_m": -0.1795756071805954,
+                "reference_height_span_m": 0.012239649891853333,
+                "actual_height_span_m": 0.028176158666610718,
+                "height_span_ratio": 2.3020395939073937,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 98,
+                "actual_peak_frame": 3,
+                "peak_time_difference_s": -1.9000000000000001,
+                "joint_rmse_rad": 0.13800019085593096
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.04667002707719803,
+                "wrist_world_rmse_m": 0.39901232719421387,
+                "reference_height_peak_m": -0.16395647823810577,
+                "actual_height_peak_m": -0.1504112035036087,
+                "actual_height_at_reference_peak_m": -0.18499960005283356,
+                "reference_height_span_m": 0.01643817126750946,
+                "actual_height_span_m": 0.03526735305786133,
+                "height_span_ratio": 2.1454547761993643,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 61,
+                "actual_peak_frame": 2,
+                "peak_time_difference_s": -1.18,
+                "joint_rmse_rad": 0.14888021018295855
+              }
+            }
+          },
+          "common_prefix_kinematics": {
+            "all_joints_rmse_rad": 0.2181194537732417,
+            "legs_rmse_rad": 0.27051095744673453,
+            "waist_rmse_rad": 0.043142199114392044,
+            "arms_rmse_rad": 0.14354332039561313,
+            "upper_joint_rmse_rad": {
+              "left_shoulder_pitch_joint": 0.17457153466827122,
+              "left_shoulder_roll_joint": 0.12091375951562972,
+              "left_shoulder_yaw_joint": 0.09801702428808313,
+              "left_elbow_joint": 0.14653844443750538,
+              "right_shoulder_pitch_joint": 0.15607753496123394,
+              "right_shoulder_roll_joint": 0.13370291650307475,
+              "right_shoulder_yaw_joint": 0.18188683032263844,
+              "right_elbow_joint": 0.11550663223671621
+            },
+            "arms_by_side": {
+              "left": {
+                "wrist_torso_relative_rmse_m": 0.04186222329735756,
+                "wrist_world_rmse_m": 0.38186168670654297,
+                "reference_height_peak_m": -0.1685740351676941,
+                "actual_height_peak_m": -0.1515589952468872,
+                "actual_height_at_reference_peak_m": -0.1795756071805954,
+                "reference_height_span_m": 0.012239649891853333,
+                "actual_height_span_m": 0.028176158666610718,
+                "height_span_ratio": 2.3020395939073937,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 98,
+                "actual_peak_frame": 3,
+                "peak_time_difference_s": -1.9000000000000001,
+                "joint_rmse_rad": 0.13800019085593096
+              },
+              "right": {
+                "wrist_torso_relative_rmse_m": 0.04667002707719803,
+                "wrist_world_rmse_m": 0.39901232719421387,
+                "reference_height_peak_m": -0.16395647823810577,
+                "actual_height_peak_m": -0.1504112035036087,
+                "actual_height_at_reference_peak_m": -0.18499960005283356,
+                "reference_height_span_m": 0.01643817126750946,
+                "actual_height_span_m": 0.03526735305786133,
+                "height_span_ratio": 2.1454547761993643,
+                "reference_above_shoulder_frames": 0,
+                "synchronous_above_shoulder_fraction": null,
+                "reference_peak_frame": 61,
+                "actual_peak_frame": 2,
+                "peak_time_difference_s": -1.18,
+                "joint_rmse_rad": 0.14888021018295855
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "new_physics_steps": 0,
+  "new_policy_inference": 0,
+  "new_optimizer_updates": 0,
+  "limits": "Training clips only. Errors reported both executed and common-prefix. Root/body post-control alignment matches original evaluator. Peak time is descriptive, not a completed gesture classifier. Above-shoulder event is anatomical description, not data admission.",
+  "storage_status": "LOCAL_ONLY"
+}

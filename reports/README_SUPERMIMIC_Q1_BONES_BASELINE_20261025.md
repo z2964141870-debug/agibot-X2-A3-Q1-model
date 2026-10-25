@@ -171,6 +171,27 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 
 ## RF02回放入口准备
 
+### 固定八片的具体名单
+
+17:03:32已在训练仍5600/12000轮时，把原plan的“合库按名称排序前8片”展开成具体名单，保存服务器`BONES_BASELINE_G02_20261025/evaluation_selection.json`，瘦身原样收据为[固定评测名单](../data/manifests/supermimic_q1_BONES_RF02_evaluation_selection_20261025.json)。没有根据策略表现选择或替换动作，没有新几何/效果门；初始和最终评测仍由原控制器执行，选择规则和训练代码不改。
+
+| 固定参考 | 帧数 | 原速秒数 | 整条参考根平面位移m |
+| --- | --- | --- | --- |
+| `train_0052d4522747ef665036` | 244 | 4.86 | 1.96590 |
+| `train_00660a3755173f532abb` | 474 | 9.46 | 1.89859 |
+| `train_0081d048da3e3d090c08` | 192 | 3.82 | 1.19839 |
+| `train_008ad0df4aced3b85225` | 228 | 4.54 | 2.00085 |
+| `train_00aeab45fa5f744d3138` | 566 | 11.30 | 3.31925 |
+| `train_00e98fc0d7a57764c762` | 253 | 5.04 | 1.28602 |
+| `train_0122791b8661dc86bc7b` | 266 | 5.30 | 1.99687 |
+| `train_0124097cf15003106ad9` | 186 | 3.70 | 0.85643 |
+
+合计2409帧、`sum((帧数-1)/50)=48.02秒`，包含前走/侧走/转向等来源，全部train，不证明未见动作泛化。正式评测按每参考帧一次控制，最多2409控制/策略；566帧片不按训练的500步人工截断缩短。两段视频固定用第一片`train_0052d4522747ef665036`，与旧RF01展示的第一片不同，不能混用视频。
+
+8个实际NPZ的SHA/大小均与合库manifest一致；收据绑定合库manifest、IO准入和训练manifest SHA。根轨迹按现有MotionLibrary从`body_pos_w[:, body_names.index("pelvis")]`读取，本次只有数组读取、0新动力积分/0更新。首次辅助提取曾误读独立`root_pos`键而KeyError，未产生输出、未改输入；已按实际布局纠正，不涉及训练故障。
+
+服务器完整收据保留LOCAL_ONLY；瘦身文件`evaluation_selection_compact.json`8057字节/SHA`61585b3e0c2ab784d5c9eacf65509ec6d1e55ed74aaaeaea091c9993869bebed`仅保留必要来源ID/路径/动作名、数组身份和重算统计，不把完整自然语言/演员元数据重复放Git。评测结束后须核对两份实际receipt的clip列表、参考SHA及渲染clip均与此名单一致；目前没有新增策略效果结果。
+
 新增[replay.html](../script/supermimic_q1_reproduction/replay.html)，沿用原Q1回放页的布局与原生视频控件，切换同一首段参考的initial/final实际动力学视频，并从既有`comparison.json`读取该段的完成比例、整片归一化回报、执行段关节RMSE、根位移及提前终止。页面字段已对照真实RF01评测收据和当前评测源码，JavaScript经Node语法检查通过；未使用RF01视频冒充RF02。
 
 当前只完成页面源码准备，尚未部署为RF02可访问回放，也未完成浏览器桌面/移动端画面与控件核验。训练及两份真实RF02视频生成后，将页面复制到`data/supermimic_for_q1/BONES_BASELINE_G02_20261025/index.html`，恢复仅本机可访问的18863入口，再检查视频和指标。现有训练Python源码保持冻结；新增HTML不更改训练输入或控制器。

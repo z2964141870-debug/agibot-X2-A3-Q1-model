@@ -18,6 +18,8 @@
 
 - [RF02回放页源码](../script/supermimic_q1_reproduction/replay.html)已准备，初始/最终切换及当前评测字段绑定，JavaScript语法检查通过。尚未接入真实RF02视频或恢复18863访问，桌面/移动端浏览器核验待视频生成后执行；不以旧视频替代本轮回放。
 
+- 17:03已把原plan的固定前8train展开成[具体名单](../data/manifests/supermimic_q1_BONES_RF02_evaluation_selection_20261025.json)：2409帧/48.02秒，8个NPZ身份与合库一致，0新积分/更新、选择规则不变；生成时训练5600轮，非按最终效果挑选。终后两份评测收据与视频须核对该名单；首片`train_0052d4522747ef665036`，不能混用旧RF01第一片。
+
 - 发布代码`d66ac1cd21de1682ca6f069227c070ebf98da02f`已独立核远端Q1，12个服务器reproduction源码逐SHA与发布本一致。恢复先读`data/supermimic_for_q1/BONES_BASELINE_G02_20261025/status.json`、当前阶段guard/progress和日志，核实boot/PID/start_ticks，不因连接超时重启既有流程。启动[plan](../data/manifests/supermimic_q1_BONES_G02_plan_20261025.json)/[launch](../data/manifests/supermimic_q1_BONES_G02_launch_20261025.json)/[状态快照](../data/manifests/supermimic_q1_BONES_G02_launch_status_20261025.json)已保存。
 
 - 当前训练根`data/supermimic_for_q1/BONES_RF02_12000_20261025/`，实际worker日志`logs/BONES_RF02_12000_20261025.log`。恢复读其`guard.json`及`run/status.json`；[训练manifest](../data/manifests/supermimic_q1_BONES_RF02_admission_20261025.json)/[合库收据](../data/manifests/supermimic_q1_BONES_PF02_1024_admission_20261025.json)/[早期更新快照](../data/manifests/supermimic_q1_BONES_RF02_early_update_status_20261025.json)已取回。16份静态原样文件与服务器逐SHA一致。早期实测OOM14、GPU40摄氏度、内存27.87GB、盘余2.091TB；资源保护保持，尚无RF02效果结论。

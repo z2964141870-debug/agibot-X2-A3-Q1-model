@@ -1,6 +1,6 @@
 # 4096环境论文规模配置
 
-记录日期：2026-10-25，更新至2026-10-26，北京时间。阶段：E4096-P01完成，RF05-E4096-UP01待资源。状态：RF04训练和终后交付完成，4096完整批量实测通过且worker回收；01:52盘余约30GiB，低于100GiB保护，RF05目录尚未创建或启动。
+记录日期：2026-10-25，更新至2026-10-26，北京时间。阶段：E4096-P01完成，RF05-E4096-UP01待资源。状态：RF04训练和终后交付完成，4096完整批量实测通过且worker回收；02:02共享盘可用空间为0，低于100GiB保护，RF05目录尚未创建或启动，服务器部署暂缓。
 
 ## 目标与决定
 
@@ -44,6 +44,8 @@ $PY /opt/data/private/ZHY/script/project_tools/run_q1_single_motion.py --root /o
 
 RF04全部冻结阶段结束后，已修正`train_reproduction.py`中固定“smaller environment and batch”的元数据文案，按实际环境数、WM与actor批量声明，避免4096的manifest仍声称缩小采样。语法、64/2048/4096文案取值和单项AST对比通过，除该声明外AST相同；未改训练、奖励或观测公式。修正随本阶段显式暂存、payload审计和Q1发布，部署后核源码SHA，RF05启动必须使用已发布身份。此项不是数据门槛。
 
+元数据修正已随`81db2e1fee2828e9ce59d0271c7d2f2cde56cee1`推送Q1并独立核远端，9项133708字节payload及diff检查通过。新训练源码SHA为`0a8128f6d4bfb5908436373d850c5edd7e51b808a0a731bbb5d94150ef92767f`。02:02:16盘余为0，因此未尝试服务器部署；服务器仍为原SHA`4a1431570c80cae8e3377c80bc25a14992f66e1a1af58aaffddd63c6643c519b`。恢复空间后先同步最新报告/小收据和新代码并逐SHA核验，再以已发布40位HEAD启动RF05。当前不能称三端已经同步新修正。
+
 ## 验证、工件与监督
 
 配置/独立profile发布提交`9f7debdb1d095820bd71deff8432c2f23aee0642`已推送Q1并独立核远端；profile源码SHA为`5c55e9b7bc2471aad50810d5c44245622705a73c8f484aac395be5b38cc31674`，与真实收据一致。RF04于01:23:37全流程完成并释放worker/GPU后，profile于01:33:33至01:35:18执行，`receipt.json=PROFILE_COMPLETED`、`guard.json=WORKER_COMPLETED`、worker return code 0并正常reap。controller891502和worker891503在终后及01:52复查均已不存在，GPU回落14MiB，OOM仍14。没有第二正式训练或新增子agent。
@@ -64,7 +66,7 @@ RF04全部冻结阶段结束后，已修正`train_reproduction.py`中固定“sm
 
 完整WM、actor及critic指标均为有限数，表中为短时容量测量，不证明新策略性能或两小时训练已完成。[profile原始收据](../data/manifests/supermimic_q1_E4096_profile_20261026.json)、[guard原始收据](../data/manifests/supermimic_q1_E4096_profile_guard_20261026.json)已保存；服务器对应实验根保留`receipt.json`和`guard.json`，小型工件约16KiB。使用的RF04权重SHA为`9988bbfaaac922bf27e0807992a7eaf197c8bce07b0eb232b71309415dcf3a7e`，仅加载测量，不用于RF05初始化。
 
-当前阻碍为共享磁盘：01:52:03可用32179216384字节，约30GiB，低于100GiB保护。[两次目录盘点](README_Q1_STORAGE_GROWTH_20261026.md)显示可见private总量703216345088字节完全相同，而底层整盘余量持续下降；增长者超出当前可见范围，需平台侧定位。RF05目录不存在，不把它记为训练失败，也不降低保护或另选平级目录。
+当前阻碍为共享磁盘：01:52:03可用约30GiB，02:02:16已为0，低于100GiB保护。[两次目录盘点](README_Q1_STORAGE_GROWTH_20261026.md)显示可见private总量703216345088字节完全相同，而底层整盘余量持续下降；增长者超出当前可见范围，需平台侧定位。RF05目录不存在，不把它记为训练失败，也不降低保护或另选平级目录。
 
 继续使用本聊天的`q1-2048`监督任务，更新其流程覆盖“RF04完成与交付→4096实测→RF05训练与交付”，不重复创建自动任务，不新增或激活子agent。普通进度保持安静，只有异常、需要用户处理及重要最终结果才通知。每轮均保存既有六宫格与初末MP4；MP4交付本机对应`data/supermimic_for_q1/`目录，不建网站、不拉权重，核大小/SHA。
 

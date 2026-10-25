@@ -46,7 +46,7 @@ $PY script/project_tools/run_q1_single_motion.py --root /opt/data/private/ZHY --
 
 ## 验证、工件与监督
 
-本地CLI帮助及Python语法检查通过；未执行4096仿真或GPU更新，不能宣称实际约18GB或能启动成功。服务器部署与CLI验证、三端小文件SHA、代码审查及payload audit随本阶段同步记录；运行期证据待实测后补充。
+本地和服务器CLI帮助及Python语法检查均通过；未执行4096仿真或GPU更新，不能宣称实际约18GB或能启动成功。配置/独立profile发布提交`9f7debdb1d095820bd71deff8432c2f23aee0642`已推送Q1并独立核远端。6项暂存文件payload audit及diff检查通过。profile源码SHA为`5c55e9b7bc2471aad50810d5c44245622705a73c8f484aac395be5b38cc31674`，权威checkout、Mac镜像及huanyu三端一致，报告同步后SHA亦一致；三端各自AGENTS保留原内容并追加新偏好。既有监督任务已更新为2048完成后顺序4096流程，没有新增自动任务或子agent。运行期容量和效果证据仍待实测后补充。
 
 继续使用本聊天的`q1-2048`监督任务，更新其流程覆盖“RF04完成与交付→4096实测→RF05训练与交付”，不重复创建自动任务，不新增或激活子agent。普通进度保持安静，只有异常、需要用户处理及重要最终结果才通知。每轮均保存既有六宫格与初末MP4；MP4交付本机对应`data/supermimic_for_q1/`目录，不建网站、不拉权重，核大小/SHA。
 

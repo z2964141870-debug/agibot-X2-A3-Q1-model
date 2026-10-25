@@ -35,16 +35,19 @@ def commands(args):
                 "--root", str(args.root), *map(str, arguments)]}
 
     phases = [phase("train", tools / "train_q1_with_dashboard.py",
-        "--output", run, "--dashboard-label", "RF03-UP01", "--motions", library / "references",
+        "--output", run, "--dashboard-label", args.dashboard_label, "--motions", library / "references",
         "--reference-receipt", library / "admission.json", "--backend-receipt", backend,
-        "--steps", STEPS, "--num-envs", ENVS, "--threads", 4, "--batch", 128,
-        "--wm-batch", 64, "--wm-batches", 10, "--warmup-steps", 128,
+        "--steps", args.steps, "--num-envs", args.num_envs, "--threads", args.threads,
+        "--model-slots", args.model_slots, "--batch", args.batch,
+        "--wm-batch", args.wm_batch, "--wm-batches", 10, "--warmup-steps", 128,
         "--model-warmup-updates", 50, "--checkpoint-every", 1000,
         "--seed", 2026102513, "--device", "cuda:0", "--clips", CLIP,
         "--code-commit", args.code_commit),
         phase("save_check", tools / "audit_q1_checkpoint.py", "--run", run,
             "--checkpoint", "final.pt", "--output", args.output / "training_audit.json",
             "--expected-oom-kill", args.expected_oom_kill)]
+    if args.training_seconds is not None:
+        phases[0]["command"].extend(("--training-seconds", str(args.training_seconds)))
     for label, checkpoint in (("initial", "step_000000.pt"), ("final", "final.pt")):
         output = args.output / ("evaluation_" + label)
         phases.append(phase("evaluate_" + label, reproduction / "evaluate_reproduction.py",
@@ -63,11 +66,14 @@ def commands(args):
     return phases, library, backend
 
 
-def completed_training(run):
+def completed_training(run, num_envs=ENVS, maximum_steps=STEPS, training_seconds=None):
     receipt = json.loads((run / "receipt.json").read_text())
     admission = json.loads((run / "admission.json").read_text())
-    if (receipt["status"] != "TRAINING_FINISHED_PENDING_EVALUATION"
-            or receipt["step"] != STEPS or receipt["env_steps"] != STEPS * ENVS
+    budget_met = receipt["step"] == maximum_steps if training_seconds is None else (
+        0 < receipt["step"] <= maximum_steps and receipt["step"] % 25 == 0
+        and receipt.get("training_seconds", 0.) >= training_seconds)
+    if (receipt["status"] != "TRAINING_FINISHED_PENDING_EVALUATION" or not budget_met
+            or receipt["env_steps"] != receipt["step"] * num_envs
             or receipt["error"] is not None
             or [Path(row["path"]).stem for row in admission["train_clips"]] != [CLIP]):
         raise ValueError("The fixed single-motion budget did not finish; no final evaluation")
@@ -101,8 +107,10 @@ def execute(args):
         "reference": reference, "reference_frames": 365, "reference_fps": 50,
         "library": identity(library / "admission.json"), "backend": identity(backend),
         "entries": [identity(path) for path in sorted(entry_paths)], "phases": phases,
-        "training_steps": STEPS, "num_envs": ENVS, "main_variable": "TRAINING_REFERENCE_SCOPE_ONLY",
-        "preserved": "RF02 world model, H32 BPTT, reward, control, network, optimizer, seed and budget",
+        "maximum_training_steps": args.steps, "num_envs": args.num_envs,
+        "requested_training_seconds": args.training_seconds,
+        "main_variable": "ENVIRONMENT_AND_UPDATE_BATCH_SCALE" if args.num_envs != ENVS else "TRAINING_REFERENCE_SCOPE_ONLY",
+        "preserved": "RF02 world model, H32 BPTT, reward, control, network, optimizer and seed",
         "evaluation_selection": "Fixed same single reference and frame-zero start, initial and final",
         "no_automatic_retry_or_budget_extension": True, "storage_status": "LOCAL_ONLY"}
     save(args.output / "plan.json", plan)
@@ -143,7 +151,7 @@ def execute(args):
             if record["status"] != "WORKER_COMPLETED":
                 raise RuntimeError(f"{phase['name']}: {record['status']}; no automatic retry")
             if phase["name"] == "train":
-                completed_training(args.output / "run")
+                completed_training(args.output / "run", args.num_envs, args.steps, args.training_seconds)
         comparison = matched_comparison(args.output)
         save(args.output / "comparison.json", comparison)
         if any(identity(row["path"]) != row for row in plan["entries"]):
@@ -168,6 +176,14 @@ def main():
     parser.add_argument("--output", type=Path)
     parser.add_argument("--code-commit", required=True)
     parser.add_argument("--expected-oom-kill", type=int, required=True)
+    parser.add_argument("--steps", type=int, default=STEPS)
+    parser.add_argument("--num-envs", type=int, default=ENVS)
+    parser.add_argument("--threads", type=int, default=4)
+    parser.add_argument("--model-slots", type=int, default=4)
+    parser.add_argument("--batch", type=int, default=128)
+    parser.add_argument("--wm-batch", type=int, default=64)
+    parser.add_argument("--training-seconds", type=float)
+    parser.add_argument("--dashboard-label", default="RF03-UP01")
     parser.add_argument("--detach", action="store_true")
     parser.add_argument("--worker", action="store_true")
     args = parser.parse_args()

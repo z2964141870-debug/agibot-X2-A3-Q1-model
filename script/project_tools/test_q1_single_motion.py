@@ -41,6 +41,17 @@ class SingleMotionEvidenceTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             completed_training(self.root)
 
+    def test_timed_receipt_requires_actual_duration_and_2048_transitions(self):
+        self.write("admission.json", {"train_clips": [{"path": "/references/" + CLIP + ".npz"}]})
+        receipt = {"status": "TRAINING_FINISHED_PENDING_EVALUATION", "step": 1000,
+                   "env_steps": 1000 * 2048, "training_seconds": 7200.1, "error": None}
+        self.write("receipt.json", receipt)
+        self.assertEqual(completed_training(self.root, 2048, 12000, 7200), receipt)
+        for changes in ({"training_seconds": 7199}, {"env_steps": 64000}, {"step": 999}):
+            self.write("receipt.json", {**receipt, **changes})
+            with self.subTest(changes=changes), self.assertRaises(ValueError):
+                completed_training(self.root, 2048, 12000, 7200)
+
     def test_pair_preserves_failure_and_rejects_reference_mismatch(self):
         receipt = {"rows": [{"clip": CLIP, "failed": True,
                             "reference": {"path": "/reference.npz", "sha256": "a"}}],

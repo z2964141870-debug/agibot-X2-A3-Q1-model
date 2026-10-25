@@ -1,6 +1,6 @@
 # RF03-UP01 双臂单动作可学习性实验
 
-记录日期：2026-10-25，北京时间。状态：22:35:23已启动，已观察到世界模型和策略真实更新；训练与终后评测仍进行中，尚无本轮效果结论。
+记录日期：2026-10-25，北京时间。状态：用户要求停止64环境路线，22:51:46已STOPPED_SIGNAL，不恢复；没有完成12000轮或初始/最终动力学对照。
 
 ## 目标与范围
 
@@ -48,3 +48,11 @@ data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python -u script/project
 小收据：[启动](../data/manifests/supermimic_q1_RF03_UP01_launch_20261025.json)、[完整计划](../data/manifests/supermimic_q1_RF03_UP01_plan_20261025.json)、[375轮原样状态](../data/manifests/supermimic_q1_RF03_UP01_start_status_20261025.json)、[同期guard](../data/manifests/supermimic_q1_RF03_UP01_start_guard_20261025.json)。完整admission438926字节/SHA`540bb3c4ac5cb40af9744f662cacb8173a273574575d5f9c32cbf81bc673a95f`保留服务器；Mac仅有小副本，没有下载权重。后续完成固定评测、图与本地MP4，再依据主动抬手和移动的结果决定下一步。旧RF02以及FAILED/STOPPED终态保持，本轮无自动重试或延长预算。
 
 恢复先读本文件、`README_CURRENT_STATE.md`和服务器本轮`status.json`/`train_guard.json`/`run/status.json`，重新核实进程身份与资源，不根据历史RUNNING快照重启或追加预算。
+
+## 用户停止与新方向
+
+用户转述师兄X2成功训练经验，要求至少1024、优先2048环境；随后明确分析完采用2048环境实际训练至少2小时，并授权唯一子agent专门分析位移。主代理负责新训练与监控。64环境不是论文充分规模，不能凭本轮低覆盖失败排除SuperMimic方法。
+
+主代理先按boot/start_ticks核对controller身份后发SIGTERM，22:51:46 controller/guard均STOPPED_SIGNAL，worker已回收且返回0，GPU恢复14MiB/27摄氏度。最终667轮/42688真实转移，WM216组/actor166次，主训练971.10秒；保存final.pt205582803字节/SHA`3361dbd4ca0f2e3cfdfcc4103c9d992ac71e12889ed2689fd4bb2b9db6d29a7d`。它是停止快照，不是正式完成或效果证明。终后六宫格由原包装器生成；不启动旧计划评测或重启本实验。
+
+证据：[停止训练](../data/manifests/supermimic_q1_RF03_UP01_stopped_training_20261025.json)、[guard回收](../data/manifests/supermimic_q1_RF03_UP01_stopped_guard_20261025.json)、[流程终态](../data/manifests/supermimic_q1_RF03_UP01_stopped_pipeline_20261025.json)。新2048实验独立登记，沿用原365帧抬手加移动参考和方法，先核吞吐/显存、按论文比例配置更新批量，再跑至少7200秒；原RF03不恢复。

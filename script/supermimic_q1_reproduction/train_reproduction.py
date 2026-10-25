@@ -37,6 +37,7 @@ from slotted_sim import SlottedQ1Sim
 from bounded_policy import BoundedPolicy, GuardedPolicyTrainer, GuardedWorldModelTrainer
 from relocated_io import JsonView, migration_view
 from reference_admission import POLICY, validate_arrays
+from collection_budget import CollectionBudget
 
 Q1Sim = partial(SlottedQ1Sim, slots=4)
 Policy, PolicyTrainer, WorldModelTrainer = BoundedPolicy, GuardedPolicyTrainer, GuardedWorldModelTrainer
@@ -74,8 +75,10 @@ def main():
     p.add_argument("--backend-receipt", type=Path, required=True)
     p.add_argument("--reference-receipt", type=Path, required=True)
     p.add_argument("--steps", type=int, default=600)
+    p.add_argument("--training-seconds", type=float)
     p.add_argument("--num-envs", type=int, default=16)
     p.add_argument("--threads", type=int, default=4)
+    p.add_argument("--model-slots", type=int, default=4)
     p.add_argument("--batch", type=int, default=32)
     p.add_argument("--wm-batch", type=int, default=64)
     p.add_argument("--wm-batches", type=int, default=10)
@@ -88,6 +91,7 @@ def main():
     p.add_argument("--clips", nargs="+", default=None)
     p.add_argument("--code-commit", required=True)
     args = p.parse_args()
+    budget = CollectionBudget(args.steps, args.training_seconds)
     if args.steps < 300 or args.num_envs < 1 or len(args.code_commit) != 40:
         raise ValueError("An explicit training budget and published code identity are required")
     view = migration_view(Path(args.root))
@@ -134,7 +138,7 @@ def main():
     heads = assets.heads(args.device)
     lib = MotionLibrary(files, TRACKED, assets.q0, device=args.device, active_indices=assets.active_indices)
     scfg = SimCfg(num_envs=args.num_envs, threads=args.threads)
-    sim = Q1Sim(assets, lib, scfg, heads, args.seed)
+    sim = Q1Sim(assets, lib, scfg, heads, args.seed, slots=args.model_slots)
     buffer = ReplayBuffer(args.num_envs, 1000, STATE_DIM, ACT_DIM, XI_DIM, args.device)
     wcfg = WorldModelCfg()
     pcfg = PolicyCfg()
@@ -201,6 +205,8 @@ def main():
             os.posix_fadvise(stream.fileno(), 0, 0, os.POSIX_FADV_DONTNEED)
 
     save("step_000000.pt")
+    collection_started = time.monotonic()
+    collection_seconds = 0.
     status = "FAILED"
     error = None
     accumulated = 0.
@@ -245,16 +251,24 @@ def main():
             if stop_requested:
                 status = "STOPPED_SIGNAL"
                 break
+            if budget.finished(step, time.monotonic() - collection_started):
+                status = "TRAINING_FINISHED_PENDING_EVALUATION"
+                break
         else:
             status = "TRAINING_FINISHED_PENDING_EVALUATION"
+        collection_seconds = time.monotonic() - collection_started
         save("final.pt")
     except Exception as exc:
         error = f"{type(exc).__name__}: {exc}"
         raise
     finally:
+        if not collection_seconds:
+            collection_seconds = time.monotonic() - collection_started
         sim.close()
         result = {"status": status, "step": step, "env_steps": step * args.num_envs,
                   "wm_updates": updates, "policy_updates": policy_updates,
+                  "training_seconds": collection_seconds,
+                  "requested_training_seconds": args.training_seconds,
                   "seconds": time.monotonic() - started, "error": error,
                   "artifacts": [identity(f) for f in sorted(args.output.glob("*.pt"))],
                   "storage_status": "LOCAL_ONLY", "not_hardware_validated": True}

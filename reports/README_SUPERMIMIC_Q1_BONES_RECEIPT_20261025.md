@@ -18,6 +18,25 @@
 
 代码版本、实际命令、接收产物和独立检查结果在执行后补充。原始数据/大型工件仍LOCAL_ONLY，Mac仅保存代码、报告及小收据；不得提交第三方完整CSV、模型或归档。
 
+### 归档与新入口准备
+
+已使用`mv -n`将原根文件同盘移到`data/references/bones_seed/archives/g1.tar.gz`，没有复制。新增`bounded_archive_io.py`对自己的顺序输入用16MiB窗口POSIX_FADV_DONTNEED释放已读页，SHA固定1MiB读取，拒绝无界raw.read；不修改文件内容、不全机drop_caches。新增`process_bones_received.py`依次prepare/intake/batch，用新guard逐阶段单次运行，保持100GiB/12GiB/250GiB、28.75GiB/OOM14和900秒进展线。
+
+prepare核完整本地SHA与有限CSV命名空间预览，intake复用原安全扫描/CRC及1280冻结来源，只提取名单；batch默认仅8个原train来源，保持120至50Hz原速和原22门。三个旧模块只在进程内读取M01路径视图，原源码/收据不改；旧下载脚本不执行。本地两项控制通过，包含流式哈希/显式长度、gzip/tar提取和CRC损坏拒绝。服务器部署和真实执行待。
+
+计划命令（实际阶段结束后另补结果）：
+
+```bash
+ROOT=/opt/data/private/ZHY
+PY=$ROOT/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python
+env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  "$PY" -u "$ROOT/script/supermimic_q1_sources/process_bones_received.py" prepare \
+  --root "$ROOT" --archive "$ROOT/data/references/bones_seed/archives/g1.tar.gz" \
+  --output "$ROOT/data/supermimic_for_q1/BONES_A02_received_20261025" --expected-oom-kill 14
+```
+
+后续intake/batch仅改phase，复用同一已准备根，各有独立guard与log，不覆盖已有阶段；intake完整性通过前不启动batch。
+
 ## 下一步
 
 归档原文件，完整哈希和成员前缀预检，通过后流式接入冻结候选；真实小批独立验证通过后才扩大。保持[DEV-B/P15R结论](README_SUPERMIMIC_Q1_RELOCATED_DIAGNOSTICS_20261025.md)，不恢复旧训练或将新来源自动计为成功。

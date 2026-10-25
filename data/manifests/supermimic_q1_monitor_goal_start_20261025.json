@@ -1,0 +1,172 @@
+{
+  "observed_utc": "2026-10-25T15:59:20.384008+00:00",
+  "purpose": "User-requested reset of the monitoring goal; no new training or source changes",
+  "processes": [
+    {
+      "pid": 885444,
+      "start_ticks": 3623369662,
+      "state": "S",
+      "identity_matches": true
+    },
+    {
+      "pid": 885445,
+      "start_ticks": 3623369674,
+      "state": "S",
+      "identity_matches": true
+    }
+  ],
+  "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+  "pipeline": {
+    "status": "RUNNING",
+    "started_utc": "2026-10-25T15:21:31.165892+00:00",
+    "process": {
+      "pid": 885444,
+      "start_ticks": 3623369662,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    },
+    "phase": "train",
+    "events": [
+      {
+        "phase": "train",
+        "started_utc": "2026-10-25T15:21:31.166168+00:00"
+      }
+    ],
+    "error": null,
+    "storage_status": "LOCAL_ONLY"
+  },
+  "training": {
+    "status": "RUNNING",
+    "step": 625,
+    "env_steps": 1280000,
+    "wm_updates": 199,
+    "policy_updates": 149,
+    "seconds": 2248.571721278131,
+    "pid": 885445,
+    "reward_mean": 0.040017083287239075,
+    "termination_fraction": 0.01220703125,
+    "joint_rmse_rad": 0.42870035767555237,
+    "health": {
+      "gpu_temperature_c": 41,
+      "cgroup_memory_bytes": 20023967744,
+      "oom_kill": 14
+    },
+    "imag_objective": 2.489100456237793,
+    "imag_return_undisc": 0.8975841999053955,
+    "imag_reward_mean": 0.023998821154236794,
+    "imag_survival_H": 0.5669659376144409,
+    "imag_dhat_mean": 0.20737697184085846,
+    "policy_grad_norm": 0.17555828392505646,
+    "action_abs_mean": 0.38051658868789673,
+    "imag_r/motion_global_root_pos": 0.004765069577842951,
+    "imag_r/motion_global_root_ori": 0.003946125507354736,
+    "imag_r/motion_body_pos": 0.013332115486264229,
+    "imag_r/motion_body_ori": 0.0004942275118082762,
+    "imag_r/motion_body_lin_vel": 0.011058088392019272,
+    "imag_r/motion_body_ang_vel": 0.009410832077264786,
+    "imag_r/action_rate_l2": -0.002097554737702012,
+    "imag_r/joint_limit": -0.016910085454583168,
+    "critic_loss": 0.23614123463630676,
+    "critic_value_mean": 2.463578701019287,
+    "critic_target_mean": 2.41945743560791,
+    "wm/state_loss": 0.9881779670715332,
+    "wm/term_bce": 0.004205741360783577,
+    "wm/nse_1step": 0.010703028738498687,
+    "wm/nse_kstep": 0.027587786316871643,
+    "wm/term_acc": 0.9986083984375,
+    "wm/loss": 0.9923836708068847,
+    "wm/grad_norm": 6.723480224609375
+  },
+  "guard": {
+    "status": "RUNNING",
+    "command": [
+      "/opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python",
+      "-u",
+      "/opt/data/private/ZHY/script/project_tools/train_q1_with_dashboard.py",
+      "--root",
+      "/opt/data/private/ZHY",
+      "--output",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF04_UP01_E2048_T02H_20261025/run",
+      "--dashboard-label",
+      "RF04-E2048",
+      "--motions",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_1024_20261025/library/references",
+      "--reference-receipt",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_1024_20261025/library/admission.json",
+      "--backend-receipt",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/PHUMA_P05_slots_V01_20261024/receipt.json",
+      "--steps",
+      "12000",
+      "--num-envs",
+      "2048",
+      "--threads",
+      "8",
+      "--model-slots",
+      "8",
+      "--batch",
+      "2048",
+      "--wm-batch",
+      "1024",
+      "--wm-batches",
+      "10",
+      "--warmup-steps",
+      "128",
+      "--model-warmup-updates",
+      "50",
+      "--checkpoint-every",
+      "1000",
+      "--seed",
+      "2026102513",
+      "--device",
+      "cuda:0",
+      "--clips",
+      "train_3419f09ba93c91d75fc1",
+      "--code-commit",
+      "f03db7566fcd590912b4cc9b24621d32b19319a2",
+      "--training-seconds",
+      "7200.0"
+    ],
+    "cwd": "/opt/data/private/ZHY",
+    "started_utc": "2026-10-25T15:21:31.166548+00:00",
+    "controller_pid": 885444,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "experiment": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF04_UP01_E2048_T02H_20261025",
+        "unique_allocated_bytes": 69328896,
+        "unique_logical_bytes": 69295443,
+        "unique_inodes": 13,
+        "symlinks_not_followed": 0
+      },
+      "source": {
+        "root": "/opt/data/private/ZHY/data/references/bones_seed/archives",
+        "unique_allocated_bytes": 23499988992,
+        "unique_logical_bytes": 23499977743,
+        "unique_inodes": 2,
+        "symlinks_not_followed": 0
+      },
+      "free_bytes": {
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF04_UP01_E2048_T02H_20261025": 707149049856,
+        "/opt/data/private/ZHY/data/references/bones_seed/archives": 707149049856
+      },
+      "shared_memory": {
+        "shared_bytes": 20023197696,
+        "oom_kill": 14,
+        "maximum_bytes": 32212254720
+      }
+    },
+    "error": null,
+    "worker_pid": 885445,
+    "worker_group": 885445
+  },
+  "status_age_seconds": 12.310081005096436,
+  "gpu_csv": "NVIDIA GeForce RTX 3090, 9150, 24576, 40, 0",
+  "cgroup_memory": {
+    "memory.usage_in_bytes": "20089729024",
+    "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 14",
+    "memory.limit_in_bytes": "34359738368"
+  },
+  "disk_free_bytes": 706989666304,
+  "next_profile_exists": false,
+  "next_training_exists": false,
+  "storage_status": "LOCAL_ONLY"
+}

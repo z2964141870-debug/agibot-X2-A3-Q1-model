@@ -1,6 +1,6 @@
 # BONES真实移动参考的足底与碰撞比较
 
-记录日期：2026-10-25，北京时间。阶段：SM-Q1-BONES-D01。状态：只读诊断入口已实现，真实执行待；没有新增训练参考。
+记录日期：2026-10-25，北京时间。阶段：SM-Q1-BONES-D01。状态：只读比较已结束，用户随后取消本工程额外物理准入门；本结果仅历史诊断，不阻止新训练。
 
 ## 目标与范围
 
@@ -32,3 +32,9 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 ## 保存与下一步
 
 本入口与阶段README在Q1分支同次审核提交，远端核验后部署；实际运行结束即补充原样小收据与结论。以比较结果决定后续接触/映射修正，避免直接全量转换或仅追加训练预算。
+
+## 实际结束与用户覆盖决定
+
+12:12:32至12:13:29真实退出0、guard完成回收，8个冻结train全部完成原G1/映射目标/Q1比较；刚体足底逐帧闭合、原8片指标及共同Z位移关系均通过。新增分配827392字节、余盘约2.095TB/OOM14；原数组与来源保持。原样[summary](../data/manifests/supermimic_q1_BONES_D01_support_20261025.json)和[guard](../data/manifests/supermimic_q1_BONES_D01_support_guard_20261025.json)归档。
+
+用户明确要求取消代理自定训练数据硬门槛，优先复刻SuperMimic。该决定覆盖本文旧“以几何修正通过再训练”的安排；不再扩展D01或以支撑、间隙、自碰撞及2rad/s挡住新数据。后续以[新主线](README_SUPERMIMIC_Q1_PAPER_FIRST_20261025.md)为准，历史结果原样保留。

@@ -139,6 +139,18 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 
 该次有界观察进程正常结束，训练控制器独立继续；没有重启或追加另一轮训练。恢复时读服务器实时status/guard并核对身份，接着完成原定12000轮及既有评测/回放流程，完整目标仍未完成。
 
+## RF02后续自动保存登记
+
+15:36:58有界只读观察到3000轮/192000真实转移，三进程boot/start_ticks匹配，pipeline/guard RUNNING，GPU40摄氏度、内存26462679040字节/OOM14、盘余2086684401664字节。下表只登记实际文件身份，没有重复1000轮的CPU张量/Adam审计。
+
+| 保存 | 字节数 | SHA-256 | 保存时WM组/actor次数 |
+| --- | --- | --- | --- |
+| `run/step_003000.pt` | 205920167 | `1b15a4246597fb92bda1422862f26b904abdfa5518d3075e0e6486badda91bae` | 1149 / 1099 |
+
+3000模型mtime为15:36:37，训练目录实际分配687841280字节。15:38取回的[原样保存后状态](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_3000_status_20261025.json)已继续3050轮/195200真实转移、WM1169组/actor1119次、RUNNING，训练计时5697.48秒、GPU40摄氏度、内存26439262208字节/OOM14。权重保留服务器LOCAL_ONLY，Mac只取小状态；本次观察会话正常结束，原训练控制器继续。
+
+当前完成本轮采集预算的四分之一，尚未完成12000轮或固定8片动力学比较/回放，不以训练日志推断跟随效果。未更改训练配置、源码或准入条件。
+
 ## RF02核心链路只读审阅
 
 [RF02-M01审阅](README_SUPERMIMIC_Q1_RF02_METHOD_REVIEW_20261025.md)已完成：未发现需要立即中止本轮的8步拟合/H32梯度/critic或replay边界错误。固定学习核心来自第三方`CuboiLeo/SuperMimic-Reproduced@d9be385`，不是作者官方训练源码，保持来源表述准确。

@@ -1,6 +1,6 @@
 # RF02全身跟踪与奖励接触诊断
 
-记录日期：2026-10-25，北京时间。阶段：RF02-D02。状态：目标已登记，实施中；下文预算不是已经完成的结果。
+记录日期：2026-10-25，北京时间。阶段：RF02-D02。状态：全身诊断完成，下一轮训练建议已记录；0optimizer更新。完成诊断不代表机器人已学会动作。
 
 ## 目标与范围
 
@@ -37,10 +37,70 @@
 
 小证据：[八片分解](../data/manifests/supermimic_q1_RF02_D02_eight_20261025.json)、[参考预选](../data/manifests/supermimic_q1_RF02_D02_arm_selection_20261025.json)。完整扫描仅留服务器`arm_reference_scan.json`；诊断产物均在本阶段产物根，无参考或权重副本。日志`logs/supermimic_q1_RF02_D02_{scan,eight}_20261025.log`。
 
-## 尚未完成与边界
+## 已完成：四条上肢配对与来源覆盖
 
-4条上肢真实评测、接触/饱和重放和最多6状态方向检查尚待。已有RF02的0/8提前终止和约2cm移动不能代替抬手能力评估；旧R03梯度结果不套用本轮。奖励、重定向和接触可能共同作用，本目标不预先指定唯一根因。
+原初始/最终模型按冻结名单各真实评测一次，合计4810个控制步/96200物理子步；4/4均完整、无提前终止。肩肘RMSE0.636309→0.287691rad，腕相对躯干误差左0.130459→0.087599m/右0.117613→0.057980m，整片回报0.486932→0.718837。**平均误差改善，但没有学会中途主动抬手。**
+
+3条中途抬手片`3419...`（双手）、`785a...`（右手）、`c1fc...`（左手）的4个抬手事件，最终在参考腕高于肩的帧中实际高于肩比例均0。实际高度变化幅度仅参考的10.46%/13.16%/11.07%/8.45%；参考峰值时实际腕仍比肩低约17.96–18.51cm。`0499...`的左腕峰值在frame0，由参考初始化提供，不能当作主动抬手；其61个目标高于肩帧只保持2帧。峰值时序是描述量，不是完整动作识别器。
+
+只读追溯全部1024份G1源与转换诊断：**1024份均来自`locomotion_candidate`桶**；源G1出现腕高于肩的片数左5/右4，Q1左4/右3。因此上肢大幅动作稀少首先是本轮已选来源的覆盖问题，不能归咎为重定向凭空丢掉大量抬手。Q1与G1肢体尺寸不同，绝对幅度约减半不能直接解释为损失；每片腕映射位置残差p95的片间中位数左2.533cm/右2.537cm，仍需有代表动作才能评价转向/幅度的保真。
+
+证据：[四片上肢分解](../data/manifests/supermimic_q1_RF02_D02_arms_20261025.json)、[初始收据](../data/manifests/supermimic_q1_RF02_D02_arm_initial_20261025.json)、[最终收据](../data/manifests/supermimic_q1_RF02_D02_arm_final_20261025.json)、[来源覆盖摘要](../data/manifests/supermimic_q1_RF02_D02_retarget_20261025.json)。服务器本阶段`arm_{initial,final}/receipt.json`及原始NPZ、`arm_analysis.json`、`retarget_arm_coverage.json`；日志`logs/supermimic_q1_RF02_D02_{arm_initial,arm_final,arms,retarget}_20261025.log`。下一步数据建议是保留原来源身份规则，同时加入上肢/操练动作覆盖；这是任务覆盖，不能成为新增几何硬门。
+
+## 已完成：真实接触与力矩
+
+重放原8条最终策略的2409控制步，保存状态逐值最大差0；native rollout的Data最终状态与对应float32状态误差低于2e-5。读取最后求解子步的真实`mj_contactForce`和`actuator_force`，未用单独forward构造“真实支撑”。几何来自同一求解阶段，较最后积分早一个物理子步；原参考则在其帧上做运动学forward。
+
+片均双脚法向力均超过1N的比例97.86%，双脚均无此力0.87%；全关节饱和1.69%，腿0.51%、臂3.80%。因此已观察到的行为主要是双脚支撑站立，**没有支持“腿部普遍打满力矩导致走不动”的证据**；这些统计也不能证明控制增益/力矩设置最优。
+
+参考足底低于15mm的几何标记与真实1N力标记不一致片均77.29%。两者定义不同，不能称接触标签错误率或原参考真实支撑力；只表明策略的双支撑关系和目标脚几何/速度明显不同。重定向足地时序与原G1同源比较仍是后续可诊断项，尚不能从这项统计断言唯一根因。15mm/1N均为本次描述标记，不恢复被用户取消的数据准入要求。
+
+证据：[接触重放收据](../data/manifests/supermimic_q1_RF02_D02_contacts_20261025.json)，服务器`physics/*_contacts.npz`，日志`logs/supermimic_q1_RF02_D02_contacts_20261025.log`。
+
+## 已完成：模型奖励方向与真实响应
+
+先按原8片最终参考净位移排序固定前3片，分别取可完整重放32步窗口内的25%/65%位置，合计6个访问过的状态；随机方向seed20261025。计划在运行前保存，未按结果重选。每状态先逐值重现原32步，再仅扰动首步动作，后续动作固定；H1/H8/H32各自总奖励梯度方向及1个随机方向，幅度0.02/0.10、正负各一次，实际3264控制步/65280物理子步，恰为计划上限。
+
+每个H上，6状态×2幅度的12个同H梯度方向均与真实中心差分方向一致，正向扰动均提高真实总折扣回报。中位真实增益H1/H8/H32为0.000140/0.000148/0.000132，模型预测增益0.000141/0.000158/0.000176。两个幅度共用状态，不是12个独立状态。
+
+额外只读审计原数组，解析剥离精确动作变化惩罚（包括首步扰动对下一步惩罚的影响），控制其解析导数与中心差分一致。剥离后“6项跟踪+限位”的方向仍各12/12一致，正向扰动也均提高这部分回报；H32状态相关回报中位增益0.0001525。因此当前局部方向一致性不只是动作平滑项的代数效果。
+
+**这不代表世界模型已经会指导行走。** H1/H8/H32的根位置预测误差均值为0.000268/0.003268/0.020016m；沿各自梯度正向扰动后，真实根XY变化中位数仅0.0000187/0.0000476/0.0000705m。局部结果只证明这些已访问站立附近状态的小幅开环收益方向可用，没有核完整策略反馈、critic bootstrap、存活加权或脚支撑切换附近的方向，也没有证明大幅移动/抬手的方向有效。
+
+证据：[冻结计划](../data/manifests/supermimic_q1_RF02_D02_probe_plan_20261025.json)、[方向收据](../data/manifests/supermimic_q1_RF02_D02_directions_20261025.json)、[原数组和动作率剥离审计](../data/manifests/supermimic_q1_RF02_D02_direction_audit_20261025.json)。服务器`physics/sample_00.npz`至`sample_05.npz`；日志`logs/supermimic_q1_RF02_D02_{prepare,directions,audit}_20261025.log`。含动作率跨步依赖的聚焦自动微分/有限差分控制通过，本阶段共4个聚焦单测通过。
+
+## 归因与下一轮单变量建议
+
+1. 已确认：本轮1024份全为移动候选，明显上肢动作稀少；专项抬手没学会，不能以平均关节误差改善代替全身遥操能力。
+2. 已确认：策略的稳定站立/平均姿态收益远大于全局位置收益；双脚长期承重、腿力矩饱和少。支持“站立附近的局部解”描述，但尚无改变奖励权重的因果对照。
+3. 本次未发现：这6个已访问状态的局部开环总奖励方向失效；不能把过去R03的长程状态方向问题直接当成本轮结论。
+4. 尚未排除：原速重定向的足地时序/可实现性、控制尺度、训练覆盖及全闭环长程梯度等问题共同作用。
+
+建议下一新实验先保持SuperMimic算法、奖励、控制参数、网络与时间不变，**只将训练参考范围收缩到已有`train_3419f09ba93c91d75fc1`这一条包含中途双臂抬起的365帧参考**，做单动作可学习性对照。它来自原1024train且短于500步，不新增数据或硬门；评测固定原同片、初始/最终，并报告肩肘、腕躯干相对轨迹、双臂抬起幅度与峰值时序、全局移动/接触和完成度。若单动作仍只学站立，优先查奖励/控制/训练链的条件依赖；若能主动抬手，再单独扩为含上肢/操练的混合参考库。此处是已具名可复现的下一轮建议，**本阶段尚未启动新训练，也不将单动作过拟合当作泛化**。
+
+## 可复现命令
+
+以下在统一根执行，`PY=data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python`，`D=data/supermimic_for_q1/BONES_RF02_D02_fullbody_20261025`。输出为排他创建，复跑请使用新的阶段产物路径，不覆盖本次证据。
+
+```sh
+$PY script/supermimic_q1_analysis/diagnose_fullbody.py scan --root /opt/data/private/ZHY --motions data/supermimic_for_q1/BONES_PF02_1024_20261025/library/references --output "$D"
+$PY script/supermimic_q1_analysis/diagnose_fullbody.py analyze --root /opt/data/private/ZHY --evaluation initial data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_initial/receipt.json --evaluation final data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_final/receipt.json --output "$D/existing_eight_analysis.json"
+$PY script/supermimic_q1_analysis/diagnose_fullbody.py retarget --root /opt/data/private/ZHY --motions data/supermimic_for_q1/BONES_PF02_1024_20261025/library/references --output "$D/retarget_arm_coverage.json"
+$PY script/supermimic_q1_reproduction/evaluate_reproduction.py --root /opt/data/private/ZHY --motions data/supermimic_for_q1/BONES_PF02_1024_20261025/library/references --checkpoint data/supermimic_for_q1/BONES_RF02_12000_20261025/run/final.pt --count 4 --clips train_0499c71242ed71cdf537 train_785a58b7421497bf9d30 train_c1fc0de44204d0196ac2 train_3419f09ba93c91d75fc1 --output "$D/arm_final" --device cpu
+$PY script/supermimic_q1_analysis/probe_reward_directions.py prepare --root /opt/data/private/ZHY --evaluation data/supermimic_for_q1/BONES_BASELINE_G02_20261025/evaluation_final/receipt.json --output "$D/physics"
+$PY script/supermimic_q1_analysis/probe_reward_directions.py contacts --root /opt/data/private/ZHY --output "$D/physics"
+$PY script/supermimic_q1_analysis/probe_reward_directions.py probe --root /opt/data/private/ZHY --output "$D/physics" --device cuda:0
+$PY script/supermimic_q1_analysis/audit_fullbody_directions.py --plan "$D/physics/plan.json" --probe "$D/physics/reward_directions.json" --output "$D/physics/direction_audit.json"
+```
+
+上肢初始评测使用完全相同名单，将checkpoint改为`step_000000.pt`、output为`arm_initial`；配对分解沿同一analyze入口，evaluation指向这两份receipt，output为`arm_analysis.json`。单测使用`python -m unittest discover -s script/supermimic_q1_analysis -p test_diagnose_fullbody.py -v`及`test_probe_reward_directions.py`。
+
+## 资源与保存
+
+本阶段总新控制步10483（上肢4810+接触2409+方向3264），物理子步209660，0optimizer更新。服务器本阶段产物实际分配6725632字节（约6.73MB），没有权重或大数据副本。最后观察GPU27摄氏度/14MiB/0%利用率、容器内存22466924544字节、under_oom0/OOM14，盘余1312765497344字节；相关诊断/评测进程已退出。共享盘余量变动不是本次新增工件的大小。大型/原始证据仍为LOCAL_ONLY。
+
+首步代码/结果已发布Q1提交`a87ac965df792a5b1934af1a382e8968ad2ccea4`并核远端；补充上肢/来源/接触/方向代码与收据随本阶段结论提交。小收据与README同步Mac/服务器，完整1024源覆盖数组只留服务器，Git保留摘要、4条选中来源及完整报告身份。
 
 ## 保存与下一步
 
-阶段代码、目标、结果和小收据在Q1分支保存，检查diff/payload后提交推送并独立核对远端，再同步用户镜像和服务器。模型/原始数组留ZHY，LOCAL_ONLY。先完成只读奖励/上肢分解及参考选择，然后进行固定新增评测和有界接触/动作响应检查。
+本轮诊断全部完成；下一是具名双臂动作的独立单动作训练对照，不恢复RF02或历史FAILED/STOPPED，不追加RF02预算。现有MP4与训练图保持，诊断不额外建网站或为图像延后报告。

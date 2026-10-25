@@ -105,6 +105,49 @@ def normalized_terms(terms, expected_steps, max_reward):
             for key, value in terms.items()}
 
 
+def retarget_coverage(args):
+    from collections import Counter
+    from supermimic.q1_assets import identity
+    manifest_path = args.motions / "manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    source_order = ["pelvis", "left_hip", "left_knee", "left_ankle", "right_hip", "right_knee",
+                    "right_ankle", "spine3", "left_shoulder", "left_elbow", "left_wrist",
+                    "right_shoulder", "right_elbow", "right_wrist"]
+    rows, buckets = [], Counter()
+    for item in manifest["motions"]:
+        if not item.get("admitted_for_training"):
+            continue
+        with np.load(checked(item["kinematic_trace"]), allow_pickle=False) as data:
+            names = data["source_body_names"].tolist()
+            ids = [names.index(name) for name in source_order]
+            source = arm_profile(data["source_position_m_world"][:, ids],
+                                 data["source_orientation_wxyz_world"][:, ids])
+            residual = np.linalg.norm(data["position_error_m"], axis=-1) if data["position_error_m"].ndim == 3 else data["position_error_m"].copy()
+            wrist_residual = {side: float(np.quantile(residual[:, names.index(side + "_wrist")], .95))
+                              for side in ("left", "right")}
+        with np.load(checked(item["output"]), allow_pickle=False) as data:
+            target = arm_profile(data["body_pos_w"], data["body_quat_w"])
+        bucket = item.get("bucket", item.get("bones_source", {}).get("candidate_kind", "unknown"))
+        buckets[bucket] += 1
+        rows.append({"clip": item["clip"], "source": source, "q1": target,
+                     "wrist_target_position_residual_p95_m": wrist_residual,
+                     "source_csv": item.get("source_csv"), "kinematic_trace": item["kinematic_trace"]})
+    summary = {"clips": len(rows), "candidate_buckets": dict(buckets), "arms": {}}
+    for side in ("left", "right"):
+        summary["arms"][side] = {
+            "source_clips_any_wrist_above_shoulder": sum(r["source"][side]["wrist_above_shoulder_peak_m"] >= 0 for r in rows),
+            "q1_clips_any_wrist_above_shoulder": sum(r["q1"][side]["wrist_above_shoulder_peak_m"] >= 0 for r in rows),
+            "source_span_quantiles_m": np.quantile([r["source"][side]["wrist_height_span_m"] for r in rows], [0, .5, .9, 1]).tolist(),
+            "q1_span_quantiles_m": np.quantile([r["q1"][side]["wrist_height_span_m"] for r in rows], [0, .5, .9, 1]).tolist(),
+            "median_wrist_target_position_residual_p95_m": float(np.median([r["wrist_target_position_residual_p95_m"][side] for r in rows]))}
+    report = {"status": "SOURCE_AND_Q1_UPPER_BODY_COVERAGE_DESCRIBED", "source": identity(__file__),
+              "reference_manifest": identity(manifest_path), "summary": summary, "rows": rows,
+              "limits": "Raw G1 and Q1 arm lengths differ. Source/Q1 absolute height span is not an amplitude ratio. IK wrist residual compares the actual Q1 with its mapped target, not human ground truth. No filters or reference changes.",
+              "new_physics_steps": 0, "new_optimizer_updates": 0}
+    write_json(args.output, report)
+    print(json.dumps(summary, indent=2), flush=True)
+
+
 def kinematic_metrics(state, ref_qpos, body, ref_body, joint_names):
     count = len(state)
     error = state[:, 7:29].astype(float) - ref_qpos[:count, 7:29]
@@ -239,7 +282,7 @@ def main():
     import torch
     torch.set_num_threads(2)
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("scan", "analyze"))
+    parser.add_argument("mode", choices=("scan", "analyze", "retarget"))
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--motions", type=Path)
     parser.add_argument("--evaluation", nargs=2, action="append", metavar=("LABEL", "RECEIPT"))
@@ -247,6 +290,8 @@ def main():
     args = parser.parse_args()
     if args.mode == "scan":
         scan(args)
+    elif args.mode == "retarget":
+        retarget_coverage(args)
     else:
         analyze(args)
 

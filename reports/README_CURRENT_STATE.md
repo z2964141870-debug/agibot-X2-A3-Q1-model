@@ -2,7 +2,7 @@
 
 更新日期：2026-10-25，北京时间。本轮BONES-G02/PF02/RF02有限预算基线已完成；仍沿Q1上的SuperMimic可微世界模型、想象BPTT和critic方法复现。完成基线不代表行走或论文完整复现成功。
 
-当前新目标：[RF02全身诊断D02](README_SUPERMIMIC_Q1_RF02_FULLBODY_20261025.md)。原8片共同前缀肩肘RMSE0.61309→0.30070rad，腕躯干相对误差左12.91→7.55cm/右12.33→6.08cm；整片奖励增益中根位置贡献仅+0.000687，限位负项减少+0.108833。1024份Q1参考中高于肩的腕姿态左4片/右3片，按参考本身已固定4条上肢动作，下一原初始/最终真实评测及接触/方向诊断；原G1与重定向覆盖尚待区分。3个聚焦控制通过，当前0新积分/策略前向/更新，旧RF02不重启。
+最新完成：[RF02全身诊断D02](README_SUPERMIMIC_Q1_RF02_FULLBODY_20261025.md)。固定4条上肢片肩肘0.63631→0.28769rad，但中途抬手事件实际幅度仅目标8.45–13.16%、目标高于肩时均未达到；1024来源全部locomotion桶，源G1高于肩片数左5/右4、Q1左4/右3。原8片根位置奖励贡献几乎未增，双脚承重片均97.86%、腿力矩饱和0.51%。6状态H1/8/32局部开环奖励方向各12/12一致，剥离精确动作率项仍成立，但H32微调根XY仅约0.07mm，不能证明会迈步或完整actor梯度正确。全部10483控制步/209660子步，4聚焦单测及原数组审计通过，0optimizer更新；工件约6.73MB，全部作业退出/OOM14。下一建议仅改变训练参考范围，用已有`train_3419f09ba93c91d75fc1`做双臂主动抬起的单动作学习对照；新训练尚未启动，不恢复RF02。
 
 ## 本轮终态与证据
 
@@ -16,6 +16,8 @@
 
 唯一实体根`huanyu:/opt/data/private/ZHY`，四目录`data / logs / script / reports`。Python为`data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python`。现有18864 SSH桥仍监听；boot基线`d994e71f-bae0-46ba-a5f7-6c2163771c6c`、OOM基线14，恢复必须重新核现场。
 
+D02终后最新观察：GPU27摄氏度/14MiB/0%利用率、容器内存22.467GB、under_oom0/OOM14、盘余1.313TB，相关评测/诊断进程无匹配。D02新增工件约6.73MB，未新开训练；下方20:43/20:50为RF02终后历史观测。
+
 20:43终后观测已无活动训练，GPU28摄氏度/14MiB；本轮训练目录分配2.748GB、ZHY总分配325.008GB。20:50实际cgroup v1补充观测内存23.525GB、under_oom0/OOM14、盘余1.682TB；初次cgroup v2探测的null原样保留。[分配/进程观测](../data/manifests/supermimic_q1_BONES_RF02_final_resource_observation_20261025.json)、[真实v1健康观测](../data/manifests/supermimic_q1_BONES_RF02_final_health_observation_20261025.json)。100GiB余盘、单实验12GiB及温度/内存/OOM保护继续执行。
 
 最终权重在服务器`data/supermimic_for_q1/BONES_RF02_12000_20261025/run/final.pt`，205912083字节/SHA`fa5bdc4542986df522fd3aeb96a59f2c121eba3688f6527805f3fb98b254c8fb`；初始、1000至12000保存保留。Mac只接收代码、小收据、曲线和小视频，不拉模型。大型资产仍为LOCAL_ONLY，不声称网盘备份。
@@ -24,9 +26,9 @@ BONES原包`data/references/bones_seed/archives/g1.tar.gz`，23.50GB、SHA`52580
 
 ## 后续与边界
 
-最新讨论见[奖励、重定向与接触梯度归因](README_SUPERMIMIC_Q1_RF02_GRADIENT_REASONING_20261025.md)：当前全身/根奖励存在，根位置项占正奖励理论上限10%，身体位置项使用xy/yaw重对齐；低状态误差不证明动作收益方向正确。旧R03开环方向检查不作为RF02结论；下一先分解本轮真实轨迹奖励、核参考/策略接触对应，再比较模型建议微调与真实回报/位移变化。此次只读核对，0新物理/模型前向/更新，不以讨论直接更改奖励或接触参数。
+背景讨论见[奖励、重定向与接触梯度归因](README_SUPERMIMIC_Q1_RF02_GRADIENT_REASONING_20261025.md)；原建议的本轮分项/接触/局部收益方向已在D02完成。现有局部收益方向结果不能外推脚支撑切换、critic或全闭环；当前不凭讨论直接更改奖励/接触参数。保持SuperMimic优先和无新增数据门。
 
-本轮训练、评测和绘图都已结束，不重启或自动追加预算。后续优先核参考移动与动作/奖励对应，处理[只读方法审阅](README_SUPERMIMIC_Q1_RF02_METHOD_REVIEW_20261025.md)登记的500步reset回报缺bootstrap/截断样本排除问题；86/1024段超过500帧，实际影响仍未量化。方法核心来自第三方固定SuperMimic-Reproduced，不能称作者官方训练源码。新实验保持论文优先，不新增代理自定数据门。
+本轮训练、评测和绘图都已结束，不重启或自动追加预算。[只读方法审阅](README_SUPERMIMIC_Q1_RF02_METHOD_REVIEW_20261025.md)登记的500步reset回报缺bootstrap/截断样本排除问题仍待，86/1024段超过500帧、影响未量化；建议单动作365帧先避开这一触发条件。方法核心来自第三方固定SuperMimic-Reproduced，不能称作者官方训练源码。
 
 旧PHUMA R02D磁盘保护停止、旧A3及所有FAILED/STOPPED实验不恢复、不改终态。最多一个子agent；本轮结束没有执行中的子任务。RF01的500轮失败及各时点RUNNING快照见整轮README和报告索引，不作为当前状态。
 

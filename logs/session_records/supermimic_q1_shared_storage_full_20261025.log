@@ -1,0 +1,45 @@
+# 2026-10-25 shared-storage read-only observations
+# 08:26 observation excerpt; verbose findmnt listing omitted.
+{
+  "time": "2026-10-25T00:26:31.720582+00:00",
+  "host": "huanyu",
+  "boot": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+  "disk_free_bytes": 0,
+  "states": {
+    "storage_guard.json": "STOPPED_STORAGE",
+    "controller_status.json": "STOPPED_SIGNAL",
+    "run/status.json": "STOPPED_SIGNAL"
+  },
+  "p15_formal_directory_exists": false,
+  "original_processes": {
+    "839210": [
+      "Z",
+      "1",
+      "839210"
+    ],
+    "839211": null,
+    "839214": null
+  },
+  "filesystems": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/nvme2n1p1  7.0T  6.6T     0 100% /opt/data/private\noverlay         1.8T  571G  1.1T  35% /\ntmpfs           126G  564K  126G   1% /dev/shm\n",
+  "memory_bytes": 13492838400,
+  "oom": "oom_kill_disable 0\nunder_oom 0\noom_kill 14\n"
+}
+
+# 08:32 reproducible read-only probe, executed as python3 -c over existing SSH tunnel.
+import os,json,time,pathlib
+root=pathlib.Path('/opt/data/private/YuanQi_Q1')
+s=os.statvfs(root)
+r={'observed_at':time.strftime('%Y-%m-%dT%H:%M:%S%z'),'boot_id':pathlib.Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'storage':{'path':str(root),'available_bytes':s.f_bavail*s.f_frsize,'capacity_bytes':s.f_blocks*s.f_frsize},'terminal':{},'processes':{},'p15_exists':(root/'data/supermimic_for_q1/PHUMA_P15_walking_floor_recovery_20261025').exists()}
+base=root/'data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025'
+for name,rel in [('guard','storage_guard.json'),('controller','controller_status.json'),('train','run/status.json')]:
+ d=json.loads((base/rel).read_text());r['terminal'][name]={'status':d.get('status'), 'state':d.get('state')}
+for pid in [839210,839211,839214]:
+ p=pathlib.Path('/proc')/str(pid)
+ r['processes'][str(pid)]={'exists':p.exists(),'stat':(p/'stat').read_text() if p.exists() else None}
+r['memory_bytes']=pathlib.Path('/sys/fs/cgroup/memory/memory.usage_in_bytes').read_text().strip()
+r['oom']=pathlib.Path('/sys/fs/cgroup/memory/memory.oom_control').read_text().strip()
+print(json.dumps(r,ensure_ascii=True))
+
+# Exit code 0; raw stdout/stderr follows.
+/root/.bashrc: line 1: /generate_container_user: No such file or directory
+{"observed_at": "2026-10-25T00:32:17+0000", "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c", "storage": {"path": "/opt/data/private/YuanQi_Q1", "available_bytes": 0, "capacity_bytes": 7619864297472}, "terminal": {"guard": {"status": "STOPPED_STORAGE", "state": null}, "controller": {"status": "STOPPED_SIGNAL", "state": null}, "train": {"status": "STOPPED_SIGNAL", "state": null}}, "processes": {"839210": {"exists": true, "stat": "839210 (python) Z 1 839210 839210 0 -1 4227076 17716 38264904 0 13 3114 1823 1222756 14367 20 0 1 0 3616742247 0 0 18446744073709551615 0 0 0 0 0 0 0 16781312 0 0 0 0 17 81 0 0 0 0 0 0 0 0 0 0 0 0 256\n"}, "839211": {"exists": false, "stat": null}, "839214": {"exists": false, "stat": null}}, "p15_exists": false, "memory_bytes": "13491830784", "oom": "oom_kill_disable 0\nunder_oom 0\noom_kill 14"}

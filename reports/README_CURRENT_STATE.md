@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-25 08:19退出保存核验及P15-C控制通过，北京时间。当前目标是SuperMimic for Q1的世界模型、想象BPTT和critic复现，最终必须由未见步行动作的真实MuJoCo跟随支持；尚未达成。BONES获取交由师兄处理，等用户通知；不再查询下载或处理凭据。现有PHUMA、AMASS和SMPL-X继续使用，旧A3/STOPPED/FAILED不恢复。
+更新：2026-10-25 08:32共享盘0可用及原停止身份复核，北京时间。当前目标是SuperMimic for Q1的世界模型、想象BPTT和critic复现，最终必须由未见步行动作的真实MuJoCo跟随支持；尚未达成。BONES获取交由师兄处理，等用户通知；不再查询下载或处理凭据。现有PHUMA、AMASS和SMPL-X继续使用，旧A3/STOPPED/FAILED不恢复。
 
 ## 唯一训练与恢复
 
@@ -27,6 +27,8 @@
 原R02 step5000开发对照完整5→6/6、跟随0/6，移动0.078251/参考0.521165m；R02C新增1810时数值FAILED保留。现有三个test_locomotion是fitness名字，位移标签不能当步行认证。源足底、映射及浮脚缺口见[D02C](README_SUPERMIMIC_Q1_PHUMA_SUPPORT_MAPPING_20261024.md)和[D04](README_SUPERMIMIC_Q1_PHUMA_REFERENCE_DYNAMICS_20261025.md)，不重复相同样本诊断，不据此声称唯一失败原因。
 
 ## 资源与下一步
+
+08:26及08:32[共享盘已0可用](README_SUPERMIMIC_Q1_STORAGE_FULL_20261025.md)，原三终态保持，controller/trainer不存在、guard仅Z，P15正式目录仍未创建。正式转换/评测和新训练等待至少100GiB盘余；资源协调问题已提出，不重复索取。当前可继续本机已有小型来源元数据核对，没有向服务器写新输出或迁移到overlay/tmp。
 
 08:22:52[最新原生资源记录](../logs/session_records/supermimic_q1_P15_final_resource_20261025.log)余盘17742848000字节（17.74GB），低于100GiB。三终态仍STOPPED_STORAGE/STOPPED_SIGNAL/STOPPED_SIGNAL，原controller/trainer不存在，P15正式目录未创建。共享盘在原训练退出后仍下降，已明确通知用户协调持续写入与存储；不得启动正式转换/评测或自动恢复，不删未知文件。
 

@@ -1,6 +1,6 @@
 # 每日研究检查 · 2026-10-25
 
-记录日期：北京时间2026-10-25。阶段：research-watch-20261025。状态：**来源检查完成，无实质新内容；研究记录发布待核验**。
+记录日期：北京时间2026-10-25。阶段：research-watch-20261025。状态：**来源检查完成，无实质新内容；main/Q1文档已推送并独立核验**。
 
 ## 目标与范围
 
@@ -32,7 +32,7 @@ python3 logs/research_watch/2026-10-25/validate_records.py
 
 ## 保存与同步状态
 
-检查、小来源清单与恢复入口已保存；main/Q1发布须先审查diff/暂存区、diff --cached --check、运行实际script/project_tools/audit_git_payload.py后普通推送，再核远端ref与固定文件字节。当前发布待核验，完成后补[同步回执](../data/manifests/research_watch_sync_20261025.json)。缓存LOCAL_ONLY，未做网盘备份；没有强推或覆盖并行工程。
+检查、小来源清单与恢复入口已普通推送；main文档326a3d331d6defff21f80f3464545bd2a0ed1702、Q1文档6572b52ca34aae88c2ece48e54feadc134585317，于北京时间09:21:54独立核验分支ref与各五份固定内容，大小/Git-blob/SHA256一致。main七文件342,473字节、Q1六文件113,519字节，diff审查、diff --cached --check与实际audit_git_payload.py均通过，工程条目及111条去重完整保留。Q1最初五次核验早于push完成而404、即时重查仍为同一缓存；成功push后使用新查询键返回200并逐项核验，失败响应保留在忽略目录。详情见[同步回执](../data/manifests/research_watch_sync_20261025.json)。后续只补回执/研究状态，最终核验在logs/research_watch/2026-10-25/receipt_{main,Q1}_verification.json，不循环嵌入自身提交号。缓存LOCAL_ONLY，未做网盘备份；没有强推、覆盖并行工程或修改科学主机。
 
 ## 下一步
 

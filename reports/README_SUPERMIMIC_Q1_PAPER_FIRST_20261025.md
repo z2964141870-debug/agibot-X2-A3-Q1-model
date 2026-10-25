@@ -1,6 +1,6 @@
 # 取消额外数据门槛，优先SuperMimic方法复现
 
-记录日期：2026-10-25，北京时间。状态：用户纠正已落实，新入口两项服务器控制及真实旧8片新IO准入通过；128片新批处理与有限训练待。
+记录日期：2026-10-25，北京时间。状态：用户纠正已落实，128片取消统一裁速后的原速Q1参考全部组库；64环境500轮有限训练待。
 
 ## 用户决定与纠正
 
@@ -39,6 +39,22 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 
 数据与模型仍统一根四目录、Mac无大工件，100GiB余盘/单实验12GiB及内存/OOM保护保留，防止再写满磁盘。这是计算资源管理，不是新增动作质量门槛。大型原件LOCAL_ONLY。
 
+## PF01真实128片准备完成
+
+12:34:11至12:37:19，prepare真实退出0、guard完成回收。原冻结train前128片全部转换且128/128通过运行必要IO检查，0转换/IO错误；39694帧、791.32秒=13.19分钟。没有使用旧几何flags筛选，未人为放慢、未加统一速度cap，Q1实际关节范围保持。3个原样小收据服务器/Mac大小/SHA一致：[prepare](../data/manifests/supermimic_q1_BONES_PF01_prepare_20261025.json)、[IO准入](../data/manifests/supermimic_q1_BONES_PF01_io_admission_20261025.json)、[guard](../data/manifests/supermimic_q1_BONES_PF01_prepare_guard_20261025.json)。
+
+产物`data/supermimic_for_q1/BONES_PF01_128_20261025/`，原生转换在converted、组库在library。128链接只引用本阶段新数组，未复制原包或旧参考。分配142741504字节、盘余2094395326464字节，约2.094TB；共享内存22.48GB/OOM14。源码发布22962d3f09fa8c29345761e54f93888874358b11已推Q1并独立核验。
+
+下一直接500轮新训练，不以13.19分钟尚未达到旧自定30分钟目标为由等待。训练命令在前述环境变量下：
+
+```bash
+"$PY" -u "$ROOT/script/supermimic_q1_reproduction/run_reproduction.py" train \
+  --root "$ROOT" --library "$ROOT/data/supermimic_for_q1/BONES_PF01_128_20261025/library" \
+  --backend-receipt "$ROOT/data/supermimic_for_q1/PHUMA_P05_slots_V01_20261024/receipt.json" \
+  --output "$ROOT/data/supermimic_for_q1/BONES_RF01_500_20261025" --steps 500 \
+  --code-commit 22962d3f09fa8c29345761e54f93888874358b11 --expected-oom-kill 14
+```
+
 ## 最新状态
 
-128片准备与有限训练尚未启动。旧D01只读诊断已经结束，不再继续扩展；结果归档为历史，不是新主线的先决条件。新入口和本用户决定同次提交Q1、独立核远端后执行，结束即补充实际结果。
+128片准备已完成，有限训练待上述阶段记录提交后立即执行。旧D01只读诊断已经结束，不再继续扩展；结果归档为历史，不是新主线的先决条件。新入口和本用户决定已提交Q1并独立核远端，训练结束即补充实际结果。

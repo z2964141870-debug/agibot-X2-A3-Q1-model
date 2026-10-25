@@ -1,6 +1,6 @@
 # 2048环境与两小时训练
 
-记录日期：2026-10-25，北京时间。阶段：RF04-E2048-UP01。状态：用户已授权，配置分析与资源预检准备中，正式训练尚未启动。
+记录日期：2026-10-25，北京时间。阶段：RF04-E2048-UP01。状态：2048真实采集/完整批量profile已通过，正式训练即将启动。
 
 ## 目标与范围
 
@@ -32,4 +32,10 @@ $PY script/project_tools/profile_q1_2048.py --root /opt/data/private/ZHY --outpu
 $PY script/project_tools/run_q1_single_motion.py --root /opt/data/private/ZHY --output data/supermimic_for_q1/BONES_RF04_UP01_E2048_T02H_20261025 --num-envs 2048 --threads 8 --model-slots 8 --wm-batch 1024 --batch 2048 --steps 12000 --training-seconds 7200 --dashboard-label RF04-E2048 --code-commit PUBLISHED_40_CHARACTER_SHA --expected-oom-kill 14 --detach
 ```
 
-当前2048 profile及正式训练尚未开始；具体发布SHA、服务器验证、日志、GPU/内存峰值和实际结果继续补记。下一步发布核SHA后执行profile，确认运行条件再启动已授权正式训练。
+## 2048实际预检结果
+
+冻结代码`f03db7566fcd590912b4cc9b24621d32b19319a2`已推送Q1并独立核远端，服务器预算4控制和终态/配对4控制全部通过。profile于23:16:58至23:17:54运行并正常退出/worker回收，16采集轮32768真实转移；初始覆盖364个参考帧、2048个不同随机化上下文，摩擦系数样本标准差0.26217。
+
+2048环境/8槽/8线程真实采集耗35.08秒，轮中位2.076秒，采集约934转移/秒；一组WM1024×10耗3.413秒，actor2048/H32及critic更新耗8.537秒，全部指标有限。replay实际1112113152字节，CUDA峰值分配8493581824字节/保留9080668160字节，共享容器最后25.374GB/OOM14/GPU37摄氏度。profile终后共享内存21.977GB，盘余926605905920字节；本轮profile仅16KiB分配，没有权重副本。该结果只证明运行可行，不证明训练效果。
+
+原样证据：[profile](../data/manifests/supermimic_q1_E2048_profile_20261025.json)、[guard与回收](../data/manifests/supermimic_q1_E2048_profile_guard_20261025.json)。日志`logs/E2048_PROFILE_P01_20261025.log`。按实测正式训练可使用计划批量和8槽/8线程，无需退回64环境或缩小batch。下一按7200秒活跃训练预算正式启动，随后记录实际进度及固定动力学评测。

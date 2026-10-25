@@ -1,0 +1,85 @@
+{
+  "status": "PROFILE_COMPLETED",
+  "source": {
+    "path": "/opt/data/private/ZHY/script/project_tools/profile_q1_2048.py",
+    "bytes": 7604,
+    "sha256": "b9a61f74e436542e1b2773ce63179ff73a9a60b972f2ae04c11effbe9d9fd32f"
+  },
+  "reference": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0768_20261025/converted/train_3419f09ba93c91d75fc1.npz",
+    "bytes": 371993,
+    "sha256": "f9bce4c3452720cda88a5adc4111fe2354440dd04e8c8ecb50cbf94d7181b8c3"
+  },
+  "sim": {
+    "num_envs": 2048,
+    "threads": 8,
+    "domain_randomization": true,
+    "observation_noise": true,
+    "action_noise": 0.1,
+    "episode_steps": 500,
+    "history": 10
+  },
+  "model_slots": 8,
+  "wm_batch": 1024,
+  "policy_batch": 2048,
+  "storage_status": "LOCAL_ONLY",
+  "profile_weights": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF02_12000_20261025/run/final.pt",
+    "bytes": 205912083,
+    "sha256": "fa5bdc4542986df522fd3aeb96a59f2c121eba3688f6527805f3fb98b254c8fb"
+  },
+  "profile_weights_scope": "Existing RF02 weights only for timing; formal training starts from scratch",
+  "initial_health": {
+    "gpu_temperature_c": 31,
+    "cgroup_memory_bytes": 24603226112,
+    "oom_kill": 14
+  },
+  "initial_reference_frames": 364,
+  "friction_std": 0.26217275857925415,
+  "distinct_randomization_contexts": 2048,
+  "collection_steps": 16,
+  "real_transitions": 32768,
+  "collection_seconds": 35.08073627203703,
+  "median_collection_round_seconds": 2.075523290783167,
+  "transitions_per_second": 934.0738958811272,
+  "world_model_metrics": {
+    "state_loss": 3.2055599212646486,
+    "term_bce": 3.492459654808044e-11,
+    "nse_1step": 0.07196866273880005,
+    "nse_kstep": 0.04670185744762421,
+    "term_acc": 1.0,
+    "loss": 3.2055599212646486,
+    "grad_norm": 25.326376342773436
+  },
+  "world_model_update_seconds": 3.4127726554870605,
+  "policy_metrics": {
+    "imag_objective": 6.2786993980407715,
+    "imag_return_undisc": 2.0573043823242188,
+    "imag_reward_mean": 0.06430700421333313,
+    "imag_survival_H": 0.9727059006690979,
+    "imag_dhat_mean": 0.005321475677192211,
+    "policy_grad_norm": 0.4952419698238373,
+    "action_abs_mean": 1.7950712442398071,
+    "imag_r/motion_global_root_pos": 0.008872424252331257,
+    "imag_r/motion_global_root_ori": 0.006347875110805035,
+    "imag_r/motion_body_pos": 0.018619708716869354,
+    "imag_r/motion_body_ori": 0.007548035588115454,
+    "imag_r/motion_body_lin_vel": 0.015902969986200333,
+    "imag_r/motion_body_ang_vel": 0.011139092966914177,
+    "imag_r/action_rate_l2": -0.003671357175335288,
+    "imag_r/joint_limit": -0.000451757776318118,
+    "critic_loss": 0.19810637831687927,
+    "critic_value_mean": 6.319788455963135,
+    "critic_target_mean": 6.279452323913574
+  },
+  "policy_update_seconds": 8.537037067115307,
+  "replay_tensor_bytes": 1112113152,
+  "peak_cuda_allocated_bytes": 8493581824,
+  "peak_cuda_reserved_bytes": 9080668160,
+  "final_health": {
+    "gpu_temperature_c": 37,
+    "cgroup_memory_bytes": 25374408704,
+    "oom_kill": 14
+  },
+  "limits": "Short throughput and full-batch feasibility check, not a learned-policy evaluation."
+}

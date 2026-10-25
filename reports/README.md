@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 11:58：[BONES整包完整接收通过](README_SUPERMIMIC_Q1_BONES_RECEIPT_20261025.md)，完整SHA/EOF-CRC与142220 CSV目录覆盖保持，提取冻结1280候选402.82MB；guard完成回收、整个实验分配435.14MB、盘余2.094TB/OOM14。下一首8个train来源原速转换和独立22门，尚无BONES合格参考或训练。
+
 2026-10-25 11:48：[BONES原包完整本地SHA/实际CSV表头预览通过](README_SUPERMIMIC_Q1_BONES_RECEIPT_20261025.md)，23.50GB同盘归档无副本、SHA52580ea8…，真实36列与V2一致。下一全包gzip CRC与1280冻结候选流式接入，再做8个train来源原速小批；尚无新BONES合格参考或训练。
 
 2026-10-25：[BONES真实原包已发现](README_SUPERMIMIC_Q1_BONES_RECEIPT_20261025.md)，用户已拷贝`ZHY/g1.tar.gz`，实测23.50GB/两次稳定/无可见写FD。准备同盘归档、完整SHA/CRC及冻结候选原速小批；尚无新BONES参考或训练。[P15R八组](README_SUPERMIMIC_Q1_RELOCATED_DIAGNOSTICS_20261025.md)及独立756项核验完成，两8rad/s几何子集通过但滑脚/原速度门不通过，0正式参考。

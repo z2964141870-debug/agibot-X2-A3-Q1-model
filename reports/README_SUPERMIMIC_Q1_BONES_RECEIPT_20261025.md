@@ -1,6 +1,6 @@
 # BONES-SEED真实G1原包接收
 
-记录日期：2026-10-25，北京时间。阶段：SM-Q1-BONES-A02。状态：原包发现，接收及原速小批处理准备中；尚无新BONES合格参考或训练。
+记录日期：2026-10-25，北京时间。阶段：SM-Q1-BONES-A02。状态：原包完整接收与冻结候选提取完成；原速小批转换待，尚无新BONES合格参考或训练。
 
 ## 目标与授权
 
@@ -45,6 +45,16 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 
 [原样准备收据](../data/manifests/supermimic_q1_BONES_A02_prepared_20261025.json)。输出根`data/supermimic_for_q1/BONES_A02_received_20261025`，guard_prepare.json与logs/BONES_A02_received_20261025_prepare.log为恢复证据。结束共享内存约20.97GB/OOM14、盘余约2.095TB；新实验约0.42MB。完整gzip CRC、目录扫描及候选提取仍待，不宣称双端传输SHA一致。
 
+### 11:58整包完整性与冻结候选接入完成
+
+11:50:41至11:58:45，真实intake原生退出0，guard为WORKER_COMPLETED且worker已回收。完整SHA与prepare一致，gzip读到EOF并验证CRC；142346个归档条目含142220个常规CSV，元数据catalog142220条全部存在、缺失0、额外CSV0。声明全量展开51527587825字节，但只提取原P01冻结1280个非镜像候选，train1024/development128/test128保持，实际CSV402815302字节。没有全量解压或新增原包副本，源inode/大小/mtime检查保持。
+
+[原样intake收据](../data/manifests/supermimic_q1_BONES_A02_intake_20261025.json)及[终态guard](../data/manifests/supermimic_q1_BONES_A02_intake_guard_20261025.json)已取回，分别核对服务器与Mac SHA为fead7230a3bc17fd786c26b3e67f36d949e61ab6ca883f4e110325a7088ec65f、d211437f4c6a7a0c5b8808ea964941c758d3864e7873961a95e30e4d27a7e0b8，完全一致。原生成索引27798997字节/SHA098c16fd01c2d9dbf12b9838dd71c7461436cf1fa7cf5ef6d4df18cf89880d6d保留服务器，不下载Mac。
+
+使用已发布2d162366代码，实际命令为前述prepare改为intake，其余参数相同。结束整个A02实验唯一分配435138560字节，盘余2094464159744字节，约2.094TB；容器内存约21.38GB、OOM14不变。主机boot仍d994e71f-bae0-46ba-a5f7-6c2163771c6c，原日志logs/BONES_A02_received_20261025_intake.log，原生收据intake/receipt.json、guard_intake.json。原包与提取工件仍LOCAL_ONLY。
+
+本阶段只证明本地归档完整性、目录覆盖及按名单提取，没有源端SHA证明传输两端一致。每个CSV真实帧轴、数值重复、Q1转换/接触和独立22门仍待。下一仅转换冻结名单首8个train来源，不使用held-out筛方案，也不因文件到位启动大规模训练。
+
 ## 下一步
 
-归档原文件，完整哈希和成员前缀预检，通过后流式接入冻结候选；真实小批独立验证通过后才扩大。保持[DEV-B/P15R结论](README_SUPERMIMIC_Q1_RELOCATED_DIAGNOSTICS_20261025.md)，不恢复旧训练或将新来源自动计为成功。
+原包与冻结提取已完成，下一执行batch --count 8及真实独立22门，依据实际失败项决定转换改进或扩量。保持[DEV-B/P15R结论](README_SUPERMIMIC_Q1_RELOCATED_DIAGNOSTICS_20261025.md)，不恢复旧训练或将新来源自动计为成功。

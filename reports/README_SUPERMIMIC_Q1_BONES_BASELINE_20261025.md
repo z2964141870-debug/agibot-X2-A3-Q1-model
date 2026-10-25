@@ -147,6 +147,7 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 | --- | --- | --- | --- |
 | `run/step_003000.pt` | 205920167 | `1b15a4246597fb92bda1422862f26b904abdfa5518d3075e0e6486badda91bae` | 1149 / 1099 |
 | `run/step_004000.pt` | 205920167 | `08462bfd6dac6e33c6573def39d90db6d41f2c1c1ba11547a285904548588ae1` | 1549 / 1499 |
+| `run/step_005000.pt` | 205920167 | `3d0c95a3b5573b2aa788100611d6e29eec46df58cacf70d7d574d4937934f39b` | 1949 / 1899 |
 
 3000模型mtime为15:36:37，训练目录实际分配687841280字节。15:38取回的[原样保存后状态](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_3000_status_20261025.json)已继续3050轮/195200真实转移、WM1169组/actor1119次、RUNNING，训练计时5697.48秒、GPU40摄氏度、内存26439262208字节/OOM14。权重保留服务器LOCAL_ONLY，Mac只取小状态；本次观察会话正常结束，原训练控制器继续。
 
@@ -155,6 +156,10 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 16:09:54有界观察实际达到4000轮/256000转移、WM1549组/actor1499次，三训练进程身份匹配、RUNNING/OOM14；观察随后正常退出，未中断独立训练。4000保存实际完整SHA/字节数见上表及16:27[原样附件观测](../data/manifests/supermimic_q1_BONES_RF02_dashboard_attachment_20261025.json)，仍仅登记文件身份，不重复张量核对。该观测已继续4525轮/289600转移，四进程（含新增绘图回调）身份保持、68训练源码SHA无变化，训练分配893853696字节、盘余2077460029440字节。
 
 用户新增[每轮六宫格图要求](README_SUPERMIMIC_Q1_TRAINING_DASHBOARD_20261025.md)已落实至独立工具和本轮唯一终后回调，16:25:54启动，日志`logs/BONES_RF02_training_dashboard_20261025.log`；它不更改本轮训练。4325轮预览已真实生成/目视核验，尚非最终曲线；回合级前三项历史未记录，不能重建，下一轮新入口补齐记录。终后仍要完成原定固定8片物理比较、真实回放与最终图检查，不能以绘图准备代替完整目标。
+
+16:43:38有界观察实际达到5000轮/320000真实转移，WM1949组/actor1899次，训练及绘图回调四进程身份匹配，GPU40摄氏度/OOM14。5000保存mtime为16:42:55，文件大小与完整SHA已登记上表；本次只核文件身份和日志轮数，不读取权重张量，不重复1000轮的独立CPU参数/Adam审计。
+
+16:45:36[原样5000保存后观测](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_5000_observation_20261025.json)已继续5075轮/324800转移、WM1979组/actor1929次，pipeline/guard/training均RUNNING，四进程boot/start_ticks匹配。训练计时9724.19秒，GPU40摄氏度、共享内存25298948096字节/OOM14；训练目录分配1099816960字节、盘余2076855734272字节。权重留服务器LOCAL_ONLY，Mac仅取小观测收据。有界观察正常结束，训练与唯一绘图回调独立继续，完整12000轮/固定8片评测及真实回放仍未完成。
 
 ## RF02核心链路只读审阅
 

@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-25 08:44来源复核完成及盘余0/原停止身份复核，北京时间。当前目标是SuperMimic for Q1的世界模型、想象BPTT和critic复现，最终必须由未见步行动作的真实MuJoCo跟随支持；尚未达成。BONES获取交由师兄处理，等用户通知；不再查询下载或处理凭据。现有PHUMA、AMASS和SMPL-X继续使用，旧A3/STOPPED/FAILED不恢复。
+更新：2026-10-25 09:06 P17真实只读预览通过，最终盘余0/原停止身份复核，北京时间。当前目标是SuperMimic for Q1的世界模型、想象BPTT和critic复现，最终必须由未见步行动作的真实MuJoCo跟随支持；尚未达成。BONES获取交由师兄处理，等用户通知；不再查询下载或处理凭据。现有PHUMA、AMASS和SMPL-X继续使用，旧A3/STOPPED/FAILED不恢复。
 
 ## 唯一训练与恢复
 
@@ -16,7 +16,7 @@
 
 ## 当前数据与发现
 
-- [P17目录排除新入口](README_SUPERMIMIC_Q1_DIRECTORY_EXCLUSION_VIEW_20261025.md)实现/本地五控制通过，保留旧来源链/十九门/held-out且检查P10预留来源；实际父库内存预览待，正式593片新库尚未创建或准入。08:47盘余0、原停止身份保持，不部署服务器新文件。
+- [P17目录排除新入口](README_SUPERMIMIC_Q1_DIRECTORY_EXCLUSION_VIEW_20261025.md)实现/本地五控制/真实父库只读预览通过；发布49bef24代码仅内存执行未部署，625父参考/207别名/P10十五预留目录核验通过，两份各2885行仅19条train资格变化，保留旧来源链/十九门/held-out。候选593片/2116.10秒，正式新库未建/时轴未重读/未新准入；[原生预览JSON](../data/manifests/supermimic_q1_P17_readonly_preview_20261025.json)，0新服务器文件/积分/optimizer。
 - [P16全625片命名目录复核](README_SUPERMIMIC_Q1_SOURCE_DIRECTORY_AUDIT_20261025.md)：相同source_group/原动作SHA跨split0，但GRAB/s1与s10新增19片train目录候选与held-out重叠，原R02 train含11片；不宣称原训练受试者独立。下一新视图保守排除后候选593片/2116.10秒=35.27分钟，未建库/重读NPZ/准入，旧输入/终态不改。通用game_motion/subset_0026重叠只登记，不据此推断身份。全源隔离仍false。
 - [PHUMA P08B-V2](README_SUPERMIMIC_Q1_PHUMA_LIBRARY_20261025.md)：612 train/2191.34秒=36.52分钟、位移候选103段/363.06秒，dev6/test7不变；[P09注册入口](README_SUPERMIMIC_Q1_SOURCE_VIEW_REGISTRATION_20261025.md)真实预检通过，未训练。HumanML原事件/目录候选已保守排除；26未解、13集合更名候选及其他命名空间未全核，`source_isolation_certified=false`。
 - [P10/P10B补充步行来源](README_SUPERMIMIC_Q1_WALKING_HOLDOUT_20261025.md)：52未用块/17事件候选/15目录候选固定选15片，原source split保留、另行预留仅供补充test。转换/十九门实际完成，0/15准入：全部支撑比例失败，14最大间隙/6自穿透失败。原P10导入错误的wrapper失败与成功P10B补检均保留。15目录继续预留，新扩库须排除；没有可用的新walking动力学测试。
@@ -29,6 +29,8 @@
 原R02 step5000开发对照完整5→6/6、跟随0/6，移动0.078251/参考0.521165m；R02C新增1810时数值FAILED保留。现有三个test_locomotion是fitness名字，位移标签不能当步行认证。源足底、映射及浮脚缺口见[D02C](README_SUPERMIMIC_Q1_PHUMA_SUPPORT_MAPPING_20261024.md)和[D04](README_SUPERMIMIC_Q1_PHUMA_REFERENCE_DYNAMICS_20261025.md)，不重复相同样本诊断，不据此声称唯一失败原因。
 
 ## 资源与下一步
+
+09:06:56最终原生复核盘余仍0/OOM14、内存13.51GB，原三停止终态/进程身份保持，P15目录未建；[P17完整日志](../logs/session_records/supermimic_q1_P17_real_preview_20261025.log)。09:02只读du确认Q1 data目录实际约19.95GB、R02D2.465GB，不跟随外部数据链接；[整理收据](../data/manifests/supermimic_q1_P17_owned_storage_summary_20261025.json)仅限本树、不归因全盘。即使清空此目录也不足恢复100GiB，正式科学执行须等待外部空间，资源协调问题已提出；本轮没有删除资产或改正式存储。已完成可用的准备和真实只读核验，不重复已过控制代替动力学结果。
 
 08:26/08:32[共享盘0可用及停止身份](README_SUPERMIMIC_Q1_STORAGE_FULL_20261025.md)复核，08:44的[P16日志D](../logs/session_records/supermimic_q1_source_P16_readonly_20261025.log)再读盘余仍0、内存13.49GB/OOM14。原三终态保持，controller/trainer不存在、guard仅Z，P15正式目录仍未创建。正式转换/评测和新训练等待至少100GiB盘余；资源协调问题已提出，不重复索取。R02D自身约2.259GB加退出保存约205MB，不把整盘变化归本任务；本阶段只读元数据，0服务器新文件，没有迁移到overlay/tmp。所有大型原件LOCAL_ONLY，不删未知文件、不干扰其他任务。
 

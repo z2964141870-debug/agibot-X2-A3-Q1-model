@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 09:02：[P17真实父库只读预览通过](README_SUPERMIMIC_Q1_DIRECTORY_EXCLUSION_VIEW_20261025.md)，两份各2885行变换保持十九门/旧来源链/held-out，P10十五预留目录排除；候选593 train/35.27分钟，正式库未建。共享盘仍0，Q1 data自身约19.95GB不足恢复100GiB；后续科学执行等待外部空间。
+
 2026-10-25：[P17目录排除视图准备](README_SUPERMIMIC_Q1_DIRECTORY_EXCLUSION_VIEW_20261025.md)实现及本地五项控制通过，保持旧HumanML来源链/十九门/held-out，重核P10预留来源，盘余预检在建目录前。真实父库预览待，正式新库未建/未训练；08:47盘余仍0。
 
 2026-10-25 08:40：[P16全625片命名目录复核](README_SUPERMIMIC_Q1_SOURCE_DIRECTORY_AUDIT_20261025.md)发现GRAB/s1及s10共19片train目录候选与held-out重叠，其中原R02 train11片；保守排除后候选593片/35.27分钟，尚未建库/准入。0服务器新文件，旧输入/终态保持；盘余0继续等待，P15八组及动力学评测未执行。

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+当前进行：[M02/DEV-B/P15R](README_SUPERMIMIC_Q1_RELOCATED_DIAGNOSTICS_20261025.md)为统一根显式迁移适配、最新退出策略开发配对及P15八组准备。11:16重新核实GPU空闲、盘余约2.142TB、容器OOM14；新动力学尚未执行。原R02D及旧停止/失败终态保持。
+
 更新：2026-10-25 10:52[清理与统一目录完成](README_Q1_STORAGE_CONSOLIDATION_20261025.md)。删除178938项/文件块180.70GB，剩余约299.58GB全部位于huanyu唯一实体根`/opt/data/private/ZHY`，旧三个根仅兼容软链接。280057常规文件与516冻结/5关键文件核验保持，依赖导入及三份Q1模型加载/forward通过；盘余约2.142TB，存储阻塞已解除但未新训练。下一显式绑定新根后继续P15与独立评测；SuperMimic for Q1目标尚未达成，旧A3/STOPPED/FAILED不恢复。BONES由师兄处理，等通知，不再查询下载或处理凭据。
 
 ## 唯一训练与恢复

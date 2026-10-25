@@ -37,6 +37,14 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 
 后续intake/batch仅改phase，复用同一已准备根，各有独立guard与log，不覆盖已有阶段；intake完整性通过前不启动batch。
 
+### 11:48真实原包哈希与协议预览完成
+
+源码发布`2d162366bbad2b218c72d7e2c0c6a970f79b6f41`已推送并独立核Q1，部署三文件SHA完全一致。首次服务器发现发生在复制完成前，实际0 tests，不计通过；复制完成并核SHA后真实两项控制全部通过。归档后inode99228145/大小23499973647/mtime保持，没有新增原包副本。
+
+11:47:21至11:48:00 prepare原生退出0/guard完成回收，完整SHA为`52580ea8bced72ea9e2ff1e7b68f01c51c7f1099581e9a46b7c87e1dec106d8a`。实际目录从`g1/csv/230509/`开始，首个CSV为`vertical_mountain_climber_R_003__A359_M.csv`；36列表头与V2一致，member-prefix为空。仅预览，不把该未选片算训练动作或运动学验证。
+
+[原样准备收据](../data/manifests/supermimic_q1_BONES_A02_prepared_20261025.json)。输出根`data/supermimic_for_q1/BONES_A02_received_20261025`，guard_prepare.json与logs/BONES_A02_received_20261025_prepare.log为恢复证据。结束共享内存约20.97GB/OOM14、盘余约2.095TB；新实验约0.42MB。完整gzip CRC、目录扫描及候选提取仍待，不宣称双端传输SHA一致。
+
 ## 下一步
 
 归档原文件，完整哈希和成员前缀预检，通过后流式接入冻结候选；真实小批独立验证通过后才扩大。保持[DEV-B/P15R结论](README_SUPERMIMIC_Q1_RELOCATED_DIAGNOSTICS_20261025.md)，不恢复旧训练或将新来源自动计为成功。

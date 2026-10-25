@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-最新用户指示：BONES已拷入huanyu统一根`g1.tar.gz`，准备接收使用；见[真实接收A02](README_SUPERMIMIC_Q1_BONES_RECEIPT_20261025.md)。23.50GB两次稳定、无可见写FD，完整SHA/CRC待。此新指示覆盖下方此前暂停BONES资源处理描述；不恢复网络获取/凭据或旧失败实验。优先归档/验证原包，复用P01冻结划分和原速转换/独立准入。P15R已完成，详见下节。
+最新用户指示：BONES已拷入huanyu统一根，接收使用；见[真实接收A02](README_SUPERMIMIC_Q1_BONES_RECEIPT_20261025.md)。现已同盘归档`data/references/bones_seed/archives/g1.tar.gz`，23.50GB/inode保持。11:48完整本地SHA52580ea8bced72ea9e2ff1e7b68f01c51c7f1099581e9a46b7c87e1dec106d8a及实际36列预览完成，完整CRC/冻结候选接入待。结束盘余2.095TB/内存20.97GB/OOM14；新阶段复用P01来源划分与原速/22门，不恢复网络获取、凭据或旧失败实验。下方暂停BONES为此前历史状态。
 
 本轮完成：[M02/DEV-B/P15R](README_SUPERMIMIC_Q1_RELOCATED_DIAGNOSTICS_20261025.md)。11:31已完成统一根显式迁移适配及原5000父/累计10282退出策略真实开发配对、两次独立重算；两者6/6完整、0/6严格跟随，移动0.07825至0.07258m/参考0.52117m。11:34 P15R八组/独立756项及321帧FK/626新inverse完成，6组QP无解、2个8rad/s变体几何子集通过，但滑脚约50%-53%、原2rad/s门不通过，0正式参考。原冻结和终态保持，两新实验共约6.07MB、盘余2.118TB/OOM14。
 

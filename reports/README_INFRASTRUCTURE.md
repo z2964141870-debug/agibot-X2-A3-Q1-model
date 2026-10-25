@@ -1,5 +1,7 @@
 # 训练服务器与固定目录
 
+2026-10-25最新目录安排：当前SuperMimic for Q1继续在huanyu，项目唯一实体根改为`/opt/data/private/ZHY`，四目录及Q1分支保持。旧根只作为兼容链接，依赖和迁移验证见[本阶段](README_Q1_STORAGE_CONSOLIDATION_20261025.md)；以下hp3090硬件核验保留为历史记录，不作为当前主机状态证明。
+
 用户于 2026-09-29 指定后续训练在 `ssh hp3090` 上运行，项目放在 `/media/yu/FAFF-E9771/YUANQI`。
 
 ## 本次实测

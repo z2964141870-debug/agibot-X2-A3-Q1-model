@@ -1,0 +1,40 @@
+2026-10-25, huanyu. Deletion controls before any unlink.
+Command: python3 /opt/data/private/YuanQi_Q1/script/project_tools/test_cleanup_private_20261025.py
+.......
+Ran 7 tests in 0.081s
+OK
+
+2026-10-25, huanyu. Consolidation controls before any rename.
+Command: python3 /opt/data/private/YuanQi_Q1/script/project_tools/test_consolidate_private_20261025.py
+....
+Ran 4 tests in 0.004s
+OK
+
+Consolidation controls also passed on the Mac in 0.002s.
+This compact execution record transcribes only the relevant native results;
+full per-file machine manifests remain in the server's data/storage directory.
+
+First planning run stopped before any deletion:
+ValueError: Shared inode requires separate audit:
+/opt/data/private/hechengzhu/ZHY/data/environments/isaac-runtime-raw/bin/infotocap
+The completed gzip prefix is retained as C01_20261025/deletion_plan.jsonl.gz.
+No source file was deleted by this failed planning attempt.
+
+After adding full ownership checks for environment-internal hardlink groups:
+Command: python3 /opt/data/private/YuanQi_Q1/script/project_tools/test_cleanup_private_20261025.py
+.........
+Ran 9 tests in 0.133s
+OK
+New controls include complete owned-group unlink and external-link rejection.
+
+Second planning run: same protection stopped before deletion. A precise lstat
+audit identified 16 symlink inodes, each with three names entirely inside the
+raw and incomplete environments. No regular-file hardlink groups were present.
+The initial group enumerator excluded symlink inodes; it now audits both types.
+
+Final deletion controls:
+Command: python3 /opt/data/private/YuanQi_Q1/script/project_tools/test_cleanup_private_20261025.py
+..........
+Ran 10 tests in 0.081s
+OK
+The additional test unlinks a hardlinked-symlink group and retains its target.

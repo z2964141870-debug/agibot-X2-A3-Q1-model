@@ -2,18 +2,19 @@
 
 衣服 / 头环 → FGP / EgoLocate → 人体动作参考 → 机器人策略训练 → X2 / A3 / Q1 自然遥操。
 
-当前阶段：完成项目落盘和记录规范，下一步核验完整训练入口，独立完成第一轮机器人策略训练。
+当前阶段：复现SuperMimic for Q1的世界模型路线，现有训练尚未取得有效步行跟随证据。2026-10-25已清理旧A3大工件并将本项目统一到huanyu的`/opt/data/private/ZHY`，详见[统一目录阶段](reports/README_Q1_STORAGE_CONSOLIDATION_20261025.md)与[当前状态](reports/README_CURRENT_STATE.md)。
 
 ## 固定工作位置
 
-- 训练主机：`ssh hp3090`
-- 主项目目录：`/media/yu/FAFF-E9771/YUANQI`
+- 当前训练主机：huanyu，使用已核验的会话SSH通路。
+- 唯一实体项目根：`/opt/data/private/ZHY`；旧平级根只保留兼容软链接。
+- 当前分支：`Q1`。hp3090等旧主机目录保留历史，不作为当前训练位置。
 - Git 远端：`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`
 - GitHub：[agibot-X2-A3-Q1-model](https://github.com/z2964141870-debug/agibot-X2-A3-Q1-model)
 - 大型工件备份：百度网盘；只有上传并完成校验后才标记为已备份。
 
 ```text
-YUANQI/
+ZHY/
 ├── data/       产生的数据、模型、录制、视频、评测输出；Git 仅保存索引与清单
 ├── logs/       终端输出和执行记录；Git 保存检查过的小型关键记录
 ├── script/     脚本、代码和配置
@@ -34,15 +35,13 @@ YUANQI/
 
 每完成重要阶段，立即保存阶段 README，更新状态与索引，并提交到 GitHub。该要求已写入 [AGENTS.md](AGENTS.md)，记录格式见 [阶段模板](reports/README_STAGE_TEMPLATE.md)。
 
-初始化时确认：RTX 3090 24GB；目标磁盘为可写 ext4；已安装百度网盘 Linux 客户端 8.7.0。客户端登录和上传/下载能力未验证。完整证据见 `logs/session_records/`。
+初始化时曾在hp3090确认RTX 3090 24GB、可写ext4及百度网盘客户端8.7.0，此为历史记录；当前huanyu状态以最新阶段核验为准。大型保留工件仍为LOCAL_ONLY，未验证网盘往返。完整证据见`logs/session_records/`。
 
 ## 常用入口
 
 ```bash
-ssh hp3090
-cd /media/yu/FAFF-E9771/YUANQI
-python3 script/project_tools/inventory_host.py
-python3 script/project_tools/audit_git_payload.py
+cd /opt/data/private/ZHY
+data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python --version
 ```
 
 训练、仿真或转换命令的 stdout/stderr 存入 `logs/`；它们产生的模型和数据存入 `data/`。重要实验完成后在 `reports/` 写明版本、命令、结果和证据路径，再提交关键记录。

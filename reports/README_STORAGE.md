@@ -1,5 +1,7 @@
 # GitHub 与百度网盘保存规范
 
+2026-10-25用户要求：huanyu上本项目统一使用`/opt/data/private/ZHY`，沿用以下四目录，不再建立平级项目根。旧`YuanQi_Q1`、`yuanqi_ops`、`hechengzhu/ZHY`只保留兼容链接；它们的目录名不代表额外副本。实际归拢/清理状态、新旧映射与完整清单见[统一目录阶段](README_Q1_STORAGE_CONSOLIDATION_20261025.md)。下文hp3090路径是历史位置，不能覆盖最新huanyu安排。
+
 ## 四个目录的边界
 
 | 位置 | 内容 | Git / 网盘策略 |

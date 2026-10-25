@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-25 09:42 private及相关项目存储盘点完成，盘余仍0，北京时间。当前目标是SuperMimic for Q1的世界模型、想象BPTT和critic复现，最终必须由未见步行动作的真实MuJoCo跟随支持；尚未达成且目标保持存储阻塞。BONES获取交由师兄处理，等用户通知；不再查询下载或处理凭据。现有PHUMA、AMASS和SMPL-X继续使用，旧A3/STOPPED/FAILED不恢复。
+更新：2026-10-25 10:52[清理与统一目录完成](README_Q1_STORAGE_CONSOLIDATION_20261025.md)。删除178938项/文件块180.70GB，剩余约299.58GB全部位于huanyu唯一实体根`/opt/data/private/ZHY`，旧三个根仅兼容软链接。280057常规文件与516冻结/5关键文件核验保持，依赖导入及三份Q1模型加载/forward通过；盘余约2.142TB，存储阻塞已解除但未新训练。下一显式绑定新根后继续P15与独立评测；SuperMimic for Q1目标尚未达成，旧A3/STOPPED/FAILED不恢复。BONES由师兄处理，等通知，不再查询下载或处理凭据。
 
 ## 唯一训练与恢复
 
@@ -10,7 +10,7 @@
 
 07:56[保存5000独立审计](../data/manifests/supermimic_q1_R02D_intermediate5000_audit_20261025.json)十三门全过，三Adam计数38980/3798/75960及原输入/516冻结保持，执行前实际5050新轮/RUNNING。结束OOM14/盘余152.34GB、实验分配2.259GB，尚未最终配对，原预算/100GiB停止线不变。
 
-主机`huanyu:/opt/data/private/YuanQi_Q1`；Python`/opt/data/private/yuanqi_ops/envs/supermimic_a3_20261023/bin/python`。当前可经既有18864 SSH转发访问，不写入连接凭据。04:56启动身份：boot`d994e71f-bae0-46ba-a5f7-6c2163771c6c`；guard839210/start_ticks3616742247，controller839211/3616742257，trainer839214/3616742577。恢复须重新核`/proc`非Z、boot/ticks/cmdline/组及以下三状态，不能凭旧PID认定活跃。
+主机`huanyu:/opt/data/private/ZHY`；Python`/opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python`，基础环境实体为`ZHY/data/legacy_a3/env`，旧绝对路径只经兼容链接访问。当前可经既有18864 SSH转发访问，不写入连接凭据。04:56启动身份：boot`d994e71f-bae0-46ba-a5f7-6c2163771c6c`；guard839210/start_ticks3616742247，controller839211/3616742257，trainer839214/3616742577。恢复须重新核`/proc`非Z、boot/ticks/cmdline/组及以下三状态，不能凭旧PID认定活跃。
 
 实验：`data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/`；终态读取`storage_guard.json`、`controller_status.json`、`run/status.json`，stdout在同名`logs/`。原七阶段未完成；退出保存审计已过，下一安全资源条件下独立评测，不能重启旧controller或改写原终态。
 
@@ -29,6 +29,8 @@
 原R02 step5000开发对照完整5→6/6、跟随0/6，移动0.078251/参考0.521165m；R02C新增1810时数值FAILED保留。现有三个test_locomotion是fitness名字，位移标签不能当步行认证。源足底、映射及浮脚缺口见[D02C](README_SUPERMIMIC_Q1_PHUMA_SUPPORT_MAPPING_20261024.md)和[D04](README_SUPERMIMIC_Q1_PHUMA_REFERENCE_DYNAMICS_20261025.md)，不重复相同样本诊断，不据此声称唯一失败原因。
 
 ## 资源与下一步
+
+10:52最新状态：[清理与归拢](README_Q1_STORAGE_CONSOLIDATION_20261025.md)完成，唯一实体根`/opt/data/private/ZHY`、四目录、约299.58GB。AMASS原料在`data/datasets/amass_bridge/amass_raw`；PHUMA/FGP/预览资源在`data/yuanqi_ops`，依赖与重要旧A3参考保留。原三根无新副本，迁移0复制，138相对链接修复；逐文件/冻结/环境及三XML均通过。后续新任务先完成新根路径登记，原严格路径身份检查不绕过。以下09时盘余0与未清理条目保留为历史现场证据，不能当当前状态。
 
 09:34至09:42[完整private盘点](README_Q1_PRIVATE_STORAGE_INVENTORY_20261025.md)：五个一级目录合计831.41GB，两次相同；Q1为19.97GB、yuanqi_ops366.02GB、旧ZHY94.38GB，相关合计480.36GB，纠正仅Q1约20GB的范围。AMASS原库180.26GB/历史training106.73GB为主要项；两组旧A3 checkpoint独立文件SHA相同，环境也有重复，尚未清理或完成可删依赖审计。整盘同期已用增27.73GB至7.56TB、可用0，private仅绑定其中子目录；约6.73TB差额不能从此容器归属，具体写入者未定位，需平台侧核查。[原生日志](../logs/session_records/q1_private_storage_inventory_20261025.log)及[本机整理汇总](../data/manifests/q1_private_storage_inventory_20261025.json)已保存，0服务器新增/删除/移动及训练。
 

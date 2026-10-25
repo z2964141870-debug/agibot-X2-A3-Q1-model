@@ -1,6 +1,6 @@
 # 统一目录后的Q1动力学评测与足地修正
 
-记录日期：2026-10-25，北京时间。阶段：SM-Q1-M02/DEV-B/P15R。状态：DEV-B真实配对与独立重算完成，跟随0/6；P15R待执行。
+记录日期：2026-10-25，北京时间。阶段：SM-Q1-M02/DEV-B/P15R。状态：DEV-B与P15R真实执行/独立重算完成；最新策略跟随0/6，0新增正式参考。
 
 ## 目标与范围
 
@@ -65,5 +65,15 @@ env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 "$PY" -u \
 原样证据：[comparison](../data/manifests/supermimic_q1_R02D_DEV_B_comparison_20261025.json)、[guard](../data/manifests/supermimic_q1_R02D_DEV_B_guard_20261025.json)、[父轨迹重算](../data/manifests/supermimic_q1_R02D_DEV_B_audit_parent5000_20261025.json)、[新轨迹重算](../data/manifests/supermimic_q1_R02D_DEV_B_audit_bounded10282_20261025.json)。退出原件、原审计引用七输入及516冻结在评测后全部核验保持。新实验分配4087808字节，结束共享内存25628397568字节、OOM14、盘余2118354624512字节；未执行test或任何optimizer。完整数组留服务器LOCAL_ONLY。
 
 下一执行P15R四train×两限速，不修改原训练、旧诊断或开发/测试动作。若硬约束无解，需保存失败并检查根/足目标与初态可行性，不能删除约束来通过。
+
+### 11:34 P15R八组与独立审计完成
+
+11:33:44至11:33:56真实八组结束，guard/worker退出0并回收；六组QP无解，两个8rad/s变体完成，不能将wrapper退出0称八组全部成功。随后独立审计756项、321 fresh FK帧和626次fresh inverse完成，保存数组与原变换保持一致。
+
+两片完成变体的每帧低脚近地比例均100%，脚底间隙最高约0.60mm/0.50mm、自穿透0，通过原四项支撑/碰撞子检查。较此前悬空8至34mm有明确几何改善；但两者均未过原2rad/s速度门，近地足点速度超过0.05m/s的比例约50%至53%，仍有滑脚。0.5mm正余隙下实际接触率0，inverse根力约1倍体重，不能称动力学可行或训练参考已合格。
+
+原样[八组收据](../data/manifests/supermimic_q1_P15R_receipt_20261025.json)、[guard](../data/manifests/supermimic_q1_P15R_guard_20261025.json)、[独立审计](../data/manifests/supermimic_q1_P15R_independent_audit_20261025.json)。实验约1.98MB，盘余约2.118TB/OOM14，0新训练/物理积分/正式参考。下一若继续此支线，应检查根/足约束可行性及接触时序，不仅继续增权重；不把两个子集通过片接库。
+
+用户随后通知BONES即将拷贝，并确认真实文件已在统一根`g1.tar.gz`。主线转入[真实原包接收](README_SUPERMIMIC_Q1_BONES_RECEIPT_20261025.md)，保留本阶段结论和旧终态；新BONES仍需独立转换/准入，不能假定更换来源自动解决上述问题。
 
 本阶段实现/报告/小证据按Q1审计、提交、推送并独立核远端；实际发布号见Git。原大型工件仍LOCAL_ONLY。开发评测只支持开发方向判断，原库全源/受试者隔离尚未认证；不评test调参。下一根据真实新模型轨迹和P15R结果决定修正，不直接追加训练预算。

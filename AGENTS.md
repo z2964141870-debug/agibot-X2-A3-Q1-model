@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-25 用户通知BONES-SEED已拷入huanyu统一根`/opt/data/private/ZHY/g1.tar.gz`，要求准备接收使用。允许接收已有原包、同盘归档、完整性核验、原速Q1转换与独立准入，覆盖此前暂停BONES资源处理安排；不恢复旧下载/凭据申请或旧失败实验。沿用冻结来源划分，实际进展见`reports/README_SUPERMIMIC_Q1_BONES_RECEIPT_20261025.md`。
+
 - 2026-10-25 用户要求将huanyu上本项目全部文件归拢到唯一实体根`/opt/data/private/ZHY`，沿用`data / logs / script / reports`，不再创建平级项目工作区。本条覆盖此前该主机的`YuanQi_Q1`、`yuanqi_ops`及`hechengzhu/ZHY`位置安排；其他主机历史不迁移。旧根只作为兼容软链接，不另存副本，新工作必须使用统一根。用户同时授权清理旧A3、重复副本及确定无用的大工件；当前Q1依赖的Python基础环境和必要数据必须保留，入口`reports/README_Q1_STORAGE_CONSOLIDATION_20261025.md`。迁移实际状态以收据为准，原停止/失败实验不恢复。
 
 - 2026-10-24 用户明确停止代理继续处理BONES获取，由师兄解决，完成后用户另行通知。当前继续利用已有PHUMA、AMASS及已接收SMPL-X推进SuperMimic for Q1；不再自动查询下载、创建凭据或尝试获取BONES。先复用已合格PHUMA扩展库和已验证模型槽后端开展独立有限训练，AMASS按原速/16维形体独立准入后再接库。入口`reports/README_SUPERMIMIC_Q1_EXISTING_RESOURCES_20261024.md`。

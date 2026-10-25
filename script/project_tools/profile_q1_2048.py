@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Measure the declared 2048-environment Q1 collector and full training batches."""
+"""Measure Q1 collection and paper-proportional world-model and actor batches."""
 
 import argparse
 from dataclasses import asdict
@@ -33,30 +33,32 @@ def worker(args):
     lib = train.MotionLibrary([reference], train.TRACKED, assets.q0, device="cuda:0",
                               active_indices=assets.active_indices)
     heads = assets.heads("cuda:0")
-    cfg = train.SimCfg(num_envs=2048, threads=args.threads)
+    cfg = train.SimCfg(num_envs=args.num_envs, threads=args.threads)
     torch.cuda.reset_peak_memory_stats()
     sim = None
     result = {"status": "PROFILE_RUNNING", "source": identity(__file__), "reference": identity(reference),
-              "sim": asdict(cfg), "model_slots": args.model_slots, "wm_batch": 1024,
-              "policy_batch": 2048, "storage_status": "LOCAL_ONLY"}
+              "sim": asdict(cfg), "model_slots": args.model_slots,
+              "wm_batch": args.num_envs // 2, "policy_batch": args.num_envs,
+              "storage_status": "LOCAL_ONLY"}
     progress = args.output / "progress.json"
     try:
         sim = train.Q1Sim(assets, lib, cfg, heads, 2026102513, slots=args.model_slots)
-        buffer = train.ReplayBuffer(2048, 1000, train.STATE_DIM, train.ACT_DIM, train.XI_DIM, "cuda:0")
+        buffer = train.ReplayBuffer(args.num_envs, 1000, train.STATE_DIM, train.ACT_DIM,
+                                    train.XI_DIM, "cuda:0")
         wm = train.WorldModel(train.WorldModelCfg(), heads, "cuda:0")
         policy = train.Policy(train.PolicyCfg()).to("cuda:0")
         critic = train.Critic(train.CriticCfg(), pcfg=train.PolicyCfg()).to("cuda:0")
-        baseline = args.root / "data/supermimic_for_q1/BONES_RF02_12000_20261025/run/final.pt"
+        baseline = args.checkpoint or args.root / "data/supermimic_for_q1/BONES_RF02_12000_20261025/run/final.pt"
         result["profile_weights"] = identity(baseline)
         checkpoint = torch.load(baseline, map_location="cpu", mmap=True, weights_only=False)
         for name, network in (("wm", wm), ("policy", policy), ("critic", critic)):
             network.load_state_dict(checkpoint[name], strict=True)
         del checkpoint
-        result["profile_weights_scope"] = "Existing RF02 weights only for timing; formal training starts from scratch"
+        result["profile_weights_scope"] = "Existing weights only for timing; formal training starts from scratch"
         wt = train.WorldModelTrainer(wm, lib, train.WMTrainerCfg(
-            batch_size=1024, batches_per_update=10, compile=None))
+            batch_size=args.num_envs // 2, batches_per_update=10, compile=None))
         pt = train.PolicyTrainer(wm, policy, critic, lib, train.PolicyTrainerCfg(
-            batch_size=2048, horizon=32, compile=None))
+            batch_size=args.num_envs, horizon=32, compile=None))
         result["initial_health"] = train.health()
         result["initial_reference_frames"] = int(torch.unique(sim.frame).numel())
         result["friction_std"] = float(sim.context[:, 0].std())
@@ -74,10 +76,10 @@ def worker(args):
                 raise FloatingPointError("Nonfinite physical reward")
             save(progress, {"step": step, "health": train.health()})
         result["collection_steps"] = 16
-        result["real_transitions"] = 16 * 2048
+        result["real_transitions"] = 16 * args.num_envs
         result["collection_seconds"] = sum(timings)
         result["median_collection_round_seconds"] = float(np.median(timings))
-        result["transitions_per_second"] = 16 * 2048 / sum(timings)
+        result["transitions_per_second"] = result["real_transitions"] / sum(timings)
         started = time.monotonic()
         result["world_model_metrics"] = wt.update(buffer)
         torch.cuda.synchronize()
@@ -111,12 +113,20 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, allow_abbrev=False)
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--num-envs", type=int, default=2048)
+    parser.add_argument("--checkpoint", type=Path)
     parser.add_argument("--threads", type=int, default=8)
     parser.add_argument("--model-slots", type=int, default=8)
     parser.add_argument("--expected-oom-kill", type=int, required=True)
     parser.add_argument("--worker", action="store_true")
     args = parser.parse_args()
     args.root, args.output = args.root.resolve(strict=True), args.output.resolve()
+    if args.num_envs < 2 or args.num_envs % 2:
+        parser.error("Use a positive even environment count for paper-proportional batches")
+    if args.checkpoint is not None:
+        args.checkpoint = args.checkpoint.resolve(strict=True)
+        if not args.checkpoint.is_relative_to(args.root):
+            parser.error("Use an existing checkpoint under the unified root for timing")
     if not args.output.is_relative_to(args.root / "data/supermimic_for_q1"):
         parser.error("Use a new profile under the unified Q1 root")
     if args.worker:
@@ -135,7 +145,9 @@ def main():
         12 * 1024 ** 3, 250 * 1024 ** 3), 30 * 1024 ** 3, args.expected_oom_kill)
     command = [sys.executable, "-u", str(Path(__file__).resolve()), "--root", str(args.root),
         "--output", str(args.output), "--threads", str(args.threads), "--model-slots", str(args.model_slots),
-        "--expected-oom-kill", str(args.expected_oom_kill), "--worker"]
+        "--num-envs", str(args.num_envs), "--expected-oom-kill", str(args.expected_oom_kill), "--worker"]
+    if args.checkpoint is not None:
+        command.extend(("--checkpoint", str(args.checkpoint)))
     receipt = guarded_run(command, args.root, budget, args.output / "guard.json",
         args.root / "logs" / (args.output.name + ".log"), check_interval_s=.5,
         grace_s=10., stop_requested=lambda: requested, progress_path=args.output / "progress.json")

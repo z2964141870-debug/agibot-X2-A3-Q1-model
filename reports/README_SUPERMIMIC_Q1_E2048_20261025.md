@@ -56,4 +56,6 @@ $PY script/project_tools/run_q1_single_motion.py --root /opt/data/private/ZHY --
 
 唯一子agent已完成[位移只读诊断](README_SUPERMIMIC_Q1_DISPLACEMENT_REVIEW_20261025.md)，没有GPU/新仿真/训练作业。最支持旧RF02处于站立附近局部最优：目标速度未丢失，实际速度约目标5.7%、腿部幅度约26.5%、双支撑约97.86%；尚不能归因于单一奖励、接触或重定向问题。本轮先检验整套2048/同比例batch设置是否改善，不能提前宣称环境扩容成功，也不能把旧64环境667轮当等预算对照。
 
+2026-10-26 00:31:02首个1000轮保存后的只读观测：`run/step_001000.pt`为205591335字节，SHA`3ef010ce23c170fe91a1389901930d2bcb2b0d977a1d82004addeb5956b6bbf1`。实际训练已到1050轮/2150400转移、WM369组/actor319次，已记录4085.71秒，仍不足7200秒；pipeline/guard/train均RUNNING，controller和worker的boot/start_ticks保持。GPU40摄氏度/9150MiB，共享内存19718049792字节、under_oom0/OOM14，盘余507.86GiB；最近guard本实验分配274960384字节。没有重复加载checkpoint张量、仿真或optimizer更新；保存存在不证明效果改善。共享盘余继续下降，不能计成本项目新增量。原样收据[首保存观测](../data/manifests/supermimic_q1_RF04_E2048_checkpoint_1000_observation_20261026.json)为4183字节/SHA`f90d2b1afbd6d6209667401c390e4d1ca652ea36a9101a0f0bae587e6e8c744e`，服务器源为本实验`checkpoint_1000_observation.json`，小收据原样取回；权重未复制到Mac。
+
 恢复入口：本实验`status.json`、`train_guard.json`、`run/status.json`及`logs/BONES_RF04_UP01_E2048_T02H_20261025_{controller,train}.log`。终后仅把小图表和MP4复制到Mac的`/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF04_UP01_E2048_T02H_20261025/`，核大小/SHA；权重和大轨迹留服务器，仍按LOCAL_ONLY登记。

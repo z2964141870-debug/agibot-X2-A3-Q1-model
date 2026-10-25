@@ -36,6 +36,8 @@
 
 原样观测：[监视目标启动收据](../data/manifests/supermimic_q1_monitor_goal_start_20261025.json)。服务器同源文件为RF04根下`monitor_goal_start_observation.json`。这是具时间戳的观测，不是未来进程或完成证明；恢复须重新核现场。本次未执行新网络更新、仿真或重复checkpoint张量审计。
 
+2026-10-26 00:31:02增量证据：[RF04首个1000轮保存后的观测](../data/manifests/supermimic_q1_RF04_E2048_checkpoint_1000_observation_20261026.json)。保存205591335字节/完整SHA已登记；现场1050轮/2150400转移、WM369/actor319、4085.71秒，进程身份保持，GPU40摄氏度/9150MiB、OOM14/盘余507.86GiB，本实验274960384字节。阶段A仍进行中，B至E均未完成；上一轮工作归为已核活跃进程的等待，本次补保存身份，不将其记为效果结果或目标完成。没有修改冻结源码，也未启动4096。
+
 权威Git为`/tmp/yuanqi-supermimic-q1-20261023`的`Q1`分支，远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。RF04冻结代码`f03db7566fcd590912b4cc9b24621d32b19319a2`；独立4096实测入口发布`9f7debdb1d095820bd71deff8432c2f23aee0642`，SHA`5c55e9b7bc2471aad50810d5c44245622705a73c8f484aac395be5b38cc31674`。本次只改目标记录、索引与监督提示，不热改冻结源码。无关`download_bones.py`继续不动。
 
 ## 产物、保存与同步

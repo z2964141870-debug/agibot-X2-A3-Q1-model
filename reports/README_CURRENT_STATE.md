@@ -28,6 +28,8 @@
 
 ## 资源与下一步
 
+08:22:52[最新原生资源记录](../logs/session_records/supermimic_q1_P15_final_resource_20261025.log)余盘17742848000字节（17.74GB），低于100GiB。三终态仍STOPPED_STORAGE/STOPPED_SIGNAL/STOPPED_SIGNAL，原controller/trainer不存在，P15正式目录未创建。共享盘在原训练退出后仍下降，已明确通知用户协调持续写入与存储；不得启动正式转换/评测或自动恢复，不删未知文件。
+
 08:05原训练已因100GiB余盘保护停止；08:19盘余35711246336字节（35.71GB），自身训练约2.259GB加退出保存约205MB，不把整盘变化归本任务。OOM仍14；正式转换/评测的100GiB条件不满足，只完成无服务器输出的只读核验和小型控制，并已询问用户可用存储资源。所有大型原件LOCAL_ONLY，不声称网盘备份、不删未知文件、不干扰其他任务。
 
 下一保持R02D真实终态，盘余恢复后新独立评测。[P15](README_SUPERMIMIC_Q1_FLOOR_RECOVERY_20261025.md)A/B失败保留，C五控制全部通过/0跳过：floor.sameframe缓存修正和实际坐标拒绝检查、真实mesh+sphere有符号导数、穿地恢复QP。源码发布af72dd1、生产者SHA d411fedc2c2ff03ba17f04f2700ba458668b8fb6f7c4bffcfa1b8ce96a4188c0，控制SHA135fc332eee140aad7b25c82b99702e9b88fc1ed17e75a7f82293a973fde2a75。正式八组0启动/目录未建；恢复100GiB盘余后重新核资源/绑定再运行新P15并独立复算，不热改P12C/P14。不使用P10调参或启动第二训练，目标尚未达。

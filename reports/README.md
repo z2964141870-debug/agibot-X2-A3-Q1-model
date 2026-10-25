@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 08:22：[最新共享盘资源](../logs/session_records/supermimic_q1_P15_final_resource_20261025.log)余17.74GB，原训练已停止且进程消失、P15正式目录未创建；100GiB保护不变。P15五控制及退出权重十五项核验已过，正式转换/评测等存储恢复，用户已收到资源询问和下降通知。
+
 2026-10-25 08:19：[P15-C五项服务器控制全部通过](README_SUPERMIMIC_Q1_FLOOR_RECOVERY_20261025.md)，修正实际地面缓存/验证mesh+sphere导数及恢复QP；A/B失败保留，正式八组因余盘不足100GiB未启动。[R02D退出保存十五项只读核验通过](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)，计数/516冻结/停止身份保持，0服务器新文件；盘余35.71GB，原STOPPED_STORAGE不恢复，目标未达。
 
 2026-10-25 08:05：[R02D存储保护停止](README_SUPERMIMIC_Q1_R02D_BOUNDED_20261025.md)，5282/7000新轮/338048转移，guard STOPPED_STORAGE、controller/train STOPPED_SIGNAL，退出权重保存、最终配对未执行，不自动恢复。共享盘随后约73GiB，不删未知文件。[P15首轮控制失败及地面缓存定位](README_SUPERMIMIC_Q1_FLOOR_RECOVERY_20261025.md)：配置floor移动但sameframe仍使实际Z=0，且Q1脚含mesh；正式八组0启动，下一修正新入口控制。

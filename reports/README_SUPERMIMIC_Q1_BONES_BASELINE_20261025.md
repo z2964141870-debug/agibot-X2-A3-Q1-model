@@ -147,6 +147,16 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 
 [原样观察快照](../data/manifests/supermimic_q1_BONES_RF02_review_status_20261025.json)实读1625轮/104000转移、WM599组/actor549次、RUNNING；GPU40摄氏度、内存27.105GB/OOM14。唯一只读审阅子agent已结束。本轮完整训练和初始/最终比较仍未完成。
 
+## RF02回放入口准备
+
+新增[replay.html](../script/supermimic_q1_reproduction/replay.html)，沿用原Q1回放页的布局与原生视频控件，切换同一首段参考的initial/final实际动力学视频，并从既有`comparison.json`读取该段的完成比例、整片归一化回报、执行段关节RMSE、根位移及提前终止。页面字段已对照真实RF01评测收据和当前评测源码，JavaScript经Node语法检查通过；未使用RF01视频冒充RF02。
+
+当前只完成页面源码准备，尚未部署为RF02可访问回放，也未完成浏览器桌面/移动端画面与控件核验。训练及两份真实RF02视频生成后，将页面复制到`data/supermimic_for_q1/BONES_BASELINE_G02_20261025/index.html`，恢复仅本机可访问的18863入口，再检查视频和指标。现有训练Python源码保持冻结；新增HTML不更改训练输入或控制器。
+
+页面源码SHA`a6d863014adc4526cdae15199939e781ec947cc67d03de106c4d973e82f005b8`已与服务器逐SHA一致，仅复制到`script/supermimic_q1_reproduction/replay.html`，没有提前启动回放服务。15:20:39有界只读观察结束时为2500轮/160000交互、WM949组/actor899次，三进程boot/start_ticks匹配；guard/pipeline RUNNING、GPU39摄氏度、内存26709639168字节/OOM14、盘余2087439777792字节。原控制器继续运行。
+
+15:21取回的[原样状态](../data/manifests/supermimic_q1_BONES_RF02_replay_preparation_status_20261025.json)已继续2525轮/161600交互、WM959组/actor909次，训练计时4649.31秒，内存26702372864字节/OOM14；这些训练指标不是固定参考动力学比较结果，尚无RF02跟随效果结论。
+
 ## 计划产物与恢复
 
 - 原参考：`data/supermimic_for_q1/BONES_PF01_128_20261025/library`。

@@ -10,9 +10,11 @@
 
 - [BONES PF02完整合库](README_SUPERMIMIC_Q1_BONES_BASELINE_20261025.md)已完成：复用128并新增896，1024/1024个冻结train来源、326883帧/6517.18秒=108.62分钟，0转换/IO错误；独立来源集合缺项/额外均0、全部120→50Hz原速、1024数组链接。新7批总分配1.031GB；原false几何标记保留，不阻止训练。
 
-- RF02于14:02:53进入独立训练，1000轮CPU13项核对已通过；15:04实际观察2000轮/128000转移及三进程身份匹配，2000模型205920167字节/SHA`92f161d48347fdeed7e3df388395be1dc2e7539ee8f15ac94d71e5ff4d68eb57`。随后[原样状态](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_2000_status_20261025.json)已继续2025轮/129600转移、WM759组/actor709次、RUNNING，GPU40摄氏度、内存27.109GB/OOM14；训练分配481.86MB，盘余约2.089TB。仍按64环境12000采集轮/768000转移及固定前8train初始/最终真实动力学比较、回放；完整目标未完成。控制器861470/start_ticks3619874227，包装862406/3620017857，worker862408/3620018050，boot保持；恢复时重新匹配实时身份。目前无运行子agent或前台观察会话，最多一个子agent。
+- RF02于14:02:53进入独立训练，已保存初始/1000/2000轮模型，1000轮CPU13项核对通过，2000模型身份见阶段报告。15:21取回的[原样状态](../data/manifests/supermimic_q1_BONES_RF02_replay_preparation_status_20261025.json)已继续2525轮/161600转移、WM959组/actor909次、RUNNING，GPU39摄氏度、内存26.702GB/OOM14，最近盘余约2.087TB。仍按64环境12000采集轮/768000转移及固定前8train初始/最终真实动力学比较、回放；完整目标未完成。15:20:39三进程身份仍匹配：控制器861470/start_ticks3619874227、包装862406/3620017857、worker862408/3620018050，boot保持；恢复时重新匹配现场。目前无运行子agent或前台观察会话，最多一个子agent。
 
 - [唯一子agent的只读方法审阅](README_SUPERMIMIC_Q1_RF02_METHOD_REVIEW_20261025.md)已完成，未发现要求中止的8步/H32/critic或replay错误。确认500步人工截断的采样回报缺bootstrap/样本排除，86/1024段存在长度触发条件，影响尚未量化；登记为后续独立修正，当前不热改或重启。学习核心是第三方固定SuperMimic-Reproduced，不冒称作者官方训练源码。
+
+- [RF02回放页源码](../script/supermimic_q1_reproduction/replay.html)已准备，初始/最终切换及当前评测字段绑定，JavaScript语法检查通过。尚未接入真实RF02视频或恢复18863访问，桌面/移动端浏览器核验待视频生成后执行；不以旧视频替代本轮回放。
 
 - 发布代码`d66ac1cd21de1682ca6f069227c070ebf98da02f`已独立核远端Q1，12个服务器reproduction源码逐SHA与发布本一致。恢复先读`data/supermimic_for_q1/BONES_BASELINE_G02_20261025/status.json`、当前阶段guard/progress和日志，核实boot/PID/start_ticks，不因连接超时重启既有流程。启动[plan](../data/manifests/supermimic_q1_BONES_G02_plan_20261025.json)/[launch](../data/manifests/supermimic_q1_BONES_G02_launch_20261025.json)/[状态快照](../data/manifests/supermimic_q1_BONES_G02_launch_status_20261025.json)已保存。
 

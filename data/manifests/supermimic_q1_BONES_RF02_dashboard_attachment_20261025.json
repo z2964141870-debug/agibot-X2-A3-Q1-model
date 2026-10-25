@@ -1,0 +1,111 @@
+{
+  "observed_utc": "2026-10-25T08:27:13.379767+00:00",
+  "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+  "process_identities": {
+    "controller": {
+      "pid": 861470,
+      "expected_start_ticks": 3619874227,
+      "actual_start_ticks": 3619874227,
+      "state": "S",
+      "matches": true
+    },
+    "wrapper": {
+      "pid": 862406,
+      "expected_start_ticks": 3620017857,
+      "actual_start_ticks": 3620017857,
+      "state": "S",
+      "matches": true
+    },
+    "worker": {
+      "pid": 862408,
+      "expected_start_ticks": 3620018050,
+      "actual_start_ticks": 3620018050,
+      "state": "R",
+      "matches": true
+    },
+    "dashboard": {
+      "pid": 868333,
+      "expected_start_ticks": 3620875959,
+      "actual_start_ticks": 3620875959,
+      "state": "S",
+      "matches": true
+    }
+  },
+  "training_status": {
+    "status": "RUNNING",
+    "step": 4525,
+    "env_steps": 289600,
+    "wm_updates": 1759,
+    "policy_updates": 1709,
+    "seconds": 8632.73376301676,
+    "pid": 862408,
+    "reward_mean": 0.055400118231773376,
+    "termination_fraction": 0.0,
+    "joint_rmse_rad": 0.3972044587135315,
+    "health": {
+      "gpu_temperature_c": 40,
+      "cgroup_memory_bytes": 25297174528,
+      "oom_kill": 14
+    },
+    "imag_objective": 5.100964546203613,
+    "imag_return_undisc": 1.7387020587921143,
+    "imag_reward_mean": 0.054435670375823975,
+    "imag_survival_H": 0.8467860221862793,
+    "imag_dhat_mean": 0.07021388411521912,
+    "policy_grad_norm": 0.15605971217155457,
+    "action_abs_mean": 0.8308781981468201,
+    "imag_r/motion_global_root_pos": 0.0043967789970338345,
+    "imag_r/motion_global_root_ori": 0.004283198155462742,
+    "imag_r/motion_body_pos": 0.017352553084492683,
+    "imag_r/motion_body_ori": 0.0018678789492696524,
+    "imag_r/motion_body_lin_vel": 0.015276772901415825,
+    "imag_r/motion_body_ang_vel": 0.012814626097679138,
+    "imag_r/action_rate_l2": -0.001037914538756013,
+    "imag_r/joint_limit": -0.0005182205350138247,
+    "critic_loss": 0.01679927110671997,
+    "critic_value_mean": 4.9973554611206055,
+    "critic_target_mean": 5.017238140106201,
+    "wm/state_loss": 0.7879741668701172,
+    "wm/term_bce": 0.0006795366294682026,
+    "wm/nse_1step": 0.0074642419815063475,
+    "wm/nse_kstep": 0.021429383754730226,
+    "wm/term_acc": 0.999609375,
+    "wm/loss": 0.7886538505554199,
+    "wm/grad_norm": 11.336992645263672
+  },
+  "guard_status": "RUNNING",
+  "pipeline_status": "RUNNING",
+  "training_sources_checked": 68,
+  "changed_training_sources": [],
+  "reporting_sources": [
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/plot_training_dashboard.py",
+      "bytes": 14899,
+      "sha256": "70f03b41529832c4b582550424195bc9df3477b79db58791ee58e5da45a19e7b"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/train_q1_with_dashboard.py",
+      "bytes": 6140,
+      "sha256": "dcfbb728c6da9d0c6206712d7b0e174a744f1ad7615f2b139769888e3a3563e8"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/test_training_dashboard.py",
+      "bytes": 4721,
+      "sha256": "9481cda9164b80e998e46814f8ee854cc57320e81bc9ccfcb9b36433b68af8f7"
+    }
+  ],
+  "checkpoint_4000": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF02_12000_20261025/run/step_004000.pt",
+    "bytes": 205920167,
+    "sha256": "08462bfd6dac6e33c6573def39d90db6d41f2c1c1ba11547a285904548588ae1"
+  },
+  "training_allocated_bytes": 893853696,
+  "free_bytes": 2077460029440,
+  "reporting_callback_log_tail": [
+    "{\"status\": \"WAITING_FOR_ONE_TRAINING_RUN\", \"run\": \"/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF02_12000_20261025/run\", \"training_pid\": 862408, \"training_start_ticks\": \"3620018050\", \"boot_id\": \"d994e71f-bae0-46ba-a5f7-6c2163771c6c\", \"reporting_pid\": 868333}",
+    "{\"status\": \"WAITING_FOR_ONE_TRAINING_RUN\", \"step\": 4475}",
+    "{\"status\": \"WAITING_FOR_ONE_TRAINING_RUN\", \"step\": 4500}"
+  ],
+  "expected_dashboard_output_exists": false,
+  "storage_status": "LOCAL_ONLY"
+}

@@ -34,12 +34,12 @@ BONES原包`data/references/bones_seed/archives/g1.tar.gz`，23.50GB、SHA`52580
 
 背景讨论见[奖励、重定向与接触梯度归因](README_SUPERMIMIC_Q1_RF02_GRADIENT_REASONING_20261025.md)；原建议的本轮分项/接触/局部收益方向已在D02完成。现有局部收益方向结果不能外推脚支撑切换、critic或全闭环；当前不凭讨论直接更改奖励/接触参数。保持SuperMimic优先和无新增数据门。
 
-原RF02训练、评测和绘图都已结束，不重启或自动追加预算；新RF03独立运行。[只读方法审阅](README_SUPERMIMIC_Q1_RF02_METHOD_REVIEW_20261025.md)登记的500步reset回报缺bootstrap/截断样本排除问题仍待，86/1024段超过500帧、影响未量化；本次单动作365帧先避开这一触发条件。方法核心来自第三方固定SuperMimic-Reproduced，不能称作者官方训练源码。
+原RF02训练、评测和绘图都已结束，不重启或自动追加预算；RF03已停止，当前独立RF04为2048环境，后续4096的RF05尚未启动。[只读方法审阅](README_SUPERMIMIC_Q1_RF02_METHOD_REVIEW_20261025.md)登记的500步reset回报缺bootstrap/截断样本排除问题仍待，86/1024段超过500帧、影响未量化；本次单动作365帧先避开这一触发条件。方法核心来自第三方固定SuperMimic-Reproduced，不能称作者官方训练源码。
 
 旧PHUMA R02D磁盘保护停止、旧A3及所有FAILED/STOPPED实验不恢复、不改终态。最多一个子agent；本轮结束没有执行中的子任务。RF01的500轮失败及各时点RUNNING快照见整轮README和报告索引，不作为当前状态。
 
 ## Git与恢复
 
-权威副本`/tmp/yuanqi-supermimic-q1-20261023`，分支`Q1`，远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。训练冻结版本`d66ac1cd21de1682ca6f069227c070ebf98da02f`；本轮结果随Q1阶段提交保存并独立比对远端。服务器/用户镜像同步报告、小收据和各自AGENTS新增偏好。唯一既有未跟踪`script/supermimic_q1_sources/download_bones.py`不执行、不提交、不删除。
+权威副本`/tmp/yuanqi-supermimic-q1-20261023`，分支`Q1`，远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。当前RF04训练冻结版本`f03db7566fcd590912b4cc9b24621d32b19319a2`；`d66ac1cd21de1682ca6f069227c070ebf98da02f`仅为旧RF02历史版本。文档及独立4096资源入口的后续提交不代表运行中训练源码改变。各阶段记录显式推送Q1并独立比对远端，服务器/用户镜像同步报告、小收据和各自AGENTS新增偏好。唯一既有未跟踪`script/supermimic_q1_sources/download_bones.py`不执行、不提交、不删除。
 
-恢复先读此文件、新[RF03-UP01](README_SUPERMIMIC_Q1_RF03_UP01_20261025.md)及服务器`BONES_RF03_UP01_12000_20261025/{status.json,train_guard.json,run/status.json}`，重新核资源/进程/Git状态；训练在后台独立运行，不能重启、覆盖或追加预算。RF02历史证据继续由整轮README和`BONES_BASELINE_G02_20261025/status.json`恢复。详细历史见[报告索引](README.md)、[论文优先前快照](README_CURRENT_STATE_BEFORE_PAPER_FIRST_20261025.md)和[更早归档](README_CURRENT_STATE_ARCHIVE_20261025.md)。每日研究最近10/25检查无实质更新，静默；自动研究不调度训练。
+恢复先读此文件、[RF04-E2048](README_SUPERMIMIC_Q1_E2048_20261025.md)、[后续RF05-E4096](README_SUPERMIMIC_Q1_E4096_20261025.md)及服务器`BONES_RF04_UP01_E2048_T02H_20261025/{status.json,train_guard.json,run/status.json}`，重新核资源/进程/Git状态；RF04在后台独立运行，不能重启、覆盖或追加预算。RF03仅为停止历史，不作为当前运行入口。RF02历史证据继续由整轮README和`BONES_BASELINE_G02_20261025/status.json`恢复。详细历史见[报告索引](README.md)、[论文优先前快照](README_CURRENT_STATE_BEFORE_PAPER_FIRST_20261025.md)和[更早归档](README_CURRENT_STATE_ARCHIVE_20261025.md)。每日研究最近10/25检查无实质更新，静默；自动研究不调度训练。

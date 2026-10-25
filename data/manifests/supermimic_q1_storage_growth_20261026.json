@@ -1,0 +1,117 @@
+{
+  "status": "VISIBLE_PRIVATE_TOTAL_UNCHANGED_HOST_FILESYSTEM_SCOPE_REQUIRED",
+  "scope": "Collated observations from read-only SSH commands on 2026-10-26 Beijing time; not a raw single-command receipt.",
+  "observations_utc": [
+    {
+      "at": "2026-10-25T17:37:53.464710+00:00",
+      "available_bytes": 107355627520
+    },
+    {
+      "at": "2026-10-25T17:38:56.299576+00:00",
+      "available_bytes": 101016453120
+    },
+    {
+      "at": "2026-10-25T17:40:35.987464+00:00",
+      "available_bytes": 91052990464
+    },
+    {
+      "at": "2026-10-25T17:42:03.805388+00:00",
+      "available_bytes": 83469680640
+    },
+    {
+      "at": "2026-10-25T17:45:37.505710+00:00",
+      "available_bytes": 65311240192,
+      "rf05_exists": false,
+      "gpu_used_MiB": 14,
+      "gpu_temperature_c": 27
+    },
+    {
+      "at": "2026-10-25T17:52:03.757488+00:00",
+      "available_bytes": 32179216384,
+      "rf05_exists": false,
+      "rf04_pipeline_status": "COMPLETED",
+      "profile_status": "PROFILE_COMPLETED",
+      "profile_guard_status": "WORKER_COMPLETED",
+      "gpu_used_MiB": 14,
+      "gpu_temperature_c": 27,
+      "cgroup_v1_memory_bytes": 16655953920,
+      "under_oom": 0,
+      "oom_kill": 14,
+      "rf04_controller": {"pid": 885444, "state": "Z", "start_ticks": "3623369662"},
+      "absent_worker_or_profile_pids": [885445, 891502, 891503]
+    }
+  ],
+  "directory_samples": {
+    "observation_interval_utc": [
+      "2026-10-25T17:37:53+00:00",
+      "2026-10-25T17:42:04+00:00"
+    ],
+    "exact_individual_du_start_end_times_recorded": false,
+    "command": "du -x -B1 --max-depth=1 /opt/data/private",
+    "first_bytes": {
+      "ZHY": 328527241216,
+      "epic-contact-reproduction-20261011": 24008433664,
+      "action-reproduction-20261011": 41149997056,
+      "hechengzhu": 309530669056,
+      "total": 703216345088
+    },
+    "second_bytes": {
+      "ZHY": 328527241216,
+      "epic-contact-reproduction-20261011": 24008433664,
+      "action-reproduction-20261011": 41149997056,
+      "hechengzhu": 309530669056,
+      "total": 703216345088
+    },
+    "all_values_identical": true
+  },
+  "filesystem": {
+    "source": "/dev/nvme2n1p1",
+    "device_id": "259:7",
+    "fstype": "ext4",
+    "private_mount_root": "/default/ZONES/p3090-8/PROJECTS/robotics01/PRIVATE/hcz",
+    "private_mountpoint": "/opt/data/private",
+    "total_bytes": 7619864297472,
+    "used_bytes_at_174035": 7144719544320,
+    "available_bytes_at_174035": 91052990464,
+    "reserved_free_bytes": 384091762688
+  },
+  "other_visible_same_device_mounts_bytes": {
+    "/opt/data/projectcommon": 4096,
+    "/opt/data/zonecommon": 4096,
+    "/opt/data/common/default": 12288
+  },
+  "visible_process_io": {
+    "observed_at_utc": "2026-10-25T17:38:08.632880+00:00",
+    "sample_seconds": 15.13127875328064,
+    "visible_processes": 746,
+    "positive_write_bytes_delta_processes": 0,
+    "measurement_scope": "Processes present in both snapshots with matching start_ticks; not host-wide and may miss short-lived processes."
+  },
+  "private_device_visible_open_files": {
+    "observed_at_utc": "2026-10-25T17:40:35.987464+00:00",
+    "unique_regular_files": 3,
+    "total_allocated_bytes": 12288,
+    "deleted_open_allocated_bytes": 0,
+    "process_race_or_access_errors": 17
+  },
+  "recent_private_file_scan": {
+    "window_minutes": 20,
+    "largest_reported_file_bytes": 291638640,
+    "description": "Software update binary; RF04 final checkpoint 205583251 bytes. These sizes do not explain the ongoing filesystem-wide growth."
+  },
+  "training": {
+    "rf04_status": "COMPLETED",
+    "rf04_training_seconds": 7244.106903836131,
+    "rf04_final_experiment_bytes_approx": 483000000,
+    "profile4096_status": "PROFILE_COMPLETED",
+    "profile4096_guard_status": "WORKER_COMPLETED",
+    "rf05_status": "NOT_LAUNCHED_STORAGE_BELOW_100_GIB"
+  },
+  "actions": {
+    "files_deleted": false,
+    "other_tasks_stopped": false,
+    "storage_threshold_relaxed": false,
+    "host_root_access_available": false
+  },
+  "conclusion": "The current visible private subtree was byte-identical across two scans while the underlying shared filesystem lost free space. Other visible same-device shared mounts are almost empty. The growing allocation is outside the currently visible directory scope; exact host directory/process remains unverified and requires host-level inspection."
+}

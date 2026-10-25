@@ -171,7 +171,7 @@ def main():
                 "relocation": view.evidence(),
                 "paper_deviations": ["CPU MuJoCo backend; Q1 simulation PD50/2 and 25% model torque bounds",
                     "Q1 free-root 57-state and 22-joint actor; no artificial support",
-                    "Smaller environment and update batch on shared RTX3090", "Pelvis reward anchor",
+                    f"Shared RTX3090 sampling: {args.num_envs} environments, WM batch {args.wm_batch}x{args.wm_batches}, actor batch {args.batch}/H32; paper sampling 4096/2048x10/4096-H32", "Pelvis reward anchor",
                     "No pose/velocity reset noise in this first adaptation", "Model-only warmup before BPTT",
                     "BONES G1 references retargeted to Q1; first finite batch, not the paper full G1 corpus",
                     "Original dataset-wide filename and G1-specific geometric filtering is not yet replicated for the full archive",

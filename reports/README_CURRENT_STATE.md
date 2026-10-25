@@ -1,8 +1,10 @@
 # YUANQI 当前状态与下一步
 
-当前正式目标：[MG01两阶段训练监督](README_SUPERMIMIC_Q1_MONITOR_GOAL_20261025.md)保持active，阶段A/B已完成，4096实测/独立两小时训练及最终比较待。10月26日01:23:37，[RF04全流程COMPLETED](README_SUPERMIMIC_Q1_E2048_20261025.md)：实际训练7244.1069秒、1775轮/3635200转移、WM659/actor609，13项保存检查和初末算术身份审计通过；六宫格和初末MP4已到Mac对应实验目录，11项1512643字节逐大小/SHA通过。最终产生0.456592m位移但122/365步、2.44秒提前倒地，整片回报0.47538→0.19674；共同122步上肢RMSE0.68489→0.60841rad，完整抬手主峰未到达，不称跟踪成功。01:24:30 worker已退出/GPU14MiB/OOM14，盘余183.36GiB持续下降，本实验仅约0.483GB；已询问平台侧空间，100GiB保护保留。下一步一次4096完整批量实测，不能以RF04性能失败冒充方法成功；本轮训练预算正常完成，可以按授权继续对照。
+当前正式目标：[MG01两阶段训练监督](README_SUPERMIMIC_Q1_MONITOR_GOAL_20261025.md)保持active，阶段A/B/C已完成，独立4096两小时训练及最终比较待。10月26日01:23:37，[RF04全流程COMPLETED](README_SUPERMIMIC_Q1_E2048_20261025.md)：实际训练7244.1069秒、1775轮/3635200转移、WM659/actor609，13项保存检查和初末算术身份审计通过；六宫格和初末MP4已到Mac对应实验目录，11项1512643字节逐大小/SHA通过。最终产生0.456592m位移但122/365步、2.44秒提前倒地，整片回报0.47538→0.19674；共同122步上肢RMSE0.68489→0.60841rad，完整抬手主峰未到达，不称跟踪成功。RF04完整结束，不重启或追加预算。
 
-最新追加指示：当前2048环境两小时RF04继续，用户要求[后续4096环境对齐论文采样规模](README_SUPERMIMIC_Q1_E4096_20261025.md)。RF04完成评测/交付及释放资源后，顺序一次4096完整WM2048×10、actor4096/H32容量实测，允许后直接独立RF05；暂沿用相同参考、从零与7200秒预算。4096尚未实测/训练，18GB仅估计。独立profile入口已扩展；训练manifest文案待RF04冻结结束后修正，再发布部署。沿用同一监督任务，不并行训练，不增加子agent。
+用户要求[后续4096环境对齐论文采样规模](README_SUPERMIMIC_Q1_E4096_20261025.md)，01:35:18完整profile已通过：4096环境/8线程/8槽、16轮65536转移、WM2048×10及actor4096/H32/critic实际更新有限，CUDA分配/保留峰值15.60/16.54GiB，guard WORKER_COMPLETED且worker回收，OOM14。短测不是正式训练或效果结果，不重复profile。RF05仍用同一参考/seed、从零与至少7200秒；仅环境和批量规模对齐论文。RF04冻结结束后仅修正manifest采样规模声明，语法、64/2048/4096文案和AST对比通过，随本阶段发布部署。
+
+当前阻碍是共享磁盘：[10月26日快速增长排查](README_Q1_STORAGE_GROWTH_20261026.md)两次private一级目录/总量完全相同，共703216345088字节，但底层整盘余量持续下降，增长超出容器当前可见范围，不能点名具体其他项目。01:52:03实际余32179216384字节，约30GiB，低于100GiB保护；RF05目录不存在，尚未启动，不记训练失败。此时GPU27摄氏度/14MiB、共享内存16655953920字节、under_oom0/OOM14，RF04 worker与profile进程已退出；旧RF04 controller为匹配start_ticks的僵尸，不是活跃训练。未删除文件或停止他人任务。沿用原q1-2048监督，待平台释放同盘空间或提供统一根下挂载后重新核资源与来源身份，顺序启动RF05；不降低保护、不重复实测、不新增子agent。
 
 RF04历史启动于10月25日23:21:31，2048环境/8槽/8线程、WM batch1024×10、actor2048/H32、UTD0.4，保留原365帧抬手移动参考与方法、从零初始化。冻结代码f03db7566fcd590912b4cc9b24621d32b19319a2，终后审计确认输入/来源保持；controller885444/start_ticks3623369662、worker885445/start_ticks3623369674仅作为已结束作业身份，不再视为当前RUNNING。后续可改元数据须另发布身份；`q1-2048`每10分钟监督后续4096，正常静默，禁止自动重启/扩预算。
 
@@ -24,7 +26,7 @@ RF04历史启动于10月25日23:21:31，2048环境/8槽/8线程、WM batch1024×
 
 唯一实体根`huanyu:/opt/data/private/ZHY`，四目录`data / logs / script / reports`。Python为`data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python`。现有18864 SSH桥仍监听；boot基线`d994e71f-bae0-46ba-a5f7-6c2163771c6c`、OOM基线14，恢复必须重新核现场。
 
-RF04启动后23:35现场：GPU40摄氏度/9150MiB，共享容器内存23.366GB、under_oom0/OOM14，盘余835.629GB；最近guard本实验分配约69.3MB，保护正常。共享盘余变化不等于本实验新增量，继续按真实余量监督。2048预检完整WM/actor/critic更新有限、CUDA峰值约8.49GB，profile已退出。D02及下方20:43/20:50是此前终后历史观测，不作为当前空闲证明。
+最新资源与磁盘阻碍见上方01:52观测；以下均为历史记录。RF04启动后23:35现场：GPU40摄氏度/9150MiB，共享容器内存23.366GB、under_oom0/OOM14，盘余835.629GB，本实验分配约69.3MB。共享盘余变化不等于本实验新增量。2048预检完整WM/actor/critic更新有限、CUDA峰值约8.49GB；D02及下方20:43/20:50不能作为当前空闲证明。
 
 20:43终后观测已无活动训练，GPU28摄氏度/14MiB；本轮训练目录分配2.748GB、ZHY总分配325.008GB。20:50实际cgroup v1补充观测内存23.525GB、under_oom0/OOM14、盘余1.682TB；初次cgroup v2探测的null原样保留。[分配/进程观测](../data/manifests/supermimic_q1_BONES_RF02_final_resource_observation_20261025.json)、[真实v1健康观测](../data/manifests/supermimic_q1_BONES_RF02_final_health_observation_20261025.json)。100GiB余盘、单实验12GiB及温度/内存/OOM保护继续执行。
 
@@ -44,4 +46,4 @@ BONES原包`data/references/bones_seed/archives/g1.tar.gz`，23.50GB、SHA`52580
 
 权威副本`/tmp/yuanqi-supermimic-q1-20261023`，分支`Q1`，远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。当前RF04训练冻结版本`f03db7566fcd590912b4cc9b24621d32b19319a2`；`d66ac1cd21de1682ca6f069227c070ebf98da02f`仅为旧RF02历史版本。文档及独立4096资源入口的后续提交不代表运行中训练源码改变。各阶段记录显式推送Q1并独立比对远端，服务器/用户镜像同步报告、小收据和各自AGENTS新增偏好。唯一既有未跟踪`script/supermimic_q1_sources/download_bones.py`不执行、不提交、不删除。
 
-恢复先读此文件、[RF04-E2048](README_SUPERMIMIC_Q1_E2048_20261025.md)、[后续RF05-E4096](README_SUPERMIMIC_Q1_E4096_20261025.md)，重新核资源/进程/Git状态；RF04为COMPLETED，不重启、覆盖或追加预算。先查看`E4096_PROFILE_P01_20261025`与`BONES_RF05_UP01_E4096_T02H_20261025`目录是否已存在及其状态，避免重复profile/训练。RF03仅为停止历史；RF02历史证据由整轮README恢复。详细历史见[报告索引](README.md)、[论文优先前快照](README_CURRENT_STATE_BEFORE_PAPER_FIRST_20261025.md)和[更早归档](README_CURRENT_STATE_ARCHIVE_20261025.md)。每日研究最近10/25检查无实质更新，静默；自动研究不调度训练。
+恢复先读此文件、[RF04-E2048](README_SUPERMIMIC_Q1_E2048_20261025.md)、[后续RF05-E4096](README_SUPERMIMIC_Q1_E4096_20261025.md)和[磁盘排查](README_Q1_STORAGE_GROWTH_20261026.md)，重新核资源/进程/Git状态。RF04为COMPLETED，不重启、覆盖或追加预算；`E4096_PROFILE_P01_20261025`已正常完成，不重复profile。先核`BONES_RF05_UP01_E4096_T02H_20261025`是否出现及现场状态，未启动时须实际余盘恢复100GiB后才执行，使用已发布部署身份。RF03仅为停止历史；RF02历史证据由整轮README恢复。详细历史见[报告索引](README.md)、[论文优先前快照](README_CURRENT_STATE_BEFORE_PAPER_FIRST_20261025.md)和[更早归档](README_CURRENT_STATE_ARCHIVE_20261025.md)。每日研究最近10/25检查无实质更新，静默；自动研究不调度训练。

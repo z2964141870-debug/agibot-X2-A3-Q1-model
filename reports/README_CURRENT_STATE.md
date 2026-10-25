@@ -39,3 +39,5 @@
 Git权威副本`/tmp/yuanqi-supermimic-q1-20261023`，分支`Q1`；远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。重要阶段立即README/索引、小收据、payload audit、提交推送并独立核远端，再同步用户恢复镜像。Mac不新增大工件。唯一未跟踪旧BONES下载脚本不执行/提交/删除。
 
 历史快照完整保存在[当前状态历史归档](README_CURRENT_STATE_ARCHIVE_20261025.md)；其他项目与教学的既有入口可由[报告索引](README.md)恢复，不能用历史运行条目替代现场核验。
+
+- 每日研究最近检查10/25：43请求均成功，六份arXiv列表逐条未变；SMR仅项目页标识/CSS，111条去重与H001保持，静默、不新增简报。最新有内容仍为[10/24](research/2026-10-24/README.md)；见[检查](README_RESEARCH_CHECK_20261025.md)与[同步回执](../data/manifests/research_watch_sync_20261025.json)，发布待核验。当前Q1工程以自身最新状态为准，日报不调度计算。

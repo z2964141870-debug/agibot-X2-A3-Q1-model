@@ -186,6 +186,7 @@ P05历史限制：R01脚地摩擦固定0.6、随机化被floor优先级覆盖，
 
 | 日期 | 阶段 | 状态与证据 |
 | --- | --- | --- |
+| 2026-10-25 | 每日研究静默检查 | 43请求均成功，列表/主要关注源未变，SMR仅页面样式；111条去重保持，不新增简报，见[检查](README_RESEARCH_CHECK_20261025.md)及[回执](../data/manifests/research_watch_sync_20261025.json)，发布待核验 |
 | 2026-10-25 | P15足地间隙恢复 | C五控制全过、A/B失败保留，修正实际floor缓存/mesh+sphere导数；八组因余盘不足未运行，见[阶段记录](README_SUPERMIMIC_Q1_FLOOR_RECOVERY_20261025.md) |
 | 2026-10-25 | P14整段常数根高度适配 | 八组1438帧/独立3188核验和2812新inverse完成，0准入；16状态确认原生约束允许已有穿地零步，见[阶段记录](README_SUPERMIMIC_Q1_WALKING_ROOT_OFFSET_20261025.md) |
 | 2026-10-25 | P13步行目标可达性 | 实际24组/4314帧及独立6068核验/fresh FK完成，修正目标每帧有外球冲突；P14常数高度候选待，见[阶段记录](README_SUPERMIMIC_Q1_WALKING_REACH_20261025.md) |

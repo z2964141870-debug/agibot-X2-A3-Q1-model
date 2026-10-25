@@ -59,3 +59,9 @@ toy跟踪显示第151次QP才失败：地面配置Z=-0.04时，模型实际仍�
 仅修改未被正式数组收据绑定的新P15入口及控制；A版本保留于发布03642f0和上述原生失败日志。新增configure_floor显式清为mjSAMEFRAME_NONE，实际求解每个QP前都核data.geom_xpos与world geom_pos匹配，避免静默使用错误地面。修正后同时改变实际floor坐标和恢复界，明确两因素，不宣称单变量因果。
 
 B新增第五控制，重现地面缓存不一致/要求显式拒绝，再验证正负地面位移实际生效；toy原八条件QP恢复不减少。真实Q1按两个mesh和八个sphere的实际形状计算独立支撑点高度，对有限激活行核有符号导数；mesh存在多个共面支撑点时，原生法线Jacobian的方向值须在独立正/反向差分的区间内，不能用错误全sphere前提或跳过mesh来通过。原16状态、每状态8方向保持。B本地两解析控制和语法检查后发布，服务器五控制待。
+
+## B实际四通过/一fixture错误
+
+B发布`479e59fe55736bd6aadbd6d68c85ef17e56420e5`已独立核Q1远端，部署前核A旧SHA、部署后逐SHA一致。[原生B记录](../logs/session_records/supermimic_q1_P15_controls_B_20261025.log)退出1：解析两项、toy八条件实际QP恢复、真实Q1十形状/16状态/128方向导数全部通过；新增第五项fixture把两个free足部直接挂world，原native配对过滤后不足两对，在实际floor一致性检查前就错误，不能称五项全部通过。
+
+C仅修该新增fixture为已控的pelvis freejoint+双足slide树，仍使用原pair过滤、正负地面位移及缓存不一致拒绝断言，不改P15生产者或降低检查。源码保持SHA d411fedc2c2ff03ba17f04f2700ba458668b8fb6f7c4bffcfa1b8ce96a4188c0，补检待。08:17:20原guard为Z、controller/trainer已不存在，OOM14，内存13.08GB、共享盘余46322839552字节，正式八组仍0启动。

@@ -67,10 +67,11 @@ class RecoveryTests(unittest.TestCase):
         import mujoco as mj
 
         xml = """<mujoco><worldbody><geom name="floor" type="plane" size="1 1 .1"/>
-        <body name="left_ankle_roll_link" pos="0 .1 .1"><freejoint/>
+        <body name="pelvis"><freejoint/><inertial mass="1" pos="0 0 0" diaginertia=".1 .1 .1"/>
+        <body name="left_ankle_roll_link" pos="0 .1 .1"><joint name="left_z" type="slide" axis="0 0 1"/>
         <geom type="sphere" size=".03" mass="1"/></body>
-        <body name="right_ankle_roll_link" pos="0 -.1 .1"><freejoint/>
-        <geom type="sphere" size=".03" mass="1"/></body></worldbody></mujoco>"""
+        <body name="right_ankle_roll_link" pos="0 -.1 .1"><joint name="right_z" type="slide" axis="0 0 1"/>
+        <geom type="sphere" size=".03" mass="1"/></body></body></worldbody></mujoco>"""
         for height in (-.04, .04):
             model = mj.MjModel.from_xml_string(xml)
             configuration = mink.Configuration(model)

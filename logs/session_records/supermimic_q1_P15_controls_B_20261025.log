@@ -1,0 +1,28 @@
+2026-10-25 Beijing time. P15 server B controls, native exit code 1.
+Published Q1: 479e59fe55736bd6aadbd6d68c85ef17e56420e5, independently verified.
+Source SHA d411fedc2c2ff03ba17f04f2700ba458668b8fb6f7c4bffcfa1b8ce96a4188c0
+Test SHA d6276a861c04853455ce618cc380f8d2004e547488734b3bf9f4d1f16b385374
+Same read-only unittest command as A; PYTHONDONTWRITEBYTECODE=1, no formal P15 output directory.
+
+/root/.bashrc: line 1: /generate_container_user: No such file or directory
+test_invalid_numeric_contract_rejected (test_walking_floor_recovery.RecoveryTests.test_invalid_numeric_contract_rejected) ... ok
+test_penetrated_spheres_recover_and_positive_clearance_is_preserved (test_walking_floor_recovery.RecoveryTests.test_penetrated_spheres_recover_and_positive_clearance_is_preserved) ... ok
+test_real_q1_signed_distance_derivatives_after_root_changes (test_walking_floor_recovery.RecoveryTests.test_real_q1_signed_distance_derivatives_after_root_changes) ... ok
+test_runtime_floor_position_cache_and_mismatch_rejection (test_walking_floor_recovery.RecoveryTests.test_runtime_floor_position_cache_and_mismatch_rejection) ... ERROR
+test_signed_bound_and_dt_convention (test_walking_floor_recovery.RecoveryTests.test_signed_bound_and_dt_convention) ... ok
+
+======================================================================
+ERROR: test_runtime_floor_position_cache_and_mismatch_rejection (test_walking_floor_recovery.RecoveryTests.test_runtime_floor_position_cache_and_mismatch_rejection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/test_walking_floor_recovery.py", line 81, in test_runtime_floor_position_cache_and_mismatch_rejection
+    bound = RecoveringFloorLimit(floor_limit(mink, model, .005), mj)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/YuanQi_Q1/script/supermimic_q1_sources/probe_walking_contact_floor.py", line 25, in floor_limit
+    raise ValueError("Every registered foot collision shape must have a native floor constraint")
+ValueError: Every registered foot collision shape must have a native floor constraint
+
+----------------------------------------------------------------------
+Ran 5 tests in 4.416s
+
+FAILED (errors=1)

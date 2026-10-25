@@ -96,6 +96,25 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 
 后续取回的[早期更新快照](../data/manifests/supermimic_q1_BONES_RF02_early_update_status_20261025.json)为350轮/22400真实转移、WM89组/actor39次，`policy_grad_norm=1.0185585022`、`critic_loss=4.1829929352`，H32想象BPTT及critic已实际进入更新，数值有限；训练计时321.26秒、GPU40摄氏度、容器内存27873009664字节/OOM14。另保存[启动阶段guard快照](../data/manifests/supermimic_q1_BONES_RF02_start_guard_20261025.json)，两者是原样观察，恢复仍以服务器实时状态为准；模型张量和Adam计数的保存核对在产生相应checkpoint后执行。
 
+## 中间保存核对入口
+
+新增`script/project_tools/audit_q1_checkpoint.py`，以独立CPU进程读取初始和指定保存，核对参数形状/真实变化/有限性、三Adam计数、训练manifest、保存前缀日志、输入与训练源码身份；只输出证据，0新动力积分/0新optimizer更新。它位于独立工具目录，当前RF02训练源码保持冻结。核对前保留28.75GiB共享内存余量边界，过程中29.5GiB及OOM14保护，不创建CUDA上下文。
+
+14:17:19已用RF01已完成500轮作为真实控制，输出[原样控制收据](../data/manifests/supermimic_q1_BONES_RF01_checkpoint_tool_control_20261025.json)，状态CHECKPOINT_EVIDENCE_PASSED、13项检查全过。WM/policy/critic变化张量数14/20/6、最大差0.2534199357/0.0123939831/0.3602191806，三Adam1490/99/1980；与原RF01独立保存核对的计数和变化逐项一致。耗时3.22秒、最高采样共享内存26917109760字节/OOM14。该控制只验证核对入口，不是RF02中间保存结论。
+
+工具SHA`ecdb504efd54eec6bf319585c474b70f1585b2a8d7a9e1c8697250f4a3653425`，控制收据SHA`e054b7e81f976ff6c45f6fcd2c7a7fc3a1ac630f39389e409495b7b447a6ae29`；本地和服务器已独立逐SHA一致。控制实际命令是以下命令中run改为`BONES_RF01_500_20261025/run`、checkpoint改`final.pt`、output改`BONES_BASELINE_G02_20261025/checkpoint_tool_RF01_control.json`。待RF02的1000保存实际出现后执行：
+
+```bash
+env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  /opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python \
+  /opt/data/private/ZHY/script/project_tools/audit_q1_checkpoint.py \
+  --root /opt/data/private/ZHY \
+  --run /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF02_12000_20261025/run \
+  --checkpoint step_001000.pt \
+  --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF02_12000_20261025/checkpoint_1000_audit.json \
+  --expected-oom-kill 14
+```
+
 ## 计划产物与恢复
 
 - 原参考：`data/supermimic_for_q1/BONES_PF01_128_20261025/library`。

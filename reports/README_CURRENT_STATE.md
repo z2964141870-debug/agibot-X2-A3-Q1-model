@@ -10,13 +10,13 @@
 
 - [BONES PF02完整合库](README_SUPERMIMIC_Q1_BONES_BASELINE_20261025.md)已完成：复用128并新增896，1024/1024个冻结train来源、326883帧/6517.18秒=108.62分钟，0转换/IO错误；独立来源集合缺项/额外均0、全部120→50Hz原速、1024数组链接。新7批总分配1.031GB；原false几何标记保留，不阻止训练。
 
-- RF02于14:02:53进入独立训练，已保存350轮/22400真实转移快照、WM89组/actor39次，H32想象BPTT及critic真实进入更新，梯度/损失有限；初始模型69122731字节实存。仍按64环境12000采集轮/768000转移及固定前8train初始/最终真实动力学比较、回放；完整目标未完成。控制器861470/start_ticks3619874227，包装862406/3620017857，worker862408/3620018050，boot保持，三实际进程已读；目前无运行子agent，最多一个。
+- RF02于14:02:53进入独立训练，14:30实际保存1000轮/64000真实转移、WM349组/actor299次，独立CPU核对13项通过，三Adam3490/299/5980、三网络真实变化且有限、1024输入/源码保持；14:31:41已继续1025轮/RUNNING。仍按64环境12000采集轮/768000转移及固定前8train初始/最终真实动力学比较、回放；完整目标未完成。控制器861470/start_ticks3619874227，包装862406/3620017857，worker862408/3620018050，boot保持，实际身份已读；目前无运行子agent，最多一个。
 
 - 发布代码`d66ac1cd21de1682ca6f069227c070ebf98da02f`已独立核远端Q1，12个服务器reproduction源码逐SHA与发布本一致。恢复先读`data/supermimic_for_q1/BONES_BASELINE_G02_20261025/status.json`、当前阶段guard/progress和日志，核实boot/PID/start_ticks，不因连接超时重启既有流程。启动[plan](../data/manifests/supermimic_q1_BONES_G02_plan_20261025.json)/[launch](../data/manifests/supermimic_q1_BONES_G02_launch_20261025.json)/[状态快照](../data/manifests/supermimic_q1_BONES_G02_launch_status_20261025.json)已保存。
 
 - 当前训练根`data/supermimic_for_q1/BONES_RF02_12000_20261025/`，实际worker日志`logs/BONES_RF02_12000_20261025.log`。恢复读其`guard.json`及`run/status.json`；[训练manifest](../data/manifests/supermimic_q1_BONES_RF02_admission_20261025.json)/[合库收据](../data/manifests/supermimic_q1_BONES_PF02_1024_admission_20261025.json)/[早期更新快照](../data/manifests/supermimic_q1_BONES_RF02_early_update_status_20261025.json)已取回。16份静态原样文件与服务器逐SHA一致。早期实测OOM14、GPU40摄氏度、内存27.87GB、盘余2.091TB；资源保护保持，尚无RF02效果结论。
 
-- [中间保存只读工具](README_SUPERMIMIC_Q1_BONES_BASELINE_20261025.md)已实现并在RF01真实500轮控制上通过13项检查，三Adam和参数变化与原独立核对逐项一致；工具与原样收据逐SHA取回。下一在RF02实际产生`run/step_001000.pt`后运行`script/project_tools/audit_q1_checkpoint.py`；本项不代表RF02保存已核对，最终12000轮保存核对仍由既有流程执行。
+- [1000保存原样核对](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_1000_audit_20261025.json)已逐SHA取回，0新积分/更新；保存205920167字节/SHA`2078ea8d4c357fc0cf63d9a7c453fbbe5f1010917c998057dfccf0d9f6fa2aed`。只读工具发布da8b7d4且在RF01真实控制中与原独立核对相同；当前已用它核实RF02中间保存，最终12000轮保存核对仍由既有流程执行。14:31训练分配约275.88MB、盘余2.091TB/OOM14，权重LOCAL_ONLY未拉Mac。
 
 - RF01 E01实际动力学评测及算术复算完成：固定前2片初始/最终整片回报0.27296→0.14400、完成比例62.03%→32.49%、提前终止1/2→2/2，执行段关节RMSE0.44609→0.44551rad。第一片最终视频真实倒地、71/266步提前终止，不能称整体改善或有效步行。五份[原样收据](README_SUPERMIMIC_Q1_BONES_BASELINE_20261025.md)已取回且服务器SHA逐一一致；结果仅覆盖500轮小试两片训练动作。
 

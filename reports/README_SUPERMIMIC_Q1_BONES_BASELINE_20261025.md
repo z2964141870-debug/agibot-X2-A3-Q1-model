@@ -102,7 +102,7 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 
 14:17:19已用RF01已完成500轮作为真实控制，输出[原样控制收据](../data/manifests/supermimic_q1_BONES_RF01_checkpoint_tool_control_20261025.json)，状态CHECKPOINT_EVIDENCE_PASSED、13项检查全过。WM/policy/critic变化张量数14/20/6、最大差0.2534199357/0.0123939831/0.3602191806，三Adam1490/99/1980；与原RF01独立保存核对的计数和变化逐项一致。耗时3.22秒、最高采样共享内存26917109760字节/OOM14。该控制只验证核对入口，不是RF02中间保存结论。
 
-工具SHA`ecdb504efd54eec6bf319585c474b70f1585b2a8d7a9e1c8697250f4a3653425`，控制收据SHA`e054b7e81f976ff6c45f6fcd2c7a7fc3a1ac630f39389e409495b7b447a6ae29`；本地和服务器已独立逐SHA一致。控制实际命令是以下命令中run改为`BONES_RF01_500_20261025/run`、checkpoint改`final.pt`、output改`BONES_BASELINE_G02_20261025/checkpoint_tool_RF01_control.json`。待RF02的1000保存实际出现后执行：
+工具SHA`ecdb504efd54eec6bf319585c474b70f1585b2a8d7a9e1c8697250f4a3653425`，控制收据SHA`e054b7e81f976ff6c45f6fcd2c7a7fc3a1ac630f39389e409495b7b447a6ae29`；本地和服务器已独立逐SHA一致。工具及控制发布`da8b7d443f350163bef878f02da7db4fa658536d`，独立核对远端Q1一致；RF02训练代码身份仍为d66ac1c。控制实际命令是以下命令中run改为`BONES_RF01_500_20261025/run`、checkpoint改`final.pt`、output改`BONES_BASELINE_G02_20261025/checkpoint_tool_RF01_control.json`。以下RF02命令已在1000保存实际出现后执行：
 
 ```bash
 env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
@@ -115,6 +115,22 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
   --expected-oom-kill 14
 ```
 
+## RF02第1000轮保存实证
+
+14:30:18实读RUNNING/1000轮/64000真实转移、WM349组/actor299次，worker862408/start_ticks3620018050与原boot匹配，训练计时1613.13秒=26.89分钟；实际`step_001000.pt`已经通过原子保存出现。14:30:22独立CPU核对完成，[原样收据](../data/manifests/supermimic_q1_BONES_RF02_checkpoint_1000_audit_20261025.json)状态CHECKPOINT_EVIDENCE_PASSED、13项全过，真实保存结果：
+
+| 网络 / Adam | 变化张量数 | 最大绝对变化 | Adam实际步数 |
+|---|---:|---:|---:|
+| 世界模型 | 14 | 0.3303254545 | 3490 |
+| actor | 20 | 0.0306657720 | 299 |
+| critic | 6 | 0.8715044856 | 5980 |
+
+三网络和optimizer张量有限，初始Adam为空，manifest/1024输入/训练源码身份保持，25至1000每25轮日志前缀完整；0新动力积分/0新更新/无CUDA上下文。核对耗时4.07秒，容器共享内存采样最高27398664192字节，OOM14保持。收据SHA`2bc311dfb6658848e7fce5f10a00aafcd6f8028434198fa55d3074257e73bc75`，已从服务器原样取回并独立逐SHA一致。
+
+初始`step_000000.pt`69122731字节/SHA`262d007e7b6cd4fd2ae25eafd7ce5a6dfb9da2cf4656373d83798c6a68846ae0`；1000保存205920167字节/SHA`2078ea8d4c357fc0cf63d9a7c453fbbe5f1010917c998057dfccf0d9f6fa2aed`。权重只在服务器保留，LOCAL_ONLY，Mac/Git仅取小收据。
+
+14:31:41再读训练已继续1025轮、guard RUNNING；训练目录分配275877888字节、盘余2091288834048字节、共享内存27088363520字节/OOM14。1000保存实证是中间进度，12000固定预算及之后的固定8片初始/最终真实动力学比较、回放仍未完成；没有以中间核对替代全目标，也没有新增效果达标门槛。
+
 ## 计划产物与恢复
 
 - 原参考：`data/supermimic_for_q1/BONES_PF01_128_20261025/library`。
@@ -124,4 +140,4 @@ env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_T
 - 流程状态：`data/supermimic_for_q1/BONES_BASELINE_G02_20261025/status.json`，计划与进程身份同目录保存。
 - 日志：统一`logs/BONES_*_20261025*.log`，模型/参考/视频只写data。
 
-后续继续观测既有RF02：确认actor/critic进入真实更新，完成12000轮、保存核对、固定8片动力学比较和回放。每完成重要阶段更新本README/当前状态/索引并同步GitHub；训练/评测/完整目标未完成。代码、README及小收据按阶段同步用户镜像与服务器，服务器AGENTS仅增补单子agent限制，保留其余历史差异。旧可视化18863入口本次curl连接失败；待本轮真实视频生成后恢复可访问入口，不用旧视频冒充RF02。
+后续继续观测既有RF02至原定12000轮，再完成流程已有的最终保存核对、固定8片动力学比较和回放；actor/critic真实更新及1000保存核对均已有证据。每完成重要阶段更新本README/当前状态/索引并同步GitHub；训练/评测/完整目标未完成。代码、README及小收据按阶段同步用户镜像与服务器，服务器AGENTS仅增补单子agent限制，保留其余历史差异。旧可视化18863入口本次curl连接失败；待本轮真实视频生成后恢复可访问入口，不用旧视频冒充RF02。

@@ -1,6 +1,8 @@
 # YUANQI 当前状态与下一步
 
-更新日期：2026-10-25，北京时间。用户最新要求[2048环境实际训练至少2小时](README_SUPERMIMIC_Q1_E2048_20261025.md)，唯一子agent只读分析位移，主代理负责训练。新RF04先核2048吞吐/显存，计划WM batch1024×10、actor2048、UTD0.4，保留原365帧抬手移动参考与方法。正式训练尚未开始。
+更新日期：2026-10-25，北京时间。[RF04-E2048-UP01](README_SUPERMIMIC_Q1_E2048_20261025.md)已于23:21:31正式启动，2048环境/8槽/8线程、WM batch1024×10、actor2048/H32、UTD0.4，保留原365帧抬手移动参考与方法、从零初始化。23:35实读300轮/614400转移、WM69组/actor19次，critic与梯度有限，未有本轮效果结论。controller885444/start_ticks3623369662、worker885445/start_ticks3623369674及boot均重新核对，78项源码/入口身份保持；冻结代码f03db7566fcd590912b4cc9b24621d32b19319a2，不热改。实际训练至少7200秒、完整25轮边界退出、12000轮安全上限；最早约10月26日01:22后完成训练，之后自动初末MuJoCo/上肢位移分析/图表/MP4。`q1-2048`每10分钟监督，正常静默，禁止自动重启/扩预算。[原样观测](../data/manifests/supermimic_q1_RF04_E2048_startup_observation_20261025.json)。
+
+唯一子agent已完成[位移诊断](README_SUPERMIMIC_Q1_DISPLACEMENT_REVIEW_20261025.md)，没有GPU或新仿真。旧RF02参考/实际速度约0.327/0.019m/s，腿部幅度约参考26.5%、双支撑97.86%，目标速度一致性已核；目前支持站立附近局部最优，不确定单一原因。先看本轮固定动作动力学比较，再考虑完整闭环梯度及同源脚部相位检查，不增加数据硬门。
 
 原[RF03-UP01](README_SUPERMIMIC_Q1_RF03_UP01_20261025.md)因用户调整已于22:51:46 STOPPED_SIGNAL，667轮/42688转移、WM216/actor166、971.10秒；guard确认worker回收、GPU恢复14MiB/OOM14，不恢复、不执行原计划初末评测。final.pt为停止快照，不是正式完成。旧RUNNING收据均为历史快照。
 
@@ -18,7 +20,7 @@
 
 唯一实体根`huanyu:/opt/data/private/ZHY`，四目录`data / logs / script / reports`。Python为`data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python`。现有18864 SSH桥仍监听；boot基线`d994e71f-bae0-46ba-a5f7-6c2163771c6c`、OOM基线14，恢复必须重新核现场。
 
-D02终后最新观察：GPU27摄氏度/14MiB/0%利用率、容器内存22.467GB、under_oom0/OOM14、盘余1.313TB，相关评测/诊断进程无匹配。D02新增工件约6.73MB，未新开训练；下方20:43/20:50为RF02终后历史观测。
+RF04启动后23:35现场：GPU40摄氏度/9150MiB，共享容器内存23.366GB、under_oom0/OOM14，盘余835.629GB；最近guard本实验分配约69.3MB，保护正常。共享盘余变化不等于本实验新增量，继续按真实余量监督。2048预检完整WM/actor/critic更新有限、CUDA峰值约8.49GB，profile已退出。D02及下方20:43/20:50是此前终后历史观测，不作为当前空闲证明。
 
 20:43终后观测已无活动训练，GPU28摄氏度/14MiB；本轮训练目录分配2.748GB、ZHY总分配325.008GB。20:50实际cgroup v1补充观测内存23.525GB、under_oom0/OOM14、盘余1.682TB；初次cgroup v2探测的null原样保留。[分配/进程观测](../data/manifests/supermimic_q1_BONES_RF02_final_resource_observation_20261025.json)、[真实v1健康观测](../data/manifests/supermimic_q1_BONES_RF02_final_health_observation_20261025.json)。100GiB余盘、单实验12GiB及温度/内存/OOM保护继续执行。
 

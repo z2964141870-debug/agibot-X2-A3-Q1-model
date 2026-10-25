@@ -1,0 +1,197 @@
+{
+  "status": "LIVE_TRAINING_ACTOR_UPDATES_OBSERVED_NOT_FINAL_EVALUATION",
+  "observed_utc": "2026-10-25T15:35:34.182617+00:00",
+  "code_commit": "f03db7566fcd590912b4cc9b24621d32b19319a2",
+  "experiment": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF04_UP01_E2048_T02H_20261025",
+  "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+  "processes": [
+    {
+      "pid": 885444,
+      "start_ticks": 3623369662,
+      "state": "S",
+      "identity_matches": true
+    },
+    {
+      "pid": 885445,
+      "start_ticks": 3623369674,
+      "state": "S",
+      "identity_matches": true
+    }
+  ],
+  "pipeline": {
+    "status": "RUNNING",
+    "started_utc": "2026-10-25T15:21:31.165892+00:00",
+    "process": {
+      "pid": 885444,
+      "start_ticks": 3623369662,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    },
+    "phase": "train",
+    "events": [
+      {
+        "phase": "train",
+        "started_utc": "2026-10-25T15:21:31.166168+00:00"
+      }
+    ],
+    "error": null,
+    "storage_status": "LOCAL_ONLY"
+  },
+  "training": {
+    "status": "RUNNING",
+    "step": 300,
+    "env_steps": 614400,
+    "wm_updates": 69,
+    "policy_updates": 19,
+    "seconds": 822.8596232458949,
+    "pid": 885445,
+    "reward_mean": 0.04651447385549545,
+    "termination_fraction": 0.0078125,
+    "joint_rmse_rad": 0.4288501739501953,
+    "health": {
+      "gpu_temperature_c": 40,
+      "cgroup_memory_bytes": 23354478592,
+      "oom_kill": 14
+    },
+    "imag_objective": 1.2646136283874512,
+    "imag_return_undisc": 1.0456554889678955,
+    "imag_reward_mean": 0.03479338437318802,
+    "imag_survival_H": 0.8729321956634521,
+    "imag_dhat_mean": 0.004245307296514511,
+    "policy_grad_norm": 0.06462497264146805,
+    "action_abs_mean": 0.06119198352098465,
+    "imag_r/motion_global_root_pos": 0.00461742514744401,
+    "imag_r/motion_global_root_ori": 0.00490308552980423,
+    "imag_r/motion_body_pos": 0.015056876465678215,
+    "imag_r/motion_body_ori": 0.0008641222957521677,
+    "imag_r/motion_body_lin_vel": 0.013295279815793037,
+    "imag_r/motion_body_ang_vel": 0.011615022085607052,
+    "imag_r/action_rate_l2": -9.598737051419448e-06,
+    "imag_r/joint_limit": -0.01554882898926735,
+    "critic_loss": 0.1620534509420395,
+    "critic_value_mean": 0.7457732558250427,
+    "critic_target_mean": 0.826093316078186,
+    "wm/state_loss": 0.8786263465881348,
+    "wm/term_bce": 0.012572097778320312,
+    "wm/nse_1step": 0.0113729327917099,
+    "wm/nse_kstep": 0.023473258316516876,
+    "wm/term_acc": 0.99869384765625,
+    "wm/loss": 0.8911984443664551,
+    "wm/grad_norm": 5.169889831542969
+  },
+  "initialization": "RANDOM_FROM_SCRATCH_NO_A3_WEIGHTS",
+  "args": {
+    "root": "/opt/data/private/ZHY",
+    "motions": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_1024_20261025/library/references",
+    "output": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF04_UP01_E2048_T02H_20261025/run",
+    "backend_receipt": "/opt/data/private/ZHY/data/supermimic_for_q1/PHUMA_P05_slots_V01_20261024/receipt.json",
+    "reference_receipt": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_1024_20261025/library/admission.json",
+    "steps": 12000,
+    "training_seconds": 7200.0,
+    "num_envs": 2048,
+    "threads": 8,
+    "model_slots": 8,
+    "batch": 2048,
+    "wm_batch": 1024,
+    "wm_batches": 10,
+    "warmup_steps": 128,
+    "model_warmup_updates": 50,
+    "checkpoint_every": 1000,
+    "compile": false,
+    "seed": 2026102513,
+    "device": "cuda:0",
+    "clips": [
+      "train_3419f09ba93c91d75fc1"
+    ],
+    "code_commit": "f03db7566fcd590912b4cc9b24621d32b19319a2"
+  },
+  "sim": {
+    "num_envs": 2048,
+    "threads": 8,
+    "domain_randomization": true,
+    "observation_noise": true,
+    "action_noise": 0.1,
+    "episode_steps": 500,
+    "history": 10
+  },
+  "wm_trainer": {
+    "window": 8,
+    "batches_per_update": 10,
+    "batch_size": 1024,
+    "lr": 0.0002,
+    "grad_clip": 1.0,
+    "weight_decay": 0.0,
+    "compile": null
+  },
+  "policy_trainer": {
+    "horizon": 32,
+    "batch_size": 2048,
+    "history": 10,
+    "future_frames": 10,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "lr": 0.0002,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "grad_clip_norm": 1.0,
+    "grad_clip_value": 0.1,
+    "critic_lr": 0.0002,
+    "critic_grad_clip": 1.0,
+    "critic_epochs": 5,
+    "critic_minibatches": 4,
+    "use_critic": true,
+    "obs_noise": true,
+    "compile": null,
+    "anchor_obs": false
+  },
+  "train_clips": [
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0768_20261025/converted/train_3419f09ba93c91d75fc1.npz",
+      "bytes": 371993,
+      "sha256": "f9bce4c3452720cda88a5adc4111fe2354440dd04e8c8ecb50cbf94d7181b8c3"
+    }
+  ],
+  "admission": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF04_UP01_E2048_T02H_20261025/run/admission.json",
+    "bytes": 439422,
+    "sha256": "a932aec6bf28cabd51018c39f519f303b6390d02eddceb6829d8a4d7b8c37064"
+  },
+  "source_check_count": 78,
+  "source_mismatches": [],
+  "gpu_csv": "NVIDIA GeForce RTX 3090, 9150, 24576, 40, 0",
+  "cgroup_memory": {
+    "memory.usage_in_bytes": "23366381568",
+    "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 14",
+    "memory.limit_in_bytes": "34359738368"
+  },
+  "disk_free_bytes": 835628650496,
+  "guard_status": "RUNNING",
+  "guard_storage_snapshot": {
+    "experiment": {
+      "root": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF04_UP01_E2048_T02H_20261025",
+      "unique_allocated_bytes": 69292032,
+      "unique_logical_bytes": 69268012,
+      "unique_inodes": 12,
+      "symlinks_not_followed": 0
+    },
+    "source": {
+      "root": "/opt/data/private/ZHY/data/references/bones_seed/archives",
+      "unique_allocated_bytes": 23499988992,
+      "unique_logical_bytes": 23499977743,
+      "unique_inodes": 2,
+      "symlinks_not_followed": 0
+    },
+    "free_bytes": {
+      "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF04_UP01_E2048_T02H_20261025": 835868811264,
+      "/opt/data/private/ZHY/data/references/bones_seed/archives": 835868811264
+    },
+    "shared_memory": {
+      "shared_bytes": 23354425344,
+      "oom_kill": 14,
+      "maximum_bytes": 32212254720
+    }
+  },
+  "limits": "First live update evidence only. No completed policy or causal improvement claim.",
+  "storage_status": "LOCAL_ONLY"
+}

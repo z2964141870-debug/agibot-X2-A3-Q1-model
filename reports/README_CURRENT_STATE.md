@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-更新：2026-10-25 09:06 P17真实只读预览通过，最终盘余0/原停止身份复核，北京时间。当前目标是SuperMimic for Q1的世界模型、想象BPTT和critic复现，最终必须由未见步行动作的真实MuJoCo跟随支持；尚未达成。BONES获取交由师兄处理，等用户通知；不再查询下载或处理凭据。现有PHUMA、AMASS和SMPL-X继续使用，旧A3/STOPPED/FAILED不恢复。
+更新：2026-10-25 09:42 private及相关项目存储盘点完成，盘余仍0，北京时间。当前目标是SuperMimic for Q1的世界模型、想象BPTT和critic复现，最终必须由未见步行动作的真实MuJoCo跟随支持；尚未达成且目标保持存储阻塞。BONES获取交由师兄处理，等用户通知；不再查询下载或处理凭据。现有PHUMA、AMASS和SMPL-X继续使用，旧A3/STOPPED/FAILED不恢复。
 
 ## 唯一训练与恢复
 
@@ -29,6 +29,8 @@
 原R02 step5000开发对照完整5→6/6、跟随0/6，移动0.078251/参考0.521165m；R02C新增1810时数值FAILED保留。现有三个test_locomotion是fitness名字，位移标签不能当步行认证。源足底、映射及浮脚缺口见[D02C](README_SUPERMIMIC_Q1_PHUMA_SUPPORT_MAPPING_20261024.md)和[D04](README_SUPERMIMIC_Q1_PHUMA_REFERENCE_DYNAMICS_20261025.md)，不重复相同样本诊断，不据此声称唯一失败原因。
 
 ## 资源与下一步
+
+09:34至09:42[完整private盘点](README_Q1_PRIVATE_STORAGE_INVENTORY_20261025.md)：五个一级目录合计831.41GB，两次相同；Q1为19.97GB、yuanqi_ops366.02GB、旧ZHY94.38GB，相关合计480.36GB，纠正仅Q1约20GB的范围。AMASS原库180.26GB/历史training106.73GB为主要项；两组旧A3 checkpoint独立文件SHA相同，环境也有重复，尚未清理或完成可删依赖审计。整盘同期已用增27.73GB至7.56TB、可用0，private仅绑定其中子目录；约6.73TB差额不能从此容器归属，具体写入者未定位，需平台侧核查。[原生日志](../logs/session_records/q1_private_storage_inventory_20261025.log)及[本机整理汇总](../data/manifests/q1_private_storage_inventory_20261025.json)已保存，0服务器新增/删除/移动及训练。
 
 09:06:56最终原生复核盘余仍0/OOM14、内存13.51GB，原三停止终态/进程身份保持，P15目录未建；[P17完整日志](../logs/session_records/supermimic_q1_P17_real_preview_20261025.log)。09:02只读du确认Q1 data目录实际约19.95GB、R02D2.465GB，不跟随外部数据链接；[整理收据](../data/manifests/supermimic_q1_P17_owned_storage_summary_20261025.json)仅限本树、不归因全盘。即使清空此目录也不足恢复100GiB，正式科学执行须等待外部空间，资源协调问题已提出；本轮没有删除资产或改正式存储。已完成可用的准备和真实只读核验，不重复已过控制代替动力学结果。
 

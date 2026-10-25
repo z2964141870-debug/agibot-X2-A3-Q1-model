@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-25 09:42：[private与项目存储盘点完成](README_Q1_PRIVATE_STORAGE_INVENTORY_20261025.md)。五个一级目录合计831.41GB；Q1/yuanqi_ops/旧ZHY相关目录合计480.36GB，补齐此前仅Q1约20GB口径。两组旧A3权重SHA确认双份、环境亦有重复；尚未清理。private两次总量一致、同期整盘已用增27.73GB，当前可用0，需平台侧查可见目录之外占用；具体写入者未定位。
+
 2026-10-25 09:02：[P17真实父库只读预览通过](README_SUPERMIMIC_Q1_DIRECTORY_EXCLUSION_VIEW_20261025.md)，两份各2885行变换保持十九门/旧来源链/held-out，P10十五预留目录排除；候选593 train/35.27分钟，正式库未建。共享盘仍0，Q1 data自身约19.95GB不足恢复100GiB；后续科学执行等待外部空间。
 
 2026-10-25：[P17目录排除视图准备](README_SUPERMIMIC_Q1_DIRECTORY_EXCLUSION_VIEW_20261025.md)实现及本地五项控制通过，保持旧HumanML来源链/十九门/held-out，重核P10预留来源，盘余预检在建目录前。真实父库预览待，正式新库未建/未训练；08:47盘余仍0。

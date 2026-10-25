@@ -1,0 +1,1476 @@
+{
+  "record_type": "LOCAL_SUMMARY_OF_NATIVE_READONLY_PROBES",
+  "date_beijing": "2026-10-25",
+  "measurement_window_beijing": "09:34:35-09:42:12",
+  "server": "huanyu",
+  "root": "/opt/data/private",
+  "code_baseline": "dabec5919926e58e47ecc2ecc68569bce47fc38e",
+  "unit": "Allocated bytes; GB is decimal 10^9; du -x does not dereference symlinks.",
+  "private_top_level": [
+    {
+      "path": "/opt/data/private/yuanqi_ops",
+      "allocated_bytes": 366016385024
+    },
+    {
+      "path": "/opt/data/private/YuanQi_Q1",
+      "allocated_bytes": 19969957888
+    },
+    {
+      "path": "/opt/data/private/epic-contact-reproduction-20261011",
+      "allocated_bytes": 24008433664
+    },
+    {
+      "path": "/opt/data/private/action-reproduction-20261011",
+      "allocated_bytes": 41149997056
+    },
+    {
+      "path": "/opt/data/private/hechengzhu",
+      "allocated_bytes": 380268466176
+    },
+    {
+      "path": "/opt/data/private",
+      "allocated_bytes": 831413243904
+    }
+  ],
+  "related_project_total_bytes": 480363438080,
+  "related_project_roots": [
+    {
+      "path": "/opt/data/private/YuanQi_Q1",
+      "allocated_bytes": 19969957888,
+      "scope": "Current Q1; includes stopped and historical Q1 runs."
+    },
+    {
+      "path": "/opt/data/private/yuanqi_ops",
+      "allocated_bytes": 366016385024,
+      "scope": "Shared motion resources, environments and historical A3 outputs; not all produced by current Q1."
+    },
+    {
+      "path": "/opt/data/private/hechengzhu/ZHY",
+      "allocated_bytes": 94377095168,
+      "scope": "Historical A3 workspace."
+    }
+  ],
+  "other_private_allocated_bytes": 351049805824,
+  "hechengzhu_excluding_ZHY_allocated_bytes": 285891371008,
+  "private_second_scan_unchanged": true,
+  "filesystem_first_sample": {
+    "time_beijing": "2026-10-25T09:34:35+08:00",
+    "total_bytes": 7619864297472,
+    "used_bytes": 7534695383040,
+    "available_bytes": 0
+  },
+  "filesystem_final_sample": {
+    "time_beijing": "2026-10-25T09:42:12.227914+08:00",
+    "total_bytes": 7619864297472,
+    "used_bytes": 7562420568064,
+    "available_bytes": 0
+  },
+  "filesystem_used_increase_between_samples_bytes": 27725185024,
+  "final_filesystem_used_minus_visible_private_bytes": 6731007324160,
+  "discrepancy_attribution": "Not resolved to a specific directory or user in this container; includes inaccessible shared filesystem allocations and filesystem overhead. Visible deleted-open probe was incomplete due to 16 permission failures.",
+  "mounts": [
+    {
+      "fsroot": "/",
+      "fstype": "tmpfs",
+      "source": "tmpfs",
+      "target": "/opt/data/host-dev-shm"
+    },
+    {
+      "fsroot": "/default/ZONES/p3090-8/PROJECTS/robotics01/PRIVATE/hcz",
+      "fstype": "ext4",
+      "source": "/dev/nvme2n1p1[/default/ZONES/p3090-8/PROJECTS/robotics01/PRIVATE/hcz]",
+      "target": "/opt/data/private"
+    },
+    {
+      "fsroot": "/default/ZONES/p3090-8/PROJECTS/robotics01/COMMON",
+      "fstype": "ext4",
+      "source": "/dev/nvme2n1p1[/default/ZONES/p3090-8/PROJECTS/robotics01/COMMON]",
+      "target": "/opt/data/projectcommon"
+    },
+    {
+      "fsroot": "/default/ZONES/p3090-8/COMMON",
+      "fstype": "ext4",
+      "source": "/dev/nvme2n1p1[/default/ZONES/p3090-8/COMMON]",
+      "target": "/opt/data/zonecommon"
+    },
+    {
+      "fsroot": "/default/common",
+      "fstype": "ext4",
+      "source": "/dev/nvme2n1p1[/default/common]",
+      "target": "/opt/data/common/default"
+    }
+  ],
+  "visible_other_shared_mounts_allocated_bytes": [
+    {
+      "path": "/opt/data/projectcommon",
+      "allocated_bytes": 4096
+    },
+    {
+      "path": "/opt/data/zonecommon",
+      "allocated_bytes": 4096
+    },
+    {
+      "path": "/opt/data/common/default",
+      "allocated_bytes": 12288
+    }
+  ],
+  "du_breakdowns": [
+    {
+      "command": [
+        "ionice",
+        "-c",
+        "3",
+        "nice",
+        "-n",
+        "15",
+        "du",
+        "-x",
+        "-B1",
+        "--max-depth=1",
+        "/opt/data/private/yuanqi_ops/data/training"
+      ],
+      "returncode": 0,
+      "rows": [
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/training/p12_fb",
+          "allocated_bytes": 7812886528
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/training/a3_zhy_residual_p1_20261019_E55",
+          "allocated_bytes": 8257187840
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/training/p12_probe",
+          "allocated_bytes": 2604298240
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/training/a3_zhy_rootchannel_20261019_E53",
+          "allocated_bytes": 5465407488
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/training/a3_zhy_channel_probe_20261019_E54",
+          "allocated_bytes": 1502887936
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/training/p12_p12run",
+          "allocated_bytes": 7812931584
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/training/a3_zhy_projection_finetune_20261018_E52",
+          "allocated_bytes": 3384307712
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/training/p2_main",
+          "allocated_bytes": 69894631424
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/training",
+          "allocated_bytes": 106734542848
+        }
+      ]
+    },
+    {
+      "command": [
+        "ionice",
+        "-c",
+        "3",
+        "nice",
+        "-n",
+        "15",
+        "du",
+        "-x",
+        "-B1",
+        "--max-depth=1",
+        "/opt/data/private/yuanqi_ops/data/humanplus_preview"
+      ],
+      "returncode": 0,
+      "rows": [
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_150424",
+          "allocated_bytes": 114163712
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_135127",
+          "allocated_bytes": 168841216
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260912_152448",
+          "allocated_bytes": 214888448
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_135630",
+          "allocated_bytes": 171982848
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260912_135111",
+          "allocated_bytes": 161333248
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260917_155228",
+          "allocated_bytes": 464719872
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260912_152259",
+          "allocated_bytes": 227135488
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_152430",
+          "allocated_bytes": 85467136
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_151158",
+          "allocated_bytes": 139620352
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_134819",
+          "allocated_bytes": 127049728
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_154220",
+          "allocated_bytes": 178094080
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_133301",
+          "allocated_bytes": 140369920
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_140911",
+          "allocated_bytes": 117886976
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_115645",
+          "allocated_bytes": 161337344
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_142212",
+          "allocated_bytes": 165974016
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_135918",
+          "allocated_bytes": 322228224
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260912_155435",
+          "allocated_bytes": 453365760
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260917_174102",
+          "allocated_bytes": 745230336
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_120503",
+          "allocated_bytes": 180768768
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_153530",
+          "allocated_bytes": 253509632
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_152837",
+          "allocated_bytes": 123486208
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260917_214745",
+          "allocated_bytes": 3864858624
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260917_175248",
+          "allocated_bytes": 283095040
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_150041",
+          "allocated_bytes": 169934848
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_150904",
+          "allocated_bytes": 141275136
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_141611",
+          "allocated_bytes": 121094144
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_151402",
+          "allocated_bytes": 104005632
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_114649",
+          "allocated_bytes": 166019072
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260901_144355",
+          "allocated_bytes": 6180917248
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260917_155816",
+          "allocated_bytes": 1499004928
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_145334",
+          "allocated_bytes": 117293056
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_144823",
+          "allocated_bytes": 159322112
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_145523",
+          "allocated_bytes": 133296128
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_140916",
+          "allocated_bytes": 141512704
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_115938",
+          "allocated_bytes": 109899776
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_135515",
+          "allocated_bytes": 268468224
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_145046",
+          "allocated_bytes": 111063040
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_114931",
+          "allocated_bytes": 159621120
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_115409",
+          "allocated_bytes": 173457408
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_142705",
+          "allocated_bytes": 110886912
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_141755",
+          "allocated_bytes": 129474560
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_132635",
+          "allocated_bytes": 244264960
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_152654",
+          "allocated_bytes": 118984704
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_135056",
+          "allocated_bytes": 192401408
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_143321",
+          "allocated_bytes": 109084672
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_133530",
+          "allocated_bytes": 483069952
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260912_144417",
+          "allocated_bytes": 174862336
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_120158",
+          "allocated_bytes": 89681920
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_114310",
+          "allocated_bytes": 98775040
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260912_145255",
+          "allocated_bytes": 367792128
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_154426",
+          "allocated_bytes": 253145088
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_135844",
+          "allocated_bytes": 217190400
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_135713",
+          "allocated_bytes": 214048768
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_134656",
+          "allocated_bytes": 164814848
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260917_174839",
+          "allocated_bytes": 2286182400
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_141957",
+          "allocated_bytes": 134438912
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_134246",
+          "allocated_bytes": 222744576
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260912_151751",
+          "allocated_bytes": 492552192
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260912_143917",
+          "allocated_bytes": 110239744
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260912_144235",
+          "allocated_bytes": 137895936
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_132018",
+          "allocated_bytes": 190517248
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_152432",
+          "allocated_bytes": 112422912
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_144528",
+          "allocated_bytes": 183885824
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_151942",
+          "allocated_bytes": 202072064
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260912_164839",
+          "allocated_bytes": 567877632
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_121252",
+          "allocated_bytes": 90042368
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_134239",
+          "allocated_bytes": 114073600
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260912_163912",
+          "allocated_bytes": 333266944
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_153956",
+          "allocated_bytes": 171556864
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_153022",
+          "allocated_bytes": 179019776
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260909_171744",
+          "allocated_bytes": 2666668032
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_142431",
+          "allocated_bytes": 178143232
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_141118",
+          "allocated_bytes": 199979008
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_141342",
+          "allocated_bytes": 178909184
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_143015",
+          "allocated_bytes": 97689600
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_113804",
+          "allocated_bytes": 109539328
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_140323",
+          "allocated_bytes": 249741312
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_151615",
+          "allocated_bytes": 119705600
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_153238",
+          "allocated_bytes": 271089664
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260917_213908",
+          "allocated_bytes": 3658448896
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_135317",
+          "allocated_bytes": 233345024
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_140531",
+          "allocated_bytes": 170950656
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_143549",
+          "allocated_bytes": 102301696
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_135425",
+          "allocated_bytes": 143077376
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_140727",
+          "allocated_bytes": 101912576
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260917_160809",
+          "allocated_bytes": 1146990592
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_132901",
+          "allocated_bytes": 199225344
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_134057",
+          "allocated_bytes": 138825728
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_121432",
+          "allocated_bytes": 178630656
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260905_134446",
+          "allocated_bytes": 198422528
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview/session_20260903_150656",
+          "allocated_bytes": 198078464
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/humanplus_preview",
+          "allocated_bytes": 37660553216
+        }
+      ]
+    },
+    {
+      "command": [
+        "ionice",
+        "-c",
+        "3",
+        "nice",
+        "-n",
+        "15",
+        "du",
+        "-x",
+        "-B1",
+        "--max-depth=1",
+        "/opt/data/private/yuanqi_ops/script/amass_bridge/data"
+      ],
+      "returncode": 0,
+      "rows": [
+        {
+          "path": "/opt/data/private/yuanqi_ops/script/amass_bridge/data/amass_raw",
+          "allocated_bytes": 180255862784
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/script/amass_bridge/data",
+          "allocated_bytes": 180255944704
+        }
+      ]
+    },
+    {
+      "command": [
+        "ionice",
+        "-c",
+        "3",
+        "nice",
+        "-n",
+        "15",
+        "du",
+        "-x",
+        "-B1",
+        "--max-depth=1",
+        "/opt/data/private/yuanqi_ops/data/phuma"
+      ],
+      "returncode": 0,
+      "rows": [
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/phuma/extracted",
+          "allocated_bytes": 307200
+        },
+        {
+          "path": "/opt/data/private/yuanqi_ops/data/phuma",
+          "allocated_bytes": 3416686592
+        }
+      ]
+    },
+    {
+      "command": [
+        "ionice",
+        "-c",
+        "3",
+        "nice",
+        "-n",
+        "15",
+        "du",
+        "-x",
+        "-B1",
+        "--max-depth=1",
+        "/opt/data/private/hechengzhu/ZHY/data"
+      ],
+      "returncode": 0,
+      "rows": [
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/test_inputs",
+          "allocated_bytes": 17498112
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/datasets",
+          "allocated_bytes": 38051840
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/sync",
+          "allocated_bytes": 1675264
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/references",
+          "allocated_bytes": 109056000
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/transfers",
+          "allocated_bytes": 110592
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/manifests",
+          "allocated_bytes": 8364032
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/env",
+          "allocated_bytes": 23680180224
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/experiments",
+          "allocated_bytes": 32777043968
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/models",
+          "allocated_bytes": 402141184
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/environments",
+          "allocated_bytes": 22992011264
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/research",
+          "allocated_bytes": 17068032
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/evaluation",
+          "allocated_bytes": 4096
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/visualizations",
+          "allocated_bytes": 5722112
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/training",
+          "allocated_bytes": 13647654912
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/tools",
+          "allocated_bytes": 51560448
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data",
+          "allocated_bytes": 93748150272
+        }
+      ]
+    },
+    {
+      "command": [
+        "ionice",
+        "-c",
+        "3",
+        "nice",
+        "-n",
+        "15",
+        "du",
+        "-x",
+        "-B1",
+        "--max-depth=1",
+        "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1"
+      ],
+      "returncode": 0,
+      "rows": [
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B007_20261024",
+          "allocated_bytes": 18104320
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_eval_final_20261023",
+          "allocated_bytes": 1056768
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_render_squat_20261023",
+          "allocated_bytes": 684032
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P06_B017B_20261025",
+          "allocated_bytes": 80150528
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P02_scan_20261024",
+          "allocated_bytes": 58912768
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P10B_walking_check_20261025",
+          "allocated_bytes": 61440
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P01_inventory_20261024",
+          "allocated_bytes": 12279808
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02C_partial5000_extend7000_20261025",
+          "allocated_bytes": 821727232
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/BONES_P02_model_20261024",
+          "allocated_bytes": 16384
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025",
+          "allocated_bytes": 2464641024
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P03_body_B002_20261025",
+          "allocated_bytes": 1851392
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P06_B016_20261024",
+          "allocated_bytes": 79691776
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B005_20261024",
+          "allocated_bytes": 18649088
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P08_expanded_library_20261025",
+          "allocated_bytes": 22700032
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/D05B_support_projection_20261024",
+          "allocated_bytes": 8544256
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P04_publication_20261025",
+          "allocated_bytes": 65536
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_eval_initial_20261023",
+          "allocated_bytes": 966656
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_slots_V01_20261024",
+          "allocated_bytes": 7892992
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/J01_action_response_20261023",
+          "allocated_bytes": 720896
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B001_20261024",
+          "allocated_bytes": 532480
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P13_walking_reach_20261025",
+          "allocated_bytes": 888832
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/motions_P03_20261023",
+          "allocated_bytes": 13701120
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B003_20261024",
+          "allocated_bytes": 749568
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_cachefixed_pair_20261023",
+          "allocated_bytes": 3014488064
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_DEV_A_step5000_20261025",
+          "allocated_bytes": 761856
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P08B_subject_excluded_library_V2_20261025",
+          "allocated_bytes": 19066880
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B013_20261024",
+          "allocated_bytes": 160526336
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B011_20261024",
+          "allocated_bytes": 158535680
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_V01_paired_plots_20261024",
+          "allocated_bytes": 548864
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P04_check_B002_20261025",
+          "allocated_bytes": 45056
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/V01_20261023",
+          "allocated_bytes": 4276224
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_D04_reference_dynamics_20261025",
+          "allocated_bytes": 1269760
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P03_references_20261024",
+          "allocated_bytes": 69812224
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_render_walk_20261023",
+          "allocated_bytes": 839680
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P05B_mapping_diagnosis_20261025",
+          "allocated_bytes": 176128
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_render_punch_20261023",
+          "allocated_bytes": 770048
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P01_scan_20261024",
+          "allocated_bytes": 58974208
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/P07_backend_20261023",
+          "allocated_bytes": 28672
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/SOURCE_P07_aliases_20261025",
+          "allocated_bytes": 98304
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/BONES_D01_download_20261024_A",
+          "allocated_bytes": 8192
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R04_H32_H8_matched3000_20261024",
+          "allocated_bytes": 90112
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P02_pilot_20261024",
+          "allocated_bytes": 7454720
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B002_20261024",
+          "allocated_bytes": 561152
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/D08_R03_action_response_20261024",
+          "allocated_bytes": 733184
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P06_local_offsets_B001_20261025",
+          "allocated_bytes": 2912256
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P03_pilot_20261024",
+          "allocated_bytes": 7483392
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P06_B015_20261024",
+          "allocated_bytes": 19795968
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P11_walking_velocity_probe_20261025",
+          "allocated_bytes": 598016
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/BONES_P00_runtime_probe_20261024",
+          "allocated_bytes": 8192
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/P04_backend_20261023",
+          "allocated_bytes": 24576
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/RESOURCE_RECOVERY_A_20261025",
+          "allocated_bytes": 110592
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B006_20261024",
+          "allocated_bytes": 159211520
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/SOURCE_P08B_aliases_20261025",
+          "allocated_bytes": 208896
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P12_walking_contact_probe_20261025",
+          "allocated_bytes": 17813504
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/D04_reference_dynamics_20261024",
+          "allocated_bytes": 2658304
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P05_base_library_20261024",
+          "allocated_bytes": 14360576
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B010_20261024",
+          "allocated_bytes": 160944128
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R03_B128_extend12000_20261023",
+          "allocated_bytes": 5339082752
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B012_20261024",
+          "allocated_bytes": 159780864
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/D05_support_projection_20261024",
+          "allocated_bytes": 6864896
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P04_Q1_B002_20261025",
+          "allocated_bytes": 8638464
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R04V2_H32_H8_matched3000_20261024",
+          "allocated_bytes": 615903232
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B014_20261024",
+          "allocated_bytes": 4988928
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/motions_P02A_20261023",
+          "allocated_bytes": 13705216
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/P02_backend_20261023",
+          "allocated_bytes": 28672
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R02_batch_pair_20261023",
+          "allocated_bytes": 206819328
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/SOURCE_P08_aliases_20261025",
+          "allocated_bytes": 212992
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P14_walking_root_offset_20261025",
+          "allocated_bytes": 4898816
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P04_check_B001_20261025",
+          "allocated_bytes": 20480
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P10_walking_holdout_20261025",
+          "allocated_bytes": 9207808
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P03_body_B001_20261025",
+          "allocated_bytes": 634880
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B008_20261024",
+          "allocated_bytes": 154865664
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/BONES_P01_metadata_20261024",
+          "allocated_bytes": 27877376
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02_expanded64_H32_12000_20261024",
+          "allocated_bytes": 1095950336
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/V02_render_prep_20261024",
+          "allocated_bytes": 36864
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/V02_R03_final_20261024",
+          "allocated_bytes": 3739648
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P06_B018_20261025",
+          "allocated_bytes": 235995136
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P04_Q1_B001_20261025",
+          "allocated_bytes": 2904064
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P12C_walking_floor_probe_20261025",
+          "allocated_bytes": 18100224
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B004_20261024",
+          "allocated_bytes": 724992
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_curves_20261023",
+          "allocated_bytes": 245760
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_D02C_support_mapping_20261024",
+          "allocated_bytes": 192512
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P02_moving_candidates_20261025",
+          "allocated_bytes": 86016
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_D03B_common_models_20261024",
+          "allocated_bytes": 1880064
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R01_B128_3000_20261024",
+          "allocated_bytes": 1507512320
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/AMASS_P05_mapping_diagnosis_20261025",
+          "allocated_bytes": 12288
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/R01_20261023",
+          "allocated_bytes": 1505308672
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/D07_R03_reward_model_20261024",
+          "allocated_bytes": 98304
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P06_B017_20261024",
+          "allocated_bytes": 4513792
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/P02_backend_B_20261023",
+          "allocated_bytes": 24576
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P06_B019_20261025",
+          "allocated_bytes": 215474176
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P12B_walking_contact_velocity_probe_20261025",
+          "allocated_bytes": 18079744
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_P04_B009_20261024",
+          "allocated_bytes": 157827072
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1",
+          "allocated_bytes": 18825572352
+        }
+      ]
+    },
+    {
+      "command": [
+        "ionice",
+        "-c",
+        "3",
+        "nice",
+        "-n",
+        "15",
+        "du",
+        "-x",
+        "-B1",
+        "--max-depth=1",
+        "/opt/data/private/YuanQi_Q1/data/references"
+      ],
+      "returncode": 0,
+      "rows": [
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/references/humanml3d_metadata_9176e8fb_20261025",
+          "allocated_bytes": 4096
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/references/humanml3d_metadata_9176e8fb_B_20261025",
+          "allocated_bytes": 1073152
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/references/bones_seed",
+          "allocated_bytes": 209424384
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/references/phuma_source_2faf15b5",
+          "allocated_bytes": 22929408
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/references/body_models",
+          "allocated_bytes": 822939648
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/references/q1",
+          "allocated_bytes": 61992960
+        },
+        {
+          "path": "/opt/data/private/YuanQi_Q1/data/references",
+          "allocated_bytes": 1122148352
+        }
+      ]
+    }
+  ],
+  "extension_totals": {
+    "/opt/data/private/YuanQi_Q1": {
+      "allocated_regular_bytes": 19961659392,
+      "extensions": [
+        {
+          "allocated": 16559271936,
+          "files": 85,
+          "suffix": ".pt"
+        },
+        {
+          "allocated": 2419826688,
+          "files": 6577,
+          "suffix": ".npz"
+        },
+        {
+          "allocated": 446451712,
+          "files": 5,
+          "suffix": ".zip"
+        },
+        {
+          "allocated": 193511424,
+          "files": 20,
+          "suffix": ".jsonl"
+        },
+        {
+          "allocated": 172302336,
+          "files": 3,
+          "suffix": ".csv"
+        },
+        {
+          "allocated": 83869696,
+          "files": 572,
+          "suffix": ".json"
+        },
+        {
+          "allocated": 44724224,
+          "files": 60,
+          "suffix": ".stl"
+        },
+        {
+          "allocated": 14278656,
+          "files": 280,
+          "suffix": ".log"
+        },
+        {
+          "allocated": 5689344,
+          "files": 9,
+          "suffix": ".mp4"
+        },
+        {
+          "allocated": 4501504,
+          "files": 1,
+          "suffix": ".parquet"
+        },
+        {
+          "allocated": 4403200,
+          "files": 32,
+          "suffix": ".png"
+        },
+        {
+          "allocated": 3608576,
+          "files": 9,
+          "suffix": ".txt"
+        }
+      ],
+      "mtime_since_0800_allocated_at_least_1MiB_bytes": 205320192,
+      "mtime_since_0800_files_at_least_1MiB": 1,
+      "recent_largest": [
+        {
+          "allocated": 205320192,
+          "mtime_ns": 1792886738730022000,
+          "path": "/opt/data/private/YuanQi_Q1/data/supermimic_for_q1/PHUMA_R02D_bounded_partial5000_extend7000_20261025/run/final.pt"
+        }
+      ],
+      "regular_files": 8124,
+      "unique_inodes": 8124
+    },
+    "/opt/data/private/hechengzhu/ZHY": {
+      "allocated_regular_bytes": 94110064640,
+      "extensions": [
+        {
+          "allocated": 25505308672,
+          "files": 193,
+          "suffix": ".pt"
+        },
+        {
+          "allocated": 20346585088,
+          "files": 8059,
+          "suffix": ".json"
+        },
+        {
+          "allocated": 19314200576,
+          "files": 5289,
+          "suffix": ".so"
+        },
+        {
+          "allocated": 3176357888,
+          "files": 34,
+          "suffix": ".12"
+        },
+        {
+          "allocated": 2254102528,
+          "files": 162,
+          "suffix": ".tx"
+        },
+        {
+          "allocated": 2218283008,
+          "files": 14598,
+          "suffix": "<none>"
+        },
+        {
+          "allocated": 2107777024,
+          "files": 26,
+          "suffix": ".9"
+        },
+        {
+          "allocated": 2012839936,
+          "files": 443,
+          "suffix": ".0"
+        },
+        {
+          "allocated": 1649016832,
+          "files": 89014,
+          "suffix": ".pyc"
+        },
+        {
+          "allocated": 1561010176,
+          "files": 84,
+          "suffix": ".2"
+        },
+        {
+          "allocated": 1528016896,
+          "files": 35,
+          "suffix": ".11"
+        },
+        {
+          "allocated": 1382154240,
+          "files": 93942,
+          "suffix": ".py"
+        }
+      ],
+      "mtime_since_0800_allocated_at_least_1MiB_bytes": 0,
+      "mtime_since_0800_files_at_least_1MiB": 0,
+      "recent_largest": [],
+      "regular_files": 367063,
+      "unique_inodes": 367063
+    },
+    "/opt/data/private/yuanqi_ops": {
+      "allocated_regular_bytes": 365986230272,
+      "extensions": [
+        {
+          "allocated": 182112391168,
+          "files": 18889,
+          "suffix": ".npz"
+        },
+        {
+          "allocated": 115321606144,
+          "files": 451,
+          "suffix": ".pt"
+        },
+        {
+          "allocated": 37472600064,
+          "files": 91,
+          "suffix": ".hdf5"
+        },
+        {
+          "allocated": 7078281216,
+          "files": 8,
+          "suffix": ".zip"
+        },
+        {
+          "allocated": 3830882304,
+          "files": 19512,
+          "suffix": "<none>"
+        },
+        {
+          "allocated": 3773825024,
+          "files": 427,
+          "suffix": ".jsonl"
+        },
+        {
+          "allocated": 2892222464,
+          "files": 8,
+          "suffix": ".pack"
+        },
+        {
+          "allocated": 2316566528,
+          "files": 238,
+          "suffix": ".so"
+        },
+        {
+          "allocated": 2280198144,
+          "files": 17,
+          "suffix": ".12"
+        },
+        {
+          "allocated": 1382547456,
+          "files": 10,
+          "suffix": ".9"
+        },
+        {
+          "allocated": 1034579968,
+          "files": 932,
+          "suffix": ".pkl"
+        },
+        {
+          "allocated": 924160000,
+          "files": 8,
+          "suffix": ".13"
+        }
+      ],
+      "mtime_since_0800_allocated_at_least_1MiB_bytes": 0,
+      "mtime_since_0800_files_at_least_1MiB": 0,
+      "recent_largest": [],
+      "regular_files": 82383,
+      "unique_inodes": 82383
+    }
+  },
+  "duplicate_metadata_candidates": {
+    "minimum_file_bytes": 67108864,
+    "cross_root_same_name_and_size_groups": 32,
+    "content_verified_all": false
+  },
+  "duplicate_libraries_verified": [
+    {
+      "distinct_inodes": 3,
+      "files": [
+        {
+          "path": "/opt/data/private/yuanqi_ops/envs/fgp/lib/python3.10/site-packages/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9",
+          "sha256": "f504745d346542609f975de51227080647d3675eac576ead82c396b8124f8f28",
+          "size": 547383096
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/env/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9",
+          "sha256": "f504745d346542609f975de51227080647d3675eac576ead82c396b8124f8f28",
+          "size": 547383096
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/environments/isaac-runtime-raw/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9",
+          "sha256": "f504745d346542609f975de51227080647d3675eac576ead82c396b8124f8f28",
+          "size": 547383096
+        }
+      ],
+      "name": "libcudnn_engines_precompiled.so.9",
+      "same_content": true
+    },
+    {
+      "distinct_inodes": 3,
+      "files": [
+        {
+          "path": "/opt/data/private/yuanqi_ops/envs/fgp/lib/python3.10/site-packages/nvidia/cusolver/lib/libcusolverMg.so.11",
+          "sha256": "d947654631c536e9099abcc9fe551ece97d0ffeb8fbab142189ea2c85bc55e8e",
+          "size": 161493576
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/env/lib/python3.11/site-packages/nvidia/cusolver/lib/libcusolverMg.so.11",
+          "sha256": "d947654631c536e9099abcc9fe551ece97d0ffeb8fbab142189ea2c85bc55e8e",
+          "size": 161493576
+        },
+        {
+          "path": "/opt/data/private/hechengzhu/ZHY/data/environments/isaac-runtime-raw/lib/python3.11/site-packages/nvidia/cusolver/lib/libcusolverMg.so.11",
+          "sha256": "d947654631c536e9099abcc9fe551ece97d0ffeb8fbab142189ea2c85bc55e8e",
+          "size": 161493576
+        }
+      ],
+      "name": "libcusolverMg.so.11",
+      "same_content": true
+    }
+  ],
+  "duplicate_checkpoints_verified": [
+    {
+      "all_stable": true,
+      "distinct_inodes": 2,
+      "files": [
+        {
+          "allocated_bytes": 308195328,
+          "dev": 66311,
+          "inode": 123737018,
+          "mtime_ns": 1792350404000000000,
+          "nlink": 1,
+          "path": "/opt/data/private/yuanqi_ops/data/training/a3_zhy_rootchannel_20261019_E53/arm_i_tier32/milestone_32/model_step_000032.pt",
+          "sha256": "5c2e9fa8ba2f94261d6c80efd94a191f44b3b1cab3015f59cd8a246bcdce8cff",
+          "size": 308187151,
+          "stable_during_hash": true
+        },
+        {
+          "allocated_bytes": 308191232,
+          "dev": 66311,
+          "inode": 212467717,
+          "mtime_ns": 1792350404018023700,
+          "nlink": 1,
+          "path": "/opt/data/private/hechengzhu/ZHY/data/experiments/a3_zhy_rootchannel_20261019_E53/checkpoints/arm_i_tier32/model_step_000032.pt",
+          "sha256": "5c2e9fa8ba2f94261d6c80efd94a191f44b3b1cab3015f59cd8a246bcdce8cff",
+          "size": 308187151,
+          "stable_during_hash": true
+        }
+      ],
+      "same_content": true
+    },
+    {
+      "all_stable": true,
+      "distinct_inodes": 2,
+      "files": [
+        {
+          "allocated_bytes": 307572736,
+          "dev": 66311,
+          "inode": 116656244,
+          "mtime_ns": 1792336908000000000,
+          "nlink": 1,
+          "path": "/opt/data/private/yuanqi_ops/data/training/a3_zhy_projection_finetune_20261018_E52/arm_c/milestone_8/model_step_000008.pt",
+          "sha256": "b9f2ce63e4bd797876b9441558dfcef842723b06fa2c72857af5b3aba02efbe0",
+          "size": 307570959,
+          "stable_during_hash": true
+        },
+        {
+          "allocated_bytes": 307572736,
+          "dev": 66311,
+          "inode": 130025280,
+          "mtime_ns": 1792336908629569800,
+          "nlink": 1,
+          "path": "/opt/data/private/hechengzhu/ZHY/data/experiments/a3_zhy_projection_finetune_20261018_E52/checkpoints/arm_c/milestone_8/model_step_000008.pt",
+          "sha256": "b9f2ce63e4bd797876b9441558dfcef842723b06fa2c72857af5b3aba02efbe0",
+          "size": 307570959,
+          "stable_during_hash": true
+        }
+      ],
+      "same_content": true
+    }
+  ],
+  "visible_deleted_open_allocated_bytes": 0,
+  "proc_permission_errors": 16,
+  "symlink_counts": {
+    "/opt/data/private/YuanQi_Q1": 1611,
+    "/opt/data/private/hechengzhu/ZHY": 3097,
+    "/opt/data/private/yuanqi_ops": 414
+  },
+  "server_files_created": 0,
+  "server_files_deleted": 0,
+  "server_files_moved": 0,
+  "training_started": false,
+  "raw_evidence": "logs/session_records/q1_private_storage_inventory_20261025.log",
+  "next_step": "Inventory complete. Retain AMASS/PHUMA, current Q1 dependencies and R02D final. Audit retired A3 checkpoints and old runtime dependencies before any cleanup; shared writer requires platform-side inspection. Scientific goal remains storage-blocked.",
+  "record_base": "e3135df0d9e1d63f772ca6efd1f8931491bbb920"
+}

@@ -1,5 +1,9 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-27：[RF08最终结果与本地交付](README_SUPERMIMIC_Q1_RF08_RESULTS_20261027.md)完成：实训58分21秒、3510轮/3010actor，训练硬终止100→10、验证15→0；验证walking3/3完成，沿目标1.123m/参考2.394m，仍有根漂移和上肢/相位误差。初末115片、共同前缀/全程支撑与肩肘腕分析、六宫格PNG/PDF/CSV和初末MP4完成，[25文件本地大小SHA](../data/manifests/supermimic_q1_RF08_local_delivery_20261027.json)、20560条图表数值与全帧解码通过。MG03发布收尾，不自动延长；全部旧RUNNING为历史时点。
+
+2026-10-27 00:28：[RF08训练正常结束](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)，实际3500.923046秒/3510学习轮36204544转移、WM35100/actor3010；worker退出0并reap，[26项训练保存审计](../data/manifests/supermimic_q1_RF08_training_audit_20261027.json)通过（146冻结来源、115输入、张量/计数/初始从零等）。初末115片评测与最终媒体进行中，图/本地MP4、共同前缀与效果结论待；MG03 A/B/C完成、D进行中/E待，没有新增训练。
+
 2026-10-26 23:59：[RF07曲线判读](README_SUPERMIMIC_Q1_RF07_ROOT_FEEDBACK_20261026.md)补充原论文核验：配置正确不要求逐点单调，模型loss下降不等于真实控制改善，过拟合须看训练/验证差距；RF07只有129次actor更新、500轮平滑接近整段575轮，真实113/365步倒地仍为问题。[RF08](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)23:57已2091学习轮/1591actor、实训2036秒，现场身份/资源正常，继续冻结的一小时试验，终后效果待。
 
 2026-10-26 23:27：[MG03观察目标](README_SUPERMIMIC_Q1_MG03_OBSERVATION_20261026.md)active，[RF08](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)23:23:07实际启动4096环境GPU训练，最多一小时；冻结d8b1dcf…已发布/独立核远端、40文件大小SHA同步三端，现场三status/进程身份/4096配置通过。23:26已271学习轮/3047424转移、WM2710/actor0，仍在500轮WM-only阶段，资源正常无效果结论。新q1-rf08-4096每10分钟监督已实际ACTIVE；终后初末115片、图与本地MP4，2/4/8小时不自动延长。[AP01](README_SUPERMIMIC_Q1_HP_ALIGNMENT_20261026.md)准备已完成，不重复转换/profile。

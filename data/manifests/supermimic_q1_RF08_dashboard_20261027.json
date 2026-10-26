@@ -1,0 +1,80 @@
+{
+  "status": "TRAINING_DASHBOARD_COMPLETED",
+  "created_utc": "2026-10-26T16:27:46.393751+00:00",
+  "runs": [
+    {
+      "label": "RF08 HP-Q1 E4096 / WM1024 / actor1024-H32 / max1h",
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/run",
+      "sources": [
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/run/training_evidence.jsonl",
+          "bytes": 1418339,
+          "sha256": "4aab94236c998a0a402d28a3ac726df4eb5bfc04bec04b9bdfe4a9504d7f2897"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/run/receipt.json",
+          "bytes": 1278,
+          "sha256": "7768ee04cb986693e1b4d00e83bfc3cb4ffb84c031cfa4dbfb7571fbe7c57191"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/run/config.yaml",
+          "bytes": 19041,
+          "sha256": "7ac04986f095e7d904ab6effab749251e84fd8e627ca4e9d2d8076142964047f"
+        }
+      ],
+      "last_logged_step": 3510,
+      "requested_steps": 320000,
+      "num_envs": 4096,
+      "actor_batch": 1024,
+      "wm_batch": 1024,
+      "wm_window": 8,
+      "horizon": 32,
+      "status": "TRAINING_COMPLETED",
+      "ignored_incomplete_tail_bytes": 0,
+      "reward_max": 0.1,
+      "reward_max_source": "Pinned HP MAX_STEP_REWARD=(4*1+2*.5)*.02"
+    }
+  ],
+  "layout": "2x3",
+  "smoothing": {
+    "window_training_iterations": 500,
+    "interval": "(iteration-window, iteration]",
+    "episode_weight": "completed_episodes",
+    "other_weight": "one per available logged row",
+    "partial_initial_window": true
+  },
+  "missing_panels": {
+    "episode_return": [],
+    "episode_termination": [],
+    "episode_length": [],
+    "step_reward": [],
+    "world_model": [],
+    "survival": []
+  },
+  "artifacts": [
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/dashboard/training_dashboard.png",
+      "bytes": 424126,
+      "sha256": "e303b60ea28d9b0264fc68ce5d424df5c49ff544a3738177ac7827454ee90c49"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/dashboard/training_dashboard.pdf",
+      "bytes": 184031,
+      "sha256": "c0b1ee2ae313a28925cab6d8eb028206f07be679a84e0afee2857fc1bcbbcbb2"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/dashboard/training_dashboard.csv",
+      "bytes": 2809554,
+      "sha256": "5bc04b454f60031e65b81d21a51fde102e8c6d55a79eb2ec2f335ad6d5bd57e4"
+    }
+  ],
+  "source": {
+    "path": "/opt/data/private/ZHY/script/project_tools/plot_training_dashboard.py",
+    "bytes": 14899,
+    "sha256": "70f03b41529832c4b582550424195bc9df3477b79db58791ee58e5da45a19e7b"
+  },
+  "physics_steps": 0,
+  "optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY",
+  "env_steps_source": "Actual collected sim_steps, including warmup; not learning iteration times num_envs"
+}

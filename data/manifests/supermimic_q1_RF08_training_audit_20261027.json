@@ -1,0 +1,262 @@
+{
+  "status": "RF08_TRAINING_ARTIFACT_AUDIT_PASSED",
+  "created_utc": "2026-10-26T16:26:33.570700+00:00",
+  "checks": [
+    {
+      "name": "worker_completed_and_reaped",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual_training_within_budget",
+      "passed": true,
+      "detail": 3500.923045836389
+    },
+    {
+      "name": "actual_update_counts",
+      "passed": true,
+      "detail": {
+        "iteration": 3510,
+        "wm_updates": 35100,
+        "actor_updates": 3010
+      }
+    },
+    {
+      "name": "actual_collection_counts",
+      "passed": true,
+      "detail": {
+        "actual": 36204544,
+        "expected": 36204544
+      }
+    },
+    {
+      "name": "published_code_identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all_frozen_source_assets_unchanged",
+      "passed": true,
+      "detail": {
+        "count": 146,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "frozen_library",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frozen_runtime_source",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frozen_config",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frozen_q1_adapter",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "100_train_15_validation_actor_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all_115_motion_inputs_unchanged",
+      "passed": true,
+      "detail": {
+        "count": 115,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "actual_training_configuration",
+      "passed": true,
+      "detail": {
+        "num_envs": 4096,
+        "wm_batch": 1024,
+        "wm_batches": 10,
+        "pi_batch": 1024,
+        "horizon": 32,
+        "utd": 0.4,
+        "hist": 10,
+        "goal_frames": 10,
+        "wm_only_iters": 500,
+        "warmup_steps": 64,
+        "critic_epochs": 5,
+        "critic_minibatches": 4,
+        "amp": "bf16",
+        "compile": true,
+        "seed": 0,
+        "resume": false
+      }
+    },
+    {
+      "name": "from_zero_initial_checkpoint",
+      "passed": true,
+      "detail": {
+        "iteration": 0,
+        "sim_steps": 0
+      }
+    },
+    {
+      "name": "final_checkpoint_counters",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "initial_all_model_optimizer_tensors_finite",
+      "passed": true,
+      "detail": {
+        "tensors": 46,
+        "elements": 17177328
+      }
+    },
+    {
+      "name": "final_all_model_optimizer_tensors_finite",
+      "passed": true,
+      "detail": {
+        "tensors": 175,
+        "elements": 52202956
+      }
+    },
+    {
+      "name": "wm_parameters_updated",
+      "passed": true,
+      "detail": {
+        "changed_state_tensors": 20,
+        "state_tensors": 20
+      }
+    },
+    {
+      "name": "pi_parameters_updated",
+      "passed": true,
+      "detail": {
+        "changed_state_tensors": 26,
+        "state_tensors": 26
+      }
+    },
+    {
+      "name": "initial_checkpoint_size_sha",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "final_checkpoint_size_sha",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "last_checkpoint_matches_final_model",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "last_optimizer_tensors_finite",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "logged_evidence_finite_and_complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "episode_termination_counts_valid",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "last_logged_counters_match",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "training_receipt": {
+    "status": "TRAINING_COMPLETED",
+    "started_utc": "2026-10-26T15:23:07.913362+00:00",
+    "process": {
+      "pid": 21525,
+      "start_ticks": 3632019335,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    },
+    "mode": "train",
+    "code_commit": "d8b1dcf76b7819ddd5be39a5177e14fe1737a3ad",
+    "library": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP01_SOMA_Q1_20261026/q1_candidates/pilot_manifest.json",
+      "bytes": 73256,
+      "sha256": "f3f0bc01d4102e0f524c6b3ceebf39c9ba29288c2af4c94638e8ba27c7c73107"
+    },
+    "training_seconds": 3500.923045836389,
+    "iteration": 3510,
+    "sim_steps": 36204544,
+    "wm_updates": 35100,
+    "actor_updates": 3010,
+    "final": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/run/final.pt",
+      "bytes": 208865366,
+      "sha256": "cbf8c6f73c24fd843b6a3eabb5e2c2b29e624a316f8a5ba4e1b56ede73830a71"
+    },
+    "initial": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/run/initial.pt",
+      "bytes": 68726069,
+      "sha256": "cfb9d6b497f7aadb59316c6f05fef20eccdb57d4e1a5a8d906eed1b454447b2d"
+    },
+    "cuda_peak_allocated_bytes": 6324783104,
+    "cuda_peak_reserved_bytes": 6769606656,
+    "ended_utc": "2026-10-26T16:21:44.632516+00:00"
+  },
+  "artifacts": [
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/plan.json",
+      "bytes": 36700,
+      "sha256": "280ca68298b374cb754a7eb4d2934fd2f025fe1084b3931d5a2730943e588af1"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/train_guard.json",
+      "bytes": 2228,
+      "sha256": "8e4a456c9f83ba7bec67a7500878d4a2aca780c4d318a58d2ffae179d2824704"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/run/receipt.json",
+      "bytes": 1278,
+      "sha256": "7768ee04cb986693e1b4d00e83bfc3cb4ffb84c031cfa4dbfb7571fbe7c57191"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/run/config.yaml",
+      "bytes": 19041,
+      "sha256": "7ac04986f095e7d904ab6effab749251e84fd8e627ca4e9d2d8076142964047f"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/run/training_evidence.jsonl",
+      "bytes": 1418339,
+      "sha256": "4aab94236c998a0a402d28a3ac726df4eb5bfc04bec04b9bdfe4a9504d7f2897"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/run/initial.pt",
+      "bytes": 68726069,
+      "sha256": "cfb9d6b497f7aadb59316c6f05fef20eccdb57d4e1a5a8d906eed1b454447b2d"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/run/final.pt",
+      "bytes": 208865366,
+      "sha256": "cbf8c6f73c24fd843b6a3eabb5e2c2b29e624a316f8a5ba4e1b56ede73830a71"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/run/last.pt",
+      "bytes": 208864609,
+      "sha256": "9fb3af6d74e53abf74d7a225f1df6ff70ae3e2aadb7842b6b1177ccd7f5de62a"
+    }
+  ],
+  "physics_integration_steps": 0,
+  "policy_inference_calls": 0,
+  "optimizer_updates": 0,
+  "scope": "Training identity, budget, frozen inputs, counters and saved tensor validity only. This does not assess policy skill.",
+  "storage_status": "LOCAL_ONLY"
+}

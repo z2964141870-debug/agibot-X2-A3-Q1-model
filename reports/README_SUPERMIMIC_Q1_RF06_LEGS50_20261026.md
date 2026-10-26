@@ -1,6 +1,14 @@
 # Q1 RF06腿部限矩对照与一小时预算
 
-记录日期：2026-10-26，北京时间。MG02-C：实现、CPU验证、发布与部署核验完成；MG02-D正式RF06尚未启动。
+记录日期：2026-10-26，北京时间。MG02-C完成；MG02-D正式RF06于17:22:03启动，当前训练中，尚无效果结论。
+
+## 实际启动
+
+RF05在17:10:45全流程COMPLETED，worker和controller退出，11项图/初末MP4本地大小SHA通过。启动前现场6个RF06源码大小/SHA与已发布`0b1da033148fff0b705fd85cdac5a773b5a7f332`一致，GPU14MiB/27度、共享内存4.66GB/OOM0、盘余1.789TB，目标目录不存在。
+
+按下方准确命令只启动一次，实际2026-10-26北京时间17:22:03，controller3301/start_ticks3629852873、worker3304/start_ticks3629852891、boot`d994e71f-bae0-46ba-a5f7-6c2163771c6c`。17:23:36两者身份/worker命令匹配，pipeline/guard RUNNING、step0初始化，GPU2704MiB/37度、共享内存7.62GB、OOM0、余盘1.789TB；不把step0当真实更新或效果。现场admission确认为12腿关节50%、其余10关节25%，动作尺度按25%、PD50/2，预算软3000秒/最大3600秒、阶段3500秒及55秒清理，禁止续训。
+
+冻结[计划](../data/manifests/supermimic_q1_RF06_leg50_plan_20261026.json)及[启动观测](../data/manifests/supermimic_q1_RF06_leg50_launch_observation_20261026.json)保存真实身份；日志`logs/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026_controller.log`和同前缀`_train.log`。正式运行中不热改训练来源、配置或输入。RF05最新双支撑99.178%、腿部边界饱和0.274%，提示限矩不一定是本轮不迈步的直接原因；RF06检验训练期控制权限，改善尚待真实终后评测。
 
 ## 目标与范围
 
@@ -30,7 +38,7 @@ CPU集成验证`RF06_LEG_CONTRACT_C02_20261026`完成真实评测、算术审计
 
 正式计算仅在自己的25252容器、根`/opt/data/private/ZHY`。启动前须RF05全流程COMPLETED、实际训练至少7200秒、worker正常回收、controller退出、GPU空闲，且RF06输出目录不存在；入口再次强制检查。保留100GiB余盘、12GiB单实验、30GiB共享内存、OOM基线0、86摄氏度和900秒无进度保护，不并行第二训练。
 
-代码版本`0b1da033148fff0b705fd85cdac5a773b5a7f332`已经push并独立核验`refs/heads/Q1`，13个代码/报告/小收据在Mac和25252逐大小/SHA一致，目标AGENTS的一小时预算已核；见[部署收据](../data/manifests/supermimic_q1_RF06_C_deployment_20261026.json)。下列是RF05全流程完成和释放资源后的唯一正式启动命令；尚未执行：
+代码版本`0b1da033148fff0b705fd85cdac5a773b5a7f332`已经push并独立核验`refs/heads/Q1`，13个代码/报告/小收据在Mac和25252逐大小/SHA一致，目标AGENTS的一小时预算已核；见[部署收据](../data/manifests/supermimic_q1_RF06_C_deployment_20261026.json)。下列命令已于17:22:03执行一次，恢复时禁止重复启动：
 
 ```sh
 /opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python \
@@ -44,4 +52,4 @@ CPU集成验证`RF06_LEG_CONTRACT_C02_20261026`完成真实评测、算术审计
 
 ## 下一步与交付
 
-继续监督RF05；完成后直接交付现有2×3 PNG/PDF/CSV和初末MP4至本机对应`data/supermimic_for_q1/`目录，逐大小/SHA。然后顺序执行唯一RF06，再比较完整存活/跌倒、净位移/方向/速度、双脚支撑/换脚、共同前缀腿部及上肢误差、抬手幅度/时序。站住和走起来分别报告，不以支撑比例或倒地位移代替行走证据。后续纯文档提交不改变上述已部署代码版本。现无腿部专用训练效果结论；完整目标进度见[MG02](README_SUPERMIMIC_Q1_MG02_LEG_GOAL_20261026.md)。
+RF05已交付，继续监督唯一RF06直到有限预算及全部终后阶段结束，再比较完整存活/跌倒、净位移/方向/速度、双脚支撑/换脚、共同前缀腿部及上肢误差、抬手幅度/时序。已有六宫格和MP4直接交付本地并核大小/SHA，不建网站、不拉权重。站住和走起来分别报告，不以支撑比例或倒地位移代替行走证据。后续纯文档提交不改变上述冻结代码版本。现无腿部专用训练效果结论；完整目标进度见[MG02](README_SUPERMIMIC_Q1_MG02_LEG_GOAL_20261026.md)。

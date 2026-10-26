@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-27：[MG03完成审计](../data/manifests/supermimic_q1_MG03_completion_audit_20261027.json)20项要求证据齐备，[RF08最终结果](README_SUPERMIMIC_Q1_RF08_RESULTS_20261027.md)提交bb8c909e44badf8346b6a8d08b5246aa75d48c67独立远端核验、19文件三端大小SHA通过，25个本地图/视频等小文件已交付。本轮q1-rf08-4096实际PAUSED，保留其他两任务；没有新增训练。存活/移动改善和全身跟踪仍不合格分别记录，目标工具最后结算随收尾提交核验后执行。
+
 2026-10-27：[RF08最终结果与本地交付](README_SUPERMIMIC_Q1_RF08_RESULTS_20261027.md)完成：实训58分21秒、3510轮/3010actor，训练硬终止100→10、验证15→0；验证walking3/3完成，沿目标1.123m/参考2.394m，仍有根漂移和上肢/相位误差。初末115片、共同前缀/全程支撑与肩肘腕分析、六宫格PNG/PDF/CSV和初末MP4完成，[25文件本地大小SHA](../data/manifests/supermimic_q1_RF08_local_delivery_20261027.json)、20560条图表数值与全帧解码通过。MG03发布收尾，不自动延长；全部旧RUNNING为历史时点。
 
 2026-10-27 00:28：[RF08训练正常结束](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)，实际3500.923046秒/3510学习轮36204544转移、WM35100/actor3010；worker退出0并reap，[26项训练保存审计](../data/manifests/supermimic_q1_RF08_training_audit_20261027.json)通过（146冻结来源、115输入、张量/计数/初始从零等）。初末115片评测与最终媒体进行中，图/本地MP4、共同前缀与效果结论待；MG03 A/B/C完成、D进行中/E待，没有新增训练。

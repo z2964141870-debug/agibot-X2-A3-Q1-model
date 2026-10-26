@@ -1,0 +1,125 @@
+{
+  "status": "MG03_REQUIREMENTS_VERIFIED",
+  "verified_utc": "2026-10-26T16:57:15Z",
+  "goal": "MG03",
+  "checks": [
+    {
+      "requirement": "material_conversion_and_gpu_contracts",
+      "passed": true,
+      "evidence": "data/manifests/supermimic_q1_AP01_soma_library_20261026.json; AP01_fk_contract/gpu_smoke/reporting/profile receipts"
+    },
+    {
+      "requirement": "4096_warp_environments_actual_configuration",
+      "passed": true,
+      "evidence": "data/manifests/supermimic_q1_RF08_training_audit_20261027.json"
+    },
+    {
+      "requirement": "from_zero_initialization_and_parameter_updates",
+      "passed": true,
+      "evidence": "training audit: initial iteration/sim_steps zero; finite changed WM/pi weights"
+    },
+    {
+      "requirement": "one_hour_actual_training_budget",
+      "passed": true,
+      "evidence": "3500.923045836389 seconds, no extension, continuation or retry"
+    },
+    {
+      "requirement": "exact_optimizer_and_collection_counters",
+      "passed": true,
+      "evidence": "3510 iterations, 36204544 transitions, 35100 WM and 3010 actor updates"
+    },
+    {
+      "requirement": "frozen_sources_and_all_115_inputs",
+      "passed": true,
+      "evidence": "146 source/assets plus library/config/adapter and 115 motion SHA checks"
+    },
+    {
+      "requirement": "resource_guards_and_process_identity_release",
+      "passed": true,
+      "evidence": "train/evaluation/dashboard workers reaped with zero exit; final resources all four processes absent, OOM0/GPU14MiB"
+    },
+    {
+      "requirement": "full_100_train_15_validation_initial_final_physics",
+      "passed": true,
+      "evidence": "230 physical rollouts; physical_audit and evaluation receipts"
+    },
+    {
+      "requirement": "physical_outcome_arithmetic_and_same_initial_state",
+      "passed": true,
+      "evidence": "12 audit checks; state max difference 5.960464477539063e-08"
+    },
+    {
+      "requirement": "movement_support_and_failure_qualification",
+      "passed": true,
+      "evidence": "movement_upper_analysis and common_prefix; failed and completed-only statistics separately; geometry not force contact"
+    },
+    {
+      "requirement": "leg_upper_shoulder_elbow_wrist_peak_phase_metrics",
+      "passed": true,
+      "evidence": "common_prefix and movement_upper analyses; full reference arm-peak coverage reported"
+    },
+    {
+      "requirement": "six_panel_png_pdf_csv_and_actual_step_axis",
+      "passed": true,
+      "evidence": "dashboard receipt; 20560 numeric rows independently verified, 500-learning-iteration smoothing"
+    },
+    {
+      "requirement": "initial_final_local_mp4",
+      "passed": true,
+      "evidence": "Both H264 1280x480, 147 frames, 5.88 seconds, all frames decoded without errors"
+    },
+    {
+      "requirement": "local_artifact_size_sha",
+      "passed": true,
+      "evidence": "25 files, 8044244 bytes, all Mac/server sizes and SHA equal"
+    },
+    {
+      "requirement": "storage_and_local_delivery_constraints",
+      "passed": true,
+      "evidence": "Weights/raw trajectories stay server LOCAL_ONLY; no website or large Mac downloads"
+    },
+    {
+      "requirement": "method_differences_and_limits_recorded",
+      "passed": true,
+      "evidence": "RF08_RESULTS_20261027: independent 100/15, X2/Q1, 1024/4096, PD/model/software/budget differences"
+    },
+    {
+      "requirement": "q1_publication_and_independent_remote_sha",
+      "passed": true,
+      "evidence": "bb8c909e44badf8346b6a8d08b5246aa75d48c67"
+    },
+    {
+      "requirement": "three_end_small_record_identity",
+      "passed": true,
+      "evidence": "19 files, 1354813 bytes matched at the evidence-content publication stage"
+    },
+    {
+      "requirement": "training_monitor_paused",
+      "passed": true,
+      "evidence": "q1-rf08-4096 PAUSED through automation_update and local structured reread; other fields preserved"
+    },
+    {
+      "requirement": "performance_not_conflated_with_task_completion",
+      "passed": true,
+      "evidence": "Full-body tracking remains inadequate; improved survival/movement is not accurate imitation; no extra training authorized"
+    }
+  ],
+  "training_code_commit": "d8b1dcf76b7819ddd5be39a5177e14fe1737a3ad",
+  "evidence_publication_commit": "bb8c909e44badf8346b6a8d08b5246aa75d48c67",
+  "evidence_remote_sha_verified": "bb8c909e44badf8346b6a8d08b5246aa75d48c67",
+  "evidence_mirror_file_count": 19,
+  "evidence_mirror_total_bytes": 1354813,
+  "local_delivery_file_count": 25,
+  "local_delivery_total_bytes": 8044244,
+  "monitor": {
+    "id": "q1-rf08-4096",
+    "status": "PAUSED",
+    "remaining_monitors_unchanged": [
+      "supermimichp-x2",
+      "yuanqi"
+    ]
+  },
+  "policy_full_body_tracking_success": false,
+  "authorization_extended_to_longer_training": false,
+  "publication_note": "Evidence content commit and three-end mirror were verified before saving this closure receipt. Closure bookkeeping is committed next; its final SHA/mirror check and goal-tool completion follow in the tool record, without a recursive self-hash requirement."
+}

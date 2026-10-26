@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-27恢复入口：[RF08最终结果](README_SUPERMIMIC_Q1_RF08_RESULTS_20261027.md)、[MG03](README_SUPERMIMIC_Q1_MG03_OBSERVATION_20261026.md)、[运行记录](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)。RF08全pipeline已于00:27:46 COMPLETED，全部训练/评测/绘图进程已退出；MG03 A至D完成，仅E发布核验收尾。没有在训作业，不恢复任何旧命令；本轮未续训或超预算。
+2026-10-27恢复入口：[RF08最终结果](README_SUPERMIMIC_Q1_RF08_RESULTS_20261027.md)、[MG03完成审计](../data/manifests/supermimic_q1_MG03_completion_audit_20261027.json)、[运行记录](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)。RF08全pipeline已于00:27:46 COMPLETED，全部训练/评测/绘图进程已退出；MG03 A至E证据验收齐备，目标工具随最后提交核验后结算。本轮q1-rf08-4096已实际PAUSED，没有在训作业；不恢复任何旧命令，未续训或超预算。
 
 ## 最终效果与交付
 
@@ -26,4 +26,4 @@ Python为`data/environments/supermimic_q1_hp_20261026/bin/python`，须经`scrip
 
 00:40:09 controller21522、训练21525、评测25224、绘图25780均不存在，GPU14MiB/26度、共享13318414336字节/OOM0、余盘1608945061888字节、实验约0.993GB，100GiB余盘/12GiB实验/30GiB共享/86度保护保持。[资源收据](../data/manifests/supermimic_q1_RF08_final_resources_20261027.json)。旧RF05/06/07均封存，不重启；MG02已完成。
 
-下一步仅完成本阶段Q1提交/独立远端40位SHA及三端小记录镜像、MG03审计，再暂停本轮q1-rf08-4096监督；保留supermimichp-x2每小时跟踪与yuanqi。之后候选是漂移/上肢动作尺度、控制响应、真实与想象奖励分项/相位诊断。本轮最多一小时，更长2/4/8小时需用户另行决定；不开子agent、不自动追加训练、不添加数据硬门。无关download_bones.py不执行/修改/暂存/删除。
+结果提交bb8c909e44badf8346b6a8d08b5246aa75d48c67已独立核远端40位SHA，19文件1354813字节在权威Git/Mac/25252大小SHA一致；收尾记录随本次提交再核。q1-rf08-4096暂停已由工具和本地结构化回读双核，其他字段保留；supermimichp-x2每小时跟踪与yuanqi未改。之后候选是漂移/上肢动作尺度、控制响应、真实与想象奖励分项/相位诊断。本轮最多一小时，更长2/4/8小时需用户另行决定；不开子agent、不自动追加训练、不添加数据硬门。无关download_bones.py不执行/修改/暂存/删除。

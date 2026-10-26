@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-27 RF08/MG03内容验收与三端发布已完成：训练3500.923046秒、3510学习轮/3010actor，初末100训练+15验证真实物理评测、共同前缀/全程支撑与上肢、六宫格及25个本地小文件大小SHA齐备。存活和持续移动有改善，上肢/根漂移仍差；见`reports/README_SUPERMIMIC_Q1_RF08_RESULTS_20261027.md`和MG03完成审计。结果提交bb8c909e44badf8346b6a8d08b5246aa75d48c67已独立核远端、19文件三端大小SHA一致。本轮q1-rf08-4096已实际PAUSED，保留supermimichp-x2与yuanqi；所有旧RUNNING/监督ACTIVE仅历史。目标工具最终结算以get_goal为准，不恢复旧训练。用户仅授权本轮最多一小时，2/4/8小时仍须后续决定；不开子agent。
+
 - 2026-10-26 用户最新授权材料齐备后按师兄SuperMimicHP方法适配Q1，4096环境先训练一小时，并要求定目标观察。MG03已active，AP01验证完成、RF08于23:23:07启动，见`reports/README_SUPERMIMIC_Q1_MG03_OBSERVATION_20261026.md`与RF08阶段README；每10分钟监督q1-rf08-4096实际创建ACTIVE。SOMA直接到Q1、多动作、heading XY/朝向观测历史、未来根目标与MuJoCo Warp；Q1控制按自身模型适配，不复制X2数值。正式训练最多3600秒、不并行第二轮、不开子agent；2/4/8小时仅待效果后考虑，不自动追加。RF07已完成并本地交付，旧RUNNING和旧监督ACTIVE记录仅历史，恢复必须核现场。
 
 - 2026-10-26 用户要求RF07若仍不佳，后续尽量全面对齐师兄SuperMimicHP：heading XY/相对朝向进观测历史、完整未来根参考、Q1逐关节PD/full effort、100条SOMA与MuJoCo Warp。RF07已20:45:21全流程完成，训练3058.032232秒，最终113/365步摔倒，不是稳定行走；故转入独立整体适配，保留旧实验，不再限制为只加goal根反馈。上游实际1024环境/WM1024/actor1024，不能说其4096；每轮仍最多3600秒、不开子agent、不得直接照搬X2关节数/数值。2026-10-26用户上传SOMA中，并提供canonical骨架，23062字节及SHA已匹配，已复制到用户25252的`data/references/bones_seed/inbox/soma_base_skel_minimal.bvh`。元数据已在，无需重复索取；师兄100/15清单是精确匹配辅助，不加自定数据门。25677仅获只读查找授权，登录未成功不能说里面没有文件。入口`reports/README_SUPERMIMIC_Q1_HP_ALIGNMENT_20261026.md`。

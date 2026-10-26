@@ -1,0 +1,630 @@
+{
+  "status": "MG02_COMPUTATION_AND_LOCAL_DELIVERY_PASSED_PENDING_FINAL_PUBLICATION",
+  "goal": "MG02",
+  "audited_utc": "2026-10-26T10:44:14.236Z",
+  "latest_user_budget_override": {
+    "RF05_baseline_seconds": 7200,
+    "RF06_maximum_training_seconds": 3600,
+    "RF06_soft_training_target_seconds": 3000,
+    "obsolete_goal_card_RF06_minimum_7200_not_applied": true
+  },
+  "checks": {
+    "A_baseline_duration": true,
+    "A_pipeline_and_checkpoint": true,
+    "A_media": true,
+    "B_three_closed_loop_variants": true,
+    "B_baseline_exact": true,
+    "C_real_contract": true,
+    "C_twelve_caps": true,
+    "C_published_deployment": true,
+    "C_final_control_tests": true,
+    "D_latest_budget": true,
+    "D_training_scale": true,
+    "D_from_zero_saved_sources": true,
+    "D_pipeline": true,
+    "D_final_process_release": true,
+    "E_full_reference_comparison": true,
+    "E_media": true,
+    "E_dashboard": true
+  },
+  "stage_A": {
+    "training": {
+      "status": "TRAINING_FINISHED_PENDING_EVALUATION",
+      "step": 1125,
+      "env_steps": 4608000,
+      "wm_updates": 399,
+      "policy_updates": 349,
+      "training_seconds": 7237.627905793488,
+      "requested_training_seconds": 7200,
+      "seconds": 7238.3610178381205,
+      "error": null,
+      "artifacts": [
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF05_UP01_E4096_T02H_20261025/run/final.pt",
+          "bytes": 205583315,
+          "sha256": "ad115529e89836383c7dee320cbe5b15a21404243e90921f53893f2235cec723"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF05_UP01_E4096_T02H_20261025/run/step_000000.pt",
+          "bytes": 68793963,
+          "sha256": "328ea40edaa3f025060e7a0e54a1b82650acdc9d267161a7a336950a3fdeae2f"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF05_UP01_E4096_T02H_20261025/run/step_001000.pt",
+          "bytes": 205591399,
+          "sha256": "63cb4a76767ecfa1b14c5793195d485250f5aa545c534b45baef95c48826e15f"
+        }
+      ],
+      "storage_status": "LOCAL_ONLY",
+      "not_hardware_validated": true
+    },
+    "status": "COMPLETED",
+    "phases": 9,
+    "media_files": 11,
+    "media_bytes": 1723401
+  },
+  "stage_B": {
+    "source_manifest": "data/manifests/supermimic_q1_RF04_leg_D06B_20261026.json",
+    "variants": [
+      {
+        "variant": "baseline25",
+        "steps": 122,
+        "failed": true,
+        "net_displacement_m": 0.45659211355101736,
+        "double_support_boundary_fraction": 0.8688524590163934
+      },
+      {
+        "variant": "legs50_other25",
+        "steps": 365,
+        "failed": false,
+        "net_displacement_m": 0.04040975449325506,
+        "double_support_boundary_fraction": 0.9917808219178083
+      },
+      {
+        "variant": "all50",
+        "steps": 365,
+        "failed": false,
+        "net_displacement_m": 0.04160194258430172,
+        "double_support_boundary_fraction": 0.9917808219178083
+      }
+    ],
+    "optimizer_updates": 0,
+    "baseline_state_and_action_error": 0
+  },
+  "stage_C": {
+    "fixture_manifest": "data/manifests/supermimic_q1_RF06_leg_contract_C02_20261026.json",
+    "control_version": "Q1_LEGS_CAP50_OTHER25_SCALE25_V1",
+    "published_code_commit": "0b1da033148fff0b705fd85cdac5a773b5a7f332",
+    "integrated_phases": 5,
+    "final_unit_tests": 8,
+    "final_check_exit_code": 0,
+    "final_check_log": "logs/session_records/supermimic_q1_RF06_leg_control_final_checks_20261026.log"
+  },
+  "stage_D": {
+    "training": {
+      "status": "TRAINING_FINISHED_PENDING_EVALUATION",
+      "step": 600,
+      "env_steps": 2457600,
+      "wm_updates": 189,
+      "policy_updates": 139,
+      "training_seconds": 3132.8596501871943,
+      "requested_training_seconds": 3000,
+      "seconds": 3133.442649126053,
+      "error": null,
+      "artifacts": [
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/final.pt",
+          "bytes": 205587155,
+          "sha256": "5dcadad06306d61507a0d4eec3519e0488a74c2bde832514f9dee62a8b26ee7b"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/step_000000.pt",
+          "bytes": 68797803,
+          "sha256": "57f3d6a54aeb153cdd6505de20b3d2d0ef92554adf6cff60df3629ea0d988536"
+        }
+      ],
+      "storage_status": "LOCAL_ONLY",
+      "not_hardware_validated": true
+    },
+    "pipeline_status": "COMPLETED",
+    "pipeline_ended_utc": "2026-10-26T10:21:52.280946+00:00",
+    "pipeline_phases": 10,
+    "checkpoint_checks": 13,
+    "optimizer_counters": {
+      "wm_opt": {
+        "expected": 1890,
+        "actual_distinct": [
+          1890
+        ],
+        "parameter_states": 14,
+        "initial_parameter_states": 0,
+        "passed": true
+      },
+      "policy_opt": {
+        "expected": 139,
+        "actual_distinct": [
+          139
+        ],
+        "parameter_states": 20,
+        "initial_parameter_states": 0,
+        "passed": true
+      },
+      "critic_opt": {
+        "expected": 2780,
+        "actual_distinct": [
+          2780
+        ],
+        "parameter_states": 6,
+        "initial_parameter_states": 0,
+        "passed": true
+      }
+    },
+    "live_closure_observation": {
+      "observed_unix": 1793011376.9689672,
+      "phase": "render_final",
+      "pipeline_status": "COMPLETED",
+      "run": {
+        "status": "TRAINING_FINISHED_PENDING_EVALUATION",
+        "step": 600,
+        "env_steps": 2457600,
+        "wm_updates": 189,
+        "policy_updates": 139,
+        "training_seconds": 3132.8596501871943,
+        "requested_training_seconds": 3000,
+        "seconds": 3133.442649126053,
+        "error": null,
+        "artifacts": [
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/final.pt",
+            "bytes": 205587155,
+            "sha256": "5dcadad06306d61507a0d4eec3519e0488a74c2bde832514f9dee62a8b26ee7b"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/step_000000.pt",
+            "bytes": 68797803,
+            "sha256": "57f3d6a54aeb153cdd6505de20b3d2d0ef92554adf6cff60df3629ea0d988536"
+          }
+        ],
+        "storage_status": "LOCAL_ONLY",
+        "not_hardware_validated": true
+      },
+      "identity_checks": [
+        {
+          "source": "launch.json.process",
+          "expected": {
+            "pid": 3301,
+            "start_ticks": 3629852873,
+            "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+          },
+          "observed": null,
+          "identity_match": false
+        },
+        {
+          "source": "status.json.process",
+          "expected": {
+            "pid": 3301,
+            "start_ticks": 3629852873,
+            "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+          },
+          "observed": null,
+          "identity_match": false
+        },
+        {
+          "source": "rf06_worker_identity",
+          "expected": {
+            "pid": 3304,
+            "start_ticks": 3629852891,
+            "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+            "state": "S",
+            "command_matches_guard": true,
+            "observed_unix": 1793006616.163701
+          },
+          "observed": null,
+          "identity_match": false
+        }
+      ],
+      "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 14, 26, 0",
+      "memory": {
+        "memory.usage_in_bytes": "4942585856",
+        "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0"
+      },
+      "disk_free": 1787138117632,
+      "train_guard_status": "WORKER_COMPLETED",
+      "training_receipt": {
+        "status": "TRAINING_FINISHED_PENDING_EVALUATION",
+        "step": 600,
+        "env_steps": 2457600,
+        "wm_updates": 189,
+        "policy_updates": 139,
+        "training_seconds": 3132.8596501871943,
+        "requested_training_seconds": 3000,
+        "seconds": 3133.442649126053,
+        "error": null,
+        "artifacts": [
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/final.pt",
+            "bytes": 205587155,
+            "sha256": "5dcadad06306d61507a0d4eec3519e0488a74c2bde832514f9dee62a8b26ee7b"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/step_000000.pt",
+            "bytes": 68797803,
+            "sha256": "57f3d6a54aeb153cdd6505de20b3d2d0ef92554adf6cff60df3629ea0d988536"
+          }
+        ],
+        "storage_status": "LOCAL_ONLY",
+        "not_hardware_validated": true
+      }
+    },
+    "from_zero_and_frozen_manifest_evidence": "data/manifests/supermimic_q1_RF06_leg50_training_audit_20261026.json"
+  },
+  "stage_E": {
+    "comparison_manifest": "data/manifests/supermimic_q1_RF05_RF06_comparison_20261026.json",
+    "common_prefix_steps": 365,
+    "no_additional_physics_inference_or_optimizer": true,
+    "RF05": {
+      "training": {
+        "training_seconds": 7237.627905793488,
+        "step": 1125,
+        "env_steps": 4608000,
+        "wm_updates": 399,
+        "policy_updates": 349
+      },
+      "control_variant": null,
+      "evaluation": {
+        "clip": "train_3419f09ba93c91d75fc1",
+        "split": "training",
+        "expected_steps": 365,
+        "executed_steps": 365,
+        "failed": false,
+        "early_terminated": false,
+        "termination_step": null,
+        "reward_sum": 18.28395327180624,
+        "normalized_return": 0.5009302266248284,
+        "full_clip_completion": 1,
+        "executed_joint_rmse_rad": 0.45293570405360134,
+        "executed_body_error_mean_m": 1.0169153491251988,
+        "root_xy_error_mean_m": 1.0038793701709905,
+        "root_xyz_error_mean_m": 1.0081118504862352,
+        "root_xy_final_error_m": 1.618335939183662,
+        "root_xy_displacement_m": 0.018737225477125877,
+        "root_xy_path_length_m": 0.10510851294573446,
+        "reference_root_xy_displacement_full_m": 1.6015037991152772,
+        "reference_root_xy_path_length_full_m": 1.6730306854646801,
+        "reference_root_xy_displacement_executed_m": 1.6015037991152772,
+        "initial_root_position_w_m": [
+          -1.7618285302889447e-18,
+          -2.2130853329386732e-18,
+          0.45531216263771057
+        ],
+        "final_root_position_w_m": [
+          0.008623468689620495,
+          0.016634885221719742,
+          0.41718798875808716
+        ],
+        "reference": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0768_20261025/converted/train_3419f09ba93c91d75fc1.npz",
+          "bytes": 371993,
+          "sha256": "f9bce4c3452720cda88a5adc4111fe2354440dd04e8c8ecb50cbf94d7181b8c3"
+        },
+        "trace": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF05_UP01_E4096_T02H_20261025/evaluation_final/train_3419f09ba93c91d75fc1.npz",
+          "bytes": 114285,
+          "sha256": "03636f40136997517dfe8b0bb1b32c144aab4e43ccac5f2bec1ef0bbb16e343e"
+        }
+      },
+      "movement": {
+        "executed_seconds": 7.3,
+        "net_displacement_m": 0.018737225477125877,
+        "path_length_m": 0.10510851294573446,
+        "displacement_vector_xy_m": [
+          0.008623468689620497,
+          0.016634885221719745
+        ],
+        "net_displacement_along_full_reference_direction_m": -0.01681098467599538,
+        "mean_velocity_along_full_reference_direction_mps": -0.002302874613150052,
+        "mean_velocity_xy_mps": [
+          0.001181297080769931,
+          0.0022787514002355815
+        ],
+        "root_xy_error_mean_m": 1.0038793701709905,
+        "full_reference_displacement_m": 1.6015037298202515
+      },
+      "executed_kinematics": {
+        "all_joints_rmse_rad": 0.4529357054870196,
+        "legs_rmse_rad": 0.2571803642240092,
+        "waist_rmse_rad": 0.08914033624541219,
+        "arms_rmse_rad": 0.6804156539121798,
+        "upper_joint_rmse_rad": {
+          "left_shoulder_pitch_joint": 0.24164902872231628,
+          "left_shoulder_roll_joint": 0.20641455197887884,
+          "left_shoulder_yaw_joint": 0.5558157294553263,
+          "left_elbow_joint": 1.2846006307898163,
+          "right_shoulder_pitch_joint": 0.36360270436458125,
+          "right_shoulder_roll_joint": 0.2504170705143486,
+          "right_shoulder_yaw_joint": 0.6193251691169646,
+          "right_elbow_joint": 1.03204324991509
+        },
+        "arms_by_side": {
+          "left": {
+            "wrist_torso_relative_rmse_m": 0.1338573545217514,
+            "wrist_world_rmse_m": 1.1542024612426758,
+            "reference_height_peak_m": 0.02125057578086853,
+            "actual_height_peak_m": -0.07033700495958328,
+            "actual_height_at_reference_peak_m": -0.07224409282207489,
+            "reference_height_span_m": 0.21946337819099426,
+            "actual_height_span_m": 0.11165302246809006,
+            "height_span_ratio": 0.5087546878592237,
+            "reference_above_shoulder_frames": 12,
+            "synchronous_above_shoulder_fraction": 0,
+            "reference_peak_frame": 233,
+            "actual_peak_frame": 9,
+            "peak_time_difference_s": -4.48,
+            "joint_rmse_rad": 0.7176578443253148
+          },
+          "right": {
+            "wrist_torso_relative_rmse_m": 0.10798676311969757,
+            "wrist_world_rmse_m": 1.2271419763565063,
+            "reference_height_peak_m": 0.04690521955490112,
+            "actual_height_peak_m": -0.07595343887805939,
+            "actual_height_at_reference_peak_m": -0.07872410118579865,
+            "reference_height_span_m": 0.2376643270254135,
+            "actual_height_span_m": 0.1052079051733017,
+            "height_span_ratio": 0.4426743655224782,
+            "reference_above_shoulder_frames": 19,
+            "synchronous_above_shoulder_fraction": 0,
+            "reference_peak_frame": 236,
+            "actual_peak_frame": 9,
+            "peak_time_difference_s": -4.54,
+            "joint_rmse_rad": 0.6410133716669417
+          }
+        }
+      },
+      "legs": {
+        "clip": "train_3419f09ba93c91d75fc1",
+        "steps": 365,
+        "reference": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0768_20261025/converted/train_3419f09ba93c91d75fc1.npz",
+          "bytes": 371993,
+          "sha256": "f9bce4c3452720cda88a5adc4111fe2354440dd04e8c8ecb50cbf94d7181b8c3"
+        },
+        "leg_boundary_saturation_fraction": 0.0027397260273972603,
+        "joint_saturation_fraction": {
+          "left_hip_pitch_joint": 0,
+          "left_hip_roll_joint": 0,
+          "left_hip_yaw_joint": 0,
+          "left_knee_joint": 0.0027397260273972603,
+          "left_ankle_pitch_joint": 0.0027397260273972603,
+          "left_ankle_roll_joint": 0.005479452054794521,
+          "right_hip_pitch_joint": 0,
+          "right_hip_roll_joint": 0,
+          "right_hip_yaw_joint": 0.0027397260273972603,
+          "right_knee_joint": 0.00821917808219178,
+          "right_ankle_pitch_joint": 0.00821917808219178,
+          "right_ankle_roll_joint": 0.0027397260273972603,
+          "waist_roll_joint": 0,
+          "waist_yaw_joint": 0,
+          "left_shoulder_pitch_joint": 0.0027397260273972603,
+          "left_shoulder_roll_joint": 0,
+          "left_shoulder_yaw_joint": 0.0027397260273972603,
+          "left_elbow_joint": 0.005479452054794521,
+          "right_shoulder_pitch_joint": 0.0027397260273972603,
+          "right_shoulder_roll_joint": 0.0027397260273972603,
+          "right_shoulder_yaw_joint": 0.0027397260273972603,
+          "right_elbow_joint": 0.005479452054794521
+        },
+        "double_support_boundary_fraction": 0.9917808219178083,
+        "no_support_boundary_fraction": 0.00821917808219178,
+        "left_only_support_boundary_fraction": 0,
+        "right_only_support_boundary_fraction": 0,
+        "support_state_changes": 1,
+        "trace": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF05_UP01_E4096_T02H_20261025/leg_analysis/train_3419f09ba93c91d75fc1_support.npz",
+          "bytes": 54258,
+          "sha256": "ebb984cb52f049ed6f3a14a23f3a4c5fa9da42d8149d709f8b1fed786e060102"
+        }
+      }
+    },
+    "RF06": {
+      "training": {
+        "training_seconds": 3132.8596501871943,
+        "step": 600,
+        "env_steps": 2457600,
+        "wm_updates": 189,
+        "policy_updates": 139
+      },
+      "control_variant": "Q1_LEGS_CAP50_OTHER25_SCALE25_V1",
+      "evaluation": {
+        "clip": "train_3419f09ba93c91d75fc1",
+        "split": "training",
+        "expected_steps": 365,
+        "executed_steps": 365,
+        "failed": false,
+        "early_terminated": false,
+        "termination_step": null,
+        "reward_sum": 15.966223526746035,
+        "normalized_return": 0.4374307815546859,
+        "full_clip_completion": 1,
+        "executed_joint_rmse_rad": 0.45925165027826903,
+        "executed_body_error_mean_m": 1.0030449236679362,
+        "root_xy_error_mean_m": 0.997689347882361,
+        "root_xyz_error_mean_m": 1.0024602236220235,
+        "root_xy_final_error_m": 1.6164194533181038,
+        "root_xy_displacement_m": 0.01493332940567595,
+        "root_xy_path_length_m": 0.15844573869873219,
+        "reference_root_xy_displacement_full_m": 1.6015037991152772,
+        "reference_root_xy_path_length_full_m": 1.6730306854646801,
+        "reference_root_xy_displacement_executed_m": 1.6015037991152772,
+        "initial_root_position_w_m": [
+          -1.7618285302889447e-18,
+          -2.2130853329386732e-18,
+          0.45531216263771057
+        ],
+        "final_root_position_w_m": [
+          0.00104040396399796,
+          0.014897042885422707,
+          0.4188344180583954
+        ],
+        "reference": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0768_20261025/converted/train_3419f09ba93c91d75fc1.npz",
+          "bytes": 371993,
+          "sha256": "f9bce4c3452720cda88a5adc4111fe2354440dd04e8c8ecb50cbf94d7181b8c3"
+        },
+        "trace": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/evaluation_final/train_3419f09ba93c91d75fc1.npz",
+          "bytes": 115005,
+          "sha256": "1a3bbe1ed0d96dd8ae76ec08aa65f6a55b36016c9f51788e3587ab999e3f7dd8"
+        }
+      },
+      "movement": {
+        "executed_seconds": 7.3,
+        "net_displacement_m": 0.01493332940567595,
+        "path_length_m": 0.15844573869873219,
+        "displacement_vector_xy_m": [
+          0.0010404039639979618,
+          0.014897042885422708
+        ],
+        "net_displacement_along_full_reference_direction_m": -0.014915489978634873,
+        "mean_velocity_along_full_reference_direction_mps": -0.0020432178052924486,
+        "mean_velocity_xy_mps": [
+          0.0001425210909586249,
+          0.002040690806222289
+        ],
+        "root_xy_error_mean_m": 0.997689347882361,
+        "full_reference_displacement_m": 1.6015037298202515
+      },
+      "executed_kinematics": {
+        "all_joints_rmse_rad": 0.45925165149597347,
+        "legs_rmse_rad": 0.25716450543499186,
+        "waist_rmse_rad": 0.08423024829676735,
+        "arms_rmse_rad": 0.69212293733803,
+        "upper_joint_rmse_rad": {
+          "left_shoulder_pitch_joint": 0.27774685051357567,
+          "left_shoulder_roll_joint": 0.27485098314856893,
+          "left_shoulder_yaw_joint": 0.5806581399595484,
+          "left_elbow_joint": 1.2907639589189868,
+          "right_shoulder_pitch_joint": 0.3494550160713206,
+          "right_shoulder_roll_joint": 0.24911522143624995,
+          "right_shoulder_yaw_joint": 0.6837061330007644,
+          "right_elbow_joint": 1.012284622006301
+        },
+        "arms_by_side": {
+          "left": {
+            "wrist_torso_relative_rmse_m": 0.12861047685146332,
+            "wrist_world_rmse_m": 1.1330963373184204,
+            "reference_height_peak_m": 0.02125057578086853,
+            "actual_height_peak_m": -0.07829353213310242,
+            "actual_height_at_reference_peak_m": -0.08253582566976547,
+            "reference_height_span_m": 0.21946337819099426,
+            "actual_height_span_m": 0.10450735688209534,
+            "height_span_ratio": 0.47619497040250985,
+            "reference_above_shoulder_frames": 12,
+            "synchronous_above_shoulder_fraction": 0,
+            "reference_peak_frame": 233,
+            "actual_peak_frame": 277,
+            "peak_time_difference_s": 0.88,
+            "joint_rmse_rad": 0.7341528875264068
+          },
+          "right": {
+            "wrist_torso_relative_rmse_m": 0.10867320746183395,
+            "wrist_world_rmse_m": 1.2148489952087402,
+            "reference_height_peak_m": 0.04690521955490112,
+            "actual_height_peak_m": -0.0788804367184639,
+            "actual_height_at_reference_peak_m": -0.08139179646968842,
+            "reference_height_span_m": 0.2376643270254135,
+            "actual_height_span_m": 0.10151012986898422,
+            "height_span_ratio": 0.4271155504886929,
+            "reference_above_shoulder_frames": 19,
+            "synchronous_above_shoulder_fraction": 0,
+            "reference_peak_frame": 236,
+            "actual_peak_frame": 281,
+            "peak_time_difference_s": 0.9,
+            "joint_rmse_rad": 0.6473699549063768
+          }
+        }
+      },
+      "legs": {
+        "clip": "train_3419f09ba93c91d75fc1",
+        "steps": 365,
+        "reference": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_PF02_0768_20261025/converted/train_3419f09ba93c91d75fc1.npz",
+          "bytes": 371993,
+          "sha256": "f9bce4c3452720cda88a5adc4111fe2354440dd04e8c8ecb50cbf94d7181b8c3"
+        },
+        "leg_boundary_saturation_fraction": 0.00022831050228310502,
+        "joint_saturation_fraction": {
+          "left_hip_pitch_joint": 0,
+          "left_hip_roll_joint": 0,
+          "left_hip_yaw_joint": 0,
+          "left_knee_joint": 0,
+          "left_ankle_pitch_joint": 0,
+          "left_ankle_roll_joint": 0,
+          "right_hip_pitch_joint": 0,
+          "right_hip_roll_joint": 0,
+          "right_hip_yaw_joint": 0.0027397260273972603,
+          "right_knee_joint": 0,
+          "right_ankle_pitch_joint": 0,
+          "right_ankle_roll_joint": 0,
+          "waist_roll_joint": 0,
+          "waist_yaw_joint": 0,
+          "left_shoulder_pitch_joint": 0.0027397260273972603,
+          "left_shoulder_roll_joint": 0.0027397260273972603,
+          "left_shoulder_yaw_joint": 0.0027397260273972603,
+          "left_elbow_joint": 0.005479452054794521,
+          "right_shoulder_pitch_joint": 0.0027397260273972603,
+          "right_shoulder_roll_joint": 0.0027397260273972603,
+          "right_shoulder_yaw_joint": 0.0027397260273972603,
+          "right_elbow_joint": 0.005479452054794521
+        },
+        "double_support_boundary_fraction": 0.989041095890411,
+        "no_support_boundary_fraction": 0.00821917808219178,
+        "left_only_support_boundary_fraction": 0,
+        "right_only_support_boundary_fraction": 0.0027397260273972603,
+        "support_state_changes": 2,
+        "trace": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/leg_analysis/train_3419f09ba93c91d75fc1_support.npz",
+          "bytes": 54572,
+          "sha256": "0f41916d7cc2bf00c5172b7cec697f63d66aac9d38964ab0e789e3c21b5da054"
+        }
+      }
+    },
+    "local_delivery_manifest": "data/manifests/supermimic_q1_RF06_leg50_local_delivery_20261026.json",
+    "dashboard_check": {
+      "status": "DASHBOARD_CSV_INDEPENDENT_ARITHMETIC_PASSED",
+      "rows": 129,
+      "metrics": [
+        "episode_length",
+        "episode_return",
+        "episode_termination",
+        "step_reward",
+        "survival",
+        "world_model"
+      ],
+      "window_training_iterations": 500,
+      "max_raw_error": 0,
+      "max_smoothed_error": 1.1102230246251565e-16
+    },
+    "artifacts_files": 11,
+    "artifacts_bytes": 1706855
+  },
+  "result": "Completed experiment and delivery; no effective walking or full raised-hand tracking. Raising leg force caps did not resolve the observed behavior under this budget.",
+  "limitations": [
+    "RF05 and RF06 have unequal training durations, transition counts and updates; this is not a matched-duration causal ablation.",
+    "Both evaluated on one training reference, no held-out generalization or hardware claim.",
+    "Initial and final policies both complete 365 steps without falling; survival is not wholly a training gain.",
+    "Boundary force saturation and support fractions do not prove substep force peaks or walking."
+  ],
+  "publication": {
+    "status": "PENDING_FINAL_PUBLICATION_AND_SMALL_RECORD_MIRRORS"
+  },
+  "monitoring": {
+    "training_heartbeat": "q1-2048",
+    "training_status": "ACTIVE_PENDING_DELIVERY_CLOSURE",
+    "repository_heartbeat": "supermimichp-x2",
+    "repository_status": "ACTIVE",
+    "daily_research": "yuanqi",
+    "other_automations_modified": false
+  },
+  "no_extra_training_started": true,
+  "storage_status": "LOCAL_ONLY"
+}

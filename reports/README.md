@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-26 18:35：[RF06全流程、完整对照和本地MP4交付](README_SUPERMIMIC_Q1_RF06_LEGS50_20261026.md)完成，18:21:52全部10阶段正常结束、controller/worker退出。实训52分13秒/600轮2457600转移，满足最多1小时；最终365步不倒但仅移1.49cm/参考1.60m、双支撑98.904%，抬手高度不足，腿部限矩提高未修复行走。[RF05/RF06共同365步比较](../data/manifests/supermimic_q1_RF05_RF06_comparison_20261026.json)0新积分/推理/更新，时长差异如实保留。11项图表/初末MP4共1706855字节本地大小SHA通过，六宫格129条CSV独立核对通过；[MG02](README_SUPERMIMIC_Q1_MG02_LEG_GOAL_20261026.md)A至E实测证据齐备，最终发布/三端核验收尾中。下一候选为策略根反馈接口，未新开训练；独立SuperMimicHP每小时跟踪继续。当前状态已压缩，原时点记录保存在[历史快照](README_CURRENT_STATE_ARCHIVE_20261026.md)。
+
 2026-10-26 18:15：[RF06腿部50%限矩训练完成及初末评测](README_SUPERMIMIC_Q1_RF06_LEGS50_20261026.md)：实训3132.86秒/600轮2457600转移、WM189/actor139，保存13项/初末算术身份审计通过。最终365步不倒但只净移1.49cm、双支撑98.904%，未有效换脚；回报0.47534→0.43743，上肢误差略恶化，限矩扩大尚未修复行走。worker回收/GPU14MiB/OOM0，MG02 A至D完成；现有渲染和本地交付/跨轮比较待，保持目标active。
 
 2026-10-26 17:56：[SuperMimicHP师兄X2仓库跟踪](README_SUPERMIMICHP_WATCH_20261026.md)已启用独立每小时心跳`supermimichp-x2`，初次Git已核默认分支`feat/x2-embodiment`及`649d1b1165bc08fdcf4468e596161db73d93d7b9`。源码显示X2 actor显式接收根XY误差，当前Q1该误差仅供critic；X2正式入口1024环境、100条SOMA训练，且采用逐关节PD与完整effort限矩。列为后续受控对照候选，非Q1已证实根因；RF06继续冻结、一小时上限不变，0新增训练。

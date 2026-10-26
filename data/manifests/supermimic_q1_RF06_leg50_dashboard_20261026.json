@@ -1,0 +1,89 @@
+{
+  "status": "TRAINING_DASHBOARD_COMPLETED",
+  "created_utc": "2026-10-26T10:14:28.794995+00:00",
+  "runs": [
+    {
+      "label": "RF06-E4096-LEGS50-MAX1H",
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run",
+      "sources": [
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/metrics.jsonl",
+          "bytes": 24096,
+          "sha256": "54d94b697ef91704cf5b2c574a85c5cf887564295ad4e69bd6d7c637233b2b17"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/admission.json",
+          "bytes": 444034,
+          "sha256": "bfb3eec1e701887f5537ebdf15e9f3e164dc7fc95d41f722d589357a2112687b"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/status.json",
+          "bytes": 849,
+          "sha256": "2ab47993e50fde96d031aa5a7a6ca18820346fac311f83e346bf589d7c38f002"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/reporting_metadata.json",
+          "bytes": 1070,
+          "sha256": "a57ba6cc81b718dbc91a6673e8ad63cde784de4bbd0ba8542429efeec7f6e0f7"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/episodes.jsonl",
+          "bytes": 5482,
+          "sha256": "9cc882d3fc690fc4f33006eca329bdbe40d8dce5f23b0230e010be5f48a3e158"
+        }
+      ],
+      "last_logged_step": 600,
+      "requested_steps": 12000,
+      "num_envs": 4096,
+      "actor_batch": 4096,
+      "wm_batch": 2048,
+      "wm_window": 8,
+      "horizon": 32,
+      "status": "TRAINING_FINISHED_PENDING_EVALUATION",
+      "ignored_incomplete_tail_bytes": 0,
+      "reward_max": 0.1,
+      "reward_max_source": "Live AnalyticHeads.reward_cfg.max_step_reward"
+    }
+  ],
+  "layout": "2x3",
+  "smoothing": {
+    "window_training_iterations": 500,
+    "interval": "(iteration-window, iteration]",
+    "episode_weight": "completed_episodes",
+    "other_weight": "one per available logged row",
+    "partial_initial_window": true
+  },
+  "missing_panels": {
+    "episode_return": [],
+    "episode_termination": [],
+    "episode_length": [],
+    "step_reward": [],
+    "world_model": [],
+    "survival": []
+  },
+  "artifacts": [
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run_dashboard/training_dashboard.png",
+      "bytes": 351610,
+      "sha256": "15d0977708a9983c10ef0fb238db5a8dad28c7974d940943d2a433a97e6a8d5d"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run_dashboard/training_dashboard.pdf",
+      "bytes": 26310,
+      "sha256": "6cfc4bd3ac66225c4c5950fae67d768f0f32d9a903e9b87e677d93045a754f95"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run_dashboard/training_dashboard.csv",
+      "bytes": 14199,
+      "sha256": "f672b21ff3582c5c6bf44f0e682a4a210bae502bc6bd9ddc4460a7715913c914"
+    }
+  ],
+  "source": {
+    "path": "/opt/data/private/ZHY/script/project_tools/plot_training_dashboard.py",
+    "bytes": 14899,
+    "sha256": "70f03b41529832c4b582550424195bc9df3477b79db58791ee58e5da45a19e7b"
+  },
+  "physics_steps": 0,
+  "optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY"
+}

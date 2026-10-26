@@ -2,7 +2,7 @@
   "schema_version": 1,
   "repository": "https://github.com/humanplus-ai/SuperMimicHP",
   "remote": "git@github.com:humanplus-ai/SuperMimicHP.git",
-  "checked_at": "2026-10-26T19:00:47+08:00",
+  "checked_at": "2026-10-26T19:17:47+08:00",
   "access_status": "GIT_READ_VERIFIED",
   "default_branch": "feat/x2-embodiment",
   "head": "310244b73e45775744a75b789eb25a6c9c5a81c9",
@@ -18,7 +18,7 @@
     "notify": "relevant_substantive_change_only"
   },
   "source_copy": "/tmp/yuanqi-supermimic-q1-20261023/data/references/supermimichp/source",
-  "review_scope": "Read-only configuration and source comparison; no independent X2 simulation or checkpoint execution",
+  "review_scope": "Two-way actual source/configuration review and isolated sampler-AST probe; Q1 adapter tested and RF07 started; no X2 training, installation or checkpoint execution",
   "source_git_blobs": {
     "LICENSE": "d2c6cd327baa5d24b2c6d2c79237d4fbc79b38bf",
     "NOTICE": "d32912a921cf5abda9a056a85c5e981430186d18",
@@ -36,16 +36,25 @@
   },
   "findings": {
     "x2_actor_root_feedback": "reference minus simulator root position in robot heading XY, plus relative root rotation",
-    "q1_current_actor_root_xy_error": false,
+    "q1_baseline_actor_root_xy_error": false,
+    "q1_rf07_reference_feedback": "Current body-frame relative anchor XYZ and rotation6d appended to encoder goal; not X2 heading-XY observation-history layout",
     "q1_root_error_privileged_critic": true,
     "x2_formal_num_envs": 1024,
     "x2_formal_train_clips": 100,
-    "next_candidate": "Verify actor root feedback contract in a separate bounded comparison after completed RF06; not implemented or started",
+    "next_candidate": "RF07 root-feedback trial running after six CPU contracts and actual evaluation/audit passed; future-goal information and update throughput remain separate candidates",
     "causal_claim": "No unique Q1 failure cause established"
   },
-  "training_changes_from_this_review": 0,
+  "training_changes_from_this_review": 1,
   "report": "reports/README_SUPERMIMICHP_WATCH_20261026.md",
-  "last_substantive_review_commit": "649d1b1165bc08fdcf4468e596161db73d93d7b9",
+  "last_substantive_review_commit": "310244b73e45775744a75b789eb25a6c9c5a81c9",
+  "technical_review": {
+    "report": "reports/README_SUPERMIMICHP_Q1_REVIEW_20261026.md",
+    "sampler_probe": "data/manifests/supermimichp_sampler_review_20261026.json",
+    "q1_validation": "data/manifests/supermimic_q1_root_feedback_V02_20261026.json",
+    "q1_trial": "BONES_RF07_UP01_E4096_ROOTFEEDBACK_MAX01H_20261026",
+    "q1_frozen_commit": "8ba7f820cffbe0e2f0ece7a3b34ce79d0683f7a6",
+    "improvement_proven": false
+  },
   "latest_review": {
     "previous_commit": "649d1b1165bc08fdcf4468e596161db73d93d7b9",
     "commit": "310244b73e45775744a75b789eb25a6c9c5a81c9",
@@ -62,6 +71,6 @@
     "checkpoint_or_training_data_downloaded": false,
     "source_git_media_objects_logical_bytes": 9920122,
     "source_cache_note": "A broad git diff --stat triggered partial-clone media blob caching; files were not exported or played. Future checks use name-status and explicitly scoped text diffs.",
-    "follow_up": "Keep hourly watch; root actor feedback remains the previous candidate. No new Q1 training."
+    "follow_up": "Documentation-only change classification retained; subsequent user-authorized two-way technical review and RF07 adoption recorded separately above."
   }
 }

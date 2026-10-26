@@ -1,6 +1,6 @@
 # RF07 根位姿反馈短对照
 
-记录日期：2026-10-26，北京时间。状态：适配和现场V02验证完成，等待代码发布/部署核验后启动。用户明确要求核查并积极采用可用方法，沿用每轮训练最多一小时，不新增目标、不恢复MG02。
+记录日期：2026-10-26，北京时间。状态：适配和现场V02验证完成，代码发布部署核验后19:48:55实际启动，训练进行中。用户明确要求核查并积极采用可用方法，沿用每轮训练最多一小时，不新增目标、不恢复MG02。
 
 ## 目标与单一主要变量
 
@@ -12,7 +12,7 @@
 | --- | --- |
 | 正式容器/唯一根 | 用户25252，/opt/data/private/ZHY |
 | 独立输出 | data/supermimic_for_q1/BONES_RF07_UP01_E4096_ROOTFEEDBACK_MAX01H_20261026 |
-| 实际启动 | 待现场记录，尚未启动 |
+| 实际启动 | 2026-10-26 19:48:55，北京时间 |
 | 环境/模型槽/线程 | 4096 / 8 / 8，CPU MuJoCo |
 | 世界模型/actor | WM2048×10，actor4096/H32，UTD0.4 |
 | 控制 | 12腿50%/其余25%型号限矩，原25%动作尺度，PD50/2 |
@@ -28,16 +28,24 @@
 
 新增代码`script/supermimic_q1_reproduction/root_feedback/{feedback,entry_root_feedback,run_single_motion,test_feedback,verify}.py`，复用既有训练/保存/评测/上肢腿部分析/渲染管线。原核心、RF06文件及已完成工件未编辑。新入口用唯一名称，避免旧leg_control/entry.py同名导入。
 
+冻结代码`8ba7f820cffbe0e2f0ece7a3b34ce79d0683f7a6`已push origin Q1并独立核远端。71项源码/小记录服务器SHA一致，15文件164817字节在Mac/服务器逐大小SHA通过。Mac tar附带的15项AppleDouble传输元数据已按本次精确文件名清理，启动前新源码目录无`._*`；未触碰别的文件。后续报告提交不改变冻结代码。
+
+19:50:10现场核验：controller4805/start_ticks3630734136、worker4808/start_ticks3630734152，boot`d994e71f-bae0-46ba-a5f7-6c2163771c6c`，GPU UUID`GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4`。status/guard/run均RUNNING，step0，实际manifest的goal_dim549、anchor_obs=true、4096/WM2048/actor4096、腿部控制及3000/3600秒预算/代码身份匹配。worker命令和start_ticks现场一致；GPU2706MiB/34度，OOM0，guard共享约7.87GB/盘余约1.783TB。step0属于初始化/早期采集，不据此推断学习效果。原q1-2048已更新为RF07唯一监督，ACTIVE/每10分钟；旧RF06不重启，每小时仓库跟踪继续。
+
+结构化启动/现场配置/71项SHA与15文件镜像记录见`data/manifests/supermimic_q1_rf07_launch_20261026.json`，状态均是采样时快照，后续监督重新读现场。权威Git报告同步完成后，小记录镜像Mac与25252；运行源保持冻结。
+
+随后现场已推进100采集轮/409600转移，WM0/actor0为正常128轮采集预热尚未结束；记录耗时391.774609秒，GPU37度、共享内存7883939840字节/OOM0。该训练指标不能当作最终动力学效果。
+
 V01因测试入口歧义FAILED，0optimizer，失败收据保留；V02六项测试全通过，实际新训练dispatch配置和native/slotted物理等价、H32梯度与实仿目标、存取维度均通过；随后真实评测与算术身份审计通过，0optimizer/无CUDA、33.582713秒。小收据见`data/manifests/supermimic_q1_root_feedback_V0{1,2}_20261026.json`。随机窄网络夹具不充当RF07模型或效果结果。
 
-发布并核验40位提交、部署逐文件大小/SHA和空闲资源后执行一次：
+已按发布与部署身份核验执行一次，以下仅作复现记录，运行期间禁止重复执行：
 
 ```sh
 /opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python \
   /opt/data/private/ZHY/script/supermimic_q1_reproduction/root_feedback/run_single_motion.py \
   --root /opt/data/private/ZHY \
   --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF07_UP01_E4096_ROOTFEEDBACK_MAX01H_20261026 \
-  --code-commit <published-and-independently-verified-40-character-HEAD> \
+  --code-commit 8ba7f820cffbe0e2f0ece7a3b34ce79d0683f7a6 \
   --expected-oom-kill 0 --detach
 ```
 

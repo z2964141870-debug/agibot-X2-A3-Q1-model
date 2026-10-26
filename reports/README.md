@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-26：[SuperMimicHP与Q1双向核查及根反馈适配](README_SUPERMIMICHP_Q1_REVIEW_20261026.md)完成实现和V02验证。确认当前Q1 actor缺少直接根位姿误差，启用原可微接口，6测试/真实CPU评测审计通过、0optimizer；[RF07](README_SUPERMIMIC_Q1_RF07_ROOT_FEEDBACK_20261026.md)待发布部署后做最多一小时独立对照。师兄短片无合法H32起点时无限采样风险已隔离实际函数复现，非现有100条训练触发证据。每小时跟踪范围已更新，不默认任一实现正确，不照搬X2控制数值，不声称已改善。
+2026-10-26 19:50：[SuperMimicHP与Q1双向核查](README_SUPERMIMICHP_Q1_REVIEW_20261026.md)完成并采用原可微根反馈，6测试/真实CPU评测审计通过；冻结代码8ba7f820cffbe0e2f0ece7a3b34ce79d0683f7a6发布/远端核验/部署后，[RF07](README_SUPERMIMIC_Q1_RF07_ROOT_FEEDBACK_20261026.md)19:48:55启动，goal540→549、4096环境/原RF06控制/软50分钟最多1小时，现场身份匹配/step0/OOM0。q1-2048改为RF07每10分钟监督。师兄短片无H32起点时无限采样已隔离实际函数复现，非当前100条数据触发证据；每小时仓库跟踪继续双向核查，不保证Q1改善。
 
 2026-10-26 19:00：[SuperMimicHP增量巡查](README_SUPERMIMICHP_WATCH_20261026.md)确认310244b只发布已有X2演示和文档，运行源码/配置/原24k结果未变，没有新的Q1相关技术变化，按偏好静默；状态文件推进已检查HEAD，每小时跟踪继续，不新增训练。
 

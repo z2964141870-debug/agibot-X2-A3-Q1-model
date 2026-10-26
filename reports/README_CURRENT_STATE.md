@@ -1,8 +1,8 @@
 # YUANQI 当前状态与下一步
 
-2026-10-26恢复入口：[HPR01双向源码核查](README_SUPERMIMICHP_Q1_REVIEW_20261026.md)和[RF07根反馈对照](README_SUPERMIMIC_Q1_RF07_ROOT_FEEDBACK_20261026.md)。确认本项目actor直接根位置/朝向误差缺失，独立启用原可微anchor接口，goal540→549；V02现场6测试/真实CPU评测与算术审计通过，0optimizer。RF07待发布部署后启动，保留RF06腿部控制，软3000秒/最多3600秒，不称效果已改善。旧MG02完成，不重复创建目标。师兄HEAD310244未变；短片无合法H32起点时无限采样已实际函数有界复现，非其当前训练失败证据。每小时跟踪已更新为双向核查/验证后采用，不对外代发问题。
+2026-10-26恢复入口：[HPR01双向源码核查](README_SUPERMIMICHP_Q1_REVIEW_20261026.md)和[RF07根反馈对照](README_SUPERMIMIC_Q1_RF07_ROOT_FEEDBACK_20261026.md)。确认actor直接根位姿误差缺失，启用原可微anchor接口、goal540→549；V02六测试/真实CPU评测审计通过。RF07于19:48:55启动，冻结8ba7f820cffbe0e2f0ece7a3b34ce79d0683f7a6已发布/独立核远端/部署，保留RF06控制、软3000秒/最多3600秒。controller4805/start_ticks3630734136、worker4808/start_ticks3630734152、boot d994e71f-bae0-46ba-a5f7-6c2163771c6c，19:50:10真实身份/manifest匹配且step0正常采集、OOM0。q1-2048已复用为RF07每10分钟ACTIVE监督，禁止重复启动，不称效果已改善。MG02完成、不重建目标；师兄HEAD310244未变，短片无限采样边界实际函数有界复现，非其当前训练失败证据。每小时跟踪已改双向核查，不代发上游消息。
 
-2026-10-26，北京时间。MG02的A至E计算、对照和本地媒体交付完成，结果记录已发布Q1并独立核远端373088b2d75bd50827f0c857b005d9ba6b826631，16文件232478字节在Mac/25252逐大小SHA一致。[最终要求审计](../data/manifests/supermimic_q1_MG02_completion_audit_20261026.json)17项全部通过。RF05/RF06均全pipeline COMPLETED，controller/worker已退出，q1-2048训练心跳已暂停，未启动RF07。
+此前MG02收尾记录：A至E计算、对照和本地媒体交付完成，结果发布Q1并独立核远端373088b2d75bd50827f0c857b005d9ba6b826631，16文件232478字节在Mac/25252大小SHA一致。[最终要求审计](../data/manifests/supermimic_q1_MG02_completion_audit_20261026.json)17项通过。RF05/RF06均全pipeline COMPLETED、进程退出；原训练监督曾暂停，现已按新授权转为RF07，勿用旧终态否认新任务。
 
 ## 最新结果
 
@@ -28,4 +28,4 @@ RF06冻结代码0b1da033148fff0b705fd85cdac5a773b5a7f332；报告提交不是运
 
 [师兄SuperMimicHP仓库](README_SUPERMIMICHP_WATCH_20261026.md)独立每小时心跳supermimichp-x2保持，有实质技术变化才通知。HPR01确认X2实际1024环境/100条SOMA/mjwarp、逐关节PD/full effort限矩；本项目未来目标信息及实际优化次数也有差异。RF07先只加当前根反馈，不把源码差异当唯一根因，不照搬X2控制数值；未来目标/片尾H32/20ms时序/吞吐分别留待后续验证。
 
-q1-2048目前PAUSED，待RF07真正启动后复用为其监督，不恢复旧RF06 prompt；supermimichp-x2和yuanqi仍ACTIVE。此前详细时点记录完整保留在[当前状态历史快照](README_CURRENT_STATE_ARCHIVE_20261026.md)，旧RUNNING、旧服务器和旧两小时RF06预算不能当作当前执行依据。报告发布身份由Git历史提供，避免将新报告提交误作冻结训练版本。
+q1-2048已更新为RF07独立监督并ACTIVE/每10分钟，不恢复旧RF06 prompt；supermimichp-x2每小时与yuanqi仍ACTIVE。此前详细时点记录保存在[当前状态历史快照](README_CURRENT_STATE_ARCHIVE_20261026.md)，旧RUNNING、旧服务器和旧两小时RF06预算不能当作当前依据。报告发布身份由Git历史提供，避免将新报告提交误作冻结训练版本。

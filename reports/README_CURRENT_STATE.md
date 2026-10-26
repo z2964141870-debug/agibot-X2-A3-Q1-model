@@ -1,39 +1,33 @@
 # YUANQI 当前状态与下一步
 
-2026-10-27最新：[MG04](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)active，[RF09](README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md)07:20:14训练正常完成，真实18000.93146751076秒/17895学习轮/183504896转移、WM178950/actor17395；训练worker40213退出0并reap，36项CPU保存审计V02通过。V01三个tuple/list序列化比较误报原件保留，未改训练产物。[审计](../data/manifests/supermimic_q1_RF09_training_audit_V02_20261027.json)。本次五小时为用户明确授权，不续训/重试/开子agent。
+2026-10-27最新：[MG04](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)的A至E内容验收完成，Git/三端记录与监督收尾中；目标工具仍以get_goal为准。[RF09最终结果](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)、[量化汇总](../data/manifests/supermimic_q1_RF09_results_20261027.json)、[本地交付](../data/manifests/supermimic_q1_RF09_local_delivery_20261027.json)。旧RUNNING、待评测和本轮一小时文字均为历史，不恢复旧命令。
 
-[AP02](README_SUPERMIMIC_Q1_AP02_SOMA_RETARGET_20261027.md)已330片转换、300训练/30验证、82/11演员无交集，保留RF08原115源。确认Q1默认pelvis0.419m在静止骨架偏移中被重复叠加，归一化后同源D02腕误差3.52→3.12cm、峰高4.11→3.04cm；参考改善不代表策略改善，不断言X2也有同一问题。4096完整P02已通过且回收，不重复profile/转换/解包/hash45GB原包。RF09 V02预选8段6类约53.83秒，含普通前向走与明确抬手；数据、重定向和预算共同变化，不冒称单变量消融。
+## 最新实验与结论
 
-## 运行与监督
+RF09仅在用户25252，4096 MuJoCo Warp环境、从零，实际18000.93146751076秒/17895学习轮/183504896转移、WM178950/actor17395。02:20:12开始训练、07:20:14正常结束、07:33:52全pipeline COMPLETED；七阶段guard退出0并reap，全部已登记controller/worker退出。36项训练保存、31项评测算术/六格图核验通过，153冻结来源与330参考保持。V01仅tuple/list序列化比较误报，失败原件保留，V02通过。
 
-原10分钟任务`q1-rf08-4096`仍ACTIVE。07:28现场controller40210/start_ticks3633080196、评测worker57926/start_ticks3634882573同boot正常，phase=evaluation；训练worker已退出。初末330片已保存：验证提前终止30/30→1/30、完成26.45%→98.80%，训练298/300→43/300、25.80%→95.24%；完成不代表准确跟踪，执行长度不同的上肢均值尚不作共同前缀结论。自动长MP4、六宫格、原RF08固定115参考和共同前缀仍待，D/E未完成。恢复核现场status/guards和真实身份/命令/mtime，断线不重启、不重复评测或训练。boot `d994e71f-bae0-46ba-a5f7-6c2163771c6c`。
+固定RF08原115参考共同执行片段：验证根XY RMSE0.40151→0.09232m，walking三片沿目标平均1.12341→2.55001m（参考2.39430m），原地gesture漂移0.63250→0.11589m。上肢整体仅小幅改善，gesture更差；验证提前终止0→2/15，旧训练walking3/28→5/28。新库验证29/30完成，但不能替代旧基准。预选两条普通前向走分别5.82/2.84秒倒地，视频保留失败，不按学后效果换片。尚不能称全身跟踪或稳定步态合格。
 
-04:50:31[半程/检查点现场](../data/manifests/supermimic_q1_RF09_checkpoint_009000_20261027.json)：9045学习轮/92893184转移、WM90450/actor8545、实训9018.543298秒；同boot/两进程start_ticks与三状态正常。GPU14616MiB/55度、cgroup12336058368字节/OOM0、余盘1599090200576字节、实验约1.523GB。不可变ckpt_009000.pt为68726277字节、SHA已登记，只留服务器；本项不重复张量审计，不当效果证据。训练原预算继续。
+[AP02](README_SUPERMIMIC_Q1_AP02_SOMA_RETARGET_20261027.md)完成300训练/30验证、82/11演员无交集，原115源全部保留。Q1静止pelvis0.419m重复原点修正，同源D02腕误差3.52→3.12cm/峰高4.11→3.04cm；参考改善与策略跟踪分开，未宣称引入新的学习式重定向模型。数据、转换、预算共同改变，不作单因素归因。
 
-软训练18000秒、外层18040秒+45秒退出宽限、最大18100秒只容纳更新边界/退出。保留100GiB余盘/12GiB实验/30GiB cgroup/OOM基线0/86度/900秒无进展。02:20:47时点采样GPU9894MiB/43度、cgroup10529509376字节、OOM0、余盘1605449195520字节，非峰值。共享盘变化不等于本项目新增量，不动他人文件/任务。正常训练receipt需TRAINING_COMPLETED且真实秒数满足、guard正常reap；全pipeline COMPLETED、资源释放和本地交付再验MG04。
+## 本地工件与资源
 
-## 版本与连接
+Mac根：`/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF09_SOMA300_HP_E4096_T05H_20261027`。最终视频`evaluation/final.mp4`、初始`evaluation/initial.mp4`各54秒/1350帧/25fps/1280×480，8段6类，含两条普通前向走、双手抬起与原地手势。各片独立初始化、原速串接，终止后显式保持标记，不冒称连续54秒rollout。12项媒体核验/全帧解码、16段中点和两条失败结尾已目视核对。
 
-权威Git `/tmp/yuanqi-supermimic-q1-20261023`，分支Q1，远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。RF09冻结提交`a553b6a5a3c44167042355ff2f2fbd42ff558342`已push/独立核远端，24文件463177字节三端大小SHA通过，[部署](../data/manifests/supermimic_q1_RF09_deployment_20261027.json)/[启动](../data/manifests/supermimic_q1_RF09_launch_20261027.json)。plan锁153来源，包括所有`script/supermimic_q1_hp/*.py`、`script/project_tools/analyze_q1_hp_trial.py`、runtime/配置/资产/参考/视频清单；全pipeline结束前禁止热改。后续报告提交不改变冻结身份。
+六格图`dashboard/training_dashboard.png`及PDF/CSV均交付，原值/500学习iteration尾随均值，106870条数值/分母/窗口/实际转移核对通过。41文件共39411623字节Mac/服务器大小SHA一致。RF08旧基线和新增55.24秒长视频保留，入口[RF08结果](README_SUPERMIMIC_Q1_RF08_RESULTS_20261027.md)。
 
-正式计算仅用户25252，唯一根`/opt/data/private/ZHY`、data/logs/script/reports。SSH：`ssh -S /tmp/yuanqi-q1-25252.sock -T -p 18869 -o BatchMode=yes -o ConnectTimeout=8 -o 'HostKeyAlias=[59.77.15.15]:25252' root@127.0.0.1`。保留Windows桥，不读写认证、不操作师兄容器；失败UNKNOWN，一次有界排查。
+07:46:45 GPU14MiB/26度、共享内存10254839808字节/OOM0、盘余1591808323584字节，实验约3.006GB。100GiB余盘/12GiB实验/30GiB共享内存等保护未放宽，不动其他任务。权重/大轨迹留服务器LOCAL_ONLY，无网盘已备份声明；不拉Mac、不建网站。
 
-Python `data/environments/supermimic_q1_hp_20261026/bin/python`，CUDA/EGL经`script/supermimic_q1_hp/activate.py`。runtime `data/references/supermimichp/AP01_runtime_20261026`、固定上游`310244b73e45775744a75b789eb25a6c9c5a81c9`。RF09库`data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json`、SHA `ba9ac284a018cdd40eea5200d2c157b7da7cfdae89e6c820eed2c9748cc83337`；实验根`data/supermimic_for_q1/BONES_RF09_SOMA300_HP_E4096_T05H_20261027`。
+## 版本与位置
 
-4096env/WM1024×10/actor1024-H32/critic5×4/UTD.4、BF16/compile、seed0，heading XY/朝向历史及完整未来根/关节参考。Q1 full effort、armature=.004推导PD15.7914/1.00531及原动作尺度/奖励/终止。师兄实际1024环境，Q1数值依自身模型，不是厂家逐关节特调；不称全部条件等同。
+权威Git `/tmp/yuanqi-supermimic-q1-20261023`，Q1分支，远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。冻结训练提交`a553b6a5a3c44167042355ff2f2fbd42ff558342`；训练终后审计发布`bbf05063f60d0a6729c4b550d9f81b27c8d989a7`已独立核远端、7文件142940字节三端大小SHA一致。后续报告提交不改变冻结来源。运行完整命令在[RF09运行记录](README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md)，不能为恢复重复执行。
 
-## RF08基线与媒体
+仅用户25252，唯一根`/opt/data/private/ZHY`及data/logs/script/reports。SSH：`ssh -S /tmp/yuanqi-q1-25252.sock -T -p 18869 -o BatchMode=yes -o ConnectTimeout=8 -o 'HostKeyAlias=[59.77.15.15]:25252' root@127.0.0.1`。保留Windows桥，不读写认证，不操作师兄容器；SSH失败记UNKNOWN，不据此重启。
 
-[RF08最终结果](README_SUPERMIMIC_Q1_RF08_RESULTS_20261027.md)、[MG03完成审计](../data/manifests/supermimic_q1_MG03_completion_audit_20261027.json)、[运行记录](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)。RF08全pipeline00:27:46 COMPLETED、进程退出、MG03已完成；旧RF05/06/07均封存，不恢复旧命令。
+Python `data/environments/supermimic_q1_hp_20261026/bin/python`，经`script/supermimic_q1_hp/activate.py`。runtime `data/references/supermimichp/AP01_runtime_20261026`、上游`310244b73e45775744a75b789eb25a6c9c5a81c9`。RF09库`data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json`。4096env/WM1024×10/actor1024-H32/critic5×4/UTD.4、BF16/compile、seed0、heading XY/朝向历史及完整未来根/关节参考，Q1 full effort/模型推导PD15.791367/1.005310。师兄实际1024环境，不称全部条件等同。
 
-RF08实际3500.923046秒/3510学习轮/36204544转移、WM35100/actor3010。100训练片提前终止100→10、15验证片15→0；验证walking3/3完成，沿目标均移1.1234m/参考2.3943m。共同约1秒前缀上肢RMSE训练0.560→0.868rad、验证0.517→0.861rad，原地gesture净漂移1.162m/参考0.023m。存活/移动改善不等于全身跟踪合格。原AP01固定115参考保留供RF09同协议基准，不能直接把两套库均值当因果证据。
+## 收尾与下一步
 
-原六宫格/短MP4的25项本地大小SHA交付已完成，[清单](../data/manifests/supermimic_q1_RF08_local_delivery_20261027.json)。Mac RF08根`/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026`；图`dashboard/training_dashboard.png`及PDF/CSV。新增长对比`evaluation/multitype_20261027/final_multitype.mp4`55.24秒/1381帧/25fps/1280×480，8段6类独立原速片段，左策略动力学右运动学参考。3文件13795681字节大小SHA、全帧解码/5帧目视通过，[收据](../data/manifests/supermimic_q1_RF08_multitype_local_delivery_20261027.json)。这是旧保存轨迹，0新积分/推理/优化，不当RF09效果或连续55秒rollout。
+最终记录提交push Q1、独立核远端40位SHA并镜像Mac/服务器；最终验收通过才update_goal complete。原`q1-rf08-4096`每10分钟任务仅服务本RF09，交付发布完成后暂停；独立`supermimichp-x2`仓库跟踪与`yuanqi`研究任务保留。本次五小时是明确预算例外，不自动续训/重试，不创建或激活子agent。
 
-## 交付与恢复要求
-
-03:13:50只读核对V02八片参考SHA与30Hz FK，普通前向走两片193/127帧的踝中心侧序反转均0帧、最小横距14.88/14.29cm；舞蹈17/290帧反转，保留类别区分。仅参考几何，不当策略/接触力证据，不改冻结输入或加数据门。[AP02核对](README_SUPERMIMIC_Q1_AP02_SOMA_RETARGET_20261027.md)/[小收据](../data/manifests/supermimic_q1_AP02_demo_geometry_20261027.json)。
-
-RF09终后先报告量化效果，再交付已有小图/JSON/CSV/初末长MP4至Mac对应目录并逐大小SHA；权重/大轨迹只留服务器LOCAL_ONLY。六宫格为原值与500学习iteration均值；MP4各至少30秒、原速且明确切片/失败，不建网站、不为图像加工拖延结论。近地几何不当接触力，跌倒位移不当行走，参考与策略误差分开，不加数据/性能硬门。
-
-重要阶段更新README/索引/本摘要、小收据，显式暂存/audit/push Q1/独立核远端并镜像Mac/25252。只有MG04 A至E实证和交付齐备才complete；失败保原终态、不自动重训。RF09交付完成后暂停本训练监督，独立supermimichp-x2/yuanqi保留。无关`script/supermimic_q1_sources/download_bones.py`不执行/修改/暂存/删除。
+后续若另行授权试验，优先处理普通走的制动/支撑和上肢幅度/相位，固定参考与预算再作单变量对照。不重复解包/hash45GB原包、转换330片、profile或已有媒体/轨迹分析。无关`script/supermimic_q1_sources/download_bones.py`不执行/修改/暂存/删除。

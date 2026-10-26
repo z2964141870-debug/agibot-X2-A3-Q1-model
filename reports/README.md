@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-27 07:54：[RF09最终结果与本地交付](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)已完成：4096环境实训18000.931秒/17895学习轮，07:33全pipeline COMPLETED；890物理rollout/固定115基准/共同前缀与全程上肢支撑分析、36+31项训练/结果核验通过。旧验证根XY误差40.15→9.23cm、原地漂移大降，但提前终止0→2/15、手势上肢仍差，两条普通走演示仍倒地。初末54秒八段六类MP4和六格PNG/PDF/CSV等41文件39411623字节已Mac/服务器大小SHA一致，[交付](../data/manifests/supermimic_q1_RF09_local_delivery_20261027.json)/[量化](../data/manifests/supermimic_q1_RF09_results_20261027.json)。MG04内容完成，Git/监督收尾中，无自动续训或新训练。
+
 2026-10-27 07:20：[RF09五小时训练正常完成](README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md)，18000.931468秒/17895学习轮/183504896转移、WM178950/actor17395，worker退出0并reap，[36项保存审计V02](../data/manifests/supermimic_q1_RF09_training_audit_V02_20261027.json)通过。330片初末动力学已保存，验证提前终止30→1；统一RF08基准/共同前缀、长视频/六格图及本地交付正在执行，MG04 C完成、D/E未完成。V01序列化比较误报原件保留，无新增训练或重试。
 
 2026-10-27 04:50：[RF09半程](README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md)9018.543秒/9045学习轮、92893184转移，WM90450/actor8545；身份/三状态/资源正常，ckpt_009000.pt约68.73MB及SHA已登记，模型不拉Mac。[小收据](../data/manifests/supermimic_q1_RF09_checkpoint_009000_20261027.json)。继续原五小时预算，终后效果/六格图/长MP4仍待，不把文件保存当效果改善。

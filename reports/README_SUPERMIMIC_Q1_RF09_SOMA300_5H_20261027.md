@@ -1,6 +1,6 @@
 # RF09 300条SOMA与五小时训练
 
-记录日期：2026-10-27，北京时间。状态：07:20:14训练正常结束，实际18000.931468秒；330片初末动力学已保存，长视频/固定RF08基准/分析正在自动执行，全pipeline和交付尚未完成。不要重复启动。[目标MG04](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)。
+记录日期：2026-10-27，北京时间。状态：07:33:52全pipeline COMPLETED，实际训练18000.931468秒；330片初末、固定RF08 115参考对照、分析/六格图及41个本地文件大小SHA已完成。[最终结果](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)、[目标MG04](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)。以下启动/预热/半程/待评测状态均为历史，不重启。
 
 ## 目标、方法与差异
 
@@ -51,6 +51,8 @@ RF09主要变化为300训练/30演员分离验证（原100/15）、Q1默认pelvi
 02:35:46增量核验：同boot/真实两进程start_ticks和命令保持，1050学习轮/11022336转移、WM10500/actor550，实训933.134414秒，已越过预热并真实更新策略。GPU14616MiB/54度、cgroup11189334016字节/OOM0、余盘1604336644096字节、实验约0.416GB；未见保护/有限性异常。[现场收据](../data/manifests/supermimic_q1_RF09_observation_20261027.json)。只证明执行正常，未进行中途效果评测。
 
 ## 自动终后与交付
+
+最终：07:33:52全流程COMPLETED，七阶段guard均WORKER_COMPLETED/退出0/reap，07:46全部已登记进程退出、GPU14MiB/OOM0。36项保存、31项评测算术/六宫格和12项媒体核验通过；106870条图表数据、初末54秒MP4、41个39411623字节本地/服务器文件逐大小SHA一致。旧115基准验证根XY共同前缀误差0.40151→0.09232m，但提前终止0→2/15，上肢仅小幅改善、gesture反而恶化；普通走路预选两片仍倒地。完整数字与边界以[最终结果](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)/[量化清单](../data/manifests/supermimic_q1_RF09_results_20261027.json)为准，不把旧“待”文字当当前作业。MG04内容完成，发布/监督收尾中，无自动续训。
 
 07:20:14真实训练正常完成：18000.93146751076秒、17895学习轮、183504896转移、178950次WM更新、17395次actor更新。`run/receipt.json`为TRAINING_COMPLETED，train guard为WORKER_COMPLETED，worker40213已退出0并reap。初始68726069字节/SHA `e9ef07ee2b123937c2171d356d15dfe3d4dcbf57a82041d16e1a9901c5f3a9f4`；最终208865366字节/SHA `d834ac94a9ce9d8eca91fc576f4ffb92f0ad54386c40f39539cf0c352debf6d0`，均留服务器LOCAL_ONLY。Torch分配/保留峰值6400284672/6851395584字节，不包含Warp，不当作整卡峰值。
 

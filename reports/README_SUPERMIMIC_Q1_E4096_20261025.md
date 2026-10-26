@@ -1,5 +1,30 @@
 # 4096环境论文规模配置
 
+## 25252实际启动
+
+2026-10-26北京时间15:02:22，自己的25252容器完成[CM01迁移/运行验证](README_Q1_CONTAINER_MIGRATION_20261026.md)后，独立RF05已实际启动。新OOM基线0；原根`data/supermimic_for_q1/BONES_RF05_UP01_E4096_T02H_20261025`日期是计划日，不能当成实际启动日期。controller989/start_ticks3629014760、worker990/start_ticks3629014771、boot`d994e71f-bae0-46ba-a5f7-6c2163771c6c`，worker命令与guard一致；首个观测为管线/guard RUNNING、step0初始化。新容器CPU额度约19.8核，运行仍限定8线程/8模型槽；此硬件差异需与旧容器区分。
+
+发布及部署身份为`abda76e7bc873405b4321b4d9a6f5991e7290828`，27项小文件逐大小/SHA核对，train源码SHA`0a8128f6d4bfb5908436373d850c5edd7e51b808a0a731bbb5d94150ef92767f`。同365帧/50Hz参考、seed2026102513、从零，保留原25%模型effort限矩/PD50/2和原参考；D05探针不混入本次规模变量。未复跑已完成4096 profile。
+
+实际启动命令：
+
+```bash
+env PYTHONDONTWRITEBYTECODE=1 MUJOCO_GL=egl \
+ /opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python \
+ /opt/data/private/ZHY/script/project_tools/run_q1_single_motion.py \
+ --root /opt/data/private/ZHY \
+ --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF05_UP01_E4096_T02H_20261025 \
+ --num-envs 4096 --threads 8 --model-slots 8 --wm-batch 2048 --batch 4096 \
+ --steps 12000 --training-seconds 7200 --dashboard-label RF05-E4096 \
+ --code-commit abda76e7bc873405b4321b4d9a6f5991e7290828 --expected-oom-kill 0 --detach
+```
+
+训练须实耗至少7200秒并在25轮完整边界结束，初始化/迁移/等待/评测/绘图不计。运行中源码/配置/输入保持冻结，预算及保护不变，无第二训练或子agent。终后接真实MuJoCo初末评测、保存/算术/身份/上肢和位移审计、六宫格及本地MP4，再判断较RF04是否改善；启动不代表训练完成。
+
+15:10:43[实际进度与身份收据](../data/manifests/supermimic_q1_RF05_E4096_launch_observation_20261026.json)：75轮/307200转移，WM0/actor0，仍为128轮采样预热；controller989与worker990的boot/start_ticks均匹配。GPU38摄氏度/2704MiB，共享内存6860914688字节、under_oom0/OOM0，盘余1532036804608字节，本实验约69.29MB。原q1-2048已更新新入口/身份/预算并核ACTIVE，仍每10分钟静默监督；未重复创建任务或子agent。当前尚无本轮训练效果。
+
+以下保留原计划和旧容器实测记录，新入口/实际OOM以本节为准。
+
 2026-10-26最新安排：用户自己的25252容器正接收[CM01全量迁移](README_Q1_CONTAINER_MIGRATION_20261026.md)，已明确允许同期腿部分析及运行就绪后直接训练。RF05配置和原参考/控制保持；新容器OOM基线为0，启动命令改为`--expected-oom-kill 0`，不沿用下方旧容器14。新的真实启动时间、代码部署和进程身份须重新登记。[D05限矩/足高短时对照](README_SUPERMIMIC_Q1_LEG_CONTROL_20261026.md)不改原RF04终态，也不改本轮规模对照变量。原4096完整批量实测已通过，不重复整套profile。
 
 记录日期：2026-10-25，更新至2026-10-26，北京时间。阶段：E4096-P01完成，RF05-E4096-UP01待资源。状态：RF04训练和终后交付完成，4096完整批量实测通过且worker回收；02:02共享盘可用空间为0，低于100GiB保护，RF05目录尚未创建或启动，服务器部署暂缓。

@@ -1,0 +1,359 @@
+{
+  "status": "Q1_CONTAINER_MIGRATION_AND_RUNTIME_VERIFIED",
+  "phase": "CM01",
+  "source_ssh_port": 25651,
+  "target_ssh_port": 25252,
+  "root": "/opt/data/private/ZHY",
+  "source_originals_retained": true,
+  "source_sha256_manifest": {
+    "bytes": 57175339,
+    "sha256": "6a30286276aa6c7c6d2da6f206d155b86bf3ff7d609788e4ff12ddbe79ee1bd9"
+  },
+  "evidence": {
+    "copy.completed": {
+      "status": "FULL_COPY_COMMAND_COMPLETED",
+      "pipeline_returncode": 0,
+      "tar_total_bytes_written": 328083210240,
+      "started_local": "2026-10-26T13:56:46+08:00",
+      "completion_observed_utc": "2026-10-26T06:55:42.398200+00:00",
+      "source_root": "/opt/data/private/ZHY",
+      "target_root": "/opt/data/private/ZHY",
+      "source_ssh_port": 25651,
+      "target_ssh_port": 25252,
+      "source_originals_retained": true,
+      "bytes_verification": "PENDING_FINAL_CHECK",
+      "storage_status": "LOCAL_ONLY"
+    },
+    "source_hash.completed": {
+      "status": "SOURCE_HASH_GENERATION_COMPLETED",
+      "returncode": 0,
+      "files": 283995,
+      "manifest_bytes": 57175339,
+      "manifest_sha256": "6a30286276aa6c7c6d2da6f206d155b86bf3ff7d609788e4ff12ddbe79ee1bd9",
+      "observed_utc": "2026-10-26T06:42:09.354769+00:00",
+      "source_endpoint": "59.77.15.15:25651",
+      "source_root": "/opt/data/private/ZHY"
+    },
+    "final_byte_verification": {
+      "status": "ALL_SOURCE_FILE_BYTES_VERIFIED",
+      "files": 283995,
+      "bytes": 327641589025,
+      "metadata_changed_files_rehashed": 0,
+      "ended_unix": 1792997823.1048295,
+      "training_runs_started": 0
+    },
+    "tree_comparison": {
+      "status": "SOURCE_METADATA_TREE_MATCH",
+      "source_uncompressed_sha256": "d547977e53707c3ab0dfdcaf0422be9dc35f9d2523c44bc2c9ff7d91300543fd",
+      "target_uncompressed_sha256": "d547977e53707c3ab0dfdcaf0422be9dc35f9d2523c44bc2c9ff7d91300543fd",
+      "source_types": {
+        "D": 41507,
+        "F": 283995,
+        "L": 5767
+      },
+      "target_types": {
+        "D": 41507,
+        "F": 283995,
+        "L": 5767
+      },
+      "source_only_count": 0,
+      "target_only_count": 0,
+      "exclusions": [
+        "data/storage/container_migration_20261026",
+        "data/references/sonic_external_20261026",
+        "data/supermimic_for_q1/RF04_LEG_D05_20261026"
+      ],
+      "observed_unix": 1792997882.480888
+    },
+    "link_verification": {
+      "status": "MIGRATED_LINKS_VERIFIED",
+      "links": 5767,
+      "source_broken_count": 360,
+      "target_broken_count": 360,
+      "new_broken": [],
+      "historical_broken_now_resolved": [],
+      "intentional_external_changes": [
+        {
+          "path": "/opt/data/private/ZHY/data/yuanqi_ops/g1_leg/run/gear_sonic/data/robots",
+          "old": "/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/data/robots",
+          "new": "/opt/data/private/ZHY/data/references/sonic_external_20261026/robots"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/yuanqi_ops/g1_leg/run/gear_sonic/data/robot_model",
+          "old": "/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/data/robot_model",
+          "new": "/opt/data/private/ZHY/data/references/sonic_external_20261026/robot_model"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/yuanqi_ops/g1_leg/run/gear_sonic/data/human",
+          "old": "/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/data/human",
+          "new": "/opt/data/private/ZHY/data/references/sonic_external_20261026/human"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/yuanqi_ops/g1_leg/run/gear_sonic/data/video_writer.py",
+          "old": "/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/data/video_writer.py",
+          "new": "/opt/data/private/ZHY/data/references/sonic_external_20261026/video_writer.py"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/yuanqi_ops/g1_leg/run/gear_sonic/data/features_sonic_vla.py",
+          "old": "/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/data/features_sonic_vla.py",
+          "new": "/opt/data/private/ZHY/data/references/sonic_external_20261026/features_sonic_vla.py"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/yuanqi_ops/g1_leg/run/gear_sonic/data/exporter.py",
+          "old": "/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/data/exporter.py",
+          "new": "/opt/data/private/ZHY/data/references/sonic_external_20261026/exporter.py"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/yuanqi_ops/g1_leg/run/gear_sonic/data/assets/robot_description/urdf/g1/meshes",
+          "old": "/opt/data/private/hechengzhu/Proj/SONIC/GR00T-WholeBodyControl/gear_sonic/data/robots/g1/meshes",
+          "new": "/opt/data/private/ZHY/data/references/sonic_external_20261026/robots/g1/meshes"
+        }
+      ],
+      "compatibility_aliases": {
+        "/opt/data/private/YuanQi_Q1": "/opt/data/private/ZHY",
+        "/opt/data/private/yuanqi_ops": "/opt/data/private/ZHY/script/yuanqi_ops",
+        "/opt/data/private/hechengzhu/ZHY": "/opt/data/private/ZHY/script/legacy_a3"
+      },
+      "observed_unix": 1792998023.9979053
+    },
+    "runtime_verification": {
+      "status": "Q1_CONTAINER_RUNTIME_VERIFIED",
+      "hostname": "interactive90549",
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+      "packages": {
+        "torch": {
+          "version": "2.8.0+cu128",
+          "file": "/opt/data/private/hechengzhu/ZHY/data/env/lib/python3.11/site-packages/torch/__init__.py"
+        },
+        "numpy": {
+          "version": "1.26.0",
+          "file": "/opt/data/private/hechengzhu/ZHY/data/env/lib/python3.11/site-packages/numpy/__init__.py"
+        },
+        "mujoco": {
+          "version": "3.3.7",
+          "file": "/opt/data/private/hechengzhu/ZHY/data/env/lib/python3.11/site-packages/mujoco/__init__.py"
+        },
+        "mink": {
+          "version": null,
+          "file": "/opt/data/private/hechengzhu/ZHY/data/env/lib/python3.11/site-packages/mink/__init__.py"
+        },
+        "smplx": {
+          "version": null,
+          "file": "/opt/data/private/hechengzhu/ZHY/data/env/lib/python3.11/site-packages/smplx/__init__.py"
+        },
+        "scipy": {
+          "version": "1.15.3",
+          "file": "/opt/data/private/hechengzhu/ZHY/data/env/lib/python3.11/site-packages/scipy/__init__.py"
+        }
+      },
+      "cuda": {
+        "available": true,
+        "name": "NVIDIA GeForce RTX 3090",
+        "result": 357389824.0
+      },
+      "q1_model": {
+        "nq": 29,
+        "nv": 28,
+        "nu": 22,
+        "forward_finite": true
+      },
+      "xml_models": [
+        {
+          "path": "/opt/data/private/ZHY/data/references/q1/model_20261023_P01/q1_v3/xml/q1_v3.xml",
+          "nq": 29,
+          "nu": 0
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/references/q1/model_20261023_P01/q1_v3/xml/q1_v3_full_range.xml",
+          "nq": 29,
+          "nu": 0
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/references/q1/model_20261023_P01/q1_v3/xml/q1_v3_mc.xml",
+          "nq": 29,
+          "nu": 22
+        }
+      ],
+      "render": {
+        "backend": "egl",
+        "width": 320,
+        "height": 240,
+        "pixel_std": 60.57771030432218,
+        "unique_colors": 1051,
+        "path": "/opt/data/private/ZHY/data/storage/container_migration_20261026/runtime_render.png"
+      },
+      "elapsed_seconds": 10.351897090673447,
+      "observed_unix": 1792997705.894333
+    },
+    "external_verification": {
+      "status": "ALL_EXTERNAL_SOURCE_BYTES_VERIFIED",
+      "returncode": 0,
+      "files": 626,
+      "bytes": 1084496445,
+      "manifest_sha256": "b2f07d913ff699eb4284f8ddda627e9377eb13ec979ef858146c88ff0a896d65",
+      "manifest_rows": 626,
+      "elapsed_seconds": 6.241420269012451,
+      "diagnostics": ""
+    },
+    "cache_advisory": {
+      "status": "PROJECT_CACHE_ADVISORY_COMPLETED",
+      "files_advised": 20914,
+      "logical_bytes_advised": 318884879064,
+      "minimum_file_bytes": 1048576,
+      "errors": [],
+      "error_count": 0,
+      "elapsed_seconds": 6.487848244607449,
+      "observed_unix": 1792997920.3788776,
+      "semantics": "POSIX_FADV_DONTNEED on verified project regular files only; no global cache dropping; not a deletion or a guaranteed released-byte count."
+    },
+    "deployment": {
+      "status": "PUBLISHED_FILES_DEPLOYMENT_VERIFIED",
+      "published_commit": "abda76e7bc873405b4321b4d9a6f5991e7290828",
+      "files": [
+        {
+          "path": "data/manifests/q1_server_25651_observation_20261026.json",
+          "bytes": 1889,
+          "sha256": "2b5c40062391e6087f695464fa5341723a878e563b87ac54777165b0a9a01a5c"
+        },
+        {
+          "path": "data/manifests/research_watch_check_20261026.json",
+          "bytes": 91832,
+          "sha256": "920b7179e2aaf8aa2e7e9dcd461a6d882282cebcadf64cc8bd5167fe6f466108"
+        },
+        {
+          "path": "data/manifests/research_watch_sync_20261026.json",
+          "bytes": 9034,
+          "sha256": "edd04f66ed35a6c1cdedee9641be64098642568565f1e955d2fec12e2e798b66"
+        },
+        {
+          "path": "data/manifests/supermimic_q1_E4096_profile_20261026.json",
+          "bytes": 3150,
+          "sha256": "c54b92521ec38828ead777bdbb55debea1a8655ad521781a981293692c2e4c70"
+        },
+        {
+          "path": "data/manifests/supermimic_q1_E4096_profile_guard_20261026.json",
+          "bytes": 1896,
+          "sha256": "a327c1e80c65d8c2b41b2164c439e2b0621e87cc2f40f2ce1ba192c4717079c9"
+        },
+        {
+          "path": "data/manifests/supermimic_q1_RF04_leg_D05_20261026.json",
+          "bytes": 18856,
+          "sha256": "00f26f337c0840154680054f6b3c092c8780edf60d84f7ae1af7d82c1d761ae1"
+        },
+        {
+          "path": "data/manifests/supermimic_q1_RF04_same_reference_geometry_20261026.json",
+          "bytes": 9330,
+          "sha256": "768393e9555393f0061295164ee69772a8ca20a7bd79c45c7d29114f28374b0a"
+        },
+        {
+          "path": "data/manifests/supermimic_q1_storage_growth_20261026.json",
+          "bytes": 4860,
+          "sha256": "5bccf710bf19f335644aae71a53ec1cf805530feefe91ed92d1cc8cfa45e1b2f"
+        },
+        {
+          "path": "logs/session_records/q1_RF04_same_reference_geometry_20261026.txt",
+          "bytes": 3525,
+          "sha256": "2230b4e40cf76175aa1b6bbb084c5dbf33c367ccdcb99f31e6be872e5d0c3e86"
+        },
+        {
+          "path": "reports/README.md",
+          "bytes": 77181,
+          "sha256": "a3d61db40665926c110909fd3139edde4d9cb7d9d534caf0c8a0e6d81560eadd"
+        },
+        {
+          "path": "reports/README_CURRENT_STATE.md",
+          "bytes": 15184,
+          "sha256": "48cb34b8671e70a75da4c3feb5340e4b27c5a7d17a9cb747066e163a98b50453"
+        },
+        {
+          "path": "reports/README_INFRASTRUCTURE.md",
+          "bytes": 3365,
+          "sha256": "2bd562632a83afe3f3de5fa3e13670c299b79ab94088b0318d6c7d5b15da8a2b"
+        },
+        {
+          "path": "reports/README_Q1_CONTAINER_MIGRATION_20261026.md",
+          "bytes": 6170,
+          "sha256": "6a010524d906aadb77d22f05e59625c4fa0e43252ee118170bc5305c370cb918"
+        },
+        {
+          "path": "reports/README_Q1_STORAGE_GROWTH_20261026.md",
+          "bytes": 5181,
+          "sha256": "cddde140bb5a89b5cccf765f8e5389e96ed28d063b045b61d8c0827a5d14fd4b"
+        },
+        {
+          "path": "reports/README_RESEARCH_CHECK_20261026.md",
+          "bytes": 5720,
+          "sha256": "2af8ab7c1fd2c53d38a9b2442ee26c69c3bda9381192f2f2e1ff25207f1244d3"
+        },
+        {
+          "path": "reports/README_RESEARCH_WATCH.md",
+          "bytes": 7549,
+          "sha256": "57248a0d48bc44592d41a77809181f1f8f5e7150f0f38407aa4d0de4e1869f2a"
+        },
+        {
+          "path": "reports/README_STORAGE.md",
+          "bytes": 5236,
+          "sha256": "a1ad450593300735ffc1e238dbe1c927679947b6f1b7d100ad6b42165ceee218"
+        },
+        {
+          "path": "reports/README_SUPERMIMIC_Q1_E4096_20261025.md",
+          "bytes": 9720,
+          "sha256": "a03a390c31c772d420bb2cbf8075815538913b51c2e6d90a484788aeccd646b7"
+        },
+        {
+          "path": "reports/README_SUPERMIMIC_Q1_FAILURE_REVIEW_20261026.md",
+          "bytes": 8427,
+          "sha256": "3adee04b221a9e4f09d545dc4efc5346047e4e72bc724e14be7834cb65935966"
+        },
+        {
+          "path": "reports/README_SUPERMIMIC_Q1_LEG_CONTROL_20261026.md",
+          "bytes": 4736,
+          "sha256": "f2090bdc6517c51b679f81ca76008905aed43d3a9afa1ed57f9d08eb7c679dbb"
+        },
+        {
+          "path": "reports/README_SUPERMIMIC_Q1_MONITOR_GOAL_20261025.md",
+          "bytes": 10725,
+          "sha256": "f665f7558c7f3d9f320f05dda99b7667910fdc4c405e8a807178ba9bde1dc1e0"
+        },
+        {
+          "path": "reports/research/README.md",
+          "bytes": 3238,
+          "sha256": "77b54a36240806cdd23cb7c7eb63ec301c2182dd511d25102166a9d71028580d"
+        },
+        {
+          "path": "script/project_tools/probe_q1_legs_20261026.py",
+          "bytes": 10907,
+          "sha256": "320642bdc2e718a590abffaede447f07e0dac9932f236854b241a9f18b9937a7"
+        },
+        {
+          "path": "script/project_tools/verify_container_migration_20261026.py",
+          "bytes": 6599,
+          "sha256": "d077cc533d6aeea1d418e0f0f6d2cf90b33cb863ad65308c51899540f4acfe37"
+        },
+        {
+          "path": "script/research_watch/automation_snapshot.json",
+          "bytes": 5974,
+          "sha256": "2cc6ddad92ec1a6b5321d11173d1b60896a2af80feda701f498b0ed5ea560096"
+        },
+        {
+          "path": "script/supermimic_q1_reproduction/train_reproduction.py",
+          "bytes": 15307,
+          "sha256": "0a8128f6d4bfb5908436373d850c5edd7e51b808a0a731bbb5d94150ef92767f"
+        },
+        {
+          "path": "AGENTS.md",
+          "bytes": 14793,
+          "sha256": "b84cc0683fb8d8a961df89caea3cf1b2ce242d1b8d3774bbc29b5a499105f5a2",
+          "source": "preserved_server_instructions_with_latest_user_authorization"
+        }
+      ],
+      "observed_unix": 1792998141.7220979,
+      "source_root": "/tmp/yuanqi-supermimic-q1-20261023",
+      "target_root": "/opt/data/private/ZHY"
+    }
+  },
+  "remote_evidence_root": "/opt/data/private/ZHY/data/storage/container_migration_20261026",
+  "observed_unix": 1792998264.749971,
+  "storage_status": "LOCAL_ONLY",
+  "limits": "Two same-host container copies, not off-host or Baidu backup. Source baseline equality was checked before seven intentional external-link changes and explicit published-file deployment; new diagnostics excluded and accounted separately."
+}

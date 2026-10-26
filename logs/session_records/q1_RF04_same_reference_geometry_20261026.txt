@@ -1,0 +1,46 @@
+Read-only diagnostic executed 2026-10-26 via verified server endpoint 25651.
+Python: /opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python
+Environment: PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+Run the following through the established SSH connection with python -c, or as a here-document.
+No credentials, integration steps, optimizer updates, or admission decisions.
+
+import datetime,hashlib,json,sys
+from pathlib import Path
+import numpy as np
+import mujoco
+from scipy.spatial.transform import Rotation,Slerp
+root=Path("/opt/data/private/ZHY")
+sys.path.insert(0,str(root/"script/supermimic_q1_sources"))
+from diagnose_bones_support import feet,trajectory,clearance
+from bones_verify_reference import read_source,source_foot_ids
+from contact_protocol import ContactCorrectedAssets
+clip="train_3419f09ba93c91d75fc1"
+base=root/"data/supermimic_for_q1/BONES_PF02_0768_20261025/converted"
+manifest_path=base/"manifest.json"
+manifest=json.loads(manifest_path.read_text())
+row=next(x for x in manifest["motions"] if x["clip"]==clip)
+def identity(path):
+ p=Path(path)
+ return {"path":str(p),"bytes":p.stat().st_size,"sha256":hashlib.sha256(p.read_bytes()).hexdigest()}
+inputs=[identity(manifest_path),identity(row["source_csv"]["path"]),identity(row["output"]["path"]),identity(manifest["source_model"]["path"])]
+if inputs[1]!=row["source_csv"] or inputs[2]!=row["output"] or inputs[3]!=manifest["source_model"]: raise ValueError("input identity mismatch")
+assets=ContactCorrectedAssets(root)
+model=mujoco.MjModel.from_xml_path(manifest["source_model"]["path"])
+times,native,fingerprint=read_source(Path(row["source_csv"]["path"]).read_bytes(),model,row["bones_source"]["move_duration_frames"])
+with np.load(row["output"]["path"],allow_pickle=False) as z:
+ query=z["time_s"].copy()
+ q=z["qpos"].astype(float)
+sampled=np.empty((len(query),36))
+for c in (*range(3),*range(7,36)):sampled[:,c]=np.interp(query,times,native[:,c])
+sampled[:,3:7]=Slerp(times,Rotation.from_quat(native[:,[4,5,6,3]]))(query).as_quat()[:,[3,0,1,2]]
+native_low,_=trajectory(model,native,feet(model,source_foot_ids(model)))
+sampled_low,_=trajectory(model,sampled,feet(model,source_foot_ids(model)))
+q1_low,pairs=trajectory(assets.model,q,feet(assets.model,assets.foot_geoms))
+def summary(values):
+ s=clearance(values)
+ s["any_foot_within_30mm_fraction"]=float(np.mean(values.min(1)<=.03))
+ s["both_feet_above_15mm_fraction"]=float(np.mean(values.min(1)>.015))
+ return s
+result={"status":"SAME_RF04_REFERENCE_GEOMETRY_DIAGNOSTIC_COMPLETED","observed_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"clip":clip,"source_filename":row["bones_source"]["filename"],"inputs":inputs,"q1_assets":assets.manifest(),"source_g1_native_120hz":summary(native_low),"source_g1_sampled_50hz":summary(sampled_low),"exported_q1_50hz":summary(q1_low),"source_g1_first_122_frames_50hz":summary(sampled_low[:122]),"exported_q1_first_122_frames":summary(q1_low[:122]),"q1_deepest_self_collision_pairs":pairs,"global_ground_origin_shift_m":row["diagnostics"]["global_ground_origin_shift_m"],"new_physics_integration_steps":0,"new_optimizer_updates":0,"bounds":"One training reference, read-only FK using existing collision geometry. Ground distances are not support forces or a new admission gate. Exact BONES generation XML identity remains unproven."}
+if [identity(x["path"]) for x in inputs]!=inputs:raise ValueError("inputs changed")
+print(json.dumps(result,ensure_ascii=False,indent=2))

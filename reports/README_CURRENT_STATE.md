@@ -1,5 +1,9 @@
 # YUANQI 当前状态与下一步
 
+[MG02-B闭环诊断D06B](README_SUPERMIMIC_Q1_LEG_CONTROL_20261026.md)已完成：原25%状态/动作精确重现122步倒地，**仅12腿关节50%**同一固定策略完整365步不倒，但净位移仅0.040410m/目标1.601504m、沿目标方向0.013741m、双支撑99.18%，仍未行走。全身50%无明显额外收益，抬手肩上同步仍0；852控制步/0optimizer/无CUDA。首尝试D06的变量覆盖故障及基线NPZ保留，D06B原样收据已接收。RF05源码/输入不变，接下来准备独立RF06训练/评测控制契约一致性。
+
+当前正式目标已更新为[MG02腿部闭环与独立训练](README_SUPERMIMIC_Q1_MG02_LEG_GOAL_20261026.md)，get_goal实际active，不重复创建。RF05保留原25%限矩/PD/奖励/参考，尚未针对腿部特调；15:27实读200轮/819200转移、WM29/actor0，真实进程匹配、OOM0。先完成三组闭环CPU诊断并准备独立RF06，仅12腿关节限矩改50%、动作尺度与上肢/腰保持；RF05全pipeline结束和释放资源后才启动RF06，4096环境至少7200秒，从零同seed/参考。阶段状态与具体命令以MG02 README为准，旧MG01 paused标签不再是当前目标。
+
 15:10:43增量观测：[RF05启动/进度收据](../data/manifests/supermimic_q1_RF05_E4096_launch_observation_20261026.json)记录75轮/307200真实转移，WM0/actor0仍在128轮采样预热。controller与worker均逐boot/PID/start_ticks匹配，GPU38摄氏度/2704MiB，共享内存6860914688字节、under_oom0/OOM0，盘余1532036804608字节；本实验约69.29MB。实际训练尚未完成，不将日志seconds当两小时达标。原`q1-2048`已通过工具更新并核配置为ACTIVE，每10分钟监督25252新作业，正常静默；MG01目标工具的paused标签与监督自动任务状态分开记录。
 
 15:02:22最新现场：[CM01迁移与运行验证完成](README_Q1_CONTAINER_MIGRATION_20261026.md)，自己的25252容器已实际启动[RF05-E4096](README_SUPERMIMIC_Q1_E4096_20261025.md)，4096环境/WM2048×10/actor4096-H32/UTD0.4、原365帧参考/seed/从零、实际训练至少7200秒、最大12000轮。发布部署版本`abda76e7bc873405b4321b4d9a6f5991e7290828`已独立核远端及27项目标文件；新train源码SHA`0a8128f6d4bfb5908436373d850c5edd7e51b808a0a731bbb5d94150ef92767f`。controller989/start_ticks3629014760、worker990/start_ticks3629014771，boot`d994e71f-bae0-46ba-a5f7-6c2163771c6c`；guard/管线RUNNING，初始step0，仅为启动和身份核验，未宣布效果。冻结运行源码/输入，不再覆盖。

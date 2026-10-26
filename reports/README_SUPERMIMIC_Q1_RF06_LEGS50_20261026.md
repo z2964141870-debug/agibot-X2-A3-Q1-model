@@ -1,0 +1,47 @@
+# Q1 RF06腿部限矩对照与一小时预算
+
+记录日期：2026-10-26，北京时间。MG02-C：实现与CPU验证完成，发布和部署核验随本阶段执行；MG02-D正式RF06尚未启动。
+
+## 目标与范围
+
+RF05验证扩大采样和更新规模后的原配置表现，不是腿部修正试验。相对RF04，环境2048→4096、世界模型批量1024→2048（每组仍10次）、actor批量2048→4096（H32）；PD、限矩、动作尺度、参考、奖励、网络和seed保持。该比较同时改变环境和更新批量，固定两小时也不保证相同转移或更新数，不能单独归因于环境数。更多环境没有自动扩大动作噪声幅度，也没有增加参考动作种类；当前仍只训练同一段365帧参考。是否改善只能由训练后的真实MuJoCo跟踪结果回答。
+
+RF06验证更具体的问题：仅提高腿部允许力矩，能否缓解失稳并帮助策略学习支撑切换和移动。依据是[D06B闭环对照](README_SUPERMIMIC_Q1_LEG_CONTROL_20261026.md)：同一固定RF04策略，原25%限矩122步倒地，仅腿部50%完整365步不倒，但净移0.040410m、双支撑99.18%，仍未行走。这支持控制权限是失稳因素之一，不能证明它是唯一原因或已经解决行走。
+
+## 控制与预算
+
+- 独立目录`script/supermimic_q1_reproduction/leg_control/`；不改RF05冻结入口。`control.py`只将12个髋/膝/踝关节模型effort比例25%→50%；其他10关节25%，PD50/2，动作尺度仍按原25%计算。
+- `entry.py`使训练、评测、算术审计、全身分析和渲染一致使用该控制设置，逐关节记录比例和版本`Q1_LEGS_CAP50_OTHER25_SCALE25_V1`。这是仿真干预，未经厂家真机验证。
+- `run_single_motion.py`复用原SuperMimic训练与流程，固定4096环境/8线程/8槽、WM2048×10、actor4096/H32、UTD0.4、seed2026102513、同一参考/原速时轴、从零初始化，最大12000轮。
+- 用户最新要求以后每轮最多一小时。RF06真实训练最多3600秒，软目标3000秒（50分钟），完整25轮边界结束；整个训练阶段3500秒时限及55秒退出宽限，预留一小时内退出的余量。超时保留保护停止，不续训、不自动重试。初始化、绘图和评测不计真实训练时长。
+- RF05仍为已启动的原两小时基线。两轮同时存在限矩与时长差别，不称等时训练消融；报告必须列实际时长、转移及更新数。
+
+## 实际验证与失败记录
+
+`test_control.py`的8项测试全部通过、0跳过，耗时4.577秒：恰好12个关节限矩改变，尺度/PD/奖励/接触保持；原生与slotted模型实际force range及4步状态完全一致；保存manifest和训练绑定正确；各控制相关流程路由一致；未完成或不足预算的RF05阻止启动；训练时限生效，超过一小时的收据不被接受。
+
+CPU集成验证`RF06_LEG_CONTRACT_C02_20261026`完成真实评测、算术审计、全身分析、腿部分析和两帧渲染，全部退出0：365步状态/动作与独立D06B最大差均0，支撑分析相同；两帧图像像素标准差最低73.65395，编码实际成功；43.716秒、0优化器更新、未使用CUDA。固定RF04策略fixture仅检查入口一致性，不是RF06训练结果，不作为正式初始化。原样[成功收据](../data/manifests/supermimic_q1_RF06_leg_contract_C02_20261026.json)保留来源SHA和每阶段日志。
+
+首个C01在评测/审计/分析通过后因新容器缺系统字体/ffmpeg入口而渲染失败，[原失败收据](../data/manifests/supermimic_q1_RF06_leg_contract_C01_failure_20261026.json)与服务器目录保留；另一次初始调用的模块搜索路径和测试backend路径问题已修正。复用项目已有DejaVu字体和ffmpeg7.0.2二进制，建立标准系统入口，无下载或新安装，大小/SHA和入口见[依赖收据](../data/manifests/supermimic_q1_RF06_media_dependencies_20261026.json)。16:20:42检查RF05的78项冻结来源全部未变；该依赖修复也使RF05后续自动编码可用。
+
+`analyze.py`从已保存评测状态重建每个控制边界的双脚支撑和PD需求/限矩比，0新积分/0策略推理/0优化器更新；边界采样不等于子步力矩峰值，不能独立作为行走成功判据。RF06自动执行；RF05完成后用相同分析器另存独立产物。
+
+## 命令与产物
+
+正式计算仅在自己的25252容器、根`/opt/data/private/ZHY`。启动前须RF05全流程COMPLETED、实际训练至少7200秒、worker正常回收、controller退出、GPU空闲，且RF06输出目录不存在；入口再次强制检查。保留100GiB余盘、12GiB单实验、30GiB共享内存、OOM基线0、86摄氏度和900秒无进度保护，不并行第二训练。
+
+以下命令中的40位版本必须取本阶段已经push并独立核验的Q1提交，先逐文件核部署SHA再执行；本文件不把未执行的启动写为完成：
+
+```sh
+/opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python \
+  /opt/data/private/ZHY/script/supermimic_q1_reproduction/leg_control/run_single_motion.py \
+  --root /opt/data/private/ZHY \
+  --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026 \
+  --code-commit <PUBLISHED_40_CHARACTER_Q1_COMMIT> --expected-oom-kill 0 --detach
+```
+
+集成验证的复现入口为`leg_control/verify.py --root /opt/data/private/ZHY --output <新的独立验证目录>`。C02已完成，不重复运行。权重/fixture/大轨迹留服务器LOCAL_ONLY，不拉Mac、不冒充网盘备份。
+
+## 下一步与交付
+
+先完成本阶段发布、独立远端版本及部署SHA核验，继续监督RF05；RF05完成后直接交付现有2×3 PNG/PDF/CSV和初末MP4至本机对应`data/supermimic_for_q1/`目录，逐大小/SHA。然后顺序执行唯一RF06，再比较完整存活/跌倒、净位移/方向/速度、双脚支撑/换脚、共同前缀腿部及上肢误差、抬手幅度/时序。站住和走起来分别报告，不以支撑比例或倒地位移代替行走证据。现无腿部专用训练效果结论；完整目标进度见[MG02](README_SUPERMIMIC_Q1_MG02_LEG_GOAL_20261026.md)。

@@ -1,5 +1,11 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-26 23:17：[MG03观察目标](README_SUPERMIMIC_Q1_MG03_OBSERVATION_20261026.md)active，执行[RF08](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)4096环境/最多一小时，观察稳定/移动/上肢并交付图与本地MP4，不自动延长。[AP01](README_SUPERMIMIC_Q1_HP_ALIGNMENT_20261026.md)独立100/15 SOMA到Q1、FK/GPU时序/回合记录及4096完整WM/actor/critic资源验证通过，profile已回收/OOM0；正式训练仍待发布/部署核验，尚未启动，不预报改善或监督生效。
+
+2026-10-26 21:43：[SOMA接收与全面对齐准备](README_SUPERMIMIC_Q1_HP_ALIGNMENT_20261026.md)：用户提供的canonical骨架23062字节/SHA与师兄输入一致，已复制25252统一inbox并核对；元数据已在，SOMA主包由用户上传。精确复用100/15动作可补pilot_manifest.json/selection.json，生成来源记录可补generation_manifest.json；后两项不作额外数据门。整体Q1/GPU适配尚未实现或启动新训练，25677登录未成功，数据状态UNKNOWN。旧q1-2048更新返回不存在，未创建替代任务，独立仓库跟踪未改。
+
+2026-10-26 20:45：[RF07完整交付](README_SUPERMIMIC_Q1_RF07_ROOT_FEEDBACK_20261026.md)：全部10阶段完成，3058.032232秒/575轮2355200转移、WM179组/actor129次，13项保存/初末身份算术审计通过。最终113/365步2.26秒倒地，净移0.50865m含失稳，不能称稳定行走；[RF06/RF07比较](../data/manifests/supermimic_q1_RF06_RF07_comparison_20261026.json)共同前缀根XY误差0.10987至0.03109m，上肢0.71598至0.68749rad，但完整抬手峰未到。11项PNG/PDF/CSV/初末MP4/代表帧1539139字节已在Mac逐大小SHA通过，权重留服务器。用户据此要求全面对齐师兄方法，不冒称多变量整体适配是单因素消融。
+
 2026-10-26 19:50：[SuperMimicHP与Q1双向核查](README_SUPERMIMICHP_Q1_REVIEW_20261026.md)完成并采用原可微根反馈，6测试/真实CPU评测审计通过；冻结代码8ba7f820cffbe0e2f0ece7a3b34ce79d0683f7a6发布/远端核验/部署后，[RF07](README_SUPERMIMIC_Q1_RF07_ROOT_FEEDBACK_20261026.md)19:48:55启动，goal540→549、4096环境/原RF06控制/软50分钟最多1小时，现场身份匹配/step0/OOM0。q1-2048改为RF07每10分钟监督。师兄短片无H32起点时无限采样已隔离实际函数复现，非当前100条数据触发证据；每小时仓库跟踪继续双向核查，不保证Q1改善。
 
 2026-10-26 19:00：[SuperMimicHP增量巡查](README_SUPERMIMICHP_WATCH_20261026.md)确认310244b只发布已有X2演示和文档，运行源码/配置/原24k结果未变，没有新的Q1相关技术变化，按偏好静默；状态文件推进已检查HEAD，每小时跟踪继续，不新增训练。

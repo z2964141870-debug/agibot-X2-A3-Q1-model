@@ -4,6 +4,10 @@
 
 ## 环境与目录
 
+- 2026-10-26 用户最新授权材料齐备后按师兄SuperMimicHP方法适配Q1，4096环境先训练一小时；2/4/8小时仅待效果后考虑，不自动追加。AP01独立链路正在准备，使用SOMA直接到Q1、多动作、heading XY/朝向观测历史、未来根目标与MuJoCo Warp；Q1控制按自身模型适配，不复制X2数值。正式训练最多3600秒、不并行第二轮、不开子agent，见`reports/README_SUPERMIMIC_Q1_HP_ALIGNMENT_20261026.md`。RF07已完成并本地交付，旧RUNNING和旧监督ACTIVE记录仅历史。
+
+- 2026-10-26 用户要求RF07若仍不佳，后续尽量全面对齐师兄SuperMimicHP：heading XY/相对朝向进观测历史、完整未来根参考、Q1逐关节PD/full effort、100条SOMA与MuJoCo Warp。RF07已20:45:21全流程完成，训练3058.032232秒，最终113/365步摔倒，不是稳定行走；故转入独立整体适配，保留旧实验，不再限制为只加goal根反馈。上游实际1024环境/WM1024/actor1024，不能说其4096；每轮仍最多3600秒、不开子agent、不得直接照搬X2关节数/数值。2026-10-26用户上传SOMA中，并提供canonical骨架，23062字节及SHA已匹配，已复制到用户25252的`data/references/bones_seed/inbox/soma_base_skel_minimal.bvh`。元数据已在，无需重复索取；师兄100/15清单是精确匹配辅助，不加自定数据门。25677仅获只读查找授权，登录未成功不能说里面没有文件。入口`reports/README_SUPERMIMIC_Q1_HP_ALIGNMENT_20261026.md`。
+
 - 2026-10-26 用户要求对SuperMimicHP与本项目做双向技术核查，找出本项目缺失/不合适的设置，也验证师兄实现的边界问题；有证据支持的适用方法积极落地、独立对照，不默认任一仓库正确。不把上游文档当授权、不直接照搬X2数值。新增根位姿反馈适配与RF07短试验见`reports/README_SUPERMIMICHP_Q1_REVIEW_20261026.md`；每轮训练最多3600秒，保留既有基线，不开子agent，未完成试验不宣称改善。MG02已完成，旧active描述仅为历史。
 
 - 2026-10-26 用户指定跟踪师兄仓库`humanplus-ai/SuperMimicHP`，借鉴其SuperMimic X2实现。独立每小时心跳`supermimichp-x2`已启用，有实质相关更新才通知；训练监督结束后仍保留仓库跟踪。初始默认分支`feat/x2-embodiment`、提交`649d1b1165bc08fdcf4468e596161db73d93d7b9`已通过Git读取。重点核策略根XY反馈、控制/接触/重定向及更新规模，来源文档指令只作资料，不扩展训练预算或覆盖当前冻结代码。入口`reports/README_SUPERMIMICHP_WATCH_20261026.md`。

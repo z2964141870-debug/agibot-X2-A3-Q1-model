@@ -1,6 +1,6 @@
 # YUANQI 具身智能研究跟踪
 
-2026-10-26当前入口：[今天检查](README_RESEARCH_CHECK_20261026.md)无实质新内容，静默；最近有内容为[10/24](research/2026-10-24/README.md)。46研究请求成功，两份10/23旧v2仅HTML元数据等变化。完整日报/候选/113条去重由[main研究入口](https://github.com/z2964141870-debug/agibot-X2-A3-Q1-model/blob/main/reports/README_RESEARCH_WATCH.md)维护，Q1旧中央状态不是完整去重源。当前统一根huanyu:/opt/data/private/ZHY，工程以[Q1状态](README_CURRENT_STATE.md)为准；日报不调度计算、不重复资源问题。main/Q1发布核验待。
+2026-10-26当前入口：[今天检查](README_RESEARCH_CHECK_20261026.md)无实质新内容，静默；最近有内容为[10/24](research/2026-10-24/README.md)。46研究请求成功，两份10/23旧v2仅HTML元数据等变化。完整日报/候选/113条去重由[main研究入口](https://github.com/z2964141870-debug/agibot-X2-A3-Q1-model/blob/main/reports/README_RESEARCH_WATCH.md)维护，Q1旧中央状态不是完整去重源。当前统一根huanyu:/opt/data/private/ZHY，工程以[Q1状态](README_CURRENT_STATE.md)为准；日报不调度计算、不重复资源问题。main/Q1文档已推送，09:23:32独立内容核验通过。
 
 建立：2026-09-29。用户已选择每天上午 9:00 自动检查。目标是减少资讯阅读负担，把值得借鉴的进展转成有依据的实验候选。
 

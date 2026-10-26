@@ -1,8 +1,8 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-27：[MG04新目标](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)已active，用户授权扩库/上肢重定向、多类至少30秒本地MP4和4096环境一次五小时训练。准备进行中，RF09尚未启动；保留RF08基线、不开子agent、不自动重试或续训。
+2026-10-27：[MG04新目标](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)active，[RF09五小时](README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md)02:19:56已实际启动，4096环境/300训练30验证/根原点校正/从零；冻结a553b6a已发布并核远端、24文件三端大小SHA一致，153来源锁定。206学习轮/WM2060时仍正常预热，无新效果结论；沿用q1-rf08-4096已ACTIVE每10分钟监督，预计07:20左右训练结束后自动初末/固定RF08对照/六宫格/长MP4。不开子agent、不自动重试或续训。
 
-2026-10-27：[AP02扩库/重定向](README_SUPERMIMIC_Q1_AP02_SOMA_RETARGET_20261027.md)330片全部转换，300训练/30演员分离验证；Q1静止pelvis原点重复偏移已修正，同源腕位置/峰高误差小幅改善。8段53.83秒展示清单固定；4096完整实测和保存轨迹多类视频进行中，待通过后启动五小时RF09，当前没有新性能结论。
+2026-10-27：[AP02扩库/重定向](README_SUPERMIMIC_Q1_AP02_SOMA_RETARGET_20261027.md)330片全部转换，300训练/30演员分离验证；Q1静止pelvis原点重复偏移已修正，同源腕位置/峰高误差小幅改善。8段53.83秒展示清单固定，4096完整P02已通过并回收；[RF08补充55.24秒多类MP4](../data/manifests/supermimic_q1_RF08_multitype_local_delivery_20261027.json)3文件13795681字节已本地交付/大小SHA/解码目视通过，原片保留。RF09真实效果仍待。
 
 2026-10-27：[MG03完成审计](../data/manifests/supermimic_q1_MG03_completion_audit_20261027.json)20项要求证据齐备，[RF08最终结果](README_SUPERMIMIC_Q1_RF08_RESULTS_20261027.md)提交bb8c909e44badf8346b6a8d08b5246aa75d48c67独立远端核验、19文件三端大小SHA通过，25个本地图/视频等小文件已交付。本轮q1-rf08-4096实际PAUSED，保留其他两任务；没有新增训练。存活/移动改善和全身跟踪仍不合格分别记录，目标工具最后结算随收尾提交核验后执行。
 

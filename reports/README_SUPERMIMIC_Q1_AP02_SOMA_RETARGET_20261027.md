@@ -44,9 +44,9 @@ pelvis残差各自对其求解目标，腕指标使用相同的身体相对目�
 
 新`video_suite.py`在训练前只按参考选择展示：2条普通前向走（不同演员）、明确双手抬起、原地gesture、转身、慢跑、舞蹈、跳跃，共8片约53.833秒。展示规则仅选视频，不过滤训练数据；不查看学后效果。清单为`demonstration_suite_V02.json`及Git同名前缀小收据，V01保留为早期候选。所有片段原速、明确跨片切换/训练或验证身份，左物理策略右运动学参考；终止后冻结最后姿态并显式标记，不伪造连续30秒rollout。
 
-旧RF08保存轨迹正在独立生成多类长视频，用于验证新输出入口，0新积分/推理/优化；不改原5.88秒MP4。六宫格改按实际阶段号与预算取标题，避免RF09误标RF08/max1h。
+旧RF08保存轨迹已独立生成并交付55.24秒多类长视频，1381帧/25fps/1280×480，0新积分/推理/优化；不改原5.88秒MP4。Mac路径`/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/evaluation/multitype_20261027/final_multitype.mp4`。3个交付文件大小SHA一致，全帧解码及5帧目视通过，[收据](../data/manifests/supermimic_q1_RF08_multitype_local_delivery_20261027.json)。它用较早选择，RF09另用更明确抬手的V02。六宫格按实际阶段号与预算取标题，避免RF09误标RF08/max1h。
 
-P01实测因全局日志basename和旧AP01实测重名，在worker创建前被单次运行保护拒绝，0训练/更新，失败原件保留。新独立`AP02_E4096_PROFILE_P02_20261027`测试330片/4096env、WM1024×10、actor1024/H32/critic、BF16/compile。当前尚未完成，不能用低GPU利用率或已采样当通过。过程中只对已核SOMA原包和AP02源BVH建议释放干净文件缓存，不删除数据、不全局drop_caches、不改变冻结内容；建议不保证回收字节数。
+P01实测因全局日志basename和旧AP01实测重名，在worker创建前被单次运行保护拒绝，0训练/更新，失败原件保留。新独立`AP02_E4096_PROFILE_P02_20261027`测试330片/4096env、WM1024×10、actor1024/H32/critic、BF16/compile，真实完成结果如下；不以低GPU利用率或仅采样作通过。过程中只对已核SOMA原包和AP02源BVH建议释放干净文件缓存，不删除数据、不全局drop_caches、不改变冻结内容；建议不保证回收字节数。
 
 01:54:57 P02实际PROFILE_COMPLETED，guard WORKER_COMPLETED、worker38868/start_ticks3632915869返回0并reap，controller38865/start_ticks3632915848退出。64步262144转移、10次WM、1次actor及critic更新均有限；Torch峰值分配6310380032/保留6834618368字节，不含Warp。运行整卡曾观测12332MiB，不称采样值为真实峰值；结束GPU14MiB/OOM0。仅一次完整实测有效，不复用其权重。缓存建议331文件无错误，cgroup采样22355963904→9080844288字节，属干净缓存回收而非删数据，随工作负载会变化。
 
@@ -56,4 +56,4 @@ P01实测因全局日志basename和旧AP01实测重名，在worker创建前被�
 
 Python为`data/environments/supermimic_q1_hp_20261026/bin/python`。扩库`script/supermimic_q1_hp/expand_soma.py --runtime <AP01_runtime> --archive <原包> --metadata <原元数据> --previous <AP01/pilot> --output <AP02/pilot>`；转换使用`retarget_soma.py --runtime <AP01_runtime> --pilot <AP02/pilot> --canonical <原canonical> --gmr data/references/GMR_SOMA_AP01_20261026 --output <AP02/q1_candidates> --workers 4 --iterations 4 --root-relative-rest --quotas <AP02/pilot/quotas.json>`。
 
-每次输出单次使用；恢复不重复转换、解包或哈原包。P02真实终态/回收已核，随后发布冻结代码并部署SHA核验，再启动[RF09五小时](README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md)。手工语法、共同前缀算术self-test、真实RF08同final身份比较及动态六宫格入口通过；新库12片初末真实GPU评测接口也已完成，0optimizer、使用RF08权重，不当作RF09效果。完整新终后链路仍待真实RF09结束，不冒称已完成五小时实验。
+每次输出单次使用；恢复不重复转换、解包或哈原包。P02真实终态/回收已核，发布`a553b6a5a3c44167042355ff2f2fbd42ff558342`并独立核远端、24文件三端大小SHA后，[RF09五小时](README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md)02:19:56已启动，4096现场/身份/预算已核。手工语法、共同前缀算术self-test、真实RF08同final身份比较及动态六宫格入口通过；新库12片初末真实GPU评测接口也已完成，0optimizer、使用RF08权重，不当作RF09效果。完整新终后链路仍待真实RF09结束，不冒称已完成五小时实验。

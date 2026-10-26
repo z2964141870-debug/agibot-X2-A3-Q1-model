@@ -1,6 +1,6 @@
 # Q1 RF06腿部限矩对照与一小时预算
 
-记录日期：2026-10-26，北京时间。MG02-C：实现与CPU验证完成，发布和部署核验随本阶段执行；MG02-D正式RF06尚未启动。
+记录日期：2026-10-26，北京时间。MG02-C：实现、CPU验证、发布与部署核验完成；MG02-D正式RF06尚未启动。
 
 ## 目标与范围
 
@@ -30,18 +30,18 @@ CPU集成验证`RF06_LEG_CONTRACT_C02_20261026`完成真实评测、算术审计
 
 正式计算仅在自己的25252容器、根`/opt/data/private/ZHY`。启动前须RF05全流程COMPLETED、实际训练至少7200秒、worker正常回收、controller退出、GPU空闲，且RF06输出目录不存在；入口再次强制检查。保留100GiB余盘、12GiB单实验、30GiB共享内存、OOM基线0、86摄氏度和900秒无进度保护，不并行第二训练。
 
-以下命令中的40位版本必须取本阶段已经push并独立核验的Q1提交，先逐文件核部署SHA再执行；本文件不把未执行的启动写为完成：
+代码版本`0b1da033148fff0b705fd85cdac5a773b5a7f332`已经push并独立核验`refs/heads/Q1`，13个代码/报告/小收据在Mac和25252逐大小/SHA一致，目标AGENTS的一小时预算已核；见[部署收据](../data/manifests/supermimic_q1_RF06_C_deployment_20261026.json)。下列是RF05全流程完成和释放资源后的唯一正式启动命令；尚未执行：
 
 ```sh
 /opt/data/private/ZHY/data/environments/yuanqi_ops/supermimic_a3_20261023/bin/python \
   /opt/data/private/ZHY/script/supermimic_q1_reproduction/leg_control/run_single_motion.py \
   --root /opt/data/private/ZHY \
   --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026 \
-  --code-commit <PUBLISHED_40_CHARACTER_Q1_COMMIT> --expected-oom-kill 0 --detach
+  --code-commit 0b1da033148fff0b705fd85cdac5a773b5a7f332 --expected-oom-kill 0 --detach
 ```
 
 集成验证的复现入口为`leg_control/verify.py --root /opt/data/private/ZHY --output <新的独立验证目录>`。C02已完成，不重复运行。权重/fixture/大轨迹留服务器LOCAL_ONLY，不拉Mac、不冒充网盘备份。
 
 ## 下一步与交付
 
-先完成本阶段发布、独立远端版本及部署SHA核验，继续监督RF05；RF05完成后直接交付现有2×3 PNG/PDF/CSV和初末MP4至本机对应`data/supermimic_for_q1/`目录，逐大小/SHA。然后顺序执行唯一RF06，再比较完整存活/跌倒、净位移/方向/速度、双脚支撑/换脚、共同前缀腿部及上肢误差、抬手幅度/时序。站住和走起来分别报告，不以支撑比例或倒地位移代替行走证据。现无腿部专用训练效果结论；完整目标进度见[MG02](README_SUPERMIMIC_Q1_MG02_LEG_GOAL_20261026.md)。
+继续监督RF05；完成后直接交付现有2×3 PNG/PDF/CSV和初末MP4至本机对应`data/supermimic_for_q1/`目录，逐大小/SHA。然后顺序执行唯一RF06，再比较完整存活/跌倒、净位移/方向/速度、双脚支撑/换脚、共同前缀腿部及上肢误差、抬手幅度/时序。站住和走起来分别报告，不以支撑比例或倒地位移代替行走证据。后续纯文档提交不改变上述已部署代码版本。现无腿部专用训练效果结论；完整目标进度见[MG02](README_SUPERMIMIC_Q1_MG02_LEG_GOAL_20261026.md)。

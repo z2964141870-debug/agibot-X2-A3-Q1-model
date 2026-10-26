@@ -8,7 +8,7 @@
 
 原10分钟任务`q1-rf08-4096`同ID已改RF09五小时并通过工具/结构化回读确认ACTIVE，正常进度静默。预计07:20左右训练结束，之后自动330片初末动力学、六宫格、原RF08固定115参考基准与共同前缀比较、初末长MP4；终后评测/交付均未完成。恢复读取现场`status.json`、`train_guard.json`、`run/status.json`、`run/training_clock.json`和boot/PID/start_ticks/命令/mtime，不能只凭旧RUNNING或PID，SSH断线不重启。
 
-02:35:46[增量现场](../data/manifests/supermimic_q1_RF09_observation_20261027.json)：1050学习轮/11022336转移、WM10500/actor550、实训933.134414秒，已越过预热；两进程身份与三状态正常，GPU14616MiB/54度、cgroup11189334016字节/OOM0、余盘1604336644096字节、实验约0.416GB。执行正常不代表效果已改善。
+04:50:31[半程/检查点现场](../data/manifests/supermimic_q1_RF09_checkpoint_009000_20261027.json)：9045学习轮/92893184转移、WM90450/actor8545、实训9018.543298秒；同boot/两进程start_ticks与三状态正常。GPU14616MiB/55度、cgroup12336058368字节/OOM0、余盘1599090200576字节、实验约1.523GB。不可变ckpt_009000.pt为68726277字节、SHA已登记，只留服务器；本项不重复张量审计，不当效果证据。训练原预算继续。
 
 软训练18000秒、外层18040秒+45秒退出宽限、最大18100秒只容纳更新边界/退出。保留100GiB余盘/12GiB实验/30GiB cgroup/OOM基线0/86度/900秒无进展。02:20:47时点采样GPU9894MiB/43度、cgroup10529509376字节、OOM0、余盘1605449195520字节，非峰值。共享盘变化不等于本项目新增量，不动他人文件/任务。正常训练receipt需TRAINING_COMPLETED且真实秒数满足、guard正常reap；全pipeline COMPLETED、资源释放和本地交付再验MG04。
 

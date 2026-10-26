@@ -39,3 +39,21 @@
 4096完整资源profile、Q1 FK/梯度、GPU观测/未来/时序及真实回合记录验证通过，详AP01。RF08正式运行controller21522/start_ticks3632019311、worker21525/start_ticks3632019335，boot d994e71f-bae0-46ba-a5f7-6c2163771c6c，GPU UUID GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4。23:26:34观察现场三status均RUNNING、命令/进程身份匹配、actual_config num_envs4096/WM1024/actor1024-H32，191.48实际秒/271学习轮/3047424转移/2710次WM/0actor，500轮WM-only预热正常。GPU9766MiB/53度，共享15.53GB、OOM0，余盘1.644TB。
 
 当前没有策略训练效果结论。预计10月27日00:22左右结束训练后接评测；恢复先读现场，禁止重复启动或修改任何冻结脚本/参考。启动快照`data/manifests/supermimic_q1_RF08_launch_observation_20261026.json`，部署收据同前缀code_deployment。日志`logs/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026_train.log`及controller日志；status/guard/run均在RF08根。MG03 A/B完成、C进行中、D/E待，不将“已启动”标目标完成。
+
+## 终后共同前缀比较入口
+
+23:39新增独立`script/project_tools/analyze_q1_hp_trial.py`，不在本轮冻结入口内，未改运行训练/评测源码。以已保存初末轨迹做同初态、连续前缀和参考时轴检查，按训练/验证及walking、gesture等类别比较共同存活帧的根/腿/上肢/腕误差、相对根腕高度时序与几何支撑切换；另保留各自整段完成/跌倒和位移，完整参考抬手峰尚未到达则明确标记。只重算FK/几何，0动力学积分、0策略推理、0优化器更新。
+
+本机语法检查与短/长终止前缀、错误时轴拒绝、RMSE算术小测试通过；真实RF08共同前缀结果仍待初末评测产物，不把工具准备好当效果已验证。恢复先确认输出不存在，终后执行：
+
+```sh
+/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python \
+  /opt/data/private/ZHY/script/supermimic_q1_hp/activate.py \
+  /opt/data/private/ZHY/script/project_tools/analyze_q1_hp_trial.py \
+  --runtime /opt/data/private/ZHY/data/references/supermimichp/AP01_runtime_20261026 \
+  --library /opt/data/private/ZHY/data/supermimic_for_q1/AP01_SOMA_Q1_20261026/q1_candidates/pilot_manifest.json \
+  --trial /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026 \
+  --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/common_prefix_analysis.json
+```
+
+23:35:39实际controller/worker身份仍匹配，873学习轮/9211904转移、WM8730次/actor373，三status RUNNING；GPU14538MiB/52度、共享16125796352字节、OOM0、余盘1642826940416字节。已跨过500轮预热，记录实际更新但不据此宣称学会行走。以上为时间点观测，后续依现场，不新增训练。

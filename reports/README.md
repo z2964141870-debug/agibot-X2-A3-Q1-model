@@ -2,6 +2,8 @@
 
 2026-10-26 23:27：[MG03观察目标](README_SUPERMIMIC_Q1_MG03_OBSERVATION_20261026.md)active，[RF08](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)23:23:07实际启动4096环境GPU训练，最多一小时；冻结d8b1dcf…已发布/独立核远端、40文件大小SHA同步三端，现场三status/进程身份/4096配置通过。23:26已271学习轮/3047424转移、WM2710/actor0，仍在500轮WM-only阶段，资源正常无效果结论。新q1-rf08-4096每10分钟监督已实际ACTIVE；终后初末115片、图与本地MP4，2/4/8小时不自动延长。[AP01](README_SUPERMIMIC_Q1_HP_ALIGNMENT_20261026.md)准备已完成，不重复转换/profile。
 
+2026-10-26 23:39：[RF08终后共同前缀工具](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)已补齐并通过不等长终止/时轴/算术小测试，独立读取初末保存轨迹，0新积分/策略推理/优化。训练冻结源码未改；23:35现场已373次actor更新、资源正常。真实初末效果/交付仍待，不把工具准备和训练进度当完成。
+
 2026-10-26 21:43：[SOMA接收与全面对齐准备](README_SUPERMIMIC_Q1_HP_ALIGNMENT_20261026.md)：用户提供的canonical骨架23062字节/SHA与师兄输入一致，已复制25252统一inbox并核对；元数据已在，SOMA主包由用户上传。精确复用100/15动作可补pilot_manifest.json/selection.json，生成来源记录可补generation_manifest.json；后两项不作额外数据门。整体Q1/GPU适配尚未实现或启动新训练，25677登录未成功，数据状态UNKNOWN。旧q1-2048更新返回不存在，未创建替代任务，独立仓库跟踪未改。
 
 2026-10-26 20:45：[RF07完整交付](README_SUPERMIMIC_Q1_RF07_ROOT_FEEDBACK_20261026.md)：全部10阶段完成，3058.032232秒/575轮2355200转移、WM179组/actor129次，13项保存/初末身份算术审计通过。最终113/365步2.26秒倒地，净移0.50865m含失稳，不能称稳定行走；[RF06/RF07比较](../data/manifests/supermimic_q1_RF06_RF07_comparison_20261026.json)共同前缀根XY误差0.10987至0.03109m，上肢0.71598至0.68749rad，但完整抬手峰未到。11项PNG/PDF/CSV/初末MP4/代表帧1539139字节已在Mac逐大小SHA通过，权重留服务器。用户据此要求全面对齐师兄方法，不冒称多变量整体适配是单因素消融。

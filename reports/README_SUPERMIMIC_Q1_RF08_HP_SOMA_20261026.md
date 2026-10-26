@@ -1,6 +1,6 @@
 # RF08 Q1 / SOMA / HP 一小时训练
 
-2026-10-26 23:05，北京时间。状态PLANNED_NOT_STARTED，准备验证已完成，待本阶段源码发布/部署核验后启动。用户再次明确env=4096。本轮最多3600秒，延长2/4/8小时仅后续考虑，不在本次自动执行。
+2026-10-26 23:27，北京时间。状态TRAINING_RUNNING，23:23:07正式启动、23:23:22进入实际采集/训练时钟。用户再次明确env=4096并要求定目标观察；MG03工具active、新每10分钟监督q1-rf08-4096实际创建ACTIVE。本轮最多3600秒，延长2/4/8小时仅后续考虑，不在本次自动执行。
 
 ## 目标与配置
 
@@ -12,7 +12,7 @@
 
 ## 版本与实际命令
 
-上游冻结310244b73e45775744a75b789eb25a6c9c5a81c9。本项目发布身份待Git历史及启动plan记录，不预写已同步。代码目录`script/supermimic_q1_hp`，独立runtime在`data/references/supermimichp/AP01_runtime_20261026`；运行时冻结所有适配/上游源码、配置/资产、参考身份。
+上游冻结310244b73e45775744a75b789eb25a6c9c5a81c9。本项目冻结d8b1dcf76b7819ddd5be39a5177e14fe1737a3ad已提交/push Q1并独立ls-remote核验；40文件387207字节在Mac/25252逐大小SHA一致。代码目录`script/supermimic_q1_hp`，独立runtime在`data/references/supermimichp/AP01_runtime_20261026`；plan冻结146项适配/上游源码、配置/资产身份。后续仅报告提交不改变冻结代码。
 
 服务器自己的25252，唯一根`/opt/data/private/ZHY`；新Python`data/environments/supermimic_q1_hp_20261026/bin/python`。正式输出计划为`data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026`，日期为计划日，跨日启动据实记录。
 
@@ -23,7 +23,7 @@
   --runtime /opt/data/private/ZHY/data/references/supermimichp/AP01_runtime_20261026 \
   --library /opt/data/private/ZHY/data/supermimic_for_q1/AP01_SOMA_Q1_20261026/q1_candidates/pilot_manifest.json \
   --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026 \
-  --expected-oom-kill 0 --code-commit PUBLISHED_40_HEX_SHA --detach
+  --expected-oom-kill 0 --code-commit d8b1dcf76b7819ddd5be39a5177e14fe1737a3ad --detach
 ```
 
 ## 预算与验收
@@ -36,4 +36,6 @@
 
 ## 目前结果与下一步
 
-4096完整资源profile、Q1 FK/梯度、GPU观测/未来/时序及真实回合记录验证通过，详AP01和小清单。RF08尚无正式训练或效果结果。下一步仅一次发布/部署核验后启动并监视，重要结果立即更新本README、索引、CURRENT_STATE及Git小收据。
+4096完整资源profile、Q1 FK/梯度、GPU观测/未来/时序及真实回合记录验证通过，详AP01。RF08正式运行controller21522/start_ticks3632019311、worker21525/start_ticks3632019335，boot d994e71f-bae0-46ba-a5f7-6c2163771c6c，GPU UUID GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4。23:26:34观察现场三status均RUNNING、命令/进程身份匹配、actual_config num_envs4096/WM1024/actor1024-H32，191.48实际秒/271学习轮/3047424转移/2710次WM/0actor，500轮WM-only预热正常。GPU9766MiB/53度，共享15.53GB、OOM0，余盘1.644TB。
+
+当前没有策略训练效果结论。预计10月27日00:22左右结束训练后接评测；恢复先读现场，禁止重复启动或修改任何冻结脚本/参考。启动快照`data/manifests/supermimic_q1_RF08_launch_observation_20261026.json`，部署收据同前缀code_deployment。日志`logs/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026_train.log`及controller日志；status/guard/run均在RF08根。MG03 A/B完成、C进行中、D/E待，不将“已启动”标目标完成。

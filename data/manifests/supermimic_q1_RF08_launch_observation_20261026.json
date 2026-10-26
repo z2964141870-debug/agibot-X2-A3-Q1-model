@@ -1,0 +1,210 @@
+{
+  "status": "RF08_RUNNING_ACTUAL_IDENTITIES_AND_CONFIG_VERIFIED",
+  "goal": "MG03 active",
+  "observed_utc": "2026-10-26T15:26:34.409540+00:00",
+  "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c",
+  "files": {
+    "launch.json": {
+      "mtime_ns": 1793028187544054800,
+      "value": {
+        "status": "LAUNCHED_PENDING_OBSERVATION",
+        "controller_pid": 21522,
+        "started_utc": "2026-10-26T15:23:07.544042+00:00",
+        "log": "/opt/data/private/ZHY/logs/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026_controller.log"
+      }
+    },
+    "status.json": {
+      "mtime_ns": 1793028187648052700,
+      "value": {
+        "status": "RUNNING",
+        "phase": "train",
+        "started_utc": "2026-10-26T15:23:07.647930+00:00",
+        "process": {
+          "pid": 21522,
+          "start_ticks": 3632019311,
+          "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+        },
+        "code_commit": "d8b1dcf76b7819ddd5be39a5177e14fe1737a3ad",
+        "error": null
+      }
+    },
+    "train_guard.json": {
+      "mtime_ns": 1793028394147993600,
+      "value": {
+        "status": "RUNNING",
+        "command": [
+          "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python",
+          "-u",
+          "/opt/data/private/ZHY/script/supermimic_q1_hp/activate.py",
+          "-u",
+          "/opt/data/private/ZHY/script/supermimic_q1_hp/worker.py",
+          "--mode",
+          "train",
+          "--runtime",
+          "/opt/data/private/ZHY/data/references/supermimichp/AP01_runtime_20261026",
+          "--library",
+          "/opt/data/private/ZHY/data/supermimic_for_q1/AP01_SOMA_Q1_20261026/q1_candidates/pilot_manifest.json",
+          "--output",
+          "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/run",
+          "--code-commit",
+          "d8b1dcf76b7819ddd5be39a5177e14fe1737a3ad"
+        ],
+        "cwd": "/opt/data/private/ZHY",
+        "started_utc": "2026-10-26T15:23:07.711342+00:00",
+        "controller_pid": 21522,
+        "storage_status": "LOCAL_ONLY",
+        "last_storage_check": {
+          "experiment": {
+            "root": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026",
+            "unique_allocated_bytes": 69038080,
+            "unique_logical_bytes": 68999275,
+            "unique_inodes": 15,
+            "symlinks_not_followed": 0
+          },
+          "source": {
+            "root": "/opt/data/private/ZHY/data/references/supermimichp/AP01_runtime_20261026",
+            "unique_allocated_bytes": 1359872,
+            "unique_logical_bytes": 1056755,
+            "unique_inodes": 150,
+            "symlinks_not_followed": 0
+          },
+          "free_bytes": {
+            "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026": 1643911651328,
+            "/opt/data/private/ZHY/data/references/supermimichp/AP01_runtime_20261026": 1643911651328
+          },
+          "shared_memory": {
+            "shared_bytes": 15526113280,
+            "oom_kill": 0,
+            "maximum_bytes": 32212254720
+          },
+          "gpu": {
+            "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+            "memory_mib": 9766,
+            "temperature_c": 53
+          },
+          "training_elapsed_seconds": 191.72941710054874
+        },
+        "error": null,
+        "worker_pid": 21525,
+        "worker_group": 21525
+      }
+    },
+    "run/status.json": {
+      "mtime_ns": 1793028393891998500,
+      "value": {
+        "status": "RUNNING",
+        "updated_utc": "2026-10-26T15:26:33.894236+00:00",
+        "process": {
+          "pid": 21525,
+          "start_ticks": 3632019335,
+          "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+        },
+        "iteration": 271,
+        "sim_steps": 3047424,
+        "wm_updates": 2710,
+        "actor_updates": 0,
+        "training_seconds": 191.47568690776825
+      }
+    },
+    "run/contract.json": {
+      "mtime_ns": 1793028198999829500,
+      "value": {
+        "status": "Q1_REAL_GPU_OBSERVATION_GOAL_TRANSITION_CONTRACT_PASSED",
+        "num_envs": 4096,
+        "obs_dim": 80,
+        "goal_dim": 590,
+        "state_dim": 57,
+        "context_dim": 26,
+        "root_feedback": "heading XY and full relative orientation in observation history",
+        "future_frames": "current+1 through current+10; full relative root position/rotation",
+        "reward_frame": "action result compared against f+1",
+        "physical_control_dt": 0.02
+      }
+    },
+    "run/training_clock.json": {
+      "mtime_ns": 1793028202415762400,
+      "value": {
+        "started_utc": "2026-10-26T15:23:22.418812+00:00",
+        "started_monotonic": 36320207.99373919,
+        "process": {
+          "pid": 21525,
+          "start_ticks": 3632019335,
+          "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+        },
+        "maximum_seconds": 3600,
+        "soft_stop_seconds": 3500
+      }
+    }
+  },
+  "processes": {
+    "21522": {
+      "state": "S",
+      "start_ticks": 3632019311,
+      "cmdline": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_hp/run_trial.py --mode train --runtime /opt/data/private/ZHY/data/references/supermimichp/AP01_runtime_20261026 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP01_SOMA_Q1_20261026/q1_candidates/pilot_manifest.json --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026 --expected-oom-kill 0 --code-commit d8b1dcf76b7819ddd5be39a5177e14fe1737a3ad --controller "
+    },
+    "21525": {
+      "state": "R",
+      "start_ticks": 3632019335,
+      "cmdline": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_hp/worker.py --mode train --runtime /opt/data/private/ZHY/data/references/supermimichp/AP01_runtime_20261026 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP01_SOMA_Q1_20261026/q1_candidates/pilot_manifest.json --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF08_SOMA_HP_E4096_MAX01H_20261026/run --code-commit d8b1dcf76b7819ddd5be39a5177e14fe1737a3ad "
+    }
+  },
+  "actual_algo": {
+    "algo": "supermimic",
+    "algo_log_name": "supermimic",
+    "load_run": "-1",
+    "checkpoint": -1,
+    "resume": false,
+    "seed": 0,
+    "num_envs": 4096,
+    "iterations": 320000,
+    "buffer_steps": 1000,
+    "utd": 0.4,
+    "horizon": 32,
+    "goal_frames": 10,
+    "hist": 10,
+    "z_dim": 32,
+    "wm_hidden": [
+      2048,
+      2048,
+      2048
+    ],
+    "policy_hidden": [
+      2048,
+      1024,
+      512,
+      256
+    ],
+    "critic_hidden": [
+      256,
+      128
+    ],
+    "wm_window": 8,
+    "wm_batches": 10,
+    "wm_batch": 1024,
+    "pi_batch": 1024,
+    "lr": 0.0002,
+    "gamma": 0.99,
+    "lam": 0.95,
+    "action_noise": 0.1,
+    "critic_epochs": 5,
+    "critic_minibatches": 4,
+    "no_critic": false,
+    "warmup_steps": 64,
+    "wm_only_iters": 500,
+    "lr_decay_iters": 250000,
+    "ckpt_every": 500,
+    "log_every": 10,
+    "log_backend": "tensorboard",
+    "amp": "bf16",
+    "compile": true,
+    "test_hidden_dims": null
+  },
+  "frozen_sources": 146,
+  "monitor": {
+    "id": "q1-rf08-4096",
+    "status": "ACTIVE",
+    "interval_minutes": 10,
+    "created_via_app": true
+  },
+  "no_effect_claim": true
+}

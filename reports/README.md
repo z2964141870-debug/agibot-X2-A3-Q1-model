@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-26 23:17：[MG03观察目标](README_SUPERMIMIC_Q1_MG03_OBSERVATION_20261026.md)active，执行[RF08](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)4096环境/最多一小时，观察稳定/移动/上肢并交付图与本地MP4，不自动延长。[AP01](README_SUPERMIMIC_Q1_HP_ALIGNMENT_20261026.md)独立100/15 SOMA到Q1、FK/GPU时序/回合记录及4096完整WM/actor/critic资源验证通过，profile已回收/OOM0；正式训练仍待发布/部署核验，尚未启动，不预报改善或监督生效。
+2026-10-26 23:27：[MG03观察目标](README_SUPERMIMIC_Q1_MG03_OBSERVATION_20261026.md)active，[RF08](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)23:23:07实际启动4096环境GPU训练，最多一小时；冻结d8b1dcf…已发布/独立核远端、40文件大小SHA同步三端，现场三status/进程身份/4096配置通过。23:26已271学习轮/3047424转移、WM2710/actor0，仍在500轮WM-only阶段，资源正常无效果结论。新q1-rf08-4096每10分钟监督已实际ACTIVE；终后初末115片、图与本地MP4，2/4/8小时不自动延长。[AP01](README_SUPERMIMIC_Q1_HP_ALIGNMENT_20261026.md)准备已完成，不重复转换/profile。
 
 2026-10-26 21:43：[SOMA接收与全面对齐准备](README_SUPERMIMIC_Q1_HP_ALIGNMENT_20261026.md)：用户提供的canonical骨架23062字节/SHA与师兄输入一致，已复制25252统一inbox并核对；元数据已在，SOMA主包由用户上传。精确复用100/15动作可补pilot_manifest.json/selection.json，生成来源记录可补generation_manifest.json；后两项不作额外数据门。整体Q1/GPU适配尚未实现或启动新训练，25677登录未成功，数据状态UNKNOWN。旧q1-2048更新返回不存在，未创建替代任务，独立仓库跟踪未改。
 

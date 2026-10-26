@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-26，北京时间。MG02的A至E计算、对照和本地媒体交付完成，正在执行最后的Git发布和三端记录核验。RF05/RF06均全pipeline COMPLETED，controller/worker已退出，不启动RF07或恢复旧实验。
+2026-10-26，北京时间。MG02的A至E计算、对照和本地媒体交付完成，结果记录已发布Q1并独立核远端373088b2d75bd50827f0c857b005d9ba6b826631，16文件232478字节在Mac/25252逐大小SHA一致。[最终要求审计](../data/manifests/supermimic_q1_MG02_completion_audit_20261026.json)17项全部通过。RF05/RF06均全pipeline COMPLETED，controller/worker已退出，q1-2048训练心跳已暂停，未启动RF07。
 
 ## 最新结果
 
@@ -24,4 +24,4 @@ RF06冻结代码0b1da033148fff0b705fd85cdac5a773b5a7f332；报告提交不是运
 
 [师兄SuperMimicHP仓库](README_SUPERMIMICHP_WATCH_20261026.md)已启用独立每小时心跳supermimichp-x2，训练监督结束后继续，有相关实质变化才通知。初读feat/x2-embodiment/649d1b1165bc08fdcf4468e596161db73d93d7b9：X2 actor显式获得根XY误差和参考朝向差，当前Q1根位置误差只进入critic；anchor_relative_obs定义存在但未接入当前actor。下一候选是对齐策略根反馈接口，尚未实现或新增训练，不把源码差异说成唯一根因。X2正式入口1024环境/100条SOMA训练/mjwarp及逐关节PD，不能以更多环境单独解释效果。
 
-MG02全部证据发布核验后暂停q1-2048训练心跳；supermimichp-x2及yuanqi保持原状态。收尾完成前目标工具仍为active。此前详细时点记录完整保留在[当前状态历史快照](README_CURRENT_STATE_ARCHIVE_20261026.md)，旧RUNNING、旧服务器和旧两小时RF06预算均不能当作当前执行依据。
+q1-2048已通过应用工具暂停并回读核验，原prompt/频率保留；supermimichp-x2和yuanqi仍ACTIVE，未修改其他自动任务。下一阶段优先评估actor根反馈接口，本目标未新增训练。此前详细时点记录完整保留在[当前状态历史快照](README_CURRENT_STATE_ARCHIVE_20261026.md)，旧RUNNING、旧服务器和旧两小时RF06预算均不能当作当前执行依据。收尾收据本身与最新文本的发布身份由Git历史提供，避免将旧结果提交误作冻结训练版本。

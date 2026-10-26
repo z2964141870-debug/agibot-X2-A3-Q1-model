@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-26 17:56：[SuperMimicHP师兄X2仓库跟踪](README_SUPERMIMICHP_WATCH_20261026.md)已启用独立每小时心跳`supermimichp-x2`，初次Git已核默认分支`feat/x2-embodiment`及`649d1b1165bc08fdcf4468e596161db73d93d7b9`。源码显示X2 actor显式接收根XY误差，当前Q1该误差仅供critic；X2正式入口1024环境、100条SOMA训练，且采用逐关节PD与完整effort限矩。列为后续受控对照候选，非Q1已证实根因；RF06继续冻结、一小时上限不变，0新增训练。
+
 2026-10-26 17:22：[唯一RF06腿部限矩对照实际启动](README_SUPERMIMIC_Q1_RF06_LEGS50_20261026.md)，RF05已完整结束并本地交付后顺序执行。4096环境、12腿关节限矩25%→50%、其他控制保持，从零，软50分钟/最多1小时；controller3301/worker3304真实身份、控制manifest及预算已核，初始RUNNING/step0/OOM0，尚无效果结论。MG02 A/B/C完成，D训练中，禁止重复启动或热改。
 
 2026-10-26 17:10：[RF05全流程和本地交付完成](README_SUPERMIMIC_Q1_E4096_20261025.md)，9阶段完成/训练7237.63秒、GPU释放，11项图表及初末MP4共1.72MB大小SHA一致。双支撑99.178%、单支撑0、沿目标方向-1.68cm，仍未行走；腿部限矩边界饱和仅0.274%，不能套用RF04的髋饱和解释。[独立RF04/RF05比较](../data/manifests/supermimic_q1_RF04_RF05_comparison_20261026.json)共同122步误差已核，MG02 A/B/C完成，下一唯一一小时RF06。

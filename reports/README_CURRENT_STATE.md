@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+[师兄SuperMimicHP仓库](README_SUPERMIMICHP_WATCH_20261026.md)已加入独立每小时跟踪，`supermimichp-x2`为ACTIVE，有相关实质变化才通知；训练监督交付后保留该跟踪。默认`feat/x2-embodiment`/`649d1b1165bc08fdcf4468e596161db73d93d7b9`已只读核验，X2 actor增加root XY反馈，当前Q1该误差只进入critic；作为后续候选，不改当前RF06。17:49 RF06仍RUNNING/325轮1331200转移、WM79/actor29，boot与两进程start_ticks匹配、OOM0/约8.10GB共享内存/盘余1.789TB；尚无终后效果。仓库跟踪状态见`data/manifests/supermimichp_watch_state.json`。
+
 当前MG02-D：[唯一RF06腿部限矩对照已启动](README_SUPERMIMIC_Q1_RF06_LEGS50_20261026.md)，2026-10-26北京时间17:22:03、controller3301/start_ticks3629852873、worker3304/start_ticks3629852891，boot保持d994e71f-bae0-46ba-a5f7-6c2163771c6c。冻结代码`0b1da033148fff0b705fd85cdac5a773b5a7f332`、6来源SHA通过；4096/WM2048×10/actor4096-H32，从零同seed/参考，12腿限矩50%/其余25%、动作尺度25%/PD50-2，软3000秒/最大3600秒、训练阶段3500秒+55秒清理。17:23:36真实进程/命令匹配、RUNNING step0初始化、OOM0/GPU2704MiB/37度/内存7.62GB/盘余1.789TB；尚无更新或效果结论。RF05全流程及本地交付已完成，A/B/C完成；不重启RF05/RF06、不热改冻结来源，不开子agent。
 
 17:10:45，[RF05全流程与本地交付完成](README_SUPERMIMIC_Q1_E4096_20261025.md)：7237.6279秒/4608000转移、WM399/actor349，9阶段WORKER_COMPLETED、controller989/worker990均退出、GPU14MiB/OOM0/盘余1.789TB。11项1723401字节PNG/PDF/CSV及初末MP4已在Mac对应RF05目录逐大小/SHA通过；最终365步不倒但仅净移1.87cm，沿参考方向-1.68cm、双支撑99.178%、单支撑0，未行走，抬手同步仍0。腿部边界限矩饱和0.274%/髋横滚0，不能把RF04的限矩归因直接外推为本轮不走的唯一解释。独立RF04/RF05共同122步比较已保存，腿部/上肢误差均较RF04差。MG02 A/B/C完成，RF06尚未启动，下一复核资源后执行一次一小时腿部限矩对照；不重启RF05。

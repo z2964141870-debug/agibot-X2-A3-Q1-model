@@ -1,0 +1,79 @@
+{
+  "status": "EVALUATION_TRACE_AUDIT_PASSED",
+  "verified": true,
+  "validation_scope": "Artifact identity, initial frame, termination accounting and saved metric arithmetic only; no performance threshold",
+  "groups": {
+    "training": {
+      "clips": 1,
+      "failures": 0,
+      "early_terminations": 0,
+      "mean_normalized_return": 0.43743078165674865,
+      "mean_full_clip_completion": 1.0,
+      "mean_executed_joint_rmse_rad": 0.45925165027826903,
+      "mean_executed_body_error_mean_m": 1.0030449236679362,
+      "mean_root_xy_error_mean_m": 0.997689347882361,
+      "mean_root_xyz_error_mean_m": 1.0024602236220235,
+      "mean_root_xy_displacement_m": 0.01493332940567595,
+      "mean_root_xy_path_length_m": 0.15844573869873219,
+      "mean_reference_root_xy_displacement_full_m": 1.6015037991152772
+    }
+  },
+  "group_max_error": 1.0206274714263941e-10,
+  "clips": [
+    {
+      "clip": "train_3419f09ba93c91d75fc1",
+      "split": "training",
+      "arithmetic_verified": true,
+      "recomputed": {
+        "expected_steps": 365,
+        "executed_steps": 365,
+        "failed": false,
+        "early_terminated": false,
+        "termination_step": null,
+        "reward_sum": 15.966223530471325,
+        "normalized_return": 0.43743078165674865,
+        "full_clip_completion": 1.0,
+        "executed_joint_rmse_rad": 0.45925165027826903,
+        "executed_body_error_mean_m": 1.0030449236679362,
+        "root_xy_error_mean_m": 0.997689347882361,
+        "root_xyz_error_mean_m": 1.0024602236220235,
+        "root_xy_final_error_m": 1.6164194533181038,
+        "root_xy_displacement_m": 0.01493332940567595,
+        "root_xy_path_length_m": 0.15844573869873219,
+        "reference_root_xy_displacement_full_m": 1.6015037991152772,
+        "reference_root_xy_path_length_full_m": 1.6730306854646801,
+        "reference_root_xy_displacement_executed_m": 1.6015037991152772,
+        "initial_root_position_w_m": [
+          -1.7618285302889447e-18,
+          -2.2130853329386732e-18,
+          0.45531216263771057
+        ],
+        "final_root_position_w_m": [
+          0.00104040396399796,
+          0.014897042885422707,
+          0.4188344180583954
+        ]
+      },
+      "max_scalar_error": 3.725290298461914e-09,
+      "trace_field_errors": {
+        "reward": 7.450580596923828e-09,
+        "joint_rmse": 0.0,
+        "body_error": 0.0,
+        "initial_state": 0.0
+      }
+    }
+  ],
+  "receipt": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/evaluation_final/receipt.json",
+    "bytes": 444002,
+    "sha256": "03a4d19e7cc41b29042ca9f7c7d505187ba588f4b8deb5da7a62c47316a53f43"
+  },
+  "source": {
+    "path": "/opt/data/private/ZHY/script/supermimic_q1_reproduction/audit_reproduction_evaluation.py",
+    "bytes": 6402,
+    "sha256": "eea8267500e2f326fc7118915094ccaecc837b717f6450a26cf8ebccf8f24bd4"
+  },
+  "physics_steps": 0,
+  "optimizer_updates": 0,
+  "storage_status": "LOCAL_ONLY"
+}

@@ -1,0 +1,112 @@
+{
+  "status": "CHECKPOINT_EVIDENCE_PASSED",
+  "captured_utc": "2026-10-26T10:14:32.859089+00:00",
+  "checkpoint_step": 600,
+  "collection_transitions": 2457600,
+  "training_budget": 12000,
+  "code_commit": "0b1da033148fff0b705fd85cdac5a773b5a7f332",
+  "training_clips": 1,
+  "checks": {
+    "checkpoint_within_budget": true,
+    "initial_step_zero": true,
+    "saved_manifest_matches_initial_and_admission": true,
+    "saved_update_counts": true,
+    "three_networks_changed": true,
+    "three_adam_counts": true,
+    "saved_tensors_finite": true,
+    "source_and_input_identities_unchanged": true,
+    "metrics_prefix_complete": true,
+    "metrics_finite": true,
+    "no_new_oom": true,
+    "files_stable": true,
+    "no_cuda_context": true
+  },
+  "wm_updates": 189,
+  "policy_updates": 139,
+  "networks": {
+    "wm": {
+      "same_keys_shapes": true,
+      "changed_tensors": 14,
+      "max_abs_change": 0.3088265359401703
+    },
+    "policy": {
+      "same_keys_shapes": true,
+      "changed_tensors": 20,
+      "max_abs_change": 0.021783415228128433
+    },
+    "critic": {
+      "same_keys_shapes": true,
+      "changed_tensors": 6,
+      "max_abs_change": 0.5314517021179199
+    }
+  },
+  "optimizer_counters": {
+    "wm_opt": {
+      "expected": 1890,
+      "actual_distinct": [
+        1890
+      ],
+      "parameter_states": 14,
+      "initial_parameter_states": 0,
+      "passed": true
+    },
+    "policy_opt": {
+      "expected": 139,
+      "actual_distinct": [
+        139
+      ],
+      "parameter_states": 20,
+      "initial_parameter_states": 0,
+      "passed": true
+    },
+    "critic_opt": {
+      "expected": 2780,
+      "actual_distinct": [
+        2780
+      ],
+      "parameter_states": 6,
+      "initial_parameter_states": 0,
+      "passed": true
+    }
+  },
+  "changed_files": {
+    "source_files": [],
+    "train_clips": []
+  },
+  "files": [
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/step_000000.pt",
+      "bytes": 68797803,
+      "sha256": "57f3d6a54aeb153cdd6505de20b3d2d0ef92554adf6cff60df3629ea0d988536"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/final.pt",
+      "bytes": 205587155,
+      "sha256": "5dcadad06306d61507a0d4eec3519e0488a74c2bde832514f9dee62a8b26ee7b"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/admission.json",
+      "bytes": 444034,
+      "sha256": "bfb3eec1e701887f5537ebdf15e9f3e164dc7fc95d41f722d589357a2112687b"
+    }
+  ],
+  "health_before": {
+    "cgroup_memory_bytes": 4947996672,
+    "oom_kill": 0
+  },
+  "health_after": {
+    "cgroup_memory_bytes": 5242753024,
+    "oom_kill": 0
+  },
+  "max_sampled_cgroup_bytes": 5285208064,
+  "seconds": 2.856368660926819,
+  "source": {
+    "path": "/opt/data/private/ZHY/script/project_tools/audit_q1_checkpoint.py",
+    "bytes": 8245,
+    "sha256": "ecdb504efd54eec6bf319585c474b70f1585b2a8d7a9e1c8697250f4a3653425"
+  },
+  "new_physics_steps": 0,
+  "new_optimizer_updates": 0,
+  "tracking_effectiveness_proven": false,
+  "storage_status": "LOCAL_ONLY"
+}

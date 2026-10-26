@@ -1,5 +1,30 @@
 # 4096环境论文规模配置
 
+## RF05全流程与本地交付完成
+
+2026-10-26北京时间17:10:45，全pipeline为COMPLETED，9个阶段均WORKER_COMPLETED，训练worker990正常reap/退出0，controller989已退出，GPU回落14MiB、OOM0，盘余约1.789TB。训练实际7237.6279秒，原两小时预算达标，未追加训练。原样[终态](../data/manifests/supermimic_q1_RF05_E4096_final_status_20261026.json)、[训练收据](../data/manifests/supermimic_q1_RF05_E4096_training_receipt_20261026.json)、[13项保存核对](../data/manifests/supermimic_q1_RF05_E4096_training_audit_20261026.json)、[初末比较](../data/manifests/supermimic_q1_RF05_E4096_comparison_20261026.json)、[全身分析](../data/manifests/supermimic_q1_RF05_E4096_fullbody_20261026.json)已取回。
+
+[保存轨迹腿部分析](../data/manifests/supermimic_q1_RF05_E4096_legs_20261026.json)显示双支撑99.178%、左/右单支撑均0%、支撑状态只变化1次；腿部边界限矩饱和仅0.274%，左右髋横滚均0%。这轮是站立附近局部策略，当前没有重现RF04髋横滚持续饱和；提高限矩对RF04失稳的作用不能直接外推为RF05不走的唯一解释。分析0新积分/0策略推理/0优化器更新，1N阈值和边界采样局限保持。
+
+独立`script/project_tools/compare_q1_physical_trials.py`已实际完成[RF04/RF05同参考比较](../data/manifests/supermimic_q1_RF04_RF05_comparison_20261026.json)，验证共同初态/参考/动力学评测协议和来源身份，移动重算与原评测一致。共同122步腿部RMSE0.256572→0.275313rad，上肢0.608412→0.704538rad；RF05最终沿参考整段方向净移-0.016811m/7.30秒，即约-0.002303m/s，没有正向行走证据。RF04位移含倒地，不能作为更会走的证据；RF05存活较好也不代表跟踪更准。脚本只读保存轨迹，不改变训练或评测；后续RF05/RF06用同一入口比较不同时长与共同前缀。
+
+本机以下现有产物已交付，11项共1723401字节，逐大小/SHA与服务器一致；六宫格及一张最终画面目视可读，未做额外图像加工。权重/大轨迹留25252，LOCAL_ONLY，不建网站。
+
+- [训练六宫格PNG](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF05_UP01_E4096_T02H_20261025/run_dashboard/training_dashboard.png)，同目录PDF/CSV。
+- [初始MP4](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF05_UP01_E4096_T02H_20261025/render_initial/comparison.mp4)。
+- [最终MP4](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF05_UP01_E4096_T02H_20261025/render_final/comparison.mp4)。
+- [交付清单](../data/manifests/supermimic_q1_RF05_E4096_local_delivery_20261026.json)。
+
+MG02-A完成。下一步只执行已发布的一小时RF06；其控制和时长均不同于RF05，不称等时训练消融。下方17:05“仍渲染”及旧容器计划保留为历史。
+
+## RF05训练结束与动力学结果
+
+2026-10-26北京时间17:03，RF05完成实际训练7237.627905793488秒、1125轮/4608000真实转移，WM399组/actor349次。保存13项核对全部通过，三Adam计数3990/349/6980，输入与来源身份保持、OOM0。初末真实MuJoCo及算术审计、全身分析已完成；17:05现场管线仍在render_initial，不把训练结束记为全部交付完成。
+
+同一365帧/7.30秒参考，初始与最终均365步不倒；最终净位移仅0.018737m/目标1.601504m，路径0.105109m，尚未行走。整片回报0.475380→0.500930，但共同365帧全关节RMSE0.441207→0.452936rad、腿部0.250729→0.257180rad、上肢0.663429→0.680416rad；奖励改善不能代表全身跟踪改善。初始策略已能完整存活，不把“不倒”全部归功于训练。最终根XY平均误差1.003879m；两侧抬手在目标高于肩的帧上仍0%达到肩上，实际主峰比参考早约4.48/4.54秒。
+
+与RF04最终122步倒地相比，本轮最终能完整存活，但两轮批量、转移与更新数不同，且容器CPU额度变更，不能单独归因于环境数。RF04为7244.1069秒/3635200转移/WM659组/actor609次，本轮采样更多但实际更新次数更少。后续补双脚边界支撑和共同122步误差比较；先交付已有图/MP4，再执行已发布的一小时RF06腿部限矩对照，不重复RF05训练或图像加工。
+
 ## 25252实际启动
 
 2026-10-26北京时间15:02:22，自己的25252容器完成[CM01迁移/运行验证](README_Q1_CONTAINER_MIGRATION_20261026.md)后，独立RF05已实际启动。新OOM基线0；原根`data/supermimic_for_q1/BONES_RF05_UP01_E4096_T02H_20261025`日期是计划日，不能当成实际启动日期。controller989/start_ticks3629014760、worker990/start_ticks3629014771、boot`d994e71f-bae0-46ba-a5f7-6c2163771c6c`，worker命令与guard一致；首个观测为管线/guard RUNNING、step0初始化。新容器CPU额度约19.8核，运行仍限定8线程/8模型槽；此硬件差异需与旧容器区分。

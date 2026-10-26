@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-27 07:20：[RF09五小时训练正常完成](README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md)，18000.931468秒/17895学习轮/183504896转移、WM178950/actor17395，worker退出0并reap，[36项保存审计V02](../data/manifests/supermimic_q1_RF09_training_audit_V02_20261027.json)通过。330片初末动力学已保存，验证提前终止30→1；统一RF08基准/共同前缀、长视频/六格图及本地交付正在执行，MG04 C完成、D/E未完成。V01序列化比较误报原件保留，无新增训练或重试。
+
 2026-10-27 04:50：[RF09半程](README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md)9018.543秒/9045学习轮、92893184转移，WM90450/actor8545；身份/三状态/资源正常，ckpt_009000.pt约68.73MB及SHA已登记，模型不拉Mac。[小收据](../data/manifests/supermimic_q1_RF09_checkpoint_009000_20261027.json)。继续原五小时预算，终后效果/六格图/长MP4仍待，不把文件保存当效果改善。
 
 2026-10-27 03:13：[AP02展示参考步态核对](README_SUPERMIMIC_Q1_AP02_SOMA_RETARGET_20261027.md)完成八片CSV SHA/30Hz只读FK；两条普通前向走193/127帧均无踝中心侧序反转，最小横距14.88/14.29cm。舞蹈交叉单独标类，不把参考几何当策略成功或接触力，不改训练/既定视频清单，[收据](../data/manifests/supermimic_q1_AP02_demo_geometry_20261027.json)。RF09五小时训练仍进行中。

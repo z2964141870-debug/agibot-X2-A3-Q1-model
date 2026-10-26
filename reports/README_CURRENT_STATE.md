@@ -1,12 +1,12 @@
 # YUANQI 当前状态与下一步
 
-2026-10-27最新：[MG04](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)active，[RF09](README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md)02:19:56已实际启动，真实训练时钟02:20:12.650051。本次用户明确授权4096环境五小时18000秒，覆盖本次旧一小时限制；从零、不启用子agent/续训或自动重试。controller40210/start_ticks3633080196、worker40213/start_ticks3633080219，boot `d994e71f-bae0-46ba-a5f7-6c2163771c6c`。现场三status/身份/4096契约/预算已核，02:22:44已206学习轮/2379776转移/WM2060/actor0，500轮WM-only正常，无新效果结论。
+2026-10-27最新：[MG04](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)active，[RF09](README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md)07:20:14训练正常完成，真实18000.93146751076秒/17895学习轮/183504896转移、WM178950/actor17395；训练worker40213退出0并reap，36项CPU保存审计V02通过。V01三个tuple/list序列化比较误报原件保留，未改训练产物。[审计](../data/manifests/supermimic_q1_RF09_training_audit_V02_20261027.json)。本次五小时为用户明确授权，不续训/重试/开子agent。
 
 [AP02](README_SUPERMIMIC_Q1_AP02_SOMA_RETARGET_20261027.md)已330片转换、300训练/30验证、82/11演员无交集，保留RF08原115源。确认Q1默认pelvis0.419m在静止骨架偏移中被重复叠加，归一化后同源D02腕误差3.52→3.12cm、峰高4.11→3.04cm；参考改善不代表策略改善，不断言X2也有同一问题。4096完整P02已通过且回收，不重复profile/转换/解包/hash45GB原包。RF09 V02预选8段6类约53.83秒，含普通前向走与明确抬手；数据、重定向和预算共同变化，不冒称单变量消融。
 
 ## 运行与监督
 
-原10分钟任务`q1-rf08-4096`同ID已改RF09五小时并通过工具/结构化回读确认ACTIVE，正常进度静默。预计07:20左右训练结束，之后自动330片初末动力学、六宫格、原RF08固定115参考基准与共同前缀比较、初末长MP4；终后评测/交付均未完成。恢复读取现场`status.json`、`train_guard.json`、`run/status.json`、`run/training_clock.json`和boot/PID/start_ticks/命令/mtime，不能只凭旧RUNNING或PID，SSH断线不重启。
+原10分钟任务`q1-rf08-4096`仍ACTIVE。07:28现场controller40210/start_ticks3633080196、评测worker57926/start_ticks3634882573同boot正常，phase=evaluation；训练worker已退出。初末330片已保存：验证提前终止30/30→1/30、完成26.45%→98.80%，训练298/300→43/300、25.80%→95.24%；完成不代表准确跟踪，执行长度不同的上肢均值尚不作共同前缀结论。自动长MP4、六宫格、原RF08固定115参考和共同前缀仍待，D/E未完成。恢复核现场status/guards和真实身份/命令/mtime，断线不重启、不重复评测或训练。boot `d994e71f-bae0-46ba-a5f7-6c2163771c6c`。
 
 04:50:31[半程/检查点现场](../data/manifests/supermimic_q1_RF09_checkpoint_009000_20261027.json)：9045学习轮/92893184转移、WM90450/actor8545、实训9018.543298秒；同boot/两进程start_ticks与三状态正常。GPU14616MiB/55度、cgroup12336058368字节/OOM0、余盘1599090200576字节、实验约1.523GB。不可变ckpt_009000.pt为68726277字节、SHA已登记，只留服务器；本项不重复张量审计，不当效果证据。训练原预算继续。
 

@@ -1,6 +1,6 @@
 # RF09 300条SOMA与五小时训练
 
-记录日期：2026-10-27，北京时间。状态：02:19:56已启动唯一RF09，训练进行中；不要重复启动。[目标MG04](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)。
+记录日期：2026-10-27，北京时间。状态：07:20:14训练正常结束，实际18000.931468秒；330片初末动力学已保存，长视频/固定RF08基准/分析正在自动执行，全pipeline和交付尚未完成。不要重复启动。[目标MG04](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)。
 
 ## 目标、方法与差异
 
@@ -51,6 +51,12 @@ RF09主要变化为300训练/30演员分离验证（原100/15）、Q1默认pelvi
 02:35:46增量核验：同boot/真实两进程start_ticks和命令保持，1050学习轮/11022336转移、WM10500/actor550，实训933.134414秒，已越过预热并真实更新策略。GPU14616MiB/54度、cgroup11189334016字节/OOM0、余盘1604336644096字节、实验约0.416GB；未见保护/有限性异常。[现场收据](../data/manifests/supermimic_q1_RF09_observation_20261027.json)。只证明执行正常，未进行中途效果评测。
 
 ## 自动终后与交付
+
+07:20:14真实训练正常完成：18000.93146751076秒、17895学习轮、183504896转移、178950次WM更新、17395次actor更新。`run/receipt.json`为TRAINING_COMPLETED，train guard为WORKER_COMPLETED，worker40213已退出0并reap。初始68726069字节/SHA `e9ef07ee2b123937c2171d356d15dfe3d4dcbf57a82041d16e1a9901c5f3a9f4`；最终208865366字节/SHA `d834ac94a9ce9d8eca91fc576f4ffb92f0ad54386c40f39539cf0c352debf6d0`，均留服务器LOCAL_ONLY。Torch分配/保留峰值6400284672/6851395584字节，不包含Warp，不当作整卡峰值。
+
+独立CPU保存审计V02的36项全部通过：153冻结来源、330参考、4096实际配置、从零初始、张量有限、真实Adam步数、更新/采集计数、initial/final大小SHA、final/last模型和完整17895轮回合证据。V01只有三个args比较误报：三个网络hidden参数在checkpoint为tuple、args.json为list，逐值相同；V02按JSON序列化值比较后通过。保留V01失败原件，不改任何训练产物或冻结源码。[V01](../data/manifests/supermimic_q1_RF09_training_audit_V01_20261027.json)/[V02](../data/manifests/supermimic_q1_RF09_training_audit_V02_20261027.json)，源码`script/project_tools/audit_q1_hp_artifacts.py`不在本轮冻结清单，0新物理/策略推理/优化。
+
+07:28现场controller40210仍同start_ticks，评测worker57926/start_ticks3634882573正常，phase=evaluation。330片初末结果已保存：训练提前终止298/300→43/300、平均完成25.798%→95.242%；验证30/30→1/30、完成26.453%→98.803%；全片归一化回报训练0.147494→0.533802、验证0.158162→0.605879。以上为同一新库的初末结果，不能代替RF08固定115参考对照。各自存活段上肢RMSE训练0.534699→0.906914rad、验证0.523370→0.916272rad，执行长度不同，尚不据此作共同前缀结论。完成仅为走完参考时轴，不等于准确复现动作。固定基准、共同前缀、媒体与本地交付仍待，不标MG04完成。
 
 半程记录（04:50:31）：真实训练9018.543298秒，9045学习轮/92893184转移、WM90450/actor8545，controller/worker同boot与start_ticks、三层RUNNING和进度正常。GPU14616MiB/55度、cgroup12336058368字节/OOM0、盘余1599090200576字节，实验约1.523GB；余下预算继续原配置，不追加训练。不可变`run/ckpt_009000.pt`68726277字节、SHA `1cddc7850cb7c6e9e57f26e1218180d63fe0f03e1a2d35d99a331d9c9cae2bc5`已核读取前后元数据相同，留服务器LOCAL_ONLY。[半程/检查点收据](../data/manifests/supermimic_q1_RF09_checkpoint_009000_20261027.json)。本项仅登记文件身份和运行状态，不重复张量审计或把检查点存在当效果改善；终后训练/评测/交付均未完成。
 

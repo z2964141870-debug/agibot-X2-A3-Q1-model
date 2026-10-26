@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-26 23:27恢复入口：[MG03观察目标](README_SUPERMIMIC_Q1_MG03_OBSERVATION_20261026.md)、[RF08一小时训练](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)与[AP01准备](README_SUPERMIMIC_Q1_HP_ALIGNMENT_20261026.md)。MG03工具active；RF08已于23:23:07启动，训练时钟23:23:22，唯一4096环境GPU正式训练进行中。每轮最多3600秒，更长2/4/8小时需效果后另行决定；不开子agent、不增加数据硬门。23:26:33现场iteration271/3047424转移、WM2710次/actor0，500轮WM-only阶段正常，暂无策略效果结论。
+2026-10-26 23:59恢复入口：[MG03观察目标](README_SUPERMIMIC_Q1_MG03_OBSERVATION_20261026.md)、[RF08一小时训练](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)与[AP01准备](README_SUPERMIMIC_Q1_HP_ALIGNMENT_20261026.md)。MG03工具active；RF08已于23:23:07启动，训练时钟23:23:22，唯一4096环境GPU正式训练进行中。每轮最多3600秒，更长2/4/8小时需效果后另行决定；不开子agent、不增加数据硬门。23:57:18现场iteration2091/21684224转移、WM20910次/actor1591，实训2036.057519秒，身份/资源正常，暂无固定协议策略效果结论。
 
 ## 已完成材料与环境
 
@@ -21,6 +21,8 @@ SOMA主包已从private顶层同盘移到`/opt/data/private/ZHY/data/references/
 权威Git`/tmp/yuanqi-supermimic-q1-20261023`的Q1分支，远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。正式计算只在用户25252容器，根`/opt/data/private/ZHY`，四目录不变。SSH：`ssh -S /tmp/yuanqi-q1-25252.sock -T -p 18869 -o BatchMode=yes -o ConnectTimeout=8 -o 'HostKeyAlias=[59.77.15.15]:25252' root@127.0.0.1`。保留Windows桥，不读写认证，不操作师兄容器。
 
 RF08冻结代码`d8b1dcf76b7819ddd5be39a5177e14fe1737a3ad`已push Q1并独立核远端；40文件387207字节在Mac/25252大小SHA一致，plan冻结146源码/配置/资产身份。controller21522/start_ticks3632019311、worker21525/start_ticks3632019335，boot d994e71f-bae0-46ba-a5f7-6c2163771c6c，GPU UUID GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4。现场三status均RUNNING，训练实耗191.48秒，GPU9766MiB/53度、共享15526113280字节/OOM0、余盘1643911651328字节。原始状态/配置/进程命令见`data/manifests/supermimic_q1_RF08_launch_observation_20261026.json`，恢复重新核现场，不凭旧RUNNING。
+
+最新23:57:18三status与进程身份匹配，GPU14538MiB/52度、共享16445321216字节/OOM0、余盘1629030232064字节，实验554426368字节，见`data/manifests/supermimic_q1_RF08_observation_20261026_235718.json`。用户对曲线非单调的疑问已记录于RF07阶段README：不以曲线单调性证明配置正确，不把模型训练loss下降当真实控制改善；RF07实测仍差，过拟合需训练/验证差距证据。
 
 旧`q1-2048`不存在，不恢复。新`q1-rf08-4096`已通过工具实际创建ACTIVE，每10分钟观察，正常无变化静默，仅异常、重要结果或需处理通知。`supermimichp-x2`和`yuanqi`本轮未改。RF08终后交付与MG03结束后暂停本新监督，不改其他任务。
 

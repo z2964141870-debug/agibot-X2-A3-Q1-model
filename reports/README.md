@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-26：[SuperMimicHP与Q1双向核查及根反馈适配](README_SUPERMIMICHP_Q1_REVIEW_20261026.md)完成实现和V02验证。确认当前Q1 actor缺少直接根位姿误差，启用原可微接口，6测试/真实CPU评测审计通过、0optimizer；[RF07](README_SUPERMIMIC_Q1_RF07_ROOT_FEEDBACK_20261026.md)待发布部署后做最多一小时独立对照。师兄短片无合法H32起点时无限采样风险已隔离实际函数复现，非现有100条训练触发证据。每小时跟踪范围已更新，不默认任一实现正确，不照搬X2控制数值，不声称已改善。
+
 2026-10-26 19:00：[SuperMimicHP增量巡查](README_SUPERMIMICHP_WATCH_20261026.md)确认310244b只发布已有X2演示和文档，运行源码/配置/原24k结果未变，没有新的Q1相关技术变化，按偏好静默；状态文件推进已检查HEAD，每小时跟踪继续，不新增训练。
 
 2026-10-26：[MG02最终要求审计与监督收尾](README_SUPERMIMIC_Q1_MG02_LEG_GOAL_20261026.md)完成，A至E的17项证据全部通过，最新一小时预算覆盖目标卡旧两小时文字。RF06真实训练52分13秒，未学会向前行走或完整抬手；定量比较、2×3图和本地初末MP4已交付。结果提交373088b2d75bd50827f0c857b005d9ba6b826631独立远端核验、16文件232478字节在Mac/25252大小SHA通过，见[最终收尾收据](../data/manifests/supermimic_q1_MG02_completion_audit_20261026.json)。q1-2048训练心跳已暂停，supermimichp-x2每小时仓库跟踪与yuanqi仍ACTIVE；未新增训练，下一候选为actor根反馈接口。

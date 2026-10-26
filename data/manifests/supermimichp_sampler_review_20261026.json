@@ -1,0 +1,12 @@
+{
+  "status": "SHORT_CLIP_UNBOUNDED_RETRY_REPRODUCED",
+  "commit": "310244b73e45775744a75b789eb25a6c9c5a81c9",
+  "path": "src/unisupermimic/rl/algos/supermimic/learner.py",
+  "line": 364,
+  "unsuccessful_attempts_before_probe_interrupt": 4,
+  "trigger": "No reference frame satisfies frame + H32 <= inclusive clip end, e.g. every clip has <=32 frames",
+  "actual_training_or_upstream_imports": false,
+  "optimizer_updates": 0,
+  "scope": "Isolated actual sampler AST with fake replay/mask; current 100-clip X2 run is not shown to hit this boundary",
+  "suggestion": "Check that at least one motion admits H32 at initialization; bound retries and raise a clear error"
+}

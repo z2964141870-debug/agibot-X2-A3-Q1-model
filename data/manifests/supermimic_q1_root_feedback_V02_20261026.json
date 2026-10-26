@@ -1,0 +1,75 @@
+{
+  "status": "Q1_ROOT_FEEDBACK_CPU_CONTRACT_CHECK_COMPLETED",
+  "optimizer_updates": 0,
+  "fixture_only": true,
+  "storage_status": "LOCAL_ONLY",
+  "tests_run": 6,
+  "skipped": 0,
+  "tests_passed": true,
+  "phases": [
+    {
+      "phase": "evaluate",
+      "return_code": 0,
+      "log": {
+        "path": "/opt/data/private/ZHY/logs/ROOT_FEEDBACK_V02_20261026_evaluate.log",
+        "bytes": 2030,
+        "sha256": "1ca4a8b5579fed7e78cd151c15798fe231465a76b15769bd32e52fd163e28277"
+      }
+    },
+    {
+      "phase": "audit",
+      "return_code": 0,
+      "log": {
+        "path": "/opt/data/private/ZHY/logs/ROOT_FEEDBACK_V02_20261026_audit.log",
+        "bytes": 1735,
+        "sha256": "695e0e9b5eb17a7013bf15f0e9645ca58afb9b6e95535afd9378f6f1d56081fb"
+      }
+    }
+  ],
+  "source": {
+    "path": "/opt/data/private/ZHY/script/supermimic_q1_reproduction/root_feedback/verify.py",
+    "bytes": 5144,
+    "sha256": "a3657d8d9e5db4d2c17450b67e88af4c312845cf042910c5bc54aaa9b1036db0"
+  },
+  "input_contract": {
+    "version": "Q1_REFERENCE_ANCHOR_POSE_GOAL_V1",
+    "base_goal_dim": 540,
+    "feedback_dim": 9,
+    "goal_dim": 549,
+    "fields": [
+      "reference_minus_robot_anchor_position_body_xyz",
+      "reference_anchor_rotation_body_first_two_matrix_columns_row_major"
+    ],
+    "anchor": "pelvis",
+    "position_source": "simulator_or_predicted_world_model_state",
+    "routing": "Current feedback appended to the motion-encoder goal, not observation history",
+    "position_noise_half_width_m": 0.0,
+    "rotation6d_noise_half_width": 0.05,
+    "imagination": "Existing imagine(anchor_obs=True); feedback remains differentiable",
+    "upstream_difference": "X2 uses heading XY plus relative rotation in actor observation history; Q1 reuses its existing body-frame XYZ/rotation goal interface",
+    "hardware_position_estimator_verified": false
+  },
+  "parent": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF06_UP01_E4096_LEGS50_MAX01H_20261026/run/admission.json",
+    "bytes": 444034,
+    "sha256": "bfb3eec1e701887f5537ebdf15e9f3e164dc7fc95d41f722d589357a2112687b"
+  },
+  "fixture": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/ROOT_FEEDBACK_V02_20261026/random_small_feedback_fixture.pt",
+    "bytes": 739313,
+    "sha256": "962ae86807f2ae9702f2b7b4819f9a18e1e697d10d4cc2856b5cb2618d281c14"
+  },
+  "evaluation": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/ROOT_FEEDBACK_V02_20261026/evaluation/receipt.json",
+    "bytes": 443014,
+    "sha256": "49be8ebbd7d6c71384ad81f56425e9520e2238756dbe8873fabc64d2c6d7f3d0"
+  },
+  "evaluation_audit": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/ROOT_FEEDBACK_V02_20261026/evaluation/audit.json",
+    "bytes": 2902,
+    "sha256": "7ccd071cac32a05d02267ce09397d1c09bbd8a32f3337482eb4f84b9acbc3213"
+  },
+  "cuda_used": false,
+  "limits": "Random narrow fixture and CPU H32 graph, no optimizer updates; proves interface consistency, not learned gradient accuracy or tracking improvement",
+  "elapsed_seconds": 33.58271299302578
+}

@@ -32,6 +32,8 @@ RF08实际3500.923046秒/3510学习轮/36204544转移、WM35100/actor3010。100�
 
 ## 交付与恢复要求
 
+03:13:50只读核对V02八片参考SHA与30Hz FK，普通前向走两片193/127帧的踝中心侧序反转均0帧、最小横距14.88/14.29cm；舞蹈17/290帧反转，保留类别区分。仅参考几何，不当策略/接触力证据，不改冻结输入或加数据门。[AP02核对](README_SUPERMIMIC_Q1_AP02_SOMA_RETARGET_20261027.md)/[小收据](../data/manifests/supermimic_q1_AP02_demo_geometry_20261027.json)。
+
 RF09终后先报告量化效果，再交付已有小图/JSON/CSV/初末长MP4至Mac对应目录并逐大小SHA；权重/大轨迹只留服务器LOCAL_ONLY。六宫格为原值与500学习iteration均值；MP4各至少30秒、原速且明确切片/失败，不建网站、不为图像加工拖延结论。近地几何不当接触力，跌倒位移不当行走，参考与策略误差分开，不加数据/性能硬门。
 
 重要阶段更新README/索引/本摘要、小收据，显式暂存/audit/push Q1/独立核远端并镜像Mac/25252。只有MG04 A至E实证和交付齐备才complete；失败保原终态、不自动重训。RF09交付完成后暂停本训练监督，独立supermimichp-x2/yuanqi保留。无关`script/supermimic_q1_sources/download_bones.py`不执行/修改/暂存/删除。

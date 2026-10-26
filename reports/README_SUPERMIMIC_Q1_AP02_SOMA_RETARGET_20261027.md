@@ -52,6 +52,40 @@ P01实测因全局日志basename和旧AP01实测重名，在worker创建前被�
 
 `render_probe.json`实际确认llvmpipe软件EGL；关闭MSAA/阴影/反射后10帧1.325秒，完整640×480 Q1图像已目视检查且像素非空。渲染只读保存姿态做FK，不改物理/策略/参考；不下载GPU图形驱动或新建网站。初末定量结果先于长视频保存，固定115参考基准不重复渲染。
 
+## 展示参考的步态核对
+
+03:13:50在CPU只读核对固定V02八片、逐一匹配CSV SHA，0物理积分/策略推理/优化，未改任何冻结输入。按原CSV的30Hz姿态做Q1 FK，计算左右踝中心之差在pelvis水平左向轴的投影；负数仅表示踝中心侧序反转，不是足部网格碰撞或接触力判据。[完整收据](../data/manifests/supermimic_q1_AP02_demo_geometry_20261027.json)。
+
+两条普通前向走`walk_ff_stop_180_R_002__A095`（193帧）与`walk_ff_start_180_R_002__A071`（127帧）侧序反转均为0帧，最小横向分离0.14877/0.14292m，中位0.20188/0.19366m，踝竖直行程约8.26–9.61cm；加上既有沿身体前向比例0.900/0.958，支持它们作为普通前向走展示，不能由此宣称策略已跟好。舞蹈片17/290帧侧序反转，保留为明确标记的舞蹈类别；慢跑的沿身体前向比例为负，不称其为前向慢跑。该检查不成为训练准入门，不重新挑选学后成功片段。
+
+核心核对可用当前服务器环境重算，路径均为已冻结参考；完整八片的名字和输入SHA在收据中：
+
+```sh
+/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python /opt/data/private/ZHY/script/supermimic_q1_hp/activate.py - <<'PY'
+import json, pathlib, numpy as np, mujoco
+from scipy.spatial.transform import Rotation
+r = pathlib.Path('/opt/data/private/ZHY')
+p = r / 'data/supermimic_for_q1/AP02_SOMA_Q1_20261027'
+lib = json.loads((p / 'q1_candidates/pilot_manifest.json').read_text())
+rows = {v['name']: v for values in lib['splits'].values() for v in values}
+m = mujoco.MjModel.from_xml_path(str(r / 'data/references/supermimichp/AP01_runtime_20261026/q1_assets/scene.xml'))
+d = mujoco.MjData(m)
+feet = [m.body(s + '_ankle_roll_link').id for s in ('left', 'right')]
+for clip in json.loads((p / 'demonstration_suite_V02.json').read_text())['clips']:
+    q = np.loadtxt(rows[clip['name']]['path'], delimiter=',', ndmin=2)
+    f = Rotation.from_quat(q[:, 3:7]).as_matrix()[:, :2, 0]
+    f /= np.linalg.norm(f, axis=1, keepdims=True)
+    left = np.c_[-f[:, 1], f[:, 0], np.zeros(len(q))]
+    widths = []
+    for pose, axis in zip(q, left):
+        d.qpos[:] = np.r_[pose[:3], pose[[6, 3, 4, 5]], pose[7:]]
+        mujoco.mj_kinematics(m, d)
+        widths.append((d.xpos[feet[0]] - d.xpos[feet[1]]) @ axis)
+    widths = np.asarray(widths)
+    print(clip['name'], len(q), int((widths < 0).sum()), widths.min(), np.median(widths))
+PY
+```
+
 ## 命令与后续
 
 Python为`data/environments/supermimic_q1_hp_20261026/bin/python`。扩库`script/supermimic_q1_hp/expand_soma.py --runtime <AP01_runtime> --archive <原包> --metadata <原元数据> --previous <AP01/pilot> --output <AP02/pilot>`；转换使用`retarget_soma.py --runtime <AP01_runtime> --pilot <AP02/pilot> --canonical <原canonical> --gmr data/references/GMR_SOMA_AP01_20261026 --output <AP02/q1_candidates> --workers 4 --iterations 4 --root-relative-rest --quotas <AP02/pilot/quotas.json>`。

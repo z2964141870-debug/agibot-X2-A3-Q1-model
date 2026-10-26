@@ -22,6 +22,8 @@ RF06冻结代码0b1da033148fff0b705fd85cdac5a773b5a7f332；报告提交不是运
 
 ## 仓库跟踪与下一步
 
+2026-10-26 19:00巡查：SuperMimicHP最新310244b73e45775744a75b789eb25a6c9c5a81c9只发布已有24k演示/文档，src/tools及原结果JSON未变，无新增Q1相关实现或效果证据，保持静默。已推进跟踪HEAD，详情见仓库跟踪README；不新增训练。
+
 [师兄SuperMimicHP仓库](README_SUPERMIMICHP_WATCH_20261026.md)已启用独立每小时心跳supermimichp-x2，训练监督结束后继续，有相关实质变化才通知。初读feat/x2-embodiment/649d1b1165bc08fdcf4468e596161db73d93d7b9：X2 actor显式获得根XY误差和参考朝向差，当前Q1根位置误差只进入critic；anchor_relative_obs定义存在但未接入当前actor。下一候选是对齐策略根反馈接口，尚未实现或新增训练，不把源码差异说成唯一根因。X2正式入口1024环境/100条SOMA训练/mjwarp及逐关节PD，不能以更多环境单独解释效果。
 
 q1-2048已通过应用工具暂停并回读核验，原prompt/频率保留；supermimichp-x2和yuanqi仍ACTIVE，未修改其他自动任务。下一阶段优先评估actor根反馈接口，本目标未新增训练。此前详细时点记录完整保留在[当前状态历史快照](README_CURRENT_STATE_ARCHIVE_20261026.md)，旧RUNNING、旧服务器和旧两小时RF06预算均不能当作当前执行依据。收尾收据本身与最新文本的发布身份由Git历史提供，避免将旧结果提交误作冻结训练版本。

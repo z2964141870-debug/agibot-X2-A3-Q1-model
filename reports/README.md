@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-26 19:00：[SuperMimicHP增量巡查](README_SUPERMIMICHP_WATCH_20261026.md)确认310244b只发布已有X2演示和文档，运行源码/配置/原24k结果未变，没有新的Q1相关技术变化，按偏好静默；状态文件推进已检查HEAD，每小时跟踪继续，不新增训练。
+
 2026-10-26：[MG02最终要求审计与监督收尾](README_SUPERMIMIC_Q1_MG02_LEG_GOAL_20261026.md)完成，A至E的17项证据全部通过，最新一小时预算覆盖目标卡旧两小时文字。RF06真实训练52分13秒，未学会向前行走或完整抬手；定量比较、2×3图和本地初末MP4已交付。结果提交373088b2d75bd50827f0c857b005d9ba6b826631独立远端核验、16文件232478字节在Mac/25252大小SHA通过，见[最终收尾收据](../data/manifests/supermimic_q1_MG02_completion_audit_20261026.json)。q1-2048训练心跳已暂停，supermimichp-x2每小时仓库跟踪与yuanqi仍ACTIVE；未新增训练，下一候选为actor根反馈接口。
 
 2026-10-26 18:35：[RF06全流程、完整对照和本地MP4交付](README_SUPERMIMIC_Q1_RF06_LEGS50_20261026.md)完成，18:21:52全部10阶段正常结束、controller/worker退出。实训52分13秒/600轮2457600转移，满足最多1小时；最终365步不倒但仅移1.49cm/参考1.60m、双支撑98.904%，抬手高度不足，腿部限矩提高未修复行走。[RF05/RF06共同365步比较](../data/manifests/supermimic_q1_RF05_RF06_comparison_20261026.json)0新积分/推理/更新，时长差异如实保留。11项图表/初末MP4共1706855字节本地大小SHA通过，六宫格129条CSV独立核对通过；[MG02](README_SUPERMIMIC_Q1_MG02_LEG_GOAL_20261026.md)A至E实测证据齐备，最终发布/三端核验收尾中。下一候选为策略根反馈接口，未新开训练；独立SuperMimicHP每小时跟踪继续。当前状态已压缩，原时点记录保存在[历史快照](README_CURRENT_STATE_ARCHIVE_20261026.md)。

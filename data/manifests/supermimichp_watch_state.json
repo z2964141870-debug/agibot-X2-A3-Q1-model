@@ -2,14 +2,14 @@
   "schema_version": 1,
   "repository": "https://github.com/humanplus-ai/SuperMimicHP",
   "remote": "git@github.com:humanplus-ai/SuperMimicHP.git",
-  "checked_at": "2026-10-26T17:56:52+08:00",
+  "checked_at": "2026-10-26T19:00:47+08:00",
   "access_status": "GIT_READ_VERIFIED",
   "default_branch": "feat/x2-embodiment",
-  "head": "649d1b1165bc08fdcf4468e596161db73d93d7b9",
+  "head": "310244b73e45775744a75b789eb25a6c9c5a81c9",
   "branches": {
-    "feat/x2-embodiment": "649d1b1165bc08fdcf4468e596161db73d93d7b9"
+    "feat/x2-embodiment": "310244b73e45775744a75b789eb25a6c9c5a81c9"
   },
-  "last_reviewed_commit": "649d1b1165bc08fdcf4468e596161db73d93d7b9",
+  "last_reviewed_commit": "310244b73e45775744a75b789eb25a6c9c5a81c9",
   "automation": {
     "id": "supermimichp-x2",
     "kind": "heartbeat",
@@ -22,7 +22,7 @@
   "source_git_blobs": {
     "LICENSE": "d2c6cd327baa5d24b2c6d2c79237d4fbc79b38bf",
     "NOTICE": "d32912a921cf5abda9a056a85c5e981430186d18",
-    "README_zh.md": "0f0ded74bf48a45bb2841101367d8a8afa6d9d46",
+    "README_zh.md": "a96feb515270a634df1ea9e3e25903490a3647a7",
     "docs/x2_root_feedback_retraining_20261026.md": "d52aff16dee978233f80e40b9da1a5759c4b7ab4",
     "docs/assets/x2/root_feedback_retraining_20261026/final24k/summary.json": "d87032bb0222718072ea96915fc4438290d27dee",
     "src/unisupermimic/conf/supermimic/config.yaml": "88e96806ac9e8374ff483a50eb8a154f0563d521",
@@ -30,7 +30,9 @@
     "src/unisupermimic/tasks/motion_tracking/x2/supermimic/mdp.py": "b016056cdfd27b575fb709047d109de91e4ff960",
     "src/unisupermimic/tasks/motion_tracking/x2/supermimic/robot.py": "7777067facbb50020af3993fa5f7c31f666a03fe",
     "tools/launch_x2_soma.py": "0f5251164d3237f86914baead972f2d227f0eb2b",
-    "tools/prepare_x2_assets.py": "7bc55d9b149f9ef46ebf4390668de000037b94cb"
+    "tools/prepare_x2_assets.py": "7bc55d9b149f9ef46ebf4390668de000037b94cb",
+    "README.md": "c43981aeb62c9562c9e43c2653dea0b18fb82cc4",
+    "docs/assets/x2/root_feedback_retraining_20261026/final24k/videos/README.md": "b8e48a7e3f85788ffeb7ea72ae7e1f35667f211d"
   },
   "findings": {
     "x2_actor_root_feedback": "reference minus simulator root position in robot heading XY, plus relative root rotation",
@@ -38,9 +40,28 @@
     "q1_root_error_privileged_critic": true,
     "x2_formal_num_envs": 1024,
     "x2_formal_train_clips": 100,
-    "next_candidate": "Verify actor root feedback contract in a separate bounded comparison after current RF06",
+    "next_candidate": "Verify actor root feedback contract in a separate bounded comparison after completed RF06; not implemented or started",
     "causal_claim": "No unique Q1 failure cause established"
   },
   "training_changes_from_this_review": 0,
-  "report": "reports/README_SUPERMIMICHP_WATCH_20261026.md"
+  "report": "reports/README_SUPERMIMICHP_WATCH_20261026.md",
+  "last_substantive_review_commit": "649d1b1165bc08fdcf4468e596161db73d93d7b9",
+  "latest_review": {
+    "previous_commit": "649d1b1165bc08fdcf4468e596161db73d93d7b9",
+    "commit": "310244b73e45775744a75b789eb25a6c9c5a81c9",
+    "committed_at": "2026-10-26T18:12:47+08:00",
+    "subject": "docs: showcase X2 reproduction and tracking demos",
+    "classification": "DOCUMENTATION_AND_PUBLICATION_OF_EXISTING_DEMOS",
+    "changed_markdown_files": 3,
+    "added_mp4_files": 3,
+    "added_png_files": 3,
+    "runtime_source_tools_and_final24k_summary_changed": false,
+    "new_training_or_evaluation_results": false,
+    "notification_required": false,
+    "media_independently_viewed": false,
+    "checkpoint_or_training_data_downloaded": false,
+    "source_git_media_objects_logical_bytes": 9920122,
+    "source_cache_note": "A broad git diff --stat triggered partial-clone media blob caching; files were not exported or played. Future checks use name-status and explicitly scoped text diffs.",
+    "follow_up": "Keep hourly watch; root actor feedback remains the previous candidate. No new Q1 training."
+  }
 }

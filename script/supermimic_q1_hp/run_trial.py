@@ -1,4 +1,4 @@
-"""Guard one owned HP-Q1 phase; keep the one-hour training budget external."""
+"""Guard one owned HP-Q1 phase with its explicitly requested training budget."""
 
 import argparse
 import copy
@@ -35,7 +35,7 @@ class Q1Budget:
             if clock.exists():
                 elapsed = time.monotonic() - json.loads(clock.read_text())["started_monotonic"]
                 evidence["training_elapsed_seconds"] = elapsed
-                if elapsed >= 3540:
+                if elapsed >= self.args.external_training_stop_seconds:
                     raise RuntimeError("External training limit reached; no automatic extension")
             elif time.monotonic() - self.started >= 900:
                 raise RuntimeError("Training initialization made no progress within 900 seconds")
@@ -55,6 +55,7 @@ def execute(args):
     command = [sys.executable, "-u", str(HERE / "activate.py"), "-u", str(HERE / "worker.py"), "--mode", args.mode, "--runtime", str(args.runtime), "--library", str(args.library), "--output", str(args.output / "run")]
     if args.code_commit:
         command += ["--code-commit", args.code_commit]
+    command += ["--training-seconds",str(args.training_seconds),"--maximum-training-seconds",str(args.maximum_training_seconds)]
     source_paths = set(HERE.glob("*.py"))
     upstream = json.loads((args.runtime / "upstream_source.json").read_text())
     for name, expected in upstream["files"].items():
@@ -66,9 +67,14 @@ def execute(args):
     source_paths.update((args.runtime / "q1_assets").glob("*.xml"))
     source_paths.update(Path("/opt/data/private/ZHY/script/supermimic_for_q1/supermimic/kinematics").glob("*.py"))
     source_paths.update((args.runtime / "q1_config.yaml", args.runtime / "q1_adapter.json"))
+    source_paths.add(HERE.parent/"project_tools/analyze_q1_hp_trial.py")
     adapter = json.loads((args.runtime / "q1_adapter.json").read_text())
     source_paths.update(Path(adapter["source_model"]).parent.parent.rglob("*"))
-    plan = {"phase": args.mode, "command": command, "code_commit": args.code_commit, "source": [identity(p) for p in sorted(source_paths) if p.is_file()], "library": identity(args.library), "runtime_source": identity(args.runtime / "upstream_source.json"), "config": identity(args.runtime / "q1_config.yaml"), "q1_adapter": identity(args.runtime / "q1_adapter.json"), "no_automatic_retry": True, "maximum_training_seconds": 3600, "soft_training_seconds": 3500, "external_training_stop_seconds": 3540, "training_grace_seconds": 45, "main_change": "HP multi-motion SOMA, root feedback/history/future targets, Q1 model-based full-effort implicit PD and GPU Warp backend"}
+    if args.video_suite:
+        source_paths.add(args.video_suite)
+    if args.benchmark_library:
+        source_paths.add(args.benchmark_library)
+    plan = {"phase": args.mode, "command": command, "code_commit": args.code_commit, "source": [identity(p) for p in sorted(source_paths) if p.is_file()], "library": identity(args.library), "runtime_source": identity(args.runtime / "upstream_source.json"), "config": identity(args.runtime / "q1_config.yaml"), "q1_adapter": identity(args.runtime / "q1_adapter.json"), "no_automatic_retry": True, "maximum_training_seconds": args.maximum_training_seconds, "soft_training_seconds": args.training_seconds, "external_training_stop_seconds": args.external_training_stop_seconds, "training_grace_seconds": 45, "main_change": args.trial_note}
     save(args.output / "plan.json", plan)
     try:
         guard = guarded_run(command, Path("/opt/data/private/ZHY"), Q1Budget(args), args.output / "train_guard.json", Path("/opt/data/private/ZHY/logs") / (args.output.name + "_" + args.mode + ".log"), check_interval_s=2, grace_s=45, stop_requested=lambda: requested, progress_path=args.output / "run/status.json", maximum_idle_s=900)
@@ -78,7 +84,7 @@ def execute(args):
         expected = "TRAINING_COMPLETED" if args.mode == "train" else "PROFILE_COMPLETED"
         if receipt["status"] != expected:
             raise RuntimeError("Worker did not complete the requested phase")
-        if args.mode == "train" and not 3500 <= receipt["training_seconds"] <= 3600:
+        if args.mode == "train" and not args.training_seconds <= receipt["training_seconds"] <= args.maximum_training_seconds:
             raise RuntimeError("Training time contract failed")
         for item in plan["source"]:
             if identity(item["path"]) != item:
@@ -87,9 +93,16 @@ def execute(args):
         save(status_path, status)
         if args.mode == "train":
             phases = [
-                ("evaluation", ["--runtime", str(args.runtime), "--library", str(args.library), "--run", str(args.output/"run"), "--output", str(args.output/"evaluation")], "evaluate_trial.py"),
+                ("evaluation", ["--runtime", str(args.runtime), "--library", str(args.library), "--run", str(args.output/"run"), "--output", str(args.output/"evaluation")]+(["--video-suite",str(args.video_suite)] if args.video_suite else []), "evaluate_trial.py"),
                 ("dashboard", ["--run", str(args.output/"run"), "--output", str(args.output/"dashboard")], "plot_trial.py"),
             ]
+            if args.benchmark_library:
+                phases.append(("benchmark",["--runtime",str(args.runtime),"--library",str(args.benchmark_library),"--run",str(args.output/"run"),"--output",str(args.output/"benchmark"),"--skip-videos"],"evaluate_trial.py"))
+            phases.append(("analysis",["--runtime",str(args.runtime),"--library",str(args.library),"--trial",str(args.output),"--output",str(args.output/"common_prefix_analysis.json")],str(HERE.parent/"project_tools/analyze_q1_hp_trial.py")))
+            if args.benchmark_library:
+                phases.append(("benchmark_analysis",["--runtime",str(args.runtime),"--library",str(args.benchmark_library),"--trial",str(args.output),"--evaluation-dir",str(args.output/"benchmark"),"--output",str(args.output/"benchmark_common_prefix_analysis.json")],str(HERE.parent/"project_tools/analyze_q1_hp_trial.py")))
+            if args.benchmark_library and args.baseline_evaluation:
+                phases.append(("baseline_comparison",["--runtime",str(args.runtime),"--library",str(args.benchmark_library),"--trial",str(args.output),"--evaluation-dir",str(args.output/"benchmark"),"--baseline-evaluation",str(args.baseline_evaluation),"--baseline-label","RF08 final policy","--final-label",args.output.name+" final policy","--output",str(args.output/"RF08_RF09_benchmark_comparison.json")],str(HERE.parent/"project_tools/analyze_q1_hp_trial.py")))
             for phase, flags, entry in phases:
                 status.update(phase=phase)
                 save(status_path, status)
@@ -117,9 +130,18 @@ def main():
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--expected-oom-kill", type=int, required=True)
     p.add_argument("--code-commit")
+    p.add_argument("--training-seconds",type=float,default=3500)
+    p.add_argument("--maximum-training-seconds",type=float,default=3600)
+    p.add_argument("--external-training-stop-seconds",type=float,default=3540)
+    p.add_argument("--trial-note",default="HP multi-motion SOMA, root feedback/history/future targets, Q1 model-based full-effort implicit PD and GPU Warp backend")
+    p.add_argument("--video-suite",type=Path)
+    p.add_argument("--benchmark-library",type=Path,help="Fixed RF08 references evaluated with this trial's initial/final policies")
+    p.add_argument("--baseline-evaluation",type=Path,help="RF08 saved physical evaluation for a common-frame comparison")
     p.add_argument("--detach", action="store_true")
     p.add_argument("--controller", action="store_true")
     args = p.parse_args()
+    if not 0 < args.training_seconds < args.external_training_stop_seconds or args.external_training_stop_seconds+45 > args.maximum_training_seconds:
+        p.error("Require positive soft target < external stop and a 45-second grace inside the maximum")
     args.output = args.output.resolve()
     if not args.output.is_relative_to(Path("/opt/data/private/ZHY/data/supermimic_for_q1")):
         p.error("Use a new experiment inside the sole Q1 root")

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-27最新：[MG04](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)active。用户授权扩库/重定向、多类至少30秒视频及4096环境一次五小时训练。[AP02](README_SUPERMIMIC_Q1_AP02_SOMA_RETARGET_20261027.md)已330片转换/300训练30验证、演员分离且保留原115源；确认Q1默认pelvis原点0.419m被重复叠加，已做同源短对照修正。8段53.83秒展示清单固定，4096 P02实测/旧保存轨迹长视频进行中；RF09尚未启动。此前一小时本次由18000秒授权覆盖；从零、不启用子agent/续训或自动重试，下文RF08仅基线。
+
 2026-10-27恢复入口：[RF08最终结果](README_SUPERMIMIC_Q1_RF08_RESULTS_20261027.md)、[MG03完成审计](../data/manifests/supermimic_q1_MG03_completion_audit_20261027.json)、[运行记录](README_SUPERMIMIC_Q1_RF08_HP_SOMA_20261026.md)。RF08全pipeline已于00:27:46 COMPLETED，全部训练/评测/绘图进程已退出；MG03 A至E证据验收齐备，目标工具随最后提交核验后结算。本轮q1-rf08-4096已实际PAUSED，没有在训作业；不恢复任何旧命令，未续训或超预算。
 
 ## 最终效果与交付

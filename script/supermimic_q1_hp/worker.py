@@ -102,9 +102,10 @@ def learner_class():
         pass
 
     class BoundedLearner(SuperMimicLearner):
-        def __init__(self, *args, budget_seconds=None, **kwargs):
+        def __init__(self, *args, budget_seconds=None, maximum_seconds=3600, **kwargs):
             super().__init__(*args, **kwargs)
             self.budget_seconds = budget_seconds
+            self.maximum_seconds = maximum_seconds
             self.started_monotonic = None
             self.stop_requested = False
             self.wm_updates = self.actor_updates = 0
@@ -131,7 +132,7 @@ def learner_class():
             self.flush_reporting()
             if self.started_monotonic is None:
                 self.started_monotonic = time.monotonic()
-                save(self.log_dir / "training_clock.json", {"started_utc": now(), "started_monotonic": self.started_monotonic, "process": process_identity(), "maximum_seconds": 3600, "soft_stop_seconds": self.budget_seconds})
+                save(self.log_dir / "training_clock.json", {"started_utc": now(), "started_monotonic": self.started_monotonic, "process": process_identity(), "maximum_seconds": self.maximum_seconds, "soft_stop_seconds": self.budget_seconds})
             if self.stop_requested or (self.budget_seconds and self.elapsed() >= self.budget_seconds):
                 raise BudgetReached()
             original_step = self.env.step
@@ -202,7 +203,11 @@ def main():
     p.add_argument("--library", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--code-commit")
+    p.add_argument("--training-seconds",type=float,default=3500)
+    p.add_argument("--maximum-training-seconds",type=float,default=3600)
     args = p.parse_args()
+    if not 0 < args.training_seconds < args.maximum_training_seconds:
+        p.error("Training soft target must be positive and below the external maximum")
     args.output.mkdir(parents=True, exist_ok=False)
     env = None
     status = {"status": "INITIALIZING", "started_utc": now(), "process": process_identity(), "mode": args.mode, "code_commit": args.code_commit, "library": identity(args.library)}
@@ -219,7 +224,7 @@ def main():
             status.update(status="SMOKE_COMPLETED", contract=contract, optimizer_updates=0)
         else:
             BoundedLearner, BudgetReached = learner_class()
-            learner = BoundedLearner(env, learner_cfg, args.output, device="cuda:0", backend="mjwarp", budget_seconds=3500 if args.mode == "train" else None)
+            learner = BoundedLearner(env, learner_cfg, args.output, device="cuda:0", backend="mjwarp", budget_seconds=args.training_seconds if args.mode == "train" else None, maximum_seconds=args.maximum_training_seconds)
             torch.cuda.reset_peak_memory_stats()
             if args.mode == "profile":
                 started = time.monotonic()
@@ -244,8 +249,8 @@ def main():
                 learner.save(args.output / "last.pt")
                 if learner.stop_requested:
                     raise InterruptedError("External stop requested")
-                if not 3500 <= elapsed <= 3600:
-                    raise RuntimeError(f"Actual training budget outside [3500,3600]: {elapsed}")
+                if not args.training_seconds <= elapsed <= args.maximum_training_seconds:
+                    raise RuntimeError(f"Actual training budget outside [{args.training_seconds},{args.maximum_training_seconds}]: {elapsed}")
                 status.update(status="TRAINING_COMPLETED", training_seconds=elapsed, iteration=learner.iteration, sim_steps=learner.sim_steps, wm_updates=learner.wm_updates, actor_updates=learner.actor_updates, final=identity(args.output / "final.pt"), initial=identity(args.output / "initial.pt"))
             status.update(cuda_peak_allocated_bytes=torch.cuda.max_memory_allocated(), cuda_peak_reserved_bytes=torch.cuda.max_memory_reserved())
     except BaseException as error:

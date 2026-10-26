@@ -44,7 +44,7 @@ class Q1RetargetTree(ast.NodeTransformer):
         return self.generic_visit(node)
 
 
-def solver_module(runtime):
+def solver_module(runtime, root_relative_rest=False):
     path = runtime / "tools/retarget_x2.py"
     sys.path[:0] = [str(runtime), str(runtime / "src")]
     tree = Q1RetargetTree().visit(ast.parse(path.read_text()))
@@ -81,15 +81,33 @@ def solver_module(runtime):
         return np.concatenate(points)
 
     module.local_collision_vertices = foot_vertices
+    if root_relative_rest:
+        original_retargeter = module.Retargeter
+
+        class RootRelativeRetargeter(original_retargeter):
+            def __init__(self, *args, **kwargs):
+                super().__init__(*args, **kwargs)
+                self.rest_origin = self.rest["pelvis"].copy()
+                # HP's targets add these offsets to the animated pelvis. Q1's
+                # qpos0 pelvis is above zero, so world rest positions double it.
+                self.rest = {name: value-self.rest_origin for name, value in self.rest.items()}
+
+            def solve(self, source):
+                qpos, info = super().solve(source)
+                info["rest_coordinate_frame"] = "relative to qpos0 pelvis"
+                info["removed_rest_origin_m"] = self.rest_origin.tolist()
+                return qpos, info
+
+        module.Retargeter = RootRelativeRetargeter
     return module, robot
 
 
 def process(job):
-    runtime, pilot, canonical, gmr, output, iterations, record = job
+    runtime, pilot, canonical, gmr, output, iterations, root_relative_rest, record = job
     started = time.monotonic()
     result = {"name": record["name"], "split": record["split"], "group": record["group"], "actor_uid": record["actor_uid"]}
     try:
-        module, robot = solver_module(runtime)
+        module, robot = solver_module(runtime, root_relative_rest)
         from tools.soma_source import load_soma
 
         source_path = pilot / "source_bvh" / (record["name"] + ".bvh")
@@ -122,18 +140,21 @@ def main():
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--workers", type=int, default=4)
     p.add_argument("--iterations", type=int, default=4)
+    p.add_argument("--root-relative-rest", action="store_true")
+    p.add_argument("--quotas", type=Path, help="JSON with train/validation per-group counts")
     args = p.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     selection = json.loads((args.pilot / "selection.json").read_text())
     results = []
-    jobs = [(args.runtime, args.pilot, args.canonical, args.gmr, args.output, args.iterations, r) for r in selection["clips"]]
+    jobs = [(args.runtime, args.pilot, args.canonical, args.gmr, args.output, args.iterations, args.root_relative_rest, r) for r in selection["clips"]]
     with concurrent.futures.ProcessPoolExecutor(max_workers=args.workers) as pool:
         for result in pool.map(process, jobs):
             results.append(result)
             write_json(args.output / "retarget_report.json", results)
     splits = {}
     deficits = {}
-    for split, quotas in (("train", QUOTAS), ("validation", VAL_QUOTAS)):
+    requested = json.loads(args.quotas.read_text()) if args.quotas else {"train": QUOTAS, "validation": VAL_QUOTAS}
+    for split, quotas in requested.items():
         chosen = []
         for group, count in quotas.items():
             choices = [r for r in results if r["status"] == "READABLE_FINITE_Q1" and r["split"] == split and r["group"] == group]
@@ -145,7 +166,7 @@ def main():
     actors = {s: sorted({r["actor_uid"] for r in rows}) for s, rows in splits.items()}
     if set(actors["train"]) & set(actors["validation"]):
         raise ValueError("Source actor split contract violated")
-    manifest = {"status": "Q1_SOMA_LIBRARY_READY" if splits["train"] else "NO_READABLE_TRAINING_CLIPS", "upstream_commit": "310244b73e45775744a75b789eb25a6c9c5a81c9", "selection_note": "HP archive-order pilot and within-category SHA256(name) order; independent Q1 conversion. Not the labmate's exact QC-selected 100/15 source list. No X2 or agent-defined quality rejection gates.", "source_selection_sha256": digest(args.pilot / "selection.json"), "canonical_sha256": digest(args.canonical), "gmr_utility_sha256": digest(args.gmr / "general_motion_retargeting/utils/lafan_vendor/utils.py"), "adapter_sha256": digest(Path(__file__)), "packages": {n: importlib.metadata.version(n) for n in ("mujoco", "mink", "numpy", "scipy", "daqp", "bvh", "trimesh")}, "foot_sphere_support": "Trimesh icosphere subdivisions=3 for support-point selection; analytic primitive minimum retained in final floor projection", "actors": actors, "deficits": deficits, "counts": {s: len(rows) for s, rows in splits.items()}, "splits": splits, "processing_errors": [r for r in results if r["status"] != "READABLE_FINITE_Q1"]}
+    manifest = {"status": "Q1_SOMA_LIBRARY_READY" if splits["train"] else "NO_READABLE_TRAINING_CLIPS", "upstream_commit": "310244b73e45775744a75b789eb25a6c9c5a81c9", "selection_note": "HP archive-order pilot and within-category SHA256(name) order; independent Q1 conversion. Not the labmate's exact QC-selected 100/15 source list. No X2 or agent-defined quality rejection gates.", "root_relative_rest": args.root_relative_rest, "requested_quotas": requested, "source_selection_sha256": digest(args.pilot / "selection.json"), "canonical_sha256": digest(args.canonical), "gmr_utility_sha256": digest(args.gmr / "general_motion_retargeting/utils/lafan_vendor/utils.py"), "adapter_sha256": digest(Path(__file__)), "packages": {n: importlib.metadata.version(n) for n in ("mujoco", "mink", "numpy", "scipy", "daqp", "bvh", "trimesh")}, "foot_sphere_support": "Trimesh icosphere subdivisions=3 for support-point selection; analytic primitive minimum retained in final floor projection", "actors": actors, "deficits": deficits, "counts": {s: len(rows) for s, rows in splits.items()}, "splits": splits, "processing_errors": [r for r in results if r["status"] != "READABLE_FINITE_Q1"]}
     write_json(args.output / "pilot_manifest.json", manifest)
     print(json.dumps({"status": manifest["status"], "counts": manifest["counts"], "deficits": deficits}), flush=True)
 

@@ -96,7 +96,7 @@ def analyze(env, trace, rows):
     for split in ("train", "validation"):
         selected = [r for r in results if r["split"] == split]
         summary[split] = {"clips": len(selected), "failed": sum(r["failed"] for r in selected), "mean_completion_fraction": float(np.mean([r["completion_fraction"] for r in selected])), "mean_normalized_full_clip_return": float(np.mean([r["normalized_full_clip_return"] for r in selected])), "mean_root_xy_rmse_m": float(np.mean([r["root_xy_rmse_m"] for r in selected])), "mean_upper_limb_rmse_rad": float(np.mean([r["upper_limb_rmse_rad"] for r in selected]))}
-    return {"summary": summary, "per_clip": results, "limits": "Q1 simulation, own 100/15 source selection. Geometric near-ground is not a force-contact measurement. Prefix errors must be compared over common frames when termination differs."}
+    return {"summary": summary, "per_clip": results, "limits": "Q1 simulation, independently selected SOMA sources. Geometric near-ground is not a force-contact measurement. Prefix errors must be compared over common frames when termination differs."}
 
 
 def render_example(runtime, trace, env, index, output):
@@ -139,10 +139,16 @@ def main():
     p.add_argument("--library",type=Path,required=True)
     p.add_argument("--run",type=Path,required=True)
     p.add_argument("--output",type=Path,required=True)
+    p.add_argument("--video-suite",type=Path)
+    p.add_argument("--skip-videos",action="store_true",help="Quantitative fixed-benchmark evaluation only")
     args=p.parse_args()
     args.output.mkdir(parents=True,exist_ok=False)
     library=json.loads(args.library.read_text())
     rows=library["splits"]["train"]+library["splits"]["validation"]
+    from video_suite import select_suite, render_suite
+    suite=(json.loads(args.video_suite.read_text()) if args.video_suite else select_suite(library,args.runtime)) if not args.skip_videos else None
+    if suite:
+        save(args.output/"video_suite.json",suite)
     combined=args.output/"evaluation_library.json"
     save(combined,{"splits":{"train":rows},"original_library":identity(args.library)})
     env=None
@@ -156,14 +162,21 @@ def main():
             trace=rollout(env,checkpoint)
             np.savez_compressed(args.output/(label+"_trajectory.npz"),**trace)
             result=analyze(env,trace,rows)
-            walking=[(r["reference_net_xy_m"],i) for i,r in enumerate(result["per_clip"]) if r["group"]=="walking" and r["split"]=="train"]
-            _,index=sorted(walking)[len(walking)//2]
-            result["video"]=render_example(args.runtime,trace,env,index,args.output/(label+".mp4"))
             result["checkpoint"]=identity(checkpoint_path)
             save(args.output/(label+".json"),result)
             results["evaluations"][label]=result["summary"]
             print(json.dumps({"label":label,**result["summary"]}),flush=True)
             del checkpoint,trace
+        # Persist both quantitative outcomes before any expensive software-EGL
+        # rendering, so their interpretation never waits on movie production.
+        if not args.skip_videos:
+            for label in ("initial","final"):
+                with np.load(args.output/(label+"_trajectory.npz"),allow_pickle=False) as saved:
+                    trace={k:saved[k] for k in saved.files}
+                result=json.loads((args.output/(label+".json")).read_text())
+                result["video"]=render_suite(args.runtime,trace,env,rows,suite,args.output/(label+".mp4"),label)
+                save(args.output/(label+".json"),result)
+                del trace
         results.update(status="INITIAL_FINAL_FULL_LIBRARY_PHYSICAL_EVALUATION_COMPLETED",completed_utc=now())
         save(args.output/"receipt.json",results)
     finally:

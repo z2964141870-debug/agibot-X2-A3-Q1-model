@@ -109,12 +109,14 @@ def analyze(args):
     torch.set_num_threads(8)
     library = json.loads(args.library.read_text())
     rows = library["splits"]["train"] + library["splits"]["validation"]
-    folder = args.trial / "evaluation"
+    folder = args.evaluation_dir if args.evaluation_dir else args.trial / "evaluation"
     traces = {}
+    folders = {"initial":args.baseline_evaluation or folder,"final":folder}
+    prefixes = {"initial":"final" if args.baseline_evaluation else "initial","final":"final"}
     for label in ("initial", "final"):
-        with np.load(folder / (label + "_trajectory.npz"), allow_pickle=False) as saved:
+        with np.load(folders[label] / (prefixes[label] + "_trajectory.npz"), allow_pickle=False) as saved:
             traces[label] = {key: saved[key] for key in saved.files}
-    original = {label: json.loads((folder / (label + ".json")).read_text())
+    original = {label: json.loads((folders[label] / (prefixes[label] + ".json")).read_text())
                 for label in traces}
     for trace in traces.values():
         validate_trace(trace, len(rows))
@@ -170,7 +172,7 @@ def analyze(args):
                                     for peak in value["full_reference_wrist_peak_frame"]]}
             compared.append(value)
     sources = [args.library, scene, args.trial / "run/receipt.json", folder / "receipt.json"]
-    sources += [folder / (label + suffix) for label in traces for suffix in (".json", "_trajectory.npz")]
+    sources += [folders[label] / (prefixes[label] + suffix) for label in traces for suffix in (".json", "_trajectory.npz")]
     result = {"status": "SAVED_TRAJECTORY_COMMON_PREFIX_ANALYSIS_COMPLETED",
               "created_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
               "same_initial_state_max_abs_error": initial_error, "summary": summarize(compared),
@@ -179,6 +181,7 @@ def analyze(args):
               "policy_inference_calls": 0, "optimizer_updates": 0,
               "support_definition": "Collision geometry lowest point below 15mm; not measured contact force",
               "aggregation": "Equal clip weights; errors use each clip's common executed prefix",
+              "labels":{"initial":args.baseline_label if args.baseline_evaluation else "initial policy","final":args.final_label},
               "limits": "Net displacement and speed include failed rollouts. Geometric support switches alone do not prove stable walking. Full-reference arm peaks outside the executed prefix are not evaluated as achieved."}
     with args.output.open("x") as stream:
         json.dump(result, stream, indent=2, allow_nan=False)
@@ -209,6 +212,10 @@ def main():
     for name in ("runtime", "library", "trial", "output"):
         p.add_argument("--" + name, type=Path)
     p.add_argument("--self-test", action="store_true")
+    p.add_argument("--evaluation-dir",type=Path,help="Optional fixed-benchmark evaluation folder")
+    p.add_argument("--baseline-evaluation",type=Path,help="Compare this folder's final policy trace against current final")
+    p.add_argument("--baseline-label",default="baseline final policy")
+    p.add_argument("--final-label",default="final policy")
     args = p.parse_args()
     if args.self_test:
         self_test()

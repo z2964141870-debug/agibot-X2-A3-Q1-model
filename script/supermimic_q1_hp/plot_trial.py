@@ -4,6 +4,7 @@ import argparse
 import csv
 import json
 from pathlib import Path
+import re
 import sys
 
 from worker import identity
@@ -23,8 +24,13 @@ def main():
     for key,field,scale in (("step_reward","reward_mean",.1),("world_model","wm_err8",1),("survival","imag_survival_H",1)):
         points[key]=[(r["step"],float(r[field])/scale,1.) for r in rows if r[field] is not None]
     receipt=json.loads((args.run/"receipt.json").read_text())
-    run={"label":"RF08 HP-Q1 E4096 / WM1024 / actor1024-H32 / max1h","path":str(args.run),"points":points,"sources":[identity(args.run/"training_evidence.jsonl"),identity(args.run/"receipt.json"),identity(args.run/"config.yaml")],"last_logged_step":rows[-1]["step"],"requested_steps":320000,"num_envs":4096,"actor_batch":1024,"wm_batch":1024,"wm_window":8,"horizon":32,"status":receipt["status"],"ignored_incomplete_tail_bytes":0,"reward_max":.1,"reward_max_source":"Pinned HP MAX_STEP_REWARD=(4*1+2*.5)*.02"}
-    dashboard=create_dashboard([run],args.output,window=500,title="Q1 SuperMimic RF08: SOMA / HP configuration / GPU Warp")
+    config=json.loads((args.run/"args.json").read_text())
+    clock=json.loads((args.run/"training_clock.json").read_text())
+    match=re.search(r"RF\d+",args.run.parent.name)
+    name=match.group() if match else "HP-Q1"
+    label=f"{name} E4096 / WM{config['wm_batch']} / actor{config['pi_batch']}-H{config['horizon']} / {clock['soft_stop_seconds']/3600:.2f}h"
+    run={"label":label,"path":str(args.run),"points":points,"sources":[identity(args.run/"training_evidence.jsonl"),identity(args.run/"receipt.json"),identity(args.run/"config.yaml")],"last_logged_step":rows[-1]["step"],"requested_steps":config["iterations"],"num_envs":4096,"actor_batch":config["pi_batch"],"wm_batch":config["wm_batch"],"wm_window":8,"horizon":config["horizon"],"status":receipt["status"],"ignored_incomplete_tail_bytes":0,"reward_max":.1,"reward_max_source":"Pinned HP MAX_STEP_REWARD=(4*1+2*.5)*.02"}
+    dashboard=create_dashboard([run],args.output,window=500,title=f"Q1 SuperMimic {name}: SOMA / HP configuration / GPU Warp")
     # HP collects 2/3 steps per update at UTD=.4, plus the initial warmup.
     actual_steps={r["step"]:r["sim_steps"] for r in rows}
     csv_path=args.output/"training_dashboard.csv"

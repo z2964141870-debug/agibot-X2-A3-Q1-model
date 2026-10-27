@@ -71,10 +71,10 @@ Mac根：`/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF12_P
 
 ## 保存与同步状态
 
-阶段结论、原值、权重/轨迹清单、37项审计和媒体清单已保存。最终记录在持久权威Q1副本经显式暂存、payload审计、commit/push与独立40位远端核验，再镜像Mac主根和25386；同次完整提交号由Git历史及后续完成回执提供。检查点和大NPZ均SERVER_LOCAL_ONLY，未宣称云备份。
+阶段结论、原值、权重/轨迹清单、37项审计和媒体清单已保存。结果提交`6d77c58e9000b09739a4d8ef5a3e06dcd4f078ff`经显式暂存/payload审计后push Q1，并独立核远端40位相同；10文件246275字节在持久checkout/Mac主根/25386逐大小SHA匹配。首次push被本机代理6234连接中断，独立读远端确认仍是阶段版本；一次有界重试成功，没有重试训练。此后仅追加监督暂停回执，同次完整提交号由Git历史提供，避免嵌入未来自身提交号。检查点和大NPZ均SERVER_LOCAL_ONLY，未宣称云备份。
 
 ## 下一步与恢复入口
 
-本次唯一RF12的训练/评测/本地交付已收尾，监督在这次记录发布核验后暂停，保持`supermimichp-x2`及`yuanqi`不变。无训练进程待恢复，不自动重试、继续B/C或新开实验；若后续核因，只读取已有证据，新的训练须后续明确授权。
+本次唯一RF12的训练/评测/本地交付已收尾，`q1-rf08-4096`于02:45:16通过automation_update实际PAUSED，并读取automation.toml独立确认。保持`supermimichp-x2`及`yuanqi`不变。无训练进程待恢复，不自动重试、继续B/C或新开实验；若后续核因，只读取已有证据，新的训练须后续明确授权。
 
 恢复先读[CURRENT_STATE](README_CURRENT_STATE.md)、本结果、阶段README及completion_audit；阶段文档内的RUNNING/交付待续为对应历史时点。

@@ -1,6 +1,6 @@
 {
   "schema": "yuanqi.q1.rf12.completion.v1",
-  "status": "EXPERIMENT_AND_LOCAL_DELIVERY_COMPLETE_RECORD_CLOSURE_PENDING",
+  "status": "COMPLETED_WITH_PHYSICAL_REGRESSION_AND_HEARTBEAT_PAUSED",
   "physical_outcome": "PHYSICAL_REGRESSION",
   "pipeline_status": "COMPLETED",
   "completed_utc": "2026-10-27T18:28:14.127428+00:00",
@@ -84,14 +84,77 @@
     },
     "bytes": 168560
   },
-  "current_content_publication": "This receipt is published with the final result payload; its own future commit is intentionally not embedded.",
+  "current_content_publication": "Final result payload 6d77c58e9000b09739a4d8ef5a3e06dcd4f078ff was independently verified on origin/Q1; ten files/246275 bytes matched all three ends before pausing. This closing record's own commit is given by Git history.",
   "heartbeat": {
     "id": "q1-rf08-4096",
-    "status": "ACTIVE_PENDING_THIS_RECORD_PUBLICATION",
-    "other_automations_unchanged": true
+    "kind": "heartbeat",
+    "name": "Q1 RF12 PPO分阶段4096环境监督",
+    "status": "PAUSED",
+    "rrule": "RRULE:FREQ=MINUTELY;INTERVAL=10",
+    "target_thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "updated_at": 1793126715989,
+    "readback_beijing": "2026-10-28T02:45:16.057286+08:00",
+    "other_automations_unchanged": true,
+    "preserved_tasks": [
+      "supermimichp-x2",
+      "yuanqi"
+    ],
+    "evidence": "automation_update returned PAUSED; automation.toml readback independently confirmed PAUSED."
   },
   "additional_optimization": 0,
   "additional_physics_for_audit": 0,
   "automatic_retry": false,
-  "restart_policy": "No training restart, retry, B/C continuation or new experiment is authorized by this failed physical gate."
+  "restart_policy": "No training restart, retry, B/C continuation or new experiment is authorized by this failed physical gate.",
+  "result_payload_publication": {
+    "commit": "6d77c58e9000b09739a4d8ef5a3e06dcd4f078ff",
+    "remote": "6d77c58e9000b09739a4d8ef5a3e06dcd4f078ff",
+    "verified": true,
+    "initial_push": "Connection closed by local proxy port 6234; remote remained 2841acb",
+    "bounded_retry": "SUCCEEDED",
+    "artifacts": {
+      "AGENTS.md": {
+        "bytes": 29076,
+        "sha256": "cb1fb640cda78a73fe4feaa508b16c6a6b8c219dc7a68dd02e2f9869d2ee55ac"
+      },
+      "reports/README.md": {
+        "bytes": 103753,
+        "sha256": "5c4c8e4ff158b196c4de7a5c829de19465745311b29ede14a6a1f3f125afad8f"
+      },
+      "reports/README_CURRENT_STATE.md": {
+        "bytes": 7052,
+        "sha256": "b1c54ea187966b9a4b5551de2491134a5fa9d84c612cf4e8d22f756fac76adee"
+      },
+      "reports/README_SUPERMIMIC_Q1_RF12_PPO_20261027.md": {
+        "bytes": 19755,
+        "sha256": "4117be5c5e0e522b97961c3f5f47c7ace6e965c56c40ee4c7dd76da50884647e"
+      },
+      "reports/README_SUPERMIMIC_Q1_RF12_RESULTS_20261028.md": {
+        "bytes": 9324,
+        "sha256": "2cc8f6bc09428f588e04807f90096f4d2be401e52ef0062e5cdbbb191636622b"
+      },
+      "script/project_tools/audit_q1_ppo_saved.py": {
+        "bytes": 12087,
+        "sha256": "833725f28850ee9643bf941695269c4c7146d8efccb9d140cae71ba48a630df3"
+      },
+      "data/manifests/supermimic_q1_RF12_saved_audit_20261028.json": {
+        "bytes": 9366,
+        "sha256": "37de6da39ddaf7b38ab023e36acabf5dc90678a4823f6bd94cddad9474336644"
+      },
+      "data/manifests/supermimic_q1_RF12_results_20261028.json": {
+        "bytes": 38688,
+        "sha256": "6716e17fccf4cad18d2d4569a218bbf6fc60c3406a5557d58c6d3402659937d3"
+      },
+      "data/manifests/supermimic_q1_RF12_local_delivery_20261028.json": {
+        "bytes": 13895,
+        "sha256": "28974864703497632aac2c5f5e8d9bd6671aa11d3ee550e5ba2eeca518958615"
+      },
+      "data/manifests/supermimic_q1_RF12_completion_audit_20261028.json": {
+        "bytes": 3279,
+        "sha256": "b894621f56b62db39175db5dfbae87481e551f2b8f441f73d384caacdc50302a"
+      }
+    },
+    "count": 10,
+    "bytes": 246275,
+    "three_ends_matched": true
+  }
 }

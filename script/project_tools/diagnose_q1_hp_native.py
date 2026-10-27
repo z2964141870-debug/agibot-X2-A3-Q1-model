@@ -32,12 +32,42 @@ def contact_summary(force, speed):
     }
 
 
+def rollout_outcomes(trace, motion, rows):
+    reference_q = motion.q.detach().cpu().numpy()
+    reference_p = motion.root_p.detach().cpu().numpy()
+    starts = motion.clip_start.detach().cpu().numpy()
+    lengths = motion.clip_len.detach().cpu().numpy()-1
+    measured = []
+    for i, row in enumerate(rows):
+        count = int(trace["steps"][i])
+        frames = trace["frames"][:count, i]
+        if count < 1 or not np.array_equal(frames, np.arange(starts[i]+1, starts[i]+count+1)):
+            raise ValueError("Noncontiguous repeated evaluation: "+row["name"])
+        states = trace["states"][:count, i]
+        measured.append({"name":row["name"], "split":row["split"], "group":row["group"],
+                         "steps":count, "failed":bool(trace["failed"][i]),
+                         "completion_fraction":float(count/lengths[i]),
+                         "upper_limb_rmse_rad":float(np.sqrt(np.mean((states[:,27:35]-reference_q[frames,14:])**2))),
+                         "root_xy_rmse_m":float(np.sqrt(np.mean((states[:,:2]-reference_p[frames,:2])**2)))})
+    summary = {}
+    for split in ("train", "validation"):
+        summary[split] = {}
+        for group in ("all", *sorted({row["group"] for row in measured if row["split"] == split})):
+            chosen = [row for row in measured if row["split"] == split and (group == "all" or row["group"] == group)]
+            summary[split][group] = {"clips":len(chosen), "failed":sum(row["failed"] for row in chosen),
+                **{"mean_"+key:float(np.mean([row[key] for row in chosen]))
+                   for key in ("completion_fraction", "upper_limb_rmse_rad", "root_xy_rmse_m")}}
+    return {"summary":summary, "per_clip":measured}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, allow_abbrev=False)
     for name in ("runtime", "trial", "library", "suite", "output"):
         parser.add_argument("--"+name, type=Path, required=True)
     parser.add_argument("--contacts-only", action="store_true",
                         help="Repeat unobserved rollout and verify read-only contact observation; omit completed direction probe")
+    parser.add_argument("--save-repeat-outcomes", action="store_true",
+                        help="Preserve already executed full-library traces and report repeated raw outcomes")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     import mujoco
@@ -59,7 +89,7 @@ def main():
     combined = args.output/"evaluation_library.json"
     save(combined, {"splits": {"train": rows}})
     result = {"status": "RUNNING", "started_utc": now(), "optimizer_updates": 0,
-              "runtime": str(args.runtime), "library": identity(args.library),
+              "runtime": str(args.runtime), "trial": str(args.trial), "library": identity(args.library),
               "checkpoint": identity(args.trial/"run/final.pt"),
               "selected": names, "resources_initial": resources}
     save(args.output/"status.json", result)
@@ -80,6 +110,8 @@ def main():
         default = torch.tensor(default_joint_pos_list(), device=device)
         alpha = torch.tensor([action_scale(name) for name in Q1_JOINT_NAMES], device=device)
         checkpoint = torch.load(args.trial/"run/final.pt", map_location=device, weights_only=True)
+        result["policy_input_spec"] = checkpoint.get("policy_input_spec")
+        result["amp"] = checkpoint["args"].get("amp")
         print("NATIVE_PREPARED", flush=True)
         baseline = rollout(env, checkpoint)
         print("UNOBSERVED_ROLLOUT_COMPLETED", flush=True)
@@ -208,8 +240,8 @@ def main():
                 "failed": bool(observed["failed"][index]),
                 "unobserved_steps": int(baseline["steps"][index]),
                 "observation_common_state_max_abs": float(np.max(np.abs(observed["states"][:shared, index]-baseline["states"][:shared, index]))),
-                "RF09_saved_steps": int(old_steps[i]),
-                "RF09_common_state_max_abs": float(np.max(np.abs(observed["states"][:old_shared, index]-old_states[:old_shared, i]))),
+                "saved_trial_steps": int(old_steps[i]),
+                "saved_trial_common_state_max_abs": float(np.max(np.abs(observed["states"][:old_shared, index]-old_states[:old_shared, i]))),
                 "unobserved_vs_observed_prefix_max_abs": prefix_errors(baseline, observed, index),
                 "unobserved_vs_repeat_prefix_max_abs": prefix_errors(baseline, repeated, index) if repeated is not None else None,
                 "repeated_unobserved_steps": int(repeated["steps"][index]) if repeated is not None else None,
@@ -220,11 +252,25 @@ def main():
             "observer_selected_state_invariance_checks": observer_state_checks,
             "observer_state_fields": ["qpos", "qvel", "qacc_warmstart"],
             "phase": "Last 5ms solver substep of each 20ms control interval, before sensor refresh or autoreset; no extra forward or integration",
-            "limits": "Snapshot contact force, not time-integrated 20ms impulse. Old-GPU RF09 agreement is reported separately from same-process observation invariance."})
+            "limits": "Snapshot contact force, not time-integrated 20ms impulse. Saved-trial agreement is reported separately from same-process observation invariance."})
         saved_arrays = {key: value.cpu().numpy() for key, value in values.items()}
         saved_arrays.update(states=observed["states"][:, selected], alive=observed["alive"][:, selected],
                             steps=observed["steps"][selected], failed=observed["failed"][selected])
         np.savez_compressed(args.output/"native_trace.npz", **saved_arrays)
+        if args.save_repeat_outcomes:
+            repeats = {"unobserved":baseline, "observed":observed}
+            if repeated is not None:
+                repeats["repeated_unobserved"] = repeated
+            outcomes, sources = {}, []
+            for label, saved in repeats.items():
+                target = args.output/("repeat_"+label+"_trajectory.npz")
+                np.savez_compressed(target, **saved)
+                outcomes[label] = rollout_outcomes(saved, motion, rows)
+                sources.append(identity(target))
+            save(args.output/"repeat_outcomes.json", {"status":"FROZEN_POLICY_REPEATED_PHYSICAL_OUTCOMES_RECORDED",
+                "outcomes":outcomes, "traces":sources, "checkpoint":result["checkpoint"],
+                "scope":"Same frozen policy, frame-zero initialization and native full library; sequential rollouts without optimizer updates. Finite repeats are not a multiple-seed training study."})
+            result["repeat_outcomes"] = identity(args.output/"repeat_outcomes.json")
         if args.contacts_only:
             result.update(status="NATIVE_READ_ONLY_CONTACT_DIAGNOSIS_COMPLETED", completed_utc=now(),
                           contact=identity(args.output/"contact.json"),
@@ -289,14 +335,22 @@ def main():
         first_variable = first.detach().clone().requires_grad_(True)
         horizons = (1, 4, 8, 32)
         totals_physical = {name: torch.zeros(env.num_envs, device=device) for name in ("tracking", "upper_pose", "leg_pose")}
+        original_mdp = None
+        if (args.runtime/"candidate_source.json").exists():
+            module = importlib.import_module("unisupermimic.tasks.motion_tracking.q1.supermimic.mdp_base")
+            original_mdp = module.MDP(mdp.kin, motion, default, observation_mode="root_xy")
+            totals_physical["original_tracking"] = torch.zeros(env.num_envs, device=device)
         totals_model = {name: torch.zeros(len(cases), device=device) for name in totals_physical}
         comparisons = []
         def metrics(state, frame, action, prev):
             reward, terms = mdp.reward(state, frame, action, prev, terms=True)
             del reward
-            return {"tracking": terms["track"],
-                    "upper_pose": -(state[4][:, 14:]-motion.q[frame, 14:]).square().mean(-1)*.02,
-                    "leg_pose": -(state[4][:, :12]-motion.q[frame, :12]).square().mean(-1)*.02}
+            measured = {"tracking": terms["track"],
+                        "upper_pose": -(state[4][:, 14:]-motion.q[frame, 14:]).square().mean(-1)*.02,
+                        "leg_pose": -(state[4][:, :12]-motion.q[frame, :12]).square().mean(-1)*.02}
+            if original_mdp is not None:
+                measured["original_tracking"] = original_mdp.reward(state, frame, action, prev, terms=True)[1]["track"]
+            return measured
 
         # The backend action term supplies the same target conversion used by
         # env.step, without invoking manager resets or changing reference time.
@@ -343,7 +397,7 @@ def main():
         save(args.output/"directions.json", {"status":"NATIVE_CLOSED_LOOP_DIRECTION_DIAGNOSIS_COMPLETED",
             "horizons":list(horizons), "epsilon":epsilon, "cases":len(cases), "comparisons":comparisons,
             "summary":summary, "nominal_model_uniformity":uniform,
-            "scope":"Cumulative tracking and pose scores; first-action perturbation, frozen policy recomputed thereafter; matched cold starts in native backend. BF16 policy/model inherited from RF09.",
+            "scope":"Cumulative tracking and pose scores; first-action perturbation, frozen policy recomputed thereafter; matched cold starts in native backend. Arithmetic mode inherited from this checkpoint.",
             "limits":"Not the complete noisy actor objective: excludes learned critic bootstrap, discount and survival weights. No full-pipeline causality or training improvement claim."})
         result.update(status="NATIVE_CONTACT_AND_CLOSED_LOOP_DIRECTION_COMPLETED", completed_utc=now(),
                       contact=identity(args.output/"contact.json"), directions=identity(args.output/"directions.json"),

@@ -40,3 +40,5 @@
 自动pipeline生成初末≥30秒多类MP4、六格PNG/PDF/原值与500iteration均值CSV及来源收据，直接交付Mac对应实验目录，不建网站。权重与大轨迹留服务器LOCAL_ONLY，小记录核大小/SHA同步Mac与Git，重要阶段README/索引/CURRENT_STATE及时更新。最终好坏如实结算，全部证据交付后再完成MG05。
 
 新增独立`compare_q1_hp_tracking_heads.py`在同物理状态分别计算旧/新analytic tracking，明确排除动作率/限位罚项；不调用策略、积分或optimizer。真实330片SELF预检通过，两份标签评分相同，上肢RMSE重算与保存结果误差小于1e-6。[收据](../data/manifests/supermimic_q1_RF10_tracking_heads_preflight_20261027.json)。结果审计入口已支持不重复同库benchmark的pipeline；尚未运行正式终后审计。这些独立project_tools文件不在运行冻结清单内，没有修改当前worker或MDP。
+
+终后将复用原生诊断入口，在新权重上记录足地受力/滑速、H1/4/8/32方向，并保存已经执行的两次330片rollout及原始完成/关节/根误差，量化重复运行差异，不增加optimizer。诊断入口已去掉RF09硬编码标签，增加旧tracking头评分，区别新旧reward口径；它不在正式训练167项冻结源内（已实际核plan），未改冻结文件。重复统计函数已用RF09保存330片独立核算，与原结果的完成/上肢/根误差及失败数差0，[预检](../data/manifests/supermimic_q1_RF10_repeat_outcome_preflight_20261027.json)。正式终后结果仍待，最多一小时训练预算不变。

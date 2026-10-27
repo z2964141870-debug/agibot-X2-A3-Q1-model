@@ -1,0 +1,97 @@
+{
+  "schema": "yuanqi.q1.rf12.completion.v1",
+  "status": "EXPERIMENT_AND_LOCAL_DELIVERY_COMPLETE_RECORD_CLOSURE_PENDING",
+  "physical_outcome": "PHYSICAL_REGRESSION",
+  "pipeline_status": "COMPLETED",
+  "completed_utc": "2026-10-27T18:28:14.127428+00:00",
+  "terminal_observed_utc": "2026-10-27T18:33:04Z",
+  "process_identity": {
+    "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "original_controller_pid": 49990,
+    "controller_start_ticks": 3416720,
+    "original_worker_pid": 49995,
+    "worker_start_ticks": 3416816,
+    "original_processes_absent": {
+      "49990": {
+        "exists": false
+      },
+      "49995": {
+        "exists": false
+      }
+    }
+  },
+  "guards": {
+    "train": "WORKER_COMPLETED_REAPED_RETURN_0",
+    "delivery": "WORKER_COMPLETED_REAPED_RETURN_0",
+    "stage_delivery_return_code": 0
+  },
+  "resources": {
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15, 26, 0",
+    "gpu_processes": "",
+    "cgroup_bytes": 7611531264,
+    "oom": "oom_kill_disable 0\nunder_oom 0\noom_kill 0",
+    "available_disk_bytes": 675969384448
+  },
+  "code_commit": "684548c8e912802960a837924e5af7fd4c03248d",
+  "sources": {
+    "name": "all_frozen_sources_unchanged",
+    "passed": true,
+    "detail": {
+      "files": 1123,
+      "bytes": 286568437,
+      "mismatches": []
+    }
+  },
+  "saved_evidence_checks": {
+    "passed": 37,
+    "failed": 0,
+    "audit": "data/manifests/supermimic_q1_RF12_saved_audit_20261028.json"
+  },
+  "media_checks": {
+    "passed": 12,
+    "failed": 0,
+    "audit": "data/supermimic_for_q1/BONES_RF12_PPO_SOMA_AP03_E4096_MAX08H_20261028/stages/stage_01/media_audit.json"
+  },
+  "delivery": {
+    "files": 43,
+    "bytes": 48549915,
+    "all_size_sha_matched": true,
+    "manifest": "data/manifests/supermimic_q1_RF12_local_delivery_20261028.json"
+  },
+  "quantitative_publication": {
+    "commit": "2841acb3ba553bf31c05729d26ead749452c3235",
+    "artifacts": {
+      "AGENTS.md": {
+        "bytes": 28990,
+        "sha256": "d300cb79408f52a74da23b4aa75e8b1595b40bdea520f4df1f5b56b7f8b4dfb8"
+      },
+      "reports/README.md": {
+        "bytes": 103043,
+        "sha256": "753d827da0faecfefb6a61126b3018d1cd5824c66c4e45e799162e61206cbfc5"
+      },
+      "reports/README_CURRENT_STATE.md": {
+        "bytes": 6748,
+        "sha256": "cd0c912dc8bd5900ccb6bc231c94e2f5e579a66dd28dbeec7a28d07f7f1a5fdb"
+      },
+      "reports/README_SUPERMIMIC_Q1_RF12_PPO_20261027.md": {
+        "bytes": 19539,
+        "sha256": "e923066c2a13b63e5d0af46abedddbf6faaba8c10eaeee7d83c48554cf3bd489"
+      },
+      "data/manifests/supermimic_q1_RF12_stage01_20261028.json": {
+        "bytes": 10240,
+        "sha256": "c645a5d429bf1474aa9bf311bff5264b4b96b5d9d63c89d263865f75979a31c3"
+      }
+    },
+    "bytes": 168560
+  },
+  "current_content_publication": "This receipt is published with the final result payload; its own future commit is intentionally not embedded.",
+  "heartbeat": {
+    "id": "q1-rf08-4096",
+    "status": "ACTIVE_PENDING_THIS_RECORD_PUBLICATION",
+    "other_automations_unchanged": true
+  },
+  "additional_optimization": 0,
+  "additional_physics_for_audit": 0,
+  "automatic_retry": false,
+  "restart_policy": "No training restart, retry, B/C continuation or new experiment is authorized by this failed physical gate."
+}

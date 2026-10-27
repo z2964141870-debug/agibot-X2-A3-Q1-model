@@ -1,10 +1,10 @@
 # YUANQI 当前状态与下一步
 
-2026-10-28 02:15，北京时间：**RF12首个物理门明显退步，已决定停止优化，不进入B/C或追加训练。** 实际3503.474674秒/812轮/79822848转移，critic16240/actor16040；三重复共同前缀根XY误差为RF11的2.653/2.669/2.816倍，上肢增加13.3至14.0%，腕增加14.7至15.2%，验证失败4/6/3条、完成97.28至97.88%（基线三次均0/30失败/100%）。固定普通走均提前终止。改善门0/3、严重退步3/3，`run/stage_decisions.json`为stop/physical_regression。[结果及边界](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)/[小收据](../data/manifests/supermimic_q1_RF12_stage01_20261028.json)。
+2026-10-28 02:36，北京时间：**RF12改进目标失败并按预设规则停止，训练/评测/本地媒体交付已收尾。** 实训3503.474674秒/812轮/79822848转移，critic16240/actor16040；三重复共同前缀根XY误差为RF11的2.653/2.669/2.816倍，上肢增加13.3至14.0%、腕增加14.7至15.2%，验证失败4/6/3条、完成97.28至97.88%（RF11三次均0/30失败/100%），固定普通走均提前终止。改善门0/3、严重退步3/3，stop/physical_regression；B/C及五小时加训未执行，不自动重试或另开。[正式结果](README_SUPERMIMIC_Q1_RF12_RESULTS_20261028.md)/[完成收据](../data/manifests/supermimic_q1_RF12_completion_audit_20261028.json)。
 
-02:14现场controller49990/start_ticks3416720、worker49995/start_ticks3416816及boot/GPU不变；guard无错误/OOM0，learner正在stage_delivery，训练时钟PAUSED_FOR_NONTRAINING且计数未增加。阶段六格/CSV/PPO诊断和初始视频已落盘，最终视频仍在编码，尚未全pipeline完成或释放GPU。冻结684548c及1123源保持，后续报告不改冻结身份。继续同一监督完成非训练交付/本地解码/记录同步，不重启或另开训练。01:36连接中断已于01:48恢复，详细历史见[连接收据](../data/manifests/supermimic_q1_RF12_connection_unknown_20261028.json)。
+02:28:14全pipeline COMPLETED，train/delivery worker均正常reap、返回0；02:33核原controller49990/start_ticks3416720和worker49995/start_ticks3416816均不存在，GPU15MiB/26度且无计算进程、OOM0。37项独立保存检查/12媒体检查通过，1123冻结来源286568437字节未变，stage到final的策略/critic/optimizer/RNG相同。冻结684548c不因报告提交而改变。当前只剩最终记录发布与本轮监督暂停，Windows桥保留。
 
-资源清理、AP03的883训练/原30验证、16/4096零optimizer与原生接触/活跃训练状态/RNG保护已完成；本轮仅采样原300片，新增583片从未启用。正式阶段六格已落盘，固定54秒初末视频交付与本地核验仍待。
+资源清理、AP03的883训练/原30验证及开训契约均已完成；本轮仅采样原300片，新增583片从未启用。六格/CSV/PPO诊断、初末54秒多类MP4已在Mac并核验，权重和大轨迹SERVER_LOCAL_ONLY。
 
 ## RF11历史基线
 
@@ -18,6 +18,8 @@ RF09近一小时→RF11：训练提前终止54/300→24/300，验证2/30→0/30�
 
 ## 本地交付
 
+RF12 Mac根：`/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF12_PPO_SOMA_AP03_E4096_MAX08H_20261028`。`evaluation/initial.mp4`与`evaluation/final.mp4`各54秒/8段6类原速合集，保留普通走失败hold；`dashboard/`含六格PNG/PDF/CSV原值+500iteration均值和PPO诊断，WM/想象N/A。43服务器工件48549915字节逐大小/SHA匹配，12项媒体与代表帧目视完成；[清单](../data/manifests/supermimic_q1_RF12_local_delivery_20261028.json)。以下RF11为历史保留。
+
 Mac根：`/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027`。
 
 `evaluation/initial.mp4`和`evaluation/final.mp4`各54秒、8个原速独立片段/6类，含固定普通前向走和抬手，不是连续54秒rollout。`dashboard/training_dashboard.png`及PDF/CSV为六格图与500iteration均值。29个服务器小工件26706642字节与Mac逐大小/SHA相同，全帧解码与目视核验完成。见[交付清单](../data/manifests/supermimic_q1_RF11_local_delivery_20261027.json)/[量化结果](../data/manifests/supermimic_q1_RF11_results_20261027.json)。
@@ -26,7 +28,7 @@ Mac根：`/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF11_S
 
 ## 当前入口与来源
 
-仅用户25386容器，`interactive40173`，唯一根`/opt/data/private/ZHY`及data/logs/script/reports。boot`4d859008-4c83-4a6d-814d-cbb9dfe885c9`，GPU`GPU-26028785-9fb9-45af-e614-4cc53af15d08`。22:17实际核controller17370/worker17373均不存在；GPU15MiB/26°C/0%，共享约4.87GB/OOM0，余盘1.631TB。阶段末实验约0.972GB。不得用旧PID或旧RUNNING断言仍在训练。
+仅用户25386容器，`interactive40173`，唯一根`/opt/data/private/ZHY`及data/logs/script/reports。boot`4d859008-4c83-4a6d-814d-cbb9dfe885c9`，GPU`GPU-26028785-9fb9-45af-e614-4cc53af15d08`。02:33原RF12 controller/worker均不存在；GPU15MiB/26°C/0%、无计算进程，共享约7.61GB/OOM0，盘余675969384448字节。不得用旧PID或旧RUNNING断言仍在训练。
 
 连接：`ssh -S /tmp/yuanqi-q1-25386.sock -T -p 18873 -o BatchMode=yes -o ConnectTimeout=8 -o 'HostKeyAlias=[59.77.15.15]:25386' root@127.0.0.1`。保留Windows桥，不读写认证，不探测旧入口或师兄容器。[CS02恢复](README_Q1_CONTAINER_RESTORE_CS02_20261027.md)。
 
@@ -36,7 +38,7 @@ Python`/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/pyt
 
 ## 下一步与跟踪
 
-RF12阶段A已触发physical_regression，原授权的后续阶段不再执行；不自动重试或开启其他训练，不激活agent。下一步只核正常终态/reap/GPU释放、六格/三重复JSON、Mac初末54秒MP4解码与小记录三端同步；全交付齐备后暂停本轮heartbeat。新增583片从未在本轮训练采样，B新增奖励也未使用，不能宣称已测试。
+RF12终态/reap/GPU释放、三重复JSON、六格及本地初末54秒MP4均已核；下一步仅发布最终记录、独立核远端与三端大小SHA后暂停本轮heartbeat。新增583片与B奖励从未执行，不能宣称已测试。RF12本次授权已结束，不自动重试或开启其他训练，不激活agent。
 
 用户最新关切是连续多轮缺乏全面改善。现有证据确认上肢幅度/时序瓶颈持续，RF09五小时亦未解决；历史根轨迹曾改善，但不支持继续堆训练时长。先定位策略目标、实际控制和H32模型方向，再决定后续方案。
 

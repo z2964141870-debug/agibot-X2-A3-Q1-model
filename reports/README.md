@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-28 02:36：[RF12负面结果与本地交付完成](README_SUPERMIMIC_Q1_RF12_RESULTS_20261028.md)。3503.475实训秒/812轮，首个三重复物理门根XY误差升至RF11的2.65至2.82倍、上肢增加13.3至14.0%、验证4/6/3条失败，按physical_regression停止，B/C及加训未执行。02:28全pipeline正常完成、原进程退出/GPU释放；37保存/12媒体检查通过，43小工件48549915字节已Mac大小SHA核验，初末54秒MP4和六格/PPO诊断齐备。记录发布核验后暂停本轮监督，不追加训练。[结果原值](../data/manifests/supermimic_q1_RF12_results_20261028.json)/[完成收据](../data/manifests/supermimic_q1_RF12_completion_audit_20261028.json)。
+
 2026-10-28 02:15：[RF12阶段A物理门明显退步](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)。实训3503.475秒/812轮/79822848转移，根XY误差为RF11的2.65至2.82倍，上肢增加13.3至14.0%，验证4/6/3条失败，固定普通走三次均不完整。整组改善0/3、严重退步3/3，已决定stop/physical_regression，B/C及加训未执行。优化暂停、自动非训练六格/视频交付中，尚未全pipeline结束；不等待视频才报告量化结论。[小收据](../data/manifests/supermimic_q1_RF12_stage01_20261028.json)。
 
 2026-10-28 01:49：[RF12桥接恢复](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)完成；原controller/worker、boot/GPU一致，三状态RUNNING，A阶段2613.658实训秒/606轮，1123冻结来源大小SHA全相同，资源正常且未重启训练。首次3500秒物理评测尚待，继续原监督；下方断线/缺认证均为历史。[现场收据](../data/manifests/supermimic_q1_RF12_connection_unknown_20261028.json)。

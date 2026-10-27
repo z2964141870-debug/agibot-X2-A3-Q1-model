@@ -1,0 +1,1129 @@
+{
+  "schema": "yuanqi.q1.rf12.results.v1",
+  "recorded_beijing": "2026-10-28T02:36:00+08:00",
+  "physical_outcome": "FAILED_IMPROVEMENT_GATE_PHYSICAL_REGRESSION",
+  "pipeline_outcome": "COMPLETED",
+  "trial": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF12_PPO_SOMA_AP03_E4096_MAX08H_20261028",
+  "frozen_code_commit": "684548c8e912802960a837924e5af7fd4c03248d",
+  "counters": {
+    "actual_training_seconds": 3503.474673854944,
+    "iterations": 812,
+    "real_transitions": 79822848,
+    "critic_optimizer_steps": 16240,
+    "actor_optimizer_steps": 16040,
+    "new_world_model_updates": 0,
+    "new_imagination_updates": 0
+  },
+  "protocol": {
+    "training_clips": 300,
+    "validation_clips": 30,
+    "repeats": 3,
+    "environment_count": 4096,
+    "paired_RF11_re_evaluation": true,
+    "comparison": "Per-clip mean coordinate RMSE over each candidate/baseline common live prefix for validation; full-clip completion and fixed-demo amplitude reported separately.",
+    "contact": "Solved final 5ms substep, world-Z force >5N; force-weighted tangential contact speed, not a 20ms force impulse.",
+    "peak_time": "Saved first post-step state s1 is time zero; 20ms samples."
+  },
+  "comparisons": [
+    {
+      "ratios": {
+        "root_xy_rmse": 2.6528277978111365,
+        "upper_rmse": 1.1395661207063985,
+        "leg_rmse": 1.2598938299817513,
+        "wrist_relative_rmse": 1.1518826532564899,
+        "target_oscillation": 1.515031461432416,
+        "loaded_slip": 1.3625217300141925,
+        "raised_peak_error": 0.9897598394473567
+      },
+      "measurements": {
+        "root_xy_rmse": {
+          "candidate": 0.3198372555275758,
+          "baseline": 0.1205646502164503
+        },
+        "upper_rmse": {
+          "candidate": 1.0627861797809601,
+          "baseline": 0.9326235314210256
+        },
+        "leg_rmse": {
+          "candidate": 0.3346368422110875,
+          "baseline": 0.265607175976038
+        },
+        "wrist_relative_rmse": {
+          "candidate": 0.14016628712415696,
+          "baseline": 0.12168451944986979
+        },
+        "target_oscillation": {
+          "candidate": 0.0815657285352548,
+          "baseline": 0.053837646683678034
+        },
+        "loaded_slip": {
+          "candidate": 0.09911472885869443,
+          "baseline": 0.07274359496465574
+        },
+        "raised_peak_error": {
+          "candidate": 0.35304126143455505,
+          "baseline": 0.3566938638687134
+        }
+      },
+      "failures": 4,
+      "completion": 0.9731377848751307,
+      "fixed_demos_complete": false,
+      "common_prefix_mean_seconds": 5.214666666666667
+    },
+    {
+      "ratios": {
+        "root_xy_rmse": 2.669317206288654,
+        "upper_rmse": 1.132864644845388,
+        "leg_rmse": 1.2762835724301986,
+        "wrist_relative_rmse": 1.1494728285114741,
+        "target_oscillation": 1.570754251755371,
+        "loaded_slip": 1.4166938631244907,
+        "raised_peak_error": 0.991139832684957
+      },
+      "measurements": {
+        "root_xy_rmse": {
+          "candidate": 0.33140244347353776,
+          "baseline": 0.12415251461789012
+        },
+        "upper_rmse": {
+          "candidate": 1.0610647201538086,
+          "baseline": 0.9366209149360657
+        },
+        "leg_rmse": {
+          "candidate": 0.34030865182479225,
+          "baseline": 0.26664031346639
+        },
+        "wrist_relative_rmse": {
+          "candidate": 0.14053369536995888,
+          "baseline": 0.12225925823052725
+        },
+        "target_oscillation": {
+          "candidate": 0.08437210526317358,
+          "baseline": 0.05371438922981421
+        },
+        "loaded_slip": {
+          "candidate": 0.10273226727731526,
+          "baseline": 0.07251550243236124
+        },
+        "raised_peak_error": {
+          "candidate": 0.35320568084716797,
+          "baseline": 0.35636311769485474
+        }
+      },
+      "failures": 6,
+      "completion": 0.9727813657378653,
+      "fixed_demos_complete": false,
+      "common_prefix_mean_seconds": 5.196000000000001
+    },
+    {
+      "ratios": {
+        "root_xy_rmse": 2.8155052837727803,
+        "upper_rmse": 1.1337554928534477,
+        "leg_rmse": 1.268626396272388,
+        "wrist_relative_rmse": 1.1474679975239244,
+        "target_oscillation": 1.5168731712335946,
+        "loaded_slip": 1.3314894427413673,
+        "raised_peak_error": 0.9939782625313611
+      },
+      "measurements": {
+        "root_xy_rmse": {
+          "candidate": 0.33121382681032024,
+          "baseline": 0.1176392133658131
+        },
+        "upper_rmse": {
+          "candidate": 1.0623668869336447,
+          "baseline": 0.9370335082213084
+        },
+        "leg_rmse": {
+          "candidate": 0.33648583441972735,
+          "baseline": 0.2652363496522109
+        },
+        "wrist_relative_rmse": {
+          "candidate": 0.14023696581522624,
+          "baseline": 0.1222142718732357
+        },
+        "target_oscillation": {
+          "candidate": 0.08084895343830188,
+          "baseline": 0.05329974514121811
+        },
+        "loaded_slip": {
+          "candidate": 0.09416526473748187,
+          "baseline": 0.07072175093150387
+        },
+        "raised_peak_error": {
+          "candidate": 0.3541911244392395,
+          "baseline": 0.35633689165115356
+        }
+      },
+      "failures": 3,
+      "completion": 0.9787679985435742,
+      "fixed_demos_complete": false,
+      "common_prefix_mean_seconds": 5.225333333333333
+    }
+  ],
+  "gate": {
+    "extension_qualified": false,
+    "severe_regression": true,
+    "passing_repeats": 0,
+    "all_three_fixed_demos_complete": false,
+    "per_repeat": [
+      {
+        "pass": false,
+        "checks": {
+          "upper_rmse": false,
+          "wrist_relative_rmse": false,
+          "raised_peak_error": false,
+          "root_xy_rmse": false,
+          "leg_rmse": false,
+          "target_oscillation": false,
+          "loaded_slip": false,
+          "validation_completion": false,
+          "validation_failures": false,
+          "fixed_demos_complete": false
+        },
+        "severe": true
+      },
+      {
+        "pass": false,
+        "checks": {
+          "upper_rmse": false,
+          "wrist_relative_rmse": false,
+          "raised_peak_error": false,
+          "root_xy_rmse": false,
+          "leg_rmse": false,
+          "target_oscillation": false,
+          "loaded_slip": false,
+          "validation_completion": false,
+          "validation_failures": false,
+          "fixed_demos_complete": false
+        },
+        "severe": true
+      },
+      {
+        "pass": false,
+        "checks": {
+          "upper_rmse": false,
+          "wrist_relative_rmse": false,
+          "raised_peak_error": false,
+          "root_xy_rmse": false,
+          "leg_rmse": false,
+          "target_oscillation": false,
+          "loaded_slip": false,
+          "validation_completion": false,
+          "validation_failures": false,
+          "fixed_demos_complete": false
+        },
+        "severe": true
+      }
+    ]
+  },
+  "decision": {
+    "action": "stop",
+    "reason": "physical_regression"
+  },
+  "full_rollouts_and_fixed_demos": {
+    "RF11_baseline": [
+      {
+        "repeat": 0,
+        "summary": {
+          "train": {
+            "clips": 300,
+            "failures": 21,
+            "completion": 0.9804317171068091,
+            "root_xy_rmse": 0.19520805635489524,
+            "upper_rmse": 0.8866449821988741,
+            "leg_rmse": 0.34557027141253155,
+            "wrist_relative_rmse": 0.12661742512136698
+          },
+          "validation": {
+            "clips": 30,
+            "failures": 0,
+            "completion": 1,
+            "root_xy_rmse": 0.128162142354995,
+            "upper_rmse": 0.9356540222962697,
+            "leg_rmse": 0.26508153254787126,
+            "wrist_relative_rmse": 0.12216385453939438
+          }
+        },
+        "demos": [
+          {
+            "name": "walk_ff_stop_180_R_002__A095",
+            "split": "train",
+            "group": "walking",
+            "root_xy_rmse": 0.19485145807266235,
+            "upper_rmse": 0.7454874515533447,
+            "leg_rmse": 0.403980016708374,
+            "wrist_relative_rmse": 0.09612239897251129,
+            "wrist_world_rmse": 0.1927744597196579,
+            "raised_peak_error": 0.0862436592578888,
+            "actual_wrist_peak_height_m": [
+              0.2355124056339264,
+              0.18195664882659912
+            ],
+            "reference_wrist_peak_height_m": [
+              0.13768607378005981,
+              0.10729566216468811
+            ],
+            "actual_wrist_peak_time_seconds": [
+              3.1,
+              3.3200000000000003
+            ],
+            "reference_wrist_peak_time_seconds": [
+              3.4,
+              0.44
+            ],
+            "target_oscillation": 0.07786336541175842,
+            "loaded_slip": 0.11338455229997635,
+            "single_support_fraction": 0.5125,
+            "single_support_side_changes": 25,
+            "double_support_fraction": 0.478125,
+            "steps": 320,
+            "reference_steps": 320,
+            "common_prefix_steps": 320,
+            "failed": false,
+            "completion": 1
+          },
+          {
+            "name": "walk_ff_start_180_R_002__A071",
+            "split": "train",
+            "group": "walking",
+            "root_xy_rmse": 0.11784298717975616,
+            "upper_rmse": 0.8068946003913879,
+            "leg_rmse": 0.4347497224807739,
+            "wrist_relative_rmse": 0.09983070194721222,
+            "wrist_world_rmse": 0.13544689118862152,
+            "raised_peak_error": 0.1378481537103653,
+            "actual_wrist_peak_height_m": [
+              0.2372625470161438,
+              0.20876604318618774
+            ],
+            "reference_wrist_peak_height_m": [
+              0.08396655321121216,
+              0.0863657295703888
+            ],
+            "actual_wrist_peak_time_seconds": [
+              4.16,
+              3.64
+            ],
+            "reference_wrist_peak_time_seconds": [
+              4.18,
+              3.68
+            ],
+            "target_oscillation": 0.08302031457424164,
+            "loaded_slip": 0.1373702585697174,
+            "single_support_fraction": 0.5095238095238095,
+            "single_support_side_changes": 17,
+            "double_support_fraction": 0.4857142857142857,
+            "steps": 210,
+            "reference_steps": 210,
+            "common_prefix_steps": 210,
+            "failed": false,
+            "completion": 1
+          },
+          {
+            "name": "triumph_two_handed_001__A058",
+            "split": "train",
+            "group": "gesture",
+            "root_xy_rmse": 0.031851738691329956,
+            "upper_rmse": 1.298350214958191,
+            "leg_rmse": 0.243679016828537,
+            "wrist_relative_rmse": 0.17329730093479156,
+            "wrist_world_rmse": 0.17826871573925018,
+            "raised_peak_error": 0.3566938638687134,
+            "actual_wrist_peak_height_m": [
+              0.2523065507411957,
+              0.128475159406662
+            ],
+            "reference_wrist_peak_height_m": [
+              0.5342540144920349,
+              0.5599154233932495
+            ],
+            "actual_wrist_peak_time_seconds": [
+              4.82,
+              5.4
+            ],
+            "reference_wrist_peak_time_seconds": [
+              1.42,
+              1.72
+            ],
+            "target_oscillation": 0.02075408399105072,
+            "loaded_slip": 0.012200465425848961,
+            "single_support_fraction": 0,
+            "single_support_side_changes": 0,
+            "double_support_fraction": 0.996309963099631,
+            "steps": 271,
+            "reference_steps": 271,
+            "common_prefix_steps": 271,
+            "failed": false,
+            "completion": 1
+          }
+        ]
+      },
+      {
+        "repeat": 1,
+        "summary": {
+          "train": {
+            "clips": 300,
+            "failures": 19,
+            "completion": 0.9857404167808257,
+            "root_xy_rmse": 0.1965945999107013,
+            "upper_rmse": 0.8880881424744924,
+            "leg_rmse": 0.34433234095573423,
+            "wrist_relative_rmse": 0.12681112313022216
+          },
+          "validation": {
+            "clips": 30,
+            "failures": 0,
+            "completion": 1,
+            "root_xy_rmse": 0.12928627266859014,
+            "upper_rmse": 0.9374482532342275,
+            "leg_rmse": 0.2661732144653797,
+            "wrist_relative_rmse": 0.12257314870754878
+          }
+        },
+        "demos": [
+          {
+            "name": "walk_ff_stop_180_R_002__A095",
+            "split": "train",
+            "group": "walking",
+            "root_xy_rmse": 0.1962035894393921,
+            "upper_rmse": 0.7431181073188782,
+            "leg_rmse": 0.40811336040496826,
+            "wrist_relative_rmse": 0.09531208127737045,
+            "wrist_world_rmse": 0.198385089635849,
+            "raised_peak_error": 0.08486837148666382,
+            "actual_wrist_peak_height_m": [
+              0.23277714848518372,
+              0.18194133043289185
+            ],
+            "reference_wrist_peak_height_m": [
+              0.13768607378005981,
+              0.10729566216468811
+            ],
+            "actual_wrist_peak_time_seconds": [
+              3.08,
+              2.52
+            ],
+            "reference_wrist_peak_time_seconds": [
+              3.4,
+              0.44
+            ],
+            "target_oscillation": 0.07903539389371872,
+            "loaded_slip": 0.11576274782419205,
+            "single_support_fraction": 0.525,
+            "single_support_side_changes": 27,
+            "double_support_fraction": 0.465625,
+            "steps": 320,
+            "reference_steps": 320,
+            "common_prefix_steps": 320,
+            "failed": false,
+            "completion": 1
+          },
+          {
+            "name": "walk_ff_start_180_R_002__A071",
+            "split": "train",
+            "group": "walking",
+            "root_xy_rmse": 0.10530898720026016,
+            "upper_rmse": 0.8104656338691711,
+            "leg_rmse": 0.4365112781524658,
+            "wrist_relative_rmse": 0.10183798521757126,
+            "wrist_world_rmse": 0.12809893488883972,
+            "raised_peak_error": 0.1358320564031601,
+            "actual_wrist_peak_height_m": [
+              0.23569312691688538,
+              0.20630326867103577
+            ],
+            "reference_wrist_peak_height_m": [
+              0.08396655321121216,
+              0.0863657295703888
+            ],
+            "actual_wrist_peak_time_seconds": [
+              4.14,
+              1.5
+            ],
+            "reference_wrist_peak_time_seconds": [
+              4.18,
+              3.68
+            ],
+            "target_oscillation": 0.08241075277328491,
+            "loaded_slip": 0.16096188127994537,
+            "single_support_fraction": 0.4857142857142857,
+            "single_support_side_changes": 17,
+            "double_support_fraction": 0.5095238095238095,
+            "steps": 210,
+            "reference_steps": 210,
+            "common_prefix_steps": 210,
+            "failed": false,
+            "completion": 1
+          },
+          {
+            "name": "triumph_two_handed_001__A058",
+            "split": "train",
+            "group": "gesture",
+            "root_xy_rmse": 0.03180261328816414,
+            "upper_rmse": 1.2982885837554932,
+            "leg_rmse": 0.2433812916278839,
+            "wrist_relative_rmse": 0.1732974499464035,
+            "wrist_world_rmse": 0.17826327681541443,
+            "raised_peak_error": 0.35636311769485474,
+            "actual_wrist_peak_height_m": [
+              0.25278982520103455,
+              0.12865334749221802
+            ],
+            "reference_wrist_peak_height_m": [
+              0.5342540144920349,
+              0.5599154233932495
+            ],
+            "actual_wrist_peak_time_seconds": [
+              4.82,
+              5.4
+            ],
+            "reference_wrist_peak_time_seconds": [
+              1.42,
+              1.72
+            ],
+            "target_oscillation": 0.02092711068689823,
+            "loaded_slip": 0.012086301110684872,
+            "single_support_fraction": 0,
+            "single_support_side_changes": 0,
+            "double_support_fraction": 0.996309963099631,
+            "steps": 271,
+            "reference_steps": 271,
+            "common_prefix_steps": 271,
+            "failed": false,
+            "completion": 1
+          }
+        ]
+      },
+      {
+        "repeat": 2,
+        "summary": {
+          "train": {
+            "clips": 300,
+            "failures": 20,
+            "completion": 0.9838862205468073,
+            "root_xy_rmse": 0.19616518614813686,
+            "upper_rmse": 0.8889508367578188,
+            "leg_rmse": 0.34729533282419045,
+            "wrist_relative_rmse": 0.1269730087990562
+          },
+          "validation": {
+            "clips": 30,
+            "failures": 0,
+            "completion": 1,
+            "root_xy_rmse": 0.12390787210315465,
+            "upper_rmse": 0.937743733326594,
+            "leg_rmse": 0.26498165503144266,
+            "wrist_relative_rmse": 0.12236121048529942
+          }
+        },
+        "demos": [
+          {
+            "name": "walk_ff_stop_180_R_002__A095",
+            "split": "train",
+            "group": "walking",
+            "root_xy_rmse": 0.19143961369991302,
+            "upper_rmse": 0.746052622795105,
+            "leg_rmse": 0.4105769097805023,
+            "wrist_relative_rmse": 0.09374875575304031,
+            "wrist_world_rmse": 0.19030442833900452,
+            "raised_peak_error": 0.0824495404958725,
+            "actual_wrist_peak_height_m": [
+              0.23619738221168518,
+              0.17368343472480774
+            ],
+            "reference_wrist_peak_height_m": [
+              0.13768607378005981,
+              0.10729566216468811
+            ],
+            "actual_wrist_peak_time_seconds": [
+              3.1,
+              3.3200000000000003
+            ],
+            "reference_wrist_peak_time_seconds": [
+              3.4,
+              0.44
+            ],
+            "target_oscillation": 0.07654917985200882,
+            "loaded_slip": 0.12400925159454346,
+            "single_support_fraction": 0.5125,
+            "single_support_side_changes": 27,
+            "double_support_fraction": 0.48125,
+            "steps": 320,
+            "reference_steps": 320,
+            "common_prefix_steps": 320,
+            "failed": false,
+            "completion": 1
+          },
+          {
+            "name": "walk_ff_start_180_R_002__A071",
+            "split": "train",
+            "group": "walking",
+            "root_xy_rmse": 0.11942590028047562,
+            "upper_rmse": 0.8078856468200684,
+            "leg_rmse": 0.4325088858604431,
+            "wrist_relative_rmse": 0.10139032453298569,
+            "wrist_world_rmse": 0.1390717476606369,
+            "raised_peak_error": 0.13404422998428345,
+            "actual_wrist_peak_height_m": [
+              0.23527035117149353,
+              0.20315039157867432
+            ],
+            "reference_wrist_peak_height_m": [
+              0.08396655321121216,
+              0.0863657295703888
+            ],
+            "actual_wrist_peak_time_seconds": [
+              4.14,
+              1.5
+            ],
+            "reference_wrist_peak_time_seconds": [
+              4.18,
+              3.68
+            ],
+            "target_oscillation": 0.08322250097990036,
+            "loaded_slip": 0.15048490464687347,
+            "single_support_fraction": 0.5142857142857142,
+            "single_support_side_changes": 17,
+            "double_support_fraction": 0.48095238095238096,
+            "steps": 210,
+            "reference_steps": 210,
+            "common_prefix_steps": 210,
+            "failed": false,
+            "completion": 1
+          },
+          {
+            "name": "triumph_two_handed_001__A058",
+            "split": "train",
+            "group": "gesture",
+            "root_xy_rmse": 0.031831979751586914,
+            "upper_rmse": 1.2983444929122925,
+            "leg_rmse": 0.2430095672607422,
+            "wrist_relative_rmse": 0.1733182817697525,
+            "wrist_world_rmse": 0.17831872403621674,
+            "raised_peak_error": 0.35633689165115356,
+            "actual_wrist_peak_height_m": [
+              0.25290217995643616,
+              0.12859347462654114
+            ],
+            "reference_wrist_peak_height_m": [
+              0.5342540144920349,
+              0.5599154233932495
+            ],
+            "actual_wrist_peak_time_seconds": [
+              4.82,
+              5.4
+            ],
+            "reference_wrist_peak_time_seconds": [
+              1.42,
+              1.72
+            ],
+            "target_oscillation": 0.020802246406674385,
+            "loaded_slip": 0.012165572494268417,
+            "single_support_fraction": 0,
+            "single_support_side_changes": 0,
+            "double_support_fraction": 0.996309963099631,
+            "steps": 271,
+            "reference_steps": 271,
+            "common_prefix_steps": 271,
+            "failed": false,
+            "completion": 1
+          }
+        ]
+      }
+    ],
+    "stage_01": [
+      {
+        "repeat": 0,
+        "summary": {
+          "train": {
+            "clips": 300,
+            "failures": 84,
+            "completion": 0.9029067982675125,
+            "root_xy_rmse": 0.32053662043685716,
+            "upper_rmse": 1.0295306501785915,
+            "leg_rmse": 0.38707782035072646,
+            "wrist_relative_rmse": 0.13815553806722164
+          },
+          "validation": {
+            "clips": 30,
+            "failures": 4,
+            "completion": 0.9731377848751307,
+            "root_xy_rmse": 0.3198372555275758,
+            "upper_rmse": 1.0627861797809601,
+            "leg_rmse": 0.3346368422110875,
+            "wrist_relative_rmse": 0.14016628712415696
+          }
+        },
+        "demos": [
+          {
+            "name": "walk_ff_stop_180_R_002__A095",
+            "split": "train",
+            "group": "walking",
+            "root_xy_rmse": 0.22731195390224457,
+            "upper_rmse": 0.6607643365859985,
+            "leg_rmse": 0.585728645324707,
+            "wrist_relative_rmse": 0.09370958805084229,
+            "wrist_world_rmse": 0.24441388249397278,
+            "raised_peak_error": 0.019856423139572144,
+            "actual_wrist_peak_height_m": [
+              0.15046364068984985,
+              0.12631991505622864
+            ],
+            "reference_wrist_peak_height_m": [
+              0.1297750473022461,
+              0.10729566216468811
+            ],
+            "actual_wrist_peak_time_seconds": [
+              0.32,
+              0.6
+            ],
+            "reference_wrist_peak_time_seconds": [
+              1.04,
+              0.44
+            ],
+            "target_oscillation": 0.23521718382835388,
+            "loaded_slip": 0.4692266583442688,
+            "single_support_fraction": 0.5535714285714286,
+            "single_support_side_changes": 4,
+            "double_support_fraction": 0.17857142857142858,
+            "steps": 56,
+            "reference_steps": 320,
+            "common_prefix_steps": 56,
+            "failed": true,
+            "completion": 0.175
+          },
+          {
+            "name": "walk_ff_start_180_R_002__A071",
+            "split": "train",
+            "group": "walking",
+            "root_xy_rmse": 0.4389786720275879,
+            "upper_rmse": 1.034066915512085,
+            "leg_rmse": 0.38157325983047485,
+            "wrist_relative_rmse": 0.11559461057186127,
+            "wrist_world_rmse": 0.37184569239616394,
+            "raised_peak_error": 0.1692497581243515,
+            "actual_wrist_peak_height_m": [
+              0.3654913306236267,
+              0.14206558465957642
+            ],
+            "reference_wrist_peak_height_m": [
+              0.08269166946411133,
+              0.0863657295703888
+            ],
+            "actual_wrist_peak_time_seconds": [
+              2.36,
+              3.6
+            ],
+            "reference_wrist_peak_time_seconds": [
+              2.06,
+              3.68
+            ],
+            "target_oscillation": 0.1390325129032135,
+            "loaded_slip": 0.13255898654460907,
+            "single_support_fraction": 0.3894736842105263,
+            "single_support_side_changes": 12,
+            "double_support_fraction": 0.5473684210526316,
+            "steps": 190,
+            "reference_steps": 210,
+            "common_prefix_steps": 190,
+            "failed": true,
+            "completion": 0.9047619047619048
+          },
+          {
+            "name": "triumph_two_handed_001__A058",
+            "split": "train",
+            "group": "gesture",
+            "root_xy_rmse": 0.37872639298439026,
+            "upper_rmse": 1.3595439195632935,
+            "leg_rmse": 0.3719042241573334,
+            "wrist_relative_rmse": 0.178491473197937,
+            "wrist_world_rmse": 0.40480294823646545,
+            "raised_peak_error": 0.35304126143455505,
+            "actual_wrist_peak_height_m": [
+              0.317353755235672,
+              0.07073315978050232
+            ],
+            "reference_wrist_peak_height_m": [
+              0.5342540144920349,
+              0.5599154233932495
+            ],
+            "actual_wrist_peak_time_seconds": [
+              1.32,
+              1.06
+            ],
+            "reference_wrist_peak_time_seconds": [
+              1.42,
+              1.72
+            ],
+            "target_oscillation": 0.06961584091186523,
+            "loaded_slip": 0.040757711976766586,
+            "single_support_fraction": 0.3025830258302583,
+            "single_support_side_changes": 11,
+            "double_support_fraction": 0.6937269372693727,
+            "steps": 271,
+            "reference_steps": 271,
+            "common_prefix_steps": 271,
+            "failed": false,
+            "completion": 1
+          }
+        ]
+      },
+      {
+        "repeat": 1,
+        "summary": {
+          "train": {
+            "clips": 300,
+            "failures": 85,
+            "completion": 0.8990263080320517,
+            "root_xy_rmse": 0.3229840153393646,
+            "upper_rmse": 1.0283411757151286,
+            "leg_rmse": 0.3887339818974336,
+            "wrist_relative_rmse": 0.13810661993920803
+          },
+          "validation": {
+            "clips": 30,
+            "failures": 6,
+            "completion": 0.9727813657378653,
+            "root_xy_rmse": 0.33140244347353776,
+            "upper_rmse": 1.0610647201538086,
+            "leg_rmse": 0.34030865182479225,
+            "wrist_relative_rmse": 0.14053369536995888
+          }
+        },
+        "demos": [
+          {
+            "name": "walk_ff_stop_180_R_002__A095",
+            "split": "train",
+            "group": "walking",
+            "root_xy_rmse": 0.23048807680606842,
+            "upper_rmse": 0.6640834808349609,
+            "leg_rmse": 0.5910186171531677,
+            "wrist_relative_rmse": 0.09456335753202438,
+            "wrist_world_rmse": 0.2480948567390442,
+            "raised_peak_error": 0.021215155720710754,
+            "actual_wrist_peak_height_m": [
+              0.15001451969146729,
+              0.12948650121688843
+            ],
+            "reference_wrist_peak_height_m": [
+              0.1297750473022461,
+              0.10729566216468811
+            ],
+            "actual_wrist_peak_time_seconds": [
+              0.32,
+              1.06
+            ],
+            "reference_wrist_peak_time_seconds": [
+              1.04,
+              0.44
+            ],
+            "target_oscillation": 0.23747579753398895,
+            "loaded_slip": 0.389026939868927,
+            "single_support_fraction": 0.5087719298245614,
+            "single_support_side_changes": 6,
+            "double_support_fraction": 0.17543859649122806,
+            "steps": 57,
+            "reference_steps": 320,
+            "common_prefix_steps": 57,
+            "failed": true,
+            "completion": 0.178125
+          },
+          {
+            "name": "walk_ff_start_180_R_002__A071",
+            "split": "train",
+            "group": "walking",
+            "root_xy_rmse": 0.4410571753978729,
+            "upper_rmse": 1.038170576095581,
+            "leg_rmse": 0.3794609010219574,
+            "wrist_relative_rmse": 0.11586908996105194,
+            "wrist_world_rmse": 0.3736104369163513,
+            "raised_peak_error": 0.1781422346830368,
+            "actual_wrist_peak_height_m": [
+              0.36599037051200867,
+              0.15935149788856506
+            ],
+            "reference_wrist_peak_height_m": [
+              0.08269166946411133,
+              0.0863657295703888
+            ],
+            "actual_wrist_peak_time_seconds": [
+              2.36,
+              3.7600000000000002
+            ],
+            "reference_wrist_peak_time_seconds": [
+              2.06,
+              3.68
+            ],
+            "target_oscillation": 0.1395532339811325,
+            "loaded_slip": 0.10539441555738449,
+            "single_support_fraction": 0.37566137566137564,
+            "single_support_side_changes": 12,
+            "double_support_fraction": 0.5608465608465608,
+            "steps": 189,
+            "reference_steps": 210,
+            "common_prefix_steps": 189,
+            "failed": true,
+            "completion": 0.9
+          },
+          {
+            "name": "triumph_two_handed_001__A058",
+            "split": "train",
+            "group": "gesture",
+            "root_xy_rmse": 0.4832112789154053,
+            "upper_rmse": 1.34840726852417,
+            "leg_rmse": 0.34208083152770996,
+            "wrist_relative_rmse": 0.1763925552368164,
+            "wrist_world_rmse": 0.48400887846946716,
+            "raised_peak_error": 0.35320568084716797,
+            "actual_wrist_peak_height_m": [
+              0.31820395588874817,
+              0.0695541501045227
+            ],
+            "reference_wrist_peak_height_m": [
+              0.5342540144920349,
+              0.5599154233932495
+            ],
+            "actual_wrist_peak_time_seconds": [
+              5.4,
+              1.06
+            ],
+            "reference_wrist_peak_time_seconds": [
+              1.42,
+              1.72
+            ],
+            "target_oscillation": 0.07640421390533447,
+            "loaded_slip": 0.04804384335875511,
+            "single_support_fraction": 0.34317343173431736,
+            "single_support_side_changes": 14,
+            "double_support_fraction": 0.6531365313653137,
+            "steps": 271,
+            "reference_steps": 271,
+            "common_prefix_steps": 271,
+            "failed": false,
+            "completion": 1
+          }
+        ]
+      },
+      {
+        "repeat": 2,
+        "summary": {
+          "train": {
+            "clips": 300,
+            "failures": 83,
+            "completion": 0.8969905164590402,
+            "root_xy_rmse": 0.32333204547564187,
+            "upper_rmse": 1.0282140777508417,
+            "leg_rmse": 0.3872363512714704,
+            "wrist_relative_rmse": 0.1381480823457241
+          },
+          "validation": {
+            "clips": 30,
+            "failures": 3,
+            "completion": 0.9787679985435742,
+            "root_xy_rmse": 0.33121382681032024,
+            "upper_rmse": 1.0623668869336447,
+            "leg_rmse": 0.33648583441972735,
+            "wrist_relative_rmse": 0.14023696581522624
+          }
+        },
+        "demos": [
+          {
+            "name": "walk_ff_stop_180_R_002__A095",
+            "split": "train",
+            "group": "walking",
+            "root_xy_rmse": 0.22734150290489197,
+            "upper_rmse": 0.6593930721282959,
+            "leg_rmse": 0.5857239365577698,
+            "wrist_relative_rmse": 0.09131402522325516,
+            "wrist_world_rmse": 0.24474579095840454,
+            "raised_peak_error": 0.019648462533950806,
+            "actual_wrist_peak_height_m": [
+              0.15017443895339966,
+              0.12619319558143616
+            ],
+            "reference_wrist_peak_height_m": [
+              0.1297750473022461,
+              0.10729566216468811
+            ],
+            "actual_wrist_peak_time_seconds": [
+              0.32,
+              0.62
+            ],
+            "reference_wrist_peak_time_seconds": [
+              1.04,
+              0.44
+            ],
+            "target_oscillation": 0.23490558564662933,
+            "loaded_slip": 0.46521279215812683,
+            "single_support_fraction": 0.5357142857142857,
+            "single_support_side_changes": 4,
+            "double_support_fraction": 0.17857142857142858,
+            "steps": 56,
+            "reference_steps": 320,
+            "common_prefix_steps": 56,
+            "failed": true,
+            "completion": 0.175
+          },
+          {
+            "name": "walk_ff_start_180_R_002__A071",
+            "split": "train",
+            "group": "walking",
+            "root_xy_rmse": 0.43891268968582153,
+            "upper_rmse": 1.038503885269165,
+            "leg_rmse": 0.3770458400249481,
+            "wrist_relative_rmse": 0.11603725701570511,
+            "wrist_world_rmse": 0.3724067509174347,
+            "raised_peak_error": 0.1761394739151001,
+            "actual_wrist_peak_height_m": [
+              0.36341506242752075,
+              0.15792128443717957
+            ],
+            "reference_wrist_peak_height_m": [
+              0.08269166946411133,
+              0.0863657295703888
+            ],
+            "actual_wrist_peak_time_seconds": [
+              2.36,
+              3.74
+            ],
+            "reference_wrist_peak_time_seconds": [
+              2.06,
+              3.68
+            ],
+            "target_oscillation": 0.13900357484817505,
+            "loaded_slip": 0.10565869510173798,
+            "single_support_fraction": 0.3670212765957447,
+            "single_support_side_changes": 12,
+            "double_support_fraction": 0.5585106382978723,
+            "steps": 188,
+            "reference_steps": 210,
+            "common_prefix_steps": 188,
+            "failed": true,
+            "completion": 0.8952380952380953
+          },
+          {
+            "name": "triumph_two_handed_001__A058",
+            "split": "train",
+            "group": "gesture",
+            "root_xy_rmse": 0.393192857503891,
+            "upper_rmse": 1.357226848602295,
+            "leg_rmse": 0.3670579493045807,
+            "wrist_relative_rmse": 0.17840564250946045,
+            "wrist_world_rmse": 0.4161248207092285,
+            "raised_peak_error": 0.3541911244392395,
+            "actual_wrist_peak_height_m": [
+              0.3145272731781006,
+              0.07125994563102722
+            ],
+            "reference_wrist_peak_height_m": [
+              0.5342540144920349,
+              0.5599154233932495
+            ],
+            "actual_wrist_peak_time_seconds": [
+              4.2,
+              1.06
+            ],
+            "reference_wrist_peak_time_seconds": [
+              1.42,
+              1.72
+            ],
+            "target_oscillation": 0.0714755654335022,
+            "loaded_slip": 0.04496292769908905,
+            "single_support_fraction": 0.3062730627306273,
+            "single_support_side_changes": 13,
+            "double_support_fraction": 0.6900369003690037,
+            "steps": 271,
+            "reference_steps": 271,
+            "common_prefix_steps": 271,
+            "failed": false,
+            "completion": 1
+          }
+        ]
+      }
+    ]
+  },
+  "saved_trace_walk_displacement": {
+    "method": "Compare first s1 to last shared live transition, projected on that prefix reference net XY direction; includes terminal fall pose and is not proof of stable gait. Saved trajectories only.",
+    "physics_integration_steps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0,
+    "fixed_walk_common_prefix": [
+      {
+        "repeat": 0,
+        "name": "walk_ff_stop_180_R_002__A095",
+        "common_prefix_steps": 56,
+        "s1_to_last_seconds": 1.1,
+        "reference_net_displacement_m": 0.675215482711792,
+        "RF11_projection_m": 0.8904202580451965,
+        "RF12_projection_m": 1.1502629518508911
+      },
+      {
+        "repeat": 0,
+        "name": "walk_ff_start_180_R_002__A071",
+        "common_prefix_steps": 190,
+        "s1_to_last_seconds": 3.7800000000000002,
+        "reference_net_displacement_m": 1.8081459999084473,
+        "RF11_projection_m": 2.018503427505493,
+        "RF12_projection_m": 1.6764806509017944
+      },
+      {
+        "repeat": 1,
+        "name": "walk_ff_stop_180_R_002__A095",
+        "common_prefix_steps": 57,
+        "s1_to_last_seconds": 1.12,
+        "reference_net_displacement_m": 0.6882075071334839,
+        "RF11_projection_m": 0.912486732006073,
+        "RF12_projection_m": 1.1606793403625488
+      },
+      {
+        "repeat": 1,
+        "name": "walk_ff_start_180_R_002__A071",
+        "common_prefix_steps": 189,
+        "s1_to_last_seconds": 3.7600000000000002,
+        "reference_net_displacement_m": 1.7966244220733643,
+        "RF11_projection_m": 1.975367784500122,
+        "RF12_projection_m": 1.6269630193710327
+      },
+      {
+        "repeat": 2,
+        "name": "walk_ff_stop_180_R_002__A095",
+        "common_prefix_steps": 56,
+        "s1_to_last_seconds": 1.1,
+        "reference_net_displacement_m": 0.675215482711792,
+        "RF11_projection_m": 0.8857594132423401,
+        "RF12_projection_m": 1.1511951684951782
+      },
+      {
+        "repeat": 2,
+        "name": "walk_ff_start_180_R_002__A071",
+        "common_prefix_steps": 188,
+        "s1_to_last_seconds": 3.74,
+        "reference_net_displacement_m": 1.784714698791504,
+        "RF11_projection_m": 2.0075011253356934,
+        "RF12_projection_m": 1.5998563766479492
+      }
+    ]
+  },
+  "stages": {
+    "A": "EXECUTED_ORIGINAL_REWARD_AND_DATA",
+    "B": "NOT_EXECUTED",
+    "C": "NOT_EXECUTED",
+    "new_AP03_clips_sampled": 0,
+    "additional_training_seconds": 0,
+    "retry": false
+  },
+  "evidence_audit": {
+    "path": "data/manifests/supermimic_q1_RF12_saved_audit_20261028.json",
+    "bytes": 9366,
+    "sha256": "37de6da39ddaf7b38ab023e36acabf5dc90678a4823f6bd94cddad9474336644",
+    "passed_checks": 37
+  },
+  "limitations": [
+    "This PPO recipe regressed; a unique causal mechanism is not isolated.",
+    "No conclusion about all PPO implementations, added-reward B or expansion C follows from this single A recipe.",
+    "No new training or evaluation rollout was launched during this saved-evidence audit.",
+    "No value was inferred from reward/loss alone."
+  ],
+  "weights_and_large_trajectories": "SERVER_LOCAL_ONLY"
+}

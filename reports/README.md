@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-27：[MorphMimic只读初评](README_MORPHMIMIC_REVIEW_20261027.md)完成，固定main提交`aa40fe46a7fa995ba7a7354ad065a2c8ad64a302`。值得借鉴多形态映射/坐标与模型稳定性处理；默认位置反馈语义、29关节强映射及显存要求均不能直接套用Q1。作者大规模结果与G1真机不作Q1复现证据；无新安装/仿真/训练/agent，服务器仍停服，MG05未恢复。
+
 2026-10-27：[MG05离线分析](README_SUPERMIMIC_Q1_MG05_SIGNAL_ANALYSIS_20261027.md)与候选准备：验证手势81.72%上肢平方误差为片内持续bias；[上游核查](README_SUPERMIMICHP_Q1_UPDATE_20261027.md)确认共有尾bin跨片bug。独立候选构建/关节误差与tracking/采样overlay及16项离线测试完成，[小收据](../data/manifests/supermimic_q1_MG05_candidate_offline_20261027.json)保存。实际runtime/Torch/原生接触/H32未验证，不能宣称效果改善。用户确认25245停服，等待新入口，停止连接/训练；MG05工具本次paused，目标未完成，服务器同步待。
 
 2026-10-27：[MG05](README_SUPERMIMIC_Q1_MG05_DIAGNOSE_TRACKING_20261027.md)开始：上肢策略/奖励、真实足地接触/滑移、模型动作方向三类诊断；唯一子agent核师兄库更新，据证据选观测/tracking修正，随后一次4096环境最多一小时训练。此为最新授权，旧暂停与无目标条目仅历史；尚未启动本轮训练。

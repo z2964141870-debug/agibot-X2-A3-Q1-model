@@ -1,0 +1,122 @@
+{
+  "status": "RF11_TRAINING_COMPLETED_POSTPROCESSING_PENDING",
+  "observed_utc": "2026-10-27T13:57:18Z",
+  "training": {
+    "status": "TRAINING_COMPLETED",
+    "started_utc": "2026-10-27T12:56:29.998868+00:00",
+    "process": {
+      "pid": 17373,
+      "start_ticks": 1943487,
+      "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+    },
+    "mode": "train",
+    "code_commit": "7a3567cd5b89e5cd6282a83aacb61f19590b0434",
+    "library": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json",
+      "bytes": 208349,
+      "sha256": "ba9ac284a018cdd40eea5200d2c157b7da7cfdae89e6c820eed2c9748cc83337"
+    },
+    "training_seconds": 3500.2659895760007,
+    "iteration": 3271,
+    "sim_steps": 33755136,
+    "wm_updates": 32710,
+    "actor_updates": 2771,
+    "final": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run/final.pt",
+      "bytes": 208865366,
+      "sha256": "6c4de3171bd45359691a63ffe1712729c14fdb2080f8066e4c25632f4bbc5146"
+    },
+    "initial": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run/initial.pt",
+      "bytes": 68726069,
+      "sha256": "317d1e8b8505264880909c0dfe5aaea777c69d2961c108e4b7d2cafd84954d46"
+    },
+    "cuda_peak_allocated_bytes": 6400284672,
+    "cuda_peak_reserved_bytes": 6851395584,
+    "ended_utc": "2026-10-27T13:55:05.949393+00:00"
+  },
+  "train_guard": {
+    "status": "WORKER_COMPLETED",
+    "cleanup": {
+      "worker_started": true,
+      "worker_pid": 17373,
+      "worker_group": 17373,
+      "worker_reaped": true,
+      "worker_return_code": 0
+    },
+    "ended_utc": "2026-10-27T13:55:10.662691+00:00"
+  },
+  "process_observation": [
+    {
+      "expected": {
+        "pid": 17370,
+        "start_ticks": 1943459,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "present": true,
+      "state": "S",
+      "start_ticks": 1943459,
+      "command": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_hp/run_trial.py --mode train --runtime /opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027 --expected-oom-kill 0 --code-commit 7a3567cd5b89e5cd6282a83aacb61f19590b0434 --training-seconds 3500 --maximum-training-seconds 3600 --external-training-stop-seconds 3540 --video-suite /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF09_SOMA300_HP_E4096_T05H_20261027/evaluation/video_suite.json --baseline-evaluation /opt/data/private/ZHY/data/supermimic_for_q1/MG05_RF09_CKPT3500_BASELINE_20261027 --baseline-label RF09_ckpt3500_3424.267689s --comparison-name RF09_1H_RF11_comparison.json --trial-note RF09_recipe_with_only_legal_transition_bin_fix --controller "
+    },
+    {
+      "expected": {
+        "pid": 17373,
+        "start_ticks": 1943487,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "present": false
+    }
+  ],
+  "preliminary_physical_summary": {
+    "initial": {
+      "train": {
+        "clips": 300,
+        "failed": 298,
+        "mean_completion_fraction": 0.2579799819538919,
+        "mean_normalized_full_clip_return": 0.14749288347402834,
+        "mean_root_xy_rmse_m": 0.08979597213367621,
+        "mean_upper_limb_rmse_rad": 0.5346967382232348
+      },
+      "validation": {
+        "clips": 30,
+        "failed": 30,
+        "mean_completion_fraction": 0.26452674775393464,
+        "mean_normalized_full_clip_return": 0.15816595935522967,
+        "mean_root_xy_rmse_m": 0.08756201397627592,
+        "mean_upper_limb_rmse_rad": 0.5233698387940725
+      }
+    },
+    "final": {
+      "train": {
+        "clips": 300,
+        "failed": 24,
+        "mean_completion_fraction": 0.9806007005201278,
+        "mean_normalized_full_clip_return": 0.5401372793612539,
+        "mean_root_xy_rmse_m": 0.19724542858079075,
+        "mean_upper_limb_rmse_rad": 0.8864787826935451
+      },
+      "validation": {
+        "clips": 30,
+        "failed": 0,
+        "mean_completion_fraction": 1,
+        "mean_normalized_full_clip_return": 0.6128274687426962,
+        "mean_root_xy_rmse_m": 0.12498210578535994,
+        "mean_upper_limb_rmse_rad": 0.9394197225570678
+      }
+    },
+    "scope": "Full rollout metrics are affected by termination length. Common-prefix RF09 comparison and result arithmetic audit are pending. Validation survival alone is not tracking success."
+  },
+  "pending": [
+    "evaluation media and guard",
+    "six-panel dashboard",
+    "common-prefix analysis",
+    "RF09 near-one-hour comparison",
+    "result and local media audits",
+    "local MP4 and plots delivery",
+    "final publication"
+  ],
+  "frozen_code_commit": "7a3567cd5b89e5cd6282a83aacb61f19590b0434",
+  "training_audit": "data/manifests/supermimic_q1_RF11_training_audit_20261027.json",
+  "storage_status": "LOCAL_ONLY",
+  "additional_training_authorized": false
+}

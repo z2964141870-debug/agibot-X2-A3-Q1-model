@@ -1,5 +1,9 @@
 # RF11：恢复RF09配置，仅修采样的一小时对照
 
+21:55:05训练完成：实际3500.265989576秒、3271学习轮、33755136转移，WM32710/actor2771。训练guard于21:55:10正常reap退出0；训练worker17373已不存在，controller17370仍按原身份执行评测。36项保存/张量/更新计数/来源及参考身份审计全部通过，0新积分/推理/optimizer；[训练审计](../data/manifests/supermimic_q1_RF11_training_audit_20261027.json)、[阶段现场](../data/manifests/supermimic_q1_RF11_training_completed_20261027.json)。未追加训练，后续原自动评测继续。
+
+21:57首轮330片物理JSON已保存：训练提前终止24/300、完成98.06%，验证提前终止0/30、完成100%。这是终止/完成证据，不等于已准确跟踪。全rollout验证根XY RMSE0.12498m、上肢0.93942rad，尚未做RF09共同前缀与结果算术审计，不能与不同执行时长均值直接宣称改善。六格图、初末各54秒MP4及本地交付仍待全pipeline结束。
+
 21:04:01：已533学习轮/5730304转移/WM5330/actor33，实训436.950360秒；controller/worker身份、三状态与时钟匹配，GPU14619MiB/50°C/OOM0。已进入真实策略更新，尚无效果结论。原每10分钟监督`q1-rf08-4096`已通过工具更新为本RF11并实际ACTIVE，仅重要结果/异常通知，交付后暂停；仓库/每日研究任务未改。[监督与现场](../data/manifests/supermimic_q1_RF11_monitor_20261027.json)。
 
 20:57:40现场：正式RF11已启动，controller17370/start_ticks1943459、worker17373/start_ticks1943487，boot/GPU与计划一致；三个状态RUNNING且真实命令/进程匹配。20:56:29 controller开始、20:56:44实际采集/训练开始，已58学习轮/864256转移/WM580/actor0（正常500轮预热）。4096原生obs80/goal590转移契约通过，GPU9897MiB/47°C、共享7.21GB、OOM0、盘余1.638TB。[启动现场](../data/manifests/supermimic_q1_RF11_launch_observed_20261027.json)。冻结提交`7a3567cd5b89e5cd6282a83aacb61f19590b0434`已独立核远端，15项部署SHA一致。预计21:55左右结束训练，评测/交付另需时间；实际以receipt为准。恢复只读状态，不重复启动或改冻结来源。

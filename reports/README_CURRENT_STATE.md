@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+21:55:05：[RF11训练正常完成](README_SUPERMIMIC_Q1_RF11_SAMPLERONLY_20261027.md)，实训3500.266秒/3271轮33755136转移、WM32710/actor2771；训练worker退出0并reap，36项保存审计通过。21:57首轮330片JSON：训练24/300提前终止、验证0/30，验证完成100%；根部/上肢共同前缀对照仍待，不能以存活宣称跟踪成功。controller按原身份执行后处理，六格/54秒MP4及本地交付未完，监督保持；不续训或追加实验。[阶段收据](../data/manifests/supermimic_q1_RF11_training_completed_20261027.json)。下方RF11 RUNNING仅为此前采样记录。
+
 21:04:01 RF11实际533轮/5730304转移、WM5330/actor33、实训436.95秒，已过500轮预热，GPU14619MiB/50°C/OOM0。原每10分钟监督`q1-rf08-4096`已实际ACTIVE并只负责本轮RF11，正常静默、终后评测/六格/54秒MP4与三端记录交付后暂停；不改其他任务。[监督现场](../data/manifests/supermimic_q1_RF11_monitor_20261027.json)。
 
 20:57:40：[RF11实际RUNNING](README_SUPERMIMIC_Q1_RF11_SAMPLERONLY_20261027.md)，20:56:44开始实际训练，最多3600秒。4096原生转移/obs80通过，58轮/WM580/actor0正常预热，15项部署SHA与冻结`7a3567cd5b89e5cd6282a83aacb61f19590b0434`一致；controller17370/start1943459、worker17373/start1943487，boot见下，须现场核身份。GPU9897MiB/47°C、共享7.21GB/OOM0、余盘1.638TB。RF10已退出，运行中不热改；本次仅一轮，不重试/延时。下方“待启动”是历史。

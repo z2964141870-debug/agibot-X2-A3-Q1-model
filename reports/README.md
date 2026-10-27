@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-28 02:15：[RF12阶段A物理门明显退步](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)。实训3503.475秒/812轮/79822848转移，根XY误差为RF11的2.65至2.82倍，上肢增加13.3至14.0%，验证4/6/3条失败，固定普通走三次均不完整。整组改善0/3、严重退步3/3，已决定stop/physical_regression，B/C及加训未执行。优化暂停、自动非训练六格/视频交付中，尚未全pipeline结束；不等待视频才报告量化结论。[小收据](../data/manifests/supermimic_q1_RF12_stage01_20261028.json)。
+
 2026-10-28 01:49：[RF12桥接恢复](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)完成；原controller/worker、boot/GPU一致，三状态RUNNING，A阶段2613.658实训秒/606轮，1123冻结来源大小SHA全相同，资源正常且未重启训练。首次3500秒物理评测尚待，继续原监督；下方断线/缺认证均为历史。[现场收据](../data/manifests/supermimic_q1_RF12_connection_unknown_20261028.json)。
 
 2026-10-28 01:44：[RF12连接恢复尝试](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)已按用户新指示执行；Windows可达但桥接账户免密认证被拒绝，缺该账户登录信息，现场仍UNKNOWN。训练/冻结来源/预算未改。前次中断记录9b6c658已发布并独立核远端、Mac双副本大小SHA相同，服务器镜像待恢复。

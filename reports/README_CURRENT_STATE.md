@@ -1,16 +1,12 @@
 # YUANQI 当前状态与下一步
 
-2026-10-28 01:49，北京时间：**Windows桥及25386连接已恢复，RF12现场重新核实为RUNNING。** 原controller49990/start_ticks3416720、worker49995/start_ticks3416816及boot/GPU均匹配；01:48:33实训2613.657933秒/606轮/59572224转移，critic12120/actor11920，A阶段alpha0/新增采样0，status/guard/run均RUNNING且时钟ACTIVE。GPU9811MiB/57度、共享约10.33GB/OOM0、盘余928.11GB；01:49:21重核1123冻结来源286568437字节全部大小/SHA相同。未重启训练或改预算，首次3500秒三重复物理结果尚未生成。继续原每10分钟监督；下方UNKNOWN/认证阻塞为恢复前历史。[恢复现场](../data/manifests/supermimic_q1_RF12_connection_unknown_20261028.json)。
+2026-10-28 02:15，北京时间：**RF12首个物理门明显退步，已决定停止优化，不进入B/C或追加训练。** 实际3503.474674秒/812轮/79822848转移，critic16240/actor16040；三重复共同前缀根XY误差为RF11的2.653/2.669/2.816倍，上肢增加13.3至14.0%，腕增加14.7至15.2%，验证失败4/6/3条、完成97.28至97.88%（基线三次均0/30失败/100%）。固定普通走均提前终止。改善门0/3、严重退步3/3，`run/stage_decisions.json`为stop/physical_regression。[结果及边界](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)/[小收据](../data/manifests/supermimic_q1_RF12_stage01_20261028.json)。
 
-01:44追加：用户已授权重建通往同一25386的Windows桥；Windows主机可达，但`yu@100.65.183.91`的BatchMode认证被拒绝，未建立转发，亦无可复用SSH会话。当前缺Windows桥接账户的登录信息，已单独询问；用户提供的容器root密码仅留当前交互，不落盘或Git。RF12现场仍UNKNOWN，未重启或修改训练。中断记录`9b6c6586f9a79151805663af79f8888f291bc339`已push并独立核远端，4文件125297字节在持久副本/Mac主根大小SHA相同；25386镜像仍待恢复。
+02:14现场controller49990/start_ticks3416720、worker49995/start_ticks3416816及boot/GPU不变；guard无错误/OOM0，learner正在stage_delivery，训练时钟PAUSED_FOR_NONTRAINING且计数未增加。阶段六格/CSV/PPO诊断和初始视频已落盘，最终视频仍在编码，尚未全pipeline完成或释放GPU。冻结684548c及1123源保持，后续报告不改冻结身份。继续同一监督完成非训练交付/本地解码/记录同步，不重启或另开训练。01:36连接中断已于01:48恢复，详细历史见[连接收据](../data/manifests/supermimic_q1_RF12_connection_unknown_20261028.json)。
 
-2026-10-28 01:36，北京时间：RF12本轮监督连接中断，现场状态为 **UNKNOWN**。本机18873拒绝连接且无监听，容器与Windows桥控制socket均不存在；已做一次有界核查，未重启/重连训练、未改冻结来源或预算。最后成功快照为01:25:26：三状态RUNNING，A阶段1237.219683实训秒/287轮/28213248转移，critic5740/actor5540，OOM0、GPU9811MiB/55度。旧快照不能证明现在仍在运行或已停止。连接恢复后先核boot/PID/start_ticks、status/guard/clock与物理评测，当前无法同步25386小记录，监督保持原频率。[连接收据](../data/manifests/supermimic_q1_RF12_connection_unknown_20261028.json)。
+资源清理、AP03的883训练/原30验证、16/4096零optimizer与原生接触/活跃训练状态/RNG保护已完成；本轮仅采样原300片，新增583片从未启用。正式阶段六格已落盘，固定54秒初末视频交付与本地核验仍待。
 
-2026-10-28 01:07，北京时间。[RF12独立PPO分阶段训练](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)已启动：4096环境/从RF11初始化；controller49990/start_ticks3416720、worker49995/start_ticks3416816，冻结684548c已发布/独立核远端、22文件三端匹配。三状态RUNNING，175.025实训秒/42轮/4128768转移，critic840/actor640，已通过10轮critic-only；1123冻结来源未变，GPU9811MiB/55度、共享10.29GB/OOM0。约3500/7100/10700实训秒固定三重复评测，整组物理门达标才自动追加最多5小时，总<=8小时；当前未证明效果。既有监督已ACTIVE每10分钟，不恢复旧实验或agent。[启动收据](../data/manifests/supermimic_q1_RF12_launch_observed_20261028.json)。
-
-资源清理、AP03的883训练/原30验证、16/4096零optimizer与原生接触/活跃训练状态/RNG保护已完成；新增583动作只在C阶段渐进启用。六格/固定54秒视频已接入每阶段与最终交付，正式新效果媒体尚待检查点。
-
-## 最新结果
+## RF11历史基线
 
 独立4096 MuJoCo Warp环境、同300训练/30验证SOMA、seed0从零；恢复RF09的obs80/goal590和reward，仅保留已证尾bin合法转移修复。RF10也已有该修复，本轮主要撤回C01表示/奖励组合。冻结提交`7a3567cd5b89e5cd6282a83aacb61f19590b0434`。实际3500.265990秒/3271学习轮/33755136转移，WM32710/actor2771；36保存、19结果/CSV和12媒体检查全部通过。
 
@@ -40,7 +36,7 @@ Python`/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/pyt
 
 ## 下一步与跟踪
 
-RF11本轮授权已使用且不恢复；最新RF12授权覆盖本条此前“不再开下一轮”的范围，仅新增这一独立PPO实验及按客观判据的连续加训，不授权故障重启或其他试验。不开或激活agent。保持RF12冻结来源，下一步约3500实训秒核三重复真实评测/判据及阶段六格/54秒视频。原300/30仅A/B采样，新增583片仅C按已授权物理门渐进启用；不由reward或loss触发加训。
+RF12阶段A已触发physical_regression，原授权的后续阶段不再执行；不自动重试或开启其他训练，不激活agent。下一步只核正常终态/reap/GPU释放、六格/三重复JSON、Mac初末54秒MP4解码与小记录三端同步；全交付齐备后暂停本轮heartbeat。新增583片从未在本轮训练采样，B新增奖励也未使用，不能宣称已测试。
 
 用户最新关切是连续多轮缺乏全面改善。现有证据确认上肢幅度/时序瓶颈持续，RF09五小时亦未解决；历史根轨迹曾改善，但不支持继续堆训练时长。先定位策略目标、实际控制和H32模型方向，再决定后续方案。
 

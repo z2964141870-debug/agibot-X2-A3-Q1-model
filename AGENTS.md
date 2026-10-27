@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-28 RF12阶段A首个三重复物理门明显退步，冻结判据已决定stop/physical_regression；3503.474674实训秒/812轮/79822848转移，critic16240/actor16040，根XY误差为RF11的2.65至2.82倍、上肢增加13.3至14.0%，验证4/6/3条提前终止，固定普通走均不完整。B/C、奖励添加、AP03新增采样及5小时加训未执行，不自动重试或再开。02:14原controller/worker仍在非训练stage_delivery，时钟PAUSED、计数未增加，六格及视频交付中；尚未全pipeline结束，终态/本地媒体/三端记录仍待。恢复读RF12 README和stage01收据，不能把旧RUNNING当继续优化。
+
 - 2026-10-28 RF12唯一正式PPO实验已启动，根`data/supermimic_for_q1/BONES_RF12_PPO_SOMA_AP03_E4096_MAX08H_20261028`。01:02:02北京时间controller49990/start_ticks3416720，worker49995/start_ticks3416816；25386 boot/GPU不变。冻结`684548c8e912802960a837924e5af7fd4c03248d`已push/独立核远端，22文件865265字节三端匹配；01:07:38核1123冻结来源SHA未变，三状态RUNNING、实训175.025秒/42轮/4128768转移，critic840/actor640，已实际通过10轮critic-only并开始actor，GPU9811MiB/55度、共享10.29GB/OOM0。RF11同协议三重复均验证0/30失败、原上肢瓶颈仍在；当前只是启动验证，不是RF12效果。`q1-rf08-4096`已工具更新并回读ACTIVE每10分钟，按约3500/7100/10700实训秒物理门决定C加5小时，总<=28800秒，无故障重试/重置，不改冻结源码。详情见RF12 README与launch_observed收据。
 
 - 2026-10-28 RF12准备阶段权威Git改为持久副本`/Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028`的Q1分支。旧`/tmp/yuanqi-supermimic-q1-20261023`出现已跟踪文件及Git对象/config缺失，原因未确认；不在旧目录覆盖修复或撤销其他改动。新副本从指定远端克隆，保留历史并接回RF12代码/记录；后续重要阶段在此audit/commit/push origin Q1和独立核远端，再镜像Mac主根与25386。AP03已完成883训练/原30验证，16/4096零optimizer与原生接触/活跃训练状态保护通过，正式开训状态仍须看最新RF12 README及现场。

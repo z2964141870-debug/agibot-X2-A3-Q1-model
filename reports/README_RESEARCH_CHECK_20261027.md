@@ -1,6 +1,6 @@
 # 每日研究检查 · 2026-10-27
 
-记录日期：北京时间2026-10-27。阶段：research-watch-20261027。状态：**来源检查和五项简报完成，GitHub发布待核验**。
+记录日期：北京时间2026-10-27。阶段：research-watch-20261027。状态：**来源检查和五项简报完成，main/Q1文档已推送并独立核验**。
 
 ## 目标与范围
 
@@ -35,7 +35,7 @@ python3 logs/research_watch/2026-10-27/validate_records.py
 
 ## 保存与同步状态
 
-本地文档/状态与来源小清单已保存，原始缓存LOCAL_ONLY，无网盘备份声明。main维护完整研究历史/122条去重；Q1仅接收本期、候选增量、检查清单和研究指针，其旧中央去重不冒充完整历史。发布仅暂存本次显式文件，经diff及实际audit_git_payload.py检查后普通推送，再独立读取远端ref和固定内容核验。最终状态见[同步回执](../data/manifests/research_watch_sync_20261027.json)；未成功前不声明同步完成。
+文档已普通推送：main为d018dd21cb918e8eee4b65e8d18eea59df15a805，Q1为af1f19df66771221218f174ee85560bbef161861。09:37:36独立核验两个远端ref和11份固定内容的大小、Git blob与SHA256，全部一致。main九文件453270字节、Q1八文件209909字节，通过实际audit_git_payload.py及diff检查；工程入口、历史候选和原113条去重保留。Q1旧中央状态保持，稀疏未物化路径按Git对象/diff验证，未新建或覆盖。原始缓存LOCAL_ONLY，无网盘备份声明。详见[同步回执](../data/manifests/research_watch_sync_20261027.json)；回执和本文收尾由后续普通提交保存，其自身提交号以Git历史和本地receipt_publication_verification.json核验日志识别，不循环嵌入。
 
 ## 下一步与恢复入口
 

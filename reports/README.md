@@ -1,5 +1,9 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-28 01:49：[RF12桥接恢复](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)完成；原controller/worker、boot/GPU一致，三状态RUNNING，A阶段2613.658实训秒/606轮，1123冻结来源大小SHA全相同，资源正常且未重启训练。首次3500秒物理评测尚待，继续原监督；下方断线/缺认证均为历史。[现场收据](../data/manifests/supermimic_q1_RF12_connection_unknown_20261028.json)。
+
+2026-10-28 01:44：[RF12连接恢复尝试](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)已按用户新指示执行；Windows可达但桥接账户免密认证被拒绝，缺该账户登录信息，现场仍UNKNOWN。训练/冻结来源/预算未改。前次中断记录9b6c658已发布并独立核远端、Mac双副本大小SHA相同，服务器镜像待恢复。
+
 2026-10-28 01:36：[RF12监督连接中断](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)。18873无监听，容器与Windows桥控制socket均不存在，现场UNKNOWN；最后01:25快照为A阶段1237.220实训秒/287轮且资源正常，不推断现在停训或继续。一次有界核查后不重启训练、不改冻结来源/预算，恢复后先核现场；25386记录同步待连接恢复。[收据](../data/manifests/supermimic_q1_RF12_connection_unknown_20261028.json)。
 
 2026-10-28 01:07：[RF12真实仿真PPO与分阶段训练](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)已启动4096环境，冻结684548c发布/独立核远端、22文件三端匹配；175.025实训秒/42轮，已完成critic预热并开始actor，三状态/1123来源/资源正常，尚无新效果结论。约1至3实训小时按固定三重复物理门决定额外5小时，总<=8小时，原监督已ACTIVE。AP03的883训练/原30验证及AMASS179.48GB原始motion清理完成，未恢复旧实验或agent。[启动收据](../data/manifests/supermimic_q1_RF12_launch_observed_20261028.json)。

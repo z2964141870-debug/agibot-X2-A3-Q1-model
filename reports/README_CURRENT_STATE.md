@@ -1,5 +1,9 @@
 # YUANQI 当前状态与下一步
 
+2026-10-28 01:49，北京时间：**Windows桥及25386连接已恢复，RF12现场重新核实为RUNNING。** 原controller49990/start_ticks3416720、worker49995/start_ticks3416816及boot/GPU均匹配；01:48:33实训2613.657933秒/606轮/59572224转移，critic12120/actor11920，A阶段alpha0/新增采样0，status/guard/run均RUNNING且时钟ACTIVE。GPU9811MiB/57度、共享约10.33GB/OOM0、盘余928.11GB；01:49:21重核1123冻结来源286568437字节全部大小/SHA相同。未重启训练或改预算，首次3500秒三重复物理结果尚未生成。继续原每10分钟监督；下方UNKNOWN/认证阻塞为恢复前历史。[恢复现场](../data/manifests/supermimic_q1_RF12_connection_unknown_20261028.json)。
+
+01:44追加：用户已授权重建通往同一25386的Windows桥；Windows主机可达，但`yu@100.65.183.91`的BatchMode认证被拒绝，未建立转发，亦无可复用SSH会话。当前缺Windows桥接账户的登录信息，已单独询问；用户提供的容器root密码仅留当前交互，不落盘或Git。RF12现场仍UNKNOWN，未重启或修改训练。中断记录`9b6c6586f9a79151805663af79f8888f291bc339`已push并独立核远端，4文件125297字节在持久副本/Mac主根大小SHA相同；25386镜像仍待恢复。
+
 2026-10-28 01:36，北京时间：RF12本轮监督连接中断，现场状态为 **UNKNOWN**。本机18873拒绝连接且无监听，容器与Windows桥控制socket均不存在；已做一次有界核查，未重启/重连训练、未改冻结来源或预算。最后成功快照为01:25:26：三状态RUNNING，A阶段1237.219683实训秒/287轮/28213248转移，critic5740/actor5540，OOM0、GPU9811MiB/55度。旧快照不能证明现在仍在运行或已停止。连接恢复后先核boot/PID/start_ticks、status/guard/clock与物理评测，当前无法同步25386小记录，监督保持原频率。[连接收据](../data/manifests/supermimic_q1_RF12_connection_unknown_20261028.json)。
 
 2026-10-28 01:07，北京时间。[RF12独立PPO分阶段训练](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)已启动：4096环境/从RF11初始化；controller49990/start_ticks3416720、worker49995/start_ticks3416816，冻结684548c已发布/独立核远端、22文件三端匹配。三状态RUNNING，175.025实训秒/42轮/4128768转移，critic840/actor640，已通过10轮critic-only；1123冻结来源未变，GPU9811MiB/55度、共享10.29GB/OOM0。约3500/7100/10700实训秒固定三重复评测，整组物理门达标才自动追加最多5小时，总<=8小时；当前未证明效果。既有监督已ACTIVE每10分钟，不恢复旧实验或agent。[启动收据](../data/manifests/supermimic_q1_RF12_launch_observed_20261028.json)。

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-28 01:36，北京时间：RF12本轮监督连接中断，现场状态为 **UNKNOWN**。本机18873拒绝连接且无监听，容器与Windows桥控制socket均不存在；已做一次有界核查，未重启/重连训练、未改冻结来源或预算。最后成功快照为01:25:26：三状态RUNNING，A阶段1237.219683实训秒/287轮/28213248转移，critic5740/actor5540，OOM0、GPU9811MiB/55度。旧快照不能证明现在仍在运行或已停止。连接恢复后先核boot/PID/start_ticks、status/guard/clock与物理评测，当前无法同步25386小记录，监督保持原频率。[连接收据](../data/manifests/supermimic_q1_RF12_connection_unknown_20261028.json)。
+
 2026-10-28 01:07，北京时间。[RF12独立PPO分阶段训练](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)已启动：4096环境/从RF11初始化；controller49990/start_ticks3416720、worker49995/start_ticks3416816，冻结684548c已发布/独立核远端、22文件三端匹配。三状态RUNNING，175.025实训秒/42轮/4128768转移，critic840/actor640，已通过10轮critic-only；1123冻结来源未变，GPU9811MiB/55度、共享10.29GB/OOM0。约3500/7100/10700实训秒固定三重复评测，整组物理门达标才自动追加最多5小时，总<=8小时；当前未证明效果。既有监督已ACTIVE每10分钟，不恢复旧实验或agent。[启动收据](../data/manifests/supermimic_q1_RF12_launch_observed_20261028.json)。
 
 资源清理、AP03的883训练/原30验证、16/4096零optimizer与原生接触/活跃训练状态/RNG保护已完成；新增583动作只在C阶段渐进启用。六格/固定54秒视频已接入每阶段与最终交付，正式新效果媒体尚待检查点。

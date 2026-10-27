@@ -1,0 +1,267 @@
+{
+  "status": "RF11_LAUNCHED_AND_OBSERVED_RUNNING",
+  "observed_utc": "2026-10-27T12:57:40Z",
+  "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+  "pipeline": {
+    "status": "RUNNING",
+    "phase": "train",
+    "started_utc": "2026-10-27T12:56:29.685890+00:00",
+    "process": {
+      "pid": 17370,
+      "start_ticks": 1943459,
+      "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+    },
+    "code_commit": "7a3567cd5b89e5cd6282a83aacb61f19590b0434",
+    "error": null
+  },
+  "pipeline_mtime": 1793105789.6813374,
+  "guard": {
+    "status": "RUNNING",
+    "command": [
+      "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python",
+      "-u",
+      "/opt/data/private/ZHY/script/supermimic_q1_hp/activate.py",
+      "-u",
+      "/opt/data/private/ZHY/script/supermimic_q1_hp/worker.py",
+      "--mode",
+      "train",
+      "--runtime",
+      "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+      "--library",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json",
+      "--output",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run",
+      "--code-commit",
+      "7a3567cd5b89e5cd6282a83aacb61f19590b0434",
+      "--training-seconds",
+      "3500.0",
+      "--maximum-training-seconds",
+      "3600.0"
+    ],
+    "cwd": "/opt/data/private/ZHY",
+    "started_utc": "2026-10-27T12:56:29.800219+00:00",
+    "controller_pid": 17370,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "experiment": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027",
+        "unique_allocated_bytes": 68902912,
+        "unique_logical_bytes": 68867262,
+        "unique_inodes": 15,
+        "symlinks_not_followed": 0
+      },
+      "source": {
+        "root": "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+        "unique_allocated_bytes": 1368064,
+        "unique_logical_bytes": 1059552,
+        "unique_inodes": 154,
+        "symlinks_not_followed": 0
+      },
+      "free_bytes": {
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027": 1637940199424,
+        "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027": 1637940199424
+      },
+      "shared_memory": {
+        "shared_bytes": 7203639296,
+        "oom_kill": 0,
+        "maximum_bytes": 32212254720
+      },
+      "gpu": {
+        "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+        "memory_mib": 9897,
+        "temperature_c": 47
+      },
+      "training_elapsed_seconds": 53.813149924000754
+    },
+    "error": null,
+    "worker_pid": 17373,
+    "worker_group": 17373
+  },
+  "guard_mtime": 1793105858.1759212,
+  "run": {
+    "status": "RUNNING",
+    "updated_utc": "2026-10-27T12:57:40.179333+00:00",
+    "process": {
+      "pid": 17373,
+      "start_ticks": 1943487,
+      "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+    },
+    "iteration": 58,
+    "sim_steps": 864256,
+    "wm_updates": 580,
+    "actor_updates": 0,
+    "training_seconds": 55.815204298000026
+  },
+  "run_mtime": 1793105860.17588,
+  "contract": {
+    "status": "Q1_REAL_GPU_OBSERVATION_GOAL_TRANSITION_CONTRACT_PASSED",
+    "num_envs": 4096,
+    "obs_dim": 80,
+    "goal_dim": 590,
+    "state_dim": 57,
+    "context_dim": 26,
+    "root_feedback": "heading XY and full relative orientation in observation history",
+    "current_joint_error": false,
+    "future_frames": "current+1 through current+10; full relative root position/rotation",
+    "reward_frame": "action result compared against f+1",
+    "physical_control_dt": 0.02
+  },
+  "contract_mtime": 1793105801.177099,
+  "clock": {
+    "started_utc": "2026-10-27T12:56:44.364438+00:00",
+    "started_monotonic": 19449.373372291,
+    "process": {
+      "pid": 17373,
+      "start_ticks": 1943487,
+      "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+    },
+    "maximum_seconds": 3600,
+    "soft_stop_seconds": 3500
+  },
+  "clock_mtime": 1793105804.361033,
+  "registered_processes": [
+    {
+      "expected": {
+        "pid": 17370,
+        "start_ticks": 1943459,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "present": true,
+      "state": "S",
+      "start_ticks": 1943459,
+      "command": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_hp/run_trial.py --mode train --runtime /opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027 --expected-oom-kill 0 --code-commit 7a3567cd5b89e5cd6282a83aacb61f19590b0434 --training-seconds 3500 --maximum-training-seconds 3600 --external-training-stop-seconds 3540 --video-suite /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF09_SOMA300_HP_E4096_T05H_20261027/evaluation/video_suite.json --baseline-evaluation /opt/data/private/ZHY/data/supermimic_for_q1/MG05_RF09_CKPT3500_BASELINE_20261027 --baseline-label RF09_ckpt3500_3424.267689s --comparison-name RF09_1H_RF11_comparison.json --trial-note RF09_recipe_with_only_legal_transition_bin_fix --controller "
+    },
+    {
+      "expected": {
+        "pid": 17373,
+        "start_ticks": 1943487,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "present": true,
+      "state": "R",
+      "start_ticks": 1943487,
+      "command": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_hp/worker.py --mode train --runtime /opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run --code-commit 7a3567cd5b89e5cd6282a83aacb61f19590b0434 --training-seconds 3500.0 --maximum-training-seconds 3600.0 "
+    }
+  ],
+  "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 9897 MiB, 47, 31 %",
+  "disk_available_bytes": 1637940195328,
+  "shared_memory_bytes": 7208988672,
+  "oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+  "recent_training_evidence": [
+    {
+      "step": 57,
+      "training_seconds": 54.736421385998256,
+      "sim_steps": 843776,
+      "wm_updates": 570,
+      "actor_updates": 0,
+      "completed_episodes": 258,
+      "hard_terminations": 226,
+      "normalized_return_sum": 113.9414176940918,
+      "length_steps_sum": 9237,
+      "reward_sum": 359.63124084472656,
+      "transitions": 8192,
+      "reward_mean": 0.043900297954678535,
+      "wm_err8": 0.47655731439590454,
+      "imag_survival_H": null
+    },
+    {
+      "step": 58,
+      "training_seconds": 55.53766027800157,
+      "sim_steps": 856064,
+      "wm_updates": 580,
+      "actor_updates": 0,
+      "completed_episodes": 372,
+      "hard_terminations": 315,
+      "normalized_return_sum": 164.4686393737793,
+      "length_steps_sum": 12676,
+      "reward_sum": 542.5597991943359,
+      "transitions": 12288,
+      "reward_mean": 0.044153629491726555,
+      "wm_err8": 0.4118187427520752,
+      "imag_survival_H": null
+    }
+  ],
+  "independent_remote_commit": "7a3567cd5b89e5cd6282a83aacb61f19590b0434",
+  "deployment": {
+    "status": "SIZE_SHA_MATCHED",
+    "files": [
+      {
+        "path": "AGENTS.md",
+        "bytes": 24997,
+        "sha256": "2ceeb59b736d9f022a44b717ef61d7e027dcb4aa6585eb8de63af56ea4cfabf4"
+      },
+      {
+        "path": "reports/README.md",
+        "bytes": 99283,
+        "sha256": "343c8ec281a84b8dc3e610288725bd5aa5a4cef75aea6f856d2bf1e6433f43be"
+      },
+      {
+        "path": "reports/README_CURRENT_STATE.md",
+        "bytes": 5572,
+        "sha256": "af7fbb88a71f89974ac2ac1ea6af56c95e0669fbe1a2e541ca4a2ad2f867a7cd"
+      },
+      {
+        "path": "reports/README_SUPERMIMIC_Q1_RF11_SAMPLERONLY_20261027.md",
+        "bytes": 5840,
+        "sha256": "184fb9d01efdcd38b61040c387ef77423ff730a85a1e05a6b605b69fe2591050"
+      },
+      {
+        "path": "data/manifests/supermimic_q1_MG05_RF10_publish_sync_20261027.json",
+        "bytes": 4836,
+        "sha256": "2c9159dece99cb516d6ab37a7194181fa84b4e09a348cd128997cdfb12793158"
+      },
+      {
+        "path": "data/manifests/supermimic_q1_RF11_C02_candidate_source_20261027.json",
+        "bytes": 2796,
+        "sha256": "6171882ff151784675d1db886ba90e09129572dc93ddc8cce14ca0dd2bbc5fd8"
+      },
+      {
+        "path": "data/manifests/supermimic_q1_RF11_C02_cpu_contract_20261027.json",
+        "bytes": 2264,
+        "sha256": "1e21175660328d3d7ab0e0716fa97050b6f0693a43e18dde7c8960ab87a993b6"
+      },
+      {
+        "path": "data/manifests/supermimic_q1_RF11_C02_smoke_contract_20261027.json",
+        "bytes": 462,
+        "sha256": "df36fec4318b473ca256fd83abb44ae2b0f184e2852ab3c611d588dc0ed99159"
+      },
+      {
+        "path": "data/manifests/supermimic_q1_RF11_C02_smoke_receipt_20261027.json",
+        "bytes": 1065,
+        "sha256": "021063cb1f7941debd61830ad3f9ce6a7308df904a2744df44c6e01d493064df"
+      },
+      {
+        "path": "script/supermimic_q1_hp/build_tracking_candidate.py",
+        "bytes": 6573,
+        "sha256": "2bc6a0594b3165fa2ad0e780e1e28de5605d67c2926c2440b43932aa659916c8"
+      },
+      {
+        "path": "script/supermimic_q1_hp/tracking_mdp.py",
+        "bytes": 3694,
+        "sha256": "a09c355940019d9e674ab41a8ee4325d370d8ad88f579e90c940e1ef52bb08a9"
+      },
+      {
+        "path": "script/supermimic_q1_hp/tracking_motion.py",
+        "bytes": 625,
+        "sha256": "ea5fba0cb235796365831a4aecab7ea1668e4a92b742d356271177e1daaadef7"
+      },
+      {
+        "path": "script/supermimic_q1_hp/transition_bins.py",
+        "bytes": 1356,
+        "sha256": "73d381f309e27a63e40efcb66b16a055b4ed8cc44f5f7acbaf3795670b11b720"
+      },
+      {
+        "path": "script/supermimic_q1_hp/run_trial.py",
+        "bytes": 12331,
+        "sha256": "9f743f0b91525204202f106b3c42a569bdf8c303f82f569108af20face5987ca"
+      },
+      {
+        "path": "script/supermimic_q1_hp/worker.py",
+        "bytes": 15188,
+        "sha256": "d9adb481f945d7cd66ede3877a6dd1d08250625e8751ff221aee40b4acf46810"
+      }
+    ]
+  },
+  "mac_stage_mirror": "9 stage files copied",
+  "limits": "Launch/contract observation only; no efficacy claim. No retries or parallel training."
+}

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+20:57:40：[RF11实际RUNNING](README_SUPERMIMIC_Q1_RF11_SAMPLERONLY_20261027.md)，20:56:44开始实际训练，最多3600秒。4096原生转移/obs80通过，58轮/WM580/actor0正常预热，15项部署SHA与冻结`7a3567cd5b89e5cd6282a83aacb61f19590b0434`一致；controller17370/start1943459、worker17373/start1943487，boot见下，须现场核身份。GPU9897MiB/47°C、共享7.21GB/OOM0、余盘1.638TB。RF10已退出，运行中不热改；本次仅一轮，不重试/延时。下方“待启动”是历史。
+
 2026-10-27最新授权：[RF11独立对照](README_SUPERMIMIC_Q1_RF11_SAMPLERONLY_20261027.md)：用户要求针对RF10训崩再改进训练一小时。恢复RF09观测/reward，仅保留已证尾bin合法转移修复；独立4096环境从零，≤3600秒。C02 CPU五组/原生16环境smoke通过，待发布启动；不自动重启RF10。下方“无下一轮授权”是此前状态，当前授权仅此RF11一次。MG05已完成工具结算与22文件三端核验，RF10负面结果保持。
 
 2026-10-27，北京时间。最新入口25386已恢复，原共享文件可见，无需迁移大数据。[MG05](README_SUPERMIMIC_Q1_MG05_DIAGNOSE_TRACKING_20261027.md)诊断/候选/唯一短训练/评测与本地交付均已完成；[RF10结果](README_SUPERMIMIC_Q1_RF10_RESULTS_20261027.md)明显退步，停止采用C01，不自动续训或启动第二轮。工具最终结算以get_goal为准。下述信息覆盖历史paused、等待服务器和RUNNING记录，历史过程留阶段README/Git。

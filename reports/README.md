@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-27 20:57：[RF11已开始](README_SUPERMIMIC_Q1_RF11_SAMPLERONLY_20261027.md)，20:56:44起实际训练，4096环境/恢复RF09配方并仅修尾bin，obs80原生转移通过。冻结7a3567c已发布并核部署，58轮/WM580，最多3600秒；效果与六格/54秒MP4待终后，不用训练日志替代结果。
+
 2026-10-27：[RF11计划与预检](README_SUPERMIMIC_Q1_RF11_SAMPLERONLY_20261027.md)。用户新授权再训练一小时；恢复RF09原观测/奖励，仅保留尾bin合法转移修复，4096环境从零/≤3600秒。CPU五组和原生16env转移通过，正式训练待发布启动；RF10训崩的唯一因果未隔离，不保证修复即改善。
 
 2026-10-27最终：[RF10结果与交付](README_SUPERMIMIC_Q1_RF10_RESULTS_20261027.md)、[MG05完成审计](../data/manifests/supermimic_q1_MG05_completion_audit_20261027.json)。25386已连通；唯一4096环境试验实际3500.993秒，全pipeline COMPLETED，验证29/30失败（RF09近一小时2/30），两次复评仍退步，已确认剧烈动作指令振荡但组合的唯一根因未隔离。六格图/初末各54秒多类MP4及30小文件大小SHA全部交付，不追加训练。最新恢复入口集中在[CURRENT_STATE](README_CURRENT_STATE.md)，下方RUNNING/待评测均为历史。

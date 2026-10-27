@@ -1,5 +1,9 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-27最终：[RF10结果与交付](README_SUPERMIMIC_Q1_RF10_RESULTS_20261027.md)、[MG05完成审计](../data/manifests/supermimic_q1_MG05_completion_audit_20261027.json)。25386已连通；唯一4096环境试验实际3500.993秒，全pipeline COMPLETED，验证29/30失败（RF09近一小时2/30），两次复评仍退步，已确认剧烈动作指令振荡但组合的唯一根因未隔离。六格图/初末各54秒多类MP4及30小文件大小SHA全部交付，不追加训练。最新恢复入口集中在[CURRENT_STATE](README_CURRENT_STATE.md)，下方RUNNING/待评测均为历史。
+
+2026-10-27 19:56：[RF10训练完成且明显退步](README_SUPERMIMIC_Q1_RF10_C01_20261027.md)，3500.993秒/3284学习轮，36项保存审计全部通过。330片最终验证29/30提前终止、完成42.88%，旧一小时基线2/30/95.70%；不追加训练，不用早倒截断造成的上肢均误差下降宣称改善。初末视频/六格/共同前缀与动作罚项、原生方向复核进行中。
+
 2026-10-27 18:55：[RF10实际启动](README_SUPERMIMIC_Q1_RF10_C01_20261027.md)，4096环境/C01/同300+30参考/从零；18:47:19进入训练，冻结83dcc76已发布独立核SHA、21文件三端相同。609轮/WM6090/actor109及真实进程/资源正常，≤3600秒预算不变；初末效果/六格/长MP4未完成，不以训练日志宣称改善。[启动现场](../data/manifests/supermimic_q1_RF10_launch_observed_20261027.json)。
 
 2026-10-27：[C01完整profile与RF09近一小时基线](README_SUPERMIMIC_Q1_MG05_NATIVE_CANDIDATE_20261027.md)通过，4096环境/102维转移、WM/actor/H32/critic有限，峰值分配6.35GB、worker正常回收；基线ckpt3500内部3424.267689秒，330片评测完成。[RF10计划](README_SUPERMIMIC_Q1_RF10_C01_20261027.md)待源码发布/远端核验后独立从零一次，≤3600秒；正式训练尚未启动。

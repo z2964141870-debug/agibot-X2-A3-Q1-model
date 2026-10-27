@@ -1,6 +1,12 @@
 # RF10：C01关节反馈与tracking一小时验证
 
-记录日期：2026-10-27，北京时间。阶段：RUNNING，18:47:01 controller启动、18:47:19实际训练开始。属于[MG05](README_SUPERMIMIC_Q1_MG05_DIAGNOSE_TRACKING_20261027.md)唯一正式试验，不续训RF09或profile，不自动重试/延时，不开agent。
+2026-10-27最终：[结果与本地交付](README_SUPERMIMIC_Q1_RF10_RESULTS_20261027.md)全部完成。19:59:24全pipeline COMPLETED，30文件大小/SHA和12媒体检查通过，初末54秒MP4/六格PNG/PDF/CSV均在Mac。共同前缀/新旧tracking头/两次复评及原生动作方向已完成，C01明显退步；验证29/30失败，PD目标剧烈振荡。无续训/第二轮；下方RUNNING、渲染及待终后审计均为当时历史，最新状态以最终结果和完成收据为准。
+
+2026-10-27 19:56更新：实际训练已于19:45:41正常完成，3500.992597437秒/3284学习轮/33890304转移、WM32840/actor2784，worker退出0并reap。36项训练保存/算术/张量/冻结来源检查全部通过；167项来源和330参考未变。[receipt](../data/manifests/supermimic_q1_RF10_training_receipt_20261027.json)/[36项审计](../data/manifests/supermimic_q1_RF10_training_audit_20261027.json)。
+
+330片原生初末量化已保存，当前pipeline处于evaluation视频渲染，尚未全COMPLETED。最终训练/验证提前终止271/300、29/30，平均完成46.02%/42.88%、根XY RMSE0.7380/0.6602m、上肢0.8714/0.8183rad；一小时RF09基线54/300、2/30，完成93.48%/95.70%。全前缀上肢误差受早倒截断影响，不能据0.938到0.818宣称上肢改善。候选整体明显退步；后期采集reward_mean约-0.66至-0.72，动作/罚项和模型方向进一步核查中。不追加训练或修改旧终态。
+
+记录日期：2026-10-27，北京时间。阶段：COMPLETED，性能退步。18:47:01 controller启动、18:47:19实际训练开始。属于[MG05](README_SUPERMIMIC_Q1_MG05_DIAGNOSE_TRACKING_20261027.md)唯一正式试验，不续训RF09或profile，不自动重试/延时，不开agent。
 
 冻结提交`83dcc76bf1cd02e4928493e17b4522cb9d5ee5a5`已push Q1并独立ls-remote匹配；21文件936839字节阶段payload通过，Mac/权威checkout/服务器SHA逐项相同。controller6852/start_ticks1166688、worker6855/start_ticks1166718，boot见下；18:55:37实际/proc身份匹配，三状态RUNNING，609学习轮/6508544转移、WM6090/actor109、实训498.182552秒。GPU14689MiB/53度、共享6351872000字节、OOM0、余盘1647293190144字节、本轮约283MB。[启动现场](../data/manifests/supermimic_q1_RF10_launch_observed_20261027.json)。这些是历史观测，恢复需重新核身份/进度，不按PID单独判存活。
 

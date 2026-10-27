@@ -74,10 +74,17 @@ def check_contract(env):
     state = unflatten_state(info["s"])
     obs = mdp.obs(state, info["a_prev"], info["xi"], info["f"])
     goal = mdp.goal(info["f"], 10)
-    assert obs.shape == (env.num_envs, 80) and goal.shape == (env.num_envs, 590)
+    spec = mdp.policy_input_spec
+    assert spec["observation_mode"] == "root_xy"
+    joint_error = "reference_minus_robot_joint_position" in spec["observation_fields"]
+    expected_obs_dim = 102 if joint_error else 80
+    assert obs.shape == (env.num_envs, expected_obs_dim) and goal.shape == (env.num_envs, 590)
+    assert spec["obs_dim"] == expected_obs_dim
     assert info["xi"].shape == (env.num_envs, 26) and info["s"].shape == (env.num_envs, 57)
     expected = (yaw_mat(state[1]).transpose(-1,-2) @ (mdp.motion.root_p[info["f"]] - state[0]).unsqueeze(-1)).squeeze(-1)[..., :2]
-    torch.testing.assert_close(obs[..., -2:], expected)
+    torch.testing.assert_close(obs[..., 78:80], expected)
+    if joint_error:
+        torch.testing.assert_close(obs[..., 80:102], mdp.motion.q[info["f"]]-state[4])
     future = mdp.motion.future_frames(info["f"], 10)
     end = mdp.motion.clip_end[mdp.motion.clip_id[info["f"]]]
     torch.testing.assert_close(future[:, 0], torch.minimum(info["f"]+1, end))
@@ -91,7 +98,7 @@ def check_contract(env):
     torch.testing.assert_close(transition["r"], expected_reward, atol=2e-6, rtol=2e-5)
     if not all(torch.isfinite(v).all() for v in transition.values()):
         raise ValueError("Nonfinite physical transition")
-    return {"status": "Q1_REAL_GPU_OBSERVATION_GOAL_TRANSITION_CONTRACT_PASSED", "num_envs": env.num_envs, "obs_dim": 80, "goal_dim": 590, "state_dim": 57, "context_dim": 26, "root_feedback": "heading XY and full relative orientation in observation history", "future_frames": "current+1 through current+10; full relative root position/rotation", "reward_frame": "action result compared against f+1", "physical_control_dt": .02}
+    return {"status": "Q1_REAL_GPU_OBSERVATION_GOAL_TRANSITION_CONTRACT_PASSED", "num_envs": env.num_envs, "obs_dim": expected_obs_dim, "goal_dim": 590, "state_dim": 57, "context_dim": 26, "root_feedback": "heading XY and full relative orientation in observation history", "current_joint_error": joint_error, "future_frames": "current+1 through current+10; full relative root position/rotation", "reward_frame": "action result compared against f+1", "physical_control_dt": .02}
 
 
 def learner_class():

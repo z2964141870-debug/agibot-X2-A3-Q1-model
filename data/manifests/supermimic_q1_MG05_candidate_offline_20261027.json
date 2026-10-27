@@ -1,0 +1,108 @@
+{
+  "status": "OFFLINE_CANDIDATE_SOURCE_CHECKS_PASSED_NOT_PHYSICALLY_VALIDATED",
+  "date": "2026-10-27",
+  "base_commit": "7cfae31a054acbe4b29bdea7cab58196cde61b06",
+  "pinned_upstream": "310244b73e45775744a75b789eb25a6c9c5a81c9",
+  "goal_tool_status": "paused",
+  "user_direction": "Server stopped; wait for new SSH, continue feasible offline work. No old-port probing or training.",
+  "tests": {
+    "command": "python3 -m unittest -v test_tracking_candidate.py test_transition_bins.py",
+    "exit_code": 0,
+    "passed": 16,
+    "names": [
+      "test_changed_upstream_fails_without_creating_destination (test_tracking_candidate.CandidateBuilderTests) ... ok",
+      "test_configuration_and_joint_dimensions_checked_before_copy (test_tracking_candidate.CandidateBuilderTests) ... ok",
+      "test_exact_path_components_only_relocated (test_tracking_candidate.CandidateBuilderTests) ... ok",
+      "test_existing_or_nested_destination_refused (test_tracking_candidate.CandidateBuilderTests) ... ok",
+      "test_independent_build_preserves_source_learner_assets_and_licenses (test_tracking_candidate.CandidateBuilderTests) ... ok",
+      "test_sampler_only_keeps_observation_and_reward_options_disabled (test_tracking_candidate.CandidateBuilderTests) ... ok",
+      "test_source_directory_alias_relocated_to_independent_runtime (test_tracking_candidate.CandidateBuilderTests) ... ok",
+      "test_wrong_source_commit_fails_without_creating_destination (test_tracking_candidate.CandidateBuilderTests) ... ok",
+      "test_ambiguous_or_repeated_transformation_rejected (test_tracking_candidate.RewardTransformTests) ... ok",
+      "test_only_adds_two_existing_error_fields (test_tracking_candidate.RewardTransformTests) ... ok",
+      "test_policy_schema_extends_without_mutating_base (test_tracking_candidate.RewardTransformTests) ... ok",
+      "test_reward_and_original_terms_unchanged (test_tracking_candidate.RewardTransformTests) ... ok",
+      "test_all_lengths_through_eight_bins (test_transition_bins.TransitionBinTests) ... ok",
+      "test_exact_bin_and_one_frame_tail (test_transition_bins.TransitionBinTests) ... ok",
+      "test_invalid_transition_inputs (test_transition_bins.TransitionBinTests) ... ok",
+      "test_other_bin_widths (test_transition_bins.TransitionBinTests) ... ok"
+    ],
+    "actual_pinned_q1_mdp_ast": "PASS: only two diagnostic dictionary fields added; formulas unchanged",
+    "candidate_python_compile_count": 6,
+    "cli_help": [
+      "build_tracking_candidate.py",
+      "verify_tracking_candidate.py"
+    ],
+    "earlier_failure": "Directory-alias path relocation failed; corrected and covered by a symlink regression test. Final 16 tests passed."
+  },
+  "files": [
+    {
+      "path": "script/supermimic_q1_hp/build_tracking_candidate.py",
+      "bytes": 6573,
+      "sha256": "2bc6a0594b3165fa2ad0e780e1e28de5605d67c2926c2440b43932aa659916c8"
+    },
+    {
+      "path": "script/supermimic_q1_hp/tracking_mdp.py",
+      "bytes": 3694,
+      "sha256": "a09c355940019d9e674ab41a8ee4325d370d8ad88f579e90c940e1ef52bb08a9"
+    },
+    {
+      "path": "script/supermimic_q1_hp/tracking_motion.py",
+      "bytes": 625,
+      "sha256": "ea5fba0cb235796365831a4aecab7ea1668e4a92b742d356271177e1daaadef7"
+    },
+    {
+      "path": "script/supermimic_q1_hp/verify_tracking_candidate.py",
+      "bytes": 7910,
+      "sha256": "46ecb676462cd94ab0cabc48b0459563c6627631975a08ac681217e7f3fdf50c"
+    },
+    {
+      "path": "script/supermimic_q1_hp/test_tracking_candidate.py",
+      "bytes": 9147,
+      "sha256": "8f73eee1e17ee40f264d738bf80cba59b204f3f05de52cee642efb025ebf6db6"
+    },
+    {
+      "path": "script/supermimic_q1_hp/worker.py",
+      "bytes": 15188,
+      "sha256": "d9adb481f945d7cd66ede3877a6dd1d08250625e8751ff221aee40b4acf46810"
+    },
+    {
+      "path": "script/supermimic_q1_hp/transition_bins.py",
+      "bytes": 1356,
+      "sha256": "73d381f309e27a63e40efcb66b16a055b4ed8cc44f5f7acbaf3795670b11b720"
+    },
+    {
+      "path": "script/supermimic_q1_hp/test_transition_bins.py",
+      "bytes": 2186,
+      "sha256": "4f6ad4b8f56fe02242a1d4d49e36611c21e10adbada8dbc78d092db47fb77c29"
+    }
+  ],
+  "candidate": {
+    "source_materialized_runtime": false,
+    "server_deployed": false,
+    "options": [
+      "sampler_only",
+      "joint_tracking"
+    ],
+    "obs_dim_original": 80,
+    "obs_dim_joint_tracking": 102,
+    "goal_dim_unchanged": 590,
+    "original_action_rate_penalty_preserved": true,
+    "controller_reset_and_future_goal_padding_unchanged": true,
+    "source_learner_and_licenses_preserved_in_fixture": true
+  },
+  "pending": [
+    "Actual Q1 candidate runtime materialization and source identity verification",
+    "Torch CPU tensor contracts",
+    "Native command/reset and replay/imagination contracts",
+    "Native backend contact/force/read timing and H32 action-direction evidence",
+    "One independent 4096-environment trial up to 3600 actual training seconds after diagnosis",
+    "Fixed physical comparison, six-panel figures and >=30-second multi-type local MP4 delivery"
+  ],
+  "physics_integration_steps": 0,
+  "optimizer_updates": 0,
+  "policy_inference_calls": 0,
+  "training_started": false,
+  "server_sync": "PENDING_NEW_SSH_USER_CONFIRMED_STOPPED",
+  "limits": "Standard-library fixture/AST checks are not Torch, physical, or training validation; no performance improvement claimed."
+}

@@ -1,6 +1,6 @@
 # MG05：离线信号分析与物理诊断边界
 
-记录日期：2026-10-27，北京时间。BD02：上游与离线分析完成，原生接触复核、方案集成和训练未完成。用户确认25245服务器已停止，等待新入口，期间先做可行的分析；不再连接旧入口、不重启或训练。MG05仍有未完成项，不标完成。
+记录日期：2026-10-27，北京时间。BD02：上游与离线分析完成，候选构建源码和离线检查已准备，原生接触复核、真实runtime契约和训练未完成。用户确认25245服务器已停止，等待新入口，期间先做可行的分析；不再连接旧入口、不重启或训练。MG05仍有未完成项；本次get_goal实际标签为paused，未创建/恢复/结算旧目标。
 
 ## 目标与范围
 
@@ -28,7 +28,7 @@
 
 已用实际Torch CPU、函数AST和330个CSV行数确认：原`ceil(length/50)`在长度`50n+1`时多建零宽尾bin，采样到末帧后奖励读`f+1`跨片。train15/300片、15/1710bin，初始均匀概率0.8772%；validation1/30片、1/173bin。本库异常是跨片，未发现全局数组越界。自适应采样23.24%是人为负回报敏感度情景，不能当作RF09实测比例，旧checkpoint未保存bin回报权重。
 
-本地`script/supermimic_q1_hp/transition_bins.py`只对`[clip_start, clip_end)`合法转移起点建bin；末帧frame_bin归最后合法bin供记账。4测试通过，覆盖长度2至402、50倍数/多一帧、多片及其他bin宽，检验每个合法起点恰好出现一次且`f+1`不跨片。这是**未接入runtime的独立候选逻辑**，仍待真实MotionLib/command reset验证；不宣称训练端已修好，不删除动作或改时长。
+本地`script/supermimic_q1_hp/transition_bins.py`只对`[clip_start, clip_end)`合法转移起点建bin；末帧frame_bin归最后合法bin供记账。4测试通过，覆盖长度2至402、50倍数/多一帧、多片及其他bin宽，检验每个合法起点恰好出现一次且`f+1`不跨片。本次新增`tracking_motion.py`候选overlay接入此逻辑；**服务器实际runtime尚未生成或部署**，仍待真实MotionLib/command reset验证。不宣称训练端已修好，不删除动作或改时长。
 
 ## 独立物理探针的结果与限制
 
@@ -77,6 +77,27 @@ V02原脚本SHA`cb3cde3dbd5846da1e8d2cda8872ae31335038f8d115a5c57550dddc44e730b1
 数学形状例子：等效角误差1rad时，指数reward对误差的斜率绝对值在std0.4/0.8分别0.0241/0.6550；0.5rad时分别1.3101/1.0572。放宽带宽增加大误差区信号，也可能减弱小误差区约束，不是越宽越正确。这里不是把上肢关节RMSE等同身体朝向误差。
 
 不直接抄X2 PD、不默认追加数据/时长、不因H8较弱就无验证改H32。恢复后按原生诊断选择措施，不把所有待证想法一起塞入训练。
+
+## 离线候选实现与检查
+
+新增`script/supermimic_q1_hp/build_tracking_candidate.py`，从已核验的固定HP/Q1 runtime生成独立版本，拒绝覆盖原runtime或现有输出。保留LICENSE/NOTICE、学习器和模型字节；原Q1 MDP另存为`mdp_base.py`，仅用AST在分项字典暴露已经计算的线/角速度误差，原公式AST保持。`tracking_mdp.py`和`tracking_motion.py`分别提供候选观测/奖励和合法起点bin，未修改RF09实际runtime、权重或参考。
+
+构建器保留两个选项：`sampler_only`用于不变观测/奖励的契约对照，`joint_tracking`用于前述候选组合。这是代码/零优化验证选项，不授权第二次正式训练。当前误差观测的噪声与原关节观测使用同一传感器扰动的相反数，避免两字段描述互相矛盾的关节测量。`worker.py`契约可识别80/102维，根XY仍核78:80，新增误差核80:102；真实物理检查尚未运行。
+
+2026-10-27 11:53，本机标准库测试共16项通过：12项构建/AST/语义测试，另4项采样边界测试。包括源文件/学习器/许可证保留、独立目标拒绝、路径重定位、输入配置不被修改、身份错误在创建输出前失败、80到102维schema，以及变换只增加两项诊断字段。第一次测试暴露目录别名重定位缺失，已修复并加入实际软链接回归测试；最终16项全过，没有伪造Torch执行。实际固定X2源码经原Q1Dimensions变换后，再做候选AST变换，删除新增字典字段即可精确恢复原AST；六份候选Python源码编译检查及`git diff --check`通过。
+
+新增`verify_tracking_candidate.py`供恢复后使用已有服务器Python做最多4片的CPU张量契约：参考/goal不变、合法bin、批量与历史噪声一致性、观测导数、奖励分解/最大值/关节项方向、旧checkpoint输入schema拒绝。当前仅其CLI和语法通过，**实际Torch契约尚未运行**；即使之后CPU契约通过，也不能替代原生command/reset、replay/imagine闭环、真实接触和性能验证。本机不安装Torch/MuJoCo大依赖。
+
+复现本机已完成检查：
+
+```sh
+cd script/supermimic_q1_hp
+python3 -m unittest -v test_tracking_candidate.py test_transition_bins.py
+python3 build_tracking_candidate.py --help
+python3 verify_tracking_candidate.py --help
+```
+
+小收据见[候选离线验证](../data/manifests/supermimic_q1_MG05_candidate_offline_20261027.json)。这些测试仅支持候选可以独立构建且部分源码契约正确，不支持“跟踪已经改善”或“腿部原因已经查清”。
 
 ## 对照与恢复顺序
 

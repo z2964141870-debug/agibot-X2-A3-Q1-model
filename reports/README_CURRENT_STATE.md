@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-27最新授权：[RF11独立对照](README_SUPERMIMIC_Q1_RF11_SAMPLERONLY_20261027.md)：用户要求针对RF10训崩再改进训练一小时。恢复RF09观测/reward，仅保留已证尾bin合法转移修复；独立4096环境从零，≤3600秒。C02 CPU五组/原生16环境smoke通过，待发布启动；不自动重启RF10。下方“无下一轮授权”是此前状态，当前授权仅此RF11一次。MG05已完成工具结算与22文件三端核验，RF10负面结果保持。
+
 2026-10-27，北京时间。最新入口25386已恢复，原共享文件可见，无需迁移大数据。[MG05](README_SUPERMIMIC_Q1_MG05_DIAGNOSE_TRACKING_20261027.md)诊断/候选/唯一短训练/评测与本地交付均已完成；[RF10结果](README_SUPERMIMIC_Q1_RF10_RESULTS_20261027.md)明显退步，停止采用C01，不自动续训或启动第二轮。工具最终结算以get_goal为准。下述信息覆盖历史paused、等待服务器和RUNNING记录，历史过程留阶段README/Git。
 
 ## 最新结果

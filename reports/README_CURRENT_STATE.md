@@ -4,6 +4,8 @@
 
 两条普通走参考本身双脚近地85.57%/80.99%，几何比例不能证明真实双足受力；Q1所有关节仍为模型统一推导PD15.79/1.01，非已完成逐关节整定。保持有界诊断，先区分接触/制动、控制与模型方向问题，不再默认加数据/时长。既有[RF09结果](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)、[量化汇总](../data/manifests/supermimic_q1_RF09_results_20261027.json)、[本地交付](../data/manifests/supermimic_q1_RF09_local_delivery_20261027.json)保留；旧RUNNING、待评测和目标active均为历史。
 
+2026-10-27研究：[五项简报](research/2026-10-27/README.md)已保存；Q1当前MotionLib静态存在末尾补帧复用末帧速度的模式，实际影响未测、未归因跌倒。另记SONIC朝向修复、第三方资产和三篇方法边界；无新增训练/仿真或原创假设。完整历史/去重由main维护，工程以Q1最新状态为准；[检查](README_RESEARCH_CHECK_20261027.md)/[同步回执](../data/manifests/research_watch_sync_20261027.json)。
+
 ## 最新实验与结论
 
 RF09仅在用户25252，4096 MuJoCo Warp环境、从零，实际18000.93146751076秒/17895学习轮/183504896转移、WM178950/actor17395。02:20:12开始训练、07:20:14正常结束、07:33:52全pipeline COMPLETED；七阶段guard退出0并reap，全部已登记controller/worker退出。36项训练保存、31项评测算术/六格图核验通过，153冻结来源与330参考保持。V01仅tuple/list序列化比较误报，失败原件保留，V02通过。

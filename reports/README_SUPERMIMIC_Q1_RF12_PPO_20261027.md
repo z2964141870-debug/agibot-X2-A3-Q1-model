@@ -1,12 +1,12 @@
 # RF12 Q1真实仿真PPO与分阶段训练
 
-记录日期：2026-10-27，北京时间。状态：资源索引与AMASS原始动作清理完成，AP03流式选择/PPO实现进行中，尚未启动训练。用户明确要求执行本计划；本次预算例外覆盖RF11结束后的旧限制，不恢复旧实验、不激活agent。
+记录日期：2026-10-27/28，北京时间。状态：资源清理、AP03与PPO实现/零optimizer预检完成，正式训练待发布和现场复核。用户明确要求执行本计划；本次预算例外覆盖RF11结束后的旧限制，不恢复旧实验、不激活agent。
 
 ## 目标与范围
 
 改善实际上肢幅度、骨盆相对腕轨迹与根部跟踪，并保留稳定性。唯一新实验从RF11最终策略初始化，用4096个MuJoCo Warp环境和现有RSL-RL PPO；不以loss、reward或存活单项触发加训。
 
-仅操作用户25386、`/opt/data/private/ZHY`四目录。权威Git为`/tmp/yuanqi-supermimic-q1-20261023`的Q1；Mac只收小记录、图和视频，权重及大轨迹留服务器LOCAL_ONLY。新代码在`script/supermimic_q1_ppo/`，保留RF11所有冻结来源。
+仅操作用户25386、`/opt/data/private/ZHY`四目录。权威Git现为`/Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028`的Q1；Mac只收小记录、图和视频，权重及大轨迹留服务器LOCAL_ONLY。新代码在`script/supermimic_q1_ppo/`，保留RF11所有冻结来源。
 
 ## 阶段与预算
 
@@ -37,7 +37,7 @@
 
 先建立资源索引和AMASS引用/软链接/使用核查，保存删除清单后仅删不用的原始部分，保留转换结果、元数据与必要模型。删除不等于备份。AP03最多1000训练，原300与30验证身份/演员隔离不变，新增优先普通走/上肢；沿用既有重定向，无自定性能门。
 
-研究依据来自SuperMimic、BeyondMimic、RSL-RL官方项目与代码，以及Diffusion Policy、LoRA原论文。当前首先核优化信号与Q1适配；扩散需要相应动作示范，LoRA需要适合的预训练底座，不能由名称推断适用。作者讨论和视频说明只作辅助，X未获得可直接核验原帖，不引用转述作证据。完整来源核验待本阶段研究收据，不把计划中的引用标识冒充本轮已读取内容。
+研究依据来自SuperMimic、BeyondMimic、RSL-RL官方项目/已安装代码，以及Diffusion Policy、LoRA原论文摘要。当前首先核优化信号与Q1适配；扩散需要相应动作示范，LoRA需要适合的预训练底座，不能由名称推断适用。作者讨论和视频说明只作辅助，X未获得可直接核验原帖，不引用转述作证据。见[来源核验收据](../data/manifests/supermimic_q1_RF12_research_20261028.json)；未观看完整视频或完成各论文复现，不将网页作者性能声明套到Q1。
 
 ## 运行条件与交付
 
@@ -53,8 +53,33 @@
 
 2026-10-27 23:39现场：SSH成功，boot`4d859008-4c83-4a6d-814d-cbb9dfe885c9`，GPU`GPU-26028785-9fb9-45af-e614-4cc53af15d08`、15MiB/0%/27度，无HP/PPO训练进程；余盘1430285090816字节。此为时点快照，开训前重核。
 
-RF11最终SHA`6c4de3171bd45359691a63ffe1712729c14fdb2080f8066e4c25632f4bbc5146`，AP02清单SHA`ba9ac284a018cdd40eea5200d2c157b7da7cfdae89e6c820eed2c9748cc83337`。当前尚无RF12训练效果、PPO契约或清理完成结论。
+RF11最终SHA`6c4de3171bd45359691a63ffe1712729c14fdb2080f8066e4c25632f4bbc5146`，AP02清单SHA`ba9ac284a018cdd40eea5200d2c157b7da7cfdae89e6c820eed2c9748cc83337`。当前尚无RF12正式训练效果。
+
+## AP03与PPO实测准备
+
+AP03流式读取既有45.19GB SOMA原包一次，沿用`retarget_soma.process`、4workers/4iterations/root-relative-rest，新增583片无转换错误；原300训练/30验证路径与SHA保持，训练883片/236演员/4714.6秒，验证30片/11演员/159.333秒，演员不相交。类别为walking250/jogging150/turning95/gesture259/dancing79/jumping50。最多1000是上限；原HP选择规则、演员隔离及每演员配额下缺117片，不追加自定质量门或阻止本轮。原料SHA/name与转换SHA去重已核，跨PHUMA/BONES/AMASS的语义动作等价仍未知。[AP03清单](../data/manifests/supermimic_q1_AP03_soma_library_20261028.json)。
+
+16env V01在零optimizer阶段发现BF16不同矩阵批量使不变策略的logprob最大差0.44027；保留失败。独立修为固定4096前向块（尾块补齐），保留同一网络/权重/归一化，概率计算FP32；V02的384转移/96样本反向通过，策略和logprob最大差0。正式4096预检98304转移/24576完整小批量反向通过，4025个人工截断、自然终止、动作单位、f+1奖励、重置历史和真实s1 bootstrap已实际覆盖，0optimizer，CUDA峰分配3.442GB/保留3.626GB，worker正常reap、GPU释放。[16收据](../data/manifests/supermimic_q1_RF12_preflight16_20261028.json)、[4096收据](../data/manifests/supermimic_q1_RF12_preflight4096_20261028.json)。
+
+原生协议V01/V02均通过。V02另外保留16env活跃训练状态，完成384次零学习转移，再独立4env运行固定两走/抬手/一验证片，核训练backend的qpos/qvel/qacc_warmstart/ctrl/time、历史/回合累计和CPU/CUDA RNG未变；接触观察不改仿真状态，f+1连续。4片均完成，抬手腕峰0.253/0.128m仍远低于参考0.534/0.560m、上肢约1.299rad，仅复现瓶颈和核协议，不能当正式30验证基线。[协议收据](../data/manifests/supermimic_q1_RF12_native_protocol_20261028.json)。
+
+9项自动门/预算单元测试通过，缺失/非有限指标不触发加训。RSL-RL使用当前安装实现（元数据3.0.1、实际split actor/critic API），不升级软件；实际Warp加载1.16.0，不按旧包元数据冒称1.14.0。前10个迭代仅critic，随后同一learner开放actor；保存优化器、冻结归一化、RNG、当前配方/累计实训和所有物理三重复轨迹。每阶段保存判据/PNG/PDF/CSV与固定初末MP4，新增媒体失败独立留记录，物理证据先落盘；终后统一交付。无WM/想象更新，标准图两项N/A。
+
+交付smoke用明确标注的两行人工fixture检查六格/CSV的回合归一化与完成回合分母（0.6/0.5），加载真实330参考/8片固定suite，真实EGL渲染240x320非空画面；0新积分/0optimizer。人工fixture不作训练或效果证据，正式54秒媒体尚未制作。汇总见[准备回执](../data/manifests/supermimic_q1_RF12_preparation_20261028.json)。
+
+旧临时权威副本出现数百历史文件及Git对象/config缺失，原因未确认。本阶段未在旧目录覆盖修复，已从指定origin Q1克隆至持久路径，独立核`c3404210b63e103987bd2e907d5ab8aeeb427b1b`并接回本轮新文件；旧来源/无关改动不动。此后提交只在持久副本进行。
+
+## 可复现入口
+
+在服务器唯一根内，现有Python记为`PY`，经`script/supermimic_q1_hp/activate.py`运行；必要时先核`--help`。已通过的预检输出目录不可覆盖重做。正式入口：
+
+```sh
+PY=/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python
+"$PY" script/supermimic_q1_ppo/supervise.py --help
+```
+
+正式命令使用`--mode train --runtime data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027 --library data/supermimic_for_q1/AP03_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --evaluation-library data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --checkpoint data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run/final.pt --video-suite data/supermimic_for_q1/AP02_SOMA_Q1_20261027/demonstration_suite_V02.json`，`--output`用独立RF12新目录，并传已发布40位`--code-commit`、现场expected boot/GPU/OOM及`--detach`。启动前必须再次核现场与输出不存在，禁止覆盖或自动重试。日志在`logs/<RF12根名>_train.log`，controller及delivery另记同名前缀。
 
 ## 同步与下一步
 
-本阶段记录待payload审计/提交/push origin Q1与独立远端核验，完成后镜像Mac/25386并逐大小SHA。先完成资源/AP03与PPO实现、零优化器预检，再冻结并启动本次唯一实验；既有监督`q1-rf08-4096`目前PAUSED，开训后更新为本次范围。独立`supermimichp-x2`与`yuanqi`保持。
+资源准备初次发布`c3404210b63e103987bd2e907d5ab8aeeb427b1b`已独立核远端。当前新增AP03/PPO/实测收据待本阶段payload审计/提交/push origin Q1与独立远端核验，完成后镜像Mac/25386并逐大小SHA。随后复核资源、冻结来源，启动唯一RF12；既有监督`q1-rf08-4096`目前PAUSED，开训后更新为本次范围。独立`supermimichp-x2`与`yuanqi`保持。

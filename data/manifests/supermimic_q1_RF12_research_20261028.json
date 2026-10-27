@@ -1,0 +1,17 @@
+{
+  "status": "PRIMARY_SOURCE_AND_INSTALLED_IMPLEMENTATION_REVIEW",
+  "reviewed_local_date": "2026-10-28",
+  "purpose": "RF12 physical PPO control baseline before optional reward shaping and data expansion",
+  "sources": [
+    {"url": "https://supermimic.github.io/", "level": "Official project text and implementation lineage; not a new paper reproduction", "finding": "Differentiable world-model policy optimization already uses learned policy/model/critic. World model continues updating during training; imagined horizon 32 is not ground-truth physics.", "scope": "Published G1 outcomes and H100 compute claims are not Q1 evidence."},
+    {"url": "https://beyondmimic.github.io/", "level": "Official abstract and project explanation", "finding": "Physical motion tracking precedes distilling selected policies into a guided diffusion policy.", "video_url": "https://youtu.be/RS_MtKVIAzY", "video_level": "Official embedded link identified; full video not watched or independently measured."},
+    {"url": "https://github.com/leggedrobotics/rsl_rl", "level": "Installed primary source API inspected and exercised in zero-optimizer contracts; live raw README request failed connection reset", "finding": "Reuse actual installed PPO/GAE/storage/distribution implementations; adapter supplies pre-reset timeout bootstrap.", "package_metadata_version": "3.0.1", "api": "split actor/critic PPO; fixed GaussianDistribution; RolloutStorage"},
+    {"url": "https://diffusion-policy.cs.columbia.edu/", "level": "Official abstract/project text, RSS2023/IJRR2024 links", "finding": "Conditional action diffusion and receding-horizon action sequences are an additional learning formulation, not evidence that untrained Q1 control becomes reliable."},
+    {"url": "https://arxiv.org/abs/2106.09685", "level": "Original paper abstract", "original_date": "2021-06-17", "updated_date": "2021-10-16", "finding": "LoRA freezes pretrained weights and trains low-rank adaptations; its language-model result does not establish a suitable Q1 pretrained controller."},
+    {"url": "https://github.com/wbc-mjlab/wbc-mjlab/issues/24", "level": "Original author account issue body via GitHub API", "author": "qiayuanl", "original_date": "2026-06-26", "updated_date": "2026-06-28", "finding": "Recommends a clean BeyondMimic task baseline for ablation; reward-design criticism is author opinion and not proof of RF11 failure cause."}
+  ],
+  "X": "No directly verified relevant original post; no claimed X consensus.",
+  "decision": "Test inherited RF11 policy using real-simulation PPO, then limited actual joint/wrist reward and only gate-qualified AP03 sampling.",
+  "not_proven": ["Unique cause of prior upper-body bias", "PPO improvement on Q1", "Benefit of diffusion or LoRA for this controller"],
+  "new_optimizer_updates_during_review": 0
+}

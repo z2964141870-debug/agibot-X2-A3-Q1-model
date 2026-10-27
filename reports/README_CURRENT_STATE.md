@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-27，北京时间。用户已明确授权执行[RF12独立PPO分阶段计划](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)：从RF11策略初始化，4096环境，先约1至3实训小时，固定三重复真实效果达标后自动追加最多5小时，总累计不超过8小时。资源索引/AMASS清理已完成（17265个原始动作、179.48GB逻辑字节；663静态/未分类及模型/转换结果保留），AP03流式选择/PPO实现进行中，尚未启动训练。不恢复旧实验或agent。下方RF11结果为已完成基线，旧RUNNING仅历史，恢复先核现场。
+2026-10-28，北京时间。用户已明确授权执行[RF12独立PPO分阶段计划](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)：从RF11策略初始化，4096环境，先约1至3实训小时，固定三重复真实效果达标后自动追加最多5小时，总累计不超过8小时。资源索引/AMASS清理、AP03的883训练/原30验证，以及16/4096环境零optimizer检查完成；原生接触/活跃训练状态与CUDA RNG保护通过，正式训练待源码发布和现场复核。不要恢复旧实验或agent。
 
 ## 最新结果
 
@@ -28,11 +28,11 @@ Mac根：`/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF11_S
 
 Python`/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python`经`script/supermimic_q1_hp/activate.py`加载既有CUDA/EGL；直接Torch缺libcudnn不等于环境损坏。RF11 runtime`data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027`，来源固定HP310244b。4096env/WM1024×10/actor1024-H32/critic5×4/UTD.4/BF16/compile；师兄源默认1024env，不混同。
 
-权威Git`/tmp/yuanqi-supermimic-q1-20261023`的Q1分支，远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。结果记录按payload audit/显式push Q1/独立40位远端核验，再镜像三端。无关`script/supermimic_q1_sources/download_bones.py`不执行/修改/暂存/删除。
+权威Git已切换持久副本`/Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028`的Q1分支，远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。旧`/tmp/yuanqi-supermimic-q1-20261023`部分文件与Git对象/config缺失，原因未证，不在旧目录修复或覆盖其他改动。结果记录按payload audit/显式push Q1/独立40位远端核验，再镜像三端。无关`script/supermimic_q1_sources/download_bones.py`不执行/修改/暂存/删除。
 
 ## 下一步与跟踪
 
-RF11本轮授权已使用且不恢复；最新RF12授权覆盖本条此前“不再开下一轮”的范围，仅新增这一独立PPO实验及按客观判据的连续加训，不授权故障重启或其他试验。不开或激活agent。当前依次核资源索引/AMASS清理/AP03、实现PPO与16/4096零优化器契约，通过后冻结正式来源再开训。
+RF11本轮授权已使用且不恢复；最新RF12授权覆盖本条此前“不再开下一轮”的范围，仅新增这一独立PPO实验及按客观判据的连续加训，不授权故障重启或其他试验。不开或激活agent。准备检查已通过，下一步发布并逐SHA核部署，再核现场启动RF12。原300/30仅A/B采样，新增583片仅C按已授权物理门渐进启用；准备就绪不代表效果改善。
 
 用户最新关切是连续多轮缺乏全面改善。现有证据确认上肢幅度/时序瓶颈持续，RF09五小时亦未解决；历史根轨迹曾改善，但不支持继续堆训练时长。先定位策略目标、实际控制和H32模型方向，再决定后续方案。
 

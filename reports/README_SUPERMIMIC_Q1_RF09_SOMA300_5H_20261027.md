@@ -52,7 +52,7 @@ RF09主要变化为300训练/30演员分离验证（原100/15）、Q1默认pelvi
 
 ## 自动终后与交付
 
-最终：07:33:52全流程COMPLETED，七阶段guard均WORKER_COMPLETED/退出0/reap，07:46全部已登记进程退出、GPU14MiB/OOM0。36项保存、31项评测算术/六宫格和12项媒体核验通过；106870条图表数据、初末54秒MP4、41个39411623字节本地/服务器文件逐大小SHA一致。旧115基准验证根XY共同前缀误差0.40151→0.09232m，但提前终止0→2/15，上肢仅小幅改善、gesture反而恶化；普通走路预选两片仍倒地。完整数字与边界以[最终结果](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)/[量化清单](../data/manifests/supermimic_q1_RF09_results_20261027.json)为准，不把旧“待”文字当当前作业。MG04内容完成，发布/监督收尾中，无自动续训。
+最终：07:33:52全流程COMPLETED，七阶段guard均WORKER_COMPLETED/退出0/reap，07:46全部已登记进程退出、GPU14MiB/OOM0。36项保存、31项评测算术/六宫格和12项媒体核验通过；106870条图表数据、初末54秒MP4、41个39411623字节本地/服务器文件逐大小SHA一致。旧115基准验证根XY共同前缀误差0.40151→0.09232m，但提前终止0→2/15，上肢仅小幅改善、gesture反而恶化；普通走路预选两片仍倒地。完整数字与边界以[最终结果](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)/[量化清单](../data/manifests/supermimic_q1_RF09_results_20261027.json)为准，不把旧“待”文字当当前作业。MG04结果提交913b2601d87934865b171064bbccfb7e16ad5b9b已独立远端/三端核验，08:00本轮监督实际PAUSED，无自动续训。
 
 07:20:14真实训练正常完成：18000.93146751076秒、17895学习轮、183504896转移、178950次WM更新、17395次actor更新。`run/receipt.json`为TRAINING_COMPLETED，train guard为WORKER_COMPLETED，worker40213已退出0并reap。初始68726069字节/SHA `e9ef07ee2b123937c2171d356d15dfe3d4dcbf57a82041d16e1a9901c5f3a9f4`；最终208865366字节/SHA `d834ac94a9ce9d8eca91fc576f4ffb92f0ad54386c40f39539cf0c352debf6d0`，均留服务器LOCAL_ONLY。Torch分配/保留峰值6400284672/6851395584字节，不包含Warp，不当作整卡峰值。
 

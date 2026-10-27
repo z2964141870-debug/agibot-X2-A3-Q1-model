@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-27最新：[MG04](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)的A至E内容验收完成，Git/三端记录与监督收尾中；目标工具仍以get_goal为准。[RF09最终结果](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)、[量化汇总](../data/manifests/supermimic_q1_RF09_results_20261027.json)、[本地交付](../data/manifests/supermimic_q1_RF09_local_delivery_20261027.json)。旧RUNNING、待评测和本轮一小时文字均为历史，不恢复旧命令。
+2026-10-27最新：[MG04](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)的A至E及[24项要求审计](../data/manifests/supermimic_q1_MG04_completion_audit_20261027.json)完成。结果提交913b2601d87934865b171064bbccfb7e16ad5b9b已独立核远端、10文件307967字节三端大小SHA一致；08:00本轮监督实际PAUSED。最后记录发布核验后结算同一目标，工具状态以get_goal为准。[RF09最终结果](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)、[量化汇总](../data/manifests/supermimic_q1_RF09_results_20261027.json)、[本地交付](../data/manifests/supermimic_q1_RF09_local_delivery_20261027.json)。旧RUNNING、待评测和本轮一小时文字均为历史，不恢复旧命令。
 
 ## 最新实验与结论
 
@@ -28,6 +28,6 @@ Python `data/environments/supermimic_q1_hp_20261026/bin/python`，经`script/sup
 
 ## 收尾与下一步
 
-最终记录提交push Q1、独立核远端40位SHA并镜像Mac/服务器；最终验收通过才update_goal complete。原`q1-rf08-4096`每10分钟任务仅服务本RF09，交付发布完成后暂停；独立`supermimichp-x2`仓库跟踪与`yuanqi`研究任务保留。本次五小时是明确预算例外，不自动续训/重试，不创建或激活子agent。
+结果已提交push Q1、独立核远端40位SHA并镜像Mac/服务器。原`q1-rf08-4096`于08:00:27工具更新并回读为PAUSED；独立`supermimichp-x2`仓库跟踪与`yuanqi`研究任务保留。完成审计及最后记录推送核验后update_goal complete，不创建新目标。本次五小时是明确预算例外，不自动续训/重试，不创建或激活子agent。
 
 后续若另行授权试验，优先处理普通走的制动/支撑和上肢幅度/相位，固定参考与预算再作单变量对照。不重复解包/hash45GB原包、转换330片、profile或已有媒体/轨迹分析。无关`script/supermimic_q1_sources/download_bones.py`不执行/修改/暂存/删除。

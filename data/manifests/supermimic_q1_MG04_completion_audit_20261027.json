@@ -1,0 +1,271 @@
+{
+  "status": "MG04_REQUIREMENTS_VERIFIED",
+  "checked_utc": "2026-10-27T00:03:47.382Z",
+  "objective": "SOMA expansion, Q1 upper retargeting improvement, >=30s multitype comparisons and one4096-env five-hour SuperMimic trial, with RF08 baseline comparison and local delivery.",
+  "requirements": [
+    {
+      "id": "A1",
+      "requirement": "Original SOMA expanded to 300 train and 30 validation clips; 82/11 actors disjoint; prior 115 source identities retained.",
+      "evidence": "reports/README_SUPERMIMIC_Q1_AP02_SOMA_RETARGET_20261027.md",
+      "passed": true
+    },
+    {
+      "id": "A2",
+      "requirement": "All six motion categories and original source speed preserved; no added geometry/IK/performance admission gate.",
+      "evidence": "data/manifests/supermimic_q1_AP02_soma_library_20261027.json",
+      "passed": true
+    },
+    {
+      "id": "B1",
+      "requirement": "Confirmed default-pelvis rest-origin duplication corrected with opt-in root-relative rest; old conversion retained.",
+      "evidence": "reports/README_SUPERMIMIC_Q1_AP02_SOMA_RETARGET_20261027.md",
+      "passed": true
+    },
+    {
+      "id": "B2",
+      "requirement": "Twelve same-source D02 comparisons use a common anatomical wrist target; modest reference gains reported separately from policy error.",
+      "evidence": "data/manifests/supermimic_q1_AP02_retarget_D02_20261027.json",
+      "passed": true
+    },
+    {
+      "id": "B3",
+      "requirement": "4096 full update profile and media/runtime checks completed before RF09; profile initialization was not reused as training weights.",
+      "evidence": "reports/README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md",
+      "passed": true
+    },
+    {
+      "id": "C1",
+      "requirement": "Published frozen source a553b6a5a3c44167042355ff2f2fbd42ff558342; all 153 sources and 330 references unchanged through pipeline.",
+      "evidence": "data/manifests/supermimic_q1_RF09_training_audit_V02_20261027.json",
+      "passed": true
+    },
+    {
+      "id": "C2",
+      "requirement": "4096 MuJoCo Warp environments; fresh seed0 initialization and actual optimizer/counter verification.",
+      "evidence": "data/manifests/supermimic_q1_RF09_training_audit_V02_20261027.json",
+      "passed": true
+    },
+    {
+      "id": "C3",
+      "requirement": "Actual training 18000.93146751076s, excluding initialization/evaluation/rendering; no added training or continuation.",
+      "evidence": "data/manifests/supermimic_q1_RF09_results_20261027.json",
+      "passed": true
+    },
+    {
+      "id": "C4",
+      "requirement": "Storage/memory/OOM/temperature protections preserved; all workers and controller released, OOM0 and GPU14MiB.",
+      "evidence": "data/supermimic_for_q1/BONES_RF09_SOMA300_HP_E4096_T05H_20261027/final_resource_check.json",
+      "passed": true
+    },
+    {
+      "id": "D1",
+      "requirement": "Full new-library initial/final 330-clip physics and original fixed115 initial/final benchmark completed: 890 rollouts.",
+      "evidence": "data/manifests/supermimic_q1_RF09_results_20261027.json",
+      "passed": true
+    },
+    {
+      "id": "D2",
+      "requirement": "RF08 final versus RF09 final compare identical fixed115 references, initial states and common reference frames.",
+      "evidence": "data/supermimic_for_q1/BONES_RF09_SOMA300_HP_E4096_T05H_20261027/RF08_RF09_benchmark_comparison.json",
+      "passed": true
+    },
+    {
+      "id": "D3",
+      "requirement": "Net/along-target displacement, path, speed, failures, geometric foot-state changes and stationary drift quantified.",
+      "evidence": "reports/README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md",
+      "passed": true
+    },
+    {
+      "id": "D4",
+      "requirement": "Common-prefix upper-limb/wrist errors and full shoulder/elbow, peak height/timing with reached-time counts reported.",
+      "evidence": "reports/README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md",
+      "passed": true
+    },
+    {
+      "id": "D5",
+      "requirement": "31 physical arithmetic/dashboard checks passed; independent postprocessing performs no new physics, policy inference or optimizer update.",
+      "evidence": "data/supermimic_for_q1/BONES_RF09_SOMA300_HP_E4096_T05H_20261027/physical_numeric_audit.json",
+      "passed": true
+    },
+    {
+      "id": "E1",
+      "requirement": "Initial/final MP4 each54.00s,1350 frames/25fps; eight original-speed segments covering six categories.",
+      "evidence": "data/supermimic_for_q1/BONES_RF09_SOMA300_HP_E4096_T05H_20261027/evaluation/media_audit.json",
+      "passed": true
+    },
+    {
+      "id": "E2",
+      "requirement": "Two ordinary forward-walk sources, explicit raised hands and stationary gesture preselected before learning; failures retained and labeled.",
+      "evidence": "data/manifests/supermimic_q1_RF09_video_suite_20261027.json",
+      "passed": true
+    },
+    {
+      "id": "E3",
+      "requirement": "Six-panel PNG/PDF/CSV, raw and trailing500 learning-iteration pooled average;106870 rows independently checked.",
+      "evidence": "data/supermimic_for_q1/BONES_RF09_SOMA300_HP_E4096_T05H_20261027/physical_numeric_audit.json",
+      "passed": true
+    },
+    {
+      "id": "E4",
+      "requirement": "Both movies fully decoded; six-panel figure,16 segment midpoints and two final walking-failure endpoints visually reviewed.",
+      "evidence": "data/manifests/supermimic_q1_RF09_local_delivery_20261027.json",
+      "passed": true
+    },
+    {
+      "id": "E5",
+      "requirement": "41 local/server delivery files,39411623 bytes, each size/SHA equal. No website; weights/raw trajectories stay server-only.",
+      "evidence": "data/manifests/supermimic_q1_RF09_local_delivery_20261027.json",
+      "passed": true
+    },
+    {
+      "id": "E6",
+      "requirement": "Results/code records published to Q1; independent remote40-digit SHA and10-file three-way size/SHA verification completed.",
+      "evidence": "git:913b2601d87934865b171064bbccfb7e16ad5b9b",
+      "passed": true
+    },
+    {
+      "id": "E7",
+      "requirement": "RF09 heartbeat q1-rf08-4096 PAUSED through automation tool and independently reread; no other automation changed.",
+      "evidence": "automation:q1-rf08-4096",
+      "passed": true
+    },
+    {
+      "id": "S1",
+      "requirement": "V01 audit false negatives preserved; V02 fixes tuple/list representation only, without changing training artifacts.",
+      "evidence": "data/manifests/supermimic_q1_RF09_training_audit_V01_20261027.json",
+      "passed": true
+    },
+    {
+      "id": "S2",
+      "requirement": "Data/rest correction/budget changes disclosed together; upper-body, walking failures and validation regressions reported, no success gate.",
+      "evidence": "reports/README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md",
+      "passed": true
+    },
+    {
+      "id": "S3",
+      "requirement": "No subagent, concurrent training, automatic retry/continuation, added budget or changes to unrelated download_bones.py.",
+      "evidence": "reports/README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md",
+      "passed": true
+    }
+  ],
+  "results_publication": {
+    "status": "RF09_RESULTS_PUBLICATION_VERIFIED",
+    "commit": "913b2601d87934865b171064bbccfb7e16ad5b9b",
+    "remote_ref": "refs/heads/Q1",
+    "independent_remote_sha": "913b2601d87934865b171064bbccfb7e16ad5b9b",
+    "files": [
+      {
+        "path": "script/project_tools/analyze_q1_hp_movement.py",
+        "bytes": 7723,
+        "sha256": "9d19fc0a44134afbd53d90f4996e1099967678f842e138cc78621411230a5165"
+      },
+      {
+        "path": "script/project_tools/audit_q1_hp_results.py",
+        "bytes": 10405,
+        "sha256": "6c714aab23abca088bff37d0835105d53a816ec8baac57f2dcaa39cb0c5d513b"
+      },
+      {
+        "path": "script/project_tools/audit_q1_hp_media.py",
+        "bytes": 5056,
+        "sha256": "ee78fbae580fc8d63df4973205d8320221246bfac974f6b54f9d859c323196f0"
+      },
+      {
+        "path": "data/manifests/supermimic_q1_RF09_results_20261027.json",
+        "bytes": 151815,
+        "sha256": "d9002ab031c06da2a4cbc8fa8f99a52056dad8a5725a4a6515d0537b3817e421"
+      },
+      {
+        "path": "data/manifests/supermimic_q1_RF09_local_delivery_20261027.json",
+        "bytes": 7905,
+        "sha256": "522c5555ce0de99a22d1ff16cb1ba398dd6c2b269baf2fb46fe83cf532b517bc"
+      },
+      {
+        "path": "reports/README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md",
+        "bytes": 9760,
+        "sha256": "6b0eb3b5d96455bcd6d7dc02e81ff169e9322fa841080d5b4ffe382c852c945f"
+      },
+      {
+        "path": "reports/README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md",
+        "bytes": 12085,
+        "sha256": "cc07735143bee035fcda0f6ffaf5df2685caa0d34851b9d97d2aa2392b240f1a"
+      },
+      {
+        "path": "reports/README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md",
+        "bytes": 5738,
+        "sha256": "aa2fafd49f270f99bd7718fc6b957b8f02261cf55417f543a5fba88d5be73e72"
+      },
+      {
+        "path": "reports/README_CURRENT_STATE.md",
+        "bytes": 5097,
+        "sha256": "01555ccf37ae021d60543f1e985809f9bbef595be649fa556caddf882f9c8fe5"
+      },
+      {
+        "path": "reports/README.md",
+        "bytes": 92383,
+        "sha256": "28909ec61ab658aaeb3916dadc68819b31f2633caf4d22d8df8b00675b3ae014"
+      }
+    ],
+    "files_count": 10,
+    "total_bytes": 307967,
+    "all_file_sizes_sha256_match": true
+  },
+  "monitor": {
+    "id": "q1-rf08-4096",
+    "kind": "heartbeat",
+    "name": "Q1 RF09 4096环境五小时训练监督",
+    "status": "PAUSED",
+    "rrule": "RRULE:FREQ=MINUTELY;INTERVAL=10",
+    "target_thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "updated_at": 1793059227402
+  },
+  "local_delivery": {
+    "files": 41,
+    "total_bytes": 39411623,
+    "all_file_sizes_sha256_match": true
+  },
+  "training_counters": {
+    "status": "TRAINING_COMPLETED",
+    "started_utc": "2026-10-26T18:19:56.764734+00:00",
+    "process": {
+      "pid": 40213,
+      "start_ticks": 3633080219,
+      "boot_id": "d994e71f-bae0-46ba-a5f7-6c2163771c6c"
+    },
+    "mode": "train",
+    "code_commit": "a553b6a5a3c44167042355ff2f2fbd42ff558342",
+    "library": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json",
+      "bytes": 208349,
+      "sha256": "ba9ac284a018cdd40eea5200d2c157b7da7cfdae89e6c820eed2c9748cc83337"
+    },
+    "training_seconds": 18000.93146751076,
+    "iteration": 17895,
+    "sim_steps": 183504896,
+    "wm_updates": 178950,
+    "actor_updates": 17395,
+    "final": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF09_SOMA300_HP_E4096_T05H_20261027/run/final.pt",
+      "bytes": 208865366,
+      "sha256": "d834ac94a9ce9d8eca91fc576f4ffb92f0ad54386c40f39539cf0c352debf6d0"
+    },
+    "initial": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF09_SOMA300_HP_E4096_T05H_20261027/run/initial.pt",
+      "bytes": 68726069,
+      "sha256": "e9ef07ee2b123937c2171d356d15dfe3d4dcbf57a82041d16e1a9901c5f3a9f4"
+    },
+    "cuda_peak_allocated_bytes": 6400284672,
+    "cuda_peak_reserved_bytes": 6851395584,
+    "ended_utc": "2026-10-26T23:20:14.949270+00:00"
+  },
+  "performance_required_to_improve": false,
+  "remaining_training": false,
+  "remaining_evaluation_or_media": false,
+  "final_step": "Publish and verify this closeout and updated stage records, then mark the existing MG04 goal complete. No new goal or training.",
+  "limitations": [
+    "Training data, rest-origin correction, and duration changed together; no single-variable attribution.",
+    "New-library validation and fixed RF08 reference benchmark are different protocols.",
+    "Policy-to-reference errors do not isolate retargeting error.",
+    "Geometric near-ground fractions are not contact forces.",
+    "Model weights and raw trajectories remain server-only, without verified cloud backup."
+  ]
+}

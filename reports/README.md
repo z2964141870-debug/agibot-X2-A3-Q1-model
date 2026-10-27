@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-27研究：[五项简报](research/2026-10-27/README.md)已保存；Q1当前MotionLib静态存在末尾补帧复用末帧速度的模式，实际影响未测、未归因跌倒。另记SONIC朝向修复、第三方资产和三篇方法边界；无新增训练/仿真或原创假设。完整历史/去重由main维护，工程以Q1最新状态为准；[检查](README_RESEARCH_CHECK_20261027.md)/[同步回执](../data/manifests/research_watch_sync_20261027.json)。
+
 2026-10-23：[SuperMimic训练原料与时间基准纠正DATA01](README_SUPERMIMIC_DATA_20261023.md)：实核20份A3源CSV与M02身份全同，vendor明确120Hz而本转换按30Hz，当前参考放慢4倍；旧R02-R05只支持慢放条件，不能称原速结果。90份FGP拟合、PHUMA两机器人各73076同名片段、FGP206/197完整会话分层登记。11:01仅停自有R05总控，A在2002步/32032env-step/750更新正常保存STOPPED_SIGNAL，最终文件大小/SHA独立通过，无活跃原作业、无B或最终评测；不自动重启。原速须独立新数据/基线，大型原件LOCAL_ONLY。
 
 2026-10-23：[SuperMimic R05首批更新通过](README_SUPERMIMIC_FOR_A3_20261023.md)：A H32已175步/2800新交互、19次WM/actor联合更新且指标有限，记录GPU39℃/末次40℃、OOM未增；B H8待A完成后按固定流程开始。两臂完整效果未出、目标active，代码/计划及实际启动证据维护main。

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-27研究：[五项简报](research/2026-10-27/README.md)已保存；Q1当前MotionLib静态存在末尾补帧复用末帧速度的模式，实际影响未测、未归因跌倒。另记SONIC朝向修复、第三方资产和三篇方法边界；无新增训练/仿真或原创假设。完整历史/去重由main维护，工程以Q1最新状态为准；[检查](README_RESEARCH_CHECK_20261027.md)/[同步回执](../data/manifests/research_watch_sync_20261027.json)。
+
 2026-10-27最新：[MG04](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)的A至E及[24项要求审计](../data/manifests/supermimic_q1_MG04_completion_audit_20261027.json)完成。结果提交913b2601d87934865b171064bbccfb7e16ad5b9b已独立核远端、10文件307967字节三端大小SHA一致；08:00本轮监督实际PAUSED。最后记录发布核验后结算同一目标，工具状态以get_goal为准。[RF09最终结果](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)、[量化汇总](../data/manifests/supermimic_q1_RF09_results_20261027.json)、[本地交付](../data/manifests/supermimic_q1_RF09_local_delivery_20261027.json)。旧RUNNING、待评测和本轮一小时文字均为历史，不恢复旧命令。
 
 ## 最新实验与结论

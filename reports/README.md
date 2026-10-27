@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-27研究：[五项简报](research/2026-10-27/README.md)已保存；Q1当前MotionLib静态存在末尾补帧复用末帧速度的模式，实际影响未测、未归因跌倒。另记SONIC朝向修复、第三方资产和三篇方法边界；无新增训练/仿真或原创假设。完整历史/去重由main维护，工程以Q1最新状态为准；[检查](README_RESEARCH_CHECK_20261027.md)/[同步回执](../data/manifests/research_watch_sync_20261027.json)。
+
 2026-10-27：[MG04完成要求审计](../data/manifests/supermimic_q1_MG04_completion_audit_20261027.json)24项证据齐备，[RF09结果](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)提交913b2601d87934865b171064bbccfb7e16ad5b9b独立核远端、10文件307967字节三端大小SHA一致；08:00:27本轮q1-rf08-4096实际PAUSED并结构化回读确认，其他自动任务保留。扩库/重定向/五小时4096训练/统一基准及54秒MP4与六格图交付完成，仍明确普通走失稳与上肢短板；最后记录发布核验后结算目标，不自动续训。
 
 2026-10-27 07:54：[RF09最终结果与本地交付](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)已完成：4096环境实训18000.931秒/17895学习轮，07:33全pipeline COMPLETED；890物理rollout/固定115基准/共同前缀与全程上肢支撑分析、36+31项训练/结果核验通过。旧验证根XY误差40.15→9.23cm、原地漂移大降，但提前终止0→2/15、手势上肢仍差，两条普通走演示仍倒地。初末54秒八段六类MP4和六格PNG/PDF/CSV等41文件39411623字节已Mac/服务器大小SHA一致，[交付](../data/manifests/supermimic_q1_RF09_local_delivery_20261027.json)/[量化](../data/manifests/supermimic_q1_RF09_results_20261027.json)。MG04内容完成，Git/监督收尾中，无自动续训或新训练。

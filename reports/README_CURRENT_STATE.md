@@ -1,6 +1,8 @@
 # YUANQI 当前状态与下一步
 
-2026-10-27最新：[MG04](README_SUPERMIMIC_Q1_MG04_EXPAND_RETARGET_20261027.md)的A至E及[24项要求审计](../data/manifests/supermimic_q1_MG04_completion_audit_20261027.json)完成。结果提交913b2601d87934865b171064bbccfb7e16ad5b9b已独立核远端、10文件307967字节三端大小SHA一致；08:00本轮监督实际PAUSED。最后记录发布核验后结算同一目标，工具状态以get_goal为准。[RF09最终结果](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)、[量化汇总](../data/manifests/supermimic_q1_RF09_results_20261027.json)、[本地交付](../data/manifests/supermimic_q1_RF09_local_delivery_20261027.json)。旧RUNNING、待评测和本轮一小时文字均为历史，不恢复旧命令。
+2026-10-27最新：用户要求先别继续训练，后续训练保持停止，不自动开启RF10、续训或恢复旧目标。MG04已完成，实际get_goal为null，本轮监督已PAUSED。[BD01瓶颈诊断](README_SUPERMIMIC_Q1_RF09_BOTTLENECK_20261027.md)/[小收据](../data/manifests/supermimic_q1_RF09_BD01_diagnosis_20261027.json)完成：冻结策略/保存轨迹496次前向、0积分/0optimizer。验证8条gesture上肢策略目标到参考1.18438rad、实际到目标0.06185rad；首先是策略目标偏差。手势仍获约69.10%最高步奖励，身体朝向项仅满值2.60%，奖励敏感度/模型动作梯度优先检查，尚未锁定唯一根因。
+
+两条普通走参考本身双脚近地85.57%/80.99%，几何比例不能证明真实双足受力；Q1所有关节仍为模型统一推导PD15.79/1.01，非已完成逐关节整定。保持有界诊断，先区分接触/制动、控制与模型方向问题，不再默认加数据/时长。既有[RF09结果](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)、[量化汇总](../data/manifests/supermimic_q1_RF09_results_20261027.json)、[本地交付](../data/manifests/supermimic_q1_RF09_local_delivery_20261027.json)保留；旧RUNNING、待评测和目标active均为历史。
 
 ## 最新实验与结论
 
@@ -28,6 +30,6 @@ Python `data/environments/supermimic_q1_hp_20261026/bin/python`，经`script/sup
 
 ## 收尾与下一步
 
-结果已提交push Q1、独立核远端40位SHA并镜像Mac/服务器。原`q1-rf08-4096`于08:00:27工具更新并回读为PAUSED；独立`supermimichp-x2`仓库跟踪与`yuanqi`研究任务保留。完成审计及最后记录推送核验后update_goal complete，不创建新目标。本次五小时是明确预算例外，不自动续训/重试，不创建或激活子agent。
+结果已提交push Q1、独立核远端40位SHA并镜像Mac/服务器。原`q1-rf08-4096`于08:00:27工具更新并回读为PAUSED；独立`supermimichp-x2`仓库跟踪与`yuanqi`研究任务保留。MG04已结算完成，当前无活动目标，不创建新目标。本次五小时不自动续训/重试，不创建或激活子agent。用户最新要求先诊断，覆盖旧训练推进授权。
 
 后续若另行授权试验，优先处理普通走的制动/支撑和上肢幅度/相位，固定参考与预算再作单变量对照。不重复解包/hash45GB原包、转换330片、profile或已有媒体/轨迹分析。无关`script/supermimic_q1_sources/download_bones.py`不执行/修改/暂存/删除。

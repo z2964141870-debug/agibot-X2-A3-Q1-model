@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-27 10:20：用户已将工作入口改为25245，仍暂停训练。[CS01容器切换](README_Q1_CONTAINER_SWITCH_20261027.md)已验证：`interactive63856`共享原`PRIVATE/zhy`挂载，ZHY/环境/330参考/权重现存，不复制大数据；CUDA张量、MuJoCo/Warp导入、Q1模型/最终权重加载通过，0积分/0optimizer。GPU3090空闲14MiB/26度、盘余约1.589TB、新容器OOM0；这些是当时采样，后续仍需复核。恢复统一使用下方25245命令，不再使用历史25252入口。
+
 2026-10-27最新：用户要求先别继续训练，后续训练保持停止，不自动开启RF10、续训或恢复旧目标。MG04已完成，实际get_goal为null，本轮监督已PAUSED。[BD01瓶颈诊断](README_SUPERMIMIC_Q1_RF09_BOTTLENECK_20261027.md)/[小收据](../data/manifests/supermimic_q1_RF09_BD01_diagnosis_20261027.json)完成：冻结策略/保存轨迹496次前向、0积分/0optimizer。验证8条gesture上肢策略目标到参考1.18438rad、实际到目标0.06185rad；首先是策略目标偏差。手势仍获约69.10%最高步奖励，身体朝向项仅满值2.60%，奖励敏感度/模型动作梯度优先检查，尚未锁定唯一根因。
 
 两条普通走参考本身双脚近地85.57%/80.99%，几何比例不能证明真实双足受力；Q1所有关节仍为模型统一推导PD15.79/1.01，非已完成逐关节整定。保持有界诊断，先区分接触/制动、控制与模型方向问题，不再默认加数据/时长。既有[RF09结果](README_SUPERMIMIC_Q1_RF09_RESULTS_20261027.md)、[量化汇总](../data/manifests/supermimic_q1_RF09_results_20261027.json)、[本地交付](../data/manifests/supermimic_q1_RF09_local_delivery_20261027.json)保留；旧RUNNING、待评测和目标active均为历史。
@@ -26,7 +28,7 @@ Mac根：`/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF09_S
 
 权威Git `/tmp/yuanqi-supermimic-q1-20261023`，Q1分支，远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。冻结训练提交`a553b6a5a3c44167042355ff2f2fbd42ff558342`；训练终后审计发布`bbf05063f60d0a6729c4b550d9f81b27c8d989a7`已独立核远端、7文件142940字节三端大小SHA一致。后续报告提交不改变冻结来源。运行完整命令在[RF09运行记录](README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md)，不能为恢复重复执行。
 
-仅用户25252，唯一根`/opt/data/private/ZHY`及data/logs/script/reports。SSH：`ssh -S /tmp/yuanqi-q1-25252.sock -T -p 18869 -o BatchMode=yes -o ConnectTimeout=8 -o 'HostKeyAlias=[59.77.15.15]:25252' root@127.0.0.1`。保留Windows桥，不读写认证，不操作师兄容器；SSH失败记UNKNOWN，不据此重启。
+当前仅用户25245，唯一根`/opt/data/private/ZHY`及data/logs/script/reports。SSH：`ssh -S /tmp/yuanqi-q1-25245.sock -T -p 18872 -o BatchMode=yes -o ConnectTimeout=8 -o 'HostKeyAlias=[59.77.15.15]:25245' root@127.0.0.1`。经Windows转发18872；保留旧桥，不读写认证，不操作师兄容器。25252仅为历史来源，本轮有界只读连接返回关闭，不把断线当丢数据或重启依据。
 
 Python `data/environments/supermimic_q1_hp_20261026/bin/python`，经`script/supermimic_q1_hp/activate.py`。runtime `data/references/supermimichp/AP01_runtime_20261026`、上游`310244b73e45775744a75b789eb25a6c9c5a81c9`。RF09库`data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json`。4096env/WM1024×10/actor1024-H32/critic5×4/UTD.4、BF16/compile、seed0、heading XY/朝向历史及完整未来根/关节参考，Q1 full effort/模型推导PD15.791367/1.005310。师兄实际1024环境，不称全部条件等同。
 
@@ -34,4 +36,4 @@ Python `data/environments/supermimic_q1_hp_20261026/bin/python`，经`script/sup
 
 结果已提交push Q1、独立核远端40位SHA并镜像Mac/服务器。原`q1-rf08-4096`于08:00:27工具更新并回读为PAUSED；独立`supermimichp-x2`仓库跟踪与`yuanqi`研究任务保留。MG04已结算完成，当前无活动目标，不创建新目标。本次五小时不自动续训/重试，不创建或激活子agent。用户最新要求先诊断，覆盖旧训练推进授权。
 
-后续若另行授权试验，优先处理普通走的制动/支撑和上肢幅度/相位，固定参考与预算再作单变量对照。不重复解包/hash45GB原包、转换330片、profile或已有媒体/轨迹分析。无关`script/supermimic_q1_sources/download_bones.py`不执行/修改/暂存/删除。
+下一步按CS01诊断计划：先在冻结策略中核上肢目标/奖励及动作梯度，再用少量固定普通走状态区分真实足地受力、滑移与制动，最后核模型方向与物理微扰是否一致。尚未执行这些新增物理试验；先给出证据与修改方案，再决定训练。后续若另行授权训练，固定参考与预算作受控对照，不自动续训。不重复解包/hash45GB原包、转换330片、profile或已有媒体/轨迹分析。无关`script/supermimic_q1_sources/download_bones.py`不执行/修改/暂存/删除。

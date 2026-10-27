@@ -36,4 +36,4 @@ Python`/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/pyt
 
 用户最新关切是连续多轮缺乏全面改善。现有证据确认上肢幅度/时序瓶颈持续，RF09五小时亦未解决；历史根轨迹曾改善，但不支持继续堆训练时长。先定位策略目标、实际控制和H32模型方向，再决定后续方案。
 
-三端结果发布后暂停`q1-rf08-4096`，实际状态按监督完成回执核对；保留独立`supermimichp-x2`和`yuanqi`。研究入口[当日简报](research/2026-10-27/README.md)/[MorphMimic只读初评](README_MORPHMIMIC_REVIEW_20261027.md)，不替换主线或安装执行。
+结果`d98b14b9d97a1999e3289e9faea20b0d943285f5`已独立核远端，10小记录233866字节三端逐大小/SHA一致；22:45:11通过工具实际暂停`q1-rf08-4096`并回读PAUSED，[完成回执](../data/manifests/supermimic_q1_RF11_completion_audit_20261027.json)。独立`supermimichp-x2`和`yuanqi`未修改，不新建替代任务。研究入口[当日简报](research/2026-10-27/README.md)/[MorphMimic只读初评](README_MORPHMIMIC_REVIEW_20261027.md)，不替换主线或安装执行。

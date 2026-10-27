@@ -1,0 +1,145 @@
+{
+  "status": "RF11_RESULTS_DELIVERY_PUBLICATION_AND_MONITORING_COMPLETED",
+  "created_utc": "2026-10-27T14:45:11Z",
+  "trial": "BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027",
+  "frozen_training_commit": "7a3567cd5b89e5cd6282a83aacb61f19590b0434",
+  "training": {
+    "status": "TRAINING_COMPLETED",
+    "seconds": 3500.2659895760007,
+    "iterations": 3271,
+    "transitions": 33755136,
+    "wm_updates": 32710,
+    "actor_updates": 2771,
+    "maximum_authorized_seconds": 3600
+  },
+  "pipeline": {
+    "status": "COMPLETED",
+    "ended_utc": "2026-10-27T14:08:27.882802+00:00",
+    "all_five_phases_reaped_return_code_zero": true,
+    "controller_and_training_worker_absent_at": "2026-10-27T14:17:02Z",
+    "source": "data/manifests/supermimic_q1_RF11_results_20261027.json"
+  },
+  "completed_audits": {
+    "training_artifact_checks": 36,
+    "result_and_dashboard_checks": 19,
+    "media_checks": 12,
+    "new_audit_runs_during_final_publication": 0
+  },
+  "delivery": {
+    "server_artifacts": 29,
+    "bytes": 26706642,
+    "size_and_sha256_match": true,
+    "initial_and_final_mp4_seconds": 54,
+    "segments_each": 8,
+    "motion_types": 6,
+    "continuous_54_second_rollout": false,
+    "all_frames_decoded": true,
+    "six_panel_png_pdf_csv_delivered": true,
+    "source": "data/manifests/supermimic_q1_RF11_local_delivery_20261027.json"
+  },
+  "result_publication_before_pause": {
+    "commit": "d98b14b9d97a1999e3289e9faea20b0d943285f5",
+    "branch": "Q1",
+    "remote_ref": "refs/heads/Q1",
+    "independently_verified_40_character_sha": true,
+    "default_proxy_ref_probe_failed": true,
+    "bounded_existing_ssh_direct_probe_passed": true,
+    "sync": {
+      "status": "THREE_ENDPOINT_MATCH",
+      "result_commit": "d98b14b9d97a1999e3289e9faea20b0d943285f5",
+      "files": [
+        {
+          "path": "AGENTS.md",
+          "bytes": 25746,
+          "sha256": "ebff2b061970fb58d6bae5f8ae87329ada1fcdeaa1ced63d8e65126d7f8484e2"
+        },
+        {
+          "path": "reports/README.md",
+          "bytes": 100495,
+          "sha256": "b23354aa56b97b685dc648211c0684d52cf6ec42fc0ef80c318dfe83eea9071e"
+        },
+        {
+          "path": "reports/README_CURRENT_STATE.md",
+          "bytes": 4922,
+          "sha256": "f7da09c076b770bae04b132cf07990a684ba12d50718e013b1f36aeffeae6c68"
+        },
+        {
+          "path": "reports/README_SUPERMIMIC_Q1_RF11_SAMPLERONLY_20261027.md",
+          "bytes": 8542,
+          "sha256": "9c315e7f198d724fdda39dcd19221b1acbbe69ee7f733c5ad57aa26a2cdcab4b"
+        },
+        {
+          "path": "reports/README_SUPERMIMIC_Q1_RF11_RESULTS_20261027.md",
+          "bytes": 7647,
+          "sha256": "ec4ea9fcd3e184086312ecf140360bbcb9e6366bfc324a3c85bf95f42b56e595"
+        },
+        {
+          "path": "data/manifests/supermimic_q1_RF11_results_20261027.json",
+          "bytes": 59766,
+          "sha256": "b261a1ef7706ad3201406f2c694b7d8f46b3f396dd94953adfb2cb986087a37e"
+        },
+        {
+          "path": "data/manifests/supermimic_q1_RF11_local_delivery_20261027.json",
+          "bytes": 7656,
+          "sha256": "0da463d4785b3394e2e843b724a252bb090d45e5f48f20b636dd519c6ed5a4ee"
+        },
+        {
+          "path": "data/manifests/supermimic_q1_RF11_result_audit_20261027.json",
+          "bytes": 6443,
+          "sha256": "dfa6c9b2976c0bf37ed5ad65dc7e804d6e8a04b1e314e476b500397d068b6ebd"
+        },
+        {
+          "path": "data/manifests/supermimic_q1_RF11_media_audit_20261027.json",
+          "bytes": 3553,
+          "sha256": "8ed2e95dbbae905dbc2e28194429ef50f483adf2d42c904a44aa7f9e1c2df94b"
+        },
+        {
+          "path": "data/manifests/supermimic_q1_RF11_training_audit_20261027.json",
+          "bytes": 9096,
+          "sha256": "47755e99e61429953b759bf4551938b95334b9bb546515325a0d0b4f71dc1069"
+        }
+      ],
+      "bytes": 233866,
+      "frozen_code_commit_unchanged": "7a3567cd5b89e5cd6282a83aacb61f19590b0434"
+    }
+  },
+  "monitoring": {
+    "id": "q1-rf08-4096",
+    "status": "PAUSED",
+    "updated_at_ms": 1793112311618,
+    "verified_by": [
+      "automation_update structured result",
+      "automation.toml readback"
+    ],
+    "name": "Q1 RF11 4096环境一小时对照监督",
+    "target_thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "prompt_and_schedule_preserved": true,
+    "other_automations_modified": []
+  },
+  "conclusion": {
+    "rf09_to_rf11_validation_failures": [
+      2,
+      0
+    ],
+    "validation_clips": 30,
+    "root_xy_rmse_m": [
+      0.07903665,
+      0.11446205
+    ],
+    "upper_limb_rmse_rad": [
+      0.937596,
+      0.93577236
+    ],
+    "comparison": "Same 330-clip evaluation and matched per-clip common prefixes; unequal training seconds and updates.",
+    "full_body_tracking_success": false,
+    "continued_upper_limb_bottleneck": true,
+    "unique_rf10_collapse_cause_isolated": false,
+    "next_step": "Diagnose policy targets, physical execution and H32 world-model direction before proposing another training run."
+  },
+  "additional_training_authorized": false,
+  "new_training_or_continuation_started": false,
+  "new_agents_started": 0,
+  "goal_created_or_restored": false,
+  "weights_and_large_trajectories": "SERVER_LOCAL_ONLY",
+  "final_record_commit": "Provided by Git history; this receipt does not embed its own commit SHA."
+}

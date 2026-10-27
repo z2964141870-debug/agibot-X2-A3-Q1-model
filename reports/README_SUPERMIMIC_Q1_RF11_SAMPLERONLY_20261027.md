@@ -1,6 +1,6 @@
 # RF11：恢复RF09配置，仅修采样的一小时对照
 
-最终状态：[RF11结果与交付](README_SUPERMIMIC_Q1_RF11_RESULTS_20261027.md)已完成训练、330片初末物理评测/共同前缀对照、六格图及本地初末54秒MP4。22:08:27全pipeline COMPLETED，五阶段正常reap；22:17原controller/worker均不存在，GPU已释放。验证0/30提前终止但根跟踪退步、上肢基本持平；36/19/12项训练、结果和媒体检查通过，29文件逐大小SHA匹配。下方RUNNING/待交付为历史，不自动续训、重试或开新训练；三端发布后暂停本轮监督。
+最终状态：[RF11结果与交付](README_SUPERMIMIC_Q1_RF11_RESULTS_20261027.md)已完成训练、330片初末物理评测/共同前缀对照、六格图及本地初末54秒MP4。22:08:27全pipeline COMPLETED，五阶段正常reap；22:17原controller/worker均不存在，GPU已释放。验证0/30提前终止但根跟踪退步、上肢基本持平；36/19/12项训练、结果和媒体检查通过，29文件逐大小SHA匹配。结果已发布并三端核验，22:45:11本轮监督实际PAUSED，见[完成回执](../data/manifests/supermimic_q1_RF11_completion_audit_20261027.json)。下方RUNNING/待交付为历史，不自动续训、重试或开新训练。
 
 21:55:05训练完成：实际3500.265989576秒、3271学习轮、33755136转移，WM32710/actor2771。训练guard于21:55:10正常reap退出0；训练worker17373已不存在，controller17370仍按原身份执行评测。36项保存/张量/更新计数/来源及参考身份审计全部通过，0新积分/推理/optimizer；[训练审计](../data/manifests/supermimic_q1_RF11_training_audit_20261027.json)、[阶段现场](../data/manifests/supermimic_q1_RF11_training_completed_20261027.json)。未追加训练，后续原自动评测继续。
 

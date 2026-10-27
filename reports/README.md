@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-28：[RF12真实仿真PPO与分阶段训练](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)准备完成：883训练/原30验证AP03、16/4096环境零optimizer、原生接触和活跃训练状态保护通过；已删不用AMASS原始motion179.48GB，保留663静态/未分类及模型/转换结果。正式4096 PPO待源码发布和现场复核，1至3小时按固定三重复真实效果决定额外5小时、总实训最多8小时。权威Git已迁至项目data/repositories持久副本；RF11等旧实验保持终态，不开agent。
+2026-10-28 01:07：[RF12真实仿真PPO与分阶段训练](README_SUPERMIMIC_Q1_RF12_PPO_20261027.md)已启动4096环境，冻结684548c发布/独立核远端、22文件三端匹配；175.025实训秒/42轮，已完成critic预热并开始actor，三状态/1123来源/资源正常，尚无新效果结论。约1至3实训小时按固定三重复物理门决定额外5小时，总<=8小时，原监督已ACTIVE。AP03的883训练/原30验证及AMASS179.48GB原始motion清理完成，未恢复旧实验或agent。[启动收据](../data/manifests/supermimic_q1_RF12_launch_observed_20261028.json)。
 
 2026-10-27最终：[RF11结果与交付](README_SUPERMIMIC_Q1_RF11_RESULTS_20261027.md)。4096环境实训3500.266秒，全pipeline COMPLETED；验证0/30提前终止（RF09近一小时2/30、RF10 29/30），但RF09共同前缀根XY0.07904→0.11446m、上肢0.93760→0.93577rad，存活恢复而跟踪仍差。固定抬手腕高不足，舞蹈仍失败。六格图/初末54秒多类MP4及29文件大小SHA交付，36训练/19结果/12媒体检查通过；结果已发布并三端核验，22:45:11本轮监督实际PAUSED，不续训或再开。[完成回执](../data/manifests/supermimic_q1_RF11_completion_audit_20261027.json)。
 

@@ -1,0 +1,195 @@
+{
+  "status": "RF11_MONITOR_ACTIVE",
+  "automation_id": "q1-rf08-4096",
+  "name": "Q1 RF11 4096环境一小时对照监督",
+  "observed_utc": "2026-10-27T13:04:01Z",
+  "automation_update_result": "ACTIVE",
+  "read_back": "View rendered by app",
+  "interval_minutes": 10,
+  "notification_intent": "Only meaningful result, completion, failure or required action; normal progress silent",
+  "scope": "This RF11 only, maximum actual training 3600 seconds. Stop heartbeat after full evaluation/local MP4/six-panel and three-endpoint record delivery; no retries or extra training.",
+  "other_automations_changed": false,
+  "early_observation": {
+    "observed_utc": "2026-10-27T13:04:01Z",
+    "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "pipeline": {
+      "status": "RUNNING",
+      "phase": "train",
+      "started_utc": "2026-10-27T12:56:29.685890+00:00",
+      "process": {
+        "pid": 17370,
+        "start_ticks": 1943459,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "code_commit": "7a3567cd5b89e5cd6282a83aacb61f19590b0434",
+      "error": null
+    },
+    "pipeline_mtime": 1793105789.6813374,
+    "guard": {
+      "status": "RUNNING",
+      "command": [
+        "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/supermimic_q1_hp/activate.py",
+        "-u",
+        "/opt/data/private/ZHY/script/supermimic_q1_hp/worker.py",
+        "--mode",
+        "train",
+        "--runtime",
+        "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+        "--library",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run",
+        "--code-commit",
+        "7a3567cd5b89e5cd6282a83aacb61f19590b0434",
+        "--training-seconds",
+        "3500.0",
+        "--maximum-training-seconds",
+        "3600.0"
+      ],
+      "cwd": "/opt/data/private/ZHY",
+      "started_utc": "2026-10-27T12:56:29.800219+00:00",
+      "controller_pid": 17370,
+      "storage_status": "LOCAL_ONLY",
+      "last_storage_check": {
+        "experiment": {
+          "root": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027",
+          "unique_allocated_bytes": 277544960,
+          "unique_logical_bytes": 277497200,
+          "unique_inodes": 17,
+          "symlinks_not_followed": 0
+        },
+        "source": {
+          "root": "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+          "unique_allocated_bytes": 1368064,
+          "unique_logical_bytes": 1059552,
+          "unique_inodes": 154,
+          "symlinks_not_followed": 0
+        },
+        "free_bytes": {
+          "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027": 1637056937984,
+          "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027": 1637056937984
+        },
+        "shared_memory": {
+          "shared_bytes": 7704535040,
+          "oom_kill": 0,
+          "maximum_bytes": 32212254720
+        },
+        "gpu": {
+          "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+          "memory_mib": 14619,
+          "temperature_c": 52
+        },
+        "training_elapsed_seconds": 435.82468191799853
+      },
+      "error": null,
+      "worker_pid": 17373,
+      "worker_group": 17373
+    },
+    "guard_mtime": 1793106240.1881754,
+    "run": {
+      "status": "RUNNING",
+      "updated_utc": "2026-10-27T13:04:01.314501+00:00",
+      "process": {
+        "pid": 17373,
+        "start_ticks": 1943487,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "iteration": 533,
+      "sim_steps": 5730304,
+      "wm_updates": 5330,
+      "actor_updates": 33,
+      "training_seconds": 436.9503597760013
+    },
+    "run_mtime": 1793106241.3121529,
+    "contract": {
+      "status": "Q1_REAL_GPU_OBSERVATION_GOAL_TRANSITION_CONTRACT_PASSED",
+      "num_envs": 4096,
+      "obs_dim": 80,
+      "goal_dim": 590,
+      "state_dim": 57,
+      "context_dim": 26,
+      "root_feedback": "heading XY and full relative orientation in observation history",
+      "current_joint_error": false,
+      "future_frames": "current+1 through current+10; full relative root position/rotation",
+      "reward_frame": "action result compared against f+1",
+      "physical_control_dt": 0.02
+    },
+    "contract_mtime": 1793105801.177099,
+    "clock": {
+      "started_utc": "2026-10-27T12:56:44.364438+00:00",
+      "started_monotonic": 19449.373372291,
+      "process": {
+        "pid": 17373,
+        "start_ticks": 1943487,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "maximum_seconds": 3600,
+      "soft_stop_seconds": 3500
+    },
+    "clock_mtime": 1793105804.361033,
+    "registered_processes": [
+      {
+        "expected": {
+          "pid": 17370,
+          "start_ticks": 1943459,
+          "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+        },
+        "present": true,
+        "state": "S",
+        "start_ticks": 1943459,
+        "command": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_hp/run_trial.py --mode train --runtime /opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027 --expected-oom-kill 0 --code-commit 7a3567cd5b89e5cd6282a83aacb61f19590b0434 --training-seconds 3500 --maximum-training-seconds 3600 --external-training-stop-seconds 3540 --video-suite /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF09_SOMA300_HP_E4096_T05H_20261027/evaluation/video_suite.json --baseline-evaluation /opt/data/private/ZHY/data/supermimic_for_q1/MG05_RF09_CKPT3500_BASELINE_20261027 --baseline-label RF09_ckpt3500_3424.267689s --comparison-name RF09_1H_RF11_comparison.json --trial-note RF09_recipe_with_only_legal_transition_bin_fix --controller "
+      },
+      {
+        "expected": {
+          "pid": 17373,
+          "start_ticks": 1943487,
+          "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+        },
+        "present": true,
+        "state": "R",
+        "start_ticks": 1943487,
+        "command": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_hp/worker.py --mode train --runtime /opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run --code-commit 7a3567cd5b89e5cd6282a83aacb61f19590b0434 --training-seconds 3500.0 --maximum-training-seconds 3600.0 "
+      }
+    ],
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 14619 MiB, 50, 25 %",
+    "disk_available_bytes": 1637056937984,
+    "shared_memory_bytes": 7709470720,
+    "oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+    "recent_training_evidence": [
+      {
+        "step": 532,
+        "training_seconds": 435.46428654899864,
+        "sim_steps": 5709824,
+        "wm_updates": 5320,
+        "actor_updates": 32,
+        "completed_episodes": 309,
+        "hard_terminations": 268,
+        "normalized_return_sum": 130.8688850402832,
+        "length_steps_sum": 9472,
+        "reward_sum": 564.4789276123047,
+        "transitions": 12288,
+        "reward_mean": 0.045937412728865944,
+        "wm_err8": 0.30236491560935974,
+        "imag_survival_H": 0.29042381048202515
+      },
+      {
+        "step": 533,
+        "training_seconds": 436.5441542929984,
+        "sim_steps": 5718016,
+        "wm_updates": 5330,
+        "actor_updates": 33,
+        "completed_episodes": 193,
+        "hard_terminations": 168,
+        "normalized_return_sum": 79.8793830871582,
+        "length_steps_sum": 5798,
+        "reward_sum": 378.4880676269531,
+        "transitions": 8192,
+        "reward_mean": 0.0462021566927433,
+        "wm_err8": 0.29099592566490173,
+        "imag_survival_H": 0.30749595165252686
+      }
+    ]
+  }
+}

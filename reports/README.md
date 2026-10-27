@@ -1,5 +1,9 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-27：[MG05离线分析](README_SUPERMIMIC_Q1_MG05_SIGNAL_ANALYSIS_20261027.md)完成：验证手势81.72%上肢平方误差为片内持续bias，摆幅总体不小；[上游核查](README_SUPERMIMICHP_Q1_UPDATE_20261027.md)确认两边共有尾bin跨片bug，独立修复逻辑4测试通过但未接runtime。BD02接触探针未精确复现原生轨迹、H32方向未验证，不能宣称根因闭合或效果改善。用户确认25245已停服，等待新入口，停止连接/训练；MG05仍有原生验证和一小时试验待做，服务器同步未完成。
+
+2026-10-27：[MG05](README_SUPERMIMIC_Q1_MG05_DIAGNOSE_TRACKING_20261027.md)开始：上肢策略/奖励、真实足地接触/滑移、模型动作方向三类诊断；唯一子agent核师兄库更新，据证据选观测/tracking修正，随后一次4096环境最多一小时训练。此为最新授权，旧暂停与无目标条目仅历史；尚未启动本轮训练。
+
 2026-10-27：[CS01切换25245容器](README_Q1_CONTAINER_SWITCH_20261027.md)完成连接与必要环境核验。`interactive63856`直接共享原ZHY挂载，RF09最终权重/BD01诊断/参考清单SHA匹配，330参考路径无缺失；CUDA/模型/权重加载通过，0积分/0optimizer，无需复制大数据。工作入口已更新，继续暂停训练；下一步优先上肢策略/奖励、足地真实接触与模型动作方向诊断。[小收据](../data/manifests/q1_container_switch_CS01_20261027.json)。
 
 2026-10-27：[RF09暂停后的BD01瓶颈诊断](README_SUPERMIMIC_Q1_RF09_BOTTLENECK_20261027.md)完成。496次保存轨迹策略前向、0积分/0optimizer，重建回报差小于1.66e-5；验证手势策略目标误差1.184rad、关节相对目标0.062rad，首先是策略目标偏差。手势仍获69.1%最高步奖励、身体朝向项仅满值2.6%；Q1统一模型PD及参考足地关系仍需验证。用户明确先别继续训练，不启动RF10/续训；MG04已完成/get_goal为null，旧active为历史。[小收据](../data/manifests/supermimic_q1_RF09_BD01_diagnosis_20261027.json)。

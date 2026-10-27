@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-27T02:42:54Z",
+  "repository": "humanplus-ai/SuperMimicHP",
+  "default_branch": "feat/x2-embodiment",
+  "pinned_q1_source": "310244b73e45775744a75b789eb25a6c9c5a81c9",
+  "verified_upstream_head": "aa625adf04f97ad8bffe4ffe5ca5db2da84e6986",
+  "new_commits": [
+    "d08bd58006b1cf644b95f314ecc83fc166ec5aae",
+    "02937c48729adc9120c9c452582b7a012a3b31ff",
+    "d11821c325050b29fa024203117574c0c9475b32",
+    "aa625adf04f97ad8bffe4ffe5ca5db2da84e6986"
+  ],
+  "unchanged_source_blobs_in_both_commits": {
+    "src/unisupermimic/rl/algos/supermimic/learner.py": "bb0d8d3ebe473ae462348bdcd406a811933909f9",
+    "src/unisupermimic/tasks/motion_tracking/x2/supermimic/mdp.py": "b016056cdfd27b575fb709047d109de91e4ff960",
+    "src/unisupermimic/tasks/motion_tracking/x2/supermimic/motion.py": "df17e3e9abcf7b635ef3b15e1e91dbe95686d3ed",
+    "src/unisupermimic/tasks/motion_tracking/x2/supermimic/manager_terms.py": "5ce53121768fc9cf61ebbac5fb49a6419511c927"
+  },
+  "classification": "HISTORICAL_CODE_ASSET_DIAGNOSTIC_AND_EVALUATION_ARCHIVE",
+  "new_soma_policy_observation_reward_or_learner_formula": false,
+  "exact_upstream_100_15_selection_now_available": true,
+  "runtime_probe": {
+    "status": "CPU_SOURCE_FUNCTION_PROBE_COMPLETED",
+    "server_port": 25245,
+    "runtime_source": "/opt/data/private/ZHY/data/references/supermimichp/AP01_runtime_20261026/src/unisupermimic/tasks/motion_tracking/q1/supermimic/manager_terms.py",
+    "runtime_source_sha256": "f4b9009d3ed8059e87f0c1cee4bd2e26722769f90b97a10e9f916df010d734b9",
+    "library_manifest": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json",
+    "library_manifest_sha256": "ba9ac284a018cdd40eea5200d2c157b7da7cfdae89e6c820eed2c9748cc83337",
+    "functions_executed_from_actual_AST": ["sample_start_frames", "start_bin_probabilities", "update_start_bin_returns"],
+    "tensor_backend": "actual torch CPU",
+    "rng": "force each bin exactly once, random fraction 0.37",
+    "length_formula": "floor(((actual_csv_rows-1)/30)/0.02)+1",
+    "all_csv_row_counts_match_manifest": true,
+    "cuda_initialized": false,
+    "integration_steps": 0,
+    "optimizer_steps": 0,
+    "source_or_environment_modified": false,
+    "train": {
+      "clips": 300,
+      "bins": 1710,
+      "zero_width_tail_bins": 15,
+      "affected_clip_fraction": 0.05,
+      "initial_uniform_bad_bin_probability": 0.008771928958594799,
+      "hypothetical_after_once_1step_normalized_minus1_timeout_probability": 0.23241275548934937,
+      "affected": [
+        {"name": "walk_arc_cw_stop_001__A069", "frames_50hz": 251, "bin": 105},
+        {"name": "walk_arc_cw_stop_R_001__A232", "frames_50hz": 301, "bin": 304},
+        {"name": "walk_sideway_090_start_001__A033", "frames_50hz": 251, "bin": 372},
+        {"name": "jog_ff_loop_180_R_004__A382", "frames_50hz": 151, "bin": 617},
+        {"name": "jog_ff_loop_180_R_004__A385", "frames_50hz": 151, "bin": 741},
+        {"name": "jog_backward_stop_001__A035", "frames_50hz": 301, "bin": 786},
+        {"name": "crouch_turn_270_R_001__A244", "frames_50hz": 201, "bin": 860},
+        {"name": "crouch_turn_270_R_002__A246", "frames_50hz": 201, "bin": 905},
+        {"name": "yawn_R_003__A141", "frames_50hz": 201, "bin": 1097},
+        {"name": "salute_001__A070", "frames_50hz": 151, "bin": 1159},
+        {"name": "boss_dust_brushing_R_004__A143", "frames_50hz": 301, "bin": 1319},
+        {"name": "chefs_kiss_R_001__A071", "frames_50hz": 151, "bin": 1337},
+        {"name": "dance_vouge_handbag_walk_180_R_loop_fast_001__A322", "frames_50hz": 451, "bin": 1547},
+        {"name": "jump_ff_270_002__A273", "frames_50hz": 101, "bin": 1667},
+        {"name": "jump_ff_360_R_001__A385", "frames_50hz": 101, "bin": 1701}
+      ]
+    },
+    "validation": {
+      "clips": 30,
+      "bins": 173,
+      "zero_width_tail_bins": 1,
+      "affected_clip_fraction": 0.03333333333333333,
+      "initial_uniform_bad_bin_probability": 0.005780346691608429,
+      "hypothetical_after_once_1step_normalized_minus1_timeout_probability": 0.18879126012325287,
+      "affected": [
+        {"name": "rubbing_eyes_fist_002__A142", "frames_50hz": 201, "bin": 89}
+      ]
+    },
+    "all_detected_bad_bins_cross_clip_in_reward_f_plus_1": true,
+    "detected_global_array_out_of_bounds_in_this_library": false,
+    "actual_rf09_bad_sampling_mass_known": false,
+    "actual_bin_G_saved_in_checkpoint": false,
+    "sensitivity_warning": "The 23.24% and 18.88% values are controlled hypothetical one-step negative-return updates, not observed RF09 sampling proportions."
+  },
+  "upstream_episode_accounting_archive": {
+    "path": "docs/assets/x2/soma_evaluation_20261025/raw/episode_statistics_audit.json",
+    "author_report_only_not_independently_rerun": true,
+    "accounting_passed": true,
+    "episodes": 665,
+    "negative_episodes": 289,
+    "mean_step_normalized_reward": 0.7763693018853665,
+    "mean_episode_normalized_reward": -0.6111426099350578,
+    "first_step_reward_mean": -1.0288170726364296,
+    "ongoing_step_reward_mean": 0.8043805792566452,
+    "tracking": 0.6650454214641026,
+    "action_rate_penalty": -1.2200314792811422,
+    "joint_limit_penalty": -0.05615654821642265
+  },
+  "recommendations": [
+    "Build sampling bins over valid transitions, ensure f < clip_end, keep all clips and durations.",
+    "Audit reset first-step action-rate penalties and actual sampling frequencies before interpreting negative episode averages.",
+    "Validate explicit current joint error and non-saturating tracking costs against physical metrics; no upstream evidence yet proves their gain.",
+    "Treat armature-based PD as inherited heuristic, not total effective joint inertia or calibrated Q1 gains.",
+    "Use actual contact forces and action finite differences to test support and world-model direction, rather than near-ground proxy or one-step model loss."
+  ],
+  "candidate_action_rate_unit_review": {
+    "original": "-0.1 * sum((a-prev)^2) * 0.02",
+    "proposed": "-0.1 * mean((alpha*(a-prev))^2) * 0.02",
+    "actual_q1_alpha_by_effort": {"36Nm": 0.56993165798815, "22Nm": 0.34829156877053613},
+    "single_joint_new_to_old_penalty_ratio": {"36Nm": 0.014764640671687347, "22Nm": 0.005513955312574596},
+    "all_joints_0_1rad_step_proposed_penalty": 0.00002,
+    "fraction_of_0_1_max_step_reward": 0.0002,
+    "recommended": "Calibrate physical-target smoothness explicitly; consider sum or a larger mean coefficient, and check reset previous-action consistency. Do not select by reward scale alone.",
+    "training_configuration_modified_by_this_review": false
+  },
+  "training_started": false,
+  "upstream_install_or_training_scripts_executed": false,
+  "upstream_media_or_checkpoints_exported": false,
+  "external_messages_sent": false,
+  "report": "reports/README_SUPERMIMICHP_Q1_UPDATE_20261027.md"
+}

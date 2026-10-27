@@ -1,6 +1,10 @@
 # RF10：C01关节反馈与tracking一小时验证
 
-记录日期：2026-10-27，北京时间。阶段：待发布冻结后启动；当前尚未训练。属于[MG05](README_SUPERMIMIC_Q1_MG05_DIAGNOSE_TRACKING_20261027.md)唯一正式试验，不续训RF09或profile，不自动重试/延时，不开agent。
+记录日期：2026-10-27，北京时间。阶段：RUNNING，18:47:01 controller启动、18:47:19实际训练开始。属于[MG05](README_SUPERMIMIC_Q1_MG05_DIAGNOSE_TRACKING_20261027.md)唯一正式试验，不续训RF09或profile，不自动重试/延时，不开agent。
+
+冻结提交`83dcc76bf1cd02e4928493e17b4522cb9d5ee5a5`已push Q1并独立ls-remote匹配；21文件936839字节阶段payload通过，Mac/权威checkout/服务器SHA逐项相同。controller6852/start_ticks1166688、worker6855/start_ticks1166718，boot见下；18:55:37实际/proc身份匹配，三状态RUNNING，609学习轮/6508544转移、WM6090/actor109、实训498.182552秒。GPU14689MiB/53度、共享6351872000字节、OOM0、余盘1647293190144字节、本轮约283MB。[启动现场](../data/manifests/supermimic_q1_RF10_launch_observed_20261027.json)。这些是历史观测，恢复需重新核身份/进度，不按PID单独判存活。
+
+原生4096/obs102/goal590/状态57/context26转移契约在正式worker再次通过。运行中不改冻结来源，后续报告提交不等于训练代码变化。预计19:45:40左右达到软预算，实际结束以receipt为准，不承诺此时已完成评测/视频。
 
 ## 方案与依据
 
@@ -25,7 +29,7 @@
 
 服务器根下，用既有Python执行`script/supermimic_q1_hp/run_trial.py --mode train --runtime /opt/data/private/ZHY/data/references/supermimichp/TRACKING_C01_runtime_20261027 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF10_SOMA300_C01_E4096_MAX01H_20261027 --expected-oom-kill 0 --code-commit <已发布40位HEAD> --training-seconds 3500 --maximum-training-seconds 3600 --external-training-stop-seconds 3540 --video-suite /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF09_SOMA300_HP_E4096_T05H_20261027/evaluation/video_suite.json --baseline-evaluation /opt/data/private/ZHY/data/supermimic_for_q1/MG05_RF09_CKPT3500_BASELINE_20261027 --baseline-label RF09_ckpt3500_3424.267689s --comparison-name RF09_1H_RF10_comparison.json --trial-note C01_current_joint_error_joint_tracking_orientation_bandwidth_and_legal_transition_bins --detach`。
 
-此命令仅为本轮计划；恢复读真实status/guard/run状态与boot/PID/start_ticks，不重复执行。训练controller/worker身份、实际开始/结束、转移数/更新数和冻结来源审计待启动后补。初始化/profile不冒充正式进度。
+此为已实际执行命令，code-commit使用上述冻结40位SHA；恢复读真实status/guard/run状态与boot/PID/start_ticks，不重复执行。转移数/更新数与终态审计结束后补。初始化/profile不冒充正式进度。
 
 ## 评测与交付
 
@@ -34,3 +38,5 @@
 比较完成/跌倒、根移动/漂移、腿和上肢关节误差、腕部轨迹/抬手高度及时序；分别给共同前缀与完整执行。新旧reward公式分别在同轨迹上报告，不拿更换reward的数值判优。已有失败普通走保留，不根据学后表现换片。
 
 自动pipeline生成初末≥30秒多类MP4、六格PNG/PDF/原值与500iteration均值CSV及来源收据，直接交付Mac对应实验目录，不建网站。权重与大轨迹留服务器LOCAL_ONLY，小记录核大小/SHA同步Mac与Git，重要阶段README/索引/CURRENT_STATE及时更新。最终好坏如实结算，全部证据交付后再完成MG05。
+
+新增独立`compare_q1_hp_tracking_heads.py`在同物理状态分别计算旧/新analytic tracking，明确排除动作率/限位罚项；不调用策略、积分或optimizer。真实330片SELF预检通过，两份标签评分相同，上肢RMSE重算与保存结果误差小于1e-6。[收据](../data/manifests/supermimic_q1_RF10_tracking_heads_preflight_20261027.json)。结果审计入口已支持不重复同库benchmark的pipeline；尚未运行正式终后审计。这些独立project_tools文件不在运行冻结清单内，没有修改当前worker或MDP。

@@ -19,8 +19,10 @@ def close(left, right):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, allow_abbrev=False)
-    for name in ("trial", "runtime", "library", "benchmark-library", "output"):
+    for name in ("trial", "runtime", "library", "output"):
         parser.add_argument("--" + name, type=Path, required=True)
+    parser.add_argument("--benchmark-library", type=Path)
+    parser.add_argument("--baseline-evaluation", type=Path)
     args = parser.parse_args()
     if args.output.exists():
         raise FileExistsError(args.output)
@@ -41,8 +43,12 @@ def main():
     status, receipt, plan = (read(trial / name) for name in
                              ("status.json", "run/receipt.json", "plan.json"))
     check("pipeline_completed", status["status"] == "COMPLETED")
-    for phase in ("train", "evaluation", "dashboard", "benchmark", "analysis",
-                  "benchmark_analysis", "baseline_comparison"):
+    phases = ["train", "evaluation", "dashboard", "analysis"]
+    if args.benchmark_library:
+        phases.extend(("benchmark", "benchmark_analysis"))
+    if args.benchmark_library or args.baseline_evaluation:
+        phases.append("baseline_comparison")
+    for phase in phases:
         guard_path = trial / (phase + "_guard.json")
         guard = read(guard_path)
         check(phase + "_worker_reaped", guard["status"] == "WORKER_COMPLETED"
@@ -54,8 +60,10 @@ def main():
     check("frozen_sources_unchanged_through_postprocessing", not changed,
           {"files": len(plan["source"]), "changed": changed})
     kin = Q1Kinematics(args.runtime / "q1_assets/scene.xml", "cpu")
-    for folder, library_path in ((trial / "evaluation", args.library),
-                                 (trial / "benchmark", args.benchmark_library)):
+    folders = [(trial/"evaluation", args.library)]
+    if args.benchmark_library:
+        folders.append((trial/"benchmark", args.benchmark_library))
+    for folder, library_path in folders:
         library = read(library_path)
         rows = library["splits"]["train"] + library["splits"]["validation"]
         motion = MotionLib([row["path"] for row in rows], kin, "cpu", src_fps=30.)

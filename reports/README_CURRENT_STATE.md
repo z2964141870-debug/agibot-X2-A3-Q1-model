@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-27 18:55最新：[RF10](README_SUPERMIMIC_Q1_RF10_C01_20261027.md)实际RUNNING，controller18:47:01/训练18:47:19开始；冻结`83dcc76bf1cd02e4928493e17b4522cb9d5ee5a5`已push/远端匹配、21小文件三端SHA一致。controller6852/start_ticks1166688、worker6855/start_ticks1166718/boot`4d859008-4c83-4a6d-814d-cbb9dfe885c9`现场身份匹配；609轮/6508544转移、WM6090/actor109、训练498.18秒，GPU14689MiB/53度、共享6.35GB/OOM0、盘余1.647TB，三状态RUNNING。正式obs102契约通过；不要重复启动或改冻结来源。目标软3500秒/硬3600，预计19:45:40达到软目标，后接初末评测/六格/54秒MP4/共同前缀。MG05 A/B完成、C进行中、D/E待；下方未启动/paused均历史。
+
 2026-10-27最新：[RF10 C01计划](README_SUPERMIMIC_Q1_RF10_C01_20261027.md)已具体登记，正式训练尚未启动。4096 profile P01于18:32:14全流程通过并回收，CPU/原生/replay/H32更新契约齐备；RF09 ckpt3500内部3424.267689秒，独立330片基线完成。下一步本阶段发布/远端核SHA/小记录镜像后，唯一新RF10从零≤3600秒，再自动初末评测/共同前缀/六格与多类MP4。MG05实际active，A/B完成、C/D/E待，不重复profile或基线。
 
 2026-10-27 18:32最新：[MG05原生接触/方向与C01](README_SUPERMIMIC_Q1_MG05_NATIVE_CANDIDATE_20261027.md)。get_goal实际active，原四项目标继续，以下paused/无活动目标/等待入口均为历史。A已完成有界原生诊断：普通走存在单支撑、接触点平均滑速0.16-0.29m/s，H32综合方向平均余弦0.191；重复不观察rollout也有差异，未锁定唯一腿部因果。V03共496步读接触未改所选qpos/qvel/warmstart，未声称精确复现旧RF09。

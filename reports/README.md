@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-27 18:55：[RF10实际启动](README_SUPERMIMIC_Q1_RF10_C01_20261027.md)，4096环境/C01/同300+30参考/从零；18:47:19进入训练，冻结83dcc76已发布独立核SHA、21文件三端相同。609轮/WM6090/actor109及真实进程/资源正常，≤3600秒预算不变；初末效果/六格/长MP4未完成，不以训练日志宣称改善。[启动现场](../data/manifests/supermimic_q1_RF10_launch_observed_20261027.json)。
+
 2026-10-27：[C01完整profile与RF09近一小时基线](README_SUPERMIMIC_Q1_MG05_NATIVE_CANDIDATE_20261027.md)通过，4096环境/102维转移、WM/actor/H32/critic有限，峰值分配6.35GB、worker正常回收；基线ckpt3500内部3424.267689秒，330片评测完成。[RF10计划](README_SUPERMIMIC_Q1_RF10_C01_20261027.md)待源码发布/远端核验后独立从零一次，≤3600秒；正式训练尚未启动。
 
 2026-10-27 18:32：[MG05原生诊断/C01候选](README_SUPERMIMIC_Q1_MG05_NATIVE_CANDIDATE_20261027.md)已取得真实受力/滑速与H32闭环方向；普通走已有单支撑/切换、存在较大接触点滑速，H32方向弱，未锁定唯一因果。重复不观察rollout亦有差异，496步接触读取未改所选状态。候选实际构建及CPU5组契约通过，4096完整profile进行中；MG05工具active，原paused条目为历史。尚无新正式训练，无新agent。

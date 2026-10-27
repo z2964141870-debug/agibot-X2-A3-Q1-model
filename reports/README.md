@@ -1,5 +1,9 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-27：[C01完整profile与RF09近一小时基线](README_SUPERMIMIC_Q1_MG05_NATIVE_CANDIDATE_20261027.md)通过，4096环境/102维转移、WM/actor/H32/critic有限，峰值分配6.35GB、worker正常回收；基线ckpt3500内部3424.267689秒，330片评测完成。[RF10计划](README_SUPERMIMIC_Q1_RF10_C01_20261027.md)待源码发布/远端核验后独立从零一次，≤3600秒；正式训练尚未启动。
+
+2026-10-27 18:32：[MG05原生诊断/C01候选](README_SUPERMIMIC_Q1_MG05_NATIVE_CANDIDATE_20261027.md)已取得真实受力/滑速与H32闭环方向；普通走已有单支撑/切换、存在较大接触点滑速，H32方向弱，未锁定唯一因果。重复不观察rollout亦有差异，496步接触读取未改所选状态。候选实际构建及CPU5组契约通过，4096完整profile进行中；MG05工具active，原paused条目为历史。尚无新正式训练，无新agent。
+
 2026-10-27：[CS02恢复25386](README_Q1_CONTAINER_RESTORE_CS02_20261027.md)完成连接、共享数据与CUDA/模型检查；RF09权重/清单SHA保持、330参考无缺失，3090已换卡、boot更新/OOM0、盘余约1.65TB。停服前V02小结果与原生检查日志已取回Mac并核SHA；日志实际有后端对象清单，纠正此前prepare失败阶段的判断，原生受力/H32仍未验证。本次0积分/0optimizer，无新训练/agent，MG05工具仍paused；最新入口覆盖下方停服等待记录。[收据](../data/manifests/q1_container_restore_CS02_20261027.json)。
 
 2026-10-27：[MorphMimic只读初评](README_MORPHMIMIC_REVIEW_20261027.md)完成，固定main提交`aa40fe46a7fa995ba7a7354ad065a2c8ad64a302`。值得借鉴多形态映射/坐标与模型稳定性处理；默认位置反馈语义、29关节强映射及显存要求均不能直接套用Q1。作者大规模结果与G1真机不作Q1复现证据；无新安装/仿真/训练/agent，服务器仍停服，MG05未恢复。

@@ -67,6 +67,8 @@ def execute(args):
     source_paths.update((args.runtime / "q1_assets").glob("*.xml"))
     source_paths.update(Path("/opt/data/private/ZHY/script/supermimic_for_q1/supermimic/kinematics").glob("*.py"))
     source_paths.update((args.runtime / "q1_config.yaml", args.runtime / "q1_adapter.json"))
+    if (args.runtime/"candidate_source.json").exists():
+        source_paths.add(args.runtime/"candidate_source.json")
     source_paths.add(HERE.parent/"project_tools/analyze_q1_hp_trial.py")
     adapter = json.loads((args.runtime / "q1_adapter.json").read_text())
     source_paths.update(Path(adapter["source_model"]).parent.parent.rglob("*"))
@@ -74,6 +76,8 @@ def execute(args):
         source_paths.add(args.video_suite)
     if args.benchmark_library:
         source_paths.add(args.benchmark_library)
+    if args.baseline_evaluation:
+        source_paths.update(args.baseline_evaluation/name for name in ("final.json", "final_trajectory.npz", "receipt.json"))
     plan = {"phase": args.mode, "command": command, "code_commit": args.code_commit, "source": [identity(p) for p in sorted(source_paths) if p.is_file()], "library": identity(args.library), "runtime_source": identity(args.runtime / "upstream_source.json"), "config": identity(args.runtime / "q1_config.yaml"), "q1_adapter": identity(args.runtime / "q1_adapter.json"), "no_automatic_retry": True, "maximum_training_seconds": args.maximum_training_seconds, "soft_training_seconds": args.training_seconds, "external_training_stop_seconds": args.external_training_stop_seconds, "training_grace_seconds": 45, "main_change": args.trial_note}
     save(args.output / "plan.json", plan)
     try:
@@ -101,8 +105,10 @@ def execute(args):
             phases.append(("analysis",["--runtime",str(args.runtime),"--library",str(args.library),"--trial",str(args.output),"--output",str(args.output/"common_prefix_analysis.json")],str(HERE.parent/"project_tools/analyze_q1_hp_trial.py")))
             if args.benchmark_library:
                 phases.append(("benchmark_analysis",["--runtime",str(args.runtime),"--library",str(args.benchmark_library),"--trial",str(args.output),"--evaluation-dir",str(args.output/"benchmark"),"--output",str(args.output/"benchmark_common_prefix_analysis.json")],str(HERE.parent/"project_tools/analyze_q1_hp_trial.py")))
-            if args.benchmark_library and args.baseline_evaluation:
-                phases.append(("baseline_comparison",["--runtime",str(args.runtime),"--library",str(args.benchmark_library),"--trial",str(args.output),"--evaluation-dir",str(args.output/"benchmark"),"--baseline-evaluation",str(args.baseline_evaluation),"--baseline-label","RF08 final policy","--final-label",args.output.name+" final policy","--output",str(args.output/"RF08_RF09_benchmark_comparison.json")],str(HERE.parent/"project_tools/analyze_q1_hp_trial.py")))
+            if args.baseline_evaluation:
+                comparison_library = args.benchmark_library or args.library
+                evaluation_dir = args.output/("benchmark" if args.benchmark_library else "evaluation")
+                phases.append(("baseline_comparison",["--runtime",str(args.runtime),"--library",str(comparison_library),"--trial",str(args.output),"--evaluation-dir",str(evaluation_dir),"--baseline-evaluation",str(args.baseline_evaluation),"--baseline-label",args.baseline_label,"--final-label",args.output.name+" final policy","--output",str(args.output/args.comparison_name)],str(HERE.parent/"project_tools/analyze_q1_hp_trial.py")))
             for phase, flags, entry in phases:
                 status.update(phase=phase)
                 save(status_path, status)
@@ -136,10 +142,14 @@ def main():
     p.add_argument("--trial-note",default="HP multi-motion SOMA, root feedback/history/future targets, Q1 model-based full-effort implicit PD and GPU Warp backend")
     p.add_argument("--video-suite",type=Path)
     p.add_argument("--benchmark-library",type=Path,help="Fixed RF08 references evaluated with this trial's initial/final policies")
-    p.add_argument("--baseline-evaluation",type=Path,help="RF08 saved physical evaluation for a common-frame comparison")
+    p.add_argument("--baseline-evaluation",type=Path,help="Saved physical evaluation for a common-frame comparison")
+    p.add_argument("--baseline-label",default="RF08 final policy")
+    p.add_argument("--comparison-name",default="RF08_RF09_benchmark_comparison.json")
     p.add_argument("--detach", action="store_true")
     p.add_argument("--controller", action="store_true")
     args = p.parse_args()
+    if Path(args.comparison_name).name != args.comparison_name or not args.comparison_name.endswith(".json"):
+        p.error("comparison-name must be a JSON filename inside this experiment")
     if not 0 < args.training_seconds < args.external_training_stop_seconds or args.external_training_stop_seconds+45 > args.maximum_training_seconds:
         p.error("Require positive soft target < external stop and a 45-second grace inside the maximum")
     args.output = args.output.resolve()

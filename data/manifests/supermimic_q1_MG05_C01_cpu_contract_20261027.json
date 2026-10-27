@@ -1,0 +1,54 @@
+{
+  "status": "CPU_TENSOR_CONTRACTS_PASSED_NOT_PHYSICALLY_VALIDATED",
+  "created_utc": "2026-10-27T10:00:04.088476+00:00",
+  "checks": [
+    "reference_tensors_preserved_and_bins_exclude_terminal_starts",
+    "current_joint_error_and_unchanged_base_observation_goal",
+    "batch_history_noise_consistency_and_observation_derivative",
+    "reward_decomposition_pose_gradient_and_tracking_maximum",
+    "checkpoint_input_schema_contract"
+  ],
+  "runtime": "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C01_runtime_20261027",
+  "candidate_source": {
+    "bytes": 2788,
+    "sha256": "f46399f7980e4861742c11ae6ccf64b868f2359778a996b7abfe7fd4800b0d8b"
+  },
+  "reference_files": [
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/walk_ff_stop_180_R_002__A095.csv",
+      "bytes": 64184,
+      "sha256": "fc7d78fe7e1773c1359ab7c27b677688d78bd32a1195d113e60e173fdc1b0286"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/walk_ff_start_180_R_002__A071.csv",
+      "bytes": 42078,
+      "sha256": "8f1e447585ea3665b4b639f5ddcb43cfe4732b68e481918139504a820e940993"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/triumph_two_handed_001__A058.csv",
+      "bytes": 54720,
+      "sha256": "f9c2ec43409016c784b02a9141f148ae5ea20194da0fe15b2bb95c562d939158"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/alone_003__A142.csv",
+      "bytes": 95610,
+      "sha256": "e7e3c68c2e3f8020fcc47e209fde66238b269d4ef00302e7a609b7423aaba8ce"
+    }
+  ],
+  "options": {
+    "variant": "joint_tracking",
+    "repair_transition_bins": true,
+    "joint_error_observation": true,
+    "joint_tracking_reward": true,
+    "future_goal_padding_changed": false,
+    "controller_or_reset_changed": false
+  },
+  "obs_dim": 102,
+  "goal_dim": 590,
+  "tested_states": 12,
+  "old_input_schema_rejected": true,
+  "physics_steps": 0,
+  "optimizer_updates": 0,
+  "cuda_initialized": false,
+  "limits": "Tensor and analytic-head checks only. Native command/reset, replay/imagine rollout, physical action directions and training remain unvalidated."
+}

@@ -1,5 +1,11 @@
 # YUANQI 当前状态与下一步
 
+2026-10-27最新：[RF10 C01计划](README_SUPERMIMIC_Q1_RF10_C01_20261027.md)已具体登记，正式训练尚未启动。4096 profile P01于18:32:14全流程通过并回收，CPU/原生/replay/H32更新契约齐备；RF09 ckpt3500内部3424.267689秒，独立330片基线完成。下一步本阶段发布/远端核SHA/小记录镜像后，唯一新RF10从零≤3600秒，再自动初末评测/共同前缀/六格与多类MP4。MG05实际active，A/B完成、C/D/E待，不重复profile或基线。
+
+2026-10-27 18:32最新：[MG05原生接触/方向与C01](README_SUPERMIMIC_Q1_MG05_NATIVE_CANDIDATE_20261027.md)。get_goal实际active，原四项目标继续，以下paused/无活动目标/等待入口均为历史。A已完成有界原生诊断：普通走存在单支撑、接触点平均滑速0.16-0.29m/s，H32综合方向平均余弦0.191；重复不观察rollout也有差异，未锁定唯一腿部因果。V03共496步读接触未改所选qpos/qvel/warmstart，未声称精确复现旧RF09。
+
+C01独立runtime实际生成并CPU5组/12状态契约通过：obs102、合法bins、直接关节tracking及朝向带宽0.8，保持控制/参考/H32。4096完整profile于18:29:55运行中，根`data/supermimic_for_q1/TRACKING_C01_PROFILE_P01_20261027`，controller3913/start_ticks1064084；恢复必须核现场身份，不凭该历史PID判运行。正式RF10未启动，下一步完成profile、RF09 ckpt3500同库基线、发布冻结后进行唯一≤3600秒试验。不开agent，不自动续训。唯一当前入口25386/18873及Python见下方CS02。
+
 2026-10-27 17:37最新：[CS02](README_Q1_CONTAINER_RESTORE_CS02_20261027.md)已恢复用户25386，hostname`interactive40173`、boot`4d859008-4c83-4a6d-814d-cbb9dfe885c9`，原ZHY共享挂载未变。RF09权重与清单SHA一致、330参考路径无缺失，CUDA/模型/权重加载通过，GPU换为3090 `GPU-26028785-9fb9-45af-e614-4cc53af15d08`，检查后15MiB/26度，OOM0、盘余约1.65TB。停服小结果/日志已取回并核SHA，实际日志有backend/attrs，139具体退出阶段仍未明；原生接触/H32与候选契约待。本次0新积分/0optimizer/无训练/无agent，MG05工具仍paused且未完成；下方等待新入口为历史。[收据](../data/manifests/q1_container_restore_CS02_20261027.json)。
 
 2026-10-27：[MorphMimic只读初评](README_MORPHMIMIC_REVIEW_20261027.md)已保存。它扩展跨机器人世界模型/策略共享和五点输入；默认缺位置纠偏、29关节完整映射及上游报告显存占用均需Q1适配，不能直接替换现主线。未安装/仿真/训练，也未恢复MG05；等待用户新服务器入口。

@@ -141,6 +141,7 @@ def main():
     p.add_argument("--output",type=Path,required=True)
     p.add_argument("--video-suite",type=Path)
     p.add_argument("--skip-videos",action="store_true",help="Quantitative fixed-benchmark evaluation only")
+    p.add_argument("--checkpoint",type=Path,help="Evaluate only this independent checkpoint, using the final result label")
     args=p.parse_args()
     args.output.mkdir(parents=True,exist_ok=False)
     library=json.loads(args.library.read_text())
@@ -153,11 +154,12 @@ def main():
     save(combined,{"splits":{"train":rows},"original_library":identity(args.library)})
     env=None
     results={"started_utc":now(),"library":identity(args.library),"evaluations":{}}
+    labels=("final",) if args.checkpoint else ("initial","final")
     try:
         options=SimpleNamespace(runtime=args.runtime,library=combined,output=args.output)
         _,env,_=prepare(options,num_envs=len(rows),eval_mode=True)
-        for label in ("initial","final"):
-            checkpoint_path=args.run/(label+".pt")
+        for label in labels:
+            checkpoint_path=args.checkpoint or args.run/(label+".pt")
             checkpoint=torch.load(checkpoint_path,map_location="cuda:0",weights_only=True)
             trace=rollout(env,checkpoint)
             np.savez_compressed(args.output/(label+"_trajectory.npz"),**trace)
@@ -170,14 +172,14 @@ def main():
         # Persist both quantitative outcomes before any expensive software-EGL
         # rendering, so their interpretation never waits on movie production.
         if not args.skip_videos:
-            for label in ("initial","final"):
+            for label in labels:
                 with np.load(args.output/(label+"_trajectory.npz"),allow_pickle=False) as saved:
                     trace={k:saved[k] for k in saved.files}
                 result=json.loads((args.output/(label+".json")).read_text())
                 result["video"]=render_suite(args.runtime,trace,env,rows,suite,args.output/(label+".mp4"),label)
                 save(args.output/(label+".json"),result)
                 del trace
-        results.update(status="INITIAL_FINAL_FULL_LIBRARY_PHYSICAL_EVALUATION_COMPLETED",completed_utc=now())
+        results.update(status="SINGLE_CHECKPOINT_FULL_LIBRARY_PHYSICAL_EVALUATION_COMPLETED" if args.checkpoint else "INITIAL_FINAL_FULL_LIBRARY_PHYSICAL_EVALUATION_COMPLETED",completed_utc=now())
         save(args.output/"receipt.json",results)
     finally:
         if env is not None:

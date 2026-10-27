@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-27 17:37最新：[CS02](README_Q1_CONTAINER_RESTORE_CS02_20261027.md)已恢复用户25386，hostname`interactive40173`、boot`4d859008-4c83-4a6d-814d-cbb9dfe885c9`，原ZHY共享挂载未变。RF09权重与清单SHA一致、330参考路径无缺失，CUDA/模型/权重加载通过，GPU换为3090 `GPU-26028785-9fb9-45af-e614-4cc53af15d08`，检查后15MiB/26度，OOM0、盘余约1.65TB。停服小结果/日志已取回并核SHA，实际日志有backend/attrs，139具体退出阶段仍未明；原生接触/H32与候选契约待。本次0新积分/0optimizer/无训练/无agent，MG05工具仍paused且未完成；下方等待新入口为历史。[收据](../data/manifests/q1_container_restore_CS02_20261027.json)。
+
 2026-10-27：[MorphMimic只读初评](README_MORPHMIMIC_REVIEW_20261027.md)已保存。它扩展跨机器人世界模型/策略共享和五点输入；默认缺位置纠偏、29关节完整映射及上游报告显存占用均需Q1适配，不能直接替换现主线。未安装/仿真/训练，也未恢复MG05；等待用户新服务器入口。
 
 2026-10-27最新：用户确认25245服务器已经停止，等待新SSH/密码，期间继续可行离线分析。旧入口不再连接、不自动重启；本轮无正式训练。MG05本次get_goal实际为paused，四项目标未完成，不创建/恢复旧目标。[离线分析与恢复顺序](README_SUPERMIMIC_Q1_MG05_SIGNAL_ANALYSIS_20261027.md)保存：验证手势81.72%上肢平方误差为片内持续bias；[上游核查](README_SUPERMIMICHP_Q1_UPDATE_20261027.md)确认train15/300片尾bin跨片。候选独立构建器、关节误差/奖励与采样overlay已写，16项离线测试及实际MDP公式AST检查通过；服务器真实runtime尚未生成或部署，Torch/物理契约未运行。
@@ -36,7 +38,7 @@ Mac根：`/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF09_S
 
 权威Git `/tmp/yuanqi-supermimic-q1-20261023`，Q1分支，远端`git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git`。冻结训练提交`a553b6a5a3c44167042355ff2f2fbd42ff558342`；训练终后审计发布`bbf05063f60d0a6729c4b550d9f81b27c8d989a7`已独立核远端、7文件142940字节三端大小SHA一致。后续报告提交不改变冻结来源。运行完整命令在[RF09运行记录](README_SUPERMIMIC_Q1_RF09_SOMA300_5H_20261027.md)，不能为恢复重复执行。
 
-当前仅用户25245，唯一根`/opt/data/private/ZHY`及data/logs/script/reports。SSH：`ssh -S /tmp/yuanqi-q1-25245.sock -T -p 18872 -o BatchMode=yes -o ConnectTimeout=8 -o 'HostKeyAlias=[59.77.15.15]:25245' root@127.0.0.1`。经Windows转发18872；保留旧桥，不读写认证，不操作师兄容器。25252仅为历史来源，本轮有界只读连接返回关闭，不把断线当丢数据或重启依据。
+当前仅用户25386，唯一根`/opt/data/private/ZHY`及data/logs/script/reports。SSH：`ssh -S /tmp/yuanqi-q1-25386.sock -T -p 18873 -o BatchMode=yes -o ConnectTimeout=8 -o 'HostKeyAlias=[59.77.15.15]:25386' root@127.0.0.1`。Windows桥控制socket`/tmp/yuanqi-windows-25386.sock`；不读写认证，不操作师兄容器。25245/25252均为历史入口，不再探测，不把历史断线当丢数据依据。
 
 Python `data/environments/supermimic_q1_hp_20261026/bin/python`，经`script/supermimic_q1_hp/activate.py`。runtime `data/references/supermimichp/AP01_runtime_20261026`、上游`310244b73e45775744a75b789eb25a6c9c5a81c9`。RF09库`data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json`。4096env/WM1024×10/actor1024-H32/critic5×4/UTD.4、BF16/compile、seed0、heading XY/朝向历史及完整未来根/关节参考，Q1 full effort/模型推导PD15.791367/1.005310。师兄实际1024环境，不称全部条件等同。
 

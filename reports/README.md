@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-27：[CS02恢复25386](README_Q1_CONTAINER_RESTORE_CS02_20261027.md)完成连接、共享数据与CUDA/模型检查；RF09权重/清单SHA保持、330参考无缺失，3090已换卡、boot更新/OOM0、盘余约1.65TB。停服前V02小结果与原生检查日志已取回Mac并核SHA；日志实际有后端对象清单，纠正此前prepare失败阶段的判断，原生受力/H32仍未验证。本次0积分/0optimizer，无新训练/agent，MG05工具仍paused；最新入口覆盖下方停服等待记录。[收据](../data/manifests/q1_container_restore_CS02_20261027.json)。
+
 2026-10-27：[MorphMimic只读初评](README_MORPHMIMIC_REVIEW_20261027.md)完成，固定main提交`aa40fe46a7fa995ba7a7354ad065a2c8ad64a302`。值得借鉴多形态映射/坐标与模型稳定性处理；默认位置反馈语义、29关节强映射及显存要求均不能直接套用Q1。作者大规模结果与G1真机不作Q1复现证据；无新安装/仿真/训练/agent，服务器仍停服，MG05未恢复。
 
 2026-10-27：[MG05离线分析](README_SUPERMIMIC_Q1_MG05_SIGNAL_ANALYSIS_20261027.md)与候选准备：验证手势81.72%上肢平方误差为片内持续bias；[上游核查](README_SUPERMIMICHP_Q1_UPDATE_20261027.md)确认共有尾bin跨片bug。独立候选构建/关节误差与tracking/采样overlay及16项离线测试完成，[小收据](../data/manifests/supermimic_q1_MG05_candidate_offline_20261027.json)保存。实际runtime/Torch/原生接触/H32未验证，不能宣称效果改善。用户确认25245停服，等待新入口，停止连接/训练；MG05工具本次paused，目标未完成，服务器同步待。

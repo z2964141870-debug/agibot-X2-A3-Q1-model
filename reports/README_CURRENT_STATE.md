@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 05:36：[唯一RF16已05:35:23正式启动](README_SUPERMIMIC_Q1_RF16_CONTACT_20261029.md)，controller161302/start13696801、worker161313/start13696954、原boot/GPU/完整命令/mtime一致。冻结2c83b944059d4a007f0ca74fa54c0076fda3a357、1532项含330相位metadata；05:36:01初始selected_base repeat0/frame150、0实训/optimizer/资源正常/OOM0，非效果证据。只监督原进程300/600/1200检查/硬1300秒不扩时/重试，07:00物理/优化截止/09:00交付，采纳null，无agent。
+
 2026-10-29 05:33：[RF16 CPU及16/4096零optimizer预检均通过](README_SUPERMIMIC_Q1_RF16_CONTACT_20261029.md)，1532冻结来源含330相位metadata未变/guardreap0/原进程退出，GPU15MiB无计算/OOM0；4096小批24576概率差0及相位/奖励/终止/状态RNG/教师归一化保护通过。各6小文件546929/546965字节Mac/25386 SHA，代码8780110已核三端。下一次仅独立RF16正式20分钟短试验，尚未启动；原RF15不恢复，07:00/09:00截止/采纳null。
 
 2026-10-29 05:25：[独立RF16接触相位短对照准备](README_SUPERMIMIC_Q1_RF16_CONTACT_20261029.md)新代码/原300/30/教师stage02+.5/PD及奖励权重不变，仅足端相位特征与分段改保存contact，0训练。拟4096、软1200/硬1300秒及300/600/1200评测，不扩时或恢复RF15；CPU测试须既有服务器torch环境，Mac系统Python无torch错误已保留。先完成CPU/16与4096预检、正式冻结发布/三端SHA，07:00/09:00截止。

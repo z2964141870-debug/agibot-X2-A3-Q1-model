@@ -1,5 +1,11 @@
 # RF16保存接触相位短对照
 
+## 正式唯一启动
+
+05:35:23实际启动controller161302/start_ticks13696801；worker161313/start_ticks13696954，原boot/GPU一致。正式来源2c83b944059d4a007f0ca74fa54c0076fda3a357/最后4文件15385字节三端SHA及独立远端已核，CPU5反例通过，原模型/动作/奖励实现与预检一致。plan冻结1532项，含330metadata。05:36:01三状态RUNNING、selected_base repeat0/frame150、0实训/0optimizer，完整命令/start_ticks/mtime和GPU计算进程一致、GPU2729MiB/34度/共享17.49GB/OOM0；只是正常初始评测，不是效果改善。
+
+只监督此原进程，约300/600/1200实训秒检查，硬1300/不扩时/不故障重试；全pipeline新源码冻结，报告提交不改变来源。07:00物理/优化截止，09:00非训练交付截止。原RF15已结束，不恢复；完整命令/身份/资源与来源见[启动收据](../data/manifests/supermimic_q1_RF16_launch_observed_20261029.json)。以下“尚未训练”仅前置准备历史。
+
 ## 05:33预检完成
 
 正式开训前仅把独立guard的07:00截止明确限于物理/优化worker，非训练delivery仍受09:00保护；新增CPU边界反例核物理会停、已结束物理后的交付可继续。未改变已预检模型/adapter/reward/动作/训练实现，不重复物理预检；最终正式来源以本次后续冻结commit为准。

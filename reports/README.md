@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+夜间审阅发布4f773c316aa016a062c1a581d8eff69a3c2d5c04/8记录280300字节三端SHA，原监督ACTIVE每10分钟等待用户；[综合结果](README_Q1_OVERNIGHT_RESULTS_20261029.md)与[发布收据](../data/manifests/supermimic_q1_overnight_publication_20261029.json)。
+
 2026-10-29早间：[夜间探索结果、数据及本地视频](README_Q1_OVERNIGHT_RESULTS_20261029.md)为当前审阅入口。动态上肢有可复现幅度收益，步态仍未稳健解决；11份本地54秒视频、真实固定片/全库原值可看，不再新物理/优化，用户采纳null/原监督静默等审阅。
 
 2026-10-29 06:55：[RF16最终数据、四本地视频与脚底曲线](README_SUPERMIMIC_Q1_RF16_RESULTS_20261029.md)已齐，12保存/24媒体检查、102工件68096950字节Mac/25386大小SHA；600秒部分滑移收益不等于自然步态、最终未保持，用户采纳null，原监督静默等待审阅。

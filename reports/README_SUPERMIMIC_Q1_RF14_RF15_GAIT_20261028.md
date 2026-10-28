@@ -26,11 +26,17 @@ RF15具体奖励和延长判据必须在开训前冻结，首小时至少2/3重�
 
 ## 安全、版本与交付
 
+stage01及同协议RF11三重复、stage_decisions/checkpoint_selection共8个小JSON已Mac/25386逐大小SHA匹配，清单见[CPU准备/阶段交付收据](../data/manifests/supermimic_q1_RF15_cpu_preparation_20261028.json)。不重复复制权重或大NPZ。
+
 仅25386与实体根/opt/data/private/ZHY，沿用100GiB余盘、单实验12GiB、30GiB共享cgroup、OOM0、86度、900秒无进展及45秒退出宽限。全pipeline来源冻结，失败保留，不自动重启/清预算。
 
 新代码独立script/supermimic_q1_gait；旧冻结源不覆盖。权威Git为data/repositories/q1-rf12-20261028的Q1分支，阶段记录先audit/commit/push及独立40位远端核，再镜像Mac主根/25386核大小SHA。权重/大NPZ仅服务器；阶段六格PNG/PDF/CSV及固定54秒原速多类MP4交付Mac，不建网站。监督复用q1-rf08-4096，其他自动任务保持。
 
 ## 下一步
+
+RF15新代码/9项CPU契约及导入验证已完成，具体四项目标、权重、特征及物理延长门见[RF15准备](README_SUPERMIMIC_Q1_RF15_GAIT_PREP_20261028.md)。尚未GPU预检或训练，等RF14结束/GPU释放并择优后执行；不热改RF14任何plan来源。20:24:49现场累计5406.248秒、同进程推进且OOM0，详情留当前状态。
+
+累计一小时3600.601031秒/3340轮的stage01三重复已保存：验证失败0/1/0，固定走后停repeat0为271/320步跌倒、另两次完整但明显过冲/滑移；另一固定走与抬手均完整。验证上肢RMSE约降9%，但腕相对误差增约9%、滑移/振荡增加；不能称展示改善。预登记排序RF11_initial[0,0,2.4102]优于stage01[2,0,3.7974]，当前仍选RF11。严重门未触发，原learner继续累计7200秒检查，无额外训练。阶段8小JSON已复制Mac，大小SHA待阶段验收收据，权重/NPZ留服务器。[阶段原值](../data/manifests/supermimic_q1_RF14_stage01_20261028.json)。
 
 19:38完成准备：3项预算/指标单测通过；16环境19:35:48至19:36:17、4096环境19:37:44至19:38:12真实Warp零optimizer预检通过，六组模型/优化器恢复完全一致、评测保护训练环境/history/replay计数/模型及RNG。双guard正常reap0，GPU释放，OOM0。完整证据见[准备收据](../data/manifests/supermimic_q1_RF14_preparation_20261028.json)。固定走基线两片完整、实际前进约2.41/2.22m，但踝部P95抬高约3.5至5.4cm、参考约7.7至8.8cm，承重脚均滑速0.112/0.135m/s；仅诊断，非学习改善。发布后执行RF14，尚未启动正式优化。
 

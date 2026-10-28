@@ -38,4 +38,6 @@
 
 ## 下一步与产物
 
+20:44前另核固定三参考共804帧的真实Q1 FK缓存：15维新增特征自对照最大误差8.94e-7，奖励分解有限且上界正确；0仿真积分/0optimizer/0CUDA分配。9项CPU测试之外的几何集成检查通过，不能代替16/4096真实Warp预检。[收据](../data/manifests/supermimic_q1_RF15_cpu_preparation_20261028.json)。
+
 RF14尚在运行，先保存/发布准备代码；完成RF14检查点选择和目视后，按唯一新试验执行RF15预检、冻结发布/三端SHA再启动。沿用100GiB余盘/12GiB实验/30GiB共享/OOM0/86度/900秒无进展。权重/大NPZ服务器SERVER_LOCAL_ONLY；六格PNG/PDF/CSV500iteration均值、PPO诊断/奖励分项、固定初末54秒多类原速MP4在Mac核大小SHA/全帧解码/目视。WM/想象指标N/A，不套旧HP更新门。原监督继续，不改其他自动任务。

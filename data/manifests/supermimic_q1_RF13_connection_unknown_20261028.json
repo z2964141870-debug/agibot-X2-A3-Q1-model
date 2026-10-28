@@ -1,0 +1,129 @@
+{
+  "status": "RF13_REMOTE_STATE_UNKNOWN_CONNECTION_LOST",
+  "recorded_utc": "2026-10-28T08:48:25+00:00",
+  "trial_root": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF13_LOWER_RESIDUAL_SOMA300_E4096_MAX01H_20261028",
+  "training_code_commit": "51d4f00a5c9fb6f8bbdef29e11142a6bf822d41a",
+  "authorized_endpoint": {
+    "container": 25386,
+    "local_port": 18873,
+    "container_control_socket": "/tmp/yuanqi-q1-25386.sock",
+    "windows_control_socket": "/tmp/yuanqi-windows-25386.sock"
+  },
+  "observed_error": "ssh: connect to host 127.0.0.1 port 18873: Connection refused",
+  "bounded_diagnosis": {
+    "observed_utc": "2026-10-28T08:45:21+00:00",
+    "local_port_listener_found": false,
+    "container_control_socket_found": false,
+    "relevant_local_ssh_process_found": false,
+    "windows_restore_attempts": 1,
+    "windows_restore_result": "ssh_dispatch_run_fatal: Connection to authorized Windows bridge port22: Broken pipe after password prompt",
+    "additional_endpoint_probes": 0,
+    "credential_files_read_or_written": false,
+    "credential_values_saved": false,
+    "remote_job_stopped_or_restarted": false,
+    "training_budget_reset_or_extended": false
+  },
+  "last_confirmed_live": {
+    "captured_utc": "2026-10-28T08:12:30.553003+00:00",
+    "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "processes": [
+      {
+        "pid": 93989,
+        "state": "S",
+        "start_ticks": 8571724,
+        "expected_match": true,
+        "command": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_balance/supervise.py --mode train --runtime /opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --checkpoint /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run/final.pt --calibration /opt/data/private/ZHY/data/supermimic_for_q1/Q1_UR04_BALANCE_PREP_20261028/calibration_v02.json --frozen-plan /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF12_PPO_SOMA_AP03_E4096_MAX08H_20261028/plan.json --expected-boot 4d859008-4c83-4a6d-814d-cbb9dfe885c9 --expected-gpu GPU-26028785-9fb9-45af-e614-4cc53af15d08 --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF13_LOWER_RESIDUAL_SOMA300_E4096_MAX01H_20261028 --video-suite /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/demonstration_suite_V02.json --code-commit 51d4f00a5c9fb6f8bbdef29e11142a6bf822d41a --controller "
+      },
+      {
+        "pid": 93994,
+        "state": "R",
+        "start_ticks": 8571852,
+        "expected_match": true,
+        "command": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_balance/train.py --runtime /opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --checkpoint /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run/final.pt --calibration /opt/data/private/ZHY/data/supermimic_for_q1/Q1_UR04_BALANCE_PREP_20261028/calibration_v02.json --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF13_LOWER_RESIDUAL_SOMA300_E4096_MAX01H_20261028/run --code-commit 51d4f00a5c9fb6f8bbdef29e11142a6bf822d41a "
+      }
+    ],
+    "worker_status": {
+      "status": "RUNNING",
+      "started_utc": "2026-10-28T07:21:18.399623+00:00",
+      "process": {
+        "pid": 93994,
+        "start_ticks": 8571852,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "code_commit": "51d4f00a5c9fb6f8bbdef29e11142a6bf822d41a",
+      "iteration": 795,
+      "training_seconds": 2547.8812365069753,
+      "optimizer_steps": 15900,
+      "actor_optimizer_steps": 15700,
+      "new_world_model_updates": 0,
+      "algorithm": "installed RSL-RL PPO, latent14",
+      "phase": "collecting",
+      "updated_utc": "2026-10-28T08:12:29.710810+00:00",
+      "evaluation_label": "stage_02",
+      "evaluation_repeat": 2,
+      "evaluation_frame": 450,
+      "curriculum_cap": 0.75,
+      "next_evaluation_seconds": 3500,
+      "sim_steps": 78151680
+    },
+    "clock": {
+      "status": "ACTIVE",
+      "updated_utc": "2026-10-28T08:12:29.711855+00:00",
+      "process": {
+        "pid": 93994,
+        "start_ticks": 8571852,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "accumulated_training_seconds": 2547.8812365069753,
+      "active_started_monotonic": 88794.720810353,
+      "current_cap_seconds": 3600,
+      "absolute_maximum_seconds": 3600,
+      "soft_stop_seconds": 3500,
+      "definition": "Synchronized physical collection, GAE, PPO update and per-update diagnostics; initialization/evaluation/checkpoint/media excluded."
+    },
+    "note": "Historical confirmed state only; it does not establish current RUNNING or terminal state."
+  },
+  "current_remote_status": "UNKNOWN",
+  "training_terminal_status_confirmed": false,
+  "pipeline_terminal_status_confirmed": false,
+  "source_sha_rechecked_after_disconnect": false,
+  "independent_work_completed": {
+    "user_basic_demo_priority_recorded": true,
+    "stage01_and_stage02_numeric_receipts_prepared": true,
+    "stage01_mac_size_sha_match": true,
+    "stage02_mac_size_sha_match": true,
+    "stage02_demo_failure_preserved": true,
+    "training_sources_changed": false,
+    "optimizer_or_physics_started": false
+  },
+  "pending": [
+    "Restore only the authorized Windows/25386 bridge with bounded checks; no old-endpoint probing.",
+    "Read real plan/status/guards/clock, process identities, stage03/fallback and delivery outputs; do not infer completion from elapsed time.",
+    "Finish artifact audit and local MP4 decoding/visual review, retaining fixed walking/raised-arm failures.",
+    "Mirror published small records to25386 and verify sizes/SHA; do not claim three-endpoint delivery until verified.",
+    "Keep existing heartbeat active until the actual experiment and delivery outcome is established."
+  ],
+  "automation": {
+    "id": "q1-rf08-4096",
+    "tool_update_success": true,
+    "status_after_tool_update": "ACTIVE",
+    "interval_minutes": 10,
+    "unknown_state_added_to_prompt": true,
+    "other_automations_changed": false
+  },
+  "publication_at_recording": {
+    "authoritative_git": "/Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028",
+    "branch": "Q1",
+    "github": "PENDING_COMMIT_PUSH_IN_THIS_PHASE",
+    "mac_main": "PENDING_RECORD_MIRROR_IN_THIS_PHASE",
+    "server25386": "PENDING_CONNECTION_RESTORE",
+    "three_endpoint_verification_complete": false
+  },
+  "constraints": {
+    "no_new_training": true,
+    "no_restart": true,
+    "no_extra_cleanup": true,
+    "no_agents": true,
+    "no_old_goal_changes": true
+  }
+}

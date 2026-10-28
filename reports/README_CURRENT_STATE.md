@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-28研究：[五项简报](research/2026-10-28/README.md)保存四项新阅读与HoloBoxing v2对手协议更正；87请求83成功、9固定文本静态核验，main去重122→134、H001不变。完整历史由main维护，Q1工程状态按本分支最新记录；本次没有训练/仿真或新假设。[检查](README_RESEARCH_CHECK_20261028.md)/[同步回执](../data/manifests/research_watch_sync_20261028.json)。
+
 2026-10-28 02:36，北京时间：**RF12改进目标失败并按预设规则停止，训练/评测/本地媒体交付已收尾。** 实训3503.474674秒/812轮/79822848转移，critic16240/actor16040；三重复共同前缀根XY误差为RF11的2.653/2.669/2.816倍，上肢增加13.3至14.0%、腕增加14.7至15.2%，验证失败4/6/3条、完成97.28至97.88%（RF11三次均0/30失败/100%），固定普通走均提前终止。改善门0/3、严重退步3/3，stop/physical_regression；B/C及五小时加训未执行，不自动重试或另开。[正式结果](README_SUPERMIMIC_Q1_RF12_RESULTS_20261028.md)/[完成收据](../data/manifests/supermimic_q1_RF12_completion_audit_20261028.json)。
 
 02:28:14全pipeline COMPLETED，train/delivery worker均正常reap、返回0；02:33核原controller49990/start_ticks3416720和worker49995/start_ticks3416816均不存在，GPU15MiB/26度且无计算进程、OOM0。37项独立保存检查/12媒体检查通过，1123冻结来源286568437字节未变，stage到final的策略/critic/optimizer/RNG相同。结果6d77c58e9000b09739a4d8ef5a3e06dcd4f078ff已独立核远端、10记录246275字节三端匹配；02:45:16监督实际PAUSED并读回确认。冻结684548c不因报告提交而改变，Windows桥保留。

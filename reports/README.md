@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-28研究：[五项简报](research/2026-10-28/README.md)保存四项新阅读与HoloBoxing v2对手协议更正；87请求83成功、9固定文本静态核验，main去重122→134、H001不变。完整历史由main维护，Q1工程状态按本分支最新记录；本次没有训练/仿真或新假设。[检查](README_RESEARCH_CHECK_20261028.md)/[同步回执](../data/manifests/research_watch_sync_20261028.json)。
+
 2026-10-28 02:45：[RF12结算与监督暂停](README_SUPERMIMIC_Q1_RF12_RESULTS_20261028.md)。负面结果提交6d77c58e9000b09739a4d8ef5a3e06dcd4f078ff已独立核远端，10记录246275字节三端匹配；37保存/12媒体检查和43小工件Mac交付齐备。02:45:16本轮q1-rf08-4096已实际PAUSED并读回确认，其他两研究任务未改。RF12以physical_regression结束，不恢复、重试或开启新训练。[完成回执](../data/manifests/supermimic_q1_RF12_completion_audit_20261028.json)。
 
 2026-10-28 02:36：[RF12负面结果与本地交付完成](README_SUPERMIMIC_Q1_RF12_RESULTS_20261028.md)。3503.475实训秒/812轮，首个三重复物理门根XY误差升至RF11的2.65至2.82倍、上肢增加13.3至14.0%、验证4/6/3条失败，按physical_regression停止，B/C及加训未执行。02:28全pipeline正常完成、原进程退出/GPU释放；37保存/12媒体检查通过，43小工件48549915字节已Mac大小SHA核验，初末54秒MP4和六格/PPO诊断齐备。记录发布核验后暂停本轮监督，不追加训练。[结果原值](../data/manifests/supermimic_q1_RF12_results_20261028.json)/[完成收据](../data/manifests/supermimic_q1_RF12_completion_audit_20261028.json)。

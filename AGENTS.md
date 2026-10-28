@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-29 03:59:55 ACTIVITY独立full330唯一启动，根data/supermimic_for_q1/Q1_ACTIVITY_BLEND_FULL330_REVIEW_20261029；controller153640/start_ticks13124015、worker153643/start_ticks13124170、原boot/GPU，代码仍冻结84139550a88a3baefe1c5cf64c624308c8b83214。预登记c1b823a39016b197fc9092358305bdf6a01bd041/5记录233704字节三端SHA；04:00:19 baseline repeat0/frame150/0optimizer/资源正常/OOM0。仅3候选三重复330片确认上肢/步态取舍，尚无效果；原quick33已结束，不恢复/重复启动/热改来源/agent，07:00/09:00截止，用户采纳null，入口ACTIVITY_BLEND和full330_launch收据。
+
 - 2026-10-29 04:00 ACTIVITY quick33已03:52:11正常结束，guardreap0/1188来源和教师未变、原151473/151488退出/GPU释放，38小工件2787735字节Mac/25386 SHA。activity050075上肢约降34%/抬手峰误差约降84%，三次验证0失败/固定两走抬手完整，但普通走无一致滑移收益，原步态继续门0/3。独立baseline/static075/activity050075的full330三重复零optimizer复核已预登记、尚未启动，不作训练晋级或用户采纳；原07:00探索/09:00交付，不恢复旧训练/agent，入口ACTIVITY_BLEND/results收据。
 
 - 2026-10-29 03:44:16 ACTIVITY_BLEND quick33唯一启动，根data/supermimic_for_q1/Q1_REFERENCE_ACTIVITY_BLEND_PROBE_20261029；controller151473/start_ticks13030198、worker151488/start_ticks13030363、原boot/GPU，冻结84139550a88a3baefe1c5cf64c624308c8b83214独立远端/10文件317350字节三端SHA。03:46:35 static025 repeat1/frame0/0optimizer、GPU723MiB/38度/共享16.36GB/OOM0，尚无效果；原监督已工具ACTIVE更新。只监督原5档×3次，旧PD已结束不重做，不恢复训练/热改源/agent，07:00/09:00截止、采纳null。入口ACTIVITY_BLEND与launch收据。

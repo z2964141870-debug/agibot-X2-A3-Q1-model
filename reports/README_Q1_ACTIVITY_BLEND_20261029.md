@@ -1,5 +1,7 @@
 # Q1按参考活动量调节上肢混合
 
+03:59:55独立full330已实际唯一启动，controller153640/start_ticks13124015、worker153643/start_ticks13124170、原boot/GPU。复核预登记c1b823a39016b197fc9092358305bdf6a01bd041独立远端及5记录233704字节三端SHA；正式代码仍冻结84139550a88a3baefe1c5cf64c624308c8b83214，原1188来源不变。04:00:19 baseline repeat0/frame150、0optimizer、GPU1307MiB/33度/共享15944642560字节/OOM0，三状态/完整命令/mtime一致。只监督原baseline/static075/activity050075三重复330片，不重复启动，不作为效果结论；[启动收据](../data/manifests/supermimic_q1_activity_full330_launch_20261029.json)。
+
 2026-10-29 04:00最新：[ACTIVITY quick33已03:52:11正常完成](README_Q1_ACTIVITY_BLEND_20261029.md)，1188来源/教师未变、guardreap0、原151473/151488退出/GPU释放/OOM0；38小工件2787735字节Mac/25386大小SHA匹配。activity050075三次验证0失败、固定两走/抬手完整，上肢RMSE约.1947rad对baseline.2963（降约34%）、抬手峰误差降约84%；普通走滑移并未一致改善，原步态继续门0/3。下一独立full330仅baseline/static075/activity050075三重复零optimizer复核稳定性和取舍，尚未启动；不是独立测试/训练晋级或用户采纳，07:00/09:00截止保留。[结果/预登记](../data/manifests/supermimic_q1_activity_blend_results_20261029.json)。
 
 ## Quick33实际结果

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 04:00：[ACTIVITY full330唯一复核已启动](README_Q1_ACTIVITY_BLEND_20261029.md)，controller153640/worker153643原身份一致、baseline repeat0/frame150/0optimizer/OOM0。代码8413955/预登记c1b823a已核远端与三端，3候选三重复/原330片，尚无完整库效果，不开训练/重复启动。
+
 2026-10-29 04:00：[ACTIVITY quick33结果/完整库复核准备](README_Q1_ACTIVITY_BLEND_20261029.md)，0optimizer候选上肢约降34%/抬手峰误差约降84%，普通走无一致滑移收益，原步态继续门0/3。38小工件2787735字节Mac/25386 SHA、原进程退出/1188来源未变；独立3候选full330三重复尚未启动，不作训练晋级/用户采纳，07:00/09:00截止。
 
 2026-10-29 03:46：[参考活动量上肢quick33已启动](README_Q1_ACTIVITY_BLEND_20261029.md)，controller151473/worker151488身份一致、5档×3次/33环境/0optimizer，尚无收益。冻结8413955独立远端及10文件317350字节三端SHA通过，原监督ACTIVE/07:00和09:00截止，只监督原作业。

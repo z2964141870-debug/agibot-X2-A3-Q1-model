@@ -1,0 +1,267 @@
+{
+  "status": "RF14_CONTINUATION_PREPARATION_VALIDATED",
+  "formal_training_started": false,
+  "base_checkpoint_sha256": "6c4de3171bd45359691a63ffe1712729c14fdb2080f8066e4c25632f4bbc5146",
+  "new_goal_scope": "RF11 base cumulative <=14400s; physical checks near1/2/4h, select checkpoint; independent PPO compensation <=14400s, first-hour improvement required for extension.",
+  "budget_interpretation": "RF11 existing3500.2659895760007s included; an execution assumption, not an explicit user clarification.",
+  "zero_optimizer_preflight4096": {
+    "status": "ZERO_OPTIMIZER_PHYSICAL_PREFLIGHT_PASSED",
+    "started_utc": "2026-10-28T11:37:44.269761+00:00",
+    "process": {
+      "pid": 109880,
+      "start_ticks": 10110757,
+      "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+    },
+    "num_envs": 4096,
+    "optimizer_steps": 0,
+    "physical_contract": {
+      "status": "Q1_REAL_GPU_OBSERVATION_GOAL_TRANSITION_CONTRACT_PASSED",
+      "num_envs": 4096,
+      "obs_dim": 80,
+      "goal_dim": 590,
+      "state_dim": 57,
+      "context_dim": 26,
+      "root_feedback": "heading XY and full relative orientation in observation history",
+      "current_joint_error": false,
+      "future_frames": "current+1 through current+10; full relative root position/rotation",
+      "reward_frame": "action result compared against f+1",
+      "physical_control_dt": 0.02
+    },
+    "restored_models_and_optimizers_exact": true,
+    "completed_utc": "2026-10-28T11:38:12.273726+00:00",
+    "evaluation_preserved_live_hp_state_and_rng": true,
+    "fixed_forward_block": 4096,
+    "checkpoint": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run/final.pt",
+      "bytes": 208865366,
+      "sha256": "6c4de3171bd45359691a63ffe1712729c14fdb2080f8066e4c25632f4bbc5146"
+    },
+    "actual_contact_and_foot_metrics": true,
+    "fresh_replay_steps": 12,
+    "replay_and_simulator_not_resumed": true
+  },
+  "preflight16_guard": {
+    "status": "WORKER_COMPLETED",
+    "command": [
+      "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python",
+      "-u",
+      "/opt/data/private/ZHY/script/supermimic_q1_hp/activate.py",
+      "-u",
+      "/opt/data/private/ZHY/script/supermimic_q1_gait/preflight.py",
+      "--runtime",
+      "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+      "--library",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json",
+      "--checkpoint",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run/final.pt",
+      "--output",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_RF14_PREFLIGHT16_20261028/run",
+      "--envs",
+      "16"
+    ],
+    "cwd": "/opt/data/private/ZHY",
+    "started_utc": "2026-10-28T11:35:45.953222+00:00",
+    "controller_pid": 109563,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "experiment": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_RF14_PREFLIGHT16_20261028",
+        "unique_allocated_bytes": 774144,
+        "unique_logical_bytes": 752870,
+        "unique_inodes": 11,
+        "symlinks_not_followed": 0
+      },
+      "source": {
+        "root": "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+        "unique_allocated_bytes": 1536000,
+        "unique_logical_bytes": 1204099,
+        "unique_inodes": 166,
+        "symlinks_not_followed": 0
+      },
+      "free_bytes": {
+        "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_RF14_PREFLIGHT16_20261028": 1663219273728,
+        "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027": 1663219273728
+      },
+      "shared_memory": {
+        "shared_bytes": 9478512640,
+        "oom_kill": 0,
+        "maximum_bytes": 32212254720
+      },
+      "gpu": {
+        "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+        "memory_mib": 15,
+        "temperature_c": 33
+      }
+    },
+    "error": null,
+    "worker_pid": 109566,
+    "worker_group": 109566,
+    "cleanup": {
+      "worker_started": true,
+      "worker_pid": 109566,
+      "worker_group": 109566,
+      "worker_reaped": true,
+      "worker_return_code": 0
+    },
+    "ended_utc": "2026-10-28T11:36:20.859264+00:00"
+  },
+  "preflight4096_guard": {
+    "status": "WORKER_COMPLETED",
+    "command": [
+      "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python",
+      "-u",
+      "/opt/data/private/ZHY/script/supermimic_q1_hp/activate.py",
+      "-u",
+      "/opt/data/private/ZHY/script/supermimic_q1_gait/preflight.py",
+      "--runtime",
+      "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+      "--library",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json",
+      "--checkpoint",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run/final.pt",
+      "--output",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_RF14_PREFLIGHT4096_20261028/run",
+      "--envs",
+      "4096"
+    ],
+    "cwd": "/opt/data/private/ZHY",
+    "started_utc": "2026-10-28T11:37:42.500014+00:00",
+    "controller_pid": 109877,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "experiment": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_RF14_PREFLIGHT4096_20261028",
+        "unique_allocated_bytes": 774144,
+        "unique_logical_bytes": 752973,
+        "unique_inodes": 11,
+        "symlinks_not_followed": 0
+      },
+      "source": {
+        "root": "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+        "unique_allocated_bytes": 1536000,
+        "unique_logical_bytes": 1204099,
+        "unique_inodes": 166,
+        "symlinks_not_followed": 0
+      },
+      "free_bytes": {
+        "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_RF14_PREFLIGHT4096_20261028": 1662893867008,
+        "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027": 1662893867008
+      },
+      "shared_memory": {
+        "shared_bytes": 9479454720,
+        "oom_kill": 0,
+        "maximum_bytes": 32212254720
+      },
+      "gpu": {
+        "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+        "memory_mib": 15,
+        "temperature_c": 34
+      }
+    },
+    "error": null,
+    "worker_pid": 109880,
+    "worker_group": 109880,
+    "cleanup": {
+      "worker_started": true,
+      "worker_pid": 109880,
+      "worker_group": 109880,
+      "worker_reaped": true,
+      "worker_return_code": 0
+    },
+    "ended_utc": "2026-10-28T11:38:14.254922+00:00"
+  },
+  "unit_tests": {
+    "tests": 3,
+    "result": "PASS",
+    "coverage": [
+      "paused inherited budget",
+      "missing evidence cannot win ranking",
+      "joint axis and common prefix gait metric"
+    ]
+  },
+  "fixed_baseline_diagnostic": {
+    "walk_ff_stop_180_R_002__A095": {
+      "steps": 320,
+      "common_prefix_steps": 320,
+      "failed": false,
+      "completion": 1,
+      "forward_displacement_m": 2.406630039215088,
+      "reference_displacement_m": 2.1927454471588135,
+      "root_displacement_m": 2.4121005535125732,
+      "foot_lift_p95_m": [
+        0.0538505256175995,
+        0.03563312906771899
+      ],
+      "reference_foot_lift_p95_m": [
+        0.07711893320083618,
+        0.08188892472535372
+      ],
+      "foot_lift_tracking_rmse_m": 0.03191473598702337,
+      "swing_local_foot_rmse_m": 0.08799823373556137,
+      "loaded_slip_mps": 0.11248574405908585,
+      "torso_tilt_rms_rad": 0.07226530462503433,
+      "knee_reference_rmse_rad": 0.4340594708919525,
+      "target_delta_rms_rad": 0.07870080322027206,
+      "sustained_single_support_alternations": 23,
+      "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+    },
+    "walk_ff_start_180_R_002__A071": {
+      "steps": 210,
+      "common_prefix_steps": 210,
+      "failed": false,
+      "completion": 1,
+      "forward_displacement_m": 2.220271110534668,
+      "reference_displacement_m": 2.0565264225006104,
+      "root_displacement_m": 2.224449872970581,
+      "foot_lift_p95_m": [
+        0.039290693774819356,
+        0.03491982966661452
+      ],
+      "reference_foot_lift_p95_m": [
+        0.07931931391358375,
+        0.08814619742333889
+      ],
+      "foot_lift_tracking_rmse_m": 0.03507375032621546,
+      "swing_local_foot_rmse_m": 0.07798344641923904,
+      "loaded_slip_mps": 0.13499484956264496,
+      "torso_tilt_rms_rad": 0.05642339214682579,
+      "knee_reference_rmse_rad": 0.40735170245170593,
+      "target_delta_rms_rad": 0.08216274529695511,
+      "sustained_single_support_alternations": 14,
+      "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+    },
+    "triumph_two_handed_001__A058": {
+      "steps": 271,
+      "common_prefix_steps": 271,
+      "failed": false,
+      "completion": 1,
+      "forward_displacement_m": -0.007248472422361374,
+      "reference_displacement_m": 0.00112003309186548,
+      "root_displacement_m": 0.011692923493683338,
+      "foot_lift_p95_m": [
+        0.0007983390241861343,
+        -0.0007671639323234558
+      ],
+      "reference_foot_lift_p95_m": [
+        0.004195546731352806,
+        0.027339322492480278
+      ],
+      "foot_lift_tracking_rmse_m": 0.012041821954941712,
+      "swing_local_foot_rmse_m": 0.02908407151699066,
+      "loaded_slip_mps": 0.011969148181378841,
+      "torso_tilt_rms_rad": 0.1716868281364441,
+      "knee_reference_rmse_rad": 0.30673256516456604,
+      "target_delta_rms_rad": 0.02094147354364395,
+      "sustained_single_support_alternations": 0,
+      "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+    }
+  },
+  "known_boundaries": [
+    "replay, simulator and RNG absent in RF11 checkpoint",
+    "ankle body height is not sole clearance",
+    "last5ms contact force is not20ms impulse",
+    "not evidence of improvement",
+    "no fault retry or agents"
+  ],
+  "next": "Publish and mirror frozen source, then launch oneRF14."
+}

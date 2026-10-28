@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-28 15:28：[RF13唯一4096环境腿腰补偿正式启动](README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md)。代码`51d4f00a5c9fb6f8bbdef29e11142a6bf822d41a`已push/独立核远端、17文件301773字节三端一致，plan冻结1137项含旧1123。controller93989/worker93994及start_ticks/命令/mtime已核，初始三重复基线已完，实训176.116397秒/55轮/5406720转移、critic1100/actor900，尚未到首个学习后物理门，无改善结论。原监督任务已实际更新并回读ACTIVE每10分钟；只训14维腿腰残差/critic、硬<=3600实训秒，不扩时/重试/agent。[启动/监督收据](../data/manifests/supermimic_q1_RF13_launch_observed_20261028.json)。
+
 2026-10-28：[UR04准备完成](README_Q1_BALANCE_ADAPT_UR04_20261028.md)，五测试/16与4096真实0optimizer预检/独立评测状态与RNG保护通过，首个混合截断索引失败已修复并保留。三重复回退只换得约3%根改善、上肢0.159→0.410rad且失败未减，故[RF13](README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md)关闭自动回退，只训14维腿腰补偿+渐进手臂干预。旧1123来源未变；正式独立一轮4096/最多3600实训秒待发布后启动，无扩时/故障重启/agent。[收据](../data/manifests/supermimic_q1_UR04_balance_prep_20261028.json)。
 
 2026-10-28：[UR03全身折中实测](README_Q1_UPPER_TRADEOFF_UR03_20261028.md)完成五档/33环境/三重复/0optimizer。75%参考混合使共享前缀上肢/相对腕误差约降83%/57%、验证0/0/0失败且固定两走/抬手全完成，代价为根XY约增54%、腿约5%，尚未保住根约束。核验HUGWBC/HOMIE的上肢干预课程与ConstrainedMimic约束过滤，给出下肢适应+平衡优先的待验证路线；26小工件2953599字节Mac/25386匹配，冻结来源未变，不启动训练或监督。[量值](../data/manifests/supermimic_q1_UR03_upper_tradeoff_20261028.json)。

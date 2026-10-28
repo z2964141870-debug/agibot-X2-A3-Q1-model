@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-28 15:28：[唯一RF13](README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md)15:21:12实际启动，初始三重复基线已完成；现实训176.116397秒/55轮/5406720转移，optimizer1100/actor900、0新增WM，已过10轮critic-only，首个学习后物理门尚未到。冻结RF11教师/归一化，只训14维腿腰残差与critic，手臂参考课程；4096真实MuJoCo Warp、原300/30、硬<=3600秒，约1200/2400/3500秒物理评测。正式关闭启发式回退，最终另评。controller93989/start_ticks8571724、worker93994/start_ticks8571852身份/命令/mtime相符，三状态RUNNING/clock ACTIVE；GPU8267MiB/50度、共享11.62GB/OOM0、盘余1.673TB。代码`51d4f00a5c9fb6f8bbdef29e11142a6bf822d41a`已push/独立核远端、17文件301773字节三端匹配，1137来源冻结含旧1123。原`q1-rf08-4096`已工具更新并回读ACTIVE每10分钟；只异常/阶段物理结果/完成通知。无故障重启、扩时或agent，其他研究任务保持。[启动/监督收据](../data/manifests/supermimic_q1_RF13_launch_observed_20261028.json)。
+
 2026-10-28 15:03：[UR04准备完成](README_Q1_BALANCE_ADAPT_UR04_20261028.md)，按用户“可以，先做”及“continue”准备[唯一RF13](README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md)。五测试/16与4096真实0optimizer预检/独立评测的训练环境、门控、接触及RNG保护通过；混合截断子集索引错误已修复，原失败保留。三重复回退根只改善约3%、上肢0.159→0.410rad且失败未减，正式关闭回退，仅14维腿腰补偿+手臂课程/根腿奖励。旧1123来源未变；尚未正式训练，发布后三端核验仅一次4096/实训<=3600秒，无旧实验恢复/五小时扩时/故障重启/agent。监督当前暂停，其他研究任务保持。[收据](../data/manifests/supermimic_q1_UR04_balance_prep_20261028.json)。
 
 2026-10-28 13:35：[UR03全身折中](README_Q1_UPPER_TRADEOFF_UR03_20261028.md)五档33环境三重复0optimizer完成。75%参考混合上肢0.9441→0.1607rad、相对腕0.1234→0.05345m，验证0/0/0失败且固定两走/抬手全完成；根XY0.1237→0.1906m、腿约增5%、振荡约增25%，不是全面达标。推荐保留该仿真候选并研究上肢课程下的下肢独立适应与平衡回退，不仅调全局reward。COMPLETED/reap0/进程退出/GPU释放、1123旧来源未变、26小工件2953599字节Mac/25386匹配。RF12授权结束/监督暂停，不新增训练、agent或自动任务。[量值](../data/manifests/supermimic_q1_UR03_upper_tradeoff_20261028.json)。
@@ -38,7 +40,7 @@ Mac根：`/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF11_S
 
 ## 当前入口与来源
 
-仅用户25386容器，`interactive40173`，唯一根`/opt/data/private/ZHY`及data/logs/script/reports。boot`4d859008-4c83-4a6d-814d-cbb9dfe885c9`，GPU`GPU-26028785-9fb9-45af-e614-4cc53af15d08`。02:33原RF12 controller/worker均不存在；GPU15MiB/26°C/0%、无计算进程，共享约7.61GB/OOM0，盘余675969384448字节。不得用旧PID或旧RUNNING断言仍在训练。
+仅用户25386容器，`interactive40173`，唯一根`/opt/data/private/ZHY`及data/logs/script/reports。boot`4d859008-4c83-4a6d-814d-cbb9dfe885c9`，GPU`GPU-26028785-9fb9-45af-e614-4cc53af15d08`。当前RF13 controller93989/start_ticks8571724、worker93994/start_ticks8571852，资源及进度按顶部15:21记录；每次恢复重新核身份/命令/mtime与实际进度。原RF12已退出，不得用旧PID/旧RUNNING推断当前训练。
 
 连接：`ssh -S /tmp/yuanqi-q1-25386.sock -T -p 18873 -o BatchMode=yes -o ConnectTimeout=8 -o 'HostKeyAlias=[59.77.15.15]:25386' root@127.0.0.1`。保留Windows桥，不读写认证，不探测旧入口或师兄容器。[CS02恢复](README_Q1_CONTAINER_RESTORE_CS02_20261027.md)。
 
@@ -48,8 +50,10 @@ Python`/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/pyt
 
 ## 下一步与跟踪
 
-RF12终态/reap/GPU释放、三重复JSON、六格及本地初末54秒MP4均已核，最终结果已发布并三端核验，本轮heartbeat已暂停；仅本次暂停回执随同记录收尾。新增583片与B奖励从未执行，不能宣称已测试。RF12本次授权已结束，不自动重试或开启其他训练，不激活agent。
+当前只监督唯一RF13及其约1200/2400/3500实训秒物理门，实际训练<=3600秒，不追加；结果按RF11和本次静态75%候选的共同前缀/完整失败报告。完整交付后暂停同一heartbeat。全pipeline冻结plan来源，不激活agent。
+
+RF12终态/reap/GPU释放、三重复JSON、六格及本地初末54秒MP4均已核，结果已发布并三端核验；其阶段B奖励/新增583片从未执行，不能宣称已测试。RF12授权已结束，旧暂停记录仅历史，不恢复或重试。
 
 用户最新关切是连续多轮缺乏全面改善。现有证据确认上肢幅度/时序瓶颈持续，RF09五小时亦未解决；历史根轨迹曾改善，但不支持继续堆训练时长。先定位策略目标、实际控制和H32模型方向，再决定后续方案。
 
-RF11结果`d98b14b9d97a1999e3289e9faea20b0d943285f5`为历史已交付。RF12在2026-10-28 02:45:16已通过工具将同一`q1-rf08-4096`实际PAUSED并读取配置确认，旧ACTIVE/每10分钟为训练期间历史；独立`supermimichp-x2`和`yuanqi`未修改，不新建替代任务。研究入口[RF12核验收据](../data/manifests/supermimic_q1_RF12_research_20261028.json)/[MorphMimic只读初评](README_MORPHMIMIC_REVIEW_20261027.md)。
+RF11结果`d98b14b9d97a1999e3289e9faea20b0d943285f5`为历史已交付。RF12时期02:45:16曾暂停同一`q1-rf08-4096`，现已按RF13实际启动切换ACTIVE/每10分钟，见顶部与启动收据；独立`supermimichp-x2`和`yuanqi`未修改，不新建替代任务。研究入口[RF12核验收据](../data/manifests/supermimic_q1_RF12_research_20261028.json)/[MorphMimic只读初评](README_MORPHMIMIC_REVIEW_20261027.md)。

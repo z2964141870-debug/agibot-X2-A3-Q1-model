@@ -1,6 +1,6 @@
 # Q1腿腰补偿UR04与RF13准备
 
-记录日期：2026-10-28，北京时间。状态：独立实现、五测试、16/4096零优化器预检与三重复对照完成，正式RF13尚待代码发布/三端核验后启动。用户在UR03折中方案后明确回复“可以，先做”，并再次“continue”；按既有单轮最多一小时限制执行独立RF13，不恢复RF12或其八小时/五小时追加规则，不启用agent。正式入口见[RF13](README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md)。
+记录日期：2026-10-28，北京时间。状态：独立实现、五测试、16/4096零优化器预检与三重复对照完成；代码发布/三端核验后，唯一RF13已于15:21:12启动。用户在UR03折中方案后明确回复“可以，先做”，并再次“continue”；按既有单轮最多一小时限制执行独立RF13，不恢复RF12或其八小时/五小时追加规则，不启用agent。正式身份、监督与实时恢复见[RF13](README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md)及[启动收据](../data/manifests/supermimic_q1_RF13_launch_observed_20261028.json)。
 
 ## 目标与依据
 
@@ -52,4 +52,4 @@ RSL-RL PPO仅保存/计算14维未截断高斯潜变量的似然，标准差固�
 
 复现使用既有Python经`script/supermimic_q1_hp/activate.py`；新监督入口`script/supermimic_q1_balance/supervise.py --mode preflight16|preflight4096|diagnose|train`，必须传runtime/library/checkpoint/calibration/frozen-plan/output与预期boot/GPU，正式训练还需已发布40位code-commit和原固定video-suite。具体实际命令由各`plan.json`保留。冻结旧1123项来源及本次代码/标定，全pipeline结束前不热改。
 
-正式结束交付六格PNG/PDF/CSV原值+500iteration均值、PPO与门控诊断、初末54秒/8段6类原速合集，保留固定片/失败hold。只复制已有媒体和小工件到Mac并逐大小SHA核；不建网站，不重装服务器ffprobe。重要阶段更新本文件/索引/CURRENT_STATE后payload audit、显式push Q1/独立核远端，再镜像三端。RF12旧监督现仍暂停，待正式启动才更新原任务；其他两研究任务保持。
+正式结束交付六格PNG/PDF/CSV原值+500iteration均值、PPO与门控诊断、初末54秒/8段6类原速合集，保留固定片/失败hold。只复制已有媒体和小工件到Mac并逐大小SHA核；不建网站，不重装服务器ffprobe。重要阶段更新本文件/索引/CURRENT_STATE后payload audit、显式push Q1/独立核远端，再镜像三端。RF13启动后已将同一监督任务实际更新并回读ACTIVE/每10分钟；其他两研究任务保持，RF12时期暂停为历史。

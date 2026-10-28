@@ -1,6 +1,16 @@
 # Q1 RF13独立腿腰补偿
 
-记录日期：2026-10-28，北京时间。状态：准备完成，正式训练尚未启动。启动后本文件和launch收据记录实际身份，不凭本段或旧RUNNING推断现场。
+记录日期：2026-10-28，北京时间。状态：唯一正式RF13已于15:21:12启动；15:28:18核实已完成初始三重复基线并实际学习176.116秒/55轮，尚无阶段物理改善结论。实时状态以现场文件/进程为准。
+
+## 实际启动与监督
+
+训练代码提交`51d4f00a5c9fb6f8bbdef29e11142a6bf822d41a`已push并独立核40位远端；17项代码/准备记录301773字节在权威Git、Mac主根与25386逐大小/SHA一致后启动。后续纯记录提交不改变冻结来源。plan绑定1137项，含原1123项与本次head/标定/固定展示来源。
+
+2026-10-28 15:21:12 controller93989/start_ticks8571724；worker93994/start_ticks8571852，boot`4d859008-4c83-4a6d-814d-cbb9dfe885c9`、GPU`GPU-26028785-9fb9-45af-e614-4cc53af15d08`。15:21:55核controller/guard均RUNNING、worker INITIALIZING/evaluation，完整命令、真实start_ticks与文件mtime相符；RF11_fixedblock repeat0/frame300，实训0/PAUSED_FOR_NONTRAINING正常。GPU2871MiB/35°C，共享11030843392字节、OOM0、盘余1673493258240字节。
+
+原`q1-rf08-4096`已实际工具更新为“Q1 RF13腿腰补偿4096环境监督”，配置回读ACTIVE/每10分钟；其他两研究任务保持。完整启动命令、状态/时钟/进程/来源及监督回执见[launch_observed](../data/manifests/supermimic_q1_RF13_launch_observed_20261028.json)。普通进度静默，异常、物理阶段结果或完成通知。
+
+15:28:18二次核身份未变，controller/guard/worker均RUNNING、phase collecting，clock ACTIVE；累计176.116397秒/55学习轮/5406720真实转移，optimizer1100/actor900，前10轮critic-only已结束，0新增WM。课程cap0.11007；GPU8267MiB/50°C，共享11621736448字节/OOM0，盘余1672784736256字节。状态里保留的static075/repeat2/frame450为上一次已结束评测字段，当前阶段按collecting解释。首个学习后物理门仍为累计约1200秒，不能把正常更新或初始对照当改善。
 
 ## 目标与已完成准备
 

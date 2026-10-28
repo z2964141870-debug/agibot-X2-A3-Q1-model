@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-28 RF13唯一短试验15:21:12北京时间实际启动，根`data/supermimic_for_q1/BONES_RF13_LOWER_RESIDUAL_SOMA300_E4096_MAX01H_20261028`；controller93989/start_ticks8571724、worker93994/start_ticks8571852，25386 boot/GPU不变。冻结代码`51d4f00a5c9fb6f8bbdef29e11142a6bf822d41a`已push/独立核远端，17文件301773字节三端一致，plan冻结1137项含旧1123。15:28:18身份/命令/mtime一致，初始基线已完、实训176.116397秒/55轮/5406720转移，critic1100/actor900、0新WM，已过10轮critic-only；三状态RUNNING/clock ACTIVE、GPU8267MiB/50度、共享11.62GB/OOM0。原`q1-rf08-4096`已工具更新并回读ACTIVE每10分钟；旧RF12暂停仅历史。只训14维腿腰补偿，正式关闭回退，约1200/2400/3500实训秒物理门；硬<=3600秒，无扩时/重试/agent。入口RF13 README及launch_observed收据；后续报告提交不改变冻结来源。
+
 - 2026-10-28 用户批准UR03折中方案“可以，先做”并“continue”，执行独立UR04准备与唯一RF13短试验：冻结RF11教师，仅训练14维腿腰残差，4096真实环境、手臂参考干预渐进，实训最多3600秒。16/4096零optimizer与独立物理评测状态/RNG保护通过；启发式回退仅约3%根收益却明显损失上肢精度，故正式训练关闭，最终另评。不恢复RF12或其扩时门，不故障重启/再开/加5小时，不开agent；仅原300/30。入口`reports/README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md`及UR04准备收据。启动/终态必须核现场，旧RF12/RF11终态保留，源代码全pipeline冻结。
 
 - 2026-10-28 RF12阶段A首个三重复物理门明显退步并按规则结束；3503.474674实训秒/812轮/79822848转移，critic16240/actor16040，根XY误差为RF11的2.65至2.82倍、上肢增加13.3至14.0%，验证4/6/3条提前终止，固定普通走均不完整。B/C、奖励添加、AP03新增采样及5小时加训未执行，不自动重试或再开。02:28:14全pipeline COMPLETED，train/delivery均reap0；02:33原controller/worker已不存在、GPU15MiB无计算进程。37保存/12媒体检查、1123冻结来源及43文件48549915字节Mac大小SHA通过，初末54秒多类MP4/六格/PPO诊断已交付。结果6d77c58e9000b09739a4d8ef5a3e06dcd4f078ff已独立核远端、10记录246275字节三端匹配，02:45:16监督已实际PAUSED并读回确认，其他两研究任务保留。入口RF12_RESULTS_20261028与completion_audit，所有旧RUNNING/ACTIVE仅历史。

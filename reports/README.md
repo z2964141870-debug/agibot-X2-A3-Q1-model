@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 05:58：[RF16第二门部分滑移收益](README_SUPERMIMIC_Q1_RF16_CONTACT_20261029.md)600.962秒停走三次滑移降16%-24%，起走一次+23%/tilt代价使原门0/3，固定展示均完整；原learner继续最终1200门不扩时。真实原值和只读审阅已Mac/25386大小SHA，用户采纳null。[收据](../data/manifests/supermimic_q1_RF16_stage02_20261029.json)。
+
 2026-10-29 05:52：[RF16首300秒与只读逐片审阅](README_SUPERMIMIC_Q1_RF16_CONTACT_20261029.md)验证/固定片完整但两走滑移无一致收益，改善0/3、严重1/3，原冻结learner继续600/1200门不扩时。13小证据与14审阅派生已Mac/25386大小SHA，用户采纳null。[原值](../data/manifests/supermimic_q1_RF16_stage01_20261029.json)。
 
 2026-10-29 05:36：[RF16独立短对照正式启动](README_SUPERMIMIC_Q1_RF16_CONTACT_20261029.md)原161302/161313、2c83b944/1532冻结来源，初始基线评测0实训/optimizer、资源正常；只监督此最多20分钟软/1300硬的原流程，不重启/扩时。

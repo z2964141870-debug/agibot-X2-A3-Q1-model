@@ -12,6 +12,8 @@
 
 15:28:18二次核身份未变，controller/guard/worker均RUNNING、phase collecting，clock ACTIVE；累计176.116397秒/55学习轮/5406720真实转移，optimizer1100/actor900，前10轮critic-only已结束，0新增WM。课程cap0.11007；GPU8267MiB/50°C，共享11621736448字节/OOM0，盘余1672784736256字节。状态里保留的static075/repeat2/frame450为上一次已结束评测字段，当前阶段按collecting解释。首个学习后物理门仍为累计约1200秒，不能把正常更新或初始对照当改善。
 
+启动记录提交`5499defaa43a249a364d34300341a2170e2f951e`已push并独立核远端，6项记录185982字节在权威Git/Mac主根/25386逐大小SHA匹配；[发布回执](../data/manifests/supermimic_q1_RF13_launch_publication_20261028.json)保存该时点清单。本段与回执属于纯记录更新，不改变训练冻结提交。
+
 ## 目标与已完成准备
 
 用户批准UR03提出的分离腿腰适应、渐进手臂干预和回退验证，并要求继续。仅执行一次独立4096环境、实际训练最多3600秒；不恢复旧实验、故障不重启、不追加五小时、不开agent。实现/负面对照/完整配方见[UR04](README_Q1_BALANCE_ADAPT_UR04_20261028.md)及[准备收据](../data/manifests/supermimic_q1_UR04_balance_prep_20261028.json)。

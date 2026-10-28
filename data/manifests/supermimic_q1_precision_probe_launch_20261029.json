@@ -1,0 +1,221 @@
+{
+  "stage": "Unique precision quick33 launch observed",
+  "started_beijing": "2026-10-29 04:38:32",
+  "code_commit": "e83324f8084cd8051d2db357c2b59793237cc7c8",
+  "deployment": {
+    "commit": "e83324f8084cd8051d2db357c2b59793237cc7c8",
+    "independent_remote": "e83324f8084cd8051d2db357c2b59793237cc7c8",
+    "count": 8,
+    "bytes": 227821,
+    "all_matched": true,
+    "files": [
+      {
+        "relative_path": "AGENTS.md",
+        "bytes": 48239,
+        "sha256": "571f42b4a2b4da1edcfd18fffb6b911e79e52f30cbfc995114af50f30c39ad8f"
+      },
+      {
+        "relative_path": "reports/README.md",
+        "bytes": 123438,
+        "sha256": "6b7f98ee70380ac7bb26d322108fead94667c2e31471ef2c6a4cb211f1ef1f5a"
+      },
+      {
+        "relative_path": "reports/README_CURRENT_STATE.md",
+        "bytes": 35832,
+        "sha256": "ae07eb21a1c1d9ef1e36bbfe543ebcce0d6b0c4b973b486834c10b0a61c91cbe"
+      },
+      {
+        "relative_path": "reports/README_Q1_PRECISION_SENSITIVITY_20261029.md",
+        "bytes": 2509,
+        "sha256": "a9b49cbc6ad2daa84c3007abd60b91487cf7a59dc0b1f11a0f1d642bbb5c24d5"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_precision_probe_preparation_20261029.json",
+        "bytes": 1662,
+        "sha256": "2a6340883510a44977d3cb233c06309485c84d7f9589dd27302e946e3137ff06"
+      },
+      {
+        "relative_path": "script/supermimic_q1_precision_probe/precision_control.py",
+        "bytes": 495,
+        "sha256": "4a2a1665922c5de721f422914f8d6910ba31108e49485be4414d4e169f311486"
+      },
+      {
+        "relative_path": "script/supermimic_q1_precision_probe/probe.py",
+        "bytes": 14507,
+        "sha256": "93752a1e2b2ab8fb5dee447feb259a4a7e74bd13524ec96e9e043e3d780108fe"
+      },
+      {
+        "relative_path": "script/supermimic_q1_precision_probe/test_control.py",
+        "bytes": 1139,
+        "sha256": "6e0c7466526bc610de09075774326f6e8ed090f94ade6c04cf4dfe00bccecd59"
+      }
+    ]
+  },
+  "observation": {
+    "captured_utc": "2026-10-28T20:39:28.930797+00:00",
+    "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "trial": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_INFERENCE_PRECISION_PROBE_20261029",
+    "files": {
+      "launch.json": {
+        "bytes": 108,
+        "mtime_ns": 1793219912744339500,
+        "content": {
+          "controller_pid": 156963,
+          "started_utc": "2026-10-28T20:38:32.749810+00:00",
+          "optimizer_steps": 0
+        }
+      },
+      "status.json": {
+        "bytes": 255,
+        "mtime_ns": 1793219914188443600,
+        "content": {
+          "status": "RUNNING",
+          "process": {
+            "pid": 156963,
+            "start_ticks": 13355775,
+            "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+          },
+          "started_utc": "2026-10-28T20:38:34.192342+00:00",
+          "optimizer_steps": 0,
+          "no_automatic_retry": true
+        }
+      },
+      "plan.json": {
+        "bytes": 293178,
+        "mtime_ns": 1793219914184443400,
+        "content": {
+          "started_utc": "2026-10-28T20:38:34.185917+00:00",
+          "process": {
+            "pid": 156963,
+            "start_ticks": 13355775,
+            "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+          },
+          "optimizer_steps": 0,
+          "maximum_wall_seconds": 2400,
+          "scope": "quick33",
+          "candidates": [
+            "bf16_static050",
+            "fp32_static050",
+            "bf16_activity050075",
+            "fp32_activity050075"
+          ],
+          "code_commit": "e83324f8084cd8051d2db357c2b59793237cc7c8",
+          "optimization_deadline_unix": 1793228400,
+          "expected_boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+          "expected_gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08"
+        }
+      },
+      "run/status.json": {
+        "bytes": 342,
+        "mtime_ns": 1793219967680074500,
+        "content": {
+          "status": "RUNNING",
+          "process": {
+            "pid": 156971,
+            "start_ticks": 13355927,
+            "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+          },
+          "started_utc": "2026-10-28T20:38:36.214697+00:00",
+          "optimizer_steps": 0,
+          "candidate": "bf16_static050",
+          "repeat": 1,
+          "frame": 250,
+          "updated_utc": "2026-10-28T20:39:27.681049+00:00"
+        }
+      },
+      "guard.json": {
+        "bytes": 2576,
+        "mtime_ns": 1793219965079908000,
+        "content": {
+          "status": "RUNNING",
+          "command": [
+            "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python",
+            "-u",
+            "/opt/data/private/ZHY/script/supermimic_q1_hp/activate.py",
+            "-u",
+            "/opt/data/private/ZHY/script/supermimic_q1_precision_probe/probe.py",
+            "--runtime",
+            "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+            "--library",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json",
+            "--checkpoint",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt",
+            "--calibration",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_UR04_BALANCE_PREP_20261028/calibration_v02.json",
+            "--frozen-plan",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_ACTIVITY_BLEND_FULL330_REVIEW_20261029/plan.json",
+            "--output",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_INFERENCE_PRECISION_PROBE_20261029",
+            "--scope",
+            "quick33",
+            "--expected-boot",
+            "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+            "--expected-gpu",
+            "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+            "--code-commit",
+            "e83324f8084cd8051d2db357c2b59793237cc7c8",
+            "--controller",
+            "--worker"
+          ],
+          "cwd": "/opt/data/private/ZHY",
+          "started_utc": "2026-10-28T20:38:34.192799+00:00",
+          "controller_pid": 156963,
+          "storage_status": "LOCAL_ONLY",
+          "last_storage_check": {
+            "experiment": {
+              "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_INFERENCE_PRECISION_PROBE_20261029",
+              "unique_allocated_bytes": 8093696,
+              "unique_logical_bytes": 8054148,
+              "unique_inodes": 16,
+              "symlinks_not_followed": 0
+            },
+            "source": {
+              "root": "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+              "unique_allocated_bytes": 1536000,
+              "unique_logical_bytes": 1204099,
+              "unique_inodes": 166,
+              "symlinks_not_followed": 0
+            },
+            "free_bytes": {
+              "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_INFERENCE_PRECISION_PROBE_20261029": 1640801984512,
+              "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027": 1640801984512
+            },
+            "shared_memory": {
+              "shared_bytes": 17067728896,
+              "oom_kill": 0,
+              "maximum_bytes": 32212254720
+            },
+            "gpu": {
+              "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+              "memory_mib": 787,
+              "temperature_c": 35
+            }
+          },
+          "error": null,
+          "worker_pid": 156971,
+          "worker_group": 156971
+        }
+      }
+    },
+    "processes": {
+      "156963": {
+        "exists": true,
+        "start_ticks": 13355775,
+        "state": "S",
+        "command": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_precision_probe/probe.py --runtime /opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --checkpoint /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt --calibration /opt/data/private/ZHY/data/supermimic_for_q1/Q1_UR04_BALANCE_PREP_20261028/calibration_v02.json --frozen-plan /opt/data/private/ZHY/data/supermimic_for_q1/Q1_ACTIVITY_BLEND_FULL330_REVIEW_20261029/plan.json --output /opt/data/private/ZHY/data/supermimic_for_q1/Q1_INFERENCE_PRECISION_PROBE_20261029 --scope quick33 --expected-boot 4d859008-4c83-4a6d-814d-cbb9dfe885c9 --expected-gpu GPU-26028785-9fb9-45af-e614-4cc53af15d08 --code-commit e83324f8084cd8051d2db357c2b59793237cc7c8 --controller "
+      },
+      "156971": {
+        "exists": true,
+        "start_ticks": 13355927,
+        "state": "R",
+        "command": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_precision_probe/probe.py --runtime /opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --checkpoint /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt --calibration /opt/data/private/ZHY/data/supermimic_for_q1/Q1_UR04_BALANCE_PREP_20261028/calibration_v02.json --frozen-plan /opt/data/private/ZHY/data/supermimic_for_q1/Q1_ACTIVITY_BLEND_FULL330_REVIEW_20261029/plan.json --output /opt/data/private/ZHY/data/supermimic_for_q1/Q1_INFERENCE_PRECISION_PROBE_20261029 --scope quick33 --expected-boot 4d859008-4c83-4a6d-814d-cbb9dfe885c9 --expected-gpu GPU-26028785-9fb9-45af-e614-4cc53af15d08 --code-commit e83324f8084cd8051d2db357c2b59793237cc7c8 --controller --worker "
+      }
+    },
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 787, 36, 23",
+    "compute_processes": "156971, /opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python, 764",
+    "free_bytes": 1640801644544
+  },
+  "command": "ssh -S /tmp/yuanqi-q1-25386.sock -T -p 18873 -o BatchMode=yes -o ConnectTimeout=8 -o 'HostKeyAlias=[59.77.15.15]:25386' root@127.0.0.1 ''\\''/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python'\\'' -u /opt/data/private/ZHY/script/supermimic_q1_hp/activate.py -u /opt/data/private/ZHY/script/supermimic_q1_precision_probe/probe.py --runtime '\\''/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027'\\'' --library '\\''/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json'\\'' --checkpoint '\\''/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt'\\'' --calibration '\\''/opt/data/private/ZHY/data/supermimic_for_q1/Q1_UR04_BALANCE_PREP_20261028/calibration_v02.json'\\'' --frozen-plan '\\''/opt/data/private/ZHY/data/supermimic_for_q1/Q1_ACTIVITY_BLEND_FULL330_REVIEW_20261029/plan.json'\\'' --output '\\''/opt/data/private/ZHY/data/supermimic_for_q1/Q1_INFERENCE_PRECISION_PROBE_20261029'\\'' --scope quick33 --expected-boot 4d859008-4c83-4a6d-814d-cbb9dfe885c9 --expected-gpu GPU-26028785-9fb9-45af-e614-4cc53af15d08 --code-commit e83324f8084cd8051d2db357c2b59793237cc7c8 --detach'",
+  "optimizer_updates": 0,
+  "user_accepted_checkpoint": null
+}

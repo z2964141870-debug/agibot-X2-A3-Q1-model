@@ -1,5 +1,12 @@
 # Q1按参考活动量调节上肢混合
 
+04:44本地数据/视频已齐：52小工件50448523字节Mac/25386逐大小SHA，三视频各54秒/1350帧/25fps、固定8段6类原速，非连续rollout；18/18媒体检查和9联系图/2x3控制图目视完成。联系图显示上肢幅度改善，但普通走抬脚/滑移仍与参考有差距，不把解码验收当自然步态合格。所有原值/失败保留，0新仿真/推理/optimizer，用户采纳null。[交付收据](../data/manifests/supermimic_q1_activity_full330_local_delivery_20261029.json)。
+
+- [静态.50对照本地MP4](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_ACTIVITY_BLEND_FULL330_REVIEW_20261029/evaluation/baseline.mp4)
+- [静态.75幅度/步态取舍本地MP4](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_ACTIVITY_BLEND_FULL330_REVIEW_20261029/evaluation/static075.mp4)
+- [动态.50-.75本地MP4](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_ACTIVITY_BLEND_FULL330_REVIEW_20261029/evaluation/activity050075.mp4)
+- [2970逐片及固定动作原值](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_ACTIVITY_BLEND_FULL330_REVIEW_20261029/review_v01/README.md)
+
 04:08:24 full330正常COMPLETED，1188来源/教师未变、guard WORKER_COMPLETED/reaped0；04:08:42原153640/153643均不存在、GPU15MiB无计算进程/OOM0。三次baseline训练失败9/11/8、验证0/0/0；static075训练19/18/17、验证0/0/0；activity050075训练10/12/11、验证1/0/0（完成99.37%/100%/100%）。上肢RMSE分别.29637/.29658/.29621、.14269/.14316/.14298、.19431/.19480/.19542rad。动态上肢收益约34%仍在，但存在轻微全库稳定性代价；不能称全身已训好或独立泛化验证。
 
 所有固定两走/抬手三次完整。动态停走滑速.09894/.11500/.09011m/s对baseline.10980/.11682/.12226；起走.14196/.13315/.11868对.09568/.14711/.12440，仍无两片一致收益。动态两走足高95分位分别约.054-.055/.063-.064m、.049-.052/.068-.070m，仍低于参考约.077/.082和.079/.088m；抬手漂移.0771-.0776m，峰高/时序需看原值和视频。旧逐片继续诊断0/3保留，不启动训练。

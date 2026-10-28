@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 04:44最新：[ACTIVITY full330本地交付](README_Q1_ACTIVITY_BLEND_20261029.md)52工件50448523字节Mac/25386 SHA、3固定54秒MP4/18媒体检查/9联系图与控制图目视完成；上肢收益与步态代价保留，不称自然走路达标。[唯一推理精度quick33](README_Q1_PRECISION_SENSITIVITY_20261029.md)04:38:32启动controller156963/start_ticks13355775、worker156971/start_ticks13355927，代码e83324f/8文件227821字节三端SHA；04:39:28 bf16_static050 repeat1/frame250、0optimizer/原身份/资源正常/OOM0，尚无结论。另[只读脚底几何CPU准备](README_Q1_SAVED_SOLE_GEOMETRY_20261029.md)已合成模型解析/平移/旋转核验，真实330片审计未运行，不改变参考/数据门。07:00/09:00截止、采纳null保留。
+
 2026-10-29 04:19：[BF16/FP32推理精度诊断CPU准备](README_Q1_PRECISION_SENSITIVITY_20261029.md)3反例/AST/服务器help通过，四档同权重/控制/输入配对，0optimizer；首个实际前向用同输入核物理目标差，不额外reset。尚未GPU启动，须等当前ACTIVITY已存轨迹三视频渲染session70132结束、冻结发布/核SHA/GPU空闲；不把精度差当物理改善或单因根因，07:00/09:00截止不变。
 
 2026-10-29 04:10最新：[ACTIVITY full330已04:08:24完成](README_Q1_ACTIVITY_BLEND_20261029.md)，1188来源/教师未变、guardreap0/原153640与153643退出/GPU释放/OOM0。动态候选上肢仍约降34%，但训练失败10/12/11对baseline9/11/8、验证1/0/0对0/0/0，固定两走抬手3/3完整，走路滑移并未一致改善，旧继续门0/3，不作训练晋级/用户采纳。只读工具已生成2970逐片/27固定/42跟踪/48步态行及2x3控制图；原固定六类视频渲染/Mac验收待，07:00/09:00截止保留。[收据](../data/manifests/supermimic_q1_activity_full330_results_20261029.json)。

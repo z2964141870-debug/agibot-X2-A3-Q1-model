@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-29 04:44 ACTIVITY full330本地3原速54秒MP4/逐片图表已交付，52工件50448523字节Mac/25386 SHA、18媒体检查/9联系图与控制图目视通过，普通走仍有抬脚/滑移问题不称整体成功。04:38:32唯一precision quick33启动controller156963/start_ticks13355775、worker156971/start_ticks13355927，原boot/GPU，冻结e83324f8084cd8051d2db357c2b59793237cc7c8/8文件227821字节三端SHA；04:39:28 bf16_static050 repeat1/frame250/0optimizer/OOM0，尚无效果。脚底几何只读CPU工具合成模型核验通过、真实330参考审计未运行，不改变参考或新数据门；07:00/09:00截止/采纳null/无agent保持。
+
 - 2026-10-29 04:19推理精度敏感性独立准备3CPU反例/AST/远端help通过，BF16/FP32同冻结权重/控制/输入×静态.5/动态.5-.75，33环境三配置seed、0optimizer；尚未物理启动。须先等当前ACTIVITY固定三视频已存轨迹渲染session70132结束、发布/三端SHA/GPU空闲；不并行GPU/重试旧作业/agent，不将精度差认定根因或改善，07:00探索/09:00交付/用户采纳null。入口PRECISION_SENSITIVITY及preparation。
 
 - 2026-10-29 04:10 ACTIVITY full330已04:08:24正常COMPLETED，1188来源/教师不变、guardreap0/原153640和153643退出/GPU释放/OOM0。动态候选上肢约降34%，训练失败10/12/11对baseline9/11/8、验证1/0/0对0/0/0，固定两走抬手完整；滑移无两片一致改善，原继续门0/3，不开训练。2970逐片/27固定/42跟踪/48步态行与2x3控制图已生成，独立固定轨迹renderer CLI通过，实际MP4/Mac验收待；不重复仿真/旧审计/agent，07:00探索/09:00交付和采纳null保留。入口ACTIVITY_BLEND/full330_results。

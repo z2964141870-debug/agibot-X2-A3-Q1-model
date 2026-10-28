@@ -1,5 +1,7 @@
 # Q1推理精度独立诊断
 
+04:38:32唯一quick33已实际启动，controller156963/start_ticks13355775、worker156971/start_ticks13355927、原boot/GPU；冻结e83324f8084cd8051d2db357c2b59793237cc7c8独立远端及8文件227821字节三端SHA一致。04:39:28 bf16_static050 repeat1/frame250、三状态/命令/mtime一致，0optimizer、GPU787MiB/36度/共享17067728896字节/OOM0；尚无精度效果结论。只监督原四档三重复，不重复启动/热改来源。[启动](../data/manifests/supermimic_q1_precision_probe_launch_20261029.json)。
+
 2026-10-29 04:19北京时间。3项CPU反例、3源AST解析及服务器真实Python经activate.py的CLI help通过，尚未物理启动。当前只在渲染已存ACTIVITY full330三段视频，先等交付子进程退出再核GPU空闲，不能并行GPU诊断。用户夜间自由探索至09:00、07:00停止新增物理探索；不恢复旧训练或失败重试，采纳null。
 
 ## 假设与代码核验

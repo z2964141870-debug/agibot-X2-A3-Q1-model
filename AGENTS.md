@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-29 02:31 RF15负面试验已完成交付：1203.610393秒/270轮physical_regression正常停，02:10:47全pipeline COMPLETED，原controller/训练与交付worker退出/GPU释放；11保存/24媒体检查与71工件54801805字节Mac/25386大小SHA完成，四54秒MP4/六格/逐片数据齐备。静态alpha.5上肢收益不归因head学习、用户采纳仍null。独立参考相位腿部quick33已02:13至02:22完成，controller142032/worker142035退出、guardreap0/1166来源未变，6候选三重复/0optimizer均无两走可重复收益；26小工件3278039字节Mac核SHA，不据此full330或训练。本夜探索授权至09:00仍有效、07:00停新优化/物理探索；下一步高频目标/阻尼诊断尚未启动，不恢复/重试RF15/旧训练、不热改来源/agent/旧goal。入口RF15_RESULTS、PHASE_LEG_PROBE及local_delivery/phase_leg_results收据，以下未交付/RUNNING为历史。
+
 - 2026-10-29 01:48 RF15首1203.610393秒/270轮因停走滑移physical_regression2/3而正常停止，验证0/0/1、固定两走/抬手虽完整但步态未改善；静态alpha.5上肢收益保留，不归因head学习。训练worker137016已退出/GPU释放，controller137006与交付worker139983仍在，MP4/六格/保存及媒体审计待；不预称完成，不恢复/重试RF15。11小证据1659618字节Mac/25386 SHA及逐片表已备。09:00夜间自主探索授权仍有效，可继续有界分析/独立零optimizer控制对照，不自动重试/热改来源；07:00优化截止、用户尚未采纳底座不变。入口RF15_RESULTS_20261029及stage01收据，以下RUNNING为历史。
 
 - 2026-10-29 01:18:51唯一RF15夜间流程已启动，正式根data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029；controller137006/start_ticks12157622、worker137016/start_ticks12157730，原boot/GPU一致。冻结e3601552863084d5f52758e6c5f07ea722dafbf8已push/独立40位远端、19文件245695字节三端SHA，plan1163来源。01:24:01初始alpha.5三重复评测repeat2/frame300、0实训/optimizer，资源正常/OOM0，不是改善证据；约1200/2400/3500秒先看物理门，<=14400实训秒，07:00停止优化/09:00交付。全pipeline源码冻结，不重启/热改/agent/重建旧goal；选RF14两小时仅实验决定，user_accepted_checkpoint=null。入口RF15_OVERNIGHT及launch_observed；以下尚未启动为历史。

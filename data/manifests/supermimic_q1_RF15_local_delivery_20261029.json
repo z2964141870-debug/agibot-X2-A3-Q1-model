@@ -1,0 +1,2014 @@
+{
+  "status": "RF15_NEGATIVE_RESULT_AND_LOCAL_REVIEW_READY",
+  "captured_beijing": "2026-10-29T02:31:00+08:00",
+  "training_code_commit": "e3601552863084d5f52758e6c5f07ea722dafbf8",
+  "outcome": "physical_regression",
+  "training_seconds": 1203.6103925221396,
+  "iterations": 270,
+  "physical_transitions": 26542080,
+  "critic_optimizer_steps": 5400,
+  "actor_optimizer_steps": 5200,
+  "new_world_model_updates": 0,
+  "pipeline_completed_beijing": "2026-10-29T02:10:47.103322+08:00",
+  "terminal_observation": {
+    "captured_utc": "2026-10-28T18:12:17.843417+00:00",
+    "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "trial": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029",
+    "files": {
+      "launch.json": {
+        "bytes": 196,
+        "mtime_ns": 1793207931211474000,
+        "content": {
+          "controller_pid": 137006,
+          "started_utc": "2026-10-28T17:18:51.212908+00:00",
+          "log": "/opt/data/private/ZHY/logs/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029_controller.log"
+        }
+      },
+      "status.json": {
+        "bytes": 682,
+        "mtime_ns": 1793211047098507300,
+        "content": {
+          "status": "COMPLETED",
+          "process": {
+            "pid": 137006,
+            "start_ticks": 12157622,
+            "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+          },
+          "started_utc": "2026-10-28T17:18:51.320677+00:00",
+          "mode": "train",
+          "code_commit": "e3601552863084d5f52758e6c5f07ea722dafbf8",
+          "no_automatic_retry": true,
+          "phase": "delivery",
+          "completed_utc": "2026-10-28T18:10:47.103322+00:00",
+          "frozen_sources_unchanged": 1163,
+          "receipt": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/run/receipt.json",
+            "bytes": 1110,
+            "sha256": "779cd5e9622fb3f2b000ffcb45de2ed028e00da9b984cc986eed5a7496e3e575"
+          }
+        }
+      },
+      "plan.json": {
+        "bytes": 288314,
+        "mtime_ns": 1793207932223457500,
+        "content": {
+          "command": [
+            "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python",
+            "-u",
+            "/opt/data/private/ZHY/script/supermimic_q1_hp/activate.py",
+            "-u",
+            "/opt/data/private/ZHY/script/supermimic_q1_gait_comp/train.py",
+            "--runtime",
+            "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+            "--library",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json",
+            "--checkpoint",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt",
+            "--calibration",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_UR04_BALANCE_PREP_20261028/calibration_v02.json",
+            "--output",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/run",
+            "--upper-alpha",
+            "0.5",
+            "--code-commit",
+            "e3601552863084d5f52758e6c5f07ea722dafbf8"
+          ],
+          "code_commit": "e3601552863084d5f52758e6c5f07ea722dafbf8",
+          "process": {
+            "pid": 137006,
+            "start_ticks": 12157622,
+            "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+          },
+          "started_utc": "2026-10-28T17:18:52.222109+00:00",
+          "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+          "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+          "maximum_training_seconds": 14400,
+          "upper_reference_alpha": 0.5,
+          "check_at_seconds": [
+            1200,
+            2400,
+            3500,
+            7100,
+            10700,
+            14300
+          ],
+          "external_reserve_seconds": 60,
+          "grace_seconds": 45,
+          "optimization_wall_deadline_unix": 1793228400,
+          "delivery_wall_deadline_unix": 1793235600,
+          "authorization": "User autonomous exploration2026-10-29 until09:00 Beijing",
+          "only_physical_improvement_allows_continuation_after_first_hour": true,
+          "user_accepted_checkpoint": null,
+          "no_automatic_retry": true
+        }
+      },
+      "train_guard.json": {
+        "bytes": 2654,
+        "mtime_ns": 1793209617203446800,
+        "content": {
+          "status": "WORKER_COMPLETED",
+          "command": [
+            "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python",
+            "-u",
+            "/opt/data/private/ZHY/script/supermimic_q1_hp/activate.py",
+            "-u",
+            "/opt/data/private/ZHY/script/supermimic_q1_gait_comp/train.py",
+            "--runtime",
+            "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+            "--library",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json",
+            "--checkpoint",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt",
+            "--calibration",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_UR04_BALANCE_PREP_20261028/calibration_v02.json",
+            "--output",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/run",
+            "--upper-alpha",
+            "0.5",
+            "--code-commit",
+            "e3601552863084d5f52758e6c5f07ea722dafbf8"
+          ],
+          "cwd": "/opt/data/private/ZHY",
+          "started_utc": "2026-10-28T17:18:52.228258+00:00",
+          "controller_pid": 137006,
+          "storage_status": "LOCAL_ONLY",
+          "last_storage_check": {
+            "experiment": {
+              "root": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029",
+              "unique_allocated_bytes": 793608192,
+              "unique_logical_bytes": 793503739,
+              "unique_inodes": 46,
+              "symlinks_not_followed": 0
+            },
+            "source": {
+              "root": "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+              "unique_allocated_bytes": 1536000,
+              "unique_logical_bytes": 1204099,
+              "unique_inodes": 166,
+              "symlinks_not_followed": 0
+            },
+            "free_bytes": {
+              "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029": 1646778130432,
+              "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027": 1646778130432
+            },
+            "shared_memory": {
+              "shared_bytes": 12799459328,
+              "oom_kill": 0,
+              "maximum_bytes": 32212254720
+            },
+            "gpu": {
+              "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+              "memory_mib": 15,
+              "temperature_c": 39
+            },
+            "actual_training_seconds": 1203.6103925221396,
+            "current_training_cap_seconds": 14400
+          },
+          "error": null,
+          "worker_pid": 137016,
+          "worker_group": 137016,
+          "cleanup": {
+            "worker_started": true,
+            "worker_pid": 137016,
+            "worker_group": 137016,
+            "worker_reaped": true,
+            "worker_return_code": 0
+          },
+          "ended_utc": "2026-10-28T17:46:57.205083+00:00"
+        }
+      },
+      "run/status.json": {
+        "bytes": 1110,
+        "mtime_ns": 1793209615395496700,
+        "content": {
+          "status": "TRAINING_COMPLETED",
+          "process": {
+            "pid": 137016,
+            "start_ticks": 12157730,
+            "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+          },
+          "started_utc": "2026-10-28T17:18:58.280962+00:00",
+          "code_commit": "e3601552863084d5f52758e6c5f07ea722dafbf8",
+          "iteration": 270,
+          "new_world_model_updates": 0,
+          "training_seconds": 1203.6103925221396,
+          "algorithm": "Installed RSL-RL PPO, lower latent14, immutable selected HP base",
+          "phase": "evaluation",
+          "updated_utc": "2026-10-28T17:46:43.442561+00:00",
+          "sim_steps": 26542080,
+          "optimizer_steps": 5400,
+          "actor_optimizer_steps": 5200,
+          "current_cap_seconds": 14400,
+          "evaluation_label": "stage_01",
+          "evaluation_repeat": 2,
+          "evaluation_frame": 450,
+          "next_evaluation_seconds": 1200,
+          "outcome": "physical_regression",
+          "final": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/run/final.pt",
+            "bytes": 9828291,
+            "sha256": "30773a27d3ce447cc2ce77f4c213282898b85801c05ab9cd6e78a9a18a83fcfd"
+          },
+          "ended_utc": "2026-10-28T17:46:55.398362+00:00"
+        }
+      },
+      "run/training_clock.json": {
+        "bytes": 532,
+        "mtime_ns": 1793209467966720300,
+        "content": {
+          "status": "PAUSED_FOR_NONTRAINING",
+          "accumulated_training_seconds": 1203.6103925221396,
+          "active_started_monotonic": null,
+          "absolute_maximum_seconds": 14400,
+          "current_cap_seconds": 14400,
+          "soft_stop_seconds": 14300,
+          "overnight_authorization": "2026-10-29 user freedom until09:00 Beijing",
+          "optimization_wall_deadline_unix": 1793228400,
+          "delivery_wall_deadline_unix": 1793235600,
+          "definition": "Synchronized actual collection/GAE/RSL-RL updates; initialization/evaluation/checkpoint/media excluded."
+        }
+      },
+      "run/stage_decisions.json": {
+        "bytes": 23635,
+        "mtime_ns": 1793209615051506200,
+        "content": [
+          {
+            "iteration": 270,
+            "training_seconds": 1203.6103925221396,
+            "checkpoint": {
+              "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/run/stage_01.pt",
+              "bytes": 9828462,
+              "sha256": "302f9b8583f4653384811368b79f0e19277fb1245f4cf0c3c23c8f5a8c683fab"
+            },
+            "comparisons": [
+              {
+                "ratios": {
+                  "walking_slip": 1.3741871045222842,
+                  "swing_error": 1.0620512615804794,
+                  "walking_tilt": 1.148654755885439,
+                  "target_change": 1.2158732965213381,
+                  "upper_rmse": 0.994732858517426,
+                  "wrist_rmse": 0.9874130134478548,
+                  "raised_peak_error": 1.0260571235338058
+                },
+                "walking_ratios": [
+                  {
+                    "walking_slip": 2.2126905515685036,
+                    "swing_error": 1.0361311708907541,
+                    "walking_tilt": 1.230592802657283,
+                    "target_change": 1.4579805445300087
+                  },
+                  {
+                    "walking_slip": 0.8914177873060882,
+                    "swing_error": 1.0927554422706538,
+                    "walking_tilt": 1.0645415248443002,
+                    "target_change": 1.017675130442784
+                  }
+                ],
+                "validation_failures": 0,
+                "validation_completion": 1,
+                "fixed_demos_complete": true,
+                "walking_progress_preserved": true,
+                "stationary_drift_m": 0.07639933377504349,
+                "baseline_stationary_drift_m": 0.07666772603988647,
+                "walking_common_prefix": [
+                  {
+                    "steps": 320,
+                    "common_prefix_steps": 320,
+                    "failed": false,
+                    "completion": 1,
+                    "forward_displacement_m": 2.0151426792144775,
+                    "reference_displacement_m": 2.1927454471588135,
+                    "root_displacement_m": 2.0226855278015137,
+                    "foot_lift_p95_m": [
+                      0.05910356640815736,
+                      0.0630139110609889
+                    ],
+                    "reference_foot_lift_p95_m": [
+                      0.07711893320083618,
+                      0.08188892472535372
+                    ],
+                    "foot_lift_tracking_rmse_m": 0.029807707531140933,
+                    "swing_local_foot_rmse_m": 0.09007897228002548,
+                    "loaded_slip_mps": 0.18861541152000427,
+                    "torso_tilt_rms_rad": 0.10744201391935349,
+                    "knee_reference_rmse_rad": 0.4309106469154358,
+                    "target_delta_rms_rad": 0.10514692217111588,
+                    "sustained_single_support_alternations": 26,
+                    "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+                  },
+                  {
+                    "steps": 210,
+                    "common_prefix_steps": 210,
+                    "failed": false,
+                    "completion": 1,
+                    "forward_displacement_m": 2.223381280899048,
+                    "reference_displacement_m": 2.0565264225006104,
+                    "root_displacement_m": 2.2238945960998535,
+                    "foot_lift_p95_m": [
+                      0.044096779450774184,
+                      0.07139069065451621
+                    ],
+                    "reference_foot_lift_p95_m": [
+                      0.07931931391358375,
+                      0.08814619742333889
+                    ],
+                    "foot_lift_tracking_rmse_m": 0.03010289099751741,
+                    "swing_local_foot_rmse_m": 0.08019931614398956,
+                    "loaded_slip_mps": 0.13197843730449677,
+                    "torso_tilt_rms_rad": 0.09054066240787506,
+                    "knee_reference_rmse_rad": 0.40865859389305115,
+                    "target_delta_rms_rad": 0.08965244889259338,
+                    "sustained_single_support_alternations": 17,
+                    "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+                  }
+                ],
+                "baseline_walking_common_prefix": [
+                  {
+                    "steps": 320,
+                    "common_prefix_steps": 320,
+                    "failed": false,
+                    "completion": 1,
+                    "forward_displacement_m": 2.2368435859680176,
+                    "reference_displacement_m": 2.1927454471588135,
+                    "root_displacement_m": 2.2369043827056885,
+                    "foot_lift_p95_m": [
+                      0.05425216518342496,
+                      0.061102434433996676
+                    ],
+                    "reference_foot_lift_p95_m": [
+                      0.07711893320083618,
+                      0.08188892472535372
+                    ],
+                    "foot_lift_tracking_rmse_m": 0.028174677410451307,
+                    "swing_local_foot_rmse_m": 0.0869378075003624,
+                    "loaded_slip_mps": 0.08524256199598312,
+                    "torso_tilt_rms_rad": 0.08730915188789368,
+                    "knee_reference_rmse_rad": 0.31757262349128723,
+                    "target_delta_rms_rad": 0.07211819291114807,
+                    "sustained_single_support_alternations": 16,
+                    "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+                  },
+                  {
+                    "steps": 210,
+                    "common_prefix_steps": 210,
+                    "failed": false,
+                    "completion": 1,
+                    "forward_displacement_m": 2.2171976566314697,
+                    "reference_displacement_m": 2.0565264225006104,
+                    "root_displacement_m": 2.2173619270324707,
+                    "foot_lift_p95_m": [
+                      0.04847589395940303,
+                      0.06908216588199133
+                    ],
+                    "reference_foot_lift_p95_m": [
+                      0.07931931391358375,
+                      0.08814619742333889
+                    ],
+                    "foot_lift_tracking_rmse_m": 0.028264392058292655,
+                    "swing_local_foot_rmse_m": 0.07339182496070862,
+                    "loaded_slip_mps": 0.14805452525615692,
+                    "torso_tilt_rms_rad": 0.08505132049322128,
+                    "knee_reference_rmse_rad": 0.4126892387866974,
+                    "target_delta_rms_rad": 0.08809535205364227,
+                    "sustained_single_support_alternations": 15,
+                    "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+                  }
+                ],
+                "validation_tracking_diagnostic": {
+                  "ratios": {
+                    "root_xy_rmse": 0.9580112165815196,
+                    "upper_rmse": 0.994732858517426,
+                    "leg_rmse": 0.9777444704792009,
+                    "wrist_relative_rmse": 0.9874130134478548,
+                    "target_oscillation": 0.9776027498204263,
+                    "loaded_slip": 0.9757127637323099,
+                    "raised_peak_error": 1.0260571235338058
+                  },
+                  "measurements": {
+                    "root_xy_rmse": {
+                      "candidate": 0.06518372387314836,
+                      "baseline": 0.06804066877812147
+                    },
+                    "upper_rmse": {
+                      "candidate": 0.2953515653808912,
+                      "baseline": 0.29691546112298967
+                    },
+                    "leg_rmse": {
+                      "candidate": 0.2573577086130778,
+                      "baseline": 0.26321571369965874
+                    },
+                    "wrist_relative_rmse": {
+                      "candidate": 0.08294985728959242,
+                      "baseline": 0.08400725548466047
+                    },
+                    "target_oscillation": {
+                      "candidate": 0.05483511441076795,
+                      "baseline": 0.05609140770199398
+                    },
+                    "loaded_slip": {
+                      "candidate": 0.06781199959417185,
+                      "baseline": 0.06949996158170203
+                    },
+                    "raised_peak_error": {
+                      "candidate": 0.07270386815071106,
+                      "baseline": 0.07085752487182617
+                    }
+                  },
+                  "failures": 0,
+                  "completion": 1,
+                  "fixed_demos_complete": true,
+                  "common_prefix_mean_seconds": 5.304
+                }
+              },
+              {
+                "ratios": {
+                  "walking_slip": 1.0596312988820462,
+                  "swing_error": 0.9781528972380581,
+                  "walking_tilt": 0.9283680901953035,
+                  "target_change": 0.9239935629256436,
+                  "upper_rmse": 1.0022134822160276,
+                  "wrist_rmse": 0.9871796588814384,
+                  "raised_peak_error": 1.028633172283995
+                },
+                "walking_ratios": [
+                  {
+                    "walking_slip": 1.0389314872216824,
+                    "swing_error": 0.9203613760438973,
+                    "walking_tilt": 0.8296494738414981,
+                    "target_change": 0.8234622994640657
+                  },
+                  {
+                    "walking_slip": 1.0807744223677314,
+                    "swing_error": 1.0518873207771255,
+                    "walking_tilt": 1.0512535560737217,
+                    "target_change": 1.0289336532062812
+                  }
+                ],
+                "validation_failures": 0,
+                "validation_completion": 1,
+                "fixed_demos_complete": true,
+                "walking_progress_preserved": true,
+                "stationary_drift_m": 0.07590334117412567,
+                "baseline_stationary_drift_m": 0.07783680409193039,
+                "walking_common_prefix": [
+                  {
+                    "steps": 320,
+                    "common_prefix_steps": 320,
+                    "failed": false,
+                    "completion": 1,
+                    "forward_displacement_m": 2.2475430965423584,
+                    "reference_displacement_m": 2.1927454471588135,
+                    "root_displacement_m": 2.247547149658203,
+                    "foot_lift_p95_m": [
+                      0.058753170445561415,
+                      0.05512606408447027
+                    ],
+                    "reference_foot_lift_p95_m": [
+                      0.07711893320083618,
+                      0.08188892472535372
+                    ],
+                    "foot_lift_tracking_rmse_m": 0.029073751494894773,
+                    "swing_local_foot_rmse_m": 0.08592329174280167,
+                    "loaded_slip_mps": 0.13095402717590332,
+                    "torso_tilt_rms_rad": 0.08997587114572525,
+                    "knee_reference_rmse_rad": 0.34361645579338074,
+                    "target_delta_rms_rad": 0.0753929615020752,
+                    "sustained_single_support_alternations": 19,
+                    "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+                  },
+                  {
+                    "steps": 210,
+                    "common_prefix_steps": 210,
+                    "failed": false,
+                    "completion": 1,
+                    "forward_displacement_m": 2.24027419090271,
+                    "reference_displacement_m": 2.0565264225006104,
+                    "root_displacement_m": 2.241219997406006,
+                    "foot_lift_p95_m": [
+                      0.04598186835646629,
+                      0.0697566408663988
+                    ],
+                    "reference_foot_lift_p95_m": [
+                      0.07931931391358375,
+                      0.08814619742333889
+                    ],
+                    "foot_lift_tracking_rmse_m": 0.02854432082059459,
+                    "swing_local_foot_rmse_m": 0.0769689530134201,
+                    "loaded_slip_mps": 0.13337187469005585,
+                    "torso_tilt_rms_rad": 0.09158775955438614,
+                    "knee_reference_rmse_rad": 0.3960840702056885,
+                    "target_delta_rms_rad": 0.09024728834629059,
+                    "sustained_single_support_alternations": 15,
+                    "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+                  }
+                ],
+                "baseline_walking_common_prefix": [
+                  {
+                    "steps": 320,
+                    "common_prefix_steps": 320,
+                    "failed": false,
+                    "completion": 1,
+                    "forward_displacement_m": 2.1069931983947754,
+                    "reference_displacement_m": 2.1927454471588135,
+                    "root_displacement_m": 2.113140106201172,
+                    "foot_lift_p95_m": [
+                      0.05475798286497594,
+                      0.0665351377800107
+                    ],
+                    "reference_foot_lift_p95_m": [
+                      0.07711893320083618,
+                      0.08188892472535372
+                    ],
+                    "foot_lift_tracking_rmse_m": 0.031046449601120164,
+                    "swing_local_foot_rmse_m": 0.09335821121931076,
+                    "loaded_slip_mps": 0.12604683637619019,
+                    "torso_tilt_rms_rad": 0.10845046490430832,
+                    "knee_reference_rmse_rad": 0.42187467217445374,
+                    "target_delta_rms_rad": 0.09155605733394623,
+                    "sustained_single_support_alternations": 23,
+                    "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+                  },
+                  {
+                    "steps": 210,
+                    "common_prefix_steps": 210,
+                    "failed": false,
+                    "completion": 1,
+                    "forward_displacement_m": 2.1818735599517822,
+                    "reference_displacement_m": 2.0565264225006104,
+                    "root_displacement_m": 2.1829452514648438,
+                    "foot_lift_p95_m": [
+                      0.04953144229948518,
+                      0.06666357629001136
+                    ],
+                    "reference_foot_lift_p95_m": [
+                      0.07931931391358375,
+                      0.08814619742333889
+                    ],
+                    "foot_lift_tracking_rmse_m": 0.027690049421893022,
+                    "swing_local_foot_rmse_m": 0.07317224144935608,
+                    "loaded_slip_mps": 0.12340398877859116,
+                    "torso_tilt_rms_rad": 0.08712242543697357,
+                    "knee_reference_rmse_rad": 0.407105952501297,
+                    "target_delta_rms_rad": 0.08770953118801117,
+                    "sustained_single_support_alternations": 16,
+                    "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+                  }
+                ],
+                "validation_tracking_diagnostic": {
+                  "ratios": {
+                    "root_xy_rmse": 1.1234920985466263,
+                    "upper_rmse": 1.0022134822160276,
+                    "leg_rmse": 0.9958786487121395,
+                    "wrist_relative_rmse": 0.9871796588814384,
+                    "target_oscillation": 1.0273492244618772,
+                    "loaded_slip": 1.047838980756068,
+                    "raised_peak_error": 1.028633172283995
+                  },
+                  "measurements": {
+                    "root_xy_rmse": {
+                      "candidate": 0.06858618094896277,
+                      "baseline": 0.061047319369390604
+                    },
+                    "upper_rmse": {
+                      "candidate": 0.29667943914731343,
+                      "baseline": 0.29602419485648473
+                    },
+                    "leg_rmse": {
+                      "candidate": 0.2590995078285535,
+                      "baseline": 0.26017176707585654
+                    },
+                    "wrist_relative_rmse": {
+                      "candidate": 0.08238648859163125,
+                      "baseline": 0.08345642847319444
+                    },
+                    "target_oscillation": {
+                      "candidate": 0.0568699645344168,
+                      "baseline": 0.05535602030965189
+                    },
+                    "loaded_slip": {
+                      "candidate": 0.07315209372124325,
+                      "baseline": 0.06981234241587421
+                    },
+                    "raised_peak_error": {
+                      "candidate": 0.07269446551799774,
+                      "baseline": 0.07067093253135681
+                    }
+                  },
+                  "failures": 0,
+                  "completion": 1,
+                  "fixed_demos_complete": true,
+                  "common_prefix_mean_seconds": 5.304
+                }
+              },
+              {
+                "ratios": {
+                  "walking_slip": 1.155728992850758,
+                  "swing_error": 0.9971076348641027,
+                  "walking_tilt": 1.1081980785454932,
+                  "target_change": 1.2235999287752715,
+                  "upper_rmse": 0.9975964432399771,
+                  "wrist_rmse": 0.987903106093623,
+                  "raised_peak_error": 1.0293513157406375
+                },
+                "walking_ratios": [
+                  {
+                    "walking_slip": 1.6563116113247711,
+                    "swing_error": 0.9890702865212817,
+                    "walking_tilt": 1.1983416882425002,
+                    "target_change": 1.4486779617846812
+                  },
+                  {
+                    "walking_slip": 0.8008597599342773,
+                    "swing_error": 1.0060703116675016,
+                    "walking_tilt": 1.0182460577327705,
+                    "target_change": 1.0422538659458942
+                  }
+                ],
+                "validation_failures": 1,
+                "validation_completion": 0.9934684684684686,
+                "fixed_demos_complete": true,
+                "walking_progress_preserved": true,
+                "stationary_drift_m": 0.07622196525335312,
+                "baseline_stationary_drift_m": 0.07857618480920792,
+                "walking_common_prefix": [
+                  {
+                    "steps": 320,
+                    "common_prefix_steps": 320,
+                    "failed": false,
+                    "completion": 1,
+                    "forward_displacement_m": 2.1607205867767334,
+                    "reference_displacement_m": 2.1927454471588135,
+                    "root_displacement_m": 2.161612033843994,
+                    "foot_lift_p95_m": [
+                      0.06188505962491036,
+                      0.05916273910552264
+                    ],
+                    "reference_foot_lift_p95_m": [
+                      0.07711893320083618,
+                      0.08188892472535372
+                    ],
+                    "foot_lift_tracking_rmse_m": 0.028905210354817218,
+                    "swing_local_foot_rmse_m": 0.08683349192142487,
+                    "loaded_slip_mps": 0.16230836510658264,
+                    "torso_tilt_rms_rad": 0.10621867328882217,
+                    "knee_reference_rmse_rad": 0.42601656913757324,
+                    "target_delta_rms_rad": 0.10407703369855881,
+                    "sustained_single_support_alternations": 23,
+                    "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+                  },
+                  {
+                    "steps": 210,
+                    "common_prefix_steps": 210,
+                    "failed": false,
+                    "completion": 1,
+                    "forward_displacement_m": 2.2443997859954834,
+                    "reference_displacement_m": 2.0565264225006104,
+                    "root_displacement_m": 2.2469937801361084,
+                    "foot_lift_p95_m": [
+                      0.04562061987817283,
+                      0.07187140882015228
+                    ],
+                    "reference_foot_lift_p95_m": [
+                      0.07931931391358375,
+                      0.08814619742333889
+                    ],
+                    "foot_lift_tracking_rmse_m": 0.028435084294467082,
+                    "swing_local_foot_rmse_m": 0.07920698821544647,
+                    "loaded_slip_mps": 0.11070385575294495,
+                    "torso_tilt_rms_rad": 0.09044758230447769,
+                    "knee_reference_rmse_rad": 0.3930177688598633,
+                    "target_delta_rms_rad": 0.0929354801774025,
+                    "sustained_single_support_alternations": 15,
+                    "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+                  }
+                ],
+                "baseline_walking_common_prefix": [
+                  {
+                    "steps": 320,
+                    "common_prefix_steps": 320,
+                    "failed": false,
+                    "completion": 1,
+                    "forward_displacement_m": 2.2428154945373535,
+                    "reference_displacement_m": 2.1927454471588135,
+                    "root_displacement_m": 2.2428998947143555,
+                    "foot_lift_p95_m": [
+                      0.05462446734309197,
+                      0.061431248672306545
+                    ],
+                    "reference_foot_lift_p95_m": [
+                      0.07711893320083618,
+                      0.08188892472535372
+                    ],
+                    "foot_lift_tracking_rmse_m": 0.02791826540582603,
+                    "swing_local_foot_rmse_m": 0.08779304474592209,
+                    "loaded_slip_mps": 0.09799385815858841,
+                    "torso_tilt_rms_rad": 0.0886380523443222,
+                    "knee_reference_rmse_rad": 0.3133779764175415,
+                    "target_delta_rms_rad": 0.07184276729822159,
+                    "sustained_single_support_alternations": 16,
+                    "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+                  },
+                  {
+                    "steps": 210,
+                    "common_prefix_steps": 210,
+                    "failed": false,
+                    "completion": 1,
+                    "forward_displacement_m": 2.232954978942871,
+                    "reference_displacement_m": 2.0565264225006104,
+                    "root_displacement_m": 2.233102798461914,
+                    "foot_lift_p95_m": [
+                      0.04429809935390948,
+                      0.07137688435614108
+                    ],
+                    "reference_foot_lift_p95_m": [
+                      0.07931931391358375,
+                      0.08814619742333889
+                    ],
+                    "foot_lift_tracking_rmse_m": 0.028785122240352193,
+                    "swing_local_foot_rmse_m": 0.07872907817363739,
+                    "loaded_slip_mps": 0.13823126256465912,
+                    "torso_tilt_rms_rad": 0.08882684260606766,
+                    "knee_reference_rmse_rad": 0.39653244614601135,
+                    "target_delta_rms_rad": 0.08916779607534409,
+                    "sustained_single_support_alternations": 15,
+                    "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+                  }
+                ],
+                "validation_tracking_diagnostic": {
+                  "ratios": {
+                    "root_xy_rmse": 1.0055331380117805,
+                    "upper_rmse": 0.9975964432399771,
+                    "leg_rmse": 0.9914668747970911,
+                    "wrist_relative_rmse": 0.987903106093623,
+                    "target_oscillation": 0.988358293214879,
+                    "loaded_slip": 1.0638977114737154,
+                    "raised_peak_error": 1.0293513157406375
+                  },
+                  "measurements": {
+                    "root_xy_rmse": {
+                      "candidate": 0.06903862815039853,
+                      "baseline": 0.0686587299220264
+                    },
+                    "upper_rmse": {
+                      "candidate": 0.29495793680349985,
+                      "baseline": 0.29566859304904936
+                    },
+                    "leg_rmse": {
+                      "candidate": 0.2619070984423161,
+                      "baseline": 0.2641612191994985
+                    },
+                    "wrist_relative_rmse": {
+                      "candidate": 0.08313180965681871,
+                      "baseline": 0.08414976038038731
+                    },
+                    "target_oscillation": {
+                      "candidate": 0.05682136045458416,
+                      "baseline": 0.05749064974176387
+                    },
+                    "loaded_slip": {
+                      "candidate": 0.07704405834277471,
+                      "baseline": 0.07241679111806056
+                    },
+                    "raised_peak_error": {
+                      "candidate": 0.07273481786251068,
+                      "baseline": 0.07066082954406738
+                    }
+                  },
+                  "failures": 1,
+                  "completion": 0.9934684684684686,
+                  "fixed_demos_complete": true,
+                  "common_prefix_mean_seconds": 5.265333333333333
+                }
+              }
+            ],
+            "gate": {
+              "repeat_passed": [
+                false,
+                false,
+                false
+              ],
+              "repeat_severe": [
+                true,
+                false,
+                true
+              ],
+              "improvement_confirmed": false,
+              "physical_regression": true,
+              "root_xy_exact_threshold": null,
+              "maximum_training_seconds": 14400,
+              "protocol": "At least2/3 satisfy all gains on each fixed walk; all fixed demos complete3/3. Missing/nonfinite fails closed."
+            },
+            "overnight_continuation": {
+              "passed": [
+                false,
+                false,
+                false
+              ],
+              "continue_authorized": false,
+              "protocol": "Both fixed walks each improve slip or swing >=10%, preserve other gait metrics <=10%, upper/wrist/peak <=15%; all fixed demos complete in3 repeats; this overnight authority ends07:00 Beijing"
+            },
+            "traces": [
+              {
+                "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/stage_01_repeat0.npz",
+                "bytes": 91681343,
+                "sha256": "e538478c2f7d0fbbe1944e1d3e9df516c9ab2a0ea150cd16676d156e31601a90"
+              },
+              {
+                "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/stage_01_repeat1.npz",
+                "bytes": 91602966,
+                "sha256": "46c48305bba1b1b4d3dcfa2a9c9c11048be4fb5b6ff4d727f65add9e93050f42"
+              },
+              {
+                "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/stage_01_repeat2.npz",
+                "bytes": 91673198,
+                "sha256": "0a24b66a348ab3941aa0d13e4a18bf39f340f3a0a9d5586030af4a1708a845f7"
+              }
+            ]
+          }
+        ]
+      },
+      "delivery_status.json": {
+        "bytes": 24704,
+        "mtime_ns": 1793211044942552800,
+        "content": {
+          "status": "COMPLETED",
+          "updated_utc": "2026-10-28T18:10:44.945527+00:00",
+          "new_optimizer_steps": 0,
+          "new_physical_steps": 0,
+          "media": {
+            "base": {
+              "video": {
+                "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/base.mp4",
+                "bytes": 10879298,
+                "sha256": "ebe000ffa176cf54d1d87cfc7f85dcc858f803d5827b606a408ad0956d23964f"
+              },
+              "fps": 25,
+              "frames": 1350,
+              "duration_seconds": 54,
+              "speed": 1,
+              "segments": [
+                {
+                  "name": "walk_ff_stop_180_R_002__A095",
+                  "label": "Forward walking",
+                  "split": "train",
+                  "group": "walking",
+                  "source_metrics": {
+                    "duration_seconds": 6.4,
+                    "reference_path_m": 2.40979199152224,
+                    "forward_fraction": 0.9002012520224791,
+                    "lateral_fraction": 0.21541087858785643,
+                    "yaw_range_degrees": 19.786204834755566
+                  },
+                  "first_video_frame": 0,
+                  "last_video_frame": 160,
+                  "physical_steps": 320,
+                  "failed": false,
+                  "reference_frames_50hz": 321
+                },
+                {
+                  "name": "walk_ff_start_180_R_002__A071",
+                  "label": "Forward walking",
+                  "split": "train",
+                  "group": "walking",
+                  "source_metrics": {
+                    "duration_seconds": 4.2,
+                    "reference_path_m": 2.1134508485558876,
+                    "forward_fraction": 0.9575237230500965,
+                    "lateral_fraction": 0.18672564678820858,
+                    "yaw_range_degrees": 11.427767111307482
+                  },
+                  "first_video_frame": 161,
+                  "last_video_frame": 266,
+                  "physical_steps": 210,
+                  "failed": false,
+                  "reference_frames_50hz": 211
+                },
+                {
+                  "name": "triumph_two_handed_001__A058",
+                  "label": "Upper-body / raised hands",
+                  "split": "train",
+                  "group": "gesture",
+                  "source_metrics": {
+                    "duration_seconds": 5.433333333333334,
+                    "reference_path_m": 0.3271445151303544,
+                    "forward_fraction": -0.001222184235071216,
+                    "lateral_fraction": 0.30066647208084174,
+                    "yaw_range_degrees": 11.254661815863173,
+                    "max_wrist_above_shoulder_m": 0.27040898010804726,
+                    "wrist_height_excursion_m": 0.5320189527680527
+                  },
+                  "first_video_frame": 267,
+                  "last_video_frame": 402,
+                  "physical_steps": 271,
+                  "failed": false,
+                  "reference_frames_50hz": 272
+                },
+                {
+                  "name": "alone_003__A142",
+                  "label": "Stationary gesture",
+                  "split": "validation",
+                  "group": "gesture",
+                  "source_metrics": {
+                    "duration_seconds": 9.533333333333333,
+                    "reference_path_m": 0.07189981776959481,
+                    "forward_fraction": 0.0048749652272599316,
+                    "lateral_fraction": 0.5859825999786298,
+                    "yaw_range_degrees": 3.3961226534624025,
+                    "max_wrist_above_shoulder_m": -0.09915337983403105,
+                    "wrist_height_excursion_m": 0.15616499326842426
+                  },
+                  "first_video_frame": 403,
+                  "last_video_frame": 641,
+                  "physical_steps": 476,
+                  "failed": false,
+                  "reference_frames_50hz": 477
+                },
+                {
+                  "name": "step_rotate_idle_045_001__A025",
+                  "label": "Turning",
+                  "split": "train",
+                  "group": "turning",
+                  "source_metrics": {
+                    "duration_seconds": 9.033333333333333,
+                    "reference_path_m": 0.5774481546295528,
+                    "forward_fraction": -0.01308937348351993,
+                    "lateral_fraction": 0.6450596766347266,
+                    "yaw_range_degrees": 138.57230070076025
+                  },
+                  "first_video_frame": 642,
+                  "last_video_frame": 867,
+                  "physical_steps": 451,
+                  "failed": false,
+                  "reference_frames_50hz": 452
+                },
+                {
+                  "name": "jog_ff_loop_360_R_slow_001__A450",
+                  "label": "Jogging",
+                  "split": "train",
+                  "group": "jogging",
+                  "source_metrics": {
+                    "duration_seconds": 5.933333333333334,
+                    "reference_path_m": 1.7728282739196515,
+                    "forward_fraction": -0.9680490042422931,
+                    "lateral_fraction": 0.18729894018502619,
+                    "yaw_range_degrees": 27.33810412355936
+                  },
+                  "first_video_frame": 868,
+                  "last_video_frame": 1016,
+                  "physical_steps": 296,
+                  "failed": false,
+                  "reference_frames_50hz": 297
+                },
+                {
+                  "name": "dance_basic_slide_270_R_loop_003__A322",
+                  "label": "Dance",
+                  "split": "train",
+                  "group": "dancing",
+                  "source_metrics": {
+                    "duration_seconds": 9.633333333333333,
+                    "reference_path_m": 3.494749855443713,
+                    "forward_fraction": 0.25722953426402023,
+                    "lateral_fraction": 0.796005462509113,
+                    "yaw_range_degrees": 42.48616402012874
+                  },
+                  "first_video_frame": 1017,
+                  "last_video_frame": 1257,
+                  "physical_steps": 481,
+                  "failed": false,
+                  "reference_frames_50hz": 482
+                },
+                {
+                  "name": "jump_ff_180_R_003__A383",
+                  "label": "Jump",
+                  "split": "train",
+                  "group": "jumping",
+                  "source_metrics": {
+                    "duration_seconds": 3.6666666666666665,
+                    "reference_path_m": 0.8137697281317104,
+                    "forward_fraction": 0.7588620640862745,
+                    "lateral_fraction": 0.5128448698236046,
+                    "yaw_range_degrees": 38.62015434883047
+                  },
+                  "first_video_frame": 1258,
+                  "last_video_frame": 1349,
+                  "physical_steps": 183,
+                  "failed": false,
+                  "reference_frames_50hz": 184
+                }
+              ],
+              "left": "Real policy physics; explicit hold after termination",
+              "right": "Kinematic Q1 reference",
+              "rendering": "Saved qpos FK only, official Q1 visual meshes; MSAA/shadows/reflections disabled for headless software EGL. No policy/physics changes.",
+              "continuity": "Independent clips concatenated at their original speed; no claim of one continuous 30-second rollout"
+            },
+            "initial": {
+              "video": {
+                "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/initial.mp4",
+                "bytes": 10172645,
+                "sha256": "81eba8e236c3052543b0712ffdd9a60acbbc56dd2f26d29a82b052b196be1451"
+              },
+              "fps": 25,
+              "frames": 1350,
+              "duration_seconds": 54,
+              "speed": 1,
+              "segments": [
+                {
+                  "name": "walk_ff_stop_180_R_002__A095",
+                  "label": "Forward walking",
+                  "split": "train",
+                  "group": "walking",
+                  "source_metrics": {
+                    "duration_seconds": 6.4,
+                    "reference_path_m": 2.40979199152224,
+                    "forward_fraction": 0.9002012520224791,
+                    "lateral_fraction": 0.21541087858785643,
+                    "yaw_range_degrees": 19.786204834755566
+                  },
+                  "first_video_frame": 0,
+                  "last_video_frame": 160,
+                  "physical_steps": 320,
+                  "failed": false,
+                  "reference_frames_50hz": 321
+                },
+                {
+                  "name": "walk_ff_start_180_R_002__A071",
+                  "label": "Forward walking",
+                  "split": "train",
+                  "group": "walking",
+                  "source_metrics": {
+                    "duration_seconds": 4.2,
+                    "reference_path_m": 2.1134508485558876,
+                    "forward_fraction": 0.9575237230500965,
+                    "lateral_fraction": 0.18672564678820858,
+                    "yaw_range_degrees": 11.427767111307482
+                  },
+                  "first_video_frame": 161,
+                  "last_video_frame": 266,
+                  "physical_steps": 210,
+                  "failed": false,
+                  "reference_frames_50hz": 211
+                },
+                {
+                  "name": "triumph_two_handed_001__A058",
+                  "label": "Upper-body / raised hands",
+                  "split": "train",
+                  "group": "gesture",
+                  "source_metrics": {
+                    "duration_seconds": 5.433333333333334,
+                    "reference_path_m": 0.3271445151303544,
+                    "forward_fraction": -0.001222184235071216,
+                    "lateral_fraction": 0.30066647208084174,
+                    "yaw_range_degrees": 11.254661815863173,
+                    "max_wrist_above_shoulder_m": 0.27040898010804726,
+                    "wrist_height_excursion_m": 0.5320189527680527
+                  },
+                  "first_video_frame": 267,
+                  "last_video_frame": 402,
+                  "physical_steps": 271,
+                  "failed": false,
+                  "reference_frames_50hz": 272
+                },
+                {
+                  "name": "alone_003__A142",
+                  "label": "Stationary gesture",
+                  "split": "validation",
+                  "group": "gesture",
+                  "source_metrics": {
+                    "duration_seconds": 9.533333333333333,
+                    "reference_path_m": 0.07189981776959481,
+                    "forward_fraction": 0.0048749652272599316,
+                    "lateral_fraction": 0.5859825999786298,
+                    "yaw_range_degrees": 3.3961226534624025,
+                    "max_wrist_above_shoulder_m": -0.09915337983403105,
+                    "wrist_height_excursion_m": 0.15616499326842426
+                  },
+                  "first_video_frame": 403,
+                  "last_video_frame": 641,
+                  "physical_steps": 476,
+                  "failed": false,
+                  "reference_frames_50hz": 477
+                },
+                {
+                  "name": "step_rotate_idle_045_001__A025",
+                  "label": "Turning",
+                  "split": "train",
+                  "group": "turning",
+                  "source_metrics": {
+                    "duration_seconds": 9.033333333333333,
+                    "reference_path_m": 0.5774481546295528,
+                    "forward_fraction": -0.01308937348351993,
+                    "lateral_fraction": 0.6450596766347266,
+                    "yaw_range_degrees": 138.57230070076025
+                  },
+                  "first_video_frame": 642,
+                  "last_video_frame": 867,
+                  "physical_steps": 451,
+                  "failed": false,
+                  "reference_frames_50hz": 452
+                },
+                {
+                  "name": "jog_ff_loop_360_R_slow_001__A450",
+                  "label": "Jogging",
+                  "split": "train",
+                  "group": "jogging",
+                  "source_metrics": {
+                    "duration_seconds": 5.933333333333334,
+                    "reference_path_m": 1.7728282739196515,
+                    "forward_fraction": -0.9680490042422931,
+                    "lateral_fraction": 0.18729894018502619,
+                    "yaw_range_degrees": 27.33810412355936
+                  },
+                  "first_video_frame": 868,
+                  "last_video_frame": 1016,
+                  "physical_steps": 296,
+                  "failed": false,
+                  "reference_frames_50hz": 297
+                },
+                {
+                  "name": "dance_basic_slide_270_R_loop_003__A322",
+                  "label": "Dance",
+                  "split": "train",
+                  "group": "dancing",
+                  "source_metrics": {
+                    "duration_seconds": 9.633333333333333,
+                    "reference_path_m": 3.494749855443713,
+                    "forward_fraction": 0.25722953426402023,
+                    "lateral_fraction": 0.796005462509113,
+                    "yaw_range_degrees": 42.48616402012874
+                  },
+                  "first_video_frame": 1017,
+                  "last_video_frame": 1257,
+                  "physical_steps": 281,
+                  "failed": true,
+                  "reference_frames_50hz": 482
+                },
+                {
+                  "name": "jump_ff_180_R_003__A383",
+                  "label": "Jump",
+                  "split": "train",
+                  "group": "jumping",
+                  "source_metrics": {
+                    "duration_seconds": 3.6666666666666665,
+                    "reference_path_m": 0.8137697281317104,
+                    "forward_fraction": 0.7588620640862745,
+                    "lateral_fraction": 0.5128448698236046,
+                    "yaw_range_degrees": 38.62015434883047
+                  },
+                  "first_video_frame": 1258,
+                  "last_video_frame": 1349,
+                  "physical_steps": 183,
+                  "failed": false,
+                  "reference_frames_50hz": 184
+                }
+              ],
+              "left": "Real policy physics; explicit hold after termination",
+              "right": "Kinematic Q1 reference",
+              "rendering": "Saved qpos FK only, official Q1 visual meshes; MSAA/shadows/reflections disabled for headless software EGL. No policy/physics changes.",
+              "continuity": "Independent clips concatenated at their original speed; no claim of one continuous 30-second rollout"
+            },
+            "final": {
+              "video": {
+                "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/final.mp4",
+                "bytes": 10221574,
+                "sha256": "9759194d6aee6e08b8af96ea0991105fc27a0565ab9e12e581ba7f45874e2312"
+              },
+              "fps": 25,
+              "frames": 1350,
+              "duration_seconds": 54,
+              "speed": 1,
+              "segments": [
+                {
+                  "name": "walk_ff_stop_180_R_002__A095",
+                  "label": "Forward walking",
+                  "split": "train",
+                  "group": "walking",
+                  "source_metrics": {
+                    "duration_seconds": 6.4,
+                    "reference_path_m": 2.40979199152224,
+                    "forward_fraction": 0.9002012520224791,
+                    "lateral_fraction": 0.21541087858785643,
+                    "yaw_range_degrees": 19.786204834755566
+                  },
+                  "first_video_frame": 0,
+                  "last_video_frame": 160,
+                  "physical_steps": 320,
+                  "failed": false,
+                  "reference_frames_50hz": 321
+                },
+                {
+                  "name": "walk_ff_start_180_R_002__A071",
+                  "label": "Forward walking",
+                  "split": "train",
+                  "group": "walking",
+                  "source_metrics": {
+                    "duration_seconds": 4.2,
+                    "reference_path_m": 2.1134508485558876,
+                    "forward_fraction": 0.9575237230500965,
+                    "lateral_fraction": 0.18672564678820858,
+                    "yaw_range_degrees": 11.427767111307482
+                  },
+                  "first_video_frame": 161,
+                  "last_video_frame": 266,
+                  "physical_steps": 210,
+                  "failed": false,
+                  "reference_frames_50hz": 211
+                },
+                {
+                  "name": "triumph_two_handed_001__A058",
+                  "label": "Upper-body / raised hands",
+                  "split": "train",
+                  "group": "gesture",
+                  "source_metrics": {
+                    "duration_seconds": 5.433333333333334,
+                    "reference_path_m": 0.3271445151303544,
+                    "forward_fraction": -0.001222184235071216,
+                    "lateral_fraction": 0.30066647208084174,
+                    "yaw_range_degrees": 11.254661815863173,
+                    "max_wrist_above_shoulder_m": 0.27040898010804726,
+                    "wrist_height_excursion_m": 0.5320189527680527
+                  },
+                  "first_video_frame": 267,
+                  "last_video_frame": 402,
+                  "physical_steps": 271,
+                  "failed": false,
+                  "reference_frames_50hz": 272
+                },
+                {
+                  "name": "alone_003__A142",
+                  "label": "Stationary gesture",
+                  "split": "validation",
+                  "group": "gesture",
+                  "source_metrics": {
+                    "duration_seconds": 9.533333333333333,
+                    "reference_path_m": 0.07189981776959481,
+                    "forward_fraction": 0.0048749652272599316,
+                    "lateral_fraction": 0.5859825999786298,
+                    "yaw_range_degrees": 3.3961226534624025,
+                    "max_wrist_above_shoulder_m": -0.09915337983403105,
+                    "wrist_height_excursion_m": 0.15616499326842426
+                  },
+                  "first_video_frame": 403,
+                  "last_video_frame": 641,
+                  "physical_steps": 476,
+                  "failed": false,
+                  "reference_frames_50hz": 477
+                },
+                {
+                  "name": "step_rotate_idle_045_001__A025",
+                  "label": "Turning",
+                  "split": "train",
+                  "group": "turning",
+                  "source_metrics": {
+                    "duration_seconds": 9.033333333333333,
+                    "reference_path_m": 0.5774481546295528,
+                    "forward_fraction": -0.01308937348351993,
+                    "lateral_fraction": 0.6450596766347266,
+                    "yaw_range_degrees": 138.57230070076025
+                  },
+                  "first_video_frame": 642,
+                  "last_video_frame": 867,
+                  "physical_steps": 451,
+                  "failed": false,
+                  "reference_frames_50hz": 452
+                },
+                {
+                  "name": "jog_ff_loop_360_R_slow_001__A450",
+                  "label": "Jogging",
+                  "split": "train",
+                  "group": "jogging",
+                  "source_metrics": {
+                    "duration_seconds": 5.933333333333334,
+                    "reference_path_m": 1.7728282739196515,
+                    "forward_fraction": -0.9680490042422931,
+                    "lateral_fraction": 0.18729894018502619,
+                    "yaw_range_degrees": 27.33810412355936
+                  },
+                  "first_video_frame": 868,
+                  "last_video_frame": 1016,
+                  "physical_steps": 296,
+                  "failed": false,
+                  "reference_frames_50hz": 297
+                },
+                {
+                  "name": "dance_basic_slide_270_R_loop_003__A322",
+                  "label": "Dance",
+                  "split": "train",
+                  "group": "dancing",
+                  "source_metrics": {
+                    "duration_seconds": 9.633333333333333,
+                    "reference_path_m": 3.494749855443713,
+                    "forward_fraction": 0.25722953426402023,
+                    "lateral_fraction": 0.796005462509113,
+                    "yaw_range_degrees": 42.48616402012874
+                  },
+                  "first_video_frame": 1017,
+                  "last_video_frame": 1257,
+                  "physical_steps": 279,
+                  "failed": true,
+                  "reference_frames_50hz": 482
+                },
+                {
+                  "name": "jump_ff_180_R_003__A383",
+                  "label": "Jump",
+                  "split": "train",
+                  "group": "jumping",
+                  "source_metrics": {
+                    "duration_seconds": 3.6666666666666665,
+                    "reference_path_m": 0.8137697281317104,
+                    "forward_fraction": 0.7588620640862745,
+                    "lateral_fraction": 0.5128448698236046,
+                    "yaw_range_degrees": 38.62015434883047
+                  },
+                  "first_video_frame": 1258,
+                  "last_video_frame": 1349,
+                  "physical_steps": 183,
+                  "failed": false,
+                  "reference_frames_50hz": 184
+                }
+              ],
+              "left": "Real policy physics; explicit hold after termination",
+              "right": "Kinematic Q1 reference",
+              "rendering": "Saved qpos FK only, official Q1 visual meshes; MSAA/shadows/reflections disabled for headless software EGL. No policy/physics changes.",
+              "continuity": "Independent clips concatenated at their original speed; no claim of one continuous 30-second rollout"
+            },
+            "recommended": {
+              "video": {
+                "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/recommended.mp4",
+                "bytes": 10179552,
+                "sha256": "e37c3deaf70e121b3d24b95fab1090d6ee562824f3ade7b901b53c5b500f2b14"
+              },
+              "fps": 25,
+              "frames": 1350,
+              "duration_seconds": 54,
+              "speed": 1,
+              "segments": [
+                {
+                  "name": "walk_ff_stop_180_R_002__A095",
+                  "label": "Forward walking",
+                  "split": "train",
+                  "group": "walking",
+                  "source_metrics": {
+                    "duration_seconds": 6.4,
+                    "reference_path_m": 2.40979199152224,
+                    "forward_fraction": 0.9002012520224791,
+                    "lateral_fraction": 0.21541087858785643,
+                    "yaw_range_degrees": 19.786204834755566
+                  },
+                  "first_video_frame": 0,
+                  "last_video_frame": 160,
+                  "physical_steps": 320,
+                  "failed": false,
+                  "reference_frames_50hz": 321
+                },
+                {
+                  "name": "walk_ff_start_180_R_002__A071",
+                  "label": "Forward walking",
+                  "split": "train",
+                  "group": "walking",
+                  "source_metrics": {
+                    "duration_seconds": 4.2,
+                    "reference_path_m": 2.1134508485558876,
+                    "forward_fraction": 0.9575237230500965,
+                    "lateral_fraction": 0.18672564678820858,
+                    "yaw_range_degrees": 11.427767111307482
+                  },
+                  "first_video_frame": 161,
+                  "last_video_frame": 266,
+                  "physical_steps": 210,
+                  "failed": false,
+                  "reference_frames_50hz": 211
+                },
+                {
+                  "name": "triumph_two_handed_001__A058",
+                  "label": "Upper-body / raised hands",
+                  "split": "train",
+                  "group": "gesture",
+                  "source_metrics": {
+                    "duration_seconds": 5.433333333333334,
+                    "reference_path_m": 0.3271445151303544,
+                    "forward_fraction": -0.001222184235071216,
+                    "lateral_fraction": 0.30066647208084174,
+                    "yaw_range_degrees": 11.254661815863173,
+                    "max_wrist_above_shoulder_m": 0.27040898010804726,
+                    "wrist_height_excursion_m": 0.5320189527680527
+                  },
+                  "first_video_frame": 267,
+                  "last_video_frame": 402,
+                  "physical_steps": 271,
+                  "failed": false,
+                  "reference_frames_50hz": 272
+                },
+                {
+                  "name": "alone_003__A142",
+                  "label": "Stationary gesture",
+                  "split": "validation",
+                  "group": "gesture",
+                  "source_metrics": {
+                    "duration_seconds": 9.533333333333333,
+                    "reference_path_m": 0.07189981776959481,
+                    "forward_fraction": 0.0048749652272599316,
+                    "lateral_fraction": 0.5859825999786298,
+                    "yaw_range_degrees": 3.3961226534624025,
+                    "max_wrist_above_shoulder_m": -0.09915337983403105,
+                    "wrist_height_excursion_m": 0.15616499326842426
+                  },
+                  "first_video_frame": 403,
+                  "last_video_frame": 641,
+                  "physical_steps": 476,
+                  "failed": false,
+                  "reference_frames_50hz": 477
+                },
+                {
+                  "name": "step_rotate_idle_045_001__A025",
+                  "label": "Turning",
+                  "split": "train",
+                  "group": "turning",
+                  "source_metrics": {
+                    "duration_seconds": 9.033333333333333,
+                    "reference_path_m": 0.5774481546295528,
+                    "forward_fraction": -0.01308937348351993,
+                    "lateral_fraction": 0.6450596766347266,
+                    "yaw_range_degrees": 138.57230070076025
+                  },
+                  "first_video_frame": 642,
+                  "last_video_frame": 867,
+                  "physical_steps": 451,
+                  "failed": false,
+                  "reference_frames_50hz": 452
+                },
+                {
+                  "name": "jog_ff_loop_360_R_slow_001__A450",
+                  "label": "Jogging",
+                  "split": "train",
+                  "group": "jogging",
+                  "source_metrics": {
+                    "duration_seconds": 5.933333333333334,
+                    "reference_path_m": 1.7728282739196515,
+                    "forward_fraction": -0.9680490042422931,
+                    "lateral_fraction": 0.18729894018502619,
+                    "yaw_range_degrees": 27.33810412355936
+                  },
+                  "first_video_frame": 868,
+                  "last_video_frame": 1016,
+                  "physical_steps": 296,
+                  "failed": false,
+                  "reference_frames_50hz": 297
+                },
+                {
+                  "name": "dance_basic_slide_270_R_loop_003__A322",
+                  "label": "Dance",
+                  "split": "train",
+                  "group": "dancing",
+                  "source_metrics": {
+                    "duration_seconds": 9.633333333333333,
+                    "reference_path_m": 3.494749855443713,
+                    "forward_fraction": 0.25722953426402023,
+                    "lateral_fraction": 0.796005462509113,
+                    "yaw_range_degrees": 42.48616402012874
+                  },
+                  "first_video_frame": 1017,
+                  "last_video_frame": 1257,
+                  "physical_steps": 281,
+                  "failed": true,
+                  "reference_frames_50hz": 482
+                },
+                {
+                  "name": "jump_ff_180_R_003__A383",
+                  "label": "Jump",
+                  "split": "train",
+                  "group": "jumping",
+                  "source_metrics": {
+                    "duration_seconds": 3.6666666666666665,
+                    "reference_path_m": 0.8137697281317104,
+                    "forward_fraction": 0.7588620640862745,
+                    "lateral_fraction": 0.5128448698236046,
+                    "yaw_range_degrees": 38.62015434883047
+                  },
+                  "first_video_frame": 1258,
+                  "last_video_frame": 1349,
+                  "physical_steps": 183,
+                  "failed": false,
+                  "reference_frames_50hz": 184
+                }
+              ],
+              "left": "Real policy physics; explicit hold after termination",
+              "right": "Kinematic Q1 reference",
+              "rendering": "Saved qpos FK only, official Q1 visual meshes; MSAA/shadows/reflections disabled for headless software EGL. No policy/physics changes.",
+              "continuity": "Independent clips concatenated at their original speed; no claim of one continuous 30-second rollout"
+            }
+          }
+        }
+      },
+      "delivery_guard.json": {
+        "bytes": 2282,
+        "mtime_ns": 1793211046158527200,
+        "content": {
+          "status": "WORKER_COMPLETED",
+          "command": [
+            "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python",
+            "-u",
+            "/opt/data/private/ZHY/script/supermimic_q1_hp/activate.py",
+            "-u",
+            "/opt/data/private/ZHY/script/supermimic_q1_gait_comp/deliver.py",
+            "--runtime",
+            "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+            "--trial",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029",
+            "--video-suite",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/demonstration_suite_V02.json"
+          ],
+          "cwd": "/opt/data/private/ZHY",
+          "started_utc": "2026-10-28T17:46:58.053250+00:00",
+          "controller_pid": 137006,
+          "storage_status": "LOCAL_ONLY",
+          "last_storage_check": {
+            "experiment": {
+              "root": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029",
+              "unique_allocated_bytes": 836222976,
+              "unique_logical_bytes": 836061649,
+              "unique_inodes": 71,
+              "symlinks_not_followed": 0
+            },
+            "source": {
+              "root": "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+              "unique_allocated_bytes": 1536000,
+              "unique_logical_bytes": 1204099,
+              "unique_inodes": 166,
+              "symlinks_not_followed": 0
+            },
+            "free_bytes": {
+              "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029": 1645902213120,
+              "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027": 1645902213120
+            },
+            "shared_memory": {
+              "shared_bytes": 12845383680,
+              "oom_kill": 0,
+              "maximum_bytes": 32212254720
+            },
+            "gpu": {
+              "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+              "memory_mib": 15,
+              "temperature_c": 25
+            },
+            "actual_training_seconds": 1203.6103925221396,
+            "current_training_cap_seconds": 14400
+          },
+          "error": null,
+          "worker_pid": 139983,
+          "worker_group": 139983,
+          "cleanup": {
+            "worker_started": true,
+            "worker_pid": 139983,
+            "worker_group": 139983,
+            "worker_reaped": true,
+            "worker_return_code": 0
+          },
+          "ended_utc": "2026-10-28T18:10:46.160130+00:00"
+        }
+      }
+    },
+    "processes": {
+      "137006": {
+        "exists": false
+      },
+      "137016": {
+        "exists": false
+      },
+      "139983": {
+        "exists": false
+      }
+    },
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15, 25, 0",
+    "compute_processes": "",
+    "free_bytes": 1645899051008
+  },
+  "saved_evidence_audit": {
+    "path": "saved_evidence_audit.json",
+    "passed": 11,
+    "total": 11,
+    "executed_once": true,
+    "frozen_source_count": 1163
+  },
+  "media_audit": {
+    "path": "media_audit.json",
+    "passed": 24,
+    "total": 24,
+    "full_frame_decode": true,
+    "videos": 4,
+    "frames_per_video": 1350,
+    "fps": 25,
+    "seconds": 54,
+    "segments": 8,
+    "categories": 6,
+    "continuous_rollout": false,
+    "failure_holds_preserved": true,
+    "visual_inspection": "12 contact sheets plus3 plots inspected; low foot lift/posture/slip remain, not natural gait certification",
+    "base_overlay_caveat": "base.mp4 suffix says gait compensation; actual saved trace is pure frozen HP base."
+  },
+  "server_to_mac": {
+    "files": [
+      {
+        "relative_path": "dashboard/ppo_diagnostics.png",
+        "bytes": 213617,
+        "sha256": "70e9485df268a69536955869d3dcc87f4aa915173fb8a3cbaea1f4f3d3c19805"
+      },
+      {
+        "relative_path": "dashboard/ppo_update_diagnostics.png",
+        "bytes": 159491,
+        "sha256": "dba803b5258fdea9ca59be436adb4214e365594de32fffbab92406fa1b03e36c"
+      },
+      {
+        "relative_path": "dashboard/receipt.json",
+        "bytes": 2144,
+        "sha256": "f8fb70d22c8669b05be27771006faac0c9a9893a23f901d5a70b1988147d0db6"
+      },
+      {
+        "relative_path": "dashboard/reward_decomposition.png",
+        "bytes": 92508,
+        "sha256": "665897c7d2f517ab4cccd0c43662860269191c56028063a4cc0bf364e6bce308"
+      },
+      {
+        "relative_path": "dashboard/training_dashboard.csv",
+        "bytes": 156105,
+        "sha256": "cf75bb9b7221bff60854aa1692a14202fc48c8fb21b0bb1a5ddd4bc6350725f8"
+      },
+      {
+        "relative_path": "dashboard/training_dashboard.pdf",
+        "bytes": 37178,
+        "sha256": "0af56c1a465d3263762cd1a3cb0a20d9ed27aa5324315cce833c38e276b1823e"
+      },
+      {
+        "relative_path": "dashboard/training_dashboard.png",
+        "bytes": 308489,
+        "sha256": "23af8a171eff418ad1e69a62c6ae3eb7d59b4341840999e9b003a28429031d20"
+      },
+      {
+        "relative_path": "delivery_guard.json",
+        "bytes": 2282,
+        "sha256": "66ee77f05f994b870eea0fd150b197d880fbdeb8f51c6d8377a2d2c5d6182bf4"
+      },
+      {
+        "relative_path": "delivery_status.json",
+        "bytes": 24704,
+        "sha256": "e1c7adb92637bce8b5f0e5e7a55d173c3e03106b145e2312abb9001ee5309ddf"
+      },
+      {
+        "relative_path": "evaluation/base.mp4",
+        "bytes": 10879298,
+        "sha256": "ebe000ffa176cf54d1d87cfc7f85dcc858f803d5827b606a408ad0956d23964f"
+      },
+      {
+        "relative_path": "evaluation/base_media.json",
+        "bytes": 5464,
+        "sha256": "a0516d90900a15bdc6b07e1e1538339bd5d74c93c04babb39e2d2fa01961b635"
+      },
+      {
+        "relative_path": "evaluation/evaluation_library.json",
+        "bytes": 205726,
+        "sha256": "3c58014741f76d05ef6dc4b67e83e3e5fc5300b0dd8d23cf2c79a58c151a1d61"
+      },
+      {
+        "relative_path": "evaluation/final.mp4",
+        "bytes": 10221574,
+        "sha256": "9759194d6aee6e08b8af96ea0991105fc27a0565ab9e12e581ba7f45874e2312"
+      },
+      {
+        "relative_path": "evaluation/final_media.json",
+        "bytes": 5464,
+        "sha256": "e11e779523f555dff5c22d5eaf8866be17babb70b3b270859f19a7cfa29de26b"
+      },
+      {
+        "relative_path": "evaluation/initial.mp4",
+        "bytes": 10172645,
+        "sha256": "81eba8e236c3052543b0712ffdd9a60acbbc56dd2f26d29a82b052b196be1451"
+      },
+      {
+        "relative_path": "evaluation/initial_media.json",
+        "bytes": 5466,
+        "sha256": "8d94be028244af804783c314badcae90956abc8d14d9322dcc7188b1e902244e"
+      },
+      {
+        "relative_path": "evaluation/initial_static075_repeat0.json",
+        "bytes": 379665,
+        "sha256": "73741ae938eeb3e889d979f204cb594527f6a1b12a6f174f124fe1cdb961f202"
+      },
+      {
+        "relative_path": "evaluation/initial_static075_repeat1.json",
+        "bytes": 379800,
+        "sha256": "b8d46ca63b4072416602dee85e4c7741ea9c25f08cb4ca63978bd0e811f4c54b"
+      },
+      {
+        "relative_path": "evaluation/initial_static075_repeat2.json",
+        "bytes": 379917,
+        "sha256": "142d0a7c0128031b6e07181f556ad8e1869b8584bdb80fa3f09f38d073275855"
+      },
+      {
+        "relative_path": "evaluation/receipt.json",
+        "bytes": 198284,
+        "sha256": "22c32488058fdf0b00c97884b22a495e0ca115c61ae5e3b7ba38927084c7d857"
+      },
+      {
+        "relative_path": "evaluation/recommended.mp4",
+        "bytes": 10179552,
+        "sha256": "e37c3deaf70e121b3d24b95fab1090d6ee562824f3ade7b901b53c5b500f2b14"
+      },
+      {
+        "relative_path": "evaluation/recommended_media.json",
+        "bytes": 5470,
+        "sha256": "17f0249e6b973d08f59c87b5317ebab8342e483ab78a9a4b87a4c8c779290b49"
+      },
+      {
+        "relative_path": "evaluation/selected_base_repeat0.json",
+        "bytes": 373143,
+        "sha256": "59f8a9797158e2102aa970733e12e51ab9714430026345f2a539d4d419ee9a59"
+      },
+      {
+        "relative_path": "evaluation/selected_base_repeat1.json",
+        "bytes": 373195,
+        "sha256": "fe3b076e4e515abef4fded176c309571adb305e494600d7c5a3d1f2e4820afa4"
+      },
+      {
+        "relative_path": "evaluation/selected_base_repeat2.json",
+        "bytes": 373140,
+        "sha256": "ad77650887e925c4789fdab12b2550491302575a5d78fc357a4e23cd7392594b"
+      },
+      {
+        "relative_path": "evaluation/stage_01_repeat0.json",
+        "bytes": 386330,
+        "sha256": "b417b004f5dcef93d72eacb956037c78e0f9db2dae314e2d3b977893e1360320"
+      },
+      {
+        "relative_path": "evaluation/stage_01_repeat1.json",
+        "bytes": 386219,
+        "sha256": "d5a7d474dc31d84d6b2b0abc2f8bde38cb8f2ec71cd6de1d2ebe09fd79fc2e61"
+      },
+      {
+        "relative_path": "evaluation/stage_01_repeat2.json",
+        "bytes": 386471,
+        "sha256": "e388b3598eebfaa4e085093dd4203cad06bbce38cae8bdd80a20fa5bb2173471"
+      },
+      {
+        "relative_path": "launch.json",
+        "bytes": 196,
+        "sha256": "fc56986eaeadd3780a3d9f6783104df582a4337601636a5202ea0e3c6ece638a"
+      },
+      {
+        "relative_path": "plan.json",
+        "bytes": 288314,
+        "sha256": "6fd3cd0acb954242850ffcbe770f8a94dc3e27f144d921a955cd553cf577c153"
+      },
+      {
+        "relative_path": "review/initial/fixed_demos.csv",
+        "bytes": 9362,
+        "sha256": "8baddc4064ca0320b60728b4c2acd59b7cfe43a8ecde987bfd31813ff774a4a5"
+      },
+      {
+        "relative_path": "review/initial/split_metrics.csv",
+        "bytes": 4646,
+        "sha256": "d7cc73616c0da30d944ce3e6b64f3025ea79234a22544289793a77e15ddf22b3"
+      },
+      {
+        "relative_path": "review/initial/summary.json",
+        "bytes": 5956,
+        "sha256": "c94bf91e0056a0f421dc73d324f8cc0acce7b1540fa5e637ddd439c96cc0936f"
+      },
+      {
+        "relative_path": "review/initial/tracking_common_prefix.csv",
+        "bytes": 2380,
+        "sha256": "0afc4c3520c1bff7db6c76cfac3d32805f078a2feeb26dcd98955c9ad8d955cf"
+      },
+      {
+        "relative_path": "review/initial/walking_common_prefix.csv",
+        "bytes": 3467,
+        "sha256": "b4492165b0041f81d60084d5c0d889f56ff842c3ef071168f2cf45ed4d837f44"
+      },
+      {
+        "relative_path": "review/stage_01/fixed_demos.csv",
+        "bytes": 13670,
+        "sha256": "59e21fe80e87b630a46186ab670d857a22c8d317800e9131a7f6e94aeccb63b7"
+      },
+      {
+        "relative_path": "review/stage_01/split_metrics.csv",
+        "bytes": 7240,
+        "sha256": "61bf7fda001b9048ca1778e21bebdaba51760d43af202fef2ef202ee07149f74"
+      },
+      {
+        "relative_path": "review/stage_01/summary.json",
+        "bytes": 36122,
+        "sha256": "f0e16100940c19276fe95c597a1e8c45705f2d52133471985ffa334a788f97e7"
+      },
+      {
+        "relative_path": "review/stage_01/tracking_common_prefix.csv",
+        "bytes": 7252,
+        "sha256": "115298aa902690bf347d2bbe569a172dc677c709d69324e2b223f5c08661563e"
+      },
+      {
+        "relative_path": "review/stage_01/walking_common_prefix.csv",
+        "bytes": 10582,
+        "sha256": "8a138b55d01ccd9f721ecbe6e5a5460c17e2151d083117f06851478856efc265"
+      },
+      {
+        "relative_path": "run/checkpoint_recommendation.json",
+        "bytes": 2797,
+        "sha256": "b77889b929405cb70586fa70e667db34ae7e16fc7c08b3e690ccf5ca782de9dc"
+      },
+      {
+        "relative_path": "run/config.yaml",
+        "bytes": 44057,
+        "sha256": "d73d8b08a513172673d114e2ff034a117666c197e57026cac121e8774383b172"
+      },
+      {
+        "relative_path": "run/receipt.json",
+        "bytes": 1110,
+        "sha256": "779cd5e9622fb3f2b000ffcb45de2ed028e00da9b984cc986eed5a7496e3e575"
+      },
+      {
+        "relative_path": "run/stage_decisions.json",
+        "bytes": 23635,
+        "sha256": "0eee9df3c6b763a3ecbc819065cc52cb2b2eb26aba88dc5a1913e8520ca59921"
+      },
+      {
+        "relative_path": "run/status.json",
+        "bytes": 1110,
+        "sha256": "779cd5e9622fb3f2b000ffcb45de2ed028e00da9b984cc986eed5a7496e3e575"
+      },
+      {
+        "relative_path": "run/training_clock.json",
+        "bytes": 532,
+        "sha256": "6b161a27f32e0b90acbda8a1ea4cfbfe09989026f887e4fc0f83ba6e3a4b8e7d"
+      },
+      {
+        "relative_path": "run/training_evidence.jsonl",
+        "bytes": 270476,
+        "sha256": "646e7bb7ea3b3670dc0f6d46ad46fa67ca62782d4a0bb30ebe265ffeba2f9b2b"
+      },
+      {
+        "relative_path": "saved_evidence_audit.json",
+        "bytes": 1331,
+        "sha256": "e3f5bf654a322fcb613efe0a22fe2a659b1ad4dbde1c01011aa77e6b1366ddfc"
+      },
+      {
+        "relative_path": "status.json",
+        "bytes": 682,
+        "sha256": "4abbc9a6e1da23179dd4b6e17c357320949c2fbad907fcaaf5a0755d274556d8"
+      },
+      {
+        "relative_path": "train_guard.json",
+        "bytes": 2654,
+        "sha256": "20d82513e2467bb3c365cfccf20f0bc39ba7a16e2585e4e1c2e501ce2acd3601"
+      }
+    ],
+    "count": 50,
+    "bytes": 47030912,
+    "all_matched": true
+  },
+  "mac_derivatives_to_server": {
+    "files": [
+      {
+        "relative_path": "evaluation/base_raise_sequence.png",
+        "bytes": 528481,
+        "sha256": "28846d278189fdd1a971bee307d8c84533bcceb95662ad845947132b1a0cb023",
+        "matched": true
+      },
+      {
+        "relative_path": "evaluation/base_segment_contact_sheet.png",
+        "bytes": 559503,
+        "sha256": "95aa0ae9f03fc4be87c12934dedbfd0e3462dc03c8d6067ffa97a7d9076b0857",
+        "matched": true
+      },
+      {
+        "relative_path": "evaluation/base_walk_sequence.png",
+        "bytes": 832551,
+        "sha256": "af905c04ed85852303f19c3a09d8736d12acd44697980356e2d4f47f345a7a51",
+        "matched": true
+      },
+      {
+        "relative_path": "evaluation/final_raise_sequence.png",
+        "bytes": 531245,
+        "sha256": "98d5364b292d523aa8ffe0e71badac8063d17320ae59de4c7fc0d42d8ead736f",
+        "matched": true
+      },
+      {
+        "relative_path": "evaluation/final_segment_contact_sheet.png",
+        "bytes": 557002,
+        "sha256": "2889151767daaa8e34ac1eb55bacd63afae76688287a19b73b9d361703751994",
+        "matched": true
+      },
+      {
+        "relative_path": "evaluation/final_walk_sequence.png",
+        "bytes": 828378,
+        "sha256": "ba9208617775802c4a7e2101b04917c2afc443d3867d3131f7463dfc1b27be77",
+        "matched": true
+      },
+      {
+        "relative_path": "evaluation/initial_raise_sequence.png",
+        "bytes": 531157,
+        "sha256": "d8dc11885206a6a28fde6f919b197e70731c325d8a9d93e1c757e5b0e4630044",
+        "matched": true
+      },
+      {
+        "relative_path": "evaluation/initial_segment_contact_sheet.png",
+        "bytes": 554811,
+        "sha256": "44f05d91e037c2c858d6bfb967521cce40a14822d6a6c2a9ab3533d09f3b767e",
+        "matched": true
+      },
+      {
+        "relative_path": "evaluation/initial_walk_sequence.png",
+        "bytes": 824208,
+        "sha256": "15c889675094f1ed578b7b7499a24e58d65e9cb7ae21f820f85dc300494e64ab",
+        "matched": true
+      },
+      {
+        "relative_path": "evaluation/recommended_raise_sequence.png",
+        "bytes": 534238,
+        "sha256": "a43b08cf99df0ea2aa7ff975a34bc2bfba24446424273bb19f7acf17ce23e66e",
+        "matched": true
+      },
+      {
+        "relative_path": "evaluation/recommended_segment_contact_sheet.png",
+        "bytes": 558722,
+        "sha256": "e46fb16e139dbe157a04f058eb0352ab8c262cc5cf03bedc306b837feab261eb",
+        "matched": true
+      },
+      {
+        "relative_path": "evaluation/recommended_walk_sequence.png",
+        "bytes": 832490,
+        "sha256": "13ad4f7519849f0e123962fb04464ac0dcd154ec4845bc9c656ceb65a858e4df",
+        "matched": true
+      },
+      {
+        "relative_path": "media_audit.json",
+        "bytes": 13374,
+        "sha256": "8040d4e2ee432f9808b8310043989bdaac147caacc7d77946c1cd61ba20c271c",
+        "matched": true
+      },
+      {
+        "relative_path": "review/final/fixed_demos.csv",
+        "bytes": 13670,
+        "sha256": "59e21fe80e87b630a46186ab670d857a22c8d317800e9131a7f6e94aeccb63b7",
+        "matched": true
+      },
+      {
+        "relative_path": "review/final/README.md",
+        "bytes": 3801,
+        "sha256": "14467dab1a871617e54328e26e9b79b3682fd92cac4db8580194b8863543e7cd",
+        "matched": true
+      },
+      {
+        "relative_path": "review/final/split_metrics.csv",
+        "bytes": 7240,
+        "sha256": "61bf7fda001b9048ca1778e21bebdaba51760d43af202fef2ef202ee07149f74",
+        "matched": true
+      },
+      {
+        "relative_path": "review/final/summary.json",
+        "bytes": 36096,
+        "sha256": "891376b4db714821e07ef1271427103089ab9d1c167e7a455bdb3756658b8aa8",
+        "matched": true
+      },
+      {
+        "relative_path": "review/final/tracking_common_prefix.csv",
+        "bytes": 7252,
+        "sha256": "115298aa902690bf347d2bbe569a172dc677c709d69324e2b223f5c08661563e",
+        "matched": true
+      },
+      {
+        "relative_path": "review/final/walking_common_prefix.csv",
+        "bytes": 10582,
+        "sha256": "8a138b55d01ccd9f721ecbe6e5a5460c17e2151d083117f06851478856efc265",
+        "matched": true
+      },
+      {
+        "relative_path": "review/initial/README.md",
+        "bytes": 2740,
+        "sha256": "641ed76b0d11df21da90a756b4a3e4965e5d8c26c584483a6f67b8c6a8f8c347",
+        "matched": true
+      },
+      {
+        "relative_path": "review/stage_01/README.md",
+        "bytes": 3352,
+        "sha256": "056fd5de09a3ab04b1d3bbfc077189b810e3af6f123678cd639db6830579b5cd",
+        "matched": true
+      }
+    ],
+    "count": 21,
+    "bytes": 7770893,
+    "all_matched": true
+  },
+  "all_artifact_count": 71,
+  "all_artifact_bytes": 54801805,
+  "mac_root": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029",
+  "server_root": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029",
+  "review": "review/final/README.md",
+  "review_rows": {
+    "split": 108,
+    "fixed": 27,
+    "tracking_common_prefix": 63,
+    "walking_common_prefix": 72
+  },
+  "user_accepted_checkpoint": null,
+  "next_training_authorized_by_this_report": false,
+  "large_artifact_storage": "SERVER_LOCAL_ONLY"
+}
+

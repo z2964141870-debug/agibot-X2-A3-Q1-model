@@ -20,12 +20,14 @@ from decisions import relative
 
 
 @torch.no_grad()
-def rollout(env, teacher, head, thresholds, foot, mode="trained075", progress=None):
+def rollout(env, teacher, head, thresholds, foot, mode="trained075", progress=None, upper_alpha=.75):
     from unisupermimic.rl.algos.supermimic.geometry import unflatten_state, mat_to_quat
     from unisupermimic.rl.contracts.supermimic import SUPERMIMIC_STATE_KEY, SUPERMIMIC_TRANSITION_KEY
     from unisupermimic.tasks.motion_tracking.q1.supermimic.robot import Q1_JOINT_NAMES, action_scale
     if mode not in ("teacher", "static075", "trained075"):
         raise ValueError(mode)
+    if not np.isfinite(upper_alpha) or not 0 <= upper_alpha <= 1:
+        raise ValueError("Upper blend must be finite and in [0,1]")
     mdp, motion = env.supermimic_mdp, env.supermimic_mdp.motion
     contact = NativeContacts(env).install()
     try:
@@ -40,7 +42,7 @@ def rollout(env, teacher, head, thresholds, foot, mode="trained075", progress=No
         records = {key: [] for key in ("states", "frames", "alive", "targets", "force", "slip", "alpha", "residual")}
         scale = torch.tensor([action_scale(n) for n in Q1_JOINT_NAMES], device=env.device)
         gate = Fallback(env.num_envs, thresholds, env.device)
-        cap = torch.full((env.num_envs,), 0. if mode == "teacher" else .75, device=env.device)
+        cap = torch.full((env.num_envs,), 0. if mode == "teacher" else upper_alpha, device=env.device)
         gate.reset(~done, cap)
         for iteration in range(int(motion.clip_len.max())):
             measured = mdp.obs(unflatten_state(current["s"]), current["a_prev"], current["xi"], current["f"])

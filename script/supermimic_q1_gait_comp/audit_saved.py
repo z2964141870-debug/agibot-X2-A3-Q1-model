@@ -14,6 +14,7 @@ import torch
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0,str(HERE.parent / "supermimic_q1_ppo"))
 from resources import identity, save, stamp
+from overnight import OPTIMIZATION_DEADLINE
 
 
 def equal(a,b):
@@ -58,7 +59,10 @@ def audit(a):
     else:
         check("only_gait_head_and_critic_new",final["new_world_model_updates"] ==0 and final["input_features"] ==1420
               and final["latent_std"] ==.1 and final["residual_radius_rad"] ==.15)
-        check("conditional_extension_has_physical_evidence",clock["current_cap_seconds"] ==3600 or stages[0]["gate"]["improvement_confirmed"])
+        check("overnight_budget_and_continuation_evidence",clock["current_cap_seconds"] ==14400
+              and clock["optimization_wall_deadline_unix"] ==OPTIMIZATION_DEADLINE
+              and all(row["overnight_continuation"]["continue_authorized"]
+                      for row in stages[:-1] if row["training_seconds"] >=3500))
     receipt = json.loads((a.trial / "evaluation/receipt.json").read_text())
     for label in ("initial_traces","final_traces"):
         paths = receipt[label]

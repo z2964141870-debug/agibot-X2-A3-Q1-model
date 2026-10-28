@@ -10,11 +10,26 @@ from torch import nn
 
 HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE.parent / "supermimic_q1_balance"), str(HERE.parent / "supermimic_q1_ppo")]
-from balance_adapter import BalanceAdapter, BalanceActor, make_ppo, bootstrap_rewards
+from balance_adapter import BalanceAdapter, BalanceActor, make_ppo as base_make_ppo, bootstrap_rewards
 from control import fixed_blocks, physical_base, compose, RADIUS
 from adapter import termination_masks
 sys.path.insert(0, str(HERE))
 from rewards import FEATURES, REWARD_MAXIMUM, FootReference
+from overnight import bounded_learning_rate
+
+
+def make_ppo(actor, obs, count):
+    algorithm = base_make_ppo(actor, obs, count)
+    algorithm.schedule, algorithm.desired_kl = "adaptive", .01
+    algorithm.learning_rate = 5e-5
+    for group in algorithm.optimizer.param_groups:
+        group["lr"] = algorithm.learning_rate
+    def cap_adaptive_rate(optimizer, args, kwargs):
+        algorithm.learning_rate = bounded_learning_rate(algorithm.learning_rate)
+        for group in optimizer.param_groups:
+            group["lr"] = algorithm.learning_rate
+    algorithm.optimizer.register_step_pre_hook(cap_adaptive_rate)
+    return algorithm
 
 
 class Head(nn.Module):
@@ -35,10 +50,12 @@ class Actor(BalanceActor):
 
 
 class Adapter(BalanceAdapter):
-    def __init__(self, env, teacher, thresholds):
+    def __init__(self, env, teacher, thresholds, upper_alpha=.75):
         self.foot_reference = FootReference(env.supermimic_mdp)
         super().__init__(env, teacher, thresholds, fallback_enabled=False)
-        self.cap = .75
+        if not 0 <= upper_alpha <= 1:
+            raise ValueError("Upper reference blend must be in [0,1]")
+        self.cap = float(upper_alpha)
         self.reset_gate(torch.ones(self.num_envs, dtype=torch.bool, device=self.device))
         self.history = None
         self.observations = self.observe(self.current)

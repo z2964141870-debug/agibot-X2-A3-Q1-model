@@ -61,6 +61,13 @@ def dashboard(trial):
         axis.grid(alpha=.2)
     fig.savefig(target / "ppo_diagnostics.png",dpi=160)
     plt.close(fig)
+    fig,axes = plt.subplots(2,2,figsize=(11,7),constrained_layout=True)
+    for axis,key in zip(axes.flat,("policy_update_kl_mean","policy_update_kl_p99","learning_rate","latent_mean_rms")):
+        axis.plot(frame.step,frame[key],linewidth=.8,color="#23765e")
+        axis.set_title(key)
+        axis.grid(alpha=.2)
+    fig.savefig(target / "ppo_update_diagnostics.png",dpi=160)
+    plt.close(fig)
     fig,axis = plt.subplots(figsize=(11,5),constrained_layout=True)
     for key in ("original_reward_sum","stance_bonus_sum","swing_bonus_sum","stationary_bonus_sum","smooth_cost_sum","residual_cost_sum"):
         axis.plot(frame.step,frame[key]/frame.transitions,linewidth=.8,label=key.removesuffix("_sum"))
@@ -98,11 +105,13 @@ if __name__ == "__main__":
     env = SimpleNamespace(supermimic_mdp=SimpleNamespace(motion=motion),device=torch.device("cpu"))
     suite = json.loads(a.video_suite.read_text())
     media = {}
-    for label,source in (("initial",receipt["initial_traces"][0]),("final",receipt["final_traces"][0])):
+    versions = (("base",receipt["base_traces"][0]), ("initial",receipt["initial_traces"][0]),
+                ("final",receipt["final_traces"][0]), ("recommended",receipt["recommended_traces"][0]))
+    for label,source in versions:
         save(status,{"status":"RUNNING","phase":label+"_video","updated_utc":stamp()})
         with np.load(source,allow_pickle=False) as saved:
             trace = {key:saved[key] for key in ("initial","states","steps","failed")}
         media[label] = render_suite(a.runtime,trace,env,rows,suite,evaluation / (label+".mp4"),
-                                    "RF15 "+label+(" static upper0.75" if label == "initial" else " gait compensation"))
+                                    "RF15 "+label+(f" static upper{receipt['upper_reference_alpha']:.2f}" if label == "initial" else " gait compensation"))
         save(evaluation / (label+"_media.json"),media[label])
     save(status,{"status":"COMPLETED","updated_utc":stamp(),"new_optimizer_steps":0,"new_physical_steps":0,"media":media})

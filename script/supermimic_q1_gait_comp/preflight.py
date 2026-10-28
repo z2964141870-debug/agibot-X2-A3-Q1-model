@@ -34,7 +34,7 @@ def run(a):
         teacher = load_policy(env, torch.load(a.checkpoint, map_location=env.device, weights_only=True)).requires_grad_(False).eval()
         digest = policy_digest(teacher)
         thresholds = json.loads(a.calibration.read_text())["thresholds"]
-        adapter = Adapter(env, teacher, thresholds)
+        adapter = Adapter(env, teacher, thresholds, a.upper_alpha)
         actor = Actor().to(env.device)
         before = {k:v.clone() for k,v in actor.state_dict().items()}
         algorithm = make_ppo(actor, adapter.observations, a.envs)
@@ -90,7 +90,7 @@ def run(a):
                 _, independent, _ = prepare(SimpleNamespace(runtime=a.runtime, library=lib, output=a.output),
                                              num_envs=3, eval_mode=True)
                 foot = FootReference(independent.supermimic_mdp)
-                trace = rollout(independent, teacher, actor.head, thresholds, foot)
+                trace = rollout(independent, teacher, actor.head, thresholds, foot, upper_alpha=a.upper_alpha)
                 for key in ("states", "feet", "reference_feet"):
                     if not bool(torch.isfinite(torch.from_numpy(trace[key])).all()):
                         raise AssertionError("Nonfinite physical gait evidence")
@@ -115,6 +115,8 @@ def run(a):
                       natural_terminal_no_bootstrap=True, native_contacts_and_pre_reset_states=True,
                       independent_eval_preserved_live_state_rng=True, only_new_head_and_critic_in_optimizer=True,
                       teacher_and_normalizers_unchanged=True, actor_parameters_unchanged=True)
+        status.update(upper_reference_alpha=a.upper_alpha, desired_kl=algorithm.desired_kl,
+                      adaptive_learning_rate_bounds=[1e-5, 5e-5])
     except BaseException as error:
         status.update(status="FAILED", error=f"{type(error).__name__}: {error}")
         raise
@@ -137,4 +139,5 @@ if __name__ == "__main__":
     for name in ("runtime", "library", "checkpoint", "calibration", "output"):
         p.add_argument("--"+name, type=Path, required=True)
     p.add_argument("--envs", type=int, choices=(16,4096), required=True)
+    p.add_argument("--upper-alpha", type=float, default=.75)
     run(p.parse_args())

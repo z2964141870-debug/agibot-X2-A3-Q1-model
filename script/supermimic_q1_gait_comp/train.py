@@ -9,6 +9,7 @@ from pathlib import Path
 import random
 import signal
 import sys
+import time
 from types import SimpleNamespace
 
 import numpy as np
@@ -22,8 +23,10 @@ from gait_adapter import Adapter, Actor, make_ppo, bootstrap_rewards
 from physical import rollout, preserve_balance, preserve_random_state, summarize, comparison, gait_summary, FootReference
 from decisions import gate
 from timing import ConditionalClock
+from overnight import (OPTIMIZATION_DEADLINE, DELIVERY_DEADLINE, CHECKS, continuing_evidence)
 from resources import save, identity, stamp
 from diagnose_q1_upper_reference import policy_digest
+from metrics import checkpoint_rank
 
 
 def run(a):
@@ -42,7 +45,7 @@ def run(a):
     signal.signal(signal.SIGINT, stop)
     stages, final_paths = [], []
     iteration = 0
-    outcome = "first_hour_no_confirmed_improvement"
+    outcome = "overnight_budget_completed"
     try:
         torch.set_num_threads(8)
         cfg, env, _ = prepare(a, num_envs=4096)
@@ -52,7 +55,9 @@ def run(a):
         teacher = load_policy(env, torch.load(a.checkpoint, map_location=env.device, weights_only=True)).requires_grad_(False).eval()
         teacher_digest = policy_digest(teacher)
         thresholds = json.loads(a.calibration.read_text())["thresholds"]
-        adapter = Adapter(env, teacher, thresholds)
+        if time.time() >= OPTIMIZATION_DEADLINE-300:
+            raise RuntimeError("Too late for a new overnight training run")
+        adapter = Adapter(env, teacher, thresholds, a.upper_alpha)
         actor = Actor().to(env.device)
         algorithm = make_ppo(actor, adapter.observations, 4096)
         rows = [dict(row, split=split) for split in ("train", "validation")
@@ -87,6 +92,11 @@ def run(a):
                 "numpy_rng": [numpy_rng[0], numpy_rng[1].tolist(), *numpy_rng[2:]],
                 "code_commit": a.code_commit, "latent_std": .1, "residual_radius_rad": .15,
                 "input_features": 1420, "maximum_training_seconds": 14400,
+                "upper_reference_alpha": a.upper_alpha, "learning_rate": algorithm.learning_rate,
+                "desired_kl": .01, "adaptive_learning_rate_bounds": [1e-5, 5e-5],
+                "optimization_wall_deadline_unix": OPTIMIZATION_DEADLINE,
+                "delivery_wall_deadline_unix": DELIVERY_DEADLINE,
+                "user_accepted_checkpoint": None,
                 "note": "Requires identified immutable selected HP base and gait adapter. Not a full simulator-resume checkpoint; no automatic resume."}
             path = a.output / name
             temporary = path.with_suffix(".pt.tmp")
@@ -101,7 +111,8 @@ def run(a):
                     def tick(frame):
                         progress("evaluation", evaluation_label=label, evaluation_repeat=repeat, evaluation_frame=frame)
                     tick(0)
-                    trace = rollout(eval_env, teacher, actor.head, thresholds, eval_foot, mode, tick)
+                    trace = rollout(eval_env, teacher, actor.head, thresholds, eval_foot, mode, tick,
+                                    upper_alpha=a.upper_alpha)
                     path = evaluation / f"{label}_repeat{repeat}.npz"
                     np.savez_compressed(path, **trace)
                     summary = summarize(trace, rows)
@@ -120,15 +131,22 @@ def run(a):
 
         base_paths, _ = evaluate("selected_base", "teacher")
         initial_paths, _ = evaluate("initial_static075", "static075", baseline=base_paths)
-        checkpoint("initial.pt")
+        initial_checkpoint = checkpoint("initial.pt")
+        candidates = [{"label": "initial_static", "checkpoint": identity(initial_checkpoint),
+                       "traces": [str(p) for p in initial_paths],
+                       "rank": checkpoint_rank([json.loads(p.with_suffix(".json").read_text()) for p in initial_paths])}]
         initial_actor = copy.deepcopy(actor.state_dict())
         actor.head.requires_grad_(False)
-        checks = iter((3500., 7100., 10700., 14300.))
+        checks = iter(CHECKS)
         next_check = next(checks)
         last_saved = 0.
         while not requested:
+            if time.time() >= OPTIMIZATION_DEADLINE-120:
+                outcome = "overnight_optimization_wall_deadline"
+                break
             if clock.total >= clock.cap-100.:
-                raise RuntimeError("Soft budget reached without the scheduled physical check")
+                outcome = "overnight_soft_training_budget"
+                break
             progress("collecting", next_evaluation_seconds=next_check)
             clock.begin()
             try:
@@ -147,9 +165,19 @@ def run(a):
                             report[key] = report.get(key, 0) + value
                     algorithm.compute_returns(adapter.observations)
                 progress("updating")
+                sample = algorithm.storage.observations[0].clone()
+                with torch.no_grad():
+                    previous_mean = actor(sample).clone()
                 losses = algorithm.update()
                 if not all(np.isfinite(v) for v in losses.values()):
                     raise FloatingPointError("Nonfinite PPO loss")
+                with torch.no_grad():
+                    current_mean = actor(sample)
+                    exact_kl = .5*((current_mean-previous_mean)/.1).square().sum(-1)
+                    report.update(policy_update_kl_mean=float(exact_kl.mean()),
+                                  policy_update_kl_p99=float(torch.quantile(exact_kl, .99)),
+                                  latent_mean_rms=float(current_mean.square().mean().sqrt()),
+                                  learning_rate=algorithm.learning_rate)
                 iteration += 1
             finally:
                 clock.end()
@@ -169,33 +197,53 @@ def run(a):
             path = checkpoint(f"stage_{number:02d}.pt")
             final_paths, comparisons = evaluate(f"stage_{number:02d}", "trained075", initial_paths, base_paths)
             decision = gate(comparisons)
+            continuation = continuing_evidence(comparisons)
             stages.append({"iteration": iteration, "training_seconds": clock.total, "checkpoint": identity(path),
-                           "comparisons": comparisons, "gate": decision, "traces": [identity(p) for p in final_paths]})
+                           "comparisons": comparisons, "gate": decision, "overnight_continuation": continuation,
+                           "traces": [identity(p) for p in final_paths]})
             save(a.output / "stage_decisions.json", stages)
+            candidates.append({"label": f"stage_{number:02d}", "checkpoint": identity(path),
+                "traces": [str(p) for p in final_paths],
+                "rank": checkpoint_rank([json.loads(p.with_suffix(".json").read_text()) for p in final_paths])})
             print(json.dumps({"stage": number, "training_seconds": clock.total, "gate": decision}), flush=True)
             if decision["physical_regression"]:
                 outcome = "physical_regression"
                 break
-            if not decision["improvement_confirmed"]:
-                outcome = "no_confirmed_physical_improvement" if number > 1 else "first_hour_no_confirmed_improvement"
+            if clock.total >= 3500 and not continuation["continue_authorized"]:
+                outcome = "no_confirmed_physical_improvement_at_hour_check"
                 break
-            if number == 1:
-                clock.cap = 14400.
-                clock.flush()
             if clock.total >= 14300:
-                outcome = "conditional_four_hour_budget_completed"
+                outcome = "overnight_four_hour_budget_completed"
                 break
             next_check = next(checks)
         if requested:
             raise InterruptedError("External stop requested; no automatic restart")
+        if not stages or stages[-1]["iteration"] != iteration:
+            number = len(stages)+1
+            path = checkpoint(f"stage_{number:02d}.pt")
+            final_paths, comparisons = evaluate(f"stage_{number:02d}", "trained075", initial_paths, base_paths)
+            stages.append({"iteration": iteration, "training_seconds": clock.total, "checkpoint": identity(path),
+                           "comparisons": comparisons, "gate": gate(comparisons),
+                           "overnight_continuation": continuing_evidence(comparisons),
+                           "traces": [identity(p) for p in final_paths]})
+            save(a.output / "stage_decisions.json", stages)
+            candidates.append({"label": f"stage_{number:02d}", "checkpoint": identity(path),
+                "traces": [str(p) for p in final_paths],
+                "rank": checkpoint_rank([json.loads(p.with_suffix(".json").read_text()) for p in final_paths])})
         if clock.total > clock.cap or clock.total > 14400:
             raise RuntimeError("Conditional training budget exceeded")
         final = checkpoint("final.pt")
+        recommendation = min(candidates, key=lambda row: row["rank"])
+        save(a.output / "checkpoint_recommendation.json", {"candidates": candidates,
+             "recommended": recommendation, "user_accepted_checkpoint": None,
+             "note": "Gait-based numerical recommendation only; compare upper amplitude/timing and simulation videos before adoption"})
         if policy_digest(teacher) != teacher_digest:
             raise AssertionError("Frozen base changed during PPO")
         save(evaluation / "receipt.json", {"rows": rows, "initial_traces": [str(p) for p in initial_paths],
              "base_traces": [str(p) for p in base_paths], "final_traces": [str(p) for p in final_paths],
-             "training_seconds": clock.total, "fixed_forward_block": 4096})
+             "training_seconds": clock.total, "fixed_forward_block": 4096,
+             "upper_reference_alpha": a.upper_alpha, "user_accepted_checkpoint": None,
+             "recommended_traces": recommendation["traces"], "recommended_label": recommendation["label"]})
         status.update(status="TRAINING_COMPLETED", outcome=outcome, training_seconds=clock.total,
                       iteration=iteration, sim_steps=iteration*98304, optimizer_steps=iteration*20,
                       actor_optimizer_steps=max(iteration-10, 0)*20, final=identity(final))
@@ -222,4 +270,5 @@ if __name__ == "__main__":
     for name in ("runtime", "library", "checkpoint", "calibration", "output"):
         parser.add_argument("--"+name, type=Path, required=True)
     parser.add_argument("--code-commit", required=True)
+    parser.add_argument("--upper-alpha", type=float, default=.75)
     run(parser.parse_args())

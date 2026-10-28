@@ -18,6 +18,7 @@ from run_trial import Q1Budget
 from runtime_guard import guarded_run
 from worker import process_identity
 from resources import save, stamp, identity
+from overnight import OPTIMIZATION_DEADLINE, DELIVERY_DEADLINE, CHECKS
 
 
 def unchanged(items):
@@ -37,22 +38,24 @@ class Budget(Q1Budget):
         a = self.original
         if Path("/proc/sys/kernel/random/boot_id").read_text().strip() != a.expected_boot or evidence["gpu"]["uuid"] != a.expected_gpu:
             raise RuntimeError("Boot/GPU identity changed")
-        if time.monotonic()-self.started > (28800 if a.mode == "train" else 2400):
+        if time.time() >= DELIVERY_DEADLINE:
+            raise RuntimeError("Absolute09:00 Beijing overnight deadline reached")
+        if time.monotonic()-self.started > (25200 if a.mode == "train" else 2400):
             raise RuntimeError("Whole pipeline wall cap reached")
         path = a.output / "run/training_clock.json"
         if path.exists():
             clock = json.loads(path.read_text())
             cap = clock["current_cap_seconds"]
-            if clock["absolute_maximum_seconds"] != 14400 or cap not in (3600,14400):
-                raise RuntimeError("Invalid RF15 conditional budget")
-            if cap > 3600:
-                decision = json.loads((a.output / "run/stage_decisions.json").read_text())
-                if not decision[0]["gate"]["improvement_confirmed"]:
-                    raise RuntimeError("Extension has no saved physical authorization")
+            if clock["absolute_maximum_seconds"] != 14400 or cap !=14400:
+                raise RuntimeError("Invalid explicitly authorized overnight RF15 budget")
+            if clock["optimization_wall_deadline_unix"] != OPTIMIZATION_DEADLINE:
+                raise RuntimeError("Optimization deadline changed")
             actual = clock["accumulated_training_seconds"]
             if clock["active_started_monotonic"] is not None:
                 actual += time.monotonic()-clock["active_started_monotonic"]
             evidence.update(actual_training_seconds=actual, current_training_cap_seconds=cap)
+            if clock["active_started_monotonic"] is not None and time.time() >= OPTIMIZATION_DEADLINE-55:
+                raise RuntimeError("External07:00 optimization stop with45s grace")
             if actual >= cap-60:
                 raise RuntimeError("External conditional training stop with45s grace")
         return evidence
@@ -72,16 +75,20 @@ def execute(a):
                str(HERE / ("train.py" if a.mode == "train" else "preflight.py"))]
     for name in ("runtime", "library", "checkpoint", "calibration"):
         command += ["--"+name, str(getattr(a,name))]
-    command += ["--output", str(a.output / "run")]
+    command += ["--output", str(a.output / "run"), "--upper-alpha", str(a.upper_alpha)]
     if a.mode == "train":
         command += ["--code-commit", a.code_commit]
     else:
         command += ["--envs", "16" if a.mode == "preflight16" else "4096"]
     save(a.output / "plan.json", {"source": sources, "command": command, "code_commit": a.code_commit,
          "process": process_identity(), "started_utc": stamp(), "boot": a.expected_boot, "gpu": a.expected_gpu,
-         "maximum_training_seconds": 14400, "first_hour_cap_seconds": 3600,
-         "check_at_seconds": [3500,7100,10700,14300], "external_reserve_seconds": 60, "grace_seconds": 45,
-         "only_physical_improvement_allows_extension": True, "no_automatic_retry": True})
+         "maximum_training_seconds": 14400, "upper_reference_alpha": a.upper_alpha,
+         "check_at_seconds": list(CHECKS), "external_reserve_seconds": 60, "grace_seconds": 45,
+         "optimization_wall_deadline_unix": OPTIMIZATION_DEADLINE,
+         "delivery_wall_deadline_unix": DELIVERY_DEADLINE,
+         "authorization": "User autonomous exploration2026-10-29 until09:00 Beijing",
+         "only_physical_improvement_allows_continuation_after_first_hour": True,
+         "user_accepted_checkpoint": None, "no_automatic_retry": True})
     requested = False
     def stop(signum, frame):
         nonlocal requested
@@ -128,6 +135,7 @@ if __name__ == "__main__":
     for name in ("runtime", "library", "checkpoint", "calibration", "video-suite", "frozen-plan", "output"):
         p.add_argument("--"+name, type=Path, required=True)
     p.add_argument("--code-commit")
+    p.add_argument("--upper-alpha", type=float, default=.75)
     p.add_argument("--expected-oom-kill", type=int, default=0)
     p.add_argument("--expected-boot", required=True)
     p.add_argument("--expected-gpu", required=True)
@@ -136,6 +144,10 @@ if __name__ == "__main__":
     a = p.parse_args()
     if a.mode == "train" and (a.code_commit is None or len(a.code_commit) != 40):
         p.error("Formal training requires published40-digit source commit")
+    if not 0 <= a.upper_alpha <= 1:
+        p.error("Upper blend must be in [0,1]")
+    if time.time() >= OPTIMIZATION_DEADLINE-300:
+        p.error("Overnight launch window has closed")
     a.output = a.output.resolve()
     if not a.output.is_relative_to(ROOT / "data/supermimic_for_q1"):
         p.error("Use sole ZHY data root")

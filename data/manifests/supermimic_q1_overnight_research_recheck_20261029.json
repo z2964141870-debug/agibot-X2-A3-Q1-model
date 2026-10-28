@@ -1,0 +1,71 @@
+{
+  "status": "OVERNIGHT_RESEARCH_RECHECK_COMPLETE_NO_NEW_TRAINING",
+  "captured_utc": "2026-10-28 23:03:34 UTC",
+  "user_accepted_checkpoint": null,
+  "new_physical_steps": 0,
+  "policy_inference_calls": 0,
+  "optimizer_updates": 0,
+  "sources": [
+    {
+      "url": "https://hugwbc.github.io/",
+      "kind": "official_project",
+      "read": "Abstract and intervention-training/gait-command description",
+      "relevance": "Separate gait/locomotion commands from upper intervention; a design precedent, not Q1 evidence."
+    },
+    {
+      "url": "https://stanfordasl.github.io/constrainedmimic/",
+      "kind": "official_project",
+      "read": "Input/output constraints, contact-mode limitations and mode-breaking example",
+      "relevance": "A fixed-double-support filter cannot produce walking. Any output constraint proposal must include contact switching and dynamic feasibility."
+    },
+    {
+      "url": "https://github.com/StanfordASL/constrainedmimic",
+      "kind": "official_repository",
+      "read": "README and prerequisites only; no installation",
+      "relevance": "Current deployment describes Unitree G1 and ROS2/JAX components; no verified Q1 integration."
+    },
+    {
+      "url": "https://github.com/LogosIntelligenceLab/x-wbc",
+      "redirected_from": "https://github.com/LogosRoboticsGroup/x-wbc",
+      "kind": "official_repository",
+      "read": "Current release-status README",
+      "relevance": "Shared Transformer with embodiment-specific modules is a research direction; implementation/checkpoints/training assets are still being prepared. No ready weights were obtained."
+    },
+    {
+      "url": "https://xhugwbc.github.io/",
+      "kind": "official_project",
+      "read": "Method and release link",
+      "relevance": "Morphological randomization and aligned state/action semantics; code link currently says coming soon, so no direct model trial."
+    },
+    {
+      "url": "https://nvlabs.github.io/GR00T-WholeBodyControl/user_guide/training.html",
+      "kind": "official_documentation",
+      "read": "Architecture, training scale, evaluation and SOMA paths",
+      "relevance": "SONIC includes multi-encoder FSQ/decoder and PPO; documented foundation-model-scale training is not comparable to this single-GPU short Q1 run. No full-stack install or model download."
+    },
+    {
+      "url": "https://nvlabs.github.io/GR00T-WholeBodyControl/user_guide/new_embodiments.html",
+      "kind": "official_documentation",
+      "read": "New-robot assets, joint/body order, actuators, scales and H2 example",
+      "relevance": "Q1 adaptation needs actual body/action mappings and matched models. Changing a model name or using LoRA alone does not establish executable Q1 actions."
+    },
+    {
+      "url": "https://nvlabs.github.io/GR00T-WholeBodyControl/references/decoupled_wbc.html",
+      "kind": "official_documentation",
+      "read": "Official decoupled-control entry",
+      "relevance": "Lower locomotion plus upper kinematic control is an available architectural alternative, without verified Q1 performance."
+    }
+  ],
+  "not_verified": [
+    "X original discussion content was not relied on.",
+    "External video pages/descriptions are not frame-by-frame Q1 evidence.",
+    "No pretrained cross-embodiment policy was validated on Q1."
+  ],
+  "next_hypotheses_not_validated": [
+    "Define lower-body locomotion around forward velocity, heading, actual sole clearance and support transfer, while exposing upper interventions during training.",
+    "Compare a lower controller with sufficient action authority against a bounded residual over the existing teacher; current short runs do not isolate capacity or saturation as the cause.",
+    "Any runtime contact/balance constraint needs explicit phase transitions; locking both feet can suppress locomotion.",
+    "Retain dynamic arm blend as a display candidate, separately from learned-head claims and without silently combining untested variants."
+  ],
+  "next_training_authorized_by_this_receipt": false
+}

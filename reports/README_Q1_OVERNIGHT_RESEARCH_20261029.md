@@ -1,5 +1,9 @@
 # Q1夜间算法阅读与审阅工具
 
+## 早间补充与边界
+
+一手入口进一步核验：ConstrainedMimic的固定双支撑约束会阻止行走，未来输出约束须显式切换接触；X-WBC官方README仍在准备实现/权重，XHugWBC代码coming soon；GR00T虽有新机器人入口，仍要求实际关节/体/控制/重定向适配，不能直接套Q1模型名或LoRA即用。未安装这些新方法或增加物理/optimizer，不把外部演示当Q1结果。实际读取层次、来源URL及待验证假设见[早间一手核验收据](../data/manifests/supermimic_q1_overnight_research_recheck_20261029.json)，本夜效果以[真实数据/本地视频汇总](README_Q1_OVERNIGHT_RESULTS_20261029.md)为准。
+
 ## 06时约束方法补充核验
 
 再次读取ConstrainedMimic官方项目入口/仓库README及arXiv2606.00374摘要/版本史，初稿2026-05-29、所核v2为2026-10-14。论文把接触和平衡约束放在输入重定向与输出跟踪两端，动机与本夜上肢/步态取舍相关；其G1结果不是Q1结果。当前未安装/移植，也未凭项目演示认定找到本项目单一根因。可研究的后续是输出侧真实接触/平衡约束，而不是只继续增大全局上肢reward；需要Q1模型/控制动作/接触接口适配，静态支撑多边形也不足以代表动态平衡。一手入口`https://arxiv.org/abs/2606.00374`、`https://stanfordasl.github.io/constrainedmimic/`、`https://github.com/StanfordASL/constrainedmimic`。本夜目前仍以已完成/进行中的RF16物理证据判断，0新增此方法仿真/optimizer。[读取层次收据](../data/manifests/supermimic_q1_RF16_training_results_20261029.json)。

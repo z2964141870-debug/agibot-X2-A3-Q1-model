@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 04:19：[推理精度敏感性独立准备](README_Q1_PRECISION_SENSITIVITY_20261029.md)3CPU反例/AST/远端help通过，固定权重和原控制、BF16/FP32×静态/动态上肢配对，尚未物理运行。只是假设，不认定训练根因；等现有三视频渲染结束、发布核验和GPU空闲再唯一零优化诊断。
+
 2026-10-29 04:10：[ACTIVITY full330量化结果](README_Q1_ACTIVITY_BLEND_20261029.md)0optimizer正常完成，动态上肢约降34%但全库失败稍增，步态无一致收益；固定两走/抬手均完整，旧继续门0/3。2970逐片行/2x3控制图准备完成，原速固定六类视频和Mac验收待，不将上肢收益称全身成功。
 
 2026-10-29 04:00：[ACTIVITY full330唯一复核已启动](README_Q1_ACTIVITY_BLEND_20261029.md)，controller153640/worker153643原身份一致、baseline repeat0/frame150/0optimizer/OOM0。代码8413955/预登记c1b823a已核远端与三端，3候选三重复/原330片，尚无完整库效果，不开训练/重复启动。

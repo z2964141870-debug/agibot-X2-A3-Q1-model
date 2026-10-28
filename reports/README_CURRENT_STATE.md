@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 04:19：[BF16/FP32推理精度诊断CPU准备](README_Q1_PRECISION_SENSITIVITY_20261029.md)3反例/AST/服务器help通过，四档同权重/控制/输入配对，0optimizer；首个实际前向用同输入核物理目标差，不额外reset。尚未GPU启动，须等当前ACTIVITY已存轨迹三视频渲染session70132结束、冻结发布/核SHA/GPU空闲；不把精度差当物理改善或单因根因，07:00/09:00截止不变。
+
 2026-10-29 04:10最新：[ACTIVITY full330已04:08:24完成](README_Q1_ACTIVITY_BLEND_20261029.md)，1188来源/教师未变、guardreap0/原153640与153643退出/GPU释放/OOM0。动态候选上肢仍约降34%，但训练失败10/12/11对baseline9/11/8、验证1/0/0对0/0/0，固定两走抬手3/3完整，走路滑移并未一致改善，旧继续门0/3，不作训练晋级/用户采纳。只读工具已生成2970逐片/27固定/42跟踪/48步态行及2x3控制图；原固定六类视频渲染/Mac验收待，07:00/09:00截止保留。[收据](../data/manifests/supermimic_q1_activity_full330_results_20261029.json)。
 
 2026-10-29 04:00现场：[ACTIVITY独立full330复核](README_Q1_ACTIVITY_BLEND_20261029.md)03:59:55唯一启动，controller153640/start_ticks13124015、worker153643/start_ticks13124170、原boot/GPU；冻结代码8413955不变，预登记c1b823a/5记录233704字节三端SHA。baseline repeat0/frame150、0optimizer、GPU1307MiB/33度/共享15.94GB/OOM0、身份/命令/三状态一致。原quick33已结束；仅3候选×3次×330，尚无完整库结论，不恢复训练/热改来源。07:00/09:00截止与采纳null保留。[启动](../data/manifests/supermimic_q1_activity_full330_launch_20261029.json)。

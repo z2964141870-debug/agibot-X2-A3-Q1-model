@@ -1,0 +1,27 @@
+{
+  "stage": "Inference precision diagnostic CPU preparation",
+  "recorded_beijing": "2026-10-29 04:19",
+  "status": "NOT_LAUNCHED",
+  "optimizer_updates": 0,
+  "user_accepted_checkpoint": null,
+  "tests": {
+    "cpu": 3,
+    "ast_sources": 3,
+    "server_cli_help": true
+  },
+  "teacher_checkpoint": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt",
+  "cases": [
+    "bf16_static050",
+    "fp32_static050",
+    "bf16_activity050075",
+    "fp32_activity050075"
+  ],
+  "paired_factors": "Same frozen FP32 weights/normalization, original control, PD/effort, goals, fixed4096 forward blocks, alpha and paired configured seeds; only encoder/decoder autocast changed within each blend. TF32 disabled in all cases.",
+  "first_action_diagnostic": "One forward hook on first real teacher call; computes alternative precision on identical padded history/goal, removes hook first, restores global precision before returning selected action. No extra env resets, physics or optimizer. Records physical joint target deltas, not a causal conclusion.",
+  "scope": "33=original30validation+fixed2walk/raise;3 configured evaluation seeds32000/1/2,not training seeds",
+  "maximum_wall_seconds": 2400,
+  "expected_frozen_source_count": 1191,
+  "launch_prerequisites": "Current saved-trace renderer finishes; oneGPU job; publish/independent remote40 and three-root sizeSHA; GPUidle. No automatic retry.",
+  "deadline_beijing": "2026-10-29 07:00",
+  "hypothesis": "Does inference quantization contribute materially to the observed gait trade-off? Unknown; not evidence of a training bug or failure root cause."
+}

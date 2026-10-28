@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 01:40：[夜间一手算法阅读与RF15审阅工具](README_Q1_OVERNIGHT_RESEARCH_20261029.md)完成；HugWBC/HOMIE/ExBody2/BeyondMimic读取层次和X原帖403边界已记录，不把跨平台方法当Q1效果。独立CPU工具对6份初始330片JSON实际运行，72训练/验证、18固定片、21跟踪/24步态共同前缀行；8小工件2547370字节Mac/25386大小SHA一致，静态收益与head学习分列。媒体仍待实际生成/验收，原RF15继续冻结训练，07:00优化/09:00交付截止不变。[工具准备收据](../data/manifests/supermimic_q1_RF15_review_preparation_20261029.json)。
+
 2026-10-29 01:24：[唯一RF15夜间流程](README_SUPERMIMIC_Q1_RF15_OVERNIGHT_20261029.md)01:18:51实际启动；controller137006/start_ticks12157622、worker137016/start_ticks12157730/原boot与GPU一致，三状态RUNNING及mtime核实。初始静态alpha.5三重复repeat2/frame300、0实训/0optimizer，尚无学习效果。冻结e3601552863084d5f52758e6c5f07ea722dafbf8已独立核远端，19文件245695字节三端大小SHA一致，plan1163来源；GPU2811MiB/39度、共享15.75GB/OOM0、余盘1.648TB。每20/40/60分钟物理门、首小时后有真实收益才继续，最多14400实训秒/07:00停止优化/09:00交付。只监督原进程，不重启/热改/agent/创建旧goal，用户未采纳底座。[启动完整收据](../data/manifests/supermimic_q1_RF15_overnight_launch_observed_20261029.json)。
 
 2026-10-29 01:12：[RF15夜间准备](README_SUPERMIMIC_Q1_RF15_OVERNIGHT_20261029.md)21项CPU及16/4096真实零optimizer预检均通过、双guardreap0/1163来源未变/OOM0，4096小批24576概率差0。实验底座为RF14两小时+.5，上肢/普通走零优化候选已有收益但仍低抬脚/滑移；尚未正式训练，待冻结发布/三端核验。每20/40/60分钟早查、首小时后真实收益才继续，最多14400实训秒且07:00停止优化/09:00交付；用户未采纳底座，其他旧实验/任务不改。

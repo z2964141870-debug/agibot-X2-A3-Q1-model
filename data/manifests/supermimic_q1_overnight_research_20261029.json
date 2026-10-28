@@ -1,0 +1,70 @@
+{
+  "captured_beijing": "2026-10-29T01:40:00+08:00",
+  "status": "PRIMARY_SOURCE_READING_NOT_Q1_REPLICATION",
+  "sources": [
+    {
+      "id": "HUGWBC",
+      "title": "HugWBC: A Unified and General Humanoid Whole-Body Controller for Fine-Grained Locomotion",
+      "urls": [
+        "https://hugwbc.github.io/",
+        "https://github.com/apexrl/HugWBC",
+        "https://arxiv.org/abs/2503.06930"
+      ],
+      "verification": "Official project text and official repository README read; no full Q1 implementation imported.",
+      "finding": "Upper-body intervention and locomotion objectives can be trained together with explicit commands; robot morphology and control still require adaptation.",
+      "q1_boundary": "RF15 tests a bounded lower residual under fixed0.5 arm composition and some pure-base resets, not the full HugWBC command space or curriculum."
+    },
+    {
+      "id": "HOMIE",
+      "title": "HOMIE: Humanoid Loco-Manipulation with Isomorphic Exoskeleton Cockpit",
+      "urls": [
+        "https://homietele.github.io/",
+        "https://github.com/OpenRobotLab/OpenHomie"
+      ],
+      "verification": "Official project and repository README read.",
+      "finding": "Separate lower-body balance/locomotion learning and upper-body motion objectives are relevant to our observed coupling.",
+      "q1_boundary": "This does not establish that Q1 residual PPO has sufficient exploration, rewards, or correction radius."
+    },
+    {
+      "id": "EXBODY2",
+      "title": "ExBody2: Advanced Expressive Humanoid Whole-Body Control",
+      "urls": [
+        "https://exbody2.github.io/",
+        "https://arxiv.org/html/2412.13196v2",
+        "https://github.com/chengxuxin/expressive-humanoid"
+      ],
+      "verification": "Official project text, paper HTML and earlier ExBody official repository README read.",
+      "finding": "Expressive tracking combines reference motion and task-aware full-body dynamics; data selection and learning distribution matter.",
+      "q1_boundary": "RF15 retains original300/30 and does not claim a full-body generalist or real hardware transfer. If residuals fail, separately targeting locomotion velocity and upper pose is a candidate, not an established fix."
+    },
+    {
+      "id": "BEYONDMIMIC",
+      "title": "BeyondMimic: From Motion Tracking to Versatile Humanoid Control",
+      "urls": [
+        "https://github.com/HybridRobotics/whole_body_tracking",
+        "https://arxiv.org/abs/2508.08241"
+      ],
+      "verification": "Official repository README and project search result read; no full Q1 port performed.",
+      "finding": "A reliable physical tracking implementation and transparent failure evaluation should precede claims of broad transfer.",
+      "q1_boundary": "Using RSL-RL PPO alone does not reproduce BeyondMimic or repair RF14's still-unisolated degradation."
+    }
+  ],
+  "unverified": [
+    {
+      "source": "X author post linked by official HugWBC site",
+      "url": "https://x.com/Wei_Gao666/status/2019852055463276833",
+      "result": "403 when opened; no post content used as evidence."
+    },
+    {
+      "source": "Official project video embeds",
+      "result": "Links/descriptions identified; not downloaded or frame-inspected, so no independent visual-performance claim."
+    }
+  ],
+  "new_optimizer_updates_from_research": 0,
+  "additional_training_authorized_by_this_record": false,
+  "conclusions": [
+    "The current best supported Q1 arm gain comes from static composition; learned gait compensation needs a separate paired comparison.",
+    "Frozen base plus bounded residual limits the trainable surface but does not guarantee gait preservation.",
+    "The07:00 optimization and09:00 delivery deadlines remain unchanged. Do not modify the live RF15 frozen source."
+  ]
+}

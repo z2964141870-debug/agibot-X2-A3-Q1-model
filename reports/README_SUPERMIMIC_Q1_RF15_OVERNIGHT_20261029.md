@@ -29,3 +29,5 @@ RSL-RL现有PPO核心24步采集/5epoch×4minibatch，98304转移/轮，24576小
 01:24:01现场controller137006/start_ticks12157622、worker137016/start_ticks12157730，原boot4d859008-4c83-4a6d-814d-cbb9dfe885c9及GPU-26028785-9fb9-45af-e614-4cc53af15d08一致，完整命令/三状态RUNNING/mtime核实。处于initial_static075 repeat2/frame300（实际alpha.5），clock PAUSED_FOR_NONTRAINING、0实训；GPU2811MiB/39度，共享15753854976字节/OOM0，余盘1648130625536字节。初始化/三重复评测不计训练，不据低GPU或0秒误判停滞。[启动与代码三端收据](../data/manifests/supermimic_q1_RF15_overnight_launch_observed_20261029.json)保留完整命令、计划、身份和文件mtime。下一步只监督此learner至约1200秒首门；不重复启动。
 
 终后保存12类物理/来源/预算证据审计、六格PNG/PDF/CSV原值+500iteration均值、PPO/KL/足端奖励诊断。固定base/静态初始/final/数值推荐各54秒原速8段6类本地MP4，非连续54秒rollout，保留失败hold，推荐不是用户采纳。权重/大NPZ继续SERVER_LOCAL_ONLY；Mac小工件逐大小SHA、全帧解码/目视，不建网站、不重装服务器ffprobe。结果好坏均据实交付，再由用户决定后续。
+
+01:40独立[审阅工具与算法阅读](README_Q1_OVERNIGHT_RESEARCH_20261029.md)完成，6份初始330片JSON实际集成生成72训练/验证、18固定片、21跟踪/24步态共同前缀行，0新物理/推理/optimizer。新工具在冻结来源清单之外；现有媒体审计函数可检查四标签，实际24项解码/完整性验收仍待媒体生成，不预称通过。首门约1200实训秒后按相同口径补训练对照。

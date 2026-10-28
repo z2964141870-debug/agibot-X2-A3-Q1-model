@@ -40,6 +40,8 @@
 
 ## 下一步与产物
 
+逐片延长门准备735464329a227027c5db0d3928d53cb4ab6eb116已独立核远端，7文件155221字节权威Git/Mac主根/25386大小SHA相同；原监督已工具更新为逐片门并读回ACTIVE每10分钟。新增独立终后媒体入口`script/project_tools/audit_q1_gait_media.py`复用现有帧抽取，支持RF14 initial/final/selected三片或RF15初末两片；仅`--help`已验证，等本轮媒体落盘后执行实际全帧检查。没有重审旧RF13媒体，也没有新增仿真/策略推理。[发布收据](../data/manifests/supermimic_q1_RF15_per_walk_published_20261028.json)。
+
 准备发布b5344ced0362f2782b0515ca6961370cd3b505b9已独立核远端，19文件244351字节权威Git/Mac主根/25386大小SHA一致。同期RF14全部1145冻结来源286704917字节再次核SHA未变，训练冻结4d87269不因本次准备提交而改变。原监督已更新准备进度并读回ACTIVE每10分钟，其他任务未改。[发布与现场收据](../data/manifests/supermimic_q1_RF15_preparation_published_20261028.json)。RF15正式训练/GPU预检仍未开始，整个新目标尚未完成。
 
 20:44前另核固定三参考共804帧的真实Q1 FK缓存：15维新增特征自对照最大误差8.94e-7，奖励分解有限且上界正确；0仿真积分/0optimizer/0CUDA分配。9项CPU测试之外的几何集成检查通过，不能代替16/4096真实Warp预检。[收据](../data/manifests/supermimic_q1_RF15_cpu_preparation_20261028.json)。

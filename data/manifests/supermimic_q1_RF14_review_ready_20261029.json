@@ -1,0 +1,107 @@
+{
+  "status": "READY_FOR_USER_REVIEW_NOT_GOAL_COMPLETE",
+  "captured_utc": "2026-10-28 16:11:50 UTC",
+  "experiment": "RF14",
+  "pipeline_status": "COMPLETED",
+  "run_status": "TRAINING_COMPLETED",
+  "outcome": "cumulative_four_hour_budget_completed",
+  "cumulative_training_seconds": 14300.406953636484,
+  "inherited_training_seconds": 3500.265989576001,
+  "new_training_seconds": 10800.140964060483,
+  "iterations": 12665,
+  "sim_steps": 130211840,
+  "world_model_updates": 126650,
+  "actor_updates": 12165,
+  "observed_terminal": {
+    "captured_utc": "2026-10-28T16:02:05.367066+00:00",
+    "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "processes": {
+      "110563": {
+        "exists": false
+      },
+      "110573": {
+        "exists": false
+      },
+      "129421": {
+        "exists": false
+      }
+    },
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15, 25, 0",
+    "compute_processes": ""
+  },
+  "saved_audit": {
+    "path": "saved_evidence_audit.json",
+    "status": "SAVED_EVIDENCE_AUDIT_PASSED",
+    "passed": 12,
+    "total": 12,
+    "frozen_sources": 1145
+  },
+  "original_training_commit": "4d87269d7ac815cd75a0424dcf7be56ae2c2661d",
+  "final_checkpoint": {
+    "sha256": "4b77137e882e91d1e11065d50cfe7a3c0da97cc10079f6ec0697333f33c9487e",
+    "storage": "SERVER_LOCAL_ONLY"
+  },
+  "quantitative_result": "Fixed walking and both training/validation stability deteriorate after the two-hour checkpoint; final upper amplitude alone is not success.",
+  "diagnosis": {
+    "report": "reports/README_SUPERMIMIC_Q1_RF14_DEGRADATION_20261028.md",
+    "single_cause_isolated": false,
+    "pure_generalization_overfitting_established": false,
+    "published": {
+      "commit": "2e4196eaf816038963cb38de2cd95d99bce088be",
+      "independent_remote_verified": true,
+      "count": 4,
+      "bytes": 174872,
+      "files": [
+        {
+          "path": "reports/README_SUPERMIMIC_Q1_RF14_DEGRADATION_20261028.md",
+          "bytes": 6942,
+          "sha256": "1e0d4e693746c55932849601f461ed527592fa86ac22a179b7b1be917d9f2ffc"
+        },
+        {
+          "path": "data/manifests/supermimic_q1_RF14_degradation_analysis_20261028.json",
+          "bytes": 30314,
+          "sha256": "90e3c979df7a89fee1d76d43a580ee4f5cc7d70e27ebda816a316b8fca790860"
+        },
+        {
+          "path": "reports/README.md",
+          "bytes": 115581,
+          "sha256": "de5dd2b04db911b82c14ab96fd6902d50e218d251c0e0a2a865e1a8a008c3b94"
+        },
+        {
+          "path": "reports/README_CURRENT_STATE.md",
+          "bytes": 22035,
+          "sha256": "10542fc73e766afea72a3323a844533f83c20c7d8a57a0a98dafac5a66edab6a"
+        }
+      ],
+      "three_roots_size_sha256_match": true
+    }
+  },
+  "local_delivery_manifest": "data/manifests/supermimic_q1_RF14_local_delivery_20261029.json",
+  "reviewer_table_counts": {
+    "validation": 72,
+    "fixed_demonstrations": 36,
+    "common_prefix": 63
+  },
+  "user_accepted_checkpoint": null,
+  "numerical_recommendation_only": "RF11_initial",
+  "physical_success_claimed": false,
+  "RF15": {
+    "GPU_preflight": false,
+    "started": false,
+    "next": "Await user checkpoint and launch decision; implement/test review-wait mechanism before any formal launch."
+  },
+  "heartbeat": {
+    "id": "q1-rf08-4096",
+    "status": "ACTIVE",
+    "interval_minutes": 10,
+    "phase": "waiting_for_user_review",
+    "tool_updated_and_file_readback": true,
+    "unchanged_state_notifications": false,
+    "other_automations_modified": false
+  },
+  "goal_status": "active",
+  "new_optimizer_updates": 0,
+  "new_physical_steps": 0,
+  "policy_inference_calls": 0,
+  "publication": "This receipt and updated reports are committed/pushed and mirrored next; exact commit verification is recorded by Git and the delivery publication check."
+}

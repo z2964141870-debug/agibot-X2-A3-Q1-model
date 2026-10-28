@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-28 19:48：[RF14底座续训正式启动](README_SUPERMIMIC_Q1_RF14_RF15_GAIT_20261028.md)，冻结4d87269已发布/独立40位远端及13文件三端核验，controller110563/worker110573身份一致、初始三重复物理评测中。累计最多4小时，普通走物理择优后接独立RF15首小时及条件延长；尚无新改善结论。原监督已实际ACTIVE，其他任务保持。[启动](../data/manifests/supermimic_q1_RF14_launch_observed_20261028.json)。
+
 2026-10-28 19时后：[RF14/RF15新授权与实现](README_SUPERMIMIC_Q1_RF14_RF15_GAIT_20261028.md)：底座累计最多4小时/1、2、4小时普通走评测择优；新PPO补偿最多4小时/首一小时确认改善才延长。旧RF13结束后的不再训练范围由此新授权覆盖，仅独立实验，无agent/故障重试。RF11恢复模型与优化器，新建replay/仿真，16/4096零optimizer预检准备中，尚未开训。
 
 2026-10-28 18:42：[RF13正式收尾](README_SUPERMIMIC_Q1_RF13_RESULTS_20261028.md)结果854e406506afcf7a1d6e96bf8cb58b11109a975f已独立核远端，14记录512622字节三端匹配。初末54秒MP4/六格/CSV/12保存及媒体检查齐备，固定抬手失败与漂移如实保留，基本展示仍未稳健达标。原监督q1-rf08-4096已18:42:44实际PAUSED并读回，其他任务未修改，无额外训练。[完成回执](../data/manifests/supermimic_q1_RF13_completion_audit_20261028.json)。

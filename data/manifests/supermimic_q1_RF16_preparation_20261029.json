@@ -1,0 +1,49 @@
+{
+  "status": "CPU_PREPARATION_PENDING_REMOTE_TORCH_TESTS",
+  "recorded_beijing": "2026-10-29 05:25",
+  "authorization": "User autonomous exploration until2026-10-29 09:00 Beijing, optimization/physical deadline07:00",
+  "experiment": "RF16_CONTACT_PHASE_LOWER_RESIDUAL",
+  "hypothesis": "Replace the inferred ankle-height/ankle-speed reference phase by immutable saved retarget contact intentions in foot features/reward; tests a command-definition mismatch, not proven native support labels.",
+  "source_audit_commit": "940bab00c0fc7659173a62be3a198fcb5e6fefda",
+  "teacher": "RF14stage02",
+  "upper_reference_alpha": 0.5,
+  "reference_counts": {
+    "train": 300,
+    "validation": 30
+  },
+  "num_envs": 4096,
+  "actor": {
+    "features": 1420,
+    "head": [
+      256,
+      128,
+      14
+    ],
+    "activation": "ELU",
+    "latent_std": 0.1,
+    "residual_radius_rad": 0.15,
+    "frozen_teacher_and_normalization": true
+  },
+  "ppo": "Reuse installed RSL-RL and prior gait adapter:24 steps/5epoch/4minibatches/lr5e-5 bounded1e-5..5e-5/KL.01/gamma.99/lambda.95/clip.2/grad1/first10critic-only",
+  "new_phase_mapping": "Exact rational3/5 from30Hz to50Hz; both adjacent labels on=stance; both off=swing; mixed=neutral. Source labels are intentions, not native actual contact.",
+  "reward": "Original reward+same .02stance+.02swing+.01stationary-.002smooth-.002residual. Only phase feature/target definitions change.",
+  "budget": {
+    "soft_seconds": 1200,
+    "hard_seconds": 1300,
+    "external_stop_seconds": 1240,
+    "grace_seconds": 45,
+    "checks": [
+      300,
+      600,
+      1200
+    ],
+    "extension_allowed": false,
+    "recovery_or_retry": false,
+    "physical_wall_deadline_beijing": "2026-10-29 07:00"
+  },
+  "gates": "Retain prior per-fixed-walk physical regression thresholds: >=1.5 slip or >=1.25 tilt or validation>=6 failures in2/3; gains reported without extension. Fixed ordinary walks/raise original3 repeats plus full330, no new success gate from rootXY.",
+  "source_constraints": "Old RF15/checkpoints/references/runtime remain frozen. RF16 is independent hypothesis/budget, not restart or unused-budget refill.",
+  "prerequisites": "Remote four CPU phase counterexamples, AST/help, actual16/4096zero-optimizer with phase contract/reward/terminal/normalization/RNG/native contact/probability checks; freeze/publish/three-rootSHA before formal launch.",
+  "execution_error": "Mac system python unittest failed importing torch (not installed); no physics run. Use existing server activated Python for actual CPU tests.",
+  "user_accepted_checkpoint": null
+}

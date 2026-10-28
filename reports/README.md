@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-28 20:58：[RF14两小时门](README_SUPERMIMIC_Q1_RF14_RF15_GAIT_20261028.md)7201.145秒/6469轮验证1/0/0失败，两固定走及抬手均完整；滑移/抬脚部分改善，上肢/相对腕和倾斜/漂移变差，仍暂选原RF11，不称整体改善。原训练按冻结预算继续，RF15仍未GPU预检/训练；阶段5小JSON1128459字节Mac大小SHA通过。[原值](../data/manifests/supermimic_q1_RF14_stage02_20261028.json)。
+
 2026-10-28晚：[RF15步态补偿准备](README_SUPERMIMIC_Q1_RF15_GAIT_PREP_20261028.md)独立代码/首小时物理延长门与9项CPU测试已完成，尚未做GPU预检/训练；待RF14结束择优后执行。RF14累计一小时验证0/1/0失败、固定走后停一次271/320步跌倒，仍选原RF11；原进程继续两小时检查，失败证据保留。[RF14阶段](../data/manifests/supermimic_q1_RF14_stage01_20261028.json)。
 
 2026-10-28 19:48：[RF14底座续训正式启动](README_SUPERMIMIC_Q1_RF14_RF15_GAIT_20261028.md)，冻结4d87269已发布/独立40位远端及13文件三端核验，controller110563/worker110573身份一致、初始三重复物理评测中。累计最多4小时，普通走物理择优后接独立RF15首小时及条件延长；尚无新改善结论。原监督已实际ACTIVE，其他任务保持。[启动](../data/manifests/supermimic_q1_RF14_launch_observed_20261028.json)。

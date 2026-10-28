@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-10-28 16:48：**RF13远端当前UNKNOWN，尚不能结算。** 16:45核18873无监听、25386控制socket消失；一次Windows桥恢复在认证交互时报Broken pipe，未动远端作业/认证文件/旧入口。最后现场仍是16:12:30实训2547.881秒/795轮，不能沿用RUNNING或预计预算推断完成。阶段1/2与展示优先级记录先Mac/Git发布；25386镜像、末次评测、进程退出/GPU释放、六格和54秒视频均待恢复核验。原监督已更新UNKNOWN/ACTIVE每10分钟，其他任务保持。[异常/恢复边界](../data/manifests/supermimic_q1_RF13_connection_unknown_20261028.json)/[RF13](README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md)。
+2026-10-28：**RF13实训与本地交付完成，基本展示仍未稳健达标。** 3500.385426秒/1093轮/107446272转移，train/delivery正常reap0、pipeline COMPLETED、原进程退出/GPU释放；1137来源与12项保存审计通过。固定两普通走均完整3/3并真实前进，上肢约0.159rad收益主要在未训练static075已有；最终固定抬手176/271、271/271、271/271，另两次仍明显漂移，不能称稳定原地展示。42文件28862203字节Mac/服务器大小SHA匹配，初末54秒合集/六格/CSV/PPO诊断及12媒体检查、9图目视齐备。现做Q1发布/三端记录同步，最终监督状态以完成收据为准；不追加、重启或再开训练。[结果](README_SUPERMIMIC_Q1_RF13_RESULTS_20261028.md)/[交付](../data/manifests/supermimic_q1_RF13_local_delivery_20261028.json)。
 
 2026-10-28 16:18，用户最新优先级：**先保证固定普通前走/自然步态与上肢运动的基本展示，精确根轨迹暂列次位。** 检查真实前进/连续换脚、姿态/滑步及抬手幅度/时序/全程稳定，根XY保留诊断，不单因旧根阈值否定展示。唯一[RF13](README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md)源码/内部停止规则冻结，硬<=3600实训秒，不热改、重启或加训。第二门2401.480799秒/748轮：验证0/0/0失败、两普通走三次完整且有真实前进；抬手repeat0为167/271步终止，另两次完整但腿/滑移/振荡恶化，展示尚未稳健达标。旧整组目标0/3、严重退步0/3，原learner继续3500秒最后门。16:12:30同一controller93989/worker93994与start_ticks/boot/命令一致，2547.881秒/795轮/78151680转移，GPU8267MiB/52度、共享12.34GB/OOM0。4小文件1154178字节已Mac大小SHA匹配；1137冻结来源16:02全核未变。[第二门/优先级](../data/manifests/supermimic_q1_RF13_stage02_demo_priority_20261028.json)。监督同任务ACTIVE每10分钟，其他任务保持；最终视频/六格尚待。
 
@@ -44,7 +44,7 @@ Mac根：`/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF11_S
 
 ## 当前入口与来源
 
-仅用户25386容器，`interactive40173`，唯一根`/opt/data/private/ZHY`及data/logs/script/reports。boot`4d859008-4c83-4a6d-814d-cbb9dfe885c9`，GPU`GPU-26028785-9fb9-45af-e614-4cc53af15d08`。当前RF13 controller93989/start_ticks8571724、worker93994/start_ticks8571852，资源及进度按顶部最新记录；每次恢复重新核身份/命令/mtime与实际进度。原RF12已退出，不得用旧PID/旧RUNNING推断当前训练。
+仅用户25386容器，`interactive40173`，唯一根`/opt/data/private/ZHY`及data/logs/script/reports。boot`4d859008-4c83-4a6d-814d-cbb9dfe885c9`，GPU`GPU-26028785-9fb9-45af-e614-4cc53af15d08`。RF13历史controller93989/start_ticks8571724、worker93994/start_ticks8571852均已退出，终后身份与资源见结果收据。原RF12亦已退出，不用旧PID/旧RUNNING推断仍在训练。
 
 连接：`ssh -S /tmp/yuanqi-q1-25386.sock -T -p 18873 -o BatchMode=yes -o ConnectTimeout=8 -o 'HostKeyAlias=[59.77.15.15]:25386' root@127.0.0.1`。保留Windows桥，不读写认证，不探测旧入口或师兄容器。[CS02恢复](README_Q1_CONTAINER_RESTORE_CS02_20261027.md)。
 
@@ -54,7 +54,7 @@ Python`/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/pyt
 
 ## 下一步与跟踪
 
-当前先恢复同一授权桥并核RF13真实终态/既有末次评测，远端UNKNOWN期间不恢复/重启/追加训练。实际训练硬<=3600秒；展示优先固定普通走路与上肢动作的实际观感/幅度和稳定完成，根轨迹单独诊断。保留RF11/静态75%配对指标及全部失败，尤其第二门抬手失稳。取回最终评测/六格/本地54秒视频、记录三端一致并验收后再暂停同一heartbeat。全pipeline冻结plan来源，不激活agent。
+RF13只完成Q1记录发布、三端大小SHA与原监督收尾；量化/媒体验收已完成，失败与旧来源全部保留。当前不启动新训练、追加或重启，不激活agent；训练目标改变须另获用户授权。保留static075/initial和stage01早期证据，不能把更稳的未训练参考混合称新head训练成功。下一方案应针对抬手原地平衡/滑移/残差偏移，根精确轨迹次位，尚未执行新方案。
 
 RF12终态/reap/GPU释放、三重复JSON、六格及本地初末54秒MP4均已核，结果已发布并三端核验；其阶段B奖励/新增583片从未执行，不能宣称已测试。RF12授权已结束，旧暂停记录仅历史，不恢复或重试。
 

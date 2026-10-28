@@ -1,5 +1,9 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-28：[RF13结果/本地交付](README_SUPERMIMIC_Q1_RF13_RESULTS_20261028.md)：3500.385秒训练正常预算结束、pipeline COMPLETED/双guardreap0/进程退出/GPU释放，12保存检查与1137来源、42文件28862203字节大小SHA、12媒体检查和9图目视通过。两固定普通走均完整并真实前进；抬手一次176/271步跌倒、另两次显著漂移，展示未稳健达标，上肢收益主要已有于未训练static075。初末54秒MP4/六格/CSV/PPO图齐备；记录发布/监督收尾见完成收据，不再训练。[原值](../data/manifests/supermimic_q1_RF13_results_20261028.json)/[交付](../data/manifests/supermimic_q1_RF13_local_delivery_20261028.json)。
+
+2026-10-28 17:08：[RF13连接恢复/真实终态](README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md)已核：实训3500.385秒/1093轮，全pipeline COMPLETED、train/delivery正常reap0、原进程退出/GPU释放。验证三次0/30失败、固定两普通走均完整；抬手176/271、271/271、271/271，展示仍未稳健达标，上肢收益主要已有于未训练static075。审计/本地媒体/三端记录收尾中，不追加训练；此前UNKNOWN仅历史。[恢复证据](../data/manifests/supermimic_q1_RF13_connection_restored_20261028.json)。
+
 2026-10-28 16:48：[RF13连接UNKNOWN](README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md)：18873/控制socket消失，一次Windows恢复Broken pipe；没有凭断线重启或据预算推断完成。阶段1/2与普通走/上肢优先级先Mac/Git发布，25386镜像、最终时钟/评测/六格/本地视频和三端验收待恢复；原监督ACTIVE每10分钟保留，其他任务未改。[异常收据](../data/manifests/supermimic_q1_RF13_connection_unknown_20261028.json)。
 
 2026-10-28 16:18：[RF13基本展示优先与第二门](README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md)按用户最新要求先看自然普通走/上肢动作，精确根轨迹保留诊断。2401.481秒三重复验证0/0/0失败，两普通走均完整且实际前进；抬手一次167/271步终止、另两次腿/滑移/振荡恶化，未宣布展示达标。原整组门0/3、严重退步0/3，按原冻结进程/最多3600秒继续最后门，不热改/加训。4小文件1154178字节Mac大小SHA通过，首门与固定失败均保留；[量值/最新优先级](../data/manifests/supermimic_q1_RF13_stage02_demo_priority_20261028.json)。监督同任务ACTIVE每10分钟，其他自动任务保持。

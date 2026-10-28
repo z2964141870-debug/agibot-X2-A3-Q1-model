@@ -1,0 +1,99 @@
+{
+  "status": "USER_REVIEW_REQUIRED",
+  "captured_utc": "2026-10-28T13:53:38.492975+00:00",
+  "user_instruction": "到时候出结果了，不要自己决定，可以先让我看一下具体的数据和仿真视频里面的效果",
+  "scope": {
+    "rf14_continue_existing_frozen_budget": true,
+    "rf14_cumulative_hard_cap_seconds": 14400,
+    "selection_is_provisional_only": true,
+    "user_decides_base_checkpoint": true,
+    "user_decides_rf15_launch": true,
+    "user_decides_all_later_extensions": true,
+    "request_review_after_data_and_local_video_ready": true,
+    "goal_remains_active": true,
+    "other_automations_changed": false
+  },
+  "supervision": {
+    "automation_id": "q1-rf08-4096",
+    "status": "ACTIVE",
+    "interval_minutes": 10,
+    "readback_confirmed": true,
+    "prompt_sha256": "bfb2e5b8012d7b610124f4f9efb856c7eeb789863f792e4945e49a3ad0cba8df",
+    "updated_at_unix_ms": 1793195504961
+  },
+  "rf14": {
+    "trial": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028",
+    "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "code_commit": "4d87269d7ac815cd75a0424dcf7be56ae2c2661d",
+    "processes": {
+      "110563": {
+        "exists": true,
+        "start_ticks": 10173450,
+        "state": "S",
+        "command": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_gait/supervise.py --mode base --runtime /opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --checkpoint /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run/final.pt --video-suite /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/demonstration_suite_V02.json --frozen-plan /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF13_LOWER_RESIDUAL_SOMA300_E4096_MAX01H_20261028/plan.json --expected-boot 4d859008-4c83-4a6d-814d-cbb9dfe885c9 --expected-gpu GPU-26028785-9fb9-45af-e614-4cc53af15d08 --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028 --code-commit 4d87269d7ac815cd75a0424dcf7be56ae2c2661d --controller "
+      },
+      "110573": {
+        "exists": true,
+        "start_ticks": 10173556,
+        "state": "R",
+        "command": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_gait/base.py --runtime /opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --checkpoint /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run/final.pt --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run --code-commit 4d87269d7ac815cd75a0424dcf7be56ae2c2661d "
+      }
+    },
+    "status": "RUNNING",
+    "phase": "updating",
+    "cumulative_training_seconds": 10559.11051344221,
+    "inherited_training_seconds": 3500.2659895760007,
+    "new_training_seconds": 7058.84452386621,
+    "iteration": 9402,
+    "sim_steps": 96808960,
+    "wm_updates": 94020,
+    "actor_updates": 8902,
+    "clock": {
+      "status": "ACTIVE",
+      "accumulated_training_seconds": 10559.11051344221,
+      "inherited_training_seconds": 3500.2659895760007,
+      "new_training_seconds": 7058.84452386621,
+      "active_started_monotonic": 109262.260482145,
+      "absolute_maximum_seconds": 14400,
+      "current_cap_seconds": 14400,
+      "soft_stop_seconds": 14300,
+      "definition": "Synchronized collection, model/actor/critic optimization and update diagnostics; evaluation, initialization, checkpoint and media excluded."
+    },
+    "train_guard_status": "RUNNING",
+    "oom_kill": 0,
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 14847, 51, 26",
+    "compute_processes": "110573, /opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python, 14824",
+    "free_bytes": 1657275838464
+  },
+  "rf15": {
+    "gpu_preflight_started": false,
+    "formal_training_started": false,
+    "automatic_extension_implementation_still_present": true,
+    "direct_launch_prohibited": true,
+    "before_launch": "After user reviews RF14 and explicitly decides the base and RF15 launch, implement and test review wait preserving learner/optimizers/environment/RNG and cumulative budget; align guard/audit/tests before formal launch."
+  },
+  "changes": {
+    "project_policy_and_reports": true,
+    "existing_heartbeat_prompt": true,
+    "frozen_rf14_training_sources_modified": false,
+    "new_optimizer_steps_by_this_action": 0,
+    "subagents_started": 0
+  },
+  "delivery_required_before_user_decision": {
+    "comparison": [
+      "RF11_initial",
+      "stage_01",
+      "stage_02",
+      "stage_03_or_actual_terminal"
+    ],
+    "metrics": [
+      "validation completion and failures",
+      "both fixed walks: displacement, alternating steps, slip, ankle lift, body pose and target change",
+      "fixed raise: amplitude, timing, completion and drift",
+      "upper limb, relative wrist, leg and root diagnostic errors"
+    ],
+    "local_mp4": "Original-speed fixed demonstrations with failure evidence retained; copied to Mac, size/SHA verified, fully decoded and visually inspected.",
+    "root_exact_tracking": "diagnostic; not the sole demonstration acceptance condition"
+  },
+  "publication": "Current commit identity is recorded in Git history. Verify independent origin/Q1 and three-root size/SHA after publishing; this receipt does not assert results or final media are complete."
+}

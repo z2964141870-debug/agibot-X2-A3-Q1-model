@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 04:00最新：[ACTIVITY quick33已03:52:11正常完成](README_Q1_ACTIVITY_BLEND_20261029.md)，1188来源/教师未变、guardreap0、原151473/151488退出/GPU释放/OOM0；38小工件2787735字节Mac/25386大小SHA匹配。activity050075三次验证0失败、固定两走/抬手完整，上肢RMSE约.1947rad对baseline.2963（降约34%）、抬手峰误差降约84%；普通走滑移并未一致改善，原步态继续门0/3。下一独立full330仅baseline/static075/activity050075三重复零optimizer复核稳定性和取舍，尚未启动；不是独立测试/训练晋级或用户采纳，07:00/09:00截止保留。[结果/预登记](../data/manifests/supermimic_q1_activity_blend_results_20261029.json)。
+
 2026-10-29 03:46最新：[ACTIVITY_BLEND quick33](README_Q1_ACTIVITY_BLEND_20261029.md)03:44:16唯一启动，controller151473/start_ticks13030198、worker151488/start_ticks13030363、原boot/GPU；冻结84139550a88a3baefe1c5cf64c624308c8b83214独立远端/10文件317350字节三端SHA通过。03:46:35 static025 repeat1/frame0/0optimizer、GPU723MiB/38度/共享16.36GB/OOM0，尚无效果。原监督已工具ACTIVE每10分钟更新，只监督原作业/不热改旧来源/不恢复训练；07:00探索/09:00交付。[启动收据](../data/manifests/supermimic_q1_activity_blend_launch_20261029.json)。
 
 2026-10-29 03:43最新：[PD quick33已03:38:40完成](README_Q1_PD_SENSITIVITY_20261029.md)，1185来源/教师未变、guardreap0/原两进程退出/GPU释放，74小工件4615555字节Mac/25386 SHA。stiffness150两走滑速相对.645/.812/.771与.598/.759/.535，但足高明显更低、倾斜绝对约多1度/相对增19%至26%，原逐片门0/3，不宣称自然步态/据此训练。下一[按参考活动量调节上肢混合](README_Q1_ACTIVITY_BLEND_20261029.md)已4CPU/远端help通过，5档只用参考速度/heading、无片名规则，原PD不变；尚未物理启动，先冻结/发布/核SHA。07:00/09:00截止、用户采纳null保留。

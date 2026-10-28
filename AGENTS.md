@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-29 03:44:16 ACTIVITY_BLEND quick33唯一启动，根data/supermimic_for_q1/Q1_REFERENCE_ACTIVITY_BLEND_PROBE_20261029；controller151473/start_ticks13030198、worker151488/start_ticks13030363、原boot/GPU，冻结84139550a88a3baefe1c5cf64c624308c8b83214独立远端/10文件317350字节三端SHA。03:46:35 static025 repeat1/frame0/0optimizer、GPU723MiB/38度/共享16.36GB/OOM0，尚无效果；原监督已工具ACTIVE更新。只监督原5档×3次，旧PD已结束不重做，不恢复训练/热改源/agent，07:00/09:00截止、采纳null。入口ACTIVITY_BLEND与launch收据。
+
 - 2026-10-29 03:43 PD quick33已03:38:40正常COMPLETED，1185来源/教师未变/guardreap0/149008与149016退出/GPU释放，74小工件4615555字节Mac/25386大小SHA一致。stiffness150两走滑移可重复下降但足高更低、倾斜约多1度，原逐片门0/3，不宣称自然走路或据此训练。下一独立ACTIVITY_BLEND准备4CPU/远端help通过，原PD/腰/腿目标固定，5档仅参考速度/heading平滑调节手臂，不按片名；尚未启动。07:00探索/09:00交付、用户采纳null，不恢复旧训练/agent，入口PD_SENSITIVITY和ACTIVITY_BLEND。
 
 - 2026-10-29 03:28:39独立PD quick33唯一启动，根data/supermimic_for_q1/Q1_LEG_PD_SENSITIVITY_PROBE_20261029；controller149008/start_ticks12936494、worker149016/start_ticks12936658，原boot/GPU。冻结119e9c8895044d5da43fac1f7e60502df0769cfe独立远端/11文件262227字节三端SHA一致；03:28:55 baseline repeat0/frame0/0optimizer/资源正常/OOM0，尚无效果。原监督已ACTIVE每10分钟更新，只监督原作业，不重复启动/热改源/恢复旧训练/agent；07:00/09:00截止和用户采纳null保留。入口PD_SENSITIVITY及launch收据。

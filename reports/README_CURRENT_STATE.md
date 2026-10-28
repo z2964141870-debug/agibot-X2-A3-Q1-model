@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 03:46最新：[ACTIVITY_BLEND quick33](README_Q1_ACTIVITY_BLEND_20261029.md)03:44:16唯一启动，controller151473/start_ticks13030198、worker151488/start_ticks13030363、原boot/GPU；冻结84139550a88a3baefe1c5cf64c624308c8b83214独立远端/10文件317350字节三端SHA通过。03:46:35 static025 repeat1/frame0/0optimizer、GPU723MiB/38度/共享16.36GB/OOM0，尚无效果。原监督已工具ACTIVE每10分钟更新，只监督原作业/不热改旧来源/不恢复训练；07:00探索/09:00交付。[启动收据](../data/manifests/supermimic_q1_activity_blend_launch_20261029.json)。
+
 2026-10-29 03:43最新：[PD quick33已03:38:40完成](README_Q1_PD_SENSITIVITY_20261029.md)，1185来源/教师未变、guardreap0/原两进程退出/GPU释放，74小工件4615555字节Mac/25386 SHA。stiffness150两走滑速相对.645/.812/.771与.598/.759/.535，但足高明显更低、倾斜绝对约多1度/相对增19%至26%，原逐片门0/3，不宣称自然步态/据此训练。下一[按参考活动量调节上肢混合](README_Q1_ACTIVITY_BLEND_20261029.md)已4CPU/远端help通过，5档只用参考速度/heading、无片名规则，原PD不变；尚未物理启动，先冻结/发布/核SHA。07:00/09:00截止、用户采纳null保留。
 
 2026-10-29 03:29最新：[独立腿部PD quick33](README_Q1_PD_SENSITIVITY_20261029.md)已03:28:39实际启动，controller149008/start_ticks12936494、worker149016/start_ticks12936658，原boot/GPU/完整命令一致。冻结119e9c8895044d5da43fac1f7e60502df0769cfe独立远端/11文件262227字节三端SHA已核；03:28:55 baseline repeat0/frame0/0optimizer、GPU725MiB/31度/共享15.19GB/OOM0，尚无改善结论。唯一6档×3重复×33环境，原来源冻结，不恢复训练/重复启动；监督已工具ACTIVE每10分钟更新，07:00/09:00截止不变。[启动](../data/manifests/supermimic_q1_pd_probe_launch_20261029.json)。

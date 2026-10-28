@@ -1,5 +1,7 @@
 # Q1按参考活动量调节上肢混合
 
+03:44:16唯一quick33已启动，controller151473/start_ticks13030198、worker151488/start_ticks13030363、原boot/GPU；冻结84139550a88a3baefe1c5cf64c624308c8b83214独立远端及10文件317350字节三端逐大小SHA完成。03:46:35 static025 repeat1/frame0、三状态RUNNING/GPU723MiB/38度/共享16.36GB/OOM0，0optimizer，尚无收益结论。只监督原5档对照，不重复启动/热改来源；[实际启动收据](../data/manifests/supermimic_q1_activity_blend_launch_20261029.json)。下文尚未启动为历史准备。
+
 2026-10-29 03:43，北京时间。独立零optimizer准备，4CPU反例/远端CLI help/解析通过，尚未物理启动。RF15、phase、target和PD已结束，不恢复训练或修改其冻结来源。用户本夜授权至09:00，07:00停止新优化/物理探索；实验选择不是用户采纳。
 
 ## 动机和方法

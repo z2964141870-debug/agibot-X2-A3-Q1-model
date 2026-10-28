@@ -26,6 +26,8 @@ Mac中间材料：`/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BON
 
 ## 保存与下一步
 
+准备已发布`4c5f1d9dd57cf84bacac77f670b2f015b76a1bde`并独立核远端，8文件172990字节权威Git/Mac主根/25386逐大小SHA一致；5个中间阅读文件33770字节Mac/服务器大小SHA一致。实际最终评测及5个媒体核验仍未完成，RF15未开始。[发布证据](../data/manifests/supermimic_q1_RF14_review_preparation_published_20261028.json)。
+
 本阶段重要记录按Q1 payload审查/提交/推送、独立40位远端及Mac/25386大小SHA核验；本次提交号由Git历史提供，不预先宣称同步。小收据见[准备核验](../data/manifests/supermimic_q1_RF14_review_preparation_20261028.json)。
 
 继续同一RF14至最终门，核TRAINING_COMPLETED、双guard正常reap0、pipeline COMPLETED、原进程退出/GPU释放与保存来源/优化器审计；复制小工件与视频到Mac并核验，再把数据和视频交给用户。等待其明确底座和RF15决定；不自动推进或扩时，不暂停现有goal/监督，不开agent。

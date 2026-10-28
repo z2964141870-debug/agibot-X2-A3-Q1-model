@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-28研究：[五项简报](research/2026-10-28/README.md)保存四项新阅读与HoloBoxing v2对手协议更正；87请求83成功、9固定文本静态核验，main去重122→134、H001不变。完整历史由main维护，Q1工程状态按本分支最新记录；本次没有训练/仿真或新假设。[检查](README_RESEARCH_CHECK_20261028.md)/[同步回执](../data/manifests/research_watch_sync_20261028.json)。
+
 2026-10-27研究：[五项简报](research/2026-10-27/README.md)已保存；Q1当前MotionLib静态存在末尾补帧复用末帧速度的模式，实际影响未测、未归因跌倒。另记SONIC朝向修复、第三方资产和三篇方法边界；无新增训练/仿真或原创假设。完整历史/去重由main维护，工程以Q1最新状态为准；[检查](README_RESEARCH_CHECK_20261027.md)/[同步回执](../data/manifests/research_watch_sync_20261027.json)。
 
 2026-10-23：[SuperMimic DATA01关键纠正](README_SUPERMIMIC_DATA_20261023.md)：vendor明确selected20源120Hz而本转换按30Hz，20源身份与M02全同，旧R02-R05只支持四倍慢放条件。11:01核身份后仅向自有R05总控721781发SIGTERM，A721791正常退出0/STOPPED_SIGNAL，2002步/32032env-step/750次WM及actor更新；final215996947字节/SHAe3e9be77…独立匹配，父Z/子消失，无B及最终评测。总控原生FAILED/InterruptedError保留，不恢复旧实验、不改冻结源码/M02。20A3、90历史拟合、PHUMA两机器人各73076同名片段、FGP206/197完整会话的用途与资格见报告；原速须独立新数据/基线，当前不启动新训练，LOCAL_ONLY。恢复先读DATA01及supermimic_a3_R05_timebase_stop_DATA01_20261023.json。

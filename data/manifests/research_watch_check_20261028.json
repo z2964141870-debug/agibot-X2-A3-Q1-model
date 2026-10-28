@@ -1,0 +1,1508 @@
+{
+  "schema_version": 2,
+  "automation_id": "yuanqi",
+  "date": "2026-10-28",
+  "timezone": "Asia/Shanghai",
+  "trigger_at": "2026-10-28T00:59:08.805Z",
+  "checked_at": "2026-10-28T09:26:47+08:00",
+  "previous_successful_check_at": "2026-10-27T09:24:30+08:00",
+  "outcome": "FOUR_METHOD_READINGS_AND_HOLOBOXING_PROTOCOL_CORRECTION",
+  "notification_decision": "NOTIFY",
+  "requests": 87,
+  "successful_requests": 83,
+  "request_count_scope": "Durable curl source-cache requests; web-tool duplicate reading excluded",
+  "source_checks": [
+    {
+      "name": "csRO.xml",
+      "url": "https://rss.arxiv.org/rss/cs.RO",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:24.272856+00:00",
+      "path": "data/research/2026-10-28/sources/csRO.xml",
+      "bytes": 468144,
+      "sha256": "56c7caf10c8b608e08d64bec1f32fcc52b9a85bdd450e89bb053c63af46135d5"
+    },
+    {
+      "name": "csRO_new.html",
+      "url": "https://arxiv.org/list/cs.RO/new?show=2000",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:24.276196+00:00",
+      "path": "data/research/2026-10-28/sources/csRO_new.html",
+      "bytes": 720322,
+      "sha256": "d61a57003c6dab90e2561b10a8887e9f1d2c11da20b67384b2b9c127005f68fd"
+    },
+    {
+      "name": "csRO_recent.html",
+      "url": "https://arxiv.org/list/cs.RO/recent?show=2000",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:24.319568+00:00",
+      "path": "data/research/2026-10-28/sources/csRO_recent.html",
+      "bytes": 759847,
+      "sha256": "6f93418125ad3290896a71b5702f3bccd2f46f4d8055b0bacc844c78e08c2fe9"
+    },
+    {
+      "name": "csLG.xml",
+      "url": "https://rss.arxiv.org/rss/cs.LG",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:24.308222+00:00",
+      "path": "data/research/2026-10-28/sources/csLG.xml",
+      "bytes": 682575,
+      "sha256": "8b5127631bd0b21460c2de7b6d11620875df83d2291dfcf6bbe0e40fa2925b8f"
+    },
+    {
+      "name": "csLG_new.html",
+      "url": "https://arxiv.org/list/cs.LG/new?show=2000",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:24.597235+00:00",
+      "path": "data/research/2026-10-28/sources/csLG_new.html",
+      "bytes": 2198840,
+      "sha256": "389ca7e367d01e9457f42607f31e56254179860d0d78a27937d6f8e3c873e5c6"
+    },
+    {
+      "name": "csLG_recent.html",
+      "url": "https://arxiv.org/list/cs.LG/recent?show=2000",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:24.492765+00:00",
+      "path": "data/research/2026-10-28/sources/csLG_recent.html",
+      "bytes": 2104867,
+      "sha256": "f23f8a58bed898fec10fd41881abd81afb806ed5811e43fb7c95f174c80ef419"
+    },
+    {
+      "name": "csCV.xml",
+      "url": "https://rss.arxiv.org/rss/cs.CV",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:24.887757+00:00",
+      "path": "data/research/2026-10-28/sources/csCV.xml",
+      "bytes": 1055448,
+      "sha256": "7a970dc50dc5eab73ccf787a3e73db80c191fd5d5a20b0d4de6e1bcb132988a5"
+    },
+    {
+      "name": "csCV_new.html",
+      "url": "https://arxiv.org/list/cs.CV/new?show=2000",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:24.938463+00:00",
+      "path": "data/research/2026-10-28/sources/csCV_new.html",
+      "bytes": 1620357,
+      "sha256": "8e1f3927d89b34024234173d12a148ae9184674edd228788397c03fda3631c07"
+    },
+    {
+      "name": "csCV_recent.html",
+      "url": "https://arxiv.org/list/cs.CV/recent?show=2000",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:28.979943+00:00",
+      "path": "data/research/2026-10-28/sources/csCV_recent.html",
+      "bytes": 1476435,
+      "sha256": "83b92c4d2d1c00db4c79200406569bbb5e15418cafc0a558ad5c00b260385ab7"
+    },
+    {
+      "name": "sonic_commits.json",
+      "url": "https://api.github.com/repos/NVlabs/GR00T-WholeBodyControl/commits?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:24.973134+00:00",
+      "path": "data/research/2026-10-28/sources/sonic_commits.json",
+      "bytes": 15350,
+      "sha256": "bf026b018163d35857df3490e3b7f0462759c297d750b42149d7aefaccb2fdb9"
+    },
+    {
+      "name": "sonic_a3_commits.json",
+      "url": "https://api.github.com/repos/AgibotTech/sonic_for_a3/commits?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:25.006687+00:00",
+      "path": "data/research/2026-10-28/sources/sonic_a3_commits.json",
+      "bytes": 12111,
+      "sha256": "c34201c909df4b525fd86c04aeed4d9ffd7360b9a055007529c7ed812bd382f6"
+    },
+    {
+      "name": "a3_model_commits.json",
+      "url": "https://api.github.com/repos/AgibotTech/A3-A3U-robot-model/commits?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:25.209337+00:00",
+      "path": "data/research/2026-10-28/sources/a3_model_commits.json",
+      "bytes": 12366,
+      "sha256": "d64b1813711a5c795695ca60ef2ae30f1f03dd288f890c827447b9b66224092f"
+    },
+    {
+      "name": "predactor_commits.json",
+      "url": "https://api.github.com/repos/MasterYip/PredActor/commits?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:25.448596+00:00",
+      "path": "data/research/2026-10-28/sources/predactor_commits.json",
+      "bytes": 12136,
+      "sha256": "7b9bdcc27a309dc7fefe9f44e24de0b662ff5601d0d58b2595c47cee58f2ab3b"
+    },
+    {
+      "name": "soma_commits.json",
+      "url": "https://api.github.com/repos/NVIDIA/soma-retargeter/commits?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:25.573744+00:00",
+      "path": "data/research/2026-10-28/sources/soma_commits.json",
+      "bytes": 15253,
+      "sha256": "fb1084bb58a3ebba4c105d45c16b6399d4835abfeff03512feaf7b2229890c76"
+    },
+    {
+      "name": "trace_commits.json",
+      "url": "https://api.github.com/repos/QinnyuLan/SONIC_unitree_h2/commits?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:25.599243+00:00",
+      "path": "data/research/2026-10-28/sources/trace_commits.json",
+      "bytes": 12158,
+      "sha256": "dcee26e25897ca4d5f4ef8658f89ccb4c25370d35c2ca67ea338f9f7e5d364d4"
+    },
+    {
+      "name": "supermimic_vibed_commits.json",
+      "url": "https://api.github.com/repos/zita-ch/supermimic_vibed/commits?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:25.606636+00:00",
+      "path": "data/research/2026-10-28/sources/supermimic_vibed_commits.json",
+      "bytes": 15097,
+      "sha256": "f0de17f000c30e58aa158910a49151ae13474588ea69f5e5e7c70c05be8e889c"
+    },
+    {
+      "name": "supermimic_reproduced_commits.json",
+      "url": "https://api.github.com/repos/CuboiLeo/SuperMimic-Reproduced/commits?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:25.756755+00:00",
+      "path": "data/research/2026-10-28/sources/supermimic_reproduced_commits.json",
+      "bytes": 12421,
+      "sha256": "600d189536bd02320f9b13552aed0b8294277348f167aa2014c65b6de2419fac"
+    },
+    {
+      "name": "smr_commits.json",
+      "url": "https://api.github.com/repos/LogosRoboticsGroup/SMR/commits?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:26.338547+00:00",
+      "path": "data/research/2026-10-28/sources/smr_commits.json",
+      "bytes": 12163,
+      "sha256": "49e8f9dde006d7f2e83496a62aa92b6224264b5208f16a7dd24943668d664348"
+    },
+    {
+      "name": "uq_commits.json",
+      "url": "https://api.github.com/repos/post-hoc-vla-uncertainty/post-hoc-vla-uncertainty/commits?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:26.113762+00:00",
+      "path": "data/research/2026-10-28/sources/uq_commits.json",
+      "bytes": 3789,
+      "sha256": "3d3475718b0448f77e22e5661487b944d7b7efc017a08ced85c6941e6454428d"
+    },
+    {
+      "name": "isaaclab_releases.json",
+      "url": "https://api.github.com/repos/isaac-sim/IsaacLab/releases?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:26.327692+00:00",
+      "path": "data/research/2026-10-28/sources/isaaclab_releases.json",
+      "bytes": 81740,
+      "sha256": "0ba6400b1ca35f9eee1418c65e7bf1040aecdb5133abd3392339dfc5fea9352c"
+    },
+    {
+      "name": "rsl_rl_releases.json",
+      "url": "https://api.github.com/repos/leggedrobotics/rsl_rl/releases?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:26.330614+00:00",
+      "path": "data/research/2026-10-28/sources/rsl_rl_releases.json",
+      "bytes": 9428,
+      "sha256": "d3c1f675adba353b982dfaf3b4031e179855d28857ed8367124c45e507dbb3a3"
+    },
+    {
+      "name": "c_gmt_project.html",
+      "url": "https://venki1899.github.io/c-gmt/",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:26.373743+00:00",
+      "path": "data/research/2026-10-28/sources/c_gmt_project.html",
+      "bytes": 25361,
+      "sha256": "b71efb354921455e82bf0e62f028507d8de6fda2f56034be3c2141d5b4f0e90c"
+    },
+    {
+      "name": "trace_project.html",
+      "url": "https://bfm-trace.github.io/",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:27.084598+00:00",
+      "path": "data/research/2026-10-28/sources/trace_project.html",
+      "bytes": 22822,
+      "sha256": "1c45205801946df039c4348ddb6f4d87fefcad0b2883918f9fa4d56a9be18d99"
+    },
+    {
+      "name": "bejepa_project.html",
+      "url": "https://ylyem9x.github.io/BeJEPA-project/",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:27.052166+00:00",
+      "path": "data/research/2026-10-28/sources/bejepa_project.html",
+      "bytes": 52791,
+      "sha256": "cb9f7c3e3a1830664421960b65c0951b88023383359f5052c59451e64a7b8dae"
+    },
+    {
+      "name": "swap_project.html",
+      "url": "https://iscoyizj.github.io/SWAP-steerable-humanoid-oa-website/",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:26.918564+00:00",
+      "path": "data/research/2026-10-28/sources/swap_project.html",
+      "bytes": 5194,
+      "sha256": "6b0f6e743b1e712a002670f50d499b8591cfe2ebbf5d80fcb6e31bc143ef98c4"
+    },
+    {
+      "name": "frdv_project.html",
+      "url": "https://daroslab.github.io/frdv/",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:26.935935+00:00",
+      "path": "data/research/2026-10-28/sources/frdv_project.html",
+      "bytes": 21953,
+      "sha256": "1c71fc529f5837fc6671291310b38f59c38136c1cfed68edb1e49574615eba60"
+    },
+    {
+      "name": "multiview_project.html",
+      "url": "https://learnsyslab.github.io/multiview_latent_action_pretraining/",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:26.943582+00:00",
+      "path": "data/research/2026-10-28/sources/multiview_project.html",
+      "bytes": 3411,
+      "sha256": "0d04215a67d14e16ecd03905ed9d9d5361a8484fcc1bad65479ab3832ce8e822"
+    },
+    {
+      "name": "pointhand_project.html",
+      "url": "https://omron-sinicx.github.io/point-hand/",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:27.501373+00:00",
+      "path": "data/research/2026-10-28/sources/pointhand_project.html",
+      "bytes": 24864,
+      "sha256": "c210e9b26d6abb6a36aaa79eef79cfdaf50e9a45d4306a61072e027fef9a77e3"
+    },
+    {
+      "name": "supermimic_project.html",
+      "url": "https://supermimic.github.io/",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:28.008850+00:00",
+      "path": "data/research/2026-10-28/sources/supermimic_project.html",
+      "bytes": 39930,
+      "sha256": "12ef8489aedd405b2fc7f81f6aabbe0825cf3907a91e49ddd729db0300590f5b"
+    },
+    {
+      "name": "smr_project.html",
+      "url": "https://logosroboticsgroup.github.io/SMR/",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:27.566940+00:00",
+      "path": "data/research/2026-10-28/sources/smr_project.html",
+      "bytes": 725,
+      "sha256": "458ac92d185396a714567c9f0ccb0228626c551152aa23343d89c37813cce86e"
+    },
+    {
+      "name": "predactor_abs.html",
+      "url": "https://arxiv.org/abs/2609.24840",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:27.381246+00:00",
+      "path": "data/research/2026-10-28/sources/predactor_abs.html",
+      "bytes": 45971,
+      "sha256": "bc4fbe8b1ff5bf07393535e0e7d96307854024fd8997dd31e75db2f088d77d9c"
+    },
+    {
+      "name": "mpbrs_abs.html",
+      "url": "https://arxiv.org/abs/2610.30334",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:27.405168+00:00",
+      "path": "data/research/2026-10-28/sources/mpbrs_abs.html",
+      "bytes": 40326,
+      "sha256": "cce40d5ec878857b303a6b0d66a87f7b24657b2b84eead6907e0ccc443330812"
+    },
+    {
+      "name": "physible_abs.html",
+      "url": "https://arxiv.org/abs/2610.30500",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:27.694062+00:00",
+      "path": "data/research/2026-10-28/sources/physible_abs.html",
+      "bytes": 42217,
+      "sha256": "f53acae6f04f07789bb354561a7d33d323a8769aa5c4d48519954735ba050969"
+    },
+    {
+      "name": "str_abs.html",
+      "url": "https://arxiv.org/abs/2610.30540",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:27.713385+00:00",
+      "path": "data/research/2026-10-28/sources/str_abs.html",
+      "bytes": 42902,
+      "sha256": "9219abaa836c27015e3cabf5b7d4528e7fd80689813190624d5a2cf3dc2b1127"
+    },
+    {
+      "name": "diffdreamer_abs.html",
+      "url": "https://arxiv.org/abs/2610.31617",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:27.839113+00:00",
+      "path": "data/research/2026-10-28/sources/diffdreamer_abs.html",
+      "bytes": 42438,
+      "sha256": "773792a11947592b53644ee6a759362d016cdb3c575adba9b3bd189d6099bb33"
+    },
+    {
+      "name": "calfree_abs.html",
+      "url": "https://arxiv.org/abs/2610.31156",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:27.910498+00:00",
+      "path": "data/research/2026-10-28/sources/calfree_abs.html",
+      "bytes": 42558,
+      "sha256": "9d37289ef815fbe2f5c5d0b7b11b73f7e38e574162600c061ec052e979a103e9"
+    },
+    {
+      "name": "contacts_abs.html",
+      "url": "https://arxiv.org/abs/2610.31608",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:28.003797+00:00",
+      "path": "data/research/2026-10-28/sources/contacts_abs.html",
+      "bytes": 42629,
+      "sha256": "aeec6e33b7a3983c9a4d0282d8c2762efbb42b4e4883b18f8c646d580b9e3ba1"
+    },
+    {
+      "name": "wholebodymem_abs.html",
+      "url": "https://arxiv.org/abs/2610.31166",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:28.016659+00:00",
+      "path": "data/research/2026-10-28/sources/wholebodymem_abs.html",
+      "bytes": 40769,
+      "sha256": "4c1007e9b91054fc0b53729565dd0a99147c72c7f5b931013c72a5dfee034778"
+    },
+    {
+      "name": "locomanilab_abs.html",
+      "url": "https://arxiv.org/abs/2610.30876",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:28.151137+00:00",
+      "path": "data/research/2026-10-28/sources/locomanilab_abs.html",
+      "bytes": 42664,
+      "sha256": "fd0623b5faa4b8daf69bb4aee8ddcfc6f3f788f6137ea2493fd5fd5b3dc7637f"
+    },
+    {
+      "name": "mpbrs_commits.json",
+      "url": "https://api.github.com/repos/aralab-unr/MPBRS/commits?per_page=1",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:28.638151+00:00",
+      "path": "data/research/2026-10-28/sources/mpbrs_commits.json",
+      "bytes": 5197,
+      "sha256": "4e913d113666dd202a074b599c3d3b0a3fcb6b86d31d65fdafc5f00f90d9d7db"
+    },
+    {
+      "name": "smr_abs.html",
+      "url": "https://arxiv.org/abs/2610.29169",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:28.340283+00:00",
+      "path": "data/research/2026-10-28/sources/smr_abs.html",
+      "bytes": 42026,
+      "sha256": "897bb20c9a444cdf733c0c953d9a3ea810afe25ed9d98460e3a534e1ad529f8f"
+    },
+    {
+      "name": "smr_canonical_project.html",
+      "url": "https://logosintelligencelab.github.io/SMR/",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:28.609765+00:00",
+      "path": "data/research/2026-10-28/sources/smr_canonical_project.html",
+      "bytes": 34066,
+      "sha256": "2584e4779fbddda74d740dce140bc779f417e0cf659fac6445148c0744539920"
+    },
+    {
+      "name": "delay_abs.html",
+      "url": "https://arxiv.org/abs/2610.32277",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:28.326287+00:00",
+      "path": "data/research/2026-10-28/sources/delay_abs.html",
+      "bytes": 41656,
+      "sha256": "314cbfd5a30b2ea88b587013801dd6add9021f1d38b7572c02ea94ba27382743"
+    },
+    {
+      "name": "holoboxing_abs.html",
+      "url": "https://arxiv.org/abs/2610.32909",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:28.462519+00:00",
+      "path": "data/research/2026-10-28/sources/holoboxing_abs.html",
+      "bytes": 40938,
+      "sha256": "11f12b83c7c12c70f053c68c4b9147ee5d12eebfe873b9d00f03e666803b3781"
+    },
+    {
+      "name": "vith_abs.html",
+      "url": "https://arxiv.org/abs/2610.32966",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:28.635821+00:00",
+      "path": "data/research/2026-10-28/sources/vith_abs.html",
+      "bytes": 41980,
+      "sha256": "b4cdabe3d488b10bc802e75c35e234cb2a98f4a7ce364cc9091e9de732fe6e7b"
+    },
+    {
+      "name": "multistep_abs.html",
+      "url": "https://arxiv.org/abs/2610.32887",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:28.654538+00:00",
+      "path": "data/research/2026-10-28/sources/multistep_abs.html",
+      "bytes": 42214,
+      "sha256": "30379315ab2ad1edb26b8e9234897b184a5ad705844d46e0cfe92874d7b4f411"
+    },
+    {
+      "name": "cocarry_abs.html",
+      "url": "https://arxiv.org/abs/2610.32460",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:28.799684+00:00",
+      "path": "data/research/2026-10-28/sources/cocarry_abs.html",
+      "bytes": 42871,
+      "sha256": "8da364ea40134d1113f0b4ab324a2abc4868e28a2f36702bfd4b731bae52eb09"
+    },
+    {
+      "name": "vith_project.html",
+      "url": "https://awfuact.github.io/vit-h/",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:29.670879+00:00",
+      "path": "data/research/2026-10-28/sources/vith_project.html",
+      "bytes": 159268,
+      "sha256": "af46f0b7f1efee5d0e147eed958e40e828bcb8d1a7ec95e8f069bb10c0f13cb4"
+    },
+    {
+      "name": "holomotion_commits.json",
+      "url": "https://api.github.com/repos/HorizonRobotics/HoloMotion/commits?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:29.181381+00:00",
+      "path": "data/research/2026-10-28/sources/holomotion_commits.json",
+      "bytes": 11767,
+      "sha256": "3b90041047949c84af099b1b993d1a6fef1aa772ca3a7ff39c2b485a2d464de4"
+    },
+    {
+      "name": "vith_commits.json",
+      "url": "https://api.github.com/repos/mileret/ViT-H-release/commits?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:29.254884+00:00",
+      "path": "data/research/2026-10-28/sources/vith_commits.json",
+      "bytes": 12424,
+      "sha256": "000a476055f5840d2c82e87dfd544d136b7e4efb9d513cfb700336b0de1c10ef"
+    },
+    {
+      "name": "morphmimic_commits.json",
+      "url": "https://api.github.com/repos/lzyang2000/morphmimic/commits?per_page=3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:05:29.248946+00:00",
+      "path": "data/research/2026-10-28/sources/morphmimic_commits.json",
+      "bytes": 12855,
+      "sha256": "85e6fcf9873fe01e759d6f24251df1b2342053fa5bc1750eeb2aa9651144c76d"
+    },
+    {
+      "name": "humanoidndm_abs.html",
+      "url": "https://arxiv.org/abs/2610.34126",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:09:27.698761+00:00",
+      "path": "data/research/2026-10-28/sources/humanoidndm_abs.html",
+      "bytes": 42271,
+      "sha256": "3f34ea89cb850742ba9707ed7a382e2e61674d7e4e959a1c2b9c252d23a5a0bd"
+    },
+    {
+      "name": "humanoidndm_v1.html",
+      "url": "https://arxiv.org/html/2610.34126v1",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:09:31.890292+00:00",
+      "path": "data/research/2026-10-28/sources/humanoidndm_v1.html",
+      "bytes": 532728,
+      "sha256": "f658be9b9c4ff4118acbe58f18ba8c474d495d2aebf4b010083b4628e4352fb3"
+    },
+    {
+      "name": "mimicall_abs.html",
+      "url": "https://arxiv.org/abs/2610.33508",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:09:27.706652+00:00",
+      "path": "data/research/2026-10-28/sources/mimicall_abs.html",
+      "bytes": 42006,
+      "sha256": "317d4c393a3dfb5529dad2074cbcabf4f9e2e4d5d39147b02544750c7f2fda15"
+    },
+    {
+      "name": "mimicall_v1.html",
+      "url": "https://arxiv.org/html/2610.33508v1",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:09:27.864903+00:00",
+      "path": "data/research/2026-10-28/sources/mimicall_v1.html",
+      "bytes": 306165,
+      "sha256": "52cc310343ec4ea853971bea62a6f1efc879b2c9e6ec5f8da3177460e9d40e97"
+    },
+    {
+      "name": "optta_abs.html",
+      "url": "https://arxiv.org/abs/2610.35636",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:09:27.718735+00:00",
+      "path": "data/research/2026-10-28/sources/optta_abs.html",
+      "bytes": 43766,
+      "sha256": "c0590646541232e8d12feb1e9a260ffbe8bbf7c0f5db1d4e0c07c485923d6295"
+    },
+    {
+      "name": "optta_v1.html",
+      "url": "https://arxiv.org/html/2610.35636v1",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:09:27.915601+00:00",
+      "path": "data/research/2026-10-28/sources/optta_v1.html",
+      "bytes": 540296,
+      "sha256": "e7e4335f2910233647247af9062568bd12fa036f37d2c0e53542368014ce64cf"
+    },
+    {
+      "name": "cats_abs.html",
+      "url": "https://arxiv.org/abs/2610.07910",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:09:28.011559+00:00",
+      "path": "data/research/2026-10-28/sources/cats_abs.html",
+      "bytes": 42912,
+      "sha256": "c69fa01f80dd481f7ff91a55eb6eeb9719a548513f0d3c34c3baf602e3950512"
+    },
+    {
+      "name": "cats_v2.html",
+      "url": "https://arxiv.org/html/2610.07910v2",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:09:32.202990+00:00",
+      "path": "data/research/2026-10-28/sources/cats_v2.html",
+      "bytes": 430092,
+      "sha256": "e34ce341a1d6998070e31245acaeb82a66fc4824efdcd2453cab761f7f1a78be"
+    },
+    {
+      "name": "motio_abs.html",
+      "url": "https://arxiv.org/abs/2610.33446",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:09:28.061001+00:00",
+      "path": "data/research/2026-10-28/sources/motio_abs.html",
+      "bytes": 40531,
+      "sha256": "e6f87b8711f29f90433bf777d6a82e02e3ae99a838f0609834b31bd1ce7f7d8a"
+    },
+    {
+      "name": "force_reactive_abs.html",
+      "url": "https://arxiv.org/abs/2610.35862",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:09:28.176146+00:00",
+      "path": "data/research/2026-10-28/sources/force_reactive_abs.html",
+      "bytes": 42429,
+      "sha256": "79392dbe1a68e86801a1309283ba042ce2b8d1c0f588a4ce589bf95e789a6222"
+    },
+    {
+      "name": "shooting_contact_abs.html",
+      "url": "https://arxiv.org/abs/2608.03116",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:09:28.225100+00:00",
+      "path": "data/research/2026-10-28/sources/shooting_contact_abs.html",
+      "bytes": 41770,
+      "sha256": "53506c8eee291fe68c57da017722edc30882dd6b67b56bd87c8efafa2c8ec243"
+    },
+    {
+      "name": "xwbc_abs.html",
+      "url": "https://arxiv.org/abs/2609.15213",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:09:28.341997+00:00",
+      "path": "data/research/2026-10-28/sources/xwbc_abs.html",
+      "bytes": 40728,
+      "sha256": "21c974e06b649c22f7b6700a70b09cb6e4b9f29b54218ae2d9315c2382113401"
+    },
+    {
+      "name": "holoboxing_v2.html",
+      "url": "https://arxiv.org/html/2610.32909v2",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:09:28.485297+00:00",
+      "path": "data/research/2026-10-28/sources/holoboxing_v2.html",
+      "bytes": 228117,
+      "sha256": "9a7c06499eefadae3c64dd9175f40a2a70986eb9aa4834a009134309a366259e"
+    },
+    {
+      "name": "locomanilab_v3.html",
+      "url": "https://arxiv.org/html/2610.30876v3",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:09:28.642462+00:00",
+      "path": "data/research/2026-10-28/sources/locomanilab_v3.html",
+      "bytes": 327002,
+      "sha256": "ae622c1f02120422fdc83e85f3894293fea138e1b72b7f86a39930ebc384fe3c"
+    },
+    {
+      "name": "humanoidndm_project.html",
+      "url": "https://pku-epic.github.io/HumanoidNDM",
+      "http_status": "404",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:12:46.763983+00:00",
+      "path": "data/research/2026-10-28/sources/humanoidndm_project.html",
+      "bytes": 9379,
+      "sha256": "b620507312c5e97566a3c6cfaf99144fefc18a0da7d941401dfa0f5f58fb0368"
+    },
+    {
+      "name": "cats_project.html",
+      "url": "https://dmach1ne.github.io/CATS/",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:12:46.477764+00:00",
+      "path": "data/research/2026-10-28/sources/cats_project.html",
+      "bytes": 21921,
+      "sha256": "d2ec45858e8d37436fd562f19778c59d5cde106a5cf43b6f367d0a3863cdb4a3"
+    },
+    {
+      "name": "optta_head.json",
+      "url": "https://api.github.com/repos/akshaymete/optta/commits?per_page=1",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:12:46.496672+00:00",
+      "path": "data/research/2026-10-28/sources/optta_head.json",
+      "bytes": 3681,
+      "sha256": "f813a9fa7c443a1ef6d53a30898165f98aa0447ffaad3109defd077f282b195e"
+    },
+    {
+      "name": "optta_metadata.json",
+      "url": "https://api.github.com/repos/akshaymete/optta",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:12:46.451824+00:00",
+      "path": "data/research/2026-10-28/sources/optta_metadata.json",
+      "bytes": 5650,
+      "sha256": "b8db9a03c3dea398df4922b89e75c85d71d35eb3a6042862b6b3ef0282f810e2"
+    },
+    {
+      "name": "holoboxing_v1.html",
+      "url": "https://arxiv.org/html/2610.32909v1",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:12:46.350757+00:00",
+      "path": "data/research/2026-10-28/sources/holoboxing_v1.html",
+      "bytes": 230725,
+      "sha256": "37c238f7204a99e6cba85ca326d90d7d63bd6911ad2577b9b97e01992689dc34"
+    },
+    {
+      "name": "locomanilab_v2.html",
+      "url": "https://arxiv.org/html/2610.30876v2",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:12:46.379731+00:00",
+      "path": "data/research/2026-10-28/sources/locomanilab_v2.html",
+      "bytes": 326848,
+      "sha256": "ac6479f2561339bd80bc2df8c3b50fa872eb218c64d053f688b5cbb7976ea4ce"
+    },
+    {
+      "name": "cats_head.json",
+      "url": "https://api.github.com/repos/dmach1ne/CATS/commits?per_page=1",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:14:11.444162+00:00",
+      "path": "data/research/2026-10-28/sources/cats_head.json",
+      "bytes": 3888,
+      "sha256": "0dda7f1dd2259e31ba6ce42cf7340d1d38ee35e7c742e5f063464777c3e93357"
+    },
+    {
+      "name": "cats_metadata.json",
+      "url": "https://api.github.com/repos/dmach1ne/CATS",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:14:11.173892+00:00",
+      "path": "data/research/2026-10-28/sources/cats_metadata.json",
+      "bytes": 5409,
+      "sha256": "1181403822df8588987580e01e401483083d09b06eb9d9d1d788334ef42f72d7"
+    },
+    {
+      "name": "optta_tree.json",
+      "url": "https://api.github.com/repos/akshaymete/optta/git/trees/6b0ba9239359133f8c567d6f040ea4faceac961b?recursive=1",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:14:11.452513+00:00",
+      "path": "data/research/2026-10-28/sources/optta_tree.json",
+      "bytes": 309951,
+      "sha256": "85748f06c9aa5f325a7134b8808d26e92e843b47b7882c01fbfa8ec095c8dbc8"
+    },
+    {
+      "name": "optta_readme.txt",
+      "url": "https://raw.githubusercontent.com/akshaymete/optta/6b0ba9239359133f8c567d6f040ea4faceac961b/README.md",
+      "http_status": "000",
+      "exit_code": 35,
+      "fetched_at_utc": "2026-10-28T01:14:10.735903+00:00",
+      "path": "data/research/2026-10-28/sources/optta_readme.txt",
+      "bytes": 0,
+      "sha256": null,
+      "error": "curl: (35) Recv failure: Connection reset by peer\n"
+    },
+    {
+      "name": "optta_license.txt",
+      "url": "https://raw.githubusercontent.com/akshaymete/optta/6b0ba9239359133f8c567d6f040ea4faceac961b/LICENSE",
+      "http_status": "000",
+      "exit_code": 35,
+      "fetched_at_utc": "2026-10-28T01:14:10.746412+00:00",
+      "path": "data/research/2026-10-28/sources/optta_license.txt",
+      "bytes": 0,
+      "sha256": null,
+      "error": "curl: (35) Recv failure: Connection reset by peer\n"
+    },
+    {
+      "name": "humanoidndm_project_slash.html",
+      "url": "https://pku-epic.github.io/HumanoidNDM/",
+      "http_status": "404",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:14:11.439600+00:00",
+      "path": "data/research/2026-10-28/sources/humanoidndm_project_slash.html",
+      "bytes": 9379,
+      "sha256": "b620507312c5e97566a3c6cfaf99144fefc18a0da7d941401dfa0f5f58fb0368"
+    },
+    {
+      "name": "cats_tree.json",
+      "url": "https://api.github.com/repos/dmach1ne/CATS/git/trees/4f58fa4d4c714008f6d05580430c99c3256f0783?recursive=1",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:15:33.329834+00:00",
+      "path": "data/research/2026-10-28/sources/cats_tree.json",
+      "bytes": 99204,
+      "sha256": "cf78e3acd07eb5c09f5c21e14897c7b6fc148fee20eacd6161ef11d9739bddae"
+    },
+    {
+      "name": "cats_readme_content.json",
+      "url": "https://api.github.com/repos/dmach1ne/CATS/contents/README.md?ref=4f58fa4d4c714008f6d05580430c99c3256f0783",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:15:33.046143+00:00",
+      "path": "data/research/2026-10-28/sources/cats_readme_content.json",
+      "bytes": 7094,
+      "sha256": "6878e4067d3406f3e8a36a394773c7cfd0cf3089367da1ccda839cd995ceabc6"
+    },
+    {
+      "name": "optta_readme_content.json",
+      "url": "https://api.github.com/repos/akshaymete/optta/contents/README.md?ref=6b0ba9239359133f8c567d6f040ea4faceac961b",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:15:32.998249+00:00",
+      "path": "data/research/2026-10-28/sources/optta_readme_content.json",
+      "bytes": 5011,
+      "sha256": "3ce874f7f944c2f9d14f4057a55db9808ed7e7c8e5035958add8a755e34619ed"
+    },
+    {
+      "name": "optta_license_content.json",
+      "url": "https://api.github.com/repos/akshaymete/optta/contents/LICENSE?ref=6b0ba9239359133f8c567d6f040ea4faceac961b",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:15:32.992487+00:00",
+      "path": "data/research/2026-10-28/sources/optta_license_content.json",
+      "bytes": 2463,
+      "sha256": "342402d847baf3458a84f4ae58378815deaf6077aab8e15e4c094b49a6595cc6"
+    },
+    {
+      "name": "optta_objective_content.json",
+      "url": "https://api.github.com/repos/akshaymete/optta/contents/lewm/code/lewm_optta/objective.py?ref=6b0ba9239359133f8c567d6f040ea4faceac961b",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:15:33.014078+00:00",
+      "path": "data/research/2026-10-28/sources/optta_objective_content.json",
+      "bytes": 8200,
+      "sha256": "3cea7fc507a2fcd7f56ea37b9234b34f6c861fbe510b3d5cadb2b294cfa437b2"
+    },
+    {
+      "name": "optta_adapter_content.json",
+      "url": "https://api.github.com/repos/akshaymete/optta/contents/lewm/code/lewm_optta/adapter.py?ref=6b0ba9239359133f8c567d6f040ea4faceac961b",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:15:33.059772+00:00",
+      "path": "data/research/2026-10-28/sources/optta_adapter_content.json",
+      "bytes": 20971,
+      "sha256": "6d7b333ae8375352284ce4c08843e97b468c92f38c775d9a49d80badbb32823c"
+    },
+    {
+      "name": "optta_config_content.json",
+      "url": "https://api.github.com/repos/akshaymete/optta/contents/lewm/code/lewm_optta/config.yaml?ref=6b0ba9239359133f8c567d6f040ea4faceac961b",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:15:33.524711+00:00",
+      "path": "data/research/2026-10-28/sources/optta_config_content.json",
+      "bytes": 5805,
+      "sha256": "b23c0c7180f2f82e301c5f3c91f3df26d8a37c99dc777cde8db7695d82f63d89"
+    },
+    {
+      "name": "cats_ppo_content.json",
+      "url": "https://api.github.com/repos/dmach1ne/CATS/contents/benchmark/ppo/models/cats_ppo.py?ref=4f58fa4d4c714008f6d05580430c99c3256f0783",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:17:09.871994+00:00",
+      "path": "data/research/2026-10-28/sources/cats_ppo_content.json",
+      "bytes": 12926,
+      "sha256": "9cae3d3c278a09d604a5269b74688cfb0694279941bf176f07650c0827be01c4"
+    },
+    {
+      "name": "cats_schedule_content.json",
+      "url": "https://api.github.com/repos/dmach1ne/CATS/contents/benchmark/cats_common/cats_schedules.py?ref=4f58fa4d4c714008f6d05580430c99c3256f0783",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:17:09.790468+00:00",
+      "path": "data/research/2026-10-28/sources/cats_schedule_content.json",
+      "bytes": 2097,
+      "sha256": "f8de2f7addd1914c0f6b1f829c79c2530673deed2830d5afb4904bd31182e492"
+    },
+    {
+      "name": "cats_robot_readme_content.json",
+      "url": "https://api.github.com/repos/dmach1ne/CATS/contents/robotics_sim/README.md?ref=4f58fa4d4c714008f6d05580430c99c3256f0783",
+      "http_status": "200",
+      "exit_code": 0,
+      "fetched_at_utc": "2026-10-28T01:17:09.848353+00:00",
+      "path": "data/research/2026-10-28/sources/cats_robot_readme_content.json",
+      "bytes": 14042,
+      "sha256": "03166176710fb2fdec38fc664165141d1f3c096556fa3e5d3e2bee435f6100b3"
+    }
+  ],
+  "static_fixed_texts": {
+    "checked_at_utc": "2026-10-28T01:21:01.143910+00:00",
+    "verification": "Decoded API base64 content; checked size and Git blob SHA1 against metadata and pinned recursive tree; no upstream code executed",
+    "trees": {
+      "optta": {
+        "sha": "6b0ba9239359133f8c567d6f040ea4faceac961b",
+        "truncated": false,
+        "entries": 954
+      },
+      "cats": {
+        "sha": "4f58fa4d4c714008f6d05580430c99c3256f0783",
+        "truncated": false,
+        "entries": 320
+      }
+    },
+    "files": [
+      {
+        "response": "data/research/2026-10-28/sources/cats_ppo_content.json",
+        "path": "benchmark/ppo/models/cats_ppo.py",
+        "commit": "4f58fa4d4c714008f6d05580430c99c3256f0783",
+        "git_blob_sha1": "4c8cd4f10da40115554042d6b771413d6bb63aab",
+        "bytes": 8563,
+        "sha256": "f0c7dd19af8afe5fcad9ad18eb04a5634b8640197765571f95b7277faa63e746",
+        "tree_matches": true,
+        "execution": false
+      },
+      {
+        "response": "data/research/2026-10-28/sources/cats_readme_content.json",
+        "path": "README.md",
+        "commit": "4f58fa4d4c714008f6d05580430c99c3256f0783",
+        "git_blob_sha1": "2828505a7733b2b4e33bdfa535b23e4d8f1ef0c4",
+        "bytes": 4433,
+        "sha256": "039bc384ac99a5681b160e4da5f6fca25dc652bd4eed84548ac23ee492edbfb3",
+        "tree_matches": true,
+        "execution": false
+      },
+      {
+        "response": "data/research/2026-10-28/sources/cats_robot_readme_content.json",
+        "path": "robotics_sim/README.md",
+        "commit": "4f58fa4d4c714008f6d05580430c99c3256f0783",
+        "git_blob_sha1": "d1c894c04905c731022857a7d82a03e7fc3e5634",
+        "bytes": 9420,
+        "sha256": "bf24ac6ff516d4754af4fad6adcef226934c4d424b4306622493f0d4145139b7",
+        "tree_matches": true,
+        "execution": false
+      },
+      {
+        "response": "data/research/2026-10-28/sources/cats_schedule_content.json",
+        "path": "benchmark/cats_common/cats_schedules.py",
+        "commit": "4f58fa4d4c714008f6d05580430c99c3256f0783",
+        "git_blob_sha1": "2a1514bb0642621fd69b6e58fb62af280f11b658",
+        "bytes": 671,
+        "sha256": "3a6057b8e92350e01f2d75c35c4ff607e6b99178715d6b84287ee9b4cd5628c0",
+        "tree_matches": true,
+        "execution": false
+      },
+      {
+        "response": "data/research/2026-10-28/sources/optta_adapter_content.json",
+        "path": "lewm/code/lewm_optta/adapter.py",
+        "commit": "6b0ba9239359133f8c567d6f040ea4faceac961b",
+        "git_blob_sha1": "cb25b384d23656040ea1f57675cd700600bcbbfb",
+        "bytes": 14393,
+        "sha256": "207126a935e9a6f159bd2c2f676c6c8682aaed44afa682e99d32fa460cc3cdd9",
+        "tree_matches": true,
+        "execution": false
+      },
+      {
+        "response": "data/research/2026-10-28/sources/optta_config_content.json",
+        "path": "lewm/code/lewm_optta/config.yaml",
+        "commit": "6b0ba9239359133f8c567d6f040ea4faceac961b",
+        "git_blob_sha1": "d83989069bf9f3636a43903f1aad4be9089be131",
+        "bytes": 3380,
+        "sha256": "6004e404f4e0e768890abfb2e8f13744b39ad30b5e6f8119b7f7de2d146a935a",
+        "tree_matches": true,
+        "execution": false
+      },
+      {
+        "response": "data/research/2026-10-28/sources/optta_license_content.json",
+        "path": "LICENSE",
+        "commit": "6b0ba9239359133f8c567d6f040ea4faceac961b",
+        "git_blob_sha1": "974216662b63da537f0c647679560fb0b6e3960a",
+        "bytes": 1068,
+        "sha256": "b58432040a769b4b5f2018a7d65640a9dba6cbe392029e10ab625110381f4cef",
+        "tree_matches": true,
+        "execution": false
+      },
+      {
+        "response": "data/research/2026-10-28/sources/optta_objective_content.json",
+        "path": "lewm/code/lewm_optta/objective.py",
+        "commit": "6b0ba9239359133f8c567d6f040ea4faceac961b",
+        "git_blob_sha1": "5c5821154871c46834b9b93faae119966e6ca9a5",
+        "bytes": 5115,
+        "sha256": "f1679f396c7ee80de2dd4a0d4962d3b3961645fd3f3210bd0fcc175f5fe6b48a",
+        "tree_matches": true,
+        "execution": false
+      },
+      {
+        "response": "data/research/2026-10-28/sources/optta_readme_content.json",
+        "path": "README.md",
+        "commit": "6b0ba9239359133f8c567d6f040ea4faceac961b",
+        "git_blob_sha1": "dc693e5eb0f29187a2652f0dc60453181be7b25f",
+        "bytes": 2906,
+        "sha256": "46d6fb9a3afe44e8da29e091c9a536950391b52da18dca36575dd15ffd48f3b3",
+        "tree_matches": true,
+        "execution": false
+      }
+    ]
+  },
+  "listings": [
+    {
+      "category": "csRO",
+      "rss": {
+        "last_build_date": "Tue, 27 Oct 2026 04:00:41 +0000",
+        "pub_date": "Tue, 27 Oct 2026 00:00:00 -0400",
+        "entries": 220
+      },
+      "new": {
+        "headings": [
+          "Showing new listings for Tuesday, 27 October 2026",
+          "New submissions (showing 118 of 118 entries)",
+          "Cross submissions (showing 20 of 20 entries)",
+          "Replacement submissions (showing 82 of 82 entries)"
+        ],
+        "entries": 220,
+        "sections": {
+          "New submissions": 118,
+          "Cross submissions": 20,
+          "Replacement submissions": 82
+        }
+      },
+      "recent": {
+        "headings": [
+          "Tue, 27 Oct 2026 (showing 138 of 138 entries )",
+          "Mon, 26 Oct 2026 (showing 64 of 64 entries )",
+          "Fri, 23 Oct 2026 (showing 69 of 69 entries )",
+          "Thu, 22 Oct 2026 (showing 78 of 78 entries )",
+          "Wed, 21 Oct 2026 (showing 88 of 88 entries )"
+        ],
+        "entries": 437,
+        "sections": {
+          "Tue, 27 Oct 2026": 138,
+          "Mon, 26 Oct 2026": 64,
+          "Fri, 23 Oct 2026": 69,
+          "Thu, 22 Oct 2026": 78,
+          "Wed, 21 Oct 2026": 88
+        }
+      }
+    },
+    {
+      "category": "csLG",
+      "rss": {
+        "last_build_date": "Tue, 27 Oct 2026 04:00:00 +0000",
+        "pub_date": "Tue, 27 Oct 2026 00:00:00 -0400",
+        "entries": 321
+      },
+      "new": {
+        "headings": [
+          "Showing new listings for Tuesday, 27 October 2026",
+          "New submissions (showing 226 of 226 entries)",
+          "Cross submissions (showing 200 of 200 entries)",
+          "Replacement submissions (showing 271 of 271 entries)"
+        ],
+        "entries": 697,
+        "sections": {
+          "New submissions": 226,
+          "Cross submissions": 200,
+          "Replacement submissions": 271
+        }
+      },
+      "recent": {
+        "headings": [
+          "Tue, 27 Oct 2026 (showing 426 of 426 entries )",
+          "Mon, 26 Oct 2026 (showing 198 of 198 entries )",
+          "Fri, 23 Oct 2026 (showing 205 of 205 entries )",
+          "Thu, 22 Oct 2026 (showing 240 of 240 entries )",
+          "Wed, 21 Oct 2026 (showing 249 of 249 entries )"
+        ],
+        "entries": 1318,
+        "sections": {
+          "Tue, 27 Oct 2026": 426,
+          "Mon, 26 Oct 2026": 198,
+          "Fri, 23 Oct 2026": 205,
+          "Thu, 22 Oct 2026": 240,
+          "Wed, 21 Oct 2026": 249
+        }
+      }
+    },
+    {
+      "category": "csCV",
+      "rss": {
+        "last_build_date": "Tue, 27 Oct 2026 04:00:10 +0000",
+        "pub_date": "Tue, 27 Oct 2026 00:00:00 -0400",
+        "entries": 483
+      },
+      "new": {
+        "headings": [
+          "Showing new listings for Tuesday, 27 October 2026",
+          "New submissions (showing 235 of 235 entries)",
+          "Cross submissions (showing 55 of 55 entries)",
+          "Replacement submissions (showing 193 of 193 entries)"
+        ],
+        "entries": 483,
+        "sections": {
+          "New submissions": 235,
+          "Cross submissions": 55,
+          "Replacement submissions": 193
+        }
+      },
+      "recent": {
+        "headings": [
+          "Tue, 27 Oct 2026 (showing 290 of 290 entries )",
+          "Mon, 26 Oct 2026 (showing 133 of 133 entries )",
+          "Fri, 23 Oct 2026 (showing 114 of 114 entries )",
+          "Thu, 22 Oct 2026 (showing 138 of 138 entries )",
+          "Wed, 21 Oct 2026 (showing 183 of 183 entries )"
+        ],
+        "entries": 858,
+        "sections": {
+          "Tue, 27 Oct 2026": 290,
+          "Mon, 26 Oct 2026": 133,
+          "Fri, 23 Oct 2026": 114,
+          "Thu, 22 Oct 2026": 138,
+          "Wed, 21 Oct 2026": 183
+        }
+      }
+    }
+  ],
+  "repositories": [
+    {
+      "file": "a3_model_commits.json",
+      "head": "589f508ff357447c610a3f3004419035ddc8f153",
+      "previous_head": "589f508ff357447c610a3f3004419035ddc8f153",
+      "committed_at_utc": "2026-08-06T02:24:27Z",
+      "head_changed": false
+    },
+    {
+      "file": "holomotion_commits.json",
+      "head": "f52dd81ae935a828b0296f5ee0f833beb7378bf0",
+      "previous_head": "f52dd81ae935a828b0296f5ee0f833beb7378bf0",
+      "committed_at_utc": "2026-10-26T05:09:08Z",
+      "head_changed": false,
+      "previous_evidence": "October27 holomotion_head.json"
+    },
+    {
+      "file": "morphmimic_commits.json",
+      "head": "aa40fe46a7fa995ba7a7354ad065a2c8ad64a302",
+      "previous_head": "aa40fe46a7fa995ba7a7354ad065a2c8ad64a302",
+      "committed_at_utc": "2026-10-26T05:30:24Z",
+      "head_changed": false,
+      "previous_evidence": "reports/README_MORPHMIMIC_REVIEW_20261027.md; existing ad hoc review, not rediscovered research"
+    },
+    {
+      "file": "mpbrs_commits.json",
+      "head": "a0dffb3444584b5ef4f6dbd265303fe845b036c2",
+      "previous_head": "a0dffb3444584b5ef4f6dbd265303fe845b036c2",
+      "committed_at_utc": "2026-10-21T18:43:12Z",
+      "head_changed": false
+    },
+    {
+      "file": "predactor_commits.json",
+      "head": "ffabd76c5e8b2abb993034db902aeef0012e3b1e",
+      "previous_head": "ffabd76c5e8b2abb993034db902aeef0012e3b1e",
+      "committed_at_utc": "2026-10-23T04:06:44Z",
+      "head_changed": false
+    },
+    {
+      "file": "smr_commits.json",
+      "head": "06ee20561988f648d7a973a3da909bb73bdd18c4",
+      "previous_head": "06ee20561988f648d7a973a3da909bb73bdd18c4",
+      "committed_at_utc": "2026-10-24T13:16:04Z",
+      "head_changed": false
+    },
+    {
+      "file": "soma_commits.json",
+      "head": "cbdb2b494a2af82137bf9b6f15122d60167281c4",
+      "previous_head": "cbdb2b494a2af82137bf9b6f15122d60167281c4",
+      "committed_at_utc": "2026-10-01T16:31:06Z",
+      "head_changed": false
+    },
+    {
+      "file": "sonic_a3_commits.json",
+      "head": "c9df753d31ef63c930b825b1b6767cabd37c1549",
+      "previous_head": "c9df753d31ef63c930b825b1b6767cabd37c1549",
+      "committed_at_utc": "2026-10-09T03:33:38Z",
+      "head_changed": false
+    },
+    {
+      "file": "sonic_commits.json",
+      "head": "1fa5f7fa3966cbd4845c4e641d13c3f0cd5b0d9b",
+      "previous_head": "1fa5f7fa3966cbd4845c4e641d13c3f0cd5b0d9b",
+      "committed_at_utc": "2026-10-26T23:31:28Z",
+      "head_changed": false
+    },
+    {
+      "file": "supermimic_reproduced_commits.json",
+      "head": "ba6105349069bf040f1fdad60873d13138d505a2",
+      "previous_head": "ba6105349069bf040f1fdad60873d13138d505a2",
+      "committed_at_utc": "2026-10-26T21:21:02Z",
+      "head_changed": false
+    },
+    {
+      "file": "supermimic_vibed_commits.json",
+      "head": "ee0608f917d08a591356b9bdc7d94bd949157341",
+      "previous_head": "ee0608f917d08a591356b9bdc7d94bd949157341",
+      "committed_at_utc": "2026-10-26T12:56:15Z",
+      "head_changed": false
+    },
+    {
+      "file": "trace_commits.json",
+      "head": "dc7656cd4d454ad878e23ff55f7335e3600dc213",
+      "previous_head": "dc7656cd4d454ad878e23ff55f7335e3600dc213",
+      "committed_at_utc": "2026-10-15T08:01:22Z",
+      "head_changed": false
+    },
+    {
+      "file": "uq_commits.json",
+      "head": "f658266ab68aae58f04ba6d728a118457cfe12c2",
+      "previous_head": "f658266ab68aae58f04ba6d728a118457cfe12c2",
+      "committed_at_utc": "2026-10-21T17:05:50Z",
+      "head_changed": false
+    },
+    {
+      "file": "vith_commits.json",
+      "head": "afd19fb68a6da32bebcb2563563a058cb5147dda",
+      "previous_head": "afd19fb68a6da32bebcb2563563a058cb5147dda",
+      "committed_at_utc": "2026-10-26T05:19:19Z",
+      "head_changed": false,
+      "previous_evidence": "October27 vith_head.json"
+    }
+  ],
+  "release_change_disposition": "Isaac Lab adds teaching browser bundle metadata; no new numbered framework version. rsl_rl unchanged. No binary download.",
+  "new_dedup": [
+    {
+      "id": "arxiv:2610.35636",
+      "version": "v1",
+      "title": "Adapt for Planning, Not just Prediction: Optimistic Test-Time World Model Adaptation",
+      "url": "https://arxiv.org/abs/2610.35636v1",
+      "first_submitted_at": "2026-10-26T15:46:17Z",
+      "updated_at": null,
+      "feed_announced_on": "2026-10-27",
+      "first_seen_on": "2026-10-28",
+      "last_fetched_at": "2026-10-28T01:09:27.718735+00:00",
+      "verification_level": "Abstract/history; selected methods, experiments and limitations; pinned README, MIT license, LeWM objective/adapter/config statically checked against full tree; no execution or reproduction.",
+      "asset_status": "AUTHOR_CODE_MIT_PINNED_FIVE_TEXTS; upstream data/checkpoint links only, binaries not fetched",
+      "code_status": "AUTHOR_CODE_MIT_PINNED_FIVE_TEXTS; upstream data/checkpoint links only, binaries not fetched",
+      "notes": "Prediction plus goal-reaching cost adapts the world-model predictor; optimism gradients are balanced against prediction gradients. Encoder receives grounding loss only in inspected LeWM implementation. Visual manipulation/reaching/navigation experiments do not establish Q1 actor-gradient accuracy or PPO failure cause.",
+      "related_links": [
+        "https://github.com/akshaymete/optta"
+      ],
+      "recommendation": "NOW_FOR_MODEL_VS_CONTROL_DIAGNOSTIC; AFTER_BASELINE_FOR_ADAPTATION",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-28/README.md",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
+      "dedup_key": "arxiv:2610.35636@v1"
+    },
+    {
+      "id": "arxiv:2610.34126",
+      "version": "v1",
+      "title": "HumanoidNDM: Closing the Training-Deployment Gap of Motion Tracking via Humanoid Neural Dynamics Model",
+      "url": "https://arxiv.org/abs/2610.34126v1",
+      "first_submitted_at": "2026-10-25T07:51:22Z",
+      "updated_at": null,
+      "feed_announced_on": "2026-10-27",
+      "first_seen_on": "2026-10-28",
+      "last_fetched_at": "2026-10-28T01:09:27.698761+00:00",
+      "verification_level": "Abstract/history and selected methods, experimental protocol and limitations; no source implementation or reproduction.",
+      "asset_status": "AUTHOR_PROJECT_HTTP404_WITH_AND_WITHOUT_TRAILING_SLASH; dedicated code/weights unverified",
+      "code_status": "AUTHOR_PROJECT_HTTP404_WITH_AND_WITHOUT_TRAILING_SLASH; dedicated code/weights unverified",
+      "notes": "Starts from a deployable initial tracker, explores low-frequency reference perturbations, trains a history/proprioception neural dynamics model with FK dual-space losses, then fine-tunes the policy by model gradients. G1 and time-invariant disturbances; not a from-zero Q1 controller or authorization to collect robot data.",
+      "related_links": [
+        "https://pku-epic.github.io/HumanoidNDM"
+      ],
+      "recommendation": "AFTER_BASELINE",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-28/README.md",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
+      "dedup_key": "arxiv:2610.34126@v1"
+    },
+    {
+      "id": "arxiv:2610.07910",
+      "version": "v2",
+      "title": "Revisiting Temporal Regularization for Smooth Control in Deep Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2610.07910v2",
+      "first_submitted_at": "2026-10-06T07:53:24Z",
+      "updated_at": "2026-10-23T11:28:59Z",
+      "feed_announced_on": "2026-10-27",
+      "first_seen_on": "2026-10-28",
+      "last_fetched_at": "2026-10-28T01:09:28.011559+00:00",
+      "verification_level": "Abstract/history, selected methods/experiments, author project; pinned README/PPO/schedule/robot guide and full tree statically checked; no execution.",
+      "asset_status": "PUBLIC_AUTHOR_CODE; no top-level code license identified in complete 320-entry tree, GitHub license metadata null; weights unverified",
+      "code_status": "PUBLIC_AUTHOR_CODE; no top-level code license identified in complete 320-entry tree, GitHub license metadata null; weights unverified",
+      "notes": "Old v2 first found today; no v1/v2 method delta claimed. Temporal deterministic-action regularization enters policy loss, with a coefficient linearly increasing from zero. Current Q1 reward action penalties are a separate contract to inspect. Benchmarks and Franka tasks, not Q1 whole-body evidence.",
+      "related_links": [
+        "https://dmach1ne.github.io/CATS/",
+        "https://github.com/dmach1ne/CATS"
+      ],
+      "recommendation": "NOW_FOR_READING_AND_EXISTING_PENALTY_REVIEW; AFTER_BASELINE_FOR_REGULARIZATION",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-28/README.md",
+      "change_kind": "FIRST_DISCOVERY_OF_OLD_V2",
+      "dedup_key": "arxiv:2610.07910@v2"
+    },
+    {
+      "id": "arxiv:2610.33508",
+      "version": "v1",
+      "title": "MimicAll: Structured Embodiment Conditioning for Cross-Humanoid Whole-Body Motion Tracking",
+      "url": "https://arxiv.org/abs/2610.33508v1",
+      "first_submitted_at": "2026-10-24T07:31:50Z",
+      "updated_at": null,
+      "feed_announced_on": "2026-10-27",
+      "first_seen_on": "2026-10-28",
+      "last_fetched_at": "2026-10-28T01:09:27.706652+00:00",
+      "verification_level": "Abstract/history; selected method, optimization/budget, evaluation and transfer-limit sections; no implementation or reproduction.",
+      "asset_status": "No dedicated code/weights link identified in checked abstract/HTML; public availability otherwise not established",
+      "code_status": "No dedicated code/weights link identified in checked abstract/HTML; public availability otherwise not established",
+      "notes": "Structured body descriptors and body-matched references condition a shared PPO tracker. 4096 denotes body variants, while fixed-budget training uses 8x8192 environments. Authors report unseen-family LAFAN1 success <=8.2% across ten configurations; seen-family specialization is not Q1 zero-shot transfer.",
+      "related_links": [],
+      "recommendation": "BACKGROUND_FOR_A3_Q1_TRANSFER",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-28/README.md",
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
+      "dedup_key": "arxiv:2610.33508@v1"
+    },
+    {
+      "id": "arxiv:2610.32909",
+      "version": "v2",
+      "title": "HoloBoxing: A Simple Recipe for Humanoid Boxing with 7 Minutes of Single-GPU Training",
+      "url": "https://arxiv.org/abs/2610.32909v2",
+      "first_submitted_at": "2026-10-23T17:11:28Z",
+      "updated_at": "2026-10-26T15:14:59Z",
+      "feed_announced_on": "2026-10-27",
+      "first_seen_on": "2026-10-28",
+      "last_fetched_at": "2026-10-28T01:05:28.462519+00:00",
+      "verification_level": "v1/v2 related body and appendix text diff; prior fixed author code review retained; repo head unchanged; no execution.",
+      "asset_status": "Prior author Apache-2.0 repository remains at f52dd81ae935a828b0296f5ee0f833beb7378bf0; robot/controller assets not newly fetched",
+      "code_status": "Prior author Apache-2.0 repository remains at f52dd81ae935a828b0296f5ee0f833beb7378bf0; robot/controller assets not newly fetched",
+      "notes": "Material protocol clarification against v1: each learner uses its own frozen standing-warmup checkpoint as opponent; the earlier external-opponent pretraining accounting caveat should be corrected. Timing/result numbers unchanged in inspected text, no new training verified. Retain lower-controller pretraining, preparation, evaluation/search exclusions and single-seed simulation-only limits.",
+      "related_links": [
+        "https://github.com/HorizonRobotics/HoloMotion/tree/master/holoboxing"
+      ],
+      "recommendation": "AFTER_BASELINE; CORRECT_PREVIOUS_BRIEF",
+      "disposition": "REPORTED",
+      "reported_in": "reports/research/2026-10-28/README.md",
+      "change_kind": "MATERIAL_VERSION_PROTOCOL_CLARIFICATION",
+      "dedup_key": "arxiv:2610.32909@v2"
+    },
+    {
+      "id": "arxiv:2610.33446",
+      "version": "v1",
+      "title": "MOTIO: Agentic Skill Engineering for Reality-Grounded Humanoid Loco-Manipulation",
+      "url": "https://arxiv.org/abs/2610.33446v1",
+      "first_submitted_at": "2026-10-24T04:55:00Z",
+      "updated_at": null,
+      "feed_announced_on": "2026-10-27",
+      "first_seen_on": "2026-10-28",
+      "last_fetched_at": "2026-10-28T01:09:28.061001+00:00",
+      "verification_level": "Abstract and submission history only; no body/code/asset verification.",
+      "asset_status": "NOT_VERIFIED",
+      "code_status": "NOT_VERIFIED",
+      "notes": "Agent programs reusable WBC/IK/hand interfaces with execution and human validation, followed by BC/DAgger. Does not establish learning a Q1 low-level tracker from scratch. Background only; reported timing includes human validation.",
+      "related_links": [
+        "https://iiiiqiiii.github.io/motio/"
+      ],
+      "recommendation": "BACKGROUND",
+      "disposition": "SCREENED_BACKGROUND",
+      "reported_in": null,
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
+      "dedup_key": "arxiv:2610.33446@v1"
+    },
+    {
+      "id": "arxiv:2610.35862",
+      "version": "v1",
+      "title": "Learning Force-Reactive Humanoid Loco-Manipulation",
+      "url": "https://arxiv.org/abs/2610.35862v1",
+      "first_submitted_at": "2026-10-26T17:59:11Z",
+      "updated_at": null,
+      "feed_announced_on": "2026-10-27",
+      "first_seen_on": "2026-10-28",
+      "last_fetched_at": "2026-10-28T01:09:28.176146+00:00",
+      "verification_level": "Abstract and submission history only; no body/code/asset verification.",
+      "asset_status": "NOT_VERIFIED",
+      "code_status": "NOT_VERIFIED",
+      "notes": "Combines force-sensing handheld demonstrations, wearable body tracking and force-reactive whole-body compliance. Relevant after motion tracking is reliable, but requires real wrench sensing absent from the current verified Q1 setup.",
+      "related_links": [
+        "https://louis-leee.github.io/FLoRe/"
+      ],
+      "recommendation": "BACKGROUND",
+      "disposition": "SCREENED_BACKGROUND",
+      "reported_in": null,
+      "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
+      "dedup_key": "arxiv:2610.35862@v1"
+    },
+    {
+      "id": "arxiv:2608.03116",
+      "version": "v2",
+      "title": "Shooting for Contact: Contact-Implicit Multiple Shooting for Dynamic Motion Retargeting",
+      "url": "https://arxiv.org/abs/2608.03116v2",
+      "first_submitted_at": "2026-08-04T04:38:34Z",
+      "updated_at": "2026-10-25T23:39:59Z",
+      "feed_announced_on": "2026-10-27",
+      "first_seen_on": "2026-10-28",
+      "last_fetched_at": "2026-10-28T01:09:28.225100+00:00",
+      "verification_level": "Abstract and submission history only; v1/v2 body differences not verified.",
+      "asset_status": "NOT_VERIFIED",
+      "code_status": "NOT_VERIFIED",
+      "notes": "Old paper v2 first seen today: differentiable simulation and nonlinear optimization produce dynamic references; no v1/v2 technical comparison completed, no Q1 feasibility claim or added data gate.",
+      "related_links": [
+        "https://shooting-for-contact.github.io/"
+      ],
+      "recommendation": "BACKGROUND",
+      "disposition": "SCREENED_BACKGROUND",
+      "reported_in": null,
+      "change_kind": "FIRST_DISCOVERY_OF_OLD_V2",
+      "dedup_key": "arxiv:2608.03116@v2"
+    },
+    {
+      "id": "arxiv:2609.15213",
+      "version": "v2",
+      "title": "X-WBC: A Cross-Embodiment Foundation Model for Humanoid Whole-Body Control",
+      "url": "https://arxiv.org/abs/2609.15213v2",
+      "first_submitted_at": "2026-09-14T08:34:48Z",
+      "updated_at": "2026-10-25T08:00:19Z",
+      "feed_announced_on": "2026-10-27",
+      "first_seen_on": "2026-10-28",
+      "last_fetched_at": "2026-10-28T01:09:28.341997+00:00",
+      "verification_level": "Abstract and submission history only.",
+      "asset_status": "NOT_VERIFIED",
+      "code_status": "NOT_VERIFIED",
+      "notes": "Old v2: shared causal Transformer and robot-specific interfaces; cross-body pretraining is already established prior art. Only abstract/history read, no supported Q1 checkpoint established or v1/v2 method comparison.",
+      "related_links": [],
+      "recommendation": "BACKGROUND",
+      "disposition": "SCREENED_BACKGROUND",
+      "reported_in": null,
+      "change_kind": "FIRST_DISCOVERY_OF_OLD_V2",
+      "dedup_key": "arxiv:2609.15213@v2"
+    },
+    {
+      "id": "arxiv:2610.30876",
+      "version": "v3",
+      "title": "LocoManiLab: A Unified Testbed for Data, Policies, Controllers, and Deployment in Humanoid Loco-Manipulation",
+      "url": "https://arxiv.org/abs/2610.30876v3",
+      "first_submitted_at": "2026-10-22T07:56:54Z",
+      "updated_at": "2026-10-26T03:42:42Z",
+      "feed_announced_on": "2026-10-27",
+      "first_seen_on": "2026-10-28",
+      "last_fetched_at": "2026-10-28T01:05:28.151137+00:00",
+      "verification_level": "Abstract/history and v2/v3 text comparison; no code execution.",
+      "asset_status": "NOT_NEWLY_VERIFIED",
+      "code_status": "NOT_NEWLY_VERIFIED",
+      "notes": "v2/v3 inspected HTML differs by date/version and one added author; no method/result delta identified, no repeated briefing.",
+      "related_links": [],
+      "recommendation": "BACKGROUND",
+      "disposition": "SCREENED_BACKGROUND",
+      "reported_in": null,
+      "change_kind": "VERSION_OBSERVED_NON_SUBSTANTIVE_TEXT_DELTA",
+      "dedup_key": "arxiv:2610.30876@v3"
+    },
+    {
+      "id": "github:isaac-sim/IsaacLab",
+      "version": "interactive-demos@1c3fdc57043a60d3c1b65d8d682ce85c0e544ca2",
+      "title": "Isaac Lab interactive-demos additional browser bundle",
+      "url": "https://github.com/isaac-sim/IsaacLab/releases/tag/interactive-demos",
+      "first_seen_on": "2026-10-28",
+      "updated_at": "2026-10-27T11:57:11Z",
+      "verification_level": "Official release asset metadata only; archive not downloaded.",
+      "asset_status": "55002191-byte archive and SHA256 metadata; no download or execution",
+      "notes": "Additional browser teaching bundle; no new numbered training framework release or Q1 controller. Not featured.",
+      "disposition": "SCREENED_BACKGROUND",
+      "recommendation": "BACKGROUND",
+      "reported_in": null,
+      "dedup_key": "github:isaac-sim/IsaacLab@interactive-demos:1c3fdc57043a60d3c1b65d8d682ce85c0e544ca2"
+    },
+    {
+      "id": "github:lzyang2000/morphmimic",
+      "version": "aa40fe46a7fa995ba7a7354ad065a2c8ad64a302",
+      "title": "MorphMimic existing October27 ad hoc review import",
+      "url": "https://github.com/lzyang2000/morphmimic",
+      "first_seen_on": "2026-10-27",
+      "last_checked_on": "2026-10-28",
+      "change_kind": "IMPORT_EXISTING_REVIEW_TO_CENTRAL_DEDUP_NO_NEW_DISCOVERY",
+      "verification_level": "Existing Q1 review of paper/README/selected source retained; today head unchanged.",
+      "asset_status": "Prior public third-party implementation review; no new asset fetch",
+      "notes": "Existing Q1 review says independent SuperMimic implementation, not official author release; Q1 22-DOF joint contract and memory limits prevent direct reuse. This is not new research today.",
+      "disposition": "ALREADY_REVIEWED_ADHOC",
+      "recommendation": "BACKGROUND",
+      "reported_in": "Q1:reports/README_MORPHMIMIC_REVIEW_20261027.md",
+      "dedup_key": "github:lzyang2000/morphmimic@aa40fe46a7fa995ba7a7354ad065a2c8ad64a302"
+    }
+  ],
+  "dedup_before": 122,
+  "dedup_after": 134,
+  "brief_path": "reports/research/2026-10-28/README.md",
+  "brief_items": 5,
+  "candidate_list_changed": true,
+  "new_hypotheses": 0,
+  "idea_ids": [
+    "H001"
+  ],
+  "scientific_execution": false,
+  "training_or_simulation": false,
+  "model_downloaded": false,
+  "source_code_executed": false,
+  "subagents_used": false,
+  "context_evidence": "logs/research_watch/2026-10-28/context_check.json",
+  "context_summary": {
+    "server": "user25386:/opt/data/private/ZHY",
+    "git": "UNAVAILABLE_IN_CONTAINER",
+    "authority": "data/repositories/q1-rf12-20261028 Q1",
+    "four_documents_sha_match": true,
+    "training_state_source": "RF12 saved completion; no live training/GPU or simulation operation in research task"
+  },
+  "raw_cache_backup_status": "MAC_LOCAL_ONLY",
+  "coverage_limits": [
+    "Not an exhaustive survey; historical gaps from earlier checks remain.",
+    "LG RSS321/new697 inconsistent; full new/recent lists also screened.",
+    "HumanoidNDM author project404 twice; code/weight availability not established.",
+    "Two raw GitHub resets recovered through pinned contents API; no binaries/HF metadata requested.",
+    "CATS older v2 first discovered; no v1/v2 method difference claimed.",
+    "MOTIO/FLORE/Shooting-for-Contact/X-WBC abstract/history only; not implementation evidence."
+  ]
+}

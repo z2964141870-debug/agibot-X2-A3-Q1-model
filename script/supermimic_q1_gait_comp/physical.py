@@ -103,6 +103,8 @@ def comparison(candidate, baseline, rows):
         bases.append(gait_clip(baseline, index, length))
     keys = {"walking_slip": "loaded_slip_mps", "swing_error": "swing_local_foot_rmse_m",
             "walking_tilt": "torso_tilt_rms_rad", "target_change": "target_delta_rms_rad"}
+    walking_ratios = [{label: relative(current[key], previous[key]) for label, key in keys.items()}
+                      for current, previous in zip(walked, bases)]
     ratios = {}
     for label, key in keys.items():
         values, previous = [r[key] for r in walked], [r[key] for r in bases]
@@ -110,7 +112,8 @@ def comparison(candidate, baseline, rows):
     ratios.update(upper_rmse=old["ratios"]["upper_rmse"], wrist_rmse=old["ratios"]["wrist_relative_rmse"],
                   raised_peak_error=old["ratios"]["raised_peak_error"])
     raised = next(i for i,r in enumerate(rows) if r["name"] == FIXED_DEMOS[2])
-    return {"ratios": ratios, "validation_failures": old["failures"], "validation_completion": old["completion"],
+    return {"ratios": ratios, "walking_ratios": walking_ratios,
+            "validation_failures": old["failures"], "validation_completion": old["completion"],
             "fixed_demos_complete": old["fixed_demos_complete"],
             "walking_progress_preserved": all(v["forward_displacement_m"] >= max(.05, .75*b["forward_displacement_m"])
                                               for v,b in zip(walked, bases)),

@@ -1,0 +1,93 @@
+{
+  "status": "RF15_PRETRAINING_PER_WALK_GATE_ALIGNED",
+  "formal_training_started": false,
+  "preflight_gpu_started": false,
+  "comparison": "Each of the two fixed walks must independently meet slip/swing/tilt/target-change limits in at least two paired repeats; aggregate ratios are diagnostic. All fixed demos must finish in all three repeats.",
+  "reason": "Prelaunch implementation averaged two walks although the registered README required both; remove masking by an improved second clip.",
+  "cpu_gate_tests": 8,
+  "tests_passed_on": [
+    "Mac",
+    "25386"
+  ],
+  "saved_trace_integration": {
+    "status": "SAVED_TRACE_PER_WALK_COMPARISON_PASSED",
+    "walking_ratios": [
+      {
+        "walking_slip": 0.9940488984022398,
+        "swing_error": 1.0221711837564635,
+        "walking_tilt": 1.1802433540360586,
+        "target_change": 0.9731795456454831
+      },
+      {
+        "walking_slip": 0.5525057029951871,
+        "swing_error": 0.9717981810358836,
+        "walking_tilt": 1.8218752233656728,
+        "target_change": 0.7397422254287339
+      }
+    ],
+    "aggregate_ratios": {
+      "walking_slip": 0.7336250834560236,
+      "swing_error": 0.9981669365552638,
+      "walking_tilt": 1.4723614734660422,
+      "target_change": 0.8517153658161967,
+      "upper_rmse": 1.0851114459678246,
+      "wrist_rmse": 1.2592751524723378,
+      "raised_peak_error": 0.956888661313093
+    },
+    "optimizer_steps": 0,
+    "new_physical_steps": 0,
+    "cuda_used": false
+  },
+  "RF14_frozen_source_check": {
+    "status": "FROZEN_SOURCES_UNCHANGED",
+    "count": 1145,
+    "bytes": 286704917,
+    "changed": []
+  },
+  "RF14_stage02_publication": {
+    "commit": "5072f6f3f3a3a567d9a9961c83dc0ad724da2d22",
+    "files": [
+      {
+        "path": "AGENTS.md",
+        "bytes": 36767,
+        "sha256": "1395a7cf4cfcad43318a412f7d8bc8070d9a626079a2d8f782f97081f5a1924e"
+      },
+      {
+        "path": "reports/README.md",
+        "bytes": 113073,
+        "sha256": "421e495692d908cf28be5fd6a4bfb77ed16777b9896b2ea9b66ce5089718ab86"
+      },
+      {
+        "path": "reports/README_CURRENT_STATE.md",
+        "bytes": 18145,
+        "sha256": "8b91f39677dd360483b17b05142405f84c1567a44f5eabddb38b3c92cd42269e"
+      },
+      {
+        "path": "reports/README_SUPERMIMIC_Q1_RF14_RF15_GAIT_20261028.md",
+        "bytes": 7373,
+        "sha256": "bcd474a9df3b1e59374c8ee69368ad4eacab9495c5335b1e33efb5c2e343297a"
+      },
+      {
+        "path": "reports/README_SUPERMIMIC_Q1_RF15_GAIT_PREP_20261028.md",
+        "bytes": 5923,
+        "sha256": "aad320300fb746c2b8ae7c6154109ab66290b4062285a18ce63579507ea64f18"
+      },
+      {
+        "path": "data/manifests/supermimic_q1_RF14_stage02_20261028.json",
+        "bytes": 34325,
+        "sha256": "6a2678bb7dc9b38ce49c2316c12e44d93bc046e4507e1c036179827b80fe6cd9"
+      },
+      {
+        "path": "data/manifests/supermimic_q1_RF15_preparation_published_20261028.json",
+        "bytes": 19006,
+        "sha256": "b44dd684d9efce0face3279f0eb0bd8bcc6899f80343d3a1b2f715f59774dde8"
+      }
+    ],
+    "count": 7,
+    "bytes": 234612,
+    "three_roots_size_sha256_match": true
+  },
+  "no_optimizer_updates": 0,
+  "no_new_physical_steps": 0,
+  "next": "Wait for RF14 exit, checkpoint selection and delivery; then perform RF15 16/4096 real zero-update preflights, publish/freeze and run the one authorized new trial."
+}

@@ -46,4 +46,6 @@ RF15上肢收益来自静态参考混合，新腿腰head让停走滑移增加，
 
 所有干预都仍有真实前进，不能仅凭完成/前进称自然步态；部分验证腿关节误差下降而停走滑移/指令变化增加，uniform025的一个重复身体倾斜约为配对baseline2.65倍。摆脚干预没有保证支撑脚稳定；这些证据只否定本组有限前馈参数，不证明所有相位控制无效，也不证明RF14退化唯一原因。参考相位不等于实际接触，三次是同一教师重复评测而非三个训练seed。
 
+02:53补正种子记录：probe在环境准备前请求32000+repeat，但既有worker.prepare随后把cfg.env.seed/cfg.algo.seed和全局初始化设回0。因此原JSON的seed标签不能证明实际用了三个不同种子；应解释为同一配置的重复运行，仍受GPU求解非确定性影响。原始结果/负面数值不改。新独立TARGET_FILTER probe将seed在create_env前正确配置并保存seed_contract，不能把旧重复事后改称独立seed验证。
+
 26个小工件3278039字节已复制Mac并逐大小SHA一致，路径/全部量值/终态见[结果收据](../data/manifests/supermimic_q1_phase_leg_results_20261029.json)。根为/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_PHASE_AWARE_LEG_PROBE_20261029；18大NPZ仍服务器。未做full330、未额外渲染本轮六类视频或新学习；现有RF15四MP4继续供审阅。下一步收窄到高频目标/控制阻尼诊断，不把本轮负面结果当重开RF15的理由。

@@ -1,0 +1,716 @@
+{
+  "status": "TARGET_FILTER_CPU_PREPARATION_PASSED_NOT_PHYSICALLY_STARTED",
+  "captured_beijing": "2026-10-29T02:53:00+08:00",
+  "cpu_tests": {
+    "name": "tests",
+    "chunk_id": "26f517",
+    "wall_time_seconds": 2.628196458,
+    "exit_code": 0,
+    "original_token_count": 261,
+    "output": "test_baseline_is_bit_exact_even_for_large_targets (test_control.TargetFilterTests.test_baseline_is_bit_exact_even_for_large_targets) ... ok\ntest_ema_suppresses_alternating_input_and_has_lag (test_control.TargetFilterTests.test_ema_suppresses_alternating_input_and_has_lag) ... ok\ntest_filter_never_overshoots_previous_and_requested_target (test_control.TargetFilterTests.test_filter_never_overshoots_previous_and_requested_target) ... ok\ntest_first_target_has_no_startup_transient (test_control.TargetFilterTests.test_first_target_has_no_startup_transient) ... ok\ntest_rate_is_in_radians_per_twenty_ms (test_control.TargetFilterTests.test_rate_is_in_radians_per_twenty_ms) ... ok\ntest_reset_prevents_cross_episode_target_memory (test_control.TargetFilterTests.test_reset_prevents_cross_episode_target_memory) ... ok\ntest_wrong_shape_and_nonfinite_are_rejected (test_control.TargetFilterTests.test_wrong_shape_and_nonfinite_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.031s\n\nOK\n"
+  },
+  "syntax_and_cli_help_passed": true,
+  "source_files": [
+    "script/supermimic_q1_target_probe/target_control.py",
+    "script/supermimic_q1_target_probe/probe.py",
+    "script/supermimic_q1_target_probe/test_control.py",
+    "script/project_tools/analyze_q1_target_frequency.py"
+  ],
+  "saved_trajectory_analysis": {
+    "status": "SAVED_TARGET_BANDWIDTH_DIAGNOSIS",
+    "captured_utc": "2026-10-28T18:49:15.925466+00:00",
+    "rows": [
+      {
+        "label": "phase_baseline",
+        "repeat": 0,
+        "name": "walk_ff_stop_180_R_002__A095",
+        "physical_steps": 320,
+        "target_delta_rms_rad": 0.09637278318405151,
+        "target_delta_abs_p99_rad": 0.3277168720960617,
+        "fraction_joint_target_changes_over_point1rad": 0.21081504702194356,
+        "target_poststep_joint_rmse_rad": 0.32083380222320557,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.03943705399893088,
+          "10_hz_fraction": 0.0033069368239854783,
+          "15_hz_fraction": 0.0009057540010026623
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.01538156188093781,
+          "10_hz_fraction": 0.000626145375452385,
+          "15_hz_fraction": 0.00011251654856521734
+        }
+      },
+      {
+        "label": "phase_baseline",
+        "repeat": 0,
+        "name": "walk_ff_start_180_R_002__A071",
+        "physical_steps": 210,
+        "target_delta_rms_rad": 0.11282001435756683,
+        "target_delta_abs_p99_rad": 0.3922980108857153,
+        "fraction_joint_target_changes_over_point1rad": 0.2595693779904306,
+        "target_poststep_joint_rmse_rad": 0.34446921944618225,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.06061664956909014,
+          "10_hz_fraction": 0.0038094691690911515,
+          "15_hz_fraction": 0.0008790208687794798
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.022045903975295114,
+          "10_hz_fraction": 0.0006200217514573926,
+          "15_hz_fraction": 0.0001321750912492928
+        }
+      },
+      {
+        "label": "phase_baseline",
+        "repeat": 0,
+        "name": "triumph_two_handed_001__A058",
+        "physical_steps": 271,
+        "target_delta_rms_rad": 0.027563180774450302,
+        "target_delta_abs_p99_rad": 0.08649298526346685,
+        "fraction_joint_target_changes_over_point1rad": 0.005864197530864198,
+        "target_poststep_joint_rmse_rad": 0.1564657986164093,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.006430199141778826,
+          "10_hz_fraction": 0.0006810015923853392,
+          "15_hz_fraction": 0.00015481868023471234
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.0005541498894224451,
+          "10_hz_fraction": 0.000035328210718475524,
+          "15_hz_fraction": 0.000008381134036646133
+        }
+      },
+      {
+        "label": "phase_baseline",
+        "repeat": 1,
+        "name": "walk_ff_stop_180_R_002__A095",
+        "physical_steps": 320,
+        "target_delta_rms_rad": 0.12221027910709381,
+        "target_delta_abs_p99_rad": 0.4025838285684586,
+        "fraction_joint_target_changes_over_point1rad": 0.27533960292580983,
+        "target_poststep_joint_rmse_rad": 0.3553706109523773,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.060814455412252784,
+          "10_hz_fraction": 0.006143681296659498,
+          "15_hz_fraction": 0.001340256954519296
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.016888778359846885,
+          "10_hz_fraction": 0.0007825647982994885,
+          "15_hz_fraction": 0.00010046158874265411
+        }
+      },
+      {
+        "label": "phase_baseline",
+        "repeat": 1,
+        "name": "walk_ff_start_180_R_002__A071",
+        "physical_steps": 210,
+        "target_delta_rms_rad": 0.11310368776321411,
+        "target_delta_abs_p99_rad": 0.36506380975246416,
+        "fraction_joint_target_changes_over_point1rad": 0.26116427432216904,
+        "target_poststep_joint_rmse_rad": 0.3406268358230591,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.05645833485716513,
+          "10_hz_fraction": 0.004446064292601005,
+          "15_hz_fraction": 0.0013237776680202526
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.019489629473821105,
+          "10_hz_fraction": 0.0007956757282464779,
+          "15_hz_fraction": 0.00014418808395869707
+        }
+      },
+      {
+        "label": "phase_baseline",
+        "repeat": 1,
+        "name": "triumph_two_handed_001__A058",
+        "physical_steps": 271,
+        "target_delta_rms_rad": 0.02751975506544113,
+        "target_delta_abs_p99_rad": 0.08666274175047879,
+        "fraction_joint_target_changes_over_point1rad": 0.005555555555555556,
+        "target_poststep_joint_rmse_rad": 0.1564186066389084,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.0064296631529684395,
+          "10_hz_fraction": 0.0006903738688289078,
+          "15_hz_fraction": 0.00015246523161999782
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.0005532705701302489,
+          "10_hz_fraction": 0.000035656419439295666,
+          "15_hz_fraction": 0.000008347145896097549
+        }
+      },
+      {
+        "label": "phase_baseline",
+        "repeat": 2,
+        "name": "walk_ff_stop_180_R_002__A095",
+        "physical_steps": 320,
+        "target_delta_rms_rad": 0.0955929234623909,
+        "target_delta_abs_p99_rad": 0.33917681068182004,
+        "fraction_joint_target_changes_over_point1rad": 0.2003657262277952,
+        "target_poststep_joint_rmse_rad": 0.3155461847782135,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.05021718789281203,
+          "10_hz_fraction": 0.003922967526221072,
+          "15_hz_fraction": 0.0010254113666892458
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.014502453539825846,
+          "10_hz_fraction": 0.0006453642007869815,
+          "15_hz_fraction": 0.0001223452047227084
+        }
+      },
+      {
+        "label": "phase_baseline",
+        "repeat": 2,
+        "name": "walk_ff_start_180_R_002__A071",
+        "physical_steps": 210,
+        "target_delta_rms_rad": 0.12275175750255585,
+        "target_delta_abs_p99_rad": 0.4134133189916608,
+        "fraction_joint_target_changes_over_point1rad": 0.2759170653907496,
+        "target_poststep_joint_rmse_rad": 0.35268789529800415,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.07986945389215754,
+          "10_hz_fraction": 0.00552601320192244,
+          "15_hz_fraction": 0.001264111976731967
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.026038978388077078,
+          "10_hz_fraction": 0.0005313158693297729,
+          "15_hz_fraction": 0.00009542352090278031
+        }
+      },
+      {
+        "label": "phase_baseline",
+        "repeat": 2,
+        "name": "triumph_two_handed_001__A058",
+        "physical_steps": 271,
+        "target_delta_rms_rad": 0.02780417911708355,
+        "target_delta_abs_p99_rad": 0.08633020937442787,
+        "fraction_joint_target_changes_over_point1rad": 0.005864197530864198,
+        "target_poststep_joint_rmse_rad": 0.15687966346740723,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.006530986414435069,
+          "10_hz_fraction": 0.0006745607273609893,
+          "15_hz_fraction": 0.0001357759117530647
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.0005436678210652642,
+          "10_hz_fraction": 0.00003981161682589529,
+          "15_hz_fraction": 0.000006935441536821757
+        }
+      },
+      {
+        "label": "rf15_static",
+        "repeat": 0,
+        "name": "walk_ff_stop_180_R_002__A095",
+        "physical_steps": 320,
+        "target_delta_rms_rad": 0.08936107158660889,
+        "target_delta_abs_p99_rad": 0.3205114307999611,
+        "fraction_joint_target_changes_over_point1rad": 0.18260188087774296,
+        "target_poststep_joint_rmse_rad": 0.3091467618942261,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.04925429008637425,
+          "10_hz_fraction": 0.0031718547392902297,
+          "15_hz_fraction": 0.0007504642630194398
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.014804322100258569,
+          "10_hz_fraction": 0.0006819901344514541,
+          "15_hz_fraction": 0.00013580097859585143
+        }
+      },
+      {
+        "label": "rf15_static",
+        "repeat": 0,
+        "name": "walk_ff_start_180_R_002__A071",
+        "physical_steps": 210,
+        "target_delta_rms_rad": 0.1116609126329422,
+        "target_delta_abs_p99_rad": 0.36507787674665443,
+        "fraction_joint_target_changes_over_point1rad": 0.25239234449760767,
+        "target_poststep_joint_rmse_rad": 0.34274253249168396,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.06247826564808957,
+          "10_hz_fraction": 0.003975587802098717,
+          "15_hz_fraction": 0.0009820798459335403
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.02309294450711429,
+          "10_hz_fraction": 0.0006969557532706538,
+          "15_hz_fraction": 0.00014168252721827483
+        }
+      },
+      {
+        "label": "rf15_static",
+        "repeat": 0,
+        "name": "triumph_two_handed_001__A058",
+        "physical_steps": 271,
+        "target_delta_rms_rad": 0.02783796563744545,
+        "target_delta_abs_p99_rad": 0.08643872082233432,
+        "fraction_joint_target_changes_over_point1rad": 0.006172839506172839,
+        "target_poststep_joint_rmse_rad": 0.15699096024036407,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.006443251502356264,
+          "10_hz_fraction": 0.0006813739665998241,
+          "15_hz_fraction": 0.0001513650591170311
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.0005349490281824879,
+          "10_hz_fraction": 0.00003572228095153405,
+          "15_hz_fraction": 0.000007748071007434474
+        }
+      },
+      {
+        "label": "rf15_static",
+        "repeat": 1,
+        "name": "walk_ff_stop_180_R_002__A095",
+        "physical_steps": 320,
+        "target_delta_rms_rad": 0.11416128277778625,
+        "target_delta_abs_p99_rad": 0.36084076672792437,
+        "fraction_joint_target_changes_over_point1rad": 0.27899686520376177,
+        "target_poststep_joint_rmse_rad": 0.3558069169521332,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.05722434577239217,
+          "10_hz_fraction": 0.004441812773370523,
+          "15_hz_fraction": 0.0012832415497508083
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.01700714791966809,
+          "10_hz_fraction": 0.0005938126368648294,
+          "15_hz_fraction": 0.00010368469266733991
+        }
+      },
+      {
+        "label": "rf15_static",
+        "repeat": 1,
+        "name": "walk_ff_start_180_R_002__A071",
+        "physical_steps": 210,
+        "target_delta_rms_rad": 0.11052899807691574,
+        "target_delta_abs_p99_rad": 0.36795937657356215,
+        "fraction_joint_target_changes_over_point1rad": 0.2460127591706539,
+        "target_poststep_joint_rmse_rad": 0.3401679992675781,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.06334865809580352,
+          "10_hz_fraction": 0.0037572702525327144,
+          "15_hz_fraction": 0.0008734203758807748
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.02244815843226871,
+          "10_hz_fraction": 0.0006201609678340228,
+          "15_hz_fraction": 0.00017593635729140555
+        }
+      },
+      {
+        "label": "rf15_static",
+        "repeat": 1,
+        "name": "triumph_two_handed_001__A058",
+        "physical_steps": 271,
+        "target_delta_rms_rad": 0.027749167755246162,
+        "target_delta_abs_p99_rad": 0.08682554960250854,
+        "fraction_joint_target_changes_over_point1rad": 0.006481481481481481,
+        "target_poststep_joint_rmse_rad": 0.15683582425117493,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.006433285464444279,
+          "10_hz_fraction": 0.0006573889011399127,
+          "15_hz_fraction": 0.00013026282253929774
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.0005233612174752646,
+          "10_hz_fraction": 0.00003410602665867556,
+          "15_hz_fraction": 0.000005416437861832602
+        }
+      },
+      {
+        "label": "rf15_static",
+        "repeat": 2,
+        "name": "walk_ff_stop_180_R_002__A095",
+        "physical_steps": 320,
+        "target_delta_rms_rad": 0.08929292857646942,
+        "target_delta_abs_p99_rad": 0.3261559972167015,
+        "fraction_joint_target_changes_over_point1rad": 0.1784221525600836,
+        "target_poststep_joint_rmse_rad": 0.304959237575531,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.04523787785843531,
+          "10_hz_fraction": 0.0033795577885560313,
+          "15_hz_fraction": 0.000821922938573761
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.014276438099446814,
+          "10_hz_fraction": 0.0005960027045979177,
+          "15_hz_fraction": 0.000112519576837349
+        }
+      },
+      {
+        "label": "rf15_static",
+        "repeat": 2,
+        "name": "walk_ff_start_180_R_002__A071",
+        "physical_steps": 210,
+        "target_delta_rms_rad": 0.11308451741933823,
+        "target_delta_abs_p99_rad": 0.3884106469154356,
+        "fraction_joint_target_changes_over_point1rad": 0.25996810207336524,
+        "target_poststep_joint_rmse_rad": 0.3425336182117462,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.06867402237469095,
+          "10_hz_fraction": 0.0037897227919275744,
+          "15_hz_fraction": 0.0010496678382170032
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.021053496234140257,
+          "10_hz_fraction": 0.000488367770232727,
+          "15_hz_fraction": 0.00009954830222799257
+        }
+      },
+      {
+        "label": "rf15_static",
+        "repeat": 2,
+        "name": "triumph_two_handed_001__A058",
+        "physical_steps": 271,
+        "target_delta_rms_rad": 0.02787024900317192,
+        "target_delta_abs_p99_rad": 0.08883477330207831,
+        "fraction_joint_target_changes_over_point1rad": 0.006481481481481481,
+        "target_poststep_joint_rmse_rad": 0.1570509821176529,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.006517739547294882,
+          "10_hz_fraction": 0.000660298567735902,
+          "15_hz_fraction": 0.00014020905355150898
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.0005349365616001553,
+          "10_hz_fraction": 0.00003699460703938997,
+          "15_hz_fraction": 0.0000054503392391570525
+        }
+      },
+      {
+        "label": "rf15_head",
+        "repeat": 0,
+        "name": "walk_ff_stop_180_R_002__A095",
+        "physical_steps": 320,
+        "target_delta_rms_rad": 0.13007761538028717,
+        "target_delta_abs_p99_rad": 0.4516023719310764,
+        "fraction_joint_target_changes_over_point1rad": 0.3069487983281087,
+        "target_poststep_joint_rmse_rad": 0.37039491534233093,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.062216018059769805,
+          "10_hz_fraction": 0.005147686725337973,
+          "15_hz_fraction": 0.0014023496317233462
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.016973185572827152,
+          "10_hz_fraction": 0.0007543821043783176,
+          "15_hz_fraction": 0.00010681599087133011
+        }
+      },
+      {
+        "label": "rf15_head",
+        "repeat": 0,
+        "name": "walk_ff_start_180_R_002__A071",
+        "physical_steps": 210,
+        "target_delta_rms_rad": 0.11347874999046326,
+        "target_delta_abs_p99_rad": 0.3861896461248395,
+        "fraction_joint_target_changes_over_point1rad": 0.259170653907496,
+        "target_poststep_joint_rmse_rad": 0.34259718656539917,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.07125436400564443,
+          "10_hz_fraction": 0.004255113142121395,
+          "15_hz_fraction": 0.0012987554720057671
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.022008266475556995,
+          "10_hz_fraction": 0.0006097630843488963,
+          "15_hz_fraction": 0.00011536876404876571
+        }
+      },
+      {
+        "label": "rf15_head",
+        "repeat": 0,
+        "name": "triumph_two_handed_001__A058",
+        "physical_steps": 271,
+        "target_delta_rms_rad": 0.028362255543470383,
+        "target_delta_abs_p99_rad": 0.09171112835407273,
+        "fraction_joint_target_changes_over_point1rad": 0.008333333333333333,
+        "target_poststep_joint_rmse_rad": 0.15804477035999298,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.006697109545413413,
+          "10_hz_fraction": 0.0006612147319794192,
+          "15_hz_fraction": 0.00011752676629266805
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.0005282381474839554,
+          "10_hz_fraction": 0.00003267164519661074,
+          "15_hz_fraction": 0.0000040310954298842826
+        }
+      },
+      {
+        "label": "rf15_head",
+        "repeat": 1,
+        "name": "walk_ff_stop_180_R_002__A095",
+        "physical_steps": 320,
+        "target_delta_rms_rad": 0.09352705627679825,
+        "target_delta_abs_p99_rad": 0.3293913239240647,
+        "fraction_joint_target_changes_over_point1rad": 0.2058516196447231,
+        "target_poststep_joint_rmse_rad": 0.3086630702018738,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.0322554644969522,
+          "10_hz_fraction": 0.0026424258164779242,
+          "15_hz_fraction": 0.0006845356284860407
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.009948217821690109,
+          "10_hz_fraction": 0.0003447081767383566,
+          "15_hz_fraction": 0.00007871508133439658
+        }
+      },
+      {
+        "label": "rf15_head",
+        "repeat": 1,
+        "name": "walk_ff_start_180_R_002__A071",
+        "physical_steps": 210,
+        "target_delta_rms_rad": 0.11478127539157867,
+        "target_delta_abs_p99_rad": 0.3871580716967566,
+        "fraction_joint_target_changes_over_point1rad": 0.2579744816586922,
+        "target_poststep_joint_rmse_rad": 0.34546366333961487,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.07411783277554698,
+          "10_hz_fraction": 0.003819369872095683,
+          "15_hz_fraction": 0.0011397233398099808
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.023418608926686423,
+          "10_hz_fraction": 0.0004616980709523757,
+          "15_hz_fraction": 0.00009531957042825385
+        }
+      },
+      {
+        "label": "rf15_head",
+        "repeat": 1,
+        "name": "triumph_two_handed_001__A058",
+        "physical_steps": 271,
+        "target_delta_rms_rad": 0.02833496406674385,
+        "target_delta_abs_p99_rad": 0.0934591983258726,
+        "fraction_joint_target_changes_over_point1rad": 0.008024691358024692,
+        "target_poststep_joint_rmse_rad": 0.15795715153217316,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.006754356975683055,
+          "10_hz_fraction": 0.0006836648445449517,
+          "15_hz_fraction": 0.0001274900462397039
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.0005165723472949416,
+          "10_hz_fraction": 0.000033263071789898174,
+          "15_hz_fraction": 0.0000038165762557700274
+        }
+      },
+      {
+        "label": "rf15_head",
+        "repeat": 2,
+        "name": "walk_ff_stop_180_R_002__A095",
+        "physical_steps": 320,
+        "target_delta_rms_rad": 0.129280224442482,
+        "target_delta_abs_p99_rad": 0.43640618175268175,
+        "fraction_joint_target_changes_over_point1rad": 0.2946708463949843,
+        "target_poststep_joint_rmse_rad": 0.3584883213043213,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.06774028922604101,
+          "10_hz_fraction": 0.010001231328691448,
+          "15_hz_fraction": 0.0017603859949158385
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.016795090806802665,
+          "10_hz_fraction": 0.0012389900569710825,
+          "15_hz_fraction": 0.00016082376982537794
+        }
+      },
+      {
+        "label": "rf15_head",
+        "repeat": 2,
+        "name": "walk_ff_start_180_R_002__A071",
+        "physical_steps": 210,
+        "target_delta_rms_rad": 0.117905393242836,
+        "target_delta_abs_p99_rad": 0.4170476406812664,
+        "fraction_joint_target_changes_over_point1rad": 0.26156299840510366,
+        "target_poststep_joint_rmse_rad": 0.34630346298217773,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.07468840446222635,
+          "10_hz_fraction": 0.00372183696564364,
+          "15_hz_fraction": 0.0010658598739160593
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.023238370215766514,
+          "10_hz_fraction": 0.0005420748462664686,
+          "15_hz_fraction": 0.00012013123172584608
+        }
+      },
+      {
+        "label": "rf15_head",
+        "repeat": 2,
+        "name": "triumph_two_handed_001__A058",
+        "physical_steps": 271,
+        "target_delta_rms_rad": 0.02837323769927025,
+        "target_delta_abs_p99_rad": 0.09373898059129723,
+        "fraction_joint_target_changes_over_point1rad": 0.008333333333333333,
+        "target_poststep_joint_rmse_rad": 0.1581219583749771,
+        "target_bandwidth": {
+          "5_hz_fraction": 0.006675047697488629,
+          "10_hz_fraction": 0.0006600783922161305,
+          "15_hz_fraction": 0.00011708900575530251
+        },
+        "actual_joint_bandwidth": {
+          "5_hz_fraction": 0.0005155001117768235,
+          "10_hz_fraction": 0.00003311318168968614,
+          "15_hz_fraction": 0.000003983030667138885
+        }
+      }
+    ],
+    "sources": [
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_PHASE_AWARE_LEG_PROBE_20261029/evaluation_library.json",
+        "bytes": 20800,
+        "sha256": "aff023b3d0d83204ceb165fe0b9591ba8e0b98bc745861d618221b7828bd8f29"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_PHASE_AWARE_LEG_PROBE_20261029/baseline_repeat0.npz",
+        "bytes": 7656900,
+        "sha256": "54204a5c476640bfd66e6e913b9250e4a54a9747453a8eb3d5720fb7557200f1"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_PHASE_AWARE_LEG_PROBE_20261029/baseline_repeat1.npz",
+        "bytes": 7656585,
+        "sha256": "63da4eccf117286259879647ea9d7fa1a53565295febedbfc4d14b9c331b3831"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_PHASE_AWARE_LEG_PROBE_20261029/baseline_repeat2.npz",
+        "bytes": 7656650,
+        "sha256": "bfe9e48a4481e3df6f8238514f0a49a96680d96a87c6d3bcc430e2ae39df99df"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/evaluation_library.json",
+        "bytes": 205726,
+        "sha256": "3c58014741f76d05ef6dc4b67e83e3e5fc5300b0dd8d23cf2c79a58c151a1d61"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/initial_static075_repeat0.npz",
+        "bytes": 81048929,
+        "sha256": "ba966382becc01fff21c8b605fd37a5473f9cb007ac1631066de56aea35ec979"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/initial_static075_repeat1.npz",
+        "bytes": 81148431,
+        "sha256": "7cb0898824f7f3dfe3239a4dccd22239cc305ea1f5952a109a3323da1d0ce644"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/initial_static075_repeat2.npz",
+        "bytes": 81094308,
+        "sha256": "c87d849ed9a92316936f8e6817cfeeba7f6dd1cdc34e89fc51f73521e4c2a4ce"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/evaluation_library.json",
+        "bytes": 205726,
+        "sha256": "3c58014741f76d05ef6dc4b67e83e3e5fc5300b0dd8d23cf2c79a58c151a1d61"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/stage_01_repeat0.npz",
+        "bytes": 91681343,
+        "sha256": "e538478c2f7d0fbbe1944e1d3e9df516c9ab2a0ea150cd16676d156e31601a90"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/stage_01_repeat1.npz",
+        "bytes": 91602966,
+        "sha256": "46c48305bba1b1b4d3dcfa2a9c9c11048be4fb5b6ff4d727f65add9e93050f42"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF15_GAIT_RESIDUAL_SOMA300_E4096_OVERNIGHT_20261029/evaluation/stage_01_repeat2.npz",
+        "bytes": 91673198,
+        "sha256": "0a24b66a348ab3941aa0d13e4a18bf39f340f3a0a9d5586030af4a1708a845f7"
+      }
+    ],
+    "new_physical_steps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0,
+    "limitations": [
+      "PSD is demeaned Hann-windowed50Hz joint positions pooled over12 legs; fractions are not force spectra.",
+      "PD error uses post20ms state, not internal5ms actuator error or actual motor torque.",
+      "Closed-loop target/state association cannot identify causal actuator delay.",
+      "Same checkpoint repeated; existing validation/search has no independent held-out claim."
+    ]
+  },
+  "previous_result_publication": {
+    "files": [
+      {
+        "relative_path": "AGENTS.md",
+        "bytes": 41655,
+        "sha256": "cf589103c697abf0e7efeeeddc6039b729d8accf63761b5ea7ec112b03fa77b7",
+        "matched": true
+      },
+      {
+        "relative_path": "reports/README.md",
+        "bytes": 119384,
+        "sha256": "29956ea9e8a2b58ddddd32e87919b5c98718554a4b9e299586c4e9c6f91a1677",
+        "matched": true
+      },
+      {
+        "relative_path": "reports/README_CURRENT_STATE.md",
+        "bytes": 28817,
+        "sha256": "6f9ce894002d2b2c092bac6b7b821f65b0f7e94fe5b888deee6cbd015c04c597",
+        "matched": true
+      },
+      {
+        "relative_path": "reports/README_Q1_OVERNIGHT_20261029.md",
+        "bytes": 10603,
+        "sha256": "f297f962f82bca13acd33dd17105e0c69a0a2d8c1286c438c0386594a6d58865",
+        "matched": true
+      },
+      {
+        "relative_path": "reports/README_Q1_PHASE_LEG_PROBE_20261029.md",
+        "bytes": 5636,
+        "sha256": "25d395ac1f4a299bdab7afbe30e120dacb5488c595503a68ae92d466b2f15586",
+        "matched": true
+      },
+      {
+        "relative_path": "reports/README_SUPERMIMIC_Q1_RF15_OVERNIGHT_20261029.md",
+        "bytes": 5904,
+        "sha256": "1b5623ec5a9340fcee69811ebc82008c1833fdb67bbd13f4dd96b90a073e916a",
+        "matched": true
+      },
+      {
+        "relative_path": "reports/README_SUPERMIMIC_Q1_RF15_RESULTS_20261029.md",
+        "bytes": 5097,
+        "sha256": "926fa59b92c78b23eef4b998749515093da96c36a8e12fe9f73050ac0bf18bce",
+        "matched": true
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF15_local_delivery_20261029.json",
+        "bytes": 87063,
+        "sha256": "e29a6f81ee3052ca2c0ba574ff6be117f1d2dd194e043a3dbd22654f71104ebd",
+        "matched": true
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_phase_leg_results_20261029.json",
+        "bytes": 58731,
+        "sha256": "17f015b03f4a01c21f6f86ff1151621b39abb414c5d65097e955a71360eec9c4",
+        "matched": true
+      }
+    ],
+    "all_matched": true,
+    "commit": "e55e3bd74a11e921271d31a2dd306e6570b0d081",
+    "count": 9,
+    "bytes": 362890
+  },
+  "seed_correction": {
+    "old_phase_metadata_requested": [
+      32000,
+      32001,
+      32002
+    ],
+    "old_environment_and_algorithm_configured": 0,
+    "reason": "Existing worker.prepare overrides seeds before creating env; label is not proof of actual varied seeds",
+    "new_protocol": "Explicit configured environment/algorithm/global seed before create_env, global RNG reseed after teacher construction before rollout; per-case seed_contract.json"
+  },
+  "physical_optimizer_updates": 0,
+  "new_physical_steps": 0,
+  "user_accepted_checkpoint": null,
+  "pending": [
+    "Publish/freeze and verify three-root hashes",
+    "One quick33 physical probe; never launch twice",
+    "Only repeatable per-walk physical gains justify independent full330 verification"
+  ]
+}

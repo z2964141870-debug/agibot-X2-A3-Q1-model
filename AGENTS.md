@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-29 02:53独立TARGET_FILTER准备已7CPU反例/解析/CLI help、27行已存NPZ频谱集成通过，尚未物理启动；固定RF14两小时/手臂alpha.5，只对12腿目标做轻EMA/限速。旧phase种子标签32000+repeat被worker.prepare覆盖0的边界已补正，不称三个独立seed；新prepare_seeded在create_env前设实际环境/算法/全局seed并逐case落收据。RF15/phase交付e55e3bd74a11e921271d31a2dd306e6570b0d081独立远端/9记录362890字节三端SHA。后续先正式冻结发布才跑一次quick33，07:00停新优化/物理探索、09:00交付，用户采纳仍null；不恢复/重试RF15/旧训练/agent。入口TARGET_FILTER_PROBE及target_filter_preparation收据。
+
 - 2026-10-29 02:31 RF15负面试验已完成交付：1203.610393秒/270轮physical_regression正常停，02:10:47全pipeline COMPLETED，原controller/训练与交付worker退出/GPU释放；11保存/24媒体检查与71工件54801805字节Mac/25386大小SHA完成，四54秒MP4/六格/逐片数据齐备。静态alpha.5上肢收益不归因head学习、用户采纳仍null。独立参考相位腿部quick33已02:13至02:22完成，controller142032/worker142035退出、guardreap0/1166来源未变，6候选三重复/0optimizer均无两走可重复收益；26小工件3278039字节Mac核SHA，不据此full330或训练。本夜探索授权至09:00仍有效、07:00停新优化/物理探索；下一步高频目标/阻尼诊断尚未启动，不恢复/重试RF15/旧训练、不热改来源/agent/旧goal。入口RF15_RESULTS、PHASE_LEG_PROBE及local_delivery/phase_leg_results收据，以下未交付/RUNNING为历史。
 
 - 2026-10-29 01:48 RF15首1203.610393秒/270轮因停走滑移physical_regression2/3而正常停止，验证0/0/1、固定两走/抬手虽完整但步态未改善；静态alpha.5上肢收益保留，不归因head学习。训练worker137016已退出/GPU释放，controller137006与交付worker139983仍在，MP4/六格/保存及媒体审计待；不预称完成，不恢复/重试RF15。11小证据1659618字节Mac/25386 SHA及逐片表已备。09:00夜间自主探索授权仍有效，可继续有界分析/独立零optimizer控制对照，不自动重试/热改来源；07:00优化截止、用户尚未采纳底座不变。入口RF15_RESULTS_20261029及stage01收据，以下RUNNING为历史。

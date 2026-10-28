@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 03:43最新：[PD quick33已03:38:40完成](README_Q1_PD_SENSITIVITY_20261029.md)，1185来源/教师未变、guardreap0/原两进程退出/GPU释放，74小工件4615555字节Mac/25386 SHA。stiffness150两走滑速相对.645/.812/.771与.598/.759/.535，但足高明显更低、倾斜绝对约多1度/相对增19%至26%，原逐片门0/3，不宣称自然步态/据此训练。下一[按参考活动量调节上肢混合](README_Q1_ACTIVITY_BLEND_20261029.md)已4CPU/远端help通过，5档只用参考速度/heading、无片名规则，原PD不变；尚未物理启动，先冻结/发布/核SHA。07:00/09:00截止、用户采纳null保留。
+
 2026-10-29 03:29最新：[独立腿部PD quick33](README_Q1_PD_SENSITIVITY_20261029.md)已03:28:39实际启动，controller149008/start_ticks12936494、worker149016/start_ticks12936658，原boot/GPU/完整命令一致。冻结119e9c8895044d5da43fac1f7e60502df0769cfe独立远端/11文件262227字节三端SHA已核；03:28:55 baseline repeat0/frame0/0optimizer、GPU725MiB/31度/共享15.19GB/OOM0，尚无改善结论。唯一6档×3重复×33环境，原来源冻结，不恢复训练/重复启动；监督已工具ACTIVE每10分钟更新，07:00/09:00截止不变。[启动](../data/manifests/supermimic_q1_pd_probe_launch_20261029.json)。
 
 2026-10-29 03:26：[独立PD敏感度准备](README_Q1_PD_SENSITIVITY_20261029.md)完成4CPU反例/远端help及16环境两档CPU/Warp实际增益预检，原场景不变/0optimizer/OOM0；第一预检因现有模型15.791367→15.7914舍入触发严容差，修正并保存实际数值后V02通过。6档只改独立XML的12腿kp/kv，手臂.5/原目标尺度/限矩不改；正式quick33尚未启动，先冻结发布/三端核验。不把控制预检当步态收益，07:00/09:00截止和用户采纳null保留。

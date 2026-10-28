@@ -1,0 +1,1859 @@
+{
+  "status": "PD_QUICK33_MIXED_TRADEOFF_NOT_BALANCED_IMPROVEMENT",
+  "captured_beijing": "2026-10-29T03:41:00+08:00",
+  "code_commit": "119e9c8895044d5da43fac1f7e60502df0769cfe",
+  "final_observation": {
+    "captured_utc": "2026-10-28T19:39:25.481016+00:00",
+    "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "trial": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_PD_SENSITIVITY_PROBE_20261029",
+    "files": {
+      "launch.json": {
+        "bytes": 108,
+        "mtime_ns": 1793215719933643000,
+        "content": {
+          "controller_pid": 149008,
+          "started_utc": "2026-10-28T19:28:39.937297+00:00",
+          "optimizer_steps": 0
+        }
+      },
+      "status.json": {
+        "bytes": 339,
+        "mtime_ns": 1793216320702418700,
+        "content": {
+          "status": "COMPLETED",
+          "process": {
+            "pid": 149008,
+            "start_ticks": 12936494,
+            "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+          },
+          "started_utc": "2026-10-28T19:28:41.499702+00:00",
+          "optimizer_steps": 0,
+          "no_automatic_retry": true,
+          "ended_utc": "2026-10-28T19:38:40.704854+00:00",
+          "frozen_source_count": 1185
+        }
+      },
+      "plan.json": {
+        "bytes": 291943,
+        "mtime_ns": 1793215721493566000,
+        "content": {
+          "started_utc": "2026-10-28T19:28:41.492912+00:00",
+          "process": {
+            "pid": 149008,
+            "start_ticks": 12936494,
+            "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+          },
+          "optimizer_steps": 0,
+          "maximum_wall_seconds": 2400,
+          "scope": "quick33",
+          "candidates": [
+            "baseline",
+            "damping075",
+            "damping125",
+            "damping150",
+            "stiffness125",
+            "stiffness150"
+          ],
+          "code_commit": "119e9c8895044d5da43fac1f7e60502df0769cfe",
+          "optimization_deadline_unix": 1793228400,
+          "expected_boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+          "expected_gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08"
+        }
+      },
+      "run/status.json": {
+        "bytes": 429,
+        "mtime_ns": 1793216317814569700,
+        "content": {
+          "status": "COMPLETED",
+          "process": {
+            "pid": 149016,
+            "start_ticks": 12936658,
+            "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+          },
+          "started_utc": "2026-10-28T19:28:43.575421+00:00",
+          "optimizer_steps": 0,
+          "candidate": "stiffness150",
+          "repeat": 2,
+          "frame": 450,
+          "updated_utc": "2026-10-28T19:38:34.427578+00:00",
+          "ended_utc": "2026-10-28T19:38:37.818059+00:00",
+          "frozen_teacher_unchanged": true
+        }
+      },
+      "guard.json": {
+        "bytes": 2781,
+        "mtime_ns": 1793216319574477600,
+        "content": {
+          "status": "WORKER_COMPLETED",
+          "command": [
+            "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python",
+            "-u",
+            "/opt/data/private/ZHY/script/supermimic_q1_hp/activate.py",
+            "-u",
+            "/opt/data/private/ZHY/script/supermimic_q1_pd_probe/probe.py",
+            "--runtime",
+            "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+            "--library",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json",
+            "--checkpoint",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt",
+            "--calibration",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_UR04_BALANCE_PREP_20261028/calibration_v02.json",
+            "--frozen-plan",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_TARGET_FILTER_PROBE_20261029/plan.json",
+            "--output",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_PD_SENSITIVITY_PROBE_20261029",
+            "--scope",
+            "quick33",
+            "--expected-boot",
+            "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+            "--expected-gpu",
+            "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+            "--code-commit",
+            "119e9c8895044d5da43fac1f7e60502df0769cfe",
+            "--controller",
+            "--worker"
+          ],
+          "cwd": "/opt/data/private/ZHY",
+          "started_utc": "2026-10-28T19:28:41.500106+00:00",
+          "controller_pid": 149008,
+          "storage_status": "LOCAL_ONLY",
+          "last_storage_check": {
+            "experiment": {
+              "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_PD_SENSITIVITY_PROBE_20261029",
+              "unique_allocated_bytes": 142430208,
+              "unique_logical_bytes": 142190635,
+              "unique_inodes": 113,
+              "symlinks_not_followed": 0
+            },
+            "source": {
+              "root": "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+              "unique_allocated_bytes": 1536000,
+              "unique_logical_bytes": 1204099,
+              "unique_inodes": 166,
+              "symlinks_not_followed": 0
+            },
+            "free_bytes": {
+              "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_PD_SENSITIVITY_PROBE_20261029": 1641964695552,
+              "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027": 1641964695552
+            },
+            "shared_memory": {
+              "shared_bytes": 13319901184,
+              "oom_kill": 0,
+              "maximum_bytes": 32212254720
+            },
+            "gpu": {
+              "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+              "memory_mib": 15,
+              "temperature_c": 39
+            }
+          },
+          "error": null,
+          "worker_pid": 149016,
+          "worker_group": 149016,
+          "cleanup": {
+            "worker_started": true,
+            "worker_pid": 149016,
+            "worker_group": 149016,
+            "worker_reaped": true,
+            "worker_return_code": 0
+          },
+          "ended_utc": "2026-10-28T19:38:39.577816+00:00"
+        }
+      }
+    },
+    "processes": {
+      "149008": {
+        "exists": false
+      },
+      "149016": {
+        "exists": false
+      }
+    },
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15, 29, 0",
+    "compute_processes": "",
+    "free_bytes": 1641964081152
+  },
+  "outcome": {
+    "run": {
+      "status": "COMPLETED",
+      "process": {
+        "pid": 149016,
+        "start_ticks": 12936658,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "started_utc": "2026-10-28T19:28:43.575421+00:00",
+      "optimizer_steps": 0,
+      "candidate": "stiffness150",
+      "repeat": 2,
+      "frame": 450,
+      "updated_utc": "2026-10-28T19:38:34.427578+00:00",
+      "ended_utc": "2026-10-28T19:38:37.818059+00:00",
+      "frozen_teacher_unchanged": true
+    },
+    "status": {
+      "status": "COMPLETED",
+      "process": {
+        "pid": 149008,
+        "start_ticks": 12936494,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "started_utc": "2026-10-28T19:28:41.499702+00:00",
+      "optimizer_steps": 0,
+      "no_automatic_retry": true,
+      "ended_utc": "2026-10-28T19:38:40.704854+00:00",
+      "frozen_source_count": 1185
+    },
+    "candidates": [
+      {
+        "name": "baseline",
+        "gate": null,
+        "val": [
+          0,
+          0,
+          0
+        ],
+        "walk_ratios": [
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "damping075",
+        "gate": {
+          "passed": [
+            false,
+            false,
+            false
+          ],
+          "continue_authorized": false,
+          "protocol": "Both fixed walks each improve slip or swing >=10%, preserve other gait metrics <=10%, upper/wrist/peak <=15%; all fixed demos complete in3 repeats; this overnight authority ends07:00 Beijing"
+        },
+        "val": [
+          0,
+          0,
+          0
+        ],
+        "walk_ratios": [
+          [
+            {
+              "walking_slip": 0.9665527995946687,
+              "swing_error": 1.050943948171484,
+              "walking_tilt": 1.016192098494015,
+              "target_change": 1.0680249673992896
+            },
+            {
+              "walking_slip": 0.9431962948619773,
+              "swing_error": 0.954238136145578,
+              "walking_tilt": 0.9698850366985943,
+              "target_change": 0.9223569789299866
+            }
+          ],
+          [
+            {
+              "walking_slip": 1.030395792204697,
+              "swing_error": 1.0294602724844382,
+              "walking_tilt": 1.0805548144538488,
+              "target_change": 0.880639332475866
+            },
+            {
+              "walking_slip": 1.3076255916020547,
+              "swing_error": 1.0858574231539408,
+              "walking_tilt": 1.1038432423579796,
+              "target_change": 1.0115372237788556
+            }
+          ],
+          [
+            {
+              "walking_slip": 0.9975314502729646,
+              "swing_error": 1.0562559834081957,
+              "walking_tilt": 1.1134795305945384,
+              "target_change": 0.9041189593718821
+            },
+            {
+              "walking_slip": 0.9723088981620409,
+              "swing_error": 1.0278271715123692,
+              "walking_tilt": 1.1248656946058808,
+              "target_change": 0.8582829510570184
+            }
+          ]
+        ]
+      },
+      {
+        "name": "damping125",
+        "gate": {
+          "passed": [
+            false,
+            false,
+            false
+          ],
+          "continue_authorized": false,
+          "protocol": "Both fixed walks each improve slip or swing >=10%, preserve other gait metrics <=10%, upper/wrist/peak <=15%; all fixed demos complete in3 repeats; this overnight authority ends07:00 Beijing"
+        },
+        "val": [
+          0,
+          0,
+          0
+        ],
+        "walk_ratios": [
+          [
+            {
+              "walking_slip": 1.0043724640860137,
+              "swing_error": 1.0256597036507975,
+              "walking_tilt": 0.9171594101120593,
+              "target_change": 1.1547671674860827
+            },
+            {
+              "walking_slip": 0.8316851416077718,
+              "swing_error": 0.953463272935123,
+              "walking_tilt": 0.9906565275837704,
+              "target_change": 1.0190202859769646
+            }
+          ],
+          [
+            {
+              "walking_slip": 1.580539028125231,
+              "swing_error": 1.0140319683039238,
+              "walking_tilt": 0.9202292998334556,
+              "target_change": 1.1698501097848226
+            },
+            {
+              "walking_slip": 1.3822257824410114,
+              "swing_error": 1.0463421069926133,
+              "walking_tilt": 1.2594236158937735,
+              "target_change": 1.1406782968673328
+            }
+          ],
+          [
+            {
+              "walking_slip": 1.8857670535577735,
+              "swing_error": 1.119100817216029,
+              "walking_tilt": 3.2292825679498462,
+              "target_change": 2.007848076459891
+            },
+            {
+              "walking_slip": 1.0289952645765459,
+              "swing_error": 1.0218484428729508,
+              "walking_tilt": 1.21021442769555,
+              "target_change": 1.1294402925697782
+            }
+          ]
+        ]
+      },
+      {
+        "name": "damping150",
+        "gate": {
+          "passed": [
+            false,
+            false,
+            false
+          ],
+          "continue_authorized": false,
+          "protocol": "Both fixed walks each improve slip or swing >=10%, preserve other gait metrics <=10%, upper/wrist/peak <=15%; all fixed demos complete in3 repeats; this overnight authority ends07:00 Beijing"
+        },
+        "val": [
+          5,
+          5,
+          5
+        ],
+        "walk_ratios": [
+          [
+            {
+              "walking_slip": 1.6059083786639299,
+              "swing_error": 1.3749513530157496,
+              "walking_tilt": 5.209596116963527,
+              "target_change": 2.456361696746097
+            },
+            {
+              "walking_slip": 1.0135099907342688,
+              "swing_error": 0.8686449169103639,
+              "walking_tilt": 1.1198418031485606,
+              "target_change": 1.1306803012618127
+            }
+          ],
+          [
+            {
+              "walking_slip": 1.7771636362241106,
+              "swing_error": 1.361359679755585,
+              "walking_tilt": 5.219211337410225,
+              "target_change": 2.45408302704645
+            },
+            {
+              "walking_slip": 1.218240409130672,
+              "swing_error": 0.9222255565752165,
+              "walking_tilt": 1.202915973384361,
+              "target_change": 1.1705881248013574
+            }
+          ],
+          [
+            {
+              "walking_slip": 2.0741315648873777,
+              "swing_error": 1.361825399599782,
+              "walking_tilt": 5.389946321259929,
+              "target_change": 2.500218723913427
+            },
+            {
+              "walking_slip": 0.6608959603043644,
+              "swing_error": 0.9168134169535167,
+              "walking_tilt": 1.218439081002723,
+              "target_change": 1.14931818593175
+            }
+          ]
+        ]
+      },
+      {
+        "name": "stiffness125",
+        "gate": {
+          "passed": [
+            false,
+            false,
+            false
+          ],
+          "continue_authorized": false,
+          "protocol": "Both fixed walks each improve slip or swing >=10%, preserve other gait metrics <=10%, upper/wrist/peak <=15%; all fixed demos complete in3 repeats; this overnight authority ends07:00 Beijing"
+        },
+        "val": [
+          0,
+          0,
+          0
+        ],
+        "walk_ratios": [
+          [
+            {
+              "walking_slip": 0.8080019877373262,
+              "swing_error": 1.0569623169066231,
+              "walking_tilt": 1.2118589720839954,
+              "target_change": 0.7007108714172539
+            },
+            {
+              "walking_slip": 0.7381273347936815,
+              "swing_error": 0.9916370778511924,
+              "walking_tilt": 1.1970386515925022,
+              "target_change": 0.6051230391646472
+            }
+          ],
+          [
+            {
+              "walking_slip": 0.8886402583781943,
+              "swing_error": 1.0276796551805345,
+              "walking_tilt": 1.2322372213040729,
+              "target_change": 0.644864886192001
+            },
+            {
+              "walking_slip": 0.9807582535528351,
+              "swing_error": 1.0627170023761885,
+              "walking_tilt": 1.279092294968482,
+              "target_change": 0.6187216082496985
+            }
+          ],
+          [
+            {
+              "walking_slip": 0.8062178363828272,
+              "swing_error": 1.048363976160991,
+              "walking_tilt": 1.2094107112018402,
+              "target_change": 0.6810056055694937
+            },
+            {
+              "walking_slip": 0.6464828244835354,
+              "swing_error": 1.0405440554279979,
+              "walking_tilt": 1.2888367250172315,
+              "target_change": 0.6067826210446114
+            }
+          ]
+        ]
+      },
+      {
+        "name": "stiffness150",
+        "gate": {
+          "passed": [
+            false,
+            false,
+            false
+          ],
+          "continue_authorized": false,
+          "protocol": "Both fixed walks each improve slip or swing >=10%, preserve other gait metrics <=10%, upper/wrist/peak <=15%; all fixed demos complete in3 repeats; this overnight authority ends07:00 Beijing"
+        },
+        "val": [
+          0,
+          0,
+          0
+        ],
+        "walk_ratios": [
+          [
+            {
+              "walking_slip": 0.6445364910483855,
+              "swing_error": 0.9643100262485544,
+              "walking_tilt": 1.203897227726447,
+              "target_change": 0.6776138412539998
+            },
+            {
+              "walking_slip": 0.5981736129414713,
+              "swing_error": 1.028885028682684,
+              "walking_tilt": 1.1903129889360053,
+              "target_change": 0.5890995360956884
+            }
+          ],
+          [
+            {
+              "walking_slip": 0.8123065671992672,
+              "swing_error": 0.9544045835592333,
+              "walking_tilt": 1.2267072948879616,
+              "target_change": 0.6162826312124217
+            },
+            {
+              "walking_slip": 0.758609732271146,
+              "swing_error": 1.0981464384491193,
+              "walking_tilt": 1.261885557162471,
+              "target_change": 0.6101210938071409
+            }
+          ],
+          [
+            {
+              "walking_slip": 0.7711780802942405,
+              "swing_error": 0.9612437447312213,
+              "walking_tilt": 1.2105971427254332,
+              "target_change": 0.6563215235138933
+            },
+            {
+              "walking_slip": 0.5351493736598759,
+              "swing_error": 1.0505138715363112,
+              "walking_tilt": 1.2607288883711807,
+              "target_change": 0.5685965942916167
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "absolute_metrics": [
+    {
+      "candidate": "baseline",
+      "repeats": [
+        {
+          "summary": {
+            "train": {
+              "clips": 3,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.05745965614914894,
+              "upper_rmse": 0.2919911841551463,
+              "leg_rmse": 0.266488919655482,
+              "wrist_relative_rmse": 0.08248694737752278
+            },
+            "validation": {
+              "clips": 30,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.0636722281575203,
+              "upper_rmse": 0.29609195291996004,
+              "leg_rmse": 0.2631431351105372,
+              "wrist_relative_rmse": 0.08392338864505292
+            }
+          },
+          "gait": {
+            "walk_ff_stop_180_R_002__A095": {
+              "steps": 320,
+              "common_prefix_steps": 320,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 2.209778308868408,
+              "reference_displacement_m": 2.1927454471588135,
+              "root_displacement_m": 2.209895610809326,
+              "foot_lift_p95_m": [
+                0.05408056639134885,
+                0.06101412270218135
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07711893320083618,
+                0.08188892472535372
+              ],
+              "foot_lift_tracking_rmse_m": 0.0282563182675703,
+              "swing_local_foot_rmse_m": 0.08651948720216751,
+              "loaded_slip_mps": 0.10414199531078339,
+              "torso_tilt_rms_rad": 0.08712368458509445,
+              "knee_reference_rmse_rad": 0.30933842062950134,
+              "target_delta_rms_rad": 0.06987623870372772,
+              "sustained_single_support_alternations": 14,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "walk_ff_start_180_R_002__A071": {
+              "steps": 210,
+              "common_prefix_steps": 210,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 2.2943103313446045,
+              "reference_displacement_m": 2.0565264225006104,
+              "root_displacement_m": 2.3012382984161377,
+              "foot_lift_p95_m": [
+                0.04415604621171947,
+                0.06976093724370001
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07931931391358375,
+                0.08814619742333889
+              ],
+              "foot_lift_tracking_rmse_m": 0.030282261100565814,
+              "swing_local_foot_rmse_m": 0.08008624613285065,
+              "loaded_slip_mps": 0.14456121623516083,
+              "torso_tilt_rms_rad": 0.0895443856716156,
+              "knee_reference_rmse_rad": 0.41397181153297424,
+              "target_delta_rms_rad": 0.09259577095508575,
+              "sustained_single_support_alternations": 17,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "triumph_two_handed_001__A058": {
+              "steps": 271,
+              "common_prefix_steps": 271,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 0.06764110177755356,
+              "reference_displacement_m": 0.00112003309186548,
+              "root_displacement_m": 0.07740548253059387,
+              "foot_lift_p95_m": [
+                0.0006100721657276154,
+                -0.000981723889708519
+              ],
+              "reference_foot_lift_p95_m": [
+                0.004195546731352806,
+                0.027339322492480278
+              ],
+              "foot_lift_tracking_rmse_m": 0.011575418291979982,
+              "swing_local_foot_rmse_m": 0.02888004295527935,
+              "loaded_slip_mps": 0.014212235808372498,
+              "torso_tilt_rms_rad": 0.22478556632995605,
+              "knee_reference_rmse_rad": 0.3316647708415985,
+              "target_delta_rms_rad": 0.032502252608537674,
+              "sustained_single_support_alternations": 0,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            }
+          }
+        },
+        {
+          "summary": {
+            "train": {
+              "clips": 3,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.06016715057194233,
+              "upper_rmse": 0.2884657333294551,
+              "leg_rmse": 0.2693900962670644,
+              "wrist_relative_rmse": 0.08150768280029297
+            },
+            "validation": {
+              "clips": 30,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.06969568347558379,
+              "upper_rmse": 0.2966492727398872,
+              "leg_rmse": 0.26452207018931706,
+              "wrist_relative_rmse": 0.08397611069182555
+            }
+          },
+          "gait": {
+            "walk_ff_stop_180_R_002__A095": {
+              "steps": 320,
+              "common_prefix_steps": 320,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 2.2509727478027344,
+              "reference_displacement_m": 2.1927454471588135,
+              "root_displacement_m": 2.2514164447784424,
+              "foot_lift_p95_m": [
+                0.05480738542973996,
+                0.06501157898455859
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07711893320083618,
+                0.08188892472535372
+              ],
+              "foot_lift_tracking_rmse_m": 0.028068308389740847,
+              "swing_local_foot_rmse_m": 0.08763531595468521,
+              "loaded_slip_mps": 0.09152761101722717,
+              "torso_tilt_rms_rad": 0.08514658361673355,
+              "knee_reference_rmse_rad": 0.3346298038959503,
+              "target_delta_rms_rad": 0.07723411172628403,
+              "sustained_single_support_alternations": 21,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "walk_ff_start_180_R_002__A071": {
+              "steps": 210,
+              "common_prefix_steps": 210,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 2.2346031665802,
+              "reference_displacement_m": 2.0565264225006104,
+              "root_displacement_m": 2.2347495555877686,
+              "foot_lift_p95_m": [
+                0.048579139634966836,
+                0.0691107328981161
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07931931391358375,
+                0.08814619742333889
+              ],
+              "foot_lift_tracking_rmse_m": 0.028278334302067238,
+              "swing_local_foot_rmse_m": 0.07527750730514526,
+              "loaded_slip_mps": 0.11559316515922546,
+              "torso_tilt_rms_rad": 0.08379833400249481,
+              "knee_reference_rmse_rad": 0.4090553820133209,
+              "target_delta_rms_rad": 0.08964288234710693,
+              "sustained_single_support_alternations": 15,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "triumph_two_handed_001__A058": {
+              "steps": 271,
+              "common_prefix_steps": 271,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 0.06797254085540771,
+              "reference_displacement_m": 0.00112003309186548,
+              "root_displacement_m": 0.0775206983089447,
+              "foot_lift_p95_m": [
+                0.0006422530859708786,
+                -0.0009624417871236801
+              ],
+              "reference_foot_lift_p95_m": [
+                0.004195546731352806,
+                0.027339322492480278
+              ],
+              "foot_lift_tracking_rmse_m": 0.011576152514194074,
+              "swing_local_foot_rmse_m": 0.028829744085669518,
+              "loaded_slip_mps": 0.01212320290505886,
+              "torso_tilt_rms_rad": 0.22489461302757263,
+              "knee_reference_rmse_rad": 0.33122047781944275,
+              "target_delta_rms_rad": 0.032563623040914536,
+              "sustained_single_support_alternations": 0,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            }
+          }
+        },
+        {
+          "summary": {
+            "train": {
+              "clips": 3,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.059269655495882034,
+              "upper_rmse": 0.2936664621035258,
+              "leg_rmse": 0.2673856317996979,
+              "wrist_relative_rmse": 0.08030907437205315
+            },
+            "validation": {
+              "clips": 30,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.06709601092152298,
+              "upper_rmse": 0.29657344619433085,
+              "leg_rmse": 0.2634653106331825,
+              "wrist_relative_rmse": 0.08422862266500791
+            }
+          },
+          "gait": {
+            "walk_ff_stop_180_R_002__A095": {
+              "steps": 320,
+              "common_prefix_steps": 320,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 2.251795530319214,
+              "reference_displacement_m": 2.1927454471588135,
+              "root_displacement_m": 2.2518837451934814,
+              "foot_lift_p95_m": [
+                0.05402616150677205,
+                0.061546987108886245
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07711893320083618,
+                0.08188892472535372
+              ],
+              "foot_lift_tracking_rmse_m": 0.028528562360217054,
+              "swing_local_foot_rmse_m": 0.08653409034013748,
+              "loaded_slip_mps": 0.10327078402042389,
+              "torso_tilt_rms_rad": 0.08663016557693481,
+              "knee_reference_rmse_rad": 0.3173694312572479,
+              "target_delta_rms_rad": 0.0721602812409401,
+              "sustained_single_support_alternations": 19,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "walk_ff_start_180_R_002__A071": {
+              "steps": 210,
+              "common_prefix_steps": 210,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 2.2430953979492188,
+              "reference_displacement_m": 2.0565264225006104,
+              "root_displacement_m": 2.2431092262268066,
+              "foot_lift_p95_m": [
+                0.04857025370001792,
+                0.07094317972660064
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07931931391358375,
+                0.08814619742333889
+              ],
+              "foot_lift_tracking_rmse_m": 0.030683524354590524,
+              "swing_local_foot_rmse_m": 0.07636724412441254,
+              "loaded_slip_mps": 0.14813607931137085,
+              "torso_tilt_rms_rad": 0.08340653777122498,
+              "knee_reference_rmse_rad": 0.4141819477081299,
+              "target_delta_rms_rad": 0.09097268432378769,
+              "sustained_single_support_alternations": 17,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "triumph_two_handed_001__A058": {
+              "steps": 271,
+              "common_prefix_steps": 271,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 0.06938459724187851,
+              "reference_displacement_m": 0.00112003309186548,
+              "root_displacement_m": 0.07853256911039352,
+              "foot_lift_p95_m": [
+                0.000639183446764946,
+                -0.0009568408131599426
+              ],
+              "reference_foot_lift_p95_m": [
+                0.004195546731352806,
+                0.027339322492480278
+              ],
+              "foot_lift_tracking_rmse_m": 0.01158287170641637,
+              "swing_local_foot_rmse_m": 0.0288266409188509,
+              "loaded_slip_mps": 0.013815479353070259,
+              "torso_tilt_rms_rad": 0.22480694949626923,
+              "knee_reference_rmse_rad": 0.3312966823577881,
+              "target_delta_rms_rad": 0.032652467489242554,
+              "sustained_single_support_alternations": 0,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "stiffness125",
+      "repeats": [
+        {
+          "summary": {
+            "train": {
+              "clips": 3,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.06518948761125405,
+              "upper_rmse": 0.3026062399148941,
+              "leg_rmse": 0.29228124022483826,
+              "wrist_relative_rmse": 0.07098639880617459
+            },
+            "validation": {
+              "clips": 30,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.038403172371909024,
+              "upper_rmse": 0.29633396019538244,
+              "leg_rmse": 0.2564182408154011,
+              "wrist_relative_rmse": 0.08416556331018607
+            }
+          },
+          "gait": {
+            "walk_ff_stop_180_R_002__A095": {
+              "steps": 320,
+              "common_prefix_steps": 320,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 2.0993824005126953,
+              "reference_displacement_m": 2.1927454471588135,
+              "root_displacement_m": 2.099393129348755,
+              "foot_lift_p95_m": [
+                0.03766375370323659,
+                0.039362672157585626
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07711893320083618,
+                0.08188892472535372
+              ],
+              "foot_lift_tracking_rmse_m": 0.029436027214226362,
+              "swing_local_foot_rmse_m": 0.09144783765077591,
+              "loaded_slip_mps": 0.08414693921804428,
+              "torso_tilt_rms_rad": 0.1055816188454628,
+              "knee_reference_rmse_rad": 0.3417190611362457,
+              "target_delta_rms_rad": 0.0489630401134491,
+              "sustained_single_support_alternations": 15,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "walk_ff_start_180_R_002__A071": {
+              "steps": 210,
+              "common_prefix_steps": 210,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 1.9572361707687378,
+              "reference_displacement_m": 2.0565264225006104,
+              "root_displacement_m": 1.960871934890747,
+              "foot_lift_p95_m": [
+                0.037817582860589026,
+                0.04748789593577384
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07931931391358375,
+                0.08814619742333889
+              ],
+              "foot_lift_tracking_rmse_m": 0.03380670765048815,
+              "swing_local_foot_rmse_m": 0.07941649109125137,
+              "loaded_slip_mps": 0.10670458525419235,
+              "torso_tilt_rms_rad": 0.10718809068202972,
+              "knee_reference_rmse_rad": 0.3864583969116211,
+              "target_delta_rms_rad": 0.056031834334135056,
+              "sustained_single_support_alternations": 12,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "triumph_two_handed_001__A058": {
+              "steps": 271,
+              "common_prefix_steps": 271,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 0.06591302156448364,
+              "reference_displacement_m": 0.00112003309186548,
+              "root_displacement_m": 0.07341337203979492,
+              "foot_lift_p95_m": [
+                -0.0002106446772813797,
+                -0.000642683357000351
+              ],
+              "reference_foot_lift_p95_m": [
+                0.004195546731352806,
+                0.027339322492480278
+              ],
+              "foot_lift_tracking_rmse_m": 0.011348463915006055,
+              "swing_local_foot_rmse_m": 0.02996133640408516,
+              "loaded_slip_mps": 0.01237467024475336,
+              "torso_tilt_rms_rad": 0.21617648005485535,
+              "knee_reference_rmse_rad": 0.3153449296951294,
+              "target_delta_rms_rad": 0.032443806529045105,
+              "sustained_single_support_alternations": 1,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            }
+          }
+        },
+        {
+          "summary": {
+            "train": {
+              "clips": 3,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.06481789549191792,
+              "upper_rmse": 0.3027468224366506,
+              "leg_rmse": 0.2923131634791692,
+              "wrist_relative_rmse": 0.07078444833556811
+            },
+            "validation": {
+              "clips": 30,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.038243824414288,
+              "upper_rmse": 0.29643309116363525,
+              "leg_rmse": 0.2564589738845825,
+              "wrist_relative_rmse": 0.08403240380187829
+            }
+          },
+          "gait": {
+            "walk_ff_stop_180_R_002__A095": {
+              "steps": 320,
+              "common_prefix_steps": 320,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 2.088981866836548,
+              "reference_displacement_m": 2.1927454471588135,
+              "root_displacement_m": 2.0889978408813477,
+              "foot_lift_p95_m": [
+                0.04134518429636956,
+                0.03762185033410788
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07711893320083618,
+                0.08188892472535372
+              ],
+              "foot_lift_tracking_rmse_m": 0.029592958976887518,
+              "swing_local_foot_rmse_m": 0.09006103128194809,
+              "loaded_slip_mps": 0.08133511990308762,
+              "torso_tilt_rms_rad": 0.10492078959941864,
+              "knee_reference_rmse_rad": 0.33862805366516113,
+              "target_delta_rms_rad": 0.04980556666851044,
+              "sustained_single_support_alternations": 15,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "walk_ff_start_180_R_002__A071": {
+              "steps": 210,
+              "common_prefix_steps": 210,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 1.956221103668213,
+              "reference_displacement_m": 2.0565264225006104,
+              "root_displacement_m": 1.9600917100906372,
+              "foot_lift_p95_m": [
+                0.038047124072909354,
+                0.049265738576650585
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07931931391358375,
+                0.08814619742333889
+              ],
+              "foot_lift_tracking_rmse_m": 0.034218988358182545,
+              "swing_local_foot_rmse_m": 0.0799986869096756,
+              "loaded_slip_mps": 0.11336895078420639,
+              "torso_tilt_rms_rad": 0.10718580335378647,
+              "knee_reference_rmse_rad": 0.3862597942352295,
+              "target_delta_rms_rad": 0.055463988333940506,
+              "sustained_single_support_alternations": 12,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "triumph_two_handed_001__A058": {
+              "steps": 271,
+              "common_prefix_steps": 271,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 0.06625580787658691,
+              "reference_displacement_m": 0.00112003309186548,
+              "root_displacement_m": 0.07376904785633087,
+              "foot_lift_p95_m": [
+                -0.0001981649547815323,
+                -0.0006701517850160599
+              ],
+              "reference_foot_lift_p95_m": [
+                0.004195546731352806,
+                0.027339322492480278
+              ],
+              "foot_lift_tracking_rmse_m": 0.01135778666632346,
+              "swing_local_foot_rmse_m": 0.029922880232334137,
+              "loaded_slip_mps": 0.012380971573293209,
+              "torso_tilt_rms_rad": 0.21621373295783997,
+              "knee_reference_rmse_rad": 0.3156292140483856,
+              "target_delta_rms_rad": 0.03244121000170708,
+              "sustained_single_support_alternations": 1,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            }
+          }
+        },
+        {
+          "summary": {
+            "train": {
+              "clips": 3,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.06312014472981294,
+              "upper_rmse": 0.30343059202035266,
+              "leg_rmse": 0.2927522659301758,
+              "wrist_relative_rmse": 0.06995277106761932
+            },
+            "validation": {
+              "clips": 30,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.03948832776707908,
+              "upper_rmse": 0.29624190827210745,
+              "leg_rmse": 0.25654033770163853,
+              "wrist_relative_rmse": 0.08453514563540618
+            }
+          },
+          "gait": {
+            "walk_ff_stop_180_R_002__A095": {
+              "steps": 320,
+              "common_prefix_steps": 320,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 2.0973520278930664,
+              "reference_displacement_m": 2.1927454471588135,
+              "root_displacement_m": 2.097381830215454,
+              "foot_lift_p95_m": [
+                0.03948280587792397,
+                0.03996477741748095
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07711893320083618,
+                0.08188892472535372
+              ],
+              "foot_lift_tracking_rmse_m": 0.029524045324827317,
+              "swing_local_foot_rmse_m": 0.09071922302246094,
+              "loaded_slip_mps": 0.0832587480545044,
+              "torso_tilt_rms_rad": 0.1047714501619339,
+              "knee_reference_rmse_rad": 0.3408818542957306,
+              "target_delta_rms_rad": 0.04914155602455139,
+              "sustained_single_support_alternations": 14,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "walk_ff_start_180_R_002__A071": {
+              "steps": 210,
+              "common_prefix_steps": 210,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 1.9620311260223389,
+              "reference_displacement_m": 2.0565264225006104,
+              "root_displacement_m": 1.9658070802688599,
+              "foot_lift_p95_m": [
+                0.038058457151055325,
+                0.04622186124324799
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07931931391358375,
+                0.08814619742333889
+              ],
+              "foot_lift_tracking_rmse_m": 0.03382266518442059,
+              "swing_local_foot_rmse_m": 0.07946348190307617,
+              "loaded_slip_mps": 0.09576743096113205,
+              "torso_tilt_rms_rad": 0.10749740898609161,
+              "knee_reference_rmse_rad": 0.38672935962677,
+              "target_delta_rms_rad": 0.055200643837451935,
+              "sustained_single_support_alternations": 12,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "triumph_two_handed_001__A058": {
+              "steps": 271,
+              "common_prefix_steps": 271,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 0.06623312085866928,
+              "reference_displacement_m": 0.00112003309186548,
+              "root_displacement_m": 0.0736519992351532,
+              "foot_lift_p95_m": [
+                -0.0001973360776901245,
+                -0.0006699021905660629
+              ],
+              "reference_foot_lift_p95_m": [
+                0.004195546731352806,
+                0.027339322492480278
+              ],
+              "foot_lift_tracking_rmse_m": 0.011358983369585693,
+              "swing_local_foot_rmse_m": 0.02985304594039917,
+              "loaded_slip_mps": 0.012521102093160152,
+              "torso_tilt_rms_rad": 0.2162616103887558,
+              "knee_reference_rmse_rad": 0.31552478671073914,
+              "target_delta_rms_rad": 0.03243672102689743,
+              "sustained_single_support_alternations": 1,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "stiffness150",
+      "repeats": [
+        {
+          "summary": {
+            "train": {
+              "clips": 3,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.06172341977556547,
+              "upper_rmse": 0.29942144950230914,
+              "leg_rmse": 0.287248820066452,
+              "wrist_relative_rmse": 0.0638728179037571
+            },
+            "validation": {
+              "clips": 30,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.03663560080652436,
+              "upper_rmse": 0.2949484849969546,
+              "leg_rmse": 0.26140646189451217,
+              "wrist_relative_rmse": 0.08252445906400681
+            }
+          },
+          "gait": {
+            "walk_ff_stop_180_R_002__A095": {
+              "steps": 320,
+              "common_prefix_steps": 320,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 2.141979455947876,
+              "reference_displacement_m": 2.1927454471588135,
+              "root_displacement_m": 2.141984701156616,
+              "foot_lift_p95_m": [
+                0.035995660722255726,
+                0.03301207106560469
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07711893320083618,
+                0.08188892472535372
+              ],
+              "foot_lift_tracking_rmse_m": 0.028555660186429042,
+              "swing_local_foot_rmse_m": 0.08343160897493362,
+              "loaded_slip_mps": 0.06712331622838974,
+              "torso_tilt_rms_rad": 0.1048879623413086,
+              "knee_reference_rmse_rad": 0.336818128824234,
+              "target_delta_rms_rad": 0.04734910652041435,
+              "sustained_single_support_alternations": 15,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "walk_ff_start_180_R_002__A071": {
+              "steps": 210,
+              "common_prefix_steps": 210,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 1.9849015474319458,
+              "reference_displacement_m": 2.0565264225006104,
+              "root_displacement_m": 1.9885507822036743,
+              "foot_lift_p95_m": [
+                0.03465301431715488,
+                0.043287418410181994
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07931931391358375,
+                0.08814619742333889
+              ],
+              "foot_lift_tracking_rmse_m": 0.03406916777146733,
+              "swing_local_foot_rmse_m": 0.08239953964948654,
+              "loaded_slip_mps": 0.08647270500659943,
+              "torso_tilt_rms_rad": 0.10658584535121918,
+              "knee_reference_rmse_rad": 0.3976711332798004,
+              "target_delta_rms_rad": 0.054548125714063644,
+              "sustained_single_support_alternations": 12,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "triumph_two_handed_001__A058": {
+              "steps": 271,
+              "common_prefix_steps": 271,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 0.062487855553627014,
+              "reference_displacement_m": 0.00112003309186548,
+              "root_displacement_m": 0.06916873902082443,
+              "foot_lift_p95_m": [
+                -0.00019502826035022736,
+                -0.00015995092689990997
+              ],
+              "reference_foot_lift_p95_m": [
+                0.004195546731352806,
+                0.027339322492480278
+              ],
+              "foot_lift_tracking_rmse_m": 0.011105142703928808,
+              "swing_local_foot_rmse_m": 0.02924058958888054,
+              "loaded_slip_mps": 0.014407621696591377,
+              "torso_tilt_rms_rad": 0.21070998907089233,
+              "knee_reference_rmse_rad": 0.2959766387939453,
+              "target_delta_rms_rad": 0.03187693655490875,
+              "sustained_single_support_alternations": 0,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            }
+          }
+        },
+        {
+          "summary": {
+            "train": {
+              "clips": 3,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.06153548633058866,
+              "upper_rmse": 0.2982250551382701,
+              "leg_rmse": 0.2861809581518173,
+              "wrist_relative_rmse": 0.06403139357765515
+            },
+            "validation": {
+              "clips": 30,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.03661296519761284,
+              "upper_rmse": 0.29512403508027396,
+              "leg_rmse": 0.2606339325507482,
+              "wrist_relative_rmse": 0.08168269631763299
+            }
+          },
+          "gait": {
+            "walk_ff_stop_180_R_002__A095": {
+              "steps": 320,
+              "common_prefix_steps": 320,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 2.1304759979248047,
+              "reference_displacement_m": 2.1927454471588135,
+              "root_displacement_m": 2.130514621734619,
+              "foot_lift_p95_m": [
+                0.03645369671285154,
+                0.03207185771316291
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07711893320083618,
+                0.08188892472535372
+              ],
+              "foot_lift_tracking_rmse_m": 0.028389450417330767,
+              "swing_local_foot_rmse_m": 0.08363954722881317,
+              "loaded_slip_mps": 0.07434847950935364,
+              "torso_tilt_rms_rad": 0.10444993525743484,
+              "knee_reference_rmse_rad": 0.336994469165802,
+              "target_delta_rms_rad": 0.04759804159402847,
+              "sustained_single_support_alternations": 14,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "walk_ff_start_180_R_002__A071": {
+              "steps": 210,
+              "common_prefix_steps": 210,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 1.985977292060852,
+              "reference_displacement_m": 2.0565264225006104,
+              "root_displacement_m": 1.990093469619751,
+              "foot_lift_p95_m": [
+                0.034047413617372506,
+                0.044789310917258254
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07931931391358375,
+                0.08814619742333889
+              ],
+              "foot_lift_tracking_rmse_m": 0.034224811496703075,
+              "swing_local_foot_rmse_m": 0.08266572654247284,
+              "loaded_slip_mps": 0.08769010007381439,
+              "torso_tilt_rms_rad": 0.105743907392025,
+              "knee_reference_rmse_rad": 0.3965142071247101,
+              "target_delta_rms_rad": 0.054693013429641724,
+              "sustained_single_support_alternations": 12,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "triumph_two_handed_001__A058": {
+              "steps": 271,
+              "common_prefix_steps": 271,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 0.06199236214160919,
+              "reference_displacement_m": 0.00112003309186548,
+              "root_displacement_m": 0.06865493953227997,
+              "foot_lift_p95_m": [
+                -0.00025686249136924744,
+                -0.00016257166862487793
+              ],
+              "reference_foot_lift_p95_m": [
+                0.004195546731352806,
+                0.027339322492480278
+              ],
+              "foot_lift_tracking_rmse_m": 0.011104385842690427,
+              "swing_local_foot_rmse_m": 0.02921193279325962,
+              "loaded_slip_mps": 0.014213066548109055,
+              "torso_tilt_rms_rad": 0.21072666347026825,
+              "knee_reference_rmse_rad": 0.2956963777542114,
+              "target_delta_rms_rad": 0.03184156492352486,
+              "sustained_single_support_alternations": 0,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            }
+          }
+        },
+        {
+          "summary": {
+            "train": {
+              "clips": 3,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.06020826722184817,
+              "upper_rmse": 0.29814793169498444,
+              "leg_rmse": 0.2860194394985835,
+              "wrist_relative_rmse": 0.06338243807355563
+            },
+            "validation": {
+              "clips": 30,
+              "failures": 0,
+              "completion": 1,
+              "root_xy_rmse": 0.03651029126097759,
+              "upper_rmse": 0.29473987966775894,
+              "leg_rmse": 0.2610068472723166,
+              "wrist_relative_rmse": 0.0815749033043782
+            }
+          },
+          "gait": {
+            "walk_ff_stop_180_R_002__A095": {
+              "steps": 320,
+              "common_prefix_steps": 320,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 2.132324695587158,
+              "reference_displacement_m": 2.1927454471588135,
+              "root_displacement_m": 2.1323256492614746,
+              "foot_lift_p95_m": [
+                0.036186257377266905,
+                0.03294849637895823
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07711893320083618,
+                0.08188892472535372
+              ],
+              "foot_lift_tracking_rmse_m": 0.028425255512440576,
+              "swing_local_foot_rmse_m": 0.08318035304546356,
+              "loaded_slip_mps": 0.07964016497135162,
+              "torso_tilt_rms_rad": 0.10487423092126846,
+              "knee_reference_rmse_rad": 0.3351961076259613,
+              "target_delta_rms_rad": 0.04736034572124481,
+              "sustained_single_support_alternations": 15,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "walk_ff_start_180_R_002__A071": {
+              "steps": 210,
+              "common_prefix_steps": 210,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 1.999488353729248,
+              "reference_displacement_m": 2.0565264225006104,
+              "root_displacement_m": 2.0024428367614746,
+              "foot_lift_p95_m": [
+                0.03496597930788994,
+                0.04870434887707233
+              ],
+              "reference_foot_lift_p95_m": [
+                0.07931931391358375,
+                0.08814619742333889
+              ],
+              "foot_lift_tracking_rmse_m": 0.0338037554524847,
+              "swing_local_foot_rmse_m": 0.08022484928369522,
+              "loaded_slip_mps": 0.07927493005990982,
+              "torso_tilt_rms_rad": 0.10515303164720535,
+              "knee_reference_rmse_rad": 0.40189751982688904,
+              "target_delta_rms_rad": 0.05172675848007202,
+              "sustained_single_support_alternations": 12,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            },
+            "triumph_two_handed_001__A058": {
+              "steps": 271,
+              "common_prefix_steps": 271,
+              "failed": false,
+              "completion": 1,
+              "forward_displacement_m": 0.06446443498134613,
+              "reference_displacement_m": 0.00112003309186548,
+              "root_displacement_m": 0.0708095133304596,
+              "foot_lift_p95_m": [
+                -0.00012068822979927063,
+                -0.0001690741628408432
+              ],
+              "reference_foot_lift_p95_m": [
+                0.004195546731352806,
+                0.027339322492480278
+              ],
+              "foot_lift_tracking_rmse_m": 0.011104034672846003,
+              "swing_local_foot_rmse_m": 0.029189495369791985,
+              "loaded_slip_mps": 0.014447078108787537,
+              "torso_tilt_rms_rad": 0.21074174344539642,
+              "knee_reference_rmse_rad": 0.29585155844688416,
+              "target_delta_rms_rad": 0.03187110275030136,
+              "sustained_single_support_alternations": 0,
+              "support_note": "Distinct single-support sides each sustained >=60ms; diagnostic, not a validated step counter."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "small_delivery": {
+    "server_root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_PD_SENSITIVITY_PROBE_20261029",
+    "mac_root": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_LEG_PD_SENSITIVITY_PROBE_20261029",
+    "count": 74,
+    "bytes": 4615555,
+    "all_matched": true,
+    "files": [
+      {
+        "relative_path": "assets/baseline.json",
+        "bytes": 5273,
+        "sha256": "3254b2be8ff4f5215b7f17925287567d73cbf08d94aa732bd2ef61b3aba0b533"
+      },
+      {
+        "relative_path": "assets/baseline.xml",
+        "bytes": 30910,
+        "sha256": "bd77c78e7e8abd51fc16894b901bf084c4362aae763e5ba9553b346375458e05"
+      },
+      {
+        "relative_path": "assets/damping075.json",
+        "bytes": 5276,
+        "sha256": "7ea0bb980064b4b5c00af8cf0c692eece7efcc8c1dd58b7a43d666f523462560"
+      },
+      {
+        "relative_path": "assets/damping075.xml",
+        "bytes": 30910,
+        "sha256": "1fb53f09666118e79958afc50beb87262642baadb65414562e0cd90407203c4a"
+      },
+      {
+        "relative_path": "assets/damping125.json",
+        "bytes": 5276,
+        "sha256": "8bc673700abbb871c4f76f95bbfa33806973d357ecfeb88f34b80e28105ce942"
+      },
+      {
+        "relative_path": "assets/damping125.xml",
+        "bytes": 30910,
+        "sha256": "25cabde350bf2c72b389c944cddb1da2713ba37359b0c7ccf6b8235c94fc111a"
+      },
+      {
+        "relative_path": "assets/damping150.json",
+        "bytes": 5275,
+        "sha256": "2ceb788e51bb523811174e6a9f34b41bf77ac62226562f91b69917d6f3e171b4"
+      },
+      {
+        "relative_path": "assets/damping150.xml",
+        "bytes": 30910,
+        "sha256": "d1a6d4bc57599126cab344b7d2976e83495cceb9bff5ac1bdabb181bf85da062"
+      },
+      {
+        "relative_path": "assets/stiffness125.json",
+        "bytes": 5292,
+        "sha256": "153c0a071c438f990a4f713e55f9a7ab4962c4372369e7c319e2d6516d10b769"
+      },
+      {
+        "relative_path": "assets/stiffness125.xml",
+        "bytes": 30910,
+        "sha256": "7e26cbffe977608d897c7d2c47b6a6830e39960ac8ab0eb5335dd3e593bcdeb7"
+      },
+      {
+        "relative_path": "assets/stiffness150.json",
+        "bytes": 5279,
+        "sha256": "205b5e2cf28eab9d74d35fb9ff511a306a3d5c2d65c00a90c7781b99df37d0fc"
+      },
+      {
+        "relative_path": "assets/stiffness150.xml",
+        "bytes": 30898,
+        "sha256": "5ff6035f522f5917132a12e60969d3afdf21d1e76393f15cf7e62aeacfd20894"
+      },
+      {
+        "relative_path": "baseline_repeat0.json",
+        "bytes": 46870,
+        "sha256": "d5f89c993015db85297bfb384af1be2f3bd4ffb634bde49ab30729f77b587631"
+      },
+      {
+        "relative_path": "baseline_repeat1.json",
+        "bytes": 46922,
+        "sha256": "bbe9971bbd4899313501e651cb8064094c6110b7081b3f84e9869ffef0705a67"
+      },
+      {
+        "relative_path": "baseline_repeat2.json",
+        "bytes": 46946,
+        "sha256": "32ef298539ec4439f3d556809d08dda7e18959c854fd2277e72fc4c9afc72ece"
+      },
+      {
+        "relative_path": "damping075_repeat0.json",
+        "bytes": 53398,
+        "sha256": "64f6fb29591fd6eb7466d81e5879f6ef6a02108e4d3be4527b1a8e55138d2d4a"
+      },
+      {
+        "relative_path": "damping075_repeat1.json",
+        "bytes": 53483,
+        "sha256": "5e31f111f387803cf3d8c8cce2247ac3770231ba0860509741f7aa878da486f9"
+      },
+      {
+        "relative_path": "damping075_repeat2.json",
+        "bytes": 53408,
+        "sha256": "dc92cef909d18c3fe6ef7fa4f0a9d454c6f8c781adc814564dd66e34cb872a1a"
+      },
+      {
+        "relative_path": "damping125_repeat0.json",
+        "bytes": 53362,
+        "sha256": "243e468f42bbdd7835944bb4a7455fc8ea19b5a5f0b7f90088fda961144430ee"
+      },
+      {
+        "relative_path": "damping125_repeat1.json",
+        "bytes": 53365,
+        "sha256": "ae961eb128cd9e55b89adca40550b710166984f42b820470f692c277b40a9183"
+      },
+      {
+        "relative_path": "damping125_repeat2.json",
+        "bytes": 53374,
+        "sha256": "20d928bb75cb4ec49b3bfa14fa508b0135fbd6746b8263034b7c70982b366cda"
+      },
+      {
+        "relative_path": "damping150_repeat0.json",
+        "bytes": 53502,
+        "sha256": "8607a1d948da77b2c14318dd3772ac43d61ace7e62af47cdc1d47bddd3419156"
+      },
+      {
+        "relative_path": "damping150_repeat1.json",
+        "bytes": 53567,
+        "sha256": "4a49b4ab96a4e0d3ab402c24cdee40ed8878d478cff886666d8058461ddbacec"
+      },
+      {
+        "relative_path": "damping150_repeat2.json",
+        "bytes": 53496,
+        "sha256": "4a9dbb12458485c6ddb5dc33ae6b7a51ce4ef965430939a003f53285d74d9349"
+      },
+      {
+        "relative_path": "evaluation_library.json",
+        "bytes": 20800,
+        "sha256": "aff023b3d0d83204ceb165fe0b9591ba8e0b98bc745861d618221b7828bd8f29"
+      },
+      {
+        "relative_path": "guard.json",
+        "bytes": 2781,
+        "sha256": "963af719a6be31831798e52bf32c5c25c8dfda030b533987cec9a80f7f2a9e60"
+      },
+      {
+        "relative_path": "launch.json",
+        "bytes": 108,
+        "sha256": "26d359f7208ebb5515348452e55e5f43f90dd4c04443caaabb699a2f220be540"
+      },
+      {
+        "relative_path": "partial_results.json",
+        "bytes": 1194431,
+        "sha256": "df6dbda7cdbfb58938973f1046bba8d6365d57b0f07a03ec33f9ce0109ca1ce4"
+      },
+      {
+        "relative_path": "plan.json",
+        "bytes": 291943,
+        "sha256": "5c6c50284b941f10da1b711bf5dcdc61b4528786f9448211e2595f0a93e663a1"
+      },
+      {
+        "relative_path": "results.json",
+        "bytes": 1214646,
+        "sha256": "37cdae3da34c833b04dfae00fc6268b4750b4be612b2ac57dbdc41fb9cc4dcb3"
+      },
+      {
+        "relative_path": "run/baseline_repeat0/native_pd_contract.json",
+        "bytes": 39877,
+        "sha256": "22e0beb5a4fe1d26a638d30d6271f3622ceac56aa249fdd92e54317e5d8f3b70"
+      },
+      {
+        "relative_path": "run/baseline_repeat0/seed_contract.json",
+        "bytes": 140,
+        "sha256": "68e761fb948985119c9cd3cd9c297de671db9c16fb05d005b51ab71655c6e00c"
+      },
+      {
+        "relative_path": "run/baseline_repeat1/native_pd_contract.json",
+        "bytes": 39877,
+        "sha256": "22e0beb5a4fe1d26a638d30d6271f3622ceac56aa249fdd92e54317e5d8f3b70"
+      },
+      {
+        "relative_path": "run/baseline_repeat1/seed_contract.json",
+        "bytes": 140,
+        "sha256": "a14efe516ac56a7032b63b562f80f70242ed9bc75a6675be6be94a588f2490c6"
+      },
+      {
+        "relative_path": "run/baseline_repeat2/native_pd_contract.json",
+        "bytes": 39877,
+        "sha256": "22e0beb5a4fe1d26a638d30d6271f3622ceac56aa249fdd92e54317e5d8f3b70"
+      },
+      {
+        "relative_path": "run/baseline_repeat2/seed_contract.json",
+        "bytes": 140,
+        "sha256": "fc5d15672a170b8668f19329dbacd37f2a2ea393e75ecf90fbabed3968a7c57a"
+      },
+      {
+        "relative_path": "run/damping075_repeat0/native_pd_contract.json",
+        "bytes": 40681,
+        "sha256": "f487184a4095793da91ee06141fff168585409417db54af0c108d1a419f00d5f"
+      },
+      {
+        "relative_path": "run/damping075_repeat0/seed_contract.json",
+        "bytes": 140,
+        "sha256": "68e761fb948985119c9cd3cd9c297de671db9c16fb05d005b51ab71655c6e00c"
+      },
+      {
+        "relative_path": "run/damping075_repeat1/native_pd_contract.json",
+        "bytes": 40681,
+        "sha256": "f487184a4095793da91ee06141fff168585409417db54af0c108d1a419f00d5f"
+      },
+      {
+        "relative_path": "run/damping075_repeat1/seed_contract.json",
+        "bytes": 140,
+        "sha256": "a14efe516ac56a7032b63b562f80f70242ed9bc75a6675be6be94a588f2490c6"
+      },
+      {
+        "relative_path": "run/damping075_repeat2/native_pd_contract.json",
+        "bytes": 40681,
+        "sha256": "f487184a4095793da91ee06141fff168585409417db54af0c108d1a419f00d5f"
+      },
+      {
+        "relative_path": "run/damping075_repeat2/seed_contract.json",
+        "bytes": 140,
+        "sha256": "fc5d15672a170b8668f19329dbacd37f2a2ea393e75ecf90fbabed3968a7c57a"
+      },
+      {
+        "relative_path": "run/damping125_repeat0/native_pd_contract.json",
+        "bytes": 40669,
+        "sha256": "5cf8dd50a1d65318eb39980ae44f92d4f753a2fd9861a7c6fe114ee8e9a27167"
+      },
+      {
+        "relative_path": "run/damping125_repeat0/seed_contract.json",
+        "bytes": 140,
+        "sha256": "68e761fb948985119c9cd3cd9c297de671db9c16fb05d005b51ab71655c6e00c"
+      },
+      {
+        "relative_path": "run/damping125_repeat1/native_pd_contract.json",
+        "bytes": 40669,
+        "sha256": "5cf8dd50a1d65318eb39980ae44f92d4f753a2fd9861a7c6fe114ee8e9a27167"
+      },
+      {
+        "relative_path": "run/damping125_repeat1/seed_contract.json",
+        "bytes": 140,
+        "sha256": "a14efe516ac56a7032b63b562f80f70242ed9bc75a6675be6be94a588f2490c6"
+      },
+      {
+        "relative_path": "run/damping125_repeat2/native_pd_contract.json",
+        "bytes": 40669,
+        "sha256": "5cf8dd50a1d65318eb39980ae44f92d4f753a2fd9861a7c6fe114ee8e9a27167"
+      },
+      {
+        "relative_path": "run/damping125_repeat2/seed_contract.json",
+        "bytes": 140,
+        "sha256": "fc5d15672a170b8668f19329dbacd37f2a2ea393e75ecf90fbabed3968a7c57a"
+      },
+      {
+        "relative_path": "run/damping150_repeat0/native_pd_contract.json",
+        "bytes": 40669,
+        "sha256": "66afbabee091eaba943c21bd47e4191d02badce526fd1d76c22ee7fb02329029"
+      },
+      {
+        "relative_path": "run/damping150_repeat0/seed_contract.json",
+        "bytes": 140,
+        "sha256": "68e761fb948985119c9cd3cd9c297de671db9c16fb05d005b51ab71655c6e00c"
+      },
+      {
+        "relative_path": "run/damping150_repeat1/native_pd_contract.json",
+        "bytes": 40669,
+        "sha256": "66afbabee091eaba943c21bd47e4191d02badce526fd1d76c22ee7fb02329029"
+      },
+      {
+        "relative_path": "run/damping150_repeat1/seed_contract.json",
+        "bytes": 140,
+        "sha256": "a14efe516ac56a7032b63b562f80f70242ed9bc75a6675be6be94a588f2490c6"
+      },
+      {
+        "relative_path": "run/damping150_repeat2/native_pd_contract.json",
+        "bytes": 40669,
+        "sha256": "66afbabee091eaba943c21bd47e4191d02badce526fd1d76c22ee7fb02329029"
+      },
+      {
+        "relative_path": "run/damping150_repeat2/seed_contract.json",
+        "bytes": 140,
+        "sha256": "fc5d15672a170b8668f19329dbacd37f2a2ea393e75ecf90fbabed3968a7c57a"
+      },
+      {
+        "relative_path": "run/status.json",
+        "bytes": 429,
+        "sha256": "3b315aaf50c19292e10bbdacb3eafb6ff40b58ee520bf1f6d8eaf931c2a2a176"
+      },
+      {
+        "relative_path": "run/stiffness125_repeat0/native_pd_contract.json",
+        "bytes": 40669,
+        "sha256": "192bf9e32e0670318b68a94596ed2a535fcea88cd3fdb6480f46bdd0fd663a06"
+      },
+      {
+        "relative_path": "run/stiffness125_repeat0/seed_contract.json",
+        "bytes": 140,
+        "sha256": "68e761fb948985119c9cd3cd9c297de671db9c16fb05d005b51ab71655c6e00c"
+      },
+      {
+        "relative_path": "run/stiffness125_repeat1/native_pd_contract.json",
+        "bytes": 40669,
+        "sha256": "192bf9e32e0670318b68a94596ed2a535fcea88cd3fdb6480f46bdd0fd663a06"
+      },
+      {
+        "relative_path": "run/stiffness125_repeat1/seed_contract.json",
+        "bytes": 140,
+        "sha256": "a14efe516ac56a7032b63b562f80f70242ed9bc75a6675be6be94a588f2490c6"
+      },
+      {
+        "relative_path": "run/stiffness125_repeat2/native_pd_contract.json",
+        "bytes": 40669,
+        "sha256": "192bf9e32e0670318b68a94596ed2a535fcea88cd3fdb6480f46bdd0fd663a06"
+      },
+      {
+        "relative_path": "run/stiffness125_repeat2/seed_contract.json",
+        "bytes": 140,
+        "sha256": "fc5d15672a170b8668f19329dbacd37f2a2ea393e75ecf90fbabed3968a7c57a"
+      },
+      {
+        "relative_path": "run/stiffness150_repeat0/native_pd_contract.json",
+        "bytes": 40261,
+        "sha256": "f3a5e5e95903b7231f4cff719b3199b5456d03034372e02ed9b78eedbfd5b20d"
+      },
+      {
+        "relative_path": "run/stiffness150_repeat0/seed_contract.json",
+        "bytes": 140,
+        "sha256": "68e761fb948985119c9cd3cd9c297de671db9c16fb05d005b51ab71655c6e00c"
+      },
+      {
+        "relative_path": "run/stiffness150_repeat1/native_pd_contract.json",
+        "bytes": 40261,
+        "sha256": "f3a5e5e95903b7231f4cff719b3199b5456d03034372e02ed9b78eedbfd5b20d"
+      },
+      {
+        "relative_path": "run/stiffness150_repeat1/seed_contract.json",
+        "bytes": 140,
+        "sha256": "a14efe516ac56a7032b63b562f80f70242ed9bc75a6675be6be94a588f2490c6"
+      },
+      {
+        "relative_path": "run/stiffness150_repeat2/native_pd_contract.json",
+        "bytes": 40261,
+        "sha256": "f3a5e5e95903b7231f4cff719b3199b5456d03034372e02ed9b78eedbfd5b20d"
+      },
+      {
+        "relative_path": "run/stiffness150_repeat2/seed_contract.json",
+        "bytes": 140,
+        "sha256": "fc5d15672a170b8668f19329dbacd37f2a2ea393e75ecf90fbabed3968a7c57a"
+      },
+      {
+        "relative_path": "status.json",
+        "bytes": 339,
+        "sha256": "c895c8f4cfd12fbb94728311e3c0eaf8a4bd805c59548eb14b91081aaea57207"
+      },
+      {
+        "relative_path": "stiffness125_repeat0.json",
+        "bytes": 53338,
+        "sha256": "f6aae0df91484010758a742147de32853510f887300f571e2bcd24131cb3fb56"
+      },
+      {
+        "relative_path": "stiffness125_repeat1.json",
+        "bytes": 53399,
+        "sha256": "36498e572fada67f9d2224b318ce7e7dafee2a50a49f15552b1415d949d58998"
+      },
+      {
+        "relative_path": "stiffness125_repeat2.json",
+        "bytes": 53448,
+        "sha256": "182fd559111d5812d024f3679c9361dd31d20876dab52055793529859c24f71c"
+      },
+      {
+        "relative_path": "stiffness150_repeat0.json",
+        "bytes": 53387,
+        "sha256": "a668de0c1afbbb5d9a5eab09f53bd6eadaf6210ea5510e657280ca4b207a0442"
+      },
+      {
+        "relative_path": "stiffness150_repeat1.json",
+        "bytes": 53364,
+        "sha256": "c270540f46400bc40aec2ff7c0a69b942c145624bf768e5c146d9dba894f1a93"
+      },
+      {
+        "relative_path": "stiffness150_repeat2.json",
+        "bytes": 53332,
+        "sha256": "fdc822406e4a6cbb1388736f20ae986697d91c6103cbe9252e69f0f426d8fd8d"
+      }
+    ]
+  },
+  "preflight_delivery": {
+    "server_root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_PD_PREFLIGHT_V02_20261029",
+    "mac_root": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_LEG_PD_PREFLIGHT_V02_20261029",
+    "count": 6,
+    "bytes": 181062,
+    "all_matched": true,
+    "files": [
+      {
+        "relative_path": "baseline/scene.xml",
+        "bytes": 30910,
+        "sha256": "bd77c78e7e8abd51fc16894b901bf084c4362aae763e5ba9553b346375458e05"
+      },
+      {
+        "relative_path": "baseline/seed_contract.json",
+        "bytes": 140,
+        "sha256": "1d7a05f62e94e24ea79106847b9a35362aeea7620457a6e4d47e0774ad820f1f"
+      },
+      {
+        "relative_path": "damping125/scene.xml",
+        "bytes": 30910,
+        "sha256": "25cabde350bf2c72b389c944cddb1da2713ba37359b0c7ccf6b8235c94fc111a"
+      },
+      {
+        "relative_path": "damping125/seed_contract.json",
+        "bytes": 140,
+        "sha256": "1d7a05f62e94e24ea79106847b9a35362aeea7620457a6e4d47e0774ad820f1f"
+      },
+      {
+        "relative_path": "library.json",
+        "bytes": 10129,
+        "sha256": "86e0bc6ec4fd8c83bdbdb0923585cc78d721bafb318683f5f792b9d8fd9d7783"
+      },
+      {
+        "relative_path": "receipt.json",
+        "bytes": 108833,
+        "sha256": "f9b2184dec18c831d73038a47c123bfbadfc5b78b159fb4831386ae133de9b76"
+      }
+    ]
+  },
+  "large_npz": "18 SERVER_LOCAL_ONLY",
+  "conclusion": "Stiffness1.5 reduces loaded slip on both walks across all three evaluations; lower foot lift and ~1degree increased tilt prevent declaring natural gait. No full330 promotion or optimization from old diagnostic gate0/3. Preserve original model.",
+  "next": "Independent reference-activity upper blend quick33, original PD fixed; no clip identity rule or new optimizer.",
+  "user_accepted_checkpoint": null
+}

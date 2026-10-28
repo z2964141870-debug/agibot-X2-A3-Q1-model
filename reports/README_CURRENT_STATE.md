@@ -1,5 +1,9 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 03:26：[独立PD敏感度准备](README_Q1_PD_SENSITIVITY_20261029.md)完成4CPU反例/远端help及16环境两档CPU/Warp实际增益预检，原场景不变/0optimizer/OOM0；第一预检因现有模型15.791367→15.7914舍入触发严容差，修正并保存实际数值后V02通过。6档只改独立XML的12腿kp/kv，手臂.5/原目标尺度/限矩不改；正式quick33尚未启动，先冻结发布/三端核验。不把控制预检当步态收益，07:00/09:00截止和用户采纳null保留。
+
+2026-10-29 03:18最新：[目标时序滤波quick33结果](README_Q1_TARGET_FILTER_PROBE_20261029.md)已03:05:58正常完成，guardreap0/1169来源未变/原两进程退出/GPU释放。ema010在起走滑移降约12%至19%，停走不一致且姿态代价，原逐片诊断1/3；ema040验证3/3/3失败、强限速12/12/12和12/11/12且固定片失败，未确认均衡步态收益，不full330或训练。44小工件3284781字节Mac/25386大小SHA一致，频谱JSON23908字节亦核SHA；18NPZ服务器留存。下一步独立有限PD控制参数检验尚未启动，原RF15/phase不恢复，07:00停止新优化/物理探索、09:00交数据视频，用户采纳仍null。以下RUNNING为历史。[收据](../data/manifests/supermimic_q1_target_filter_results_20261029.json)。
+
 2026-10-29 02:57最新：[TARGET_FILTER quick33](README_Q1_TARGET_FILTER_PROBE_20261029.md)02:56:08已启动，controller145547/start_ticks12741303、worker145550/start_ticks12741645/原boot/GPU；02:57:34 baseline repeat2/frame200、0optimizer、GPU725MiB/37度/共享16.12GB/OOM0，尚无候选效果。冻结494f45a6fed67488c2af81c0bc1791b371d7b474独立远端/10文件258758字节三端SHA一致。仅监督此零优化6档×3次×33环境，不能重复启动/热改源码；旧RF15/phase已结束，07:00探索截止/09:00交付不变。[启动收据](../data/manifests/supermimic_q1_target_filter_launch_20261029.json)。
 
 2026-10-29 02:53：[独立腿部目标滤波对照准备](README_Q1_TARGET_FILTER_PROBE_20261029.md)7CPU反例/CLI help/解析通过，9份已存NPZ频谱工具27行实际集成、0新物理/推理/optimizer；普通走指令变化较大但10Hz以上仅约.3%至.4%，不认定高频为主因。6档轻EMA/目标限速、固定手臂.5/腰/PD，尚未启动物理quick33，待正式冻结/三端核验。发现旧phase.prepare会把种子标签32000+repeat覆盖为0，旧三次只能算同配置重复，原值保留并补正；新prepare_seeded在create_env前设置实际seed并落收据。RF15/phase结果发布e55e3bd独立核远端、9记录362890字节三端一致。仍07:00停止新优化/物理探索、09:00交付，不恢复旧训练/agent。

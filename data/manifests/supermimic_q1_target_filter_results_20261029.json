@@ -1,0 +1,781 @@
+{
+  "status": "TARGET_FILTER_QUICK33_NO_CONFIRMED_BALANCED_IMPROVEMENT",
+  "captured_beijing": "2026-10-29T03:18:00+08:00",
+  "code_commit": "494f45a6fed67488c2af81c0bc1791b371d7b474",
+  "final_observation": {
+    "captured_utc": "2026-10-28T19:13:04.199330+00:00",
+    "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "trial": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_TARGET_FILTER_PROBE_20261029",
+    "files": {
+      "launch.json": {
+        "bytes": 108,
+        "mtime_ns": 1793213768027732200,
+        "content": {
+          "controller_pid": 145547,
+          "started_utc": "2026-10-28T18:56:08.029105+00:00",
+          "optimizer_steps": 0
+        }
+      },
+      "status.json": {
+        "bytes": 339,
+        "mtime_ns": 1793214358432155000,
+        "content": {
+          "status": "COMPLETED",
+          "process": {
+            "pid": 145547,
+            "start_ticks": 12741303,
+            "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+          },
+          "started_utc": "2026-10-28T18:56:11.369759+00:00",
+          "optimizer_steps": 0,
+          "no_automatic_retry": true,
+          "ended_utc": "2026-10-28T19:05:58.435448+00:00",
+          "frozen_source_count": 1169
+        }
+      },
+      "plan.json": {
+        "bytes": 288252,
+        "mtime_ns": 1793213771367633200,
+        "content": {
+          "started_utc": "2026-10-28T18:56:11.362557+00:00",
+          "process": {
+            "pid": 145547,
+            "start_ticks": 12741303,
+            "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+          },
+          "optimizer_steps": 0,
+          "maximum_wall_seconds": 2400,
+          "scope": "quick33",
+          "candidates": [
+            "baseline",
+            "ema010",
+            "ema020",
+            "ema040",
+            "rate010",
+            "rate015"
+          ],
+          "code_commit": "494f45a6fed67488c2af81c0bc1791b371d7b474",
+          "optimization_deadline_unix": 1793228400,
+          "expected_boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+          "expected_gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08"
+        }
+      },
+      "run/status.json": {
+        "bytes": 443,
+        "mtime_ns": 1793214356244207600,
+        "content": {
+          "status": "COMPLETED",
+          "process": {
+            "pid": 145550,
+            "start_ticks": 12741645,
+            "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+          },
+          "started_utc": "2026-10-28T18:56:13.349909+00:00",
+          "optimizer_steps": 0,
+          "candidate": "rate015",
+          "repeat": 2,
+          "frame": 450,
+          "updated_utc": "2026-10-28T19:05:53.461077+00:00",
+          "ended_utc": "2026-10-28T19:05:56.247922+00:00",
+          "candidates": 6,
+          "frozen_teacher_unchanged": true
+        }
+      },
+      "guard.json": {
+        "bytes": 2779,
+        "mtime_ns": 1793214357520177000,
+        "content": {
+          "status": "WORKER_COMPLETED",
+          "command": [
+            "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python",
+            "-u",
+            "/opt/data/private/ZHY/script/supermimic_q1_hp/activate.py",
+            "-u",
+            "/opt/data/private/ZHY/script/supermimic_q1_target_probe/probe.py",
+            "--runtime",
+            "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+            "--library",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json",
+            "--checkpoint",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt",
+            "--calibration",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_UR04_BALANCE_PREP_20261028/calibration_v02.json",
+            "--frozen-plan",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_PHASE_AWARE_LEG_PROBE_20261029/plan.json",
+            "--scope",
+            "quick33",
+            "--expected-boot",
+            "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+            "--expected-gpu",
+            "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+            "--code-commit",
+            "494f45a6fed67488c2af81c0bc1791b371d7b474",
+            "--output",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_TARGET_FILTER_PROBE_20261029",
+            "--controller",
+            "--worker"
+          ],
+          "cwd": "/opt/data/private/ZHY",
+          "started_utc": "2026-10-28T18:56:11.370308+00:00",
+          "controller_pid": 145547,
+          "storage_status": "LOCAL_ONLY",
+          "last_storage_check": {
+            "experiment": {
+              "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_TARGET_FILTER_PROBE_20261029",
+              "unique_allocated_bytes": 149811200,
+              "unique_logical_bytes": 149654050,
+              "unique_inodes": 82,
+              "symlinks_not_followed": 0
+            },
+            "source": {
+              "root": "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+              "unique_allocated_bytes": 1536000,
+              "unique_logical_bytes": 1204099,
+              "unique_inodes": 166,
+              "symlinks_not_followed": 0
+            },
+            "free_bytes": {
+              "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_TARGET_FILTER_PROBE_20261029": 1643453358080,
+              "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027": 1643453358080
+            },
+            "shared_memory": {
+              "shared_bytes": 13435768832,
+              "oom_kill": 0,
+              "maximum_bytes": 32212254720
+            },
+            "gpu": {
+              "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+              "memory_mib": 15,
+              "temperature_c": 38
+            }
+          },
+          "error": null,
+          "worker_pid": 145550,
+          "worker_group": 145550,
+          "cleanup": {
+            "worker_started": true,
+            "worker_pid": 145550,
+            "worker_group": 145550,
+            "worker_reaped": true,
+            "worker_return_code": 0
+          },
+          "ended_utc": "2026-10-28T19:05:57.521653+00:00"
+        }
+      }
+    },
+    "processes": {
+      "145547": {
+        "exists": false
+      },
+      "145550": {
+        "exists": false
+      }
+    },
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15, 26, 0",
+    "compute_processes": "",
+    "free_bytes": 1643480100864
+  },
+  "results": {
+    "pipeline": {
+      "status": "COMPLETED",
+      "process": {
+        "pid": 145547,
+        "start_ticks": 12741303,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "started_utc": "2026-10-28T18:56:11.369759+00:00",
+      "optimizer_steps": 0,
+      "no_automatic_retry": true,
+      "ended_utc": "2026-10-28T19:05:58.435448+00:00",
+      "frozen_source_count": 1169
+    },
+    "candidates": [
+      {
+        "name": "baseline",
+        "gate": null,
+        "val": [
+          1,
+          0,
+          0
+        ],
+        "walk_ratios": [
+          null,
+          null,
+          null
+        ],
+        "fixed_complete": [
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "name": "ema010",
+        "gate": {
+          "passed": [
+            true,
+            false,
+            false
+          ],
+          "continue_authorized": false,
+          "protocol": "Both fixed walks each improve slip or swing >=10%, preserve other gait metrics <=10%, upper/wrist/peak <=15%; all fixed demos complete in3 repeats; this overnight authority ends07:00 Beijing"
+        },
+        "val": [
+          0,
+          1,
+          1
+        ],
+        "walk_ratios": [
+          [
+            {
+              "walking_slip": 0.8712165960062711,
+              "swing_error": 1.009006090278367,
+              "walking_tilt": 0.9985330052231026,
+              "target_change": 0.9546406621404988
+            },
+            {
+              "walking_slip": 0.811060255676227,
+              "swing_error": 0.9927312212810147,
+              "walking_tilt": 1.067337975987782,
+              "target_change": 0.9599719173771205
+            }
+          ],
+          [
+            {
+              "walking_slip": 1.0636256261500456,
+              "swing_error": 0.9935639194584747,
+              "walking_tilt": 0.9664752591846172,
+              "target_change": 0.9806728430674965
+            },
+            {
+              "walking_slip": 0.8628091679951625,
+              "swing_error": 1.070544794127826,
+              "walking_tilt": 1.11214916092843,
+              "target_change": 0.8512259166476327
+            }
+          ],
+          [
+            {
+              "walking_slip": 1.1691251704990084,
+              "swing_error": 1.0290657784838042,
+              "walking_tilt": 1.0697395529042772,
+              "target_change": 0.9585483814860192
+            },
+            {
+              "walking_slip": 0.8780625008295674,
+              "swing_error": 1.0748959327193137,
+              "walking_tilt": 1.120769331195043,
+              "target_change": 0.8824167892596267
+            }
+          ]
+        ],
+        "fixed_complete": [
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "name": "ema020",
+        "gate": {
+          "passed": [
+            false,
+            false,
+            false
+          ],
+          "continue_authorized": false,
+          "protocol": "Both fixed walks each improve slip or swing >=10%, preserve other gait metrics <=10%, upper/wrist/peak <=15%; all fixed demos complete in3 repeats; this overnight authority ends07:00 Beijing"
+        },
+        "val": [
+          0,
+          1,
+          1
+        ],
+        "walk_ratios": [
+          [
+            {
+              "walking_slip": 0.9508008638746009,
+              "swing_error": 1.071797742891584,
+              "walking_tilt": 1.02453718059566,
+              "target_change": 0.9325355418084235
+            },
+            {
+              "walking_slip": 1.0531904835873722,
+              "swing_error": 1.0828883201165753,
+              "walking_tilt": 1.076944391878538,
+              "target_change": 0.881516849163211
+            }
+          ],
+          [
+            {
+              "walking_slip": 0.8401719887096661,
+              "swing_error": 1.0432113281105657,
+              "walking_tilt": 1.0008631424154477,
+              "target_change": 0.8869454321472934
+            },
+            {
+              "walking_slip": 1.0583658626193098,
+              "swing_error": 1.0997498693395247,
+              "walking_tilt": 1.0949476388177397,
+              "target_change": 0.79976011137721
+            }
+          ],
+          [
+            {
+              "walking_slip": 0.8779826375919438,
+              "swing_error": 1.044335146839389,
+              "walking_tilt": 0.9862186103440006,
+              "target_change": 0.9490924494235592
+            },
+            {
+              "walking_slip": 0.9395800747344162,
+              "swing_error": 1.102151713000479,
+              "walking_tilt": 1.1053302750181817,
+              "target_change": 0.7773936630657715
+            }
+          ]
+        ],
+        "fixed_complete": [
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "name": "ema040",
+        "gate": {
+          "passed": [
+            false,
+            false,
+            false
+          ],
+          "continue_authorized": false,
+          "protocol": "Both fixed walks each improve slip or swing >=10%, preserve other gait metrics <=10%, upper/wrist/peak <=15%; all fixed demos complete in3 repeats; this overnight authority ends07:00 Beijing"
+        },
+        "val": [
+          3,
+          3,
+          3
+        ],
+        "walk_ratios": [
+          [
+            {
+              "walking_slip": 1.5372492547625243,
+              "swing_error": 1.0700451515491343,
+              "walking_tilt": 1.0317982173905909,
+              "target_change": 0.9397149619832053
+            },
+            {
+              "walking_slip": 1.05062329111371,
+              "swing_error": 0.9170782545992627,
+              "walking_tilt": 1.1526006600709964,
+              "target_change": 0.7350998466802422
+            }
+          ],
+          [
+            {
+              "walking_slip": 1.1787835573415355,
+              "swing_error": 1.0473962390763567,
+              "walking_tilt": 1.1336181418553901,
+              "target_change": 0.8407229871060277
+            },
+            {
+              "walking_slip": 1.111559083301485,
+              "swing_error": 0.9362438170435037,
+              "walking_tilt": 1.214746611571471,
+              "target_change": 0.7450427869874978
+            }
+          ],
+          [
+            {
+              "walking_slip": 1.359337252116498,
+              "swing_error": 1.050869143466046,
+              "walking_tilt": 0.995492719559127,
+              "target_change": 0.9316736551129634
+            },
+            {
+              "walking_slip": 1.1861085826285211,
+              "swing_error": 0.9632140020561434,
+              "walking_tilt": 1.222675079259011,
+              "target_change": 0.7513567081485109
+            }
+          ]
+        ],
+        "fixed_complete": [
+          true,
+          true,
+          true
+        ]
+      },
+      {
+        "name": "rate010",
+        "gate": {
+          "passed": [
+            false,
+            false,
+            false
+          ],
+          "continue_authorized": false,
+          "protocol": "Both fixed walks each improve slip or swing >=10%, preserve other gait metrics <=10%, upper/wrist/peak <=15%; all fixed demos complete in3 repeats; this overnight authority ends07:00 Beijing"
+        },
+        "val": [
+          12,
+          12,
+          12
+        ],
+        "walk_ratios": [
+          [
+            {
+              "walking_slip": 1.3077693384771136,
+              "swing_error": 1.5818453389099827,
+              "walking_tilt": 5.786234898165303,
+              "target_change": 0.7901262972111411
+            },
+            {
+              "walking_slip": 1.6468014953275332,
+              "swing_error": 1.2594958163287233,
+              "walking_tilt": 4.263002117781687,
+              "target_change": 0.8240299596306814
+            }
+          ],
+          [
+            {
+              "walking_slip": 1.0691785861829575,
+              "swing_error": 1.6116294263749977,
+              "walking_tilt": 6.103292594425021,
+              "target_change": 0.7898679184247401
+            },
+            {
+              "walking_slip": 0.6881469145496888,
+              "swing_error": 1.3510556535377238,
+              "walking_tilt": 3.79057003446615,
+              "target_change": 0.7420837364701954
+            }
+          ],
+          [
+            {
+              "walking_slip": 1.1347147039724328,
+              "swing_error": 1.6094128441283817,
+              "walking_tilt": 6.072363365678941,
+              "target_change": 0.7777500791466101
+            },
+            {
+              "walking_slip": 1.0875331608172296,
+              "swing_error": 1.2524406003001383,
+              "walking_tilt": 3.9108626743219825,
+              "target_change": 0.778126495121002
+            }
+          ]
+        ],
+        "fixed_complete": [
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "name": "rate015",
+        "gate": {
+          "passed": [
+            false,
+            false,
+            false
+          ],
+          "continue_authorized": false,
+          "protocol": "Both fixed walks each improve slip or swing >=10%, preserve other gait metrics <=10%, upper/wrist/peak <=15%; all fixed demos complete in3 repeats; this overnight authority ends07:00 Beijing"
+        },
+        "val": [
+          12,
+          11,
+          12
+        ],
+        "walk_ratios": [
+          [
+            {
+              "walking_slip": 1.5493169702787477,
+              "swing_error": 1.4283732070959976,
+              "walking_tilt": 4.159364302590709,
+              "target_change": 1.0133724969167022
+            },
+            {
+              "walking_slip": 1.2237901650378233,
+              "swing_error": 1.0564222436220914,
+              "walking_tilt": 2.6858763915030517,
+              "target_change": 0.8893957708543795
+            }
+          ],
+          [
+            {
+              "walking_slip": 1.2597712703918134,
+              "swing_error": 1.4671128574859917,
+              "walking_tilt": 4.1010911580684635,
+              "target_change": 1.0250630537938044
+            },
+            {
+              "walking_slip": 1.0558128179244346,
+              "swing_error": 0.9869180369582063,
+              "walking_tilt": 1.0943269038679073,
+              "target_change": 0.6952228013084033
+            }
+          ],
+          [
+            {
+              "walking_slip": 1.3324335777111742,
+              "swing_error": 1.4647560657097376,
+              "walking_tilt": 4.016121101090866,
+              "target_change": 1.0161453758701007
+            },
+            {
+              "walking_slip": 1.0235042707071622,
+              "swing_error": 1.1983738594337063,
+              "walking_tilt": 3.2499419338493185,
+              "target_change": 0.8427163273610747
+            }
+          ]
+        ],
+        "fixed_complete": [
+          false,
+          false,
+          false
+        ]
+      }
+    ]
+  },
+  "delivery": {
+    "count": 44,
+    "bytes": 3284781,
+    "all_matched": true,
+    "bad": [],
+    "files": [
+      {
+        "relative_path": "baseline_repeat0.json",
+        "bytes": 41173,
+        "sha256": "0a2ab52d5d7046fe0dd5583bb2cb4f53a6b31630288dc90c72f2140128c41a65"
+      },
+      {
+        "relative_path": "baseline_repeat1.json",
+        "bytes": 41110,
+        "sha256": "aa169d4d0d8aaaaf279c50bf2cad27ff3f0b29f7744a97c6b1e89f11d3a8c259"
+      },
+      {
+        "relative_path": "baseline_repeat2.json",
+        "bytes": 41101,
+        "sha256": "ec0d80a3dc4b801b59adae5265a4eb61726bb2275d2e5cb06fe22700824de015"
+      },
+      {
+        "relative_path": "ema010_repeat0.json",
+        "bytes": 47575,
+        "sha256": "0a727846c2f8e729235cc71773b2b6609e7250b4f6374b731e0d58faf02fbccd"
+      },
+      {
+        "relative_path": "ema010_repeat1.json",
+        "bytes": 47694,
+        "sha256": "ddc756190fbb627101c6301a6f5ccde3f6dc500bce2c21bcb2032eee5fa693b3"
+      },
+      {
+        "relative_path": "ema010_repeat2.json",
+        "bytes": 47588,
+        "sha256": "106cc407499279350979d63cedfc29c1b6ac6a98b402b61712d075a808a4baab"
+      },
+      {
+        "relative_path": "ema020_repeat0.json",
+        "bytes": 47532,
+        "sha256": "d3e937f71682fdd786cf8fc2a18055e6f9e8a28e0eb832ed7b06f90c77c67aa3"
+      },
+      {
+        "relative_path": "ema020_repeat1.json",
+        "bytes": 47575,
+        "sha256": "1956188419d1b5b686754b89e3c61a1222eec4d11d85e3cb11ee89b721a5ce7e"
+      },
+      {
+        "relative_path": "ema020_repeat2.json",
+        "bytes": 47596,
+        "sha256": "5d355bead541ccd5fc0800e9a7db3d1af713a157f06ed5a4ecf857ea227b44d9"
+      },
+      {
+        "relative_path": "ema040_repeat0.json",
+        "bytes": 47740,
+        "sha256": "deaf748daf991d09c408910e0e896d5da5d951eeadd67d7635b9216ab5858466"
+      },
+      {
+        "relative_path": "ema040_repeat1.json",
+        "bytes": 47665,
+        "sha256": "809b00d3e706e6a592f79cbecd29d170d8c09e684c4611d5f273418d9fe3d201"
+      },
+      {
+        "relative_path": "ema040_repeat2.json",
+        "bytes": 47654,
+        "sha256": "3a3c18b2c54081309d493f6a9471c6c9b0bfe0a713bc73895e499897b9e8594e"
+      },
+      {
+        "relative_path": "evaluation_library.json",
+        "bytes": 20800,
+        "sha256": "aff023b3d0d83204ceb165fe0b9591ba8e0b98bc745861d618221b7828bd8f29"
+      },
+      {
+        "relative_path": "guard.json",
+        "bytes": 2779,
+        "sha256": "a93d86fb06bdbbdad1a61cdb06a4715fd79af47626264f77b1598f81bc5a67af"
+      },
+      {
+        "relative_path": "launch.json",
+        "bytes": 108,
+        "sha256": "af4bf36a40016fb0c559435310840dbac083adfab7edc7ba2fed8c2d2f6db8f6"
+      },
+      {
+        "relative_path": "partial_results.json",
+        "bytes": 1055237,
+        "sha256": "279686f51e2e2a4828760ae4325e80c7591038576612ef1bf9e163d08514cda0"
+      },
+      {
+        "relative_path": "plan.json",
+        "bytes": 288252,
+        "sha256": "47c943bd078aae696ca57d1e999be443af19352109fce8b30dbd40b1ab6d05d8"
+      },
+      {
+        "relative_path": "rate010_repeat0.json",
+        "bytes": 47741,
+        "sha256": "d6faf6acf93102dc3fdc8c81c68181823465995608e68a078bd2a95dc6d7329c"
+      },
+      {
+        "relative_path": "rate010_repeat1.json",
+        "bytes": 47783,
+        "sha256": "6c6cbd1db62588e6ece3dec2fcd1b3c9e564f4309eb9a462b94ebd5eca0de6c8"
+      },
+      {
+        "relative_path": "rate010_repeat2.json",
+        "bytes": 47666,
+        "sha256": "ae248d8a1981c05e50c3267d496c39feac8d013095ce7466aee710f65adf256e"
+      },
+      {
+        "relative_path": "rate015_repeat0.json",
+        "bytes": 47884,
+        "sha256": "27e529c7371d2467d37402fc43ea30e7d7de798e74ffa66817cce4b98191d263"
+      },
+      {
+        "relative_path": "rate015_repeat1.json",
+        "bytes": 47841,
+        "sha256": "1a9ef8ccd1eb3eb5d1411fd34b91ec72fec8ed9a75b4fb0df72a3de0ce079b12"
+      },
+      {
+        "relative_path": "rate015_repeat2.json",
+        "bytes": 47872,
+        "sha256": "1e1c32ae479e9b46c007b97fc0867e693fe7f1f0697f1004dda268880a1e07d9"
+      },
+      {
+        "relative_path": "results.json",
+        "bytes": 1075513,
+        "sha256": "27b1d5602860d5995309b8b011e5a9e11f9c6ea527b6acf4beeef05e221aa180"
+      },
+      {
+        "relative_path": "run/baseline_repeat0/seed_contract.json",
+        "bytes": 140,
+        "sha256": "68e761fb948985119c9cd3cd9c297de671db9c16fb05d005b51ab71655c6e00c"
+      },
+      {
+        "relative_path": "run/baseline_repeat1/seed_contract.json",
+        "bytes": 140,
+        "sha256": "a14efe516ac56a7032b63b562f80f70242ed9bc75a6675be6be94a588f2490c6"
+      },
+      {
+        "relative_path": "run/baseline_repeat2/seed_contract.json",
+        "bytes": 140,
+        "sha256": "fc5d15672a170b8668f19329dbacd37f2a2ea393e75ecf90fbabed3968a7c57a"
+      },
+      {
+        "relative_path": "run/ema010_repeat0/seed_contract.json",
+        "bytes": 140,
+        "sha256": "68e761fb948985119c9cd3cd9c297de671db9c16fb05d005b51ab71655c6e00c"
+      },
+      {
+        "relative_path": "run/ema010_repeat1/seed_contract.json",
+        "bytes": 140,
+        "sha256": "a14efe516ac56a7032b63b562f80f70242ed9bc75a6675be6be94a588f2490c6"
+      },
+      {
+        "relative_path": "run/ema010_repeat2/seed_contract.json",
+        "bytes": 140,
+        "sha256": "fc5d15672a170b8668f19329dbacd37f2a2ea393e75ecf90fbabed3968a7c57a"
+      },
+      {
+        "relative_path": "run/ema020_repeat0/seed_contract.json",
+        "bytes": 140,
+        "sha256": "68e761fb948985119c9cd3cd9c297de671db9c16fb05d005b51ab71655c6e00c"
+      },
+      {
+        "relative_path": "run/ema020_repeat1/seed_contract.json",
+        "bytes": 140,
+        "sha256": "a14efe516ac56a7032b63b562f80f70242ed9bc75a6675be6be94a588f2490c6"
+      },
+      {
+        "relative_path": "run/ema020_repeat2/seed_contract.json",
+        "bytes": 140,
+        "sha256": "fc5d15672a170b8668f19329dbacd37f2a2ea393e75ecf90fbabed3968a7c57a"
+      },
+      {
+        "relative_path": "run/ema040_repeat0/seed_contract.json",
+        "bytes": 140,
+        "sha256": "68e761fb948985119c9cd3cd9c297de671db9c16fb05d005b51ab71655c6e00c"
+      },
+      {
+        "relative_path": "run/ema040_repeat1/seed_contract.json",
+        "bytes": 140,
+        "sha256": "a14efe516ac56a7032b63b562f80f70242ed9bc75a6675be6be94a588f2490c6"
+      },
+      {
+        "relative_path": "run/ema040_repeat2/seed_contract.json",
+        "bytes": 140,
+        "sha256": "fc5d15672a170b8668f19329dbacd37f2a2ea393e75ecf90fbabed3968a7c57a"
+      },
+      {
+        "relative_path": "run/rate010_repeat0/seed_contract.json",
+        "bytes": 140,
+        "sha256": "68e761fb948985119c9cd3cd9c297de671db9c16fb05d005b51ab71655c6e00c"
+      },
+      {
+        "relative_path": "run/rate010_repeat1/seed_contract.json",
+        "bytes": 140,
+        "sha256": "a14efe516ac56a7032b63b562f80f70242ed9bc75a6675be6be94a588f2490c6"
+      },
+      {
+        "relative_path": "run/rate010_repeat2/seed_contract.json",
+        "bytes": 140,
+        "sha256": "fc5d15672a170b8668f19329dbacd37f2a2ea393e75ecf90fbabed3968a7c57a"
+      },
+      {
+        "relative_path": "run/rate015_repeat0/seed_contract.json",
+        "bytes": 140,
+        "sha256": "68e761fb948985119c9cd3cd9c297de671db9c16fb05d005b51ab71655c6e00c"
+      },
+      {
+        "relative_path": "run/rate015_repeat1/seed_contract.json",
+        "bytes": 140,
+        "sha256": "a14efe516ac56a7032b63b562f80f70242ed9bc75a6675be6be94a588f2490c6"
+      },
+      {
+        "relative_path": "run/rate015_repeat2/seed_contract.json",
+        "bytes": 140,
+        "sha256": "fc5d15672a170b8668f19329dbacd37f2a2ea393e75ecf90fbabed3968a7c57a"
+      },
+      {
+        "relative_path": "run/status.json",
+        "bytes": 443,
+        "sha256": "5f96e9c3fb949df07ea9e4dc5a05e86e62677499152827ac008a884d6f73fab6"
+      },
+      {
+        "relative_path": "status.json",
+        "bytes": 339,
+        "sha256": "ce48949b2a03252065af712b9a369f958ff2fc6f1c6ffd2c43ec393eae2bce92"
+      }
+    ],
+    "mac_root": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_LEG_TARGET_FILTER_PROBE_20261029",
+    "server_root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_TARGET_FILTER_PROBE_20261029",
+    "large_npz": "18 SERVER_LOCAL_ONLY"
+  },
+  "user_accepted_checkpoint": null,
+  "decisions": {
+    "ema010": "One walk improves slip consistently; other walk inconsistent with posture cost. No full330 or optimization authorized by evidence.",
+    "strong_filter": "EMA040 and rate limits impair physical stability; root metrics on shortened rollouts are not improvement.",
+    "next": "Independent bounded leg PD gain grid; frozen physical targets/action scale and upper alpha0.5; no new optimizer."
+  }
+}

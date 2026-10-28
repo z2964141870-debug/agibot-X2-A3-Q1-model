@@ -1,0 +1,195 @@
+{
+  "status": "PD_PROBE_PREPARATION_PASSED_NOT_STARTED",
+  "captured_beijing": "2026-10-29T03:26:00+08:00",
+  "cpu_counterexamples": 4,
+  "remote_help": "PASS",
+  "preflight": {
+    "status": "PREFLIGHT_PASSED",
+    "ended_utc": "2026-10-28T19:23:21.368780+00:00",
+    "optimizer_steps": 0,
+    "original_scene": {
+      "path": "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027/q1_assets/scene.xml",
+      "bytes": 30871,
+      "sha256": "7ecf223aacd31cd1824575053bc66dbbc7301885366eb42b58908203d9b455fd"
+    },
+    "identity": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_PD_PREFLIGHT_V02_20261029/receipt.json",
+      "bytes": 108833,
+      "sha256": "f9b2184dec18c831d73038a47c123bfbadfc5b78b159fb4831386ae133de9b76"
+    },
+    "variants": [
+      {
+        "candidate": "baseline",
+        "verified_before": true,
+        "verified_after": true,
+        "gain_shape": [
+          16,
+          22,
+          10
+        ],
+        "cpu_kp": [
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914
+        ],
+        "cpu_kd": [
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531
+        ],
+        "tolerance": {
+          "rtol": 0.00001,
+          "atol": 0.000001
+        }
+      },
+      {
+        "candidate": "damping125",
+        "verified_before": true,
+        "verified_after": true,
+        "gain_shape": [
+          16,
+          22,
+          10
+        ],
+        "cpu_kp": [
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914,
+          15.7914
+        ],
+        "cpu_kd": [
+          1.25664,
+          1.25664,
+          1.25664,
+          1.25664,
+          1.25664,
+          1.25664,
+          1.25664,
+          1.25664,
+          1.25664,
+          1.25664,
+          1.25664,
+          1.25664,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531,
+          1.00531
+        ],
+        "tolerance": {
+          "rtol": 0.00001,
+          "atol": 0.000001
+        }
+      }
+    ],
+    "final_resources": {
+      "experiment": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_PD_PREFLIGHT_V02_20261029",
+        "unique_allocated_bytes": 98304,
+        "unique_logical_bytes": 84517,
+        "unique_inodes": 8,
+        "symlinks_not_followed": 0
+      },
+      "source": {
+        "root": "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+        "unique_allocated_bytes": 1536000,
+        "unique_logical_bytes": 1204099,
+        "unique_inodes": 166,
+        "symlinks_not_followed": 0
+      },
+      "free_bytes": {
+        "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_PD_PREFLIGHT_V02_20261029": 1642228531200,
+        "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027": 1642228531200
+      },
+      "shared_memory": {
+        "shared_bytes": 15496810496,
+        "oom_kill": 0,
+        "maximum_bytes": 32212254720
+      },
+      "gpu": {
+        "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+        "memory_mib": 431,
+        "temperature_c": 31
+      }
+    }
+  },
+  "earlier_preflight": {
+    "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LEG_PD_PREFLIGHT_20261029",
+    "status": "FAILED_BEFORE_CANDIDATE_ROLLOUT",
+    "reason": "Existing model composition rounded kp15.7913670417 to15.7914; strict1e-6 tolerance rejected2.09e-6 relative difference.",
+    "correction": "rtol1e-5/atol1e-6 with requested/actual CPU and device values recorded"
+  },
+  "target_filter_results": {
+    "status": "COMPLETED_NO_CONFIRMED_BALANCED_IMPROVEMENT",
+    "delivery": {
+      "count": 44,
+      "bytes": 3284781,
+      "all_matched": true,
+      "bad": []
+    }
+  },
+  "next": "Publish frozen new source, independent remote40 and three-root size/SHA, then one bounded quick33",
+  "training_optimizer_steps": 0,
+  "user_accepted_checkpoint": null
+}

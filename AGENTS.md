@@ -4,6 +4,10 @@
 
 ## 环境与目录
 
+- 2026-10-29 03:26独立PD敏感度准备4CPU/远端help及16环境两档CPU/Warp实际增益预检通过，原XML不变/0optimizer/OOM0。第一预检baseline15.791367→15.7914的舍入触发严容差，修正检查并保存实际值后V02通过；不是正式训练重启。6档仅在新XML改12腿kp/kv，原手臂.5/腰/动作尺度/effort不改，正式quick33尚未启动，待发布/三端核验；07:00探索/09:00交付，不恢复旧作业/agent/用户采纳null。入口PD_SENSITIVITY与preparation收据。
+
+- 2026-10-29 03:18目标滤波quick33已03:05:58全流程COMPLETED，guardreap0/1169来源未变/原controller145547与worker145550退出/GPU释放/OOM0；44小工件3284781字节Mac/25386大小SHA通过，18NPZ服务器留存。ema010起走滑移降约12%至19%但停走不一致/姿态代价、原逐片诊断1/3；EMA040验证3/3/3失败、限速12/12/12和12/11/12且固定片失败，不确认均衡步态收益、不full330/训练。下一步独立有限PD检验尚未启动，不恢复旧训练/热改旧来源/agent；07:00探索截止/09:00数据视频供用户决定，采纳仍null。入口TARGET_FILTER_PROBE及results收据，以下RUNNING历史。
+
 - 2026-10-29 02:56:08独立TARGET_FILTER quick33已启动，根data/supermimic_for_q1/Q1_LEG_TARGET_FILTER_PROBE_20261029；controller145547/start_ticks12741303、worker145550/start_ticks12741645，原boot/GPU。冻结494f45a6fed67488c2af81c0bc1791b371d7b474独立远端/10文件258758字节三端SHA，02:57:34 baseline repeat2/frame200/0optimizer、资源正常/OOM0，尚无候选收益。6档EMA/限速只改12腿目标，手臂.5/腰/PD不变，正确配置实际seed32000+repeat；只监督原作业，不重复启动/热改/训练/agent。07:00探索截止/09:00交付，入口TARGET_FILTER_PROBE及launch收据，以下尚未启动仅历史。
 
 - 2026-10-29 02:53独立TARGET_FILTER准备已7CPU反例/解析/CLI help、27行已存NPZ频谱集成通过，尚未物理启动；固定RF14两小时/手臂alpha.5，只对12腿目标做轻EMA/限速。旧phase种子标签32000+repeat被worker.prepare覆盖0的边界已补正，不称三个独立seed；新prepare_seeded在create_env前设实际环境/算法/全局seed并逐case落收据。RF15/phase交付e55e3bd74a11e921271d31a2dd306e6570b0d081独立远端/9记录362890字节三端SHA。后续先正式冻结发布才跑一次quick33，07:00停新优化/物理探索、09:00交付，用户采纳仍null；不恢复/重试RF15/旧训练/agent。入口TARGET_FILTER_PROBE及target_filter_preparation收据。

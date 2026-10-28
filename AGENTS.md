@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-29 05:06推理精度quick33已04:44:34正常COMPLETED、1191来源/教师不变/guardreap0/原156963与156971退出/GPU释放/OOM0，52工件2855032字节Mac/25386 SHA；四档验证0失败/固定片全完整，但FP32未给两走一致收益，不归因BF16。04:51脚底几何只读CPU审计完成330原CSV SHA/666足行/3204时序行，3工件442658字节SHA；walking近地材料点速度.263m/s/固定走低间隙只是假设，非承重接触滑移或新数据门。当前无GPU任务，继续只读核重定向接触/脚锁，不重转/重试旧作业/agent，07:00探索/09:00交付和用户采纳null保持。入口PRECISION_SENSITIVITY/SAVED_SOLE_GEOMETRY及results收据。
+
 - 2026-10-29 04:44 ACTIVITY full330本地3原速54秒MP4/逐片图表已交付，52工件50448523字节Mac/25386 SHA、18媒体检查/9联系图与控制图目视通过，普通走仍有抬脚/滑移问题不称整体成功。04:38:32唯一precision quick33启动controller156963/start_ticks13355775、worker156971/start_ticks13355927，原boot/GPU，冻结e83324f8084cd8051d2db357c2b59793237cc7c8/8文件227821字节三端SHA；04:39:28 bf16_static050 repeat1/frame250/0optimizer/OOM0，尚无效果。脚底几何只读CPU工具合成模型核验通过、真实330参考审计未运行，不改变参考或新数据门；07:00/09:00截止/采纳null/无agent保持。
 
 - 2026-10-29 04:19推理精度敏感性独立准备3CPU反例/AST/远端help通过，BF16/FP32同冻结权重/控制/输入×静态.5/动态.5-.75，33环境三配置seed、0optimizer；尚未物理启动。须先等当前ACTIVITY固定三视频已存轨迹渲染session70132结束、发布/三端SHA/GPU空闲；不并行GPU/重试旧作业/agent，不将精度差认定根因或改善，07:00探索/09:00交付/用户采纳null。入口PRECISION_SENSITIVITY及preparation。

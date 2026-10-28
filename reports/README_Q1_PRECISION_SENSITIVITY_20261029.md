@@ -1,5 +1,15 @@
 # Q1推理精度独立诊断
 
+## 05时真实结果
+
+04:44:34全流程正常COMPLETED，1191来源/教师与归一化未变，guard正常WORKER_COMPLETED/reaped0；04:48:46原controller156963/worker156971均不存在、GPU15MiB无计算进程/OOM0。52小工件2855032字节已Mac/25386逐大小SHA匹配，12大NPZ仅服务器留存；review_v01保留144分组/36固定片/396逐片/63跟踪/72步态原值及PNG/PDF。以下RUNNING是历史，不重复此诊断。
+
+四档×三配置seed的验证均0/0/0失败，固定两走/抬手均3/3完整。BF16静态.5上肢RMSE为.296642/.296577/.296668rad，FP32为.296898/.296915/.296734；动态.5-.75分别为.194807/.194415/.194639与.194857/.195260/.194786，未见有意义上肢收益。
+
+同控制FP32/BF16承重滑速比：静态停走.954/.878/.903、起走.888/.621/1.089；动态停走.864/.716/1.127、起走1.172/1.084/1.212，未给两固定走带来一致收益。首个相同输入的未混合关节目标差均值.000635rad、最大.005375rad，只证明数值路径有差，不能据此认定BF16导致此前训练退化。旧继续诊断各仅1/3通过，不将FP32作为步态修复或训练晋级。
+
+本步0optimizer，用户采纳仍null。[结果与交付收据](../data/manifests/supermimic_q1_precision_probe_results_20261029.json)；本地目录data/supermimic_for_q1/Q1_INFERENCE_PRECISION_PROBE_20261029/review_v01。07:00停止新物理探索、09:00交用户审阅。
+
 04:38:32唯一quick33已实际启动，controller156963/start_ticks13355775、worker156971/start_ticks13355927、原boot/GPU；冻结e83324f8084cd8051d2db357c2b59793237cc7c8独立远端及8文件227821字节三端SHA一致。04:39:28 bf16_static050 repeat1/frame250、三状态/命令/mtime一致，0optimizer、GPU787MiB/36度/共享17067728896字节/OOM0；尚无精度效果结论。只监督原四档三重复，不重复启动/热改来源。[启动](../data/manifests/supermimic_q1_precision_probe_launch_20261029.json)。
 
 2026-10-29 04:19北京时间。3项CPU反例、3源AST解析及服务器真实Python经activate.py的CLI help通过，尚未物理启动。当前只在渲染已存ACTIVITY full330三段视频，先等交付子进程退出再核GPU空闲，不能并行GPU诊断。用户夜间自由探索至09:00、07:00停止新增物理探索；不恢复旧训练或失败重试，采纳null。

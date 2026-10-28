@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 05:06最新：[精度quick33已04:44:34正常结束](README_Q1_PRECISION_SENSITIVITY_20261029.md)，1191来源/教师不变、guardreap0/原进程退出/GPU释放；四档三次验证均0失败、固定片完整，但FP32无两普通走一致收益，52工件2855032字节Mac/25386 SHA，不认定BF16为训练退化根因。[脚底几何只读审计](README_Q1_SAVED_SOLE_GEOMETRY_20261029.md)04:51完成330原CSV SHA/666足行/3204时序行，3工件442658字节SHA；参考走路低脚底间隙/近地移动仅兼容性假设，不等于承重滑移或新数据门。当前无GPU作业；继续只读核接触/脚锁，07:00探索/09:00交付、用户采纳null，不重试旧训练/agent。
+
 2026-10-29 04:44最新：[ACTIVITY full330本地交付](README_Q1_ACTIVITY_BLEND_20261029.md)52工件50448523字节Mac/25386 SHA、3固定54秒MP4/18媒体检查/9联系图与控制图目视完成；上肢收益与步态代价保留，不称自然走路达标。[唯一推理精度quick33](README_Q1_PRECISION_SENSITIVITY_20261029.md)04:38:32启动controller156963/start_ticks13355775、worker156971/start_ticks13355927，代码e83324f/8文件227821字节三端SHA；04:39:28 bf16_static050 repeat1/frame250、0optimizer/原身份/资源正常/OOM0，尚无结论。另[只读脚底几何CPU准备](README_Q1_SAVED_SOLE_GEOMETRY_20261029.md)已合成模型解析/平移/旋转核验，真实330片审计未运行，不改变参考/数据门。07:00/09:00截止、采纳null保留。
 
 2026-10-29 04:19：[BF16/FP32推理精度诊断CPU准备](README_Q1_PRECISION_SENSITIVITY_20261029.md)3反例/AST/服务器help通过，四档同权重/控制/输入配对，0optimizer；首个实际前向用同输入核物理目标差，不额外reset。尚未GPU启动，须等当前ACTIVITY已存轨迹三视频渲染session70132结束、冻结发布/核SHA/GPU空闲；不把精度差当物理改善或单因根因，07:00/09:00截止不变。

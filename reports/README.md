@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-28：[UR02平衡耦合与下肢候选](README_Q1_BALANCE_COUPLING_UR02_20261028.md)完成：保存轨迹精确重建，单独上肢输入交换使下肢/腰目标变0.153–0.165rad；相同下肢命令的手臂物理干预也恶化根跟踪，但开环对照本身21–23/30失败，不能据此分解原闭环致崩比例。冻结教师+参考手臂+14维下肢残差已实现，5测试及16/4096前向通过；0optimizer，尚未训练/集成学习器。[量值与边界](../data/manifests/supermimic_q1_UR02_balance_coupling_20261028.json)。
+
 2026-10-28：[UR01上肢参考控制与平衡耦合](README_Q1_UPPER_REFERENCE_UR01_20261028.md)。实际实施参考前馈与限幅补偿，33环境/固定原30验证+3展示/三重复/0optimizer：上肢误差约降93%或83%，但根部和稳定性退步，均不作为已完成全身方案。提供独立修正代码、真实量值与下一步下肢适配的明确边界；不启动训练或恢复监督。[小记录](../data/manifests/supermimic_q1_UR01_reference_control_20261028.json)。
 
 2026-10-28研究：[五项简报](research/2026-10-28/README.md)保存四项新阅读与HoloBoxing v2对手协议更正；87请求83成功、9固定文本静态核验，main去重122→134、H001不变。完整历史由main维护，Q1工程状态按本分支最新记录；本次没有训练/仿真或新假设。[检查](README_RESEARCH_CHECK_20261028.md)/[同步回执](../data/manifests/research_watch_sync_20261028.json)。

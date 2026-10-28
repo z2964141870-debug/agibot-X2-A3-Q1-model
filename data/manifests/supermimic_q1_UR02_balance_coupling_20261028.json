@@ -1,0 +1,569 @@
+{
+  "schema_version": 1,
+  "stage": "UR02",
+  "date_beijing": "2026-10-28",
+  "status": "NONTRAINING_DIAGNOSIS_AND_CANDIDATE_IMPLEMENTATION_COMPLETED",
+  "source_commit_before_stage": "a818fc8855b3da61a11bab0e5718ffed5f6880e6",
+  "server_root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_UR02_BALANCE_COUPLING_V03_20261028",
+  "mac_root": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_UR02_BALANCE_COUPLING_V03_20261028",
+  "report": "reports/README_Q1_BALANCE_COUPLING_UR02_20261028.md",
+  "protocol": {
+    "diagnostic_environments": 33,
+    "original_validation_clips": 30,
+    "fixed_demo_clips": 3,
+    "repeats": 3,
+    "optimizer_updates": 0,
+    "training_seconds": 0,
+    "conditions": [
+      "same_recorded_lower_and_RF11_arm_targets",
+      "same_recorded_lower_and_next_reference_arm_targets"
+    ],
+    "counterfactual_fields": {
+      "q": [
+        14,
+        22
+      ],
+      "qd": [
+        36,
+        44
+      ],
+      "previous_action": [
+        64,
+        72
+      ]
+    },
+    "synthetic_attribution_is_not_deployable": true,
+    "physical_lower_feedback_disabled": true,
+    "initialized_candidate_not_tested_as_improvement": true
+  },
+  "source_reconstruction_max_lower_target_error_rad": 0,
+  "attribution": [
+    {
+      "repeat": 0,
+      "validation": {
+        "inject_into_RF11": {
+          "position": 0.11552061995068938,
+          "velocity": 0.03291930932181259,
+          "previous_action": 0.13569902157755528,
+          "all_upper": 0.1645275031442805,
+          "total_closed_loop": 0.3689599414851509
+        },
+        "remove_from_reference": {
+          "position": 0.11915554167020814,
+          "velocity": 0.034536596240370136,
+          "previous_action": 0.12682718952329686,
+          "all_upper": 0.1529968742867475,
+          "total_closed_loop": 0.3689599414851509
+        }
+      }
+    },
+    {
+      "repeat": 1,
+      "validation": {
+        "inject_into_RF11": {
+          "position": 0.11611990323561668,
+          "velocity": 0.03287690342812904,
+          "previous_action": 0.13670460134438572,
+          "all_upper": 0.16484578440043002,
+          "total_closed_loop": 0.3601200016462719
+        },
+        "remove_from_reference": {
+          "position": 0.12044253025876356,
+          "velocity": 0.03453000902727302,
+          "previous_action": 0.1274611594414499,
+          "all_upper": 0.153749915976422,
+          "total_closed_loop": 0.3601200016462719
+        }
+      }
+    },
+    {
+      "repeat": 2,
+      "validation": {
+        "inject_into_RF11": {
+          "position": 0.11608207896332029,
+          "velocity": 0.03309259131392659,
+          "previous_action": 0.1361635881281828,
+          "all_upper": 0.1653005164159052,
+          "total_closed_loop": 0.365111998126317
+        },
+        "remove_from_reference": {
+          "position": 0.12037282462688623,
+          "velocity": 0.034694977191449185,
+          "previous_action": 0.12703594768219106,
+          "all_upper": 0.1536564015071957,
+          "total_closed_loop": 0.365111998126317
+        }
+      }
+    }
+  ],
+  "physical_interventions": [
+    {
+      "repeat": 0,
+      "arm_intervention": {
+        "ratios": {
+          "root_xy_rmse": 2.361064099498994,
+          "upper_rmse": 0.07496003488608766,
+          "leg_rmse": 1.07224449398249,
+          "wrist_relative_rmse": 0.5807661732331544,
+          "target_oscillation": 1.017995225081358,
+          "loaded_slip": 1.1240877988718503,
+          "raised_peak_error": 0.2394392216620278
+        },
+        "measurements": {
+          "root_xy_rmse": {
+            "candidate": 0.10090538232276837,
+            "baseline": 0.04273724815187355
+          },
+          "upper_rmse": {
+            "candidate": 0.06636128624280294,
+            "baseline": 0.8852888921896617
+          },
+          "leg_rmse": {
+            "candidate": 0.23868041709065438,
+            "baseline": 0.22259887407223383
+          },
+          "wrist_relative_rmse": {
+            "candidate": 0.06538580997536579,
+            "baseline": 0.11258543108900389
+          },
+          "target_oscillation": {
+            "candidate": 0.04817955844725172,
+            "baseline": 0.047327882548173265
+          },
+          "loaded_slip": {
+            "candidate": 0.07411218440781037,
+            "baseline": 0.06593095706775784
+          },
+          "raised_peak_error": {
+            "candidate": 0.09200912714004517,
+            "baseline": 0.38426923751831055
+          }
+        },
+        "failures": 30,
+        "completion": 0.33741274826179696,
+        "fixed_demos_complete": false,
+        "common_prefix_mean_seconds": 1.5906666666666667
+      },
+      "playback_vs_saved_closed_loop": {
+        "ratios": {
+          "root_xy_rmse": 1.1019457156064676,
+          "upper_rmse": 1.000534550601288,
+          "leg_rmse": 1.0220835964600459,
+          "wrist_relative_rmse": 1.0115112525858767,
+          "target_oscillation": 1,
+          "loaded_slip": 1.1179678970524491,
+          "raised_peak_error": 1.07755636348077
+        },
+        "measurements": {
+          "root_xy_rmse": {
+            "candidate": 0.09946157746016979,
+            "baseline": 0.09025996113196015
+          },
+          "upper_rmse": {
+            "candidate": 0.9419816672801972,
+            "baseline": 0.9414783994356791
+          },
+          "leg_rmse": {
+            "candidate": 0.2636404809852441,
+            "baseline": 0.2579441465437412
+          },
+          "wrist_relative_rmse": {
+            "candidate": 0.12355672319730122,
+            "baseline": 0.12215061659614244
+          },
+          "target_oscillation": {
+            "candidate": 0.05209573190659285,
+            "baseline": 0.05209573190659285
+          },
+          "loaded_slip": {
+            "candidate": 0.07743123763551314,
+            "baseline": 0.06926069866555433
+          },
+          "raised_peak_error": {
+            "candidate": 0.38426923751831055,
+            "baseline": 0.3566117286682129
+          }
+        },
+        "failures": 21,
+        "completion": 0.7478597840584985,
+        "fixed_demos_complete": false,
+        "common_prefix_mean_seconds": 3.7093333333333334
+      }
+    },
+    {
+      "repeat": 1,
+      "arm_intervention": {
+        "ratios": {
+          "root_xy_rmse": 2.37637704923008,
+          "upper_rmse": 0.07509154369515152,
+          "leg_rmse": 1.072495658941192,
+          "wrist_relative_rmse": 0.5809913850775331,
+          "target_oscillation": 1.0181144213977054,
+          "loaded_slip": 1.157585020709873,
+          "raised_peak_error": 0.24182498531056137
+        },
+        "measurements": {
+          "root_xy_rmse": {
+            "candidate": 0.1001498910288016,
+            "baseline": 0.04214393968383471
+          },
+          "upper_rmse": {
+            "candidate": 0.0664206273543338,
+            "baseline": 0.8845287243525187
+          },
+          "leg_rmse": {
+            "candidate": 0.23871578226486842,
+            "baseline": 0.22257971887787184
+          },
+          "wrist_relative_rmse": {
+            "candidate": 0.0653164392337203,
+            "baseline": 0.11242238854368528
+          },
+          "target_oscillation": {
+            "candidate": 0.04810238129769762,
+            "baseline": 0.04724653760592143
+          },
+          "loaded_slip": {
+            "candidate": 0.07157111894339323,
+            "baseline": 0.06182795877878865
+          },
+          "raised_peak_error": {
+            "candidate": 0.0929604023694992,
+            "baseline": 0.38441190123558044
+          }
+        },
+        "failures": 30,
+        "completion": 0.3358899852117649,
+        "fixed_demos_complete": false,
+        "common_prefix_mean_seconds": 1.5853333333333333
+      },
+      "playback_vs_saved_closed_loop": {
+        "ratios": {
+          "root_xy_rmse": 1.1322014087589638,
+          "upper_rmse": 1.0003488202890973,
+          "leg_rmse": 1.0236895291172268,
+          "wrist_relative_rmse": 1.0179397451003258,
+          "target_oscillation": 1.0000000047324544,
+          "loaded_slip": 1.1164292108652263,
+          "raised_peak_error": 1.0780773253546598
+        },
+        "measurements": {
+          "root_xy_rmse": {
+            "candidate": 0.10262858923524618,
+            "baseline": 0.09064517005657156
+          },
+          "upper_rmse": {
+            "candidate": 0.9457352340221405,
+            "baseline": 0.9454054574171702
+          },
+          "leg_rmse": {
+            "candidate": 0.265112679451704,
+            "baseline": 0.2589776215453943
+          },
+          "wrist_relative_rmse": {
+            "candidate": 0.12454612950483958,
+            "baseline": 0.12235118051369985
+          },
+          "target_oscillation": {
+            "candidate": 0.05247862121711175,
+            "baseline": 0.05247862096875906
+          },
+          "loaded_slip": {
+            "candidate": 0.07879911931231617,
+            "baseline": 0.07058138442225755
+          },
+          "raised_peak_error": {
+            "candidate": 0.38441190123558044,
+            "baseline": 0.3565717339515686
+          }
+        },
+        "failures": 23,
+        "completion": 0.7596042444450126,
+        "fixed_demos_complete": false,
+        "common_prefix_mean_seconds": 3.8200000000000003
+      }
+    },
+    {
+      "repeat": 2,
+      "arm_intervention": {
+        "ratios": {
+          "root_xy_rmse": 2.3647090540732503,
+          "upper_rmse": 0.07500519406545159,
+          "leg_rmse": 1.0705878863974718,
+          "wrist_relative_rmse": 0.5827096741824039,
+          "target_oscillation": 1.0178028671048198,
+          "loaded_slip": 1.1880533901151058,
+          "raised_peak_error": 0.2328987126272439
+        },
+        "measurements": {
+          "root_xy_rmse": {
+            "candidate": 0.10033570875724157,
+            "baseline": 0.0424304666928947
+          },
+          "upper_rmse": {
+            "candidate": 0.06636623085166017,
+            "baseline": 0.8848218003908793
+          },
+          "leg_rmse": {
+            "candidate": 0.2384021334350109,
+            "baseline": 0.22268338402112325
+          },
+          "wrist_relative_rmse": {
+            "candidate": 0.06564861138661703,
+            "baseline": 0.11266092583537102
+          },
+          "target_oscillation": {
+            "candidate": 0.04811890867228309,
+            "baseline": 0.0472772382820646
+          },
+          "loaded_slip": {
+            "candidate": 0.07344436887651681,
+            "baseline": 0.06181908110156655
+          },
+          "raised_peak_error": {
+            "candidate": 0.09235277771949768,
+            "baseline": 0.3965362310409546
+          }
+        },
+        "failures": 30,
+        "completion": 0.3360623467255898,
+        "fixed_demos_complete": false,
+        "common_prefix_mean_seconds": 1.5853333333333333
+      },
+      "playback_vs_saved_closed_loop": {
+        "ratios": {
+          "root_xy_rmse": 1.2317851306357717,
+          "upper_rmse": 1.0005487131223267,
+          "leg_rmse": 1.0189912993729382,
+          "wrist_relative_rmse": 1.021403986772453,
+          "target_oscillation": 1,
+          "loaded_slip": 1.1241403217760868,
+          "raised_peak_error": 1.1123006186076174
+        },
+        "measurements": {
+          "root_xy_rmse": {
+            "candidate": 0.10780773957570394,
+            "baseline": 0.08752154648924867
+          },
+          "upper_rmse": {
+            "candidate": 0.942744662364324,
+            "baseline": 0.9422276496887207
+          },
+          "leg_rmse": {
+            "candidate": 0.26513626674811047,
+            "baseline": 0.2601948288579782
+          },
+          "wrist_relative_rmse": {
+            "candidate": 0.12458154186606407,
+            "baseline": 0.12197087878982225
+          },
+          "target_oscillation": {
+            "candidate": 0.05315380161628127,
+            "baseline": 0.05315380161628127
+          },
+          "loaded_slip": {
+            "candidate": 0.08199541753468415,
+            "baseline": 0.07294055372476578
+          },
+          "raised_peak_error": {
+            "candidate": 0.3965362310409546,
+            "baseline": 0.3565009534358978
+          }
+        },
+        "failures": 22,
+        "completion": 0.752664886678106,
+        "fixed_demos_complete": false,
+        "common_prefix_mean_seconds": 3.798
+      }
+    }
+  ],
+  "candidate": {
+    "checks": [
+      {
+        "batch": 16,
+        "lower_mean_max_error": 0,
+        "upper_target_max_error_rad": 5.960464477539063e-8,
+        "lower_gaussian_kl_max": 0
+      },
+      {
+        "batch": 4096,
+        "lower_mean_max_error": 0,
+        "upper_target_max_error_rad": 5.960464477539063e-8,
+        "lower_gaussian_kl_max": 0
+      }
+    ],
+    "trainable_parameters": 392846,
+    "frozen_parameters": 8438838,
+    "lower_residual_radius_rad": 0.15,
+    "optimizer_updates": 0,
+    "limits": "16/4096 are forward batch sizes on tiled saved inputs, not environment counts or trained success. Zero head equals UR01 reference-arm candidate; its known instability is retained.",
+    "tests": {
+      "command": "data/environments/supermimic_q1_hp_20261026/bin/python script/supermimic_q1_hp/activate.py script/project_tools/test_q1_reference_balance.py",
+      "passed": 5
+    },
+    "implementation": "script/project_tools/q1_reference_balance.py",
+    "learner_integrated": false,
+    "pending": [
+      "14D stochastic-action learner integration and teacher-retention/KL controls",
+      "4096 physical transition preflight",
+      "explicit new training budget"
+    ]
+  },
+  "frozen_source_check": {
+    "count": 1123,
+    "bytes": 286568437,
+    "sha256_manifest": "238db7efcb752cf56ee99e1e204342a75746311cac6e2ed280a8ec7832fe5b72",
+    "mismatches": []
+  },
+  "processes": {
+    "controller": {
+      "pid": 86152,
+      "start_ticks": 7653659,
+      "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+    },
+    "worker": {
+      "pid": 86155,
+      "start_ticks": 7653719,
+      "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+    },
+    "guard": {
+      "status": "WORKER_COMPLETED",
+      "cleanup": {
+        "worker_started": true,
+        "worker_pid": 86155,
+        "worker_group": 86155,
+        "worker_reaped": true,
+        "worker_return_code": 0
+      }
+    },
+    "absent_after_completion": true,
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15 MiB, 26",
+    "compute_processes": ""
+  },
+  "failed_nontraining_predecessors": [
+    {
+      "directory": "Q1_UR02_BALANCE_COUPLING_20261028",
+      "error": "Stored PD target inversion lost action bits; BF16 lower-target replay maximum error0.005442rad",
+      "physical_rollouts_executed": 0
+    },
+    {
+      "directory": "Q1_UR02_BALANCE_COUPLING_V02_20261028",
+      "error": "33-row default target cannot expand to16; corrected row indexing",
+      "exact_attribution_saved": true,
+      "physical_rollouts_executed": 0
+    }
+  ],
+  "delivery": {
+    "files": [
+      {
+        "path": "attribution.json",
+        "bytes": 72842,
+        "sha256": "f246eb0767c04d038301f7814d0c1c7d7b291df499377fec417fd418b2105dd9"
+      },
+      {
+        "path": "balance_coupling.pdf",
+        "bytes": 29842,
+        "sha256": "6a6e4443ed3d7d58aa3c889ea3442632aab67b1663eeb653f78de0b1bcd5a8ea"
+      },
+      {
+        "path": "balance_coupling.png",
+        "bytes": 175263,
+        "sha256": "a055b24c4a40a48a1c2ff1794126af75ae850ac4b1c74ab11bce0e7c8653d3a9"
+      },
+      {
+        "path": "candidate_contract.json",
+        "bytes": 669,
+        "sha256": "7cd4c1334ac14ab85f3b72ad13d58ceab7f1cffbd602fc39348b7bf172b9dc8f"
+      },
+      {
+        "path": "coupling_metrics.csv",
+        "bytes": 6982,
+        "sha256": "f3b1c6181ca2563aff24c259bb7911cc3cd663553ff3de359bed7559df36b025"
+      },
+      {
+        "path": "delivery.json",
+        "bytes": 1490,
+        "sha256": "d7f2d11faef188849b5719abf343d0584a60c7558844d17ac3829049f8d7024e"
+      },
+      {
+        "path": "evaluation_library.json",
+        "bytes": 20563,
+        "sha256": "d976cdd2bf82ffcab6d972d242a7ac4bdacf83ea53df0b18c0d0c62491138e75"
+      },
+      {
+        "path": "guard.json",
+        "bytes": 2403,
+        "sha256": "e2affe9165b5f5c4ec59b4633483e2c43bd534adc21ddc566582d61227a41a79"
+      },
+      {
+        "path": "physical_replay.json",
+        "bytes": 9516,
+        "sha256": "e73e7522ffe9b80289aa11801f8f8d8283cbd78faa5473b7aaf2a94240ae96b6"
+      },
+      {
+        "path": "plan.json",
+        "bytes": 3481,
+        "sha256": "0ce703dbcaf3e331ce21437950839bcbf1cfd884a1c4e61fc48f249e1f9b9caf"
+      },
+      {
+        "path": "replay_RF11_repeat0.json",
+        "bytes": 41586,
+        "sha256": "85666a15826ceb1fbd0ed99a07d833bb2b646f9cf34e47525a14974d3ca4e074"
+      },
+      {
+        "path": "replay_RF11_repeat1.json",
+        "bytes": 41478,
+        "sha256": "765f51567670d4866fd41ceeec651a562dc1280be96531941bbcd0d6d329596d"
+      },
+      {
+        "path": "replay_RF11_repeat2.json",
+        "bytes": 41570,
+        "sha256": "039594704d6b81b9d3952476a0bd1ffdf4748a8f06c5d495de9d9d6272c6e412"
+      },
+      {
+        "path": "replay_reference_arms_repeat0.json",
+        "bytes": 41575,
+        "sha256": "ae1ab24ccbabf586ecf7024a48263c93a3f7bf5d8cf7640d400e3fbd24f03d96"
+      },
+      {
+        "path": "replay_reference_arms_repeat1.json",
+        "bytes": 41539,
+        "sha256": "c950ae7bb927e399bb593b0191be9b58b215ea513217dcaf8da1bcc2166dfa2b"
+      },
+      {
+        "path": "replay_reference_arms_repeat2.json",
+        "bytes": 41547,
+        "sha256": "8eee3dd7d15ad4f34366b6d97fc48321b1a7107bf17a7647553d1d04e76b1825"
+      },
+      {
+        "path": "run/status.json",
+        "bytes": 709,
+        "sha256": "f40e15c88b813051ced2c19a0b1afacb6d5dcc22ce981487efde3bf355582e5b"
+      },
+      {
+        "path": "status.json",
+        "bytes": 3772,
+        "sha256": "4a06cc9ee0a6188d6417e8b1b605ada4a86576a334f7ad3b18a0c0411e6b19c9"
+      }
+    ],
+    "file_count": 18,
+    "total_bytes": 576827,
+    "mac_server_size_sha256_match": true,
+    "image_visually_inspected": true,
+    "new_video": false,
+    "large_npz_and_weights": "SERVER_LOCAL_ONLY"
+  },
+  "interpretation": [
+    "Upper sensory fields alone substantially affect lower/waist commands in frozen RF11; mean per-clip RMS change0.153-0.165rad.",
+    "Arm dynamics also affect root/contact responses under identical lower-command playback.",
+    "Open-loop replay control itself fails21-23/30; it does not reproduce stable closed-loop baseline and cannot partition UR01 failure causally.",
+    "Reference arms plus an independent zero-initialized lower residual is implemented, not trained or demonstrated successful."
+  ],
+  "authorization": {
+    "RF12_closed": true,
+    "training_monitor_remains_paused": true,
+    "no_agents": true,
+    "no_new_training_started": true,
+    "other_automations_unchanged": true
+  }
+}

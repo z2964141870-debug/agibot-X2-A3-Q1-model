@@ -9,3 +9,7 @@ from overnight import OPTIMIZATION_DEADLINE, DELIVERY_DEADLINE, continuing_evide
 MAXIMUM_TRAINING_SECONDS=1300.
 CHECKS=(300.,600.,1200.)
 
+
+def physical_deadline_reached(now, pipeline_phase):
+    return now >= OPTIMIZATION_DEADLINE-55 and pipeline_phase != "delivery"
+

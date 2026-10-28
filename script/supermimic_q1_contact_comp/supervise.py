@@ -18,7 +18,7 @@ from run_trial import Q1Budget
 from runtime_guard import guarded_run
 from worker import process_identity
 from resources import save, stamp, identity
-from contact_limits import OPTIMIZATION_DEADLINE, DELIVERY_DEADLINE, CHECKS
+from contact_limits import OPTIMIZATION_DEADLINE, DELIVERY_DEADLINE, CHECKS, physical_deadline_reached
 
 
 def unchanged(items):
@@ -54,7 +54,8 @@ class Budget(Q1Budget):
             if clock["active_started_monotonic"] is not None:
                 actual += time.monotonic()-clock["active_started_monotonic"]
             evidence.update(actual_training_seconds=actual, current_training_cap_seconds=cap)
-            if time.time() >= OPTIMIZATION_DEADLINE-55 and a.mode == "train":
+            pipeline_phase=json.loads((a.output / "status.json").read_text()).get("phase")
+            if a.mode == "train" and physical_deadline_reached(time.time(),pipeline_phase):
                 raise RuntimeError("External07:00 optimization stop with45s grace")
             if actual >= cap-60:
                 raise RuntimeError("External conditional training stop with45s grace")

@@ -6,9 +6,15 @@ import sys
 
 import torch
 from contact_reference import phase_map
+from contact_limits import physical_deadline_reached, OPTIMIZATION_DEADLINE
 
 
 class PhaseTests(unittest.TestCase):
+    def test_physical_deadline_preserves_nontraining_delivery(self):
+        self.assertTrue(physical_deadline_reached(OPTIMIZATION_DEADLINE,None))
+        self.assertFalse(physical_deadline_reached(OPTIMIZATION_DEADLINE,"delivery"))
+        self.assertFalse(physical_deadline_reached(OPTIMIZATION_DEADLINE-60,None))
+
     def test_source_clock_and_neutral(self):
         c=torch.tensor([[1,0],[1,0],[0,1]],dtype=torch.bool)
         s,w=phase_map(c,4)

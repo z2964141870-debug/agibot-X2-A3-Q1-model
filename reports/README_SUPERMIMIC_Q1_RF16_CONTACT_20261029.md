@@ -2,6 +2,8 @@
 
 ## 05:33预检完成
 
+正式开训前仅把独立guard的07:00截止明确限于物理/优化worker，非训练delivery仍受09:00保护；新增CPU边界反例核物理会停、已结束物理后的交付可继续。未改变已预检模型/adapter/reward/动作/训练实现，不重复物理预检；最终正式来源以本次后续冻结commit为准。
+
 服务器既有activate.py环境4相位反例通过，11源AST通过；16/4096真实零optimizer预检05:29:40/05:31前正常COMPLETED，1532冻结来源（含330metadata）未变、双controller/worker已退出，05:32:08 GPU15MiB无计算进程/OOM0。4096小批24576概率差0，原生接触/重置前状态/人工截断bootstrap/自然终止不bootstrap、奖励分解/相位cache、原训练状态和CPU/CUDA RNG保护、冻结教师/归一化/actor参数均通过。
 
 phase cache为300片77949帧，stance/swing/neutral约63.34%/33.86%/2.80%，与源/clip严格对齐；仅参考意图不是原生承重标签。预检各6小工件546929/546965字节Mac/25386 SHA匹配。代码8780110b07cdee3e0fb3e2faa20753fce9574995及15文件222765字节三端核验；正式source不再修改，仅报告提交不改变来源。尚未正式训练，以下准备“未预检”仅历史；开训后须现场身份/clock/guard核验。[预检原值收据](../data/manifests/supermimic_q1_RF16_preflight_20261029.json)。

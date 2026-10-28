@@ -35,7 +35,15 @@ def audit(args):
     if json.loads((args.trial / "status.json").read_text())["status"] != "COMPLETED":
         raise ValueError("Read only completed RF16 evidence")
     plan = json.loads((args.trial / "plan.json").read_text())
-    stages = json.loads((args.trial / "run/stage_decisions.json").read_text())
+    stages_path = args.trial / "run/stage_decisions.json"
+    stages = json.loads(stages_path.read_text())
+    receipt_path = args.trial / "evaluation/receipt.json"
+    receipt = json.loads(receipt_path.read_text())
+    expected_traces = {row["path"]: row for stage in stages for row in stage["traces"]}
+    initial_paths = [str(args.trial / "evaluation" / f"initial_static075_repeat{i}.npz")
+                     for i in range(3)]
+    if receipt["initial_traces"] != initial_paths:
+        raise ValueError("Initial trace paths differ from the completed evaluation receipt")
     labels = ["initial_static075"] + [f"stage_{i:02d}" for i in range(1, len(stages) + 1)]
     library_path = args.trial / "evaluation/evaluation_library.json"
     library = json.loads(library_path.read_text())["splits"]["train"]
@@ -62,15 +70,18 @@ def audit(args):
         raise ValueError("Reference sole geometry used a different scene")
     sources = [identity(path) for path in
                (args.scene, args.reference_csv, reference_receipt_path, library_path,
-                args.trial / "plan.json", Path(__file__))]
+                args.trial / "plan.json", stages_path, receipt_path, Path(__file__))]
     rows, curves = [], []
     for label in labels:
         for repeat in range(3):
             path = args.trial / "evaluation" / f"{label}_repeat{repeat}.npz"
             result = json.loads(path.with_suffix(".json").read_text())
-            if result["trace"] != identity(path):
-                raise ValueError("Saved physical trace identity changed: " + str(path))
-            sources.extend((identity(path), identity(path.with_suffix(".json"))))
+            trace_identity = identity(path)
+            if label != "initial_static075" and expected_traces.get(str(path)) != trace_identity:
+                raise ValueError("Saved stage trace identity changed: " + str(path))
+            if result["repeat"] != repeat or len(result["per_clip"]) != 330:
+                raise ValueError("Saved repeat or library dimensions differ")
+            sources.extend((trace_identity, identity(path.with_suffix(".json"))))
             with np.load(path, allow_pickle=False) as trace:
                 for name, index in indices.items():
                     poses, steps, reference_steps = valid_poses(trace, index)
@@ -103,6 +114,8 @@ def audit(args):
                                            seconds=(i+1)*.02, sole_height_m=float(h),
                                            lowest_material_speed_mps=float(v), native_force_N=float(f))
                                       for i, (h, v, f) in enumerate(zip(height[:, foot], speed[:, foot], force[:, foot])))
+            if identity(path) != trace_identity:
+                raise ValueError("Saved physical trace changed during the read")
             print(json.dumps(dict(label=label, repeat=repeat, saved_pose_analysis_complete=True)), flush=True)
     args.output.mkdir(parents=True, exist_ok=False)
     write_csv(args.output / "fixed_actual_sole.csv", rows)
@@ -114,6 +127,7 @@ def audit(args):
         new_integration_steps=0, policy_inference_calls=0, optimizer_updates=0,
         user_accepted_checkpoint=None, physical_success_claimed=False,
         limits=["Exact lowest active collision mesh vertex or sphere surface above the actual floor.",
+                "Stage traces match their saved decision SHA; initial traces have receipt path/shape/alignment checks and a current before/after SHA, without a historical initial SHA manifest.",
                 "Only saved states through physical termination are read; reset/hold suffixes are excluded.",
                 "Above2cm runs are geometric episodes, not validated human step counts or a new acceptance gate.",
                 "Material speed uses saved20ms pose differences; it differs from solver-reported native loaded slip.",

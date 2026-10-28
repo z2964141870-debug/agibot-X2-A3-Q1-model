@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 06:55：[RF16最终数据、四本地视频与脚底曲线](README_SUPERMIMIC_Q1_RF16_RESULTS_20261029.md)已齐，12保存/24媒体检查、102工件68096950字节Mac/25386大小SHA；600秒部分滑移收益不等于自然步态、最终未保持，用户采纳null，原监督静默等待审阅。
+
 2026-10-29 06:15：[RF16最终定量/媒体待](README_SUPERMIMIC_Q1_RF16_CONTACT_20261029.md)1201.120秒正常短预算结束，最终滑移部分退回、验证0/1/0/固定片完整，数值推荐600秒但未过稳健步态门。4950逐片/45固定等审阅与原值已Mac/25386SHA，用户采纳null；固定视频和终后验收继续。[原值](../data/manifests/supermimic_q1_RF16_training_results_20261029.json)。
 
 2026-10-29 05:58：[RF16第二门部分滑移收益](README_SUPERMIMIC_Q1_RF16_CONTACT_20261029.md)600.962秒停走三次滑移降16%-24%，起走一次+23%/tilt代价使原门0/3，固定展示均完整；原learner继续最终1200门不扩时。真实原值和只读审阅已Mac/25386大小SHA，用户采纳null。[收据](../data/manifests/supermimic_q1_RF16_stage02_20261029.json)。

@@ -1,0 +1,414 @@
+{
+  "status": "RF13_AUTHORIZED_TRIAL_AND_LOCAL_DELIVERY_COMPLETED_DEMONSTRATION_NOT_ROBUST",
+  "date_beijing": "2026-10-28",
+  "goal_tool_created_or_resumed": false,
+  "training_code_commit": "51d4f00a5c9fb6f8bbdef29e11142a6bf822d41a",
+  "result_commit": "854e406506afcf7a1d6e96bf8cb58b11109a975f",
+  "independent_result_remote_commit": "854e406506afcf7a1d6e96bf8cb58b11109a975f",
+  "independent_result_remote_matches": true,
+  "branch": "Q1",
+  "remote": "git@github.com:z2964141870-debug/agibot-X2-A3-Q1-model.git",
+  "finalization_scope": "Saved evidence/CPU weight and source audit, Mac media integrity/frame review and records only; no new physics integration or optimizer updates.",
+  "final_live_confirmation": {
+    "captured_utc": "2026-10-28T10:30:15.162480+00:00",
+    "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "processes": [
+      {
+        "pid": 93989,
+        "exists": false
+      },
+      {
+        "pid": 93994,
+        "exists": false
+      }
+    ],
+    "pipeline": {
+      "status": "COMPLETED",
+      "started_utc": "2026-10-28T07:21:12.346068+00:00",
+      "process": {
+        "pid": 93989,
+        "start_ticks": 8571724,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "mode": "train",
+      "code_commit": "51d4f00a5c9fb6f8bbdef29e11142a6bf822d41a",
+      "no_automatic_retry": true,
+      "phase": "delivery",
+      "completed_utc": "2026-10-28T08:43:38.087143+00:00",
+      "receipt": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF13_LOWER_RESIDUAL_SOMA300_E4096_MAX01H_20261028/run/receipt.json",
+        "bytes": 1131,
+        "sha256": "1a7be043fbe6e567330493ca5d761827f2b2b2226262ccd90f5f753d4048d789"
+      },
+      "frozen_sources_unchanged": 1137
+    },
+    "run": {
+      "status": "TRAINING_COMPLETED",
+      "started_utc": "2026-10-28T07:21:18.399623+00:00",
+      "process": {
+        "pid": 93994,
+        "start_ticks": 8571852,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "code_commit": "51d4f00a5c9fb6f8bbdef29e11142a6bf822d41a",
+      "iteration": 1093,
+      "training_seconds": 3500.385425953704,
+      "optimizer_steps": 21860,
+      "actor_optimizer_steps": 21660,
+      "new_world_model_updates": 0,
+      "algorithm": "installed RSL-RL PPO, latent14",
+      "phase": "evaluation",
+      "updated_utc": "2026-10-28T08:32:40.203077+00:00",
+      "evaluation_label": "final_gated_diagnostic",
+      "evaluation_repeat": 2,
+      "evaluation_frame": 450,
+      "curriculum_cap": 0.75,
+      "next_evaluation_seconds": 3500,
+      "sim_steps": 107446272,
+      "outcome": "one_hour_budget_completed",
+      "teacher_unchanged": true,
+      "completed_utc": "2026-10-28T08:32:51.503249+00:00",
+      "final_checkpoint": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF13_LOWER_RESIDUAL_SOMA300_E4096_MAX01H_20261028/run/final.pt",
+        "bytes": 9855867,
+        "sha256": "d78dd76ce0d1f74303349cd16a2e8a2c534f35980e41103150ac6173dbcf061d"
+      }
+    },
+    "guards": {
+      "train_guard.json": {
+        "status": "WORKER_COMPLETED",
+        "cleanup": {
+          "worker_started": true,
+          "worker_pid": 93994,
+          "worker_group": 93994,
+          "worker_reaped": true,
+          "worker_return_code": 0
+        }
+      },
+      "delivery_guard.json": {
+        "status": "WORKER_COMPLETED",
+        "cleanup": {
+          "worker_started": true,
+          "worker_pid": 101470,
+          "worker_group": 101470,
+          "worker_reaped": true,
+          "worker_return_code": 0
+        }
+      }
+    },
+    "clock": {
+      "status": "PAUSED_FOR_NONTRAINING",
+      "updated_utc": "2026-10-28T08:28:25.926478+00:00",
+      "process": {
+        "pid": 93994,
+        "start_ticks": 8571852,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "accumulated_training_seconds": 3500.385425953704,
+      "active_started_monotonic": null,
+      "current_cap_seconds": 3600,
+      "absolute_maximum_seconds": 3600,
+      "soft_stop_seconds": 3500,
+      "definition": "Synchronized physical collection, GAE, PPO update and per-update diagnostics; initialization/evaluation/checkpoint/media excluded."
+    },
+    "saved_evidence_audit": {
+      "status": "SAVED_EVIDENCE_AUDIT_PASSED",
+      "created_utc": "2026-10-28T09:23:00.061185+00:00",
+      "checks": {
+        "format": true,
+        "teacher_identity": true,
+        "teacher_fingerprint": true,
+        "budget": true,
+        "counters": true,
+        "zero_new_WM": true,
+        "head_changed": true,
+        "actor_finite": true,
+        "critic_finite": true,
+        "fixed_distribution_distribution.std_param": true,
+        "sources_frozen": true,
+        "no_extension": true
+      },
+      "initial": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF13_LOWER_RESIDUAL_SOMA300_E4096_MAX01H_20261028/run/initial.pt",
+        "bytes": 3375349,
+        "sha256": "fdb68f5e5bb28bc4fda384243257e74cdaa28536086bdc709a6a6c6123421962"
+      },
+      "final": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF13_LOWER_RESIDUAL_SOMA300_E4096_MAX01H_20261028/run/final.pt",
+        "bytes": 9855867,
+        "sha256": "d78dd76ce0d1f74303349cd16a2e8a2c534f35980e41103150ac6173dbcf061d"
+      },
+      "training_receipt": {
+        "status": "TRAINING_COMPLETED",
+        "started_utc": "2026-10-28T07:21:18.399623+00:00",
+        "process": {
+          "pid": 93994,
+          "start_ticks": 8571852,
+          "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+        },
+        "code_commit": "51d4f00a5c9fb6f8bbdef29e11142a6bf822d41a",
+        "iteration": 1093,
+        "training_seconds": 3500.385425953704,
+        "optimizer_steps": 21860,
+        "actor_optimizer_steps": 21660,
+        "new_world_model_updates": 0,
+        "algorithm": "installed RSL-RL PPO, latent14",
+        "phase": "evaluation",
+        "updated_utc": "2026-10-28T08:32:40.203077+00:00",
+        "evaluation_label": "final_gated_diagnostic",
+        "evaluation_repeat": 2,
+        "evaluation_frame": 450,
+        "curriculum_cap": 0.75,
+        "next_evaluation_seconds": 3500,
+        "sim_steps": 107446272,
+        "outcome": "one_hour_budget_completed",
+        "teacher_unchanged": true,
+        "completed_utc": "2026-10-28T08:32:51.503249+00:00",
+        "final_checkpoint": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF13_LOWER_RESIDUAL_SOMA300_E4096_MAX01H_20261028/run/final.pt",
+          "bytes": 9855867,
+          "sha256": "d78dd76ce0d1f74303349cd16a2e8a2c534f35980e41103150ac6173dbcf061d"
+        }
+      },
+      "new_physical_steps": 0,
+      "new_optimizer_steps": 0,
+      "source_files": 1137
+    },
+    "plan_sha256": "99255cc518b50c4a196ec8b4dd8d9ee1d22bbc7dead44e1c626fcf4dcd8a5cd5",
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15, 26, 0",
+    "compute": ""
+  },
+  "save_audit": {
+    "status": "SAVED_EVIDENCE_AUDIT_PASSED",
+    "checks": 12,
+    "frozen_source_files": 1137,
+    "new_physical_steps": 0,
+    "new_optimizer_steps": 0,
+    "identity": {
+      "relative_path": "run/saved_evidence_audit.json",
+      "bytes": 2254,
+      "sha256": "0b97b4f694d9971f4c356fbbb6c5c703f6fd5083ac91eed239e798a7429fbbd0"
+    }
+  },
+  "local_delivery": {
+    "status": "PASS",
+    "files": 42,
+    "total_bytes": 28862203,
+    "all_size_sha_matches": true,
+    "manifest": "data/manifests/supermimic_q1_RF13_local_delivery_20261028.json",
+    "media_checks_passed": 12,
+    "decoded_frames_each": 1350,
+    "seconds_each": 54,
+    "fps": 25,
+    "segments": 8,
+    "categories": 6,
+    "source_speed": 1,
+    "continuous_single_rollout": false,
+    "visual_images_reviewed": 9,
+    "world_model_and_imagined_metrics": "N/A",
+    "rolling_window_iterations": 500
+  },
+  "physical_outcome": {
+    "validation_failures_each_repeat": [
+      0,
+      0,
+      0
+    ],
+    "validation_completion_each_repeat": [
+      1,
+      1,
+      1
+    ],
+    "fixed_walks_complete_each_repeat": true,
+    "fixed_raise_steps": [
+      176,
+      271,
+      271
+    ],
+    "fixed_raise_reference_steps": 271,
+    "basic_demonstration_robust": false,
+    "upper_gain_already_present_before_head_training": true,
+    "original_full_gate_passes": 0,
+    "severe_regression_gate_passes": 0,
+    "automatic_extension": false,
+    "initial_static075_and_final_failure_both_retained": true,
+    "stationary_raise_completed_repeats_path_m": [
+      2.816920757293701,
+      2.9802212715148926
+    ],
+    "matched_reference_path_m": 0.28656166791915894
+  },
+  "previous_result_publication_snapshot": {
+    "all_match": true,
+    "count": 14,
+    "total_bytes": 512622,
+    "files": [
+      {
+        "relative_path": "AGENTS.md",
+        "bytes": 34335,
+        "sha256": "10296fe530b630d3a14e31eef1891d560c90978066b890b78e99006712592476"
+      },
+      {
+        "relative_path": "reports/README.md",
+        "bytes": 110756,
+        "sha256": "a0945ebea47add17d282178d75c0fa4e3f8844ebf7111423ef1e29085b4de2ae"
+      },
+      {
+        "relative_path": "reports/README_CURRENT_STATE.md",
+        "bytes": 13756,
+        "sha256": "52651cd929ffde1b76841f69896d63c3ba062df875906635bf1a388fabda5a22"
+      },
+      {
+        "relative_path": "reports/README_Q1_BALANCE_ADAPT_UR04_20261028.md",
+        "bytes": 9212,
+        "sha256": "d28756a5d83368516d3bd57b3f4d9e4bb3b33ca88221dfc4ae0ef83511ce773a"
+      },
+      {
+        "relative_path": "reports/README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md",
+        "bytes": 14953,
+        "sha256": "142c0976bf872456a7f8dd312ba7d51c7b883e03edc7d5dc9cf3e64ae2d9b820"
+      },
+      {
+        "relative_path": "reports/README_SUPERMIMIC_Q1_RF13_RESULTS_20261028.md",
+        "bytes": 9911,
+        "sha256": "5762c27257627573fe67ffe635b0e94a3b471c9d4c3c69296dbd09f4e97dc1d5"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF13_connection_restored_20261028.json",
+        "bytes": 10595,
+        "sha256": "5d14c2e0d72cd92a6e79fb55a6899e178f2f1224aad1df00ce12ef6a84830448"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF13_local_delivery_20261028.json",
+        "bytes": 17527,
+        "sha256": "96d7f2ee24b887d95b3b0712ba2a15d49f4725fbf5b41b1112d056b66d1e6ff7"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF13_results_20261028.json",
+        "bytes": 179705,
+        "sha256": "c9804ffca43a59fe5e048011f6c73bd6f74d5421b8626cd15d9f4aae26c2ab3a"
+      },
+      {
+        "relative_path": "script/project_tools/audit_q1_rf13_media.py",
+        "bytes": 7047,
+        "sha256": "65b78bd4f8a50e9d1dda4f2aa1e4c07f7b3fbb3a9df2b5ea3549ff16787d59c0"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF13_stage01_20261028.json",
+        "bytes": 26036,
+        "sha256": "97afab5052bb355fa9e6b041252009d81072991b4cda1625fa21a19e9c80eae6"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF13_stage02_demo_priority_20261028.json",
+        "bytes": 67737,
+        "sha256": "d910b293cc05d56b9fc68592b3a05d10f6d91259418c5bf264188b08b9424c84"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF13_connection_unknown_20261028.json",
+        "bytes": 6952,
+        "sha256": "7ca02c0b5951a31de7eda165a15c64739eb5653b0cead46a645b700c0db4a9ad"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF13_stage02_publication_20261028.json",
+        "bytes": 4100,
+        "sha256": "afc303bcb0542d283d27bd43d24f26dc0c7c99f5121030e4f7ef0d79bda18a15"
+      }
+    ],
+    "roots": [
+      "/Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028",
+      "/Users/yu/Documents/ChatGPT/元启",
+      "/opt/data/private/ZHY"
+    ]
+  },
+  "closure_core_record_verification": {
+    "files": [
+      {
+        "relative_path": "AGENTS.md",
+        "bytes": 34887,
+        "sha256": "4fc69843f2b0397ccd0bd202d95888f29a7b54a31fead56336c4e469953839a9"
+      },
+      {
+        "relative_path": "reports/README.md",
+        "bytes": 111261,
+        "sha256": "5761dec261278eed08305bfb8a8153df5837f47ee7de7ce24f1a899ca522d0a2"
+      },
+      {
+        "relative_path": "reports/README_CURRENT_STATE.md",
+        "bytes": 13782,
+        "sha256": "ea74e57bb9f598255693ed257f4d3063286a97746b86ace444ff931af277694b"
+      },
+      {
+        "relative_path": "reports/README_Q1_BALANCE_ADAPT_UR04_20261028.md",
+        "bytes": 9212,
+        "sha256": "d28756a5d83368516d3bd57b3f4d9e4bb3b33ca88221dfc4ae0ef83511ce773a"
+      },
+      {
+        "relative_path": "reports/README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md",
+        "bytes": 15329,
+        "sha256": "f077f3b4ca552e66331deb7d9d79a34304d632d905f5ffef81fe0b12af53bd60"
+      },
+      {
+        "relative_path": "reports/README_SUPERMIMIC_Q1_RF13_RESULTS_20261028.md",
+        "bytes": 10331,
+        "sha256": "0253fe09300e4f13dad361fd94b3ea3d1bab2c80ca2ce236ce8e0869362bdcd3"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF13_connection_restored_20261028.json",
+        "bytes": 10595,
+        "sha256": "5d14c2e0d72cd92a6e79fb55a6899e178f2f1224aad1df00ce12ef6a84830448"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF13_local_delivery_20261028.json",
+        "bytes": 17527,
+        "sha256": "96d7f2ee24b887d95b3b0712ba2a15d49f4725fbf5b41b1112d056b66d1e6ff7"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF13_results_20261028.json",
+        "bytes": 179705,
+        "sha256": "c9804ffca43a59fe5e048011f6c73bd6f74d5421b8626cd15d9f4aae26c2ab3a"
+      },
+      {
+        "relative_path": "script/project_tools/audit_q1_rf13_media.py",
+        "bytes": 7047,
+        "sha256": "65b78bd4f8a50e9d1dda4f2aa1e4c07f7b3fbb3a9df2b5ea3549ff16787d59c0"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF13_stage01_20261028.json",
+        "bytes": 26036,
+        "sha256": "97afab5052bb355fa9e6b041252009d81072991b4cda1625fa21a19e9c80eae6"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF13_stage02_demo_priority_20261028.json",
+        "bytes": 67737,
+        "sha256": "d910b293cc05d56b9fc68592b3a05d10f6d91259418c5bf264188b08b9424c84"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF13_connection_unknown_20261028.json",
+        "bytes": 6952,
+        "sha256": "7ca02c0b5951a31de7eda165a15c64739eb5653b0cead46a645b700c0db4a9ad"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_RF13_stage02_publication_20261028.json",
+        "bytes": 4100,
+        "sha256": "afc303bcb0542d283d27bd43d24f26dc0c7c99f5121030e4f7ef0d79bda18a15"
+      }
+    ],
+    "count": 14,
+    "total_bytes": 514501,
+    "three_roots_all_match": true
+  },
+  "receipt_scope": "Core verification above covers fourteen records immediately before this receipt. This receipt is published in the enclosing closure commit and separately mirrored/verified; no self-hash or guessed enclosing commit is asserted.",
+  "heartbeat": {
+    "captured_utc": "2026-10-28T10:42:44.402449+00:00",
+    "id": "q1-rf08-4096",
+    "status": "PAUSED",
+    "rrule": "RRULE:FREQ=MINUTELY;INTERVAL=10",
+    "updated_at": 1793184164260,
+    "other_automations_modified": false
+  },
+  "other_automations_modified": false,
+  "large_artifacts": "SERVER_LOCAL_ONLY; no weights or largeNPZ copied to Mac; no cloud backup asserted",
+  "no_new_agent": true,
+  "no_automatic_restart_or_additional_training": true,
+  "result_readme": "reports/README_SUPERMIMIC_Q1_RF13_RESULTS_20261028.md"
+}

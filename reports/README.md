@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-28 18:42：[RF13正式收尾](README_SUPERMIMIC_Q1_RF13_RESULTS_20261028.md)结果854e406506afcf7a1d6e96bf8cb58b11109a975f已独立核远端，14记录512622字节三端匹配。初末54秒MP4/六格/CSV/12保存及媒体检查齐备，固定抬手失败与漂移如实保留，基本展示仍未稳健达标。原监督q1-rf08-4096已18:42:44实际PAUSED并读回，其他任务未修改，无额外训练。[完成回执](../data/manifests/supermimic_q1_RF13_completion_audit_20261028.json)。
+
 2026-10-28：[RF13结果/本地交付](README_SUPERMIMIC_Q1_RF13_RESULTS_20261028.md)：3500.385秒训练正常预算结束、pipeline COMPLETED/双guardreap0/进程退出/GPU释放，12保存检查与1137来源、42文件28862203字节大小SHA、12媒体检查和9图目视通过。两固定普通走均完整并真实前进；抬手一次176/271步跌倒、另两次显著漂移，展示未稳健达标，上肢收益主要已有于未训练static075。初末54秒MP4/六格/CSV/PPO图齐备；记录发布/监督收尾见完成收据，不再训练。[原值](../data/manifests/supermimic_q1_RF13_results_20261028.json)/[交付](../data/manifests/supermimic_q1_RF13_local_delivery_20261028.json)。
 
 2026-10-28 17:08：[RF13连接恢复/真实终态](README_SUPERMIMIC_Q1_RF13_BALANCE_20261028.md)已核：实训3500.385秒/1093轮，全pipeline COMPLETED、train/delivery正常reap0、原进程退出/GPU释放。验证三次0/30失败、固定两普通走均完整；抬手176/271、271/271、271/271，展示仍未稳健达标，上肢收益主要已有于未训练static075。审计/本地媒体/三端记录收尾中，不追加训练；此前UNKNOWN仅历史。[恢复证据](../data/manifests/supermimic_q1_RF13_connection_restored_20261028.json)。

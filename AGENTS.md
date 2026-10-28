@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-29 03:28:39独立PD quick33唯一启动，根data/supermimic_for_q1/Q1_LEG_PD_SENSITIVITY_PROBE_20261029；controller149008/start_ticks12936494、worker149016/start_ticks12936658，原boot/GPU。冻结119e9c8895044d5da43fac1f7e60502df0769cfe独立远端/11文件262227字节三端SHA一致；03:28:55 baseline repeat0/frame0/0optimizer/资源正常/OOM0，尚无效果。原监督已ACTIVE每10分钟更新，只监督原作业，不重复启动/热改源/恢复旧训练/agent；07:00/09:00截止和用户采纳null保留。入口PD_SENSITIVITY及launch收据。
+
 - 2026-10-29 03:26独立PD敏感度准备4CPU/远端help及16环境两档CPU/Warp实际增益预检通过，原XML不变/0optimizer/OOM0。第一预检baseline15.791367→15.7914的舍入触发严容差，修正检查并保存实际值后V02通过；不是正式训练重启。6档仅在新XML改12腿kp/kv，原手臂.5/腰/动作尺度/effort不改，正式quick33尚未启动，待发布/三端核验；07:00探索/09:00交付，不恢复旧作业/agent/用户采纳null。入口PD_SENSITIVITY与preparation收据。
 
 - 2026-10-29 03:18目标滤波quick33已03:05:58全流程COMPLETED，guardreap0/1169来源未变/原controller145547与worker145550退出/GPU释放/OOM0；44小工件3284781字节Mac/25386大小SHA通过，18NPZ服务器留存。ema010起走滑移降约12%至19%但停走不一致/姿态代价、原逐片诊断1/3；EMA040验证3/3/3失败、限速12/12/12和12/11/12且固定片失败，不确认均衡步态收益、不full330/训练。下一步独立有限PD检验尚未启动，不恢复旧训练/热改旧来源/agent；07:00探索截止/09:00数据视频供用户决定，采纳仍null。入口TARGET_FILTER_PROBE及results收据，以下RUNNING历史。

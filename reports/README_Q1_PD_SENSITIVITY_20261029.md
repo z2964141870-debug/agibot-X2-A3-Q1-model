@@ -1,5 +1,7 @@
 # Q1腿部PD敏感度对照
 
+03:28:39已唯一正式启动，controller149008/start_ticks12936494、worker149016/start_ticks12936658，原boot/GPU。冻结119e9c8895044d5da43fac1f7e60502df0769cfe已push/独立40位远端核验，11文件262227字节权威Git/Mac主根/25386逐大小SHA一致。03:28:55 baseline repeat0/frame0、status/run/guard RUNNING，GPU725MiB/31度、共享15188447232字节/OOM0；尚无候选收益。只监督原作业，不重复启动/热改来源；[完整启动收据](../data/manifests/supermimic_q1_pd_probe_launch_20261029.json)。下文尚未正式启动仅历史准备。
+
 2026-10-29 03:26，北京时间。独立零优化准备完成，尚未正式quick33物理对照；4项CPU反例/远端CLI help和V02实际16环境两档CPU/Warp增益预检通过，reset及一次真实step前后增益均核对，0optimizer，原XML不变。用户夜间自由探索窗口仍至09:00，本轮07:00停止新优化/物理探索；不恢复RF15或旧训练，不变更旧模型/运行来源，不把实验选择写成用户采纳。
 
 ## 假设与固定条件

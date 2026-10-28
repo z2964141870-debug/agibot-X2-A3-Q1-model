@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 03:29最新：[独立腿部PD quick33](README_Q1_PD_SENSITIVITY_20261029.md)已03:28:39实际启动，controller149008/start_ticks12936494、worker149016/start_ticks12936658，原boot/GPU/完整命令一致。冻结119e9c8895044d5da43fac1f7e60502df0769cfe独立远端/11文件262227字节三端SHA已核；03:28:55 baseline repeat0/frame0/0optimizer、GPU725MiB/31度/共享15.19GB/OOM0，尚无改善结论。唯一6档×3重复×33环境，原来源冻结，不恢复训练/重复启动；监督已工具ACTIVE每10分钟更新，07:00/09:00截止不变。[启动](../data/manifests/supermimic_q1_pd_probe_launch_20261029.json)。
+
 2026-10-29 03:26：[独立PD敏感度准备](README_Q1_PD_SENSITIVITY_20261029.md)完成4CPU反例/远端help及16环境两档CPU/Warp实际增益预检，原场景不变/0optimizer/OOM0；第一预检因现有模型15.791367→15.7914舍入触发严容差，修正并保存实际数值后V02通过。6档只改独立XML的12腿kp/kv，手臂.5/原目标尺度/限矩不改；正式quick33尚未启动，先冻结发布/三端核验。不把控制预检当步态收益，07:00/09:00截止和用户采纳null保留。
 
 2026-10-29 03:18最新：[目标时序滤波quick33结果](README_Q1_TARGET_FILTER_PROBE_20261029.md)已03:05:58正常完成，guardreap0/1169来源未变/原两进程退出/GPU释放。ema010在起走滑移降约12%至19%，停走不一致且姿态代价，原逐片诊断1/3；ema040验证3/3/3失败、强限速12/12/12和12/11/12且固定片失败，未确认均衡步态收益，不full330或训练。44小工件3284781字节Mac/25386大小SHA一致，频谱JSON23908字节亦核SHA；18NPZ服务器留存。下一步独立有限PD控制参数检验尚未启动，原RF15/phase不恢复，07:00停止新优化/物理探索、09:00交数据视频，用户采纳仍null。以下RUNNING为历史。[收据](../data/manifests/supermimic_q1_target_filter_results_20261029.json)。

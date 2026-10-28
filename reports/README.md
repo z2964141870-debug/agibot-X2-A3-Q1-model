@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-28 22:23：[RF14审阅材料准备](README_SUPERMIMIC_Q1_RF14_REVIEW_PREP_20261028.md)已由9份保存评测生成原值对照，保留271/320步跌倒；中间两检查点视频的独立导出/本地审核入口已准备，实际渲染待RF14全pipeline完成。累计12357.660645秒/10980轮同身份推进/OOM0，源码冻结。先给用户看最终数据和视频再决定下一步，不自动RF15或加训。
+
 2026-10-28 晚最新要求：[RF14/RF15](README_SUPERMIMIC_Q1_RF14_RF15_GAIT_20261028.md)结果先交付具体数据及固定走路/抬手仿真MP4，由用户决定底座、RF15启动和后续加训；数值排序不代表用户接受。RF14原冻结预算继续，RF15尚未预检/训练，原监督已更新并回读ACTIVE，其他任务保持。[审阅规则收据](../data/manifests/supermimic_q1_RF14_RF15_user_review_required_20261028.json)。
 
 2026-10-28晚：RF15逐片门735464329a227027c5db0d3928d53cb4ab6eb116已独立远端/7文件155221字节三端大小SHA，监督ACTIVE已读回；支持RF14三片媒体的独立本地审计入口已准备，实际媒体验收待终后。[发布/边界](../data/manifests/supermimic_q1_RF15_per_walk_published_20261028.json)。

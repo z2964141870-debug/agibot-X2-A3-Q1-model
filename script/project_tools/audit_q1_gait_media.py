@@ -103,7 +103,7 @@ def audit(trial, labels, output):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__, allow_abbrev=False)
     parser.add_argument("--trial", type=Path, required=True)
-    parser.add_argument("--labels", nargs="+", choices=("initial", "final", "selected"),
+    parser.add_argument("--labels", nargs="+", choices=("initial", "final", "selected", "stage_01", "stage_02"),
                         default=["initial", "final"])
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()

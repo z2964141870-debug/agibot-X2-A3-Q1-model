@@ -1,0 +1,96 @@
+{
+  "status": "RF14_USER_REVIEW_PREPARATION_READY_FINAL_EVIDENCE_PENDING",
+  "captured_utc": "2026-10-28T14:23:43.436594+00:00",
+  "training_source_commit": "4d87269d7ac815cd75a0424dcf7be56ae2c2661d",
+  "checks": {
+    "generator_integration": true,
+    "parse": true,
+    "render_help": true,
+    "media_audit_help": true,
+    "running_pipeline_render_refused": true,
+    "actual_intermediate_rendering_performed": false
+  },
+  "interim_review": {
+    "path": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/review/interim_stage02",
+    "source_evaluations": 9,
+    "validation_rows": 54,
+    "fixed_demo_rows": 27,
+    "common_prefix_rows": 42,
+    "stage01_failed_walk_preserved": {
+      "repeat": 0,
+      "steps": 271,
+      "reference_steps": 320
+    },
+    "stage02_validation_failures": [
+      1,
+      0,
+      0
+    ],
+    "user_acceptance": null
+  },
+  "new_tools_outside_frozen_sources": true,
+  "rf14_frozen_source_count": 1145,
+  "live": {
+    "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "processes": {
+      "110563": {
+        "exists": true,
+        "start_ticks": 10173450,
+        "state": "S",
+        "command": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_gait/supervise.py --mode base --runtime /opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --checkpoint /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run/final.pt --video-suite /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/demonstration_suite_V02.json --frozen-plan /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF13_LOWER_RESIDUAL_SOMA300_E4096_MAX01H_20261028/plan.json --expected-boot 4d859008-4c83-4a6d-814d-cbb9dfe885c9 --expected-gpu GPU-26028785-9fb9-45af-e614-4cc53af15d08 --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028 --code-commit 4d87269d7ac815cd75a0424dcf7be56ae2c2661d --controller "
+      },
+      "110573": {
+        "exists": true,
+        "start_ticks": 10173556,
+        "state": "R",
+        "command": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python -u /opt/data/private/ZHY/script/supermimic_q1_gait/base.py --runtime /opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027 --library /opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json --checkpoint /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF11_SOMA300_SAMPLERONLY_E4096_MAX01H_20261027/run/final.pt --output /opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run --code-commit 4d87269d7ac815cd75a0424dcf7be56ae2c2661d "
+      }
+    },
+    "run": {
+      "status": "RUNNING",
+      "process": {
+        "pid": 110573,
+        "start_ticks": 10173556,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "started_utc": "2026-10-28T11:48:12.470809+00:00",
+      "code_commit": "4d87269d7ac815cd75a0424dcf7be56ae2c2661d",
+      "optimizer_continuation": true,
+      "simulator_replay_rng_continuation": false,
+      "phase": "updating",
+      "updated_utc": "2026-10-28T14:23:43.245471+00:00",
+      "iteration": 10980,
+      "training_seconds": 12357.660645489159,
+      "new_training_seconds": 8857.394655913158,
+      "sim_steps": 112967680,
+      "wm_updates": 109800,
+      "actor_updates": 10480,
+      "evaluation_label": "stage_02",
+      "evaluation_repeat": 2,
+      "evaluation_frame": 450,
+      "next_evaluation_seconds": 14300
+    },
+    "clock": {
+      "status": "ACTIVE",
+      "accumulated_training_seconds": 12357.660645489159,
+      "inherited_training_seconds": 3500.2659895760007,
+      "new_training_seconds": 8857.394655913158,
+      "active_started_monotonic": 111067.867807457,
+      "absolute_maximum_seconds": 14400,
+      "current_cap_seconds": 14400,
+      "soft_stop_seconds": 14300,
+      "definition": "Synchronized collection, model/actor/critic optimization and update diagnostics; evaluation, initialization, checkpoint and media excluded."
+    },
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 14847, 49, 39",
+    "oom_kill": 0
+  },
+  "optimizer_updates": 0,
+  "policy_inference_calls": 0,
+  "new_physical_steps": 0,
+  "RF15": {
+    "gpu_preflight_started": false,
+    "training_started": false
+  },
+  "next": "Finish existing RF14; audit and deliver raw metrics plus fixed videos; await user's explicit base/launch/extension decisions.",
+  "supervision_and_goal": "ACTIVE"
+}

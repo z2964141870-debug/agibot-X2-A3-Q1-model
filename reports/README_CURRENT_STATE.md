@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+22:23:43已核RF14累计12357.660645秒/10980轮，原身份/命令/clock ACTIVE/OOM0，继续原最终门，未终态。已完成[用户审阅材料准备](README_SUPERMIMIC_Q1_RF14_REVIEW_PREP_20261028.md)：9份已存评测生成三CSV/JSON/表格，27固定片行保留stage01跌倒；独立工具可终后补导stage01/stage02原速54秒视频，尚未渲染，3工具help/解析及运行中拒绝渲染通过。工具在1145冻结来源外。最终数据/视频齐备后先给用户看，由其决定底座/RF15/扩时；监督与goal保持active。
+
 2026-10-28 晚用户最新要求：**结果先交付具体数据和仿真视频，由用户决定下一步。** RF14按当前冻结预算继续；完成后并列给出RF11初始、1/2/4小时原值和固定普通走/抬手MP4，保留失败/漂移。数值selected只作推荐，底座采纳、RF15启动及后续加训都等用户看完材料后的明确决定。RF15仍未GPU预检/训练；其旧自动提cap实现必须在正式开训前替换并验证。原监督已实际更新并回读ACTIVE每10分钟，其他自动任务未改，goal保持active。21:53:38现场原controller110563/worker110573及boot/start_ticks/命令一致，累计10559.110513秒/新增7058.844524秒、9402轮、96808960转移、WM94020/actor8902、clock ACTIVE/OOM0；这是进度快照，不是最终结果。[审阅要求与现场](../data/manifests/supermimic_q1_RF14_RF15_user_review_required_20261028.json)。以下旧自动推进/扩时文字均受本条覆盖。
 
 RF15逐片门准备735464329a227027c5db0d3928d53cb4ab6eb116已独立核远端/7文件155221字节三端SHA；监督更新读回ACTIVE每10分钟。新媒体验收入口支持RF14初末/selected三片，实际检查待本轮媒体生成，RF15 GPU预检/正式训练均未开始。[准备发布](../data/manifests/supermimic_q1_RF15_per_walk_published_20261028.json)。

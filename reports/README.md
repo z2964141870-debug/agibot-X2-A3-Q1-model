@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 02:57：[TARGET_FILTER零优化quick33正式启动](README_Q1_TARGET_FILTER_PROBE_20261029.md)，冻结494f45a/10文件258758字节三端SHA，controller145547/worker145550原身份一致、baseline评测中/0optimizer。6档轻滤波/目标限速将核真实滑移/抬脚，尚无候选改善；原训练不恢复，07:00/09:00截止。
+
 2026-10-29 02:53：[腿部目标滤波独立对照准备](README_Q1_TARGET_FILTER_PROBE_20261029.md)7CPU反例和27行已存轨迹频谱集成通过，0新物理/optimizer；高频不是已证主因，轻EMA/限速将实际核滑移/抬脚/平衡代价。旧phase种子被prepare覆盖的记录已补正，新入口显式在create_env前设seed。尚未物理启动，先冻结发布，07:00/09:00截止不变。
 
 2026-10-29 02:31：[RF15负面训练及四份本地视频交付](README_SUPERMIMIC_Q1_RF15_RESULTS_20261029.md)齐备，11保存/24媒体检查、71工件54801805字节Mac/服务器SHA一致；静态上肢收益与学习head失败分列。[独立参考相位腿部quick33](README_Q1_PHASE_LEG_PROBE_20261029.md)六候选三重复/0optimizer完成，五档均无两走可重复收益，26小工件3278039字节已Mac核SHA；不据此训练/恢复RF15。夜间09:00窗口继续、07:00停止优化/物理探索，用户尚未采纳底座。

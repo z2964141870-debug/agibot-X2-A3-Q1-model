@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29最新用户方向：[尽量在SuperMimic框架内推进](README_SUPERMIMIC_Q1_FRAMEWORK_DIRECTION_20261029.md)。主线为原世界模型/想象rollout及actor/critic，优先定位Q1控制、参考接触/摆脚时序、奖励/采样课程与后期更新退化；“先普通走路”指框架内课程。PPO/冻结教师残差保留作历史对照，尚未确定唯一根因或采纳checkpoint。本次仅记录方向，没有新物理/推理预检/优化/训练；原监督ACTIVE每10分钟静默等待审阅，不结算整体目标。
+
 2026-10-29研究：[四项简报](research/2026-10-29/README.md)记录RSL-RL 5.5.2、独立SuperMimic修复、Rollback与动作Token。96请求均成功，12固定文本/两完整树静态核验；当前安装RSL为5.5.1、Q1批量整除，未将新修复认定为训练退化根因。main维护完整去重，Q1保留工程状态；本轮无物理/推理/优化或新假设。[检查](README_RESEARCH_CHECK_20261029.md)/[回执](../data/manifests/research_watch_sync_20261029.json)。
 
 夜间综合审阅发布4f773c316aa016a062c1a581d8eff69a3c2d5c04已独立核远端、8记录280300字节三端SHA；原监督工具ACTIVE每10分钟等待审阅并已回读，其他任务未改。[发布/回读](../data/manifests/supermimic_q1_overnight_publication_20261029.json)。

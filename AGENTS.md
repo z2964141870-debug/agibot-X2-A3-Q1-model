@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-30用户明确“允许修复后仅一次底座V02”，唯一新根Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029尚未启动/授权未用；等当前PPO全pipeline保存交付审计/GPU释放后串行，原1100软1200硬/两线合计2400秒不增，不恢复失败根/重做base16/自动下次重试，不再询问此授权。PPO00:17:04原218003/218034、290.268秒/56轮/actor920/critic1120/WM0/首门待，cdd0af7启动记录独立远端/6文件332795B三端SHA通过。goal ACTIVE/采纳null/原监督缓存维护及其他任务不改/无agent；入口GAIT_GOAL及base_v02_authorization_20261030，旧待决定为历史。
+
 - 2026-10-30 00:09:11唯一PPO首次pipeline已启动，根Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029；controller218003/start20379605、worker218034/start20380811、原boot/GPU，冻结cccefe08e6d9d5950b874cc6798f3e168cc47a6b/1579源逐SHA未变，importsreap0。00:11:21 initial repeat1/frame450/实训0/optimizer0、GPU2821MiB/内存6.73GB/OOM0，非步态收益；只监督原300/600/1100门、1100软1200硬秒/1150外停+10回收和完整保存交付，不重启/扩时/热改。底座V02一次新决定仍待/失败根保留/base16不重做，采纳null/goal ACTIVE/原监督缓存维护和其他任务不改/无agent。入口GAIT_GOAL及ppo_launch_20261030；旧未启动仅历史。
 
 - 2026-10-30 00:04 GAIT_GOAL01导入修复7732b2b3ba7f1550c93805b9a035cb6db532aeda独立远端/10记录payload、20文件753864B三端大小SHA通过，原四预检源码未动；真实无环境import检查通过/8测试，首次底座实训0/失败根保留。已异步请求仅一次修复后底座V02新决定，未自动重试或重做base16。独立PPO首次原授权/1200秒预算仍可先行，最新发布来源/1100软/300-600-1100门/GPU串行，二者不组合。goal ACTIVE/采纳null/原监督缓存维护及其他任务不改/无agent，入口GAIT_GOAL及import_fix_publication_20261030；旧待发布/未请求为历史。

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-30：[用户已允许修复后仅一次底座V02](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。待当前PPO全pipeline/GPU释放后串行，1100软1200硬不增、不恢复失败根/重做base16；授权尚未使用。PPO00:17实训290.268秒/56轮/首门待，启动记录cdd0af7及6文件332795B三端SHA已核。[授权清单](../data/manifests/supermimic_q1_gait_goal_base_v02_authorization_20261030.json)。
+
 2026-10-30：[GAIT_GOAL01独立PPO首次试验已启动](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。00:09:11 controller218003/worker218034，冻结cccefe08/1579来源未变，imports正常reap0；初查initial评测/0实训，非步态收益。只监督原1100软1200硬秒/三物理门及完整交付，不重启扩时；底座V02决定待，目标ACTIVE/采纳null。[启动收据](../data/manifests/supermimic_q1_gait_goal_ppo_launch_20261030.json)。
 
 2026-10-30：[GAIT_GOAL01导入修复已发布](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。7732b2b独立远端/10记录payload通过，20工件753864B三端大小SHA一致；已请求底座一次V02决定，未重试/实训0。PPO首次独立预算仍授权可先推进，目标ACTIVE/采纳null。[发布收据](../data/manifests/supermimic_q1_gait_goal_import_fix_publication_20261030.json)。

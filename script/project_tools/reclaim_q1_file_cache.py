@@ -32,7 +32,7 @@ def in_scope(path, root):
 
 def active_files(root):
     """Protect open/mapped inodes, and skip when project compute is running."""
-    protected, busy = set(), []
+    protected, busy, inaccessible_init = set(), [], []
     for process in Path("/proc").iterdir():
         if not process.name.isdigit() or int(process.name) == os.getpid():
             continue
@@ -57,7 +57,11 @@ def active_files(root):
                         pass
         except FileNotFoundError:
             continue
-    return protected, busy
+        except PermissionError:
+            if process.name != "1" or name != "pod":
+                raise
+            inaccessible_init.append(dict(pid=1, name=name, reason="Infrastructure init is not ptrace-readable"))
+    return protected, busy, inaccessible_init
 
 
 def candidates(root, protected):
@@ -144,7 +148,8 @@ def maintain(args):
     if before["cache_bytes"] <= args.trigger_gib * GIB:
         receipt["status"] = "SKIPPED_BELOW_CACHE_THRESHOLD"
         return receipt
-    protected, busy = active_files(ROOT)
+    protected, busy, inaccessible_init = active_files(ROOT)
+    receipt["unreadable_infrastructure_init"] = inaccessible_init
     gpu_busy = subprocess.check_output(["nvidia-smi", "--query-compute-apps=pid", "--format=csv,noheader"], text=True).strip()
     if busy or gpu_busy:
         receipt.update(status="SKIPPED_ACTIVE_WORK", active_project_processes=busy, gpu_busy=bool(gpu_busy))
@@ -186,7 +191,7 @@ def maintain(args):
             break
         # Recheck active work between files; the GAIT_GOAL lock also excludes new runs.
         if time.monotonic() - last_active_check >= 10:
-            current_protected, busy = active_files(ROOT)
+            current_protected, busy, _ = active_files(ROOT)
             protected |= current_protected
             last_active_check = time.monotonic()
             if busy:

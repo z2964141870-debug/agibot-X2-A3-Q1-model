@@ -39,7 +39,7 @@ def audit(args):
         and abs(result["training_seconds"] - clock["accumulated_training_seconds"]) < 1e-6)
     changed = [row["path"] for row in plan["source"] if identity(row["path"]) != row]
     check("original_and_review_sources_unchanged", not changed, count=len(plan["source"]), changed=changed)
-    for name in ("train_guard.json", "delivery_guard.json"):
+    for name in ("import_guard.json", "train_guard.json", "delivery_guard.json"):
         guard = json.loads((args.trial / name).read_text())
         check(name, guard["status"] == "WORKER_COMPLETED" and guard["cleanup"]["worker_reaped"]
             and guard["cleanup"]["worker_return_code"] == 0)

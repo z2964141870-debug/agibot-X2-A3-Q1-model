@@ -1,5 +1,5 @@
 {
-  "status": "GAIT_GOAL01_CACHE_CLEARED_ONE_REPAIRED_BASE16_PREFLIGHT_PASSED_ZERO_TRAINING",
+  "status": "GAIT_GOAL01_ALL_PREFLIGHTS_PASSED_BASE_IMPORT_FAILURE_FIXED_AWAITING_RETRY_DECISION_PPO_FIRST_ATTEMPT_UNSPENT",
   "recorded_date_beijing": "2026-10-29",
   "stage": "GAIT_GOAL01",
   "goal": {
@@ -99,7 +99,7 @@
     "saved_calibration": "COMPLETED_36_GROUPS_9612_SAVED_STATES",
     "nonintegrating_h32_initialization_isolation": "COMPLETED_RESET_AND_POLICY_INPUTS_MATCH_8_INFERENCE_0_INTEGRATION",
     "new_physical_preflights": "REPAIRED_BASE16_ONCE_AND_FIRST_BASE4096_PPO16_PPO4096_ALL_PASSED_ZERO_UPDATES",
-    "new_training": "NOT_STARTED",
+    "new_training": "BASE_FIRST_LAUNCH_FAILED_BEFORE_ENVIRONMENT_CREATION_BOTH_TRAINING_CLOCKS_ZERO",
     "new_integration_steps": null,
     "new_control_transitions": null,
     "known_warmup_integration_substeps": 640,
@@ -144,5 +144,24 @@
     "full_delivery_implementation": "PREPARED_NOT_YET_EXECUTED_ON_NEW_TRAINING"
   },
   "dependent_preflight_results": "data/manifests/supermimic_q1_gait_goal_preflight_results_20261029.json",
-  "next": "All required native zero-update preflights passed without editing original frozen sources or repeating base16. Publish and three-way verify this stage, then sequentially run the two new independent short training pipelines, each1100s soft/1200s hard with300/600/1100s physical gates and no automatic retry/extension. Full330 tables, actual completed-episode plots, source-speed saved-trajectory media and saved evidence audit precede pipeline completion. Both formal budgets are still unspent at this record; goal active and adoption null."
+  "base_first_launch_failure": {
+    "manifest": "data/manifests/supermimic_q1_gait_goal_base_import_failure_20261029.json",
+    "failed_root": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029",
+    "actual_training_seconds": 0,
+    "policy_inference_calls": 0,
+    "physical_steps": 0,
+    "optimizer_updates": 0,
+    "automatic_retry_performed": false,
+    "original_failed_root_preserved": true,
+    "fix_status": "REAL_FROZEN_TRAINING_IMPORT_CHECK_PASSED_NO_ENVIRONMENT_CREATED",
+    "repaired_base_new_launch_decision": "PENDING_NOT_YET_REQUESTED_AT_RECORD_CREATION",
+    "proposed_new_root": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029"
+  },
+  "ppo_first_attempt": {
+    "status": "AUTHORIZED_NOT_STARTED",
+    "root": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029",
+    "actual_training_seconds": 0,
+    "maximum_training_seconds": 1200
+  },
+  "next": "Publish and three-way verify the tested import-path fix and preserved zero-training failure evidence. Request only one fresh repaired base launch under the explicit no-automatic-failure-retry rule; do not resume the failed root or repeat base16. The independent first PPO formal attempt remains authorized and may proceed with the published entrypoint while the base decision is pending. Each line retains1100s soft/1200s hard and300/600/1100s gates, sequential GPU use, full330 tables, actual episode plots, source-speed saved media and saved audit. Goal active, user adoption null, both training clocks zero at this record."
 }

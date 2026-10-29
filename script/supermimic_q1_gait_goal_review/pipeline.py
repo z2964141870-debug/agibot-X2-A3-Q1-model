@@ -82,6 +82,7 @@ def execute(args):
             train_flags.extend(("--" + name, str(getattr(args, name))))
         train_flags.extend(("--output", str(args.output / "run")))
         stages = [
+            ("imports", "train.py", [*train_flags, "--check-imports"], 120, "import_guard.json", None),
             ("training", "train.py", train_flags, 7200, "train_guard.json", args.output / "run/status.json"),
             ("delivery", "deliver.py", ["--line", args.line, "--runtime", str(args.runtime),
                 "--trial", str(args.output), "--video-suite", str(args.video_suite)],

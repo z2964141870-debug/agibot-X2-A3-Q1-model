@@ -1,0 +1,241 @@
+{
+  "stage": "GAIT_GOAL01_BASE_IMPORT_FAILURE",
+  "status": "BASE_FAILED_BEFORE_ENVIRONMENT_CREATION_IMPORT_FIX_TESTED_NOT_RETRIED",
+  "source_commit": "62f9e5a2b961695c8b44e8f16343ff753c01ce49",
+  "failed_root": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029",
+  "failure": {
+    "controller": {
+      "status": "FAILED",
+      "line": "base",
+      "process": {
+        "pid": 216576,
+        "start_ticks": 20188124,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "started_utc": "2026-10-29T15:37:16.337994+00:00",
+      "code_commit": "62f9e5a2b961695c8b44e8f16343ff753c01ce49",
+      "automatic_retry": false,
+      "phase": "training",
+      "updated_utc": "2026-10-29T15:37:19.606453+00:00",
+      "error": "RuntimeError: training did not complete; no automatic retry",
+      "ended_utc": "2026-10-29T15:37:24.632814+00:00"
+    },
+    "worker": {
+      "status": "FAILED",
+      "line": "base",
+      "started_utc": "2026-10-29T15:37:23.747073+00:00",
+      "code_commit": "62f9e5a2b961695c8b44e8f16343ff753c01ce49",
+      "training_seconds": 0,
+      "maximum_training_seconds": 1200,
+      "user_accepted_checkpoint": null,
+      "error": "ModuleNotFoundError: No module named 'diagnose_q1_upper_reference'",
+      "ended_utc": "2026-10-29T15:37:23.748534+00:00"
+    },
+    "clock": {
+      "status": "PAUSED_FOR_NONTRAINING",
+      "accumulated_training_seconds": 0,
+      "inherited_training_seconds": 0,
+      "new_training_seconds": 0,
+      "active_started_monotonic": null,
+      "absolute_maximum_seconds": 1200,
+      "current_cap_seconds": 1200,
+      "soft_stop_seconds": 1100,
+      "definition": "Synchronized collection, model/actor/critic optimization and update diagnostics; evaluation, initialization, checkpoint and media excluded."
+    },
+    "guard": {
+      "status": "WORKER_FAILED",
+      "command": [
+        "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/supermimic_q1_hp/activate.py",
+        "-u",
+        "/opt/data/private/ZHY/script/supermimic_q1_gait_goal_review/train.py",
+        "--line",
+        "base",
+        "--code-commit",
+        "62f9e5a2b961695c8b44e8f16343ff753c01ce49",
+        "--runtime",
+        "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+        "--library",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json",
+        "--checkpoint",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt",
+        "--calibration",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_UR04_BALANCE_PREP_20261028/calibration_v02.json",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029/run"
+      ],
+      "cwd": "/opt/data/private/ZHY",
+      "started_utc": "2026-10-29T15:37:19.607061+00:00",
+      "controller_pid": 216576,
+      "storage_status": "LOCAL_ONLY",
+      "last_storage_check": {
+        "experiment": {
+          "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029",
+          "unique_allocated_bytes": 430080,
+          "unique_logical_bytes": 404957,
+          "unique_inodes": 10,
+          "symlinks_not_followed": 0
+        },
+        "source": {
+          "root": "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027",
+          "unique_allocated_bytes": 1536000,
+          "unique_logical_bytes": 1204099,
+          "unique_inodes": 166,
+          "symlinks_not_followed": 0
+        },
+        "free_bytes": {
+          "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029": 1540414304256,
+          "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027": 1540414304256
+        },
+        "shared_memory": {
+          "shared_bytes": 3575021568,
+          "oom_kill": 0,
+          "maximum_bytes": 32212254720
+        },
+        "gpu": {
+          "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+          "memory_mib": 15,
+          "temperature_c": 26
+        },
+        "actual_training_seconds": 0
+      },
+      "error": null,
+      "worker_pid": 216590,
+      "worker_group": 216590,
+      "cleanup": {
+        "worker_started": true,
+        "worker_pid": 216590,
+        "worker_group": 216590,
+        "worker_reaped": true,
+        "worker_return_code": 1
+      },
+      "ended_utc": "2026-10-29T15:37:24.631863+00:00"
+    },
+    "frozen_sources_at_failure": 1579,
+    "changed_before_fix": [],
+    "processes": [
+      {
+        "pid": 216576,
+        "exists": false
+      },
+      {
+        "pid": 216590,
+        "exists": false
+      }
+    ],
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15 MiB, 0 %",
+    "compute": "",
+    "oom": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+    "artifacts": [
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029/launch.json",
+        "bytes": 1601,
+        "sha256": "52ff005d8905471d795464501638061a2008e967b04facbf2e6f869cb74acc92"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029/memory_admission.json",
+        "bytes": 365,
+        "sha256": "9d6ff5f489e6e89acda5d3f25a87e1e01b3803de38d0ef350c2bf293fad41807"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029/plan.json",
+        "bytes": 390871,
+        "sha256": "6894b72e5ffba8f40b51488dec8d0ca71fc97746f3c5c40e4664e41134d09e46"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029/run/receipt.json",
+        "bytes": 390,
+        "sha256": "3380ea16662534b177c9f15ba3a7abb0d192ae1680d766ece6a933028d4eedf7"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029/run/status.json",
+        "bytes": 390,
+        "sha256": "3380ea16662534b177c9f15ba3a7abb0d192ae1680d766ece6a933028d4eedf7"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029/run/training_clock.json",
+        "bytes": 445,
+        "sha256": "0074b74c34c28fe8fb7de8a52f2151fcccda71c908a1e334409fb5d32b565c02"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029/status.json",
+        "bytes": 508,
+        "sha256": "61f9ea24df5855ef59ba031e5af03792338565a3ef30ebac65f5825a1058b97a"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029/train_guard.json",
+        "bytes": 2570,
+        "sha256": "8c18b57a9f283c2dacce6cc58338e5834489c41b4b42219c09f9416d679c8419"
+      },
+      {
+        "relative_path": "logs/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029_controller.log",
+        "bytes": 391,
+        "sha256": "c4ad47e8777da3e629a87df16f753848ba9a508e13c8ecd674e8307d6d3a7e55"
+      },
+      {
+        "relative_path": "logs/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029_training.log",
+        "bytes": 493,
+        "sha256": "7aac3e0cffd4b6d0aeb8ddd1db2029047f0ab37f9bd14d01acb9df36f242c0e5"
+      }
+    ]
+  },
+  "root_cause": "New review entrypoint omitted project_tools in sys.path; original train.run imports diagnose_q1_upper_reference before candidate_prepare.",
+  "before_environment_creation": true,
+  "policy_inference_calls": 0,
+  "new_physical_steps": 0,
+  "actual_optimizer_updates": 0,
+  "actual_base_training_seconds": 0,
+  "actual_ppo_training_seconds": 0,
+  "original_failure_preserved": true,
+  "original_failed_root_will_not_be_resumed": true,
+  "source_audit_timing": "All1579 matched before deployment of the intentional reporting-entrypoint fix; historical original commit and plan are retained.",
+  "fix": {
+    "files": [
+      "script/supermimic_q1_gait_goal_review/train.py",
+      "script/supermimic_q1_gait_goal_review/pipeline.py",
+      "script/supermimic_q1_gait_goal_review/audit_saved.py"
+    ],
+    "project_tools_import_path_added": true,
+    "real_training_module_import_guard_before_environment_creation": true,
+    "import_guard_maximum_seconds": 120,
+    "import_smoke_status": "FROZEN_TRAINING_IMPORTS_PASSED",
+    "smoke_new_physical_steps": 0,
+    "smoke_policy_inference_calls": 0,
+    "smoke_optimizer_updates": 0,
+    "new_counterexamples_passed": 8,
+    "compiled_new_package": true,
+    "original_native_preflight_source_directories_unchanged": true,
+    "source_sha256": {
+      "script/supermimic_q1_gait_goal_review/train.py": "33f132b11e1e9abceeaa14387bbd804a391ec970034974c85185122bf93c7f0c",
+      "script/supermimic_q1_gait_goal_review/pipeline.py": "900c9f4516abdbe916f908d5cc21ae388e26bdd975a279801d7bf59826257bec",
+      "script/supermimic_q1_gait_goal_review/audit_saved.py": "8b38241cf6100ce068410e0ab4ee1ca7233e52e4b063a15759878c94293a9f23"
+    },
+    "server_check_command_suffix": "train.py --line base --code-commit 62f9e5a2b961695c8b44e8f16343ff753c01ce49 --runtime <original_runtime> --library <original_library> --checkpoint <original_checkpoint> --calibration <original_calibration> --output <proposed_v02>/run --check-imports",
+    "server_check_stdout": {
+      "status": "FROZEN_TRAINING_IMPORTS_PASSED",
+      "new_physical_steps": 0,
+      "policy_inference_calls": 0,
+      "optimizer_updates": 0
+    },
+    "server_check_exit_code": 0,
+    "publication": "PENDING_INDEPENDENT_REMOTE_AND_THREE_WAY_VERIFICATION"
+  },
+  "retry": {
+    "rule": "budget.automatic_retry=false",
+    "source_manifest": "data/manifests/supermimic_q1_gait_goal_preflight_results_20261029.json",
+    "automatic_retry_performed": false,
+    "proposed_new_root_if_user_allows_once": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029",
+    "maximum_training_seconds_unchanged": 1200,
+    "user_decision": "PENDING_NOT_YET_REQUESTED_AT_RECORD_CREATION"
+  },
+  "ppo_first_attempt": {
+    "status": "NOT_STARTED_STILL_AUTHORIZED_INDEPENDENT_LINE",
+    "root": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029",
+    "maximum_training_seconds": 1200
+  },
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "agents_started": false,
+  "other_automations_modified": false
+}

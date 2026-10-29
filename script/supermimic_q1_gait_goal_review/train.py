@@ -7,7 +7,7 @@ from pathlib import Path
 import sys
 
 HERE = Path(__file__).resolve().parent
-sys.path[:0] = [str(HERE), str(HERE.parent / "supermimic_q1_gait_goal")]
+sys.path[:0] = [str(HERE), str(HERE.parent / "supermimic_q1_gait_goal"), str(HERE.parent / "project_tools")]
 from evidence import candidate_rank, forward_metrics, physical_decision
 
 
@@ -54,12 +54,23 @@ def evaluate_trial(env, policy, head, thresholds, reference, rows, output, label
     return metrics, summaries, paths
 
 
-def run(args):
-    import trial_support as native
+def load_training_module(runtime):
+    sys.path[:0] = [str(runtime / "src"), str(runtime)]
     original_path = HERE.parent / "supermimic_q1_gait_goal/train.py"
     spec = importlib.util.spec_from_file_location("frozen_goal_training", original_path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
+    from contact_reference import configure
+    from diagnose_q1_upper_reference import policy_digest
+    from unisupermimic.tasks.motion_tracking.x2.supermimic.evaluate import load_policy
+    from unisupermimic.rl.algos.supermimic.learner import _empty_stats
+    return module
+
+
+def run(args):
+    import trial_support as native
+    module = load_training_module(args.runtime)
+    original_path = HERE.parent / "supermimic_q1_gait_goal/train.py"
     selected = None
     def save(path, value):
         nonlocal selected
@@ -90,4 +101,11 @@ if __name__ == "__main__":
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument("--line", choices=("base", "ppo"), required=True)
     parser.add_argument("--code-commit", required=True)
-    run(parser.parse_args())
+    parser.add_argument("--check-imports", action="store_true")
+    args = parser.parse_args()
+    if args.check_imports:
+        load_training_module(args.runtime)
+        print(json.dumps(dict(status="FROZEN_TRAINING_IMPORTS_PASSED", new_physical_steps=0,
+                              policy_inference_calls=0, optimizer_updates=0)))
+    else:
+        run(args)

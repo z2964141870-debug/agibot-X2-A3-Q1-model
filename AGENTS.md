@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-29 GAIT_GOAL01底座首次正式启动在创建环境前因review入口缺project_tools路径而ModuleNotFoundError退出：23:37:16至23:37:24、controller216576/worker216590 reaped1/均已不存在、实训0/0推理积分optimizer/GPU15MiB/OOM0。修复部署前1579来源SHA全同；原失败根/62f9e5a来源和收据保留，不恢复或自动重试。独立review入口已补路径和真实训练模块imports守卫120秒，实际无环境导入检查通过/8反例/6编译/原native源未改，待发布核验。按本轮automatic_retry=false，底座修复后一次新V02启动待新决定；PPO独立首次训练预算仍未使用。必要四预检全部已过，不重做base16；目标ACTIVE/采纳null/监督缓存维护不动/无agent。入口GAIT_GOAL及base_import_failure清单。
+
 - 2026-10-29 GAIT_GOAL01剩余零更新预检全部完成：base4096于23:17:44、PPO16于23:22:31、PPO4096于23:26:31正常COMPLETED/guardreap0，各1564来源未变，六原进程均不存在/GPU15MiB无计算/OOM0。base H32同replay/有限非零梯度、PPO24576小批logprob差0/奖励及终止/状态RNG/冻结教师保护通过，0optimizer；唯一追加base16未重做。31小工件1842608B已取回，发布及三端SHA见后续收据。正式训练仍0/0，下一步仅发布核验后顺序新base/PPO各1100软1200硬秒、300/600/1100物理门，原配方/上肢.5/300-30不改、不组合，不自动扩时或故障重试。两个训练根已在preflight_results清单登记；目标ACTIVE/采纳null，原监督/缓存维护和其他任务不改、无agent。
 
 - 2026-10-29 GAIT_GOAL01训练审阅入口已离线修正：独立supermimic_q1_gait_goal_review只替换评测归档/停止门/推荐回调，原base16冻结的gait_goal及sole源码对b6c28069逐字不变，不重做已用的一次追加base16。完整参考方向不随跌倒截短，缺失脚Z/承重保留null并停、零基线退步不能漏过、10%保护先于推荐；8新反例/原20测试及四CLI通过。保存RF16旧320步截160步CPU集成正常归档停止，0推理积分优化；不是新三重复或步态收益。已准备全330表/真实回合六格/固定原速54秒媒体及先审计再pipeline完成，尚待实际新训练交付。下一步发布/三端SHA后顺序base4096、PPO16/4096零更新；正式双线实训仍0/采纳null/goal ACTIVE/不动监督或agent。入口GAIT_GOAL及review_preparation清单，发布以独立远端与旁收据为准。

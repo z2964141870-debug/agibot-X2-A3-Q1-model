@@ -1,6 +1,6 @@
 # Q1普通步态双线改进目标
 
-记录日期：2026-10-29，北京时间。阶段：GAIT_GOAL01。状态：目标ACTIVE；唯一追加base16及其后base4096/PPO16/PPO4096均零更新正常通过，1564来源保持；独立训练审阅/完整交付入口已离线验证，原预检冻结代码未改。正式训练仍0/0，先发布核验本阶段再顺序执行两线短训，不以预检通过宣称步态收益。
+记录日期：2026-10-29，北京时间。阶段：GAIT_GOAL01。状态：目标ACTIVE；必要四项零更新预检均通过。底座首次启动在创建环境前因报告工具导入路径缺失失败，实训0/0，进程回收/GPU释放；导入修复及真实模块检查已通过，不自动重试底座。PPO独立首次预算未用，原native预检源码保持，候选采纳null。
 
 ## 目标与授权
 
@@ -154,3 +154,15 @@
 三项controller均COMPLETED、worker guard WORKER_COMPLETED/reaped0，各1564来源前后SHA不变；六原进程均已不存在，GPU15MiB/0%无计算，容器3169103872B、OOM0。PPO奖励分解、人工超时bootstrap/自然终止不bootstrap、原生接触/pre-reset状态、独立评测状态/RNG、仅新head/critic及冻结教师/normalizer保护均通过。base1024/1024批量、H32/compileFalse，同份replay起点逐值相同且未改输入，WM/actor/critic梯度范数约1/.989/1。未做跨仿真方向对照，不把旧方向边界说成已解决。
 
 唯一追加base16未重做；上述都是先前已登记的首次依赖预检。31小JSON/日志共1842608B已取回权威工作树，原大权重/轨迹留服务器。正式训练仍0/0秒。先发布本阶段并核三端，再依次启动清单中的两个新独立根；base加载原RF14两小时权重/新优化器和replay，PPO仍用同原冻结底座/新14维head，二者不组合。固定alpha.5、原300/30、1100软/1200硬/1150外停+10秒、300/600/1100物理门和无自动扩时/故障重试不改。两线实际物理结果与媒体审阅尚待，整体目标ACTIVE/用户采纳null。[完整收据、资源及训练根](../data/manifests/supermimic_q1_gait_goal_preflight_results_20261029.json)。
+
+## 底座首次启动失败与导入修复
+
+预检结果提交`62f9e5a2b961695c8b44e8f16343ff753c01ce49`已独立核远端，7记录331271B通过payload audit；含31份原始预检小工件的38文件2173879B已三端大小SHA核验，旁收据为`data/manifests/supermimic_q1_gait_goal_preflight_publication_20261029.json`。此后的启动失败不改变这些预检事实。
+
+底座首次正式启动根`data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029`于北京时间23:37:16启动controller216576/start_ticks20188124，23:37:24以FAILED结束。worker216590在原训练函数导入`diagnose_q1_upper_reference`时抛出ModuleNotFoundError，发生在创建环境、加载策略、推理、积分或优化之前。训练时钟实测0秒，guard正常回收失败worker/reaped1；两个进程已不存在，GPU15MiB/无计算/OOM0。原10工件398024B、失败根和来源版本完整保留，不能将其说成训练退化、OOM或已完成试验。
+
+错误来自新增review入口未把`script/project_tools`放入Python搜索路径。修复仅改独立review目录三文件：`train.py`补目录并提供`--check-imports`实际加载原训练模块和内部依赖；`pipeline.py`在任何训练前加入120秒独立imports守卫；`audit_saved.py`要求该守卫正常完成。检查模式不创建环境、输出目录、训练时钟、策略或权重。原gait_goal和sole目录对成功预检冻结`b6c28069`仍逐字不变；修复部署前失败计划全部1579来源逐SHA一致，后续有意变更的三个报告入口另记新SHA，不覆盖历史计划。
+
+真实服务器激活环境检查返回`FROZEN_TRAINING_IMPORTS_PASSED`、退出0，明确0新积分/推理/optimizer；8项报告反例与6文件编译通过。已通过的四项原生预检不重做，不能把纯导入检查称为新的物理预检或步态改善。导入修复和本段证据先经audit/commit/push/独立40位远端及三端大小SHA核验；具体原值、代码SHA和失败工件身份见[失败与修复清单](../data/manifests/supermimic_q1_gait_goal_base_import_failure_20261029.json)。
+
+按本轮预检结果清单`budget.automatic_retry=false`，不得自动重启底座。修复发布后仅请求一次新的独立V02启动决定，拟根`Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029`，原1100软/1200硬训练上限、配方和物理门不增加，不恢复旧失败根、不重做base16。请求前记录为PENDING_NOT_YET_REQUESTED，不把等待当作目标完成。独立PPO首次正式试验尚未启动，既有授权和1200秒预算仍可使用；修复发布核验后可先推进这一条，GPU继续串行，二者不组合。当前双线实训仍0/0秒，goal ACTIVE、用户采纳null。

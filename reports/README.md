@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-30：[GAIT_GOAL01保存奖励方向/站稳覆盖离线核查](README_Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030.md)。45片12015状态、135真实奖励拆分一致/5测试/0积分推理优化；原姿态奖励存在，PPO新增站稳覆盖起走1.9%/停走19.4%。局部梯度冲突不等于抵消，PPO高度范数约原tracking的5.7倍仍未学会稳定离地。10工件7734017B三端SHA/两图目视，goal ACTIVE/采纳null，不追加训练。[清单](../data/manifests/supermimic_q1_gait_goal_saved_reward_alignment_20261030.json)。
+
 2026-10-30：[GAIT_GOAL01左右脚/承重交集/时间分段离线拆解](README_Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030.md)。45片24030足时序，0积分推理优化；底座右脚局部高度收益与左脚/起走代价并存，PPO右脚抬脚窗口仍贴地。9小工件5804571B三端SHA/两图目视，目标ACTIVE/采纳null，原训练停止与失败证据保留。[清单](../data/manifests/supermimic_q1_gait_goal_saved_phase_20261030.json)。
 
 2026-10-30：[GAIT_GOAL01底座/PPO双线结果与四本地原速视频](README_Q1_GAIT_GOAL01_RESULTS_20261030.md)。两线901.18实训秒均按物理退步停，底座局部上肢/起走滑移改善伴姿态和抬手代价、PPO未两走一致改善；步态目标未达/goal ACTIVE/采纳null。104小工件59240072B三端SHA、24媒体/72保存检查、4950逐片/180分组/45固定行齐。底座pipeline正常完成，PPO原缺ffprobe失败保留、独立交付完成。[完整收据](../data/manifests/supermimic_q1_gait_goal_results_20261030.json)。

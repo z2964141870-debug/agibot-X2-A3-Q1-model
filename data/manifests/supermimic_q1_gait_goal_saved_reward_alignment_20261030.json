@@ -1,0 +1,295 @@
+{
+  "stage": "GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030",
+  "status": "SAVED_ONLY_ANALYSIS_DELIVERED_PHYSICAL_TARGET_NOT_ACHIEVED",
+  "captured_utc": "2026-10-29T19:18:48.510345+00:00",
+  "review_report": "reports/README_Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030.md",
+  "source_base_commit": "27bb6dca29d8ba606db17538f1db4fb8b78460be",
+  "code": [
+    {
+      "relative_path": "script/supermimic_q1_gait_goal_analysis/saved_reward_alignment.py",
+      "bytes": 26088,
+      "sha256": "02ad4e89a15cad75b78fae4adc48c3918bd30a65744961861594c87bdde47c79"
+    },
+    {
+      "relative_path": "script/supermimic_q1_gait_goal_analysis/test_saved_reward_alignment.py",
+      "bytes": 2727,
+      "sha256": "c61be3371c544623c7354c659d375d668ec1e1123fe0a7c14607959ecf1e9b11"
+    }
+  ],
+  "computation_code_before_plot_only_revision": {
+    "path": "/opt/data/private/ZHY/script/supermimic_q1_gait_goal_analysis/saved_reward_alignment.py",
+    "bytes": 26074,
+    "sha256": "3d8342f092c9b07d9269d49d75d1ee048d7aa528f9163732697c9e6c8ec1f80c"
+  },
+  "tests": {
+    "command": "python3 -m unittest discover -s script/supermimic_q1_gait_goal_analysis -p 'test_saved_reward_alignment.py' -v",
+    "passed": 5,
+    "failed": 0
+  },
+  "scope": {
+    "saved_clips": 45,
+    "saved_states": 12015,
+    "gradient_condition_rows": 1890,
+    "foot_gradient_rows": 180,
+    "stationary_coverage_rows": 45,
+    "direct_native_candidate_score_checks": 135,
+    "historical_initial_and_stage_trace_sha_verified": true,
+    "reduced_reference_pose_alignment_verified": true,
+    "new_integration_steps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0
+  },
+  "native_reward_cfg": {
+    "body_pos_std": 0.3,
+    "body_ori_std": 0.4,
+    "body_linvel_std": 1,
+    "body_angvel_std": 3.14,
+    "root_pos_std": 0.3,
+    "root_ori_std": 0.4,
+    "w_action_rate": -0.1,
+    "w_joint_limit": -2,
+    "soft_limit_factor": 0.9,
+    "term_height": 0.25,
+    "term_tilt": 0.8
+  },
+  "native_candidate_options": {
+    "variant": "sampler_only",
+    "repair_transition_bins": true,
+    "joint_error_observation": false,
+    "joint_tracking_reward": false,
+    "future_goal_padding_changed": false,
+    "controller_or_reset_changed": false
+  },
+  "findings": {
+    "gradient_space": "12 leg joint angles in radians; root, velocities and contact measurements held fixed",
+    "condition": "Any immutable intent-swing foot with reference collision-sole Z>=10mm; primary reward gradient includes all intent-swing feet",
+    "aggregation": "Each repeat uses its valid conditional frames; displayed table is median across three repeat summaries",
+    "z_weights_per20ms": {
+      "base_combined_swing": 0.005,
+      "ppo_combined_z": 0.01,
+      "per_foot_diagnostic_in_both_trials": 0.01
+    },
+    "primary_comparisons": [
+      {
+        "line": "base",
+        "label": "initial",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames_per_repeat": 60,
+        "opposing_fractions_by_repeat": [
+          0.6166666666666667,
+          0.65,
+          0.5666666666666667
+        ],
+        "cosine_median_across_repeats": -0.16353250881734432,
+        "norm_ratio_median_across_repeats": 2.6401565225900248
+      },
+      {
+        "line": "base",
+        "label": "initial",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames_per_repeat": 70,
+        "opposing_fractions_by_repeat": [
+          0.45714285714285713,
+          0.5428571428571428,
+          0.6142857142857143
+        ],
+        "cosine_median_across_repeats": -0.03335799154798954,
+        "norm_ratio_median_across_repeats": 2.870687939511399
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames_per_repeat": 60,
+        "opposing_fractions_by_repeat": [
+          0.6666666666666666,
+          0.65,
+          0.6666666666666666
+        ],
+        "cosine_median_across_repeats": -0.15565032530685508,
+        "norm_ratio_median_across_repeats": 1.0050516714662485
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames_per_repeat": 70,
+        "opposing_fractions_by_repeat": [
+          0.5,
+          0.4714285714285714,
+          0.5857142857142857
+        ],
+        "cosine_median_across_repeats": 0.005109661087820537,
+        "norm_ratio_median_across_repeats": 0.8702651247350282
+      },
+      {
+        "line": "ppo",
+        "label": "initial",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames_per_repeat": 60,
+        "opposing_fractions_by_repeat": [
+          0.5666666666666667,
+          0.5833333333333334,
+          0.5666666666666667
+        ],
+        "cosine_median_across_repeats": -0.13763862557241185,
+        "norm_ratio_median_across_repeats": 5.477747904655983
+      },
+      {
+        "line": "ppo",
+        "label": "initial",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames_per_repeat": 70,
+        "opposing_fractions_by_repeat": [
+          0.7142857142857143,
+          0.5714285714285714,
+          0.5714285714285714
+        ],
+        "cosine_median_across_repeats": -0.1210493607641395,
+        "norm_ratio_median_across_repeats": 4.646562526003963
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames_per_repeat": 60,
+        "opposing_fractions_by_repeat": [
+          0.55,
+          0.5333333333333333,
+          0.6166666666666667
+        ],
+        "cosine_median_across_repeats": -0.20171370264658867,
+        "norm_ratio_median_across_repeats": 5.773731680521138
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames_per_repeat": 70,
+        "opposing_fractions_by_repeat": [
+          0.6714285714285714,
+          0.6142857142857143,
+          0.7
+        ],
+        "cosine_median_across_repeats": -0.14467322912318092,
+        "norm_ratio_median_across_repeats": 5.740965575280465
+      }
+    ],
+    "stationary_gate": {
+      "stop_walk_frames": 62,
+      "stop_walk_reference_frames": 320,
+      "start_walk_frames": 4,
+      "start_walk_reference_frames": 210,
+      "raise_frames": 159,
+      "raise_reference_frames": 271,
+      "only_extra_ppo_bonus_is_gated": true,
+      "base_does_not_use_extra_stationary_bonus": true
+    },
+    "interpretations": [
+      "The native all-body and root orientation tracking terms are present throughout; stationary PPO bonus has narrow reference-conditioned coverage.",
+      "Opposing instantaneous leg-pose gradients occur, but the height gradient is not uniformly small: final PPO Z/native tracking norm ratios are approximately5.77/5.74 in the selected windows.",
+      "Cosine sign does not establish cancellation of the combined reward, and no actor/action/H32/dynamics gradient is measured.",
+      "Body orientation reward can rise while the root orientation reward falls; aggregate tracking reward is not the user gait acceptance criterion."
+    ],
+    "base_start_orientation_scores": {
+      "body_mean_initial": 0.0036368295550346375,
+      "body_mean_final": 0.010860564187169075,
+      "root_mean_initial": 0.009452961385250092,
+      "root_mean_final": 0.008968021720647812,
+      "tracking_mean_initial": 0.06311790645122528,
+      "tracking_mean_final": 0.07095417380332947
+    }
+  },
+  "artifacts": {
+    "files": [
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030/base_saved_reward_alignment.pdf",
+        "bytes": 42833,
+        "sha256": "37d4601516cf0b04a3979330a2e487e2c68685886c9cb1bd067f065625f407b6"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030/base_saved_reward_alignment.png",
+        "bytes": 481770,
+        "sha256": "38a57f3fd4d1f8ac6ea4dcf36d7dc734036694866360db3b139cd25b57cfecff"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030/foot_gradient_conditions.csv",
+        "bytes": 26333,
+        "sha256": "f88713749068a63de8744cdd71292f19f12ffa4f5623dd88e2e2f20d1063aa4c"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030/gradient_conditions.csv",
+        "bytes": 295690,
+        "sha256": "931adb53aa1ec3c0ec026c39d6852965d36604b9fbc77e3369455591e592cc3e"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030/plot_revision.json",
+        "bytes": 4258,
+        "sha256": "4024f8e14b5f11c6df8fe093f40104e9a002db2536e0afc8d0217a4d567f0944"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030/ppo_saved_reward_alignment.pdf",
+        "bytes": 42616,
+        "sha256": "917f9dbe605bcbf06ee676dcfd32856be948876edd9f36498fc3262ee0c7f0f4"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030/ppo_saved_reward_alignment.png",
+        "bytes": 448655,
+        "sha256": "afae700e7e9698dd969ef16df1b882955d5b78ee5c2df95d9d14c77692e454e5"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030/reward_gradient_timeseries.csv",
+        "bytes": 6363037,
+        "sha256": "2e5cdb52df1cc1ee52c14eb8a725eb3b85de876abc087061eafde3b89688053f"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030/stationary_coverage.csv",
+        "bytes": 9107,
+        "sha256": "1d435ad469c1b66cf17d3bf7ed2bc9468f71f85af1e5a5232c795fa5324403cf"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030/summary.json",
+        "bytes": 19718,
+        "sha256": "10ab68becd9044b4428c613a6409db602d9f33d2ac46e763cc154ead85427f2c"
+      }
+    ],
+    "count": 10,
+    "bytes": 7734017,
+    "all_three_way_size_sha256_matched": true,
+    "locations": [
+      "authoritative_Q1_worktree",
+      "Mac_project_root",
+      "user_25386_unique_root"
+    ],
+    "visually_reviewed_pngs": 2,
+    "large_npz_transferred": false
+  },
+  "plot_revision": {
+    "receipt": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030/plot_revision.json",
+    "only_shared_time_axes": true,
+    "numeric_csv_and_original_summary_unchanged": true,
+    "raw_npz_not_reloaded": true
+  },
+  "boundaries": {
+    "goal_status": "active",
+    "goal_complete": false,
+    "user_accepted_checkpoint": null,
+    "original_training_seconds_unchanged": 901.178391956928,
+    "new_training_requires_explicit_user_decision": true,
+    "original_failed_evidence_preserved": true,
+    "native_training_code_modified": false,
+    "agents_started": false,
+    "other_automations_modified": false
+  },
+  "limits": [
+    "Instantaneous pose reward gradients are not policy/action/H32/model-dynamics gradients or physical interventions.",
+    "Only the same12 leg joint angles vary. Root pose, root/joint velocities, previous targets and measured force/slip are fixed.",
+    "Root orientation reward is present, but has zero partial derivative in this root-fixed leg-angle comparison.",
+    "Stationary gate is reference-conditioned; base training does not use the extra PPO stationary bonus.",
+    "Native velocity reward still depends on leg pose through forward kinematics; these derivatives are retained.",
+    "Zero/missing gradients retain undefined cosines and separate counts; they are not zero-angle alignment.",
+    "Collision-sole minimum is piecewise differentiable; the native selected support-point branch is used at each saved pose.",
+    "Opposing directions on saved outcomes do not isolate the cause of training failure or prove attainable foot unloading.",
+    "Reference raised10mm and actual below5mm conditions describe saved data; they are not new training/acceptance gates."
+  ]
+}

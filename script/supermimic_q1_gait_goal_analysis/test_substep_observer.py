@@ -111,6 +111,8 @@ class SubstepObserverTests(unittest.TestCase):
                     actual = watched.step_tensor(action, 4)
                     self.assertEqual(observer.control_calls, 1)
                     self.assertEqual(observer.completed_substeps, 4)
+                    self.assertEqual(observer.attempted_native_substeps, 4)
+                    self.assertEqual(observer.returned_native_substeps, 4)
                     self.assertFalse(observer.faulted)
                 self.assertEqual(watched.value, baseline.value)
                 self.assertEqual(watched.launches, baseline.launches)
@@ -142,7 +144,9 @@ class SubstepObserverTests(unittest.TestCase):
         with SubstepObserver(backend, Sampler(backend, fail_after=1), 2) as observer:
             with self.assertRaises(ValueError):
                 backend._execute_device_steps(4)
-            self.assertEqual(observer.completed_substeps, 2)
+            self.assertEqual(observer.completed_substeps, 1)
+            self.assertEqual(observer.attempted_native_substeps, 2)
+            self.assertEqual(observer.returned_native_substeps, 2)
             self.assertTrue(observer.faulted)
             with self.assertRaises(RuntimeError):
                 backend._execute_device_steps(4)
@@ -189,8 +193,21 @@ class SubstepObserverTests(unittest.TestCase):
                 backend._execute_device_steps(4)
             self.assertTrue(observer.faulted)
             self.assertEqual(observer.completed_substeps, 0)
+            self.assertEqual(observer.attempted_native_substeps, 1)
+            self.assertEqual(observer.returned_native_substeps, 0)
             self.assertEqual(len(backend.launches), 1)
         self.assertIs(backend._execute_device_steps, fail)
+
+    def test_returned_async_launch_is_not_a_verified_completed_substep(self):
+        backend = source_backend()()
+        with SubstepObserver(backend, Sampler(backend, fail_after=0), 1) as observer:
+            with self.assertRaises(ValueError):
+                backend._execute_device_steps(4)
+            self.assertEqual(observer.completed_substeps, 0)
+            self.assertEqual(observer.attempted_native_substeps, 1)
+            self.assertEqual(observer.returned_native_substeps, 1)
+            self.assertTrue(observer.faulted)
+            self.assertEqual(len(backend.launches), 1)
 
 
 class SamplerTests(unittest.TestCase):

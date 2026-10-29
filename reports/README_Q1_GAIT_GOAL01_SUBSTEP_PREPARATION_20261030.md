@@ -1,6 +1,18 @@
 # Q1逐子步执行层观测准备
 
-记录日期：2026-10-30，北京时间。阶段：GAIT_GOAL01_SUBSTEP_PREPARATION。状态：代码、CPU替身测试、真实模块导入及只读清单准备完成；新物理观测尚未授权、尚未启动，普通自然步态目标未达。
+记录日期：2026-10-30，北京时间。阶段：GAIT_GOAL01_SUBSTEP_PREPARATION。当前版本V02：两项失败计数已修正，17项CPU替身测试、真实模块导入及282来源只读清单准备完成；新物理观测尚未授权、尚未启动，普通自然步态目标未达。
+
+## V02计数修正与当前冻结清单
+
+本轮用CPU替身复现两项错误：原生异步调用返回后，sampler核验抛错，旧实现仍将该子步记为完成（反例1而非0）；完整片段已加到累计值后，状态写入抛错，旧失败路径再加同一片段一次（反例8而非4）。首次16项测试中的这两项失败与日志保留，没有运行实际物理后端。
+
+现分别记录attempted_native_substeps、returned_native_substeps与completed_substeps。只有sampler.after完成同步、时间/控制核验和记录后，才增加已核验完成数；失败时实际完成的物理量仍可能未知，attempted/returned不冒充完成下界。worker在每片开始保存前片累计值，失败总下界只加当前已核验数，不使用可能已经加过本片的可变总量。
+
+最终17项CPU测试全部通过，包含异步返回后核验失败、完成片段状态写入失败，以及前片4步已核验、次片2次调用仅1步核验成功时，总下界5/尝试6/返回6。成功、异常路径均核资源清理；教师仅用输入钩子替身，不执行网络前向。真实模块导入另返回OBSERVATION_IMPORTS_PASSED，0原生环境/策略前向/积分/optimizer；CPU计数修正不代表步态或轨迹等价已经改善。
+
+当前[精确V02 plan](../data/manifests/supermimic_q1_gait_goal_substep_observation_plan_v02_20261030.json)为86121字节、SHA-256 c94cf9489c317ea6a2ca431af898bc4f8704e698067c5e927d17a389b1234942，282来源，服务器新准备根data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_PREPARATION_V02_20261030。相对V01只变更3份观测/测试源码并增加worker测试；逐字段比较确认测量case、检查点、种子、资源保护、输出根与全部预算相同。旧281来源plan、原13测试和发布收据保留历史；旧plan中的观测源码SHA已不匹配当前文件，不用于新执行，也不重新生成或覆盖原准备根。
+
+当前[准备清单](../data/manifests/supermimic_q1_gait_goal_substep_preparation_v02_20261030.json)列明两项反例、最终验证、原/新plan与零新物理活动；[V02发布旁收据](../data/manifests/supermimic_q1_gait_goal_substep_preparation_v02_publication_20261030.json)仅在实际push、独立40位远端和三端大小SHA核验后写入。原训练V02授权已经使用，本轮代码准备V02不是第二次训练V02。此前两线观测范围问题仍待用户答复，未重发问题，也未将自动goal续行当作批准。
 
 ## 目标与已有证据
 
@@ -39,7 +51,7 @@
 
 唯一新根分别为data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_BASE_20261030及Q1_GAIT_GOAL01_SUBSTEP_PPO_20261030。尚无这两根的真实观测作业；不重复原全330库、媒体或旧物理预检。
 
-## 已执行验证与失败修正
+## V01历史验证与失败修正
 
 13项CPU测试最终全过：从当前安装backend.py抽出真实step_tensor和内部循环，在替身上分别检查graph/eager的4次launch、外力生命周期、一次time cache/completion、恢复/钩子所有权、次数上限、部分launch错误的未知边界与禁止恢复；检查pre/solve/post时轴、控制变化/接触读取意外修改拒绝；检查两线配对种子/固定预算/新决定与只读清单构造。
 
@@ -51,7 +63,7 @@
 
 ## 命令、工件与发布
 
-权威Git：/Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028，Q1分支；准备基础提交f340821be87bf11ca067bf0cf0eefacf83850eca。服务器唯一根仍/opt/data/private/ZHY，沿原25386/Windows桥，无认证或环境改动。
+权威Git：/Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028，Q1分支；V01准备基础提交f340821be87bf11ca067bf0cf0eefacf83850eca，V02准备基础提交ec76665e50c0b6936ce7c1461b62621934b29441。服务器唯一根仍/opt/data/private/ZHY，沿原25386/Windows桥，无认证或环境改动。
 
 实际CPU测试命令：
 
@@ -63,9 +75,9 @@ env CUDA_VISIBLE_DEVICES=-1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
   -s "$substep_root/script/supermimic_q1_gait_goal_analysis" -p 'test_*substep*.py' -v
 ```
 
-只读prepare已执行一次成功，输出data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_PREPARATION_20261030/observation_plan.json，85901字节，SHA-256 b5f4e7fb211a0f5445549d26b3b0cb943c9168941099164821849b3576db35ac。Git可审阅的[精确plan副本](../data/manifests/supermimic_q1_gait_goal_substep_observation_plan_20261030.json)与该文件同内容；无需重做prepare。
+V01只读prepare历史输出data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_PREPARATION_20261030/observation_plan.json，85901字节，SHA-256 b5f4e7fb211a0f5445549d26b3b0cb943c9168941099164821849b3576db35ac。[旧精确plan副本](../data/manifests/supermimic_q1_gait_goal_substep_observation_plan_20261030.json)保留原样；当前使用上方V02准备材料，原/新准备均已执行，不重复prepare。
 
-[本轮清单](../data/manifests/supermimic_q1_gait_goal_substep_preparation_20261030.json)及[执行记录](../logs/session_records/q1_gait_goal_substep_preparation_20261030.log)包含实际检查和错误。发布提交、独立40位远端及Mac主根/25386逐大小SHA结果以[publication旁收据](../data/manifests/supermimic_q1_gait_goal_substep_preparation_publication_20261030.json)为准；本报告写入不预称发布完成。
+[V01清单](../data/manifests/supermimic_q1_gait_goal_substep_preparation_20261030.json)、[V01执行记录](../logs/session_records/q1_gait_goal_substep_preparation_20261030.log)与[原发布旁收据](../data/manifests/supermimic_q1_gait_goal_substep_preparation_publication_20261030.json)保留原检查及发布证据。V02日志为logs/session_records/q1_gait_goal_substep_counter_{regression,verification,prepare_v02,imports_v02}_20261030.log，实际失败和最终通过分别保存。
 
 新执行命令的固定形状如下，仅在用户明确新决定并由代理登记对应plan SHA后使用，不能据示例自行启动：
 
@@ -73,10 +85,10 @@ env CUDA_VISIBLE_DEVICES=-1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
 "$substep_root/data/environments/supermimic_q1_hp_20261026/bin/python" \
   "$substep_root/script/supermimic_q1_hp/activate.py" \
   "$substep_root/script/supermimic_q1_gait_goal_analysis/probe_substeps.py" supervise \
-  --plan "$substep_root/data/manifests/supermimic_q1_gait_goal_substep_observation_plan_20261030.json" \
+  --plan "$substep_root/data/manifests/supermimic_q1_gait_goal_substep_observation_plan_v02_20261030.json" \
   --line base \
   --output "$substep_root/data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_BASE_20261030" \
   --authorization-record USER_DECISION_RECORD --code-commit PUBLISHED_40_HEX
 ```
 
-另一条PPO线须使用line ppo和其已登记独立根，串行运行；该准备不增加原训练预算。先审阅本方案并决定是否允许两条各一次新零优化观测；目前0新物理测量。goal保持ACTIVE、采纳null，原监督、缓存维护与其他任务保持，未启动/激活agent。
+另一条PPO线须使用line ppo和其已登记独立根，串行运行；该准备不增加原训练预算。当前两条各一次新零优化观测仍待用户明确决定，未启动观测或训练。goal保持ACTIVE、采纳null，原监督、缓存维护与其他任务保持，未启动/激活agent。

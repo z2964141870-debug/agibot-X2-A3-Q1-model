@@ -10,6 +10,7 @@ class SubstepObserver:
         self.backend, self.sampler = backend, sampler
         self.maximum_controls = maximum_controls
         self.control_calls = self.completed_substeps = 0
+        self.attempted_native_substeps = self.returned_native_substeps = 0
         self.faulted = self.installed = self.used = False
 
     def __enter__(self):
@@ -31,9 +32,11 @@ class SubstepObserver:
             try:
                 for substep in range(nsteps):
                     before = self.sampler.before(control, substep)
+                    self.attempted_native_substeps += 1
                     self.original(1)
-                    self.completed_substeps += 1
+                    self.returned_native_substeps += 1
                     self.sampler.after(control, substep, before)
+                    self.completed_substeps += 1
             except BaseException:
                 self.faulted = True
                 raise

@@ -211,11 +211,14 @@ def worker(args, plan):
     run = args.output / "run"
     run.mkdir(exist_ok=False)
     status = dict(status="INITIALIZING", process=process_identity(), line=args.line,
-        updated_utc=stamp(), optimizer_updates=0, controlled_transitions=0, completed_physical_substeps=0)
+        updated_utc=stamp(), optimizer_updates=0, controlled_transitions=0, completed_physical_substeps=0,
+        attempted_native_substeps=0, returned_native_substeps=0)
     save(run / "status.json", status)
     summaries, actuator_rows, baselines = [], [], {}
     torch.set_num_threads(2)
     for index, case in enumerate(item["cases"]):
+        prior_counts = {key: status[key] for key in ("controlled_transitions", "completed_physical_substeps",
+            "attempted_native_substeps", "returned_native_substeps")}
         env = observer = sampler = hook = teacher = head = reference = trace = None
         initial, policy_calls = {}, dict(teacher=0, head=0)
         folder = run / f"case{index:02d}_{case['condition']}_repeat{case['repeat']}"
@@ -267,7 +270,9 @@ def worker(args, plan):
             observer = SubstepObserver(env.backend, sampler, case["maximum_controls"])
             def progress(frame):
                 status.update(status="RUNNING", frame=frame, updated_utc=stamp(),
-                    current_case_controls=observer.control_calls, current_case_substeps=observer.completed_substeps)
+                    current_case_controls=observer.control_calls, current_case_substeps=observer.completed_substeps,
+                    current_case_attempted_native_substeps=observer.attempted_native_substeps,
+                    current_case_returned_native_substeps=observer.returned_native_substeps)
                 save(run / "status.json", status)
             with torch.no_grad(), observer:
                 trace = rollout(env, teacher, head, json.loads(inputs["calibration"].read_text())["thresholds"],
@@ -275,6 +280,9 @@ def worker(args, plan):
                     upper_alpha=.5, progress=progress)
             archive = sampler.archive()
             if (len(archive["control_index"]) != 4 * observer.control_calls
+                    or observer.completed_substeps != len(archive["control_index"])
+                    or observer.attempted_native_substeps != observer.completed_substeps
+                    or observer.returned_native_substeps != observer.completed_substeps
                     or observer.control_calls != int(trace["steps"][0])
                     or observer.faulted or policy_calls["teacher"] != observer.control_calls
                     or sum(policy_calls.values()) > 2 * observer.control_calls):
@@ -309,6 +317,8 @@ def worker(args, plan):
                     force_abs_max_Nm=float(np.abs(force[:, joint]).max()), limit_touch_substeps=int(near.sum()),
                     limit_touch_fraction=float(near.mean()), limit_touch_sample_duration_s=float(near.sum() * .005)))
             summary = dict(case=case, controlled_transitions=observer.control_calls, completed_physical_substeps=observer.completed_substeps,
+                attempted_native_substeps=observer.attempted_native_substeps,
+                returned_native_substeps=observer.returned_native_substeps,
                 policy_batches=policy_calls, initial_inputs_sha256=array_digest(initial), initial_match=match,
                 contract=contract, gait=gait_clip(trace, 0), tracking=clip_metrics(trace, 0), optimizer_updates=0,
                 artifacts=[identity(folder / name) for name in ("initial_inputs.npz", "native_substeps.npz", "control_trajectory.npz")],
@@ -317,6 +327,8 @@ def worker(args, plan):
             summaries.append(summary)
             status["controlled_transitions"] += observer.control_calls
             status["completed_physical_substeps"] += observer.completed_substeps
+            status["attempted_native_substeps"] += observer.attempted_native_substeps
+            status["returned_native_substeps"] += observer.returned_native_substeps
             if status["controlled_transitions"] > 3180 or status["completed_physical_substeps"] > 12720:
                 raise AssertionError("Independent line exceeded its prepared observation bound")
             save(run / "status.json", status)
@@ -326,10 +338,16 @@ def worker(args, plan):
             failure = dict(error=f"{type(error).__name__}: {error}",
                 control_calls=observer.control_calls if observer else 0,
                 completed_substeps_lower_bound=observer.completed_substeps if observer else 0,
-                possible_partial_native_launch=True, automatic_retry=False)
+                attempted_native_substeps=observer.attempted_native_substeps if observer else 0,
+                returned_native_substeps=observer.returned_native_substeps if observer else 0,
+                possible_partial_native_launch=bool(observer and
+                    observer.attempted_native_substeps > observer.completed_substeps), automatic_retry=False)
             save(folder / "failure.json", failure)
             status.update(status="FAILED", updated_utc=stamp(), failed_case=failure,
-                total_completed_substeps_lower_bound=status["completed_physical_substeps"] + failure["completed_substeps_lower_bound"])
+                total_completed_substeps_lower_bound=prior_counts["completed_physical_substeps"] + failure["completed_substeps_lower_bound"],
+                total_control_calls=prior_counts["controlled_transitions"] + failure["control_calls"],
+                total_attempted_native_substeps=prior_counts["attempted_native_substeps"] + failure["attempted_native_substeps"],
+                total_returned_native_substeps=prior_counts["returned_native_substeps"] + failure["returned_native_substeps"])
             save(run / "status.json", status)
             raise
         finally:
@@ -349,6 +367,7 @@ def worker(args, plan):
     write_csv(args.output / "actuator_summary.csv", actuator_rows)
     save(args.output / "results.json", dict(status="OBSERVATION_COMPLETED", cases=summaries, optimizer_updates=0,
         controlled_transitions=status["controlled_transitions"], completed_physical_substeps=status["completed_physical_substeps"],
+        attempted_native_substeps=status["attempted_native_substeps"], returned_native_substeps=status["returned_native_substeps"],
         physical_trajectory_equivalence_verified=False, historical_replay=False, user_accepted_checkpoint=None))
     status.update(status="COMPLETED", updated_utc=stamp())
     save(run / "status.json", status)

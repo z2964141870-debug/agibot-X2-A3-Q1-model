@@ -61,3 +61,9 @@
 `initialization_inputs.py`已编译/CLI通过，计划原RF14stage02/固定3片、16环境顺序创建两次，保留原hist10/H32、精度及严格atol2e-6/rtol2e-5。比较reset状态/可见求解器数组、旧与新MDP输入，以及同一策略同一输入在重复/换RNG下的输出，最多8推理；显式禁止env.step，0积分/optimizer，独立180秒外限及10秒回收。发布本阶段并核来源与GPU空闲后仅执行这一项。它用重复reset观测作合成历史，仅定位输入；即使通过也不证明九步warm-up或H32物理方向已修复，不第三次盲跑旧诊断。
 
 实际清单：[保存校准及输入隔离准备](../data/manifests/supermimic_q1_gait_goal_calibration_20261029.json)。新目标仍ACTIVE，当前底座/PPO实训均0秒，原生16/4096预检及新训练尚未开始。
+
+## Reset输入隔离实测
+
+来源`efeb35ff6c4a33469fccd086a30bec76d9bb6f7e`已push/独立远端核验，11记录314533字节三端SHA。独立输入隔离正常退出，0控制转移/积分/optimizer，8次策略前向；两次reset状态/可见求解器数组/历史输入/goal及策略输出在原容差内一致，旧与owned MDP对同状态的obs/goal一致，同输入换RNG或重复推理一致，参数/源码SHA不变。CPU RNG确实不同，但此处输出未改变，不能将RNG差异直接当因果。3小工件44563字节Mac主根/权威Git工作树/25386大小SHA；结束GPU15MiB/0%无计算、OOM0，原boot/GPU。
+
+这只缩小到reset之后的动力学或梯度诊断路径；未运行九步warm-up、未证明H32问题修复。下一项`warmup_replay.py`已编译/CLI通过，预登记一次16环境：首分支闭环9步并保存动作，次分支新环境逐步施加完全相同动作；每步核模型增益/摩擦/惯量/质心系数、可见状态/历史和诊断策略输出，严格atol2e-6/rtol2e-5，首次超差提前停。最多288控制转移/1152子步/18推理、0optimizer，不做H32梯度或方向干预；外限180秒/回收10秒，无自动重试。须先发布/镜像核验和GPU空闲再执行。[结果与下一项计划](../data/manifests/supermimic_q1_gait_goal_reset_inputs_20261029.json)。新训练仍0秒，目标ACTIVE。

@@ -1,5 +1,5 @@
 {
-  "status": "GAIT_GOAL01_SAVED_CALIBRATION_READY_RESET_INPUT_ISOLATION_PENDING",
+  "status": "GAIT_GOAL01_RESET_INPUTS_MATCH_WARMUP_REPLAY_PENDING",
   "recorded_date_beijing": "2026-10-29",
   "stage": "GAIT_GOAL01",
   "goal": {
@@ -83,11 +83,11 @@
       0.5
     ],
     "saved_calibration": "COMPLETED_36_GROUPS_9612_SAVED_STATES",
-    "nonintegrating_h32_initialization_isolation": "PREPARED_ZERO_STEPS_MAX8_INFERENCE_180_SECONDS",
+    "nonintegrating_h32_initialization_isolation": "COMPLETED_RESET_AND_POLICY_INPUTS_MATCH_8_INFERENCE_0_INTEGRATION",
     "new_physical_preflights": "NOT_RUN",
     "new_training": "NOT_STARTED",
     "new_integration_steps": 0,
-    "policy_inference_calls": 0,
+    "policy_inference_calls": 8,
     "optimizer_updates": 0
   },
   "controls": {
@@ -98,5 +98,5 @@
     "large_checkpoint_npz": "SERVER_LOCAL_ONLY",
     "environment_upgraded": false
   },
-  "next": "Publish preparation and mirror exact sources, run saved-only scale calibration, then isolate H32 inputs/actions without integration before declaring any physical validation."
+  "next": "Publish and verify the bounded fixed-action warm-up replay, then locate the first physical/action divergence without reexecuting the old H32 direction diagnostic. Formal base and PPO training remain at zero seconds."
 }

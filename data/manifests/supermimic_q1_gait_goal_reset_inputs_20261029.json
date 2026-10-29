@@ -1,0 +1,196 @@
+{
+  "status": "GAIT_GOAL01_RESET_INPUTS_MEASURED_WARMUP_REPLAY_PREPARED",
+  "stage": "GAIT_GOAL01",
+  "goal_status": "active",
+  "source_publication": {
+    "commit": "efeb35ff6c4a33469fccd086a30bec76d9bb6f7e",
+    "independent_remote": "efeb35ff6c4a33469fccd086a30bec76d9bb6f7e",
+    "payload_audit": {
+      "status": "PASS",
+      "files": 11,
+      "bytes": 314533
+    },
+    "files": [
+      {
+        "relative_path": "AGENTS.md",
+        "bytes": 69256,
+        "sha256": "b7f51801f24c8a2db44a357203ff9021e260816bf1b15152764032009ace2e87"
+      },
+      {
+        "relative_path": "reports/README.md",
+        "bytes": 136294,
+        "sha256": "229495307230ffefd7107069c30ff70d864917e2ed99c7fc2fbf5b18772feb3c"
+      },
+      {
+        "relative_path": "reports/README_CURRENT_STATE.md",
+        "bytes": 55800,
+        "sha256": "0369df72811453ebc22fca2e87061d4550769d4e5227e98147ba2dba75cce8f8"
+      },
+      {
+        "relative_path": "reports/README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md",
+        "bytes": 8269,
+        "sha256": "47854b3fd5b46a49a77f3d430bab76fb9c2f85c6a7615d10180b5ead759345e6"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_gait_goal_20261029.json",
+        "bytes": 5071,
+        "sha256": "fd516945a932a9061be8e8355589d417caa677a11b0dcf8ba34ca94e61832aac"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_gait_goal_preparation_publication_20261029.json",
+        "bytes": 2652,
+        "sha256": "5f8d20f700b13c676bdff92faf13ad6c85a7a64381c993ca703b97c0f0483b9c"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_gait_goal_calibration_20261029.json",
+        "bytes": 10504,
+        "sha256": "ee5beef41df8727fb41b917e74eaeff3805ffedb8159616e4308d7597f7adcdc"
+      },
+      {
+        "relative_path": "logs/session_records/gait_goal_calibration_20261029.log",
+        "bytes": 590,
+        "sha256": "bcb3b49d8a9d1be1af10b14328a7b91dc4aea05219bb2d519cc31a9bbd04c8fa"
+      },
+      {
+        "relative_path": "script/supermimic_q1_gait_goal/calibrate_saved.py",
+        "bytes": 11186,
+        "sha256": "7f1a10087a5dc5565a17f49e39beb2becc701ef2c15461de064296ca66dd2786"
+      },
+      {
+        "relative_path": "script/supermimic_q1_gait_goal/test_calibrate_saved.py",
+        "bytes": 2877,
+        "sha256": "b28011a6cd05e4ba7074aa032eac4626145c26d882ab811229b37840a76d0d7d"
+      },
+      {
+        "relative_path": "script/supermimic_q1_gait_goal/initialization_inputs.py",
+        "bytes": 12034,
+        "sha256": "aa40f8d85f858109e5664e924044c47189b267c946affd421d4af6318c197cc6"
+      }
+    ],
+    "three_way_size_sha256_match": true
+  },
+  "reset_input_isolation": {
+    "findings": {
+      "status": "RESET_INPUT_EQUIVALENCE_MEASURED",
+      "reset_inputs_match": true,
+      "cross_environment_policy_outputs_match": true,
+      "branches": [
+        {
+          "branch": 0,
+          "owned_and_reference_mdp_obs_match": true,
+          "owned_and_reference_mdp_goal_match": true,
+          "identical_inputs_rng_change_match": true,
+          "identical_inputs_repeat_match": true,
+          "policy_parameters_unchanged": true
+        },
+        {
+          "branch": 1,
+          "owned_and_reference_mdp_obs_match": true,
+          "owned_and_reference_mdp_goal_match": true,
+          "identical_inputs_rng_change_match": true,
+          "identical_inputs_repeat_match": true,
+          "policy_parameters_unchanged": true
+        }
+      ],
+      "new_control_transitions": 0,
+      "new_integration_substeps": 0,
+      "optimizer_updates": 0,
+      "policy_inference_calls": 8,
+      "rng_restored": true,
+      "first_differences": [
+        {
+          "label": "initial_after_network_constructors",
+          "first_state_action_difference": null,
+          "first_rng_difference": null
+        },
+        {
+          "label": "fresh_existing_networks",
+          "first_state_action_difference": null,
+          "first_rng_difference": {
+            "stage": "reset_inputs",
+            "field": "rng.torch_cpu"
+          }
+        }
+      ],
+      "differing_reset_fields": {
+        "rng.torch_cpu": {
+          "matches": false,
+          "changed_values": 2489,
+          "outside_tolerance": 2489,
+          "maximum_absolute_difference": 249,
+          "maximum_difference_index": [
+            3970
+          ],
+          "reference_at_maximum": 4,
+          "current_at_maximum": 253
+        }
+      }
+    },
+    "artifacts": [
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_RESET_INPUTS_20261029/receipt.json",
+        "bytes": 35794,
+        "sha256": "69eada0d2eb77d3073eacec66594baa8f96e25d1abf655f8e2a61feb13e2bc08"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_RESET_INPUTS_20261029/evaluation_library.json",
+        "bytes": 1878,
+        "sha256": "ee9db3cd3ab60a1969cf048ca038e7815805a24f6fdf18c6977520b996e845eb"
+      },
+      {
+        "relative_path": "logs/Q1_GAIT_GOAL01_RESET_INPUTS_20261029.log",
+        "bytes": 6891,
+        "sha256": "dbbad5dbb4b80838fdea6f8f6c38da43777eb86fbc14226f1efedd6f041fb506"
+      }
+    ],
+    "artifact_bytes": 44563,
+    "three_way_size_sha256_match": true,
+    "before": {
+      "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+      "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15 MiB, 0 %",
+      "compute_pids": "",
+      "oom_kill": 0,
+      "shared_bytes": 29395144704
+    },
+    "after": {
+      "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15 MiB, 0 %",
+      "compute_pids": "",
+      "oom_kill": 0
+    },
+    "worker_exit_code": 0
+  },
+  "interpretation": {
+    "supported": "Exact reset inputs and identical-input policy outputs match under original tolerance. Constructor RNG path and old-vs-owned MDP do not explain a reset-stage difference here.",
+    "not_established": "Nine-step dynamics, original gradient-capture interaction and H32 direction remain untested; this does not prove the original mismatch fixed."
+  },
+  "next_isolation": {
+    "status": "PREPARED_NOT_RUN",
+    "script": "script/supermimic_q1_gait_goal/warmup_replay.py",
+    "protocol": "One closed-loop9-step reference followed by a fresh independent environment replaying those exact controls. Compare model coefficients, visible state/history and computed policy output at every stage; stop the second branch at first strict-tolerance divergence.",
+    "max_environments": 16,
+    "branches_sequential": 2,
+    "max_control_transitions": 288,
+    "max_integration_substeps": 1152,
+    "max_policy_inference_calls": 18,
+    "optimizer_updates": 0,
+    "h32_gradient_or_direction_branch": false,
+    "original_atol": 0.000002,
+    "original_rtol": 0.00002,
+    "external_wall_cap_seconds": 180,
+    "grace_seconds": 10,
+    "no_automatic_retry": true,
+    "preconditions": "Freeze/publish and verify exact sources; same boot/GPU, GPU idle and unchanged OOM before execution."
+  },
+  "training": {
+    "base_seconds": 0,
+    "ppo_seconds": 0,
+    "formal_training_started": false,
+    "goal_complete": false,
+    "user_accepted_checkpoint": null
+  },
+  "controls": {
+    "agents_started": false,
+    "other_automations_modified": false,
+    "original_supervision_modified": false
+  }
+}

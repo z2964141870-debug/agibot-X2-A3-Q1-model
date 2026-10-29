@@ -2,6 +2,8 @@
 
 2026-10-29 SOLE01：[脚底几何及单变量摆脚Z候选已实现](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，7本地几何测试/6AST/CLI通过，3真实Torch检查因依赖缺失跳过；底座精确reward/H32及原生16/4096未运行，无新物理/策略推理/optimizer。Windows桥47236与18873已有并保留；25386免密和用户明确回复后的单次root交互认证均返回Permission denied，当前容器身份/GPU仍UNKNOWN，待核对认证；服务器镜像未完成。原底座/PPO两线继续，候选采纳null，原监督及其他任务不改，不激活agent或旧goal。[阶段清单](../data/manifests/supermimic_q1_sole_candidate_20261029.json)。
 
+2026-10-29 MM03：[原版G1部署](README_MORPHMIMIC_REPRO_20261029.md)已恢复原Windows/25386，核原boot/GPU/OOM0；主仓183/GMR1938源码逐blob匹配，独立Python3.11/锁149包安装完成。128原始G1 CSV全过原版转换过滤，tiny50条/363.72秒；16环境640转移、WM/policy/critic均0更新，预检正常回收/GPU释放。下一步冻结发布后唯一64环境/600轮/H32工程训练，再原版导出/MP4，尚未开训；3500秒全进程硬限/20秒清理、不扩时/重试。[连接](../data/manifests/morphmimic_connection_20261029.json)/[数据](../data/manifests/morphmimic_g1_data_20261029.json)。
+
 2026-10-29用户新要求：[MorphMimic代码及原版复现](README_MORPHMIMIC_REPRO_20261029.md)。公开aa40fe46已核8关键源码160435字节/5AST，官方浏览器三机器人Walk运行约.7-.8倍实时；独立训练/回放尚未复现，Q1不在29槽位现成支持范围。下一步先独立单G1环境/真实tiny库/零更新与时钟guard，再包含actor/critic更新的小闭环，不把默认500轮WM-only内的60轮示例当学习通过。25386仍UNKNOWN、服务器镜像待恢复；无新Q1物理/推理/训练，原两线/PPO方向及采纳null保留，监督/其他任务不改。[清单](../data/manifests/morphmimic_repro_readiness_20261029.json)。
 
 2026-10-29用户已要求继续两线推进：[脚底时序诊断与独立候选](README_SUPERMIMIC_Q1_DUALTRACK_DIAGNOSIS_20261029.md)已实现/9测试通过，5保存数据分析产物128283字节；601秒停走参考右脚抬高窗口内94.4%-100%实际帧仍贴近地面，整片p95不足以判换脚改善。底座下一项原生H32方向及足端脚底Z候选，PPO下一项只替换摆脚踝Z为脚底Z；候选尚未实现成可训配方，无新物理/推理/优化。25386本机18873拒绝连接，一次有界核查无监听/socket，远端UNKNOWN，服务器镜像待恢复，不重复探测/重启。采纳null、原监督ACTIVE每10分钟，整体目标未结算。[两手抓方向](README_SUPERMIMIC_Q1_FRAMEWORK_DIRECTION_20261029.md)保留。

@@ -2,6 +2,8 @@
 
 2026-10-29：[SOLE01脚底奖励候选与连接恢复](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)已实现独立碰撞脚底/摆脚Z候选及CPU入口，7本地几何测试/6AST/CLI通过，3Torch项待；底座H32和原生16/4096未运行。Windows桥已在并保留，25386单次交互root认证仍被拒，服务器状态UNKNOWN/镜像待。未新物理/推理/优化/训练，PPO与底座两线继续保留。[清单](../data/manifests/supermimic_q1_sole_candidate_20261029.json)。
 
+2026-10-29 MM03：[原版MorphMimic部署](README_MORPHMIMIC_REPRO_20261029.md)已恢复25386/核原身份，183主仓及1938 GMR文件逐blob匹配，独立环境锁149包/原始G1 tiny50条/16环境零更新预检通过。尚未正式训练，下一步冻结后唯一64环境/600轮小闭环与原版导出MP4；不冒称论文规模性能。[连接收据](../data/manifests/morphmimic_connection_20261029.json)/[数据清单](../data/manifests/morphmimic_g1_data_20261029.json)。
+
 2026-10-29：[MorphMimic源码与最小复现准备](README_MORPHMIMIC_REPRO_20261029.md)已核公开aa40fe46、8关键文件160435字节及5AST，官方在线G1/X2/T2 Walk实际运行；独立离线训练/Q1接入尚未完成。先原版单G1小闭环，再Q1与PPO对照；默认500轮WM预热使60轮例子不能证明actor更新。25386入口UNKNOWN，环境/数据/原生验证待恢复，无新训练。[清单](../data/manifests/morphmimic_repro_readiness_20261029.json)。
 
 2026-10-29用户要求继续两线推进：[脚底时序诊断及底座/PPO独立候选](README_SUPERMIMIC_Q1_DUALTRACK_DIAGNOSIS_20261029.md)已完成9测试和真实保存CSV分析，5产物128283字节，明确整片抬脚增高未必跟上参考时序；两条奖励候选与原生H32验证待，不宣称已训练改善。25386本机入口拒绝连接/远端UNKNOWN，服务器镜像待恢复；不重复探测/重启/新训练或agent，采纳null。原[两手抓方向](README_SUPERMIMIC_Q1_FRAMEWORK_DIRECTION_20261029.md)与ACTIVE监督保留。

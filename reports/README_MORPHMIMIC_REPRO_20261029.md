@@ -1,6 +1,38 @@
 # MorphMimic源码与最小复现准备
 
-记录日期：2026-10-29，北京时间。阶段：MM02。状态：固定源码及官方在线推理已核；独立离线训练/回放尚未复现，服务器入口阻塞。
+记录日期：2026-10-29，北京时间。阶段：MM03。状态：原版源码、独立环境、G1数据及零optimizer预检已部署通过；正式训练/导出回放尚未执行。
+
+## MM03原版部署执行与转发恢复
+
+### 当前已通过的部署与预检
+
+用户补齐容器认证后，原Windows及25386双master均通过检查，服务器于12:59北京时间核原boot `4d859008-4c83-4a6d-814d-cbb9dfe885c9`、GPU `GPU-26028785-9fb9-45af-e614-4cc53af15d08`，3090/24576MiB、驱动595.112.07，容器内存上限34292629504字节/OOM0。初始GPU15MiB无计算进程；磁盘可用约1.5TiB。没有重启桥接机、容器或旧训练。
+
+普通Git clone无进展约3分钟后终止并保留不完整目录，改为官方GitHub API固定提交归档。主仓183个blob/140372650字节、GMR固定gitlink的1938个blob/1249216405字节逐Git blob SHA-1全部匹配。主仓归档SHA256 `fe877e4cc1600c6d7cb234e457784bc66af4421d4ced8da919f3cacfc9ea67a6`；GMR归档SHA256 `efefae3f719be5f950f274d0c6920f1b309b4e3ee6144c8bb54e1847144477c0`。这是可运行源码归档，不是完整递归Git历史；真机SDK子模块未安装，本阶段只做仿真。
+
+独立环境`data/environments/morphmimic_original_20261029`按原`uv.lock`使用`uv sync --frozen --group export --no-dev`完成149包安装：Python3.11.18、Torch2.11.0+cu128、mjlab1.6.0、MuJoCo/MuJoCo-Warp3.11.0、Warp1.17.0、ONNX1.23.2、ORT1.31.0。CUDA实际张量计算通过。初次训练help/转换在import时因镜像缺Git报错，随后仅将Ubuntu Git包解压到`data/environments/morphmimic_git_tools`，显式设`GIT_PYTHON_GIT_EXECUTABLE`后help与转换通过；没有改系统包数据库、HP环境或上游算法文件。
+
+直接复用服务器旧intake保留的原始G1 CSV，不重新传23.5GB归档，不使用Q1重定向结果。原版converter取按路径排序的前128条、workers4、metadata v004，得到860.38秒，原版name/feasibility过滤128/128通过；原版seed0 tiny为50条/363.72秒，29维关节/50Hz/数值有限逐文件通过。上游生成的`1h/7h/40h`文件此时也只有0.239小时，文件名不代表实际数据量。[逐源与NPZ SHA清单](../data/manifests/morphmimic_g1_data_20261029.json)。
+
+13:24:15至13:25:44，16环境原版Trainer创建、40步实际采集640转移、checkpoint0保存通过，实际optimizer步数WM/policy/critic为0/0/0，优化器状态为空；worker正常退出0、guard回收，GPU回到15MiB/OOM0。receipt在实验根`probe_observation/progress.json`及`probe_guard.json`，原日志`logs/morphmimic_g1_probe_20261029.log`。这不证明学习或步态效果。
+
+本项目仅新增`script/morphmimic_repro/`薄封装，调用原版Trainer、计优化器实际step和同步iteration时间，初始checkpoint0单独保存，不修改原版iteration/奖励/模型计算。唯一工程训练拟64环境、WM/imag128、H32、原500轮WM-only和总600轮；外层复用既有runtime_guard及`timeout3500秒/TERM/20秒清理`，全进程时限包含初始化，保守保证实训不超过3600秒。原始训练器其余默认保持；这不是论文4096环境/40000轮或三机器人复现。正式训练须在本阶段冻结发布并核三端文件后启动一次，不故障重试或自动扩时。
+
+### 连接恢复过程与执行顺序
+
+用户明确“先原版部署复现，服务器重新开个转发”，随后补齐Windows登录信息。本次授权覆盖此前不重建桥的限制，优先执行原版单G1复现，保留SuperMimic底座/PPO两线方向。独立训练遵守单轮最多3600实训秒，不沿用已过期夜间预算。
+
+截至2026-10-29 12:57北京时间，原桥`yu@100.65.183.91`已建立`127.0.0.1:18873 -> 59.77.15.15:25386`，Windows控制master检查通过。第一次交互在认证期间Broken pipe；第二次显式password认证正常建立连接。随后25386 root的BatchMode认证返回Permission denied，说明转发已到达容器SSH，但尚未登录。已请求用户完成容器认证，密码不写命令参数、文件或Git。没有因断线操作容器或旧训练。[连接收据](../data/manifests/morphmimic_connection_20261029.json)。
+
+后续顺序：
+
+1. 完成25386登录，核实时boot/GPU/驱动、可用内存、磁盘和当前计算任务；旧boot/GPU仅用于比对。
+2. 在`/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46`取得完整固定源码及所需子模块，环境单独放`data/environments/`，不更新既有HP环境。上游有`uv.lock`，优先按锁文件安装训练及export依赖；本次已核`.gitmodules`均为公开HTTPS，GMR固定gitlink为`25f56db79ac411258b377b6d4ccba0c8ff3372ac`。这些安装尚未执行。
+3. 优先查看本项目已有G1原包/CSV/metadata并选择原版G1小子集，使用上游converter；不重新传输整包，不用Q1 NPZ替代。数据读取、50Hz时轴和G1维度须实际检查。
+4. 原生零optimizer检查通过后，独立限时运行包含WM和actor/critic更新的小闭环，保留上游算法；64环境/600轮仅为工程配置候选，与论文4096环境/40000轮区分。
+5. 用上游exporter核PyTorch/ONNX动作一致性，导出G1仿真资产并用上游`deploy.run`生成原速MP4，取回Mac核大小/SHA；另外交付训练曲线。工程闭环和论文性能分别报告。
+
+上面的执行顺序中，连接、运行依赖、G1数据和零optimizer原生仿真现已完成；独立训练、ONNX和MP4仍待。下文MM02快照范围与连接阻塞仅为历史，不覆盖本段新现场。
 
 ## 用户要求与判断
 
@@ -79,7 +111,7 @@ https://github.com/lzyang2000/morphmimic/blob/aa40fe46a7fa995ba7a7354ad065a2c8ad
 https://github.com/lzyang2000/morphmimic/blob/aa40fe46a7fa995ba7a7354ad065a2c8ad64a302/src/morphmimic/train/trainer.py
 ```
 
-## 阻塞、同步与恢复
+## MM02历史连接阻塞
 
 本轮此前唯一25386入口返回Connection refused，一次有界本地核查无18873监听且控制socket缺失，远端UNKNOWN；没有因为本次问题重复连接、改旧入口、读取认证或重启桥。当前无法在服务器取得完整环境、G1数据和实际GPU验证，离线训练复现仍待。
 

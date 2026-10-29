@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-30 PPO首301.135秒门两走/抬手各3重复完整/验证0/0/0，但脚底Z比1.005/.995、滑移.879/1.013，两走未各自过目标；起走两次相对腕退17%-23%不宜推荐，未超原严重门，继续唯一600门。00:24:11原218003/218034、577.712秒/109轮/0新WM，不热改cccefe08/扩时重试；底座V02一次授权未用、86f03bb及7记录341028B三端SHA核实，待PPO完整交付/GPU释放。goal ACTIVE/采纳null/监督缓存维护等不改/无agent，入口GAIT_GOAL及ppo_gate01_20261030。
+
 - 2026-10-30用户明确“允许修复后仅一次底座V02”，唯一新根Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029尚未启动/授权未用；等当前PPO全pipeline保存交付审计/GPU释放后串行，原1100软1200硬/两线合计2400秒不增，不恢复失败根/重做base16/自动下次重试，不再询问此授权。PPO00:17:04原218003/218034、290.268秒/56轮/actor920/critic1120/WM0/首门待，cdd0af7启动记录独立远端/6文件332795B三端SHA通过。goal ACTIVE/采纳null/原监督缓存维护及其他任务不改/无agent；入口GAIT_GOAL及base_v02_authorization_20261030，旧待决定为历史。
 
 - 2026-10-30 00:09:11唯一PPO首次pipeline已启动，根Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029；controller218003/start20379605、worker218034/start20380811、原boot/GPU，冻结cccefe08e6d9d5950b874cc6798f3e168cc47a6b/1579源逐SHA未变，importsreap0。00:11:21 initial repeat1/frame450/实训0/optimizer0、GPU2821MiB/内存6.73GB/OOM0，非步态收益；只监督原300/600/1100门、1100软1200硬秒/1150外停+10回收和完整保存交付，不重启/扩时/热改。底座V02一次新决定仍待/失败根保留/base16不重做，采纳null/goal ACTIVE/原监督缓存维护和其他任务不改/无agent。入口GAIT_GOAL及ppo_launch_20261030；旧未启动仅历史。

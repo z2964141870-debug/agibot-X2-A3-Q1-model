@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-30 PPO首301.135292实训秒门三固定片三重复完整/验证0/0/0；停走滑移比.879、起走1.013，脚底Z比1.005/.995，固定目标未过。起走两次相对腕比1.233/1.172，10%推荐保护未过但未超原1.25严重线，继续原600门。00:24:11原218003/218034、577.712秒/109轮/actor1980/critic2180/WM0，不热改冻结cccefe08/扩时或重试。底座V02仅一次授权尚未用，86f03bb授权记录独立远端/7文件341028B三端SHA已核；等待当前PPO完整交付/GPU释放再启动。goal ACTIVE/采纳null/监督缓存维护其他任务不改。[首门原值](../data/manifests/supermimic_q1_gait_goal_ppo_gate01_20261030.json)。
+
 2026-10-30用户明确“允许修复后仅一次底座V02”，新根Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029尚未启动/授权未用；待当前PPO完成保存交付审计/GPU释放再串行，不再询问本次授权。原1100软1200硬/合计2400秒及门不增、不恢复失败根/重做base16/自动后续重试。PPO00:17:04实训290.268418秒/56轮、actor920/critic1120/WM0，首300门待，原218003/218034不变；cdd0af7启动记录独立远端/6文件332795B三端SHA已核。goal ACTIVE/采纳null，原监督缓存维护与其他任务不改。[授权与恢复条件](../data/manifests/supermimic_q1_gait_goal_base_v02_authorization_20261030.json)。下方待底座新决定为历史。
 
 2026-10-30 00:09:11 GAIT_GOAL01独立PPO首次pipeline已启动，根Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029；controller218003/start20379605、worker218034/start20380811、原boot/GPU，冻结cccefe08e6d9d5950b874cc6798f3e168cc47a6b/1579来源逐SHA未变。imports正常reap0/原内存准入通过；00:11:21 initial repeat1/frame450/实训0/optimizer0，GPU2821MiB/容器6.73GB/OOM0，尚无收益。只监督原300/600/1100门、1100软1200硬/1150外停+10回收和保存媒体审计，不重复启动/热改/扩时。底座导入失败根保留、V02一次新决定仍待/base16不重做；目标ACTIVE/采纳null，原监督/缓存维护及其他任务不改，无agent。[启动与精确命令](../data/manifests/supermimic_q1_gait_goal_ppo_launch_20261030.json)。下方PPO未启动/预算未用为历史。

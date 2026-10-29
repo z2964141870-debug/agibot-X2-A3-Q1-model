@@ -51,7 +51,7 @@
 
 PPO服务器原pipeline因缺ffprobe为FAILED并完整保留；已有视频通过Mac12项和独立CPU38项检查，另建postdelivery COMPLETED。没有安装ffprobe、重渲染、重启或恢复训练。PPO1579来源未变，原进程均退出。
 
-两线合计104小工件59240072字节已逐项核权威Git工作树、Mac主根与25386的大小/SHA；含4950逐片、180分组、45固定行，两个试验的初始值各自保留。权重与大NPZ只留服务器SERVER_LOCAL_ONLY。报告和代码发布须以独立远端与后续publication收据为准。
+两线合计104小工件59240072字节已逐项核权威Git工作树、Mac主根与25386的大小/SHA；含4950逐片、180分组、45固定行，两个试验的初始值各自保留。权重与大NPZ只留服务器SERVER_LOCAL_ONLY。结果提交`417ba19890ea6489d7fd04a8a6f420b9303db69b`已推送Q1并独立核40位远端，7份记录380597字节三端大小/SHA一致，见[发布收据](../data/manifests/supermimic_q1_gait_goal_results_publication_20261030.json)。该收据核验上述结果提交的快照，后续收据和链接更新不改变两线冻结训练来源。
 
 ## 结论与边界
 

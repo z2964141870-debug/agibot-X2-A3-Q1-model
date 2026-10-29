@@ -1,0 +1,454 @@
+{
+  "stage": "GAIT_GOAL01_DEPENDENT_PREFLIGHTS",
+  "status": "ALL_REQUIRED_NEW_PREFLIGHTS_COMPLETED_ZERO_OPTIMIZER",
+  "source_commit": "ad5ac0fc5f3f39674911842397a5abfe32832ae4",
+  "preflights": [
+    {
+      "root": "Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029",
+      "controller": {
+        "status": "COMPLETED",
+        "mode": "preflight4096",
+        "line": "base",
+        "process": {
+          "pid": 214641,
+          "start_ticks": 20066012,
+          "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+        },
+        "started_utc": "2026-10-29T15:16:55.219788+00:00",
+        "code_commit": "ad5ac0fc5f3f39674911842397a5abfe32832ae4",
+        "automatic_retry": false,
+        "completed_utc": "2026-10-29T15:17:44.852821+00:00",
+        "frozen_sources_unchanged": 1564,
+        "receipt": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029/run/receipt.json",
+          "bytes": 85845,
+          "sha256": "7221b64b6503c05a3815da4bae2599ca9598b8f236ed03c1aca92bab3a11e646"
+        },
+        "training_seconds": 0,
+        "user_accepted_checkpoint": null,
+        "ended_utc": "2026-10-29T15:17:44.853020+00:00"
+      },
+      "worker": {
+        "status": "GOAL_BASE_NATIVE_ZERO_OPTIMIZER_PREFLIGHT_PASSED",
+        "line": "base",
+        "envs": 4096,
+        "optimizer_steps": 0,
+        "started_utc": "2026-10-29T15:17:00.781207+00:00",
+        "updated_utc": "2026-10-29T15:17:18.990538+00:00",
+        "native_collection_transitions": 69632,
+        "blocked_optimizer_calls": {
+          "wm": 1,
+          "pi": 1,
+          "v": 20
+        },
+        "completed_utc": "2026-10-29T15:17:41.218276+00:00",
+        "parameters_unchanged": true,
+        "normalizers_restored": true,
+        "wm_batch": 1024,
+        "actor_batch": 1024,
+        "horizon": 32,
+        "compile": false,
+        "checkpoint": {
+          "path": "data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt",
+          "bytes": 208866293,
+          "sha256": "249ba56ac6efe806cd2594b0eed84ae4ae2923f0863dd1eeb64d8ce6a877e07e"
+        },
+        "h32_replay_start_exact_and_unmutated": true,
+        "finite_nonzero_gradient_norms": {
+          "wm": 0.9999999797510097,
+          "pi": 0.9886990130898426,
+          "critic": 0.9999997376434859
+        },
+        "cross_environment_physical_direction_established": false,
+        "independent_evaluation_preserved_live_state_rng": true,
+        "independent_evaluation_transitions": 960,
+        "native_reward_maximum": 0.11
+      },
+      "guard": {
+        "status": "WORKER_COMPLETED",
+        "worker_pid": 214646,
+        "cleanup": {
+          "worker_started": true,
+          "worker_pid": 214646,
+          "worker_group": 214646,
+          "worker_reaped": true,
+          "worker_return_code": 0
+        },
+        "error": null
+      }
+    },
+    {
+      "root": "Q1_GAIT_GOAL01_PPO_PREFLIGHT16_20261029",
+      "controller": {
+        "status": "COMPLETED",
+        "mode": "preflight16",
+        "line": "ppo",
+        "process": {
+          "pid": 215199,
+          "start_ticks": 20095142,
+          "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+        },
+        "started_utc": "2026-10-29T15:21:46.517733+00:00",
+        "code_commit": "ad5ac0fc5f3f39674911842397a5abfe32832ae4",
+        "automatic_retry": false,
+        "completed_utc": "2026-10-29T15:22:31.788716+00:00",
+        "frozen_sources_unchanged": 1564,
+        "receipt": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT16_20261029/run/receipt.json",
+          "bytes": 82445,
+          "sha256": "62a710965b6953a1422f5b8204add9355b617574503ef97bee8211e73c4a29b0"
+        },
+        "training_seconds": 0,
+        "user_accepted_checkpoint": null,
+        "ended_utc": "2026-10-29T15:22:31.788937+00:00"
+      },
+      "worker": {
+        "status": "ZERO_OPTIMIZER_PHYSICAL_PREFLIGHT_PASSED",
+        "process": {
+          "pid": 215211,
+          "start_ticks": 20095329,
+          "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+        },
+        "started_utc": "2026-10-29T15:21:52.852058+00:00",
+        "num_envs": 16,
+        "optimizer_steps": 0,
+        "completed_utc": "2026-10-29T15:22:28.440123+00:00",
+        "source_base": {
+          "path": "data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt",
+          "bytes": 208866293,
+          "sha256": "249ba56ac6efe806cd2594b0eed84ae4ae2923f0863dd1eeb64d8ce6a877e07e"
+        },
+        "input_features": 1420,
+        "latent_actions": 14,
+        "maximum_logprob_difference": 0,
+        "full_minibatch": 96,
+        "physical_transitions": 432,
+        "extra_independent_evaluation_steps": 960,
+        "reward_decomposition_verified": true,
+        "artificial_terminal_bootstrap_verified": true,
+        "natural_terminal_no_bootstrap": true,
+        "native_contacts_and_pre_reset_states": true,
+        "independent_eval_preserved_live_state_rng": true,
+        "only_new_head_and_critic_in_optimizer": true,
+        "teacher_and_normalizers_unchanged": true,
+        "actor_parameters_unchanged": true,
+        "upper_reference_alpha": 0.5,
+        "desired_kl": 0.01,
+        "adaptive_learning_rate_bounds": [
+          0.00001,
+          0.00005
+        ]
+      },
+      "guard": {
+        "status": "WORKER_COMPLETED",
+        "worker_pid": 215211,
+        "cleanup": {
+          "worker_started": true,
+          "worker_pid": 215211,
+          "worker_group": 215211,
+          "worker_reaped": true,
+          "worker_return_code": 0
+        },
+        "error": null
+      }
+    },
+    {
+      "root": "Q1_GAIT_GOAL01_PPO_PREFLIGHT4096_20261029",
+      "controller": {
+        "status": "COMPLETED",
+        "mode": "preflight4096",
+        "line": "ppo",
+        "process": {
+          "pid": 215716,
+          "start_ticks": 20118740,
+          "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+        },
+        "started_utc": "2026-10-29T15:25:42.505870+00:00",
+        "code_commit": "ad5ac0fc5f3f39674911842397a5abfe32832ae4",
+        "automatic_retry": false,
+        "completed_utc": "2026-10-29T15:26:31.122538+00:00",
+        "frozen_sources_unchanged": 1564,
+        "receipt": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT4096_20261029/run/receipt.json",
+          "bytes": 82455,
+          "sha256": "465e50a6728d418735b3384f5b720393516fdf8842d5c2b4a309802d84c5e9af"
+        },
+        "training_seconds": 0,
+        "user_accepted_checkpoint": null,
+        "ended_utc": "2026-10-29T15:26:31.122720+00:00"
+      },
+      "worker": {
+        "status": "ZERO_OPTIMIZER_PHYSICAL_PREFLIGHT_PASSED",
+        "process": {
+          "pid": 215726,
+          "start_ticks": 20118924,
+          "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+        },
+        "started_utc": "2026-10-29T15:25:49.070461+00:00",
+        "num_envs": 4096,
+        "optimizer_steps": 0,
+        "completed_utc": "2026-10-29T15:26:27.601515+00:00",
+        "source_base": {
+          "path": "data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt",
+          "bytes": 208866293,
+          "sha256": "249ba56ac6efe806cd2594b0eed84ae4ae2923f0863dd1eeb64d8ce6a877e07e"
+        },
+        "input_features": 1420,
+        "latent_actions": 14,
+        "maximum_logprob_difference": 0,
+        "full_minibatch": 24576,
+        "physical_transitions": 110592,
+        "extra_independent_evaluation_steps": 960,
+        "reward_decomposition_verified": true,
+        "artificial_terminal_bootstrap_verified": true,
+        "natural_terminal_no_bootstrap": true,
+        "native_contacts_and_pre_reset_states": true,
+        "independent_eval_preserved_live_state_rng": true,
+        "only_new_head_and_critic_in_optimizer": true,
+        "teacher_and_normalizers_unchanged": true,
+        "actor_parameters_unchanged": true,
+        "upper_reference_alpha": 0.5,
+        "desired_kl": 0.01,
+        "adaptive_learning_rate_bounds": [
+          0.00001,
+          0.00005
+        ]
+      },
+      "guard": {
+        "status": "WORKER_COMPLETED",
+        "worker_pid": 215726,
+        "cleanup": {
+          "worker_started": true,
+          "worker_pid": 215726,
+          "worker_group": 215726,
+          "worker_reaped": true,
+          "worker_return_code": 0
+        },
+        "error": null
+      }
+    }
+  ],
+  "ended_processes": [
+    {
+      "pid": 214641,
+      "exists": false
+    },
+    {
+      "pid": 214646,
+      "exists": false
+    },
+    {
+      "pid": 215199,
+      "exists": false
+    },
+    {
+      "pid": 215211,
+      "exists": false
+    },
+    {
+      "pid": 215716,
+      "exists": false
+    },
+    {
+      "pid": 215726,
+      "exists": false
+    }
+  ],
+  "final_resources": {
+    "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "memory_bytes": 3169103872,
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15 MiB, 0 %",
+    "compute": "",
+    "oom": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n"
+  },
+  "artifact_inventory": [
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029/launch.json",
+      "bytes": 1254,
+      "sha256": "558d4f381f605419e9b5c70c86de5da32ac7d1b45d7c63d27802e0a7f4206dcc"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029/memory_admission.json",
+      "bytes": 365,
+      "sha256": "1542102cf8dd4a78b11e518cd77adba098f2d4c45f71750c808476fd25487ecb"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029/plan.json",
+      "bytes": 386069,
+      "sha256": "e69afee3e93793e03785c571f6164710d0f84ad3a5d8f7189d87e49cb418daa5"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029/run/args.json",
+      "bytes": 731,
+      "sha256": "1b20fd5c92978e8aada0ce24c3c8a14bdcb7af440def3ec54df427cb2293f919"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029/run/evaluation_library.json",
+      "bytes": 1878,
+      "sha256": "ee9db3cd3ab60a1969cf048ca038e7815805a24f6fdf18c6977520b996e845eb"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029/run/receipt.json",
+      "bytes": 85845,
+      "sha256": "7221b64b6503c05a3815da4bae2599ca9598b8f236ed03c1aca92bab3a11e646"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029/run/status.json",
+      "bytes": 85845,
+      "sha256": "7221b64b6503c05a3815da4bae2599ca9598b8f236ed03c1aca92bab3a11e646"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029/status.json",
+      "bytes": 781,
+      "sha256": "ae15f0e1359536e3ba984754c82c5af4e694664c98be3df0e65340bdea17d939"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029/train_guard.json",
+      "bytes": 2373,
+      "sha256": "3a02ab68678ba078fcdbffa623183d6e860b5315a44c5afbc197f833778eef68"
+    },
+    {
+      "relative_path": "logs/Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029.log",
+      "bytes": 6861,
+      "sha256": "67936bdf2efe2ce3d74d47d2fe98119b5fd32b691cb039042d17abc815660578"
+    },
+    {
+      "relative_path": "logs/Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029_controller.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT16_20261029/launch.json",
+      "bytes": 1248,
+      "sha256": "8c77b3e81ec6a7753e9a581ee5f880d8ec23229246498a5390a40b20a72b622d"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT16_20261029/memory_admission.json",
+      "bytes": 365,
+      "sha256": "ad1595b23d2ac58a3e11916cfff76531208fc5e529462df2359dd1064d7393cd"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT16_20261029/plan.json",
+      "bytes": 386060,
+      "sha256": "c41aaf4945e796d9bd57c3b68a6ec4139afedb6c4ac2dc3305228f64e7dcb29f"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT16_20261029/run/evaluation_library.json",
+      "bytes": 1878,
+      "sha256": "ee9db3cd3ab60a1969cf048ca038e7815805a24f6fdf18c6977520b996e845eb"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT16_20261029/run/receipt.json",
+      "bytes": 82445,
+      "sha256": "62a710965b6953a1422f5b8204add9355b617574503ef97bee8211e73c4a29b0"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT16_20261029/run/status.json",
+      "bytes": 82445,
+      "sha256": "62a710965b6953a1422f5b8204add9355b617574503ef97bee8211e73c4a29b0"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT16_20261029/status.json",
+      "bytes": 775,
+      "sha256": "08c1bbca7bc82d65c07466e4164f3e038d02472a927385f577f1473f4eaaaf92"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT16_20261029/train_guard.json",
+      "bytes": 2361,
+      "sha256": "844fe6c7f4090345e4a2feec1add02a31fc48a887c3469f9dcfb76bb89d33c14"
+    },
+    {
+      "relative_path": "logs/Q1_GAIT_GOAL01_PPO_PREFLIGHT16_20261029.log",
+      "bytes": 77707,
+      "sha256": "b6ebfdf36ab9512b551a607d1408d9dcea4e080edd9fddeb87848d3467e70e0d"
+    },
+    {
+      "relative_path": "logs/Q1_GAIT_GOAL01_PPO_PREFLIGHT16_20261029_controller.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT4096_20261029/launch.json",
+      "bytes": 1237,
+      "sha256": "62b29a38923a3ba5f2a090deb2b7e744adef42e8e2d8dd72e022df4acef3718e"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT4096_20261029/memory_admission.json",
+      "bytes": 365,
+      "sha256": "fc3ce10d7e3c0e483c2214675c6e8b2b7e5d6545138f240c759f3c5d46a5dba2"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT4096_20261029/plan.json",
+      "bytes": 386066,
+      "sha256": "9725f2a41b994df7b2266fb074745d102e3203a7b8142f1a964b339813672cbf"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT4096_20261029/run/evaluation_library.json",
+      "bytes": 1878,
+      "sha256": "ee9db3cd3ab60a1969cf048ca038e7815805a24f6fdf18c6977520b996e845eb"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT4096_20261029/run/receipt.json",
+      "bytes": 82455,
+      "sha256": "465e50a6728d418735b3384f5b720393516fdf8842d5c2b4a309802d84c5e9af"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT4096_20261029/run/status.json",
+      "bytes": 82455,
+      "sha256": "465e50a6728d418735b3384f5b720393516fdf8842d5c2b4a309802d84c5e9af"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT4096_20261029/status.json",
+      "bytes": 779,
+      "sha256": "2d27d8e0bfdab73ede5b2a7a47cbd71c7a60cb3fc28746901a82c59f83272110"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT4096_20261029/train_guard.json",
+      "bytes": 2369,
+      "sha256": "4ca507b83a160fd6cce81d436209459a084ef39e642f34043b53f5c95fd305b9"
+    },
+    {
+      "relative_path": "logs/Q1_GAIT_GOAL01_PPO_PREFLIGHT4096_20261029.log",
+      "bytes": 77718,
+      "sha256": "dc845290273cd1cd791e4830905d5deb8868516d245f6797c451dbf8a4d07777"
+    },
+    {
+      "relative_path": "logs/Q1_GAIT_GOAL01_PPO_PREFLIGHT4096_20261029_controller.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "artifact_files": 31,
+  "artifact_bytes": 1842608,
+  "successful_repaired_base16": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029/status.json",
+  "repaired_base16_repeated": false,
+  "original_1564_source_files_unchanged": true,
+  "base_actual_training_seconds": 0,
+  "ppo_actual_training_seconds": 0,
+  "cross_environment_h32_physical_direction_established": false,
+  "new_training_pipeline": "script/supermimic_q1_gait_goal_review/pipeline.py",
+  "training_roots": {
+    "base": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_20261029",
+    "ppo": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029"
+  },
+  "budget": {
+    "per_line_soft_seconds": 1100,
+    "per_line_hard_seconds": 1200,
+    "external_stop_seconds": 1150,
+    "grace_seconds": 10,
+    "physical_gates_seconds": [
+      300,
+      600,
+      1100
+    ],
+    "maximum_total_actual_seconds": 2400,
+    "automatic_retry": false,
+    "automatic_extension": false,
+    "gpu_parallelism": 1
+  },
+  "formal_training_status": "NOT_STARTED_PENDING_THIS_STAGE_PUBLICATION_AND_THREE_WAY_CHECK",
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "agents_started": false,
+  "other_automations_modified": false
+}

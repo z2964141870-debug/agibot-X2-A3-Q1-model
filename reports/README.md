@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29：[GAIT_GOAL01全部必要预检已通过](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。base4096/PPO16/4096各1564来源不变/0optimizer、正常回收/六进程退出/GPU释放/OOM0；真实24576概率差0，非步态收益。31小工件1842608B留存；正式训练0/0，先发布核验再顺序两线短训。[原值与训练根](../data/manifests/supermimic_q1_gait_goal_preflight_results_20261029.json)。
+
 2026-10-29：[GAIT_GOAL01失败归档与完整交付准备](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。保留原base16冻结源码，独立训练审阅入口修正完整参考方向/缺失证据/零基线严重门及安全推荐；8新反例+20原测试、320→160步保存轨迹CPU回归通过。已接全330表/六格/固定原速MP4及保存审计后才pipeline完成；尚未新训练，下一步先发布并顺序完成剩余零更新预检。[准备清单](../data/manifests/supermimic_q1_gait_goal_review_preparation_20261029.json)。
 
 2026-10-29：[文件缓存已清及一次base16通过](README_Q1_FILE_CACHE_MAINTENANCE_20261029.md)。cache25.99→0.66GiB、实降25.33GiB/0删文件；独立q1维护ACTIVE每30分钟/8GiB阈值批次/训练中跳过，原监督不变。唯一追加base16 H32零更新预检22:04正常完成/reap0/1564来源不变，正式训练0/goal ACTIVE。[收据](../data/manifests/supermimic_q1_cache_maintenance_base16_20261029.json)。

@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-29 GAIT_GOAL01剩余零更新预检全部完成：base4096于23:17:44、PPO16于23:22:31、PPO4096于23:26:31正常COMPLETED/guardreap0，各1564来源未变，六原进程均不存在/GPU15MiB无计算/OOM0。base H32同replay/有限非零梯度、PPO24576小批logprob差0/奖励及终止/状态RNG/冻结教师保护通过，0optimizer；唯一追加base16未重做。31小工件1842608B已取回，发布及三端SHA见后续收据。正式训练仍0/0，下一步仅发布核验后顺序新base/PPO各1100软1200硬秒、300/600/1100物理门，原配方/上肢.5/300-30不改、不组合，不自动扩时或故障重试。两个训练根已在preflight_results清单登记；目标ACTIVE/采纳null，原监督/缓存维护和其他任务不改、无agent。
+
 - 2026-10-29 GAIT_GOAL01训练审阅入口已离线修正：独立supermimic_q1_gait_goal_review只替换评测归档/停止门/推荐回调，原base16冻结的gait_goal及sole源码对b6c28069逐字不变，不重做已用的一次追加base16。完整参考方向不随跌倒截短，缺失脚Z/承重保留null并停、零基线退步不能漏过、10%保护先于推荐；8新反例/原20测试及四CLI通过。保存RF16旧320步截160步CPU集成正常归档停止，0推理积分优化；不是新三重复或步态收益。已准备全330表/真实回合六格/固定原速54秒媒体及先审计再pipeline完成，尚待实际新训练交付。下一步发布/三端SHA后顺序base4096、PPO16/4096零更新；正式双线实训仍0/采纳null/goal ACTIVE/不动监督或agent。入口GAIT_GOAL及review_preparation清单，发布以独立远端与旁收据为准。
 
 - 2026-10-29文件缓存清理完成：375504文件范围扫描、67947文件FADV，125.65秒，cache25.99→0.66GiB/实降25.33GiB，工具退出后容器1.43GiB/RSS18MiB/shmem0/OOM0，未删文件/读大内容/全局drop_caches/改守卫。已原生创建本线程q1缓存维护ACTIVE每30分钟，cache>8GiB空闲时每轮最多8GiB advice/120秒/1800秒冷却，原监督及其他任务不改。清理后用户一次修复base16授权已用：22:03:11至22:04:10正常完成，controller211075/worker211081退出/reap0/GPU15MiB无计算，1564来源未变，真实H32梯度/同replay输入/参数/评测状态RNG通过、0optimizer，272采集/960独立环境转移，非步态收益。双线实训0、4096/PPO待，先补离线提前跌倒归档/交付工具；goal ACTIVE/采纳null/无agent。入口FILE_CACHE_MAINTENANCE及cache_maintenance_base16清单，下方待清理/授权未用为历史。

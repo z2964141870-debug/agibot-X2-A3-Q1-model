@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 23:26后 GAIT_GOAL01：剩余base4096/PPO16/PPO4096零更新预检均COMPLETED、guardreap0/各1564来源不变，六个原controller/worker均不存在，GPU15MiB无计算、容器3169103872B/OOM0。底座真实H32同replay/梯度保护和PPO24576小批logprob差0/奖励/终止/独立评测/教师保护通过；不称步态改善，不重做已用的base16。31小证据1842608B已取回权威工作树，发布/三端镜像随后核验。[实测与精确训练根](../data/manifests/supermimic_q1_gait_goal_preflight_results_20261029.json)。双线正式训练0/0，发布核验后仅顺序新base/PPO各1100软1200硬秒，300/600/1100门，独立全330表/六格/原速MP4/保存审计，任一严重退步按门停止；无组合/扩时/故障重试/agent，goal ACTIVE/采纳null/其他任务保持。
+
 2026-10-29 GAIT_GOAL01：[训练失败归档与完整交付入口已准备](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。独立review目录保留base16全部已冻结代码原样，仍严格核旧计划SHA，不重做唯一追加预检。修正提前跌倒的参考方向、缺失观测/零基线严重门和10%保护优先推荐；8新反例+20原测试/四CLI、保存320→160步CPU回归通过，0新推理积分优化。已接全330逐片/分组/固定表、真实回合六格、固定原速54秒及保存审计，实际新训练/媒体交付尚未运行。原boot/GPU空闲/总内存约2.86GiB；先发布/三端核验，再顺序base4096、PPO16/4096零更新，双线实训仍0/采纳null/goal ACTIVE，监督及其他任务保持。[准备清单](../data/manifests/supermimic_q1_gait_goal_review_preparation_20261029.json)。
 
 2026-10-29：[本项目缓存已清及base16一次修复预检通过](README_Q1_FILE_CACHE_MAINTENANCE_20261029.md)。125.65秒完成375504文件范围扫描，cache25.99→0.66GiB/降25.33GiB，工具退出后总1.43GiB/OOM0，未删文件或全局清缓存。独立本线程q1维护ACTIVE每30分钟/cache>8GiB最多8GiB advice/120秒，忙碌跳过，原监督/其他任务不改。22:03:11–22:04:10 controller211075/worker211081正常完成/reap0/退出/GPU15MiB无计算；1564来源不变，真实H32同replay梯度/参数/状态RNG保护通过，0optimizer/双线训练0。唯一追加base16授权已用，4096/PPO尚未测；先完善离线提前跌倒指标与交付工具，再推进依赖阶段，goal ACTIVE/采纳null/无agent。[实测清单](../data/manifests/supermimic_q1_cache_maintenance_base16_20261029.json)。下方待清理/未使用授权均为历史。

@@ -1,6 +1,6 @@
 # Q1普通步态双线改进目标
 
-记录日期：2026-10-29，更新至2026-10-30北京时间。阶段：GAIT_GOAL01。状态：目标ACTIVE；底座V02已01:26:27在301.107485实训秒/123轮按physical_regression正常停，保存视频/Mac与保存审计待。PPO600.070907秒同样按门停，已交付/CPU38与Mac媒体12通过；原缺ffprobe的FAILED保留，独立postdelivery COMPLETED。两线合计901.178392实训秒，目标未达/候选采纳null。
+记录日期：2026-10-29，更新至2026-10-30北京时间。阶段：GAIT_GOAL01。状态：目标ACTIVE；两线已保存交付，普通步态目标未达。底座301.107485秒按physical_regression停，01:46:23经Mac12/CPU34检查登记pipeline COMPLETED；PPO600.070907秒同样按门停，Mac12/CPU38通过，原缺ffprobe的FAILED保留/独立postdelivery COMPLETED。合计901.178392实训秒/104小工件59240072B三端SHA/四本地原速MP4，候选采纳null。[简明结果与视频](README_Q1_GAIT_GOAL01_RESULTS_20261030.md)。
 
 ## 目标与授权
 
@@ -244,3 +244,13 @@ Mac现有ffprobe/ffmpeg完成初末各1350帧全解码，12/12媒体检查通过
 两固定走/抬手仍均3/3完整，训练失败10/8/9→4/4/6，验证均0/0/0；全库上肢均值约0.311→0.229rad（训练）、0.297→0.214rad（验证）。这说明本次底座短训确有局部可测收益，同时姿态/抬手代价使候选不可推荐；未做同等训练量的无新奖励对照，不能把局部收益单独归因相位奖励，也不证明后续多训可消除代价。数值推荐initial，用户采纳null。底座和PPO均独立比较各自初始，不把二者组合成已验证方案。
 
 启动记录`b7e8e65db7092340d623660e071b4ab8cb697914`已独立核远端，6记录348982字节三端SHA；本次13训练终态/三重复小工件2366966字节三端大小SHA，模型/NPZ仅服务器。controller224552正按原保存轨迹生成初末视频，1980逐片/72分组/18固定行和六格已生成，Mac媒体/目视/独立保存审计待，尚不能称全pipeline完成。[首门与训练终态原值](../data/manifests/supermimic_q1_gait_goal_base_v02_training_results_20261030.json)。goal ACTIVE，后续只完成原交付，不追加物理或训练。
+
+## 双线交付完成，步态目标未达
+
+底座服务器01:37:36正常结束原保存交付，controller224552/训练224581/交付226434均退出，delivery guard正常reap0。Mac现有工具完成初末两片全解码12/12检查，六张联系图与训练六格已目视；固定两走和抬手不换片、舞蹈失败hold保留，末版抬手峰值不足和走路姿态差异可见，仍不能证明自然摆脚。CPU保存审计34/34通过、1583冻结来源未变，01:46:23才把AWAITING_MAC_MEDIA_AUDIT登记为pipeline COMPLETED。GPU15MiB/0%无计算、OOM0，不重训/重渲染或重做预检。
+
+底座51小工件28741918字节经权威工作树/Mac主根/25386逐大小SHA核验；连同PPO53工件30498154字节，共104工件59240072字节、四54秒原速视频/12联系图/两训练六格、4950逐片/180分组/45固定行。权重与大NPZ只留服务器。PPO仍保留原缺ffprobe的FAILED、独立postdelivery完成，不能把其旧controller记录改称正常pipeline完成。
+
+底座训练终态提交`d6ebb90ad7faad87139ee8dc8c7f4df7630a1412`独立核远端，6记录373020字节三端SHA；最终结果发布见后续publication收据。两次独立训练均physical_regression正常停、合计901.178392秒，局部上肢/起走滑移收益和姿态/抬手代价一起保留。目标继续ACTIVE、用户采纳null；新训练/候选采纳等待用户审阅具体数据与本地视频后的明确决定，不补预算/恢复/自动重试/扩时或启动agent。
+
+新的直接审阅入口为[双线结果与本地MP4](README_Q1_GAIT_GOAL01_RESULTS_20261030.md)，[完整清单与保存审计](../data/manifests/supermimic_q1_gait_goal_results_20261030.json)。

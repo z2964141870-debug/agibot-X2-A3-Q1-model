@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 SOLE01：[连接恢复与真实CPU脚底契约](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)已通过，原HP环境10测试/0跳过、51原Q1姿态脚底对MuJoCo最大差约0.14微米，23小产物239048字节Mac/25386大小SHA一致。0新积分/策略推理/optimizer，继续底座候选及原生H32，未新训练。[实测清单](../data/manifests/supermimic_q1_sole_cpu_validation_20261029.json)覆盖早期认证UNKNOWN的当前状态。
+
 2026-10-29：[SOLE01脚底奖励候选与连接恢复](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)已实现独立碰撞脚底/摆脚Z候选及CPU入口，7本地几何测试/6AST/CLI通过，3Torch项待；底座H32和原生16/4096未运行。Windows桥已在并保留，25386单次交互root认证仍被拒，服务器状态UNKNOWN/镜像待。未新物理/推理/优化/训练，PPO与底座两线继续保留。[清单](../data/manifests/supermimic_q1_sole_candidate_20261029.json)。
 
 2026-10-29 MM03：[原版MorphMimic部署](README_MORPHMIMIC_REPRO_20261029.md)已恢复25386/核原身份，183主仓及1938 GMR文件逐blob匹配，独立环境锁149包/原始G1 tiny50条/16环境零更新预检通过。尚未正式训练，下一步冻结后唯一64环境/600轮小闭环与原版导出MP4；不冒称论文规模性能。[连接收据](../data/manifests/morphmimic_connection_20261029.json)/[数据清单](../data/manifests/morphmimic_g1_data_20261029.json)。

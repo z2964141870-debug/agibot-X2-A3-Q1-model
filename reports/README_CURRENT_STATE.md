@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 SOLE01恢复实测：[25386连接及CPU契约已通过](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，复用现有master/原boot与GPU，场景/330库SHA一致，10真实环境测试全过，三固定片51姿态脚底最大几何差约0.14微米。23候选/记录/既有分析及CPU产物239048字节Mac/25386大小SHA一致，早期UNKNOWN已解除；0新积分/策略推理/optimizer，不能称步态改善。实际底座MDP/learner已读，继续底座脚底Z候选及H32方向，原生16/4096与训练待；采纳null、监督/其他任务不改。[实测清单](../data/manifests/supermimic_q1_sole_cpu_validation_20261029.json)。
+
 2026-10-29 SOLE01：[脚底几何及单变量摆脚Z候选已实现](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，7本地几何测试/6AST/CLI通过，3真实Torch检查因依赖缺失跳过；底座精确reward/H32及原生16/4096未运行，无新物理/策略推理/optimizer。Windows桥47236与18873已有并保留；25386免密和用户明确回复后的单次root交互认证均返回Permission denied，当前容器身份/GPU仍UNKNOWN，待核对认证；服务器镜像未完成。原底座/PPO两线继续，候选采纳null，原监督及其他任务不改，不激活agent或旧goal。[阶段清单](../data/manifests/supermimic_q1_sole_candidate_20261029.json)。
 
 2026-10-29 MM03：[原版G1部署](README_MORPHMIMIC_REPRO_20261029.md)已恢复原Windows/25386，核原boot/GPU/OOM0；主仓183/GMR1938源码逐blob匹配，独立Python3.11/锁149包安装完成。128原始G1 CSV全过原版转换过滤，tiny50条/363.72秒；16环境640转移、WM/policy/critic均0更新，预检正常回收/GPU释放。下一步冻结发布后唯一64环境/600轮/H32工程训练，再原版导出/MP4，尚未开训；3500秒全进程硬限/20秒清理、不扩时/重试。[连接](../data/manifests/morphmimic_connection_20261029.json)/[数据](../data/manifests/morphmimic_g1_data_20261029.json)。

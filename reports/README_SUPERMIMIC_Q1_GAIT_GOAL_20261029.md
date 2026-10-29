@@ -1,6 +1,6 @@
 # Q1普通步态双线改进目标
 
-记录日期：2026-10-29，更新至2026-10-30北京时间。阶段：GAIT_GOAL01。状态：目标ACTIVE；PPO已00:26:55在600.070907实训秒/113轮按physical_regression正常结束，保存轨迹交付与审计仍待，不能称全pipeline完成。用户已允许仅一次修复后底座V02，待PPO交付/GPU锁释放后串行；候选采纳null。
+记录日期：2026-10-29，更新至2026-10-30北京时间。阶段：GAIT_GOAL01。状态：目标ACTIVE；PPO600.070907实训秒按physical_regression正常停，已保存交付/CPU38与Mac媒体12检查通过。原pipeline因服务器缺ffprobe为FAILED并保留，独立postdelivery已COMPLETED。用户已允许的唯一底座V02尚未启动；候选采纳null。
 
 ## 目标与授权
 
@@ -205,3 +205,15 @@
 两固定走和抬手仍均3/3完整；训练300片失败初始13/12/11、301秒13/10/8、600秒12/10/10；验证初始0/0/1、301秒和600秒均0/0/0。固定门两阶段均未过，不能由存活/验证失败减少称普通步态成功；脚底Z没有一致收益，滑移取舍反向。数值推荐回退到initial，仅候选、用户采纳null。
 
 原controller218003正在保存表格/六格/视频，首观察delivery phase=initial_saved_trajectory_video，尚未保存/媒体验收完成，不预称pipeline完成。PPO末权重SHA`96b9fbd99c1286016119ac0a110f30af15260d8a708b067fd88d926e7e5cd6c3`及大NPZ只留服务器；失败轨迹与全330原值继续交付。首门记录`8eaf1310ab7479a09c3b64a8d4b81a8e3b8cfbe4`已独立远端/6记录340302B三端SHA。先完成这条交付，再启动一次已获授权的独立底座V02，配方/预算不变。[训练终态与第二门原值](../data/manifests/supermimic_q1_gait_goal_ppo_training_results_20261030.json)。goal ACTIVE。
+
+## PPO保存交付与独立媒体入口
+
+原PPO pipeline在00:38:00的媒体核验阶段FAILED：服务器没有`ffprobe`，两段视频此前已经正常生成。没有安装工具、重渲染、重新推理或恢复训练；原`status.json`与失败guard/log保留，状态文件补审计前后SHA完全相同。该环境限制已有历史记录，本次交付入口未沿用Mac核验路径，现独立修正交付组织，不改冻结的review/native训练代码。
+
+Mac现有ffprobe/ffmpeg完成初末各1350帧全解码，12/12媒体检查通过；每片54秒、25fps、固定8段6类原速，不是连续54秒rollout，失败舞蹈保留终止后hold。初末两走、抬手时序和八段联系图共六张，以及真实回合训练六格，均已目视；画面可读但步态仍不自然，不能从截图确认毫米级离地。推荐为initial的视频别名，用户采纳仍null。
+
+独立CPU保存审计01:01:10完成38/38：1579冻结来源未变、原预算/正常训练guard、模型及优化器末门持久化、9组330片精确前缀、推荐/空采纳、全表行数、六格及Mac/服务器媒体身份一致。新积分/推理/optimizer均0。它创建`postdelivery_saved_audit.json`和`postdelivery_status.json=COMPLETED`，没有把原FAILED pipeline改写为成功。原controller218003/训练218034/交付221002均不存在，GPU15MiB/0%无计算/OOM0。
+
+本地初末视频：`data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/initial.mp4`、`final.mp4`；相邻有六张联系图，`dashboard/training_dashboard.png`为六格，`review/`有2970逐片/108分组/27固定行。共53小工件30498154字节已逐项核权威工作树、Mac主根和25386的大小/SHA，大权重/NPZ只留服务器。[完整交付与故障保留证据](../data/manifests/supermimic_q1_gait_goal_ppo_delivery_20261030.json)。
+
+新独立`script/supermimic_q1_gait_goal_delivery/`仅组织服务器生成、Mac解码与保存审计：仍调用原review训练入口和原boot/GPU/OOM/内存/实训预算保护，服务器结束为`AWAITING_MAC_MEDIA_AUDIT`，Mac媒体与CPU保存审计通过后才登记新底座pipeline完成。三个反例测试/四文件编译与三个服务器CLI帮助通过；原native目录对`b6c28069`字节未变，review源码未修改。新审计只允许显式处理此次精确缺ffprobe错误，不自动掩盖其他失败。代码/记录经payload、Q1发布/独立40位远端和三端SHA后，执行用户已经批准的唯一底座V02，不重做base16、不增加预算或再询问本次授权。

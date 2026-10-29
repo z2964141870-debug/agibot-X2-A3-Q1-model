@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-30 01:02 GAIT_GOAL01 PPO保存交付已完成：Mac12媒体/CPU38保存检查，53小工件30498154B三端大小SHA、六联系图/六格目视通过；原pipeline00:38缺ffprobe FAILED及guard/log保留，独立postdelivery COMPLETED，不重渲染训练。原218003/218034/221002退出/GPU15MiB无计算，1579冻结源未变。PPO600秒负面结果/采纳null保持；新独立服务器生成/Mac解码入口已3测试/3CLI，发布核验后执行已授权唯一底座V02，base16不重做/预算不增/goal ACTIVE/监督其他任务不改/无agent。[交付与故障保留收据](../data/manifests/supermimic_q1_gait_goal_ppo_delivery_20261030.json)。
+
 2026-10-30 00:26:55 PPO在600.070907秒/113轮/11108352转移按physical_regression正常结束、worker218034退出，actor2060/critic2260/WM0；起走一次相对腕1.3317超原1.25严重线。两走Z比1.002/1.009、承重滑移1.087/.886，固定三片虽完整/验证0/0/0仍未过目标，数值推荐initial/用户采纳null。原controller218003正在saved-only交付，媒体/保存审计/Mac验收待，不称全pipeline完成，不续训重试补预算。先完成该交付并释锁/GPU，再执行唯一已授权底座V02，不重做base16；goal ACTIVE/原监督缓存维护其他任务不改。[终态与原值](../data/manifests/supermimic_q1_gait_goal_ppo_training_results_20261030.json)。
 
 2026-10-30 PPO首301.135292实训秒门三固定片三重复完整/验证0/0/0；停走滑移比.879、起走1.013，脚底Z比1.005/.995，固定目标未过。起走两次相对腕比1.233/1.172，10%推荐保护未过但未超原1.25严重线，继续原600门。00:24:11原218003/218034、577.712秒/109轮/actor1980/critic2180/WM0，不热改冻结cccefe08/扩时或重试。底座V02仅一次授权尚未用，86f03bb授权记录独立远端/7文件341028B三端SHA已核；等待当前PPO完整交付/GPU释放再启动。goal ACTIVE/采纳null/监督缓存维护其他任务不改。[首门原值](../data/manifests/supermimic_q1_gait_goal_ppo_gate01_20261030.json)。

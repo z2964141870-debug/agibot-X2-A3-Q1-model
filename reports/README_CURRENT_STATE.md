@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 16:30：[hp_han自动密码及原25386连接已恢复](README_Q1_WINDOWS_SSH_ALIAS_20261029.md)。用户明确授权只在本机保存该Windows密码，600密码文件/700 ASKPASS及shell助手经~/.zshrc加载，内容和认证配置不入仓库或服务器。自动登录Windows返回DESKTOP-3C1DPPR，原双master60607/60674、boot/GPU/实体根已核，GPU15MiB/0%无计算；旧UNKNOWN与“不存该本机密码”为历史。小记录镜像待逐大小SHA核，未加H32/PPO/训练，原失败后停止规则/采纳null/监督保持。[授权与实测](../data/manifests/q1_windows_ssh_hp_han_autopassword_20261029.json)。
+
 2026-10-29 16:10：[hp_han本机别名已配置并核解析](README_Q1_WINDOWS_SSH_ALIAS_20261029.md)，指向Windows的yu@100.65.183.91:22，权限600/密码交互。用户再次要求经Windows跳转后，仅一次原转发尝试在非回显认证后Broken pipe，未建立18873/未到25386，容器/GPU仍UNKNOWN。别名创建后未自动重复登录，无新远端物理/训练；下一步先成功Windows会话再原转发与身份核查。[别名及断点](../data/manifests/q1_windows_ssh_alias_hp_han_20261029.json)。
 
 2026-10-29 16:04 SOLE01_INIT：[逐步只读起点记录已离线验证](README_SUPERMIMIC_Q1_H32_INIT_AUDIT_20261029.md)，8/8测试、3编译与CLI通过，原H32一致性保护保留；尚未用原生Torch/Warp验证，不称起点原因已隔离。代码1f224fd已push/独立核40位远端、10项308960字节Git/Mac SHA一致。单次Windows恢复在认证交互Broken pipe，未建桥或执行容器命令，不判密码错；远端/GPU仍UNKNOWN、25386镜像待。无第三次H32/PPO预检/新训练/agent/goal或自动任务修改，采纳null。[发布/Mac收据](../data/manifests/supermimic_q1_h32_init_local_publication_20261029.json)。

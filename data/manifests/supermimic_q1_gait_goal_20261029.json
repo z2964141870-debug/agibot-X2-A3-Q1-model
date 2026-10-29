@@ -1,0 +1,102 @@
+{
+  "status": "GAIT_GOAL01_PREPARATION_READY_FOR_SAVED_CALIBRATION",
+  "recorded_date_beijing": "2026-10-29",
+  "stage": "GAIT_GOAL01",
+  "goal": {
+    "thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "status": "active",
+    "created_at_unix": 1793269624,
+    "objective": "Q1普通步态双线改进：在现有SuperMimic框架内，同时推进底座的相位脚底奖励与PPO残差的摆脚高度奖励，获得可复现的真实物理改善。先定位H32起点不一致、实现并校准两项独立候选，通过CPU契约及必要的有限零更新预检后，再顺序执行新独立实验；原SOLE01失败的H32物理检查不得无因重试，旧训练不得恢复。首轮每线至多1200实训秒、合计至多2400秒，300/600/1200秒物理门、单GPU串行，无自动扩时或故障重试，实验配方及阈值在启动前写入README和清单并冻结发布。对照固定原RF14两小时底座/RF16未训练静态alpha.5设置，底座净收益、同底座PPO净收益和组合效果分别测量，未实测不得合并宣称收益。达标须固定普通起走/停走及抬手各三重复全程完成；两走各自摆脚脚底高度误差中位数至少下降20%、承重滑移中位数至少下降15%，且逐重复姿态与上肢误差不恶化超过10%，真实离地、连续换脚及真实前进从同片轨迹/原速视频核实。参考声明接触不当作承重真值，不以奖励/loss/存活单项宣称成功。交付原330库评测、固定片原值、失败证据与Mac原速对比MP4，代码/README/清单经payload audit推Q1、独立40位远端及三端大小SHA核验；大权重/NPZ只留25386。采用唯一用户25386/原Windows桥，不读写认证、升级环境、启动agent或修改其他自动任务。用户最终采纳保留null直到审阅明确决定。预算内负面结果按门停并保存，不能将报告完成、等待或预算用尽标为步态目标完成；若证据不足，继续可行的离线研究并清楚记录未解条件。"
+  },
+  "authorization": {
+    "user_request": "定一个目标，然后以目标模式开始实行吧。",
+    "new_goal_created": true,
+    "old_goal_restored": false
+  },
+  "budget": {
+    "base_training_seconds_max": 1200,
+    "ppo_training_seconds_max": 1200,
+    "total_training_seconds_max": 2400,
+    "physical_gates_seconds": [
+      300,
+      600,
+      1200
+    ],
+    "concurrent_gpu_tasks_max": 1,
+    "automatic_extension": false,
+    "automatic_failure_retry": false,
+    "old_training_resume": false
+  },
+  "baseline": {
+    "checkpoint": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt",
+    "bytes": 208866293,
+    "sha256": "249ba56ac6efe806cd2594b0eed84ae4ae2923f0863dd1eeb64d8ce6a877e07e",
+    "reference_composition": "RF16 initial_static075 historical label is actually static upper alpha0.5",
+    "original_training_clips": 300,
+    "original_validation_clips": 30
+  },
+  "acceptance": {
+    "fixed_clips": [
+      "walk_ff_stop_180_R_002__A095",
+      "walk_ff_start_180_R_002__A071",
+      "triumph_two_handed_001__A058"
+    ],
+    "repeats": [
+      0,
+      1,
+      2
+    ],
+    "all_fixed_complete": true,
+    "each_walk_separately": {
+      "swing_sole_z_rmse_m_median_ratio_max": 0.8,
+      "native_loaded_slip_mps_median_ratio_max": 0.85
+    },
+    "per_repeat_ratio_max": {
+      "torso_tilt_rms_rad": 1.1,
+      "upper_rmse": 1.1,
+      "wrist_relative_rmse": 1.1,
+      "raised_peak_error_for_raise": 1.1
+    },
+    "walking_progress": {
+      "absolute_minimum_m": 0.05,
+      "baseline_fraction_minimum": 0.9
+    },
+    "sustained_single_support_alternations_minimum": 2,
+    "exact_swing_phase_mask_sha256_required": true,
+    "full330_review_required": true,
+    "original_speed_video_and_clearance_review_required": true,
+    "numeric_pass_settles_goal": false,
+    "user_accepted_checkpoint": null
+  },
+  "preparation": {
+    "local_tests_passed": 15,
+    "local_tests_skipped": 0,
+    "test_command": "python3 -m unittest discover -s script/supermimic_q1_gait_goal -p 'test_*.py' -v",
+    "scale_grid_widths_m": [
+      0.01,
+      0.02,
+      0.04
+    ],
+    "scale_grid_base_weights": [
+      0.1,
+      0.25,
+      0.5
+    ],
+    "saved_calibration": "NOT_RUN",
+    "nonintegrating_h32_initialization_isolation": "PENDING",
+    "new_physical_preflights": "NOT_RUN",
+    "new_training": "NOT_STARTED",
+    "new_integration_steps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0
+  },
+  "controls": {
+    "active_10minute_supervision_modified": false,
+    "other_automations_modified": false,
+    "agents_started": false,
+    "credentials_read_written_or_published": false,
+    "large_checkpoint_npz": "SERVER_LOCAL_ONLY",
+    "environment_upgraded": false
+  },
+  "next": "Publish preparation and mirror exact sources, run saved-only scale calibration, then isolate H32 inputs/actions without integration before declaring any physical validation."
+}

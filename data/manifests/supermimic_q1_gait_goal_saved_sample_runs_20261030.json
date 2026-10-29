@@ -1,0 +1,775 @@
+{
+  "stage": "GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030",
+  "status": "SAVED_ONLY_ANALYSIS_DELIVERED_PHYSICAL_TARGET_NOT_ACHIEVED",
+  "captured_utc": "2026-10-29T23:02:50.452540+00:00",
+  "recorded_utc": "2026-10-29 23:18:26 UTC",
+  "source_base_commit": "357e0b1bf8ffa6405b7b71ff690a742b8a118bc1",
+  "review_report": "reports/README_Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030.md",
+  "code": [
+    {
+      "relative_path": "script/project_tools/analyze_q1_saved_sample_runs.py",
+      "bytes": 16514,
+      "sha256": "fe6c91abfa0eddb1b7f06513bf3181910000d63391b37b82d6d3bb95a656991b"
+    },
+    {
+      "relative_path": "script/project_tools/test_q1_saved_sample_runs.py",
+      "bytes": 5261,
+      "sha256": "2b89ff10812a068975cb6c5a9f2bb60bf25b6e724ca8f78ac5c08f65ec6060c4"
+    }
+  ],
+  "logs": [
+    {
+      "relative_path": "logs/session_records/q1_gait_goal_saved_sample_runs_tests_20261030.log",
+      "bytes": 883,
+      "sha256": "56a2b40d2573d4f93ab0c6dc0dd55c4e1e17c7af6a86fb30b506ba20629d6cb4"
+    },
+    {
+      "relative_path": "logs/session_records/q1_gait_goal_saved_sample_runs_analysis_20261030.log",
+      "bytes": 260,
+      "sha256": "7debfa24e6d310c52882ac08436391e165486a60a04292aaf69af047caf1f901"
+    },
+    {
+      "relative_path": "logs/session_records/q1_gait_goal_saved_sample_runs_layout_v02_20261030.log",
+      "bytes": 257,
+      "sha256": "905937ba9d9736d7ca4e6aaec50a80b4dc678d77a1758694f3fe2872861ee104"
+    }
+  ],
+  "tests": {
+    "passed": 7,
+    "failed": 0,
+    "command": "python3 -m unittest discover -s script/project_tools -p 'test_q1_saved_sample_runs.py' -v",
+    "cases": [
+      "Strict height and original 5N load boundary",
+      "No opposite support excludes qualified run",
+      "Gaps and boundary censoring",
+      "Three samples have 40ms endpoint span",
+      "Reference matching needs consecutive samples within window",
+      "Repeated same-side labels do not form alternating chain",
+      "Missing foot, duplicate time and nonfinite CSV rejection"
+    ]
+  },
+  "scope": {
+    "saved_clips": 45,
+    "saved_foot_samples": 24030,
+    "foot_summary_rows": 360,
+    "reference_window_rows": 1845,
+    "sample_run_rows": 3932,
+    "case_summary_rows": 180,
+    "new_integration_steps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0,
+    "new_kinematics_or_dynamics_calls": 0,
+    "original_training_seconds_unchanged": 901.178391956928,
+    "large_npz_transferred": false,
+    "original_npz_or_media_audits_repeated": false
+  },
+  "input_provenance": {
+    "published_phase_manifest": "data/manifests/supermimic_q1_gait_goal_saved_phase_20261030.json",
+    "csv_and_upstream_summary_matched_published_size_sha": true,
+    "sources": [
+      {
+        "path": "/opt/data/private/ZHY/data/manifests/supermimic_q1_gait_goal_saved_phase_20261030.json",
+        "bytes": 7301,
+        "sha256": "589b621c5beb1d0234a4a0af75ff3866300649f8c81057813ed98dc16dbf608b"
+      },
+      {
+        "path": "/opt/data/private/ZHY/script/project_tools/analyze_q1_saved_sample_runs.py",
+        "bytes": 16166,
+        "sha256": "6ae4d88791d60413a49767d97430b043e652a9cebfcf09f5c48f304c45f72800"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/foot_timeseries.csv",
+        "bytes": 4406520,
+        "sha256": "b42406ef29c05b611486d9c094177fe2982e1a087d39af058a3f601678ef18f5"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/summary.json",
+        "bytes": 14382,
+        "sha256": "ca61ab0c4dfb6e0a335803ecaaaf17f3f94f3e6ce941ea949dff30994d7041f4"
+      }
+    ],
+    "original_analysis_source_snapshot": {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/analysis_source_layout_v01.py",
+      "bytes": 16166,
+      "sha256": "6ae4d88791d60413a49767d97430b043e652a9cebfcf09f5c48f304c45f72800"
+    }
+  },
+  "definitions": {
+    "actual_geometry": "Whole-collision-sole world Z > threshold",
+    "qualified_saved_sample": "Actual geometry condition AND this foot force <=5N AND other foot force >5N",
+    "reference_window": "Immutable declared swing AND reference sole Z >= threshold",
+    "reference_match": "At least the chosen minimum consecutive qualified samples within that same reference window",
+    "default_height_m": 0.01,
+    "default_minimum_samples": 3,
+    "sensitivity_height_m": [
+      0.005,
+      0.01
+    ],
+    "sensitivity_minimum_samples": [
+      1,
+      3
+    ],
+    "control_dt_s": 0.02,
+    "three_sample_endpoint_span_s": 0.04,
+    "force_precedes_pose_s": 0.005,
+    "counts_are_physical_strides": false,
+    "continuous_contact_verified": false,
+    "new_acceptance_gate": false
+  },
+  "findings": {
+    "default_fixed_walks": [
+      {
+        "line": "base",
+        "label": "initial",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "left_qualified_runs_by_repeat": [
+          3,
+          5,
+          4
+        ],
+        "left_qualified_runs_median": 4,
+        "left_reference_windows_by_repeat": [
+          4,
+          4,
+          4
+        ],
+        "left_reference_windows_median": 4,
+        "left_matched_reference_windows_by_repeat": [
+          0,
+          0,
+          0
+        ],
+        "left_matched_reference_windows_median": 0,
+        "right_qualified_runs_by_repeat": [
+          1,
+          1,
+          2
+        ],
+        "right_qualified_runs_median": 1,
+        "right_reference_windows_by_repeat": [
+          7,
+          7,
+          7
+        ],
+        "right_reference_windows_median": 7,
+        "right_matched_reference_windows_by_repeat": [
+          0,
+          0,
+          0
+        ],
+        "right_matched_reference_windows_median": 0,
+        "run_label_sequences_by_repeat": [
+          "LRLL",
+          "LRLLLL",
+          "LRLLLR"
+        ]
+      },
+      {
+        "line": "base",
+        "label": "initial",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "left_qualified_runs_by_repeat": [
+          4,
+          3,
+          6
+        ],
+        "left_qualified_runs_median": 4,
+        "left_reference_windows_by_repeat": [
+          3,
+          3,
+          3
+        ],
+        "left_reference_windows_median": 3,
+        "left_matched_reference_windows_by_repeat": [
+          0,
+          0,
+          0
+        ],
+        "left_matched_reference_windows_median": 0,
+        "right_qualified_runs_by_repeat": [
+          4,
+          1,
+          0
+        ],
+        "right_qualified_runs_median": 1,
+        "right_reference_windows_by_repeat": [
+          7,
+          7,
+          7
+        ],
+        "right_reference_windows_median": 7,
+        "right_matched_reference_windows_by_repeat": [
+          1,
+          1,
+          0
+        ],
+        "right_matched_reference_windows_median": 1,
+        "run_label_sequences_by_repeat": [
+          "LLRLRRLR",
+          "LLLR",
+          "LLLLLL"
+        ]
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "left_qualified_runs_by_repeat": [
+          3,
+          4,
+          5
+        ],
+        "left_qualified_runs_median": 4,
+        "left_reference_windows_by_repeat": [
+          4,
+          4,
+          4
+        ],
+        "left_reference_windows_median": 4,
+        "left_matched_reference_windows_by_repeat": [
+          0,
+          0,
+          0
+        ],
+        "left_matched_reference_windows_median": 0,
+        "right_qualified_runs_by_repeat": [
+          5,
+          5,
+          5
+        ],
+        "right_qualified_runs_median": 5,
+        "right_reference_windows_by_repeat": [
+          7,
+          7,
+          7
+        ],
+        "right_reference_windows_median": 7,
+        "right_matched_reference_windows_by_repeat": [
+          1,
+          1,
+          1
+        ],
+        "right_matched_reference_windows_median": 1,
+        "run_label_sequences_by_repeat": [
+          "RRRRRLLL",
+          "RRRRRLLLL",
+          "RRRRRLLLLL"
+        ]
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "left_qualified_runs_by_repeat": [
+          3,
+          3,
+          5
+        ],
+        "left_qualified_runs_median": 3,
+        "left_reference_windows_by_repeat": [
+          3,
+          3,
+          3
+        ],
+        "left_reference_windows_median": 3,
+        "left_matched_reference_windows_by_repeat": [
+          0,
+          0,
+          0
+        ],
+        "left_matched_reference_windows_median": 0,
+        "right_qualified_runs_by_repeat": [
+          3,
+          2,
+          2
+        ],
+        "right_qualified_runs_median": 2,
+        "right_reference_windows_by_repeat": [
+          7,
+          7,
+          7
+        ],
+        "right_reference_windows_median": 7,
+        "right_matched_reference_windows_by_repeat": [
+          0,
+          0,
+          0
+        ],
+        "right_matched_reference_windows_median": 0,
+        "run_label_sequences_by_repeat": [
+          "LLRRLR",
+          "LLRRL",
+          "LLRLLRL"
+        ]
+      },
+      {
+        "line": "ppo",
+        "label": "initial",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "left_qualified_runs_by_repeat": [
+          4,
+          4,
+          3
+        ],
+        "left_qualified_runs_median": 4,
+        "left_reference_windows_by_repeat": [
+          4,
+          4,
+          4
+        ],
+        "left_reference_windows_median": 4,
+        "left_matched_reference_windows_by_repeat": [
+          1,
+          0,
+          1
+        ],
+        "left_matched_reference_windows_median": 1,
+        "right_qualified_runs_by_repeat": [
+          3,
+          2,
+          1
+        ],
+        "right_qualified_runs_median": 2,
+        "right_reference_windows_by_repeat": [
+          7,
+          7,
+          7
+        ],
+        "right_reference_windows_median": 7,
+        "right_matched_reference_windows_by_repeat": [
+          0,
+          0,
+          0
+        ],
+        "right_matched_reference_windows_median": 0,
+        "run_label_sequences_by_repeat": [
+          "LRLLRLR",
+          "LRLLRL",
+          "LRLL"
+        ]
+      },
+      {
+        "line": "ppo",
+        "label": "initial",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "left_qualified_runs_by_repeat": [
+          5,
+          5,
+          4
+        ],
+        "left_qualified_runs_median": 5,
+        "left_reference_windows_by_repeat": [
+          3,
+          3,
+          3
+        ],
+        "left_reference_windows_median": 3,
+        "left_matched_reference_windows_by_repeat": [
+          1,
+          0,
+          0
+        ],
+        "left_matched_reference_windows_median": 0,
+        "right_qualified_runs_by_repeat": [
+          3,
+          2,
+          3
+        ],
+        "right_qualified_runs_median": 3,
+        "right_reference_windows_by_repeat": [
+          7,
+          7,
+          7
+        ],
+        "right_reference_windows_median": 7,
+        "right_matched_reference_windows_by_repeat": [
+          1,
+          0,
+          0
+        ],
+        "right_matched_reference_windows_median": 0,
+        "run_label_sequences_by_repeat": [
+          "LLLRLRLR",
+          "LLRLRLL",
+          "LLRLRRL"
+        ]
+      },
+      {
+        "line": "ppo",
+        "label": "stage_01",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "left_qualified_runs_by_repeat": [
+          2,
+          2,
+          4
+        ],
+        "left_qualified_runs_median": 2,
+        "left_reference_windows_by_repeat": [
+          4,
+          4,
+          4
+        ],
+        "left_reference_windows_median": 4,
+        "left_matched_reference_windows_by_repeat": [
+          0,
+          0,
+          1
+        ],
+        "left_matched_reference_windows_median": 0,
+        "right_qualified_runs_by_repeat": [
+          3,
+          2,
+          2
+        ],
+        "right_qualified_runs_median": 2,
+        "right_reference_windows_by_repeat": [
+          7,
+          7,
+          7
+        ],
+        "right_reference_windows_median": 7,
+        "right_matched_reference_windows_by_repeat": [
+          0,
+          0,
+          0
+        ],
+        "right_matched_reference_windows_median": 0,
+        "run_label_sequences_by_repeat": [
+          "LRLRR",
+          "LRLR",
+          "LRLLLR"
+        ]
+      },
+      {
+        "line": "ppo",
+        "label": "stage_01",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "left_qualified_runs_by_repeat": [
+          7,
+          4,
+          6
+        ],
+        "left_qualified_runs_median": 6,
+        "left_reference_windows_by_repeat": [
+          3,
+          3,
+          3
+        ],
+        "left_reference_windows_median": 3,
+        "left_matched_reference_windows_by_repeat": [
+          0,
+          0,
+          1
+        ],
+        "left_matched_reference_windows_median": 0,
+        "right_qualified_runs_by_repeat": [
+          0,
+          0,
+          0
+        ],
+        "right_qualified_runs_median": 0,
+        "right_reference_windows_by_repeat": [
+          7,
+          7,
+          7
+        ],
+        "right_reference_windows_median": 7,
+        "right_matched_reference_windows_by_repeat": [
+          0,
+          0,
+          0
+        ],
+        "right_matched_reference_windows_median": 0,
+        "run_label_sequences_by_repeat": [
+          "LLLLLLL",
+          "LLLL",
+          "LLLLLL"
+        ]
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "left_qualified_runs_by_repeat": [
+          4,
+          2,
+          4
+        ],
+        "left_qualified_runs_median": 4,
+        "left_reference_windows_by_repeat": [
+          4,
+          4,
+          4
+        ],
+        "left_reference_windows_median": 4,
+        "left_matched_reference_windows_by_repeat": [
+          1,
+          1,
+          1
+        ],
+        "left_matched_reference_windows_median": 1,
+        "right_qualified_runs_by_repeat": [
+          2,
+          3,
+          1
+        ],
+        "right_qualified_runs_median": 2,
+        "right_reference_windows_by_repeat": [
+          7,
+          7,
+          7
+        ],
+        "right_reference_windows_median": 7,
+        "right_matched_reference_windows_by_repeat": [
+          0,
+          0,
+          0
+        ],
+        "right_matched_reference_windows_median": 0,
+        "run_label_sequences_by_repeat": [
+          "LRLLRL",
+          "LRLRR",
+          "LRLLL"
+        ]
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "left_qualified_runs_by_repeat": [
+          4,
+          5,
+          6
+        ],
+        "left_qualified_runs_median": 5,
+        "left_reference_windows_by_repeat": [
+          3,
+          3,
+          3
+        ],
+        "left_reference_windows_median": 3,
+        "left_matched_reference_windows_by_repeat": [
+          0,
+          0,
+          0
+        ],
+        "left_matched_reference_windows_median": 0,
+        "right_qualified_runs_by_repeat": [
+          0,
+          0,
+          0
+        ],
+        "right_qualified_runs_median": 0,
+        "right_reference_windows_by_repeat": [
+          7,
+          7,
+          7
+        ],
+        "right_reference_windows_median": 7,
+        "right_matched_reference_windows_by_repeat": [
+          0,
+          0,
+          0
+        ],
+        "right_matched_reference_windows_median": 0,
+        "run_label_sequences_by_repeat": [
+          "LLLL",
+          "LLLLL",
+          "LLLLLL"
+        ]
+      }
+    ],
+    "ppo_final_start_right_10mm_geometry_runs_single_sample_minimum": [
+      0,
+      0,
+      0
+    ],
+    "ppo_final_start_right_5mm_geometry_runs_three_sample_minimum": [
+      0,
+      0,
+      0
+    ],
+    "ppo_final_start_right_5mm_qualified_runs_single_sample_minimum": [
+      1,
+      1,
+      2
+    ],
+    "ppo_final_start_right_5mm_longest_qualified_samples": [
+      2,
+      1,
+      2
+    ],
+    "ppo_final_start_right_qualified_runs_10mm_three_samples": [
+      0,
+      0,
+      0
+    ],
+    "ppo_final_start_left_qualified_runs_10mm_three_samples": [
+      4,
+      5,
+      6
+    ],
+    "ppo_final_start_left_qualified_runs_5mm_three_samples": [
+      7,
+      7,
+      7
+    ],
+    "base_final_stop_right_qualified_runs_10mm_three_samples": [
+      5,
+      5,
+      5
+    ],
+    "base_final_stop_sequences": [
+      "RRRRRLLL",
+      "RRRRRLLLL",
+      "RRRRRLLLLL"
+    ],
+    "base_final_stop_right_matched_reference_windows_by_repeat": [
+      1,
+      1,
+      1
+    ],
+    "base_final_stop_right_total_reference_windows_by_repeat": [
+      7,
+      7,
+      7
+    ],
+    "interpretations": [
+      "PPO final start-walk right-foot low clearance and missing consecutive sample evidence are consistent across all three repeats.",
+      "Base stop-walk has more right-foot runs but repeated same-side runs and sparse reference-window matching; counts are not proof of learned alternating gait.",
+      "Saved-sample timing has a5ms force-pose offset and cannot identify a unique causal training or control component."
+    ]
+  },
+  "visual_verification": {
+    "current_pngs_visually_reviewed": 2,
+    "current_layout_passed": true,
+    "initial_layout_failed_reason": "Legend and footer overlapped",
+    "initial_png_pdf_preserved_under": "layout_v01/",
+    "original_source_snapshot_matches_original_summary_sha": true,
+    "only_plot_function_ast_changed": true,
+    "all_four_csv_and_original_summary_unchanged": true,
+    "trajectory_analysis_repeated_for_layout_fix": false
+  },
+  "artifacts": {
+    "files": [
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/analysis_source_layout_v01.py",
+        "bytes": 16166,
+        "sha256": "6ae4d88791d60413a49767d97430b043e652a9cebfcf09f5c48f304c45f72800"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/base_saved_sample_runs.pdf",
+        "bytes": 21370,
+        "sha256": "04d1473ff13176b49c98ecc7314fea30fbcd3671e1ea442e845dddbc9dd9ec0c"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/base_saved_sample_runs.png",
+        "bytes": 92405,
+        "sha256": "334285bbbf97fe21c20c1c23126733c65bd172340e53507025948171f2676fc2"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/case_summary.csv",
+        "bytes": 14999,
+        "sha256": "e7a34d762a46e99f9e5acb9d64455e78e7e34fa8561347010e59cbde076bca11"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/foot_summary.csv",
+        "bytes": 34410,
+        "sha256": "eaece48e3a373d62a5e8e94448c71d27dd906c341c7a99697fe0fdc1c74c3271"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/layout_v01/base_saved_sample_runs.pdf",
+        "bytes": 21330,
+        "sha256": "ab0b225bf6f38bbcc0b8c801fb3da1d51a1d4e1e4849eacb0983606f5ebd9b22"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/layout_v01/base_saved_sample_runs.png",
+        "bytes": 89723,
+        "sha256": "d6bebab17945bb811906b5728570c4cdb547b0e847064ea879c8ea094e494760"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/layout_v01/ppo_saved_sample_runs.pdf",
+        "bytes": 22429,
+        "sha256": "838483e346e7b8e148c854813d6a04dabd35646c1ac73aade4fa0f878d05e39c"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/layout_v01/ppo_saved_sample_runs.png",
+        "bytes": 97564,
+        "sha256": "6414d874f65c1ca41191d72d96f9b1c02315a76f6b7ad260a31286853c5f048d"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/ppo_saved_sample_runs.pdf",
+        "bytes": 22487,
+        "sha256": "f6f8e2c306acc54b8c611b9ce0a0d9ca66028a30bda1cd089cacf2c4578f1a1d"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/ppo_saved_sample_runs.png",
+        "bytes": 100306,
+        "sha256": "6967123d131b0949ef98dcd0e39dddc01fb00bd5cded08a45eca1429a1be563c"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/reference_windows.csv",
+        "bytes": 193648,
+        "sha256": "714ffeb29d449df44c414faa43effb5d61923ebe1c31e53e0c0a173ec5420df5"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/sample_runs.csv",
+        "bytes": 509576,
+        "sha256": "331341884ea2c2917a4229845c805be0337136406958ce7175447be5eaadc67f"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030/summary.json",
+        "bytes": 12573,
+        "sha256": "f004fd5a9ac185e566df2cfb0de230ad72eee9c80a60ec4ce7e611d511075dc7"
+      }
+    ],
+    "count": 14,
+    "bytes": 1248986,
+    "current_review_artifacts": 9,
+    "initial_layout_and_source_history_artifacts": 5,
+    "all_three_way_size_sha256_matched": true,
+    "locations": [
+      "authoritative_Q1_worktree",
+      "Mac_project_root",
+      "user_25386_unique_root"
+    ]
+  },
+  "limitations": [
+    "These are saved sample runs and threshold windows, not counted physical strides.",
+    "Three20ms samples span40ms between endpoints, not60ms verified continuous time.",
+    "Force is the last5ms solve sample, preceding the saved pose by5ms; no impulse or exact simultaneous contact claim.",
+    "Reference intent is declared metadata; height thresholds can fragment a single swing.",
+    "Label alternation does not constrain cadence, gap length, posture, forward progress, or stability.",
+    "Threshold sensitivity is descriptive only; original physical gates, budgets and outcomes are unchanged.",
+    "Upstream published CSV and summary SHA are checked; original large NPZ audits are not repeated.",
+    "Timeline plots show repeat0; all repeats, stages and raised-arm clips remain in CSV."
+  ],
+  "observation_preparation": {
+    "current_v02_plan": {
+      "relative_path": "data/manifests/supermimic_q1_gait_goal_substep_observation_plan_v02_20261030.json",
+      "bytes": 86121,
+      "sha256": "c94cf9489c317ea6a2ca431af898bc4f8704e698067c5e927d17a389b1234942"
+    },
+    "frozen_dependencies_unchanged": true,
+    "proposed_measurement_scope_and_budget_unchanged": true,
+    "existing_human_question_pending": true,
+    "question_repeated": false,
+    "new_observation_started": false,
+    "goal_continuation_not_approval": true
+  },
+  "boundaries": {
+    "goal_status": "active",
+    "goal_complete": false,
+    "user_accepted_checkpoint": null,
+    "original_outcome": "physical_regression",
+    "training_V02_authorization_consumed": true,
+    "new_training_started": false,
+    "old_training_resumed": false,
+    "automatic_retry": false,
+    "automatic_extension": false,
+    "agents_started": false,
+    "automations_modified": false
+  },
+  "next_question": "Existing proposed substep observation can distinguish solved torque, unloading and clearance timing; await the pending human choice and do not infer training or physical-run permission from this analysis.",
+  "publication_receipt": "data/manifests/supermimic_q1_gait_goal_saved_sample_runs_publication_20261030.json"
+}

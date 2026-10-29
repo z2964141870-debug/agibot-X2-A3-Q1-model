@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-30：[GAIT_GOAL01连续保存样本与左右换脚时序](README_Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030.md)。45片/7测试/0积分推理FK或动力学；PPO最终起走右脚三次无>10mm帧，>5mm亦无连续3样本，底座停走离地段增加却未按参考交替。14小工件1248986B三端SHA/两图目视，保留阈值敏感性与布局修正历史；片段非步数、力/姿态5ms时差保留。goal ACTIVE/采纳null，既有子步观测问题待答复，不追加训练。[清单](../data/manifests/supermimic_q1_gait_goal_saved_sample_runs_20261030.json)。
+
 2026-10-30：[GAIT_GOAL01逐5ms观测准备V02](README_Q1_GAIT_GOAL01_SUBSTEP_PREPARATION_20261030.md)。异步返回与失败重复计数两项CPU反例已修，17测试/真实imports通过，282源plan准备，0原生环境前向积分优化。原两线各两走/两条件/三重复，每线最多3180控制/12720子步，范围预算相同；旧plan保留历史。新物理观测范围问题仍待用户答复，未验证实际轨迹等价；原901.18秒/失败/采纳null/goal ACTIVE与监督缓存保持。[V02清单](../data/manifests/supermimic_q1_gait_goal_substep_preparation_v02_20261030.json)/[V02精确plan](../data/manifests/supermimic_q1_gait_goal_substep_observation_plan_v02_20261030.json)。
 
 2026-10-30：[GAIT_GOAL01保存PPO检查点与学习链路](README_Q1_GAIT_GOAL01_SAVED_PPO_CHAIN_20261030.md)。3检查点/113轮日志/39张量行、5测试、0推理积分采样优化，3工件72249B三端SHA/14学习源码匹配历史冻结。最终head各Adam2060/critic2260且参数已变；固定std.1、预热残差约.01485rad、训练alpha0混合均核实，仍缺逐步优势/裁剪/梯度，不能定噪声或critic单因。原901.18实训秒/失败/goal ACTIVE/采纳null保持，不追加训练。[清单](../data/manifests/supermimic_q1_gait_goal_saved_ppo_chain_20261030.json)。

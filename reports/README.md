@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 15:56 SOLE01_INIT：[H32逐步起点记录的离线准备](README_SUPERMIMIC_Q1_H32_INIT_AUDIT_20261029.md)通过8测试/3编译/CLI；分别记录重置、每步动作/历史/可见求解器与RNG，原断言保留，无新推理/物理/optimizer。单次桥恢复在认证交互Broken pipe，远端仍UNKNOWN；GitHubSSH亦超时，发布/镜像待核，未追加H32/PPO或训练。[范围与源码](../data/manifests/supermimic_q1_h32_init_audit_20261029.json)。
+
 2026-10-29 15:23 SOLE01：[最后旁收据同步遇断线](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)。结果5记录272945字节三端SHA和4失败工件17254字节Mac/25386已核；最后发布旁收据与新状态服务器镜像待，当前连接UNKNOWN。仅补小记录，不重跑诊断或训练。[有界核查](../data/manifests/supermimic_q1_sole_native_connection_unknown_20261029.json)。
 
 2026-10-29 SOLE01：[H32原生两次起点保护与未测项](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)。V02仍起点不匹配，没有物理方向结论，0optimizer；依赖的PPO16/4096未测。4失败工件17254字节Mac/25386大小SHA、来源前后SHA与进程/GPU终态已核，不第三次物理运行或新正式训练。[实测清单](../data/manifests/supermimic_q1_sole_native_results_20261029.json)。

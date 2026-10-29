@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
+import random
 import subprocess
 import sys
 
@@ -38,6 +39,7 @@ def run(args):
         sys.path[:0] = [str(HERE), str(args.runtime / "src"), str(args.runtime),
                        str(HERE.parent / "project_tools"), str(HERE.parent / "supermimic_q1_hp")]
         from check_contract import identity
+        from initialization_audit import InitializationAudit
         from prepare_q1_gait_review import FIXED
         from unisupermimic.rl.algos.supermimic import networks
         from unisupermimic.rl.algos.supermimic.geometry import flatten_state, unflatten_state
@@ -68,10 +70,12 @@ def run(args):
                 raise ValueError("Fixed reference changed")
         native = args.runtime / "src/unisupermimic"
         source_paths = [Path(__file__), args.checkpoint, args.library, scene,
+                        HERE / "initialization_audit.py", HERE.parent / "supermimic_q1_hp/worker.py",
                         native / "rl/algos/supermimic/learner.py",
                         native / "rl/algos/supermimic/networks.py",
                         native / "tasks/motion_tracking/q1/supermimic/mdp_base.py"]
         sources = [identity(path) for path in source_paths]
+        result["sources_before"] = sources
         saved = torch.load(args.checkpoint, map_location=device, weights_only=True)
         cfg = SuperMimicConfig(**{f.name: saved["args"][f.name]
                                  for f in fields(SuperMimicConfig) if f.name in saved["args"]})
@@ -128,6 +132,8 @@ def run(args):
                     parameter.copy_(base_parameters[index] if gradients is None else
                                     base_parameters[index] - step * gradients[index])
 
+        initialization_audit = InitializationAudit(result.setdefault("initialization_audit", {}))
+
         def warm(fresh_environment=False):
             nonlocal control_steps, env
             set_parameters(0.)
@@ -146,21 +152,63 @@ def run(args):
                     _, env, _ = prepare(preparation_args, num_envs=args.envs, eval_mode=True)
                 env.reset_to_frames(initial_frames)
                 import warp as wp
+                import numpy as np
                 wp.to_torch(env.backend._device_data.qacc_warmstart).zero_()
                 history = None
+
+                def capture(stage, values):
+                    wp.synchronize()
+                    torch.cuda.synchronize(device)
+                    python_state, numpy_state = random.getstate(), np.random.get_state()
+                    arrays = {key: value.detach().float().cpu().numpy() if value.dtype == torch.bfloat16
+                              else value.detach().cpu().numpy() for key, value in values.items()}
+                    arrays.update({"rng.cpu": torch.get_rng_state().cpu().numpy(),
+                                   "rng.cuda": torch.cuda.get_rng_state(device).cpu().numpy(),
+                                   "rng.python": np.asarray(python_state[1], dtype=np.uint64),
+                                   "rng.python_version": np.asarray(python_state[0]),
+                                   "rng.python_gauss": np.asarray([python_state[2] is not None,
+                                                                 python_state[2] or 0.]),
+                                   "rng.numpy": numpy_state[1],
+                                   "rng.numpy_position": np.asarray(numpy_state[2:])})
+                    initialization_audit.record(stage, arrays)
+
                 with torch.no_grad():
+                    initialization_audit.begin("reference" if not fresh_environment else "fresh_environment", {
+                        "policy_sha256": digest(learner.pi),
+                        "policy_training_mode": learner.pi.training,
+                        "learner_mdp_is_environment_owned": learner.mdp is env.supermimic_mdp,
+                        "grad_enabled_at_action": torch.is_grad_enabled(),
+                        "cuda_autocast_enabled": torch.is_autocast_enabled("cuda"),
+                        "autocast_cache_enabled": torch.is_autocast_cache_enabled(),
+                        "float32_matmul_precision": torch.get_float32_matmul_precision(),
+                        "cuda_matmul_allow_tf32": torch.backends.cuda.matmul.allow_tf32,
+                        "bf16_snapshot_conversion": "Exact conversion to FP32 for array comparison",
+                        "coverage": "Selected native arrays, not a complete serializable solver checkpoint"})
                     for index in range(cfg.hist):
+                        wp.synchronize()
+                        torch.cuda.synchronize(device)
                         info = env.state.info[SUPERMIMIC_STATE_KEY]
                         records.append({k: info[k].clone() for k in ("s", "f", "xi", "a_prev")})
                         measured = mdp.obs(unflatten_state(info["s"]), info["a_prev"], info["xi"], info["f"])
                         history = measured[:, None].repeat(1, cfg.hist, 1) if history is None else torch.cat((history[:, 1:], measured[:, None]), 1)
+                        values = {"state." + key: info[key] for key in ("s", "f", "xi", "a_prev")}
+                        values["policy.history"] = history
+                        native_data = env.backend._device_data
+                        for key in ("qpos", "qvel", "qacc_warmstart", "ctrl", "time", "qacc",
+                                    "qfrc_applied", "xfrc_applied", "act"):
+                            if hasattr(native_data, key):
+                                values["native." + key] = wp.to_torch(getattr(native_data, key))
+                        capture(f"state_{index:02d}", values)
                         if index < cfg.hist - 1:
-                            action = learner.pi(history, mdp.goal(info["f"], cfg.goal_frames))
+                            goal = mdp.goal(info["f"], cfg.goal_frames)
+                            action = learner.pi(history, goal)
+                            capture(f"action_{index:02d}", {"policy.action": action, "policy.goal": goal})
                             stepped = env.step(action)
                             control_steps += args.envs
                             if bool(stepped.info[SUPERMIMIC_TRANSITION_KEY]["done"].any()):
                                 raise ValueError("Warm-up terminated a fixed H32 sample")
                 records[-1]["warmstart"] = wp.to_torch(env.backend._device_data.qacc_warmstart).clone()
+                initialization_audit.finish()
             start = {k: v.clone() for k, v in records[-1].items()}
             history = {k: torch.stack([row[k] for row in records], 1) for k in ("s", "f", "xi", "a_prev")}
             return start, history

@@ -1,0 +1,83 @@
+{
+  "status": "OFFLINE_INITIALIZATION_TRACE_READY_NATIVE_NOT_RUN",
+  "captured_utc": "2026-10-29T07:56:02+00:00",
+  "phase": "SOLE01_INIT",
+  "baseline_commit": "6772cf59b449bfbf1b37baf11125cc95536ac4d2",
+  "scope": "Continue SuperMimic base and PPO work through offline initialization instrumentation; retain the V02 failed-guard stop rule.",
+  "new_policy_inference_calls": 0,
+  "new_control_transitions": 0,
+  "new_integration_substeps": 0,
+  "optimizer_updates": 0,
+  "training_launched": false,
+  "user_accepted_checkpoint": null,
+  "agents_started": false,
+  "goals_modified": false,
+  "automations_modified": false,
+  "connection": {
+    "status": "UNKNOWN",
+    "bounded_windows_recovery": "One authorized non-echo authentication interaction ended in Broken pipe; no bridge or container command established.",
+    "authentication_rejected": false,
+    "password_correctness_determined": false,
+    "additional_bridge_probe_after_failure": false,
+    "credentials_saved": false,
+    "remote_hardware_or_job_status_checked": false
+  },
+  "implementation": {
+    "state_snapshots_per_completed_warmup": 10,
+    "action_snapshots_per_completed_warmup": 9,
+    "additional_env_steps": 0,
+    "existing_terminal_guard_atol": 0.000002,
+    "existing_terminal_guard_rtol": 0.00002,
+    "guards_relaxed": false,
+    "random_state_difference_separated_from_state_action_difference": true,
+    "complete_solver_checkpoint_claimed": false,
+    "native_dtype_compatibility_validated": false,
+    "upstream_source_reread": "NOT_COMPLETED_HTTP_CONNECTION_RESET; no replacement upstream version used"
+  },
+  "tests": {
+    "command": "python3 -m unittest discover -s script/supermimic_q1_sole -p test_initialization_audit.py -v",
+    "run": 8,
+    "passed": 8,
+    "skipped": 0,
+    "py_compile_files": 3,
+    "cli_help_passed": true,
+    "diff_check_passed": true,
+    "initial_offline_failure": "NumPy int64 maximum-difference index was not JSON serializable; converted to Python int and added scalar/nonfinite receipt coverage."
+  },
+  "files": [
+    {
+      "relative_path": "script/supermimic_q1_sole/h32_direction.py",
+      "bytes": 22931,
+      "sha256": "bc3f2c9d45ece23a4ceecfb370fc6812842b83bf1d1f3f9ab1a39f752f1acf9c"
+    },
+    {
+      "relative_path": "script/supermimic_q1_sole/initialization_audit.py",
+      "bytes": 4293,
+      "sha256": "99f30aa019de67567645c9dbf0406178345d0e1f287a2ac6ea90e3edd32db40d"
+    },
+    {
+      "relative_path": "script/supermimic_q1_sole/test_initialization_audit.py",
+      "bytes": 4235,
+      "sha256": "fae72266e4430baf420a2fdf5445ecb4dce4891ac3ff71f7e4d6beae3a8a9dee"
+    },
+    {
+      "relative_path": "logs/session_records/sole01_h32_init_audit_20261029.log",
+      "bytes": 995,
+      "sha256": "e04e496fe56bd737dbe7997b5fe3ebd7530f1d9c443090f560ba83cfc73160d4"
+    }
+  ],
+  "publication": {
+    "branch": "Q1",
+    "github_current_head_verified": false,
+    "github_read_check": "SSH connection to github.com port22 timed out",
+    "github_push": "PENDING_RESULT_IN_GIT_HISTORY_AND_LOCAL_PUBLICATION_RECEIPT",
+    "mac_main_root_mirror": "PENDING_SIZE_AND_SHA_RECEIPT",
+    "server_mirror": "PENDING_CONNECTION",
+    "three_way_verified": false
+  },
+  "not_run": [
+    "Third native H32 physical comparison",
+    "PPO16/4096 preflights",
+    "Formal training or old training restart"
+  ]
+}

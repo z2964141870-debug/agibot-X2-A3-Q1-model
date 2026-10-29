@@ -1,0 +1,48 @@
+# Q1 H32起点差异的离线诊断准备
+
+记录日期：2026-10-29，北京时间15:56。阶段：SOLE01_INIT。状态：逐步只读记录实现及8项离线测试通过；原生验证未运行，连接UNKNOWN，GitHub和服务器同步待核。底座与PPO两线继续，尚未查明起点差异的原因。
+
+## 目标与范围
+
+用户要求在SuperMimic内同时改进底座和PPO适配，并在连接恢复后继续。本轮延续[SOLE01](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，没有沿用过期夜间预算，也没有第三次H32物理运行、PPO16/4096预检或正式训练。原V01/V02失败收据保留，候选采纳null，原监督/其他自动任务不变，不启用agent或旧goal。
+
+V02仅给出warm-up末端状态最大差.07455075、上一动作差.015625及warmstart差13.735565；原收据没有逐步状态，不能倒推出从哪一步开始不同。两次原运行合计576控制转移/2304子步、0optimizer，没有有效物理方向结论。
+
+## 实现与源码线索
+
+`script/supermimic_q1_sole/initialization_audit.py`提供纯NumPy差异记录，`h32_direction.py`在原10个状态/9次动作的warm-up里接入。每步记录状态、历史观测、动作、goal和可见的qpos/qvel/qacc/warmstart/ctrl/time/外力/act数组；同步Torch/Warp后只读复制。没有增加env.step或优化器调用，原末端状态/历史断言及atol2e-6/rtol2e-5保留。
+
+收据分别给出最早状态/动作差异和最早随机状态差异，避免把随机数状态不同直接当作物理因果。记录Torch CPU/CUDA、Python和NumPy随机状态，另记录策略参数SHA、training模式、autocast/cache、TF32以及MDP对象归属。BF16数组精确转成FP32供NumPy比较；这不改变网络实际推理精度。
+
+本地源代码给出两条需要核查的初始化路径差异：初始环境prepare之后还构造了三个网络，而fresh分支重新prepare、保留既有网络；prepare会设置全局seed0。另一个差异是fresh分支替换了env，但仍持有初始mdp/motion对象。新增记录暴露这些路径，当前没有证明任一条导致数值差异，未据此改重置语义、放宽保护或归责BF16/世界模型。
+
+这些只是选定数组的观察，不能称完整可恢复的MuJoCo Warp求解器快照。原生learner/networks在Mac没有缓存，本轮固定提交的HTTP读取遇连接重置，未取得或换用其他版本源码，不能声称重新核过上游实现。
+
+## 实际验证
+
+在持久权威Git的Q1分支执行：
+
+```sh
+python3 -m unittest discover -s script/supermimic_q1_sole -p 'test_initialization_audit.py' -v
+python3 -m py_compile script/supermimic_q1_sole/initialization_audit.py script/supermimic_q1_sole/h32_direction.py script/supermimic_q1_sole/test_initialization_audit.py
+python3 script/supermimic_q1_sole/h32_direction.py --help
+git diff --check
+```
+
+8/8测试通过，0跳过；覆盖原浮点容差与字节变化、整数精确比较、shape/dtype/非有限/空数组、动作先于状态偏离、RNG独立分类、参考副本、求解器/缺字段、阶段缺失及JSON序列化。首轮离线测试发现NumPy int64索引不能直接JSON序列化，已转Python int并增加标量/非有限收据反例，最终通过。该离线修正不是训练重试。
+
+三文件编译、CLI help和diff检查通过。日志位于`logs/session_records/sole01_h32_init_audit_20261029.log`，995字节。没有Torch/MuJoCo实际导入、策略推理、积分或optimizer更新，不能将这组测试记为原生起点问题已修复。代码与范围见[清单](../data/manifests/supermimic_q1_h32_init_audit_20261029.json)。
+
+## 连接与保存
+
+用户本次“应该好了，继续”之后，仅有的一次Windows桥恢复在非回显认证交互中Broken pipe，没有建立18873转发，没有执行容器命令。它不是Permission denied，不能据此判密码不正确。凭证未写入文件/命令参数/Git。本轮不重复桥探测；远端身份、GPU和作业当前均UNKNOWN，旧退出/GPU15MiB/OOM0仅历史。
+
+GitHub SSH只读核查也在连接22端口时超时。代码和记录先保存在权威Git；提交、Mac主根逐大小/SHA与push结果以本轮同步收据及Git历史为准。GitHub独立40位远端核验、25386镜像均未完成，不称三端一致。
+
+旧待补范围仍是`supermimic_q1_sole_native_publication_20261029.json`及6772cf5的五个小状态文件；本轮新增来源/测试/日志/README/清单也待服务器同步。权重和大NPZ仍SERVER_LOCAL_ONLY，未搬运。
+
+## 下一步
+
+连接成功后先核身份、GPU占用和来源，再补小记录镜像、读取固定原生实现，检查新增记录在实际Torch/Warp数据类型上的兼容性。V02失败后的停止规则仍生效：本轮没有安排第三次物理运行或依赖的PPO16/4096，更没有新正式训练。先通过离线与只读证据缩小差异，再据证据确定下一次独立验证范围。
+
+底座脚底Z候选仍有原尺度信号弱的限制；PPO候选仍只有CPU契约。两者的学习信号、更新稳定性和净物理收益分别核查，不能用诊断工具通过或单一奖励定义替换宣称自然步态改善。

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 15:56 SOLE01_INIT：[逐步只读起点记录已离线验证](README_SUPERMIMIC_Q1_H32_INIT_AUDIT_20261029.md)，8/8测试、3编译与CLI通过，原H32一致性保护保留；尚未用原生Torch/Warp验证，不称起点原因已隔离。单次Windows恢复在认证交互Broken pipe，未建桥或执行容器命令，不判密码错；远端/GPU仍UNKNOWN，GitHubSSH亦超时。仅本地保存代码/记录，远端与25386镜像待核；无第三次H32/PPO预检/新训练/agent/goal或自动任务修改，采纳null。[清单](../data/manifests/supermimic_q1_h32_init_audit_20261029.json)。
+
 2026-10-29 15:23 SOLE01：[结果记录已核，发布旁收据镜像待连接恢复](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)。结果d359019的5记录272945字节此前三端大小SHA通过，4失败工件17254字节Mac/25386已核；旁收据d40a534已独立GitHub/Mac，但镜像时18873拒绝连接。一次本地核查无监听/双master/socket，当前远端UNKNOWN，保留最后退出/GPU15MiB/OOM0为历史。只待补旁收据和本次小状态记录，不重跑H32/PPO/训练或旧审计；采纳null/监督不改。[断线范围](../data/manifests/supermimic_q1_sole_native_connection_unknown_20261029.json)。
 
 2026-10-29 SOLE01：[H32原生V02仍未通过相同起点保护](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，状态最大差.07455075，帧/上下文相同而动作/warmstart不同；本次288控制转移/1152子步/0optimizer，没有有效物理方向结论。两次失败4收据日志17254字节Mac/25386大小SHA、关键来源前后SHA/进程退出/GPU释放/OOM0已核。PPO16/4096按依赖规则未执行，无第三次原生运行或新正式训练；底座/PPO CPU契约保留，不能称步态改善，采纳null/监督不改。[实测清单](../data/manifests/supermimic_q1_sole_native_results_20261029.json)。下方V02待运行仅历史。

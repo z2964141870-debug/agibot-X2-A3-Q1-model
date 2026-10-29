@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29用户新要求：[MorphMimic代码及原版复现](README_MORPHMIMIC_REPRO_20261029.md)。公开aa40fe46已核8关键源码160435字节/5AST，官方浏览器三机器人Walk运行约.7-.8倍实时；独立训练/回放尚未复现，Q1不在29槽位现成支持范围。下一步先独立单G1环境/真实tiny库/零更新与时钟guard，再包含actor/critic更新的小闭环，不把默认500轮WM-only内的60轮示例当学习通过。25386仍UNKNOWN、服务器镜像待恢复；无新Q1物理/推理/训练，原两线/PPO方向及采纳null保留，监督/其他任务不改。[清单](../data/manifests/morphmimic_repro_readiness_20261029.json)。
+
 2026-10-29用户已要求继续两线推进：[脚底时序诊断与独立候选](README_SUPERMIMIC_Q1_DUALTRACK_DIAGNOSIS_20261029.md)已实现/9测试通过，5保存数据分析产物128283字节；601秒停走参考右脚抬高窗口内94.4%-100%实际帧仍贴近地面，整片p95不足以判换脚改善。底座下一项原生H32方向及足端脚底Z候选，PPO下一项只替换摆脚踝Z为脚底Z；候选尚未实现成可训配方，无新物理/推理/优化。25386本机18873拒绝连接，一次有界核查无监听/socket，远端UNKNOWN，服务器镜像待恢复，不重复探测/重启。采纳null、原监督ACTIVE每10分钟，整体目标未结算。[两手抓方向](README_SUPERMIMIC_Q1_FRAMEWORK_DIRECTION_20261029.md)保留。
 
 2026-10-29研究：[四项简报](research/2026-10-29/README.md)记录RSL-RL 5.5.2、独立SuperMimic修复、Rollback与动作Token。96请求均成功，12固定文本/两完整树静态核验；当前安装RSL为5.5.1、Q1批量整除，未将新修复认定为训练退化根因。main维护完整去重，Q1保留工程状态；本轮无物理/推理/优化或新假设。[检查](README_RESEARCH_CHECK_20261029.md)/[回执](../data/manifests/research_watch_sync_20261029.json)。

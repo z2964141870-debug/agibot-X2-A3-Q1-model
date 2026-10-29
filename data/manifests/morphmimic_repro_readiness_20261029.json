@@ -1,0 +1,181 @@
+{
+  "status": "MORPHMIMIC_SOURCE_REVIEW_AND_OFFICIAL_BROWSER_DEMO_VERIFIED",
+  "captured_utc": "2026-10-29T04:27:34.286438+00:00",
+  "upstream": {
+    "status": "PINNED_UPSTREAM_SOURCE_REVIEW_SNAPSHOT",
+    "repository": "https://github.com/lzyang2000/morphmimic",
+    "commit": "aa40fe46a7fa995ba7a7354ad065a2c8ad64a302",
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 20556,
+        "git_blob_sha1": "76a1acac0f56544308213959765616a143f929d4",
+        "sha256": "28fc6fbf1d2773364bbb8b13821b1b28d34750d92194384174b57a7f6b57a67e",
+        "check": "NOT_PYTHON"
+      },
+      {
+        "path": "LICENSE",
+        "bytes": 11353,
+        "git_blob_sha1": "795b6ea540bf6dfbc1372f5e0321c385f4126e14",
+        "sha256": "4675a3ebc02e6cf846e2f4846df7009d556d17224ff91ccd7275d49132c15364",
+        "check": "NOT_PYTHON"
+      },
+      {
+        "path": "pyproject.toml",
+        "bytes": 1355,
+        "git_blob_sha1": "d4dac2fcea42e97f259711c8284b858d2f2c1a9e",
+        "sha256": "80134b4ec138802502727cd109f95137297a7b815234f99b8fdbff22c5fa8e39",
+        "check": "NOT_PYTHON"
+      },
+      {
+        "path": "src/morphmimic/robots/spec.py",
+        "bytes": 6508,
+        "git_blob_sha1": "85dff3ab3147a6e73aa449dd2ea3741122434bd5",
+        "sha256": "96606c4c3bfc6bb57bcce2481519918319a959bd5352637083f431ea7e681e1a",
+        "check": "HOST_AST_PARSED_NOT_EXECUTED"
+      },
+      {
+        "path": "src/morphmimic/robots/__init__.py",
+        "bytes": 1481,
+        "git_blob_sha1": "aa2d6239ea8cb6f259d4168cc50265810a0d84ae",
+        "sha256": "7b9f0399463ad56066b103f7aae8a49031a5bcbdf18167fd6ebf3092d02b0fbd",
+        "check": "HOST_AST_PARSED_NOT_EXECUTED"
+      },
+      {
+        "path": "src/morphmimic/constants.py",
+        "bytes": 4776,
+        "git_blob_sha1": "797f95515dca08b77be0a656d1c5b4073ebf50b6",
+        "sha256": "81aa1339e620a7a9bcf241db78025fc10e9126e83adbabf729dd1b35e501fc58",
+        "check": "HOST_AST_PARSED_NOT_EXECUTED"
+      },
+      {
+        "path": "src/morphmimic/scripts/train.py",
+        "bytes": 9869,
+        "git_blob_sha1": "4f11648dc1dca1d5335c79f011da1a3e0804119d",
+        "sha256": "ed3587ef325cf48a274694b2d5def00395b64b25aa604620e9c51dd375c5a1cf",
+        "check": "HOST_AST_PARSED_NOT_EXECUTED"
+      },
+      {
+        "path": "src/morphmimic/train/trainer.py",
+        "bytes": 104537,
+        "git_blob_sha1": "1c6162c049498914f338be31ae00fb50b0bc7be1",
+        "sha256": "82519fcb992471eee910dcacf7f962a1e02174e4f7b32cd9d763105220993c67",
+        "check": "HOST_AST_PARSED_NOT_EXECUTED"
+      }
+    ],
+    "full_checkout": false,
+    "third_party_submodules_downloaded": false,
+    "dependencies_installed": false,
+    "training_started": false
+  },
+  "source_snapshot_total_bytes": 160435,
+  "plan": {
+    "status": "SOURCE_AND_DEMO_CHECKED_TRAINING_NOT_REPRODUCED",
+    "upstream_commit": "aa40fe46a7fa995ba7a7354ad065a2c8ad64a302",
+    "canonical_joints": 29,
+    "supported_robots": [
+      "g1",
+      "x2",
+      "t2"
+    ],
+    "default_config": {
+      "num_envs": 4096,
+      "wm_batch": 2048,
+      "imag_batch": 4096,
+      "wm_only_iters": 500,
+      "horizon": 32,
+      "critic_target_clip": true,
+      "critic_layer_norm": true,
+      "wm_layer_norm": true,
+      "avoid_clip_end": true,
+      "replay_capacity": 1000
+    },
+    "upstream_60_iteration_example_reaches_policy_update": false,
+    "proposed_engineering_smoke": {
+      "robot": "g1",
+      "num_envs": 64,
+      "wm_batch": 128,
+      "imag_batch": 128,
+      "horizon": 32,
+      "wm_only_iters": 500,
+      "iterations": 600,
+      "compile": "none",
+      "executed": false,
+      "paper_performance_replication": false
+    },
+    "required_before_training": [
+      "Restore the authorized 25386 connection and verify the current GPU/driver/environment.",
+      "Obtain a complete pinned checkout plus required submodules in a separate server environment.",
+      "Obtain G1-specific tiny reference clips; Q1 reference files are not drop-in G1 data.",
+      "Pass zero-optimizer environment and checkpoint/roundtrip checks.",
+      "Wrap any new training run in an independent wall-clock budget guard, at most the existing per-round cap; no automatic retries or extensions.",
+      "Verify actual policy and critic update counters before claiming the learning chain ran."
+    ],
+    "user_accepted_checkpoint": null
+  },
+  "local_records": [
+    {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/references/morphmimic_review_20261029/tree.json",
+      "bytes": 67138,
+      "sha256": "4927712bc83cbd3ae5c78240bbd668ae52a2994cf6870dff60aabca4229128eb"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/references/morphmimic_review_20261029/source_receipt.json",
+      "bytes": 2449,
+      "sha256": "ccd2a15a3c53e0ccace50f6d5a3c560dcd8908c9f58ce18d63436cb93bbd764f"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/references/morphmimic_review_20261029/repro_plan.json",
+      "bytes": 1517,
+      "sha256": "e3e7df94a7bb53b95970c663aa63e074f5ea682ec72f73a3575585aef47843e8"
+    }
+  ],
+  "checks": {
+    "git_tree_complete": true,
+    "downloaded_blobs_match_pinned_tree": true,
+    "python_source_files_ast_parsed": 5,
+    "upstream_modules_imported": false,
+    "upstream_dependencies_installed": false,
+    "full_repository_checkout": false,
+    "github_releases_at_check": [],
+    "browser_demo": {
+      "url": "https://lzyang2000.github.io/morphmimic/demo/",
+      "observed_robots": [
+        "Unitree G1",
+        "AgiBot X2 Ultra",
+        "Booster T2"
+      ],
+      "selected_clip": "Walk",
+      "status": "RUNNING_BELOW_REAL_TIME",
+      "displayed_speed_range": [
+        0.7,
+        0.8
+      ],
+      "official_policy_download_display": "49.1 MB",
+      "tab_retained": true,
+      "independent_offline_reproduction": false
+    }
+  },
+  "network": {
+    "github_https_git_query": "FAILED_TO_CONNECT_AFTER_75_SECONDS",
+    "raw_readme_and_pyproject": "TIMED_OUT_AT_30_SECONDS",
+    "fallback": "PUBLIC_GITHUB_API_PINNED_TREE_AND_BLOBS_SUCCEEDED",
+    "authorized_server": "UNKNOWN_PREVIOUS_BOUNDED_CHECK_NO_LISTENER_OR_CONTROL_SOCKET",
+    "server_repro_attempted": false
+  },
+  "scope": {
+    "new_q1_physics_or_inference": false,
+    "new_training": false,
+    "optimizer_updates": 0,
+    "old_training_restarted": false,
+    "new_agents": false,
+    "new_goals": false,
+    "automations_modified": false
+  },
+  "publication": {
+    "report": "reports/README_MORPHMIMIC_REPRO_20261029.md",
+    "git": "PENDING_ACTUAL_PUBLICATION_RESULT",
+    "mac_main_root": "PENDING_ACTUAL_SIZE_SHA_CHECK",
+    "server_25386": "PENDING_CONNECTION_RESTORATION"
+  }
+}

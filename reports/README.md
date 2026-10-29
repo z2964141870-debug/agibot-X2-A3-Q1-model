@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29：[MorphMimic源码与最小复现准备](README_MORPHMIMIC_REPRO_20261029.md)已核公开aa40fe46、8关键文件160435字节及5AST，官方在线G1/X2/T2 Walk实际运行；独立离线训练/Q1接入尚未完成。先原版单G1小闭环，再Q1与PPO对照；默认500轮WM预热使60轮例子不能证明actor更新。25386入口UNKNOWN，环境/数据/原生验证待恢复，无新训练。[清单](../data/manifests/morphmimic_repro_readiness_20261029.json)。
+
 2026-10-29用户要求继续两线推进：[脚底时序诊断及底座/PPO独立候选](README_SUPERMIMIC_Q1_DUALTRACK_DIAGNOSIS_20261029.md)已完成9测试和真实保存CSV分析，5产物128283字节，明确整片抬脚增高未必跟上参考时序；两条奖励候选与原生H32验证待，不宣称已训练改善。25386本机入口拒绝连接/远端UNKNOWN，服务器镜像待恢复；不重复探测/重启/新训练或agent，采纳null。原[两手抓方向](README_SUPERMIMIC_Q1_FRAMEWORK_DIRECTION_20261029.md)与ACTIVE监督保留。
 
 2026-10-29研究：[四项简报](research/2026-10-29/README.md)记录RSL-RL 5.5.2、独立SuperMimic修复、Rollback与动作Token。96请求均成功，12固定文本/两完整树静态核验；当前安装RSL为5.5.1、Q1批量整除，未将新修复认定为训练退化根因。main维护完整去重，Q1保留工程状态；本轮无物理/推理/优化或新假设。[检查](README_RESEARCH_CHECK_20261029.md)/[回执](../data/manifests/research_watch_sync_20261029.json)。

@@ -1,0 +1,318 @@
+{
+  "stage": "GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030",
+  "status": "SAVED_ONLY_ANALYSIS_DELIVERED_PHYSICAL_TARGET_NOT_ACHIEVED",
+  "captured_utc": "2026-10-29T19:54:32.891313+00:00",
+  "review_report": "reports/README_Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030.md",
+  "source_base_commit": "b6b4d2d3e766328c6a038cdeec4893280e9b941c",
+  "code": [
+    {
+      "relative_path": "script/supermimic_q1_gait_goal_analysis/saved_control_usage.py",
+      "bytes": 25653,
+      "sha256": "2e0699e751d166f069f8ec71f62e8603d003ad1722223a38d08fbf773dc434e2"
+    },
+    {
+      "relative_path": "script/supermimic_q1_gait_goal_analysis/test_saved_control_usage.py",
+      "bytes": 2701,
+      "sha256": "4f820bbddf034911346e2ce8b49db42a30718d8f87000efe6f5f3cefaa6215dc"
+    }
+  ],
+  "tests": {
+    "command": "python3 -m unittest discover -s script/supermimic_q1_gait_goal_analysis -p 'test_saved_control_usage.py' -v",
+    "passed": 5,
+    "failed": 0
+  },
+  "scope": {
+    "saved_clips": 45,
+    "saved_states": 12015,
+    "joint_rows": 990,
+    "foot_condition_rows": 450,
+    "median_timeseries_rows": 8010,
+    "ppo_training_rows": 113,
+    "historical_initial_and_stage_trace_sha_verified": true,
+    "new_integration_steps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0
+  },
+  "findings": {
+    "final_action_boundary_elements": 0,
+    "final_action_joint_elements": 264330,
+    "max_absolute_final_action": 6.355403072016829,
+    "final_action_bound": 20,
+    "residual_over95pct_elements": 0,
+    "saved_residual_joint_elements": 168210,
+    "max_absolute_saved_residual_rad": 0.021904051303863525,
+    "residual_radius_rad": 0.15,
+    "leg12_medians": [
+      {
+        "line": "base",
+        "label": "initial",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "target_actual_rmse_rad": 0.3131686622579057,
+        "target_reference_rmse_rad": 0.3977290389244318,
+        "actual_reference_rmse_rad": 0.2821054283646761,
+        "residual_rms_rad": 0
+      },
+      {
+        "line": "base",
+        "label": "initial",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "target_actual_rmse_rad": 0.3434806537692791,
+        "target_reference_rmse_rad": 0.44677276912922936,
+        "actual_reference_rmse_rad": 0.32401253331091234,
+        "residual_rms_rad": 0
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "target_actual_rmse_rad": 0.3146788387801206,
+        "target_reference_rmse_rad": 0.36893795793184725,
+        "actual_reference_rmse_rad": 0.26739147411862657,
+        "residual_rms_rad": 0
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "target_actual_rmse_rad": 0.32832517171692893,
+        "target_reference_rmse_rad": 0.3806024551662291,
+        "actual_reference_rmse_rad": 0.255779124547976,
+        "residual_rms_rad": 0
+      },
+      {
+        "line": "ppo",
+        "label": "initial",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "target_actual_rmse_rad": 0.31666168105135606,
+        "target_reference_rmse_rad": 0.40184055223066256,
+        "actual_reference_rmse_rad": 0.2853304845587366,
+        "residual_rms_rad": 0
+      },
+      {
+        "line": "ppo",
+        "label": "initial",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "target_actual_rmse_rad": 0.34571800428034083,
+        "target_reference_rmse_rad": 0.44412000254846645,
+        "actual_reference_rmse_rad": 0.32333883589084134,
+        "residual_rms_rad": 0
+      },
+      {
+        "line": "ppo",
+        "label": "stage_01",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "target_actual_rmse_rad": 0.31969134925691395,
+        "target_reference_rmse_rad": 0.397204074168391,
+        "actual_reference_rmse_rad": 0.28361603030324367,
+        "residual_rms_rad": 0.0035002217993019467
+      },
+      {
+        "line": "ppo",
+        "label": "stage_01",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "target_actual_rmse_rad": 0.3456782101212318,
+        "target_reference_rmse_rad": 0.4454440990795155,
+        "actual_reference_rmse_rad": 0.3281806418730009,
+        "residual_rms_rad": 0.004001740297173834
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "target_actual_rmse_rad": 0.3138718257695479,
+        "target_reference_rmse_rad": 0.39706134952933736,
+        "actual_reference_rmse_rad": 0.2832022911611351,
+        "residual_rms_rad": 0.005451838292946635
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "target_actual_rmse_rad": 0.34070434086790374,
+        "target_reference_rmse_rad": 0.4341735760705512,
+        "actual_reference_rmse_rad": 0.33042608855770733,
+        "residual_rms_rad": 0.005747571767131963
+      }
+    ],
+    "right_ankle_medians": [
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "target_actual_rmse_rad": 0.5335518438518827,
+        "target_range_rad": 1.7904363870620728,
+        "actual_range_rad": 0.6718599945306778,
+        "reference_range_rad": 0.7930358052253723,
+        "best_lag_ms": 80,
+        "best_correlation": 0.35152030742739715,
+        "zero_lag_correlation": -0.03456902074982299,
+        "best_lag_ms_repeats": [
+          80,
+          80,
+          80
+        ]
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "target_actual_rmse_rad": 0.6757028419423988,
+        "target_range_rad": 1.9536980390548706,
+        "actual_range_rad": 0.6866649985313416,
+        "reference_range_rad": 0.8468437194824219,
+        "best_lag_ms": 100,
+        "best_correlation": 0.7013802584997113,
+        "zero_lag_correlation": -0.1210672782557414,
+        "best_lag_ms_repeats": [
+          100,
+          100,
+          100
+        ]
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "target_actual_rmse_rad": 0.5347815168666701,
+        "target_range_rad": 1.93325275182724,
+        "actual_range_rad": 0.7213174253702164,
+        "reference_range_rad": 0.7930358052253723,
+        "best_lag_ms": 100,
+        "best_correlation": 0.5114885823052211,
+        "zero_lag_correlation": 0.01689316125830374,
+        "best_lag_ms_repeats": [
+          100,
+          100,
+          80
+        ]
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "target_actual_rmse_rad": 0.614540505225173,
+        "target_range_rad": 1.888884961605072,
+        "actual_range_rad": 0.9168802872300148,
+        "reference_range_rad": 0.8468437194824219,
+        "best_lag_ms": 100,
+        "best_correlation": 0.8001685949858689,
+        "zero_lag_correlation": 0.014179506987632465,
+        "best_lag_ms_repeats": [
+          120,
+          100,
+          100
+        ]
+      }
+    ],
+    "ppo_final_right_raised_windows": [
+      {
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "side": "right",
+        "condition": "raised_reference_10mm",
+        "frames": 44,
+        "residual_rms_rad": 0.004928584077855436,
+        "residual_toward_reference_fraction": 0.5416666666666666,
+        "target_squared_error_reduction_rad2": -0.0002554386247152913
+      },
+      {
+        "clip": "walk_ff_start_180_R_002__A071",
+        "side": "right",
+        "condition": "raised_reference_10mm",
+        "frames": 51,
+        "residual_rms_rad": 0.004914444573323606,
+        "residual_toward_reference_fraction": 0.5065359477124183,
+        "target_squared_error_reduction_rad2": -0.0003993406563364304
+      }
+    ],
+    "ppo_last_training_row": {
+      "step": 113,
+      "training_seconds": 600.0709074319457,
+      "transitions": 98304,
+      "sampled_residual14_rms_rad": 0.01587803287144582,
+      "latent_mean_rms": 0.03892821446061134,
+      "actor_optimizer_steps": 2060
+    }
+  },
+  "evaluation_context": {
+    "joint_offset_eval_branch": [
+      "command.xi[ids, 1:23] = 0.0"
+    ],
+    "eval_override_assignment": "motion['eval_mode'] = True"
+  },
+  "original_training_seconds": 901.178391956928,
+  "all_saved_analysis_three_way_size_sha256_matched": true,
+  "artifacts": [
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030/base_saved_control_usage.pdf",
+      "bytes": 103261,
+      "sha256": "91824712ad21d561ce1c66aa1b176058887017e3ae1a23c89f5cb5a0624e344c"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030/base_saved_control_usage.png",
+      "bytes": 1101235,
+      "sha256": "ee40299592b47a391e2c8683db2cadaed41f1c37a14638d1a026d8d557b60a93"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030/foot_control_conditions.csv",
+      "bytes": 128463,
+      "sha256": "843a743f20402874af6da7cb5c7f9c4822cfc7135cbb80f092480bb980cfeeec"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030/joint_metrics.csv",
+      "bytes": 369379,
+      "sha256": "2e32471a7b7dd278805e2da32a28331315091015470dd954eebcb34878e771a6"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030/median_control_timeseries.csv",
+      "bytes": 2623628,
+      "sha256": "f6d63cb0883eb46d8b3603473aa4b14c24065ee25022605193502273a39b6cb6"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030/ppo_saved_control_usage.pdf",
+      "bytes": 110504,
+      "sha256": "63668cce21b4cd2282b919b674f42211e53fe9ea36b953f26a9bcd5e9b8862fd"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030/ppo_saved_control_usage.png",
+      "bytes": 1052107,
+      "sha256": "7051f9c0fcd6441c13fab96c5adf33e6c3dd358f97fbb1cd0d1d2d718ba141b8"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030/ppo_training_residual.csv",
+      "bytes": 8292,
+      "sha256": "1ac7467e9972833c25990b405f35172f2bc15a6bb92b94a2ee83d80697860b53"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030/summary.json",
+      "bytes": 17989,
+      "sha256": "a314b1f687a221f9386cee71d273d9595b885a2b8e06057b5cd9c0505692d82d"
+    }
+  ],
+  "artifact_count": 9,
+  "artifact_total_bytes": 5514858,
+  "execution_log": {
+    "relative_path": "logs/session_records/q1_gait_goal_saved_control_usage_20261030.log",
+    "bytes": 1186,
+    "sha256": "c51e49507288723ceccac50e079845cd262992e054ec895defae31a6adc76d20"
+  },
+  "visually_reviewed_pngs": 2,
+  "native_training_code_modified": false,
+  "goal_status": "active",
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "new_training_requires_explicit_user_decision": true,
+  "agents_started": false,
+  "other_automations_modified": false,
+  "limitations": [
+    "Saved targets produce the aligned post-state after20ms; preceding state is initial or prior saved state.",
+    "Saved residual precedes final action clamp. Nominal target is inferred only for elements strictly inside final bounds.",
+    "Boundary membership is not proof of a nonzero clipped amount; upstream teacher clipping cannot be measured directly.",
+    "Pose targets and residuals are not motor torque/current. Actuator saturation and feasible authority cannot be concluded.",
+    "Command-to-reference error reduction holds the observed teacher command fixed; not a new physical policy intervention.",
+    "Best0..200ms centered correlation is descriptive, uses equal sample counts, and is not a causal actuator delay.",
+    "Deterministic evaluation head output and sampled training residual RMS describe different distributions.",
+    "Phase/geometry/force are reused from the prior saved-only audit; native force is final5ms, not20ms impulse.",
+    "Framewise medians in figures differ from medians of per-repeat summary statistics.",
+    "Cross-stage differences do not isolate a failure cause or establish that increasing residual radius would help."
+  ]
+}

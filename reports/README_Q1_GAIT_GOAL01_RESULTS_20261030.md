@@ -64,3 +64,5 @@ PPO服务器原pipeline因缺ffprobe为FAILED并完整保留；已有视频通�
 [完整原值、持久化和三端清单](../data/manifests/supermimic_q1_gait_goal_results_20261030.json)；[实施与故障历史](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。
 
 后续仅用保存轨迹完成了[左右脚、共同承重帧和时间分段拆解](README_Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030.md)，0新积分/推理/优化；发现局部抬脚收益并未组成稳定左右交替，不改变本页原门、原数值和负面结论。
+
+另已完成[保存奖励方向/站稳覆盖](README_Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030.md)与[保存指令幅度/关节响应](README_Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030.md)：原姿态奖励存在，PPO抬脚局部信号并非简单被淹没；本次确定性残差很小且未触及半径上限。均为离线诊断，不能替代真实卸载/抬脚或隔离训练失败的唯一原因。

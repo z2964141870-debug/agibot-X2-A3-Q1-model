@@ -1,0 +1,671 @@
+{
+  "stage": "GAIT_GOAL01_PPO_GATE02_TRAINING_TERMINAL",
+  "status": "TRAINING_COMPLETED_BY_PHYSICAL_REGRESSION_SAVED_DELIVERY_PENDING",
+  "root": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029",
+  "source_commit": "cccefe08e6d9d5950b874cc6798f3e168cc47a6b",
+  "controller_at_observation": {
+    "status": "RUNNING",
+    "line": "ppo",
+    "process": {
+      "pid": 218003,
+      "start_ticks": 20379605,
+      "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+    },
+    "started_utc": "2026-10-29T16:09:11.152963+00:00",
+    "code_commit": "cccefe08e6d9d5950b874cc6798f3e168cc47a6b",
+    "automatic_retry": false,
+    "phase": "delivery",
+    "updated_utc": "2026-10-29T16:26:58.544580+00:00",
+    "training_seconds": 600.0709074319457
+  },
+  "worker_receipt": {
+    "status": "TRAINING_COMPLETED",
+    "line": "ppo",
+    "started_utc": "2026-10-29T16:09:28.353987+00:00",
+    "code_commit": "cccefe08e6d9d5950b874cc6798f3e168cc47a6b",
+    "training_seconds": 600.0709074319457,
+    "maximum_training_seconds": 1200,
+    "user_accepted_checkpoint": null,
+    "updated_utc": "2026-10-29T16:26:45.392392+00:00",
+    "iteration": 113,
+    "actor_optimizer_steps": 2060,
+    "wm_optimizer_steps": 0,
+    "critic_optimizer_steps": 2260,
+    "phase": "evaluation",
+    "label": "stage_02",
+    "repeat": 2,
+    "frame": 450,
+    "next_gate_seconds": 600,
+    "outcome": "physical_regression",
+    "final_checkpoint": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/run/final.pt",
+      "bytes": 9812002,
+      "sha256": "96b9fbd99c1286016119ac0a110f30af15260d8a708b067fd88d926e7e5cd6c3"
+    },
+    "optimizer_steps": 4320,
+    "ended_utc": "2026-10-29T16:26:55.642069+00:00"
+  },
+  "training_worker_exists": false,
+  "actual_transitions": 11108352,
+  "gate02": {
+    "label": "stage_02",
+    "checkpoint": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/run/stage_02.pt",
+      "bytes": 9814087,
+      "sha256": "aae28352b17faf51f0431b3e2edd3b42ea0b44904841e1a4fdf54172bbc42900"
+    },
+    "traces": [
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_02_repeat0.npz",
+        "bytes": 91673102,
+        "sha256": "c7d22cfef25b5637af121b382cc65d2c7f9e2bc802f177600a77f6a41d6384ae"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_02_repeat1.npz",
+        "bytes": 91647455,
+        "sha256": "34f67cb3d1f284d2b0bad178cc0badf56603ccfc6c929a7ad9a0d37e44969711"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_02_repeat2.npz",
+        "bytes": 91668386,
+        "sha256": "51feeca405b7122acef44a6ddec7749bdfbbad586d1f2bd684eb8f9ea2a10d74"
+      }
+    ],
+    "training_seconds": 600.0709074319457,
+    "fixed_numeric_passed": false,
+    "decision": {
+      "status": "FIXED_NUMERIC_GATE_NOT_PASSED",
+      "fixed_numeric_passed": false,
+      "per_repeat": [
+        {
+          "clip": "walk_ff_stop_180_R_002__A095",
+          "repeat": 0,
+          "complete": true,
+          "guards": {
+            "torso_tilt_rms_rad": {
+              "baseline": 0.08619281649589539,
+              "candidate": 0.08774738758802414,
+              "ratio": 1.0180359704593571,
+              "passed": true
+            },
+            "upper_rmse": {
+              "baseline": 0.27634409070014954,
+              "candidate": 0.29019659757614136,
+              "ratio": 1.0501277477687143,
+              "passed": true
+            },
+            "wrist_relative_rmse": {
+              "baseline": 0.08542732149362564,
+              "candidate": 0.08732886612415314,
+              "ratio": 1.0222592093171197,
+              "passed": true
+            }
+          },
+          "progress_preserved": true,
+          "sustained_alternations_present": true,
+          "passed": true
+        },
+        {
+          "clip": "walk_ff_start_180_R_002__A071",
+          "repeat": 0,
+          "complete": true,
+          "guards": {
+            "torso_tilt_rms_rad": {
+              "baseline": 0.08875125646591187,
+              "candidate": 0.09438984841108322,
+              "ratio": 1.0635325309150645,
+              "passed": true
+            },
+            "upper_rmse": {
+              "baseline": 0.21177493035793304,
+              "candidate": 0.22758841514587402,
+              "ratio": 1.0746711839839291,
+              "passed": true
+            },
+            "wrist_relative_rmse": {
+              "baseline": 0.07164184749126434,
+              "candidate": 0.07264137268066406,
+              "ratio": 1.0139516947761795,
+              "passed": true
+            }
+          },
+          "progress_preserved": true,
+          "sustained_alternations_present": true,
+          "passed": true
+        },
+        {
+          "clip": "triumph_two_handed_001__A058",
+          "repeat": 0,
+          "complete": true,
+          "guards": {
+            "torso_tilt_rms_rad": {
+              "baseline": 0.224882110953331,
+              "candidate": 0.22612227499485016,
+              "ratio": 1.005514729634393,
+              "passed": true
+            },
+            "upper_rmse": {
+              "baseline": 0.3754482567310333,
+              "candidate": 0.376247763633728,
+              "ratio": 1.0021294729389767,
+              "passed": true
+            },
+            "wrist_relative_rmse": {
+              "baseline": 0.09376375377178192,
+              "candidate": 0.09438136965036392,
+              "ratio": 1.006586936355868,
+              "passed": true
+            },
+            "raised_peak_error": {
+              "baseline": 0.07085084915161133,
+              "candidate": 0.07184004783630371,
+              "ratio": 1.0139617054211394,
+              "passed": true
+            }
+          },
+          "passed": true
+        },
+        {
+          "clip": "walk_ff_stop_180_R_002__A095",
+          "repeat": 1,
+          "complete": true,
+          "guards": {
+            "torso_tilt_rms_rad": {
+              "baseline": 0.08566704392433167,
+              "candidate": 0.08864009380340576,
+              "ratio": 1.0347047095695299,
+              "passed": true
+            },
+            "upper_rmse": {
+              "baseline": 0.2872503697872162,
+              "candidate": 0.29720422625541687,
+              "ratio": 1.0346521972298037,
+              "passed": true
+            },
+            "wrist_relative_rmse": {
+              "baseline": 0.08390937745571136,
+              "candidate": 0.0874125063419342,
+              "ratio": 1.0417489557477868,
+              "passed": true
+            }
+          },
+          "progress_preserved": true,
+          "sustained_alternations_present": true,
+          "passed": true
+        },
+        {
+          "clip": "walk_ff_start_180_R_002__A071",
+          "repeat": 1,
+          "complete": true,
+          "guards": {
+            "torso_tilt_rms_rad": {
+              "baseline": 0.08727282285690308,
+              "candidate": 0.09397700428962708,
+              "ratio": 1.0768186614487825,
+              "passed": true
+            },
+            "upper_rmse": {
+              "baseline": 0.21669691801071167,
+              "candidate": 0.22043880820274353,
+              "ratio": 1.017267851459922,
+              "passed": true
+            },
+            "wrist_relative_rmse": {
+              "baseline": 0.05637205019593239,
+              "candidate": 0.07507168501615524,
+              "ratio": 1.3317181964329579,
+              "passed": false
+            }
+          },
+          "progress_preserved": true,
+          "sustained_alternations_present": true,
+          "passed": false
+        },
+        {
+          "clip": "triumph_two_handed_001__A058",
+          "repeat": 1,
+          "complete": true,
+          "guards": {
+            "torso_tilt_rms_rad": {
+              "baseline": 0.2249598354101181,
+              "candidate": 0.22598786652088165,
+              "ratio": 1.0045698429183565,
+              "passed": true
+            },
+            "upper_rmse": {
+              "baseline": 0.37564337253570557,
+              "candidate": 0.3761221468448639,
+              "ratio": 1.0012745448054265,
+              "passed": true
+            },
+            "wrist_relative_rmse": {
+              "baseline": 0.09382607787847519,
+              "candidate": 0.09433595836162567,
+              "ratio": 1.0054343152210934,
+              "passed": true
+            },
+            "raised_peak_error": {
+              "baseline": 0.0705890953540802,
+              "candidate": 0.07168318331241608,
+              "ratio": 1.0154993905623504,
+              "passed": true
+            }
+          },
+          "passed": true
+        },
+        {
+          "clip": "walk_ff_stop_180_R_002__A095",
+          "repeat": 2,
+          "complete": true,
+          "guards": {
+            "torso_tilt_rms_rad": {
+              "baseline": 0.0878107100725174,
+              "candidate": 0.08847498148679733,
+              "ratio": 1.0075648108725161,
+              "passed": true
+            },
+            "upper_rmse": {
+              "baseline": 0.2950464189052582,
+              "candidate": 0.29066237807273865,
+              "ratio": 0.9851411827034332,
+              "passed": true
+            },
+            "wrist_relative_rmse": {
+              "baseline": 0.08632387220859528,
+              "candidate": 0.09024009853601456,
+              "ratio": 1.045366666568849,
+              "passed": true
+            }
+          },
+          "progress_preserved": true,
+          "sustained_alternations_present": true,
+          "passed": true
+        },
+        {
+          "clip": "walk_ff_start_180_R_002__A071",
+          "repeat": 2,
+          "complete": true,
+          "guards": {
+            "torso_tilt_rms_rad": {
+              "baseline": 0.08489934355020523,
+              "candidate": 0.09404779225587845,
+              "ratio": 1.1077564127485071,
+              "passed": false
+            },
+            "upper_rmse": {
+              "baseline": 0.21252316236495972,
+              "candidate": 0.21858790516853333,
+              "ratio": 1.0285368556353345,
+              "passed": true
+            },
+            "wrist_relative_rmse": {
+              "baseline": 0.06392080336809158,
+              "candidate": 0.07304767519235611,
+              "ratio": 1.1427840600141852,
+              "passed": false
+            }
+          },
+          "progress_preserved": true,
+          "sustained_alternations_present": true,
+          "passed": false
+        },
+        {
+          "clip": "triumph_two_handed_001__A058",
+          "repeat": 2,
+          "complete": true,
+          "guards": {
+            "torso_tilt_rms_rad": {
+              "baseline": 0.2248716801404953,
+              "candidate": 0.22608725726604462,
+              "ratio": 1.005405647900126,
+              "passed": true
+            },
+            "upper_rmse": {
+              "baseline": 0.37552183866500854,
+              "candidate": 0.3761843740940094,
+              "ratio": 1.0017643059891168,
+              "passed": true
+            },
+            "wrist_relative_rmse": {
+              "baseline": 0.0937785655260086,
+              "candidate": 0.09435495734214783,
+              "ratio": 1.0061463065990208,
+              "passed": true
+            },
+            "raised_peak_error": {
+              "baseline": 0.07078175246715546,
+              "candidate": 0.07171151041984558,
+              "ratio": 1.0131355599470577,
+              "passed": true
+            }
+          },
+          "passed": true
+        }
+      ],
+      "per_walk": [
+        {
+          "clip": "walk_ff_stop_180_R_002__A095",
+          "metrics": {
+            "swing_sole_z_rmse_m": {
+              "baseline_median": 0.010840082541108131,
+              "candidate_median": 0.01086584571748972,
+              "ratio": 1.0023766586909175,
+              "limit": 0.8,
+              "passed": false
+            },
+            "loaded_slip_mps": {
+              "baseline_median": 0.10206295549869537,
+              "candidate_median": 0.11092739552259445,
+              "ratio": 1.0868526683416726,
+              "limit": 0.85,
+              "passed": false
+            }
+          },
+          "passed": false
+        },
+        {
+          "clip": "walk_ff_start_180_R_002__A071",
+          "metrics": {
+            "swing_sole_z_rmse_m": {
+              "baseline_median": 0.011905843392014503,
+              "candidate_median": 0.012016287073493004,
+              "ratio": 1.0092764265278826,
+              "limit": 0.8,
+              "passed": false
+            },
+            "loaded_slip_mps": {
+              "baseline_median": 0.14963191747665405,
+              "candidate_median": 0.1325950175523758,
+              "ratio": 0.8861412711165958,
+              "limit": 0.85,
+              "passed": false
+            }
+          },
+          "passed": false
+        }
+      ],
+      "full330_evaluation_reviewed": false,
+      "original_speed_video_reviewed": false,
+      "actual_clearance_and_switching_reviewed": false,
+      "overall_goal_achieved": false,
+      "user_accepted_checkpoint": null,
+      "protocol": {
+        "repeats": [
+          0,
+          1,
+          2
+        ],
+        "relative_error_guard": 1.1,
+        "minimum_forward_m": 0.05,
+        "minimum_baseline_forward_fraction": 0.9,
+        "minimum_sustained_alternations": 2,
+        "sole_metric": "RMSE over both feet at exact declared swing frames; neutral excluded",
+        "zero_baseline": "Cannot claim a relative gain from a zero baseline",
+        "force_scope": "Native final 5ms substep >5N; clearance/load transfer still require trajectory review"
+      },
+      "physical_regression_stop": true,
+      "validation_failures": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "library_summaries": {
+    "initial": [
+      {
+        "train": {
+          "clips": 300,
+          "failures": 13,
+          "completion": 0.9864996508195897,
+          "root_xy_rmse": 0.09734555152555306,
+          "upper_rmse": 0.3107024286190669,
+          "leg_rmse": 0.32229533717036246,
+          "wrist_relative_rmse": 0.08607318213830392
+        },
+        "validation": {
+          "clips": 30,
+          "failures": 0,
+          "completion": 1,
+          "root_xy_rmse": 0.06181860328651965,
+          "upper_rmse": 0.2963035196065903,
+          "leg_rmse": 0.2618932818373044,
+          "wrist_relative_rmse": 0.08377283674975236
+        }
+      },
+      {
+        "train": {
+          "clips": 300,
+          "failures": 12,
+          "completion": 0.985219545189809,
+          "root_xy_rmse": 0.10035274324007332,
+          "upper_rmse": 0.31110936363538105,
+          "leg_rmse": 0.3222838314870993,
+          "wrist_relative_rmse": 0.0858315509185195
+        },
+        "validation": {
+          "clips": 30,
+          "failures": 0,
+          "completion": 1,
+          "root_xy_rmse": 0.0703641390427947,
+          "upper_rmse": 0.29758677979310355,
+          "leg_rmse": 0.2670267408092817,
+          "wrist_relative_rmse": 0.08467637735108534
+        }
+      },
+      {
+        "train": {
+          "clips": 300,
+          "failures": 11,
+          "completion": 0.9893826752655773,
+          "root_xy_rmse": 0.10459785810206085,
+          "upper_rmse": 0.31138492862383527,
+          "leg_rmse": 0.32421510664125286,
+          "wrist_relative_rmse": 0.08598965038234989
+        },
+        "validation": {
+          "clips": 30,
+          "failures": 1,
+          "completion": 0.9936936936936936,
+          "root_xy_rmse": 0.06371675990521908,
+          "upper_rmse": 0.29608753671248755,
+          "leg_rmse": 0.26178873082002,
+          "wrist_relative_rmse": 0.08357017301023006
+        }
+      }
+    ],
+    "stage_01": [
+      {
+        "train": {
+          "clips": 300,
+          "failures": 13,
+          "completion": 0.9879016804726037,
+          "root_xy_rmse": 0.10835480249176423,
+          "upper_rmse": 0.3119361334045728,
+          "leg_rmse": 0.32514249995350836,
+          "wrist_relative_rmse": 0.08625276855503519
+        },
+        "validation": {
+          "clips": 30,
+          "failures": 0,
+          "completion": 1,
+          "root_xy_rmse": 0.062193626925970115,
+          "upper_rmse": 0.29609246999025346,
+          "leg_rmse": 0.262777670721213,
+          "wrist_relative_rmse": 0.08469932762285073
+        }
+      },
+      {
+        "train": {
+          "clips": 300,
+          "failures": 10,
+          "completion": 0.9872922588963636,
+          "root_xy_rmse": 0.10176575772619496,
+          "upper_rmse": 0.3115971039235592,
+          "leg_rmse": 0.3234605163087447,
+          "wrist_relative_rmse": 0.08612989848479628
+        },
+        "validation": {
+          "clips": 30,
+          "failures": 0,
+          "completion": 1,
+          "root_xy_rmse": 0.06291782557964325,
+          "upper_rmse": 0.2961230566104253,
+          "leg_rmse": 0.2611685015261173,
+          "wrist_relative_rmse": 0.08412033816178639
+        }
+      },
+      {
+        "train": {
+          "clips": 300,
+          "failures": 8,
+          "completion": 0.9902700318073615,
+          "root_xy_rmse": 0.10733791153567533,
+          "upper_rmse": 0.31122120693325994,
+          "leg_rmse": 0.3253207341084878,
+          "wrist_relative_rmse": 0.08578405170391003
+        },
+        "validation": {
+          "clips": 30,
+          "failures": 0,
+          "completion": 1,
+          "root_xy_rmse": 0.06440580532265207,
+          "upper_rmse": 0.2964987799525261,
+          "leg_rmse": 0.26150308425227803,
+          "wrist_relative_rmse": 0.08403329874078433
+        }
+      }
+    ],
+    "stage_02": [
+      {
+        "train": {
+          "clips": 300,
+          "failures": 12,
+          "completion": 0.9874502655917309,
+          "root_xy_rmse": 0.10594650884003688,
+          "upper_rmse": 0.31125749215483667,
+          "leg_rmse": 0.32487734432021775,
+          "wrist_relative_rmse": 0.086439348757267
+        },
+        "validation": {
+          "clips": 30,
+          "failures": 0,
+          "completion": 1,
+          "root_xy_rmse": 0.06385853517179688,
+          "upper_rmse": 0.29625391711791355,
+          "leg_rmse": 0.26375978738069533,
+          "wrist_relative_rmse": 0.08410317537685236
+        }
+      },
+      {
+        "train": {
+          "clips": 300,
+          "failures": 10,
+          "completion": 0.9881907832560163,
+          "root_xy_rmse": 0.09884592457984885,
+          "upper_rmse": 0.31070868477225305,
+          "leg_rmse": 0.32227946050465106,
+          "wrist_relative_rmse": 0.08587685802330573
+        },
+        "validation": {
+          "clips": 30,
+          "failures": 0,
+          "completion": 1,
+          "root_xy_rmse": 0.06445035977909962,
+          "upper_rmse": 0.29583306262890496,
+          "leg_rmse": 0.2614848313232263,
+          "wrist_relative_rmse": 0.08379502954582373
+        }
+      },
+      {
+        "train": {
+          "clips": 300,
+          "failures": 10,
+          "completion": 0.9863364459229925,
+          "root_xy_rmse": 0.10225800749224921,
+          "upper_rmse": 0.3108215084671974,
+          "leg_rmse": 0.32263850388427573,
+          "wrist_relative_rmse": 0.086207023045669
+        },
+        "validation": {
+          "clips": 30,
+          "failures": 0,
+          "completion": 1,
+          "root_xy_rmse": 0.06243371496287485,
+          "upper_rmse": 0.2963713362812996,
+          "leg_rmse": 0.2613823587695758,
+          "wrist_relative_rmse": 0.08390487954020501
+        }
+      }
+    ]
+  },
+  "numeric_recommendation": {
+    "label": "initial",
+    "checkpoint": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/run/initial.pt",
+      "bytes": 3271804,
+      "sha256": "3c70a5b3fee8c7792367af711193b976baf7ddb359d0f1ce3f95059e5f60d199"
+    },
+    "reason": "No learned stage satisfies all fixed completion and10% guard conditions; initial fallback retained."
+  },
+  "delivery_at_observation": {
+    "status": "RUNNING",
+    "phase": "initial_saved_trajectory_video",
+    "updated_utc": "2026-10-29T16:27:04.796698+00:00"
+  },
+  "first_gate_publication": {
+    "commit": "8eaf1310ab7479a09c3b64a8d4b81a8e3b8cfbe4",
+    "identities": [
+      {
+        "relative_path": "AGENTS.md",
+        "bytes": 78732,
+        "sha256": "6a45e9c0f06dc0e3acac906ec9e5052008acc4e7457bb90307c0bc257ae67dec"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_gait_goal_20261029.json",
+        "bytes": 9457,
+        "sha256": "450ace32ffbcef04a3ef39c98426030053a44809e4c78fa08585879f3ef56c3e"
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_gait_goal_ppo_gate01_20261030.json",
+        "bytes": 12297,
+        "sha256": "3478762a0ad3c164223ae96f24c649bd5dbee00fa434d75ad00be786a3e191c1"
+      },
+      {
+        "relative_path": "reports/README.md",
+        "bytes": 141839,
+        "sha256": "1a85d9645a4ccccd4da207837ea87115a5ec374a70d94ee062e6007b97c0d3a5"
+      },
+      {
+        "relative_path": "reports/README_CURRENT_STATE.md",
+        "bytes": 65407,
+        "sha256": "40b2e6cb03288ee29b8f6e8b8885a617edf218005103c32f564068942e2eb949"
+      },
+      {
+        "relative_path": "reports/README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md",
+        "bytes": 32570,
+        "sha256": "f5cc2bc7c6b5fb268aec8edbf06725fc3b61671b69adcd3d4da322048a3972c0"
+      }
+    ]
+  },
+  "first_gate_three_way_size_sha_verified": true,
+  "interpretation": {
+    "physical_success": false,
+    "sole_height_improved_on_both_walks": false,
+    "start_walk_slip_reduction_fraction": 0.1138587288834042,
+    "stop_walk_slip_ratio": 1.0868526683416726,
+    "severe_relative_wrist_ratio": 1.3317181964329579,
+    "fixed_clips_complete_all_repeats": true,
+    "saved_media_visual_review_pending": true
+  },
+  "base_v02_authorization": {
+    "user_reply": "允许修复后仅一次底座V02",
+    "attempts_started": 0,
+    "wait_ppo_full_pipeline_and_gpu_lock_release": true
+  },
+  "automatic_retry": false,
+  "training_budget_remaining_not_replenished": true,
+  "goal_status": "active",
+  "goal_complete": false,
+  "user_accepted_checkpoint": null
+}

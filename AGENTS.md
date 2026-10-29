@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-30 00:09:11唯一PPO首次pipeline已启动，根Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029；controller218003/start20379605、worker218034/start20380811、原boot/GPU，冻结cccefe08e6d9d5950b874cc6798f3e168cc47a6b/1579源逐SHA未变，importsreap0。00:11:21 initial repeat1/frame450/实训0/optimizer0、GPU2821MiB/内存6.73GB/OOM0，非步态收益；只监督原300/600/1100门、1100软1200硬秒/1150外停+10回收和完整保存交付，不重启/扩时/热改。底座V02一次新决定仍待/失败根保留/base16不重做，采纳null/goal ACTIVE/原监督缓存维护和其他任务不改/无agent。入口GAIT_GOAL及ppo_launch_20261030；旧未启动仅历史。
+
 - 2026-10-30 00:04 GAIT_GOAL01导入修复7732b2b3ba7f1550c93805b9a035cb6db532aeda独立远端/10记录payload、20文件753864B三端大小SHA通过，原四预检源码未动；真实无环境import检查通过/8测试，首次底座实训0/失败根保留。已异步请求仅一次修复后底座V02新决定，未自动重试或重做base16。独立PPO首次原授权/1200秒预算仍可先行，最新发布来源/1100软/300-600-1100门/GPU串行，二者不组合。goal ACTIVE/采纳null/原监督缓存维护及其他任务不改/无agent，入口GAIT_GOAL及import_fix_publication_20261030；旧待发布/未请求为历史。
 
 - 2026-10-29 GAIT_GOAL01底座首次正式启动在创建环境前因review入口缺project_tools路径而ModuleNotFoundError退出：23:37:16至23:37:24、controller216576/worker216590 reaped1/均已不存在、实训0/0推理积分optimizer/GPU15MiB/OOM0。修复部署前1579来源SHA全同；原失败根/62f9e5a来源和收据保留，不恢复或自动重试。独立review入口已补路径和真实训练模块imports守卫120秒，实际无环境导入检查通过/8反例/6编译/原native源未改，待发布核验。按本轮automatic_retry=false，底座修复后一次新V02启动待新决定；PPO独立首次训练预算仍未使用。必要四预检全部已过，不重做base16；目标ACTIVE/采纳null/监督缓存维护不动/无agent。入口GAIT_GOAL及base_import_failure清单。

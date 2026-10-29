@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-30 00:09:11 GAIT_GOAL01独立PPO首次pipeline已启动，根Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029；controller218003/start20379605、worker218034/start20380811、原boot/GPU，冻结cccefe08e6d9d5950b874cc6798f3e168cc47a6b/1579来源逐SHA未变。imports正常reap0/原内存准入通过；00:11:21 initial repeat1/frame450/实训0/optimizer0，GPU2821MiB/容器6.73GB/OOM0，尚无收益。只监督原300/600/1100门、1100软1200硬/1150外停+10回收和保存媒体审计，不重复启动/热改/扩时。底座导入失败根保留、V02一次新决定仍待/base16不重做；目标ACTIVE/采纳null，原监督/缓存维护及其他任务不改，无agent。[启动与精确命令](../data/manifests/supermimic_q1_gait_goal_ppo_launch_20261030.json)。下方PPO未启动/预算未用为历史。
+
 2026-10-30 00:04北京时间，GAIT_GOAL01导入修复7732b2b3ba7f1550c93805b9a035cb6db532aeda已独立核远端，10记录355840B通过payload，含原失败证据的20文件753864B三端逐大小SHA。真实模块导入检查通过/0环境推理积分optimizer，原四预检源码未动；双线实训仍0。已异步请求仅一次新底座V02决定，未重启失败根/重做base16；独立PPO首次仍原授权可先行，必须最新发布来源/原1100软1200硬/300-600-1100门/GPU串行，不组合或扩时。goal ACTIVE/采纳null，原监督/缓存维护及其他任务不改，无agent。[修复发布和请求](../data/manifests/supermimic_q1_gait_goal_import_fix_publication_20261030.json)。下方待发布/未请求文字为历史。
 
 2026-10-29 GAIT_GOAL01底座首次启动已失败：23:37:16至23:37:24，review入口缺project_tools导致diagnose_q1_upper_reference导入错误，在创建环境/加载策略前退出；实训0秒/0推理积分optimizer，controller216576及worker216590已不存在、guardreap1/GPU15MiB/OOM0。修复部署前1579来源逐SHA同，原失败证据10文件398024B保留。现已补路径、原训练模块真实import检查及每次120秒无环境imports守卫；服务器检查FROZEN_TRAINING_IMPORTS_PASSED/8反例/6编译/原预检native源码未改，待发布/三端核验。[证据与修复](../data/manifests/supermimic_q1_gait_goal_base_import_failure_20261029.json)。本轮automatic_retry=false，底座V02一次新启动须新决定，原失败根不恢复；PPO独立首次训练仍未执行/预算可用，所有必要零更新预检已过、不重复base16。goal ACTIVE/采纳null/监督及其他任务不改。

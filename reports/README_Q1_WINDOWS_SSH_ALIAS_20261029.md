@@ -37,3 +37,5 @@ ssh hp_han
 安全映射和检查结果见[别名清单](../data/manifests/q1_windows_ssh_alias_hp_han_20261029.json)。代码/README保持原Q1分支发布流程；本机SSH配置只留在本机。
 
 同期[H32逐步记录](README_SUPERMIMIC_Q1_H32_INIT_AUDIT_20261029.md)的代码提交1f224fd已独立核GitHub、10项308960字节Git/Mac大小SHA一致；底座/PPO原生验证仍未追加，服务器镜像待连接恢复，不把本机别名配置当作远端连接通过。
+
+别名/后续记录已本地提交`b5ecaeda4f67c86cdaa5eb419e14857d83aa8348`，8项281680字节Git/Mac逐大小SHA一致；此次push在GitHub22端口连接超时，尚未核远端，不重复推送或认证。本条通知与[待发布收据](../data/manifests/q1_windows_ssh_alias_hp_han_publication_20261029.json)另存本地Git；已核的H32源码1f224fd不受该后续记录同步状态影响。

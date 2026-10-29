@@ -81,4 +81,4 @@ python3 -m unittest discover -s script/supermimic_q1_sole -p test_reward_signal.
 - [分项CSV](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_SOLE02_SAVED_REWARD_SIGNAL_20261029/fixed_reward_signal.csv)
 - [关节代价CSV](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_SOLE02_SAVED_REWARD_SIGNAL_20261029/fixed_target_cost_attribution.csv)
 
-本阶段记录按payload audit、显式push Q1、独立40位远端核验后镜像，实际发布以随后publication收据为准，不预称本地文档已经发布。整体步态目标未完成，没有修改监督、其他任务、agents或goals。下一步先按上表分别形成奖励尺度候选与起点证据，再确定独立物理验证范围。
+结果来源`68e5b7f72994311433b1bca2d1a037a86cecc6c3`已完成payload audit、显式push Q1及独立40位远端核验，11份代码/记录329981字节与Git blob、权威工作树、Mac主根、25386逐大小SHA一致，见[发布收据](../data/manifests/supermimic_q1_sole02_reward_signal_publication_20261029.json)。本段与发布收据的后续提交以Git历史为准。整体步态目标未完成，没有修改监督、其他任务、agents或goals。下一步先按上表分别形成奖励尺度候选与起点证据，再确定独立物理验证范围。

@@ -1,0 +1,85 @@
+{
+  "stage": "GAIT_GOAL01_REVIEW_PREPARATION",
+  "status": "OFFLINE_AND_SAVED_CPU_CHECKS_PASSED_PENDING_PUBLICATION",
+  "goal_status": "active",
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "preserved_preflight_source_commit": "b6c28069be567e4f4d77c4b8dcd8d5e96daccfba",
+  "original_source_directories": ["script/supermimic_q1_gait_goal", "script/supermimic_q1_sole"],
+  "original_source_git_diff_exit_code": 0,
+  "original_source_sha_exceptions": [],
+  "historical_receipts_rewritten": false,
+  "base16_repaired_authorized_attempts_used": 1,
+  "base16_will_be_repeated": false,
+  "training_only_callbacks": ["evaluate_trial", "physical_decision", "save"],
+  "training_native_setup_collection_updates_and_clock": "Original byte-identical module; new callback entrypoint not represented as preflight-tested",
+  "changes": [
+    "Reference direction and displacement use the full immutable reference; actual endpoint uses the failed pre-reset prefix",
+    "Missing observed swing/load remains null and stops with saved evidence",
+    "Severe guards compare raw values so a zero baseline cannot bypass them",
+    "Full completion and per-repeat10percent guards before numeric recommendation; initial fallback",
+    "Full330 per-clip/fixed/split-group CSV, episode-weighted500-iteration six-panel plots",
+    "Fixed8-segment6-category54second25fps original-speed saved-trajectory MP4, explicit failure hold and identical-source aliases",
+    "Pipeline completion only after bounded saved-only delivery and independent persistence audit"
+  ],
+  "tests": {
+    "new_counterexamples_passed": 8,
+    "original_tests_passed": 20,
+    "skipped": 0,
+    "compiled_new_files": 6,
+    "server_cli_help_passed": ["train.py", "deliver.py", "pipeline.py", "audit_saved.py"]
+  },
+  "saved_cpu_contract": {
+    "path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_REVIEW_SAVED_CPU_CONTRACT_20261029/receipt.json",
+    "bytes": 51588,
+    "sha256": "e979f860b89b2193c12c9d6d1699639c1d78b7f301b244627c22a608f52c56de",
+    "status": "SAVED_PREFIX_CPU_CONTRACT_PASSED",
+    "original_steps": 320,
+    "failed_prefix_steps": 160,
+    "full_reference_displacement_unchanged": true,
+    "physical_regression_stop": true,
+    "source_trace_unchanged": true,
+    "new_physical_steps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0,
+    "limits": "Diagnostic clones of one historical RF16 trace, not three new independent evaluations"
+  },
+  "dependent_preflights": {
+    "supervisor": "script/supermimic_q1_gait_goal/supervise.py",
+    "frozen_plan": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029/plan.json",
+    "sequence": [
+      {"line": "base", "mode": "preflight4096", "root": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029", "maximum_wall_seconds": 900},
+      {"line": "ppo", "mode": "preflight16", "root": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT16_20261029", "maximum_wall_seconds": 600},
+      {"line": "ppo", "mode": "preflight4096", "root": "data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_PREFLIGHT4096_20261029", "maximum_wall_seconds": 900}
+    ],
+    "status": "NOT_RUN",
+    "optimizer_updates_per_preflight": 0,
+    "gpu_parallelism": 1,
+    "automatic_retry": false
+  },
+  "training": {
+    "base_actual_seconds": 0,
+    "ppo_actual_seconds": 0,
+    "each_soft_seconds": 1100,
+    "each_hard_seconds": 1200,
+    "each_external_stop_seconds": 1150,
+    "physical_gates_seconds": [300, 600, 1100],
+    "maximum_total_training_seconds": 2400,
+    "new_pipeline": "script/supermimic_q1_gait_goal_review/pipeline.py",
+    "video_suite": "data/supermimic_for_q1/AP02_SOMA_Q1_20261027/demonstration_suite_V02.json",
+    "delivery_maximum_wall_seconds": 1800,
+    "saved_audit_maximum_wall_seconds": 300,
+    "formal_training_status": "NOT_STARTED",
+    "new_media_delivered": false,
+    "automatic_extension": false,
+    "automatic_retry": false
+  },
+  "controls": {
+    "credentials_accessed": false,
+    "environment_upgraded": false,
+    "agents_started": false,
+    "supervision_or_other_automations_modified": false,
+    "large_weights_and_npz": "SERVER_LOCAL_ONLY",
+    "cache_maintenance": "Existing idle-only30-minute schedule preserved"
+  }
+}

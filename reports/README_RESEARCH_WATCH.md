@@ -1,5 +1,7 @@
 # YUANQI 具身智能研究跟踪
 
+2026-10-29当前入口：[四项简报](research/2026-10-29/README.md)/[检查](README_RESEARCH_CHECK_20261029.md)。96请求均成功、12固定文本与两完整树；RSL5.5.2及独立复现修复只触发适用性核对，未升级或训练。实际安装5.5.1与Q1四份适配源码已只读核SHA；完整历史由main维护，Q1保留工程入口，昨夜材料继续等用户审阅。[发布回执](../data/manifests/research_watch_sync_20261029.json)。
+
 2026-10-28当前入口：[五项简报](research/2026-10-28/README.md)与[检查](README_RESEARCH_CHECK_20261028.md)。OpTTA、HumanoidNDM、CATS、MimicAll及HoloBoxing v2协议更正；87缓存请求83成功、9固定文本静态核验，14已有仓库头未变。当前用户25386:/opt/data/private/ZHY，工程权威Git为data/repositories/q1-rf12-20261028的Q1；main维护完整去重134条，Q1接收本期与指针。来源/覆盖和实际发布见[回执](../data/manifests/research_watch_sync_20261028.json)，不据旧RUNNING恢复训练。
 
 建立：2026-09-29。用户已选择每天上午 9:00 自动检查。目标是减少资讯阅读负担，把值得借鉴的进展转成有依据的实验候选。

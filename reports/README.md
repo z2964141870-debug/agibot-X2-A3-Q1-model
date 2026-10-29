@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29研究：[四项简报](research/2026-10-29/README.md)记录RSL-RL 5.5.2、独立SuperMimic修复、Rollback与动作Token。96请求均成功，12固定文本/两完整树静态核验；当前安装RSL为5.5.1、Q1批量整除，未将新修复认定为训练退化根因。main维护完整去重，Q1保留工程状态；本轮无物理/推理/优化或新假设。[检查](README_RESEARCH_CHECK_20261029.md)/[回执](../data/manifests/research_watch_sync_20261029.json)。
+
 夜间审阅发布4f773c316aa016a062c1a581d8eff69a3c2d5c04/8记录280300字节三端SHA，原监督ACTIVE每10分钟等待用户；[综合结果](README_Q1_OVERNIGHT_RESULTS_20261029.md)与[发布收据](../data/manifests/supermimic_q1_overnight_publication_20261029.json)。
 
 2026-10-29早间：[夜间探索结果、数据及本地视频](README_Q1_OVERNIGHT_RESULTS_20261029.md)为当前审阅入口。动态上肢有可复现幅度收益，步态仍未稳健解决；11份本地54秒视频、真实固定片/全库原值可看，不再新物理/优化，用户采纳null/原监督静默等审阅。

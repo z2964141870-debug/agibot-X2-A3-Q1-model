@@ -1,0 +1,26 @@
+{
+  "stage": "MM04",
+  "status_at_observation": "RUNNING",
+  "started_utc": "2026-10-29T05:47:33.721117+00:00",
+  "started_beijing": "2026-10-29 13:47:33",
+  "runtime_commit": "c7f049965d1841e5ee556637695ea2494fda5bb1",
+  "upstream_commit": "aa40fe46a7fa995ba7a7354ad065a2c8ad64a302",
+  "experiment_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029",
+  "processes": [
+    {"role": "runtime_guard", "pid": 185658, "start_ticks": 16649863},
+    {"role": "timeout", "pid": 185659, "start_ticks": 16649878},
+    {"role": "original_trainer_wrapper", "pid": 185660, "start_ticks": 16649878}
+  ],
+  "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+  "gpu_uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+  "whole_process_timeout_seconds": 3500,
+  "termination_grace_seconds": 20,
+  "maximum_training_seconds": 3600,
+  "config": {"num_envs": 64, "iterations": 600, "wm_only_iters": 500, "wm_batch": 128, "imag_batch": 128, "horizon": 32, "compile": "none", "seed": 0},
+  "observed_progress": {"iteration": 359, "optimizer_steps": {"wm": 3590, "policy": 0, "critic": 0}, "iteration_seconds": 677.8954765012022},
+  "timing_definition": "Synchronized original iteration calls only; initialization, collection warmup, logging and checkpoint writes excluded. Whole-process timeout is a separate conservative bound.",
+  "not_yet_evidence": ["policy learning", "stable gait", "paper-scale performance reproduction", "Q1 improvement"],
+  "user_accepted_checkpoint": null,
+  "automatic_retry_or_extension": false,
+  "weights_and_large_data": "SERVER_LOCAL_ONLY"
+}

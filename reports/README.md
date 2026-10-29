@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 MM04：[原版G1唯一600轮工程训练运行中](README_MORPHMIMIC_REPRO_20261029.md)，13:47:33启动/冻结c7f0499，原500轮WM预热；359轮WM3590/actor0/critic0，不能称策略学会。固定三片初末ONNX与仿真视频待，3500秒硬限/不重试。[启动收据](../data/manifests/morphmimic_g1_launch_20261029.json)。
+
 2026-10-29 SOLE01：[连接恢复与真实CPU脚底契约](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)已通过，原HP环境10测试/0跳过、51原Q1姿态脚底对MuJoCo最大差约0.14微米，23小产物239048字节Mac/25386大小SHA一致。0新积分/策略推理/optimizer，继续底座候选及原生H32，未新训练。[实测清单](../data/manifests/supermimic_q1_sole_cpu_validation_20261029.json)覆盖早期认证UNKNOWN的当前状态。
 
 2026-10-29：[SOLE01脚底奖励候选与连接恢复](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)已实现独立碰撞脚底/摆脚Z候选及CPU入口，7本地几何测试/6AST/CLI通过，3Torch项待；底座H32和原生16/4096未运行。Windows桥已在并保留，25386单次交互root认证仍被拒，服务器状态UNKNOWN/镜像待。未新物理/推理/优化/训练，PPO与底座两线继续保留。[清单](../data/manifests/supermimic_q1_sole_candidate_20261029.json)。

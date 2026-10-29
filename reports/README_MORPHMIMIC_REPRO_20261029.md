@@ -1,6 +1,16 @@
 # MorphMimic源码与最小复现准备
 
-记录日期：2026-10-29，北京时间。阶段：MM03。状态：原版源码、独立环境、G1数据及零optimizer预检已部署通过；正式训练/导出回放尚未执行。
+记录日期：2026-10-29，北京时间。当前阶段：MM04。原版源码、独立环境、G1数据及零optimizer预检通过；唯一600轮工程训练已启动，导出回放待。下方MM03及MM02是准备时点的历史。
+
+## MM04唯一工程训练与固定回放
+
+2026-10-29 13:47:33北京时间实际启动原版G1训练。运行冻结`c7f049965d1841e5ee556637695ea2494fda5bb1`已push并独立核40位远端；10文件319374字节与Git blob、Mac主根、25386逐大小及SHA一致，启动前183原版blob未变。后续文档提交不改变这次运行来源。[发布收据](../data/manifests/morphmimic_deployment_publication_20261029.json)。
+
+guard185658/start16649863、timeout185659和trainer185660/start16649878，原boot/GPU。64环境、WM/imag128、H32、原500轮WM-only及总600轮，原网络宽度/奖励/控制不变，compile none。外层3500秒全进程硬限和20秒清理，包含初始化，不扩时/重试。359轮现场实测677.895477秒原始iteration时间，WM3590/policy0/critic0；仍是预热，不是策略学习或自然步态证据。[启动与预算](../data/manifests/morphmimic_g1_launch_20261029.json)。
+
+在观察回放结果前固定三片：`walk_forward_loop_001__A022`(1032帧)、`walk_forward_start_002__A023`(152帧)、`walk_forward_stop_005__A026`(253帧)，均来自原seed0 tiny。初始checkpoint0使用本次64环境训练保存，不混用16环境probe；最终600轮。用原版exporter做PyTorch/ONNX parity，再用同一资产/初态和`--interface motion`运行原版sim2sim。保留提前失败及短视频，不补hold帧、不换片；权重/ONNX留服务器。[固定计划](../script/morphmimic_repro/review_plan_20261029.json)。
+
+当前工程小闭环不是作者4096环境/40000轮的性能复现，不是Q1模型或候选采纳。原监督及其他任务不改，无agent或旧goal。待原训练退出后才导出资产及回放。
 
 ## MM03原版部署执行与转发恢复
 

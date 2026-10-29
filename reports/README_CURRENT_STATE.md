@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 MM04：[原版MorphMimic G1唯一训练已13:47:33启动](README_MORPHMIMIC_REPRO_20261029.md)，冻结c7f0499/三端SHA已核；64环境600轮、500轮WM预热、H32，3500秒全进程硬限和20秒清理。359轮WM3590、actor/critic0，尚无策略学习或步态结论；之后固定前走/起走/停走初末导出回放，不扩时/重试，权重留服务器。[启动收据](../data/manifests/morphmimic_g1_launch_20261029.json)。下方MM03尚未开训是历史。
+
 2026-10-29 SOLE01恢复实测：[25386连接及CPU契约已通过](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，复用现有master/原boot与GPU，场景/330库SHA一致，10真实环境测试全过，三固定片51姿态脚底最大几何差约0.14微米。23候选/记录/既有分析及CPU产物239048字节Mac/25386大小SHA一致，早期UNKNOWN已解除；0新积分/策略推理/optimizer，不能称步态改善。实际底座MDP/learner已读，继续底座脚底Z候选及H32方向，原生16/4096与训练待；采纳null、监督/其他任务不改。[实测清单](../data/manifests/supermimic_q1_sole_cpu_validation_20261029.json)。
 
 2026-10-29 SOLE01：[脚底几何及单变量摆脚Z候选已实现](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，7本地几何测试/6AST/CLI通过，3真实Torch检查因依赖缺失跳过；底座精确reward/H32及原生16/4096未运行，无新物理/策略推理/optimizer。Windows桥47236与18873已有并保留；25386免密和用户明确回复后的单次root交互认证均返回Permission denied，当前容器身份/GPU仍UNKNOWN，待核对认证；服务器镜像未完成。原底座/PPO两线继续，候选采纳null，原监督及其他任务不改，不激活agent或旧goal。[阶段清单](../data/manifests/supermimic_q1_sole_candidate_20261029.json)。

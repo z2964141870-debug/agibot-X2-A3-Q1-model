@@ -1,0 +1,103 @@
+{
+  "status": "H32_NATIVE_V01_START_GUARD_FAILED_V02_TOOL_REPAIR_PREPARED",
+  "original_publication": {
+    "commit": "a6dc8f3c438c78c3f5492f838b86bafff3452c90",
+    "independent_remote": "a6dc8f3c438c78c3f5492f838b86bafff3452c90",
+    "files": [
+      {
+        "relative_path": "AGENTS.md",
+        "bytes": 61413,
+        "sha256": "a30c6c29bf753bbbeadac452987530fb1913e61f19a6a3283f26935b8c6ba493",
+        "three_way_sha256_match": true
+      },
+      {
+        "relative_path": "reports/README.md",
+        "bytes": 131762,
+        "sha256": "76d57c8c0d3d899fcba002a823ac0dc1ba392296775ecccc7558e0965b744a06",
+        "three_way_sha256_match": true
+      },
+      {
+        "relative_path": "reports/README_CURRENT_STATE.md",
+        "bytes": 48619,
+        "sha256": "110f67e35d6b0a5f9abd75f39d6764d5d0c61c307f225607c66eb5d0d96a8eba",
+        "three_way_sha256_match": true
+      },
+      {
+        "relative_path": "reports/README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md",
+        "bytes": 12128,
+        "sha256": "73018b8058e51d9a6b2e9aa411bb0f2f0fd1b069801879d431e79047b65561de",
+        "three_way_sha256_match": true
+      },
+      {
+        "relative_path": "data/manifests/supermimic_q1_sole_native_plan_20261029.json",
+        "bytes": 20422,
+        "sha256": "2dc4b0ee36b2a5fbb2749ba138293ff953d2bce2315e1e676415b0be9f199c4c",
+        "three_way_sha256_match": true
+      },
+      {
+        "relative_path": "script/supermimic_q1_sole/base_mdp.py",
+        "bytes": 3276,
+        "sha256": "365e7b94739ae9888877e2f573eb982775266a70c384162d29be25ec7f4ea461",
+        "three_way_sha256_match": true
+      },
+      {
+        "relative_path": "script/supermimic_q1_sole/check_base_contract.py",
+        "bytes": 7395,
+        "sha256": "728dc205f176d2d5ac597b24355f460b1a7c903605315f2eb48573baa019ee41",
+        "three_way_sha256_match": true
+      },
+      {
+        "relative_path": "script/supermimic_q1_sole/h32_direction.py",
+        "bytes": 18917,
+        "sha256": "545b0dfbfc1686ffc3b29cd2dbe76f3969e3b64d8d42c3abcff0fce6d80babdd",
+        "three_way_sha256_match": true
+      },
+      {
+        "relative_path": "script/supermimic_q1_sole/preflight_sole.py",
+        "bytes": 1409,
+        "sha256": "881aadfc469c122e92b048e7d47758b746a348e4de1c190d1ea07f336de1c1a7",
+        "three_way_sha256_match": true
+      }
+    ],
+    "count": 9,
+    "bytes": 305341
+  },
+  "original_run": {
+    "path": "data/supermimic_for_q1/Q1_SOLE01_H32_NATIVE_20261029",
+    "status": "FAILED",
+    "captured_utc": "2026-10-29T06:30:31.438055+00:00",
+    "error": "Matched-state assertion failed before first physical comparison branch:428/912 values; max absolute difference0.20549678802490234.",
+    "new_control_transitions": 288,
+    "new_integration_substeps": 1152,
+    "optimizer_updates": 0,
+    "physical_direction_result_valid": false,
+    "dependent_preflights_run": false,
+    "original_artifacts_preserved": true
+  },
+  "repair": {
+    "file": "script/supermimic_q1_sole/h32_direction.py",
+    "scope": "Create a new independent native environment for each physical comparison branch, then replay identical warm-up. Record all start-field differences; retain exact original state/history/warmstart guard tolerances.",
+    "reward_control_reference_learner_changed": false,
+    "assertion_tolerance_relaxed": false,
+    "old_training_restarted_or_retried": false,
+    "remaining_cause": "Repeated reset within the reused diagnostic env did not produce the matched start; no single hidden-state cause isolated."
+  },
+  "v02_plan": {
+    "output": "data/supermimic_for_q1/Q1_SOLE01_H32_NATIVE_V02_20261029",
+    "max_runs": 1,
+    "external_timeout_seconds": 240,
+    "envs": 16,
+    "horizon": 32,
+    "seed": 32100,
+    "direction_step": 0.01,
+    "optimizer_updates": 0,
+    "prerequisites": "Re-publish repaired source, independently verify full remote Q1 SHA, mirror size/SHA; verify boot/GPU and no existing compute process.",
+    "on_failure": "Preserve receipt and stop dependent physical checks.",
+    "on_success": "Continue original independent16/4096 sole PPO zero-update contracts sequentially; no formal training."
+  },
+  "user_accepted_checkpoint": null,
+  "training_launched": false,
+  "agents_started": false,
+  "goals_changed": false,
+  "automations_modified": false
+}

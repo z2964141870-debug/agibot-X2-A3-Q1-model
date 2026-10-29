@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 SOLE01：[H32首物理检查与工具V02](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，重复reset起点保护失败，288控制转移/0optimizer；没有物理方向结论。V02以独立新环境匹配分支，原失败保留，PPO原生检查暂未执行。
+
 2026-10-29 SOLE01：[H32原生目标CPU检查通过](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，含critic的目标匹配、参数/归一化保护，0optimizer/积分；底座/PPO候选已各有CPU契约，独立原生H32和16/4096检查待冻结后执行。[计划](../data/manifests/supermimic_q1_sole_native_plan_20261029.json)。
 
 2026-10-29 SOLE01：[SuperMimic底座脚底Z候选CPU契约](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)已过三固定片51姿态与梯度检查，PPO16/4096及原生H32工具准备中；GPU由独立交付占用，无新物理/optimizer或训练。原尺度保留，不宣称步态改善。

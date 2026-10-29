@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 SOLE01 H32首物理检查：[起点保护未通过](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，重复reset后最大状态差.205497，288控制转移/1152子步/0optimizer，不能给方向结论，PPO16/4096未执行。仅工具V02改为每分支新建同配置独立环境，容差不放宽，待重新发布后一次240秒验证；失败记录保留，无正式训练或旧作业恢复，采纳null/监督不改。
+
 2026-10-29 SOLE01 H32 CPU：[原生actor目标表达检查已通过](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，16原参考起点/H32/FP32，梯度截获后阻止step，含critic目标重算及参数/归一化保护通过，0积分/optimizer。GPU当前释放，独立[原生计划](../data/manifests/supermimic_q1_sole_native_plan_20261029.json)待冻结发布后顺序H32-16方向和PPO16/4096零更新，不宣称物理收益或新训练，采纳null/监督不改。
 
 2026-10-29 SOLE01底座候选：[原HP CPU契约已通过](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，51姿态仅换两脚Z，其余reward/观测/critic特征/终止不变，梯度有限差分通过；原奖励尺度保留，非步态收益。PPO16/4096入口及真实learner H32方向工具已准备，当前GPU由独立MorphMimic交付占用，先做H32 CPU表达检查，不并行GPU。0新积分/optimizer及训练，采纳null；连接/首CPU发布84dce49/5记录261870字节三端SHA已核，监督及其他任务保持。

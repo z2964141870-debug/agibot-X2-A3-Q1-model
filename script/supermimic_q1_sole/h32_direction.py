@@ -89,8 +89,8 @@ def run(args):
             from worker import prepare
             subset = args.output / "evaluation_library.json"
             subset.write_text(json.dumps({"splits": {"train": rows}}, indent=2) + "\n")
-            _, env, _ = prepare(SimpleNamespace(runtime=args.runtime, library=subset, output=args.output),
-                                 num_envs=args.envs, eval_mode=True)
+            preparation_args = SimpleNamespace(runtime=args.runtime, library=subset, output=args.output)
+            _, env, _ = prepare(preparation_args, num_envs=args.envs, eval_mode=True)
             mdp = env.supermimic_mdp
             motion = mdp.motion
 
@@ -128,8 +128,8 @@ def run(args):
                     parameter.copy_(base_parameters[index] if gradients is None else
                                     base_parameters[index] - step * gradients[index])
 
-        def warm():
-            nonlocal control_steps
+        def warm(fresh_environment=False):
+            nonlocal control_steps, env
             set_parameters(0.)
             records = []
             if env is None:
@@ -139,6 +139,11 @@ def run(args):
                                         xi=context.expand(args.envs, -1).clone(),
                                         a_prev=torch.zeros(args.envs, 22, device=device)))
             else:
+                if fresh_environment:
+                    env.close()
+                    env.backend.close()
+                    env = None
+                    _, env, _ = prepare(preparation_args, num_envs=args.envs, eval_mode=True)
                 env.reset_to_frames(initial_frames)
                 import warp as wp
                 wp.to_torch(env.backend._device_data.qacc_warmstart).zero_()
@@ -218,7 +223,12 @@ def run(args):
         def score(step, physical=False):
             nonlocal control_steps
             if physical:
-                current, matched_history = warm()
+                current, matched_history = warm(fresh_environment=True)
+                result.setdefault("branch_initialization_checks", []).append({
+                    "step": step,
+                    "maximum_absolute_difference": {
+                        key: float((current[key] - start[key]).abs().max()) for key in start
+                    }})
                 for key in start:
                     torch.testing.assert_close(current[key], start[key], atol=2e-6, rtol=2e-5)
                 for key in history:
@@ -283,7 +293,7 @@ def run(args):
                       actual_network_precision="fp32" if device.type == "cpu" else cfg.amp,
                       source_network_precision=cfg.amp, compile=False,
                       start_frames=start["f"].cpu().tolist(), fixed_clips=[r["name"] for r in rows],
-                      history="Reference poses only" if env is None else "9 native closed-loop warm-up steps; exact branch state/history/warmstart checks",
+                      history="Reference poses only" if env is None else "Fresh independent env per branch;9 identical native warm-up steps; exact state/history/warmstart checks",
                       gradient="Native clipped actor-loss gradient; parameter ascent uses its negative; not an Adam/momentum update",
                       clipped_gradient_norm=gradient_norm, parameter_direction_step=args.direction_step,
                       native_objective_reproduced=True, parameters_and_normalizers_restored=True,

@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-29 SOLE01 H32原生首检因重复reset后的起点不匹配正常断言停：288控制转移/1152子步、0optimizer，最大状态差.205497，未形成物理方向结论，PPO16/4096未执行。失败收据保留，不归责WM/训练。仅评测工具V02改各分支新建同配置/seed独立环境，保留原严格状态/历史/warmstart保护；重新冻结发布后一次独立V02/240秒，仍失败则停后续物理。无正式训练/旧训练重试/agent/旧goal，采纳null/监督及其他任务保持。入口SOLE_CANDIDATE。
+
 - 2026-10-29 SOLE01 H32 CPU实际通过：RF14stage02原权重、16原参考起点/hist10/H32/FP32，直接截获原生policy_update裁剪后梯度/阻止optimizer step，重算含critic的目标匹配，参数/归一化/来源保护通过，0积分/optimizer。尚不证明Warp/BF16或Adam/物理改善。独立native_plan准备顺序一次H32-16方向、PPO16/4096零更新检查，外限240/360/600秒，须先冻结发布/三端SHA并逐项核GPU空闲；不新正式训练/恢复旧作业/扩时，采纳null、监督/其他任务不改，无agent/旧goal。入口SOLE_CANDIDATE及sole_native_plan。
 
 - 2026-10-29 SOLE01底座候选原HP CPU契约通过：三固定片51姿态，仅替换原14body位置均值中两脚Z，其他reward/观测/critic特征/终止及尺度不变；踝roll梯度有限差分最大差1.08378e-5，原尺度下奖励差很小，非步态改善。PPO原生16/4096复用入口及原生H32梯度截获/闭环对照工具已准备，尚未物理运行；GPU由独立MorphMimic交付占用不并行。0新积分/optimizer、无训练/agent/旧goal，采纳null及监督保持。恢复CPU发布84dce49cf1c69cf18096b36b019c7cac784b6a5d独立远端/5记录261870字节三端SHA；入口SOLE_CANDIDATE。

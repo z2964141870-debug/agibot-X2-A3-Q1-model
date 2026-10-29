@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 15:23 SOLE01：[最后旁收据同步遇断线](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)。结果5记录272945字节三端SHA和4失败工件17254字节Mac/25386已核；最后发布旁收据与新状态服务器镜像待，当前连接UNKNOWN。仅补小记录，不重跑诊断或训练。[有界核查](../data/manifests/supermimic_q1_sole_native_connection_unknown_20261029.json)。
+
 2026-10-29 SOLE01：[H32原生两次起点保护与未测项](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)。V02仍起点不匹配，没有物理方向结论，0optimizer；依赖的PPO16/4096未测。4失败工件17254字节Mac/25386大小SHA、来源前后SHA与进程/GPU终态已核，不第三次物理运行或新正式训练。[实测清单](../data/manifests/supermimic_q1_sole_native_results_20261029.json)。
 
 2026-10-29 MM05：[原版MorphMimic G1工程复现结果与本地视频](README_MORPHMIMIC_G1_RESULTS_20261029.md)。600轮/1249.13秒iteration，WM/actor/critic6000/100/2000，训练/导出/回放已执行；三片初末完成率均0/3，未复现稳定步态。六原速MP4共377帧、6联系图/六格曲线已目视，43小工件5600206字节Mac/25386大小SHA一致；停走渲染超时与独立补交如实保留，未重训。GPU释放/OOM0。[结果与交付清单](../data/manifests/morphmimic_g1_results_20261029.json)。

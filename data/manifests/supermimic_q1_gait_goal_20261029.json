@@ -1,5 +1,5 @@
 {
-  "status": "GAIT_GOAL01_RESET_INPUTS_MATCH_WARMUP_REPLAY_PENDING",
+  "status": "GAIT_GOAL01_WARMUP_DIVERGENCE_LOCALIZED_CANDIDATE_PREFLIGHT_PREPARED",
   "recorded_date_beijing": "2026-10-29",
   "stage": "GAIT_GOAL01",
   "goal": {
@@ -25,7 +25,11 @@
     "concurrent_gpu_tasks_max": 1,
     "automatic_extension": false,
     "automatic_failure_retry": false,
-    "old_training_resume": false
+    "old_training_resume": false,
+    "soft_physical_gates_seconds": [300, 600, 1100],
+    "soft_final_seconds": 1100,
+    "external_stop_seconds": 1150,
+    "cleanup_grace_seconds": 10
   },
   "baseline": {
     "checkpoint": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt",
@@ -69,7 +73,7 @@
     "user_accepted_checkpoint": null
   },
   "preparation": {
-    "local_tests_passed": 16,
+    "local_tests_passed": 19,
     "local_tests_skipped": 0,
     "test_command": "python3 -m unittest discover -s script/supermimic_q1_gait_goal -p 'test_*.py' -v",
     "scale_grid_widths_m": [
@@ -86,8 +90,11 @@
     "nonintegrating_h32_initialization_isolation": "COMPLETED_RESET_AND_POLICY_INPUTS_MATCH_8_INFERENCE_0_INTEGRATION",
     "new_physical_preflights": "NOT_RUN",
     "new_training": "NOT_STARTED",
-    "new_integration_steps": 0,
-    "policy_inference_calls": 8,
+    "new_integration_steps": 640,
+    "new_control_transitions": 160,
+    "policy_inference_calls": 18,
+    "warmup_strict_physical_equivalence": false,
+    "new_candidate_cpu_contract": "PASSED_51_POSES_WITH_BOUNDED_EXACT_COLLISION_SUPPORT",
     "optimizer_updates": 0
   },
   "controls": {
@@ -98,5 +105,5 @@
     "large_checkpoint_npz": "SERVER_LOCAL_ONLY",
     "environment_upgraded": false
   },
-  "next": "Publish and verify the bounded fixed-action warm-up replay, then locate the first physical/action divergence without reexecuting the old H32 direction diagnostic. Formal base and PPO training remain at zero seconds."
+  "next": "Publish and verify native_preparation, then run each line-specific16/4096 zero-update preflight once, with exact replay start/history and native H32 finite gradients. Cross-environment physical direction remains unestablished; no old H32 rerun or tolerance relaxation. Formal base/PPO training remain zero seconds."
 }

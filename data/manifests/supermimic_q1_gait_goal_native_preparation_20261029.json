@@ -1,0 +1,220 @@
+{
+  "status": "GAIT_GOAL01_WARMUP_DIVERGENCE_LOCALIZED_CANDIDATE_NATIVE_PREFLIGHT_PREPARED",
+  "goal_status": "active",
+  "stage": "GAIT_GOAL01",
+  "previous_source_commit": "ee49be9f640c7524700d9e5a21f71bfcd70b5566",
+  "warmup": {
+    "status": "WARMUP_FIXED_ACTION_REPLAY_MEASURED",
+    "warmup_matches_at_original_tolerance": false,
+    "first_divergence": {
+      "stage": "state_01",
+      "field": "native.qacc"
+    },
+    "new_control_transitions": 160,
+    "new_integration_substeps": 640,
+    "policy_inference_calls": 10,
+    "optimizer_updates": 0,
+    "h32_direction_evaluated": false,
+    "source_parameters_unchanged": true
+  },
+  "cpu": {
+    "status": "GAIT_PHASE_SOLE_CPU_CONTRACTS_PASSED",
+    "sampled_poses": 51,
+    "fixed_clips": 3,
+    "original_base_terms_features_termination_preserved": true,
+    "exact_original_collision_point_heights_verified": true,
+    "ppo_only_swing_z_geometry_and_width_changed": true,
+    "base_max_step_reward": 0.11,
+    "maximum_root_z_gradient_finite_difference_error": 0.0000756680965423584
+  },
+  "candidate_contract": {
+    "height_std_m": 0.02,
+    "stance_speed_std_mps": 0.15,
+    "swing_weight": 0.25,
+    "stance_weight": 0.25,
+    "maximum_phase_bonus_per20ms": 0.01,
+    "original_reward_terms_preserved": true,
+    "reference": {
+      "source_library": "data/supermimic_for_q1/BONES_RF16_CONTACT_PHASE_SOMA300_E4096_MAX20M_20261029/evaluation/evaluation_library.json",
+      "metadata": [
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/walk_ff_stop_180_R_002__A095.json",
+          "bytes": 45474,
+          "sha256": "2248a52997f53235088862f9aa9a5970b2875e8880f84c44c9f1a6bf32aee0e1"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/walk_ff_start_180_R_002__A071.json",
+          "bytes": 28638,
+          "sha256": "6f61b545cfd663ea239bfdef230caf33b4cc6736d62339d259189ca13dcb6bcf"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/triumph_two_handed_001__A058.json",
+          "bytes": 45457,
+          "sha256": "1427ae4b78c3d88227ed53a9ff5034f07af3cd5493e45928693e28fb6a159cca"
+        }
+      ],
+      "frames": 804,
+      "source_clips": 3,
+      "stance_fraction": 0.6759950518608093,
+      "swing_fraction": 0.2985074520111084,
+      "ambiguous_fraction": 0.02549751289188862,
+      "mapping": "Exact rational3/5; both source neighbors on=stance, both off=swing, mixed=neutral",
+      "meaning": "Saved retarget intentions, not measured native force labels; original references unchanged",
+      "sole": {
+        "definition": "Minimum active collision-mesh vertex or sphere surface world Z",
+        "floor_z_m": 0,
+        "feet": [
+          {
+            "body": "left_ankle_roll_link",
+            "points": 13637,
+            "geoms": [
+              "q1_geom_0014",
+              "q1_geom_0015",
+              "q1_geom_0016",
+              "q1_geom_0017",
+              "q1_geom_0018"
+            ],
+            "geometry_sha256": "7a570980bee3845bef852cb346edda14d91a6a7896d62e27c5dbd2be17f3d3c1"
+          },
+          {
+            "body": "right_ankle_roll_link",
+            "points": 13637,
+            "geoms": [
+              "q1_geom_0030",
+              "q1_geom_0031",
+              "q1_geom_0032",
+              "q1_geom_0033",
+              "q1_geom_0034"
+            ],
+            "geometry_sha256": "ee252ed8625700df43c0fc863f5b66ce01792fabe2ffed73a361422e06464cc0"
+          }
+        ]
+      },
+      "scene": {
+        "path": "data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027/q1_assets/scene.xml",
+        "bytes": 30871,
+        "sha256": "7ecf223aacd31cd1824575053bc66dbbc7301885366eb42b58908203d9b455fd"
+      },
+      "reward_change": "RF16 ankle-Z4cm to collision-sole-Z2cm, same maximum .01 per20ms",
+      "features_and_reference_contact_phase": "Unchanged RF16",
+      "reference_sole_frames": 804,
+      "height_std_m": 0.02,
+      "ppo_z_weight": 0.01,
+      "features_phase_xy_stance_stationary_smooth_residual": "Unchanged RF16"
+    },
+    "stance_velocity": "Instantaneous material velocity at the lowest collision point; intent-conditioned proxy, not measured load"
+  },
+  "artifacts": [
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_WARMUP_REPLAY_20261029/receipt.json",
+      "bytes": 128434,
+      "sha256": "f7816b55aae8e8759f078b83e7f777cfdc38220e7d1d99bd462bd90440a8a9b0"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_WARMUP_REPLAY_20261029/evaluation_library.json",
+      "bytes": 1878,
+      "sha256": "ee9db3cd3ab60a1969cf048ca038e7815805a24f6fdf18c6977520b996e845eb"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_CPU_CONTRACT_20261029/receipt.json",
+      "bytes": 7390,
+      "sha256": "7c5830768447c94bc504b334ad7cdc7f03e0295dc2f9a253b15382259cc53110"
+    },
+    {
+      "relative_path": "logs/Q1_GAIT_GOAL01_WARMUP_REPLAY_20261029.log",
+      "bytes": 6935,
+      "sha256": "4e26b4bddec46d14705c593408522fefc55c2f6169f97c3320f5bc933ec0aa41"
+    },
+    {
+      "relative_path": "logs/Q1_GAIT_GOAL01_CPU_CONTRACT_20261029.log",
+      "bytes": 176,
+      "sha256": "95c73c5d6425f7be0f25e17f904a7baec85c8e3ad52c9f655e5b044bc34b32a1"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_CPU_BOUNDED_SUPPORT_20261029/receipt.json",
+      "bytes": 7568,
+      "sha256": "be153f3f7af8e51f25b00885a575fd66b9ecf3e6c7042cfcdfaaa0b7d916ffb6"
+    },
+    {
+      "relative_path": "logs/Q1_GAIT_GOAL01_CPU_BOUNDED_SUPPORT_20261029.log",
+      "bytes": 175,
+      "sha256": "72df0d5bc2c8c9ec7b3aaddd982d8392778b1cd7e09de92c1f9f04661d9bbf90"
+    }
+  ],
+  "artifact_bytes": 152556,
+  "three_way_size_sha256_match": true,
+  "warmup_interpretation": {
+    "original_atol": 0.000002,
+    "original_rtol": 0.00002,
+    "first_qacc_max_diff": 0.008331298828125,
+    "first_qvel_max_diff": 0.000044405460357666016,
+    "reset_model_and_applied_action_match": true,
+    "strict_physical_direction_gate_passed": false,
+    "root_cause_of_bad_gait_proved": false,
+    "next_h32_contract": "Exact replay start equals its last history row, inputs unmutated through actual H32 backward; finite nonzero gradients with every optimizer step intercepted. Independent evaluation preserves learner/state/RNG. No third old physical-direction rerun or tolerance relaxation."
+  },
+  "preflights": {
+    "status": "PREPARED_NOT_RUN",
+    "sequence": [
+      "base16",
+      "base4096",
+      "ppo16",
+      "ppo4096"
+    ],
+    "optimizer_steps_per_phase": 0,
+    "base_native_batches": {
+      "wm": 2048,
+      "actor": 4096,
+      "horizon": 32
+    },
+    "whole_wall_caps_seconds": {
+      "env16": 600,
+      "env4096": 900
+    },
+    "same_gpu_sequential": true,
+    "source_plan": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF16_CONTACT_PHASE_SOMA300_E4096_MAX20M_20261029/plan.json"
+  },
+  "new_trial_design": {
+    "base": "Original policy/WM/critic weights, fresh optimizers/replay/simulator, no old job resume. Add phase-aware sole height and intent-conditioned material speed to original reward. Same original300/30.",
+    "ppo": "Same original frozen base, fresh14D lower residual and critic. Only RF16 swing-Z reward geometry/width changes; other features/control/rewards retained.",
+    "base_lr": 0.00005,
+    "base_compile": false,
+    "ppo_lr_bounds": [
+      0.00001,
+      0.00005
+    ],
+    "upper_reference_alpha": 0.5,
+    "critic_only_first_iterations": 10,
+    "soft_gates_seconds": [
+      300,
+      600,
+      1100
+    ],
+    "soft_final_seconds": 1100,
+    "per_line_hard_seconds": 1200,
+    "total_hard_seconds": 2400,
+    "external_stop_seconds": 1150,
+    "cleanup_grace_seconds": 10,
+    "guard_inherits_zero_seconds": true,
+    "base_training_seconds_actual": 0,
+    "ppo_training_seconds_actual": 0,
+    "combination_evaluated": false,
+    "physical_regression_stop": "Any fixed incomplete, per-repeat guarded error >1.25, forward progress lost, either walk median error/slip >1.5, or >=6 validation failures in>=2 repeats. No automatic extensions/retries.",
+    "numeric_recommendation_is_user_acceptance": false,
+    "user_accepted_checkpoint": null
+  },
+  "verification": {
+    "local_unit_tests_passed": 19,
+    "local_unit_tests_skipped": 0,
+    "all_goal_python_files_compiled": true,
+    "native_preflight_run": false,
+    "formal_training_started": false
+  },
+  "controls": {
+    "agents_started": false,
+    "automations_modified": false,
+    "credentials_accessed": false,
+    "environment_upgraded": false,
+    "weights_npz": "SERVER_LOCAL_ONLY"
+  }
+}

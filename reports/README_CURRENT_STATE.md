@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 GAIT_GOAL01：[固定动作warm-up与两线候选](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)已记录。首积分步严格超差（qvel4.44e-5），160转移/0optimizer，旧H32方向仍无结论；两线51姿态CPU及完整脚底分块核验通过，7小工件152556字节三端SHA/19测试。准备真实replay同起点H32反传、base/PPO各16/4096零更新，发布/三端核源后串行一次；双线实训0。各1100软/1200硬秒、总<=2400，300/600/1100门，1150外停+10回收，不扩时或故障重试。目标ACTIVE/采纳null/监督及其他任务不动。[配方与证据](../data/manifests/supermimic_q1_gait_goal_native_preparation_20261029.json)。
+
 2026-10-29 GAIT_GOAL01 reset隔离已正常完成：0积分/optimizer、8推理，两次reset输入和同输入策略输出一致，换RNG/旧新MDP未造成该阶段差异。3工件44563字节三端SHA，GPU15MiB无计算/OOM0；尚未解决九步warm-up。下一次独立固定动作重放已准备16环境/9步两分支、最多288转移/18推理、原容差首次超差即停/180秒，先发布核源，不重跑旧H32方向。底座/PPO训练0、目标ACTIVE、采纳null/监督不改。[结果与计划](../data/manifests/supermimic_q1_gait_goal_reset_inputs_20261029.json)。
 
 2026-10-29 GAIT_GOAL01：[新步态目标的保存轨迹校准](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)完成36组9612状态/648网格，16测试通过；4小工件184903字节三端SHA。旧RF16三门全不过新目标，2cm脚Z解析梯度约为旧4cm的2.7-3倍，未新物理/推理/优化/训练。首次读表重复错误已修为仅接收跨表相同对照，冲突/表内重复仍拒绝。下一项独立零积分reset输入检查已准备：16环境顺序两次、最多8前向/180秒、同权重与严格容差，不重跑旧H32；发布核验后再执行。目标ACTIVE/训练0/采纳null/监督不改。[校准清单](../data/manifests/supermimic_q1_gait_goal_calibration_20261029.json)。

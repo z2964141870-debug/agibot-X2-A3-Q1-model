@@ -54,6 +54,23 @@ def scale_statistics(error, mask, width):
                 gradient_below_1_per_m_fraction=float((derivative[mask] < 1.).mean()))
 
 
+def merge_review_rows(tables):
+    result, replicated = {}, 0
+    for table in tables:
+        seen = set()
+        for row in table:
+            key = (row["label"], row["repeat"], row["clip"])
+            if key in seen:
+                raise ValueError("Duplicate row within a saved fixed-review table")
+            seen.add(key)
+            if key in result:
+                if result[key] != row:
+                    raise ValueError("Conflicting replicated saved fixed-review row")
+                replicated += 1
+            result[key] = row
+    return result, replicated
+
+
 def run(args):
     if args.output.exists():
         raise FileExistsError(args.output)
@@ -94,14 +111,11 @@ def run(args):
                          ("sole_height_m", "native_force_N"), first_tick=1)
     reference = read_series(args.reference, ("clip", "side"), ("sole_height_m",),
                             first_tick=1, reference_only=True)
-    demos = {}
+    tables = []
     for path in review_paths:
         with path.open(newline="") as stream:
-            for row in csv.DictReader(stream):
-                key = (row["label"], row["repeat"], row["clip"])
-                if key in demos:
-                    raise ValueError("Duplicate saved fixed-review row")
-                demos[key] = row
+            tables.append(list(csv.DictReader(stream)))
+    demos, replicated_rows = merge_review_rows(tables)
     metrics, scales = [], []
     scenarios = sorted({key[:3] for key in actual})
     for key in scenarios:
@@ -155,6 +169,7 @@ def run(args):
     result = dict(status="GAIT_GOAL_SAVED_SCALE_CALIBRATION_READY", captured_utc=datetime.now(timezone.utc).isoformat(),
                   sources=before, common_scene=scene_identity, common_library=library_identity,
                   fixed_groups=len(metrics), saved_states=sum(int(row["steps"]) for row in metrics),
+                  identical_cross_table_comparison_rows=replicated_rows,
                   scale_grid_rows=len(scales), widths_m=WIDTHS_M, base_weights=BASE_WEIGHTS,
                   phase_mapping="Exact rational3/5, both on=stance, both off=swing, mixed=neutral; post-step f+1",
                   new_integration_steps=0, policy_inference_calls=0, optimizer_updates=0,

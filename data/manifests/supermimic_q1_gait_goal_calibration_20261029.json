@@ -1,0 +1,283 @@
+{
+  "status": "GAIT_GOAL01_SAVED_CALIBRATION_COMPLETED_RESET_ISOLATION_PREPARED",
+  "stage": "GAIT_GOAL01",
+  "goal_status": "active",
+  "source_preparation_commit": "de872d864e6a8b0b9f419cb8f65870dbc51140ac",
+  "calibration": {
+    "fixed_groups": 36,
+    "saved_states": 9612,
+    "scale_grid_rows": 648,
+    "artifacts": [
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CALIBRATION_V02_20261029/fixed_goal_metrics.csv",
+        "bytes": 22390,
+        "sha256": "1eef3f6ccacc0ca2e715934d1e6ad3aa4d8ac74d36015faaae72fadfc837ecfe"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CALIBRATION_V02_20261029/gate_replay.json",
+        "bytes": 30623,
+        "sha256": "6554308e82f0580a1d0353cebb9386c904a43b5c275261073bc84c78b96397aa"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CALIBRATION_V02_20261029/scale_grid.csv",
+        "bytes": 125805,
+        "sha256": "a4f7fe9fb4c8260fd2c0b4002731cccf3e7ba6088867f4c902e0b1acfb226b0d"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CALIBRATION_V02_20261029/summary.json",
+        "bytes": 6085,
+        "sha256": "c90f85069a6df1c12603a09f39f57d3e16d4b5001f33eabdc063c7e7f4dd81c6"
+      }
+    ],
+    "three_way_size_sha256_match": true,
+    "artifact_bytes": 184903,
+    "new_control_transitions": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0,
+    "old_rf16_stages_passing_fixed_gate": 0,
+    "findings": {
+      "scale": [
+        {
+          "clip": "walk_ff_start_180_R_002__A071",
+          "width_m": "0.01",
+          "rmse_m": 0.012035476971837057,
+          "score": 0.5789416719579807,
+          "gradient_per_m": 52.30178138085016,
+          "saturated": 0.07246376811594203,
+          "base_perfect_gain": 0.0021052916402100963,
+          "ppo_perfect_gain": 0.004210583280420193
+        },
+        {
+          "clip": "walk_ff_start_180_R_002__A071",
+          "width_m": "0.02",
+          "rmse_m": 0.012035476971837057,
+          "score": 0.8004745643172113,
+          "gradient_per_m": 25.949697146242894,
+          "saturated": 0.005797101449275362,
+          "base_perfect_gain": 0.0009976271784139434,
+          "ppo_perfect_gain": 0.001995254356827887
+        },
+        {
+          "clip": "walk_ff_start_180_R_002__A071",
+          "width_m": "0.04",
+          "rmse_m": 0.012035476971837057,
+          "score": 0.9327999902264561,
+          "gradient_per_m": 9.63572467320866,
+          "saturated": 0.020289855072463767,
+          "base_perfect_gain": 0.0003360000488677194,
+          "ppo_perfect_gain": 0.0006720000977354388
+        },
+        {
+          "clip": "walk_ff_stop_180_R_002__A095",
+          "width_m": "0.01",
+          "rmse_m": 0.01096321060769485,
+          "score": 0.5446417265351088,
+          "gradient_per_m": 61.47678891649016,
+          "saturated": 0.01747311827956989,
+          "base_perfect_gain": 0.0022767913673244562,
+          "ppo_perfect_gain": 0.0045535827346489125
+        },
+        {
+          "clip": "walk_ff_stop_180_R_002__A095",
+          "width_m": "0.02",
+          "rmse_m": 0.01096321060769485,
+          "score": 0.8180423614047774,
+          "gradient_per_m": 30.47964693124195,
+          "saturated": 0.005376344086021505,
+          "base_perfect_gain": 0.0009097881929761128,
+          "ppo_perfect_gain": 0.0018195763859522255
+        },
+        {
+          "clip": "walk_ff_stop_180_R_002__A095",
+          "width_m": "0.04",
+          "rmse_m": 0.01096321060769485,
+          "score": 0.9447951667381256,
+          "gradient_per_m": 10.25997868211111,
+          "saturated": 0.02553763440860215,
+          "base_perfect_gain": 0.000276024166309372,
+          "ppo_perfect_gain": 0.000552048332618744
+        }
+      ],
+      "gates": {
+        "stage_01": {
+          "status": "FIXED_NUMERIC_GATE_NOT_PASSED",
+          "failed_repeats": 3,
+          "walks": [
+            {
+              "clip": "walk_ff_stop_180_R_002__A095",
+              "metrics": {
+                "swing_sole_z_rmse_m": {
+                  "baseline_median": 0.010964060744290006,
+                  "candidate_median": 0.01119873297865089,
+                  "ratio": 1.021403769993075,
+                  "limit": 0.8,
+                  "passed": false
+                },
+                "loaded_slip_mps": {
+                  "baseline_median": 0.10811197012662888,
+                  "candidate_median": 0.12117283791303635,
+                  "ratio": 1.1208087112935745,
+                  "limit": 0.85,
+                  "passed": false
+                }
+              },
+              "passed": false
+            },
+            {
+              "clip": "walk_ff_start_180_R_002__A071",
+              "metrics": {
+                "swing_sole_z_rmse_m": {
+                  "baseline_median": 0.012137798073683563,
+                  "candidate_median": 0.011804781785417941,
+                  "ratio": 0.9725636984365684,
+                  "limit": 0.8,
+                  "passed": false
+                },
+                "loaded_slip_mps": {
+                  "baseline_median": 0.14989233016967773,
+                  "candidate_median": 0.1481718122959137,
+                  "ratio": 0.9885216416889616,
+                  "limit": 0.85,
+                  "passed": false
+                }
+              },
+              "passed": false
+            }
+          ]
+        },
+        "stage_02": {
+          "status": "FIXED_NUMERIC_GATE_NOT_PASSED",
+          "failed_repeats": 1,
+          "walks": [
+            {
+              "clip": "walk_ff_stop_180_R_002__A095",
+              "metrics": {
+                "swing_sole_z_rmse_m": {
+                  "baseline_median": 0.010964060744290006,
+                  "candidate_median": 0.011133354996922772,
+                  "ratio": 1.015440834977217,
+                  "limit": 0.8,
+                  "passed": false
+                },
+                "loaded_slip_mps": {
+                  "baseline_median": 0.10811197012662888,
+                  "candidate_median": 0.08737599849700928,
+                  "ratio": 0.8081991142578193,
+                  "limit": 0.85,
+                  "passed": true
+                }
+              },
+              "passed": false
+            },
+            {
+              "clip": "walk_ff_start_180_R_002__A071",
+              "metrics": {
+                "swing_sole_z_rmse_m": {
+                  "baseline_median": 0.012137798073683563,
+                  "candidate_median": 0.0119166486618487,
+                  "ratio": 0.9817801045550143,
+                  "limit": 0.8,
+                  "passed": false
+                },
+                "loaded_slip_mps": {
+                  "baseline_median": 0.14989233016967773,
+                  "candidate_median": 0.13906361162662506,
+                  "ratio": 0.927756686877877,
+                  "limit": 0.85,
+                  "passed": false
+                }
+              },
+              "passed": false
+            }
+          ]
+        },
+        "stage_03": {
+          "status": "FIXED_NUMERIC_GATE_NOT_PASSED",
+          "failed_repeats": 1,
+          "walks": [
+            {
+              "clip": "walk_ff_stop_180_R_002__A095",
+              "metrics": {
+                "swing_sole_z_rmse_m": {
+                  "baseline_median": 0.010964060744290006,
+                  "candidate_median": 0.012267086542812623,
+                  "ratio": 1.1188451823564751,
+                  "limit": 0.8,
+                  "passed": false
+                },
+                "loaded_slip_mps": {
+                  "baseline_median": 0.10811197012662888,
+                  "candidate_median": 0.12664133310317993,
+                  "ratio": 1.1713904848357501,
+                  "limit": 0.85,
+                  "passed": false
+                }
+              },
+              "passed": false
+            },
+            {
+              "clip": "walk_ff_start_180_R_002__A071",
+              "metrics": {
+                "swing_sole_z_rmse_m": {
+                  "baseline_median": 0.012137798073683563,
+                  "candidate_median": 0.011727770709415691,
+                  "ratio": 0.9662189664238304,
+                  "limit": 0.8,
+                  "passed": false
+                },
+                "loaded_slip_mps": {
+                  "baseline_median": 0.14989233016967773,
+                  "candidate_median": 0.1599273532629013,
+                  "ratio": 1.0669482093037312,
+                  "limit": 0.85,
+                  "passed": false
+                }
+              },
+              "passed": false
+            }
+          ]
+        }
+      }
+    }
+  },
+  "reader_repair": {
+    "initial_attempt": "ValueError: Duplicate saved fixed-review row",
+    "physical_or_inference_started": false,
+    "output_created": false,
+    "correction": "Identical comparison rows replicated across historical stage tables are accepted; within-table duplicates and conflicting replicas remain errors.",
+    "tests_passed": 16,
+    "tests_skipped": 0
+  },
+  "reset_isolation": {
+    "status": "PREPARED_NOT_RUN",
+    "script": "script/supermimic_q1_gait_goal/initialization_inputs.py",
+    "number_of_environments": 16,
+    "independent_environments_sequential": 2,
+    "policy_inference_calls_max": 8,
+    "control_steps_max": 0,
+    "optimizer_updates_max": 0,
+    "external_wall_cap_seconds": 180,
+    "kill_grace_seconds": 10,
+    "parameters": "Same RF14 stage02 and original fixed3, hist10/H32, original saved network precision; repeat reset observation is synthetic history only.",
+    "checks": [
+      "Original first-environment/network-constructor RNG path vs fresh environment with existing networks",
+      "Old-vs-owned MDP observation and goal on the same state",
+      "Same frozen policy and same input under repeated inference and changed RNG",
+      "Original strict atol2e-6/rtol2e-5, parameter/source hashes and visible reset arrays"
+    ],
+    "dependency_for_next": "Publish and verify source snapshot, confirm unique boot/GPU and GPU idle, then run only this zero-integration isolation once.",
+    "does_not_reexecute_old_h32_direction": true
+  },
+  "training": {
+    "base_seconds": 0,
+    "ppo_seconds": 0,
+    "training_started": false,
+    "user_accepted_checkpoint": null,
+    "overall_goal_complete": false
+  },
+  "controls": {
+    "agents_started": false,
+    "other_automations_modified": false,
+    "original_supervision_modified": false
+  }
+}

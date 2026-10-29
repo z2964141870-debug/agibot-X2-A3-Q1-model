@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 GAIT_GOAL01：[保存轨迹校准与逐片验收](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)已完成36组/9612状态/648网格，16反例测试/4工件184903字节三端SHA，旧RF16三门均未达标。下一步为已准备的零积分reset输入隔离，目标ACTIVE、未新训练。[清单](../data/manifests/supermimic_q1_gait_goal_calibration_20261029.json)。
+
 2026-10-29：[Q1普通步态双线目标模式](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)已新建ACTIVE。SuperMimic底座/PPO残差分别改进脚底离地、换脚与滑移，首轮各<=20分钟、先契约及必要预检，物理指标和三重复原速视频验收；当前PREPARING未开训。[目标清单](../data/manifests/supermimic_q1_gait_goal_20261029.json)。
 
 2026-10-29 SOLE02：[SuperMimic底座与PPO的抬脚奖励信号](README_SUPERMIMIC_Q1_REWARD_SIGNAL_20261029.md)。36组9612保存状态/6测试/0新积分推理优化；明确厘米级脚高信号弱、同坏轨迹改评分也会涨分，上肢仅占额外平滑约3%-6%。7小工件1896597字节及3代码三端SHA，底座/PPO分别校准；H32差异未定位、无新训练或候选采纳。[清单](../data/manifests/supermimic_q1_sole02_reward_signal_20261029.json)。

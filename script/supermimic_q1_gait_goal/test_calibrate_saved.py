@@ -3,10 +3,19 @@
 import unittest
 import numpy as np
 
-from calibrate_saved import phase_labels, scale_statistics
+from calibrate_saved import merge_review_rows, phase_labels, scale_statistics
 
 
 class CalibrationTests(unittest.TestCase):
+    def test_shared_baseline_rows_must_be_identical_across_tables(self):
+        row = dict(label="baseline", repeat="0", clip="walk", steps="20")
+        merged, copies = merge_review_rows([[row], [dict(row)]])
+        self.assertEqual(len(merged), 1)
+        self.assertEqual(copies, 1)
+        for tables in (([row, dict(row)],), ([row], [dict(row, steps="19")])):
+            with self.assertRaises(ValueError):
+                merge_review_rows(tables)
+
     def test_contact_transition_is_neutral_not_swing(self):
         source = np.array([[True, False], [False, True], [False, True]])
         stance, swing = phase_labels(source, np.arange(4))

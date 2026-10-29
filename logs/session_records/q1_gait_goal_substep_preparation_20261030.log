@@ -1,0 +1,127 @@
+GAIT_GOAL01_SUBSTEP_PREPARATION_20261030
+
+All commands used the existing user25386 route. CUDA was hidden. No environment/policy/optimizer/physics construction was requested.
+
+FIRST_CPU_SUITE (12 tests, one expected-type failure corrected)
+
+test_independent_lines_have_exact_single_clip_bounds_and_paired_seeds (test_probe_substeps.ProbeTests.test_independent_lines_have_exact_single_clip_bounds_and_paired_seeds) ... ok
+test_initial_equality_is_separate_from_unproven_full_solver_replay (test_probe_substeps.ProbeTests.test_initial_equality_is_separate_from_unproven_full_solver_replay) ... ok
+test_new_exact_plan_authorization_and_zero_update_bounds_are_required (test_probe_substeps.ProbeTests.test_new_exact_plan_authorization_and_zero_update_bounds_are_required) ... ok
+test_bad_clock_changed_control_and_contact_mutation_fail (test_substep_observer.SamplerTests.test_bad_clock_changed_control_and_contact_mutation_fail) ... ok
+test_pre_solve_post_timestamps_and_geometry_are_separate (test_substep_observer.SamplerTests.test_pre_solve_post_timestamps_and_geometry_are_separate) ... FAIL
+test_existing_instance_method_is_restored_exactly (test_substep_observer.SubstepObserverTests.test_existing_instance_method_is_restored_exactly) ... ok
+test_failed_sampler_stops_and_cannot_resume_and_restores_method (test_substep_observer.SubstepObserverTests.test_failed_sampler_stops_and_cannot_resume_and_restores_method) ... ok
+test_inner_native_failure_marks_uncertainty_without_retry (test_substep_observer.SubstepObserverTests.test_inner_native_failure_marks_uncertainty_without_retry) ... ok
+test_invalid_substep_count_and_control_bound_prevent_extra_launches (test_substep_observer.SubstepObserverTests.test_invalid_substep_count_and_control_bound_prevent_extra_launches) ... ok
+test_observer_lifetime_is_single_use_and_rejects_bad_budgets (test_substep_observer.SubstepObserverTests.test_observer_lifetime_is_single_use_and_rejects_bad_budgets) ... ok
+test_other_hook_ownership_is_preserved (test_substep_observer.SubstepObserverTests.test_other_hook_ownership_is_preserved) ... ok
+test_real_source_eager_and_graph_keep_outer_control_and_force_lifecycle (test_substep_observer.SubstepObserverTests.test_real_source_eager_and_graph_keep_outer_control_and_force_lifecycle) ... ok
+
+======================================================================
+FAIL: test_pre_solve_post_timestamps_and_geometry_are_separate (test_substep_observer.SamplerTests.test_pre_solve_post_timestamps_and_geometry_are_separate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/data/private/ZHY/script/supermimic_q1_gait_goal_analysis/test_substep_observer.py", line 224, in test_pre_solve_post_timestamps_and_geometry_are_separate
+    np.testing.assert_array_equal(archive["solve_collision_sole_z_m"], [[[-.1, -.1]]])
+  File "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/lib/python3.11/site-packages/numpy/testing/_private/utils.py", line 920, in assert_array_equal
+    assert_array_compare(operator.__eq__, x, y, err_msg=err_msg,
+  File "/opt/data/private/hechengzhu/ZHY/data/env/lib/python3.11/contextlib.py", line 81, in inner
+    return func(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/lib/python3.11/site-packages/numpy/testing/_private/utils.py", line 797, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError:
+Arrays are not equal
+
+Mismatched elements: 2 / 2 (100%)
+Max absolute difference: 1.49011611e-09
+Max relative difference: 1.49011611e-08
+ x: array([[[-0.1, -0.1]]], dtype=float32)
+ y: array([[[-0.1, -0.1]]])
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.654s
+
+FAILED (failures=1)
+
+
+CPU_SUITE_AFTER_FLOAT32_EXPECTATION_CORRECTION:12 tests passed (before the preparation fixture was added).
+
+READ_ONLY_PREPARE_FIRST: IsADirectoryError: '/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027'. Runtime directory was incorrectly included in the file identity set. Corrected before output creation. Zero environments/inference/integration/optimizer.
+
+PREPARATION_FIXTURE_SUITE (13 tests, one synthetic directory fixture path failure corrected)
+
+test_independent_lines_have_exact_single_clip_bounds_and_paired_seeds (test_probe_substeps.ProbeTests.test_independent_lines_have_exact_single_clip_bounds_and_paired_seeds) ... ok
+test_initial_equality_is_separate_from_unproven_full_solver_replay (test_probe_substeps.ProbeTests.test_initial_equality_is_separate_from_unproven_full_solver_replay) ... ok
+test_new_exact_plan_authorization_and_zero_update_bounds_are_required (test_probe_substeps.ProbeTests.test_new_exact_plan_authorization_and_zero_update_bounds_are_required) ... ok
+test_readonly_preparation_freezes_runtime_files_and_rejects_changed_history (test_probe_substeps.ProbeTests.test_readonly_preparation_freezes_runtime_files_and_rejects_changed_history) ... ERROR
+test_bad_clock_changed_control_and_contact_mutation_fail (test_substep_observer.SamplerTests.test_bad_clock_changed_control_and_contact_mutation_fail) ... ok
+test_pre_solve_post_timestamps_and_geometry_are_separate (test_substep_observer.SamplerTests.test_pre_solve_post_timestamps_and_geometry_are_separate) ... ok
+test_existing_instance_method_is_restored_exactly (test_substep_observer.SubstepObserverTests.test_existing_instance_method_is_restored_exactly) ... ok
+test_failed_sampler_stops_and_cannot_resume_and_restores_method (test_substep_observer.SubstepObserverTests.test_failed_sampler_stops_and_cannot_resume_and_restores_method) ... ok
+test_inner_native_failure_marks_uncertainty_without_retry (test_substep_observer.SubstepObserverTests.test_inner_native_failure_marks_uncertainty_without_retry) ... ok
+test_invalid_substep_count_and_control_bound_prevent_extra_launches (test_substep_observer.SubstepObserverTests.test_invalid_substep_count_and_control_bound_prevent_extra_launches) ... ok
+test_observer_lifetime_is_single_use_and_rejects_bad_budgets (test_substep_observer.SubstepObserverTests.test_observer_lifetime_is_single_use_and_rejects_bad_budgets) ... ok
+test_other_hook_ownership_is_preserved (test_substep_observer.SubstepObserverTests.test_other_hook_ownership_is_preserved) ... ok
+test_real_source_eager_and_graph_keep_outer_control_and_force_lifecycle (test_substep_observer.SubstepObserverTests.test_real_source_eager_and_graph_keep_outer_control_and_force_lifecycle) ... ok
+
+======================================================================
+ERROR: test_readonly_preparation_freezes_runtime_files_and_rejects_changed_history (test_probe_substeps.ProbeTests.test_readonly_preparation_freezes_runtime_files_and_rejects_changed_history)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/data/private/ZHY/script/supermimic_q1_gait_goal_analysis/test_probe_substeps.py", line 119, in test_readonly_preparation_freezes_runtime_files_and_rejects_changed_history
+    probe_substeps.prepare(args)
+  File "/opt/data/private/ZHY/script/supermimic_q1_gait_goal_analysis/probe_substeps.py", line 123, in prepare
+    frozen.update({str(path): identity(path) for path in current})
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/script/supermimic_q1_gait_goal_analysis/probe_substeps.py", line 123, in <dictcomp>
+    frozen.update({str(path): identity(path) for path in current})
+                              ^^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/script/supermimic_q1_ppo/resources.py", line 29, in identity
+    return {"path": str(path), "bytes": path.stat().st_size,
+                                        ^^^^^^^^^^^
+  File "/opt/data/private/hechengzhu/ZHY/data/env/lib/python3.11/pathlib.py", line 1013, in stat
+    return os.stat(self, follow_symlinks=follow_symlinks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmp6mv0kydy/supermimic_q1_gait_goal/supervise.py'
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.654s
+
+FAILED (errors=1)
+
+
+FINAL_CPU_SUITE
+
+test_independent_lines_have_exact_single_clip_bounds_and_paired_seeds (test_probe_substeps.ProbeTests.test_independent_lines_have_exact_single_clip_bounds_and_paired_seeds) ... ok
+test_initial_equality_is_separate_from_unproven_full_solver_replay (test_probe_substeps.ProbeTests.test_initial_equality_is_separate_from_unproven_full_solver_replay) ... ok
+test_new_exact_plan_authorization_and_zero_update_bounds_are_required (test_probe_substeps.ProbeTests.test_new_exact_plan_authorization_and_zero_update_bounds_are_required) ... ok
+test_readonly_preparation_freezes_runtime_files_and_rejects_changed_history (test_probe_substeps.ProbeTests.test_readonly_preparation_freezes_runtime_files_and_rejects_changed_history) ... ok
+test_bad_clock_changed_control_and_contact_mutation_fail (test_substep_observer.SamplerTests.test_bad_clock_changed_control_and_contact_mutation_fail) ... {"status": "PREPARED_AWAITING_NEW_USER_DECISION", "plan": {"path": "/tmp/tmp7dpqu9l3/preparation/observation_plan.json", "bytes": 17434, "sha256": "08e4a98110c3bc461255bf5f503319bfd59f3fcad98545bddc261f27e051cdca"}, "frozen_inputs": 15, "physical_substeps_executed": 0, "optimizer_updates": 0}
+ok
+test_pre_solve_post_timestamps_and_geometry_are_separate (test_substep_observer.SamplerTests.test_pre_solve_post_timestamps_and_geometry_are_separate) ... ok
+test_existing_instance_method_is_restored_exactly (test_substep_observer.SubstepObserverTests.test_existing_instance_method_is_restored_exactly) ... ok
+test_failed_sampler_stops_and_cannot_resume_and_restores_method (test_substep_observer.SubstepObserverTests.test_failed_sampler_stops_and_cannot_resume_and_restores_method) ... ok
+test_inner_native_failure_marks_uncertainty_without_retry (test_substep_observer.SubstepObserverTests.test_inner_native_failure_marks_uncertainty_without_retry) ... ok
+test_invalid_substep_count_and_control_bound_prevent_extra_launches (test_substep_observer.SubstepObserverTests.test_invalid_substep_count_and_control_bound_prevent_extra_launches) ... ok
+test_observer_lifetime_is_single_use_and_rejects_bad_budgets (test_substep_observer.SubstepObserverTests.test_observer_lifetime_is_single_use_and_rejects_bad_budgets) ... ok
+test_other_hook_ownership_is_preserved (test_substep_observer.SubstepObserverTests.test_other_hook_ownership_is_preserved) ... ok
+test_real_source_eager_and_graph_keep_outer_control_and_force_lifecycle (test_substep_observer.SubstepObserverTests.test_real_source_eager_and_graph_keep_outer_control_and_force_lifecycle) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.697s
+
+OK
+
+
+FINAL_REAL_MODULE_IMPORT_CHECK
+
+{"status": "OBSERVATION_IMPORTS_PASSED", "environments_constructed": 0, "policy_calls": 0, "physical_substeps": 0, "optimizer_updates": 0}
+
+
+FINAL_READ_ONLY_PREPARATION
+
+{"status": "PREPARED_AWAITING_NEW_USER_DECISION", "plan": {"path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_PREPARATION_20261030/observation_plan.json", "bytes": 85901, "sha256": "b5f4e7fb211a0f5445549d26b3b0cb943c9168941099164821849b3576db35ac"}, "frozen_inputs": 281, "physical_substeps_executed": 0, "optimizer_updates": 0}
+
+
+Actual new environments:0. Policy forwards:0. Integrated physical substeps:0. Optimizer updates:0. This is preparation, not physical validation or goal completion.

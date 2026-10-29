@@ -1,0 +1,186 @@
+{
+  "stage": "GAIT_GOAL01_SUBSTEP_PREPARATION_20261030",
+  "status": "PREPARED_AWAITING_NEW_USER_DECISION",
+  "source_base_commit": "f340821be87bf11ca067bf0cf0eefacf83850eca",
+  "source_files": [
+    {
+      "relative_path": "script/supermimic_q1_gait_goal_analysis/test_probe_substeps.py",
+      "bytes": 7935,
+      "sha256": "bf9f9ff0253df968c4934c7b0c66f0ae36f48e516b12021a2a9b5a68cfc9f72e"
+    },
+    {
+      "relative_path": "script/supermimic_q1_gait_goal_analysis/test_substep_observer.py",
+      "bytes": 11145,
+      "sha256": "b1aa642bc96f28753a0bfedc7d4d5e5e7a3575a37ca9eda3fd26ef70b1c50783"
+    },
+    {
+      "relative_path": "script/supermimic_q1_gait_goal_analysis/probe_substeps.py",
+      "bytes": 28327,
+      "sha256": "bcac9dd786bf20239a10192021f37f8605f7964e71dbc3e7e48da5ac905a01c9"
+    },
+    {
+      "relative_path": "script/supermimic_q1_gait_goal_analysis/substep_observer.py",
+      "bytes": 9684,
+      "sha256": "101858f170897993c637ff360cf8392340641f0a2bf33d28cff99ee19329476d"
+    }
+  ],
+  "prepared_plan": {
+    "relative_path": "data/manifests/supermimic_q1_gait_goal_substep_observation_plan_20261030.json",
+    "original_server_path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_PREPARATION_20261030/observation_plan.json",
+    "bytes": 85901,
+    "sha256": "b5f4e7fb211a0f5445549d26b3b0cb943c9168941099164821849b3576db35ac",
+    "frozen_inputs": 281
+  },
+  "actual_new_activity": {
+    "environments_constructed": 0,
+    "policy_forwards": 0,
+    "integrated_physical_substeps": 0,
+    "optimizer_updates": 0,
+    "training_seconds": 0,
+    "agents_started": 0,
+    "automations_modified": false
+  },
+  "tests": {
+    "passed": 13,
+    "failed_final": 0,
+    "CUDA_VISIBLE_DEVICES": "-1",
+    "actual_installed_backend_methods_extracted": [
+      "step_tensor",
+      "_execute_device_steps"
+    ],
+    "synthetic_eager_and_graph_launch_order": true,
+    "pending_external_force_lifecycle_checked": true,
+    "force_cleanup_and_time_cache_once_checked": true,
+    "method_ownership_and_restoration_checked": true,
+    "failed_launch_uncertainty_and_no_retry_checked": true,
+    "pre_solve_post_timestamp_separation_checked": true,
+    "no_extra_step_or_forward_in_sampler": true,
+    "read_only_preparation_on_synthetic_files_checked": true,
+    "exact_reviewed_scope_and_new_decision_record_checked": true,
+    "real_component_import_check": "OBSERVATION_IMPORTS_PASSED",
+    "limitations": "Exact-source methods executed only on arithmetic stand-ins; no numerical native-physics trajectory equivalence test"
+  },
+  "corrected_preparation_failures": [
+    {
+      "type": "CPU_test_float32_vs_float64_expected_value",
+      "max_abs_difference": 1.49011611e-9,
+      "fix": "Same float32 expected tensor; no native tolerance change"
+    },
+    {
+      "type": "Read_only_prepare_runtime_directory_hashed_as_file",
+      "fix": "Freeze the runtime source files; do not pass its directory to file identity"
+    },
+    {
+      "type": "Synthetic_preparation_fixture_supervisor_path",
+      "fix": "Use the real relative script directory layout in the fixture"
+    }
+  ],
+  "proposed_new_observation": {
+    "authorized": false,
+    "independent_lines": [
+      "base",
+      "ppo"
+    ],
+    "cases_per_line": 12,
+    "base_conditions": [
+      "original_initial",
+      "original_stage_01_301_seconds"
+    ],
+    "ppo_conditions": [
+      "original_teacher_final_head_zero",
+      "same_teacher_same_final_head_enabled"
+    ],
+    "conditions_per_line": 2,
+    "original_fixed_walks": [
+      "walk_ff_stop_180_R_002__A095",
+      "walk_ff_start_180_R_002__A071"
+    ],
+    "repeats_per_condition": 3,
+    "configured_seeds": [
+      32000,
+      32001,
+      32002
+    ],
+    "maximum_worlds_at_once": 1,
+    "maximum_controls_per_line": 3180,
+    "maximum_physical_substeps_per_line": 12720,
+    "maximum_policy_batches_per_line": 6360,
+    "maximum_controls_both_lines": 6360,
+    "maximum_physical_substeps_both_lines": 25440,
+    "physics_dt_s": 0.005,
+    "control_dt_s": 0.02,
+    "outer_stop_threshold_s_per_line": 1800,
+    "process_cleanup_grace_s": 10,
+    "resource_check_interval_s": 1,
+    "optimizer_updates": 0,
+    "upper_reference_alpha": 0.5,
+    "automatic_retry": false,
+    "automatic_extension": false,
+    "training_permission_inferred": false,
+    "execution_outputs": {
+      "base": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_BASE_20261030",
+      "ppo": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_PPO_20261030"
+    },
+    "required_next_decision": "Explicit user decision for this exact new zero-optimizer measurement; old consumed base/PPO authorization is not reused"
+  },
+  "observations": {
+    "raw_channels": [
+      "pre/post qpos qvel time warmstart qacc ctrl applied_force",
+      "solve actuator_length velocity force qfrc_actuator constraint bias passive",
+      "same_solve foot_pose collision_sole_z foot_world_Z_force_weighted_slip"
+    ],
+    "initial_comparison": [
+      "raw_policy_history_goal",
+      "native_initial_state_and_available_warmstart",
+      "Python_NumPy_Torch_CPU_CUDA_RNG",
+      "actuator_gain_bias_limits"
+    ],
+    "solve_timestamp": "Pre-integration native forward/solve; post qpos/qvel/time separately recorded without extra forward",
+    "joint_order": "Explicit native actuator/qpos/qvel IDs mapped to canonical Q1 joint names",
+    "saturation": "Direct solved force samples near signed model limits, 1e-4 Nm tolerance; sample-duration sum is not proof of uninterrupted dwell or hardware saturation",
+    "trajectory_equivalence_physically_verified": false,
+    "full_native_solver_state_equivalence_proven": false,
+    "historical330world_replay": false,
+    "raw_npz_storage": "SERVER_LOCAL_ONLY"
+  },
+  "backend_current_only": [
+    {
+      "path": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/lib/python3.11/site-packages/unisim/backend/mjwarp/backend.py",
+      "bytes": 188379,
+      "sha256": "d901476395e4c10610d92f978c6893353e3b747e332e3a2630daa2749ea9f738"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/lib/python3.11/site-packages/unilab/base/torch_env.py",
+      "bytes": 43057,
+      "sha256": "55d53560e0bd8195d0eb52f6b3dc6a2637981f8b17134428cc469844956c6de8"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/lib/python3.11/site-packages/mujoco_warp/_src/forward.py",
+      "bytes": 41765,
+      "sha256": "5777015c762394cf5e26d261f05a1b84d3dfda051de48992d7ef709b06e9c86f"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/lib/python3.11/site-packages/mujoco_warp/_src/constraint.py",
+      "bytes": 173484,
+      "sha256": "6806edf7cde19ffca9cf8e463c6b1ee2126eba4896085889193edeab188ba68f"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/lib/python3.11/site-packages/mujoco_warp/_src/types.py",
+      "bytes": 110636,
+      "sha256": "712e76f495d3dedcb45acc7c248e226f56144b5fef5d9841d5e04d279fa7fd4f"
+    }
+  ],
+  "original_trials": {
+    "base_training_seconds": 301.1074845249823,
+    "ppo_training_seconds": 600.0709074319457,
+    "total_training_seconds": 901.178391956928,
+    "outcome": "physical_regression",
+    "new_V02_authorization_consumed": true,
+    "user_accepted_checkpoint": null
+  },
+  "publication": "See independent publication sidecar after push, full40 remote readback and size/SHA verification",
+  "goal_status": "active",
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "log": "logs/session_records/q1_gait_goal_substep_preparation_20261030.log"
+}

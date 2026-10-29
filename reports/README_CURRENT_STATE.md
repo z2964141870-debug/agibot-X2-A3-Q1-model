@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-30：[GAIT_GOAL01逐子步执行层观测准备](README_Q1_GAIT_GOAL01_SUBSTEP_PREPARATION_20261030.md)。13CPU替身测试/真实模块imports/只读281源plan完成，0环境前向积分优化；内部钩子保留外层ctrl/外力/时钟生命周期，pre/solve/post分时，实际物理等价未测。底座initial对301秒、PPO同教师最终head零/开，各两走三重复/单片1环境，每线最多3180控制/12720子步/6360策略批、1800秒外停+10回收；plan85901B/SHA b5f4e7fb211a0f5445549d26b3b0cb943c9168941099164821849b3576db35ac。仅准备，真实积分/推理仍待新的明确决定；原901.178392秒/physical_regression/V02授权已用/采纳null/goal ACTIVE及监督缓存其他任务保持，不恢复重试扩时/agent。[清单](../data/manifests/supermimic_q1_gait_goal_substep_preparation_20261030.json)/[plan](../data/manifests/supermimic_q1_gait_goal_substep_observation_plan_20261030.json)，发布以publication旁收据为准。
+
 2026-10-30：[GAIT_GOAL01保存PPO学习链路核查](README_Q1_GAIT_GOAL01_SAVED_PPO_CHAIN_20261030.md)。3检查点/113日志轮/39张量行/5测试、0推理积分采样优化，3工件72249B三端SHA/14学习源码匹配原冻结。最终head各Adam2060/critic2260和参数变化确认，排除一直冻结；std固定.1/预热残差约.01485rad，训练alpha0占23.7%-26.3%且head仍开、评测alpha.5。缺逐转移优势/比率裁剪/梯度，不能据loss定critic坏或据噪声混合定失败单因。原901.178392秒/physical_regression/采纳null/goal ACTIVE、监督缓存等保持；只可继续保存数据研究，新物理/推理/训练须新决定，不恢复重试扩时/agent。[清单](../data/manifests/supermimic_q1_gait_goal_saved_ppo_chain_20261030.json)。
 
 2026-10-30：[GAIT_GOAL01离线PD请求/力矩限制核查](README_Q1_GAIT_GOAL01_SAVED_PD_DEMAND_20261030.md)。45片12015状态/5测试/135CPU执行器核对，0积分推理优化；6工件1164112B三端SHA/一图目视。边界287/264330请求超限均踝pitch，最终起走右踝底座5.7%-8.1%/PPO3.8%-5.7%；非整段实测饱和、非贴地单因。缺逐子步实际力矩，原plan亦未冻结后端Python；当前5源码SHA单列不冒充历史。两线独立逐子步观测仅可审阅设计，尚无新物理授权；原901.178392秒/失败/采纳null/goal ACTIVE及监督等保持，不重试扩时/agent。[清单](../data/manifests/supermimic_q1_gait_goal_saved_pd_demand_20261030.json)。

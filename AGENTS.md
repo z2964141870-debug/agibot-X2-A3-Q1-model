@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-30 GAIT_GOAL01逐子步观测准备完成：13CPU替身测试/真实模块imports/只读plan281源，0环境前向积分优化。内部4子步钩子保留原外层ctrl/外力/时钟生命周期，pre/solve/post分时记录；实际轨迹等价未测。底座initial对301秒、PPO同教师最终head零/开各两走三重复，单片1环境，每线最多3180控制/12720子步/6360策略批、1800秒外停+10回收；plan85901B/SHA b5f4e7fb211a0f5445549d26b3b0cb943c9168941099164821849b3576db35ac。仅准备未获新物理决定，原901.178392秒/失败/V02授权已用/采纳null/goal ACTIVE保持，不恢复重试扩时/agent；监督缓存等不改。入口GAIT_GOAL01_SUBSTEP_PREPARATION及substep清单/plan，发布看旁收据。
+
 - 2026-10-30 GAIT_GOAL01保存PPO链路核查完成：3检查点/113日志轮/39张量行/5测试，0推理积分采样优化；3工件72249B三端SHA，14学习源码匹配原冻结身份。最终head各Adam2060/critic2260且全部参数已变，排除一直冻结；std固定.1/预热采样残差约.01485rad，训练alpha0占23.7%-26.3%且head仍开启、评测alpha.5。缺原逐转移优势/比率裁剪/梯度，噪声混合差异只是未隔离假设，不由loss定critic失败。原901.178392秒/physical_regression/采纳null/goal ACTIVE与监督等保持，不新物理推理训练/重试扩时/agent。入口GAIT_GOAL01_SAVED_PPO_CHAIN及saved_ppo_chain清单。
 
 - 2026-10-30 GAIT_GOAL01离线PD核查完成：45片12015状态/5测试/135CPU执行器计算，0积分推理优化；6工件1164112B三端SHA/一图目视。边界请求287/264330超模型限幅，均踝pitch；最终起走右踝底座5.7%-8.1%/PPO3.8%-5.7%，不能视为整段实测饱和或贴地单因。场景KP15.791/KV1.005、踝22Nm/髋膝腰36Nm；原plan未冻结后端Python，当前5源码SHA不冒充历史证据。已列两线独立逐子步观测设计，未授权未物理运行；原901.178392秒/失败/采纳null/goal ACTIVE与监督等保持，不重试扩时/agent。入口GAIT_GOAL01_SAVED_PD_DEMAND及saved_pd_demand清单。

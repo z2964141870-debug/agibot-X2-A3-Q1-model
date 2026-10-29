@@ -1,5 +1,9 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 SOLE01：[H32原生目标CPU检查通过](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，含critic的目标匹配、参数/归一化保护，0optimizer/积分；底座/PPO候选已各有CPU契约，独立原生H32和16/4096检查待冻结后执行。[计划](../data/manifests/supermimic_q1_sole_native_plan_20261029.json)。
+
+2026-10-29 SOLE01：[SuperMimic底座脚底Z候选CPU契约](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)已过三固定片51姿态与梯度检查，PPO16/4096及原生H32工具准备中；GPU由独立交付占用，无新物理/optimizer或训练。原尺度保留，不宣称步态改善。
+
 2026-10-29 MM04：[原版G1唯一600轮工程训练运行中](README_MORPHMIMIC_REPRO_20261029.md)，13:47:33启动/冻结c7f0499，原500轮WM预热；359轮WM3590/actor0/critic0，不能称策略学会。固定三片初末ONNX与仿真视频待，3500秒硬限/不重试。[启动收据](../data/manifests/morphmimic_g1_launch_20261029.json)。
 
 2026-10-29 SOLE01：[连接恢复与真实CPU脚底契约](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)已通过，原HP环境10测试/0跳过、51原Q1姿态脚底对MuJoCo最大差约0.14微米，23小产物239048字节Mac/25386大小SHA一致。0新积分/策略推理/optimizer，继续底座候选及原生H32，未新训练。[实测清单](../data/manifests/supermimic_q1_sole_cpu_validation_20261029.json)覆盖早期认证UNKNOWN的当前状态。

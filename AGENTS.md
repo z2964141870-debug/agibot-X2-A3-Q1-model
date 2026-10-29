@@ -4,6 +4,10 @@
 
 ## 环境与目录
 
+- 2026-10-29 SOLE01 H32 CPU实际通过：RF14stage02原权重、16原参考起点/hist10/H32/FP32，直接截获原生policy_update裁剪后梯度/阻止optimizer step，重算含critic的目标匹配，参数/归一化/来源保护通过，0积分/optimizer。尚不证明Warp/BF16或Adam/物理改善。独立native_plan准备顺序一次H32-16方向、PPO16/4096零更新检查，外限240/360/600秒，须先冻结发布/三端SHA并逐项核GPU空闲；不新正式训练/恢复旧作业/扩时，采纳null、监督/其他任务不改，无agent/旧goal。入口SOLE_CANDIDATE及sole_native_plan。
+
+- 2026-10-29 SOLE01底座候选原HP CPU契约通过：三固定片51姿态，仅替换原14body位置均值中两脚Z，其他reward/观测/critic特征/终止及尺度不变；踝roll梯度有限差分最大差1.08378e-5，原尺度下奖励差很小，非步态改善。PPO原生16/4096复用入口及原生H32梯度截获/闭环对照工具已准备，尚未物理运行；GPU由独立MorphMimic交付占用不并行。0新积分/optimizer、无训练/agent/旧goal，采纳null及监督保持。恢复CPU发布84dce49cf1c69cf18096b36b019c7cac784b6a5d独立远端/5记录261870字节三端SHA；入口SOLE_CANDIDATE。
+
 - 2026-10-29 MM04原版G1唯一工程训练已13:47:33实际启动，runtime_guard185658/start16649863、timeout185659及trainer185660/start16649878，原boot/GPU；冻结c7f049965d1841e5ee556637695ea2494fda5bb1已独立远端及10文件319374字节三端SHA。64环境/600轮/原500轮WM预热/H32，3500秒全进程硬限加20秒回收，不扩时/重试；359轮实测WM3590/policy0/critic0，仅预热无步态结论。固定前走/起走/停走三片初末原版ONNX及sim2sim待，失败保留短视频，权重留服务器；无agent/旧goal/自动任务修改。后续文档提交不改变训练冻结，入口MORPHMIMIC_REPRO/MM04。
 
 - 2026-10-29 SOLE01连接已复用现有master47384恢复，原boot/GPU/场景/330库SHA一致，现场GPU15MiB/0%无匹配计算任务；未再输入凭证或改Windows桥。原HP环境10测试全过/0跳过，三固定片51姿态脚底FK对MuJoCo最大差1.356607071e-7m，特征/相位/其他reward不变；0积分/推理/optimizer，不是步态收益。23来源/记录/分析与CPU产物239048字节Mac/25386大小SHA匹配，先前UNKNOWN/镜像待认证为历史。实际MDP/learner已读，继续独立底座脚底Z候选及原生H32方向，16/4096/训练未运行；采纳null、监督/其他工作不改，无agent/旧goal。入口SOLE_CANDIDATE及sole_cpu_validation。

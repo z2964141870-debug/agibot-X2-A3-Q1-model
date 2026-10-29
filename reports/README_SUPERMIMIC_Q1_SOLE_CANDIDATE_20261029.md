@@ -20,6 +20,26 @@
 
 已读取实际MDP与learner：底座身体位置误差为14个跟踪body三维误差的均值，脚部采用ankle-roll body原点；H32 actor目标包含闭环想象、soft termination、折扣及critic末端值。下一项按此真实表达实现独立脚底Z候选与方向核查，不更改历史runtime。当前仍0新积分/策略推理/optimizer，未运行原生16/4096或新训练，用户采纳null。
 
+## 底座候选及H32检查准备
+
+14:09:40，独立`base_mdp.py`与`check_base_contract.py`在原HP CPU环境通过真实三固定片/51姿态检查。底座仅在原14-body平均位置误差内，将左右脚对应槽位3/6的Z分量替换为碰撞脚底Z；XY、其他body、原尺度.3m与权重、观测、critic特征、终止和其他奖励项保持。自参考/整体根Z偏移的新旧奖励差为0，右踝roll单项/组合扰动差最大约9.69e-8/1.25e-6；踝roll梯度与有限差分最大差1.08378e-5。它保留原位置项的弱尺度，不能将契约通过解释为足够强的抬脚学习信号。
+
+原收据为`data/supermimic_for_q1/Q1_SOLE01_BASE_CPU_CONTRACT_20261029/receipt.json`。底座和PPO两候选尚未做组合评测，未修改旧runtime/检查点，也未开训练。
+
+`preflight_sole.py`是独立入口，注入已验证的脚底Adapter后复用原RF16的16/4096零optimizer检查，包含奖励分解、截断、自举、概率、教师与归一化保护；当前仅AST/CLI通过，尚未物理执行。GPU已由独立MorphMimic交付流程占用，本任务不并行占用。
+
+`h32_direction.py`已准备：调用真实`SuperMimicLearner.policy_update`，在原生梯度裁剪后截获方向，optimizer step被阻止；同一初始状态、历史和观测噪声比较正反参数扰动的32步闭环，分别报告折扣奖励与critic末端值。CPU模式只核原生目标表达/状态保护；Warp模式另建独立环境并重放同一warm-up，核状态/历史/加速度warmstart后比较物理分支。它检查梯度方向而非Adam动量，诊断小批量不冒称原1024批量，.64秒也不替代完整步态。此段写入时H32尚未实际运行。
+
+连接恢复/第一组CPU契约已发布`84dce49cf1c69cf18096b36b019c7cac784b6a5d`并独立核远端，5记录261870字节权威Git/Mac/25386逐SHA匹配。下续准备代码按新的实际验证和发布收据更新。
+
+## H32 CPU检查与独立原生预检计划
+
+14:20:05，`h32_direction.py --mode cpu-contract`已实际通过。加载RF14两小时原检查点208866293字节/SHA249ba56a…，16个原参考姿态起点、hist10/H32、CPU实际FP32；直接调用原`policy_update`，在原norm/value梯度裁剪后阻止step。独立重算的32步折扣/soft continuation/critic尾值与原生目标逐起点匹配；正反.01参数方向已给原值，参数/归一化恢复，来源前后SHA不变，0optimizer/积分。它没有验证Warp、BF16、Adam动量或真实步态，不能把CPU想象收益称物理改善。
+
+当前GPU交付已释放。按[独立原生计划](../data/manifests/supermimic_q1_sole_native_plan_20261029.json)，先冻结发布/三端SHA，然后顺序运行一次16环境H32方向测量、16环境与4096环境PPO零更新契约。每项重核boot/GPU及空闲，外限240/360/600秒，不和独立工作抢GPU；任何实质失败停止依赖它的检查。没有正式训练、旧作业恢复、扩时或候选自动采纳。预检还须以实际终态为准。
+
+H32物理命令入口为`h32_direction.py --mode native-direction`，其余runtime/library/checkpoint参数同CPU记录，输出独立`Q1_SOLE01_H32_NATIVE_20261029`。PPO入口为`preflight_sole.py --envs 16`或`--envs 4096 --upper-alpha .5`，两者均用原RF14stage02及UR04 calibration_v02；输出分别为`Q1_SOLE01_NATIVE16_20261029`/`Q1_SOLE01_NATIVE4096_20261029`，不覆盖任何旧实验。
+
 ## 首次连接事实（历史）
 
 用户提供Windows登录方式后，本次发现已有Windows桥：`/tmp/yuanqi-windows-25386.sock`，master为47236，`127.0.0.1:18873`正在监听并转向当前25386；本次保留此进程，没有另建或重启桥。

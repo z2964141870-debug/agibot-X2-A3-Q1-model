@@ -1,5 +1,9 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 SOLE01 H32 CPU：[原生actor目标表达检查已通过](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，16原参考起点/H32/FP32，梯度截获后阻止step，含critic目标重算及参数/归一化保护通过，0积分/optimizer。GPU当前释放，独立[原生计划](../data/manifests/supermimic_q1_sole_native_plan_20261029.json)待冻结发布后顺序H32-16方向和PPO16/4096零更新，不宣称物理收益或新训练，采纳null/监督不改。
+
+2026-10-29 SOLE01底座候选：[原HP CPU契约已通过](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，51姿态仅换两脚Z，其余reward/观测/critic特征/终止不变，梯度有限差分通过；原奖励尺度保留，非步态收益。PPO16/4096入口及真实learner H32方向工具已准备，当前GPU由独立MorphMimic交付占用，先做H32 CPU表达检查，不并行GPU。0新积分/optimizer及训练，采纳null；连接/首CPU发布84dce49/5记录261870字节三端SHA已核，监督及其他任务保持。
+
 2026-10-29 MM04：[原版MorphMimic G1唯一训练已13:47:33启动](README_MORPHMIMIC_REPRO_20261029.md)，冻结c7f0499/三端SHA已核；64环境600轮、500轮WM预热、H32，3500秒全进程硬限和20秒清理。359轮WM3590、actor/critic0，尚无策略学习或步态结论；之后固定前走/起走/停走初末导出回放，不扩时/重试，权重留服务器。[启动收据](../data/manifests/morphmimic_g1_launch_20261029.json)。下方MM03尚未开训是历史。
 
 2026-10-29 SOLE01恢复实测：[25386连接及CPU契约已通过](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，复用现有master/原boot与GPU，场景/330库SHA一致，10真实环境测试全过，三固定片51姿态脚底最大几何差约0.14微米。23候选/记录/既有分析及CPU产物239048字节Mac/25386大小SHA一致，早期UNKNOWN已解除；0新积分/策略推理/optimizer，不能称步态改善。实际底座MDP/learner已读，继续底座脚底Z候选及H32方向，原生16/4096与训练待；采纳null、监督/其他任务不改。[实测清单](../data/manifests/supermimic_q1_sole_cpu_validation_20261029.json)。

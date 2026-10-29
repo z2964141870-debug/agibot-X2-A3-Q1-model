@@ -1,5 +1,5 @@
 {
-  "status": "GAIT_GOAL01_ONE_REPAIRED_BASE16_AUTHORIZED_NOT_STARTED_MEMORY_ADMISSION_PENDING",
+  "status": "GAIT_GOAL01_CACHE_CLEARED_ONE_REPAIRED_BASE16_PREFLIGHT_PASSED_ZERO_TRAINING",
   "recorded_date_beijing": "2026-10-29",
   "stage": "GAIT_GOAL01",
   "goal": {
@@ -15,12 +15,12 @@
     "repaired_base16_retry": {
       "user_reply": "允许修复后仅一次预检",
       "maximum_additional_attempts": 1,
-      "attempts_started": 0,
+      "attempts_started": 1,
       "optimizer_updates_allowed": 0,
       "initial_usage_bytes_max": 25769803776,
       "original_guard_bytes_unchanged": 32212254720,
       "training_budget_increased": false,
-      "current_condition": "MEMORY_ADMISSION_NOT_MET"
+      "current_condition": "PREFLIGHT_COMPLETED_PASSED_ZERO_OPTIMIZER_ADDITIONAL_ALLOWANCE_USED"
     }
   },
   "budget": {
@@ -98,7 +98,7 @@
     ],
     "saved_calibration": "COMPLETED_36_GROUPS_9612_SAVED_STATES",
     "nonintegrating_h32_initialization_isolation": "COMPLETED_RESET_AND_POLICY_INPUTS_MATCH_8_INFERENCE_0_INTEGRATION",
-    "new_physical_preflights": "BASE16_GUARD_STOPPED_MEMORY_NO_COMPLETION_RECEIPT_ALL_OTHERS_NOT_RUN",
+    "new_physical_preflights": "FIRST_BASE16_MEMORY_STOP_PRESERVED_REPAIRED_BASE16_ONCE_PASSED_OTHERS_NOT_RUN",
     "new_training": "NOT_STARTED",
     "new_integration_steps": null,
     "new_control_transitions": null,
@@ -108,7 +108,11 @@
     "policy_inference_calls": 18,
     "warmup_strict_physical_equivalence": false,
     "new_candidate_cpu_contract": "PASSED_51_POSES_WITH_BOUNDED_EXACT_COLLISION_SUPPORT",
-    "optimizer_updates": 0
+    "optimizer_updates": 0,
+    "repaired_base16_receipt": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029/run/receipt.json",
+    "repaired_base16_frozen_sources_unchanged": 1564,
+    "repaired_base16_native_collection_transitions_reported": 272,
+    "repaired_base16_independent_evaluation_transitions_reported": 960
   },
   "controls": {
     "active_10minute_supervision_modified": false,
@@ -116,7 +120,18 @@
     "agents_started": false,
     "credentials_read_written_or_published": false,
     "large_checkpoint_npz": "SERVER_LOCAL_ONLY",
-    "environment_upgraded": false
+    "environment_upgraded": false,
+    "project_file_cache_cleanup_authorized": true,
+    "project_file_cache_cleanup_observed_reduction_bytes": 27198078976,
+    "files_deleted_by_cache_cleanup": 0,
+    "dedicated_cache_heartbeat": {
+      "id": "q1",
+      "status": "ACTIVE",
+      "interval_minutes": 30,
+      "cache_threshold_gib": 8,
+      "advice_limit_gib_per_run": 8,
+      "skip_during_active_work": true
+    }
   },
-  "next": "User authorized exactly one repaired-base16 zero-update preflight. This allowance is unspent: cgroup total usage27.38GiB remains above the unchanged24GiB initial admission. The former term shared memory meant cgroup total including file cache; actual shmem and /dev/shm usage are0. Preserve the failure and original guard; no cache eviction, dependent4096/PPO physical preflight or formal training started. Record raw memory categories separately and continue feasible offline work. Goal remains active, not complete or paused."
+  "next": "User-authorized project file-cache cleanup completed: cache25.99 to0.66GiB and total1.43GiB after the maintenance worker exited. Dedicated30-minute maintenance is active, idle-only and bounded; existing supervision unchanged. The only repaired-base16 allowance was used and passed with zero optimizer updates, preserved native H32 inputs/parameters/state/RNG and1564 unchanged sources. Preserve the first memory failure and old unproven cross-environment direction check. Before dependent4096/PPO preflights and formal training, finish offline failed-prefix physical metrics and saved-evidence delivery/audit flow. Both formal training budgets remain unspent; goal active and user adoption null."
 }

@@ -1,6 +1,6 @@
 # Q1普通步态双线改进目标
 
-记录日期：2026-10-29，北京时间。阶段：GAIT_GOAL01。状态：目标ACTIVE；用户已允许修复后仅一次base16零更新预检，当前内存准入未满足，授权尚未使用，未重做或启动训练。
+记录日期：2026-10-29，北京时间。阶段：GAIT_GOAL01。状态：目标ACTIVE；已按用户新授权清理文件缓存，唯一追加base16零更新预检正常通过、1564冻结来源不变；正式训练仍0，4096/PPO待执行。已有离线失败归档/交付修正尚待，不以预检通过宣称步态收益。
 
 ## 目标与授权
 
@@ -115,3 +115,11 @@
 此前“共享内存”用词不准确，应改为“容器cgroup总内存用量”。真正共享内存是多个进程可访问同一内存区的机制；/dev/shm是常见的POSIX共享内存入口。文件缓存是Linux保留读写文件的页，未在使用的可回收页可以在内存压力下被回收；不能把全部cache一概等同于可立即释放空间。cgroup v1的usage_in_bytes本身有记账误差，rss仅包含匿名及swap cache页，也不是模型完整工作集。解释依据为Linux官方cgroup-v1 memory及tmpfs文档。
 
 当前27.38GiB总记账仍超过24GiB准入，故没有派生重试worker。现有守卫把文件缓存也计入保护线，可能在应用实际需要内存前提前中止；当前证据只支持“cache占主导且守卫较保守”，不证明实际训练的峰值需求或OOM安全。未清缓存、删除数据、改阈值或修改其他任务。离线失败归档与交付修正仍未完成，没有在本次问答中实施。两线正式训练仍0秒，目标ACTIVE、采纳null。[原始数字和决定](../data/manifests/supermimic_q1_gait_goal_memory_breakdown_20261029.json)。
+
+## 缓存清理与授权的一次base16结果
+
+用户随后明确要求“没有用的文件缓存全清了啊，都是我们诞生的，定期定量清理掉”，覆盖此前不清缓存的范围。仅本项目未打开/映射的普通文件通过mincore/FADV释放干净缓存，125.65秒扫描完成，文件cache25.99→0.66GiB、实降25.33GiB；工具退出后容器1.43GiB、RSS约18MiB、shmem0/OOM0。不删数据、不全局drop_caches、不改原24/30GiB保护。独立本线程q1缓存维护ACTIVE每30分钟，cache>8GiB空闲时每轮最多8GiB advice/120秒，忙碌跳过，原监督与其他任务保持。
+
+一次修复base16于22:03:11启动，22:04:10 controller COMPLETED，guard WORKER_COMPLETED/worker211081 reaped0，1564冻结来源未变。真实H32 WM/actor/critic梯度有限非零、实际replay起点与末历史逐值相同/输入未变，optimizer WM1/actor1/critic20次调用全部拦截，实际0更新；参数未变/normalizer恢复/独立评测保护状态RNG。worker报告采集272转移、独立评测960环境转移。原controller211075和worker退出/GPU15MiB无计算/OOM0。
+
+这是零更新原生训练契约通过，不是步态收益，也没有建立旧跨独立仿真的物理方向结论。用户唯一追加base16授权已用完，不再次自动执行失败预检；base4096和PPO16/4096仍未执行。双线正式训练0秒，先补提前失败reference前缀与交付归档的离线问题，再继续依赖阶段，goal ACTIVE/采纳null。完整命令、清理失败边界与结果见[缓存维护README](README_Q1_FILE_CACHE_MAINTENANCE_20261029.md)和[清单](../data/manifests/supermimic_q1_cache_maintenance_base16_20261029.json)。

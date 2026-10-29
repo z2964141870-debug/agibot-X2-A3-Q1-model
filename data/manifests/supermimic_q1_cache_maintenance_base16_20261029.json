@@ -1,0 +1,238 @@
+{
+  "status": "Q1_PROJECT_FILE_CACHE_RECLAIMED_PERIODIC_MAINTENANCE_ACTIVE_BASE16_PREFLIGHT_PASSED",
+  "recorded_date_beijing": "2026-10-29",
+  "user_instruction": "没有用的文件缓存全清了啊，都是我们诞生的，定期定量清理掉",
+  "source_commit": "b6c28069be567e4f4d77c4b8dcd8d5e96daccfba",
+  "first_tool_call": {
+    "status": "FAILED_BEFORE_ADVICE",
+    "reason": "Protected infrastructure PID1/pod cwd not readable",
+    "files_deleted": 0,
+    "receipt": "logs/q1_cache_initial_20261029.json",
+    "fix": "Record and skip only exact PID1/pod; fail closed on other unreadable processes"
+  },
+  "completed_cleanup": {
+    "started_utc": "2026-10-29T13:59:16Z",
+    "status": "PROJECT_SCAN_COMPLETED",
+    "elapsed_seconds": 125.64654686898575,
+    "before": {
+      "total_bytes": 29400752128,
+      "cache_bytes": 27909169152,
+      "anonymous_rss_bytes": 21483520,
+      "shmem_bytes": 0
+    },
+    "at_worker_end": {
+      "total_bytes": 2062270464,
+      "cache_bytes": 711090176,
+      "anonymous_rss_bytes": 546959360,
+      "shmem_bytes": 0
+    },
+    "after_worker_exit": {
+      "usage_bytes": 1533300736,
+      "cache_bytes": 711090176,
+      "rss_bytes": 18907136,
+      "shmem_bytes": 0
+    },
+    "observed_cache_reduction_bytes": 27198078976,
+    "observed_total_reduction_bytes": 27338481664,
+    "eligible_files": 375504,
+    "advised_files": 67947,
+    "advice_range_bytes": 31575094422,
+    "resident_bytes_observed_in_advised_ranges": 27034834372,
+    "scope": "Regular non-symlink files under /opt/data/private/ZHY/{data,logs,script,reports}; excludes .git and other processes' open/mapped inodes",
+    "file_contents_read": false,
+    "files_deleted": 0,
+    "global_drop_caches": false,
+    "retained_cache_note": "0.66GiB remained after the complete scoped scan; open/mapped/dirty or out-of-scope cache is not forcibly removed",
+    "caveat": "Observed cgroup deltas are not exclusive attribution and advice-range bytes are not bytes released",
+    "oom_kill": 0
+  },
+  "periodic": {
+    "automation_id": "q1",
+    "name": "Q1文件缓存定量维护",
+    "kind": "heartbeat",
+    "status": "ACTIVE",
+    "interval_minutes": 30,
+    "verified_from": "/Users/yu/.codex/automations/q1/automation.toml",
+    "threshold_cache_bytes": 8589934592,
+    "target_cache_bytes": 4294967296,
+    "maximum_advice_bytes_per_run": 8589934592,
+    "maximum_wall_seconds": 120,
+    "cooldown_seconds": 1800,
+    "protected_when": "Any project compute/render/delivery, GPU compute or held GAIT_GOAL lock",
+    "existing_training_supervision_modified": false,
+    "other_automations_modified": false,
+    "notification": "Quiet for unchanged, normal maintenance, below-threshold or busy states"
+  },
+  "tests": {
+    "local_counterexamples_passed": 3,
+    "skipped": 0,
+    "syntax_checked": true,
+    "real_linux_mincore_and_fadvise": "COMPLETED"
+  },
+  "authorized_repaired_base16": {
+    "attempts_authorized": 1,
+    "attempts_started": 1,
+    "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029",
+    "source_commit": "b6c28069be567e4f4d77c4b8dcd8d5e96daccfba",
+    "completed_status": {
+      "status": "COMPLETED",
+      "mode": "preflight16",
+      "line": "base",
+      "process": {
+        "pid": 211075,
+        "start_ticks": 19623628,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "started_utc": "2026-10-29T14:03:11.390137+00:00",
+      "code_commit": "b6c28069be567e4f4d77c4b8dcd8d5e96daccfba",
+      "automatic_retry": false,
+      "completed_utc": "2026-10-29T14:04:10.102101+00:00",
+      "frozen_sources_unchanged": 1564,
+      "receipt": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029/run/receipt.json",
+        "bytes": 85837,
+        "sha256": "b5a2454f1ce63c8f5a4330778a7f68402b6317b460561de03315807d6176c503"
+      },
+      "training_seconds": 0,
+      "user_accepted_checkpoint": null,
+      "ended_utc": "2026-10-29T14:04:10.102296+00:00"
+    },
+    "worker_receipt": {
+      "status": "GOAL_BASE_NATIVE_ZERO_OPTIMIZER_PREFLIGHT_PASSED",
+      "line": "base",
+      "envs": 16,
+      "optimizer_steps": 0,
+      "started_utc": "2026-10-29T14:03:21.877888+00:00",
+      "physical_contract": {
+        "status": "Q1_REAL_GPU_OBSERVATION_GOAL_TRANSITION_CONTRACT_PASSED",
+        "num_envs": 16,
+        "obs_dim": 80,
+        "goal_dim": 590,
+        "state_dim": 57,
+        "context_dim": 26,
+        "root_feedback": "heading XY and full relative orientation in observation history",
+        "current_joint_error": false,
+        "future_frames": "current+1 through current+10; full relative root position/rotation",
+        "reward_frame": "action result compared against f+1",
+        "physical_control_dt": 0.02
+      },
+      "updated_utc": "2026-10-29T14:03:43.170929+00:00",
+      "native_collection_transitions": 272,
+      "blocked_optimizer_calls": {
+        "wm": 1,
+        "pi": 1,
+        "v": 20
+      },
+      "completed_utc": "2026-10-29T14:04:06.021595+00:00",
+      "parameters_unchanged": true,
+      "normalizers_restored": true,
+      "wm_batch": 1024,
+      "actor_batch": 1024,
+      "horizon": 32,
+      "compile": false,
+      "checkpoint": {
+        "path": "data/supermimic_for_q1/BONES_RF14_RF11_CONTINUE_SOMA300_E4096_CUM04H_20261028/run/stage_02.pt",
+        "bytes": 208866293,
+        "sha256": "249ba56ac6efe806cd2594b0eed84ae4ae2923f0863dd1eeb64d8ce6a877e07e"
+      },
+      "h32_replay_start_exact_and_unmutated": true,
+      "finite_nonzero_gradient_norms": {
+        "wm": 0.9999999615683911,
+        "pi": 0.99999995283349,
+        "critic": 0.9999998925486522
+      },
+      "cross_environment_physical_direction_established": false,
+      "independent_evaluation_preserved_live_state_rng": true,
+      "independent_evaluation_transitions": 960,
+      "native_reward_maximum": 0.11
+    },
+    "guard_result": {
+      "status": "WORKER_COMPLETED",
+      "worker_pid": 211081,
+      "worker_reaped": true,
+      "return_code": 0
+    },
+    "after": {
+      "controller_present": false,
+      "worker_present": false,
+      "gpu_used_mib": 15,
+      "gpu_utilization_percent": 0,
+      "gpu_compute_processes": 0
+    },
+    "automatic_retry": false,
+    "training_seconds": 0,
+    "native_collection_transitions_from_worker_receipt": 272,
+    "independent_evaluation_transitions_from_worker_receipt": 960,
+    "result_scope": "Zero optimizer preflight validates native update contracts; not a gait gain or established cross-environment physical direction"
+  },
+  "artifacts": [
+    {
+      "relative_path": "logs/q1_cache_initial_20261029.json",
+      "bytes": 122,
+      "sha256": "dc590ede97cd1d0041cd114a80777c0ca23bfce72a2d0c8f64f500ea5b3806a8"
+    },
+    {
+      "relative_path": "logs/q1_cache_initial_v02_20261029.json",
+      "bytes": 1380,
+      "sha256": "d46f36e5fa9cf4cf033673f3d0ce1b9ee0f280ecf9d7a05af6f5dea948782fe1"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029/launch.json",
+      "bytes": 1264,
+      "sha256": "3d8f3270928f0bc26706d81a87871a96464d20eb65da627fdd22a2e3ce27a6bf"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029/status.json",
+      "bytes": 791,
+      "sha256": "5f29f145e7f5134735f3fae9bdbe0053ec412d103355d0f7ed084a4faa9480ee"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029/memory_admission.json",
+      "bytes": 364,
+      "sha256": "bd090ef776e761b461fd762b7f2b1ddec126979bcc70f9a4e1af77b4f1728f3a"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029/plan.json",
+      "bytes": 386077,
+      "sha256": "69cdff5754de5b30b45adaf5f8b99f9984198fc96c6aa7b6dfab57f42706eb95"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029/train_guard.json",
+      "bytes": 2407,
+      "sha256": "8add36ef1e5b992a4a6973b25bdf9519eef845481e127e7f1f80af7e6ba38196"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029/run/status.json",
+      "bytes": 85837,
+      "sha256": "b5a2454f1ce63c8f5a4330778a7f68402b6317b460561de03315807d6176c503"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029/run/receipt.json",
+      "bytes": 85837,
+      "sha256": "b5a2454f1ce63c8f5a4330778a7f68402b6317b460561de03315807d6176c503"
+    },
+    {
+      "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029/run/evaluation_library.json",
+      "bytes": 1878,
+      "sha256": "ee9db3cd3ab60a1969cf048ca038e7815805a24f6fdf18c6977520b996e845eb"
+    },
+    {
+      "relative_path": "logs/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029.log",
+      "bytes": 6863,
+      "sha256": "89308b411ffabe7267f890619c6bebc0aa19523890e83a99dafdf1ddddddb771"
+    },
+    {
+      "relative_path": "logs/Q1_GAIT_GOAL01_BASE_PREFLIGHT16_REPAIRED_ONCE_20261029_controller.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "goal_status": "active",
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "formal_base_training_seconds": 0,
+  "formal_ppo_training_seconds": 0,
+  "base4096_preflight": "NOT_RUN",
+  "ppo_preflights": "NOT_RUN",
+  "next": "Finish the offline failed-prefix metrics and saved-evidence delivery flow before dependent preflights/formal training. Do not repeat the now-used repaired-base16 allowance."
+}

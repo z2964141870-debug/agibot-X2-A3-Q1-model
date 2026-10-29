@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-29文件缓存清理完成：375504文件范围扫描、67947文件FADV，125.65秒，cache25.99→0.66GiB/实降25.33GiB，工具退出后容器1.43GiB/RSS18MiB/shmem0/OOM0，未删文件/读大内容/全局drop_caches/改守卫。已原生创建本线程q1缓存维护ACTIVE每30分钟，cache>8GiB空闲时每轮最多8GiB advice/120秒/1800秒冷却，原监督及其他任务不改。清理后用户一次修复base16授权已用：22:03:11至22:04:10正常完成，controller211075/worker211081退出/reap0/GPU15MiB无计算，1564来源未变，真实H32梯度/同replay输入/参数/评测状态RNG通过、0optimizer，272采集/960独立环境转移，非步态收益。双线实训0、4096/PPO待，先补离线提前跌倒归档/交付工具；goal ACTIVE/采纳null/无agent。入口FILE_CACHE_MAINTENANCE及cache_maintenance_base16清单，下方待清理/授权未用为历史。
+
 - 2026-10-29用户明确授权清理本项目无用文件缓存并定期定量维护，覆盖此前不清缓存范围，仅data/logs/script/reports普通文件的干净页；不删数据/权重/历史、不全局drop_caches/改原24GiB及30GiB保护。独立范围工具mincore不读内容、FADV_DONTNEED、跳过打开/映射inode和symlink/其他路径，原GPU锁与训练/交付空闲保护；首次<=180秒/256GiB advice，定期30分钟cache>8GiB每轮<=8GiB advice/120秒、目标<=4GiB/1800秒冷却。准备待实测，不能预称释放；一次修复base16授权未使用，goal ACTIVE/采纳null/无agent，其他任务保持。入口FILE_CACHE_MAINTENANCE。
 
 - 2026-10-29用户已明确“允许修复后仅一次预检”，仅授权修复版base16零更新一次，仍须原内存准入；授权尚未使用。21:14:34北京时间只读快照容器cgroup总29398007808B/限34292629504B，其中文件cache27909169152B约95%、匿名RSS20271104B、shmem0及/dev/shm用量0；后续kmem1463586816B。此前“共享内存”应更正为容器总内存统计，不能当作真正共享内存或训练工作集；无训练进程/GPU15MiB/0%/OOM0。共享总量27.38GiB仍高于原24GiB启动准入，未派生worker/未清缓存/改守卫或其他任务，双线训练0、goal ACTIVE/采纳null/无agent。入口GAIT_GOAL及memory_breakdown；下方等待用户决定已过时。

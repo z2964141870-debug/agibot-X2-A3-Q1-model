@@ -1,5 +1,5 @@
 {
-  "status": "GAIT_GOAL01_BASE16_MEMORY_GUARD_STOPPED_REPAIR_TESTED_RETRY_DECISION_PENDING",
+  "status": "GAIT_GOAL01_ONE_REPAIRED_BASE16_AUTHORIZED_NOT_STARTED_MEMORY_ADMISSION_PENDING",
   "recorded_date_beijing": "2026-10-29",
   "stage": "GAIT_GOAL01",
   "goal": {
@@ -11,7 +11,17 @@
   "authorization": {
     "user_request": "定一个目标，然后以目标模式开始实行吧。",
     "new_goal_created": true,
-    "old_goal_restored": false
+    "old_goal_restored": false,
+    "repaired_base16_retry": {
+      "user_reply": "允许修复后仅一次预检",
+      "maximum_additional_attempts": 1,
+      "attempts_started": 0,
+      "optimizer_updates_allowed": 0,
+      "initial_usage_bytes_max": 25769803776,
+      "original_guard_bytes_unchanged": 32212254720,
+      "training_budget_increased": false,
+      "current_condition": "MEMORY_ADMISSION_NOT_MET"
+    }
   },
   "budget": {
     "base_training_seconds_max": 1200,
@@ -108,5 +118,5 @@
     "large_checkpoint_npz": "SERVER_LOCAL_ONLY",
     "environment_upgraded": false
   },
-  "next": "Preserve base16 resource-guard failure and publish tested memory-admission/progress repair. Wait for requested explicit one-time repaired-base16 decision under the frozen no-automatic-failure-retry rule; initial shared usage must also be<=24GiB. No cache eviction, threshold increase, dependent4096/PPO physical preflight or formal training started. Goal remains active, not complete or paused."
+  "next": "User authorized exactly one repaired-base16 zero-update preflight. This allowance is unspent: cgroup total usage27.38GiB remains above the unchanged24GiB initial admission. The former term shared memory meant cgroup total including file cache; actual shmem and /dev/shm usage are0. Preserve the failure and original guard; no cache eviction, dependent4096/PPO physical preflight or formal training started. Record raw memory categories separately and continue feasible offline work. Goal remains active, not complete or paused."
 }

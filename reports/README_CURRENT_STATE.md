@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 GAIT_GOAL01：[内存口径与一次预检授权](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。用户已允许修复后仅一次base16零更新，授权尚未使用。21:14:34容器总内存27.38GiB，其中文件缓存25.99GiB约95%、匿名RSS19.33MiB、真正shmem和/dev/shm均0，后续内核内存1.36GiB；GPU15MiB无计算/OOM0。此前“共享内存”实际指容器cgroup总量，不能当训练工作集。当前仍超过原24GiB启动准入，未启动预检或训练、未清缓存或改守卫；goal ACTIVE/采纳null/监督不动。[实测与授权](../data/manifests/supermimic_q1_gait_goal_memory_breakdown_20261029.json)。下方“等待用户决定”已过时。
+
 2026-10-29 GAIT_GOAL01：[首base16内存保护停止](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。20:27共享32.230GB超过原30GiB线，workerreap-15/无完成收据，GPU释放/OOM0、正式训练0。结束后27.909GB文件cache占主导，非learner工作集或步态根因。6失败工件399589B三端SHA；准备f7cd05e已独立远端/15文件350906B三端。已补启动前6GiB余量准入/阶段收据，20离线测试；按本轮禁止自动重试规则已请求用户决定仅一次修复版base16，尚未重做，base4096/PPO16/4096均未测。目标ACTIVE/未完成未暂停、采纳null/监督不动。[证据与修复](../data/manifests/supermimic_q1_gait_goal_base16_memory_20261029.json)。
 
 2026-10-29 GAIT_GOAL01：[固定动作warm-up与两线候选](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)已记录。首积分步严格超差（qvel4.44e-5），160转移/0optimizer，旧H32方向仍无结论；两线51姿态CPU及完整脚底分块核验通过，7小工件152556字节三端SHA/19测试。准备真实replay同起点H32反传、base/PPO各16/4096零更新，发布/三端核源后串行一次；双线实训0。各1100软/1200硬秒、总<=2400，300/600/1100门，1150外停+10回收，不扩时或故障重试。目标ACTIVE/采纳null/监督及其他任务不动。[配方与证据](../data/manifests/supermimic_q1_gait_goal_native_preparation_20261029.json)。

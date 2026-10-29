@@ -217,3 +217,5 @@ Mac现有ffprobe/ffmpeg完成初末各1350帧全解码，12/12媒体检查通过
 本地初末视频：`data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/initial.mp4`、`final.mp4`；相邻有六张联系图，`dashboard/training_dashboard.png`为六格，`review/`有2970逐片/108分组/27固定行。共53小工件30498154字节已逐项核权威工作树、Mac主根和25386的大小/SHA，大权重/NPZ只留服务器。[完整交付与故障保留证据](../data/manifests/supermimic_q1_gait_goal_ppo_delivery_20261030.json)。
 
 新独立`script/supermimic_q1_gait_goal_delivery/`仅组织服务器生成、Mac解码与保存审计：仍调用原review训练入口和原boot/GPU/OOM/内存/实训预算保护，服务器结束为`AWAITING_MAC_MEDIA_AUDIT`，Mac媒体与CPU保存审计通过后才登记新底座pipeline完成。三个反例测试/四文件编译与三个服务器CLI帮助通过；原native目录对`b6c28069`字节未变，review源码未修改。新审计只允许显式处理此次精确缺ffprobe错误，不自动掩盖其他失败。代码/记录经payload、Q1发布/独立40位远端和三端SHA后，执行用户已经批准的唯一底座V02，不重做base16、不增加预算或再询问本次授权。
+
+交付与独立入口提交`c9af4595840ccb594ee35c2e8ce2d588128b57a9`已独立核远端，10代码/记录379038字节经Git blob、权威工作树、Mac主根与25386逐大小SHA一致；53小工件的三端核验另在交付清单。此后底座V02使用最新已核发布提交，训练来源不回写PPO。[发布收据](../data/manifests/supermimic_q1_gait_goal_ppo_delivery_publication_20261030.json)。

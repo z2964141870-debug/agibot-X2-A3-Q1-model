@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 SOLE01：[H32原生V02仍未通过相同起点保护](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，状态最大差.07455075，帧/上下文相同而动作/warmstart不同；本次288控制转移/1152子步/0optimizer，没有有效物理方向结论。两次失败4收据日志17254字节Mac/25386大小SHA、关键来源前后SHA/进程退出/GPU释放/OOM0已核。PPO16/4096按依赖规则未执行，无第三次原生运行或新正式训练；底座/PPO CPU契约保留，不能称步态改善，采纳null/监督不改。[实测清单](../data/manifests/supermimic_q1_sole_native_results_20261029.json)。下方V02待运行仅历史。
+
 2026-10-29 MM05：[原版G1工程闭环及六本地回放已完成](README_MORPHMIMIC_G1_RESULTS_20261029.md)。600轮同步iteration1249.131082秒，实际WM/policy/critic6000/100/2000，14:08:55训练guard回收0；原源码及训练c7f0499冻结不变。初末原版ONNX/asset一致性通过，但三片初末均0/3完整，最终失败65/57/116帧，不能称稳定步态。43小工件5600206字节Mac/25386大小SHA、6原速MP4/联系图及六格曲线已验收；最后停走超时和一次worker前缺目录已保留，仅该片独立600秒补交14:30:37正常回收。相关进程退出/GPU15MiB无计算/OOM0，不加训/重试训练或自动采纳，采纳null/原监督及其他任务不改。[实测清单](../data/manifests/morphmimic_g1_results_20261029.json)。下方MM04运行中仅历史，最终Git发布见publication收据。
 
 2026-10-29 SOLE01 H32首物理检查：[起点保护未通过](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)，重复reset后最大状态差.205497，288控制转移/1152子步/0optimizer，不能给方向结论，PPO16/4096未执行。仅工具V02改为每分支新建同配置独立环境，容差不放宽，待重新发布后一次240秒验证；失败记录保留，无正式训练或旧作业恢复，采纳null/监督不改。

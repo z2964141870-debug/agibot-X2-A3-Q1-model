@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-30底座V02在01:26:27以301.107485实训秒/123轮按physical_regression正常停，224581退出/reap0，WM1230/actor113/critic2460/采集1519616转移。固定片均完整/验证0失败，起走滑移降19.4%与两走上肢误差降41%-47%，但起走倾斜三次1.301/1.260/1.251及抬手峰误差约1.301超原严重门，两走脚底Z未达标，推荐initial/采纳null。两线合计901.178392秒不补预算/重试；13证据2366966B三端SHA，启动b7e8e65及6记录348982B三端已核。原224552正保存视频/1980逐片/六格，Mac媒体及CPU保存审计待，不预称pipeline完；goal ACTIVE/授权已用/监督其他任务不改/无agent。
+
 - 2026-10-30 01:15:53唯一底座V02已启动，根Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029，controller224552/start20779849、worker224581/start20781044；来源155260abdc9288d43ed5fc3f3001c06a3c6825b7独立远端/旁收据2文件40598B三端SHA，importsreap0/1583源未变。01:16:48 initial repeat0/frame150、实训更新0，非改善。一次授权已用，只监督原1100软1200硬/300-600-1100门，后续服务器生成/Mac12媒体与CPU保存审计；不重启扩时/base16/agent。PPO53小工件/38保存/12媒体已交付，原ffprobe FAILED保留/独立postdelivery COMPLETED，负面结果/采纳null/goal ACTIVE和原监督其他任务保持。
 
 - 2026-10-30 01:02 GAIT_GOAL01 PPO保存交付已完成：Mac12媒体/CPU38保存检查，53小工件30498154B三端大小SHA、六联系图/六格目视通过；原pipeline00:38缺ffprobe FAILED及guard/log保留，独立postdelivery COMPLETED，不重渲染训练。原218003/218034/221002退出/GPU15MiB无计算，1579冻结源未变。PPO600秒负面结果/采纳null保持；新独立服务器生成/Mac解码入口已3测试/3CLI，发布核验后执行已授权唯一底座V02，base16不重做/预算不增/goal ACTIVE/监督其他任务不改/无agent。

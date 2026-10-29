@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-30：[GAIT_GOAL01底座301秒physical_regression正常停](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。起走滑移降19.4%/两走上肢误差降41%-47%，但起走倾斜与抬手峰误差超严重门，两走高度未达标。两线实训共901.18秒不补预算；底座保存视频/媒体审计待，PPO已交付，goal ACTIVE/采纳null。[原值](../data/manifests/supermimic_q1_gait_goal_base_v02_training_results_20261030.json)。
+
 2026-10-30：[GAIT_GOAL01唯一底座V02已启动](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。01:15:53 controller224552/worker224581，来源155260ab/1583源未变，初始评测0实训/非改善；一次授权已用，只监督原1100软1200硬及三物理门，不重试扩时。PPO交付已齐/负面结论保持，goal ACTIVE/采纳null。[启动收据](../data/manifests/supermimic_q1_gait_goal_base_v02_launch_20261030.json)。
 
 2026-10-30：[GAIT_GOAL01 PPO保存交付完成及底座交付入口](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。原缺ffprobe失败保留，Mac12/CPU38检查、53工件30498154B三端SHA和目视完成；训练600秒负面结论不变。发布后执行已授权唯一底座V02，目标ACTIVE/采纳null。[收据](../data/manifests/supermimic_q1_gait_goal_ppo_delivery_20261030.json)。

@@ -1,0 +1,169 @@
+{
+  "stage": "GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030",
+  "status": "SAVED_ONLY_ANALYSIS_DELIVERED_PHYSICAL_TARGET_NOT_ACHIEVED",
+  "captured_utc": "2026-10-29T18:29:42.460402+00:00",
+  "review_report": "reports/README_Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030.md",
+  "source_base_commit": "a7995b73a62a53fd6e63dc09aa44566e887416f8",
+  "code": [
+    {
+      "relative_path": "script/supermimic_q1_gait_goal_analysis/saved_phase_tradeoff.py",
+      "bytes": 19221,
+      "sha256": "18abec51a567322a158b7e634c0aa9165546d7345b079be1f1cd9d20a6352bcd"
+    },
+    {
+      "relative_path": "script/supermimic_q1_gait_goal_analysis/test_saved_phase_tradeoff.py",
+      "bytes": 3027,
+      "sha256": "0efc12d64c4e58b940bd8343623da540d7a7f2f65e152bb33bcdc5219203c5f7"
+    }
+  ],
+  "tests": {
+    "command": "python3 -m unittest discover -s script/supermimic_q1_gait_goal_analysis -p 'test_*.py' -v",
+    "passed": 5,
+    "failed": 0
+  },
+  "scope": {
+    "saved_clips": 45,
+    "historical_npz_traces": 15,
+    "historical_initial_and_stage_sha_verified": true,
+    "json_trace_pairs": 15,
+    "foot_condition_rows": 360,
+    "time_bin_rows": 225,
+    "paired_region_rows": 135,
+    "foot_timeseries_rows": 24030,
+    "published_metrics_reconstructed": true,
+    "new_integration_steps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0,
+    "original_training_seconds_unchanged": 901.178391956928
+  },
+  "geometry_identity": {
+    "status": "COLLISION_SURFACE_IDENTITIES_MATCH_PRIOR_FROZEN_PREFLIGHT",
+    "reference_receipt": "data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PREFLIGHT4096_20261029/run/receipt.json",
+    "receipt_bytes": 85845,
+    "receipt_sha256": "7221b64b6503c05a3815da4bae2599ca9598b8f236ed03c1aca92bab3a11e646",
+    "left_geometry_sha256": "7a570980bee3845bef852cb346edda14d91a6a7896d62e27c5dbd2be17f3d3c1",
+    "right_geometry_sha256": "ee252ed8625700df43c0fc863f5b66ce01792fabe2ffed73a361422e06464cc0"
+  },
+  "findings": {
+    "raised_window_definition": "Immutable intent swing AND reference whole-collision-sole world Z >=10mm; descriptive only, not a new physical gate",
+    "aggregation": "Foot-window tables use medians across three repeats. Original goal ratios remain ratios of median metrics. Per-repeat ratios and their medians are separately labeled.",
+    "base_stop_left_window_sole_p95_m": {
+      "initial": 0.02096958044738568,
+      "final": 0.007680477886199853
+    },
+    "base_stop_right_window_sole_p95_m": {
+      "initial": 0.0030426588065161062,
+      "final": 0.01579075952896177
+    },
+    "base_start_right_window_sole_p95_m": {
+      "initial": 0.008577950255879839,
+      "final": 0.003163764935349443
+    },
+    "ppo_final_right_window_near_floor5mm_fraction": {
+      "stop": 0.9772727272727273,
+      "start": 0.9607843137254902
+    },
+    "base_start_common_loaded_slip_ratios_by_repeat": [
+      0.9154104927543972,
+      0.928059975863351,
+      0.6102143400748185
+    ],
+    "ppo_final_start_common_loaded_slip_ratios_by_repeat": [
+      0.9112665236374895,
+      1.034070716456716,
+      1.6601661119345672
+    ],
+    "base_start_quarter_median_slip_ratios": [
+      0.21871997634709386,
+      1.5497281281652664,
+      0.9311290216912247,
+      0.8660603950270133
+    ],
+    "base_start_quarter_median_tilt_ratios": [
+      0.9898633107482675,
+      1.2753526465549825,
+      1.426191692433684,
+      1.3850659156713594
+    ],
+    "interpretations": [
+      "Base stop-walk right-foot gain coincides with a left-foot loss; start-walk right-foot lift regresses.",
+      "Base start-walk slip reduction remains on the common loaded mask in all three repeats; it is not explained entirely by load-membership changes.",
+      "PPO final start-walk common-loaded slip improves in one repeat and worsens in two; whole-clip gain is not robust evidence of improved support transfer.",
+      "Time-local slip and tilt changes do not establish a single causal tradeoff or isolate a training component."
+    ]
+  },
+  "artifacts": {
+    "files": [
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/base_saved_phase_tradeoff.pdf",
+        "bytes": 64669,
+        "sha256": "6e28121eb2bdda6987a04855ed4baeb0d183256979b2f9efb5a0ddf9655abf1d"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/base_saved_phase_tradeoff.png",
+        "bytes": 564074,
+        "sha256": "fce69cdbc6bd2a22663009e71bcf4c5541c46f38d75494a5d6b9e51cae64577e"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/foot_conditions.csv",
+        "bytes": 73631,
+        "sha256": "40afcd8b26356d624d550bad23b748f8e20c44900c4c36df8205c0c8ef100cc6"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/foot_timeseries.csv",
+        "bytes": 4406520,
+        "sha256": "b42406ef29c05b611486d9c094177fe2982e1a087d39af058a3f601678ef18f5"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/paired_regions.csv",
+        "bytes": 48864,
+        "sha256": "bb31e25d6af2bba6a914f7bc33d41e08700b7854fbc66af5679240fe95b96a7e"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/ppo_saved_phase_tradeoff.pdf",
+        "bytes": 65583,
+        "sha256": "2f412de15bf4092e11e4065c46faa40fad5f4d6d1f5ac74ca0eb8871e74c6269"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/ppo_saved_phase_tradeoff.png",
+        "bytes": 537614,
+        "sha256": "66f3aa68de46c2077fbbfec24bd9e66bf99f4b818c85b4f5f826d14134110ae3"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/summary.json",
+        "bytes": 14382,
+        "sha256": "ca61ab0c4dfb6e0a335803ecaaaf17f3f94f3e6ce941ea949dff30994d7041f4"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/time_bins.csv",
+        "bytes": 29234,
+        "sha256": "c0f609976d97dc119615fbe2619e2c5cc9d7184e1bd1dd1aebcb06d00312bb05"
+      }
+    ],
+    "count": 9,
+    "bytes": 5804571,
+    "all_three_way_size_sha256_matched": true,
+    "locations": [
+      "authoritative_Q1_worktree",
+      "Mac_project_root",
+      "user_25386_unique_root"
+    ],
+    "visually_reviewed_pngs": 2,
+    "large_npz_transferred": false
+  },
+  "boundaries": {
+    "goal_status": "active",
+    "goal_complete": false,
+    "user_accepted_checkpoint": null,
+    "candidates_combined": false,
+    "new_training_started": false,
+    "old_training_resumed": false,
+    "old_media_or_saved_audit_repeated": false,
+    "ppo_original_failure_preserved": true,
+    "agents_started": false,
+    "other_automations_modified": false,
+    "training_requires_new_explicit_user_decision": true
+  },
+  "next_offline_question": "Within SuperMimic, test whether the saved reward terms favor inconsistent same-foot loading/lifting or lack posture preservation during late start-walk; do not infer causality or launch another trial from these descriptive tables.",
+  "publication_receipt": "data/manifests/supermimic_q1_gait_goal_saved_phase_publication_20261030.json"
+}

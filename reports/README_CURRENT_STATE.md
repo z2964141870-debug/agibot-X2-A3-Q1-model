@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-30：[GAIT_GOAL01左右脚与时间分段离线拆解](README_Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030.md)。45片/24030足时序、0新积分推理优化，9工件5804571B三端SHA/两图已目视。底座停走右脚变高伴左脚降低，起走右脚降低；起走共同承重滑速三次仍降，不全归承重集合变化。PPO右脚抬脚窗口约96%-98%仍<=5mm，共同承重起走滑速仅1/3改善。原901.178392秒/失败/采纳null保持，goal ACTIVE；下一项仅SuperMimic内部离线核卸载与抬脚/姿态目标一致性，新训练须新决定，不恢复重试扩时或agent/改其他任务。[清单](../data/manifests/supermimic_q1_gait_goal_saved_phase_20261030.json)。
+
 2026-10-30 GAIT_GOAL01首轮双线已完整交付、步态目标未达：底座301.107485秒/123轮与PPO600.070907秒/113轮均physical_regression正常停，合计901.178392秒不补预算。底座起走滑移降19.4%/两走上肢误差降41%-47%，但起走倾斜和抬手峰误差约+25%-30%超原严重门；PPO两走无一致收益，二者推荐initial/采纳null。底座01:46:23经Mac12/CPU34/1583源未变登记pipeline COMPLETED；PPO Mac12/CPU38已完成、原ffprobe FAILED保留/独立postdelivery COMPLETED。原进程全部退出/GPU15MiB无计算/OOM0；104小工件59240072B三端SHA、四54秒本地MP4/12联系图/两六格与4950逐片180分组45固定行齐。目标ACTIVE/原监督缓存维护其他任务保持，不自行完成goal或新训恢复重试扩时/agent；用户先审阅数据视频后决定采纳/新训练。入口README_Q1_GAIT_GOAL01_RESULTS_20261030及gait_goal_results清单。[结果与视频](README_Q1_GAIT_GOAL01_RESULTS_20261030.md)/[完整收据](../data/manifests/supermimic_q1_gait_goal_results_20261030.json)。以下各时点的RUNNING/待媒体均为历史，不重做已完成交付。
 
 2026-10-30底座V02在01:26:27以301.107485实训秒/123轮按physical_regression正常停，224581退出/reap0，WM1230/actor113/critic2460/采集1519616转移。固定片均完整/验证0失败，起走滑移降19.4%与两走上肢误差降41%-47%，但起走倾斜三次1.301/1.260/1.251及抬手峰误差约1.301超原严重门，两走脚底Z未达标，推荐initial/采纳null。两线合计901.178392秒不补预算/重试；13证据2366966B三端SHA，启动b7e8e65及6记录348982B三端已核。原224552正保存视频/1980逐片/六格，Mac媒体及CPU保存审计待，不预称pipeline完；goal ACTIVE/授权已用/监督其他任务不改/无agent。[训练终态](../data/manifests/supermimic_q1_gait_goal_base_v02_training_results_20261030.json)。

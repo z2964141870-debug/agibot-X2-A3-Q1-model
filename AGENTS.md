@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-30 00:04 GAIT_GOAL01导入修复7732b2b3ba7f1550c93805b9a035cb6db532aeda独立远端/10记录payload、20文件753864B三端大小SHA通过，原四预检源码未动；真实无环境import检查通过/8测试，首次底座实训0/失败根保留。已异步请求仅一次修复后底座V02新决定，未自动重试或重做base16。独立PPO首次原授权/1200秒预算仍可先行，最新发布来源/1100软/300-600-1100门/GPU串行，二者不组合。goal ACTIVE/采纳null/原监督缓存维护及其他任务不改/无agent，入口GAIT_GOAL及import_fix_publication_20261030；旧待发布/未请求为历史。
+
 - 2026-10-29 GAIT_GOAL01底座首次正式启动在创建环境前因review入口缺project_tools路径而ModuleNotFoundError退出：23:37:16至23:37:24、controller216576/worker216590 reaped1/均已不存在、实训0/0推理积分optimizer/GPU15MiB/OOM0。修复部署前1579来源SHA全同；原失败根/62f9e5a来源和收据保留，不恢复或自动重试。独立review入口已补路径和真实训练模块imports守卫120秒，实际无环境导入检查通过/8反例/6编译/原native源未改，待发布核验。按本轮automatic_retry=false，底座修复后一次新V02启动待新决定；PPO独立首次训练预算仍未使用。必要四预检全部已过，不重做base16；目标ACTIVE/采纳null/监督缓存维护不动/无agent。入口GAIT_GOAL及base_import_failure清单。
 
 - 2026-10-29 GAIT_GOAL01剩余零更新预检全部完成：base4096于23:17:44、PPO16于23:22:31、PPO4096于23:26:31正常COMPLETED/guardreap0，各1564来源未变，六原进程均不存在/GPU15MiB无计算/OOM0。base H32同replay/有限非零梯度、PPO24576小批logprob差0/奖励及终止/状态RNG/冻结教师保护通过，0optimizer；唯一追加base16未重做。31小工件1842608B已取回，发布及三端SHA见后续收据。正式训练仍0/0，下一步仅发布核验后顺序新base/PPO各1100软1200硬秒、300/600/1100物理门，原配方/上肢.5/300-30不改、不组合，不自动扩时或故障重试。两个训练根已在preflight_results清单登记；目标ACTIVE/采纳null，原监督/缓存维护和其他任务不改、无agent。

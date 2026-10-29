@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-29 16:46 hp_han自动登录恢复后的待镜像已补齐：来源8a92a4d289e0b90048489b08be2434266da43bb3经原Windows路由push/独立40位远端核验，17小文件331484字节Git blob/权威工作树/Mac主根/25386大小SHA全同，含原SOLE发布旁收据与H32记录。认证文件仅本机、不入库或镜像；本次仅完成连接与小记录交付，原H32/PPO未测项和监督保持，不新增物理/训练/agent/goal。入口WINDOWS_SSH_ALIAS及hp_han_restore_publication；后续收据提交的核验以Git历史与实际工具结果为准。
+
 - 2026-10-29 16:30用户明确要求Windows密码本机保存并自动ssh hp_han，此最新指示只覆盖本机该别名的旧“不存密码”偏好。密码文件~/.ssh/hp_han.password为600、ASKPASS助手700、shell助手600，~/.zshrc自动加载；仅native ssh -G核实的hp_han/yu/100.65.183.91:22使用自动密码，其他地址走原SSH。实际自动登录返回DESKTOP-3C1DPPR，原Windows60607/18873与25386 master60674已恢复，原boot/GPU/唯一根已核，GPU15MiB/0%无计算。容器密码未保存，任何认证内容/摘要/本机配置均不入Git或服务器镜像。当前连接已恢复，旧UNKNOWN是历史；小记录补镜以大小SHA收据为准，无新物理/训练/agent/goal或监督修改，原V02后不第三次物理规则保持。入口WINDOWS_SSH_ALIAS及hp_han_autopassword清单。
 
 - 2026-10-29 16:10用户明确要求本机Windows别名hp_han：/Users/yu/.ssh/config已新增HostName100.65.183.91/Useryu/Port22，ssh -G解析和600权限已核，密码仍交互输入，不将配置/认证文件入库。用户再次要求跳转后的单次原Windows转发在非回显认证后Broken pipe，18873/双socket未建立，未到Windows→25386，远端仍UNKNOWN，不据此判服务器或密码异常。别名配置后不重复登录；无新物理/训练/agent/goal或监督修改。入口WINDOWS_SSH_ALIAS及q1_windows_ssh_alias_hp_han清单。

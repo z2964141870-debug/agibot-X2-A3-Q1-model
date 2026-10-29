@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 16:46：[hp_han自动登录与补镜已核](README_Q1_WINDOWS_SSH_ALIAS_20261029.md)。来源8a92a4d已push并独立核40位远端，17小文件331484字节Git/Mac/25386大小SHA一致，旧待同步为历史；认证只留本机，无新物理或训练。[发布收据](../data/manifests/q1_windows_ssh_hp_han_restore_publication_20261029.json)。
+
 2026-10-29 16:30：[hp_han自动密码登录与25386恢复](README_Q1_WINDOWS_SSH_ALIAS_20261029.md)。用户明确授权本机受限密码文件/ASKPASS，实际Windows及原容器身份/GPU已核，GPU无计算；本机认证文件不入Git或服务器。旧断线记录为历史，小记录补镜待大小SHA，无新物理或训练。[实测收据](../data/manifests/q1_windows_ssh_hp_han_autopassword_20261029.json)。
 
 2026-10-29 16:10：[Windows别名hp_han已配置](README_Q1_WINDOWS_SSH_ALIAS_20261029.md)，ssh -G核为yu@100.65.183.91:22，配置600/无保存密码。用户再次要求跳转后的单次会话仍在Windows认证后Broken pipe，未到容器、远端UNKNOWN；别名只做本地解析验证，不称连接恢复。[清单](../data/manifests/q1_windows_ssh_alias_hp_han_20261029.json)。

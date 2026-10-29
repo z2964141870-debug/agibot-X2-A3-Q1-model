@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 16:46：[Windows自动登录、25386恢复及待镜像补齐](README_Q1_WINDOWS_SSH_ALIAS_20261029.md)。来源8a92a4d289e0b90048489b08be2434266da43bb3已经原Windows路由push并独立核远端，17小文件331484字节Git blob/权威工作树/Mac主根/25386大小SHA一致。旧UNKNOWN和待镜像记录为历史，认证文件仅本机。原H32失败后的未测项/采纳null/ACTIVE监督保持；未新增物理、推理、优化或训练。[核验收据](../data/manifests/q1_windows_ssh_hp_han_restore_publication_20261029.json)。
+
 2026-10-29 16:30：[hp_han自动密码及原25386连接已恢复](README_Q1_WINDOWS_SSH_ALIAS_20261029.md)。用户明确授权只在本机保存该Windows密码，600密码文件/700 ASKPASS及shell助手经~/.zshrc加载，内容和认证配置不入仓库或服务器。自动登录Windows返回DESKTOP-3C1DPPR，原双master60607/60674、boot/GPU/实体根已核，GPU15MiB/0%无计算；旧UNKNOWN与“不存该本机密码”为历史。小记录镜像待逐大小SHA核，未加H32/PPO/训练，原失败后停止规则/采纳null/监督保持。[授权与实测](../data/manifests/q1_windows_ssh_hp_han_autopassword_20261029.json)。
 
 2026-10-29 16:10：[hp_han本机别名已配置并核解析](README_Q1_WINDOWS_SSH_ALIAS_20261029.md)，指向Windows的yu@100.65.183.91:22，权限600/密码交互。用户再次要求经Windows跳转后，仅一次原转发尝试在非回显认证后Broken pipe，未建立18873/未到25386，容器/GPU仍UNKNOWN。别名创建后未自动重复登录，无新远端物理/训练；下一步先成功Windows会话再原转发与身份核查。[别名及断点](../data/manifests/q1_windows_ssh_alias_hp_han_20261029.json)。

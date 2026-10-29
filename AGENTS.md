@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-29用户明确授权清理本项目无用文件缓存并定期定量维护，覆盖此前不清缓存范围，仅data/logs/script/reports普通文件的干净页；不删数据/权重/历史、不全局drop_caches/改原24GiB及30GiB保护。独立范围工具mincore不读内容、FADV_DONTNEED、跳过打开/映射inode和symlink/其他路径，原GPU锁与训练/交付空闲保护；首次<=180秒/256GiB advice，定期30分钟cache>8GiB每轮<=8GiB advice/120秒、目标<=4GiB/1800秒冷却。准备待实测，不能预称释放；一次修复base16授权未使用，goal ACTIVE/采纳null/无agent，其他任务保持。入口FILE_CACHE_MAINTENANCE。
+
 - 2026-10-29用户已明确“允许修复后仅一次预检”，仅授权修复版base16零更新一次，仍须原内存准入；授权尚未使用。21:14:34北京时间只读快照容器cgroup总29398007808B/限34292629504B，其中文件cache27909169152B约95%、匿名RSS20271104B、shmem0及/dev/shm用量0；后续kmem1463586816B。此前“共享内存”应更正为容器总内存统计，不能当作真正共享内存或训练工作集；无训练进程/GPU15MiB/0%/OOM0。共享总量27.38GiB仍高于原24GiB启动准入，未派生worker/未清缓存/改守卫或其他任务，双线训练0、goal ACTIVE/采纳null/无agent。入口GAIT_GOAL及memory_breakdown；下方等待用户决定已过时。
 
 - 2026-10-29 GAIT_GOAL01首base16零更新预检20:27因共享32230252544B超过原30GiB守卫停，workerreap-15/无完成收据/实际积分数未知，正式训练0；双进程退出/GPU15MiB无计算/OOM0。空闲快照cache27909169152B占主导，不当learner工作集或步态根因。6失败工件399589B三端SHA；f7cd05e准备15文件350906B已独立远端/三端。已补启动共享<=24GiB/距原守卫>=6GiB准入和阶段收据，20离线测试，阈值不升/未清缓存或删数据。按automatic_failure_retry=false已异步请求“内存满足后仅一次修复版base16”，未获决定不重做/4096/PPO或训练；目标ACTIVE不结算暂停/采纳null/监督不改/无agent。入口GAIT_GOAL/base16_memory，以下准备待运行仅历史。

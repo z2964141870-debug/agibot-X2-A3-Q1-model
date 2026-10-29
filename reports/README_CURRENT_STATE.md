@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29：[文件缓存维护新授权](README_Q1_FILE_CACHE_MAINTENANCE_20261029.md)。用户要求清本项目无用文件缓存并定期定量维护；准备mincore/FADV范围工具，跳过运行任务/打开映射inode和其他路径，不全局drop_caches、不删文件或改内存守卫。首次有界清理和30分钟/超过8GiB每次最多8GiB advice的维护待实测/落调度；一次修复base16授权尚未使用，goal ACTIVE/采纳null/其他任务保持。
+
 2026-10-29 GAIT_GOAL01：[内存口径与一次预检授权](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。用户已允许修复后仅一次base16零更新，授权尚未使用。21:14:34容器总内存27.38GiB，其中文件缓存25.99GiB约95%、匿名RSS19.33MiB、真正shmem和/dev/shm均0，后续内核内存1.36GiB；GPU15MiB无计算/OOM0。此前“共享内存”实际指容器cgroup总量，不能当训练工作集。当前仍超过原24GiB启动准入，未启动预检或训练、未清缓存或改守卫；goal ACTIVE/采纳null/监督不动。[实测与授权](../data/manifests/supermimic_q1_gait_goal_memory_breakdown_20261029.json)。下方“等待用户决定”已过时。
 
 2026-10-29 GAIT_GOAL01：[首base16内存保护停止](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。20:27共享32.230GB超过原30GiB线，workerreap-15/无完成收据，GPU释放/OOM0、正式训练0。结束后27.909GB文件cache占主导，非learner工作集或步态根因。6失败工件399589B三端SHA；准备f7cd05e已独立远端/15文件350906B三端。已补启动前6GiB余量准入/阶段收据，20离线测试；按本轮禁止自动重试规则已请求用户决定仅一次修复版base16，尚未重做，base4096/PPO16/4096均未测。目标ACTIVE/未完成未暂停、采纳null/监督不动。[证据与修复](../data/manifests/supermimic_q1_gait_goal_base16_memory_20261029.json)。

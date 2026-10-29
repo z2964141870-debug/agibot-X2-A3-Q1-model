@@ -1,6 +1,6 @@
 # Q1 H32起点差异的离线诊断准备
 
-记录日期：2026-10-29，北京时间15:56。阶段：SOLE01_INIT。状态：逐步只读记录实现及8项离线测试通过；原生验证未运行，连接UNKNOWN，GitHub和服务器同步待核。底座与PPO两线继续，尚未查明起点差异的原因。
+记录日期：2026-10-29，北京时间15:56，16:04更新发布状态。阶段：SOLE01_INIT。状态：逐步只读记录实现及8项离线测试通过；代码1f224fd已独立核GitHub，10项308960字节Git/Mac逐大小SHA一致，服务器镜像待。原生验证未运行，连接UNKNOWN。底座与PPO两线继续，尚未查明起点差异的原因。
 
 ## 目标与范围
 
@@ -37,7 +37,7 @@ git diff --check
 
 用户本次“应该好了，继续”之后，仅有的一次Windows桥恢复在非回显认证交互中Broken pipe，没有建立18873转发，没有执行容器命令。它不是Permission denied，不能据此判密码不正确。凭证未写入文件/命令参数/Git。本轮不重复桥探测；远端身份、GPU和作业当前均UNKNOWN，旧退出/GPU15MiB/OOM0仅历史。
 
-GitHub SSH只读核查也在连接22端口时超时。代码和记录先保存在权威Git；提交、Mac主根逐大小/SHA与push结果以本轮同步收据及Git历史为准。GitHub独立40位远端核验、25386镜像均未完成，不称三端一致。
+GitHub初次SSH只读核查在连接22端口时超时；随后显式push origin Q1成功，独立ls-remote得到完整`1f224fd95f8df0d1c2c5efc98300a81cfa5f4931`。该提交10项308960字节与Git blob、工作树和Mac主根逐项大小/SHA一致。[本轮发布及Mac核验收据](../data/manifests/supermimic_q1_h32_init_local_publication_20261029.json)记录该固定来源；本次收据/文档的后续提交以Git历史为准。25386镜像仍未完成，不称三端一致。
 
 旧待补范围仍是`supermimic_q1_sole_native_publication_20261029.json`及6772cf5的五个小状态文件；本轮新增来源/测试/日志/README/清单也待服务器同步。权重和大NPZ仍SERVER_LOCAL_ONLY，未搬运。
 

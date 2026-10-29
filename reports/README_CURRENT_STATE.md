@@ -1,6 +1,8 @@
 # YUANQI 当前状态与下一步
 
-2026-10-29 15:56 SOLE01_INIT：[逐步只读起点记录已离线验证](README_SUPERMIMIC_Q1_H32_INIT_AUDIT_20261029.md)，8/8测试、3编译与CLI通过，原H32一致性保护保留；尚未用原生Torch/Warp验证，不称起点原因已隔离。单次Windows恢复在认证交互Broken pipe，未建桥或执行容器命令，不判密码错；远端/GPU仍UNKNOWN，GitHubSSH亦超时。仅本地保存代码/记录，远端与25386镜像待核；无第三次H32/PPO预检/新训练/agent/goal或自动任务修改，采纳null。[清单](../data/manifests/supermimic_q1_h32_init_audit_20261029.json)。
+2026-10-29 16:10：[hp_han本机别名已配置并核解析](README_Q1_WINDOWS_SSH_ALIAS_20261029.md)，指向Windows的yu@100.65.183.91:22，权限600/密码交互。用户再次要求经Windows跳转后，仅一次原转发尝试在非回显认证后Broken pipe，未建立18873/未到25386，容器/GPU仍UNKNOWN。别名创建后未自动重复登录，无新远端物理/训练；下一步先成功Windows会话再原转发与身份核查。[别名及断点](../data/manifests/q1_windows_ssh_alias_hp_han_20261029.json)。
+
+2026-10-29 16:04 SOLE01_INIT：[逐步只读起点记录已离线验证](README_SUPERMIMIC_Q1_H32_INIT_AUDIT_20261029.md)，8/8测试、3编译与CLI通过，原H32一致性保护保留；尚未用原生Torch/Warp验证，不称起点原因已隔离。代码1f224fd已push/独立核40位远端、10项308960字节Git/Mac SHA一致。单次Windows恢复在认证交互Broken pipe，未建桥或执行容器命令，不判密码错；远端/GPU仍UNKNOWN、25386镜像待。无第三次H32/PPO预检/新训练/agent/goal或自动任务修改，采纳null。[发布/Mac收据](../data/manifests/supermimic_q1_h32_init_local_publication_20261029.json)。
 
 2026-10-29 15:23 SOLE01：[结果记录已核，发布旁收据镜像待连接恢复](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)。结果d359019的5记录272945字节此前三端大小SHA通过，4失败工件17254字节Mac/25386已核；旁收据d40a534已独立GitHub/Mac，但镜像时18873拒绝连接。一次本地核查无监听/双master/socket，当前远端UNKNOWN，保留最后退出/GPU15MiB/OOM0为历史。只待补旁收据和本次小状态记录，不重跑H32/PPO/训练或旧审计；采纳null/监督不改。[断线范围](../data/manifests/supermimic_q1_sole_native_connection_unknown_20261029.json)。
 

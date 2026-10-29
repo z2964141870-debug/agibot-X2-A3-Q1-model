@@ -4,7 +4,9 @@
 
 ## 环境与目录
 
-- 2026-10-29 15:56 SOLE01_INIT仅补H32逐步只读记录：10状态/9动作、求解器可见数组/四类RNG/参数和精度上下文，8离线反例/3编译/CLI通过，原容差不放宽；无新推理/积分/optimizer。用户恢复请求后的单次Windows认证交互Broken pipe，未建桥/执行容器命令，不判密码错误，远端仍UNKNOWN；GitHub22只读核查亦超时，Git/Mac保存及远端/25386待核以同步收据为准。不第三次物理H32/PPO预检或新训练、不动监督/其他任务/采纳null/无agent旧goal。入口H32_INIT_AUDIT；不是起点问题已修复或步态改善。
+- 2026-10-29 16:10用户明确要求本机Windows别名hp_han：/Users/yu/.ssh/config已新增HostName100.65.183.91/Useryu/Port22，ssh -G解析和600权限已核，密码仍交互输入，不将配置/认证文件入库。用户再次要求跳转后的单次原Windows转发在非回显认证后Broken pipe，18873/双socket未建立，未到Windows→25386，远端仍UNKNOWN，不据此判服务器或密码异常。别名配置后不重复登录；无新物理/训练/agent/goal或监督修改。入口WINDOWS_SSH_ALIAS及q1_windows_ssh_alias_hp_han清单。
+
+- 2026-10-29 16:04 SOLE01_INIT仅补H32逐步只读记录：10状态/9动作、求解器可见数组/四类RNG/参数和精度上下文，8离线反例/3编译/CLI通过，原容差不放宽；无新推理/积分/optimizer。用户恢复请求后的单次Windows认证交互Broken pipe，未建桥/执行容器命令，不判密码错误，远端仍UNKNOWN。代码1f224fd95f8df0d1c2c5efc98300a81cfa5f4931随后push/独立远端已核、10项308960字节Git/Mac SHA一致，25386镜像待，后续文档/收据以Git历史为准。不第三次物理H32/PPO预检或新训练、不动监督/其他任务/采纳null/无agent旧goal。入口H32_INIT_AUDIT及h32_init_local_publication；不是起点问题已修复或步态改善。
 
 - 2026-10-29 15:23 SOLE01收尾旁收据镜像遇18873拒绝连接，一次本地核查无监听/原双master和socket；当前连接/远端UNKNOWN，不重复探测/恢复桥/读写凭证。结果d3590198742bef48a6ea79c571d81e0cf1f6776f的5记录272945字节已三端SHA、4失败工件17254字节Mac/25386已核；旁收据d40a534931c114842ba77c30500b71d7b3457e5c已独立GitHub/Mac，唯旁收据及新状态的服务器镜像待。最后实测诊断退出/GPU15MiB/OOM0只作历史；恢复后仅补小记录，不重跑H32/PPO/训练或旧审计。PPO16/4096未测、采纳null/监督及其他任务不改，无agent/旧goal。入口SOLE_CANDIDATE/sole_native_connection_unknown。
 

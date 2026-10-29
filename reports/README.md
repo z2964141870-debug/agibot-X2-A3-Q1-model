@@ -1,6 +1,8 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-29 15:56 SOLE01_INIT：[H32逐步起点记录的离线准备](README_SUPERMIMIC_Q1_H32_INIT_AUDIT_20261029.md)通过8测试/3编译/CLI；分别记录重置、每步动作/历史/可见求解器与RNG，原断言保留，无新推理/物理/optimizer。单次桥恢复在认证交互Broken pipe，远端仍UNKNOWN；GitHubSSH亦超时，发布/镜像待核，未追加H32/PPO或训练。[范围与源码](../data/manifests/supermimic_q1_h32_init_audit_20261029.json)。
+2026-10-29 16:10：[Windows别名hp_han已配置](README_Q1_WINDOWS_SSH_ALIAS_20261029.md)，ssh -G核为yu@100.65.183.91:22，配置600/无保存密码。用户再次要求跳转后的单次会话仍在Windows认证后Broken pipe，未到容器、远端UNKNOWN；别名只做本地解析验证，不称连接恢复。[清单](../data/manifests/q1_windows_ssh_alias_hp_han_20261029.json)。
+
+2026-10-29 16:04 SOLE01_INIT：[H32逐步起点记录的离线准备](README_SUPERMIMIC_Q1_H32_INIT_AUDIT_20261029.md)通过8测试/3编译/CLI；原断言保留，无新推理/物理/optimizer。代码1f224fd已push/独立核远端、10项308960字节Git/Mac SHA一致。单次桥恢复在认证交互Broken pipe，远端仍UNKNOWN/25386镜像待，未追加H32/PPO或训练。[发布与Mac收据](../data/manifests/supermimic_q1_h32_init_local_publication_20261029.json)。
 
 2026-10-29 15:23 SOLE01：[最后旁收据同步遇断线](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)。结果5记录272945字节三端SHA和4失败工件17254字节Mac/25386已核；最后发布旁收据与新状态服务器镜像待，当前连接UNKNOWN。仅补小记录，不重跑诊断或训练。[有界核查](../data/manifests/supermimic_q1_sole_native_connection_unknown_20261029.json)。
 

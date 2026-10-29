@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-30：[GAIT_GOAL01离线PD请求/力矩限制核查](README_Q1_GAIT_GOAL01_SAVED_PD_DEMAND_20261030.md)。45片12015状态/5测试/135CPU执行器核对，0积分推理优化；6工件1164112B三端SHA/一图目视。边界287/264330请求超限均踝pitch，最终起走右踝底座5.7%-8.1%/PPO3.8%-5.7%；非整段实测饱和、非贴地单因。缺逐子步实际力矩，原plan亦未冻结后端Python；当前5源码SHA单列不冒充历史。两线独立逐子步观测仅可审阅设计，尚无新物理授权；原901.178392秒/失败/采纳null/goal ACTIVE及监督等保持，不重试扩时/agent。[清单](../data/manifests/supermimic_q1_gait_goal_saved_pd_demand_20261030.json)。
+
 2026-10-30：[GAIT_GOAL01保存指令幅度/关节响应离线核查](README_Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030.md)。45片12015状态/5测试，0积分推理优化；9工件5514858B三端SHA/两图目视。264330最终动作元素边界0，残差最大.021904rad低于.15；PPO两走腿残差RMS约.00545/.00575rad，未因半径限幅。右踝目标与实际差距较大，80-120ms最佳相关偏移仅描述闭环，不证明力矩饱和/PD太软或时轴错误。原901.178392秒/负面物理门/采纳null/goal ACTIVE不变。下一项仅离线核已有PD/力矩限制与记录缺口，新物理/训练仍待用户新决定，不恢复重试扩时/agent或改其他任务。[清单](../data/manifests/supermimic_q1_gait_goal_saved_control_usage_20261030.json)。
 
 2026-10-30：[GAIT_GOAL01奖励方向与站稳覆盖离线核查](README_Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030.md)。45片12015状态/135实际候选拆分一致/5测试，0新积分推理优化；10工件7734017B三端SHA、两图目视。原全身和基座姿态奖励一直存在；PPO新增站稳只覆盖停走62/320、起走4/210。局部抬脚/原tracking有相反方向，但最终PPO高度范数约5.77/5.74倍，不能说被原奖励淹没或据此隔离失败单因。底座全身得分增与基座方向得分降并存；原901.178392秒/失败/采纳null保持，goal ACTIVE。下一项仅离线看保存残差髋膝踝幅度/限幅与相位时序，新训练须用户新决定，不恢复重试扩时、agent或改其他任务。[清单](../data/manifests/supermimic_q1_gait_goal_saved_reward_alignment_20261030.json)。

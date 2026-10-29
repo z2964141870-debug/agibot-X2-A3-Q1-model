@@ -1,0 +1,343 @@
+{
+  "stage": "GAIT_GOAL01_SAVED_PD_DEMAND_20261030",
+  "status": "SAVED_ONLY_ANALYSIS_DELIVERED_PHYSICAL_TARGET_NOT_ACHIEVED",
+  "captured_utc": "2026-10-29T20:36:25.214027+00:00",
+  "review_report": "reports/README_Q1_GAIT_GOAL01_SAVED_PD_DEMAND_20261030.md",
+  "source_base_commit": "3421079a20ea2c5272ad740eadf976ececba9da4",
+  "code": [
+    {
+      "relative_path": "script/supermimic_q1_gait_goal_analysis/saved_pd_demand.py",
+      "sha256": "ba0bbfab615e6cd8be0d8ea44b7ba76c731983d9950ee314f373083b9ecf44bf"
+    },
+    {
+      "relative_path": "script/supermimic_q1_gait_goal_analysis/test_saved_pd_demand.py",
+      "sha256": "e01293e73ab57c79fffbc13ed7af0616a18f3ea1e20ce51346ab74f2eed64f1f"
+    }
+  ],
+  "tests": {
+    "command": "python3 -m unittest discover -s script/supermimic_q1_gait_goal_analysis -p test_saved_pd_demand.py -v",
+    "passed": 5,
+    "failed": 0
+  },
+  "findings": {
+    "saved_clips": 45,
+    "saved_states": 12015,
+    "joint_rows": 990,
+    "foot_rows": 270,
+    "median_timeseries_rows": 2120,
+    "cpu_checks": 135,
+    "cpu_max_difference_Nm": 4.440892098500626e-15,
+    "elements": 264330,
+    "over_limit_elements": 287,
+    "over_limit_by_joint": {
+      "left_ankle_pitch_joint": 44,
+      "right_ankle_pitch_joint": 243
+    },
+    "max_limit_ratio": 1.394433268138201,
+    "final_ankle": [
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames": 320,
+        "over_limit_frames": [
+          10,
+          4,
+          5
+        ],
+        "fraction": [
+          0.03125,
+          0.0125,
+          0.015625
+        ],
+        "p95_Nm": [
+          19.64544417262162,
+          18.534736188599283,
+          18.922392661360206
+        ]
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames": 210,
+        "over_limit_frames": [
+          14,
+          12,
+          17
+        ],
+        "fraction": [
+          0.06666666666666667,
+          0.05714285714285714,
+          0.08095238095238096
+        ],
+        "p95_Nm": [
+          23.135720733841442,
+          22.498989373216876,
+          23.109044894341054
+        ]
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames": 320,
+        "over_limit_frames": [
+          6,
+          3,
+          6
+        ],
+        "fraction": [
+          0.01875,
+          0.009375,
+          0.01875
+        ],
+        "p95_Nm": [
+          18.892953422907606,
+          17.811124909173316,
+          18.461057197488785
+        ]
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames": 210,
+        "over_limit_frames": [
+          8,
+          11,
+          12
+        ],
+        "fraction": [
+          0.0380952380952381,
+          0.05238095238095238,
+          0.05714285714285714
+        ],
+        "p95_Nm": [
+          20.97569653020534,
+          22.196054276005828,
+          22.280932657688407
+        ]
+      }
+    ],
+    "ankle_medians": [
+      {
+        "line": "base",
+        "label": "initial",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "request_p95_Nm": 18.40490886790741,
+        "request_max_Nm": 24.39366726748397,
+        "max_limit_ratio": 1.1088030576129078
+      },
+      {
+        "line": "base",
+        "label": "initial",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "request_p95_Nm": 21.825482518290574,
+        "request_max_Nm": 26.717846464323735,
+        "max_limit_ratio": 1.2144475665601697
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "request_p95_Nm": 18.922392661360206,
+        "request_max_Nm": 25.264090858497013,
+        "max_limit_ratio": 1.148367766295319
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "request_p95_Nm": 23.109044894341054,
+        "request_max_Nm": 27.53961951491013,
+        "max_limit_ratio": 1.2518008870413695
+      },
+      {
+        "line": "ppo",
+        "label": "initial",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "request_p95_Nm": 18.34399002781533,
+        "request_max_Nm": 23.673475693029474,
+        "max_limit_ratio": 1.076067076955885
+      },
+      {
+        "line": "ppo",
+        "label": "initial",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "request_p95_Nm": 21.37695467652559,
+        "request_max_Nm": 30.67753189904042,
+        "max_limit_ratio": 1.394433268138201
+      },
+      {
+        "line": "ppo",
+        "label": "stage_01",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "request_p95_Nm": 18.34887633089973,
+        "request_max_Nm": 24.033974524195678,
+        "max_limit_ratio": 1.09245338746344
+      },
+      {
+        "line": "ppo",
+        "label": "stage_01",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "request_p95_Nm": 22.184653500402447,
+        "request_max_Nm": 29.074196871486752,
+        "max_limit_ratio": 1.3215544032493978
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "request_p95_Nm": 18.461057197488785,
+        "request_max_Nm": 24.309360323353772,
+        "max_limit_ratio": 1.104970923788808
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "request_p95_Nm": 22.196054276005828,
+        "request_max_Nm": 26.79044962497602,
+        "max_limit_ratio": 1.2177477102261827
+      }
+    ],
+    "final_right_raised_reference": [
+      {
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames": [
+          44,
+          44,
+          44
+        ],
+        "over_limit_elements": 4,
+        "held_state_residual_force_change_rms_Nm": 0.07720270184582156,
+        "request_p95_Nm": 13.359310698230185
+      },
+      {
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames": [
+          51,
+          51,
+          51
+        ],
+        "over_limit_elements": 14,
+        "held_state_residual_force_change_rms_Nm": 0.07551166645696178,
+        "request_p95_Nm": 15.19289032273484
+      }
+    ],
+    "backend_versions": {
+      "mujoco": "3.11.0",
+      "mujoco-warp": "3.11.0",
+      "unilab": "1.5.0"
+    }
+  },
+  "artifact_delivery": {
+    "files": [
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PD_DEMAND_20261030/boundary_pd_demand.pdf",
+        "bytes": 71376,
+        "sha256": "d1d9f8b82529b255ce9124f3f4f73967046200a5013d81982ceb0f9c9fcf45e9"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PD_DEMAND_20261030/boundary_pd_demand.png",
+        "bytes": 554698,
+        "sha256": "2ada03cee535b047b26d3c1151ea3a197bc9451f3345d09b8e61ccb476d798f1"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PD_DEMAND_20261030/foot_boundary_pd.csv",
+        "bytes": 52472,
+        "sha256": "49d41e561ee7d8d58b5f75eefdfa9153efd7fa0cb834c77bc46a692a86ddc3c9"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PD_DEMAND_20261030/joint_boundary_pd.csv",
+        "bytes": 229337,
+        "sha256": "65103316c1acf968cba1dfe22055ed50f697a42d85efc2a39bcc898109334cf3"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PD_DEMAND_20261030/median_boundary_timeseries.csv",
+        "bytes": 227583,
+        "sha256": "3f4031b9e1475d219cb422b47f1efc8a4f31b279db1ee7c4bd7183b95db00db7"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PD_DEMAND_20261030/summary.json",
+        "bytes": 28646,
+        "sha256": "718bb7371d380759aec13ee5b7ca0903c0e5705ae9ab5a538953ca850fc4d67d"
+      }
+    ],
+    "verified_files": 6,
+    "verified_total_bytes": 1164112,
+    "locations": [
+      "authoritative_Q1_worktree",
+      "Mac_project_root",
+      "user_25386_unique_root"
+    ],
+    "all_size_sha256_matched": true,
+    "visually_reviewed_pngs": 1
+  },
+  "execution_log": "logs/session_records/q1_gait_goal_saved_pd_demand_20261030.log",
+  "source_lineage": "All15 original NPZ/JSON match historical candidate receipts and the prior saved-control summary; frozen scene/config/control identities match before/after. Current backend Python identities are separately captured and are not historical execution proof.",
+  "controller": {
+    "formula": "kp*(target-q_pre)-kv*qd_pre; clip to model forcerange",
+    "kp_Nm_per_rad": 15.791367041742973,
+    "kv_Nms_per_rad": 1.0053096491487339,
+    "hip_knee_waist_limit_Nm": 36,
+    "ankle_arm_limit_Nm": 22,
+    "control_dt_s": 0.02,
+    "physics_dt_s": 0.005,
+    "physics_substeps": 4,
+    "unit_gear": true,
+    "activation_state": false,
+    "actuator_delay_s": 0
+  },
+  "limitations": [
+    "Boundary-demand reconstruction is not recorded applied torque or whole-interval saturation.",
+    "Remaining3 physics-substep input states were not saved.",
+    "The original frozen plans do not include the inspected backend Python files; current hashes cannot establish historical identity.",
+    "All287 modeled over-limit elements are ankle pitch; their presence does not establish the cause of foot-ground behavior.",
+    "Residual held-state force differences do not predict a counterfactual rollout or improvement.",
+    "No new dynamics intervention, policy inference, integration, optimizer update, or trial adoption."
+  ],
+  "next_measurement_proposals": {
+    "status": "DESIGN_ONLY_NOT_AUTHORIZED_NOT_EXECUTED",
+    "base": {
+      "only_comparison_variable": "initial vs stage_01 frozen actor checkpoint",
+      "conditions": 2,
+      "fixed_walks": 2,
+      "repeats": 3,
+      "maximum_control_transitions": 3180,
+      "maximum_5ms_substeps": 12720
+    },
+    "ppo": {
+      "only_comparison_variable": "final frozen head enabled vs zero head under the same frozen teacher",
+      "conditions": 2,
+      "fixed_walks": 2,
+      "repeats": 3,
+      "maximum_control_transitions": 3180,
+      "maximum_5ms_substeps": 12720
+    },
+    "measurement_channels": [
+      "pre-substep joint q/qd",
+      "unchanged interval target and ctrl",
+      "actual actuator_force and qfrc_actuator",
+      "active gain/bias/force limits",
+      "same-substep native foot force and contact/slip",
+      "foot clearance and timing"
+    ],
+    "new_user_decision_required": true,
+    "optimizer_updates": 0,
+    "control_or_force_limits_changed": false
+  },
+  "original_training_seconds": 901.178391956928,
+  "original_failures_preserved": true,
+  "user_accepted_checkpoint": null,
+  "goal_status": "active",
+  "goal_complete": false,
+  "new_integration_steps": 0,
+  "policy_inference_calls": 0,
+  "optimizer_updates": 0,
+  "native_training_code_modified": false,
+  "agents_started": false,
+  "automations_modified": false,
+  "publication_receipt": "data/manifests/supermimic_q1_gait_goal_saved_pd_demand_publication_20261030.json"
+}

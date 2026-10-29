@@ -1,0 +1,26 @@
+GAIT_GOAL01_SAVED_PPO_CHAIN_20261030
+Captured UTC: 2026-10-29T21:15:12.568393+00:00
+Analysis base commit: 39eddb376574010c188d1555303c2f5c11cf02e9
+Original PPO training commit: cccefe08e6d9d5950b874cc6798f3e168cc47a6b
+
+Existing interpreter through script/supermimic_q1_hp/activate.py, CUDA_VISIBLE_DEVICES=-1.
+Focused unittest suite: 5 passed, 0 failed, 0 skipped (0.119s).
+Cases: parameter ordering and counters; missing/mismatched Adam state; nonfinite/negative variance; log reward/cap/noise consistency; Gaussian tanh reference.
+
+Executed saved-only command:
+env CUDA_VISIBLE_DEVICES=-1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 timeout --signal=TERM --kill-after=10s 120s /opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python /opt/data/private/ZHY/script/supermimic_q1_hp/activate.py -u /opt/data/private/ZHY/script/supermimic_q1_gait_goal_analysis/saved_ppo_chain.py --root /opt/data/private/ZHY --ppo /opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029 --output /opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PPO_CHAIN_20261030 --source-base-commit 39eddb376574010c188d1555303c2f5c11cf02e9
+
+Exit code: 0
+{"status": "SAVED_PPO_LEARNING_CHAIN_REVIEW_READY", "training_iterations": 113, "transitions": 11108352, "checkpoint_parameter_rows": 39, "warmup": {"iterations": 10, "actor_updates": 0, "critic_updates": 200, "sampled_residual_rms_rad_range": [0.014839623685210605, 0.014862596938201288]}, "last": {"iteration": 113, "training_seconds": 600.0709074319457, "actor_updates": 2060, "critic_updates": 2260, "transitions": 98304, "original_reward_per_transition": 0.0647397752230366, "stance_bonus_per_transition": 0.010760829163094362, "swing_bonus_per_transition": 0.0055538885450611515, "stationary_bonus_per_transition": 0.001358068916791429, "smooth_cost_per_transition": 0.0012640139417878042, "residual_cost_per_transition": 2.2409950058014754e-05, "reward_per_transition": 0.08112613732616107, "component_sum_discrepancy": -6.192922592163086e-05, "sampled_residual_rms_rad": 0.01587803287144582, "mean_upper_alpha": 0.3767293294270833, "alpha0_fraction_under_binary_cap_contract": 0.24654134114583337, "artificial_timeouts": 0, "hard_terminations": 0, "completed_episodes": 1328, "learning_rate": 5e-05, "first_timestep_policy_kl_mean": 0.007310089655220509, "first_timestep_policy_kl_p99": 0.021554965525865555, "first_timestep_latent_mean_rms": 0.03892821446061134, "ppo_value_loss": 0.49944006502628324, "ppo_surrogate_loss": -0.005365563173472765, "latent_gaussian_entropy": -12.371053695678711}}
+
+Original checkpoint identities matched selection history. Plan/selection/log/receipt matched original delivery hashes.
+14 inspected learning-chain sources matched the original frozen plan before/after.
+3 output files, 72249 bytes, plus 2 code files: 5 files / 96232 bytes verified in Q1 worktree, Mac root, and user25386 by size/SHA256.
+No policy forward, environment construction, physics integration, random draws, optimizer step, retry or additional training.
+Original trials: 901.178391956928 total training seconds; physical_regression evidence and adoption=null preserved; goal ACTIVE.
+
+Read-only exploratory launcher errors, corrected before this successful analysis:
+- Direct import of torch without activate.py encountered libcudnn.so.9 lookup failure. Existing wrapper corrected the loader; no environment installation/change.
+- Unqualified remote python was absent; explicit existing environment interpreter was used.
+- An initial local JSON-inspection command had incorrect shell quoting and raised NameError; corrected shell quoting was used.
+These commands did not start training, load a policy for execution, change original evidence, or consume a new trial.

@@ -68,3 +68,5 @@ PPO服务器原pipeline因缺ffprobe为FAILED并完整保留；已有视频通�
 另已完成[保存奖励方向/站稳覆盖](README_Q1_GAIT_GOAL01_SAVED_REWARD_ALIGNMENT_20261030.md)与[保存指令幅度/关节响应](README_Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030.md)：原姿态奖励存在，PPO抬脚局部信号并非简单被淹没；本次确定性残差很小且未触及半径上限。均为离线诊断，不能替代真实卸载/抬脚或隔离训练失败的唯一原因。
 
 后续[保存PD请求/力矩限制核查](README_Q1_GAIT_GOAL01_SAVED_PD_DEMAND_20261030.md)确认冻结场景下存在局部踝pitch边界请求超限；没有逐子步实测力矩、后端历史源码身份也未被原plan冻结，不能将其定为贴地单因。两线逐子步独立观测仅列为待用户决定的设计，没有新增物理/推理/训练。
+
+另已完成[保存PPO检查点与学习链路](README_Q1_GAIT_GOAL01_SAVED_PPO_CHAIN_20261030.md)：Adam状态与113轮日志确认actor确实更新，固定探索和训练上肢混合差异已核实；原文件没有逐步advantage、裁剪比例或梯度，不能由小补偿或loss直接判失败单因。0新积分/策略推理/采样/优化，原物理结论与授权范围保持。

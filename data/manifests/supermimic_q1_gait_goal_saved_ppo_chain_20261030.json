@@ -1,0 +1,281 @@
+{
+  "stage": "GAIT_GOAL01_SAVED_PPO_CHAIN_20261030",
+  "status": "SAVED_TENSOR_AND_LOG_ANALYSIS_DELIVERED_PHYSICAL_TARGET_NOT_ACHIEVED",
+  "captured_utc": "2026-10-29T21:15:12.568393+00:00",
+  "review_report": "reports/README_Q1_GAIT_GOAL01_SAVED_PPO_CHAIN_20261030.md",
+  "source_base_commit": "39eddb376574010c188d1555303c2f5c11cf02e9",
+  "original_training_source_commit": "cccefe08e6d9d5950b874cc6798f3e168cc47a6b",
+  "code": [
+    {
+      "relative_path": "script/supermimic_q1_gait_goal_analysis/saved_ppo_chain.py",
+      "bytes": 18796,
+      "sha256": "053545b01a64e8c52df637be52184fa6265c72d9d1ca8392d4aeacc694883626"
+    },
+    {
+      "relative_path": "script/supermimic_q1_gait_goal_analysis/test_saved_ppo_chain.py",
+      "bytes": 5187,
+      "sha256": "8ddbddc08ffb86319ba52fd477a71ca1e437c907bcc81357c4f03eb207dd05de"
+    }
+  ],
+  "tests": {
+    "runtime": "Existing SuperMimicHP interpreter through activate.py, CUDA_VISIBLE_DEVICES=-1",
+    "command": "python script/supermimic_q1_hp/activate.py -m unittest discover -s script/supermimic_q1_gait_goal_analysis -p test_saved_ppo_chain.py -v",
+    "passed": 5,
+    "failed": 0,
+    "scope": [
+      "Frozen serialized parameter order and per-parameter Adam steps",
+      "Missing/mismatched actor moments, fixed std and nonfinite rejection",
+      "Reward reconstruction, alpha mixture and warm-up log consistency",
+      "Bounded Gauss-Hermite distribution reference"
+    ]
+  },
+  "original_inputs": {
+    "checkpoints": 3,
+    "history": "Original checkpoint_selection.json plus prior PPO delivery manifest",
+    "historically_frozen_learning_source_files_verified": 14,
+    "log_iterations": 113,
+    "logged_transitions": 11108352,
+    "actual_new_training_transitions": 0,
+    "checkpoint_parameter_rows": 39
+  },
+  "findings": {
+    "checkpoints": [
+      {
+        "label": "initial",
+        "seconds": 0,
+        "iterations": 0,
+        "actor_updates": 0,
+        "critic_updates": 0
+      },
+      {
+        "label": "stage_01",
+        "seconds": 301.1352916099422,
+        "iterations": 58,
+        "actor_updates": 960,
+        "critic_updates": 1160
+      },
+      {
+        "label": "stage_02",
+        "seconds": 600.0709074319457,
+        "iterations": 113,
+        "actor_updates": 2060,
+        "critic_updates": 2260
+      }
+    ],
+    "parameter_deltas": [
+      {
+        "label": "initial",
+        "kind": "actor",
+        "parameters": 398478,
+        "changed": 0,
+        "delta_l2": 0,
+        "relative_delta_l2": 0
+      },
+      {
+        "label": "initial",
+        "kind": "critic",
+        "parameters": 418049,
+        "changed": 0,
+        "delta_l2": 0,
+        "relative_delta_l2": 0
+      },
+      {
+        "label": "stage_01",
+        "kind": "actor",
+        "parameters": 398478,
+        "changed": 398478,
+        "delta_l2": 1.974842998114585,
+        "relative_delta_l2": 0.17451563213304705
+      },
+      {
+        "label": "stage_01",
+        "kind": "critic",
+        "parameters": 418049,
+        "changed": 418049,
+        "delta_l2": 6.485784232747858,
+        "relative_delta_l2": 0.5726869244671733
+      },
+      {
+        "label": "stage_02",
+        "kind": "actor",
+        "parameters": 398478,
+        "changed": 398478,
+        "delta_l2": 2.67458861914469,
+        "relative_delta_l2": 0.23635171201534003
+      },
+      {
+        "label": "stage_02",
+        "kind": "critic",
+        "parameters": 418049,
+        "changed": 418049,
+        "delta_l2": 8.431799590364337,
+        "relative_delta_l2": 0.7445177332215219
+      }
+    ],
+    "warmup": {
+      "iterations": 10,
+      "actor_updates": 0,
+      "critic_updates": 200,
+      "sampled_residual_rms_rad_range": [
+        0.014839623685210605,
+        0.014862596938201288
+      ]
+    },
+    "distribution_reference": {
+      "latent_std": 0.1,
+      "radius_rad": 0.15,
+      "expected_residual_rms_rad": 0.014853385035051075,
+      "method": "80-node Gauss-Hermite quadrature of .15*tanh(N(0,.1^2)); no draws or policy calls"
+    },
+    "log_ranges": {
+      "learning_rate": [
+        0.00005,
+        0.00005
+      ],
+      "mean_upper_alpha": [
+        0.3686777750651042,
+        0.3813629150390625
+      ],
+      "alpha0_fraction_under_binary_cap_contract": [
+        0.237274169921875,
+        0.26264444986979163
+      ],
+      "sampled_residual_rms_rad": [
+        0.014839623685210605,
+        0.01587803287144582
+      ],
+      "latent_gaussian_entropy": [
+        -12.371053695678711,
+        -12.371053695678711
+      ]
+    },
+    "first_log_iteration": {
+      "iteration": 1,
+      "training_seconds": 4.067964765999932,
+      "actor_updates": 0,
+      "critic_updates": 20,
+      "transitions": 98304,
+      "original_reward_per_transition": 0.06107641818622748,
+      "stance_bonus_per_transition": 0.007277966050120692,
+      "swing_bonus_per_transition": 0.006307651618650804,
+      "stationary_bonus_per_transition": 0.0003425101924487232,
+      "smooth_cost_per_transition": 0.002712873227816696,
+      "residual_cost_per_transition": 0.0000196278875440233,
+      "reward_per_transition": 0.07227204351996382,
+      "component_sum_discrepancy": -0.00013881735503673553,
+      "sampled_residual_rms_rad": 0.014859802287695826,
+      "mean_upper_alpha": 0.374176025390625,
+      "alpha0_fraction_under_binary_cap_contract": 0.25164794921875,
+      "artificial_timeouts": 0,
+      "hard_terminations": 3,
+      "completed_episodes": 746,
+      "learning_rate": 0.00005,
+      "first_timestep_policy_kl_mean": 0,
+      "first_timestep_policy_kl_p99": 0,
+      "first_timestep_latent_mean_rms": 0,
+      "ppo_value_loss": 0.29699453711509705,
+      "ppo_surrogate_loss": 2.7668647817336023e-8,
+      "latent_gaussian_entropy": -12.371053695678711
+    },
+    "last_log_iteration": {
+      "iteration": 113,
+      "training_seconds": 600.0709074319457,
+      "actor_updates": 2060,
+      "critic_updates": 2260,
+      "transitions": 98304,
+      "original_reward_per_transition": 0.0647397752230366,
+      "stance_bonus_per_transition": 0.010760829163094362,
+      "swing_bonus_per_transition": 0.0055538885450611515,
+      "stationary_bonus_per_transition": 0.001358068916791429,
+      "smooth_cost_per_transition": 0.0012640139417878042,
+      "residual_cost_per_transition": 0.000022409950058014754,
+      "reward_per_transition": 0.08112613732616107,
+      "component_sum_discrepancy": -0.00006192922592163086,
+      "sampled_residual_rms_rad": 0.01587803287144582,
+      "mean_upper_alpha": 0.3767293294270833,
+      "alpha0_fraction_under_binary_cap_contract": 0.24654134114583337,
+      "artificial_timeouts": 0,
+      "hard_terminations": 0,
+      "completed_episodes": 1328,
+      "learning_rate": 0.00005,
+      "first_timestep_policy_kl_mean": 0.007310089655220509,
+      "first_timestep_policy_kl_p99": 0.021554965525865555,
+      "first_timestep_latent_mean_rms": 0.03892821446061134,
+      "ppo_value_loss": 0.49944006502628324,
+      "ppo_surrogate_loss": -0.005365563173472765,
+      "latent_gaussian_entropy": -12.371053695678711
+    },
+    "actor_remained_frozen": false,
+    "fixed_std_no_adam_state_is_expected": true,
+    "checkpoint_contains_training_rollout": false,
+    "missing_channels": [
+      "Per-transition stochastic training observations/actions, phase/contact and reward parts",
+      "Values, returns and raw/normalized advantages",
+      "Per-minibatch probability ratios, clip fraction, KL/rates and actor/critic gradient norms"
+    ],
+    "causal_failure_reason_identified": false,
+    "useful_gait_improvement_proven_by_parameter_or_loss_changes": false
+  },
+  "artifacts": {
+    "directory": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PPO_CHAIN_20261030",
+    "files": [
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PPO_CHAIN_20261030/checkpoint_parameters.csv",
+        "bytes": 6517,
+        "sha256": "507bfd0163513c729fb0d7d1bb1da1865367528a04d38554086b19de31602685"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PPO_CHAIN_20261030/summary.json",
+        "bytes": 20048,
+        "sha256": "29a9036cce3e4f345688d4324fc5a45e55373803fbfb4732c317ce6ef4583a08"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PPO_CHAIN_20261030/training_iterations.csv",
+        "bytes": 45684,
+        "sha256": "ac567070759ecf5b2483abdfcd738f3361e83c6e62205c5715ca9caec9fa8612"
+      }
+    ],
+    "bytes": 72249,
+    "locations": [
+      "authoritative_Q1_worktree",
+      "Mac_project_root",
+      "user_25386_unique_root"
+    ],
+    "all_size_sha256_matched": true,
+    "code_files_also_three_way_verified": true,
+    "weights_and_npz": "SERVER_LOCAL_ONLY"
+  },
+  "run": {
+    "command": "env CUDA_VISIBLE_DEVICES=-1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 timeout --signal=TERM --kill-after=10s 120s /opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python /opt/data/private/ZHY/script/supermimic_q1_hp/activate.py -u /opt/data/private/ZHY/script/supermimic_q1_gait_goal_analysis/saved_ppo_chain.py --root /opt/data/private/ZHY --ppo /opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029 --output /opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PPO_CHAIN_20261030 --source-base-commit 39eddb376574010c188d1555303c2f5c11cf02e9",
+    "exit_code": 0,
+    "log": "logs/session_records/q1_gait_goal_saved_ppo_chain_20261030.log",
+    "new_integration_steps": 0,
+    "policy_inference_calls": 0,
+    "random_draws": 0,
+    "optimizer_updates": 0,
+    "environment_instances_created": 0
+  },
+  "original_trials": {
+    "base_training_seconds": 301.1074845249823,
+    "ppo_training_seconds": 600.0709074319457,
+    "total_training_seconds": 901.178391956928,
+    "outcome": "physical_regression",
+    "base_v02_unique_authorization_consumed": true,
+    "automatic_retry": false,
+    "automatic_extension": false,
+    "user_accepted_checkpoint": null
+  },
+  "next": {
+    "scope": "Saved-only research remains permitted. New physical measurements, policy inference and training require a new explicit decision.",
+    "observation_design": "First connect unload/lift/substep torque to the saved mean-policy effect; any future learning diagnosis must record actual rollout advantages, ratios and gradient clipping.",
+    "physical_measurement_executed": false,
+    "training_authorized": false
+  },
+  "goal_status": "active",
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "native_training_code_modified": false,
+  "agents_started": false,
+  "automations_modified": false,
+  "publication": "Exact Git snapshot, independently read remote SHA and record mirrors are recorded in the later publication sidecar; no advance claim about an unverified commit."
+}

@@ -1,6 +1,6 @@
 # Q1普通步态双线改进目标
 
-记录日期：2026-10-29，更新至2026-10-30北京时间。阶段：GAIT_GOAL01。状态：目标ACTIVE；PPO600.070907实训秒按physical_regression正常停，已保存交付/CPU38与Mac媒体12检查通过。原pipeline因服务器缺ffprobe为FAILED并保留，独立postdelivery已COMPLETED。用户已允许的唯一底座V02尚未启动；候选采纳null。
+记录日期：2026-10-29，更新至2026-10-30北京时间。阶段：GAIT_GOAL01。状态：目标ACTIVE；底座V02已01:15:53唯一启动/初始三重复评测，授权已用。PPO600.070907实训秒按physical_regression正常停，已保存交付/CPU38与Mac媒体12检查通过；原缺ffprobe的FAILED保留，独立postdelivery COMPLETED。候选采纳null。
 
 ## 目标与授权
 
@@ -219,3 +219,11 @@ Mac现有ffprobe/ffmpeg完成初末各1350帧全解码，12/12媒体检查通过
 新独立`script/supermimic_q1_gait_goal_delivery/`仅组织服务器生成、Mac解码与保存审计：仍调用原review训练入口和原boot/GPU/OOM/内存/实训预算保护，服务器结束为`AWAITING_MAC_MEDIA_AUDIT`，Mac媒体与CPU保存审计通过后才登记新底座pipeline完成。三个反例测试/四文件编译与三个服务器CLI帮助通过；原native目录对`b6c28069`字节未变，review源码未修改。新审计只允许显式处理此次精确缺ffprobe错误，不自动掩盖其他失败。代码/记录经payload、Q1发布/独立40位远端和三端SHA后，执行用户已经批准的唯一底座V02，不重做base16、不增加预算或再询问本次授权。
 
 交付与独立入口提交`c9af4595840ccb594ee35c2e8ce2d588128b57a9`已独立核远端，10代码/记录379038字节经Git blob、权威工作树、Mac主根与25386逐大小SHA一致；53小工件的三端核验另在交付清单。此后底座V02使用最新已核发布提交，训练来源不回写PPO。[发布收据](../data/manifests/supermimic_q1_gait_goal_ppo_delivery_publication_20261030.json)。
+
+## 底座V02唯一启动
+
+2026-10-30 01:15:53北京时间，用户已批准的一次新根`data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029`实际启动，授权已使用，不再重启。来源`155260abdc9288d43ed5fc3f3001c06a3c6825b7`已独立核远端，发布旁收据与README共2文件40598字节Git blob/权威工作树/Mac/25386逐大小SHA一致。controller224552/start_ticks20779849，worker224581/start_ticks20781044；原boot/GPU，imports guard正常回收0。
+
+01:16:48冻结1583项来源逐SHA未变，initial repeat0/frame150、实训0秒/WM/actor/critic更新均0，GPU5171MiB/35度、容器约7.34GB/OOM0。只说明初始评测正在进行，非训练改善。原24GiB内存准入通过，30GiB守卫和1100软/1200硬/1150外停+10秒回收、300/600/1100物理门均未变；同一GPU串行，PPO已停不补预算。后续新底座服务器交付先AWAITING_MAC_MEDIA_AUDIT，完整Mac媒体与保存CPU审计通过才登记pipeline完成。
+
+仅监督原控制器/worker，不改冻结来源、恢复原失败根、重做base16、延长或自动重试；goal ACTIVE/采纳null，原监督/缓存维护与其他任务不改，无agent。[精确命令、身份、资源与来源](../data/manifests/supermimic_q1_gait_goal_base_v02_launch_20261030.json)。

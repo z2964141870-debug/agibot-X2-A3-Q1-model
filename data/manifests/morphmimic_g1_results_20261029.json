@@ -1,0 +1,650 @@
+{
+  "stage": "MM05",
+  "captured_utc": "2026-10-29T06:41:31Z",
+  "status": "ORIGINAL_G1_ENGINEERING_LOOP_DELIVERED_GAIT_NOT_REPRODUCED",
+  "upstream_commit": "aa40fe46a7fa995ba7a7354ad065a2c8ad64a302",
+  "runtime_commit": "c7f049965d1841e5ee556637695ea2494fda5bb1",
+  "runtime_frozen_files_unchanged": {
+    "run_original_sha256": "28484cacd5ec6dccbc3ed5c30af85978d7ef024766d370be88465419c4b1781b",
+    "config_sha256": "3a58853ab93b8f052fc5415ace67c902d7bbbe4863402f4a1b62b5d6e012d351"
+  },
+  "source_verification": {
+    "verified_blobs": 183,
+    "bytes": 140372650,
+    "mismatches": []
+  },
+  "training": {
+    "status": "TRAINING_COMPLETED",
+    "started_utc": "2026-10-29T05:47:42.975713+00:00",
+    "ended_utc": "2026-10-29T06:08:52.940155+00:00",
+    "iteration": 600,
+    "iteration_seconds": 1249.131081929314,
+    "timing_definition": "Sum of synchronized original iteration calls; excludes initialization, warmup, logging and checkpoint writes. Outer guard limits total process wall time.",
+    "optimizer_steps": {
+      "wm": 6000,
+      "policy": 100,
+      "critic": 2000
+    },
+    "logged_collection_transitions": 96000,
+    "collection_count_excludes_initialization_warmup": true,
+    "num_envs": 64,
+    "wm_batch": 128,
+    "imag_batch": 128,
+    "horizon": 32,
+    "wm_only_iters": 500,
+    "gpu_peak_allocated_bytes": 2079580672,
+    "gpu_peak_reserved_bytes": 2099249152,
+    "guard": {
+      "status": "WORKER_COMPLETED",
+      "command": [
+        "/usr/bin/timeout",
+        "--signal=TERM",
+        "--kill-after=20",
+        "3500",
+        "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/morphmimic_repro/run_original.py",
+        "--config",
+        "/opt/data/private/ZHY/script/morphmimic_repro/g1_smoke_20261029.json",
+        "--mode",
+        "train",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/training_observation"
+      ],
+      "cwd": "/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46",
+      "started_utc": "2026-10-29T05:47:33.721117+00:00",
+      "controller_pid": 185658,
+      "storage_status": "LOCAL_ONLY",
+      "last_storage_check": {
+        "experiment": {
+          "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029",
+          "unique_allocated_bytes": 1521098752,
+          "unique_logical_bytes": 1520772880,
+          "unique_inodes": 162,
+          "symlinks_not_followed": 0
+        },
+        "source": {
+          "root": "/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46",
+          "unique_allocated_bytes": 1395998720,
+          "unique_logical_bytes": 1390908006,
+          "unique_inodes": 2349,
+          "symlinks_not_followed": 0
+        },
+        "free_bytes": {
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029": 1614022168576,
+          "/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46": 1614022168576
+        }
+      },
+      "error": null,
+      "worker_pid": 185659,
+      "worker_group": 185659,
+      "cleanup": {
+        "worker_started": true,
+        "worker_pid": 185659,
+        "worker_group": 185659,
+        "worker_reaped": true,
+        "worker_return_code": 0
+      },
+      "ended_utc": "2026-10-29T06:08:55.349432+00:00"
+    }
+  },
+  "checkpoint_audit": {
+    "0": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/training/source_smoke/ckpt_0.pt",
+      "bytes": 75363625,
+      "sha256": "fd1cb974daae068732fb428f2cd1fbb99386f25418e3eff4ad4abd0a583feda4",
+      "optimizer_step_values": {
+        "wm": [],
+        "policy": [],
+        "critic": []
+      },
+      "all_network_tensors_finite": true
+    },
+    "600": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/training/source_smoke/ckpt_600.pt",
+      "bytes": 226027459,
+      "sha256": "74db4e14be52aafb9229db4b491c06ad56c34b1a7e2279dd5e4f50ee1d4f7a97",
+      "optimizer_step_values": {
+        "wm": [
+          6000
+        ],
+        "policy": [
+          100
+        ],
+        "critic": [
+          2000
+        ]
+      },
+      "all_network_tensors_finite": true
+    }
+  },
+  "network_max_abs_tensor_changes": {
+    "wm": 0.9994716644287109,
+    "policy": 0.015887156128883362,
+    "critic": 0.1552189737558365
+  },
+  "deployment": {
+    "status": "DEPLOYMENT_REVIEW_COMPLETED_WITH_RENDER_TIMEOUT_RECORDED",
+    "asset_fk_max_error": 5.16e-8,
+    "initial_onnx_max_abs_action_error": 1.3e-7,
+    "final_onnx_max_abs_action_error": 0.0000011,
+    "onnx_sha256sums_both_passed": true,
+    "interface": "motion",
+    "plan": {
+      "stage": "MM04",
+      "runtime_commit": "c7f049965d1841e5ee556637695ea2494fda5bb1",
+      "upstream_commit": "aa40fe46a7fa995ba7a7354ad065a2c8ad64a302",
+      "selection": "Fixed before viewing initial or final replay outcomes; all clips are in the original seed-0 tiny subset.",
+      "robot": "g1",
+      "interface": "motion",
+      "checkpoints": [
+        0,
+        600
+      ],
+      "clips": [
+        {
+          "name": "walk_forward_loop_001__A022",
+          "frames": 1032,
+          "seconds": 20.64
+        },
+        {
+          "name": "walk_forward_start_002__A023",
+          "frames": 152,
+          "seconds": 3.04
+        },
+        {
+          "name": "walk_forward_stop_005__A026",
+          "frames": 253,
+          "seconds": 5.06
+        }
+      ],
+      "failure_handling": "Keep the original early stop and short video; no hold frames, replacement clips, training retries or extensions.",
+      "scope": "Single-G1 engineering loop, not paper-scale performance reproduction or a Q1 result.",
+      "user_accepted_checkpoint": null
+    },
+    "replays": [
+      {
+        "iteration": 0,
+        "upstream_summary": {
+          "robot": "g1",
+          "clip": "walk_forward_loop_001__A022",
+          "frames": 1032,
+          "result": "failed at frame 46",
+          "joint_err_rms_rad": 0.2971415424433685,
+          "body_err_mean_m": 0.07988525663265225,
+          "end_drift_m": 0.4258906594840654,
+          "end_drift_along_m": 0.41756137060302645,
+          "end_drift_across_m": 0.08381739447092207,
+          "end_heading_err_deg": -0.5610163659897354,
+          "delay_ms": 0,
+          "video": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_loop_001__A022.mp4",
+          "interface": "motion"
+        },
+        "video": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_loop_001__A022.mp4",
+          "bytes": 320959,
+          "sha256": "605c8e91184dcc74356375468bde0fd44b34f5829e2fb6e726e84243941dbb3a"
+        },
+        "summary": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_loop_001__A022.json",
+          "bytes": 546,
+          "sha256": "908e35c9e44ecba7b0595d2340939ea07e58660c06ebc81e551a2def16279052"
+        }
+      },
+      {
+        "iteration": 0,
+        "upstream_summary": {
+          "robot": "g1",
+          "clip": "walk_forward_start_002__A023",
+          "frames": 152,
+          "result": "failed at frame 43",
+          "joint_err_rms_rad": 0.2691249660255941,
+          "body_err_mean_m": 0.07948470908347706,
+          "end_drift_m": 0.38182902042893796,
+          "end_drift_along_m": 0.3785456965020388,
+          "end_drift_across_m": 0.04996555314923129,
+          "end_heading_err_deg": -0.7124430003175822,
+          "delay_ms": 0,
+          "video": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_start_002__A023.mp4",
+          "interface": "motion"
+        },
+        "video": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_start_002__A023.mp4",
+          "bytes": 318023,
+          "sha256": "3adb0e1fdeff7f3e77dfcc445a26cd1a230bc931a1e28e4c03d8154214caf6f2"
+        },
+        "summary": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_start_002__A023.json",
+          "bytes": 547,
+          "sha256": "658c0ce51892532bd45cb7a80fca24ba3a67da36be644662206eefa5d725f146"
+        }
+      },
+      {
+        "iteration": 0,
+        "upstream_summary": {
+          "robot": "g1",
+          "clip": "walk_forward_stop_005__A026",
+          "frames": 253,
+          "result": "failed at frame 44",
+          "joint_err_rms_rad": 0.27663347815422445,
+          "body_err_mean_m": 0.07058200820673052,
+          "end_drift_m": 0.5510453026487077,
+          "end_drift_along_m": 0.5321679332484822,
+          "end_drift_across_m": 0.14299726008999203,
+          "end_heading_err_deg": -18.219078566531614,
+          "delay_ms": 0,
+          "video": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_stop_005__A026.mp4",
+          "interface": "motion"
+        },
+        "video": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_stop_005__A026.mp4",
+          "bytes": 316854,
+          "sha256": "f8daa3992aa1dff0e037700376cb266801f60c661fa2ef8e7a15067ab95bd530"
+        },
+        "summary": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_stop_005__A026.json",
+          "bytes": 545,
+          "sha256": "e45692e24cb3efbcf48b6469d12e788342fe66b9e6bd5a1c4e5431dcce635b82"
+        }
+      },
+      {
+        "iteration": 600,
+        "upstream_summary": {
+          "robot": "g1",
+          "clip": "walk_forward_loop_001__A022",
+          "frames": 1032,
+          "result": "failed at frame 65",
+          "joint_err_rms_rad": 0.2936949310706361,
+          "body_err_mean_m": 0.07278717824587348,
+          "end_drift_m": 0.23753611114973353,
+          "end_drift_along_m": 0.23740023425722778,
+          "end_drift_across_m": -0.008033235634034963,
+          "end_heading_err_deg": 0.6993501549831443,
+          "delay_ms": 0,
+          "video": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_loop_001__A022.mp4",
+          "interface": "motion"
+        },
+        "video": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_loop_001__A022.mp4",
+          "bytes": 416770,
+          "sha256": "c68738913e6ba7ab161d95f1ecceb4f80308a36969228b2ee4c4f1e92d12044f"
+        },
+        "summary": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_loop_001__A022.json",
+          "bytes": 550,
+          "sha256": "20a24731f982cc7a118ee7cba96508359acda0f1d2dd3385567c47c9f598c178"
+        }
+      },
+      {
+        "iteration": 600,
+        "upstream_summary": {
+          "robot": "g1",
+          "clip": "walk_forward_start_002__A023",
+          "frames": 152,
+          "result": "failed at frame 57",
+          "joint_err_rms_rad": 0.27883016557873147,
+          "body_err_mean_m": 0.06803382599644905,
+          "end_drift_m": 0.2076150114438761,
+          "end_drift_along_m": 0.2040446506279182,
+          "end_drift_across_m": -0.038337625473829184,
+          "end_heading_err_deg": -1.1358443716163495,
+          "delay_ms": 0,
+          "video": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_start_002__A023.mp4",
+          "interface": "motion"
+        },
+        "video": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_start_002__A023.mp4",
+          "bytes": 377593,
+          "sha256": "7c753829954ffb1665225a1c0c3d2346a48af83379f33d9badc32a749f748e3c"
+        },
+        "summary": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_start_002__A023.json",
+          "bytes": 551,
+          "sha256": "19b1c8a61b9c627b0b77d1ee026894205c22161e7913f71940a6510e82cb9e38"
+        }
+      },
+      {
+        "iteration": 600,
+        "upstream_summary": {
+          "robot": "g1",
+          "clip": "walk_forward_stop_005__A026",
+          "frames": 253,
+          "result": "failed at frame 116",
+          "joint_err_rms_rad": 0.2996694374295947,
+          "body_err_mean_m": 0.06424935685113396,
+          "end_drift_m": 0.3906183702916094,
+          "end_drift_along_m": -0.38905115584814004,
+          "end_drift_across_m": -0.03495581986592683,
+          "end_heading_err_deg": -0.13754320614375476,
+          "delay_ms": 0,
+          "video": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/it600_walk_forward_stop_005__A026.mp4",
+          "interface": "motion"
+        },
+        "video": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/it600_walk_forward_stop_005__A026.mp4",
+          "bytes": 636191,
+          "sha256": "91608566a72f95ea38bbc7018f222d56e0abe6512e3b07a681b567e324db52c5"
+        },
+        "summary": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/it600_walk_forward_stop_005__A026.json",
+          "bytes": 553,
+          "sha256": "159186b064636363525b2a53da1c8ed17efba1f219b06918d5d7a35a7c377ed3"
+        }
+      }
+    ],
+    "prior_failure": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/progress.json",
+      "bytes": 17090,
+      "sha256": "32c99928ad3e9948283fb9b0a8506546f11b8189a7dc0aaf90535727a27c472d",
+      "status": "FAILED",
+      "error": "TimeoutExpired: Command '['/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python', '-m', 'deploy.run', '--deploy', '/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/onnx_600', '--assets', '/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/assets', '--robot', 'g1', '--clip', 'walk_forward_stop_005__A026', '--interface', 'motion', '--video', '/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_stop_005__A026.mp4', '--summary', '/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_stop_005__A026.json']' timed out after 180 seconds",
+      "preserved_unchanged": true
+    },
+    "rendering_completion": {
+      "guard": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/stop_replay_guard.json",
+        "bytes": 2120,
+        "sha256": "d69ea8e310569e5f21c63c27fb02754ceac049485fe0fcc31fc1ea5e2868fa5d"
+      },
+      "whole_process_limit_seconds": 600,
+      "reason": "The first CPU simulation plus 1280x720 rendering reached step 106 before its 180-second process limit. That timeout is not a recorded policy failure.",
+      "rerun_scope": "Only final600 stop clip from the same original initial state and unchanged policy/assets; no training resumed, no other replay repeated.",
+      "training_optimizer_updates": 0
+    },
+    "pre_worker_entry_error": {
+      "type": "FileNotFoundError",
+      "reason": "Parent output directory did not exist for the first separate guard entry; failed before any worker started. Directory created and actual guarded replay started afterwards.",
+      "worker_started": false
+    }
+  },
+  "outcome": {
+    "initial_completed_clips": 0,
+    "final_completed_clips": 0,
+    "fixed_clips": 3,
+    "initial_failure_frames": [
+      46,
+      43,
+      44
+    ],
+    "final_failure_frames": [
+      65,
+      57,
+      116
+    ],
+    "natural_walking_reproduced": false,
+    "paper_scale_reproduction": false,
+    "q1_adapted": false,
+    "additional_ppo_or_residual_training": false,
+    "held_out_validation": false,
+    "common_prefix_metrics_comparison": false
+  },
+  "media_review": {
+    "videos": 6,
+    "decoded_frames": 377,
+    "fps": 50,
+    "width": 1280,
+    "height": 720,
+    "encoded_seconds": 7.54,
+    "decode_framecounts_match_failure_frame_plus_one": true,
+    "contact_sheets_visually_reviewed": 6,
+    "training_six_panel_plot_visually_reviewed": true,
+    "observation": "The visible G1 sinks/collapses and separates from the blue reference near the reported termination in every fixed replay. Assets, labels and figure contents are visible; this is not stable gait acceptance.",
+    "padding_or_clip_replacement": false
+  },
+  "local_delivery": {
+    "mac_root": "/Users/yu/Documents/ChatGPT/元启",
+    "server_root": "/opt/data/private/ZHY",
+    "all_file_sizes_sha256_matched": true,
+    "files": [
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/curves/metrics.csv",
+        "bytes": 32074,
+        "sha256": "e2c4fa177f27d104fb6e8dadcec87e278b33a5803f8c51d8d22c40c70bf1ae19"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/curves/source_receipt.json",
+        "bytes": 1752,
+        "sha256": "9fde820ff9f736543162a7f9243b51889c5f6c898a64aa4f87403abd99662ec6"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/curves/training.pdf",
+        "bytes": 28719,
+        "sha256": "11959a39d75b5eafe5994dc25d1f5427a588d7b1bd8b43987530a24e2ee613f3"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/curves/training.png",
+        "bytes": 448759,
+        "sha256": "bad2be306e67e05eda91b5a87d6426df645254ed8679d6e3e47b76a602e633eb"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/it600_walk_forward_stop_005__A026.contact.png",
+        "bytes": 432100,
+        "sha256": "93f71be580c4a2943fa688589de121e77b9d7678926e0b14ee78da4cc5e8ad7f"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/it600_walk_forward_stop_005__A026.json",
+        "bytes": 553,
+        "sha256": "159186b064636363525b2a53da1c8ed17efba1f219b06918d5d7a35a7c377ed3"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/it600_walk_forward_stop_005__A026.mp4",
+        "bytes": 636191,
+        "sha256": "91608566a72f95ea38bbc7018f222d56e0abe6512e3b07a681b567e324db52c5"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/media_checks.json",
+        "bytes": 3558,
+        "sha256": "6066582aae71f789824f0f9f50db4841a8dd55d149fc6698e283833513669bc2"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/progress.json",
+        "bytes": 11664,
+        "sha256": "8a3281329d194c20789e9239673a3ee892e7723b9106eab3e021a500919439c0"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/stop_replay.log",
+        "bytes": 1868,
+        "sha256": "1cccecdf6d18c7a753f4ed849640df650a9b698c7a37ae91300a8e7522208604"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_delivery/stop_replay_guard.json",
+        "bytes": 2120,
+        "sha256": "d69ea8e310569e5f21c63c27fb02754ceac049485fe0fcc31fc1ea5e2868fa5d"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/assets.log",
+        "bytes": 10921,
+        "sha256": "a533b0ab4449034c9f41be66bff5f96fc9a9fc48cc22f6319dac98b8beecbc5f"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/export_0.log",
+        "bytes": 3318,
+        "sha256": "ec5cc55656233b21294d1e0c4a812c865f24b54cb8cdb6e19d64c31c2a274ae4"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/export_600.log",
+        "bytes": 3322,
+        "sha256": "ffe7b431874fa8e95246790aa39b17a361a4c7df9a2466d36b663cf3a2a57f72"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_loop_001__A022.contact.png",
+        "bytes": 433867,
+        "sha256": "0199e5ee863e00aec89cfca07c7fdb15ba5e0dd74fc76949ea6542b0870cb43d"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_loop_001__A022.json",
+        "bytes": 546,
+        "sha256": "908e35c9e44ecba7b0595d2340939ea07e58660c06ebc81e551a2def16279052"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_loop_001__A022.log",
+        "bytes": 1140,
+        "sha256": "225589828e8ecad31fe3b78cf5d9ceb20a576a60f8f78860e3d706b7392c5091"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_loop_001__A022.mp4",
+        "bytes": 320959,
+        "sha256": "605c8e91184dcc74356375468bde0fd44b34f5829e2fb6e726e84243941dbb3a"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_start_002__A023.contact.png",
+        "bytes": 432234,
+        "sha256": "b50e96610e7dc5cfb25bacc9b0c53b27894af51920b61b2a7fbb3c59fb4f22bf"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_start_002__A023.json",
+        "bytes": 547,
+        "sha256": "658c0ce51892532bd45cb7a80fca24ba3a67da36be644662206eefa5d725f146"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_start_002__A023.log",
+        "bytes": 1137,
+        "sha256": "45f2c2ced1720e886847b5d69e47f8d4d145a8d016a67cfcb942f124b650ce6a"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_start_002__A023.mp4",
+        "bytes": 318023,
+        "sha256": "3adb0e1fdeff7f3e77dfcc445a26cd1a230bc931a1e28e4c03d8154214caf6f2"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_stop_005__A026.contact.png",
+        "bytes": 434510,
+        "sha256": "83b23c4c91036b5a30e85aa9bb8a8b77c71dca3773e8997399142659cc36ee82"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_stop_005__A026.json",
+        "bytes": 545,
+        "sha256": "e45692e24cb3efbcf48b6469d12e788342fe66b9e6bd5a1c4e5431dcce635b82"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_stop_005__A026.log",
+        "bytes": 1138,
+        "sha256": "192e3cbe43e88260ac12a67136d21beb6c0c8581b22d2205d642779ee1a04317"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it0_walk_forward_stop_005__A026.mp4",
+        "bytes": 316854,
+        "sha256": "f8daa3992aa1dff0e037700376cb266801f60c661fa2ef8e7a15067ab95bd530"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_loop_001__A022.contact.png",
+        "bytes": 432392,
+        "sha256": "cba882ad3b7bb2eeae5e82a82c1d9ff38339ab0ed330830d89aad484c0bd6a9d"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_loop_001__A022.json",
+        "bytes": 550,
+        "sha256": "20a24731f982cc7a118ee7cba96508359acda0f1d2dd3385567c47c9f598c178"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_loop_001__A022.log",
+        "bytes": 1343,
+        "sha256": "5164b3002f63baf475f7a382e157ba8ad36ccfb861504cbc471173e8d7848c23"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_loop_001__A022.mp4",
+        "bytes": 416770,
+        "sha256": "c68738913e6ba7ab161d95f1ecceb4f80308a36969228b2ee4c4f1e92d12044f"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_start_002__A023.contact.png",
+        "bytes": 428901,
+        "sha256": "6aee7eadb4d6c3aebed6dcd816c0b049e559d29b5c728e7d03c10b56f575598e"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_start_002__A023.json",
+        "bytes": 551,
+        "sha256": "19b1c8a61b9c627b0b77d1ee026894205c22161e7913f71940a6510e82cb9e38"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_start_002__A023.log",
+        "bytes": 1262,
+        "sha256": "45c8ebb69f27edc41eb5dbc93ec271977f80df4d06a081d0c5530cb4a7906adc"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_start_002__A023.mp4",
+        "bytes": 377593,
+        "sha256": "7c753829954ffb1665225a1c0c3d2346a48af83379f33d9badc32a749f748e3c"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/it600_walk_forward_stop_005__A026.log",
+        "bytes": 1274,
+        "sha256": "71c51086eba73d3f88c11ca22d955b44464bc8edbeab252a1bfb775701f9fa53"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/deployment_review/progress.json",
+        "bytes": 17090,
+        "sha256": "32c99928ad3e9948283fb9b0a8506546f11b8189a7dc0aaf90535727a27c472d"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/onnx_0/MANIFEST.txt",
+        "bytes": 2230,
+        "sha256": "5f986cf55c51bc831612b718b1469975985e5324e0d4a03ceadb3db6da769878"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/onnx_0/SHA256SUMS",
+        "bytes": 152,
+        "sha256": "353cd08ceee31eee9178e07e8b37cf4b3b008b5b3809f7a7a5a0772378579b65"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/onnx_600/MANIFEST.txt",
+        "bytes": 2234,
+        "sha256": "578c7424f777bb017909bb2abd10accfe2ee492d906dbfee37f2acd7045122b0"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/onnx_600/SHA256SUMS",
+        "bytes": 152,
+        "sha256": "b78158b49063d84f597952726c7d2cc1a1898f09261564f26ded9e4d27dbdada"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/training_guard.json",
+        "bytes": 1762,
+        "sha256": "9c363999a4e4dca17ea6cf27ea7f6558156821c6758df563182adc861970a466"
+      },
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_G1_ORIGINAL_20261029/training_observation/progress.json",
+        "bytes": 2813,
+        "sha256": "8907033b0cd62abe987b66fb9144bc744de1d04a24ede7d12d2e55e114c646b1"
+      },
+      {
+        "path": "logs/morphmimic_g1_training_20261029.log",
+        "bytes": 34718,
+        "sha256": "22572ffd91f0baed22545e93f324bc0a5990505b1f9835b785628f1af2e4bc20"
+      }
+    ],
+    "count": 43,
+    "bytes": 5600206
+  },
+  "terminal_observation": {
+    "original_training_processes_absent": [
+      185658,
+      185659,
+      185660
+    ],
+    "completion_guard_processes_absent": [
+      189835,
+      189836
+    ],
+    "gpu_uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+    "gpu_memory_mib": 15,
+    "gpu_utilization_percent": 0,
+    "gpu_compute_processes": [],
+    "oom_kill_count": 0
+  },
+  "prior_publication": {
+    "runtime_commit": "c7f049965d1841e5ee556637695ea2494fda5bb1",
+    "runtime_files": 10,
+    "runtime_bytes": 319374,
+    "launch_commit": "104d9925ae4a7519ae896b58ce0c24427c73ee1b",
+    "launch_independent_remote_head": "104d9925ae4a7519ae896b58ce0c24427c73ee1b",
+    "launch_files": 9,
+    "launch_bytes": 269215,
+    "launch_mac_server_sha256_matched": true
+  },
+  "storage_policy": "Checkpoints, ONNX and large datasets remain SERVER_LOCAL_ONLY. No such binary artifacts included in the Mac inventory or Git payload.",
+  "user_accepted_checkpoint": null,
+  "agents_started": false,
+  "goals_created_resumed_or_completed": false,
+  "automations_modified": false,
+  "training_restarted_or_extended": false
+}

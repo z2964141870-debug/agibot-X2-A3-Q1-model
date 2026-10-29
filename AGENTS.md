@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-29 MM05原版G1工程闭环已交付：600轮/1249.131082同步iteration秒，WM/policy/critic6000/100/2000，14:08:55原guard回收0；原183源码与c7f0499训练observer/config未变。原版asset/FK及初末ONNX parity/SHA通过，固定前走/起走/停走初末失败帧46/43/44→65/57/116，完成均0/3，不是稳定步态或论文规模复现。六本地原速MP4共377帧/7.54秒，6联系图/六格曲线目视及43小工件5600206字节Mac/25386大小SHA通过。最后停走一次180秒渲染超时保留，另一次补交入口在worker前缺目录退出；仅最后一片按原初态600秒守卫补齐14:30:37回收0，不重跑训练或另五片。进程退出/GPU15MiB无计算/OOM0，权重/ONNX留服务器；采纳null、监督/其他任务不改，无agent/旧goal。入口MORPHMIMIC_G1_RESULTS及results收据；最终发布以publication收据为准。
+
 - 2026-10-29 SOLE01 H32原生首检因重复reset后的起点不匹配正常断言停：288控制转移/1152子步、0optimizer，最大状态差.205497，未形成物理方向结论，PPO16/4096未执行。失败收据保留，不归责WM/训练。仅评测工具V02改各分支新建同配置/seed独立环境，保留原严格状态/历史/warmstart保护；重新冻结发布后一次独立V02/240秒，仍失败则停后续物理。无正式训练/旧训练重试/agent/旧goal，采纳null/监督及其他任务保持。入口SOLE_CANDIDATE。
 
 - 2026-10-29 SOLE01 H32 CPU实际通过：RF14stage02原权重、16原参考起点/hist10/H32/FP32，直接截获原生policy_update裁剪后梯度/阻止optimizer step，重算含critic的目标匹配，参数/归一化/来源保护通过，0积分/optimizer。尚不证明Warp/BF16或Adam/物理改善。独立native_plan准备顺序一次H32-16方向、PPO16/4096零更新检查，外限240/360/600秒，须先冻结发布/三端SHA并逐项核GPU空闲；不新正式训练/恢复旧作业/扩时，采纳null、监督/其他任务不改，无agent/旧goal。入口SOLE_CANDIDATE及sole_native_plan。

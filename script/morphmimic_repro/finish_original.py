@@ -117,7 +117,7 @@ def main():
                 command(label, [sys.executable, "-m", "deploy.run", "--deploy", exported,
                         "--assets", experiment / "assets", "--robot", "g1", "--clip",
                         clip["name"], "--interface", "motion", "--video", video,
-                        "--summary", summary], limit=180)
+                        "--summary", summary], limit=max(180, 60 + clip["frames"] * 3))
                 result = json.loads(summary.read_text())
                 record["replays"].append({"iteration": iteration, "upstream_summary": result,
                                           "video": digest(video), "summary": digest(summary)})

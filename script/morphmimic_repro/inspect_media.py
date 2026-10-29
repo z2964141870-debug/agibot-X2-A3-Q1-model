@@ -15,7 +15,8 @@ def main():
     from PIL import Image, ImageDraw
 
     progress = json.loads((args.review / "progress.json").read_text())
-    if progress["status"] != "DEPLOYMENT_REVIEW_COMPLETED":
+    if progress["status"] not in ("DEPLOYMENT_REVIEW_COMPLETED",
+                                  "DEPLOYMENT_REVIEW_COMPLETED_WITH_RENDER_TIMEOUT_RECORDED"):
         raise RuntimeError("Deployment must be finished before media inspection")
     checks = []
     for replay in progress["replays"]:

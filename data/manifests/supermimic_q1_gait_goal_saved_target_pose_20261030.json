@@ -1,0 +1,1118 @@
+{
+  "stage": "GAIT_GOAL01_SAVED_TARGET_POSE_20261030",
+  "status": "SAVED_STATIC_GEOMETRY_DELIVERED_PHYSICAL_TARGET_NOT_ACHIEVED",
+  "recorded_utc": "2026-10-29 23:54:41 UTC",
+  "source_base_commit": "fa651609d1143206c3918616668aae3f4b82f6e4",
+  "review_report": "reports/README_Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030.md",
+  "previous_goal_turn_classification": "progress",
+  "code": [
+    {
+      "relative_path": "script/project_tools/analyze_q1_saved_target_pose.py",
+      "bytes": 22944,
+      "sha256": "3dc82ca32558fb4c0b4c99baf6116ee02ac56693bb609523b4edaffece11efe4"
+    },
+    {
+      "relative_path": "script/project_tools/test_q1_saved_target_pose.py",
+      "bytes": 3251,
+      "sha256": "1cb6c0b882f389d60792bf04e2581a4cd2a9bbff7ec96369fd061a1f37bfc850"
+    }
+  ],
+  "logs": [
+    {
+      "relative_path": "logs/session_records/q1_gait_goal_saved_target_pose_20261030.log",
+      "bytes": 1445,
+      "sha256": "cbc12faf71272ac397334408fe470ff9b6b87589fc63e9de92b21751bbdecaeb"
+    },
+    {
+      "relative_path": "logs/session_records/q1_gait_goal_saved_target_pose_tests_20261030.log",
+      "bytes": 794,
+      "sha256": "c18f01ebd8a9451c01e288ae533318edf762bd465dab8db64b2054059a726371"
+    }
+  ],
+  "tests": {
+    "passed": 6,
+    "failed": 0,
+    "command": "python3 -m unittest discover -s script/project_tools -p 'test_q1_saved_target_pose.py' -v",
+    "cases": [
+      "Joint substitution holds saved root, velocities and input fixed",
+      "Misaligned and nonfinite posture rejection",
+      "Signed side height and common-root translation invariance",
+      "Residual geometry difference decomposition",
+      "Model range violations retained without clamping",
+      "Empty masks retain null and finite statistics are correct"
+    ]
+  },
+  "scope": {
+    "saved_clips": 45,
+    "saved_states": 12015,
+    "foot_condition_rows": 270,
+    "foot_timeseries_rows": 24030,
+    "static_fk_batches": 720,
+    "static_fk_poses": 72090,
+    "maximum_published_post_height_error_m": 1.6247270386016144e-7,
+    "maximum_published_reference_height_error_m": 1.3566070711235056e-7,
+    "new_integration_steps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0,
+    "new_training_seconds": 0,
+    "new_native_control_environments": 0,
+    "contact_dynamics_solves": 0,
+    "original_training_seconds": 901.178391956928,
+    "large_npz_transferred": false,
+    "original_media_or_saved_audits_repeated": false
+  },
+  "inputs": {
+    "published_control_manifest": "data/manifests/supermimic_q1_gait_goal_saved_control_usage_20261030.json",
+    "published_phase_manifest": "data/manifests/supermimic_q1_gait_goal_saved_phase_20261030.json",
+    "csv_and_summaries_matched_published_size_sha256": true,
+    "original_15_npz_and_json_matched_prior_control_provenance": true,
+    "consumed_files_before_after_size_sha256_unchanged": true,
+    "fk_and_sole_sources_and_scene_assets_matched_both_original_frozen_plans": true,
+    "original_checkpoint_weights_not_loaded": true,
+    "source_identities_in_artifact_summary": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030/summary.json"
+  },
+  "definitions": {
+    "target_geometry": "Replace22 joint coordinates at the observed control pre-state; keep root position/rotation and all velocities fixed",
+    "nominal_geometry": "Subtract saved residual from unclamped14 leg/waist target coordinates while holding the observed teacher target fixed",
+    "reference_same_root_geometry": "Next saved reference joint coordinates with the observed control pre-state root",
+    "original_reference_geometry": "Next saved reference root position/rotation and joint coordinates",
+    "relative_foot_height": "This foot collision-sole minimum world Z minus the other foot collision-sole minimum world Z",
+    "root_orientation_effect": "Reference-same-root right-minus-left sole height minus original-reference right-minus-left sole height",
+    "raised_reference_window": "Declared swing AND original reference sole Z >=10mm",
+    "timing": "Targets and pre-root use control start; reference window uses next20ms saved sample; force is final5ms solve sample",
+    "aggregation": "Calculate per-repeat window statistics before taking median over three repeats; plots instead use framewise medians",
+    "target_joint_limit_violation": "At least one of this leg six target angles outside model joint range by more than1e-6rad; target is retained"
+  },
+  "findings": {
+    "right_raised_reference_window_statistics": [
+      {
+        "line": "base",
+        "label": "initial",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames_per_repeat": [
+          44,
+          44,
+          44
+        ],
+        "target_relative_other_mean_m": {
+          "by_repeat": [
+            -0.02403132693672722,
+            -0.011661291545764967,
+            -0.027186297811567783
+          ],
+          "median": -0.02403132693672722
+        },
+        "reference_same_root_relative_other_mean_m": {
+          "by_repeat": [
+            0.008582182736559347,
+            0.006495975381271405,
+            0.0082710851830515
+          ],
+          "median": 0.0082710851830515
+        },
+        "post_relative_other_mean_m": {
+          "by_repeat": [
+            -0.0004992207342928106,
+            -0.0006613061678680507,
+            -0.0015326989814639091
+          ],
+          "median": -0.0006613061678680507
+        },
+        "residual_sole_delta_mean_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_sole_delta_rms_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_sole_delta_abs_p95_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_relative_delta_mean_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_relative_delta_rms_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "target_leg_any_joint_outside_frame_fraction": {
+          "by_repeat": [
+            0.25,
+            0.3409090909090909,
+            0.36363636363636365
+          ],
+          "median": 0.3409090909090909
+        }
+      },
+      {
+        "line": "base",
+        "label": "initial",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames_per_repeat": [
+          51,
+          51,
+          51
+        ],
+        "target_relative_other_mean_m": {
+          "by_repeat": [
+            -0.024636763458450634,
+            -0.04103493515182944,
+            -0.05139982546953594
+          ],
+          "median": -0.04103493515182944
+        },
+        "reference_same_root_relative_other_mean_m": {
+          "by_repeat": [
+            0.011429504582694932,
+            0.00948115175261217,
+            0.007295776268138605
+          ],
+          "median": 0.00948115175261217
+        },
+        "post_relative_other_mean_m": {
+          "by_repeat": [
+            -0.0017321387342378205,
+            -0.003257620714458765,
+            -0.002962275389947143
+          ],
+          "median": -0.002962275389947143
+        },
+        "residual_sole_delta_mean_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_sole_delta_rms_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_sole_delta_abs_p95_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_relative_delta_mean_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_relative_delta_rms_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "target_leg_any_joint_outside_frame_fraction": {
+          "by_repeat": [
+            0.3137254901960784,
+            0.3137254901960784,
+            0.3333333333333333
+          ],
+          "median": 0.3137254901960784
+        }
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames_per_repeat": [
+          44,
+          44,
+          44
+        ],
+        "target_relative_other_mean_m": {
+          "by_repeat": [
+            -0.017229655842212113,
+            -0.02584516815841198,
+            -0.026712931015274742
+          ],
+          "median": -0.02584516815841198
+        },
+        "reference_same_root_relative_other_mean_m": {
+          "by_repeat": [
+            -0.0029808208346366882,
+            -0.0020175757817924023,
+            -0.0010661939159035683
+          ],
+          "median": -0.0020175757817924023
+        },
+        "post_relative_other_mean_m": {
+          "by_repeat": [
+            -0.0008366803045977246,
+            0.00020341448147188532,
+            0.0001346345313570716
+          ],
+          "median": 0.0001346345313570716
+        },
+        "residual_sole_delta_mean_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_sole_delta_rms_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_sole_delta_abs_p95_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_relative_delta_mean_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_relative_delta_rms_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "target_leg_any_joint_outside_frame_fraction": {
+          "by_repeat": [
+            0.29545454545454547,
+            0.20454545454545456,
+            0.29545454545454547
+          ],
+          "median": 0.29545454545454547
+        }
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames_per_repeat": [
+          51,
+          51,
+          51
+        ],
+        "target_relative_other_mean_m": {
+          "by_repeat": [
+            -0.05530258589515499,
+            -0.053802508057332506,
+            -0.05870277167973565
+          ],
+          "median": -0.05530258589515499
+        },
+        "reference_same_root_relative_other_mean_m": {
+          "by_repeat": [
+            -0.0009540375687328039,
+            0.0007033279421282749,
+            -0.00142140449116043
+          ],
+          "median": -0.0009540375687328039
+        },
+        "post_relative_other_mean_m": {
+          "by_repeat": [
+            -0.00165744629852912,
+            -0.0003442238358890309,
+            -0.0023373050578669005
+          ],
+          "median": -0.00165744629852912
+        },
+        "residual_sole_delta_mean_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_sole_delta_rms_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_sole_delta_abs_p95_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_relative_delta_mean_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_relative_delta_rms_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "target_leg_any_joint_outside_frame_fraction": {
+          "by_repeat": [
+            0.19607843137254902,
+            0.17647058823529413,
+            0.21568627450980393
+          ],
+          "median": 0.19607843137254902
+        }
+      },
+      {
+        "line": "ppo",
+        "label": "initial",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames_per_repeat": [
+          44,
+          44,
+          44
+        ],
+        "target_relative_other_mean_m": {
+          "by_repeat": [
+            -0.029200141402808102,
+            -0.020429369062185287,
+            -0.02473302600397305
+          ],
+          "median": -0.02473302600397305
+        },
+        "reference_same_root_relative_other_mean_m": {
+          "by_repeat": [
+            0.007870534096251835,
+            0.008395599370652979,
+            0.00835889552465894
+          ],
+          "median": 0.00835889552465894
+        },
+        "post_relative_other_mean_m": {
+          "by_repeat": [
+            -0.0012517481703649867,
+            -0.0012741179459474304,
+            -0.000814640809866515
+          ],
+          "median": -0.0012517481703649867
+        },
+        "residual_sole_delta_mean_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_sole_delta_rms_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_sole_delta_abs_p95_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_relative_delta_mean_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_relative_delta_rms_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "target_leg_any_joint_outside_frame_fraction": {
+          "by_repeat": [
+            0.36363636363636365,
+            0.3181818181818182,
+            0.3409090909090909
+          ],
+          "median": 0.3409090909090909
+        }
+      },
+      {
+        "line": "ppo",
+        "label": "initial",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames_per_repeat": [
+          51,
+          51,
+          51
+        ],
+        "target_relative_other_mean_m": {
+          "by_repeat": [
+            -0.04801642876483646,
+            -0.027731852094624556,
+            -0.03655408362985826
+          ],
+          "median": -0.03655408362985826
+        },
+        "reference_same_root_relative_other_mean_m": {
+          "by_repeat": [
+            0.008926323158483879,
+            0.010713375082202986,
+            0.010745116710370662
+          ],
+          "median": 0.010713375082202986
+        },
+        "post_relative_other_mean_m": {
+          "by_repeat": [
+            -0.00002070567479320601,
+            -0.0020647544925119364,
+            -0.0018103540528054331
+          ],
+          "median": -0.0018103540528054331
+        },
+        "residual_sole_delta_mean_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_sole_delta_rms_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_sole_delta_abs_p95_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_relative_delta_mean_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "residual_relative_delta_rms_m": {
+          "by_repeat": [
+            0,
+            0,
+            0
+          ],
+          "median": 0
+        },
+        "target_leg_any_joint_outside_frame_fraction": {
+          "by_repeat": [
+            0.27450980392156865,
+            0.19607843137254902,
+            0.21568627450980393
+          ],
+          "median": 0.21568627450980393
+        }
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames_per_repeat": [
+          44,
+          44,
+          44
+        ],
+        "target_relative_other_mean_m": {
+          "by_repeat": [
+            -0.032477251084690746,
+            -0.026068833741274746,
+            -0.02867974942042069
+          ],
+          "median": -0.02867974942042069
+        },
+        "reference_same_root_relative_other_mean_m": {
+          "by_repeat": [
+            0.007150632837279277,
+            0.007320147600363602,
+            0.0055567877028476105
+          ],
+          "median": 0.007150632837279277
+        },
+        "post_relative_other_mean_m": {
+          "by_repeat": [
+            -0.0012569763613018122,
+            -0.0011727356097914956,
+            -0.0019692931832237678
+          ],
+          "median": -0.0012569763613018122
+        },
+        "residual_sole_delta_mean_m": {
+          "by_repeat": [
+            -0.00020059697668660772,
+            -0.00024804870852015233,
+            -0.00012198759412223643
+          ],
+          "median": -0.00020059697668660772
+        },
+        "residual_sole_delta_rms_m": {
+          "by_repeat": [
+            0.0007434393412596421,
+            0.00070560866494898,
+            0.0007263848363322246
+          ],
+          "median": 0.0007263848363322246
+        },
+        "residual_sole_delta_abs_p95_m": {
+          "by_repeat": [
+            0.0018216364085674298,
+            0.0013220779597759248,
+            0.0017691686749458325
+          ],
+          "median": 0.0017691686749458325
+        },
+        "residual_relative_delta_mean_m": {
+          "by_repeat": [
+            0.00023785106499086726,
+            0.0002992670475081964,
+            0.0005756059492176229
+          ],
+          "median": 0.0002992670475081964
+        },
+        "residual_relative_delta_rms_m": {
+          "by_repeat": [
+            0.002007275810888391,
+            0.0018334638601879818,
+            0.002005220369386851
+          ],
+          "median": 0.002005220369386851
+        },
+        "target_leg_any_joint_outside_frame_fraction": {
+          "by_repeat": [
+            0.38636363636363635,
+            0.38636363636363635,
+            0.38636363636363635
+          ],
+          "median": 0.38636363636363635
+        }
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames_per_repeat": [
+          51,
+          51,
+          51
+        ],
+        "target_relative_other_mean_m": {
+          "by_repeat": [
+            -0.026451643483311523,
+            -0.026377424524695266,
+            -0.030571561635417098
+          ],
+          "median": -0.026451643483311523
+        },
+        "reference_same_root_relative_other_mean_m": {
+          "by_repeat": [
+            0.006125125230527392,
+            0.0054614549758387546,
+            0.0052924903073147235
+          ],
+          "median": 0.0054614549758387546
+        },
+        "post_relative_other_mean_m": {
+          "by_repeat": [
+            -0.0028024587561102476,
+            -0.004885971180948557,
+            -0.005403234605111328
+          ],
+          "median": -0.004885971180948557
+        },
+        "residual_sole_delta_mean_m": {
+          "by_repeat": [
+            -0.00039445838945753435,
+            -0.00033823904745719014,
+            -0.0002309681080720004
+          ],
+          "median": -0.00033823904745719014
+        },
+        "residual_sole_delta_rms_m": {
+          "by_repeat": [
+            0.0009934688957035044,
+            0.0011295039493557915,
+            0.0011320606829375395
+          ],
+          "median": 0.0011295039493557915
+        },
+        "residual_sole_delta_abs_p95_m": {
+          "by_repeat": [
+            0.0017111226916313171,
+            0.0024985261261463165,
+            0.0023338831961154938
+          ],
+          "median": 0.0023338831961154938
+        },
+        "residual_relative_delta_mean_m": {
+          "by_repeat": [
+            0.00004729628562927246,
+            -0.00015702080346790013,
+            -0.0001107596372272454
+          ],
+          "median": -0.0001107596372272454
+        },
+        "residual_relative_delta_rms_m": {
+          "by_repeat": [
+            0.001888180982672545,
+            0.001968968063258054,
+            0.002071993129587932
+          ],
+          "median": 0.001968968063258054
+        },
+        "target_leg_any_joint_outside_frame_fraction": {
+          "by_repeat": [
+            0.3137254901960784,
+            0.35294117647058826,
+            0.37254901960784315
+          ],
+          "median": 0.35294117647058826
+        }
+      }
+    ],
+    "paired_reference_root_effect_statistics": [
+      {
+        "line": "base",
+        "label": "initial",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames_by_repeat": [
+          44,
+          44,
+          44
+        ],
+        "true_reference_relative_mean_m": {
+          "by_repeat": [
+            0.009657136715952768,
+            0.009657136715952768,
+            0.009657136715952768
+          ],
+          "median": 0.009657136715952768
+        },
+        "reference_joints_saved_root_relative_mean_m": {
+          "by_repeat": [
+            0.008582182736559347,
+            0.006495975381271405,
+            0.0082710851830515
+          ],
+          "median": 0.0082710851830515
+        },
+        "saved_root_orientation_geometric_effect_mean_m": {
+          "by_repeat": [
+            -0.00107495397939342,
+            -0.003161161334681362,
+            -0.001386051532901268
+          ],
+          "median": -0.001386051532901268
+        }
+      },
+      {
+        "line": "base",
+        "label": "initial",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames_by_repeat": [
+          51,
+          51,
+          51
+        ],
+        "true_reference_relative_mean_m": {
+          "by_repeat": [
+            0.015140723403690418,
+            0.015140723403690418,
+            0.015140723403690418
+          ],
+          "median": 0.015140723403690418
+        },
+        "reference_joints_saved_root_relative_mean_m": {
+          "by_repeat": [
+            0.011429504582694932,
+            0.00948115175261217,
+            0.007295776268138605
+          ],
+          "median": 0.00948115175261217
+        },
+        "saved_root_orientation_geometric_effect_mean_m": {
+          "by_repeat": [
+            -0.0037112188209954848,
+            -0.005659571651078247,
+            -0.007844947135551813
+          ],
+          "median": -0.005659571651078247
+        }
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames_by_repeat": [
+          44,
+          44,
+          44
+        ],
+        "true_reference_relative_mean_m": {
+          "by_repeat": [
+            0.009657136715952768,
+            0.009657136715952768,
+            0.009657136715952768
+          ],
+          "median": 0.009657136715952768
+        },
+        "reference_joints_saved_root_relative_mean_m": {
+          "by_repeat": [
+            -0.0029808208346366882,
+            -0.0020175757817924023,
+            -0.0010661939159035683
+          ],
+          "median": -0.0020175757817924023
+        },
+        "saved_root_orientation_geometric_effect_mean_m": {
+          "by_repeat": [
+            -0.012637957550589456,
+            -0.01167471249774517,
+            -0.010723330631856336
+          ],
+          "median": -0.01167471249774517
+        }
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames_by_repeat": [
+          51,
+          51,
+          51
+        ],
+        "true_reference_relative_mean_m": {
+          "by_repeat": [
+            0.015140723403690418,
+            0.015140723403690418,
+            0.015140723403690418
+          ],
+          "median": 0.015140723403690418
+        },
+        "reference_joints_saved_root_relative_mean_m": {
+          "by_repeat": [
+            -0.0009540375687328039,
+            0.0007033279421282749,
+            -0.00142140449116043
+          ],
+          "median": -0.0009540375687328039
+        },
+        "saved_root_orientation_geometric_effect_mean_m": {
+          "by_repeat": [
+            -0.01609476097242322,
+            -0.014437395461562143,
+            -0.01656212789485085
+          ],
+          "median": -0.01609476097242322
+        }
+      },
+      {
+        "line": "ppo",
+        "label": "initial",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames_by_repeat": [
+          44,
+          44,
+          44
+        ],
+        "true_reference_relative_mean_m": {
+          "by_repeat": [
+            0.009657136715952768,
+            0.009657136715952768,
+            0.009657136715952768
+          ],
+          "median": 0.009657136715952768
+        },
+        "reference_joints_saved_root_relative_mean_m": {
+          "by_repeat": [
+            0.007870534096251835,
+            0.008395599370652979,
+            0.00835889552465894
+          ],
+          "median": 0.00835889552465894
+        },
+        "saved_root_orientation_geometric_effect_mean_m": {
+          "by_repeat": [
+            -0.001786602619700933,
+            -0.0012615373452997884,
+            -0.0012982411912938275
+          ],
+          "median": -0.0012982411912938275
+        }
+      },
+      {
+        "line": "ppo",
+        "label": "initial",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames_by_repeat": [
+          51,
+          51,
+          51
+        ],
+        "true_reference_relative_mean_m": {
+          "by_repeat": [
+            0.015140723403690418,
+            0.015140723403690418,
+            0.015140723403690418
+          ],
+          "median": 0.015140723403690418
+        },
+        "reference_joints_saved_root_relative_mean_m": {
+          "by_repeat": [
+            0.008926323158483879,
+            0.010713375082202986,
+            0.010745116710370662
+          ],
+          "median": 0.010713375082202986
+        },
+        "saved_root_orientation_geometric_effect_mean_m": {
+          "by_repeat": [
+            -0.0062144002452065375,
+            -0.004427348321487431,
+            -0.004395606693319755
+          ],
+          "median": -0.004427348321487431
+        }
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames_by_repeat": [
+          44,
+          44,
+          44
+        ],
+        "true_reference_relative_mean_m": {
+          "by_repeat": [
+            0.009657136715952768,
+            0.009657136715952768,
+            0.009657136715952768
+          ],
+          "median": 0.009657136715952768
+        },
+        "reference_joints_saved_root_relative_mean_m": {
+          "by_repeat": [
+            0.007150632837279277,
+            0.007320147600363602,
+            0.0055567877028476105
+          ],
+          "median": 0.007150632837279277
+        },
+        "saved_root_orientation_geometric_effect_mean_m": {
+          "by_repeat": [
+            -0.002506503878673491,
+            -0.002336989115589166,
+            -0.004100349013105156
+          ],
+          "median": -0.002506503878673491
+        }
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames_by_repeat": [
+          51,
+          51,
+          51
+        ],
+        "true_reference_relative_mean_m": {
+          "by_repeat": [
+            0.015140723403690418,
+            0.015140723403690418,
+            0.015140723403690418
+          ],
+          "median": 0.015140723403690418
+        },
+        "reference_joints_saved_root_relative_mean_m": {
+          "by_repeat": [
+            0.006125125230527392,
+            0.0054614549758387546,
+            0.0052924903073147235
+          ],
+          "median": 0.0054614549758387546
+        },
+        "saved_root_orientation_geometric_effect_mean_m": {
+          "by_repeat": [
+            -0.009015598173163025,
+            -0.009679268427851663,
+            -0.009848233096375694
+          ],
+          "median": -0.009679268427851663
+        }
+      }
+    ],
+    "ppo_final_right_sole_delta_rms_m_median": {
+      "stop": 0.0007263848363322246,
+      "start": 0.0011295039493557915
+    },
+    "base_final_reference_root_orientation_geometric_effect_mean_m_median": {
+      "stop": -0.01167471249774517,
+      "start": -0.01609476097242322
+    },
+    "original_targets_already_had_model_range_violations": true,
+    "unique_training_or_control_cause_isolated": false,
+    "targets_are_predicted_or_reachable_poses": false
+  },
+  "artifacts": {
+    "files": [
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030/base_saved_target_pose.pdf",
+        "bytes": 47912,
+        "sha256": "f148e1addfca50eeb07da8293171648bd86eae48cbe837ba893e4439e9ae3949"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030/base_saved_target_pose.png",
+        "bytes": 439439,
+        "sha256": "521bb102c0ddedf03c3efd5ca9bd0f29fafaac20ade7ff4ea8303c0a54c0138c"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030/foot_target_pose_conditions.csv",
+        "bytes": 104545,
+        "sha256": "a7ebaa8e11a3c666c7c1532e5bbfdf14a7ae3f6df0c4bd7abb44896acd6e7876"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030/ppo_saved_target_pose.pdf",
+        "bytes": 68735,
+        "sha256": "8ef46e0725a3ecf43eae820aa7adeba5f5a66fb4422a9f42205daf6df4074a80"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030/ppo_saved_target_pose.png",
+        "bytes": 558239,
+        "sha256": "9b8d889488920691d66c819c27298f22f1ff5d2c7f37e0c140577f4ae2b0bed7"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030/summary.json",
+        "bytes": 26161,
+        "sha256": "b2a306ba0f38cb1773ffc6eaf8387eee08f02be0aede739a7d3fb1e3fabc1519"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030/target_pose_timeseries.csv",
+        "bytes": 8827764,
+        "sha256": "269b599ae5701ad0369ef1ad42fbcf632287cb940ce20c635aa0492206fd71ed"
+      }
+    ],
+    "count": 7,
+    "bytes": 10072795,
+    "all_three_way_size_sha256_matched": true,
+    "locations": [
+      "authoritative_Q1_worktree",
+      "Mac_project_root",
+      "user_25386_unique_root"
+    ],
+    "visually_reviewed_pngs": 2,
+    "layout_passed": true
+  },
+  "limitations": [
+    "PD equilibrium targets are not predicted next poses, reachable postures or foot trajectory commands.",
+    "Static substitution holds the observed pre-state root fixed and does not solve ground contact, loading or balance.",
+    "Root-effect comparison uses pre-state root against next-reference root; this20ms definition is not an independent actuator delay.",
+    "Relative foot height cancels common root translation, but is not absolute swing clearance.",
+    "Target configurations can exceed model joint ranges; do not infer physical joint excursions or saturation.",
+    "Removing residual holds the observed teacher command fixed and is not a new head-off physical policy experiment.",
+    "The initial target range violations predate this trial; their existence does not isolate a new training defect.",
+    "Millimetre static geometry changes are not verified millimetre physical responses.",
+    "Native foot force precedes saved post-pose by5ms; it is not a20ms impulse or exact simultaneous contact measurement.",
+    "Only45 saved fixed clips are covered. Original physical gates,330-library outcomes and training budgets are unchanged."
+  ],
+  "observation_preparation": {
+    "plan_relative_path": "data/manifests/supermimic_q1_gait_goal_substep_observation_plan_v02_20261030.json",
+    "plan_bytes": 86121,
+    "plan_sha256": "c94cf9489c317ea6a2ca431af898bc4f8704e698067c5e927d17a389b1234942",
+    "frozen_inputs": 282,
+    "plan_size_sha256_unchanged_at_all_three_locations": true,
+    "scope_and_budget_unchanged": true,
+    "existing_human_question_pending": true,
+    "question_repeated": false,
+    "new_observation_started": false,
+    "automatic_goal_continuation_not_treated_as_approval": true
+  },
+  "boundaries": {
+    "goal_status": "active",
+    "goal_complete": false,
+    "user_accepted_checkpoint": null,
+    "original_outcome": "physical_regression",
+    "training_base_V02_authorization_consumed": true,
+    "new_training_started": false,
+    "old_training_resumed": false,
+    "automatic_retry": false,
+    "automatic_extension": false,
+    "agents_started": false,
+    "automations_modified": false
+  },
+  "publication_receipt": "data/manifests/supermimic_q1_gait_goal_saved_target_pose_publication_20261030.json"
+}

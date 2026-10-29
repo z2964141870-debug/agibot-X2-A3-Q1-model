@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-30：[GAIT_GOAL01保存PD目标与根姿态静态几何](README_Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030.md)。45片/72090静态FK姿态/6测试，0积分推理优化；参考关节相同而保存根旋转使底座右脚高差优势消失，PPO残差目标脚底Z RMS约.73/1.13mm。目标非预测姿态，越界比例/初始对照保留；7工件10072795B三端SHA/两图目视。goal ACTIVE/采纳null，子步观测问题待答复，不追加训练。[清单](../data/manifests/supermimic_q1_gait_goal_saved_target_pose_20261030.json)。
+
 2026-10-30：[GAIT_GOAL01连续保存样本与左右换脚时序](README_Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030.md)。45片/7测试/0积分推理FK或动力学；PPO最终起走右脚三次无>10mm帧，>5mm亦无连续3样本，底座停走离地段增加却未按参考交替。14小工件1248986B三端SHA/两图目视，保留阈值敏感性与布局修正历史；片段非步数、力/姿态5ms时差保留。goal ACTIVE/采纳null，既有子步观测问题待答复，不追加训练。[清单](../data/manifests/supermimic_q1_gait_goal_saved_sample_runs_20261030.json)。
 
 2026-10-30：[GAIT_GOAL01逐5ms观测准备V02](README_Q1_GAIT_GOAL01_SUBSTEP_PREPARATION_20261030.md)。异步返回与失败重复计数两项CPU反例已修，17测试/真实imports通过，282源plan准备，0原生环境前向积分优化。原两线各两走/两条件/三重复，每线最多3180控制/12720子步，范围预算相同；旧plan保留历史。新物理观测范围问题仍待用户答复，未验证实际轨迹等价；原901.18秒/失败/采纳null/goal ACTIVE与监督缓存保持。[V02清单](../data/manifests/supermimic_q1_gait_goal_substep_preparation_v02_20261030.json)/[V02精确plan](../data/manifests/supermimic_q1_gait_goal_substep_observation_plan_v02_20261030.json)。

@@ -1,0 +1,63 @@
+{
+  "status": "SOLE01_IMPLEMENTED_LOCAL_GEOMETRY_PASSED_NATIVE_AUTH_PENDING",
+  "captured_utc": "2026-10-29T05:13:21Z",
+  "stage": "SOLE01",
+  "authorization": "Continue improving both the SuperMimic base and the PPO/residual adaptation; restore the existing Windows bridge using user-provided login information.",
+  "parent_commit_at_start": "eac4e3665754f394236c975672f342875f2e6c85",
+  "connection": {
+    "windows_master_already_present": true,
+    "windows_master_pid_at_check": 47236,
+    "windows_socket": "/tmp/yuanqi-windows-25386.sock",
+    "forward": "127.0.0.1:18873 -> 59.77.15.15:25386",
+    "windows_master_check": "PASS",
+    "bridge_restarted_or_replaced": false,
+    "container_batchmode": "PERMISSION_DENIED_PUBLICKEY_PASSWORD",
+    "windows_native_container_ssh": "STOPPED_AT_STRICT_HOST_KEY_CHECK_NO_AUTHENTICATION",
+    "container_interactive_authentication": "PERMISSION_DENIED_PUBLICKEY_PASSWORD",
+    "interactive_password_attempts_after_user_container_reply": 1,
+    "container_authenticated": false,
+    "runtime_identity_and_gpu_status": "UNKNOWN",
+    "container_password_recheck_requested": true,
+    "authentication_values_persisted": false,
+    "remote_restarted": false,
+    "old_endpoints_or_other_containers_accessed": false
+  },
+  "implementation": {
+    "directory": "script/supermimic_q1_sole",
+    "files": [
+      "sole_geometry.py",
+      "tensor_geometry.py",
+      "sole_reference.py",
+      "sole_adapter.py",
+      "check_contract.py",
+      "test_geometry.py"
+    ],
+    "shared_geometry": "Minimum active foot collision-mesh vertex or sphere surface world Z, read from actual compiled MJCF geometry in the ankle-roll body frame.",
+    "ppo_candidate": "Replace only the world-Z half of RF16 swing scoring: ankle-roll origin to collision sole; retain XY, phase, features, weights and inherited action/PPO interfaces.",
+    "base_candidate": "Geometry primitive prepared; exact base reward and native H32 closed-loop actor/critic direction validation pending runtime access.",
+    "frozen_historical_sources_modified": false,
+    "training_entrypoint_ready": false
+  },
+  "validation": {
+    "python_ast_files_passed": 6,
+    "local_geometry_tests_passed": 7,
+    "real_torch_tests_skipped": 3,
+    "skip_reason": "Mac Python has no Torch; no extra package installation performed.",
+    "contract_cli_help": "PASS",
+    "real_q1_cpu_geometry_reward_contract": "NOT_RUN_AUTH_PENDING",
+    "native_16_env_preflight": "NOT_RUN",
+    "native_4096_env_preflight": "NOT_RUN",
+    "native_h32_closed_loop_direction": "NOT_RUN",
+    "new_integration_steps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0,
+    "physical_or_training_success_claimed": false
+  },
+  "user_accepted_checkpoint": null,
+  "prior_jobs_resumed_or_retried": false,
+  "agents_started": false,
+  "goals_changed_or_completed": false,
+  "automations_modified": false,
+  "server_record_mirror": "PENDING_CONTAINER_AUTHENTICATION",
+  "next_action": "Verify current server identity/resources after root authentication; publish and mirror independent candidate sources, then CPU/Torch contracts and native H32 inspection before any16/4096 physical execution or training."
+}

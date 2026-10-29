@@ -90,3 +90,5 @@ python3 "$Q1_REPO/script/project_tools/analyze_q1_lift_windows.py" \
 代码、分析、候选及异常已存Mac，Git发布/独立40位远端核验和主根镜像按实际[发布收据](../data/manifests/supermimic_q1_dualtrack_publication_20261029.json)登记。25386小记录与5分析产物镜像待连接恢复，不能预称三端一致；权重和大NPZ仍SERVER_LOCAL_ONLY。
 
 入口恢复后，先核唯一根与既有环境/来源身份，再补原生H32方向验证和两个独立候选的契约实现，完成CPU/16/4096及冻结发布后才进入短试验。继续依据本次两线推进决定工作，不恢复旧RF15/RF16、不补夜间剩余预算；材料未变时原监督保持静默。[方向](README_SUPERMIMIC_Q1_FRAMEWORK_DIRECTION_20261029.md)/[夜间完整结果](README_Q1_OVERNIGHT_RESULTS_20261029.md)保留。
+
+2026-10-29后续[SOLE01](README_SUPERMIMIC_Q1_SOLE_CANDIDATE_20261029.md)已实现共享碰撞脚底几何和PPO摆脚Z独立候选，7本地几何测试通过，真实Torch/原生契约与底座H32待。Windows桥已存在并保留，但单次容器密码认证仍被拒；当前阻塞已从无本机转发变为容器认证，未新物理/推理/优化/训练。本页此前“候选尚未实现”与“本机无监听”是本阶段历史，最新状态以SOLE01为准。

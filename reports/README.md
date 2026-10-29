@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-29最新用户方向：[SuperMimic底座与PPO适配两手抓](README_SUPERMIMIC_Q1_FRAMEWORK_DIRECTION_20261029.md)。底座和后续PPO/残差补偿均为主动改进方向，用同底座比适配、同适配比底座，分别核底座效果、适配净增益与组合结果；不把PPO收窄成历史对照。本次仅澄清方向，新实验未启动、采纳null，原监督继续静默等审阅。
+2026-10-29用户要求继续两线推进：[脚底时序诊断及底座/PPO独立候选](README_SUPERMIMIC_Q1_DUALTRACK_DIAGNOSIS_20261029.md)已完成9测试和真实保存CSV分析，5产物128283字节，明确整片抬脚增高未必跟上参考时序；两条奖励候选与原生H32验证待，不宣称已训练改善。25386本机入口拒绝连接/远端UNKNOWN，服务器镜像待恢复；不重复探测/重启/新训练或agent，采纳null。原[两手抓方向](README_SUPERMIMIC_Q1_FRAMEWORK_DIRECTION_20261029.md)与ACTIVE监督保留。
 
 2026-10-29研究：[四项简报](research/2026-10-29/README.md)记录RSL-RL 5.5.2、独立SuperMimic修复、Rollback与动作Token。96请求均成功，12固定文本/两完整树静态核验；当前安装RSL为5.5.1、Q1批量整除，未将新修复认定为训练退化根因。main维护完整去重，Q1保留工程状态；本轮无物理/推理/优化或新假设。[检查](README_RESEARCH_CHECK_20261029.md)/[回执](../data/manifests/research_watch_sync_20261029.json)。
 

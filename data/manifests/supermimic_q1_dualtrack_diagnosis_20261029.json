@@ -1,0 +1,482 @@
+{
+  "status": "DUALTRACK_SAVED_WINDOW_DIAGNOSIS_COMPLETE_LIVE_VALIDATION_PENDING",
+  "captured_utc": "2026-10-29T04:18:45.453529+00:00",
+  "user_request": "可以，继续推进；在SuperMimic框架内同时改善底座与后续PPO或残差适配",
+  "report": "reports/README_SUPERMIMIC_Q1_DUALTRACK_DIAGNOSIS_20261029.md",
+  "source_parent_commit": "64ebb2e988f48b554afee8a073d6e223b29a54c6",
+  "baseline_label": "initial_static075",
+  "baseline_label_clarification": "Legacy label; actual static upper alpha is 0.50, no learned residual head.",
+  "analysis": {
+    "status": "SAVED_PAIRED_LIFT_WINDOWS_ANALYZED",
+    "captured_utc": "2026-10-29T04:07:27.732717+00:00",
+    "sources": [
+      {
+        "path": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF16_CONTACT_PHASE_SOMA300_E4096_MAX20M_20261029/review/sole_v01/fixed_actual_sole_timeseries.csv",
+        "bytes": 2193516,
+        "sha256": "2940b8910a96886448ddcff7d6cff695199ef2a94ec6a57a1f59a4aee66f4846"
+      },
+      {
+        "path": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_SAVED_SOLE_GEOMETRY_20261029/fixed_sole_timeseries.csv",
+        "bytes": 316691,
+        "sha256": "914b1278bbed317851800fcf8cf192caa655271541ffb855d6e41c910386ac2b"
+      },
+      {
+        "path": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_REFERENCE_SUPPORT_AUDIT_20261029/fixed_support_timeseries.csv",
+        "bytes": 112042,
+        "sha256": "3f3df4736f786738df85f0d340a15966b5062bc3d02f1543252653aef5858d46"
+      },
+      {
+        "path": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/BONES_RF16_CONTACT_PHASE_SOMA300_E4096_MAX20M_20261029/review/sole_v01/summary.json",
+        "bytes": 9978,
+        "sha256": "79f9db5944496f6f0bbd608b8b32f775a98c8a4353685e691c662bd7aa389511"
+      },
+      {
+        "path": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_SAVED_SOLE_GEOMETRY_20261029/summary.json",
+        "bytes": 2159,
+        "sha256": "a84493aa0e980efd9819985513ac6bb5cb5d06d6fbf6d8f0e4cbef30d166d1bf"
+      },
+      {
+        "path": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_REFERENCE_SUPPORT_AUDIT_20261029/summary.json",
+        "bytes": 84937,
+        "sha256": "640d04a3ca97b1b88c51a30df65df2b04c2dda65a7ba005d134bbcfc2d76640a"
+      }
+    ],
+    "common_scene": {
+      "bytes": 30871,
+      "sha256": "7ecf223aacd31cd1824575053bc66dbbc7301885366eb42b58908203d9b455fd",
+      "recorded_paths": [
+        "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027/q1_assets/scene.xml"
+      ]
+    },
+    "common_library": {
+      "bytes": 205726,
+      "sha256": "3c58014741f76d05ef6dc4b67e83e3e5fc5300b0dd8d23cf2c79a58c151a1d61",
+      "recorded_paths": [
+        "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF16_CONTACT_PHASE_SOMA300_E4096_MAX20M_20261029/evaluation/evaluation_library.json",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_ACTIVITY_BLEND_FULL330_REVIEW_20261029/evaluation_library.json"
+      ]
+    },
+    "tool": {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028/script/project_tools/analyze_q1_lift_windows.py",
+      "bytes": 12949,
+      "sha256": "b581559bfb2e7691c9305affe9f6e883ca7c0c9eed2a282954b69170ae249fb7"
+    },
+    "baseline_label": "initial_static075",
+    "rows": {
+      "phase_feet.csv": 288,
+      "reference_lift_windows.csv": 156,
+      "paired_support.csv": 36,
+      "paired_changes.csv": 216
+    },
+    "diagnostic_lift_threshold_m": 0.02,
+    "diagnostic_force_threshold_N": 5,
+    "new_integration_steps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0,
+    "user_accepted_checkpoint": null,
+    "physical_success_claimed": false,
+    "limits": [
+      "All stages/repeats share the shortest saved prefix per clip; failure suffixes are excluded.",
+      "Reference sole above20mm defines a geometric window, not a certified swing phase or step count.",
+      "Not-declared-stable includes neutral phase transitions; it is not an RF16 swing label.",
+      "Native force is the final 5ms substep; unloaded snapshots do not establish full-step load transfer.",
+      "Window boundary flags identify prefix edges; peaks/lag are restricted to that saved window.",
+      "Source receipts share library/scene identities; local CSV before/after SHA is recorded, not a new historical trace audit.",
+      "These are RF16 composition/head trajectories; they do not isolate the pure SuperMimic teacher's cause.",
+      "No new data acceptance gate, reward change or training effect is claimed."
+    ]
+  },
+  "all_common_prefixes_equal_full_saved_physical_durations": true,
+  "right_reference_lift_window_measurements": [
+    {
+      "label": "initial_static075",
+      "repeat": 0,
+      "clip": "walk_ff_start_180_R_002__A071",
+      "frames": 19,
+      "actual_p95_mm": 0.015168941622036478,
+      "reference_p95_mm": 30.25421303223089,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.8947368421052632
+    },
+    {
+      "label": "initial_static075",
+      "repeat": 0,
+      "clip": "walk_ff_stop_180_R_002__A095",
+      "frames": 18,
+      "actual_p95_mm": 2.098362927050234,
+      "reference_p95_mm": 26.207792651201373,
+      "near_floor5mm_fraction": 0.9444444444444444,
+      "force_above5N_final_substep_fraction": 0.7777777777777778
+    },
+    {
+      "label": "initial_static075",
+      "repeat": 1,
+      "clip": "walk_ff_start_180_R_002__A071",
+      "frames": 19,
+      "actual_p95_mm": 1.9715890097737478,
+      "reference_p95_mm": 30.25421303223089,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.5789473684210527
+    },
+    {
+      "label": "initial_static075",
+      "repeat": 1,
+      "clip": "walk_ff_stop_180_R_002__A095",
+      "frames": 18,
+      "actual_p95_mm": 2.283060978654674,
+      "reference_p95_mm": 26.207792651201373,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.6111111111111112
+    },
+    {
+      "label": "initial_static075",
+      "repeat": 2,
+      "clip": "walk_ff_start_180_R_002__A071",
+      "frames": 19,
+      "actual_p95_mm": 0.05407832746129776,
+      "reference_p95_mm": 30.25421303223089,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.8421052631578947
+    },
+    {
+      "label": "initial_static075",
+      "repeat": 2,
+      "clip": "walk_ff_stop_180_R_002__A095",
+      "frames": 18,
+      "actual_p95_mm": 1.5612523698033496,
+      "reference_p95_mm": 26.207792651201373,
+      "near_floor5mm_fraction": 0.9444444444444444,
+      "force_above5N_final_substep_fraction": 0.7777777777777778
+    },
+    {
+      "label": "stage_01",
+      "repeat": 0,
+      "clip": "walk_ff_start_180_R_002__A071",
+      "frames": 19,
+      "actual_p95_mm": 0.4734833019984895,
+      "reference_p95_mm": 30.25421303223089,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.7368421052631579
+    },
+    {
+      "label": "stage_01",
+      "repeat": 0,
+      "clip": "walk_ff_stop_180_R_002__A095",
+      "frames": 18,
+      "actual_p95_mm": 2.1805993116410747,
+      "reference_p95_mm": 26.207792651201373,
+      "near_floor5mm_fraction": 0.9444444444444444,
+      "force_above5N_final_substep_fraction": 0.7222222222222222
+    },
+    {
+      "label": "stage_01",
+      "repeat": 1,
+      "clip": "walk_ff_start_180_R_002__A071",
+      "frames": 19,
+      "actual_p95_mm": 1.9001924098275709,
+      "reference_p95_mm": 30.25421303223089,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.6842105263157895
+    },
+    {
+      "label": "stage_01",
+      "repeat": 1,
+      "clip": "walk_ff_stop_180_R_002__A095",
+      "frames": 18,
+      "actual_p95_mm": 3.891433616255541,
+      "reference_p95_mm": 26.207792651201373,
+      "near_floor5mm_fraction": 0.9444444444444444,
+      "force_above5N_final_substep_fraction": 0.6111111111111112
+    },
+    {
+      "label": "stage_01",
+      "repeat": 2,
+      "clip": "walk_ff_start_180_R_002__A071",
+      "frames": 19,
+      "actual_p95_mm": 2.1602816226273673,
+      "reference_p95_mm": 30.25421303223089,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.42105263157894735
+    },
+    {
+      "label": "stage_01",
+      "repeat": 2,
+      "clip": "walk_ff_stop_180_R_002__A095",
+      "frames": 18,
+      "actual_p95_mm": 1.394990150210371,
+      "reference_p95_mm": 26.207792651201373,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.8333333333333334
+    },
+    {
+      "label": "stage_02",
+      "repeat": 0,
+      "clip": "walk_ff_start_180_R_002__A071",
+      "frames": 19,
+      "actual_p95_mm": 0.07438025430111964,
+      "reference_p95_mm": 30.25421303223089,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.8947368421052632
+    },
+    {
+      "label": "stage_02",
+      "repeat": 0,
+      "clip": "walk_ff_stop_180_R_002__A095",
+      "frames": 18,
+      "actual_p95_mm": 0.8925634038821924,
+      "reference_p95_mm": 26.207792651201373,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.8333333333333334
+    },
+    {
+      "label": "stage_02",
+      "repeat": 1,
+      "clip": "walk_ff_start_180_R_002__A071",
+      "frames": 19,
+      "actual_p95_mm": 2.013109954944617,
+      "reference_p95_mm": 30.25421303223089,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.5789473684210527
+    },
+    {
+      "label": "stage_02",
+      "repeat": 1,
+      "clip": "walk_ff_stop_180_R_002__A095",
+      "frames": 18,
+      "actual_p95_mm": 0.4997889280083914,
+      "reference_p95_mm": 26.207792651201373,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.9444444444444444
+    },
+    {
+      "label": "stage_02",
+      "repeat": 2,
+      "clip": "walk_ff_start_180_R_002__A071",
+      "frames": 19,
+      "actual_p95_mm": 7.767697732943724,
+      "reference_p95_mm": 30.25421303223089,
+      "near_floor5mm_fraction": 0.8947368421052632,
+      "force_above5N_final_substep_fraction": 0.3684210526315789
+    },
+    {
+      "label": "stage_02",
+      "repeat": 2,
+      "clip": "walk_ff_stop_180_R_002__A095",
+      "frames": 18,
+      "actual_p95_mm": 3.6497837601565606,
+      "reference_p95_mm": 26.207792651201373,
+      "near_floor5mm_fraction": 0.9444444444444444,
+      "force_above5N_final_substep_fraction": 0.6666666666666666
+    },
+    {
+      "label": "stage_03",
+      "repeat": 0,
+      "clip": "walk_ff_start_180_R_002__A071",
+      "frames": 19,
+      "actual_p95_mm": 1.3373145180981467,
+      "reference_p95_mm": 30.25421303223089,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.5789473684210527
+    },
+    {
+      "label": "stage_03",
+      "repeat": 0,
+      "clip": "walk_ff_stop_180_R_002__A095",
+      "frames": 18,
+      "actual_p95_mm": 0.9934266993597465,
+      "reference_p95_mm": 26.207792651201373,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.7777777777777778
+    },
+    {
+      "label": "stage_03",
+      "repeat": 1,
+      "clip": "walk_ff_start_180_R_002__A071",
+      "frames": 19,
+      "actual_p95_mm": 2.191694497295025,
+      "reference_p95_mm": 30.25421303223089,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.7368421052631579
+    },
+    {
+      "label": "stage_03",
+      "repeat": 1,
+      "clip": "walk_ff_stop_180_R_002__A095",
+      "frames": 18,
+      "actual_p95_mm": -0.06716507658542616,
+      "reference_p95_mm": 26.207792651201373,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.9444444444444444
+    },
+    {
+      "label": "stage_03",
+      "repeat": 2,
+      "clip": "walk_ff_start_180_R_002__A071",
+      "frames": 19,
+      "actual_p95_mm": 4.4641905847854195,
+      "reference_p95_mm": 30.25421303223089,
+      "near_floor5mm_fraction": 0.9473684210526315,
+      "force_above5N_final_substep_fraction": 0.5263157894736842
+    },
+    {
+      "label": "stage_03",
+      "repeat": 2,
+      "clip": "walk_ff_stop_180_R_002__A095",
+      "frames": 18,
+      "actual_p95_mm": 1.5936872506092645,
+      "reference_p95_mm": 26.207792651201373,
+      "near_floor5mm_fraction": 1,
+      "force_above5N_final_substep_fraction": 0.7777777777777778
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_DUALTRACK_LIFT_WINDOWS_20261029/phase_feet.csv",
+      "bytes": 49935,
+      "sha256": "5d86cfb62b3e38f98532cbce4f954b51f9cd511dc46eb55e779958721f4b1a3b"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_DUALTRACK_LIFT_WINDOWS_20261029/reference_lift_windows.csv",
+      "bytes": 40348,
+      "sha256": "ee683caff011ef9017b51787b39573e38b98004e20d15856808ee4baebb040c3"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_DUALTRACK_LIFT_WINDOWS_20261029/paired_support.csv",
+      "bytes": 4210,
+      "sha256": "3c20e06de7f2e8d22094cafad542d77a8d8ac20e8f65e3fcbad1815f73b9c24f"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_DUALTRACK_LIFT_WINDOWS_20261029/paired_changes.csv",
+      "bytes": 29847,
+      "sha256": "045bccde1307e401a33867d6264fd7cc3b23992b26f57e0f193c00717f0b040b"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_DUALTRACK_LIFT_WINDOWS_20261029/summary.json",
+      "bytes": 3943,
+      "sha256": "468d3d9675fd66d55574e37d1197f6e2ddbbaeeffbfc71253f400099c684a767"
+    }
+  ],
+  "code": [
+    {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028/script/project_tools/analyze_q1_lift_windows.py",
+      "bytes": 12949,
+      "sha256": "b581559bfb2e7691c9305affe9f6e883ca7c0c9eed2a282954b69170ae249fb7"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028/script/project_tools/test_q1_lift_windows.py",
+      "bytes": 5642,
+      "sha256": "cd6220dad4180406df7d13ecc3b4ab877cfe723b90c59c124b2b0eff8dad65aa"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028/script/project_tools/plot_q1_lift_windows.py",
+      "bytes": 5871,
+      "sha256": "259c684c1594e5aa8a43603034295d9b8bd498b218d41035a3fca0a485f82e72"
+    }
+  ],
+  "validation": {
+    "analyzer_unittests": {
+      "passed": 9,
+      "command": "python3 -m unittest discover -s script/project_tools -p test_q1_lift_windows.py -v"
+    },
+    "actual_saved_evidence_analysis": "PASS",
+    "plot_cli_help": "PASS",
+    "plot_render": "NOT_RUN_MATPLOTLIB_UNAVAILABLE",
+    "plot_attempt_error": "ModuleNotFoundError: No module named matplotlib",
+    "system_and_bundled_python_plotting_runtime": "matplotlib unavailable; no packages installed",
+    "new_integration_steps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0
+  },
+  "source_findings": [
+    {
+      "file": "script/supermimic_q1_gait_comp/rewards.py",
+      "finding": "Swing height term uses ankle link world Z; no direct collision-sole height or native unloading term."
+    },
+    {
+      "file": "script/supermimic_q1_hp/build_runtime.py",
+      "finding": "Q1 base tracks both ankle-roll links among 14 tracked bodies."
+    },
+    {
+      "file": "script/supermimic_q1_balance/balance_adapter.py",
+      "finding": "Residual Gaussian std is fixed 0.1 before 0.15*tanh physical composition; action authority/exploration remains an independent untested hypothesis."
+    }
+  ],
+  "candidate_designs": [
+    {
+      "id": "BASE_SOLE_TARGET",
+      "track": "SuperMimic base",
+      "status": "DESIGN_NOT_IMPLEMENTED_OR_PHYSICALLY_VALIDATED",
+      "first_required_check": "Native H32 closed-loop imagined actor/critic direction versus real physics on matching states, using cloned parameter perturbations and restored normalization/state/RNG; not the old fixed-future H1/H4/H8 probe.",
+      "primary_candidate_variable": "Use collision-sole Z error for the two foot slots of the body-position tracking term, retaining foot XY and the other tracked bodies, other reward terms and total scale.",
+      "held_fixed": [
+        "original300/30 references",
+        "Q1 controller/PD/effort/action scale",
+        "world-model architecture",
+        "H32",
+        "sampler",
+        "actor/critic learning-rate recipe"
+      ],
+      "live_source_inspection_required": "The full HP MDP and learner runtime are server-only; exact formula and dimensions must be verified before any independent candidate patch.",
+      "no_optimizer_probe_does_not_prove_training_improvement": true
+    },
+    {
+      "id": "PPO_SOLE_TARGET",
+      "track": "PPO/residual adaptation",
+      "status": "DESIGN_NOT_IMPLEMENTED_OR_PHYSICALLY_VALIDATED",
+      "primary_candidate_variable": "Replace ankle-Z tracking with collision-sole-Z tracking in the existing swing score; keep XY branch, original contact-intention phase, reward weights and the same fixed teacher.",
+      "held_fixed": [
+        "static upper alpha0.50",
+        "14 lower/waist residual dimensions",
+        "0.15rad tanh bound",
+        "fixed Gaussian std0.1",
+        "PPO learning-rate/KL recipe",
+        "Q1 control",
+        "original300/30 references"
+      ],
+      "subsequent_separate_hypotheses": [
+        "normalized head inputs",
+        "residual authority and exploration",
+        "PPO update stability"
+      ],
+      "not_combined_with_activity_blend_without_evaluation": true
+    }
+  ],
+  "comparison_protocol": {
+    "base_change": "Compare B0 versus B1 with no adaptation.",
+    "adaptation_change": "Compare A0 versus A1 on exactly the same base.",
+    "composition": "Evaluate a measured base/adaptation pair; do not add separately measured improvements.",
+    "primary_physical_measures": [
+      "forward motion",
+      "time-aligned collision-sole clearance",
+      "load transfer and loaded slip",
+      "torso attitude",
+      "upper amplitude/timing",
+      "full-clip failures"
+    ],
+    "root_xy": "diagnostic",
+    "whole_clip_p95_alone_is_insufficient": true,
+    "independent_final_test": "Original30 validation clips have participated in search.",
+    "training_round_upper_bound_seconds": 3600,
+    "new_training_launch_recipe_ready": false,
+    "automatic_extensions_or_fault_retries": false,
+    "expired_overnight_authorization_reused": false
+  },
+  "connection": {
+    "state": "UNKNOWN",
+    "permitted_endpoint": "127.0.0.1:18873 via existing25386 bridge",
+    "attempt_result": "Connection refused",
+    "bounded_local_check": {
+      "listener": "ABSENT",
+      "control_socket": "ABSENT"
+    },
+    "repeated_connection_or_other_endpoint_probe": false,
+    "remote_restarted": false,
+    "server_mirror": "PENDING_CONNECTION_RESTORATION"
+  },
+  "user_accepted_checkpoint": null,
+  "automations_modified": false,
+  "agents_started_or_activated": false,
+  "goals_created_resumed_or_settled": false,
+  "whole_goal_marked_complete": false,
+  "publication": "Record actual push/independent full SHA and Mac mirror in subsequent publication receipt; server mirror pending."
+}

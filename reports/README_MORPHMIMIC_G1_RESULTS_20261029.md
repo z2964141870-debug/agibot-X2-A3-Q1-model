@@ -1,6 +1,6 @@
 # MorphMimic原版G1工程复现结果
 
-2026-10-29，北京时间。阶段MM05。训练、原版ONNX导出及三固定片初末回放已执行；43小工件5600206字节Mac/25386逐大小及SHA一致，六联系图及六格曲线已目视。[实测与交付收据](../data/manifests/morphmimic_g1_results_20261029.json)，最终Git发布另见publication收据。
+2026-10-29，北京时间。阶段MM05。训练、原版ONNX导出及三固定片初末回放已执行；43小工件5600206字节Mac/25386逐大小及SHA一致，六联系图及六格曲线已目视。[实测与交付收据](../data/manifests/morphmimic_g1_results_20261029.json)、[独立远端及三端发布回执](../data/manifests/morphmimic_g1_publication_20261029.json)。
 
 原版工程链路已跑通，稳定步态没有复现。600轮中前500轮仅更新世界模型，实际actor只有100次更新；初末三片均提前失败。不能把进程完成、有限loss、ONNX一致性或失败时间延后称为稳定走路，也不能将本结果作为Q1已改善的证据。
 

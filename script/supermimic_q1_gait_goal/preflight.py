@@ -33,12 +33,18 @@ def run(a):
     result = dict(status="INITIALIZING", line="base", envs=a.envs, optimizer_steps=0, started_utc=stamp())
     env = independent = None
     try:
+        save(a.output / "status.json", result)
         torch.set_num_threads(8)
         _, env, cfg = candidate_prepare(a, count=a.envs, base_candidate=True)
         result["physical_contract"] = check_contract(env)
+        result.update(status="NATIVE_CONTRACT_PASSED_INITIALIZING_LEARNER", updated_utc=stamp())
+        save(a.output / "status.json", result)
         learner = base_learner(env, cfg, a.output, a.checkpoint)
         with torch.no_grad():
             learner.collect(16)
+        result.update(status="REPLAY_COLLECTED_PREPARING_H32", updated_utc=stamp(),
+                      native_collection_transitions=17 * a.envs)
+        save(a.output / "status.json", result)
         original = {name: {key: value.clone() for key, value in getattr(learner, name).state_dict().items()}
                     for name in ("wm", "pi", "critic")}
         sample = learner._sample_valid_starts
@@ -57,6 +63,9 @@ def run(a):
             optimizer.step = lambda *values, _name=name, **options: steps.__setitem__(_name, steps[_name] + 1)
         learner.wm_update()
         learner.policy_update()
+        result.update(status="NATIVE_BACKWARD_COMPLETED_ZERO_STEP", updated_utc=stamp(),
+                      blocked_optimizer_calls=steps)
+        save(a.output / "status.json", result)
         for before, after in zip(captured["inputs"], captured["references"]):
             torch.testing.assert_close(before, after, atol=0, rtol=0)
         gradient_norms = {}
@@ -108,6 +117,7 @@ def run(a):
         if env is not None:
             env.close()
             env.backend.close()
+        save(a.output / "status.json", result)
         save(a.output / "receipt.json", result)
     print(result["status"])
 

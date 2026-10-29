@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 GAIT_GOAL01：[base16内存保护失败与已测准入修复](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。共享文件cache占主导、原30GiB守卫中止/OOM0/训练0；6工件399589B三端SHA，20离线测试。未重试，按本轮规则等待一次修复预检决定，目标ACTIVE。[收据](../data/manifests/supermimic_q1_gait_goal_base16_memory_20261029.json)。
+
 2026-10-29 GAIT_GOAL01：[warm-up首积分差异与双线候选预检准备](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)。160转移/0optimizer定位首物理超差，不称旧H32已解决；两线51姿态CPU/19测试通过，7工件152556字节三端SHA。准备同replay起点H32/16及4096零更新，首轮两线各<=1200实训秒、不扩时重试，训练仍0。[配方](../data/manifests/supermimic_q1_gait_goal_native_preparation_20261029.json)。
 
 2026-10-29 GAIT_GOAL01：[reset输入隔离](README_SUPERMIMIC_Q1_GAIT_GOAL_20261029.md)8前向/0积分正常完成，两次reset及同输入策略输出一致，3工件44563字节三端SHA；准备有界固定动作warm-up重放定位首偏离，未重跑H32方向/新训。[清单](../data/manifests/supermimic_q1_gait_goal_reset_inputs_20261029.json)。

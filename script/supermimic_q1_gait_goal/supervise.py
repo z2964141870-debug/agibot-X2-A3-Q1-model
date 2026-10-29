@@ -37,6 +37,21 @@ def active_training_seconds(clock, now):
     return total
 
 
+def memory_admission(cgroup=Path("/sys/fs/cgroup/memory")):
+    usage = int((cgroup / "memory.usage_in_bytes").read_text())
+    limit = int((cgroup / "memory.limit_in_bytes").read_text())
+    stats = {key: int(value) for key, value in
+             (line.split() for line in (cgroup / "memory.stat").read_text().splitlines())}
+    return dict(shared_bytes=usage, cgroup_limit_bytes=limit,
+                guard_maximum_bytes=30 * 1024**3,
+                headroom_to_guard_bytes=30 * 1024**3 - usage,
+                minimum_initial_headroom_bytes=6 * 1024**3,
+                cache_bytes=stats.get("total_cache"), rss_bytes=stats.get("total_rss"),
+                shmem_bytes=stats.get("total_shmem"),
+                admitted=usage <= 24 * 1024**3 and limit > 30 * 1024**3,
+                automatic_cache_eviction=False, guard_threshold_changed=False)
+
+
 class Budget(Q1Budget):
     def __init__(self, args):
         super().__init__(SimpleNamespace(output=args.output, runtime=args.runtime, mode="independent",
@@ -83,6 +98,10 @@ def execute(args):
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         if subprocess.check_output(["nvidia-smi", "--query-compute-apps=pid", "--format=csv,noheader"], text=True).strip():
             raise RuntimeError("Existing GPU computation; worker not started")
+        admission = memory_admission()
+        save(args.output / "memory_admission.json", admission)
+        if not admission["admitted"]:
+            raise RuntimeError("Insufficient initial memory reserve; no worker started, no retry")
         previous = json.loads(args.frozen_plan.read_text())["source"]
         unchanged(previous)
         own = [*HERE.glob("*.py"), *(HERE.parent / "supermimic_q1_sole").glob("*.py"),

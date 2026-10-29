@@ -1,5 +1,5 @@
 {
-  "status": "GAIT_GOAL01_WARMUP_DIVERGENCE_LOCALIZED_CANDIDATE_PREFLIGHT_PREPARED",
+  "status": "GAIT_GOAL01_BASE16_MEMORY_GUARD_STOPPED_REPAIR_TESTED_RETRY_DECISION_PENDING",
   "recorded_date_beijing": "2026-10-29",
   "stage": "GAIT_GOAL01",
   "goal": {
@@ -73,7 +73,7 @@
     "user_accepted_checkpoint": null
   },
   "preparation": {
-    "local_tests_passed": 19,
+    "local_tests_passed": 20,
     "local_tests_skipped": 0,
     "test_command": "python3 -m unittest discover -s script/supermimic_q1_gait_goal -p 'test_*.py' -v",
     "scale_grid_widths_m": [
@@ -88,10 +88,13 @@
     ],
     "saved_calibration": "COMPLETED_36_GROUPS_9612_SAVED_STATES",
     "nonintegrating_h32_initialization_isolation": "COMPLETED_RESET_AND_POLICY_INPUTS_MATCH_8_INFERENCE_0_INTEGRATION",
-    "new_physical_preflights": "NOT_RUN",
+    "new_physical_preflights": "BASE16_GUARD_STOPPED_MEMORY_NO_COMPLETION_RECEIPT_ALL_OTHERS_NOT_RUN",
     "new_training": "NOT_STARTED",
-    "new_integration_steps": 640,
-    "new_control_transitions": 160,
+    "new_integration_steps": null,
+    "new_control_transitions": null,
+    "known_warmup_integration_substeps": 640,
+    "known_warmup_control_transitions": 160,
+    "base16_actual_integrations": "UNKNOWN_NO_WORKER_COMPLETION_RECEIPT",
     "policy_inference_calls": 18,
     "warmup_strict_physical_equivalence": false,
     "new_candidate_cpu_contract": "PASSED_51_POSES_WITH_BOUNDED_EXACT_COLLISION_SUPPORT",
@@ -105,5 +108,5 @@
     "large_checkpoint_npz": "SERVER_LOCAL_ONLY",
     "environment_upgraded": false
   },
-  "next": "Publish and verify native_preparation, then run each line-specific16/4096 zero-update preflight once, with exact replay start/history and native H32 finite gradients. Cross-environment physical direction remains unestablished; no old H32 rerun or tolerance relaxation. Formal base/PPO training remain zero seconds."
+  "next": "Preserve base16 resource-guard failure and publish tested memory-admission/progress repair. Wait for requested explicit one-time repaired-base16 decision under the frozen no-automatic-failure-retry rule; initial shared usage must also be<=24GiB. No cache eviction, threshold increase, dependent4096/PPO physical preflight or formal training started. Goal remains active, not complete or paused."
 }

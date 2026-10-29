@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-29 SOLE02：[SuperMimic底座与PPO的抬脚奖励信号](README_SUPERMIMIC_Q1_REWARD_SIGNAL_20261029.md)。36组9612保存状态/6测试/0新积分推理优化；明确厘米级脚高信号弱、同坏轨迹改评分也会涨分，上肢仅占额外平滑约3%-6%。7小工件1896597字节及3代码三端SHA，底座/PPO分别校准；H32差异未定位、无新训练或候选采纳。[清单](../data/manifests/supermimic_q1_sole02_reward_signal_20261029.json)。
+
 2026-10-29 16:46：[hp_han自动登录与补镜已核](README_Q1_WINDOWS_SSH_ALIAS_20261029.md)。来源8a92a4d已push并独立核40位远端，17小文件331484字节Git/Mac/25386大小SHA一致，旧待同步为历史；认证只留本机，无新物理或训练。[发布收据](../data/manifests/q1_windows_ssh_hp_han_restore_publication_20261029.json)。
 
 2026-10-29 16:30：[hp_han自动密码登录与25386恢复](README_Q1_WINDOWS_SSH_ALIAS_20261029.md)。用户明确授权本机受限密码文件/ASKPASS，实际Windows及原容器身份/GPU已核，GPU无计算；本机认证文件不入Git或服务器。旧断线记录为历史，小记录补镜待大小SHA，无新物理或训练。[实测收据](../data/manifests/q1_windows_ssh_hp_han_autopassword_20261029.json)。

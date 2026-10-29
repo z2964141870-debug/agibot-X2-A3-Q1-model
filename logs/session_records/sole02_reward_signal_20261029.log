@@ -1,0 +1,32 @@
+SOLE02 saved-state reward signal analysis, 2026-10-29 Asia/Shanghai
+This is a compact transcript summary of actual tool results, not a training log.
+
+17:44:26 CPU saved-state audit: SAVED_REWARD_SIGNAL_REVIEW_READY
+fixed_rows=36 timeseries_rows=9612
+new_integration_steps=0 policy_inference_calls=0 optimizer_updates=0
+Source trace and native reward identities are in summary.json.
+
+Target attribution first invocation returned1 before output creation:
+AttributeError: 'str' object has no attribute 'read_bytes'
+The JSON path strings were converted to Path; a temporary receipt integration
+test now covers this boundary and refusal after an input trace changes.
+
+Final local unittest run:
+test_attribution_accepts_json_paths_and_detects_changed_trace ... ok
+test_cost_partition_retains_total_clamp_and_different_action_scales ... ok
+test_excludes_reset_suffix_and_copies_arrays ... ok
+test_foot_replacement_preserves_other_components ... ok
+test_rejects_duration_frame_and_alive_mismatch ... ok
+test_rejects_incompatible_or_invalid_errors ... ok
+Ran 6 tests in 0.014s; OK;0 skipped.
+
+17:58:52 CPU attribution: SAVED_TARGET_COST_ATTRIBUTION_READY;rows=36
+reconstruction_of_prior_total_costs_passed=true
+new_integration_steps=0 policy_inference_calls=0 optimizer_updates=0
+Subsequent command: PLOT_ONLY: original saved-state and attribution receipts unchanged
+Final PNG visually checked: all4 panels and external legends readable.
+
+7 small artifacts=1896597 bytes;3 final code files=28657 bytes.
+All10 identities=1925254 bytes matched between authoritative Git working tree,
+Mac project root and original25386 server.
+No new agents, goals, training, old training restart or supervision changes.

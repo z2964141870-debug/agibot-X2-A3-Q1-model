@@ -1,5 +1,7 @@
 # Q1 H32起点差异的离线诊断准备
 
+2026-10-29后续更新：Windows/25386连接及本页待镜像已恢复，见[恢复发布收据](../data/manifests/q1_windows_ssh_hp_han_restore_publication_20261029.json)。已读实际策略/归一化/重置源码，尚未证明随机性、BF16或后端是差异原因；安装MuJoCo-Warp3.11.0的types没有DeterminismType定义，仅是诊断接口边界。新增[SOLE02保存状态奖励分析](README_SUPERMIMIC_Q1_REWARD_SIGNAL_20261029.md)，没有第三次H32物理运行、PPO16/4096或新训练。下方UNKNOWN/待镜像为当时历史，不代表当前连接。
+
 记录日期：2026-10-29，北京时间15:56，16:04更新发布状态。阶段：SOLE01_INIT。状态：逐步只读记录实现及8项离线测试通过；代码1f224fd已独立核GitHub，10项308960字节Git/Mac逐大小SHA一致，服务器镜像待。原生验证未运行，连接UNKNOWN。底座与PPO两线继续，尚未查明起点差异的原因。
 
 ## 目标与范围

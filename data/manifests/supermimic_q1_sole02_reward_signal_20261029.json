@@ -1,0 +1,202 @@
+{
+  "status": "SOLE02_SAVED_REWARD_SIGNAL_AND_COST_ATTRIBUTION_READY",
+  "captured_utc": "2026-10-29 10:11:42 UTC",
+  "authorization": "User requested continued research in both SuperMimic base and PPO/residual adaptation; no new formal training budget used.",
+  "branch": "Q1",
+  "starting_commit": "5dcb60ad46592b23bcdf9c97cc3e84415781e24f",
+  "original_rf16_training_commit": "2c83b944059d4a007f0ca74fa54c0076fda3a357",
+  "report": "reports/README_SUPERMIMIC_Q1_REWARD_SIGNAL_20261029.md",
+  "cpu_scope": {
+    "original_trial": "/opt/data/private/ZHY/data/supermimic_for_q1/BONES_RF16_CONTACT_PHASE_SOMA300_E4096_MAX20M_20261029",
+    "output_relative_path": "data/supermimic_for_q1/Q1_SOLE02_SAVED_REWARD_SIGNAL_20261029",
+    "labels": [
+      "initial_static075",
+      "stage_01",
+      "stage_02",
+      "stage_03"
+    ],
+    "legacy_initial_label_actual_upper_alpha": 0.5,
+    "repeats": 3,
+    "fixed_clips": 3,
+    "fixed_rows": 36,
+    "timeseries_rows": 9612,
+    "walking_groups": 24,
+    "new_integration_steps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0,
+    "no_checkpoint_loaded_for_policy_inference": true
+  },
+  "walking_ranges": {
+    "reference_declared_swing_native_force_over5n_fraction": [
+      0.6043478260869565,
+      0.6935483870967742
+    ],
+    "reference_declared_swing_sole_below5mm_fraction": [
+      0.8225806451612904,
+      0.9153225806451613
+    ],
+    "base_perfect_sole_z_gain_mean": [
+      0.0000018941385694474372,
+      0.00000296019948965153
+    ],
+    "base_saved_action_rate_cost_mean": [
+      0.0009244862266726539,
+      0.0019423102423647266
+    ],
+    "base_equivalent12leg_target_delta_median_rad": [
+      0.002218756670976094,
+      0.0033811525207750725
+    ],
+    "ppo_perfect_sole_z_gain_on_swing_frames": [
+      0.000532585702600401,
+      0.0007400853273826369
+    ],
+    "ppo_saved_smooth_cost_mean": [
+      0.0008543696021661162,
+      0.0020080439280718565
+    ],
+    "ppo_same_state_ankle_to_sole_substitution_gain_mean": [
+      0.002489592685041231,
+      0.0031561121331703493
+    ],
+    "base_upper8_action_rate_cost_fraction": [
+      0.04892741071211443,
+      0.09514467774588706
+    ],
+    "ppo_upper8_smooth_cost_fraction": [
+      0.027225832749047878,
+      0.056767844097291076
+    ]
+  },
+  "reward_contract": {
+    "native_position_body_count": 14,
+    "native_position_std_m": 0.3,
+    "control_dt": 0.02,
+    "native_action_rate_weight": -0.1,
+    "ppo_swing_height_std_m": 0.04,
+    "ppo_smooth_weight": 0.002,
+    "ppo_smooth_total_cap": 0.05,
+    "residual_direct_output_joints": 14,
+    "upper_joints_without_direct_residual_output": 8,
+    "all36_group_totals_reconstructed": true,
+    "costs_exclude_first_transition": true
+  },
+  "validation": {
+    "unit_and_temp_receipt_tests_passed": 6,
+    "skipped": 0,
+    "python_files_compiled": 3,
+    "cli_help_passed": true,
+    "plot_visually_reviewed": true,
+    "first_attribution_error": "JSON path str passed to a Path-only identity helper, before output creation; explicit Path conversion and receipt-boundary regression test added.",
+    "saved_state_source_sha256": "b555044f0045cf5be4e7a56fcfad86555f35bc4f39015838402de7450928dc8d",
+    "attribution_source_at_execution_sha256": "aa75b911c9d44fd551cf9fcb730ae8c3f22fe175c1ffa85cd984d11bca6bb3c1",
+    "final_attribution_source_sha256": "cc95c3916ac57293fbb6b28c01e159b00677d21623e7ab59875795761bb7d531",
+    "attribution_to_final_source_changes": "Plot legend placement and axis range only; final plots regenerated from saved CSVs without rerunning state or attribution analysis."
+  },
+  "artifacts": {
+    "count": 7,
+    "bytes": 1896597,
+    "files": [
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_SOLE02_SAVED_REWARD_SIGNAL_20261029/fixed_reward_signal.csv",
+        "bytes": 12690,
+        "sha256": "93a5b6712947401f173ba9252b3900611badde273b4936b709808553e94adbc7"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_SOLE02_SAVED_REWARD_SIGNAL_20261029/fixed_reward_signal_timeseries.csv",
+        "bytes": 1581427,
+        "sha256": "0d6e611e46339dc16039375fdd41cd7a491768d4948c15defbb4329b24ed6474"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_SOLE02_SAVED_REWARD_SIGNAL_20261029/fixed_target_cost_attribution.csv",
+        "bytes": 6311,
+        "sha256": "8f89d1e1ff9bff87028705c35f3e9cae4b3cedd6c727a417f4bfe632d0286f27"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_SOLE02_SAVED_REWARD_SIGNAL_20261029/reward_signal_review.pdf",
+        "bytes": 25685,
+        "sha256": "29a70eb7babe67cce2062fa61a83b2787d4e56ad382fdb9a561c65aee41fbd16"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_SOLE02_SAVED_REWARD_SIGNAL_20261029/reward_signal_review.png",
+        "bytes": 166194,
+        "sha256": "d5e675d131b1d991f5b60f76fe55dcf4a87208bc572e4e013cccad9fdbfca7e4"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_SOLE02_SAVED_REWARD_SIGNAL_20261029/summary.json",
+        "bytes": 99601,
+        "sha256": "702ccae5ee9064fbed1c8e310176b7ae36f69ca0b4cec94a6f77f44d978474cf"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_SOLE02_SAVED_REWARD_SIGNAL_20261029/target_cost_attribution.json",
+        "bytes": 4689,
+        "sha256": "32ecd60774f99837aee9695a1ef151f4667e495f66a18703ffcf8340809821f3"
+      }
+    ],
+    "server_authoritative_mac_root_size_sha256_match": true
+  },
+  "final_code": {
+    "count": 3,
+    "bytes": 28657,
+    "files": [
+      {
+        "relative_path": "script/supermimic_q1_sole/reward_signal.py",
+        "bytes": 14850,
+        "sha256": "b555044f0045cf5be4e7a56fcfad86555f35bc4f39015838402de7450928dc8d"
+      },
+      {
+        "relative_path": "script/supermimic_q1_sole/target_cost_attribution.py",
+        "bytes": 8673,
+        "sha256": "cc95c3916ac57293fbb6b28c01e159b00677d21623e7ab59875795761bb7d531"
+      },
+      {
+        "relative_path": "script/supermimic_q1_sole/test_reward_signal.py",
+        "bytes": 5134,
+        "sha256": "c56f1c41f898df77c3738cbad774ce232abcccc265f99cf98847166defc2b5eb"
+      }
+    ],
+    "server_authoritative_mac_root_size_sha256_match": true
+  },
+  "h32_readiness": {
+    "installed_versions": {
+      "torch": "2.9.1+cu128",
+      "mujoco": "3.11.0",
+      "mujoco-warp": "3.11.0",
+      "warp-lang": "1.16.0"
+    },
+    "installed_warp_types": {
+      "path": "/opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/lib/python3.11/site-packages/mujoco_warp/_src/types.py",
+      "bytes": 110636,
+      "sha256": "712e76f495d3dedcb45acc7c248e226f56144b5fef5d9841d5e04d279fa7fd4f",
+      "has_DeterminismType_definition": false
+    },
+    "interface_observation_is_not_a_causal_finding": true,
+    "physical_h32_third_run": "NOT_RUN",
+    "ppo16": "NOT_RUN",
+    "ppo4096": "NOT_RUN",
+    "start_state_difference_cause": "UNRESOLVED",
+    "external_document_refetch": "TLS failure; no external claim used as a cause or version upgrade justification."
+  },
+  "limits": [
+    "Perfect sole-Z correction holds all other body errors fixed and is not a proven feasible action.",
+    "Absolute observed cost is not marginal correction cost; excludes other reward terms, critic and future effects.",
+    "Declared retarget phases are contact intentions, not native load truth; saved force is the last 5ms substep.",
+    "Initial saved traces lack historical SHA; paths, aligned frames and current before/after SHA checked. Stage traces match historical SHA.",
+    "Different stages are saved outcomes, not matched interventions or proof of new gait benefit.",
+    "Upper targets can change indirectly through future states even without a direct residual output.",
+    "No single cause of training failure isolated; no claim that Q1 morphology is the demonstrated cause of a G1/Q1 difference.",
+    "Checkpoint and large NPZ remain SERVER_LOCAL_ONLY; no cloud backup claim."
+  ],
+  "next_research": [
+    "Separately calibrate a phase-sensitive sole-Z signal in SuperMimic and the swing-height term in PPO, preserving matched controls.",
+    "Separate policy-input/output equivalence from backend reproducibility before proposing another bounded physical direction experiment."
+  ],
+  "user_accepted_checkpoint": null,
+  "formal_training_launched": false,
+  "existing_supervision_modified": false,
+  "other_tasks_modified": false,
+  "agents_started": false,
+  "goals_changed": false,
+  "overall_goal_marked_complete": false,
+  "publication": "Actual commit, independent remote SHA and record mirror evidence are recorded only after publishing."
+}

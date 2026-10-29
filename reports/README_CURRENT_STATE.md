@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-29 SOLE02：[底座/PPO抬脚奖励信号](README_SUPERMIMIC_Q1_REWARD_SIGNAL_20261029.md)已用原RF16四阶段/三重复/三固定片完成36组9612状态CPU分析，6测试通过，0新推理/积分/optimizer。两走声明摆脚60.4%-69.4%仍承重、82.3%-91.5%脚底<=5mm；原底座脚Z增分很弱，PPO4cm尺度对贴地宽容，单换定义可给同坏轨迹涨分。8上肢仅占额外平滑2.72%-5.68%，不支持主要被上肢成本淹没；绝对代价不能当边际成本或单因。7派生1896597字节/3代码三端大小SHA同。下一步分别校准底座足部信号与PPO摆脚项、继续H32起点定位；无第三次物理/PPO16或4096/新训练，原监督不变、采纳null。[清单](../data/manifests/supermimic_q1_sole02_reward_signal_20261029.json)。
+
 2026-10-29 16:46：[Windows自动登录、25386恢复及待镜像补齐](README_Q1_WINDOWS_SSH_ALIAS_20261029.md)。来源8a92a4d289e0b90048489b08be2434266da43bb3已经原Windows路由push并独立核远端，17小文件331484字节Git blob/权威工作树/Mac主根/25386大小SHA一致。旧UNKNOWN和待镜像记录为历史，认证文件仅本机。原H32失败后的未测项/采纳null/ACTIVE监督保持；未新增物理、推理、优化或训练。[核验收据](../data/manifests/q1_windows_ssh_hp_han_restore_publication_20261029.json)。
 
 2026-10-29 16:30：[hp_han自动密码及原25386连接已恢复](README_Q1_WINDOWS_SSH_ALIAS_20261029.md)。用户明确授权只在本机保存该Windows密码，600密码文件/700 ASKPASS及shell助手经~/.zshrc加载，内容和认证配置不入仓库或服务器。自动登录Windows返回DESKTOP-3C1DPPR，原双master60607/60674、boot/GPU/实体根已核，GPU15MiB/0%无计算；旧UNKNOWN与“不存该本机密码”为历史。小记录镜像待逐大小SHA核，未加H32/PPO/训练，原失败后停止规则/采纳null/监督保持。[授权与实测](../data/manifests/q1_windows_ssh_hp_han_autopassword_20261029.json)。

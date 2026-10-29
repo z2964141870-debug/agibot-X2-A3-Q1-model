@@ -1,5 +1,7 @@
 # Q1脚底奖励候选与连接恢复
 
+2026-10-29后续更新：连接和待镜像已补齐，见[恢复发布收据](../data/manifests/q1_windows_ssh_hp_han_restore_publication_20261029.json)。[SOLE02保存状态分析](README_SUPERMIMIC_Q1_REWARD_SIGNAL_20261029.md)进一步量化底座脚高弱信号、PPO评分宽容和代价关节分布；0新积分/推理/optimizer，未改旧runtime或检查点。H32起点原因仍未隔离，无第三次物理/PPO16或4096/新训练；以下UNKNOWN及待镜像为历史。
+
 2026-10-29 16:04补充：[H32逐步起点记录](README_SUPERMIMIC_Q1_H32_INIT_AUDIT_20261029.md)已实现并通过8项离线反例、3编译和CLI检查，原保护不放宽。代码1f224fd已push/独立核远端、10项308960字节Git/Mac SHA一致；[发布收据](../data/manifests/supermimic_q1_h32_init_local_publication_20261029.json)。单次Windows恢复在认证交互Broken pipe，未建桥或执行容器命令，远端仍UNKNOWN/服务器镜像待。没有第三次物理运行、PPO预检或正式训练，初始化原因尚未隔离。
 
 记录日期：2026-10-29，北京时间。阶段：SOLE01。状态：底座/PPO脚底候选CPU契约通过；H32原生V01/V02均被起点一致性保护拦截，物理方向仍未测得，依赖的PPO16/4096未执行。结果5记录已三端核验；随后桥断，发布旁收据与本次状态更新的服务器镜像待补，当前连接UNKNOWN。没有新正式训练。

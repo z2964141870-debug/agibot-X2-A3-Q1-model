@@ -1,6 +1,6 @@
 # Q1逐子步执行层观测准备
 
-记录日期：2026-10-30，北京时间。阶段：GAIT_GOAL01_SUBSTEP_PREPARATION。当前版本V02：两项失败计数已修正，17项CPU替身测试、真实模块导入及282来源只读清单准备完成；新物理观测尚未授权、尚未启动，普通自然步态目标未达。
+记录日期：2026-10-30，北京时间。阶段：GAIT_GOAL01_SUBSTEP_PREPARATION。当前版本V02：两项失败计数已修正，17项CPU替身测试、真实模块导入及282来源只读清单准备完成。用户现已回复“允许两条各一次”，执行与预算不变，见[独立授权与执行入口](README_Q1_GAIT_GOAL01_SUBSTEP_OBSERVATION_20261030.md)；当前尚未启动，普通自然步态目标未达。下文未授权表述保留准备当时历史，不覆盖这次新决定。
 
 ## V02计数修正与当前冻结清单
 
@@ -91,4 +91,4 @@ V01只读prepare历史输出data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_PREPAR
   --authorization-record USER_DECISION_RECORD --code-commit PUBLISHED_40_HEX
 ```
 
-另一条PPO线须使用line ppo和其已登记独立根，串行运行；该准备不增加原训练预算。当前两条各一次新零优化观测仍待用户明确决定，未启动观测或训练。goal保持ACTIVE、采纳null，原监督、缓存维护与其他任务保持，未启动/激活agent。
+另一条PPO线须使用line ppo和其已登记独立根，串行运行；该准备不增加原训练预算。当前两条各一次新零优化观测已获用户明确决定“允许两条各一次”，执行见独立观测README与授权记录；训练授权不增加。goal保持ACTIVE、采纳null，原监督、缓存维护与其他任务保持，未启动/激活agent。

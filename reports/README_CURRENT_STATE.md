@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-30：[GAIT_GOAL01双线逐子步观测已获授权](README_Q1_GAIT_GOAL01_SUBSTEP_OBSERVATION_20261030.md)。用户答“允许两条各一次”，只执行既有V02 plan SHA c94cf9489c317ea6a2ca431af898bc4f8704e698067c5e927d17a389b1234942/282源/86121B；17CPU测试修正计数而范围预算不变。底座initial/301秒与PPO同教师零/600秒head，每线12个单环境case、两走三重复，<=3180控制/12720子步/6360策略批、1800秒停止+10秒回收，串行/0optimizer/不重试、不新训。09:45只读核原boot/GPU、15MiB空闲/OOM0/内存准入充足、两个新根均不存在；当前授权待发布核验，尚未启动，之后补现场收据。原901.178392秒/physical_regression/训练V02授权已用/采纳null/goal ACTIVE及监督缓存等保持。此条覆盖下方历史“新观测待答复”。[授权](../data/manifests/supermimic_q1_gait_goal_substep_authorization_20261030.json)。
+
 2026-10-30：[GAIT_GOAL01低力贴地时的关节指令/响应](README_Q1_GAIT_GOAL01_SAVED_LOW_FORCE_CONTROL_20261030.md)。45片12015状态/1620关节540脚底2157低力关节样本行、最终8CPU测试；0积分推理FK动力学优化，8工件2952609B三端SHA/两图目视。PPO最终起走14/14/16低力近地样本，髋膝踝20ms运动RMS约.051-.087rad而脚底均值.94-1.29mm，残差约.003-.006rad；排除完全不动的简化描述，不据此判PD/接触/学习单因或放大残差。原清单格式CPU入口错误与修复日志保留。指令/力/后态分别t/t+15ms/t+20ms，目标非可达下一姿态；原901.178392秒/physical_regression/采纳null/goal ACTIVE及监督缓存等保持，既有子步问题待答复与282源plan不改，不新物理推理训练恢复重试扩时/agent。[清单](../data/manifests/supermimic_q1_gait_goal_saved_low_force_control_20261030.json)，发布以publication旁收据为准。
 
 2026-10-30研究：[检查记录](README_RESEARCH_CHECK_20261030.md)。76次请求成功，16仓库及两发行无实质变化；LocoManiLab v4正文文本未变，仅署名/版本信息更新。RSS为空、列表停在10/28，保留公告覆盖缺口；不发重复简报、不新增假设或实验，完整去重由main维护。

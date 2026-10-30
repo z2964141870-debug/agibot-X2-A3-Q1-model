@@ -1,0 +1,108 @@
+{
+  "stage": "GAIT_GOAL01_SUBSTEP_OBSERVATION_AUTHORIZATION_20261030",
+  "status": "USER_AUTHORIZED_ZERO_OPTIMIZER_SUBSTEP_OBSERVATION",
+  "recorded_utc": "2026-10-30T01:45:08+00:00",
+  "user_reply": "允许两条各一次",
+  "question": "两轮训练已按physical_regression结束，是否允许底座和PPO各一次零优化观测，每线最多3180控制步、12720子步，1800秒停止阈值加10秒回收，不重试、不训练？",
+  "plan_relative_path": "data/manifests/supermimic_q1_gait_goal_substep_observation_plan_v02_20261030.json",
+  "plan_bytes": 86121,
+  "plan_sha256": "c94cf9489c317ea6a2ca431af898bc4f8704e698067c5e927d17a389b1234942",
+  "plan_frozen_inputs": 282,
+  "preparation_version": "V02",
+  "preparation_cpu_tests_passed": 17,
+  "earlier_question_tests_count": 13,
+  "counter_fixes_preserve_scope_and_budgets": true,
+  "allowed_lines": [
+    "base",
+    "ppo"
+  ],
+  "maximum_launches_per_line": 1,
+  "execution_order": [
+    "base",
+    "ppo"
+  ],
+  "maximum_worlds_at_once": 1,
+  "cases_per_line": 12,
+  "conditions": {
+    "base": [
+      "initial",
+      "trained301"
+    ],
+    "ppo": [
+      "zero_head",
+      "trained600"
+    ]
+  },
+  "fixed_walks": {
+    "walk_ff_stop_180_R_002__A095": 320,
+    "walk_ff_start_180_R_002__A071": 210
+  },
+  "repeats": 3,
+  "seeds": [
+    32000,
+    32001,
+    32002
+  ],
+  "maximum_controls_per_line": 3180,
+  "maximum_physical_substeps_per_line": 12720,
+  "maximum_policy_batches_per_line": 6360,
+  "maximum_controls_total": 6360,
+  "maximum_physical_substeps_total": 25440,
+  "maximum_whole_wall_seconds_per_line": 1800,
+  "grace_seconds": 10,
+  "control_dt_s": 0.02,
+  "physics_dt_s": 0.005,
+  "optimizer_updates": 0,
+  "new_training_seconds": 0,
+  "automatic_retry": false,
+  "automatic_extension": false,
+  "automatic_training_or_adoption": false,
+  "output_roots": {
+    "base": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_BASE_20261030",
+    "ppo": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_PPO_20261030"
+  },
+  "source_base_commit": "e7600c066aceb23ea5e642d0e00c0f53b911980c",
+  "platform_snapshot": {
+    "utc": "2026-10-30T01:45:08.404522+00:00",
+    "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15 MiB, 0 %, 25",
+    "compute": "",
+    "memory_bytes": 5181386752,
+    "memory_limit_bytes": 34292629504,
+    "cache_bytes": 4314021888,
+    "rss_bytes": 20418560,
+    "oom": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+    "plan": {
+      "bytes": 86121,
+      "sha256": "c94cf9489c317ea6a2ca431af898bc4f8704e698067c5e927d17a389b1234942"
+    },
+    "roots_exist": {
+      "BASE": false,
+      "PPO": false
+    }
+  },
+  "execution_status_at_record_creation": "NOT_STARTED",
+  "historical_training_seconds": {
+    "base": 301.1074845249823,
+    "ppo": 600.0709074319457,
+    "total": 901.178391956928
+  },
+  "historical_outcomes_preserved": "physical_regression",
+  "training_base_V02_authorization_consumed": true,
+  "large_NPZ_and_weights": "SERVER_LOCAL_ONLY",
+  "goal_status": "active",
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "agents_started": false,
+  "authentication_or_environment_modified": false,
+  "automations_modified": false,
+  "review_report": "reports/README_Q1_GAIT_GOAL01_SUBSTEP_OBSERVATION_20261030.md",
+  "publication_receipt": "data/manifests/supermimic_q1_gait_goal_substep_authorization_publication_20261030.json",
+  "limitations": [
+    "Fresh one-world measurements do not replay historical330-world trajectories.",
+    "Synthetic hook tests did not verify physical trajectory equivalence.",
+    "Initialization/reset/graph-capture forward is distinct from controlled transitions.",
+    "Failed observations retain partial and uncertain counts; no retry under this authorization.",
+    "No training or checkpoint adoption is authorized by this observation decision."
+  ]
+}

@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-30用户更正“别天天用转发啊，用原始的连接方式”：以后source ~/.zshrc后ssh -tt hp_han登录Windows，再在其内原生ssh -p25386 root@59.77.15.15；不创建/依赖18873、-L/-R/-D或旧控制socket，不用本机无监听判断服务器。Windows缺ED25519记录已用精确既有25386公钥KnownHostsCommand进程pin严格校验，PowerShell须绝对路径，未改持久认证配置/保存容器密码。已进interactive40173/原boot与GPU根一致/GPU15MiB无计算；18:11:07补齐36daafb的7记录366473B三端大小SHA，旧UNKNOWN/待镜像仅历史。原q1缓存维护已工具更新并读回ACTIVE每30分钟/同聊天，仅连接变更，其他监督任务不动。只读连接/小记录交付，0新物理推理训练/不重做观测分析/无agent，原901.178392秒/physical_regression/采纳null/goal ACTIVE保持。入口README_Q1_NATIVE_WINDOWS_SSH_20261030及q1_native_windows_connection清单，发布看旁收据。
+
 - 2026-10-30子步最终小记录镜像遇断线：分析提交e69fb305ee650a101f17a57fd63fe757dd15a099独立远端已核/6记录356430B Git-Mac大小SHA同；14观测与9分析工件三端已在断线前核完。原双master消失/18873拒绝后，按用户指示hp_han曾返回Windows主机名，随后对端reset/Broken pipe、25386登录随转发中断，未执行容器命令/不证明密码错；一次有界核查后不重复，当前远端UNKNOWN。最终6记录及新连接状态/publication旁收据服务器镜像待，只补小记录不重做观测/CPU分析/训练，原physical_regression/采纳null/goal ACTIVE与监督缓存等保持，认证环境/agent未改。入口同SUBSTEP_OBSERVATION及publication收据，最后GPU/OOM仅10:43历史。
 
 - 2026-10-30两线子步保存分析完成：24片/25440子步、144足/1440关节/3480片段行、8CPU测试，分析0新增积分推理FK动力学优化；9工件6069077B三端SHA/两图目视，74源读取前后身份相同、PD重建差<=2.23e-6Nm。PPO起走右脚低力样本81.5%/98.1%/92.1%仍<=5mm，贴地踝近限0/最大7.24Nm<22；>=12低力高10mm片段均0，不支持持续限矩独因。底座单环境右脚p95约11.64/14.09mm却左脚降低/起走倾斜+9%-16%，非历史330环境重放/自然步态达标。两次观测授权已用，不新物理训练恢复重试扩时/agent；原901.178392秒/physical_regression/采纳null/goal ACTIVE及监督缓存等保持。入口同SUBSTEP_OBSERVATION和结果清单，发布看publication旁收据；下方分析待执行为历史。

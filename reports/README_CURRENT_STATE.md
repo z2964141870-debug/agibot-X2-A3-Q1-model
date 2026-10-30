@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-30：[已改用原始Windows两段式SSH](README_Q1_NATIVE_WINDOWS_SSH_20261030.md)。按用户新指示先ssh hp_han，再在Windows内原生ssh -p25386 root@59.77.15.15；不创建/依赖18873/socket转发。严格进程公钥pin核同一25386，原boot/根/GPU一致/15MiB无计算，持久认证配置未改。18:11:07补齐36daafb的7小记录366473B三端大小SHA；旧UNKNOWN和待镜像已解除。q1维护已工具更新/读回ACTIVE每30分钟，仅连接指令变更，其他任务不动。原训练失败/901.178392秒/采纳null/goal ACTIVE保持，不新物理推理训练/重做观测分析/agent。[清单](../data/manifests/q1_native_windows_connection_20261030.json)，新连接说明发布看旁收据；下方断线为历史。
+
 2026-10-30：[子步分析已发布，最终记录服务器镜像待](README_Q1_GAIT_GOAL01_SUBSTEP_OBSERVATION_20261030.md)。e69fb305ee650a101f17a57fd63fe757dd15a099已独立核远端/6小记录356430B Git-Mac同SHA；14观测与9分析工件三端已在断线前完成。hp_han一度返回Windows主机名，后对端reset/Broken pipe令25386登录中断；一次有界核查后远端UNKNOWN，不判密码或服务器故障、不继续探测。只待连通后补最新小记录/旁收据的25386大小SHA，不重跑观测或分析/新训练；goal ACTIVE/采纳null/原失败及监督缓存等保持。[发布与待镜清单](../data/manifests/supermimic_q1_gait_goal_substep_observation_publication_20261030.json)。下方在线资源仅历史。
 
 2026-10-30：[GAIT_GOAL01两线子步观测与保存分析完成](README_Q1_GAIT_GOAL01_SUBSTEP_OBSERVATION_20261030.md)。各一次观测合计6360控制/25440子步/7950策略批/0optimizer，24片完整、两guard回收0/原进程退出/GPU释放/OOM0。后续CPU分析0新物理推理优化，144足/1440关节/3480片段行、8测试/74源前后同SHA；9派生产物6069077B三端SHA/两图目视。PPO起走右脚低力样本81.5%-98.1%仍<=5mm，贴地踝近限0、最大7.24Nm<22，>=12低力高10mm片段0/0/0；不支持持续限矩独因。底座单环境右脚p95约11.64/14.09mm但左脚降低、起走倾斜+9%-16%，非历史330环境重放/自然步态达标。原训练901.178392秒/physical_regression/采纳null/goal ACTIVE、监督缓存等保持；观测授权均已用，不新物理训练恢复重试扩时/agent。[清单](../data/manifests/supermimic_q1_gait_goal_substep_observation_results_20261030.json)，发布看publication旁收据。下方未启动/分析待执行均历史。

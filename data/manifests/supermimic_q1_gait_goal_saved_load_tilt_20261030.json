@@ -1,0 +1,1246 @@
+{
+  "stage": "GAIT_GOAL01_SAVED_LOAD_TILT_20261030",
+  "status": "SAVED_CSV_ANALYSIS_DELIVERED_PHYSICAL_TARGET_NOT_ACHIEVED",
+  "captured_utc": "2026-10-30T00:55:05.892340+00:00",
+  "previous_goal_turn_classification": "progress",
+  "current_goal_turn_classification": "progress",
+  "review_report": "reports/README_Q1_GAIT_GOAL01_SAVED_LOAD_TILT_20261030.md",
+  "source_base_commit": "1fac4e26f831dfdbdaa7d446df68aa28c3071328",
+  "code": [
+    {
+      "relative_path": "script/project_tools/analyze_q1_saved_load_tilt.py",
+      "bytes": 16167,
+      "sha256": "2de9365d787fa57784c0aa58f856f8d94ca1a7758fe8cf14bbdf0fbc6930fa02"
+    },
+    {
+      "relative_path": "script/project_tools/test_q1_saved_load_tilt.py",
+      "bytes": 6354,
+      "sha256": "de46caa112dee1d5b261fe62abdf8d911c6fd47470e6ce564bf54ec43ca3c8bb"
+    }
+  ],
+  "logs": [
+    {
+      "relative_path": "logs/session_records/q1_gait_goal_saved_load_tilt_tests_20261030.log",
+      "bytes": 1059,
+      "sha256": "60e321d6cfe4025fdf8df35b9923fd04add99578e1c2e85fbb7884ef4be95657"
+    },
+    {
+      "relative_path": "logs/session_records/q1_gait_goal_saved_load_tilt_20261030.log",
+      "bytes": 123,
+      "sha256": "8e291dee07681ad940424c8b9986979e29c2c80dd58f537145b5e6d8981497bc"
+    }
+  ],
+  "tests": {
+    "command": "python3 -m unittest discover -s script/project_tools -p 'test_q1_saved_load_tilt.py' -v",
+    "passed": 9,
+    "failed": 0,
+    "warnings": 0,
+    "already_completed_tests_not_repeated": true
+  },
+  "execution": {
+    "command": "env CUDA_VISIBLE_DEVICES=-1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 timeout --signal=TERM --kill-after=10s 120s /opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python /opt/data/private/ZHY/script/supermimic_q1_hp/activate.py -u /opt/data/private/ZHY/script/project_tools/analyze_q1_saved_load_tilt.py --phase-manifest /opt/data/private/ZHY/data/manifests/supermimic_q1_gait_goal_saved_phase_20261030.json --phase /opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030 --root-manifest /opt/data/private/ZHY/data/manifests/supermimic_q1_gait_goal_saved_root_projection_20261030.json --root /opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030 --output /opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOAD_TILT_20261030 --source-base-commit 1fac4e26f831dfdbdaa7d446df68aa28c3071328",
+    "exit_code": 0,
+    "wall_timeout_seconds": 120,
+    "execution_count": 1,
+    "output_status": "SAVED_LOAD_TILT_READY",
+    "inputs_verified_before_and_after": true,
+    "published_input_csv_and_summary_size_sha256_verified": true
+  },
+  "scope": {
+    "saved_clips": 45,
+    "saved_states": 12015,
+    "bilateral_foot_samples": 24030,
+    "condition_rows": 810,
+    "all_threshold_shift_low_run_rows": 2538,
+    "original_NPZ_reread": false,
+    "new_native_control_environments": 0,
+    "new_physical_integration_steps": 0,
+    "new_kinematics_calls": 0,
+    "new_contact_or_dynamics_solves": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0,
+    "new_training_seconds": 0
+  },
+  "definitions": {
+    "reference_window": "Original declared swing AND original reference whole-collision-sole world Z >=10mm, anchored at the force-sample index even when pairing is shifted.",
+    "force_measurement": "Sum of absolute world-Z foot-ground contact force components from the last solved substep; not body-weight share, signed net vertical force, or integrated impulse.",
+    "force_source": "script/supermimic_q1_ppo/evaluation.py NativeContacts.install",
+    "force_thresholds_N": [
+      2.5,
+      5,
+      10
+    ],
+    "default_force_threshold_N": 5,
+    "low_other_loaded": "Foot force <=threshold AND opposite foot force >threshold, within original reference window.",
+    "loaded": "This foot force >threshold, regardless of opposite foot.",
+    "both_low": "Both foot forces <=threshold within original reference window.",
+    "near_ground": "Paired post-step sole Z <=5mm.",
+    "raised": "Paired post-step sole Z >10mm.",
+    "runs": "Break on any missing low/opposite-loaded/window condition; no gap filling. Runs are descriptive saved-sample sequences, not steps.",
+    "minimum_low_run_samples": 3,
+    "three_sample_endpoint_span_seconds": 0.04,
+    "near5_fraction_denominator": "All low-force/opposite-loaded reference-window samples, not only runs with >=3 samples.",
+    "low_run_with_high_run": "One low-force run contains >=3 consecutive paired >10mm sole samples.",
+    "aggregation": "All arrays preserve repeats0/1/2; no pooled counts replace original per-repeat physical gates."
+  },
+  "sample_clocks": {
+    "control_period_seconds": 0.02,
+    "pre_root_after_control_start_seconds": 0,
+    "last_solve_force_after_control_start_seconds": 0.015,
+    "post_sole_after_control_start_seconds": 0.02,
+    "pose_shift_samples": [
+      -1,
+      0,
+      1
+    ],
+    "pose_minus_force_seconds": [
+      -0.015,
+      0.005,
+      0.025
+    ],
+    "root_minus_force_seconds": [
+      -0.035,
+      -0.015,
+      0.005
+    ],
+    "window_does_not_shift_with_paired_geometry": true,
+    "continuous_unloading_not_proven": true
+  },
+  "findings": {
+    "default_right_walks": {
+      "base_stop": {
+        "initial": {
+          "reference_frames": [
+            44,
+            44,
+            44
+          ],
+          "loaded_frames": [
+            31,
+            33,
+            29
+          ],
+          "both_low_frames": [
+            0,
+            0,
+            0
+          ],
+          "low_other_loaded_frames": [
+            13,
+            11,
+            15
+          ],
+          "low_runs_ge3": [
+            3,
+            3,
+            2
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            0,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            4,
+            4,
+            6
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.8461538461538461,
+            0.8181818181818182,
+            0.8666666666666667
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            1.996666873948637,
+            2.722723785149041,
+            1.591236170587256
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            -0.043692596841035,
+            -1.4065742449347933,
+            1.5753808951918278
+          ]
+        },
+        "final": {
+          "reference_frames": [
+            44,
+            44,
+            44
+          ],
+          "loaded_frames": [
+            27,
+            25,
+            27
+          ],
+          "both_low_frames": [
+            0,
+            1,
+            2
+          ],
+          "low_other_loaded_frames": [
+            17,
+            18,
+            15
+          ],
+          "low_runs_ge3": [
+            3,
+            3,
+            1
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            1,
+            1,
+            1
+          ],
+          "longest_low_run_samples": [
+            7,
+            6,
+            7
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.5882352941176471,
+            0.6111111111111112,
+            0.5333333333333333
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            5.042909658690664,
+            4.335099037631308,
+            5.052820328425229
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            4.132146333078295,
+            4.038050811316014,
+            3.500455860697451
+          ]
+        }
+      },
+      "base_start": {
+        "initial": {
+          "reference_frames": [
+            51,
+            51,
+            51
+          ],
+          "loaded_frames": [
+            32,
+            31,
+            33
+          ],
+          "both_low_frames": [
+            0,
+            0,
+            0
+          ],
+          "low_other_loaded_frames": [
+            19,
+            20,
+            18
+          ],
+          "low_runs_ge3": [
+            4,
+            4,
+            4
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            1,
+            1,
+            0
+          ],
+          "longest_low_run_samples": [
+            5,
+            6,
+            5
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.6842105263157895,
+            0.75,
+            0.7777777777777778
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            2.356314263771472,
+            3.0824828488274636,
+            3.6046239097140598
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            0.5449032172231077,
+            0.8977749356675409,
+            1.6554545334373265
+          ]
+        },
+        "final": {
+          "reference_frames": [
+            51,
+            51,
+            51
+          ],
+          "loaded_frames": [
+            38,
+            37,
+            40
+          ],
+          "both_low_frames": [
+            1,
+            0,
+            0
+          ],
+          "low_other_loaded_frames": [
+            12,
+            14,
+            11
+          ],
+          "low_runs_ge3": [
+            2,
+            2,
+            1
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            0,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            3,
+            5,
+            3
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.9166666666666666,
+            0.7857142857142857,
+            0.9090909090909091
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            5.460536401494428,
+            5.28027520384993,
+            5.633208777699544
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            3.32112778458813,
+            2.8860425739563103,
+            3.9604574234749492
+          ]
+        }
+      },
+      "ppo_stop": {
+        "initial": {
+          "reference_frames": [
+            44,
+            44,
+            44
+          ],
+          "loaded_frames": [
+            27,
+            31,
+            29
+          ],
+          "both_low_frames": [
+            0,
+            0,
+            0
+          ],
+          "low_other_loaded_frames": [
+            17,
+            13,
+            15
+          ],
+          "low_runs_ge3": [
+            3,
+            2,
+            3
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            0,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            5,
+            5,
+            5
+          ],
+          "low_other_loaded_near5_fraction": [
+            1,
+            0.8461538461538461,
+            0.8666666666666667
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            1.8071784881945199,
+            1.6924163408315829,
+            1.6321284194834094
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            1.261804588479628,
+            0.9445743227346374,
+            1.0520931773589166
+          ]
+        },
+        "final": {
+          "reference_frames": [
+            44,
+            44,
+            44
+          ],
+          "loaded_frames": [
+            31,
+            26,
+            31
+          ],
+          "both_low_frames": [
+            0,
+            1,
+            0
+          ],
+          "low_other_loaded_frames": [
+            13,
+            17,
+            13
+          ],
+          "low_runs_ge3": [
+            2,
+            3,
+            2
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            0,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            4,
+            6,
+            5
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.9230769230769231,
+            0.8823529411764706,
+            1
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            1.9455012393113713,
+            1.8391004394125123,
+            2.305706069625619
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            1.1100646887550625,
+            1.4972616444097269,
+            1.174992304579122
+          ]
+        }
+      },
+      "ppo_start": {
+        "initial": {
+          "reference_frames": [
+            51,
+            51,
+            51
+          ],
+          "loaded_frames": [
+            30,
+            33,
+            32
+          ],
+          "both_low_frames": [
+            0,
+            0,
+            1
+          ],
+          "low_other_loaded_frames": [
+            21,
+            18,
+            18
+          ],
+          "low_runs_ge3": [
+            5,
+            4,
+            4
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            1,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            5,
+            4,
+            4
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.6190476190476191,
+            0.9444444444444444,
+            0.8888888888888888
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            2.535688202130062,
+            2.359388684105168,
+            2.377617090859356
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            1.8947094655551964,
+            1.2265740393419131,
+            0.8877131824501447
+          ]
+        },
+        "final": {
+          "reference_frames": [
+            51,
+            51,
+            51
+          ],
+          "loaded_frames": [
+            35,
+            35,
+            33
+          ],
+          "both_low_frames": [
+            0,
+            1,
+            0
+          ],
+          "low_other_loaded_frames": [
+            16,
+            15,
+            18
+          ],
+          "low_runs_ge3": [
+            3,
+            3,
+            4
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            0,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            5,
+            4,
+            4
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.875,
+            0.9333333333333333,
+            0.8888888888888888
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            3.633965247157285,
+            3.373364412461291,
+            3.4784549287519733
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            0.8619576033434811,
+            2.597627964267277,
+            3.1287450191060597
+          ]
+        }
+      }
+    },
+    "final_right_sensitivity_ranges": {
+      "base_stop": {
+        "minmax_low_runs_ge3": [
+          1,
+          3
+        ],
+        "minmax_low_near5_fraction": [
+          0.5333333333333333,
+          0.7222222222222222
+        ],
+        "minmax_low_runs_with_high_ge3": [
+          1,
+          1
+        ],
+        "each_condition_retains_low_run_ge3": true
+      },
+      "base_start": {
+        "minmax_low_runs_ge3": [
+          1,
+          2
+        ],
+        "minmax_low_near5_fraction": [
+          0.7857142857142857,
+          1
+        ],
+        "minmax_low_runs_with_high_ge3": [
+          0,
+          0
+        ],
+        "each_condition_retains_low_run_ge3": true
+      },
+      "ppo_stop": {
+        "minmax_low_runs_ge3": [
+          2,
+          3
+        ],
+        "minmax_low_near5_fraction": [
+          0.8235294117647058,
+          1
+        ],
+        "minmax_low_runs_with_high_ge3": [
+          0,
+          0
+        ],
+        "each_condition_retains_low_run_ge3": true
+      },
+      "ppo_start": {
+        "minmax_low_runs_ge3": [
+          3,
+          4
+        ],
+        "minmax_low_near5_fraction": [
+          0.875,
+          1
+        ],
+        "minmax_low_runs_with_high_ge3": [
+          0,
+          0
+        ],
+        "each_condition_retains_low_run_ge3": true
+      }
+    },
+    "ppo_final_start_sensitivity": [
+      {
+        "threshold_N": 2.5,
+        "shift_samples": -1,
+        "values": {
+          "reference_frames": [
+            51,
+            51,
+            51
+          ],
+          "loaded_frames": [
+            35,
+            35,
+            33
+          ],
+          "both_low_frames": [
+            0,
+            1,
+            0
+          ],
+          "low_other_loaded_frames": [
+            16,
+            15,
+            18
+          ],
+          "low_runs_ge3": [
+            3,
+            3,
+            4
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            0,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            5,
+            4,
+            4
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.875,
+            0.9333333333333333,
+            1
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            3.5726268776865484,
+            3.1769503363497114,
+            3.1833231128218173
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            0.739534370202544,
+            2.647897395165058,
+            3.2851240474193752
+          ]
+        }
+      },
+      {
+        "threshold_N": 2.5,
+        "shift_samples": 0,
+        "values": {
+          "reference_frames": [
+            51,
+            51,
+            51
+          ],
+          "loaded_frames": [
+            35,
+            35,
+            33
+          ],
+          "both_low_frames": [
+            0,
+            1,
+            0
+          ],
+          "low_other_loaded_frames": [
+            16,
+            15,
+            18
+          ],
+          "low_runs_ge3": [
+            3,
+            3,
+            4
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            0,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            5,
+            4,
+            4
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.875,
+            0.9333333333333333,
+            0.8888888888888888
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            3.633965247157285,
+            3.373364412461291,
+            3.4784549287519733
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            0.8619576033434811,
+            2.597627964267277,
+            3.1287450191060597
+          ]
+        }
+      },
+      {
+        "threshold_N": 2.5,
+        "shift_samples": 1,
+        "values": {
+          "reference_frames": [
+            51,
+            51,
+            51
+          ],
+          "loaded_frames": [
+            35,
+            35,
+            33
+          ],
+          "both_low_frames": [
+            0,
+            1,
+            0
+          ],
+          "low_other_loaded_frames": [
+            16,
+            15,
+            18
+          ],
+          "low_runs_ge3": [
+            3,
+            3,
+            4
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            0,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            5,
+            4,
+            4
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.875,
+            0.9333333333333333,
+            0.8888888888888888
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            3.6276576785076373,
+            3.5410202949560436,
+            3.7075101847236143
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            1.044949048076323,
+            2.347363056165201,
+            2.8683450301837237
+          ]
+        }
+      },
+      {
+        "threshold_N": 5,
+        "shift_samples": -1,
+        "values": {
+          "reference_frames": [
+            51,
+            51,
+            51
+          ],
+          "loaded_frames": [
+            35,
+            35,
+            33
+          ],
+          "both_low_frames": [
+            0,
+            1,
+            0
+          ],
+          "low_other_loaded_frames": [
+            16,
+            15,
+            18
+          ],
+          "low_runs_ge3": [
+            3,
+            3,
+            4
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            0,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            5,
+            4,
+            4
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.875,
+            0.9333333333333333,
+            1
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            3.5726268776865484,
+            3.1769503363497114,
+            3.1833231128218173
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            0.739534370202544,
+            2.647897395165058,
+            3.2851240474193752
+          ]
+        }
+      },
+      {
+        "threshold_N": 5,
+        "shift_samples": 0,
+        "values": {
+          "reference_frames": [
+            51,
+            51,
+            51
+          ],
+          "loaded_frames": [
+            35,
+            35,
+            33
+          ],
+          "both_low_frames": [
+            0,
+            1,
+            0
+          ],
+          "low_other_loaded_frames": [
+            16,
+            15,
+            18
+          ],
+          "low_runs_ge3": [
+            3,
+            3,
+            4
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            0,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            5,
+            4,
+            4
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.875,
+            0.9333333333333333,
+            0.8888888888888888
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            3.633965247157285,
+            3.373364412461291,
+            3.4784549287519733
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            0.8619576033434811,
+            2.597627964267277,
+            3.1287450191060597
+          ]
+        }
+      },
+      {
+        "threshold_N": 5,
+        "shift_samples": 1,
+        "values": {
+          "reference_frames": [
+            51,
+            51,
+            51
+          ],
+          "loaded_frames": [
+            35,
+            35,
+            33
+          ],
+          "both_low_frames": [
+            0,
+            1,
+            0
+          ],
+          "low_other_loaded_frames": [
+            16,
+            15,
+            18
+          ],
+          "low_runs_ge3": [
+            3,
+            3,
+            4
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            0,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            5,
+            4,
+            4
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.875,
+            0.9333333333333333,
+            0.8888888888888888
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            3.6276576785076373,
+            3.5410202949560436,
+            3.7075101847236143
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            1.044949048076323,
+            2.347363056165201,
+            2.8683450301837237
+          ]
+        }
+      },
+      {
+        "threshold_N": 10,
+        "shift_samples": -1,
+        "values": {
+          "reference_frames": [
+            51,
+            51,
+            51
+          ],
+          "loaded_frames": [
+            35,
+            35,
+            33
+          ],
+          "both_low_frames": [
+            0,
+            1,
+            0
+          ],
+          "low_other_loaded_frames": [
+            16,
+            15,
+            18
+          ],
+          "low_runs_ge3": [
+            3,
+            3,
+            4
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            0,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            5,
+            4,
+            4
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.875,
+            0.9333333333333333,
+            1
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            3.5726268776865484,
+            3.1769503363497114,
+            3.1833231128218173
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            0.739534370202544,
+            2.647897395165058,
+            3.2851240474193752
+          ]
+        }
+      },
+      {
+        "threshold_N": 10,
+        "shift_samples": 0,
+        "values": {
+          "reference_frames": [
+            51,
+            51,
+            51
+          ],
+          "loaded_frames": [
+            35,
+            35,
+            33
+          ],
+          "both_low_frames": [
+            0,
+            1,
+            0
+          ],
+          "low_other_loaded_frames": [
+            16,
+            15,
+            18
+          ],
+          "low_runs_ge3": [
+            3,
+            3,
+            4
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            0,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            5,
+            4,
+            4
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.875,
+            0.9333333333333333,
+            0.8888888888888888
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            3.633965247157285,
+            3.373364412461291,
+            3.4784549287519733
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            0.8619576033434811,
+            2.597627964267277,
+            3.1287450191060597
+          ]
+        }
+      },
+      {
+        "threshold_N": 10,
+        "shift_samples": 1,
+        "values": {
+          "reference_frames": [
+            51,
+            51,
+            51
+          ],
+          "loaded_frames": [
+            35,
+            35,
+            33
+          ],
+          "both_low_frames": [
+            0,
+            1,
+            0
+          ],
+          "low_other_loaded_frames": [
+            16,
+            15,
+            18
+          ],
+          "low_runs_ge3": [
+            3,
+            3,
+            4
+          ],
+          "low_runs_ge3_with_high_ge3": [
+            0,
+            0,
+            0
+          ],
+          "longest_low_run_samples": [
+            5,
+            4,
+            4
+          ],
+          "low_other_loaded_near5_fraction": [
+            0.875,
+            0.9333333333333333,
+            0.8888888888888888
+          ],
+          "local_y_tilt_delta_loaded_mean_deg": [
+            3.6276576785076373,
+            3.5410202949560436,
+            3.7075101847236143
+          ],
+          "local_y_tilt_delta_low_mean_deg": [
+            1.044949048076323,
+            2.347363056165201,
+            2.8683450301837237
+          ]
+        }
+      }
+    ]
+  },
+  "interpretation": [
+    "The final PPO start right foot retains3/3/4 low-force sample runs >=3 samples but87.5%/93.3333%/88.8889% of low-force/opposite-loaded reference-window samples remain <=5mm.",
+    "Changing thresholds2.5/5/10N and paired pose offset -1/0/+1 retains PPO final start low runs3/3/4, zero low runs with >=3 high samples, and near5mm fractions87.5%-100%.",
+    "Base final start retains1-2 low-force runs per repeat/condition, but no >=3-sample high run inside them; default near5 fractions91.6667%/78.5714%/90.9091%.",
+    "Base final stop has one >=3-sample high run inside a low run in each repeat across all sensitivity settings; it must not be conflated with start-walk or PPO.",
+    "Saved observations disfavor never-unloads as a complete description, but do not prove continuous unloading or isolate tilt, target, actuator, exploration, critic, reward, or model as the unique cause."
+  ],
+  "limitations": [
+    "Force is the sum of absolute world-Z foot-ground contact components, not body-weight share or20ms impulse.",
+    "Low force and opposite loaded are saved samples, not verified continuous unloading or true step counts.",
+    "Same-index force precedes post-sole5ms and follows pre-root15ms; shifted pairs retain exact timing offsets.",
+    "Reference mask stays anchored at the original force-sample index; shifted geometry does not redefine its window.",
+    "Reference intent is metadata, not actual support truth; height thresholds can fragment reference swings.",
+    "Conditioning on force and posture cannot establish causal event order or a unique training cause.",
+    "Thresholds and pairing sensitivity do not modify original training recipes, physical gates, budgets or outcomes.",
+    "No original NPZ reread, FK, environment, policy, or new substep observation was used."
+  ],
+  "sources": [
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/analyze_q1_saved_load_tilt.py",
+      "bytes": 16167,
+      "sha256": "2de9365d787fa57784c0aa58f856f8d94ca1a7758fe8cf14bbdf0fbc6930fa02"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/analyze_q1_saved_sample_runs.py",
+      "bytes": 16514,
+      "sha256": "fe6c91abfa0eddb1b7f06513bf3181910000d63391b37b82d6d3bb95a656991b"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/prepare_q1_gait_review.py",
+      "bytes": 10498,
+      "sha256": "c04786baf163103435adc9b5c4fd04840809a006cf6702b198b9ca837f77df05"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/manifests/supermimic_q1_gait_goal_saved_phase_20261030.json",
+      "bytes": 7301,
+      "sha256": "589b621c5beb1d0234a4a0af75ff3866300649f8c81057813ed98dc16dbf608b"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/summary.json",
+      "bytes": 14382,
+      "sha256": "ca61ab0c4dfb6e0a335803ecaaaf17f3f94f3e6ce941ea949dff30994d7041f4"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/foot_timeseries.csv",
+      "bytes": 4406520,
+      "sha256": "b42406ef29c05b611486d9c094177fe2982e1a087d39af058a3f601678ef18f5"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/manifests/supermimic_q1_gait_goal_saved_root_projection_20261030.json",
+      "bytes": 30870,
+      "sha256": "fae922df296f0c4ab70e3b9de622902f024f475c98d2b6c68a155768f9262a63"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030/summary.json",
+      "bytes": 16312,
+      "sha256": "0649510626d96f88cc52fbe82b2463313769e5667a5d850f8b9382cf8b9c03e7"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030/root_projection_timeseries.csv",
+      "bytes": 5139132,
+      "sha256": "7a4d76a6792186c409223940dbf35e5419ac089edab397c32a3f2728350d0301"
+    }
+  ],
+  "artifacts": {
+    "files": [
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOAD_TILT_20261030/base_saved_load_tilt.pdf",
+        "bytes": 51317,
+        "sha256": "54d79a1a7cf8e0d5e373a4c0ec48f874a00d8796bb0e0de4fc7dc2298b8fb403"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOAD_TILT_20261030/base_saved_load_tilt.png",
+        "bytes": 572192,
+        "sha256": "0cd860bc1812d5c50d686ab0edf28cf52d519c51a6eba38c37b05d1262fd1609"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOAD_TILT_20261030/load_tilt_conditions.csv",
+        "bytes": 164981,
+        "sha256": "0fea0d4b5b0ffc49a3566f29102cc72e71d56beaf04be76376d131bf7148e115"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOAD_TILT_20261030/ppo_saved_load_tilt.pdf",
+        "bytes": 50575,
+        "sha256": "cf0fb555c4bb14371fdf71c47bb0b58471610df8deb87890355832f41a033c85"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOAD_TILT_20261030/ppo_saved_load_tilt.png",
+        "bytes": 545365,
+        "sha256": "4a83965fb84f6336b44c1c52bdcb2c8293543556cc60bff0f8eeffa1afabcd41"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOAD_TILT_20261030/reference_low_force_runs.csv",
+        "bytes": 464408,
+        "sha256": "b693f7abdd785cdaac23cffc283e4bd612bdc595867cc49cb38979a3e5bed035"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOAD_TILT_20261030/summary.json",
+        "bytes": 309978,
+        "sha256": "a6dc455a0f63d34e3d94b446acabef0a4414bf5b025a3b4e6a2d0a6ca94c0f97"
+      }
+    ],
+    "total_bytes": 2158816,
+    "verification_locations": [
+      "authoritative_worktree",
+      "Mac_project_root",
+      "user_25386_unique_root"
+    ],
+    "all_three_way_size_sha256_matched": true,
+    "pngs_visually_reviewed": 2,
+    "layout_passed": true,
+    "large_weights_or_npz_transferred": false,
+    "not_staged_in_git": true
+  },
+  "observation_preparation": {
+    "plan_relative_path": "data/manifests/supermimic_q1_gait_goal_substep_observation_plan_v02_20261030.json",
+    "plan_bytes": 86121,
+    "plan_sha256": "c94cf9489c317ea6a2ca431af898bc4f8704e698067c5e927d17a389b1234942",
+    "frozen_inputs": 282,
+    "scope_and_budget_unchanged": true,
+    "existing_human_question_pending": true,
+    "question_repeated": false,
+    "new_observation_started": false,
+    "automatic_goal_continuation_not_treated_as_approval": true
+  },
+  "original_training_seconds": {
+    "base": 301.1074845249823,
+    "ppo": 600.0709074319457,
+    "total": 901.178391956928
+  },
+  "original_outcomes_preserved": "physical_regression for both independent trials; original media failure and separate postdelivery retained",
+  "consumed_training_authorization_not_reused": true,
+  "goal_status": "active",
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "agents_started": false,
+  "automations_modified": false,
+  "publication": {
+    "status": "REQUIRES_INDEPENDENT_REMOTE_AND_RECORD_MIRROR_VERIFICATION",
+    "receipt": "data/manifests/supermimic_q1_gait_goal_saved_load_tilt_publication_20261030.json"
+  }
+}

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-30研究：[检查记录](README_RESEARCH_CHECK_20261030.md)。76次请求成功，16仓库及两发行无实质变化；LocoManiLab v4正文文本未变，仅署名/版本信息更新。RSS为空、列表停在10/28，保留公告覆盖缺口；不发重复简报、不新增假设或实验，完整去重由main维护。
+
 2026-10-29研究：[四项简报](research/2026-10-29/README.md)记录RSL-RL 5.5.2、独立SuperMimic修复、Rollback与动作Token。96请求均成功，12固定文本/两完整树静态核验；当前安装RSL为5.5.1、Q1批量整除，未将新修复认定为训练退化根因。main维护完整去重，Q1保留工程状态；本轮无物理/推理/优化或新假设。[检查](README_RESEARCH_CHECK_20261029.md)/[回执](../data/manifests/research_watch_sync_20261029.json)。
 
 2026-10-28研究：[五项简报](research/2026-10-28/README.md)保存四项新阅读与HoloBoxing v2对手协议更正；87请求83成功、9固定文本静态核验，main去重122→134、H001不变。完整历史由main维护，Q1工程状态按本分支最新记录；本次没有训练/仿真或新假设。[检查](README_RESEARCH_CHECK_20261028.md)/[同步回执](../data/manifests/research_watch_sync_20261028.json)。

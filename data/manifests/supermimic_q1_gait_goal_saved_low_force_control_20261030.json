@@ -1,0 +1,1366 @@
+{
+  "stage": "GAIT_GOAL01_SAVED_LOW_FORCE_CONTROL_20261030",
+  "status": "SAVED_ONLY_ANALYSIS_DELIVERED_PHYSICAL_TARGET_NOT_ACHIEVED",
+  "captured_utc": "2026-10-30T01:22:34.945111+00:00",
+  "previous_goal_turn_classification": "progress",
+  "current_goal_turn_classification": "progress",
+  "review_report": "reports/README_Q1_GAIT_GOAL01_SAVED_LOW_FORCE_CONTROL_20261030.md",
+  "source_base_commit": "eea99281e0248a670035060b91b4759032ed957a",
+  "code": [
+    {
+      "relative_path": "script/project_tools/analyze_q1_saved_low_force_control.py",
+      "bytes": 22792,
+      "sha256": "6cd749f4ab831ecce72fb7902248d0175194860640240df8b710fbb9c2ecb9e6"
+    },
+    {
+      "relative_path": "script/project_tools/test_q1_saved_low_force_control.py",
+      "bytes": 5878,
+      "sha256": "c253bf9ac7305a5112fa1a862d8070b88bc7f3d0156a4f4ca30e2fcc3f54c195"
+    }
+  ],
+  "logs": [
+    {
+      "relative_path": "logs/session_records/q1_gait_goal_saved_low_force_control_tests_20261030.log",
+      "bytes": 900,
+      "sha256": "8536350a82b0156d7c46a42b74a1a2abfb8d27130200941b30f4630ff1799cf1"
+    },
+    {
+      "relative_path": "logs/session_records/q1_gait_goal_saved_low_force_control_tests_v02_20261030.log",
+      "bytes": 1025,
+      "sha256": "0ed7074832e691d2e340cc340cfb25cea58598dfdec28c6836459df9c2a14550"
+    },
+    {
+      "relative_path": "logs/session_records/q1_gait_goal_saved_low_force_control_20261030.log",
+      "bytes": 759,
+      "sha256": "696755f21e07924f41de97fb4e4ecb7d603d0050ac63c1dc6f60106a01ef3b34"
+    },
+    {
+      "relative_path": "logs/session_records/q1_gait_goal_saved_low_force_control_v02_20261030.log",
+      "bytes": 1203,
+      "sha256": "0a59f6c84084f8bb8f7fd228fbbcba5be98ec6bcb1e0c4f6689b1c4cd86c2fad"
+    }
+  ],
+  "tests": {
+    "initial_passed": 7,
+    "final_passed": 8,
+    "failed": 0,
+    "final_warnings": 0,
+    "command": "python3 -m unittest discover -s script/project_tools -p 'test_q1_saved_low_force_control.py' -v",
+    "new_regression": "Published artifacts may be a direct list or an object with files; both must validate exact size/SHA."
+  },
+  "initial_CPU_failure": {
+    "exception": "TypeError: list indices must be integers or slices, not str",
+    "location": "published_inputs",
+    "cause": "New analyzer initially assumed artifacts.files; older published target/control manifests store artifacts directly as a list.",
+    "source_sha256": "e6b7211358968b730a6187dbc1e389b7d482e971d0ce973300283a23429e9b14",
+    "test_source_sha256": "2beede6355ddc4203ef131d98bc711db200defaa7fb6f0cfd4f78b0f044d378c",
+    "failed_log": "logs/session_records/q1_gait_goal_saved_low_force_control_20261030.log",
+    "original_NPZ_read_before_failure": false,
+    "output_directory_created_before_failure": false,
+    "new_physical_or_policy_or_optimizer_calls": 0,
+    "original_training_not_restarted": true
+  },
+  "execution": {
+    "completed_saved_analysis_runs": 1,
+    "failed_CPU_initializations": 1,
+    "final_exit_code": 0,
+    "status": "SAVED_LOW_FORCE_CONTROL_READY",
+    "wall_timeout_seconds": 300,
+    "command": "env CUDA_VISIBLE_DEVICES=-1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 timeout --signal=TERM --kill-after=10s 300s /opt/data/private/ZHY/data/environments/supermimic_q1_hp_20261026/bin/python /opt/data/private/ZHY/script/supermimic_q1_hp/activate.py -u /opt/data/private/ZHY/script/project_tools/analyze_q1_saved_low_force_control.py --phase-manifest /opt/data/private/ZHY/data/manifests/supermimic_q1_gait_goal_saved_phase_20261030.json --phase /opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030 --pose-manifest /opt/data/private/ZHY/data/manifests/supermimic_q1_gait_goal_saved_target_pose_20261030.json --pose /opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030 --control-manifest /opt/data/private/ZHY/data/manifests/supermimic_q1_gait_goal_saved_control_usage_20261030.json --control /opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030 --base /opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029 --ppo /opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029 --output /opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOW_FORCE_CONTROL_20261030 --source-base-commit eea99281e0248a670035060b91b4759032ed957a",
+    "input_identity_records_before_after": 48,
+    "historical_NPZ_files": 15,
+    "historical_result_JSON_files": 15,
+    "selection_and_library_files": 4,
+    "published_csv_summary_artifact_identity_verified": true,
+    "per_repeat_curves_used": true,
+    "previous_median_curves_not_joined_to_individual_forces": true
+  },
+  "scope": {
+    "saved_clips": 45,
+    "saved_states": 12015,
+    "joint_condition_rows": 1620,
+    "foot_geometry_rows": 540,
+    "low_force_joint_sample_rows": 2157,
+    "low_force_foot_samples": 719,
+    "joints_per_foot": [
+      "hip_pitch",
+      "knee",
+      "ankle_pitch"
+    ],
+    "new_native_environments": 0,
+    "new_integration_steps": 0,
+    "new_FK_or_dynamics_calls": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0,
+    "new_training_seconds": 0
+  },
+  "definitions": {
+    "reference_window": "Original declared swing AND original reference sole Z >=10mm.",
+    "force": "Sum of absolute world-Z foot-ground contact components, last solved substep; not continuous unloading, body-weight share or a20ms impulse.",
+    "low_force": "This foot <=5N AND opposite foot >5N.",
+    "near_floor": "Post sole Z <=5mm.",
+    "conditions": [
+      "raised",
+      "raised_loaded",
+      "raised_low",
+      "raised_low_near5",
+      "raised_low_high10",
+      "raised_both_low"
+    ],
+    "per_joint_request": "Position target at control start minus saved pre-joint angle.",
+    "per_joint_observed_step": "Saved post-joint angle after20ms minus saved pre-joint angle.",
+    "per_joint_reference_direction": "Sign of next reference sample angle minus saved pre-joint angle; active absolute gap >.001rad; not sole-height direction or reward correctness.",
+    "squared_error_reduction": "Squared reference gap before minus after; positive means closer angularly, not successful foot lift.",
+    "nominal": "Current observed teacher target inferred by subtracting saved residual strictly inside final action bounds; not a physical head-off result.",
+    "static_foot_geometry": "Reused prior published static FK, preserving root at control start while replacing joint angles. Targets can be outside joint ranges and are not feasible next states."
+  },
+  "sample_clocks": {
+    "pre_joints_and_targets_after_control_start_s": 0,
+    "force_solve_sample_after_control_start_s": 0.015,
+    "post_joints_and_reference_after_control_start_s": 0.02,
+    "unchanged_original_pairing": true
+  },
+  "final_right_raised_low_near5_by_repeat": {
+    "base_stop": {
+      "hip_pitch": {
+        "samples": [
+          10,
+          11,
+          8
+        ],
+        "active_reference_gap_samples": [
+          10,
+          11,
+          8
+        ],
+        "request_from_pre_rms_rad": [
+          0.4158754858860086,
+          0.44388849188062635,
+          0.44831170501705675
+        ],
+        "observed_step_rms_rad": [
+          0.04856928302193292,
+          0.037115944864333006,
+          0.0461118410235507
+        ],
+        "residual_rms_rad": [
+          0,
+          0,
+          0
+        ],
+        "request_toward_reference_fraction": [
+          0.1,
+          0.2727272727272727,
+          0.5
+        ],
+        "observed_step_toward_reference_fraction": [
+          0,
+          0.2727272727272727,
+          0.375
+        ],
+        "target_reference_rmse_rad": [
+          0.6364678478426583,
+          0.5551406380547318,
+          0.5473006964242052
+        ],
+        "post_reference_rmse_rad": [
+          0.30099941926980334,
+          0.27178230287559113,
+          0.3190778369310207
+        ],
+        "target_post_rmse_rad": [
+          0.3711400495909036,
+          0.40779144969688663,
+          0.4053181435572928
+        ],
+        "observed_reference_squared_error_reduction_rad2": [
+          -0.02163672626006627,
+          -0.0068200285358456176,
+          -0.009387544317928586
+        ],
+        "residual_reference_squared_error_reduction_rad2": [
+          0,
+          0,
+          0
+        ]
+      },
+      "knee": {
+        "samples": [
+          10,
+          11,
+          8
+        ],
+        "active_reference_gap_samples": [
+          10,
+          11,
+          8
+        ],
+        "request_from_pre_rms_rad": [
+          0.2010078762537638,
+          0.17964475395295035,
+          0.19765868131006317
+        ],
+        "observed_step_rms_rad": [
+          0.06497019690969379,
+          0.06627731189294939,
+          0.06110000449096679
+        ],
+        "residual_rms_rad": [
+          0,
+          0,
+          0
+        ],
+        "request_toward_reference_fraction": [
+          0.7,
+          0.5454545454545454,
+          0.625
+        ],
+        "observed_step_toward_reference_fraction": [
+          0,
+          0.36363636363636365,
+          0.125
+        ],
+        "target_reference_rmse_rad": [
+          0.5026969388126733,
+          0.3984067916264001,
+          0.38080656344104324
+        ],
+        "post_reference_rmse_rad": [
+          0.5241288214567892,
+          0.42714573697051744,
+          0.3576214886492939
+        ],
+        "target_post_rmse_rad": [
+          0.1890998156245663,
+          0.16479552574475526,
+          0.16057522107023617
+        ],
+        "observed_reference_squared_error_reduction_rad2": [
+          -0.044986777570081224,
+          -0.013949859208163091,
+          -0.015058541635716516
+        ],
+        "residual_reference_squared_error_reduction_rad2": [
+          0,
+          0,
+          0
+        ]
+      },
+      "ankle_pitch": {
+        "samples": [
+          10,
+          11,
+          8
+        ],
+        "active_reference_gap_samples": [
+          10,
+          11,
+          8
+        ],
+        "request_from_pre_rms_rad": [
+          0.3299224852784167,
+          0.30714973773841187,
+          0.28130292663102946
+        ],
+        "observed_step_rms_rad": [
+          0.07650112738317937,
+          0.06623058389086178,
+          0.0681707929822904
+        ],
+        "residual_rms_rad": [
+          0,
+          0,
+          0
+        ],
+        "request_toward_reference_fraction": [
+          0.5,
+          0.2727272727272727,
+          0.125
+        ],
+        "observed_step_toward_reference_fraction": [
+          0.4,
+          0.2727272727272727,
+          0.125
+        ],
+        "target_reference_rmse_rad": [
+          0.4631485484914835,
+          0.44998404452819746,
+          0.5171346803349458
+        ],
+        "post_reference_rmse_rad": [
+          0.319365386596446,
+          0.27530034723479657,
+          0.3316670492268813
+        ],
+        "target_post_rmse_rad": [
+          0.25551833738420043,
+          0.24176804621564096,
+          0.21380726010217857
+        ],
+        "observed_reference_squared_error_reduction_rad2": [
+          -0.013518581629967413,
+          -0.015168862417873345,
+          -0.031763519355443234
+        ],
+        "residual_reference_squared_error_reduction_rad2": [
+          0,
+          0,
+          0
+        ]
+      },
+      "static_geometry": {
+        "samples": [
+          10,
+          11,
+          8
+        ],
+        "pre_sole_mean_m": [
+          0.0009833857417106628,
+          0.00006197257475419478,
+          0.0003783642314374447
+        ],
+        "post_sole_mean_m": [
+          0.0007232040166854859,
+          0.001137827607718381,
+          0.0017152605578303337
+        ],
+        "static_target_sole_mean_m": [
+          0.0032001595944166185,
+          0.0002107406881722537,
+          0.008422896265983582
+        ],
+        "static_nominal_sole_mean_m": [
+          0.0032001595944166185,
+          0.0002107406881722537,
+          0.008422896265983582
+        ],
+        "same_root_reference_sole_mean_m": [
+          0.007183883339166641,
+          0.007160869511691007,
+          0.004437310621142387
+        ],
+        "target_leg_any_joint_outside_fraction": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "base_start": {
+      "hip_pitch": {
+        "samples": [
+          11,
+          11,
+          10
+        ],
+        "active_reference_gap_samples": [
+          11,
+          11,
+          10
+        ],
+        "request_from_pre_rms_rad": [
+          0.6815009476909342,
+          0.6360202603887333,
+          0.6911863565064902
+        ],
+        "observed_step_rms_rad": [
+          0.06813184069499977,
+          0.058713205844627435,
+          0.07679944168916687
+        ],
+        "residual_rms_rad": [
+          0,
+          0,
+          0
+        ],
+        "request_toward_reference_fraction": [
+          0.9090909090909091,
+          0.9090909090909091,
+          0.7
+        ],
+        "observed_step_toward_reference_fraction": [
+          0.9090909090909091,
+          0.9090909090909091,
+          0.7
+        ],
+        "target_reference_rmse_rad": [
+          0.5938821242152694,
+          0.5310793692181014,
+          0.6543624119692218
+        ],
+        "post_reference_rmse_rad": [
+          0.22130644074684147,
+          0.2657257528311886,
+          0.22515592584118632
+        ],
+        "target_post_rmse_rad": [
+          0.6159311583070739,
+          0.5797479567369724,
+          0.6190884082221729
+        ],
+        "observed_reference_squared_error_reduction_rad2": [
+          0.018002858007504084,
+          0.01942732513370224,
+          0.008047304452091989
+        ],
+        "residual_reference_squared_error_reduction_rad2": [
+          0,
+          0,
+          0
+        ]
+      },
+      "knee": {
+        "samples": [
+          11,
+          11,
+          10
+        ],
+        "active_reference_gap_samples": [
+          11,
+          11,
+          10
+        ],
+        "request_from_pre_rms_rad": [
+          0.17347878707492892,
+          0.17526876979502207,
+          0.16716736595271586
+        ],
+        "observed_step_rms_rad": [
+          0.052622016781366326,
+          0.06531310517359872,
+          0.05498919414258717
+        ],
+        "residual_rms_rad": [
+          0,
+          0,
+          0
+        ],
+        "request_toward_reference_fraction": [
+          0.5454545454545454,
+          0.5454545454545454,
+          0.6
+        ],
+        "observed_step_toward_reference_fraction": [
+          0.9090909090909091,
+          0.8181818181818182,
+          0.7
+        ],
+        "target_reference_rmse_rad": [
+          0.2998985005252229,
+          0.32945166631308426,
+          0.23581019415364696
+        ],
+        "post_reference_rmse_rad": [
+          0.31476322218427916,
+          0.35794486064452785,
+          0.2966767202267588
+        ],
+        "target_post_rmse_rad": [
+          0.17738473876015234,
+          0.1639330201115826,
+          0.17551990315590923
+        ],
+        "observed_reference_squared_error_reduction_rad2": [
+          0.01605637081823536,
+          0.02230297730527814,
+          0.0021652491984482936
+        ],
+        "residual_reference_squared_error_reduction_rad2": [
+          0,
+          0,
+          0
+        ]
+      },
+      "ankle_pitch": {
+        "samples": [
+          11,
+          11,
+          10
+        ],
+        "active_reference_gap_samples": [
+          11,
+          10,
+          10
+        ],
+        "request_from_pre_rms_rad": [
+          0.35039942976737926,
+          0.24769732118793547,
+          0.3513141115233739
+        ],
+        "observed_step_rms_rad": [
+          0.08365885861611266,
+          0.05321033514780088,
+          0.08515913349172623
+        ],
+        "residual_rms_rad": [
+          0,
+          0,
+          0
+        ],
+        "request_toward_reference_fraction": [
+          0.09090909090909091,
+          0,
+          0.2
+        ],
+        "observed_step_toward_reference_fraction": [
+          0.09090909090909091,
+          0.1,
+          0.2
+        ],
+        "target_reference_rmse_rad": [
+          0.7718528915880961,
+          0.6488503348417302,
+          0.7892519647893407
+        ],
+        "post_reference_rmse_rad": [
+          0.51698613799794,
+          0.47224137924013154,
+          0.5474437917704994
+        ],
+        "target_post_rmse_rad": [
+          0.26857178807001864,
+          0.19722841301063476,
+          0.27001389587620156
+        ],
+        "observed_reference_squared_error_reduction_rad2": [
+          -0.0727692807180349,
+          -0.03634324258508599,
+          -0.0764608772958338
+        ],
+        "residual_reference_squared_error_reduction_rad2": [
+          0,
+          0,
+          0
+        ]
+      },
+      "static_geometry": {
+        "samples": [
+          11,
+          11,
+          10
+        ],
+        "pre_sole_mean_m": [
+          0.0012600360946221786,
+          0.001021236858584664,
+          0.0015908807516098022
+        ],
+        "post_sole_mean_m": [
+          0.0012744373895905235,
+          0.0012159462679516184,
+          0.002091655135154724
+        ],
+        "static_target_sole_mean_m": [
+          0.002283216200091622,
+          0.0005084753713824532,
+          0.00414619967341423
+        ],
+        "static_nominal_sole_mean_m": [
+          0.002283216200091622,
+          0.0005084753713824532,
+          0.00414619967341423
+        ],
+        "same_root_reference_sole_mean_m": [
+          0.00837513262575323,
+          0.00894517790187489,
+          0.006400559842586517
+        ],
+        "target_leg_any_joint_outside_fraction": [
+          0,
+          0,
+          0.1
+        ]
+      }
+    },
+    "ppo_stop": {
+      "hip_pitch": {
+        "samples": [
+          12,
+          15,
+          13
+        ],
+        "active_reference_gap_samples": [
+          12,
+          15,
+          13
+        ],
+        "request_from_pre_rms_rad": [
+          0.7313264766777161,
+          0.5878408614165492,
+          0.5535135516325131
+        ],
+        "observed_step_rms_rad": [
+          0.05629536503122747,
+          0.03723316344798012,
+          0.03448353507903836
+        ],
+        "residual_rms_rad": [
+          0.004704838872226399,
+          0.0050010096629881885,
+          0.0041324958129756425
+        ],
+        "request_toward_reference_fraction": [
+          0.5,
+          0.3333333333333333,
+          0.5384615384615384
+        ],
+        "observed_step_toward_reference_fraction": [
+          0.5833333333333334,
+          0.4,
+          0.5384615384615384
+        ],
+        "target_reference_rmse_rad": [
+          0.772410322638645,
+          0.7305274228513388,
+          0.5584338513165843
+        ],
+        "post_reference_rmse_rad": [
+          0.3420904347147573,
+          0.31477191359774054,
+          0.3930315611399432
+        ],
+        "target_post_rmse_rad": [
+          0.6798953167691169,
+          0.552709412628249,
+          0.5204784798464236
+        ],
+        "observed_reference_squared_error_reduction_rad2": [
+          -0.00010028912829807927,
+          -0.008122156919403404,
+          0.008986809194072532
+        ],
+        "residual_reference_squared_error_reduction_rad2": [
+          0.0008817008037805431,
+          0.004040080031419728,
+          0.0004292527983211353
+        ]
+      },
+      "knee": {
+        "samples": [
+          12,
+          15,
+          13
+        ],
+        "active_reference_gap_samples": [
+          12,
+          15,
+          13
+        ],
+        "request_from_pre_rms_rad": [
+          0.1586560134750862,
+          0.17214003401147926,
+          0.13822344657056995
+        ],
+        "observed_step_rms_rad": [
+          0.04089050900474682,
+          0.03708635215262688,
+          0.04157603100455247
+        ],
+        "residual_rms_rad": [
+          0.005355655623371934,
+          0.007114341427234191,
+          0.005038429107760077
+        ],
+        "request_toward_reference_fraction": [
+          0.6666666666666666,
+          0.8666666666666667,
+          0.6923076923076923
+        ],
+        "observed_step_toward_reference_fraction": [
+          0.5,
+          0.4,
+          0.46153846153846156
+        ],
+        "target_reference_rmse_rad": [
+          0.36920780207452264,
+          0.3094515818920647,
+          0.324885981671708
+        ],
+        "post_reference_rmse_rad": [
+          0.44118071269262826,
+          0.38182651747673124,
+          0.34625967322736123
+        ],
+        "target_post_rmse_rad": [
+          0.15730720746486293,
+          0.17323317461621132,
+          0.13127661722762038
+        ],
+        "observed_reference_squared_error_reduction_rad2": [
+          0.011083640399470593,
+          0.008080974004687984,
+          0.011813901568822064
+        ],
+        "residual_reference_squared_error_reduction_rad2": [
+          0.0014102123108455944,
+          0.0012026024878806982,
+          0.0006338750494825839
+        ]
+      },
+      "ankle_pitch": {
+        "samples": [
+          12,
+          15,
+          13
+        ],
+        "active_reference_gap_samples": [
+          12,
+          15,
+          13
+        ],
+        "request_from_pre_rms_rad": [
+          0.24734202529593144,
+          0.21675643887248386,
+          0.24708939511042008
+        ],
+        "observed_step_rms_rad": [
+          0.06403289031497852,
+          0.05145847112007296,
+          0.06170284243183327
+        ],
+        "residual_rms_rad": [
+          0.0026522799894378906,
+          0.0020999262430043647,
+          0.0036394801024194155
+        ],
+        "request_toward_reference_fraction": [
+          0.3333333333333333,
+          0.4666666666666667,
+          0.38461538461538464
+        ],
+        "observed_step_toward_reference_fraction": [
+          0.25,
+          0.4,
+          0.38461538461538464
+        ],
+        "target_reference_rmse_rad": [
+          0.4562921190984842,
+          0.3937757392245374,
+          0.4256625758697249
+        ],
+        "post_reference_rmse_rad": [
+          0.3590787020105218,
+          0.3241043222616184,
+          0.3379675734927651
+        ],
+        "target_post_rmse_rad": [
+          0.185381616060308,
+          0.16659930705345846,
+          0.18663675496121315
+        ],
+        "observed_reference_squared_error_reduction_rad2": [
+          -0.01592867063779725,
+          -0.008020474889753191,
+          -0.00915797956807803
+        ],
+        "residual_reference_squared_error_reduction_rad2": [
+          -0.00025319417443774115,
+          -0.00017503560119882684,
+          0.00021373679223533318
+        ]
+      },
+      "static_geometry": {
+        "samples": [
+          12,
+          15,
+          13
+        ],
+        "pre_sole_mean_m": [
+          0.0018373553951581318,
+          0.0006353264053662618,
+          0.0008823579320540795
+        ],
+        "post_sole_mean_m": [
+          0.0018959250301122665,
+          0.0011411959926287333,
+          0.0012895092368125916
+        ],
+        "static_target_sole_mean_m": [
+          0.0031200662876168885,
+          -0.004603105783462525,
+          -0.008455861932956256
+        ],
+        "static_nominal_sole_mean_m": [
+          0.0032657282426953316,
+          -0.004326954732338587,
+          -0.00849170982837677
+        ],
+        "same_root_reference_sole_mean_m": [
+          0.012744069720307985,
+          0.014866148183743159,
+          0.010253542604354711
+        ],
+        "target_leg_any_joint_outside_fraction": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "ppo_start": {
+      "hip_pitch": {
+        "samples": [
+          14,
+          14,
+          16
+        ],
+        "active_reference_gap_samples": [
+          14,
+          14,
+          16
+        ],
+        "request_from_pre_rms_rad": [
+          0.5722401489156383,
+          0.7205227419847458,
+          0.7331868226722544
+        ],
+        "observed_step_rms_rad": [
+          0.05106304780896878,
+          0.0596060553305069,
+          0.05776297309960987
+        ],
+        "residual_rms_rad": [
+          0.0036840566877912283,
+          0.003152545927617719,
+          0.0032764448904524257
+        ],
+        "request_toward_reference_fraction": [
+          0.9285714285714286,
+          0.7142857142857143,
+          0.5625
+        ],
+        "observed_step_toward_reference_fraction": [
+          0.9285714285714286,
+          0.7142857142857143,
+          0.5625
+        ],
+        "target_reference_rmse_rad": [
+          0.45325478411925385,
+          0.6730952863535533,
+          0.7472230803369487
+        ],
+        "post_reference_rmse_rad": [
+          0.5117914154803608,
+          0.5650613240238445,
+          0.5093966209226471
+        ],
+        "target_post_rmse_rad": [
+          0.5289226313224898,
+          0.6664980352078755,
+          0.6804212776375465
+        ],
+        "observed_reference_squared_error_reduction_rad2": [
+          0.034723121134560574,
+          0.034480914743076574,
+          0.02133080180876973
+        ],
+        "residual_reference_squared_error_reduction_rad2": [
+          0.0002985555415991901,
+          0.0005621959963161822,
+          -0.000041561464037516167
+        ]
+      },
+      "knee": {
+        "samples": [
+          14,
+          14,
+          16
+        ],
+        "active_reference_gap_samples": [
+          14,
+          14,
+          16
+        ],
+        "request_from_pre_rms_rad": [
+          0.18365565327953925,
+          0.16051682341246382,
+          0.1706698407897451
+        ],
+        "observed_step_rms_rad": [
+          0.061689389272440186,
+          0.06730979629900867,
+          0.06712918875324968
+        ],
+        "residual_rms_rad": [
+          0.0056777056118015885,
+          0.005052422055937538,
+          0.004345832538606899
+        ],
+        "request_toward_reference_fraction": [
+          0.42857142857142855,
+          0.5714285714285714,
+          0.4375
+        ],
+        "observed_step_toward_reference_fraction": [
+          0.7857142857142857,
+          0.5,
+          0.5
+        ],
+        "target_reference_rmse_rad": [
+          0.38616834577795095,
+          0.356528271238076,
+          0.4079942290797446
+        ],
+        "post_reference_rmse_rad": [
+          0.35256263794694026,
+          0.38891008371377417,
+          0.4104189479195144
+        ],
+        "target_post_rmse_rad": [
+          0.15535780289738038,
+          0.1264003781463633,
+          0.13759186637060242
+        ],
+        "observed_reference_squared_error_reduction_rad2": [
+          0.02717533530227767,
+          0.0036702924932267805,
+          0.00026677963390958626
+        ],
+        "residual_reference_squared_error_reduction_rad2": [
+          -0.001235163728870731,
+          0.000580977241264854,
+          0.000549234173947363
+        ]
+      },
+      "ankle_pitch": {
+        "samples": [
+          14,
+          14,
+          16
+        ],
+        "active_reference_gap_samples": [
+          14,
+          14,
+          16
+        ],
+        "request_from_pre_rms_rad": [
+          0.262693360029283,
+          0.33489033406047136,
+          0.3638972746624034
+        ],
+        "observed_step_rms_rad": [
+          0.06341081671083537,
+          0.0766365111934281,
+          0.0870424089726121
+        ],
+        "residual_rms_rad": [
+          0.004191328636710589,
+          0.005069080156394694,
+          0.004516087365294055
+        ],
+        "request_toward_reference_fraction": [
+          0.21428571428571427,
+          0.42857142857142855,
+          0.5
+        ],
+        "observed_step_toward_reference_fraction": [
+          0.2857142857142857,
+          0.5,
+          0.5
+        ],
+        "target_reference_rmse_rad": [
+          0.53155838988701,
+          0.3844634304659761,
+          0.3795728424514617
+        ],
+        "post_reference_rmse_rad": [
+          0.43795757646792954,
+          0.309117263276549,
+          0.32558531187243156
+        ],
+        "target_post_rmse_rad": [
+          0.20121416571651593,
+          0.26090475615780967,
+          0.28043238243687224
+        ],
+        "observed_reference_squared_error_reduction_rad2": [
+          -0.015519864506582996,
+          0.0060293182596413575,
+          0.01732758082718074
+        ],
+        "residual_reference_squared_error_reduction_rad2": [
+          0.0017830385013793127,
+          0.0021161172764600925,
+          0.0018494558791393991
+        ]
+      },
+      "static_geometry": {
+        "samples": [
+          14,
+          14,
+          16
+        ],
+        "pre_sole_mean_m": [
+          0.0009273112352405276,
+          0.0005218253604003362,
+          0.00025506317615509033
+        ],
+        "post_sole_mean_m": [
+          0.0011946348739521845,
+          0.0012940500995942525,
+          0.0009444479364901781
+        ],
+        "static_target_sole_mean_m": [
+          -0.01057459573660578,
+          -0.0017168463340827397,
+          0.0005875627975910902
+        ],
+        "static_nominal_sole_mean_m": [
+          -0.0106483128454004,
+          -0.0020681156643799375,
+          0.00021212210413068533
+        ],
+        "same_root_reference_sole_mean_m": [
+          0.006667446877275195,
+          0.0020349685634885517,
+          0.003986299736425281
+        ],
+        "target_leg_any_joint_outside_fraction": [
+          0,
+          0.07142857142857142,
+          0
+        ]
+      }
+    }
+  },
+  "interpretations": [
+    "Final PPO start right hip/knee/ankle have nonzero20ms joint motion during low-force near-ground samples; complete joint immobility is not a complete description of failed lift.",
+    "Final PPO start residual RMS at these hip/knee/ankle joints is approximately.003-.006rad, far below the radius; this is not actual torque or proof that enlarging the residual will help.",
+    "Reference-directed movement in an individual joint does not guarantee a coordinated sole-lift trajectory.",
+    "Static target sole geometry and command/pose discrepancies do not isolate PD weakness, saturation, contact constraint, learned model error, reward, critic or exploration.",
+    "Initial/final low-force masks can differ; conditional statistics are not paired causal effects. No training recipe or checkpoint adoption follows from this analysis."
+  ],
+  "sources": [
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/analyze_q1_saved_low_force_control.py",
+      "bytes": 22792,
+      "sha256": "6cd749f4ab831ecce72fb7902248d0175194860640240df8b710fbb9c2ecb9e6"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/analyze_q1_saved_sample_runs.py",
+      "bytes": 16514,
+      "sha256": "fe6c91abfa0eddb1b7f06513bf3181910000d63391b37b82d6d3bb95a656991b"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/prepare_q1_gait_review.py",
+      "bytes": 10498,
+      "sha256": "c04786baf163103435adc9b5c4fd04840809a006cf6702b198b9ca837f77df05"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/supermimic_q1_gait_goal_analysis/saved_control_usage.py",
+      "bytes": 25653,
+      "sha256": "2e0699e751d166f069f8ec71f62e8603d003ad1722223a38d08fbf773dc434e2"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/supermimic_q1_sole/reward_signal.py",
+      "bytes": 14850,
+      "sha256": "b555044f0045cf5be4e7a56fcfad86555f35bc4f39015838402de7450928dc8d"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/manifests/supermimic_q1_gait_goal_saved_phase_20261030.json",
+      "bytes": 7301,
+      "sha256": "589b621c5beb1d0234a4a0af75ff3866300649f8c81057813ed98dc16dbf608b"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/summary.json",
+      "bytes": 14382,
+      "sha256": "ca61ab0c4dfb6e0a335803ecaaaf17f3f94f3e6ce941ea949dff30994d7041f4"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_PHASE_TRADEOFF_20261030/foot_timeseries.csv",
+      "bytes": 4406520,
+      "sha256": "b42406ef29c05b611486d9c094177fe2982e1a087d39af058a3f601678ef18f5"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/manifests/supermimic_q1_gait_goal_saved_target_pose_20261030.json",
+      "bytes": 33185,
+      "sha256": "93063ca457a73ec5e1b9efa9dd3b95f674f446baffc1920192789a05b815bc87"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030/summary.json",
+      "bytes": 26161,
+      "sha256": "b2a306ba0f38cb1773ffc6eaf8387eee08f02be0aede739a7d3fb1e3fabc1519"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030/target_pose_timeseries.csv",
+      "bytes": 8827764,
+      "sha256": "269b599ae5701ad0369ef1ad42fbcf632287cb940ce20c635aa0492206fd71ed"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/manifests/supermimic_q1_gait_goal_saved_control_usage_20261030.json",
+      "bytes": 12290,
+      "sha256": "e94aed566a3973fd5b3e791a6b2a1e8e1f027ba1a4584988ec63323296ae1ab5"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_CONTROL_USAGE_20261030/summary.json",
+      "bytes": 17989,
+      "sha256": "a314b1f687a221f9386cee71d273d9595b885a2b8e06057b5cd9c0505692d82d"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027/src/unisupermimic/tasks/motion_tracking/q1/supermimic/control.json",
+      "bytes": 6888,
+      "sha256": "2b36053e74d5b5650635e7977284a2700fab8188808669067c35e0a33869dafc"
+    }
+  ],
+  "trace_sources": [
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029/run/checkpoint_selection.json",
+      "bytes": 49832,
+      "sha256": "6f5f450c60e70997ddb6f277b1d955f20a7d429526cafa157e760333ef1bb413"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029/evaluation/evaluation_library.json",
+      "bytes": 205726,
+      "sha256": "3c58014741f76d05ef6dc4b67e83e3e5fc5300b0dd8d23cf2c79a58c151a1d61"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029/evaluation/initial_repeat0.npz",
+      "bytes": 80989440,
+      "sha256": "53b88505d61507cd93013d7d5b8cb2ef34f037b470ccc48f863b764266e0db08"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029/evaluation/initial_repeat0.json",
+      "bytes": 377081,
+      "sha256": "c346d13a03255b8beaa940f505c9aeef5e0faca2310b73a9d609b3cccb8788d2"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029/evaluation/initial_repeat1.npz",
+      "bytes": 81093774,
+      "sha256": "3a269a4fc7f37aa7a076d11d9e35bb17ee8749c6691ca83062e9b0f1a7f9959c"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029/evaluation/initial_repeat1.json",
+      "bytes": 376993,
+      "sha256": "ec512c1aea4c5496bd878ab9f448707fd6d6b6afa8414876ddaf8058584d51df"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029/evaluation/initial_repeat2.npz",
+      "bytes": 81044408,
+      "sha256": "bc746af61574a0ad95bd56ce5614ece0d1c053aabc21f76a59e6457513003607"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029/evaluation/initial_repeat2.json",
+      "bytes": 377156,
+      "sha256": "8a970cc2d0738be4e79d137d8432b79d817e181587b2536e72cb8154bfeeb790"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029/evaluation/stage_01_repeat0.npz",
+      "bytes": 80985350,
+      "sha256": "871a6bbb820c070f71e08d15a360bbfb90756f8af0998e5f1293e1d2d87c1b60"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029/evaluation/stage_01_repeat0.json",
+      "bytes": 377042,
+      "sha256": "cc18f7ad792479cf8950c137a3182e378f0409fde68fc1d72988b0f867545245"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029/evaluation/stage_01_repeat1.npz",
+      "bytes": 81028506,
+      "sha256": "7249fb72f734c1cfb811c14093b1aa26b4df5abeb89350cfa5846e36fb5b1892"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029/evaluation/stage_01_repeat1.json",
+      "bytes": 377198,
+      "sha256": "f9c5326553c9a511f803ac1e9b3c73ae8f9ea58b1ae7ff7a263744d3d3c1e518"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029/evaluation/stage_01_repeat2.npz",
+      "bytes": 81065423,
+      "sha256": "a39ee65bb2271cf73d0971326e7a29d8dbf24df881f97e987acfe6ab360b9b1b"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_BASE_PHASE_SOLE_E4096_MAX20M_V02_20261029/evaluation/stage_01_repeat2.json",
+      "bytes": 376957,
+      "sha256": "818bc9a7df06d4115551bcc3481bde307c4808489d5889a715c72af88dcc5f6c"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/run/checkpoint_selection.json",
+      "bytes": 62705,
+      "sha256": "215c012cd4f1a23cb7b7901f480ca03689be517f66cc1d01e488166f8588c2f6"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/evaluation_library.json",
+      "bytes": 205726,
+      "sha256": "3c58014741f76d05ef6dc4b67e83e3e5fc5300b0dd8d23cf2c79a58c151a1d61"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/initial_repeat0.npz",
+      "bytes": 81090764,
+      "sha256": "cccbf749177b7132be62c274612168ebce3ed7cc721fee01e9c46b585fcd7aad"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/initial_repeat0.json",
+      "bytes": 377176,
+      "sha256": "94f10f7eccaeb7d64c3757ab0817d88604838cd5a1282457644d936c127055ec"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/initial_repeat1.npz",
+      "bytes": 81103343,
+      "sha256": "13b6c16bb35fcb406ecc42ac16e2b33ca2ad0ee8c163bffa6bb245df4c5c5e2a"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/initial_repeat1.json",
+      "bytes": 377097,
+      "sha256": "507d3b3c665e207e8f20e0cf5b8b64bf7441f78ce04a15de2d08c48ae1f5b3ac"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/initial_repeat2.npz",
+      "bytes": 81099449,
+      "sha256": "ed57134011b7bf6e2ccbc5461b0a48854fbd0427d547f2b53444ca9794872ab0"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/initial_repeat2.json",
+      "bytes": 377065,
+      "sha256": "6d9049d9603295bbb8a95ffeebca3e236a055bdc94fc378ea7a221cf2259fae6"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_01_repeat0.npz",
+      "bytes": 91624401,
+      "sha256": "48bca504b1eb3361c8cc7d07b6a1192c3bf2cf0884d73b6918124386b109d35f"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_01_repeat0.json",
+      "bytes": 377227,
+      "sha256": "d0d7f33f45dd9736c69b2c7b84cf245e70021b363415dbe7f9b21bbeebadf0e7"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_01_repeat1.npz",
+      "bytes": 91607204,
+      "sha256": "e25fa63b3947c52c522f02988f2ae2b87f14e5b3b258941252f7e8096c0e3fce"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_01_repeat1.json",
+      "bytes": 377170,
+      "sha256": "128b3e3e9590741b15fa9233d0ccb03f0a8078d3242e577730b0fd3ec0574c86"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_01_repeat2.npz",
+      "bytes": 91640223,
+      "sha256": "620d89c15f32cd82ff190c9f6e75c6e26f3da6b5d2ef5e7104a593966aed073f"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_01_repeat2.json",
+      "bytes": 377084,
+      "sha256": "c51a92d0473d963bb4e9eddc4cd91dcc7c56e22db007620ff4a119504fe470c5"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_02_repeat0.npz",
+      "bytes": 91673102,
+      "sha256": "c7d22cfef25b5637af121b382cc65d2c7f9e2bc802f177600a77f6a41d6384ae"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_02_repeat0.json",
+      "bytes": 377259,
+      "sha256": "8ebf52aa14384ea9cc82493daea158231acf31cb87fe242741a3475199e2592f"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_02_repeat1.npz",
+      "bytes": 91647455,
+      "sha256": "34f67cb3d1f284d2b0bad178cc0badf56603ccfc6c929a7ad9a0d37e44969711"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_02_repeat1.json",
+      "bytes": 377113,
+      "sha256": "406c3bf5d43ec1cc2025d44bca0a85608ca9560935a5930deacc4dd0ce87c3c0"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_02_repeat2.npz",
+      "bytes": 91668386,
+      "sha256": "51feeca405b7122acef44a6ddec7749bdfbbad586d1f2bd684eb8f9ea2a10d74"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_GAIT_GOAL01_PPO_SOLE_Z_E4096_MAX20M_20261029/evaluation/stage_02_repeat2.json",
+      "bytes": 377042,
+      "sha256": "ec9ffa9afd5426ea903d6848f455079376af488468336b856e466d183c2a8a78"
+    }
+  ],
+  "limitations": [
+    "Each repeat is conditioned separately; previously published median curves are not joined to individual forces.",
+    "Target/pre at t, last-solve force at t+15ms, post/reference at t+20ms; low force is not continuous unloading.",
+    "Position targets are force-producing setpoints, not feasible next poses or a desired foot path.",
+    "Per-joint reference direction is angular geometry, not sole-height direction or a PPO reward correctness test.",
+    "Conditional20ms joint changes do not expose actual substep torque, contact constraints, inertia or causality.",
+    "Nominal target holds observed teacher output fixed; removing residual is not a new physical head-off rollout.",
+    "Different stages may select different low-force masks; their conditional means do not isolate a training effect.",
+    "Original budgets, physical gates, failed outcomes and pending observation plan are unchanged."
+  ],
+  "artifacts": {
+    "files": [
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOW_FORCE_CONTROL_20261030/base_low_force_control.pdf",
+        "bytes": 89934,
+        "sha256": "5ba410310eafaeb277b3c5c514a50721d9311ff05e77f21084e4a0fb639de474"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOW_FORCE_CONTROL_20261030/base_low_force_control.png",
+        "bytes": 916368,
+        "sha256": "92e95ef9e89725beae3bce396be1031dde5ac0dddec34e447750bf55c81e3567"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOW_FORCE_CONTROL_20261030/foot_low_force_geometry.csv",
+        "bytes": 79480,
+        "sha256": "58d1462e8574bb42b995cc52fde10108cd25c0e4a7dc1a7a2c95d433dcdc354b"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOW_FORCE_CONTROL_20261030/joint_low_force_conditions.csv",
+        "bytes": 303699,
+        "sha256": "831e535f1a19a45b92eae2d518f217eba0ab6fad63c94c8b481c4636f659f93b"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOW_FORCE_CONTROL_20261030/low_force_joint_samples.csv",
+        "bytes": 613084,
+        "sha256": "04b5c2293bdb43aa0756ef72cfc6d3d9634c0eb258ae063cd4e5ee17c0f93236"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOW_FORCE_CONTROL_20261030/ppo_low_force_control.pdf",
+        "bytes": 90338,
+        "sha256": "dce011cad8dca5cd9439dd136eac99701e2a17a9b2da5c7f4bc40fc160302466"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOW_FORCE_CONTROL_20261030/ppo_low_force_control.png",
+        "bytes": 845827,
+        "sha256": "6cd896c9c953de7e40be459e2a2ab4de9e7fee9557ce2178340b116697f38960"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_LOW_FORCE_CONTROL_20261030/summary.json",
+        "bytes": 13879,
+        "sha256": "b534a9fa515c5a346aeacf0c7010d6f2e8c429057bace7815fa157e4da28e7cb"
+      }
+    ],
+    "total_bytes": 2952609,
+    "verification_locations": [
+      "authoritative_worktree",
+      "Mac_project_root",
+      "user_25386_unique_root"
+    ],
+    "all_three_way_size_sha256_matched": true,
+    "pngs_visually_reviewed": 2,
+    "layout_passed": true,
+    "large_NPZ_or_weights_transferred": false
+  },
+  "observation_preparation": {
+    "plan_relative_path": "data/manifests/supermimic_q1_gait_goal_substep_observation_plan_v02_20261030.json",
+    "plan_bytes": 86121,
+    "plan_sha256": "c94cf9489c317ea6a2ca431af898bc4f8704e698067c5e927d17a389b1234942",
+    "frozen_inputs": 282,
+    "scope_and_budget_unchanged": true,
+    "existing_human_question_pending": true,
+    "question_repeated": false,
+    "new_observation_started": false,
+    "automatic_goal_continuation_not_treated_as_approval": true
+  },
+  "original_training_seconds": {
+    "base": 301.1074845249823,
+    "ppo": 600.0709074319457,
+    "total": 901.178391956928
+  },
+  "original_outcomes_preserved": "Both physical_regression; original PPO media failure and separate postdelivery retained.",
+  "goal_status": "active",
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "agents_started": false,
+  "automations_modified": false,
+  "publication": {
+    "status": "REQUIRES_INDEPENDENT_REMOTE_AND_RECORD_MIRROR_VERIFICATION",
+    "receipt": "data/manifests/supermimic_q1_gait_goal_saved_low_force_control_publication_20261030.json"
+  }
+}

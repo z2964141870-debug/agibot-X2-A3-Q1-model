@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-30研究：[检查记录](README_RESEARCH_CHECK_20261030.md)。76次请求成功，16仓库及两发行无实质变化；LocoManiLab v4正文文本未变，仅署名/版本信息更新。RSS为空、列表停在10/28，保留公告覆盖缺口；不发重复简报、不新增假设或实验，完整去重由main维护。
+
 2026-10-30：[GAIT_GOAL01低力样本与抬脚时序](README_Q1_GAIT_GOAL01_SAVED_LOAD_TILT_20261030.md)。45片/9CPU测试、0积分推理FK动力学；PPO最终起走右脚仍有3/3/4低力片段，但87.5%-93.3%低力样本贴地，阈值/配对敏感性保留，不当连续卸载或唯一成因。底座起走/停走差异单列。7工件2158816B三端SHA/两图目视；goal ACTIVE/采纳null，子步观测问题待答复，不追加训练。[清单](../data/manifests/supermimic_q1_gait_goal_saved_load_tilt_20261030.json)。
 
 2026-10-30：[GAIT_GOAL01保存根朝向的脚高投影分解](README_Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030.md)。45片12015状态/8CPU测试、0积分推理优化；底座两走右脚窗口侧向Y投影为主要负项，约-14.34/-16.02mm，脚底点切换均值<1mm；PPO起走侧向负项主要在后三段。静态分解非动力学单因，7工件6319472B三端SHA/两图目视。goal ACTIVE/采纳null，既有逐子步问题待答复，不追加训练。[清单](../data/manifests/supermimic_q1_gait_goal_saved_root_projection_20261030.json)。

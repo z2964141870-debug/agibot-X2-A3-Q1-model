@@ -74,6 +74,10 @@ env CUDA_VISIBLE_DEVICES=-1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
 
 ## 发布与现场
 
+分析结果提交e69fb305ee650a101f17a57fd63fe757dd15a099已push origin Q1，独立ls-remote返回相同40位值；6小记录356430字节已核Git blob/权威工作树/Mac主根大小SHA。最终小记录镜像时本机18873拒绝连接；按用户指示加载既有hp_han助手，Windows曾返回DESKTOP-3C1DPPR，随后对端reset/Broken pipe，原25386登录随Windows转发消失中断，未执行容器命令。不把这次断线判为容器密码错误或服务器重启。一次有界核查后停止连接尝试，当前远端UNKNOWN。
+
+观测14文件及分析9工件的三端核验均发生在断线前且已完成；本次6小记录与随后连接状态/发布收据的25386镜像待补，不能称最终三端发布完成。Mac和Git先保留本次完整结论及连接异常，待连接可用只补这些小记录；原观测、CPU分析、NPZ和训练不重做。最后GPU/OOM/原进程退出只引用10:43:46历史现场，不冒充当前在线状态。
+
 授权已按README、索引、payload audit、origin Q1独立40位远端及三端大小SHA流程发布，见data/manifests/supermimic_q1_gait_goal_substep_authorization_publication_20261030.json。观测完成和分析源码已发布于cf57f80ac33ca775f52179b8b63c0463dfc1b7b9；本次分析结论及执行日志沿用相同流程。最终发布状态以data/manifests/supermimic_q1_gait_goal_substep_observation_publication_20261030.json为准，收据只登记实际完成的核验。
 
 2026-10-30 09:45:08北京时间只读快照：原boot4d859008-4c83-4a6d-814d-cbb9dfe885c9、GPU-26028785-9fb9-45af-e614-4cc53af15d08，GPU15MiB/0%/无计算进程/OOM0；容器总5.18GB、cache4.31GB、RSS20.4MB，两个唯一观测根均不存在，V02 plan大小SHA一致。正式启动仍由原24GiB准入/30GiB守卫和独立GPU锁检查；快照不替代现场进程收据。

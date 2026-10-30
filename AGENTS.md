@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-30子步最终小记录镜像遇断线：分析提交e69fb305ee650a101f17a57fd63fe757dd15a099独立远端已核/6记录356430B Git-Mac大小SHA同；14观测与9分析工件三端已在断线前核完。原双master消失/18873拒绝后，按用户指示hp_han曾返回Windows主机名，随后对端reset/Broken pipe、25386登录随转发中断，未执行容器命令/不证明密码错；一次有界核查后不重复，当前远端UNKNOWN。最终6记录及新连接状态/publication旁收据服务器镜像待，只补小记录不重做观测/CPU分析/训练，原physical_regression/采纳null/goal ACTIVE与监督缓存等保持，认证环境/agent未改。入口同SUBSTEP_OBSERVATION及publication收据，最后GPU/OOM仅10:43历史。
+
 - 2026-10-30两线子步保存分析完成：24片/25440子步、144足/1440关节/3480片段行、8CPU测试，分析0新增积分推理FK动力学优化；9工件6069077B三端SHA/两图目视，74源读取前后身份相同、PD重建差<=2.23e-6Nm。PPO起走右脚低力样本81.5%/98.1%/92.1%仍<=5mm，贴地踝近限0/最大7.24Nm<22；>=12低力高10mm片段均0，不支持持续限矩独因。底座单环境右脚p95约11.64/14.09mm却左脚降低/起走倾斜+9%-16%，非历史330环境重放/自然步态达标。两次观测授权已用，不新物理训练恢复重试扩时/agent；原901.178392秒/physical_regression/采纳null/goal ACTIVE及监督缓存等保持。入口同SUBSTEP_OBSERVATION和结果清单，发布看publication旁收据；下方分析待执行为历史。
 
 - 2026-10-30两线子步观测各一次授权已用：底座09:56:19、PPO10:39:23正常完成，每线12片/3180控制/12720尝试返回核验子步，总25440子步/7950策略批，0optimizer/不重试。两guard回收0/四原进程已核退出/原boot/GPU15MiB无计算/OOM0，12配对已记录初态/RNG相同但非全求解等价。14小工件654236B三端SHA、8CPU分析测试通过，下一步只读新存档CPU分析待，不新物理/训练/恢复/重试扩时。原桥按用户要求恢复/无认证配置改动；原901.178392秒/physical_regression/采纳null/goal ACTIVE及监督缓存等保持。入口GAIT_GOAL01_SUBSTEP_OBSERVATION与substep_observation_results清单；下方未启动历史。

@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-10-30：[GAIT_GOAL01两线子步观测与分析](README_Q1_GAIT_GOAL01_SUBSTEP_OBSERVATION_20261030.md)。24片/25440子步观测完成、0optimizer/两次授权已用；保存CPU分析144足/1440关节/3480片段行、8测试/74源前后同SHA，9工件6069077B三端SHA/两图目视。PPO起走右脚低力时81.5%-98.1%仍贴地、贴地踝未近限；底座右脚抬高伴左脚下降/起走倾斜代价。非历史重放或自然步态合格，原901.18实训秒/physical_regression/采纳null/goal ACTIVE保持，不新物理训练重试扩时。[清单](../data/manifests/supermimic_q1_gait_goal_substep_observation_results_20261030.json)，发布看publication旁收据。
+2026-10-30：[GAIT_GOAL01两线子步观测与分析](README_Q1_GAIT_GOAL01_SUBSTEP_OBSERVATION_20261030.md)。24片/25440子步观测完成、0optimizer/两次授权已用；保存CPU分析144足/1440关节/3480片段行、8测试/74源前后同SHA，9工件6069077B三端SHA/两图目视。PPO起走右脚低力时81.5%-98.1%仍贴地、贴地踝未近限；底座右脚抬高伴左脚下降/起走倾斜代价。非历史重放或自然步态合格，原901.18实训秒/physical_regression/采纳null/goal ACTIVE保持。分析提交已核远端/Mac，随后Windows断线使最新小记录服务器镜像待、当前UNKNOWN；不重跑观测或分析/新训练。[清单](../data/manifests/supermimic_q1_gait_goal_substep_observation_results_20261030.json)/[发布与待镜](../data/manifests/supermimic_q1_gait_goal_substep_observation_publication_20261030.json)。
 
 2026-10-30：[GAIT_GOAL01双线逐子步观测](README_Q1_GAIT_GOAL01_SUBSTEP_OBSERVATION_20261030.md)。用户已答“允许两条各一次”，执行既有V02精确plan/282源/17测试，不改case预算；底座initial/301秒、PPO同教师零/600秒head，各两走三重复/12单环境case、每线<=3180控制/12720子步/6360策略批、1800秒+10回收，串行/0optimizer/不重试。授权记录待发布核验后运行，当前未启动；原901.18秒/失败/采纳null/goal ACTIVE保持。此条覆盖下方历史“观测待答复”。[授权](../data/manifests/supermimic_q1_gait_goal_substep_authorization_20261030.json)。
 

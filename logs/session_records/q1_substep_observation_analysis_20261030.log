@@ -1,0 +1,19 @@
+GAIT_GOAL01 saved native substep analysis
+Analysis source commit: cf57f80ac33ca775f52179b8b63c0463dfc1b7b9
+Observation source commit: 9c71405ddf216dac3b30326a6302de71c8e7d7f7
+Existing authorized observations were not rerun.
+CPU-only execution, CUDA_VISIBLE_DEVICES=-1; timeout300s plus10s cleanup.
+Command:
+ssh -S /tmp/yuanqi-q1-25386.sock -T -p 18873 -o BatchMode=yes -o ConnectTimeout=8 -o 'HostKeyAlias=[59.77.15.15]:25386' root@127.0.0.1 'cd /opt/data/private/ZHY && env CUDA_VISIBLE_DEVICES=-1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 timeout --signal=TERM --kill-after=10s 300s data/environments/supermimic_q1_hp_20261026/bin/python -u script/project_tools/analyze_q1_substep_observation.py --base data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_BASE_20261030 --ppo data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_PPO_20261030 --output data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030 --source-base-commit cf57f80ac33ca775f52179b8b63c0463dfc1b7b9'
+
+Captured successful tool output:
+{"status": "SAVED_NATIVE_SUBSTEP_ANALYSIS_READY", "native_controls_analyzed": 6360, "native_substeps_analyzed": 25440, "foot_rows": 144, "joint_rows": 1440, "run_rows": 3480}
+Exit code: 0
+Analysis output: 9 derived artifacts, 6069077 bytes, three-way size/SHA256 verified.
+Raw72 NPZ files and weights: SERVER_LOCAL_ONLY.
+Inputs: 72 NPZ plus2 result JSON, identities verified before/after.
+Maximum saved native PD force reconstruction difference: 2.2289050036761182e-06 Nm.
+Visual review recorded at2026-10-30T04:14:49Z: base and PPO PNG readable, labels and legends fit.
+No new physical integration, policy inference, FK/dynamics calls, optimizer updates or training.
+Original training901.178391956928s; physical_regression; accepted checkpoint null; goal active.
+

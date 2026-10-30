@@ -1,6 +1,6 @@
 {
   "stage": "GAIT_GOAL01_SUBSTEP_OBSERVATION_20261030",
-  "status": "OBSERVATIONS_COMPLETED_SAVED_ANALYSIS_PENDING",
+  "status": "OBSERVATIONS_AND_SAVED_NATIVE_ANALYSIS_COMPLETED",
   "observation_code_commit": "9c71405ddf216dac3b30326a6302de71c8e7d7f7",
   "plan_sha256": "c94cf9489c317ea6a2ca431af898bc4f8704e698067c5e927d17a389b1234942",
   "authorization": "data/manifests/supermimic_q1_gait_goal_substep_authorization_20261030.json",
@@ -234,9 +234,197 @@
   },
   "saved_analysis": {
     "tool": "script/project_tools/analyze_q1_substep_observation.py",
+    "source_base_commit": "cf57f80ac33ca775f52179b8b63c0463dfc1b7b9",
     "cpu_tests_passed": 8,
-    "execution": "NOT_STARTED",
-    "output": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030"
+    "test_log": "logs/session_records/q1_substep_observation_analysis_tests_20261030.log",
+    "execution": "COMPLETED",
+    "execution_exit_code": 0,
+    "execution_log": "logs/session_records/q1_substep_observation_analysis_20261030.log",
+    "execution_repeated": false,
+    "output": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030",
+    "status": "SAVED_NATIVE_SUBSTEP_ANALYSIS_READY",
+    "saved_cases": 24,
+    "native_controls_analyzed": 6360,
+    "native_substeps_analyzed": 25440,
+    "foot_rows": 144,
+    "joint_rows": 1440,
+    "run_rows": 3480,
+    "native_sample_rows": 25440,
+    "source_identity_count": 74,
+    "source_raw_NPZ_count": 72,
+    "source_result_JSON_count": 2,
+    "source_identities_before_and_after_unchanged": true,
+    "source_identities_recorded_in": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030/summary.json",
+    "new_physical_substeps": 0,
+    "new_policy_inference_calls": 0,
+    "new_FK_or_dynamics_calls": 0,
+    "optimizer_updates": 0,
+    "maximum_recorded_PD_force_reconstruction_error_Nm": 0.0000022289050036761182,
+    "conditional_low_force_definition": "Same solve/pre sample: measured foot world-Z force magnitude <= threshold and opposite foot > threshold.",
+    "force_thresholds_N": [
+      2.5,
+      5,
+      10
+    ],
+    "same_time_solve_force_height_effort": true,
+    "post_qpos_offset_s": 0.005,
+    "near_limit_definition": "Recorded actuator force is within absolute1e-4 Nm of either recorded force bound.",
+    "minimum_high_run_samples": 12,
+    "minimum_high_run_sample_exposure_s": 0.06,
+    "minimum_high_run_endpoint_span_s": 0.055,
+    "runs_are_continuous_unloading_or_validated_steps": false,
+    "results": {
+      "ppo_trained600_start_right": {
+        "repeats": [
+          0,
+          1,
+          2
+        ],
+        "low_force_samples": [
+          227,
+          215,
+          216
+        ],
+        "low_force_near5_samples": [
+          185,
+          211,
+          199
+        ],
+        "low_force_near5_fraction": [
+          0.8149779735682819,
+          0.9813953488372092,
+          0.9212962962962963
+        ],
+        "sole_p95_mm": [
+          5.4629,
+          2.8477,
+          3.7217
+        ],
+        "all_high10_samples": [
+          10,
+          0,
+          4
+        ],
+        "low_force_high10_runs_ge12": [
+          0,
+          0,
+          0
+        ],
+        "ankle_pitch_low_near5_limit_samples": [
+          0,
+          0,
+          0
+        ],
+        "ankle_pitch_low_near5_effort_abs_p95_Nm": [
+          4.307521820068358,
+          4.36707067489624,
+          4.194494533538818
+        ],
+        "ankle_pitch_low_near5_effort_abs_max_Nm": [
+          7.052475929260254,
+          7.177216529846191,
+          7.234564781188965
+        ],
+        "ankle_pitch_all_limit_fraction": [
+          0.04047619047619048,
+          0.039285714285714285,
+          0.03333333333333333
+        ],
+        "force_limit_abs_Nm": 22,
+        "low_force_conclusion_unchanged_across_2_5_5_10_N": true
+      },
+      "base_trained301": {
+        "stop_right_sole_p95_mm": [
+          11.6428,
+          11.6428,
+          11.6428
+        ],
+        "start_right_sole_p95_mm": [
+          14.0863,
+          13.9734,
+          14.0863
+        ],
+        "stop_right_low_force_high10_runs_ge12": [
+          4,
+          4,
+          4
+        ],
+        "start_right_low_force_high10_runs_ge12": [
+          3,
+          3,
+          3
+        ],
+        "start_torso_tilt_ratios_from_original_gait_metric": [
+          1.1487,
+          1.1635,
+          1.0866
+        ],
+        "tradeoff": "Fresh one-world right-foot height increases with lower left-foot height; start tilt rises and stop left loaded slip increases. Not natural-gait acceptance."
+      }
+    },
+    "bounded_interpretation": [
+      "Low-force near-ground PPO samples are not explained solely by continuous ankle effort saturation.",
+      "Paired recorded initial state/input/model/RNG equality does not establish complete solver-state or hook trajectory equivalence.",
+      "Fresh one-world observations differ from historical330-world trajectories; original physical_regression remains unchanged.",
+      "No unique PD/contact/reward/exploration/critic/model cause isolated; no automatic parameter change or checkpoint adoption."
+    ],
+    "artifacts": [
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030/foot_conditions.csv",
+        "bytes": 25939,
+        "sha256": "9854c0d003f0d3c4a8499a93b61b4d6d69b652f50ac767f4a4b3badc95099b82"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030/joint_conditions.csv",
+        "bytes": 304661,
+        "sha256": "48162a2e0297bfa4307f0402b0c341a8ecdd35765427ebb96b7a601500b4eda0"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030/sample_runs.csv",
+        "bytes": 480036,
+        "sha256": "b70feac4d29f8a2430e552f67525f2dea757607a0b8c144ccb6fc0ff1843b738"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030/native_solve_series.csv",
+        "bytes": 3141476,
+        "sha256": "621e2ade5cc594c9744981951ecd862eafcb4e78b1ade7a85b3bbd528e610d38"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030/base_native_substeps.png",
+        "bytes": 876954,
+        "sha256": "aae28ba5a3136be597467d2c6b182ff7bca09d459e8305d5ae90f9bc9f32701d"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030/base_native_substeps.pdf",
+        "bytes": 163370,
+        "sha256": "c02954ea083de59682a816edc4a9d4b82fa7e38e20223a0850ee007d87bab287"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030/ppo_native_substeps.png",
+        "bytes": 785115,
+        "sha256": "36f16b5102e4b5df12190b37c28c9245e503d8e99a628cae7aebf352f4b7d025"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030/ppo_native_substeps.pdf",
+        "bytes": 161695,
+        "sha256": "09f679ed5617d4e2191bb0355f230eefa0df72af58c8142f21ebc6a8d88d574a"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030/summary.json",
+        "bytes": 129831,
+        "sha256": "545354777a06ada4fc06a219ef68089f700039daefe98aab2cf8d27316fca294"
+      }
+    ],
+    "artifacts_total_bytes": 6069077,
+    "artifacts_three_way_size_sha_verified": true,
+    "pngs_visually_reviewed": [
+      "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030/base_native_substeps.png",
+      "data/supermimic_for_q1/Q1_GAIT_GOAL01_SUBSTEP_ANALYSIS_20261030/ppo_native_substeps.png"
+    ],
+    "visual_reviewed_at_utc": "2026-10-30T04:14:49Z",
+    "visual_layout_passed": true,
+    "physical_trajectory_equivalence_verified": false,
+    "historical_replay": false
   },
   "original_training_seconds": 901.178391956928,
   "original_outcome": "physical_regression",

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-30：[GAIT_GOAL01两线子步观测完成](README_Q1_GAIT_GOAL01_SUBSTEP_OBSERVATION_20261030.md)。各12片/3180控制/12720子步、合计25440/7950策略批，0optimizer/不重试；两guard回收0/四进程已退出/GPU释放/OOM0，12配对记录初态/RNG逐值相同但非完整求解等价。14小工件654236B三端SHA；8CPU分析测试通过，实际只读分析待，不预称自然步态达标。原901.18实训秒/失败/采纳null/goal ACTIVE保持。[清单](../data/manifests/supermimic_q1_gait_goal_substep_observation_results_20261030.json)。
+
 2026-10-30：[GAIT_GOAL01双线逐子步观测](README_Q1_GAIT_GOAL01_SUBSTEP_OBSERVATION_20261030.md)。用户已答“允许两条各一次”，执行既有V02精确plan/282源/17测试，不改case预算；底座initial/301秒、PPO同教师零/600秒head，各两走三重复/12单环境case、每线<=3180控制/12720子步/6360策略批、1800秒+10回收，串行/0optimizer/不重试。授权记录待发布核验后运行，当前未启动；原901.18秒/失败/采纳null/goal ACTIVE保持。此条覆盖下方历史“观测待答复”。[授权](../data/manifests/supermimic_q1_gait_goal_substep_authorization_20261030.json)。
 
 2026-10-30：[GAIT_GOAL01低力贴地样本的关节响应](README_Q1_GAIT_GOAL01_SAVED_LOW_FORCE_CONTROL_20261030.md)。45片/8最终CPU测试、0积分推理FK动力学；PPO起走低力近地时髋膝踝仍有约.051-.087rad/20ms运动，脚底均值约1mm，未组成抬脚；残差约.003-.006rad、非限幅证据。8工件2952609B三端SHA/两图目视，保留CPU清单格式错误修复。goal ACTIVE/采纳null，既有子步问题待答复，不追加训练。[清单](../data/manifests/supermimic_q1_gait_goal_saved_low_force_control_20261030.json)。

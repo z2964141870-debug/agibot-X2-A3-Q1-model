@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-30两线子步观测各一次授权已用：底座09:56:19、PPO10:39:23正常完成，每线12片/3180控制/12720尝试返回核验子步，总25440子步/7950策略批，0optimizer/不重试。两guard回收0/四原进程已核退出/原boot/GPU15MiB无计算/OOM0，12配对已记录初态/RNG相同但非全求解等价。14小工件654236B三端SHA、8CPU分析测试通过，下一步只读新存档CPU分析待，不新物理/训练/恢复/重试扩时。原桥按用户要求恢复/无认证配置改动；原901.178392秒/physical_regression/采纳null/goal ACTIVE及监督缓存等保持。入口GAIT_GOAL01_SUBSTEP_OBSERVATION与substep_observation_results清单；下方未启动历史。
+
 - 2026-10-30用户明确“允许两条各一次”零优化子步观测，覆盖此前观测待答复限制，仅既有V02精确plan c94cf9489c317ea6a2ca431af898bc4f8704e698067c5e927d17a389b1234942/282源/86121B。底座initial/301秒、PPO同冻结教师零/600秒head，各两走三重复12单环境case，每线<=3180控制/12720子步/6360策略批、1800秒停止+10回收，串行一次/0optimizer/不重试；原训练V02授权已用/901.178392秒/physical_regression/采纳null/goal ACTIVE保留。先发布授权/README/三端SHA再跑，当前未启动；大NPZ/权重只留25386，不动监督缓存等/认证环境/agent。入口GAIT_GOAL01_SUBSTEP_OBSERVATION与substep_authorization清单；下方观测待答复均历史。
 
 - 2026-10-30 GAIT_GOAL01低力近地关节响应完成：45片12015状态/1620关节540脚底2157样本行、最终8CPU测试，0积分推理FK动力学优化；8工件2952609B三端SHA/两图目视。PPO最终起走14/14/16低力近地样本，髋膝踝20ms RMS约.051-.087rad而脚底均值约.94-1.29mm；残差约.003-.006rad，不是完全不动，也不隔离PD/接触等单因。目标/pre在t、力t+15ms、后态t+20ms；PD设定值非下一姿态、角方向非脚高方向。清单artifacts格式首入口错误日志保留、未读NPZ/物理，补回归后CPU完成。原901.178392秒/失败/采纳null/goal ACTIVE、既有子步问题和282源plan不变，不新物理推理训练恢复重试扩时/agent，监督缓存等保持。入口GAIT_GOAL01_SAVED_LOW_FORCE_CONTROL及清单/发布旁收据。

@@ -1,0 +1,1034 @@
+{
+  "stage": "GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030",
+  "status": "SAVED_ROOT_PROJECTION_DELIVERED_PHYSICAL_TARGET_NOT_ACHIEVED",
+  "recorded_utc": "2026-10-30 00:22:39 UTC",
+  "source_base_commit": "588d86ce75677b60ef14fd707f13cf3e5025b8e2",
+  "previous_goal_turn_classification": "progress",
+  "review_report": "reports/README_Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030.md",
+  "code": [
+    {
+      "relative_path": "script/project_tools/analyze_q1_saved_root_projection.py",
+      "bytes": 21944,
+      "sha256": "d1fe8d31fcbd1e3db22950a68d6c9021544c7e442cab99bcfaf9dcd4b40c7b54"
+    },
+    {
+      "relative_path": "script/project_tools/test_q1_saved_root_projection.py",
+      "bytes": 5023,
+      "sha256": "4efc622d5c6960032f91e1d59e4fb5f365a26c5d9d3503315b03403779d2f14d"
+    }
+  ],
+  "logs": [
+    {
+      "relative_path": "logs/session_records/q1_gait_goal_saved_root_projection_tests_20261030.log",
+      "bytes": 1595,
+      "sha256": "a9932d5a5fb61cca0e7c7b260ee28f7b5d7495affae61e858d1203b6860546dd"
+    },
+    {
+      "relative_path": "logs/session_records/q1_gait_goal_saved_root_projection_tests_v02_20261030.log",
+      "bytes": 981,
+      "sha256": "02754d07849d175675f02f6013a7a6b2a7ffed38ae08b997d3635c5a67030897"
+    },
+    {
+      "relative_path": "logs/session_records/q1_gait_goal_saved_root_projection_20261030.log",
+      "bytes": 1521,
+      "sha256": "a4db30bc583010c62e87f05dcc0777952b0c471febc64fff86680013948d57c8"
+    }
+  ],
+  "tests": {
+    "final_passed": 8,
+    "final_failed": 0,
+    "initial_passed": 7,
+    "initial_matmul_floating_warnings_preserved": true,
+    "final_einsum_without_warnings": true,
+    "command": "python3 -m unittest discover -s script/project_tools -p 'test_q1_saved_root_projection.py' -v"
+  },
+  "scope": {
+    "saved_clips": 45,
+    "saved_states": 12015,
+    "static_fk_batches": 120,
+    "static_fk_poses": 12015,
+    "condition_rows": 540,
+    "timeseries_rows": 12015,
+    "new_physical_substeps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0,
+    "new_training_seconds": 0,
+    "new_native_control_environments": 0,
+    "contact_dynamics_solves": 0,
+    "large_npz_transferred": false,
+    "original_media_or_saved_audits_repeated": false,
+    "original_training_seconds": 901.178391956928
+  },
+  "inputs": {
+    "published_target_manifest": "data/manifests/supermimic_q1_gait_goal_saved_target_pose_20261030.json",
+    "consumed_identities_before_after_unchanged": true,
+    "consumed_identities": 55,
+    "original_traces": 15,
+    "original_traces_match_published_provenance_and_selection_receipts": true,
+    "checked_fk_and_sole_sources_and_scene_assets_match_both_original_frozen_plans": true,
+    "full_source_identities_in_artifact_summary": true
+  },
+  "definitions": {
+    "height": "Right collision-sole minimum Z minus left collision-sole minimum Z",
+    "up": "World up in Q1 root-local coordinates, root rotation matrix third row",
+    "axes": "Root-local X/Y/Z projections of root-normal change against the reference-selected right-minus-left material-point vector",
+    "selection": "Actual minimum reselection and sphere-radius changes retained as separate exact term",
+    "noncausal": "Axis projection attribution is not an independent Euler intervention or unique training diagnosis",
+    "window": "Declared swing AND original reference sole >=10mm",
+    "aggregation": "Window mean per repeat, then median of3; separate component medians cannot be added",
+    "timing": "Next20ms reference joints/windows paired with observed control-start root",
+    "timesegments": "Four equal sample-count quarters; empty conditions remain null"
+  },
+  "verification": {
+    "maximum_reference_height_error_m": 1.1900598677339058e-7,
+    "maximum_saved_root_height_error_m": 2.323795928460548e-7,
+    "maximum_decomposition_error_m": 2.0469737016526324e-16,
+    "tested_executed_analyzer_sha_match": true,
+    "pngs_visually_reviewed": 2,
+    "layout_passed": true
+  },
+  "findings": {
+    "right_raised_window_by_stage": [
+      {
+        "line": "base",
+        "label": "initial",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames": [
+          44,
+          44,
+          44
+        ],
+        "metrics": {
+          "root_effect_mean_m": {
+            "values": [
+              -0.0010749671370569756,
+              -0.0031611723486037165,
+              -0.001386057764916365
+            ],
+            "median": -0.001386057764916365
+          },
+          "projection_x_mean_m": {
+            "values": [
+              0.0026399711967778246,
+              0.0017580853876237726,
+              0.003157044122467528
+            ],
+            "median": 0.0026399711967778246
+          },
+          "projection_y_mean_m": {
+            "values": [
+              -0.004953335805061173,
+              -0.005932488995254964,
+              -0.005516701398701898
+            ],
+            "median": -0.005516701398701898
+          },
+          "projection_z_mean_m": {
+            "values": [
+              0.00011704402522899942,
+              0.00009495949628473497,
+              0.00011884157503942628
+            ],
+            "median": 0.00011704402522899942
+          },
+          "support_switch_mean_m": {
+            "values": [
+              0.0011213534459973897,
+              0.0009182717627427523,
+              0.0008547579362785927
+            ],
+            "median": 0.0009182717627427523
+          },
+          "local_y_tilt_delta_mean_rad": {
+            "values": [
+              0.02432698194854552,
+              0.029503033067943774,
+              0.027677971685575817
+            ],
+            "median": 0.027677971685575817
+          },
+          "local_x_tilt_delta_mean_rad": {
+            "values": [
+              0.03167243501555173,
+              0.024878383835617898,
+              0.033850875451498987
+            ],
+            "median": 0.03167243501555173
+          }
+        }
+      },
+      {
+        "line": "base",
+        "label": "initial",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames": [
+          51,
+          51,
+          51
+        ],
+        "metrics": {
+          "root_effect_mean_m": {
+            "values": [
+              -0.003711228939540315,
+              -0.005659583359232344,
+              -0.007844956332081673
+            ],
+            "median": -0.005659583359232344
+          },
+          "projection_x_mean_m": {
+            "values": [
+              0.001464463148639917,
+              0.0009853494051753292,
+              0.0006867627926399238
+            ],
+            "median": 0.0009853494051753292
+          },
+          "projection_y_mean_m": {
+            "values": [
+              -0.00541210319713706,
+              -0.006920430057773092,
+              -0.009218461459566818
+            ],
+            "median": -0.006920430057773092
+          },
+          "projection_z_mean_m": {
+            "values": [
+              0.00005860639669292791,
+              0.000046538070735817466,
+              0.000033838556728580334
+            ],
+            "median": 0.000046538070735817466
+          },
+          "support_switch_mean_m": {
+            "values": [
+              0.0001778047122639007,
+              0.0002289592226296089,
+              0.0006529037781166407
+            ],
+            "median": 0.0002289592226296089
+          },
+          "local_y_tilt_delta_mean_rad": {
+            "values": [
+              0.02934727249655677,
+              0.038846397876131124,
+              0.05090570024000706
+            ],
+            "median": 0.038846397876131124
+          },
+          "local_x_tilt_delta_mean_rad": {
+            "values": [
+              0.026668368506227894,
+              0.022183785724887904,
+              0.022961691930177056
+            ],
+            "median": 0.022961691930177056
+          }
+        }
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames": [
+          44,
+          44,
+          44
+        ],
+        "metrics": {
+          "root_effect_mean_m": {
+            "values": [
+              -0.012637977015276304,
+              -0.011674725729647733,
+              -0.01072333848339852
+            ],
+            "median": -0.011674725729647733
+          },
+          "projection_x_mean_m": {
+            "values": [
+              0.003274819860579048,
+              0.002247802272755221,
+              0.003475887201020103
+            ],
+            "median": 0.003274819860579048
+          },
+          "projection_y_mean_m": {
+            "values": [
+              -0.01592599728644932,
+              -0.013628117469364886,
+              -0.01433767108222389
+            ],
+            "median": -0.01433767108222389
+          },
+          "projection_z_mean_m": {
+            "values": [
+              0.000052071427179681124,
+              0.00005883081300713839,
+              0.00006171192561543931
+            ],
+            "median": 0.00005883081300713839
+          },
+          "support_switch_mean_m": {
+            "values": [
+              -0.00003887101658569839,
+              -0.000353241346045184,
+              0.00007673347218984206
+            ],
+            "median": -0.00003887101658569839
+          },
+          "local_y_tilt_delta_mean_rad": {
+            "values": [
+              0.0818738110940498,
+              0.06993517883773911,
+              0.07386811784305473
+            ],
+            "median": 0.07386811784305473
+          },
+          "local_x_tilt_delta_mean_rad": {
+            "values": [
+              0.050724306970330375,
+              0.04455365612800398,
+              0.049153388450597475
+            ],
+            "median": 0.049153388450597475
+          }
+        }
+      },
+      {
+        "line": "base",
+        "label": "stage_01",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames": [
+          51,
+          51,
+          51
+        ],
+        "metrics": {
+          "root_effect_mean_m": {
+            "values": [
+              -0.01609476681377994,
+              -0.01443740945576999,
+              -0.01656213194605522
+            ],
+            "median": -0.01609476681377994
+          },
+          "projection_x_mean_m": {
+            "values": [
+              -0.0009006675963973414,
+              -0.0002094812193635573,
+              -0.0005809281993609566
+            ],
+            "median": -0.0005809281993609566
+          },
+          "projection_y_mean_m": {
+            "values": [
+              -0.016019473648617586,
+              -0.014979288010143239,
+              -0.016909199582420334
+            ],
+            "median": -0.016019473648617586
+          },
+          "projection_z_mean_m": {
+            "values": [
+              5.444449399281236e-7,
+              0.000014602767029287287,
+              -0.000009057230092277601
+            ],
+            "median": 5.444449399281236e-7
+          },
+          "support_switch_mean_m": {
+            "values": [
+              0.0008248299862950562,
+              0.0007367570067075263,
+              0.0009370530658183435
+            ],
+            "median": 0.0008248299862950562
+          },
+          "local_y_tilt_delta_mean_rad": {
+            "values": [
+              0.08652402544995914,
+              0.08068717998713387,
+              0.09202107580579756
+            ],
+            "median": 0.08652402544995914
+          },
+          "local_x_tilt_delta_mean_rad": {
+            "values": [
+              0.02357453659221445,
+              0.028035020793491138,
+              0.026545742308728196
+            ],
+            "median": 0.026545742308728196
+          }
+        }
+      },
+      {
+        "line": "ppo",
+        "label": "initial",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames": [
+          44,
+          44,
+          44
+        ],
+        "metrics": {
+          "root_effect_mean_m": {
+            "values": [
+              -0.001786609754167492,
+              -0.0012615496999048431,
+              -0.00129825724683184
+            ],
+            "median": -0.00129825724683184
+          },
+          "projection_x_mean_m": {
+            "values": [
+              0.0029031968346547674,
+              0.002817937794791354,
+              0.002748740241982243
+            ],
+            "median": 0.002817937794791354
+          },
+          "projection_y_mean_m": {
+            "values": [
+              -0.005556659262658715,
+              -0.005152554598599586,
+              -0.005022084980480458
+            ],
+            "median": -0.005152554598599586
+          },
+          "projection_z_mean_m": {
+            "values": [
+              0.00011203099317549779,
+              0.00011995741760006556,
+              0.00011504588888068432
+            ],
+            "median": 0.00011504588888068432
+          },
+          "support_switch_mean_m": {
+            "values": [
+              0.0007548216806609786,
+              0.0009531096863033373,
+              0.0008600416027857073
+            ],
+            "median": 0.0008600416027857073
+          },
+          "local_y_tilt_delta_mean_rad": {
+            "values": [
+              0.02786358539302772,
+              0.02568187447326659,
+              0.025034813115126578
+            ],
+            "median": 0.02568187447326659
+          },
+          "local_x_tilt_delta_mean_rad": {
+            "values": [
+              0.03168788376172412,
+              0.033657490530378725,
+              0.032106349020659154
+            ],
+            "median": 0.032106349020659154
+          }
+        }
+      },
+      {
+        "line": "ppo",
+        "label": "initial",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames": [
+          51,
+          51,
+          51
+        ],
+        "metrics": {
+          "root_effect_mean_m": {
+            "values": [
+              -0.006214414055816127,
+              -0.004427357020769801,
+              -0.004395623361444463
+            ],
+            "median": -0.004427357020769801
+          },
+          "projection_x_mean_m": {
+            "values": [
+              0.0007512683956640732,
+              0.0014500637788730608,
+              0.001377807378381806
+            ],
+            "median": 0.001377807378381806
+          },
+          "projection_y_mean_m": {
+            "values": [
+              -0.007462019008354661,
+              -0.006122063646506415,
+              -0.006040635828736439
+            ],
+            "median": -0.006122063646506415
+          },
+          "projection_z_mean_m": {
+            "values": [
+              0.00004309584166874029,
+              0.00005554652265211986,
+              0.000057451840684364295
+            ],
+            "median": 0.00005554652265211986
+          },
+          "support_switch_mean_m": {
+            "values": [
+              0.0004532407152057265,
+              0.00018909632421143193,
+              0.00020975324822581124
+            ],
+            "median": 0.00020975324822581124
+          },
+          "local_y_tilt_delta_mean_rad": {
+            "values": [
+              0.03964961818293721,
+              0.034200978978074385,
+              0.032925330584636925
+            ],
+            "median": 0.034200978978074385
+          },
+          "local_x_tilt_delta_mean_rad": {
+            "values": [
+              0.020475284809748997,
+              0.026618814123131697,
+              0.025508580519960494
+            ],
+            "median": 0.025508580519960494
+          }
+        }
+      },
+      {
+        "line": "ppo",
+        "label": "stage_01",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames": [
+          44,
+          44,
+          44
+        ],
+        "metrics": {
+          "root_effect_mean_m": {
+            "values": [
+              -0.002343564999234252,
+              -0.0016365812473994323,
+              -0.0025502110657176715
+            ],
+            "median": -0.002343564999234252
+          },
+          "projection_x_mean_m": {
+            "values": [
+              0.0025618296953259026,
+              0.0029983712820106593,
+              0.003375646811584174
+            ],
+            "median": 0.0029983712820106593
+          },
+          "projection_y_mean_m": {
+            "values": [
+              -0.0058923667536226985,
+              -0.005549710007000008,
+              -0.007015171537341605
+            ],
+            "median": -0.0058923667536226985
+          },
+          "projection_z_mean_m": {
+            "values": [
+              0.00010711733881232466,
+              0.00011266579923329759,
+              0.00011516581931862191
+            ],
+            "median": 0.00011266579923329759
+          },
+          "support_switch_mean_m": {
+            "values": [
+              0.0008798547202502363,
+              0.0008020916783566382,
+              0.000974147840721154
+            ],
+            "median": 0.0008798547202502363
+          },
+          "local_y_tilt_delta_mean_rad": {
+            "values": [
+              0.029510752230536477,
+              0.027837338522694613,
+              0.035381147670225835
+            ],
+            "median": 0.029510752230536477
+          },
+          "local_x_tilt_delta_mean_rad": {
+            "values": [
+              0.032651160185656086,
+              0.031596873376956686,
+              0.03780618902314985
+            ],
+            "median": 0.032651160185656086
+          }
+        }
+      },
+      {
+        "line": "ppo",
+        "label": "stage_01",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames": [
+          51,
+          51,
+          51
+        ],
+        "metrics": {
+          "root_effect_mean_m": {
+            "values": [
+              -0.0081583032862194,
+              -0.008404395038859789,
+              -0.008527550260253905
+            ],
+            "median": -0.008404395038859789
+          },
+          "projection_x_mean_m": {
+            "values": [
+              0.0006640264567958587,
+              0.0003661934077829471,
+              0.0005750837270848189
+            ],
+            "median": 0.0005750837270848189
+          },
+          "projection_y_mean_m": {
+            "values": [
+              -0.009384623529194615,
+              -0.00936130909372871,
+              -0.009597805121190288
+            ],
+            "median": -0.009384623529194615
+          },
+          "projection_z_mean_m": {
+            "values": [
+              0.00003440238507840746,
+              0.000030477130307416106,
+              0.000030638018500322524
+            ],
+            "median": 0.000030638018500322524
+          },
+          "support_switch_mean_m": {
+            "values": [
+              0.0005278914011009557,
+              0.0005602435167785552,
+              0.0004645331153512352
+            ],
+            "median": 0.0005278914011009557
+          },
+          "local_y_tilt_delta_mean_rad": {
+            "values": [
+              0.05212229750050751,
+              0.051831472808367085,
+              0.05339830144794389
+            ],
+            "median": 0.05212229750050751
+          },
+          "local_x_tilt_delta_mean_rad": {
+            "values": [
+              0.020630055332236674,
+              0.019710674757724565,
+              0.01594433253536634
+            ],
+            "median": 0.019710674757724565
+          }
+        }
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "frames": [
+          44,
+          44,
+          44
+        ],
+        "metrics": {
+          "root_effect_mean_m": {
+            "values": [
+              -0.0025065121512547538,
+              -0.002336996379145271,
+              -0.004100371252243795
+            ],
+            "median": -0.0025065121512547538
+          },
+          "projection_x_mean_m": {
+            "values": [
+              0.002583903848015961,
+              0.0025684423660883035,
+              0.0021318579449062717
+            ],
+            "median": 0.0025684423660883035
+          },
+          "projection_y_mean_m": {
+            "values": [
+              -0.005876692479813205,
+              -0.0056660602261781245,
+              -0.006815341196945115
+            ],
+            "median": -0.005876692479813205
+          },
+          "projection_z_mean_m": {
+            "values": [
+              0.00010318326206335025,
+              0.00010591837262374513,
+              0.00009241132868064919
+            ],
+            "median": 0.00010318326206335025
+          },
+          "support_switch_mean_m": {
+            "values": [
+              0.0006830932184791648,
+              0.0006547031083208247,
+              0.0004907006711144158
+            ],
+            "median": 0.0006547031083208247
+          },
+          "local_y_tilt_delta_mean_rad": {
+            "values": [
+              0.02964734448935785,
+              0.028406485204660527,
+              0.03441146215114198
+            ],
+            "median": 0.02964734448935785
+          },
+          "local_x_tilt_delta_mean_rad": {
+            "values": [
+              0.028855551504258246,
+              0.02971800663209746,
+              0.0270643157554899
+            ],
+            "median": 0.028855551504258246
+          }
+        }
+      },
+      {
+        "line": "ppo",
+        "label": "stage_02",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "frames": [
+          51,
+          51,
+          51
+        ],
+        "metrics": {
+          "root_effect_mean_m": {
+            "values": [
+              -0.009015614874488225,
+              -0.00967927584408516,
+              -0.00984824185455559
+            ],
+            "median": -0.00967927584408516
+          },
+          "projection_x_mean_m": {
+            "values": [
+              -0.0007273870369246582,
+              -0.0002767591758074542,
+              0.00004630456569485679
+            ],
+            "median": -0.0002767591758074542
+          },
+          "projection_y_mean_m": {
+            "values": [
+              -0.008691584373632408,
+              -0.009902066138254591,
+              -0.010473673600929888
+            ],
+            "median": -0.009902066138254591
+          },
+          "projection_z_mean_m": {
+            "values": [
+              0.000024015403775290997,
+              0.000017836165198940844,
+              0.00001639356691122543
+            ],
+            "median": 0.000017836165198940844
+          },
+          "support_switch_mean_m": {
+            "values": [
+              0.00037934113229355556,
+              0.0004817133047779525,
+              0.0005627336137682197
+            ],
+            "median": 0.0004817133047779525
+          },
+          "local_y_tilt_delta_mean_rad": {
+            "values": [
+              0.04824641210515949,
+              0.05533183634861036,
+              0.05855628338300326
+            ],
+            "median": 0.05533183634861036
+          },
+          "local_x_tilt_delta_mean_rad": {
+            "values": [
+              0.005307287243237561,
+              0.011538738738382043,
+              0.014720965609963466
+            ],
+            "median": 0.011538738738382043
+          }
+        }
+      }
+    ],
+    "right_final_quarters": [
+      {
+        "line": "base",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "quarter": "raised_reference_10mm_q1",
+        "frames": [
+          14,
+          14,
+          14
+        ],
+        "Y_mm": -4.809943561276905,
+        "total_mm": -2.3024407589542695
+      },
+      {
+        "line": "base",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "quarter": "raised_reference_10mm_q2",
+        "frames": [
+          26,
+          26,
+          26
+        ],
+        "Y_mm": -16.804213933721243,
+        "total_mm": -11.613808234566381
+      },
+      {
+        "line": "base",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "quarter": "raised_reference_10mm_q3",
+        "frames": [
+          4,
+          4,
+          4
+        ],
+        "Y_mm": -32.051068130446495,
+        "total_mm": -44.87368684510362
+      },
+      {
+        "line": "base",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "quarter": "raised_reference_10mm_q4",
+        "frames": [
+          0,
+          0,
+          0
+        ],
+        "Y_mm": null,
+        "total_mm": null
+      },
+      {
+        "line": "base",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "quarter": "raised_reference_10mm_q1",
+        "frames": [
+          11,
+          11,
+          11
+        ],
+        "Y_mm": -10.952071658530059,
+        "total_mm": -17.356031215784565
+      },
+      {
+        "line": "base",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "quarter": "raised_reference_10mm_q2",
+        "frames": [
+          10,
+          10,
+          10
+        ],
+        "Y_mm": -19.15351273120276,
+        "total_mm": -14.841426965473266
+      },
+      {
+        "line": "base",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "quarter": "raised_reference_10mm_q3",
+        "frames": [
+          15,
+          15,
+          15
+        ],
+        "Y_mm": -18.071614367855783,
+        "total_mm": -16.811871942696914
+      },
+      {
+        "line": "base",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "quarter": "raised_reference_10mm_q4",
+        "frames": [
+          15,
+          15,
+          15
+        ],
+        "Y_mm": -15.593130049702618,
+        "total_mm": -15.285901004732604
+      },
+      {
+        "line": "ppo",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "quarter": "raised_reference_10mm_q1",
+        "frames": [
+          14,
+          14,
+          14
+        ],
+        "Y_mm": -3.611801499621693,
+        "total_mm": 2.781632864465775
+      },
+      {
+        "line": "ppo",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "quarter": "raised_reference_10mm_q2",
+        "frames": [
+          26,
+          26,
+          26
+        ],
+        "Y_mm": -7.202293775377008,
+        "total_mm": -3.824285354712759
+      },
+      {
+        "line": "ppo",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "quarter": "raised_reference_10mm_q3",
+        "frames": [
+          4,
+          4,
+          4
+        ],
+        "Y_mm": -5.187402489318786,
+        "total_mm": -12.933736229616425
+      },
+      {
+        "line": "ppo",
+        "clip": "walk_ff_stop_180_R_002__A095",
+        "quarter": "raised_reference_10mm_q4",
+        "frames": [
+          0,
+          0,
+          0
+        ],
+        "Y_mm": null,
+        "total_mm": null
+      },
+      {
+        "line": "ppo",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "quarter": "raised_reference_10mm_q1",
+        "frames": [
+          11,
+          11,
+          11
+        ],
+        "Y_mm": 1.2123072055150006,
+        "total_mm": -1.5874330327021355
+      },
+      {
+        "line": "ppo",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "quarter": "raised_reference_10mm_q2",
+        "frames": [
+          10,
+          10,
+          10
+        ],
+        "Y_mm": -11.362083003747482,
+        "total_mm": -12.103010249212149
+      },
+      {
+        "line": "ppo",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "quarter": "raised_reference_10mm_q3",
+        "frames": [
+          15,
+          15,
+          15
+        ],
+        "Y_mm": -13.114852766165463,
+        "total_mm": -11.801738518798192
+      },
+      {
+        "line": "ppo",
+        "clip": "walk_ff_start_180_R_002__A071",
+        "quarter": "raised_reference_10mm_q4",
+        "frames": [
+          15,
+          15,
+          15
+        ],
+        "Y_mm": -13.859643364987619,
+        "total_mm": -11.49667719457314
+      }
+    ],
+    "base_final_local_y_is_largest_negative_window_mean_in_all6_walk_repeats": true,
+    "sole_switch_window_mean_not_centimeter_scale_for_base_final_walks": true,
+    "priority_for_pending_observation": "Align lateral tilt, bilateral actual load, and swing-lift event order",
+    "unique_training_or_control_cause_isolated": false
+  },
+  "artifacts": {
+    "directory": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030",
+    "files": [
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030/base_root_projection.pdf",
+        "bytes": 55149,
+        "sha256": "c41d96522296990481282577a305096ab28cbc6132978534ecd51623dfe383fb"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030/base_root_projection.png",
+        "bytes": 469808,
+        "sha256": "7072bb16416a9071a4f7cf2bc2b38d40e1604954b70e3461e87df6168970bb59"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030/ppo_root_projection.pdf",
+        "bytes": 54851,
+        "sha256": "0ddc97aa3ac064ce4e7e4dd63138e4c0a678323d80547b885fb4079906702f76"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030/ppo_root_projection.png",
+        "bytes": 465525,
+        "sha256": "956afdf3fbf7bdf114fcdfb8d7a825d187bb355b59c3bf6a109bf2570af5a193"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030/root_projection_conditions.csv",
+        "bytes": 118695,
+        "sha256": "7044a123ea077ca8d4c5cadba2ac3b93efc499b3d3d413a47740f0be8c3bf6b7"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030/root_projection_timeseries.csv",
+        "bytes": 5139132,
+        "sha256": "7a4d76a6792186c409223940dbf35e5419ac089edab397c32a3f2728350d0301"
+      },
+      {
+        "relative_path": "data/supermimic_for_q1/Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030/summary.json",
+        "bytes": 16312,
+        "sha256": "0649510626d96f88cc52fbe82b2463313769e5667a5d850f8b9382cf8b9c03e7"
+      }
+    ],
+    "total_bytes": 6319472,
+    "all_three_way_size_sha256_matched": true,
+    "ignored_artifact_directory_not_staged": true
+  },
+  "observation_preparation": {
+    "plan_relative_path": "data/manifests/supermimic_q1_gait_goal_substep_observation_plan_v02_20261030.json",
+    "bytes": 86121,
+    "frozen_inputs": 282,
+    "sha256": "c94cf9489c317ea6a2ca431af898bc4f8704e698067c5e927d17a389b1234942",
+    "three_way_plan_identity_unchanged": true,
+    "existing_human_question_pending": true,
+    "question_repeated": false,
+    "new_observation_started": false,
+    "automatic_goal_continuation_not_treated_as_approval": true
+  },
+  "original_physical_regression_outcome_preserved": true,
+  "consumed_training_base_V02_authorization_not_reused": true,
+  "goal_status": "active",
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "agents_started": false,
+  "automations_modified": false,
+  "next_training_authorized_by_this_analysis": false
+}

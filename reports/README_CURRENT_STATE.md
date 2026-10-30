@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-30：[GAIT_GOAL01根局部投影与最低脚底点分解](README_Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030.md)。45片12015状态/120批静态FK/8最终测试、0积分推理接触求解优化；7工件6319472B三端SHA/两图目视，原脚高重建差<=2.33e-7m/分解误差<=2.05e-16m。底座最终右脚窗口Y投影主要负项，停走-14.34/起走-16.02mm，对应局部Y倾斜差约4.23/4.96度；最低点切换窗口均值<1mm、瞬时值保留。PPO起走负侧向项集中后三段；只能缩小后续侧倾/左右载荷/抬脚时序诊断重点，不能定训练单因或直接改配方。初版matmul告警日志保留、最终einsum8测试无告警。原901.178392秒/physical_regression/采纳null/goal ACTIVE及监督缓存等保持；既有子步问题待答复和282源plan未变，不新物理推理训练恢复重试扩时/agent。[清单](../data/manifests/supermimic_q1_gait_goal_saved_root_projection_20261030.json)，发布以publication旁收据为准。
+
 2026-10-30：[GAIT_GOAL01保存目标/根姿态静态几何](README_Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030.md)。45片12015状态/72090静态FK姿态/6测试，0积分推理动力学优化；7工件10072795B三端SHA/两图目视，原脚底重建误差<=1.63e-7m。相同参考关节放入保存根后，底座最终右脚相对高差受根旋转影响停走-11.67/起走-16.09mm；PPO最终右脚窗口残差目标脚底Z RMS约.726/1.130mm。目标角部分超模型范围且初始已有，不能当可达轨迹、实际离地或单因。原901.178392秒/physical_regression/采纳null/goal ACTIVE与监督缓存等保持；既有子步观测问题待答复及282源plan不变，不新物理推理训练恢复重试扩时/agent。[清单](../data/manifests/supermimic_q1_gait_goal_saved_target_pose_20261030.json)，发布以publication旁收据为准。
 
 2026-10-30：[GAIT_GOAL01保存样本离地片段与左右时序](README_Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030.md)。45片24030足样本/7测试、0积分推理FK或动力学优化；14小工件1248986B三端SHA/两图目视。PPO最终起走右脚三次无>10mm保存帧，>5mm也无连续3样本，左脚默认4/5/6段；底座停走右脚虽5/5/5段，却均先RRRRR再L，右脚仅1/7参考窗口对齐。片段非步数，三样本端点40ms、力早于姿态5ms，阈值敏感性与原图/源码快照保留。原901.178392秒/失败/采纳null/goal ACTIVE、既有观测待答复及V02精确plan不变，不新增物理推理训练或恢复重试扩时/agent，监督缓存等保持。[清单](../data/manifests/supermimic_q1_gait_goal_saved_sample_runs_20261030.json)，发布以publication旁收据为准。

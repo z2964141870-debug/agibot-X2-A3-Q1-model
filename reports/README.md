@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-30：[GAIT_GOAL01保存根朝向的脚高投影分解](README_Q1_GAIT_GOAL01_SAVED_ROOT_PROJECTION_20261030.md)。45片12015状态/8CPU测试、0积分推理优化；底座两走右脚窗口侧向Y投影为主要负项，约-14.34/-16.02mm，脚底点切换均值<1mm；PPO起走侧向负项主要在后三段。静态分解非动力学单因，7工件6319472B三端SHA/两图目视。goal ACTIVE/采纳null，既有逐子步问题待答复，不追加训练。[清单](../data/manifests/supermimic_q1_gait_goal_saved_root_projection_20261030.json)。
+
 2026-10-30：[GAIT_GOAL01保存PD目标与根姿态静态几何](README_Q1_GAIT_GOAL01_SAVED_TARGET_POSE_20261030.md)。45片/72090静态FK姿态/6测试，0积分推理优化；参考关节相同而保存根旋转使底座右脚高差优势消失，PPO残差目标脚底Z RMS约.73/1.13mm。目标非预测姿态，越界比例/初始对照保留；7工件10072795B三端SHA/两图目视。goal ACTIVE/采纳null，子步观测问题待答复，不追加训练。[清单](../data/manifests/supermimic_q1_gait_goal_saved_target_pose_20261030.json)。
 
 2026-10-30：[GAIT_GOAL01连续保存样本与左右换脚时序](README_Q1_GAIT_GOAL01_SAVED_SAMPLE_RUNS_20261030.md)。45片/7测试/0积分推理FK或动力学；PPO最终起走右脚三次无>10mm帧，>5mm亦无连续3样本，底座停走离地段增加却未按参考交替。14小工件1248986B三端SHA/两图目视，保留阈值敏感性与布局修正历史；片段非步数、力/姿态5ms时差保留。goal ACTIVE/采纳null，既有子步观测问题待答复，不追加训练。[清单](../data/manifests/supermimic_q1_gait_goal_saved_sample_runs_20261030.json)。

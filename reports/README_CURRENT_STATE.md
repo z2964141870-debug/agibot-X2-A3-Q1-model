@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-31：[状态核对与Windows一次连接恢复](README_Q1_NATIVE_WINDOWS_SSH_20261030.md)。用户新授权通道异常时自动经Windows重建一次原生SSH会话；当前已一次成功，16:17:53核原boot/根/GPU一致、15MiB/0%/OOM0，16:16:14无项目训练进程。q1已工具更新读回ACTIVE每30分钟/同聊天，每个独立故障先记恢复次数，其他任务不动。训练进度仍为[底座301秒与PPO600秒两线已交付](README_Q1_GAIT_GOAL01_RESULTS_20261030.md)：底座起走滑移降19.4%/两走上肢误差降41%-47%，但起走倾斜与抬手峰误差增加约25%-30%；PPO无两走一致改善。[逐子步观测](README_Q1_GAIT_GOAL01_SUBSTEP_OBSERVATION_20261030.md)已完成，PPO起走右脚低力时81.5%-98.1%仍贴地，贴地踝未近限。自然步态目标仍未达，原901.178392秒/physical_regression/采纳null/goal ACTIVE保持；本次未新增物理、推理、训练或agent。[授权及现场](../data/manifests/q1_native_recovery_policy_20261031.json)。下方2026-10-30断连状态为历史。
+
 2026-10-30：[已改用原始Windows两段式SSH](README_Q1_NATIVE_WINDOWS_SSH_20261030.md)。按用户新指示先ssh hp_han，再在Windows内原生ssh -p25386 root@59.77.15.15；不创建/依赖18873/socket转发。严格进程公钥pin核同一25386，原boot/根/GPU一致/15MiB无计算，持久认证配置未改。18:11:07补齐36daafb的7小记录366473B三端大小SHA；旧UNKNOWN和待镜像已解除。q1维护已工具更新/读回ACTIVE每30分钟，仅连接指令变更，其他任务不动。原训练失败/901.178392秒/采纳null/goal ACTIVE保持，不新物理推理训练/重做观测分析/agent。[清单](../data/manifests/q1_native_windows_connection_20261030.json)，新连接说明发布看旁收据；下方断线为历史。
 
 2026-10-30：[子步分析已发布，最终记录服务器镜像待](README_Q1_GAIT_GOAL01_SUBSTEP_OBSERVATION_20261030.md)。e69fb305ee650a101f17a57fd63fe757dd15a099已独立核远端/6小记录356430B Git-Mac同SHA；14观测与9分析工件三端已在断线前完成。hp_han一度返回Windows主机名，后对端reset/Broken pipe令25386登录中断；一次有界核查后远端UNKNOWN，不判密码或服务器故障、不继续探测。只待连通后补最新小记录/旁收据的25386大小SHA，不重跑观测或分析/新训练；goal ACTIVE/采纳null/原失败及监督缓存等保持。[发布与待镜清单](../data/manifests/supermimic_q1_gait_goal_substep_observation_publication_20261030.json)。下方在线资源仅历史。

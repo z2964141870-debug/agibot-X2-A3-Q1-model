@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-31用户新授权连接自恢复：发现25386等既有通道未恢复时，经hp_han Windows跳板原生SSH重建一次到同一用户25386的会话，无需再次询问；每个独立故障最多一次，先记logs/q1_connection_recovery_state.json，后续心跳不能重置同一故障计数。重开指连接会话；成功后核原boot/GPU/唯一根并继续既有维护，仍失败则一次有界核查后UNKNOWN/新增异常通知，同一故障后续静默。此条覆盖旧不自动重连限制，不据失联重启宿主机/容器或恢复训练。当前已一次重连成功，2026-10-31 16:17:53核原身份/GPU15MiB无计算/OOM0；旧断连UNKNOWN为历史。q1已工具更新读回ACTIVE每30分钟/同聊天，其他任务不动。底座/PPO原901.178392秒/physical_regression/采纳null/goal ACTIVE未达保持，未新物理推理训练/agent。入口原始Windows连接说明及q1_native_recovery_policy_20261031清单，发布看旁收据。
+
 - 2026-10-30用户更正“别天天用转发啊，用原始的连接方式”：以后source ~/.zshrc后ssh -tt hp_han登录Windows，再在其内原生ssh -p25386 root@59.77.15.15；不创建/依赖18873、-L/-R/-D或旧控制socket，不用本机无监听判断服务器。Windows缺ED25519记录已用精确既有25386公钥KnownHostsCommand进程pin严格校验，PowerShell须绝对路径，未改持久认证配置/保存容器密码。已进interactive40173/原boot与GPU根一致/GPU15MiB无计算；18:11:07补齐36daafb的7记录366473B三端大小SHA，旧UNKNOWN/待镜像仅历史。原q1缓存维护已工具更新并读回ACTIVE每30分钟/同聊天，仅连接变更，其他监督任务不动。只读连接/小记录交付，0新物理推理训练/不重做观测分析/无agent，原901.178392秒/physical_regression/采纳null/goal ACTIVE保持。入口README_Q1_NATIVE_WINDOWS_SSH_20261030及q1_native_windows_connection清单，发布看旁收据。
 
 - 2026-10-30子步最终小记录镜像遇断线：分析提交e69fb305ee650a101f17a57fd63fe757dd15a099独立远端已核/6记录356430B Git-Mac大小SHA同；14观测与9分析工件三端已在断线前核完。原双master消失/18873拒绝后，按用户指示hp_han曾返回Windows主机名，随后对端reset/Broken pipe、25386登录随转发中断，未执行容器命令/不证明密码错；一次有界核查后不重复，当前远端UNKNOWN。最终6记录及新连接状态/publication旁收据服务器镜像待，只补小记录不重做观测/CPU分析/训练，原physical_regression/采纳null/goal ACTIVE与监督缓存等保持，认证环境/agent未改。入口同SUBSTEP_OBSERVATION及publication收据，最后GPU/OOM仅10:43历史。

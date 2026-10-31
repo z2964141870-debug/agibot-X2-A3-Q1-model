@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-31：[Q1进度核对及Windows自动恢复一次](README_Q1_NATIVE_WINDOWS_SSH_20261030.md)。当前原25386已一次重连成功/原boot根GPU已核，q1工具更新读回ACTIVE每30分钟；每个独立故障先记次数后恢复一次。两线局部收益与姿态代价仍见[结果](README_Q1_GAIT_GOAL01_RESULTS_20261030.md)，自然步态目标未达，原901.18秒/physical_regression/采纳null/goal ACTIVE保持；本次无新物理训练。[新授权及现场](../data/manifests/q1_native_recovery_policy_20261031.json)。
+
 2026-10-30：[Q1原始Windows两段式SSH](README_Q1_NATIVE_WINDOWS_SSH_20261030.md)。先hp_han再Windows原生25386，不用18873/socket转发；严格进程公钥pin/原boot根GPU已核，7待镜记录366473B三端SHA补齐。q1缓存维护仍ACTIVE每30分钟，只改连接；原训练失败/采纳null/goal ACTIVE保持，无新物理训练。[清单](../data/manifests/q1_native_windows_connection_20261030.json)。
 
 2026-10-30：[GAIT_GOAL01两线子步观测与分析](README_Q1_GAIT_GOAL01_SUBSTEP_OBSERVATION_20261030.md)。24片/25440子步观测完成、0optimizer/两次授权已用；保存CPU分析144足/1440关节/3480片段行、8测试/74源前后同SHA，9工件6069077B三端SHA/两图目视。PPO起走右脚低力时81.5%-98.1%仍贴地、贴地踝未近限；底座右脚抬高伴左脚下降/起走倾斜代价。非历史重放或自然步态合格，原901.18实训秒/physical_regression/采纳null/goal ACTIVE保持。分析提交已核远端/Mac，随后Windows断线使最新小记录服务器镜像待、当前UNKNOWN；不重跑观测或分析/新训练。[清单](../data/manifests/supermimic_q1_gait_goal_substep_observation_results_20261030.json)/[发布与待镜](../data/manifests/supermimic_q1_gait_goal_substep_observation_publication_20261030.json)。

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-31：[GAIT_GOAL02新目标与独立配方](README_Q1_GAIT_GOAL02_20261031.md)。用户要求新目标继续解决，应用ACTIVE；姿态/双脚相位耦合与PPO学习链路记录已实现，本地语法通过，服务器CPU/零更新/新训未跑，不预称步态改善。每线<=1200秒/总<=2400、GPU串行与原物理门，旧负面结果保留；采纳null/不启agent或改其他任务。[清单](../data/manifests/supermimic_q1_gait_goal02_20261031.json)。
+
 2026-10-31：[Q1进度核对及Windows自动恢复一次](README_Q1_NATIVE_WINDOWS_SSH_20261030.md)。当前原25386已一次重连成功/原boot根GPU已核，q1工具更新读回ACTIVE每30分钟；每个独立故障先记次数后恢复一次。两线局部收益与姿态代价仍见[结果](README_Q1_GAIT_GOAL01_RESULTS_20261030.md)，自然步态目标未达，原901.18秒/physical_regression/采纳null/goal ACTIVE保持；本次无新物理训练。[新授权及现场](../data/manifests/q1_native_recovery_policy_20261031.json)。
 
 2026-10-30：[Q1原始Windows两段式SSH](README_Q1_NATIVE_WINDOWS_SSH_20261030.md)。先hp_han再Windows原生25386，不用18873/socket转发；严格进程公钥pin/原boot根GPU已核，7待镜记录366473B三端SHA补齐。q1缓存维护仍ACTIVE每30分钟，只改连接；原训练失败/采纳null/goal ACTIVE保持，无新物理训练。[清单](../data/manifests/q1_native_windows_connection_20261030.json)。

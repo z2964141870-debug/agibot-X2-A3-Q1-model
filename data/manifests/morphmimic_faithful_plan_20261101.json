@@ -1,0 +1,190 @@
+{
+  "status": "PLANNED_NOT_RESOURCE_TESTED_NOT_LAUNCHED",
+  "upstream_commit": "aa40fe46a7fa995ba7a7354ad065a2c8ad64a302",
+  "upstream_trainer_sha256": "82519fcb992471eee910dcacf7f962a1e02174e4f7b32cd9d763105220993c67",
+  "official_readme_experiment_iterations": 40000,
+  "upstream_traincfg_default_iterations": 320000,
+  "reduction_factor": 4,
+  "original": {
+    "replay_capacity": 1000,
+    "wm_lr": 0.0002,
+    "policy_lr": 0.0002,
+    "critic_lr": 0.0002,
+    "wm_batches": 10,
+    "window_k": 8,
+    "horizon": 32,
+    "utd": 0.4,
+    "warmup_env_steps": 100,
+    "gamma": 0.99,
+    "lam": 0.95,
+    "action_noise": 0.1,
+    "actuator_delay": true,
+    "wm_hidden": [
+      2048,
+      2048,
+      2048
+    ],
+    "policy_hidden": [
+      2048,
+      1024,
+      512,
+      256
+    ],
+    "critic_hidden": [
+      256,
+      128
+    ],
+    "kp_env_frac": 0.5,
+    "kp_masking": "full",
+    "kp_jitter": true,
+    "kp_align_weight": 0.1,
+    "reset_norm": "remaining",
+    "wm_frame": "root",
+    "residual_scale": "step",
+    "termination": "hazard",
+    "wm_layer_norm": true,
+    "critic_layer_norm": true,
+    "critic_anchor_pos": true,
+    "avoid_clip_end": true,
+    "critic_target_clip": true,
+    "bf16": true,
+    "compile": "reduce-overhead",
+    "pool_norms": true,
+    "actor_geometry": true,
+    "wm_batch": 2048,
+    "imag_batch": 4096,
+    "kp_imag_batch": 4096,
+    "latent_align_batch": 1024,
+    "num_envs": 4096,
+    "iterations": 40000,
+    "wm_only_iters": 500,
+    "lr_decay_iters": 250000,
+    "ckpt_every": 4000,
+    "kp_interface": true,
+    "library_dtype": "float16"
+  },
+  "scaled": {
+    "replay_capacity": 1000,
+    "wm_lr": 0.0002,
+    "policy_lr": 0.0002,
+    "critic_lr": 0.0002,
+    "wm_batches": 10,
+    "window_k": 8,
+    "horizon": 32,
+    "utd": 0.4,
+    "warmup_env_steps": 100,
+    "gamma": 0.99,
+    "lam": 0.95,
+    "action_noise": 0.1,
+    "actuator_delay": true,
+    "wm_hidden": [
+      2048,
+      2048,
+      2048
+    ],
+    "policy_hidden": [
+      2048,
+      1024,
+      512,
+      256
+    ],
+    "critic_hidden": [
+      256,
+      128
+    ],
+    "kp_env_frac": 0.5,
+    "kp_masking": "full",
+    "kp_jitter": true,
+    "kp_align_weight": 0.1,
+    "reset_norm": "remaining",
+    "wm_frame": "root",
+    "residual_scale": "step",
+    "termination": "hazard",
+    "wm_layer_norm": true,
+    "critic_layer_norm": true,
+    "critic_anchor_pos": true,
+    "avoid_clip_end": true,
+    "critic_target_clip": true,
+    "bf16": true,
+    "compile": "reduce-overhead",
+    "pool_norms": true,
+    "actor_geometry": true,
+    "wm_batch": 512,
+    "imag_batch": 1024,
+    "kp_imag_batch": 1024,
+    "latent_align_batch": 256,
+    "num_envs": 1024,
+    "iterations": 160000,
+    "wm_only_iters": 2000,
+    "lr_decay_iters": 1000000,
+    "ckpt_every": 16000,
+    "kp_interface": true,
+    "library_dtype": "float16"
+  },
+  "volumes_per_robot": {
+    "original": {
+      "collection_transitions": 409600000,
+      "initialization_transitions": 409600,
+      "replay_transition_capacity": 4096000,
+      "wm_optimizer_updates": 400000,
+      "wm_training_windows": 819200000,
+      "wm_fitted_transition_presentations": 6553600000,
+      "policy_optimizer_updates": 39500,
+      "motion_imagined_rollouts": 161792000,
+      "motion_imagined_transition_presentations": 5177344000,
+      "keypoint_imagined_rollouts": 161792000,
+      "latent_alignment_reference_draws": 40448000
+    },
+    "scaled": {
+      "collection_transitions": 409600000,
+      "initialization_transitions": 102400,
+      "replay_transition_capacity": 1024000,
+      "wm_optimizer_updates": 1600000,
+      "wm_training_windows": 819200000,
+      "wm_fitted_transition_presentations": 6553600000,
+      "policy_optimizer_updates": 158000,
+      "motion_imagined_rollouts": 161792000,
+      "motion_imagined_transition_presentations": 5177344000,
+      "keypoint_imagined_rollouts": 161792000,
+      "latent_alignment_reference_draws": 40448000
+    }
+  },
+  "exactly_matched_counted_exposures": [
+    "collection_transitions",
+    "wm_training_windows",
+    "wm_fitted_transition_presentations",
+    "motion_imagined_rollouts",
+    "motion_imagined_transition_presentations",
+    "keypoint_imagined_rollouts",
+    "latent_alignment_reference_draws"
+  ],
+  "accounting_scope": {
+    "collection": "Post-initialization collection; fractional UTD alternates vector-step counts.",
+    "latent_alignment": "Reference-draw budget applies only to active multi-robot alignment; it is inactive in single G1.",
+    "kp": "Enabled with the official full five-point interface."
+  },
+  "comparison_checkpoints": {
+    "iteration_aligned": 40000,
+    "exposure_aligned": 160000
+  },
+  "non_equivalences": [
+    "Smaller batches produce more Adam steps and different gradient noise; equal exposure is not equal optimization.",
+    "Warm-up collection keeps100 steps per environment; initial transitions and resident replay capacity shrink with environment count.",
+    "The unchanged learning rate and loss weights are upstream values; warm-up iteration and cosine LR clocks scale with training exposure.",
+    "A one-hour dataset is a declared reduced-data experiment, not the paper full-corpus result.",
+    "Multi-robot shared training requires a separately verified execution method; three separate specialists do not constitute a unified model.",
+    "The pinned source pools policy normalizers by default; the paper describes robot-specific statistics. This must be reported in the final recipe."
+  ],
+  "elapsed_time_policy": {
+    "user_accepts_hours": [
+      8,
+      16
+    ],
+    "training_time_is_not_completion_criterion": true,
+    "old_1200_second_and_300_second_gait_stops_apply": false,
+    "resource_nonfinite_and_process_identity_guards_required": true
+  },
+  "physics_steps": 0,
+  "policy_calls": 0,
+  "optimizer_updates": 0
+}

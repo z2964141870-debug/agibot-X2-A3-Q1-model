@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-31：[GAIT_GOAL02底座首门正常停，步态未达](README_Q1_GAIT_GOAL02_20261031.md)。21:45:26实训301.575546秒/127轮，按physical_regression停，WM1270/actor117/critic2540，不补预算。两走/抬手均3/3完整、验证0/0/0；起走承重滑移降22.49%，但两走脚底Z仅降2.35%/.59%，停走倾斜RMS增31%-40%触发严重门，抬手倾斜亦约+14.7%。原pipeline正在保存媒体/本地解码与审计待，不预称全流程完成。PPO独立首次新训仍0，底座完整交付/GPU释放后按原授权执行；采纳null/goal ACTIVE/原失败保持，不恢复重试扩时或agent。[原值](../data/manifests/supermimic_q1_gait_goal02_base_gate01_20261031.json)。
+
 2026-10-31：[GAIT_GOAL02唯一新底座流程已启动](README_Q1_GAIT_GOAL02_20261031.md)。根Q1_GAIT_GOAL02_BASE_COUPLED_E4096_MAX20M_20261031，controller344446/start36735544、worker344484/start36736788、原boot/GPU与1677来源。冻结来源2ea0ccf0502790ca7211a3ac4668e1c3a997a5aa已独立远端/7记录762352B三端核验；21:37:06 initial repeat1/frame400/实训0/optimizer0、GPU5171MiB/38度/容器8.39GB/OOM0。一次尝试已用，只监督原1100软/1200硬和300/600/1100门及完整交付，不热改来源或故障重试。PPO首次正式新训0，待底座全保存交付/GPU释放后串行；采纳null/goal ACTIVE和原失败保留，其他任务与agent不动。[启动收据](../data/manifests/supermimic_q1_gait_goal02_base_launch_20261031.json)。
 
 2026-10-31：[GAIT_GOAL02四项新零更新预检完成](README_Q1_GAIT_GOAL02_20261031.md)。底座16/4096于21:16/21:17、PPO16/4096于21:20/21:23正常完成，四guard回收0/1671来源未变/optimizer0；底座真实H32梯度及参数保护、PPO96/24576概率差0和教师/终止保护通过。21:27:19原boot/GPU一致、15MiB无计算/OOM0、四controller均退出；48工件2598404B及407884B完整清单Mac/25386大小SHA核实。正式训练仍0/0，下一步先发布本阶段再底座/PPO各一次新独立短训练及完整交付，不扩时/故障重试；原失败/采纳null/goal ACTIVE保持。[预检清单](../data/manifests/supermimic_q1_gait_goal02_preflight_results_20261031.json)。以下未测均历史。

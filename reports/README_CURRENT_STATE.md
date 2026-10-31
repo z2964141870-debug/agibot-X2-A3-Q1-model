@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-31：[GAIT_GOAL02四项新零更新预检完成](README_Q1_GAIT_GOAL02_20261031.md)。底座16/4096于21:16/21:17、PPO16/4096于21:20/21:23正常完成，四guard回收0/1671来源未变/optimizer0；底座真实H32梯度及参数保护、PPO96/24576概率差0和教师/终止保护通过。21:27:19原boot/GPU一致、15MiB无计算/OOM0、四controller均退出；48工件2598404B及407884B完整清单Mac/25386大小SHA核实。正式训练仍0/0，下一步先发布本阶段再底座/PPO各一次新独立短训练及完整交付，不扩时/故障重试；原失败/采纳null/goal ACTIVE保持。[预检清单](../data/manifests/supermimic_q1_gait_goal02_preflight_results_20261031.json)。以下未测均历史。
+
 2026-10-31：[GAIT_GOAL02真实CPU校验与1671来源冻结通过](README_Q1_GAIT_GOAL02_20261031.md)。13CPU测试含真实RSL记录开关后的损失/梯度/参数/优势/Torch RNG等价，51参考姿态四扰动奖励契约和底座/PPO imports均通过，0新积分推理optimizer。不可变plan414004B/SHA31e9772f6db73c20bbc613b3a29434047519122e1fe9e8d35be108f6bae95235，原1564依赖匹配并补当前仿真后端。Windows会话超时后按新独立故障一次原生恢复，20:56:30核原boot/GPU空闲/OOM0，准备提交a398e7a的16记录386459B三端SHA。下一步发布本阶段再每线16/4096各一次零更新，正式实训仍0/0；原GOAL01负面/采纳null/goal ACTIVE保持，不改其他任务或agent。[CPU清单](../data/manifests/supermimic_q1_gait_goal02_cpu_20261031.json)。下方未测是准备历史。
 
 2026-10-31：[GAIT_GOAL02已创建ACTIVE，独立代码准备](README_Q1_GAIT_GOAL02_20261031.md)。用户新决定覆盖旧等待范围：在SuperMimic内检验姿态/双脚相位耦合，并为PPO补逐相位优势、实际裁剪/KL和梯度记录。先真实CPU奖励/被动记录等价与新16/4096零更新，通过后底座/PPO各一次<=1200实训秒、总<=2400，原300/600/1100物理门/GPU串行/24-30GiB保护。验收仍两走脚Z降20%/承重滑移降15%及姿态上肢10%保护、真实离地换脚/330库/原速视频。当前本地语法通过、13CPU测试已写但服务器未测、物理/新训均0；18:29:23原生25386核原boot/GPU空闲/OOM0/容器4.45GB，无GOAL02代码根日志。原GOAL01的901.178392秒/physical_regression/采纳null保留，不恢复旧训练或重做旧观测/开agent/改其他任务。[新清单](../data/manifests/supermimic_q1_gait_goal02_20261031.json)。

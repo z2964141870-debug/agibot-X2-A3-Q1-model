@@ -35,7 +35,13 @@
 
 原生会话94632因Windows超时在传输前断开，未写服务器。按用户一次自恢复授权先登记新故障，随后原生两段式97816恢复；2026-10-31 20:56:30核原boot/GPU/唯一根，GPU15MiB/0%、无计算、容器4447211520B、OOM0。20:57:30核准备提交a398e7a531cbe88a53653609954e0191d3947d7c的16文件386459B三端大小SHA一致，未重启宿主机/容器或使用转发。
 
-21:06:55已生成[不可变执行来源plan](../data/manifests/supermimic_q1_gait_goal02_source_plan_20261031.json)，1671份，414004B/SHA25631e9772f6db73c20bbc613b3a29434047519122e1fe9e8d35be108f6bae95235。原1564依赖仍匹配，并补当前MuJoCo Warp Python及MuJoCo共享库；旧预检仅供来源身份参照，不当本轮通过结果。四个新预检与两线新训练尚未执行。[CPU证据](../data/manifests/supermimic_q1_gait_goal02_cpu_20261031.json)。
+21:06:55已生成[不可变执行来源plan](../data/manifests/supermimic_q1_gait_goal02_source_plan_20261031.json)，1671份，414004B/SHA25631e9772f6db73c20bbc613b3a29434047519122e1fe9e8d35be108f6bae95235。原1564依赖仍匹配，并补当前MuJoCo Warp Python及MuJoCo共享库；旧预检仅供来源身份参照，不当本轮通过结果。[CPU证据](../data/manifests/supermimic_q1_gait_goal02_cpu_20261031.json)。CPU与冻结提交4b1aae428f71ee62634061e3e5744af2f1dc9dc2已独立远端核对，8份Git记录776584B及1份1933B可变连接状态完成Mac/25386大小SHA，详见[旁收据](../data/manifests/supermimic_q1_gait_goal02_cpu_publication_20261031.json)。
+
+## 四项新预检
+
+底座16/4096于21:16:07、21:17:53，PPO16/4096于21:20:46、21:23:58分别正常COMPLETED，四个guard均WORKER_COMPLETED/reaped0，1671来源前后不变。底座真实采集272/69632转移、同份replay末帧与H32起点一致、有限非零梯度、模型参数不变；wm/pi/v各1/1/20次step调用被阻断，实际optimizer均0。PPO96/24576 minibatch概率差均0，奖励/终止/状态RNG与冻结教师保护通过，0optimizer。不是跨环境动力学等价或步态收益。
+
+21:27:19四controller已退出，原boot/GPU一致，GPU15MiB/0%、无计算、容器4863082496B、OOM0。48份工件2598404B及407884B结果清单已Mac/25386逐大小SHA；权重和大NPZ未传回。[完整预检证据](../data/manifests/supermimic_q1_gait_goal02_preflight_results_20261031.json)。正式实训仍底座0秒、PPO0秒。下一步发布本阶段后，先底座一次新独立训练及完整交付，再PPO一次；每线原1100软/1200硬、300/600/1100物理门和串行GPU保护不变，不故障重试或补预算。
 
 CPU复现使用既有Python及activate.py，执行本目录test_goal02.py与check_candidates.py；后者的runtime/scene/library取主清单baseline。训练入口train.py加--check-imports只加载真实模块，不建环境。新预检使用本目录supervise.py，--frozen-plan指上述plan，--mode分别preflight16/preflight4096，--line base/ppo；其余唯一根、原boot/GPU/OOM0及checkpoint/library/calibration均固定在主清单。
 

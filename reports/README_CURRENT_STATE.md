@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-10-31：[GAIT_GOAL02唯一新底座流程已启动](README_Q1_GAIT_GOAL02_20261031.md)。根Q1_GAIT_GOAL02_BASE_COUPLED_E4096_MAX20M_20261031，controller344446/start36735544、worker344484/start36736788、原boot/GPU与1677来源。冻结来源2ea0ccf0502790ca7211a3ac4668e1c3a997a5aa已独立远端/7记录762352B三端核验；21:37:06 initial repeat1/frame400/实训0/optimizer0、GPU5171MiB/38度/容器8.39GB/OOM0。一次尝试已用，只监督原1100软/1200硬和300/600/1100门及完整交付，不热改来源或故障重试。PPO首次正式新训0，待底座全保存交付/GPU释放后串行；采纳null/goal ACTIVE和原失败保留，其他任务与agent不动。[启动收据](../data/manifests/supermimic_q1_gait_goal02_base_launch_20261031.json)。
+
 2026-10-31：[GAIT_GOAL02四项新零更新预检完成](README_Q1_GAIT_GOAL02_20261031.md)。底座16/4096于21:16/21:17、PPO16/4096于21:20/21:23正常完成，四guard回收0/1671来源未变/optimizer0；底座真实H32梯度及参数保护、PPO96/24576概率差0和教师/终止保护通过。21:27:19原boot/GPU一致、15MiB无计算/OOM0、四controller均退出；48工件2598404B及407884B完整清单Mac/25386大小SHA核实。正式训练仍0/0，下一步先发布本阶段再底座/PPO各一次新独立短训练及完整交付，不扩时/故障重试；原失败/采纳null/goal ACTIVE保持。[预检清单](../data/manifests/supermimic_q1_gait_goal02_preflight_results_20261031.json)。以下未测均历史。
 
 2026-10-31：[GAIT_GOAL02真实CPU校验与1671来源冻结通过](README_Q1_GAIT_GOAL02_20261031.md)。13CPU测试含真实RSL记录开关后的损失/梯度/参数/优势/Torch RNG等价，51参考姿态四扰动奖励契约和底座/PPO imports均通过，0新积分推理optimizer。不可变plan414004B/SHA31e9772f6db73c20bbc613b3a29434047519122e1fe9e8d35be108f6bae95235，原1564依赖匹配并补当前仿真后端。Windows会话超时后按新独立故障一次原生恢复，20:56:30核原boot/GPU空闲/OOM0，准备提交a398e7a的16记录386459B三端SHA。下一步发布本阶段再每线16/4096各一次零更新，正式实训仍0/0；原GOAL01负面/采纳null/goal ACTIVE保持，不改其他任务或agent。[CPU清单](../data/manifests/supermimic_q1_gait_goal02_cpu_20261031.json)。下方未测是准备历史。

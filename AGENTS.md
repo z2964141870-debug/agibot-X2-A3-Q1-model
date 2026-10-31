@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-10-31 GAIT_GOAL02唯一新底座流程已启动，根Q1_GAIT_GOAL02_BASE_COUPLED_E4096_MAX20M_20261031、controller344446/start36735544、worker344484/start36736788，原boot/GPU及1677来源，冻结2ea0ccf0502790ca7211a3ac4668e1c3a997a5aa已独立远端/7记录762352B三端SHA。21:37:06 initial repeat1/frame400/0实训optimizer、GPU5171MiB/38度/OOM0；一次底座尝试已用，只监督原300/600/1100门/1100软1200硬和完整交付，不重试扩时或热改源码。PPO独立首次正式新训仍0，待底座保存交付/GPU释放后执行，原失败/采纳null/新goal ACTIVE保持，不启agent/改其他任务。入口同GAIT_GOAL02及base_launch清单。
+
 - 2026-10-31 GAIT_GOAL02四新预检全部完成：base16/4096及PPO16/4096各一次，四guard回收0/1671来源未变/optimizer0，H32真实有限非零梯度和参数保护、PPO96/24576概率差0及教师/终止保护通过。21:27:19核原boot/GPU15MiB无计算/OOM0/四controller退出；48工件2598404B及407884B结果清单Mac/25386大小SHA，代码冻结4b1aae428f71ee62634061e3e5744af2f1dc9dc2。正式实训仍0/0，下一步先发布再串行底座/PPO各一次<=1200秒、总<=2400，原物理门/完整本地交付，不故障重试或补预算。原GOAL01负面/采纳null/goal ACTIVE、监督缓存等保持，不启agent/改其他任务；入口同GAIT_GOAL02及preflight_results清单。
 
 - 2026-10-31 GAIT_GOAL02的13真实CPU测试、51参考姿态四扰动奖励契约及两线imports通过，0新积分推理optimizer；1671不可变来源plan414004B/SHA31e9772f6db73c20bbc613b3a29434047519122e1fe9e8d35be108f6bae95235，原1564依赖匹配并补MuJoCo Warp/Python及MuJoCo共享库。准备a398e7a已独立远端/16记录386459B三端SHA；会话94632超时传输前断开，新故障先记次数后一次原生Windows97816恢复，20:56:30原boot/GPU15MiB无计算/OOM0。下一步先发布本阶段再四新零更新预检各一次、两线新训各<=1200秒/总<=2400，未开始。原GOAL01失败/采纳null与新goal ACTIVE保持，不启agent/改其他任务，来源/CPU入口同README_Q1_GAIT_GOAL02_20261031，发布以旁收据为准。

@@ -43,6 +43,10 @@
 
 21:27:19四controller已退出，原boot/GPU一致，GPU15MiB/0%、无计算、容器4863082496B、OOM0。48份工件2598404B及407884B结果清单已Mac/25386逐大小SHA；权重和大NPZ未传回。[完整预检证据](../data/manifests/supermimic_q1_gait_goal02_preflight_results_20261031.json)。正式实训仍底座0秒、PPO0秒。下一步发布本阶段后，先底座一次新独立训练及完整交付，再PPO一次；每线原1100软/1200硬、300/600/1100物理门和串行GPU保护不变，不故障重试或补预算。
 
+## 底座已启动
+
+预检发布2ea0ccf0502790ca7211a3ac4668e1c3a997a5aa已独立远端及7份Git记录762352B三端核验，另1933B可变连接状态同步；[发布旁收据](../data/manifests/supermimic_q1_gait_goal02_preflight_publication_20261031.json)。唯一底座根Q1_GAIT_GOAL02_BASE_COUPLED_E4096_MAX20M_20261031已启动，controller344446/start36735544、worker344484/start36736788，原boot/GPU一致，1677冻结来源。21:37:06仍initial repeat1/frame400、实训0秒/optimizer0，GPU5171MiB/38度、容器8392724480B、OOM0；这是启动现场，不是改善结果。import_guard正常WORKER_COMPLETED，既有一次新底座尝试已用，只监督原进程，不重试扩时。完整[启动收据](../data/manifests/supermimic_q1_gait_goal02_base_launch_20261031.json)。PPO正式新训仍0，待底座训练及保存交付完成/GPU释放后按原独立首次授权执行。
+
 CPU复现使用既有Python及activate.py，执行本目录test_goal02.py与check_candidates.py；后者的runtime/scene/library取主清单baseline。训练入口train.py加--check-imports只加载真实模块，不建环境。新预检使用本目录supervise.py，--frozen-plan指上述plan，--mode分别preflight16/preflight4096，--line base/ppo；其余唯一根、原boot/GPU/OOM0及checkpoint/library/calibration均固定在主清单。
 
 先显式payload审计/commit/push origin Q1和独立40位远端，再镜像Mac与原生25386并核大小SHA。测试和实训结果随实际证据更新，未测试不称通过；最终媒体与保存审计完成后才称交付完成。权重/大NPZ只留25386，不改认证、环境、其他自动任务或启动agent。实际发布以publication旁收据为准。

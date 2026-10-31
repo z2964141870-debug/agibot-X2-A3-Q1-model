@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-10-31：[GAIT_GOAL02 CPU与来源冻结](README_Q1_GAIT_GOAL02_20261031.md)：13真实CPU测试、奖励契约及两线imports通过，1671来源不可变plan已生成；0新积分推理训练，四新预检待发布后串行。[CPU证据](../data/manifests/supermimic_q1_gait_goal02_cpu_20261031.json)/[来源plan](../data/manifests/supermimic_q1_gait_goal02_source_plan_20261031.json)。
+
 2026-10-31：[GAIT_GOAL02新目标与独立配方](README_Q1_GAIT_GOAL02_20261031.md)。用户要求新目标继续解决，应用ACTIVE；姿态/双脚相位耦合与PPO学习链路记录已实现，本地语法通过，服务器CPU/零更新/新训未跑，不预称步态改善。每线<=1200秒/总<=2400、GPU串行与原物理门，旧负面结果保留；采纳null/不启agent或改其他任务。[清单](../data/manifests/supermimic_q1_gait_goal02_20261031.json)。
 
 2026-10-31：[Q1进度核对及Windows自动恢复一次](README_Q1_NATIVE_WINDOWS_SSH_20261030.md)。当前原25386已一次重连成功/原boot根GPU已核，q1工具更新读回ACTIVE每30分钟；每个独立故障先记次数后恢复一次。两线局部收益与姿态代价仍见[结果](README_Q1_GAIT_GOAL01_RESULTS_20261030.md)，自然步态目标未达，原901.18秒/physical_regression/采纳null/goal ACTIVE保持；本次无新物理训练。[新授权及现场](../data/manifests/q1_native_recovery_policy_20261031.json)。

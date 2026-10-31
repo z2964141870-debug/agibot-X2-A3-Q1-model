@@ -31,6 +31,12 @@
 
 ## 当前阶段
 
-独立代码和13项CPU测试已写，本地语法/空白检查通过；服务器真实CPU测试、奖励契约、无环境imports和四个预检尚未执行。2026-10-31 18:29:23原生Windows路径核原boot/GPU/唯一根，GPU15MiB/0%、无计算，容器4446883840B、OOM0，服务器无GOAL02代码、根或日志。
+独立代码、本地语法/空白检查和服务器13项CPU测试已通过。真实RSL PPO开启记录后的损失、梯度、参数、优势和Torch RNG逐值一致；20个minibatch与40次梯度裁剪记录齐，优化器step被阻断。真实CPU奖励契约51参考姿态、四种扰动共204姿态通过，根Z梯度与有限差分最大差7.57e-5；特征、原成本和终止保持。底座/PPO无环境imports及两个调度入口help均通过。以上均无新物理积分、策略推理或优化更新，不是步态改善。
+
+原生会话94632因Windows超时在传输前断开，未写服务器。按用户一次自恢复授权先登记新故障，随后原生两段式97816恢复；2026-10-31 20:56:30核原boot/GPU/唯一根，GPU15MiB/0%、无计算、容器4447211520B、OOM0。20:57:30核准备提交a398e7a531cbe88a53653609954e0191d3947d7c的16文件386459B三端大小SHA一致，未重启宿主机/容器或使用转发。
+
+21:06:55已生成[不可变执行来源plan](../data/manifests/supermimic_q1_gait_goal02_source_plan_20261031.json)，1671份，414004B/SHA25631e9772f6db73c20bbc613b3a29434047519122e1fe9e8d35be108f6bae95235。原1564依赖仍匹配，并补当前MuJoCo Warp Python及MuJoCo共享库；旧预检仅供来源身份参照，不当本轮通过结果。四个新预检与两线新训练尚未执行。[CPU证据](../data/manifests/supermimic_q1_gait_goal02_cpu_20261031.json)。
+
+CPU复现使用既有Python及activate.py，执行本目录test_goal02.py与check_candidates.py；后者的runtime/scene/library取主清单baseline。训练入口train.py加--check-imports只加载真实模块，不建环境。新预检使用本目录supervise.py，--frozen-plan指上述plan，--mode分别preflight16/preflight4096，--line base/ppo；其余唯一根、原boot/GPU/OOM0及checkpoint/library/calibration均固定在主清单。
 
 先显式payload审计/commit/push origin Q1和独立40位远端，再镜像Mac与原生25386并核大小SHA。测试和实训结果随实际证据更新，未测试不称通过；最终媒体与保存审计完成后才称交付完成。权重/大NPZ只留25386，不改认证、环境、其他自动任务或启动agent。实际发布以publication旁收据为准。

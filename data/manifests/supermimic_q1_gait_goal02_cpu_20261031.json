@@ -1,0 +1,252 @@
+{
+  "stage": "GAIT_GOAL02_CPU_AND_SOURCE_FREEZE",
+  "status": "CPU_CONTRACTS_PASSED_NEW_PHYSICAL_PREFLIGHTS_NOT_RUN",
+  "recipe": "POSTURE_PAIR_COUPLED_V1",
+  "goal_status": "active",
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "preparation_commit": "a398e7a531cbe88a53653609954e0191d3947d7c",
+  "tests": {
+    "server_cpu_tests_passed": 13,
+    "server_cpu_tests_failed": 0,
+    "real_rsl_ppo_observer_equivalence": [
+      "loss",
+      "gradients",
+      "parameters",
+      "torch_rng",
+      "advantages"
+    ],
+    "actual_minibatches_observed_in_cpu_test": 20,
+    "gradient_clipping_calls_observed": 40,
+    "optimizer_steps_blocked": true,
+    "native_reward_sampled_reference_poses": 51,
+    "perturbations": [
+      "reference",
+      "root_z",
+      "roll_positive",
+      "roll_negative"
+    ],
+    "features_original_costs_terminations_preserved": true,
+    "maximum_root_z_gradient_finite_difference_error": 0.0000756680965423584,
+    "training_imports": {
+      "base": "PASSED",
+      "ppo": "PASSED"
+    },
+    "cli_help": {
+      "supervise": "PASSED",
+      "pipeline": "PASSED"
+    }
+  },
+  "source_plan": {
+    "created_utc": "2026-10-31T13:06:55.861413+00:00",
+    "sources": 1671,
+    "bytes": 414004,
+    "sha256": "31e9772f6db73c20bbc613b3a29434047519122e1fe9e8d35be108f6bae95235",
+    "path": "data/manifests/supermimic_q1_gait_goal02_source_plan_20261031.json",
+    "historical_sources_matched": 1564,
+    "includes_current_mujoco_warp_python_and_mujoco_shared_libraries": true,
+    "old_preflight_substituted_for_new": false
+  },
+  "evidence_files": [
+    {
+      "path": "logs/goal02_cpu_tests_20261031.log",
+      "bytes": 1701,
+      "sha256": "8b23e2a93a1a6644cbb8810d345c7b9459fcb449e7a9d972ec84cecb9aa47d8f"
+    },
+    {
+      "path": "logs/goal02_cpu_contract_20261031.log",
+      "bytes": 149,
+      "sha256": "1dd6e6f106a44436ccfd523a598f9c7c1f603654515d9662f1832711c16fdfec"
+    },
+    {
+      "path": "logs/goal02_imports_base_20261031.log",
+      "bytes": 123,
+      "sha256": "35d796afcad65932db3e612f9a43ae8e67e07318e5a97905094b08d2eb9cc84e"
+    },
+    {
+      "path": "logs/goal02_imports_ppo_20261031.log",
+      "bytes": 123,
+      "sha256": "35d796afcad65932db3e612f9a43ae8e67e07318e5a97905094b08d2eb9cc84e"
+    },
+    {
+      "path": "logs/goal02_preparation_mirror_20261031.json",
+      "bytes": 3856,
+      "sha256": "bc8b6cd224c49e93df67e82e5ff14e652e04c4f7bec281825ef8fcf9e8a55beb"
+    },
+    {
+      "path": "data/supermimic_for_q1/Q1_GAIT_GOAL02_CPU_CONTRACT_20261031/receipt.json",
+      "bytes": 6489,
+      "sha256": "02237c1b4da6627586802720f4885fde548f9b59ed6847a8c43cf5f2c57eb32a"
+    }
+  ],
+  "native_cpu_reward_contract": {
+    "status": "GOAL02_NATIVE_CPU_REWARD_CONTRACT_PASSED",
+    "new_integration_steps": 0,
+    "policy_inference_calls": 0,
+    "optimizer_updates": 0,
+    "completed_utc": "2026-10-31T12:59:45.706189+00:00",
+    "sampled_poses": 51,
+    "perturbations": [
+      {
+        "perturbation": "reference",
+        "base_delta_min": 0,
+        "base_delta_max": 0,
+        "ppo_delta_min": -7.450580596923828e-9,
+        "posture_factor_min": 1,
+        "pair_factor_min": 1
+      },
+      {
+        "perturbation": "root_z",
+        "base_delta_min": 0,
+        "base_delta_max": 0,
+        "ppo_delta_min": -1.4901161193847656e-8,
+        "posture_factor_min": 1,
+        "pair_factor_min": 1
+      },
+      {
+        "perturbation": "roll_positive",
+        "base_delta_min": -0.0057092756032943726,
+        "base_delta_max": -0.0010104253888130188,
+        "ppo_delta_min": -0.0285094752907753,
+        "posture_factor_min": 0.7525461912155151,
+        "pair_factor_min": 0.22248715162277222
+      },
+      {
+        "perturbation": "roll_negative",
+        "base_delta_min": -0.0051068589091300964,
+        "base_delta_max": -0.0005940049886703491,
+        "ppo_delta_min": -0.02278006821870804,
+        "posture_factor_min": 0.7525461316108704,
+        "pair_factor_min": 0.35627931356430054
+      }
+    ],
+    "sources": [
+      {
+        "path": "/opt/data/private/ZHY/script/supermimic_q1_gait_goal02/train.py",
+        "bytes": 1757,
+        "sha256": "04f72e1a997dd05171c6d704639f9d38185fa8579911f4f0248935bee37b41da"
+      },
+      {
+        "path": "/opt/data/private/ZHY/script/supermimic_q1_gait_goal02/supervise.py",
+        "bytes": 502,
+        "sha256": "105a3584202f15898955cec5602647c3dfafcb07ddf8a3d78fc3d64539e9ca7e"
+      },
+      {
+        "path": "/opt/data/private/ZHY/script/supermimic_q1_gait_goal02/goal02_config.py",
+        "bytes": 1047,
+        "sha256": "8fa909f959a5e4b6f36c60232ab6d44e72a91e1bfacd5df6408278e50999acb9"
+      },
+      {
+        "path": "/opt/data/private/ZHY/script/supermimic_q1_gait_goal02/coupling.py",
+        "bytes": 1615,
+        "sha256": "dfb0da72245181d4c96ed31bd6e5b1150216c56f9e016c326740b83820277f73"
+      },
+      {
+        "path": "/opt/data/private/ZHY/script/supermimic_q1_gait_goal02/test_goal02.py",
+        "bytes": 9772,
+        "sha256": "13c42e38c3b97254e1a265a65ddbad6ccd397b24b6c54ff3d7b1d962f965ea81"
+      },
+      {
+        "path": "/opt/data/private/ZHY/script/supermimic_q1_gait_goal02/goal02_runtime.py",
+        "bytes": 1631,
+        "sha256": "fb9348f97ee33c880b67b24747f0964510510b3071f81c2ba01de41830fa0300"
+      },
+      {
+        "path": "/opt/data/private/ZHY/script/supermimic_q1_gait_goal02/ppo_diagnostics.py",
+        "bytes": 8541,
+        "sha256": "8e292a99b55e9917b2c984a3b71a950ef711f8842556bfdfee9983e0d602b430"
+      },
+      {
+        "path": "/opt/data/private/ZHY/script/supermimic_q1_gait_goal02/coupled_rewards.py",
+        "bytes": 4460,
+        "sha256": "c3690091db17f9d97a0041ff9b148a5b030b161c2d41088f00167225ec88784e"
+      },
+      {
+        "path": "/opt/data/private/ZHY/script/supermimic_q1_gait_goal02/pipeline.py",
+        "bytes": 2883,
+        "sha256": "4551a84073c26c599c85120662094d538a1bfd384ed401a50af9b7f08012c9ec"
+      },
+      {
+        "path": "/opt/data/private/ZHY/script/supermimic_q1_gait_goal02/preflight.py",
+        "bytes": 1759,
+        "sha256": "4b337fcce07ddbf5ba2903c4225bd0b1ab29af1ccd9e8b21e249e32491f27c84"
+      },
+      {
+        "path": "/opt/data/private/ZHY/script/supermimic_q1_gait_goal02/check_candidates.py",
+        "bytes": 8209,
+        "sha256": "11ba3c65ffff7d6cdff3e42603580287e036a0367262466e5847985892cb6fb8"
+      },
+      {
+        "path": "data/references/supermimichp/TRACKING_C02_sampler_runtime_20261027/q1_assets/scene.xml",
+        "bytes": 30871,
+        "sha256": "7ecf223aacd31cd1824575053bc66dbbc7301885366eb42b58908203d9b455fd"
+      },
+      {
+        "path": "data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/pilot_manifest.json",
+        "bytes": 208349,
+        "sha256": "ba9ac284a018cdd40eea5200d2c157b7da7cfdae89e6c820eed2c9748cc83337"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/walk_ff_stop_180_R_002__A095.csv",
+        "bytes": 64184,
+        "sha256": "fc7d78fe7e1773c1359ab7c27b677688d78bd32a1195d113e60e173fdc1b0286"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/walk_ff_stop_180_R_002__A095.json",
+        "bytes": 45474,
+        "sha256": "2248a52997f53235088862f9aa9a5970b2875e8880f84c44c9f1a6bf32aee0e1"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/walk_ff_start_180_R_002__A071.csv",
+        "bytes": 42078,
+        "sha256": "8f1e447585ea3665b4b639f5ddcb43cfe4732b68e481918139504a820e940993"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/walk_ff_start_180_R_002__A071.json",
+        "bytes": 28638,
+        "sha256": "6f61b545cfd663ea239bfdef230caf33b4cc6736d62339d259189ca13dcb6bcf"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/triumph_two_handed_001__A058.csv",
+        "bytes": 54720,
+        "sha256": "f9c2ec43409016c784b02a9141f148ae5ea20194da0fe15b2bb95c562d939158"
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/AP02_SOMA_Q1_20261027/q1_candidates/triumph_two_handed_001__A058.json",
+        "bytes": 45457,
+        "sha256": "1427ae4b78c3d88227ed53a9ff5034f07af3cd5493e45928693e28fb6a159cca"
+      }
+    ],
+    "recipe": {
+      "recipe": "POSTURE_PAIR_COUPLED_V1",
+      "up_vector_std": 0.15,
+      "pair_height_std_m": 0.02,
+      "reference_clearance_min_m": 0.01,
+      "coupling": "Multiply existing extra foot bonuses by root-up and two-foot height-difference scores",
+      "pair_condition": "Exactly one declared stance and one declared swing; reference clearance >=10mm",
+      "phases": "Immutable reference intentions; not measured support loads",
+      "base_maximum_step_reward": 0.11,
+      "ppo_maximum_step_reward": 0.15,
+      "original_tracking_and_costs_preserved": true,
+      "control_and_residual_radius_preserved": true,
+      "training_upper_mixture_preserved": true,
+      "fixed_exploration_std_preserved": true,
+      "load_channel": "PPO last native solve force is 5ms earlier than post-step pose; never label simultaneous"
+    },
+    "features_costs_terminations_original_tracking_preserved": true,
+    "maximum_root_z_gradient_finite_difference_error": 0.0000756680965423584,
+    "new_base_maximum": 0.11,
+    "physical_gait_improvement_established": false
+  },
+  "new_integration_steps": 0,
+  "new_policy_inference_calls": 0,
+  "new_optimizer_updates": 0,
+  "base_training_seconds": 0,
+  "ppo_training_seconds": 0,
+  "physical_gait_improvement_established": false,
+  "next_stage": "Publish immutable source plan and CPU evidence, then once each base16/base4096/PPO16/PPO4096 under existing bounds; no physical failure retry",
+  "report": "reports/README_Q1_GAIT_GOAL02_20261031.md",
+  "other_automations_modified": false,
+  "agents_started": false,
+  "environment_upgraded": false
+}

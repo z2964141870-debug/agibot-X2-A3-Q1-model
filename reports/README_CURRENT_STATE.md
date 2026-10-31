@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-01数据实测：[官方G1转换/原过滤1280条全部保留](README_MORPHMIMIC_FAITHFUL_20261101.md)，总8138.12秒，seed0真实1h559条/3604.72秒、tiny57条/364.66秒；1280 NPZ746003384B仅服务器/全部50Hz29维有限、源前后SHA同、183上游blob不变。controller354493/worker354498正常完成/reaped0，原清理子进程TERM日志保留，0新积分策略optimizer。12CPU测试及入口79bac39已三端，数据小包Mac/25386 SHA相同；下一步发布数据记录和原compile的1024全更新profile最多8轮，未启动。goal ACTIVE/未新正式训练/PPO旧计划停止。[数据](../data/manifests/morphmimic_faithful_g1_data_20261101.json)/[入口发布](../data/manifests/morphmimic_faithful_entry_publication_20261101.json)。
+
 2026-11-01入口准备：MorphMimic数据/全更新profile/原Trainer长期观察入口及12 CPU测试通过，尚未新转换或训练。24/30GiB原守卫、同GPU锁、183源前后核验保持；profile最多8完整更新轮/独立根，正式160000轮不套旧300秒步态门。9437f75新目标及旧交付9记录395881B三端发布快照已核，[发布](../data/manifests/morphmimic_faithful_goal_publication_20261101.json)。下一步先发布本入口再官方1280 CSV转换/真实1h子集/资源实测，goal ACTIVE。
 
 2026-11-01：[MORPHMIMIC_FAITHFUL01 ACTIVE](README_MORPHMIMIC_FAITHFUL_20261101.md)。最新用户授权忠实复现并允许等比例缩小、8/16小时等足量训练，取代旧短训计划；GOAL02 PPO未启动且停止推进。上游固定aa40fe46，官方40000轮、4096环境；候选1024环境/WM512/imag与KP1024，160000轮/2000 WM-only，保留40000轮对照；缩小batch增加Adam次数非等价。先1280 G1 CSV官方转换/过滤及真实时长，再单卡资源测试确定规模、G1完整训练及跨本体共享验证，尚未新训练。7项比例规划CPU测试通过；原生25386于10-31T16:01:52Z会话有效，原boot/GPU身份及空闲以执行前快照为准。旧底座已12媒体/34保存审计、54工件28971941B Mac/25386 SHA且pipeline COMPLETED，301.575546秒physical_regression/采纳null/旧目标未达保持。发布以旁收据/实际40位远端为准；不启agent或改其他任务。[比例计划](../data/manifests/morphmimic_faithful_plan_20261101.json)/[交付证据](../data/manifests/supermimic_q1_gait_goal02_base_delivery_20261031.json)。

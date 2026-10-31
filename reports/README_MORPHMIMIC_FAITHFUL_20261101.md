@@ -43,6 +43,14 @@ supervise.py复用既有Q1Budget/StorageBudget/MemoryBoundBudget/guarded_run及�
 
 新目标及旧交付提交9437f758bf9c968fc981830b19d64b597d00c590已独立核40位远端、9记录395881B Git/Mac/25386发布快照大小SHA一致。[发布旁收据](../data/manifests/morphmimic_faithful_goal_publication_20261101.json)。后续入口准备提交不改变旧底座训练冻结。
 
+## 数据已实测完成
+
+79bac399ed3499de4c8e5953062f4a02cba84e41入口及8份274413B记录已核独立40位远端和三端发布快照，另带固定tree共9文件341551B。[入口发布](../data/manifests/morphmimic_faithful_entry_publication_20261101.json)。原183上游blob前后不变，数据controller354493/start37744999与worker354498正常退出，guard WORKER_COMPLETED/reaped0。原runtime_guard在worker退出后的进程组清理使部分multiprocessing子进程打印KeyboardInterrupt signal15；原日志保留，未隐去或重试，不影响此前已完成1280输出/逐文件检查和正常主worker收据。
+
+原版转换1280/1280、原过滤1280/1280保留，8138.12秒=2.26059小时；输出1280 NPZ共746003384B，仅服务器。原始CSV读取前后逐SHA相同；全部50Hz/29关节/数值有限，无物理积分/策略/optimizer，转换只有CPU FK。seed0 tiny57条/364.66秒，1h559条/3604.72秒，all1280条/8138.12秒。原名称和可行性拒绝均0，这是现有数据分布的结果，不代表整套SEED筛选率。
+
+完整[数据清单](../data/manifests/morphmimic_faithful_g1_data_20261101.json)含1280源与输出SHA、183来源/资源与退出证据。小记录包c01b6e810be5105253f32af34c79a8d2b4989a09e3aec8b977f2479cf97193db已Mac/25386相同；不回传大NPZ。下一步1024环境/WM512/imag与KP1024、原compile reduce-overhead最多8完整更新轮资源profile；准确配置g1_profile_e1024_20261101.json，WM-only临时0仅覆盖完整资源路径，不称正式学习或将profile权重续为基线。
+
 ## 旧结果收尾
 
 GOAL02底座301.575546秒/127轮physical_regression，停走倾斜RMS增31%-40%，脚底Z两走仅降2.35%/.59%，不达步态目标。12媒体与34保存审计通过、54工件28971941B Mac/25386大小SHA一致，原pipeline COMPLETED/进程退出；PPO从未启动，按最新目标停止推进。[交付清单](../data/manifests/supermimic_q1_gait_goal02_base_delivery_20261031.json)。旧G1 E64/600轮中500轮WM-only，仅100次actor是烟测，不是方法性能复现。

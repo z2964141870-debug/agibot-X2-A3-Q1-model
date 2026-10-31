@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-01 MorphMimic新数据已完成：固定aa40原converter及原过滤1280/1280、8138.12秒，真实seed0 1h559条3604.72秒/tiny57条364.66秒；1280 NPZ746003384B仅25386、50Hz29维有限，源前后SHA/183upstream未变，guardreaped0/0新积分策略optimizer。runtime_guard在主worker退出后对子进程TERM清理日志保留。入口79bac39/8记录274413B三端已核，12CPU测试通过；下步先发布数据和准确E1024全更新profile最多8轮，仍未正式训练；旧PPO停止推进，goal MORPHMIMIC_FAITHFUL01 ACTIVE/采纳null，不启agent或改其他任务。入口同FAITHFUL及g1_data清单。
+
 - 2026-11-01用户要求忠实复现MorphMimic，并明确允许等比例缩小和8/16小时等充分训练时间。实际新goal MORPHMIMIC_FAITHFUL01 ACTIVE；此最新授权替代旧各1200秒/300秒物理门，按官方40000轮及可核采样量安排，不以小时数凑完成。固定上游aa40fe46，先G1原版足量训练，再独立验多本体共享WM/策略/latent对齐；不把3个独立模型当unified、不加自订奖励。候选E1024/WM512/imag与KP1024/160000轮、2000轮WM-only，E512备选；保留40000轮与采样量对齐终点，尚待真实资源测试，缩小batch增Adam步不等价须注明。旧G1 E64/600轮仅100次actor为烟测。GOAL02底座301.575546秒负面已完整交付/12媒体及34保存审计/54工件28971941B Mac-25386 SHA；PPO未启动并停止推进，采纳null，旧步态目标未达。原生hp_han→同25386、原boot/GPU/唯一根、资源守卫与GPU串行/其他任务保持，不开agent。入口README_MORPHMIMIC_FAITHFUL_20261101及新清单；实际训练/发布见后续收据。
 
 - 2026-10-31 GAIT_GOAL02底座21:45:26以301.575546秒/127轮按physical_regression正常停，WM1270/actor117/critic2540，不补预算/恢复重试。固定两走抬手均3/3完整、验证0/0/0，起走滑移降22.49%但两走脚底Z仅降2.35%/.59%、停走倾斜RMS增31%-40%严重门、抬手倾斜亦+14.7%，未达自然步态。原controller344446正在保存媒体，Mac解码/保存审计待，不预称pipeline完成；PPO独立首次新训0，底座完整交付/GPU释放后执行。原失败/采纳null/goal ACTIVE与监督等保持，不启agent/改其他任务；入口同GAIT_GOAL02及base_gate01清单。

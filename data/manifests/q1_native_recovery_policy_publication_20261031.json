@@ -1,0 +1,121 @@
+{
+  "stage": "Q1_NATIVE_RECOVERY_POLICY_PUBLICATION_20261031",
+  "status": "MAIN_COMMIT_REMOTE_AND_MIRRORS_VERIFIED",
+  "checked_at_utc": "2026-10-31 08:42:27 UTC",
+  "main_commit": "3c9140584ce26f961438178273e3c432e44cb0c3",
+  "independently_read_remote_ref": "refs/heads/Q1",
+  "independently_read_remote_commit": "3c9140584ce26f961438178273e3c432e44cb0c3",
+  "remote_verification_method": "independent git ls-remote origin refs/heads/Q1",
+  "payload_audit": {
+    "passed": true,
+    "files": 7,
+    "total_bytes": 350838,
+    "maximum_file_mib": 10
+  },
+  "verified_main_files": [
+    {
+      "relative_path": "AGENTS.md",
+      "bytes": 95747,
+      "sha256": "1f549c80b8f7eedd1c4e759fb5483d26cfe7611668bdf1f270f2f6243b92207a"
+    },
+    {
+      "relative_path": "reports/README.md",
+      "bytes": 153160,
+      "sha256": "4262fba75bf9578d95f9d3eabcc4b7be38f813b7b08e9c96a8d8b6fcea4e75a5"
+    },
+    {
+      "relative_path": "reports/README_CURRENT_STATE.md",
+      "bytes": 83741,
+      "sha256": "69d2d49e31ee57ab2444306f3354ba60bbcfd99191af289f76a616d5b8029882"
+    },
+    {
+      "relative_path": "reports/README_Q1_NATIVE_WINDOWS_SSH_20261030.md",
+      "bytes": 5956,
+      "sha256": "ba23c83dce215b8f6c0cd43e32a4b298e57900c1f100cbe1bc4ad7ca199cebf1"
+    },
+    {
+      "relative_path": "reports/README_Q1_FILE_CACHE_MAINTENANCE_20261029.md",
+      "bytes": 7289,
+      "sha256": "b22d2c7f08abfc60c2b8c1129bb858db86af537a1e7d1cf876cf9e112da17011"
+    },
+    {
+      "relative_path": "data/manifests/q1_native_recovery_policy_20261031.json",
+      "bytes": 3793,
+      "sha256": "8c934003bcd0462d74d7df8c5fa665e92bf18cbeb58f4e4a1223910a7f055e26"
+    },
+    {
+      "relative_path": "logs/session_records/q1_native_recovery_20261031.log",
+      "bytes": 1152,
+      "sha256": "14fb8c4aaae82d2a1331444a198c033649efacad0faebf15b50a68e61efdf4d0"
+    }
+  ],
+  "verified_main_total_bytes": 350838,
+  "separately_mirrored_runtime_state": {
+    "relative_path": "logs/q1_connection_recovery_state.json",
+    "bytes": 1529,
+    "sha256": "b13673151428028bbbef39e02ce478d388642be67d9cafba8b05ce84c5cee744",
+    "git_versioned": false,
+    "reason": "Mutable incident counter is ignored by the existing Git policy; immutable incident snapshot is in the committed policy manifest.",
+    "verified_at_initial_publication": true
+  },
+  "verification_locations": [
+    "authoritative_Q1_Git_blob_and_worktree",
+    "Mac_project_root",
+    "user_25386_unique_root"
+  ],
+  "mac_verified_utc": "2026-10-31T08:32:44.371Z",
+  "server_verified_utc": "2026-10-31T08:35:54.090236+00:00",
+  "server_verification_marker": "Q1_RECOVERY_MAIN_MIRROR_VERIFIED",
+  "server_verified_count_including_runtime": 8,
+  "server_verified_bytes_including_runtime": 352367,
+  "server_file_ledger_sha256": "f5f3871477243f845fa21059cc02e82c0ca75c662dc80a279774ebc9ea5fad14",
+  "guarded_mirror": {
+    "allowed_previous_commit": "e79c9f6b617e6d47fc29adafd7a39d3ec825daf2",
+    "allowed_current_commit": "3c9140584ce26f961438178273e3c432e44cb0c3",
+    "all_prior_contents_checked_before_writes": true,
+    "unexpected_prior_content_aborts": true,
+    "atomic_small_file_replacement": true,
+    "boot_and_unique_root_verified": true,
+    "transfer_encoding": "SHA-guarded parent byte splice or full small-file bytes; transport digest verified before decoding."
+  },
+  "route": {
+    "mac": "source /Users/yu/.zshrc; ssh -tt hp_han",
+    "windows": "Windows native ssh -p25386 root@59.77.15.15",
+    "local_forwarding": false,
+    "control_socket_used": false,
+    "strict_public_host_key_check": true
+  },
+  "recovery": {
+    "incident_id": "q1-cache-25386-closed-20261030T174733615Z",
+    "attempts_used": 1,
+    "attempts_limit": 1,
+    "outcome": "RESTORED",
+    "checked_at_utc": "2026-10-31T08:17:53Z",
+    "reopen_means_native_ssh_session": true,
+    "machine_or_container_restarted": false
+  },
+  "automation": {
+    "id": "q1",
+    "status": "ACTIVE",
+    "interval_minutes": 30,
+    "target_thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "native_tool_update_and_persisted_readback_verified": true,
+    "one_recovery_per_independent_incident": true,
+    "attempt_recorded_before_recovery": true,
+    "heartbeat_does_not_reset_counter": true,
+    "other_automations_modified": false
+  },
+  "report": "reports/README_Q1_NATIVE_WINDOWS_SSH_20261030.md",
+  "policy_manifest": "data/manifests/q1_native_recovery_policy_20261031.json",
+  "new_cache_scan": false,
+  "new_physical_or_policy_calls": 0,
+  "new_optimizer_updates": 0,
+  "new_training_seconds": 0,
+  "original_training_seconds": 901.178391956928,
+  "original_outcome": "physical_regression",
+  "goal_status": "active",
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "weights_and_large_NPZ": "SERVER_LOCAL_ONLY",
+  "receipt_scope": "This receipt verifies the main commit and its mirrors. The receipt itself is subsequently committed, independently checked against origin/Q1, and mirrored with its own size/SHA check."
+}

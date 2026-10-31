@@ -35,6 +35,14 @@
 
 正式运行需冻结源码/数据清单与准确配置、先发布三端核验；训练中记录迭代、采集/更新数、显存/容器峰值、非有限检查、曲线和检查点，保留足量训练机会，不使用旧300秒退步停训门。原评测、固定同片原速本地视频和完整失败结果用于判断，不以loss/reward或存活单独称稳定走路。
 
+## 执行入口准备
+
+script/morphmimic_faithful/worker.py直接调用原convert_all/build_subset和Trainer.train，训练仅外包迭代观察、优化器计数、非有限检查及额外40000轮保存，不替换算法。资源profile最多8轮、WM-only=0，刻意覆盖完整motion/KP/双critic/Adam分配，仅作资源测试，独立根/不续成正式训练。数据入口固定1280源、workers4、metadata v004，读取前后SHA不变和50Hz/29关节/数值有限检查；保留真实过滤结果，不自加物理数据门。主配置g1_data_20261101.json已准备。
+
+supervise.py复用既有Q1Budget/StorageBudget/MemoryBoundBudget/guarded_run及同GPU锁；启动24GiB准入、运行30GiB守卫/OOM0/原boot/GPU/86度/100GiB磁盘余量，数据和profile最多1800秒、10秒回收；正式训练按迭代完成，仅1800秒无进度停，不套旧1200秒与步态门。每次新根/无自动故障重试；完整183上游blob在前后核验。12项CPU测试已通过，尚未物理/profile；数据/profile/训练三个阶段分别发布准确配方和收据。
+
+新目标及旧交付提交9437f758bf9c968fc981830b19d64b597d00c590已独立核40位远端、9记录395881B Git/Mac/25386发布快照大小SHA一致。[发布旁收据](../data/manifests/morphmimic_faithful_goal_publication_20261101.json)。后续入口准备提交不改变旧底座训练冻结。
+
 ## 旧结果收尾
 
 GOAL02底座301.575546秒/127轮physical_regression，停走倾斜RMS增31%-40%，脚底Z两走仅降2.35%/.59%，不达步态目标。12媒体与34保存审计通过、54工件28971941B Mac/25386大小SHA一致，原pipeline COMPLETED/进程退出；PPO从未启动，按最新目标停止推进。[交付清单](../data/manifests/supermimic_q1_gait_goal02_base_delivery_20261031.json)。旧G1 E64/600轮中500轮WM-only，仅100次actor是烟测，不是方法性能复现。

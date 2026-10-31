@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-01：[MorphMimic执行入口与12CPU测试](README_MORPHMIMIC_FAITHFUL_20261101.md)通过；待发布后官方1280 CSV转换及完整更新资源profile。新目标/旧交付9437f75、9记录395881B已三端核验，[旁收据](../data/manifests/morphmimic_faithful_goal_publication_20261101.json)。
+
 2026-11-01：[MorphMimic足量复现新目标](README_MORPHMIMIC_FAITHFUL_20261101.md)。用户允许等比例缩小并以8/16小时等充足时间推进；MORPHMIMIC_FAITHFUL01已ACTIVE。固定官方版本与配方，候选1024环境/160000轮保留40000轮对照，资源未测/未启动。旧GOAL02底座12媒体/34保存审计和54工件已完整交付、步态未达；PPO未启动，最新目标取代此前继续PPO的计划。[计划](../data/manifests/morphmimic_faithful_plan_20261101.json)/[旧底座交付](../data/manifests/supermimic_q1_gait_goal02_base_delivery_20261031.json)。下方PPO待启动和媒体待验收均为历史。
 
 2026-10-31：[GAIT_GOAL02底座301秒首门停训](README_Q1_GAIT_GOAL02_20261031.md)，起走滑移降22.49%但脚底Z未达、停走倾斜增31%-40%，physical_regression。媒体及本地审计待；PPO独立首次试验待底座完整交付。[原值](../data/manifests/supermimic_q1_gait_goal02_base_gate01_20261031.json)。

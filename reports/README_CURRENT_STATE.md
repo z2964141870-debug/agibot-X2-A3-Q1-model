@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-01入口准备：MorphMimic数据/全更新profile/原Trainer长期观察入口及12 CPU测试通过，尚未新转换或训练。24/30GiB原守卫、同GPU锁、183源前后核验保持；profile最多8完整更新轮/独立根，正式160000轮不套旧300秒步态门。9437f75新目标及旧交付9记录395881B三端发布快照已核，[发布](../data/manifests/morphmimic_faithful_goal_publication_20261101.json)。下一步先发布本入口再官方1280 CSV转换/真实1h子集/资源实测，goal ACTIVE。
+
 2026-11-01：[MORPHMIMIC_FAITHFUL01 ACTIVE](README_MORPHMIMIC_FAITHFUL_20261101.md)。最新用户授权忠实复现并允许等比例缩小、8/16小时等足量训练，取代旧短训计划；GOAL02 PPO未启动且停止推进。上游固定aa40fe46，官方40000轮、4096环境；候选1024环境/WM512/imag与KP1024，160000轮/2000 WM-only，保留40000轮对照；缩小batch增加Adam次数非等价。先1280 G1 CSV官方转换/过滤及真实时长，再单卡资源测试确定规模、G1完整训练及跨本体共享验证，尚未新训练。7项比例规划CPU测试通过；原生25386于10-31T16:01:52Z会话有效，原boot/GPU身份及空闲以执行前快照为准。旧底座已12媒体/34保存审计、54工件28971941B Mac/25386 SHA且pipeline COMPLETED，301.575546秒physical_regression/采纳null/旧目标未达保持。发布以旁收据/实际40位远端为准；不启agent或改其他任务。[比例计划](../data/manifests/morphmimic_faithful_plan_20261101.json)/[交付证据](../data/manifests/supermimic_q1_gait_goal02_base_delivery_20261031.json)。
 
 2026-10-31：[GAIT_GOAL02底座首门正常停，步态未达](README_Q1_GAIT_GOAL02_20261031.md)。21:45:26实训301.575546秒/127轮，按physical_regression停，WM1270/actor117/critic2540，不补预算。两走/抬手均3/3完整、验证0/0/0；起走承重滑移降22.49%，但两走脚底Z仅降2.35%/.59%，停走倾斜RMS增31%-40%触发严重门，抬手倾斜亦约+14.7%。原pipeline正在保存媒体/本地解码与审计待，不预称全流程完成。PPO独立首次新训仍0，底座完整交付/GPU释放后按原授权执行；采纳null/goal ACTIVE/原失败保持，不恢复重试扩时或agent。[原值](../data/manifests/supermimic_q1_gait_goal02_base_gate01_20261031.json)。

@@ -67,6 +67,14 @@ supervise.py复用既有Q1Budget/StorageBudget/MemoryBoundBudget/guarded_run及�
 
 训练中只观察原进程和保存状态，不因SSH超时重新启动。小收据/README后续发布不改变71859ca的训练冻结；不改正在运行的执行源码、其他自动任务或agent。权重与大数据仅服务器，目标ACTIVE。
 
+## 预热后正式更新
+
+北京时间2026-11-01 04:40:27核原controller362416/start38298223与worker362421/start38298276、原boot/GPU/唯一根相同，进度15946轮；05:00:41继续至17865/160000轮。实际WM178650、motion15865、critic317300、KP15865、KPcritic317300，说明2000轮WM-only后五条优化路径都已执行。guard RUNNING、非有限0/OOM0，GPU8779MiB/62度、容器总16522911744B；资源数字只代表该时刻，不当长期上界。
+
+16000轮检查点ckpt_16000.pt已存在，274169803B，仅核路径与大小，未加载内容或读取大权重。检查点只留服务器；尚无正式物理评估、本地步态视频或改善结论。后续40000轮与160000轮检查点/官方评估继续按原目标推进，不将G1单体训练称为已完成unified。[进度原值](../data/manifests/morphmimic_faithful_g1_progress_20261101.json)。首个只读采集器因服务器无tzdata退出，改用固定UTC+08:00读取；另一次终端首行换行破坏编码后仅重读小状态，均未改训练或重启。
+
+启动记录b9f3e8d1af1dc93706647782f36abcb6b9cc5d5e已独立核40位远端、5记录375825B Git blob/权威工作树/Mac/25386发布快照大小SHA一致，[发布旁收据](../data/manifests/morphmimic_faithful_g1_launch_publication_20261101.json)。记录提交不改变原训练冻结71859ca8abe238477aa18245a31d81204da9197f。当前小进度记录另行发布，以对应实际收据为准；goal ACTIVE/采纳null，原进程持续运行。
+
 ## 旧结果收尾
 
 GOAL02底座301.575546秒/127轮physical_regression，停走倾斜RMS增31%-40%，脚底Z两走仅降2.35%/.59%，不达步态目标。12媒体与34保存审计通过、54工件28971941B Mac/25386大小SHA一致，原pipeline COMPLETED/进程退出；PPO从未启动，按最新目标停止推进。[交付清单](../data/manifests/supermimic_q1_gait_goal02_base_delivery_20261031.json)。旧G1 E64/600轮中500轮WM-only，仅100次actor是烟测，不是方法性能复现。

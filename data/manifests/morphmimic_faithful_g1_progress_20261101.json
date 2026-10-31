@@ -1,0 +1,143 @@
+{
+  "stage": "MORPHMIMIC_FAITHFUL01_G1_POST_WARMUP",
+  "status": "RUNNING_OBSERVED_ALL_FIVE_OPTIMIZERS",
+  "initial_observation": {
+    "stage": "MORPHMIMIC_FAITHFUL01_G1_POST_WARMUP_OBSERVATION",
+    "observed_utc": "2026-10-31T20:40:27.606029+00:00",
+    "observed_beijing": "2026-11-01T04:40:27.606088+08:00",
+    "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "project_root": "/opt/data/private/ZHY",
+    "run_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101",
+    "training_source_commit": "71859ca8abe238477aa18245a31d81204da9197f",
+    "controller_and_worker": [
+      {
+        "pid": 362416,
+        "start_ticks": 38298223,
+        "state": "S",
+        "command": "/usr/bin/python3 -u /opt/data/private/ZHY/script/morphmimic_faithful/supervise.py --mode train --config /opt/data/private/ZHY/script/morphmimic_faithful/g1_train_e1024_20261101.json --output /opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101 --upstream-tree /opt/data/private/ZHY/data/references/morphmimic_review_20261029/tree.json --code-commit 71859ca8abe238477aa18245a31d81204da9197f --controller"
+      },
+      {
+        "pid": 362421,
+        "start_ticks": 38298276,
+        "state": "R",
+        "command": "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python -u /opt/data/private/ZHY/script/morphmimic_faithful/worker.py --mode train --config /opt/data/private/ZHY/script/morphmimic_faithful/g1_train_e1024_20261101.json --output /opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101/run"
+      }
+    ],
+    "status": "RUNNING",
+    "guard_status": "RUNNING",
+    "iteration": 15946,
+    "target_iterations": 160000,
+    "warmup_iterations": 2000,
+    "optimizer_steps": {
+      "wm_opt": 159460,
+      "policy_opt": 13946,
+      "critic_opt": 278920,
+      "kp_opt": 13946,
+      "critic_kp_opt": 278920
+    },
+    "nonfinite_steps": 0,
+    "progress_updated_utc": "2026-10-31T20:40:27.340818+00:00",
+    "iteration_seconds": 9795.752970350033,
+    "gpu_peak_allocated_bytes": 7340214784,
+    "gpu_peak_reserved_bytes": 8329887744,
+    "guard_last_resource_check": {
+      "experiment": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101",
+        "unique_allocated_bytes": 184020992,
+        "unique_logical_bytes": 183997226,
+        "unique_inodes": 12,
+        "symlinks_not_followed": 0
+      },
+      "source": {
+        "root": "/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46",
+        "unique_allocated_bytes": 1396281344,
+        "unique_logical_bytes": 1391157482,
+        "unique_inodes": 2367,
+        "symlinks_not_followed": 0
+      },
+      "free_bytes": {
+        "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101": 1086395351040,
+        "/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46": 1086395351040
+      },
+      "shared_memory": {
+        "shared_bytes": 16052178944,
+        "oom_kill": 0,
+        "maximum_bytes": 32212254720
+      },
+      "gpu": {
+        "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+        "memory_mib": 8779,
+        "temperature_c": 63
+      }
+    },
+    "container_total_bytes": 16056725504,
+    "container_limit_bytes": 34292629504,
+    "checkpoints": [
+      {
+        "path": "data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101/upstream/scaled_g1_original/ckpt_0.pt",
+        "bytes": 91430481
+      }
+    ],
+    "physical_evaluation_completed": false,
+    "user_accepted_checkpoint": null,
+    "collector_note": "First read-only collector lacked system tzdata; corrected to fixed UTC+08:00. No training changes or restart."
+  },
+  "checkpoint_observation": {
+    "observed_utc": "2026-10-31T21:00:41.722729+00:00",
+    "observed_beijing": "2026-11-01T05:00:41.722804+08:00",
+    "iteration": 17865,
+    "optimizer_steps": {
+      "wm_opt": 178650,
+      "policy_opt": 15865,
+      "critic_opt": 317300,
+      "kp_opt": 15865,
+      "critic_kp_opt": 317300
+    },
+    "nonfinite_steps": 0,
+    "guard_status": "RUNNING",
+    "resource": {
+      "experiment": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101",
+        "unique_allocated_bytes": 641073152,
+        "unique_logical_bytes": 641052337,
+        "unique_inodes": 13,
+        "symlinks_not_followed": 0
+      },
+      "source": {
+        "root": "/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46",
+        "unique_allocated_bytes": 1396281344,
+        "unique_logical_bytes": 1391157482,
+        "unique_inodes": 2367,
+        "symlinks_not_followed": 0
+      },
+      "free_bytes": {
+        "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101": 1082163060736,
+        "/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46": 1082163060736
+      },
+      "shared_memory": {
+        "shared_bytes": 16522911744,
+        "oom_kill": 0,
+        "maximum_bytes": 32212254720
+      },
+      "gpu": {
+        "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+        "memory_mib": 8779,
+        "temperature_c": 62
+      }
+    },
+    "checkpoint_16000": {
+      "path": "data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101/upstream/scaled_g1_original/ckpt_16000.pt",
+      "exists": true,
+      "bytes": 274169803,
+      "content_read": false
+    }
+  },
+  "launch_record_publication_commit": "b9f3e8d1af1dc93706647782f36abcb6b9cc5d5e",
+  "goal_status": "active",
+  "user_accepted_checkpoint": null,
+  "limitations": [
+    "Read-only progress and checkpoint file metadata only; checkpoint content not loaded or audited here.",
+    "No official physical evaluation, local gait video or improvement conclusion yet.",
+    "G1 baseline is the first stage; unified multi-robot training and Q1 adaptation remain subsequent stages."
+  ]
+}

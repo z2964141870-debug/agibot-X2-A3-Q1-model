@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-01 05:00:41正式MorphMimic G1原作业仍RUNNING，已17865/160000轮，WM178650/motion15865/critic317300/KP15865/KPcritic317300，越过2000轮预热；非有限0/OOM0/GPU8779MiB/62度、容器总16522911744B。16000轮checkpoint274169803B仅核文件存在/大小，未加载内容；未做正式物理评估，不称步态改善或unified完成。训练冻结71859ca不变，启动记录b9f3e8d1af1dc93706647782f36abcb6b9cc5d5e已独立40位远端/5记录375825B三端发布快照SHA。只监督原controller362416/start38298223及worker362421/start38298276，不重启或改执行源码；goal ACTIVE/采纳null，不启agent/改其他任务。入口同FAITHFUL及g1_progress/launch_publication清单，下方296轮仅启动历史。
+
 - 2026-11-01正式MorphMimic G1已启动，唯一根MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101，controller362416/start38298223、worker362421，冻结71859ca8abe238477aa18245a31d81204da9197f已独立远端/7记录387831B三端SHA/183upstream匹配。01:57:48实测296轮WM2960/其余0，2000轮预热尚非策略收益；E1024/真实1h559条/全新初始化/I160000，40000轮另存，旧300秒门和1200秒预算不适用。原boot/GPU根/OOM0，资源/非有限/原进程保护持续；只监督不重启/改冻结执行源码，多本体共享后续独立验证，goal ACTIVE/采纳null，不启agent或改其他任务。入口同FAITHFUL及g1_launch清单。
 
 - 2026-11-01用户明确“开始训练”，E1024原compile8完整更新profile已正常完成/183upstream不变/reaped0/五optimizer80-8-160-8-160。峰值allocated7.34GB/reserved8.36GB、稳定约.68s/轮，正式160000轮约30h仅估算；原profileKP hook漏记由checkpoint独立核实、正式入口补被动计数，旧commit元数据手抄错误明示更正不覆原记录。Windows97816超时先记独立故障后一次28744原生恢复/原boot-GPU15MiB/OOM0，未重跑测试。新G1 E1024 I160000/WM-only2000/真实1h全新初始化，发布三端核验后直接启动；旧300秒门/1200秒预算不适用，16h不是截断线。goal MORPHMIMIC_FAITHFUL01 ACTIVE/采纳null，不启agent/改其他任务。入口同FAITHFUL及g1_profile清单。

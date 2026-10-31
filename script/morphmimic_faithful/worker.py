@@ -127,7 +127,7 @@ def run_training(config, output, progress, mode):
         np.random.seed(cfg.seed)
         torch.manual_seed(cfg.seed)
         trainer = Trainer(cfg, "cuda:0")
-        for name in ("wm_opt", "policy_opt", "critic_opt", "critic_kp_opt"):
+        for name in ("wm_opt", "policy_opt", "critic_opt", "kp_opt", "critic_kp_opt"):
             optimizer = getattr(trainer, name, None)
             if optimizer is None:
                 continue

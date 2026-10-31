@@ -51,6 +51,14 @@ supervise.py复用既有Q1Budget/StorageBudget/MemoryBoundBudget/guarded_run及�
 
 完整[数据清单](../data/manifests/morphmimic_faithful_g1_data_20261101.json)含1280源与输出SHA、183来源/资源与退出证据。小记录包c01b6e810be5105253f32af34c79a8d2b4989a09e3aec8b977f2479cf97193db已Mac/25386相同；不回传大NPZ。下一步1024环境/WM512/imag与KP1024、原compile reduce-overhead最多8完整更新轮资源profile；准确配置g1_profile_e1024_20261101.json，WM-only临时0仅覆盖完整资源路径，不称正式学习或将profile权重续为基线。
 
+## 资源通过与正式启动准备
+
+用户2026-11-01明确“开始训练”。E1024/WM512/imag-KP1024/真实1h559条、原compile reduce-overhead的8轮profile已正常完成，原183源码前后同、guardreaped0/进程355186和355191退出/GPU15MiB/OOM0。前两轮1042.60与307.29秒含首次编译，后六轮.637-1.029秒/约.68秒中位；Torch峰值allocated7340465664B/reserved8355053568B。短profile未填满replay，长期内存和运行时间须持续守卫，不能将峰值当训练全程上界。估算40000轮约7-8小时、160000轮约30小时，非按8/16小时截断。
+
+原profile被动hook漏记kp_opt，原进度保留；独立CPU读取ckpt8的Adam状态核WM80/motion8/critic160/KP8/KPcritic160，实际五条更新均已发生。正式入口只补kp_opt被动计数，12CPU测试仍通过。profile启动元数据code_commit曾手抄错误，原status不改；完整发布快照与独立远端证明执行来源为6d6253e2e177d2b9b45222c04a09e295affb7560，原183上游另核未变。[原收据/更正](../data/manifests/morphmimic_faithful_g1_profile_20261101.json)。
+
+原Windows会话97816超时后先登记新独立故障、一次原生重连28744，核原boot/GPU/唯一根及profile终态；未重启服务器/容器或重复profile。正式配置g1_train_e1024_20261101.json已准备：全新初始化、E1024/160000轮/2000WM-only/真实1h/原配方，40000轮另存，profile权重不继承。发布核验后直接启动，无需重复询问授权；启动实测以之后launch收据为准。
+
 ## 旧结果收尾
 
 GOAL02底座301.575546秒/127轮physical_regression，停走倾斜RMS增31%-40%，脚底Z两走仅降2.35%/.59%，不达步态目标。12媒体与34保存审计通过、54工件28971941B Mac/25386大小SHA一致，原pipeline COMPLETED/进程退出；PPO从未启动，按最新目标停止推进。[交付清单](../data/manifests/supermimic_q1_gait_goal02_base_delivery_20261031.json)。旧G1 E64/600轮中500轮WM-only，仅100次actor是烟测，不是方法性能复现。

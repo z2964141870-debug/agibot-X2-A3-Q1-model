@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-01用户明确“开始训练”，E1024原compile8完整更新profile已正常完成/183upstream不变/reaped0/五optimizer80-8-160-8-160。峰值allocated7.34GB/reserved8.36GB、稳定约.68s/轮，正式160000轮约30h仅估算；原profileKP hook漏记由checkpoint独立核实、正式入口补被动计数，旧commit元数据手抄错误明示更正不覆原记录。Windows97816超时先记独立故障后一次28744原生恢复/原boot-GPU15MiB/OOM0，未重跑测试。新G1 E1024 I160000/WM-only2000/真实1h全新初始化，发布三端核验后直接启动；旧300秒门/1200秒预算不适用，16h不是截断线。goal MORPHMIMIC_FAITHFUL01 ACTIVE/采纳null，不启agent/改其他任务。入口同FAITHFUL及g1_profile清单。
+
 - 2026-11-01 MorphMimic新数据已完成：固定aa40原converter及原过滤1280/1280、8138.12秒，真实seed0 1h559条3604.72秒/tiny57条364.66秒；1280 NPZ746003384B仅25386、50Hz29维有限，源前后SHA/183upstream未变，guardreaped0/0新积分策略optimizer。runtime_guard在主worker退出后对子进程TERM清理日志保留。入口79bac39/8记录274413B三端已核，12CPU测试通过；下步先发布数据和准确E1024全更新profile最多8轮，仍未正式训练；旧PPO停止推进，goal MORPHMIMIC_FAITHFUL01 ACTIVE/采纳null，不启agent或改其他任务。入口同FAITHFUL及g1_data清单。
 
 - 2026-11-01用户要求忠实复现MorphMimic，并明确允许等比例缩小和8/16小时等充分训练时间。实际新goal MORPHMIMIC_FAITHFUL01 ACTIVE；此最新授权替代旧各1200秒/300秒物理门，按官方40000轮及可核采样量安排，不以小时数凑完成。固定上游aa40fe46，先G1原版足量训练，再独立验多本体共享WM/策略/latent对齐；不把3个独立模型当unified、不加自订奖励。候选E1024/WM512/imag与KP1024/160000轮、2000轮WM-only，E512备选；保留40000轮与采样量对齐终点，尚待真实资源测试，缩小batch增Adam步不等价须注明。旧G1 E64/600轮仅100次actor为烟测。GOAL02底座301.575546秒负面已完整交付/12媒体及34保存审计/54工件28971941B Mac-25386 SHA；PPO未启动并停止推进，采纳null，旧步态目标未达。原生hp_han→同25386、原boot/GPU/唯一根、资源守卫与GPU串行/其他任务保持，不开agent。入口README_MORPHMIMIC_FAITHFUL_20261101及新清单；实际训练/发布见后续收据。

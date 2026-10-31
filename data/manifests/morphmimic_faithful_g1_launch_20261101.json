@@ -1,0 +1,388 @@
+{
+  "stage": "MORPHMIMIC_FAITHFUL01_FORMAL_G1_LAUNCH",
+  "status": "RUNNING_OBSERVED_REAL_WORLD_MODEL_UPDATES",
+  "training_source_commit": "71859ca8abe238477aa18245a31d81204da9197f",
+  "independent_remote_sha": "71859ca8abe238477aa18245a31d81204da9197f",
+  "publication": {
+    "files": 7,
+    "bytes": 387831,
+    "archive_sha256": "3e3b9dffa3257d8bcd4ef742c8342d17eb803315714ed42a36875773c2d07398",
+    "mac_server_payload_identical": true
+  },
+  "observed": {
+    "status.json": {
+      "status": "RUNNING",
+      "mode": "train",
+      "process": {
+        "pid": 362416,
+        "start_ticks": 38298223,
+        "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+      },
+      "code_commit": "71859ca8abe238477aa18245a31d81204da9197f",
+      "automatic_retry": false,
+      "goal": "MORPHMIMIC_FAITHFUL01",
+      "goal_complete": false,
+      "source_blobs_verified": 183,
+      "configuration_sha256": "9c2cd79f05656ef841c0bccd9906b5d5dbbf931822f610fa98394cae8fd943c5",
+      "own_sources": [
+        {
+          "path": "/opt/data/private/ZHY/script/morphmimic_faithful/supervise.py",
+          "bytes": 7817,
+          "sha256": "61f21f3e0a5c28bf2ef37139b3c3e8e0b44a4a0a964506d9cb2018b183e60325"
+        },
+        {
+          "path": "/opt/data/private/ZHY/script/morphmimic_faithful/scale_plan.py",
+          "bytes": 7315,
+          "sha256": "838dea545ff99929c33b8635a570ea4640cf8f87eb4d8ca5d885486e84d326fe"
+        },
+        {
+          "path": "/opt/data/private/ZHY/script/morphmimic_faithful/test_worker.py",
+          "bytes": 2222,
+          "sha256": "1ad3426b9faed665ac5b5c2ebab076a86f3922345e8aa49e65c2e5b7b45aa900"
+        },
+        {
+          "path": "/opt/data/private/ZHY/script/morphmimic_faithful/worker.py",
+          "bytes": 9755,
+          "sha256": "d5cd5335306fa070b27a60e90e7848f3641cd75fbb7b5d9fb1acb9e868a4d1d5"
+        },
+        {
+          "path": "/opt/data/private/ZHY/script/morphmimic_faithful/test_scale_plan.py",
+          "bytes": 3277,
+          "sha256": "b94e5526a57dff6faf34ee038f97960767cc7779640617b1b55f12aab9440a2e"
+        },
+        {
+          "path": "/opt/data/private/ZHY/script/morphmimic_faithful/g1_train_e1024_20261101.json",
+          "bytes": 8331,
+          "sha256": "9c2cd79f05656ef841c0bccd9906b5d5dbbf931822f610fa98394cae8fd943c5"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/references/morphmimic_review_20261029/tree.json",
+          "bytes": 67138,
+          "sha256": "4927712bc83cbd3ae5c78240bbd668ae52a2994cf6870dff60aabca4229128eb"
+        },
+        {
+          "path": "/opt/data/private/ZHY/script/supermimic_q1_hp/run_trial.py",
+          "bytes": 12331,
+          "sha256": "9f743f0b91525204202f106b3c42a569bdf8c303f82f569108af20face5987ca"
+        },
+        {
+          "path": "/opt/data/private/ZHY/script/supermimic_q1_hp/worker.py",
+          "bytes": 15188,
+          "sha256": "d9adb481f945d7cd66ede3877a6dd1d08250625e8751ff221aee40b4acf46810"
+        },
+        {
+          "path": "/opt/data/private/ZHY/script/supermimic_q1_sources/runtime_guard.py",
+          "bytes": 8645,
+          "sha256": "020e80d36da018ef240f80c38d1d49af2d6d1ed0e4d7b0297bd4f7b934182c74"
+        },
+        {
+          "path": "/opt/data/private/ZHY/script/supermimic_q1_sources/guard_phuma_batch.py",
+          "bytes": 4126,
+          "sha256": "29bd2509cffccad91752e7c8119ab40262261fdba8d6ae098f9f0eb356cdf3ea"
+        }
+      ],
+      "command": [
+        "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/morphmimic_faithful/worker.py",
+        "--mode",
+        "train",
+        "--config",
+        "/opt/data/private/ZHY/script/morphmimic_faithful/g1_train_e1024_20261101.json",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101/run"
+      ]
+    },
+    "guard.json": {
+      "status": "RUNNING",
+      "command": [
+        "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/morphmimic_faithful/worker.py",
+        "--mode",
+        "train",
+        "--config",
+        "/opt/data/private/ZHY/script/morphmimic_faithful/g1_train_e1024_20261101.json",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101/run"
+      ],
+      "cwd": "/opt/data/private/ZHY",
+      "started_utc": "2026-10-31T17:55:37.670416+00:00",
+      "controller_pid": 362416,
+      "storage_status": "LOCAL_ONLY",
+      "last_storage_check": {
+        "experiment": {
+          "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101",
+          "unique_allocated_bytes": 182915072,
+          "unique_logical_bytes": 182897319,
+          "unique_inodes": 12,
+          "symlinks_not_followed": 0
+        },
+        "source": {
+          "root": "/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46",
+          "unique_allocated_bytes": 1396281344,
+          "unique_logical_bytes": 1391157482,
+          "unique_inodes": 2367,
+          "symlinks_not_followed": 0
+        },
+        "free_bytes": {
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101": 1086614425600,
+          "/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46": 1086614425600
+        },
+        "shared_memory": {
+          "shared_bytes": 15085002752,
+          "oom_kill": 0,
+          "maximum_bytes": 32212254720
+        },
+        "gpu": {
+          "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+          "memory_mib": 2823,
+          "temperature_c": 55
+        }
+      },
+      "error": null,
+      "worker_pid": 362421,
+      "worker_group": 362421
+    },
+    "launch.json": {
+      "controller_pid": 362416,
+      "code_commit": "71859ca8abe238477aa18245a31d81204da9197f"
+    },
+    "run/progress.json": {
+      "status": "RUNNING",
+      "mode": "train",
+      "started_utc": "2026-10-31T17:55:48.837637+00:00",
+      "config": {
+        "subset_yaml": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_DATA_20261101/run/npz50/subsets/1h.yaml",
+        "robot": "g1",
+        "num_envs": 1024,
+        "replay_capacity": 1000,
+        "wm_lr": 0.0002,
+        "policy_lr": 0.0002,
+        "critic_lr": 0.0002,
+        "wm_batches": 10,
+        "wm_batch": 512,
+        "window_k": 8,
+        "horizon": 32,
+        "imag_batch": 1024,
+        "utd": 0.4,
+        "warmup_env_steps": 100,
+        "wm_only_iters": 2000,
+        "iterations": 160000,
+        "lr_decay_iters": 1000000,
+        "lr_final_frac": 0.03,
+        "gamma": 0.99,
+        "lam": 0.95,
+        "action_noise": 0.1,
+        "actuator_delay": true,
+        "hist_len": 10,
+        "ckpt_every": 16000,
+        "log_every": 50,
+        "seed": 0,
+        "log_dir": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101/upstream",
+        "run_name": "scaled_g1_original",
+        "wandb": false,
+        "library_dtype": "float16",
+        "reset_norm": "remaining",
+        "wm_hidden": [
+          2048,
+          2048,
+          2048
+        ],
+        "wm_layer_norm": true,
+        "wm_frame": "root",
+        "residual_scale": "step",
+        "termination": "hazard",
+        "policy_hidden": [
+          2048,
+          1024,
+          512,
+          256
+        ],
+        "critic_hidden": [
+          256,
+          128
+        ],
+        "critic_layer_norm": true,
+        "critic_anchor_pos": true,
+        "goal_anchor": "reference",
+        "avoid_clip_end": true,
+        "clip_end_terminal": false,
+        "target_critic_alpha": null,
+        "critic_target_clip": true,
+        "value_bound": false,
+        "bf16": true,
+        "act": "elu",
+        "compile": "reduce-overhead",
+        "fused_adam": true,
+        "gpu_ids": null,
+        "lr_scale_sqrt_world_size": true,
+        "robots": null,
+        "subset_yamls": null,
+        "share": "wm",
+        "morphology": false,
+        "actor_geometry": true,
+        "decoder_film": null,
+        "latent_align_weight": null,
+        "latent_align_batch": 256,
+        "pool_norms": true,
+        "kp_interface": true,
+        "kp_env_frac": 0.5,
+        "kp_imag_batch": 1024,
+        "kp_masking": "full",
+        "kp_jitter": true,
+        "kp_align_weight": 0.1
+      },
+      "optimizer_steps": {
+        "wm_opt": 2960,
+        "policy_opt": 0,
+        "critic_opt": 0,
+        "kp_opt": 0,
+        "critic_kp_opt": 0
+      },
+      "iteration_seconds": 101.96767764590913,
+      "recent_iteration_seconds": [
+        0.22382773499703035,
+        0.2720887829782441,
+        0.2289420019951649,
+        0.2746805420028977,
+        0.22305619798135012,
+        0.26587103895144537,
+        0.2250301269814372,
+        0.264403700013645,
+        0.22705179901095107,
+        0.2671496320399456,
+        0.22742394002852961,
+        0.2691564240376465,
+        0.22172764799324796,
+        0.2632080909679644,
+        0.22170643898425624,
+        0.27201252104714513,
+        0.22865905496291816,
+        0.2714236850151792,
+        0.22599071904551238,
+        0.274005398969166,
+        0.22170225100126117,
+        0.27532985294237733,
+        0.22794437204720452,
+        0.26476934197125956,
+        0.22787525702733546,
+        0.26877702202182263,
+        0.24237832002108917,
+        0.271887392969802,
+        0.22497550497064367,
+        0.26124016498215497,
+        0.22661373601295054,
+        0.2743769900407642,
+        0.22910357202636078,
+        0.2638713810010813,
+        0.22011171199847013,
+        0.26666660100454465,
+        0.22867022297577932,
+        0.27011325996136293,
+        0.23259642801713198,
+        0.2660170600283891,
+        0.22589881101157516,
+        0.2662495080148801,
+        0.2278634179965593,
+        0.2597194429836236,
+        0.22757338301744312,
+        0.26361033297143877,
+        0.22195304301567376,
+        0.2789204730070196,
+        0.22580253798514605,
+        0.26202595798531547,
+        0.21900883299531415,
+        0.25944248598534614,
+        0.22473851399263367,
+        0.26691717200446874,
+        0.2270380910485983,
+        0.26411072799237445,
+        0.2222744959872216,
+        0.2643327669939026,
+        0.22552159300539643,
+        0.2632099430193193,
+        0.23124680202454329,
+        0.2667700879974291,
+        0.2290908099967055,
+        0.2667876679915935,
+        0.2200296919909306,
+        0.27080618601758033,
+        0.2242040439741686,
+        0.27186314098071307,
+        0.23633857700042427,
+        0.26453597500221804,
+        0.2232346890377812,
+        0.2629762759897858,
+        0.23517185600940138,
+        0.26334037096239626,
+        0.20963423902867362,
+        0.27010765799786896,
+        0.22571953205624595,
+        0.2492633680230938,
+        0.21410353801911697,
+        0.2737861149944365,
+        0.22087406599894166,
+        0.26252767199184746,
+        0.2286161239608191,
+        0.2551428740262054,
+        0.22911107999971136,
+        0.26159259100677446,
+        0.22648588300216943,
+        0.26359913498163223,
+        0.23568444099510089,
+        0.27014956797938794,
+        0.25084413995500654,
+        0.2920448770164512,
+        0.24354697501985356,
+        0.26243513700319454,
+        0.23183510400122032,
+        0.26997490401845425,
+        0.23157505097333342,
+        0.29900279198773205,
+        0.19833540299441665,
+        0.2694887809921056
+      ],
+      "nonfinite_steps": 0,
+      "minimum_learning_iterations": 160000,
+      "old_gait_regression_stops": false,
+      "user_accepted_checkpoint": null,
+      "initial_checkpoint": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101/upstream/scaled_g1_original/ckpt_0.pt",
+      "iteration": 296,
+      "updated_utc": "2026-10-31T17:57:48.202528+00:00",
+      "gpu_peak_allocated_bytes": 2136349696,
+      "gpu_peak_reserved_bytes": 2300575744
+    },
+    "snapshot": {
+      "utc": "2026-10-31T17:57:48.344841+00:00",
+      "root": "/opt/data/private/ZHY",
+      "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+      "processes": [
+        {
+          "pid": 362416,
+          "start_ticks": 38298223,
+          "cmdline": "/usr/bin/python3 -u /opt/data/private/ZHY/script/morphmimic_faithful/supervise.py --mode train --config /opt/data/private/ZHY/script/morphmimic_faithful/g1_train_e1024_20261101.json --output /opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101 --upstream-tree /opt/data/private/ZHY/data/references/morphmimic_review_20261029/tree.json --code-commit 71859ca8abe238477aa18245a31d81204da9197f --controller "
+        },
+        {
+          "pid": 362421,
+          "start_ticks": 38298276,
+          "cmdline": "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python -u /opt/data/private/ZHY/script/morphmimic_faithful/worker.py --mode train --config /opt/data/private/ZHY/script/morphmimic_faithful/g1_train_e1024_20261101.json --output /opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101/run "
+        }
+      ],
+      "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 2823 MiB, 65 %, 56",
+      "memory_bytes": 15091200000,
+      "oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "config_sha256": "9c2cd79f05656ef841c0bccd9906b5d5dbbf931822f610fa98394cae8fd943c5"
+    }
+  },
+  "goal_status": "active",
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "training_root": "data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101",
+  "notes": [
+    "Single G1 baseline; cross-robot unified training remains a later stage.",
+    "Fresh initialization, no profile checkpoint loaded.",
+    "First2000 iterations world-model-only; policy and critics then start. Old300-second gait stop and1200-second cap do not apply.",
+    "160000 iterations counted exposure target.40000 checkpoint retained. Estimated30h from short profile is not an elapsed-time completion condition."
+  ]
+}

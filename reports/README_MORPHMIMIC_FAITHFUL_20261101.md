@@ -59,6 +59,14 @@ supervise.py复用既有Q1Budget/StorageBudget/MemoryBoundBudget/guarded_run及�
 
 原Windows会话97816超时后先登记新独立故障、一次原生重连28744，核原boot/GPU/唯一根及profile终态；未重启服务器/容器或重复profile。正式配置g1_train_e1024_20261101.json已准备：全新初始化、E1024/160000轮/2000WM-only/真实1h/原配方，40000轮另存，profile权重不继承。发布核验后直接启动，无需重复询问授权；启动实测以之后launch收据为准。
 
+## 正式训练已启动
+
+正式训练来源71859ca8abe238477aa18245a31d81204da9197f已push并独立核40位远端，7记录387831B Git/Mac/25386发布快照大小SHA相同，原183上游blob启动前匹配。唯一新根MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101，controller362416/start38298223、worker362421，原boot/GPU/唯一根；[完整launch原值](../data/manifests/morphmimic_faithful_g1_launch_20261101.json)。
+
+北京时间2026-11-01 01:57:48实测原两进程存活、296轮/WM2960更新、其余optimizer0，符合2000轮WM-only预热，并非策略训练已完成。配置1024环境/WM512×10/imag-KP1024/H32-K8/原网络与LR奖励控制/真实1h/全新初始化，不读取profile权重。160000轮终点、40000轮额外检查点，原24/30GiB及GPU/进程/非有限守卫持续；没有旧physical_regression门。运行尚无正式物理评估或改善结论，多本体共享训练后续独立推进。
+
+训练中只观察原进程和保存状态，不因SSH超时重新启动。小收据/README后续发布不改变71859ca的训练冻结；不改正在运行的执行源码、其他自动任务或agent。权重与大数据仅服务器，目标ACTIVE。
+
 ## 旧结果收尾
 
 GOAL02底座301.575546秒/127轮physical_regression，停走倾斜RMS增31%-40%，脚底Z两走仅降2.35%/.59%，不达步态目标。12媒体与34保存审计通过、54工件28971941B Mac/25386大小SHA一致，原pipeline COMPLETED/进程退出；PPO从未启动，按最新目标停止推进。[交付清单](../data/manifests/supermimic_q1_gait_goal02_base_delivery_20261031.json)。旧G1 E64/600轮中500轮WM-only，仅100次actor是烟测，不是方法性能复现。

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-01：[正式MorphMimic G1 E1024/160000轮已启动](README_MORPHMIMIC_FAITHFUL_20261101.md)，01:57:48原两进程存活/296轮WM2960，处于2000轮WM-only预热；冻结71859ca/三端已核，未称步态改善或跨本体完成。[launch](../data/manifests/morphmimic_faithful_g1_launch_20261101.json)。
+
 2026-11-01：[E1024原版完整更新资源测试通过](README_MORPHMIMIC_FAITHFUL_20261101.md)，8轮五optimizer齐、183来源不变/回收0/OOM0，稳定约.68s/轮；用户明确开始训练，正式E1024/160000轮新初始化待本阶段发布后直接启动。[资源证据](../data/manifests/morphmimic_faithful_g1_profile_20261101.json)。
 
 2026-11-01：[MorphMimic官方G1数据准备完成](README_MORPHMIMIC_FAITHFUL_20261101.md)：1280条/2.26小时、真实1h559条，原过滤/来源保护/0新积分优化；下一步1024完整更新资源profile。[完整数据清单](../data/manifests/morphmimic_faithful_g1_data_20261101.json)。

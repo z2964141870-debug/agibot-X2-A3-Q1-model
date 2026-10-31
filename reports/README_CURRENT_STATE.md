@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-01 01:57:48：[正式MorphMimic G1训练已启动](README_MORPHMIMIC_FAITHFUL_20261101.md)，唯一根MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101、原controller362416/start38298223与worker362421均存活，296轮/WM2960，其余0符合2000轮WM-only预热。冻结71859ca8abe238477aa18245a31d81204da9197f独立远端/7记录387831B三端核；原183upstream匹配/同boot-GPU根/OOM0。真实1h559条、新初始化/E1024/160000轮，另存40000轮；无旧300秒退步门或1200秒时限，短profile估计约30h仅估算。尚无正式策略学习/步态改善或unified结果，goal ACTIVE。下一步只监督原进程，2000轮后核五optimizer及资源，不重复启动/改执行源码/agent或其他任务。[启动原值](../data/manifests/morphmimic_faithful_g1_launch_20261101.json)。
+
 2026-11-01用户明确开始训练：E1024全更新8轮资源profile已COMPLETED/reaped0/183源不变/五optimizer80-8-160-8-160，峰值Torch allocated7.34GB/reserved8.36GB；稳定约.68s/轮，40000轮约7-8h/160000轮约30h，仅估计。原会话超时后一次原生28744恢复/原boot-GPU空闲/OOM0，未重跑；profile漏KP hook和手抄commit元数据错误均有独立checkpoint/发布证据更正，原记录保留。正式全新G1 E1024 I160000配置准备、12CPU通过，发布核验后立即启动；不继承profile权重/套旧300秒门/以16小时停。goal ACTIVE。[资源原值](../data/manifests/morphmimic_faithful_g1_profile_20261101.json)。
 
 2026-11-01数据实测：[官方G1转换/原过滤1280条全部保留](README_MORPHMIMIC_FAITHFUL_20261101.md)，总8138.12秒，seed0真实1h559条/3604.72秒、tiny57条/364.66秒；1280 NPZ746003384B仅服务器/全部50Hz29维有限、源前后SHA同、183上游blob不变。controller354493/worker354498正常完成/reaped0，原清理子进程TERM日志保留，0新积分策略optimizer。12CPU测试及入口79bac39已三端，数据小包Mac/25386 SHA相同；下一步发布数据记录和原compile的1024全更新profile最多8轮，未启动。goal ACTIVE/未新正式训练/PPO旧计划停止。[数据](../data/manifests/morphmimic_faithful_g1_data_20261101.json)/[入口发布](../data/manifests/morphmimic_faithful_entry_publication_20261101.json)。

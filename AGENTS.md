@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-01共同SOMA准备：G1真实1h559唯一stem/metadata559行，AP03的583BVH仅9同名/550缺，按现存45188088297B原包精确提取559，独立CPU脚本9反例通过/未启动/不新GPU。原G1六时一次恢复后核原controller-worker/start/boot/GPU，23646轮；06:31:51已26395/OOM0/非有限0，不重启改冻结。恢复故障已先记一次15595，后续不重置。原版unified需share all/独立buffer/同片帧latent/先平均梯度后clip-Adam，单rank不能直接跑三本体，单卡共享验证和官方X2/T2重定向仍待，不能以3单体充数。新入口COMMON_DATA及common_sources_preparation清单；goal ACTIVE/采纳null，不启agent/改其他任务。
+
 - 2026-11-01 05:00:41正式MorphMimic G1原作业仍RUNNING，已17865/160000轮，WM178650/motion15865/critic317300/KP15865/KPcritic317300，越过2000轮预热；非有限0/OOM0/GPU8779MiB/62度、容器总16522911744B。16000轮checkpoint274169803B仅核文件存在/大小，未加载内容；未做正式物理评估，不称步态改善或unified完成。训练冻结71859ca不变，启动记录b9f3e8d1af1dc93706647782f36abcb6b9cc5d5e已独立40位远端/5记录375825B三端发布快照SHA。只监督原controller362416/start38298223及worker362421/start38298276，不重启或改执行源码；goal ACTIVE/采纳null，不启agent/改其他任务。入口同FAITHFUL及g1_progress/launch_publication清单，下方296轮仅启动历史。
 
 - 2026-11-01正式MorphMimic G1已启动，唯一根MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101，controller362416/start38298223、worker362421，冻结71859ca8abe238477aa18245a31d81204da9197f已独立远端/7记录387831B三端SHA/183upstream匹配。01:57:48实测296轮WM2960/其余0，2000轮预热尚非策略收益；E1024/真实1h559条/全新初始化/I160000，40000轮另存，旧300秒门和1200秒预算不适用。原boot/GPU根/OOM0，资源/非有限/原进程保护持续；只监督不重启/改冻结执行源码，多本体共享后续独立验证，goal ACTIVE/采纳null，不启agent或改其他任务。入口同FAITHFUL及g1_launch清单。

@@ -1,0 +1,124 @@
+{
+  "stage": "MORPHMIMIC_FAITHFUL01_COMMON_SOMA_PREPARATION",
+  "status": "CPU_TOOL_TESTED_NOT_YET_LAUNCHED",
+  "previous_goal_turn_classification": "PROGRESS",
+  "goal_status": "active",
+  "new_gpu_workloads": 0,
+  "planned_output_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_COMMON_SOMA_1H_20261101",
+  "input_archive": {
+    "path": "/opt/data/private/ZHY/data/references/bones_seed/inbox/soma_uniform.tar.gz",
+    "bytes": 45188088297,
+    "observed_member_prefix": "soma_uniform/bvh/<date>/<stem>.bvh",
+    "full_sha256_not_recomputed": true
+  },
+  "existing_motion_inventory": {
+    "g1_1h_clips": 559,
+    "g1_unique_stems": 559,
+    "matching_metadata_rows": 559,
+    "ap03_bvh_files": 583,
+    "ap03_matching_stems": 9,
+    "ap03_missing_stems": 550,
+    "no_archive_extraction_yet": true
+  },
+  "cpu_tests": {
+    "passed": 9,
+    "initial_counterexample": "Direct extract checked resources after opening its first selected file; now checks before creating the output directory and on first stream read.",
+    "server_tests_pending": true
+  },
+  "sources": [
+    {
+      "path": "script/morphmimic_cross_robot/prepare_sources.py",
+      "bytes": 11042,
+      "sha256": "5688c2c4a2ca49d45ec34fa02f7bd0556f1375cf0e4104bddebb151d69b8b112"
+    },
+    {
+      "path": "script/morphmimic_cross_robot/test_prepare_sources.py",
+      "bytes": 4267,
+      "sha256": "41f642cddade678d83b5323cda963a1e6c63af93f8e1e67d28ec67c7c640e2b0"
+    }
+  ],
+  "upstream_morphmimic_commit": "aa40fe46a7fa995ba7a7354ad065a2c8ad64a302",
+  "additional_reviewed_upstream_sources": [
+    {
+      "path": "src/morphmimic/train/distributed.py",
+      "sha256": "30423357374f3fb6e543a7ab227477df93f319ca031a8d3b5ba848b4850e97a7",
+      "git_blob_checked": true
+    },
+    {
+      "path": "src/morphmimic/train/multi_robot.py",
+      "sha256": "5c1b5b07eda6feed580a14094326ddcc81312192b5c9a0c6d3b5f8c16bb65552",
+      "git_blob_checked": true
+    },
+    {
+      "path": "src/morphmimic/train/normalizers.py",
+      "sha256": "402c4693102c1573309466fff882da80ff424ed5ffaa7da7465b290b9a337dd6",
+      "git_blob_checked": true
+    },
+    {
+      "path": "tools/soma_retargeter/stage_subset.py",
+      "sha256": "299b789cd46403570af2adc2605c00849ea26d6e2f117e55830c5c4f68d5e29d",
+      "git_blob_checked": true
+    },
+    {
+      "path": "tools/soma_retargeter/validate_csv.py",
+      "sha256": "d257a5e19d117a5bc7546af85f69ddf7d7a2a81868edad8e7bb8fad990536ba8",
+      "git_blob_checked": true
+    }
+  ],
+  "retargeter": {
+    "repository": "https://github.com/NVIDIA/soma-retargeter",
+    "commit": "cbdb2b494a2af82137bf9b6f15122d60167281c4",
+    "reviewed_sources": [
+      {
+        "path": "README.md",
+        "bytes": 9057,
+        "sha256": "dc5c355b0ef845729464a64f54b99c2854ecdbde3615b0f45744acd20c0762e2",
+        "git_blob_sha1": "29798ac9fbe96f8a7c798415e4225260b1b889a8"
+      },
+      {
+        "path": "app/bvh_to_csv_converter.py",
+        "bytes": 27453,
+        "sha256": "9e2f1ae76c4505920ec0e7f246c38ef3b70f2c0dc111378a85ecf7f64e4b27e5",
+        "git_blob_sha1": "df912a14844c0c8ea60330fe0da2abe08b921da2"
+      }
+    ],
+    "runtime_installed": false,
+    "retargeting_started": false
+  },
+  "original_training": {
+    "controller": 362416,
+    "controller_start_ticks": 38298223,
+    "worker": 362421,
+    "worker_start_ticks": 38298276,
+    "source_commit": "71859ca8abe238477aa18245a31d81204da9197f",
+    "observed_utc": "2026-10-31T22:31:51.620222+00:00",
+    "iteration": 26395,
+    "nonfinite_steps": 0,
+    "recovery_identity_verified_utc": "2026-10-31T22:02:05.278230+00:00",
+    "oom_kill_at_recovery": 0,
+    "connection_recovery_session": 15595,
+    "training_restarted": false
+  },
+  "single_gpu_unified": {
+    "ready": false,
+    "official_rank_per_robot": true,
+    "official_backend": "nccl",
+    "shared_parameters_averaged_before_clip_and_Adam": true,
+    "robot_buffers_must_stay_distinct": true,
+    "paired_min_length_common_clip_frames_required": true,
+    "three_specialists_are_not_unified": true
+  },
+  "execution_limits": {
+    "cpu_only": true,
+    "nice": 10,
+    "container_memory_stop_bytes": 30064771072,
+    "disk_reserve_bytes": 107374182400,
+    "original_training_memory_guard_unchanged": true,
+    "archive_read_page_advice_scope": "Consumed pages of this reader's compressed input only",
+    "advice_is_actual_freed_bytes": false,
+    "weights_and_BVH_server_only": true,
+    "no_training_restart": true,
+    "no_agent": true,
+    "other_automations_unchanged": true
+  }
+}

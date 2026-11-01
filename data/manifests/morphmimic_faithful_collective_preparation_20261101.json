@@ -1,0 +1,127 @@
+{
+  "stage": "MORPHMIMIC_FAITHFUL01_COLLECTIVE_TRANSPORT_PREPARATION",
+  "recorded_utc": "2026-11-01T05:32:50Z",
+  "status": "LOCAL_BOUNDARY_TESTS_PASSED_REAL_GLOO_NOT_RUN",
+  "goal_complete": false,
+  "application_goal_status_observed": "blocked",
+  "user_continue_authorization_preserved": true,
+  "upstream_commit": "aa40fe46a7fa995ba7a7354ad065a2c8ad64a302",
+  "training_source_commit_unchanged": "71859ca8abe238477aa18245a31d81204da9197f",
+  "new_sources": [
+    {
+      "path": "script/morphmimic_cross_robot/collective_transport.py",
+      "bytes": 4160,
+      "sha256": "1e4388ca2aed331ba46c719a5614ccd8c88941856625f6e13ccbe408ed73202d"
+    },
+    {
+      "path": "script/morphmimic_cross_robot/verify_collectives_cpu.py",
+      "bytes": 18113,
+      "sha256": "8cb2dd9246039992fad270e3f605935092be499a07360efd54599050dd71be7e"
+    },
+    {
+      "path": "script/morphmimic_cross_robot/test_collective_guards.py",
+      "bytes": 5237,
+      "sha256": "71b2f55f1b7ac5fbcd0787399182fe3a917abe63e2426a1eb0fc0baff529c49f"
+    }
+  ],
+  "local_verification": {
+    "standard_library_guard_tests_passed": 8,
+    "guard_tests_use_stub_api_not_torch": true,
+    "compiled_scripts": 3,
+    "pinned_upstream_source_sha_and_direct_dist_call_surface_verified": 4,
+    "real_Gloo_ranks_launched": 0,
+    "surrogate_Adam_steps": 0,
+    "native_Trainer_executed": false,
+    "new_native_simulation_or_policy_steps": 0,
+    "new_native_optimizer_steps": 0,
+    "new_GPU_workloads": 0,
+    "new_environment_installed": false
+  },
+  "transport_contract": {
+    "backend": "gloo",
+    "synchronous_only": true,
+    "tensor_transfer": "detached contiguous CPU staging, original Gloo collective, copy back",
+    "reduce_ops": ["SUM", "MIN", "MAX"],
+    "global_torch_distributed_replaced": false,
+    "aliases_limited_to": [
+      "morphmimic.train.distributed",
+      "morphmimic.train.multi_robot",
+      "morphmimic.train.normalizers",
+      "morphmimic.train.trainer"
+    ],
+    "original_gradient_average_clip_Adam_order_preserved_by_design_not_native_runtime_proven": true,
+    "robot_specific_buffers_preserved_by_design_not_native_runtime_proven": true,
+    "float_bitwise_equivalence_claimed": false,
+    "staged_input_bytes_is_total_wire_traffic_or_peak_memory": false
+  },
+  "planned_real_CPU_verification": {
+    "executed": false,
+    "upstream": "/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46",
+    "python": "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+    "output": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_GLOO_CPU_20261101",
+    "world_size": 3,
+    "checks_per_rank": 12,
+    "surrogate_Adam_steps_per_rank": 24,
+    "surrogate_Adam_steps_total": 72,
+    "native_Trainer_or_simulation_or_policy_executed": false,
+    "CUDA_VISIBLE_DEVICES": "",
+    "threads_per_process": 1,
+    "nice": 10,
+    "admission_cgroup_bytes_max": 25769803776,
+    "test_children_stop_cgroup_bytes": 30064771072,
+    "test_children_timeout_seconds": 180,
+    "disk_reserve_bytes": 107374182400,
+    "automatic_retry": false,
+    "CUDA_and_native_Trainer_validation_still_required_after_CPU_pass": true
+  },
+  "connection_incident": {
+    "id": "morphmimic-native-session15595-timeout-20261101T051745Z",
+    "original_session": 15595,
+    "recovery_recorded_before_attempt": true,
+    "recovery_attempts_used": 1,
+    "recovery_attempts_limit": 1,
+    "recovery_session": 67932,
+    "recovery_result": "Windows100.65.183.91 port22 SSH connection timed out, exit255",
+    "bounded_followup": "Single TCP port22 check reachable; no new SSH authentication or container command",
+    "current_remote_training_state": "RUNNING_ORIGINAL_PROCESS_IDENTITIES_VERIFIED_AFTER_NEW_HUMAN_REQUEST",
+    "unknown_status_was_pre_recovery_history": true,
+    "additional_explicit_human_login_request_utc": "2026-11-01T05:41:41Z",
+    "additional_explicit_human_login_session": 20962,
+    "automatic_recovery_count_not_reset": true,
+    "no_server_container_or_training_restart": true,
+    "no_second_login_for_same_incident": true,
+    "operational_state": "logs/q1_connection_recovery_state.json"
+  },
+  "original_training_historical_only": {
+    "root": "data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_E1024_I160000_20261101",
+    "controller": 362416,
+    "controller_start_ticks": 38298223,
+    "worker": 362421,
+    "worker_start_ticks": 38298276,
+    "handoff_last_observation_utc": "2026-11-01T03:38:11.108957Z",
+    "handoff_last_iteration": 54826,
+    "published_snapshot_iteration": 50376,
+    "published_snapshot_manifest": "data/manifests/morphmimic_faithful_g1_40000_observed_20261101.json",
+    "live_reverified_this_turn": true,
+    "reverified_progress_updated_utc": "2026-11-01T05:47:55.944893+00:00",
+    "reverified_iteration": 66750,
+    "reverified_nonfinite_steps": 0,
+    "reverified_oom_kill": 0,
+    "reverified_boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "reverified_gpu_uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+    "reverified_gpu_memory_MiB": 8779,
+    "reverified_optimizer_steps": {
+      "wm_opt": 667500,
+      "policy_opt": 64750,
+      "critic_opt": 1295000,
+      "kp_opt": 64750,
+      "critic_kp_opt": 1295000
+    },
+    "new_physical_evaluation_or_gait_improvement_claimed": false
+  },
+  "user_accepted_checkpoint": null,
+  "no_agent_started_or_activated": true,
+  "other_automations_unchanged": true,
+  "server_mirror_verified": false,
+  "publication_receipt": "logs/session_records/morphmimic_faithful_collective_publication_20261101.json"
+}

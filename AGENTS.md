@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-01共享通信适配准备完成：独立HostCollectives仅四原模块dist别名/CPU Gloo同步张量传输，保留原平均梯度后clip-Adam与独立buffer；8标准库边界测试/3编译/4固定源码SHA及调用表通过，真实三rank/Torch数值/原生Trainer及CUDA待。原15595及唯一自动67932超时/单次TCP可达为历史；用户再次明确ssh hp_han后另记新人工授权20962成功，经Windows入原25386核原boot/GPU/根/两个PID启动tick，13:47:55达66750/160000轮/五optimizer/非有限0/OOM0。原自动恢复1次计数未重置，原71859ca执行未动。先本准备三端核验再真实CPU测试；get_goal实读blocked/继续授权有效，不伪报ACTIVE或创建替代/结算。无agent/其他任务不动，入口COLLECTIVE_TRANSPORT及collective_preparation清单/旁收据。
+
 - 2026-11-01用户发现PrimebotTech/SuperMimic并明确让原G1继续。只读固定118338b19dcd14f768d1e7de5a48d04b78987688，GitHub记录2026-10-24创建、13源码124660B逐Git blob匹配；README自述独立Q1研究实现/跟踪仍验证/不提供权重XML数据，releases空，不据仓库名称已训成或论文作者官方。单卡示例1024环境/250000轮、22关节/分组PD/转速限矩/延迟/比例奖励是后续独立对照，未执行安装或另启训练。原G1于10:50:12核50376/160000轮/五optimizer/非有限0/OOM0、原PID/start/boot不变，40000及48000检查点274169803B仅stat；不热改71859ca冻结。共同SOMA559条1030127964B已07:06:18提取完成/09:21独立逐SHA核齐/进程退出/输入身份同，BVH仅25386，不当X2/T2重定向或unified已完成。goal ACTIVE/采纳null/无agent/其他任务保持；入口COMMON_DATA、PRIMEBOT_SUPERMIMIC_Q1_REVIEW及结果清单，发布看旁收据。
 
 - 2026-11-01共同SOMA准备：G1真实1h559唯一stem/metadata559行，AP03的583BVH仅9同名/550缺，按现存45188088297B原包精确提取559，独立CPU脚本9反例通过/未启动/不新GPU。原G1六时一次恢复后核原controller-worker/start/boot/GPU，23646轮；06:31:51已26395/OOM0/非有限0，不重启改冻结。恢复故障已先记一次15595，后续不重置。原版unified需share all/独立buffer/同片帧latent/先平均梯度后clip-Adam，单rank不能直接跑三本体，单卡共享验证和官方X2/T2重定向仍待，不能以3单体充数。新入口COMMON_DATA及common_sources_preparation清单；goal ACTIVE/采纳null，不启agent/改其他任务。

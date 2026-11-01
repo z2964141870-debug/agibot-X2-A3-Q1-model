@@ -7,7 +7,7 @@ import unittest
 from unittest.mock import patch
 
 from collective_transport import HostCollectives, installed_transport
-from verify_collectives_cpu import UPSTREAM_HASHES, source_contract
+from verify_collectives_cpu import UPSTREAM_HASHES, configure_environment, source_contract
 
 
 class CollectiveGuards(unittest.TestCase):
@@ -31,6 +31,23 @@ class CollectiveGuards(unittest.TestCase):
         self.api.get_backend = lambda: "nccl"
         with self.assertRaises(RuntimeError):
             HostCollectives(self.api)
+
+    def test_import_environment_requires_and_reuses_existing_executable(self):
+        import os
+
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {}, clear=True):
+            root = Path(tmp)
+            with self.assertRaisesRegex(RuntimeError, "Existing MorphMimic Git"):
+                configure_environment(root)
+            executable = root / "data/environments/morphmimic_git_tools/usr/bin/git"
+            executable.parent.mkdir(parents=True)
+            executable.write_text("#!/bin/sh\nexit 0\n")
+            executable.chmod(0o700)
+            runtime = configure_environment(root)
+            self.assertEqual(runtime["GIT_PYTHON_GIT_EXECUTABLE"], str(executable))
+            self.assertEqual(os.environ["CUDA_VISIBLE_DEVICES"], "")
+            self.assertEqual(os.environ["OMP_NUM_THREADS"], "1")
+            self.assertEqual(os.environ["GLOO_SOCKET_IFNAME"], "lo")
 
     def test_rejects_unaudited_calls_before_transport(self):
         bridge = HostCollectives(self.api)

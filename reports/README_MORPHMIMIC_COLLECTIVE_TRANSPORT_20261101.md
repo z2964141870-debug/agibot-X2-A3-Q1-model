@@ -24,6 +24,8 @@ verify_collectives_cpu.py已准备真正的三进程CPU Gloo测试：原distribu
 
 ## 运行方式和保护
 
+14:03:49至14:03:59首次真实CPU验证在morphmimic包导入时因GitPython找不到Git退出，尚未init_process_group，三rank替身Adam均0；三个测试子进程已回收，原G1继续到14:06:27的68453轮/非有限0。[完整失败收据](../logs/session_records/morphmimic_faithful_gloo_cpu_import_failure_20261101.json)保留。修复仅在测试进程复用现有supervise.py所用data/environments/morphmimic_git_tools/usr/bin/git及MUJOCO_GL设置，启动前检查可执行性，父环境传给spawn子进程；未安装Git、未改原G1运行环境或上游。新增反例后共9项本地边界测试通过。修复发布并核三端后仅一次新CPU根MORPHMIMIC_FAITHFUL01_GLOO_CPU_V02_20261101，原失败根保留，不循环重试或新增物理训练。
+
 ```sh
 python3 -m unittest discover -s script/morphmimic_cross_robot -p test_collective_guards.py -v
 python3 -m py_compile script/morphmimic_cross_robot/collective_transport.py script/morphmimic_cross_robot/verify_collectives_cpu.py script/morphmimic_cross_robot/test_collective_guards.py

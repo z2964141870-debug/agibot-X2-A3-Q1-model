@@ -28,6 +28,17 @@ BOOT = "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
 GPU = "GPU-26028785-9fb9-45af-e614-4cc53af15d08"
 
 
+def configure_environment(root=ROOT):
+    executable = root / "data/environments/morphmimic_git_tools/usr/bin/git"
+    if not executable.is_file() or not os.access(executable, os.X_OK):
+        raise RuntimeError("Existing MorphMimic Git executable is required for upstream imports")
+    runtime = dict(CUDA_VISIBLE_DEVICES="", OMP_NUM_THREADS="1", MKL_NUM_THREADS="1",
+                   OPENBLAS_NUM_THREADS="1", GLOO_SOCKET_IFNAME="lo", MUJOCO_GL="egl",
+                   GIT_PYTHON_GIT_EXECUTABLE=str(executable))
+    os.environ.update(runtime)
+    return runtime
+
+
 def stamp():
     return datetime.datetime.now(datetime.timezone.utc).isoformat()
 
@@ -66,6 +77,7 @@ def rank_worker(rank, upstream, output):
     dist = None
     try:
         os.environ["CUDA_VISIBLE_DEVICES"] = ""
+        sys.path.insert(0, str(upstream))
         sys.path.insert(0, str(upstream / "src"))
         import torch
         import torch.distributed as dist
@@ -274,8 +286,7 @@ def main():
     if gpu != GPU:
         raise RuntimeError("Server GPU identity changed")
     before = source_contract(args.upstream)
-    os.environ.update(CUDA_VISIBLE_DEVICES="", OMP_NUM_THREADS="1", MKL_NUM_THREADS="1",
-                      OPENBLAS_NUM_THREADS="1", GLOO_SOCKET_IFNAME="lo")
+    runtime_environment = configure_environment()
     os.nice(10)
     cgroup = Path("/sys/fs/cgroup/memory/memory.usage_in_bytes")
     if int(cgroup.read_text()) > 24 * GIB:
@@ -288,6 +299,7 @@ def main():
                   native_simulation_steps=0, native_policy_inference=0,
                   native_training_optimizer_updates=0, automatic_retry=False,
                   CUDA_transport_tested=False, native_Trainer_executed=False)
+    result["runtime_environment"] = runtime_environment
     save(args.output / "status.json", result)
     context = multiprocessing.get_context("spawn")
     children = []

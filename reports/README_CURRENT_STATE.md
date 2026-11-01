@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-01 21:36：[PrimebotTech Q1生态核查](README_PRIMEBOT_Q1_ECOSYSTEM_REVIEW_20261101.md)，12库/重点五库固定commit/25小源码256320B逐blob核实。PPO库公开起身model_30000.pt/两个ONNX/配置和q1_getUp动作；独立资产30项与GMR/PPO同blob，mc XML有22力矩motor，仅静态候选/尚未回放。SuperMimic无随库权重不能外推整个组织；PPO位置执行器与WM力矩PD及sim2sim±18Nm需成套核对，GMR未见SOMA到Q1路由。原6378句柄不可用后登记并一次48707原生恢复，核原boot/GPU/根/两PID启动tick；G1达110338/160000轮/五optimizer/非有限0/OOM0/GPU8779MiB，未物理评估或改71859ca。下一步原训继续，GPU释放后原版评估及独立Q1候选回放/共享验证；目标未达/采纳null/无agent/其他任务不变。[证据](../data/manifests/primebot_q1_ecosystem_review_20261101.json)。
+
 2026-11-01 20:03：[原训练与Q1库见解](README_PRIMEBOT_SUPERMIMIC_Q1_REVIEW_20261101.md)，G1达101621/160000轮/五optimizer/原PID启动tick/bootGPU根/非有限0/OOM0/GPU8779MiB；旧20962断线后先记新独立故障并仅一次6378原生Windows恢复，训练没重启。API重读Q1库main118338b/release空/组织名启元机器人，明确厂商侧线索与论文作者原码之别；将该独立实现升为Q1阶段优先对照，先核分关节PD/力矩motor/2ms/延迟与比例奖励，短训不能当其250000轮效果。CITATION注明论文级/真机未展示，不据仓库即已稳定；本轮只读核查、不新GPU/安装训练/agent，原G1继续与采纳null保持。[快照与见解](../data/manifests/primebot_supermimic_q1_interpretation_20261101.json)。
 
 2026-11-01 14:16:22：[共享通信CPU契约通过/原训练正常](README_MORPHMIMIC_COLLECTIVE_TRANSPORT_20261101.md)，三rank各12类/共72替身Adam，对集中式最大参数差3.73e-9，四上游SHA前后同/子进程全0退出/未创建GPU上下文；9本地边界测试/5小工件12135B Mac25386 SHA同。初次GitPython导入失败保留，修复复用既有Git环境，未改现训；原G1已69381/160000轮/原PID启动tick与bootGPU根/非有限0/OOM0/GPU8779MiB。真实原生Trainer、CUDA传输及三机器人驻留未验证，不称unified完成或步态改善；下一步原G1继续，释放GPU后官方评估与X2/T2重定向/共享资源验证。目标未达/采纳null/无agent/其他任务保持。[结果](../data/manifests/morphmimic_faithful_collective_results_20261101.json)。下方“真实CPU待”为历史。

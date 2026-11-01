@@ -1,5 +1,7 @@
 # PrimebotTech SuperMimic Q1核查
 
+21:36范围补充：[组织整体核查](README_PRIMEBOT_Q1_ECOSYSTEM_REVIEW_20261101.md)已在primebot_rl_mjlab发现公开起身PPO的model_30000.pt/ONNX、配置与q1_getUp参考动作，独立资产库也有XML/meshes。下文“不随库提供权重/资产”仅指SuperMimic这个固定仓库，不适用于整个组织；PPO起身候选也不能证明通用走路或已训好的SuperMimic WM。各库执行器配置不同，回放必须按模型/配置/权重成套核验。
+
 2026-11-01，用户提供PrimebotTech/SuperMimic，并明确让现有MorphMimic G1训练继续。结论：已经公开Q1专用SuperMimic实现，值得作为Q1控制与足量训练对照；当前公开材料不能证明已有可直接使用的成熟Q1权重。我此前没有核到这个仓库，已补入项目依据。
 
 20:03北京时间进展与见解更新：原G1已101621/160000轮，原controller/worker启动tick、boot/GPU根不变，五optimizer持续更新/非有限0/OOM0/GPU8779MiB。旧20962观察会话超时后按既有授权先记新独立故障，再仅一次6378原生Windows恢复，训练未重启。GitHub API本次重读main仍118338b、releases仍空；组织API名称“启元机器人”、主页primebot.com。不能把README的“独立实现”理解成否定厂商关联；它表示这不是SuperMimic论文作者原代码的原样发布。正式组织归属仍应以厂商渠道为准，不仅凭名字或GitHub认证标志判断。

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-01 21:36：[PrimebotTech整体核查](README_PRIMEBOT_Q1_ECOSYSTEM_REVIEW_20261101.md)，12库中重点五库/25小源码256320B逐blob相同；找到起身PPO的pt/ONNX/配置/动作，30项Q1资产跨库blob相同，22力矩motor XML为SuperMimic候选。尚未回放，不当通用步态或WM权重；原G1110338/160000轮/原PID身份/非有限0/OOM0继续。[清单](../data/manifests/primebot_q1_ecosystem_review_20261101.json)。
+
 2026-11-01 20:03：[G1已101621/160000轮及Q1库判断](README_PRIMEBOT_SUPERMIMIC_Q1_REVIEW_20261101.md)：原进程正常/非有限0/OOM0，API核main118338b未变；Q1独立库升为后续适配首要对照，重点控制/资产/延迟/量纲和足量基线，公开材料未展示论文级或真机效果。[清单](../data/manifests/primebot_supermimic_q1_interpretation_20261101.json)。
 
 2026-11-01：[共享通信真实CPU验证通过](README_MORPHMIMIC_COLLECTIVE_TRANSPORT_20261101.md)，三rank各12类/72替身Adam、最大参数差3.73e-9/全0退出/无GPU上下文；原G1 14:16达69381/160000轮/非有限0/OOM0，原生三机器人和步态效果仍待。[结果清单](../data/manifests/morphmimic_faithful_collective_results_20261101.json)。

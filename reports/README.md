@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-02：[衣服原始源与现有数据复查](README_CLOTH_DATA_INVENTORY_20261102.md)。用户指定Windows访问10.26.67.170/llx，仅查看和复制、禁止改删源数据；原始路径已核为HumanPlus1000/common/L-Sequence及S-Sequence，L有49日期目录。当前25386保留CLOTHO206/197齐全、Demo10092套、91HDF5及90条A3派生，不能叠加或直接当Q1参考；两段原地录制仍在Mac。未新测衣服或改现训。[元数据与边界](../data/manifests/cloth_data_inventory_20261102.json)。
+
 2026-11-01 21:36：[PrimebotTech整体核查](README_PRIMEBOT_Q1_ECOSYSTEM_REVIEW_20261101.md)，12库中重点五库/25小源码256320B逐blob相同；找到起身PPO的pt/ONNX/配置/动作，30项Q1资产跨库blob相同，22力矩motor XML为SuperMimic候选。尚未回放，不当通用步态或WM权重；原G1110338/160000轮/原PID身份/非有限0/OOM0继续。[清单](../data/manifests/primebot_q1_ecosystem_review_20261101.json)。
 
 2026-11-01 20:03：[G1已101621/160000轮及Q1库判断](README_PRIMEBOT_SUPERMIMIC_Q1_REVIEW_20261101.md)：原进程正常/非有限0/OOM0，API核main118338b未变；Q1独立库升为后续适配首要对照，重点控制/资产/延迟/量纲和足量基线，公开材料未展示论文级或真机效果。[清单](../data/manifests/primebot_supermimic_q1_interpretation_20261101.json)。

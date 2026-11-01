@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-02 00:08：[衣服原始共享与现有副本已复查](README_CLOTH_DATA_INVENTORY_20261102.md)。Windows临时认证至10.26.67.170/llx成功，实际原始路径HumanPlus1000/common/L-Sequence和S-Sequence，L为49日期目录；只读/仅复制约束写AGENTS，禁止任何源端改删或写入。CLOTHO206/197齐全、Demo10092/noGT、91预览HDF5、95SMPL/90A3派生与两Mac原地录制仍在，来源重叠不相加，非Q1训练就绪。仅元数据/ZIP目录，未新衣服测试、推理、仿真、训练或改现训；23:54历史G1快照123376/160000轮/非有限0，未物理评估，目标未达/采纳null/未调用goal工具。[清单](../data/manifests/cloth_data_inventory_20261102.json)，实际发布见旁收据。
+
 2026-11-01 21:36：[PrimebotTech Q1生态核查](README_PRIMEBOT_Q1_ECOSYSTEM_REVIEW_20261101.md)，12库/重点五库固定commit/25小源码256320B逐blob核实。PPO库公开起身model_30000.pt/两个ONNX/配置和q1_getUp动作；独立资产30项与GMR/PPO同blob，mc XML有22力矩motor，仅静态候选/尚未回放。SuperMimic无随库权重不能外推整个组织；PPO位置执行器与WM力矩PD及sim2sim±18Nm需成套核对，GMR未见SOMA到Q1路由。原6378句柄不可用后登记并一次48707原生恢复，核原boot/GPU/根/两PID启动tick；G1达110338/160000轮/五optimizer/非有限0/OOM0/GPU8779MiB，未物理评估或改71859ca。下一步原训继续，GPU释放后原版评估及独立Q1候选回放/共享验证；目标未达/采纳null/无agent/其他任务不变。[证据](../data/manifests/primebot_q1_ecosystem_review_20261101.json)。
 
 2026-11-01 20:03：[原训练与Q1库见解](README_PRIMEBOT_SUPERMIMIC_Q1_REVIEW_20261101.md)，G1达101621/160000轮/五optimizer/原PID启动tick/bootGPU根/非有限0/OOM0/GPU8779MiB；旧20962断线后先记新独立故障并仅一次6378原生Windows恢复，训练没重启。API重读Q1库main118338b/release空/组织名启元机器人，明确厂商侧线索与论文作者原码之别；将该独立实现升为Q1阶段优先对照，先核分关节PD/力矩motor/2ms/延迟与比例奖励，短训不能当其250000轮效果。CITATION注明论文级/真机未展示，不据仓库即已稳定；本轮只读核查、不新GPU/安装训练/agent，原G1继续与采纳null保持。[快照与见解](../data/manifests/primebot_supermimic_q1_interpretation_20261101.json)。

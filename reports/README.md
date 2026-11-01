@@ -2,6 +2,10 @@
 
 2026-11-01研究：[五项简报](research/2026-11-01/README.md)/[检查](README_RESEARCH_CHECK_20261101.md)。接续10/31未发布检索，MorphMimic v0.1预发布、A3 089/XR、SONIC-K1、FORGE与规划评测；新增社区权重只作背景。累计206请求200成功、HF两次超时；main完整去重149→162，H001不变。当前按Q1最新MorphMimic足量复现/固定aa40与独立共享验证，不改训练预算或执行源码。本轮原生Windows成功/容器自动认证未通过，服务器Git和镜像未完成；实际发布见[收据](../data/manifests/research_watch_sync_20261101.json)。
 
+2026-11-01：[PrimebotTech/SuperMimic Q1实现核查](README_PRIMEBOT_SUPERMIMIC_Q1_REVIEW_20261101.md)。用户提供仓库并明确原G1继续；固定118338b/13源码逐blob一致，Q1独立研究实现/README跟踪仍验证/无随库权重XML数据。1024环境250000轮及PD/转速限矩/延迟/比例奖励作为后续独立对照，不热改现训。[核查清单](../data/manifests/primebot_supermimic_q1_review_20261101.json)。
+
+2026-11-01：[共同SOMA559条提取完成](README_MORPHMIMIC_COMMON_DATA_20261101.md)，1030127964B/独立逐大小SHA/输入身份同/CPU进程退出，BVH仅服务器；原G1已50376/160000轮，40000/48000检查点已存/未物理评估，原进程继续。[数据结果](../data/manifests/morphmimic_faithful_common_sources_results_20261101.json)/[训练快照](../data/manifests/morphmimic_faithful_g1_40000_observed_20261101.json)。
+
 2026-11-01：[MorphMimic共同动作数据准备](README_MORPHMIMIC_COMMON_DATA_20261101.md)：真实559条G1子集与已有AP03源仅9相交，独立CPU精确提取工具9反例通过、未启动；原G1已26395轮/原进程/OOM0/非有限0，一次原生连接恢复不重训。固定跨本体同步梯度/独立buffer/同片帧对齐契约，单卡unified与X2/T2数据仍待。[准备清单](../data/manifests/morphmimic_faithful_common_sources_preparation_20261101.json)。
 
 2026-11-01 05:00:41：[MorphMimic G1正式训练已17865/160000轮](README_MORPHMIMIC_FAITHFUL_20261101.md)，2000轮预热后五optimizer均更新，motion/KP各15865次；16000轮检查点存在274169803B/OOM0/非有限0。原作业及训练来源71859ca保持，尚未物理评估或判步态改善。[进度原值](../data/manifests/morphmimic_faithful_g1_progress_20261101.json)/[启动记录三端发布](../data/manifests/morphmimic_faithful_g1_launch_publication_20261101.json)。

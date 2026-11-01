@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-01用户发现PrimebotTech/SuperMimic并明确让原G1继续。只读固定118338b19dcd14f768d1e7de5a48d04b78987688，GitHub记录2026-10-24创建、13源码124660B逐Git blob匹配；README自述独立Q1研究实现/跟踪仍验证/不提供权重XML数据，releases空，不据仓库名称已训成或论文作者官方。单卡示例1024环境/250000轮、22关节/分组PD/转速限矩/延迟/比例奖励是后续独立对照，未执行安装或另启训练。原G1于10:50:12核50376/160000轮/五optimizer/非有限0/OOM0、原PID/start/boot不变，40000及48000检查点274169803B仅stat；不热改71859ca冻结。共同SOMA559条1030127964B已07:06:18提取完成/09:21独立逐SHA核齐/进程退出/输入身份同，BVH仅25386，不当X2/T2重定向或unified已完成。goal ACTIVE/采纳null/无agent/其他任务保持；入口COMMON_DATA、PRIMEBOT_SUPERMIMIC_Q1_REVIEW及结果清单，发布看旁收据。
+
 - 2026-11-01共同SOMA准备：G1真实1h559唯一stem/metadata559行，AP03的583BVH仅9同名/550缺，按现存45188088297B原包精确提取559，独立CPU脚本9反例通过/未启动/不新GPU。原G1六时一次恢复后核原controller-worker/start/boot/GPU，23646轮；06:31:51已26395/OOM0/非有限0，不重启改冻结。恢复故障已先记一次15595，后续不重置。原版unified需share all/独立buffer/同片帧latent/先平均梯度后clip-Adam，单rank不能直接跑三本体，单卡共享验证和官方X2/T2重定向仍待，不能以3单体充数。新入口COMMON_DATA及common_sources_preparation清单；goal ACTIVE/采纳null，不启agent/改其他任务。
 
 - 2026-11-01 05:00:41正式MorphMimic G1原作业仍RUNNING，已17865/160000轮，WM178650/motion15865/critic317300/KP15865/KPcritic317300，越过2000轮预热；非有限0/OOM0/GPU8779MiB/62度、容器总16522911744B。16000轮checkpoint274169803B仅核文件存在/大小，未加载内容；未做正式物理评估，不称步态改善或unified完成。训练冻结71859ca不变，启动记录b9f3e8d1af1dc93706647782f36abcb6b9cc5d5e已独立40位远端/5记录375825B三端发布快照SHA。只监督原controller362416/start38298223及worker362421/start38298276，不重启或改执行源码；goal ACTIVE/采纳null，不启agent/改其他任务。入口同FAITHFUL及g1_progress/launch_publication清单，下方296轮仅启动历史。

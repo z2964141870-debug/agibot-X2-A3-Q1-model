@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-01共享通信CPU V02于14:13:53完成：3rank各12类/共72替身Adam，对集中式最大参数差3.7253e-9/四固定源SHA前后同/子进程全0退出/无GPU上下文；9本地边界测试/5工件12135B Mac25386大小SHA同。首次GitPython导入失败根/trace保留，修复复用既有Git环境，519c35d独立远端/6记录60508B三端SHA后才执行；非原生Trainer/CUDA或三机器人驻留验证。14:16:22原G1达69381/160000轮/五optimizer/原PID启动tick/bootGPU根/非有限0/OOM0/GPU8779MiB，未重启改71859ca。用户再次明确登录后20962正常，旧UNKNOWN历史/自动故障计数不重置。原G1继续，释放GPU后官方评估/重定向和共享资源验证；目标未达/采纳null/无agent/其他任务保持，入口COLLECTIVE_TRANSPORT/collective_results及旁收据。
+
 - 2026-11-01共享通信适配准备完成：独立HostCollectives仅四原模块dist别名/CPU Gloo同步张量传输，保留原平均梯度后clip-Adam与独立buffer；8标准库边界测试/3编译/4固定源码SHA及调用表通过，真实三rank/Torch数值/原生Trainer及CUDA待。原15595及唯一自动67932超时/单次TCP可达为历史；用户再次明确ssh hp_han后另记新人工授权20962成功，经Windows入原25386核原boot/GPU/根/两个PID启动tick，13:47:55达66750/160000轮/五optimizer/非有限0/OOM0。原自动恢复1次计数未重置，原71859ca执行未动。先本准备三端核验再真实CPU测试；get_goal实读blocked/继续授权有效，不伪报ACTIVE或创建替代/结算。无agent/其他任务不动，入口COLLECTIVE_TRANSPORT及collective_preparation清单/旁收据。
 
 - 2026-11-01用户发现PrimebotTech/SuperMimic并明确让原G1继续。只读固定118338b19dcd14f768d1e7de5a48d04b78987688，GitHub记录2026-10-24创建、13源码124660B逐Git blob匹配；README自述独立Q1研究实现/跟踪仍验证/不提供权重XML数据，releases空，不据仓库名称已训成或论文作者官方。单卡示例1024环境/250000轮、22关节/分组PD/转速限矩/延迟/比例奖励是后续独立对照，未执行安装或另启训练。原G1于10:50:12核50376/160000轮/五optimizer/非有限0/OOM0、原PID/start/boot不变，40000及48000检查点274169803B仅stat；不热改71859ca冻结。共同SOMA559条1030127964B已07:06:18提取完成/09:21独立逐SHA核齐/进程退出/输入身份同，BVH仅25386，不当X2/T2重定向或unified已完成。goal ACTIVE/采纳null/无agent/其他任务保持；入口COMMON_DATA、PRIMEBOT_SUPERMIMIC_Q1_REVIEW及结果清单，发布看旁收据。

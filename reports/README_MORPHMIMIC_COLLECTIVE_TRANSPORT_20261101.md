@@ -1,6 +1,8 @@
 # MorphMimic共享通信适配准备
 
-2026-11-01。MORPHMIMIC_FAITHFUL01后续单卡unified准备；8项本地边界检查通过，真实三rank CPU Gloo验证尚未运行。原G1训练未发送停止、恢复或重启命令，执行来源71859ca8abe238477aa18245a31d81204da9197f保持。
+2026-11-01。MORPHMIMIC_FAITHFUL01后续单卡unified通信契约准备及CPU验证完成：9项本地边界检查、三rank各12类真实Gloo检查通过，共72次微型网络Adam更新，与集中式均值损失oracle的最大参数差3.725290298461914e-9。原生Trainer、CUDA张量和三本体训练仍未执行，不能当unified训练完成。原G1未发送停止、恢复或重启命令，执行来源71859ca8abe238477aa18245a31d81204da9197f保持。
+
+14:13:38至14:13:53北京时间，独立CPU V02正常COMPLETED，三个子进程均退出0/无残留/未创建GPU上下文；四份固定上游源码SHA前后相同。5小工件12135B Mac/25386逐大小SHA一致，首次导入失败根和完整trace继续保留。14:16:22核原G1两PID启动tick/boot/GPU根未变，69381/160000轮/五optimizer持续更新/非有限0/OOM0/GPU8779MiB，训练始终继续。[实测结果](../data/manifests/morphmimic_faithful_collective_results_20261101.json)。
 
 13:47:55北京时间最新：用户在询问服务器后再次明确要求ssh hp_han，已另记人工新授权尝试，20962成功经DESKTOP-3C1DPPR进入原25386。原boot/GPU/唯一根与两个原PID启动tick一致，66750/160000轮、五optimizer持续更新、非有限0/OOM0/GPU8779MiB。服务器和原训练均在，下面UNKNOWN为恢复前历史；自动恢复1次计数未重置。现在可先完成本准备发布及小记录三端核验，再执行真实CPU验证，不改现训。
 
@@ -14,13 +16,13 @@
 
 ## 已验证与未验证
 
-本机不含Torch，未为本步骤安装新环境。test_collective_guards.py的8项标准库测试检查：已初始化Gloo条件、未审计接口、非支持存储、空/重复/异源模块集、别名退出还原及全局对象不变、固定源码哈希、哈希以外的调用表拒绝、允许调用表。该测试使用显式替身对象，只验证拒绝和生命周期，不验证通信数值、autograd或分布式运行。
+本机不含Torch，未为本步骤安装新环境。test_collective_guards.py的9项标准库测试检查：已初始化Gloo条件、未审计接口、非支持存储、空/重复/异源模块集、别名退出还原及全局对象不变、固定源码哈希、哈希以外的调用表拒绝、允许调用表、既有Git导入环境的复用。该测试使用显式替身对象，只验证拒绝和生命周期，不验证通信数值、autograd或分布式运行；实际数值由另列服务器CPU测试验证。
 
 三个脚本py_compile通过。四份本地上游快照的SHA256均与既定值相同，AST核其直接dist调用只包含审计接口。检查点、权重和NPZ均未加载。
 
-verify_collectives_cpu.py已准备真正的三进程CPU Gloo测试：原distributed/multi_robot/normalizers配合微型替身网络，计划每rank12类检查、24次替身Adam更新，三rank共72次；本阶段实际执行0次。检查包括五条优化路径逐次平均后clip-Adam及moment与集中式均值损失对照、clip顺序反例、独立buffer、池化统计含空rank、原latent梯度和共同帧采样、非连续张量/对象状态、别名正常和异常退出还原、单rank零对齐。
+verify_collectives_cpu.py真实三进程CPU Gloo测试已完成：原distributed/multi_robot/normalizers配合微型替身网络，每rank12类检查、24次替身Adam更新，三rank共72次。检查包括五条优化路径逐次平均后clip-Adam及moment与集中式均值损失对照、clip顺序反例、独立buffer、池化统计含空rank、原latent梯度和共同帧采样、非连续张量/对象状态、别名正常和异常退出还原、单rank零对齐。每rank记录broadcast11/all_reduce29/all_gather3/object1；staged_input_bytes1908仅输入张量计数，不是总网络字节或峰值内存。
 
-即使后续CPU测试通过，也只证明小型数据的通信契约，仍不证明原生Trainer、CUDA张量、三机器人24GiB同时驻留或端到端训练等价。未来正式共享入口和资源profile均未启动。
+CPU通过只证明小型数据的通信契约，仍不证明原生Trainer、CUDA张量、三机器人24GiB同时驻留或端到端训练等价。微型fixture使用普通范数裁剪，不是原生policy/value裁剪和完整损失执行。未来正式共享入口和资源profile均未启动。
 
 ## 运行方式和保护
 
@@ -31,10 +33,10 @@ python3 -m unittest discover -s script/morphmimic_cross_robot -p test_collective
 python3 -m py_compile script/morphmimic_cross_robot/collective_transport.py script/morphmimic_cross_robot/verify_collectives_cpu.py script/morphmimic_cross_robot/test_collective_guards.py
 ```
 
-服务器真实CPU测试须在本阶段发布、传输和大小SHA核验后执行，命令如下；目前未执行，输出根不存在与否也未远端复核。
+服务器真实CPU V02已在修复519c35d24911d1046f21899769f600a16d6d405b独立40位远端及6文件60508B Mac/25386大小SHA核验后执行；实际命令如下，已完成的根不重跑。
 
 ```sh
-CUDA_VISIBLE_DEVICES='' data/environments/morphmimic_original_20261029/bin/python script/morphmimic_cross_robot/verify_collectives_cpu.py --upstream /opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46 --output /opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_GLOO_CPU_20261101
+CUDA_VISIBLE_DEVICES='' data/environments/morphmimic_original_20261029/bin/python script/morphmimic_cross_robot/verify_collectives_cpu.py --upstream /opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46 --output /opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_GLOO_CPU_V02_20261101 > logs/morphmimic_collectives_cpu_v02_20261101.log 2>&1
 ```
 
 限定原boot/GPU/唯一根，cgroup准入<=24GiB，CPU测试仅对子进程在>28GiB或180秒时停止并回收，磁盘保留100GiB；各进程1线程/nice10，CUDA隐藏，不创建仿真或原生Trainer。中断同样回收测试子进程，失败输出根保留，不自动循环重试；不会终止原G1训练。
@@ -43,7 +45,7 @@ CUDA_VISIBLE_DEVICES='' data/environments/morphmimic_original_20261029/bin/pytho
 
 本轮既有原生观察会话15595返回Windows100.65.183.91超时/退出255。05:17:45Z先记录独立故障，再按已授权方式source ~/.zshrc、ssh -tt hp_han，仅一次新会话67932仍在Windows22端口连接超时，未进入容器。随后一次nc -vz -G8 100.65.183.91 22成功，仅证明TCP可达，不能证明SSH认证或25386、训练状态。未创建转发或控制socket，未探测其他服务器入口，未再登录同一故障。
 
-本轮实时训练状态UNKNOWN。交接中的最后一次观察为2026-11-01 11:38:11北京时间54826/160000轮；已发布可追溯快照为10:50:12的50376轮。原controller362416/start38298223、worker362421/start38298276只作恢复时核身份依据，当前未复核，不据连接失联判断训练已停或自行重启。步态是否改善仍待官方物理评测，采纳null。
+恢复前一度实时训练状态UNKNOWN；交接11:38:11的54826轮和10:50:12已发布50376轮均为历史。用户再次明确登录后20962已核原controller362416/start38298223、worker362421/start38298276、boot/GPU根，14:16:22达69381轮。连接超时没有被当作训练停止，不曾自行重启。步态是否改善仍待官方物理评测，采纳null。
 
 应用get_goal本轮实际返回blocked；继续授权有效，本轮继续可执行的本地准备，不创建替代goal、不结算、不暂停或伪报应用ACTIVE。原监督及其他自动任务、训练资源守卫保持。
 
@@ -51,4 +53,4 @@ CUDA_VISIBLE_DEVICES='' data/environments/morphmimic_original_20261029/bin/pytho
 
 [准备清单](../data/manifests/morphmimic_faithful_collective_preparation_20261101.json)登记源码SHA、测试边界、独立故障一次计数和待办；操作性恢复状态保留logs/q1_connection_recovery_state.json，不纳入Git认证或主机配置。
 
-当前本地准备已完成，GitHub/Mac/服务器发布以旁收据为准；13:47已恢复连接，尚待本阶段小记录三端核验及真实Gloo测试，不预称完成。远端共同559条BVH、权重和NPZ继续SERVER_LOCAL_ONLY。下一步完成本阶段大小SHA，再执行一次真实CPU Gloo验证。G1释放GPU后再串行做官方评估、X2/T2重定向和原生单卡共享资源验证，不并行开启GPU任务。
+准备e2c1044和导入修复519c35d已独立远端及Mac/25386大小SHA；真实CPU结果5小工件12135B亦已Mac/25386逐SHA。最新结果说明和索引的发布看morphmimic_faithful_collective_results_publication_20261101.json，不预称尚未核验的发布完成。远端共同559条BVH、权重和NPZ继续SERVER_LOCAL_ONLY。后续G1按160000轮继续，GPU释放后串行做官方评估、X2/T2重定向和原生单卡共享资源验证，不并行开启GPU任务、不重复CPU验证或原提取。

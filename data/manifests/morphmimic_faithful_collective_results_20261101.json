@@ -1,0 +1,257 @@
+{
+  "stage": "MORPHMIMIC_FAITHFUL01_COLLECTIVE_CPU_RESULTS",
+  "status": "CPU_COLLECTIVE_CONTRACT_COMPLETED_NOT_NATIVE_TRAINING",
+  "source_commit": "519c35d24911d1046f21899769f600a16d6d405b",
+  "independent_remote_sha": "519c35d24911d1046f21899769f600a16d6d405b",
+  "upstream_commit": "aa40fe46a7fa995ba7a7354ad065a2c8ad64a302",
+  "run_root": "data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_GLOO_CPU_V02_20261101",
+  "started_utc": "2026-11-01T06:13:38.396764+00:00",
+  "ended_utc": "2026-11-01T06:13:53.908117+00:00",
+  "seconds": 15.512,
+  "world_size": 3,
+  "checks_per_rank": 12,
+  "total_rank_checks": 36,
+  "surrogate_Adam_steps": 72,
+  "native_optimizer_steps": 0,
+  "native_policy_inference": 0,
+  "native_simulation_steps": 0,
+  "native_Trainer_executed": false,
+  "CUDA_transport_tested": false,
+  "all_ranks_passed": true,
+  "child_exitcodes": [
+    0,
+    0,
+    0
+  ],
+  "remaining_CPU_test_children": [],
+  "GPU_contexts_created": 0,
+  "maximum_parameter_error_vs_centralized_mean_loss": 3.725290298461914e-9,
+  "original_source_SHA_before_after_equal": true,
+  "original_sources": [
+    {
+      "path": "/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46/src/morphmimic/train/distributed.py",
+      "sha256": "30423357374f3fb6e543a7ab227477df93f319ca031a8d3b5ba848b4850e97a7",
+      "direct_dist_calls": [
+        "all_gather",
+        "all_reduce",
+        "broadcast",
+        "get_rank",
+        "get_world_size",
+        "is_available",
+        "is_initialized"
+      ]
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46/src/morphmimic/train/multi_robot.py",
+      "sha256": "5c1b5b07eda6feed580a14094326ddcc81312192b5c9a0c6d3b5f8c16bb65552",
+      "direct_dist_calls": [
+        "all_reduce"
+      ]
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46/src/morphmimic/train/normalizers.py",
+      "sha256": "402c4693102c1573309466fff882da80ff424ed5ffaa7da7465b290b9a337dd6",
+      "direct_dist_calls": [
+        "all_reduce"
+      ]
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/third_party/morphmimic_aa40fe46/src/morphmimic/train/trainer.py",
+      "sha256": "82519fcb992471eee910dcacf7f962a1e02174e4f7b32cd9d763105220993c67",
+      "direct_dist_calls": [
+        "all_gather",
+        "all_gather_object",
+        "all_reduce"
+      ]
+    }
+  ],
+  "ranks": [
+    {
+      "rank": 0,
+      "status": "PASSED",
+      "checks": [
+        "parameters_broadcast_buffers_robot_specific",
+        "all_five_paths_mean_then_clip_then_Adam_and_moments",
+        "clip_before_mean_counterexample_detected",
+        "shared_parameter_checksums_exclude_distinct_buffers",
+        "pooled_normalizer_matches_union_including_empty_rank",
+        "original_latent_loss_detached_center_and_local_gradient",
+        "common_sampler_rank_permutations_min_frames_same_draws",
+        "noncontiguous_gather_broadcast_and_object_checkpoint_state",
+        "unaudited_async_and_collective_requests_rejected",
+        "module_aliases_restored_global_torch_dist_unchanged",
+        "module_aliases_restored_after_exception",
+        "single_rank_latent_alignment_is_zero"
+      ],
+      "surrogate_Adam_steps": 24,
+      "native_simulation_steps": 0,
+      "native_policy_inference": 0,
+      "native_training_optimizer_updates": 0,
+      "maximum_parameter_error_vs_centralized_oracle": 3.725290298461914e-9,
+      "transport_calls": {
+        "broadcast": 11,
+        "all_reduce": 29,
+        "all_gather": 3,
+        "all_gather_object": 1
+      },
+      "staged_input_bytes": 1908,
+      "gpu_context_created": false,
+      "torch_version": "2.11.0+cu128"
+    },
+    {
+      "rank": 1,
+      "status": "PASSED",
+      "checks": [
+        "parameters_broadcast_buffers_robot_specific",
+        "all_five_paths_mean_then_clip_then_Adam_and_moments",
+        "clip_before_mean_counterexample_detected",
+        "shared_parameter_checksums_exclude_distinct_buffers",
+        "pooled_normalizer_matches_union_including_empty_rank",
+        "original_latent_loss_detached_center_and_local_gradient",
+        "common_sampler_rank_permutations_min_frames_same_draws",
+        "noncontiguous_gather_broadcast_and_object_checkpoint_state",
+        "unaudited_async_and_collective_requests_rejected",
+        "module_aliases_restored_global_torch_dist_unchanged",
+        "module_aliases_restored_after_exception",
+        "single_rank_latent_alignment_is_zero"
+      ],
+      "surrogate_Adam_steps": 24,
+      "native_simulation_steps": 0,
+      "native_policy_inference": 0,
+      "native_training_optimizer_updates": 0,
+      "maximum_parameter_error_vs_centralized_oracle": 3.725290298461914e-9,
+      "transport_calls": {
+        "broadcast": 11,
+        "all_reduce": 29,
+        "all_gather": 3,
+        "all_gather_object": 1
+      },
+      "staged_input_bytes": 1908,
+      "gpu_context_created": false,
+      "torch_version": "2.11.0+cu128"
+    },
+    {
+      "rank": 2,
+      "status": "PASSED",
+      "checks": [
+        "parameters_broadcast_buffers_robot_specific",
+        "all_five_paths_mean_then_clip_then_Adam_and_moments",
+        "clip_before_mean_counterexample_detected",
+        "shared_parameter_checksums_exclude_distinct_buffers",
+        "pooled_normalizer_matches_union_including_empty_rank",
+        "original_latent_loss_detached_center_and_local_gradient",
+        "common_sampler_rank_permutations_min_frames_same_draws",
+        "noncontiguous_gather_broadcast_and_object_checkpoint_state",
+        "unaudited_async_and_collective_requests_rejected",
+        "module_aliases_restored_global_torch_dist_unchanged",
+        "module_aliases_restored_after_exception",
+        "single_rank_latent_alignment_is_zero"
+      ],
+      "surrogate_Adam_steps": 24,
+      "native_simulation_steps": 0,
+      "native_policy_inference": 0,
+      "native_training_optimizer_updates": 0,
+      "maximum_parameter_error_vs_centralized_oracle": 3.725290298461914e-9,
+      "transport_calls": {
+        "broadcast": 11,
+        "all_reduce": 29,
+        "all_gather": 3,
+        "all_gather_object": 1
+      },
+      "staged_input_bytes": 1908,
+      "gpu_context_created": false,
+      "torch_version": "2.11.0+cu128"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_GLOO_CPU_V02_20261101/rank_0.json",
+      "bytes": 1156,
+      "sha256": "42d90ed556e19d687782232e2941b125064fc59a69d3ba23a7ccde24aba157cd"
+    },
+    {
+      "path": "data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_GLOO_CPU_V02_20261101/rank_1.json",
+      "bytes": 1156,
+      "sha256": "9ea333459f7f3228091efdc7c69a4c0202157047d622acc4e4cbac1bbf441d9b"
+    },
+    {
+      "path": "data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_GLOO_CPU_V02_20261101/rank_2.json",
+      "bytes": 1156,
+      "sha256": "ea177923e09f52c1901eb662506236c4199fbc077359076c85adad57847b8da9"
+    },
+    {
+      "path": "data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_GLOO_CPU_V02_20261101/status.json",
+      "bytes": 7374,
+      "sha256": "cdf40b097dabf15638e26a9d7224b770e1792f9b8d9fbefe6c6ce466fc30d10f"
+    },
+    {
+      "path": "logs/morphmimic_collectives_cpu_v02_20261101.log",
+      "bytes": 1293,
+      "sha256": "a68c7b17f14976368b50521646a3b8739d52d6f850c7a8452183fe36043823c5"
+    }
+  ],
+  "Mac_server_artifact_sizes_SHA256_equal": true,
+  "artifact_bytes": 12135,
+  "retained_first_failure": {
+    "root": "data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_GLOO_CPU_20261101",
+    "failure": "Upstream package import reached GitPython without existing supervised Git executable",
+    "receipt": "logs/session_records/morphmimic_faithful_gloo_cpu_import_failure_20261101.json",
+    "surrogate_Adam_steps": 0,
+    "remaining_children": 0,
+    "no_training_effect": true
+  },
+  "corrective_import_reused_existing_executable": true,
+  "corrected_entry_publication": {
+    "payload_files": 6,
+    "payload_bytes": 60508,
+    "Mac_server_size_SHA256_equal": true,
+    "archive_sha256": "76ab89f6550a1097010db343d8675cba1af448889e61a5d264dc0b5de9b2ea77",
+    "marker": "Q1_COLLECTIVE_IMPORT_FIX_MIRROR_VERIFIED"
+  },
+  "original_training": {
+    "status": "RUNNING",
+    "iteration": 69381,
+    "updated_utc": "2026-11-01T06:16:22.841622+00:00",
+    "optimizer_steps": {
+      "wm_opt": 693810,
+      "policy_opt": 67381,
+      "critic_opt": 1347620,
+      "kp_opt": 67381,
+      "critic_kp_opt": 1347620
+    },
+    "nonfinite_steps": 0,
+    "processes": [
+      {
+        "pid": 362416,
+        "start_ticks": 38298223
+      },
+      {
+        "pid": 362421,
+        "start_ticks": 38298276
+      }
+    ],
+    "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 8779 MiB, 62",
+    "cgroup_bytes": 18740711424,
+    "oom_kill": 0,
+    "source_commit": "71859ca8abe238477aa18245a31d81204da9197f",
+    "restarted": false,
+    "new_physical_evaluation": false,
+    "gait_improvement_claimed": false
+  },
+  "scope_limits": [
+    "Tiny surrogate CPU networks and original distributed, multi_robot, normalizers helpers; original Trainer not instantiated.",
+    "Fixture gradient clipping uses torch norm clipping; it does not execute original native policy/value clipping or complete original losses.",
+    "CPU staging/Gloo numeric success does not prove CUDA transport, three-robot GPU memory feasibility or native end-to-end training equivalence.",
+    "staged_input_bytes counts input tensor bytes only, not total wire bytes, object payload, host outputs or peak memory."
+  ],
+  "next_steps": [
+    "Preserve running G1 training to160000 iterations and perform original physical evaluation/videos after GPU release.",
+    "Prepare original X2 Ultra/T2 retargeting and native single-GPU shared execution/resource verification after G1 GPU release."
+  ],
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "no_agent": true,
+  "other_automations_unchanged": true,
+  "publication_receipt": "logs/session_records/morphmimic_faithful_collective_results_publication_20261101.json"
+}

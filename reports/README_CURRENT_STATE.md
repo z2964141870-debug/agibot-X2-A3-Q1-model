@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-01 14:16:22：[共享通信CPU契约通过/原训练正常](README_MORPHMIMIC_COLLECTIVE_TRANSPORT_20261101.md)，三rank各12类/共72替身Adam，对集中式最大参数差3.73e-9，四上游SHA前后同/子进程全0退出/未创建GPU上下文；9本地边界测试/5小工件12135B Mac25386 SHA同。初次GitPython导入失败保留，修复复用既有Git环境，未改现训；原G1已69381/160000轮/原PID启动tick与bootGPU根/非有限0/OOM0/GPU8779MiB。真实原生Trainer、CUDA传输及三机器人驻留未验证，不称unified完成或步态改善；下一步原G1继续，释放GPU后官方评估与X2/T2重定向/共享资源验证。目标未达/采纳null/无agent/其他任务保持。[结果](../data/manifests/morphmimic_faithful_collective_results_20261101.json)。下方“真实CPU待”为历史。
+
 2026-11-01 13:47:55：[单卡共享通信准备及原训练仍在](README_MORPHMIMIC_COLLECTIVE_TRANSPORT_20261101.md)，8项本地替身边界测试/3编译/4原源码SHA和调用表通过，真实Gloo/原生Trainer及CUDA待。原自动恢复超时后，用户再次明确ssh hp_han，另记新人工授权20962经Windows入原25386核原boot/GPU/根/两个PID启动tick，66750/160000轮/五optimizer/非有限0/OOM0/GPU8779MiB；旧UNKNOWN为历史，训练未重启或改源码。自动恢复1次计数保留；下一步本准备三端核验后真实CPU测试。get_goal实读blocked/继续授权有效，目标未达/采纳null/无agent/其他任务不变。[准备清单](../data/manifests/morphmimic_faithful_collective_preparation_20261101.json)。
 
 2026-11-01研究：[五项简报](research/2026-11-01/README.md)/[检查](README_RESEARCH_CHECK_20261101.md)。接续10/31未发布检索，MorphMimic v0.1预发布、A3 089/XR、SONIC-K1、FORGE与规划评测；新增社区权重只作背景。累计206请求200成功、HF两次超时；main完整去重149→163，H001不变。当前按Q1最新MorphMimic足量复现/固定aa40与独立共享验证，不改训练预算或执行源码。本轮原生Windows成功/容器自动认证未通过，服务器Git和镜像未完成；实际发布见[收据](../data/manifests/research_watch_sync_20261101.json)。

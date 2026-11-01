@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-01：[共享通信真实CPU验证通过](README_MORPHMIMIC_COLLECTIVE_TRANSPORT_20261101.md)，三rank各12类/72替身Adam、最大参数差3.73e-9/全0退出/无GPU上下文；原G1 14:16达69381/160000轮/非有限0/OOM0，原生三机器人和步态效果仍待。[结果清单](../data/manifests/morphmimic_faithful_collective_results_20261101.json)。
+
 2026-11-01：[MorphMimic单卡共享通信适配准备](README_MORPHMIMIC_COLLECTIVE_TRANSPORT_20261101.md)：8项本地边界测试通过/真实Gloo与CUDA待；用户再次要求ssh hp_han后原生20962核原服务器和原训练，13:47:55已66750/160000轮/非有限0/OOM0，旧UNKNOWN为历史。先发布三端后CPU测试。[清单](../data/manifests/morphmimic_faithful_collective_preparation_20261101.json)。
 
 2026-11-01研究：[五项简报](research/2026-11-01/README.md)/[检查](README_RESEARCH_CHECK_20261101.md)。接续10/31未发布检索，MorphMimic v0.1预发布、A3 089/XR、SONIC-K1、FORGE与规划评测；新增社区权重只作背景。累计206请求200成功、HF两次超时；main完整去重149→163，H001不变。当前按Q1最新MorphMimic足量复现/固定aa40与独立共享验证，不改训练预算或执行源码。本轮原生Windows成功/容器自动认证未通过，服务器Git和镜像未完成；实际发布见[收据](../data/manifests/research_watch_sync_20261101.json)。

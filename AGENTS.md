@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-02用户提出衣服SMPL→Q1重定向→PrimebotTech SuperMimic-Q1 policy→动力学视频；刷新main仍118338b/releases空/完整树无公开权重，本用户25386有界检查也未找到匹配checkpoint。用户答复“哦没有是吗，那就先算了”，因此该衣服演示分支暂时搁置；未新转换、训练、策略推理或动力学仿真，不换用起身PPO/旧Q1/G1权重冒充。原MorphMimic复现和监督继续，未改goal或自动任务；恢复本分支先落实匹配官方policy/资产。原始衣服源只读/仅复制约束保持。入口README_CLOTH_Q1_POLICY_20261102.md。
+
 - 2026-11-02用户确认衣服最原始数据由Windows访问10.26.67.170，用户llx；现场认证成功，实际为`\\10.26.67.170\HumanPlus1000\common\L-Sequence`及`S-Sequence`，L有49日期目录，旧722会话仅历史未重扫。只允许列目录/读取/复制，禁止源端编辑、删除、移动、重命名、改权限及写测试；转换/报告/缓存写项目副本，认证不保存。当前25386的data/yuanqi_ops保留CLOTHO206/197齐全、Demo100 92/noGT、91预览HDF5、95SMPL/90A3派生等，来源重叠不相加/非Q1就绪；两原地hand_follow仍在Mac。T11三开发片约2.77-3.10cm非独立测试或机器人效果。本轮只读元数据/无新衣服测试GPU训练，现训不改，入口CLOTH_DATA_INVENTORY及清单/旁收据。
 
 - 2026-11-01组织级Q1核查：12公开库/重点五库固定commit，25小源码256320B逐blob核实；PPO库2153a6c公开起身model_30000.pt/两个ONNX/配置与q1_getUp动作，权重/动作仅树身份未下载回放，不当通用走路或SuperMimic WM。30资产跨Q1/GMR/PPO同blob，mc XML静态22力矩motor候选；WM软件PD与PPO延迟位置执行器不同、sim2sim限18Nm、历史q1模块diff和SOMA到Q1映射仍待。21:36:05原6378句柄不存在后先记独立故障一次48707原生恢复，核原boot/GPU/根/PID启动tick，G1110338/160000轮/五optimizer/非有限0/OOM0/GPU8779MiB继续71859ca，未物理评估。资料与关键差异保存ECOSYSTEM_REVIEW/清单及旁收据；无新GPU安装训练/agent/其他任务或goal变更，目标未达/采纳null。

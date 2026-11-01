@@ -75,6 +75,14 @@ supervise.py复用既有Q1Budget/StorageBudget/MemoryBoundBudget/guarded_run及�
 
 启动记录b9f3e8d1af1dc93706647782f36abcb6b9cc5d5e已独立核40位远端、5记录375825B Git blob/权威工作树/Mac/25386发布快照大小SHA一致，[发布旁收据](../data/manifests/morphmimic_faithful_g1_launch_publication_20261101.json)。记录提交不改变原训练冻结71859ca8abe238477aa18245a31d81204da9197f。当前小进度记录另行发布，以对应实际收据为准；goal ACTIVE/采纳null，原进程持续运行。
 
+## 四万轮与原作业继续
+
+北京时间2026-11-01 10:50:12.934706只读核到50376/160000轮，guard RUNNING，WM503760/motion48376/critic967520/KP48376/KPcritic967520，非有限0/OOM0。原controller362416/start38298223与worker362421/start38298276及boot不变，GPU8779MiB/60度。40000轮额外检查点和48000轮定期检查点均274169803B，仅核stat，未加载大权重或做新物理评估。[原值](../data/manifests/morphmimic_faithful_g1_40000_observed_20261101.json)。四万轮是迭代对齐的中间快照，1024环境下仍继续至160000采样量对齐终点；尚无步态改善结论。
+
+用户提供PrimebotTech/SuperMimic并明确让原作业继续。[独立核查](README_PRIMEBOT_SUPERMIMIC_Q1_REVIEW_20261101.md)确认其Q1专用研究代码、公开单卡250000轮示例及控制/奖励差异，但README跟踪质量仍在验证且不随库提供权重XML数据。只读固定13份源码，未安装、执行、替换现有代码或启动第二训练。该Q1对照与MorphMimic足量复现分别记录，当前训练冻结仍71859ca不变，goal ACTIVE/采纳null。
+
+共同SOMA559条已[提取并逐大小SHA核齐](README_MORPHMIMIC_COMMON_DATA_20261101.md)，X2/T2重定向和单卡同步共享实现尚未完成，不将数据提取称为unified训练完成。
+
 ## 旧结果收尾
 
 GOAL02底座301.575546秒/127轮physical_regression，停走倾斜RMS增31%-40%，脚底Z两走仅降2.35%/.59%，不达步态目标。12媒体与34保存审计通过、54工件28971941B Mac/25386大小SHA一致，原pipeline COMPLETED/进程退出；PPO从未启动，按最新目标停止推进。[交付清单](../data/manifests/supermimic_q1_gait_goal02_base_delivery_20261031.json)。旧G1 E64/600轮中500轮WM-only，仅100次actor是烟测，不是方法性能复现。

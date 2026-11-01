@@ -1,6 +1,6 @@
 # MorphMimic共同动作数据
 
-2026-11-01，MORPHMIMIC_FAITHFUL01 ACTIVE。上一目标轮完成正式G1启动/预热后更新/16000轮检查点与三端发布，属于实际进展。本轮准备后续G1/X2 Ultra/T2共享训练的同片数据，不启动第二GPU作业。
+2026-11-01，MORPHMIMIC_FAITHFUL01 ACTIVE。G1/X2 Ultra/T2共同动作源已按G1真实1h子集精确提取559条，1030127964B，仅保存在25386。现有G1训练持续运行，未启动第二GPU作业；这一步是共同人体动作源准备，尚未完成X2/T2机器人重定向或共享训练。
 
 ## 现场和缺口
 
@@ -12,9 +12,9 @@
 
 新增独立script/morphmimic_cross_robot/prepare_sources.py，不在正在运行的训练源码目录中。读取原subset YAML和CSV元数据，拒绝重复stem/歧义元数据/非法路径；仅按完整归档成员名复制普通BVH到新根，逐文件流式SHA，不覆盖旧输出。压缩包顺序读取，已消费的8MiB整段只发FADV_DONTNEED，记录advice字节但不称实际释放；不删文件或全局drop_caches。最多一个CPU低优先级worker，不加载Torch/Newton/Warp，不建GPU上下文、0新积分/策略/optimizer。
 
-内存达28GiB或磁盘余量低于原100GiB时只中止提取，现有训练30GiB守卫和GPU锁不变。输入前后核size/mtime/inode；归档只记录已读取压缩前缀SHA，除非完整读完不冒称整包SHA。结果保留输入身份/计划SHA/每个BVH大小SHA/实际读量，权重和BVH仅服务器。9项CPU反例最终通过；首版直接调用extract未在创建输出前检查资源，测试发现后已补入口检查，未运行服务器提取或改训练。
+内存达28GiB或磁盘余量低于原100GiB时只中止提取，现有训练30GiB守卫和GPU锁不变。输入前后核size/mtime/inode；归档只记录已读取压缩前缀SHA，除非完整读完不冒称整包SHA。结果保留输入身份/计划SHA/每个BVH大小SHA/实际读量，权重和BVH仅服务器。9项CPU反例在本机和服务器均通过；首版直接调用extract未在创建输出前检查资源，测试发现后已补入口检查。该反例未造成服务器提取失败，未改训练。
 
-发布准确代码并核三端后执行一次：
+执行源码7107be0c3743deefbd37654443ed877e0eed18f2已独立核40位远端，7记录380615B Git/Mac/25386发布快照大小SHA一致，随后仅执行一次：
 
 ```sh
 data/environments/morphmimic_original_20261029/bin/python script/morphmimic_cross_robot/prepare_sources.py \
@@ -22,10 +22,12 @@ data/environments/morphmimic_original_20261029/bin/python script/morphmimic_cros
   --subset /opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_DATA_20261101/run/npz50/subsets/1h.yaml \
   --metadata /opt/data/private/ZHY/data/references/bones_seed/metadata/seed_metadata_v004.csv \
   --output /opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_COMMON_SOMA_1H_20261101 \
-  --source-commit PUBLISHED_FULL_40_CHARACTER_SHA --detach
+  --source-commit 7107be0c3743deefbd37654443ed877e0eed18f2 --detach
 ```
 
-当前仅准备及只读清点，提取未启动；正式运行和结果另补实测收据。[准备清单](../data/manifests/morphmimic_faithful_common_sources_preparation_20261101.json)。
+北京时间06:51:19.535429至07:06:18.835833正常完成，CPU worker391817/start40072443已退出。559条与plan成员精确相同，无额外BVH；09:21:56独立逐文件重新核大小/SHA全部相同，输入前后device/inode/size/mtime一致。实际读取压缩前缀44987525120B，不是完整45188088297B归档；前缀SHA d8adfccc7e5263af8174c9bc0f88909121e9d08d9602244155ddf137e4a1e8523只对应实际前缀。已消费页advice44979716096B不能当实际释放量。
+
+提取全程0新物理积分/策略推理/optimizer/重定向，未创建GPU上下文。09:21原G1已42217轮，原两进程/start/boot相同，唯一GPU计算PID362421、GPU8779MiB/OOM0；容器18167828480B是现场快照。结果小记录包SHA82f7344b5c0f8b9aea1e09a81d56febe0f0d6fffaf5a47466e7fb0a51b64ff4c已Mac/25386一致，未传BVH。[完整结果及559文件清单](../data/manifests/morphmimic_faithful_common_sources_results_20261101.json)/[原准备清单](../data/manifests/morphmimic_faithful_common_sources_preparation_20261101.json)。
 
 ## 原版跨本体契约
 

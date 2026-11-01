@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-11-01研究：[五项简报](research/2026-11-01/README.md)/[检查](README_RESEARCH_CHECK_20261101.md)。接续10/31未发布检索，MorphMimic v0.1预发布、A3 089/XR、SONIC-K1、FORGE与规划评测；新增社区权重只作背景。累计206请求200成功、HF两次超时；main完整去重149→162，H001不变。当前按Q1最新MorphMimic足量复现/固定aa40与独立共享验证，不改训练预算或执行源码。本轮原生Windows成功/容器自动认证未通过，服务器Git和镜像未完成；实际发布见[收据](../data/manifests/research_watch_sync_20261101.json)。
+2026-11-01研究：[五项简报](research/2026-11-01/README.md)/[检查](README_RESEARCH_CHECK_20261101.md)。接续10/31未发布检索，MorphMimic v0.1预发布、A3 089/XR、SONIC-K1、FORGE与规划评测；新增社区权重只作背景。累计206请求200成功、HF两次超时；main完整去重149→163，H001不变。当前按Q1最新MorphMimic足量复现/固定aa40与独立共享验证，不改训练预算或执行源码。本轮原生Windows成功/容器自动认证未通过，服务器Git和镜像未完成；实际发布见[收据](../data/manifests/research_watch_sync_20261101.json)。
 
 2026-11-01：[PrimebotTech/SuperMimic Q1实现核查](README_PRIMEBOT_SUPERMIMIC_Q1_REVIEW_20261101.md)。用户提供仓库并明确原G1继续；固定118338b/13源码逐blob一致，Q1独立研究实现/README跟踪仍验证/无随库权重XML数据。1024环境250000轮及PD/转速限矩/延迟/比例奖励作为后续独立对照，不热改现训。[核查清单](../data/manifests/primebot_supermimic_q1_review_20261101.json)。
 

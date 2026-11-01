@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-11-01研究：[五项简报](research/2026-11-01/README.md)/[检查](README_RESEARCH_CHECK_20261101.md)。接续10/31未发布检索，MorphMimic v0.1预发布、A3 089/XR、SONIC-K1、FORGE与规划评测；新增社区权重只作背景。累计206请求200成功、HF两次超时；main完整去重149→162，H001不变。当前按Q1最新MorphMimic足量复现/固定aa40与独立共享验证，不改训练预算或执行源码。本轮原生Windows成功/容器自动认证未通过，服务器Git和镜像未完成；实际发布见[收据](../data/manifests/research_watch_sync_20261101.json)。
+2026-11-01研究：[五项简报](research/2026-11-01/README.md)/[检查](README_RESEARCH_CHECK_20261101.md)。接续10/31未发布检索，MorphMimic v0.1预发布、A3 089/XR、SONIC-K1、FORGE与规划评测；新增社区权重只作背景。累计206请求200成功、HF两次超时；main完整去重149→163，H001不变。当前按Q1最新MorphMimic足量复现/固定aa40与独立共享验证，不改训练预算或执行源码。本轮原生Windows成功/容器自动认证未通过，服务器Git和镜像未完成；实际发布见[收据](../data/manifests/research_watch_sync_20261101.json)。
 
 2026-11-01 10:50:12：[原G1继续训练](README_MORPHMIMIC_FAITHFUL_20261101.md)，50376/160000轮、五optimizer持续更新/非有限0/OOM0，原controller362416/start38298223、worker362421/start38298276与boot不变，GPU8779MiB/60度；40000及48000检查点274169803B仅stat，未物理评估或称步态改善。用户明确继续，并提供[PrimebotTech的Q1实现](README_PRIMEBOT_SUPERMIMIC_Q1_REVIEW_20261101.md)：固定118338b/13源码Git blob相同；README自述研究验证/不随库提供权重XML数据，单卡1024环境250000轮，分关节PD/转速限矩/延迟/比例奖励待独立对照，未安装执行或改现训。共同SOMA已559条1030127964B全部提取/输入身份同/独立逐SHA核齐/CPU进程退出，下一步X2/T2重定向和单卡unified仍待G1释放GPU后串行。goal ACTIVE/采纳null/无agent/其他任务保持。[共同数据结果](../data/manifests/morphmimic_faithful_common_sources_results_20261101.json)/[训练快照](../data/manifests/morphmimic_faithful_g1_40000_observed_20261101.json)/[Q1仓库核查](../data/manifests/primebot_supermimic_q1_review_20261101.json)。下方“提取未启动”为历史。
 

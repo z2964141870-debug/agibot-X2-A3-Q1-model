@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-01用户要求先核训练再给Q1库见解：20:03:01经新独立故障一次6378原生Windows恢复，核原PID/start/boot/GPU根、101621/160000轮/五optimizer/非有限0/OOM0/GPU8779MiB，71859ca现训不动。API重读Primebot main118338b/release空，组织名启元机器人/主页primebot.com，独立实现不等于否定厂商关联、仍不同论文作者原码。Q1后续以该库为优先对照，先核torque motor/分组PD/2ms/转速限矩/延迟/按尺寸奖励和完整250000轮配方；旧短训/CPU测试不当稳定效果或单因，CITATION注明论文级/真机未展示。未新GPU/训练安装/agent或改其他任务；原G1与共享目标继续/采纳null，入口PRIMEBOT_SUPERMIMIC_Q1_REVIEW及interpretation/旁收据。
+
 - 2026-11-01共享通信CPU V02于14:13:53完成：3rank各12类/共72替身Adam，对集中式最大参数差3.7253e-9/四固定源SHA前后同/子进程全0退出/无GPU上下文；9本地边界测试/5工件12135B Mac25386大小SHA同。首次GitPython导入失败根/trace保留，修复复用既有Git环境，519c35d独立远端/6记录60508B三端SHA后才执行；非原生Trainer/CUDA或三机器人驻留验证。14:16:22原G1达69381/160000轮/五optimizer/原PID启动tick/bootGPU根/非有限0/OOM0/GPU8779MiB，未重启改71859ca。用户再次明确登录后20962正常，旧UNKNOWN历史/自动故障计数不重置。原G1继续，释放GPU后官方评估/重定向和共享资源验证；目标未达/采纳null/无agent/其他任务保持，入口COLLECTIVE_TRANSPORT/collective_results及旁收据。
 
 - 2026-11-01共享通信适配准备完成：独立HostCollectives仅四原模块dist别名/CPU Gloo同步张量传输，保留原平均梯度后clip-Adam与独立buffer；8标准库边界测试/3编译/4固定源码SHA及调用表通过，真实三rank/Torch数值/原生Trainer及CUDA待。原15595及唯一自动67932超时/单次TCP可达为历史；用户再次明确ssh hp_han后另记新人工授权20962成功，经Windows入原25386核原boot/GPU/根/两个PID启动tick，13:47:55达66750/160000轮/五optimizer/非有限0/OOM0。原自动恢复1次计数未重置，原71859ca执行未动。先本准备三端核验再真实CPU测试；get_goal实读blocked/继续授权有效，不伪报ACTIVE或创建替代/结算。无agent/其他任务不动，入口COLLECTIVE_TRANSPORT及collective_preparation清单/旁收据。

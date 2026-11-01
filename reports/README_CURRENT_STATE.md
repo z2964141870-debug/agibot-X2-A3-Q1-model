@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-01 20:03：[原训练与Q1库见解](README_PRIMEBOT_SUPERMIMIC_Q1_REVIEW_20261101.md)，G1达101621/160000轮/五optimizer/原PID启动tick/bootGPU根/非有限0/OOM0/GPU8779MiB；旧20962断线后先记新独立故障并仅一次6378原生Windows恢复，训练没重启。API重读Q1库main118338b/release空/组织名启元机器人，明确厂商侧线索与论文作者原码之别；将该独立实现升为Q1阶段优先对照，先核分关节PD/力矩motor/2ms/延迟与比例奖励，短训不能当其250000轮效果。CITATION注明论文级/真机未展示，不据仓库即已稳定；本轮只读核查、不新GPU/安装训练/agent，原G1继续与采纳null保持。[快照与见解](../data/manifests/primebot_supermimic_q1_interpretation_20261101.json)。
+
 2026-11-01 14:16:22：[共享通信CPU契约通过/原训练正常](README_MORPHMIMIC_COLLECTIVE_TRANSPORT_20261101.md)，三rank各12类/共72替身Adam，对集中式最大参数差3.73e-9，四上游SHA前后同/子进程全0退出/未创建GPU上下文；9本地边界测试/5小工件12135B Mac25386 SHA同。初次GitPython导入失败保留，修复复用既有Git环境，未改现训；原G1已69381/160000轮/原PID启动tick与bootGPU根/非有限0/OOM0/GPU8779MiB。真实原生Trainer、CUDA传输及三机器人驻留未验证，不称unified完成或步态改善；下一步原G1继续，释放GPU后官方评估与X2/T2重定向/共享资源验证。目标未达/采纳null/无agent/其他任务保持。[结果](../data/manifests/morphmimic_faithful_collective_results_20261101.json)。下方“真实CPU待”为历史。
 
 2026-11-01 13:47:55：[单卡共享通信准备及原训练仍在](README_MORPHMIMIC_COLLECTIVE_TRANSPORT_20261101.md)，8项本地替身边界测试/3编译/4原源码SHA和调用表通过，真实Gloo/原生Trainer及CUDA待。原自动恢复超时后，用户再次明确ssh hp_han，另记新人工授权20962经Windows入原25386核原boot/GPU/根/两个PID启动tick，66750/160000轮/五optimizer/非有限0/OOM0/GPU8779MiB；旧UNKNOWN为历史，训练未重启或改源码。自动恢复1次计数保留；下一步本准备三端核验后真实CPU测试。get_goal实读blocked/继续授权有效，目标未达/采纳null/无agent/其他任务不变。[准备清单](../data/manifests/morphmimic_faithful_collective_preparation_20261101.json)。

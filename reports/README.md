@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-01 20:03：[G1已101621/160000轮及Q1库判断](README_PRIMEBOT_SUPERMIMIC_Q1_REVIEW_20261101.md)：原进程正常/非有限0/OOM0，API核main118338b未变；Q1独立库升为后续适配首要对照，重点控制/资产/延迟/量纲和足量基线，公开材料未展示论文级或真机效果。[清单](../data/manifests/primebot_supermimic_q1_interpretation_20261101.json)。
+
 2026-11-01：[共享通信真实CPU验证通过](README_MORPHMIMIC_COLLECTIVE_TRANSPORT_20261101.md)，三rank各12类/72替身Adam、最大参数差3.73e-9/全0退出/无GPU上下文；原G1 14:16达69381/160000轮/非有限0/OOM0，原生三机器人和步态效果仍待。[结果清单](../data/manifests/morphmimic_faithful_collective_results_20261101.json)。
 
 2026-11-01：[MorphMimic单卡共享通信适配准备](README_MORPHMIMIC_COLLECTIVE_TRANSPORT_20261101.md)：8项本地边界测试通过/真实Gloo与CUDA待；用户再次要求ssh hp_han后原生20962核原服务器和原训练，13:47:55已66750/160000轮/非有限0/OOM0，旧UNKNOWN为历史。先发布三端后CPU测试。[清单](../data/manifests/morphmimic_faithful_collective_preparation_20261101.json)。

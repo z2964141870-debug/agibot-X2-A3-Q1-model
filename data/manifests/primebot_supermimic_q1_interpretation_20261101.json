@@ -1,0 +1,126 @@
+{
+  "stage": "PRIMEBOT_SUPERMIMIC_Q1_INTERPRETATION_AND_TRAINING_RECHECK",
+  "checked_utc": "2026-11-01T12:03:01.672736+00:00",
+  "training": {
+    "checked_utc": "2026-11-01T12:03:01.672736+00:00",
+    "boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+    "root": "/opt/data/private/ZHY",
+    "processes": [
+      {
+        "pid": 362416,
+        "state": "S",
+        "start_ticks": 38298223
+      },
+      {
+        "pid": 362421,
+        "state": "R",
+        "start_ticks": 38298276
+      }
+    ],
+    "progress": {
+      "status": "RUNNING",
+      "iteration": 101621,
+      "updated_utc": "2026-11-01T12:03:01.253547+00:00",
+      "optimizer_steps": {
+        "wm_opt": 1016210,
+        "policy_opt": 99621,
+        "critic_opt": 1992420,
+        "kp_opt": 99621,
+        "critic_kp_opt": 1992420
+      },
+      "nonfinite_steps": 0,
+      "iteration_seconds": 64773.62271038059
+    },
+    "guard_status": "RUNNING",
+    "guard_error": null,
+    "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 8779 MiB, 22 %, 60",
+    "compute_pids": [
+      "362421"
+    ],
+    "cgroup_bytes": 19306778624,
+    "oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n"
+  },
+  "training_frozen_commit": "71859ca8abe238477aa18245a31d81204da9197f",
+  "connection": {
+    "previous_session": 20962,
+    "result": "OBSERVATION_TIMEOUT_NOT_TRAINING_FAILURE",
+    "new_independent_incident_recorded_before_recovery": true,
+    "recovery_attempts_used": 1,
+    "recovery_session": 6378,
+    "original_process_start_ticks_and_boot_GPU_root_verified": true,
+    "no_training_restart": true
+  },
+  "repository": "https://github.com/PrimebotTech/SuperMimic",
+  "current_main_api": {
+    "ref": "refs/heads/main",
+    "node_id": "REF_kwDOVVzl-q9yZWZzL2hlYWRzL21haW4",
+    "url": "https://api.github.com/repos/PrimebotTech/SuperMimic/git/refs/heads/main",
+    "object": {
+      "sha": "118338b19dcd14f768d1e7de5a48d04b78987688",
+      "type": "commit",
+      "url": "https://api.github.com/repos/PrimebotTech/SuperMimic/git/commits/118338b19dcd14f768d1e7de5a48d04b78987688"
+    }
+  },
+  "current_releases_api": [],
+  "organization_api_observed_fields": {
+    "login": "PrimebotTech",
+    "name": "启元机器人",
+    "blog": "https://www.primebot.com",
+    "description": "以具身智能创造美好生活",
+    "is_verified": false
+  },
+  "network_refresh": {
+    "git_https_failed": "Failed to connect github.com port443 after75023ms",
+    "GitHub_API_ref_and_releases_succeeded": true
+  },
+  "fixed_source_review": "data/manifests/primebot_supermimic_q1_review_20261101.json",
+  "interpretation": [
+    "Treat this Q1 implementation as the priority Q1 control and baseline comparison; independent implementation does not disprove manufacturer association.",
+    "Distinguish Q1 organization publication from SuperMimic paper-author source or demonstrated mature pretrained policy.",
+    "Old frozen Q1 used position actuators with uniform KP15.791/KV1.005 and5ms integration; repository expects torque motors with grouped software PD and2ms integration. Control contracts must be matched before blaming architecture.",
+    "250000-iteration example and full control/reward recipe cannot be equated to prior123/113 iteration stopped experiments. Single1024 and8GPU8192 configs also differ in global sample counts.",
+    "Heading representation, modeled delay and objective normalization are numerical algorithm choices rather than cosmetic log changes; effects require complete verified baseline.",
+    "Public README and CITATION explicitly limit tracking/deployment claims; empty releases and absent weights/assets do not exclude undisclosed internal results.",
+    "Keep original G1 run unchanged and evaluate at planned completion; audit Q1 assets/data/control compatibility before later independent Q1 baseline. No new Q1 training launch authorized solely by this review."
+  ],
+  "priority_contract_comparison": {
+    "historical_local_Q1": {
+      "evidence": "reports/README_Q1_GAIT_GOAL01_SAVED_PD_DEMAND_20261030.md",
+      "actuator_type": "position",
+      "KP": 15.791367041742973,
+      "KV": 1.0053096491487339,
+      "control_seconds": 0.02,
+      "physics_seconds": 0.005,
+      "torque_Nm_big": 36,
+      "torque_Nm_small": 22
+    },
+    "repository_Q1": {
+      "actuator_type": "torque motor with software grouped PD",
+      "control_seconds": 0.02,
+      "physics_seconds": 0.002,
+      "group_KP": [
+        40,
+        20,
+        10,
+        80
+      ],
+      "torque_peak_big_Nm": 34,
+      "torque_peak_small_Nm": 21,
+      "modeled_action_delay": true,
+      "proportional_reward": true,
+      "num_envs": 1024,
+      "model_batch": 512,
+      "policy_batch": 512,
+      "iterations": 250000
+    },
+    "legacy_vs_current_G1_not_conflated": true,
+    "causal_claim": false
+  },
+  "new_simulation_policy_optimizer_GPU_jobs": 0,
+  "environment_changes": 0,
+  "no_agent": true,
+  "other_automations_unchanged": true,
+  "goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "publication_receipt": "logs/session_records/primebot_supermimic_q1_interpretation_publication_20261101.json"
+}

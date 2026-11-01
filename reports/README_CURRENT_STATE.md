@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-01研究：[五项简报](research/2026-11-01/README.md)/[检查](README_RESEARCH_CHECK_20261101.md)。接续10/31未发布检索，MorphMimic v0.1预发布、A3 089/XR、SONIC-K1、FORGE与规划评测；新增社区权重只作背景。累计206请求200成功、HF两次超时；main完整去重149→162，H001不变。当前按Q1最新MorphMimic足量复现/固定aa40与独立共享验证，不改训练预算或执行源码。本轮原生Windows成功/容器自动认证未通过，服务器Git和镜像未完成；实际发布见[收据](../data/manifests/research_watch_sync_20261101.json)。
+
 2026-10-30研究：[检查记录](README_RESEARCH_CHECK_20261030.md)。76次请求成功，16仓库及两发行无实质变化；LocoManiLab v4正文文本未变，仅署名/版本信息更新。RSS为空、列表停在10/28，保留公告覆盖缺口；不发重复简报、不新增假设或实验，完整去重由main维护。
 
 2026-10-29研究：[四项简报](research/2026-10-29/README.md)记录RSL-RL 5.5.2、独立SuperMimic修复、Rollback与动作Token。96请求均成功，12固定文本/两完整树静态核验；当前安装RSL为5.5.1、Q1批量整除，未将新修复认定为训练退化根因。main维护完整去重，Q1保留工程状态；本轮无物理/推理/优化或新假设。[检查](README_RESEARCH_CHECK_20261029.md)/[回执](../data/manifests/research_watch_sync_20261029.json)。

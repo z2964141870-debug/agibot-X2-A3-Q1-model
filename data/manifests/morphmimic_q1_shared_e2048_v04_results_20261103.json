@@ -1,0 +1,78 @@
+{
+  "stage": "MORPHMIMIC_G1_Q1_SHARED_E2048_HANDOFF_V04",
+  "status": "FAILED_CUDA_LAUNCH_FAILURE_GPU_RECOVERY_REQUIRED",
+  "code_commit": "dbfd8199694f59d96035bb4bc3d027ef2a2d59d1",
+  "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_G1_FULL1H_PROFILE_E2048_HANDOFF_V04_20261103",
+  "started_utc": "2026-11-02T19:00:57.681881+00:00",
+  "ended_utc": "2026-11-02T19:02:00.214131+00:00",
+  "iterations_completed_each": {
+    "g1": 0,
+    "q1": 0
+  },
+  "optimizer_updates_each": {
+    "g1": {
+      "wm_opt": 0,
+      "policy_opt": 0,
+      "critic_opt": 0,
+      "kp_opt": 0,
+      "critic_kp_opt": 0
+    },
+    "q1": {
+      "wm_opt": 0,
+      "policy_opt": 0,
+      "critic_opt": 0,
+      "kp_opt": 0,
+      "critic_kp_opt": 0
+    }
+  },
+  "collected_transitions_each": {
+    "g1": 413696,
+    "q1": 413696
+  },
+  "cache_releases_each": {
+    "g1": {
+      "physics_vram_handoff": 0,
+      "learner_vram_handoff": 0
+    },
+    "q1": {
+      "physics_vram_handoff": 0,
+      "learner_vram_handoff": 0
+    }
+  },
+  "errors": {
+    "g1": "InternalTorchDynamoError: AcceleratorError: CUDA error: unspecified launch failure\nSearch for `cudaErrorLaunchFailure' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n\n",
+    "q1": "InternalTorchDynamoError: AcceleratorError: CUDA error: unspecified launch failure\nSearch for `cudaErrorLaunchFailure' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\nCUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\nFor debugging consider passing CUDA_LAUNCH_BLOCKING=1\nCompile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n\n"
+  },
+  "learner_cache_release_hypothesis_exercised": false,
+  "finite_metrics_unavailable_for_incomplete_iteration": true,
+  "source_count": 1820,
+  "frozen_input_identity_sha256": "dfecc919877f90b568997224cefdda50d79f081571162cac2f42892a7491fc82",
+  "frozen_sources_independently_unchanged": true,
+  "original_pids_absent": [
+    618281,
+    618288,
+    618289,
+    618290
+  ],
+  "cgroup_oom_kill": 0,
+  "gpu_health_observed_utc": "2026-11-02T19:05:03.388452+00:00",
+  "gpu_recovery_action": "Reset",
+  "gpu_repair_fields": {
+    "channel_repair_pending": "GPU requires reset",
+    "tpc_repair_pending": "GPU requires reset",
+    "unrepairable_memory": "GPU requires reset"
+  },
+  "compute_process_reporting": "[N/A], [N/A], [N/A]",
+  "host_other_gpu_clients_unknown": true,
+  "gpu_fault_cause_isolated": false,
+  "physical_gpu_damage_established": false,
+  "gpu_reset_performed": false,
+  "new_gpu_jobs_allowed_before_recovery": false,
+  "failed_root_preserved": true,
+  "formal_training": false,
+  "profile_weights_reusable": false,
+  "automatic_failure_retry": false,
+  "raw_record": "logs/session_records/morphmimic_q1_shared_e2048_v04_results_20261103.json",
+  "health_receipt": "logs/session_records/morphmimic_q1_shared_e2048_v04_gpu_health_20261103.json",
+  "user_accepted_checkpoint": null
+}

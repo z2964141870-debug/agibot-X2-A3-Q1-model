@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-03共享E2048-V04冻结dbfd819/11记录586256B三端及服务器10项CPU通过后03:00:57启动，controller618281/start55970235、parent618288/两rank618289-618290，03:02整FAILED；完整轮0/五optimizer全0/各采集413696，首WM编译CUDA unspecified launch failure。物理检查2/学习WM检查1但cache释放全部0，未检验释放假设/未隔离根因。03:05:03一次只读原3090 driver595.112.07报告gpu_recovery_action=Reset及三个GPU requires reset字段，used1MiB/free24127MiB/45C、利用率和compute processes N/A，宿主其他客户端未知/不证永久硬件损坏。1820源独立SHA同/四PID退出/boot原样/cgroup OOMkill0；原失败根保留，不再新GPU实验/未重置GPU驱动容器宿主。先由有权限操作方确认并恢复设备，SSH会话重开授权不扩为设备重置。单Q1 E4096八全更新及独立CPU审计保持，正式训练未启/采纳null、不新goal-agent或改其他任务；入口同INTEGRATION/shared_e2048_v04_results及gpu_health收据。
+
 - 2026-11-03共享E2048 V03首轮两路WM10/motion1/critic20已实更，但return-KP阶段同时CUDA OOM/完整轮0，整FAILED；各torch allocated约10.34GiB/闲置reserved约.66-.72GiB，分别申请158/174MiB而全局余92-94MiB，不能当容量通过。1818源独立SHA同/四PID退出/GPU15MiB/cgroup OOMkill0；失败根/部分更新/未完成轮指标缺失保留。下一独立同cfg V04保留每型2048/WM1024/imag2048/H32/559片，仅把3GiB低空闲缓存交接扩至WM、motion、return-KP入口并分相位实测；本地10测试9过1无Torch跳过，服务器及8轮待发布后。正式入口预存0轮原checkpoint，profile不续权重，未正式训练/采纳null，不新goal/agent或改其他任务。入口同INTEGRATION/shared_e2048_v03_results及handoff_v04_preparation。
 
 - 2026-11-03共享E2048各/合计4096已02:24:38启动，controller610763/start55752429、G1 610778/Q1 610779，执行冻结83ba8358d9f266062597ce76e136e2df8e12c0e3独立40位远端/12记录502593B三端SHA；启动前8服务器CPU测试全通过。1818输入/原boot-GPU根，02:41:35两路各409600预热后首轮未刷完整轮，日志0不等于内存0optimizer；只读227个1Hz样本峰23453MiB/19.745GB容器，后现场23943MiB，两个原worker仍CPU计算，无错误/容量与稳态待。原执行Python不改/失败不重启，先监督原8轮及保存收尾，不将profile当正式训练或步态收益；原采纳null/no goal-agent/其他自动任务保持。入口同INTEGRATION/shared_e2048_v03_launch及preparation_publication。

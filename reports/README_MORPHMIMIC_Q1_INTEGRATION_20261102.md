@@ -2,6 +2,18 @@
 
 2026-11-02，用户在完成 X2/T2 发布策略回放后要求继续尝试 Q1 训练，并提出结合 PrimebotTech SuperMimic-Q1 与 MorphMimic。本阶段落实这一授权，不创建新应用目标，不改变其他自动任务。
 
+## 11月3日高容量结果与GPU恢复阻塞
+
+按用户提高env、显存利用和效率且保障训练量的要求，单Q1 E4096已实际完成8轮完整更新，五optimizer和保存Adam均为80/8/160/8/160，峰reserved22766682112B（21.20GiB），后六轮迭代中位2.726281秒。原整pipeline因单rank收尾误用dist仍为FAILED，独立CPU保存审计已通过；这8轮资源测试不作为正式训练或步态改善。共享每型E2048/合计4096仍是优先候选，尚未取得完整迭代容量通过结果。
+
+准备冻结`dbfd8199694f59d96035bb4bc3d027ef2a2d59d1`已独立40位远端及11文件586256B三端大小/SHA一致，服务器10项CPU测试全部通过。随后独立V04于北京时间03:00:57启动，controller618281/start55970235、parent618288、G1 618289/Q1 618290，03:02:00外层及两worker均FAILED。两路各采集413696转移，但完整轮0、五optimizer全0；首个WM编译阶段报`InternalTorchDynamoError: AcceleratorError: CUDA error: unspecified launch failure`。两路各物理检查2次/学习WM检查1次，所有cache_releases均0，因此本次并未实际检验学习阶段释放缓存的效果，故障单因未隔离。[启动](../logs/session_records/morphmimic_q1_shared_e2048_handoff_v04_launch_20261103.json)/[准备发布](../data/manifests/morphmimic_q1_shared_e2048_handoff_v04_publication_20261103.json)/[失败结果](../data/manifests/morphmimic_q1_shared_e2048_v04_results_20261103.json)。
+
+北京时间03:05:03仅一次只读设备核查：原3090 UUID `GPU-26028785-9fb9-45af-e614-4cc53af15d08`、driver595.112.07，明确`gpu_recovery_action=Reset`；channel/TPC repair及unrepairable_memory字段均返回`GPU requires reset`。显存used1MiB/free24127MiB、温度45C，但GPU/显存利用率及compute processes返回N/A，不能据此确认宿主机无其他GPU客户端，也没有证据认定物理显卡永久损坏。[原设备收据](../logs/session_records/morphmimic_q1_shared_e2048_v04_gpu_health_20261103.json)。NVIDIA的[GPU Recovery Action说明](https://docs.nvidia.com/deploy/nvidia-smi/index.html#gpu-recovery-action)将Reset解释为需要终止相关GPU应用并恢复设备；实际设备恢复须由有权限且能确认宿主机其他使用者的操作方执行。
+
+失败后1820冻结输入已独立逐大小/SHA全部不变，原四PID均不存在、boot未变；cgroup OOMkill0仅说明没有该类容器OOM kill，不覆盖前次真实CUDA OOM。原失败根/status/guard/栈保留，未恢复、重试或执行GPU/driver/容器/宿主机重启。[独立归档](../logs/session_records/morphmimic_q1_shared_e2048_v04_results_20261103.json)同时保留首次CPU收据提取对整数计数调用len的错误及修正，未新增GPU执行。
+
+当前正式Q1/共享训练均未启动，采纳仍null。先恢复设备并核实GPU状态，之后继续独立高容量完整更新验证；不以设备异常改小训练量。共享候选E2048各/80000轮按每机器人410009600转移、819200000个WM样本和两类各161792000个imagination起点对齐E4096x40000，Adam过程差异仍明确记录。当前不再启动GPU实验；用户既有连接恢复授权仅允许重建SSH会话，未扩展为设备或宿主机重置，不创建goal/agent或修改其他自动任务。
+
 ## 11月3日共享学习阶段缓存交接准备
 
 E2048-V03两路首轮均完成WM10/motion1/critic20次更新，在return-KP分支报Torch CUDA OOM，完整轮0、KP optimizer0，整profile明确FAILED。G1申请158MiB时global free92.12MiB、Torch活allocated10.34GiB/闲置reserved672.97MiB；Q1申请174MiB时free94.12MiB、allocated10.33GiB/闲置reserved733.55MiB。尚未拿到完整迭代的非有限指标，不能把空记录当0。没有checkpoint、稳态吞吐或容量通过结论。[失败](../data/manifests/morphmimic_q1_shared_e2048_v03_results_20261103.json)/[部分计数与原栈](../logs/session_records/morphmimic_q1_shared_e2048_v03_results_20261103.json)。

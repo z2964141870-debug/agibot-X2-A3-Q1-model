@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-02：[Q1 原生适配 CPU 导入修复 V02](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。V01前置实模检查走通，拟合损失因自动注册保留旧状态别名失败；保留原日志并显式重绑定，未积分或训练。[准备发布](../data/manifests/morphmimic_q1_native_preparation_publication_20261102.json)。
+
 2026-11-02：[Q1 原生适配准备 V01](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。新增实际 entity/执行器、缺失槽、state269 命令记忆/context62 延迟和真实154形态提取入口；本地语法通过，真实 CPU/Trainer/重定向与训练待执行。[准备清单](../data/manifests/morphmimic_q1_native_preparation_20261102.json)。
 
 2026-11-02 19:35：[Q1+MorphMimic 缺失关节接口 CPU 验证通过](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。12 测试、64 真实姿态往返/FK 变化0，28160 motor 数值与 Primebot 固定公式差0；未接原生 Trainer/新积分训练，延迟状态可见性、真实形态描述和成对 SOMA 等仍待。准备 a3be66d/9文件415585B 已三端核 SHA，采纳null。[模型证据](../data/manifests/morphmimic_q1_cpu_contract_20261102.json)。

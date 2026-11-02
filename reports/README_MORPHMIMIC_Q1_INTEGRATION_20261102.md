@@ -45,6 +45,8 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ### 原生适配准备 V01
 
+准备 `da3bf3e738f85383a60541dc9c8d24eb2f6a6994` 已独立核远端，10 文件 428221 字节三端大小/SHA 相同。首次真实 CPU 已通过实际资产/FK、形态、replay/策略/critic 前置检查，随后在拟合损失因包自动注册任务提前捕获旧 `split_state` 别名失败；原日志保留为 `logs/morphmimic_q1_native_cpu_v01_20261102.log`。未发生动力学积分或 optimizer。V02 显式重绑定已加载模块中身份完全匹配的 registry/split/join 别名，并记录逐项名单；使用新结果路径重新检查，不覆盖 V01。
+
 用户进一步明确沿此思路继续。新增 `assets.py`、`native_action.py`、`model_adapter.py`、`bootstrap.py` 与 `verify_native_cpu.py`，通过进程内显式绑定接入固定 v0.1；原冻结源码文件不改。当前仅完成实现与本地语法检查，真实描述/原生模块 CPU 验证还未执行，不宣称 Trainer 或物理训练已通过。
 
 选定状态 269 = 原物理 240 + 上一拍实际 canonical 命令 29；context 62 = 原 33 + 每槽实际量化延迟秒数 29，缺失槽为 0。世界模型每步将执行命令精确写入下一状态，critic 使用 297 = 原 268 特征 + 命令记忆，避免多步预测沿用过期的上一目标。记忆不是学习预测，也不加入物理拟合误差。Q1 22 关节的动作/探索执行、状态输出、拟合误差、RMSE 分母、策略 decoder 及观测噪声均需投影；新 CPU 入口含 NaN 缺失槽反例。

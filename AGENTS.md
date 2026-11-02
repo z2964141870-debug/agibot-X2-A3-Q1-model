@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-02原生适配准备da3bf3e已独立远端/10文件428221B三端SHA；首次真实CPU实模/FK/形态/replay/policy/critic前置走通，在fit_loss因包自动注册提前保留旧split_state失败，V01日志保留/0积分optimizer。V02仅显式重绑定匹配旧身份的registry/split/join别名并记录名单，新路径CPU待；原源码不改/无agent或goal及自动任务变更/采纳null。入口同INTEGRATION与native_preparation_publication。
+
 - 2026-11-02用户进一步确认Q1+MorphMimic继续，独立原生适配V01已实现/仅本地语法：actual Q1 entity/软件PD与mask、state269原物理240+上一实际命令29/context62原33+量化延迟29/critic297、真实G1-Q1固定154描述入口；未真实CPU/新积分optimizer或正式轮次。进程绑定不编辑冻结v0.1；G1默认历史替代原首次命令回填差异明示，单体对照同边界/同控制，从零初始化。先发布三端再CPU实测、真实配对SOMA及原生两rank资源，不套旧300/1200门。原结果/衣服搁置/采纳null保持，无agent/goal或其他自动任务变更；入口同INTEGRATION及native_preparation。
 
 - 2026-11-02 Q1+MorphMimic独立CPU接口验证完成：准备a3be66d独立40位远端/9文件415585B三端SHA后执行，12测试通过/64实模姿态映射和FK变化0/28160 motor数值对Primebot固定方程差0/五列源SHA前后同，未原生Trainer或完整Primebot simulator。轴及前臂零位支持Q1正号零elbow offset，不用X2 -pi/2；morph154仅缺失mask算法，geometry人工1不当真实描述。0新积分/策略推理/optimizer、无CUDAcontext，19:35原bootGPU根/GPU15MiB无计算/OOM0。后续还需真实descriptor/训练边界、Q1延迟及上一目标WM可见性、原生action/state/loss mask、真实配对SOMA及两rank资源，正式训练未启动/轮次未定；不因CPU通过称步态改善或unified完成。原结果/衣服搁置/采纳null保持，无agent/goal或其他自动任务变更。入口同MORPHMIMIC_Q1_INTEGRATION及cpu_contract/preparation_publication。

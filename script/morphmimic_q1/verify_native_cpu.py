@@ -121,6 +121,7 @@ def main():
         "masked_sensor_noise", "masked_replay_action", "masked_native_policy", "critic_memory_input",
         "masked_fit_loss_and_nan_slots", "physics_and_actuator_delay_config", "immutable_source_and_cpu_only"]
     result = dict(status="PASSED", checks=checks, contracts=adapter["contracts"],
+        rebound_aliases=adapter["rebound_aliases"],
         new_simulation_steps=0, new_optimizer_updates=0, cuda_initialized=torch.cuda.is_initialized(),
         geometry=geometry.tolist(), presence=masks.tolist(), descriptors=vectors.tolist(),
         morphology_bounds={key: value.tolist() for key, value in bounds.items()},

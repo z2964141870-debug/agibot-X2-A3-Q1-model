@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-02：[Q1 原生 CPU 首次导入别名故障已定位](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。准备da3bf3e独立远端/10文件428221B三端SHA后执行；实际asset/FK/形态/replay/policy/critic前置走通，在拟合损失捕获旧split_state失败。V01日志保留、0积分optimizer；V02显式别名修复待新路径CPU检查，未正式训练/未称改善。采纳null/无agent或目标及其他任务变更。
+
 2026-11-02：[Q1 原生适配 V01 实现待真实验证](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。用户明确继续，新增独立进程绑定 actual entity/软件PD、全链路mask、state269上一执行命令/context62量化延迟/critic297与固定G1-Q1真实形态边界；本地语法通过，尚未真实CPU/积分/optimizer。G1默认历史替代原首次回填差异明示，旧源码不动；下一步发布镜像后verify_native_cpu，再Q1专用SOMA和原生两rank资源测试，未定正式训练轮次/未称改善。无agent/goal或其他任务变更，采纳null。[清单](../data/manifests/morphmimic_q1_native_preparation_20261102.json)。
 
 2026-11-02 19:35：[Q1+MorphMimic CPU 接口完成，原生训练未接入](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。12测试通过/64真实Q1姿态29↔22映射与FK变化0/28160电机数值对固定Primebot公式差0，零位轴/前臂检查支持正号零elbow offset；仅AST方程和静态FK，0新积分/推理/optimizer/无CUDA context。准备a3be66d独立远端/9文件415585B三端SHA；原bootGPU一致/GPU15MiB无计算/OOM0。morph154仅算法/geometry人工值，真实描述、delay/上一目标WM可见性、原生action/state/loss mask、配对SOMA及两rank共享资源仍待；正式规模轮次未定，不称Q1效果或训练已启动，采纳null/无goal或其他任务变更。[实模证据](../data/manifests/morphmimic_q1_cpu_contract_20261102.json)。

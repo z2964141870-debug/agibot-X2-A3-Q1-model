@@ -69,7 +69,8 @@ def install(robot_name):
                     tr.to_canonical_delta(peak)))
             else:
                 raw = actuator_terms(current)
-                values = torch.tensor([raw[k] for k in ("action_scale", "kp", "kd", "effort")])
+                values = torch.stack([torch.as_tensor(raw[k])
+                    for k in ("action_scale", "kp", "kd", "effort")])
             terms.append(values.double())
             shapes.append(torch.as_tensor(geometry(current)).double())
             masks.append(presence(current, values))
@@ -196,7 +197,16 @@ def install(robot_name):
         return half
 
     imagination.noise_half_widths = noise_widths
+    # Package task registration imports some aliases before install can replace them.
+    rebound = []
+    for module_name, module in tuple(sys.modules.items()):
+        if module_name.startswith("morphmimic.") and module is not None:
+            for key, previous, replacement in (("get_robot", old_get, get_robot),
+                    ("split_state", old_split, split), ("join_state", old_join, join)):
+                if getattr(module, key, None) is previous:
+                    setattr(module, key, replacement)
+                    rebound.append(module_name + "." + key)
     _INSTALLED = True
-    return dict(robot=spec, morphology_population=morphology_population,
+    return dict(robot=spec, morphology_population=morphology_population, rebound_aliases=rebound,
                 contracts=dict(state=269, physical_state=240, local_features=268,
                     critic_features=297, context=62, proprio=93, morphology=154))

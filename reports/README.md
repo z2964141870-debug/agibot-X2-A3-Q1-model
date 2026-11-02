@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-02 19:35：[Q1+MorphMimic 缺失关节接口 CPU 验证通过](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。12 测试、64 真实姿态往返/FK 变化0，28160 motor 数值与 Primebot 固定公式差0；未接原生 Trainer/新积分训练，延迟状态可见性、真实形态描述和成对 SOMA 等仍待。准备 a3be66d/9文件415585B 已三端核 SHA，采纳null。[模型证据](../data/manifests/morphmimic_q1_cpu_contract_20261102.json)。
+
 2026-11-02：[结合 MorphMimic 与 PrimebotTech SuperMimic-Q1](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。用户授权继续 Q1 训练；先适配 22/29 关节缺失槽和完整 Q1 控制契约，再做同 SOMA 的 G1+Q1 共享训练及 Q1 单体对照。当前接口准备，尚无新 Q1 训练/改善结论。[阶段清单](../data/manifests/morphmimic_q1_integration_20261102.json)。
 
 2026-11-02：[X2 Ultra/T2官方v0.1权重测试完成与四本地视频](README_MORPHMIMIC_V01_X2_T2_20261102.md)。两条真实SOMA分别原版重定向、同一ONNX/原motion动力学4/4完整；X2前进/起走关节误差 .04993/.05921rad，T2 .04128/.05636。2368帧本地解码/8图目视、58原证据6756783B大小SHA同，四guard回收0/GPU空闲/OOM0；末段仍有跟踪漂移，未数值验足底/承重滑移，不当Q1或自训unified完成。[结果清单](../data/manifests/morphmimic_v01_x2_t2_results_20261102.json)。

@@ -1,7 +1,7 @@
 {
   "schema": "morphmimic_q1_integration.v1",
   "date": "2026-11-02",
-  "status": "INTERFACE_PREPARATION",
+  "status": "CPU_INTERFACE_VERIFIED_NATIVE_TRAINER_PENDING",
   "authorization": ["try Q1 training with MorphMimic", "combine PrimebotTech SuperMimic-Q1 and MorphMimic"],
   "sources": {
     "morphmimic_v01": "41c8382f127a6f5109bfe047445a9180f71f1fc0",
@@ -33,8 +33,18 @@
     "native_mjlab_actuator_integration_verified": false
   },
   "progress": {
-    "sparse_bridge_cpu_tests": "NOT_RUN",
-    "real_model_contract": "NOT_RUN",
+    "sparse_bridge_cpu_tests": {"status": "PASSED", "tests": 12},
+    "real_model_contract": {
+      "status": "CPU_CONTRACT_PASSED",
+      "poses": 64,
+      "max_roundtrip_rad": 0.0,
+      "max_fk_body_position_change_m": 0.0,
+      "motor_control_elements": 28160,
+      "max_motor_control_error": 0.0,
+      "physics_integration_steps": 0,
+      "equation_loading": "AST_subset_not_full_Primebot_simulator",
+      "source_inputs_before_after_sha_unchanged": 5
+    },
     "q1_retargeting": "NOT_STARTED",
     "native_shared_trainer": "NOT_STARTED",
     "formal_q1_training": "NOT_STARTED",
@@ -42,6 +52,28 @@
     "training_iterations": null,
     "optimizer_updates": 0
   },
+  "preparation_publication": {
+    "commit": "a3be66d419be7d5b5bcbb904dc4adf73bc22131d",
+    "remote_Q1_independently_verified": true,
+    "files_verified_authoritative_mac_server": 9,
+    "payload_bytes": 415585,
+    "receipt": "data/manifests/morphmimic_q1_integration_preparation_publication_20261102.json"
+  },
+  "evidence": {
+    "real_contract": "data/manifests/morphmimic_q1_cpu_contract_20261102.json",
+    "cpu_tests": "logs/session_records/morphmimic_q1_cpu_tests_20261102.log",
+    "server_original_results": "logs/morphmimic_q1_real_contract_20261102.json",
+    "result_archive_sha256": "af9930ae25489099eff1e256f0010dfe3b2faed4cfeb77b2a787786e1b398344"
+  },
+  "unresolved_contracts": [
+    "native_Trainer_action_state_observation_and_loss_mask_wiring",
+    "actual_Q1_geometry_descriptor_and_frozen_training_population_bounds",
+    "delay_observability_and_previous_position_target_in_world_model",
+    "robot_size_reward_and_termination_scaling_without_double_scaling",
+    "paired_SOMA_retargeting_and_real_frame_alignment",
+    "two_rank_native_Trainer_CUDA_communication_and_resource_profile",
+    "formal_num_envs_iterations_and_checkpoint_plan"
+  ],
   "user_accepted_checkpoint": null,
   "goal_status_changed": false,
   "agents_started": false,

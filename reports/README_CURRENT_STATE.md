@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-02 19:35：[Q1+MorphMimic CPU 接口完成，原生训练未接入](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。12测试通过/64真实Q1姿态29↔22映射与FK变化0/28160电机数值对固定Primebot公式差0，零位轴/前臂检查支持正号零elbow offset；仅AST方程和静态FK，0新积分/推理/optimizer/无CUDA context。准备a3be66d独立远端/9文件415585B三端SHA；原bootGPU一致/GPU15MiB无计算/OOM0。morph154仅算法/geometry人工值，真实描述、delay/上一目标WM可见性、原生action/state/loss mask、配对SOMA及两rank共享资源仍待；正式规模轮次未定，不称Q1效果或训练已启动，采纳null/无goal或其他任务变更。[实模证据](../data/manifests/morphmimic_q1_cpu_contract_20261102.json)。
+
 2026-11-02：[Q1 与 MorphMimic 结合进入接口准备](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。用户最新要求继续尝试 Q1 训练并结合 PrimebotTech SuperMimic-Q1，覆盖上一阶段仅测试/不新训范围。选定共享 WM/策略/critic 和同源同帧对齐方向，计划 Q1 单体同控制对照；22 实关节缺 7 个 canonical 槽，需贯通动作/状态/损失 mask，候选 morphology154 与公开125维策略不兼容。原 G1、X2/T2结果和衣服搁置保持；当前未新重定向/物理/训练，规模和迭代待真实共享资源核验。无新agent/goal/自动任务变更，采纳null。[清单](../data/manifests/morphmimic_q1_integration_20261102.json)。
 
 2026-11-02 17:18：[X2 Ultra/T2发布权重四条真实回放及本地视频完成](README_MORPHMIMIC_V01_X2_T2_20261102.md)。原SOMA/Newton两条固定BVH分别重定向、原转换/模型一致性通过，同一v0.1 ONNX/原motion部署/0新训练；两型前进1032及起走152帧均完整。X2关节均值RMSE .04993/.05921rad、T2 .04128/.05636，前进末根漂移 .298/.215m；T2仅本两片误差较小，不当总体排名或Q1结果。四本地1280x720/50fps原速MP4、2368帧解码/8联系图目视，58原证据6756783B Mac25386大小SHA同；17:26原boot/GPU根、四guard回收0/原9进程退出/GPU15MiB无计算/OOM0。尚无足底离地/承重滑移数值验收，不称自然步态全面合格或未见本体零样本。旧无效G1几何烟测/软件渲染停止/EGL失败保留；自训G1六视频仍未齐，多本体共享训练未完成，采纳null/不结算goal/无agent/其他任务保持。[最终清单](../data/manifests/morphmimic_v01_x2_t2_results_20261102.json)，发布以旁收据为准。下方准备中为历史。

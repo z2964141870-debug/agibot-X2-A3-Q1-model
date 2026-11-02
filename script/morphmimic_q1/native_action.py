@@ -1,6 +1,7 @@
 """Canonical commands with explicit episode-fixed delay and real-joint masks."""
 
 from dataclasses import dataclass
+import re
 
 import torch
 from mjlab.envs.mdp.actions import JointPositionAction
@@ -23,7 +24,15 @@ class NativeCanonicalAction(CanonicalJointPositionAction):
         self.present = presence(self.spec, self.executed)
         self.noise_std = cfg.noise_std
         self.noise_scale = torch.ones(self.num_envs, 1, device=self.device)
-        self.delay_steps = torch.zeros(self.num_envs, 1, device=self.device, dtype=torch.long)
+        self.delay_steps = torch.zeros(self.num_envs, self.tr.num_native,
+                                      device=self.device, dtype=torch.long)
+        self.delay_groups = []
+        for actuator in self.spec.entity_cfg_fn().articulation.actuators:
+            indices = [i for i, name in enumerate(self.spec.joint_names)
+                       if any(re.fullmatch(expr, name) for expr in actuator.target_names_expr)]
+            self.delay_groups.append(indices)
+        if sorted(i for group in self.delay_groups for i in group) != list(range(self.tr.num_native)):
+            raise ValueError("Delay groups must cover every real actuator once")
         self._previous_target = self._offset.clone()
         self._processed_actions = self._offset.clone()
         self._substep = 0
@@ -57,18 +66,20 @@ class NativeCanonicalAction(CanonicalJointPositionAction):
         self.executed[ids] = 0.
         self._processed_actions[ids] = self._offset[ids]
         self._previous_target[ids] = self._offset[ids]
-        shape = self.delay_steps[ids].shape
+        shape = (self.delay_steps[ids].shape[0], 1)
         max_lag = round(self.cfg.max_delay_s / self.cfg.physics_dt)
         if self.cfg.robot_name == "q1":
             # Primebot draws continuous seconds, then rounds to physics steps.
             lag = (torch.rand(shape, device=self.device) * max_lag).round().long()
+            self.delay_steps[ids] = lag
         else:
-            lag = torch.randint(max_lag + 1, shape, device=self.device)
-        self.delay_steps[ids] = lag
+            lag = torch.zeros_like(self.delay_steps[ids])
+            for group in self.delay_groups:
+                lag[:, group] = torch.randint(max_lag + 1, shape, device=self.device)
+            self.delay_steps[ids] = lag
 
     def delay_seconds(self):
-        native = (self.delay_steps * self.cfg.physics_dt).expand(
-            self.num_envs, self.tr.num_native)
+        native = self.delay_steps * self.cfg.physics_dt
         # Delays do not change sign with the joint coordinate convention.
         pairs = self.tr.perm
         out = native.new_zeros(self.num_envs, 29)

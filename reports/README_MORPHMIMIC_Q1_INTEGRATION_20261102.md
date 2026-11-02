@@ -43,6 +43,14 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### 真实原生 CPU V02 通过
+
+`b343fefc0a887a7310da61b3e1d99b7fcb8c89c9` 独立远端及 7 文件 414037 字节三端核验后，13 组检查全部通过，见 [CPU 原始结果](../data/manifests/morphmimic_q1_native_cpu_results_20261102.json)。实际 Q1/G1 大腿长 0.211656/0.340923 m、小腿长 0.170652/0.300010 m、质量 16.917288/33.341142 kg；真实形态 154 维不再使用人工几何。Q1 腿长比例 0.596486，环境位置核宽 0.178946 m、线速度核宽 0.596486 m/s、高度终止 0.149122 m，与世界模型配置一致。命令记忆、多步递推、缺失动作梯度、NaN 缺失槽拟合、replay、policy/critic、2ms/10 子步及禁重复延迟通过；仍未原生 GPU Trainer 或实际 actuator 回调验证。
+
+新增 `prepare_soma.py` 以真实 Q1 V3 创建外部 SOMA manifest，使用原 configurator 的偏移/回算与接触后处理函数，按原默认 IK 权重从 Q1 零姿态校准；不借 X2 尺寸、偏移或 elbow 参考。校准先在 CPU 运行，再两固定片原 Newton pilot、50Hz 转换与原生环境检查，合格后扩共同数据。`run_native.py` 沿用 GPU 锁、24/30GiB、OOM/boot/GPU/温度/磁盘保护及源码前后 SHA；profile/train 的 optimizer 数以 worker 实际收据为准，不能沿用旧零更新标签。
+
+G1 延迟改为每个原 actuator group 独立 0--4 步，Q1 维持每环境共享连续秒数后量化到 2ms，默认历史差异保持明示。这一 action 实例化仍待原生物理检查；未因 CPU 通过声称步态改善或正式训练已开始。
+
 ### 原生适配准备 V01
 
 准备 `da3bf3e738f85383a60541dc9c8d24eb2f6a6994` 已独立核远端，10 文件 428221 字节三端大小/SHA 相同。首次真实 CPU 已通过实际资产/FK、形态、replay/策略/critic 前置检查，随后在拟合损失因包自动注册任务提前捕获旧 `split_state` 别名失败；原日志保留为 `logs/morphmimic_q1_native_cpu_v01_20261102.log`。未发生动力学积分或 optimizer。V02 显式重绑定已加载模块中身份完全匹配的 registry/split/join 别名，并记录逐项名单；使用新结果路径重新检查，不覆盖 V01。
@@ -57,7 +65,7 @@ Q1 entity 从 V3 XML 的原几何/惯量/限位与 armature 构建，移除场�
 
 位置/线速度 tracking 核宽和高度终止按腿长比例同步到环境及世界模型，保留原权重与角度核宽；需 CPU 检查实际 reward/termination 配置，不能只看函数实现。新契约与旧 G1 checkpoint、发布 ONNX 均不兼容，从零初始化。当前没有新增动力学、策略仿真或 optimizer；下一步先发布/镜像后运行真实 CPU 契约，再做 Q1 SOMA 校准及串行 GPU 原生预检。
 
-独立缺失关节模块与 CPU 契约验证已完成；尚未注册 Q1 到原 Trainer，尚未新增重定向、物理 rollout 或训练。完整结果写入 `data/manifests/morphmimic_q1_integration_20261102.json`。当前资产 XML 自带 1 ms timestep，示例要求 2 ms，接入时须显式设置并核实 10 个子步；当前 CPU 核验没有修改 XML。
+独立缺失关节模块与 CPU 契约验证已完成；进程内 Q1 注册已由 CPU 验证，原生 GPU Trainer、重定向、物理 rollout 和训练仍待。完整结果写入 `data/manifests/morphmimic_q1_integration_20261102.json`。当前资产 XML 自带 1 ms timestep，适配显式设置 2 ms/10 子步；原 XML 不修改。
 
 延迟还涉及世界模型状态契约：Q1 源控制会在子步中使用上一时刻位置目标，原 MorphMimic 的 33 维 context 只含摩擦、encoder bias、CoM offset。必须明确延迟值和上一目标在模型中的可见性及一步更新规则，不能只把 PD 换掉就宣称完整接入。奖励/终止按尺寸缩放和 22 关节误差权重也须在仿真与 imagination 两侧一致；CPU bridge 中的真实关节 RMSE 不代表训练损失已经替换。
 

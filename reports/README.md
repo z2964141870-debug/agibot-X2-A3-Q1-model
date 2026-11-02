@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-02：[Q1 原生 CPU V02 通过及真实 SOMA 校准准备](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。真实形态/延迟记忆/NaN与梯度mask/replay/policy/critic等13组通过，0积分optimizer；新增实际Q1校准和独立资源守卫，原生GPU/训练待。[结果](../data/manifests/morphmimic_q1_native_cpu_results_20261102.json)。
+
 2026-11-02：[Q1 原生适配 CPU 导入修复 V02](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。V01前置实模检查走通，拟合损失因自动注册保留旧状态别名失败；保留原日志并显式重绑定，未积分或训练。[准备发布](../data/manifests/morphmimic_q1_native_preparation_publication_20261102.json)。
 
 2026-11-02：[Q1 原生适配准备 V01](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。新增实际 entity/执行器、缺失槽、state269 命令记忆/context62 延迟和真实154形态提取入口；本地语法通过，真实 CPU/Trainer/重定向与训练待执行。[准备清单](../data/manifests/morphmimic_q1_native_preparation_20261102.json)。

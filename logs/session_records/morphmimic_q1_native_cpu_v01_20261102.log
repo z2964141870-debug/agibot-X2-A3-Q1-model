@@ -1,0 +1,20 @@
+/opt/data/private/ZHY/script/morphmimic_q1/bootstrap.py:72: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:253.)
+  values = torch.tensor([raw[k] for k in ("action_scale", "kp", "kd", "effort")])
+Traceback (most recent call last):
+  File "/opt/data/private/ZHY/script/morphmimic_q1/verify_native_cpu.py", line 142, in <module>
+    main()
+  File "/opt/data/private/ZHY/script/morphmimic_q1/verify_native_cpu.py", line 108, in main
+    loss, info = wm.fit_loss(window, Library())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/script/morphmimic_q1/model_adapter.py", line 92, in fit_loss
+    logits = self.termination_logit(pred, refs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/script/morphmimic_q1/model_adapter.py", line 70, in termination_logit
+    e_z, e_tilt = termination_features(next_state, ref)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1/src/morphmimic/model/rewards_torch.py", line 226, in termination_features
+    robot, motion = split_state(state), split_state(ref)
+                    ^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1/src/morphmimic/model/state.py", line 83, in split_state
+    raise ValueError(f"Expected state last dim {STATE_DIM}, got {tuple(s.shape)}.")
+ValueError: Expected state last dim 240, got (4, 3, 269).

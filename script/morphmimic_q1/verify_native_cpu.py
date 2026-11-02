@@ -116,6 +116,10 @@ def main():
     cfg = morphmimic_env_cfg("q1", num_envs=16)
     assert cfg.sim.mujoco.timestep == .002 and cfg.decimation == 10
     assert all(a.delay_max_lag == 0 for a in cfg.scene.entities["robot"].articulation.actuators)
+    assert cfg.rewards["motion_global_root_pos"].params["std"] == wm.reward_cfg.std_pos
+    assert cfg.rewards["motion_body_pos"].params["std"] == wm.reward_cfg.std_pos
+    assert cfg.rewards["motion_body_lin_vel"].params["std"] == wm.reward_cfg.std_lin_vel
+    assert cfg.terminations["anchor_pos"].params["threshold"] == .25 * spec.height_scale
     checks = ["real_asset_fk_identity", "named_real_foot_geometry", "real_population_descriptors",
         "state_and_context_dimensions", "autoregressive_command_memory", "missing_action_gradients",
         "masked_sensor_noise", "masked_replay_action", "masked_native_policy", "critic_memory_input",

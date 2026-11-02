@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-03：[E4096-V01首轮全更新后次轮采集CUDA OOM，准备同批量执行模式对照](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。一轮五optimizer10/1/20/1/20/非有限0，1058.685秒含编译、Torch allocated20.579GB/reserved23.442GB；次轮Warp物理graph OOM，整profileFAILED，非30GiB容器守卫/cgroup OOMkill0。1812源独立SHA未变/三原PID退出/GPU15MiB；不恢复失败根。新独立V02仍E4096/WM2048/motion-KP4096/H32/559片/八全更新，只改compile reduce-overhead→default，未执行/未隔离单因/未正式训练/采纳null/不新goal或agent。[失败](../data/manifests/morphmimic_q1_e4096_v01_results_20261103.json)/[准备](../data/manifests/morphmimic_q1_e4096_execution_v02_preparation_20261103.json)。
+
 2026-11-03：[E4096原完整批量资源测试运行中](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。00:56:16 controller602072/start55222136、worker602087，冻结e0586a1f3c3faf69df1ec521e49a82e9740db86b独立远端/9文件534089B三端后启动。559片/E4096/WM2048x10/motion-KP4096/H32/八全更新轮，409600预热转移15.1秒，首轮编译未落完整轮；GPU14193MiB/总14.35GB/OOM0。只监督同根原进程、不改执行输入；不当正式训练/容量最终通过或步态收益，采纳null/不新goal或agent。旧未执行1024草稿已移除。[启动](../data/manifests/morphmimic_q1_e4096_launch_20261103.json)。
 
 2026-11-03：[完整559集E512双rank资源验证已正常完成，优先4096原规模实测](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。冻结e2cae1d，外层/两worker均COMPLETED/回收0、五optimizer各80/8/160/8/160、共享全参数SHA和实际同帧抽样相同、1810源未变/非有限0/原四PID退出/GPU15MiB。末轮2.612秒，每rankreserved约5.65GB。用户要求env和显存尽量用足、保障训练量/效率；旧4096完整更新reserved16.54GiB确有证据，撤回1024默认选择。发布后新独立单Q1 E4096/WM2048/motion-KP4096-H32八轮完整更新资源测试，再按实测确定共享容量，尚未启动/未正式训练/未作步态收益结论，采纳null/不新goal或agent。[结果](../data/manifests/morphmimic_q1_full1h_profile_e512_v02_results_20261103.json)/[准备](../data/manifests/morphmimic_q1_high_capacity_preparation_20261103.json)。

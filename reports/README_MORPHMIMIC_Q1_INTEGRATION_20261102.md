@@ -43,6 +43,16 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### 4096首轮全更新完成，次轮物理图回放CUDA OOM
+
+E4096-V01最终外层和worker均FAILED，保留原根/错误栈。一轮完整更新实际完成，五optimizer hook为10/1/20/1/20、非有限0；首轮1058.685秒包含编译，peak allocated20578716160B/reserved23441965056B。第二轮在collector的Warp物理graph回放报`CUDA error 2: out of memory`，没有完成8轮或最终Adam状态审计，不能把第一轮成功写成稳定容量通过。[原始失败](../logs/session_records/morphmimic_q1_e4096_v01_results_20261103.json)/[结果](../data/manifests/morphmimic_q1_e4096_v01_results_20261103.json)。这不是否定先前另一Q1实现的4096实测，也不是训练质量失败。
+
+原controller602072/parent602086/worker602087均已退出，GPU15MiB；容器OOMkill0但本次CUDA OOM为真实错误，两者不可混称OOM0。1812份冻结输入在失败后独立重算大小/SHA全部不变。未恢复/扩时或复用profile权重，正式训练仍未开始，采纳null。
+
+按用户“高env/充分显存利用且保证训练量和效率”，下一独立实验仍保留E4096、WM2048x10、motion/KP4096、H32、网络/数据/种子/五optimizer；仅把上游已支持的`compile=reduce-overhead`换成`default`，测试训练CUDA图/显存池驻留这一执行因素，不能预先当根因已隔离。新根`MORPHMIMIC_Q1_FULL1H_PROFILE_E4096_DEFAULT_V02_20261103`/8全更新轮/10800秒资源时限/原守卫，发布核验后执行；原V01失败不改。[配置](../script/morphmimic_q1/full1h_single_profile_e4096_default_v02_20261103.json)/[准备](../data/manifests/morphmimic_q1_e4096_execution_v02_preparation_20261103.json)。配置对比须精确只有cfg.compile不同，实际稳态吞吐由新实验记录，不仅看显存填充率。
+
+完整E512双rank后六轮中位2.8405秒，等曝光320000轮的迭代耗时估计约252.5小时，尚未计编译/保存，不当正式运行承诺。这说明低规模虽然通过执行却不宜直接当效率选择；后续以实测高容量和完整训练总耗时比较，而非缩小训练量换短日志。
+
 ### 原规模4096完整更新资源测试已启动
 
 准备提交`e0586a1f3c3faf69df1ec521e49a82e9740db86b`已push Q1并独立git ls-remote确认全40位，9文件534089B在Git/Mac/25386逐大小SHA一致。随后北京时间00:56:16唯一新profile启动，controller602072/start55222136、worker602087，原boot/GPU/唯一根；[启动现场](../data/manifests/morphmimic_q1_e4096_launch_20261103.json)。执行冻结一直为e0586a1，后续报告提交不改变它。

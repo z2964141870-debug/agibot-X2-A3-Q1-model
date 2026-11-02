@@ -1,0 +1,55 @@
+{
+  "stage": "MORPHMIMIC_Q1_FULL1H_E4096_V01",
+  "status": "FIRST_FULL_UPDATE_COMPLETED_SECOND_COLLECTION_CUDA_OOM",
+  "code_commit": "e0586a1f3c3faf69df1ec521e49a82e9740db86b",
+  "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_FULL1H_PROFILE_E4096_V01_20261103",
+  "observed_utc": "2026-11-02T17:19:46.452987+00:00",
+  "outer_status": "FAILED",
+  "guard_status": "WORKER_FAILED",
+  "cleanup": {
+    "worker_started": true,
+    "worker_pid": 602086,
+    "worker_group": 602086,
+    "worker_reaped": true,
+    "worker_return_code": 1
+  },
+  "worker": {
+    "status": "FAILED",
+    "iterations_completed": 1,
+    "optimizer_updates": {
+      "wm_opt": 10,
+      "policy_opt": 1,
+      "critic_opt": 20,
+      "kp_opt": 1,
+      "critic_kp_opt": 20
+    },
+    "nonfinite_updates": {
+      "wm/nonfinite_steps": 0,
+      "policy/nonfinite_steps": 0,
+      "critic/nonfinite_steps": 0,
+      "kp/nonfinite_steps": 0,
+      "critic_kp/nonfinite_steps": 0
+    },
+    "collected_environment_transitions": 417792,
+    "reference_clips": 559,
+    "peak_cuda_allocated_bytes": 20578716160,
+    "peak_cuda_reserved_bytes": 23441965056,
+    "last_iteration_seconds": 1058.6850753310136,
+    "error": "RuntimeError: Graph launch error: Warp CUDA error 2: out of memory (in function wp_cuda_graph_launch, /builds/omniverse/warp/warp/native/warp.cu:4544)"
+  },
+  "cuda_oom_observed": true,
+  "cgroup_oom_kill": 0,
+  "optimizer_adam_end_audit_completed": false,
+  "all_eight_iterations_completed": false,
+  "frozen_input_count": 1812,
+  "frozen_inputs_unchanged_independently_checked_after_failure": true,
+  "original_pids_absent": true,
+  "idle_gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15 MiB, 26",
+  "idle_cgroup_bytes": 10991255552,
+  "formal_training": false,
+  "profile_weights_reusable": false,
+  "user_accepted_checkpoint": null,
+  "raw_record": "logs/session_records/morphmimic_q1_e4096_v01_results_20261103.json",
+  "interpretation": "Original-scale current Q1 fit one full five-optimizer update, but the next Warp physics graph launch ran out of VRAM; this is not a stable-capacity pass and does not invalidate the earlier different Q1 implementation profile",
+  "next_independent_execution_hypothesis": "Hold E4096/WM2048/motion-KP4096/H32 and all algorithms fixed; change only original-supported compile reduce-overhead to default to test graph/pool residency as an execution-memory factor"
+}

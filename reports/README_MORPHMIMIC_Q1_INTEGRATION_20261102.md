@@ -43,6 +43,14 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### 同片配对和 G1 原生对照完成
+
+执行来源 `cba206093e35854ad07991eb3a321436912b6b0b` 已独立远端/9文件441368B三端大小SHA核验，服务器既有Torch环境4项测试实际全部通过。22:46:32既有NPZ配对检查结束：两片23.68秒均在原G1一小时集/50Hz逐片帧数相同，6帧真实v0.1 G1 FK最大位置差4.184e-7m，源NPZ/YAML前后身份相同；未重新转换。
+
+22:48:22 G1原生检查结束：16环境/24控制步/96批量物理子步/384转移/0optimizer；原六actuator分组独立延迟0--4步，延迟目标/干净观测差0，环境与WM解析reward最大差2.608e-8。第21步有1个环境提前终止，重置命令记忆归零已核，不把这项固定测试动作当策略步态评测。两个guard均reaped0/冻结源不变，原boot/GPU与OOM0保持。
+
+证据：[配对和G1实测](../data/manifests/morphmimic_q1_paired_g1_native_gpu_results_20261102.json)、[原始收据](../logs/session_records/morphmimic_q1_paired_g1_native_gpu_20261102.json)。下一步仅按已发布候选运行两rank E512/8完整更新资源profile；尚未正式训练或证明Q1步态改善，采纳null。
+
 ### 同片配对与共享 Trainer 执行准备
 
 已完成结果 `5b59018801bff1e4413dcf3808aa6d43141e9eb0` 独立核远端，6文件435113B三端大小/SHA相同，见[发布收据](../data/manifests/morphmimic_q1_pilot_native_gpu_publication_20261102.json)。新增复用已有NPZ的配对入口，只核G1同片50Hz/逐片帧数/关节与body身份和三帧真实v0.1 FK，不重复重定向/转换或覆盖原结果。配对排除原因逐项记录；正式全量转换也使用相同检查。

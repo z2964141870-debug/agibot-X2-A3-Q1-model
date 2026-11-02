@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-02：[G1/Q1双rank共享profile运行中/完整559条数据配置准备](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。各51200预热转移后首轮编译，8轮资源结果尚待；新完整数据输出与原过滤/同帧交集已配置，未启动完整重定向或正式训练。[清单](../data/manifests/morphmimic_q1_full1h_preparation_20261102.json)。
+
 2026-11-02：[G1/Q1 两片配对与G1原生对照已通过](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。cba2060独立远端/9文件441368B三端后4服务器Torch测试全部通过；两片23.68秒帧数相同/6帧G1实模FK最大差4.184e-7m/源身份未变。G1原六分组延迟、16环境24步/384转移，reward差2.608e-8/目标观察差0；1次提前终止已核重置记忆，0optimizer，两guard回收0。真实共享Trainer/正式训练仍待，不作步态结论，采纳null。[实测](../data/manifests/morphmimic_q1_paired_g1_native_gpu_results_20261102.json)。
 
 2026-11-02：[G1/Q1 同片配对与原生共享训练入口准备](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。复用已转换两片核G1帧数/资产/FK，新增两rank同GPU原Trainer五optimizer/共同帧/参数SHA/独立buffer记录及子rank失败退出保护，3本地反例通过；真实CPU配对/G1执行/共享profile待。候选每型E512/WM256/imagination512、原网络H32/8全更新轮仅资源检查，正式训练规模轮次未定，未称步态改善。前阶段5b59018已独立远端/6文件435113B三端SHA，采纳null。

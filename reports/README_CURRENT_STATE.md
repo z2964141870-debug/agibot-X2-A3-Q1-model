@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-02：[G1/Q1原生共享profile运行中，完整559条配置准备](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。22:57:33原controller588306/start54509869、冻结cba2060启动E512双rank/8完整更新轮；23:11各51200预热转移，首轮编译尚无完成迭代，收据0不等于内存未开始更新。内存29506048000B/GPU9577MiB，继续原30GiB守卫/不改执行Python。完整共同559条重定向/原转换配对仅配置，待profile结果保存和GPU释放后串行；未正式训练/未称步态改善，采纳null。[准备](../data/manifests/morphmimic_q1_full1h_preparation_20261102.json)。
+
 2026-11-02：[G1/Q1 两片配对与G1原生对照已通过](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。cba2060独立远端/9文件441368B三端后4服务器Torch测试全部通过；两片23.68秒帧数相同/6帧G1实模FK最大差4.184e-7m/源身份未变。G1原六分组延迟、16环境24步/384转移，reward差2.608e-8/目标观察差0；1次提前终止已核重置记忆，0optimizer，两guard回收0。真实共享Trainer/正式训练仍待，不作步态结论，采纳null。[实测](../data/manifests/morphmimic_q1_paired_g1_native_gpu_results_20261102.json)。
 
 2026-11-02：[G1/Q1 同片配对与原生共享训练入口准备](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。复用已转换两片核G1帧数/资产/FK，新增两rank同GPU原Trainer五optimizer/共同帧/参数SHA/独立buffer记录及子rank失败退出保护，3本地反例通过；真实CPU配对/G1执行/共享profile待。候选每型E512/WM256/imagination512、原网络H32/8全更新轮仅资源检查，正式训练规模轮次未定，未称步态改善。前阶段5b59018已独立远端/6文件435113B三端SHA，采纳null。

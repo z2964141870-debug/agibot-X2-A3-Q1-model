@@ -1,0 +1,36 @@
+{
+  "stage": "MORPHMIMIC_Q1_FULL1H_PREPARATION",
+  "status": "CONFIGURATION_PREPARED_NOT_LAUNCHED",
+  "source_clips": 559,
+  "bvh_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_COMMON_SOMA_1H_20261101/bvh",
+  "existing_extraction_result": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_COMMON_SOMA_1H_20261101/result.json",
+  "g1_subset": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_DATA_20261101/run/npz50/subsets/1h.yaml",
+  "metadata": "/opt/data/private/ZHY/data/references/bones_seed/metadata/seed_metadata_v004.csv",
+  "retargeter_commit": "cbdb2b494a2af82137bf9b6f15122d60167281c4",
+  "morphmimic_commit": "41c8382f127a6f5109bfe047445a9180f71f1fc0",
+  "q1_calibration": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_CALIBRATION_V02_20261102",
+  "batch_config": "script/morphmimic_q1/full1h_batch_20261102.json",
+  "retarget_output": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102",
+  "retarget_guard_output": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_GUARD_V01_20261102",
+  "conversion_output": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted",
+  "retarget_wall_limit_seconds": 14400,
+  "conversion_wall_limit_seconds": 5400,
+  "prerequisites": [
+    "Current native shared resource profile has ended and its result has been preserved",
+    "GPU lock and original24GiB admission/30GiB memory guards pass",
+    "Published configuration and frozen sources match authoritative Git and Mac mirror",
+    "The existing559 extracted BVH paths and sizes match their extraction receipt; input SHA is checked before and after execution"
+  ],
+  "processing": {
+    "retarget": "Pinned original Newton batch10 and original contact/foot postprocessing",
+    "conversion": "Pinned original120Hz-to50Hz Q1 converter and original filter",
+    "humans": "Original human sidecar converter from the same BVH",
+    "pairing": "Exact original G1 subset intersection with equal50Hz frame counts and actual G1 FK checks",
+    "exclusions": "Keep original filter manifest and every pair exclusion; do not replace difficult clips"
+  },
+  "formal_training_iterations": null,
+  "formal_training_started": false,
+  "automatic_retry": false,
+  "storage": "SERVER_LOCAL_ONLY",
+  "user_accepted_checkpoint": null
+}

@@ -43,6 +43,14 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### 共享资源 profile 运行中与完整一小时数据准备
+
+原生共享 profile 于北京时间22:57:33启动，controller588306/start54509869，执行冻结仍为`cba206093e35854ad07991eb3a321436912b6b0b`。截至23:11:14，G1和Q1均完成各51200条预热转移，正在编译首轮完整更新，收据仍为0个已完成迭代；不能将尚未刷新的optimizer字段解释为内存中没有开始更新。当前容器29506048000B、GPU9577MiB/37度，未触发30GiB守卫；尚未证明两rank共享更新完成。运行根`MORPHMIMIC_Q1_G1_SHARED_PROFILE_E512_V01_20261102`、runtime plan在`logs/morphmimic_q1_shared_profile_e512_v01_plan_20261102.json`，继续监督原进程，不修改冻结Python。
+
+新增[完整数据准备清单](../data/manifests/morphmimic_q1_full1h_preparation_20261102.json)及`script/morphmimic_q1/full1h_batch_20261102.json`，指向已提取的559条共同BVH，不重新提取归档。后续使用同一校准V02/原Newton batch10和原接触后处理，独立新输出根；原120Hz到50Hz转换、human sidecar与原过滤后，只取与原G1一小时集同片同帧的真实交集，保留排除项。当前仅配置，完整重定向/转换/训练均未启动；需共享profile结束并保存结果、GPU释放与原资源准入通过后执行。正式训练轮次待实测，不以两片profile权重续训或据此称步态改善。
+
+前阶段`52a45c741e2f9f5e2faa5400d720ba31a7db38f0`的6文件440060B三端核验另存[发布收据](../data/manifests/morphmimic_q1_paired_g1_native_gpu_publication_20261102.json)。
+
 ### 同片配对和 G1 原生对照完成
 
 执行来源 `cba206093e35854ad07991eb3a321436912b6b0b` 已独立远端/9文件441368B三端大小SHA核验，服务器既有Torch环境4项测试实际全部通过。22:46:32既有NPZ配对检查结束：两片23.68秒均在原G1一小时集/50Hz逐片帧数相同，6帧真实v0.1 G1 FK最大位置差4.184e-7m，源NPZ/YAML前后身份相同；未重新转换。

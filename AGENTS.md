@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-02共享原生profile22:57:33已启动controller588306/start54509869/冻结cba2060，E512双rank/8全更新轮；23:11各51200预热转移后首轮编译、无完成轮，不把落盘optimizer0当内存未更新。29506048000B/GPU9577MiB/原30GiB守卫，监督原进程不改冻结Python。完整共同559条原Newton/原50Hz过滤同帧配对新增独立配置，未重定向/正式训练，等profile结束保存/GPU释放；52a45c7的6文件440060B三端发布收据已保存。采纳null/无agent、goal或其他任务变更，入口同INTEGRATION/full1h_preparation。
+
 - 2026-11-02 cba2060已独立远端/9文件441368B三端SHA后4服务器Torch CPU测试通过；既有两片23.68秒G1/Q1同50Hz同帧/6帧G1真实v0.1 FK最大差4.184e-7m/输入身份未变，无重转。22:48:22 G1原生16环境24步/96批子步384转移，六原分组独立延迟0--4/目标观察差0/reward差2.608e-8；1次终止重置记忆已核，0optimizer。两guard回收0/冻结源未变，原bootGPU根/OOM0；下一步两rank E512/8轮原完整更新profile，尚未原生共享或正式训练、不作步态改善结论/采纳null，无agent、goal或其他任务变更，入口同INTEGRATION/paired_g1_native_gpu_results。
 
 - 2026-11-02前阶段5b59018独立远端/6文件435113B三端SHA。新增复用两片NPZ配对G1同帧/实模FK及原生两rank同GPUTrainer入口，保留五optimizer/原平均梯度后clip-Adam/同帧latent/独立buffer，记录全参数SHA和实际转移；子rank失败保护等3本地反例通过。候选每型E512/WM256/imag-KP512/H32/原完整网络和compile、8全更新轮仅profile且不续其权重；真实配对/G1执行/共享profile尚待，不称正式训练或步态改善。通过后扩共同559并冻结足量配置，原24/30GiB等守卫/采纳null/无agent、goal和其他任务变更，入口同INTEGRATION/shared_profile配置。

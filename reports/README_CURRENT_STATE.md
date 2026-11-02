@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-02：[完整559条Q1原Newton重定向完成](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。cfc95bb/7文件514699B三端后23:39:55--23:49:30原batch10及接触后处理559CSV/142661847B，guard回收0/669输入未变/两PID退出/GPU15MiB/OOM0。原50Hz转换、human侧文件、原过滤/G1同帧交集待执行；新增只可收紧的初始内存入口及完整集E512双rank/8轮资源配置，12GiB准入/原30GiB线不改/4本地CPU测试，服务器测试待。未正式训练/未称步态改善/采纳null。[结果](../data/manifests/morphmimic_q1_full1h_retarget_results_20261102.json)。
+
 2026-11-02：[共享8轮实际更新通过/外层30GiB守卫失败](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。两rank各80/8/160/8/160 optimizer及Adam步一致、61440转移、共享全参数SHA/实际共同帧一致、独立buffer、非有限0；后6轮2.32--2.89秒。退出收尾33270964224B触发原线/parent回收-15/OOM0，整profileFAILED保留/131源未变/四PID已退出/GPU空闲。空闲既有缓存维护实际cache19.50→12.50GB，未删数据；完整559配置06b67aa/7文件423365B三端。先发布结果后完整数据和带实测余量的新资源验证，未正式训练/未称步态改善/采纳null。[结果](../data/manifests/morphmimic_q1_shared_profile_v01_results_20261102.json)。
 
 2026-11-02：[G1/Q1原生共享profile运行中，完整559条配置准备](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。22:57:33原controller588306/start54509869、冻结cba2060启动E512双rank/8完整更新轮；23:11各51200预热转移，首轮编译尚无完成迭代，收据0不等于内存未开始更新。内存29506048000B/GPU9577MiB，继续原30GiB守卫/不改执行Python。完整共同559条重定向/原转换配对仅配置，待profile结果保存和GPU释放后串行；未正式训练/未称步态改善，采纳null。[准备](../data/manifests/morphmimic_q1_full1h_preparation_20261102.json)。

@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-02完整559条Q1原Newton batch10/原接触后处理23:49:30完成559CSV/142661847B，controller596724及worker596731退出/reap0/669冻结输入未变，源cfc95bb/7文件514699B已三端。未原50Hz过滤或G1同帧交集，下一步转换侧文件配对。资源入口只可收紧初始准入/默认24，新完整集E512双rank8轮用12GiB，原运行30GiB/OOM/锁不变；4本地CPU边界通过，服务器测试待发布后。V01资源失败/权重不续、正式训练未启动/采纳null、无agent/goal/其他任务变更，入口同INTEGRATION/full1h_retarget_results。
+
 - 2026-11-02共享V01两rank真实8轮/五optimizer80-8-160-8-160及Adam步/61440转移，完整共享SHA/共同帧相同、独立buffer/非有限0；后6轮2.32--2.89秒。worker均COMPLETED但外层收尾33.270964224GB触发原30GiB/parent回收-15/OOM0，整profileFAILED保留，131源未变/四PID已退出/GPU15MiB。原缓存空闲单次维护17.82秒/<=8GiB advice，实cache19.503→12.499GB，不删读大文件/改线。完整559准备06b67aa/7文件423365B三端后待发布本结果再串行全数据/另根资源验证，额外实测余量，原V01不恢复/权重不续。未正式训练/步态改善/采纳null，无agent/goal/其他任务变更，入口同INTEGRATION/shared_profile_v01_results。
 
 - 2026-11-02共享原生profile22:57:33已启动controller588306/start54509869/冻结cba2060，E512双rank/8全更新轮；23:11各51200预热转移后首轮编译、无完成轮，不把落盘optimizer0当内存未更新。29506048000B/GPU9577MiB/原30GiB守卫，监督原进程不改冻结Python。完整共同559条原Newton/原50Hz过滤同帧配对新增独立配置，未重定向/正式训练，等profile结束保存/GPU释放；52a45c7的6文件440060B三端发布收据已保存。采纳null/无agent、goal或其他任务变更，入口同INTEGRATION/full1h_preparation。

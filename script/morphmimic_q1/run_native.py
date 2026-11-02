@@ -28,6 +28,13 @@ def identity(path):
     return dict(path=str(path), bytes=path.stat().st_size, sha256=digest.hexdigest())
 
 
+def check_initial_memory(usage, limit, admission_gib=24.):
+    if not 0 < admission_gib <= 24:
+        raise ValueError("Initial admission can only tighten the original24GiB maximum")
+    if usage > admission_gib * 1024**3 or limit <= 30 * 1024**3:
+        raise RuntimeError(f"Initial{admission_gib:g}GiB admission not satisfied")
+
+
 class Budget(Q1Budget):
     def check(self):
         result = super().check()
@@ -52,6 +59,7 @@ def run(args):
     record = dict(status="INITIALIZING", process=process_identity(),
         code_commit=args.code_commit, purpose=args.purpose, command=args.command,
         started_utc=datetime.now(timezone.utc).isoformat(), automatic_retry=False,
+        initial_admission_gib=args.initial_admission_gib,
         optimizer_updates="reported_by_worker" if args.purpose in ("profile", "train") else 0,
         user_accepted_checkpoint=None)
     lock = (ROOT / "data/supermimic_for_q1/.gait_goal01.gpu.lock").open("a")
@@ -64,8 +72,7 @@ def run(args):
         cgroup = Path("/sys/fs/cgroup/memory")
         usage = int((cgroup / "memory.usage_in_bytes").read_text())
         limit = int((cgroup / "memory.limit_in_bytes").read_text())
-        if usage > 24 * 1024**3 or limit <= 30 * 1024**3:
-            raise RuntimeError("Original24GiB initial admission not satisfied")
+        check_initial_memory(usage, limit, args.initial_admission_gib)
         sources = sorted(set([*args.input, *HERE.glob("*.py"),
             HERE.parent / "morphmimic_cross_robot/collective_transport.py",
             *args.source.rglob("*.py")]))
@@ -110,12 +117,15 @@ def main():
     parser.add_argument("--purpose", choices=("retarget", "preflight", "profile", "train"), required=True)
     parser.add_argument("--code-commit", required=True)
     parser.add_argument("--wall-seconds", type=float, required=True)
+    parser.add_argument("--initial-admission-gib", type=float, default=24.)
     parser.add_argument("--expected-boot", default="4d859008-4c83-4a6d-814d-cbb9dfe885c9")
     parser.add_argument("--expected-gpu", default="GPU-26028785-9fb9-45af-e614-4cc53af15d08")
     parser.add_argument("--detach", action="store_true")
     parser.add_argument("--controller", action="store_true")
     parser.add_argument("command", nargs=argparse.REMAINDER)
     args = parser.parse_args()
+    if not 0 < args.initial_admission_gib <= 24:
+        parser.error("Initial admission must be positive and at most the original24GiB")
     args.command = args.command[1:] if args.command[:1] == ["--"] else args.command
     args.output = args.output.resolve()
     args.source, args.cwd = args.source.resolve(strict=True), args.cwd.resolve(strict=True)

@@ -43,6 +43,12 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### 完整559条真实Q1重定向完成，转换/配对待执行
+
+前阶段结果`cfc95bba8c4d8883d10aad1a296197cf5484cd0f`已独立远端/7文件514699B三端大小SHA，见[发布收据](../data/manifests/morphmimic_q1_shared_profile_v01_publication_20261102.json)。随后原controller596724/start54764026于23:39:55启动完整559条，原Newton batch10/接触后处理23:49:30正常结束，worker596731回收0，669冻结输入前后不变。559个真实Q1 CSV共142661847B，仅服务器，原BVH未重新提取；当前仅重定向完成，不能把文件数直接当通过原过滤的共同训练片数。[实测](../data/manifests/morphmimic_q1_full1h_retarget_results_20261102.json)/[原始摘录](../logs/session_records/morphmimic_q1_full1h_retarget_20261102.json)。
+
+两原PID已不存在，同boot/GPU根、GPU15MiB无计算/OOM0。下一步原`prepare_data.py`转换/生成human sidecar/过滤并核原G1同50Hz同帧和实模FK，不替换失败片。资源入口新增可选`--initial-admission-gib`，默认24GiB且只可收紧；新完整数据双rank profile明确12GiB初始上限，为V01实测约14.6GiB增量留余量。运行时30GiB/锁/OOM/温度等线未改，4项本地CPU边界测试通过；服务器测试待本阶段发布/镜像后执行。旧V01与全部错误日志保留，不续其权重。候选`full1h_shared_profile_e512_v02_20261102.json`仍为8轮资源检查，不是正式训练计划。
+
 ### 共享8轮实际更新通过，外层资源守卫失败保留
 
 原V01的G1/Q1两个worker均完成8轮：每边五optimizer为80/8/160/8/160，Adam状态步数与hook一致；每边实际61440转移（含51200预热）。WM/motion及人体策略/两critic共享参数完整SHA一致、实际共同片帧抽样一致，原rank校验通过，机器人morphology/limits/状态normalizer/replay仍独立；全部非有限更新为0。前两轮含编译为1051.6/433.5秒，后6轮约2.32--2.89秒，每rank CUDA reserved峰值约5.45GB。仅两片profile，不证明步态质量或完整一小时资源可行。

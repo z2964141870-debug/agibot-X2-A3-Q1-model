@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-02用户优先X2/T2并明确用MorphMimic v0.1发布权重测试，源码tag peeled41c8382/包63372873B SHAbe874424/实际ONNX69994291B SHA cf951947与SHA256SUMS同，MANIFEST内嵌哈希陈旧不覆原件；只有policy，不冒充已审计WM/critic。先前G1 NPZ改名补零保留G1身体几何不是跨本体重定向，X2接口试跑1032帧不可作质量结论/T2只导出；未挂守卫与新隔离JSON bake偏离明示，原aa40/G1冻结源未动。真实SOMA固定walk_forward_loop_001__A022、retargeter cbdb2b4待独立Python>=3.12/Newton1.3和必要LFS资产；后续守卫串行仿真/本地原速视频，不新训。G1已160000轮/12保存内容审计通过/最终motion三片完整，剩余KP因优先级SIGTERM停止、全媒体未齐，不作训练失败。81774原生Windows同25386会话可用，运行前重新核身份资源；模型大NPZ/BVH仅SERVER_LOCAL_ONLY，不goal结算/agent/改其他任务，采纳null。入口MORPHMIMIC_V01_X2_T2及准备清单，发布以旁收据为准。
+
 - 2026-11-02用户要求检查并测试此前复现：10:17经原生Windows同25386核原训练06:21:57正常完成160000轮/五optimizer1600000-158000-3160000-158000-3160000/非有限0，guard回收0、原两PID退出/原bootGPU根/OOM0/GPU15MiB空闲；71859ca冻结未改。12编号及latest已存，内容审计与固定三片0/40000/160000原版motion/keypoint评测待发布后执行，6最终原速视频，停走片为1h外单列；未重训或预称效果/unified完成，采纳null/不结算goal/无agent/其他任务保持。入口MORPHMIMIC_G1_EVALUATION及completion清单。
 
 - 2026-11-02用户提出衣服SMPL→Q1重定向→PrimebotTech SuperMimic-Q1 policy→动力学视频；刷新main仍118338b/releases空/完整树无公开权重，本用户25386有界检查也未找到匹配checkpoint。用户答复“哦没有是吗，那就先算了”，因此该衣服演示分支暂时搁置；未新转换、训练、策略推理或动力学仿真，不换用起身PPO/旧Q1/G1权重冒充。原MorphMimic复现和监督继续，未改goal或自动任务；恢复本分支先落实匹配官方policy/资产。原始衣服源只读/仅复制约束保持。入口README_CLOTH_Q1_POLICY_20261102.md。

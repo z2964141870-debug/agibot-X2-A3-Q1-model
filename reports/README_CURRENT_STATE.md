@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-02：[优先测试MorphMimic v0.1发布权重的X2/T2](README_MORPHMIMIC_V01_X2_T2_20261102.md)。发布包/实际ONNX与SHA256SUMS已核；MANIFEST嵌入哈希陈旧保留。此前G1改名补零轨迹不是真实重定向，原X2试跑仅接口烟测/T2尚未动力学，不能据此判策略效果；无守卫和新隔离JSON bake偏离已记录，不改原G1冻结源。真实SOMA参考待独立Python>=3.12/Newton环境和必要LFS资产，后续串行守卫运行并交本地视频。原G1训练160000轮/12内容审计通过/最终motion三片完整，剩余keypoint因用户优先级人工停止，全组媒体仍未齐。无新训练/agent/goal结算或其他自动任务改动，采纳null。[准备清单](../data/manifests/morphmimic_v01_x2_t2_preparation_20261102.json)。
+
 2026-11-02：[原MorphMimic G1跑满160000轮，开始独立评测准备](README_MORPHMIMIC_G1_EVALUATION_20261102.md)。10:17现场核原status COMPLETED/guard回收0、06:21:57训练完成、五optimizer1600000/158000/3160000/158000/3160000、非有限0；原两PID退出/原bootGPU根/OOM0/GPU15MiB空闲。未重训，训练冻结71859ca保持。12编号checkpoint及latest已存，内容审计和固定三片0/40000/160000两个接口原版动力学回放待发布后执行；无步态改善或跨本体结论。目标未结算/采纳null/无agent/其他任务不变。[完整收据](../data/manifests/morphmimic_faithful_g1_completion_20261102.json)。
 
 2026-11-02研究：[FRDV运动学代码发布](research/2026-11-02/README.md)/[检查](README_RESEARCH_CHECK_20261102.md)。仅运动学/G1，动力学验证未公开，12文本与完整树静态核验；106请求105成功，main去重163→164/H001不变。列为基线后候选，原MorphMimic冻结训练与衣服演示搁置决定保持；本轮无实时训练核验，服务器自动认证未通过/镜像待，实际发布见[收据](../data/manifests/research_watch_sync_20261102.json)。

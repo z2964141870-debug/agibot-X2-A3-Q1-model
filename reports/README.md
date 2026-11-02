@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-02：[MorphMimic v0.1 X2/T2发布权重测试](README_MORPHMIMIC_V01_X2_T2_20261102.md)。用户优先另外两机型，真实SOMA重定向准备中；旧改名G1轨迹只记接口烟测，不作策略质量结论。原G1足量训练已结束，剩余KP评测人工停止；本轮不训练。[清单](../data/manifests/morphmimic_v01_x2_t2_preparation_20261102.json)。
+
 2026-11-02：[MorphMimic G1足量训练已结束、评测准备](README_MORPHMIMIC_G1_EVALUATION_20261102.md)。原作业06:22正常结束/160000轮/五optimizer齐/非有限0/OOM0/原进程退出，最终checkpoint已存；当前权重审计与15次原版动力学回放、6份最终原速视频待执行，尚不判步态改善或unified完成。[完成现场](../data/manifests/morphmimic_faithful_g1_completion_20261102.json)。
 
 2026-11-02研究：[FRDV运动学代码发布](research/2026-11-02/README.md)/[检查](README_RESEARCH_CHECK_20261102.md)。仅运动学/G1，动力学验证未公开，12文本与完整树静态核验；106请求105成功，main去重163→164/H001不变。列为基线后候选，原MorphMimic冻结训练与衣服演示搁置决定保持；本轮无实时训练核验，服务器自动认证未通过/镜像待，实际发布见[收据](../data/manifests/research_watch_sync_20261102.json)。

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-02：[Q1 两片真实参考及原生 GPU 契约通过](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。两片原Newton/后处理/50Hz转换与原过滤通过，共23.68秒/两human sidecar；未核G1对应物，不把paired_count当跨本体配对。16环境24控制步/240批子步/384转移，电机回调最大差2.027e-6Nm，reward差2.236e-8，延迟目标/干净观测差0；三个guard回收0/冻结源未变/0optimizer。原失败保留，尚无步态改善或共享Trainer/正式训练结论，采纳null。[实测](../data/manifests/morphmimic_q1_pilot_native_gpu_results_20261102.json)。
+
 2026-11-02：[Q1 pilot 初始化诊断与固定源码入口](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。V01构造失败保留，独立CPU/CUDA构造通过，新增固定SOMA导入来源及完整异常栈；V02待/未训练。[发布与补正](../data/manifests/morphmimic_q1_pilot_preparation_publication_20261102.json)。
 
 2026-11-02：[Q1 SOMA V02 完成与真实 pilot/原生 GPU 准备](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。15映射校准/原XML保护通过，新增原Newton/原50Hz与sidecar转换和16环境执行契约检查入口；未GPU或正式训练。[校准](../data/manifests/morphmimic_q1_soma_calibration_results_20261102.json)。

@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-02 Q1两固定片原Newton/接触后处理/原50Hz过滤已完成23.68秒/两human sidecar，G1对应物尚未核，paired_count不是共享数据完成。494ff6e入口下Q1原生16环境24控制步/240批子步384转移，PD/限矩回调241次最大差2.027e-6Nm，reward2.236e-8/延迟目标观察差0，0optimizer；三guard回收0/冻结源未变、原失败保留。本轮同boot/GPU根/15MiB无计算/OOM0。G1对照/成对数据/共享Trainer/正式训练待，不称步态改善/采纳null，无agent/goal或其他任务变更，入口同INTEGRATION/pilot_native_gpu_results。
+
 - 2026-11-02 Q1原batch pilot V01构造时报size转float，guardreaped255/无CSV训练，原根保留；bc697df正确提交独立远端/11文件426708B三端已核，启动记录手抄commit错误单独补正不覆原件。固定源码独立CPU/CUDA构造均通过，普通env模块从site-packages导入；新增固定源码/PYTHONPATH/模块路径核验与原constructor异常栈，V02待/单因未隔离。采纳null，无agent/goal及其他任务变更，入口同INTEGRATION/pilot_preparation_publication。
 
 - 2026-11-02 Q1 SOMA校准V02完成：42c1bf4独立远端/6文件410156B三端SHA后CPU真实free+22/15映射偏移回算/人身高比.414851576，原XML未变，V01失败保留/0积分optimizer。新增两固定片原Newton配置、原50Hz/filter/sidecar与逐片对齐转换、16环境24步原生PD/延迟/reward/observation零更新验证入口，仅语法/pilot与GPU待。原bootGPU再核15MiB/26度/18552647680B/OOM0；共享Trainer/正式训练未启/采纳null，无agent/goal或其他任务变更，入口同INTEGRATION/soma_calibration_results。

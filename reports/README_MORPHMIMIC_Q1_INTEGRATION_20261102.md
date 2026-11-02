@@ -43,6 +43,14 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### 两片真实参考和 Q1 原生 GPU 检查完成
+
+固定入口 `494ff6e2db6641304f65371e854a2afb551820a4` 的 V02 Newton pilot 于北京时间 22:03:55 正常结束；原接触和脚部后处理已执行。两片前进/起走参考均通过原 120 Hz 到 50 Hz 转换和原过滤，共 23.68 秒，两个 human sidecar 与机器人逐片帧数一致。这里的 paired_count=2 尚未核 G1 对应物，不代表 G1/Q1 成对数据已完成。原 V01 构造失败保留。
+
+22:08:05 Q1 原生 GPU 检查结束：16 环境、24 控制步、240 批量物理子步、384 环境转移、0 optimizer。实际软件 PD/转速限矩回调 241 次，最大公式差 2.027e-6 Nm；延迟目标和干净观测最大差 0，环境奖励与 WM 解析奖励最大差 2.236e-8。三个 guard 均 WORKER_COMPLETED/reaped0，冻结来源前后相同；本轮现场复核同 boot/GPU/唯一根、GPU15MiB无计算/OOM0。
+
+证据：[结果清单](../data/manifests/morphmimic_q1_pilot_native_gpu_results_20261102.json)、[原始结果与守卫摘录](../logs/session_records/morphmimic_q1_pilot_native_gpu_20261102.json)。CSV、NPZ、BVH仅留服务器。上述仅证明真实参考生成和控制/模型接口执行，不是策略步态改善；G1原生对照、真实同源同帧数据、两rank共享Trainer及正式训练仍待，采纳null。
+
 ### Pilot V01 初始化失败与导入来源约束
 
 准备 `bc697df3d48eecdf9623d9ef49cb22f5dcee08c7` 独立远端及11文件426708B三端核验后，V01原batch在构造pipeline时返回 `could not convert string to float: 'size'`，guard正常回收退出255，未生成CSV/未训练。原根 `MORPHMIMIC_Q1_SOMA_PILOT_GUARD_V01_20261102` 保留。该次启动的commit元数据手工抄成 `bc697dfc568db9236b97e6e32962db73f31c5f77`，是记录错误；实际部署文件已按正确已发布commit逐SHA核验，补正不覆盖原记录、不重算作训练。

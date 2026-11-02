@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-02：[Q1 SOMA 校准首轮路径故障已修复待执行](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。0b5623c 独立远端/12文件450753B三端SHA；V01因相对meshdir在加载前失败，原日志/目录保留、0动力学optimizer。入口先绝对化source/XML/output，新V02根校准待；CPU13组通过仍有效，原生GPU/共享Trainer及正式训练尚未执行，采纳null/无agent或goal及其他任务变更。
+
 2026-11-02：[Q1 原生 CPU V02 已通过13组检查](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。b343fef独立远端/7文件414037B三端后执行；真实G1/Q1 morphology154、state269/context62/critic297、命令多步记忆、NaN缺失槽/梯度/replay/policy/critic和2ms配置通过，0动力学optimizer/无CUDAcontext。真实Q1/G1腿长比.596486，仿真/WM核宽与高度阈值同；V01失败保留。新独立SOMA校准和守卫入口已准备，校准/pilot/原生GPU与两rank尚未执行，未正式训练/未称改善。采纳null，无agent/goal或其他任务变更。[实测](../data/manifests/morphmimic_q1_native_cpu_results_20261102.json)。
 
 2026-11-02：[Q1 原生 CPU 首次导入别名故障已定位](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。准备da3bf3e独立远端/10文件428221B三端SHA后执行；实际asset/FK/形态/replay/policy/critic前置走通，在拟合损失捕获旧split_state失败。V01日志保留、0积分optimizer；V02显式别名修复待新路径CPU检查，未正式训练/未称改善。采纳null/无agent或目标及其他任务变更。

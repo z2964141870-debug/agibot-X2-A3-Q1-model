@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-02 SOMA校准准备0b5623c独立远端/12文件450753B三端SHA；CPU V01在Newton mesh加载因相对meshdir失败/未校准/0积分optimizer，失败根日志保留。入口已绝对化source/XML/output，新V02独立根待执行，不覆盖或借X2几何；原CPU13组结果保持。原生GPU与两rank/正式训练仍待/采纳null，不启agent/goal或变更其他任务，入口同INTEGRATION及calibration_preparation_publication。
+
 - 2026-11-02原生CPU V02实际13组通过，b343fef独立远端/7文件414037B三端SHA后执行；真实G1/Q1描述154/state269/context62/critic297、命令递推、NaN与梯度mask/replay/policy/critic通过，0新积分optimizer/无CUDA。Q1腿长比.596486，位置.178946/线速度.596486/高度终止.149122与WM相同；V01别名失败保留。新增实际Q1 SOMA外部manifest校准入口/原configurator偏移及后处理/原默认IK，CPU与pilot待；run_native保留24/30GiB/锁/bootGPU/OOM与源SHA，profile/train不冒充零更新。G1每原actuator group独立lag、默认历史差异仍待原生检查。未正式训练/采纳null/无agent或goal与其他任务变更，入口同INTEGRATION/native_cpu_results。
 
 - 2026-11-02原生适配准备da3bf3e已独立远端/10文件428221B三端SHA；首次真实CPU实模/FK/形态/replay/policy/critic前置走通，在fit_loss因包自动注册提前保留旧split_state失败，V01日志保留/0积分optimizer。V02仅显式重绑定匹配旧身份的registry/split/join别名并记录名单，新路径CPU待；原源码不改/无agent或goal及自动任务变更/采纳null。入口同INTEGRATION与native_preparation_publication。

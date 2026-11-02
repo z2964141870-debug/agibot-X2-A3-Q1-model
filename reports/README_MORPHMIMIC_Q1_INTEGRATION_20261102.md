@@ -43,6 +43,12 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### SOMA 校准路径修复
+
+准备 `0b5623cd489c9d33bb14592787f0d702bf042c29` 已独立核远端，12 文件 450753 字节三端大小/SHA 相同。首次 CPU 校准在 Newton 加载 mesh 前失败：相对 XML 路径派生出的 `meshdir` 被再次相对新输出目录解析。原 V01 根和 `logs/morphmimic_q1_soma_calibration_v01_20261102.log` 保留，未产生校准或动力学/optimizer。
+
+入口现在先绝对化 source/XML/output；新 V02 独立根 `data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_CALIBRATION_V02_20261102` 待校准，不覆盖失败根。仍使用固定原 configurator 函数、真实 Q1 模型和默认 IK。校准后执行两固定 BVH 原 Newton pilot，再转换/真实环境；尚未正式训练。
+
 ### 真实原生 CPU V02 通过
 
 `b343fefc0a887a7310da61b3e1d99b7fcb8c89c9` 独立远端及 7 文件 414037 字节三端核验后，13 组检查全部通过，见 [CPU 原始结果](../data/manifests/morphmimic_q1_native_cpu_results_20261102.json)。实际 Q1/G1 大腿长 0.211656/0.340923 m、小腿长 0.170652/0.300010 m、质量 16.917288/33.341142 kg；真实形态 154 维不再使用人工几何。Q1 腿长比例 0.596486，环境位置核宽 0.178946 m、线速度核宽 0.596486 m/s、高度终止 0.149122 m，与世界模型配置一致。命令记忆、多步递推、缺失动作梯度、NaN 缺失槽拟合、replay、policy/critic、2ms/10 子步及禁重复延迟通过；仍未原生 GPU Trainer 或实际 actuator 回调验证。

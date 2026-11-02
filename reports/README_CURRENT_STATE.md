@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-02研究：[FRDV运动学代码发布](research/2026-11-02/README.md)/[检查](README_RESEARCH_CHECK_20261102.md)。仅运动学/G1，动力学验证未公开，12文本与完整树静态核验；106请求105成功，main去重163→164/H001不变。列为基线后候选，原MorphMimic冻结训练与衣服演示搁置决定保持；本轮无实时训练核验，服务器自动认证未通过/镜像待，实际发布见[收据](../data/manifests/research_watch_sync_20261102.json)。
+
 2026-11-02：[衣服Q1官方policy演示暂搁置](README_CLOTH_Q1_POLICY_20261102.md)。用户提出SMPL→Q1重定向→官方policy→动力学视频后，获知没有匹配权重，明确“那就先算了”。未开始转换/策略推理/仿真/新训，现训源码71859ca和复现监督继续，未改goal或自动任务。01:13:18原G1快照130961/160000轮、五optimizer持续/非有限0、原PID启动tick不变；尚未物理评估。原始衣服源只读约束保持。
 
 2026-11-02 00:08：[衣服原始共享与现有副本已复查](README_CLOTH_DATA_INVENTORY_20261102.md)。Windows临时认证至10.26.67.170/llx成功，实际原始路径HumanPlus1000/common/L-Sequence和S-Sequence，L为49日期目录；只读/仅复制约束写AGENTS，禁止任何源端改删或写入。CLOTHO206/197齐全、Demo10092/noGT、91预览HDF5、95SMPL/90A3派生与两Mac原地录制仍在，来源重叠不相加，非Q1训练就绪。仅元数据/ZIP目录，未新衣服测试、推理、仿真、训练或改现训；23:54历史G1快照123376/160000轮/非有限0，未物理评估，目标未达/采纳null/未调用goal工具。[清单](../data/manifests/cloth_data_inventory_20261102.json)，实际发布见旁收据。

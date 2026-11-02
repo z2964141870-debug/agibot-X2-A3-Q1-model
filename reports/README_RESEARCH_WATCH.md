@@ -1,5 +1,7 @@
 # YUANQI 具身智能研究跟踪
 
+2026-11-02研究：[FRDV运动学代码发布](research/2026-11-02/README.md)/[检查](README_RESEARCH_CHECK_20261102.md)。仅运动学/G1，动力学验证未公开，12文本与完整树静态核验；106请求105成功，main去重163→164/H001不变。列为基线后候选，原MorphMimic冻结训练与衣服演示搁置决定保持；本轮无实时训练核验，服务器自动认证未通过/镜像待，实际发布见[收据](../data/manifests/research_watch_sync_20261102.json)。
+
 2026-11-01研究：[五项简报](research/2026-11-01/README.md)/[检查](README_RESEARCH_CHECK_20261101.md)。接续10/31未发布检索，MorphMimic v0.1预发布、A3 089/XR、SONIC-K1、FORGE与规划评测；新增社区权重只作背景。累计206请求200成功、HF两次超时；main完整去重149→163，H001不变。当前按Q1最新MorphMimic足量复现/固定aa40与独立共享验证，不改训练预算或执行源码。本轮原生Windows成功/容器自动认证未通过，服务器Git和镜像未完成；实际发布见[收据](../data/manifests/research_watch_sync_20261101.json)。
 
 2026-10-30当前检查：[记录](README_RESEARCH_CHECK_20261030.md)。本轮没有核实到值得重复推送的实质更新，未生成新简报。76请求均成功；16仓库、两发行核心内容未变，LocoManiLab v4为署名等元数据变化。arXiv RSS为空且列表仍为10/28，不能宣称覆盖10/29或10/30公告。工程以本分支最新阶段记录为准，无新物理/训练/依赖变更。

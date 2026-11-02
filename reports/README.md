@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-02研究：[FRDV运动学代码发布](research/2026-11-02/README.md)/[检查](README_RESEARCH_CHECK_20261102.md)。仅运动学/G1，动力学验证未公开，12文本与完整树静态核验；106请求105成功，main去重163→164/H001不变。列为基线后候选，原MorphMimic冻结训练与衣服演示搁置决定保持；本轮无实时训练核验，服务器自动认证未通过/镜像待，实际发布见[收据](../data/manifests/research_watch_sync_20261102.json)。
+
 2026-11-02：[衣服SMPL到官方Q1策略演示暂搁置](README_CLOTH_Q1_POLICY_20261102.md)。缺匹配官方policy权重，用户明确“那就先算了”；未转换、推理、仿真或新训，原MorphMimic复现继续。
 
 2026-11-02：[衣服原始源与现有数据复查](README_CLOTH_DATA_INVENTORY_20261102.md)。用户指定Windows访问10.26.67.170/llx，仅查看和复制、禁止改删源数据；原始路径已核为HumanPlus1000/common/L-Sequence及S-Sequence，L有49日期目录。当前25386保留CLOTHO206/197齐全、Demo10092套、91HDF5及90条A3派生，不能叠加或直接当Q1参考；两段原地录制仍在Mac。未新测衣服或改现训。[元数据与边界](../data/manifests/cloth_data_inventory_20261102.json)。

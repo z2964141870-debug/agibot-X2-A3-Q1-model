@@ -43,6 +43,14 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### 同片配对与共享 Trainer 执行准备
+
+已完成结果 `5b59018801bff1e4413dcf3808aa6d43141e9eb0` 独立核远端，6文件435113B三端大小/SHA相同，见[发布收据](../data/manifests/morphmimic_q1_pilot_native_gpu_publication_20261102.json)。新增复用已有NPZ的配对入口，只核G1同片50Hz/逐片帧数/关节与body身份和三帧真实v0.1 FK，不重复重定向/转换或覆盖原结果。配对排除原因逐项记录；正式全量转换也使用相同检查。
+
+新增 `train_native.py` 调用原v0.1 Trainer，在同一GPU上两个原生rank，share all/同片同帧latent/原平均梯度后clip-Adam；分别记录五optimizer hook与Adam状态次数、实际总采集转移、共享参数完整SHA、独立buffer和共同帧抽样。修复子rank失败被另一个存活rank掩盖的退出等待，并累计非有限更新；3项本地反例通过。尚未实际原生共享训练。
+
+冻结资源候选为每机器人E512、WM256、motion/KP imagination512、H32、原完整网络、8全更新轮、原compile和BF16。这个profile从零初始化、只用于执行与资源检查，权重不用于正式训练；两固定片不足以当正式训练集或证明跨本体收益。先CPU配对与G1零更新执行，再实际两rank profile；通过后扩559共同SOMA并冻结足量训练配置。正式规模/轮次尚未决定，旧300/1200秒门不适用，24/30GiB等原保护不变。
+
 ### 两片真实参考和 Q1 原生 GPU 检查完成
 
 固定入口 `494ff6e2db6641304f65371e854a2afb551820a4` 的 V02 Newton pilot 于北京时间 22:03:55 正常结束；原接触和脚部后处理已执行。两片前进/起走参考均通过原 120 Hz 到 50 Hz 转换和原过滤，共 23.68 秒，两个 human sidecar 与机器人逐片帧数一致。这里的 paired_count=2 尚未核 G1 对应物，不代表 G1/Q1 成对数据已完成。原 V01 构造失败保留。

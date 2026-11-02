@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-02前阶段5b59018独立远端/6文件435113B三端SHA。新增复用两片NPZ配对G1同帧/实模FK及原生两rank同GPUTrainer入口，保留五optimizer/原平均梯度后clip-Adam/同帧latent/独立buffer，记录全参数SHA和实际转移；子rank失败保护等3本地反例通过。候选每型E512/WM256/imag-KP512/H32/原完整网络和compile、8全更新轮仅profile且不续其权重；真实配对/G1执行/共享profile尚待，不称正式训练或步态改善。通过后扩共同559并冻结足量配置，原24/30GiB等守卫/采纳null/无agent、goal和其他任务变更，入口同INTEGRATION/shared_profile配置。
+
 - 2026-11-02 Q1两固定片原Newton/接触后处理/原50Hz过滤已完成23.68秒/两human sidecar，G1对应物尚未核，paired_count不是共享数据完成。494ff6e入口下Q1原生16环境24控制步/240批子步384转移，PD/限矩回调241次最大差2.027e-6Nm，reward2.236e-8/延迟目标观察差0，0optimizer；三guard回收0/冻结源未变、原失败保留。本轮同boot/GPU根/15MiB无计算/OOM0。G1对照/成对数据/共享Trainer/正式训练待，不称步态改善/采纳null，无agent/goal或其他任务变更，入口同INTEGRATION/pilot_native_gpu_results。
 
 - 2026-11-02 Q1原batch pilot V01构造时报size转float，guardreaped255/无CSV训练，原根保留；bc697df正确提交独立远端/11文件426708B三端已核，启动记录手抄commit错误单独补正不覆原件。固定源码独立CPU/CUDA构造均通过，普通env模块从site-packages导入；新增固定源码/PYTHONPATH/模块路径核验与原constructor异常栈，V02待/单因未隔离。采纳null，无agent/goal及其他任务变更，入口同INTEGRATION/pilot_preparation_publication。

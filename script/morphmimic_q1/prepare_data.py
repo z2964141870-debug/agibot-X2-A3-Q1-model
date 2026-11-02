@@ -20,13 +20,22 @@ def human_job(job):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    for key in ("source", "csv", "bvh", "metadata", "output"):
+    for key in ("source", "output"):
         parser.add_argument("--" + key, type=Path, required=True)
+    for key in ("csv", "bvh", "metadata", "existing-npz"):
+        parser.add_argument("--" + key, type=Path)
     parser.add_argument("--g1-subset", type=Path)
     parser.add_argument("--workers", type=int, default=4)
     args = parser.parse_args()
-    for key in ("source", "csv", "bvh", "metadata"):
-        setattr(args, key, getattr(args, key).resolve(strict=True))
+    if args.existing_npz:
+        if any((args.csv, args.bvh, args.metadata)):
+            parser.error("Existing-reference checks do not rerun converters")
+    elif not all((args.csv, args.bvh, args.metadata)):
+        parser.error("Conversion requires csv, bvh and metadata")
+    for key in ("source", "csv", "bvh", "metadata", "existing_npz", "g1_subset"):
+        value = getattr(args, key)
+        if value is not None:
+            setattr(args, key, value.resolve(strict=True))
     args.output = args.output.resolve()
     args.output.mkdir(parents=True, exist_ok=False)
     sys.path.insert(0, str(args.source / "src"))
@@ -35,20 +44,35 @@ def main():
     import numpy as np
     import yaml
     from morphmimic.data.seed_convert import convert_all
-    from morphmimic.data.manifest import filtered
+    from morphmimic.data.manifest import filtered, load_manifest
     import torch
 
-    csvs = sorted(args.csv.glob("*/*.csv"))
-    bvhs = [args.bvh / p.parent.name / (p.stem + ".bvh") for p in csvs]
-    inputs = [identity(p) for p in (args.metadata, *csvs, *bvhs)]
-    npz = args.output / "npz50"
-    df = convert_all(str(args.csv), str(npz), str(args.metadata), args.workers, robot="q1")
+    csvs = []
+    if args.existing_npz:
+        npz = args.existing_npz
+        df = load_manifest(str(npz / "manifest.csv"))
+        input_paths = [npz / "manifest.csv", *[npz / p for p in df["path"]],
+                       *[npz / "human50" / p for p in df["path"]]]
+        inputs = [identity(p) for p in input_paths]
+        humans = []
+        for p in df["path"]:
+            with np.load(npz / "human50" / p) as h:
+                if int(h["fps"]) != 50 or not np.isfinite(h["human_pos_w"]).all():
+                    raise ValueError("Invalid existing human sidecar")
+                humans.append(dict(frames=len(h["human_pos_w"])))
+    else:
+        csvs = sorted(args.csv.glob("*/*.csv"))
+        bvhs = [args.bvh / p.parent.name / (p.stem + ".bvh") for p in csvs]
+        input_paths = [args.metadata, *csvs, *bvhs]
+        inputs = [identity(p) for p in input_paths]
+        npz = args.output / "npz50"
+        df = convert_all(str(args.csv), str(npz), str(args.metadata), args.workers, robot="q1")
+        jobs = [(str(b), str(npz / "human50" / p.parent.name / (p.stem + ".npz")))
+                for p, b in zip(csvs, bvhs, strict=True)]
+        with multiprocessing.Pool(args.workers) as pool:
+            humans = list(pool.imap(human_job, jobs))
     if df["feas_reject"].str.startswith("error").any():
         raise RuntimeError("Retain manifest; at least one original conversion failed")
-    jobs = [(str(b), str(npz / "human50" / p.parent.name / (p.stem + ".npz")))
-            for p, b in zip(csvs, bvhs, strict=True)]
-    with multiprocessing.Pool(args.workers) as pool:
-        humans = list(pool.imap(human_job, jobs))
     for row, human in zip(df.itertuples(), humans, strict=True):
         if row.frames != human["frames"]:
             raise ValueError("Robot/human frame mismatch: " + row.path)
@@ -62,9 +86,20 @@ def main():
     kept = filtered(df)
     paired = kept["path"].tolist()
     excluded = []
+    counterpart_inputs, g1_fk_errors = [], []
     if args.g1_subset:
+        import mujoco
+        from morphmimic.data.seed_convert import make_model
+        from morphmimic.robots import get_robot
         g1 = yaml.safe_load(args.g1_subset.read_text())
         g1_paths = set(g1["clips"])
+        counterpart_paths = [args.g1_subset, *[Path(g1["root"]) / p
+            for p in paired if p in g1_paths]]
+        counterpart_inputs = [identity(p) for p in counterpart_paths]
+        g1_spec = get_robot("g1")
+        g1_model = make_model("g1")
+        g1_data = mujoco.MjData(g1_model)
+        g1_bodies = [g1_model.body(i).name for i in range(1, g1_model.nbody)]
         accepted = []
         for row in kept.itertuples():
             reason = None
@@ -76,6 +111,20 @@ def main():
                         reason = "g1_frame_count_or_fps_mismatch"
                     elif len(z["joint_names"]) != 29:
                         raise ValueError("Original G1 counterpart has an unexpected asset")
+                    else:
+                        names = [str(n) for n in z["body_names"]]
+                        joints = [str(n) for n in z["joint_names"]]
+                        if names != g1_bodies or joints != list(g1_spec.joint_names):
+                            raise ValueError("G1 asset body/joint identity mismatch")
+                        root_index = names.index(g1_spec.root_body)
+                        for index in sorted({0, row.frames // 2, row.frames - 1}):
+                            g1_data.qpos[:] = np.concatenate((z["body_pos_w"][index, root_index],
+                                z["body_quat_w"][index, root_index], z["joint_pos"][index]))
+                            mujoco.mj_kinematics(g1_model, g1_data)
+                            error = float(np.abs(g1_data.xpos[1:] - z["body_pos_w"][index]).max())
+                            if error > 2e-6:
+                                raise ValueError("G1 stored FK differs from the actual v0.1 model")
+                            g1_fk_errors.append(error)
             if reason:
                 excluded.append(dict(path=row.path, reason=reason))
             else:
@@ -89,14 +138,21 @@ def main():
     seconds = float(kept.set_index("path").loc[paired, "seconds"].sum())
     subset = dict(root=str(npz), hours=seconds / 3600., clips=paired)
     (args.output / "q1_paired.yaml").write_text(yaml.safe_dump(subset, sort_keys=False))
-    if [identity(p) for p in (args.metadata, *csvs, *bvhs)] != inputs:
+    if [identity(p) for p in input_paths] != inputs:
         raise RuntimeError("Conversion source changed")
+    if args.g1_subset and [identity(p) for p in counterpart_paths] != counterpart_inputs:
+        raise RuntimeError("Original G1 counterparts changed")
     if torch.cuda.is_initialized():
         raise RuntimeError("CPU converters unexpectedly initialized CUDA")
     result = dict(status="COMPLETED", csv_count=len(csvs), converted=len(df),
+        newly_converted=0 if args.existing_npz else len(df),
+        existing_references_verified=bool(args.existing_npz),
         original_filter_kept=len(kept), paired_count=len(paired), paired_seconds=seconds,
         exclusions=excluded, human_sidecars=len(humans), human_robot_frames_match=True,
-        source_identities=inputs, new_dynamics_steps=0, new_optimizer_updates=0,
+        source_identities=inputs, g1_counterpart_identities=counterpart_inputs,
+        g1_fk_checked_frames=len(g1_fk_errors),
+        g1_fk_max_abs_position_error_m=max(g1_fk_errors, default=0.),
+        new_dynamics_steps=0, new_optimizer_updates=0,
         cuda_initialized=False, storage="SERVER_LOCAL_ONLY", user_accepted_checkpoint=None)
     (args.output / "result.json").write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
     print(json.dumps({k: result[k] for k in ("status", "converted", "original_filter_kept",

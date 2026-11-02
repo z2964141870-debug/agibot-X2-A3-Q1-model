@@ -1,0 +1,515 @@
+{
+  "status": "EIGHT_UPDATES_COMPLETED_FINAL_DISTRIBUTED_AUDIT_FAILED",
+  "observed_utc": "2026-11-02T18:09:19.561530+00:00",
+  "input_count": 1816,
+  "inputs_unchanged_independently_checked": true,
+  "original_pids_absent": [
+    609383,
+    609390,
+    609391
+  ],
+  "worker": {
+    "status": "FAILED",
+    "robot": "q1",
+    "rank": 0,
+    "pid": 609391,
+    "contracts": {
+      "state": 269,
+      "physical_state": 240,
+      "local_features": 268,
+      "critic_features": 297,
+      "context": 62,
+      "proprio": 93,
+      "morphology": 154
+    },
+    "code_commit": "0abbc6b70ea0f29d62d274140394393f26934d22",
+    "optimizer_updates": {
+      "wm_opt": 80,
+      "policy_opt": 8,
+      "critic_opt": 160,
+      "kp_opt": 8,
+      "critic_kp_opt": 160
+    },
+    "iterations_completed": 8,
+    "formal_training": false,
+    "latent_draws": [],
+    "nonfinite_updates": {
+      "wm/nonfinite_steps": 0,
+      "policy/nonfinite_steps": 0,
+      "critic/nonfinite_steps": 0,
+      "kp/nonfinite_steps": 0,
+      "critic_kp/nonfinite_steps": 0
+    },
+    "collected_environment_transitions": 491520,
+    "user_accepted_checkpoint": null,
+    "resolved_cfg": {
+      "subset_yaml": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/q1_paired.yaml",
+      "robot": "q1",
+      "num_envs": 4096,
+      "replay_capacity": 1000,
+      "wm_lr": 0.0002,
+      "policy_lr": 0.0002,
+      "critic_lr": 0.0002,
+      "wm_batches": 10,
+      "wm_batch": 2048,
+      "window_k": 8,
+      "horizon": 32,
+      "imag_batch": 4096,
+      "utd": 0.4,
+      "warmup_env_steps": 100,
+      "wm_only_iters": 0,
+      "iterations": 8,
+      "lr_decay_iters": 250000,
+      "lr_final_frac": 0.03,
+      "gamma": 0.99,
+      "lam": 0.95,
+      "action_noise": 0.1,
+      "collect_det_frac": 0.0,
+      "clean_action_record": false,
+      "softmax_cap": null,
+      "failure_reset": 0.0,
+      "actuator_delay": true,
+      "actuator_delay_max_ms": 20,
+      "actuator_delay_fixed": true,
+      "hist_len": 10,
+      "ckpt_every": 8,
+      "log_every": 1,
+      "seed": 0,
+      "log_dir": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_FULL1H_PROFILE_E4096_HANDOFF_V03_20261103",
+      "run_name": "run",
+      "wandb": false,
+      "library_dtype": "float16",
+      "reset_norm": "remaining",
+      "wm_hidden": [
+        2048,
+        2048,
+        2048
+      ],
+      "wm_layer_norm": true,
+      "wm_frame": "root",
+      "residual_scale": "step",
+      "termination": "hazard",
+      "policy_hidden": [
+        2048,
+        1024,
+        512,
+        256
+      ],
+      "latent": 32,
+      "critic_hidden": [
+        256,
+        128
+      ],
+      "critic_layer_norm": true,
+      "critic_anchor_pos": true,
+      "goal_anchor": "reference",
+      "avoid_clip_end": true,
+      "clip_end_terminal": false,
+      "target_critic_alpha": null,
+      "critic_target_clip": true,
+      "value_bound": false,
+      "bf16": true,
+      "act": "elu",
+      "compile": "default",
+      "fused_adam": true,
+      "gpu_ids": null,
+      "lr_scale_sqrt_world_size": true,
+      "robots": null,
+      "subset_yamls": null,
+      "share": "wm",
+      "morphology": true,
+      "actor_geometry": true,
+      "decoder_film": true,
+      "latent_align_weight": 0.0,
+      "latent_align_batch": 1024,
+      "pool_norms": true,
+      "kp_interface": true,
+      "kp_env_frac": 0.5,
+      "kp_imag_batch": 4096,
+      "kp_masking": "full",
+      "kp_preview_mix": true,
+      "kp_heading_frac": 1.0,
+      "kp_student": "return",
+      "kp_jitter": true,
+      "kp_drift": false,
+      "kp_action_weight": 1.0,
+      "kp_align_weight": 0.1,
+      "kp_loss_norm": true,
+      "human_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/npz50/human50",
+      "policy_goal": "motion",
+      "recon_weight": 1.0
+    },
+    "native_joint_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "waist_roll_joint",
+      "waist_yaw_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint"
+    ],
+    "reference_clips": 559,
+    "initial_buffers": {
+      "morph": "6d0c288dec18cbaee3f8ec0f1e5f3b1a75e7c963c088cabfd075452d58a2580f",
+      "joint_presence": "ee7fbcf02614125758a9f88f9da6d4190526e9aedf3585cdbe1473819c5b3393",
+      "joint_limits": "ee8887e7b6a26cff1f3e1b4367c90c11c02d275486204792f3446f5a08ed4913",
+      "default_joint_pos": "5b517952cbe9c4c147bc3f3434f9d82409e76d09ea58905aefe7fb5415912d9a",
+      "state_mean": "53e5bf5e6796d18a58c4120ab677c02ba97256266f031a260df2dfde790860bd",
+      "state_std": "f59119024c13a16a9afdc295c1517d2f41f0fcb83ceda830769ba084738c494e"
+    },
+    "physics_vram_handoff": {
+      "minimum_free_bytes": 3221225472,
+      "checks": 9,
+      "cache_releases": 7,
+      "total_seconds": 2.902021741028875,
+      "events": [
+        {
+          "check": 3,
+          "before": {
+            "free_bytes": 1360461824,
+            "total_bytes": 25298141184,
+            "allocated_bytes": 8270423040,
+            "reserved_bytes": 22596812800
+          },
+          "after": {
+            "free_bytes": 14717222912,
+            "total_bytes": 25298141184,
+            "allocated_bytes": 8270423040,
+            "reserved_bytes": 9240051712
+          },
+          "seconds": 0.4093239810317755,
+          "global_free_change_bytes": 13356761088,
+          "torch_reserved_decrease_bytes": 13356761088
+        },
+        {
+          "check": 4,
+          "before": {
+            "free_bytes": 1190592512,
+            "total_bytes": 25298141184,
+            "allocated_bytes": 8272352256,
+            "reserved_bytes": 22766682112
+          },
+          "after": {
+            "free_bytes": 14633336832,
+            "total_bytes": 25298141184,
+            "allocated_bytes": 8272352256,
+            "reserved_bytes": 9323937792
+          },
+          "seconds": 0.4234291660832241,
+          "global_free_change_bytes": 13442744320,
+          "torch_reserved_decrease_bytes": 13442744320
+        },
+        {
+          "check": 5,
+          "before": {
+            "free_bytes": 1463222272,
+            "total_bytes": 25298141184,
+            "allocated_bytes": 8271569920,
+            "reserved_bytes": 22494052352
+          },
+          "after": {
+            "free_bytes": 14471856128,
+            "total_bytes": 25298141184,
+            "allocated_bytes": 8271569920,
+            "reserved_bytes": 9485418496
+          },
+          "seconds": 0.43446236604359,
+          "global_free_change_bytes": 13008633856,
+          "torch_reserved_decrease_bytes": 13008633856
+        },
+        {
+          "check": 6,
+          "before": {
+            "free_bytes": 1320615936,
+            "total_bytes": 25298141184,
+            "allocated_bytes": 8272992256,
+            "reserved_bytes": 22636658688
+          },
+          "after": {
+            "free_bytes": 14429913088,
+            "total_bytes": 25298141184,
+            "allocated_bytes": 8272992256,
+            "reserved_bytes": 9527361536
+          },
+          "seconds": 0.3960186369949952,
+          "global_free_change_bytes": 13109297152,
+          "torch_reserved_decrease_bytes": 13109297152
+        },
+        {
+          "check": 7,
+          "before": {
+            "free_bytes": 1312227328,
+            "total_bytes": 25298141184,
+            "allocated_bytes": 8272128000,
+            "reserved_bytes": 22645047296
+          },
+          "after": {
+            "free_bytes": 14339735552,
+            "total_bytes": 25298141184,
+            "allocated_bytes": 8272128000,
+            "reserved_bytes": 9617539072
+          },
+          "seconds": 0.42875830398406833,
+          "global_free_change_bytes": 13027508224,
+          "torch_reserved_decrease_bytes": 13027508224
+        },
+        {
+          "check": 8,
+          "before": {
+            "free_bytes": 1467416576,
+            "total_bytes": 25298141184,
+            "allocated_bytes": 8271493120,
+            "reserved_bytes": 22489858048
+          },
+          "after": {
+            "free_bytes": 14429913088,
+            "total_bytes": 25298141184,
+            "allocated_bytes": 8271493120,
+            "reserved_bytes": 9527361536
+          },
+          "seconds": 0.4031989899231121,
+          "global_free_change_bytes": 12962496512,
+          "torch_reserved_decrease_bytes": 12962496512
+        },
+        {
+          "check": 9,
+          "before": {
+            "free_bytes": 1477902336,
+            "total_bytes": 25298141184,
+            "allocated_bytes": 8270898176,
+            "reserved_bytes": 22479372288
+          },
+          "after": {
+            "free_bytes": 14436204544,
+            "total_bytes": 25298141184,
+            "allocated_bytes": 8270898176,
+            "reserved_bytes": 9521070080
+          },
+          "seconds": 0.4068302969681099,
+          "global_free_change_bytes": 12958302208,
+          "torch_reserved_decrease_bytes": 12958302208
+        }
+      ],
+      "last_checked_free_bytes": 1477902336,
+      "last_event": {
+        "check": 9,
+        "before": {
+          "free_bytes": 1477902336,
+          "total_bytes": 25298141184,
+          "allocated_bytes": 8270898176,
+          "reserved_bytes": 22479372288
+        },
+        "after": {
+          "free_bytes": 14436204544,
+          "total_bytes": 25298141184,
+          "allocated_bytes": 8270898176,
+          "reserved_bytes": 9521070080
+        },
+        "seconds": 0.4068302969681099,
+        "global_free_change_bytes": 12958302208,
+        "torch_reserved_decrease_bytes": 12958302208
+      }
+    },
+    "iteration_transitions": 81920,
+    "peak_cuda_allocated_bytes": 20653300224,
+    "peak_cuda_reserved_bytes": 22766682112,
+    "last_iteration_seconds": 2.8682652799179778,
+    "elapsed_seconds": 63.23890149791259,
+    "optimizer_adam_steps": {
+      "wm_opt": [
+        80
+      ],
+      "policy_opt": [
+        8
+      ],
+      "critic_opt": [
+        160
+      ],
+      "kp_opt": [
+        8
+      ],
+      "critic_kp_opt": [
+        160
+      ]
+    },
+    "shared_parameter_sha": {
+      "wm": "6c69b0d1f49c78efd6d4afcbca2f9c99c5d46650789e585ab6720f0613d63770",
+      "policy": "c3a0b56cf963bb5bacc6df9896eac9d58d81e715a2ef4e8155323721bbcb90dc",
+      "critic": "20f6a0b2e44740bcf5940f326647e4d73f587667cf5a56c69d8f172fddd19c06",
+      "critic_kp": "f9feb56e72ae7d4d5ef852510f8518fd81d574344e36f3853627eaf87773749f"
+    },
+    "replay_sample_sha": "d874a1d9cf20357d8b0f4fba9823234b237ab78a1fba2e005f111aae71750fc8",
+    "error": "ValueError: Default process group has not been initialized, please make sure to call init_process_group."
+  },
+  "outer": {
+    "status": "FAILED",
+    "process": {
+      "pid": 609383,
+      "start_ticks": 55612159,
+      "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+    },
+    "code_commit": "0abbc6b70ea0f29d62d274140394393f26934d22",
+    "purpose": "profile",
+    "command": [
+      "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+      "-u",
+      "/opt/data/private/ZHY/script/morphmimic_q1/train_native.py",
+      "--plan",
+      "/opt/data/private/ZHY/logs/morphmimic_q1_full1h_single_profile_e4096_handoff_v03_plan_20261103.json"
+    ],
+    "started_utc": "2026-11-02T18:01:16.999143+00:00",
+    "automatic_retry": false,
+    "initial_admission_gib": 12.0,
+    "optimizer_updates": "reported_by_worker",
+    "user_accepted_checkpoint": null,
+    "initial_resources": {
+      "experiment": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_FULL1H_PROFILE_E4096_HANDOFF_V03_20261103",
+        "unique_allocated_bytes": 8192,
+        "unique_logical_bytes": 4188,
+        "unique_inodes": 3,
+        "symlinks_not_followed": 0
+      },
+      "source": {
+        "root": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+        "unique_allocated_bytes": 142503936,
+        "unique_logical_bytes": 141858407,
+        "unique_inodes": 341,
+        "symlinks_not_followed": 0
+      },
+      "free_bytes": {
+        "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_FULL1H_PROFILE_E4096_HANDOFF_V03_20261103": 909358149632,
+        "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1": 909358149632
+      },
+      "shared_memory": {
+        "shared_bytes": 11289616384,
+        "oom_kill": 0,
+        "maximum_bytes": 32212254720
+      },
+      "gpu": {
+        "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+        "memory_mib": 15,
+        "temperature_c": 26
+      }
+    },
+    "guard": {
+      "status": "WORKER_FAILED",
+      "command": [
+        "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/morphmimic_q1/train_native.py",
+        "--plan",
+        "/opt/data/private/ZHY/logs/morphmimic_q1_full1h_single_profile_e4096_handoff_v03_plan_20261103.json"
+      ],
+      "cwd": "/opt/data/private/ZHY",
+      "started_utc": "2026-11-02T18:01:18.500301+00:00",
+      "controller_pid": 609383,
+      "storage_status": "LOCAL_ONLY",
+      "last_storage_check": {
+        "experiment": {
+          "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_FULL1H_PROFILE_E4096_HANDOFF_V03_20261103",
+          "unique_allocated_bytes": 686096384,
+          "unique_logical_bytes": 686076395,
+          "unique_inodes": 14,
+          "symlinks_not_followed": 0
+        },
+        "source": {
+          "root": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+          "unique_allocated_bytes": 142503936,
+          "unique_logical_bytes": 141858407,
+          "unique_inodes": 341,
+          "symlinks_not_followed": 0
+        },
+        "free_bytes": {
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_FULL1H_PROFILE_E4096_HANDOFF_V03_20261103": 908671295488,
+          "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1": 908671295488
+        },
+        "shared_memory": {
+          "shared_bytes": 12006256640,
+          "oom_kill": 0,
+          "maximum_bytes": 32212254720
+        },
+        "gpu": {
+          "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+          "memory_mib": 15,
+          "temperature_c": 43
+        }
+      },
+      "error": null,
+      "worker_pid": 609390,
+      "worker_group": 609390,
+      "cleanup": {
+        "worker_started": true,
+        "worker_pid": 609390,
+        "worker_group": 609390,
+        "worker_reaped": true,
+        "worker_return_code": 1
+      },
+      "ended_utc": "2026-11-02T18:02:50.778797+00:00"
+    },
+    "error": "RuntimeError: Phase did not complete; preserve original logs",
+    "ended_utc": "2026-11-02T18:02:50.779855+00:00"
+  },
+  "files": [
+    {
+      "path": "stdout.log",
+      "bytes": 603
+    },
+    {
+      "path": "launch.json",
+      "bytes": 92
+    },
+    {
+      "path": "controller.log",
+      "bytes": 451
+    },
+    {
+      "path": "guard.json",
+      "bytes": 1865
+    },
+    {
+      "path": "status.json",
+      "bytes": 504005
+    },
+    {
+      "path": "workers_launch.json",
+      "bytes": 2761
+    },
+    {
+      "path": "run/events.out.tfevents.1793642501.interactive40173.609391.0",
+      "bytes": 23752
+    },
+    {
+      "path": "run/ckpt_8.pt",
+      "bytes": 342751307
+    },
+    {
+      "path": "run/latest.pt",
+      "bytes": 342751307
+    },
+    {
+      "path": "workers/q1.json",
+      "bytes": 10155
+    },
+    {
+      "path": "workers/q1.log",
+      "bytes": 21184
+    }
+  ],
+  "gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15 MiB, 26"
+}

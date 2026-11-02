@@ -256,7 +256,8 @@ def run_rank(plan, rank):
             record["shared_parameter_sha"] = {name: parameter_sha(getattr(trainer, name))
                 for name in ("wm", "policy", "critic", "critic_kp")}
             record["replay_sample_sha"] = tensor_sha(trainer.replay.state[:, :min(8, trainer.replay.cfg.capacity)])
-            record["native_rank_checks_passed"] = trainer._check_ranks_identical()
+            record["native_rank_checks_required"] = shared
+            record["native_rank_checks_passed"] = not shared or trainer._check_ranks_identical()
             record["iteration_seconds"] = durations if plan["purpose"] == "profile" else durations[-20:]
             if not record["native_rank_checks_passed"]:
                 raise RuntimeError("Native shared parameter/normalizer checks failed")

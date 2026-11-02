@@ -1,0 +1,69 @@
+{
+  "stage": "MORPHMIMIC_Q1_E4096_HANDOFF_V03",
+  "original_pipeline_status": "FAILED",
+  "failure_phase": "post_training_distributed_audit_on_single_rank",
+  "eight_full_updates_completed": true,
+  "independent_cpu_checkpoint_audit": "COMPLETED",
+  "code_commit": "0abbc6b70ea0f29d62d274140394393f26934d22",
+  "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_FULL1H_PROFILE_E4096_HANDOFF_V03_20261103",
+  "iterations": 8,
+  "optimizer_hook_counts": {
+    "wm_opt": 80,
+    "policy_opt": 8,
+    "critic_opt": 160,
+    "kp_opt": 8,
+    "critic_kp_opt": 160
+  },
+  "optimizer_adam_steps": {
+    "wm": [
+      80
+    ],
+    "policy": [
+      8
+    ],
+    "critic": [
+      160
+    ],
+    "kp": [
+      8
+    ],
+    "critic_kp": [
+      160
+    ]
+  },
+  "finite_cpu_tensor_count": 329,
+  "collected_environment_transitions": 491520,
+  "iteration_transitions": 81920,
+  "nonfinite_updates": {
+    "wm/nonfinite_steps": 0,
+    "policy/nonfinite_steps": 0,
+    "critic/nonfinite_steps": 0,
+    "kp/nonfinite_steps": 0,
+    "critic_kp/nonfinite_steps": 0
+  },
+  "peak_cuda_allocated_bytes": 20653300224,
+  "peak_cuda_reserved_bytes": 22766682112,
+  "steady_last6_median_seconds": 2.7262810468673706,
+  "iteration_only_40000_hours_estimate": 30.292011631859673,
+  "cache_handoff_checks": 9,
+  "cache_handoff_releases": 7,
+  "cache_handoff_total_seconds": 2.902021741028875,
+  "first_handoff_global_free_change_bytes": 13356761088,
+  "live_allocated_bytes_unchanged_each_handoff": true,
+  "cuda_oom_observed": false,
+  "cgroup_oom_kill": 0,
+  "frozen_input_count": 1816,
+  "frozen_inputs_independently_unchanged": true,
+  "original_pids_absent": [
+    609383,
+    609390,
+    609391
+  ],
+  "formal_training": false,
+  "profile_weights_reusable": false,
+  "user_accepted_checkpoint": null,
+  "original_failed_records_preserved": true,
+  "single_rank_audit_fix": "Only require native distributed rank comparison when shared=True",
+  "next_capacity": "Independent two-rank E2048 profile; keep model size/H32 and compensate formal exposure and learner example volume",
+  "cpu_audit": "logs/session_records/morphmimic_q1_e4096_handoff_v03_cpu_audit_20261103.json"
+}

@@ -2,6 +2,18 @@
 
 2026-11-02，用户在完成 X2/T2 发布策略回放后要求继续尝试 Q1 训练，并提出结合 PrimebotTech SuperMimic-Q1 与 MorphMimic。本阶段落实这一授权，不创建新应用目标，不改变其他自动任务。
 
+## 11月3日4096连续更新与高容量共享候选
+
+显存交接V03于北京时间02:01:16启动，执行冻结`0abbc6b70ea0f29d62d274140394393f26934d22`独立40位远端及11文件509834B三端核验。实际完成8全更新轮，五optimizer hook和保存Adam均为80/8/160/8/160，491520转移含409600预热、迭代81920，非有限0。峰allocated20653300224B/reserved22766682112B；后六轮TensorBoard迭代中位2.726281秒，按40000轮只算迭代约30.292小时，不含保存/评估且不是长期吞吐保证。原E512是双rank，不能将两者直接称同任务加速倍数。[结果](../data/manifests/morphmimic_q1_e4096_handoff_v03_results_20261103.json)。
+
+9次collector检查中7次触发空闲缓存释放，共2.902022秒；首次global free由1360461824增至14717222912B，Torch活allocated8270423040B不变，7次活allocated都不变。连续八次训练/物理切换未再出现原CUDA OOM，支持缓存交接对本次执行有效，不推广为所有内存问题的单因结论。
+
+原整pipeline仍为FAILED：完成训练和Adam核查后，入口错误调用原`_check_ranks_identical()`，但单rank没有分布式process group。原错误栈/guard和两个失败status原样保留；修复仅在shared时调用此检查并显式记录是否需要。独立CPU审计已保存ckpt8：迭代与schedule8、五Adam步齐、329浮点张量有限、cfg和执行commit一致，TensorBoard八轮时轴可追溯，0新积分/optimizer/无CUDA context。1816冻结输入在修复部署前独立全SHA不变、三个原PID退出/GPU15MiB。不是重启训练或覆写FAILED，不重复已完成八轮。[CPU审计](../logs/session_records/morphmimic_q1_e4096_handoff_v03_cpu_audit_20261103.json)/[原失败摘录](../logs/session_records/morphmimic_q1_e4096_handoff_v03_postfailure_20261103.json)。
+
+下一资源候选为[每型E2048共享8轮](../script/morphmimic_q1/full1h_shared_profile_e2048_v03_20261103.json)：比已通过的E512每型扩大4倍、总4096真实环境，原完整网络/H32，WM1024x10、motion/return-KP imagination2048，compile default加低空闲显存交接；同源559片/同帧对齐/原平均梯度后clip-Adam/独立buffer不变。单Q1 E4096的成功不能证明两个4096 Trainer可同时驻留；本次直接实测共享容量和总吞吐，不以简单相加的单rank峰值作为共享最终结论。
+
+若该容量通过，正式候选每型80000轮、warmup200、WM-only1000、LR decay500000。每型实际曝光410009600转移，与E4096x40000含warmup100相同；WM抽样1024x10x80000=819200000，motion及return-KP各2048x79000=161792000 imagination起点，均与原参照相同。实际Adam步数加倍，replay/优化路径不相同；两型合计样本量也不能替代逐型达量。正式训练仍从零初始化，不续任何profile权重；当前仅配置，发布核验后真实共享资源测试，尚未正式训练或证明步态改善。[准备](../data/manifests/morphmimic_q1_shared_e2048_preparation_20261103.json)。
+
 ## 11月3日4096显存交接验证
 
 V02执行冻结为`1e2042e7b0f70bc1200f7877db7b05884467f76b`，controller607218/start55416496。仅将compile改为default后，首轮五optimizer仍完整10/1/20/1/20、非有限0，首轮418.961662秒包含编译。Torch峰allocated20585220096B/reserved22596812800B；随后第二轮采集再次报Warp CUDA graph launch OOM，整profile为FAILED，未完成最终Adam状态审计。1814冻结输入已独立逐大小/SHA核实不变，controller/parent/worker均退出，GPU15MiB。cgroup OOMkill0不能覆盖实际CUDA OOM。[V02结果](../data/manifests/morphmimic_q1_e4096_default_v02_results_20261103.json)/[原始记录](../logs/session_records/morphmimic_q1_e4096_default_v02_results_20261103.json)。两个失败根均保留，不续其权重。

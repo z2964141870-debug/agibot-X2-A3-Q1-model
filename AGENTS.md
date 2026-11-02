@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-03 E4096显存交接V03真实8全更新/491520转移/五optimizer及保存Adam80-8-160-8-160/非有限0，peak allocated20653300224/reserved22766682112B，后6轮中位2.726281秒。7次仅空闲缓存交接共2.902秒/首释放13356761088B且活allocated各次不变，未CUDA OOM；1816冻结输入独立SHA同/三PID退出。原整pipeline仍FAILED：本地新增收尾误调用单rank未初始化dist，保存原栈；独立CPU检查ckpt8的329张量/全部Adam及时间标量通过、0新积分优化/无CUDA，不重复8轮。入口已仅shared调用原rank比较；下步新双rank E2048各/4096合计，WM1024/imag2048原网络H32，正式候选80000/WM-only1000/warmup200补齐每机器人410009600转移和原batch-example量，Adam次数不同如实列明。尚未执行共享高容量/正式训练/采纳null，不新goal/agent或改其他任务，入口同INTEGRATION/handoff_v03_results及shared_e2048_preparation。
+
 - 2026-11-03 E4096-default V02同样首轮五optimizer10/1/20/1/20后次轮Warp采集CUDA OOM，整体FAILED；首轮418.962秒含编译、allocated20585220096/reserved22596812800B、1814冻结输入独立SHA未变/三原PID退出/GPU15MiB/cgroup OOMkill0。新独立V03保留所有cfg/E4096/WM2048/motion-KP4096/H32/559片，仅仿真入口global free<3GiB时同步并empty_cache释放Torch未占用缓存，逐次记录实free/allocated/reserved与耗时，不释放活张量或改优化数学；本地8测试7通过1因无Torch跳过，服务器与8轮profile待发布后执行。缓存驻留为待实测假设，旧两失败根不恢复/profile权重不续/正式训练未启/采纳null，不新goal/agent或改其他任务，入口同INTEGRATION/default_v02_results及handoff_v03_preparation。
 
 - 2026-11-03原批量4096-V01一轮五optimizer10/1/20/1/20完成/非有限0，第二轮采集Warp物理graph报CUDA OOM，整次FAILED不当容量通过；首轮1058.685秒含编译、peak allocated20578716160/reserved23441965056B，未完成最终Adam审计。三原PID退出/GPU15MiB/cgroup OOMkill0与CUDA OOM明确区分，1812冻结输入已独立全SHA不变。继续按用户高env/训练量优先，新独立V02仅cfg.compile由reduce-overhead改原版支持default，保留E4096/WM2048/motion-KP4096/H32/559片/全部更新，测试图驻留执行因素，尚未隔离单因/未执行。原失败不恢复、profile权重不续、正式训练未启/采纳null，不新goal/agent或改其他任务，入口同INTEGRATION/e4096_v01_results及execution_v02_preparation。

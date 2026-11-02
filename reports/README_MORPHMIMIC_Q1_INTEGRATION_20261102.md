@@ -2,6 +2,16 @@
 
 2026-11-02，用户在完成 X2/T2 发布策略回放后要求继续尝试 Q1 训练，并提出结合 PrimebotTech SuperMimic-Q1 与 MorphMimic。本阶段落实这一授权，不创建新应用目标，不改变其他自动任务。
 
+## 11月3日4096显存交接验证
+
+V02执行冻结为`1e2042e7b0f70bc1200f7877db7b05884467f76b`，controller607218/start55416496。仅将compile改为default后，首轮五optimizer仍完整10/1/20/1/20、非有限0，首轮418.961662秒包含编译。Torch峰allocated20585220096B/reserved22596812800B；随后第二轮采集再次报Warp CUDA graph launch OOM，整profile为FAILED，未完成最终Adam状态审计。1814冻结输入已独立逐大小/SHA核实不变，controller/parent/worker均退出，GPU15MiB。cgroup OOMkill0不能覆盖实际CUDA OOM。[V02结果](../data/manifests/morphmimic_q1_e4096_default_v02_results_20261103.json)/[原始记录](../logs/session_records/morphmimic_q1_e4096_default_v02_results_20261103.json)。两个失败根均保留，不续其权重。
+
+下一独立[V03配置](../script/morphmimic_q1/full1h_single_profile_e4096_handoff_v03_20261103.json)逐字段保留V02全部cfg：E4096、WM2048x10、motion/return-KP imagination4096、H32、559片和8全更新轮。唯一执行干预是collector开始前查询global free，若低于3221225472B则同步后`torch.cuda.empty_cache()`，只释放Torch未占用缓存，让外部Warp分配器可使用这部分空间；不能扩大活张量可用容量，也不能先认定缓存是唯一原因。记录触发次数、实际free/allocated/reserved前后值和耗时，长训练最多保留前8事件及最后事件，避免收据增长。默认阈值0时此入口完全关闭。
+
+本地8项CPU测试为7通过/1因Mac无Torch跳过，包括禁用不触CUDA、充足空闲不释放、低空闲实际记录、长运行记录上界及已有worker失败保护；服务器既有Torch环境须执行完整8项。运行前发布并核三端，保持原12GiB初始准入/30GiB运行线、GPU锁/boot/GPU/OOM/温度保护和10800秒资源时限。真实8轮需核五optimizer和Adam80/8/160/8/160、非有限、实际转移/稳态吞吐、缓存交接成本、源SHA及进程清理；任何一轮或最终审计失败都不能算容量通过。[准备清单](../data/manifests/morphmimic_q1_e4096_handoff_v03_preparation_20261103.json)。
+
+本阶段用于实现用户高env/高显存利用与完整训练量的要求。正式训练尚未开始，共享同卡高容量仍需独立验证；不把单Q1成功当两本体容量或步态改善，不创建goal/agent或改变其他自动任务。
+
 ## 方案与边界
 
 - 使用 MorphMimic v0.1 的共享世界模型、策略/critic、独立机器人 replay 和同源同帧 latent 对齐；先做 G1+Q1 两本体接入。新的共享网络从零初始化。

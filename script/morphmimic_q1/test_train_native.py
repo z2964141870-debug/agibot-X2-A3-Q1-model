@@ -5,7 +5,51 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock, patch
 
-from train_native import tensor_sha, validate_plan, wait_for_workers
+from train_native import release_inactive_cuda_cache, tensor_sha, validate_plan, wait_for_workers
+
+
+class PhysicsHandoffTests(unittest.TestCase):
+    def test_disabled_handoff_does_not_touch_cuda(self):
+        cuda, record = Mock(), {}
+        release_inactive_cuda_cache(cuda, 0, record)
+        self.assertEqual(cuda.mock_calls, [])
+        self.assertEqual(record, {})
+
+    def test_sufficient_global_free_memory_keeps_torch_cache(self):
+        cuda, record = Mock(), {}
+        cuda.mem_get_info.return_value = (400, 1000)
+        release_inactive_cuda_cache(cuda, 300, record)
+        cuda.synchronize.assert_not_called()
+        cuda.empty_cache.assert_not_called()
+        self.assertEqual(record["physics_vram_handoff"]["checks"], 1)
+        self.assertEqual(record["physics_vram_handoff"]["cache_releases"], 0)
+
+    def test_low_free_memory_releases_cache_and_records_actual_allocator_values(self):
+        cuda, record = Mock(), {}
+        cuda.mem_get_info.side_effect = [(100, 1000), (650, 1000)]
+        cuda.memory_allocated.return_value = 250
+        cuda.memory_reserved.side_effect = [800, 250]
+        with patch("train_native.time.monotonic", side_effect=[4., 4.125]):
+            release_inactive_cuda_cache(cuda, 300, record)
+        cuda.synchronize.assert_called_once()
+        cuda.empty_cache.assert_called_once()
+        event = record["physics_vram_handoff"]["last_event"]
+        self.assertEqual(event["global_free_change_bytes"], 550)
+        self.assertEqual(event["torch_reserved_decrease_bytes"], 550)
+        self.assertEqual(event["before"]["allocated_bytes"], event["after"]["allocated_bytes"])
+        self.assertEqual(event["seconds"], .125)
+
+    def test_handoff_receipts_remain_bounded_during_long_training(self):
+        cuda, record = Mock(), {}
+        cuda.mem_get_info.return_value = (100, 1000)
+        cuda.memory_allocated.return_value = 250
+        cuda.memory_reserved.return_value = 800
+        for _ in range(20):
+            release_inactive_cuda_cache(cuda, 300, record)
+        state = record["physics_vram_handoff"]
+        self.assertEqual((state["checks"], state["cache_releases"]), (20, 20))
+        self.assertEqual(len(state["events"]), 8)
+        self.assertEqual(state["last_event"]["check"], 20)
 
 
 class WorkerLifecycleTests(unittest.TestCase):
@@ -46,6 +90,12 @@ class WorkerLifecycleTests(unittest.TestCase):
             with self.subTest(key=key):
                 invalid = copy.deepcopy(plan)
                 invalid["cfg"][key] = value
+                with self.assertRaises(ValueError):
+                    validate_plan(invalid)
+        for value in (-1, True, 3.5):
+            with self.subTest(handoff=value):
+                invalid = copy.deepcopy(plan)
+                invalid["physics_handoff_min_free_bytes"] = value
                 with self.assertRaises(ValueError):
                     validate_plan(invalid)
 

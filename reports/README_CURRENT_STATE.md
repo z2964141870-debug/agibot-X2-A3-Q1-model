@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-03：[4096-default第二轮仍CUDA OOM，保留完整批量验证Torch到物理的显存交接](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。V02一轮五optimizer10/1/20/1/20/非有限0、418.962秒含编译，allocated20.585GB/reserved22.597GB；次轮Warp失败，1814冻结输入独立SHA不变/原进程退出/GPU15MiB/cgroup OOMkill0。V03只增加低于3GiB空闲时释放未占用Torch缓存，记录实际变化与耗时；cfg逐字段同V02，E4096/WM2048/motion-KP4096/H32/559片不减，8轮测试待发布/服务器8项CPU核验后执行。尚未正式训练/未证步态收益/采纳null，不新goal/agent。[V02结果](../data/manifests/morphmimic_q1_e4096_default_v02_results_20261103.json)/[V03准备](../data/manifests/morphmimic_q1_e4096_handoff_v03_preparation_20261103.json)。下方V02未执行为历史。
+
 2026-11-03：[E4096-V01首轮全更新后次轮采集CUDA OOM，准备同批量执行模式对照](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。一轮五optimizer10/1/20/1/20/非有限0，1058.685秒含编译、Torch allocated20.579GB/reserved23.442GB；次轮Warp物理graph OOM，整profileFAILED，非30GiB容器守卫/cgroup OOMkill0。1812源独立SHA未变/三原PID退出/GPU15MiB；不恢复失败根。新独立V02仍E4096/WM2048/motion-KP4096/H32/559片/八全更新，只改compile reduce-overhead→default，未执行/未隔离单因/未正式训练/采纳null/不新goal或agent。[失败](../data/manifests/morphmimic_q1_e4096_v01_results_20261103.json)/[准备](../data/manifests/morphmimic_q1_e4096_execution_v02_preparation_20261103.json)。
 
 2026-11-03：[E4096原完整批量资源测试运行中](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。00:56:16 controller602072/start55222136、worker602087，冻结e0586a1f3c3faf69df1ec521e49a82e9740db86b独立远端/9文件534089B三端后启动。559片/E4096/WM2048x10/motion-KP4096/H32/八全更新轮，409600预热转移15.1秒，首轮编译未落完整轮；GPU14193MiB/总14.35GB/OOM0。只监督同根原进程、不改执行输入；不当正式训练/容量最终通过或步态收益，采纳null/不新goal或agent。旧未执行1024草稿已移除。[启动](../data/manifests/morphmimic_q1_e4096_launch_20261103.json)。

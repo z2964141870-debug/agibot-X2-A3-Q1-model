@@ -48,10 +48,44 @@ def validate_plan(plan):
         raise ValueError("Five-optimizer audit requires the return KP student")
     if plan["purpose"] == "profile" and (cfg["iterations"] > 8 or cfg["wm_only_iters"] != 0):
         raise ValueError("Resource profiles require at most eight full-update iterations")
+    handoff = plan.get("physics_handoff_min_free_bytes", 0)
+    if type(handoff) is not int or handoff < 0:
+        raise ValueError("Physics handoff requires a nonnegative integer byte threshold")
     for value in (plan["source"], plan["output"], plan["human_root"], *plan["subsets"]):
         path = Path(value)
         if not path.is_absolute() or not path.resolve().is_relative_to(ROOT):
             raise ValueError("Keep native phase paths inside the sole project root")
+
+
+def release_inactive_cuda_cache(cuda, minimum_free_bytes, record):
+    if not minimum_free_bytes:
+        return
+    free, total = cuda.mem_get_info()
+    state = record.setdefault("physics_vram_handoff", dict(
+        minimum_free_bytes=minimum_free_bytes, checks=0, cache_releases=0,
+        total_seconds=0., events=[]))
+    state["checks"] += 1
+    state["last_checked_free_bytes"] = int(free)
+    if free >= minimum_free_bytes:
+        return
+    started = time.monotonic()
+    cuda.synchronize()
+    before = dict(free_bytes=int(free), total_bytes=int(total),
+        allocated_bytes=int(cuda.memory_allocated()), reserved_bytes=int(cuda.memory_reserved()))
+    # Warp allocates outside Torch's allocator when physics graph replay resumes.
+    cuda.empty_cache()
+    free_after, total_after = cuda.mem_get_info()
+    after = dict(free_bytes=int(free_after), total_bytes=int(total_after),
+        allocated_bytes=int(cuda.memory_allocated()), reserved_bytes=int(cuda.memory_reserved()))
+    elapsed = time.monotonic() - started
+    event = dict(check=state["checks"], before=before, after=after, seconds=elapsed,
+        global_free_change_bytes=after["free_bytes"] - before["free_bytes"],
+        torch_reserved_decrease_bytes=before["reserved_bytes"] - after["reserved_bytes"])
+    state["cache_releases"] += 1
+    state["total_seconds"] += elapsed
+    if len(state["events"]) < 8:
+        state["events"].append(event)
+    state["last_event"] = event
 
 
 def save(path, record):
@@ -176,6 +210,8 @@ def run_rank(plan, rank):
             transitions = 0
 
             def collect_steps(*args, **kwargs):
+                release_inactive_cuda_cache(torch.cuda,
+                    plan.get("physics_handoff_min_free_bytes", 0), record)
                 stats = original_collect(*args, **kwargs)
                 record["collected_environment_transitions"] += int(stats["steps"])
                 return stats

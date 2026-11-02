@@ -1,0 +1,57 @@
+{
+  "stage": "MORPHMIMIC_Q1_FULL1H_E4096_DEFAULT_V02",
+  "status": "FIRST_FULL_UPDATE_COMPLETED_SECOND_COLLECTION_CUDA_OOM",
+  "code_commit": "1e2042e7b0f70bc1200f7877db7b05884467f76b",
+  "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_FULL1H_PROFILE_E4096_DEFAULT_V02_20261103",
+  "observed_utc": "2026-11-02T17:39:03.580069+00:00",
+  "controller": {
+    "pid": 607218,
+    "start_ticks": 55416496,
+    "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+  },
+  "guard_status": "WORKER_FAILED",
+  "cleanup": {
+    "worker_started": true,
+    "worker_pid": 607225,
+    "worker_group": 607225,
+    "worker_reaped": true,
+    "worker_return_code": 1
+  },
+  "worker": {
+    "status": "FAILED",
+    "iterations_completed": 1,
+    "optimizer_updates": {
+      "wm_opt": 10,
+      "policy_opt": 1,
+      "critic_opt": 20,
+      "kp_opt": 1,
+      "critic_kp_opt": 20
+    },
+    "nonfinite_updates": {
+      "wm/nonfinite_steps": 0,
+      "policy/nonfinite_steps": 0,
+      "critic/nonfinite_steps": 0,
+      "kp/nonfinite_steps": 0,
+      "critic_kp/nonfinite_steps": 0
+    },
+    "collected_environment_transitions": 417792,
+    "reference_clips": 559,
+    "peak_cuda_allocated_bytes": 20585220096,
+    "peak_cuda_reserved_bytes": 22596812800,
+    "last_iteration_seconds": 418.96166215697303,
+    "error": "RuntimeError: Graph launch error: Warp CUDA error 2: out of memory (in function wp_cuda_graph_launch, /builds/omniverse/warp/warp/native/warp.cu:4544)"
+  },
+  "cuda_oom_observed": true,
+  "cgroup_oom_kill": 0,
+  "frozen_input_count": 1814,
+  "frozen_inputs_unchanged_independently_checked_after_failure": true,
+  "original_pids_absent": true,
+  "idle_gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15 MiB, 27",
+  "idle_cgroup_bytes": 11280048128,
+  "optimizer_adam_end_audit_completed": false,
+  "formal_training": false,
+  "profile_weights_reusable": false,
+  "user_accepted_checkpoint": null,
+  "raw_record": "logs/session_records/morphmimic_q1_e4096_default_v02_results_20261103.json",
+  "next_hypothesis": "Keep the E4096 default configuration; test releasing only unused Torch cache at the collector physics boundary under low global free VRAM, with before/after measurements. Do not reduce batches or alter model/optimizer mathematics."
+}

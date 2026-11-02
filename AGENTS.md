@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-03 E4096-default V02同样首轮五optimizer10/1/20/1/20后次轮Warp采集CUDA OOM，整体FAILED；首轮418.962秒含编译、allocated20585220096/reserved22596812800B、1814冻结输入独立SHA未变/三原PID退出/GPU15MiB/cgroup OOMkill0。新独立V03保留所有cfg/E4096/WM2048/motion-KP4096/H32/559片，仅仿真入口global free<3GiB时同步并empty_cache释放Torch未占用缓存，逐次记录实free/allocated/reserved与耗时，不释放活张量或改优化数学；本地8测试7通过1因无Torch跳过，服务器与8轮profile待发布后执行。缓存驻留为待实测假设，旧两失败根不恢复/profile权重不续/正式训练未启/采纳null，不新goal/agent或改其他任务，入口同INTEGRATION/default_v02_results及handoff_v03_preparation。
+
 - 2026-11-03原批量4096-V01一轮五optimizer10/1/20/1/20完成/非有限0，第二轮采集Warp物理graph报CUDA OOM，整次FAILED不当容量通过；首轮1058.685秒含编译、peak allocated20578716160/reserved23441965056B，未完成最终Adam审计。三原PID退出/GPU15MiB/cgroup OOMkill0与CUDA OOM明确区分，1812冻结输入已独立全SHA不变。继续按用户高env/训练量优先，新独立V02仅cfg.compile由reduce-overhead改原版支持default，保留E4096/WM2048/motion-KP4096/H32/559片/全部更新，测试图驻留执行因素，尚未隔离单因/未执行。原失败不恢复、profile权重不续、正式训练未启/采纳null，不新goal/agent或改其他任务，入口同INTEGRATION/e4096_v01_results及execution_v02_preparation。
 
 - 2026-11-03单Q1原批量已00:56:16启动：冻结e0586a1f3c3faf69df1ec521e49a82e9740db86b独立远端/9文件534089B三端后，新根MORPHMIMIC_Q1_FULL1H_PROFILE_E4096_V01_20261103，controller602072/start55222136、worker602087；559片/E4096/WM2048x10/motion-KP4096/H32八全更新轮/不续profile权重。日志409600预热转移15.1秒，首轮仍编译、落盘0轮不等于内存0更新；GPU14193MiB/容器14.35GB/OOM0，非容量最终结论或正式训练。只监督原进程/不热改输入；三个本轮未发布执行1024草稿已移除，旧已发布历史不改。采纳null，不新goal/agent或改其他任务，入口同INTEGRATION/e4096_launch_20261103。

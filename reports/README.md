@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-03：[E4096-default同样次轮Warp CUDA OOM，验证低空闲显存交接](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。V02首轮完整五optimizer/非有限0、1814输入独立SHA不变/原进程退出，整体失败保留。新V03保持4096及全部cfg，只在仿真入口空闲显存<3GiB释放Torch未占用缓存并测量耗时/实际变化，本地8测试7过1跳过，真实资源验证待；正式训练未启。[V02结果](../data/manifests/morphmimic_q1_e4096_default_v02_results_20261103.json)/[V03准备](../data/manifests/morphmimic_q1_e4096_handoff_v03_preparation_20261103.json)。
+
 2026-11-03：[4096首轮五optimizer完成，次轮Warp图回放CUDA显存不足](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。V01整体FAILED/原进程退出/1812输入独立SHA未变，不能当稳定容量通过。保留4096环境和全部原批量，新独立V02只改原版compile default，验证执行模式与吞吐，尚未运行/正式训练。[失败结果](../data/manifests/morphmimic_q1_e4096_v01_results_20261103.json)/[V02准备](../data/manifests/morphmimic_q1_e4096_execution_v02_preparation_20261103.json)。
 
 2026-11-03：[当前Q1原批量4096资源实测已启动](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。00:56:16原boot/GPU下controller602072、worker602087，冻结e0586a1/9文件534089B三端；409600预热转移15.1秒，首轮完整更新编译中，GPU14193MiB/OOM0。E4096/WM2048x10/motion-KP4096/H32/559片，尚无完整更新容量或正式训练/步态结论。[启动](../data/manifests/morphmimic_q1_e4096_launch_20261103.json)。

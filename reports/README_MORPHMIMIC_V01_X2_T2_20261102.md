@@ -50,3 +50,11 @@ G1原训练已跑满160000轮，12编号checkpoint内容审计通过，最终mot
 X2所需72网格和SOMA零姿态共73个LFS对象137180786B逐指针大小/SHA全部通过，收据data/references/morphmimic_v01_x2_t2_20261102/lfs_assets_01.json；先前已取X2 URDF单列保留。原assemble所得两机器人常量与发布包各自robot JSON逐字段完全相同，未改PD/限矩/时步。
 
 受保护X2 controller564815/worker564822与T2 controller565341各完成两条真实BVH重定向，原batch10/两条输入、2491最长批时轴、原IK24轮和limb stabilizer，原stdout保留。两guard均WORKER_COMPLETED、回收return0/输入SHA前后不变，GPU释放回15MiB/OOM0；X2约213秒主要是首次编译，T2约26秒。产物分别为新real评测根retarget_x2/csv和retarget_t2/csv。此结果仅说明IK流程完成，不构成动力学质量或策略稳定结论。下一阶段原convert_seed、模型一致性导出及发布policy回放仍待执行。
+
+首个X2转换根convert_x2在实际转换前因重连后缺GIT_PYTHON_GIT_EXECUTABLE而GitPython导入退出，原guard/stdout保留、未生成新轨迹或做策略回放。下一独立convert_x2_v02只补既有Git可执行文件的进程环境，原converter/输入不改，不重做重定向或训练；不覆盖失败根。
+
+原convert_seed在convert_x2_v02及convert_t2均正常结束，两个机型各2/2通过原名称与可行性过滤，无拒绝；两guard回收return0、原CSV和metadata SHA前后相同。每型NPZ包含各自模型FK和身体几何，不沿用G1身体位置；后续模型导出和发布policy动力学才评价实际跟踪。
+
+四条50Hz NPZ实际有限，前进1032帧/20.64秒、起走152帧/3.04秒；native关节均31，X2全身34body/T2为32body。X2原export_assets在独立新根正常结束，check_same_model与IMU FK最大误差5.16e-8通过、原baked JSON前后SHA不变；未使用--bake。下一步T2模型导出，再两型各两片原deploy.run和原速视频。
+
+T2原模型导出亦正常完成，IMU FK最大误差6.66e-8、模型一致性/输入前后SHA/guard回收0通过。增加run_v01_suite.py串行执行固定4片，每片经原run_guarded、最多3600秒、无重试；固定motion接口和原deploy.run，不改策略或仿真。仅设置已有Mesa软件EGL/4渲染线程和12核CPU调度，完整50fps/1280x720原速录制；policy、机器人JSON、参考、模型及部署源码在每片前后校验。守卫与外层控制器分离会话后执行，可抵御SSH断线，结束必须核进程退出及本地媒体。

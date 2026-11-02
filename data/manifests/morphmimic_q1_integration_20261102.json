@@ -1,0 +1,49 @@
+{
+  "schema": "morphmimic_q1_integration.v1",
+  "date": "2026-11-02",
+  "status": "INTERFACE_PREPARATION",
+  "authorization": ["try Q1 training with MorphMimic", "combine PrimebotTech SuperMimic-Q1 and MorphMimic"],
+  "sources": {
+    "morphmimic_v01": "41c8382f127a6f5109bfe047445a9180f71f1fc0",
+    "primebot_supermimic": "118338b19dcd14f768d1e7de5a48d04b78987688",
+    "soma_retargeter": "cbdb2b494a2af82137bf9b6f15122d60167281c4"
+  },
+  "architecture": {
+    "candidate_robots": ["g1", "q1"],
+    "share": "all",
+    "initialization": "from_scratch",
+    "canonical_joints": 29,
+    "q1_real_joints": 22,
+    "missing_canonical_joints": ["waist_pitch_joint", "left_wrist_roll_joint", "left_wrist_pitch_joint", "left_wrist_yaw_joint", "right_wrist_roll_joint", "right_wrist_pitch_joint", "right_wrist_yaw_joint"],
+    "candidate_morphology_dim": 154,
+    "published_onnx_architecture_compatible": false,
+    "q1_native_baseline_required": true,
+    "paired_soma_retargeting_required": true
+  },
+  "control": {
+    "source": "PrimebotTech SuperMimic simulator.py",
+    "asset_version": "Q1_V3",
+    "source_example_asset_version": "Q1_V2_external_not_distributed",
+    "control_dt_s": 0.02,
+    "physics_dt_s": 0.002,
+    "action_scale": 0.5,
+    "software_pd": true,
+    "modeled_position_target_delay": true,
+    "directional_torque_speed_limits": true,
+    "native_mjlab_actuator_integration_verified": false
+  },
+  "progress": {
+    "sparse_bridge_cpu_tests": "NOT_RUN",
+    "real_model_contract": "NOT_RUN",
+    "q1_retargeting": "NOT_STARTED",
+    "native_shared_trainer": "NOT_STARTED",
+    "formal_q1_training": "NOT_STARTED",
+    "training_num_envs": null,
+    "training_iterations": null,
+    "optimizer_updates": 0
+  },
+  "user_accepted_checkpoint": null,
+  "goal_status_changed": false,
+  "agents_started": false,
+  "server_large_artifact_policy": "SERVER_LOCAL_ONLY"
+}

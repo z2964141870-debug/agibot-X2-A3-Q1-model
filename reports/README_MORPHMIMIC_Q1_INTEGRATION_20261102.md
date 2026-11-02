@@ -43,6 +43,14 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### SOMA 校准 V02 完成与真实 pilot 准备
+
+路径修复 `42c1bf4797637592cf6b16a6c4259509a46d31f5` 已独立远端与 6 文件 410156 字节三端大小/SHA 核验。新 V02 CPU 校准成功，15 映射点偏移回算通过，真实 free+22 模型为 29 coordinates/28 DOFs，pelvis 比例为 0.4148515761（此值是 Q1/零姿态人身高比例，不是 Q1/G1 腿长比）。原 XML SHA 未变，原 V01 加载失败与日志保留。结果见 [校准原始结果](../data/manifests/morphmimic_q1_soma_calibration_results_20261102.json)。
+
+新增固定两片 `pilot_batch_20261102.json`，调用固定 SOMA 原 Newton 重定向，输出真实 Q1 CSV；新增 `prepare_data.py` 直接调用原 120Hz→50Hz converter/原过滤与原 human sidecar converter，核有限22关节/逐片帧数；成对阶段仅取原 G1 子集与通过原过滤的 Q1 交集，逐项保存排除原因，不把 G1 NPZ 改名当 Q1 几何。
+
+`verify_native_gpu.py` 准备16环境、24控制步零 optimizer 验证：实际 Q1 actuator callback 的 PD/方向转速限矩、每子步延迟目标、上一实际命令递推、缺失槽 NaN 保护、仿真后态与 WM 解析 reward/干净观察一致。G1 同入口核原分组独立延迟。当前仅语法检查，pilot/原生 GPU 尚未执行，不能称步态改善或完整 Trainer 已通过。19:35以后再次现场核同 boot/GPU、15MiB/26度、cgroup18552647680B/OOM0后准备串行执行；训练轮数仍待实际两rank资源。
+
 ### SOMA 校准路径修复
 
 准备 `0b5623cd489c9d33bb14592787f0d702bf042c29` 已独立核远端，12 文件 450753 字节三端大小/SHA 相同。首次 CPU 校准在 Newton 加载 mesh 前失败：相对 XML 路径派生出的 `meshdir` 被再次相对新输出目录解析。原 V01 根和 `logs/morphmimic_q1_soma_calibration_v01_20261102.log` 保留，未产生校准或动力学/optimizer。

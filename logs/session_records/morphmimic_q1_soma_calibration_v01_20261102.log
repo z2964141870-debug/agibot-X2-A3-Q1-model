@@ -1,0 +1,41 @@
+Warp 1.19.0 initialized:
+   CUDA Toolkit 13.4, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 3090" (24 GiB, sm_86, mempool enabled)
+   Kernel cache:
+     /root/.cache/warp/1.19.0
+Traceback (most recent call last):
+  File "/opt/data/private/ZHY/script/morphmimic_q1/prepare_soma.py", line 155, in <module>
+    main()
+  File "/opt/data/private/ZHY/script/morphmimic_q1/prepare_soma.py", line 83, in main
+    builder = pipeline.create_robot_builder("q1_v3")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/soma_retargeter/soma-retargeter-cbdb2b494a2af82137bf9b6f15122d60167281c4/soma_retargeter/pipelines/utils.py", line 143, in create_robot_builder
+    builder.add_mjcf(asset_info['xml_path'])
+  File "/opt/data/private/ZHY/data/environments/morphmimic_retarget_20261102/lib/python3.12/site-packages/newton/_src/sim/builder.py", line 3191, in add_mjcf
+    return parse_mjcf(
+           ^^^^^^^^^^^
+  File "/opt/data/private/ZHY/data/environments/morphmimic_retarget_20261102/lib/python3.12/site-packages/newton/_src/utils/import_mjcf.py", line 2352, in parse_mjcf
+    parse_body(
+  File "/opt/data/private/ZHY/data/environments/morphmimic_retarget_20261102/lib/python3.12/site-packages/newton/_src/utils/import_mjcf.py", line 1900, in parse_body
+    body_visual_shapes = _process_body_geoms(geoms, defaults, body_name, link, label_prefix=body_label_path)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/data/environments/morphmimic_retarget_20261102/lib/python3.12/site-packages/newton/_src/utils/import_mjcf.py", line 1339, in _process_body_geoms
+    s = parse_shapes(
+        ^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/data/environments/morphmimic_retarget_20261102/lib/python3.12/site-packages/newton/_src/utils/import_mjcf.py", line 946, in parse_shapes
+    m_meshes = load_meshes_from_file(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/data/environments/morphmimic_retarget_20261102/lib/python3.12/site-packages/newton/_src/utils/mesh.py", line 690, in load_meshes_from_file
+    tri = trimesh.load(filename, force="mesh")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/data/environments/morphmimic_retarget_20261102/lib/python3.12/site-packages/trimesh/exchange/load.py", line 112, in load
+    loaded = load_scene(
+             ^^^^^^^^^^^
+  File "/opt/data/private/ZHY/data/environments/morphmimic_retarget_20261102/lib/python3.12/site-packages/trimesh/exchange/load.py", line 198, in load_scene
+    arg = _parse_file_args(
+          ^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/data/environments/morphmimic_retarget_20261102/lib/python3.12/site-packages/trimesh/exchange/load.py", line 629, in _parse_file_args
+    raise ValueError(f"string is not a file: `{file_obj}`")
+ValueError: string is not a file: `/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_CALIBRATION_V01_20261102/data/references/q1/model_20261023_P01/q1_v3/meshes/pelvis.STL`

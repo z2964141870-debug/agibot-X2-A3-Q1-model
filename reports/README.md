@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-03：[完整559片G1/Q1同源同帧数据已就绪](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。原转换/过滤559/559保留、559human同帧、3604.72秒，无替换排除；1248源未变/guard回收0/0optimizer。完整集双rank资源待，未正式训练或称步态改善。[结果](../data/manifests/morphmimic_q1_full1h_data_results_20261103.json)。
+
 2026-11-02：[完整559条真实Q1重定向已完成](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。142661847B CSV/原Newton batch10和接触后处理/669输入未变/guard回收0；后续原转换过滤/同帧交集待，不等于559条训练已就绪。新完整数据共享资源配置收紧12GiB初始准入，原30GiB运行线保持。[结果](../data/manifests/morphmimic_q1_full1h_retarget_results_20261102.json)。
 
 2026-11-02：[G1/Q1原生共享8轮更新通过，整profile资源失败保留](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。各五optimizer80/8/160/8/160、共享完整SHA与共同帧相同/非有限0；退出时33.27GB触发30GiB守卫/OOM0，未正式训练或证明步态。空闲按原规则释放文件页，下一步完整559数据与新资源余量验证。[原结果](../data/manifests/morphmimic_q1_shared_profile_v01_results_20261102.json)。

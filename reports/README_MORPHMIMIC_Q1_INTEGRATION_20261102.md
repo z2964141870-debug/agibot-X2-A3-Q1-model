@@ -43,6 +43,14 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### 11月3日完整一小时559片原过滤/真实配对通过
+
+执行来源`e5898a7597dd07ef970ae8673dcddc04a561c33d`已独立40位远端及10文件449639B三端核验。首次独立SSH查询超时保留，随后HTTPS branch ref及独立git ls-remote均确认同一提交；未改认证或Git持久配置。[发布收据](../data/manifests/morphmimic_q1_full1h_retarget_publication_20261103.json)。服务器4项资源准入CPU测试实际全部通过，随后controller598471完成原CPU转换/过滤/配对，guard正常reaped0/1248冻结输入未变、未创建CUDAcontext、0积分/optimizer。
+
+559/559个真实Q1参考均通过原过滤，559个人体侧文件逐片相同帧数；与原G1一小时集的交集仍为559片、3604.72秒，无排除或替换。1677帧G1实模FK最大位置差6.990e-7m。1118个Q1/human NPZ共404751654B只留服务器，原G1参考未覆盖；同源表和大小SHA保留在服务器result.json，Mac只保存小收据与YAML内容。[结果清单](../data/manifests/morphmimic_q1_full1h_data_results_20261103.json)/[原始收据](../logs/session_records/morphmimic_q1_full1h_data_20261103.json)。
+
+空闲缓存维护按原8GiB/120秒/1800秒冷却执行一次，实cache13356945408→6177824768B，总量14645428224→7885205504B，未读取大文件内容/删数据/全局drop_caches；后续空闲实测7319539712B，满足新12GiB初始上限。下一步先发布本数据结果，再新根完整集E512双rank/8轮资源验证，保持30GiB运行线；旧两片V01资源失败不改。仍未正式训练/证明自然步态或跨本体收益，采纳null。11月2日“转换待执行”等为历史。
+
 ### 完整559条真实Q1重定向完成，转换/配对待执行
 
 前阶段结果`cfc95bba8c4d8883d10aad1a296197cf5484cd0f`已独立远端/7文件514699B三端大小SHA，见[发布收据](../data/manifests/morphmimic_q1_shared_profile_v01_publication_20261102.json)。随后原controller596724/start54764026于23:39:55启动完整559条，原Newton batch10/接触后处理23:49:30正常结束，worker596731回收0，669冻结输入前后不变。559个真实Q1 CSV共142661847B，仅服务器，原BVH未重新提取；当前仅重定向完成，不能把文件数直接当通过原过滤的共同训练片数。[实测](../data/manifests/morphmimic_q1_full1h_retarget_results_20261102.json)/[原始摘录](../logs/session_records/morphmimic_q1_full1h_retarget_20261102.json)。

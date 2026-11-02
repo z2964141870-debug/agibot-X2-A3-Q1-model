@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-03完整一小时真实G1/Q1数据已就绪：e5898a7/10文件449639B三端及4服务器准入CPU测试后，原转换过滤559/559保留/559human同帧/3604.72秒，无替换排除；1677帧G1实FK最大差6.990e-7m，1248冻结输入未变/guard回收0/无CUDAcontext/0积分optimizer。1118Q1-human NPZ404751654B仅25386；空闲默认缓存维护24.48秒实cache13.357→6.178GB，总量后7.885GB/随后7.320GB，原线不变。发布数据结果后新根完整集E512双rank8轮资源验证/初始12GiB，旧V01外层资源失败保持，未正式训练/步态改善/采纳null、无agent/goal/其他任务变更，入口同INTEGRATION/full1h_data_results_20261103。
+
 - 2026-11-02完整559条Q1原Newton batch10/原接触后处理23:49:30完成559CSV/142661847B，controller596724及worker596731退出/reap0/669冻结输入未变，源cfc95bb/7文件514699B已三端。未原50Hz过滤或G1同帧交集，下一步转换侧文件配对。资源入口只可收紧初始准入/默认24，新完整集E512双rank8轮用12GiB，原运行30GiB/OOM/锁不变；4本地CPU边界通过，服务器测试待发布后。V01资源失败/权重不续、正式训练未启动/采纳null、无agent/goal/其他任务变更，入口同INTEGRATION/full1h_retarget_results。
 
 - 2026-11-02共享V01两rank真实8轮/五optimizer80-8-160-8-160及Adam步/61440转移，完整共享SHA/共同帧相同、独立buffer/非有限0；后6轮2.32--2.89秒。worker均COMPLETED但外层收尾33.270964224GB触发原30GiB/parent回收-15/OOM0，整profileFAILED保留，131源未变/四PID已退出/GPU15MiB。原缓存空闲单次维护17.82秒/<=8GiB advice，实cache19.503→12.499GB，不删读大文件/改线。完整559准备06b67aa/7文件423365B三端后待发布本结果再串行全数据/另根资源验证，额外实测余量，原V01不恢复/权重不续。未正式训练/步态改善/采纳null，无agent/goal/其他任务变更，入口同INTEGRATION/shared_profile_v01_results。

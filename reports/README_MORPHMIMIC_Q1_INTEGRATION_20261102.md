@@ -43,6 +43,16 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### 共享8轮实际更新通过，外层资源守卫失败保留
+
+原V01的G1/Q1两个worker均完成8轮：每边五optimizer为80/8/160/8/160，Adam状态步数与hook一致；每边实际61440转移（含51200预热）。WM/motion及人体策略/两critic共享参数完整SHA一致、实际共同片帧抽样一致，原rank校验通过，机器人morphology/limits/状态normalizer/replay仍独立；全部非有限更新为0。前两轮含编译为1051.6/433.5秒，后6轮约2.32--2.89秒，每rank CUDA reserved峰值约5.45GB。仅两片profile，不证明步态质量或完整一小时资源可行。
+
+两个worker的收据已COMPLETED，但外层controller在退出收尾时检查到33270964224B，超过原30GiB，按MemoryLimit正常TERM回收parent=-15，因此整次profile明确FAILED，不能将worker成功覆盖成整体通过。OOM0，131份冻结输入大小/SHA重核全部不变；controller588306/parent588313/rank588314和588315均已退出，GPU15MiB无计算。两型ckpt8/latest各342722571B仅stat，未加载或用于正式训练。原guard/错误栈/完整收据保留，见[结果](../data/manifests/morphmimic_q1_shared_profile_v01_results_20261102.json)/[原始记录](../logs/session_records/morphmimic_q1_shared_profile_v01_20261102.json)。
+
+空闲后23:27:16按既有缓存维护默认值运行一次：17.82秒/最多8GiB advice，实测cache19503054848→12499193856B，总量20949975040→14334533632B，OOM0；未删文件、未全局drop_caches、不读取大文件内容。V01初始总量17592258560B、失败峰值比初始高15678705664B，故24GiB普通准入不足以保证双rank编译/保存余量；不是GPU显存溢出或算法已失败的证据。后续保留原30GiB线，完整数据后另做新根资源验证，启动前按这次实测增量预留额外余量，不恢复失败V01/不续其权重。
+
+完整559条准备`06b67aadc8658858f4ab6ab26ed76c250c6c7b0c`已独立远端/7文件423365B三端大小SHA，[发布收据](../data/manifests/morphmimic_q1_full1h_preparation_publication_20261102.json)。下一步先发布本次真实结果，再串行完整重定向/原转换过滤/配对；正式训练尚未启动，采纳null。下方“profile运行中”为历史过程。
+
 ### 共享资源 profile 运行中与完整一小时数据准备
 
 原生共享 profile 于北京时间22:57:33启动，controller588306/start54509869，执行冻结仍为`cba206093e35854ad07991eb3a321436912b6b0b`。截至23:11:14，G1和Q1均完成各51200条预热转移，正在编译首轮完整更新，收据仍为0个已完成迭代；不能将尚未刷新的optimizer字段解释为内存中没有开始更新。当前容器29506048000B、GPU9577MiB/37度，未触发30GiB守卫；尚未证明两rank共享更新完成。运行根`MORPHMIMIC_Q1_G1_SHARED_PROFILE_E512_V01_20261102`、runtime plan在`logs/morphmimic_q1_shared_profile_e512_v01_plan_20261102.json`，继续监督原进程，不修改冻结Python。

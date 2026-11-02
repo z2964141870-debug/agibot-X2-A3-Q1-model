@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-02共享V01两rank真实8轮/五optimizer80-8-160-8-160及Adam步/61440转移，完整共享SHA/共同帧相同、独立buffer/非有限0；后6轮2.32--2.89秒。worker均COMPLETED但外层收尾33.270964224GB触发原30GiB/parent回收-15/OOM0，整profileFAILED保留，131源未变/四PID已退出/GPU15MiB。原缓存空闲单次维护17.82秒/<=8GiB advice，实cache19.503→12.499GB，不删读大文件/改线。完整559准备06b67aa/7文件423365B三端后待发布本结果再串行全数据/另根资源验证，额外实测余量，原V01不恢复/权重不续。未正式训练/步态改善/采纳null，无agent/goal/其他任务变更，入口同INTEGRATION/shared_profile_v01_results。
+
 - 2026-11-02共享原生profile22:57:33已启动controller588306/start54509869/冻结cba2060，E512双rank/8全更新轮；23:11各51200预热转移后首轮编译、无完成轮，不把落盘optimizer0当内存未更新。29506048000B/GPU9577MiB/原30GiB守卫，监督原进程不改冻结Python。完整共同559条原Newton/原50Hz过滤同帧配对新增独立配置，未重定向/正式训练，等profile结束保存/GPU释放；52a45c7的6文件440060B三端发布收据已保存。采纳null/无agent、goal或其他任务变更，入口同INTEGRATION/full1h_preparation。
 
 - 2026-11-02 cba2060已独立远端/9文件441368B三端SHA后4服务器Torch CPU测试通过；既有两片23.68秒G1/Q1同50Hz同帧/6帧G1真实v0.1 FK最大差4.184e-7m/输入身份未变，无重转。22:48:22 G1原生16环境24步/96批子步384转移，六原分组独立延迟0--4/目标观察差0/reward差2.608e-8；1次终止重置记忆已核，0optimizer。两guard回收0/冻结源未变，原bootGPU根/OOM0；下一步两rank E512/8轮原完整更新profile，尚未原生共享或正式训练、不作步态改善结论/采纳null，无agent、goal或其他任务变更，入口同INTEGRATION/paired_g1_native_gpu_results。

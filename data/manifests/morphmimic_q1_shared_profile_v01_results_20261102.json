@@ -1,0 +1,206 @@
+{
+  "stage": "MORPHMIMIC_Q1_G1_SHARED_PROFILE_E512_V01",
+  "status": "NATIVE_SHARED_UPDATES_PASSED_OUTER_RESOURCE_GUARD_FAILED",
+  "code_commit": "cba206093e35854ad07991eb3a321436912b6b0b",
+  "observed_utc": "2026-11-02T15:27:15.225182+00:00",
+  "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_G1_SHARED_PROFILE_E512_V01_20261102",
+  "purpose": "profile",
+  "formal_training": false,
+  "profile_weights_reusable": false,
+  "outer_status": "FAILED",
+  "guard_error": "MemoryLimit: Data worker reserve reached: shared_bytes=33270964224, oom_kill=0",
+  "cleanup": {
+    "worker_started": true,
+    "worker_pid": 588313,
+    "worker_group": 588313,
+    "worker_reaped": true,
+    "worker_return_code": -15
+  },
+  "workers": {
+    "g1": {
+      "status": "COMPLETED",
+      "iterations_completed": 8,
+      "optimizer_updates": {
+        "wm_opt": 80,
+        "policy_opt": 8,
+        "critic_opt": 160,
+        "kp_opt": 8,
+        "critic_kp_opt": 160
+      },
+      "optimizer_adam_steps": {
+        "wm_opt": [
+          80
+        ],
+        "policy_opt": [
+          8
+        ],
+        "critic_opt": [
+          160
+        ],
+        "kp_opt": [
+          8
+        ],
+        "critic_kp_opt": [
+          160
+        ]
+      },
+      "shared_parameter_sha": {
+        "wm": "aac5a7e988931d7ced5de778d6992f02ab71443c85bcf13d095f42520e4001f4",
+        "policy": "30fe76e606a377cdb4b808aaea59d93a003d050a420b183b7584f4980e6dcea0",
+        "critic": "3c82ddb54ecc7ed3640d469359a2e5d94b456c8053d2b6bad4e3358bf67212fb",
+        "critic_kp": "1b85ef81d070903beec7c2ef2797ad01d9e8923235205be4f76aae8a032d56a5"
+      },
+      "native_rank_checks_passed": true,
+      "iteration_seconds": [
+        1051.5906304100063,
+        433.46887315402273,
+        2.6160293190041557,
+        2.4616753980517387,
+        2.3279946410330012,
+        2.322402813937515,
+        2.442013288033195,
+        2.8928081219783053
+      ],
+      "nonfinite_updates": {
+        "wm/nonfinite_steps": 0,
+        "policy/nonfinite_steps": 0,
+        "critic/nonfinite_steps": 0,
+        "kp/nonfinite_steps": 0,
+        "critic_kp/nonfinite_steps": 0
+      },
+      "collected_environment_transitions": 61440,
+      "peak_cuda_allocated_bytes": 5046962176,
+      "peak_cuda_reserved_bytes": 5444206592,
+      "host_collectives": {
+        "calls": {
+          "broadcast": 88,
+          "all_reduce": 920,
+          "all_gather": 16,
+          "all_gather_object": 0
+        },
+        "staged_input_bytes": 4361697108
+      }
+    },
+    "q1": {
+      "status": "COMPLETED",
+      "iterations_completed": 8,
+      "optimizer_updates": {
+        "wm_opt": 80,
+        "policy_opt": 8,
+        "critic_opt": 160,
+        "kp_opt": 8,
+        "critic_kp_opt": 160
+      },
+      "optimizer_adam_steps": {
+        "wm_opt": [
+          80
+        ],
+        "policy_opt": [
+          8
+        ],
+        "critic_opt": [
+          160
+        ],
+        "kp_opt": [
+          8
+        ],
+        "critic_kp_opt": [
+          160
+        ]
+      },
+      "shared_parameter_sha": {
+        "wm": "aac5a7e988931d7ced5de778d6992f02ab71443c85bcf13d095f42520e4001f4",
+        "policy": "30fe76e606a377cdb4b808aaea59d93a003d050a420b183b7584f4980e6dcea0",
+        "critic": "3c82ddb54ecc7ed3640d469359a2e5d94b456c8053d2b6bad4e3358bf67212fb",
+        "critic_kp": "1b85ef81d070903beec7c2ef2797ad01d9e8923235205be4f76aae8a032d56a5"
+      },
+      "native_rank_checks_passed": true,
+      "iteration_seconds": [
+        1051.6832465369953,
+        433.47242617898155,
+        2.6174836970167235,
+        2.4620257019996643,
+        2.3279093699529767,
+        2.3225844049593434,
+        2.4420058109099045,
+        2.8929354950087145
+      ],
+      "nonfinite_updates": {
+        "wm/nonfinite_steps": 0,
+        "policy/nonfinite_steps": 0,
+        "critic/nonfinite_steps": 0,
+        "kp/nonfinite_steps": 0,
+        "critic_kp/nonfinite_steps": 0
+      },
+      "collected_environment_transitions": 61440,
+      "peak_cuda_allocated_bytes": 5045022208,
+      "peak_cuda_reserved_bytes": 5463080960,
+      "host_collectives": {
+        "calls": {
+          "broadcast": 88,
+          "all_reduce": 920,
+          "all_gather": 16,
+          "all_gather_object": 0
+        },
+        "staged_input_bytes": 4361697108
+      }
+    }
+  },
+  "shared_parameters_exact_sha_equal": true,
+  "actual_common_frame_draws_equal": true,
+  "independent_buffer_checks_passed": [
+    {
+      "robot": "g1",
+      "buffers": {
+        "morph": "1510f80f15cf6cb932b43d46ba532989168aceb8ab84aaa00e8c3b9164e81da5",
+        "joint_presence": "993c36a18400df7ab61fe4713437cb9ab32947d6b4b9bc319cf5809043bd7adf",
+        "joint_limits": "ab8ea5a816da5a15b1c2e1dc34e863c81e9848fe06055574e649cfb24b5c97f7",
+        "default_joint_pos": "89d7c6003f60e5682475902fa38f922cc6ca89f82be367d435030802e9561f5d",
+        "state_mean": "df4404f2078e2750836e40c9bbe323030593d5b623921335c9dfd23920c2015b",
+        "state_std": "a77f386f7d9eb0b8695ab7c639cf1933328cafe0295813b161ec7c5b221d6c6f"
+      },
+      "replay_sample_sha": "0c6cf8ec443e81e9d63b76ee9ae618c4743babdb2bb09a5b7fa86ddb2f8c1cc1"
+    },
+    {
+      "robot": "q1",
+      "buffers": {
+        "morph": "6d0c288dec18cbaee3f8ec0f1e5f3b1a75e7c963c088cabfd075452d58a2580f",
+        "joint_presence": "ee7fbcf02614125758a9f88f9da6d4190526e9aedf3585cdbe1473819c5b3393",
+        "joint_limits": "ee8887e7b6a26cff1f3e1b4367c90c11c02d275486204792f3446f5a08ed4913",
+        "default_joint_pos": "5b517952cbe9c4c147bc3f3434f9d82409e76d09ea58905aefe7fb5415912d9a",
+        "state_mean": "f7dac7389f5b004a47d48ae5511e7bc5c437cd616ff05b93f992ddc892a19681",
+        "state_std": "bb646f6434edfff84526d5d7b2a0a59c8465988060508b5e5d936199cf2aefeb"
+      },
+      "replay_sample_sha": "fd5f24dc13369f1fcad34eca7e4756867e8ea0f2fbd27bcd38e843811992239f"
+    }
+  ],
+  "frozen_sources_checked": 131,
+  "changed_sources": [],
+  "initial_cgroup_memory_bytes": 17592258560,
+  "guard_failure_cgroup_memory_bytes": 33270964224,
+  "oom_kills": 0,
+  "checkpoint_files": [
+    {
+      "path": "data/supermimic_for_q1/MORPHMIMIC_Q1_G1_SHARED_PROFILE_E512_V01_20261102/run/q1/ckpt_8.pt",
+      "bytes": 342722571
+    },
+    {
+      "path": "data/supermimic_for_q1/MORPHMIMIC_Q1_G1_SHARED_PROFILE_E512_V01_20261102/run/q1/latest.pt",
+      "bytes": 342722571
+    },
+    {
+      "path": "data/supermimic_for_q1/MORPHMIMIC_Q1_G1_SHARED_PROFILE_E512_V01_20261102/run/g1/ckpt_8.pt",
+      "bytes": 342722571
+    },
+    {
+      "path": "data/supermimic_for_q1/MORPHMIMIC_Q1_G1_SHARED_PROFILE_E512_V01_20261102/run/g1/latest.pt",
+      "bytes": 342722571
+    }
+  ],
+  "checkpoint_content_audit": "NOT_LOADED_STAT_ONLY",
+  "raw_record": "logs/session_records/morphmimic_q1_shared_profile_v01_20261102.json",
+  "conclusion": "Eight actual original shared native update iterations and exact parameter/common-frame checks passed. The parent profile failed its unchanged30GiB guard during teardown; this is not resource admission for formal training or evidence of gait quality.",
+  "next_step": "Preserve V01 and its failure; original bounded idle cache maintenance, full559 real retarget/convert/pair data, then a distinct full-data shared resource validation with measured headroom before formal training",
+  "storage": "SERVER_LOCAL_ONLY",
+  "user_accepted_checkpoint": null
+}

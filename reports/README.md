@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-02：[G1/Q1原生共享8轮更新通过，整profile资源失败保留](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。各五optimizer80/8/160/8/160、共享完整SHA与共同帧相同/非有限0；退出时33.27GB触发30GiB守卫/OOM0，未正式训练或证明步态。空闲按原规则释放文件页，下一步完整559数据与新资源余量验证。[原结果](../data/manifests/morphmimic_q1_shared_profile_v01_results_20261102.json)。
+
 2026-11-02：[G1/Q1双rank共享profile运行中/完整559条数据配置准备](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。各51200预热转移后首轮编译，8轮资源结果尚待；新完整数据输出与原过滤/同帧交集已配置，未启动完整重定向或正式训练。[清单](../data/manifests/morphmimic_q1_full1h_preparation_20261102.json)。
 
 2026-11-02：[G1/Q1 两片配对与G1原生对照已通过](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。cba2060独立远端/9文件441368B三端后4服务器Torch测试全部通过；两片23.68秒帧数相同/6帧G1实模FK最大差4.184e-7m/源身份未变。G1原六分组延迟、16环境24步/384转移，reward差2.608e-8/目标观察差0；1次提前终止已核重置记忆，0optimizer，两guard回收0。真实共享Trainer/正式训练仍待，不作步态结论，采纳null。[实测](../data/manifests/morphmimic_q1_paired_g1_native_gpu_results_20261102.json)。

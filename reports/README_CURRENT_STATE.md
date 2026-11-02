@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-02 17:18：[X2 Ultra/T2发布权重四条真实回放及本地视频完成](README_MORPHMIMIC_V01_X2_T2_20261102.md)。原SOMA/Newton两条固定BVH分别重定向、原转换/模型一致性通过，同一v0.1 ONNX/原motion部署/0新训练；两型前进1032及起走152帧均完整。X2关节均值RMSE .04993/.05921rad、T2 .04128/.05636，前进末根漂移 .298/.215m；T2仅本两片误差较小，不当总体排名或Q1结果。四本地1280x720/50fps原速MP4、2368帧解码/8联系图目视，58原证据6756783B Mac25386大小SHA同；17:26原boot/GPU根、四guard回收0/原9进程退出/GPU15MiB无计算/OOM0。尚无足底离地/承重滑移数值验收，不称自然步态全面合格或未见本体零样本。旧无效G1几何烟测/软件渲染停止/EGL失败保留；自训G1六视频仍未齐，多本体共享训练未完成，采纳null/不结算goal/无agent/其他任务保持。[最终清单](../data/manifests/morphmimic_v01_x2_t2_results_20261102.json)，发布以旁收据为准。下方准备中为历史。
+
 2026-11-02进展：[v0.1 X2/T2真实重定向已完成](README_MORPHMIMIC_V01_X2_T2_20261102.md)。73个LFS对象137180786B逐指针大小SHA通过；发布robot常量与本地模型逐字段相同，X2/T2各两条BVH原IK正常结束/guard回收0/输入未变，GPU已释放。新real根保留CSV，旧G1改名烟测仍无质量效力；下一步原50Hz转换、模型导出核验和动力学回放，尚无新效果结论。无训练/agent/goal结算/其他任务变更。
 
 2026-11-02：[优先测试MorphMimic v0.1发布权重的X2/T2](README_MORPHMIMIC_V01_X2_T2_20261102.md)。发布包/实际ONNX与SHA256SUMS已核；MANIFEST嵌入哈希陈旧保留。此前G1改名补零轨迹不是真实重定向，原X2试跑仅接口烟测/T2尚未动力学，不能据此判策略效果；无守卫和新隔离JSON bake偏离已记录，不改原G1冻结源。真实SOMA参考待独立Python>=3.12/Newton环境和必要LFS资产，后续串行守卫运行并交本地视频。原G1训练160000轮/12内容审计通过/最终motion三片完整，剩余keypoint因用户优先级人工停止，全组媒体仍未齐。无新训练/agent/goal结算或其他自动任务改动，采纳null。[准备清单](../data/manifests/morphmimic_v01_x2_t2_preparation_20261102.json)。

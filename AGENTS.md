@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-02 v0.1 X2/T2真实测试已完成：固定41c8382/retargeter cbdb2b4，73LFS137180786B逐SHA、两型原Newton重定向/convert各2通过/模型一致性及FK通过，同一发布ONNX原motion部署四片完整。X2前进/起走1032/152帧、关节逐帧RMSE均值.0499296/.0592083rad；T2 .0412812/.0563613，前进末根漂移.297844/.214759m。四本地1280x720/50fps/20.64与3.04秒视频、2368帧解码/8图目视，58原证据6756783B Mac25386大小SHA同；可见换腿前进/X2屈膝和长片末段实体落后蓝参考，未数值验足底净离地/承重滑移，不称全面自然步态/Q1/未见本体零样本或自训unified成功。17:18suite完成/四guard回收0，17:26原bootGPU根/原9进程退出/GPU15MiB无计算/OOM0；5845原生Windows会话可用。Mesa原suite明确停止、32位EGL及相对ICD探测失败保留，独立用户态匹配595.112.07图形库成功/未装系统驱动；初cgroup-v2诊断按v1纠正。G1六视频整组仍未齐/衣服Q1搁置/模型大NPZ-BVH仅SERVER_LOCAL_ONLY，不新训/agent/goal结算或改其他任务，采纳null。入口MORPHMIMIC_V01_X2_T2及results清单/旁收据；下方准备中为历史。
+
 - 2026-11-02用户优先X2/T2并明确用MorphMimic v0.1发布权重测试，源码tag peeled41c8382/包63372873B SHAbe874424/实际ONNX69994291B SHA cf951947与SHA256SUMS同，MANIFEST内嵌哈希陈旧不覆原件；只有policy，不冒充已审计WM/critic。先前G1 NPZ改名补零保留G1身体几何不是跨本体重定向，X2接口试跑1032帧不可作质量结论/T2只导出；未挂守卫与新隔离JSON bake偏离明示，原aa40/G1冻结源未动。真实SOMA固定walk_forward_loop_001__A022、retargeter cbdb2b4待独立Python>=3.12/Newton1.3和必要LFS资产；后续守卫串行仿真/本地原速视频，不新训。G1已160000轮/12保存内容审计通过/最终motion三片完整，剩余KP因优先级SIGTERM停止、全媒体未齐，不作训练失败。81774原生Windows同25386会话可用，运行前重新核身份资源；模型大NPZ/BVH仅SERVER_LOCAL_ONLY，不goal结算/agent/改其他任务，采纳null。入口MORPHMIMIC_V01_X2_T2及准备清单，发布以旁收据为准。
 
 - 2026-11-02用户要求检查并测试此前复现：10:17经原生Windows同25386核原训练06:21:57正常完成160000轮/五optimizer1600000-158000-3160000-158000-3160000/非有限0，guard回收0、原两PID退出/原bootGPU根/OOM0/GPU15MiB空闲；71859ca冻结未改。12编号及latest已存，内容审计与固定三片0/40000/160000原版motion/keypoint评测待发布后执行，6最终原速视频，停走片为1h外单列；未重训或预称效果/unified完成，采纳null/不结算goal/无agent/其他任务保持。入口MORPHMIMIC_G1_EVALUATION及completion清单。

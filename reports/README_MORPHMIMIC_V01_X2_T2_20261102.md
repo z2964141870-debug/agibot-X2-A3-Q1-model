@@ -2,6 +2,38 @@
 
 用户要求优先测试另外两个机型，并明确同意直接测试 v0.1 发布权重。本阶段不训练；分别验证真实 SOMA 到 X2 Ultra/T2 的重定向、发布 ONNX 的动力学跟踪和本地原速视频。作者训练包含这两个机型，不能将本测试称为未见本体零样本迁移，也不能当作我们已完成共享训练复现。
 
+## 最终结果与本地视频
+
+2026-11-02 17:18:34北京时间，受保护的 `policy_egl_v02` 四个固定回放全部正常完成。两型使用同一份发布ONNX，分别使用作者原始SOMA/Newton重定向、原convert_seed生成的各自几何参考和原deploy.run，motion接口、50Hz；没有新训练或修改作者策略/PD/限矩/控制时步。T2在这两片上的关节和身体误差均小于X2，但只有各一次固定回放，不是跨机型总体排名。
+
+| 机型 | 固定动作 | 完成帧 | 关节误差 rad | 身体误差 m | 末端根漂移 m |
+|---|---|---:|---:|---:|---:|
+| X2 Ultra | walk_forward_loop_001__A022 | 1032/1032 | 0.049929616 | 0.016520646 | 0.297844459 |
+| X2 Ultra | walk_forward_start_002__A023 | 152/152 | 0.059208326 | 0.021911717 | 0.132682019 |
+| T2 | walk_forward_loop_001__A022 | 1032/1032 | 0.041281176 | 0.012717319 | 0.214758670 |
+| T2 | walk_forward_start_002__A023 | 152/152 | 0.056361325 | 0.017180030 | 0.115568953 |
+
+关节字段沿用作者 `joint_err_rms_rad`，实际口径是逐帧关节RMSE的均值，不是全片合并RMSE。末端根漂移不等于承重脚滑移。未收集足底净离地/接触力/承重滑移时序，不能由4/4完成或跟踪误差称自然步态全面达标。
+
+四份本地原始MP4均为1280x720/50fps；两前进片各20.64秒，两起走片各3.04秒，没有补帧或替换失败片。蓝色半透明机器人是参考，实体模型为实际动力学结果：
+
+- [X2 Ultra 前进20.64秒](../data/supermimic_for_q1/MORPHMIMIC_V01_X2_T2_REAL_EVAL_20261102/policy_egl_v02/x2_walk_forward_loop_001__A022.mp4)
+- [T2 前进20.64秒](../data/supermimic_for_q1/MORPHMIMIC_V01_X2_T2_REAL_EVAL_20261102/policy_egl_v02/t2_walk_forward_loop_001__A022.mp4)
+- [X2 Ultra 起走3.04秒](../data/supermimic_for_q1/MORPHMIMIC_V01_X2_T2_REAL_EVAL_20261102/policy_egl_v02/x2_walk_forward_start_002__A023.mp4)
+- [T2 起走3.04秒](../data/supermimic_for_q1/MORPHMIMIC_V01_X2_T2_REAL_EVAL_20261102/policy_egl_v02/t2_walk_forward_start_002__A023.mp4)
+
+本地逐帧解码2368/2368帧、尺寸/帧率/变化检查均通过；8张概览/0.6-2.2秒密集换步图已逐张目视。选中画面中能看到换腿摆动和前进、未见明显跌倒，X2屈膝更明显；两型长片后段实体均逐渐落后于蓝色参考。只目视抽帧，不冒称连续看完所有帧；参考重叠与移动相机限制脚底判断。原始视频留供用户直接审阅。
+
+服务器58份媒体/小证据6756783B取回Mac，逐大小/SHA全部相同；传输包6512381B，SHA256 `bff78dcb6ac3c115120c5f1dee50c1d69a6b155db97de2a56d5ad8fad0420cbd`。本地新验收图/检查记录另列最终清单。权重、大NPZ、BVH及环境归档仍SERVER_LOCAL_ONLY。四guard均WORKER_COMPLETED/reaped0、48项逐片输入身份检查通过；17:26:08核suite及8个controller/worker均退出、原boot/GPU/根不变、GPU15MiB无计算/OOM0。首次终后诊断误用cgroup-v2路径已按本机v1纠正，未重启任何作业。
+
+结果入口：[最终清单](../data/manifests/morphmimic_v01_x2_t2_results_20261102.json)。本地媒体验收命令：
+
+```sh
+python script/morphmimic_cross_robot/inspect_v01_media.py --review /Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/MORPHMIMIC_V01_X2_T2_REAL_EVAL_20261102/policy_egl_v02
+```
+
+本阶段证明作者发布policy在其训练过的X2/T2上，接真实机器人重定向参考后可完成这两条固定动力学跟踪。尚未证明未见Q1零样本迁移、我们自己的多本体共享训练或Q1自然步态成功；原G1足量训练已完成但六视频整组仍未交齐。用户采纳null，不结算goal。最终Git/三端发布以独立publication旁收据为准。以下为准备和失败历史。
+
 ## 固定来源
 
 - 发布页：`https://github.com/lzyang2000/morphmimic/releases/tag/v0.1`。
@@ -27,9 +59,9 @@
 
 G1原训练已跑满160000轮，12编号checkpoint内容审计通过，最终motion三片完整，详见 [G1记录](README_MORPHMIMIC_G1_EVALUATION_20261102.md)。为优先满足用户X2/T2要求，剩余keypoint评测经SIGTERM停止，guard为STOPPED_SIGNAL；controller因人工停止记通用FAILED，不是训练失败。6份最终视频全组尚未验收，保留未完成状态，不重启训练。
 
-## 当前状态与下一步
+## 准备阶段状态（历史）
 
-原生 hp_han Windows 两段式 SSH 会话81774已再次返回唯一根；上下文前快照 GPU15MiB/无计算/OOM0。运行前须重新核实时变资源。先保存本阶段记录，再补独立retargeter环境和真实参考；通过输入/模型一致性核验后，X2与T2串行运行发布策略，保存真实失败、指标和原速视频，最后取回Mac并核大小/SHA、解码与抽帧目视。当前没有新的有效X2/T2动力学质量结论。
+以下段落记录准备时的状态，已由上方四条完成结果和本地验收更新。原生 hp_han Windows 两段式 SSH 会话81774当时返回唯一根，后续恢复为5845；模型一致性、四条回放与媒体已完成，不重做。此前“没有有效动力学质量结论”只适用于旧接口烟测和准备阶段。
 
 不创建/结算goal，不启agent，不改其他自动任务；衣服Q1演示继续搁置，用户采纳仍为null。发布状态以独立远端和三端旁收据为准。
 

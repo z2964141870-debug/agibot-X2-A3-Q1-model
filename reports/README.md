@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-02：[X2 Ultra/T2官方v0.1权重测试完成与四本地视频](README_MORPHMIMIC_V01_X2_T2_20261102.md)。两条真实SOMA分别原版重定向、同一ONNX/原motion动力学4/4完整；X2前进/起走关节误差 .04993/.05921rad，T2 .04128/.05636。2368帧本地解码/8图目视、58原证据6756783B大小SHA同，四guard回收0/GPU空闲/OOM0；末段仍有跟踪漂移，未数值验足底/承重滑移，不当Q1或自训unified完成。[结果清单](../data/manifests/morphmimic_v01_x2_t2_results_20261102.json)。
+
 2026-11-02进展：[X2/T2各两条真实SOMA重定向已完成](README_MORPHMIMIC_V01_X2_T2_20261102.md)，73LFS逐SHA/两guard回收0/原参数不改；继续50Hz转换和v0.1发布策略动力学测试，尚无新效果结论。
 
 2026-11-02：[MorphMimic v0.1 X2/T2发布权重测试](README_MORPHMIMIC_V01_X2_T2_20261102.md)。用户优先另外两机型，真实SOMA重定向准备中；旧改名G1轨迹只记接口烟测，不作策略质量结论。原G1足量训练已结束，剩余KP评测人工停止；本轮不训练。[清单](../data/manifests/morphmimic_v01_x2_t2_preparation_20261102.json)。

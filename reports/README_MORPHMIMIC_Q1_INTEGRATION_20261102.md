@@ -2,6 +2,16 @@
 
 2026-11-02，用户在完成 X2/T2 发布策略回放后要求继续尝试 Q1 训练，并提出结合 PrimebotTech SuperMimic-Q1 与 MorphMimic。本阶段落实这一授权，不创建新应用目标，不改变其他自动任务。
 
+## 11月3日共享学习阶段缓存交接准备
+
+E2048-V03两路首轮均完成WM10/motion1/critic20次更新，在return-KP分支报Torch CUDA OOM，完整轮0、KP optimizer0，整profile明确FAILED。G1申请158MiB时global free92.12MiB、Torch活allocated10.34GiB/闲置reserved672.97MiB；Q1申请174MiB时free94.12MiB、allocated10.33GiB/闲置reserved733.55MiB。尚未拿到完整迭代的非有限指标，不能把空记录当0。没有checkpoint、稳态吞吐或容量通过结论。[失败](../data/manifests/morphmimic_q1_shared_e2048_v03_results_20261103.json)/[部分计数与原栈](../logs/session_records/morphmimic_q1_shared_e2048_v03_results_20261103.json)。
+
+1818冻结输入在新代码部署前独立逐大小/SHA不变，controller610763/parent610777/两个rank均已退出、GPU15MiB，cgroup OOMkill0，原失败根和启动记录不覆写。启动阶段报告`479552ee8f87f38064c1b26d3e49567bdee64414`已独立40位远端和8文件501609B三端核验；该报告提交不改变执行冻结83ba835。[发布](../data/manifests/morphmimic_q1_shared_e2048_launch_publication_20261103.json)。
+
+下一独立[V04](../script/morphmimic_q1/full1h_shared_profile_e2048_handoff_v04_20261103.json)所有cfg逐字段同V03，保留每型2048/总4096、WM1024x10、motion-KP2048、H32、559片和8全更新。只增加world-model、motion和return-KP原生方法入口的global free<3GiB缓存交接，分物理/学习两类及学习相位记录实际free/活allocated/reserved变化与耗时；方法参数和返回值原样传递、原平均梯度后clip-Adam不改。该因素尚待实测，不提前认定闲置缓存解释全部缺口。
+
+本地10项CPU边界测试9过/1因无Torch跳过，涵盖默认禁用、充分空闲、低空闲、记录上界、三个原学习方法的调用次序/参数/返回及worker失败保护。服务器10项须发布后实测，然后新根8全更新，原12/30GiB/温度/OOM/锁不变；不复用失败根或权重。正式训练入口增加调用原`save_checkpoint()`存0轮，方便后续同初始化评测，profile行为不加此保存。正式训练仍未启动/采纳null，不新goal/agent或改其他自动任务。[准备](../data/manifests/morphmimic_q1_shared_e2048_handoff_v04_preparation_20261103.json)。
+
 ## 11月3日共享合计4096资源测试已启动
 
 执行冻结`83ba8358d9f266062597ce76e136e2df8e12c0e3`已独立40位远端及12记录502593B Git/Mac/25386逐大小SHA一致，服务器8项CPU测试全部通过。[发布收据](../data/manifests/morphmimic_q1_shared_e2048_preparation_publication_20261103.json)。新根`MORPHMIMIC_Q1_G1_FULL1H_PROFILE_E2048_V03_20261103`于北京时间02:24:38启动controller610763/start55752429，parent610777、G1 610778/Q1 610779；执行Python和1818冻结输入不因后续报告提交而改变。

@@ -5,10 +5,41 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock, patch
 
-from train_native import release_inactive_cuda_cache, tensor_sha, validate_plan, wait_for_workers
+from train_native import (release_inactive_cuda_cache, tensor_sha, validate_plan,
+                          wait_for_workers, wrap_learner_handoffs)
 
 
 class PhysicsHandoffTests(unittest.TestCase):
+    def test_disabled_learner_handoffs_preserve_bound_methods(self):
+        trainer, cuda = Mock(), Mock()
+        wrap_learner_handoffs(trainer, cuda, 0, {})
+        self.assertEqual(trainer.mock_calls, [])
+        self.assertEqual(cuda.mock_calls, [])
+
+    def test_each_learner_phase_checks_cache_before_its_original_method(self):
+        order, record = [], {}
+        cuda = Mock()
+        cuda.mem_get_info.return_value = (100, 1000)
+        cuda.memory_allocated.return_value = 250
+        cuda.memory_reserved.return_value = 800
+        cuda.empty_cache.side_effect = lambda: order.append("release")
+        methods = {
+            "fit_world_model": Mock(side_effect=lambda: order.append("wm") or 10),
+            "improve_policy": Mock(side_effect=lambda aux: order.append(aux) or 20),
+            "improve_policy_kp": Mock(side_effect=lambda: order.append("kp") or 30)
+        }
+        trainer = SimpleNamespace(**methods)
+        wrap_learner_handoffs(trainer, cuda, 300, record)
+        self.assertEqual(trainer.fit_world_model(), 10)
+        self.assertEqual(trainer.improve_policy("motion"), 20)
+        self.assertEqual(trainer.improve_policy_kp(), 30)
+        methods["improve_policy"].assert_called_once_with("motion")
+        self.assertEqual(order, ["release", "wm", "release", "motion", "release", "kp"])
+        state = record["learner_vram_handoff"]
+        self.assertEqual(state["cache_releases"], 3)
+        self.assertEqual(set(state["by_phase"]), {"world_model", "motion", "return_kp"})
+        self.assertNotIn("physics_vram_handoff", record)
+
     def test_disabled_handoff_does_not_touch_cuda(self):
         cuda, record = Mock(), {}
         release_inactive_cuda_cache(cuda, 0, record)
@@ -95,9 +126,11 @@ class WorkerLifecycleTests(unittest.TestCase):
         for value in (-1, True, 3.5):
             with self.subTest(handoff=value):
                 invalid = copy.deepcopy(plan)
-                invalid["physics_handoff_min_free_bytes"] = value
-                with self.assertRaises(ValueError):
-                    validate_plan(invalid)
+                for key in ("physics_handoff_min_free_bytes", "learner_handoff_min_free_bytes"):
+                    invalid[key] = value
+                    with self.assertRaises(ValueError):
+                        validate_plan(invalid)
+                    invalid.pop(key)
 
 
 if __name__ == "__main__":

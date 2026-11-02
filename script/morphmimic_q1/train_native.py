@@ -48,23 +48,27 @@ def validate_plan(plan):
         raise ValueError("Five-optimizer audit requires the return KP student")
     if plan["purpose"] == "profile" and (cfg["iterations"] > 8 or cfg["wm_only_iters"] != 0):
         raise ValueError("Resource profiles require at most eight full-update iterations")
-    handoff = plan.get("physics_handoff_min_free_bytes", 0)
-    if type(handoff) is not int or handoff < 0:
-        raise ValueError("Physics handoff requires a nonnegative integer byte threshold")
+    for key in ("physics_handoff_min_free_bytes", "learner_handoff_min_free_bytes"):
+        handoff = plan.get(key, 0)
+        if type(handoff) is not int or handoff < 0:
+            raise ValueError("VRAM handoff requires a nonnegative integer byte threshold")
     for value in (plan["source"], plan["output"], plan["human_root"], *plan["subsets"]):
         path = Path(value)
         if not path.is_absolute() or not path.resolve().is_relative_to(ROOT):
             raise ValueError("Keep native phase paths inside the sole project root")
 
 
-def release_inactive_cuda_cache(cuda, minimum_free_bytes, record):
+def release_inactive_cuda_cache(cuda, minimum_free_bytes, record, phase="physics"):
     if not minimum_free_bytes:
         return
     free, total = cuda.mem_get_info()
-    state = record.setdefault("physics_vram_handoff", dict(
+    key = "physics_vram_handoff" if phase == "physics" else "learner_vram_handoff"
+    state = record.setdefault(key, dict(
         minimum_free_bytes=minimum_free_bytes, checks=0, cache_releases=0,
-        total_seconds=0., events=[]))
+        total_seconds=0., events=[], by_phase={}))
     state["checks"] += 1
+    phase_stats = state["by_phase"].setdefault(phase, dict(checks=0, cache_releases=0))
+    phase_stats["checks"] += 1
     state["last_checked_free_bytes"] = int(free)
     if free >= minimum_free_bytes:
         return
@@ -72,20 +76,36 @@ def release_inactive_cuda_cache(cuda, minimum_free_bytes, record):
     cuda.synchronize()
     before = dict(free_bytes=int(free), total_bytes=int(total),
         allocated_bytes=int(cuda.memory_allocated()), reserved_bytes=int(cuda.memory_reserved()))
-    # Warp allocates outside Torch's allocator when physics graph replay resumes.
+    # Return inactive pages before an external allocator or a peer rank needs them.
     cuda.empty_cache()
     free_after, total_after = cuda.mem_get_info()
     after = dict(free_bytes=int(free_after), total_bytes=int(total_after),
         allocated_bytes=int(cuda.memory_allocated()), reserved_bytes=int(cuda.memory_reserved()))
     elapsed = time.monotonic() - started
-    event = dict(check=state["checks"], before=before, after=after, seconds=elapsed,
+    event = dict(check=state["checks"], phase=phase, before=before, after=after, seconds=elapsed,
         global_free_change_bytes=after["free_bytes"] - before["free_bytes"],
         torch_reserved_decrease_bytes=before["reserved_bytes"] - after["reserved_bytes"])
     state["cache_releases"] += 1
+    phase_stats["cache_releases"] += 1
     state["total_seconds"] += elapsed
     if len(state["events"]) < 8:
         state["events"].append(event)
     state["last_event"] = event
+
+
+def wrap_learner_handoffs(trainer, cuda, minimum_free_bytes, record):
+    if not minimum_free_bytes:
+        return
+
+    def wrap(original, phase):
+        def step(*args, **kwargs):
+            release_inactive_cuda_cache(cuda, minimum_free_bytes, record, phase)
+            return original(*args, **kwargs)
+        return step
+
+    for name, phase in (("fit_world_model", "world_model"),
+                        ("improve_policy", "motion"), ("improve_policy_kp", "return_kp")):
+        setattr(trainer, name, wrap(getattr(trainer, name), phase))
 
 
 def save(path, record):
@@ -217,6 +237,8 @@ def run_rank(plan, rank):
                 return stats
 
             trainer.collector.step = collect_steps
+            wrap_learner_handoffs(trainer, torch.cuda,
+                plan.get("learner_handoff_min_free_bytes", 0), record)
 
             def iteration():
                 nonlocal last_started, transitions
@@ -244,6 +266,8 @@ def run_rank(plan, rank):
                 return metrics
 
             trainer.iteration = iteration
+            if plan["purpose"] == "train":
+                record["initial_checkpoint"] = str(trainer.save_checkpoint())
             save(receipt, record)
             trainer.train()
             record["optimizer_adam_steps"] = {}

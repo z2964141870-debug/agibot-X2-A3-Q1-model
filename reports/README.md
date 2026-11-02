@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-03：[共享E2048首轮KP显存不足，保持规模扩展阶段缓存交接](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。两路WM10/motion1/critic20已更新、完整轮0，原FAILED/1818源不变/原进程退出；每进程约.7GiB闲置缓存未释，V04只加学习阶段切换时的低空闲交接，cfg不减/正式训练未启。[结果](../data/manifests/morphmimic_q1_shared_e2048_v03_results_20261103.json)/[准备](../data/manifests/morphmimic_q1_shared_e2048_handoff_v04_preparation_20261103.json)。
+
 2026-11-03：[共享合计4096环境资源测试已启动](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。冻结83ba835/12记录三端后controller610763、两rank610778/610779/1818输入；各409600预热后首轮计算/编译尚待完整结果。只读采样峰23453MiB、后现场23943MiB；尚未容量通过或正式训练，继续监督原8轮不改执行源。[启动](../data/manifests/morphmimic_q1_shared_e2048_v03_launch_20261103.json)。
 
 2026-11-03：[4096连续完整更新已执行，进入G1/Q1合计4096共享资源测试准备](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。V03八轮/五optimizer及Adam均齐、非有限0/1816源不变，显存峰22.767GB、稳态中位2.726秒；整pipeline单rank收尾dist错误保留/独立CPU保存审计通过。新增每型E2048候选及正式80000轮等曝光/等WM与策略样本量核算，尚未共享高容量测试或正式训练。[实测](../data/manifests/morphmimic_q1_e4096_handoff_v03_results_20261103.json)/[下一步](../data/manifests/morphmimic_q1_shared_e2048_preparation_20261103.json)。

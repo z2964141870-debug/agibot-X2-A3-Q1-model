@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-03共享E2048 V03首轮两路WM10/motion1/critic20已实更，但return-KP阶段同时CUDA OOM/完整轮0，整FAILED；各torch allocated约10.34GiB/闲置reserved约.66-.72GiB，分别申请158/174MiB而全局余92-94MiB，不能当容量通过。1818源独立SHA同/四PID退出/GPU15MiB/cgroup OOMkill0；失败根/部分更新/未完成轮指标缺失保留。下一独立同cfg V04保留每型2048/WM1024/imag2048/H32/559片，仅把3GiB低空闲缓存交接扩至WM、motion、return-KP入口并分相位实测；本地10测试9过1无Torch跳过，服务器及8轮待发布后。正式入口预存0轮原checkpoint，profile不续权重，未正式训练/采纳null，不新goal/agent或改其他任务。入口同INTEGRATION/shared_e2048_v03_results及handoff_v04_preparation。
+
 - 2026-11-03共享E2048各/合计4096已02:24:38启动，controller610763/start55752429、G1 610778/Q1 610779，执行冻结83ba8358d9f266062597ce76e136e2df8e12c0e3独立40位远端/12记录502593B三端SHA；启动前8服务器CPU测试全通过。1818输入/原boot-GPU根，02:41:35两路各409600预热后首轮未刷完整轮，日志0不等于内存0optimizer；只读227个1Hz样本峰23453MiB/19.745GB容器，后现场23943MiB，两个原worker仍CPU计算，无错误/容量与稳态待。原执行Python不改/失败不重启，先监督原8轮及保存收尾，不将profile当正式训练或步态收益；原采纳null/no goal-agent/其他自动任务保持。入口同INTEGRATION/shared_e2048_v03_launch及preparation_publication。
 
 - 2026-11-03 E4096显存交接V03真实8全更新/491520转移/五optimizer及保存Adam80-8-160-8-160/非有限0，peak allocated20653300224/reserved22766682112B，后6轮中位2.726281秒。7次仅空闲缓存交接共2.902秒/首释放13356761088B且活allocated各次不变，未CUDA OOM；1816冻结输入独立SHA同/三PID退出。原整pipeline仍FAILED：本地新增收尾误调用单rank未初始化dist，保存原栈；独立CPU检查ckpt8的329张量/全部Adam及时间标量通过、0新积分优化/无CUDA，不重复8轮。入口已仅shared调用原rank比较；下步新双rank E2048各/4096合计，WM1024/imag2048原网络H32，正式候选80000/WM-only1000/warmup200补齐每机器人410009600转移和原batch-example量，Adam次数不同如实列明。尚未执行共享高容量/正式训练/采纳null，不新goal/agent或改其他任务，入口同INTEGRATION/handoff_v03_results及shared_e2048_preparation。

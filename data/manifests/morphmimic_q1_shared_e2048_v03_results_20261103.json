@@ -1,0 +1,48 @@
+{
+  "stage": "MORPHMIMIC_G1_Q1_SHARED_E2048_V03",
+  "status": "FAILED_CUDA_OOM_FIRST_RETURN_KP_BRANCH",
+  "code_commit": "83ba8358d9f266062597ce76e136e2df8e12c0e3",
+  "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_G1_FULL1H_PROFILE_E2048_V03_20261103",
+  "iterations_completed_each": {
+    "g1": 0,
+    "q1": 0
+  },
+  "partial_optimizer_counts_each": {
+    "g1": {
+      "wm_opt": 10,
+      "policy_opt": 1,
+      "critic_opt": 20,
+      "kp_opt": 0,
+      "critic_kp_opt": 0
+    },
+    "q1": {
+      "wm_opt": 10,
+      "policy_opt": 1,
+      "critic_opt": 20,
+      "kp_opt": 0,
+      "critic_kp_opt": 0
+    }
+  },
+  "errors": {
+    "g1": "OutOfMemoryError: CUDA out of memory. Tried to allocate 158.00 MiB. GPU 0 has a total capacity of 23.56 GiB of which 92.12 MiB is free. Including non-PyTorch memory, this process has 11.57 GiB memory in use. Process 610779 has 11.88 GiB memory in use. Of the allocated memory 10.34 GiB is allocated by PyTorch, and 672.97 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)",
+    "q1": "OutOfMemoryError: CUDA out of memory. Tried to allocate 174.00 MiB. GPU 0 has a total capacity of 23.56 GiB of which 94.12 MiB is free. Process 610778 has 11.57 GiB memory in use. Including non-PyTorch memory, this process has 11.88 GiB memory in use. Of the allocated memory 10.33 GiB is allocated by PyTorch, and 733.55 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)"
+  },
+  "finite_metrics_unavailable_for_incomplete_iteration": true,
+  "checkpoints_saved": false,
+  "source_count": 1818,
+  "frozen_sources_independently_unchanged": true,
+  "original_pids_absent": [
+    610763,
+    610777,
+    610778,
+    610779
+  ],
+  "cuda_oom_observed": true,
+  "cgroup_oom_kill": 0,
+  "raw_record": "logs/session_records/morphmimic_q1_shared_e2048_v03_results_20261103.json",
+  "next_hypothesis": "Keep both E2048 ranks and every cfg field; release inactive Torch cache at world-model, motion and return-KP phase boundaries under low global free VRAM",
+  "cause_isolated": false,
+  "failed_root_preserved": true,
+  "formal_training": false,
+  "user_accepted_checkpoint": null
+}

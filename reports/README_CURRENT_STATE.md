@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-03：[E4096原完整批量资源测试运行中](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。00:56:16 controller602072/start55222136、worker602087，冻结e0586a1f3c3faf69df1ec521e49a82e9740db86b独立远端/9文件534089B三端后启动。559片/E4096/WM2048x10/motion-KP4096/H32/八全更新轮，409600预热转移15.1秒，首轮编译未落完整轮；GPU14193MiB/总14.35GB/OOM0。只监督同根原进程、不改执行输入；不当正式训练/容量最终通过或步态收益，采纳null/不新goal或agent。旧未执行1024草稿已移除。[启动](../data/manifests/morphmimic_q1_e4096_launch_20261103.json)。
+
 2026-11-03：[完整559集E512双rank资源验证已正常完成，优先4096原规模实测](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。冻结e2cae1d，外层/两worker均COMPLETED/回收0、五optimizer各80/8/160/8/160、共享全参数SHA和实际同帧抽样相同、1810源未变/非有限0/原四PID退出/GPU15MiB。末轮2.612秒，每rankreserved约5.65GB。用户要求env和显存尽量用足、保障训练量/效率；旧4096完整更新reserved16.54GiB确有证据，撤回1024默认选择。发布后新独立单Q1 E4096/WM2048/motion-KP4096-H32八轮完整更新资源测试，再按实测确定共享容量，尚未启动/未正式训练/未作步态收益结论，采纳null/不新goal或agent。[结果](../data/manifests/morphmimic_q1_full1h_profile_e512_v02_results_20261103.json)/[准备](../data/manifests/morphmimic_q1_high_capacity_preparation_20261103.json)。
 
 2026-11-03：[完整559片G1/Q1真实同帧训练数据已就绪](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。e5898a7/10文件449639B三端后4服务器CPU准入测试/原转换过滤全部通过：559/559保留/559human同帧、3604.72秒、1677帧G1 FK最大差6.990e-7m、1248冻结输入未变/guard回收0/0积分optimizer。1118Q1-human NPZ404751654B仅服务器，无替换/排除；空闲默认维护后总7.32GB满足12GiB准入。下一步发布后完整集E512双rank8轮资源验证，V01外层资源FAILED保留，未正式训练/未称步态改善/采纳null。[数据](../data/manifests/morphmimic_q1_full1h_data_results_20261103.json)。

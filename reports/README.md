@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-03：[当前Q1原批量4096资源实测已启动](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。00:56:16原boot/GPU下controller602072、worker602087，冻结e0586a1/9文件534089B三端；409600预热转移15.1秒，首轮完整更新编译中，GPU14193MiB/OOM0。E4096/WM2048x10/motion-KP4096/H32/559片，尚无完整更新容量或正式训练/步态结论。[启动](../data/manifests/morphmimic_q1_e4096_launch_20261103.json)。
+
 2026-11-03：[完整559集双本体资源验证通过，按用户要求优先实测4096原批量](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。E512-V02外层/两rank均完成、各五optimizer80/8/160/8/160、共享全SHA/同帧一致、1810源未变/非有限0/原进程退出。旧4096完整更新reserved16.54GiB有实测；撤回1024默认缩放，准备新单Q1 E4096/WM2048/motion-KP4096/H32八轮，正式训练量以4096x40000为参照，按实测提高吞吐。[资源结果](../data/manifests/morphmimic_q1_full1h_profile_e512_v02_results_20261103.json)/[高容量准备](../data/manifests/morphmimic_q1_high_capacity_preparation_20261103.json)。
 
 2026-11-03：[完整559片G1/Q1同源同帧数据已就绪](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。原转换/过滤559/559保留、559human同帧、3604.72秒，无替换排除；1248源未变/guard回收0/0optimizer。完整集双rank资源待，未正式训练或称步态改善。[结果](../data/manifests/morphmimic_q1_full1h_data_results_20261103.json)。

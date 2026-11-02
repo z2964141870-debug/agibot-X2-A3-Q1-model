@@ -43,6 +43,14 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### 原规模4096完整更新资源测试已启动
+
+准备提交`e0586a1f3c3faf69df1ec521e49a82e9740db86b`已push Q1并独立git ls-remote确认全40位，9文件534089B在Git/Mac/25386逐大小SHA一致。随后北京时间00:56:16唯一新profile启动，controller602072/start55222136、worker602087，原boot/GPU/唯一根；[启动现场](../data/manifests/morphmimic_q1_e4096_launch_20261103.json)。执行冻结一直为e0586a1，后续报告提交不改变它。
+
+配置为真实559片/单Q1 E4096、WM2048x10、motion/KP imagination4096/H32、原完整网络/compile/BF16、8全更新轮。日志409600预热转移15.1秒，首轮仍编译；落盘0轮/optimizer0不是内存尚无更新的证明。现场GPU14193MiB/24GiB、容器总约14.35GB/OOM0，只是编译期间采样，不能当最终峰值。原12GiB初始/30GiB运行保护与GPU串行保持，不修改正在运行的Python/输入或重开同根。
+
+三个刚拟定而未发布执行的E1024配置草稿已移除，旧已发布训练记录不改。接下来等待本次五optimizer、Adam状态、完整迭代耗时及allocator峰值，然后独立决定高容量共享配置；正式训练仍未开始，不以预热或资源profile称步态改善，采纳null。用户清除了应用goal，本阶段不创建或恢复目标，不改其他自动任务。
+
 ### 11月3日完整数据共享资源通过，优先恢复4096原规模
 
 冻结`e2cae1d8c47d401ba0c691f2c47855bfc89124aa`下，完整559条同源同帧集的E512-V02于北京时间00:32:24正常完成。外层COMPLETED、guard WORKER_COMPLETED/回收0；两rank各8轮，五optimizer及Adam状态各80/8/160/8/160，非有限0，1810份冻结输入前后不变。两个rank的WM/策略/两critic完整参数SHA相同，实际共同片帧抽样相同，morphology presence与replay保持独立；原controller599450/parent599457/rank599458和599459均已退出，GPU15MiB无计算/OOM0。[结果](../data/manifests/morphmimic_q1_full1h_profile_e512_v02_results_20261103.json)/[原始收据](../logs/session_records/morphmimic_q1_full1h_profile_e512_v02_20261103.json)。旧两片V01的外层资源失败原样保留。

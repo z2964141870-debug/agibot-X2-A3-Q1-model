@@ -32,3 +32,13 @@ G1原训练已跑满160000轮，12编号checkpoint内容审计通过，最终mot
 原生 hp_han Windows 两段式 SSH 会话81774已再次返回唯一根；上下文前快照 GPU15MiB/无计算/OOM0。运行前须重新核实时变资源。先保存本阶段记录，再补独立retargeter环境和真实参考；通过输入/模型一致性核验后，X2与T2串行运行发布策略，保存真实失败、指标和原速视频，最后取回Mac并核大小/SHA、解码与抽帧目视。当前没有新的有效X2/T2动力学质量结论。
 
 不创建/结算goal，不启agent，不改其他自动任务；衣服Q1演示继续搁置，用户采纳仍为null。发布状态以独立远端和三端旁收据为准。
+
+## 隔离环境与受保护入口
+
+复用现有uv0.13.6，新装Python3.12.16到data/environments/morphmimic_retarget_python_20261102，另建morphmimic_retarget_20261102。按固定retargeter原pyproject安装19依赖，含Newton1.3.0、Warp1.19.0、NumPy2.4.3、SciPy1.17.1；原Python3.11训练环境不变。使用源根PYTHONPATH确保运行的是固定源码及已核LFS资产，不误用安装时的指针副本。原生81774超时后已登记一次5845恢复；2026-11-02T08:11:27Z重新核原boot/GPU/唯一根、15MiB无计算/OOM0、容器16982175744B。第一次身份打印括号语法错误和首个镜像过长参数失败保留，后续独立命令才构成成功证据。
+
+新增run_guarded.py只包裹原命令，复用Q1Budget/runtime_guard：原GPU锁、24GiB准入、30GiB运行、100GiB磁盘余量、原boot/GPU/OOM/86度保护，单阶段最多7200秒/10秒回收、不自动重试、冻结输入前后SHA。服务器CLI import及本地语法已通过，不新增训练算法或改作者部署实现。LFS下载工具仅处理固定commit所需X2资产/源零姿态，保存原指针并逐大小/SHA核验，失败原件不覆盖。
+
+预先固定两条真实BVH：220713/walk_forward_loop_001__A022和walk_forward_start_002__A023，均来自此前559条，不按表现换片。两机器人各用原batch10/Newton/SOMA/Mujoco-facing/原软限和effector修正，再原convert_seed到50Hz、原export_assets核模型一致和原deploy.run。对应batch/subset在script/morphmimic_cross_robot/v01_*_20261102配置；导出不再--bake。只读发布包JSON与本地模型常量必须先比对，保持发布ONNX/PD/限矩/控制时步/真实失败定义。新输出根MORPHMIMIC_V01_X2_T2_REAL_EVAL_20261102与无效烟测分开。
+
+准备阶段51598b30f056ac0a813e8579194bc3084676a76f已独立远端核实，6记录388931B的Git/Mac主根/25386逐大小SHA相同。工具入口本阶段尚待独立发布核验，实际运行状态另记，不提前称重定向或新物理已通过。

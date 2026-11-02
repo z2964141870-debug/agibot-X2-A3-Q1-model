@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-02：[Q1 原生适配 V01 实现待真实验证](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。用户明确继续，新增独立进程绑定 actual entity/软件PD、全链路mask、state269上一执行命令/context62量化延迟/critic297与固定G1-Q1真实形态边界；本地语法通过，尚未真实CPU/积分/optimizer。G1默认历史替代原首次回填差异明示，旧源码不动；下一步发布镜像后verify_native_cpu，再Q1专用SOMA和原生两rank资源测试，未定正式训练轮次/未称改善。无agent/goal或其他任务变更，采纳null。[清单](../data/manifests/morphmimic_q1_native_preparation_20261102.json)。
+
 2026-11-02 19:35：[Q1+MorphMimic CPU 接口完成，原生训练未接入](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。12测试通过/64真实Q1姿态29↔22映射与FK变化0/28160电机数值对固定Primebot公式差0，零位轴/前臂检查支持正号零elbow offset；仅AST方程和静态FK，0新积分/推理/optimizer/无CUDA context。准备a3be66d独立远端/9文件415585B三端SHA；原bootGPU一致/GPU15MiB无计算/OOM0。morph154仅算法/geometry人工值，真实描述、delay/上一目标WM可见性、原生action/state/loss mask、配对SOMA及两rank共享资源仍待；正式规模轮次未定，不称Q1效果或训练已启动，采纳null/无goal或其他任务变更。[实模证据](../data/manifests/morphmimic_q1_cpu_contract_20261102.json)。
 
 2026-11-02：[Q1 与 MorphMimic 结合进入接口准备](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。用户最新要求继续尝试 Q1 训练并结合 PrimebotTech SuperMimic-Q1，覆盖上一阶段仅测试/不新训范围。选定共享 WM/策略/critic 和同源同帧对齐方向，计划 Q1 单体同控制对照；22 实关节缺 7 个 canonical 槽，需贯通动作/状态/损失 mask，候选 morphology154 与公开125维策略不兼容。原 G1、X2/T2结果和衣服搁置保持；当前未新重定向/物理/训练，规模和迭代待真实共享资源核验。无新agent/goal/自动任务变更，采纳null。[清单](../data/manifests/morphmimic_q1_integration_20261102.json)。

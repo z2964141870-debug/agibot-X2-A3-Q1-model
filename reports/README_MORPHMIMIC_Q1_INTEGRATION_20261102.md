@@ -43,6 +43,18 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### 原生适配准备 V01
+
+用户进一步明确沿此思路继续。新增 `assets.py`、`native_action.py`、`model_adapter.py`、`bootstrap.py` 与 `verify_native_cpu.py`，通过进程内显式绑定接入固定 v0.1；原冻结源码文件不改。当前仅完成实现与本地语法检查，真实描述/原生模块 CPU 验证还未执行，不宣称 Trainer 或物理训练已通过。
+
+选定状态 269 = 原物理 240 + 上一拍实际 canonical 命令 29；context 62 = 原 33 + 每槽实际量化延迟秒数 29，缺失槽为 0。世界模型每步将执行命令精确写入下一状态，critic 使用 297 = 原 268 特征 + 命令记忆，避免多步预测沿用过期的上一目标。记忆不是学习预测，也不加入物理拟合误差。Q1 22 关节的动作/探索执行、状态输出、拟合误差、RMSE 分母、策略 decoder 及观测噪声均需投影；新 CPU 入口含 NaN 缺失槽反例。
+
+Q1 entity 从 V3 XML 的原几何/惯量/限位与 armature 构建，移除场景 floor、旧传感器和旧 motor，由 mjlab 注册软件 PD/方向转速曲线 motor；足 mesh 和四个点保持碰撞几何，并命名用于 friction 随机化与参考过滤。尚待实际编译验证这一构建与原 FK 一致。真实 morphology 的候选固定边界来自 G1+Q1 两型，各自实际 PD/动作尺度/峰值力矩与原 9 项几何/质量；Q1 单体对照也使用这同一边界，不能各自重新缩放。
+
+延迟统一在 action 的物理子步应用，关闭底层重复延迟。Q1 连续 0--20 ms 后 round 到 2 ms；G1 保留 5 ms 离散 0--4 步采样和原 PD，统一在 episode 开始以上一命令 0/默认姿态作为历史。G1 原 DelayBuffer 首次命令回填当前目标，新接口改为显式默认历史，这是新增的启动语义差异，须写入 baseline/shared 两组配置，不称原版逐轨迹等价。训练仅接受 episode-fixed 延迟且不超过一控制周期。
+
+位置/线速度 tracking 核宽和高度终止按腿长比例同步到环境及世界模型，保留原权重与角度核宽；需 CPU 检查实际 reward/termination 配置，不能只看函数实现。新契约与旧 G1 checkpoint、发布 ONNX 均不兼容，从零初始化。当前没有新增动力学、策略仿真或 optimizer；下一步先发布/镜像后运行真实 CPU 契约，再做 Q1 SOMA 校准及串行 GPU 原生预检。
+
 独立缺失关节模块与 CPU 契约验证已完成；尚未注册 Q1 到原 Trainer，尚未新增重定向、物理 rollout 或训练。完整结果写入 `data/manifests/morphmimic_q1_integration_20261102.json`。当前资产 XML 自带 1 ms timestep，示例要求 2 ms，接入时须显式设置并核实 10 个子步；当前 CPU 核验没有修改 XML。
 
 延迟还涉及世界模型状态契约：Q1 源控制会在子步中使用上一时刻位置目标，原 MorphMimic 的 33 维 context 只含摩擦、encoder bias、CoM offset。必须明确延迟值和上一目标在模型中的可见性及一步更新规则，不能只把 PD 换掉就宣称完整接入。奖励/终止按尺寸缩放和 22 关节误差权重也须在仿真与 imagination 两侧一致；CPU bridge 中的真实关节 RMSE 不代表训练损失已经替换。

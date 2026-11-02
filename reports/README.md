@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-03：[共享合计4096环境资源测试已启动](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。冻结83ba835/12记录三端后controller610763、两rank610778/610779/1818输入；各409600预热后首轮计算/编译尚待完整结果。只读采样峰23453MiB、后现场23943MiB；尚未容量通过或正式训练，继续监督原8轮不改执行源。[启动](../data/manifests/morphmimic_q1_shared_e2048_v03_launch_20261103.json)。
+
 2026-11-03：[4096连续完整更新已执行，进入G1/Q1合计4096共享资源测试准备](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。V03八轮/五optimizer及Adam均齐、非有限0/1816源不变，显存峰22.767GB、稳态中位2.726秒；整pipeline单rank收尾dist错误保留/独立CPU保存审计通过。新增每型E2048候选及正式80000轮等曝光/等WM与策略样本量核算，尚未共享高容量测试或正式训练。[实测](../data/manifests/morphmimic_q1_e4096_handoff_v03_results_20261103.json)/[下一步](../data/manifests/morphmimic_q1_shared_e2048_preparation_20261103.json)。
 
 2026-11-03：[E4096-default同样次轮Warp CUDA OOM，验证低空闲显存交接](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。V02首轮完整五optimizer/非有限0、1814输入独立SHA不变/原进程退出，整体失败保留。新V03保持4096及全部cfg，只在仿真入口空闲显存<3GiB释放Torch未占用缓存并测量耗时/实际变化，本地8测试7过1跳过，真实资源验证待；正式训练未启。[V02结果](../data/manifests/morphmimic_q1_e4096_default_v02_results_20261103.json)/[V03准备](../data/manifests/morphmimic_q1_e4096_handoff_v03_preparation_20261103.json)。

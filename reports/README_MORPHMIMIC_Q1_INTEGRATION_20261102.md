@@ -2,6 +2,14 @@
 
 2026-11-02，用户在完成 X2/T2 发布策略回放后要求继续尝试 Q1 训练，并提出结合 PrimebotTech SuperMimic-Q1 与 MorphMimic。本阶段落实这一授权，不创建新应用目标，不改变其他自动任务。
 
+## 11月3日共享合计4096资源测试已启动
+
+执行冻结`83ba8358d9f266062597ce76e136e2df8e12c0e3`已独立40位远端及12记录502593B Git/Mac/25386逐大小SHA一致，服务器8项CPU测试全部通过。[发布收据](../data/manifests/morphmimic_q1_shared_e2048_preparation_publication_20261103.json)。新根`MORPHMIMIC_Q1_G1_FULL1H_PROFILE_E2048_V03_20261103`于北京时间02:24:38启动controller610763/start55752429，parent610777、G1 610778/Q1 610779；执行Python和1818冻结输入不因后续报告提交而改变。
+
+两rank各E2048/WM1024x10/motion-KP2048/H32/559片/同帧latent，warmup200各409600转移。02:41:35收据仍未刷新完整首轮，不能把落盘optimizer0解释成内存没有更新。两个原worker持续CPU计算、未报错误；全局显存227个约1Hz只读样本中峰23453MiB、容器峰19745140736B，后续单次现场23943MiB。采样只用nvidia-smi/cgroup，无CUDA context/策略推理，不是同一时刻各rank峰值相加。[原采样](../logs/session_records/morphmimic_q1_shared_e2048_v03_resources_20261102T183022Z.json)/[启动及现场](../data/manifests/morphmimic_q1_shared_e2048_v03_launch_20261103.json)。
+
+继续只监督原8轮和完整收尾，原30GiB/温度/OOM/GPU锁等守卫保持。不热改运行中的Python或从失败根重试。此时尚未证明两路完整更新容量、稳态效率或步态效果，正式训练未启动；下方“共享候选尚未执行”为启动前历史。
+
 ## 11月3日4096连续更新与高容量共享候选
 
 显存交接V03于北京时间02:01:16启动，执行冻结`0abbc6b70ea0f29d62d274140394393f26934d22`独立40位远端及11文件509834B三端核验。实际完成8全更新轮，五optimizer hook和保存Adam均为80/8/160/8/160，491520转移含409600预热、迭代81920，非有限0。峰allocated20653300224B/reserved22766682112B；后六轮TensorBoard迭代中位2.726281秒，按40000轮只算迭代约30.292小时，不含保存/评估且不是长期吞吐保证。原E512是双rank，不能将两者直接称同任务加速倍数。[结果](../data/manifests/morphmimic_q1_e4096_handoff_v03_results_20261103.json)。

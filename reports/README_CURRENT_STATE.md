@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-02：[原MorphMimic G1跑满160000轮，开始独立评测准备](README_MORPHMIMIC_G1_EVALUATION_20261102.md)。10:17现场核原status COMPLETED/guard回收0、06:21:57训练完成、五optimizer1600000/158000/3160000/158000/3160000、非有限0；原两PID退出/原bootGPU根/OOM0/GPU15MiB空闲。未重训，训练冻结71859ca保持。12编号checkpoint及latest已存，内容审计和固定三片0/40000/160000两个接口原版动力学回放待发布后执行；无步态改善或跨本体结论。目标未结算/采纳null/无agent/其他任务不变。[完整收据](../data/manifests/morphmimic_faithful_g1_completion_20261102.json)。
+
 2026-11-02研究：[FRDV运动学代码发布](research/2026-11-02/README.md)/[检查](README_RESEARCH_CHECK_20261102.md)。仅运动学/G1，动力学验证未公开，12文本与完整树静态核验；106请求105成功，main去重163→164/H001不变。列为基线后候选，原MorphMimic冻结训练与衣服演示搁置决定保持；本轮无实时训练核验，服务器自动认证未通过/镜像待，实际发布见[收据](../data/manifests/research_watch_sync_20261102.json)。
 
 2026-11-02：[衣服Q1官方policy演示暂搁置](README_CLOTH_Q1_POLICY_20261102.md)。用户提出SMPL→Q1重定向→官方policy→动力学视频后，获知没有匹配权重，明确“那就先算了”。未开始转换/策略推理/仿真/新训，现训源码71859ca和复现监督继续，未改goal或自动任务。01:13:18原G1快照130961/160000轮、五optimizer持续/非有限0、原PID启动tick不变；尚未物理评估。原始衣服源只读约束保持。

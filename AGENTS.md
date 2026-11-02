@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-02用户要求检查并测试此前复现：10:17经原生Windows同25386核原训练06:21:57正常完成160000轮/五optimizer1600000-158000-3160000-158000-3160000/非有限0，guard回收0、原两PID退出/原bootGPU根/OOM0/GPU15MiB空闲；71859ca冻结未改。12编号及latest已存，内容审计与固定三片0/40000/160000原版motion/keypoint评测待发布后执行，6最终原速视频，停走片为1h外单列；未重训或预称效果/unified完成，采纳null/不结算goal/无agent/其他任务保持。入口MORPHMIMIC_G1_EVALUATION及completion清单。
+
 - 2026-11-02用户提出衣服SMPL→Q1重定向→PrimebotTech SuperMimic-Q1 policy→动力学视频；刷新main仍118338b/releases空/完整树无公开权重，本用户25386有界检查也未找到匹配checkpoint。用户答复“哦没有是吗，那就先算了”，因此该衣服演示分支暂时搁置；未新转换、训练、策略推理或动力学仿真，不换用起身PPO/旧Q1/G1权重冒充。原MorphMimic复现和监督继续，未改goal或自动任务；恢复本分支先落实匹配官方policy/资产。原始衣服源只读/仅复制约束保持。入口README_CLOTH_Q1_POLICY_20261102.md。
 
 - 2026-11-02用户确认衣服最原始数据由Windows访问10.26.67.170，用户llx；现场认证成功，实际为`\\10.26.67.170\HumanPlus1000\common\L-Sequence`及`S-Sequence`，L有49日期目录，旧722会话仅历史未重扫。只允许列目录/读取/复制，禁止源端编辑、删除、移动、重命名、改权限及写测试；转换/报告/缓存写项目副本，认证不保存。当前25386的data/yuanqi_ops保留CLOTHO206/197齐全、Demo100 92/noGT、91预览HDF5、95SMPL/90A3派生等，来源重叠不相加/非Q1就绪；两原地hand_follow仍在Mac。T11三开发片约2.77-3.10cm非独立测试或机器人效果。本轮只读元数据/无新衣服测试GPU训练，现训不改，入口CLOTH_DATA_INVENTORY及清单/旁收据。

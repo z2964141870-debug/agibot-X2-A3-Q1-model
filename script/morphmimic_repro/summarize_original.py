@@ -12,7 +12,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--label", default="Original MorphMimic G1 | 64 envs | WM/imag batch 128 | H32")
+    parser.add_argument("--wm-only-iters", type=int, default=500)
+    parser.add_argument("--smooth-iters", type=int, default=500)
     args = parser.parse_args()
+    if args.wm_only_iters < 0 or args.smooth_iters < 1:
+        parser.error("Warmup must be nonnegative and smoothing positive")
 
     import matplotlib
     matplotlib.use("Agg")
@@ -57,21 +62,22 @@ def main():
     for ax, (title, y) in zip(axes.flat, panels):
         smooth = np.full_like(y, np.nan)
         for index, step in enumerate(x):
-            start = np.searchsorted(x, step - 499)
+            start = np.searchsorted(x, step - args.smooth_iters + 1)
             window = y[start:index + 1]
             finite = window[np.isfinite(window)]
             if len(finite):
                 smooth[index] = finite.mean()
         ax.plot(x, y, color="#5691b9", alpha=0.5, linewidth=0.8)
         ax.plot(x, smooth, color="#1e624c", linewidth=2)
-        ax.axvline(500, color="#555555", linewidth=0.8, linestyle=":")
+        ax.axvline(args.wm_only_iters, color="#555555", linewidth=0.8, linestyle=":")
         ax.set_title(title, fontsize=11)
         ax.set_xlabel("Training Iteration")
         ax.grid(alpha=0.2)
         if not np.isfinite(y).any():
             ax.text(0.5, 0.5, "Metric Not Recorded", ha="center", transform=ax.transAxes)
-    fig.suptitle("Original MorphMimic G1 | 64 envs | WM/imag batch 128 | H32\n"
-                 "Thin: logged windows; thick: trailing 500 iterations; WM-only through iteration 500",
+    fig.suptitle(args.label + "\n"
+                 f"Thin: logged windows; thick: trailing {args.smooth_iters} iterations; "
+                 f"WM-only through iteration {args.wm_only_iters}",
                  fontsize=12)
     fig.savefig(args.output / "training.png", dpi=160)
     fig.savefig(args.output / "training.pdf")
@@ -85,7 +91,8 @@ def main():
         "event_sources": event_sources,
         "log_rows": len(ordered), "tags": tags,
         "first_iteration": int(x[0]), "last_iteration": int(x[-1]),
-        "smoothing": "Mean of available logged windows whose iteration is in [current-499,current]; not fabricated per-iteration observations.",
+        "smoothing": f"Mean of available logged windows in [current-{args.smooth_iters - 1},current]; not fabricated per-iteration observations.",
+        "label": args.label, "wm_only_iterations": args.wm_only_iters,
         "failure_ratio": "Upstream failures divided by episodes_finished in the same log window; missing when denominator is zero.",
         "reward_scale": "Upstream raw units; maximum reward was not separately logged.",
         "policy_quality_evaluation": False,

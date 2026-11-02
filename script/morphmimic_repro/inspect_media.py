@@ -16,10 +16,13 @@ def main():
 
     progress = json.loads((args.review / "progress.json").read_text())
     if progress["status"] not in ("DEPLOYMENT_REVIEW_COMPLETED",
-                                  "DEPLOYMENT_REVIEW_COMPLETED_WITH_RENDER_TIMEOUT_RECORDED"):
+                                  "DEPLOYMENT_REVIEW_COMPLETED_WITH_RENDER_TIMEOUT_RECORDED",
+                                  "EVALUATION_COMPLETED"):
         raise RuntimeError("Deployment must be finished before media inspection")
     checks = []
     for replay in progress["replays"]:
+        if "video" not in replay:
+            continue
         path = Path(replay["video"]["path"])
         summary = replay["upstream_summary"]
         expected = (summary["frames"] if summary["result"] == "completed"
@@ -41,7 +44,8 @@ def main():
                         thumb = Image.fromarray(array).resize((384, 216))
                         sheet.paste(thumb, (384 * column, 38))
                         draw.text((384 * column + 8, 7),
-                                  f"it{replay['iteration']} | frame {index} | {index / 50:.2f}s",
+                                  f"it{replay['iteration']} {replay.get('interface', 'motion')}"
+                                  f" | frame {index} | {index / 50:.2f}s",
                                   fill="black")
                 frames += 1
         finally:

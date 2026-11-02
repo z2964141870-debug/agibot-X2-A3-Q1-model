@@ -29,3 +29,9 @@
 训练图工具仅新增显式标题/预热/平滑窗口参数以标注1024环境、WM512/imag-KP1024和2000轮预热，原默认烟测图口径保持。独立CPU完成契约反例与语法检查通过后，按显式stage/audit/commit/push/独立40位远端及三端发布快照大小SHA核验再执行。
 
 计划输出：data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_EVALUATION_20261102。当前只有完成检查与入口准备，尚未执行权重审计/物理回放，尚无步态改善结论；实际启动和结果见后续收据。未调用goal结算或变更其他自动任务，无agent；衣服Q1演示仍搁置、采纳null。
+
+## 入口已发布与内容审计
+
+afb34a030b8164654451a76a6dad82d181722119已独立核远端40位SHA，9记录417205B Git/Mac主根/25386及发布快照逐大小SHA一致；本地和原服务器各5项完成契约测试通过。[入口发布旁收据](../data/manifests/morphmimic_faithful_g1_evaluation_entry_publication_20261102.json)。并发研究新增两提交已正常rebase并保留，未强推或覆盖研究记录。controller542501/start50075060、worker542506已启动独立评测，启动前183upstream匹配。
+
+北京时间10:38:53已完成全部12编号checkpoint内容审计，五Adam计数/网络归一化/Adam状态有限性均通过，latest与160000 SHA相同。10:41:08中间快照40000的motion/keypoint各三片均完整；未训练0轮三个motion片分别在46/43/44帧失败。最终160000物理和视频仍在执行，上述中间结果不代表最终结论。媒体工具仅补完整评测状态/跳过无视频对照/接口标注；不改变原仿真和终止定义。

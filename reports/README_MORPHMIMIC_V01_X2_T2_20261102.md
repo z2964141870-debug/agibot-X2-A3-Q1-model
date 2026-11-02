@@ -58,3 +58,11 @@ X2所需72网格和SOMA零姿态共73个LFS对象137180786B逐指针大小/SHA�
 四条50Hz NPZ实际有限，前进1032帧/20.64秒、起走152帧/3.04秒；native关节均31，X2全身34body/T2为32body。X2原export_assets在独立新根正常结束，check_same_model与IMU FK最大误差5.16e-8通过、原baked JSON前后SHA不变；未使用--bake。下一步T2模型导出，再两型各两片原deploy.run和原速视频。
 
 T2原模型导出亦正常完成，IMU FK最大误差6.66e-8、模型一致性/输入前后SHA/guard回收0通过。增加run_v01_suite.py串行执行固定4片，每片经原run_guarded、最多3600秒、无重试；固定motion接口和原deploy.run，不改策略或仿真。仅设置已有Mesa软件EGL/4渲染线程和12核CPU调度，完整50fps/1280x720原速录制；policy、机器人JSON、参考、模型及部署源码在每片前后校验。守卫与外层控制器分离会话后执行，可抵御SSH断线，结束必须核进程退出及本地媒体。
+
+首轮policy suite controller567363以Mesa软件EGL执行首个X2前进，策略日志约4-11ms/步，但软件渲染每帧数秒；仅重设策略4核/渲染8核仍慢。为解决出片瓶颈，已明确SIGTERM停止本suite/其守卫，原进度/命令/stdout保留，不把未完成回放作效果结论。后续使用独立EGL图形库的新尝试目录，不覆盖原记录或训练。
+
+prepare_egl.py只从NVIDIA官方redistrib_595.112.07.json取得与现驱动完全相同的图形包，整归档518908308B/SHA256 3ea206a1f7536703bec86fa83708dcbe153aada74f63c83ebeb5bc3995508f49核验后，仅提取用户态图形库到data/environments/morphmimic_egl_595_20261102。不运行驱动安装器、不改系统EGL/认证/原环境；运行前还须独立GPU锁守卫内实测vendor/renderer与渲染帧，不能只由文件存在称硬件渲染成功。
+
+前两次EGL探测失败已保留：首个提取器混入归档内32位同名兼容库，V02改为显式ELF64/x86_64校验并复用同一已核归档；第二次vendor JSON使用相对库路径，随后在独立配置改为绝对路径。三个CPU边界测试覆盖32位/ARM/大小端/截断通过。三个guard均回收原进程；第三次静态探测egl_probe_v03成功，NVIDIA Corporation / RTX3090 / OpenGL4.6 NVIDIA595.112.07，1280x720共16帧0.261633546秒、最小像素std44.97，0动力学积分/optimizer。原失败目录保留，不修改系统驱动；预发布探测文件以guard记录的逐SHA为准，不将f346950旧元数据误称包含后来EGL工具。
+
+软件首轮在最后日志step266后明确停止，guard STOPPED_SIGNAL/worker -15/reaped，未取得完整摘要；这是出片流程更换，不是策略跌倒或训练失败。下一轮新目录policy_egl_v02，使用同一原release ONNX/模型/控制/两条真实参考，完整1280x720/50fps原速，GPU资源守卫不变。可复现入口run_v01_suite.py --assets-root <real根> --output <real根>/policy_egl_v02 --graphics-dir /opt/data/private/ZHY/data/environments/morphmimic_egl_595_v02_20261102；未安装系统驱动或改原作者源码。

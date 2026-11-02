@@ -27,9 +27,12 @@ def save(path, value):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, allow_abbrev=False)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--assets-root", type=Path)
+    parser.add_argument("--graphics-dir", type=Path)
     parser.add_argument("--code-commit", required=True)
     args = parser.parse_args()
     output = args.output.resolve(strict=True)
+    assets_root = (args.assets_root or output).resolve(strict=True)
     if not output.is_relative_to(ROOT / "data/supermimic_for_q1"):
         parser.error("Use the isolated real-reference evaluation root")
     progress = output / "policy_suite_progress.json"
@@ -42,11 +45,18 @@ def main():
         EGL_PLATFORM="surfaceless", LIBGL_ALWAYS_SOFTWARE="1",
         __EGL_VENDOR_LIBRARY_FILENAMES="/usr/share/glvnd/egl_vendor.d/50_mesa.json",
         PYTHONUNBUFFERED="1")
+    renderer_label = "existing Mesa software EGL, LP_NUM_THREADS=4"
+    if args.graphics_dir is not None:
+        graphics = args.graphics_dir.resolve(strict=True)
+        os.environ["LD_LIBRARY_PATH"] = str(graphics / "lib")
+        os.environ["__EGL_VENDOR_LIBRARY_FILENAMES"] = str(HERE / "nvidia_egl_595_20261102.json")
+        os.environ.pop("LIBGL_ALWAYS_SOFTWARE", None)
+        renderer_label = "isolated matching NVIDIA EGL595.112.07"
     cpus = sorted(os.sched_getaffinity(0))[:12]
     os.sched_setaffinity(0, cpus)
     record = dict(status="RUNNING", started_utc=datetime.now(timezone.utc).isoformat(),
         pid=os.getpid(), code_commit=args.code_commit, cpu_affinity=cpus,
-        renderer="existing Mesa software EGL, LP_NUM_THREADS=4",
+        renderer=renderer_label,
         interface="motion", optimizer_updates=0, replays=[], commands=[])
     child = None
 
@@ -64,11 +74,13 @@ def main():
                 summary = output / (label + ".json")
                 video = output / (label + ".mp4")
                 inputs = [DEPLOY / "policy.onnx", DEPLOY / (robot + ".json"),
-                    output / ("assets_" + robot) / (robot + ".xml"),
-                    output / ("assets_" + robot) / "clips" / robot / (clip + ".npz"),
+                    assets_root / ("assets_" + robot) / (robot + ".xml"),
+                    assets_root / ("assets_" + robot) / "clips" / robot / (clip + ".npz"),
                     SOURCE / "deploy/run.py", SOURCE / "deploy/sim2sim/sim_node.py",
                     SOURCE / "deploy/sim2sim/policy_node.py", SOURCE / "deploy/sim2sim/obs.py",
                     HERE / "run_guarded.py", Path(__file__).resolve()]
+                if args.graphics_dir is not None:
+                    inputs += [HERE / "nvidia_egl_595_20261102.json", graphics / "receipt.json"]
                 command = [sys.executable, str(HERE / "run_guarded.py"),
                     "--output", str(output / ("policy_" + label)), "--source", str(SOURCE),
                     "--cwd", str(SOURCE), "--code-commit", args.code_commit,
@@ -76,7 +88,7 @@ def main():
                 for path in inputs:
                     command += ["--input", str(path)]
                 command += ["--", str(PYTHON), "-u", "-m", "deploy.run",
-                    "--deploy", str(DEPLOY), "--assets", str(output / ("assets_" + robot)),
+                    "--deploy", str(DEPLOY), "--assets", str(assets_root / ("assets_" + robot)),
                     "--robot", robot, "--clip", clip, "--interface", "motion",
                     "--summary", str(summary), "--video", str(video)]
                 record.update(phase=label)

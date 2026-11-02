@@ -63,7 +63,7 @@ def save(path, record):
 
 def tensor_sha(value):
     import torch
-    raw = value.detach().cpu().contiguous().view(torch.uint8).numpy().tobytes()
+    raw = value.detach().cpu().contiguous().reshape(-1).view(torch.uint8).numpy().tobytes()
     return hashlib.sha256(raw).hexdigest()
 
 

@@ -5,10 +5,18 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock, patch
 
-from train_native import validate_plan, wait_for_workers
+from train_native import tensor_sha, validate_plan, wait_for_workers
 
 
 class WorkerLifecycleTests(unittest.TestCase):
+    def test_scalar_hazard_parameters_have_lossless_hashes(self):
+        try:
+            import torch
+        except ImportError:
+            self.skipTest("Run tensor verification in the existing server Torch environment")
+        self.assertEqual(tensor_sha(torch.tensor(1.)), tensor_sha(torch.tensor([1.])))
+        self.assertNotEqual(tensor_sha(torch.tensor(1.)), tensor_sha(torch.tensor(2.)))
+
     def test_second_rank_failure_is_seen_while_first_rank_is_running(self):
         first = SimpleNamespace(poll=Mock(return_value=None))
         second = SimpleNamespace(poll=Mock(return_value=2))

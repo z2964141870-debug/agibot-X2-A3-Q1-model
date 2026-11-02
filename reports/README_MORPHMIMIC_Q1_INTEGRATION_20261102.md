@@ -49,6 +49,8 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 新增 `train_native.py` 调用原v0.1 Trainer，在同一GPU上两个原生rank，share all/同片同帧latent/原平均梯度后clip-Adam；分别记录五optimizer hook与Adam状态次数、实际总采集转移、共享参数完整SHA、独立buffer和共同帧抽样。修复子rank失败被另一个存活rank掩盖的退出等待，并累计非有限更新；3项本地反例通过。尚未实际原生共享训练。
 
+执行前另核出原 hazard 含标量参数，完整参数SHA入口先展平后按原始字节散列；新增数值反例在既有服务器Torch环境运行，本机无Torch时明确跳过，不把纯标准库检查当张量实测。
+
 冻结资源候选为每机器人E512、WM256、motion/KP imagination512、H32、原完整网络、8全更新轮、原compile和BF16。这个profile从零初始化、只用于执行与资源检查，权重不用于正式训练；两固定片不足以当正式训练集或证明跨本体收益。先CPU配对与G1零更新执行，再实际两rank profile；通过后扩559共同SOMA并冻结足量训练配置。正式规模/轮次尚未决定，旧300/1200秒门不适用，24/30GiB等原保护不变。
 
 ### 两片真实参考和 Q1 原生 GPU 检查完成

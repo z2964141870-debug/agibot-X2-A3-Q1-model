@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-02 Q1原batch pilot V01构造时报size转float，guardreaped255/无CSV训练，原根保留；bc697df正确提交独立远端/11文件426708B三端已核，启动记录手抄commit错误单独补正不覆原件。固定源码独立CPU/CUDA构造均通过，普通env模块从site-packages导入；新增固定源码/PYTHONPATH/模块路径核验与原constructor异常栈，V02待/单因未隔离。采纳null，无agent/goal及其他任务变更，入口同INTEGRATION/pilot_preparation_publication。
+
 - 2026-11-02 Q1 SOMA校准V02完成：42c1bf4独立远端/6文件410156B三端SHA后CPU真实free+22/15映射偏移回算/人身高比.414851576，原XML未变，V01失败保留/0积分optimizer。新增两固定片原Newton配置、原50Hz/filter/sidecar与逐片对齐转换、16环境24步原生PD/延迟/reward/observation零更新验证入口，仅语法/pilot与GPU待。原bootGPU再核15MiB/26度/18552647680B/OOM0；共享Trainer/正式训练未启/采纳null，无agent/goal或其他任务变更，入口同INTEGRATION/soma_calibration_results。
 
 - 2026-11-02 SOMA校准准备0b5623c独立远端/12文件450753B三端SHA；CPU V01在Newton mesh加载因相对meshdir失败/未校准/0积分optimizer，失败根日志保留。入口已绝对化source/XML/output，新V02独立根待执行，不覆盖或借X2几何；原CPU13组结果保持。原生GPU与两rank/正式训练仍待/采纳null，不启agent/goal或变更其他任务，入口同INTEGRATION及calibration_preparation_publication。

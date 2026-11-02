@@ -43,6 +43,12 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### Pilot V01 初始化失败与导入来源约束
+
+准备 `bc697df3d48eecdf9623d9ef49cb22f5dcee08c7` 独立远端及11文件426708B三端核验后，V01原batch在构造pipeline时返回 `could not convert string to float: 'size'`，guard正常回收退出255，未生成CSV/未训练。原根 `MORPHMIMIC_Q1_SOMA_PILOT_GUARD_V01_20261102` 保留。该次启动的commit元数据手工抄成 `bc697dfc568db9236b97e6e32962db73f31c5f77`，是记录错误；实际部署文件已按正确已发布commit逐SHA核验，补正不覆盖原记录、不重算作训练。
+
+对同一固定源码和配置的独立CPU构造及有守卫CUDA构造均通过。普通retarget环境会从site-packages导入SOMA，因此新入口强制固定源码/PYTHONPATH、核实实际模块路径，并只给原constructor添加异常栈。此时尚未隔离初始化失败的单因；V02使用独立输出/guard根，不改原源文件或重用失败产物。
+
 ### SOMA 校准 V02 完成与真实 pilot 准备
 
 路径修复 `42c1bf4797637592cf6b16a6c4259509a46d31f5` 已独立远端与 6 文件 410156 字节三端大小/SHA 核验。新 V02 CPU 校准成功，15 映射点偏移回算通过，真实 free+22 模型为 29 coordinates/28 DOFs，pelvis 比例为 0.4148515761（此值是 Q1/零姿态人身高比例，不是 Q1/G1 腿长比）。原 XML SHA 未变，原 V01 加载失败与日志保留。结果见 [校准原始结果](../data/manifests/morphmimic_q1_soma_calibration_results_20261102.json)。

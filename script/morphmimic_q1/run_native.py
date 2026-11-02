@@ -79,6 +79,7 @@ def run(args):
         env = os.environ.copy()
         env.update(GIT_PYTHON_GIT_EXECUTABLE=str(
             ROOT / "data/environments/morphmimic_git_tools/usr/bin/git"),
+            PYTHONPATH=os.pathsep.join((str(args.source / "src"), str(args.source))),
             OMP_NUM_THREADS="4", MKL_NUM_THREADS="4", OPENBLAS_NUM_THREADS="4",
             TORCHINDUCTOR_COMPILE_THREADS="1", MUJOCO_GL="egl", PYTHONUNBUFFERED="1")
         os.environ.update(env)

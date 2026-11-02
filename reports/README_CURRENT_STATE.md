@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-02：[Q1 pilot V01初始化失败/独立CPU及CUDA构造通过](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。bc697df独立远端/11文件426708B三端后原batch返回size转float错误/guard回收255/未CSV训练，原根保留；该次启动commit手抄元数据错误另记补正，真实源码SHA已核。现强制SOMA固定源码导入及完整构造异常栈，新V02待；未隔离单因/采纳null，无agent/goal或其他任务变更。
+
 2026-11-02：[Q1 SOMA V02 校准已完成](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。42c1bf4独立远端/6文件410156B三端SHA后CPU通过，15映射/真实free+22/人身高比.414851576，原XML未变/V01失败保留/0积分optimizer。固定两片Newton pilot、原50Hz/sidecar转换及16环境24步零更新检查入口准备，真实GPU/共享Trainer/正式训练待，采纳null/无agent、goal或其他任务变更。
 
 2026-11-02：[Q1 SOMA 校准首轮路径故障已修复待执行](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。0b5623c 独立远端/12文件450753B三端SHA；V01因相对meshdir在加载前失败，原日志/目录保留、0动力学optimizer。入口先绝对化source/XML/output，新V02根校准待；CPU13组通过仍有效，原生GPU/共享Trainer及正式训练尚未执行，采纳null/无agent或goal及其他任务变更。

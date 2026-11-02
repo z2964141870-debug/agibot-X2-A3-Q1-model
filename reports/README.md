@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-02：[Q1 pilot 初始化诊断与固定源码入口](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。V01构造失败保留，独立CPU/CUDA构造通过，新增固定SOMA导入来源及完整异常栈；V02待/未训练。[发布与补正](../data/manifests/morphmimic_q1_pilot_preparation_publication_20261102.json)。
+
 2026-11-02：[Q1 SOMA V02 完成与真实 pilot/原生 GPU 准备](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。15映射校准/原XML保护通过，新增原Newton/原50Hz与sidecar转换和16环境执行契约检查入口；未GPU或正式训练。[校准](../data/manifests/morphmimic_q1_soma_calibration_results_20261102.json)。
 
 2026-11-02：[Q1 SOMA 校准路径修复与独立 V02](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。V01在加载mesh前因相对路径失败，原根保留；先绝对化路径再新根校准，未动力学训练。[前阶段发布](../data/manifests/morphmimic_q1_calibration_preparation_publication_20261102.json)。

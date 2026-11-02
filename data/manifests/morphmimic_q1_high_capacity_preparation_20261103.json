@@ -1,0 +1,52 @@
+{
+  "stage": "MORPHMIMIC_Q1_HIGH_CAPACITY_PREPARATION",
+  "status": "PREPARED_NOT_EXECUTED",
+  "user_priority": "Use high environment counts and available VRAM to improve throughput while preserving training exposure and update volume",
+  "original_scale_first": true,
+  "single_q1_profile": "script/morphmimic_q1/full1h_single_profile_e4096_v01_20261103.json",
+  "previous_e1024_candidates_launched": false,
+  "previous_e1024_candidates_default_selection_withdrawn": true,
+  "full_data_shared_e512_result": "data/manifests/morphmimic_q1_full1h_profile_e512_v02_results_20261103.json",
+  "historical_e4096_evidence": {
+    "record": "data/manifests/supermimic_q1_E4096_profile_20261026.json",
+    "report": "reports/README_SUPERMIMIC_Q1_E4096_20261025.md",
+    "num_envs": 4096,
+    "wm_batch": 2048,
+    "wm_batches": 10,
+    "imag_batch": 4096,
+    "horizon": 32,
+    "peak_cuda_allocated_bytes": 16746968576,
+    "peak_cuda_reserved_bytes": 17760780288,
+    "limitation": "An earlier Q1 implementation and capacity test, not a completed 40000-iteration run of the new native v0.1 Q1/two-rank contract"
+  },
+  "measurement_requirements": [
+    "Native full-data Q1 E4096 with original WM2048 and motion/KP imagination4096 H32",
+    "Eight real full-update iterations with all five optimizer and Adam counts, finite gradients, compile costs, steady iteration time and CUDA allocator peaks",
+    "Original process cleanup, OOM/boot/GPU identity, and unchanged frozen input checks",
+    "Determine same-GPU shared capacity separately from single-robot capacity; no inference from E512 or environment count alone"
+  ],
+  "training_selection": {
+    "reference_num_envs": 4096,
+    "reference_iterations": 40000,
+    "reference_wm_only_iters": 500,
+    "reference_warmup_env_steps": 100,
+    "reference_lr_decay_iters": 250000,
+    "reference_environment_transitions_per_robot": 410009600,
+    "reference_wm_optimizer_updates": 400000,
+    "reference_motion_optimizer_updates": 39500,
+    "reference_motion_critic_optimizer_updates": 790000,
+    "reference_kp_optimizer_updates_for_current_return_student": 39500,
+    "reference_kp_critic_optimizer_updates_for_current_return_student": 790000,
+    "rule": "Prefer measured high-capacity configurations; preserve or increase exposure and batch-update volume, record every scaling difference and measured throughput",
+    "not_an_exact_release_recipe": "Current integration uses the return KP student with jitter and the new Q1 command/mask/control contract; v0.1 README's current COMMON recipe uses copy without preview mixing and 60000 iterations, while the paper unified result reports 40000"
+  },
+  "runtime_memory_guard_gib": 30,
+  "gpu_work_serialized": true,
+  "automatic_failure_retry": false,
+  "profile_weights_reusable": false,
+  "formal_training_started": false,
+  "user_accepted_checkpoint": null,
+  "new_goal_created": false,
+  "agents_started": false,
+  "other_automations_changed": false
+}

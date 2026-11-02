@@ -1,0 +1,165 @@
+{
+  "stage": "MORPHMIMIC_Q1_G1_FULL1H_PROFILE_E512_V02",
+  "status": "COMPLETED",
+  "code_commit": "e2cae1d8c47d401ba0c691f2c47855bfc89124aa",
+  "observed_utc": "2026-11-02T16:44:33.181638+00:00",
+  "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_G1_FULL1H_PROFILE_E512_V02_20261102",
+  "purpose": "profile",
+  "formal_training": false,
+  "profile_weights_reusable": false,
+  "outer_status": "COMPLETED",
+  "guard_status": "WORKER_COMPLETED",
+  "cleanup": {
+    "worker_started": true,
+    "worker_pid": 599457,
+    "worker_group": 599457,
+    "worker_reaped": true,
+    "worker_return_code": 0
+  },
+  "workers": {
+    "g1": {
+      "status": "COMPLETED",
+      "iterations_completed": 8,
+      "optimizer_updates": {
+        "wm_opt": 80,
+        "policy_opt": 8,
+        "critic_opt": 160,
+        "kp_opt": 8,
+        "critic_kp_opt": 160
+      },
+      "optimizer_adam_steps": {
+        "wm_opt": [
+          80
+        ],
+        "policy_opt": [
+          8
+        ],
+        "critic_opt": [
+          160
+        ],
+        "kp_opt": [
+          8
+        ],
+        "critic_kp_opt": [
+          160
+        ]
+      },
+      "shared_parameter_sha": {
+        "wm": "683e2a173d596c5ebfd012eda69e084e6dda006bb1885a78f3130dbadd38d88d",
+        "policy": "2709693e030249cab597a545337e60cb70570cd6c7aa5afa173884d578ac03ae",
+        "critic": "0d330a2e08b8768e397c85181047b9b2eb2c6418e1ba5477ca79e7405e8feb92",
+        "critic_kp": "60269d028cd6fdd669ea1e80a424eb934859d900996a9a104a0242b6e7c9f8cf"
+      },
+      "native_rank_checks_passed": true,
+      "iteration_seconds": [
+        132.8438579030335,
+        379.70075158099644,
+        3.090660230955109,
+        2.8916573009919375,
+        2.8680054399883375,
+        2.76534251391422,
+        2.811524802003987,
+        2.6123080339748412
+      ],
+      "nonfinite_updates": {
+        "wm/nonfinite_steps": 0,
+        "policy/nonfinite_steps": 0,
+        "critic/nonfinite_steps": 0,
+        "kp/nonfinite_steps": 0,
+        "critic_kp/nonfinite_steps": 0
+      },
+      "collected_environment_transitions": 61440,
+      "reference_clips": 559,
+      "peak_cuda_allocated_bytes": 5197560320,
+      "peak_cuda_reserved_bytes": 5649727488,
+      "host_collectives": {
+        "calls": {
+          "broadcast": 88,
+          "all_reduce": 920,
+          "all_gather": 16,
+          "all_gather_object": 0
+        },
+        "staged_input_bytes": 4361701564
+      }
+    },
+    "q1": {
+      "status": "COMPLETED",
+      "iterations_completed": 8,
+      "optimizer_updates": {
+        "wm_opt": 80,
+        "policy_opt": 8,
+        "critic_opt": 160,
+        "kp_opt": 8,
+        "critic_kp_opt": 160
+      },
+      "optimizer_adam_steps": {
+        "wm_opt": [
+          80
+        ],
+        "policy_opt": [
+          8
+        ],
+        "critic_opt": [
+          160
+        ],
+        "kp_opt": [
+          8
+        ],
+        "critic_kp_opt": [
+          160
+        ]
+      },
+      "shared_parameter_sha": {
+        "wm": "683e2a173d596c5ebfd012eda69e084e6dda006bb1885a78f3130dbadd38d88d",
+        "policy": "2709693e030249cab597a545337e60cb70570cd6c7aa5afa173884d578ac03ae",
+        "critic": "0d330a2e08b8768e397c85181047b9b2eb2c6418e1ba5477ca79e7405e8feb92",
+        "critic_kp": "60269d028cd6fdd669ea1e80a424eb934859d900996a9a104a0242b6e7c9f8cf"
+      },
+      "native_rank_checks_passed": true,
+      "iteration_seconds": [
+        132.91801410808694,
+        379.7000329979928,
+        3.090784115018323,
+        2.8952333820052445,
+        2.8676119899610057,
+        2.7671504550380632,
+        2.8134329189779237,
+        2.612304167007096
+      ],
+      "nonfinite_updates": {
+        "wm/nonfinite_steps": 0,
+        "policy/nonfinite_steps": 0,
+        "critic/nonfinite_steps": 0,
+        "kp/nonfinite_steps": 0,
+        "critic_kp/nonfinite_steps": 0
+      },
+      "collected_environment_transitions": 61440,
+      "reference_clips": 559,
+      "peak_cuda_allocated_bytes": 5198671872,
+      "peak_cuda_reserved_bytes": 5647630336,
+      "host_collectives": {
+        "calls": {
+          "broadcast": 88,
+          "all_reduce": 920,
+          "all_gather": 16,
+          "all_gather_object": 0
+        },
+        "staged_input_bytes": 4361701564
+      }
+    }
+  },
+  "shared_full_parameter_sha_equal": true,
+  "actual_common_frame_draws_equal": true,
+  "independent_presence_buffers": true,
+  "independent_replay_samples": true,
+  "common_clip_count": 559,
+  "frozen_input_count": 1810,
+  "frozen_inputs_unchanged": true,
+  "original_pids_absent": true,
+  "idle_gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08, 15 MiB, 24576 MiB, 26",
+  "idle_cgroup_bytes": 9968791552,
+  "raw_record": "logs/session_records/morphmimic_q1_full1h_profile_e512_v02_20261103.json",
+  "formal_training_started": false,
+  "gait_quality_evaluated": false,
+  "user_accepted_checkpoint": null
+}

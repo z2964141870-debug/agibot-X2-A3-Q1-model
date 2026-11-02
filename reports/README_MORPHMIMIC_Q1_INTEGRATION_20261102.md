@@ -43,6 +43,18 @@ MorphMimic 原版统一 29 关节、14 跟踪 body、240 维状态、93 维 prop
 
 ## 当前进度与下一步
 
+### 11月3日完整数据共享资源通过，优先恢复4096原规模
+
+冻结`e2cae1d8c47d401ba0c691f2c47855bfc89124aa`下，完整559条同源同帧集的E512-V02于北京时间00:32:24正常完成。外层COMPLETED、guard WORKER_COMPLETED/回收0；两rank各8轮，五optimizer及Adam状态各80/8/160/8/160，非有限0，1810份冻结输入前后不变。两个rank的WM/策略/两critic完整参数SHA相同，实际共同片帧抽样相同，morphology presence与replay保持独立；原controller599450/parent599457/rank599458和599459均已退出，GPU15MiB无计算/OOM0。[结果](../data/manifests/morphmimic_q1_full1h_profile_e512_v02_results_20261103.json)/[原始收据](../logs/session_records/morphmimic_q1_full1h_profile_e512_v02_20261103.json)。旧两片V01的外层资源失败原样保留。
+
+每rank实际61440转移，含51200预热；前两轮编译约132.9/379.7秒，后六轮约2.61--3.09秒，末轮2.612秒。两rank peak allocated约5.20GB/各reserved约5.65GB，这不是整卡同一时刻精确峰值。该结果只证明完整数据共享执行与当前规模的资源，不是正式训练或步态改善。
+
+用户指出3090先前可以4096，并进一步要求env尽量高、显存尽量利用、保障训练量和效率。[旧完整批量实测](README_SUPERMIMIC_Q1_E4096_20261025.md)确有E4096/WM2048x10/actor4096-H32、峰reserved17760780288B=16.54GiB；此前直接默认E1024缩放证据不足。旧记录属于另一Q1实现/资源profile，不能证明当前两个v0.1 Trainer同时驻留也能各4096；同样不能仅凭上游28GB估计就否定本卡容量。
+
+下一独立根`MORPHMIMIC_Q1_FULL1H_PROFILE_E4096_V01_20261103`按[发布配置](../script/morphmimic_q1/full1h_single_profile_e4096_v01_20261103.json)测单Q1：E4096、WM2048x10、motion/KP imagination4096/H32、原网络、BF16与compile、8全更新轮、559片、从零初始化。12GiB初始/原30GiB运行线、GPU锁/boot/GPU/OOM/温度保护保持；上限10800秒只约束资源测试，不套旧300/1200秒物理门。profile权重不续训。共享同卡容量随后单独实测，按整体吞吐选择高容量而非以低显存为目标；三个未发布执行的E1024草稿撤回默认地位。
+
+正式训练参照E4096x40000：每机器人含100步预热共410009600转移、WM400000次更新、500轮WM-only后motion及当前return-KP各39500/critic各790000。任何缩放必须列明采样、batch和Adam步差异，不把相同曝光称完全等价；优先不缩原batch。当前接入使用return KP/jitter，新Q1控制/缺失槽/命令记忆也是改动；v0.1 README当前COMMON为copy且60000轮，论文展示的是40000轮shared，不混称逐字复刻最新版全部配方。[决策清单](../data/manifests/morphmimic_q1_high_capacity_preparation_20261103.json)。当前高容量profile尚未启动、正式训练未启/采纳null；不创建goal/agent或改变其他自动任务。
+
 ### 11月3日完整一小时559片原过滤/真实配对通过
 
 执行来源`e5898a7597dd07ef970ae8673dcddc04a561c33d`已独立40位远端及10文件449639B三端核验。首次独立SSH查询超时保留，随后HTTPS branch ref及独立git ls-remote均确认同一提交；未改认证或Git持久配置。[发布收据](../data/manifests/morphmimic_q1_full1h_retarget_publication_20261103.json)。服务器4项资源准入CPU测试实际全部通过，随后controller598471完成原CPU转换/过滤/配对，guard正常reaped0/1248冻结输入未变、未创建CUDAcontext、0积分/optimizer。

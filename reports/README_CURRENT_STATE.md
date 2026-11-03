@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-04：[综合writer完整等曝光记录错误已修复/真实CPU验证通过](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。b64a7ef独立40位远端/7份516836B三端后20项服务器CPU全过/.770秒、9源前后SHA同/4原交付记录核同；两种实际元数据格式均完成JSON/Markdown输出，14共享比较为测试夹具、临时输出已删，不称共享质量结果。未导入Torch/MuJoCo，无新物理优化；GPU健康空闲/V03 FAILED/五旧PID退/V04目录无，追加验证仍待原问题，现有goal与十分钟监督保持。[收据](../logs/session_records/q1_conclusion_writer_publication_20261104.json)。
+
 2026-11-04：[综合结论生成补齐实际输出回归，准备发布](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。发现完整标准等曝光记录因dict重名关键字失败，现修复制mapping后固定目标/禁止补训。旧极简与标准完整记录均实写JSON/Markdown，14比较/缺前缀/初末及等曝光边界保留；合成共享比较夹具不当真实结果。92本地85过7依赖跳过/服务器补验待，V04追加决定仍待、无新训练物理，目标active不结算。[准备](../data/manifests/q1_shared_conclusion_writer_preparation_20261104.json)。
 
 2026-11-04：[V04内存准入与采样修复已三端发布并补验，未启动训练](README_Q1_SHARED_TRAINING_20261104.md)。3bfd06e独立40位远端/12份556060B三端同，服务器29项CPU全过2.172秒/9源同，采样器对自身两次现场读取正常结束；无CUDA积分优化。cache6698295296B高于4GiB、低默认维护触发，实际准入正确拒绝、不强制清理。V03仍FAILED、五旧PID退/GPU健康空闲/V04目录无；原追加同档验证问题仍待，goal再次实读active/q1应用更新并独立保存核ACTIVE十分钟同线程，不新goal-agent或结算。[发布及补验](../logs/session_records/q1_shared_v04_admission_publication_20261104.json)。

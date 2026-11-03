@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-04综合writer修复b64a7ef独立40位远端/7份516836B三端后20服务器CPU全过/.769628秒、9源同/4原交付记录核同；真实Primebot元数据的旧极简及派生完整等曝光记录均实写14比较JSON/Markdown、缺前缀Unavailable/不补训或结算。共享比较为合成夹具、临时输出已删除，不当真实共享评估；无Torch/MuJoCo/积分优化。原bootGPU健康1MiB25度None/OOM0、V03 FAILED/五旧PID退/V04目录无，原追加决定仍待/goal active/q1十分钟保持/采纳null，不新goal-agent；入口Q1_SHARED_EVALUATION_PIPELINE及conclusion_writer_publication。
+
 - 2026-11-04继续现有goal，前轮3bfd/5b内存修复为已核进展。本轮综合writer实际输出回归复现标准完整等曝光记录dict重复target关键字，旧实际极简收据可用；修mapping复制再固定目标/禁止补训，双格式均实写14比较JSON/Markdown/缺前缀Unavailable，合成共享夹具不作实际效果。92本地85过7依赖跳过，服务器CPU及发布待；0新训练物理/V04追加决定仍待/采纳null，goal active/q1十分钟原样，不新goal-agent或结算。入口Q1_SHARED_EVALUATION_PIPELINE及conclusion_writer_preparation。
 
 - 2026-11-04 V04准入采样修复3bfd06e独立40位远端/12份556060B三端后29服务器CPU全过2.172秒/9源前后SHA同，真实两样本/OBSERVATION_ENDED/无CUDA积分优化；cache6698295296B按4GiB门拒绝，低8GiB维护触发不强制清理。GPU1MiB25度None无计算/OOM0，V03仍FAILED、五旧PID退/V04目录不存在；原追加验证问题待。goal再次实读active/q1应用更新后独立保存ACTIVE十分钟同线程，其他任务不改/不新goal-agent/不结算/采纳null；准备快照PENDING由此实际补验覆盖，入口Q1_SHARED_TRAINING及v04_admission_publication。

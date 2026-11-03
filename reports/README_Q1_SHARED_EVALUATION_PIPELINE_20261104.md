@@ -4,7 +4,11 @@
 
 ## 已完成的代码
 
-综合报告生成补验准备：现有Primebot实际等曝光收据只含status，原writer可用；但标准exposure_comparison输出还含target_q1_transitions和additional_training_authorized，原dict(**exposure, ...)会因重复关键字抛TypeError。新增真实write_conclusions文件输出回归已先复现该错误，改为从mapping复制再显式覆盖目标和禁止追加训练字段；不改原收据或比较门。测试分别输入旧极简收据和标准完整记录，实际写出14项比较的JSON/Markdown，确认缺共同前缀保持Unavailable、完整配方与等曝光分开、102563840/410009600暴露量不混同、不授权补训或结算goal。共享比较数据为明确的合成测试夹具，不是实际共享评估结果。原串行测试曾替换write_conclusions，新增测试覆盖了该缺口。本地92项85通过、7项缺依赖跳过，服务器CPU补验及发布尚待。[准备清单](../data/manifests/q1_shared_conclusion_writer_preparation_20261104.json)。
+综合报告生成补验：现有Primebot实际等曝光收据只含status，原writer可用；但标准exposure_comparison输出还含target_q1_transitions和additional_training_authorized，原dict(**exposure, ...)会因重复关键字抛TypeError。新增真实write_conclusions文件输出回归已先复现该错误，改为从mapping复制再显式覆盖目标和禁止追加训练字段；不改原收据或比较门。测试分别输入旧极简收据和标准完整记录，实际写出14项比较的JSON/Markdown，确认缺共同前缀保持Unavailable、完整配方与等曝光分开、102563840/410009600暴露量不混同、不授权补训或结算goal。共享比较数据为明确的合成测试夹具，不是实际共享评估结果。原串行测试曾替换write_conclusions，新增测试覆盖了该缺口。本地92项85通过、7项缺依赖跳过。[准备清单](../data/manifests/q1_shared_conclusion_writer_preparation_20261104.json)的PENDING为发布前快照，现以补验收据覆盖。
+
+实际补验完成：b64a7ef403723a394c30c5c2241253a6a83fd67b已独立40位远端核同，7份516836B在权威Git/Mac主根/25362逐大小SHA相同。服务器20项CPU检查全部通过，用时0.769628秒；9项输入前后SHA同，4份原Primebot记录逐大小SHA核对原交付清单。另用真实原审计/固定及全库结果/旧极简收据，和从实际102563840转移审计生成的完整标准记录，分别执行writer；两份临时合成共享比较报告均含14比较、393库及9固定元数据，保留等曝光不可用/缺前缀Unavailable/禁止补训/goal未完成。临时输出已删除，只保留验证收据，未当作真实共享交付。[CPU原结果](../logs/session_records/q1_conclusion_writer_cpu_v01_20261104.json)、[发布与三端证据](../logs/session_records/q1_conclusion_writer_publication_20261104.json)。
+
+本次进程未导入Torch/MuJoCo，无CUDA或新积分/优化。收尾原boot/GPU健康，GPU1MiB/25度/None、无计算、OOM0；V03仍FAILED、五旧PID退、V04目录不存在，追加同档验证的原问题仍待。现有goal与十分钟监督保持，不因完成报告工具而结算整个五阶段。
 
 补齐完整片步态汇总：`comparison.py`和`native_compare.py`的每侧结果均附足部p95/参考差、>10mm事件/交替、承重滑速、倾角、上肢RMSE及幅度差的逐片等权分布；`shared_delivery.py`在综合README输出相应诊断表。失败片不进入完整片分布，缺载荷不填零，缺完整片诊断拒绝比较。使用现有Primebot788份初末JSON及原SHA清单得到全库最终306/393无交替事件、308/393双脚p95<=5mm，基线详见[首轮结果](README_PRIMEBOT_Q1_FINAL_RESULTS_20261104.md)。本地81项74过7依赖跳过；50afcfd独立40位远端及12份559976B三端后，04:43服务器15项纯CPU检查与原JSON独立汇总全部通过/.989702秒，分组逐值相同/八源前后SHA同。未新积分或优化，V04仍未启动。[本次发布与服务器证据](../logs/session_records/q1_library_diagnostics_publication_20261104.json)。
 

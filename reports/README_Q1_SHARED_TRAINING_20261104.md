@@ -2,6 +2,8 @@
 
 2026-11-04。应用目标实读active，原心跳q1已通过应用工具更新并读回ACTIVE、每10分钟、同一线程。监督指令已转向当前共享阶段，保留Primebot终态，不再等待已结束的旧PID。整个五阶段目标尚未完成，用户采纳null。
 
+最新补记：源码预算修复4fc06b98df269b0b62b2e0ee053162f10a9fc73a已独立40位远端及10文件499878B三端核同，5项服务器CPU检查全过。V02于01:07启动，但两rank在bootstrap导入GitPython时因新Runner遗漏原生Git工具环境而退出；原五PID已退出、冻结输入未变、OOM0/GPU健康，0物理转移/优化，不解释成容量失败。新V03仅补与原生入口一致的GIT_PYTHON_GIT_EXECUTABLE，并使用独立新根；两型真实bootstrap＋原Trainer CPU导入均已通过、无CUDA上下文。新增子进程环境回归通过，本地controller共8过1待Torch；原真实保存CPU检查已经补过。发布后服务器核新Runner环境测试，再推进实际1024八轮。原V01/V02失败完整保留。[V02终态](../logs/session_records/q1_shared_v02_import_failure_20261104.json)、[真实导入](../logs/session_records/q1_shared_native_imports_20261104.json)、[前次发布](../logs/session_records/q1_shared_source_fix_publication_20261104.json)。
+
 ## 首轮与转接
 
 Primebot已在10000轮正常早停，固定9/9、全393/393和Mac完整交付通过；完整转接门重算passed/authorizes_morph_training=true。跟踪改善不等于自然步态合格，低脚底离地和承重滑移仍在。详见[首轮结果](README_PRIMEBOT_Q1_FINAL_RESULTS_20261104.md)。
@@ -30,6 +32,6 @@ controller将配置传入共享guard并记下源码预算。新配置script/q1_f
 data/environments/morphmimic_original_20261029/bin/python -u script/q1_five_stage/controller.py run --config script/q1_five_stage/conditional_shared_v02_20261104.json --code-commit VERIFIED_FULL_COMMIT
 ```
 
-此页修复准备时尚未启动V02；实际执行与发布身份以后续launch/publication收据为准，不把计划写成训练进度。原生Q1 motion/KP、G1初末评估、原速媒体和综合比较仍须完成。早停Primebot缺少等410009600曝光检查点如实缺失，不追加训练。
+上面命令及“尚未启动V02”为首次修复准备历史；V02现已失败，下一次入口为script/q1_five_stage/conditional_shared_v03_20261104.json、独立MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V03_20261104根。实际执行与发布身份以后续launch/publication收据为准，不把计划写成训练进度。原生Q1 motion/KP、G1初末评估、原速媒体和综合比较仍须完成。早停Primebot缺少等410009600曝光检查点如实缺失，不追加训练。
 
 只复用hp_han Windows原生SSH至25362的既有会话78774；本次连接可用，未重建SSH或重启服务器。目标模式持续监督当前实际pipeline、guard、PID/starttick、完整metrics、GPU/cgroup和保存；无变化安静，有新异常、质量变化或完成主动报告。不开agent，不改其他自动任务。

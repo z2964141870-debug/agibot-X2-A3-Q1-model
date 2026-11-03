@@ -1,0 +1,63 @@
+{
+  "stage": "Q1_SHARED_V02_NATIVE_IMPORT_FAILURE",
+  "checked_utc": "2026-11-03T17:13:38.804894+00:00",
+  "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V02_20261104",
+  "execution_commit": "4fc06b98df269b0b62b2e0ee053162f10a9fc73a",
+  "pipeline": {
+    "status": "FAILED",
+    "started_utc": "2026-11-03T17:07:43.828595+00:00",
+    "code_commit": "4fc06b98df269b0b62b2e0ee053162f10a9fc73a",
+    "gate": {
+      "passed": true,
+      "gate_reason": [
+        "full_primebot_gate_and_mac_delivery_passed"
+      ],
+      "paired_metrics": {
+        "joint_rmse_rad": {
+          "initial": 0.5530572732289633,
+          "final": 0.11961717158555984
+        },
+        "body_relative_rmse_m": {
+          "initial": 0.05832540368040403,
+          "final": 0.010358979925513268
+        }
+      },
+      "authorizes_morph_training": true,
+      "natural_gait_thresholds_are_diagnostic": true,
+      "user_accepted_checkpoint": null
+    },
+    "automatic_formal_retry": false,
+    "profile_weights_reused": false,
+    "user_accepted_checkpoint": null,
+    "source_storage_budget_bytes": 268435456,
+    "environments_per_robot": 1024,
+    "error": "RuntimeError: Shared failure does not authorize another capacity attempt",
+    "ended_utc": "2026-11-03T17:07:58.633663+00:00"
+  },
+  "guard_status": "WORKER_FAILED",
+  "cleanup": {
+    "worker_started": true,
+    "worker_pid": 46595,
+    "worker_group": 46595,
+    "worker_reaped": true,
+    "worker_return_code": 1
+  },
+  "all_original_pids_exited": [
+    46589,
+    46590,
+    46595,
+    46596,
+    46597
+  ],
+  "frozen_input_count": 1761,
+  "frozen_inputs_unchanged": true,
+  "failure": "Both ranks import GitPython before torch.cuda.set_device; native Git tool path missing in new phase environment",
+  "new_physical_transitions": 0,
+  "new_optimizer_updates": 0,
+  "capacity_fallback_authorized": false,
+  "next_config": "script/q1_five_stage/conditional_shared_v03_20261104.json",
+  "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 1, 24, None",
+  "oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+  "whole_goal_complete": false,
+  "user_accepted_checkpoint": null
+}

@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from controller import MORPH_UPSTREAM, OPTIMIZERS, audit_checkpoint, choose_profile, execute, updates
+from controller import MORPH_UPSTREAM, OPTIMIZERS, ROOT, Runner, audit_checkpoint, choose_profile, execute, updates
 from contracts import expected_transitions
 
 
@@ -21,6 +21,20 @@ def capacity_failure():
 
 
 class ControllerTests(unittest.TestCase):
+    def test_phase_preserves_native_git_runtime_for_every_child(self):
+        with tempfile.TemporaryDirectory() as directory, patch("controller.signal.signal"), \
+             patch("controller.subprocess.Popen") as child, patch("controller.oom_count", return_value=0), \
+             patch("controller.recovery", return_value="None"), patch("controller.save"), \
+             patch("controller.read", return_value=dict(status="COMPLETED")), \
+             patch.dict("controller.os.environ", {"Q1_TEST_INHERITED": "preserved"}):
+            child.return_value.wait.return_value = 0
+            runner = Runner(dict(morph_python="/python"), Path(directory), [])
+            runner.phase("profile", ["worker"], 60, 1024)
+            env = child.call_args.kwargs["env"]
+            self.assertEqual(env["GIT_PYTHON_GIT_EXECUTABLE"], str(
+                ROOT / "data/environments/morphmimic_git_tools/usr/bin/git"))
+            self.assertEqual(env["Q1_TEST_INHERITED"], "preserved")
+
     def test_failed_full_gate_creates_no_experiment_or_runner(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

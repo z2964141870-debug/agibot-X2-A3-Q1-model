@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-04共享源码预算修复4fc06b9已独立远端/10文件499878B三端及5服务器CPU过；V02两rank实际bootstrap导入缺GIT_PYTHON_GIT_EXECUTABLE退出，原五PID退/冻结输入同/OOM0/GPU健康/0物理优化。V03只补既有原生Git工具路径、独立新根，两型真实CPU bootstrap＋Trainer导入已过无CUDA、新Runner环境回归过，发布核验后各1024八全更新全过自动全新160000；失败保留、仅容量OOM回退/正式不自重启。goal active/q1十分钟ACTIVE/采纳null，不新goal-agent或结算/改其他任务。入口Q1_SHARED_TRAINING_20261104。
+
 - 2026-11-04用户再问目标模式，get_goal实读active，原q1应用工具更新并核ACTIVE每10分钟/同线程，监督转共享。首共享00:46在worker创建前STOPPED_STORAGE/源码142503936B超原64MiB/磁盘余525.55GB，0新物理optimizer，原FAILED保留。共享V02显式256MiB源码预算，原默认及24/30GiB/锁/86C/100GiB保护不变，本地21通过1待Torch；发布和服务器CPU准入后按原授权首次实际各1024八轮及全新160000，实际启动见新收据。仅容量OOM回退/正式不自重启/采纳null/不新goal-agent、不结算或改其他任务。入口Q1_SHARED_TRAINING_20261104。
 
 - 2026-11-04 Primebot10000轮按三连续临时门正常早停/102563840转移/WM100000-actor10000-critic200000，原训练23:51:41回收、最终交付00:08:15完成。初末固定0/9→9/9、全库0/393→393/393；仍低脚底离地/承重滑移，非自然步态。2444工件81635329B/六原速视频3174帧/十八帧目视Mac大小SHA齐，104源未变、原五PID退出/两guard回收0/OOM0/新GPU健康。goal active/q1每10分钟ACTIVE保持；发布镜像Mac收据后重算全门才自动共享各1024八轮及从零160000，容量OOM严格回退。等曝光不足410009600不补训，原生评估比较仍待/采纳null/无agent其他任务不改。入口PRIMEBOT_Q1_FINAL_RESULTS_20261104，当前共享尚未启动，后续以新收据为准。

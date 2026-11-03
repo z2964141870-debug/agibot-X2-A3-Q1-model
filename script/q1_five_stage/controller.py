@@ -4,6 +4,7 @@ import argparse
 import gc
 import json
 import math
+import os
 from pathlib import Path
 import shutil
 import signal
@@ -174,9 +175,11 @@ class Runner:
             "--seconds", str(seconds), "--maximum-bytes", str(maximum_bytes)]
         for path in inputs:
             cmd.extend(("--input", path))
+        env = dict(os.environ, GIT_PYTHON_GIT_EXECUTABLE=str(
+            ROOT / "data/environments/morphmimic_git_tools/usr/bin/git"))
         with (self.output / (name.replace("/", "_") + "_controller.log")).open("x") as log:
             self.child = subprocess.Popen([*cmd, "--", *command], cwd=ROOT, stdin=subprocess.DEVNULL,
-                                          stdout=log, stderr=subprocess.STDOUT)
+                                          stdout=log, stderr=subprocess.STDOUT, env=env)
             code = self.child.wait()
         self.child = None
         value = read(output / "status.json")

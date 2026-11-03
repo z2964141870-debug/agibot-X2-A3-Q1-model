@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-03 23:13：[目标监督复核与服务器CPU补验完成](README_Q1_FIVE_STAGE_TRANSITION_20261103.md)。goal实读active、q1心跳ACTIVE每10分钟，原Primebot23:04现场7801轮/80044032转移/原PID及守卫健康/OOM0；下一10000质量评测。补验4项真实Torch保存/审计全部通过、无CUDA或新物理优化，准备提交be4ea0b独立40位远端/14份533131B三端大小SHA一致。共享正式未启、原生评估比较尚待，不结算目标/采纳null；原生观察session78774。[收据](../logs/session_records/q1_five_stage_controller_publication_20261103.json)。
+
 2026-11-03：[五阶段串行共享入口准备](README_Q1_FIVE_STAGE_TRANSITION_20261103.md)。新增完整Mac交付核验、条件controller和被动零保存/实际计数，27项本地测试24过3待服务器Torch；原native9过1待。只在Primebot最终全门及本地验收后才新共享1024/160000，严格容量OOM才512/320000，八轮/CPU审计/实测磁盘先行。未新增物理或共享启动；原生评估比较尚待，goal仍active/不结算。
 
 2026-11-03 22:22：[5000轮已改善跟踪但仍无交替抬脚](README_PRIMEBOT_Q1_MONITORING_20261103.md)。固定9/9、临时连续2/3，短前缀joint.553→.140rad/body.0583→.0133m；完整三片joint.191/.140/.278rad，抬脚1/1/0、交替0，承重滑移仍明显。41工件/3原速视频本地SHA与1587帧解码/九图目视齐，无重复物理。原5742轮继续/原PID与守卫健康，目标active/q1每10分钟ACTIVE，下一10000；共享控制评估仍待补、最终全门先于Morph，目标未达/采纳null。[收据](../logs/session_records/primebot_q1_iteration5000_quality_20261103.json)。

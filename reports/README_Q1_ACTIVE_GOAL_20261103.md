@@ -1,5 +1,7 @@
 # Q1五阶段目标模式与主动监督
 
+2026-11-03 23:13复核：应用get_goal仍active，q1心跳保存字段仍ACTIVE/每10分钟/同线程，无替代目标或心跳更改。23:04:36原Primebot7801完整轮/80044032真实转移，原三PID/starttick与boot/GPU相同、guard RUNNING/OOM0/recovery=None；临时连续2/3，下一10000质量观察，尚未早停。独立条件控制器3项Torch待测及原native1项已在服务器CPU全部通过，未建立CUDA上下文或新增物理优化。完整五阶段仍未完成，原生共享评估和综合比较继续待补。[实测与发布收据](../logs/session_records/q1_five_stage_controller_publication_20261103.json)。原生观察会话78774可供后续复用；连接恢复仅涉及SSH，不是训练重启。
+
 22:22:27复查：get_goal仍active，心跳q1保存字段ACTIVE每10分钟；原Primebot5742完整轮/58961920转移，原三PID/starttick相同、guard RUNNING、GPU21562MiB/66度/recovery=None。5000轮观测已9/9且参数/RNG不变，临时连续2/3、未早停，下一10000；41小工件和3原速视频/1587帧Mac核验齐，但交替抬脚仍0，不能称正常走路。详见[5000轮质量收据](../logs/session_records/primebot_q1_iteration5000_quality_20261103.json)。
 
 记录日期：2026-11-03。用户明确要求目标模式主动监控。应用工具首次返回goal=null；随后已创建正式目标，get_goal复读确认为active，创建时间21:13:04北京时间。旧q1-rf08-4096监督更新返回任务不存在，不能把历史ACTIVE描述当成当前监督。

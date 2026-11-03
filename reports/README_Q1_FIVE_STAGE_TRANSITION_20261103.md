@@ -51,3 +51,11 @@ data/environments/morphmimic_original_20261029/bin/python script/q1_five_stage/c
 ```
 
 当前Primebot仍运行，该启动命令尚未执行，不为验证入口额外启动仿真。
+
+## 服务器CPU补验与目标复核
+
+2026-11-03 23:07:40北京时间，此前Mac跳过的3项真实Torch保存/审计测试及原native的1项标量哈希测试，已在既有Morph环境全部通过，4项无跳过、无失败。测试屏蔽CUDA，前后未建立CUDA上下文，6份测试输入SHA保持；仅测试用CPU张量和临时检查点，无新增项目物理步或优化。至此本地24项加服务器3项覆盖新包27项，原native本地9项加服务器1项覆盖10项，并非重新运行整套物理验证。[原始CPU收据](../logs/session_records/q1_five_stage_real_cpu_20261103T150740Z.json)。
+
+控制器准备提交be4ea0be8e21f95cf2fafa37dc1b813018f68620已独立核对40位远端，14份533131字节在Git工作树、Mac主根、25362逐大小和SHA一致；后续报告提交不改变该源码身份。[发布与监督复核](../logs/session_records/q1_five_stage_controller_publication_20261103.json)。
+
+应用目标实读active，原q1心跳保存字段ACTIVE/每10分钟；未创建替代目标或更改心跳。23:04:36现场为Primebot7801完整轮/80044032转移、WM78010/actor7801/critic156020、原三个PID/starttick相同、guard RUNNING、OOM0且GPU recovery=None。下一既定质量观察10000轮；5000轮仍缺交替抬脚，不把临时连续2/3当自然步态成功。原生观察会话78774仅重建SSH观察连接，未重启训练。后续原生共享评估和综合比较尚待，完整最终门及Mac验收先于新共享。

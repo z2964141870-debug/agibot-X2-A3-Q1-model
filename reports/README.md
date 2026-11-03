@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-03 23:13：[主动目标监督与4项真实CPU补验](README_Q1_FIVE_STAGE_TRANSITION_20261103.md)。goal active/q1每10分钟ACTIVE已复读；原Primebot7801轮继续，下一10000观测。新包27项及原native10项已由Mac与服务器合计补齐，0新物理/优化；14份533131B准备工件三端SHA及独立远端已核。原生评估比较仍待，完整最终门及Mac验收后才新共享，不结算整个目标。
+
 2026-11-03：[五阶段条件共享controller与Mac交付核验准备](README_Q1_FIVE_STAGE_TRANSITION_20261103.md)。最终全门缺失时不建实验、不启动；加入初始保存参数/RNG检查及真实采样/五优化器保存元数据。原生共享资源和后续评估仍待，不影响原Primebot训练或结算goal。
 
 2026-11-03 22:22：[5000轮本地视频与跟踪改善](README_PRIMEBOT_Q1_MONITORING_20261103.md)。9/9完整、短前缀两误差明显下降，但三走交替抬脚仍0/承重滑移未解决；3原速视频1587帧验收。目标active/每10分钟监督ACTIVE，原训练继续，临时连续2/3，下次10000。[完整收据](../logs/session_records/primebot_q1_iteration5000_quality_20261103.json)。

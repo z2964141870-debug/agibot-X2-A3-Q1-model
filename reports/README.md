@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-03 21:17：[五阶段目标模式和主动监督已启用](README_Q1_ACTIVE_GOAL_20261103.md)。get_goal从null到active，原监督任务不存在后，新建本线程q1心跳ACTIVE每10分钟；原训练2520轮继续，条件共享控制/评估比较仍待接，不能把目标创建叫成五阶段完成。
+
 首1000轮[本地视频、训练曲线与物理评测图](README_PRIMEBOT_Q1_MONITORING_20261103.md)已交付；[10份508064B三端发布和4份曲线工件核验](../logs/session_records/primebot_q1_first_quality_publication_20261103.json)。实际训练继续，不用图表旧快照冒充实时进度。
 
 2026-11-03 20:57：[Primebot首1000轮真实评测与本地视频](README_PRIMEBOT_Q1_MONITORING_20261103.md)。9/9完整、两短共同前缀RMSE改善，但三走抬脚/换脚事件0，仍非正常走路；三原速视频/1587帧本地验收齐。1520轮原训练持续、连续门1/3，下个5000，Morph未启。

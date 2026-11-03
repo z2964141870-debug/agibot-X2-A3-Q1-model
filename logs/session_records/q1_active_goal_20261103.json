@@ -1,0 +1,60 @@
+{
+  "stage": "Q1_ACTIVE_GOAL_20261103",
+  "authorization": "User explicitly requested goal mode and proactive monitoring on 2026-11-03; this supersedes older no-new-goal entries.",
+  "before": {
+    "goal": null,
+    "source": "get_goal returned null in this turn",
+    "legacy_training_automation_id": "q1-rf08-4096",
+    "legacy_training_automation_update": "Automation does not exist in the app and could not be updated"
+  },
+  "goal": {
+    "threadId": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "status": "active",
+    "objective": "主动持续推进并监督“Primebot原生Q1复现→评估→条件MorphMimic G1＋Q1共享训练→再次评估→综合结论”完整五阶段。接管已在25362运行的唯一Primebot正式训练（monitored_launch_v02/formal/train/run，冻结b8f920cbba9be3f7247bddbe6535febfbc06186b、4096环境、393条共同参考），保持原PID与输入，不重启或热改。主动定期检查进度、GPU/30GiB内存守卫、检查点和1000及每5000轮真实回放；三次连续临时门才允许既定早停，250000为上限，脚底离地/换脚/承重滑移/姿态/上肢必须报告，不把9/9存活或reward/loss当自然步态合格。训练期间补齐尚未完成的条件共享控制器、两路线评测与比较工具，验证缺失/失败/OOM不能错误启动下一阶段。Primebot最终固定9/9、两项共同有效前缀误差改善、全393片评测/原速视频/保存审计和Mac交付全部通过后，按既定v0.1来源与同片同帧配对，从零开始G1＋Q1各1024环境/160000轮；仅明确容量OOM才各512/320000轮，八完整更新与两rank共享参数及CPU保存审计通过才正式启动。再交付Q1 motion直接比较、KP另列、G1退化检查、完整配方及±1%等采样量对比；早停不足采样量则如实缺失不补训。仅Windows hp_han原生跳转25362及唯一ZHY根，身份与资源守卫不绕过、异常正式训练不自动重启、无新agent或无关任务改动。每个重要阶段记录README/当前状态，发布Q1并核独立40位远端和Mac/服务器大小SHA；材料无变化时安静，显著质量变化/异常/完成时主动报告。等待和单阶段完成均不结算整个目标；只有全部授权评估、媒体和比较结论完成后才判断目标达到程度，用户采纳保持null。",
+    "createdAt": 1793711584,
+    "created_utc": "2026-11-03T13:13:04.000Z",
+    "token_budget_explicitly_requested": false,
+    "remainingTokens": null
+  },
+  "heartbeat": {
+    "id": "q1",
+    "name": "Q1五阶段目标监督",
+    "kind": "heartbeat",
+    "status": "ACTIVE",
+    "frequency_minutes": 10,
+    "target_thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "created_via_app_tool": true,
+    "local_saved_metadata_independently_checked": true,
+    "unchanged_nonactionable_state_notification": "quiet",
+    "notification_triggers": [
+      "meaningful_quality_change",
+      "failure",
+      "phase_completion",
+      "required_user_action"
+    ],
+    "prompt": "监督并推进当前Q1五阶段active目标。先读/Users/yu/Documents/ChatGPT/元启/AGENTS.md、reports/README_CURRENT_STATE.md、reports/README_PRIMEBOT_Q1_MONITORING_20261103.md和reports/README_Q1_ACTIVE_GOAL_20261103.md，再get_goal核实；用户2026-11-03已明确要求目标模式主动监控，覆盖旧“无goal/只等审阅”历史。不创建替代goal，不因等待或单阶段完成自行结算/暂停。不开agent、不改变q1缓存、yuanqi研究或其他任务。\n唯一正式Primebot根/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run，冻结b8f920cbba9be3f7247bddbe6535febfbc06186b，E4096/WM2048/policy2048/393片从零，controller29435/start2148365、guard29965/start2153863、worker29970/start2153901。只用现有hp_han Windows原生系统SSH到root@59.77.15.15:25362，不用旧25386/18873/转发/socket。会话缺失按既有授权只一次有界重建SSH，失联标UNKNOWN不能重启训练/容器/GPU；认证只交互、不读写保存或镜像。唯一ZHY根，boot90395f47-4035-4785-858e-b3d05c44a738、GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4、原锁/24GiB准入/30GiB运行/86C/100GiB余量不绕过。\n每次只读核原PID启动tick、guard/status、完整metrics尾、GPU/cgroup OOM、检查点与live_review/history；不重启或热改104冻结输入，不重复已完成的物理、媒体或审计。1000及每5000轮CPU回放由原训练器做，不额外插入仿真。1000轮9/9完整与两短前缀RMSE改善但脚贴地/抬脚换脚0，不称正常走路；三连续临时门才早停、250000上限，不因reward/loss宣布成功。新观测读取脚底离地/换脚/承重滑移/侧倾/上肢时序，取回3原速视频和小工件，逐大小SHA/解码/目视后报告。材料无变化安静；仅显著效果变化、异常、完成或需用户处理时通知，重复未变异常不刷屏。\n训练等待期间继续补齐独立条件Morph控制、原生评估和综合比较工具并测试缺失/提前终止/OOM/错误门，不能改运行输入。Primebot最终固定9/9、两共同有效前缀RMSE改善、393全库评估/媒体/保存审计/Mac交付齐后，按现有授权v0.1 G1+Q1各1024/160000从零，明确容量OOM才各512/320000，先8全更新/两rank共享参数及CPU保存审计再新正式；异常不盲目重试。若最终门失败交负面结论、Morph未启。Q1 motion比较/KP另列/G1退化、完整配方和±1%等采样量各交，早停不足410009600不补训。每重要阶段README/索引CURRENT_STATE，显式stage/audit/commit/push Q1/独立40位远端，再Mac主根和25362大小SHA。全部授权评估/媒体/比较结论完成后才判断整目标达到程度，用户采纳null。"
+  },
+  "training_last_read": {
+    "captured_utc": "2026-11-03T13:16:44.316119+00:00",
+    "iteration": 2520,
+    "global_env_steps": 25968640,
+    "guard_status": "RUNNING",
+    "early_stop": false,
+    "gpu_used_mib": 22226,
+    "gpu_temperature_c": 66,
+    "gpu_utilization_percent": 82,
+    "gpu_recovery_action": "None",
+    "frozen_execution_commit": "b8f920cbba9be3f7247bddbe6535febfbc06186b",
+    "new_training_started_by_this_goal_setup": false
+  },
+  "pending_work": [
+    "Keep supervising the original formal run and its scheduled physical evaluations",
+    "Implement and validate the independent conditional shared controller",
+    "Implement shared motion/KP/G1 evaluation and final comparison",
+    "Apply full final Primebot physical and delivery gate before any Morph training"
+  ],
+  "other_automations_modified": false,
+  "agents_started": false,
+  "goal_completed": false,
+  "user_accepted_checkpoint": null
+}

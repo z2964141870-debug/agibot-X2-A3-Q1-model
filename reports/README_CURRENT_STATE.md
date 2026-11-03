@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-03 21:17：[正式五阶段goal已active，10分钟主动监督已补齐](README_Q1_ACTIVE_GOAL_20261103.md)。用户明确要求目标模式；首次goal=null后创建并复读active，旧q1-rf08-4096已不存在，新本线程心跳q1为ACTIVE/每10分钟且保存元数据核同。最新21:16:44原Primebot2520轮/25968640转移、guardRUNNING/GPU健康；不重启或热改冻结b8f920c。原1000评测仍不会正常抬脚换步，下次5000；等待时继续实现条件共享控制器/原生评估/比较，完整门及Mac交付前Morph未启，不结算整个goal/采纳null/无agent及其他任务改动。[原执行收据](../logs/session_records/q1_active_goal_20261103.json)。此用户新决定覆盖历史“不新goal/只等审阅”。
+
 首1000轮交付补记：d04d70ed47bdec6670663fa61387d964b7c9e37a已独立远端/10份508064B三端核验；两张只读训练与物理评测图、CSV已本地SHA及目视齐。图表快照到1082轮，不覆盖下文20:57的1520轮现场。原训练继续，5000为下一观测；完整Morph后续工具仍未接，不称五阶段自动完成。[核验](../logs/session_records/primebot_q1_first_quality_publication_20261103.json)。
 
 2026-11-03 20:57：[Primebot首1000轮有稳定性改善，仍不会正常走路](README_PRIMEBOT_Q1_MONITORING_20261103.md)。固定9/9完整对零更新0/9，两共同前缀RMSEjoint降3.92%/body降49.95%，但仅1.02–1.40秒前缀；三走>10mm抬脚/换脚0、脚底贴地、长前走末根误差3.266m，上肢完整RMSE约.775–.809rad。3原速MP4/1208369B/1587帧Mac大小SHA及全解码/九图目视齐，非自然步态验收。原训练1520完整轮/15728640转移、WM15200-actor1520-critic30400，原三PID/start/104SHA同、GPU健康/OOM0；冻结b8f920c不改、连续临时门1/3未早停，下次5000。Morph控制与比较仍待接/尚未启，目标未达/采纳null。[原评测](../data/manifests/primebot_q1_first_quality_review_20261103.json)及[进度](../logs/session_records/primebot_q1_first_quality_progress_20261103.json)。

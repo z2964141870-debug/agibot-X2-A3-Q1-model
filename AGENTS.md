@@ -4,6 +4,10 @@
 
 ## 环境与目录
 
+- 2026-11-03 15:50:46新卡G1/Q1原生均已COMPLETED/各384转移0optimizer/各1823源前后SHA同/两guard回收0，Q1243实际PD限矩回调差2.012e-6Nm/观察及命令差0。15:50:47自动进入NEWGPU_TRAIN01/profile，guard1015/start516555、parent1022、G11023/Q11024，15:52各409600预热后首学习编译中/完整轮尚0；GPU12803MiB/40C/recoveryNone/OOM0。只监督冻结3a43f7e和本次新设备，不改运行源码，完整8更新及CPU保存审计全过自动全新80000轮，正式未启/采纳null/no goal-agent及其他任务不动。入口同NEWGPU_TRAIN01和launch_observed收据。
+
+- 2026-11-03 15:44:41 NEWGPU_TRAIN01总controller94/start479951已启动，执行冻结3a43f7ee8aaaf2d9e39494eabae03a7114bdce5a独立40位远端/9记录461706B三端SHA、服务器6准入全过，1820原输入逐SHA同。15:46G1原生384转移/0optimizer/观察及命令差0/reward1.67638e-8/guard回收0；15:50Q1 worker459/guard452正在新卡首次CCD编译持续前进，GPU346MiB/36C/recoveryNone/OOM0。只监督原串行流程，全原生+各E2048八全更新/保存审计过后自动全新80000轮；正式未启/不热改执行输入/profile权重不续/采纳null/no goal-agent/其他任务不动。入口NEWGPU_TRAIN01及launch_observed/准备publication收据，上下准备未启动均历史。
+
 - 2026-11-03用户明确“制定新计划，验证好了以后直接开始训练”。NEWGPU_TRAIN01独立串行入口已准备/本地6项准入通过，发布后核1820旧输入身份、G1/Q1各16环境24步原生零更新、新共享各E2048合计4096八全更新及两份保存CPU审计；全部通过自动在全新train根从零80000轮/WM-only1000/warmup200/每8000保存，不再等二次确认。对应每型410009600转移/原batch样本量，非相同Adam轨迹；保持原Trainer数学/完整网络559配对/三GiB缓存交接，新boot90395f47/GPU-c602a45a显式守卫及原30GiB/锁。当前服务器/GPU/正式训练尚未执行，旧失败不恢复/profile权重不续/采纳null/no goal-agent或其他自动任务修改。入口README_MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103及preparation清单，实际启动和发布见后续收据。
 
 - 2026-11-03用户提供替换服务器root@59.77.15.15:25362，后续经hp_han Windows内原生SSH用此端口，覆盖旧25386；凭证仅交互使用不保存。14:46–14:52核interactive67462/唯一根/boot90395f47-4035-4785-858e-b3d05c44a738/新3090 GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4/PCI16:00.0，driver595.112.07/recoveryNone/0%/23C/无计算进程，旧故障卡未再查或复位。环境Python及包metadata运行通过，G1-Q1各559/human559 stat存在，非NPZ内容SHA；首stat误用YAML父路径已按声明root更正/原件保留。新CUDA执行/积分/optimizer/训练0，先新设备有界验证；未来run_native用现有expected-boot/gpu显式参数，不续旧失败根/改冻结源码，缓存工具仍旧身份未运行或改自动任务。服务器无.git是镜像状态，权威Git仍Mac，原失败/一次复位已用/采纳null不改，无goal-agent。入口README_Q1_NEW_SERVER_25362_20261103及q1_new_server_25362清单，旧身份和入口均历史。

@@ -1,0 +1,270 @@
+{
+  "observed_utc": "2026-11-03T07:52:20.050450+00:00",
+  "pipeline": {
+    "status": "VALIDATING",
+    "process": {
+      "pid": 94,
+      "start_ticks": 479951,
+      "boot_id": "90395f47-4035-4785-858e-b3d05c44a738"
+    },
+    "started_utc": "2026-11-03T07:44:41.043488+00:00",
+    "code_commit": "3a43f7ee8aaaf2d9e39494eabae03a7114bdce5a",
+    "config": {
+      "path": "/opt/data/private/ZHY/script/morphmimic_q1/newgpu_train01_20261103.json",
+      "bytes": 930,
+      "sha256": "e00e58a0a648654d8d76944b37ebfd003ed64d8ba9e2729246f164f720df02af"
+    },
+    "stages": [
+      {
+        "name": "g1_preflight",
+        "status": "COMPLETED",
+        "ended_utc": "2026-11-03T07:46:09.113338+00:00"
+      },
+      {
+        "name": "q1_preflight",
+        "status": "COMPLETED",
+        "ended_utc": "2026-11-03T07:50:46.976356+00:00"
+      }
+    ],
+    "automatic_retry": false,
+    "reuse_profile_weights": false,
+    "user_accepted_checkpoint": null,
+    "verified_baseline_inputs": 1820,
+    "phase": "profile"
+  },
+  "controller_tail": "",
+  "g1_preflight": {
+    "status.json": {
+      "status": "COMPLETED",
+      "process": {
+        "pid": 95,
+        "start_ticks": 480243,
+        "boot_id": "90395f47-4035-4785-858e-b3d05c44a738"
+      },
+      "code_commit": "3a43f7ee8aaaf2d9e39494eabae03a7114bdce5a",
+      "purpose": "preflight",
+      "started_utc": "2026-11-03T07:44:44.198322+00:00",
+      "ended_utc": "2026-11-03T07:46:09.077093+00:00",
+      "input_count": 1823
+    },
+    "guard.json": {
+      "status": "WORKER_COMPLETED",
+      "started_utc": "2026-11-03T07:44:45.341768+00:00",
+      "ended_utc": "2026-11-03T07:46:08.109501+00:00",
+      "error": null,
+      "worker_pid": 106,
+      "cleanup": {
+        "worker_started": true,
+        "worker_pid": 106,
+        "worker_group": 106,
+        "worker_reaped": true,
+        "worker_return_code": 0
+      },
+      "last_storage_check": {
+        "experiment": {
+          "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103/g1_preflight",
+          "unique_allocated_bytes": 532480,
+          "unique_logical_bytes": 526520,
+          "unique_inodes": 5,
+          "symlinks_not_followed": 0
+        },
+        "source": {
+          "root": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+          "unique_allocated_bytes": 142503936,
+          "unique_logical_bytes": 141858407,
+          "unique_inodes": 341,
+          "symlinks_not_followed": 0
+        },
+        "free_bytes": {
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103/g1_preflight": 903252078592,
+          "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1": 903252078592
+        },
+        "shared_memory": {
+          "shared_bytes": 2247684096,
+          "oom_kill": 0,
+          "maximum_bytes": 32212254720
+        },
+        "gpu": {
+          "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+          "memory_mib": 1,
+          "temperature_c": 36
+        }
+      }
+    },
+    "result.json": {
+      "status": "PASSED",
+      "reward_max_abs_error": 1.6763806343078613e-8,
+      "observation_max_abs_error": 0,
+      "target_max_abs_error": 0,
+      "torque_callback": {
+        "calls": 0,
+        "max_abs_error_nm": 0
+      }
+    },
+    "stdout_tail": "------------------------+\n|           Active Reward Terms           |\n+-------+------------------------+--------+\n| Index | Name                   | Weight |\n+-------+------------------------+--------+\n|   0   | motion_global_root_pos |    0.5 |\n|   1   | motion_global_root_ori |    0.5 |\n|   2   | motion_body_pos        |    1.0 |\n|   3   | motion_body_ori        |    1.0 |\n|   4   | motion_body_lin_vel    |    1.0 |\n|   5   | motion_body_ang_vel    |    1.0 |\n|   6   | action_rate_l2         |   -0.1 |\n|   7   | joint_limit            |   -2.0 |\n+-------+------------------------+--------+\n\n[INFO] <NullCurriculumManager> (inactive)\n[INFO] <NullMetricsManager> (inactive)\n[INFO] <NullRecorderManager> (inactive)\nModule mujoco_warp._src.io cb0c74e load on device 'cuda:0' took 1325.25 ms  (compiled)\nModule _tile_cholesky_factorize_block__locals__kernel_d4231e6f 8646b2f load on device 'cuda:0' took 2020.67 ms  (compiled)\nModule _tile_cholesky_solve_block__locals__kernel_dcd40028 a676a8a load on device 'cuda:0' took 2373.88 ms  (compiled)\n{\"status\": \"PASSED\", \"robot\": \"g1\", \"reward_error\": 1.6763806343078613e-08, \"observation_error\": 0.0, \"torque\": {\"calls\": 0, \"max_abs_error_nm\": 0.0}}\n"
+  },
+  "q1_preflight": {
+    "status.json": {
+      "status": "COMPLETED",
+      "process": {
+        "pid": 452,
+        "start_ticks": 488769,
+        "boot_id": "90395f47-4035-4785-858e-b3d05c44a738"
+      },
+      "code_commit": "3a43f7ee8aaaf2d9e39494eabae03a7114bdce5a",
+      "purpose": "preflight",
+      "started_utc": "2026-11-03T07:46:09.449671+00:00",
+      "ended_utc": "2026-11-03T07:50:46.942059+00:00",
+      "input_count": 1823
+    },
+    "guard.json": {
+      "status": "WORKER_COMPLETED",
+      "started_utc": "2026-11-03T07:46:10.560999+00:00",
+      "ended_utc": "2026-11-03T07:50:45.942901+00:00",
+      "error": null,
+      "worker_pid": 459,
+      "cleanup": {
+        "worker_started": true,
+        "worker_pid": 459,
+        "worker_group": 459,
+        "worker_reaped": true,
+        "worker_return_code": 0
+      },
+      "last_storage_check": {
+        "experiment": {
+          "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103/q1_preflight",
+          "unique_allocated_bytes": 532480,
+          "unique_logical_bytes": 529219,
+          "unique_inodes": 5,
+          "symlinks_not_followed": 0
+        },
+        "source": {
+          "root": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+          "unique_allocated_bytes": 142503936,
+          "unique_logical_bytes": 141858407,
+          "unique_inodes": 341,
+          "symlinks_not_followed": 0
+        },
+        "free_bytes": {
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103/q1_preflight": 903102128128,
+          "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1": 903102128128
+        },
+        "shared_memory": {
+          "shared_bytes": 2387664896,
+          "oom_kill": 0,
+          "maximum_bytes": 32212254720
+        },
+        "gpu": {
+          "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+          "memory_mib": 1,
+          "temperature_c": 37
+        }
+      }
+    },
+    "result.json": {
+      "status": "PASSED",
+      "reward_max_abs_error": 1.862645149230957e-8,
+      "observation_max_abs_error": 0,
+      "target_max_abs_error": 0,
+      "torque_callback": {
+        "calls": 243,
+        "max_abs_error_nm": 0.0000020116567611694336
+      }
+    },
+    "stdout_tail": "---------+\n|           Active Reward Terms           |\n+-------+------------------------+--------+\n| Index | Name                   | Weight |\n+-------+------------------------+--------+\n|   0   | motion_global_root_pos |    0.5 |\n|   1   | motion_global_root_ori |    0.5 |\n|   2   | motion_body_pos        |    1.0 |\n|   3   | motion_body_ori        |    1.0 |\n|   4   | motion_body_lin_vel    |    1.0 |\n|   5   | motion_body_ang_vel    |    1.0 |\n|   6   | action_rate_l2         |   -0.1 |\n|   7   | joint_limit            |   -2.0 |\n+-------+------------------------+--------+\n\n[INFO] <NullCurriculumManager> (inactive)\n[INFO] <NullMetricsManager> (inactive)\n[INFO] <NullRecorderManager> (inactive)\nModule mujoco_warp._src.io cb0c74e load on device 'cuda:0' took 1.72 ms  (cached)\nModule _tile_cholesky_factorize_block__locals__kernel_a4efe1c6 08f9cd6 load on device 'cuda:0' took 1506.56 ms  (compiled)\nModule _tile_cholesky_solve_block__locals__kernel_48ae95c0 9ab99fc load on device 'cuda:0' took 1085.36 ms  (compiled)\n{\"status\": \"PASSED\", \"robot\": \"q1\", \"reward_error\": 1.862645149230957e-08, \"observation_error\": 0.0, \"torque\": {\"calls\": 243, \"max_abs_error_nm\": 2.0116567611694336e-06}}\n"
+  },
+  "profile": {
+    "status.json": {
+      "status": "RUNNING",
+      "process": {
+        "pid": 1015,
+        "start_ticks": 516555,
+        "boot_id": "90395f47-4035-4785-858e-b3d05c44a738"
+      },
+      "code_commit": "3a43f7ee8aaaf2d9e39494eabae03a7114bdce5a",
+      "purpose": "profile",
+      "started_utc": "2026-11-03T07:50:47.383771+00:00",
+      "input_count": 1824
+    },
+    "guard.json": {
+      "status": "RUNNING",
+      "started_utc": "2026-11-03T07:50:48.508850+00:00",
+      "error": null,
+      "worker_pid": 1022,
+      "last_storage_check": {
+        "experiment": {
+          "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103/profile",
+          "unique_allocated_bytes": 634880,
+          "unique_logical_bytes": 609664,
+          "unique_inodes": 16,
+          "symlinks_not_followed": 0
+        },
+        "source": {
+          "root": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+          "unique_allocated_bytes": 142503936,
+          "unique_logical_bytes": 141858407,
+          "unique_inodes": 341,
+          "symlinks_not_followed": 0
+        },
+        "free_bytes": {
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103/profile": 903101444096,
+          "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1": 903101444096
+        },
+        "shared_memory": {
+          "shared_bytes": 11383033856,
+          "oom_kill": 0,
+          "maximum_bytes": 32212254720
+        },
+        "gpu": {
+          "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+          "memory_mib": 12803,
+          "temperature_c": 40
+        }
+      }
+    },
+    "workers_launch.json": {
+      "pids": [
+        1023,
+        1024
+      ]
+    },
+    "stdout_tail": "",
+    "q1.json": {
+      "status": "RUNNING",
+      "pid": 1024,
+      "robot": "q1",
+      "code_commit": "3a43f7ee8aaaf2d9e39494eabae03a7114bdce5a",
+      "iterations_completed": 0,
+      "optimizer_updates": {
+        "wm_opt": 0,
+        "policy_opt": 0,
+        "critic_opt": 0,
+        "kp_opt": 0,
+        "critic_kp_opt": 0
+      },
+      "collected_environment_transitions": 0,
+      "nonfinite_updates": {}
+    },
+    "g1.json": {
+      "status": "RUNNING",
+      "pid": 1023,
+      "robot": "g1",
+      "code_commit": "3a43f7ee8aaaf2d9e39494eabae03a7114bdce5a",
+      "iterations_completed": 0,
+      "optimizer_updates": {
+        "wm_opt": 0,
+        "policy_opt": 0,
+        "critic_opt": 0,
+        "kp_opt": 0,
+        "critic_kp_opt": 0
+      },
+      "collected_environment_transitions": 0,
+      "nonfinite_updates": {}
+    },
+    "q1.log": "] <RewardManager> contains 8 active terms.\n+-----------------------------------------+\n|           Active Reward Terms           |\n+-------+------------------------+--------+\n| Index | Name                   | Weight |\n+-------+------------------------+--------+\n|   0   | motion_global_root_pos |    0.5 |\n|   1   | motion_global_root_ori |    0.5 |\n|   2   | motion_body_pos        |    1.0 |\n|   3   | motion_body_ori        |    1.0 |\n|   4   | motion_body_lin_vel    |    1.0 |\n|   5   | motion_body_ang_vel    |    1.0 |\n|   6   | action_rate_l2         |   -0.1 |\n|   7   | joint_limit            |   -2.0 |\n+-------+------------------------+--------+\n\n[INFO] <NullCurriculumManager> (inactive)\n[INFO] <NullMetricsManager> (inactive)\n[INFO] <NullRecorderManager> (inactive)\nModule mujoco_warp._src.io cb0c74e load on device 'cuda:0' took 2.02 ms  (cached)\nModule _tile_cholesky_factorize_block__locals__kernel_a4efe1c6 08f9cd6 load on device 'cuda:0' took 36.32 ms  (cached)\nModule _tile_cholesky_solve_block__locals__kernel_48ae95c0 9ab99fc load on device 'cuda:0' took 35.84 ms  (cached)\n[morphmimic] q1 residual scale (one-step RMS of the warm-up replay): min 0.0001 median 0.0467 max 4.25\n",
+    "g1.log": "----+\n|           Active Reward Terms           |\n+-------+------------------------+--------+\n| Index | Name                   | Weight |\n+-------+------------------------+--------+\n|   0   | motion_global_root_pos |    0.5 |\n|   1   | motion_global_root_ori |    0.5 |\n|   2   | motion_body_pos        |    1.0 |\n|   3   | motion_body_ori        |    1.0 |\n|   4   | motion_body_lin_vel    |    1.0 |\n|   5   | motion_body_ang_vel    |    1.0 |\n|   6   | action_rate_l2         |   -0.1 |\n|   7   | joint_limit            |   -2.0 |\n+-------+------------------------+--------+\n\n[INFO] <NullCurriculumManager> (inactive)\n[INFO] <NullMetricsManager> (inactive)\n[INFO] <NullRecorderManager> (inactive)\nModule mujoco_warp._src.io cb0c74e load on device 'cuda:0' took 2.18 ms  (cached)\nModule _tile_cholesky_factorize_block__locals__kernel_d4231e6f 8646b2f load on device 'cuda:0' took 36.77 ms  (cached)\nModule _tile_cholesky_solve_block__locals__kernel_dcd40028 a676a8a load on device 'cuda:0' took 35.78 ms  (cached)\n[morphmimic] warm-up: 409600 transitions per rank in 33.1 s; replay rows 420770\n[morphmimic] g1 residual scale (one-step RMS of the warm-up replay): min 0.000475 median 0.0312 max 1.9\n"
+  },
+  "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 12803 MiB, 11324 MiB, 0 %, 40, None",
+  "cgroup_usage": 11392753664,
+  "oom": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n"
+}

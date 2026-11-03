@@ -2,6 +2,12 @@
 
 记录日期：2026-11-03。阶段：NEWGPU_TRAIN01。当前状态：计划和自动串行入口已完成，本地6项准入测试通过；服务器CPU检查、原生CUDA验证、共享完整更新和正式训练尚未启动。用户已明确授权“验证好了以后直接开始训练”，全部验证通过后自动开训，无须再次确认。
 
+## 15:50 实际启动
+
+执行冻结 `3a43f7ee8aaaf2d9e39494eabae03a7114bdce5a` 已独立40位远端核验，9记录461706B在Git/Mac主根/25362逐大小SHA一致；服务器6项准入测试全过。15:44:41总controller94/start479951、原新boot启动，1820输入逐SHA通过。15:46:09 G1原生检查COMPLETED/guard回收0，奖励最大差1.67638e-8、观察/实际目标差0、384转移、0optimizer。15:50 Q1仍在新设备首次CCD内核编译，worker459/guard452，GPU346MiB/36C/recoveryNone、cgroup5310836736B/OOMkill0；日志持续新增compiled记录，尚未Q1通过或正式开训。启动和初始观察见[原始记录](../logs/session_records/morphmimic_q1_newgpu_train01_launch_observed_20261103.json)，[冻结发布](../data/manifests/morphmimic_q1_newgpu_train01_preparation_publication_20261103.json)。上方“尚未启动”为准备历史。
+
+15:50:46 Q1检查也COMPLETED/guard回收0：384转移/240批物理子步/243次torque callback，最大力矩差2.01166e-6Nm、reward1.86265e-8、观察及实际目标差0，0optimizer。两型各1823冻结输入由guard前后逐SHA核对，未重复旧设备检查。共享profile于15:50:47自动启动guard1015/start516555、parent1022、rank G11023/Q11024；15:52各409600预热已完成，首学习更新仍在编译，当前落盘完整轮0不推断内存更新为0。GPU12803MiB/40C/recoveryNone、容器11392753664B/OOMkill0；完整8轮及保存审计待，正式训练尚未启动。
+
 ## 目标与配置
 
 在替换服务器25362的3090上，继续原MorphMimic v0.1 Trainer与Primebot Q1控制契约适配，训练G1/Q1共同世界模型、motion policy和return-KP student。两个本体各2048环境、合计4096；真实559条配对SOMA、3604.72秒，人体侧同片同帧。此处是G1+Q1新本体接入，不等于原发布G1/X2/T2三本体配方的完全复现。

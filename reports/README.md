@@ -1,5 +1,9 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-03 15:52：[G1/Q1新卡原生均通过，共享4096环境测试中](README_MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103.md)。各384转移/0optimizer/guard回收0、Q1实际PD回调243次误差2.012e-6Nm；profile guard1015/两rank1023-1024，完整8更新及保存审计待，全过自动全新80000轮。当前正式未启/执行3a43f7e冻结保持。[启动证据](../logs/session_records/morphmimic_q1_newgpu_train01_launch_observed_20261103.json)。
+
+2026-11-03 15:50：[NEWGPU_TRAIN01验证流程已启动](README_MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103.md)。冻结3a43f7e/9记录三端SHA及服务器6测试通过，总controller94；1820输入同/G1原生已过，Q1首次内核编译中，后续八全更新/CPU保存审计全部通过自动全新80000轮。正式未启/采纳null，不动运行源码和其他任务。[启动证据](../logs/session_records/morphmimic_q1_newgpu_train01_launch_observed_20261103.json)。
+
 2026-11-03：[NEWGPU_TRAIN01验证后自动正式训练](README_MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103.md)。新卡G1/Q1原生检查→各E2048八轮完整共享更新→保存CPU审计，全过自动从零80000轮/559配对/不续profile。计划和本地6项准入已完成，服务器检查/GPU/正式启动待发布后；采纳null/no goal-agent/其他自动任务不动。[清单](../data/manifests/morphmimic_q1_newgpu_train01_preparation_20261103.json)。
 
 2026-11-03：[新25362服务器已连接](README_Q1_NEW_SERVER_25362_20261103.md)。用户新入口经hp_han原生登录interactive67462，boot90395f47/新3090 GPU-c602a45a，recovery=None/0%/23C/无计算进程；原25386及旧故障卡仅历史。唯一根/环境保留，G1/Q1各559、human559文件存在及大小已核，未读NPZ内容。新CUDA执行/训练均0；后续新阶段用新boot/GPU显式守卫参数，原失败根不恢复，缓存工具旧身份尚未改/自动任务保持。[记录](../data/manifests/q1_new_server_25362_20261103.json)。

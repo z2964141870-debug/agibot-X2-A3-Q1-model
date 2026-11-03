@@ -1,5 +1,9 @@
 # YUANQI 当前状态与下一步
 
+2026-11-03 15:52：[两型新卡原生验证通过，共享各E2048测试已启动](README_MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103.md)。G1/Q1各384转移/0optimizer、两guard回收0/各1823源前后同；Q1243次力矩回调最大差2.012e-6Nm，观察/实际目标差0。15:50:47 profile guard1015/start516555、parent1022、两rank1023/1024/新boot-GPU，预热各409600后首学习编译中，完整8轮及CPU保存审计待；正式未启/冻结3a43f7e不动。全过后自动全新80000轮，不等用户二次确认；采纳null/no goal-agent/其他任务不动。[实时启动证据](../logs/session_records/morphmimic_q1_newgpu_train01_launch_observed_20261103.json)。
+
+2026-11-03 15:50：[新卡验证已实际启动](README_MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103.md)。冻结3a43f7e已独立40位远端/9记录461706B三端SHA、服务器6项准入全过；总controller94/start479951/新boot，1820输入逐SHA同。G1原生384转移/0optimizer于15:46正常通过回收0，Q1新卡首次CCD编译持续推进/worker459/显存346MiB/recoveryNone/OOM0。待Q1通过及各E2048八全更新/保存CPU审计后自动全新80000轮；当前正式未启/采纳null，原运行源码不热改、不重试失败根/no goal-agent/其他任务不动。[启动](../logs/session_records/morphmimic_q1_newgpu_train01_launch_observed_20261103.json)/[发布](../data/manifests/morphmimic_q1_newgpu_train01_preparation_publication_20261103.json)。
+
 2026-11-03：[新卡验证通过即自动训练计划](README_MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103.md)。用户已授权验证后直接开训，独立串行入口/本地6项准入通过；新25362/GPU-c602a45a上待G1/Q1原生16环境各24步、共享各E2048八全更新和保存CPU审计，全部通过自动全新初始化80000轮/WM-only1000/559配对/每8000保存。每型410009600转移、批次样本量对齐原4096×40000，Adam轨迹不同。显式新身份/原30GiB与GPU锁，旧失败根/profile权重不续；当前尚未GPU或正式启动/采纳null，无goal-agent及其他任务改动。[准备](../data/manifests/morphmimic_q1_newgpu_train01_preparation_20261103.json)。
 
 2026-11-03：[新25362服务器已连接](README_Q1_NEW_SERVER_25362_20261103.md)。用户新入口经hp_han原生登录interactive67462，boot90395f47/新3090 GPU-c602a45a，recovery=None/0%/23C/无计算进程；原25386及旧故障卡仅历史。唯一根/环境保留，G1/Q1各559、human559文件存在及大小已核，未读NPZ内容。新CUDA执行/训练均0；后续新阶段用新boot/GPU显式守卫参数，原失败根不恢复，缓存工具旧身份尚未改/自动任务保持。[记录](../data/manifests/q1_new_server_25362_20261103.json)。

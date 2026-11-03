@@ -28,4 +28,4 @@ Q1实际评估CLI：在未来正式共享训练完成且初末检查点通过独
 
 仍须实现并验证G1原生mjlab初末/全库评估、Q1原生场景补评、训练曲线、串行评估controller和Mac完整媒体验收。不能因同物理Q1入口或纯函数测试通过称五阶段已贯通。用户对V04追加一次同档验证的决定仍待，原训练失败不自动重启；等待期间继续本页缺项。
 
-发布须显式stage、payload audit、push Q1、独立40位远端和Mac/25362大小SHA，实际收据随后登记。权重/原始NPZ仅SERVER_LOCAL_ONLY，认证不保存。目标及十分钟监督active，用户采纳null。
+补验与目标复核发布d837be049f6168ec35c0b23cc643e676bdb78ad5，独立40位远端已核；8份347871B在权威Git、Mac主根及25362逐大小SHA一致。[发布核验收据](../logs/session_records/q1_native_cpu_goal_publication_20261104.json)。未启动V04或正式共享训练。后续发布继续显式stage、payload audit、push Q1和独立远端/三端核验。权重/原始NPZ仅SERVER_LOCAL_ONLY，认证不保存。目标及十分钟监督active，用户采纳null。

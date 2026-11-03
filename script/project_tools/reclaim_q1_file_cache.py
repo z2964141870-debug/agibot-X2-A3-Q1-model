@@ -127,13 +127,16 @@ def maintain(args):
     start = time.monotonic()
     if ROOT.resolve() != ROOT or Path.cwd().resolve() != ROOT:
         raise ValueError("Run from the unique physical Q1 server root")
-    if Path("/proc/sys/kernel/random/boot_id").read_text().strip() != BOOT:
+    expected_boot = getattr(args, "expected_boot", BOOT)
+    expected_gpu = getattr(args, "expected_gpu", GPU)
+    if Path("/proc/sys/kernel/random/boot_id").read_text().strip() != expected_boot:
         raise ValueError("Container boot identity changed")
     uuid = subprocess.check_output(["nvidia-smi", "--query-gpu=uuid", "--format=csv,noheader"], text=True).strip()
-    if uuid != GPU:
+    if uuid != expected_gpu:
         raise ValueError("GPU identity changed")
     before = snapshot()
     receipt = dict(started_utc=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                   expected_boot=expected_boot, expected_gpu=expected_gpu,
                    before=before, mode="once" if args.once else "periodic",
                    trigger_cache_bytes=args.trigger_gib * GIB, target_cache_bytes=args.target_gib * GIB,
                    maximum_advice_bytes=int(args.batch_gib * GIB), files_advised=0,
@@ -215,6 +218,8 @@ def main():
     parser.add_argument("--target-gib", type=float, default=4.)
     parser.add_argument("--batch-gib", type=int, default=8)
     parser.add_argument("--maximum-seconds", type=int, default=120)
+    parser.add_argument("--expected-boot", default=BOOT)
+    parser.add_argument("--expected-gpu", default=GPU)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if not 0 <= args.target_gib <= args.trigger_gib or not 1 <= args.batch_gib <= 256:

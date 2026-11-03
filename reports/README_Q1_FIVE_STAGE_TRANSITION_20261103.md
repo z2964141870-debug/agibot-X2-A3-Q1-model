@@ -29,3 +29,5 @@ python3 -m unittest discover -s script/q1_five_stage -p 'test_contracts.py' -v
 原始收据：logs/session_records/q1_five_stage_contracts_20261103.json。后续必须补齐真实文件身份检查和串行controller、原生motion/KP/G1评估及比较，再用本门禁约束启动；本纯函数模块不直接启动任何作业。保持唯一hp_han Windows原生25362入口、原boot/GPU、24/30GiB内存/86度/100GiB与GPU独占锁；异常正式训练不自动重启。
 
 整个目标保持active，用户采纳null；不能把本组件测试通过或等待训练记作五阶段已完成。执行发布和服务器测试以旁收据为准。
+
+22:00补记：d9e733a7ca08fbf5f51b0ed7bff053560ee7d2d6已独立40位远端核同，8份480980字节Git/Mac主根/25362逐大小SHA一致；服务器10项CPU测试也全部通过。未新增物理或优化，正式训练冻结版本保持。[发布核验收据](../logs/session_records/q1_five_stage_contracts_publication_20261103.json)。

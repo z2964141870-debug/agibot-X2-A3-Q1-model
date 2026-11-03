@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from memory_watch import memory, process, sample, watch
+from memory_watch import GuardMemoryRecorder, memory, process, sample, watch
 
 
 class MemoryWatchTests(unittest.TestCase):
@@ -85,6 +85,56 @@ class MemoryWatchTests(unittest.TestCase):
             with self.subTest(seconds=seconds, interval=interval), self.assertRaises(ValueError):
                 watch(self.proc, self.cgroup, 12, "100", self.root / "invalid.jsonl", seconds, interval)
         self.assertFalse((self.root / "invalid.jsonl").exists())
+
+    def test_guard_peak_breakdown_keeps_values_from_the_same_sample(self):
+        output = self.root / "guard.jsonl"
+        recorder = GuardMemoryRecorder(self.proc, self.cgroup, 12, output)
+        recorder.record()
+        (self.cgroup / "memory.usage_in_bytes").write_text("20000\n")
+        (self.cgroup / "memory.stat").write_text(
+            "total_cache 2000\ntotal_rss 17000\ntotal_shmem 0\ntotal_dirty 0\ntotal_writeback 0\n")
+        recorder.record()
+        recorder.close()
+        summary = json.loads(output.with_suffix(".summary.json").read_text())
+        self.assertEqual(summary["maximum_cache_bytes"], 6000)
+        self.assertEqual(summary["sample_at_maximum_total"]["memory"]["total_cache_bytes"], 2000)
+        self.assertEqual(summary["sample_at_maximum_total"]["memory"]["total_rss_bytes"], 17000)
+        self.assertEqual(summary["maximum_total_bytes"], 20000)
+        self.assertEqual(summary["observed_samples"], 2)
+        self.assertEqual(summary["status"], "OBSERVATION_ENDED")
+        self.assertFalse(summary["training_status_inferred"])
+        with self.assertRaisesRegex(RuntimeError, "has ended"):
+            recorder.record()
+        with self.assertRaises(FileExistsError):
+            GuardMemoryRecorder(self.proc, self.cgroup, 12, output)
+
+    def test_guard_history_limit_keeps_sampling_peak_without_growing_log(self):
+        output = self.root / "bounded.jsonl"
+        recorder = GuardMemoryRecorder(self.proc, self.cgroup, 12, output, maximum_bytes=1)
+        recorder.record()
+        (self.cgroup / "memory.usage_in_bytes").write_text("30000\n")
+        recorder.record()
+        recorder.close()
+        summary = json.loads(output.with_suffix(".summary.json").read_text())
+        self.assertEqual(output.stat().st_size, 0)
+        self.assertEqual(summary["samples"], 0)
+        self.assertEqual(summary["observed_samples"], 2)
+        self.assertTrue(summary["history_size_bound_reached"])
+        self.assertEqual(summary["sample_at_maximum_total"]["memory"]["total_bytes"], 30000)
+
+    def test_guard_reused_handle_is_rejected_and_old_summary_preserved(self):
+        output = self.root / "reused.jsonl"
+        recorder = GuardMemoryRecorder(self.proc, self.cgroup, 12, output)
+        recorder.record()
+        before = output.read_bytes()
+        self.make_process(12, 1, "999")
+        with self.assertRaisesRegex(RuntimeError, "exact live handle"):
+            recorder.record()
+        self.assertEqual(output.read_bytes(), before)
+        recorder.close()
+        for limit in (0, True, 1.5, 16 * 1024**2 + 1):
+            with self.subTest(limit=limit), self.assertRaises(ValueError):
+                GuardMemoryRecorder(self.proc, self.cgroup, 12, self.root / "invalid.jsonl", limit)
 
 
 if __name__ == "__main__":

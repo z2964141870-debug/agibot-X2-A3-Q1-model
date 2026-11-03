@@ -4,6 +4,12 @@
 
 ## 当前终态与后续准备
 
+V04准备补齐了说明与执行不一致的两项：配置显式要求profile初始cache<=4294967296B，并启用record_memory_breakdown。controller在完整Primebot交付门之后、创建实验根之前读实际cache；profile guard完成输入哈希后、创建worker之前再次检查。缓存超线直接拒绝，不释放缓存、不降低环境数，也不绕过原24GiB准入和30GiB运行线。训练配方、393同片数据和两档容量规则保持原样；这次接入不是获准追加验证。
+
+新的GuardMemoryRecorder直接接在现有每2秒guard检查之前，不依赖另起观察进程。它记录cgroup总量/cache/匿名RSS/shmem/脏页与guard子树RSS，独立核PID启动tick；最高总量对应的整条样本单独保存，不能把不同时刻的各项最大值拼成峰值组成。采样读取为顺序读取、并非内核原子快照，进程RSS共享映射可能重复计数；仍不能补造V03旧峰值。JSONL历史上限16MiB，满后停止追加历史但继续更新峰值摘要，退出写OBSERVATION_ENDED；该状态只表示采样结束，不推断训练成功或整个目标完成。V04的CPU审计和未来正式phase也记录分项，4GiB缓存条件仅用于profile。
+
+本地91项CPU测试84通过、7项因缺依赖跳过，覆盖缓存边界、输入核验后的二次拒绝且不启动worker、整门失败/缓存超线不建实验、仅profile传入缓存阈值、旧配置不启观察器、原真实MemoryBoundBudget在30GiB拒绝前保存样本、峰值同行组成、PID复用、历史限量后继续峰值采样及结束状态。服务器补验与三端发布尚待，不能据本地测试宣称V04容量通过。准备身份见[本轮清单](../data/manifests/q1_shared_v04_admission_preparation_20261104.json)。原追加一次同档验证问题仍待用户回答，未新建或启动V04。
+
 V03于北京时间01:37:29被原30GiB守卫正常回收，01:37:30整个pipeline明确FAILED。触发总量32271097856B（约30.055GiB），cgroup OOMkill仍0，worker回收-15；截至01:40独立核1761冻结输入全部SHA未变、五原PID全部不存在、GPU1MiB/25度/recovery=None且无计算进程。没有正式训练或checkpoint，八轮完整更新尚未完成。两rank日志各409600预热明确已采集；旧worker JSON仍RUNNING/计数0是未刷新的原始收据，不能当作当前在运行或证明内存中零优化。[失败与独立核验](../logs/session_records/q1_shared_v03_memory_failure_20261104.json)。
 
 退出后容器20459925504B，其中cache18980741120B、匿名RSS29421568B、shmem0。停止瞬间没有memory.stat分项，故不能据退出后值判定峰值仅由cache造成，也不能声称是CUDA显存OOM。原choose_profile只允许明确容量CUDA OOM降档；本次没有进入512或正式训练。原失败目录、日志及RUNNING旧收据均保留，以pipeline/guard终态和PID核验解释。

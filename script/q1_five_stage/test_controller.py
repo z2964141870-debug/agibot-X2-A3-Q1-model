@@ -50,6 +50,42 @@ class ControllerTests(unittest.TestCase):
                 runner.assert_not_called()
             self.assertFalse(output.exists())
 
+    def test_excess_cache_creates_no_experiment_or_runner(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            output = root / "data/supermimic_for_q1/new"
+            config = dict(output=str(output), frozen_data="frozen.json", frozen_data_sha256="a" * 64,
+                morph_upstream=MORPH_UPSTREAM, profile_maximum_initial_cache_bytes=4 * 1024**3)
+            with patch("controller.ROOT", root), patch("controller.identity", return_value=dict(sha256="a" * 64)), \
+                 patch("controller.read", return_value={}), patch("controller.validate_frozen", return_value=[]), \
+                 patch("controller.final_gate", return_value=dict(passed=True, gate_reason=[])), \
+                 patch("guard.profile_cache_admission", side_effect=RuntimeError("Initial cache exceeds")) as admit, \
+                 patch("controller.Runner") as runner:
+                with self.assertRaisesRegex(RuntimeError, "Initial cache exceeds"):
+                    execute(config, root / "config.json", "a" * 40)
+                admit.assert_called_once_with(4 * 1024**3)
+                runner.assert_not_called()
+            self.assertFalse(output.exists())
+
+    def test_cache_limit_reaches_only_the_profile_guard(self):
+        for name, configured, expected in (("e1024/profile", True, True), ("e512/profile", True, True),
+                ("e1024/train", True, False), ("profile_audit", True, False),
+                ("formal_audit_0", True, False), ("e1024/profile", False, False)):
+            with self.subTest(name=name, configured=configured), tempfile.TemporaryDirectory() as directory, \
+                 patch("controller.signal.signal"), patch("controller.subprocess.Popen") as child, \
+                 patch("controller.oom_count", return_value=0), patch("controller.recovery", return_value="None"), \
+                 patch("controller.save"), patch("controller.read", return_value=dict(status="COMPLETED")):
+                child.return_value.wait.return_value = 0
+                config = dict(morph_python="/python")
+                if configured:
+                    config["profile_maximum_initial_cache_bytes"] = 4 * 1024**3
+                Runner(config, Path(directory), []).phase(name, ["worker"], 60, 1024)
+                command = child.call_args.args[0]
+                flag = "--maximum-initial-cache-bytes"
+                self.assertEqual(flag in command, expected)
+                if expected:
+                    self.assertEqual(command[command.index(flag) + 1], str(4 * 1024**3))
+
     def test_first_success_does_not_run_another_capacity(self):
         calls = []
 

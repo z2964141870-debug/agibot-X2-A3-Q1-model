@@ -173,6 +173,8 @@ class Runner:
         cmd = [self.config["morph_python"], "-u", str(HERE.parent / "primebot_q1/guard.py"),
             "--config", str(self.output / "guard_config.json"), "--output", str(output),
             "--seconds", str(seconds), "--maximum-bytes", str(maximum_bytes)]
+        if name.rsplit("/", 1)[-1] == "profile" and self.config.get("profile_maximum_initial_cache_bytes") is not None:
+            cmd.extend(("--maximum-initial-cache-bytes", str(self.config["profile_maximum_initial_cache_bytes"])))
         for path in inputs:
             cmd.extend(("--input", path))
         env = dict(os.environ, GIT_PYTHON_GIT_EXECUTABLE=str(
@@ -206,9 +208,15 @@ def execute(config, config_path, commit):
     names = validate_frozen(frozen)
     gate = final_gate(config, names)
     require(gate["passed"], "Full Primebot/local delivery gate failed: " + ",".join(gate["gate_reason"]))
+    cache_admission = None
+    if config.get("profile_maximum_initial_cache_bytes") is not None:
+        from guard import profile_cache_admission
+        cache_admission = profile_cache_admission(config["profile_maximum_initial_cache_bytes"])
     output.mkdir(parents=True, exist_ok=False)
     state = dict(status="PREPARING", started_utc=now(), code_commit=commit, gate=gate,
         automatic_formal_retry=False, profile_weights_reused=False, user_accepted_checkpoint=None)
+    if cache_admission is not None:
+        state["initial_cache_admission"] = cache_admission
     try:
         review = Path(config["primebot_review"])
         inputs = [str(config_path), str(frozen_path), config["profile_template"], config["pinned_input_receipt"],
@@ -248,6 +256,8 @@ def execute(config, config_path, commit):
         require(set(config["native_results"]) == {"g1", "q1"}, "Both existing native control checks required")
         guard_config = dict(adapted_source=str(source), expected_boot=config["expected_boot"], expected_gpu=config["expected_gpu"],
                             maximum_source_bytes=config.get("maximum_source_bytes", 64 * 1024**2))
+        if config.get("record_memory_breakdown", False):
+            guard_config["record_memory_breakdown"] = config["record_memory_breakdown"]
         save(output / "guard_config.json", guard_config)
         state["source_storage_budget_bytes"] = guard_config["maximum_source_bytes"]
         runner = Runner(config, output, inputs)

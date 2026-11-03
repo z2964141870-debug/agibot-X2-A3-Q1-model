@@ -71,6 +71,66 @@ def sample(proc, cgroup, pid, start_ticks):
                 memory=memory(cgroup), processes=processes)
 
 
+class GuardMemoryRecorder:
+    """Sample synchronously before each existing guard check, including its failure."""
+
+    def __init__(self, proc, cgroup, pid, output, maximum_bytes=16 * 1024**2):
+        handle = process(proc, pid)
+        if handle is None or type(maximum_bytes) is not int or not 1 <= maximum_bytes <= 16 * 1024**2:
+            raise ValueError("Require a live guard and bounded observation storage")
+        self.proc, self.cgroup, self.handle, self.output = proc, cgroup, handle, output
+        self.summary_path = output.with_suffix(".summary.json")
+        if output.exists() or self.summary_path.exists():
+            raise FileExistsError("Preserve previous guard memory evidence")
+        with output.open("x"):
+            pass
+        self.maximum_bytes, self.written = maximum_bytes, 0
+        self.summary = dict(status="OBSERVING", controller_pid=pid,
+            controller_start_ticks=handle["start_ticks"], samples=0, observed_samples=0,
+            history_size_bound_reached=False, maximum_total_bytes=0,
+            maximum_cache_bytes=0, maximum_anonymous_rss_bytes=0, sample_at_maximum_total=None,
+            training_status_inferred=False, signals_sent=0, optimizer_updates=0,
+            note="The peak row contains one sampled cgroup breakdown; fields are read sequentially, not atomically. Process RSS can count shared mappings repeatedly.")
+
+    def write_summary(self):
+        self.summary["history_bytes"] = self.written
+        temporary = self.summary_path.with_name(self.summary_path.name + ".tmp")
+        temporary.write_text(json.dumps(self.summary, indent=2) + "\n")
+        temporary.replace(self.summary_path)
+
+    def record(self):
+        if self.summary["status"] != "OBSERVING":
+            raise RuntimeError("Guard memory observation has ended")
+        row = sample(self.proc, self.cgroup, self.handle["pid"], self.handle["start_ticks"])
+        if row["status"] != "OBSERVED_LIVE":
+            raise RuntimeError("Guard memory observer lost its exact live handle")
+        encoded = json.dumps(row, separators=(",", ":")) + "\n"
+        size = len(encoded.encode())
+        self.summary["observed_samples"] += 1
+        if self.written + size > self.maximum_bytes:
+            self.summary["history_size_bound_reached"] = True
+        if not self.summary["history_size_bound_reached"]:
+            with self.output.open("a") as stream:
+                stream.write(encoded)
+            self.written += size
+            self.summary["samples"] += 1
+        # Keep the peak breakdown even when the bounded historical log is full.
+        for source, target in (("total_bytes", "maximum_total_bytes"),
+                ("total_cache_bytes", "maximum_cache_bytes"),
+                ("total_rss_bytes", "maximum_anonymous_rss_bytes")):
+            value = row["memory"][source]
+            if value > self.summary[target]:
+                self.summary[target] = value
+        peak = self.summary["sample_at_maximum_total"]
+        if peak is None or row["memory"]["total_bytes"] > peak["memory"]["total_bytes"]:
+            self.summary["sample_at_maximum_total"] = row
+        self.write_summary()
+
+    def close(self):
+        self.summary.update(status="OBSERVATION_ENDED", ended_utc=datetime.now(timezone.utc).isoformat())
+        self.write_summary()
+
+
 def watch(proc, cgroup, pid, start_ticks, output, seconds, interval):
     if not 1 <= seconds <= 10800 or not .5 <= interval <= 10:
         raise ValueError("Use a 1..10800s bound and 0.5..10s sampling interval")

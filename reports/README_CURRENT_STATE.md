@@ -1,5 +1,9 @@
 # YUANQI 当前状态与下一步
 
+2026-11-03准备进展：Primebot独立原锁46包已安装，真实V3原XML的CPU构造及22力矩电机接口通过（state79/context143/obs72），无CUDA上下文。GPU实际控制、559候选原筛选、八全更新/保存审计尚待，正式训练未启动。新入口与资源守卫见[串行主线](README_PRIMEBOT_Q1_STAGED_20261103.md)及[配置](../data/manifests/primebot_q1_staged_config_20261103.json)。
+
+2026-11-03最新主线：[Primebot先复现、评估过门后共享MorphMimic](README_PRIMEBOT_Q1_STAGED_20261103.md)。用户已明确实施完整五阶段：Primebot原训练器/V3适配/4096首选/250000轮，真实八全更新及保存过后从零正式训练；最终固定9/9完整、两共同前缀RMSE改善且完整交付才自动下一轮。当前独立环境/代码准备中，未正式开训。旧NEWGPU_TRAIN01于15:59:57已FAILED：共享首motion CUDA OOM，各WM10其余0、完整轮0/正式未启，原错误保留；下方15:52运行中只是历史。[授权](../data/manifests/primebot_q1_staged_authorization_20261103.json)。
+
 2026-11-03 15:52：[两型新卡原生验证通过，共享各E2048测试已启动](README_MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103.md)。G1/Q1各384转移/0optimizer、两guard回收0/各1823源前后同；Q1243次力矩回调最大差2.012e-6Nm，观察/实际目标差0。15:50:47 profile guard1015/start516555、parent1022、两rank1023/1024/新boot-GPU，预热各409600后首学习编译中，完整8轮及CPU保存审计待；正式未启/冻结3a43f7e不动。全过后自动全新80000轮，不等用户二次确认；采纳null/no goal-agent/其他任务不动。[实时启动证据](../logs/session_records/morphmimic_q1_newgpu_train01_launch_observed_20261103.json)。
 
 2026-11-03 15:50：[新卡验证已实际启动](README_MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103.md)。冻结3a43f7e已独立40位远端/9记录461706B三端SHA、服务器6项准入全过；总controller94/start479951/新boot，1820输入逐SHA同。G1原生384转移/0optimizer于15:46正常通过回收0，Q1新卡首次CCD编译持续推进/worker459/显存346MiB/recoveryNone/OOM0。待Q1通过及各E2048八全更新/保存CPU审计后自动全新80000轮；当前正式未启/采纳null，原运行源码不热改、不重试失败根/no goal-agent/其他任务不动。[启动](../logs/session_records/morphmimic_q1_newgpu_train01_launch_observed_20261103.json)/[发布](../data/manifests/morphmimic_q1_newgpu_train01_preparation_publication_20261103.json)。

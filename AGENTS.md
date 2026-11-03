@@ -4,6 +4,10 @@
 
 ## 环境与目录
 
+- 2026-11-03 Primebot独立锁定环境46包安装完成（Python3.13.11/Torch2.7.0/MuJoCo-Warp3.6.0），首次Git helper故障保留，显式GIT_EXEC_PATH解决且未改依赖。真实V3原XML CPU构造nq29/nv28/nu22/body27/state79/context143/obs72通过、无CUDA；GPU控制/原筛选/八全更新仍待，不称已正式训练。新独立guard保留24/30GiB/86C/100GiB磁盘余量/原GPU锁和进程回收，正式磁盘上限待真实保存体积核算；入口PRIMEBOT_Q1_STAGED和staged_config。
+
+- 2026-11-03用户明确实施Primebot先行五阶段：固定118338b原训练器+真实V3/559候选原筛选，首选4096/WM2048/policy2048/250000轮/从零，八全更新及保存审计过后正式训练；明确容量CUDA OOM才依次2048/1024档且保留250000轮。固定前走loop001A022/起走start002A023/停走stop002A024各三种子，最终9/9完整且共同有效前缀关节/body相对两RMSE改善、全库/原速媒体/保存交付齐才自动新G1-Q1共享各1024/160000，容量OOM才各512/320000，每型410009600转移；自然性诊断必交但非严格门。旧NEWGPU_TRAIN01已15:59:57 FAILED/首motion CUDA OOM/各WM10其余0/完整轮0/正式未启，原失败保留。完整源包182958B Mac/25362 SHA同，独立Python3.13环境准备/首次uv sync缺Git HTTPS helper错误保留。未新正式训练/goal-agent/采纳null，入口README_PRIMEBOT_Q1_STAGED_20261103及staged_authorization，执行发布看旁收据。
+
 - 2026-11-03 15:50:46新卡G1/Q1原生均已COMPLETED/各384转移0optimizer/各1823源前后SHA同/两guard回收0，Q1243实际PD限矩回调差2.012e-6Nm/观察及命令差0。15:50:47自动进入NEWGPU_TRAIN01/profile，guard1015/start516555、parent1022、G11023/Q11024，15:52各409600预热后首学习编译中/完整轮尚0；GPU12803MiB/40C/recoveryNone/OOM0。只监督冻结3a43f7e和本次新设备，不改运行源码，完整8更新及CPU保存审计全过自动全新80000轮，正式未启/采纳null/no goal-agent及其他任务不动。入口同NEWGPU_TRAIN01和launch_observed收据。
 
 - 2026-11-03 15:44:41 NEWGPU_TRAIN01总controller94/start479951已启动，执行冻结3a43f7ee8aaaf2d9e39494eabae03a7114bdce5a独立40位远端/9记录461706B三端SHA、服务器6准入全过，1820原输入逐SHA同。15:46G1原生384转移/0optimizer/观察及命令差0/reward1.67638e-8/guard回收0；15:50Q1 worker459/guard452正在新卡首次CCD编译持续前进，GPU346MiB/36C/recoveryNone/OOM0。只监督原串行流程，全原生+各E2048八全更新/保存审计过后自动全新80000轮；正式未启/不热改执行输入/profile权重不续/采纳null/no goal-agent/其他任务不动。入口NEWGPU_TRAIN01及launch_observed/准备publication收据，上下准备未启动均历史。

@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-11-04：[原生G1/Q1回放与实际脚底诊断准备](README_Q1_NATIVE_EVALUATION_20261104.md)。同片初末、提前失败保留、真实碰撞支持点和名义承重滑速、原速媒体及独立比较入口，本地55项50过5依赖跳过，新实模CPU待发布后补验。目标active/原q1十分钟ACTIVE已实读，不启动额外验证或正式共享训练。
+2026-11-04：[原生G1/Q1评估准备和两型真实CPU核验通过](README_Q1_NATIVE_EVALUATION_20261104.md)。同片初末/失败保留/实际碰撞脚底/原速媒体和比较入口，本地55项50过5依赖跳过；13份523258B三端和独立远端后两型CPU通过、八源SHA同，0积分优化。目标active/原q1十分钟ACTIVE已实读，正式共享未启，GPU评估和总controller待。[发布和补验](../logs/session_records/q1_native_geometry_publication_20261104.json)。
 
 2026-11-04 02:18：[现有五阶段目标与主动监督复核](README_Q1_ACTIVE_GOAL_20261103.md)。get_goal实读active、原q1为ACTIVE每10分钟/同线程；共享内存失败及追加验证待决定保持，目标不结算。评估加载器实际CPU补验通过，等待期间继续已授权工具。
 

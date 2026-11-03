@@ -4,7 +4,7 @@
 
 ## 环境与目录
 
-- 2026-11-04原生G1/Q1评估准备新增native_review/metrics/video/compare，原benchmark时轴/失败hold/真实碰撞脚底和mask/完整片与共同前缀分开；本地55项50过5依赖跳过，新真实CPU运动学待发布后补验，GPU实际评估和总controller仍待。现有goal实读active、q1十分钟ACTIVE，同25362原五PID退出/GPU健康空闲，不因准备或等待结算，不新V04/训练或goal-agent；追加同档验证原问题待答复。入口Q1_NATIVE_EVALUATION及geometry_preparation，实际补验/发布见后续收据。
+- 2026-11-04原生G1/Q1评估准备新增native_review/metrics/video/compare，原benchmark时轴/失败hold/真实碰撞脚底和mask/完整片与共同前缀分开；本地55项50过5依赖跳过，aaaebde独立远端/13份523258B三端后两型真实CPU运动学12.134/11.082秒通过/八源SHA同/0积分策略优化、CUDA屏蔽。GPU实际评估和总controller仍待。03:00现有goal实读active/q1十分钟ACTIVE，25362原五PID退出/GPU健康空闲，不结算、不新V04/训练或goal-agent；追加同档验证原问题待答复。入口Q1_NATIVE_EVALUATION及native_geometry_publication收据。
 
 - 2026-11-04 01:37:29共享V03被原30GiB守卫停止/总32271097856B/parent回收-15/OOM0，01:37:30 pipelineFAILED；五原PID退出、1761输入独立SHA同、GPU1MiB健康、八完整轮未成/无checkpoint正式未启。旧workerRUNNING及零计数未刷不当实时或内存零优化；各409600预热日志有证。退出cache18980741120B，原默认空闲维护63.498秒降至11153068032B/实降7827673088B，仍未到4GiB，冷却不绕；峰值分项缺失不定单因/不当CUDA OOM自动降512。新增只读memory_watch六本地CPU过、独立V04同1024配置仅准备，原phase automatic_retry=false需用户新决定才追加一次同档验证；目标active/q1十分钟ACTIVE/采纳null，等待继续原生评估准备，不新goal-agent或改其他任务。入口同Q1_SHARED_TRAINING及v03_memory_failure/cache收据，服务器实测发布见后续。
 

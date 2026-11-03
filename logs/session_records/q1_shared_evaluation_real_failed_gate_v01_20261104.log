@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/opt/data/private/ZHY/script/q1_five_stage/shared_review.py", line 267, in <module>
+    print(execute(args.config, args.pipeline, args.runtime_config, args.output, args.evaluation_commit))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/script/q1_five_stage/shared_review.py", line 175, in execute
+    plan_path, plan, frozen, names, audits, inputs = preflight(config, pipeline_path)
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/private/ZHY/script/q1_five_stage/shared_review.py", line 59, in preflight
+    require(plan_path.is_absolute() and plan_path.is_relative_to(ROOT / "data/supermimic_for_q1"),
+  File "/opt/data/private/ZHY/script/primebot_q1/common.py", line 42, in require
+    raise RuntimeError(message)
+RuntimeError: Require a formal shared plan under the sole server root

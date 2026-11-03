@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-11-04 03:31：[共享评估、比较及Mac交付串行代码准备](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。24回放/14比较/2曲线、36固定原速视频与4824逐例清单，正式完成和双型审计前不建Runner；本地68项63过5依赖跳过，失败不重试，真实共享回放/媒体待。现有goal active、q1十分钟ACTIVE已实核，不新建或结算；原内存失败及追加一次V04决定待答复，未新GPU或训练。
+2026-11-04 03:40：[共享评估、比较及Mac交付串行代码与真实CPU通过](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。24回放/14比较/2曲线、36固定视频与4824逐例清单；7965f2b独立远端/17份585412B三端后，服务器16项CPU全过/14.742秒、十一源SHA同，真实V03失败门拒绝且不建目录。68本地63过5依赖跳过；真实共享回放/媒体仍待，未新物理或优化。goal再读active/q1十分钟ACTIVE，GPU1MiB/24度健康空闲/OOM0，原五PID退；原内存失败及一次V04追加决定待答复，不新建或结算目标。[完整证据](../logs/session_records/q1_shared_evaluation_pipeline_publication_20261104.json)。
 
 2026-11-04 03:00：[G1/Q1原生评估准备与实际CPU运动学通过](README_Q1_NATIVE_EVALUATION_20261104.md)。aaaebde源码13份523258B独立远端/三端核同后，两型CPU12.134/11.082秒过、八源前后SHA同，无积分/策略回放/优化或CUDA。55项本地50过5依赖跳过，新实际CPU证据已取回5628B；GPU回放/总controller仍待。get_goal再读active、q1十分钟ACTIVE；原五PID退出/GPU健康空闲，正式共享未启/追加V04决定仍待，不结算目标。[收据](../logs/session_records/q1_native_geometry_publication_20261104.json)。
 

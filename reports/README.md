@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-11-04：[共享评估与完整本地交付串行入口准备](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。24回放、14比较、两型曲线和36原速媒体清单；68项本地63过5依赖跳过，正式训练/审计未成禁止物理。goal active/原q1十分钟ACTIVE实核保持，V04追加决定仍待，实际共享回放和媒体未执行。
+2026-11-04：[共享评估与完整本地交付串行入口/实际CPU通过](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。24回放、14比较、两型曲线和36媒体清单；68本地63过5依赖跳过，7965f2b独立远端/17份三端后服务器16项CPU全过，真实失败训练门正确拒绝，十一源SHA同。goal active/原q1十分钟ACTIVE保持，V04追加决定仍待，实际共享回放和媒体未执行。[证据](../logs/session_records/q1_shared_evaluation_pipeline_publication_20261104.json)。
 
 2026-11-04：[原生G1/Q1评估准备和两型真实CPU核验通过](README_Q1_NATIVE_EVALUATION_20261104.md)。同片初末/失败保留/实际碰撞脚底/原速媒体和比较入口，本地55项50过5依赖跳过；13份523258B三端和独立远端后两型CPU通过、八源SHA同，0积分优化。目标active/原q1十分钟ACTIVE已实读，正式共享未启，GPU评估和总controller待。[发布和补验](../logs/session_records/q1_native_geometry_publication_20261104.json)。
 

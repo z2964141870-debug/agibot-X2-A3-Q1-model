@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-04：[同物理Q1真实基线兼容性补验准备](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。Morph Python3.11首层Primebot模块实导入通过/CUDA未初始化；新增真实最终权重和三固定参考CPU测试，阻止积分、核姿态/FK/sidecar及输入，待发布和服务器执行。目标active/十分钟监督保持，V04追加决定仍待，正式共享未启。
+
 2026-11-04 03:40：[共享评估、比较及Mac交付串行代码与真实CPU通过](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。24回放/14比较/2曲线、36固定视频与4824逐例清单；7965f2b独立远端/17份585412B三端后，服务器16项CPU全过/14.742秒、十一源SHA同，真实V03失败门拒绝且不建目录。68本地63过5依赖跳过；真实共享回放/媒体仍待，未新物理或优化。goal再读active/q1十分钟ACTIVE，GPU1MiB/24度健康空闲/OOM0，原五PID退；原内存失败及一次V04追加决定待答复，不新建或结算目标。[完整证据](../logs/session_records/q1_shared_evaluation_pipeline_publication_20261104.json)。
 
 2026-11-04 03:00：[G1/Q1原生评估准备与实际CPU运动学通过](README_Q1_NATIVE_EVALUATION_20261104.md)。aaaebde源码13份523258B独立远端/三端核同后，两型CPU12.134/11.082秒过、八源前后SHA同，无积分/策略回放/优化或CUDA。55项本地50过5依赖跳过，新实际CPU证据已取回5628B；GPU回放/总controller仍待。get_goal再读active、q1十分钟ACTIVE；原五PID退出/GPU健康空闲，正式共享未启/追加V04决定仍待，不结算目标。[收据](../logs/session_records/q1_native_geometry_publication_20261104.json)。

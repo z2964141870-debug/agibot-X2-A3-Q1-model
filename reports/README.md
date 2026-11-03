@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-04：[同物理Q1真实基线CPU兼容性补验准备](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。补实际Morph环境读取Primebot最终权重及三固定参考的检查，零积分/零优化；首层导入通过，完整检查待发布后执行。V04追加验证仍待决定，目标与监督保持。
+
 2026-11-04：[共享评估与完整本地交付串行入口/实际CPU通过](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。24回放、14比较、两型曲线和36媒体清单；68本地63过5依赖跳过，7965f2b独立远端/17份三端后服务器16项CPU全过，真实失败训练门正确拒绝，十一源SHA同。goal active/原q1十分钟ACTIVE保持，V04追加决定仍待，实际共享回放和媒体未执行。[证据](../logs/session_records/q1_shared_evaluation_pipeline_publication_20261104.json)。
 
 2026-11-04：[原生G1/Q1评估准备和两型真实CPU核验通过](README_Q1_NATIVE_EVALUATION_20261104.md)。同片初末/失败保留/实际碰撞脚底/原速媒体和比较入口，本地55项50过5依赖跳过；13份523258B三端和独立远端后两型CPU通过、八源SHA同，0积分优化。目标active/原q1十分钟ACTIVE已实读，正式共享未启，GPU评估和总controller待。[发布和补验](../logs/session_records/q1_native_geometry_publication_20261104.json)。

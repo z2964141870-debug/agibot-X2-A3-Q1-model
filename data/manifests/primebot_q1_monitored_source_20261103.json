@@ -1,0 +1,26 @@
+{
+  "before": {
+    "path": "/opt/data/private/ZHY/data/references/primebot_q1_v3_monitored01_20261103/src/supermimic/train.py",
+    "bytes": 33605,
+    "sha256": "1de4215ca4aaec59173182764c9f55d6ae20054103f9b6f9d6e77009d76d14d1"
+  },
+  "after": {
+    "path": "/opt/data/private/ZHY/data/references/primebot_q1_v3_monitored01_20261103/src/supermimic/train.py",
+    "bytes": 33880,
+    "sha256": "64b502c5e35beb935d95891c510ab8468866a71621b7edf61b5b8566b145e134"
+  },
+  "patches": [
+    {
+      "before": "  save_zero(checkpoint, (model, actor, critic, robot), cfg, capture_rng)\n",
+      "after": "  save_zero(checkpoint, (model, actor, critic, robot), cfg, capture_rng)\n  from live import observe as observe_q1\n  observe_q1(checkpoint, cfg, 0, (model, actor, critic, robot), capture_rng)\n"
+    },
+    {
+      "before": "      exposure_snapshot(checkpoint, global_steps=metrics[\"global_env_steps\"], cfg=cfg)\n",
+      "after": "      exposure_snapshot(checkpoint, global_steps=metrics[\"global_env_steps\"], cfg=cfg)\n      if observe_q1(checkpoint, cfg, completed_iteration, (model, actor, critic, robot), capture_rng):\n        checkpoint(include_replay=True)\n        break\n"
+    }
+  ],
+  "learning_equations_changed": false,
+  "maximum_recipe_iterations": 250000,
+  "early_stop": "user-authorized three consecutive scheduled fixed tracking gates",
+  "source_directory": "/opt/data/private/ZHY/data/references/primebot_q1_v3_staged01_20261103"
+}

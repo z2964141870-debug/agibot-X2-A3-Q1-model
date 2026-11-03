@@ -1,0 +1,212 @@
+{
+  "stage": "Q1_SHARED_V03_MEMORY_GUARD_FAILURE",
+  "checked_utc": "2026-11-03T17:40:20.221031+00:00",
+  "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V03_20261104",
+  "source_commit": "152f5e1afacb3e33bffbd1f191827a89d8d02071",
+  "pipeline": {
+    "status": "FAILED",
+    "started_utc": "2026-11-03T17:18:47.278874+00:00",
+    "code_commit": "152f5e1afacb3e33bffbd1f191827a89d8d02071",
+    "gate": {
+      "passed": true,
+      "gate_reason": [
+        "full_primebot_gate_and_mac_delivery_passed"
+      ],
+      "paired_metrics": {
+        "joint_rmse_rad": {
+          "initial": 0.5530572732289633,
+          "final": 0.11961717158555984
+        },
+        "body_relative_rmse_m": {
+          "initial": 0.05832540368040403,
+          "final": 0.010358979925513268
+        }
+      },
+      "authorizes_morph_training": true,
+      "natural_gait_thresholds_are_diagnostic": true,
+      "user_accepted_checkpoint": null
+    },
+    "automatic_formal_retry": false,
+    "profile_weights_reused": false,
+    "user_accepted_checkpoint": null,
+    "source_storage_budget_bytes": 268435456,
+    "environments_per_robot": 1024,
+    "error": "RuntimeError: Shared failure does not authorize another capacity attempt",
+    "ended_utc": "2026-11-03T17:37:30.640671+00:00"
+  },
+  "guard": {
+    "status": "FAILED",
+    "command": [
+      "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+      "-u",
+      "/opt/data/private/ZHY/script/morphmimic_q1/train_native.py",
+      "--plan",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V03_20261104/e1024_profile_plan.json"
+    ],
+    "cwd": "/opt/data/private/ZHY",
+    "started_utc": "2026-11-03T17:18:49.675226+00:00",
+    "controller_pid": 47220,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "experiment": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V03_20261104/e1024/profile",
+        "unique_allocated_bytes": 614400,
+        "unique_logical_bytes": 588804,
+        "unique_inodes": 16,
+        "symlinks_not_followed": 0
+      },
+      "source": {
+        "root": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+        "unique_allocated_bytes": 142503936,
+        "unique_logical_bytes": 141858407,
+        "unique_inodes": 341,
+        "symlinks_not_followed": 0
+      },
+      "free_bytes": {
+        "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V03_20261104/e1024/profile": 519485915136,
+        "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1": 519485915136
+      },
+      "shared_memory": {
+        "shared_bytes": 31979057152,
+        "oom_kill": 0,
+        "maximum_bytes": 32212254720
+      },
+      "gpu": {
+        "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+        "temperature_c": 37,
+        "recovery": "None",
+        "used_mib": 15811
+      }
+    },
+    "error": "MemoryLimit: Data worker reserve reached: shared_bytes=32271097856, oom_kill=0",
+    "worker_pid": 47225,
+    "worker_group": 47225,
+    "cleanup": {
+      "worker_started": true,
+      "worker_pid": 47225,
+      "worker_group": 47225,
+      "worker_reaped": true,
+      "worker_return_code": -15
+    },
+    "ended_utc": "2026-11-03T17:37:29.638313+00:00"
+  },
+  "phase": {
+    "status": "FAILED",
+    "error": "MemoryLimit: Data worker reserve reached: shared_bytes=32271097856, oom_kill=0",
+    "automatic_retry": false,
+    "inputs_unchanged": true,
+    "cgroup_oom_kill_delta": 0,
+    "gpu_recovery_action": "None"
+  },
+  "independent_input_audit": {
+    "count": 1761,
+    "unchanged": true,
+    "mismatches": []
+  },
+  "processes": [
+    {
+      "pid": 47219,
+      "exists": false
+    },
+    {
+      "pid": 47220,
+      "exists": false
+    },
+    {
+      "pid": 47225,
+      "exists": false
+    },
+    {
+      "pid": 47226,
+      "exists": false
+    },
+    {
+      "pid": 47227,
+      "exists": false
+    }
+  ],
+  "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+  "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 1, 25, None",
+  "compute_processes": "",
+  "after_exit_memory": {
+    "total_bytes": 20459925504,
+    "cache_bytes": 18980741120,
+    "anonymous_rss_bytes": 29421568,
+    "shmem_bytes": 0,
+    "memory_stat": {
+      "cache": "18980741120",
+      "rss": "29421568",
+      "rss_huge": "0",
+      "shmem": "0",
+      "mapped_file": "8380416",
+      "dirty": "0",
+      "writeback": "2027520",
+      "pgpgin": "152976054",
+      "pgpgout": "148334510",
+      "pgfault": "210615372",
+      "pgmajfault": "40128",
+      "inactive_anon": "0",
+      "active_anon": "26742784",
+      "inactive_file": "13482860544",
+      "active_file": "5495255040",
+      "unevictable": "0",
+      "hierarchical_memory_limit": "34292629504",
+      "total_cache": "18980741120",
+      "total_rss": "29421568",
+      "total_rss_huge": "0",
+      "total_shmem": "0",
+      "total_mapped_file": "8380416",
+      "total_dirty": "0",
+      "total_writeback": "2027520",
+      "total_pgpgin": "152976054",
+      "total_pgpgout": "148334510",
+      "total_pgfault": "210615372",
+      "total_pgmajfault": "40128",
+      "total_inactive_anon": "0",
+      "total_active_anon": "26742784",
+      "total_inactive_file": "13482860544",
+      "total_active_file": "5495255040",
+      "total_unevictable": "0"
+    }
+  },
+  "oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+  "workers": {
+    "g1": {
+      "status": "RUNNING",
+      "pid": 47226,
+      "iterations_completed": 0,
+      "optimizer_updates": {
+        "wm_opt": 0,
+        "policy_opt": 0,
+        "critic_opt": 0,
+        "kp_opt": 0,
+        "critic_kp_opt": 0
+      },
+      "collected_environment_transitions": 0,
+      "formal_training": false,
+      "warmup_transitions_from_log": 409600
+    },
+    "q1": {
+      "status": "RUNNING",
+      "pid": 47227,
+      "iterations_completed": 0,
+      "optimizer_updates": {
+        "wm_opt": 0,
+        "policy_opt": 0,
+        "critic_opt": 0,
+        "kp_opt": 0,
+        "critic_kp_opt": 0
+      },
+      "collected_environment_transitions": 0,
+      "formal_training": false,
+      "warmup_transitions_from_log": 409600
+    }
+  },
+  "formal_training_started": false,
+  "whole_goal_complete": false,
+  "user_accepted_checkpoint": null,
+  "limits": [
+    "No memory.stat breakdown was sampled at the stop; the post-exit cache is not proof of the peak breakdown.",
+    "Worker running receipts stopped updating before a full iteration; their zero counters do not prove zero in-memory optimization."
+  ]
+}

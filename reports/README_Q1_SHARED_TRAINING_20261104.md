@@ -2,7 +2,19 @@
 
 2026-11-04。应用目标实读active，原心跳q1已通过应用工具更新并读回ACTIVE、每10分钟、同一线程。监督指令已转向当前共享阶段，保留Primebot终态，不再等待已结束的旧PID。整个五阶段目标尚未完成，用户采纳null。
 
-## 当前运行快照
+## 当前终态与后续准备
+
+V03于北京时间01:37:29被原30GiB守卫正常回收，01:37:30整个pipeline明确FAILED。触发总量32271097856B（约30.055GiB），cgroup OOMkill仍0，worker回收-15；截至01:40独立核1761冻结输入全部SHA未变、五原PID全部不存在、GPU1MiB/25度/recovery=None且无计算进程。没有正式训练或checkpoint，八轮完整更新尚未完成。两rank日志各409600预热明确已采集；旧worker JSON仍RUNNING/计数0是未刷新的原始收据，不能当作当前在运行或证明内存中零优化。[失败与独立核验](../logs/session_records/q1_shared_v03_memory_failure_20261104.json)。
+
+退出后容器20459925504B，其中cache18980741120B、匿名RSS29421568B、shmem0。停止瞬间没有memory.stat分项，故不能据退出后值判定峰值仅由cache造成，也不能声称是CUDA显存OOM。原choose_profile只允许明确容量CUDA OOM降档；本次没有进入512或正式训练。原失败目录、日志及RUNNING旧收据均保留，以pipeline/guard终态和PID核验解释。
+
+按既有授权于01:41:55执行一轮默认缓存维护：最多8GiB advice/120秒/1800秒冷却，实际63.498秒，cache18980741120→11153068032B，观察下降7827673088B（约7.290GiB）。工具收尾total13084680192B，01:47工具退出后12439904256B，shmem0/OOM0；未删除文件、未读大文件内容或改资源线。[维护原收据副本](../logs/session_records/q1_shared_v03_cache_maintenance_20261104.json)。尚未降至4GiB目标；后续只按原冷却规则继续，不连续绕过限量。
+
+新增独立只读memory_watch.py，每2秒记录cgroup总量/cache/匿名RSS/shmem/脏页及原controller子树RSS，核PID启动tick、boot和唯一根；最大10800秒/16MiB，观察超时不判训练停止，不向进程发信号，也不写训练输入。6项本地CPU测试通过，覆盖PID复用、扫描中复用、退出、观察超时、错误边界和原记录保护；Linux实测尚待发布后。原V03失败前没有这些峰值分项，新增工具不能补造旧峰值。
+
+同档V04配置已准备，唯一变化为独立新输出目录，仍各1024/WM512/motion-KP1024、393同片、八完整更新；通过共享/CPU保存/实存预算后才从零160000。拟在空闲cache实际<=4GiB、原身份/24GiB准入/30GiB运行/锁等复核后仅一次新验证，并同步只读采样。当前未启动；本次原phase明确automatic_retry=false，非CUDA OOM不满足自动降档，需用户决定是否追加这一次同档验证。目标和十分钟监督保持active，等待时继续评估工具，不结算目标。
+
+## 启动快照（历史）
 
 V03已于01:18:47实际启动，执行冻结152f5e1afacb3e33bffbd1f191827a89d8d02071，独立40位远端及15文件511071B三端大小SHA均通过，新Runner环境和实际CPU保存补验2/2通过。新根MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V03_20261104，各1024环境/393条共同参考，仍是八全更新资源验证，尚未正式训练。[发布](../logs/session_records/q1_shared_v03_publication_20261104.json)、[启动](../logs/session_records/q1_shared_v03_launch_20261104.json)、[CPU](../logs/session_records/q1_shared_v03_cpu_20261104.json)。
 

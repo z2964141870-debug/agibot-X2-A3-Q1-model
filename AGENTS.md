@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-04 01:37:29共享V03被原30GiB守卫停止/总32271097856B/parent回收-15/OOM0，01:37:30 pipelineFAILED；五原PID退出、1761输入独立SHA同、GPU1MiB健康、八完整轮未成/无checkpoint正式未启。旧workerRUNNING及零计数未刷不当实时或内存零优化；各409600预热日志有证。退出cache18980741120B，原默认空闲维护63.498秒降至11153068032B/实降7827673088B，仍未到4GiB，冷却不绕；峰值分项缺失不定单因/不当CUDA OOM自动降512。新增只读memory_watch六本地CPU过、独立V04同1024配置仅准备，原phase automatic_retry=false需用户新决定才追加一次同档验证；目标active/q1十分钟ACTIVE/采纳null，等待继续原生评估准备，不新goal-agent或改其他任务。入口同Q1_SHARED_TRAINING及v03_memory_failure/cache收据，服务器实测发布见后续。
+
 - 2026-11-04 01:20 V03共享各1024实际八轮验证运行：冻结152f5e1独立远端/15文件511071B三端及2服务器CPU后01:18:47启，controller47219/start3924514、guard47220/start3924727、parent47225/start3924829、G147226/Q147227-start3924841均在，VALIDATING/guardRUNNING/GPU7211MiB40C None/容器26.997GB/OOM0。两rank各409600预热、首更新编译，未正式训练；全八轮及共享/CPU保存过自动从零160000。get_goal实读active/q1应用更新并读回ACTIVE十分钟跟踪V03，不新goal-agent/不结算等待或其他任务变更/采纳null，不热改冻结输入。入口Q1_SHARED_TRAINING_20261104与v03_launch/observed/publication收据。
 
 - 2026-11-04共享源码预算修复4fc06b9已独立远端/10文件499878B三端及5服务器CPU过；V02两rank实际bootstrap导入缺GIT_PYTHON_GIT_EXECUTABLE退出，原五PID退/冻结输入同/OOM0/GPU健康/0物理优化。V03只补既有原生Git工具路径、独立新根，两型真实CPU bootstrap＋Trainer导入已过无CUDA、新Runner环境回归过，发布核验后各1024八全更新全过自动全新160000；失败保留、仅容量OOM回退/正式不自重启。goal active/q1十分钟ACTIVE/采纳null，不新goal-agent或结算/改其他任务。入口Q1_SHARED_TRAINING_20261104。

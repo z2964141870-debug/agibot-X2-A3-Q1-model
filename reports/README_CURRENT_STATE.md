@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-03 22:22：[5000轮已改善跟踪但仍无交替抬脚](README_PRIMEBOT_Q1_MONITORING_20261103.md)。固定9/9、临时连续2/3，短前缀joint.553→.140rad/body.0583→.0133m；完整三片joint.191/.140/.278rad，抬脚1/1/0、交替0，承重滑移仍明显。41工件/3原速视频本地SHA与1587帧解码/九图目视齐，无重复物理。原5742轮继续/原PID与守卫健康，目标active/q1每10分钟ACTIVE，下一10000；共享控制评估仍待补、最终全门先于Morph，目标未达/采纳null。[收据](../logs/session_records/primebot_q1_iteration5000_quality_20261103.json)。
+
 2026-11-03 21:50：[目标持续active，条件转接门禁10项CPU测试通过](README_Q1_FIVE_STAGE_TRANSITION_20261103.md)。原Primebot4259完整轮/43773952转移、三个PID/start一致、guard RUNNING/GPU健康/OOM0，冻结b8f920c不动；新包不在104运行输入。q1心跳ACTIVE每10分钟。独立纯函数覆盖最终交付/失败/OOM/共享一致性及配方，真实controller与评估比较仍待接、Morph未启；1000轮仍无正常抬脚，下次5000，目标未达/采纳null。[收据](../logs/session_records/q1_five_stage_contracts_20261103.json)。
 
 2026-11-03 21:17：[正式五阶段goal已active，10分钟主动监督已补齐](README_Q1_ACTIVE_GOAL_20261103.md)。用户明确要求目标模式；首次goal=null后创建并复读active，旧q1-rf08-4096已不存在，新本线程心跳q1为ACTIVE/每10分钟且保存元数据核同。最新21:16:44原Primebot2520轮/25968640转移、guardRUNNING/GPU健康；不重启或热改冻结b8f920c。原1000评测仍不会正常抬脚换步，下次5000；等待时继续实现条件共享控制器/原生评估/比较，完整门及Mac交付前Morph未启，不结算整个goal/采纳null/无agent及其他任务改动。[原执行收据](../logs/session_records/q1_active_goal_20261103.json)。此用户新决定覆盖历史“不新goal/只等审阅”。

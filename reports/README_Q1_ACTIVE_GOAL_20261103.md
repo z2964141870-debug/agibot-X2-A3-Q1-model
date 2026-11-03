@@ -1,5 +1,7 @@
 # Q1五阶段目标模式与主动监督
 
+22:22:27复查：get_goal仍active，心跳q1保存字段ACTIVE每10分钟；原Primebot5742完整轮/58961920转移，原三PID/starttick相同、guard RUNNING、GPU21562MiB/66度/recovery=None。5000轮观测已9/9且参数/RNG不变，临时连续2/3、未早停，下一10000；41小工件和3原速视频/1587帧Mac核验齐，但交替抬脚仍0，不能称正常走路。详见[5000轮质量收据](../logs/session_records/primebot_q1_iteration5000_quality_20261103.json)。
+
 记录日期：2026-11-03。用户明确要求目标模式主动监控。应用工具首次返回goal=null；随后已创建正式目标，get_goal复读确认为active，创建时间21:13:04北京时间。旧q1-rf08-4096监督更新返回任务不存在，不能把历史ACTIVE描述当成当前监督。
 
 ## 当前状态

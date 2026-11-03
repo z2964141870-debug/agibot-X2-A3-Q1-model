@@ -1,10 +1,10 @@
 # Primebot训练中效果监控与提前停止
 
-记录日期：2026-11-03。状态：20:46:59首1000轮评测完成，固定9/9完整、两共同前缀RMSE改善，但三走脚底均无超过10mm的抬脚，仍不能称正常走路。20:57:15核1520完整轮/15728640真实转移，原三个进程/104冻结输入不变、GPU健康/OOM0，正式训练继续。下一评测5000轮。
+记录日期：2026-11-03。最新5000轮评测9/9、短前缀跟踪明显改善，但仍没有交替抬脚，不能称自然步态。22:22:27原5742完整轮/58961920转移，原三PID/starttick相同、guard RUNNING、GPU健康，正式训练继续。临时连续2/3，下一10000。应用goal active/q1心跳每10分钟ACTIVE。
 
 ## 用户新决定
 
-用户允许训练期间监控效果，在已经足够好时提前终止。因此250000轮改为上限；其他原生学习公式、奖励、完整网络和学习率日程保留。提前停止明确记为未跑满原配方，不冒充完整复现终点。当前没有新建应用goal或agent，用户采纳仍null。
+用户允许训练期间监控效果，在已经足够好时提前终止。因此250000轮改为上限；其他原生学习公式、奖励、完整网络和学习率日程保留。提前停止明确记为未跑满原配方，不冒充完整复现终点。21:13用户明确要求目标模式后，已建应用goal并复读active，q1心跳ACTIVE每10分钟；未启agent，用户采纳仍null。
 
 默认在零更新、1000轮以及每5000轮观测固定三条普通走路动作，各seed0/1/2。三次连续观测均9/9完整、且关节角与骨盆相对身体位置两项RMSE都较同次正式训练的零更新改善，才在完整优化边界保存并提前停止。比较采用每对共同有效前缀，排除初始化及首次终止帧，片段等权。缺失、非有限、失败或不完整观测不能算通过；监控故障保留并继续原训练，不以reward/loss早停。
 
@@ -87,3 +87,26 @@ start_validated顺序等待原验证终态、检查已有轨迹媒体、仅一�
 - [1000轮前走视频](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run/live_review/iteration_001000/walk_forward_loop_001__A022_s0/tracking.mp4)
 - [1000轮起走视频](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run/live_review/iteration_001000/walk_forward_start_002__A023_s0/tracking.mp4)
 - [1000轮停走视频](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run/live_review/iteration_001000/walk_forward_stop_002__A024_s0/tracking.mp4)
+
+## 5000轮质量与本地视频
+
+22:05:30开始的既定CPU观测在约97.1秒完成，9/9完整；训练参数和全部RNG前后不变，未增加训练采样或优化。1000与5000两次临时门连续通过2/3，尚未早停；下一观测10000轮。这不替代最终全393片和本地交付门，也不授权立即进入Morph。
+
+共同有效前缀的关节RMSE为0.553057→0.139883rad、骨盆相对身体位置RMSE为0.0583254→0.0132959m。初始模型提前跌倒，前走只比较70步，起走/停走各51步；不能据此说整段误差下降约75%。三种子仍是同一名义确定性回放，不是独立扰动试验。
+
+| seed0动作 | 完整关节RMSE rad | 完整body相对RMSE m | 脚底p95左/右 mm | >10mm抬脚/交替 | 承重滑速左/右 mm/s | 上肢RMSE rad |
+| --- | ---: | ---: | --- | --- | --- | ---: |
+| 前走 | 0.191169 | 0.032124 | 0.090/0.754 | 1/0 | 62.19/20.42 | 0.202234 |
+| 起走 | 0.140414 | 0.017804 | 0.568/2.622 | 1/0 | 76.01/79.14 | 0.146210 |
+| 停走 | 0.278349 | 0.026060 | 0.067/1.679 | 0/0 | 56.49/34.73 | 0.411018 |
+
+相比1000轮，关节与上肢跟踪大幅改善，前走完整body相对误差则由0.029785升到0.032124m，不能称所有指标都改善。参考脚底p95仍约12.74–25.73mm，实际大多数时刻接近地面、没有交替抬脚；承重滑速较1000轮增加。前走/起走/停走末根XY误差约0.858/0.081/0.355m，根XY只作诊断。侧倾RMS约0.099/0.082/0.065rad。脚步自然性尚未解决，不修改运行中的奖励或控制，也未隔离单因。
+
+41份JSON/CSV/MP4/抽帧共5068246字节，归档3704182字节已独立核Mac/服务器完整SHA；三个视频分别929305/277231/430460字节，总1636996字节，1280×392/50fps、1032/152/403帧。Mac各视频大小SHA、ffprobe逐帧计数及完整解码通过；九格图已目视，无需重复仿真。权重及NPZ仍只留服务器。
+
+- [5000轮前走视频](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run/live_review/iteration_005000/walk_forward_loop_001__A022_s0/tracking.mp4)
+- [5000轮起走视频](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run/live_review/iteration_005000/walk_forward_start_002__A023_s0/tracking.mp4)
+- [5000轮停走视频](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run/live_review/iteration_005000/walk_forward_stop_002__A024_s0/tracking.mp4)
+
+22:22:27原训练5742完整轮、WM57420/actor5742/critic114840，原三PID启动身份不变，guard RUNNING。此时GPU21562MiB/66度/recovery=None，不用旧快照代替以后实时进度。目标和心跳仍active/ACTIVE，不因等待或本次交付结算；共享控制器、原生评估与综合比较仍继续补齐。完整[5000轮收据](../logs/session_records/primebot_q1_iteration5000_quality_20261103.json)，执行冻结仍b8f920cbba9be3f7247bddbe6535febfbc06186b。
+

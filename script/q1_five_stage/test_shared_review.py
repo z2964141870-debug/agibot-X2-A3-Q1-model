@@ -58,7 +58,7 @@ class SharedReviewTests(unittest.TestCase):
         config = dict(output="unused", primebot_review="/primebot", frozen_data="frozen", morph_python="python",
                       primebot_pipeline="primebot_pipeline", delivery_manifest="manifest", mac_receipt="mac",
                       expected_boot="boot", expected_gpu="gpu")
-        runtime = dict(morph_source="/source", morph_python="python", adapted_source="/primebot_source",
+        runtime = dict(morph_source="/source", morph_python="python", primebot_python="primebot_python", adapted_source="/primebot_source",
                        graphics_dir="/graphics", ffmpeg="encoder", expected_boot="boot", expected_gpu="gpu")
         audits = dict(initial=Path("initial_audit"), final=Path("final_audit"))
         for robot in ("g1", "q1"):
@@ -147,7 +147,7 @@ class SharedReviewTests(unittest.TestCase):
         root = Path("/server/review")
         plan = dict(output="/train", cfg=dict(iterations=160000))
         config = dict(morph_python="python", frozen_data="frozen")
-        runtime = dict(adapted_source="primebot")
+        runtime = dict(adapted_source="primebot", primebot_python="primebot_python")
         audits = dict(initial="audit0", final="auditfinal")
         for row in jobs():
             output = root / row["name"] / "review"
@@ -159,6 +159,10 @@ class SharedReviewTests(unittest.TestCase):
             self.assertIn("--pipeline", command)
             self.assertIn("--audit", command)
             self.assertEqual("--primebot-source" in command, row["plant"] == "common")
+            self.assertEqual(command[0], "primebot_python" if row["plant"] == "common" else "python")
+            if row["plant"] == "common":
+                self.assertEqual(command[command.index("--plant-python") + 1], "primebot_python")
+                self.assertEqual(command[command.index("--morph-python") + 1], "python")
 
     def test_direct_comparisons_use_primebot_final_and_shared_motion_only(self):
         config = dict(morph_python="python", frozen_data="frozen", primebot_review="/primebot")

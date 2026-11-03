@@ -2,6 +2,7 @@
 
 import argparse
 import gc
+import importlib.metadata
 import json
 from pathlib import Path
 import random
@@ -52,15 +53,9 @@ def assert_paired_reference(robot, primebot, library, spec):
                 velocity_note="native goal keeps its frozen library velocities; physical reset uses the common Primebot velocities")
 
 
-def rollout(robot, actor, config, item, spec, interface, seed, output, human_root):
+def rollout(robot, actor, config, item, interface, seed, output):
     import numpy as np
     import torch
-    from morphmimic.constants import ANCHOR_IDX
-    from morphmimic.data.motion_library import MotionLibrary
-    from morphmimic.model.human import pack_human_goal
-    from morphmimic.model.rewards_torch import analytic_obs, goal_features
-    from morphmimic.model.state import split_state
-    from morphmimic.train.obs_history import ObsHistory
     from supermimic.data import Q1Motions
     from supermimic.simulator import Q1Simulator
     from evaluate import diagnostics, loads
@@ -73,50 +68,29 @@ def rollout(robot, actor, config, item, spec, interface, seed, output, human_roo
     for key in ("q1_primebot", "q1_morph", "human"):
         require(identity(item[key]["path"]) == item[key], "Frozen paired reference changed")
     reference = Q1Motions(robot, [path], device="cpu").load(0)
-    library = MotionLibrary([item["q1_morph"]["path"]], device="cpu", robot=spec, human_root=human_root)
-    require(library.num_clips == 1 and int(library.clip_len[0]) == len(reference), "Paired clip length changed")
-    paired = assert_paired_reference(robot, reference, library, spec)
-    require(library.human_pos_w is not None and library.human_quat_w is not None, "Missing human reference")
-    with np.load(item["human"]["path"], allow_pickle=False) as human:
-        require(np.array_equal(library.human_pos_w.numpy(), human["human_pos_w"])
-                and np.array_equal(library.human_quat_w.numpy(), human["human_quat_w"]),
-                "MotionLibrary resolved a different human sidecar")
+    paired = actor.start(item, seed, interface)["paired_reference"]
     simulator = Q1Simulator(robot, 1, "cpu", config["action_scale"],
         use_tn=config.get("use_tn", False), physics_timestep=config.get("physics_timestep"))
     simulator.reset(torch.tensor([0]), reference[:1], randomize=False)
-    mask = actor.present
-    default = spec.translator.to_canonical(torch.zeros(22))
-
-    def observation(state):
-        value = analytic_obs(state, torch.zeros(29), default, state[:, 240:], spec.imu_slot)
-        return torch.cat((torch.where(mask, value[:, :29], 0.), torch.where(mask, value[:, 29:58], 0.),
-                          value[:, 58:64], torch.where(mask, value[:, 64:], 0.)), -1)
-
     state = simulator.state()
-    converted = native_state(robot, state, spec)
-    history = ObsHistory(1, 10, 93, "cpu")
-    history.reset(None, observation(converted))
     actual, forces, actions = [state[0].numpy().copy()], [loads(simulator)], []
     failure = None
     with torch.inference_mode():
         for frame in range(len(reference) - 1):
-            offsets = torch.tensor(reference_window_indices(frame, len(reference)))
-            future = library.state(offsets)[None]
-            goals = dict(goal=goal_features(converted, future, anchor="reference"),
-                goal_kp=pack_human_goal(library.human_pos_w[offsets][None],
-                    library.human_quat_w[offsets][None], split_state(converted).body_quat[:, ANCHOR_IDX]))
-            action = actor(history.flat(), goals, interface)
-            native = spec.translator.to_native_delta(action)
+            reply = actor.action(frame, state[0])
+            native = torch.tensor(reply["native_action"], dtype=state.dtype)[None]
+            action = np.asarray(reply["canonical_action"], dtype=np.float32)
+            require(native.shape == (1, 22) and action.shape == (29,)
+                    and torch.isfinite(native).all().item() and np.isfinite(action).all(),
+                    "Invalid native policy action from its isolated runtime")
             state = simulator.step(native)
             require(torch.isfinite(state).all().item(), "Nonfinite physical common-plant state")
             actual.append(state[0].numpy().copy())
             forces.append(loads(simulator))
-            actions.append(action[0].numpy().copy())
+            actions.append(action.copy())
             if robot.terminated(state, reference[frame + 1:frame + 2]).item():
                 failure = frame + 1
                 break
-            converted = native_state(robot, state, spec)
-            history.push(observation(converted))
     actual, target, forces = np.asarray(actual), reference.numpy(), np.asarray(forces)
     body, body_ref, height, slip, tilt, target_height, diagnosis = diagnostics(robot, actual, target, forces)
     valid = len(actual) - 1 if failure is None else max(0, failure - 1)
@@ -162,28 +136,43 @@ def execute(args):
     import torch
     torch.set_num_threads(1)
     require(not torch.cuda.is_initialized(), "Common-plant evaluation must stay on CPU")
-    sys.path[:0] = [str(Path(plan["source"]) / "src"), str(args.primebot_source / "src"),
-                   str(HERE.parent / "morphmimic_q1"), str(HERE.parent / "primebot_q1_review")]
-    from bootstrap import install
-    spec = install("q1")["robot"]
-    from inference import load_policy
+    require(Path(sys.executable).absolute() == args.plant_python,
+            "Common physics must run in the original locked Primebot Python")
+    require(importlib.metadata.version("mujoco") == "3.6.0"
+            and importlib.metadata.version("torch").split("+")[0] == "2.7.0",
+            "Common physics dependencies differ from the original Primebot evaluation")
+    sys.path[:0] = [str(args.primebot_source / "src"), str(HERE.parent / "primebot_q1_review")]
+    from policy_process import PolicyProcess
     from evaluate import load_actor
     from video import render_case
     args.output.mkdir(parents=True, exist_ok=False)
     result = dict(status="RUNNING", started_utc=now(), cases=[], optimizer_updates=0,
-        training_replay_writes=0, backend="CPU identical Primebot plant; native v0.1 policy inputs",
+        training_replay_writes=0, backend="Locked Primebot CPU plant; isolated native v0.1 CPU policy",
+        plant_runtime=dict(python=sys.executable,
+                           packages={name: importlib.metadata.version(name) for name in ("torch", "mujoco")}),
         policy_checkpoint=identity(args.checkpoint), primebot_checkpoint=identity(args.primebot_checkpoint),
         checkpoint=identity(args.checkpoint), iteration=iteration, robot="q1", plant="common_primebot_cpu",
         training_plan=identity(args.plan), frozen_data=identity(args.frozen),
         evaluation_commit=args.evaluation_commit, interface=args.interface, user_accepted_checkpoint=None)
+    actor = None
     try:
-        actor, metadata = load_policy(args.checkpoint, spec, plan["code_commit"], expected_plan=plan)
+        command = [str(args.morph_python), "-u", str(HERE / "policy_process.py")]
+        for key, value in dict(plan=args.plan, checkpoint=args.checkpoint, frozen=args.frozen,
+            **{"primebot-checkpoint": args.primebot_checkpoint, "morph-source": plan["source"],
+               "primebot-source": args.primebot_source}).items():
+            command.extend(("--" + key, str(value)))
+        actor = PolicyProcess(command, args.output / "policy_worker.log")
+        metadata = actor.ready["metadata"]
+        require(actor.ready["checkpoint"] == identity(args.checkpoint)
+                and actor.ready["primebot_checkpoint"] == identity(args.primebot_checkpoint),
+                "Policy worker loaded a different native or baseline checkpoint")
         require(metadata["iteration"] == iteration, "Loaded iteration differs from the CPU audit")
         robot, unused, config, _, _, _ = load_actor(args.primebot_checkpoint)
         del unused
         gc.collect()
         require(config["action_scale"] == .5, "Common Q1 action scale changed")
-        result.update(metadata=metadata, termination=robot.reward_identity(), asset_sha256=robot.asset_sha256,
+        result.update(metadata=metadata, policy_runtime=actor.ready,
+            termination=robot.reward_identity(), asset_sha256=robot.asset_sha256,
             comparison_limits=["Common-plant comparison, not a claim that the native mjlab scene is identical.",
                 "Motion goal uses frozen native velocities; physical initialization uses Primebot's differentiated velocities.",
                 "Q1 was seen in shared training; this is not unseen-morphology zero-shot transfer."])
@@ -192,7 +181,7 @@ def execute(args):
             for seed in ((0,) if args.library else (0, 1, 2)):
                 name = Path(item["q1_primebot"]["path"]).stem
                 directory = args.output / f"{name}_s{seed}"
-                row = rollout(robot, actor, config, item, spec, args.interface, seed, directory, plan["human_root"])
+                row = rollout(robot, actor, config, item, args.interface, seed, directory)
                 row["relative"] = str(Path(item["q1_primebot"]["path"]).relative_to(config["motion_dir"]))
                 if args.render and seed == 0:
                     row["video"] = render_case(Path(config["robot_xml"]), row, directory / "tracking.mp4")
@@ -202,19 +191,23 @@ def execute(args):
         require(all(identity(row[key]["path"]) == row[key] for row in items
                     for key in ("q1_primebot", "q1_morph", "human")), "Evaluation references changed during replay")
         require(not torch.cuda.is_initialized(), "CPU evaluation initialized CUDA")
+        actor.close()
         result.update(status="PASSED", ended_utc=now(), complete_cases=sum(r["complete"] for r in result["cases"]),
-                      cuda_initialized=False)
+                      cuda_initialized=False, policy_worker_reaped=True, policy_worker_return_code=actor.child.returncode)
     except BaseException as error:
         result.update(status="FAILED", ended_utc=now(), error=f"{type(error).__name__}: {error}")
         raise
     finally:
+        if actor is not None and not actor.closed:
+            actor.close(graceful=False)
         save(args.output / "result.json", result)
     return result
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    for key in ("plan", "pipeline", "audit", "checkpoint", "primebot-checkpoint", "primebot-source", "frozen", "output"):
+    for key in ("plan", "pipeline", "audit", "checkpoint", "primebot-checkpoint", "primebot-source",
+                "plant-python", "morph-python", "frozen", "output"):
         parser.add_argument("--" + key, type=Path, required=True)
     parser.add_argument("--interface", choices=("motion", "human"), required=True)
     parser.add_argument("--evaluation-commit", required=True)

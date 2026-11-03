@@ -121,7 +121,8 @@ def graphics(runtime):
 def replay_command(job, config, runtime, plan_path, plan, pipeline_path, audits, output, primebot_checkpoint, commit):
     iteration = 0 if job["stage"] == "initial" else plan["cfg"]["iterations"]
     checkpoint = Path(plan["output"]) / "run" / job["robot"] / f"ckpt_{iteration}.pt"
-    command = [config["morph_python"], "-u", str(HERE / ("native_review.py" if job["plant"] == "native" else "q1_native_review.py"))]
+    python = config["morph_python"] if job["plant"] == "native" else runtime["primebot_python"]
+    command = [python, "-u", str(HERE / ("native_review.py" if job["plant"] == "native" else "q1_native_review.py"))]
     for key, value in dict(plan=plan_path, pipeline=pipeline_path, audit=audits[job["stage"]], checkpoint=checkpoint,
                            frozen=config["frozen_data"], output=output, interface=job["interface"],
                            **{"evaluation-commit": commit}).items():
@@ -129,7 +130,8 @@ def replay_command(job, config, runtime, plan_path, plan, pipeline_path, audits,
     if job["plant"] == "native":
         command.extend(("--robot", job["robot"]))
     else:
-        command.extend(("--primebot-source", runtime["adapted_source"], "--primebot-checkpoint", str(primebot_checkpoint)))
+        command.extend(("--primebot-source", runtime["adapted_source"], "--primebot-checkpoint", str(primebot_checkpoint),
+                        "--plant-python", runtime["primebot_python"], "--morph-python", config["morph_python"]))
     command.append("--library" if job["mode"] == "library" else "--render")
     return command
 

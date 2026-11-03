@@ -1,0 +1,118 @@
+{
+  "status": "BASELINE_CPU_PASSED_LOCKED_PLANT_BRIDGE_PREPARED",
+  "source_commit": "80a2cdbb13d78e2ea7246efd8edbb3f1beddc1c8",
+  "independent_remote_ref": "80a2cdbb13d78e2ea7246efd8edbb3f1beddc1c8",
+  "code_records": 5,
+  "code_payload_bytes": 485658,
+  "code_files": [
+    {
+      "relative": "AGENTS.md",
+      "bytes": 147072,
+      "sha256": "20046369e6b0189b8e39485c9402049a6214dc4d36d2861d3c7be5e04a44bdc6",
+      "before_sha256": "518e4a1c6f81f784f69ad6f056e3e31ef490f7c2c0248d4780797ee789398f44"
+    },
+    {
+      "relative": "reports/README.md",
+      "bytes": 186463,
+      "sha256": "392aec4aa35da0204de1f7ae92fd3f4ef24c60899c2cb529ca5e9aad2de2e032",
+      "before_sha256": "d84e57ec53f1f1c9accb60e5351bbe926015f25636b111362a931be5f7729167"
+    },
+    {
+      "relative": "reports/README_CURRENT_STATE.md",
+      "bytes": 137761,
+      "sha256": "c646e9aa9ffeb40aa4f1d32dddfbe2c5d8bd4db760fac79ec5534fe70cbe8751",
+      "before_sha256": "35061da02d0598bb4dcad98a2d913b36fb1bc4a3451d65a57591ec46ba203ba5"
+    },
+    {
+      "relative": "reports/README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md",
+      "bytes": 6681,
+      "sha256": "d6b1ba4b287d23114477e8ba9dfc63d576a85597a65c54055cdc9a64f8696a78",
+      "before_sha256": "615657bcf209ccb16e43bf7acc0c075ee5fe4b4a92b51b7ae9e9377e94c3138a"
+    },
+    {
+      "relative": "script/q1_five_stage/test_common_plant_runtime.py",
+      "bytes": 7681,
+      "sha256": "61d472b62080da8564658f94a99158395544f0f1a84acecbac906f35b7dd845c",
+      "before_sha256": null
+    }
+  ],
+  "archive_bytes": 181156,
+  "archive_sha256": "e11197f60256022de9f3fb85536a763ca3b604cb098bc6a2340a4390c1456b6a",
+  "mac_code_verified": true,
+  "server_code_verified": true,
+  "cpu_receipt": {
+    "path": "logs/session_records/q1_common_plant_cpu_v01_20261104.json",
+    "sha256": "f680000198eac9e618fae9563e96593d7d1daf2bee83b42a52c560d696524b34"
+  },
+  "cpu_passed": true,
+  "cpu_seconds": 11.683455750993744,
+  "cpu_cases": [
+    {
+      "clip": "walk_forward_loop_001__A022",
+      "frames": 1032,
+      "qpos_tolerance": 0.00002,
+      "body_fk_tolerance": 0.00003,
+      "velocity_note": "native goal keeps its frozen library velocities; physical reset uses the common Primebot velocities",
+      "native_state": 269,
+      "observation": 93,
+      "motion_goal": 670,
+      "human_goal": 1684,
+      "baseline_action_finite": true,
+      "policy_rng_unchanged": true
+    },
+    {
+      "clip": "walk_forward_start_002__A023",
+      "frames": 152,
+      "qpos_tolerance": 0.00002,
+      "body_fk_tolerance": 0.00003,
+      "velocity_note": "native goal keeps its frozen library velocities; physical reset uses the common Primebot velocities",
+      "native_state": 269,
+      "observation": 93,
+      "motion_goal": 670,
+      "human_goal": 1684,
+      "baseline_action_finite": true,
+      "policy_rng_unchanged": true
+    },
+    {
+      "clip": "walk_forward_stop_002__A024",
+      "frames": 403,
+      "qpos_tolerance": 0.00002,
+      "body_fk_tolerance": 0.00003,
+      "velocity_note": "native goal keeps its frozen library velocities; physical reset uses the common Primebot velocities",
+      "native_state": 269,
+      "observation": 93,
+      "motion_goal": 670,
+      "human_goal": 1684,
+      "baseline_action_finite": true,
+      "policy_rng_unchanged": true
+    }
+  ],
+  "cpu_input_count": 13,
+  "inputs_unchanged": true,
+  "actual_runtime_packages": {
+    "torch": "2.11.0+cu128",
+    "mujoco": "3.11.0",
+    "mujoco-warp": "3.11.0",
+    "warp-lang": "1.17.0"
+  },
+  "engine_version_mismatch_found": true,
+  "locked_plant_bridge_server_test": "PENDING_PUBLICATION_AND_EXECUTION",
+  "local_tests": {
+    "total": 74,
+    "passed": 67,
+    "dependency_skips": 7
+  },
+  "initial_code_mirror_attempt": {
+    "status": "FAILED_BEFORE_ANY_TARGET_COPY",
+    "error": "binascii.Error: Non-base64 digit found",
+    "cause": "Independently padded base64 chunks were concatenated",
+    "correction": "Chunks aligned to a multiple of three bytes; complete archive size/SHA then verified before copying",
+    "training_retry": false
+  },
+  "new_physical_transitions": 0,
+  "new_optimizer_updates": 0,
+  "extra_v04_validation_started": false,
+  "formal_shared_training_started": false,
+  "goal_completed": false,
+  "user_accepted_checkpoint": null
+}

@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-04 04:06同物理基线兼容性真实通过：80a2cdb独立远端/五文件485658B三端后10000权重/三固定1587帧11.683秒/十三源同/0积分优化。发现Morph实际Torch2.11-MuJoCo3.11不同原Primebot2.7-3.6；共同入口改原锁定物理＋Morph CPU策略子进程、逐帧JSON/长度超时回收保护，原生评估不变，本地74项67过7依赖跳过，真实双环境18动作等价待发布后。无共享权重或错误共同回放，V04追加决定仍待/正式未启，goal active/q1监督保持/采纳null，入口Q1_SHARED_EVALUATION_PIPELINE。
+
 - 2026-11-04追加同物理Q1 CPU兼容性检查准备：Morph Python3.11实导入Primebot三模块通过/CUDA未初始化；新test_common_plant_runtime读真实最终权重和三冻结固定参考、构造reset/FK/策略输入并阻止积分，仅原基线CPU前向，待发布及服务器执行。不是共享权重或质量评估，不解锁V04/新训练；追加决定仍待，goal active/q1十分钟ACTIVE/采纳null保持，入口Q1_SHARED_EVALUATION_PIPELINE。
 
 - 2026-11-04共享评估串联代码补齐24回放/14比较/两型曲线和Mac36视频/4824例清单；68本地63过5依赖跳过，7965f2b独立远端/17份585412B三端后服务器16CPU全过14.742秒/十一源SHA同，真实V03失败门正确拒绝。03:40GPU1MiB24度健康空闲/OOM0、五旧PID退，未新物理优化/共享检查点仍无。正式完成/双型审计/393及Primebot-Mac全门先于Runner，输出全在guard目录，失败不重试；V04仅未来评估配置未启。goal再读active/q1十分钟ACTIVE，不新goal-agent/不结算，一次V04追加决定待/采纳null。入口Q1_SHARED_EVALUATION_PIPELINE及publication收据。

@@ -22,6 +22,8 @@ def required_paths(names):
     for job in jobs():
         phase = job["name"]
         paths.update(phase + "/" + name for name in ("status.json", "guard.json", "transition_receipt.json", "review/result.json"))
+        if job["plant"] == "common":
+            paths.add(phase + "/review/policy_worker.log")
         selected, seeds = (names, (0,)) if job["mode"] == "library" else (FIXED, (0, 1, 2))
         for name in selected:
             for seed in seeds:
@@ -59,7 +61,8 @@ def write_conclusions(root, plan, config, exposure):
             training_set_results_only=True, unseen_morphology_zero_shot=False,
             complete_recipe_and_equal_exposure_must_remain_separate=True),
         limits=["Q1 V3 differs from the upstream external V2 example; both routes share the repaired393 references.",
-               "Common CPU Q1 comparisons use the identical Primebot plant; native metrics use present joints and13 tracked bodies.",
+               "Common CPU Q1 physics uses the locked original Primebot Python/MuJoCo runtime; only native policy inputs/actions cross a CPU worker pipe.",
+               "Native metrics use present joints and13 tracked bodies; the policy worker uses its own frozen Morph dependencies.",
                "Native mjlab and common CPU plant results have different control/termination implementations and cannot be pooled.",
                "Nominal seeds0/1/2 do not establish performance under independent randomized disturbances.",
                "Foot contact load is sampled at control endpoints and does not establish continuous support.",

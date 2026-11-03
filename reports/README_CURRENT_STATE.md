@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-03 20:57：[Primebot首1000轮有稳定性改善，仍不会正常走路](README_PRIMEBOT_Q1_MONITORING_20261103.md)。固定9/9完整对零更新0/9，两共同前缀RMSEjoint降3.92%/body降49.95%，但仅1.02–1.40秒前缀；三走>10mm抬脚/换脚0、脚底贴地、长前走末根误差3.266m，上肢完整RMSE约.775–.809rad。3原速MP4/1208369B/1587帧Mac大小SHA及全解码/九图目视齐，非自然步态验收。原训练1520完整轮/15728640转移、WM15200-actor1520-critic30400，原三PID/start/104SHA同、GPU健康/OOM0；冻结b8f920c不改、连续临时门1/3未早停，下次5000。Morph控制与比较仍待接/尚未启，目标未达/采纳null。[原评测](../data/manifests/primebot_q1_first_quality_review_20261103.json)及[进度](../logs/session_records/primebot_q1_first_quality_progress_20261103.json)。
+
 2026-11-03 20:31：[Primebot Q1正式监控训练已经运行](README_PRIMEBOT_Q1_MONITORING_20261103.md)。20:23:39起E4096/WM2048/policy2048/393条从零，controller29435/start2148365、guard29965/start2153863、worker29970/start2153901；冻结b8f920cbba9be3f7247bddbe6535febfbc06186b，303完整轮/3264512转移/WM3030-actor303-critic6060、104输入SHA同/GPU21458MiB健康/OOM0。1000及每5000轮自动观测，三连续9/9+两误差改善才早停，25万为上限。三基线视频本地1587帧解码/目视齐，但零更新0/9不作已训练效果。V01缺编码器失败保留，V02复用原FFmpeg，未安装或重做8轮。正式训练继续；Morph尚未启动/目标未达/采纳null。[启动原件](../logs/session_records/primebot_q1_monitored_formal_launch_20261103.json)。下方“正式未启动”为历史。
 
 2026-11-03 20:09：[Primebot4096八完整更新及CPU保存审计通过](README_PRIMEBOT_Q1_MONITORING_20261103.md)。实际/Adam80-8-160、245760转移、原进程退出及冻结源未变；后六轮中位1.265676秒，25万轮纯训练外推87.9小时。新增串行入口检查已有CPU轨迹三视频后仅一次从零正式开训，1000/每5000轮监控，连续三门达标可早停；当前正式启动以随后收据为准。0/9是已有未训练基线，不是已训练结论。

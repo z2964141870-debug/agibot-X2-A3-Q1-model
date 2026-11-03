@@ -1,0 +1,146 @@
+{
+  "status": "PASSED",
+  "checked_utc": "2026-11-03T21:13:56.537351+00:00",
+  "source_commit": "3bfd06e8deac5d487e16713686bae5fc5edb3f1e",
+  "tests": 29,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "elapsed_seconds": 2.1722984419975546,
+  "inputs": [
+    {
+      "path": "script/primebot_q1/guard.py",
+      "bytes": 7218,
+      "sha256": "aae5ca48e1d3e0e60497c3c264031228efb3bfbdbef97a4a1ad2747c925c3647"
+    },
+    {
+      "path": "script/q1_five_stage/controller.py",
+      "bytes": 20597,
+      "sha256": "8c630d83e486e2e39b5de536d93162969d49047bb83415eda9d8a3b5f9baeab3"
+    },
+    {
+      "path": "script/q1_five_stage/memory_watch.py",
+      "bytes": 9914,
+      "sha256": "b545635b41b77a8574e8b9ac961fdc58efedcc73f08efa698ef9d50cd4e3035b"
+    },
+    {
+      "path": "script/q1_five_stage/conditional_shared_v04_20261104.json",
+      "bytes": 2207,
+      "sha256": "cab3ad7fd1392c917743710be129540f19017221edcce6aad7bc45763da1d979"
+    },
+    {
+      "path": "script/q1_five_stage/test_controller.py",
+      "bytes": 9877,
+      "sha256": "1cde3c63227dadc122fd2525000bab9687766345793666eabe50d5fe0fe21079"
+    },
+    {
+      "path": "script/q1_five_stage/test_memory_watch.py",
+      "bytes": 7468,
+      "sha256": "3fabac3fd45c313e2d395fdec70c1e633e0e7ca1b8889690ba33c619b4b13a4c"
+    },
+    {
+      "path": "script/q1_five_stage/test_profile_admission.py",
+      "bytes": 6169,
+      "sha256": "3c5bbdb8e50c0de58b329b6616de2facb20e7b2855d66baa429202bb0f952950"
+    },
+    {
+      "path": "script/supermimic_q1_sources/runtime_guard.py",
+      "bytes": 8645,
+      "sha256": "020e80d36da018ef240f80c38d1d49af2d6d1ed0e4d7b0297bd4f7b934182c74"
+    },
+    {
+      "path": "script/supermimic_q1_sources/guard_phuma_batch.py",
+      "bytes": 4126,
+      "sha256": "29bd2509cffccad91752e7c8119ab40262261fdba8d6ae098f9f0eb356cdf3ea"
+    }
+  ],
+  "inputs_unchanged": true,
+  "actual_imports": {
+    "guard": "/opt/data/private/ZHY/script/primebot_q1/guard.py",
+    "observer": "/opt/data/private/ZHY/script/q1_five_stage/memory_watch.py"
+  },
+  "live_observation": {
+    "status": "OBSERVATION_ENDED",
+    "controller_pid": 54659,
+    "controller_start_ticks": "5335283",
+    "samples": 2,
+    "observed_samples": 2,
+    "history_size_bound_reached": false,
+    "maximum_total_bytes": 8161746944,
+    "maximum_cache_bytes": 6698295296,
+    "maximum_anonymous_rss_bytes": 286359552,
+    "sample_at_maximum_total": {
+      "status": "OBSERVED_LIVE",
+      "utc": "2026-11-03T21:13:56.446266+00:00",
+      "memory": {
+        "total_bytes": 8161746944,
+        "total_cache_bytes": 6698295296,
+        "total_rss_bytes": 286359552,
+        "total_shmem_bytes": 0,
+        "total_dirty_bytes": 270336,
+        "total_writeback_bytes": 2027520,
+        "oom_kill": 0,
+        "under_oom": 0
+      },
+      "processes": [
+        {
+          "pid": 54659,
+          "name": "python",
+          "state": "R",
+          "ppid": 40909,
+          "start_ticks": "5335283",
+          "VmHWM_bytes": 542982144,
+          "VmRSS_bytes": 542973952,
+          "RssAnon_bytes": 279322624,
+          "RssFile_bytes": 263651328,
+          "RssShmem_bytes": 0
+        }
+      ]
+    },
+    "training_status_inferred": false,
+    "signals_sent": 0,
+    "optimizer_updates": 0,
+    "note": "The peak row contains one sampled cgroup breakdown; fields are read sequentially, not atomically. Process RSS can count shared mappings repeatedly.",
+    "history_bytes": 966,
+    "ended_utc": "2026-11-03T21:13:56.447955+00:00"
+  },
+  "live_observation_files": [
+    {
+      "path": "logs/session_records/q1_shared_v04_live_memory_v01_20261104.jsonl",
+      "bytes": 966,
+      "sha256": "dc28d1818cb5553f8c9000a3479e48b819e0a941505abf97de808f62ecbf0936"
+    },
+    {
+      "path": "logs/session_records/q1_shared_v04_live_memory_v01_20261104.summary.json",
+      "bytes": 1348,
+      "sha256": "7c8ae6e0c84882943c173bd6230078a0126df013a5d749cf6567e29b63b2d4c8"
+    }
+  ],
+  "live_cache_admission": {
+    "admitted": false,
+    "reason": "Initial cache exceeds the approved profile admission"
+  },
+  "device": {
+    "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+    "gpu_query": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 1 MiB, 25, None",
+    "compute_pids": "",
+    "total_bytes": 8162205696,
+    "cache_bytes": 6698295296,
+    "rss_bytes": 286359552,
+    "shmem_bytes": 0,
+    "oom": {
+      "oom_kill_disable": "0",
+      "under_oom": "0",
+      "oom_kill": "0"
+    }
+  },
+  "physical_transitions": 0,
+  "optimizer_updates": 0,
+  "cuda_initialized": false,
+  "v03_status": "FAILED",
+  "v04_exists": false,
+  "v04_started": false,
+  "formal_shared_training_started": false,
+  "additional_validation_authorization": "PENDING_EXISTING_USER_QUESTION",
+  "user_accepted_checkpoint": null
+}

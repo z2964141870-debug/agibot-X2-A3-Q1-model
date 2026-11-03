@@ -8,7 +8,11 @@ V04准备补齐了说明与执行不一致的两项：配置显式要求profile�
 
 新的GuardMemoryRecorder直接接在现有每2秒guard检查之前，不依赖另起观察进程。它记录cgroup总量/cache/匿名RSS/shmem/脏页与guard子树RSS，独立核PID启动tick；最高总量对应的整条样本单独保存，不能把不同时刻的各项最大值拼成峰值组成。采样读取为顺序读取、并非内核原子快照，进程RSS共享映射可能重复计数；仍不能补造V03旧峰值。JSONL历史上限16MiB，满后停止追加历史但继续更新峰值摘要，退出写OBSERVATION_ENDED；该状态只表示采样结束，不推断训练成功或整个目标完成。V04的CPU审计和未来正式phase也记录分项，4GiB缓存条件仅用于profile。
 
-本地91项CPU测试84通过、7项因缺依赖跳过，覆盖缓存边界、输入核验后的二次拒绝且不启动worker、整门失败/缓存超线不建实验、仅profile传入缓存阈值、旧配置不启观察器、原真实MemoryBoundBudget在30GiB拒绝前保存样本、峰值同行组成、PID复用、历史限量后继续峰值采样及结束状态。服务器补验与三端发布尚待，不能据本地测试宣称V04容量通过。准备身份见[本轮清单](../data/manifests/q1_shared_v04_admission_preparation_20261104.json)。原追加一次同档验证问题仍待用户回答，未新建或启动V04。
+本地91项CPU测试84通过、7项因缺依赖跳过，原Primebot14项测试另全通过。覆盖缓存边界、输入核验后的二次拒绝且不启动worker、整门失败/缓存超线不建实验、仅profile传入缓存阈值、旧配置不启观察器、原真实MemoryBoundBudget在30GiB拒绝前保存样本、峰值同行组成、PID复用、历史限量后继续峰值采样及结束状态。准备身份见[本轮清单](../data/manifests/q1_shared_v04_admission_preparation_20261104.json)，其中PENDING字段为发布前准备快照，以后续补验收据为准。原追加一次同档验证问题仍待用户回答，未新建或启动V04。
+
+补验完成：3bfd06e8deac5d487e16713686bae5fc5edb3f1e已独立40位远端核同，12份556060B在权威Git、Mac主根和25362逐大小SHA一致。服务器29项CPU测试全部通过、无跳过，用时2.172秒；9项观察输入前后SHA同，实际guard/observer导入路径正确。只对本次CPU检查进程做两次实时分项采样，正常写OBSERVATION_ENDED；CUDA未初始化、0积分/优化。实际cache6698295296B高于4GiB，准入函数按设计拒绝；低于原8GiB维护触发，不强制释放。GPU1MiB/25度/recovery=None、无计算进程、OOMkill0，V03仍FAILED、五旧PID退、V04目录不存在。本轮不是八完整更新验证或正式共享训练。[CPU原结果](../logs/session_records/q1_shared_v04_admission_cpu_v01_20261104.json)、[发布与三端核验](../logs/session_records/q1_shared_v04_admission_publication_20261104.json)。
+
+现有应用goal再次实读active；原q1经应用工具更新监督材料，并独立读保存字段ACTIVE、每10分钟、同一线程。没有创建替代goal或启动agent，追加同档验证仍待原问题，不因等待或单阶段交付结算整个五阶段目标。
 
 V03于北京时间01:37:29被原30GiB守卫正常回收，01:37:30整个pipeline明确FAILED。触发总量32271097856B（约30.055GiB），cgroup OOMkill仍0，worker回收-15；截至01:40独立核1761冻结输入全部SHA未变、五原PID全部不存在、GPU1MiB/25度/recovery=None且无计算进程。没有正式训练或checkpoint，八轮完整更新尚未完成。两rank日志各409600预热明确已采集；旧worker JSON仍RUNNING/计数0是未刷新的原始收据，不能当作当前在运行或证明内存中零优化。[失败与独立核验](../logs/session_records/q1_shared_v03_memory_failure_20261104.json)。
 

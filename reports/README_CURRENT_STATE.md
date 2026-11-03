@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-04：[V04内存准入与采样修复已三端发布并补验，未启动训练](README_Q1_SHARED_TRAINING_20261104.md)。3bfd06e独立40位远端/12份556060B三端同，服务器29项CPU全过2.172秒/9源同，采样器对自身两次现场读取正常结束；无CUDA积分优化。cache6698295296B高于4GiB、低默认维护触发，实际准入正确拒绝、不强制清理。V03仍FAILED、五旧PID退/GPU健康空闲/V04目录无；原追加同档验证问题仍待，goal再次实读active/q1应用更新并独立保存核ACTIVE十分钟同线程，不新goal-agent或结算。[发布及补验](../logs/session_records/q1_shared_v04_admission_publication_20261104.json)。
+
 2026-11-04：[V04说明中的缓存与采样条件已接入执行，尚未启动](README_Q1_SHARED_TRAINING_20261104.md)。profile实际cache<=4GiB在创建实验根及哈希后创建worker前双查，guard原30GiB检查前写分项/峰值同行；历史<=16MiB且满后继续峰值摘要，旧配置默认行为保持。91本地测试84过7依赖跳过，服务器补验待发布后。现有goal实读active、q1保存ACTIVE每10分钟同线程；V03仍FAILED、原五PID退、GPU健康空闲，追加一次同档验证仍待原问题，不自行训练或降512/结算目标。[准备](../data/manifests/q1_shared_v04_admission_preparation_20261104.json)。
 
 2026-11-04 04:43：[Primebot393条完整片步态分布补齐并独立CPU通过](README_PRIMEBOT_Q1_FINAL_RESULTS_20261104.md)。原788份JSON大小/SHA及逐片内容核同，306/393无>10mm左右交替事件、308/393双脚脚底高度p95<=5mm，参考双脚p95>10mm而实际均<=5mm为289/393；承重滑速跨片中位数左106.525/右104.662mm/s。初始全失败不作全长比较；未新物理优化。50afcfd独立远端/12份559976B三端后15项服务器CPU及重汇总全过/.990秒、分组逐值同/八源未变；本地81项74过7依赖跳过。共享比较和综合README接相同诊断，V03仍FAILED/五旧PID退/GPU1MiB健康空闲/cache6.698GB；V04追加决定仍待，goal和十分钟监督保持。[汇总](../data/manifests/primebot_q1_library_diagnostics_20261104.json)/[发布](../logs/session_records/q1_library_diagnostics_publication_20261104.json)。

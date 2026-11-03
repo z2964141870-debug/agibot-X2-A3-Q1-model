@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-04继续现有goal，前轮3bfd/5b内存修复为已核进展。本轮综合writer实际输出回归复现标准完整等曝光记录dict重复target关键字，旧实际极简收据可用；修mapping复制再固定目标/禁止补训，双格式均实写14比较JSON/Markdown/缺前缀Unavailable，合成共享夹具不作实际效果。92本地85过7依赖跳过，服务器CPU及发布待；0新训练物理/V04追加决定仍待/采纳null，goal active/q1十分钟原样，不新goal-agent或结算。入口Q1_SHARED_EVALUATION_PIPELINE及conclusion_writer_preparation。
+
 - 2026-11-04 V04准入采样修复3bfd06e独立40位远端/12份556060B三端后29服务器CPU全过2.172秒/9源前后SHA同，真实两样本/OBSERVATION_ENDED/无CUDA积分优化；cache6698295296B按4GiB门拒绝，低8GiB维护触发不强制清理。GPU1MiB25度None无计算/OOM0，V03仍FAILED、五旧PID退/V04目录不存在；原追加验证问题待。goal再次实读active/q1应用更新后独立保存ACTIVE十分钟同线程，其他任务不改/不新goal-agent/不结算/采纳null；准备快照PENDING由此实际补验覆盖，入口Q1_SHARED_TRAINING及v04_admission_publication。
 
 - 2026-11-04现有goal实读active/q1保存ACTIVE十分钟同线程。V04准备补执行缺口：profile实际cache<=4GiB于实验根前/哈希后worker前双查；guard原30GiB检查前分项采样/峰值整行，不拼异时各项最大，16MiB历史满后继续峰值摘要/退出仅OBSERVATION_ENDED。所有V04 phase可采样、缓存门仅profile，旧默认/配方资源线不变；91本地84过7依赖跳过/服务器补验及发布待。原V03 FAILED、五PID退/GPU健康空闲，无新物理优化/V04未启，原追加一次问题仍待/不降512或结算goal/采纳null/不新goal-agent。入口Q1_SHARED_TRAINING及v04_admission_preparation。

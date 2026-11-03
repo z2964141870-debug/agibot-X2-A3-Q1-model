@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-04：[综合报告完整等曝光记录兼容性修复准备](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。实际写文件回归复现dict重复target关键字错误；保留旧极简收据，完整记录改复制后显式覆盖固定目标及禁止补训。两种记录均实际生成14比较JSON/Markdown，缺共同前缀保持Unavailable/不结算goal；92本地85过7依赖跳过，服务器待发布补验，0新训练或回放。[清单](../data/manifests/q1_shared_conclusion_writer_preparation_20261104.json)。
+
 2026-11-04：[V04缓存准入/守卫采样真实CPU补验通过，目标监督保持](README_Q1_SHARED_TRAINING_20261104.md)。3bfd06e独立远端/12份556060B三端后，服务器29项CPU全过2.172秒/9源前后同、现场两次采样正常结束，无CUDA积分优化；实际cache6.698GB按4GiB门拒绝。V04目录不存在，追加验证仍待原问题，goal active/q1应用更新后独立核ACTIVE每10分钟。[完整收据](../logs/session_records/q1_shared_v04_admission_publication_20261104.json)。
 
 2026-11-04：[V04缓存准入和守卫内分项采样接入准备](README_Q1_SHARED_TRAINING_20261104.md)。4GiB条件在实验根/worker创建前实查；原30GiB检查前保存分项和峰值同行，16MiB历史满后继续峰值。91本地测试84过7依赖跳过，服务器补验待发布后；原V03失败及追加验证待决定保持，目标active/q1十分钟监督不变。[准备清单](../data/manifests/q1_shared_v04_admission_preparation_20261104.json)。

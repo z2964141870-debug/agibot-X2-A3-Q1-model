@@ -1,0 +1,38 @@
+{
+  "stage": "SHARED_CONCLUSION_WRITER_FULL_EXPOSURE_RECORD_COMPATIBILITY",
+  "date": "2026-11-04",
+  "previous_published_commit": "5b47967be353a6a579717925af0fa2a4e0194e96",
+  "previous_goal_turn_classification": "PROGRESS",
+  "previous_goal_turn_evidence": [
+    "3bfd06e8deac5d487e16713686bae5fc5edb3f1e",
+    "5b47967be353a6a579717925af0fa2a4e0194e96"
+  ],
+  "bug": "dict(**exposure, target_q1_transitions=..., additional_training_authorized=False) rejects standard complete exposure_comparison records because their keys already exist.",
+  "original_minimal_primebot_receipt_affected": false,
+  "red_test_error": "TypeError: dict() got multiple values for keyword argument 'target_q1_transitions'",
+  "fix": "Copy the exposure mapping, then explicitly set the fixed target and prohibit additional training.",
+  "tested_exposure_formats": [
+    "EXISTING_MINIMAL_STATUS_ONLY",
+    "STANDARD_COMPLETE_EXPOSURE_COMPARISON_RECORD"
+  ],
+  "real_json_and_markdown_generation_tested": true,
+  "comparison_fixture_count": 14,
+  "shared_comparisons_are_synthetic_test_fixtures": true,
+  "missing_common_prefix_stays_unavailable": true,
+  "actual_primebot_transitions": 102563840,
+  "target_q1_transitions": 410009600,
+  "equal_exposure_fabricated": false,
+  "additional_training_authorized": false,
+  "local_tests": {
+    "total": 92,
+    "passed": 85,
+    "dependency_skips": 7
+  },
+  "server_cpu_verification": "PENDING_PUBLISHED_CODE_MIRROR",
+  "v04_started": false,
+  "additional_validation_authorization": "PENDING_EXISTING_USER_QUESTION",
+  "physical_transitions": 0,
+  "optimizer_updates": 0,
+  "goal_completed": false,
+  "user_accepted_checkpoint": null
+}

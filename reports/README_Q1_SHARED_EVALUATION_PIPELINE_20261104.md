@@ -4,6 +4,8 @@
 
 ## 已完成的代码
 
+综合报告生成补验准备：现有Primebot实际等曝光收据只含status，原writer可用；但标准exposure_comparison输出还含target_q1_transitions和additional_training_authorized，原dict(**exposure, ...)会因重复关键字抛TypeError。新增真实write_conclusions文件输出回归已先复现该错误，改为从mapping复制再显式覆盖目标和禁止追加训练字段；不改原收据或比较门。测试分别输入旧极简收据和标准完整记录，实际写出14项比较的JSON/Markdown，确认缺共同前缀保持Unavailable、完整配方与等曝光分开、102563840/410009600暴露量不混同、不授权补训或结算goal。共享比较数据为明确的合成测试夹具，不是实际共享评估结果。原串行测试曾替换write_conclusions，新增测试覆盖了该缺口。本地92项85通过、7项缺依赖跳过，服务器CPU补验及发布尚待。[准备清单](../data/manifests/q1_shared_conclusion_writer_preparation_20261104.json)。
+
 补齐完整片步态汇总：`comparison.py`和`native_compare.py`的每侧结果均附足部p95/参考差、>10mm事件/交替、承重滑速、倾角、上肢RMSE及幅度差的逐片等权分布；`shared_delivery.py`在综合README输出相应诊断表。失败片不进入完整片分布，缺载荷不填零，缺完整片诊断拒绝比较。使用现有Primebot788份初末JSON及原SHA清单得到全库最终306/393无交替事件、308/393双脚p95<=5mm，基线详见[首轮结果](README_PRIMEBOT_Q1_FINAL_RESULTS_20261104.md)。本地81项74过7依赖跳过；50afcfd独立40位远端及12份559976B三端后，04:43服务器15项纯CPU检查与原JSON独立汇总全部通过/.989702秒，分组逐值相同/八源前后SHA同。未新积分或优化，V04仍未启动。[本次发布与服务器证据](../logs/session_records/q1_library_diagnostics_publication_20261104.json)。
 
 新增`script/q1_five_stage/shared_review.py`。入口先核正式训练pipeline、固定计划、双机型初末CPU审计、两rank完整训练与共享一致性、393同片数据和原Primebot/Mac交付门，再创建独立评估目录。未通过时不导入策略、不创建Runner或启动物理。保留训练pipeline、计划、CPU审计和数据清单的独立小副本，后续控制器写状态不会丢失评估时的证据。

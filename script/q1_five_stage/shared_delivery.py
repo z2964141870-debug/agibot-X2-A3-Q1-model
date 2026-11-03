@@ -74,7 +74,7 @@ def write_conclusions(root, plan, config, exposure):
         shared=dict(configuration=plan["cfg"], training_commit=plan["code_commit"],
                     per_robot_transitions=expected_transitions(plan["cfg"]),
                     per_robot_optimizer_updates=updates(plan["cfg"], plan["cfg"]["iterations"])),
-        comparisons=comparisons_value, equal_exposure=dict(**exposure,
+        comparisons=comparisons_value, equal_exposure=dict(exposure,
             target_q1_transitions=TARGET_TRANSITIONS, additional_training_authorized=False),
         conclusions=dict(primebot_run_through_gate_passed=True, natural_gait_qualified=False,
             g1_shared_initial_final_is_not_g1_single_robot_control=True,

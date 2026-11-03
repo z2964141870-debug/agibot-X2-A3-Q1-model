@@ -1,17 +1,58 @@
 """Missing shared cases, media, and changed local artifacts must block acceptance."""
 
+import copy
+import json
 from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
 
-from shared_delivery import diagnostic_table, required_paths, verify
-from common import FIXED
+from shared_delivery import diagnostic_table, required_paths, verify, write_conclusions
+from common import FIXED, TARGET_TRANSITIONS
+from comparison import exposure_comparison
 from diagnostic_summary import summarize_complete
 from test_diagnostic_summary import case
 
 
 class SharedDeliveryTests(unittest.TestCase):
+    def test_complete_report_accepts_minimal_and_full_exposure_records(self):
+        from shared_review import comparisons
+        final = dict(iteration=10000, global_env_steps=102563840)
+        complete = dict(left=dict(complete_cases=0, total_cases=9, diagnostics=summarize_complete([case(complete=False)])),
+                        right=dict(complete_cases=9, total_cases=9, diagnostics=summarize_complete([case()])))
+        comparison = dict(status="MISSING_COMPARABLE_PREFIX", complete_motion=complete,
+                          common_prefix_metrics={})
+        exposures = [dict(status="UNAVAILABLE_EARLY_STOP_BEFORE_TARGET"), exposure_comparison([final])]
+        plan = dict(code_commit="a" * 40, cfg=dict(iterations=160000, num_envs=1024,
+                    wm_only_iters=2000, warmup_env_steps=400, imag_batch=1024, utd=.4))
+        for exposure in exposures:
+            original = copy.deepcopy(exposure)
+            with self.subTest(exposure=exposure), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                primebot, output = root / "primebot", root / "shared"
+                records = {primebot / "checkpoint_audit.json": dict(initial=dict(iteration=0), final=final),
+                           primebot / "final_fixed/result.json": dict(complete_cases=9),
+                           primebot / "final_library/result.json": dict(cases=[{}] * 393)}
+                records.update({output / row["name"] / "comparison.json": comparison for row in comparisons()})
+                for path, value in records.items():
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_text(json.dumps(value))
+                write_conclusions(output, plan, dict(primebot_review=str(primebot)), exposure)
+                result = json.loads((output / "conclusions.json").read_text())
+                report = (output / "README_RESULTS.md").read_text()
+                self.assertEqual(len(result["comparisons"]), 14)
+                self.assertEqual(result["primebot"]["final"], final)
+                self.assertEqual(result["shared"]["per_robot_transitions"], TARGET_TRANSITIONS)
+                self.assertEqual(result["equal_exposure"]["status"], exposure["status"])
+                self.assertEqual(result["equal_exposure"]["target_q1_transitions"], TARGET_TRANSITIONS)
+                self.assertFalse(result["equal_exposure"]["additional_training_authorized"])
+                self.assertFalse(result["goal_completed"])
+                self.assertFalse(result["conclusions"]["natural_gait_qualified"])
+                self.assertIn("Unavailable", report)
+                self.assertIn("UNAVAILABLE_EARLY_STOP_BEFORE_TARGET", report)
+                self.assertIn("102563840 Q1 transitions", report)
+                self.assertEqual(exposure, original)
+
     def test_diagnostic_report_preserves_missing_initial_and_uses_complete_clip_denominator(self):
         comparison = dict(complete_motion={side: dict(diagnostics=summarize_complete([case(complete=complete)]))
                                           for side, complete in (("left", False), ("right", True))})

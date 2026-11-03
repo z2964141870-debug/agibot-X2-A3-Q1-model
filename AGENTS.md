@@ -4,7 +4,7 @@
 
 ## 环境与目录
 
-- 2026-11-04 Primebot原788初末JSON独立大小SHA/逐片核同后全库完整诊断：306/393无>10mm左右交替事件、308/393双脚脚底p95<=5mm，参考双脚p95>10mm实际均<=5mm为289/393；承重滑速跨片中位数左106.525/右104.662mm/s。初始全早停无完整片分布，不作全长改善比较/事件不当自然步数。新增只读summary及共享比较/综合README诊断表，缺载荷保留missing、完整片缺诊断拒绝，本地81项74过7依赖跳过，服务器CPU及发布后收据为准。0新物理优化/V04追加决定仍待，goal active/q1十分钟保持/采纳null，不新goal-agent；入口PRIMEBOT_Q1_FINAL_RESULTS及library_diagnostics清单。
+- 2026-11-04 04:43 Primebot原788初末JSON独立大小SHA/逐片核同后全库完整诊断：306/393无>10mm左右交替事件、308/393双脚脚底p95<=5mm，参考双脚p95>10mm实际均<=5mm为289/393；承重滑速跨片中位数左106.525/右104.662mm/s。初始全早停无完整片分布，不作全长改善比较/事件不当自然步数。新增summary及共享比较/综合README诊断表，缺载荷保留missing、完整片缺诊断拒绝；50afcfd独立远端/12份559976B三端后15服务器CPU及独立汇总全过/.990秒、分组逐值同/八源同，本地81项74过7依赖跳过。原V03 FAILED/五PID退/GPU1MiB25度None空闲/cache6.698GB不强制维护；0新物理优化/V04追加决定仍待，goal active/q1十分钟保持/采纳null，不新goal-agent；入口PRIMEBOT_Q1_FINAL_RESULTS及library_diagnostics_publication。
 
 - 2026-11-04 04:22共同评估依赖差异已隔离：aad854e独立远端/15文件577714B三端后服务器20CPU全过40.838秒，原Primebot Torch2.7/MuJoCo3.6物理与Morph2.11/3.11策略分进程，合成native权重三固定×两接口×三帧18动作对直接数学差0/reaped0/十八源同/无CUDA积分优化。实际GPU1MiB25度None无计算/OOM0，总7.885GB/cache6.698GB低默认维护触发，不强制清理。真实共享权重仍无/V04追加决定待/正式未启，goal active/q1十分钟监督保持/采纳null，不新goal-agent；入口Q1_SHARED_EVALUATION_PIPELINE及common_plant_publication收据。
 

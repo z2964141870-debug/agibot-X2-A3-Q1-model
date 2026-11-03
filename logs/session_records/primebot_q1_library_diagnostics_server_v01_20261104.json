@@ -1,0 +1,527 @@
+{
+  "status": "VERIFIED_SAVED_DIAGNOSTICS",
+  "sources": {
+    "delivery_manifest": {
+      "path": "/opt/data/private/ZHY/data/manifests/primebot_q1_final_delivery_manifest_20261104.json",
+      "bytes": 494241,
+      "sha256": "a1821f1f792046ab535047fa11fd963388441187ec5bdeded9365a8f14a35d16"
+    },
+    "library_results": {
+      "initial": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/delivery/review/initial_library/result.json",
+        "bytes": 888564,
+        "sha256": "9e10b46fe8b739b71e58b883a5c59a2d332a9cbd9f41f677ccb5b280f400ae0d"
+      },
+      "final": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/delivery/review/final_library/result.json",
+        "bytes": 941949,
+        "sha256": "5aeb80ae724c4621d3254803318bfcb1e0d768ccdb2ea613354b9d8d5846d7e2"
+      }
+    }
+  },
+  "original_delivery_inputs_verified": 788,
+  "checkpoint": {
+    "initial": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run/checkpoint_0.pt",
+      "bytes": 70037813,
+      "sha256": "e51a928d42651d91e5da7b531aa8c5a3643d89881bbf5e99cd510786391d8d98"
+    },
+    "final": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run/checkpoint_10000.pt",
+      "bytes": 209943195,
+      "sha256": "14d7ee625467b24d47700fa0582a3d0cf23a432b73e3fd296bc2a4ead59e31e3"
+    }
+  },
+  "groups": {
+    "all_frozen_training_clips": {
+      "initial": {
+        "complete_cases": 0,
+        "excluded_failed_cases": 393,
+        "complete_clips": 0,
+        "total_clips": 393,
+        "statistics": {},
+        "counts": {},
+        "weighting": "mean repeated seeds within each clip, then equal clip weights; not frame weighted",
+        "interval": "complete-motion summaries only; early-failure diagnostics are excluded",
+        "load_note": "endpoint load >=5N; no continuous-support claim; missing load is not zero slip",
+        "event_note": "10mm upward threshold crossings without duration filtering; events are not verified steps",
+        "natural_gait_qualified": false
+      },
+      "final": {
+        "complete_cases": 393,
+        "excluded_failed_cases": 0,
+        "complete_clips": 393,
+        "total_clips": 393,
+        "statistics": {
+          "torso_tilt_rms_rad": {
+            "included_clips": 393,
+            "missing_clips": 0,
+            "mean": 0.08304548339382686,
+            "median": 0.0810672789812088,
+            "p95": 0.11976811736822127,
+            "minimum": 0.04304121434688568,
+            "maximum": 0.16931597888469696
+          },
+          "tilt_error_rms_rad": {
+            "included_clips": 393,
+            "missing_clips": 0,
+            "mean": 0.048633885576979806,
+            "median": 0.04669301211833954,
+            "p95": 0.0738058656454086,
+            "minimum": 0.017980191856622696,
+            "maximum": 0.10129464417695999
+          },
+          "upper_joint_rmse_rad": {
+            "included_clips": 393,
+            "missing_clips": 0,
+            "mean": 0.14915013042190906,
+            "median": 0.1436414122581482,
+            "p95": 0.21310287117958057,
+            "minimum": 0.09002536535263062,
+            "maximum": 0.3344235122203827
+          },
+          "sole_p95_left_m": {
+            "included_clips": 393,
+            "missing_clips": 0,
+            "mean": 0.002288176149007536,
+            "median": 0.0011575962403932612,
+            "p95": 0.007879606835813027,
+            "minimum": -4.2250301834113276e-05,
+            "maximum": 0.01716633801504904
+          },
+          "sole_p95_right_m": {
+            "included_clips": 393,
+            "missing_clips": 0,
+            "mean": 0.0020732774820101025,
+            "median": 0.001100107872122307,
+            "p95": 0.006932690272649305,
+            "minimum": -5.440739366684379e-05,
+            "maximum": 0.01941704365344988
+          },
+          "reference_sole_p95_left_m": {
+            "included_clips": 393,
+            "missing_clips": 0,
+            "mean": 0.023723206112818855,
+            "median": 0.02363061120378745,
+            "p95": 0.03517005203480082,
+            "minimum": 0.003777538285657754,
+            "maximum": 0.04318141655881905
+          },
+          "reference_sole_p95_right_m": {
+            "included_clips": 393,
+            "missing_clips": 0,
+            "mean": 0.02328046699295985,
+            "median": 0.022405185418829812,
+            "p95": 0.036876281850153354,
+            "minimum": 0.0020196776254757043,
+            "maximum": 0.0580656053456045
+          },
+          "sole_p95_shortfall_left_m": {
+            "included_clips": 393,
+            "missing_clips": 0,
+            "mean": 0.02143502996381132,
+            "median": 0.020899762677885982,
+            "p95": 0.03345057061822839,
+            "minimum": 0.0028638088521950097,
+            "maximum": 0.042842213055370185
+          },
+          "sole_p95_shortfall_right_m": {
+            "included_clips": 393,
+            "missing_clips": 0,
+            "mean": 0.02120718951094975,
+            "median": 0.020400069209936006,
+            "p95": 0.03666341429267083,
+            "minimum": -0.0035000084976139906,
+            "maximum": 0.056653891160571714
+          },
+          "loaded_slip_left_m_s": {
+            "included_clips": 393,
+            "missing_clips": 0,
+            "mean": 0.113674250236593,
+            "median": 0.10652478081537521,
+            "p95": 0.20414403670036918,
+            "minimum": 0.02222080404576357,
+            "maximum": 0.3866912908915781
+          },
+          "loaded_slip_right_m_s": {
+            "included_clips": 393,
+            "missing_clips": 0,
+            "mean": 0.10600881288484651,
+            "median": 0.10466191056232461,
+            "p95": 0.16696128046825023,
+            "minimum": 0.031505088099960464,
+            "maximum": 0.28141802396328025
+          },
+          "lift_events_above_10mm": {
+            "included_clips": 393,
+            "missing_clips": 0,
+            "mean": 1.4987277353689568,
+            "median": 1,
+            "p95": 5.0,
+            "minimum": 0,
+            "maximum": 11
+          },
+          "alternating_lift_transitions": {
+            "included_clips": 393,
+            "missing_clips": 0,
+            "mean": 0.45038167938931295,
+            "median": 0,
+            "p95": 3.0,
+            "minimum": 0,
+            "maximum": 8
+          },
+          "upper_peak_to_peak_max_abs_error_rad": {
+            "included_clips": 393,
+            "missing_clips": 0,
+            "mean": 0.39750748266093905,
+            "median": 0.3542264699935913,
+            "p95": 0.7293771624565112,
+            "minimum": 0.14293092489242554,
+            "maximum": 1.3896923065185547
+          }
+        },
+        "counts": {
+          "clips_with_no_lift_events": 164,
+          "clips_with_no_alternating_events": 306,
+          "clips_with_both_sole_p95_at_most_5mm": 308,
+          "clips_with_reference_both_p95_above_10mm_but_actual_both_at_most_5mm": 289
+        },
+        "weighting": "mean repeated seeds within each clip, then equal clip weights; not frame weighted",
+        "interval": "complete-motion summaries only; early-failure diagnostics are excluded",
+        "load_note": "endpoint load >=5N; no continuous-support claim; missing load is not zero slip",
+        "event_note": "10mm upward threshold crossings without duration filtering; events are not verified steps",
+        "natural_gait_qualified": false
+      },
+      "clip_count": 393
+    },
+    "literal_clip_name_prefix_walk_forward_": {
+      "initial": {
+        "complete_cases": 0,
+        "excluded_failed_cases": 21,
+        "complete_clips": 0,
+        "total_clips": 21,
+        "statistics": {},
+        "counts": {},
+        "weighting": "mean repeated seeds within each clip, then equal clip weights; not frame weighted",
+        "interval": "complete-motion summaries only; early-failure diagnostics are excluded",
+        "load_note": "endpoint load >=5N; no continuous-support claim; missing load is not zero slip",
+        "event_note": "10mm upward threshold crossings without duration filtering; events are not verified steps",
+        "natural_gait_qualified": false
+      },
+      "final": {
+        "complete_cases": 21,
+        "excluded_failed_cases": 0,
+        "complete_clips": 21,
+        "total_clips": 21,
+        "statistics": {
+          "torso_tilt_rms_rad": {
+            "included_clips": 21,
+            "missing_clips": 0,
+            "mean": 0.09301502115669705,
+            "median": 0.09216639399528503,
+            "p95": 0.12365959584712982,
+            "minimum": 0.06404954940080643,
+            "maximum": 0.12496573477983475
+          },
+          "tilt_error_rms_rad": {
+            "included_clips": 21,
+            "missing_clips": 0,
+            "mean": 0.04786497070675805,
+            "median": 0.047031134366989136,
+            "p95": 0.06879331916570663,
+            "minimum": 0.03226444870233536,
+            "maximum": 0.07215602695941925
+          },
+          "upper_joint_rmse_rad": {
+            "included_clips": 21,
+            "missing_clips": 0,
+            "mean": 0.15692695265724546,
+            "median": 0.14648056030273438,
+            "p95": 0.2560783326625824,
+            "minimum": 0.0989135205745697,
+            "maximum": 0.3122718036174774
+          },
+          "sole_p95_left_m": {
+            "included_clips": 21,
+            "missing_clips": 0,
+            "mean": 0.0022246192827187535,
+            "median": 0.001506487955815188,
+            "p95": 0.005119294734356497,
+            "minimum": 0.0002570823335552176,
+            "maximum": 0.00986811002517931
+          },
+          "sole_p95_right_m": {
+            "included_clips": 21,
+            "missing_clips": 0,
+            "mean": 0.0014955150059259284,
+            "median": 0.0010157698350346683,
+            "p95": 0.0032674916498098353,
+            "minimum": 8.145502458595655e-05,
+            "maximum": 0.005878761006279171
+          },
+          "reference_sole_p95_left_m": {
+            "included_clips": 21,
+            "missing_clips": 0,
+            "mean": 0.022634597192027206,
+            "median": 0.021539849155349056,
+            "p95": 0.030444807733215503,
+            "minimum": 0.008985797178574248,
+            "maximum": 0.03582877983596724
+          },
+          "reference_sole_p95_right_m": {
+            "included_clips": 21,
+            "missing_clips": 0,
+            "mean": 0.021603303744863644,
+            "median": 0.021451090880833263,
+            "p95": 0.027306013538707315,
+            "minimum": 0.012744240509407019,
+            "maximum": 0.03472244380035972
+          },
+          "sole_p95_shortfall_left_m": {
+            "included_clips": 21,
+            "missing_clips": 0,
+            "mean": 0.020409977909308454,
+            "median": 0.02016692130728676,
+            "p95": 0.029032829272306007,
+            "minimum": 0.008643085824113194,
+            "maximum": 0.03445048293342142
+          },
+          "sole_p95_shortfall_right_m": {
+            "included_clips": 21,
+            "missing_clips": 0,
+            "mean": 0.020107788738937715,
+            "median": 0.020554964873261642,
+            "p95": 0.026173361052689758,
+            "minimum": 0.012420078441387079,
+            "maximum": 0.033706673965325055
+          },
+          "loaded_slip_left_m_s": {
+            "included_clips": 21,
+            "missing_clips": 0,
+            "mean": 0.07524073947896877,
+            "median": 0.07868551209694254,
+            "p95": 0.10895394304466585,
+            "minimum": 0.02222080404576357,
+            "maximum": 0.11690153082155062
+          },
+          "loaded_slip_right_m_s": {
+            "included_clips": 21,
+            "missing_clips": 0,
+            "mean": 0.07795666509180625,
+            "median": 0.0745719715836977,
+            "p95": 0.13724049022544874,
+            "minimum": 0.031505088099960464,
+            "maximum": 0.1477930937880908
+          },
+          "lift_events_above_10mm": {
+            "included_clips": 21,
+            "missing_clips": 0,
+            "mean": 2.238095238095238,
+            "median": 1,
+            "p95": 9.0,
+            "minimum": 0,
+            "maximum": 10
+          },
+          "alternating_lift_transitions": {
+            "included_clips": 21,
+            "missing_clips": 0,
+            "mean": 0.7619047619047619,
+            "median": 0,
+            "p95": 4.0,
+            "minimum": 0,
+            "maximum": 5
+          },
+          "upper_peak_to_peak_max_abs_error_rad": {
+            "included_clips": 21,
+            "missing_clips": 0,
+            "mean": 0.41914059150786626,
+            "median": 0.3576974868774414,
+            "p95": 0.7862645387649536,
+            "minimum": 0.21796351671218872,
+            "maximum": 0.9066143035888672
+          }
+        },
+        "counts": {
+          "clips_with_no_lift_events": 7,
+          "clips_with_no_alternating_events": 15,
+          "clips_with_both_sole_p95_at_most_5mm": 18,
+          "clips_with_reference_both_p95_above_10mm_but_actual_both_at_most_5mm": 17
+        },
+        "weighting": "mean repeated seeds within each clip, then equal clip weights; not frame weighted",
+        "interval": "complete-motion summaries only; early-failure diagnostics are excluded",
+        "load_note": "endpoint load >=5N; no continuous-support claim; missing load is not zero slip",
+        "event_note": "10mm upward threshold crossings without duration filtering; events are not verified steps",
+        "natural_gait_qualified": false
+      },
+      "clip_count": 21
+    },
+    "fixed_three": {
+      "initial": {
+        "complete_cases": 0,
+        "excluded_failed_cases": 3,
+        "complete_clips": 0,
+        "total_clips": 3,
+        "statistics": {},
+        "counts": {},
+        "weighting": "mean repeated seeds within each clip, then equal clip weights; not frame weighted",
+        "interval": "complete-motion summaries only; early-failure diagnostics are excluded",
+        "load_note": "endpoint load >=5N; no continuous-support claim; missing load is not zero slip",
+        "event_note": "10mm upward threshold crossings without duration filtering; events are not verified steps",
+        "natural_gait_qualified": false
+      },
+      "final": {
+        "complete_cases": 3,
+        "excluded_failed_cases": 0,
+        "complete_clips": 3,
+        "total_clips": 3,
+        "statistics": {
+          "torso_tilt_rms_rad": {
+            "included_clips": 3,
+            "missing_clips": 0,
+            "mean": 0.1018685797850291,
+            "median": 0.1049252450466156,
+            "p95": 0.10885124132037163,
+            "minimum": 0.09139303117990494,
+            "maximum": 0.10928746312856674
+          },
+          "tilt_error_rms_rad": {
+            "included_clips": 3,
+            "missing_clips": 0,
+            "mean": 0.04761955887079239,
+            "median": 0.03843820095062256,
+            "p95": 0.06878424435853958,
+            "minimum": 0.03226444870233536,
+            "maximum": 0.07215602695941925
+          },
+          "upper_joint_rmse_rad": {
+            "included_clips": 3,
+            "missing_clips": 0,
+            "mean": 0.19792851308981577,
+            "median": 0.15457113087177277,
+            "p95": 0.29650173634290694,
+            "minimum": 0.12694260478019714,
+            "maximum": 0.3122718036174774
+          },
+          "sole_p95_left_m": {
+            "included_clips": 3,
+            "missing_clips": 0,
+            "mean": 0.0014906956410316774,
+            "median": 0.0018980133690460377,
+            "p95": 0.0022334834091754813,
+            "minimum": 0.0003033156959702417,
+            "maximum": 0.002270757858078753
+          },
+          "sole_p95_right_m": {
+            "included_clips": 3,
+            "missing_clips": 0,
+            "mean": 0.0006263841735020472,
+            "median": 0.0003988847375100482,
+            "p95": 0.0010803836172295434,
+            "minimum": 0.0003241620680199394,
+            "maximum": 0.001156105714976154
+          },
+          "reference_sole_p95_left_m": {
+            "included_clips": 3,
+            "missing_clips": 0,
+            "mean": 0.017867359915307135,
+            "median": 0.01788433082466955,
+            "p95": 0.02083347605062925,
+            "minimum": 0.014556590067738198,
+            "maximum": 0.021161158853513662
+          },
+          "reference_sole_p95_right_m": {
+            "included_clips": 3,
+            "missing_clips": 0,
+            "mean": 0.01782003928669141,
+            "median": 0.014982942003420449,
+            "p95": 0.024657936012864125,
+            "minimum": 0.012744240509407019,
+            "maximum": 0.025732935347246758
+          },
+          "sole_p95_shortfall_left_m": {
+            "included_clips": 3,
+            "missing_clips": 0,
+            "mean": 0.01637666427427546,
+            "median": 0.01598631745562351,
+            "p95": 0.018599992641453768,
+            "minimum": 0.014253274371767957,
+            "maximum": 0.01889040099543491
+          },
+          "sole_p95_shortfall_right_m": {
+            "included_clips": 3,
+            "missing_clips": 0,
+            "mean": 0.017193655113189363,
+            "median": 0.013826836288444295,
+            "p95": 0.024183329177607467,
+            "minimum": 0.012420078441387079,
+            "maximum": 0.02533405060973671
+          },
+          "loaded_slip_left_m_s": {
+            "included_clips": 3,
+            "missing_clips": 0,
+            "mean": 0.05980071756374723,
+            "median": 0.0617895299117916,
+            "p95": 0.06238165589183753,
+            "minimum": 0.0551651751120519,
+            "maximum": 0.06244744766739819
+          },
+          "loaded_slip_right_m_s": {
+            "included_clips": 3,
+            "missing_clips": 0,
+            "mean": 0.0696817737243983,
+            "median": 0.04383959614610877,
+            "p95": 0.11967337266768018,
+            "minimum": 0.037106377190342425,
+            "maximum": 0.12809934783674368
+          },
+          "lift_events_above_10mm": {
+            "included_clips": 3,
+            "missing_clips": 0,
+            "mean": 3.6666666666666665,
+            "median": 1,
+            "p95": 8.2,
+            "minimum": 1,
+            "maximum": 9
+          },
+          "alternating_lift_transitions": {
+            "included_clips": 3,
+            "missing_clips": 0,
+            "mean": 1.3333333333333333,
+            "median": 0,
+            "p95": 3.5999999999999996,
+            "minimum": 0,
+            "maximum": 4
+          },
+          "upper_peak_to_peak_max_abs_error_rad": {
+            "included_clips": 3,
+            "missing_clips": 0,
+            "mean": 0.5260092914104462,
+            "median": 0.3867918848991394,
+            "p95": 0.8546320617198944,
+            "minimum": 0.2846216857433319,
+            "maximum": 0.9066143035888672
+          }
+        },
+        "counts": {
+          "clips_with_no_lift_events": 0,
+          "clips_with_no_alternating_events": 2,
+          "clips_with_both_sole_p95_at_most_5mm": 3,
+          "clips_with_reference_both_p95_above_10mm_but_actual_both_at_most_5mm": 3
+        },
+        "weighting": "mean repeated seeds within each clip, then equal clip weights; not frame weighted",
+        "interval": "complete-motion summaries only; early-failure diagnostics are excluded",
+        "load_note": "endpoint load >=5N; no continuous-support claim; missing load is not zero slip",
+        "event_note": "10mm upward threshold crossings without duration filtering; events are not verified steps",
+        "natural_gait_qualified": false
+      },
+      "clip_count": 3
+    }
+  },
+  "grouping_note": "walk_forward_ is a literal case-sensitive name prefix, not a semantic gait classifier",
+  "comparison_note": "Initial failures have no full-motion diagnostic distribution; no full-length initial/final improvement claim",
+  "training_set_only": true,
+  "physical_transitions": 0,
+  "optimizer_updates": 0,
+  "original_evidence_modified": false,
+  "user_accepted_checkpoint": null
+}

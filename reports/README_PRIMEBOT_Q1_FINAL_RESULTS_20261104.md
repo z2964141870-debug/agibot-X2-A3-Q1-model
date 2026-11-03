@@ -37,7 +37,9 @@
 
 名称前缀21片只是字面分组，不能代表所有普通前走或独立测试集。全部数字来自最终完整片；零更新393片全提前结束，因此没有可比较的初始全长步态分布，不把初始短暂低滑速与最终完整滑速直接相减。抬脚事件沿用原>10mm上穿阈值，无持续时间过滤，交替事件不是已经确认的自然步数；载荷沿用控制末端>=5N采样，也不证明整段连续承重。
 
-新增`script/q1_five_stage/diagnostic_summary.py`仅汇总保存JSON。初末、Q1 motion/KP与G1原生比较均接入相同的完整片诊断，重复seed先片内平均、再逐片等权；缺载荷样本保留missing，不用零滑速代替。缺失完整片诊断会拒绝发布比较，失败片单独计数，综合README新增足部/滑移/上肢诊断表。本地81项检查74过、7项依赖跳过，服务器对本次纯CPU汇总和报告补验见后续收据。真实共享训练与物理评估仍待，不能据此称第二轮有收益。[汇总与输入身份](../data/manifests/primebot_q1_library_diagnostics_20261104.json)。
+新增`script/q1_five_stage/diagnostic_summary.py`仅汇总保存JSON。初末、Q1 motion/KP与G1原生比较均接入相同的完整片诊断，重复seed先片内平均、再逐片等权；缺载荷样本保留missing，不用零滑速代替。缺失完整片诊断会拒绝发布比较，失败片单独计数，综合README新增足部/滑移/上肢诊断表。本地81项检查74过、7项依赖跳过；04:43服务器15项纯CPU检查全部通过，连同原788份JSON独立重汇总耗时.989702秒，Mac/服务器所有分组数字逐值相同、八份被观测源码/清单前后身份未变。
+
+执行源码50afcfd0334a06d972f2e6e41f7b35dd01590cf2已独立40位远端核同，12份559976字节在权威Git/Mac主根/25362逐大小SHA相同后才执行服务器补验。收尾原boot/GPU保持，GPU1MiB/25度/recovery=None/无计算进程；cgroup总7886368768B/cache6698086400B，低默认缓存维护触发线，未强制清缓存。原V03仍FAILED、五旧PID不存在；追加V04决定仍待，真实共享训练与物理评估未开始，不能据此称第二轮有收益。[汇总与输入身份](../data/manifests/primebot_q1_library_diagnostics_20261104.json)、[服务器独立汇总](../logs/session_records/primebot_q1_library_diagnostics_server_v01_20261104.json)、[CPU收据](../logs/session_records/q1_library_diagnostics_cpu_v01_20261104.json)、[阶段发布](../logs/session_records/q1_library_diagnostics_publication_20261104.json)。
 
 复现命令（在权威Git或已同步服务器根，`REVIEW_ROOT`指向已有交付，不读取大轨迹）：
 

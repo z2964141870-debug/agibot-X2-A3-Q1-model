@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-11-04：[Primebot全393条步态诊断及共享比较汇总](README_PRIMEBOT_Q1_FINAL_RESULTS_20261104.md)。只读核788原JSON，306/393无左右交替事件、308/393双脚p95<=5mm，低离地是全库普遍现象；初始早跌倒不作全长比较。诊断分布与缺失保护已接共享综合报告，本地81项74过7依赖跳过，未新训练或物理；实际发布及服务器补验见收据。
+2026-11-04：[Primebot全393条步态诊断及共享比较汇总](README_PRIMEBOT_Q1_FINAL_RESULTS_20261104.md)。只读核788原JSON，306/393无左右交替事件、308/393双脚p95<=5mm，低离地是全库普遍现象；初始早跌倒不作全长比较。诊断分布与缺失保护接共享综合报告；50afcfd独立远端/12份三端后15项服务器CPU及独立重汇总通过、Mac数字逐值同/八源未变，本地81项74过7依赖跳过。0新训练或物理，V04仍待原追加决定。[收据](../logs/session_records/q1_library_diagnostics_publication_20261104.json)。
 
 2026-11-04：[共同评估原锁定物理环境与真实双环境CPU通过](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。aad854e独立远端/15份三端后20项CPU全过40.838秒，原Primebot3.6仿真与Morph3.11策略分进程，合成策略18动作逐值差0/正常回收/0积分优化；共享正式权重和回放仍待，未触发V04或训练。[发布证据](../logs/session_records/q1_common_plant_publication_20261104.json)。
 

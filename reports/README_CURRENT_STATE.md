@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-11-04：[Primebot393条完整片步态分布补齐](README_PRIMEBOT_Q1_FINAL_RESULTS_20261104.md)。原788份JSON大小/SHA及逐片内容核同，306/393无>10mm左右交替事件、308/393双脚脚底高度p95<=5mm，参考双脚p95>10mm而实际均<=5mm为289/393；承重滑速跨片中位数左106.525/右104.662mm/s。初始全失败不作全长步态改善对比；未新物理或优化。共享比较和综合README已接相同诊断/缺失保护，本地81项74过7依赖跳过，服务器纯CPU补验及发布看新收据；V04追加决定仍待，goal和十分钟监督保持。[汇总](../data/manifests/primebot_q1_library_diagnostics_20261104.json)。
+2026-11-04 04:43：[Primebot393条完整片步态分布补齐并独立CPU通过](README_PRIMEBOT_Q1_FINAL_RESULTS_20261104.md)。原788份JSON大小/SHA及逐片内容核同，306/393无>10mm左右交替事件、308/393双脚脚底高度p95<=5mm，参考双脚p95>10mm而实际均<=5mm为289/393；承重滑速跨片中位数左106.525/右104.662mm/s。初始全失败不作全长比较；未新物理优化。50afcfd独立远端/12份559976B三端后15项服务器CPU及重汇总全过/.990秒、分组逐值同/八源未变；本地81项74过7依赖跳过。共享比较和综合README接相同诊断，V03仍FAILED/五旧PID退/GPU1MiB健康空闲/cache6.698GB；V04追加决定仍待，goal和十分钟监督保持。[汇总](../data/manifests/primebot_q1_library_diagnostics_20261104.json)/[发布](../logs/session_records/q1_library_diagnostics_publication_20261104.json)。
 
 2026-11-04 04:22：[共同评估固定原Primebot物理环境，真实双环境CPU通过](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。aad854e独立远端/15份577714B三端后20项服务器CPU全过40.838秒，物理2.7/3.6与策略2.11/3.11分离，合成native策略18动作对直接数学差0/正常回收/十八源同/0积分优化。真实共享权重仍无，未做正式回放。GPU1MiB25度健康无计算/OOM0，总7.885GB/cache6.698GB低默认触发线；V04追加决定仍待，goal与十分钟监督保持。[证据](../logs/session_records/q1_common_plant_publication_20261104.json)。
 

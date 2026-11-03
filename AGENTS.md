@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-04用户再问目标模式，get_goal实读active，原q1应用工具更新并核ACTIVE每10分钟/同线程，监督转共享。首共享00:46在worker创建前STOPPED_STORAGE/源码142503936B超原64MiB/磁盘余525.55GB，0新物理optimizer，原FAILED保留。共享V02显式256MiB源码预算，原默认及24/30GiB/锁/86C/100GiB保护不变，本地21通过1待Torch；发布和服务器CPU准入后按原授权首次实际各1024八轮及全新160000，实际启动见新收据。仅容量OOM回退/正式不自重启/采纳null/不新goal-agent、不结算或改其他任务。入口Q1_SHARED_TRAINING_20261104。
+
 - 2026-11-04 Primebot10000轮按三连续临时门正常早停/102563840转移/WM100000-actor10000-critic200000，原训练23:51:41回收、最终交付00:08:15完成。初末固定0/9→9/9、全库0/393→393/393；仍低脚底离地/承重滑移，非自然步态。2444工件81635329B/六原速视频3174帧/十八帧目视Mac大小SHA齐，104源未变、原五PID退出/两guard回收0/OOM0/新GPU健康。goal active/q1每10分钟ACTIVE保持；发布镜像Mac收据后重算全门才自动共享各1024八轮及从零160000，容量OOM严格回退。等曝光不足410009600不补训，原生评估比较仍待/采纳null/无agent其他任务不改。入口PRIMEBOT_Q1_FINAL_RESULTS_20261104，当前共享尚未启动，后续以新收据为准。
 
 - 2026-11-03 23:13目标复读active/q1保存字段ACTIVE每10分钟，原Primebot23:04现场7801轮/80044032转移/WM78010-actor7801-critic156020、原三PID/starttick同/guardRUNNING/OOM0/GPU recoveryNone，下一10000观测、临时连续2/3未早停。条件控制器3项待Torch及原native1项服务器CPU全部通过/无CUDA/6源SHA未变；be4ea0b独立40位远端/14记录533131B三端大小SHA同。原生观察session78774仅SSH连接/不重启训练；五阶段仍待完整最终门、Mac交付及原生评估比较，不结算或替代goal/采纳null/无agent其他任务改动。入口FIVE_STAGE_TRANSITION及controller_publication收据。

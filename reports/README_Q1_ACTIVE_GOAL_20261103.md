@@ -1,5 +1,7 @@
 # Q1五阶段目标模式与主动监督
 
+2026-11-04最新复核：get_goal实读active，原q1心跳通过应用工具更新并读回ACTIVE/每10分钟/同线程，指令已跟踪当前共享阶段，不再监督已退出的Primebot旧PID。首共享入口00:46在训练worker创建前因源码预算64MiB小于实测142503936B而STOPPED_STORAGE，0新物理/优化；独立V02修复和实际启动须看[共享阶段](README_Q1_SHARED_TRAINING_20261104.md)及后续收据，不把旧摘要“开始验证”写成正式训练。保留现有goal，不新建、不暂停或结算；其余评估比较和采纳null保持。
+
 2026-11-04复核：应用goal仍active，本线程q1仍ACTIVE每10分钟。原Primebot10000轮三连续观测正常早停后，完整固定/393库评测和Mac2444工件、六原速媒体验收已经完成；详见[首轮最终结果](README_PRIMEBOT_Q1_FINAL_RESULTS_20261104.md)。下一步发布镜像本地收据、重算最终总门，之后才按原授权新共享资源验证及从零正式训练。训练单阶段结束不结算目标；原生共享评估和综合比较继续待补，用户采纳null。
 
 2026-11-03 23:13复核：应用get_goal仍active，q1心跳保存字段仍ACTIVE/每10分钟/同线程，无替代目标或心跳更改。23:04:36原Primebot7801完整轮/80044032真实转移，原三PID/starttick与boot/GPU相同、guard RUNNING/OOM0/recovery=None；临时连续2/3，下一10000质量观察，尚未早停。独立条件控制器3项Torch待测及原native1项已在服务器CPU全部通过，未建立CUDA上下文或新增物理优化。完整五阶段仍未完成，原生共享评估和综合比较继续待补。[实测与发布收据](../logs/session_records/q1_five_stage_controller_publication_20261103.json)。原生观察会话78774可供后续复用；连接恢复仅涉及SSH，不是训练重启。

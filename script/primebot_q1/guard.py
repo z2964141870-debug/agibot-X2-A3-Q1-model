@@ -20,8 +20,11 @@ from guard_phuma_batch import MemoryBoundBudget
 class Budget:
     def __init__(self, config, output, seconds, maximum_bytes):
         self.config, self.started, self.seconds = config, time.monotonic(), seconds
+        source_bytes = config.get("maximum_source_bytes", 64 * 1024**2)
+        require(type(source_bytes) is int and 0 < source_bytes <= 256 * 1024**2,
+                "Source storage budget must be a positive integer at most256MiB")
         self.inner = MemoryBoundBudget(StorageBudget(output, Path(config["adapted_source"]),
-            100 * 1024**3, maximum_bytes, 64 * 1024**2), 30 * 1024**3, 0)
+            100 * 1024**3, maximum_bytes, source_bytes), 30 * 1024**3, 0)
 
     def check(self):
         evidence = self.inner.check()

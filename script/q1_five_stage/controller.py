@@ -243,8 +243,10 @@ def execute(config, config_path, commit):
             check_native(read(path), robot)
             inputs.append(path)
         require(set(config["native_results"]) == {"g1", "q1"}, "Both existing native control checks required")
-        guard_config = dict(adapted_source=str(source), expected_boot=config["expected_boot"], expected_gpu=config["expected_gpu"])
+        guard_config = dict(adapted_source=str(source), expected_boot=config["expected_boot"], expected_gpu=config["expected_gpu"],
+                            maximum_source_bytes=config.get("maximum_source_bytes", 64 * 1024**2))
         save(output / "guard_config.json", guard_config)
+        state["source_storage_budget_bytes"] = guard_config["maximum_source_bytes"]
         runner = Runner(config, output, inputs)
         formal_plans = {}
 

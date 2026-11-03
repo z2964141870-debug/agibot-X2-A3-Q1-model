@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-04：[目标active与共享启动前存储配置修正](README_Q1_SHARED_TRAINING_20261104.md)。q1心跳已通过应用工具更新为跟踪共享阶段，ACTIVE每10分钟。首共享入口00:46在worker创建前STOPPED_STORAGE：源码实占142503936B超过原64MiB上限，磁盘空闲525.55GB；新物理/优化0，原FAILED保留。共享V02显式256MiB源码预算，原24/30GiB/GPU/100GiB余量不变，21项本地检查通过/1项待服务器Torch；发布核验后按原授权首次实际1024八轮→全新160000。此时V02未启动，以后续收据为准；目标不结算/采纳null。
+
 2026-11-04补记：Primebot完整Mac门已在25362重算passed/authorizes_morph_training=true；13份1498486B结果记录以3421a9fdda6512193d0f657df670b4738b6fa44d独立40位远端及三端大小SHA核同。原共享未启动；当前约21.264GB中20.339GB是文件cache，维护工具新增新boot/GPU显式校验参数，旧默认及8GiB/120秒/1800冷却与原锁不改，6项CPU测试通过，发布后先原定量维护再共享验证。[维护说明](README_Q1_FILE_CACHE_MAINTENANCE_20261029.md)。
 
 2026-11-04：[Primebot首轮最终评估与Mac验收完成](README_PRIMEBOT_Q1_FINAL_RESULTS_20261104.md)。10000轮按连续三门正常早停/102563840转移/WM100000-actor10000-critic200000，未跑满25万。固定9/9、全393/393完整，但脚底低离地/承重滑移未解决。2444小工件81635329B、六原速视频3174帧和十八帧目视/全部SHA齐；104冻结源未变/原五PID退出/guard回收0/OOM0/GPU健康。当前总goal实读active/q1每10分钟ACTIVE，发布镜像Mac收据后重算总门再新共享各1024八轮→从零160000；原生评估比较仍待，不结算目标/采纳null。等采样量不足明确缺失、不补训。[终态](../logs/session_records/primebot_q1_early_stop_20261104.json)/[本地交付](../logs/session_records/primebot_q1_final_delivery_summary_20261104.json)。

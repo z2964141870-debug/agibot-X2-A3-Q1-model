@@ -1,0 +1,150 @@
+{
+  "stage": "PRIMEBOT_Q1_EARLY_STOP_AND_FINAL_SERVER_EVALUATION",
+  "checked_utc": "2026-11-03T16:15:18.909728+00:00",
+  "execution_commit": "b8f920cbba9be3f7247bddbe6535febfbc06186b",
+  "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+  "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 1 MiB, 25, None",
+  "processes": [
+    {
+      "pid": 29435,
+      "exists": false,
+      "start_ticks": null
+    },
+    {
+      "pid": 29965,
+      "exists": false,
+      "start_ticks": null
+    },
+    {
+      "pid": 29970,
+      "exists": false,
+      "start_ticks": null
+    },
+    {
+      "pid": 44301,
+      "exists": false,
+      "start_ticks": null
+    },
+    {
+      "pid": 44306,
+      "exists": false,
+      "start_ticks": null
+    }
+  ],
+  "training_status": "COMPLETED",
+  "training_started_utc": "2026-11-03T12:23:40.173699+00:00",
+  "training_ended_utc": "2026-11-03T15:51:41.586264+00:00",
+  "training_guard_status": "WORKER_COMPLETED",
+  "training_cleanup": {
+    "worker_started": true,
+    "worker_pid": 29970,
+    "worker_group": 29970,
+    "worker_reaped": true,
+    "worker_return_code": 0
+  },
+  "frozen_input_count": 104,
+  "frozen_inputs_unchanged": true,
+  "frozen_mismatches": [],
+  "last_metrics": {
+    "model_loss": 0.3038713335990906,
+    "state_loss": 0.3038713335990906,
+    "termination_loss": 1.1641532182693481e-10,
+    "actor_loss": -0.14770767092704773,
+    "actor_grad_norm": 0.04768560454249382,
+    "critic_loss": 0.03220345452427864,
+    "imagined_reward": 0.0747455582022667,
+    "imagination_survival_fraction": 0.9237518310546875,
+    "critic_target_abs_max": 9.257914543151855,
+    "collection_reward": 0.07299404342969258,
+    "iteration": 10000,
+    "startup_update": false,
+    "update_seconds": 1.2317873040010454,
+    "elapsed_seconds": 12352.401145033997,
+    "global_env_steps": 102563840,
+    "actual_model_optimizer": 100000,
+    "actual_actor_optimizer": 10000,
+    "actual_critic_optimizer": 200000
+  },
+  "completed_iterations": 10000,
+  "early_stop_reason": "sustained_fixed_tracking_gate",
+  "provisional_iterations": [
+    1000,
+    5000,
+    10000
+  ],
+  "pipeline_status": "SERVER_EVALUATION_COMPLETED_PENDING_MAC_DELIVERY",
+  "reviews": {
+    "initial_fixed": {
+      "status": "PASSED",
+      "cases": 9,
+      "complete_cases": 0
+    },
+    "final_fixed": {
+      "status": "PASSED",
+      "cases": 9,
+      "complete_cases": 9
+    },
+    "initial_library": {
+      "status": "PASSED",
+      "cases": 393,
+      "complete_cases": 0
+    },
+    "final_library": {
+      "status": "PASSED",
+      "cases": 393,
+      "complete_cases": 393
+    }
+  },
+  "delivery_guard_status": "WORKER_COMPLETED",
+  "delivery_cleanup": {
+    "worker_started": true,
+    "worker_pid": 44306,
+    "worker_group": 44306,
+    "worker_reaped": true,
+    "worker_return_code": 0
+  },
+  "cgroup_memory": {
+    "oom_kill_disable": "0",
+    "under_oom": "0",
+    "oom_kill": "0"
+  },
+  "final_gate": {
+    "status": "COMPLETED",
+    "started_utc": "2026-11-03T15:51:42.054076+00:00",
+    "gate_reason": [
+      "run_through_and_tracking_improved"
+    ],
+    "user_accepted_checkpoint": null,
+    "morph_training_started": false,
+    "passed": true,
+    "paired_metrics": {
+      "joint_rmse_rad": {
+        "initial": 0.5530572732289633,
+        "final": 0.11961717158555984
+      },
+      "body_relative_rmse_m": {
+        "initial": 0.05832540368040403,
+        "final": 0.010358979925513268
+      }
+    },
+    "natural_gait_thresholds_are_diagnostic": true,
+    "ended_utc": "2026-11-03T16:08:15.779337+00:00",
+    "final_iteration": 10000,
+    "truncated_recipe": true,
+    "complete_library": true,
+    "local_mac_delivery_required_before_morph": true,
+    "media": true,
+    "library_count": 393,
+    "checkpoint_audit": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/delivery/review/checkpoint_audit.json",
+      "bytes": 2244,
+      "sha256": "f3ee6e18deecea456e8d01d1adce4984fabd5d7e681c63b64b54f855d0551593"
+    },
+    "limitation": "fixed/library are training-set evaluations, not unseen-motion generalization"
+  },
+  "exposure": {
+    "status": "UNAVAILABLE_EARLY_STOP_BEFORE_TARGET"
+  },
+  "whole_goal_complete": false,
+  "user_accepted_checkpoint": null
+}

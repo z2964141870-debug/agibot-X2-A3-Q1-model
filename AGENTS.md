@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-04 Primebot10000轮按三连续临时门正常早停/102563840转移/WM100000-actor10000-critic200000，原训练23:51:41回收、最终交付00:08:15完成。初末固定0/9→9/9、全库0/393→393/393；仍低脚底离地/承重滑移，非自然步态。2444工件81635329B/六原速视频3174帧/十八帧目视Mac大小SHA齐，104源未变、原五PID退出/两guard回收0/OOM0/新GPU健康。goal active/q1每10分钟ACTIVE保持；发布镜像Mac收据后重算全门才自动共享各1024八轮及从零160000，容量OOM严格回退。等曝光不足410009600不补训，原生评估比较仍待/采纳null/无agent其他任务不改。入口PRIMEBOT_Q1_FINAL_RESULTS_20261104，当前共享尚未启动，后续以新收据为准。
+
 - 2026-11-03 23:13目标复读active/q1保存字段ACTIVE每10分钟，原Primebot23:04现场7801轮/80044032转移/WM78010-actor7801-critic156020、原三PID/starttick同/guardRUNNING/OOM0/GPU recoveryNone，下一10000观测、临时连续2/3未早停。条件控制器3项待Torch及原native1项服务器CPU全部通过/无CUDA/6源SHA未变；be4ea0b独立40位远端/14记录533131B三端大小SHA同。原生观察session78774仅SSH连接/不重启训练；五阶段仍待完整最终门、Mac交付及原生评估比较，不结算或替代goal/采纳null/无agent其他任务改动。入口FIVE_STAGE_TRANSITION及controller_publication收据。
 
 - 2026-11-03五阶段新增独立controller/delivery/snapshots与条件配置，本地27项24过3真实Torch待服务器、原native9过1待。最终Primebot全393/九固定/初末保存及Mac六原速媒体SHA解码目视全过才新共享；缺门不建实验/Runner。每型1024八全更新/共享实核/CPU审计/两实存体积磁盘后全新160000；仅明确容量OOM且正常回收/输入同/OOM0/GPU健康才512/320000，正式异常不重启。native新增显式被动保存开关/实际计数，不在原104运行输入；未新物理或共享启动，原生评估和综合比较仍待，goal active/采纳null/无agent及其他任务变更。入口README_Q1_FIVE_STAGE_TRANSITION_20261103。

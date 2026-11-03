@@ -1,0 +1,114 @@
+{
+  "stage": "PRIMEBOT_Q1_FIRST_QUALITY_PUBLICATION",
+  "commit": "d04d70ed47bdec6670663fa61387d964b7c9e37a",
+  "independent_remote_ref": "refs/heads/Q1",
+  "independent_remote_full_sha_verified": true,
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 138129,
+      "sha256": "a90363af326364d79471e744eba781bb9ee32e6fdc3cd33f5dbeb20ffa4bd60b"
+    },
+    {
+      "path": "reports/README.md",
+      "bytes": 180158,
+      "sha256": "e442f2137ec74f45b5e5579f142673b781c0d84bbbd6fa27957c2052c83468b2"
+    },
+    {
+      "path": "reports/README_CURRENT_STATE.md",
+      "bytes": 127622,
+      "sha256": "cb51930c5e3574ee4ccc89f9feb353b822663a7eb3d07173f337fa85a2cc1a84"
+    },
+    {
+      "path": "reports/README_PRIMEBOT_Q1_MONITORING_20261103.md",
+      "bytes": 11888,
+      "sha256": "848c553b6d4540e34622c3bca44788c478bc5f0eb0e375ffd620aab88a55bb00"
+    },
+    {
+      "path": "data/manifests/primebot_q1_first_quality_history_20261103.json",
+      "bytes": 6587,
+      "sha256": "2ac3c8fa855fce257422bf214a439a188d55913dbdb0b27c3b590b3e4bac5683"
+    },
+    {
+      "path": "data/manifests/primebot_q1_first_quality_review_20261103.json",
+      "bytes": 28772,
+      "sha256": "9d4d89bc4b728a623e1fb2345c9ea7b12bb468268c877d5d2940ecd855807f52"
+    },
+    {
+      "path": "logs/session_records/primebot_q1_first_quality_mac_media_20261103.json",
+      "bytes": 2784,
+      "sha256": "743c01eab07200b2a58d318b782e5ae9ff7ebe549274e013a4039dc9f6d09b3f"
+    },
+    {
+      "path": "logs/session_records/primebot_q1_first_quality_progress_20261103.json",
+      "bytes": 1541,
+      "sha256": "73c3d92a05d5f74efe7f1460304a99f8b15d55430b73c334bf082a82885f4120"
+    },
+    {
+      "path": "logs/session_records/primebot_q1_formal_launch_report_publication_20261103.json",
+      "bytes": 1742,
+      "sha256": "564267ac11f26f8aa0b3b16136e62c015c2533c02d0ee50c59804f62f6f5477f"
+    },
+    {
+      "path": "script/q1_training_reports/summarize.py",
+      "bytes": 8841,
+      "sha256": "0f77581f5cc71df3297b106ea846374eb40754b75b657b572eb4fd5904962fd7"
+    }
+  ],
+  "payload_audit": {
+    "files": 10,
+    "bytes": 508064,
+    "passed": true
+  },
+  "mac_and_server_size_sha_verified": true,
+  "training_execution_commit": "b8f920cbba9be3f7247bddbe6535febfbc06186b",
+  "running_frozen_inputs_unchanged": 104,
+  "read_only_curve_report": {
+    "command": "nice -n 10 env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 data/environments/morphmimic_original_20261029/bin/python script/q1_training_reports/summarize.py --metrics logs/session_records/primebot_q1_iteration1000_metrics_snapshot_20261103.jsonl --history data/manifests/primebot_q1_first_quality_history_20261103.json --output data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/report_snapshot_1000_v03 --plot",
+    "status": "COMPLETED",
+    "snapshot_last_iteration": 1082,
+    "snapshot_is_not_live_progress": true,
+    "new_physics_steps": 0,
+    "new_optimizer_updates": 0,
+    "archive": {
+      "path": "data/transfers/primebot_q1_staged01/quality_curves_1000_20261103.tar.gz",
+      "bytes": 424718,
+      "sha256": "266cd70e6d7e51d258b94bbb82cf8f610c59151cae00b8bff8a11615ff655542",
+      "mac_server_identical": true
+    },
+    "artifacts": [
+      {
+        "path": "data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/report_snapshot_1000_v03/iterations.csv",
+        "bytes": 308562,
+        "sha256": "82aea2ad9967d57a71a08c74af45ed0ba757ed76c25ee1b78fce9f41556b0779"
+      },
+      {
+        "path": "data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/report_snapshot_1000_v03/physical_observations.csv",
+        "bytes": 538,
+        "sha256": "022fb3ff0b8a5383fe54bdadc717f476773414dc9c3835618a1891ee80a98eee"
+      },
+      {
+        "path": "data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/report_snapshot_1000_v03/physical_progress.png",
+        "bytes": 88388,
+        "sha256": "6a7dbac9a0d8530642c0ac786700bd12c6fd00e3c035858ae10fffea30317dca"
+      },
+      {
+        "path": "data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/report_snapshot_1000_v03/training_signals.png",
+        "bytes": 222410,
+        "sha256": "4294b43ab065b0388bd5431f55db4e159a71d6887313194c067a58b050b092fc"
+      }
+    ],
+    "mac_size_sha_verified": true,
+    "plots_visually_checked": true
+  },
+  "first_monitored_gate": {
+    "iteration": 1000,
+    "passed": true,
+    "consecutive_passes": 1,
+    "needed_consecutive_passes": 3,
+    "natural_walking_qualified": false
+  },
+  "morph_training_started": false,
+  "five_stage_goal_completed": false,
+  "user_accepted_checkpoint": null
+}

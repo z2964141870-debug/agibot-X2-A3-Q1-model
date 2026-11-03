@@ -79,3 +79,11 @@ start_validated顺序等待原验证终态、检查已有轨迹媒体、仅一�
 新增独立script/q1_training_reports/summarize.py仅读取日志快照生成CSV和曲线，不导入训练器、不增加物理或优化。原运行输入不变；曲线的iteration耗时包含采集，外推不含额外评测/保存/负载变化，训练reward/loss只作诊断。首1000轮并非最终结论，继续原训练至后续既定观测。
 
 启动报告999e63252ef6397d18310d250f3432e609f7ec52已独立核40位远端、7份465717字节Mac主根/25362大小SHA一致，见[发布收据](../logs/session_records/primebot_q1_formal_launch_report_publication_20261103.json)。本次后续报告提交不改变冻结训练b8f920c。
+
+首次质量记录与工具d04d70ed47bdec6670663fa61387d964b7c9e37a已独立40位远端、10份508064字节三端大小SHA核验。独立CPU只读曲线实际生成成功，4份CSV/PNG和424718字节归档Mac/服务器SHA一致，两图目视无缺图或文字遮挡。曲线截取到1082轮日志，不作为之后的实时进度，0新物理/优化；见[核验收据](../logs/session_records/primebot_q1_first_quality_publication_20261103.json)。
+
+- [训练信号曲线](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/report_snapshot_1000_v03/training_signals.png)
+- [首次物理评测图](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/report_snapshot_1000_v03/physical_progress.png)
+- [1000轮前走视频](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run/live_review/iteration_001000/walk_forward_loop_001__A022_s0/tracking.mp4)
+- [1000轮起走视频](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run/live_review/iteration_001000/walk_forward_start_002__A023_s0/tracking.mp4)
+- [1000轮停走视频](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run/live_review/iteration_001000/walk_forward_stop_002__A024_s0/tracking.mp4)

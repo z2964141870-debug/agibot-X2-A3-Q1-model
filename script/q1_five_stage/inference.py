@@ -66,6 +66,9 @@ def load_policy(path, spec, commit, device="cpu", expected_plan=None):
             and torch.equal(actor[-29:].bool(), expected_presence)
             and torch.equal(actor, value["policy"]["decoder.morph_actor"])
             and morph["film"] == cfg.get("decoder_film"), "Saved actor morphology is not this robot's")
+    from morphmimic.robots.morphology import morphology_vector
+    expected_actor = morphology_vector(spec.name, actor=True, actor_geometry=cfg.get("actor_geometry", True))
+    require(torch.equal(actor.cpu(), expected_actor.cpu()), "Saved morphology differs from the actual native assets")
     modules = ("policy", "obs_norm", "goal_norm", "human_norm", "heading_norm")
     require(all(torch.isfinite(t).all().item() for name in modules
                 for t in value[name].values() if isinstance(t, torch.Tensor)),

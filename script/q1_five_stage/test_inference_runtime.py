@@ -58,7 +58,17 @@ class RuntimeInferenceTests(unittest.TestCase):
                 expected = reference_fn(history, goals)
                 self.assertTrue(torch.equal(expected, actor_fn(history, goals, interface)))
             self.assertTrue(all(norm.count.item() == 0 for norm in actor_fn.norms.values()))
+            original_actor = value["morph"]["actor"].clone()
+            original_decoder_actor = value["policy"]["decoder.morph_actor"].clone()
+            value["morph"]["actor"] = original_actor.clone()
             value["policy"]["decoder.morph_actor"] = value["policy"]["decoder.morph_actor"].clone()
+            value["morph"]["actor"][0] += .125
+            value["policy"]["decoder.morph_actor"][0] += .125
+            torch.save(value, path)
+            with self.assertRaisesRegex(RuntimeError, "actual native assets"):
+                load_policy(path, adapter["robot"], "a" * 40)
+            value["morph"]["actor"] = original_actor
+            value["policy"]["decoder.morph_actor"] = original_decoder_actor
             value["policy"]["decoder.morph_actor"][-1] = 1.
             torch.save(value, path)
             with self.assertRaises(RuntimeError):

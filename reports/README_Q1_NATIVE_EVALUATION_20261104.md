@@ -1,5 +1,7 @@
 # 共享策略原生推理与同物理Q1评估准备
 
+串行评估、比较、曲线和Mac交付入口现已补齐代码及CPU替身测试，详见[完整串联准备](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。本页原“总controller仍待”为历史准备快照；实际正式共享检查点、GPU回放和媒体仍未产生，不能据工具完成称实际五阶段完成。
+
 日期：2026-11-04。状态：准备中；共享V03已因原内存守卫停止，正式共享训练及初末检查点尚未产生。本页不是训练完成或步态效果报告。
 
 本轮补齐G1/Q1原生mjlab回放、CPU碰撞几何诊断、原速媒体和原生初末比较入口。本地五阶段55项检查中50通过、5项因本机无Torch/真实服务器资产跳过；既有4项已在前次服务器补验，本次真实G1/Q1运动学分别12.134/11.082秒通过。没有新增仿真积分、策略回放或优化，没有启动V04。[准备时快照](../logs/session_records/q1_native_evaluation_geometry_preparation_20261104.json)/[实际CPU收据](../logs/session_records/q1_native_geometry_runtime_v01_20261104.json)/[发布核验](../logs/session_records/q1_native_geometry_publication_20261104.json)。

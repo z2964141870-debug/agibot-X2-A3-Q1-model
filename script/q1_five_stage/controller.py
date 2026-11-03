@@ -306,6 +306,19 @@ def execute(config, config_path, commit):
     finally:
         state["ended_utc"] = now()
         save(output / "pipeline.json", state)
+    if config.get("evaluation_runtime_config"):
+        from shared_review import execute as evaluate
+        try:
+            state["evaluation"] = evaluate(config_path, output / "pipeline.json",
+                Path(config["evaluation_runtime_config"]), output / "evaluation", commit)
+            state.update(status=state["evaluation"]["status"], next_action="Mac shared media and data acceptance; then review comprehensive conclusions")
+        except BaseException as error:
+            state["evaluation"] = dict(status="FAILED", error=f"{type(error).__name__}: {error}", automatic_retry=False)
+            state.update(status="SHARED_TRAINING_COMPLETED_EVALUATION_FAILED",
+                         next_action="Preserve formal training and failed evaluation; no automatic retry")
+            raise
+        finally:
+            save(output / "pipeline.json", state)
     return state
 
 

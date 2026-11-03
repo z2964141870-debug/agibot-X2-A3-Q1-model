@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-04 03:31：[共享评估、比较及Mac交付串行代码准备](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。24回放/14比较/2曲线、36固定原速视频与4824逐例清单，正式完成和双型审计前不建Runner；本地68项63过5依赖跳过，失败不重试，真实共享回放/媒体待。现有goal active、q1十分钟ACTIVE已实核，不新建或结算；原内存失败及追加一次V04决定待答复，未新GPU或训练。
+
 2026-11-04 03:00：[G1/Q1原生评估准备与实际CPU运动学通过](README_Q1_NATIVE_EVALUATION_20261104.md)。aaaebde源码13份523258B独立远端/三端核同后，两型CPU12.134/11.082秒过、八源前后SHA同，无积分/策略回放/优化或CUDA。55项本地50过5依赖跳过，新实际CPU证据已取回5628B；GPU回放/总controller仍待。get_goal再读active、q1十分钟ACTIVE；原五PID退出/GPU健康空闲，正式共享未启/追加V04决定仍待，不结算目标。[收据](../logs/session_records/q1_native_geometry_publication_20261104.json)。
 
 2026-11-04 02:18：[现有五阶段目标active与十分钟主动监督复核](README_Q1_ACTIVE_GOAL_20261103.md)。应用get_goal实读active、原q1保存ACTIVE每10分钟/同线程，未重建或结算。共享V03原30GiB内存失败，追加同档V04决定仍待；等待继续评估工具。真实v0.1 CPU motion/human加载与原版逐值完全相同，12.383秒通过，normalizer/RNG保持、mask/错误形态拒绝/CUDA未初始化；无新物理或优化。[CPU原收据](../logs/session_records/q1_native_shared_inference_cpu_v01_20261104.json)。

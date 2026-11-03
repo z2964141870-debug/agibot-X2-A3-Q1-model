@@ -7,7 +7,7 @@ from pathlib import Path
 import random
 import sys
 
-from contracts import validate_frozen
+from contracts import valid_commit, validate_frozen
 from delivery import read
 from common import FIXED, ROOT, identity, now, require, save
 
@@ -152,10 +152,16 @@ def rollout(robot, actor, config, item, spec, interface, seed, output, human_roo
 
 
 def execute(args):
+    from native_review import ready_training
+    require(valid_commit(args.evaluation_commit), "Require published evaluation code")
+    plan, pipeline, audit, frozen = map(read, (args.plan, args.pipeline, args.audit, args.frozen))
+    iteration = ready_training(plan, pipeline, identity(args.plan), audit, "q1", identity(args.checkpoint))
+    validate_frozen(frozen)
+    require(args.output.is_absolute() and args.output.is_relative_to(ROOT / "data/supermimic_for_q1")
+            and not args.output.exists(), "Use a new common-plant evaluation root on the sole server")
     import torch
     torch.set_num_threads(1)
     require(not torch.cuda.is_initialized(), "Common-plant evaluation must stay on CPU")
-    plan = read(args.plan)
     sys.path[:0] = [str(Path(plan["source"]) / "src"), str(args.primebot_source / "src"),
                    str(HERE.parent / "morphmimic_q1"), str(HERE.parent / "primebot_q1_review")]
     from bootstrap import install
@@ -163,17 +169,16 @@ def execute(args):
     from inference import load_policy
     from evaluate import load_actor
     from video import render_case
-    frozen = read(args.frozen)
-    validate_frozen(frozen)
-    require(args.output.is_absolute() and args.output.is_relative_to(ROOT / "data/supermimic_for_q1"),
-            "Traces and checkpoints remain on the server")
     args.output.mkdir(parents=True, exist_ok=False)
     result = dict(status="RUNNING", started_utc=now(), cases=[], optimizer_updates=0,
         training_replay_writes=0, backend="CPU identical Primebot plant; native v0.1 policy inputs",
         policy_checkpoint=identity(args.checkpoint), primebot_checkpoint=identity(args.primebot_checkpoint),
-        interface=args.interface, user_accepted_checkpoint=None)
+        checkpoint=identity(args.checkpoint), iteration=iteration, robot="q1", plant="common_primebot_cpu",
+        training_plan=identity(args.plan), frozen_data=identity(args.frozen),
+        evaluation_commit=args.evaluation_commit, interface=args.interface, user_accepted_checkpoint=None)
     try:
         actor, metadata = load_policy(args.checkpoint, spec, plan["code_commit"], expected_plan=plan)
+        require(metadata["iteration"] == iteration, "Loaded iteration differs from the CPU audit")
         robot, unused, config, _, _, _ = load_actor(args.primebot_checkpoint)
         del unused
         gc.collect()
@@ -191,8 +196,11 @@ def execute(args):
                 row["relative"] = str(Path(item["q1_primebot"]["path"]).relative_to(config["motion_dir"]))
                 if args.render and seed == 0:
                     row["video"] = render_case(Path(config["robot_xml"]), row, directory / "tracking.mp4")
+                    save(directory / "result.json", row)
                 result["cases"].append(row)
                 save(args.output / "progress.json", result)
+        require(all(identity(row[key]["path"]) == row[key] for row in items
+                    for key in ("q1_primebot", "q1_morph", "human")), "Evaluation references changed during replay")
         require(not torch.cuda.is_initialized(), "CPU evaluation initialized CUDA")
         result.update(status="PASSED", ended_utc=now(), complete_cases=sum(r["complete"] for r in result["cases"]),
                       cuda_initialized=False)
@@ -206,9 +214,10 @@ def execute(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    for key in ("plan", "checkpoint", "primebot-checkpoint", "primebot-source", "frozen", "output"):
+    for key in ("plan", "pipeline", "audit", "checkpoint", "primebot-checkpoint", "primebot-source", "frozen", "output"):
         parser.add_argument("--" + key, type=Path, required=True)
     parser.add_argument("--interface", choices=("motion", "human"), required=True)
+    parser.add_argument("--evaluation-commit", required=True)
     parser.add_argument("--library", action="store_true")
     parser.add_argument("--render", action="store_true")
     execute(parser.parse_args())

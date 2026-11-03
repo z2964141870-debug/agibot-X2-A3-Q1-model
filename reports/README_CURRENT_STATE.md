@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-04 04:22：[共同评估固定原Primebot物理环境，真实双环境CPU通过](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。aad854e独立远端/15份577714B三端后20项服务器CPU全过40.838秒，物理2.7/3.6与策略2.11/3.11分离，合成native策略18动作对直接数学差0/正常回收/十八源同/0积分优化。真实共享权重仍无，未做正式回放。GPU1MiB25度健康无计算/OOM0，总7.885GB/cache6.698GB低默认触发线；V04追加决定仍待，goal与十分钟监督保持。[证据](../logs/session_records/q1_common_plant_publication_20261104.json)。
+
 2026-11-04 04:06：[真实基线CPU通过并修正共同评估的物理运行环境](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。80a2cdb独立远端/五份485658B三端后，原10000权重及三固定1587帧11.683秒通过/十三源同、0积分优化。发现Morph实际MuJoCo3.11不同原Primebot3.6；共同入口现改原Primebot物理＋独立Morph CPU策略进程，本地74项67过7依赖跳过，两环境18动作逐值测试待发布执行。正式共享未启/无错误共同回放，V04追加决定仍待，goal active/监督保持。
 
 2026-11-04：[同物理Q1真实基线兼容性补验准备](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。Morph Python3.11首层Primebot模块实导入通过/CUDA未初始化；新增真实最终权重和三固定参考CPU测试，阻止积分、核姿态/FK/sidecar及输入，待发布和服务器执行。目标active/十分钟监督保持，V04追加决定仍待，正式共享未启。

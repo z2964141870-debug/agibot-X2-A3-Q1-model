@@ -16,6 +16,8 @@ V03于北京时间01:37:29被原30GiB守卫正常回收，01:37:30整个pipeline
 
 同档V04配置已准备，唯一变化为独立新输出目录，仍各1024/WM512/motion-KP1024、393同片、八完整更新；通过共享/CPU保存/实存预算后才从零160000。拟在空闲cache实际<=4GiB、原身份/24GiB准入/30GiB运行/锁等复核后仅一次新验证，并同步只读采样。当前未启动；本次原phase明确automatic_retry=false，非CUDA OOM不满足自动降档，需用户决定是否追加这一次同档验证。目标和十分钟监督保持active，等待时继续评估工具，不结算目标。
 
+02:17:46冷却到期后按原默认再做一轮空闲缓存维护，19.064秒达到8GiB advice限量；实cache11233218560→5713190912B，观察下降5520027648B，工具收尾total7537897472B/OOM0，仍高于4GiB目标。原8GiB触发阈值、120秒和1800秒冷却不改，未删除文件/读取大文件内容/改保护线；不把advice字节当作实际释放量。[本轮原收据](../logs/session_records/q1_shared_idle_cache_20261104_022300.json)。这是正常维护，没有触发额外训练或验证。
+
 ## 启动快照（历史）
 
 V03已于01:18:47实际启动，执行冻结152f5e1afacb3e33bffbd1f191827a89d8d02071，独立40位远端及15文件511071B三端大小SHA均通过，新Runner环境和实际CPU保存补验2/2通过。新根MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V03_20261104，各1024环境/393条共同参考，仍是八全更新资源验证，尚未正式训练。[发布](../logs/session_records/q1_shared_v03_publication_20261104.json)、[启动](../logs/session_records/q1_shared_v03_launch_20261104.json)、[CPU](../logs/session_records/q1_shared_v03_cpu_20261104.json)。

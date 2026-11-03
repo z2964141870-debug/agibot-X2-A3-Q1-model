@@ -1,6 +1,10 @@
 # Q1五阶段目标模式与主动监督
 
-2026-11-04 01:20最新实核：现有goal仍active，原q1心跳ACTIVE/每10分钟/同线程，已更新为V03共享阶段。新作业冻结152f5e1、controller47219/start3924514及两rank均在，pipeline VALIDATING/guard RUNNING/GPU健康/OOM0；两rank各1024环境完成409600预热、首全更新编译。当前八轮验证，过门自动全新160000，不把等待或先前Primebot完成当整个目标完成，不新建替代goal。[当前阶段和原始收据](README_Q1_SHARED_TRAINING_20261104.md)。
+2026-11-04 02:18:14本次实核：get_goal返回现有五阶段goal为active；应用查看原q1心跳成功，保存配置仍为ACTIVE/每10分钟/同线程。目标未重建、暂停或结算。[本次复核收据](../logs/session_records/q1_goal_recheck_20261104.json)。
+
+当前共享V03已于01:37:29被原30GiB内存守卫停止，原五PID均已退出，正式共享训练和检查点均未产生。原phase automatic_retry=false，追加一次同档E1024验证的用户决定仍待；目标监督保持，等待期间继续已授权的评估工具。实际v0.1 CPU加载器补验已通过、无物理/优化或CUDA执行，详见[评估准备与CPU收据](README_Q1_NATIVE_EVALUATION_20261104.md)。后续以[共享当前终态](README_Q1_SHARED_TRAINING_20261104.md)为准，下文运行中记录均为历史快照。
+
+历史01:20快照：现有goal仍active，原q1心跳ACTIVE/每10分钟/同线程，已更新为V03共享阶段。新作业冻结152f5e1、controller47219/start3924514及两rank均在，pipeline VALIDATING/guard RUNNING/GPU健康/OOM0；两rank各1024环境完成409600预热、首全更新编译。当前八轮验证，过门自动全新160000，不把等待或先前Primebot完成当整个目标完成，不新建替代goal。[当前阶段和原始收据](README_Q1_SHARED_TRAINING_20261104.md)。
 
 当前共享入口补记：V02已在原生GitPython导入阶段退出，源码预算检查已通过；两rank尚未建立CUDA上下文、0新物理优化。新V03补齐与原生入口相同的Git工具路径，两型真实CPU导入已经通过。继续保持现有active目标和q1每10分钟ACTIVE，跟踪V03最新pipeline/guard和launch收据，不把V02启动描述为正式训练；完整评估比较前不结算。[共享执行记录](README_Q1_SHARED_TRAINING_20261104.md)。
 

@@ -1,6 +1,8 @@
 # YUANQI 当前状态与下一步
 
-2026-11-04：[共享正式策略CPU加载、同物理Q1回放和比较工具准备](README_Q1_NATIVE_EVALUATION_20261104.md)。严格拒profile/错计划/计数/goal、原motion/KP分列、全393与固定9/脚底姿态上肢原速媒体、完整片与共同前缀分开及等曝光早停缺失；9本地测试通过，真实Torch对原加载器逐值核验待发布。G1原生评估/总controller和实际共享检查点仍待，不称已评估或五阶段完成。原V03内存失败/追加V04待用户决定/goal active。
+2026-11-04 02:18：[现有五阶段目标active与十分钟主动监督复核](README_Q1_ACTIVE_GOAL_20261103.md)。应用get_goal实读active、原q1保存ACTIVE每10分钟/同线程，未重建或结算。共享V03原30GiB内存失败，追加同档V04决定仍待；等待继续评估工具。真实v0.1 CPU motion/human加载与原版逐值完全相同，12.383秒通过，normalizer/RNG保持、mask/错误形态拒绝/CUDA未初始化；无新物理或优化。[CPU原收据](../logs/session_records/q1_native_shared_inference_cpu_v01_20261104.json)。
+
+2026-11-04：[共享正式策略CPU加载、同物理Q1回放和比较工具准备](README_Q1_NATIVE_EVALUATION_20261104.md)。严格拒profile/错计划/计数/goal、原motion/KP分列、全393与固定9/脚底姿态上肢原速媒体、完整片与共同前缀分开及等曝光早停缺失；9本地测试通过，服务器真实Torch对原加载器逐值核验已通过。G1原生评估/总controller和实际共享检查点仍待，不称已评估或五阶段完成。原V03内存失败/追加V04待用户决定/goal active。
 
 2026-11-04 01:47：[共享V03被30GiB内存守卫停止，正式未启](README_Q1_SHARED_TRAINING_20261104.md)。01:37:29总32271097856B/回收-15/OOM0，五原PID退出、1761输入独立SHA同/GPU健康；旧worker RUNNING及零计数未刷新，不作实际零优化。退出后cache18.981GB，原默认一轮维护降至11.153GB（实降7.828GB），未到4GiB；停止瞬间分项缺失，不定缓存单因/不当CUDA OOM降档。新增只读分项采样6本地CPU过，同档独立V04仅准备，原automatic_retry=false须用户新决定；目标active/十分钟监督保持，评估链路继续。发布/服务器实测见后续收据。
 

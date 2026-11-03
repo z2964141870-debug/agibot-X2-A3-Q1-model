@@ -8,7 +8,7 @@
 
 ## 已实现
 
-inference.py在bootstrap之后重建原Policy和四个冻结normalizer，调用原imagination.act/act_human，不写训练replay或优化。加载时核真实训练purpose、完整40位提交、同一plan、双rank、配置、实际iteration/五optimizer计数/曝光、motion2及KP10版本、hist10、参考坐标系、154形态向量和缺失关节mask。拒绝profile权重、错误机器人、混用训练计划、旧goal版本和不完整来源。CPU runtime测试准备使用实际v0.1小网络逐值比较原policy_loader，另核normalizer/RNG和缺失关节零输出；实际结果见后续CPU收据。
+inference.py在bootstrap之后重建原Policy和四个冻结normalizer，调用原imagination.act/act_human，不写训练replay或优化。加载时核真实训练purpose、完整40位提交、同一plan、双rank、配置、实际iteration/五optimizer计数/曝光、motion2及KP10版本、hist10、参考坐标系、154形态向量和缺失关节mask。拒绝profile权重、错误机器人、混用训练计划、旧goal版本和不完整来源。
 
 q1_native_review.py使用同一Primebot CPU Q1Simulator、原V3资产/PD限矩/初始姿态速度/终止规则，加载新共享策略，转换原state79到原生269和执行命令记忆。核共同Q1姿态、WXYZ、逐帧长度及实际FK；目标从t+1预览10帧、末帧hold不跨片，人参考核原sidecar。支持三固定动作各seed0/1/2及全393各seed0，motion和human单列，保存失败原轨迹、完整片及有效前缀误差、脚底/承重滑移/姿态/上肢时序和原速视频。此是同物理Q1比较，不能冒充原mjlab场景等同或G1原生评估。
 
@@ -18,7 +18,9 @@ exposure_comparison明确Primebot早停102563840条转移不足410009600，输�
 
 ## 验证与执行边界
 
-本机标准库9测试通过：inference2、reference_window2、comparison5，覆盖错误计划/计数/robot/goal、跨片预览、缺case/重复/提前终止/混接口、短前缀缺失、逐片权重和等曝光缺失。真实Torch运行测试本机无Torch，发布三端后在既有服务器环境CPU运行；不启动物理/训练或CUDA上下文。
+本机标准库9测试通过：inference2、reference_window2、comparison5，覆盖错误计划/计数/robot/goal、跨片预览、缺case/重复/提前终止/混接口、短前缀缺失、逐片权重和等曝光缺失。五阶段整套本地44项中40通过、4项需服务器Torch而跳过。
+
+2026-11-04 02:13:26服务器真实CPU补验通过，测试耗时12.383秒：固定v0.1实际小网络的motion和human输出与原policy_loader逐值完全相同；四normalizer及RNG保持、缺失关节输出为零、错误形态拒绝、CUDA未初始化。此次使用合成小检查点验证加载器，没有正式共享模型或新物理回放/优化。[原始CPU收据](../logs/session_records/q1_native_shared_inference_cpu_v01_20261104.json)，1288B/SHA256 851a34af249756998e25e0e8dcb322702e24488e330e6d6d5f8da5f34590059b。执行来源ccb90c1a2d940696f7f94cbcfde29d3cbb5795d3已独立40位远端和10份363132B三端大小SHA核同；此处只报告实际补验，不重复运行已有测试。
 
 Q1实际评估CLI：在未来正式共享训练完成且初末检查点通过独立审计后，以对应e1024_train_plan.json或合格e512_train_plan.json传入--plan，使用checkpoint、固定Primebot源码和其最终checkpoint、admission_frozen.json，独立新服务器output，--interface motion或human，固定片用--render、全库用--library。当前没有可使用的新共享正式检查点，因此不执行回放。
 

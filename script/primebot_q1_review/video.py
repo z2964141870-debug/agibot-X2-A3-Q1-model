@@ -1,7 +1,9 @@
 """Original-speed actual/reference video from saved physical trajectories."""
 
 from pathlib import Path
-import json
+import csv
+from fractions import Fraction
+import os
 import shutil
 import subprocess
 import sys
@@ -10,13 +12,34 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "primebot_q1"))
 from common import identity, require
 
 
+def decoded_metadata(text, frames):
+    headers = {}
+    lines = []
+    for line in text.splitlines():
+        if line.startswith("#") and ":" in line:
+            key, value = line[1:].split(":", 1)
+            headers[key.strip()] = value.strip()
+        elif line and not line.startswith("#"):
+            lines.append(line)
+    rows = list(csv.reader(lines, skipinitialspace=True))
+    width, height = map(int, headers["dimensions 0"].split("x"))
+    timebase = Fraction(headers["tb 0"])
+    require((width, height, timebase) == (1280, 392, Fraction(1, 50)),
+            "Decoded video dimensions or timebase differ")
+    require(len(rows) == frames and all(len(row) == 6 and int(row[0]) == 0
+            and int(row[1]) == i and int(row[2]) == i and int(row[3]) == 1
+            and int(row[4]) == width * height * 3 and len(row[5].strip()) == 64
+            for i, row in enumerate(rows)), "Decoded frames or timestamps differ")
+    return dict(width=width, height=height, r_frame_rate="50/1", nb_frames=frames,
+                duration=frames / 50, verification="complete FFmpeg RGB framehash decode")
+
+
 def render_case(xml, case, output):
     import mujoco
     import numpy as np
     from PIL import Image, ImageDraw
-    ffmpeg = shutil.which("ffmpeg")
-    ffprobe = shutil.which("ffprobe")
-    require(ffmpeg and ffprobe, "Existing ffmpeg and ffprobe are required")
+    ffmpeg = os.environ.get("Q1_REVIEW_FFMPEG") or shutil.which("ffmpeg")
+    require(ffmpeg and Path(ffmpeg).is_file(), "An explicitly configured existing FFmpeg is required")
     with np.load(case["trace"], allow_pickle=False) as saved:
         actual, reference = saved["actual"].copy(), saved["reference"].copy()
     require(len(actual) <= len(reference), "Video trajectory exceeds reference")
@@ -61,10 +84,8 @@ def render_case(xml, case, output):
         raise
     process.stdin.close()
     require(process.wait() == 0, "Video encoder failed")
-    probe = json.loads(subprocess.check_output([ffprobe, "-v", "error", "-select_streams", "v:0",
-        "-show_entries", "stream=width,height,r_frame_rate,nb_frames,duration", "-of", "json", str(output)], text=True))["streams"][0]
-    require((probe["width"], probe["height"], probe["r_frame_rate"], int(probe["nb_frames"])) ==
-            (1280, 392, "50/1", len(reference)), "Video time/geometry differs from saved trajectory")
-    subprocess.run([ffmpeg, "-v", "error", "-i", str(output), "-f", "null", "-"], check=True)
+    hashes = subprocess.check_output([ffmpeg, "-nostdin", "-v", "error", "-i", str(output),
+        "-map", "0:v:0", "-pix_fmt", "rgb24", "-f", "framehash", "-hash", "sha256", "pipe:1"], text=True)
+    probe = decoded_metadata(hashes, len(reference))
     return dict(status="PASSED", **identity(output), probe=probe, original_speed=True,
                 actual_frames_before_hold=case["attempted_steps"] + 1, failure_preserved=True)

@@ -48,8 +48,12 @@ def execute(config_path, validation, smoke, output, commit, validation_pid):
         os.environ.update(Q1_REVIEW_GRAPHICS=str(graphics), LD_LIBRARY_PATH=str(graphics / "lib"),
             __EGL_VENDOR_LIBRARY_FILENAMES=str(HERE.parent / "morphmimic_cross_robot/nvidia_egl_595_20261102.json"),
             PYOPENGL_PLATFORM="egl", EGL_PLATFORM="surfaceless")
+        if config.get("ffmpeg"):
+            os.environ["Q1_REVIEW_FFMPEG"] = config["ffmpeg"]
         inputs = [*HERE.glob("*.py"), smoke, config_path,
                   HERE.parent / "morphmimic_cross_robot/nvidia_egl_595_20261102.json"]
+        if config.get("ffmpeg"):
+            inputs.append(Path(config["ffmpeg"]))
         require(phase(config, config_path, output, "render_saved", [config["primebot_python"], "-u",
             str(HERE / "render_saved.py"), "--review", str(smoke), "--xml", config["xml"],
             "--output", str(output / "render_saved/media")], seconds=1800, inputs=inputs),

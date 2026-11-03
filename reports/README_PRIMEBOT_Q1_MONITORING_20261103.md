@@ -36,6 +36,8 @@ script/primebot_q1_review包含CPU MuJoCo原生回放、指标、视频、阻塞
 
 start_validated顺序等待原验证终态、检查已有轨迹媒体、仅一次调用全新正式入口；任何验证或媒体失败保留现场，不启动后续。正式目录为新launch下formal/train/run，profile权重不续。该入口不会自行启动Morph，仍须完整交付和Mac核验过门。
 
+20:16:55首次monitored_launch_v01仅在视频工具检查退出，实际0新动力学/0正式训练，原失败根和栈保留。服务器PATH没有FFmpeg且没有ffprobe；定位到原MorphMimic环境已附带的FFmpeg7.0.2。新版本显式复用此二进制，不安装或改Primebot锁，完整RGB framehash解码核1280x392、50Hz、逐帧PTS/帧数与内容哈希，替代对服务器ffprobe的依赖。修复后使用全新monitored_launch_v02，不恢复失败根，不重做原生或八全更新验证；后续正式启动看收据。
+
 ## 下一步
 
 发布本阶段代码与完整更新收据，使用start_validated从已有轨迹检查视频后直接正式训练。之后监督原训练进程、1000及每5000轮质量记录、参数与RNG隔离；不复用profile权重，不新增确认环节。完整五阶段目标尚未完成。

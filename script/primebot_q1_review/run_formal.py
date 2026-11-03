@@ -43,6 +43,8 @@ def run(config, config_path, validation, output, commit):
             os.environ.update(Q1_REVIEW_GRAPHICS=graphics, LD_LIBRARY_PATH=str(Path(graphics) / "lib"),
                 __EGL_VENDOR_LIBRARY_FILENAMES=str(HERE.parent / "morphmimic_cross_robot/nvidia_egl_595_20261102.json"),
                 PYOPENGL_PLATFORM="egl", EGL_PLATFORM="surfaceless")
+        if config.get("ffmpeg"):
+            os.environ["Q1_REVIEW_FFMPEG"] = config["ffmpeg"]
         budget = disk_budget(audited)
         # Iteration1000 is an additional observation-only learner snapshot.
         budget["checkpoint_count_bound"] += 1
@@ -65,6 +67,8 @@ def run(config, config_path, validation, output, commit):
                   HERE.parent / "project_tools/prepare_q1_gait_review.py"]
         if graphics:
             inputs.append(HERE.parent / "morphmimic_cross_robot/nvidia_egl_595_20261102.json")
+        if config.get("ffmpeg"):
+            inputs.append(Path(config["ffmpeg"]))
         require(phase(config, config_path, output, "train", [config["primebot_python"], "-u", str(HERE / "train_monitored.py"),
             "--plan", str(plan_path)], seconds=seconds, maximum_bytes=budget["maximum_experiment_bytes"], inputs=inputs),
             "Formal training stopped abnormally; preserve the run without restarting")

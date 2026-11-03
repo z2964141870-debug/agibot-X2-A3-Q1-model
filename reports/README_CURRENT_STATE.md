@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-03：[新卡验证通过即自动训练计划](README_MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103.md)。用户已授权验证后直接开训，独立串行入口/本地6项准入通过；新25362/GPU-c602a45a上待G1/Q1原生16环境各24步、共享各E2048八全更新和保存CPU审计，全部通过自动全新初始化80000轮/WM-only1000/559配对/每8000保存。每型410009600转移、批次样本量对齐原4096×40000，Adam轨迹不同。显式新身份/原30GiB与GPU锁，旧失败根/profile权重不续；当前尚未GPU或正式启动/采纳null，无goal-agent及其他任务改动。[准备](../data/manifests/morphmimic_q1_newgpu_train01_preparation_20261103.json)。
+
 2026-11-03：[新25362服务器已连接](README_Q1_NEW_SERVER_25362_20261103.md)。用户新入口经hp_han原生登录interactive67462，boot90395f47/新3090 GPU-c602a45a，recovery=None/0%/23C/无计算进程；原25386及旧故障卡仅历史。唯一根/环境保留，G1/Q1各559、human559文件存在及大小已核，未读NPZ内容。新CUDA执行/训练均0；后续新阶段用新boot/GPU显式守卫参数，原失败根不恢复，缓存工具旧身份尚未改/自动任务保持。[记录](../data/manifests/q1_new_server_25362_20261103.json)。
 
 2026-11-03：[GPU故障定位及平台恢复建议](README_Q1_GPU_ERROR_20261103.md)。前次V03是明确CUDA OOM；V04错误719/进程退出后Reset，内核持续RPC0x62，首次Xid已不在环形日志且journal为空，尚未隔离代码/编译/驱动/硬件起因。用户授权的一次GPU复位09:39:32返回Not Supported，剩余0次/设备未恢复。建议平台保留唯一根数据后重启GPU宿主机或迁健康卡；当前仅提出方案，未重启。正式Q1/共享训练未启，原失败及采纳null保持，无新GPU执行/goal/agent。[诊断](../data/manifests/morphmimic_q1_gpu_error_diagnosis_20261103.json)。下方“未复位/待授权”为历史。

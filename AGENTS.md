@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-03用户明确“制定新计划，验证好了以后直接开始训练”。NEWGPU_TRAIN01独立串行入口已准备/本地6项准入通过，发布后核1820旧输入身份、G1/Q1各16环境24步原生零更新、新共享各E2048合计4096八全更新及两份保存CPU审计；全部通过自动在全新train根从零80000轮/WM-only1000/warmup200/每8000保存，不再等二次确认。对应每型410009600转移/原batch样本量，非相同Adam轨迹；保持原Trainer数学/完整网络559配对/三GiB缓存交接，新boot90395f47/GPU-c602a45a显式守卫及原30GiB/锁。当前服务器/GPU/正式训练尚未执行，旧失败不恢复/profile权重不续/采纳null/no goal-agent或其他自动任务修改。入口README_MORPHMIMIC_Q1_NEWGPU_TRAIN01_20261103及preparation清单，实际启动和发布见后续收据。
+
 - 2026-11-03用户提供替换服务器root@59.77.15.15:25362，后续经hp_han Windows内原生SSH用此端口，覆盖旧25386；凭证仅交互使用不保存。14:46–14:52核interactive67462/唯一根/boot90395f47-4035-4785-858e-b3d05c44a738/新3090 GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4/PCI16:00.0，driver595.112.07/recoveryNone/0%/23C/无计算进程，旧故障卡未再查或复位。环境Python及包metadata运行通过，G1-Q1各559/human559 stat存在，非NPZ内容SHA；首stat误用YAML父路径已按声明root更正/原件保留。新CUDA执行/积分/optimizer/训练0，先新设备有界验证；未来run_native用现有expected-boot/gpu显式参数，不续旧失败根/改冻结源码，缓存工具仍旧身份未运行或改自动任务。服务器无.git是镜像状态，权威Git仍Mac，原失败/一次复位已用/采纳null不改，无goal-agent。入口README_Q1_NEW_SERVER_25362_20261103及q1_new_server_25362清单，旧身份和入口均历史。
 
 - 2026-11-03 GPU故障只读定位：V03明确CUDA OOM与V04 launch failure719分开；Dynamo恢复RNG/随后Warp清理仅报告点，两rank各已物理413696、0optimizer不排除我们的CUDA执行。09:52原3090仍Reset/driver-GSP595.112.07/PCI38:00.0，内核持续RPC0x62=NV_ERR_RESET_REQUIRED；环形最早571733秒晚于V04启动559702秒，journal无文件，首Xid/初因未定位，不断言硬件损坏或排除代码。用户独占确认及一次复位已09:39:32执行/rc255 Not Supported/剩余0次/未恢复，后续无新GPU执行或复位。用户询问最优方案，推荐平台保留/opt/data/private/ZHY后重启GPU宿主机或迁健康卡，尚未实施主机/容器/driver重启；恢复前不新GPU，恢复后先核身份健康与有界验证，不续失败根。正式Q1/共享训练未启/采纳null，无goal-agent或其他任务变更，入口README_Q1_GPU_ERROR_20261103及gpu_error_diagnosis清单；下方未复位/待授权均历史。

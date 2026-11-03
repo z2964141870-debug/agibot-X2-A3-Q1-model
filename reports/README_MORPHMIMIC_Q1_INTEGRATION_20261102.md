@@ -2,6 +2,10 @@
 
 2026-11-02，用户在完成 X2/T2 发布策略回放后要求继续尝试 Q1 训练，并提出结合 PrimebotTech SuperMimic-Q1 与 MorphMimic。本阶段落实这一授权，不创建新应用目标，不改变其他自动任务。
 
+## 11月3日新服务器接入
+
+用户已提供替换入口25362。14:46至14:52经Windows原生SSH核新容器interactive67462、boot90395f47-4035-4785-858e-b3d05c44a738、新3090 GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4，recovery=None/0%/23C，无可见计算进程。唯一根/原环境可运行、G1与Q1各559配对/human559文件及stat大小均在；未重读NPZ或新CUDA执行。此前GPU恢复阻塞对旧设备仍是历史事实，不能当旧卡已恢复。后续先独立有界设备检查，未来guard显式采用新身份；未正式训练/恢复失败profile，缓存与其他自动任务未改，采纳null。[新服务器报告](README_Q1_NEW_SERVER_25362_20261103.md)/[清单](../data/manifests/q1_new_server_25362_20261103.json)。
+
 ## 11月3日故障定位与恢复方案
 
 最新结论见[GPU故障报告](README_Q1_GPU_ERROR_20261103.md)。用户确认独占后授权的一次定向GPU复位已于09:39:32执行，返回255/Not Supported；后查仍Reset，剩余0次。09:52只读及内核补查确认持续RPC状态0x62（需要复位），原始Xid因环形时段已过/journal不存在未取得。V03显存不足与V04错误719须分开；Dynamo恢复RNG、Warp清理栈不定位首kernel，0optimizer也不能排除之前的413696物理转移。代码、编译、驱动/固件和硬件起因均未隔离，不认定永久硬件损坏。

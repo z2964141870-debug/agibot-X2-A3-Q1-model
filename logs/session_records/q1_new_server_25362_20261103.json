@@ -1,0 +1,357 @@
+{
+  "stage": "Q1_NEW_SERVER_25362_CONNECTION_20261103",
+  "authorization": "User explicitly provided replacement SSH endpoint; credentials used only in interactive login and omitted from project records",
+  "transport": {
+    "windows_alias": "hp_han",
+    "native_ssh_host": "59.77.15.15",
+    "port": 25362,
+    "session_id_at_observation": 15017,
+    "forwarding_used": false,
+    "host_key_fingerprint": "SHA256:ptg8SMNQvUQYHV0/hafU4hBlhZ/vb4wJUmM1XTVlROI",
+    "host_key_verified_against_previous_trusted_fingerprint": true,
+    "known_hosts_targets": "NUL for this connection; no persistent authentication configuration written"
+  },
+  "initial": {
+    "stage": "Q1_NEW_SERVER_25362_READONLY_20261103",
+    "observed_utc": "2026-11-03T06:46:36.419358+00:00",
+    "hostname": "interactive67462",
+    "boot_id": "90395f47-4035-4785-858e-b3d05c44a738",
+    "root_exists": true,
+    "root_resolved": "/opt/data/private/ZHY",
+    "root_components": {
+      "data": {
+        "exists": true,
+        "is_symlink": false,
+        "size": null
+      },
+      "logs": {
+        "exists": true,
+        "is_symlink": false,
+        "size": null
+      },
+      "script": {
+        "exists": true,
+        "is_symlink": false,
+        "size": null
+      },
+      "reports": {
+        "exists": true,
+        "is_symlink": false,
+        "size": null
+      },
+      "AGENTS.md": {
+        "exists": true,
+        "is_symlink": false,
+        "size": 128639
+      },
+      "data/environments/morphmimic_original_20261029/bin/python": {
+        "exists": true,
+        "is_symlink": true,
+        "size": 21828192
+      },
+      "script/morphmimic_q1/run_native.py": {
+        "exists": true,
+        "is_symlink": false,
+        "size": 7605
+      },
+      "script/morphmimic_q1/full1h_shared_profile_e2048_handoff_v04_20261103.json": {
+        "exists": true,
+        "is_symlink": false,
+        "size": 2842
+      }
+    },
+    "new_gpu_workload": 0,
+    "host_or_container_restart_by_agent": false,
+    "port": 25362,
+    "nvidia_smi": {
+      "return_code": 0,
+      "stderr": ""
+    },
+    "driver": "595.112.07",
+    "gpus": [
+      {
+        "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+        "name": "NVIDIA GeForce RTX 3090",
+        "pci": "00000000:16:00.0",
+        "recovery_action": "None",
+        "memory": {
+          "total": "24576 MiB",
+          "reserved": "450 MiB",
+          "used": "1 MiB",
+          "free": "24126 MiB"
+        },
+        "utilization": {
+          "gpu_util": "0 %",
+          "memory_util": "0 %",
+          "encoder_util": "0 %",
+          "decoder_util": "0 %",
+          "jpeg_util": "0 %",
+          "ofa_util": "0 %"
+        },
+        "temperature": "23 C",
+        "process_count": 0,
+        "repair": {}
+      }
+    ],
+    "project_process_lines": [],
+    "cgroup": "12:hugetlb:/kubepods/burstable/pod746ece65-6378-46fc-927a-9642208f4097/d6621a219b0c27c4d924c3c941af67f2c56bbc5df0c77eeb2b6d51ab9686bc91\n11:rdma:/kubepods/burstable/pod746ece65-6378-46fc-927a-9642208f4097/d6621a219b0c27c4d924c3c941af67f2c56bbc5df0c77eeb2b6d51ab9686bc91\n10:memory:/kubepods/burstable/pod746ece65-6378-46fc-927a-9642208f4097/d6621a219b0c27c4d924c3c941af67f2c56bbc5df0c77eeb2b6d51ab9686bc91\n9:cpuset:/kubepods/burstable/pod746ece65-6378-46fc-927a-9642208f4097/d6621a219b0c27c4d924c3c941af67f2c56bbc5df0c77eeb2b6d51ab9686bc91\n8:blkio:/kubepods/burstable/pod746ece65-6378-46fc-927a-9642208f4097/d6621a219b0c27c4d924c3c941af67f2c56bbc5df0c77eeb2b6d51ab9686bc91\n7:net_cls,net_prio:/kubepods/burstable/pod746ece65-6378-46fc-927a-9642208f4097/d6621a219b0c27c4d924c3c941af67f2c56bbc5df0c77eeb2b6d51ab9686bc91\n6:cpu,cpuacct:/kubepods/burstable/pod746ece65-6378-46fc-927a-9642208f4097/d6621a219b0c27c4d924c3c941af67f2c56bbc5df0c77eeb2b6d51ab9686bc91\n5:devices:/kubepods/burstable/pod746ece65-6378-46fc-927a-9642208f4097/d6621a219b0c27c4d924c3c941af67f2c56bbc5df0c77eeb2b6d51ab9686bc91\n4:pids:/kubepods/burstable/pod746ece65-6378-46fc-927a-9642208f4097/d6621a219b0c27c4d924c3c941af67f2c56bbc5df0c77eeb2b6d51ab9686bc91\n3:freezer:/kubepods/burstable/pod746ece65-6378-46fc-927a-9642208f4097/d6621a219b0c27c4d924c3c941af67f2c56bbc5df0c77eeb2b6d51ab9686bc91\n2:perf_event:/kubepods/burstable/pod746ece65-6378-46fc-927a-9642208f4097/d6621a219b0c27c4d924c3c941af67f2c56bbc5df0c77eeb2b6d51ab9686bc91\n1:name=systemd:/kubepods/burstable/pod746ece65-6378-46fc-927a-9642208f4097/d6621a219b0c27c4d924c3c941af67f2c56bbc5df0c77eeb2b6d51ab9686bc91\n0::/kubepods/burstable/pod746ece65-6378-46fc-927a-9642208f4097/d6621a219b0c27c4d924c3c941af67f2c56bbc5df0c77eeb2b6d51ab9686bc91\n",
+    "meminfo": [
+      "MemTotal:       263774944 kB",
+      "MemAvailable:   242406408 kB",
+      "Cached:         17968236 kB",
+      "Shmem:             63984 kB"
+    ]
+  },
+  "retention": {
+    "stage": "Q1_25362_PROJECT_RETENTION_CHECK_20261103",
+    "observed_utc": "2026-11-03T06:48:03.115922+00:00",
+    "config": {
+      "purpose": "profile",
+      "robots": [
+        "g1",
+        "q1"
+      ],
+      "source": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+      "output": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_G1_FULL1H_PROFILE_E2048_HANDOFF_V04_20261103",
+      "human_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/npz50/human50",
+      "subsets": [
+        "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/g1_paired.yaml",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/q1_paired.yaml"
+      ],
+      "cfg": {
+        "num_envs": 2048,
+        "replay_capacity": 1000,
+        "wm_batch": 1024,
+        "imag_batch": 2048,
+        "kp_imag_batch": 2048,
+        "iterations": 8,
+        "wm_only_iters": 0,
+        "wm_batches": 10,
+        "window_k": 8,
+        "horizon": 32,
+        "utd": 0.4,
+        "wm_lr": 0.0002,
+        "policy_lr": 0.0002,
+        "critic_lr": 0.0002,
+        "warmup_env_steps": 200,
+        "gamma": 0.99,
+        "lam": 0.95,
+        "action_noise": 0.1,
+        "wm_hidden": [
+          2048,
+          2048,
+          2048
+        ],
+        "policy_hidden": [
+          2048,
+          1024,
+          512,
+          256
+        ],
+        "critic_hidden": [
+          256,
+          128
+        ],
+        "kp_env_frac": 0.5,
+        "kp_masking": "full",
+        "kp_jitter": true,
+        "kp_align_weight": 0.1,
+        "kp_interface": true,
+        "kp_student": "return",
+        "reset_norm": "remaining",
+        "wm_frame": "root",
+        "residual_scale": "step",
+        "termination": "hazard",
+        "wm_layer_norm": true,
+        "critic_layer_norm": true,
+        "critic_anchor_pos": true,
+        "avoid_clip_end": true,
+        "critic_target_clip": true,
+        "bf16": true,
+        "compile": "default",
+        "pool_norms": true,
+        "actor_geometry": true,
+        "decoder_film": true,
+        "latent_align_weight": 0.05,
+        "latent_align_batch": 512,
+        "actuator_delay": true,
+        "actuator_delay_fixed": true,
+        "actuator_delay_max_ms": 20,
+        "lr_decay_iters": 500000,
+        "ckpt_every": 8,
+        "log_every": 1,
+        "library_dtype": "float16",
+        "seed": 0,
+        "wandb": false
+      },
+      "physics_handoff_min_free_bytes": 3221225472,
+      "learner_handoff_min_free_bytes": 3221225472,
+      "receipt_every": 1,
+      "initial_admission_gib": 12,
+      "profile_wall_limit_seconds": 10800,
+      "code_commit_resolved_from_published_head_at_launch": true,
+      "reuse_profile_weights_for_formal_training": false,
+      "formal_target_num_envs_per_robot": 2048,
+      "formal_target_iterations": 80000,
+      "formal_target_wm_only_iterations": 1000,
+      "formal_target_transitions_per_robot": 410009600,
+      "formal_target_wm_batch_examples_per_robot": 819200000,
+      "formal_target_motion_kp_imagination_examples_each_per_robot": 161792000,
+      "scope": "All cfg fields equal shared E2048 V03; additionally release inactive Torch cache before each native learner phase under low global free VRAM; keep both environments and learner batches"
+    },
+    "documents": [
+      {
+        "path": "AGENTS.md",
+        "bytes": 128639,
+        "sha256": "651e200d2fd29faa0f404e6c3e283887f0bf90a6a87ca290d01d2e4eee3e70cc"
+      },
+      {
+        "path": "reports/README.md",
+        "bytes": 174628,
+        "sha256": "a51bacb1c7e2ad6b0b2dd0f579c298bfbf6b4ca7ad83da626dc1e3f25658ec78"
+      },
+      {
+        "path": "reports/README_CURRENT_STATE.md",
+        "bytes": 119095,
+        "sha256": "250d2d76dc695969c3ea14b8ca18792edd68f1cf8263f62ce9732f116f801b09"
+      },
+      {
+        "path": "reports/README_MORPHMIMIC_Q1_INTEGRATION_20261102.md",
+        "bytes": 44129,
+        "sha256": "0b96866b6dc6c2a22f9d8fed6bacd8151c8ec744bb76431dc5b52f98cfb42da0"
+      }
+    ],
+    "small_receipts": {
+      "logs/session_records/morphmimic_q1_gpu_error_readonly_v01_20261103.json": {
+        "exists": true,
+        "bytes": 90210,
+        "sha256": "7b16cd8dbebd1f35a4b758ab5f9b43f356c851d3d19e3983e1523d399cd2409f"
+      },
+      "logs/session_records/morphmimic_q1_gpu_reset_once_20261103.json": {
+        "exists": true,
+        "bytes": 3703,
+        "sha256": "18cb8ae2224b37cab13dc438cc4d617045d8d62d855eda51916a83d76788669d"
+      },
+      "data/manifests/morphmimic_q1_gpu_reset_once_results_20261103.json": {
+        "exists": true,
+        "bytes": 2689,
+        "sha256": "f4cf01a4b95282d927df8b2052fa2e784f850254baff67ecd0ad5cb424f996e0"
+      },
+      "logs/session_records/morphmimic_q1_gpu_error_readonly_followup_20261103.json": {
+        "exists": true,
+        "bytes": 23389,
+        "sha256": "cd3ad41ffa71a49563c1fcd76b507d57a58ee16ba24c3d3461f984e6d27c0532"
+      }
+    },
+    "cgroup_memory": {
+      "memory.usage_in_bytes": "25530368\n",
+      "memory.limit_in_bytes": "34292629504\n",
+      "memory.failcnt": "0\n",
+      "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+      "memory.stat": "cache 1486848\nrss 10629120\nmapped_file 0\ntotal_cache 1486848\ntotal_rss 10629120"
+    },
+    "environment_metadata": {
+      "return_code": 0,
+      "stdout": "{\"executable\": \"/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python\", \"python\": \"3.11.18 (main, Oct 26 2026, 14:05:07) [Clang 23.1.3 ]\", \"packages\": {\"torch\": \"2.11.0+cu128\", \"warp-lang\": \"1.17.0\", \"mujoco\": \"3.11.0\"}}\n",
+      "stderr": ""
+    },
+    "git_head": {
+      "return_code": 128,
+      "stdout": "",
+      "stderr": "fatal: not a git repository (or any parent up to mount point /opt/data)\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).\n"
+    },
+    "new_cuda_context": false,
+    "new_physics_inference_optimizer": 0
+  },
+  "initial_paired_probe_with_wrong_root_preserved": {
+    "stage": "Q1_25362_PAIRED_DATA_STAT_20261103",
+    "observed_utc": "2026-11-03T06:51:14.463514+00:00",
+    "yaml": [
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/g1_paired.yaml",
+        "structure": [
+          "root",
+          "hours",
+          "clips"
+        ],
+        "npz_path_count": 559,
+        "existing": 0,
+        "missing": [
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/210707/walk_fast_forward_normal_003__A006.npz",
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/220705/Sideway_Walk_Right_001__A018.npz",
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/220705/Turn_Start_Walk_0225_001__A020.npz",
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/220713/turn_start_walk_0000_004__A023.npz",
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/220713/turn_start_walk_0045_003__A022.npz"
+        ],
+        "stat_bytes": 0,
+        "first_paths": [
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/210707/walk_fast_forward_normal_003__A006.npz",
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/220705/Sideway_Walk_Right_001__A018.npz"
+        ]
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/q1_paired.yaml",
+        "structure": [
+          "root",
+          "hours",
+          "clips"
+        ],
+        "npz_path_count": 559,
+        "existing": 0,
+        "missing": [
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/210707/walk_fast_forward_normal_003__A006.npz",
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/220705/Sideway_Walk_Right_001__A018.npz",
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/220705/Turn_Start_Walk_0225_001__A020.npz",
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/220713/turn_start_walk_0000_004__A023.npz",
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/220713/turn_start_walk_0045_003__A022.npz"
+        ],
+        "stat_bytes": 0,
+        "first_paths": [
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/210707/walk_fast_forward_normal_003__A006.npz",
+          "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/220705/Sideway_Walk_Right_001__A018.npz"
+        ]
+      }
+    ],
+    "npz_content_read": false,
+    "human_sidecars": {
+      "count": 559,
+      "bytes": 122602178
+    }
+  },
+  "corrected_paired_probe": {
+    "stage": "Q1_25362_PAIRED_DATA_STAT_ROOT_CORRECTION_20261103",
+    "observed_utc": "2026-11-03T06:52:14.762590+00:00",
+    "correction": "Initial stat probe incorrectly used YAML parent for relative clip paths; resolve the declared root field. No data changed.",
+    "npz_content_read": false,
+    "yaml": [
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/g1_paired.yaml",
+        "declared_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_DATA_20261101/run/npz50",
+        "resolved_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_FAITHFUL01_G1_DATA_20261101/run/npz50",
+        "clip_count": 559,
+        "existing": 559,
+        "missing": [],
+        "stat_bytes": 330362332
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/q1_paired.yaml",
+        "declared_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/npz50",
+        "resolved_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/npz50",
+        "clip_count": 559,
+        "existing": 559,
+        "missing": [],
+        "stat_bytes": 282149476
+      }
+    ]
+  },
+  "old_session": {
+    "session": 5845,
+    "closed": "Windows SSH timed out; new user-provided endpoint used, not retried old25386"
+  },
+  "notes": [
+    "Initial generic file stat used YAML parent instead of declared root; the false missing result was corrected by reading root and no data was changed",
+    "git rev-parse at server mirror returned not a repository; authoritative Git remains the Mac checkout, no server repository repair performed"
+  ],
+  "new_cuda_context": false,
+  "new_physics_inference_optimizer": 0
+}

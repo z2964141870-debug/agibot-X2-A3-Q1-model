@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-03用户提供替换服务器root@59.77.15.15:25362，后续经hp_han Windows内原生SSH用此端口，覆盖旧25386；凭证仅交互使用不保存。14:46–14:52核interactive67462/唯一根/boot90395f47-4035-4785-858e-b3d05c44a738/新3090 GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4/PCI16:00.0，driver595.112.07/recoveryNone/0%/23C/无计算进程，旧故障卡未再查或复位。环境Python及包metadata运行通过，G1-Q1各559/human559 stat存在，非NPZ内容SHA；首stat误用YAML父路径已按声明root更正/原件保留。新CUDA执行/积分/optimizer/训练0，先新设备有界验证；未来run_native用现有expected-boot/gpu显式参数，不续旧失败根/改冻结源码，缓存工具仍旧身份未运行或改自动任务。服务器无.git是镜像状态，权威Git仍Mac，原失败/一次复位已用/采纳null不改，无goal-agent。入口README_Q1_NEW_SERVER_25362_20261103及q1_new_server_25362清单，旧身份和入口均历史。
+
 - 2026-11-03 GPU故障只读定位：V03明确CUDA OOM与V04 launch failure719分开；Dynamo恢复RNG/随后Warp清理仅报告点，两rank各已物理413696、0optimizer不排除我们的CUDA执行。09:52原3090仍Reset/driver-GSP595.112.07/PCI38:00.0，内核持续RPC0x62=NV_ERR_RESET_REQUIRED；环形最早571733秒晚于V04启动559702秒，journal无文件，首Xid/初因未定位，不断言硬件损坏或排除代码。用户独占确认及一次复位已09:39:32执行/rc255 Not Supported/剩余0次/未恢复，后续无新GPU执行或复位。用户询问最优方案，推荐平台保留/opt/data/private/ZHY后重启GPU宿主机或迁健康卡，尚未实施主机/容器/driver重启；恢复前不新GPU，恢复后先核身份健康与有界验证，不续失败根。正式Q1/共享训练未启/采纳null，无goal-agent或其他任务变更，入口README_Q1_GPU_ERROR_20261103及gpu_error_diagnosis清单；下方未复位/待授权均历史。
 
 - 2026-11-03共享E2048-V04冻结dbfd819/11记录586256B三端及服务器10项CPU通过后03:00:57启动，controller618281/start55970235、parent618288/两rank618289-618290，03:02整FAILED；完整轮0/五optimizer全0/各采集413696，首WM编译CUDA unspecified launch failure。物理检查2/学习WM检查1但cache释放全部0，未检验释放假设/未隔离根因。03:05:03一次只读原3090 driver595.112.07报告gpu_recovery_action=Reset及三个GPU requires reset字段，used1MiB/free24127MiB/45C、利用率和compute processes N/A，宿主其他客户端未知/不证永久硬件损坏。1820源独立SHA同/四PID退出/boot原样/cgroup OOMkill0；原失败根保留，不再新GPU实验/未重置GPU驱动容器宿主。先由有权限操作方确认并恢复设备，SSH会话重开授权不扩为设备重置。单Q1 E4096八全更新及独立CPU审计保持，正式训练未启/采纳null、不新goal-agent或改其他任务；入口同INTEGRATION/shared_e2048_v04_results及gpu_health收据。

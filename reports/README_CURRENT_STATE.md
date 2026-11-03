@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-03 20:31：[Primebot Q1正式监控训练已经运行](README_PRIMEBOT_Q1_MONITORING_20261103.md)。20:23:39起E4096/WM2048/policy2048/393条从零，controller29435/start2148365、guard29965/start2153863、worker29970/start2153901；冻结b8f920cbba9be3f7247bddbe6535febfbc06186b，303完整轮/3264512转移/WM3030-actor303-critic6060、104输入SHA同/GPU21458MiB健康/OOM0。1000及每5000轮自动观测，三连续9/9+两误差改善才早停，25万为上限。三基线视频本地1587帧解码/目视齐，但零更新0/9不作已训练效果。V01缺编码器失败保留，V02复用原FFmpeg，未安装或重做8轮。正式训练继续；Morph尚未启动/目标未达/采纳null。[启动原件](../logs/session_records/primebot_q1_monitored_formal_launch_20261103.json)。下方“正式未启动”为历史。
+
 2026-11-03 20:09：[Primebot4096八完整更新及CPU保存审计通过](README_PRIMEBOT_Q1_MONITORING_20261103.md)。实际/Adam80-8-160、245760转移、原进程退出及冻结源未变；后六轮中位1.265676秒，25万轮纯训练外推87.9小时。新增串行入口检查已有CPU轨迹三视频后仅一次从零正式开训，1000/每5000轮监控，连续三门达标可早停；当前正式启动以随后收据为准。0/9是已有未训练基线，不是已训练结论。
 
 2026-11-03：[Primebot原生控制通过，4096八轮验证运行；接入效果监控早停](README_PRIMEBOT_Q1_MONITORING_20261103.md)。controller6176，原生240子步PD/延迟误差<=1.91e-6Nm/0optimizer；profile guard6457/worker6462首更新编译中。393条2503.92秒共同参考已冻结；用户新授权25万轮为上限，固定9/9与两误差改善连续三次可提前保存终止，完整交付门仍在Morph之前。正式训练未启动。

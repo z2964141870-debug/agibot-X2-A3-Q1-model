@@ -1,6 +1,6 @@
 # Primebot训练中效果监控与提前停止
 
-记录日期：2026-11-03。状态：20:09:23真实4096环境8轮完整更新及独立CPU保存审计全部通过；正式启动前检查已有轨迹的视频编码、解码，随后自动从零启动监控训练。正式运行状态以启动收据为准。
+记录日期：2026-11-03。状态：20:23:39正式监控训练已从零启动；20:31:29核303完整更新/3264512真实转移，三个原进程保持、GPU健康、OOM0。第一次数值对比在1000轮，当前尚无训练后的步态收益结论。
 
 ## 用户新决定
 
@@ -38,6 +38,22 @@ start_validated顺序等待原验证终态、检查已有轨迹媒体、仅一�
 
 20:16:55首次monitored_launch_v01仅在视频工具检查退出，实际0新动力学/0正式训练，原失败根和栈保留。服务器PATH没有FFmpeg且没有ffprobe；定位到原MorphMimic环境已附带的FFmpeg7.0.2。新版本显式复用此二进制，不安装或改Primebot锁，完整RGB framehash解码核1280x392、50Hz、逐帧PTS/帧数与内容哈希，替代对服务器ffprobe的依赖。修复后使用全新monitored_launch_v02，不恢复失败根，不重做原生或八全更新验证；后续正式启动看收据。
 
+## 正式训练已启动
+
+2026-11-03 20:22:45启动monitored_launch_v02，已有轨迹三原速视频20:23:38检查通过，20:23:39自动进入全新正式训练。controller29435/start2148365、train guard29965/start2153863、worker29970/start2153901，冻结执行b8f920cbba9be3f7247bddbe6535febfbc06186b；该修复已独立40位远端及7份26108字节Mac/服务器逐大小SHA核验，服务器10项测试通过。前阶段73b43f9的13份512481字节三端核验亦已通过。后续报告提交不改变本次执行版本。
+
+根目录：data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run。E4096、WM2048、policy2048、393条2503.92秒、完整网络/原三优化器/原学习日程/从第一轮更新策略；全新初始化，profile权重未续。56份快照加满replay等整轮预算41901082209字节，另保留100GiB空闲，启动时空闲约863GB。
+
+20:31:29现场303完整轮/WM3030/actor303/critic6060、3264512真实转移，104冻结输入重新逐SHA一致。GPU21458MiB/66度/79%/recovery=None，容器总17108746240字节、OOM0；这些只表示训练在推进，不是动作质量。正式零更新checkpoint与观测均保留，参数/RNG前后同，CPU评测完整0/9为未训练基线。1000轮及每5000轮观测自动在完整更新边界执行，持续三次过门才提前结束；异常训练不自动重启。
+
+已有轨迹的三视频已在Mac逐大小/SHA一致并完成ffprobe及全1587帧解码、九格图目视；总1061321字节，1280x392/50fps，普通前走20.64秒、起走3.04秒、停走8.06秒，保留摔倒和标注HOLD。这组是验证视频交付链路的零更新轨迹，不当训练后效果。
+
+- [前走基线视频](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/render_saved/media/walk_forward_loop_001__A022/tracking.mp4)
+- [起走基线视频](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/render_saved/media/walk_forward_start_002__A023/tracking.mp4)
+- [停走基线视频](/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/render_saved/media/walk_forward_stop_002__A024/tracking.mp4)
+
+启动原始收据：logs/session_records/primebot_q1_monitored_formal_launch_20261103.json；Mac媒体收据：logs/session_records/primebot_q1_initial_media_mac_check_20261103.json。原失败根也已取回Mac，未覆盖。
+
 ## 下一步
 
-发布本阶段代码与完整更新收据，使用start_validated从已有轨迹检查视频后直接正式训练。之后监督原训练进程、1000及每5000轮质量记录、参数与RNG隔离；不复用profile权重，不新增确认环节。完整五阶段目标尚未完成。
+监督原训练进程、1000及每5000轮质量记录、参数与RNG隔离；不热改冻结代码或续用profile，不新增确认环节。训练后入口会完成初末固定9次和全393片各seed0、原速媒体及保存审计，结束在等待Mac交付核验；Morph共享控制器、共享评估和综合比较仍需后续接续，当前未启动Morph。完整五阶段目标尚未完成，不据启动或等待结算goal。

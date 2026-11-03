@@ -4,6 +4,8 @@
 
 ## 已完成的代码
 
+补齐完整片步态汇总：`comparison.py`和`native_compare.py`的每侧结果均附足部p95/参考差、>10mm事件/交替、承重滑速、倾角、上肢RMSE及幅度差的逐片等权分布；`shared_delivery.py`在综合README输出相应诊断表。失败片不进入完整片分布，缺载荷不填零，缺完整片诊断拒绝比较。使用现有Primebot788份初末JSON及原SHA清单得到全库最终306/393无交替事件、308/393双脚p95<=5mm，基线详见[首轮结果](README_PRIMEBOT_Q1_FINAL_RESULTS_20261104.md)。本地81项74过7依赖跳过；未新积分或优化，V04仍未启动。
+
 新增`script/q1_five_stage/shared_review.py`。入口先核正式训练pipeline、固定计划、双机型初末CPU审计、两rank完整训练与共享一致性、393同片数据和原Primebot/Mac交付门，再创建独立评估目录。未通过时不导入策略、不创建Runner或启动物理。保留训练pipeline、计划、CPU审计和数据清单的独立小副本，后续控制器写状态不会丢失评估时的证据。
 
 评估严格串行，共24个回放阶段：共同Primebot物理环境下Q1的motion/human，原生mjlab下G1/Q1的motion/human，各自初始/最终、固定三走三种子/全393条seed0。固定seed0均保留原速视频，合计36份；失败终止帧和hold保留。视频不是独立随机扰动测试，不能将三种子名义重复解释为泛化。

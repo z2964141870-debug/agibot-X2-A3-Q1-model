@@ -8,6 +8,7 @@ import sys
 from contracts import validate_frozen
 from delivery import read
 from common import FIXED, TARGET_TRANSITIONS, matched_checkpoint, require, save
+from diagnostic_summary import summarize_complete
 
 METRICS = ("joint_rmse_rad", "body_relative_rmse_m")
 
@@ -84,6 +85,7 @@ def summary(left, right, pairs, names):
         full[label] = dict(complete_cases=len(complete), total_cases=len(index),
             complete_clips=len({row["clip"] for row in complete}), total_clips=len(names),
             metrics={metric: clip_equal_mean(complete, metric) for metric in METRICS} if complete else {},
+            diagnostics=summarize_complete(index.values()),
             aggregation="equal weight per clip among complete cases; failed cases are counted separately")
     return dict(status="COMPARABLE" if not missing else "MISSING_COMPARABLE_PREFIX",
         common_prefix_metrics=common, missing_common_prefix=missing, complete_motion=full,

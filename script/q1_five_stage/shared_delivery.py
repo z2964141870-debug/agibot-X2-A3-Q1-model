@@ -41,6 +41,26 @@ def required_paths(names):
     return paths | videos, videos
 
 
+def diagnostic_table(comparisons):
+    lines = ["| Comparison | Side | Complete Clips | No Alternating Events | Median Sole p95 L/R (mm) | Median Loaded Slip L/R (mm/s) | Median Upper RMSE (rad) |",
+             "| --- | --- | ---: | ---: | --- | --- | ---: |"]
+    for name, comparison in comparisons.items():
+        for side, motion in comparison["complete_motion"].items():
+            diagnosis = motion["diagnostics"]
+            stats = diagnosis["statistics"]
+
+            def median(key, scale=1.):
+                value = stats.get(key, {}).get("median")
+                return "Unavailable" if value is None else f"{value * scale:.6g}"
+
+            sole = " / ".join(median("sole_p95_" + foot + "_m", 1000) for foot in ("left", "right"))
+            slip = " / ".join(median("loaded_slip_" + foot + "_m_s", 1000) for foot in ("left", "right"))
+            count = diagnosis["counts"].get("clips_with_no_alternating_events", "Unavailable")
+            lines.append(f"| {name} | {side} | {diagnosis['complete_clips']} / {diagnosis['total_clips']} "
+                         f"| {count} | {sole} | {slip} | {median('upper_joint_rmse_rad')} |")
+    return lines
+
+
 def write_conclusions(root, plan, config, exposure):
     from shared_review import comparisons
     primebot_root = Path(config["primebot_review"])
@@ -82,6 +102,9 @@ def write_conclusions(root, plan, config, exposure):
                    for key in ("joint_rmse_rad", "body_relative_rmse_m")]
         lines.append(f"| {name} | {counts['left']['complete_cases']} / {counts['right']['complete_cases']} "
                      f"of {counts['right']['total_cases']} | {metrics[0]} | {metrics[1]} |")
+    lines.extend(["", "Complete-motion diagnostics are aggregated with equal clip weights. Failed clips are excluded "
+                  "and reported as missing full-motion evidence. Threshold crossings are not verified steps.", "",
+                  *diagnostic_table(comparisons_value)])
     lines.extend(["", f"Primebot stopped at {primebot_audit['final']['iteration']} iterations and "
                   f"{primebot_audit['final']['global_env_steps']} Q1 transitions. Shared training used "
                   f"{plan['cfg']['iterations']} iterations and {expected_transitions(plan['cfg'])} transitions per robot.",

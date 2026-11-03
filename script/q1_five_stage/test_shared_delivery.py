@@ -5,11 +5,20 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from shared_delivery import required_paths, verify
+from shared_delivery import diagnostic_table, required_paths, verify
 from common import FIXED
+from diagnostic_summary import summarize_complete
+from test_diagnostic_summary import case
 
 
 class SharedDeliveryTests(unittest.TestCase):
+    def test_diagnostic_report_preserves_missing_initial_and_uses_complete_clip_denominator(self):
+        comparison = dict(complete_motion={side: dict(diagnostics=summarize_complete([case(complete=complete)]))
+                                          for side, complete in (("left", False), ("right", True))})
+        lines = diagnostic_table({"initial_final": comparison})
+        self.assertIn("| left | 0 / 1 | Unavailable |", lines[2])
+        self.assertIn("| right | 1 / 1 | 1 | 1 / -1 | 100 / 200 | 0.2 |", lines[3])
+
     def names(self):
         return [*FIXED, *(f"clip_{i}" for i in range(390))]
 

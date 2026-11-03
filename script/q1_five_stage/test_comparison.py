@@ -5,6 +5,7 @@ import unittest
 
 from comparison import case_index, exposure_comparison, summary
 from common import TARGET_TRANSITIONS
+from test_diagnostic_summary import diagnosis
 
 
 def case(clip, seed=0, complete=True):
@@ -14,6 +15,7 @@ def case(clip, seed=0, complete=True):
         evaluation_randomization=False, reference_sha256="a" * 64, trace="/server/trace.npz", interface="motion")
     if complete:
         row["full_clip_metrics"] = dict(joint_rmse_rad=.5, body_relative_rmse_m=.1)
+        row["diagnostics"] = diagnosis()
     return row
 
 
@@ -60,6 +62,12 @@ class ComparisonTests(unittest.TestCase):
         self.assertEqual(result["status"], "MISSING_COMPARABLE_PREFIX")
         self.assertEqual(result["common_prefix_metrics"], {})
         self.assertEqual(len(result["missing_common_prefix"]), 1)
+
+    def test_missing_full_motion_diagnostics_cannot_publish_a_complete_comparison(self):
+        a, b = case("a", complete=False), case("a")
+        b["diagnostics"].pop("sole_p95_m")
+        with self.assertRaisesRegex(RuntimeError, "sole_p95_m"):
+            summary({("a", 0): a}, {("a", 0): b}, [pair(a, b)], ["a"])
 
     def test_reference_changes_and_wrong_prefix_are_rejected(self):
         a, b = case("a", complete=False), case("a")

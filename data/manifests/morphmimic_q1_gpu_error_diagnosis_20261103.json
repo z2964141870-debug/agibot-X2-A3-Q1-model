@@ -1,0 +1,127 @@
+{
+  "stage": "MORPHMIMIC_Q1_GPU_ERROR_DIAGNOSIS_20261103",
+  "status": "DEVICE_RESET_REQUIRED_INITIAL_TRIGGER_UNRESOLVED",
+  "evidence_observed_utc": [
+    "2026-11-03T01:39:32.958607+00:00",
+    "2026-11-03T01:52:19.832024+00:00",
+    "2026-11-03T01:54:01.594864+00:00"
+  ],
+  "device": {
+    "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+    "pci": "00000000:38:00.0",
+    "device_minor": 2,
+    "driver": "595.112.07",
+    "gsp_firmware": "595.112.07",
+    "boot_id": "4d859008-4c83-4a6d-814d-cbb9dfe885c9"
+  },
+  "previous_v03": {
+    "failure": "CUDA_OUT_OF_MEMORY",
+    "complete_iterations": 0,
+    "partial_optimizer_steps_per_rank": {
+      "world_model": 10,
+      "motion": 1,
+      "critic": 20,
+      "keypoint": 0,
+      "keypoint_critic": 0
+    },
+    "requested_mib": [
+      158,
+      174
+    ],
+    "global_free_mib": [
+      92.12,
+      94.12
+    ]
+  },
+  "v04": {
+    "execution_commit": "dbfd8199694f59d96035bb4bc3d027ef2a2d59d1",
+    "failure": "CUDA_UNSPECIFIED_LAUNCH_FAILURE",
+    "cuda_error_code": 719,
+    "first_reporting_context": "Torch Dynamo restores CUDA RNG state; not proof of first faulty kernel",
+    "cleanup_context": "Warp wp_free_device_async reports error 719",
+    "complete_iterations": 0,
+    "optimizer_steps_per_rank": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "physics_transitions_per_rank": 413696,
+    "cache_releases": 0,
+    "pre_failure_recovery_action_recorded": false
+  },
+  "kernel_evidence": {
+    "repeated_rpc_status": "0x00000062",
+    "official_status_name": "NV_ERR_RESET_REQUIRED",
+    "original_xid_recovered": false,
+    "oldest_retained_monotonic_seconds": 571733.320973,
+    "v04_start_monotonic_seconds": 559702.35,
+    "ring_buffer_covers_initial_failure": false,
+    "journal_result": "No journal files were found; no entries",
+    "journal_v01_invalid_option_preserved": true,
+    "journal_corrected_option": "-k",
+    "shared_kernel_log_device_attribution_limit": "Generic GPU0..GPU7 NVLink query warnings do not identify our first fault or establish failures on eight devices"
+  },
+  "recovery": {
+    "gpu_recovery_action": "Reset",
+    "authorized_reset_attempts": 1,
+    "actual_reset_attempts": 1,
+    "attempts_remaining": 0,
+    "reset_return_code": 255,
+    "reset_result": "Not Supported",
+    "device_recovered": false,
+    "host_container_driver_restart_performed": false
+  },
+  "conclusions": {
+    "capacity_failure_and_launch_failure_are_distinct": true,
+    "our_cuda_code_not_excluded": true,
+    "torch_compile_driver_firmware_or_hardware_not_isolated": true,
+    "permanent_hardware_damage_proven": false,
+    "root_cause_identified": false,
+    "formal_q1_shared_training_started": false,
+    "user_accepted_checkpoint": null
+  },
+  "recommended_recovery": {
+    "action": "Platform administrator should reboot the GPU host with data preserved, or migrate this workload to a healthy GPU",
+    "container_restart_alone": "Not assured to reset the host GPU",
+    "admin_log_window_asia_shanghai": "2026-11-03 02:35-03:05",
+    "admin_log_target": "PCI 0000:38:00.0; original NVIDIA Xid and preceding NVRM logs",
+    "after_recovery": "Verify identity, recovery state, utilization and a bounded GPU check before any formal training",
+    "host_restart_authorized_by_this_question": false
+  },
+  "readonly_diagnosis_new_work": {
+    "cuda_context": false,
+    "physics_inference_optimizer": 0,
+    "reset_attempts": 0,
+    "agents": 0,
+    "goals_created": 0
+  },
+  "evidence": [
+    {
+      "path": "logs/session_records/morphmimic_q1_gpu_reset_once_20261103.json",
+      "bytes": 3703,
+      "sha256": "18cb8ae2224b37cab13dc438cc4d617045d8d62d855eda51916a83d76788669d"
+    },
+    {
+      "path": "data/manifests/morphmimic_q1_gpu_reset_once_results_20261103.json",
+      "bytes": 2689,
+      "sha256": "f4cf01a4b95282d927df8b2052fa2e784f850254baff67ecd0ad5cb424f996e0"
+    },
+    {
+      "path": "logs/session_records/morphmimic_q1_gpu_error_readonly_v01_20261103.json",
+      "bytes": 90210,
+      "sha256": "7b16cd8dbebd1f35a4b758ab5f9b43f356c851d3d19e3983e1523d399cd2409f"
+    },
+    {
+      "path": "logs/session_records/morphmimic_q1_gpu_error_readonly_followup_20261103.json",
+      "bytes": 23389,
+      "sha256": "cd3ad41ffa71a49563c1fcd76b507d57a58ee16ba24c3d3461f984e6d27c0532"
+    }
+  ],
+  "references": [
+    "https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html",
+    "https://github.com/NVIDIA/nvidia-persistenced/blob/main/nvstatuscodes.h",
+    "https://docs.nvidia.com/deploy/nvidia-smi/index.html"
+  ]
+}

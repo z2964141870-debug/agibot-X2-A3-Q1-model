@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-03：[GPU故障定位及平台恢复建议](README_Q1_GPU_ERROR_20261103.md)。前次V03是明确CUDA OOM；V04错误719/进程退出后Reset，内核持续RPC0x62，首次Xid已不在环形日志且journal为空，尚未隔离代码/编译/驱动/硬件起因。用户授权的一次GPU复位09:39:32返回Not Supported，剩余0次/设备未恢复。建议平台保留唯一根数据后重启GPU宿主机或迁健康卡；当前仅提出方案，未重启。正式Q1/共享训练未启，原失败及采纳null保持，无新GPU执行/goal/agent。[诊断](../data/manifests/morphmimic_q1_gpu_error_diagnosis_20261103.json)。下方“未复位/待授权”为历史。
+
 2026-11-03研究：[四项简报](research/2026-11-03/README.md)/[检查](README_RESEARCH_CHECK_20261103.md)：NablaMimic、想象边界、OpenVIO、SONIC Capture1.5。142请求125成功/23固定文本静态核验；main去重164→173，H001不变。按最新Q1接入/GPU恢复记录继续主线，本轮无新GPU或训练；服务器自动认证/镜像缺口延续。实际发布见[收据](../data/manifests/research_watch_sync_20261103.json)。
 
 2026-11-03：[GPU要求Reset，当前暂停新GPU执行](README_MORPHMIMIC_Q1_INTEGRATION_20261102.md)。V04执行冻结dbfd819/11记录586256B三端及服务器10项测试后03:00:57启动，03:02外层/两worker FAILED；完整轮0/五optimizer全0/物理及学习cache释放均0，WM编译时报unspecified launch failure。03:05:03一次只读核查原3090报告gpu_recovery_action=Reset、三个repair字段GPU requires reset，used1MiB但利用率/进程N/A，宿主其他GPU客户端未知，不推断硬件永久损坏或缓存根因。1820输入独立SHA不变/原618281-618288-618289-618290均退出/原boot保持；失败根不动/未重置设备。单Q1 E4096已8全更新、reserved21.20GiB/后六轮2.726秒，整收尾FAILED与独立CPU保存审计保持。正式训练未启/采纳null，先由有权限操作方确认并恢复设备，再继续共享各E2048/合计4096容量验证及等训练量方案；SSH重开授权不涵盖设备重置，不新goal/agent或改其他任务。[V04结果](../data/manifests/morphmimic_q1_shared_e2048_v04_results_20261103.json)/[设备收据](../logs/session_records/morphmimic_q1_shared_e2048_v04_gpu_health_20261103.json)。下方V04准备及旧运行态为历史。

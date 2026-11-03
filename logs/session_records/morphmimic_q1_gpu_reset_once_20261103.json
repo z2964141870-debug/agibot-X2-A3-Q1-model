@@ -1,0 +1,116 @@
+{
+  "stage": "MORPHMIMIC_Q1_GPU_RESET_ONCE_20261103",
+  "status": "RESET_NOT_CONFIRMED_RECOVERED",
+  "started_utc": "2026-11-03T01:39:32.726030+00:00",
+  "authorization": {
+    "source": "explicit human reply",
+    "user_confirmed_gpu_exclusive": true,
+    "max_reset_attempts": 1,
+    "scope": "only the original RTX3090 device; no host/container/driver restart"
+  },
+  "reset_attempt_count": 1,
+  "target_gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+  "expected_boot": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+  "source_commit": "932981a015a33c89dc1f8f069e83781e844328b3",
+  "formal_training": false,
+  "user_accepted_checkpoint": null,
+  "boot_before": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+  "old_profile_processes": {
+    "618281": false,
+    "618288": false,
+    "618289": false,
+    "618290": false
+  },
+  "visible_gpu_fd_holders": [],
+  "before": {
+    "command": [
+      "nvidia-smi",
+      "-q",
+      "-x",
+      "-i",
+      "GPU-26028785-9fb9-45af-e614-4cc53af15d08"
+    ],
+    "return_code": 0,
+    "stderr": "",
+    "observed_utc": "2026-11-03T01:39:32.792701+00:00",
+    "driver_version": "595.112.07",
+    "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+    "product_name": "NVIDIA GeForce RTX 3090",
+    "gpu_recovery_action": "Reset",
+    "memory": {
+      "total": "24576 MiB",
+      "reserved": "450 MiB",
+      "used": "1 MiB",
+      "free": "24127 MiB"
+    },
+    "utilization": {
+      "gpu_util": "N/A",
+      "memory_util": "N/A",
+      "encoder_util": "N/A",
+      "decoder_util": "N/A",
+      "jpeg_util": "N/A",
+      "ofa_util": "N/A"
+    },
+    "temperature_c": "45 C",
+    "processes": [],
+    "repair_fields": {
+      "channel_repair_pending": "GPU requires reset",
+      "tpc_repair_pending": "GPU requires reset",
+      "unrepairable_memory": "GPU requires reset"
+    }
+  },
+  "reset_issued_utc": "2026-11-03T01:39:32.794517+00:00",
+  "reset_command": [
+    "nvidia-smi",
+    "--gpu-reset",
+    "-i",
+    "GPU-26028785-9fb9-45af-e614-4cc53af15d08"
+  ],
+  "reset_result": {
+    "return_code": 255,
+    "stdout": "The following GPUs could not be reset:\n  Unlisted GPU 00000000:16:00.0: Not Supported\n  Unlisted GPU 00000000:27:00.0: Not Supported\n  Unlisted GPU 00000000:4A:00.0: Not Supported\n  Unlisted GPU 00000000:5A:00.0: Not Supported\n  Unlisted GPU 00000000:98:00.0: Not Supported\n  Unlisted GPU 00000000:A8:00.0: Not Supported\n  Unlisted GPU 00000000:B8:00.0: Not Supported\nResetting GPU 00000000:38:00.0 is not supported.\n",
+    "stderr": "",
+    "elapsed_seconds": 0.11863688402809203
+  },
+  "after": {
+    "command": [
+      "nvidia-smi",
+      "-q",
+      "-x",
+      "-i",
+      "GPU-26028785-9fb9-45af-e614-4cc53af15d08"
+    ],
+    "return_code": 0,
+    "stderr": "",
+    "observed_utc": "2026-11-03T01:39:32.958607+00:00",
+    "driver_version": "595.112.07",
+    "uuid": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+    "product_name": "NVIDIA GeForce RTX 3090",
+    "gpu_recovery_action": "Reset",
+    "memory": {
+      "total": "24576 MiB",
+      "reserved": "450 MiB",
+      "used": "1 MiB",
+      "free": "24127 MiB"
+    },
+    "utilization": {
+      "gpu_util": "N/A",
+      "memory_util": "N/A",
+      "encoder_util": "N/A",
+      "decoder_util": "N/A",
+      "jpeg_util": "N/A",
+      "ofa_util": "N/A"
+    },
+    "temperature_c": "45 C",
+    "processes": [],
+    "repair_fields": {
+      "channel_repair_pending": "GPU requires reset",
+      "tpc_repair_pending": "GPU requires reset",
+      "unrepairable_memory": "GPU requires reset"
+    }
+  },
+  "boot_after": "4d859008-4c83-4a6d-814d-cbb9dfe885c9",
+  "ended_utc": "2026-11-03T01:39:32.960161+00:00",
+  "gpu_reset_attempts_remaining": 0,
+  "new_gpu_training_launched": false
+}

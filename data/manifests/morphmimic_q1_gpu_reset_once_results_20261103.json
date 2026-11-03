@@ -1,0 +1,61 @@
+{
+  "stage": "MORPHMIMIC_Q1_GPU_RESET_ONCE_20261103",
+  "status": "ONE_AUTHORIZED_RESET_ATTEMPT_NOT_SUPPORTED_DEVICE_UNRECOVERED",
+  "user_confirmed_gpu_exclusive": true,
+  "user_authorized_max_reset_attempts": 1,
+  "actual_reset_attempts": 1,
+  "reset_attempts_remaining": 0,
+  "target_gpu": "GPU-26028785-9fb9-45af-e614-4cc53af15d08",
+  "target_pci_bus": "00000000:38:00.0",
+  "reset_command": [
+    "nvidia-smi",
+    "--gpu-reset",
+    "-i",
+    "GPU-26028785-9fb9-45af-e614-4cc53af15d08"
+  ],
+  "reset_issued_utc": "2026-11-03T01:39:32.794517+00:00",
+  "reset_result": {
+    "return_code": 255,
+    "stdout": "The following GPUs could not be reset:\n  Unlisted GPU 00000000:16:00.0: Not Supported\n  Unlisted GPU 00000000:27:00.0: Not Supported\n  Unlisted GPU 00000000:4A:00.0: Not Supported\n  Unlisted GPU 00000000:5A:00.0: Not Supported\n  Unlisted GPU 00000000:98:00.0: Not Supported\n  Unlisted GPU 00000000:A8:00.0: Not Supported\n  Unlisted GPU 00000000:B8:00.0: Not Supported\nResetting GPU 00000000:38:00.0 is not supported.\n",
+    "stderr": "",
+    "elapsed_seconds": 0.11863688402809203
+  },
+  "gpu_recovery_before": "Reset",
+  "gpu_recovery_after": "Reset",
+  "postcheck_observed_utc": "2026-11-03T01:39:32.958607+00:00",
+  "postcheck_memory": {
+    "total": "24576 MiB",
+    "reserved": "450 MiB",
+    "used": "1 MiB",
+    "free": "24127 MiB"
+  },
+  "postcheck_utilization": {
+    "gpu_util": "N/A",
+    "memory_util": "N/A",
+    "encoder_util": "N/A",
+    "decoder_util": "N/A",
+    "jpeg_util": "N/A",
+    "ofa_util": "N/A"
+  },
+  "original_boot_unchanged": true,
+  "old_profile_processes": {
+    "618281": false,
+    "618288": false,
+    "618289": false,
+    "618290": false
+  },
+  "project_gpu_lock_held": true,
+  "visible_gpu_fd_holders_before": [],
+  "host_exclusivity_source": "explicit user confirmation; not inferred from N/A utilization or empty container PID list",
+  "other_unlisted_buses_reported_by_driver": "The single UUID-targeted command reported seven unlisted buses as Not Supported; no additional reset commands were issued",
+  "host_container_or_driver_restart_performed": false,
+  "automatic_reset_retry": false,
+  "new_gpu_physics_inference_optimizer": 0,
+  "formal_training_started": false,
+  "previous_profile_failures_preserved": true,
+  "operator_action_required": true,
+  "operator_action": "Platform administrator must assess device recovery outside this unsupported reset command; no further local reset attempt is authorized",
+  "raw_record": "logs/session_records/morphmimic_q1_gpu_reset_once_20261103.json",
+  "raw_record_sha256": "18cb8ae2224b37cab13dc438cc4d617045d8d62d855eda51916a83d76788669d",
+  "user_accepted_checkpoint": null
+}

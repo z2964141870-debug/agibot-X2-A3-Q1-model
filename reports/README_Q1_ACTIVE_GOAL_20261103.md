@@ -27,3 +27,5 @@
 原始状态与完整目标/心跳指令见[应用目标执行收据](../logs/session_records/q1_active_goal_20261103.json)。本次设置不结算目标、不替用户采纳检查点；用户采纳仍null。
 
 下一项工作：继续监督原训练，同时补齐并测试条件共享控制器及评估比较工具；重要阶段继续README、Git Q1发布和三端大小SHA核验。
+
+21:50:30快照为4259完整轮/43773952转移，原三PID/start相同、guard RUNNING/GPU健康/OOM0；目标复读仍active、q1心跳保存字段仍ACTIVE每10分钟。新增[条件转接门禁](README_Q1_FIVE_STAGE_TRANSITION_20261103.md)10项Mac CPU测试通过，覆盖缺失/失败/两rank不一致/容量回退及两档曝光和磁盘预算。这里只完成独立纯函数，真实共享controller和评估比较仍待接，不称五阶段已贯通，不因等待结算目标。

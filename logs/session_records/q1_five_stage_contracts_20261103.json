@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "stage": "Q1_FIVE_STAGE_TRANSITION_CONTRACTS",
+  "recorded_utc": "2026-11-03T13:51:00+00:00",
+  "goal_status_verified": "active",
+  "heartbeat": {
+    "id": "q1",
+    "status": "ACTIVE",
+    "every_minutes": 10,
+    "target_thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914"
+  },
+  "implementation_status": "INDEPENDENT_CONTRACTS_TESTED_CONTROLLER_AND_EVALUATOR_PENDING",
+  "tests": {
+    "command": "python3 -m unittest discover -s script/q1_five_stage -p 'test_contracts.py' -v",
+    "platform": "Mac CPU",
+    "passed": 10,
+    "failed": 0,
+    "scope": "final gate, missing or duplicate cases, terminated prefix, Mac delivery, native rank checks, capacity fallback, two exposure tiers and measured disk budget"
+  },
+  "new_physics_steps": 0,
+  "new_optimizer_updates": 0,
+  "new_agents": 0,
+  "morph_training_started": false,
+  "user_accepted_checkpoint": null,
+  "training_progress_snapshot": {
+    "captured_utc": "2026-11-03T13:50:30.390009+00:00",
+    "run": "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run",
+    "frozen_training_commit": "b8f920cbba9be3f7247bddbe6535febfbc06186b",
+    "status": "RUNNING",
+    "guard_status": "RUNNING",
+    "metric": {
+      "model_loss": 0.5695964694023132,
+      "state_loss": 0.5695964694023132,
+      "termination_loss": 7.101334631443024e-9,
+      "actor_loss": -0.12499497830867767,
+      "actor_grad_norm": 0.05951249599456787,
+      "critic_loss": 0.04769432544708252,
+      "imagined_reward": 0.064315065741539,
+      "imagination_survival_fraction": 0.9244903326034546,
+      "critic_target_abs_max": 7.957213401794434,
+      "collection_reward": 0.0642961859703064,
+      "iteration": 4259,
+      "startup_update": false,
+      "update_seconds": 1.1479576070014446,
+      "elapsed_seconds": 5197.696935373002,
+      "global_env_steps": 43773952,
+      "actual_model_optimizer": 42590,
+      "actual_actor_optimizer": 4259,
+      "actual_critic_optimizer": 85180
+    },
+    "processes": {
+      "29435": {
+        "state": "S",
+        "start_ticks": 2148365
+      },
+      "29965": {
+        "state": "S",
+        "start_ticks": 2153863
+      },
+      "29970": {
+        "state": "R",
+        "start_ticks": 2153901
+      }
+    },
+    "frozen_input_count": 104,
+    "followup_files_in_running_inputs": [],
+    "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+    "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 22244 MiB, 67, 66 %, None",
+    "cgroup_usage_bytes": 17458606080,
+    "oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+    "early_stop": false,
+    "observations": [
+      {
+        "iteration": 0,
+        "status": "PASSED",
+        "passed": null
+      },
+      {
+        "iteration": 1000,
+        "status": "PASSED",
+        "passed": true
+      }
+    ]
+  },
+  "limitations": [
+    "These are pure transition contracts; the conditional controller and native shared evaluation/comparison are not yet connected.",
+    "The 1000-iteration review still shows no >10mm foot lift; the next observation is 5000.",
+    "The running Primebot frozen inputs do not contain this independent followup package."
+  ]
+}

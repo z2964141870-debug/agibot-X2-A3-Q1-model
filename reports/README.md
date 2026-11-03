@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-03 21:50：[五阶段条件转接门禁](README_Q1_FIVE_STAGE_TRANSITION_20261103.md)10项Mac CPU反例测试通过；原训练4259轮继续，正式goal active/q1监督ACTIVE。新组件未接成完整controller，Morph尚未启动，目标不结算。
+
 2026-11-03 21:17：[五阶段目标模式和主动监督已启用](README_Q1_ACTIVE_GOAL_20261103.md)。get_goal从null到active，原监督任务不存在后，新建本线程q1心跳ACTIVE每10分钟；原训练2520轮继续，条件共享控制/评估比较仍待接，不能把目标创建叫成五阶段完成。
 
 首1000轮[本地视频、训练曲线与物理评测图](README_PRIMEBOT_Q1_MONITORING_20261103.md)已交付；[10份508064B三端发布和4份曲线工件核验](../logs/session_records/primebot_q1_first_quality_publication_20261103.json)。实际训练继续，不用图表旧快照冒充实时进度。

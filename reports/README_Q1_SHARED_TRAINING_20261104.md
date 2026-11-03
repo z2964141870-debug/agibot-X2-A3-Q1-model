@@ -2,7 +2,15 @@
 
 2026-11-04。应用目标实读active，原心跳q1已通过应用工具更新并读回ACTIVE、每10分钟、同一线程。监督指令已转向当前共享阶段，保留Primebot终态，不再等待已结束的旧PID。整个五阶段目标尚未完成，用户采纳null。
 
-最新补记：源码预算修复4fc06b98df269b0b62b2e0ee053162f10a9fc73a已独立40位远端及10文件499878B三端核同，5项服务器CPU检查全过。V02于01:07启动，但两rank在bootstrap导入GitPython时因新Runner遗漏原生Git工具环境而退出；原五PID已退出、冻结输入未变、OOM0/GPU健康，0物理转移/优化，不解释成容量失败。新V03仅补与原生入口一致的GIT_PYTHON_GIT_EXECUTABLE，并使用独立新根；两型真实bootstrap＋原Trainer CPU导入均已通过、无CUDA上下文。新增子进程环境回归通过，本地controller共8过1待Torch；原真实保存CPU检查已经补过。发布后服务器核新Runner环境测试，再推进实际1024八轮。原V01/V02失败完整保留。[V02终态](../logs/session_records/q1_shared_v02_import_failure_20261104.json)、[真实导入](../logs/session_records/q1_shared_native_imports_20261104.json)、[前次发布](../logs/session_records/q1_shared_source_fix_publication_20261104.json)。
+## 当前运行快照
+
+V03已于01:18:47实际启动，执行冻结152f5e1afacb3e33bffbd1f191827a89d8d02071，独立40位远端及15文件511071B三端大小SHA均通过，新Runner环境和实际CPU保存补验2/2通过。新根MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V03_20261104，各1024环境/393条共同参考，仍是八全更新资源验证，尚未正式训练。[发布](../logs/session_records/q1_shared_v03_publication_20261104.json)、[启动](../logs/session_records/q1_shared_v03_launch_20261104.json)、[CPU](../logs/session_records/q1_shared_v03_cpu_20261104.json)。
+
+01:20:10只读核总controller47219/start3924514、guard47220/start3924727、parent47225/start3924829、G147226/Q147227均start3924841，五PID均在；pipeline VALIDATING、guard RUNNING、GPU7211MiB/40度/recovery=None、容器26997280768B/OOMkill0。随后两rank日志已越过原生导入和真实环境构造，完成各409600预热，首完整更新仍在编译。收据未刷完整轮不等于内存中零更新；不热改执行输入或插入额外回放。[有时间戳现场](../logs/session_records/q1_shared_v03_observed_20261104.json)。
+
+应用get_goal再次实读active，q1保存字段ACTIVE/每10分钟/同线程；监督指令已指向V03根、冻结152f5e1和本页，不再盯已结束的Primebot/V01/V02。所有八轮、两rank实核及CPU保存审计通过后，原controller自动从全新初始化进入160000轮；本次没有因用户追问模式另建目标或启动agent，不在等待期间结算目标。
+
+前序修复：源码预算修复4fc06b98df269b0b62b2e0ee053162f10a9fc73a已独立40位远端及10文件499878B三端核同，5项服务器CPU检查全过。V02于01:07启动，但两rank在bootstrap导入GitPython时因新Runner遗漏原生Git工具环境而退出；原五PID已退出、1761冻结输入未变、OOM0/GPU健康，0物理转移/优化，不解释成容量失败。新V03仅补与原生入口一致的GIT_PYTHON_GIT_EXECUTABLE，并使用独立新根；两型真实bootstrap＋原Trainer CPU导入均已通过、无CUDA上下文。新增子进程环境回归通过，本地controller共8过1待Torch；原真实保存CPU检查已经补过。原V01/V02失败完整保留。[V02终态](../logs/session_records/q1_shared_v02_import_failure_20261104.json)、[真实导入](../logs/session_records/q1_shared_native_imports_20261104.json)、[前次发布](../logs/session_records/q1_shared_source_fix_publication_20261104.json)。
 
 ## 首轮与转接
 

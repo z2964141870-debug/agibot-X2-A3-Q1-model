@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-04 01:20 V03共享各1024实际八轮验证运行：冻结152f5e1独立远端/15文件511071B三端及2服务器CPU后01:18:47启，controller47219/start3924514、guard47220/start3924727、parent47225/start3924829、G147226/Q147227-start3924841均在，VALIDATING/guardRUNNING/GPU7211MiB40C None/容器26.997GB/OOM0。两rank各409600预热、首更新编译，未正式训练；全八轮及共享/CPU保存过自动从零160000。get_goal实读active/q1应用更新并读回ACTIVE十分钟跟踪V03，不新goal-agent/不结算等待或其他任务变更/采纳null，不热改冻结输入。入口Q1_SHARED_TRAINING_20261104与v03_launch/observed/publication收据。
+
 - 2026-11-04共享源码预算修复4fc06b9已独立远端/10文件499878B三端及5服务器CPU过；V02两rank实际bootstrap导入缺GIT_PYTHON_GIT_EXECUTABLE退出，原五PID退/冻结输入同/OOM0/GPU健康/0物理优化。V03只补既有原生Git工具路径、独立新根，两型真实CPU bootstrap＋Trainer导入已过无CUDA、新Runner环境回归过，发布核验后各1024八全更新全过自动全新160000；失败保留、仅容量OOM回退/正式不自重启。goal active/q1十分钟ACTIVE/采纳null，不新goal-agent或结算/改其他任务。入口Q1_SHARED_TRAINING_20261104。
 
 - 2026-11-04用户再问目标模式，get_goal实读active，原q1应用工具更新并核ACTIVE每10分钟/同线程，监督转共享。首共享00:46在worker创建前STOPPED_STORAGE/源码142503936B超原64MiB/磁盘余525.55GB，0新物理optimizer，原FAILED保留。共享V02显式256MiB源码预算，原默认及24/30GiB/锁/86C/100GiB保护不变，本地21通过1待Torch；发布和服务器CPU准入后按原授权首次实际各1024八轮及全新160000，实际启动见新收据。仅容量OOM回退/正式不自重启/采纳null/不新goal-agent、不结算或改其他任务。入口Q1_SHARED_TRAINING_20261104。

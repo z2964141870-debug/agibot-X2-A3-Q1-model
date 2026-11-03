@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-04 01:20：[共享1024实际验证运行，目标active与十分钟监督已复核](README_Q1_SHARED_TRAINING_20261104.md)。V03执行冻结152f5e1独立远端/15文件511071B三端及2服务器CPU通过后01:18:47启动，controller47219/start3924514、guard47220、parent47225、G147226/Q147227均在；pipeline VALIDATING/guard RUNNING/GPU7211MiB40度None/容器26.997GB/OOM0。两rank已各409600预热、首完整更新编译，未正式训练；八轮及共享/CPU保存全过自动全新160000。q1心跳已跟踪新根ACTIVE每10分钟，goal实读active、不新建/结算或agent；V01/V02失败保留、采纳null。[现场](../logs/session_records/q1_shared_v03_observed_20261104.json)。
+
 2026-11-04共享补记：源码预算修复4fc06b9已独立远端/10文件499878B三端及5项服务器CPU全过。V02两rank随后在实际控制前因Runner缺原生Git工具环境退出，冻结源未变/原五PID退出/OOM0/0新物理优化；旧失败保留。V03只补原生Git路径、另起新根，两型真实bootstrap/Trainer CPU导入已通过，无CUDA上下文；新Runner环境回归通过，发布核验后再首次实际各1024八全更新→全新160000。goal仍active/q1每10分钟ACTIVE，原生评估比较待，不结算。[共享入口与证据](README_Q1_SHARED_TRAINING_20261104.md)。
 
 2026-11-04：[目标active与共享启动前存储配置修正](README_Q1_SHARED_TRAINING_20261104.md)。q1心跳已通过应用工具更新为跟踪共享阶段，ACTIVE每10分钟。首共享入口00:46在worker创建前STOPPED_STORAGE：源码实占142503936B超过原64MiB上限，磁盘空闲525.55GB；新物理/优化0，原FAILED保留。共享V02显式256MiB源码预算，原24/30GiB/GPU/100GiB余量不变，21项本地检查通过/1项待服务器Torch；发布核验后按原授权首次实际1024八轮→全新160000。此时V02未启动，以后续收据为准；目标不结算/采纳null。

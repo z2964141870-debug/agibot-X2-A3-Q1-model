@@ -1,0 +1,103 @@
+{
+  "stage": "Q1_SHARED_V03_LAUNCH_OBSERVED",
+  "checked_utc": "2026-11-03T17:20:10.167734+00:00",
+  "source_commit": "152f5e1afacb3e33bffbd1f191827a89d8d02071",
+  "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V03_20261104",
+  "pipeline": {
+    "status": "VALIDATING",
+    "started_utc": "2026-11-03T17:18:47.278874+00:00",
+    "code_commit": "152f5e1afacb3e33bffbd1f191827a89d8d02071",
+    "gate": {
+      "passed": true,
+      "gate_reason": [
+        "full_primebot_gate_and_mac_delivery_passed"
+      ],
+      "paired_metrics": {
+        "joint_rmse_rad": {
+          "initial": 0.5530572732289633,
+          "final": 0.11961717158555984
+        },
+        "body_relative_rmse_m": {
+          "initial": 0.05832540368040403,
+          "final": 0.010358979925513268
+        }
+      },
+      "authorizes_morph_training": true,
+      "natural_gait_thresholds_are_diagnostic": true,
+      "user_accepted_checkpoint": null
+    },
+    "automatic_formal_retry": false,
+    "profile_weights_reused": false,
+    "user_accepted_checkpoint": null,
+    "source_storage_budget_bytes": 268435456,
+    "environments_per_robot": 1024
+  },
+  "phase_status": "RUNNING",
+  "guard_status": "RUNNING",
+  "cleanup": null,
+  "guard_error": null,
+  "frozen_input_count": 1761,
+  "processes": [
+    {
+      "pid": 47219,
+      "exists": true,
+      "start_ticks": "3924514"
+    },
+    {
+      "pid": 47220,
+      "exists": true,
+      "start_ticks": "3924727"
+    },
+    {
+      "pid": 47225,
+      "exists": true,
+      "start_ticks": "3924829"
+    },
+    {
+      "pid": 47226,
+      "exists": true,
+      "start_ticks": "3924841"
+    },
+    {
+      "pid": 47227,
+      "exists": true,
+      "start_ticks": "3924841"
+    }
+  ],
+  "workers": {
+    "g1": {
+      "status": "RUNNING",
+      "pid": 47226,
+      "iterations_completed": 0,
+      "optimizer_updates": {
+        "wm_opt": 0,
+        "policy_opt": 0,
+        "critic_opt": 0,
+        "kp_opt": 0,
+        "critic_kp_opt": 0
+      },
+      "collected_environment_transitions": 0,
+      "nonfinite_updates": {}
+    },
+    "q1": {
+      "status": "RUNNING",
+      "pid": 47227,
+      "iterations_completed": 0,
+      "optimizer_updates": {
+        "wm_opt": 0,
+        "policy_opt": 0,
+        "critic_opt": 0,
+        "kp_opt": 0,
+        "critic_kp_opt": 0
+      },
+      "collected_environment_transitions": 0,
+      "nonfinite_updates": {}
+    }
+  },
+  "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 40, None, 7211",
+  "memory_bytes": 26997280768,
+  "oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+  "formal_shared_training_started": false,
+  "whole_goal_complete": false,
+  "user_accepted_checkpoint": null
+}

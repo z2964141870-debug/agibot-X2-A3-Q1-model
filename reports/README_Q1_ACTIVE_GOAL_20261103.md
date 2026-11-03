@@ -1,5 +1,7 @@
 # Q1五阶段目标模式与主动监督
 
+2026-11-04 01:20最新实核：现有goal仍active，原q1心跳ACTIVE/每10分钟/同线程，已更新为V03共享阶段。新作业冻结152f5e1、controller47219/start3924514及两rank均在，pipeline VALIDATING/guard RUNNING/GPU健康/OOM0；两rank各1024环境完成409600预热、首全更新编译。当前八轮验证，过门自动全新160000，不把等待或先前Primebot完成当整个目标完成，不新建替代goal。[当前阶段和原始收据](README_Q1_SHARED_TRAINING_20261104.md)。
+
 当前共享入口补记：V02已在原生GitPython导入阶段退出，源码预算检查已通过；两rank尚未建立CUDA上下文、0新物理优化。新V03补齐与原生入口相同的Git工具路径，两型真实CPU导入已经通过。继续保持现有active目标和q1每10分钟ACTIVE，跟踪V03最新pipeline/guard和launch收据，不把V02启动描述为正式训练；完整评估比较前不结算。[共享执行记录](README_Q1_SHARED_TRAINING_20261104.md)。
 
 2026-11-04最新复核：get_goal实读active，原q1心跳通过应用工具更新并读回ACTIVE/每10分钟/同线程，指令已跟踪当前共享阶段，不再监督已退出的Primebot旧PID。首共享入口00:46在训练worker创建前因源码预算64MiB小于实测142503936B而STOPPED_STORAGE，0新物理/优化；独立V02修复和实际启动须看[共享阶段](README_Q1_SHARED_TRAINING_20261104.md)及后续收据，不把旧摘要“开始验证”写成正式训练。保留现有goal，不新建、不暂停或结算；其余评估比较和采纳null保持。

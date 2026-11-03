@@ -12,6 +12,8 @@ V03于北京时间01:37:29被原30GiB守卫正常回收，01:37:30整个pipeline
 
 新增独立只读memory_watch.py，每2秒记录cgroup总量/cache/匿名RSS/shmem/脏页及原controller子树RSS，核PID启动tick、boot和唯一根；最大10800秒/16MiB，观察超时不判训练停止，不向进程发信号，也不写训练输入。6项本地CPU测试通过，覆盖PID复用、扫描中复用、退出、观察超时、错误边界和原记录保护；Linux实测尚待发布后。原V03失败前没有这些峰值分项，新增工具不能补造旧峰值。
 
+补验完成：935d3978b230f14fc71c9a46c98de8940c299c37已推送并独立40位远端核同，9文件495452B在Git工作树/Mac主根/25362逐大小SHA一致。服务器标准库6项CPU测试全部通过；对本次CPU诊断进程做2秒只读实采，5条样本，正确返回OBSERVATION_TIME_BOUND_REACHED且原进程仍在，未发信号/导入Torch/新增物理或优化，前后GPU无计算。此为采样器验证，不是新训练或补测V03峰值。[Linux实测](../logs/session_records/q1_shared_memory_observer_linux_20261104.json)、[发布与三端收据](../logs/session_records/q1_shared_v03_memory_publication_20261104.json)。
+
 同档V04配置已准备，唯一变化为独立新输出目录，仍各1024/WM512/motion-KP1024、393同片、八完整更新；通过共享/CPU保存/实存预算后才从零160000。拟在空闲cache实际<=4GiB、原身份/24GiB准入/30GiB运行/锁等复核后仅一次新验证，并同步只读采样。当前未启动；本次原phase明确automatic_retry=false，非CUDA OOM不满足自动降档，需用户决定是否追加这一次同档验证。目标和十分钟监督保持active，等待时继续评估工具，不结算目标。
 
 ## 启动快照（历史）

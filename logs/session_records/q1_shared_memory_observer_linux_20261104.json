@@ -1,0 +1,253 @@
+{
+  "stage": "Q1_SHARED_MEMORY_OBSERVER_LINUX_CPU_VERIFICATION",
+  "status": "PASSED",
+  "started_utc": "2026-11-03T17:57:14.703393+00:00",
+  "ended_utc": "2026-11-03T17:57:17.047432+00:00",
+  "source_commit": "935d3978b230f14fc71c9a46c98de8940c299c37",
+  "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+  "tests": {
+    "return_code": 0,
+    "output": "test_exact_handle_and_child_tree_without_foreign_processes (test_memory_watch.MemoryWatchTests) ... ok\ntest_invalid_bounds_create_no_files (test_memory_watch.MemoryWatchTests) ... ok\ntest_live_then_exit_records_measurements_without_claiming_training_complete (test_memory_watch.MemoryWatchTests) ... ok\ntest_missing_and_reused_handles_cannot_begin_observing (test_memory_watch.MemoryWatchTests) ... ok\ntest_observation_timeout_does_not_declare_process_terminal (test_memory_watch.MemoryWatchTests) ... ok\ntest_reuse_during_process_tree_scan_discards_the_sample (test_memory_watch.MemoryWatchTests) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.012s\n\nOK\n"
+  },
+  "live_smoke": {
+    "controller_scope": "this CPU diagnostic process, not a training controller",
+    "pid": 53123,
+    "start_ticks": "4155321",
+    "summary": {
+      "status": "OBSERVATION_TIME_BOUND_REACHED",
+      "controller_pid": 53123,
+      "controller_start_ticks": "4155321",
+      "samples": 5,
+      "maximum_total_bytes": 12447535104,
+      "maximum_cache_bytes": 11153608704,
+      "maximum_anonymous_rss_bytes": 28655616,
+      "training_status_inferred": false,
+      "signals_sent": 0,
+      "optimizer_updates": 0,
+      "note": "Cgroup total/cache/rss are distinct samples; process RSS can count shared mappings repeatedly.",
+      "elapsed_seconds": 2.0044099599981564
+    },
+    "samples": [
+      {
+        "status": "OBSERVED_LIVE",
+        "utc": "2026-11-03T17:57:14.973526+00:00",
+        "memory": {
+          "total_bytes": 12447535104,
+          "total_cache_bytes": 11153608704,
+          "total_rss_bytes": 28655616,
+          "total_shmem_bytes": 0,
+          "total_dirty_bytes": 0,
+          "total_writeback_bytes": 2027520,
+          "oom_kill": 0,
+          "under_oom": 0
+        },
+        "processes": [
+          {
+            "pid": 53123,
+            "name": "python3",
+            "state": "S",
+            "ppid": 40909,
+            "start_ticks": "4155321",
+            "VmHWM_bytes": 14426112,
+            "VmRSS_bytes": 14426112,
+            "RssAnon_bytes": 5595136,
+            "RssFile_bytes": 8830976,
+            "RssShmem_bytes": 0
+          },
+          {
+            "pid": 53127,
+            "name": "python3",
+            "state": "R",
+            "ppid": 53123,
+            "start_ticks": "4155348",
+            "VmHWM_bytes": 11358208,
+            "VmRSS_bytes": 11358208,
+            "RssAnon_bytes": 5312512,
+            "RssFile_bytes": 6045696,
+            "RssShmem_bytes": 0
+          }
+        ],
+        "elapsed_seconds": 6.309899617917836e-05
+      },
+      {
+        "status": "OBSERVED_LIVE",
+        "utc": "2026-11-03T17:57:15.477832+00:00",
+        "memory": {
+          "total_bytes": 12447367168,
+          "total_cache_bytes": 11153608704,
+          "total_rss_bytes": 28655616,
+          "total_shmem_bytes": 0,
+          "total_dirty_bytes": 0,
+          "total_writeback_bytes": 2027520,
+          "oom_kill": 0,
+          "under_oom": 0
+        },
+        "processes": [
+          {
+            "pid": 53123,
+            "name": "python3",
+            "state": "S",
+            "ppid": 40909,
+            "start_ticks": "4155321",
+            "VmHWM_bytes": 14426112,
+            "VmRSS_bytes": 14426112,
+            "RssAnon_bytes": 5595136,
+            "RssFile_bytes": 8830976,
+            "RssShmem_bytes": 0
+          },
+          {
+            "pid": 53127,
+            "name": "python3",
+            "state": "R",
+            "ppid": 53123,
+            "start_ticks": "4155348",
+            "VmHWM_bytes": 11358208,
+            "VmRSS_bytes": 11358208,
+            "RssAnon_bytes": 5312512,
+            "RssFile_bytes": 6045696,
+            "RssShmem_bytes": 0
+          }
+        ],
+        "elapsed_seconds": 0.5043759030013462
+      },
+      {
+        "status": "OBSERVED_LIVE",
+        "utc": "2026-11-03T17:57:15.982177+00:00",
+        "memory": {
+          "total_bytes": 12447498240,
+          "total_cache_bytes": 11153608704,
+          "total_rss_bytes": 28655616,
+          "total_shmem_bytes": 0,
+          "total_dirty_bytes": 0,
+          "total_writeback_bytes": 2027520,
+          "oom_kill": 0,
+          "under_oom": 0
+        },
+        "processes": [
+          {
+            "pid": 53123,
+            "name": "python3",
+            "state": "S",
+            "ppid": 40909,
+            "start_ticks": "4155321",
+            "VmHWM_bytes": 14426112,
+            "VmRSS_bytes": 14426112,
+            "RssAnon_bytes": 5595136,
+            "RssFile_bytes": 8830976,
+            "RssShmem_bytes": 0
+          },
+          {
+            "pid": 53127,
+            "name": "python3",
+            "state": "R",
+            "ppid": 53123,
+            "start_ticks": "4155348",
+            "VmHWM_bytes": 11358208,
+            "VmRSS_bytes": 11358208,
+            "RssAnon_bytes": 5312512,
+            "RssFile_bytes": 6045696,
+            "RssShmem_bytes": 0
+          }
+        ],
+        "elapsed_seconds": 1.0087206440002774
+      },
+      {
+        "status": "OBSERVED_LIVE",
+        "utc": "2026-11-03T17:57:16.486495+00:00",
+        "memory": {
+          "total_bytes": 12447514624,
+          "total_cache_bytes": 11153608704,
+          "total_rss_bytes": 28655616,
+          "total_shmem_bytes": 0,
+          "total_dirty_bytes": 0,
+          "total_writeback_bytes": 2027520,
+          "oom_kill": 0,
+          "under_oom": 0
+        },
+        "processes": [
+          {
+            "pid": 53123,
+            "name": "python3",
+            "state": "S",
+            "ppid": 40909,
+            "start_ticks": "4155321",
+            "VmHWM_bytes": 14426112,
+            "VmRSS_bytes": 14426112,
+            "RssAnon_bytes": 5595136,
+            "RssFile_bytes": 8830976,
+            "RssShmem_bytes": 0
+          },
+          {
+            "pid": 53127,
+            "name": "python3",
+            "state": "R",
+            "ppid": 53123,
+            "start_ticks": "4155348",
+            "VmHWM_bytes": 11358208,
+            "VmRSS_bytes": 11358208,
+            "RssAnon_bytes": 5312512,
+            "RssFile_bytes": 6045696,
+            "RssShmem_bytes": 0
+          }
+        ],
+        "elapsed_seconds": 1.513012344003073
+      },
+      {
+        "status": "OBSERVED_LIVE",
+        "utc": "2026-11-03T17:57:16.977715+00:00",
+        "memory": {
+          "total_bytes": 12447277056,
+          "total_cache_bytes": 11153608704,
+          "total_rss_bytes": 28655616,
+          "total_shmem_bytes": 0,
+          "total_dirty_bytes": 0,
+          "total_writeback_bytes": 2027520,
+          "oom_kill": 0,
+          "under_oom": 0
+        },
+        "processes": [
+          {
+            "pid": 53123,
+            "name": "python3",
+            "state": "S",
+            "ppid": 40909,
+            "start_ticks": "4155321",
+            "VmHWM_bytes": 14426112,
+            "VmRSS_bytes": 14426112,
+            "RssAnon_bytes": 5595136,
+            "RssFile_bytes": 8830976,
+            "RssShmem_bytes": 0
+          },
+          {
+            "pid": 53127,
+            "name": "python3",
+            "state": "R",
+            "ppid": 53123,
+            "start_ticks": "4155348",
+            "VmHWM_bytes": 11358208,
+            "VmRSS_bytes": 11358208,
+            "RssAnon_bytes": 5312512,
+            "RssFile_bytes": 6045696,
+            "RssShmem_bytes": 0
+          }
+        ],
+        "elapsed_seconds": 2.0042515009990893
+      }
+    ]
+  },
+  "source_before": {
+    "script/q1_five_stage/memory_watch.py": "485fdd95eb242c9c9819c6847ead118ad450e082608b486c876ff00209082353",
+    "script/q1_five_stage/test_memory_watch.py": "0487413ae0720da9e959b4432593fd5503a111f870c658323474e37cff46340d"
+  },
+  "source_after": {
+    "script/q1_five_stage/memory_watch.py": "485fdd95eb242c9c9819c6847ead118ad450e082608b486c876ff00209082353",
+    "script/q1_five_stage/test_memory_watch.py": "0487413ae0720da9e959b4432593fd5503a111f870c658323474e37cff46340d"
+  },
+  "compute_processes_before": "",
+  "compute_processes_after": "",
+  "torch_imported": false,
+  "physical_transitions": 0,
+  "optimizer_updates": 0,
+  "formal_training_started": false,
+  "user_accepted_checkpoint": null
+}

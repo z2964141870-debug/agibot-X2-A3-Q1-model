@@ -28,8 +28,17 @@ def initialize(config):
     plane = [i for i in range(model.ngeom) if model.geom_type[i] == mujoco.mjtGeom.mjGEOM_PLANE]
     require(len(plane) == 1, "Expected the frozen horizontal floor")
     pairs.append((geometry.geoms.tolist(), plane))
+    # The screen tests physical proxies even when simulation masks suppress a pair.
+    # Enable those same explicit pairs only in this in-memory IK model.
+    model.geom_contype[geometry.geoms] = 1
+    model.geom_conaffinity[geometry.geoms] = 1
+    model.geom_contype[plane] = 1
+    model.geom_conaffinity[plane] = 1
     collision = mink.CollisionAvoidanceLimit(model, pairs, gain=.85,
         minimum_distance_from_collisions=.002, collision_detection_distance=.05)
+    expected = {tuple(sorted((int(a), int(b)))) for a, b in geometry.pairs}
+    expected.update(tuple(sorted((int(g), plane[0]))) for g in geometry.geoms)
+    require(set(collision.geom_id_pairs) == expected, "IK silently filtered an upstream screen pair")
     posture = mink.PostureTask(model, cost=1.)
     smooth = mink.PostureTask(model, cost=.02)
     pelvis = mink.FrameTask("pelvis", "body", position_cost=[2., 2., .1], orientation_cost=3.)
@@ -60,7 +69,10 @@ def job(item):
     require(float(original["fps"]) == 50 and np.isfinite(reference).all(), "Bad source reference")
     result, iterations, failures = [], [], []
     worst_ground, worst_self = 0., 0.
-    previous = reference[0].copy()
+    previous = model.qpos0.copy()
+    previous[:2] = reference[0, :2]
+    geom.pose(previous)
+    previous[2] += max(0., .002 - float(geom.lower_bounds().min()))
     for frame, pose in enumerate(reference):
         target = pose.copy()
         target[3:7] /= np.linalg.norm(target[3:7])
@@ -79,6 +91,9 @@ def job(item):
             transform = cfg.get_transform_frame_to_world(side + "_ankle_roll_link", "body")
             foot.set_target(mink.SE3.from_rotation_and_translation(
                 transform.rotation(), transform.translation() + np.array([0., 0., lift])))
+        # Velocity dampers keep feasible configurations out of collision; an
+        # already penetrating source pose is not a valid solver initialization.
+        cfg.update(previous)
         succeeded = False
         ground = max(0., -float(geom.lower_bounds().min()))
         penetration = geom.penetration().maximum_excess
@@ -91,9 +106,11 @@ def job(item):
                 geom.pose(cfg.q)
                 ground = max(0., -float(geom.lower_bounds().min()))
                 penetration = geom.penetration().maximum_excess
-                if ground <= .001 and penetration <= .003:
+                if ground <= .001 and penetration <= .003 and iteration >= 2 and np.max(np.abs(velocity)) < .1:
                     succeeded = True
                     break
+            if ground <= .001 and penetration <= .003:
+                succeeded = True
             require(np.isfinite(cfg.q).all(), "Nonfinite IK result")
         except Exception as error:
             failures.append(dict(frame=frame, error=f"{type(error).__name__}: {error}"))

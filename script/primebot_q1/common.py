@@ -44,7 +44,8 @@ def require(condition, message):
 
 def capacity_failure(text):
     # Peer transport errors and device faults do not justify a capacity fallback.
-    return "CUDA out of memory" in text or "torch.OutOfMemoryError" in text
+    faults = ("unspecified launch failure", "illegal memory access", "device-side assert", "GPU requires reset")
+    return not any(f in text for f in faults) and ("CUDA out of memory" in text or "torch.OutOfMemoryError" in text)
 
 
 def evaluation_gate(pairs, complete_library, complete_media, audit_passed):

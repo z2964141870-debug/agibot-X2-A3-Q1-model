@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-03：[Primebot数据修正后393条准入，训练验证及中途监控](README_PRIMEBOT_Q1_STAGED_20261103.md)。固定三走3/3通过原筛选，真实8轮资源验证待执行；用户允许训练中评测、连续达标提前结束，25万轮为上限。[数据详情](README_PRIMEBOT_Q1_DATA_REPAIR_20261103.md)。
+
 2026-11-03：[Primebot原筛选0接受，按用户决定修正重定向后重筛](README_PRIMEBOT_Q1_DATA_REPAIR_20261103.md)。559候选292拒绝/267review，固定三走穿地26.6–31.4mm；格式/FK正确，正式训练未启动。新独立CPU几何约束派生数据先验证三固定片，阈值与训练配方保持。
 
 2026-11-03：[Primebot Q1先行五阶段复现计划已获明确实施授权](README_PRIMEBOT_Q1_STAGED_20261103.md)。固定原训练器/V3适配、4096环境首选/完整250000轮；最终评估交付过门后自动新G1-Q1共享训练。当前环境和独立代码准备；旧新卡共享profile已15:59:57 CUDA OOM失败/正式未启，不再显示为当前运行作业。[授权清单](../data/manifests/primebot_q1_staged_authorization_20261103.json)。

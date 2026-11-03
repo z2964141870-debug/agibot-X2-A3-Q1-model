@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-03：[Primebot重定向修正完成，393条共同参考准入](README_PRIMEBOT_Q1_DATA_REPAIR_20261103.md)。原筛选441接受/50review/68拒绝，另48条修正审计未过，最终393；固定三走均通过。正式训练尚未启动，下一步冻结逐文件身份、原生控制及8轮80/8/160更新与CPU保存审计。用户新授权中途监控和持续达标早停，250000改为上限；完整评估交付门仍先于Morph共享训练。[执行计划](README_PRIMEBOT_Q1_STAGED_20261103.md)。
+
 2026-11-03主线卡点已实测：Primebot原筛选559候选accepted0/rejected292/review267，三固定走均review、最低脚底-26.6至-31.4mm；全部1677采样帧实际V3 FK与原存档一致。无正式训练/GPU预检。用户已选“修正重定向后按原规则重筛”，独立CPU几何约束修正三固定片pilot准备中，保留源和首次FAILED，不放宽筛选/不启第二轮。[原因与修正](README_PRIMEBOT_Q1_DATA_REPAIR_20261103.md)。
 
 2026-11-03准备进展：Primebot独立原锁46包已安装，真实V3原XML的CPU构造及22力矩电机接口通过（state79/context143/obs72），无CUDA上下文。GPU实际控制、559候选原筛选、八全更新/保存审计尚待，正式训练未启动。新入口与资源守卫见[串行主线](README_PRIMEBOT_Q1_STAGED_20261103.md)及[配置](../data/manifests/primebot_q1_staged_config_20261103.json)。

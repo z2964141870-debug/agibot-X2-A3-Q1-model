@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-03修正V02已18:36:29完成：559原筛选441接受/50review/68拒绝，另48修正审计排除，最终共同393/固定三走3接受；原数据XML人参考未改，非动力学训练效果。下一步freeze逐SHA/原生16x24控制/首选4096八完整更新80-8-160/CPU保存审计，过后全新正式。用户进一步授权中途评测和效果持续达标早停，250000现为上限；固定9/9与两RMSE改善连续3次才早停，不据reward/loss或称自然步态，完整全库媒体审计门仍先于Morph。不新goal-agent/采纳null/失败根保留，入口PRIMEBOT_Q1_STAGED和DATA_REPAIR。
+
 - 2026-11-03 Primebot实际原筛选559条0接受/292拒绝/267review，557含穿地/386含自碰撞/25角跳变理由（交叠），固定三片最低脚底-28.675/-31.377/-26.578mm、neutral仅-.592mm；1677帧V3实际FK正确，正式训练/新GPU0，首prepare FAILED保留。用户已明确选修正重定向后原规则重筛；独立CPU Mink几何约束新派生数据/先三固定pilot再559、记录偏差及失败/原阈值不改，两路线共用最终子集。Mink工具独立target不改Primebot锁/原NPZ-XML-human不动，无goal-agent/采纳null。入口PRIMEBOT_Q1_DATA_REPAIR。
 
 - 2026-11-03 Primebot独立锁定环境46包安装完成（Python3.13.11/Torch2.7.0/MuJoCo-Warp3.6.0），首次Git helper故障保留，显式GIT_EXEC_PATH解决且未改依赖。真实V3原XML CPU构造nq29/nv28/nu22/body27/state79/context143/obs72通过、无CUDA；GPU控制/原筛选/八全更新仍待，不称已正式训练。新独立guard保留24/30GiB/86C/100GiB磁盘余量/原GPU锁和进程回收，正式磁盘上限待真实保存体积核算；入口PRIMEBOT_Q1_STAGED和staged_config。

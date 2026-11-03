@@ -1,6 +1,6 @@
 # Q1五阶段条件转接门禁
 
-2026-11-03。正式目标已由应用get_goal实读为active，本线程q1心跳ACTIVE、每10分钟。当前仍监督原Primebot正式训练；本阶段只增加独立门禁纯函数和反例测试，尚未把共享训练控制器、原生评测和综合比较全部接通。
+2026-11-03。正式目标已由应用get_goal实读为active，本线程q1心跳ACTIVE、每10分钟。当前仍监督原Primebot正式训练；新增共享串行控制入口、Mac交付核验和被动初始保存检查。真实共享八轮/正式启动仍须Primebot最终全门和本地交付通过；原生评估及综合比较尚未接通。
 
 ## 本阶段结果
 
@@ -31,3 +31,23 @@ python3 -m unittest discover -s script/q1_five_stage -p 'test_contracts.py' -v
 整个目标保持active，用户采纳null；不能把本组件测试通过或等待训练记作五阶段已完成。执行发布和服务器测试以旁收据为准。
 
 22:00补记：d9e733a7ca08fbf5f51b0ed7bff053560ee7d2d6已独立40位远端核同，8份480980字节Git/Mac主根/25362逐大小SHA一致；服务器10项CPU测试也全部通过。未新增物理或优化，正式训练冻结版本保持。[发布核验收据](../logs/session_records/q1_five_stage_contracts_publication_20261103.json)。
+
+## 串行入口准备
+
+新增controller.py、delivery.py、snapshots.py及独立条件配置。controller在Primebot最终服务端评估和Mac完整验收全部通过前，拒绝创建共享实验目录或Runner；启动前重新核393条配对数据、冻结子集、原v0.1源码/实际资产和既有新卡G1/Q1原生控制结果。使用原guard.py及同24/30GiB、86度、100GiB和GPU锁，不修改运行中的Primebot104输入。
+
+实际顺序为每型1024八完整更新→两rank实际共享和五优化器核验→独立CPU保存审计→按两份真实检查点体积核算整轮磁盘→全新正式160000轮。只有正常回收、输入未变、cgroup OOM增量0、GPU recovery=None且明确CUDA容量OOM，才另起每型512八轮及320000轮配方；设备、信号、内存保护或审计错误均不降档/重试。正式作业异常保留，不自动重开。
+
+train_native.py仅增加显式passive_checkpoint_audit开关；旧计划未启用时保持原行为。新计划保存实际转移和五优化器计数；正式零更新保存前后独立比较全部模型/归一化器参数与buffer、Python/NumPy/Torch及已初始化CUDA RNG，不变才通过。检查点0及终点均独立CPU核实际元数据、Adam步数和模型/优化器有限值，不续profile权重。
+
+delivery.py生成完整数值工件及六初末原速视频清单。Mac逐文件大小SHA、视频尺寸/帧率/完整RGB帧解码，并要求另外提供绑定每份视频SHA的目视收据；程序不会自行冒充目视已验收。所有NPZ和检查点保留服务器。root相对冻结子集路径显式归一化到ZHY，避免误用旧559条清单。
+
+本地27项新包CPU测试中24通过、3项真实Torch保存/审计检查因Mac无Torch跳过；原native回归10项中9通过、1项同原因跳过。服务器使用既有Morph环境的CPU验证待本阶段发布后执行，无新增物理/策略推理/优化或共享启动。controller正常结束标为SHARED_TRAINING_COMPLETED_PENDING_EVALUATION，不结算应用goal；Q1 motion/KP、G1逐片和综合比较工具仍须继续实现及实测，不能称五阶段已自动贯通。
+
+服务器最终门通过并完成Mac交付后，才按发布后独立核验的40位执行提交调用：
+
+```sh
+data/environments/morphmimic_original_20261029/bin/python script/q1_five_stage/controller.py run --config script/q1_five_stage/conditional_shared_20261103.json --code-commit VERIFIED_FULL_COMMIT
+```
+
+当前Primebot仍运行，该启动命令尚未执行，不为验证入口额外启动仿真。

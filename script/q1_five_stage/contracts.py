@@ -125,7 +125,8 @@ def build_plans(template, output, subsets, human_root, commit, environments):
     profile = copy.deepcopy(template)
     profile.update(purpose="profile", output=str(Path(output) / "profile"), code_commit=commit,
         subsets=list(map(str, subsets)), human_root=str(human_root), receipt_every=1,
-        initial_admission_gib=24, reuse_profile_weights_for_formal_training=False)
+        initial_admission_gib=24, reuse_profile_weights_for_formal_training=False,
+        passive_checkpoint_audit=True)
     for key in tuple(profile):
         if key.startswith("formal_target_") or key == "scope":
             profile.pop(key)

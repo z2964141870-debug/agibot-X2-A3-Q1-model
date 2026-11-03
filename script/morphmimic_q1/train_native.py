@@ -239,6 +239,10 @@ def run_rank(plan, rank):
             trainer.collector.step = collect_steps
             wrap_learner_handoffs(trainer, torch.cuda,
                 plan.get("learner_handoff_min_free_bytes", 0), record)
+            if plan.get("passive_checkpoint_audit") is True:
+                sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "q1_five_stage"))
+                from snapshots import install as install_snapshot_audit
+                install_snapshot_audit(trainer, plan, record)
 
             def iteration():
                 nonlocal last_started, transitions

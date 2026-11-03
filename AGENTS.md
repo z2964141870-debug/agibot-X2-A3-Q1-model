@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-03五阶段新增独立controller/delivery/snapshots与条件配置，本地27项24过3真实Torch待服务器、原native9过1待。最终Primebot全393/九固定/初末保存及Mac六原速媒体SHA解码目视全过才新共享；缺门不建实验/Runner。每型1024八全更新/共享实核/CPU审计/两实存体积磁盘后全新160000；仅明确容量OOM且正常回收/输入同/OOM0/GPU健康才512/320000，正式异常不重启。native新增显式被动保存开关/实际计数，不在原104运行输入；未新物理或共享启动，原生评估和综合比较仍待，goal active/采纳null/无agent及其他任务变更。入口README_Q1_FIVE_STAGE_TRANSITION_20261103。
+
 - 2026-11-03 22:22:27原Primebot5742完整轮/58961920转移/WM57420-actor5742-critic114840，原三PID启动tick同/guardRUNNING/GPU21562MiB66度None。5000评测9/9、临时连续2/3/未早停/参数RNG同，短共同前缀joint.553057→.139883rad/body.0583254→.0132959m；前走/起走/停走完整joint.191/.140/.278rad，但>10mm抬脚仅1/1/0且交替0，承重滑移约20–79mm/s，仍非自然步态。41工件5068246B和3原速视频1636996B/1587帧Mac-服务器归档SHA/各视频SHA/完整解码/九图目视通过，未重复物理。goal实读active/q1心跳ACTIVE每10分钟；下一10000观测，完整最终门及Mac交付先于Morph。共享控制/原生评估比较仍待补，不结算目标/采纳null/不启agent，入口MONITORING及iteration5000_quality收据。
 
 - 2026-11-03 21:50:30目标实读active/q1心跳保存字段ACTIVE每10分钟，原训练4259完整轮/43773952转移/WM42590-actor4259-critic85180，原三PID/start同/guardRUNNING/GPU22244MiB67度健康/OOM0。新增独立q1_five_stage门禁10项Mac CPU测试全过，覆盖最终交付缺失/失败/共享一致性/严格容量回退/两档410009600曝光与实测保存磁盘预算；0新物理优化、不在104运行输入。仅纯函数，真实controller与原生评估比较仍待接，不称五阶段自动贯通。原冻结b8f920c/采纳null/无agent及其他任务保持，下次5000观测，不因等待结算goal，入口README_Q1_FIVE_STAGE_TRANSITION_20261103和contracts收据。

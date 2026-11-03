@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-04：[共享正式策略CPU加载、同物理Q1回放和比较工具准备](README_Q1_NATIVE_EVALUATION_20261104.md)。严格拒profile/错计划/计数/goal、原motion/KP分列、全393与固定9/脚底姿态上肢原速媒体、完整片与共同前缀分开及等曝光早停缺失；9本地测试通过，真实Torch对原加载器逐值核验待发布。G1原生评估/总controller和实际共享检查点仍待，不称已评估或五阶段完成。原V03内存失败/追加V04待用户决定/goal active。
+
 2026-11-04 01:47：[共享V03被30GiB内存守卫停止，正式未启](README_Q1_SHARED_TRAINING_20261104.md)。01:37:29总32271097856B/回收-15/OOM0，五原PID退出、1761输入独立SHA同/GPU健康；旧worker RUNNING及零计数未刷新，不作实际零优化。退出后cache18.981GB，原默认一轮维护降至11.153GB（实降7.828GB），未到4GiB；停止瞬间分项缺失，不定缓存单因/不当CUDA OOM降档。新增只读分项采样6本地CPU过，同档独立V04仅准备，原automatic_retry=false须用户新决定；目标active/十分钟监督保持，评估链路继续。发布/服务器实测见后续收据。
 
 2026-11-04 01:20：[共享1024实际验证运行，目标active与十分钟监督已复核](README_Q1_SHARED_TRAINING_20261104.md)。V03执行冻结152f5e1独立远端/15文件511071B三端及2服务器CPU通过后01:18:47启动，controller47219/start3924514、guard47220、parent47225、G147226/Q147227均在；pipeline VALIDATING/guard RUNNING/GPU7211MiB40度None/容器26.997GB/OOM0。两rank已各409600预热、首完整更新编译，未正式训练；八轮及共享/CPU保存全过自动全新160000。q1心跳已跟踪新根ACTIVE每10分钟，goal实读active、不新建/结算或agent；V01/V02失败保留、采纳null。[现场](../logs/session_records/q1_shared_v03_observed_20261104.json)。

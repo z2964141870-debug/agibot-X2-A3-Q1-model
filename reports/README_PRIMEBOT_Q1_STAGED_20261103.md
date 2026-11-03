@@ -28,6 +28,8 @@ Evaluate initial/final identically and Primebot's closest actual-count checkpoin
 
 ## Execution and completion
 
+Data preparation actually ran and found zero directly accepted motions (292 rejected/267 review). Formal training remains unstarted. The user selected correction of retargeted contact/self-collision followed by unchanged screening; [data repair](README_PRIMEBOT_Q1_DATA_REPAIR_20261103.md) records the results and separate CPU derivative workflow. This is an actual admission failure, not a GPU capacity failure and not permission to lower environment count.
+
 Only native Windows hp_han to25362 and /opt/data/private/ZHY; boot90395f47-4035-4785-858e-b3d05c44a738/GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4. Preserve exclusive lock,30GiB memory, temperature/finite/OOM/device/source guards. Recalculate run disk allowance from actual checkpoint and full replay size; old12GiB may not fit51 snapshots plus replay. Weights/NPZ stay SERVER_LOCAL_ONLY.
 
 Current stage PREPARING, not trained or validated. Entry script/primebot_q1; authorization data/manifests/primebot_q1_staged_authorization_20261103.json. Publish code/config/README, independently verify full remote commit and Mac/server identities before execution. Later receipts determine installation, validation, training, evaluation and delivery status.

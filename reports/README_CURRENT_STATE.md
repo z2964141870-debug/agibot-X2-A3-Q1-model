@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-03主线卡点已实测：Primebot原筛选559候选accepted0/rejected292/review267，三固定走均review、最低脚底-26.6至-31.4mm；全部1677采样帧实际V3 FK与原存档一致。无正式训练/GPU预检。用户已选“修正重定向后按原规则重筛”，独立CPU几何约束修正三固定片pilot准备中，保留源和首次FAILED，不放宽筛选/不启第二轮。[原因与修正](README_PRIMEBOT_Q1_DATA_REPAIR_20261103.md)。
+
 2026-11-03准备进展：Primebot独立原锁46包已安装，真实V3原XML的CPU构造及22力矩电机接口通过（state79/context143/obs72），无CUDA上下文。GPU实际控制、559候选原筛选、八全更新/保存审计尚待，正式训练未启动。新入口与资源守卫见[串行主线](README_PRIMEBOT_Q1_STAGED_20261103.md)及[配置](../data/manifests/primebot_q1_staged_config_20261103.json)。
 
 2026-11-03最新主线：[Primebot先复现、评估过门后共享MorphMimic](README_PRIMEBOT_Q1_STAGED_20261103.md)。用户已明确实施完整五阶段：Primebot原训练器/V3适配/4096首选/250000轮，真实八全更新及保存过后从零正式训练；最终固定9/9完整、两共同前缀RMSE改善且完整交付才自动下一轮。当前独立环境/代码准备中，未正式开训。旧NEWGPU_TRAIN01于15:59:57已FAILED：共享首motion CUDA OOM，各WM10其余0、完整轮0/正式未启，原错误保留；下方15:52运行中只是历史。[授权](../data/manifests/primebot_q1_staged_authorization_20261103.json)。

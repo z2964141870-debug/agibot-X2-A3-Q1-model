@@ -27,7 +27,8 @@ def convert(config, output):
     output.mkdir(parents=True, exist_ok=False)
     q1 = read_yaml(config["q1_subset"], config["morph_python"])
     g1 = read_yaml(config["g1_subset"], config["morph_python"])
-    require(q1["clips"] == g1["clips"] and len(q1["clips"]) == 559,
+    expected = config.get("expected_candidates", 559)
+    require(q1["clips"] == g1["clips"] and len(q1["clips"]) == expected,
             "The real paired candidate selection changed")
     robot = Q1Robot(Path(config["xml"]), reward_scaling="q1_proportional",
                     modeled_action_delay=True)
@@ -38,6 +39,7 @@ def convert(config, output):
         source = Path(q1["root"]) / relative
         before = identity(source)
         with np.load(source, allow_pickle=False) as archive:
+            repair_status = str(archive["reference_repair_status"].item()) if "reference_repair_status" in archive else None
             joints = [str(n) for n in archive["joint_names"]]
             bodies = [str(n) for n in archive["body_names"]]
             root = bodies.index("pelvis")
@@ -65,9 +67,9 @@ def convert(config, output):
             resample_method="none_already_50Hz")
         require(identity(source) == before, "Original source changed during conversion")
         records.append(dict(relative=relative, source=before, converted=identity(destination),
-                            frames=len(qpos), sampled_fk_max_error_m=max(errors)))
+                            frames=len(qpos), sampled_fk_max_error_m=max(errors), repair_status=repair_status))
         if len(records) % 50 == 0:
-            print(json.dumps(dict(converted=len(records), total=559)), flush=True)
+            print(json.dumps(dict(converted=len(records), total=expected)), flush=True)
     require(not torch.cuda.is_initialized(), "CPU conversion initialized CUDA")
     save(output / "conversion.json", dict(status="COMPLETED", records=records,
          asset_sha256=robot.asset_sha256, xml=identity(Path(config["xml"])),
@@ -84,10 +86,17 @@ def prepare(config, output):
     result = run_screen(Path(config["xml"]), output / "candidates", output / "screen",
                         FilterConfig(), workers=4)
     rows = [json.loads(line) for line in (output / "screen/results.jsonl").read_text().splitlines()]
-    require(len(rows) == 559 and result["phase"] == "complete"
-            and result["completed_files"] == result["total_files"] == 559,
+    expected = config.get("expected_candidates", 559)
+    require(len(rows) == expected and result["phase"] == "complete"
+            and result["completed_files"] == result["total_files"] == expected,
             "Upstream screening did not cover every candidate")
-    accepted = sorted(row["path"] for row in rows if row["status"] == "accepted")
+    repair_valid = {r["relative"] for r in records if r["repair_status"] in (None, "projected")}
+    accepted = sorted(row["path"] for row in rows if row["status"] == "accepted" and row["path"] in repair_valid)
+    save(output / "screening_outcome.json", dict(status="ADMISSIBLE" if accepted else "NO_ADMISSIBLE_DATA",
+        candidates=expected, accepted=len(accepted), original_screen_counts=result["counts"],
+        gate_reason=[] if accepted else ["no_motions_pass_original_screen_and_repair_audit"],
+        original_thresholds_unchanged=True, formal_training_started=False,
+        excluded_by_repair_audit=sorted(set(q1["clips"]) - repair_valid)))
     require(bool(accepted), "Original screening accepted no motions; preserve the negative result")
     for relative in accepted:
         src, dst = output / "candidates" / relative, output / "accepted" / relative
@@ -101,7 +110,7 @@ def prepare(config, output):
     fixed = [dict(clip=name, relative=by_name[name]["relative"],
                   candidate=by_name[name]["converted"], in_training=by_name[name]["relative"] in accepted)
              for name in FIXED]
-    record = dict(status="COMPLETED", candidates=559, accepted=len(accepted),
+    record = dict(status="COMPLETED", candidates=expected, accepted=len(accepted),
                   rejected=sum(r["status"] == "rejected" for r in rows),
                   review=sum(r["status"] == "review" for r in rows),
                   accepted_relative_paths=accepted, fixed=fixed,

@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-03 Primebot实际原筛选559条0接受/292拒绝/267review，557含穿地/386含自碰撞/25角跳变理由（交叠），固定三片最低脚底-28.675/-31.377/-26.578mm、neutral仅-.592mm；1677帧V3实际FK正确，正式训练/新GPU0，首prepare FAILED保留。用户已明确选修正重定向后原规则重筛；独立CPU Mink几何约束新派生数据/先三固定pilot再559、记录偏差及失败/原阈值不改，两路线共用最终子集。Mink工具独立target不改Primebot锁/原NPZ-XML-human不动，无goal-agent/采纳null。入口PRIMEBOT_Q1_DATA_REPAIR。
+
 - 2026-11-03 Primebot独立锁定环境46包安装完成（Python3.13.11/Torch2.7.0/MuJoCo-Warp3.6.0），首次Git helper故障保留，显式GIT_EXEC_PATH解决且未改依赖。真实V3原XML CPU构造nq29/nv28/nu22/body27/state79/context143/obs72通过、无CUDA；GPU控制/原筛选/八全更新仍待，不称已正式训练。新独立guard保留24/30GiB/86C/100GiB磁盘余量/原GPU锁和进程回收，正式磁盘上限待真实保存体积核算；入口PRIMEBOT_Q1_STAGED和staged_config。
 
 - 2026-11-03用户明确实施Primebot先行五阶段：固定118338b原训练器+真实V3/559候选原筛选，首选4096/WM2048/policy2048/250000轮/从零，八全更新及保存审计过后正式训练；明确容量CUDA OOM才依次2048/1024档且保留250000轮。固定前走loop001A022/起走start002A023/停走stop002A024各三种子，最终9/9完整且共同有效前缀关节/body相对两RMSE改善、全库/原速媒体/保存交付齐才自动新G1-Q1共享各1024/160000，容量OOM才各512/320000，每型410009600转移；自然性诊断必交但非严格门。旧NEWGPU_TRAIN01已15:59:57 FAILED/首motion CUDA OOM/各WM10其余0/完整轮0/正式未启，原失败保留。完整源包182958B Mac/25362 SHA同，独立Python3.13环境准备/首次uv sync缺Git HTTPS helper错误保留。未新正式训练/goal-agent/采纳null，入口README_PRIMEBOT_Q1_STAGED_20261103及staged_authorization，执行发布看旁收据。

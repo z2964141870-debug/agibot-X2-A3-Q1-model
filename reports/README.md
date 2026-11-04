@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-04 12:24:48：[hp_han中转连接已恢复，原V04已进入策略更新](README_Q1_SHARED_TRAINING_20261104.md)。27866已在原Linux/唯一ZHY根，设备/五PID启动tick匹配；两型各2200完整轮，越过2000轮WM-only，各motion/KP200更新/非有限0，pipeline TRAINING/guard RUNNING/OOM0。总19.71GiB/即时余约12.23GiB、回收0；未重启或热改。原goal应用仍blocked且无恢复接口，实际连接阻塞解除；q1保存核ACTIVE十分钟同线程、完整目标/采纳null保持。[恢复现场](../logs/session_records/q1_shared_v04_connection_recovered_20261104.json)/[发布和补镜像](../logs/session_records/q1_shared_v04_connection_recovery_publication_20261104.json)。下方UNKNOWN和待恢复决定为历史。
+
 2026-11-04 12:11：[SSH观察阻塞连续三轮核实，原goal已记blocked](README_Q1_SHARED_TRAINING_20261104.md)。完整目标未完成未暂停，q1保存核ACTIVE十分钟同线程；27866空回车实核仍为Windows PowerShell，原一次恢复已用，无新人工恢复指令，不重复认证。V04历史已正式启动、当前实时状态UNKNOWN，不据失联停止或重启原作业。准备/实际CPU已齐，真实共享权重与评估需原服务器；新记录服务器镜像待恢复。[三轮审计](../logs/session_records/q1_shared_v04_connection_blocked_audit_20261104.json)。
 
 2026-11-04 12:03：[V04监督连接失联，训练实时状态UNKNOWN](README_Q1_SHARED_TRAINING_20261104.md)。原会话78774句柄失效，一次有界恢复仅连到hp_han Windows，原生25362交互认证后Connection closed，未取得Linux shell；不能据此判训练失败或停止。原作业/设备未重启或修改，不重复自动认证；同一goal已实核active，q1仍ACTIVE十分钟同线程。新记录服务器镜像待恢复连接，不称三端完成。[故障收据](../logs/session_records/q1_shared_v04_connection_unknown_20261104.json)。

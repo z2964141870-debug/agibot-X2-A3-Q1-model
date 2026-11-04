@@ -1,5 +1,7 @@
 # Q1共享评估、比较与本地交付串行入口
 
+2026-11-04 12:24:48连接恢复：用户明确要求hp_han中转并提供本次交互认证后，既有27866已进入原Linux唯一根；原boot/GPU及五PID启动tick核同，pipeline TRAINING/guard RUNNING，两型各2200完整轮，已过2000轮WM-only、motion/KP各200真实更新、非有限0/OOM0。旧实时UNKNOWN/等待恢复指令仅历史；应用goal仍实读blocked且无恢复接口，实际授权作业继续，q1已更新并独立保存核ACTIVE十分钟同线程。评估/交付准备及CPU已齐，真实共享回放与36视频/4824例仍须原正式完成及合格权重全门通过，本次未重复物理、媒体或CPU测试。[恢复收据](../logs/session_records/q1_shared_v04_connection_recovered_20261104.json)、[当前训练](README_Q1_SHARED_TRAINING_20261104.md)及恢复publication；完整目标/用户采纳null保持。下方12:11及更早为历史快照。
+
 2026-11-04 12:11当前：V04已在11:06:15正式从零启动，原追加验证授权已解决，旧缓存门和下方“V04未启/等待训练授权”仅历史。现在因同一SSH观察故障连续三目标轮而将原完整goal实记blocked；现有Windows会话仅PowerShell，原一次自动恢复已用，V04实时状态UNKNOWN，不据失联断言训练停止。评估/交付代码和实际CPU验证已齐，真实共享回放、权重和媒体需恢复原25362连接后按原门核验；q1仍ACTIVE十分钟同线程，等待新的明确连接恢复指令，未变不重复测试或通知。[当前训练与连接状态](README_Q1_SHARED_TRAINING_20261104.md)、[三轮审计](../logs/session_records/q1_shared_v04_connection_blocked_audit_20261104.json)。下方05:48及更早为已完成准备的历史快照。
 
 2026-11-04 05:48当前状态：现有五阶段goal经三连续目标轮阻塞审计已记blocked，原q1心跳仍ACTIVE每10分钟、同一会话。独立评估和交付工具及实际CPU验证已完成，真实共享比较必须等合格权重；没有可继续独立推进的必做工作。共享V03的30GiB内存失败保持，追加一次同档验证的原问题仍待答复，cache约6.24GiB也未达4GiB准入；V04和正式共享训练未启动。目标范围未缩减、未完成或暂停监督，后续状态见[当前训练页](README_Q1_SHARED_TRAINING_20261104.md)及[阻塞审计](../logs/session_records/q1_goal_blocked_audit_20261104.json)。下文active均为历史快照。

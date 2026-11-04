@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-04 12:24:48：[hp_han原生25362连接已恢复，原共享正式训练继续](README_Q1_SHARED_TRAINING_20261104.md)。用户新明确恢复指令及本次交互认证后，27866已进入Linux；原设备和五PID启动tick核同，两型各2200完整轮/6041600转移，已过2000轮WM-only，各motion/KP200、两critic4000/WM22000，非有限0。pipeline TRAINING/guard RUNNING，GPU16001MiB51度None/总21160992768B/即时余13131636736B/OOM0/回收0，ckpt0/latest在、下次16000。未停训、重启或热改。旧UNKNOWN/待恢复授权为历史，原goal应用仍blocked且无恢复接口，实际授权工作继续；q1已更新并独立保存核ACTIVE十分钟同线程，完整目标和采纳null保持。[恢复现场](../logs/session_records/q1_shared_v04_connection_recovered_20261104.json)/[发布补镜像](../logs/session_records/q1_shared_v04_connection_recovery_publication_20261104.json)。
+
 2026-11-04 12:11：[同一SSH观察阻塞连续三轮，原goal已实记blocked](README_Q1_SHARED_TRAINING_20261104.md)。目标范围完整、未完成未暂停，q1保存核ACTIVE十分钟同线程。27866空回车实核仍为Windows PowerShell，原一次有界恢复已用；无新人工恢复决定，不重复认证。V04历史已正式启动、当前pipeline/五PID启动tick/metrics/GPU/OOM/内存/保存均UNKNOWN，不据失联停止或重启。准备及实际CPU已齐，真实共享评估需原服务器合格权重；用户新的连接恢复指令后先核原设备/根/进程和实时文件。新记录服务器镜像待恢复，采纳null。[三轮审计](../logs/session_records/q1_shared_v04_connection_blocked_audit_20261104.json)。
 
 2026-11-04 12:03：[V04监督连接失联，实时训练状态UNKNOWN](README_Q1_SHARED_TRAINING_20261104.md)。原会话78774句柄失效，一次有界恢复成功连到hp_han Windows，但原生25362交互认证后Connection closed；新27866仅PowerShell，不能向其发送Linux检查命令。实时pipeline/五原PID启动tick/metrics/GPU/OOM/内存/保存未核，不能推断训练停止或重启。既定一次恢复已用，不逐心跳重复认证；用户新的连接恢复指令后再核原作业。get_goal已实核同一目标active，q1保存核ACTIVE十分钟同线程；其他任务不改/采纳null。新记录服务器镜像待连接恢复。[故障收据](../logs/session_records/q1_shared_v04_connection_unknown_20261104.json)。

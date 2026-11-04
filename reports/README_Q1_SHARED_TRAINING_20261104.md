@@ -1,5 +1,15 @@
 # Q1共享训练与目标监督
 
+## 12:24连接恢复及正式策略更新
+
+用户明确要求经hp_han中转，并提供本次有效交互认证后，原27866现已进入interactive67462 Linux、cwd为唯一根/opt/data/private/ZHY。本次只恢复SSH观察通路；旧“未获恢复决定、仅PowerShell、实时UNKNOWN”是此前历史。原boot90395f47-4035-4785-858e-b3d05c44a738、GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4均核同，controller54868/start7431283、guard55672/start7449427、parent55677/start7449543、G155678/Q155679均start7449555全部存活且身份匹配，内核原GPU锁仍由55672持有。没有停止、重启或热改任何作业或设备；认证不保存或镜像。
+
+12:24:48北京时间只读现场pipeline TRAINING/guard RUNNING，两型各2200完整轮/160000、各6041600真实环境转移。前2000轮WM-only已结束，各五optimizer为22000/200/4000/200/4000，更新非有限均0；这次已实核motion和KP策略更新，不能据训练指标断言自然步态合格。两型分组metrics完整尾位于rank0的workers/g1.log，rank1 workers/q1.log主要为bootstrap记录，不能据日志分工误报一型失训。两型ckpt_0.pt和latest.pt均在，正式编号保存间隔16000轮，尚未到下一编号保存。
+
+GPU16001MiB/51度/recovery=None；cgroup总21160992768B（约19.71GiB）/实际限34292629504B/即时余13131636736B，距30GiB守卫余11051261952B，OOMkill0/under_oom0。guard采样峰21184602112B，回收事件0、未生成memory_reclaim.json，不称真实30GiB压力回收已验证；磁盘余346250690560B。继续用户总量策略，cache仅诊断，不按旧4GiB/8GiB门维护。[完整现场、分组日志尾与恢复收据](../logs/session_records/q1_shared_v04_connection_recovered_20261104.json)。
+
+同一完整五阶段应用goal再次实读blocked，现接口没有恢复active操作；实际连接阻塞已解除，继续授权作业，不伪报active/complete或创建替代goal。原q1已通过应用工具更新并独立读回ACTIVE/每10分钟/同线程，恢复监督V04；健康正常进度保持安静。评估/比较/交付准备和CPU已齐，真实共享回放及Mac36视频/4824例仍须原正式完成及全门通过。完整目标、原执行冻结4bef635和用户采纳null保持。本轮不重复CPU、物理、媒体或保存审计。此前两份连接故障小记录补镜像及本轮Git/Mac/25362发布以[恢复发布收据](../logs/session_records/q1_shared_v04_connection_recovery_publication_20261104.json)为准；下方阻塞状态均为历史。
+
 ## 12:11连接阻塞审计
 
 同一SSH观察阻塞连续三目标轮核实：原故障轮记录会话78774句柄失效，一次有界恢复在25362交互阶段关闭；12:10:03复查既有27866未产生Linux新输出且无新的人工恢复决定；12:11:25仅向同一会话发空回车，实际返回`PS C:\Users\yu>`，确证仍为Windows PowerShell。后两轮没有重新登录、认证、Linux检查命令或其他入口探测。没有当前训练live handle，Windows连接存活不能替代训练verified wait；V04实时状态仍UNKNOWN，不据失联判训练停止或失败。

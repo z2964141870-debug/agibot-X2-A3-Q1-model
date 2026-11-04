@@ -1,5 +1,7 @@
 # Q1五阶段目标模式与主动监督
 
+2026-11-04 12:11最新：同一SSH连接观察阻塞已在原故障轮及两次goal续行中连续三轮核实，没有新的人工连接恢复指令。本轮仅向27866发空回车，实际返回Windows PowerShell提示符；没有Linux训练live handle，不能作为verified wait。准备/实际CPU已齐，真实权重、评估和交付仍依赖原服务器。依目标三轮规则调用update_goal(blocked)，get_goal复读blocked且完整objective/线程完全相同；不是完成、暂停或训练已停止。q1通过应用工具更新并独立核保存ACTIVE/十分钟/同线程，未变故障安静，其他自动任务及采纳null保持。新的恢复指令后先实核原作业，不因失联重启。[三轮审计](../logs/session_records/q1_shared_v04_connection_blocked_audit_20261104.json)及[当前状态](README_Q1_SHARED_TRAINING_20261104.md)，新记录服务器镜像待恢复。下方active为先前实读快照。
+
 2026-11-04 12:03最新实核：get_goal返回同一完整五阶段目标active，覆盖下方旧blocked描述；没有新建或结算目标。原q1已通过应用工具更新真实目标状态及连接异常，保持ACTIVE/每10分钟/同线程。原监督会话78774工具句柄失效，本独立故障一次有界恢复仅到hp_han Windows，25362交互认证后Connection closed；当前训练实时状态UNKNOWN，未据失联重启训练或设备。一次恢复已用，等待新的明确连接恢复指令；不重复认证、小测试或发布同一异常，用户采纳null。[当前连接状态](README_Q1_SHARED_TRAINING_20261104.md)、[原故障与边界](../logs/session_records/q1_shared_v04_connection_unknown_20261104.json)。服务器新记录镜像待连接恢复。
 
 2026-11-04 11:09北京时间最新：用户“为啥不训练？？”已使原追加验证决定不再待答。V04各1024环境八完整更新、共享一致性、CPU保存和磁盘门全过后，原controller54868已于11:06:15自动从零正式160000轮；11:09:24已50轮/前2000轮WM-only，原正式guard55672和两worker55678/55679运行、OOM0/GPU健康。应用get_goal仍blocked且工具无恢复active操作，保留同一完整objective并继续用户授权的实际工作，不创建替代goal或伪报active/complete。原q1保存核ACTIVE每10分钟/同线程，最新prompt跟踪V04正式根；采纳null，其他任务和agent不改。[当前执行与收据](README_Q1_SHARED_TRAINING_20261104.md)。以下待答和V04无均为历史快照。

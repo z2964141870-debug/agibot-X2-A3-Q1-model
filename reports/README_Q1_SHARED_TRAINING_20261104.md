@@ -1,5 +1,13 @@
 # Q1共享训练与目标监督
 
+## 12:11连接阻塞审计
+
+同一SSH观察阻塞连续三目标轮核实：原故障轮记录会话78774句柄失效，一次有界恢复在25362交互阶段关闭；12:10:03复查既有27866未产生Linux新输出且无新的人工恢复决定；12:11:25仅向同一会话发空回车，实际返回`PS C:\Users\yu>`，确证仍为Windows PowerShell。后两轮没有重新登录、认证、Linux检查命令或其他入口探测。没有当前训练live handle，Windows连接存活不能替代训练verified wait；V04实时状态仍UNKNOWN，不据失联判训练停止或失败。
+
+复读共享评估/比较/交付入口：实现及实际CPU补验已经完成，后续真实共享权重、24回放/14比较、36原速视频和4824例交付依赖原服务器；没有可独立继续的必做项。第二轮属于同阻塞无进展，本轮再次核实后达到三轮门，已调用update_goal(blocked)并复读blocked，原完整objective及线程完全相同。没有结算、暂停或缩减目标，也没有停止、重启或热改V04作业/设备。
+
+q1通过应用工具保存了新blocked与连接UNKNOWN事实，并独立核ACTIVE/每10分钟/同线程、原名称/频率/目标线程及完整prompt；其他任务未改。原一次自动恢复额度已用，等待用户新的明确连接恢复指令；未变保持安静，不重复问题、认证、小测试或发布。恢复后先核原boot/GPU/唯一根、五原PID/starttick及实时pipeline/guard/metrics/保存和资源，再继续原五阶段，不将旧快照当实时。用户采纳null。[三轮原证据与目标状态](../logs/session_records/q1_shared_v04_connection_blocked_audit_20261104.json)；本轮及前轮新记录的25362镜像仍待连接恢复，未声称三端同步完成。下方12:03 active是当时实读历史。
+
 ## 12:03监督连接异常
 
 2026-11-04北京时间12:03，本轮get_goal已实核同一完整五阶段目标为active，覆盖下方旧blocked字段。原监督会话78774返回Unknown process id；按本独立故障一次有界重建，Mac到hp_han Windows成功，但Windows原生25362在交互认证后返回Connection closed by 59.77.15.15 port 25362，未取得Linux shell。新会话27866仅位于Windows PowerShell，不能向其发送Linux检查命令。该现象不证明密码错误、服务器停止、训练失败或设备异常，连接关闭原因未定位。

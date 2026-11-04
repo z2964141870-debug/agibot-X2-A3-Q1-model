@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-04 12:11同一SSH观察故障连续三目标轮核实后，update_goal/get_goal已将原完整五阶段goal实记blocked；未完成未暂停、不缩减范围，q1独立保存核仍ACTIVE十分钟同线程。原一次恢复已用，12:11仅向27866发空回车确证PS C:\Users\yu>，非Linux；无新的人工恢复决定，不逐心跳重复认证。V04已于11:06:15正式启动是历史实据，当前pipeline/PID/GPU/OOM/内存/保存均UNKNOWN，不据失联认定训练停止或重启。准备及CPU已齐、实际共享评估依赖原服务器合格权重；不以重复测试/记录冒充进展。新恢复决定后先核原设备/根/PID启动tick及实时文件；执行冻结/原总量内存策略/采纳null与其他任务保持，无替代goal-agent。入口Q1_SHARED_TRAINING及q1_shared_v04_connection_blocked_audit_20261104，服务器新记录镜像待恢复。下方12:03 active为先前实读快照。
+
 - 2026-11-04 12:03本轮get_goal实核同一五阶段目标为active，覆盖下方旧blocked快照；未重建或结算。原监督会话78774工具句柄失效，本独立故障一次有界恢复已用：hp_han Windows连接成功，新会话27866仅PowerShell，原生25362交互认证后Connection closed，未取得Linux shell；V04实时pipeline/PID/starttick/metrics/GPU/OOM/内存/保存均UNKNOWN，不能据失联判训练停止或沿用旧RUNNING。未停止/重启/热改原作业或设备，不换入口；未获新的明确连接恢复指令前不逐心跳重复认证。q1保存核ACTIVE十分钟同线程，更新了真实active及连接异常，其他任务不改/无agent/采纳null。故障记录Q1_SHARED_TRAINING及q1_shared_v04_connection_unknown_20261104；新记录25362镜像待连接恢复，未称三端完成。
 
 - 2026-11-04 11:09用户追问“为啥不训练？？”后已追加V04各E1024八完整更新并全门通过，原待答授权不再阻塞。11:03:14启动冻结4bef635独立40位远端/十执行文件核同；两rank各8轮430080转移/五Adam80-8-160-8-160/共享参数和latent同/1792输入前后SHA同/两CPU保存各330有限张量通过，预算22733425025B另留100GiB。11:06:15自动从零正式160000轮，controller54868/start7431283、guard55672/start7449427、parent55677/start7449543、G155678/Q155679均start7449555；11:09:24已50轮/前2000轮WM-only，各WM500其余0/各537600转移，GPU7319MiB47度None/总19002310656B/限34292629504B/OOM0。八轮峰20794302464B/真实回收0，不称30GiB压力已验证。新总量策略与原保护保持、不热改输入/正式异常不重启；q1已保存核ACTIVE十分钟同线程并跟踪V04正式根。get_goal仍实读blocked、接口无恢复操作，继续用户授权实际工作/不新替代goal或伪报active-complete，完整目标/采纳null及其他任务保持；不开agent。入口Q1_SHARED_TRAINING及q1_shared_v04_launch/observed，覆盖下方“追加待答/V04无/只策略准备”快照。

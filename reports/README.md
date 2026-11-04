@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-04 12:11：[SSH观察阻塞连续三轮核实，原goal已记blocked](README_Q1_SHARED_TRAINING_20261104.md)。完整目标未完成未暂停，q1保存核ACTIVE十分钟同线程；27866空回车实核仍为Windows PowerShell，原一次恢复已用，无新人工恢复指令，不重复认证。V04历史已正式启动、当前实时状态UNKNOWN，不据失联停止或重启原作业。准备/实际CPU已齐，真实共享权重与评估需原服务器；新记录服务器镜像待恢复。[三轮审计](../logs/session_records/q1_shared_v04_connection_blocked_audit_20261104.json)。
+
 2026-11-04 12:03：[V04监督连接失联，训练实时状态UNKNOWN](README_Q1_SHARED_TRAINING_20261104.md)。原会话78774句柄失效，一次有界恢复仅连到hp_han Windows，原生25362交互认证后Connection closed，未取得Linux shell；不能据此判训练失败或停止。原作业/设备未重启或修改，不重复自动认证；同一goal已实核active，q1仍ACTIVE十分钟同线程。新记录服务器镜像待恢复连接，不称三端完成。[故障收据](../logs/session_records/q1_shared_v04_connection_unknown_20261104.json)。
 
 2026-11-04 11:09：[V04共享八全更新验证通过，已从零正式训练160000轮](README_Q1_SHARED_TRAINING_20261104.md)。用户“为啥不训练？？”后11:03:14实际启动，冻结4bef635独立远端及十执行文件核同；两rank各8轮/430080转移/Adam80-8-160-8-160、共享SHA/CPU保存各330张量/1792输入同和磁盘全门通过。11:06:15正式启动，11:09:24已50轮/前2000轮WM-only，各WM500、其余0，每型537600转移；controller54868/guard55672/两worker55678-55679启动tick核同，GPU7319MiB47度None/总19002310656B/限34292629504B/OOM0。按总量30GiB触发回收、cache仅诊断；不热改或异常自重启。q1保存核ACTIVE十分钟同线程；同一应用goal字段仍blocked、工具无恢复操作，实际授权工作继续/不新替代goal或agent，采纳null。[启动](../logs/session_records/q1_shared_v04_launch_20261104.json)/[现场](../logs/session_records/q1_shared_v04_observed_20261104.json)。下方待答、V04不存在及只策略准备为历史。

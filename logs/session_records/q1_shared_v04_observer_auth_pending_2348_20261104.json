@@ -1,0 +1,424 @@
+{
+  "stage": "Q1_SHARED_V04_OBSERVER_FAULT_2348",
+  "status": "CURRENT_TRAINING_UNKNOWN_INTERACTIVE_AUTHENTICATION_PENDING",
+  "recorded_utc": "2026-11-04 15:55:14 UTC",
+  "heartbeat_trigger_utc": "2026-11-04T15:47:57.421Z",
+  "experiment": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104",
+  "frozen_execution_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+  "observer_failure": {
+    "session_id": 61294,
+    "exit_code": 255,
+    "output": "Timeout, server 100.65.183.91 not responding.\r\n"
+  },
+  "bounded_recovery": {
+    "attempts": 1,
+    "session_id": 32044,
+    "route": [
+      "hp_han Windows",
+      "Windows native SSH root@59.77.15.15:25362"
+    ],
+    "windows_shell_confirmed": true,
+    "server_password_prompt_reached": true,
+    "credentials_submitted": false,
+    "authentication_material_retrieved_or_persisted": false,
+    "linux_shell_acquired": false,
+    "login_attempt_cancelled": true,
+    "current_shell": "Windows PowerShell",
+    "reason": "Current context has no usable interactive authentication. Await usable authentication or a user-restored Linux session; no repeated heartbeat authentication.",
+    "new_training_permission_required": false
+  },
+  "current": {
+    "pipeline": "UNKNOWN",
+    "guard": "UNKNOWN",
+    "original_pid_startticks": "UNKNOWN",
+    "metrics": "UNKNOWN",
+    "checkpoints": "UNKNOWN",
+    "gpu": "UNKNOWN",
+    "cgroup_memory_and_oom": "UNKNOWN",
+    "memory_peak_and_reclaim": "UNKNOWN"
+  },
+  "last_successful_read_only_observation": {
+    "historical_only": true,
+    "checked_utc": "2026-11-04T15:38:03.380812+00:00",
+    "root": "/opt/data/private/ZHY",
+    "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+    "pipeline": "TRAINING",
+    "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+    "guard": "RUNNING",
+    "guard_error": null,
+    "processes": [
+      {
+        "pid": 54868,
+        "alive": true,
+        "start_ticks": "7431283",
+        "identity_matches": true,
+        "state": "S"
+      },
+      {
+        "pid": 55672,
+        "alive": true,
+        "start_ticks": "7449427",
+        "identity_matches": true,
+        "state": "S"
+      },
+      {
+        "pid": 55677,
+        "alive": true,
+        "start_ticks": "7449543",
+        "identity_matches": true,
+        "state": "S"
+      },
+      {
+        "pid": 55678,
+        "alive": true,
+        "start_ticks": "7449555",
+        "identity_matches": true,
+        "state": "S"
+      },
+      {
+        "pid": 55679,
+        "alive": true,
+        "start_ticks": "7449555",
+        "identity_matches": true,
+        "state": "R"
+      }
+    ],
+    "locks": [
+      "29: FLOCK  ADVISORY  WRITE 55672 103:07:116003074 0 EOF"
+    ],
+    "robots": [
+      {
+        "robot": "g1",
+        "status": "RUNNING",
+        "pid": 55678,
+        "formal_training": true,
+        "iterations": 13850,
+        "optimizer_updates": {
+          "wm_opt": 138500,
+          "policy_opt": 11850,
+          "critic_opt": 237000,
+          "kp_opt": 11850,
+          "critic_kp_opt": 237000
+        },
+        "nonfinite": {
+          "wm/nonfinite_steps": 0,
+          "policy/nonfinite_steps": 0,
+          "critic/nonfinite_steps": 0,
+          "kp/nonfinite_steps": 0,
+          "critic_kp/nonfinite_steps": 0
+        },
+        "transitions": 35865600,
+        "last_iteration_seconds": 3.56752691399015,
+        "accepted": null
+      },
+      {
+        "robot": "q1",
+        "status": "RUNNING",
+        "pid": 55679,
+        "formal_training": true,
+        "iterations": 13850,
+        "optimizer_updates": {
+          "wm_opt": 138500,
+          "policy_opt": 11850,
+          "critic_opt": 237000,
+          "kp_opt": 11850,
+          "critic_kp_opt": 237000
+        },
+        "nonfinite": {
+          "wm/nonfinite_steps": 0,
+          "policy/nonfinite_steps": 0,
+          "critic/nonfinite_steps": 0,
+          "kp/nonfinite_steps": 0,
+          "critic_kp/nonfinite_steps": 0
+        },
+        "transitions": 35865600,
+        "last_iteration_seconds": 3.567528241997934,
+        "accepted": null
+      }
+    ],
+    "gpu": {
+      "returncode": 0,
+      "stdout": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 16177, 53, 47, None",
+      "stderr": ""
+    },
+    "compute_apps": {
+      "returncode": 0,
+      "stdout": "55678, 7434\n55679, 8728",
+      "stderr": ""
+    },
+    "cgroup": {
+      "total_bytes": 20488126464,
+      "limit_bytes": 34292629504,
+      "immediate_headroom_bytes": 13804503040,
+      "guard_headroom_bytes": 11724128256,
+      "oom": {
+        "oom_kill_disable": "0",
+        "under_oom": "0",
+        "oom_kill": "0"
+      },
+      "stat": {
+        "total_cache": 9228558336,
+        "total_rss": 10033397760,
+        "total_shmem": 32714752,
+        "total_dirty": 946176,
+        "total_writeback": 2162688
+      }
+    },
+    "storage": {
+      "experiment": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train",
+        "unique_allocated_bytes": 476504064,
+        "unique_logical_bytes": 476428881,
+        "unique_inodes": 24,
+        "symlinks_not_followed": 0
+      },
+      "source": {
+        "root": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+        "unique_allocated_bytes": 142503936,
+        "unique_logical_bytes": 141858407,
+        "unique_inodes": 341,
+        "symlinks_not_followed": 0
+      },
+      "free_bytes": {
+        "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train": 301073874944,
+        "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1": 301073874944
+      },
+      "shared_memory": {
+        "shared_bytes": 20491427840,
+        "oom_kill": 0,
+        "maximum_bytes": 32212254720,
+        "accounting": {
+          "total_bytes": 20491689984,
+          "container_limit_bytes": 34292629504,
+          "immediate_headroom_bytes": 13800939520,
+          "guard_headroom_bytes": 11720564736,
+          "anonymous_rss_bytes": 10037030912,
+          "cache_bytes": 9228558336,
+          "shmem_bytes": 32714752,
+          "dirty_bytes": 946176,
+          "writeback_bytes": 2162688,
+          "oom_kill": 0,
+          "under_oom": 0,
+          "headroom_is_immediate_not_a_guaranteed_training_allocation": true
+        },
+        "pressure_reclaim_events": 0
+      },
+      "gpu": {
+        "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+        "temperature_c": 52,
+        "recovery": "None",
+        "used_mib": 16177
+      }
+    },
+    "memory_peak": 21197770752,
+    "reclaim": null,
+    "latest_grouped_log": [
+      "[morphmimic] it 13850 | 0.28 it/s (0.341/1.769/1.408 s collect/wm/actor-critic) | env 1453/s imag 37202/s | wm loss 13.3014 bce 0.0000 pred8 0.3298 err8 pelvis 0.003 m joints 0.006 rad | J 9.4167 |g| 0.650 (max 1.13) critic 1.31e-03 V0 9.42 tclip 0.00% surv 1.000 | rew 0.0842 nret 0.770 eplen 133.9 fail 2 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.2563 act 0.0162 align 0.7866 tclip 0.00%",
+      "[morphmimic]    g1 | wm loss 16.8798 pred8 0.1367 err8 pelvis 0.003 m joints 0.006 rad | J 9.4525 critic 1.44e-03 tclip 0.00% surv 1.000 | rew 0.0875 nret 0.805 eplen 137.5 fail 2 | align 3.313e-02 zdist 0.343 | kp tclip 0.00%",
+      "[morphmimic]    q1 | wm loss 9.7230 pred8 0.5229 err8 pelvis 0.002 m joints 0.007 rad | J 9.3808 critic 1.19e-03 tclip 0.00% surv 1.000 | rew 0.0809 nret 0.735 eplen 130.5 fail 0 | align 3.313e-02 zdist 0.343 | kp tclip 0.00%"
+    ],
+    "nonfinite_triples": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "error_lines": [],
+    "checkpoints": [
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/ckpt_0.pt",
+        "bytes": 114298955,
+        "mtime": 1793761596.9865956
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/latest.pt",
+        "bytes": 114298955,
+        "mtime": 1793761597.090595
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_0.pt",
+        "bytes": 114299019,
+        "mtime": 1793761596.9905956
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/latest.pt",
+        "bytes": 114299019,
+        "mtime": 1793761597.1025949
+      }
+    ],
+    "signals_sent": 0,
+    "files_written": 0
+  },
+  "last_successful_peak_row": {
+    "status": "OBSERVED_LIVE",
+    "utc": "2026-11-04T04:27:29.869263+00:00",
+    "memory": {
+      "total_bytes": 21197770752,
+      "container_limit_bytes": 34292629504,
+      "immediate_headroom_bytes": 13094858752,
+      "guard_headroom_bytes": 11014483968,
+      "total_cache_bytes": 9213825024,
+      "total_rss_bytes": 10754551808,
+      "total_shmem_bytes": 32714752,
+      "total_dirty_bytes": 1351680,
+      "total_writeback_bytes": 2027520,
+      "oom_kill": 0,
+      "under_oom": 0
+    },
+    "processes": [
+      {
+        "pid": 55672,
+        "name": "python",
+        "state": "R",
+        "ppid": 54868,
+        "start_ticks": "7449427",
+        "VmHWM_bytes": 32747520,
+        "VmRSS_bytes": 32190464,
+        "RssAnon_bytes": 19615744,
+        "RssFile_bytes": 12574720,
+        "RssShmem_bytes": 0
+      },
+      {
+        "pid": 55677,
+        "name": "python",
+        "state": "S",
+        "ppid": 55672,
+        "start_ticks": "7449543",
+        "VmHWM_bytes": 22216704,
+        "VmRSS_bytes": 22216704,
+        "RssAnon_bytes": 9932800,
+        "RssFile_bytes": 12283904,
+        "RssShmem_bytes": 0
+      },
+      {
+        "pid": 55678,
+        "name": "python",
+        "state": "S",
+        "ppid": 55677,
+        "start_ticks": "7449555",
+        "VmHWM_bytes": 6223634432,
+        "VmRSS_bytes": 6222495744,
+        "RssAnon_bytes": 5426622464,
+        "RssFile_bytes": 694394880,
+        "RssShmem_bytes": 101478400
+      },
+      {
+        "pid": 55679,
+        "name": "python",
+        "state": "S",
+        "ppid": 55677,
+        "start_ticks": "7449555",
+        "VmHWM_bytes": 6043246592,
+        "VmRSS_bytes": 6042042368,
+        "RssAnon_bytes": 5266087936,
+        "RssFile_bytes": 692875264,
+        "RssShmem_bytes": 83079168
+      }
+    ]
+  },
+  "interim_assessment": {
+    "authorized": true,
+    "executed": false,
+    "reason": "No trained checkpoint existed at last verified observation. Current checkpoint state is unknown during disconnection.",
+    "first_scheduled_iteration": 16000,
+    "required_before_replay": [
+      "Verify original job and checkpoint identity/provenance/finite tensors",
+      "Check safe concurrent CPU memory and guard foreign-compute rules",
+      "Keep final-only evaluation gate intact"
+    ],
+    "scope": "Q1 motion interface, deterministic forward/start/stop once each; original-speed media and gait diagnostics; intermediate only, not final acceptance or G1 quality."
+  },
+  "automation": {
+    "equal": true,
+    "status": "ACTIVE",
+    "rrule": "RRULE:FREQ=MINUTELY;INTERVAL=10",
+    "target_thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "name": "Q1五阶段目标监督",
+    "only_q1_prompt_updated": true,
+    "other_automations_changed": false
+  },
+  "goal": {
+    "user_cleared": true,
+    "last_verified_value": null,
+    "read_or_updated_in_this_fault_turn": false,
+    "replacement_created": false,
+    "completion_claimed": false
+  },
+  "unchanged": {
+    "user_accepted_checkpoint": null,
+    "training_stopped_or_restarted": false,
+    "container_or_gpu_restarted": false,
+    "frozen_execution_inputs_edited": false,
+    "new_training_physics_media_or_audit_tests": false,
+    "signals_to_training": 0,
+    "other_automations_changed": false,
+    "new_agents_started": false
+  },
+  "publication": {
+    "status": "PENDING_STAGED_AUDIT_AND_PUBLICATION",
+    "server_mirror": "PENDING_CONNECTION_RECOVERY",
+    "previous_1926_publication_remains_complete": true
+  },
+  "continuation": "Restore interactive Linux observation without repeated training authorization. Recheck original root/boot/GPU/five PID startticks/guard lock and live state. Do not infer health or failure from the historical snapshot, reset devices, restart training, relax gates, or repeat completed tests."
+}

@@ -1,5 +1,13 @@
 # Q1共享训练与目标监督
 
+## 23:48观察连接中断，等待交互认证
+
+2026-11-04 23:48北京时间，本轮监督61294因hp_han Timeout退出255。按原授权对本独立故障执行的一次有界恢复已用：新32044进入hp_han Windows，Windows原生25362到达交互认证提示；当前上下文没有可用交互认证内容，未提交凭据、未进入Linux，已取消登录并返回PowerShell。32044仅Windows，不能向其发送Linux监督命令。当前pipeline/guard/五PID启动tick/metrics/保存/GPU/cgroup OOM及内存回收均UNKNOWN；观察中断不能证明训练停止或失败。等待可用交互认证或用户已恢复的Linux会话，不逐心跳重复认证，不从存储或镜像读取凭据。
+
+最后成功只读核验为23:38:03北京时间：原boot/GPU/五PID启动tick及guard持锁全同，pipeline TRAINING/guard RUNNING；两型各13850/160000完整轮、各35865600真实转移，五optimizer138500/11850/237000/11850/237000、非有限全0。GPU16177MiB/53度/None，cgroup总20488126464B/实际限34292629504B/即时余13804503040B，OOMkill0/under_oom0；峰21197770752B/真实回收0、磁盘余301073874944B。两型ckpt0/latest仍为初始保存，下一16000。这些均为历史，不能当当前健康或步态结论；尚未执行中途效果检查。
+
+既有训练及一次中途检查授权保持，不停止/重启/热改原作业或设备，不换入口或改保存频率，没有新测试、物理、媒体或保存审计。用户已清除应用goal，最近实读null；本轮不调用goal、不创建替代goal-agent。q1仅更新当前连接事实并独立核保存ACTIVE/每10分钟/原线程，未改其他自动任务。恢复后先核原设备/唯一根/五PID启动tick/guard锁及全部实时记录，再按原安全资源和真实训练后权重门推进中途检查；最终正式评估全门、完整五阶段交付及采纳null保持。[故障与最后现场](../logs/session_records/q1_shared_v04_observer_auth_pending_2348_20261104.json)；本次Git/Mac发布见[旁收据](../logs/session_records/q1_shared_v04_observer_fault_publication_2348_20261104.json)，本次服务器镜像待恢复，19:26原发布仍有效。以下连接和goal状态均为历史。
+
 ## 19:26观察连接恢复，原正式训练继续
 
 2026-11-04 19:26:21北京时间：用户明确要求自行完成交互登录后，新24267已经经hp_han Windows原生25362进入interactive67462 Linux、cwd=/opt/data/private/ZHY。认证仅用于交互，不写入项目记录或镜像。此前27866/99440失联、18:56待认证和实时UNKNOWN是历史，不能继续据此阻塞监督。

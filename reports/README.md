@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-04研究：[四项简报](research/2026-11-04/README.md)/[检查](README_RESEARCH_CHECK_20261104.md)：Koopman、RWM校准、Anchor1、NablaMimic0.2配方。78请求77成功/8固定文本96347B及95项完整树静态核验；main去重173→184，H001不变。工程按Q1最新记录，本轮未运行训练/仿真或改目标/自动任务；不新增硬门。服务器自动认证及镜像缺口延续，实际发布见[收据](../data/manifests/research_watch_sync_20261104.json)。
+
 2026-11-04 05:48：[五阶段目标完成三轮阻塞核验，已记blocked，十分钟监督保持](README_Q1_SHARED_TRAINING_20261104.md)。V03已终止、V04不存在，追加一次同档验证的原决定仍待；cache约6.24GiB高于4GiB准入且低默认8GiB维护触发。独立评估交付工具及CPU准备已完成，真实共享结果缺合格检查点，当前没有运行中的训练可等待。原q1经应用更新并保存核ACTIVE每10分钟/同线程，完整目标未完成或暂停、采纳null。[阻塞审计与现场](../logs/session_records/q1_goal_blocked_audit_20261104.json)。
 
 2026-11-04：[综合报告完整记录兼容性已修复并由实际CPU输出验证](README_Q1_SHARED_EVALUATION_PIPELINE_20261104.md)。b64a7ef独立远端/7份516836B三端后20服务器CPU全过/.770秒、9源同/4原交付记录核同；旧极简和实际审计派生标准记录均成功生成14比较JSON/Markdown，合成共享夹具及临时输出不当真实质量。无Torch/MuJoCo/积分优化，V04仍待原追加决定/goal保持。[完整证据](../logs/session_records/q1_conclusion_writer_publication_20261104.json)。

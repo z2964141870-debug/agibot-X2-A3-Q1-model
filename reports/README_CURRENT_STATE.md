@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-04研究：[四项简报](research/2026-11-04/README.md)/[检查](README_RESEARCH_CHECK_20261104.md)：Koopman、RWM校准、Anchor1、NablaMimic0.2配方。78请求77成功/8固定文本96347B及95项完整树静态核验；main去重173→184，H001不变。工程按Q1最新记录，本轮未运行训练/仿真或改目标/自动任务；不新增硬门。服务器自动认证及镜像缺口延续，实际发布见[收据](../data/manifests/research_watch_sync_20261104.json)。
+
 2026-11-03研究：[四项简报](research/2026-11-03/README.md)/[检查](README_RESEARCH_CHECK_20261103.md)：NablaMimic、想象边界、OpenVIO、SONIC Capture1.5。142请求125成功/23固定文本静态核验；main去重164→173，H001不变。按最新Q1接入/GPU恢复记录继续主线，本轮无新GPU或训练；服务器自动认证/镜像缺口延续。实际发布见[收据](../data/manifests/research_watch_sync_20261103.json)。
 
 2026-11-02研究：[FRDV运动学代码发布](research/2026-11-02/README.md)/[检查](README_RESEARCH_CHECK_20261102.md)。仅运动学/G1，动力学验证未公开，12文本与完整树静态核验；106请求105成功，main去重163→164/H001不变。列为基线后候选，原MorphMimic冻结训练与衣服演示搁置决定保持；本轮无实时训练核验，服务器自动认证未通过/镜像待，实际发布见[收据](../data/manifests/research_watch_sync_20261102.json)。

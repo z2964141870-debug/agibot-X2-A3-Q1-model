@@ -16,6 +16,8 @@
 
 本地五阶段116项：108通过、8因真实Torch/物理依赖及Linux平台跳过；原Primebot14项、既有缓存工具6项全部通过，git diff --check通过。覆盖30GiB边界、cache大而总量低时不清理、storage期间越线、回收无效/OOM/重复压力停止、PID复用和异常恢复、原错误保留、回收后设备复核；另外核父级等待controller/shared_review的精确脚本/模式和启动tick，避免误当外来计算，仍拒绝其他训练或audit。Linux真实pidfd子进程与服务器CPU补验待发布并三端核同后执行；不以夹具等同真实30GiB压力成功或八轮容量通过。[准备收据](../data/manifests/q1_memory_pressure_preparation_20261104.json)。
 
+服务器补验已完成：9b75194e0b6cdf6ba70740fcdae74a713d0b29fa推送后独立40位远端核同，17份658676B三端大小SHA一致。原Windows原生25362会话运行68项CPU测试全部通过、无跳过/2.281856秒，包含真实Linux pidfd子进程异常后的恢复；19个观察输入前后SHA同。真实低于30GiB时budget记录0次回收、未生成虚构事件，实际进程/打开映射扫描通过（仅原PID1/pod基础设施可见性例外）。CUDA未初始化、0新物理/优化/训练，未分配30GiB或执行文件advice，因此不声称真实压力回收量或E1024八轮容量已通过。测试进程退出后总7887130624B、实际限额34292629504B、即时余量26405498880B、距原30GiB余24325124096B；GPU1MiB/26度/None、无计算/OOM0，V03 FAILED/五旧PID退/V04目录不存在。应用goal再次实读blocked且完整objective核同，q1保存字段核ACTIVE/十分钟/同线程，新策略已在原prompt最前覆盖旧缓存门。[原CPU收据](../logs/session_records/q1_memory_pressure_cpu_v01_20261104.json)、[发布及三端证据](../logs/session_records/q1_memory_pressure_publication_20261104.json)。
+
 ## 阻塞审计与恢复条件（历史缓存策略）
 
 连续三轮均核同一阻塞：原追加一次E1024八完整更新验证的决定仍待答复，V03 pipeline明确FAILED、五旧PID退出、V04目录不存在。两轮目标续行没有新的用户决定，不能代作授权。第三轮于北京时间05:48:23再经原Windows原生25362会话只读实核，设备身份匹配、GPU1MiB/25度/recovery=None、无计算进程、OOMkill0；容器总7886438400B/cache6698852352B（约6.24GiB）/匿名12824576B/shmem0。cache高于4GiB profile准入、低于原8GiB维护触发，不能强制清理或改门槛。没有仍运行的训练可作为verified wait。

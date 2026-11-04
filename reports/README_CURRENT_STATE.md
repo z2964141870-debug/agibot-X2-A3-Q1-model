@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-04：[总用量触发回收策略已发布并通过服务器CPU验证](README_Q1_SHARED_TRAINING_20261104.md)。9b75194独立40位远端/17份658676B三端同；68项服务器CPU全过、2.282秒、19输入前后SHA同，真实pidfd暂停/异常恢复通过。实际总量低于30GiB，未执行文件回收或新训练；旧4GiB缓存门已取消，goal仍blocked/q1十分钟ACTIVE/采纳null。[发布收据](../logs/session_records/q1_memory_pressure_publication_20261104.json)。
+
 2026-11-04用户已更新[内存策略](README_Q1_SHARED_TRAINING_20261104.md)：V04取消4GiB文件缓存准入和按cache大小例行清理，按真实容器限额、总量与即时余量监督；总量达到原30GiB时先有界回收项目可释放文件页，仍超线则原保护停止。保留24GiB初始准入/OOM0/86度/100GiB磁盘余量；本轮仅修改策略、无新训练，原追加E1024验证决定待、现有goal保持blocked/q1十分钟ACTIVE/采纳null。下方旧缓存门均为历史，以本条和最新发布收据为准。
 
 2026-11-04研究：[四项简报](research/2026-11-04/README.md)/[检查](README_RESEARCH_CHECK_20261104.md)：Koopman、RWM校准、Anchor1、NablaMimic0.2配方。78请求77成功/8固定文本96347B及95项完整树静态核验；main去重173→184，H001不变。工程按Q1最新记录，本轮未运行训练/仿真或改目标/自动任务；不新增硬门。服务器自动认证及镜像缺口延续，实际发布见[收据](../data/manifests/research_watch_sync_20261104.json)。

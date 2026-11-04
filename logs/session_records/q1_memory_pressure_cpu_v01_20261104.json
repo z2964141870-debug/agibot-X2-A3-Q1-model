@@ -1,0 +1,322 @@
+{
+  "status": "PASSED",
+  "checked_utc": "2026-11-04T02:41:03.070089+00:00",
+  "source_commit": "9b75194e0b6cdf6ba70740fcdae74a713d0b29fa",
+  "mirror_receipt": {
+    "path": "/opt/data/private/ZHY/logs/session_records/q1_memory_pressure_mirror_9b75194_20261104.json",
+    "bytes": 4602,
+    "sha256": "3a6a741be1c3e9dec9f155087abf10f40971d003de89aa9405f7b1bdd5f6dd2a"
+  },
+  "modules": [
+    "test_memory_pressure",
+    "test_memory_watch",
+    "test_controller",
+    "test_guard",
+    "test_reclaim_q1_file_cache",
+    "test_shared_review",
+    "test_shared_delivery"
+  ],
+  "tests": 68,
+  "skipped": 0,
+  "failures": 0,
+  "errors": 0,
+  "elapsed_seconds": 2.281856122004683,
+  "real_linux_pidfd_test_executed": true,
+  "test_log": "test_failed_process_read_closes_the_pidfd_without_signalling (test_memory_pressure.PauseTests.test_failed_process_read_closes_the_pidfd_without_signalling) ... ok\ntest_pid_reuse_never_sends_stop_or_continue (test_memory_pressure.PauseTests.test_pid_reuse_never_sends_stop_or_continue) ... ok\ntest_previously_stopped_child_is_not_resumed (test_memory_pressure.PauseTests.test_previously_stopped_child_is_not_resumed) ... ok\ntest_real_owned_child_resumes_after_cleanup_exception (test_memory_pressure.PauseTests.test_real_owned_child_resumes_after_cleanup_exception) ... ok\ntest_accounting_requires_real_capacity_and_keeps_cache_separate (test_memory_pressure.PressureTests.test_accounting_requires_real_capacity_and_keeps_cache_separate) ... ok\ntest_device_failure_precedes_pressure_cleanup (test_memory_pressure.PressureTests.test_device_failure_precedes_pressure_cleanup) ... ok\ntest_device_health_is_checked_again_after_cleanup (test_memory_pressure.PressureTests.test_device_health_is_checked_again_after_cleanup) ... ok\ntest_exact30_trigger_reclaims_and_preserves_file_contents (test_memory_pressure.PressureTests.test_exact30_trigger_reclaims_and_preserves_file_contents) ... ok\ntest_existing_receipts_and_original_limits_cannot_be_overwritten (test_memory_pressure.PressureTests.test_existing_receipts_and_original_limits_cannot_be_overwritten) ... ok\ntest_failed_final_measurement_preserves_the_original_error (test_memory_pressure.PressureTests.test_failed_final_measurement_preserves_the_original_error) ... ok\ntest_foreign_project_compute_stops_before_any_advice (test_memory_pressure.PressureTests.test_foreign_project_compute_stops_before_any_advice) ... ok\ntest_ineffective_cleanup_still_stops_at_original_limit (test_memory_pressure.PressureTests.test_ineffective_cleanup_still_stops_at_original_limit) ... ok\ntest_large_cache_below30_does_not_trigger_cleanup (test_memory_pressure.PressureTests.test_large_cache_below30_does_not_trigger_cleanup) ... ok\ntest_later_resident_chunk_counts_the_file_once (test_memory_pressure.PressureTests.test_later_resident_chunk_counts_the_file_once) ... ok\ntest_memory_crossing_during_storage_check_also_reclaims (test_memory_pressure.PressureTests.test_memory_crossing_during_storage_check_also_reclaims) ... ok\ntest_oom_change_never_attempts_cleanup (test_memory_pressure.PressureTests.test_oom_change_never_attempts_cleanup) ... ok\ntest_preferred_candidates_skip_symlinks_protected_and_outside (test_memory_pressure.PressureTests.test_preferred_candidates_skip_symlinks_protected_and_outside) ... ok\ntest_short_repeated_pressure_does_not_create_a_cleanup_loop (test_memory_pressure.PressureTests.test_short_repeated_pressure_does_not_create_a_cleanup_loop) ... ok\ntest_v04_has_total_policy_and_no_cache_admission (test_memory_pressure.PressureTests.test_v04_has_total_policy_and_no_cache_admission) ... ok\ntest_wrong_root_stops_before_pause (test_memory_pressure.PressureTests.test_wrong_root_stops_before_pause) ... ok\ntest_unrelated_python_or_audit_is_not_a_supervisor (test_memory_pressure.SupervisorTests.test_unrelated_python_or_audit_is_not_a_supervisor) ... ok\ntest_waiting_controller_is_recognized_with_start_tick (test_memory_pressure.SupervisorTests.test_waiting_controller_is_recognized_with_start_tick) ... ok\ntest_waiting_controller_reuse_is_rejected (test_memory_pressure.SupervisorTests.test_waiting_controller_reuse_is_rejected) ... ok\ntest_exact_handle_and_child_tree_without_foreign_processes (test_memory_watch.MemoryWatchTests.test_exact_handle_and_child_tree_without_foreign_processes) ... ok\ntest_guard_history_limit_keeps_sampling_peak_without_growing_log (test_memory_watch.MemoryWatchTests.test_guard_history_limit_keeps_sampling_peak_without_growing_log) ... ok\ntest_guard_peak_breakdown_keeps_values_from_the_same_sample (test_memory_watch.MemoryWatchTests.test_guard_peak_breakdown_keeps_values_from_the_same_sample) ... ok\ntest_guard_reused_handle_is_rejected_and_old_summary_preserved (test_memory_watch.MemoryWatchTests.test_guard_reused_handle_is_rejected_and_old_summary_preserved) ... ok\ntest_invalid_bounds_create_no_files (test_memory_watch.MemoryWatchTests.test_invalid_bounds_create_no_files) ... ok\ntest_live_then_exit_records_measurements_without_claiming_training_complete (test_memory_watch.MemoryWatchTests.test_live_then_exit_records_measurements_without_claiming_training_complete) ... ok\ntest_missing_and_reused_handles_cannot_begin_observing (test_memory_watch.MemoryWatchTests.test_missing_and_reused_handles_cannot_begin_observing) ... ok\ntest_observation_timeout_does_not_declare_process_terminal (test_memory_watch.MemoryWatchTests.test_observation_timeout_does_not_declare_process_terminal) ... ok\ntest_reuse_during_process_tree_scan_discards_the_sample (test_memory_watch.MemoryWatchTests.test_reuse_during_process_tree_scan_discards_the_sample) ... ok\ntest_actual_adam_targets_preserve_world_model_only_warmup (test_controller.ControllerTests.test_actual_adam_targets_preserve_world_model_only_warmup) ... ok\ntest_cache_limit_reaches_only_the_profile_guard (test_controller.ControllerTests.test_cache_limit_reaches_only_the_profile_guard) ... ok\ntest_device_guard_and_signal_errors_never_fall_back (test_controller.ControllerTests.test_device_guard_and_signal_errors_never_fall_back) ... ok\ntest_excess_cache_creates_no_experiment_or_runner (test_controller.ControllerTests.test_excess_cache_creates_no_experiment_or_runner) ... ok\ntest_failed_full_gate_creates_no_experiment_or_runner (test_controller.ControllerTests.test_failed_full_gate_creates_no_experiment_or_runner) ... ok\ntest_first_success_does_not_run_another_capacity (test_controller.ControllerTests.test_first_success_does_not_run_another_capacity) ... ok\ntest_only_proven_cuda_oom_uses_one_fresh_smaller_profile (test_controller.ControllerTests.test_only_proven_cuda_oom_uses_one_fresh_smaller_profile) ... ok\ntest_phase_preserves_native_git_runtime_for_every_child (test_controller.ControllerTests.test_phase_preserves_native_git_runtime_for_every_child) ... ok\ntest_real_cpu_checkpoint_requires_both_ranks_and_saved_adam_counts (test_controller.ControllerTests.test_real_cpu_checkpoint_requires_both_ranks_and_saved_adam_counts) ... ok\ntest_second_failure_stops_without_a_third_attempt (test_controller.ControllerTests.test_second_failure_stops_without_a_third_attempt) ... ok\ntest_success_requires_reap_zero_and_unchanged_inputs (test_controller.ControllerTests.test_success_requires_reap_zero_and_unchanged_inputs) ... ok\ntest_total_memory_policy_rejects_a_conflicting_cache_gate_before_root_creation (test_controller.ControllerTests.test_total_memory_policy_rejects_a_conflicting_cache_gate_before_root_creation) ... ok\ntest_explicit_shared_source_budget_admits_the_measured_tree (test_guard.SourceBudgetTests.test_explicit_shared_source_budget_admits_the_measured_tree) ... ok\ntest_invalid_or_unbounded_source_budgets_are_rejected (test_guard.SourceBudgetTests.test_invalid_or_unbounded_source_budgets_are_rejected) ... ok\ntest_original_default_rejects_the_measured_larger_source (test_guard.SourceBudgetTests.test_original_default_rejects_the_measured_larger_source) ... ok\ntest_shared_source_budget_still_rejects_an_oversized_tree (test_guard.SourceBudgetTests.test_shared_source_budget_still_rejects_an_oversized_tree) ... ok\ntest_default_identity_still_rejects_replaced_device (test_reclaim_q1_file_cache.CacheScopeTests.test_default_identity_still_rejects_replaced_device) ... ok\ntest_explicit_verified_identity_allows_same_guarded_maintenance (test_reclaim_q1_file_cache.CacheScopeTests.test_explicit_verified_identity_allows_same_guarded_maintenance) ... ok\ntest_replaced_inode_does_not_receive_advice (test_reclaim_q1_file_cache.CacheScopeTests.test_replaced_inode_does_not_receive_advice) ... ok\ntest_scope_excludes_outside_and_sibling_prefix (test_reclaim_q1_file_cache.CacheScopeTests.test_scope_excludes_outside_and_sibling_prefix) ... ok\ntest_symlinks_and_open_inodes_are_excluded (test_reclaim_q1_file_cache.CacheScopeTests.test_symlinks_and_open_inodes_are_excluded) ... ok\ntest_wrong_gpu_is_rejected_before_file_scanning (test_reclaim_q1_file_cache.CacheScopeTests.test_wrong_gpu_is_rejected_before_file_scanning) ... ok\ntest_budget_counts_repeats_and_full_raw_media_not_just_guard_folder (test_shared_review.SharedReviewTests.test_budget_counts_repeats_and_full_raw_media_not_just_guard_folder) ... ok\ntest_direct_comparisons_use_primebot_final_and_shared_motion_only (test_shared_review.SharedReviewTests.test_direct_comparisons_use_primebot_final_and_shared_motion_only) ... ok\ntest_each_replay_output_lives_inside_its_guarded_phase (test_shared_review.SharedReviewTests.test_each_replay_output_lives_inside_its_guarded_phase) ... ok\ntest_failed_formal_preflight_never_creates_output_or_runner (test_shared_review.SharedReviewTests.test_failed_formal_preflight_never_creates_output_or_runner) ... ok\ntest_graphics_runtime_restores_parent_environment_after_failure (test_shared_review.SharedReviewTests.test_graphics_runtime_restores_parent_environment_after_failure) ... ok\ntest_matrix_separates_native_robots_common_q1_and_interfaces (test_shared_review.SharedReviewTests.test_matrix_separates_native_robots_common_q1_and_interfaces) ... ok\ntest_phase_requires_success_reaping_unchanged_sources_and_device (test_shared_review.SharedReviewTests.test_phase_requires_success_reaping_unchanged_sources_and_device) ... ok\ntest_replay_failure_keeps_evidence_and_never_retries_or_compares (test_shared_review.SharedReviewTests.test_replay_failure_keeps_evidence_and_never_retries_or_compares) ... ok\ntest_serial_suite_finishes_all_replays_comparisons_curves_before_mac (test_shared_review.SharedReviewTests.test_serial_suite_finishes_all_replays_comparisons_curves_before_mac) ... ok\ntest_changed_local_artifact_fails_and_records_failure_without_decode (test_shared_delivery.SharedDeliveryTests.test_changed_local_artifact_fails_and_records_failure_without_decode) ... ok\ntest_complete_report_accepts_minimal_and_full_exposure_records (test_shared_delivery.SharedDeliveryTests.test_complete_report_accepts_minimal_and_full_exposure_records) ... ok\ntest_diagnostic_report_preserves_missing_initial_and_uses_complete_clip_denominator (test_shared_delivery.SharedDeliveryTests.test_diagnostic_report_preserves_missing_initial_and_uses_complete_clip_denominator) ... ok\ntest_inventory_requires_every_case_timeseries_and_exact_video_set (test_shared_delivery.SharedDeliveryTests.test_inventory_requires_every_case_timeseries_and_exact_video_set) ... ok\ntest_missing_duplicated_or_large_members_fail_before_decode (test_shared_delivery.SharedDeliveryTests.test_missing_duplicated_or_large_members_fail_before_decode) ... ok\n\n----------------------------------------------------------------------\nRan 68 tests in 2.282s\n\nOK\n",
+  "source_before": [
+    {
+      "path": "/opt/data/private/ZHY/AGENTS.md",
+      "bytes": 153132,
+      "sha256": "d7e4577bbc9e4d74149ac47c4cbe6c6665388c1a6e065035ff6f1ef59b085b8a"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/manifests/q1_memory_pressure_preparation_20261104.json",
+      "bytes": 1765,
+      "sha256": "56b3dad76ff26d2d7a7c5226c358c2b59510d3874c272eeef41ff80d4c4a199d"
+    },
+    {
+      "path": "/opt/data/private/ZHY/reports/README.md",
+      "bytes": 191575,
+      "sha256": "8efa5a602401cf163eb3afcad30031471b4dff8c4b1bf7c439d64e729ea4c416"
+    },
+    {
+      "path": "/opt/data/private/ZHY/reports/README_CURRENT_STATE.md",
+      "bytes": 144322,
+      "sha256": "9891221bee9fc484468ce7a1fbf1c54d54f85a63dc655621df734f7832bf9f30"
+    },
+    {
+      "path": "/opt/data/private/ZHY/reports/README_Q1_ACTIVE_GOAL_20261103.md",
+      "bytes": 10979,
+      "sha256": "d915b46732a4ad34ba1b6c152ec40985f9a08221f2411ea6163aab6d3b762ff0"
+    },
+    {
+      "path": "/opt/data/private/ZHY/reports/README_Q1_FILE_CACHE_MAINTENANCE_20261029.md",
+      "bytes": 8796,
+      "sha256": "bce824f48c027c32fd69943d0626e8224a2660a4e9234189957630e4129388ee"
+    },
+    {
+      "path": "/opt/data/private/ZHY/reports/README_Q1_SHARED_TRAINING_20261104.md",
+      "bytes": 18200,
+      "sha256": "ea9577dd5cb3b48351a0139387e516af56e1c3eb4f9e4c3b063c80f5c9448994"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/primebot_q1/guard.py",
+      "bytes": 8545,
+      "sha256": "ad17fcf4b6b67fec5d4fa221bdb1684bd27171ec688248305964835c54b5331b"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/reclaim_q1_file_cache.py",
+      "bytes": 12868,
+      "sha256": "698d277663209489fd0045762f121320a442817888687520a724fec9fb51327c"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/conditional_shared_v04_20261104.json",
+      "bytes": 2189,
+      "sha256": "a393af120dd973432d1d5ef936ccfbfa19390494a8faec6ca807280732cc693d"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/controller.py",
+      "bytes": 21202,
+      "sha256": "02fdcb42be7e76397dbd7ca62564d3754100fd5a7c8a854f06757205df129da2"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/memory_pressure.py",
+      "bytes": 13734,
+      "sha256": "2035f6f8da4990cdc8186fda2158d789a0b1603e937065e170c4135ef50d0db5"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/memory_watch.py",
+      "bytes": 10246,
+      "sha256": "0cc3bdee477e225e1172389439d8b4d054dbd7062045d6d14624602e9b177465"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/shared_delivery.py",
+      "bytes": 15134,
+      "sha256": "0f6209634b4f4074d62a72317a39d6ff8bc51dfa02cb2c6f28f8dd823ac7fe69"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/shared_review.py",
+      "bytes": 16959,
+      "sha256": "f59772c291c2d2df8b07856127e6a9a98fbae527d3c66a8f2a7891d9f33b4af8"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/test_controller.py",
+      "bytes": 10267,
+      "sha256": "bd1d08e3d7403694a8bd5caac9d183fa967b4d1e1f7bed983ec010f46c55135e"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/test_memory_pressure.py",
+      "bytes": 18763,
+      "sha256": "89d1962629b01fff1b8436c3d8afd74ee377d470a0e8dd7e83908a4fcf3bcfaf"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/supermimic_q1_sources/guard_phuma_batch.py",
+      "bytes": 4126,
+      "sha256": "29bd2509cffccad91752e7c8119ab40262261fdba8d6ae098f9f0eb356cdf3ea"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/supermimic_q1_sources/runtime_guard.py",
+      "bytes": 8645,
+      "sha256": "020e80d36da018ef240f80c38d1d49af2d6d1ed0e4d7b0297bd4f7b934182c74"
+    }
+  ],
+  "source_after": [
+    {
+      "path": "/opt/data/private/ZHY/AGENTS.md",
+      "bytes": 153132,
+      "sha256": "d7e4577bbc9e4d74149ac47c4cbe6c6665388c1a6e065035ff6f1ef59b085b8a"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/manifests/q1_memory_pressure_preparation_20261104.json",
+      "bytes": 1765,
+      "sha256": "56b3dad76ff26d2d7a7c5226c358c2b59510d3874c272eeef41ff80d4c4a199d"
+    },
+    {
+      "path": "/opt/data/private/ZHY/reports/README.md",
+      "bytes": 191575,
+      "sha256": "8efa5a602401cf163eb3afcad30031471b4dff8c4b1bf7c439d64e729ea4c416"
+    },
+    {
+      "path": "/opt/data/private/ZHY/reports/README_CURRENT_STATE.md",
+      "bytes": 144322,
+      "sha256": "9891221bee9fc484468ce7a1fbf1c54d54f85a63dc655621df734f7832bf9f30"
+    },
+    {
+      "path": "/opt/data/private/ZHY/reports/README_Q1_ACTIVE_GOAL_20261103.md",
+      "bytes": 10979,
+      "sha256": "d915b46732a4ad34ba1b6c152ec40985f9a08221f2411ea6163aab6d3b762ff0"
+    },
+    {
+      "path": "/opt/data/private/ZHY/reports/README_Q1_FILE_CACHE_MAINTENANCE_20261029.md",
+      "bytes": 8796,
+      "sha256": "bce824f48c027c32fd69943d0626e8224a2660a4e9234189957630e4129388ee"
+    },
+    {
+      "path": "/opt/data/private/ZHY/reports/README_Q1_SHARED_TRAINING_20261104.md",
+      "bytes": 18200,
+      "sha256": "ea9577dd5cb3b48351a0139387e516af56e1c3eb4f9e4c3b063c80f5c9448994"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/primebot_q1/guard.py",
+      "bytes": 8545,
+      "sha256": "ad17fcf4b6b67fec5d4fa221bdb1684bd27171ec688248305964835c54b5331b"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/project_tools/reclaim_q1_file_cache.py",
+      "bytes": 12868,
+      "sha256": "698d277663209489fd0045762f121320a442817888687520a724fec9fb51327c"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/conditional_shared_v04_20261104.json",
+      "bytes": 2189,
+      "sha256": "a393af120dd973432d1d5ef936ccfbfa19390494a8faec6ca807280732cc693d"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/controller.py",
+      "bytes": 21202,
+      "sha256": "02fdcb42be7e76397dbd7ca62564d3754100fd5a7c8a854f06757205df129da2"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/memory_pressure.py",
+      "bytes": 13734,
+      "sha256": "2035f6f8da4990cdc8186fda2158d789a0b1603e937065e170c4135ef50d0db5"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/memory_watch.py",
+      "bytes": 10246,
+      "sha256": "0cc3bdee477e225e1172389439d8b4d054dbd7062045d6d14624602e9b177465"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/shared_delivery.py",
+      "bytes": 15134,
+      "sha256": "0f6209634b4f4074d62a72317a39d6ff8bc51dfa02cb2c6f28f8dd823ac7fe69"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/shared_review.py",
+      "bytes": 16959,
+      "sha256": "f59772c291c2d2df8b07856127e6a9a98fbae527d3c66a8f2a7891d9f33b4af8"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/test_controller.py",
+      "bytes": 10267,
+      "sha256": "bd1d08e3d7403694a8bd5caac9d183fa967b4d1e1f7bed983ec010f46c55135e"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_five_stage/test_memory_pressure.py",
+      "bytes": 18763,
+      "sha256": "89d1962629b01fff1b8436c3d8afd74ee377d470a0e8dd7e83908a4fcf3bcfaf"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/supermimic_q1_sources/guard_phuma_batch.py",
+      "bytes": 4126,
+      "sha256": "29bd2509cffccad91752e7c8119ab40262261fdba8d6ae098f9f0eb356cdf3ea"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/supermimic_q1_sources/runtime_guard.py",
+      "bytes": 8645,
+      "sha256": "020e80d36da018ef240f80c38d1d49af2d6d1ed0e4d7b0297bd4f7b934182c74"
+    }
+  ],
+  "source_unchanged": true,
+  "live_accounting": {
+    "total_bytes": 8179187712,
+    "container_limit_bytes": 34292629504,
+    "immediate_headroom_bytes": 26113441792,
+    "guard_headroom_bytes": 24033067008,
+    "anonymous_rss_bytes": 308436992,
+    "cache_bytes": 6699446272,
+    "shmem_bytes": 0,
+    "dirty_bytes": 0,
+    "writeback_bytes": 2027520,
+    "oom_kill": 0,
+    "under_oom": 0,
+    "headroom_is_immediate_not_a_guaranteed_training_allocation": true
+  },
+  "live_budget": {
+    "shared_bytes": 8179187712,
+    "oom_kill": 0,
+    "maximum_bytes": 32212254720,
+    "accounting": {
+      "total_bytes": 8179187712,
+      "container_limit_bytes": 34292629504,
+      "immediate_headroom_bytes": 26113441792,
+      "guard_headroom_bytes": 24033067008,
+      "anonymous_rss_bytes": 308436992,
+      "cache_bytes": 6699446272,
+      "shmem_bytes": 0,
+      "dirty_bytes": 0,
+      "writeback_bytes": 2027520,
+      "oom_kill": 0,
+      "under_oom": 0,
+      "headroom_is_immediate_not_a_guaranteed_training_allocation": true
+    },
+    "pressure_reclaim_events": 0
+  },
+  "untriggered_reclaim_events": 0,
+  "live_read_only_scope_scan": {
+    "protected_inodes": 51,
+    "busy_processes": [],
+    "visibility_gaps": [
+      {
+        "pid": 1,
+        "name": "pod",
+        "reason": "Infrastructure init is not ptrace-readable"
+      }
+    ],
+    "supervisors": []
+  },
+  "before_state": {
+    "checked_utc": "2026-11-04T02:41:00.588697+00:00",
+    "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+    "pipeline_status": "FAILED",
+    "guard_status": "FAILED",
+    "worker_reaped": true,
+    "v04_exists": false,
+    "old_pids_present": [],
+    "oom": {
+      "oom_kill_disable": "0",
+      "under_oom": "0",
+      "oom_kill": "0"
+    },
+    "memory_total_bytes": 7896031232,
+    "gpu": {
+      "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      "used_mib": 1,
+      "temperature_c": 26,
+      "recovery": "None"
+    },
+    "compute_pids": [],
+    "v03_checkpoints": []
+  },
+  "after_state": {
+    "checked_utc": "2026-11-04T02:41:03.069020+00:00",
+    "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+    "pipeline_status": "FAILED",
+    "guard_status": "FAILED",
+    "worker_reaped": true,
+    "v04_exists": false,
+    "old_pids_present": [],
+    "oom": {
+      "oom_kill_disable": "0",
+      "under_oom": "0",
+      "oom_kill": "0"
+    },
+    "memory_total_bytes": 8179798016,
+    "gpu": {
+      "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      "used_mib": 1,
+      "temperature_c": 26,
+      "recovery": "None"
+    },
+    "compute_pids": [],
+    "v03_checkpoints": []
+  },
+  "cuda_initialized": false,
+  "real_30gib_pressure_test": false,
+  "actual_file_advice": false,
+  "new_physical_steps": 0,
+  "new_optimizer_updates": 0,
+  "new_training": false,
+  "goal_completed": false,
+  "user_accepted_checkpoint": null
+}

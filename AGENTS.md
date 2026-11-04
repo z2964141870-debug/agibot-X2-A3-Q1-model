@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-04内存策略9b75194独立40位远端/17份658676B三端后，服务器68项CPU全过2.282秒/19输入前后SHA同/真实pidfd暂停及异常恢复通过；仅CPU夹具和低于30GiB的真实只读监督，未作真实30GiB压力或文件回收/无CUDA积分优化。V04取消4GiB门，以总量30GiB触发有界回收；新policy原24/30GiB等保护保持。测试退出后总7887130624B/实际限额34292629504B/即时余26405498880B，GPU1MiB26度None/OOM0、V03 FAILED/五旧PID退/V04无。完整goal仍实读blocked/q1保存ACTIVE十分钟同线程，原追加E1024决定待/采纳null，无新goal-agent或其他任务变更；入口Q1_SHARED_TRAINING及q1_memory_pressure_publication。
+
 - 2026-11-04用户明确更新内存策略：后续V04取消4GiB文件缓存准入/按cache大小维护，重点看容器实际限额、总量和即时余量；总量达到原30GiB才先有界回收项目可释放文件页，目标28GiB/最多8GiB advice及15秒，暂停并finally恢复本guard子树，回收后仍超线或30秒内反复超线则停止。原24GiB准入/OOM0/86度/100GiB磁盘余量及锁/设备保持，不全局drop_caches/不删文件/不绕过保护。仅新策略授权，不代答原追加E1024验证；goal仍blocked/q1十分钟ACTIVE/完整目标和采纳null保持。下方4GiB门/8GiB缓存触发均为历史快照；本轮实现与验证以Q1_SHARED_TRAINING及q1_memory_pressure_preparation/publication为准，不启新训练或agent/不改其他任务。
 
 - 2026-11-04 05:48三连续目标轮核同一阻塞后，现有五阶段goal已由应用实记blocked，非完成或暂停；原q1仍ACTIVE每10分钟/同线程并保存核同。V03 FAILED/五旧PID退/V04无，原追加一次E1024验证问题待答，cache6698852352B约6.24GiB高4GiB准入且低8GiB维护触发，不强制清理/降512或新训。独立评估交付准备及CPU已齐，真实共享比较缺合格权重；无新的可推进独立任务，不以重复测试或状态重述充进展。保留完整目标和采纳null，用户新决定后再核现有goal及准入，不创建替代goal-agent/不改其他任务。入口Q1_SHARED_TRAINING及q1_goal_blocked_audit_20261104收据；下方active均为历史快照。

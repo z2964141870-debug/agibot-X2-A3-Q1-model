@@ -10,6 +10,8 @@ GPU16001MiB/51度/recovery=None；cgroup总21160992768B（约19.71GiB）/实际�
 
 同一完整五阶段应用goal再次实读blocked，现接口没有恢复active操作；实际连接阻塞已解除，继续授权作业，不伪报active/complete或创建替代goal。原q1已通过应用工具更新并独立读回ACTIVE/每10分钟/同线程，恢复监督V04；健康正常进度保持安静。评估/比较/交付准备和CPU已齐，真实共享回放及Mac36视频/4824例仍须原正式完成及全门通过。完整目标、原执行冻结4bef635和用户采纳null保持。本轮不重复CPU、物理、媒体或保存审计。此前两份连接故障小记录补镜像及本轮Git/Mac/25362发布以[恢复发布收据](../logs/session_records/q1_shared_v04_connection_recovery_publication_20261104.json)为准；下方阻塞状态均为历史。
 
+恢复证据b8906a8e3562c68f4a074fbc3f019620d5c1f541已推送origin Q1并独立40位远端核同；9份628748B在权威Git blob/工作树、Mac主根和25362逐大小SHA一致，含此前待镜像的UNKNOWN及三轮blocked原收据，旧入口由当前恢复记录覆盖。12:36:10发布后只读复核仍为同一五原PID/starttick、pipeline TRAINING/guard RUNNING，两型各2400完整轮/6553600转移、五optimizer24000/400/8000/400/8000、非有限全0；总21095591936B/实际限34292629504B/即时余13197037568B/OOM0，GPU16001MiB57度None、采样峰21197770752B/回收0。未重启或热改，不重复测试；当前为正式策略训练进度，步态质量仍待原真实评估。[发布、补镜像及完整复核](../logs/session_records/q1_shared_v04_connection_recovery_publication_20261104.json)。
+
 ## 12:11连接阻塞审计
 
 同一SSH观察阻塞连续三目标轮核实：原故障轮记录会话78774句柄失效，一次有界恢复在25362交互阶段关闭；12:10:03复查既有27866未产生Linux新输出且无新的人工恢复决定；12:11:25仅向同一会话发空回车，实际返回`PS C:\Users\yu>`，确证仍为Windows PowerShell。后两轮没有重新登录、认证、Linux检查命令或其他入口探测。没有当前训练live handle，Windows连接存活不能替代训练verified wait；V04实时状态仍UNKNOWN，不据失联判训练停止或失败。

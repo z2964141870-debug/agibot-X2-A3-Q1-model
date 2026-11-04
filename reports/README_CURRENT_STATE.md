@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-04 11:09：[V04共享八全更新验证通过，已从零正式训练160000轮](README_Q1_SHARED_TRAINING_20261104.md)。用户“为啥不训练？？”后11:03:14实际启动，冻结4bef635独立远端及十执行文件核同；两rank各8轮/430080转移/Adam80-8-160-8-160、共享SHA/CPU保存各330张量/1792输入同和磁盘全门通过。11:06:15正式启动，11:09:24已50轮/前2000轮WM-only，各WM500、其余0，每型537600转移；controller54868/guard55672/两worker55678-55679启动tick核同，GPU7319MiB47度None/总19002310656B/限34292629504B/OOM0。按总量30GiB触发回收、cache仅诊断；不热改或异常自重启。q1保存核ACTIVE十分钟同线程；同一应用goal字段仍blocked、工具无恢复操作，实际授权工作继续/不新替代goal或agent，采纳null。[启动](../logs/session_records/q1_shared_v04_launch_20261104.json)/[现场](../logs/session_records/q1_shared_v04_observed_20261104.json)。下方待答、V04不存在及只策略准备为历史。
+
 2026-11-04：[总用量触发回收策略已发布并通过服务器CPU验证](README_Q1_SHARED_TRAINING_20261104.md)。9b75194独立40位远端/17份658676B三端同；68项服务器CPU全过、2.282秒、19输入前后SHA同，真实pidfd暂停/异常恢复通过。实际总量低于30GiB，未执行文件回收或新训练；旧4GiB缓存门已取消，goal仍blocked/q1十分钟ACTIVE/采纳null。[发布收据](../logs/session_records/q1_memory_pressure_publication_20261104.json)。
 
 2026-11-04用户已更新[内存策略](README_Q1_SHARED_TRAINING_20261104.md)：V04取消4GiB文件缓存准入和按cache大小例行清理，按真实容器限额、总量与即时余量监督；总量达到原30GiB时先有界回收项目可释放文件页，仍超线则原保护停止。保留24GiB初始准入/OOM0/86度/100GiB磁盘余量；本轮仅修改策略、无新训练，原追加E1024验证决定待、现有goal保持blocked/q1十分钟ACTIVE/采纳null。下方旧缓存门均为历史，以本条和最新发布收据为准。

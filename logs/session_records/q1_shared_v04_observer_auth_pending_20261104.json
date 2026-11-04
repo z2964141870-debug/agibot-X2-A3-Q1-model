@@ -1,0 +1,349 @@
+{
+  "stage": "Q1_SHARED_V04_NEW_OBSERVER_CONNECTION_FAULT",
+  "status": "CURRENT_TRAINING_UNKNOWN_INTERACTIVE_AUTHENTICATION_PENDING",
+  "checked_utc": "2026-11-04T10:56:15Z",
+  "latest_trigger_utc": "2026-11-04T10:48:43.259Z",
+  "experiment": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104",
+  "frozen_execution_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+  "observer_failure": {
+    "session_id": 27866,
+    "chunk_id": "486f19",
+    "wall_time_seconds": 0.000009667,
+    "exit_code": 255,
+    "original_token_count": 35,
+    "output": "Read from remote host 100.65.183.91: Operation timed out\r\nConnection to 100.65.183.91 closed.\r\nclient_loop: send disconnect: Broken pipe\r\n"
+  },
+  "bounded_recovery": {
+    "attempts": 1,
+    "session_id": 99440,
+    "route": [
+      "hp_han Windows",
+      "Windows native SSH root@59.77.15.15:25362"
+    ],
+    "windows_shell_confirmed": true,
+    "server_password_prompt_reached": true,
+    "credentials_submitted": false,
+    "linux_shell_acquired": false,
+    "login_attempt_cancelled": true,
+    "current_shell": "Windows PowerShell",
+    "reason": "Current available context does not contain usable interactive authentication; no authentication material retrieved or persisted.",
+    "new_training_permission_required": false,
+    "retry_without_new_authentication": false
+  },
+  "current": {
+    "pipeline": "UNKNOWN",
+    "guard": "UNKNOWN",
+    "original_pid_startticks": "UNKNOWN",
+    "metrics": "UNKNOWN",
+    "checkpoints": "UNKNOWN",
+    "gpu": "UNKNOWN",
+    "cgroup_memory_and_oom": "UNKNOWN",
+    "memory_peak_and_reclaim": "UNKNOWN"
+  },
+  "last_successful_read_only_observation": {
+    "historical_only": true,
+    "checked_utc": "2026-11-04T10:29:47.696894+00:00",
+    "root": "/opt/data/private/ZHY",
+    "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+    "pipeline": "TRAINING",
+    "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+    "guard": "RUNNING",
+    "guard_error": null,
+    "processes": [
+      {
+        "pid": 54868,
+        "alive": true,
+        "start_ticks": "7431283",
+        "identity_matches": true,
+        "state": "S"
+      },
+      {
+        "pid": 55672,
+        "alive": true,
+        "start_ticks": "7449427",
+        "identity_matches": true,
+        "state": "S"
+      },
+      {
+        "pid": 55677,
+        "alive": true,
+        "start_ticks": "7449543",
+        "identity_matches": true,
+        "state": "S"
+      },
+      {
+        "pid": 55678,
+        "alive": true,
+        "start_ticks": "7449555",
+        "identity_matches": true,
+        "state": "S"
+      },
+      {
+        "pid": 55679,
+        "alive": true,
+        "start_ticks": "7449555",
+        "identity_matches": true,
+        "state": "S"
+      }
+    ],
+    "locks": [
+      "26: FLOCK  ADVISORY  WRITE 55672 103:07:116003074 0 EOF"
+    ],
+    "robots": [
+      {
+        "robot": "g1",
+        "status": "RUNNING",
+        "pid": 55678,
+        "formal_training": true,
+        "iterations": 8600,
+        "optimizer_updates": {
+          "wm_opt": 86000,
+          "policy_opt": 6600,
+          "critic_opt": 132000,
+          "kp_opt": 6600,
+          "critic_kp_opt": 132000
+        },
+        "nonfinite": {
+          "wm/nonfinite_steps": 0,
+          "policy/nonfinite_steps": 0,
+          "critic/nonfinite_steps": 0,
+          "kp/nonfinite_steps": 0,
+          "critic_kp/nonfinite_steps": 0
+        },
+        "transitions": 22425600,
+        "last_iteration_seconds": 3.7817205269966507,
+        "accepted": null
+      },
+      {
+        "robot": "q1",
+        "status": "RUNNING",
+        "pid": 55679,
+        "formal_training": true,
+        "iterations": 8600,
+        "optimizer_updates": {
+          "wm_opt": 86000,
+          "policy_opt": 6600,
+          "critic_opt": 132000,
+          "kp_opt": 6600,
+          "critic_kp_opt": 132000
+        },
+        "nonfinite": {
+          "wm/nonfinite_steps": 0,
+          "policy/nonfinite_steps": 0,
+          "critic/nonfinite_steps": 0,
+          "kp/nonfinite_steps": 0,
+          "critic_kp/nonfinite_steps": 0
+        },
+        "transitions": 22425600,
+        "last_iteration_seconds": 3.7822502290073317,
+        "accepted": null
+      }
+    ],
+    "gpu": {
+      "returncode": 0,
+      "stdout": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 16089, 53, 45, None",
+      "stderr": ""
+    },
+    "compute_apps": {
+      "returncode": 0,
+      "stdout": "55678, 7346\n55679, 8728",
+      "stderr": ""
+    },
+    "cgroup": {
+      "total_bytes": 20519215104,
+      "limit_bytes": 34292629504,
+      "immediate_headroom_bytes": 13773414400,
+      "guard_headroom_bytes": 11693039616,
+      "oom": {
+        "oom_kill_disable": "0",
+        "under_oom": "0",
+        "oom_kill": "0"
+      },
+      "stat": {
+        "total_cache": 9224773632,
+        "total_rss": 10065129472,
+        "total_shmem": 32714752,
+        "total_dirty": 946176,
+        "total_writeback": 2162688
+      }
+    },
+    "storage": {
+      "experiment": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train",
+        "unique_allocated_bytes": 474419200,
+        "unique_logical_bytes": 474342266,
+        "unique_inodes": 24,
+        "symlinks_not_followed": 0
+      },
+      "source": {
+        "root": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+        "unique_allocated_bytes": 142503936,
+        "unique_logical_bytes": 141858407,
+        "unique_inodes": 341,
+        "symlinks_not_followed": 0
+      },
+      "free_bytes": {
+        "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train": 321758957568,
+        "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1": 321758957568
+      },
+      "shared_memory": {
+        "shared_bytes": 20457865216,
+        "oom_kill": 0,
+        "maximum_bytes": 32212254720,
+        "accounting": {
+          "total_bytes": 20457865216,
+          "container_limit_bytes": 34292629504,
+          "immediate_headroom_bytes": 13834764288,
+          "guard_headroom_bytes": 11754389504,
+          "anonymous_rss_bytes": 10004074496,
+          "cache_bytes": 9224773632,
+          "shmem_bytes": 32714752,
+          "dirty_bytes": 946176,
+          "writeback_bytes": 2162688,
+          "oom_kill": 0,
+          "under_oom": 0,
+          "headroom_is_immediate_not_a_guaranteed_training_allocation": true
+        },
+        "pressure_reclaim_events": 0
+      },
+      "gpu": {
+        "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+        "temperature_c": 57,
+        "recovery": "None",
+        "used_mib": 16089
+      }
+    },
+    "memory_peak": 21197770752,
+    "reclaim": null,
+    "latest_grouped_log": [
+      "[morphmimic] it 8600 | 0.26 it/s (0.339/1.981/1.488 s collect/wm/actor-critic) | env 1343/s imag 34372/s | wm loss 14.4657 bce 0.0000 pred8 0.3579 err8 pelvis 0.003 m joints 0.007 rad | J 9.2622 |g| 0.846 (max 1.25) critic 1.76e-03 V0 9.27 tclip 0.00% surv 1.000 | rew 0.0831 nret 0.794 eplen 162.7 fail 2 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.1080 act 0.0172 align 0.8650 tclip 0.00%",
+      "[morphmimic]    g1 | wm loss 17.1870 pred8 0.1464 err8 pelvis 0.003 m joints 0.007 rad | J 9.2789 critic 1.91e-03 tclip 0.00% surv 1.000 | rew 0.0865 nret 0.834 eplen 164.9 fail 2 | align 4.339e-02 zdist 0.393 | kp tclip 0.00%",
+      "[morphmimic]    q1 | wm loss 11.7443 pred8 0.5694 err8 pelvis 0.002 m joints 0.007 rad | J 9.2455 critic 1.62e-03 tclip 0.00% surv 1.000 | rew 0.0798 nret 0.756 eplen 160.6 fail 0 | align 4.339e-02 zdist 0.393 | kp tclip 0.00%"
+    ],
+    "nonfinite_triples": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "error_lines": [],
+    "checkpoints": [
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/ckpt_0.pt",
+        "bytes": 114298955,
+        "mtime": 1793761596.9865956
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/latest.pt",
+        "bytes": 114298955,
+        "mtime": 1793761597.090595
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_0.pt",
+        "bytes": 114299019,
+        "mtime": 1793761596.9905956
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/latest.pt",
+        "bytes": 114299019,
+        "mtime": 1793761597.1025949
+      }
+    ],
+    "signals_sent": 0,
+    "files_written": 0
+  },
+  "goal": {
+    "existing_status_observed": "blocked",
+    "full_five_stage_objective_preserved": true,
+    "replacement_created": false,
+    "completion_claimed": false,
+    "user_accepted_checkpoint": null
+  },
+  "automation": {
+    "id": "q1",
+    "kind": "heartbeat",
+    "name": "Q1五阶段目标监督",
+    "status": "ACTIVE",
+    "rrule": "RRULE:FREQ=MINUTELY;INTERVAL=10",
+    "target_thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "only_q1_prompt_to_be_updated": true
+  },
+  "boundaries": {
+    "training_restarted": false,
+    "training_stopped": false,
+    "frozen_inputs_modified": false,
+    "container_or_gpu_restarted": false,
+    "alternate_ports_forwarding_or_sockets": false,
+    "new_physics_optimizer_training_tests_or_media": false,
+    "cache_maintenance": false,
+    "authentication_material_read_written_or_mirrored": false
+  },
+  "publication": {
+    "authoritative_branch": "Q1",
+    "git_remote_and_mac_verification": "PENDING",
+    "server_size_sha256_verification": "PENDING_CONNECTION_RECOVERY",
+    "previous_recovery_publication_already_completed": true
+  },
+  "remaining": "Original formal completion and audits precede native/common-physics evaluation, 36 original-speed Mac videos, 4824 cases and comprehensive conclusions."
+}

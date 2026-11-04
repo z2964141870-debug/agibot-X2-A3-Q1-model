@@ -1,5 +1,13 @@
 # Q1共享训练与目标监督
 
+## 18:56新观察故障与交互认证待完成
+
+2026-11-04 18:56北京时间：原监督27866已因hp_han连接timeout/Broken pipe退出255。本独立故障的一次有界恢复已用：新99440到达hp_han Windows，原生SSH到root@59.77.15.15:25362到达交互认证提示；本轮没有可用交互认证内容，未提交凭据、未进入Linux，已取消该登录尝试并回到PowerShell。因此V04当前pipeline/guard/PID/starttick/metrics/保存/GPU/cgroup OOM及内存回收全部UNKNOWN；失联不等于训练停止或失败。既有训练授权保持，不重启训练、容器或GPU，不换端口/转发/socket，不读取或存储凭据。认证是本次恢复未完成的技术前提，不要求重复训练授权；获得可用交互认证或用户已恢复的Linux会话后再核原身份和实时文件，不逐心跳重复认证。
+
+最后成功只读核验为2026-11-04 18:29:47北京时间：V04 pipeline TRAINING/guard RUNNING，原boot/GPU/五PID启动tick/guard持锁均同；G1与Q1各8600/160000完整轮、各22425600真实转移，五optimizer86000/6600/132000/6600/132000、非有限全0。GPU16089MiB/53度/None，总20519215104B/实际限34292629504B/即时余13773414400B，OOMkill0/under_oom0，采样峰21197770752B/回收0。两型ckpt0/latest存在，下一编号16000；完整两型分组指标在g1.log，q1.log主要bootstrap。以上仅历史，不当当前健康或步态结论。
+
+本轮只记录独立新故障；无新训练、测试、物理或媒体。原五阶段goal实读blocked、原q1仍ACTIVE每10分钟同线程，完整目标及采纳null保留。此前恢复发布和三端同步已完成，本次新记录的25362镜像待连接恢复；[本次故障收据](../logs/session_records/q1_shared_v04_observer_auth_pending_20261104.json)的发布准备状态由[发布及Mac核验收据](../logs/session_records/q1_shared_v04_observer_fault_publication_20261104.json)补充。下方12:24恢复及更早记录为历史。
+
 ## 12:24连接恢复及正式策略更新
 
 用户明确要求经hp_han中转，并提供本次有效交互认证后，原27866现已进入interactive67462 Linux、cwd为唯一根/opt/data/private/ZHY。本次只恢复SSH观察通路；旧“未获恢复决定、仅PowerShell、实时UNKNOWN”是此前历史。原boot90395f47-4035-4785-858e-b3d05c44a738、GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4均核同，controller54868/start7431283、guard55672/start7449427、parent55677/start7449543、G155678/Q155679均start7449555全部存活且身份匹配，内核原GPU锁仍由55672持有。没有停止、重启或热改任何作业或设备；认证不保存或镜像。

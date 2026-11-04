@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-04 18:56原监督27866已timeout/Broken pipe退出255；本独立故障一次有界恢复已用，新99440仅hp_han Windows，原生25362到交互认证提示、未提交凭据/未进Linux并已取消登录。当前V04实时pipeline/PID/GPU/OOM/保存/内存回收UNKNOWN；最后18:29:47各8600/160000轮/各22425600转移/五Adam86000-6600-132000-6600-132000、非有限0，原身份/guard锁同、GPU16089MiB53度None/总20519215104B/实际限34292629504B/余13773414400B/OOM0/峰21197770752B/回收0，仅为历史。训练授权保持，无停止/重启/热改/新测试物理媒体；当前缺可用交互认证，恢复观察不是重复训练授权，不逐心跳重试认证，不读取存储凭据或换入口。原goal仍实读blocked/q1十分钟ACTIVE同线程/完整五阶段及采纳null保持，无新goal-agent。入口Q1_SHARED_TRAINING及q1_shared_v04_observer_auth_pending_20261104，本次新记录25362镜像待连接恢复，此前恢复三端已完成。下方12:24的连接恢复是此前实据。
+
 - 2026-11-04 12:24:48用户明确要求经hp_han中转并提供本次有效交互认证后，既有27866已登录interactive67462 Linux/唯一ZHY根，原连接观察阻塞解除；旧待恢复授权/仅PowerShell/实时UNKNOWN为历史。原boot/GPU及五PID启动tick全同、pipeline TRAINING/guard RUNNING，两型各2200完整轮/6041600转移，已过2000轮WM-only，各WM22000/motion200/critic4000/KP200/KPcritic4000、非有限0。GPU16001MiB51度None，总21160992768B/限34292629504B/即时余13131636736B/OOM0，采样峰21184602112B/真实回收0，ckpt0/latest在、下一编号16000。未停训/重启/热改或重复CPU物理；仅恢复原连接及记录。应用goal仍实读blocked且无恢复接口，实际授权作业继续/不伪报active-complete或新goal-agent；q1应用更新后独立保存核ACTIVE十分钟同线程，原总量内存策略/完整目标/采纳null及其他任务保持。后续复用27866、独立新故障按原一次有界恢复，认证不存储。入口Q1_SHARED_TRAINING及q1_shared_v04_connection_recovered/publication；三端补同步以发布收据为准。
 
 - 2026-11-04 12:11同一SSH观察故障连续三目标轮核实后，update_goal/get_goal已将原完整五阶段goal实记blocked；未完成未暂停、不缩减范围，q1独立保存核仍ACTIVE十分钟同线程。原一次恢复已用，12:11仅向27866发空回车确证PS C:\Users\yu>，非Linux；无新的人工恢复决定，不逐心跳重复认证。V04已于11:06:15正式启动是历史实据，当前pipeline/PID/GPU/OOM/内存/保存均UNKNOWN，不据失联认定训练停止或重启。准备及CPU已齐、实际共享评估依赖原服务器合格权重；不以重复测试/记录冒充进展。新恢复决定后先核原设备/根/PID启动tick及实时文件；执行冻结/原总量内存策略/采纳null与其他任务保持，无替代goal-agent。入口Q1_SHARED_TRAINING及q1_shared_v04_connection_blocked_audit_20261104，服务器新记录镜像待恢复。下方12:03 active为先前实读快照。

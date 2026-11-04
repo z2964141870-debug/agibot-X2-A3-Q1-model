@@ -129,6 +129,16 @@ def prepare(root, config, names, output):
         phase_passed(read(root / row["name"] / "transition_receipt.json"))
         require(identity(row["result"]["path"]) == row["result"], "Phase result changed after evaluation")
     paths, expected_videos = required_paths(names)
+    for phase in expected_phases:
+        status = read(root / phase / "status.json")
+        evidence = list(status.get("memory_observation", {}).values())
+        if "memory_reclaim" in status:
+            evidence.append(status["memory_reclaim"])
+        for item in evidence:
+            path = Path(item["path"])
+            require(path.is_relative_to(root / phase) and identity(path) == item,
+                    "Phase memory evidence changed or escaped its output")
+            paths.add(str(path.relative_to(root)))
     media = []
     for job in jobs():
         result = read(root / job["name"] / "review/result.json")

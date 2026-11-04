@@ -50,7 +50,12 @@ def subtree(proc, controller):
 def memory(cgroup):
     fields = dict(line.split() for line in (cgroup / "memory.stat").read_text().splitlines())
     oom = dict(line.split() for line in (cgroup / "memory.oom_control").read_text().splitlines())
-    return dict(total_bytes=int((cgroup / "memory.usage_in_bytes").read_text()),
+    total = int((cgroup / "memory.usage_in_bytes").read_text())
+    limit_path = cgroup / "memory.limit_in_bytes"
+    limit = int(limit_path.read_text()) if limit_path.exists() else None
+    return dict(total_bytes=total, container_limit_bytes=limit,
+                immediate_headroom_bytes=max(0, limit - total) if limit is not None else None,
+                guard_headroom_bytes=max(0, 30 * 1024**3 - total),
                 **{name + "_bytes": int(fields[name]) for name in MEMORY_FIELDS},
                 oom_kill=int(oom["oom_kill"]), under_oom=int(oom["under_oom"]))
 

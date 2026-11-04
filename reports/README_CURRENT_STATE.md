@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-04用户已更新[内存策略](README_Q1_SHARED_TRAINING_20261104.md)：V04取消4GiB文件缓存准入和按cache大小例行清理，按真实容器限额、总量与即时余量监督；总量达到原30GiB时先有界回收项目可释放文件页，仍超线则原保护停止。保留24GiB初始准入/OOM0/86度/100GiB磁盘余量；本轮仅修改策略、无新训练，原追加E1024验证决定待、现有goal保持blocked/q1十分钟ACTIVE/采纳null。下方旧缓存门均为历史，以本条和最新发布收据为准。
+
 2026-11-04研究：[四项简报](research/2026-11-04/README.md)/[检查](README_RESEARCH_CHECK_20261104.md)：Koopman、RWM校准、Anchor1、NablaMimic0.2配方。78请求77成功/8固定文本96347B及95项完整树静态核验；main去重173→184，H001不变。工程按Q1最新记录，本轮未运行训练/仿真或改目标/自动任务；不新增硬门。服务器自动认证及镜像缺口延续，实际发布见[收据](../data/manifests/research_watch_sync_20261104.json)。
 
 2026-11-04 05:48：[五阶段goal现为blocked，q1十分钟主动监督保持ACTIVE](README_Q1_SHARED_TRAINING_20261104.md)。连续三轮核同一真实阻塞后调用应用update_goal(blocked)，没有结算、暂停或缩减目标。V03 FAILED/五旧PID退/V04无，原追加一次E1024验证决定仍待；cache6698852352B约6.24GiB，高4GiB准入、低默认8GiB维护触发，不强制清理。独立评估交付工具和CPU已齐，真实共享评估待合格权重，没有新的可独立推进任务；不重复小测试或把已停止作业算verified wait。q1应用更新后保存核ACTIVE/每10分钟/同线程，其他任务原样。用户新明确决定后先核现有目标状态和实际准入，再按获准范围继续；采纳null。[原现场和三轮审计](../logs/session_records/q1_goal_blocked_audit_20261104.json)。下方active为历史快照。

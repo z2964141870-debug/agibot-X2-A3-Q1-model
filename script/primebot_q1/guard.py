@@ -31,13 +31,13 @@ def profile_cache_admission(maximum_bytes):
 
 
 class Budget:
-    def __init__(self, config, output, seconds, maximum_bytes):
+    def __init__(self, config, output, seconds, maximum_bytes, inputs=()):
         self.config, self.started, self.seconds = config, time.monotonic(), seconds
         source_bytes = config.get("maximum_source_bytes", 64 * 1024**2)
         require(type(source_bytes) is int and 0 < source_bytes <= 256 * 1024**2,
                 "Source storage budget must be a positive integer at most256MiB")
-        self.inner = MemoryBoundBudget(StorageBudget(output, Path(config["adapted_source"]),
-            100 * 1024**3, maximum_bytes, source_bytes), 30 * 1024**3, 0)
+        require(type(config.get("memory_pressure_reclaim", False)) is bool, "Invalid memory pressure policy")
+        self.pressure_reclaim = config.get("memory_pressure_reclaim", False)
         require(type(config.get("record_memory_breakdown", False)) is bool, "Invalid memory recorder setting")
         self.recorder = None
         if config.get("record_memory_breakdown", False):
@@ -45,11 +45,17 @@ class Budget:
             from memory_watch import GuardMemoryRecorder
             self.recorder = GuardMemoryRecorder(Path("/proc"), Path("/sys/fs/cgroup/memory"),
                                                os.getpid(), output / "memory.jsonl")
+        storage = StorageBudget(output, Path(config["adapted_source"]),
+            100 * 1024**3, maximum_bytes, source_bytes)
+        if self.pressure_reclaim:
+            sys.path.insert(0, str(HERE.parent / "q1_five_stage"))
+            from memory_pressure import PressureMemoryBudget
+            self.inner = PressureMemoryBudget(storage, 30 * 1024**3, 0, root=ROOT,
+                output=output / "memory_reclaim.json", preferred=inputs, observer=self.recorder)
+        else:
+            self.inner = MemoryBoundBudget(storage, 30 * 1024**3, 0)
 
-    def check(self):
-        if self.recorder is not None:
-            self.recorder.record()
-        evidence = self.inner.check()
+    def device(self):
         require(Path("/proc/sys/kernel/random/boot_id").read_text().strip() == self.config["expected_boot"],
                 "Frozen server boot changed")
         raw = subprocess.check_output(["nvidia-smi", "--query-gpu=uuid,temperature.gpu,gpu_recovery_action,memory.used",
@@ -58,7 +64,17 @@ class Budget:
         require(gpu == self.config["expected_gpu"] and recovery == "None", "GPU identity or health changed")
         require(int(temperature) < 86, "GPU temperature reserve reached")
         require(time.monotonic() - self.started < self.seconds, "Phase wall-time guard reached")
-        evidence["gpu"] = dict(uuid=gpu, temperature_c=int(temperature), recovery=recovery, used_mib=int(used))
+        return dict(uuid=gpu, temperature_c=int(temperature), recovery=recovery, used_mib=int(used))
+
+    def check(self):
+        if self.recorder is not None:
+            self.recorder.record()
+        gpu = self.device() if self.pressure_reclaim else None
+        events = self.inner.reclaimer.events if self.pressure_reclaim else 0
+        evidence = self.inner.check()
+        if self.pressure_reclaim and self.inner.reclaimer.events != events:
+            gpu = self.device()
+        evidence["gpu"] = gpu if gpu is not None else self.device()
         return evidence
 
 
@@ -78,6 +94,8 @@ def run(config, output, command, seconds, maximum_bytes, inputs=(), maximum_init
                   automatic_retry=False, user_accepted_checkpoint=None)
     budget = None
     try:
+        require(not (config.get("memory_pressure_reclaim", False) and maximum_initial_cache_bytes is not None),
+                "Total-memory pressure policy cannot use an independent cache admission")
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         require(not subprocess.check_output(["nvidia-smi", "--query-compute-apps=pid",
                   "--format=csv,noheader"], text=True).strip(), "GPU is occupied")
@@ -93,7 +111,7 @@ def run(config, output, command, seconds, maximum_bytes, inputs=(), maximum_init
             record["cache_admission"] = profile_cache_admission(maximum_initial_cache_bytes)
         record["status"] = "RUNNING"
         save(output / "status.json", record)
-        budget = Budget(config, output, seconds, maximum_bytes)
+        budget = Budget(config, output, seconds, maximum_bytes, [item["path"] for item in record["inputs"]])
         result = guarded_run(command, ROOT, budget,
             output / "guard.json", output / "stdout.log", check_interval_s=2, grace_s=10,
             stop_requested=lambda: stopped)
@@ -114,6 +132,9 @@ def run(config, output, command, seconds, maximum_bytes, inputs=(), maximum_init
             if memory_summary.exists():
                 record["memory_observation"] = dict(summary=identity(memory_summary),
                                                     samples=identity(output / "memory.jsonl"))
+            memory_reclaim = output / "memory_reclaim.json"
+            if memory_reclaim.exists():
+                record["memory_reclaim"] = identity(memory_reclaim)
             record["ended_utc"] = now()
             save(output / "status.json", record)
         finally:

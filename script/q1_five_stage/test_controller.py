@@ -96,6 +96,12 @@ class ControllerTests(unittest.TestCase):
         self.assertEqual(choose_profile(attempt), dict(environments=1024))
         self.assertEqual(calls, [1024])
 
+    def test_total_memory_policy_rejects_a_conflicting_cache_gate_before_root_creation(self):
+        config = dict(morph_upstream=MORPH_UPSTREAM, memory_pressure_reclaim=True,
+                      profile_maximum_initial_cache_bytes=4 * 1024**3)
+        with self.assertRaisesRegex(RuntimeError, "independent cache admission"):
+            execute(config, Path("config.json"), "a" * 40)
+
     def test_only_proven_cuda_oom_uses_one_fresh_smaller_profile(self):
         calls = []
 

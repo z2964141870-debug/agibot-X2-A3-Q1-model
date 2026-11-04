@@ -30,10 +30,12 @@ def in_scope(path, root):
     return any(path.is_relative_to(root / directory) for directory in ("data", "logs", "script", "reports"))
 
 
-def active_files(root):
+def active_files(root, deadline=None):
     """Protect open/mapped inodes, and skip when project compute is running."""
     protected, busy, inaccessible_init = set(), [], []
     for process in Path("/proc").iterdir():
+        if deadline is not None and time.monotonic() >= deadline:
+            raise TimeoutError("Process visibility scan exceeded the reclaim deadline")
         if not process.name.isdigit() or int(process.name) == os.getpid():
             continue
         try:
@@ -42,12 +44,16 @@ def active_files(root):
             if cwd.is_relative_to(root) and name.startswith(("python", "ffmpeg", "torchrun", "train", "render")):
                 busy.append(dict(pid=int(process.name), name=name))
             for fd in (process / "fd").iterdir():
+                if deadline is not None and time.monotonic() >= deadline:
+                    raise TimeoutError("Open-file visibility scan exceeded the reclaim deadline")
                 try:
                     info = fd.stat()
                     protected.add((info.st_dev, info.st_ino))
                 except FileNotFoundError:
                     pass
             for line in (process / "maps").read_text().splitlines():
+                if deadline is not None and time.monotonic() >= deadline:
+                    raise TimeoutError("Mapped-file visibility scan exceeded the reclaim deadline")
                 values = line.split(maxsplit=5)
                 if len(values) == 6 and values[5].startswith("/"):
                     try:
@@ -64,19 +70,28 @@ def active_files(root):
     return protected, busy, inaccessible_init
 
 
-def candidates(root, protected):
-    result = []
+def iter_candidates(root, protected, deadline=None):
     for directory in ("data", "logs", "script", "reports"):
         for parent, directories, files in os.walk(root / directory, followlinks=False):
+            if deadline is not None and time.monotonic() >= deadline:
+                return
             directories[:] = [name for name in directories if name != ".git" and
                                not (Path(parent) / name).is_symlink()]
             for name in files:
+                if deadline is not None and time.monotonic() >= deadline:
+                    return
                 path = Path(parent) / name
-                info = path.lstat()
+                try:
+                    info = path.lstat()
+                except FileNotFoundError:
+                    continue
                 if (stat.S_ISREG(info.st_mode) and info.st_size and in_scope(path, root)
                         and (info.st_dev, info.st_ino) not in protected):
-                    result.append((path, info))
-    return sorted(result, key=lambda item: (-item[1].st_size, str(item[0])))
+                    yield path, info
+
+
+def candidates(root, protected):
+    return sorted(iter_candidates(root, protected), key=lambda item: (-item[1].st_size, str(item[0])))
 
 
 def resident_bytes(fd, offset, length):

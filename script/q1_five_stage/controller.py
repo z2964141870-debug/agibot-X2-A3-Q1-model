@@ -199,6 +199,10 @@ class Runner:
 def execute(config, config_path, commit):
     require(valid_commit(commit), "Require an independently verified full published commit")
     require(config["morph_upstream"] == MORPH_UPSTREAM, "Use the approved MorphMimic v0.1 source")
+    require(type(config.get("memory_pressure_reclaim", False)) is bool, "Invalid memory pressure policy")
+    require(not (config.get("memory_pressure_reclaim", False)
+                 and config.get("profile_maximum_initial_cache_bytes") is not None),
+            "Total-memory pressure policy cannot use an independent cache admission")
     output = Path(config["output"])
     require(output.is_absolute() and output.is_relative_to(ROOT / "data/supermimic_for_q1")
             and not output.exists(), "Use a new shared experiment root")
@@ -258,6 +262,10 @@ def execute(config, config_path, commit):
                             maximum_source_bytes=config.get("maximum_source_bytes", 64 * 1024**2))
         if config.get("record_memory_breakdown", False):
             guard_config["record_memory_breakdown"] = config["record_memory_breakdown"]
+        if config.get("memory_pressure_reclaim", False):
+            guard_config["memory_pressure_reclaim"] = True
+            inputs.extend((str(HERE / "memory_pressure.py"),
+                           str(HERE.parent / "project_tools/reclaim_q1_file_cache.py")))
         save(output / "guard_config.json", guard_config)
         state["source_storage_budget_bytes"] = guard_config["maximum_source_bytes"]
         runner = Runner(config, output, inputs)

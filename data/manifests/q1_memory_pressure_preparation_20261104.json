@@ -1,0 +1,41 @@
+{
+  "status": "PREPARED_PENDING_PUBLISHED_SERVER_CPU_VERIFICATION",
+  "date": "2026-11-04",
+  "user_instruction": "ok，以后这样，不看文件缓存，重点要看训练可用内存，当总用量达到30G的时候，再做清理",
+  "scope": "Future Q1 V04 shared phases and their guarded evaluation; no validation or training launch",
+  "policy": {
+    "independent_cache_admission": false,
+    "cache_only_routine_maintenance": false,
+    "initial_total_admission_bytes": 25769803776,
+    "trigger_and_final_stop_total_bytes": 32212254720,
+    "reclaim_target_total_bytes": 30064771072,
+    "maximum_advice_range_bytes": 8589934592,
+    "maximum_processing_seconds": 15,
+    "minimum_pressure_interval_seconds": 30,
+    "measure_real_cgroup_capacity_and_immediate_headroom": true,
+    "subtract_all_cache_as_guaranteed_free_memory": false,
+    "pause_only_owned_descendants_with_pidfds": true,
+    "resume_owned_descendants_in_finally": true,
+    "global_drop_caches": false,
+    "files_deleted": 0,
+    "file_contents_read": false,
+    "maximum_retained_events": 32,
+    "oom_kill_required": 0,
+    "gpu_temperature_stop_c": 86,
+    "disk_reserve_bytes": 107374182400
+  },
+  "local_checks": {
+    "five_stage": {"total": 116, "passed": 108, "skipped": 8},
+    "primebot": {"total": 14, "passed": 14},
+    "cache_tool": {"total": 6, "passed": 6},
+    "git_diff_check": "PASSED"
+  },
+  "server_checks": "PENDING_PUBLICATION_AND_THREE_LOCATION_HASH_VERIFICATION",
+  "real_30gib_pressure_test": "NOT_RUN; fixtures do not establish training capacity",
+  "new_training": false,
+  "new_physical_steps": 0,
+  "new_optimizer_updates": 0,
+  "existing_goal_status": "blocked",
+  "additional_e1024_validation_decision": "PENDING",
+  "user_accepted_checkpoint": null
+}

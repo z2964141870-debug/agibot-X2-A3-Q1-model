@@ -209,8 +209,14 @@ def execute(config_path, pipeline_path, runtime_path, output, commit):
         frozen_data=identity(config["frozen_data"]), phases=[],
         maximum_suite_bytes=maximum, phase_budgets=budgets, automatic_retry=False, goal_completed=False,
         new_optimizer_updates=0, user_accepted_checkpoint=None)
-    save(output / "guard_config.json", dict(adapted_source=plan["source"], expected_boot=config["expected_boot"],
-        expected_gpu=config["expected_gpu"], maximum_source_bytes=config.get("maximum_source_bytes", 64 * MIB)))
+    guard_config = dict(adapted_source=plan["source"], expected_boot=config["expected_boot"],
+        expected_gpu=config["expected_gpu"], maximum_source_bytes=config.get("maximum_source_bytes", 64 * MIB))
+    for key in ("memory_pressure_reclaim", "record_memory_breakdown"):
+        if config.get(key, False):
+            guard_config[key] = config[key]
+    if config.get("memory_pressure_reclaim", False):
+        inputs.append(str(HERE.parent / "project_tools/reclaim_q1_file_cache.py"))
+    save(output / "guard_config.json", guard_config)
     save(output / "evaluation.json", state)
     runner = Runner(config, output, inputs)
     try:

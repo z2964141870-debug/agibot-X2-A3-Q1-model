@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-04 12:03本轮get_goal实核同一五阶段目标为active，覆盖下方旧blocked快照；未重建或结算。原监督会话78774工具句柄失效，本独立故障一次有界恢复已用：hp_han Windows连接成功，新会话27866仅PowerShell，原生25362交互认证后Connection closed，未取得Linux shell；V04实时pipeline/PID/starttick/metrics/GPU/OOM/内存/保存均UNKNOWN，不能据失联判训练停止或沿用旧RUNNING。未停止/重启/热改原作业或设备，不换入口；未获新的明确连接恢复指令前不逐心跳重复认证。q1保存核ACTIVE十分钟同线程，更新了真实active及连接异常，其他任务不改/无agent/采纳null。故障记录Q1_SHARED_TRAINING及q1_shared_v04_connection_unknown_20261104；新记录25362镜像待连接恢复，未称三端完成。
+
 - 2026-11-04 11:09用户追问“为啥不训练？？”后已追加V04各E1024八完整更新并全门通过，原待答授权不再阻塞。11:03:14启动冻结4bef635独立40位远端/十执行文件核同；两rank各8轮430080转移/五Adam80-8-160-8-160/共享参数和latent同/1792输入前后SHA同/两CPU保存各330有限张量通过，预算22733425025B另留100GiB。11:06:15自动从零正式160000轮，controller54868/start7431283、guard55672/start7449427、parent55677/start7449543、G155678/Q155679均start7449555；11:09:24已50轮/前2000轮WM-only，各WM500其余0/各537600转移，GPU7319MiB47度None/总19002310656B/限34292629504B/OOM0。八轮峰20794302464B/真实回收0，不称30GiB压力已验证。新总量策略与原保护保持、不热改输入/正式异常不重启；q1已保存核ACTIVE十分钟同线程并跟踪V04正式根。get_goal仍实读blocked、接口无恢复操作，继续用户授权实际工作/不新替代goal或伪报active-complete，完整目标/采纳null及其他任务保持；不开agent。入口Q1_SHARED_TRAINING及q1_shared_v04_launch/observed，覆盖下方“追加待答/V04无/只策略准备”快照。
 
 - 2026-11-04内存策略9b75194独立40位远端/17份658676B三端后，服务器68项CPU全过2.282秒/19输入前后SHA同/真实pidfd暂停及异常恢复通过；仅CPU夹具和低于30GiB的真实只读监督，未作真实30GiB压力或文件回收/无CUDA积分优化。V04取消4GiB门，以总量30GiB触发有界回收；新policy原24/30GiB等保护保持。测试退出后总7887130624B/实际限额34292629504B/即时余26405498880B，GPU1MiB26度None/OOM0、V03 FAILED/五旧PID退/V04无。完整goal仍实读blocked/q1保存ACTIVE十分钟同线程，原追加E1024决定待/采纳null，无新goal-agent或其他任务变更；入口Q1_SHARED_TRAINING及q1_memory_pressure_publication。

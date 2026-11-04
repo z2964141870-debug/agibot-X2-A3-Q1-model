@@ -1,0 +1,82 @@
+{
+  "stage": "Q1_SHARED_V04_OBSERVATION_CONNECTION_FAILURE",
+  "recorded_utc": "2026-11-04T04:03:42Z",
+  "status": "UNKNOWN",
+  "status_scope": "Current remote runtime observation only; no training terminal state established",
+  "goal": {
+    "thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "observed_application_status": "active",
+    "full_five_stage_objective_preserved": true,
+    "created_replacement": false,
+    "user_checkpoint_acceptance": null
+  },
+  "experiment_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104",
+  "frozen_execution_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+  "expected_identity": {
+    "boot_id": "90395f47-4035-4785-858e-b3d05c44a738",
+    "gpu_uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+    "original_pid_startticks": {
+      "54868": 7431283,
+      "55672": 7449427,
+      "55677": 7449543,
+      "55678": 7449555,
+      "55679": 7449555
+    },
+    "verified_this_turn": false
+  },
+  "connection": {
+    "prior_session_id": 78774,
+    "prior_session_result": "write_stdin failed: Unknown process id 78774",
+    "allowed_route": "Mac -> hp_han Windows native SSH -> root@59.77.15.15:25362",
+    "bounded_recovery_attempts": 1,
+    "remaining_automatic_recovery_attempts_for_this_fault": 0,
+    "windows_connection": "CONNECTED",
+    "replacement_session_id": 27866,
+    "native_target_result": "Connection closed by 59.77.15.15 port 25362",
+    "current_session_surface": "Windows PowerShell; not a Linux shell",
+    "target_login_established": false,
+    "cause": "UNKNOWN",
+    "authentication_material_saved_or_mirrored": false
+  },
+  "current_runtime": {
+    "pipeline": "UNKNOWN",
+    "guard": "UNKNOWN",
+    "original_process_liveness_and_startticks": "UNKNOWN",
+    "worker_counters_and_metric_tails": "UNKNOWN",
+    "checkpoints": "UNKNOWN",
+    "gpu_health": "UNKNOWN",
+    "cgroup_memory_and_oom": "UNKNOWN",
+    "memory_reclaim_events": "UNKNOWN",
+    "verified_live_wait_this_turn": false,
+    "training_terminal_state_inferred_from_connection_failure": false
+  },
+  "last_reported_runtime": {
+    "source": "Previous turn summary, not re-observed this turn",
+    "checked_utc": "2026-11-04T03:41:50Z",
+    "iterations_per_robot": 1000,
+    "wm_updates_per_robot": 10000,
+    "other_optimizer_updates_per_robot": 0,
+    "transitions_per_robot": 2969600,
+    "phase": "Formal training, WM-only initial phase",
+    "not_a_current_runtime_claim": true
+  },
+  "automation": {
+    "id": "q1",
+    "status": "ACTIVE",
+    "rrule": "RRULE:FREQ=MINUTELY;INTERVAL=10",
+    "same_thread": true,
+    "prompt_updated_through_application_tool": true,
+    "other_automations_changed": false,
+    "unchanged_failure_notifications": "quiet"
+  },
+  "actions": {
+    "training_or_device_restart": false,
+    "training_stop_or_hot_edit": false,
+    "new_physics_optimizer_training_or_media": false,
+    "cache_reclaim_or_file_deletion": false,
+    "alternate_port_forward_or_socket": false,
+    "new_goal_or_agent": false
+  },
+  "next_step": "Wait for renewed explicit connection recovery instruction, then verify the same device/root, original process startticks, live pipeline/guard/metrics/checkpoints and resource state; do not restart formal training due to lost observation",
+  "new_record_server_mirror": "PENDING_CONNECTION_RECOVERY"
+}

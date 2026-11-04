@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-04 12:03：[V04监督连接失联，训练实时状态UNKNOWN](README_Q1_SHARED_TRAINING_20261104.md)。原会话78774句柄失效，一次有界恢复仅连到hp_han Windows，原生25362交互认证后Connection closed，未取得Linux shell；不能据此判训练失败或停止。原作业/设备未重启或修改，不重复自动认证；同一goal已实核active，q1仍ACTIVE十分钟同线程。新记录服务器镜像待恢复连接，不称三端完成。[故障收据](../logs/session_records/q1_shared_v04_connection_unknown_20261104.json)。
+
 2026-11-04 11:09：[V04共享八全更新验证通过，已从零正式训练160000轮](README_Q1_SHARED_TRAINING_20261104.md)。用户“为啥不训练？？”后11:03:14实际启动，冻结4bef635独立远端及十执行文件核同；两rank各8轮/430080转移/Adam80-8-160-8-160、共享SHA/CPU保存各330张量/1792输入同和磁盘全门通过。11:06:15正式启动，11:09:24已50轮/前2000轮WM-only，各WM500、其余0，每型537600转移；controller54868/guard55672/两worker55678-55679启动tick核同，GPU7319MiB47度None/总19002310656B/限34292629504B/OOM0。按总量30GiB触发回收、cache仅诊断；不热改或异常自重启。q1保存核ACTIVE十分钟同线程；同一应用goal字段仍blocked、工具无恢复操作，实际授权工作继续/不新替代goal或agent，采纳null。[启动](../logs/session_records/q1_shared_v04_launch_20261104.json)/[现场](../logs/session_records/q1_shared_v04_observed_20261104.json)。下方待答、V04不存在及只策略准备为历史。
 
 2026-11-04：[总用量触发回收策略已发布并通过服务器CPU验证](README_Q1_SHARED_TRAINING_20261104.md)。9b75194独立40位远端/17份658676B三端同；68项服务器CPU全过、2.282秒、19输入前后SHA同，真实pidfd暂停/异常恢复通过。实际总量低于30GiB，未执行文件回收或新训练；旧4GiB缓存门已取消，goal仍blocked/q1十分钟ACTIVE/采纳null。[发布收据](../logs/session_records/q1_memory_pressure_publication_20261104.json)。

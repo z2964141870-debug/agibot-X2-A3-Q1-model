@@ -1,5 +1,7 @@
 # Q1五阶段目标模式与主动监督
 
+2026-11-04 12:03最新实核：get_goal返回同一完整五阶段目标active，覆盖下方旧blocked描述；没有新建或结算目标。原q1已通过应用工具更新真实目标状态及连接异常，保持ACTIVE/每10分钟/同线程。原监督会话78774工具句柄失效，本独立故障一次有界恢复仅到hp_han Windows，25362交互认证后Connection closed；当前训练实时状态UNKNOWN，未据失联重启训练或设备。一次恢复已用，等待新的明确连接恢复指令；不重复认证、小测试或发布同一异常，用户采纳null。[当前连接状态](README_Q1_SHARED_TRAINING_20261104.md)、[原故障与边界](../logs/session_records/q1_shared_v04_connection_unknown_20261104.json)。服务器新记录镜像待连接恢复。
+
 2026-11-04 11:09北京时间最新：用户“为啥不训练？？”已使原追加验证决定不再待答。V04各1024环境八完整更新、共享一致性、CPU保存和磁盘门全过后，原controller54868已于11:06:15自动从零正式160000轮；11:09:24已50轮/前2000轮WM-only，原正式guard55672和两worker55678/55679运行、OOM0/GPU健康。应用get_goal仍blocked且工具无恢复active操作，保留同一完整objective并继续用户授权的实际工作，不创建替代goal或伪报active/complete。原q1保存核ACTIVE每10分钟/同线程，最新prompt跟踪V04正式根；采纳null，其他任务和agent不改。[当前执行与收据](README_Q1_SHARED_TRAINING_20261104.md)。以下待答和V04无均为历史快照。
 
 2026-11-04用户已明确更改内存策略：后续V04取消4GiB缓存准入和按cache大小维护，以真实容器总量/限额及即时余量监督；达到原30GiB先有界回收，仍超线保留停止保护。本次get_goal实读blocked，完整目标/采纳null不改；该决定只授权内存策略调整，原追加E1024八轮验证仍待，未启动新训练。q1保持十分钟ACTIVE/同线程，监督以[当前内存策略与发布收据](README_Q1_SHARED_TRAINING_20261104.md)为准；下方旧cache门仅为历史。

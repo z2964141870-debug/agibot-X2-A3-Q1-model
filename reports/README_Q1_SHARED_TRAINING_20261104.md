@@ -1,5 +1,13 @@
 # Q1共享训练与目标监督
 
+## 12:03监督连接异常
+
+2026-11-04北京时间12:03，本轮get_goal已实核同一完整五阶段目标为active，覆盖下方旧blocked字段。原监督会话78774返回Unknown process id；按本独立故障一次有界重建，Mac到hp_han Windows成功，但Windows原生25362在交互认证后返回Connection closed by 59.77.15.15 port 25362，未取得Linux shell。新会话27866仅位于Windows PowerShell，不能向其发送Linux检查命令。该现象不证明密码错误、服务器停止、训练失败或设备异常，连接关闭原因未定位。
+
+因此本轮V04实时pipeline、guard、五原PID/starttick、metrics、日志、checkpoint、GPU/cgroup OOM及内存/回收均UNKNOWN；没有当前live handle，不能作为verified wait。上轮摘要11:41:50报告两型1000完整轮/WM10000其余0、各2969600转移，仍是前2000轮WM-only；这些是旧现场，本轮未重新核验。已发布11:16:25快照另见原publication收据，不当实时状态。
+
+未停止、重启或热改原作业、容器或GPU，未换端口、转发或socket，也未执行清缓存/新物理/优化/媒体/小测试。此独立连接故障的一次自动恢复已用，未获用户新的明确连接恢复指令前不逐心跳重复认证；q1继续ACTIVE十分钟同线程，未变异常保持安静。恢复后先核原boot/GPU/唯一根、原五PID启动tick及实时pipeline/guard/完整metrics尾和保存，再决定原流程下一步，正式异常仍不自动重启。[故障收据](../logs/session_records/q1_shared_v04_connection_unknown_20261104.json)。本次新记录25362镜像待恢复，不能称三端已完成；完整目标及采纳null保留。
+
 2026-11-04 11:09北京时间最新：用户追问“为啥不训练？？”后，已按原五阶段目标实际追加V04各1024环境八完整更新验证，全部原门通过后于11:06:15自动从零进入正式160000轮。原“追加决定待/V04不存在/仅策略准备”均为历史；现有goal应用字段仍blocked、接口无恢复active操作，未创建替代goal或伪报已恢复，实际作业及原q1十分钟ACTIVE监督继续，用户采纳null。
 
 ## V04正式训练已启动

@@ -1,5 +1,15 @@
 # Q1共享训练与目标监督
 
+## 19:26观察连接恢复，原正式训练继续
+
+2026-11-04 19:26:21北京时间：用户明确要求自行完成交互登录后，新24267已经经hp_han Windows原生25362进入interactive67462 Linux、cwd=/opt/data/private/ZHY。认证仅用于交互，不写入项目记录或镜像。此前27866/99440失联、18:56待认证和实时UNKNOWN是历史，不能继续据此阻塞监督。
+
+原boot/GPU/五PID启动tick全部核同，controller54868/start7431283、guard55672/start7449427、parent55677/start7449543、G155678/Q155679均start7449555；原GPU锁仍由55672持有。pipeline TRAINING/guard RUNNING且无guard错误，两型各9500/160000完整轮、各24729600真实转移，五optimizer95000/7500/150000/7500/150000、非有限全0。完整分组尾在g1.log、q1.log主要bootstrap；日志分工不当失训，不据loss/reward称自然步态合格。
+
+GPU16177MiB/53度/recovery=None，总20494876672B/实际限34292629504B/即时余13797752832B，OOMkill0/under_oom0；guard采样峰21197770752B、真实回收0。原30GiB总量策略保持，cache仅诊断，未执行缓存维护；不称真实30GiB压力回收已验证。两型ckpt0/latest仍在，下一编号16000；磁盘余320011710464B。未停止/重启/热改原训练或设备，没有重复CPU、物理、媒体和保存审计。
+
+原完整五阶段应用goal再次实读blocked，接口仍无恢复active操作；实际连接已恢复，继续授权真实作业，不伪报active/complete或创建替代goal-agent。原q1保持ACTIVE每10分钟同线程，完整评估交付范围及采纳null保留。[完整现场](../logs/session_records/q1_shared_v04_observer_recovered_1926_20261104.json)；此前待补推收据及断线期小记录的发布/三端同步状态以[本次恢复发布收据](../logs/session_records/q1_shared_v04_observer_recovery_publication_1926_20261104.json)为准。以下18:56及更早是历史快照。
+
 ## 18:56新观察故障与交互认证待完成
 
 2026-11-04 18:56北京时间：原监督27866已因hp_han连接timeout/Broken pipe退出255。本独立故障的一次有界恢复已用：新99440到达hp_han Windows，原生SSH到root@59.77.15.15:25362到达交互认证提示；本轮没有可用交互认证内容，未提交凭据、未进入Linux，已取消该登录尝试并回到PowerShell。因此V04当前pipeline/guard/PID/starttick/metrics/保存/GPU/cgroup OOM及内存回收全部UNKNOWN；失联不等于训练停止或失败。既有训练授权保持，不重启训练、容器或GPU，不换端口/转发/socket，不读取或存储凭据。认证是本次恢复未完成的技术前提，不要求重复训练授权；获得可用交互认证或用户已恢复的Linux会话后再核原身份和实时文件，不逐心跳重复认证。

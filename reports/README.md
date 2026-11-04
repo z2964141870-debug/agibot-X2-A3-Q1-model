@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-04 19:26:21：[hp_han原生25362观察恢复，V04两型各9500/160000轮](README_Q1_SHARED_TRAINING_20261104.md)。24267已进入原Linux/唯一ZHY根，原boot/GPU/五PID启动tick/guard持锁全同；pipeline TRAINING/guard RUNNING、非有限0/OOM0，GPU16177MiB53度None，总约19.09GiB/即时余约12.85GiB、真实回收0。训练未停止或重启，认证不存储，旧待认证/UNKNOWN为历史；q1十分钟ACTIVE/原完整goal blocked及采纳null保持。[现场](../logs/session_records/q1_shared_v04_observer_recovered_1926_20261104.json)、[待镜像小记录补同步与发布](../logs/session_records/q1_shared_v04_observer_recovery_publication_1926_20261104.json)。
+
 2026-11-04 18:56：[V04监督连接独立新故障，当前训练状态UNKNOWN](README_Q1_SHARED_TRAINING_20261104.md)。原27866因timeout/Broken pipe退出，一次hp_han原生25362恢复到交互认证提示后取消，未取得Linux；需要可用交互认证继续观察。最后18:29:47各8600/160000轮/guard RUNNING/OOM0仅历史，不判训练停止或失败。原训练授权与完整五阶段保持，未重启/热改/重复测试；q1十分钟ACTIVE，新增服务器镜像待恢复。[故障证据](../logs/session_records/q1_shared_v04_observer_auth_pending_20261104.json)。
 
 2026-11-04 12:24:48：[hp_han中转连接已恢复，原V04已进入策略更新](README_Q1_SHARED_TRAINING_20261104.md)。27866已在原Linux/唯一ZHY根，设备/五PID启动tick匹配；两型各2200完整轮，越过2000轮WM-only，各motion/KP200更新/非有限0，pipeline TRAINING/guard RUNNING/OOM0。总19.71GiB/即时余约12.23GiB、回收0；未重启或热改。原goal应用仍blocked且无恢复接口，实际连接阻塞解除；q1保存核ACTIVE十分钟同线程、完整目标/采纳null保持。[恢复现场](../logs/session_records/q1_shared_v04_connection_recovered_20261104.json)/[发布和补镜像](../logs/session_records/q1_shared_v04_connection_recovery_publication_20261104.json)。下方UNKNOWN和待恢复决定为历史。

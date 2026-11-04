@@ -1,5 +1,7 @@
 # Q1五阶段目标模式与主动监督
 
+2026-11-04 19:26:21用户明确要求自行交互登录后，观察24267已经hp_han原生25362恢复至原Linux/唯一ZHY根，V04两型各9500/160000轮、原五PID启动tick和设备/guard锁全同，pipeline TRAINING/guard RUNNING/OOM0。原完整五阶段goal实读blocked且无恢复active接口，实际观察阻塞已解除，继续原授权作业、不伪报active/complete或新goal-agent。q1保持十分钟ACTIVE同线程、采纳null，未停训/重启/热改或重复测试，认证不存储；下方18:56待认证为历史。[恢复现场](../logs/session_records/q1_shared_v04_observer_recovered_1926_20261104.json)、[当前监督](README_Q1_SHARED_TRAINING_20261104.md)。
+
 2026-11-04 18:56：原27866观察连接发生独立新故障，一次有界恢复99440仅进入hp_han Windows，25362交互认证未完成、没有Linux shell，当前训练实时状态UNKNOWN。18:29:47两型各8600/160000轮是最后成功核验。训练授权保持，未停止/重启/热改；原完整五阶段goal实读blocked且接口无恢复active操作，q1保持ACTIVE十分钟同线程，采纳null。获得可用交互认证或用户恢复的Linux会话后继续原身份/实时状态核验，不逐心跳重试认证、不新建替代goal或agent。[本次故障](../logs/session_records/q1_shared_v04_observer_auth_pending_20261104.json)、[当前训练入口](README_Q1_SHARED_TRAINING_20261104.md)。
 
 2026-11-04 12:24:48连接已恢复：用户明确要求hp_han中转并提供本次交互认证后，27866已进入原Linux唯一ZHY根，原设备/五PID启动tick全同。V04 pipeline TRAINING/guard RUNNING，两型各2200完整轮，已过2000轮WM-only，motion/KP各200更新、两critic各4000/WM22000、非有限0/OOM0。原实际作业继续，未停止、重启、热改或重复测试。应用get_goal仍blocked且无恢复active操作，完整五阶段目标保留，不伪报active/complete或新替代goal；观察阻塞已解除，旧待恢复决定不再适用。q1通过应用工具更新并独立核保存ACTIVE/十分钟/同线程，健康进度安静；原总量策略、采纳null及其他任务保持。[完整现场与恢复](../logs/session_records/q1_shared_v04_connection_recovered_20261104.json)、[当前训练](README_Q1_SHARED_TRAINING_20261104.md)。下方12:11及更早为历史快照，三端记录补同步见恢复publication。

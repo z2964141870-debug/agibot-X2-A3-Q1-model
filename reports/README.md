@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06：[SuperMimic低延迟遥操首轮探索](README_Q1_LOW_LATENCY_SUPERMIMIC_20261106.md)。核准+1..+10/20-200ms目标、人体h=1..10掩码，以及本次kp_masking=full使preview_mix不生效的实际分支；并未训练短预览。5份一手资料与96组已保存上肢参考离线外推比较完成/4项检查通过，无新物理或训练。80-100ms真实预览加阻尼预测值得独立对照；直接200ms差分外推对噪声敏感，长期研究因果学生和执行端速度前馈。只作候选方案，未测Q1端到端延迟或自然性，原训练/final全门保持。[完整探索实据](../logs/session_records/q1_low_latency_supermimic_exploration_20261106.json)。
+
 2026-11-05：[共享16000轮三段中途回放与GPU原速媒体完成](README_Q1_INTERIM_REVIEW_20261105.md)。前走/起走/停走motion seed0均全长，服务器1587帧全解码/冻结输入完整性通过；滑移及跟踪改善，但起走右脚滑移约72mm/s、低离地与前走末漂移27cm仍在，非自然步态或最终验收。23:34原训练两型各38600/160000轮/非有限0/OOM0。小媒体包已到Windows，Mac回传22%时超时，残包已标.part；目视/上肢时序待原桥接恢复，原五阶段/final门/采纳null保持。[真实结果及训练快照](../logs/session_records/q1_interim16000_completed_result_20261105.json)。
 
 2026-11-05 21:36：[中途评估已实际提交后台，PID185291](README_Q1_INTERIM_REVIEW_20261105.md)。精简入口SHA核同已发布389ea8f/8服务器检查返回0，单次nohup+独立会话启动LEAN，提交快照两型各36350轮/OOM0/GPU健康。真实启动收据已回到Mac，完整训练快照/测试输出和结果路径在服务器；SSH随后Timeout，任务完成状态待取，不能据断线重复提交或称质量完成。后续只读此任务的回放/守卫/资源/媒体结果，原中途范围和完整final五阶段保持。[启动回执](../logs/session_records/q1_interim16000_lean_dispatch_receipt_20261105.json)。

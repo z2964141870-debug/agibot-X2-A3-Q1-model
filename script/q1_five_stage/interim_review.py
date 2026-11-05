@@ -27,12 +27,11 @@ HANDLES = {54868: "7431283", 55672: "7449427", 55677: "7449543",
            55678: "7449555", 55679: "7449555"}
 
 
-def resource_limits(sample, own_rss, gpu, initial=False):
+def resource_limits(sample, gpu, initial=False):
     require(sample["container_limit_bytes"] > 30 * GIB, "Container capacity changed")
     require(sample["oom_kill"] == 0 and sample["under_oom"] == 0, "Cgroup OOM changed")
     require(sample["total_bytes"] < (22 if initial else 24) * GIB,
             "Intermediate review memory reserve reached; stop only this review")
-    require(own_rss < 3 * GIB, "Intermediate review subtree RSS reached3GiB")
     require(gpu["used_mib"] < 18 * 1024 and gpu["temperature_c"] < 80
             and gpu["recovery"] == "None", "Intermediate graphics reserve reached")
 
@@ -83,7 +82,6 @@ class ReviewBudget:
         current = time.monotonic()
         if self.last_gpu is None or current - self.gpu_time >= 2:
             self.last_gpu, self.gpu_time = gpu_snapshot(self.config), current
-        resource_limits(sample, own_rss, self.last_gpu)
         require(current - self.started < 1800, "Intermediate review reached30min wall bound")
         tree = allocated_tree(self.output)
         require(tree["unique_allocated_bytes"] < 3 * GIB
@@ -98,6 +96,7 @@ class ReviewBudget:
             memory_reclaim_attempted=False, gpu_lock_owner=55672,
             note="RSS can count shared mappings repeatedly; limits stop only the review.")
         save(self.output / "resources.json", row)
+        resource_limits(sample, self.last_gpu)
         return row
 
 
@@ -111,7 +110,7 @@ def preflight(args):
     config, runtime = read(args.config), read(args.runtime_config)
     require(Path(config["output"]) == TRAINING, "Not the authorized formal experiment")
     live(config)
-    resource_limits(memory(Path("/sys/fs/cgroup/memory")), 0, gpu_snapshot(config), initial=True)
+    resource_limits(memory(Path("/sys/fs/cgroup/memory")), gpu_snapshot(config), initial=True)
     require(shutil.disk_usage(ROOT).free >= 103 * GIB, "Require review budget plus100GiB")
     pipeline = read(TRAINING / "pipeline.json")
     plan_path = TRAINING / "e1024_train_plan.json"
@@ -139,6 +138,29 @@ def preflight(args):
     require(source_inputs and all(identity(row["path"]) == row for row in source_inputs),
             "Frozen training source or assets changed")
     return config, runtime, plan, frozen, source_inputs
+
+
+def reusable_audit(path, plan, iteration):
+    value = read(path)
+    authorization = read(path.parent / "authorization.json")
+    guard = read(path.parent / "audit.guard.json")
+    require(authorization["original_training_commit"] == COMMIT
+            and authorization["plan"] == identity(TRAINING / "e1024_train_plan.json")
+            and valid_commit(authorization["evaluation_commit"]), "Reused audit has another provenance")
+    require(guard["status"] == "WORKER_COMPLETED"
+            and guard["cleanup"]["worker_reaped"] is True
+            and guard["cleanup"]["worker_return_code"] == 0
+            and value["status"] == "PASSED" and value["cuda_initialized"] is False
+            and value["iteration"] == iteration, "Reuse requires a clean completed CPU audit")
+    require({row["robot"] for row in value["records"]} == {"g1", "q1"}
+            and len(value["records"]) == 2, "Reuse requires both robot audits")
+    for row in value["records"]:
+        expected = Path(plan["output"]) / "run" / row["robot"] / f"ckpt_{iteration}.pt"
+        require(row["iteration"] == iteration and row["finite_tensors"] == 330
+                and row["inference_metadata"]["code_commit"] == COMMIT
+                and Path(row["checkpoint"]["path"]) == expected
+                and identity(expected) == row["checkpoint"], "Audited checkpoint changed before reuse")
+    return value
 
 
 def audit(args, config, plan):
@@ -228,16 +250,20 @@ def execute(args):
             return audit(args, config, plan)
         return replay(args, config, runtime, plan, read(config["frozen_data"]))
     config, runtime, plan, frozen, sources = preflight(args)
+    reused = reusable_audit(args.reuse_audit, plan, args.iteration) if args.reuse_audit else None
     args.output.mkdir(exist_ok=False)
     save(args.output / "authorization.json", dict(stage="INTERMEDIATE_ONLY", started_utc=now(),
         evaluation_commit=args.evaluation_commit, original_training_commit=COMMIT,
         plan=identity(TRAINING / "e1024_train_plan.json"), source_inputs=sources,
         cases=[dict(clip=name, interface="motion", seed=0) for name in FIXED],
-        memory_admission_bytes=22 * GIB, memory_exit_bytes=24 * GIB, subtree_rss_exit_bytes=3 * GIB,
+        memory_admission_bytes=22 * GIB, memory_exit_bytes=24 * GIB, subtree_rss_is_diagnostic=True,
         gpu_used_exit_mib=18 * 1024, gpu_temperature_exit_c=80,
         training_guard_pressure_bytes=30 * GIB, training_guard_gpu_lock_owner=55672,
         concurrent_graphics_requested_by_user=True, training_inputs_modified=False,
+        reused_checkpoint_audit=identity(args.reuse_audit) if args.reuse_audit else None,
         final_acceptance=False, g1_quality_assessed=False, user_accepted_checkpoint=None))
+    if reused is not None:
+        save(args.output / "checkpoint_audit.json", reused)
     env = dict(os.environ, CUDA_VISIBLE_DEVICES="", OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1",
         MKL_NUM_THREADS="1", MUJOCO_GL="egl", PYOPENGL_PLATFORM="egl", EGL_PLATFORM="surfaceless",
         Q1_REVIEW_FFMPEG=runtime["ffmpeg"],
@@ -258,6 +284,8 @@ def execute(args):
     try:
         os.environ.update(env)
         for name, python in (("audit", runtime["morph_python"]), ("replay", runtime["primebot_python"])):
+            if name == "audit" and reused is not None:
+                continue
             command = [python, "-u", str(Path(__file__).resolve()), "--child", name,
                 "--config", str(args.config), "--runtime-config", str(args.runtime_config),
                 "--output", str(args.output), "--iteration", str(args.iteration),
@@ -283,5 +311,6 @@ if __name__ == "__main__":
         parser.add_argument("--" + key, type=Path, required=True)
     parser.add_argument("--iteration", type=int, required=True)
     parser.add_argument("--evaluation-commit", required=True)
+    parser.add_argument("--reuse-audit", type=Path)
     parser.add_argument("--child", choices=("audit", "replay"))
     execute(parser.parse_args())

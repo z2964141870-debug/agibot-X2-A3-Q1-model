@@ -1,0 +1,501 @@
+{
+  "stage": "Q1_INTERIM16000_AUDIT_AND_ADDITIONAL_RSS_LIMIT_ABORT",
+  "original_evaluation_commit": "450c106084ef6a00e5d88b925b96ab1c4a67d00e",
+  "publication": {
+    "independent_remote_verified": true,
+    "server_verification": {
+      "status": "PASSED",
+      "files": [
+        {
+          "relative": "AGENTS.md",
+          "bytes": 162248,
+          "sha256": "527f91b5f94d53fb46d00c9cd49f344cd9bb923a9ee3e7ce925df5e58bd5b368"
+        },
+        {
+          "relative": "reports/README.md",
+          "bytes": 197739,
+          "sha256": "03da813d5d0d288752d0f30af39e5ad036c09db15070cbb0d710c9a4eb021919"
+        },
+        {
+          "relative": "reports/README_CURRENT_STATE.md",
+          "bytes": 151374,
+          "sha256": "f10b7951377c90307012eb2aeecce059f92b99446dce28e3dc35ba5d79614a01"
+        },
+        {
+          "relative": "reports/README_Q1_SHARED_TRAINING_20261104.md",
+          "bytes": 36620,
+          "sha256": "9e6042af8fbc9672025051b9847e21d50b13f583ab58b6f86db5cce1dfade7f8"
+        },
+        {
+          "relative": "reports/README_Q1_INTERIM_REVIEW_20261105.md",
+          "bytes": 2793,
+          "sha256": "0f6e318eb3058a563eb6309e9983c209aa68dcdaaf8052c0de2cf1ec8e2849d3"
+        },
+        {
+          "relative": "logs/session_records/q1_shared_v04_observer_recovered_20261105.json",
+          "bytes": 60867,
+          "sha256": "362376999908b0df3f2f04d9f7ce7aad194f0b287c87b0cddc1636034637a7df"
+        },
+        {
+          "relative": "script/q1_five_stage/interim_review.py",
+          "bytes": 16066,
+          "sha256": "af3b29fbd22205eac50691d3e353d9350e1af2b52d6e4eca42e8ffed396245df"
+        },
+        {
+          "relative": "script/q1_five_stage/test_interim_review.py",
+          "bytes": 4009,
+          "sha256": "b37b794c3cc6e0676c1c11c360fbfa7d7ab137d08b94ef7281187bc0c8efa783"
+        },
+        {
+          "relative": "logs/session_records/q1_shared_v04_observer_auth_pending_2348_20261104.json",
+          "bytes": 13067,
+          "sha256": "d2e021e8b2b6ed3f8024d21072702c0f0765b5e9bf6583bb279a075faeaa7a4b"
+        },
+        {
+          "relative": "logs/session_records/q1_shared_v04_observer_fault_publication_2348_20261104.json",
+          "bytes": 4561,
+          "sha256": "9d12f388f8183cf83ddd9480c958d804ecd393397039925752bc587dd8ce09f8"
+        }
+      ],
+      "payload_bytes": 649344,
+      "server_cpu_tests": {
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "test_final_cli_still_rejects_live_training (test_interim_review.IntermediateTests.test_final_cli_still_rejects_live_training) ... ok\ntest_graphics_and_own_subtree_cannot_consume_training_reserve (test_interim_review.IntermediateTests.test_graphics_and_own_subtree_cannot_consume_training_reserve) ... ok\ntest_reserves_exit_below_original_training_pressure (test_interim_review.IntermediateTests.test_reserves_exit_below_original_training_pressure) ... ok\ntest_resource_abort_reaps_only_its_own_process_group (test_interim_review.IntermediateTests.test_resource_abort_reaps_only_its_own_process_group) ... ok\ntest_selects_exact_three_fixed_clips_in_order (test_interim_review.IntermediateTests.test_selects_exact_three_fixed_clips_in_order) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.015s\n\nOK\n"
+      },
+      "training_signals_sent": 0
+    }
+  },
+  "audit": {
+    "status": "PASSED",
+    "iteration": 16000,
+    "records": [
+      {
+        "robot": "g1",
+        "checkpoint": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/ckpt_16000.pt",
+          "bytes": 342744431,
+          "sha256": "d6dfeed25b2a68a2223bbe7dcbeca025e39081e36443de0fb4c56dc8e2b27ae4"
+        },
+        "iteration": 16000,
+        "optimizer_adam_steps": {
+          "wm_opt": [
+            160000
+          ],
+          "policy_opt": [
+            14000
+          ],
+          "critic_opt": [
+            280000
+          ],
+          "kp_opt": [
+            14000
+          ],
+          "critic_kp_opt": [
+            280000
+          ]
+        },
+        "finite_tensors": 330,
+        "actual_training": {
+          "iteration": 16000,
+          "collected_environment_transitions": 41369600,
+          "optimizer_updates": {
+            "wm_opt": 160000,
+            "policy_opt": 14000,
+            "critic_opt": 280000,
+            "kp_opt": 14000,
+            "critic_kp_opt": 280000
+          },
+          "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+          "fresh_initialization": true,
+          "profile_weights_reused": false
+        },
+        "inference_metadata": {
+          "robot": "g1",
+          "iteration": 16000,
+          "training_transitions": 41369600,
+          "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+          "hist_len": 10,
+          "cfg": {
+            "subset_yaml": "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/g1_paired.yaml",
+            "robot": "g1",
+            "num_envs": 1024,
+            "replay_capacity": 1000,
+            "wm_lr": 0.0002,
+            "policy_lr": 0.0002,
+            "critic_lr": 0.0002,
+            "wm_batches": 10,
+            "wm_batch": 512,
+            "window_k": 8,
+            "horizon": 32,
+            "imag_batch": 1024,
+            "utd": 0.4,
+            "warmup_env_steps": 400,
+            "wm_only_iters": 2000,
+            "iterations": 160000,
+            "lr_decay_iters": 500000,
+            "lr_final_frac": 0.03,
+            "gamma": 0.99,
+            "lam": 0.95,
+            "action_noise": 0.1,
+            "collect_det_frac": 0,
+            "clean_action_record": false,
+            "softmax_cap": null,
+            "failure_reset": 0,
+            "actuator_delay": true,
+            "actuator_delay_max_ms": 20,
+            "actuator_delay_fixed": true,
+            "hist_len": 10,
+            "ckpt_every": 16000,
+            "log_every": 50,
+            "seed": 0,
+            "log_dir": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train",
+            "run_name": "run",
+            "wandb": false,
+            "library_dtype": "float16",
+            "reset_norm": "remaining",
+            "wm_hidden": [
+              2048,
+              2048,
+              2048
+            ],
+            "wm_layer_norm": true,
+            "wm_frame": "root",
+            "residual_scale": "step",
+            "termination": "hazard",
+            "policy_hidden": [
+              2048,
+              1024,
+              512,
+              256
+            ],
+            "latent": 32,
+            "critic_hidden": [
+              256,
+              128
+            ],
+            "critic_layer_norm": true,
+            "critic_anchor_pos": true,
+            "goal_anchor": "reference",
+            "avoid_clip_end": true,
+            "clip_end_terminal": false,
+            "target_critic_alpha": null,
+            "critic_target_clip": true,
+            "value_bound": false,
+            "bf16": true,
+            "act": "elu",
+            "compile": "default",
+            "fused_adam": true,
+            "gpu_ids": null,
+            "lr_scale_sqrt_world_size": true,
+            "robots": [
+              "g1",
+              "q1"
+            ],
+            "subset_yamls": [
+              "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/g1_paired.yaml",
+              "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/q1_paired.yaml"
+            ],
+            "share": "all",
+            "morphology": true,
+            "actor_geometry": true,
+            "decoder_film": true,
+            "latent_align_weight": 0.05,
+            "latent_align_batch": 512,
+            "pool_norms": true,
+            "kp_interface": true,
+            "kp_env_frac": 0.5,
+            "kp_imag_batch": 1024,
+            "kp_masking": "full",
+            "kp_preview_mix": true,
+            "kp_heading_frac": 1,
+            "kp_student": "return",
+            "kp_jitter": true,
+            "kp_drift": false,
+            "kp_action_weight": 1,
+            "kp_align_weight": 0.1,
+            "kp_loss_norm": true,
+            "human_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/npz50/human50",
+            "policy_goal": "motion",
+            "recon_weight": 1
+          }
+        }
+      },
+      {
+        "robot": "q1",
+        "checkpoint": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_16000.pt",
+          "bytes": 342744495,
+          "sha256": "bc9dc07c334166296850b6f194ca81c4010acf7ffbbb61d0fcc0a240b0188959"
+        },
+        "iteration": 16000,
+        "optimizer_adam_steps": {
+          "wm_opt": [
+            160000
+          ],
+          "policy_opt": [
+            14000
+          ],
+          "critic_opt": [
+            280000
+          ],
+          "kp_opt": [
+            14000
+          ],
+          "critic_kp_opt": [
+            280000
+          ]
+        },
+        "finite_tensors": 330,
+        "actual_training": {
+          "iteration": 16000,
+          "collected_environment_transitions": 41369600,
+          "optimizer_updates": {
+            "wm_opt": 160000,
+            "policy_opt": 14000,
+            "critic_opt": 280000,
+            "kp_opt": 14000,
+            "critic_kp_opt": 280000
+          },
+          "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+          "fresh_initialization": true,
+          "profile_weights_reused": false
+        },
+        "inference_metadata": {
+          "robot": "q1",
+          "iteration": 16000,
+          "training_transitions": 41369600,
+          "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+          "hist_len": 10,
+          "cfg": {
+            "subset_yaml": "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/q1_paired.yaml",
+            "robot": "q1",
+            "num_envs": 1024,
+            "replay_capacity": 1000,
+            "wm_lr": 0.0002,
+            "policy_lr": 0.0002,
+            "critic_lr": 0.0002,
+            "wm_batches": 10,
+            "wm_batch": 512,
+            "window_k": 8,
+            "horizon": 32,
+            "imag_batch": 1024,
+            "utd": 0.4,
+            "warmup_env_steps": 400,
+            "wm_only_iters": 2000,
+            "iterations": 160000,
+            "lr_decay_iters": 500000,
+            "lr_final_frac": 0.03,
+            "gamma": 0.99,
+            "lam": 0.95,
+            "action_noise": 0.1,
+            "collect_det_frac": 0,
+            "clean_action_record": false,
+            "softmax_cap": null,
+            "failure_reset": 0,
+            "actuator_delay": true,
+            "actuator_delay_max_ms": 20,
+            "actuator_delay_fixed": true,
+            "hist_len": 10,
+            "ckpt_every": 16000,
+            "log_every": 50,
+            "seed": 0,
+            "log_dir": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train",
+            "run_name": "run",
+            "wandb": false,
+            "library_dtype": "float16",
+            "reset_norm": "remaining",
+            "wm_hidden": [
+              2048,
+              2048,
+              2048
+            ],
+            "wm_layer_norm": true,
+            "wm_frame": "root",
+            "residual_scale": "step",
+            "termination": "hazard",
+            "policy_hidden": [
+              2048,
+              1024,
+              512,
+              256
+            ],
+            "latent": 32,
+            "critic_hidden": [
+              256,
+              128
+            ],
+            "critic_layer_norm": true,
+            "critic_anchor_pos": true,
+            "goal_anchor": "reference",
+            "avoid_clip_end": true,
+            "clip_end_terminal": false,
+            "target_critic_alpha": null,
+            "critic_target_clip": true,
+            "value_bound": false,
+            "bf16": true,
+            "act": "elu",
+            "compile": "default",
+            "fused_adam": true,
+            "gpu_ids": null,
+            "lr_scale_sqrt_world_size": true,
+            "robots": [
+              "g1",
+              "q1"
+            ],
+            "subset_yamls": [
+              "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/g1_paired.yaml",
+              "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/q1_paired.yaml"
+            ],
+            "share": "all",
+            "morphology": true,
+            "actor_geometry": true,
+            "decoder_film": true,
+            "latent_align_weight": 0.05,
+            "latent_align_batch": 512,
+            "pool_norms": true,
+            "kp_interface": true,
+            "kp_env_frac": 0.5,
+            "kp_imag_batch": 1024,
+            "kp_masking": "full",
+            "kp_preview_mix": true,
+            "kp_heading_frac": 1,
+            "kp_student": "return",
+            "kp_jitter": true,
+            "kp_drift": false,
+            "kp_action_weight": 1,
+            "kp_align_weight": 0.1,
+            "kp_loss_norm": true,
+            "human_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/npz50/human50",
+            "policy_goal": "motion",
+            "recon_weight": 1
+          }
+        }
+      }
+    ],
+    "cuda_initialized": false
+  },
+  "replay_guard": {
+    "status": "FAILED",
+    "command": [
+      "/opt/data/private/ZHY/data/environments/primebot_supermimic_118338b_20261103/bin/python",
+      "-u",
+      "/opt/data/private/ZHY/script/q1_five_stage/interim_review.py",
+      "--child",
+      "replay",
+      "--config",
+      "/opt/data/private/ZHY/script/q1_five_stage/conditional_shared_v04_20261104.json",
+      "--runtime-config",
+      "/opt/data/private/ZHY/data/manifests/primebot_q1_monitored_config_20261103.json",
+      "--output",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_20261105",
+      "--iteration",
+      "16000",
+      "--evaluation-commit",
+      "450c106084ef6a00e5d88b925b96ab1c4a67d00e"
+    ],
+    "cwd": "/opt/data/private/ZHY",
+    "started_utc": "2026-11-05T04:06:19.080158+00:00",
+    "controller_pid": 149343,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "memory": {
+        "total_bytes": 24287694848,
+        "container_limit_bytes": 34292629504,
+        "immediate_headroom_bytes": 10004934656,
+        "guard_headroom_bytes": 7924559872,
+        "total_cache_bytes": 10419556352,
+        "total_rss_bytes": 12578103296,
+        "total_shmem_bytes": 32714752,
+        "total_dirty_bytes": 3244032,
+        "total_writeback_bytes": 2703360,
+        "oom_kill": 0,
+        "under_oom": 0
+      },
+      "review_subtree_rss_bytes": 3168329728,
+      "gpu": {
+        "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+        "used_mib": 16177,
+        "temperature_c": 51,
+        "recovery": "None"
+      },
+      "maximum_total_bytes": 24355082240,
+      "maximum_review_rss_bytes": 3168329728,
+      "maximum_gpu_used_mib": 16177,
+      "storage": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_20261105",
+        "unique_allocated_bytes": 81920,
+        "unique_logical_bytes": 70640,
+        "unique_inodes": 10,
+        "symlinks_not_followed": 0
+      },
+      "training_signals_sent": 0,
+      "memory_reclaim_attempted": false,
+      "gpu_lock_owner": 55672,
+      "note": "RSS can count shared mappings repeatedly; limits stop only the review."
+    },
+    "error": "RuntimeError: Intermediate review subtree RSS reached3GiB",
+    "worker_pid": 149357,
+    "worker_group": 149357,
+    "cleanup": {
+      "worker_started": true,
+      "worker_pid": 149357,
+      "worker_group": 149357,
+      "worker_reaped": true,
+      "worker_return_code": -15
+    },
+    "ended_utc": "2026-11-05T04:06:33.611980+00:00"
+  },
+  "resources_last_accepted": {
+    "memory": {
+      "total_bytes": 24287694848,
+      "container_limit_bytes": 34292629504,
+      "immediate_headroom_bytes": 10004934656,
+      "guard_headroom_bytes": 7924559872,
+      "total_cache_bytes": 10419556352,
+      "total_rss_bytes": 12578103296,
+      "total_shmem_bytes": 32714752,
+      "total_dirty_bytes": 3244032,
+      "total_writeback_bytes": 2703360,
+      "oom_kill": 0,
+      "under_oom": 0
+    },
+    "review_subtree_rss_bytes": 3168329728,
+    "gpu": {
+      "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      "used_mib": 16177,
+      "temperature_c": 51,
+      "recovery": "None"
+    },
+    "maximum_total_bytes": 24355082240,
+    "maximum_review_rss_bytes": 3168329728,
+    "maximum_gpu_used_mib": 16177,
+    "storage": {
+      "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_20261105",
+      "unique_allocated_bytes": 81920,
+      "unique_logical_bytes": 70640,
+      "unique_inodes": 10,
+      "symlinks_not_followed": 0
+    },
+    "training_signals_sent": 0,
+    "memory_reclaim_attempted": false,
+    "gpu_lock_owner": 55672,
+    "note": "RSS can count shared mappings repeatedly; limits stop only the review."
+  },
+  "replay_case_outputs_present": false,
+  "new_bridge_fault": {
+    "session_id": 28127,
+    "exit_code": 255,
+    "message": "Timeout, server 100.65.183.91 not responding.",
+    "mirror_started": false,
+    "interim_audit_started": false,
+    "interim_replay_started": false,
+    "bounded_recovery_attempts": 1
+  },
+  "recovered_session": 5944,
+  "credentials_persisted": false,
+  "correction": "Use actual cgroup total rather than subtree RSS which double-counts shared runtime mappings. Keep independent24GiB total exit,22GiB admission,18GiB GPU/80C,original training30GiB/86C/lock. Preserve failed root and reuse the clean CPU audit after fresh checkpoint size/SHA verification.",
+  "training_signals_sent": 0,
+  "final_gate_unchanged": true,
+  "goal_read_or_updated": false
+}

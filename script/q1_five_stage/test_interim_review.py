@@ -9,7 +9,7 @@ import unittest
 from unittest.mock import patch
 
 from common import FIXED
-from interim_review import GIB, fixed_rows, resource_limits
+from interim_review import GIB, ReviewBudget, fixed_rows, resource_limits
 from native_review import ready_training
 import runtime_guard
 
@@ -21,21 +21,36 @@ class IntermediateTests(unittest.TestCase):
         self.gpu = dict(used_mib=16177, temperature_c=52, recovery="None")
 
     def test_reserves_exit_below_original_training_pressure(self):
-        resource_limits(self.memory, 2 * GIB, self.gpu, initial=True)
+        resource_limits(self.memory, self.gpu, initial=True)
         for key, value in (("total_bytes", 24 * GIB), ("container_limit_bytes", 30 * GIB),
                            ("oom_kill", 1), ("under_oom", 1)):
             bad = dict(self.memory, **{key: value})
             with self.subTest(key=key), self.assertRaises(RuntimeError):
-                resource_limits(bad, 0, self.gpu)
+                resource_limits(bad, self.gpu)
         with self.assertRaises(RuntimeError):
-            resource_limits(dict(self.memory, total_bytes=22 * GIB), 0, self.gpu, initial=True)
+            resource_limits(dict(self.memory, total_bytes=22 * GIB), self.gpu, initial=True)
 
-    def test_graphics_and_own_subtree_cannot_consume_training_reserve(self):
-        with self.assertRaises(RuntimeError):
-            resource_limits(self.memory, 3 * GIB, self.gpu)
+    def test_graphics_cannot_consume_training_reserve(self):
         for key, value in (("used_mib", 18 * 1024), ("temperature_c", 80), ("recovery", "Reset")):
             with self.subTest(key=key), self.assertRaises(RuntimeError):
-                resource_limits(self.memory, 0, dict(self.gpu, **{key: value}))
+                resource_limits(self.memory, dict(self.gpu, **{key: value}))
+
+    def test_shared_mapping_rss_is_diagnostic_and_total_remains_binding(self):
+        with tempfile.TemporaryDirectory() as directory, patch("interim_review.live"), \
+                patch("interim_review.memory", return_value=self.memory), \
+                patch("interim_review.process", return_value={}), \
+                patch("interim_review.subtree", return_value=[dict(pid=1, VmRSS_bytes=6 * GIB)]), \
+                patch("interim_review.gpu_snapshot", return_value=self.gpu), \
+                patch("interim_review.allocated_tree", return_value=dict(unique_allocated_bytes=0)), \
+                patch("interim_review.shutil.disk_usage") as disk:
+            disk.return_value.free = 200 * GIB
+            budget = ReviewBudget({}, Path(directory))
+            self.assertEqual(budget.check()["review_subtree_rss_bytes"], 6 * GIB)
+            self.memory["total_bytes"] = 24 * GIB
+            with self.assertRaisesRegex(RuntimeError, "memory reserve"):
+                budget.check()
+            saved = json.loads((Path(directory) / "resources.json").read_text())
+            self.assertEqual(saved["maximum_total_bytes"], 24 * GIB)
 
     def test_selects_exact_three_fixed_clips_in_order(self):
         frozen = dict(rows=[dict(q1_primebot=dict(path="/data/" + name + ".npz"))

@@ -1,0 +1,69 @@
+{
+  "stage": "Q1_LOW_LATENCY_LONG_TERM_GOAL_ACTIVATED",
+  "local_date": "2026-11-06",
+  "authorized_request": "制定一个目标，长期执行，至少需要执行到北京时间2026年11月6日早上10点；如果是训练，可以往后继续延，主要探索低延迟SuperMimic遥操可能性。",
+  "goal_initial_read": null,
+  "goal_created": {
+    "threadId": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "objective": "长期探索并验证低延迟SuperMimic/MorphMimic用于Q1自然遥操的可行性，持续实际推进，最早不得在北京时间2026-11-06 10:00:00（2026-11-06T02:00:00Z）之前标记完成。10:00是最低执行时限而非强制停止；若独立训练/验证仍在进行，继续到其完成和结果交付。用户2026-11-06明确授权本新目标及必要独立实验/训练，覆盖此前清除goal/不新goal的历史限制；不重建或结算旧五阶段goal，保留原训练及其final全门。基于reports/README_Q1_LOW_LATENCY_SUPERMIMIC_20261106.md和96组离线结果，依次实现可审计的实时可见性/时间戳接口及因果评测，进行同一human接口同权重H10/H5/H4/H2/H1对照、短缓冲加保持/阻尼/学习型预测尾部对照，再根据实据选择因果学生和独立执行前馈实验。预测须无未来泄漏、SE(3)/速度/根与接触时间一致，考虑急停、反向、丢包、噪声和滤波相位；报告预览预算与端到端实测的区别，不能以参考预测误差或reward/loss宣称机器人自然性合格。可用安全资源下实施有界独立训练并优先GPU；原3090被V04 guard持锁或内存/GPU无安全余量时不争用锁、不停/重启/热改原训练，不擅改原保存频率、动力学或保护线，继续可独立完成的实现/数据/本地实验。原Windows原生25362桥接可作有界恢复，使用已授权交互认证且不存储认证，不换端口/转发或无限认证重试；训练失联如实UNKNOWN。利用已有完整16000权重审计及三段motion回放，不重复完成物理/媒体；补传媒体与真正的新低延迟对照分开。交付可复现工具和配置、同基线延迟-跟踪-自然性对照、原速媒体与失败记录、被支持/不被支持的路线和后续训练建议；真实遥操或闭环验证做不到则明确缺口并给可执行替代，不能伪造完成。重要阶段更新README/索引/CURRENT_STATE/审计/显式提交推送origin Q1/独立40位远端及Mac镜像校验，服务器镜像受连接影响可明确待补。只在有实质结果、异常、阶段完成或需要用户动作时通知；不以重复测试、空等或状态重述充进展。不要新建agent或修改其他用户自动任务，用户采纳null。",
+    "status": "active",
+    "tokensUsed": 8426,
+    "timeUsedSeconds": 213,
+    "createdAt": 1793896724,
+    "updatedAt": 1793896938
+  },
+  "goal_verified_status": "active",
+  "token_budget_requested": false,
+  "minimum_execution_until": "2026-11-06T10:00:00+08:00",
+  "minimum_execution_until_utc": "2026-11-06T02:00:00Z",
+  "hard_stop_at_minimum": false,
+  "extend_for_training_and_validation": true,
+  "automation": {
+    "id": "q1",
+    "name": "Q1低延迟遥操长期探索",
+    "kind": "heartbeat",
+    "status": "ACTIVE",
+    "interval_minutes": 10,
+    "target_thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "app_created_and_saved_file_independently_read": true,
+    "created_at": 1793896759695,
+    "updated_at": 1793896759695
+  },
+  "other_automations": [
+    {
+      "id": "yuanqi",
+      "status": "ACTIVE",
+      "updated_at": 1792977145335,
+      "modified": false
+    },
+    {
+      "id": "automation",
+      "status": "PAUSED",
+      "updated_at": 1791954413901,
+      "modified": false
+    }
+  ],
+  "plan": "script/supermimic_teleop/long_term_plan_20261106.json",
+  "report": "reports/README_Q1_LOW_LATENCY_LONG_TERM_20261106.md",
+  "next_work": "Stream timestamp/visibility/causality contract before new human short-preview replay entry.",
+  "execution": {
+    "new_training_started": false,
+    "original_training_changed": false,
+    "agents_spawned": false,
+    "physics_steps": 0,
+    "gpu_jobs_started": 0,
+    "original_live_training": "UNKNOWN_AFTER_2026-11-05T23:34:47+08:00",
+    "old_completed_evaluation_rerun": false
+  },
+  "old_five_stage_and_final_gates_preserved": true,
+  "scope_complete": false,
+  "user_accepted_checkpoint": null,
+  "official_documentation": [
+    "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex",
+    "https://developers.openai.com/codex/app/automations"
+  ],
+  "publication": {
+    "git_and_mac": "PENDING_THIS_STAGE",
+    "server": "PENDING_ORIGINAL_BRIDGE"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "experiment": "Q1_LOW_LATENCY_LONG_TERM_20261106",
+  "authorized_local_date": "2026-11-06",
+  "minimum_execution_until": "2026-11-06T10:00:00+08:00",
+  "minimum_execution_until_utc": "2026-11-06T02:00:00Z",
+  "deadline_is_stop_time": false,
+  "continue_while_training_or_validation_runs": true,
+  "goal_status_at_creation": "active",
+  "heartbeat_id": "q1",
+  "heartbeat_minutes": 10,
+  "target_thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914",
+  "baseline": {
+    "robot": "q1",
+    "interface": "human",
+    "checkpoint_iteration": 16000,
+    "physics": "locked Primebot common CPU physics",
+    "policy": "isolated Morph policy runtime",
+    "current_mask_training": "full; preview_mix does not alter this branch",
+    "first_horizon": 10,
+    "seeds": [0],
+    "fixed_clips": [
+      "walk_forward_loop_001__A022",
+      "walk_forward_start_002__A023",
+      "walk_forward_stop_002__A024"
+    ]
+  },
+  "stages": [
+    {
+      "id": "stream_contract",
+      "status": "NEXT",
+      "work": "Implement captured/arrived/control timestamps, visible-prefix selection, stale/drop behavior and no-future-leak checks. Keep target time offsets and source identity explicit."
+    },
+    {
+      "id": "masked_horizon_replays",
+      "status": "PENDING_STREAM_AND_RESOURCE_GATES",
+      "interface": "human",
+      "horizons": [10, 5, 4, 2, 1],
+      "work": "New independent output root; same checkpoint, plant, clips and seed. Keep original motion final gate unchanged. Separate actual buffered frames from oracle future."
+    },
+    {
+      "id": "predictive_tail_replays",
+      "status": "PENDING_BASELINE",
+      "buffer_frames": [4, 5],
+      "tail_methods": ["masked", "hold", "damped_cv", "learned_if_validated"],
+      "damped_tau_s": 0.12,
+      "work": "Preserve ten 20ms slots; compare actual observations plus causal forecasts. Check pose/rotation, velocity, anchor and support consistency. Include noisy input, abrupt stops, reversals and loss."
+    },
+    {
+      "id": "bounded_predictor_training",
+      "status": "CONDITIONAL_ON_DATA_AND_RESOURCE_GATES",
+      "work": "Use held-out whole clips and bounded streaming data/model memory. Train a small causal forecaster only if the data and simple baselines justify it; keep test clips untouched. Prefer an available safe GPU; never contend with the original guard lock."
+    },
+    {
+      "id": "causal_student_and_execution_phase",
+      "status": "CONDITIONAL_ON_RESULTS",
+      "work": "Select a current-target/history student or separately versioned velocity-feedforward experiment based on observed failures. Account for teacher gait limitations and changed plant dynamics."
+    },
+    {
+      "id": "evidence_and_decision",
+      "status": "PENDING_ACTUAL_COMPARISONS",
+      "work": "Compare latency, completeness, clearance, alternation, loaded slip, tilt, upper timing, abrupt actions and saturation. Deliver original-speed media and reproducible evidence; identify unsupported claims and remaining live-teleop gaps."
+    }
+  ],
+  "resource_policy": {
+    "original_training_inputs_frozen": true,
+    "stop_or_restart_original_training": false,
+    "new_training_requires_independent_root_and_bounded_plan": true,
+    "gpu_training_requires_uncontended_authorized_lock": true,
+    "gpu_rendering_preferred_with_separate_early_exit_guard": true,
+    "review_total_memory_exit_bytes": 25769803776,
+    "review_gpu_exit_mib": 18432,
+    "review_gpu_exit_c": 80,
+    "original_training_memory_line_bytes": 32212254720,
+    "original_training_temperature_line_c": 86,
+    "reserve_disk_bytes": 107374182400,
+    "no_global_cache_maintenance": true,
+    "when_unavailable": "Continue independent implementation/data/analysis. Do not fabricate tests or repeat completed work to wait for resources."
+  },
+  "completion_requirements": [
+    "No completion before the minimum Beijing time",
+    "No required independent training or validation still running",
+    "Reproducible implementation and actual comparative evidence or clearly bounded failures",
+    "Preview latency distinguished from measured end-to-end latency",
+    "Naturalness assessed separately from loss/reward and reference forecast RMSE",
+    "Published reports, artifacts and limitations; user acceptance remains null"
+  ],
+  "old_five_stage_and_final_gates_preserved": true,
+  "agents_authorized": false,
+  "user_accepted_checkpoint": null
+}

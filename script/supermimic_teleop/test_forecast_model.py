@@ -2,6 +2,8 @@
 
 from dataclasses import replace
 import importlib.util
+from pathlib import Path
+import tempfile
 import unittest
 
 import numpy as np
@@ -87,6 +89,26 @@ class ForecastModelTests(unittest.TestCase):
         restored = make_model()
         restored.load_state_dict({key: value.detach().cpu().clone() for key, value in model.state_dict().items()})
         self.assertTrue(torch.equal(model(inputs), restored(inputs)))
+        from forecast_data import identity
+        from forecast_eval import _load_gru
+        fit = NormalizationFit()
+        window = training_window()
+        fit.update(window)
+        normalization = fit.freeze()
+        plan = dict(clips=[dict(relative=window.relative, split="train")])
+        plan_identity = dict(bytes=123, sha256="a"*64)
+        with tempfile.TemporaryDirectory() as tmp:
+            checkpoint = Path(tmp) / "forecast.pt"
+            torch.save(dict(model=model.state_dict(), spec=ForecastSpec().to_dict(),
+                            plan_identity=plan_identity, status="COMPLETED", optimizer_updates=1,
+                            normalization=normalization.to_dict()), checkpoint)
+            predict, checkpoint_id = _load_gru(checkpoint, plan, plan_identity, "cpu")
+            self.assertEqual(checkpoint_id, identity(checkpoint))
+            history = encode_history(window.input_positions, window.input_quaternions)
+            with torch.inference_mode():
+                expected = normalization.physical(model(torch.from_numpy(
+                    normalization.inputs(history.features)[None]))[0].numpy())
+            np.testing.assert_array_equal(predict(history), expected)
         self.assertFalse(torch.cuda.is_initialized())
 
 

@@ -28,6 +28,37 @@ HUMAN_NAMES = (
 SPLITS = ("train", "validation", "test")
 
 
+def window_items(plan, split, limit=None):
+    """Use complete sources; bounded subsets spread cutoffs across every source."""
+    if split not in SPLITS or (limit is not None and (type(limit) is not int or limit <= 0)):
+        raise ValueError("Require a declared split and a positive window limit")
+    first = plan["history_frames"] - 1
+    rows = sorted((row for row in plan["clips"] if row["split"] == split
+                   and row["frames"] - plan["future_frames"] > first), key=lambda row: row["relative"])
+    sizes = [row["frames"] - plan["future_frames"] - first for row in rows]
+    if limit is None or limit >= sum(sizes):
+        return [(row["relative"], cutoff) for row in rows
+                for cutoff in range(first, row["frames"] - plan["future_frames"])]
+    if limit < len(rows):
+        selected = np.linspace(0, len(rows)-1, limit, dtype=int)
+        rows, sizes = [rows[i] for i in selected], [sizes[i] for i in selected]
+    counts, remaining = [0]*len(rows), limit
+    while remaining:
+        active = [i for i, size in enumerate(sizes) if counts[i] < size]
+        share = max(1, remaining // len(active))
+        for i in active:
+            take = min(share, sizes[i]-counts[i], remaining)
+            counts[i] += take
+            remaining -= take
+            if not remaining:
+                break
+    result = []
+    for row, size, count in zip(rows, sizes, counts):
+        offsets = [size//2] if count == 1 else np.linspace(0, size-1, count, dtype=int)
+        result.extend((row["relative"], first + int(offset)) for offset in offsets)
+    return result
+
+
 def identity(path):
     path = Path(path)
     digest = hashlib.sha256()

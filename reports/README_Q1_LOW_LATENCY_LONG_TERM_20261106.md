@@ -40,6 +40,8 @@
 
 06:33新增独立 `forecast_eval.py`，对每个未来20至200ms槽报告世界位置、根位置和姿态测地线误差，统一比较hold、常速度、阻尼常速度及可选GRU；验证集选型、测试集只报告，预测只读25帧历史。新增3项测试后本地完整套件为87项84通过、3项固定Torch/原生运行时跳过。一次按用户“桥接稳定”发起的交互连接在密码提示后仍以Broken pipe退出255，未进入Windows/Linux、未上传或下发；服务器侧车和训练继续待可用会话。[评估准备审计](../logs/session_records/q1_teleop_forecast_evaluation_preparation_20261106.json)
 
+07:06补审完成：预测评估v2采用欧氏距离RMS，默认每split2048个来源均衡、片内等距窗口，保留逐片误差；validation选型落盘后才读test标签。GPU推理复用非阻塞锁，CPU仅数值评估受原资源门保护；checkpoint核全schema/split/仅train归一化和有限张量，训练时限覆盖准备到保存。96项93通过3固定Torch/原生待，0真实侧车、训练、机器人策略/物理或CUDA；原3b1cd18短预览campaign仍未下发，不能用本地通过冒充闭环。q1保存字段实核ACTIVE十分钟同聊天，goal仍active最低今日10:00；不循环认证。[补审实据](../logs/session_records/q1_teleop_forecast_eval_guard_audit_20261106.json)
+
 机器可读执行清单在script/supermimic_teleop/long_term_plan_20261106.json。阶段状态要随真实进度更新，不一次性全部标完成。
 
 ## 实验判据与时间语义

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06 07:06：[预测训练/评估补审通过](README_Q1_TELEOP_FORECAST_TRAINING_20261106.md)。v2位置口径统一欧氏RMS，2048窗口来源均衡/逐片报告，先冻结validation选择再读test；训练协作式总时限覆盖归一化到保存，GPU推理/训练持同一非阻塞锁，真实文件锁拒绝及CPU资源门已验证。96项93过3项Torch/原运行时待；0真实侧车/训练/机器人策略物理/CUDA。已有06:33记录的Windows认证后Broken pipe仍未恢复Linux，原V04实时UNKNOWN，不重试认证/重发原回放。下一步在可用会话核原身份、全现场/资源与393侧车，再执行已发布独立campaign及安全预测训练/评估。goal active最低今日10:00，q1保存字段ACTIVE十分钟同聊天，原final/五阶段/采纳null保持。[审计](../logs/session_records/q1_teleop_forecast_eval_guard_audit_20261106.json)。
+
 2026-11-06 06:17：[桥接一次有界探测结果](../logs/session_records/q1_teleop_bridge_probe_20261106.json)。Windows `100.65.183.91:22` 的TCP探测短暂成功，但随后的SSH在进入shell前以255超时；未到Windows/Linux、未提交认证、未上传或下发训练/评估。训练和设备实时状态继续UNKNOWN，不据断线停止或重启；不循环认证。低延迟预测实现已发布，服务器侧车审计/安全GPU训练待真正可用会话；goal active最低10:00，原V04/final/五阶段/采纳null保持。
 
 2026-11-06：[低延迟预测模型和独立训练入口已准备](README_Q1_TELEOP_FORECAST_TRAINING_20261106.md)。历史25帧/未来10槽特征216维、标签144维，根/相对身体/旋转和速度同50Hz时间轴，单向GRU128零输出等价hold；训练归一化只用train，默认安全CUDA/独立锁，22GiB起始、24GiB运行、18GiB GPU、80°C和100GiB磁盘保护。84项81过3本机Torch/原运行时待，尚未读取服务器侧车、训练、推理物理或新认证；桥接/原训练实时UNKNOWN，原final/五阶段/采纳null保持。下一步恢复后先核原身份/资源/锁，审计393侧车，再决定是否一次有界GPU训练。[审计](../logs/session_records/q1_teleop_forecast_training_preparation_20261106.json)。

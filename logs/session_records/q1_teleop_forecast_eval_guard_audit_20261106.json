@@ -1,0 +1,67 @@
+{
+  "stage": "Q1_CAUSAL_FORECAST_EVALUATION_AND_TRAIN_BUDGET_GUARDS",
+  "observed_local": "2026-11-06T07:06:41+08:00",
+  "supersedes_unexecuted_evaluator_commit": "dc1093f6a980a783556cf22bf034d29d52a3f10a",
+  "evaluation_schema": "q1_causal_forecast_evaluation_v2",
+  "metrics": "per-horizon RMS Euclidean position/root distance and SO(3) geodesic orientation, plus per-clip reports",
+  "selection": {
+    "split": "validation",
+    "selection_written_before_test_labels_read": true,
+    "test_used_for_selection": false,
+    "default_windows_per_split": 2048,
+    "maximum_bounded_windows_per_split": 8192,
+    "sampling": "source_balanced_uniform_cutoffs_v1",
+    "same_window_hashes_for_all_methods": true
+  },
+  "resource_boundaries": {
+    "training_and_cuda_evaluation_require_nonblocking_original_gpu_lock": true,
+    "cpu_numerical_evaluation_may_allow_original_compute_after_resource_admission": true,
+    "start_memory_bytes": 23622320128,
+    "runtime_memory_bytes": 25769803776,
+    "gpu_limit_mib": 18432,
+    "gpu_temperature_c": 80,
+    "disk_reserve_bytes": 107374182400,
+    "max_seconds_includes_normalization_validation_and_saving": 1800,
+    "wall_limit_type": "cooperative checks between numerical operations; not an external hard timeout",
+    "real_local_file_lock_conflict_checked": true,
+    "original_training_signals_sent": 0
+  },
+  "checkpoint_contract": {
+    "cpu_save_and_restricted_weights_read": true,
+    "exact_model_schema_and_plan_identity": true,
+    "positive_optimizer_updates": true,
+    "normalization_covers_train_sources_only": true,
+    "finite_tensors_and_before_after_sha": true,
+    "actual_torch_roundtrip_still_pending_server": true
+  },
+  "verification": {
+    "full_teleop_tests": 96,
+    "passed": 93,
+    "skipped_missing_torch_or_native_runtime": 3,
+    "failures": 0,
+    "runtime_seconds": 0.206,
+    "warnings_as_errors": "PASSED",
+    "compileall_and_diff_check": "PASSED",
+    "known_three_cm_offset_reported_three_cm": true,
+    "contradictory_test_preference_did_not_change_validation_selection": true
+  },
+  "new_real_sidecars_read": 0,
+  "new_training_optimizer_updates": 0,
+  "new_robot_policy_inference": 0,
+  "new_physics_steps": 0,
+  "new_cuda_jobs": 0,
+  "new_authentication_attempts_in_guard_phase": 0,
+  "bridge_state": "UNRECOVERED_AFTER_EXISTING_BROKEN_PIPE_RECORD",
+  "original_training_live_state": "UNKNOWN",
+  "heartbeat_saved_fields": {
+    "id": "q1",
+    "status": "ACTIVE",
+    "interval_minutes": 10,
+    "target_thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914"
+  },
+  "goal_status": "active",
+  "minimum_execution_until": "2026-11-06T10:00:00+08:00",
+  "whole_goal_complete": false,
+  "server_sync": "PENDING_USABLE_ORIGINAL_WINDOWS_BRIDGE",
+  "user_accepted_checkpoint": null
+}

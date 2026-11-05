@@ -73,8 +73,12 @@
     },
     {
       "id": "bounded_predictor_training",
-      "status": "GEOMETRY_MODEL_AND_BOUNDED_GPU_TRAIN_ENTRY_READY_REAL_SIDECARS_AND_TRAINING_PENDING",
+      "status": "MODEL_TRAINER_AND_EVALUATOR_LOCAL_GUARDS_VERIFIED_REAL_SIDECARS_AND_TRAINING_PENDING",
       "evidence": "logs/session_records/q1_teleop_forecast_training_preparation_20261106.json",
+      "evaluation_evidence": "logs/session_records/q1_teleop_forecast_eval_guard_audit_20261106.json",
+      "evaluation_schema": "q1_causal_forecast_evaluation_v2",
+      "evaluation_windows_per_split": 2048,
+      "validation_selection_frozen_before_test_labels": true,
       "frozen_split": "data/manifests/q1_teleop_forecast_split_20261106.json",
       "work": "393 clips,37 whole source directory groups unioned by identical BVH/human content; train167/validation98/test128,112227 valid25-history/10-future windows. History-only root/relative-body/SO(3) features and same-slot velocities are implemented; single-layer unidirectional GRU128 starts as a zero-residual hold baseline, train-only normalization. The bounded trainer requires safe CUDA by default, nonblocking GPU lock, 22/24GiB memory and18GiB/80C/disk/1800s guards, and never uses TEST_ONLY or test data for selection. Actual sidecars, server Torch, training and policy/physics comparison remain pending."
     },

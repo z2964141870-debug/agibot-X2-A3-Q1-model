@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06 07:06低延迟预测训练/评估v2补审：默认2048来源均衡/片内等距窗口，欧氏位置RMS及逐片误差，先落盘validation选择才读test；schema/split/train归一化/有限张量/读取SHA全核，GPU推理持原非阻塞锁。训练1800秒协作式时限覆盖归一化、更新、验证和CPU保存；96项93过3固定Torch/原生待，实际文件锁冲突核拒绝/原持锁者不受影响。0真实侧车/训练/机器人策略物理/CUDA，已有06:33 Windows认证后Broken pipe/未进Linux，原V04实时UNKNOWN，不循环认证或重发任务。goal active最低今日10:00，q1保存核ACTIVE十分钟同聊天；恢复后原身份全现场/资源/393侧车门先行。保持V04/final/完整五阶段/采纳null，不新agent或改其他任务；入口Q1_TELEOP_FORECAST_TRAINING和q1_teleop_forecast_eval_guard_audit，发布核验以后续收据为准。
+
 - 2026-11-06 06:17桥接最新一次有界探测：Windows `100.65.183.91:22` TCP短暂成功，SSH随即在shell前timeout255，未认证/未进Windows或Linux/未下发；服务器训练实时UNKNOWN，不循环认证、不据失联停止或重启。低延迟预测几何/模型/安全GPU训练入口已发布，真实侧车/资源/锁审计待可用会话；goal active最低10:00，原V04/final/五阶段/采纳null保持。
 
 - 2026-11-06低延迟预测器几何/模型/有界训练入口已成：历史25帧/未来10槽的216维根/相对身体/SO(3)特征与144维物理标签，速度同20ms时间轴；单层单向GRU128零输出等价hold，归一化仅train。独立训练默认安全CUDA，否则拒绝；非阻塞GPU锁、cgroup起始22GiB/运行24GiB、GPU18GiB/80度、磁盘100GiB、1800秒/2000步，原V04持锁或GPU有计算进程即不争用。84项81过3本机Torch/原运行时待，0服务器侧车读取/训练推理物理CUDA；桥接/原训练UNKNOWN，goal active最低今日10:00，原final/五阶段/采纳null保持。入口Q1_TELEOP_FORECAST_TRAINING及q1_teleop_forecast_training_preparation，发布以后续收据为准。

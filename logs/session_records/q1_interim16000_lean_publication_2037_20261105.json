@@ -1,0 +1,129 @@
+{
+  "stage": "Q1_INTERIM16000_LEAN_PUBLICATION_AND_NEW_BRIDGE_TIMEOUT",
+  "recorded_utc": "2026-11-05T12:37:10Z",
+  "evaluation_code_publication": {
+    "commit": "389ea8f18bb227260c69bbc698c6af8518179fc5",
+    "explicit_stage_audit_commit_push": true,
+    "independent_remote40_verified": true,
+    "remote_ref": "refs/heads/Q1",
+    "remote_verification_observed_utc": "2026-11-05T12:33:58Z",
+    "git_mac_payload_bytes": 64543,
+    "git_mac_size_sha_match": true,
+    "files": [
+      {
+        "relative": "script/q1_five_stage/interim_review.py",
+        "bytes": 25639,
+        "sha256": "eeece2d484f179f9aec020b05a8a637e7e0c191ec184e0a66b8c891b77f52b61"
+      },
+      {
+        "relative": "reports/README_Q1_INTERIM_REVIEW_20261105.md",
+        "bytes": 9728,
+        "sha256": "8bc566654642128b704da3874d68a37c80111e5956320cef8707dafac52e67a2"
+      },
+      {
+        "relative": "logs/session_records/q1_interim16000_lean_preparation_20261105.json",
+        "bytes": 29176,
+        "sha256": "312d926548e6987a39f95390513da7051b54039d084fcd73ac6cb5a2a7435b0d"
+      }
+    ],
+    "local_checks": {"passed": 8, "elapsed_seconds": 0.019},
+    "server_updated_entry_transferred": false,
+    "server_updated_entry_tests": "NOT_RUN",
+    "lean_continuation": "NOT_STARTED"
+  },
+  "new_observer_failure": {
+    "old_session": 68380,
+    "old_error": "Timeout, server 100.65.183.91 not responding.",
+    "old_exit_code": 255,
+    "one_bounded_recovery": {
+      "session": 34443,
+      "command": "source /Users/yu/.zshrc\nssh -tt hp_han",
+      "error": "ssh: connect to host 100.65.183.91 port 22: Operation timed out",
+      "exit_code": 255,
+      "reached_windows": false,
+      "reached_server_authentication": false,
+      "reached_linux": false,
+      "attempts_used": 1
+    },
+    "readonly_ssh_config": {
+      "host": "hp_han",
+      "hostname": "100.65.183.91",
+      "port": 22,
+      "controlmaster": false,
+      "controlpersist": false,
+      "proxy_configured": false,
+      "connecttimeout_seconds": 8,
+      "connectionattempts": 1
+    },
+    "thread_app_terminal": "NO_ATTACHED_SESSION",
+    "user_followup": "Requested existing Windows/Linux session or restored Windows Tailscale/OpenSSH; authentication need not be repeated",
+    "current_realtime_training_status": "UNKNOWN",
+    "inference_from_disconnection": "NONE"
+  },
+  "last_verified_training": {
+    "checked_utc": "2026-11-05T12:18:47.087921+00:00",
+    "snapshot_record": "q1_interim16000_lean_preparation_20261105.json",
+    "pipeline": "TRAINING",
+    "guard": "RUNNING",
+    "original_device_process_ticks_and_lock_match": true,
+    "iterations_per_robot": 35100,
+    "target_iterations_per_robot": 160000,
+    "transitions_per_robot": 90265600,
+    "adam_counts_per_robot": [351000, 33100, 662000, 33100, 662000],
+    "nonfinite_updates": 0,
+    "gpu_used_mib": 16177,
+    "gpu_temperature_c": 56,
+    "gpu_recovery_action": "None",
+    "cgroup_total_bytes": 22172762112,
+    "cgroup_actual_limit_bytes": 34292629504,
+    "cgroup_headroom_bytes": 12119867392,
+    "oom_kill": 0,
+    "is_current_live_state": false
+  },
+  "preserved_phased_exit": {
+    "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_PHASED_20261105",
+    "controller_pid": 180744,
+    "own_worker_group": 180749,
+    "worker_reaped_return_code": -15,
+    "trigger_total_bytes": 25797910528,
+    "evaluation_exit_bytes": 25769803776,
+    "new_complete_start_or_stop_case_saved": false,
+    "media_started": false,
+    "training_signals_sent": 0,
+    "source_evidence": "q1_interim16000_lean_preparation_20261105.json"
+  },
+  "intermediate_result_scope": {
+    "checkpoint_iteration": 16000,
+    "both_robot_checkpoint_audits": "PASSED_PREVIOUSLY_REUSE_WITH_IDENTITY_CHECK",
+    "q1_forward_motion_seed0": "COMPLETE_1031_OF_1031_PHYSICAL_STEPS",
+    "start_and_stop": "PENDING",
+    "full_media_decode_visual_review_and_upper_timing": "PENDING",
+    "comparison_record": "q1_interim16000_phased_publication_20261105.json",
+    "finding": "Forward loaded slip and upper joint tracking improve, but final root XY error worsens to0.26849m",
+    "final_acceptance": false,
+    "g1_quality_assessed": false,
+    "user_accepted_checkpoint": null
+  },
+  "next_action_after_connection_recovery": [
+    "Verify original boot/GPU/root/five PID startticks/guard lock and all live supervision records",
+    "Transfer the one updated entry in a small bounded archive, verify size/SHA, then run the existing8 focused server checks",
+    "If original resources admit, use one new LEAN output root reusing the passed audit and complete forward physical case",
+    "Finish start/stop physics then sequential NVIDIA EGL media and original-speed decode/visual review",
+    "If resources still fail the unchanged24GiB review exit, preserve evidence and wait rather than retry or relax limits"
+  ],
+  "preserved_constraints": {
+    "training_inputs_modified": false,
+    "training_signals_sent": 0,
+    "training_restarted": false,
+    "alternate_connection_port_or_socket_used": false,
+    "global_cache_maintenance": false,
+    "gpu_reset_or_training_lock_contention": false,
+    "goal_called_or_recreated": false,
+    "new_agents": false,
+    "automation_modified_or_recreated_this_turn": false,
+    "q1_last_app_update": "AUTOMATION_DOES_NOT_EXIST",
+    "q1_active_claimed": false,
+    "server_documentation_mirror": "PENDING_CONNECTION_RECOVERY",
+    "five_stage_scope_and_final_cli_gate": "UNCHANGED"
+  }
+}

@@ -1,0 +1,1172 @@
+{
+  "stage": "Q1_INTERIM16000_COMPLETED_RESULT",
+  "retrieved_utc": "2026-11-05T15:31:56.775147+00:00",
+  "completed_utc": "2026-11-05T13:34:51.682863+00:00",
+  "evaluation_root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105",
+  "evaluation_commit": "389ea8f18bb227260c69bbc698c6af8518179fc5",
+  "status": "PASSED",
+  "scope": {
+    "robot": "q1",
+    "interface": "motion",
+    "checkpoint_iteration": 16000,
+    "clips": 3,
+    "seeds": [
+      0
+    ],
+    "training_set_only": true,
+    "final_acceptance": false,
+    "g1_quality_assessed": false,
+    "whole_five_stage_complete": false,
+    "user_accepted_checkpoint": null
+  },
+  "result": {
+    "status": "PASSED",
+    "stage": "INTERMEDIATE_ONLY",
+    "iteration": 16000,
+    "interface": "motion",
+    "seed": 0,
+    "cases": [
+      {
+        "clip": "walk_forward_loop_001__A022",
+        "seed": 0,
+        "reference_sha256": "abef8b1d55f5ef58126faf8ce7740da710f751859d9bba542ca413aff86e2b51",
+        "native_reference_sha256": "fd56a5adbd72c90ecdd2b8b13c8bb23587344e0699b63c980b7ffa1cbab5cf09",
+        "human_sha256": "44c0926709173a4eccaf49a99125172f6771ede59b711539fada9cc1a4b75cf1",
+        "interface": "motion",
+        "complete": true,
+        "failure_frame": null,
+        "valid_steps": 1031,
+        "attempted_steps": 1031,
+        "reference_steps": 1031,
+        "diagnostics": {
+          "sole_p95_m": [
+            0.007414576087882818,
+            0.008050695949570323
+          ],
+          "reference_sole_p95_m": [
+            0.014556590067738198,
+            0.014982942003420449
+          ],
+          "lift_events_above_10mm": 19,
+          "alternating_lift_transitions": 11,
+          "loaded_slip_mean_m_s": [
+            0.007052412849886528,
+            0.0077794450350359475
+          ],
+          "loaded_samples": [
+            879,
+            878
+          ],
+          "torso_tilt_rms_rad": 0.07197310030460358,
+          "tilt_error_rms_rad": 0.0227899719029665,
+          "upper_joint_rmse_rad": 0.08354101330041885,
+          "upper_joint_peak_to_peak_rad": [
+            0.5410332679748535,
+            0.19676128029823303,
+            0.6774364709854126,
+            0.30300140380859375,
+            0.5076749920845032,
+            0.2867465913295746,
+            0.5329528450965881,
+            0.31987524032592773
+          ],
+          "upper_reference_peak_to_peak_rad": [
+            0.4820678234100342,
+            0.28101104497909546,
+            0.6980814337730408,
+            0.2643924951553345,
+            0.4919337034225464,
+            0.2652398645877838,
+            0.48263978958129883,
+            0.16107451915740967
+          ],
+          "root_xy_final_error_m": 0.2684904634952545,
+          "load_time_note": "last 2ms substep solver force; pose at control end, no continuous-support claim"
+        },
+        "paired_reference": {
+          "frames": 1032,
+          "qpos_tolerance": 0.00002,
+          "body_fk_tolerance": 0.00003,
+          "velocity_note": "native goal keeps its frozen library velocities; physical reset uses the common Primebot velocities"
+        },
+        "evaluation_randomization": false,
+        "repeated_seed_note": "nominal deterministic replays; seeds are not independent randomization trials",
+        "trace": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_loop_001__A022_s0/rollout.npz",
+        "plant": "identical Primebot Q1 CPU simulator and termination",
+        "valid_prefix_metrics": {
+          "joint_rmse_rad": 0.0675744116306305,
+          "body_relative_rmse_m": 0.006896508391946554
+        },
+        "full_clip_metrics": {
+          "joint_rmse_rad": 0.0675744116306305,
+          "body_relative_rmse_m": 0.006896508391946554
+        },
+        "reused_physical_case": [
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_TOTALMEM_20261105/review/walk_forward_loop_001__A022_s0/result.json",
+            "bytes": 2544,
+            "sha256": "7ff9beb82ee343590c708093e3bd9c9187fa194312fd7b0c1dfd6ec867f9716e"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_TOTALMEM_20261105/review/walk_forward_loop_001__A022_s0/rollout.npz",
+            "bytes": 1216731,
+            "sha256": "9c0542225578ca41ca6f74f47f35b3a194781e7bb21dc19e7065cb1de4f7d0f8"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_TOTALMEM_20261105/review/walk_forward_loop_001__A022_s0/foot_posture.csv",
+            "bytes": 148405,
+            "sha256": "93931217cfdf5e2b5b1c6e9a9ac8551953b818ae070755840ea8aee76274b131"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_TOTALMEM_20261105/review/walk_forward_loop_001__A022_s0/upper_timing.csv",
+            "bytes": 339303,
+            "sha256": "737f3645452ba0a4350ad5af870f0a04c9f5eb3a2a4cb1f24116847519cb8f95"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_TOTALMEM_20261105/review/walk_forward_loop_001__A022_s0/tracking.mp4",
+            "bytes": 878020,
+            "sha256": "9a36eeeecac16d69639ed41c925fdfece38b7bc950ed60f6552c7b09180442c3"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_TOTALMEM_20261105/review/walk_forward_loop_001__A022_s0/frame_00000.png",
+            "bytes": 100549,
+            "sha256": "200b12480873d374a7c0e9995e8f65c8fddd4a1b232d872ef72289869cde0acb"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_TOTALMEM_20261105/review/walk_forward_loop_001__A022_s0/frame_00516.png",
+            "bytes": 129338,
+            "sha256": "f5846ac64adacb2579b7915dc9fd8b1541d96a16633dad156d088e3f33e1d581"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_TOTALMEM_20261105/review/walk_forward_loop_001__A022_s0/frame_01031.png",
+            "bytes": 130256,
+            "sha256": "7b494966a6cd11f4d6114d2c83b4de935cf18bfa9da879c2cbfe6b3c9bd83144"
+          }
+        ],
+        "source_authorization": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_TOTALMEM_20261105/authorization.json",
+          "bytes": 47385,
+          "sha256": "61feb66ee10dbc8c3421e3502a2f2dad9596e51e8ad962cfeaaff29d879aeec0"
+        },
+        "source_guard": {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_TOTALMEM_20261105/replay.guard.json",
+          "bytes": 2412,
+          "sha256": "558968c982c447d48cb65e2ac3d027a4c34feca2f7c0762ad7121cb270bb30b7"
+        },
+        "video": {
+          "status": "PASSED",
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_loop_001__A022_s0/tracking.mp4",
+          "bytes": 878020,
+          "sha256": "9a36eeeecac16d69639ed41c925fdfece38b7bc950ed60f6552c7b09180442c3",
+          "probe": {
+            "width": 1280,
+            "height": 392,
+            "r_frame_rate": "50/1",
+            "nb_frames": 1032,
+            "duration": 20.64,
+            "verification": "complete FFmpeg RGB framehash decode"
+          },
+          "original_speed": true,
+          "actual_frames_before_hold": 1032,
+          "failure_preserved": true,
+          "reused_encoded_video": true
+        },
+        "inspection_frames": [
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_loop_001__A022_s0/frame_00000.png",
+            "bytes": 100549,
+            "sha256": "200b12480873d374a7c0e9995e8f65c8fddd4a1b232d872ef72289869cde0acb"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_loop_001__A022_s0/frame_00516.png",
+            "bytes": 129338,
+            "sha256": "f5846ac64adacb2579b7915dc9fd8b1541d96a16633dad156d088e3f33e1d581"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_loop_001__A022_s0/frame_01031.png",
+            "bytes": 130256,
+            "sha256": "7b494966a6cd11f4d6114d2c83b4de935cf18bfa9da879c2cbfe6b3c9bd83144"
+          }
+        ]
+      },
+      {
+        "clip": "walk_forward_start_002__A023",
+        "seed": 0,
+        "reference_sha256": "f07ebe16f455c0b1d6ae6ca8455c2a1e412f0b66b3bd5233de36c4f886beca39",
+        "native_reference_sha256": "e968db8bc12bee1f5cd29de35720b2fbf8927195393c15991043724314a29ed0",
+        "human_sha256": "d3fa201f73596c42001958e614ee25f32fa6423d80a8f1e6101a88643e3e9356",
+        "interface": "motion",
+        "complete": true,
+        "failure_frame": null,
+        "valid_steps": 151,
+        "attempted_steps": 151,
+        "reference_steps": 151,
+        "diagnostics": {
+          "sole_p95_m": [
+            0.012007872884057441,
+            0.005113966557027795
+          ],
+          "reference_sole_p95_m": [
+            0.021161158853513662,
+            0.025732935347246758
+          ],
+          "lift_events_above_10mm": 5,
+          "alternating_lift_transitions": 3,
+          "loaded_slip_mean_m_s": [
+            0.028658306518081034,
+            0.07191146252299965
+          ],
+          "loaded_samples": [
+            114,
+            105
+          ],
+          "torso_tilt_rms_rad": 0.06938401609659195,
+          "tilt_error_rms_rad": 0.039790887385606766,
+          "upper_joint_rmse_rad": 0.07764886319637299,
+          "upper_joint_peak_to_peak_rad": [
+            0.38937702775001526,
+            0.18559056520462036,
+            0.2995866537094116,
+            0.38636600971221924,
+            0.4059244692325592,
+            0.10329269617795944,
+            0.2707803547382355,
+            0.3205106258392334
+          ],
+          "upper_reference_peak_to_peak_rad": [
+            0.2754424214363098,
+            0.15992523729801178,
+            0.286113440990448,
+            0.23879432678222656,
+            0.33069494366645813,
+            0.1201498806476593,
+            0.2396988570690155,
+            0.31270456314086914
+          ],
+          "root_xy_final_error_m": 0.02430158294737339,
+          "load_time_note": "last 2ms substep solver force; pose at control end, no continuous-support claim"
+        },
+        "paired_reference": {
+          "frames": 152,
+          "qpos_tolerance": 0.00002,
+          "body_fk_tolerance": 0.00003,
+          "velocity_note": "native goal keeps its frozen library velocities; physical reset uses the common Primebot velocities"
+        },
+        "evaluation_randomization": false,
+        "repeated_seed_note": "nominal deterministic replays; seeds are not independent randomization trials",
+        "trace": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_start_002__A023_s0/rollout.npz",
+        "plant": "identical Primebot Q1 CPU simulator and termination",
+        "valid_prefix_metrics": {
+          "joint_rmse_rad": 0.07735379040241241,
+          "body_relative_rmse_m": 0.008776755072176456
+        },
+        "full_clip_metrics": {
+          "joint_rmse_rad": 0.07735379040241241,
+          "body_relative_rmse_m": 0.008776755072176456
+        },
+        "video": {
+          "status": "PASSED",
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_start_002__A023_s0/tracking.mp4",
+          "bytes": 273613,
+          "sha256": "9fa8ad619853d7f52bda41295eb41cdb3b864e7d9f0874a47aa2e54c42446583",
+          "probe": {
+            "width": 1280,
+            "height": 392,
+            "r_frame_rate": "50/1",
+            "nb_frames": 152,
+            "duration": 3.04,
+            "verification": "complete FFmpeg RGB framehash decode"
+          },
+          "original_speed": true,
+          "actual_frames_before_hold": 152,
+          "failure_preserved": true
+        },
+        "inspection_frames": [
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_start_002__A023_s0/frame_00000.png",
+            "bytes": 100674,
+            "sha256": "76502b3b8e0c9117a0bea34ffc1755c2bcec3f2dc40342a85af5b831e573d3a1"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_start_002__A023_s0/frame_00076.png",
+            "bytes": 132580,
+            "sha256": "a3aa0d54589cf6041771d77d028450ab4e9ba74dccf7e787d9533bf4e6109355"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_start_002__A023_s0/frame_00151.png",
+            "bytes": 133838,
+            "sha256": "07d936c7732e1906feac2d132364e5f9298ca11e5fad7b78bada0b1f5c13adc9"
+          }
+        ]
+      },
+      {
+        "clip": "walk_forward_stop_002__A024",
+        "seed": 0,
+        "reference_sha256": "c8c7c7658df43fd60fe6dac957bc4bbbb8fc470f1a389c0c67a5a22143f26b20",
+        "native_reference_sha256": "7e26e318b206a9a658efaadd0e7ebb27d5795902f8b0a92d9b9cc421e576fc03",
+        "human_sha256": "a893e4e1b47f7be198bc92c1cd22b3bad6912d9dae9960dc1da744b4a2404454",
+        "interface": "motion",
+        "complete": true,
+        "failure_frame": null,
+        "valid_steps": 402,
+        "attempted_steps": 402,
+        "reference_steps": 402,
+        "diagnostics": {
+          "sole_p95_m": [
+            0.005601598522372393,
+            0.00956988242853999
+          ],
+          "reference_sole_p95_m": [
+            0.01788433082466955,
+            0.012744240509407019
+          ],
+          "lift_events_above_10mm": 5,
+          "alternating_lift_transitions": 2,
+          "loaded_slip_mean_m_s": [
+            0.010752933604141816,
+            0.00794833477830513
+          ],
+          "loaded_samples": [
+            346,
+            337
+          ],
+          "torso_tilt_rms_rad": 0.05398854240775108,
+          "tilt_error_rms_rad": 0.02989443577826023,
+          "upper_joint_rmse_rad": 0.07409682869911194,
+          "upper_joint_peak_to_peak_rad": [
+            0.19665071368217468,
+            0.23803602159023285,
+            0.35882627964019775,
+            0.3770408630371094,
+            0.15625867247581482,
+            0.1605469286441803,
+            0.21523240208625793,
+            0.2945365905761719
+          ],
+          "upper_reference_peak_to_peak_rad": [
+            0.1631614863872528,
+            0.30943500995635986,
+            0.34819960594177246,
+            0.19877493381500244,
+            0.13992923498153687,
+            0.10587233304977417,
+            0.20920631289482117,
+            0.20830750465393066
+          ],
+          "root_xy_final_error_m": 0.05063484236598015,
+          "load_time_note": "last 2ms substep solver force; pose at control end, no continuous-support claim"
+        },
+        "paired_reference": {
+          "frames": 403,
+          "qpos_tolerance": 0.00002,
+          "body_fk_tolerance": 0.00003,
+          "velocity_note": "native goal keeps its frozen library velocities; physical reset uses the common Primebot velocities"
+        },
+        "evaluation_randomization": false,
+        "repeated_seed_note": "nominal deterministic replays; seeds are not independent randomization trials",
+        "trace": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_stop_002__A024_s0/rollout.npz",
+        "plant": "identical Primebot Q1 CPU simulator and termination",
+        "valid_prefix_metrics": {
+          "joint_rmse_rad": 0.0706922709941864,
+          "body_relative_rmse_m": 0.0077261715196073055
+        },
+        "full_clip_metrics": {
+          "joint_rmse_rad": 0.0706922709941864,
+          "body_relative_rmse_m": 0.0077261715196073055
+        },
+        "video": {
+          "status": "PASSED",
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_stop_002__A024_s0/tracking.mp4",
+          "bytes": 418983,
+          "sha256": "fbde62b3f5eac1808af7766b5daf131842619aea6d3bd88b2a7967aac9f04e44",
+          "probe": {
+            "width": 1280,
+            "height": 392,
+            "r_frame_rate": "50/1",
+            "nb_frames": 403,
+            "duration": 8.06,
+            "verification": "complete FFmpeg RGB framehash decode"
+          },
+          "original_speed": true,
+          "actual_frames_before_hold": 403,
+          "failure_preserved": true
+        },
+        "inspection_frames": [
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_stop_002__A024_s0/frame_00000.png",
+            "bytes": 100790,
+            "sha256": "b141baf80174908a26efb722b19f3a5a700db5eb5abac24be73e9740cb0d5ec9"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_stop_002__A024_s0/frame_00201.png",
+            "bytes": 133433,
+            "sha256": "9dc379c7cca2951466f46d7c98ec8b2fd0e3086fd4565fafa20af008bd8893f7"
+          },
+          {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/review/walk_forward_stop_002__A024_s0/frame_00402.png",
+            "bytes": 133427,
+            "sha256": "7c643b5cb921d6ec18333913a9f50682eeac4ee2126a21f269fc1b9f866e63f4"
+          }
+        ]
+      }
+    ],
+    "checkpoint": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_16000.pt",
+      "bytes": 342744495,
+      "sha256": "bc9dc07c334166296850b6f194ca81c4010acf7ffbbb61d0fcc0a240b0188959"
+    },
+    "optimizer_updates": 0,
+    "evaluation_commit": "389ea8f18bb227260c69bbc698c6af8518179fc5",
+    "final_acceptance": false,
+    "g1_quality_assessed": false,
+    "user_accepted_checkpoint": null,
+    "rendering": "GPU EGL; original-speed libx264 video",
+    "physics": "Locked Primebot CPU Torch2.7/MuJoCo3.6",
+    "training_set_only": true,
+    "policy_runtime": {
+      "metadata": {
+        "robot": "q1",
+        "iteration": 16000,
+        "training_transitions": 41369600,
+        "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+        "hist_len": 10,
+        "cfg": {
+          "subset_yaml": "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/q1_paired.yaml",
+          "robot": "q1",
+          "num_envs": 1024,
+          "replay_capacity": 1000,
+          "wm_lr": 0.0002,
+          "policy_lr": 0.0002,
+          "critic_lr": 0.0002,
+          "wm_batches": 10,
+          "wm_batch": 512,
+          "window_k": 8,
+          "horizon": 32,
+          "imag_batch": 1024,
+          "utd": 0.4,
+          "warmup_env_steps": 400,
+          "wm_only_iters": 2000,
+          "iterations": 160000,
+          "lr_decay_iters": 500000,
+          "lr_final_frac": 0.03,
+          "gamma": 0.99,
+          "lam": 0.95,
+          "action_noise": 0.1,
+          "collect_det_frac": 0,
+          "clean_action_record": false,
+          "softmax_cap": null,
+          "failure_reset": 0,
+          "actuator_delay": true,
+          "actuator_delay_max_ms": 20,
+          "actuator_delay_fixed": true,
+          "hist_len": 10,
+          "ckpt_every": 16000,
+          "log_every": 50,
+          "seed": 0,
+          "log_dir": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train",
+          "run_name": "run",
+          "wandb": false,
+          "library_dtype": "float16",
+          "reset_norm": "remaining",
+          "wm_hidden": [
+            2048,
+            2048,
+            2048
+          ],
+          "wm_layer_norm": true,
+          "wm_frame": "root",
+          "residual_scale": "step",
+          "termination": "hazard",
+          "policy_hidden": [
+            2048,
+            1024,
+            512,
+            256
+          ],
+          "latent": 32,
+          "critic_hidden": [
+            256,
+            128
+          ],
+          "critic_layer_norm": true,
+          "critic_anchor_pos": true,
+          "goal_anchor": "reference",
+          "avoid_clip_end": true,
+          "clip_end_terminal": false,
+          "target_critic_alpha": null,
+          "critic_target_clip": true,
+          "value_bound": false,
+          "bf16": true,
+          "act": "elu",
+          "compile": "default",
+          "fused_adam": true,
+          "gpu_ids": null,
+          "lr_scale_sqrt_world_size": true,
+          "robots": [
+            "g1",
+            "q1"
+          ],
+          "subset_yamls": [
+            "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/g1_paired.yaml",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/q1_paired.yaml"
+          ],
+          "share": "all",
+          "morphology": true,
+          "actor_geometry": true,
+          "decoder_film": true,
+          "latent_align_weight": 0.05,
+          "latent_align_batch": 512,
+          "pool_norms": true,
+          "kp_interface": true,
+          "kp_env_frac": 0.5,
+          "kp_imag_batch": 1024,
+          "kp_masking": "full",
+          "kp_preview_mix": true,
+          "kp_heading_frac": 1,
+          "kp_student": "return",
+          "kp_jitter": true,
+          "kp_drift": false,
+          "kp_action_weight": 1,
+          "kp_align_weight": 0.1,
+          "kp_loss_norm": true,
+          "human_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/npz50/human50",
+          "policy_goal": "motion",
+          "recon_weight": 1
+        },
+        "inference_precision": "float32; upstream evaluation default",
+        "normalizers_frozen": true,
+        "action_noise": false,
+        "human_points": "full",
+        "kp_horizon": 10,
+        "human_heading": true,
+        "human_drift": false
+      },
+      "cuda_initialized": false,
+      "checkpoint": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_16000.pt",
+        "bytes": 342744495,
+        "sha256": "bc9dc07c334166296850b6f194ca81c4010acf7ffbbb61d0fcc0a240b0188959"
+      },
+      "primebot_checkpoint": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/train/run/checkpoint_10000.pt",
+        "bytes": 209943195,
+        "sha256": "14d7ee625467b24d47700fa0582a3d0cf23a432b73e3fd296bc2a4ead59e31e3"
+      },
+      "python": "3.11.18 (main, Oct 26 2026, 14:05:07) [Clang 23.1.3 ]",
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "mujoco": "3.11.0"
+      },
+      "physical_transitions": 0,
+      "optimizer_updates": 0
+    },
+    "asset_sha256": "221cf2b8d8c47aaff1b5ccf43f84fe961753b13fdd8959a98c098b884ea5546b",
+    "termination": {
+      "mode": "q1_proportional",
+      "position_std": 0.1585119798234552,
+      "orientation_std": 0.4,
+      "linear_velocity_std": 0.528373266078184,
+      "angular_velocity_std": 3.14,
+      "joint_sum_multiplier": 1.3181818181818181,
+      "termination_height": 0.132093316519546,
+      "termination_tilt": 0.8,
+      "length_scale": 0.528373266078184,
+      "nominal_pelvis_height": 0.419,
+      "reference_pelvis_height": 0.793,
+      "joint_count": 22,
+      "reference_joint_count": 29
+    },
+    "render_xml": {
+      "path": "/opt/data/private/ZHY/data/references/q1/model_20261023_P01/q1_v3/xml/q1_v3_mc.xml",
+      "bytes": 30489,
+      "sha256": "d9442f0de18071b100d927e310bc58b04e7be305fea8f126893b2700e8c4bd3b"
+    },
+    "unused_primebot_actor_constructed": false,
+    "complete_cases": 3,
+    "policy_worker_reaped": true,
+    "policy_worker_return_code": 0,
+    "cuda_initialized": false,
+    "ended_utc": "2026-11-05T13:34:16.943318+00:00",
+    "graphics": {
+      "vendor": "NVIDIA Corporation",
+      "renderer": "NVIDIA GeForce RTX 3090/PCIe/SSE2",
+      "version": "4.6.0 NVIDIA 595.112.07"
+    },
+    "media_ended_utc": "2026-11-05T13:34:51.443497+00:00",
+    "media_torch_imported": false
+  },
+  "replay_guard": {
+    "status": "WORKER_COMPLETED",
+    "command": [
+      "/opt/data/private/ZHY/data/environments/primebot_supermimic_118338b_20261103/bin/python",
+      "-u",
+      "/opt/data/private/ZHY/script/q1_five_stage/interim_review.py",
+      "--child",
+      "replay",
+      "--config",
+      "/opt/data/private/ZHY/script/q1_five_stage/conditional_shared_v04_20261104.json",
+      "--runtime-config",
+      "/opt/data/private/ZHY/data/manifests/primebot_q1_monitored_config_20261103.json",
+      "--output",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105",
+      "--iteration",
+      "16000",
+      "--evaluation-commit",
+      "389ea8f18bb227260c69bbc698c6af8518179fc5"
+    ],
+    "cwd": "/opt/data/private/ZHY",
+    "started_utc": "2026-11-05T13:33:22.788639+00:00",
+    "controller_pid": 185291,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "memory": {
+        "total_bytes": 22207381504,
+        "container_limit_bytes": 34292629504,
+        "immediate_headroom_bytes": 12085248000,
+        "guard_headroom_bytes": 10004873216,
+        "total_cache_bytes": 10916134912,
+        "total_rss_bytes": 10009354240,
+        "total_shmem_bytes": 32714752,
+        "total_dirty_bytes": 4325376,
+        "total_writeback_bytes": 2838528,
+        "oom_kill": 0,
+        "under_oom": 0
+      },
+      "review_subtree_rss_bytes": 29208576,
+      "gpu": {
+        "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+        "used_mib": 16177,
+        "temperature_c": 55,
+        "recovery": "None"
+      },
+      "maximum_total_bytes": 24886489088,
+      "maximum_review_rss_bytes": 3288563712,
+      "maximum_gpu_used_mib": 16177,
+      "storage": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105",
+        "unique_allocated_bytes": 4075520,
+        "unique_logical_bytes": 4020977,
+        "unique_inodes": 29,
+        "symlinks_not_followed": 0
+      },
+      "training_signals_sent": 0,
+      "memory_reclaim_attempted": false,
+      "gpu_lock_owner": 55672,
+      "note": "RSS can count shared mappings repeatedly; limits stop only the review."
+    },
+    "error": null,
+    "worker_pid": 185299,
+    "worker_group": 185299,
+    "cleanup": {
+      "worker_started": true,
+      "worker_pid": 185299,
+      "worker_group": 185299,
+      "worker_reaped": true,
+      "worker_return_code": 0
+    },
+    "ended_utc": "2026-11-05T13:34:18.236655+00:00"
+  },
+  "media_guard": {
+    "status": "WORKER_COMPLETED",
+    "command": [
+      "/opt/data/private/ZHY/data/environments/primebot_supermimic_118338b_20261103/bin/python",
+      "-u",
+      "/opt/data/private/ZHY/script/q1_five_stage/interim_review.py",
+      "--child",
+      "media",
+      "--config",
+      "/opt/data/private/ZHY/script/q1_five_stage/conditional_shared_v04_20261104.json",
+      "--runtime-config",
+      "/opt/data/private/ZHY/data/manifests/primebot_q1_monitored_config_20261103.json",
+      "--output",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105",
+      "--iteration",
+      "16000",
+      "--evaluation-commit",
+      "389ea8f18bb227260c69bbc698c6af8518179fc5"
+    ],
+    "cwd": "/opt/data/private/ZHY",
+    "started_utc": "2026-11-05T13:34:18.237653+00:00",
+    "controller_pid": 185291,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "memory": {
+        "total_bytes": 22218252288,
+        "container_limit_bytes": 34292629504,
+        "immediate_headroom_bytes": 12074377216,
+        "guard_headroom_bytes": 9994002432,
+        "total_cache_bytes": 10920189952,
+        "total_rss_bytes": 10012209152,
+        "total_shmem_bytes": 32714752,
+        "total_dirty_bytes": 4325376,
+        "total_writeback_bytes": 2838528,
+        "oom_kill": 0,
+        "under_oom": 0
+      },
+      "review_subtree_rss_bytes": 29208576,
+      "gpu": {
+        "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+        "used_mib": 16178,
+        "temperature_c": 54,
+        "recovery": "None"
+      },
+      "maximum_total_bytes": 24886489088,
+      "maximum_review_rss_bytes": 3288563712,
+      "maximum_gpu_used_mib": 16458,
+      "storage": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105",
+        "unique_allocated_bytes": 5529600,
+        "unique_logical_bytes": 5465271,
+        "unique_inodes": 39,
+        "symlinks_not_followed": 0
+      },
+      "training_signals_sent": 0,
+      "memory_reclaim_attempted": false,
+      "gpu_lock_owner": 55672,
+      "note": "RSS can count shared mappings repeatedly; limits stop only the review."
+    },
+    "error": null,
+    "worker_pid": 185666,
+    "worker_group": 185666,
+    "cleanup": {
+      "worker_started": true,
+      "worker_pid": 185666,
+      "worker_group": 185666,
+      "worker_reaped": true,
+      "worker_return_code": 0
+    },
+    "ended_utc": "2026-11-05T13:34:51.682863+00:00"
+  },
+  "resources": {
+    "memory": {
+      "total_bytes": 22218252288,
+      "container_limit_bytes": 34292629504,
+      "immediate_headroom_bytes": 12074377216,
+      "guard_headroom_bytes": 9994002432,
+      "total_cache_bytes": 10920189952,
+      "total_rss_bytes": 10012209152,
+      "total_shmem_bytes": 32714752,
+      "total_dirty_bytes": 4325376,
+      "total_writeback_bytes": 2838528,
+      "oom_kill": 0,
+      "under_oom": 0
+    },
+    "review_subtree_rss_bytes": 29208576,
+    "gpu": {
+      "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      "used_mib": 16178,
+      "temperature_c": 54,
+      "recovery": "None"
+    },
+    "maximum_total_bytes": 24886489088,
+    "maximum_review_rss_bytes": 3288563712,
+    "maximum_gpu_used_mib": 16458,
+    "storage": {
+      "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105",
+      "unique_allocated_bytes": 5529600,
+      "unique_logical_bytes": 5465271,
+      "unique_inodes": 39,
+      "symlinks_not_followed": 0
+    },
+    "training_signals_sent": 0,
+    "memory_reclaim_attempted": false,
+    "gpu_lock_owner": 55672,
+    "note": "RSS can count shared mappings repeatedly; limits stop only the review."
+  },
+  "source_integrity": {
+    "status": "PASSED",
+    "original_training_inputs_modified": false,
+    "training_signals_sent": 0
+  },
+  "controller_present": false,
+  "directories": {
+    "walk_forward_stop_002__A024_s0": [
+      {
+        "name": "frame_00402.png",
+        "bytes": 133427
+      },
+      {
+        "name": "rollout.npz",
+        "bytes": 492756
+      },
+      {
+        "name": "frame_00000.png",
+        "bytes": 100790
+      },
+      {
+        "name": "frame_00201.png",
+        "bytes": 133433
+      },
+      {
+        "name": "foot_posture.csv",
+        "bytes": 57900
+      },
+      {
+        "name": "tracking.mp4",
+        "bytes": 418983
+      },
+      {
+        "name": "result.json",
+        "bytes": 3997
+      },
+      {
+        "name": "upper_timing.csv",
+        "bytes": 132927
+      }
+    ],
+    "walk_forward_loop_001__A022_s0": [
+      {
+        "name": "frame_01031.png",
+        "bytes": 130256
+      },
+      {
+        "name": "rollout.npz",
+        "bytes": 1216731
+      },
+      {
+        "name": "frame_00000.png",
+        "bytes": 100549
+      },
+      {
+        "name": "foot_posture.csv",
+        "bytes": 148405
+      },
+      {
+        "name": "tracking.mp4",
+        "bytes": 878020
+      },
+      {
+        "name": "result.json",
+        "bytes": 6812
+      },
+      {
+        "name": "frame_00516.png",
+        "bytes": 129338
+      },
+      {
+        "name": "upper_timing.csv",
+        "bytes": 339303
+      }
+    ],
+    "walk_forward_start_002__A023_s0": [
+      {
+        "name": "frame_00151.png",
+        "bytes": 133838
+      },
+      {
+        "name": "rollout.npz",
+        "bytes": 190582
+      },
+      {
+        "name": "frame_00000.png",
+        "bytes": 100674
+      },
+      {
+        "name": "frame_00076.png",
+        "bytes": 132580
+      },
+      {
+        "name": "foot_posture.csv",
+        "bytes": 20884
+      },
+      {
+        "name": "tracking.mp4",
+        "bytes": 273613
+      },
+      {
+        "name": "result.json",
+        "bytes": 4001
+      },
+      {
+        "name": "upper_timing.csv",
+        "bytes": 50306
+      }
+    ]
+  },
+  "training_last_observed": {
+    "checked_utc": "2026-11-05T15:34:47.190043+00:00",
+    "root": "/opt/data/private/ZHY",
+    "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+    "pipeline": "TRAINING",
+    "guard": "RUNNING",
+    "workers": [
+      {
+        "status": "RUNNING",
+        "robot": "g1",
+        "pid": 55678,
+        "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+        "formal_training": true,
+        "iterations_completed": 38600,
+        "optimizer_updates": {
+          "wm_opt": 386000,
+          "policy_opt": 36600,
+          "critic_opt": 732000,
+          "kp_opt": 36600,
+          "critic_kp_opt": 732000
+        },
+        "nonfinite_updates": {
+          "wm/nonfinite_steps": 0,
+          "policy/nonfinite_steps": 0,
+          "critic/nonfinite_steps": 0,
+          "kp/nonfinite_steps": 0,
+          "critic_kp/nonfinite_steps": 0
+        },
+        "collected_environment_transitions": 99225600,
+        "peak_cuda_allocated_bytes": 6766269952,
+        "peak_cuda_reserved_bytes": 7256145920,
+        "last_iteration_seconds": 3.1841139140015002,
+        "elapsed_seconds": 131170.990111602,
+        "user_accepted_checkpoint": null
+      },
+      {
+        "status": "RUNNING",
+        "robot": "q1",
+        "pid": 55679,
+        "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+        "formal_training": true,
+        "iterations_completed": 38600,
+        "optimizer_updates": {
+          "wm_opt": 386000,
+          "policy_opt": 36600,
+          "critic_opt": 732000,
+          "kp_opt": 36600,
+          "critic_kp_opt": 732000
+        },
+        "nonfinite_updates": {
+          "wm/nonfinite_steps": 0,
+          "policy/nonfinite_steps": 0,
+          "critic/nonfinite_steps": 0,
+          "kp/nonfinite_steps": 0,
+          "critic_kp/nonfinite_steps": 0
+        },
+        "collected_environment_transitions": 99225600,
+        "peak_cuda_allocated_bytes": 6766330880,
+        "peak_cuda_reserved_bytes": 7264534528,
+        "last_iteration_seconds": 3.1847285149851814,
+        "elapsed_seconds": 131170.99523965002,
+        "user_accepted_checkpoint": null
+      }
+    ],
+    "processes": [
+      {
+        "pid": 54868,
+        "start_ticks": "7431283",
+        "identity_matches": true
+      },
+      {
+        "pid": 55672,
+        "start_ticks": "7449427",
+        "identity_matches": true
+      },
+      {
+        "pid": 55677,
+        "start_ticks": "7449543",
+        "identity_matches": true
+      },
+      {
+        "pid": 55678,
+        "start_ticks": "7449555",
+        "identity_matches": true
+      },
+      {
+        "pid": 55679,
+        "start_ticks": "7449555",
+        "identity_matches": true
+      }
+    ],
+    "locks": [
+      "27: FLOCK  ADVISORY  WRITE 55672 103:07:116003074 0 EOF"
+    ],
+    "gpu": {
+      "returncode": 0,
+      "stdout": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 16177, 51, 49, None",
+      "stderr": ""
+    },
+    "memory": {
+      "total_bytes": 21922832384,
+      "container_limit_bytes": 34292629504,
+      "immediate_headroom_bytes": 12369797120,
+      "guard_headroom_bytes": 10289422336,
+      "total_cache_bytes": 10617384960,
+      "total_rss_bytes": 10047807488,
+      "total_shmem_bytes": 32714752,
+      "total_dirty_bytes": 5947392,
+      "total_writeback_bytes": 2838528,
+      "oom_kill": 0,
+      "under_oom": 0
+    },
+    "memory_summary": {
+      "status": "OBSERVING",
+      "controller_pid": 55672,
+      "controller_start_ticks": "7449427",
+      "samples": 13873,
+      "observed_samples": 62980,
+      "history_size_bound_reached": true,
+      "maximum_total_bytes": 25769373696,
+      "maximum_cache_bytes": 11621294080,
+      "maximum_anonymous_rss_bytes": 14027702272,
+      "sample_at_maximum_total": {
+        "status": "OBSERVED_LIVE",
+        "utc": "2026-11-05T04:27:31.997088+00:00",
+        "memory": {
+          "total_bytes": 25769373696,
+          "container_limit_bytes": 34292629504,
+          "immediate_headroom_bytes": 8523255808,
+          "guard_headroom_bytes": 6442881024,
+          "total_cache_bytes": 10452844544,
+          "total_rss_bytes": 14027186176,
+          "total_shmem_bytes": 32714752,
+          "total_dirty_bytes": 5677056,
+          "total_writeback_bytes": 2703360,
+          "oom_kill": 0,
+          "under_oom": 0
+        },
+        "processes": [
+          {
+            "pid": 55672,
+            "name": "python",
+            "state": "R",
+            "ppid": 54868,
+            "start_ticks": "7449427",
+            "VmHWM_bytes": 32747520,
+            "VmRSS_bytes": 32198656,
+            "RssAnon_bytes": 19623936,
+            "RssFile_bytes": 12574720,
+            "RssShmem_bytes": 0
+          },
+          {
+            "pid": 55677,
+            "name": "python",
+            "state": "S",
+            "ppid": 55672,
+            "start_ticks": "7449543",
+            "VmHWM_bytes": 22319104,
+            "VmRSS_bytes": 22319104,
+            "RssAnon_bytes": 10035200,
+            "RssFile_bytes": 12283904,
+            "RssShmem_bytes": 0
+          },
+          {
+            "pid": 55678,
+            "name": "python",
+            "state": "S",
+            "ppid": 55677,
+            "start_ticks": "7449555",
+            "VmHWM_bytes": 6223634432,
+            "VmRSS_bytes": 5836300288,
+            "RssAnon_bytes": 5040431104,
+            "RssFile_bytes": 694390784,
+            "RssShmem_bytes": 101478400
+          },
+          {
+            "pid": 55679,
+            "name": "python",
+            "state": "S",
+            "ppid": 55677,
+            "start_ticks": "7449555",
+            "VmHWM_bytes": 6043254784,
+            "VmRSS_bytes": 5747617792,
+            "RssAnon_bytes": 4971696128,
+            "RssFile_bytes": 692842496,
+            "RssShmem_bytes": 83079168
+          }
+        ]
+      },
+      "training_status_inferred": false,
+      "signals_sent": 0,
+      "optimizer_updates": 0,
+      "note": "The peak row contains one sampled cgroup breakdown; fields are read sequentially, not atomically. Process RSS can count shared mappings repeatedly.",
+      "history_bytes": 16776235
+    },
+    "reclaim": null,
+    "logs_tail": {
+      "g1": [
+        "[morphmimic] it 38600 | 0.32 it/s (0.321/1.507/1.262 s collect/wm/actor-critic) | env 1654/s imag 42350/s | wm loss 8.3870 bce 0.0000 pred8 0.2834 err8 pelvis 0.002 m joints 0.005 rad | J 9.5644 |g| 0.493 (max 0.638) critic 8.44e-04 V0 9.57 tclip 0.00% surv 1.000 | rew 0.0852 nret 0.774 eplen 117.1 fail 1 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.3066 act 0.0225 align 1.1396 tclip 0.00%",
+        "[morphmimic]    g1 | wm loss 10.2234 pred8 0.1115 err8 pelvis 0.002 m joints 0.005 rad | J 9.5989 critic 8.65e-04 tclip 0.00% surv 1.000 | rew 0.0885 nret 0.821 eplen 122.8 fail 1 | align 2.173e-02 zdist 0.277 | kp tclip 0.00%",
+        "[morphmimic]    q1 | wm loss 6.5506 pred8 0.4554 err8 pelvis 0.002 m joints 0.005 rad | J 9.5298 critic 8.23e-04 tclip 0.00% surv 1.000 | rew 0.0820 nret 0.732 eplen 112.1 fail 0 | align 2.173e-02 zdist 0.277 | kp tclip 0.00%"
+      ],
+      "q1": [
+        "Module _tile_cholesky_factorize_block__locals__kernel_a4efe1c6 08f9cd6 load on device 'cuda:0' took 33.14 ms  (cached)",
+        "Module _tile_cholesky_solve_block__locals__kernel_48ae95c0 9ab99fc load on device 'cuda:0' took 32.20 ms  (cached)",
+        "[morphmimic] q1 residual scale (one-step RMS of the warm-up replay): min 0.0001 median 0.0444 max 4.29"
+      ]
+    },
+    "disk_free_bytes": 281311531008,
+    "checkpoints": [
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_32000.pt",
+        "bytes": 342744495,
+        "mtime": 1793869893.9508014
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_16000.pt",
+        "bytes": 342744495,
+        "mtime": 1793813512.263351
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_0.pt",
+        "bytes": 114299019,
+        "mtime": 1793761596.9905956
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/latest.pt",
+        "bytes": 342744495,
+        "mtime": 1793869894.5267959
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/ckpt_32000.pt",
+        "bytes": 342744431,
+        "mtime": 1793869893.9308016
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/ckpt_16000.pt",
+        "bytes": 342744431,
+        "mtime": 1793813512.2393515
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/ckpt_0.pt",
+        "bytes": 114298955,
+        "mtime": 1793761596.9865956
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/latest.pt",
+        "bytes": 342744431,
+        "mtime": 1793869894.4067972
+      }
+    ]
+  },
+  "delivery_archive": {
+    "remote": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105/delivery_files.tar.gz",
+    "bytes": 3014790,
+    "sha256": "f4dda58d3fd851f72d1d1ba692ce96d1ac203e87ea4e1ed3697e00ff5882e7e1",
+    "files": 32,
+    "logical_bytes": 3677907,
+    "windows": "C:/Users/yu/q1_interim16000_f4dda58d_20261105.tar.gz"
+  },
+  "media_delivery": {
+    "server_complete_decode": "PASSED",
+    "windows_native_scp_completed": true,
+    "windows_path": "C:/Users/yu/q1_interim16000_f4dda58d_20261105.tar.gz",
+    "mac_transfer": "INCOMPLETE_TIMEOUT_255",
+    "mac_partial_path": "/Users/yu/Documents/ChatGPT/元启/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_DELIVERY_20261105/delivery_files.tar.gz.part",
+    "mac_partial_bytes": 670720,
+    "mac_full_decode": "PENDING",
+    "visual_inspection": "PENDING",
+    "upper_timing_analysis": "PENDING",
+    "transfer_attempts": [
+      {"session": 87471, "status": "BROKEN_PIPE_BEFORE_TRANSFER", "exit_code": 255},
+      {"session": 44667, "status": "TIMEOUT_AT_22_PERCENT", "exit_code": 255}
+    ],
+    "bridge_session_closed": {"session": 56410, "exit_code": 255},
+    "follow_up": "Reuse the completed server and Windows archive; do not rerun physics or media. Resume delivery after the original bridge recovers. No ports, forwarding or credentials persisted."
+  },
+  "comparison_limits": [
+    "Same three saved references and common physics; different training exposure, not an equal-exposure causal comparison.",
+    "Lift events are unfiltered 10mm upcrossings, not validated natural step counts.",
+    "Load is sampled at the last 2ms substep, with pose at control end; no continuous-support claim.",
+    "Forward root endpoint error increased to 0.26849m; low clearance and start right-foot sliding remain."
+  ],
+  "training_changed": false,
+  "new_training_signals_sent": 0,
+  "physics_rerun": false
+}

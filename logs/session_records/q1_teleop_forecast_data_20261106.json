@@ -1,0 +1,61 @@
+{
+  "stage": "Q1_CAUSAL_FORECAST_FROZEN_WHOLE_SOURCE_DATA",
+  "verification_observed_local": "2026-11-06T04:54:56+08:00",
+  "goal_status": "active",
+  "minimum_execution_until": "2026-11-06T10:00:00+08:00",
+  "source_manifest_identities": {
+    "admission_sha256": "896738c54a039160334312bf43158ea2d159eed250a588594ceed0a2e066c167",
+    "original_source_extraction_sha256": "82f0615d72651958bf57e917fefa186e1f0384696569005a1702958781f27745"
+  },
+  "split": {
+    "path": "data/manifests/q1_teleop_forecast_split_20261106.json",
+    "bytes": 240526,
+    "sha256": "f40c1d5a856a08d89f1a8c23dfe6d990fc7439232b9da9a658d9860456353145",
+    "seed": 20261106,
+    "train": {"clips": 167, "groups": 22, "frames": 54370, "windows": 48692, "seconds": 1084.06},
+    "validation": {"clips": 98, "groups": 6, "frames": 31911, "windows": 28579, "seconds": 636.26},
+    "test": {"clips": 128, "groups": 9, "frames": 39308, "windows": 34956, "seconds": 783.60},
+    "total_windows": 112227,
+    "history_frames": 25,
+    "future_frames": 10,
+    "regenerated_from_pinned_manifests_matches": true,
+    "fixed_evaluation_clips_all_test": true,
+    "entire_fixed_source_directory_test_clips": 26,
+    "subject_disjoint_verified": false,
+    "action_family_disjoint_verified": false,
+    "original_policy_trained_on_all_393": true,
+    "unseen_end_to_end_policy_generalization_claim_allowed": false
+  },
+  "source_code_dependency_audit": {
+    "human_convert_sha256": "7d10905a472810e7bf492bb8bcd48f7cacc09ede90275c318f77be9d2d59787d",
+    "bvh_sha256": "a77755b1a9cb9c3f6ea70301afcc3a54f947af5483535f7163b5fe915b3052e6",
+    "resampling": "120Hz to50Hz position linear and quaternion Slerp",
+    "right_support_cycle_ns": [0, 5000000, 1666667, 6666667, 3333334],
+    "upstream_mocap_and_capture_clock": "UNKNOWN",
+    "actual_393_human_sidecars_reread": false,
+    "expected_human_sidecar_bytes": 85438830,
+    "live_capture_causal_claim_allowed": false
+  },
+  "local_verification": {
+    "new_boundary_tests": 7,
+    "full_teleop_tests": 69,
+    "passed": 67,
+    "pinned_native_runtime_skips": 2,
+    "failures": 0,
+    "warnings_promoted_to_errors": true,
+    "elapsed_seconds": 0.192,
+    "fixture_results_are_real_data_training_results": false
+  },
+  "test_only_recordings_used_for_training_or_tuning": false,
+  "new_optimizer_updates": 0,
+  "new_policy_inference": 0,
+  "new_physics_steps": 0,
+  "new_cuda_jobs": 0,
+  "new_authentication_attempts": 0,
+  "training_live_state": "UNKNOWN",
+  "server_sync": "PENDING_ORIGINAL_BRIDGE_RECOVERY",
+  "preview_campaign": "PUBLISHED_3b1cd18_NOT_UPLOADED_OR_DISPATCHED",
+  "original_training_and_final_gates_preserved": true,
+  "whole_goal_complete": false,
+  "user_accepted_checkpoint": null
+}

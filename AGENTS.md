@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06因果预测数据入口/393片冻结来源划分实成：37目录组按human和原BVH内容传递合并，train167/val98/test128、112227个25历史+10目标窗口；三固定片所在26片目录整体test，非被试独立/原策略已见393，不称端到端陌生片泛化。计划240526B/SHA f40c1d5重建同，120→50Hz插值额外右支持0..6.667ms源码核明，硬件上游未知；训练归一化/不可见未来/末端与跨集边界7检查过，69项67过2原运行时待。0真实侧车读取/训练推理物理CUDA/新认证，3b1cd18未上传、原训练实时UNKNOWN。下一SE(3)历史特征与有界预测器入口，真实侧车/资源门过后优先安全GPU、不争V04锁；goal active最低今日10:00/q1同线程十分钟，原final/五阶段/采纳null保持，无agent其他任务改动。入口Q1_TELEOP_FORECAST_DATA及q1_teleop_forecast_data，发布/镜像以后续收据为准。
+
 - 2026-11-06 04:28滤波54解析对照实成：因果5均值50Hz相位40ms，固定官方One Euro beta.1在1Hz100.660ms/反向额外60ms/急停残余.099601rad，非普适最优或机器人效果。wheel6082B官方SHA核同/BSD原件保留/未改全局环境，62检查60过2原运行时待/RuntimeWarning升error后54数值与首轮全同；真人/训练推理物理GPU0。重采样6cf8797独立40位远端及Mac12份615911B核同；campaign3b1cd18未上传，训练实时UNKNOWN/无新认证。下一真实human对照及可训练数据/资源，失联补因果监督合同而非重复合成测试。goal active最低今日10:00/q1十分钟同线程，原V04/final/锁/采纳null不变，无agent其他任务修改；入口Q1_TELEOP_FILTER_PHASE及q1_teleop_filter_phase，发布/服务器镜像以后续收据为准。
 
 - 2026-11-06 04:13独立因果重采样/真人固定TEST_ONLY回放实成：四方法两场景60008输出/违规0/源同，56检查54过2原运行时待，0训练调参推理物理CUDA。跨钟分开/未知dependency保null/保持插值预测非measured_exact，外推80ms与过期200ms等明确回退；40ms缓冲减小步变有等待代价，预测重锚定仍可能增跳，不据测试选参数或宣称自然性。下一解析急停换向下连续性/相位合同；已发布3b1cd18包未下发，训练实时UNKNOWN/无新认证，原V04/final/锁/采纳null不变。goal active最低今日10:00，q1保存核ACTIVE十分钟同线程/无agent其他任务修改；入口Q1_CAUSAL_RESAMPLER及q1_causal_resampler_replay，发布及服务器镜像以后续收据为准。

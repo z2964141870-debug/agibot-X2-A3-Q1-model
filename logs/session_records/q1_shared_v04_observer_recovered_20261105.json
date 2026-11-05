@@ -1,0 +1,1298 @@
+{
+  "stage": "Q1_SHARED_V04_OBSERVER_RECOVERED_20261105",
+  "status": "LIVE_ORIGINAL_TRAINING_IDENTITY_VERIFIED",
+  "route": [
+    "hp_han Windows",
+    "Windows native SSH root@59.77.15.15:25362"
+  ],
+  "session_id": 28127,
+  "authentication_material_persisted": false,
+  "authorization": "User explicitly requested restoring observation through the Windows bridge and supplied current interactive authentication.",
+  "snapshot": {
+    "stage": "Q1_V04_CONNECTION_RECOVERED_READONLY_SNAPSHOT",
+    "checked_utc": "2026-11-05T03:44:12.908789+00:00",
+    "root": "/opt/data/private/ZHY",
+    "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+    "experiment": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104",
+    "records": {
+      "pipeline.json": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/pipeline.json",
+        "bytes": 1729,
+        "sha256": "b6afbbc58c1287bd4c00e2237a94a71c96990af860c8c01a6915f8d9725fc1e1",
+        "mtime": 1793761574.910698,
+        "value": {
+          "status": "TRAINING",
+          "started_utc": "2026-11-04T03:03:14.897335+00:00",
+          "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+          "gate": {
+            "passed": true,
+            "gate_reason": [
+              "full_primebot_gate_and_mac_delivery_passed"
+            ],
+            "paired_metrics": {
+              "joint_rmse_rad": {
+                "initial": 0.5530572732289633,
+                "final": 0.11961717158555984
+              },
+              "body_relative_rmse_m": {
+                "initial": 0.05832540368040403,
+                "final": 0.010358979925513268
+              }
+            },
+            "authorizes_morph_training": true,
+            "natural_gait_thresholds_are_diagnostic": true,
+            "user_accepted_checkpoint": null
+          },
+          "automatic_formal_retry": false,
+          "profile_weights_reused": false,
+          "user_accepted_checkpoint": null,
+          "source_storage_budget_bytes": 268435456,
+          "environments_per_robot": 1024,
+          "formal_plan": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024_train_plan.json",
+            "bytes": 2602,
+            "sha256": "195afa9e5b1393a0ba7ef13ff84b1855be4f27b0d0aa2875e18fe121f47b370e"
+          },
+          "profile_audit": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/profile_checkpoint_audit.json",
+            "bytes": 2251,
+            "sha256": "f2a9222750a51848a6f05834e58cb352ef323b16e40d370be45466446f4b4c70"
+          },
+          "disk_budget": {
+            "measured_checkpoint_bytes": {
+              "g1": 342743051,
+              "q1": 342743051
+            },
+            "numbered_checkpoints_per_robot": 11,
+            "replay_persisted": false,
+            "maximum_experiment_bytes": 22733425025,
+            "required_free_reserve_bytes": 107374182400
+          },
+          "steady_iteration_seconds": 3.3808164985020994,
+          "iteration_only_hours_estimate": 150.25851104453776
+        }
+      },
+      "e1024_train_plan.json": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024_train_plan.json",
+        "bytes": 2602,
+        "sha256": "195afa9e5b1393a0ba7ef13ff84b1855be4f27b0d0aa2875e18fe121f47b370e",
+        "mtime": 1793761395.6069705,
+        "value": {
+          "purpose": "train",
+          "robots": [
+            "g1",
+            "q1"
+          ],
+          "source": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+          "output": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train",
+          "human_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/npz50/human50",
+          "subsets": [
+            "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/g1_paired.yaml",
+            "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/q1_paired.yaml"
+          ],
+          "cfg": {
+            "num_envs": 1024,
+            "replay_capacity": 1000,
+            "wm_batch": 512,
+            "imag_batch": 1024,
+            "kp_imag_batch": 1024,
+            "iterations": 160000,
+            "wm_only_iters": 2000,
+            "wm_batches": 10,
+            "window_k": 8,
+            "horizon": 32,
+            "utd": 0.4,
+            "wm_lr": 0.0002,
+            "policy_lr": 0.0002,
+            "critic_lr": 0.0002,
+            "warmup_env_steps": 400,
+            "gamma": 0.99,
+            "lam": 0.95,
+            "action_noise": 0.1,
+            "wm_hidden": [
+              2048,
+              2048,
+              2048
+            ],
+            "policy_hidden": [
+              2048,
+              1024,
+              512,
+              256
+            ],
+            "critic_hidden": [
+              256,
+              128
+            ],
+            "kp_env_frac": 0.5,
+            "kp_masking": "full",
+            "kp_jitter": true,
+            "kp_align_weight": 0.1,
+            "kp_interface": true,
+            "kp_student": "return",
+            "reset_norm": "remaining",
+            "wm_frame": "root",
+            "residual_scale": "step",
+            "termination": "hazard",
+            "wm_layer_norm": true,
+            "critic_layer_norm": true,
+            "critic_anchor_pos": true,
+            "avoid_clip_end": true,
+            "critic_target_clip": true,
+            "bf16": true,
+            "compile": "default",
+            "pool_norms": true,
+            "actor_geometry": true,
+            "decoder_film": true,
+            "latent_align_weight": 0.05,
+            "latent_align_batch": 512,
+            "actuator_delay": true,
+            "actuator_delay_fixed": true,
+            "actuator_delay_max_ms": 20,
+            "lr_decay_iters": 500000,
+            "ckpt_every": 16000,
+            "log_every": 50,
+            "library_dtype": "float16",
+            "seed": 0,
+            "wandb": false
+          },
+          "physics_handoff_min_free_bytes": 3221225472,
+          "learner_handoff_min_free_bytes": 3221225472,
+          "receipt_every": 50,
+          "initial_admission_gib": 24,
+          "profile_wall_limit_seconds": 10800,
+          "code_commit_resolved_from_published_head_at_launch": true,
+          "reuse_profile_weights_for_formal_training": false,
+          "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+          "passive_checkpoint_audit": true,
+          "target_transitions_per_robot": 410009600
+        }
+      },
+      "guard_config.json": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/guard_config.json",
+        "bytes": 344,
+        "sha256": "5eceb236f219c27f3e37b085a89d904d647eccdfbaa0abac468877b92289c507",
+        "mtime": 1793761395.6029706,
+        "value": {
+          "adapted_source": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+          "expected_boot": "90395f47-4035-4785-858e-b3d05c44a738",
+          "expected_gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+          "maximum_source_bytes": 268435456,
+          "record_memory_breakdown": true,
+          "memory_pressure_reclaim": true
+        }
+      },
+      "e1024/train/status.json": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/status.json",
+        "bytes": 501994,
+        "sha256": "fbd7202d4cc400a93f871de91dd854bdc6de30d69bf850061925295b852b06f4",
+        "mtime": 1793761576.7786899,
+        "value": {
+          "status": "RUNNING",
+          "started_utc": "2026-11-04T03:06:15.946390+00:00",
+          "command": 5,
+          "automatic_retry": false,
+          "user_accepted_checkpoint": null,
+          "inputs": 1793
+        }
+      },
+      "e1024/train/guard.json": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/guard.json",
+        "bytes": 2246,
+        "sha256": "06fb916113acb8b5185e36ec7335d0ed2640819932f93da7d3a3d913466eae31",
+        "mtime": 1793850252.8565233,
+        "value": {
+          "status": "RUNNING",
+          "command": 5,
+          "cwd": "/opt/data/private/ZHY",
+          "started_utc": "2026-11-04T03:06:16.787981+00:00",
+          "controller_pid": 55672,
+          "storage_status": "LOCAL_ONLY",
+          "last_storage_check": {
+            "experiment": {
+              "root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train",
+              "unique_allocated_bytes": 1620746240,
+              "unique_logical_bytes": 1620655520,
+              "unique_inodes": 26,
+              "symlinks_not_followed": 0
+            },
+            "source": {
+              "root": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+              "unique_allocated_bytes": 142503936,
+              "unique_logical_bytes": 141858407,
+              "unique_inodes": 341,
+              "symlinks_not_followed": 0
+            },
+            "free_bytes": {
+              "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train": 235883286528,
+              "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1": 235883286528
+            },
+            "shared_memory": {
+              "shared_bytes": 21641822208,
+              "oom_kill": 0,
+              "maximum_bytes": 32212254720,
+              "accounting": {
+                "total_bytes": 21641822208,
+                "container_limit_bytes": 34292629504,
+                "immediate_headroom_bytes": 12650807296,
+                "guard_headroom_bytes": 10570432512,
+                "anonymous_rss_bytes": 10002571264,
+                "cache_bytes": 10373246976,
+                "shmem_bytes": 32714752,
+                "dirty_bytes": 3514368,
+                "writeback_bytes": 2703360,
+                "oom_kill": 0,
+                "under_oom": 0,
+                "headroom_is_immediate_not_a_guaranteed_training_allocation": true
+              },
+              "pressure_reclaim_events": 0
+            },
+            "gpu": {
+              "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+              "temperature_c": 52,
+              "recovery": "None",
+              "used_mib": 16177
+            }
+          },
+          "error": null,
+          "worker_pid": 55677,
+          "worker_group": 55677
+        }
+      },
+      "e1024/train/memory.summary.json": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/memory.summary.json",
+        "bytes": 2400,
+        "sha256": "d5ff385a7de8dcae6fcf9f401dd5a33f0013365e03619cbcffb49f4c9ab7fa76",
+        "mtime": 1793850252.7925239,
+        "value": {
+          "status": "OBSERVING",
+          "controller_pid": 55672,
+          "controller_start_ticks": "7449427",
+          "samples": 13873,
+          "observed_samples": 42531,
+          "history_size_bound_reached": true,
+          "maximum_total_bytes": 21782847488,
+          "maximum_cache_bytes": 10373246976,
+          "maximum_anonymous_rss_bytes": 10754551808,
+          "sample_at_maximum_total": {
+            "status": "OBSERVED_LIVE",
+            "utc": "2026-11-04T18:22:08.021037+00:00",
+            "memory": {
+              "total_bytes": 21782847488,
+              "container_limit_bytes": 34292629504,
+              "immediate_headroom_bytes": 12509782016,
+              "guard_headroom_bytes": 10429407232,
+              "total_cache_bytes": 10372030464,
+              "total_rss_bytes": 10150010880,
+              "total_shmem_bytes": 32714752,
+              "total_dirty_bytes": 2162688,
+              "total_writeback_bytes": 2703360,
+              "oom_kill": 0,
+              "under_oom": 0
+            },
+            "processes": [
+              {
+                "pid": 55672,
+                "name": "python",
+                "state": "R",
+                "ppid": 54868,
+                "start_ticks": "7449427",
+                "VmHWM_bytes": 32747520,
+                "VmRSS_bytes": 32198656,
+                "RssAnon_bytes": 19623936,
+                "RssFile_bytes": 12574720,
+                "RssShmem_bytes": 0
+              },
+              {
+                "pid": 55677,
+                "name": "python",
+                "state": "S",
+                "ppid": 55672,
+                "start_ticks": "7449543",
+                "VmHWM_bytes": 22319104,
+                "VmRSS_bytes": 22319104,
+                "RssAnon_bytes": 10035200,
+                "RssFile_bytes": 12283904,
+                "RssShmem_bytes": 0
+              },
+              {
+                "pid": 55678,
+                "name": "python",
+                "state": "S",
+                "ppid": 55677,
+                "start_ticks": "7449555",
+                "VmHWM_bytes": 6223634432,
+                "VmRSS_bytes": 5913559040,
+                "RssAnon_bytes": 5117689856,
+                "RssFile_bytes": 694390784,
+                "RssShmem_bytes": 101478400
+              },
+              {
+                "pid": 55679,
+                "name": "python",
+                "state": "S",
+                "ppid": 55677,
+                "start_ticks": "7449555",
+                "VmHWM_bytes": 6043254784,
+                "VmRSS_bytes": 5747625984,
+                "RssAnon_bytes": 4971671552,
+                "RssFile_bytes": 692875264,
+                "RssShmem_bytes": 83079168
+              }
+            ]
+          },
+          "training_status_inferred": false,
+          "signals_sent": 0,
+          "optimizer_updates": 0,
+          "note": "The peak row contains one sampled cgroup breakdown; fields are read sequentially, not atomically. Process RSS can count shared mappings repeatedly.",
+          "history_bytes": 16776235
+        }
+      },
+      "e1024/train/memory_reclaim.json": null,
+      "e1024/train/transition_receipt.json": null,
+      "e1024/train/workers/g1.json": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/workers/g1.json",
+        "bytes": 23331,
+        "sha256": "a788bda7b136a4fe68c3a1a2865861971cd88cd878be8bb3b614ff6096c99fb6",
+        "mtime": 1793850246.8125675,
+        "value": {
+          "status": "RUNNING",
+          "robot": "g1",
+          "rank": 0,
+          "pid": 55678,
+          "contracts": {
+            "state": 269,
+            "physical_state": 240,
+            "local_features": 268,
+            "critic_features": 297,
+            "context": 62,
+            "proprio": 93,
+            "morphology": 154
+          },
+          "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+          "optimizer_updates": {
+            "wm_opt": 266500,
+            "policy_opt": 24650,
+            "critic_opt": 493000,
+            "kp_opt": 24650,
+            "critic_kp_opt": 493000
+          },
+          "iterations_completed": 26650,
+          "formal_training": true,
+          "latent_draws": [
+            {
+              "it": 2000,
+              "n": 512,
+              "clip_sha": "fd5de2559ec674063d52083fe54ad2911f4de7dc82bf2e000e5f6ea43712e2fc",
+              "offset_sha": "4453b39e39a5f3a8ca32e3dfc60f3018551aee7a80bf4b0d35309f66bfe9719d"
+            },
+            {
+              "it": 2001,
+              "n": 512,
+              "clip_sha": "aacc8e26257e060e9b056e97db0d3641f21b1984ca49cb3325419c7fb0858f32",
+              "offset_sha": "5def6c9194ace060b1c9bc9b0e079afbc2eabc68276d235ce799fb78647e81ba"
+            },
+            {
+              "it": 2002,
+              "n": 512,
+              "clip_sha": "8a327985b6cddb00648caede7a06df60b15b792eee8c54257722d756364c4df7",
+              "offset_sha": "443dcc8a36d787e581f60e8500cfe9e25b36db0ce02d65aee3e94bf92b25e664"
+            },
+            {
+              "it": 2003,
+              "n": 512,
+              "clip_sha": "26c208b7243e30307ddc7b8f3beb6cc3ca5f2dc6d5cc080da793d84a19bc0baf",
+              "offset_sha": "b1f6bb7b3cb235daad7dae30040fd926c5ddb78c5c61718d0c0a96082117cff7"
+            },
+            {
+              "it": 2004,
+              "n": 512,
+              "clip_sha": "5c0fd9848bdba04cb9463de540a4df447ca7ccc7e176ab382136510d0aff39e8",
+              "offset_sha": "b26ec2434e5b5e196c2a080d535ade587b44788d8c5a0635facbcae001a357d4"
+            },
+            {
+              "it": 2005,
+              "n": 512,
+              "clip_sha": "8732852977713b13e36c002220121ca5c1a708dac843a260f688704d7082a2c7",
+              "offset_sha": "bf4ae9d805fbf8065e3027f2659f2fda3d8f19daa3d2d17dc179f1d0debdae92"
+            },
+            {
+              "it": 2006,
+              "n": 512,
+              "clip_sha": "dbca0e6b0982a4e2eb1e98d2a9337da43ae439215570c480a60d3c55ad1df475",
+              "offset_sha": "b4d0b8a7b9cd47af17926fa48132e8531e2cd8ca36c4128b0455fd5a3965301c"
+            },
+            {
+              "it": 2007,
+              "n": 512,
+              "clip_sha": "437edfdb393f77b236a46ab9cc3b63d46a672ac97a12c543ee772afb2ff29a58",
+              "offset_sha": "fac6d90be6006bb5ea8f8fa6c1f0490ed01f213a7961ba6a54aaf2b5fdabdc6a"
+            }
+          ],
+          "nonfinite_updates": {
+            "wm/nonfinite_steps": 0,
+            "policy/nonfinite_steps": 0,
+            "critic/nonfinite_steps": 0,
+            "kp/nonfinite_steps": 0,
+            "critic_kp/nonfinite_steps": 0
+          },
+          "collected_environment_transitions": 68633600,
+          "user_accepted_checkpoint": null,
+          "resolved_cfg": {
+            "subset_yaml": "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/g1_paired.yaml",
+            "robot": "g1",
+            "num_envs": 1024,
+            "replay_capacity": 1000,
+            "wm_lr": 0.0002,
+            "policy_lr": 0.0002,
+            "critic_lr": 0.0002,
+            "wm_batches": 10,
+            "wm_batch": 512,
+            "window_k": 8,
+            "horizon": 32,
+            "imag_batch": 1024,
+            "utd": 0.4,
+            "warmup_env_steps": 400,
+            "wm_only_iters": 2000,
+            "iterations": 160000,
+            "lr_decay_iters": 500000,
+            "lr_final_frac": 0.03,
+            "gamma": 0.99,
+            "lam": 0.95,
+            "action_noise": 0.1,
+            "collect_det_frac": 0,
+            "clean_action_record": false,
+            "softmax_cap": null,
+            "failure_reset": 0,
+            "actuator_delay": true,
+            "actuator_delay_max_ms": 20,
+            "actuator_delay_fixed": true,
+            "hist_len": 10,
+            "ckpt_every": 16000,
+            "log_every": 50,
+            "seed": 0,
+            "log_dir": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train",
+            "run_name": "run",
+            "wandb": false,
+            "library_dtype": "float16",
+            "reset_norm": "remaining",
+            "wm_hidden": [
+              2048,
+              2048,
+              2048
+            ],
+            "wm_layer_norm": true,
+            "wm_frame": "root",
+            "residual_scale": "step",
+            "termination": "hazard",
+            "policy_hidden": [
+              2048,
+              1024,
+              512,
+              256
+            ],
+            "latent": 32,
+            "critic_hidden": [
+              256,
+              128
+            ],
+            "critic_layer_norm": true,
+            "critic_anchor_pos": true,
+            "goal_anchor": "reference",
+            "avoid_clip_end": true,
+            "clip_end_terminal": false,
+            "target_critic_alpha": null,
+            "critic_target_clip": true,
+            "value_bound": false,
+            "bf16": true,
+            "act": "elu",
+            "compile": "default",
+            "fused_adam": true,
+            "gpu_ids": null,
+            "lr_scale_sqrt_world_size": true,
+            "robots": [
+              "g1",
+              "q1"
+            ],
+            "subset_yamls": [
+              "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/g1_paired.yaml",
+              "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/q1_paired.yaml"
+            ],
+            "share": "all",
+            "morphology": true,
+            "actor_geometry": true,
+            "decoder_film": true,
+            "latent_align_weight": 0.05,
+            "latent_align_batch": 512,
+            "pool_norms": true,
+            "kp_interface": true,
+            "kp_env_frac": 0.5,
+            "kp_imag_batch": 1024,
+            "kp_masking": "full",
+            "kp_preview_mix": true,
+            "kp_heading_frac": 1,
+            "kp_student": "return",
+            "kp_jitter": true,
+            "kp_drift": false,
+            "kp_action_weight": 1,
+            "kp_align_weight": 0.1,
+            "kp_loss_norm": true,
+            "human_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/npz50/human50",
+            "policy_goal": "motion",
+            "recon_weight": 1
+          },
+          "native_joint_names": [
+            "left_hip_pitch_joint",
+            "left_hip_roll_joint",
+            "left_hip_yaw_joint",
+            "left_knee_joint",
+            "left_ankle_pitch_joint",
+            "left_ankle_roll_joint",
+            "right_hip_pitch_joint",
+            "right_hip_roll_joint",
+            "right_hip_yaw_joint",
+            "right_knee_joint",
+            "right_ankle_pitch_joint",
+            "right_ankle_roll_joint",
+            "waist_yaw_joint",
+            "waist_roll_joint",
+            "waist_pitch_joint",
+            "left_shoulder_pitch_joint",
+            "left_shoulder_roll_joint",
+            "left_shoulder_yaw_joint",
+            "left_elbow_joint",
+            "left_wrist_roll_joint",
+            "left_wrist_pitch_joint",
+            "left_wrist_yaw_joint",
+            "right_shoulder_pitch_joint",
+            "right_shoulder_roll_joint",
+            "right_shoulder_yaw_joint",
+            "right_elbow_joint",
+            "right_wrist_roll_joint",
+            "right_wrist_pitch_joint",
+            "right_wrist_yaw_joint"
+          ],
+          "reference_clips": 393,
+          "initial_buffers": {
+            "morph": "1510f80f15cf6cb932b43d46ba532989168aceb8ab84aaa00e8c3b9164e81da5",
+            "joint_presence": "993c36a18400df7ab61fe4713437cb9ab32947d6b4b9bc319cf5809043bd7adf",
+            "joint_limits": "ab8ea5a816da5a15b1c2e1dc34e863c81e9848fe06055574e649cfb24b5c97f7",
+            "default_joint_pos": "89d7c6003f60e5682475902fa38f922cc6ca89f82be367d435030802e9561f5d",
+            "state_mean": "b8d4eaa759a4b03b4b8d4de4ab720e1c1fb4181ae89728f6b962a3853c0af757",
+            "state_std": "0955fd0dfa05f2908b58d7a52488da456c0abd6760c01de84270b09aa44e0fe5"
+          },
+          "common_clip_names": {
+            "count": 393,
+            "last": [
+              "walk_sideway_135_stop_004__A040",
+              "walk_sideway_left_loop_001__A026",
+              "walk_sideway_left_loop_003__A032",
+              "walk_sideway_left_loop_004__A031"
+            ]
+          },
+          "zero_snapshot_audit": {
+            "status": "PASSED",
+            "iteration": 0,
+            "before": {
+              "parameters": "aee1749014a41451d86e2ec2c83e03e00e4daaa6cc96979fcc302bf22c2652c7",
+              "rng": "e99faa8b9c2442fbe0f3bf7c21570499c34607484214591752a2662cf9042f28"
+            },
+            "after": {
+              "parameters": "aee1749014a41451d86e2ec2c83e03e00e4daaa6cc96979fcc302bf22c2652c7",
+              "rng": "e99faa8b9c2442fbe0f3bf7c21570499c34607484214591752a2662cf9042f28"
+            },
+            "parameters_unchanged": true,
+            "rng_unchanged": true,
+            "checkpoint": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/ckpt_0.pt",
+            "new_optimizer_updates": 0,
+            "new_training_transitions": 0
+          },
+          "initial_checkpoint": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/ckpt_0.pt",
+          "physics_vram_handoff": {
+            "minimum_free_bytes": 3221225472,
+            "checks": 26651,
+            "cache_releases": 0,
+            "total_seconds": 0,
+            "events": [],
+            "by_phase": {
+              "physics": {
+                "checks": 26651,
+                "cache_releases": 0
+              }
+            },
+            "last_checked_free_bytes": 8335917056
+          },
+          "learner_vram_handoff": {
+            "minimum_free_bytes": 3221225472,
+            "checks": 75950,
+            "cache_releases": 0,
+            "total_seconds": 0,
+            "events": [],
+            "by_phase": {
+              "world_model": {
+                "checks": 26650,
+                "cache_releases": 0
+              },
+              "motion": {
+                "checks": 24650,
+                "cache_releases": 0
+              },
+              "return_kp": {
+                "checks": 24650,
+                "cache_releases": 0
+              }
+            },
+            "last_checked_free_bytes": 8335917056
+          },
+          "iteration_transitions": 68224000,
+          "peak_cuda_allocated_bytes": 6766269952,
+          "peak_cuda_reserved_bytes": 7256145920,
+          "last_iteration_seconds": 3.8808960410242435,
+          "elapsed_seconds": 88650.130018876,
+          "last_latent_draw": {
+            "it": 26649,
+            "n": 512,
+            "clip_sha": "d1bd86763174a3c5aa2594b1615d36bfc5ab9a36d814fdacc368d396fb0b8d11",
+            "offset_sha": "b2f382ca6fe2e5949acd1da10ddb5f40ff1cb4bc2ad8401455910e413d241962"
+          }
+        }
+      },
+      "e1024/train/workers/q1.json": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/workers/q1.json",
+        "bytes": 23129,
+        "sha256": "505467c114db0d4d47ae5ce003c78923a6764d10d250bd47c897ea2870ebef5e",
+        "mtime": 1793850246.8085675,
+        "value": {
+          "status": "RUNNING",
+          "robot": "q1",
+          "rank": 1,
+          "pid": 55679,
+          "contracts": {
+            "state": 269,
+            "physical_state": 240,
+            "local_features": 268,
+            "critic_features": 297,
+            "context": 62,
+            "proprio": 93,
+            "morphology": 154
+          },
+          "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+          "optimizer_updates": {
+            "wm_opt": 266500,
+            "policy_opt": 24650,
+            "critic_opt": 493000,
+            "kp_opt": 24650,
+            "critic_kp_opt": 493000
+          },
+          "iterations_completed": 26650,
+          "formal_training": true,
+          "latent_draws": [
+            {
+              "it": 2000,
+              "n": 512,
+              "clip_sha": "fd5de2559ec674063d52083fe54ad2911f4de7dc82bf2e000e5f6ea43712e2fc",
+              "offset_sha": "4453b39e39a5f3a8ca32e3dfc60f3018551aee7a80bf4b0d35309f66bfe9719d"
+            },
+            {
+              "it": 2001,
+              "n": 512,
+              "clip_sha": "aacc8e26257e060e9b056e97db0d3641f21b1984ca49cb3325419c7fb0858f32",
+              "offset_sha": "5def6c9194ace060b1c9bc9b0e079afbc2eabc68276d235ce799fb78647e81ba"
+            },
+            {
+              "it": 2002,
+              "n": 512,
+              "clip_sha": "8a327985b6cddb00648caede7a06df60b15b792eee8c54257722d756364c4df7",
+              "offset_sha": "443dcc8a36d787e581f60e8500cfe9e25b36db0ce02d65aee3e94bf92b25e664"
+            },
+            {
+              "it": 2003,
+              "n": 512,
+              "clip_sha": "26c208b7243e30307ddc7b8f3beb6cc3ca5f2dc6d5cc080da793d84a19bc0baf",
+              "offset_sha": "b1f6bb7b3cb235daad7dae30040fd926c5ddb78c5c61718d0c0a96082117cff7"
+            },
+            {
+              "it": 2004,
+              "n": 512,
+              "clip_sha": "5c0fd9848bdba04cb9463de540a4df447ca7ccc7e176ab382136510d0aff39e8",
+              "offset_sha": "b26ec2434e5b5e196c2a080d535ade587b44788d8c5a0635facbcae001a357d4"
+            },
+            {
+              "it": 2005,
+              "n": 512,
+              "clip_sha": "8732852977713b13e36c002220121ca5c1a708dac843a260f688704d7082a2c7",
+              "offset_sha": "bf4ae9d805fbf8065e3027f2659f2fda3d8f19daa3d2d17dc179f1d0debdae92"
+            },
+            {
+              "it": 2006,
+              "n": 512,
+              "clip_sha": "dbca0e6b0982a4e2eb1e98d2a9337da43ae439215570c480a60d3c55ad1df475",
+              "offset_sha": "b4d0b8a7b9cd47af17926fa48132e8531e2cd8ca36c4128b0455fd5a3965301c"
+            },
+            {
+              "it": 2007,
+              "n": 512,
+              "clip_sha": "437edfdb393f77b236a46ab9cc3b63d46a672ac97a12c543ee772afb2ff29a58",
+              "offset_sha": "fac6d90be6006bb5ea8f8fa6c1f0490ed01f213a7961ba6a54aaf2b5fdabdc6a"
+            }
+          ],
+          "nonfinite_updates": {
+            "wm/nonfinite_steps": 0,
+            "policy/nonfinite_steps": 0,
+            "critic/nonfinite_steps": 0,
+            "kp/nonfinite_steps": 0,
+            "critic_kp/nonfinite_steps": 0
+          },
+          "collected_environment_transitions": 68633600,
+          "user_accepted_checkpoint": null,
+          "resolved_cfg": {
+            "subset_yaml": "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/q1_paired.yaml",
+            "robot": "q1",
+            "num_envs": 1024,
+            "replay_capacity": 1000,
+            "wm_lr": 0.0002,
+            "policy_lr": 0.0002,
+            "critic_lr": 0.0002,
+            "wm_batches": 10,
+            "wm_batch": 512,
+            "window_k": 8,
+            "horizon": 32,
+            "imag_batch": 1024,
+            "utd": 0.4,
+            "warmup_env_steps": 400,
+            "wm_only_iters": 2000,
+            "iterations": 160000,
+            "lr_decay_iters": 500000,
+            "lr_final_frac": 0.03,
+            "gamma": 0.99,
+            "lam": 0.95,
+            "action_noise": 0.1,
+            "collect_det_frac": 0,
+            "clean_action_record": false,
+            "softmax_cap": null,
+            "failure_reset": 0,
+            "actuator_delay": true,
+            "actuator_delay_max_ms": 20,
+            "actuator_delay_fixed": true,
+            "hist_len": 10,
+            "ckpt_every": 16000,
+            "log_every": 50,
+            "seed": 0,
+            "log_dir": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train",
+            "run_name": "run",
+            "wandb": false,
+            "library_dtype": "float16",
+            "reset_norm": "remaining",
+            "wm_hidden": [
+              2048,
+              2048,
+              2048
+            ],
+            "wm_layer_norm": true,
+            "wm_frame": "root",
+            "residual_scale": "step",
+            "termination": "hazard",
+            "policy_hidden": [
+              2048,
+              1024,
+              512,
+              256
+            ],
+            "latent": 32,
+            "critic_hidden": [
+              256,
+              128
+            ],
+            "critic_layer_norm": true,
+            "critic_anchor_pos": true,
+            "goal_anchor": "reference",
+            "avoid_clip_end": true,
+            "clip_end_terminal": false,
+            "target_critic_alpha": null,
+            "critic_target_clip": true,
+            "value_bound": false,
+            "bf16": true,
+            "act": "elu",
+            "compile": "default",
+            "fused_adam": true,
+            "gpu_ids": null,
+            "lr_scale_sqrt_world_size": true,
+            "robots": [
+              "g1",
+              "q1"
+            ],
+            "subset_yamls": [
+              "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/g1_paired.yaml",
+              "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/data_repair_v02/screen_all/dataset/q1_paired.yaml"
+            ],
+            "share": "all",
+            "morphology": true,
+            "actor_geometry": true,
+            "decoder_film": true,
+            "latent_align_weight": 0.05,
+            "latent_align_batch": 512,
+            "pool_norms": true,
+            "kp_interface": true,
+            "kp_env_frac": 0.5,
+            "kp_imag_batch": 1024,
+            "kp_masking": "full",
+            "kp_preview_mix": true,
+            "kp_heading_frac": 1,
+            "kp_student": "return",
+            "kp_jitter": true,
+            "kp_drift": false,
+            "kp_action_weight": 1,
+            "kp_align_weight": 0.1,
+            "kp_loss_norm": true,
+            "human_root": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/npz50/human50",
+            "policy_goal": "motion",
+            "recon_weight": 1
+          },
+          "native_joint_names": [
+            "left_hip_pitch_joint",
+            "left_hip_roll_joint",
+            "left_hip_yaw_joint",
+            "left_knee_joint",
+            "left_ankle_pitch_joint",
+            "left_ankle_roll_joint",
+            "right_hip_pitch_joint",
+            "right_hip_roll_joint",
+            "right_hip_yaw_joint",
+            "right_knee_joint",
+            "right_ankle_pitch_joint",
+            "right_ankle_roll_joint",
+            "waist_roll_joint",
+            "waist_yaw_joint",
+            "left_shoulder_pitch_joint",
+            "left_shoulder_roll_joint",
+            "left_shoulder_yaw_joint",
+            "left_elbow_joint",
+            "right_shoulder_pitch_joint",
+            "right_shoulder_roll_joint",
+            "right_shoulder_yaw_joint",
+            "right_elbow_joint"
+          ],
+          "reference_clips": 393,
+          "initial_buffers": {
+            "morph": "6d0c288dec18cbaee3f8ec0f1e5f3b1a75e7c963c088cabfd075452d58a2580f",
+            "joint_presence": "ee7fbcf02614125758a9f88f9da6d4190526e9aedf3585cdbe1473819c5b3393",
+            "joint_limits": "ee8887e7b6a26cff1f3e1b4367c90c11c02d275486204792f3446f5a08ed4913",
+            "default_joint_pos": "5b517952cbe9c4c147bc3f3434f9d82409e76d09ea58905aefe7fb5415912d9a",
+            "state_mean": "b353d8f6c196a7bc8cdb4fa033ed7ba3af51282ef50ee056a1c4b42ceb7e59d8",
+            "state_std": "00035374900cf405235f0fcc8e058dcb5fbd120172efb2b5bb381857166d6041"
+          },
+          "common_clip_names": {
+            "count": 393,
+            "last": [
+              "walk_sideway_135_stop_004__A040",
+              "walk_sideway_left_loop_001__A026",
+              "walk_sideway_left_loop_003__A032",
+              "walk_sideway_left_loop_004__A031"
+            ]
+          },
+          "zero_snapshot_audit": {
+            "status": "PASSED",
+            "iteration": 0,
+            "before": {
+              "parameters": "e9933cc54853012fca46230491c24796333180af0d3275b4601a0958b922733c",
+              "rng": "441f3283ab91b4704b83bdba5cc2c628a7741f13ad6d3cfeccfa4b141e8e4b4d"
+            },
+            "after": {
+              "parameters": "e9933cc54853012fca46230491c24796333180af0d3275b4601a0958b922733c",
+              "rng": "441f3283ab91b4704b83bdba5cc2c628a7741f13ad6d3cfeccfa4b141e8e4b4d"
+            },
+            "parameters_unchanged": true,
+            "rng_unchanged": true,
+            "checkpoint": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_0.pt",
+            "new_optimizer_updates": 0,
+            "new_training_transitions": 0
+          },
+          "initial_checkpoint": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_0.pt",
+          "physics_vram_handoff": {
+            "minimum_free_bytes": 3221225472,
+            "checks": 26651,
+            "cache_releases": 0,
+            "total_seconds": 0,
+            "events": [],
+            "by_phase": {
+              "physics": {
+                "checks": 26651,
+                "cache_releases": 0
+              }
+            },
+            "last_checked_free_bytes": 8335917056
+          },
+          "learner_vram_handoff": {
+            "minimum_free_bytes": 3221225472,
+            "checks": 75950,
+            "cache_releases": 0,
+            "total_seconds": 0,
+            "events": [],
+            "by_phase": {
+              "world_model": {
+                "checks": 26650,
+                "cache_releases": 0
+              },
+              "motion": {
+                "checks": 24650,
+                "cache_releases": 0
+              },
+              "return_kp": {
+                "checks": 24650,
+                "cache_releases": 0
+              }
+            },
+            "last_checked_free_bytes": 8335917056
+          },
+          "iteration_transitions": 68224000,
+          "peak_cuda_allocated_bytes": 6766330880,
+          "peak_cuda_reserved_bytes": 7264534528,
+          "last_iteration_seconds": 3.8797751539968885,
+          "elapsed_seconds": 88650.132563577,
+          "last_latent_draw": {
+            "it": 26649,
+            "n": 512,
+            "clip_sha": "d1bd86763174a3c5aa2594b1615d36bfc5ab9a36d814fdacc368d396fb0b8d11",
+            "offset_sha": "b2f382ca6fe2e5949acd1da10ddb5f40ff1cb4bc2ad8401455910e413d241962"
+          }
+        }
+      }
+    },
+    "processes": [
+      {
+        "pid": 54868,
+        "alive": true,
+        "state": "S",
+        "ppid": 11,
+        "start_ticks": "7431283",
+        "expected_start_ticks": "7431283",
+        "identity_matches": true,
+        "argv_head": [
+          "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+          "-u",
+          "/opt/data/private/ZHY/script/q1_five_stage/controller.py"
+        ],
+        "memory_status": {
+          "Name": "python",
+          "State": "S (sleeping)",
+          "VmHWM": "31744 kB",
+          "VmRSS": "30936 kB",
+          "RssAnon": "18828 kB",
+          "RssFile": "12108 kB",
+          "RssShmem": "0 kB"
+        }
+      },
+      {
+        "pid": 55672,
+        "alive": true,
+        "state": "S",
+        "ppid": 54868,
+        "start_ticks": "7449427",
+        "expected_start_ticks": "7449427",
+        "identity_matches": true,
+        "argv_head": [
+          "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+          "-u",
+          "/opt/data/private/ZHY/script/primebot_q1/guard.py"
+        ],
+        "memory_status": {
+          "Name": "python",
+          "State": "S (sleeping)",
+          "VmHWM": "31980 kB",
+          "VmRSS": "31444 kB",
+          "RssAnon": "19164 kB",
+          "RssFile": "12280 kB",
+          "RssShmem": "0 kB"
+        }
+      },
+      {
+        "pid": 55677,
+        "alive": true,
+        "state": "S",
+        "ppid": 55672,
+        "start_ticks": "7449543",
+        "expected_start_ticks": "7449543",
+        "identity_matches": true,
+        "argv_head": [
+          "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+          "-u",
+          "/opt/data/private/ZHY/script/morphmimic_q1/train_native.py"
+        ],
+        "memory_status": {
+          "Name": "python",
+          "State": "S (sleeping)",
+          "VmHWM": "21796 kB",
+          "VmRSS": "21796 kB",
+          "RssAnon": "9800 kB",
+          "RssFile": "11996 kB",
+          "RssShmem": "0 kB"
+        }
+      },
+      {
+        "pid": 55678,
+        "alive": true,
+        "state": "R",
+        "ppid": 55677,
+        "start_ticks": "7449555",
+        "expected_start_ticks": "7449555",
+        "identity_matches": true,
+        "argv_head": [
+          "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+          "-u",
+          "/opt/data/private/ZHY/script/morphmimic_q1/train_native.py"
+        ],
+        "memory_status": {
+          "Name": "python",
+          "State": "R (running)",
+          "VmHWM": "6077768 kB",
+          "VmRSS": "5662968 kB",
+          "RssAnon": "4885752 kB",
+          "RssFile": "678116 kB",
+          "RssShmem": "99100 kB"
+        }
+      },
+      {
+        "pid": 55679,
+        "alive": true,
+        "state": "R",
+        "ppid": 55677,
+        "start_ticks": "7449555",
+        "expected_start_ticks": "7449555",
+        "identity_matches": true,
+        "argv_head": [
+          "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+          "-u",
+          "/opt/data/private/ZHY/script/morphmimic_q1/train_native.py"
+        ],
+        "memory_status": {
+          "Name": "python",
+          "State": "R (running)",
+          "VmHWM": "5901616 kB",
+          "VmRSS": "5573788 kB",
+          "RssAnon": "4816052 kB",
+          "RssFile": "676604 kB",
+          "RssShmem": "81132 kB"
+        }
+      }
+    ],
+    "kernel_locks": [
+      "26: FLOCK  ADVISORY  WRITE 55672 103:07:116003074 0 EOF"
+    ],
+    "gpu": {
+      "returncode": 0,
+      "stdout": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 16177, 52, 22, None",
+      "stderr": ""
+    },
+    "compute_apps": {
+      "returncode": 0,
+      "stdout": "55678, 7434\n55679, 8728",
+      "stderr": ""
+    },
+    "cgroup": {
+      "total_bytes": 21641297920,
+      "limit_bytes": 34292629504,
+      "immediate_headroom_bytes": 12651331584,
+      "guard_headroom_bytes": 10570956800,
+      "oom": {
+        "oom_kill_disable": "0",
+        "under_oom": "0",
+        "oom_kill": "0"
+      },
+      "stat": {
+        "total_cache": 10373246976,
+        "total_rss": 10002030592,
+        "total_shmem": 32714752,
+        "total_dirty": 3514368,
+        "total_writeback": 2703360
+      }
+    },
+    "logs": {
+      "logs/q1_shared_v04_controller_20261104.log": {
+        "path": "/opt/data/private/ZHY/logs/q1_shared_v04_controller_20261104.log",
+        "bytes": 0,
+        "mtime": 1793761394.2509682,
+        "lines": []
+      },
+      "data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024_train_controller.log": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024_train_controller.log",
+        "bytes": 0,
+        "mtime": 1793761575.6906946,
+        "lines": []
+      },
+      "data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/workers/g1.log": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/workers/g1.log",
+        "bytes": 464416,
+        "mtime": 1793850246.844567,
+        "lines": [
+          "[morphmimic]    q1 | wm loss 7.2936 pred8 0.4773 err8 pelvis 0.002 m joints 0.005 rad | J 9.4975 critic 8.93e-04 tclip 0.00% surv 1.000 | rew 0.0820 nret 0.740 eplen 119.8 fail 0 | align 2.524e-02 zdist 0.299 | kp tclip 0.00%",
+          "[morphmimic] it 26050 | 0.29 it/s (0.334/1.718/1.401 s collect/wm/actor-critic) | env 1481/s imag 37914/s | wm loss 9.1940 bce 0.0000 pred8 0.2957 err8 pelvis 0.002 m joints 0.005 rad | J 9.5317 |g| 0.610 (max 0.901) critic 9.07e-04 V0 9.54 tclip 0.00% surv 1.000 | rew 0.0848 nret 0.766 eplen 119.9 fail 2 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.3115 act 0.0201 align 0.9439 tclip 0.00%",
+          "[morphmimic]    g1 | wm loss 11.0887 pred8 0.1161 err8 pelvis 0.003 m joints 0.005 rad | J 9.5688 critic 9.16e-04 tclip 0.00% surv 1.000 | rew 0.0878 nret 0.796 eplen 119.5 fail 1 | align 2.538e-02 zdist 0.300 | kp tclip 0.00%",
+          "[morphmimic]    q1 | wm loss 7.2993 pred8 0.4753 err8 pelvis 0.002 m joints 0.005 rad | J 9.4946 critic 8.98e-04 tclip 0.00% surv 1.000 | rew 0.0818 nret 0.736 eplen 120.4 fail 1 | align 2.538e-02 zdist 0.300 | kp tclip 0.00%",
+          "[morphmimic] it 26100 | 0.28 it/s (0.339/1.758/1.436 s collect/wm/actor-critic) | env 1447/s imag 37044/s | wm loss 9.3492 bce 0.0000 pred8 0.2965 err8 pelvis 0.002 m joints 0.006 rad | J 9.5222 |g| 0.627 (max 0.916) critic 9.38e-04 V0 9.53 tclip 0.00% surv 1.000 | rew 0.0845 nret 0.757 eplen 117.6 fail 0 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.2914 act 0.0214 align 0.9869 tclip 0.00%",
+          "[morphmimic]    g1 | wm loss 11.4172 pred8 0.1176 err8 pelvis 0.003 m joints 0.006 rad | J 9.5546 critic 9.45e-04 tclip 0.00% surv 1.000 | rew 0.0877 nret 0.788 eplen 119.9 fail 0 | align 2.567e-02 zdist 0.301 | kp tclip 0.00%",
+          "[morphmimic]    q1 | wm loss 7.2812 pred8 0.4754 err8 pelvis 0.002 m joints 0.006 rad | J 9.4897 critic 9.32e-04 tclip 0.00% surv 1.000 | rew 0.0813 nret 0.730 eplen 115.6 fail 0 | align 2.567e-02 zdist 0.301 | kp tclip 0.00%",
+          "[morphmimic] it 26150 | 0.28 it/s (0.342/1.745/1.433 s collect/wm/actor-critic) | env 1453/s imag 37188/s | wm loss 9.2556 bce 0.0000 pred8 0.2973 err8 pelvis 0.002 m joints 0.006 rad | J 9.5311 |g| 0.592 (max 1.93) critic 1.01e-03 V0 9.54 tclip 0.00% surv 1.000 | rew 0.0848 nret 0.768 eplen 119.3 fail 0 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.3020 act 0.0206 align 0.9604 tclip 0.00%",
+          "[morphmimic]    g1 | wm loss 11.1437 pred8 0.1163 err8 pelvis 0.003 m joints 0.005 rad | J 9.5659 critic 9.53e-04 tclip 0.00% surv 1.000 | rew 0.0880 nret 0.806 eplen 126.0 fail 0 | align 2.601e-02 zdist 0.304 | kp tclip 0.00%",
+          "[morphmimic]    q1 | wm loss 7.3674 pred8 0.4783 err8 pelvis 0.002 m joints 0.006 rad | J 9.4963 critic 1.06e-03 tclip 0.00% surv 1.000 | rew 0.0816 nret 0.732 eplen 113.0 fail 0 | align 2.601e-02 zdist 0.304 | kp tclip 0.00%",
+          "[morphmimic] it 26200 | 0.28 it/s (0.343/1.755/1.421 s collect/wm/actor-critic) | env 1453/s imag 37196/s | wm loss 9.1625 bce 0.0000 pred8 0.2969 err8 pelvis 0.002 m joints 0.005 rad | J 9.5219 |g| 0.533 (max 0.923) critic 1.01e-03 V0 9.52 tclip 0.00% surv 1.000 | rew 0.0849 nret 0.774 eplen 121.8 fail 1 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.3008 act 0.0209 align 0.9950 tclip 0.00%",
+          "[morphmimic]    g1 | wm loss 10.9940 pred8 0.1160 err8 pelvis 0.003 m joints 0.005 rad | J 9.5561 critic 1.01e-03 tclip 0.00% surv 1.000 | rew 0.0881 nret 0.822 eplen 130.0 fail 0 | align 2.575e-02 zdist 0.302 | kp tclip 0.00%",
+          "[morphmimic]    q1 | wm loss 7.3309 pred8 0.4779 err8 pelvis 0.002 m joints 0.006 rad | J 9.4877 critic 1.00e-03 tclip 0.00% surv 1.000 | rew 0.0817 nret 0.730 eplen 114.0 fail 1 | align 2.575e-02 zdist 0.302 | kp tclip 0.00%",
+          "[morphmimic] it 26250 | 0.29 it/s (0.342/1.738/1.418 s collect/wm/actor-critic) | env 1461/s imag 37411/s | wm loss 9.1463 bce 0.0000 pred8 0.2957 err8 pelvis 0.002 m joints 0.005 rad | J 9.5236 |g| 0.603 (max 0.905) critic 9.85e-04 V0 9.53 tclip 0.00% surv 1.000 | rew 0.0848 nret 0.762 eplen 120.6 fail 0 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.3018 act 0.0205 align 0.9502 tclip 0.00%",
+          "[morphmimic]    g1 | wm loss 10.9625 pred8 0.1158 err8 pelvis 0.003 m joints 0.005 rad | J 9.5561 critic 9.64e-04 tclip 0.00% surv 1.000 | rew 0.0880 nret 0.793 eplen 120.7 fail 0 | align 2.513e-02 zdist 0.298 | kp tclip 0.00%",
+          "[morphmimic]    q1 | wm loss 7.3301 pred8 0.4757 err8 pelvis 0.002 m joints 0.006 rad | J 9.4912 critic 1.01e-03 tclip 0.00% surv 1.000 | rew 0.0817 nret 0.733 eplen 120.4 fail 0 | align 2.513e-02 zdist 0.298 | kp tclip 0.00%",
+          "[morphmimic] it 26300 | 0.28 it/s (0.346/1.781/1.468 s collect/wm/actor-critic) | env 1422/s imag 36409/s | wm loss 8.9814 bce 0.0000 pred8 0.2967 err8 pelvis 0.002 m joints 0.005 rad | J 9.5225 |g| 0.590 (max 1.29) critic 9.45e-04 V0 9.53 tclip 0.00% surv 1.000 | rew 0.0848 nret 0.768 eplen 116.2 fail 0 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.3031 act 0.0203 align 0.9616 tclip 0.00%",
+          "[morphmimic]    g1 | wm loss 10.6730 pred8 0.1151 err8 pelvis 0.002 m joints 0.005 rad | J 9.5574 critic 9.30e-04 tclip 0.00% surv 1.000 | rew 0.0880 nret 0.808 eplen 121.1 fail 0 | align 2.545e-02 zdist 0.301 | kp tclip 0.00%",
+          "[morphmimic]    q1 | wm loss 7.2898 pred8 0.4782 err8 pelvis 0.002 m joints 0.005 rad | J 9.4875 critic 9.60e-04 tclip 0.00% surv 1.000 | rew 0.0816 nret 0.731 eplen 111.6 fail 0 | align 2.545e-02 zdist 0.301 | kp tclip 0.00%",
+          "[morphmimic] it 26350 | 0.30 it/s (0.329/1.647/1.318 s collect/wm/actor-critic) | env 1552/s imag 39731/s | wm loss 9.3765 bce 0.0000 pred8 0.2980 err8 pelvis 0.002 m joints 0.006 rad | J 9.5180 |g| 0.630 (max 3.75) critic 1.01e-03 V0 9.52 tclip 0.00% surv 1.000 | rew 0.0849 nret 0.780 eplen 125.9 fail 2 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.3085 act 0.0190 align 0.8634 tclip 0.00%",
+          "[morphmimic]    g1 | wm loss 11.1822 pred8 0.1160 err8 pelvis 0.003 m joints 0.005 rad | J 9.5481 critic 1.08e-03 tclip 0.00% surv 1.000 | rew 0.0882 nret 0.827 eplen 130.1 fail 1 | align 2.614e-02 zdist 0.304 | kp tclip 0.00%",
+          "[morphmimic]    q1 | wm loss 7.5708 pred8 0.4800 err8 pelvis 0.002 m joints 0.006 rad | J 9.4879 critic 9.47e-04 tclip 0.00% surv 1.000 | rew 0.0815 nret 0.738 eplen 122.2 fail 1 | align 2.614e-02 zdist 0.304 | kp tclip 0.00%",
+          "[morphmimic] it 26400 | 0.31 it/s (0.327/1.608/1.306 s collect/wm/actor-critic) | env 1578/s imag 40386/s | wm loss 9.3123 bce 0.0000 pred8 0.2999 err8 pelvis 0.002 m joints 0.006 rad | J 9.5171 |g| 0.646 (max 1.25) critic 1.19e-03 V0 9.52 tclip 0.00% surv 1.000 | rew 0.0847 nret 0.761 eplen 117.8 fail 1 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.2964 act 0.0199 align 0.9373 tclip 0.00%",
+          "[morphmimic]    g1 | wm loss 11.0036 pred8 0.1162 err8 pelvis 0.003 m joints 0.005 rad | J 9.5507 critic 1.37e-03 tclip 0.00% surv 1.000 | rew 0.0879 nret 0.791 eplen 123.0 fail 0 | align 2.632e-02 zdist 0.306 | kp tclip 0.00%",
+          "[morphmimic]    q1 | wm loss 7.6210 pred8 0.4836 err8 pelvis 0.002 m joints 0.006 rad | J 9.4836 critic 1.01e-03 tclip 0.00% surv 1.000 | rew 0.0815 nret 0.733 eplen 112.9 fail 1 | align 2.632e-02 zdist 0.306 | kp tclip 0.00%",
+          "[morphmimic] it 26450 | 0.27 it/s (0.339/1.844/1.458 s collect/wm/actor-critic) | env 1405/s imag 35958/s | wm loss 9.3913 bce 0.0000 pred8 0.3003 err8 pelvis 0.002 m joints 0.006 rad | J 9.5150 |g| 0.550 (max 0.824) critic 1.11e-03 V0 9.52 tclip 0.00% surv 1.000 | rew 0.0848 nret 0.768 eplen 121.3 fail 3 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.2959 act 0.0198 align 0.9134 tclip 0.00%",
+          "[morphmimic]    g1 | wm loss 11.1287 pred8 0.1162 err8 pelvis 0.003 m joints 0.005 rad | J 9.5490 critic 1.17e-03 tclip 0.00% surv 1.000 | rew 0.0882 nret 0.822 eplen 134.7 fail 2 | align 2.637e-02 zdist 0.306 | kp tclip 0.00%",
+          "[morphmimic]    q1 | wm loss 7.6539 pred8 0.4844 err8 pelvis 0.002 m joints 0.006 rad | J 9.4810 critic 1.04e-03 tclip 0.00% surv 1.000 | rew 0.0813 nret 0.725 eplen 110.6 fail 1 | align 2.637e-02 zdist 0.306 | kp tclip 0.00%",
+          "[morphmimic] it 26500 | 0.26 it/s (0.344/1.998/1.503 s collect/wm/actor-critic) | env 1330/s imag 34043/s | wm loss 9.3689 bce 0.0000 pred8 0.2987 err8 pelvis 0.002 m joints 0.006 rad | J 9.5162 |g| 0.888 (max 13.2) critic 9.73e-04 V0 9.52 tclip 0.00% surv 1.000 | rew 0.0847 nret 0.761 eplen 122.7 fail 1 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.3024 act 0.0199 align 0.9310 tclip 0.00%",
+          "[morphmimic]    g1 | wm loss 11.0497 pred8 0.1166 err8 pelvis 0.003 m joints 0.005 rad | J 9.5566 critic 9.43e-04 tclip 0.00% surv 1.000 | rew 0.0880 nret 0.793 eplen 125.2 fail 1 | align 2.566e-02 zdist 0.301 | kp tclip 0.00%",
+          "[morphmimic]    q1 | wm loss 7.6881 pred8 0.4807 err8 pelvis 0.002 m joints 0.006 rad | J 9.4759 critic 1.00e-03 tclip 0.00% surv 1.000 | rew 0.0815 nret 0.731 eplen 120.3 fail 0 | align 2.566e-02 zdist 0.301 | kp tclip 0.00%",
+          "[morphmimic] it 26550 | 0.26 it/s (0.339/2.015/1.515 s collect/wm/actor-critic) | env 1322/s imag 33833/s | wm loss 9.5625 bce 0.0000 pred8 0.2982 err8 pelvis 0.002 m joints 0.006 rad | J 9.5112 |g| 0.577 (max 0.76) critic 1.02e-03 V0 9.51 tclip 0.00% surv 1.000 | rew 0.0848 nret 0.779 eplen 123.9 fail 0 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.3031 act 0.0194 align 0.9060 tclip 0.00%",
+          "[morphmimic]    g1 | wm loss 11.5299 pred8 0.1177 err8 pelvis 0.003 m joints 0.006 rad | J 9.5495 critic 9.62e-04 tclip 0.00% surv 1.000 | rew 0.0881 nret 0.823 eplen 128.9 fail 0 | align 2.586e-02 zdist 0.303 | kp tclip 0.00%",
+          "[morphmimic]    q1 | wm loss 7.5952 pred8 0.4787 err8 pelvis 0.002 m joints 0.006 rad | J 9.4729 critic 1.07e-03 tclip 0.00% surv 1.000 | rew 0.0814 nret 0.736 eplen 118.9 fail 0 | align 2.586e-02 zdist 0.303 | kp tclip 0.00%",
+          "[morphmimic] it 26600 | 0.26 it/s (0.340/1.971/1.490 s collect/wm/actor-critic) | env 1345/s imag 34439/s | wm loss 9.4251 bce 0.0000 pred8 0.2994 err8 pelvis 0.002 m joints 0.006 rad | J 9.5171 |g| 0.605 (max 0.853) critic 9.55e-04 V0 9.52 tclip 0.00% surv 1.000 | rew 0.0849 nret 0.772 eplen 118.2 fail 0 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.3133 act 0.0194 align 0.8890 tclip 0.00%",
+          "[morphmimic]    g1 | wm loss 11.3364 pred8 0.1168 err8 pelvis 0.003 m joints 0.006 rad | J 9.5606 critic 8.90e-04 tclip 0.00% surv 1.000 | rew 0.0881 nret 0.816 eplen 122.9 fail 0 | align 2.529e-02 zdist 0.299 | kp tclip 0.00%",
+          "[morphmimic]    q1 | wm loss 7.5137 pred8 0.4819 err8 pelvis 0.002 m joints 0.006 rad | J 9.4737 critic 1.02e-03 tclip 0.00% surv 1.000 | rew 0.0816 nret 0.731 eplen 113.8 fail 0 | align 2.529e-02 zdist 0.299 | kp tclip 0.00%",
+          "[morphmimic] it 26650 | 0.26 it/s (0.346/2.004/1.524 s collect/wm/actor-critic) | env 1320/s imag 33798/s | wm loss 9.5715 bce 0.0000 pred8 0.2997 err8 pelvis 0.002 m joints 0.006 rad | J 9.5215 |g| 0.535 (max 0.722) critic 9.80e-04 V0 9.53 tclip 0.00% surv 1.000 | rew 0.0849 nret 0.773 eplen 121.7 fail 0 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.3124 act 0.0190 align 0.8920 tclip 0.00%",
+          "[morphmimic]    g1 | wm loss 11.5513 pred8 0.1183 err8 pelvis 0.003 m joints 0.006 rad | J 9.5644 critic 9.89e-04 tclip 0.00% surv 1.000 | rew 0.0882 nret 0.815 eplen 125.3 fail 0 | align 2.488e-02 zdist 0.297 | kp tclip 0.00%",
+          "[morphmimic]    q1 | wm loss 7.5917 pred8 0.4811 err8 pelvis 0.002 m joints 0.006 rad | J 9.4786 critic 9.71e-04 tclip 0.00% surv 1.000 | rew 0.0816 nret 0.734 eplen 118.3 fail 0 | align 2.488e-02 zdist 0.297 | kp tclip 0.00%"
+        ]
+      },
+      "data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/workers/q1.log": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/workers/q1.log",
+        "bytes": 16390,
+        "mtime": 1793761649.6222997,
+        "lines": [
+          "|      Index      | Name                  |       Shape       |",
+          "+-----------------+-----------------------+-------------------+",
+          "|        0        | context               |       (62,)       |",
+          "+-----------------+-----------------------+-------------------+",
+          "",
+          "[INFO] <TerminationManager> contains 4 active terms.",
+          "+-------------------------------+",
+          "|    Active Termination Terms   |",
+          "+-------+------------+----------+",
+          "| Index | Name       | Time Out |",
+          "+-------+------------+----------+",
+          "|   0   | time_out   |   True   |",
+          "|   1   | anchor_pos |  False   |",
+          "|   2   | anchor_ori |  False   |",
+          "|   3   | clip_end   |   True   |",
+          "+-------+------------+----------+",
+          "",
+          "[INFO] <RewardManager> contains 8 active terms.",
+          "+-----------------------------------------+",
+          "|           Active Reward Terms           |",
+          "+-------+------------------------+--------+",
+          "| Index | Name                   | Weight |",
+          "+-------+------------------------+--------+",
+          "|   0   | motion_global_root_pos |    0.5 |",
+          "|   1   | motion_global_root_ori |    0.5 |",
+          "|   2   | motion_body_pos        |    1.0 |",
+          "|   3   | motion_body_ori        |    1.0 |",
+          "|   4   | motion_body_lin_vel    |    1.0 |",
+          "|   5   | motion_body_ang_vel    |    1.0 |",
+          "|   6   | action_rate_l2         |   -0.1 |",
+          "|   7   | joint_limit            |   -2.0 |",
+          "+-------+------------------------+--------+",
+          "",
+          "[INFO] <NullCurriculumManager> (inactive)",
+          "[INFO] <NullMetricsManager> (inactive)",
+          "[INFO] <NullRecorderManager> (inactive)",
+          "Module mujoco_warp._src.io cb0c74e load on device 'cuda:0' took 2.18 ms  (cached)",
+          "Module _tile_cholesky_factorize_block__locals__kernel_a4efe1c6 08f9cd6 load on device 'cuda:0' took 33.14 ms  (cached)",
+          "Module _tile_cholesky_solve_block__locals__kernel_48ae95c0 9ab99fc load on device 'cuda:0' took 32.20 ms  (cached)",
+          "[morphmimic] q1 residual scale (one-step RMS of the warm-up replay): min 0.0001 median 0.0444 max 4.29"
+        ]
+      }
+    },
+    "metrics": {},
+    "directory": {
+      "data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train": [
+        "collectives.store",
+        "guard.json",
+        "memory.jsonl",
+        "memory.summary.json",
+        "run",
+        "status.json",
+        "stdout.log",
+        "workers",
+        "workers_launch.json",
+        "zero_snapshot_g1.json",
+        "zero_snapshot_q1.json"
+      ],
+      "data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run": [
+        "g1",
+        "q1"
+      ],
+      "data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1": [
+        "ckpt_0.pt",
+        "ckpt_16000.pt",
+        "events.out.tfevents.1793761597.interactive67462.55678.0",
+        "latest.pt"
+      ],
+      "data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1": [
+        "ckpt_0.pt",
+        "ckpt_16000.pt",
+        "events.out.tfevents.1793761597.interactive67462.55679.0",
+        "latest.pt"
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/ckpt_16000.pt",
+        "bytes": 342744431,
+        "mtime": 1793813512.2393515
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/ckpt_0.pt",
+        "bytes": 114298955,
+        "mtime": 1793761596.9865956
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/latest.pt",
+        "bytes": 342744431,
+        "mtime": 1793813512.4993465
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_16000.pt",
+        "bytes": 342744495,
+        "mtime": 1793813512.263351
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_0.pt",
+        "bytes": 114299019,
+        "mtime": 1793761596.9905956
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/latest.pt",
+        "bytes": 342744495,
+        "mtime": 1793813512.5473454
+      }
+    ],
+    "new_physics_optimizer_or_training": false,
+    "signals_sent": 0,
+    "files_written": 0
+  },
+  "interim_review": {
+    "status": "PREPARING_INDEPENDENT_BOUNDED_ENTRY",
+    "checkpoint_iteration": 16000,
+    "audit_executed": false,
+    "replay_executed": false,
+    "final_gate_unchanged": true,
+    "gpu_rendering_requested_by_user": true
+  },
+  "training_restarted": false,
+  "training_signals_sent": 0,
+  "goal_read_or_updated": false,
+  "replacement_goal_created": false,
+  "user_accepted_checkpoint": null
+}

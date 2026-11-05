@@ -1,0 +1,83 @@
+"""Intermediate resource boundaries and the unchanged final-completion gate."""
+
+import copy
+import json
+from pathlib import Path
+import sys
+import tempfile
+import unittest
+from unittest.mock import patch
+
+from common import FIXED
+from interim_review import GIB, fixed_rows, resource_limits
+from native_review import ready_training
+import runtime_guard
+
+
+class IntermediateTests(unittest.TestCase):
+    def setUp(self):
+        self.memory = dict(container_limit_bytes=34292629504, total_bytes=21 * GIB,
+                           oom_kill=0, under_oom=0)
+        self.gpu = dict(used_mib=16177, temperature_c=52, recovery="None")
+
+    def test_reserves_exit_below_original_training_pressure(self):
+        resource_limits(self.memory, 2 * GIB, self.gpu, initial=True)
+        for key, value in (("total_bytes", 24 * GIB), ("container_limit_bytes", 30 * GIB),
+                           ("oom_kill", 1), ("under_oom", 1)):
+            bad = dict(self.memory, **{key: value})
+            with self.subTest(key=key), self.assertRaises(RuntimeError):
+                resource_limits(bad, 0, self.gpu)
+        with self.assertRaises(RuntimeError):
+            resource_limits(dict(self.memory, total_bytes=22 * GIB), 0, self.gpu, initial=True)
+
+    def test_graphics_and_own_subtree_cannot_consume_training_reserve(self):
+        with self.assertRaises(RuntimeError):
+            resource_limits(self.memory, 3 * GIB, self.gpu)
+        for key, value in (("used_mib", 18 * 1024), ("temperature_c", 80), ("recovery", "Reset")):
+            with self.subTest(key=key), self.assertRaises(RuntimeError):
+                resource_limits(self.memory, 0, dict(self.gpu, **{key: value}))
+
+    def test_selects_exact_three_fixed_clips_in_order(self):
+        frozen = dict(rows=[dict(q1_primebot=dict(path="/data/" + name + ".npz"))
+                            for name in (*reversed(FIXED), "unrelated")])
+        self.assertEqual([row["q1_primebot"]["path"] for row in fixed_rows(frozen)],
+                         ["/data/" + name + ".npz" for name in FIXED])
+        with self.assertRaises(RuntimeError):
+            fixed_rows(dict(rows=frozen["rows"][1:]))
+
+    def test_final_cli_still_rejects_live_training(self):
+        plan = dict(purpose="train", robots=["g1", "q1"], code_commit="a" * 40,
+                    cfg=dict(iterations=160000), output="/data/train")
+        pipeline = dict(status="TRAINING", formal_training_completed=False)
+        for iteration in (0, 16000):
+            audit = dict(status="PASSED", cuda_initialized=False, iteration=iteration)
+            with self.subTest(iteration=iteration), self.assertRaises(RuntimeError):
+                ready_training(copy.deepcopy(plan), pipeline, {}, audit, "q1", {})
+
+    def test_resource_abort_reaps_only_its_own_process_group(self):
+        class StopBudget:
+            calls = 0
+
+            def check(self):
+                self.calls += 1
+                if self.calls > 1:
+                    raise RuntimeError("review reserve reached")
+                return {}
+
+        with tempfile.TemporaryDirectory() as directory:
+            folder = Path(directory)
+            with patch.object(runtime_guard, "signal_group", wraps=runtime_guard.signal_group) as signals:
+                with self.assertRaisesRegex(RuntimeError, "review reserve"):
+                    runtime_guard.guarded_run([sys.executable, "-c", "import time;time.sleep(30)"],
+                        folder, StopBudget(), folder / "guard.json", folder / "stdout.log",
+                        check_interval_s=.01, grace_s=.1)
+            result = json.loads((folder / "guard.json").read_text())
+            self.assertTrue(result["cleanup"]["worker_reaped"])
+            self.assertNotEqual(result["cleanup"]["worker_return_code"], 0)
+            self.assertTrue(signals.call_args_list)
+            self.assertEqual({call.args[0].pid for call in signals.call_args_list},
+                             {result["worker_pid"]})
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-05 11:44:12：[Windows桥接观察恢复/原V04各26650轮](README_Q1_SHARED_TRAINING_20261104.md)，原设备/五PID启动tick/guard锁同，TRAINING/RUNNING、非有限0/OOM0，两型16000检查点已在。[独立中途检查](README_Q1_INTERIM_REVIEW_20261105.md)5项本地检查通过，发布后双型CPU权重审计、三固定motion各seed0回放，按用户偏好GPU EGL视频；实际质量待执行。原训练及final门不改、goal不读取重建/采纳null。[恢复实据](../logs/session_records/q1_shared_v04_observer_recovered_20261105.json)，旧UNKNOWN为历史。
+
 2026-11-04 23:48：[V04监督连接中断，当前实时状态UNKNOWN](README_Q1_SHARED_TRAINING_20261104.md)。61294超时退出255，本独立故障一次恢复32044仅到hp_han Windows/原生25362交互认证提示，未提交凭据或进入Linux，已取消；等待可用交互认证，不逐心跳重试。最后23:38:03两型各13850/160000轮、原身份/guard锁同/非有限0/OOM0、仅初始权重均为历史。训练及中途检查授权保持，用户已清除goal且最近实读null；不重建goal、不停训/重启/热改/新测试。q1保存核ACTIVE十分钟原线程/采纳null；本次服务器镜像待恢复。[故障证据](../logs/session_records/q1_shared_v04_observer_auth_pending_2348_20261104.json)/[发布收据](../logs/session_records/q1_shared_v04_observer_fault_publication_2348_20261104.json)。
 
 2026-11-04 19:26:21：[hp_han原生25362观察恢复，V04两型各9500/160000轮](README_Q1_SHARED_TRAINING_20261104.md)。24267已进入原Linux/唯一ZHY根，原boot/GPU/五PID启动tick/guard持锁全同；pipeline TRAINING/guard RUNNING、非有限0/OOM0，GPU16177MiB53度None，总约19.09GiB/即时余约12.85GiB、真实回收0。训练未停止或重启，认证不存储，旧待认证/UNKNOWN为历史；q1十分钟ACTIVE/原完整goal blocked及采纳null保持。[现场](../logs/session_records/q1_shared_v04_observer_recovered_1926_20261104.json)、[待镜像小记录补同步与发布](../logs/session_records/q1_shared_v04_observer_recovery_publication_1926_20261104.json)。

@@ -1,5 +1,11 @@
 # Q1共享训练与目标监督
 
+## 11月5日观察恢复，16000轮检查点已落盘
+
+用户本次明确恢复Windows桥接并提供交互认证后，28127已进入原Linux/唯一ZHY根；认证不存储或镜像。2026-11-05 11:44:12北京时间，原设备/五PID启动tick/guard55672持锁全同，pipeline TRAINING/guard RUNNING，两型各26650/160000轮、各68633600转移，五optimizer266500/24650/493000/24650/493000、非有限0。GPU16177MiB52度None，总21641297920B/限34292629504B/余12651331584B/OOM0，峰21782847488B/回收0；两型ckpt16000已在。旧失联UNKNOWN由本次实据覆盖。[完整观察](../logs/session_records/q1_shared_v04_observer_recovered_20261105.json)。
+
+按原一次中途检查和本次GPU偏好，准备独立interim_review入口：原CPU共同物理与隔离策略、GPU EGL视频；先双型16000权重身份/有限性，再三固定motion各seed0一次。额外总量24GiB/子树RSS3GiB/GPU18GiB或80度提前只退出评估，原30GiB/86度/锁等不改。本地5项边界及回收检查通过，实际审计/回放仍待代码发布；完整final门保持。[中途检查页](README_Q1_INTERIM_REVIEW_20261105.md)。本轮不读取或重建goal、不新agent、未停训/重启/热改；后续优先复用28127，下方连接状态为历史。
+
 ## 23:48观察连接中断，等待交互认证
 
 2026-11-04 23:48北京时间，本轮监督61294因hp_han Timeout退出255。按原授权对本独立故障执行的一次有界恢复已用：新32044进入hp_han Windows，Windows原生25362到达交互认证提示；当前上下文没有可用交互认证内容，未提交凭据、未进入Linux，已取消登录并返回PowerShell。32044仅Windows，不能向其发送Linux监督命令。当前pipeline/guard/五PID启动tick/metrics/保存/GPU/cgroup OOM及内存回收均UNKNOWN；观察中断不能证明训练停止或失败。等待可用交互认证或用户已恢复的Linux会话，不逐心跳重复认证，不从存储或镜像读取凭据。

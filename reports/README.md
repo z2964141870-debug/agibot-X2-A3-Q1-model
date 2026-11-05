@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06 07:45：[393片已保存上肢参考的因果预测真实拟合](README_Q1_UPPER_CAUSAL_FORECAST_20261106.md)。167/98/128冻结来源划分，8192训练/2048验证/2048测试窗口、3个线性模型实际拟合；验证选ridge .01，干净测试比阻尼平均低约33.5%，固定.01rad噪声却高约6.8%，三固定片均退步，不据test换模型或部署。786输入42220058B发布身份/前后SHA同，9检查全过，Mac单线程0.990秒/峰155123712B；实际机器人角度未进训练，无新服务器/SMPL侧车/机器人推理物理CUDA。goal保持active最低今日10:00。[审计](../logs/session_records/q1_upper_causal_forecast_20261106.json)。
+
 2026-11-06 07:06：[因果预测器评估与完整时限补审](README_Q1_TELEOP_FORECAST_TRAINING_20261106.md)。欧氏距离/每时距及逐片误差、来源均衡窗口、validation先于test的选择记录、完整checkpoint身份与GPU非阻塞锁已实现；96项93过3项固定运行时待。无真实侧车读取、训练或机器人闭环新结果；桥接未恢复，goal active至少今日10:00。[审计](../logs/session_records/q1_teleop_forecast_eval_guard_audit_20261106.json)。
 
 2026-11-06：[因果预测器几何/模型/有界训练入口完成](README_Q1_TELEOP_FORECAST_TRAINING_20261106.md)。新增历史锚定SE(3)特征、同时间轴速度解码、零输出hold初始化的单向GRU和安全GPU优先训练入口；84项测试81过3项本机Torch/原运行时待，0真实侧车读取/优化器更新/推理物理CUDA。训练默认拿不到安全GPU就拒绝，原V04锁/保护线不争用；服务器桥接待恢复，goal active最低10:00。[审计](../logs/session_records/q1_teleop_forecast_training_preparation_20261106.json)。

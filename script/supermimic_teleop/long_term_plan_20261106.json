@@ -83,6 +83,12 @@
       "work": "393 clips,37 whole source directory groups unioned by identical BVH/human content; train167/validation98/test128,112227 valid25-history/10-future windows. History-only root/relative-body/SO(3) features and same-slot velocities are implemented; single-layer unidirectional GRU128 starts as a zero-residual hold baseline, train-only normalization. The bounded trainer requires safe CUDA by default, nonblocking GPU lock, 22/24GiB memory and18GiB/80C/disk/1800s guards, and never uses TEST_ONLY or test data for selection. Actual sidecars, server Torch, training and policy/physics comparison remain pending."
     },
     {
+      "id": "saved_upper_reference_forecast",
+      "status": "ACTUAL_LOCAL_TRAINING_AND_HELD_OUT_COMPARISON_COMPLETED_NO_DEPLOYMENT",
+      "evidence": "logs/session_records/q1_upper_causal_forecast_20261106.json",
+      "work": "393 already delivered eight-channel reference traces,786 published artifacts/42220058B unchanged. Frozen167/98/128 source splits,8192/2048/2048 source-balanced windows. Three actual linear ridge fits; validation choice persisted before test. Selected ridge0.01 improves clean test over damped CV, but fixed0.01rad observation noise reverses the aggregate gain and all three fixed clips regress. No test-selected replacement or policy integration. Mac CPU0.990s/155123712B peak,9 checks passed; no server SMPL read, robot inference, physics or CUDA."
+    },
+    {
       "id": "causal_student_and_execution_phase",
       "status": "CONDITIONAL_ON_RESULTS",
       "work": "Select a current-target/history student or separately versioned velocity-feedforward experiment based on observed failures. Account for teacher gait limitations and changed plant dynamics."

@@ -1,0 +1,122 @@
+{
+  "stage": "Q1_SAVED_UPPER_REFERENCE_CAUSAL_FORECAST",
+  "observed_local": "2026-11-06T07:45:19+08:00",
+  "status": "COMPLETED_INDEPENDENT_NUMERIC_EXPERIMENT",
+  "whole_goal_complete": false,
+  "minimum_execution_until": "2026-11-06T10:00:00+08:00",
+  "code": {
+    "path": "script/supermimic_teleop/upper_forecast.py",
+    "sha256": "6811ae746c3e727cff803932a118043a8b03ec288e5302580fd2901490bf6e00"
+  },
+  "preregistration": {
+    "path": "script/supermimic_teleop/upper_forecast_plan_20261106.json",
+    "sha256": "9353ceabfeed9fac11d6179a2790c74b1d4ebfc24fb9596a515cdc86353d634b",
+    "written_before_actual_training_and_test": true
+  },
+  "source": {
+    "kind": "eight offline retargeted reference shoulder/elbow angles from already delivered final_library",
+    "clips": 393,
+    "input_artifacts": 786,
+    "input_bytes": 42220058,
+    "published_delivery_manifest_sha256": "a1821f1f792046ab535047fa11fd963388441187ec5bdeded9365a8f14a35d16",
+    "split_plan_sha256": "f40c1d5a856a08d89f1a8c23dfe6d990fc7439232b9da9a658d9860456353145",
+    "every_csv_and_case_json_matches_published_size_sha": true,
+    "every_case_complete_exact_reference_and_frames": true,
+    "all_used_inputs_unchanged_after_experiment": true,
+    "actual_robot_angles_used_for_training_or_labels": false,
+    "test_only_recordings_used": false,
+    "real_server_smpl_sidecars_read": false,
+    "cross_split_identical_complete_q1_references": 0
+  },
+  "sampling": {
+    "scheme": "source_balanced_uniform_cutoffs_v1",
+    "history_frames": 25,
+    "future_frames": 10,
+    "target_offsets_ms": [20, 40, 60, 80, 100, 120, 140, 160, 180, 200],
+    "train": {"clips": 167, "windows": 8192},
+    "validation": {"clips": 98, "windows": 2048},
+    "test": {"clips": 128, "windows": 2048},
+    "all_available_windows_evaluated": false
+  },
+  "training": {
+    "type": "closed form linear ridge, mean squared loss",
+    "input_features": 200,
+    "output_features": 80,
+    "normalization_fitted_split": "train",
+    "lambda_candidates": [0.0001, 0.01, 1.0],
+    "actual_fitted_models": 3,
+    "gradient_optimizer_updates": 0,
+    "validation_selected": "ridge_0.01",
+    "validation_metric": "mean of ten per-horizon angle RMSE values",
+    "validation_value_rad": 0.04988640884110403,
+    "selection_persisted_before_test_labels_loaded": true,
+    "test_used_for_selection": false,
+    "temporal_realignment_or_clipping": false
+  },
+  "clean_test_mean_per_horizon_rmse_rad": {
+    "hold": 0.06598211536079261,
+    "cv": 0.0725332438770273,
+    "damped_cv": 0.05914036744467303,
+    "validation_selected_ridge_0.01": 0.039339159833803594
+  },
+  "noisy_test": {
+    "noise_std_rad": 0.01,
+    "seed": 20261106,
+    "training_or_selection_used_this_noise": false,
+    "hold_mean_rmse_rad": 0.06707573033882186,
+    "cv_mean_rmse_rad": 0.07944181249218506,
+    "damped_cv_mean_rmse_rad": 0.06395002945346509,
+    "selected_ridge_mean_rmse_rad": 0.06826728875090994,
+    "selected_clean_clips_better_than_damped": 126,
+    "selected_noisy_clips_better_than_damped": 40,
+    "total_test_clips": 128,
+    "all_three_fixed_walk_clips_regress_against_damped_under_noise": true,
+    "posthoc_noise_test_winner_adopted": false
+  },
+  "resources": {
+    "host": "local Mac",
+    "cpu_blas_threads": 1,
+    "cooperative_time_budget_seconds": 90,
+    "rss_budget_bytes": 1073741824,
+    "actual_elapsed_seconds": 0.9898648339999999,
+    "actual_peak_rss_bytes": 155123712,
+    "server_commands_or_authentication": 0,
+    "gpu_locks_or_cuda_jobs": 0,
+    "new_robot_policy_inference": 0,
+    "new_physics_steps": 0,
+    "original_training_signals_or_modifications": 0
+  },
+  "tests": {
+    "total": 9,
+    "passed": 9,
+    "skipped": 0,
+    "warnings_as_errors": true,
+    "initial_fixture_only_failure": "Two checks hit Mac Accelerate matmul RuntimeWarning before any real corpus read",
+    "correction": "Equivalent explicit NumPy einsum; warning suppression not used",
+    "initial_failure_was_actual_training": false
+  },
+  "artifacts": [
+    {
+      "path": "data/supermimic_for_q1/Q1_UPPER_CAUSAL_FORECAST_20261106/result.json",
+      "bytes": 1266629,
+      "sha256": "36c391a64ccc28fc5c5eae45d866f94ebe339a82c9d2f8f925a38ecef0f16864"
+    },
+    {
+      "path": "data/supermimic_for_q1/Q1_UPPER_CAUSAL_FORECAST_20261106/selected_ridge_model.json",
+      "bytes": 517134,
+      "sha256": "be36ef81c0c9564d3b9e0b249d6e5031637dcf9ad86c2310ec4a500dc1e988fd"
+    },
+    {
+      "path": "data/supermimic_for_q1/Q1_UPPER_CAUSAL_FORECAST_20261106/validation_selection.json",
+      "bytes": 383,
+      "sha256": "b9f8d01c03118584a834f3d8f162cf432349af544f17cc7e0292af46cf9097a6"
+    }
+  ],
+  "decision": "Clean history contains learnable short-term structure, but selected predictor is not noise robust. Do not deploy or tune on this test set.",
+  "measured_robot_end_to_end_latency_ms": null,
+  "naturalness_qualified": false,
+  "server_training_live_state": "UNKNOWN",
+  "original_final_and_five_stage_gates_preserved": true,
+  "user_accepted_checkpoint": null,
+  "server_record_sync": "PENDING_USABLE_ORIGINAL_WINDOWS_BRIDGE"
+}

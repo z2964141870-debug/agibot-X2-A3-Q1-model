@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06 07:45：[上肢因果预测真实CPU拟合完成](README_Q1_UPPER_CAUSAL_FORECAST_20261106.md)。393已交付reference/786工件42220058B原SHA同，沿167/98/128来源划分、8192/2048/2048窗口、三ridge模型；先写validation选择ridge .01再读test。干净均值.039339rad对阻尼.059140，126/128片改善；固定.01rad噪声变.068267对.063950，仅40/128片改善/三固定片均退步，不据test换模型或部署。9检查全过，Mac单线程0.990秒/峰155123712B；actual角度未入训练，0服务器命令/侧车/机器人推理物理CUDA。下一拆已有执行相位与幅度失真；原桥接/训练实时UNKNOWN，goal active最低今日10:00，V04/final/五阶段/采纳null保持。[审计](../logs/session_records/q1_upper_causal_forecast_20261106.json)。
+
 2026-11-06 07:24发布：预测评估/训练补审 `931be10582f43847896e5b289967ea1e9f5db023` 已推送并独立40位核同，13份661958B Mac大小SHA一致；16成员201863B独立小包逐成员Git同、解包34项33过1缺Torch跳过。包未上传/派发，恢复后放新代码快照目录，不覆盖任何原V04输入；原短预览campaign3b1cd18保持独立。goal最新实读active/最低今日10:00，必要训练或验证继续延长。[发布收据](../logs/session_records/q1_teleop_forecast_eval_publication_20261106.json)。
 
 2026-11-06 07:06：[预测训练/评估补审通过](README_Q1_TELEOP_FORECAST_TRAINING_20261106.md)。v2位置口径统一欧氏RMS，2048窗口来源均衡/逐片报告，先冻结validation选择再读test；训练协作式总时限覆盖归一化到保存，GPU推理/训练持同一非阻塞锁，真实文件锁拒绝及CPU资源门已验证。96项93过3项Torch/原运行时待；0真实侧车/训练/机器人策略物理/CUDA。已有06:33记录的Windows认证后Broken pipe仍未恢复Linux，原V04实时UNKNOWN，不重试认证/重发原回放。下一步在可用会话核原身份、全现场/资源与393侧车，再执行已发布独立campaign及安全预测训练/评估。goal active最低今日10:00，q1保存字段ACTIVE十分钟同聊天，原final/五阶段/采纳null保持。[审计](../logs/session_records/q1_teleop_forecast_eval_guard_audit_20261106.json)。

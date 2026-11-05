@@ -70,3 +70,5 @@
 03:24代码1e39412独立40位远端及16份662375B Mac镜像核同，177项代码清单和43141B Linux安全部署包已准备。TCP22可达后一次原生登录仍在Windows认证后Broken pipe，未达Linux；实时UNKNOWN/服务器未下发，不循环认证。后续推进不依赖服务器的有效实现和数据分析，恢复后才做原身份/资源及真实对照。[发布收据](../logs/session_records/q1_causal_tail_controller_publication_20261106.json)。
 
 03:36新增可单次后台下发的campaign，在同一控制进程内串行masked/hold/damped_cv/cv，33新human例/33视频；每个study原运行时、真实H10动作等价和资源门保留，失败/输入变化/信号不再派发后续。总7200秒/3GiB，各study1800秒；不另包会遗留独立worker会话的嵌套守卫。4项新增检查，完整40项38过2原运行时待，0.143秒；0新服务器物理训练CUDA/未下发。最近桥接故障未重复认证。下一项发布串联包及核对已有两段真人动捕小包的时间/坐标/使用合同。[串联审计](../logs/session_records/q1_preview_campaign_preparation_20261106.json)。
+
+03:40串联3b1cd18独立40位远端/Mac10份616173B核同，179项manifest及18成员46828B Linux包逐项核同，单次后台argv已准备；服务器上传下发待原桥接，无新认证/物理训练CUDA。[串联发布收据](../logs/session_records/q1_preview_campaign_publication_20261106.json)。

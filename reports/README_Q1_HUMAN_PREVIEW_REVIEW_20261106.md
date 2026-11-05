@@ -78,3 +78,5 @@ campaign总墙时最多7200秒、合计输出3GiB，每个study仍最多1800秒�
 新增4项检查覆盖默认顺序/33例、已完成基线不重跑/18例、失败或配置变化不再下发、总时间与总输出超线先拒绝。完整40项检查38过2原运行时待，0.143秒；语法、CLI帮助和diff检查通过。这些编排检查仍是夹具；服务器实际运行/后台启动、完整性与质量均未执行。[串联准备审计](../logs/session_records/q1_preview_campaign_preparation_20261106.json)。
 
 串联入口采用与 `preview_review.py` 相同的config/runtime/audit/manifest/commit参数，`--output` 指向全新campaign根；默认方法顺序已固定，可用 `--tail-methods` 选取不重复子集。正式下发使用发布后新生成的代码清单和部署包，不能用早于campaign源码的清单。
+
+03:40串联发布：`3b1cd18fd7b183e6b760d618a4bd081df246eacc` 已push并独立40位远端核同，10文件616173B Git/工作树/Mac大小SHA同。新179项代码清单33298B/SHA `68c484679cb46ac2672f9bb9894ad2dff0f1e32e9c25ae82a75d229d11bbcdec`；新Linux包46828B/SHA `10f776b723d378a03cb847f10c52fe1d78e3746e46fccdef4b8b85f3b68035da`，18文件逐成员核同，无AppleDouble或路径逃逸。已准备单次后台argv recipe；尚未上传下发，没有重复认证，服务器实时仍UNKNOWN。正式入口以此版本替代前一单study准备包，旧包只作历史。[发布收据](../logs/session_records/q1_preview_campaign_publication_20261106.json)。

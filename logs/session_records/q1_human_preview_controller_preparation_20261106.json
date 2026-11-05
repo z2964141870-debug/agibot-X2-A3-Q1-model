@@ -1,0 +1,116 @@
+{
+  "stage": "Q1_HUMAN_PREVIEW_CONTROLLER_LOCAL_PREPARATION",
+  "checked_local": "2026-11-06T01:33:42+08:00",
+  "goal_status": "active",
+  "minimum_execution_until": "2026-11-06T10:00:00+08:00",
+  "interface": "human",
+  "checkpoint_iteration": 16000,
+  "horizons": [
+    10,
+    5,
+    4,
+    2,
+    1
+  ],
+  "seeds": [
+    0
+  ],
+  "clips": [
+    "walk_forward_loop_001__A022",
+    "walk_forward_start_002__A023",
+    "walk_forward_stop_002__A024"
+  ],
+  "controlled_factors": [
+    "audited shared checkpoint",
+    "full24 spatial mask",
+    "same Primebot CPU physical plant and reset",
+    "same three paired human/robot clips",
+    "one seed0 deterministic replay"
+  ],
+  "phase_order": [
+    "pinned native CPU mask/equality test, reject skip",
+    "actual checkpoint H10 actions along all three complete reference state sequences, exact original/new equality including terminal clamping",
+    "for each H10/H5/H4/H2/H1 and clip: isolated CPU physics then fresh GPU EGL media process",
+    "four H10 paired comparisons with valid common prefixes and failure accounting"
+  ],
+  "planned_case_count": 15,
+  "planned_original_speed_videos": 15,
+  "planned_guarded_phases": 33,
+  "resource_limits": {
+    "whole_study_wall_seconds": 1800,
+    "maximum_output_bytes": 3221225472,
+    "memory_admission_bytes": 23622320128,
+    "memory_exit_bytes": 25769803776,
+    "gpu_exit_mib": 18432,
+    "gpu_exit_c": 80,
+    "reserve_disk_bytes": 107374182400,
+    "rss": "diagnostic only",
+    "original_gpu_lock_owner": 55672,
+    "training_stop_or_restart": false,
+    "acquire_original_lock": false
+  },
+  "integrity": {
+    "server_requires_explicit_manifest_sha256": true,
+    "published_commit_full40": true,
+    "code_manifest_checked_before_each_phase": true,
+    "config_runtime_audit_and_manifest_frozen": true,
+    "original_training_inputs_read_only": true,
+    "completed16000_audit_reused": true,
+    "original_motion_trajectories_not_replayed": true,
+    "final_cli_unmodified": true
+  },
+  "verification": {
+    "new_local_controller_tests_passed": 5,
+    "orchestration_is_fixture_only": true,
+    "pinned_native_test_still_pending": true,
+    "new_controller_physics_steps": 0,
+    "new_controller_optimizer_updates": 0,
+    "new_controller_cuda_jobs": 0,
+    "new_controller_compiled": true,
+    "manifest_exporter_compiled": true
+  },
+  "code": [
+    {
+      "path": "script/supermimic_teleop/preview_review.py",
+      "bytes": 23783,
+      "sha256": "61eff1ea296ad539b6fd96b772cca17edcc92fad938a8c9e00d4b571a77c9a65"
+    },
+    {
+      "path": "script/supermimic_teleop/freeze_preview_code.py",
+      "bytes": 2943,
+      "sha256": "be0302f094b63ffb1f530238cc01a861dd0019fa485c1f916643912b262b5fe0"
+    },
+    {
+      "path": "script/supermimic_teleop/test_preview_review.py",
+      "bytes": 10191,
+      "sha256": "73c942f54d029dd2a9ff8193b88c7af903a2d0b3c0c891fd97d108cd135b8841"
+    }
+  ],
+  "bridge": {
+    "attempts_this_goal_turn": 1,
+    "host": "100.65.183.91",
+    "port": 22,
+    "reached_windows_authentication_prompt": true,
+    "credential_submitted_interactively": true,
+    "result": "BROKEN_PIPE_EXIT255_NO_WINDOWS_SHELL_OBTAINED",
+    "linux_reached": false,
+    "alternate_port_forward_or_socket": false,
+    "authentication_material_stored": false,
+    "training_live_state": "UNKNOWN",
+    "last_successful_training_observation": "2026-11-05T23:34:47+08:00"
+  },
+  "next": "Publish and independently verify code. Export a real Git-derived manifest and prepare dispatch. After original bridge recovery first inspect device, five PID/start ticks, guard lock, full actual metrics/logs/checkpoints and resources; only then guarded server runtime checks and independent preview study.",
+  "previous_stream_publication": {
+    "payload_commit": "b4ee3f5959fe4c615425c6683295cd169adf8519",
+    "receipt_commit": "f5a83e9238811ddb65ef840aba1e86e48213f643",
+    "remote_and_mac_verified": true
+  },
+  "limitations": [
+    "No new human preview policy quality results yet",
+    "Runtime orchestration fixtures are not real server/physics validation",
+    "Offline human preprocessing causality and measured end-to-end robot latency remain unverified",
+    "Old V04 final five-stage gates remain required"
+  ],
+  "whole_goal_complete": false,
+  "user_accepted_checkpoint": null
+}

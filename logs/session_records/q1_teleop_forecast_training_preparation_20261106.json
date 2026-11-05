@@ -1,0 +1,60 @@
+{
+  "stage": "Q1_CAUSAL_FORECAST_GEOMETRY_MODEL_AND_BOUNDED_TRAIN_PREPARATION",
+  "observed_local": "2026-11-06T05:18:00+08:00",
+  "goal_status": "active",
+  "minimum_execution_until": "2026-11-06T10:00:00+08:00",
+  "split": "data/manifests/q1_teleop_forecast_split_20261106.json",
+  "geometry": {
+    "schema": "q1_history_yaw_root_body_so3_v1",
+    "history_frames": 25,
+    "future_frames": 10,
+    "feature_dim": 216,
+    "target_dim": 144,
+    "root_and_body_time_axis": "50Hz fixed 20ms target slots",
+    "bone_contact_constraints_applied": false,
+    "measured_robot_latency_ns": null
+  },
+  "model": {
+    "type": "single_layer_unidirectional_GRU",
+    "hidden_size": 128,
+    "bidirectional": false,
+    "output_head_initialization": "zero_hold",
+    "target_mean_subtracted": false,
+    "normalization_fitted_split": "train_only"
+  },
+  "training_entry": {
+    "path": "script/supermimic_teleop/train_forecast.py",
+    "default_device": "safe_cuda_or_refuse",
+    "cpu_requires_explicit_allow_cpu": true,
+    "independent_gpu_lock": "nonblocking_exclusive",
+    "start_memory_limit_bytes": 23622320128,
+    "running_memory_limit_bytes": 25769803776,
+    "gpu_limit_mib": 18432,
+    "temperature_limit_c": 80,
+    "disk_reserve_bytes": 107374182400,
+    "max_seconds": 1800,
+    "max_steps": 2000,
+    "test_used_for_model_selection": false
+  },
+  "local_verification": {
+    "new_geometry_tests": 8,
+    "new_model_tests": 5,
+    "new_training_boundary_tests": 2,
+    "full_teleop_tests": 84,
+    "passed": 81,
+    "skipped_pinned_torch_or_native": 3,
+    "failures": 0,
+    "warnings_as_errors": "PASSED",
+    "compileall_and_diff_check": "PASSED"
+  },
+  "actual_server_sidecars_read": false,
+  "new_optimizer_updates": 0,
+  "new_policy_inference": 0,
+  "new_physics_steps": 0,
+  "new_cuda_jobs": 0,
+  "new_authentication_attempts": 0,
+  "training_live_state": "UNKNOWN",
+  "server_sync": "PENDING_ORIGINAL_BRIDGE_RECOVERY",
+  "whole_goal_complete": false,
+  "user_accepted_checkpoint": null
+}

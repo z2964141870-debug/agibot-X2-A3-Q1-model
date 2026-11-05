@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06低延迟预测器几何/模型/有界训练入口已成：历史25帧/未来10槽的216维根/相对身体/SO(3)特征与144维物理标签，速度同20ms时间轴；单层单向GRU128零输出等价hold，归一化仅train。独立训练默认安全CUDA，否则拒绝；非阻塞GPU锁、cgroup起始22GiB/运行24GiB、GPU18GiB/80度、磁盘100GiB、1800秒/2000步，原V04持锁或GPU有计算进程即不争用。84项81过3本机Torch/原运行时待，0服务器侧车读取/训练推理物理CUDA；桥接/原训练UNKNOWN，goal active最低今日10:00，原final/五阶段/采纳null保持。入口Q1_TELEOP_FORECAST_TRAINING及q1_teleop_forecast_training_preparation，发布以后续收据为准。
+
 - 2026-11-06因果预测数据入口/393片冻结来源划分实成：37目录组按human和原BVH内容传递合并，train167/val98/test128、112227个25历史+10目标窗口；三固定片所在26片目录整体test，非被试独立/原策略已见393，不称端到端陌生片泛化。计划240526B/SHA f40c1d5重建同，120→50Hz插值额外右支持0..6.667ms源码核明，硬件上游未知；训练归一化/不可见未来/末端与跨集边界7检查过，69项67过2原运行时待。0真实侧车读取/训练推理物理CUDA/新认证，3b1cd18未上传、原训练实时UNKNOWN。下一SE(3)历史特征与有界预测器入口，真实侧车/资源门过后优先安全GPU、不争V04锁；goal active最低今日10:00/q1同线程十分钟，原final/五阶段/采纳null保持，无agent其他任务改动。入口Q1_TELEOP_FORECAST_DATA及q1_teleop_forecast_data，发布/镜像以后续收据为准。
 
 - 2026-11-06 04:28滤波54解析对照实成：因果5均值50Hz相位40ms，固定官方One Euro beta.1在1Hz100.660ms/反向额外60ms/急停残余.099601rad，非普适最优或机器人效果。wheel6082B官方SHA核同/BSD原件保留/未改全局环境，62检查60过2原运行时待/RuntimeWarning升error后54数值与首轮全同；真人/训练推理物理GPU0。重采样6cf8797独立40位远端及Mac12份615911B核同；campaign3b1cd18未上传，训练实时UNKNOWN/无新认证。下一真实human对照及可训练数据/资源，失联补因果监督合同而非重复合成测试。goal active最低今日10:00/q1十分钟同线程，原V04/final/锁/采纳null不变，无agent其他任务修改；入口Q1_TELEOP_FILTER_PHASE及q1_teleop_filter_phase，发布/服务器镜像以后续收据为准。

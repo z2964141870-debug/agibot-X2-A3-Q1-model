@@ -73,10 +73,10 @@
     },
     {
       "id": "bounded_predictor_training",
-      "status": "FROZEN_SOURCE_SPLITS_AND_CAUSAL_WINDOWS_LOCAL_READY_REAL_SIDECARS_AND_TRAINING_PENDING",
-      "evidence": "logs/session_records/q1_teleop_forecast_data_20261106.json",
+      "status": "GEOMETRY_MODEL_AND_BOUNDED_GPU_TRAIN_ENTRY_READY_REAL_SIDECARS_AND_TRAINING_PENDING",
+      "evidence": "logs/session_records/q1_teleop_forecast_training_preparation_20261106.json",
       "frozen_split": "data/manifests/q1_teleop_forecast_split_20261106.json",
-      "work": "393 clips,37 whole source directory groups unioned by identical BVH/human content; train167/validation98/test128,112227 valid25-history/10-future windows. Fixed walking source directory entirely test. Original policy saw all393, subjects unknown; no unseen end-to-end policy claim. Train-only normalization and explicit120-to50Hz right-support0..6.667ms. Seven new boundary tests pass, actual NPZ audit/geometry/model training pending. Prepare history-only SE(3) features and bounded forecaster, prefer safe GPU; never contend with original guard lock or use TEST_ONLY recordings."
+      "work": "393 clips,37 whole source directory groups unioned by identical BVH/human content; train167/validation98/test128,112227 valid25-history/10-future windows. History-only root/relative-body/SO(3) features and same-slot velocities are implemented; single-layer unidirectional GRU128 starts as a zero-residual hold baseline, train-only normalization. The bounded trainer requires safe CUDA by default, nonblocking GPU lock, 22/24GiB memory and18GiB/80C/disk/1800s guards, and never uses TEST_ONLY or test data for selection. Actual sidecars, server Torch, training and policy/physics comparison remain pending."
     },
     {
       "id": "causal_student_and_execution_phase",

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06：[低延迟预测模型和独立训练入口已准备](README_Q1_TELEOP_FORECAST_TRAINING_20261106.md)。历史25帧/未来10槽特征216维、标签144维，根/相对身体/旋转和速度同50Hz时间轴，单向GRU128零输出等价hold；训练归一化只用train，默认安全CUDA/独立锁，22GiB起始、24GiB运行、18GiB GPU、80°C和100GiB磁盘保护。84项81过3本机Torch/原运行时待，尚未读取服务器侧车、训练、推理物理或新认证；桥接/原训练实时UNKNOWN，原final/五阶段/采纳null保持。下一步恢复后先核原身份/资源/锁，审计393侧车，再决定是否一次有界GPU训练。[审计](../logs/session_records/q1_teleop_forecast_training_preparation_20261106.json)。
+
 2026-11-06：[因果预测训练数据计划与窗口边界已成](README_Q1_TELEOP_FORECAST_DATA_20261106.md)。393片按37来源组及内容别名留出，train167/val98/test128、112227窗口；三固定片整目录26片test，非被试独立/原策略已见全部393。计划240526B/SHA f40c1d5逐值重建同；原120→50Hz双侧插值额外0..6.667ms代码依赖明确，硬件上游仍UNKNOWN。新增7检查，69项67过2原运行时待，未读服务器真实NPZ/训练推理物理CUDA或新增认证。下一只读历史锚定SE(3)特征及有界预测器训练入口；真实侧车/资源门过后才执行，优先安全GPU且不争原V04锁。3b1cd18未上传下发、训练实时UNKNOWN，goal active最低今日10:00，完整final/五阶段与采纳null保持。[审计](../logs/session_records/q1_teleop_forecast_data_20261106.json)。
 
 2026-11-06 04:28：[54固定解析滤波对照实成](README_Q1_TELEOP_FILTER_PHASE_20261106.md)。50Hz五点因果均值40ms相位，固定One Euro beta.1在1Hz100.660ms，急停残余.099601rad；无真人调参/训练推理物理GPU，62检查60过2原运行时待，数值警告升error复核与首轮54数值全同。因果重采样6cf8797已远端/Mac12份615911B核同；3b1cd18真实预览campaign仍未上传，原训练实时UNKNOWN/无重复认证。下一核同human真实比较及可训练全片/资源；失联时补因果训练合同，不能用合成结果代替闭环。goal active最低今日10:00/q1十分钟同线程，V04/final/锁/采纳null保持。[审计](../logs/session_records/q1_teleop_filter_phase_20261106.json)。

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06：[因果预测器几何/模型/有界训练入口完成](README_Q1_TELEOP_FORECAST_TRAINING_20261106.md)。新增历史锚定SE(3)特征、同时间轴速度解码、零输出hold初始化的单向GRU和安全GPU优先训练入口；84项测试81过3项本机Torch/原运行时待，0真实侧车读取/优化器更新/推理物理CUDA。训练默认拿不到安全GPU就拒绝，原V04锁/保护线不争用；服务器桥接待恢复，goal active最低10:00。[审计](../logs/session_records/q1_teleop_forecast_training_preparation_20261106.json)。
+
 2026-11-06：[因果预测器的393片冻结划分与窗口入口完成](README_Q1_TELEOP_FORECAST_DATA_20261106.md)。按完整来源目录及内容别名留出，训练167/验证98/测试128、112227窗口；三固定片所在26片目录整体test，不称跨被试或原策略陌生片泛化。120→50Hz原插值额外右支持最高6.667ms已显式记录，训练归一化/未来不可见边界受审。69项67过2原运行时待；0真实NPZ读取/模型训练或新物理GPU，原桥接/训练实时UNKNOWN且未重复认证。goal active最低10:00，下一SE(3)特征和有界训练入口。[审计](../logs/session_records/q1_teleop_forecast_data_20261106.json)。
 
 2026-11-06 04:28：[滤波/变化率限制54解析对照完成](README_Q1_TELEOP_FILTER_PHASE_20261106.md)。因果5点均值50Hz相位40ms，固定One Euro beta.1在1Hz约100.660ms且反向/急停有残余；不把降噪直接当总延迟改善。官方BSD wheel6082B/SHA同、未改第三方或全局环境；62项60过2原运行时待、RuntimeWarning升error通过/首轮数值逐值同。无真人数据/训练/推理物理GPU；goal active最低10:00，真实human对照待原桥接和资源全门。[审计](../logs/session_records/q1_teleop_filter_phase_20261106.json)。

@@ -71,4 +71,6 @@ python3 script/supermimic_teleop/train_forecast.py \
 
 该命令尚未在服务器执行；它是一次独立有界实验，不是对当前V04训练的续训，也不自动重试。
 
-评估初版 `dc1093f6a980a783556cf22bf034d29d52a3f10a` 已推送并独立核同，但没有在服务器运行；本次补审的v2门禁与口径以[新审计](../logs/session_records/q1_teleop_forecast_eval_guard_audit_20261106.json)及后续发布收据为准。此前训练准备 `49fd7781acfbbf418f78242ed0c91847f4e40c57` 亦未实际训练。服务器桥接和原训练实时状态仍UNKNOWN，不能用本地夹具通过替代真实侧车、GPU或遥操闭环结果。原final及完整五阶段门、采纳null和原训练保护保持。[冻结数据阶段](README_Q1_TELEOP_FORECAST_DATA_20261106.md)
+v2补审代码 `931be10582f43847896e5b289967ea1e9f5db023` 已显式push并独立40位远端核同，13份661958B与Mac主镜像逐大小/SHA相同。完整197项源码身份清单及独立部署包已准备：16成员201863B，每成员与Git原字节同；独立解包34项33过1缺Torch跳过。包只应解到新的独立代码快照目录，不覆盖原V04输入。[发布收据](../logs/session_records/q1_teleop_forecast_eval_publication_20261106.json)与[新审计](../logs/session_records/q1_teleop_forecast_eval_guard_audit_20261106.json)。
+
+评估初版 `dc1093f6a980a783556cf22bf034d29d52a3f10a` 和此前训练准备 `49fd7781acfbbf418f78242ed0c91847f4e40c57` 都没有在服务器运行。服务器桥接和原训练实时状态仍UNKNOWN，新包未上传或派发；不能用本地夹具通过替代真实侧车、GPU或遥操闭环结果。原final及完整五阶段门、采纳null和原训练保护保持。[冻结数据阶段](README_Q1_TELEOP_FORECAST_DATA_20261106.md)

@@ -1,5 +1,7 @@
 # YUANQI 具身智能研究跟踪
 
+2026-11-05研究：[四项简报](research/2026-11-05/README.md)/[检查](README_RESEARCH_CHECK_20261105.md)：SONIC-K1真机条件配方、iLQR落脚/接触、视觉动作预见、触觉反射。85请求76成功/八固定文本80958B静态核验；main去重184→193，H001不变。工程按23:48观察故障记录/实时UNKNOWN，未重试认证或改训练、goal、监督；服务器镜像待恢复，实际发布见[收据](../data/manifests/research_watch_sync_20261105.json)。
+
 2026-11-04研究：[四项简报](research/2026-11-04/README.md)/[检查](README_RESEARCH_CHECK_20261104.md)：Koopman、RWM校准、Anchor1、NablaMimic0.2配方。78请求77成功/8固定文本96347B及95项完整树静态核验；main去重173→184，H001不变。工程按Q1最新记录，本轮未运行训练/仿真或改目标/自动任务；不新增硬门。服务器自动认证及镜像缺口延续，实际发布见[收据](../data/manifests/research_watch_sync_20261104.json)。
 
 2026-11-03研究：[四项简报](research/2026-11-03/README.md)/[检查](README_RESEARCH_CHECK_20261103.md)：NablaMimic、想象边界、OpenVIO、SONIC Capture1.5。142请求125成功/23固定文本静态核验；main去重164→173，H001不变。按最新Q1接入/GPU恢复记录继续主线，本轮无新GPU或训练；服务器自动认证/镜像缺口延续。实际发布见[收据](../data/manifests/research_watch_sync_20261103.json)。

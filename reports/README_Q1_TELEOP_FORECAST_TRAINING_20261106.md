@@ -48,4 +48,4 @@ python3 script/supermimic_teleop/train_forecast.py \
 
 该命令尚未在服务器执行；它是一次独立有界实验，不是对当前V04训练的续训，也不自动重试。
 
-本阶段代码和报告待本轮发布；服务器桥接和原训练实时状态仍UNKNOWN，不能用本地夹具通过替代真实侧车、GPU或遥操闭环结果。原final及完整五阶段门、采纳null和原训练保护保持。[冻结数据阶段](README_Q1_TELEOP_FORECAST_DATA_20261106.md)
+本阶段代码和报告已以 `49fd7781acfbbf418f78242ed0c91847f4e40c57` 显式push到 `origin/Q1`，独立40位远端核同；服务器桥接和原训练实时状态仍UNKNOWN，不能用本地夹具通过替代真实侧车、GPU或遥操闭环结果。原final及完整五阶段门、采纳null和原训练保护保持。[冻结数据阶段](README_Q1_TELEOP_FORECAST_DATA_20261106.md)

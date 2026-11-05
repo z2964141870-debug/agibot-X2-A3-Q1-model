@@ -46,7 +46,7 @@ def cgroup_snapshot():
     raise RuntimeError("No supported cgroup memory accounting files")
 
 
-def gpu_snapshot(expected=None):
+def gpu_snapshot(expected=None, allowed_pids=None):
     import subprocess
     raw = subprocess.check_output(["nvidia-smi", "--query-gpu=uuid,memory.used,temperature.gpu,gpu_recovery_action",
         "--format=csv,noheader,nounits"], text=True, timeout=10).strip()
@@ -58,7 +58,9 @@ def gpu_snapshot(expected=None):
         raise RuntimeError("GPU identity differs from the admitted device")
     compute = subprocess.check_output(["nvidia-smi", "--query-compute-apps=pid",
         "--format=csv,noheader,nounits"], text=True, timeout=10)
-    pids = [int(value.strip()) for value in compute.splitlines() if value.strip()]
+    allowed_pids = {os.getpid()} if allowed_pids is None else set(allowed_pids)
+    pids = [int(value.strip()) for value in compute.splitlines()
+            if value.strip() and int(value.strip()) not in allowed_pids]
     if pids:
         raise RuntimeError("A compute process already uses the admitted GPU: " + ",".join(map(str, pids)))
     return dict(uuid=uuid, used_mib=int(used), temperature_c=int(temperature),
@@ -73,7 +75,7 @@ def resources(output, *, expected_gpu=None, start=False):
         raise RuntimeError("Cgroup OOM counter is nonzero")
     if memory["total_bytes"] >= (22 if start else 24)*GIB:
         raise RuntimeError("Independent forecast resource reserve reached")
-    gpu = gpu_snapshot(expected_gpu)
+    gpu = gpu_snapshot(expected_gpu, allowed_pids={os.getpid()})
     if gpu["used_mib"] >= 18*1024 or gpu["temperature_c"] >= 80 or gpu["recovery"] != "None":
         raise RuntimeError("Independent forecast GPU reserve reached")
     usage = shutil.disk_usage(output)

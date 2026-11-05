@@ -247,6 +247,20 @@ def audit(args, config, plan):
     save(args.output / "checkpoint_audit.json", value)
 
 
+def load_physical_robot(checkpoint):
+    import torch
+    from supermimic.robot import Q1Robot
+    payload = torch.load(checkpoint, map_location="cpu", weights_only=True, mmap=True)
+    settings, model_id = payload["config"], payload["identity"]
+    robot = Q1Robot(Path(settings["robot_xml"]),
+                    modeled_action_delay=settings.get("modeled_action_delay", False))
+    require(robot.asset_sha256 == model_id["asset_sha256"], "Common physical assets differ")
+    robot.load_state_dict(payload["robot"])
+    del payload
+    gc.collect()
+    return robot, settings
+
+
 def replay(args, config, runtime, plan, frozen):
     import torch
     torch.set_num_threads(1)
@@ -254,7 +268,6 @@ def replay(args, config, runtime, plan, frozen):
             and importlib.metadata.version("torch").split("+")[0] == "2.7.0"
             and importlib.metadata.version("mujoco") == "3.6.0", "Common physics runtime changed")
     sys.path[:0] = [str(Path(runtime["adapted_source"]) / "src"), str(HERE.parent / "primebot_q1_review")]
-    from evaluate import load_actor
     from policy_process import PolicyProcess
     from q1_native_review import rollout
     audited = read(args.output / "checkpoint_audit.json")
@@ -281,12 +294,11 @@ def replay(args, config, runtime, plan, frozen):
         actor = PolicyProcess(command, output / "policy_worker.log")
         require(actor.ready["checkpoint"] == checkpoint
                 and actor.ready["metadata"]["iteration"] == args.iteration, "Wrong isolated native policy")
-        robot, unused, settings, _, _, _ = load_actor(baseline["path"])
-        del unused
-        gc.collect()
+        robot, settings = load_physical_robot(baseline["path"])
         require(settings["action_scale"] == .5, "Common physical action scale changed")
         result.update(policy_runtime=actor.ready, asset_sha256=robot.asset_sha256,
-                      termination=robot.reward_identity(), render_xml=identity(settings["robot_xml"]))
+                      termination=robot.reward_identity(), render_xml=identity(settings["robot_xml"]),
+                      unused_primebot_actor_constructed=False)
         require(Path(settings["robot_xml"]) == Path(runtime["xml"]), "Common rendering XML changed")
         for item in fixed_rows(frozen):
             directory = output / (Path(item["q1_primebot"]["path"]).stem + "_s0")
@@ -380,12 +392,15 @@ def execute(args):
         concurrent_graphics_requested_by_user=True, training_inputs_modified=False,
         reused_checkpoint_audit=identity(args.reuse_audit) if args.reuse_audit else None,
         reused_physical_cases=cases, sequential_physics_then_gpu_media=True,
+        evaluation_allocator=dict(MALLOC_ARENA_MAX="1", MALLOC_TRIM_THRESHOLD_="131072",
+                                  MALLOC_MMAP_THRESHOLD_="131072"),
         final_acceptance=False, g1_quality_assessed=False, user_accepted_checkpoint=None))
     if reused is not None:
         save(args.output / "checkpoint_audit.json", reused)
     copy_saved_cases(cases, args.output)
     env = dict(os.environ, CUDA_VISIBLE_DEVICES="", OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1",
-        MKL_NUM_THREADS="1", MUJOCO_GL="egl", PYOPENGL_PLATFORM="egl", EGL_PLATFORM="surfaceless",
+        MKL_NUM_THREADS="1", MALLOC_ARENA_MAX="1", MALLOC_TRIM_THRESHOLD_="131072",
+        MALLOC_MMAP_THRESHOLD_="131072", MUJOCO_GL="egl", PYOPENGL_PLATFORM="egl", EGL_PLATFORM="surfaceless",
         Q1_REVIEW_FFMPEG=runtime["ffmpeg"],
         __EGL_VENDOR_LIBRARY_FILENAMES=str(ROOT / "script/morphmimic_cross_robot/nvidia_egl_595_20261102.json"),
         LD_LIBRARY_PATH=str(Path(runtime["graphics_dir"]) / "lib")

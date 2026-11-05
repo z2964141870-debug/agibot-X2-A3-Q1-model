@@ -1,5 +1,11 @@
 # Q1共享16000轮中途检查
 
+## 20:18按用户命令恢复，精简独立物理进程
+
+按用户明确的source /Users/yu/.zshrc再ssh -tt hp_han，68380已原Windows/25362进入Linux。20:18:47北京时间原设备、五PID/starttick/guard锁核同，各35100/160000轮、各90265600转移、五Adam351000/33100/662000/33100/662000、非有限0，GPU16177MiB56度None/总22172762112B/实际限34292629504B/即时余12119867392B/OOM0。两个新入口文件小包大小SHA核同、8项服务器检查通过0.023秒后，20:25:24实际启动PHASED/控制器180744；前走按原SHA复用，起走尚未完整保存时实际总25797910528B再次触及评估24GiB门，仅自有组180749被回收-15，未到媒体阶段，未信号训练。
+
+继续原中途请求，独立物理入口改为只构造原Q1Robot、核原资产SHA并严格加载原机器人state，省去原load_actor构造后随即丢弃的Primebot MotionPolicy；隔离Morph策略数学/精度和共同物理保持。仅评估子进程启动环境限制glibc arena并让可释放临时大块内存归还，原24GiB评估退出和30GiB训练线不改、不维护文件缓存。8项本地检查通过，发布后仅新LEAN根继续尚缺起停两片，再顺序GPU EGL媒体；原前走不重复物理，两个失败根保留。[恢复、真实内存退出与精简准备](../logs/session_records/q1_interim16000_lean_preparation_20261105.json)。
+
 ## 分阶段入口已发布，桥接再次中断
 
 d67de66d31c5e43a969616eb0fdb568de4e345fd已显式stage/audit/commit/push origin Q1并独立40位远端核同，8文件664445B Git/Mac大小SHA一致。17093在服务器大镜像传输中Timeout退出255，镜像可能部分完成，未取得整组SHA核验；本独立故障的一次有界恢复23670在Mac到hp_han的22端口直接超时，未到Windows或服务器认证。当前实时训练状态UNKNOWN，19:51健康现场仅为最后实核，不据失联认定训练停止。新分阶段入口尚未服务器检查或执行，等待桥接可达后先核两个入口文件SHA及8项检查，不重复已完成前走物理。应用更新现有q1返回“Automation does not exist”，view仅返回卡片而无保存状态；本次不声称ACTIVE、不创建替代自动任务，不改其他任务/goal。[发布、故障及部分结果收据](../logs/session_records/q1_interim16000_phased_publication_20261105.json)。

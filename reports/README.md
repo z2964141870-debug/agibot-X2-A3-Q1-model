@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-05 21:14：[直连Windows及Linux成功，随后小包上传链路停滞](README_Q1_INTERIM_REVIEW_20261105.md)。2850经原25362进入Linux；21:04实核原训练两型各35850轮/非有限0/OOM0、原身份/guard锁同，GPU92%。入口非冻结输入、旧评估退出/LEAN未建已核；新版小包传输后Mac→Windows发送队列29412B连续不动、未收完成回显，已本地SSH转义断开。当前实时UNKNOWN，服务器入口必须先核大小SHA，未做新版服务器检查/未启LEAN。新质量结果无，起停及GPU媒体仍待；认证不记录。[现场及传输证据](../logs/session_records/q1_direct_bridge_recovered_transfer_stalled_2114_20261105.json)。
+
 2026-11-05 20:37：[16000轮轻量检查部分结果与连接新故障](README_Q1_INTERIM_REVIEW_20261105.md)。20:18实核原训练各35100轮/非有限0/OOM0；PHASED续跑起走时触及评估24GiB门，仅回收自有组，起停及媒体核验未齐。精简独立入口389ea8f已独立40位远端核同/三文件64543B Git-Mac同，尚未到服务器。68380再次Timeout255，一次按用户命令恢复34443仍在hp_han22端口超时，当前实时UNKNOWN。完整前走显示滑移/上肢改善但根末偏差约27cm，非最终合格结论；恢复后先身份/全监督，再小包核新版继续，复用已有审计和首片。[本次发布与故障证据](../logs/session_records/q1_interim16000_lean_publication_2037_20261105.json)。
 
 2026-11-05 20:10：[中途分阶段代码已发布，服务器镜像期间桥接再次超时](README_Q1_INTERIM_REVIEW_20261105.md)。d67de66独立40位远端/8文件664445B Git-Mac核同，服务器完整性未知、新入口未运行；一次恢复23670也在hp_han22端口超时，当前训练实时UNKNOWN，最后19:51各34650轮健康为历史。前走单片滑移与上肢误差改善，根末XY误差反增至.26849m；媒体验完及起停两片仍待。q1更新返回不存在，未重建或声称ACTIVE。[发布及真实部分结果](../logs/session_records/q1_interim16000_phased_publication_20261105.json)。

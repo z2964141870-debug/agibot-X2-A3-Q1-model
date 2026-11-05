@@ -1,5 +1,15 @@
 # Q1共享16000轮中途检查
 
+## 21:14直连进入Windows和Linux，传输再次停滞
+
+用户明确要求直连原Windows地址并提供交互认证。20118到Windows密码提示后Broken pipe退出255；按本独立故障一次有界重连，2850成功进入PowerShell，再用Windows原生25362进入root@interactive67462、cwd=/opt/data/private/ZHY。两处认证仅交互使用，不存储或镜像。
+
+21:04:26北京时间只读实核原boot/GPU、五PID启动tick与guard55672持锁全同，pipeline TRAINING/guard RUNNING；两型各35850/160000轮、各92185600转移，五Adam358500/33850/677000/33850/677000，非有限全0。GPU16177MiB56度92%None，总22187020288B/实际限34292629504B/即时余12105609216B/OOM0，磁盘余288652988416B；16000/32000编号保存及latest均在。完整最后总行/G1/Q1分组在g1.log，q1.log仍为bootstrap/预热尾，两日志所读尾段无错误。守卫内存峰25769373696B带同一分项样本，memory_reclaim.json无记录，不将缺记录计为已验证的回收。
+
+传输前另实核interim_review不在冻结训练输入中，旧PHASED guard FAILED/自有worker已回收-15/controller180744已退，LEAN输出不存在。按389ea8f已发布版本，仅传入口小包，base64原13656字符/2048字符分块/每块1秒，结束标记及echo恢复已发送，但迟迟无完成回显。只读TCP确认Mac→100.65.183.91:22为ESTABLISHED而发送队列29412B、收发计数连续数分钟不变；21:12:10仍同。随后仅使用OpenSSH本地转义关闭2850、返回255。服务器入口可能未写入、部分写入或已写完但回显未达，实际内容UNKNOWN，不能执行；没有新版服务器测试或LEAN评估启动，没有新增物理/媒体结果。训练未被本轮信号或重启，当前实时状态因观察链路中断再次UNKNOWN，21:04是最后成功现场。
+
+已向用户请求Windows保持唤醒/网络恢复情况或现有Linux会话，认证无需重发；不逐心跳自动重连或换入口。恢复后先核原设备/进程/guard及全部实时记录，再检查入口25639B/eeece2d484f179f9aec020b05a8a637e7e0c191ec184e0a66b8c891b77f52b61，按实际内容决定是否补传；随后原8检查和资源准入通过才一次LEAN续缺片及GPU媒体。原评估24GiB退出和训练30GiB/86度/锁、完整五阶段/final门及采纳null保持。[完整现场及新传输故障](../logs/session_records/q1_direct_bridge_recovered_transfer_stalled_2114_20261105.json)。
+
 ## 20:37精简入口远端核同，原桥接新故障
 
 389ea8f18bb227260c69bbc698c6af8518179fc5已显式stage/audit/commit/push origin Q1，并于20:33:58独立git ls-remote核对完整40位相同；入口、本文及精简准备记录共三份64543B已在Git/Mac逐大小SHA核同。8项本地检查通过。精简新版尚未传到服务器，也没有新版服务器检查或LEAN执行结果。

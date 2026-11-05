@@ -55,3 +55,5 @@ python3 script/supermimic_teleop/forecast_data.py audit-sidecars \
 下一步实现只从可见历史估计锚点的SE(3)特征、姿态/速度时间一致解码及小型因果预测器的有界训练入口。侧车真实内容/原设备资源核验过后才训练，优先安全GPU；原V04持锁或实时资源不可核时不争锁、不停原训练。学习输出仍需承认骨长/接触约束未验，并与hold/CV/damped和实际human策略闭环比较。
 
 最近原桥接仍停在Windows认证后Broken pipe，训练实时UNKNOWN；本阶段未新增认证、上传或下发。已发布3b1cd18的真实human预览campaign仍待原桥接恢复和完整身份/资源门，不能拿本地数据边界检查替代其结果。原final和完整五阶段、原训练保护线与采纳null保持。[本阶段审计](../logs/session_records/q1_teleop_forecast_data_20261106.json)。
+
+代码与计划已以 `3c09dab54dfb9a30cca0db2028a567fb516eb18c` 显式push origin Q1，独立40位远端核同；10份849476B的Git/工作树/Mac主镜像大小SHA核同。最终69检查67过2原运行时待、0.175秒，语法及diff检查通过。服务器镜像待原桥接，详见[发布收据](../logs/session_records/q1_teleop_forecast_data_publication_20261106.json)。

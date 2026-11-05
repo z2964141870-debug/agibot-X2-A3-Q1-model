@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06 04:28：[滤波/变化率限制54解析对照完成](README_Q1_TELEOP_FILTER_PHASE_20261106.md)。因果5点均值50Hz相位40ms，固定One Euro beta.1在1Hz约100.660ms且反向/急停有残余；不把降噪直接当总延迟改善。官方BSD wheel6082B/SHA同、未改第三方或全局环境；62项60过2原运行时待、RuntimeWarning升error通过/首轮数值逐值同。无真人数据/训练/推理物理GPU；goal active最低10:00，真实human对照待原桥接和资源全门。[审计](../logs/session_records/q1_teleop_filter_phase_20261106.json)。
+
 2026-11-06 04:13：[因果到达时轴重采样及真人固定回放完成](README_Q1_CAUSAL_RESAMPLER_20261106.md)。四方法/两场景/60008输出、未到达读取违规0、输入身份同；保留跨钟未知性和保持/插值/生成来源。40ms缓冲减小两段步变但需等待，预测重锚定仍可增大跳变；不是端到端或自然性结论。12新检查/完整56项54过2原运行时待，0训练推理物理CUDA；TEST_ONLY不调参。goal active最低10:00、原训练实时UNKNOWN/未重复认证，campaign3b1cd18保持未下发。[实据](../logs/session_records/q1_causal_resampler_replay_20261106.json)。
 
 2026-11-06：[真人录制输入的未来依赖实算完成](README_Q1_TELEOP_REAL_INTAKE_20261106.md)。两段TEST_ONLY/3892帧原输入和inspection核同；原50Hz离线插值未来依赖中位约19ms/p95约54-56ms/最大155-170ms，不能当实时因果重采样。host/payload时钟与硬件capture未知，根平移全零，未训练/推理/物理，不当端到端延迟或步态结论。新增4检查/完整44项42过2原运行时待；下一项独立因果重采样合同，goal active最低10:00。[实据](../logs/session_records/q1_real_intake_timing_audit_20261106.json)。

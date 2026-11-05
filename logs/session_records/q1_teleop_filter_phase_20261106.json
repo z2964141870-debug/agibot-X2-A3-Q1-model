@@ -1,0 +1,73 @@
+{
+  "stage": "Q1_FIXED_ANALYTIC_FILTER_PHASE_AND_CONTINUITY",
+  "observed_local": "2026-11-06T04:28:56+08:00",
+  "goal_status": "active",
+  "minimum_execution_until": "2026-11-06T10:00:00+08:00",
+  "result": {
+    "path": "data/supermimic_for_q1/Q1_TELEOP_FILTER_ANALYTIC_20261106/filter_analytic_results_checked.json",
+    "bytes": 26426,
+    "sha256": "0174ce975c65b5829090aba0d9e51d262daf5aa49dfde88ff471cee5e2df94c0",
+    "cases": 54,
+    "elapsed_seconds": 0.064255958
+  },
+  "initial_warning_result_retained": {
+    "path": "data/supermimic_for_q1/Q1_TELEOP_FILTER_ANALYTIC_20261106/filter_analytic_results.json",
+    "bytes": 26426,
+    "sha256": "74b934a81965173026287b430b3b53c956bfe049eebf9ff6fc8baec5c99d0293",
+    "code_sha256": "0df1ccfb1031086cfb6e5dd90743b69193407e7621e098b8130a511b2fcb7878",
+    "issue": "RuntimeWarning in three-term harmonic reconstruction matmul; all metrics finite",
+    "resolution": "Equivalent explicit sum; warnings promoted to errors, no tolerance changes",
+    "all_54_case_numeric_metrics_maximum_difference": 0
+  },
+  "source_code": [
+    {"path": "script/supermimic_teleop/filter_diagnostics.py", "bytes": 11517, "sha256": "3c5eec1ef3ed54f2513d34e017acb86a536e6235ecb8c39399b588edd44fa22d"},
+    {"path": "script/supermimic_teleop/test_filter_diagnostics.py", "bytes": 2850, "sha256": "a6e5ec0767c4875e9abe2fff13253bc364f215a09332720c758657a8102f265c"}
+  ],
+  "dependency": {
+    "package": "OneEuroFilter",
+    "version": "0.2.1",
+    "wheel_bytes": 6082,
+    "wheel_sha256": "a81db3155ea51c4f920762de04e888909d17e2af87d9e544947d20740f70fae8",
+    "pypi_published_hash_verified": true,
+    "license": "BSD-3-Clause; full original notice retained in wheel",
+    "author_source_bytes": 8535,
+    "author_source_sha256": "cdd79ec70e001a671bd8cc72351c074815e529d33a378d97725c7986404d7d14",
+    "license_bytes": 1453,
+    "license_sha256": "e70c03d7b59321e4daa3581a95ea55fb150331ff353b8b9e04f3ec6b84a9bce4",
+    "installed_into_system_or_server": false,
+    "third_party_code_modified": false
+  },
+  "local_verification": {
+    "new_tests": 6,
+    "full_teleop_tests": 62,
+    "passed": 60,
+    "native_runtime_skips": 2,
+    "failures": 0,
+    "runtime_warnings_promoted_to_errors": true,
+    "elapsed_seconds": 0.168,
+    "compileall_and_diff_check": "PASSED",
+    "one_euro_beta0_analytic_error": 1.1102230246251565e-16,
+    "one_euro_beta0_error_limit": 1e-12,
+    "all_declared_slew_outputs_within2rad_per_second": true
+  },
+  "findings": [
+    "Causal five-sample mean at50Hz has40ms fundamental delay in all four analytic sine cases",
+    "Fixed One Euro beta0.1 configuration at1Hz has100.660ms phase lag,60ms extra reversal delay and0.099601rad stop residual",
+    "Slew limiting may add nonlinear lag when active and is not acceleration or torque limiting",
+    "Input filtering gains and time costs must be reported independently from preview budget",
+    "No human test samples, no parameter selection and no robot naturalness conclusion"
+  ],
+  "source_human_recordings_used": 0,
+  "training_samples_used": 0,
+  "new_optimizer_updates": 0,
+  "new_policy_inference": 0,
+  "new_physics_steps": 0,
+  "new_cuda_jobs": 0,
+  "measured_end_to_end_latency_ms": null,
+  "training_live_state": "UNKNOWN",
+  "new_authentication_attempts": 0,
+  "server_sync": "PENDING_ORIGINAL_BRIDGE_RECOVERY",
+  "original_training_and_final_gates_preserved": true,
+  "whole_goal_complete": false,
+  "user_accepted_checkpoint": null
+}

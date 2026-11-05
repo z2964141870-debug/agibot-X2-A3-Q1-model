@@ -1,0 +1,44 @@
+{
+  "stage": "Q1_CAUSAL_FORECAST_EVALUATION_PREPARATION",
+  "observed_local": "2026-11-06T06:33:00+08:00",
+  "goal_status": "active",
+  "minimum_execution_until": "2026-11-06T10:00:00+08:00",
+  "new_entry": "script/supermimic_teleop/forecast_eval.py",
+  "new_tests": 3,
+  "comparison_methods": ["hold", "cv", "damped_cv", "gru_if_checkpoint_present"],
+  "metrics": [
+    "per_horizon_position_rmse_m",
+    "per_horizon_root_position_rmse_m",
+    "per_horizon_orientation_geodesic_rmse_rad"
+  ],
+  "causality": {
+    "history_only": true,
+    "future_target_read_for_prediction": false,
+    "validation_used_for_selection": true,
+    "test_used_for_selection": false
+  },
+  "training_or_physics": {
+    "actual_sidecars_read": false,
+    "optimizer_updates": 0,
+    "policy_inference": 0,
+    "physics_steps": 0,
+    "cuda_jobs": 0
+  },
+  "local_verification": {
+    "teleop_suite_tests": 87,
+    "passed": 84,
+    "skipped": 3,
+    "warnings_as_errors": "PASSED",
+    "compileall": "PASSED"
+  },
+  "bridge_attempt_after_user_reported_recovery": {
+    "route": "yu@100.65.183.91:22",
+    "password_prompt_reached": true,
+    "shell_reached": false,
+    "result": "BROKEN_PIPE_EXIT_255",
+    "new_dispatch": false,
+    "action": "Do not loop authentication; continue independent local work"
+  },
+  "whole_goal_complete": false,
+  "user_accepted_checkpoint": null
+}

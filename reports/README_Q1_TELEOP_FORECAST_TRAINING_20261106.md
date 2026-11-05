@@ -1,6 +1,6 @@
 # 因果预测器特征、模型和有界训练入口
 
-2026-11-06北京时间。已完成仅使用可见历史的几何特征、物理单位标签解码和独立训练入口；尚未读取服务器393份human侧车，尚未启动模型训练、策略推理、机器人物理或GPU作业。长期goal仍active，至少执行至今日10:00，必要训练/验证继续延长。
+2026-11-06北京时间。已完成仅使用可见历史的几何特征、物理单位标签解码、独立训练入口和物理 per-horizon 评估入口；尚未读取服务器393份human侧车，尚未启动模型训练、策略推理、机器人物理或GPU作业。长期goal仍active，至少执行至今日10:00，必要训练/验证继续延长。
 
 ## 表示
 
@@ -27,9 +27,25 @@
 
 当前本地环境没有Torch/服务器资产，因此没有调用入口。服务器侧车审计和真实资源门通过后才能运行，训练结果还必须接入H10/H5/H4/H2/H1同权重、hold/CV/damped尾部及原速物理媒体比较。
 
+## 独立评估入口
+
+`forecast_eval.py` 只用每个窗口的25帧可见历史生成 hold、常速度和阻尼常速度基线；如果传入独立 `forecast_gru.pt`，再加入GRU结果。它把预测解码回世界位置和四元数，在20至200ms每个目标槽分别报告位置、根位置和姿态测地线RMSE。验证集按显式选择指标选出方法，测试集只报告，不参与选择；输出同时记录没有测得机器人端到端延迟和未启用接触约束。
+
+```sh
+python3 script/supermimic_teleop/forecast_eval.py \
+  --plan data/manifests/q1_teleop_forecast_split_20261106.json \
+  --admission data/manifests/primebot_q1_admission_frozen_20261103.json \
+  --sources data/manifests/morphmimic_faithful_common_sources_results_20261101.json \
+  --human-root /opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_SOMA_FULL1H_V01_20261102/converted/npz50/human50 \
+  --output /opt/data/private/ZHY/data/supermimic_for_q1/Q1_CAUSAL_FORECAST_EVAL_20261106/result.json \
+  --checkpoint /opt/data/private/ZHY/data/supermimic_for_q1/Q1_CAUSAL_FORECAST_GRU_20261106/forecast_gru.pt
+```
+
+该评估输出是预测质量对照，不是机器人自然性验收；它必须在同一批H10/H5/H4/H2/H1物理回放之前完成，且不能用测试误差替代脚底离地、交替、承重滑移、侧倾或急停行为。
+
 ## 验证
 
-新增8项几何检查、5项模型/归一化检查、2项训练入口边界检查。完整teleop测试共84项，81通过、3项受限于本机缺Torch或固定服务器运行时而跳过；`-W error`、compileall和diff检查通过。没有TEST_ONLY真人录制、测试集、reward/loss或物理回放被用于训练选择。
+新增8项几何检查、5项模型/归一化检查、2项训练入口边界检查和3项评估聚合/基线检查。完整teleop测试共87项，84通过、3项受限于本机缺Torch或固定服务器运行时而跳过；`-W error`、compileall和diff检查通过。没有TEST_ONLY真人录制、测试集、reward/loss或物理回放被用于训练选择。
 
 已知限制：当前393片原策略本身见过全部数据，预测器测试集不能证明整套策略对陌生动作的泛化；来源后缀没有被试身份证明；120→50Hz侧车上游动捕滤波和硬件capture因果性仍未知；预测输出还没有接触约束和置信度回退。
 
@@ -48,4 +64,4 @@ python3 script/supermimic_teleop/train_forecast.py \
 
 该命令尚未在服务器执行；它是一次独立有界实验，不是对当前V04训练的续训，也不自动重试。
 
-本阶段代码和报告已以 `49fd7781acfbbf418f78242ed0c91847f4e40c57` 显式push到 `origin/Q1`，独立40位远端核同；服务器桥接和原训练实时状态仍UNKNOWN，不能用本地夹具通过替代真实侧车、GPU或遥操闭环结果。原final及完整五阶段门、采纳null和原训练保护保持。[冻结数据阶段](README_Q1_TELEOP_FORECAST_DATA_20261106.md)
+本阶段新增评估入口及审计记录尚待提交发布；此前训练准备代码已以 `49fd7781acfbbf418f78242ed0c91847f4e40c57` 显式push到 `origin/Q1`，独立40位远端核同。服务器桥接和原训练实时状态仍UNKNOWN，不能用本地夹具通过替代真实侧车、GPU或遥操闭环结果。原final及完整五阶段门、采纳null和原训练保护保持。[冻结数据阶段](README_Q1_TELEOP_FORECAST_DATA_20261106.md)

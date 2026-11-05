@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-05 20:10：[分阶段中途入口已发布，桥接恢复待完成](README_Q1_INTERIM_REVIEW_20261105.md)。d67de66独立40位远端和8文件664445B Git-Mac大小SHA已核同；服务器镜像中17093 Timeout255、一次恢复23670在hp_han22端口超时，当前训练及镜像完整性UNKNOWN，19:51各34650轮为最后实核。新PHASED未服务器测试或运行，恢复后先核入口SHA/8检查，复用旧审计及完整前走，不重做首片物理。单片滑移/上肢改善但根末XY误差增到.26849m，完整媒体目视/上肢时序及起停两片仍缺。应用更新q1返回不存在，未创建替代/未声称ACTIVE，goal不动。[发布及部分结果](../logs/session_records/q1_interim16000_phased_publication_20261105.json)。
+
 2026-11-05 19:51:53：[原V04各34650轮，独立中途检查分离GPU媒体](README_Q1_INTERIM_REVIEW_20261105.md)。17093已在原Linux，设备/五PID启动tick/guard锁核同，TRAINING/RUNNING、非有限0/OOM0，ckpt32000已在。16000双型330有限张量审计已过，前走seed0完整1031步/19个>10mm事件/11交替；旧TOTALMEM媒体解码时实总25788698624B触发评估24GiB门，未信号训练/失败根保留。新入口顺序退出物理策略再GPU EGL渲染，复用首片不重复物理、8本地检查过，发布后继续剩余两片和媒体核验，整组质量尚待。原训练30GiB/86度/锁、final门/完整五阶段及采纳null保持，goal不读取重建。[完整证据](../logs/session_records/q1_interim16000_phased_preparation_20261105.json)。
 
 2026-11-05研究：[四项简报](research/2026-11-05/README.md)/[检查](README_RESEARCH_CHECK_20261105.md)：SONIC-K1真机条件配方、iLQR落脚/接触、视觉动作预见、触觉反射。85请求76成功/八固定文本80958B静态核验；main去重184→193，H001不变。接入11/5 11:44连接恢复记录，本研究任务未独立现场观察或改训练、goal、监督；服务器研究副本待核同步，实际发布见[收据](../data/manifests/research_watch_sync_20261105.json)。

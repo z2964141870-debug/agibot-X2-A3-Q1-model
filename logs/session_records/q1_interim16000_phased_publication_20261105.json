@@ -1,0 +1,249 @@
+{
+  "stage": "Q1_INTERIM16000_PHASED_PUBLICATION_AND_BRIDGE_DISCONNECTION",
+  "recorded_utc": "2026-11-05 12:10:10 UTC",
+  "evaluation_commit": "d67de66d31c5e43a969616eb0fdb568de4e345fd",
+  "publication": {
+    "explicit_stage_audit_commit_push": true,
+    "independent_remote40_verified": true,
+    "remote_ref": "origin/Q1",
+    "git_mac_files": [
+      {
+        "relative": "AGENTS.md",
+        "bytes": 163402,
+        "sha256": "389c0e8a96d5c2b39ffff56532cef3a3106b7e90ff0f8f8b9dfe45422125f3cd"
+      },
+      {
+        "relative": "reports/README.md",
+        "bytes": 198858,
+        "sha256": "b4639d0f9a6b6948825f767c45d40feacad7100c57663aee219531d0d89a2a2c"
+      },
+      {
+        "relative": "reports/README_CURRENT_STATE.md",
+        "bytes": 152665,
+        "sha256": "742d2f4e16885557ac08114d44a15ec98cc54e7ab60d6c76428d9bec91ee2100"
+      },
+      {
+        "relative": "reports/README_Q1_INTERIM_REVIEW_20261105.md",
+        "bytes": 6316,
+        "sha256": "4f35dd6ab6a2fc21dd919352faa14f0cfd967a4c134179df5b6b29ee6de02e37"
+      },
+      {
+        "relative": "reports/README_Q1_SHARED_TRAINING_20261104.md",
+        "bytes": 37781,
+        "sha256": "eb923e03f667c2e191552bc0db8140f011f233c9b54e7a2401cb25b881d78068"
+      },
+      {
+        "relative": "script/q1_five_stage/interim_review.py",
+        "bytes": 24827,
+        "sha256": "e2bc936ab00942d9096fa1a2e0c8e9766acc64781990df5b5c9cff5d34a20a58"
+      },
+      {
+        "relative": "script/q1_five_stage/test_interim_review.py",
+        "bytes": 6983,
+        "sha256": "0bd902699e3a2c1745a41b47ace4ec626ac2080b20fcbf9e7a31dbcd4ff351b5"
+      },
+      {
+        "relative": "logs/session_records/q1_interim16000_phased_preparation_20261105.json",
+        "bytes": 73613,
+        "sha256": "71514d9632b1c847de266e44062515fc8f61b65a0381472453716b4c8117faa5"
+      }
+    ],
+    "git_mac_payload_bytes": 664445,
+    "git_mac_size_sha_match": true,
+    "server_transfer": {
+      "session": 17093,
+      "attempted_bytes_base64": 318160,
+      "status": "CONNECTION_LOST_COMPLETENESS_UNKNOWN",
+      "all_file_verification": false,
+      "new_entry_server_tests": "NOT_RUN",
+      "new_phased_review": "NOT_STARTED"
+    },
+    "one_bounded_recovery": {
+      "session": 23670,
+      "status": "MAC_TO_HP_HAN_PORT22_TIMED_OUT",
+      "reached_windows": false,
+      "reached_server_authentication": false,
+      "reached_linux": false
+    },
+    "next_required_state": "Windows Tailscale/OpenSSH reachable or user-restored Linux session; do not repeat authentication each heartbeat"
+  },
+  "last_verified_training": {
+    "checked_utc": "2026-11-05T11:51:53.876129+00:00",
+    "iterations_per_robot": 34650,
+    "current_realtime_status": "UNKNOWN_AFTER_OBSERVER_LOSS",
+    "snapshot_record": "q1_interim16000_phased_preparation_20261105.json",
+    "inference_from_disconnection": "NONE"
+  },
+  "intermediate_first_case_comparison": {
+    "baseline": {
+      "clip": "walk_forward_loop_001__A022",
+      "seed": 0,
+      "reference_sha256": "abef8b1d55f5ef58126faf8ce7740da710f751859d9bba542ca413aff86e2b51",
+      "complete": true,
+      "failure_frame": null,
+      "valid_steps": 1031,
+      "attempted_steps": 1031,
+      "reference_steps": 1031,
+      "diagnostics": {
+        "sole_p95_m": [
+          0.0003033156959702417,
+          0.001156105714976154
+        ],
+        "reference_sole_p95_m": [
+          0.014556590067738198,
+          0.014982942003420449
+        ],
+        "lift_events_above_10mm": 9,
+        "alternating_lift_transitions": 4,
+        "loaded_slip_mean_m_s": [
+          0.0617895299117916,
+          0.037106377190342425
+        ],
+        "loaded_samples": [
+          908,
+          903
+        ],
+        "torso_tilt_rms_rad": 0.1049252450466156,
+        "tilt_error_rms_rad": 0.03226444870233536,
+        "upper_joint_rmse_rad": 0.15457113087177277,
+        "upper_joint_peak_to_peak_rad": [
+          0.8688597083091736,
+          0.4188292920589447,
+          0.7401643395423889,
+          0.3772183656692505,
+          0.5533385872840881,
+          0.4646338224411011,
+          0.5948420763015747,
+          0.30835723876953125
+        ],
+        "upper_reference_peak_to_peak_rad": [
+          0.4820678234100342,
+          0.28101104497909546,
+          0.6980814337730408,
+          0.2643924951553345,
+          0.4919337034225464,
+          0.2652398645877838,
+          0.48263978958129883,
+          0.16107451915740967
+        ],
+        "root_xy_final_error_m": 0.003600291209295392,
+        "load_time_note": "last 2ms substep solver force; pose at control end, no continuous-support claim"
+      },
+      "evaluation_randomization": false,
+      "repeated_seed_note": "nominal deterministic rollouts; seeds are not independent randomization trials",
+      "trace": "/opt/data/private/ZHY/data/supermimic_for_q1/PRIMEBOT_Q1_STAGED01_20261103/monitored_launch_v02/formal/delivery/review/final_fixed/walk_forward_loop_001__A022_s0/rollout.npz",
+      "valid_prefix_metrics": {
+        "joint_rmse_rad": 0.13814672827720642,
+        "body_relative_rmse_m": 0.02557395026087761
+      },
+      "full_clip_metrics": {
+        "joint_rmse_rad": 0.13814672827720642,
+        "body_relative_rmse_m": 0.02557395026087761
+      }
+    },
+    "intermediate": {
+      "clip": "walk_forward_loop_001__A022",
+      "seed": 0,
+      "reference_sha256": "abef8b1d55f5ef58126faf8ce7740da710f751859d9bba542ca413aff86e2b51",
+      "native_reference_sha256": "fd56a5adbd72c90ecdd2b8b13c8bb23587344e0699b63c980b7ffa1cbab5cf09",
+      "human_sha256": "44c0926709173a4eccaf49a99125172f6771ede59b711539fada9cc1a4b75cf1",
+      "interface": "motion",
+      "complete": true,
+      "failure_frame": null,
+      "valid_steps": 1031,
+      "attempted_steps": 1031,
+      "reference_steps": 1031,
+      "diagnostics": {
+        "sole_p95_m": [
+          0.007414576087882818,
+          0.008050695949570323
+        ],
+        "reference_sole_p95_m": [
+          0.014556590067738198,
+          0.014982942003420449
+        ],
+        "lift_events_above_10mm": 19,
+        "alternating_lift_transitions": 11,
+        "loaded_slip_mean_m_s": [
+          0.007052412849886528,
+          0.0077794450350359475
+        ],
+        "loaded_samples": [
+          879,
+          878
+        ],
+        "torso_tilt_rms_rad": 0.07197310030460358,
+        "tilt_error_rms_rad": 0.0227899719029665,
+        "upper_joint_rmse_rad": 0.08354101330041885,
+        "upper_joint_peak_to_peak_rad": [
+          0.5410332679748535,
+          0.19676128029823303,
+          0.6774364709854126,
+          0.30300140380859375,
+          0.5076749920845032,
+          0.2867465913295746,
+          0.5329528450965881,
+          0.31987524032592773
+        ],
+        "upper_reference_peak_to_peak_rad": [
+          0.4820678234100342,
+          0.28101104497909546,
+          0.6980814337730408,
+          0.2643924951553345,
+          0.4919337034225464,
+          0.2652398645877838,
+          0.48263978958129883,
+          0.16107451915740967
+        ],
+        "root_xy_final_error_m": 0.2684904634952545,
+        "load_time_note": "last 2ms substep solver force; pose at control end, no continuous-support claim"
+      },
+      "paired_reference": {
+        "frames": 1032,
+        "qpos_tolerance": 0.00002,
+        "body_fk_tolerance": 0.00003,
+        "velocity_note": "native goal keeps its frozen library velocities; physical reset uses the common Primebot velocities"
+      },
+      "evaluation_randomization": false,
+      "repeated_seed_note": "nominal deterministic replays; seeds are not independent randomization trials",
+      "trace": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_TOTALMEM_20261105/review/walk_forward_loop_001__A022_s0/rollout.npz",
+      "plant": "identical Primebot Q1 CPU simulator and termination",
+      "valid_prefix_metrics": {
+        "joint_rmse_rad": 0.0675744116306305,
+        "body_relative_rmse_m": 0.006896508391946554
+      },
+      "full_clip_metrics": {
+        "joint_rmse_rad": 0.0675744116306305,
+        "body_relative_rmse_m": 0.006896508391946554
+      }
+    },
+    "comparison_limits": [
+      "One complete nominal deterministic forward clip only; start and stop pending.",
+      "Shared16000 is intermediate, not final or G1 acceptance.",
+      "Training exposures and optimizer counts differ; this is not an equal-exposure causal comparison."
+    ]
+  },
+  "limitations": {
+    "only_first_clip_physics_complete": true,
+    "existing_video_full_decode_and_mac_delivery": false,
+    "visual_gait_review_complete": false,
+    "upper_timing_csv_delivery_and_lag_review_complete": false,
+    "remaining_start_and_stop_physics": "PENDING",
+    "final_acceptance": false,
+    "g1_quality_assessed": false,
+    "user_accepted_checkpoint": null
+  },
+  "automation": {
+    "id": "q1",
+    "attempt": "update existing heartbeat with actual recovered/intermediate state",
+    "returned_error": "Automation does not exist in the app and could not be updated. It may have been deleted manually by the user.",
+    "view_returned_card_without_state": true,
+    "active_status_verified": false,
+    "replacement_created": false,
+    "other_automations_modified": false
+  },
+  "training_signals_sent": 0,
+  "training_restarted": false,
+  "goal_tools_called": false,
+  "new_agents": 0
+}

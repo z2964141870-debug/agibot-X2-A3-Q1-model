@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-05 19:51:53：[原V04两型各34650轮，桥接观察恢复](README_Q1_INTERIM_REVIEW_20261105.md)。原设备/五PID启动tick/guard锁同、TRAINING/RUNNING/非有限0/OOM0，32,000轮检查点已在。16000双型审计已过；中途前走1031步完整，但媒体解码期间评估24GiB门退出，仅回收自有进程。现将物理与GPU EGL媒体拆顺序阶段，复用前走轨迹和视频/不重复物理、8项本地检查过，待发布继续另外两片。最终验收及采纳null保持。[原始现场与准备](../logs/session_records/q1_interim16000_phased_preparation_20261105.json)。
+
 2026-11-05研究：[四项简报](research/2026-11-05/README.md)/[检查](README_RESEARCH_CHECK_20261105.md)：SONIC-K1真机条件配方、iLQR落脚/接触、视觉动作预见、触觉反射。85请求76成功/八固定文本80958B静态核验；main去重184→193，H001不变。接入11/5 11:44连接恢复记录，本研究任务未独立现场观察或改训练、goal、监督；服务器研究副本待核同步，实际发布见[收据](../data/manifests/research_watch_sync_20261105.json)。
 
 2026-11-05 11:44:12：[Windows桥接观察恢复/原V04各26650轮](README_Q1_SHARED_TRAINING_20261104.md)，原设备/五PID启动tick/guard锁同，TRAINING/RUNNING、非有限0/OOM0，两型16000检查点已在。[独立中途检查](README_Q1_INTERIM_REVIEW_20261105.md)5项本地检查通过，发布后双型CPU权重审计、三固定motion各seed0回放，按用户偏好GPU EGL视频；实际质量待执行。原训练及final门不改、goal不读取重建/采纳null。[恢复实据](../logs/session_records/q1_shared_v04_observer_recovered_20261105.json)，旧UNKNOWN为历史。

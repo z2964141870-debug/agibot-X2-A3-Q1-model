@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-05 19:51:53：[原V04各34650轮，独立中途检查分离GPU媒体](README_Q1_INTERIM_REVIEW_20261105.md)。17093已在原Linux，设备/五PID启动tick/guard锁核同，TRAINING/RUNNING、非有限0/OOM0，ckpt32000已在。16000双型330有限张量审计已过，前走seed0完整1031步/19个>10mm事件/11交替；旧TOTALMEM媒体解码时实总25788698624B触发评估24GiB门，未信号训练/失败根保留。新入口顺序退出物理策略再GPU EGL渲染，复用首片不重复物理、8本地检查过，发布后继续剩余两片和媒体核验，整组质量尚待。原训练30GiB/86度/锁、final门/完整五阶段及采纳null保持，goal不读取重建。[完整证据](../logs/session_records/q1_interim16000_phased_preparation_20261105.json)。
+
 2026-11-05研究：[四项简报](research/2026-11-05/README.md)/[检查](README_RESEARCH_CHECK_20261105.md)：SONIC-K1真机条件配方、iLQR落脚/接触、视觉动作预见、触觉反射。85请求76成功/八固定文本80958B静态核验；main去重184→193，H001不变。接入11/5 11:44连接恢复记录，本研究任务未独立现场观察或改训练、goal、监督；服务器研究副本待核同步，实际发布见[收据](../data/manifests/research_watch_sync_20261105.json)。
 
 2026-11-05 11:44:12：[Windows桥接观察已恢复，原V04各26650轮](README_Q1_SHARED_TRAINING_20261104.md)。28127已在原Linux/唯一根，原设备/五PID启动tick/guard锁同，TRAINING/RUNNING、非有限0/OOM0，16,000轮两型检查点落盘。未停训/重启/热改，goal不读取重建，完整五阶段及采纳null保持。[中途检查独立入口](README_Q1_INTERIM_REVIEW_20261105.md)已完成5项本地边界/回收检查；原CPU共同物理/隔离策略，按用户新偏好GPU EGL渲染，发布后先双型权重审计再三固定motion各一次。当前尚无实际中途质量结果。[完整恢复证据](../logs/session_records/q1_shared_v04_observer_recovered_20261105.json)；旧UNKNOWN为历史。

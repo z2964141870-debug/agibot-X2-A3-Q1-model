@@ -8,8 +8,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from common import FIXED
-from interim_review import GIB, ReviewBudget, fixed_rows, resource_limits
+from common import FIXED, identity
+from interim_review import GIB, ReviewBudget, copy_saved_cases, fixed_rows, resource_limits, validate_saved_case
 from native_review import ready_training
 import runtime_guard
 
@@ -68,6 +68,36 @@ class IntermediateTests(unittest.TestCase):
             audit = dict(status="PASSED", cuda_initialized=False, iteration=iteration)
             with self.subTest(iteration=iteration), self.assertRaises(RuntimeError):
                 ready_training(copy.deepcopy(plan), pipeline, {}, audit, "q1", {})
+
+    def test_saved_case_requires_the_complete_exact_reference(self):
+        directory = Path("/review")
+        item = {key: dict(path="/data/clip.npz", sha256=str(i) * 64)
+                for i, key in enumerate(("q1_primebot", "q1_morph", "human"))}
+        row = dict(clip="clip", seed=0, interface="motion", evaluation_randomization=False,
+                   complete=True, failure_frame=None, valid_steps=10, attempted_steps=10,
+                   reference_steps=10, trace="/review/rollout.npz", reference_sha256="0" * 64,
+                   native_reference_sha256="1" * 64, human_sha256="2" * 64)
+        validate_saved_case(row, item, directory)
+        for key, value in (("human_sha256", "3" * 64), ("seed", 1), ("complete", False),
+                           ("attempted_steps", 9), ("trace", "/another/rollout.npz")):
+            with self.subTest(key=key), self.assertRaises(RuntimeError):
+                validate_saved_case(dict(row, **{key: value}), item, directory)
+
+    def test_saved_trajectory_copy_preserves_source_and_checks_bytes(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            original = root / "original.npz"
+            original.write_bytes(b"existing physical trajectory")
+            before = identity(original)
+            case = dict(case=dict(clip=FIXED[0], trace=str(original)), files=[before],
+                        source_authorization={}, source_guard={})
+            copy_saved_cases([case], root / "new")
+            self.assertEqual(identity(original), before)
+            self.assertEqual((root / "new/review" / (FIXED[0] + "_s0/original.npz")).read_bytes(),
+                             original.read_bytes())
+            original.write_bytes(b"changed")
+            with self.assertRaisesRegex(RuntimeError, "changed before copy"):
+                copy_saved_cases([case], root / "rejected")
 
     def test_resource_abort_reaps_only_its_own_process_group(self):
         class StopBudget:

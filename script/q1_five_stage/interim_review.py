@@ -163,6 +163,74 @@ def reusable_audit(path, plan, iteration):
     return value
 
 
+def validate_saved_case(row, item, directory):
+    name = Path(item["q1_primebot"]["path"]).stem
+    require(row["clip"] == name and row["seed"] == 0 and row["interface"] == "motion"
+            and row["evaluation_randomization"] is False and row["complete"] is True
+            and row["failure_frame"] is None and row["valid_steps"] > 0
+            and row["valid_steps"] == row["attempted_steps"] == row["reference_steps"]
+            and Path(row["trace"]) == directory / "rollout.npz"
+            and row["reference_sha256"] == item["q1_primebot"]["sha256"]
+            and row["native_reference_sha256"] == item["q1_morph"]["sha256"]
+            and row["human_sha256"] == item["human"]["sha256"],
+            "Saved intermediate case has another reference or incomplete provenance")
+
+
+def reusable_cases(path, audit, sources, frozen):
+    if path is None:
+        return []
+    require(path.is_absolute() and path.resolve() == path
+            and path.is_relative_to(ROOT / "data/supermimic_for_q1")
+            and not path.is_relative_to(TRAINING), "Reuse only an independent review root")
+    authorization, guard = read(path / "authorization.json"), read(path / "replay.guard.json")
+    require(authorization["stage"] == "INTERMEDIATE_ONLY"
+            and authorization["original_training_commit"] == COMMIT
+            and valid_commit(authorization["evaluation_commit"])
+            and authorization["plan"] == identity(TRAINING / "e1024_train_plan.json")
+            and authorization["source_inputs"] == sources
+            and read(path / "checkpoint_audit.json") == audit,
+            "Saved review has another checkpoint, plan or frozen source")
+    require(guard["status"] == "FAILED" and guard["cleanup"]["worker_reaped"] is True
+            and guard["cleanup"]["worker_return_code"] == -15
+            and guard["error"] == "RuntimeError: Intermediate review memory reserve reached; stop only this review",
+            "Reuse only the preserved, reaped intermediate memory-limit exit")
+    cases = []
+    for item in fixed_rows(frozen):
+        directory = path / "review" / (Path(item["q1_primebot"]["path"]).stem + "_s0")
+        if not (directory / "result.json").is_file():
+            continue
+        row = read(directory / "result.json")
+        validate_saved_case(row, item, directory)
+        files = [directory / name for name in
+                 ("result.json", "rollout.npz", "foot_posture.csv", "upper_timing.csv")]
+        if (directory / "tracking.mp4").is_file():
+            files += [directory / "tracking.mp4"] + sorted(directory.glob("frame_*.png"))
+        require(all(p.is_file() and not p.is_symlink() and 0 < p.stat().st_size < 8 * 1024**2
+                    for p in files), "Reuse requires bounded regular case files")
+        cases.append(dict(case=row, files=[identity(p) for p in files],
+                          source_authorization=identity(path / "authorization.json"),
+                          source_guard=identity(path / "replay.guard.json")))
+    require(cases, "No completed physical intermediate case to reuse")
+    return cases
+
+
+def copy_saved_cases(cases, output):
+    for saved in cases:
+        row = saved["case"]
+        directory = output / "review" / (row["clip"] + "_s0")
+        directory.mkdir(parents=True, exist_ok=False)
+        for original in saved["files"]:
+            require(identity(original["path"]) == original, "Saved review changed before copy")
+            destination = directory / Path(original["path"]).name
+            shutil.copyfile(original["path"], destination)
+            copied = identity(destination)
+            require((copied["bytes"], copied["sha256"]) == (original["bytes"], original["sha256"]),
+                    "Saved review copy differs")
+        row.update(trace=str(directory / "rollout.npz"), reused_physical_case=saved["files"],
+                   source_authorization=saved["source_authorization"], source_guard=saved["source_guard"])
+        save(directory / "result.json", row)
+
+
 def audit(args, config, plan):
     import torch
     torch.set_num_threads(1)
@@ -189,7 +257,6 @@ def replay(args, config, runtime, plan, frozen):
     from evaluate import load_actor
     from policy_process import PolicyProcess
     from q1_native_review import rollout
-    from video import render_case
     audited = read(args.output / "checkpoint_audit.json")
     require(audited["status"] == "PASSED" and audited["iteration"] == args.iteration,
             "Require the trained checkpoint CPU audit")
@@ -198,7 +265,7 @@ def replay(args, config, runtime, plan, frozen):
     baseline = read(Path(config["primebot_review"]) / "checkpoint_audit.json")["final"]["checkpoint"]
     require(identity(baseline["path"]) == baseline, "Original baseline checkpoint changed")
     output = args.output / "review"
-    output.mkdir(exist_ok=False)
+    output.mkdir(exist_ok=True)
     command = [runtime["morph_python"], "-u", str(HERE / "policy_process.py")]
     for key, value in {"plan": TRAINING / "e1024_train_plan.json", "checkpoint": checkpoint["path"],
             "frozen": config["frozen_data"], "primebot-checkpoint": baseline["path"],
@@ -219,18 +286,21 @@ def replay(args, config, runtime, plan, frozen):
         gc.collect()
         require(settings["action_scale"] == .5, "Common physical action scale changed")
         result.update(policy_runtime=actor.ready, asset_sha256=robot.asset_sha256,
-                      termination=robot.reward_identity())
+                      termination=robot.reward_identity(), render_xml=identity(settings["robot_xml"]))
+        require(Path(settings["robot_xml"]) == Path(runtime["xml"]), "Common rendering XML changed")
         for item in fixed_rows(frozen):
             directory = output / (Path(item["q1_primebot"]["path"]).stem + "_s0")
-            row = rollout(robot, actor, settings, item, "motion", 0, directory)
-            row["video"] = render_case(Path(settings["robot_xml"]), row, directory / "tracking.mp4")
-            save(directory / "result.json", row)
+            if (directory / "result.json").is_file():
+                row = read(directory / "result.json")
+                validate_saved_case(row, item, directory)
+            else:
+                row = rollout(robot, actor, settings, item, "motion", 0, directory)
             result["cases"].append(row)
             save(output / "progress.json", result)
         actor.close()
         require(not torch.cuda.is_initialized(), "Common CPU policy or physics initialized CUDA")
         require(identity(checkpoint["path"]) == checkpoint, "Checkpoint changed during replay")
-        result.update(status="PASSED", complete_cases=sum(row["complete"] for row in result["cases"]),
+        result.update(status="PHYSICS_PASSED", complete_cases=sum(row["complete"] for row in result["cases"]),
             policy_worker_reaped=True, policy_worker_return_code=actor.child.returncode,
             cuda_initialized=False, ended_utc=now())
     except BaseException as error:
@@ -242,15 +312,63 @@ def replay(args, config, runtime, plan, frozen):
         save(output / "result.json", result)
 
 
+def media(args, config, runtime):
+    import mujoco
+    from OpenGL import GL
+    from video import decoded_metadata, render_case
+    output = args.output / "review"
+    result = read(output / "result.json")
+    require(result["status"] == "PHYSICS_PASSED" and result["policy_worker_reaped"] is True
+            and result["policy_worker_return_code"] == 0 and "torch" not in sys.modules,
+            "Render only after both policy and physics runtimes have exited")
+    xml = result["render_xml"]
+    require(identity(xml["path"]) == xml and Path(xml["path"]) == Path(runtime["xml"]),
+            "Saved physical rendering asset changed")
+    context = mujoco.GLContext(1, 1)
+    try:
+        context.make_current()
+        graphics = {key: GL.glGetString(value).decode() for key, value in
+                    (("vendor", GL.GL_VENDOR), ("renderer", GL.GL_RENDERER), ("version", GL.GL_VERSION))}
+        require("NVIDIA" in graphics["vendor"], "Intermediate video requires the requested NVIDIA EGL GPU")
+    finally:
+        context.free()
+    result["graphics"] = graphics
+    for row in result["cases"]:
+        directory = Path(row["trace"]).parent
+        video = directory / "tracking.mp4"
+        if video.exists():
+            hashes = subprocess.check_output([runtime["ffmpeg"], "-nostdin", "-v", "error",
+                "-threads", "1", "-i", str(video), "-map", "0:v:0", "-pix_fmt", "rgb24",
+                "-f", "framehash", "-hash", "sha256", "pipe:1"], text=True)
+            row["video"] = dict(status="PASSED", **identity(video),
+                probe=decoded_metadata(hashes, row["reference_steps"] + 1), original_speed=True,
+                actual_frames_before_hold=row["attempted_steps"] + 1,
+                failure_preserved=True, reused_encoded_video=True)
+        else:
+            row["video"] = render_case(Path(xml["path"]), row, video)
+        frames = [directory / f"frame_{i:05d}.png" for i in
+                  (0, (row["reference_steps"] + 1) // 2, row["reference_steps"])]
+        require(all(p.is_file() for p in frames), "Missing original-speed inspection frames")
+        row["inspection_frames"] = [identity(p) for p in frames]
+        save(directory / "result.json", row)
+        save(output / "progress.json", result)
+    result.update(status="PASSED", media_ended_utc=now(), media_torch_imported=False)
+    save(output / "result.json", result)
+
+
 def execute(args):
     if args.child:
         config, runtime = read(args.config), read(args.runtime_config)
         plan = read(TRAINING / "e1024_train_plan.json")
         if args.child == "audit":
             return audit(args, config, plan)
+        if args.child == "media":
+            return media(args, config, runtime)
         return replay(args, config, runtime, plan, read(config["frozen_data"]))
     config, runtime, plan, frozen, sources = preflight(args)
     reused = reusable_audit(args.reuse_audit, plan, args.iteration) if args.reuse_audit else None
+    require(args.reuse_review is None or reused is not None, "Saved cases require the completed checkpoint audit")
+    cases = reusable_cases(args.reuse_review, reused, sources, frozen)
     args.output.mkdir(exist_ok=False)
     save(args.output / "authorization.json", dict(stage="INTERMEDIATE_ONLY", started_utc=now(),
         evaluation_commit=args.evaluation_commit, original_training_commit=COMMIT,
@@ -261,9 +379,11 @@ def execute(args):
         training_guard_pressure_bytes=30 * GIB, training_guard_gpu_lock_owner=55672,
         concurrent_graphics_requested_by_user=True, training_inputs_modified=False,
         reused_checkpoint_audit=identity(args.reuse_audit) if args.reuse_audit else None,
+        reused_physical_cases=cases, sequential_physics_then_gpu_media=True,
         final_acceptance=False, g1_quality_assessed=False, user_accepted_checkpoint=None))
     if reused is not None:
         save(args.output / "checkpoint_audit.json", reused)
+    copy_saved_cases(cases, args.output)
     env = dict(os.environ, CUDA_VISIBLE_DEVICES="", OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1",
         MKL_NUM_THREADS="1", MUJOCO_GL="egl", PYOPENGL_PLATFORM="egl", EGL_PLATFORM="surfaceless",
         Q1_REVIEW_FFMPEG=runtime["ffmpeg"],
@@ -283,7 +403,8 @@ def execute(args):
     previous = dict(os.environ)
     try:
         os.environ.update(env)
-        for name, python in (("audit", runtime["morph_python"]), ("replay", runtime["primebot_python"])):
+        for name, python in (("audit", runtime["morph_python"]), ("replay", runtime["primebot_python"]),
+                             ("media", runtime["primebot_python"])):
             if name == "audit" and reused is not None:
                 continue
             command = [python, "-u", str(Path(__file__).resolve()), "--child", name,
@@ -312,5 +433,6 @@ if __name__ == "__main__":
     parser.add_argument("--iteration", type=int, required=True)
     parser.add_argument("--evaluation-commit", required=True)
     parser.add_argument("--reuse-audit", type=Path)
-    parser.add_argument("--child", choices=("audit", "replay"))
+    parser.add_argument("--reuse-review", type=Path)
+    parser.add_argument("--child", choices=("audit", "replay", "media"))
     execute(parser.parse_args())

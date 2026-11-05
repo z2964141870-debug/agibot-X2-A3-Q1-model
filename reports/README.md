@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06 03:36：[低延迟单次后台campaign准备完成](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)。串行masked/保持/阻尼/常速度，共33新human例和视频；失败不续派、原运行时/H10等价及资源门保持。完整40项38过2待服务器；0新服务器物理训练CUDA，goal active最低10:00，发布/部署以新收据为准。[审计](../logs/session_records/q1_preview_campaign_preparation_20261106.json)。
+
 2026-11-06 03:24：[低延迟因果尾部本地验证及发布完成](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)。默认masked15例，预测每方法仅新H4/H5六例并复用已完成masked H10/同缓冲；36检查34过2原运行时待。1e39412独立远端/Mac16份662375B核同，177项清单及43141B Linux包已准备。一次Windows认证后仍Broken pipe/未到Linux，服务器未下发，0新物理训练CUDA。goal active最低今日10:00，原V04/final保持。[准备审计](../logs/session_records/q1_causal_tail_controller_preparation_20261106.json)、[发布收据](../logs/session_records/q1_causal_tail_controller_publication_20261106.json)。
 
 2026-11-06 01:33：[同权重human短预览controller已准备](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)。5新增本地检查通过，先原运行时/真实H10全片动作等价再15独立回放和顺序GPU视频；每阶段发布代码/配置/审计SHA和原资源门，原训练/final保持。尚无新服务器质量结果；一次Windows密码提示后Broken pipe，未取得shell/Linux、实时UNKNOWN。长期goal保持active/最低10:00，继续发布清单与可独立完成工作。[阶段证据](../logs/session_records/q1_human_preview_controller_preparation_20261106.json)。

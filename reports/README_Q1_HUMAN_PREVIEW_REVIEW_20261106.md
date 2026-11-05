@@ -1,6 +1,6 @@
 # 同权重human短预览闭环对照
 
-2026-11-06 03:12北京时间：独立入口已实现，因果尾部已接入 worker/controller；完整本地 teleop 检查共36项，34项通过、2项 pinned-runtime 检查因本机缺服务器资产而跳过。尚未服务器原运行时验证、物理回放或新GPU渲染；本页是可执行准备，不是低延迟效果结果。长期goal实读active，最低执行至今日10:00，训练/必要验证可继续延长。
+2026-11-06 03:36北京时间：独立入口和后台串联入口已实现；完整本地 teleop 检查共40项，38项通过、2项 pinned-runtime 检查因本机缺服务器资产而跳过。尚未服务器原运行时验证、物理回放或新GPU渲染；本页是可执行准备，不是低延迟效果结果。长期goal实读active，最低执行至今日10:00，训练/必要验证可继续延长。
 
 ## 对照定义
 
@@ -68,3 +68,13 @@ python3 script/supermimic_teleop/preview_review.py \
 最近一次原Windows桥接于01:33到达22端口密码提示，交互提交后Broken pipe退出255，未取得Windows shell或Linux；认证未写入文件。03:12本次恢复未新增认证尝试，实时训练仍UNKNOWN，最后健康快照是11月5日23:34各38600轮，不能用旧数据作新准入。因果尾部代码尚未下发或执行真实回放，原训练未停或重启。继续发布/清单和后续预测数据准备，待链路恢复后先全只读现场再执行。[controller原审计](../logs/session_records/q1_human_preview_controller_preparation_20261106.json)、[预测尾部准备审计](../logs/session_records/q1_causal_tail_controller_preparation_20261106.json)。
 
 03:24发布：`1e394126bba877e75f6f3059ffd3c06a8256db15` 已显式推送origin Q1并独立40位远端核同，16份662375B Git/权威工作树/Mac主镜像大小SHA通过。已生成177项代码清单32927B/SHA `b512bc7655f515de13b432041f77a8b91b754bef8ce9ac2742aa412fc7841c71`；Linux部署包43141B/SHA `db8b2ebb7504627c0da28fd9fd2f4bf70af41a51ba28097c2fb6f9e222059f64`，16普通文件且无AppleDouble/路径逃逸。TCP22探测可达后作一次有界原生登录，Windows密码提示后仍Broken pipe255，未取得Windows/Linux shell；本次不重复认证，训练实时UNKNOWN，清单和包尚未上传。见[发布收据](../logs/session_records/q1_causal_tail_controller_publication_20261106.json)。
+
+## 单次后台串联
+
+`preview_campaign.py` 在一个控制进程内依次执行 masked、hold、damped_cv、cv；每个study仍先运行原native检查和真实H10动作等价，内部worker由原guard负责回收。33个新human物理回放和33原速视频；预测复用masked H10/同缓冲，不重复原motion结果。支持 `--baseline-output` 复用已完整完成masked，此时只新增18例。任何study失败、控制输入变化、信号或资源退出均阻止后续方法；不自动恢复失败根或重复提交。
+
+campaign总墙时最多7200秒、合计输出3GiB，每个study仍最多1800秒，22GiB准入/24GiB退出、GPU18GiB/80度和100GiB磁盘余量不变。每个worker前及运行中检查全campaign时间/磁盘和原资源门。外层不再包一个会遗留独立worker会话的额外进程守卫，study控制器在同一进程串行调用，等待原worker完整回收后才进入下一study。
+
+新增4项检查覆盖默认顺序/33例、已完成基线不重跑/18例、失败或配置变化不再下发、总时间与总输出超线先拒绝。完整40项检查38过2原运行时待，0.143秒；语法、CLI帮助和diff检查通过。这些编排检查仍是夹具；服务器实际运行/后台启动、完整性与质量均未执行。[串联准备审计](../logs/session_records/q1_preview_campaign_preparation_20261106.json)。
+
+串联入口采用与 `preview_review.py` 相同的config/runtime/audit/manifest/commit参数，`--output` 指向全新campaign根；默认方法顺序已固定，可用 `--tail-methods` 选取不重复子集。正式下发使用发布后新生成的代码清单和部署包，不能用早于campaign源码的清单。

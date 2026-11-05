@@ -29,8 +29,8 @@
 | 阶段 | 状态 | 下一项可核验产物 |
 | --- | --- | --- |
 | 流式时序与因果合同 | 本地实现及12检查过；非上游因果性认证 | [时序/可见性/丢包/过期与显式片尾](README_Q1_TELEOP_STREAM_CONTRACT_20261106.md) |
-| 原生human短预览 | [独立controller本地验证过](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)；服务器全门待 | 同权重、同物理、同片seed0的H10/H5/H4/H2/H1独立结果 |
-| 短缓冲加预测 | controller本地可执行；完整teleop共36项、34通过2原运行时待验 | 每方法只新增H4/H5六例，复用masked H10及同缓冲基线，真实对照待服务器门 |
+| 原生human短预览 | [独立controller和串联入口本地验证过](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)；服务器全门待 | 同权重、同物理、同片seed0的H10/H5/H4/H2/H1独立结果 |
+| 短缓冲加预测 | controller/campaign本地可执行；完整teleop共40项、38通过2原运行时待验 | 每方法只新增H4/H5六例，复用masked H10及同缓冲基线，真实对照待服务器门 |
 | 小型因果预测训练 | 条件执行 | 完整留出片、明确预算、可复现训练与未触碰测试集 |
 | 因果学生/执行前馈 | 按失败证据选择 | 新版本接口/动力学与独立训练验证，不能直接改当前运行策略 |
 | 综合判定 | 待真实对照 | 延迟-跟踪-自然性、原速媒体、失败样例和可行性边界 |
@@ -68,3 +68,5 @@
 03:12因果尾部已接入独立预览 worker/controller并完成本地验证：默认 masked 仍为15例；`hold`、`cv`、`damped_cv` 在独立 `tail_<method>` 根仅新增H5/H4六例，要求已完成 `--baseline-output`，复用masked H10及同缓冲轨迹。保留10个20ms槽并逐槽记录实测/预测来源。36项检查中34通过、2项 pinned-runtime 因本机缺服务器资产跳过；未执行新物理、训练或CUDA。预测尾部没有接触/骨骼约束，不能据此宣称自然遥操改善；服务器桥接恢复后先清单、运行时、真实H10动作等价和资源门。本次实读原goal active，不重建或结算，最低执行时间仍10:00。[因果尾部实现与测试记录](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)、[审计](../logs/session_records/q1_causal_tail_controller_preparation_20261106.json)。
 
 03:24代码1e39412独立40位远端及16份662375B Mac镜像核同，177项代码清单和43141B Linux安全部署包已准备。TCP22可达后一次原生登录仍在Windows认证后Broken pipe，未达Linux；实时UNKNOWN/服务器未下发，不循环认证。后续推进不依赖服务器的有效实现和数据分析，恢复后才做原身份/资源及真实对照。[发布收据](../logs/session_records/q1_causal_tail_controller_publication_20261106.json)。
+
+03:36新增可单次后台下发的campaign，在同一控制进程内串行masked/hold/damped_cv/cv，33新human例/33视频；每个study原运行时、真实H10动作等价和资源门保留，失败/输入变化/信号不再派发后续。总7200秒/3GiB，各study1800秒；不另包会遗留独立worker会话的嵌套守卫。4项新增检查，完整40项38过2原运行时待，0.143秒；0新服务器物理训练CUDA/未下发。最近桥接故障未重复认证。下一项发布串联包及核对已有两段真人动捕小包的时间/坐标/使用合同。[串联审计](../logs/session_records/q1_preview_campaign_preparation_20261106.json)。

@@ -29,6 +29,7 @@ HORIZONS = (10, 5, 4, 2, 1)
 CODE_ROOTS = ("script/supermimic_teleop/", "script/q1_five_stage/", "script/primebot_q1/",
               "script/primebot_q1_review/", "script/morphmimic_q1/", "script/supermimic_q1_sources/")
 REQUIRED_CODE = ("script/supermimic_teleop/preview_review.py",
+                 "script/supermimic_teleop/preview_campaign.py",
                  "script/supermimic_teleop/preview_worker.py",
                  "script/supermimic_teleop/preview_policy.py",
                  "script/supermimic_teleop/causal_tail.py",
@@ -415,7 +416,7 @@ def environment(runtime):
         GIT_PYTHON_GIT_EXECUTABLE=str(ROOT / "data/environments/morphmimic_git_tools/usr/bin/git"))
 
 
-def execute(args):
+def execute(args, *, budget_factory=None):
     if args.child:
         return child(args)
     args.iteration = 16000
@@ -451,7 +452,8 @@ def execute(args):
         memory_exit_bytes=24*GIB, gpu_exit_mib=18*1024, gpu_exit_temperature_c=80,
         training_gpu_lock_owner=55672, training_signals_sent=0, acquire_training_gpu_lock=False,
         final_acceptance=False, user_accepted_checkpoint=None))
-    budget, requested = ReviewBudget(config, args.output), False
+    budget = (budget_factory or ReviewBudget)(config, args.output)
+    requested = False
 
     def stop(signum, frame):
         nonlocal requested

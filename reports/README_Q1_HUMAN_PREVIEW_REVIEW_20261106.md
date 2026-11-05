@@ -66,3 +66,5 @@ python3 script/supermimic_teleop/preview_review.py \
 ```
 
 最近一次原Windows桥接于01:33到达22端口密码提示，交互提交后Broken pipe退出255，未取得Windows shell或Linux；认证未写入文件。03:12本次恢复未新增认证尝试，实时训练仍UNKNOWN，最后健康快照是11月5日23:34各38600轮，不能用旧数据作新准入。因果尾部代码尚未下发或执行真实回放，原训练未停或重启。继续发布/清单和后续预测数据准备，待链路恢复后先全只读现场再执行。[controller原审计](../logs/session_records/q1_human_preview_controller_preparation_20261106.json)、[预测尾部准备审计](../logs/session_records/q1_causal_tail_controller_preparation_20261106.json)。
+
+03:24发布：`1e394126bba877e75f6f3059ffd3c06a8256db15` 已显式推送origin Q1并独立40位远端核同，16份662375B Git/权威工作树/Mac主镜像大小SHA通过。已生成177项代码清单32927B/SHA `b512bc7655f515de13b432041f77a8b91b754bef8ce9ac2742aa412fc7841c71`；Linux部署包43141B/SHA `db8b2ebb7504627c0da28fd9fd2f4bf70af41a51ba28097c2fb6f9e222059f64`，16普通文件且无AppleDouble/路径逃逸。TCP22探测可达后作一次有界原生登录，Windows密码提示后仍Broken pipe255，未取得Windows/Linux shell；本次不重复认证，训练实时UNKNOWN，清单和包尚未上传。见[发布收据](../logs/session_records/q1_causal_tail_controller_publication_20261106.json)。

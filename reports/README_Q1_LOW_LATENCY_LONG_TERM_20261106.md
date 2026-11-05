@@ -66,3 +66,5 @@
 01:33新增独立33阶段controller和Git代码清单工具，5本地检查通过；先原运行时检查及真实权重全片H10动作等价，再15个回放和各自GPU媒体，最后四组比较。未实际执行新物理/训练/CUDA。本轮Windows桥接到认证提示后Broken pipe，未取得shell/Linux，保持实时UNKNOWN而非训练失败；新任务尚未下发。下一步发布并生成真实清单，链路恢复后完整只读现场与原资源门先行。[入口和审计](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)。
 
 03:12因果尾部已接入独立预览 worker/controller并完成本地验证：默认 masked 仍为15例；`hold`、`cv`、`damped_cv` 在独立 `tail_<method>` 根仅新增H5/H4六例，要求已完成 `--baseline-output`，复用masked H10及同缓冲轨迹。保留10个20ms槽并逐槽记录实测/预测来源。36项检查中34通过、2项 pinned-runtime 因本机缺服务器资产跳过；未执行新物理、训练或CUDA。预测尾部没有接触/骨骼约束，不能据此宣称自然遥操改善；服务器桥接恢复后先清单、运行时、真实H10动作等价和资源门。本次实读原goal active，不重建或结算，最低执行时间仍10:00。[因果尾部实现与测试记录](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)、[审计](../logs/session_records/q1_causal_tail_controller_preparation_20261106.json)。
+
+03:24代码1e39412独立40位远端及16份662375B Mac镜像核同，177项代码清单和43141B Linux安全部署包已准备。TCP22可达后一次原生登录仍在Windows认证后Broken pipe，未达Linux；实时UNKNOWN/服务器未下发，不循环认证。后续推进不依赖服务器的有效实现和数据分析，恢复后才做原身份/资源及真实对照。[发布收据](../logs/session_records/q1_causal_tail_controller_publication_20261106.json)。

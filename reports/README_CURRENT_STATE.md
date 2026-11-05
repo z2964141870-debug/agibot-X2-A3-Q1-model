@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-11-06 03:12：[低延迟因果尾部已接入预览 controller并完成本地验证](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)。`masked` 保持15例；`hold`、`cv`、`damped_cv` 每方法仅新增H4/H5六例，要求已完成 `--baseline-output` 并复用masked H10及同缓冲物理。逐槽记录实测/预测来源和显式片尾，片尾恰在缓冲边界也禁止越界外推。teleop 共36检查，34通过、2项 pinned-runtime 因本机缺服务器资产跳过；尚无服务器真实运行时、物理或GPU媒体结果。原goal实读active，最低持续至北京时间今日10:00，必要训练/验证可继续；V04/final门保持。最近01:33桥接Broken pipe后实时UNKNOWN，本次未新增认证；新发布和服务器同步以收据为准。[审计](../logs/session_records/q1_causal_tail_controller_preparation_20261106.json)。
+2026-11-06 03:24：[低延迟因果尾部本地验证及发布完成](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)。`masked` 保持15例；`hold`、`cv`、`damped_cv` 每方法仅新增H4/H5六例，要求已完成 `--baseline-output` 并复用masked H10及同缓冲物理。逐槽记录实测/预测来源和显式片尾，片尾恰在缓冲边界也禁止越界外推。teleop 共36检查，34通过、2项 pinned-runtime 待服务器，0新物理训练CUDA。1e39412独立远端/Mac16份662375B核同，177项清单和43141B包已准备；TCP22可达后一次Windows认证仍Broken pipe255/未到Linux，实时UNKNOWN/未上传下发。原goal实读active最低今日10:00，V04/final/锁保持；后续独立有效工作及桥接恢复后的真实门。[准备审计](../logs/session_records/q1_causal_tail_controller_preparation_20261106.json)、[发布收据](../logs/session_records/q1_causal_tail_controller_publication_20261106.json)。
 
 2026-11-06 01:33：[低延迟独立33阶段controller与发布清单工具本地完成](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)。5新增检查过，原运行时/真实16000全片H10等价和15新回放/GPU视频尚未执行；0新物理optimizerCUDA，原训练/final门/锁保持。新增每阶段代码/控制配置身份核，22准入24GiB退出/18GiB80度/1800秒3GiB/100GiB余量。一次Windows22密码提示后Broken pipe255，未取得Windows shell/Linux，当前训练仍UNKNOWN/最后11月5日23:34各38600仅历史；不循环重试，不新agent或改其他任务。goal继续active最低10:00，下一项发布真实Git清单，桥接恢复后完整只读现场再准入执行。[证据](../logs/session_records/q1_human_preview_controller_preparation_20261106.json)。
 

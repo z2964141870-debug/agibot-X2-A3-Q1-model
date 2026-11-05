@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06 03:24因果尾部1e394126bba877e75f6f3059ffd3c06a8256db15显式push/独立40位远端、16份662375B Git-Mac大小SHA同；177项代码清单32927B及Linux包43141B已准备，无AppleDouble/路径逃逸。TCP22可达后一次有界原生登录仍在Windows密码提示后Broken pipe255，未Windows/Linux shell；原训练实时UNKNOWN/未上传下发，不循环认证或换入口。goal active最低今日10:00，继续独立有效工作，恢复后原身份/全监督及资源门先行；原训练/final/锁不改/无agent/采纳null。入口Q1_HUMAN_PREVIEW_REVIEW及q1_causal_tail_controller_publication。
+
 - 2026-11-06 03:12低延迟goal实读active/最低今日10:00，不重建或结算。因果尾部hold/CV/damped接入独立worker/controller，保留十20ms槽及实测/生成来源、SO(3)、速度上限和显式片尾；masked仍15例，预测每方法强制复用已完成masked H10/H4/H5，仅新H4/H5六例并分别对H10/同缓冲比较。36本地检查34过2原运行时待服务器/0新物理optimizerCUDA，骨骼接触及自然性未验。最近01:33Windows认证后Broken pipe未取得shell/Linux，当前实时UNKNOWN/最后11月5日23:34各38600仅历史；本次未新认证，不循环或取存储凭据。22准入24GiB退出/18GiB80度1800秒3GiB和原V04/final/55672锁保持，无agent/其他自动任务变更/采纳null。发布独立40位远端与Mac、部署清单和服务器门以后续收据为准；入口Q1_HUMAN_PREVIEW_REVIEW及q1_causal_tail_controller_preparation。
 
 - 2026-11-06 01:33低延迟goal仍active/最低10:00，q1十分钟保持。新增独立human/H10-H5-H4-H2-H1 controller及Git代码清单工具，5本地检查过/33阶段编排仅夹具；真实原运行时和16000全片H10动作等价、15回放与GPU视频尚未执行。新入口每阶段验代码/配置/审计SHA，复用原双型16000审计；全局1800秒/3GiB输出/22准入24GiB退出/18GiB80度/100GiB余量，原训练/55672锁及final门保持，不争锁不停训。本轮一次桥接到Windows22密码提示、交互后Broken pipe255，未Windows shell或Linux；实时UNKNOWN/最后11月5日23:34各38600仅历史，不循环认证/换入口或存储凭证。下一项发布/真实清单，恢复后原设备/五PID-starttick/guard锁和全监督先于执行；未新物理optimizerCUDA/agent或改其他任务/采纳null。入口Q1_HUMAN_PREVIEW_REVIEW及controller_preparation；原流式发布b4ee3f5/收据f5a83e9独立远端Mac已齐，新发布以收据为准。

@@ -27,15 +27,16 @@
   "stages": [
     {
       "id": "stream_contract",
-      "status": "NEXT",
-      "work": "Implement captured/arrived/control timestamps, visible-prefix selection, stale/drop behavior and no-future-leak checks. Keep target time offsets and source identity explicit."
+      "status": "LOCAL_IMPLEMENTATION_AND_12_CHECKS_PASSED",
+      "evidence": "logs/session_records/q1_teleop_stream_contract_20261106.json",
+      "work": "Implemented timestamped immutable SMPL24 poses, bounded arrival timeline, preview cutoff, continuous prefix, stale/drop behavior and explicit offline clip end. Upstream preprocessing causality remains unverified."
     },
     {
       "id": "masked_horizon_replays",
-      "status": "PENDING_STREAM_AND_RESOURCE_GATES",
+      "status": "NEXT_CONTROLLER_AND_PINNED_RUNTIME_RESOURCE_GATES",
       "interface": "human",
       "horizons": [10, 5, 4, 2, 1],
-      "work": "New independent output root; same checkpoint, plant, clips and seed. Keep original motion final gate unchanged. Separate actual buffered frames from oracle future."
+      "work": "Independent preview policy and CPU RPC worker implemented. Next build guarded controller; pinned-runtime H10 equivalence, hidden pose/heading invariance and actual resource gates precede new same-checkpoint/plant/clip/seed replays. Original final gate unchanged."
     },
     {
       "id": "predictive_tail_replays",

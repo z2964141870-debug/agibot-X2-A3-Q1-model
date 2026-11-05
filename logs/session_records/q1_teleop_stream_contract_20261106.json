@@ -1,0 +1,117 @@
+{
+  "stage": "Q1_TELEOP_STREAM_CONTRACT_AND_PREVIEW_ADAPTER_LOCAL",
+  "checked_local": "2026-11-06T00:58:10+08:00",
+  "last_validated_local": "2026-11-06T01:05:50+08:00",
+  "goal_status_last_read": "active",
+  "minimum_execution_until": "2026-11-06T10:00:00+08:00",
+  "source_interface": "smpl24_world_m_wxyz",
+  "target_offsets_ns": [
+    20000000,
+    40000000,
+    60000000,
+    80000000,
+    100000000,
+    120000000,
+    140000000,
+    160000000,
+    180000000,
+    200000000
+  ],
+  "requested_preview_frames": [
+    10,
+    5,
+    4,
+    2,
+    1
+  ],
+  "receiver_contract": {
+    "one_identified_clock_required": true,
+    "automatic_clock_synchronization": false,
+    "timestamps": [
+      "capture",
+      "last_preprocessing_dependency_if_known",
+      "ready",
+      "arrival",
+      "control"
+    ],
+    "future_arrival_preload_or_receiver_rewind": "REJECT",
+    "out_of_order_capture": "ACCEPT_WITH_ARRIVAL_ORDER",
+    "duplicate_sequence_same_sample": "IGNORE",
+    "conflicting_sequence_or_capture": "REJECT",
+    "default_capacity_frames": 256,
+    "maximum_capacity_frames": 4096,
+    "missing_first_target_or_stale_prefix": "UNAVAILABLE_CALLER_FALLBACK_REQUIRED",
+    "later_gap": "ONLY_CONTINUOUS_PREFIX_ENABLED",
+    "unobserved_tail": "LAST_VISIBLE_POSE_PLACEHOLDER_MASKED_FROM_POSE_AND_HEADING",
+    "offline_terminal_hold": "EXPLICIT_AFTER_LAST_FRAME_ARRIVAL_AND_NEVER_MARKED_MEASURED",
+    "upstream_offline_preprocessing_causality": "UNVERIFIED_DEPENDENCY_NULL"
+  },
+  "validation": {
+    "stream_contract_tests_passed": 10,
+    "preview_adapter_contract_tests_passed": 2,
+    "randomized_arrival_scenarios_within_one_test": 40,
+    "runtime_equivalence_tests_skipped": 1,
+    "runtime_skip_reason": "Mac system Python has no Torch or pinned native Q1 assets; use original server runtime",
+    "runtime_test_written": "Native H10 equality, masked future pose and heading invariance at H10/H5/H4/H2/H1, frozen normalizers/RNG, absent-joint masking, no CUDA",
+    "compiled_execution_modules": 3,
+    "physics_steps": 0,
+    "optimizer_updates": 0,
+    "cuda_jobs": 0,
+    "offline_96_case_benchmark_repeated": false,
+    "old_interim_physics_or_media_repeated": false,
+    "original_training_inputs_modified": false,
+    "final_cli_modified": false
+  },
+  "code": [
+    {
+      "path": "script/supermimic_teleop/stream_contract.py",
+      "bytes": 13120,
+      "sha256": "8e0a9f6aa321c529b2e960330acdfd15a8a0cc9329245a6a64913dfa8e294551"
+    },
+    {
+      "path": "script/supermimic_teleop/test_stream_contract.py",
+      "bytes": 10124,
+      "sha256": "270d39625711e9f69c3d9a8d9eea4cd50de3fab5eeb2932ab7d42a0e351ac333"
+    },
+    {
+      "path": "script/supermimic_teleop/preview_policy.py",
+      "bytes": 3701,
+      "sha256": "68a1d6eeb0501924d90db80701f22c9d54aded044d6e4afa47ed244ea6bc7957"
+    },
+    {
+      "path": "script/supermimic_teleop/preview_worker.py",
+      "bytes": 6294,
+      "sha256": "0ade07888ef288b9e277bf27da52116a9d8aadb4a3195abd82fbcf081e203e7c"
+    },
+    {
+      "path": "script/supermimic_teleop/test_preview_policy.py",
+      "bytes": 1877,
+      "sha256": "28720d84a091f253086e8aba42e7d7cd48d10463b4b5ff0a3f6ba80cdb233871"
+    },
+    {
+      "path": "script/supermimic_teleop/test_preview_policy_runtime.py",
+      "bytes": 3863,
+      "sha256": "cb5664548bfd9d03e676e49ea77d2cf69ffb870b52fc80e2bc68766c753e2b60"
+    }
+  ],
+  "bridge_observation": {
+    "attempts_this_stage": 1,
+    "hop": "Mac_to_Windows_100.65.183.91_port22",
+    "result": "TIMEOUT_EXIT255_BEFORE_AUTHENTICATION",
+    "linux_reached": false,
+    "alternate_entry_used": false,
+    "authentication_material_stored": false,
+    "current_training_status": "UNKNOWN",
+    "last_successful_training_observation": "2026-11-05T23:34:47+08:00",
+    "last_successful_iterations_per_robot": 38600
+  },
+  "next_work": "New independent guarded human H10/H5/H4/H2/H1 three-clip controller; pinned-runtime equivalence and actual device/training/resource gates before physical rollout. Reuse completed16000 save audit, not original motion results as human baseline.",
+  "limitations": [
+    "Timestamp visibility does not establish upstream estimator or retargeting causality.",
+    "Replay schedule is not live human capture or measured robot end-to-end latency.",
+    "Preview worker has not run in the original native policy runtime yet.",
+    "No new human preview policy quality or robot naturalness comparison has run."
+  ],
+  "whole_goal_complete": false,
+  "user_accepted_checkpoint": null
+}

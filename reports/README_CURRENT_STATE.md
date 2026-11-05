@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06 00:58：[低延迟流式合同与独立human短预览策略/RPC本地完成](README_Q1_TELEOP_STREAM_CONTRACT_20261106.md)。12检查过、1原运行时H10等价/隐藏pose-heading检查待服务器，3模块语法过；0新物理optimizerCUDA、未重复96组或旧motion回放。可见性、连续前缀、乱序丢包、过期和显式offline片尾受审，预处理因果性仍UNKNOWN，端到端延迟null。下一项独立有界三片H10/H5/H4/H2/H1 controller，原运行时/真实身份资源门先于执行；原训练/final门保持。goal仍active/最早10:00，q1保持；目标184a390独立远端/Mac6份549945B核同。一次原Windows22桥接超时255、未到认证/Linux，实时训练UNKNOWN/不循环重试；服务器同步与旧媒体补传待。[阶段证据](../logs/session_records/q1_teleop_stream_contract_20261106.json)。
+
 2026-11-06 00:40：[用户明确创建低延迟遥操长期目标](README_Q1_LOW_LATENCY_LONG_TERM_20261106.md)。本轮goal先null后create/复读active，不设token预算；最早11月6日10:00北京时间才可考虑结算，训练/必要验证继续则延长。新q1同线程每10分钟ACTIVE已应用和保存字段独立核同；yuanqi/头环任务未改，不新agent。下一项流式capture/arrival/control与可见性/丢包/未来泄漏合同，然后同human/H10至H1、短缓冲预测和有条件训练；原V04及final全门不热改。旧不新goal/已清除是历史，新授权覆盖。连接尚未恢复、原训练11月5日23:34健康仅历史，媒体只补传不重跑。[执行清单](../script/supermimic_teleop/long_term_plan_20261106.json)。
 
 2026-11-06：[低延迟遥操探索已完成首轮](README_Q1_LOW_LATENCY_SUPERMIMIC_20261106.md)。当前人体接口虽支持h=1..10，但真实kp_masking=full分支始终h10，preview_mix无效；直接缩h为未验证分布变化。3片8参考关节/1539起点/96配置、4项检查及原CSV前后SHA同，0物理/optimizer/CUDA；短缓冲预测比无条件200ms外推更值得试，停走/噪声需回退与置信度，尚无闭环自然性或真实端到端延迟。下一步准备同human接口H10/H5/H4/H2/H1及H4尾部预测独立对照，后续因果学生、执行速度前馈；不热改V04/原final门。原训练最新仅11月5日23:34各38600轮健康历史；媒体Mac22%残包、目视/上肢时序及服务器新记录镜像待桥接，不重发任务或声称11月6日实时健康。goal/agent/自动任务未操作，采纳null。[证据](../logs/session_records/q1_low_latency_supermimic_exploration_20261106.json)。

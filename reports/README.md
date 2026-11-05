@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06 00:58：[低延迟流式输入与独立human短预览接口已实现](README_Q1_TELEOP_STREAM_CONTRACT_20261106.md)。时戳/到达可见性、连续前缀、丢包过期及显式离线片尾12项本地检查通过，原生H10等价与隐藏pose/heading检查已写/待服务器；0新物理训练CUDA，不当端到端延迟或自然性结论。下一项独立有界H10/H5/H4/H2/H1三片controller和原运行时/资源门，原训练与final门保持。长期goal仍active、最早10:00；目标提交184a390已独立远端/Mac6文件核同，本轮Windows22桥接超时、服务器同步待。[阶段实据](../logs/session_records/q1_teleop_stream_contract_20261106.json)。
+
 2026-11-06：[低延迟遥操长期目标已创建并持续执行](README_Q1_LOW_LATENCY_LONG_TERM_20261106.md)。用户新授权至少执行至北京时间11月6日10:00，训练/必要验证未结束则继续；新goal实读active，新同聊天q1每10分钟ACTIVE及保存字段核同，其他任务不改。沿首轮源码/96组结果推进流式因果合同、同human接口短预览、预测尾部和必要有界训练，保持V04/原final及完整五阶段；不因到时或离线一阶段结束结算。[机器清单](../script/supermimic_teleop/long_term_plan_20261106.json)。
 
 2026-11-06：[SuperMimic低延迟遥操首轮探索](README_Q1_LOW_LATENCY_SUPERMIMIC_20261106.md)。核准+1..+10/20-200ms目标、人体h=1..10掩码，以及本次kp_masking=full使preview_mix不生效的实际分支；并未训练短预览。5份一手资料与96组已保存上肢参考离线外推比较完成/4项检查通过，无新物理或训练。80-100ms真实预览加阻尼预测值得独立对照；直接200ms差分外推对噪声敏感，长期研究因果学生和执行端速度前馈。只作候选方案，未测Q1端到端延迟或自然性，原训练/final全门保持。[完整探索实据](../logs/session_records/q1_low_latency_supermimic_exploration_20261106.json)。

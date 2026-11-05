@@ -1,0 +1,118 @@
+{
+  "stage": "Q1_INTERIM16000_LEAN_BACKGROUND_DISPATCH_CONFIRMED",
+  "receipt_observed_utc": "2026-11-05T13:36:48Z",
+  "scope": "Requested one intermediate Q1 motion review, not final acceptance or G1 quality",
+  "evaluation_commit": "389ea8f18bb227260c69bbc698c6af8518179fc5",
+  "independent_remote40_previously_verified": true,
+  "server_startup_receipt": {
+    "receipt": "/opt/data/private/ZHY/logs/session_records/q1_interim16000_lean_dispatch_20261105.json",
+    "controller_pid": 185291,
+    "controller_returncode": null,
+    "output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105",
+    "tests_returncode": 0,
+    "source_sha256": "eeece2d484f179f9aec020b05a8a637e7e0c191ec184e0a66b8c891b77f52b61",
+    "iterations": {
+      "g1": 36350,
+      "q1": 36350
+    },
+    "memory": {
+      "total_bytes": 22193610752,
+      "container_limit_bytes": 34292629504,
+      "immediate_headroom_bytes": 12099018752,
+      "guard_headroom_bytes": 10018643968,
+      "total_cache_bytes": 10909782016,
+      "total_rss_bytes": 10008924160,
+      "total_shmem_bytes": 32714752,
+      "total_dirty_bytes": 2973696,
+      "total_writeback_bytes": 2838528,
+      "oom_kill": 0,
+      "under_oom": 0
+    },
+    "gpu": {
+      "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      "used_mib": 16177,
+      "temperature_c": 53,
+      "recovery": "None"
+    }
+  },
+  "deployment": {
+    "single_command_sync_check_and_launch": true,
+    "published_delta_from": "d67de66d31c5e43a969616eb0fdb568de4e345fd",
+    "published_delta_to": "389ea8f18bb227260c69bbc698c6af8518179fc5",
+    "accepted_entry_sha256_before_sync": [
+      "e2bc936ab00942d9096fa1a2e0c8e9766acc64781990df5b5c9cff5d34a20a58",
+      "eeece2d484f179f9aec020b05a8a637e7e0c191ec184e0a66b8c891b77f52b61"
+    ],
+    "entry_not_frozen_training_input_checked": true,
+    "old_phased_worker_reaped_checked": true,
+    "old_phased_controller_absent_checked": true,
+    "lean_root_absent_before_launch": true,
+    "entry_sha_verified": true,
+    "focused_server_checks": 8,
+    "focused_server_checks_returncode": 0,
+    "nohup": true,
+    "start_new_session": true,
+    "stdin": "DEVNULL",
+    "stdout_and_stderr": "/opt/data/private/ZHY/logs/q1_interim_16000_lean_20261105.log",
+    "controller_alive_after_seconds": 0.5,
+    "full_training_snapshot_and_test_output_in_server_receipt": "/opt/data/private/ZHY/logs/session_records/q1_interim16000_lean_dispatch_20261105.json",
+    "local_receipt_is_full_server_record": false,
+    "credentials_recorded": false
+  },
+  "background_work": {
+    "output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105",
+    "controller_pid": 185291,
+    "controller_start_ticks": "NOT_YET_RETRIEVED",
+    "checkpoint_iteration": 16000,
+    "interface": "motion",
+    "seed": 0,
+    "cases": [
+      "walk_forward_loop_001__A022",
+      "walk_forward_start_002__A023",
+      "walk_forward_stop_002__A024"
+    ],
+    "requested_reuse_audit": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_20261105/checkpoint_audit.json",
+    "requested_reuse_forward_review": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_TOTALMEM_20261105",
+    "physics": "Locked Primebot CPU Torch2.7/MuJoCo3.6, isolated Morph CPU policy",
+    "media": "Sequential NVIDIA EGL GPU rendering after physics/policy exit",
+    "replay_guard_status": "NOT_YET_RETRIEVED",
+    "media_guard_status": "NOT_YET_RETRIEVED",
+    "result_status": "PENDING_RETRIEVAL",
+    "final_acceptance": false,
+    "g1_quality_assessed": false,
+    "user_accepted_checkpoint": null
+  },
+  "connection": {
+    "session": 65628,
+    "windows_and_linux_authenticated": true,
+    "receipt_received_before_disconnect": true,
+    "post_receipt_error": "Timeout, server 100.65.183.91 not responding.",
+    "exit_code": 255,
+    "post_dispatch_port22_probe": "TIMED_OUT",
+    "current_training_state": "UNKNOWN_AFTER_OBSERVER_LOSS",
+    "current_evaluation_state": "UNKNOWN_AFTER_CONFIRMED_BACKGROUND_SUBMISSION",
+    "inference_from_ssh_loss": "NONE",
+    "do_not_resubmit_due_to_ssh_loss": true
+  },
+  "preserved_limits": {
+    "review_admission_bytes": 23622320128,
+    "review_exit_bytes": 25769803776,
+    "review_gpu_exit_mib": 18432,
+    "review_gpu_exit_c": 80,
+    "training_pressure_bytes": 32212254720,
+    "training_gpu_temperature_c": 86,
+    "training_gpu_lock_owner": 55672,
+    "review_wall_minutes": 30
+  },
+  "preserved_constraints": {
+    "training_signals_sent": 0,
+    "training_inputs_modified": false,
+    "training_restarted": false,
+    "goal_called_or_recreated": false,
+    "new_agents": false,
+    "automations_modified_or_recreated": false,
+    "server_documentation_mirror": "PENDING_CONNECTION_RECOVERY",
+    "full_five_stage_scope_and_final_cli_gate": "UNCHANGED"
+  },
+  "next_action": "Read existing task receipt, guard/resource/result files when the same Windows bridge is reachable; retrieve original-speed media and diagnostics if completed. Preserve any resource failure without a new automatic attempt."
+}

@@ -1,5 +1,11 @@
 # Q1共享训练与目标监督
 
+## 21:36中途评估后台启动回执已收到
+
+用户要求尽快布置推理后，65628经原Windows/25362进入Linux，一次命令完成已发布389ea8f精简入口差量同步/SHA核同/8服务器检查返回0，再仅一次nohup+独立会话启动LEAN控制器185291，0.5秒仍存活/returncode null。提交快照两型各36350轮，总22193610752B/实际限34292629504B/余12099018752B/OOM0，GPU16177MiB53度None。完整服务器收据logs/session_records/q1_interim16000_lean_dispatch_20261105.json含现场/日志/保存/峰值与测试输出，本地已收简短启动回执。
+
+评估输出Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105，启动日志logs/q1_interim_16000_lean_20261105.log。SSH回执后再次Timeout255，原22端口探测亦超时，当前训练及评估实时UNKNOWN。后续只读此任务guard/resources/review/source_integrity和原速媒体，不因失联重复下发；回放及GPU媒体完成状态/质量待取。原中途三固定motion seed0/复用审计及前走、24GiB评估退出/训练30GiB/86度/guard锁、完整final五阶段及采纳null保持；未停训重启/热改冻结输入/新goal-agent或自动任务。认证不记录。[中途检查](README_Q1_INTERIM_REVIEW_20261105.md)/[真实启动回执](../logs/session_records/q1_interim16000_lean_dispatch_receipt_20261105.json)。
+
 ## 21:14直连恢复现场，传输中再次失去观察
 
 用户要求直连原Windows地址后，2850已交互登录Windows并经原生25362进入原Linux。21:04:26实核原设备/五PID启动tick/guard55672锁同，pipeline TRAINING/guard RUNNING，两型各35850/160000轮/各92185600转移，五Adam358500/33850/677000/33850/677000、非有限0/OOM0。GPU16177MiB56度92%None，总22187020288B/实际限34292629504B/即时余12105609216B，磁盘余288652988416B；16000/32000及latest存在。此次没有训练信号、重启或冻结输入修改，完整分组指标和两worker日志尾已读。

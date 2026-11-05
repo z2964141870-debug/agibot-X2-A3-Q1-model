@@ -1,5 +1,18 @@
 # Q1共享16000轮中途检查
 
+## 21:36已提交独立后台评估，等待结果取回
+
+用户明确要求网络允许时尽快把推理布置到服务器，之后等结果。原入口差量同步、核验、CPU检查和后台启动合并为一次命令，65628已直连Windows并用原生25362进入Linux。服务器回显Q1_DISPATCH_RECEIPT：入口25639B/SHAeeece2d484f179f9aec020b05a8a637e7e0c191ec184e0a66b8c891b77f52b61，与已独立远端核同的389ea8f一致；8项原服务器检查返回0。同步前只接受原d67入口SHA或目标SHA，并核该入口不在冻结训练输入、旧PHASED自有worker已回收/controller已退、LEAN根尚不存在。没有改变训练源码或资源线。
+
+后台控制器PID185291，采用nohup、start_new_session=True及DEVNULL输入，0.5秒后returncode null；仅启动一次。提交快照两型各36350轮，实际总22193610752B/限34292629504B/即时余12099018752B/OOM0，GPU16177MiB53度None。完整训练现场、五PID/锁、两worker日志尾、保存stat、内存峰值/回收记录及测试输出已由部署命令写入服务器收据；本地当前只收到简短启动回执，尚未取完整原件或新质量结果。
+
+- 输出根：/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_INTERIM_CKPT16000_LEAN_20261105。
+- 服务器完整启动收据：/opt/data/private/ZHY/logs/session_records/q1_interim16000_lean_dispatch_20261105.json。
+- 启动日志：/opt/data/private/ZHY/logs/q1_interim_16000_lean_20261105.log。
+- 后续状态：输出根的authorization.json、replay.guard.json、media.guard.json、resources.json、review/result.json及source_integrity.json。
+
+任务按原CPU共同物理/隔离策略，复用已通过双型16000审计和完整前走，续起走/停走各motion seed0，再顺序NVIDIA EGL视频。原22GiB准入/24GiB评估退出、18GiB GPU/80度、30分钟与原训练30GiB/86度/锁/final门均保持。SSH在启动回执后再次Timeout退出255；21:36:48后原22端口探测也超时。当前任务及训练实时UNKNOWN，启动回执只证明后台提交和当时控制器存活，不证明回放/媒体完成或质量合格。后续恢复后只读取本任务，不因断线重新提交，也不自动重跑资源失败；结果原速媒体/真实完整性/脚底离地/换脚/承重滑移/侧倾/上肢时序仍待取。完整五阶段与采纳null保持，未调用goal或新建agent/自动任务，认证不记录。[已收到的启动回执与边界](../logs/session_records/q1_interim16000_lean_dispatch_receipt_20261105.json)。下方21:14“未启动”为历史。
+
 ## 21:14直连进入Windows和Linux，传输再次停滞
 
 用户明确要求直连原Windows地址并提供交互认证。20118到Windows密码提示后Broken pipe退出255；按本独立故障一次有界重连，2850成功进入PowerShell，再用Windows原生25362进入root@interactive67462、cwd=/opt/data/private/ZHY。两处认证仅交互使用，不存储或镜像。

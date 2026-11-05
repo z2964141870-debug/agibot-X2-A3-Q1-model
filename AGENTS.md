@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06 04:13独立因果重采样/真人固定TEST_ONLY回放实成：四方法两场景60008输出/违规0/源同，56检查54过2原运行时待，0训练调参推理物理CUDA。跨钟分开/未知dependency保null/保持插值预测非measured_exact，外推80ms与过期200ms等明确回退；40ms缓冲减小步变有等待代价，预测重锚定仍可能增跳，不据测试选参数或宣称自然性。下一解析急停换向下连续性/相位合同；已发布3b1cd18包未下发，训练实时UNKNOWN/无新认证，原V04/final/锁/采纳null不变。goal active最低今日10:00，q1保存核ACTIVE十分钟同线程/无agent其他任务修改；入口Q1_CAUSAL_RESAMPLER及q1_causal_resampler_replay，发布及服务器镜像以后续收据为准。
+
 - 2026-11-06真人录制低延迟输入审计实成：已有两TEST_ONLY小包3892帧/输入和inspection前后SHA同，原50Hz离线插值未来支持依赖中位19ms/p95约54-56ms/最大155-170ms，不能当实时因果帧；host/payload钟同步与硬件capture未知/端到端null，根trans全零不能验世界行走。4新增检查，完整44项42过2原运行时待，0.015秒只读数值/0训练调参推理物理CUDA；测试包不得进训练集。下一独立因果重采样合同，原50Hz消融不悄改。615b7a3发布收据独立远端/Mac4份199327B核同；campaign3b1cd18/46828B包仍未上传，原训练实时UNKNOWN/无新增认证。goal active最低今日10:00、V04/final/锁/采纳null保持，无agent/其他任务改动。入口Q1_TELEOP_REAL_INTAKE及q1_real_intake_timing_audit。
 
 - 2026-11-06 03:40串联3b1cd18fd7b183e6b760d618a4bd081df246eacc显式push及独立40位远端核同，10份616173B Git-Mac大小SHA同；179项清单33298B/18成员Linux包46828B逐项核同，单次后台argv已准备，未上传下发/原服务器实时UNKNOWN，无新增认证或物理optimizerCUDA。发布入口Q1_HUMAN_PREVIEW_REVIEW及q1_preview_campaign_publication，恢复后原身份全监督资源门先行；goal active最低今日10:00、原V04/final/锁/采纳null保持，无agent/其他任务修改。

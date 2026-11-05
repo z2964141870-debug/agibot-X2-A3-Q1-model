@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06 04:13：[独立因果重采样和固定真人回放已成](README_Q1_CAUSAL_RESAMPLER_20261106.md)。60008输出违规0/源同，56检查54过2原运行时待，0训练推理物理CUDA。输入40ms缓冲减小步变但增加等待；限预测斜率仍不能保证重锚定连续性，不据此选择测试集最佳参数。下一项解析急停/换向下的限速/滤波相位合同；原3b1cd18同human比较仍待桥接及原身份资源门，不重复认证或旧物理。goal active最低今日10:00/q1保存核ACTIVE十分钟同线程；原V04/final/锁和采纳null保持，训练实时UNKNOWN。[实据](../logs/session_records/q1_causal_resampler_replay_20261106.json)。
+
 2026-11-06：[两段真人TEST_ONLY录制的输入未来依赖实算完成](README_Q1_TELEOP_REAL_INTAKE_20261106.md)。3892帧/两输入两inspection大小SHA同，原50Hz离线插值未来支持依赖中位19ms、p95约54-56ms、最大155-170ms；不能直接当H4/H5实时因果帧。时钟同步/硬件capture未知、根trans全零，训练/调参/推理/物理0；完整44检查42过2原运行时待。下一项独立因果重采样合同，测试包不进训练集。campaign3b1cd18/46828B包已核但未上传；615b7a3发布收据独立远端/Mac4份199327B核同，服务器实时UNKNOWN且未重复认证。goal active最低今日10:00，原V04/final/锁/采纳null保持。[实据](../logs/session_records/q1_real_intake_timing_audit_20261106.json)。
 
 2026-11-06 03:36：[低延迟单次后台campaign本地准备完成](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)。同控制进程串行masked/hold/damped_cv/cv，共33新human例/33视频，预测只复用基线不重跑；失败/配置变化/信号即不派发后续。总7200秒/合计3GiB、各study1800秒及原资源门保持；4新增检查，完整40项38过2原运行时待，0新服务器物理训练CUDA/未下发。goal active最低10:00；03:24一次Windows认证Broken pipe后实时UNKNOWN，不重复认证。下一项发布串联包，核已有两段真人动捕小包的时序/使用限制；V04/final/锁/采纳null保持。[审计](../logs/session_records/q1_preview_campaign_preparation_20261106.json)。

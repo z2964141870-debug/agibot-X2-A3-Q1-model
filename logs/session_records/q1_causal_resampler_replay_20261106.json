@@ -1,0 +1,61 @@
+{
+  "stage": "Q1_CAUSAL_RESAMPLER_FIXED_TEST_ONLY_REPLAY",
+  "observed_local": "2026-11-06T04:13:35+08:00",
+  "goal_status": "active",
+  "minimum_execution_until": "2026-11-06T10:00:00+08:00",
+  "result": {
+    "path": "data/supermimic_for_q1/Q1_TELEOP_CAUSAL_RESAMPLER_REPLAY_20261106/recorded_causal_replay.json",
+    "bytes": 98755,
+    "sha256": "45e8724458d64ba4e3e43d0f9275733efadc81e0870e6d9f271b9be0b0a41b2a",
+    "elapsed_seconds": 15.374482208,
+    "source_frames": 3892,
+    "total_resample_decisions": 60008,
+    "local_unarrived_support_violations": 0,
+    "source_and_inspection_before_after_integrity": "PASSED",
+    "runtime": {"python": "3.9.6", "numpy": "2.0.2"}
+  },
+  "source_code": [
+    {"path": "script/supermimic_teleop/causal_resampler.py", "bytes": 12939, "sha256": "b9520f06a98d055195270507a136bb1673363c9ae6c67a9284f36edeb2906bca"},
+    {"path": "script/supermimic_teleop/recorded_causal_replay.py", "bytes": 12005, "sha256": "ddc5438e60c40091ae059b808eff888fbee54960932252d977c7693584669abc"},
+    {"path": "script/supermimic_teleop/test_causal_resampler.py", "bytes": 8736, "sha256": "e669e8f5bc078de89cd23dd68b1f7ffb85804f04ab58bca7fe51dac90e7863d3"},
+    {"path": "script/supermimic_teleop/test_recorded_causal_replay.py", "bytes": 3273, "sha256": "c1e5f904abed44425527d3244f8b287a5926060d9ce305ec291fbf2794d9ae56"}
+  ],
+  "fixed_methods": ["hold_now", "cv_now", "damped_now", "linear_buffer40"],
+  "fixed_scenarios": ["recorded_arrivals", "synthetic_drop_30s_250ms"],
+  "normal_available_counts": {
+    "hand_follow_20260923_191240": {"ticks": 3750, "hold": 3750, "cv": 3731, "damped": 3731, "linear_buffer40": 3748},
+    "hand_follow_20260924_150132": {"ticks": 3751, "hold": 3751, "cv": 3724, "damped": 3724, "linear_buffer40": 3749}
+  },
+  "local_verification": {
+    "new_checks_passed": 12,
+    "full_teleop_tests": 56,
+    "passed": 54,
+    "native_runtime_skips": 2,
+    "failures": 0,
+    "elapsed_seconds": 0.165,
+    "compileall_and_diff_check": "PASSED",
+    "initial_scipy_import": "UNAVAILABLE_IN_LOCAL_RUNTIMES; reused existing tested SO3 helpers without installing dependencies"
+  },
+  "findings": [
+    "All targets use an explicit receiver-arrival clock; original payload stamps and unknown dependencies are retained",
+    "Held/interpolated/generated poses never claim to be exact physical captures or measured preview slots",
+    "40ms buffered interpolation reduces input step jumps in these recordings while adding its declared wait",
+    "Forecast reanchoring can exceed hold step jumps despite capped extrapolation slopes",
+    "80ms forecast limit rejects19/27 normal decisions; synthetic dropout triggers stale/gap fallback",
+    "No method selection or hyperparameter tuning on TEST_ONLY recordings"
+  ],
+  "training_samples_used": 0,
+  "new_optimizer_updates": 0,
+  "new_policy_inference": 0,
+  "new_physics_steps": 0,
+  "new_cuda_jobs": 0,
+  "measured_end_to_end_latency_ms": null,
+  "robot_naturalness_accepted": null,
+  "new_authentication_attempts": 0,
+  "training_live_state": "UNKNOWN",
+  "server_sync": "PENDING_ORIGINAL_BRIDGE_RECOVERY",
+  "prepared_campaign_commit_unchanged": "3b1cd18fd7b183e6b760d618a4bd081df246eacc",
+  "original_training_and_final_gates_preserved": true,
+  "whole_goal_complete": false,
+  "user_accepted_checkpoint": null
+}

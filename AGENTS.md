@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06真人录制低延迟输入审计实成：已有两TEST_ONLY小包3892帧/输入和inspection前后SHA同，原50Hz离线插值未来支持依赖中位19ms/p95约54-56ms/最大155-170ms，不能当实时因果帧；host/payload钟同步与硬件capture未知/端到端null，根trans全零不能验世界行走。4新增检查，完整44项42过2原运行时待，0.015秒只读数值/0训练调参推理物理CUDA；测试包不得进训练集。下一独立因果重采样合同，原50Hz消融不悄改。615b7a3发布收据独立远端/Mac4份199327B核同；campaign3b1cd18/46828B包仍未上传，原训练实时UNKNOWN/无新增认证。goal active最低今日10:00、V04/final/锁/采纳null保持，无agent/其他任务改动。入口Q1_TELEOP_REAL_INTAKE及q1_real_intake_timing_audit。
+
 - 2026-11-06 03:40串联3b1cd18fd7b183e6b760d618a4bd081df246eacc显式push及独立40位远端核同，10份616173B Git-Mac大小SHA同；179项清单33298B/18成员Linux包46828B逐项核同，单次后台argv已准备，未上传下发/原服务器实时UNKNOWN，无新增认证或物理optimizerCUDA。发布入口Q1_HUMAN_PREVIEW_REVIEW及q1_preview_campaign_publication，恢复后原身份全监督资源门先行；goal active最低今日10:00、原V04/final/锁/采纳null保持，无agent/其他任务修改。
 
 - 2026-11-06 03:36低延迟单次后台campaign本地准备完成：同控制进程串行masked/hold/damped_cv/cv，共33新human例/33视频，已完成masked可复用仅18例；每study原运行时/H10动作等价/资源门保留，失败/输入变动/信号不再派发，避免额外控制进程守卫遗留独立worker会话。总7200秒/合计3GiB、各study1800秒及22/24GiB18GiB80度/原V04锁final保持。4新增检查，完整40项38过2原运行时待/0新服务器物理optimizerCUDA/未下发；发布清单与包待新收据。goal active最低10:00/必要验证延长；03:24Windows认证后Broken pipe未到Linux/实时UNKNOWN，本轮不重试认证，无agent/其他自动任务改动/采纳null。下一项发布串联入口及核已有两段真人动捕小包时序/使用合同；入口Q1_HUMAN_PREVIEW_REVIEW及q1_preview_campaign_preparation。

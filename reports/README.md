@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06：[真人录制输入的未来依赖实算完成](README_Q1_TELEOP_REAL_INTAKE_20261106.md)。两段TEST_ONLY/3892帧原输入和inspection核同；原50Hz离线插值未来依赖中位约19ms/p95约54-56ms/最大155-170ms，不能当实时因果重采样。host/payload时钟与硬件capture未知，根平移全零，未训练/推理/物理，不当端到端延迟或步态结论。新增4检查/完整44项42过2原运行时待；下一项独立因果重采样合同，goal active最低10:00。[实据](../logs/session_records/q1_real_intake_timing_audit_20261106.json)。
+
 2026-11-06 03:36：[低延迟单次后台campaign准备完成](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)。串行masked/保持/阻尼/常速度，共33新human例和视频；失败不续派、原运行时/H10等价及资源门保持。完整40项38过2待服务器；0新服务器物理训练CUDA，goal active最低10:00，发布/部署以新收据为准。[审计](../logs/session_records/q1_preview_campaign_preparation_20261106.json)。
 
 2026-11-06 03:24：[低延迟因果尾部本地验证及发布完成](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)。默认masked15例，预测每方法仅新H4/H5六例并复用已完成masked H10/同缓冲；36检查34过2原运行时待。1e39412独立远端/Mac16份662375B核同，177项清单及43141B Linux包已准备。一次Windows认证后仍Broken pipe/未到Linux，服务器未下发，0新物理训练CUDA。goal active最低今日10:00，原V04/final保持。[准备审计](../logs/session_records/q1_causal_tail_controller_preparation_20261106.json)、[发布收据](../logs/session_records/q1_causal_tail_controller_publication_20261106.json)。

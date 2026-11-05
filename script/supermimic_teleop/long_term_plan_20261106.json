@@ -32,6 +32,13 @@
       "work": "Implemented timestamped immutable SMPL24 poses, bounded arrival timeline, preview cutoff, continuous prefix, stale/drop behavior and explicit offline clip end. Upstream preprocessing causality remains unverified."
     },
     {
+      "id": "recorded_test_only_intake",
+      "status": "COMPLETED_TIMING_AUDIT_ONLY_CAUSAL_RESAMPLER_PENDING",
+      "evidence": "logs/session_records/q1_real_intake_timing_audit_20261106.json",
+      "training_allowed": false,
+      "work": "Two existing TEST_ONLY human recordings,3892 frames, unchanged source and inspection identities. Offline50Hz interpolation has19ms median,54-56ms p95 and155-170ms maximum future support dependency. Hardware capture and clock sync unknown, zero root translation. Implement a separate causal resampling contract; do not train or tune on these recordings or call interpolation exact measurement."
+    },
+    {
       "id": "masked_horizon_replays",
       "status": "CONTROLLER_LOCAL_CHECKS_PASSED_PENDING_SERVER_GATES",
       "controller_evidence": "logs/session_records/q1_human_preview_controller_preparation_20261106.json",

@@ -1,0 +1,67 @@
+{
+  "stage": "Q1_RECORDED_TEST_ONLY_INTAKE_TIMING_AUDIT",
+  "goal_status": "active",
+  "minimum_execution_until": "2026-11-06T10:00:00+08:00",
+  "result": {
+    "path": "data/supermimic_for_q1/Q1_TELEOP_REAL_INTAKE_20261106/recorded_intake_audit.json",
+    "bytes": 8588,
+    "sha256": "76ae931e9911ffd92db8b30fd90f9bd91d891d7e5f9e666e5268f5e4beaeccb2",
+    "elapsed_seconds": 0.014944541
+  },
+  "inputs": [
+    {
+      "recording": "hand_follow_20260923_191240",
+      "bytes": 1945546,
+      "sha256": "46a416db0623eef04feffae3bb10381623b939afafaea32dd1f4f1526e16fcb6",
+      "frames": 1969,
+      "training_allowed": false,
+      "payload_average_hz": 26.234327441157596,
+      "host_interval_p50_p95_max_ms": [34.88090450264281, 69.51959970392636, 149.13072399940575],
+      "offline_50hz_future_dependency_p50_p95_max_ms": [19.23154830932816, 54.39289093017585, 155.00014305114718],
+      "root_translation_all_zero": true,
+      "input_and_inspection_integrity": "PASSED"
+    },
+    {
+      "recording": "hand_follow_20260924_150132",
+      "bytes": 1913458,
+      "sha256": "d080e95104c1fb5f971f4b8a1babd19598896c4e41bf8a9ed64d8e6d38473005",
+      "frames": 1923,
+      "training_allowed": false,
+      "payload_average_hz": 25.599151953172075,
+      "host_interval_p50_p95_max_ms": [34.92382649710635, 70.01411905002897, 178.33212099503726],
+      "offline_50hz_future_dependency_p50_p95_max_ms": [19.555940628052326, 56.31695747375504, 170.218124389649],
+      "root_translation_all_zero": true,
+      "input_and_inspection_integrity": "PASSED"
+    }
+  ],
+  "local_verification": {
+    "new_tests_passed": 4,
+    "full_teleop_tests": 44,
+    "passed": 42,
+    "skipped_native_runtime_tests": 2,
+    "failures": 0,
+    "elapsed_seconds": 0.155,
+    "compileall_and_diff_check": "PASSED"
+  },
+  "findings": [
+    "Existing irregular mocap packets require a separate causal resampling contract",
+    "Offline50Hz interpolation depends on a later supporting payload sample",
+    "Interpolated or held samples must not claim to be exact measured captures",
+    "Payload time is not verified as hardware capture and clocks are not calibrated",
+    "TEST_ONLY inputs cannot be used for fitting or hyperparameter selection",
+    "Zero root translation prevents a world locomotion quality conclusion"
+  ],
+  "source_receiver_clock_sync_verified": false,
+  "physical_capture_timestamp_verified": false,
+  "measured_end_to_end_latency_ms": null,
+  "training_samples_used": 0,
+  "new_optimizer_updates": 0,
+  "new_physics_steps": 0,
+  "new_cuda_jobs": 0,
+  "new_authentication_attempts": 0,
+  "training_live_state": "UNKNOWN",
+  "server_sync": "PENDING_ORIGINAL_BRIDGE_RECOVERY",
+  "original_V04_and_final_gates_preserved": true,
+  "whole_goal_complete": false,
+  "user_accepted_checkpoint": null
+}

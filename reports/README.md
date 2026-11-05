@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06 03:12：[低延迟因果尾部接入及本地验证完成](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)。默认masked为15例；保持/常速度/阻尼尾部每方法只新增H4/H5六例，强制复用已完成masked H10与同缓冲基线并作双基线比较。36检查中34通过、2项原运行时待服务器；0新物理训练CUDA，不当低延迟/自然性结果。goal实读active最低今日10:00；原V04和final保持，最近桥接未恢复。[阶段审计](../logs/session_records/q1_causal_tail_controller_preparation_20261106.json)。
+
 2026-11-06 01:33：[同权重human短预览controller已准备](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)。5新增本地检查通过，先原运行时/真实H10全片动作等价再15独立回放和顺序GPU视频；每阶段发布代码/配置/审计SHA和原资源门，原训练/final保持。尚无新服务器质量结果；一次Windows密码提示后Broken pipe，未取得shell/Linux、实时UNKNOWN。长期goal保持active/最低10:00，继续发布清单与可独立完成工作。[阶段证据](../logs/session_records/q1_human_preview_controller_preparation_20261106.json)。
 
 2026-11-06 00:58：[低延迟流式输入与独立human短预览接口已实现](README_Q1_TELEOP_STREAM_CONTRACT_20261106.md)。时戳/到达可见性、连续前缀、丢包过期及显式离线片尾12项本地检查通过，原生H10等价与隐藏pose/heading检查已写/待服务器；0新物理训练CUDA，不当端到端延迟或自然性结论。下一项独立有界H10/H5/H4/H2/H1三片controller和原运行时/资源门，原训练与final门保持。长期goal仍active、最早10:00；目标提交184a390已独立远端/Mac6文件核同，本轮Windows22桥接超时、服务器同步待。[阶段实据](../logs/session_records/q1_teleop_stream_contract_20261106.json)。

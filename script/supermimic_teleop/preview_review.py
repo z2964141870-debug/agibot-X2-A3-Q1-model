@@ -1,8 +1,9 @@
-"""Independent guarded human H10/H5/H4/H2/H1 study during the original training.
+"""Guarded human short-preview and H4/H5 causal-tail studies during training.
 
 Reuse the completed 16000 CPU save audit. Check pinned-runtime math and actual
 H10 reference-state actions before any new physics. Each case releases both CPU
 runtimes before its GPU EGL rendering phase. Failures are preserved, never retried.
+Forecast studies reuse completed masked H10/H4/H5 episodes from the same policy.
 """
 
 import argparse
@@ -17,6 +18,7 @@ import sys
 HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE), str(HERE.parent / "q1_five_stage"), str(HERE.parent / "primebot_q1")]
 from common import FIXED, ROOT, identity, now, require, save
+from causal_tail import TAIL_METHODS
 from contracts import valid_commit
 from delivery import read
 from interim_review import (COMMIT, GIB, HANDLES, TRAINING, ReviewBudget, fixed_rows,
@@ -29,8 +31,11 @@ CODE_ROOTS = ("script/supermimic_teleop/", "script/q1_five_stage/", "script/prim
 REQUIRED_CODE = ("script/supermimic_teleop/preview_review.py",
                  "script/supermimic_teleop/preview_worker.py",
                  "script/supermimic_teleop/preview_policy.py",
+                 "script/supermimic_teleop/causal_tail.py",
+                 "script/supermimic_teleop/forecast_policy.py",
                  "script/supermimic_teleop/stream_contract.py",
-                 "script/supermimic_teleop/test_preview_policy_runtime.py")
+                 "script/supermimic_teleop/test_preview_policy_runtime.py",
+                 "script/supermimic_teleop/test_forecast_policy_runtime.py")
 
 
 def validate_code_manifest(path, expected_sha256, commit, root=ROOT):
@@ -87,7 +92,7 @@ def checkpoint_paths(config, audit_path):
     return checkpoint, baseline
 
 
-def policy_command(runtime, config, plan, checkpoint, baseline, horizon=None):
+def policy_command(runtime, config, plan, checkpoint, baseline, horizon=None, tail_method="masked"):
     worker = HERE.parent / "q1_five_stage/policy_process.py" if horizon is None else HERE / "preview_worker.py"
     command = [runtime["morph_python"], "-u", str(worker)]
     for key, value in {"plan": TRAINING / "e1024_train_plan.json", "checkpoint": checkpoint["path"],
@@ -96,20 +101,24 @@ def policy_command(runtime, config, plan, checkpoint, baseline, horizon=None):
         command.extend(("--" + key, str(value)))
     if horizon is not None:
         require(horizon in HORIZONS, "Unsupported preview study horizon")
-        command.extend(("--preview-frames", str(horizon)))
+        require(tail_method in TAIL_METHODS, "Unsupported causal tail method")
+        command.extend(("--preview-frames", str(horizon), "--tail-method", tail_method))
     return command
 
 
-def validate_stream(value, horizon, frame):
+def validate_stream(value, horizon, frame, tail_method="masked"):
     from stream_contract import DT_NS
-    require(isinstance(value, dict) and value.get("requested_preview_ns") == horizon*DT_NS
+    require(tail_method in TAIL_METHODS and isinstance(value, dict)
+            and value.get("tail_method") == tail_method
+            and value.get("requested_preview_ns") == horizon*DT_NS
             and value.get("scheduled_origin_to_control_ns") == horizon*DT_NS
-            and value.get("policy_prefix_frames") == horizon
             and value.get("source_preprocessing") == "offline_unverified"
             and value.get("measured_end_to_end_latency_ns") is None,
             "Worker changed the human preview timing or claimed live latency")
     provenance, sequences = value.get("provenance", []), value.get("used_sequences", [])
     require(len(provenance) == 10 and len(sequences) == horizon
+            and type(value.get("measured_frames")) is int
+            and 0 <= value["measured_frames"] <= horizon
             and all(type(index) is int and frame < index <= frame+horizon for index in sequences),
             "Worker used an out-of-budget or missing human source frame")
     terminal_sequence = None
@@ -123,17 +132,99 @@ def validate_stream(value, horizon, frame):
             terminal_sequence = sequence if terminal_sequence is None else terminal_sequence
             require(sequence == terminal_sequence and offset > 1 and sequence == sequences[offset-2],
                     "Terminal hold must follow and repeat the final measured capture")
-    require(provenance[horizon:] == ["masked_hold_placeholder"]*(10-horizon),
-            "Hidden preview tail was enabled")
-    measured = sum(kind == "measured_exact" for kind in provenance)
-    require(value.get("measured_frames") == value.get("observed_prefix_frames") == measured
+    measured = tuple(kind == "measured_exact" for kind in provenance)
+    terminal_capture = value.get("terminal_capture_ns")
+    if terminal_capture is not None:
+        require(type(terminal_capture) is int and terminal_capture == sequences[-1]*DT_NS
+                and terminal_capture <= (frame+horizon)*DT_NS,
+                "Declared terminal capture differs from the available source frame")
+    require("declared_clip_terminal_hold" not in provenance[:horizon] or terminal_capture is not None,
+            "Held terminal slots require an explicit terminal capture")
+    terminal = terminal_capture is not None
+    expected_generated = tuple(i >= horizon and not terminal and tail_method != "masked" for i in range(10))
+    require(value.get("measured_frames") == value.get("observed_prefix_frames") == sum(measured)
             and type(value.get("cpu_policy_wall_compute_ns")) is int
             and value["cpu_policy_wall_compute_ns"] >= 0, "Missing truthful stream timing")
+    for key, expected in (("measured_mask", measured), ("generated_mask", expected_generated)):
+        found = value.get(key)
+        require(isinstance(found, (list, tuple)) and len(found) == 10
+                and all(type(item) is bool for item in found) and tuple(found) == expected,
+                "Measured/generated slot masks differ from provenance")
+    require(type(value.get("generated_slots")) is int
+            and value["generated_slots"] == sum(expected_generated), "Generated slot count differs")
+    if tail_method == "masked":
+        require(value.get("policy_prefix_frames") == horizon and value.get("forecast_method") is None
+                and provenance[horizon:] == ["masked_hold_placeholder"]*(10-horizon),
+                "Masked preview tail was not kept hidden")
+    else:
+        method = "terminal_hold" if terminal else tail_method
+        kind = "declared_clip_terminal_hold" if terminal else "causal_forecast:" + tail_method
+        require(value.get("policy_prefix_frames") == 10 and value.get("forecast_method") == method
+                and provenance[horizon:] == [kind] * (10-horizon)
+                and value.get("bone_contact_constraints_applied") is False
+                and value.get("measured_preview_budget_ns") == horizon*DT_NS,
+                "Causal forecast tail metadata or provenance differs")
     return value
+
+
+def case_folder(output, horizon, clip, tail_method):
+    root = output if tail_method == "masked" else output / ("tail_" + tail_method)
+    return root / f"h{horizon}" / clip
+
+
+def study_horizons(tail_method):
+    require(tail_method in TAIL_METHODS, "Unsupported preview tail study")
+    return HORIZONS if tail_method == "masked" else (5, 4)
+
+
+def reusable_preview_baseline(args, audited, training_sources):
+    path = args.baseline_output
+    require(path is not None and path.is_absolute() and path.resolve() == path
+            and path.is_relative_to(ROOT / "data/supermimic_for_q1")
+            and not path.is_relative_to(TRAINING) and not args.output.is_relative_to(path),
+            "Forecast studies require a separate completed masked preview baseline")
+    authorization, result = read(path / "authorization.json"), read(path / "result.json")
+    checkpoint = next(row["checkpoint"] for row in audited["records"] if row["robot"] == "q1")
+    require(result.get("status") == "COMPLETED" and result.get("source_integrity") == "PASSED"
+            and result.get("tail_method", "masked") == "masked"
+            and authorization.get("tail_method", "masked") == "masked"
+            and authorization.get("stage") == "LOW_LATENCY_PREVIEW_EXPLORATION"
+            and authorization.get("original_training_commit") == COMMIT
+            and valid_commit(authorization.get("evaluation_commit"))
+            and authorization.get("plan") == identity(TRAINING / "e1024_train_plan.json")
+            and authorization.get("training_source_inputs") == training_sources
+            and identity(args.config) in authorization.get("controller_inputs", [])
+            and identity(args.runtime_config) in authorization.get("controller_inputs", [])
+            and read(path / "checkpoint_audit.json") == audited,
+            "Masked preview baseline has another plan, runtime, checkpoint or incomplete provenance")
+    equality = read(path / "equivalence.json")
+    require(equality.get("status") == "PASSED" and equality.get("checkpoint") == checkpoint
+            and result.get("comparison") == identity(path / "comparison.json"),
+            "Masked baseline has no matching H10 equality or comparison evidence")
+    files = [path / name for name in ("authorization.json", "result.json", "checkpoint_audit.json",
+                                     "equivalence.json", "comparison.json")]
+    for horizon in (10, 5, 4):
+        for clip in FIXED:
+            folder = case_folder(path, horizon, clip, "masked")
+            document = folder / "review/result.json"
+            value = read(document)
+            require(value.get("status") == "PASSED" and value.get("horizon_frames") == horizon
+                    and value.get("tail_method", "masked") == "masked"
+                    and value.get("interface") == "human" and value.get("checkpoint") == checkpoint
+                    and len(value.get("cases", [])) == 1,
+                    "Masked baseline replay is missing or has another policy")
+            row = value["cases"][0]
+            trace = folder / "review" / (clip + "_s0") / "rollout.npz"
+            require(row.get("clip") == clip and row.get("seed") == 0 and row.get("interface") == "human"
+                    and row.get("trace") == str(trace) and trace.resolve() == trace,
+                    "Masked baseline trace identity differs")
+            files.extend((document, trace))
+    return [identity(item) for item in files]
 
 
 def equivalence(args, config, runtime, plan, frozen):
     torch = require_plant(runtime)
+    tail_method = getattr(args, "tail_method", "masked")
     from policy_process import PolicyProcess
     from supermimic.data import Q1Motions
     import mujoco
@@ -143,10 +234,13 @@ def equivalence(args, config, runtime, plan, frozen):
     robot, _ = load_physical_robot(baseline["path"])
     records, original = [], {}
     for label, horizon in (("original_human_h10", None), ("stream_human_h10", 10)):
-        actor = PolicyProcess(policy_command(runtime, config, plan, checkpoint, baseline, horizon),
-                              args.output / (label + ".log"))
+        actor = PolicyProcess(policy_command(runtime, config, plan, checkpoint, baseline, horizon,
+                                             tail_method), args.output / (label + ".log"))
         try:
             require(actor.ready["checkpoint"] == checkpoint, "Equivalence worker loaded another policy")
+            if horizon is not None:
+                require(actor.ready["preview"]["tail_method"] == tail_method,
+                        "Equivalence worker loaded another tail method")
             for item in fixed_rows(frozen):
                 name = Path(item["q1_primebot"]["path"]).stem
                 reference = Q1Motions(robot, [Path(item["q1_primebot"]["path"])], device="cpu").load(0)
@@ -164,7 +258,7 @@ def equivalence(args, config, runtime, plan, frozen):
                         if horizon is None:
                             actions.append(action)
                         else:
-                            validate_stream(reply["stream"], 10, frame)
+                            validate_stream(reply["stream"], 10, frame, tail_method)
                             require(action == original[name][frame],
                                     f"Actual H10 preview action differs: {name} frame{frame}")
                 if horizon is None:
@@ -186,16 +280,18 @@ def equivalence(args, config, runtime, plan, frozen):
 
 def replay_case(args, config, runtime, plan, frozen):
     torch = require_plant(runtime)
+    tail_method = getattr(args, "tail_method", "masked")
     from policy_process import PolicyProcess
     from q1_native_review import rollout
 
     checkpoint, baseline = checkpoint_paths(config, args.output / "checkpoint_audit.json")
     item = next(row for row in fixed_rows(frozen) if Path(row["q1_primebot"]["path"]).stem == args.clip)
-    folder = args.output / f"h{args.horizon}" / args.clip
+    folder = case_folder(args.output, args.horizon, args.clip, tail_method)
     require(not folder.exists(), "Case root exists; do not resume or repeat its physics")
     folder.mkdir(parents=True)
     result = dict(status="RUNNING", stage="LOW_LATENCY_HUMAN_PREVIEW_ONLY", interface="human",
-        horizon_frames=args.horizon, iteration=16000, checkpoint=checkpoint, cases=[],
+        horizon_frames=args.horizon, tail_method=tail_method, iteration=16000,
+        checkpoint=checkpoint, cases=[],
         evaluation_commit=args.evaluation_commit, final_acceptance=False, g1_quality_assessed=False,
         user_accepted_checkpoint=None, measured_end_to_end_latency_ns=None,
         plant="Locked Primebot CPU Torch2.7/MuJoCo3.6", preprocessing="offline_unverified")
@@ -204,7 +300,7 @@ def replay_case(args, config, runtime, plan, frozen):
     class RecordingProcess(PolicyProcess):
         def action(self, frame, state):
             reply = super().action(frame, state)
-            value = validate_stream(reply["stream"], args.horizon, frame)
+            value = validate_stream(reply["stream"], args.horizon, frame, tail_method)
             telemetry.write(json.dumps(dict(frame=frame, **value), allow_nan=False) + "\n")
             if frame % 50 == 0:
                 telemetry.flush()
@@ -212,17 +308,20 @@ def replay_case(args, config, runtime, plan, frozen):
 
     actor = None
     try:
-        actor = RecordingProcess(policy_command(runtime, config, plan, checkpoint, baseline, args.horizon),
+        actor = RecordingProcess(policy_command(runtime, config, plan, checkpoint, baseline,
+                                                args.horizon, tail_method),
                                  folder / "policy_worker.log")
         require(actor.ready["checkpoint"] == checkpoint and actor.ready["metadata"]["iteration"] == 16000
-                and actor.ready["preview"]["frames"] == args.horizon, "Wrong preview worker identity")
+                and actor.ready["preview"]["frames"] == args.horizon
+                and actor.ready["preview"]["tail_method"] == tail_method,
+                "Wrong preview worker identity")
         robot, settings = load_physical_robot(baseline["path"])
         require(settings["action_scale"] == .5 and Path(settings["robot_xml"]) == Path(runtime["xml"]),
                 "Common physical action scale or XML changed")
         review = folder / "review"
         review.mkdir()
         row = rollout(robot, actor, settings, item, "human", 0, review / (args.clip + "_s0"))
-        row.update(horizon_frames=args.horizon, preview_budget_ms=args.horizon*20,
+        row.update(horizon_frames=args.horizon, tail_method=tail_method, preview_budget_ms=args.horizon*20,
                    measured_end_to_end_latency_ns=None)
         save(Path(row["trace"]).parent / "result.json", row)
         actor.close()
@@ -245,31 +344,43 @@ def replay_case(args, config, runtime, plan, frozen):
 
 def comparison(args, config, runtime, frozen):
     require_plant(runtime)
+    tail_method = getattr(args, "tail_method", "masked")
     from comparison import case_index, summary
     from metrics import compare
 
-    values = {}
-    for horizon in HORIZONS:
+    horizons = study_horizons(tail_method)
+    checkpoint = read(args.output / "equivalence.json")["checkpoint"]
+
+    def cases(root, horizon, method):
         cases = []
         for clip in FIXED:
-            value = read(args.output / f"h{horizon}" / clip / "review/result.json")
+            value = read(case_folder(root, horizon, clip, method) / "review/result.json")
             require(value["status"] == "PASSED" and value["horizon_frames"] == horizon
-                    and value["checkpoint"] == read(args.output / "equivalence.json")["checkpoint"],
+                    and value.get("tail_method", "masked") == method
+                    and value["checkpoint"] == checkpoint,
                     "Require the same audited policy and completed media for every horizon")
             cases.extend(value["cases"])
-        values[horizon] = dict(status="PASSED", cases=cases)
-    baseline = case_index(values[10], FIXED, (0,), "human")
+        return case_index(dict(status="PASSED", cases=cases), FIXED, (0,), "human")
+
+    baseline_root = args.output if tail_method == "masked" else args.baseline_output
+    baseline = cases(baseline_root, 10, "masked")
     comparisons = []
-    for horizon in HORIZONS[1:]:
-        other = case_index(values[horizon], FIXED, (0,), "human")
-        pairs = [compare(baseline[key], other[key]) for key in baseline]
-        item = summary(baseline, other, pairs, FIXED)
-        item.update(baseline_horizon=10, candidate_horizon=horizon,
-                    baseline_preview_budget_ms=200, candidate_preview_budget_ms=horizon*20, pairs=pairs,
-                    measured_end_to_end_latency_ms=None)
-        comparisons.append(item)
+    for horizon in (horizons[1:] if tail_method == "masked" else horizons):
+        other = cases(args.output, horizon, tail_method)
+        references = [(10, baseline)]
+        if tail_method != "masked":
+            references.append((horizon, cases(baseline_root, horizon, "masked")))
+        for baseline_horizon, left in references:
+            pairs = [compare(left[key], other[key]) for key in left]
+            item = summary(left, other, pairs, FIXED)
+            item.update(baseline_horizon=baseline_horizon, candidate_horizon=horizon,
+                        baseline_tail_method="masked", candidate_tail_method=tail_method,
+                        baseline_preview_budget_ms=baseline_horizon*20,
+                        candidate_preview_budget_ms=horizon*20, pairs=pairs,
+                        measured_end_to_end_latency_ms=None)
+            comparisons.append(item)
     save(args.output / "comparison.json", dict(status="COMPLETED", interface="human", iteration=16000,
-        horizons=HORIZONS, comparisons=comparisons, training_set_only=True, seed=0,
+        horizons=horizons, tail_method=tail_method, comparisons=comparisons, training_set_only=True, seed=0,
         repeated_seed_note="one nominal deterministic case per clip; no independent randomized trials",
         timing_note="H*20ms is the preview budget, not measured robot end-to-end latency",
         natural_gait_qualified=False, final_acceptance=False, user_accepted_checkpoint=None,
@@ -288,7 +399,8 @@ def child(args):
     require(args.child == "media", "Unknown preview phase")
     runtime_paths(runtime)
     # The original GPU renderer reads trajectories only; physics/runtime exited.
-    args.output = args.output / f"h{args.horizon}" / args.clip
+    args.output = case_folder(args.output, args.horizon, args.clip,
+                               getattr(args, "tail_method", "masked"))
     return media(args, config, runtime)
 
 
@@ -307,18 +419,23 @@ def execute(args):
     if args.child:
         return child(args)
     args.iteration = 16000
+    args.tail_method = getattr(args, "tail_method", "masked")
+    horizons = study_horizons(args.tail_method)
     sources = validate_code_manifest(args.code_manifest, args.manifest_sha256, args.evaluation_commit)
     config, runtime, plan, frozen, training_sources = preflight(args)
     audited = reusable_audit(args.reuse_audit, plan, 16000)
+    baseline_sources = (reusable_preview_baseline(args, audited, training_sources)
+                        if args.tail_method != "masked" else [])
     control_inputs = [identity(path) for path in
                       (args.config, args.runtime_config, args.reuse_audit, args.code_manifest)]
     training_paths = {row["path"] for row in read(TRAINING / "e1024/train/status.json")["inputs"]}
     require(not {str(HERE / name) for name in ("preview_review.py", "preview_worker.py", "preview_policy.py",
-                                              "stream_contract.py")} & training_paths,
+                                              "causal_tail.py", "forecast_policy.py", "stream_contract.py")} & training_paths,
             "New preview code must remain outside frozen training inputs")
     args.output.mkdir(exist_ok=False)
     result = dict(status="RUNNING", stage="LOW_LATENCY_PREVIEW_EXPLORATION", started_utc=now(),
         controller_pid=os.getpid(), evaluation_commit=args.evaluation_commit, phases=[],
+        tail_method=args.tail_method, reused_masked_physics=bool(baseline_sources),
         original_training_commit=COMMIT, training_inputs_modified=False,
         final_acceptance=False, g1_quality_assessed=False, user_accepted_checkpoint=None)
     save(args.output / "checkpoint_audit.json", audited)
@@ -327,7 +444,9 @@ def execute(args):
         plan=identity(TRAINING / "e1024_train_plan.json"), reused_audit=identity(args.reuse_audit),
         code_manifest=identity(args.code_manifest), evaluation_sources=sources,
         controller_inputs=control_inputs,
-        training_source_inputs=training_sources, horizons=HORIZONS, clips=FIXED, interface="human", seed=0,
+        training_source_inputs=training_sources, horizons=horizons, clips=FIXED, interface="human", seed=0,
+        tail_method=args.tail_method,
+        baseline_sources=baseline_sources,
         maximum_wall_seconds=1800, maximum_output_bytes=3*GIB, memory_admission_bytes=22*GIB,
         memory_exit_bytes=24*GIB, gpu_exit_mib=18*1024, gpu_exit_temperature_c=80,
         training_gpu_lock_owner=55672, training_signals_sent=0, acquire_training_gpu_lock=False,
@@ -343,14 +462,19 @@ def execute(args):
     try:
         os.environ.update(environment(runtime))
         os.environ["Q1_NATIVE_TEST_SOURCE"] = plan["source"]
+        runtime_test = ("test_preview_policy_runtime.py" if args.tail_method == "masked"
+                        else "test_forecast_policy_runtime.py")
         runtime_command = [runtime["morph_python"], "-u", "-m", "unittest", "discover", "-s", str(HERE),
-                           "-p", "test_preview_policy_runtime.py", "-v"]
+                           "-p", runtime_test, "-v"]
         phases = [("runtime", runtime_command)]
         base = ["-u", str(Path(__file__).resolve()), "--config", str(args.config),
                 "--runtime-config", str(args.runtime_config), "--output", str(args.output),
-                "--evaluation-commit", args.evaluation_commit]
+                "--evaluation-commit", args.evaluation_commit,
+                "--tail-method", args.tail_method]
+        if args.tail_method != "masked":
+            base.extend(("--baseline-output", str(args.baseline_output)))
         phases.append(("equivalence", [runtime["primebot_python"], *base, "--child", "equivalence"]))
-        for horizon in HORIZONS:
+        for horizon in horizons:
             for clip in FIXED:
                 options = ["--horizon", str(horizon), "--clip", clip]
                 for phase in ("replay", "media"):
@@ -375,11 +499,13 @@ def execute(args):
                 require(read(args.output / "equivalence.json")["status"] == "PASSED",
                         "Actual H10 equivalence did not pass before physics")
             save(args.output / "result.json", result)
-        require(all(identity(row["path"]) == row for row in training_sources + sources + control_inputs),
+        require(all(identity(row["path"]) == row
+                    for row in training_sources + sources + control_inputs + baseline_sources),
                 "Training or evaluation inputs changed during the preview study")
         result.update(status="COMPLETED", ended_utc=now(), comparison=identity(args.output / "comparison.json"),
             source_integrity="PASSED", training_signals_sent=0, gpu_lock_owner=55672,
-            total_cases=15, media_videos=15, measured_end_to_end_latency_ms=None)
+            total_cases=len(horizons) * len(FIXED), media_videos=len(horizons) * len(FIXED),
+            measured_end_to_end_latency_ms=None)
         return result
     except BaseException as error:
         result.update(status="FAILED", ended_utc=now(), error=f"{type(error).__name__}: {error}")
@@ -405,10 +531,14 @@ if __name__ == "__main__":
     parser.add_argument("--child", choices=("equivalence", "replay", "media", "comparison"))
     parser.add_argument("--horizon", type=int, choices=HORIZONS)
     parser.add_argument("--clip", choices=FIXED)
+    parser.add_argument("--tail-method", choices=TAIL_METHODS, default="masked")
+    parser.add_argument("--baseline-output", type=Path)
     options = parser.parse_args()
     if not options.child and (options.reuse_audit is None or options.code_manifest is None
                               or options.manifest_sha256 is None):
         parser.error("Controller requires the completed16000 audit and published code manifest/SHA")
     if options.child in ("replay", "media") and (options.horizon is None or options.clip is None):
         parser.error("Case phases require one horizon and one fixed clip")
+    if options.tail_method != "masked" and options.baseline_output is None:
+        parser.error("Forecast studies require a completed --baseline-output; do not repeat H10 physics")
     execute(options)

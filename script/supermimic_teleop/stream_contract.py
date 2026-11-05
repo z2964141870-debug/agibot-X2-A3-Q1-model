@@ -124,6 +124,7 @@ class PreviewWindow:
     newest_dependency_ns: Optional[int]
     latest_used_capture_ns: Optional[int]
     max_used_dependency_ns: Optional[int]
+    terminal_capture_ns: Optional[int] = None
 
     def timing(self):
         return dict(
@@ -137,6 +138,7 @@ class PreviewWindow:
             latest_used_capture_age_ns=None if self.latest_used_capture_ns is None
             else self.control_ns - self.latest_used_capture_ns,
             max_used_dependency_ns=self.max_used_dependency_ns,
+            terminal_capture_ns=self.terminal_capture_ns,
             observed_prefix_frames=sum(self.measured_mask),
             policy_prefix_frames=self.prefix_frames,
             source_preprocessing=self.source.preprocessing,
@@ -243,7 +245,9 @@ class PoseTimeline:
             None if newest is None else newest.arrival_ns,
             None if newest is None else newest.dependency_end_ns,
             None if not prefix else prefix[-1].capture_ns,
-            dependency)
+            dependency,
+            None if self.terminal_frame is None or self.terminal_frame.capture_ns > cutoff
+            else self.terminal_frame.capture_ns)
 
 
 def command_timing(window, *, policy_start_ns, policy_end_ns, command_sent_ns):

@@ -16,14 +16,37 @@ HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE), str(HERE.parent / "q1_five_stage")]
 from policy_process import MAX_MESSAGE, NativeSession
 from common import require
+from causal_tail import TAIL_METHODS, forecast_window
+from forecast_policy import HumanForecastPolicy
 from preview_policy import HumanPreviewPolicy
 from stream_contract import DT_NS, HumanPose, PoseFrame, PoseTimeline, SourceIdentity
+
+
+def preview_goal(window, tail_method):
+    require(tail_method in TAIL_METHODS, "Unknown causal tail method")
+    if tail_method == "masked":
+        timing = window.timing()
+        timing.update(forecast_method=None, generated_slots=0,
+                      measured_mask=window.measured_mask, generated_mask=(False,) * 10,
+                      provenance=window.provenance)
+        goal = window
+    else:
+        goal = forecast_window(window, tail_method)
+        timing = goal.timing()
+        timing.update(forecast_method=goal.method, measured_mask=goal.measured_mask,
+                      generated_mask=goal.generated_mask, provenance=goal.provenance)
+    timing.update(tail_method=tail_method, used_sequences=window.used_sequences,
+                  measured_frames=sum(window.measured_mask))
+    return goal, timing
 
 
 class PreviewSession(NativeSession):
     def __init__(self, args):
         super().__init__(args)
-        self.preview = HumanPreviewPolicy(self.actor)
+        require(args.tail_method in TAIL_METHODS, "Unknown causal tail method")
+        self.tail_method = args.tail_method
+        self.preview = (HumanPreviewPolicy(self.actor) if self.tail_method == "masked"
+                        else HumanForecastPolicy(self.actor))
 
     def ready(self):
         return dict(super().ready(), preview=self.preview_config())
@@ -31,6 +54,7 @@ class PreviewSession(NativeSession):
     def preview_config(self):
         return dict(interface="human", points="full",
             frames=self.args.preview_frames, target_offsets_ns=[(i+1)*DT_NS for i in range(10)],
+            tail_method=self.tail_method,
             modeled_transport_ns=0, preprocessing="offline_unverified",
             measured_end_to_end_latency_ns=None)
 
@@ -39,7 +63,7 @@ class PreviewSession(NativeSession):
         result = super().start(request)
         require(len(self.library.human_pos_w) == len(self.reference), "Human and physical clip lengths differ")
         row = self.rows[self.clip]
-        source = SourceIdentity(self.clip, f"seed{request['seed']}_h{self.args.preview_frames}",
+        source = SourceIdentity(self.clip, f"seed{request['seed']}_h{self.args.preview_frames}_{self.tail_method}",
             "offline_replay_50hz_ns", "smpl24_world_m_wxyz", "offline_unverified", row["human"]["sha256"])
         self.timeline, self.last_admitted = PoseTimeline(source), -1
         return dict(result, preview=self.preview_config())
@@ -78,14 +102,15 @@ class PreviewSession(NativeSession):
         window = self.timeline.window(origin_ns=frame*DT_NS, control_ns=(frame+horizon)*DT_NS,
                                       preview_frames=horizon, max_capture_age_ns=10*DT_NS)
         started = time.perf_counter_ns()
-        action = self.preview(self.history.flat(), window, split_state(converted).body_quat[:, ANCHOR_IDX])
+        torso = split_state(converted).body_quat[:, ANCHOR_IDX]
+        goal, timing = preview_goal(window, self.tail_method)
+        action = self.preview(self.history.flat(), goal, torso)
         compute_ns = time.perf_counter_ns() - started
         self.frame += 1
         require(not torch.cuda.is_initialized(), "Preview CPU policy worker initialized CUDA")
         return dict(native_action=self.spec.translator.to_native_delta(action)[0].tolist(),
-            canonical_action=action[0].tolist(), stream=dict(window.timing(),
-                policy_prefix_frames=window.prefix_frames, measured_frames=sum(window.measured_mask),
-                provenance=window.provenance, used_sequences=window.used_sequences,
+            canonical_action=action[0].tolist(), stream=dict(timing,
+                policy_prefix_frames=(window.prefix_frames if self.tail_method == "masked" else 10),
                 cpu_policy_wall_compute_ns=compute_ns,
                 timing_clock_note="Replay schedule and wall compute use separate clocks; do not sum as measured latency"))
 
@@ -124,4 +149,5 @@ if __name__ == "__main__":
     for key in ("plan", "checkpoint", "frozen", "primebot-checkpoint", "morph-source", "primebot-source"):
         parser.add_argument("--" + key, type=Path, required=True)
     parser.add_argument("--preview-frames", type=int, choices=(1, 2, 4, 5, 10), required=True)
+    parser.add_argument("--tail-method", choices=TAIL_METHODS, default="masked")
     serve(parser.parse_args())

@@ -10,8 +10,9 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
-from preview_review import (HORIZONS, REQUIRED_CODE, TRAINING, execute, identity,
-                            validate_code_manifest, validate_stream)
+from preview_review import (COMMIT, FIXED, HORIZONS, REQUIRED_CODE, TRAINING, execute, identity,
+                            reusable_preview_baseline, validate_code_manifest, validate_stream)
+from preview_review import case_folder, comparison as compare_study
 from freeze_preview_code import published_manifest
 
 
@@ -21,7 +22,10 @@ def telemetry(horizon=4, frame=0):
         source_preprocessing="offline_unverified", measured_end_to_end_latency_ns=None,
         used_sequences=list(range(frame+1, frame+horizon+1)),
         provenance=["measured_exact"]*horizon + ["masked_hold_placeholder"]*(10-horizon),
-        measured_frames=horizon, observed_prefix_frames=horizon, cpu_policy_wall_compute_ns=1000)
+        measured_frames=horizon, observed_prefix_frames=horizon,
+        measured_mask=[True]*horizon + [False]*(10-horizon),
+        generated_mask=[False]*10, generated_slots=0, tail_method="masked",
+        forecast_method=None, cpu_policy_wall_compute_ns=1000)
 
 
 class PreviewReviewContractTests(unittest.TestCase):
@@ -91,7 +95,8 @@ class PreviewReviewContractTests(unittest.TestCase):
             validate_stream(telemetry(horizon), horizon, 0)
         value = telemetry()
         terminal = dict(value, used_sequences=[1, 2, 2, 2], measured_frames=2, observed_prefix_frames=2,
-            provenance=["measured_exact"]*2 + ["declared_clip_terminal_hold"]*2 + ["masked_hold_placeholder"]*6)
+            provenance=["measured_exact"]*2 + ["declared_clip_terminal_hold"]*2 + ["masked_hold_placeholder"]*6,
+            measured_mask=[True, True] + [False]*8, terminal_capture_ns=40_000_000)
         validate_stream(terminal, 4, 0)
         for bad in (dict(value, measured_end_to_end_latency_ns=80_000_000),
                     dict(value, used_sequences=[1, 2, 3, 5]),
@@ -103,9 +108,115 @@ class PreviewReviewContractTests(unittest.TestCase):
             with self.subTest(bad=bad["used_sequences"]), self.assertRaises(RuntimeError):
                 validate_stream(bad, 4, 0)
 
+    def test_causal_tail_telemetry_keeps_prediction_explicit(self):
+        value = telemetry(4)
+        value.update(tail_method="damped_cv", forecast_method="damped_cv",
+                     policy_prefix_frames=10, measured_preview_budget_ns=80_000_000,
+                     provenance=["measured_exact"]*4 + ["causal_forecast:damped_cv"]*6,
+                     measured_mask=[True]*4 + [False]*6,
+                     generated_mask=[False]*4 + [True]*6, generated_slots=6,
+                     bone_contact_constraints_applied=False)
+        validate_stream(value, 4, 0, "damped_cv")
+        with self.assertRaisesRegex(RuntimeError, "timing|masks|provenance"):
+            validate_stream(dict(value, provenance=["measured_exact"]*10), 4, 0, "damped_cv")
+
+    def test_worker_goal_metadata_round_trips_with_real_forecasts_and_terminal(self):
+        from dataclasses import replace
+        from preview_worker import preview_goal
+        from stream_contract import PoseTimeline
+        from test_causal_tail import linear_window
+        from test_stream_contract import SOURCE, sample, window
+
+        source = replace(SOURCE, preprocessing="offline_unverified")
+        terminal = PoseTimeline(source)
+        for i in range(5):
+            terminal.ingest(replace(sample(i), source=source, dependency_end_ns=None, terminal=i == 4))
+        ordinary = replace(linear_window(4), source=source)
+        for observed in (ordinary, window(terminal, 4)):
+            for method in ("masked", "hold", "cv", "damped_cv"):
+                _, value = preview_goal(observed, method)
+                value["cpu_policy_wall_compute_ns"] = 100
+                validate_stream(json.loads(json.dumps(value)), 4, 0, method)
+
+    def test_reuse_requires_completed_same_runtime_masked_baseline_and_local_traces(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary).resolve()
+            baseline = root / "data/supermimic_for_q1/masked"
+            baseline.mkdir(parents=True)
+            config, runtime, plan = (root / name for name in ("config.json", "runtime.json", "plan.json"))
+            for path in (config, runtime, plan):
+                path.write_text("{}")
+            inputs, checkpoint = [identity(config)], identity(plan)
+            audit = dict(records=[dict(robot="q1", checkpoint=checkpoint)])
+
+            def save(path, value):
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(json.dumps(value))
+
+            save(baseline / "authorization.json", dict(stage="LOW_LATENCY_PREVIEW_EXPLORATION",
+                original_training_commit=COMMIT, evaluation_commit="a"*40, plan=checkpoint,
+                training_source_inputs=inputs, controller_inputs=[identity(config), identity(runtime)]))
+            save(baseline / "checkpoint_audit.json", audit)
+            save(baseline / "equivalence.json", dict(status="PASSED", checkpoint=checkpoint))
+            save(baseline / "comparison.json", {})
+            completed = dict(status="COMPLETED", source_integrity="PASSED",
+                             comparison=identity(baseline / "comparison.json"))
+            save(baseline / "result.json", completed)
+            for horizon in (10, 5, 4):
+                for clip in FIXED:
+                    folder = baseline / f"h{horizon}" / clip / "review"
+                    trace = folder / (clip + "_s0") / "rollout.npz"
+                    trace.parent.mkdir(parents=True)
+                    trace.write_bytes(b"synthetic trace identity fixture")
+                    save(folder / "result.json", dict(status="PASSED", horizon_frames=horizon,
+                        interface="human", checkpoint=checkpoint, cases=[dict(clip=clip, seed=0,
+                        interface="human", trace=str(trace))]))
+            args = SimpleNamespace(baseline_output=baseline, output=root / "candidate",
+                                   config=config, runtime_config=runtime)
+            with patch("preview_review.ROOT", root), patch("preview_review.identity", side_effect=lambda path:
+                       checkpoint if path == TRAINING / "e1024_train_plan.json" else identity(path)):
+                self.assertEqual(len(reusable_preview_baseline(args, audit, inputs)), 23)
+                save(baseline / "result.json", dict(completed, status="FAILED"))
+                with self.assertRaisesRegex(RuntimeError, "incomplete provenance"):
+                    reusable_preview_baseline(args, audit, inputs)
+                save(baseline / "result.json", completed)
+                runtime.write_text('{"changed":true}')
+                with self.assertRaisesRegex(RuntimeError, "another plan, runtime"):
+                    reusable_preview_baseline(args, audit, inputs)
+
+    def test_forecast_comparison_uses_both_h10_and_same_buffer_masked_cases(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            output, baseline = root / "candidate", root / "masked"
+            output.mkdir()
+            checkpoint = dict(path="/audited/checkpoint", sha256="a"*64, bytes=1)
+            (output / "equivalence.json").write_text(json.dumps(dict(checkpoint=checkpoint)))
+            for directory, method, horizons in ((output, "damped_cv", (5, 4)),
+                                                (baseline, "masked", (10, 5, 4))):
+                for horizon in horizons:
+                    for clip in FIXED:
+                        path = case_folder(directory, horizon, clip, method) / "review/result.json"
+                        path.parent.mkdir(parents=True)
+                        case = dict(clip=clip, seed=0, interface="human", valid_steps=0,
+                            attempted_steps=1, reference_steps=10, complete=False, failure_frame=1,
+                            evaluation_randomization=False, reference_sha256="b"*64, trace="unused_fixture")
+                        path.write_text(json.dumps(dict(status="PASSED", horizon_frames=horizon,
+                            tail_method=method, checkpoint=checkpoint, cases=[case])))
+            args = SimpleNamespace(output=output, tail_method="damped_cv", baseline_output=baseline)
+            metrics = SimpleNamespace(compare=lambda a, b: dict(clip=a["clip"], seed=0, common_steps=0))
+            with patch("preview_review.require_plant"), patch.dict(sys.modules, metrics=metrics):
+                compare_study(args, {}, {}, {})
+            result = json.loads((output / "comparison.json").read_text())
+            self.assertEqual([(row["baseline_horizon"], row["candidate_horizon"])
+                              for row in result["comparisons"]], [(10, 5), (5, 5), (10, 4), (4, 4)])
+            self.assertTrue(all(row["status"] == "MISSING_COMPARABLE_PREFIX"
+                                and not row["common_prefix_metrics"] for row in result["comparisons"]))
+            self.assertFalse(result["natural_gait_qualified"])
+
 
 class PreviewControllerTests(unittest.TestCase):
-    def run_fixture(self, folder, runtime_text="Ran 1 test in 0.010s\n\nOK\n", fail_label=None):
+    def run_fixture(self, folder, runtime_text="Ran 1 test in 0.010s\n\nOK\n", fail_label=None,
+                    tail_method="masked"):
         source = folder / "source.py"
         source.write_text("# original source fixture\n")
         source_id = identity(source)
@@ -113,7 +224,8 @@ class PreviewControllerTests(unittest.TestCase):
         plan_path.write_text("{}")
         args = SimpleNamespace(child=None, output=folder / "preview", reuse_audit=source,
             code_manifest=source, manifest_sha256=source_id["sha256"], evaluation_commit="a"*40,
-            config=source, runtime_config=source)
+            config=source, runtime_config=source, tail_method=tail_method,
+            baseline_output=folder / "masked_baseline")
         runtime = dict(morph_python=sys.executable, primebot_python=sys.executable,
             ffmpeg="/existing/ffmpeg", graphics_dir="/existing/graphics")
         plan = dict(source="/frozen/morph")
@@ -141,6 +253,7 @@ class PreviewControllerTests(unittest.TestCase):
         with patch("preview_review.validate_code_manifest", return_value=[source_id]), \
                 patch("preview_review.preflight", return_value=({}, runtime, plan, {}, [source_id])), \
                 patch("preview_review.reusable_audit", return_value=dict(status="PASSED", iteration=16000)), \
+                patch("preview_review.reusable_preview_baseline", return_value=[source_id]), \
                 patch("preview_review.read", side_effect=read), \
                 patch("preview_review.identity", side_effect=lambda path: source_id if path ==
                       TRAINING / "e1024_train_plan.json" else identity(path)), \
@@ -168,6 +281,19 @@ class PreviewControllerTests(unittest.TestCase):
             self.assertFalse(result["final_acceptance"])
             self.assertEqual(dict(os.environ), before)
             self.assertTrue(all(signal.getsignal(number) == handler for number, handler in handlers.items()))
+
+    def test_forecast_study_runs_only_six_h4_h5_cases_after_reusing_masked_baseline(self):
+        for method in ("hold", "cv", "damped_cv"):
+            with self.subTest(method=method), tempfile.TemporaryDirectory() as temporary:
+                calls, result, error = self.run_fixture(Path(temporary), tail_method=method)
+                self.assertIsNone(error)
+                self.assertEqual(calls[:2], ["runtime", "equivalence"])
+                self.assertEqual(sum(name.endswith("_replay") for name in calls), 6)
+                self.assertEqual(sum(name.endswith("_media") for name in calls), 6)
+                self.assertFalse(any(name.startswith("h10_") for name in calls))
+                self.assertTrue(result["reused_masked_physics"])
+                self.assertEqual(result["tail_method"], method)
+                self.assertEqual(result["total_cases"], 6)
 
     def test_skipped_native_test_or_failed_phase_prevents_any_later_dispatch(self):
         for runtime_text, fail, expected in (

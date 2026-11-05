@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06 03:12低延迟goal实读active/最低今日10:00，不重建或结算。因果尾部hold/CV/damped接入独立worker/controller，保留十20ms槽及实测/生成来源、SO(3)、速度上限和显式片尾；masked仍15例，预测每方法强制复用已完成masked H10/H4/H5，仅新H4/H5六例并分别对H10/同缓冲比较。36本地检查34过2原运行时待服务器/0新物理optimizerCUDA，骨骼接触及自然性未验。最近01:33Windows认证后Broken pipe未取得shell/Linux，当前实时UNKNOWN/最后11月5日23:34各38600仅历史；本次未新认证，不循环或取存储凭据。22准入24GiB退出/18GiB80度1800秒3GiB和原V04/final/55672锁保持，无agent/其他自动任务变更/采纳null。发布独立40位远端与Mac、部署清单和服务器门以后续收据为准；入口Q1_HUMAN_PREVIEW_REVIEW及q1_causal_tail_controller_preparation。
+
 - 2026-11-06 01:33低延迟goal仍active/最低10:00，q1十分钟保持。新增独立human/H10-H5-H4-H2-H1 controller及Git代码清单工具，5本地检查过/33阶段编排仅夹具；真实原运行时和16000全片H10动作等价、15回放与GPU视频尚未执行。新入口每阶段验代码/配置/审计SHA，复用原双型16000审计；全局1800秒/3GiB输出/22准入24GiB退出/18GiB80度/100GiB余量，原训练/55672锁及final门保持，不争锁不停训。本轮一次桥接到Windows22密码提示、交互后Broken pipe255，未Windows shell或Linux；实时UNKNOWN/最后11月5日23:34各38600仅历史，不循环认证/换入口或存储凭证。下一项发布/真实清单，恢复后原设备/五PID-starttick/guard锁和全监督先于执行；未新物理optimizerCUDA/agent或改其他任务/采纳null。入口Q1_HUMAN_PREVIEW_REVIEW及controller_preparation；原流式发布b4ee3f5/收据f5a83e9独立远端Mac已齐，新发布以收据为准。
 
 - 2026-11-06 00:58低延迟长期goal保持active/最早10:00可考虑结算，q1十分钟同线程保持。目标184a3902cf4099030cfe132922b45e4e6f18afb6独立40位远端及6份549945B Mac镜像通过。新独立流式SMPL24时戳/可见前缀/过期丢包/显式离线片尾合同及human短预览策略RPC已实现，12本地检查过/1原运行时等价检查待服务器，0新物理optimizerCUDA；原训练源码/inference/final门未改，离线sidecar预处理因果性UNKNOWN/未称实测端到端延迟。下一项独立有界H10/H5/H4/H2/H1三片human controller；原运行时H10等价与原设备/训练/资源全门先行，复用原16000保存审计而非motion质量当human基线。一次原桥接恢复在Windows100.65.183.91:22超时255、未到认证/Linux，不循环认证/换入口；实时训练仍UNKNOWN，11月5日23:34各38600仅历史。未停重启/不争原锁/不新agent/其他自动任务不改/采纳null；入口Q1_TELEOP_STREAM_CONTRACT及long_term_plan，服务器镜像待恢复，后续发布以收据为准。

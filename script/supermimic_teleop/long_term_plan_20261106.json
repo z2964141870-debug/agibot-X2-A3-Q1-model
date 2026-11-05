@@ -33,7 +33,7 @@
     },
     {
       "id": "masked_horizon_replays",
-      "status": "CONTROLLER_LOCAL_5_CHECKS_PASSED_PENDING_SERVER_GATES",
+      "status": "CONTROLLER_LOCAL_CHECKS_PASSED_PENDING_SERVER_GATES",
       "controller_evidence": "logs/session_records/q1_human_preview_controller_preparation_20261106.json",
       "interface": "human",
       "horizons": [10, 5, 4, 2, 1],
@@ -41,11 +41,15 @@
     },
     {
       "id": "predictive_tail_replays",
-      "status": "PENDING_BASELINE",
+      "status": "LOCAL_CONTROLLER_READY_PENDING_SERVER_MASKED_BASELINE",
+      "controller_evidence": "logs/session_records/q1_causal_tail_controller_preparation_20261106.json",
       "buffer_frames": [4, 5],
-      "tail_methods": ["masked", "hold", "damped_cv", "learned_if_validated"],
+      "tail_methods": ["masked", "hold", "cv", "damped_cv", "learned_if_validated"],
+      "new_cases_per_fixed_tail_method": 6,
+      "requires_completed_masked_baseline": true,
+      "comparison_baselines": ["masked H10", "masked same buffer H4 or H5"],
       "damped_tau_s": 0.12,
-      "work": "Preserve ten 20ms slots; compare actual observations plus causal forecasts. Check pose/rotation, velocity, anchor and support consistency. Include noisy input, abrupt stops, reversals and loss."
+      "work": "Implemented explicit measured/generated masks, anchored position and SO(3) hold/CV/damped tails, terminal-boundary handling, six-case controller and H10/same-buffer comparisons. Full local teleop suite:36 total,34 passed,2 pinned-native tests pending. Require completed masked baseline, original identity/resources, published code and runtime/H10 action equality before server physics. Bone/contact constraints and stress/learned extensions remain unvalidated."
     },
     {
       "id": "bounded_predictor_training",

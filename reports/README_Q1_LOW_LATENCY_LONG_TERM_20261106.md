@@ -29,8 +29,8 @@
 | 阶段 | 状态 | 下一项可核验产物 |
 | --- | --- | --- |
 | 流式时序与因果合同 | 本地实现及12检查过；非上游因果性认证 | [时序/可见性/丢包/过期与显式片尾](README_Q1_TELEOP_STREAM_CONTRACT_20261106.md) |
-| 原生human短预览 | [独立controller本地5检查过](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)；服务器全门待 | 同权重、同物理、同片seed0的H10/H5/H4/H2/H1独立结果 |
-| 短缓冲加预测 | 待基线 | H4/H5下mask/保持/阻尼/合格学习预测的真实对照 |
+| 原生human短预览 | [独立controller本地验证过](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)；服务器全门待 | 同权重、同物理、同片seed0的H10/H5/H4/H2/H1独立结果 |
+| 短缓冲加预测 | controller本地可执行；完整teleop共36项、34通过2原运行时待验 | 每方法只新增H4/H5六例，复用masked H10及同缓冲基线，真实对照待服务器门 |
 | 小型因果预测训练 | 条件执行 | 完整留出片、明确预算、可复现训练与未触碰测试集 |
 | 因果学生/执行前馈 | 按失败证据选择 | 新版本接口/动力学与独立训练验证，不能直接改当前运行策略 |
 | 综合判定 | 待真实对照 | 延迟-跟踪-自然性、原速媒体、失败样例和可行性边界 |
@@ -64,3 +64,5 @@
 00:58已完成流式时序合同和独立human短预览策略/RPC实现，本地12检查通过、1原运行时等价检查待服务器，0新物理/训练/CUDA。一次原桥接恢复仍在Windows22端口超时，未到认证/Linux，实时训练继续UNKNOWN；不循环重试。下一项是独立有界评估controller，原运行时H10等价、完整现场和资源门过后再做H10/H5/H4/H2/H1真实比较。见[时序接口记录](README_Q1_TELEOP_STREAM_CONTRACT_20261106.md)，长期goal仍active，最早10:00才可考虑结算。
 
 01:33新增独立33阶段controller和Git代码清单工具，5本地检查通过；先原运行时检查及真实权重全片H10动作等价，再15个回放和各自GPU媒体，最后四组比较。未实际执行新物理/训练/CUDA。本轮Windows桥接到认证提示后Broken pipe，未取得shell/Linux，保持实时UNKNOWN而非训练失败；新任务尚未下发。下一步发布并生成真实清单，链路恢复后完整只读现场与原资源门先行。[入口和审计](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)。
+
+03:12因果尾部已接入独立预览 worker/controller并完成本地验证：默认 masked 仍为15例；`hold`、`cv`、`damped_cv` 在独立 `tail_<method>` 根仅新增H5/H4六例，要求已完成 `--baseline-output`，复用masked H10及同缓冲轨迹。保留10个20ms槽并逐槽记录实测/预测来源。36项检查中34通过、2项 pinned-runtime 因本机缺服务器资产跳过；未执行新物理、训练或CUDA。预测尾部没有接触/骨骼约束，不能据此宣称自然遥操改善；服务器桥接恢复后先清单、运行时、真实H10动作等价和资源门。本次实读原goal active，不重建或结算，最低执行时间仍10:00。[因果尾部实现与测试记录](README_Q1_HUMAN_PREVIEW_REVIEW_20261106.md)、[审计](../logs/session_records/q1_causal_tail_controller_preparation_20261106.json)。

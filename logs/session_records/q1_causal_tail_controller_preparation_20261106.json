@@ -1,0 +1,97 @@
+{
+  "stage": "Q1_CAUSAL_TAIL_CONTROLLER_LOCAL_PREPARATION",
+  "checked_local": "2026-11-06T03:12:41+08:00",
+  "goal_status_read": "active",
+  "minimum_execution_until": "2026-11-06T10:00:00+08:00",
+  "whole_goal_complete": false,
+  "interface": "human",
+  "checkpoint_iteration": 16000,
+  "tail_methods": ["hold", "cv", "damped_cv"],
+  "damped_tau_s": 0.12,
+  "target_offsets_ms": [20, 40, 60, 80, 100, 120, 140, 160, 180, 200],
+  "measured_buffers_frames": [5, 4],
+  "new_physical_cases_per_method": 6,
+  "new_videos_per_method": 6,
+  "guarded_phases_per_method": 15,
+  "default_masked_cases": 15,
+  "reuse": {
+    "requires_completed_masked_baseline": true,
+    "baseline_option": "--baseline-output",
+    "reused_horizons": [10, 5, 4],
+    "comparison_pairs": [[10, 5], [5, 5], [10, 4], [4, 4]],
+    "same_checkpoint_runtime_config_and_training_source_identity_required": true,
+    "baseline_sources_checked_after_execution": true,
+    "original_motion_replays_repeated": false,
+    "completed16000_save_audit_reused": true
+  },
+  "local_verification": {
+    "command": "python3 -m unittest discover -s script/supermimic_teleop -p 'test_*.py' -v",
+    "tests_run": 36,
+    "passed": 34,
+    "skipped": 2,
+    "failures": 0,
+    "elapsed_seconds": 0.125,
+    "compileall_passed": true,
+    "cli_help_passed": true,
+    "git_diff_check_passed": true,
+    "skipped_requirements": [
+      "test_preview_policy_runtime: pinned native Torch and Q1 assets",
+      "test_forecast_policy_runtime: pinned native Torch and Q1 assets"
+    ],
+    "checks_include": [
+      "hidden future poison leaves every forecast unchanged",
+      "measured prefix unchanged and generated slots explicitly labelled",
+      "SO(3) sign and pi-boundary behavior",
+      "linear and angular speed caps",
+      "declared terminal capture exactly at H4/H5 boundary does not extrapolate",
+      "forged terminal or inconsistent held provenance rejected",
+      "only six H4/H5 cases after completed masked baseline",
+      "H10 and matching-buffer comparison pairs with no invented valid prefix",
+      "runtime skip or phase failure prevents subsequent dispatch"
+    ],
+    "orchestration_and_comparison_tests_are_fixtures": true,
+    "new_robot_physics_steps": 0,
+    "new_optimizer_updates": 0,
+    "new_cuda_jobs": 0
+  },
+  "server_requirements_pending": [
+    "original boot/GPU/root and five PID/start ticks plus training lock",
+    "actual grouped metrics, log tails, checkpoint stats, cgroup/OOM/peaks/reclaim",
+    "published Git-derived evaluation code manifest and every file identity",
+    "pinned-native runtime test with zero skipped tests",
+    "actual16000 checkpoint H10 actions exactly equal original human interface",
+    "completed masked baseline before any forecast study",
+    "independent physics, sequential GPU EGL media and real comparisons"
+  ],
+  "resource_policy": {
+    "memory_admission_bytes": 23622320128,
+    "memory_exit_bytes": 25769803776,
+    "gpu_exit_mib": 18432,
+    "gpu_exit_c": 80,
+    "wall_seconds": 1800,
+    "maximum_output_bytes": 3221225472,
+    "reserve_disk_bytes": 107374182400,
+    "acquire_original_training_gpu_lock": false,
+    "training_signals_sent": 0,
+    "original_training_inputs_modified": false,
+    "original_final_cli_modified": false
+  },
+  "connection": {
+    "live_state": "UNKNOWN",
+    "last_successful_observation_local": "2026-11-05T23:34:47+08:00",
+    "last_known_iterations_per_robot": 38600,
+    "last_bridge_attempt_local": "2026-11-06T01:33:42+08:00",
+    "last_bridge_outcome": "Windows authentication prompt then Broken pipe; no Windows or Linux shell",
+    "new_authentication_attempts_this_stage": 0,
+    "credentials_written_or_mirrored": false,
+    "server_sync": "PENDING_ORIGINAL_BRIDGE_RECOVERY"
+  },
+  "limitations": [
+    "No real human-preview or causal-tail robot quality result yet",
+    "No bone or contact constraints and no learned forecaster",
+    "Offline source preprocessing causality remains unverified",
+    "H4/H5 80/100ms preview budgets are not measured end-to-end latency",
+    "Abrupt stop, reversal, noisy or dropped live input still require validation"
+  ],
+  "user_accepted_checkpoint": null
+}

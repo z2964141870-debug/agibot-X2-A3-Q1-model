@@ -20,6 +20,12 @@ def validate_window(window):
         raise ValueError("Missing preview provenance")
     if len(window.measured_mask) != SLOTS or any(type(value) is not bool for value in window.measured_mask):
         raise ValueError("Measured mask must contain ten boolean values")
+    if window.terminal_capture_ns is not None:
+        if window.source.preprocessing != "offline_unverified":
+            raise ValueError("Offline terminal capture cannot claim live measured input")
+        if type(window.terminal_capture_ns) is not int or \
+                not 0 <= window.terminal_capture_ns <= window.capture_cutoff_ns:
+            raise ValueError("Terminal capture must be an available explicit offline event")
     for i, kind in enumerate(window.provenance):
         if i < count:
             if kind not in ("measured_exact", "declared_clip_terminal_hold"):

@@ -1,0 +1,500 @@
+{
+  "stage": "Q1_ORIGINAL_WINDOWS_LINUX_BRIDGE_OBSERVATION_RECOVERED",
+  "recorded_beijing": "2026-11-06T12:28:14.249119+08:00",
+  "trigger": "User explicitly requested retrying the original Windows SSH route despite latency",
+  "status": "ORIGINAL_V04_TRAINING_LIVE_IDENTITY_VERIFIED",
+  "route": [
+    "Mac to yu@100.65.183.91:22",
+    "Windows native SSH root@59.77.15.15:25362"
+  ],
+  "session_id": 11925,
+  "windows_shell_obtained": true,
+  "linux_shell_obtained": true,
+  "connection_attempts": [
+    {
+      "session_id": 60155,
+      "result": "BROKEN_PIPE_EXIT255_AFTER_PASSWORD_SUBMISSION"
+    },
+    {
+      "session_id": 14548,
+      "result": "BROKEN_PIPE_EXIT255_AFTER_PASSWORD_PACKET_SENT"
+    },
+    {
+      "session_id": 11925,
+      "result": "PASSWORD_AUTHENTICATED_WINDOWS_THEN_ORIGINAL_LINUX"
+    }
+  ],
+  "successful_windows_options": {
+    "ConnectTimeout": 120,
+    "ConnectionAttempts": 1,
+    "IPQoS": "none",
+    "ServerAliveInterval": 120,
+    "ServerAliveCountMax": 3,
+    "NumberOfPasswordPrompts": 1,
+    "PreferredAuthentications": "password",
+    "PubkeyAuthentication": "no",
+    "KbdInteractiveAuthentication": "no"
+  },
+  "password_prompt_submitted_immediately_in_same_orchestration": true,
+  "authentication_material_persisted": false,
+  "transport_cause": "UNDETERMINED; successful final attempt used password-only and prompt-immediate submission; no causal attribution to one option",
+  "goal_status_read": "paused",
+  "action_scope": "Restore observation only; no resumption or dispatch of low-latency experiments",
+  "training_clarification": {
+    "original_primebot_q1": {
+      "state": "COMPLETED_EARLY_STOP",
+      "iterations": 10000
+    },
+    "original_morphmimic_shared": {
+      "started_beijing": "2026-11-04T11:06:15.946390+08:00",
+      "target_iterations_per_robot": 160000,
+      "observed_iterations_per_robot": 52450,
+      "restarted": false,
+      "description": "Previously authorized shared G1 and Q1 motion tracking, not low-latency teleoperation forecast training"
+    },
+    "independent_mac_upper_forecasters": {
+      "state": "COMPLETED",
+      "models": 3,
+      "optimizer_updates_total": 3000,
+      "scope": "Eight shoulder/elbow reference-angle prediction; not whole-body robot policy"
+    }
+  },
+  "new_training_or_evaluation_jobs": 0,
+  "training_signals_sent": 0,
+  "original_training_stopped_restarted_or_hot_edited": false,
+  "alternate_port_forward_or_socket": false,
+  "agents_created": 0,
+  "automation_changes": 0,
+  "snapshot_wire": {
+    "encoding": "zlib+base64 line-wrapped",
+    "decoded_bytes": 12700,
+    "sha256": "44913caaebbd25b9dd1b4f8276cba9d4d8df4ee11292599ce8021901f66444fb"
+  },
+  "snapshot": {
+    "checked_utc": "2026-11-06T04:28:14.249119+00:00",
+    "root": "/opt/data/private/ZHY",
+    "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+    "signals_sent_to_training": 0,
+    "gpu": {
+      "returncode": 0,
+      "stdout": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 16177, 51, 41, None",
+      "stderr": ""
+    },
+    "records": {
+      "pipeline.json": {
+        "bytes": 1729,
+        "sha256": "b6afbbc58c1287bd4c00e2237a94a71c96990af860c8c01a6915f8d9725fc1e1",
+        "mtime": 1793761574.910698,
+        "keys": [
+          "status",
+          "started_utc",
+          "code_commit",
+          "gate",
+          "automatic_formal_retry",
+          "profile_weights_reused",
+          "user_accepted_checkpoint",
+          "source_storage_budget_bytes",
+          "environments_per_robot",
+          "formal_plan",
+          "profile_audit",
+          "disk_budget",
+          "steady_iteration_seconds",
+          "iteration_only_hours_estimate"
+        ],
+        "value": {
+          "status": "TRAINING",
+          "started_utc": "2026-11-04T03:03:14.897335+00:00",
+          "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+          "automatic_formal_retry": false,
+          "profile_weights_reused": false,
+          "user_accepted_checkpoint": null
+        }
+      },
+      "e1024/train/status.json": {
+        "bytes": 501994,
+        "sha256": "fbd7202d4cc400a93f871de91dd854bdc6de30d69bf850061925295b852b06f4",
+        "mtime": 1793761576.7786899,
+        "keys": [
+          "status",
+          "started_utc",
+          "command",
+          "automatic_retry",
+          "user_accepted_checkpoint",
+          "inputs"
+        ],
+        "value": {
+          "status": "RUNNING",
+          "started_utc": "2026-11-04T03:06:15.946390+00:00",
+          "automatic_retry": false,
+          "user_accepted_checkpoint": null
+        }
+      },
+      "e1024/train/guard.json": {
+        "bytes": 2245,
+        "sha256": "a49736f94453707bc9ecb0111964632b4e6816147960b7bb07e2cde1e598904e",
+        "mtime": 1793939293.139391,
+        "keys": [
+          "status",
+          "command",
+          "cwd",
+          "started_utc",
+          "controller_pid",
+          "storage_status",
+          "last_storage_check",
+          "error",
+          "worker_pid",
+          "worker_group"
+        ],
+        "value": {
+          "status": "RUNNING",
+          "started_utc": "2026-11-04T03:06:16.787981+00:00",
+          "worker_pid": 55677,
+          "error": null
+        }
+      },
+      "e1024/train/memory.summary.json": {
+        "bytes": 2398,
+        "sha256": "3e4f693fcf90e439a2015ccc394b2270e576da687f89ee80a7a3bd4f4e60acf4",
+        "mtime": 1793939293.051392,
+        "keys": [
+          "status",
+          "controller_pid",
+          "controller_start_ticks",
+          "samples",
+          "observed_samples",
+          "history_size_bound_reached",
+          "maximum_total_bytes",
+          "maximum_cache_bytes",
+          "maximum_anonymous_rss_bytes",
+          "sample_at_maximum_total",
+          "training_status_inferred",
+          "signals_sent",
+          "optimizer_updates",
+          "note",
+          "history_bytes"
+        ],
+        "value": {
+          "status": "OBSERVING",
+          "controller_pid": 55672,
+          "controller_start_ticks": "7449427",
+          "samples": 13873,
+          "observed_samples": 85279,
+          "history_size_bound_reached": true,
+          "maximum_total_bytes": 25769373696,
+          "maximum_cache_bytes": 11621294080,
+          "maximum_anonymous_rss_bytes": 14027702272,
+          "sample_at_maximum_total": {
+            "status": "OBSERVED_LIVE",
+            "utc": "2026-11-05T04:27:31.997088+00:00",
+            "memory": {
+              "total_bytes": 25769373696,
+              "container_limit_bytes": 34292629504,
+              "immediate_headroom_bytes": 8523255808,
+              "guard_headroom_bytes": 6442881024,
+              "total_cache_bytes": 10452844544,
+              "total_rss_bytes": 14027186176,
+              "total_shmem_bytes": 32714752,
+              "total_dirty_bytes": 5677056,
+              "total_writeback_bytes": 2703360,
+              "oom_kill": 0,
+              "under_oom": 0
+            },
+            "processes": [
+              {
+                "pid": 55672,
+                "name": "python",
+                "state": "R",
+                "ppid": 54868,
+                "start_ticks": "7449427",
+                "VmHWM_bytes": 32747520,
+                "VmRSS_bytes": 32198656,
+                "RssAnon_bytes": 19623936,
+                "RssFile_bytes": 12574720,
+                "RssShmem_bytes": 0
+              },
+              {
+                "pid": 55677,
+                "name": "python",
+                "state": "S",
+                "ppid": 55672,
+                "start_ticks": "7449543",
+                "VmHWM_bytes": 22319104,
+                "VmRSS_bytes": 22319104,
+                "RssAnon_bytes": 10035200,
+                "RssFile_bytes": 12283904,
+                "RssShmem_bytes": 0
+              },
+              {
+                "pid": 55678,
+                "name": "python",
+                "state": "S",
+                "ppid": 55677,
+                "start_ticks": "7449555",
+                "VmHWM_bytes": 6223634432,
+                "VmRSS_bytes": 5836300288,
+                "RssAnon_bytes": 5040431104,
+                "RssFile_bytes": 694390784,
+                "RssShmem_bytes": 101478400
+              },
+              {
+                "pid": 55679,
+                "name": "python",
+                "state": "S",
+                "ppid": 55677,
+                "start_ticks": "7449555",
+                "VmHWM_bytes": 6043254784,
+                "VmRSS_bytes": 5747617792,
+                "RssAnon_bytes": 4971696128,
+                "RssFile_bytes": 692842496,
+                "RssShmem_bytes": 83079168
+              }
+            ]
+          },
+          "training_status_inferred": false,
+          "signals_sent": 0,
+          "optimizer_updates": 0,
+          "note": "The peak row contains one sampled cgroup breakdown; fields are read sequentially, not atomically. Process RSS can count shared mappings repeatedly.",
+          "history_bytes": 16776235
+        }
+      },
+      "e1024/train/memory_reclaim.json": null
+    },
+    "workers": {
+      "g1": {
+        "status": "RUNNING",
+        "robot": "g1",
+        "pid": 55678,
+        "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+        "formal_training": true,
+        "iterations_completed": 52450,
+        "optimizer_updates": {
+          "wm_opt": 524500,
+          "policy_opt": 50450,
+          "critic_opt": 1009000,
+          "kp_opt": 50450,
+          "critic_kp_opt": 1009000
+        },
+        "nonfinite_updates": {
+          "wm/nonfinite_steps": 0,
+          "policy/nonfinite_steps": 0,
+          "critic/nonfinite_steps": 0,
+          "kp/nonfinite_steps": 0,
+          "critic_kp/nonfinite_steps": 0
+        },
+        "collected_environment_transitions": 134681600,
+        "peak_cuda_allocated_bytes": 6766269952,
+        "peak_cuda_reserved_bytes": 7256145920,
+        "last_iteration_seconds": 3.213784855994163,
+        "elapsed_seconds": 177665.797983834,
+        "user_accepted_checkpoint": null
+      },
+      "q1": {
+        "status": "RUNNING",
+        "robot": "q1",
+        "pid": 55679,
+        "code_commit": "4bef63517164537a9074b7ce58f28e0da35ac8b5",
+        "formal_training": true,
+        "iterations_completed": 52450,
+        "optimizer_updates": {
+          "wm_opt": 524500,
+          "policy_opt": 50450,
+          "critic_opt": 1009000,
+          "kp_opt": 50450,
+          "critic_kp_opt": 1009000
+        },
+        "nonfinite_updates": {
+          "wm/nonfinite_steps": 0,
+          "policy/nonfinite_steps": 0,
+          "critic/nonfinite_steps": 0,
+          "kp/nonfinite_steps": 0,
+          "critic_kp/nonfinite_steps": 0
+        },
+        "collected_environment_transitions": 134681600,
+        "peak_cuda_allocated_bytes": 6766556160,
+        "peak_cuda_reserved_bytes": 7264534528,
+        "last_iteration_seconds": 3.21377377101453,
+        "elapsed_seconds": 177665.803093935,
+        "user_accepted_checkpoint": null
+      }
+    },
+    "processes": [
+      {
+        "pid": 54868,
+        "expected_start_ticks": "7431283",
+        "identity_matches": true,
+        "current": {
+          "pid": 54868,
+          "name": "python",
+          "state": "S",
+          "ppid": 11,
+          "start_ticks": "7431283",
+          "VmHWM_bytes": 32505856,
+          "VmRSS_bytes": 31043584,
+          "RssAnon_bytes": 19279872,
+          "RssFile_bytes": 11763712,
+          "RssShmem_bytes": 0
+        }
+      },
+      {
+        "pid": 55672,
+        "expected_start_ticks": "7449427",
+        "identity_matches": true,
+        "current": {
+          "pid": 55672,
+          "name": "python",
+          "state": "S",
+          "ppid": 54868,
+          "start_ticks": "7449427",
+          "VmHWM_bytes": 32747520,
+          "VmRSS_bytes": 32083968,
+          "RssAnon_bytes": 19623936,
+          "RssFile_bytes": 12460032,
+          "RssShmem_bytes": 0
+        }
+      },
+      {
+        "pid": 55677,
+        "expected_start_ticks": "7449543",
+        "identity_matches": true,
+        "current": {
+          "pid": 55677,
+          "name": "python",
+          "state": "S",
+          "ppid": 55672,
+          "start_ticks": "7449543",
+          "VmHWM_bytes": 22319104,
+          "VmRSS_bytes": 21843968,
+          "RssAnon_bytes": 10035200,
+          "RssFile_bytes": 11808768,
+          "RssShmem_bytes": 0
+        }
+      },
+      {
+        "pid": 55678,
+        "expected_start_ticks": "7449555",
+        "identity_matches": true,
+        "current": {
+          "pid": 55678,
+          "name": "python",
+          "state": "S",
+          "ppid": 55677,
+          "start_ticks": "7449555",
+          "VmHWM_bytes": 6223634432,
+          "VmRSS_bytes": 5819502592,
+          "RssAnon_bytes": 5023981568,
+          "RssFile_bytes": 694042624,
+          "RssShmem_bytes": 101478400
+        }
+      },
+      {
+        "pid": 55679,
+        "expected_start_ticks": "7449555",
+        "identity_matches": true,
+        "current": {
+          "pid": 55679,
+          "name": "python",
+          "state": "R",
+          "ppid": 55677,
+          "start_ticks": "7449555",
+          "VmHWM_bytes": 6043254784,
+          "VmRSS_bytes": 5704884224,
+          "RssAnon_bytes": 4929888256,
+          "RssFile_bytes": 691916800,
+          "RssShmem_bytes": 83079168
+        }
+      }
+    ],
+    "locks": [
+      "30: FLOCK  ADVISORY  WRITE 55672 103:07:116003074 0 EOF"
+    ],
+    "lock_fds": [
+      {
+        "fd": "3",
+        "target": "/opt/data/private/ZHY/data/supermimic_for_q1/.gait_goal01.gpu.lock",
+        "inode": 116003074
+      }
+    ],
+    "memory": {
+      "total_bytes": 22336016384,
+      "container_limit_bytes": 34292629504,
+      "immediate_headroom_bytes": 11956613120,
+      "guard_headroom_bytes": 9876238336,
+      "total_cache_bytes": 11052371968,
+      "total_rss_bytes": 10024144896,
+      "total_shmem_bytes": 32714752,
+      "total_dirty_bytes": 3919872,
+      "total_writeback_bytes": 3379200,
+      "oom_kill": 0,
+      "under_oom": 0
+    },
+    "disk_free_bytes": 220701302784,
+    "logs": {
+      "/opt/data/private/ZHY/logs/q1_shared_v04_controller_20261104.log": "",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024_train_controller.log": "",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/workers/g1.log": "[morphmimic] it 52350 | 0.28 it/s (0.337/1.785/1.399 s collect/wm/actor-critic) | env 1452/s imag 37183/s | wm loss 7.4975 bce 0.0000 pred8 0.2704 err8 pelvis 0.002 m joints 0.005 rad | J 9.5931 |g| 0.486 (max 1.29) critic 7.80e-04 V0 9.60 tclip 0.00% surv 1.000 | rew 0.0856 nret 0.777 eplen 119.7 fail 0 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.3069 act 0.0248 align 1.2248 tclip 0.00%\n[morphmimic]    g1 | wm loss 9.2897 pred8 0.1053 err8 pelvis 0.002 m joints 0.005 rad | J 9.6293 critic 8.22e-04 tclip 0.00% surv 1.000 | rew 0.0887 nret 0.825 eplen 129.9 fail 0 | align 1.915e-02 zdist 0.261 | kp tclip 0.00%\n[morphmimic]    q1 | wm loss 5.7054 pred8 0.4354 err8 pelvis 0.001 m joints 0.005 rad | J 9.5568 critic 7.39e-04 tclip 0.00% surv 1.000 | rew 0.0824 nret 0.737 eplen 111.1 fail 0 | align 1.915e-02 zdist 0.261 | kp tclip 0.00%\n[morphmimic] it 52400 | 0.32 it/s (0.321/1.584/1.260 s collect/wm/actor-critic) | env 1616/s imag 41359/s | wm loss 7.3130 bce 0.0000 pred8 0.2701 err8 pelvis 0.002 m joints 0.005 rad | J 9.5929 |g| 0.515 (max 0.648) critic 7.39e-04 V0 9.60 tclip 0.00% surv 1.000 | rew 0.0856 nret 0.784 eplen 121.4 fail 0 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.3109 act 0.0249 align 1.2217 tclip 0.00%\n[morphmimic]    g1 | wm loss 8.9844 pred8 0.1042 err8 pelvis 0.002 m joints 0.005 rad | J 9.6310 critic 7.24e-04 tclip 0.00% surv 1.000 | rew 0.0887 nret 0.839 eplen 131.7 fail 0 | align 1.917e-02 zdist 0.261 | kp tclip 0.00%\n[morphmimic]    q1 | wm loss 5.6415 pred8 0.4361 err8 pelvis 0.001 m joints 0.005 rad | J 9.5548 critic 7.54e-04 tclip 0.00% surv 1.000 | rew 0.0825 nret 0.736 eplen 112.4 fail 0 | align 1.917e-02 zdist 0.261 | kp tclip 0.00%\n[morphmimic] it 52450 | 0.30 it/s (0.324/1.656/1.313 s collect/wm/actor-critic) | env 1553/s imag 39747/s | wm loss 7.2093 bce 0.0000 pred8 0.2696 err8 pelvis 0.002 m joints 0.005 rad | J 9.5974 |g| 0.460 (max 0.669) critic 7.35e-04 V0 9.60 tclip 0.00% surv 1.000 | rew 0.0856 nret 0.780 eplen 118.7 fail 0 | nonfinite wm/pol/critic 0/0/0 | mem 6.30 GB | kp J 9.3041 act 0.0249 align 1.2381 tclip 0.00%\n[morphmimic]    g1 | wm loss 8.7559 pred8 0.1038 err8 pelvis 0.002 m joints 0.005 rad | J 9.6344 critic 7.34e-04 tclip 0.00% surv 1.000 | rew 0.0887 nret 0.828 eplen 127.4 fail 0 | align 1.902e-02 zdist 0.260 | kp tclip 0.00%\n[morphmimic]    q1 | wm loss 5.6628 pred8 0.4354 err8 pelvis 0.001 m joints 0.005 rad | J 9.5605 critic 7.36e-04 tclip 0.00% surv 1.000 | rew 0.0824 nret 0.739 eplen 111.3 fail 0 | align 1.902e-02 zdist 0.260 | kp tclip 0.00%\n",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/workers/q1.log": "+-------+------------------------+--------+\n\n[INFO] <NullCurriculumManager> (inactive)\n[INFO] <NullMetricsManager> (inactive)\n[INFO] <NullRecorderManager> (inactive)\nModule mujoco_warp._src.io cb0c74e load on device 'cuda:0' took 2.18 ms  (cached)\nModule _tile_cholesky_factorize_block__locals__kernel_a4efe1c6 08f9cd6 load on device 'cuda:0' took 33.14 ms  (cached)\nModule _tile_cholesky_solve_block__locals__kernel_48ae95c0 9ab99fc load on device 'cuda:0' took 32.20 ms  (cached)\n[morphmimic] q1 residual scale (one-step RMS of the warm-up replay): min 0.0001 median 0.0444 max 4.29\n"
+    },
+    "checkpoints": [
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/ckpt_0.pt",
+        "bytes": 114298955,
+        "mtime": 1793761596.9865956
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/ckpt_16000.pt",
+        "bytes": 342744431,
+        "mtime": 1793813512.2393515
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/ckpt_32000.pt",
+        "bytes": 342744431,
+        "mtime": 1793869893.9308016
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/ckpt_48000.pt",
+        "bytes": 342744431,
+        "mtime": 1793923803.6092575
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/g1/latest.pt",
+        "bytes": 342744431,
+        "mtime": 1793923804.077248
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_0.pt",
+        "bytes": 114299019,
+        "mtime": 1793761596.9905956
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_16000.pt",
+        "bytes": 342744495,
+        "mtime": 1793813512.263351
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_32000.pt",
+        "bytes": 342744495,
+        "mtime": 1793869893.9508014
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_48000.pt",
+        "bytes": 342744495,
+        "mtime": 1793923803.625257
+      },
+      {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/latest.pt",
+        "bytes": 342744495,
+        "mtime": 1793923804.185246
+      }
+    ],
+    "reclaim_files": []
+  },
+  "constraints": {
+    "final_five_stage_gates_preserved": true,
+    "user_accepted_checkpoint": null,
+    "new_quality_claim": false
+  },
+  "publication": {
+    "state": "PENDING_EXPLICIT_COMMIT_PUSH_REMOTE_AND_MIRROR_VERIFICATION",
+    "server_document_mirror": "PENDING"
+  }
+}

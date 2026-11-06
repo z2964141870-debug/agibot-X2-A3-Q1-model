@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06用户明确重试原Windows地址后，11925已交互密码直连Windows并原生25362进入原Linux；12:28:14实核boot/GPU/唯一根/原五PID启动tick及guard55672锁全部同。pipeline TRAINING/guard RUNNING，两型各52450/160000轮/134681600转移，五Adam524500-50450-1009000-50450-1009000/非有限0，GPU16177MiB51度None/总22336016384B/限34292629504B/余11956613120B/OOM0，ckpt48000及latest已在。没有重新开训：这是11月4日11:06启动的原MorphMimic G1+Q1动作跟踪共享训练；已完成Primebot10000轮和Mac上肢预测3000更新分开。goal本轮实读paused，本次仅恢复观察/新训练评估派发0/未恢复低延迟实验，不修改原训练或自动任务。成功参数和立即交互不据此认定故障单因，不循环认证/不存认证；入口q1_bridge_recovered_1228_20261106及CURRENT_STATE，发布和镜像以后续收据为准。
+
 - 2026-11-06 11:09用户追问桥接后有界实核：100.65.183.91:22 TCP和SSH握手成功；单次交互提交后立即Broken pipe255，86273已退，无Windows shell/未尝试Linux/上传派发0。故障仍在Mac→Windows认证后传输，不等于密码错误或Linux/训练停止，原V04实时UNKNOWN/最后11月5日23:34各38600仅历史。不循环认证/换端口转发/停止重启热改原训练，原final五阶段/低延迟待真人对照/采纳null保持；无goal-agent或自动任务变更，认证不记录。入口q1_bridge_auth_broken_pipe_1109_20261106及CURRENT_STATE，发布以实际收据为准。
 
 - 2026-11-06 10:01:12实核已过最低10:00/现goal仍active；q1保存ACTIVE十分钟同聊天原样，未新goal-agent/其他自动任务变更。独立MPS总3000更新及本地验证已结束：新paired控制/修订两模型各1000、各6Adam1000/均验证选800/风险.0536087对.0538523未赢；786源42220058B SHA同/CPU有限保存复读过/全14.965秒/RSS414908416B/MPSdriver28065792B/可用最低42%。三固定噪声片同目标修订p95降25%-29%、信号加速度p95降35%-41%，但干净均值增3.7%/最大丢帧修订仍大，不部署或判自然性。原human33例campaign未上传/全身GRU未真实训练/原V04实时UNKNOWN；保持原输入/锁/final五阶段/采纳null，后续真正可用桥接先完整身份现场资源门再实际对照，不重做既完实验/认证循环。入口Q1_LOW_LATENCY_FEASIBILITY、Q1_UPPER_CONSISTENCY_TRAINING及minimum_time_checkpoint；发布镜像以后续收据为准。

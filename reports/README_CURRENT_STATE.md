@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06 12:28：[原Windows和Linux桥接观察恢复](../logs/session_records/q1_bridge_recovered_1228_20261106.json)。用户明确重试后11925通过密码直连Windows/原生25362进入Linux，原boot/GPU/唯一根/五PID启动tick和guard55672锁同。原V04 TRAINING/RUNNING、两型各52450/160000轮/134681600转移、非有限0/OOM0，GPU16177MiB51度None/容器总22336016384B/限34292629504B/即时余11956613120B，48000保存已在。**没有重开训练**：原共享动作跟踪于11月4日11:06启动，之前Primebot10000轮和Mac上肢预测3000更新均已结束。goal实读paused，本次仅恢复观察/新训练评估任务0；实际human campaign仍未下发，原final五阶段及采纳null保持。下方11:09的UNKNOWN为历史，不据参数差异认定故障单因。
+
 2026-11-06 11:09：[用户追问后原桥接实核](../logs/session_records/q1_bridge_auth_broken_pipe_1109_20261106.json)。Mac→Windows100.65.183.91:22 TCP及SSH握手成功；单次交互提交后立即Broken pipe/255，86273已结束，没有Windows shell/未尝试Linux，不能判密码错误或训练停止。未上传派发/不循环认证或换入口；原V04实时UNKNOWN/最后11月5日23:34各38600仅历史。低延迟实际human对照仍待可用原桥接，原训练输入/锁/final五阶段与采纳null保持。
 
 2026-11-06研究：[四项简报](research/2026-11-06/README.md)/[检查](README_RESEARCH_CHECK_20261106.md)：DreamFree未来蒸馏、GRASP物理重定向、HALO分层控制、动作接口语义。106次尝试/97份完整200缓存，13固定文本96419B；main去重193→205/H001不变。仅文献及静态核验，未改训练/goal/自动任务；服务器Git未独立观察、镜像待，实际发布见[收据](../data/manifests/research_watch_sync_20261106.json)。

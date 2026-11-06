@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06 08:48官方HuMiT Code入口固定Track/ec9890b静态核：完整19树/8文件73768B Gitblob及SHA同；当前joint/velocity actor与priv critic分离，但公开main未齐论文稀疏配置/实时部署/权重。离线速度中心差分含t+1，不能以current索引名认证因果；不执行或安装作者环境。一次有界原桥接TCP22通、交互提示后Broken pipe255，未Windows/Linux shell/上传下发，不再循环认证；原训练实时UNKNOWN。抗噪结果f204983独立远端及Mac7份606603B核同，下一归纳可执行低延迟取舍及真实human/侧车/资源恢复门；goal active最低今日10:00，原V04/final/五阶段/采纳null保持，无agent其他任务变更。入口Q1_HUMIT_SOURCE_AUDIT及审计/上轮publication，新发布以后续收据为准。
+
 - 2026-11-06 08:29抗噪上肢探索真实拟合完成：预登记8b34bd0先push/独立远端及Mac5份24049B核同后才读数据；786输入42220058B SHA同，三新模型精确加入.01rad原始历史噪声风险/含最新锚点，验证0/.01/.02三档选noise_ridge1。复用test明确探索性；干净.046069/旧.039339退，iid.01新.049308对旧.068280/阻尼.063617改善，AR1/偏差/冻结未全面胜旧。7检查过/Mac1.215秒峰163528704B/0服务器机器人推理物理CUDA，模型未部署。原噪声解析81025bf独立远端/Mac10份612210B核同；下一实际动捕噪声校准/真正human对照和因果学生方案，原桥接实时UNKNOWN/不循环认证。goal active最低今日10:00、原V04/final/五阶段/采纳null保持，无agent其他任务变更；入口Q1_UPPER_NOISE_ROBUST及实际审计，发布以后续收据为准。
 
 - 2026-11-06 08:20已选上肢预测器噪声Jacobian解析实成：仅读原模型与结果/输入SHA前后同，80ms gain为ridge5.409对阻尼2.044，200ms6.745对2.769；期望噪声RMSE与既有ridge test最大相对差.192%，四方法最大.656%，解释退步不据test换参。4检查全过，Mac.009秒/峰30687232B，0原轨迹/拟合/机器人推理物理CUDA/新认证。旧相位诊断b70beee独立远端/Mac10份615036B核同；下一先固定抗噪规则再独立训练，原test已见明示探索性，不代真实human对照。goal active最低今日10:00，原V04/final/五阶段/采纳null保持，无agent其他任务改动；入口Q1_UPPER_FORECAST_SENSITIVITY及审计/前阶段publication，新发布以后续收据为准。

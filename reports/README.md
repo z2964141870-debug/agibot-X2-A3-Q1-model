@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06 08:48：[当前帧参考路线的官方公开代码核对完成](README_Q1_HUMIT_SOURCE_AUDIT_20261106.md)。Track/ec9890b完整19树/8文件73768B blob与SHA同；actor当前关节/速度、priv组分离，但完整稀疏配置/在线部署/权重未齐，离线速度中心差分仍读下一帧，不以current名认证因果。未安装执行或新物理训练CUDA；一次原桥接TCP通而交互提示后Broken pipe，未取得shell/下发，不循环认证，原训练实时UNKNOWN。抗噪结果f204983远端/Mac7份606603B齐；goal最低今日10:00保持。[审计](../logs/session_records/q1_humit_source_audit_20261106.json)。
+
 2026-11-06 08:29：[抗噪因果上肢预测真实训练完成](README_Q1_UPPER_NOISE_ROBUST_20261106.md)。预登记8b34bd0先公开核同/再读786份原交付SHA同；三新模型、验证三噪声档选noise_ridge1。探索性复用test下.01独立噪声新.049308对旧.068280/阻尼.063617rad；干净退步、AR1/固定偏差/冻结未全面胜旧，未部署或称自然性。7检查过/Mac1.215秒峰163528704B，0服务器机器人推理物理CUDA；真实human对照仍待桥接，goal最低今日10:00保持。[审计](../logs/session_records/q1_upper_noise_robust_20261106.json)。
 
 2026-11-06 08:20：[已选上肢预测器噪声放大解析完成](README_Q1_UPPER_FORECAST_SENSITIVITY_20261106.md)。80ms ridge增益5.409对阻尼2.044、200ms6.745对2.769，期望噪声RMSE与既有ridge test最大差.192%；解释原退步，不据test重选。4检查全过，Mac.009秒/峰30687232B，0原轨迹/拟合/机器人推理物理CUDA；下一先固定抗噪训练验证规则，原test已见须标探索性。旧相位诊断b70beee独立远端及Mac10份615036B核同，goal active最低今日10:00/原真实human对照仍待桥接。[审计](../logs/session_records/q1_upper_forecast_sensitivity_20261106.json)。

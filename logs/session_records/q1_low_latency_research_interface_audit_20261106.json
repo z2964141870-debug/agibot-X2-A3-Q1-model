@@ -1,0 +1,47 @@
+{
+  "stage": "PAUSED_TRAINING_CAUSAL_STUDENT_INTERFACE_REVIEW",
+  "date_beijing": "2026-11-06",
+  "method": "Manual source review plus Python AST parse and SHA256, without importing the inspected modules",
+  "sources": [
+    {"root": "MAC_MAIN", "path": "data/references/q1_native_eval_source_20261103/src/morphmimic/model/policy.py", "bytes": 13288, "sha256": "58b11d6c9625a5922768b052897ee851e3f00993a99849cff3ec964cb1ea940a", "classes": {"MotionEncoder": 51, "HumanEncoder": 63, "Decoder": 98, "Policy": 179}, "unchanged_after_parse": true},
+    {"root": "MAC_MAIN", "path": "data/references/q1_native_eval_source_20261103/src/morphmimic/model/human.py", "bytes": 16593, "sha256": "35e53541c4eb3ce65b2554024b005c762c85071c410fe5a136f5de33b3a690f8", "functions": {"sample_human_masks": 292, "fixed_human_masks": 339, "mask_human_goal": 355}, "unchanged_after_parse": true},
+    {"root": "Q1_REPO", "path": "script/supermimic_teleop/preview_policy.py", "bytes": 4136, "sha256": "21d9f172f606114dfcebdbd8d3cba798c4bb0c1a79b752b651052ffab1471cfb", "classes": {"HumanPreviewPolicy": 42}, "unchanged_after_parse": true},
+    {"root": "Q1_REPO", "path": "script/q1_five_stage/inference.py", "bytes": 7115, "sha256": "3eb2ccaab3e32dceb224bd553f1397375e2ded2e9bc91028df71e743cf4d18d0", "unchanged_after_parse": true},
+    {"root": "Q1_REPO", "path": "script/supermimic_teleop/preview_review.py", "bytes": 32424, "sha256": "e1209dbc3b974fa519c32d96666da2b14916c752c5883d3f4e97564584b31360", "functions": {"execute": 419}, "unchanged_after_parse": true},
+    {"root": "Q1_REPO", "path": "script/supermimic_teleop/preview_campaign.py", "bytes": 6646, "sha256": "ac8fa2859d3c3f36c2dacba0a550e5b244f2220d4184d1b7e306af8998562e5d", "functions": {"execute": 50}, "unchanged_after_parse": true}
+  ],
+  "verified_structure": {
+    "motion_goal_width": 670,
+    "human_masked_goal_width": 2254,
+    "native_robot_history_width": 930,
+    "canonical_action_width": 29,
+    "native_checkpoint_latent_width": "Read from checkpoint cfg; do not substitute the PolicyCfg default",
+    "motion_and_human_encoders_share_decoder": true,
+    "decoder_inputs": ["latent", "normalized robot history", "morphology buffer and optional FiLM"],
+    "new_student_normalization": "Fit new current/history features on train only; retain checkpoint robot normalization separately",
+    "mask_layout": "Separable Bx24 points, Bx10 frames and heading visibility; not an arbitrary Bx10x24 mask",
+    "full_training_branch_returns_full_horizon_before_preview_mix": true,
+    "H1_is_current_f0": false,
+    "old_preview_controller_hardcodes_16000": true,
+    "old_preview_controller_requires_active_original_training": true,
+    "old_preview_authorization_claims_guard_55672_gpu_lock": true
+  },
+  "proposed_student": {
+    "status": "DESIGN_ONLY_NOT_IMPLEMENTED_OR_TRAINED",
+    "inputs": ["available current human pose and causal human history", "robot observation history", "measurable packet age", "already committed actions when modeling execution delay"],
+    "outputs": ["new current/history latent", "original decoder action"],
+    "initialization": "Use audited candidate teacher and decoder; checkpoint32k is a candidate, not accepted final quality",
+    "supervision": ["teacher actions", "optional latent consistency ablation", "physical task objective on student-state rollouts"],
+    "causality": "Future only in teacher/critic/training labels; normalization, resampling, heading and velocity dependencies audited separately"
+  },
+  "paused_evaluation_entry": {
+    "implemented": false,
+    "required": ["verified user-pause receipt and original PIDs absent", "original boot/GPU/root and checkpoint/source identities", "nonblocking own GPU lock and no conflicting compute", "truthful checkpoint and lock-owner metadata", "22GiB initial and 24GiB exit cgroup limits", "18GiB GPU,80C and100GiB disk reserve", "bounded time and output with owned-worker cleanup"],
+    "original_final_cli_or_training_sources_modified": false
+  },
+  "model_loads": 0,
+  "training_updates": 0,
+  "physics_rollouts": 0,
+  "gpu_jobs": 0,
+  "user_accepted_checkpoint": null
+}

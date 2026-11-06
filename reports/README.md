@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06暂停后研究：[低延迟SuperMimic遥操专题](research/2026-11-06/LOW_LATENCY_SUPERMIMIC.md)已形成。十二项一手工作按六路线映射；优先同32k human短预览诊断，再研究f0当前目标+历史学生，另测接触预测/异步和执行补偿。源码与AST核两编码器共用解码器、旧campaign依赖在训guard且写死16k，暂停后需独立准入，尚未实现或下发。本轮无新训练/物理/测试重跑，原训练保持停止/采纳null；来源与接口审计在专题内，发布镜像见后续收据。
+
 2026-11-06 16:29：[按用户要求暂停原G1+Q1共享训练](README_Q1_SHARED_PAUSED_20261106.md)。最近收据各56600轮，已有16/32/48k/latest48k保留；原五PID全退出、GPU锁释放、显存1MiB/OOM0，无自动重启。后续按用户指定[research](research/README.md)继续低延迟遥操多方向研究与独立实验，原final门和采纳null保持。
 
 2026-11-06：[六宫图、36/36真实保存点对照已成：建议不为凑16万继续长跑](README_Q1_CHECKPOINT_CONVERGENCE_20261106.md)。两型motion/human的32k平均关节误差均低于48k，human还有滑移/侧倾回退；主要收益平台，32k列优先验收候选，非全库/自然步态合格。四训练六宫图/四物理对照及两human原速起走视频已Mac核SHA/目视和全解码，12段媒体均服务器NVIDIA EGL完成；余十MP4/训练PDF CSV待传。14:57原V04各55000轮健康，1024+1024总2048；未停训、改final或恢复paused低延迟goal。[结构化逐片汇总](../data/manifests/q1_checkpoint_convergence_summary_20261106.json)。

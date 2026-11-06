@@ -1,0 +1,167 @@
+{
+  "stage": "Q1_LOW_LATENCY_MULTI_ROUTE_RESEARCH_AFTER_USER_PAUSE",
+  "date_beijing": "2026-11-06",
+  "report": "reports/research/2026-11-06/LOW_LATENCY_SUPERMIMIC.md",
+  "scope": "Primary-paper method and limitation review, repository commit metadata, and local interface mapping; no new training or rollout",
+  "versions_are_intentionally_pinned_not_claimed_latest": true,
+  "sources": [
+    {
+      "id": "S01",
+      "title": "TWIST: Teleoperated Whole-Body Imitation System",
+      "url": "https://arxiv.org/html/2505.02833v1",
+      "year": 2025,
+      "sections_read": ["teacher and student training", "deployable SMPL conditions", "video pipeline and limitations"],
+      "transfer": "Current-goal student with teacher supervision and RL; measure frontend latency separately",
+      "boundary": "Current student does not imply a low-latency perception pipeline; reported video pipeline is about 0.9 seconds",
+      "repository_metadata": {
+        "repository": "YanjieZe/TWIST",
+        "commit": "42d8c134739eee51f28d7cc0ff72a86728afb8dc",
+        "committer_date_utc": "2025-11-01T16:51:29Z",
+        "audit_scope": "GitHub commits API metadata only; no complete source or runtime audit"
+      }
+    },
+    {
+      "id": "S02",
+      "title": "OmniH2O: Universal and Dexterous Human-to-Humanoid Whole-Body Teleoperation and Learning",
+      "url": "https://arxiv.org/html/2406.08858v1",
+      "year": 2024,
+      "sections_read": ["teacher and deployable student", "history and data aggregation", "teleoperation"],
+      "transfer": "History and student-state coverage for partial observations",
+      "boundary": "Cannot infer arbitrary unobserved operator intent or transfer platform-specific errors to Q1"
+    },
+    {
+      "id": "S03",
+      "title": "MaskedMimic: Unified Physics-Based Character Control Through Masked Motion Inpainting",
+      "url": "https://arxiv.org/html/2409.14393v1",
+      "year": 2024,
+      "sections_read": ["masked motion conditions", "partial-body and temporal constraints", "distillation and limitations"],
+      "transfer": "Explicit training on temporal masks rather than assuming short-preview competence",
+      "boundary": "Simulation character-control results are not Q1 natural-teleoperation acceptance",
+      "repository_metadata": {
+        "repository": "NVlabs/ProtoMotions",
+        "commit": "b43fc6fcfebb4996eb651dda8ea8ce981c5433a6",
+        "committer_date_utc": "2026-11-03T21:47:36Z",
+        "audit_scope": "Repository metadata only; does not establish exact paper reproduction or downloadable assets"
+      }
+    },
+    {
+      "id": "S04",
+      "title": "SONIC: Supersizing Motion Tracking for Natural Humanoid Whole-Body Control",
+      "url": "https://arxiv.org/html/2511.07820v1",
+      "year": 2025,
+      "sections_read": ["unified motion representation", "real-time teleoperation", "upper-current and lower-preview condition comparison"],
+      "transfer": "Train an explicit body-dependent time interface; preserve common root and heading semantics",
+      "boundary": "Current Q1 separable point/frame masks cannot express this interface; no Q1 hybrid evaluation performed",
+      "repository_metadata": {
+        "repository": "NVlabs/GR00T-WholeBodyControl",
+        "commit": "1e1ec4f5f27e6c3e03048f693bd7c60cce04afda",
+        "committer_date_utc": "2026-11-03T00:27:13Z",
+        "audit_scope": "Repository metadata only; no execution or weight download"
+      }
+    },
+    {
+      "id": "S05",
+      "title": "HuMiT: Low-Latency Whole-Body Humanoid Teleoperation via Compact Reference Tracking",
+      "url": "https://arxiv.org/html/2610.29903v1",
+      "year": 2026,
+      "sections_read": ["compact target and prediction encoding", "V-A and V-B latency comparison", "implementation limitations"],
+      "transfer": "Direct current-target policy and stage-specific timing",
+      "boundary": "Reuse prior Track source audit; central-difference velocities and incomplete public deployment prevent claiming audited causal deployment",
+      "previous_audit": "logs/session_records/q1_humit_source_audit_20261106.json"
+    },
+    {
+      "id": "S06",
+      "title": "ExtremControl: Low-Latency Humanoid Teleoperation with Scaled Velocity Feedforward",
+      "url": "https://arxiv.org/html/2602.11321v1",
+      "year": 2026,
+      "sections_read": ["SE(3) target and teacher/student", "reference velocity feedforward", "discrete control analysis"],
+      "transfer": "Separate target preview from execution response; validate velocity-consistent feedforward",
+      "boundary": "A changed controller changes dynamics and needs separate model/contact validation"
+    },
+    {
+      "id": "S07",
+      "title": "Real-Time Execution of Action Chunking Flow Policies",
+      "url": "https://arxiv.org/html/2506.07339v1",
+      "year": 2025,
+      "sections_read": ["asynchronous inference", "committed prefix and inpainting", "evaluation scope"],
+      "transfer": "Timestamped action commitments and non-rewritable executed prefixes",
+      "boundary": "Manipulation/chunking evidence; not a Q1 balance demonstration or a reason to replace a fast MLP with diffusion",
+      "repository_metadata": {
+        "repository": "Physical-Intelligence/real-time-chunking-kinetix",
+        "commit": "9296f31d62d5bfeb5779dcb2f9bcf71ca37f448b",
+        "committer_date_utc": "2025-12-08T05:32:55Z",
+        "audit_scope": "Simulation demonstrator repository metadata only; no runtime or full deployment audit"
+      }
+    },
+    {
+      "id": "S08",
+      "title": "Reinforcement Learning with Random Delays",
+      "url": "https://arxiv.org/html/2010.02966v1",
+      "year": 2020,
+      "sections_read": ["random-delay MDP and state augmentation", "delay-correcting actor-critic", "assumptions"],
+      "transfer": "Observation/action queues, state prediction, and delay-randomized robustness",
+      "boundary": "Robot-state delay compensation is different from human-intent prediction; robustness does not guarantee shorter response time"
+    },
+    {
+      "id": "S09",
+      "title": "Filter-Aware Fine-Tuning for Safe Humanoid Whole-Body Tracking",
+      "url": "https://arxiv.org/html/2610.02341v1",
+      "year": 2026,
+      "sections_read": ["IV dynamics, objective and information mismatches", "V filter-aware policy design", "VI metrics and evaluation"],
+      "transfer": "Fine-tune the policy with the fixed runtime CBF filter active, exposing constraints and correction history",
+      "boundary": "CoFiT means Constrained Filter-aware Tuning; it does not jointly learn the CBF filter, and it is not ordinary low-pass smoothing"
+    },
+    {
+      "id": "S10",
+      "title": "ASAP: Aligning Simulation and Real-World Physics for Learning Agile Humanoid Whole-Body Skills",
+      "url": "https://arxiv.org/html/2502.01143v1",
+      "year": 2025,
+      "sections_read": ["real-world dynamics alignment", "delta action model", "policy adaptation"],
+      "transfer": "Measure and model execution mismatch separately from target prediction",
+      "boundary": "No Q1 real-robot alignment data or transplanted residual model was validated"
+    },
+    {
+      "id": "S11",
+      "title": "1 Euro Filter",
+      "url": "https://gery.casiez.net/1euro/",
+      "year": 2012,
+      "sections_read": ["speed-adaptive cutoff", "jitter and lag tradeoff", "parameter guidance"],
+      "transfer": "Causal filtering baseline with explicit phase and stop/reversal measurements",
+      "boundary": "No universal optimal parameters and no zero-latency guarantee"
+    },
+    {
+      "id": "S12",
+      "title": "Metatron: A Promptable Whole-Body Execution Layer for Humanoids",
+      "url": "https://arxiv.org/html/2610.38027v1",
+      "year": 2026,
+      "sections_read": ["III-B body/time prompt interface", "III-C privileged posterior and deployable prior", "III-D masked on-policy distillation", "VI deployment scope"],
+      "transfer": "Per-target time and visibility encoding, with a generative prior when partial goals have multiple valid completions",
+      "boundary": "Paper method review only; code, weights, runtime and Q1 behavior not audited"
+    }
+  ],
+  "repository_metadata_query_until_utc": "2026-11-06T08:50:00Z",
+  "repository_metadata_failures": [
+    {
+      "repository": "Physical-Intelligence/real-time-chunking",
+      "http_status": 404,
+      "resolution": "Excluded guessed path; queried the paper-linked real-time-chunking-kinetix repository instead"
+    }
+  ],
+  "additional_previous_reading": [
+    {"name": "PredActor", "path": "reports/README_PREDACTOR_20261008.md", "location": "Mac main research archive; not present in this Q1 checkout", "new_source_audit": false},
+    {"name": "DreamFree, GRASP, HALO", "path": "reports/research/2026-11-06/README.md", "new_source_audit": false}
+  ],
+  "new_training_updates": 0,
+  "new_physics_rollouts": 0,
+  "new_gpu_jobs": 0,
+  "original_training_restarted": false,
+  "original_frozen_inputs_modified": false,
+  "original_final_gate_modified": false,
+  "user_accepted_checkpoint": null,
+  "app_goal_status_last_observed": "paused",
+  "app_goal_changed": false,
+  "automation_changed": false,
+  "new_agents": 0,
+  "primary_papers_are_author_reports_not_independent_reproductions": true,
+  "publication_receipt": "logs/session_records/q1_low_latency_research_publication_20261106.json"
+}

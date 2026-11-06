@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06暂停后：[低延迟多方向专题](research/2026-11-06/LOW_LATENCY_SUPERMIMIC.md)已写入用户指定research，十二项一手工作覆盖因果学生、训练短预览、预测/接触、异步、延迟补偿与约束协同。六份本地源码AST/SHA无变，确认可独立替换human编码器并复用动作解码器；当前full/H10未适配短窗，逐部位窗口需新接口。先做暂停后独立评估准入和32k human短窗对照，不直接运行写死16k/旧55672持锁的campaign。本轮0新训练/物理/GPU任务，原训练不重启、app goal最后paused、原final/采纳null保持。暂停7218236已独立40位远端和Mac7份621771B核同；本轮新研究发布/服务器镜像以后续收据为准。
+
 2026-11-06 16:29：[原共享训练已按用户要求暂停](README_Q1_SHARED_PAUSED_20261106.md)。原设备/五PID-starttick/guard锁及退出源码核同后，经controller既有handler停止，五PID与自有组全退/GPU锁释放/计算进程为空，显存1MiB/OOM0。最近周期收据各56600轮，磁盘latest仍48000，未导出后续内存；保留16/32/48k，不承诺精确续训。旧pipeline FAILED源自本次人工STOPPED_SIGNAL，非新训练故障，不重启或放宽原160k final。按新指令继续[research](research/README.md)低延迟多方向研究和独立实验；app goal最后paused，实际授权已恢复但不伪报元数据active。采纳null。[暂停凭据](../logs/session_records/q1_shared_user_pause_20261106.json)。1fe322c六记录服务器镜像完成回执已收，不重传原36例。
 
 2026-11-06：[六宫图/36例保存点对照完成，建议不为凑16万继续长跑](README_Q1_CHECKPOINT_CONVERGENCE_20261106.md)。80cbe26独立远端及Mac8份634316B、服务器11份75016B/13检查过后14:34:05派253425，14:45:08全部G1及12段GPU原速媒体完成；保留两失败根并复用18Q1/首G1，不重跑已完物理。两型×motion/human×16/32/48k×三固定片36/36完整，32→48k平均关节误差Q1+2.63/+2.92%、G1+2.38/+14.09%，human滑移/侧倾等亦回退；曲线近平台而WM仍小降。建议32k优先候选/扩大验收后决定收尾，不称统计收敛/自然步态合格，不自动停训或改final。四训练PNG、四物理PNG/PDF/CSV、四联系表和两human起走MP4已Mac整包/逐文件SHA及目视/两视频全解码齐，余十MP4仅服务器/训练PDF CSV待补。14:57:07原设备五PID/starttick/guard锁同、各55000轮/非有限OOM0/总23157530624限34292629504/GPU16177MiB53度None；1024+1024总2048。原V04仍运行/低延迟goal paused/采纳null，发布和小记录三端镜像以后续收据为准。[真实汇总](../data/manifests/q1_checkpoint_convergence_summary_20261106.json)。

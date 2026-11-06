@@ -23,3 +23,9 @@ Mac仅新增5检查全过、0跳过：精确缺六例/78复用、拒绝重复或
 01:11:28原会话89657成功返回原根/boot/GPU、旧训练与实验PID全退、STOPPED_SIGNAL、锁空/计算空；内存7751073792B/限34292629504B/OOM0，GPU1MiB26C，磁盘余187631718400B。两个新输出均不存在，原FAILED结果SHA不变。此为本次准入现场，不借旧传输会话失败泛化桥接不可达。
 
 [方案与现场收据](../logs/session_records/q1_event_missing6_preparation_20261107.json)。代码、README、索引和当前状态先按范围审计、commit/push origin Q1、独立40位远端及Mac大小SHA核同，再生成匹配新提交的代码清单，沿既有原生密码会话部署、仅做新增运行时检查与资源重核后单次派发。此时服务器新增训练仍0/4GPU小时未用，应用goal清除/用户采纳null，无新agent或其他任务变化。
+
+## 源码发布与部署包
+
+准备源码`5875596f1b37076fee8f2340ba0e064ff2998c3b`已显式push origin Q1并独立40位远端核同，9份673059B已与Mac主根逐份大小SHA匹配。原221执行文件本地逐份SHA同，新四文件均在原清单外。新[223项代码清单](../data/manifests/q1_event_missing6_code_20261107.json)只在旧221基础增加缺六例控制器及其检查，指向该已发布源码提交，41686B/SHA `e17c17444f46fc3a11a2ca3175fdba7b28605bbc7631d0d09a117aaac4813b99`。
+
+独立五成员代码包20082B/SHA `6c576620dcea58a7c3ee7c3b27148c017af4d32fcb9f4bf4b5e4e8d016872aaf`，包含四新Python文件与新清单；每成员普通文件、相对路径、大小SHA均已与工作副本匹配，不含认证或模型。服务器部署、运行时五检查与实际计时/物理尚待，不能据此称任务已运行。[发布与包收据](../logs/session_records/q1_event_missing6_source_publication_20261107.json)。

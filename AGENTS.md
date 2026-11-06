@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06 22:24:04已恢复并真正启动事件R2：上次未回执的dispatch/log/output及进程逐项确认不存在后，53096经原Windows和原生25362连续交互密码进入原Linux，原root/boot/GPU、原训练暂停/五PID退出、GPU锁与计算空核同；一次只读准入重核221执行来源/200冻结源码资产/46名义证据，未重复45个未变测试或27名义回放。控制器280863/start28796218已收到真实启动回执，初查RUNNING/equivalence/guard RUNNING；准入总7325794304B/限34292629504B/OOM0/GPU1MiB25度，动作门期GPU390MiB32度/总10182877184B/峰10728411136B。先七配置三片动作等价，再84合成事件物理及NVIDIA EGL原速媒体；原32k审计复用、原训练不重启、新训练更新0/final采纳null保持。首次原地址握手reset63204后唯一有界重连成功，不以此判断断联单因；goal最后blocked未更改/无agent或自动任务变化。
+
 - 2026-11-06准入5083f0e4e1e7853abf60b68487b0722fd652bd5b独立40位远端/Mac九份659497B核同后，88742提交新R2一次fresh log/output/receipt门Popen时Timeout255/无回显或PID收据，实际提交UNKNOWN；39270仅Windows亦Timeout255。本独立故障一次原生密码恢复89524在Windows提示立即提交后reset255，未Windows shell/Linux，不重复认证或换入口。R2实际进程/资源/物理UNKNOWN，不能当已启动/确定未启动，不重派。恢复先核q1_paused32k_event_r2_dispatch/log/新R2 result/PID-starttick，再原设备暂停锁资源；不重做45未变检查、27名义回放或用户人工缓存清理。后者12.7435→6.6210GB/OOM0及45服务器通过均已Mac有原始收据。原训练不重启/goal仍最后blocked未改/新训练派发0/final采纳null/无agent自动任务变更。入口q1_event_r2_dispatch_unacknowledged及Q1_LOW_LATENCY_EVENTS，服务器镜像待原密码会话。
 
 - 2026-11-06用户要求继续后88742原生两跳交互密码已进原Linux、39270仅Windows传输；原boot/GPU/root/五PID退/暂停/旧失败回收/锁compute空同。166d4e9修复三成员19114B已部署，45服务器检查全过/0跳/5.9007秒，221代码/200冻结源码资产/46名义证据同，R2未派发。用户随后明确先清缓存：持原锁一次8GiB advice/15秒上限、保护打开映射inode，实15.007秒/4723文件/范围6182023753B，total12743512064→6620999680/cache11480866816→5439537152/OOM0/余27671629824B；无大文件内容读取、删除、全局drop或训练信号，不恢复旧cache自动门。新收据11381B/SHA643795f0…9f8ab1原生SCP到Mac核同；旧6553B归档实SHA0f0a06d1ade4cc95873a5c80bcf271cd64c406469cc56f89014d13e767398a42/9成员同，旧65字符抄录错显式纠正。单条SCP故障不混成原会话失联，无换认证路线。下一发布准入后单派新R2先动作门再84事件，原训练暂停/新训练0/4GPU小时未用/final采纳null保持，goal最后工具blocked不伪报active，无agent或自动任务变更。入口Q1_LOW_LATENCY_EVENTS及q1_event_r2_recovery_transfer/user_manual_cache_reclaim，发布以随后收据为准。

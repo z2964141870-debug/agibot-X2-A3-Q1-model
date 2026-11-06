@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06 22:24:04已恢复并真正启动事件R2：上次未回执的dispatch/log/output及进程逐项确认不存在后，53096经原Windows和原生25362连续交互密码进入原Linux，原root/boot/GPU、原训练暂停/五PID退出、GPU锁与计算空核同；一次只读准入重核221执行来源/200冻结源码资产/46名义证据，未重复45个未变测试或27名义回放。控制器280863/start28796218已收到真实启动回执，初查RUNNING/equivalence/guard RUNNING；准入总7325794304B/限34292629504B/OOM0/GPU1MiB25度，动作门期GPU390MiB32度/总10182877184B/峰10728411136B。先七配置三片动作等价，再84合成事件物理及NVIDIA EGL原速媒体；原32k审计复用、原训练不重启、新训练更新0/final采纳null保持。首次原地址握手reset63204后唯一有界重连成功，不以此判断断联单因；goal最后blocked未更改/无agent或自动任务变化。 [原始启动收据](../logs/session_records/q1_paused32k_event_r2_dispatch_20261106.json) / [事件阶段](README_Q1_LOW_LATENCY_EVENTS_20261106.md)。
+
 2026-11-06最新：[缓存清理已完成，事件R2启动未获回执](README_Q1_LOW_LATENCY_EVENTS_20261106.md)。5083f0e独立40位远端/Mac九份659497B核同后，88742提交启动时Timeout255，39270亦失联；一次原生密码恢复89524在Windows密码后reset255/未Linux。R2实际提交与运行UNKNOWN，不重派；恢复先核精确收据/log/output/PID。45服务器检查和总量12.7435→6.6210GB清理实据保留，原训练不重启。[恢复点](../logs/session_records/q1_event_r2_dispatch_unacknowledged_20261106.json)。
 
 2026-11-06继续：[原生密码桥接恢复，事件修复45服务器检查及准入通过](README_Q1_LOW_LATENCY_EVENTS_20261106.md)。221代码/200冻结源码资产/46名义证据同，R2尚未派发。按用户新要求一次15秒项目文件页回收，总量12.7435→6.6210GB、cache11.4809→5.4395GB/OOM0，无删文件/内容读取或全局清理，例行cache策略未恢复。11381B新收据和原失败9成员已Mac核同；旧65字符归档SHA录入错误已纠正。原共享训练保持暂停；[清理记录](../logs/session_records/q1_user_manual_cache_reclaim_20261106.json) / [恢复交付](../logs/session_records/q1_event_r2_recovery_transfer_20261106.json)。

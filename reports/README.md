@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-11-06：[六宫图和Q1的16k/32k/48k真实对照已成，G1地面识别独立续查](README_Q1_CHECKPOINT_CONVERGENCE_20261106.md)。双型32k/48k审计、四训练六宫图、18完整Q1例及48k六GPU原速视频已成；G1首物理步前被冻结诊断错误拒绝静态terrain，失败保留/自有worker已回收。独立修正12本地检查过，原训练/final/paused低延迟goal不动；G1续跑和Mac交付、最终续训建议待实际结果。
+2026-11-06：[四训练六宫图、18完整Q1例已成，G1前走已通/重置上下文续查](README_Q1_CHECKPOINT_CONVERGENCE_20261106.md)。8514043静态地面修正已公开核远端/Mac/服务器并12运行时检查；14:18:21续派后G1的16k motion前走1031步完整，第二片reset暴露推理张量上下文错误，原结果保留复用。独立上下文修正13本地检查过/待服务器续跑，四PNG小包正通过既有11925交付；原V04/final/paused低延迟goal不动，最终续训建议待完整证据。
 
 2026-11-06 12:28：[原桥接恢复，原共享训练各52450轮](README_Q1_SHARED_TRAINING_20261104.md)。Windows密码直连及原生25362已进Linux，原设备/五PID-starttick/guard锁一致，非有限0/OOM0、48000保存已在。它是11月4日11:06开始的同一轮G1+Q1动作跟踪训练，没有重新开训；Primebot10000轮及Mac预测训练已结束。低延迟goal实读paused，本次仅恢复观察，新训练评估派发0。[原始现场](../logs/session_records/q1_bridge_recovered_1228_20261106.json)；原final五阶段/采纳null保持。
 

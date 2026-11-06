@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06 G1静态terrain修正8514043独立远端/Mac11份645206B同，服务器10份68405B/12检查及原保存场景静态检测过；14:18:21单次252090续跑成16k motion前走1031完整，第二片reset因推理张量上下文外原位更新失败。已有18Q1/首G1结果及两失败根保留，新独立整例inference_mode和首例checkpoint/scene/来源/trace严格复用，13本地检查过，发布/服务器验证派发待；共原7200秒3GiB不扩，无训练或冻结1793输入/final/paused goal/自动任务变更。四PNG/JSON小包1022697B经11925分块交付中，不据传输/训练loss称自然性；本轮重要记录入口Q1_CHECKPOINT_CONVERGENCE，后续结果/镜像以实收据为准。
+
 - 2026-11-06保存点收敛检查真实Q1阶段已成：c9ca15e于13:48:21派发246946，32k/48k双型审计、四训练六宫图/共享至53900、五新Q1组三片及48k六NVIDIA EGL媒体已成，复用16k motion共18完整例。G1首物理步前被原诊断geom_bodyid==0错误拒绝body1静态terrain水平z0，250541退出1/回收；原失败保留/峰25417736192B低24GiB/训练信号0。native_review/metrics属于1793冻结输入不改，独立native_cpu仅换静态焊接平面识别并AST核其余rollout同；resume_g1仅续缺少G1/合计7200秒3GiB，12本地检查过，发布/服务器检查派发待。Mac六宫图/媒体交付待，原V04/final门/paused低延迟goal/采纳null保持，不自动停训或新agent自动任务。入口Q1_CHECKPOINT_CONVERGENCE，后续发布以实收据为准。
 
 - 2026-11-06用户明确授权先补本次Primebot/共享G1+Q1六宫图，并以现有16000/32000/48000保存点同条件motion/human和G1检查后提出是否接近收敛、是否有必要续训的结论。新增独立script/q1_checkpoint_review，不改原interim16000授权或final正式完成门，不恢复paused低延迟goal，不自动停原训练。复用16k已完motion/双型审计，仅新审计32k/48k和缺少的回放；优先NVIDIA EGL媒体，原guard持锁时CPU隔离推理/物理、不争计算锁。22GiB准入/24GiB退出/18GiB80度/100GiB/每阶段1800秒总7200秒3GiB保持；G1尝试同原生场景CPU Warp，未真实执行前不预称可用或与GPU等价。曲线缺项保留、500iteration按真实回合加权，先固定逐片比较尺度；本条仅准备，实际派发结果与发布镜像以后续收据为准。

@@ -201,13 +201,35 @@ def g1_cpu(args, config, runtime, plan, frozen):
         scene = directory / "scene.mjb"
         mujoco.mj_saveModel(env.sim.mj_model, str(scene), None)
         result["scene"] = identity(scene)
+        prior = None
+        if args.reuse_g1_output is not None:
+            prior_path = args.reuse_g1_output / "g1_native_cpu" / str(args.iteration) / "result.json"
+            if prior_path.is_file():
+                prior = read(prior_path)
+                require(prior["iteration"] == args.iteration and prior["robot"] == "g1"
+                        and prior["checkpoint"] == checkpoint and prior["plant"] == result["plant"]
+                        and prior["scene"]["sha256"] == result["scene"]["sha256"], "Reused G1 physical context changed")
+                require(identity(prior["scene"]["path"]) == prior["scene"], "Reused G1 scene changed")
+                result["reused_source"] = identity(prior_path)
+                result["reused_traces"] = [identity(row["trace"]) for row in prior["cases"]]
+        existing = {(row["interface"], row["clip"]): row for row in prior["cases"]} if prior else {}
+        require(not prior or len(existing) == len(prior["cases"]), "Duplicate reused G1 case")
         for interface in INTERFACES:
             for item in fixed_rows(frozen):
                 name = Path(item["g1"]["path"]).stem
                 for key in ("g1", "human"):
                     require(identity(item[key]["path"]) == item[key], "G1 reference changed")
-                result["cases"].append(rollout(env, actor, spec, item, interface, 0, directory / interface / (name + "_s0")))
+                saved = existing.get((interface, name))
+                if saved is not None:
+                    require(saved["seed"] == 0 and saved["reference_sha256"] == item["g1"]["sha256"]
+                            and saved["human_sha256"] == item["human"]["sha256"], "Reused G1 fixed reference changed")
+                    result["cases"].append(saved)
+                else:
+                    # Native action buffers created during step must also reset in inference mode.
+                    with torch.inference_mode():
+                        result["cases"].append(rollout(env, actor, spec, item, interface, 0, directory / interface / (name + "_s0")))
                 save(directory / "progress.json", result)
+        require(all(identity(row["path"]) == row for row in result.get("reused_traces", [])), "Reused G1 trace changed")
         require(not torch.cuda.is_initialized() and identity(checkpoint["path"]) == checkpoint, "G1 isolation or identity changed")
         result.update(status="PASSED", complete_cases=sum(r["complete"] for r in result["cases"]), cuda_initialized=False)
     finally:
@@ -388,6 +410,7 @@ def execute(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__, allow_abbrev=False)
+    parser.add_argument("--reuse-g1-output", type=Path)
     for name in ("config", "runtime-config", "output"):
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument("--evaluation-commit", required=True)

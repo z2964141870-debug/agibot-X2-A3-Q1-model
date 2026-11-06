@@ -35,6 +35,20 @@ class NativeCpuTests(unittest.TestCase):
                 node.id = "ContactLoads"
         self.assertEqual(ast.dump(original, include_attributes=False), ast.dump(repair, include_attributes=False))
 
+    def test_consecutive_native_action_resets_share_inference_context(self):
+        import torch
+        def replay(state):
+            state["action"][:] = 0
+            state["action"] = torch.ones(1)
+        state = dict(action=torch.zeros(1))
+        with torch.inference_mode():
+            replay(state)
+        with self.assertRaisesRegex(RuntimeError, "outside InferenceMode"):
+            replay(state)
+        with torch.inference_mode():
+            replay(state)
+            replay(state)
+
 
 if __name__ == "__main__":
     unittest.main()

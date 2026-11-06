@@ -33,6 +33,21 @@ def source_ready(source):
 
 def execute(args):
     old_groups = source_ready(args.source_output)
+    reused_g1 = 0
+    if args.reuse_g1_output is not None:
+        state = read(args.reuse_g1_output / "status.json")
+        require(state["status"] == "FAILED" and state["phase"] == "g1_16000_motion"
+                and len(state["phases"]) == 1, "Require the preserved first-case reset failure")
+        guard = read(state["phases"][0]["guard"]["path"])
+        require(guard["status"] == "WORKER_FAILED" and guard["cleanup"]["worker_reaped"] is True,
+                "Prior G1 worker cleanup incomplete")
+        require("Inplace update to inference tensor outside InferenceMode" in (
+            args.reuse_g1_output / "g1_16000_motion.log").read_text(), "Different G1 continuation failure")
+        require(read(args.reuse_g1_output / "source_integrity.json")["passed"] is True,
+                "Prior G1 frozen-input integrity failed")
+        saved = read(args.reuse_g1_output / "g1_native_cpu/16000/result.json")
+        require(len(saved["cases"]) == 1 and saved["cases"][0]["interface"] == "motion", "Unexpected reused G1 case set")
+        reused_g1 = len(saved["cases"])
     config, runtime, plan, frozen, sources, reused = preflight(args)
     audits = {iteration: read(checkpoint_audit(args.source_output, iteration)) for iteration in ITERATIONS}
     for iteration in ITERATIONS:
@@ -53,7 +68,8 @@ def execute(args):
         source_output=str(args.source_output), new_training=False, original_training_inputs_modified=False,
         correction="Static terrain may be in a body welded to world; require world-horizontal plane at z0",
         frozen_native_evaluator=identity(HERE.parent / "q1_five_stage/native_review.py"),
-        g1_steps_previously_completed=0, reused_q1_cases=18, optimizer_updates=0, training_signals_sent=0,
+        reused_g1_cases=reused_g1, reused_g1_output=str(args.reuse_g1_output) if args.reuse_g1_output else None,
+        reused_q1_cases=18, optimizer_updates=0, training_signals_sent=0,
         final_acceptance=False, user_accepted_checkpoint=None))
     env = dict(os.environ, CUDA_VISIBLE_DEVICES="", OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1",
         MKL_NUM_THREADS="1", MALLOC_ARENA_MAX="1", MALLOC_TRIM_THRESHOLD_="131072", MALLOC_MMAP_THRESHOLD_="131072",
@@ -72,8 +88,8 @@ def execute(args):
     budget.started -= elapsed
     original_check = budget.check
     def check():
-        require(allocated_tree(args.source_output)["unique_allocated_bytes"]
-                + allocated_tree(args.output)["unique_allocated_bytes"] < 3 * GIB,
+        roots = [args.source_output, args.output] + ([args.reuse_g1_output] if args.reuse_g1_output else [])
+        require(sum(allocated_tree(root)["unique_allocated_bytes"] for root in roots) < 3 * GIB,
                 "Combined original and continuation output budget exceeded")
         return original_check()
     budget.check = check
@@ -89,6 +105,8 @@ def execute(args):
                 "--iteration", str(iteration), "--interface", "motion", "--config", str(args.config),
                 "--runtime-config", str(args.runtime_config), "--output", str(args.output),
                 "--evaluation-commit", args.evaluation_commit]
+            if args.reuse_g1_output is not None:
+                command.extend(("--reuse-g1-output", str(args.reuse_g1_output)))
             budget.phase_started = time.monotonic()
             result = guarded_run(command, ROOT, budget, args.output / (label + ".guard.json"),
                 args.output / (label + ".log"), check_interval_s=.5, grace_s=5, stop_requested=lambda: requested)
@@ -122,4 +140,5 @@ if __name__ == "__main__":
     for name in ("config", "runtime-config", "source-output", "output"):
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument("--evaluation-commit", required=True)
+    parser.add_argument("--reuse-g1-output", type=Path)
     execute(parser.parse_args())

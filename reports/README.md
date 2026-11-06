@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-07：[低延迟学生输入、离线插值可见性和冻结解码器训练核心](README_Q1_LOW_LATENCY_STUDENT_20261107.md)已实现，本地21检查全过；H1与f0独立，未来根／heading不可泄漏、包龄／跨片／停止反向丢包和梯度已核。真实32k训练0，待collector／有界controller／成本账本、原运行时与资源准入；新事件种子及≤4GPU小时方案已登记。原共享训练保持暂停；上次profile／cache派发仍待服务器回执，不重发。
+
 2026-11-07：[低延迟SuperMimic工作要求、三系统源码对照与新长期目标](README_Q1_LOW_LATENCY_REBASE_20261107.md)。采用用户nessary.yaml脱敏约定；核SONIC四帧80ms专用权重、TWIST当前／历史学生与GigaBrain未来窗口／BWM性质。先复用教师／世界模型／解码器进行短预览和f0历史适配，再做小成本消融，新增训练首轮≤4GPU小时。原训练暂停；新goal以本次用户授权及工具收据为准。[详细研究](research/2026-11-07/LOW_LATENCY_SUPERMIMIC_REBASE.md)。
 
 2026-11-07：[Q1事件CPU/GPU分段计时有界方案](README_Q1_EVENT_PROFILE_20261107.md)已实现，五项新本地检查通过；仅四条保存状态前缀、总512调用上限、逐帧动作等价先行，不新增物理或训练，尚待发布/部署/真实准入。

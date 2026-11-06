@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07 04:47：[短预览／f0历史学生独立输入与可训练核心已实现](README_Q1_LOW_LATENCY_STUDENT_20261107.md)，本地21检查过／0跳过／六AST同；保留120→50Hz插值右支持，未就绪帧不冒称当前或完整H4。R1全24点时间mask／R2小MLP均冻结共享解码器，唯一CPU随机夹具一步SGD不是32k训练；真实新服务器训练0／4GPU小时未用。新事件种子已登记，collector／controller／成本账本和原运行时动作等价待补。上一profile／cache提交仍UNKNOWN，原226源码不动／不重发／本阶段新SSH0，原训练保持暂停，goal继续active／final和采纳null保持。[准备收据](../logs/session_records/q1_student_local_preparation_20261107.json)。
+
 2026-11-07 04:05：新低延迟goal已工具创建active；旧q1被应用证实不存在，才创建同名q1／ACTIVE十分钟同聊天并本地独立核，其他任务未改。03:42原身份／训练暂停／旧五PID退／锁计算空／OOM0实核；后41828及有界35438原样入口都进过Linux，但profile派发与缓存边界提交未获回执即客户端Timeout255退出。实际执行UNKNOWN／不重发，恢复先读dispatch/log/result及缓存收据；新训练仍0，原训练不恢复。[恢复记录](../logs/session_records/q1_rebase_profile_unacknowledged_20261107.json)。
 
 2026-11-07用户重新定向：[低延迟SuperMimic＋SONIC／TWIST／GigaBrain研究与新目标](README_Q1_LOW_LATENCY_REBASE_20261107.md)。已静态核三官方固定提交：SONIC独立4帧80ms权重，TWIST最新目标＋历史部署，GigaBrain论文未来窗口与代码streamed历史锚点分开。先短预览训练适配／f0历史学生，再消融速度误差与辅助预测；首轮新增训练≤4GPU小时、原共享训练暂停不恢复。用户明确授权新goal，覆盖下方旧清除约束；工具实况见新目标收据。nessary.yaml作为基本工作要求脱敏采用／不复制认证。分段profiler已6682a81发布部署及五服务器检查过、a4dd3a0独立远端同，但重新定向前未派发／真实新调用0；新目标先完成此有界测量，不重跑84。[研究设计](research/2026-11-07/LOW_LATENCY_SUPERMIMIC_REBASE.md)。

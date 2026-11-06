@@ -1,0 +1,106 @@
+{
+  "schema": "q1_low_latency_student_plan_v1",
+  "status": "PREPARED_NOT_ADMITTED",
+  "teacher_iteration": 32000,
+  "teacher_role": "research_candidate_not_accepted",
+  "teacher_training_root": "data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104",
+  "teacher_training_remains_paused": true,
+  "original_final_gate_unchanged": true,
+  "source_split": {
+    "path": "data/manifests/q1_teleop_forecast_split_20261106.json",
+    "sha256": "f40c1d5a856a08d89f1a8c23dfe6d990fc7439232b9da9a658d9860456353145",
+    "train_clips": 167,
+    "validation_clips": 98,
+    "test_clips": 128,
+    "teacher_has_seen_all_393": true,
+    "previously_viewed_test_is_exploratory": true,
+    "unseen_whole_policy_claim_allowed": false
+  },
+  "data": {
+    "student_preprocessing": "select available raw support before coordinates and statistics",
+    "stored_human_resampling": "pinned120to50Hz_right_support_is_a_dependency",
+    "unknown_dependency": "reject",
+    "history_order": "oldest_first_current_last",
+    "history_frames": 10,
+    "current_geometry": "216 history-relative features + absolute root height + robot-relative Spine3 rot6d",
+    "current_frame_dimensions": 226,
+    "current_extra_features": ["valid", "exact_capture", "capture_age_seconds"],
+    "direct_reference_velocity_input": false,
+    "maximum_capture_age_ms": 200,
+    "terminal_training_padding": false,
+    "normalization": "frozen native for R1; valid train-only geometry223 minimum scale0.01 clip10 for R2",
+    "teacher_future": "separate labels only; same robot state/history and reference anchor",
+    "robot_states": "actual teacher or student rollouts; never ideal reference relabeled physical states",
+    "maximum_training_records": 8192,
+    "maximum_validation_records": 2048,
+    "maximum_dataset_bytes": 268435456,
+    "normalization_test_fitting_allowed": false
+  },
+  "r1": {
+    "maximum_gpu_seconds": 2700,
+    "initialization": "copy actual checkpoint human encoder",
+    "temporal_horizons": [10, 5, 4, 2, 1],
+    "points": "all24 always",
+    "sampling": "equal requested horizons; log actual visible prefix histogram separately",
+    "loss": "mean action distillation on present canonical joints",
+    "decoder_and_world_model": "frozen unchanged copies",
+    "optimizer": "Adam",
+    "learning_rate": 0.0001,
+    "maximum_updates": 20000,
+    "batch_size": 128,
+    "gradient_norm_limit": 1.0,
+    "initial_validation_then_every_updates": 500,
+    "selection": "validation only; no test-based model choice"
+  },
+  "r2": {
+    "maximum_gpu_seconds": 4500,
+    "encoder": "2260-256-128-latent, ELU/tanh; latent read from actual checkpoint",
+    "initial_decoder": "copy original shared decoder and freeze first",
+    "human_real_future_frames": 0,
+    "teacher_labels": "privileged H10 allowed during training only",
+    "student_state_aggregation": "only if behavioral cloning covariate shift warrants it, within budget"
+  },
+  "r3": {
+    "maximum_gpu_seconds": 7200,
+    "allowed_single_changes": ["tracking_error_derivative_objective", "next_state_or_contact_auxiliary"],
+    "must_have_matched_control_and_exposure": true,
+    "full_gigabrain_recipe": false
+  },
+  "budget": {
+    "total_new_server_gpu_training_seconds": 14400,
+    "used_server_gpu_training_seconds": 0,
+    "teacher_collection_within_respective_stage_wall_budget": true,
+    "persistent_cost_ledger_required_before_launch": true,
+    "batch_cpu_contract_updates_do_not_count_as_server_training": true
+  },
+  "event_preregistration": {
+    "stage": "seeds_only_outcomes_not_read",
+    "train_seed": 2026110701,
+    "validation_seed": 2026110702,
+    "test_seed": 2026110703,
+    "kinds": ["stop", "reverse", "dropout", "late_burst"],
+    "first_frame_fraction": [0.25, 0.65],
+    "duration_frames": [2, 15],
+    "transport_frames": [0, 3],
+    "test_thresholds_locked_after_validation_before_test": true
+  },
+  "resource_gates": {
+    "cgroup_admission_bytes": 23622320128,
+    "cgroup_exit_bytes": 25769803776,
+    "gpu_exit_bytes": 19327352832,
+    "gpu_temperature_max_c": 80,
+    "minimum_disk_free_bytes": 107374182400,
+    "project_disk_max_bytes": 500000000000,
+    "original_nonblocking_gpu_lock": true,
+    "frozen_source_change_allowed": false
+  },
+  "delivery": ["training_six_panel_curves", "actual_cost", "matched_closed_loop_six_panels", "original_speed_videos", "source_and_checkpoint_audits", "done_todo"],
+  "remaining_before_actual_training": [
+    "resolve previous profiler/cache dispatch using server receipts",
+    "complete independent collector, training controller and persistent budget ledger",
+    "native32k packing/action equivalence with original runtime",
+    "source/resource audit and scoped publication",
+    "real paused identity and free GPU lock admission"
+  ],
+  "user_accepted_checkpoint": null
+}

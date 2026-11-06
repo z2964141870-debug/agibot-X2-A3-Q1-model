@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 04:47本地学生准备：新增student_inputs/data/models与三检查文件及有界训练plan，全24点R1时间mask、独立f0十步人体历史、冻结原解码器梯度核心已成；21项全过/0跳/0.634秒/六AST过，唯一随机CPU夹具一步SGD不算32k训练。120→50Hz右支持必须进依赖/ready时间，未可用当前改取过去支持并报告包龄，不能把H1或离线插值冒称f0；教师未来标签单独。新事件种子及167/98/128旧来源SHA已登记，原教师见393/旧test探索性保持。collector/controller/持久成本账本与原运行时32k动作等价仍待，真实新服务器训练0及4GPU小时未用；上次profiler/cache执行仍UNKNOWN、本阶段SSH0/原226来源不动、不重发。新goal继续active/原共享训练暂停/final采纳null保持；入口README_Q1_LOW_LATENCY_STUDENT_20261107和q1_student_local_preparation_20261107，服务器部署镜像待，优先本地补实际有界训练流水线，不以接口完成结算探索。
+
 - 2026-11-07 04:05新目标工具已创建active；旧q1工具确认不存在才同名重建ACTIVE十分钟同聊天/本地元数据独立核，不改其他任务。用户现成入口41828及有界35438均曾进原Linux，03:42身份暂停资源同。35438提交cache边界及profile派发未收回执即Timeout255，实际执行UNKNOWN，不重发/不循环认证；恢复先读q1_event_profile_dispatch/log/output/result及q1_rebase_cache_boundary收据，核PID和资源。入口q1_rebase_profile_unacknowledged_20261107；新训练0/原暂停不恢复/采纳null，先可独立推进本地时间语义和学生实现，不把已部署当已运行。
 
 - 2026-11-07用户重新确定工作并明确采用/Users/yu/Human+/nessary.yaml为基本要求；含认证正文不复制/不入记录。固定source zshrc再ssh -tt hp_han/原生第二跳交互密码、private根/四目录、GPU优先/500GB磁盘用量、每训练agent记录＋用户done/todo＋六宫图曲线视频及阶段评估。缓存>4GiB在新独立任务安全边界检查/有界项目页回收，不热改冻结guard或全局drop/删保护证据，实际cgroup资源门保留。用户本次明确授权方向确定后新goal，覆盖旧不重建约束；目标为低成本短预览适配→f0历史学生→GigaBrain性质消融，≤4GPU小时新训练/原共享训练暂停及final采纳null保持。三官方固定源码与详细方案入口README_Q1_LOW_LATENCY_REBASE_20261107；profiler已部署5服务器检查过但重新定向前未派发0新调用，先完成有界测量，不重跑84。q1原同聊天十分钟续用，不改其他任务/不新agent。

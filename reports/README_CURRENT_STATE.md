@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06 11:09：[用户追问后原桥接实核](../logs/session_records/q1_bridge_auth_broken_pipe_1109_20261106.json)。Mac→Windows100.65.183.91:22 TCP及SSH握手成功；单次交互提交后立即Broken pipe/255，86273已结束，没有Windows shell/未尝试Linux，不能判密码错误或训练停止。未上传派发/不循环认证或换入口；原V04实时UNKNOWN/最后11月5日23:34各38600仅历史。低延迟实际human对照仍待可用原桥接，原训练输入/锁/final五阶段与采纳null保持。
+
 2026-11-06研究：[四项简报](research/2026-11-06/README.md)/[检查](README_RESEARCH_CHECK_20261106.md)：DreamFree未来蒸馏、GRASP物理重定向、HALO分层控制、动作接口语义。106次尝试/97份完整200缓存，13固定文本96419B；main去重193→205/H001不变。仅文献及静态核验，未改训练/goal/自动任务；服务器Git未独立观察、镜像待，实际发布见[收据](../data/manifests/research_watch_sync_20261106.json)。
 
 2026-11-06 10:01：[最低执行时限已达到，低延迟整体目标继续active](README_Q1_LOW_LATENCY_FEASIBILITY_20261106.md)。10:01:12实核goal active，q1保存ACTIVE每十分钟同聊天；无新goal/agent或其他自动任务变更。独立MPS累计3000更新与必要本地验证结束；新两×1000修订对照/786源SHA同/有限CPU保存复读齐，噪声修订p95降25%-29%但干净RMSE增3.7%/验证风险未赢，不部署选赢家。原human33例campaign未上传，原V04实时UNKNOWN/原final五阶段与采纳null保持；后续原桥接实际可用先身份全现场/资源门，再一次真实human对照，不重复认证/既完实验或物理媒体。[阶段实据](../logs/session_records/q1_low_latency_minimum_time_checkpoint_20261106.json)。

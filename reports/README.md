@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06 11:09：[桥接可到Windows认证，交互后仍Broken pipe](../logs/session_records/q1_bridge_auth_broken_pipe_1109_20261106.json)。TCP/SSH握手能通，但未取得Windows/Linux shell；当前故障在Mac→Windows段，Linux和训练实时UNKNOWN。未上传或重发任务，不循环认证/停止重启原训练。
+
 2026-11-06研究：[四项简报](research/2026-11-06/README.md)/[检查](README_RESEARCH_CHECK_20261106.md)：DreamFree未来蒸馏、GRASP物理重定向、HALO分层控制、动作接口语义。106次尝试/97份完整200缓存，13固定文本96419B；main去重193→205/H001不变。仅文献及静态核验，未改训练/goal/自动任务；服务器Git未独立观察、镜像待，实际发布见[收据](../data/manifests/research_watch_sync_20261106.json)。
 
 2026-11-06 10:01：[低延迟阶段判断与继续条件](README_Q1_LOW_LATENCY_FEASIBILITY_20261106.md)。已实际执行超过最低10:00，goal实读active/q1保存ACTIVE十分钟。独立MPS累计3000更新完成；[修订训练实际对照](README_Q1_UPPER_CONSISTENCY_TRAINING_20261106.md)使三固定噪声片修订p95降25%-29%，但干净误差增3.7%/验证风险未赢，不选部署赢家。原33例human campaign未上传，真实全身/端到端/自然性仍缺；原V04实时UNKNOWN/final五阶段保持，安静监督可行动变化，不重跑已完本地实验。

@@ -1,0 +1,94 @@
+{
+  "stage": "MISSING_SIX_AND_SAVED_TIMING_PREPARATION",
+  "date_beijing": "2026-11-07",
+  "actual_admission": {
+    "utc": "2026-11-06T17:11:28.747995+00:00",
+    "root": "/opt/data/private/ZHY",
+    "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+    "old_pids": {
+      "54868": false,
+      "55672": false,
+      "55677": false,
+      "55678": false,
+      "55679": false,
+      "280863": false,
+      "330190": false,
+      "330423": false
+    },
+    "memory_bytes": 7751073792,
+    "memory_limit_bytes": 34292629504,
+    "oom": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+    "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 1 MiB, 26, None",
+    "compute": "",
+    "disk_free": 187631718400,
+    "original_result_sha256": "81f7f90c39b68a25fe5c15760e75902e6a9839f9a5ef3a44bd7a7ac3e38a7191",
+    "original_guard": "STOPPED_SIGNAL",
+    "followup_exists": false,
+    "timing_review_exists": false,
+    "gpu_lock_rows": [],
+    "transport": {
+      "decoded_bytes": 662,
+      "decoded_sha256": "6a667433b8a3223d0128e9f633a5c3e3f459a5e06e02950995c420969f631e93",
+      "verified": true,
+      "session": 89657
+    }
+  },
+  "original_failed_campaign_restarted": false,
+  "original_shared_training": "USER_PAUSED",
+  "new_code": [
+    "script/supermimic_teleop/event_missing_six.py",
+    "script/supermimic_teleop/test_event_missing_six.py",
+    "script/q1_checkpoint_review/event_timing_review.py",
+    "script/q1_checkpoint_review/test_event_timing_review.py"
+  ],
+  "local_new_checks": {
+    "tests": 5,
+    "passed": 5,
+    "skipped": 0,
+    "old_unchanged_tests_repeated": false
+  },
+  "source_policy": "Original221 evaluation and200 frozen sources unchanged. Reuse previously passed21 action groups and78 completed physical/media cases; new code only.",
+  "followup": {
+    "new_physical_cases": 6,
+    "event": "late_burst",
+    "method": "damped_cv",
+    "horizons": [
+      5,
+      4
+    ],
+    "clips": [
+      "walk_forward_loop_001__A022",
+      "walk_forward_start_002__A023",
+      "walk_forward_stop_002__A024"
+    ],
+    "output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_MISSING6_20261107",
+    "maximum_wall_seconds": 1800,
+    "phase_wall_seconds": 1800,
+    "maximum_output_bytes": 1073741824,
+    "resource_limits": "Original22GiB admission/24GiB exit, GPU18GiB80C,100GiB reserve, original nonblocking GPU lock and owned subtree cleanup",
+    "combined84_comparison": "PENDING_SEPARATE_READ_ONLY_ANALYSIS",
+    "dispatch_status": "NOT_DISPATCHED"
+  },
+  "timing_review": {
+    "mode": "Read original saved timing only; exclude frame0 for all rate denominators and preserve first calls separately",
+    "regions": [
+      "before_event",
+      "event_window",
+      "after_event"
+    ],
+    "overlapping_subsets": [
+      "first_capture_second",
+      "fallback",
+      "within_two_frames_of_recovery"
+    ],
+    "causal_attribution": "NOT_IDENTIFIED",
+    "maximum_wall_seconds": 300,
+    "executed": false
+  },
+  "new_training_gpu_seconds_used": 0,
+  "new_training_gpu_seconds_cap": 14400,
+  "goal_tools_called": false,
+  "new_agents": 0,
+  "user_accepted_checkpoint": null,
+  "server_document_mirror": "PENDING"
+}

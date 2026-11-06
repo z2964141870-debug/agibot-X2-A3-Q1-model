@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-07：[只补缺六例和保存计时定位方案已就绪](README_Q1_EVENT_MISSING6_20261107.md)，新增5检查过，原暂停/锁空/OOM0实核；待发布、部署及新守卫准入，不重跑78或扩原R2时限。[准备记录](../logs/session_records/q1_event_missing6_preparation_20261107.json)。
+
 2026-11-07：[78例低延迟事件部分分析与12张六宫图已成](README_Q1_LOW_LATENCY_EVENTS_20261107.md)。80ms阻尼在三类事件三片均值下上肢接近200ms、滑移较低，但侧倾/1秒窗退步和565ms软件长尾保留；原84例缺六例、六视频仅服务器待补，未称全完成/自然遥操或恢复训练。[审计](../logs/session_records/q1_event_partial_results_20261107.json)。
 
 2026-11-07：[低延迟事件R2在原两小时时限退出，78/84完整](README_Q1_LOW_LATENCY_EVENTS_20261107.md)。急停/反向/丢包各21、突发延迟15；缺突发延迟阻尼H5/H4六例。守卫已回收worker、原GPU锁释放/计算空/来源全同，原训练继续暂停；不是桥接故障，未重派或扩预算。后续独立只读部分分析，原84例完整门保持。[现场](../logs/session_records/q1_event_r2_wall_bound_20261107.json)。

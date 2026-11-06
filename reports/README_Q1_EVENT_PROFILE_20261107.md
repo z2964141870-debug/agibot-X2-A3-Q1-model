@@ -22,4 +22,8 @@ GPU使用预先创建的CUDA事件标记流区间，保留原末尾同步、不�
 
 五项本地聚焦检查已全过/0跳过/0.003秒：四流精确调度、缺失/重复拒绝、原失败门、第二调用与稳定长尾均保留、非法时间拒绝。待独立发布、来源清单部署、原运行时同五项检查、真实准入后一次下发；不重跑84例或此前动作门。
 
-连接优先复用46396，必要时第一跳原样source /Users/yu/.zshrc与ssh -tt hp_han。应用goal不重建、不调用goal工具、不新agent；用户采纳null保持。
+连接优先复用46396，必要时第一跳原样source /Users/yu/.zshrc与ssh -tt hp_han。用户采纳null保持，不新agent。2026-11-07用户重新确定方向并明确授权新goal，覆盖原不重建约束，见README_Q1_LOW_LATENCY_REBASE_20261107。
+
+源码6682a81340d97a4e0f24c80afe1be35f937cef92已发布，02:49:19部署／226来源核同、五服务器检查全过；收据提交a4dd3a018d6f84c40b874c926983d315d55755cd独立远端同。用户本次重新定向前未派发、真实新调用0，后续实际执行只由dispatch/result收据证明。
+
+04:05更新：35438已提交带fresh门的派发命令，但客户端Timeout255退出、没有启动回执。执行UNKNOWN，不按0或512已完成计数。恢复先核`q1_event_profile_dispatch_20261107.json`、stdout、output/result和PID-starttick；未核不重发。详见`q1_rebase_profile_unacknowledged_20261107.json`。

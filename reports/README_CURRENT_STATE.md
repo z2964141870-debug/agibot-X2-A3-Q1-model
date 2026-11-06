@@ -1,5 +1,9 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07 04:05：新低延迟goal已工具创建active；旧q1被应用证实不存在，才创建同名q1／ACTIVE十分钟同聊天并本地独立核，其他任务未改。03:42原身份／训练暂停／旧五PID退／锁计算空／OOM0实核；后41828及有界35438原样入口都进过Linux，但profile派发与缓存边界提交未获回执即客户端Timeout255退出。实际执行UNKNOWN／不重发，恢复先读dispatch/log/result及缓存收据；新训练仍0，原训练不恢复。[恢复记录](../logs/session_records/q1_rebase_profile_unacknowledged_20261107.json)。
+
+2026-11-07用户重新定向：[低延迟SuperMimic＋SONIC／TWIST／GigaBrain研究与新目标](README_Q1_LOW_LATENCY_REBASE_20261107.md)。已静态核三官方固定提交：SONIC独立4帧80ms权重，TWIST最新目标＋历史部署，GigaBrain论文未来窗口与代码streamed历史锚点分开。先短预览训练适配／f0历史学生，再消融速度误差与辅助预测；首轮新增训练≤4GPU小时、原共享训练暂停不恢复。用户明确授权新goal，覆盖下方旧清除约束；工具实况见新目标收据。nessary.yaml作为基本工作要求脱敏采用／不复制认证。分段profiler已6682a81发布部署及五服务器检查过、a4dd3a0独立远端同，但重新定向前未派发／真实新调用0；新目标先完成此有界测量，不重跑84。[研究设计](research/2026-11-07/LOW_LATENCY_SUPERMIMIC_REBASE.md)。
+
 2026-11-07：[独立分段耗时入口已准备](README_Q1_EVENT_PROFILE_20261107.md)。四条保存状态前缀×128、最多512新CUDA调用，动作逐帧与保存值核同才给统计；CPU状态/事件目标、host和CUDA区间、原scope/完整worker/本机管道RPC分开，全部及去前两次长尾均保留。五新本地检查全过，待发布、原运行时检查与准入，尚无真实新调用；原84及训练不重跑，goal清除/采纳null。[方案收据](../logs/session_records/q1_event_profile_preparation_20261107.json)。
 
 2026-11-07 02:28：[84例独立保存比较与完整证据已交付](README_Q1_LOW_LATENCY_EVENTS_JOINED84_20261107.md)。用户source zshrc＋ssh hp_han入口46396可用，02:10:52保存78+6真实JOINED84_ANALYSIS_PASSED/来源同，原R2 FAILED保留；Mac12六宫图/12PDF/六原速视频共6192帧全解码SHA同，新40成员ZIP6864616B及14相对链接核过。80ms阻尼上肢接近200ms、滑移减少，但侧倾/首秒误差退步与362次>20ms软件长尾保留，不判端到端或自然性合格。02:28原身份/训练暂停/旧PID及分析PID退/锁计算空/OOM0同；q1已更新固定入口与真实完成状态。下一独立分段性能剖析、短预览适配，不重跑84/恢复原训练或goal；新训练0/4GPU小时未用/采纳null。服务器文档镜像与发布以publication为准。[收据](../logs/session_records/q1_event_joined84_completed_20261107.json)。

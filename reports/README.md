@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06：[MorphMimic复现与低延迟遥操阶段README及证据包](README_Q1_MORPHMIMIC_LOW_LATENCY_PROGRESS_20261106.md)已整理。ZIP 14967089B，108文件，含12张六宫图、17段原速50fps视频、8份PDF和逐例/Primebot全库结果；CRC/每成员大小SHA/43文档链接通过。48k余十视频仅服务器、84事件未完成、预测器未部署均明确列出。本轮0新训练/物理/认证，不恢复blocked目标或原训练。[交付清单](../data/manifests/q1_progress_evidence_bundle_20261106.json) / [校验](../logs/session_records/q1_progress_evidence_bundle_audit_20261106.json)。
+
 2026-11-06 20:11：[低延迟目标blocked实读/完整范围保留](README_Q1_LOW_LATENCY_EVENTS_20261106.md)。原生密码桥接同一阻塞至少三轮、50602句柄已退/无附带终端，本轮不重复认证；名义27例/媒体已交付，84事件仍0，19114B包与argv可恢复。未重启原训练或新增训练、agent/自动任务；[逐项审计](../logs/session_records/q1_low_latency_goal_bridge_blocked_audit_20261106.json)。
 
 2026-11-06 20:05：[低延迟事件R2最小修复包19114B已核](README_Q1_LOW_LATENCY_EVENTS_20261106.md)，三成员均为已发布源码/清单，新运行命令和45服务器检查已固定，未上传派发。50602通过Windows密码并到Linux密码提示后，外层连接reset255；运行资源仍UNKNOWN，不重复认证。goal未完成/active、0新训练。[实据与恢复顺序](../logs/session_records/q1_event_r2_password_bridge_and_minimal_package_20261106.json)。

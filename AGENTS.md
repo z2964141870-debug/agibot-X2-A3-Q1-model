@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06按用户要求整理阶段README与本地证据ZIP，14967089B/SHA a1af45944aa86b991c813acc46fb173ceca7e1f7627bb972e72a1f246a85cbf9；108文件含12六宫图、17原速50fps视频/8239帧、8PDF及逐例/Primebot全库结果。CRC/每成员大小SHA/43相对链接过，复用既有完整视频解码且文件SHA同；新增离线上肢图仅读已保存收据/trace。48k未传十完整视频、84事件未成/预测器未部署均明示，不为补证据重复训练物理。本轮服务器连接0/goal和自动任务未改/原训练不重启，blocked与final及采纳null保持；入口Q1_MORPHMIMIC_LOW_LATENCY_PROGRESS及q1_progress_evidence_bundle/audit，ZIP/媒体不入Git，服务器镜像未尝试，发布以后续收据为准。
+
 - 2026-11-06 20:11低延迟goal工具已实记blocked/完整目标未缩小或结算。同一原生密码桥接阻塞连续至少三轮，本轮50602 probe为Unknown process id/聊天无附带终端，无新认证或服务器命令；不循环认证或换其他路线。84d14b2独立40位远端/Mac5份629854B已核，19KB三成员修复包/166d4e9/221清单/固定45检查和新R2 argv已备。27名义例26完整及九原速媒体/三六宫图PNG PDF/三联系表已成，真实修复动作门/84事件物理和后续适配仍缺，事件0/新增训练0和4GPU小时未用。恢复可用原密码会话后先原root/boot/GPU/暂停/旧PID及失败任务清理/锁compute/cgroup OOM磁盘，再补传与新R2单派；不重做已完名义或离线结果、不据UNKNOWN重启原训练。逐项完成性/阻塞审计及恢复点在q1_low_latency_goal_bridge_blocked_audit，原final/采纳null/无agent和自动任务变化保持；本次服务器镜像待连接，认证不记录。
 
 - 2026-11-06 20:05本goal续行：上一轮5c8671e独立40位远端/Mac6份666109B核同属实际进展。50602原生两跳交互密码进Windows shell/到Linux密码提示并立即提交，外层100.65.183.91随后peer reset255，未Linux shell；当前服务器运行资源UNKNOWN，本轮无上传派发，不重复认证或换入口。三成员R2最小修复包19114B/SHA2c6f7d6f7e2c5d6a1cd185e54c7346c03aeb012c6a58f4615a744716865e474a已逐成员Git核同，配166d4e9/221清单；固定45服务器检查和新R2 argv已入q1_event_r2_password_bridge_and_minimal_package，仍待原身份暂停/资源/源完整性/测试/准入发布与实际动作门后84事件，不据准备称完成。goal active未结算/原训练不重启/新训练0和4GPU小时未用/final采纳null保持，无agent或自动任务变更，认证未入记录。

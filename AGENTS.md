@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06 09:23本机MPS真实预测训练已成：8054be1预登记先公开/独立40位远端及Mac11份632724B核同后，09:10:31一次实际1000Adam/六参数计数均1000/验证选800，94672参数。全流程8.385秒/峰RSS437207040B/MPSdriver28065792B/可用最低43%，786来源42220058B前后SHA同/有限CPU保存及weights_only复读过。六压力均值较抗噪ridge低，但干净/偏差仍差旧干净ridge，固定停走4条件退步不隐去；test已见仅探索性。原服务器/3090未访问/无机器人推理物理，实时V04 UNKNOWN；下一完整连续预测修订/丢帧恢复与单帧GPU软件耗时。goal active最低今日10:00/必要验证继续，原final/五阶段/采纳null保持/无agent其他任务变更。入口Q1_UPPER_MPS_FORECAST及completed/preparation_publication；发布以后续收据为准。
+
 - 2026-11-06 09:05独立Mac MPS预测准备已成：arm64/Mac17,3/16GiB/可用44%，新隔离venv Torch2.7.0/NumPy1.26.4实核MPS可用；7项含真实CPU-GPU非零前向一致性全过/.568秒，0真实新更新。94672参数历史MLP、.01噪声训练、最多1000Adam/总600秒训练500秒/RSS及MPS driver各1GiB/系统可用>=25%/独立Mac锁/无CPUfallback；先发布固定配置再一次执行，test已见明示探索性。原服务器3090/锁和输入不访问；官方源码审计10f0cbc独立远端/Mac8份609557B同。goal active最低今日10:00/必要训练继续，V04/final/五阶段/采纳null保持，无agent其他自动任务变更；入口Q1_UPPER_MPS_FORECAST及preparation，实际训练和发布以后续收据为准。
 
 - 2026-11-06 08:48官方HuMiT Code入口固定Track/ec9890b静态核：完整19树/8文件73768B Gitblob及SHA同；当前joint/velocity actor与priv critic分离，但公开main未齐论文稀疏配置/实时部署/权重。离线速度中心差分含t+1，不能以current索引名认证因果；不执行或安装作者环境。一次有界原桥接TCP22通、交互提示后Broken pipe255，未Windows/Linux shell/上传下发，不再循环认证；原训练实时UNKNOWN。抗噪结果f204983独立远端及Mac7份606603B核同，下一归纳可执行低延迟取舍及真实human/侧车/资源恢复门；goal active最低今日10:00，原V04/final/五阶段/采纳null保持，无agent其他任务变更。入口Q1_HUMIT_SOURCE_AUDIT及审计/上轮publication，新发布以后续收据为准。

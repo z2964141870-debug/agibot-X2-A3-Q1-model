@@ -64,9 +64,9 @@ class EventSession(GpuPreviewSession):
         compute = self.compute_record(started)
         self.frame += 1
         return dict(native_action=self.spec.translator.to_native_delta(action)[0].tolist(),
-            canonical_action=action[0].tolist(), stream=dict(goal.timing, **compute,
-                compute_scope="event visibility and goal packing, transfers, GPU forward and output transfer",
-                timing_clock_note="Synthetic schedule and synchronized software timing are separate clocks"))
+            canonical_action=action[0].tolist(), stream={**goal.timing, **compute,
+                "compute_scope": "event visibility and goal packing, transfers, GPU forward and output transfer",
+                "timing_clock_note": "Synthetic schedule and synchronized software timing are separate clocks"})
 
 
 def serve(args):

@@ -7,7 +7,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
-from types import SimpleNamespace
+from types import ModuleType, SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -33,6 +33,61 @@ def gpu_timing(goal):
 
 
 class EventInputTests(unittest.TestCase):
+    @unittest.skipUnless(importlib.util.find_spec("torch"), "Actual action-path CPU contract requires Torch")
+    def test_actual_action_path_merges_existing_gpu_compute_scope(self):
+        import torch
+        from event_gpu_worker import EventSession
+
+        class CpuValue:
+            def __init__(self, value):
+                self.value = value
+
+            def __getitem__(self, item):
+                return CpuValue(self.value[item])
+
+            def to(self, device):
+                return self.value
+
+        modules = {name: ModuleType(name) for name in (
+            "morphmimic", "morphmimic.constants", "morphmimic.model", "morphmimic.model.human",
+            "morphmimic.model.rewards_torch", "morphmimic.model.state", "morphmimic.train",
+            "morphmimic.train.imagination", "q1_native_review")}
+        modules["morphmimic.constants"].ANCHOR_IDX = 0
+        modules["morphmimic.model.human"].fixed_human_masks = lambda *args, **kwargs: (None,)*4
+        modules["morphmimic.model.human"].pack_human_goal = lambda *args: torch.zeros(1, 1)
+        modules["morphmimic.model.rewards_torch"].analytic_obs = lambda *args: torch.zeros(1, 93)
+        modules["morphmimic.model.state"].split_state = lambda value: SimpleNamespace(
+            body_quat=CpuValue(torch.zeros(1, 1, 4)))
+        modules["morphmimic.train.imagination"].act_human = lambda *args: torch.zeros(1, 29)
+        modules["q1_native_review"].native_state = lambda *args: torch.zeros(1, 250)
+        session = EventSession.__new__(EventSession)
+        operations = ("float32", "isfinite", "zeros", "where", "cat", "count_nonzero", "inference_mode")
+        session.torch = SimpleNamespace(**{name: getattr(torch, name) for name in operations},
+            tensor=lambda value, **kwargs: torch.tensor(value, **{k:v for k,v in kwargs.items() if k != "device"}))
+        session.frame, session.clip, session.robot, session.default = 0, "fixture", None, torch.zeros(29)
+        session.args = SimpleNamespace(preview_frames=4)
+        session.tail_method = "hold"
+        session.actor = SimpleNamespace(present=torch.ones(29, dtype=torch.bool))
+        session.spec = SimpleNamespace(imu_slot=0,
+            translator=SimpleNamespace(to_native_delta=lambda value: value[:, :22]))
+        session.history = SimpleNamespace(reset=lambda *args: None, push=lambda *args: None,
+            flat=lambda: CpuValue(torch.zeros(1, 6)))
+        native = SimpleNamespace(policy=None, norms={name:None for name in ("obs_norm", "human_norm", "heading_norm")})
+        session.preview = SimpleNamespace(policy=SimpleNamespace(native=native))
+        position, quat = poses()
+        session.events = EventReceiver(position, quat, EventSpec("nominal", first_frame=50), "a"*64, "test")
+        session.compute_record = lambda started: dict(policy_device="cuda", gpu_policy_wall_compute_ns=123,
+            compute_scope="existing base GPU scope")
+        with patch.dict(sys.modules, modules):
+            reply = session.action(dict(frame=0, state=[0.]*79))
+        self.assertEqual(len(reply["native_action"]), 22)
+        self.assertEqual(len(reply["canonical_action"]), 29)
+        self.assertEqual(reply["stream"]["gpu_policy_wall_compute_ns"], 123)
+        self.assertIn("event visibility", reply["stream"]["compute_scope"])
+        validate_event_timing(reply["stream"], 0, 4, "hold", session.events.events)
+        self.assertEqual(session.frame, 1)
+        self.assertFalse(torch.cuda.is_initialized())
+
     def test_nominal_poses_and_tails_equal_the_published_adapter_including_terminal(self):
         position, quat = poses()
         for method, horizon in (("masked", 10), ("masked", 4), ("hold", 5), ("damped_cv", 4)):

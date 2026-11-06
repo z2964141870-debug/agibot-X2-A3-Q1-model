@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06 09:31连续预测诊断准备：固定MLP800与noise_ridge1/三完整test走片×三场景×四方法×两年龄分支，不拟合选参；共享连续噪声、丢帧真实source索引、同绝对目标修订、80/100ms参考信号速度加速度及同步单帧MPS计时。7夹具全过/.009秒，先发布再一次执行，不当机器人控制稳定或端到端降延迟；原MPS训练ae1664d独立远端/Mac8份615045B同。goal active最低今日10:00/必要验证继续，原V04实时UNKNOWN/锁输入未访问/final五阶段及采纳null保持，无agent其他任务变更；入口Q1_UPPER_ROLLING_REVIEW/preparation和mps_completed_publication，发布以后续收据为准。
+
 - 2026-11-06 09:23本机MPS真实预测训练已成：8054be1预登记先公开/独立40位远端及Mac11份632724B核同后，09:10:31一次实际1000Adam/六参数计数均1000/验证选800，94672参数。全流程8.385秒/峰RSS437207040B/MPSdriver28065792B/可用最低43%，786来源42220058B前后SHA同/有限CPU保存及weights_only复读过。六压力均值较抗噪ridge低，但干净/偏差仍差旧干净ridge，固定停走4条件退步不隐去；test已见仅探索性。原服务器/3090未访问/无机器人推理物理，实时V04 UNKNOWN；下一完整连续预测修订/丢帧恢复与单帧GPU软件耗时。goal active最低今日10:00/必要验证继续，原final/五阶段/采纳null保持/无agent其他任务变更。入口Q1_UPPER_MPS_FORECAST及completed/preparation_publication；发布以后续收据为准。
 
 - 2026-11-06 09:05独立Mac MPS预测准备已成：arm64/Mac17,3/16GiB/可用44%，新隔离venv Torch2.7.0/NumPy1.26.4实核MPS可用；7项含真实CPU-GPU非零前向一致性全过/.568秒，0真实新更新。94672参数历史MLP、.01噪声训练、最多1000Adam/总600秒训练500秒/RSS及MPS driver各1GiB/系统可用>=25%/独立Mac锁/无CPUfallback；先发布固定配置再一次执行，test已见明示探索性。原服务器3090/锁和输入不访问；官方源码审计10f0cbc独立远端/Mac8份609557B同。goal active最低今日10:00/必要训练继续，V04/final/五阶段/采纳null保持，无agent其他自动任务变更；入口Q1_UPPER_MPS_FORECAST及preparation，实际训练和发布以后续收据为准。

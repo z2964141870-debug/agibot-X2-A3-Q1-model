@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06 09:31：[连续预测修订/丢帧及MPS软件计时准备](README_Q1_UPPER_ROLLING_REVIEW_20261106.md)。固定两已选模型/三片×三场景×四方法×两年龄分支72诊断，不拟合选参；7检查全过/.009秒。先发布再一次执行，端到端和机器人自然性仍null。实际MPS训练ae1664d独立40位远端/Mac8份615045B已核，goal最低今日10:00保持。
+
 2026-11-06 09:23：[本机MPS非线性预测真实训练完成](README_Q1_UPPER_MPS_FORECAST_20261106.md)。1000实际更新/验证选800/全8.385秒，源SHA同和有限CPU保存复读齐；六压力均值较抗噪ridge低，但固定停走仍退步、旧干净ridge部分更优。已见test仅探索性，尚无机器人闭环/端到端降延迟结论。下一连续预测稳定性与单帧GPU软件计时，goal最低今日10:00保持。[实际审计](../logs/session_records/q1_upper_mps_forecast_completed_20261106.json)。
 
 2026-11-06 09:05：[独立本机MPS预测训练准备](README_Q1_UPPER_MPS_FORECAST_20261106.md)。16GiB/可用44%、隔离Torch2.7.0/NumPy1.26.4/MPS实可用，7检查含真实CPU-GPU前向一致性全过；历史MLP94672参数、最多1000Adam/600秒、RSS和MPS driver各1GiB、可用>=25%/独立本地锁/不降CPU。先发布固定规则再真实训练，尚0更新/test复用仅探索性；原服务器与V04锁不访问，goal最低今日10:00保持。[准备审计](../logs/session_records/q1_upper_mps_forecast_preparation_20261106.json)。

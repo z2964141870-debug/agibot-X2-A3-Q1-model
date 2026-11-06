@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06用户要求继续后88742原生两跳交互密码已进原Linux、39270仅Windows传输；原boot/GPU/root/五PID退/暂停/旧失败回收/锁compute空同。166d4e9修复三成员19114B已部署，45服务器检查全过/0跳/5.9007秒，221代码/200冻结源码资产/46名义证据同，R2未派发。用户随后明确先清缓存：持原锁一次8GiB advice/15秒上限、保护打开映射inode，实15.007秒/4723文件/范围6182023753B，total12743512064→6620999680/cache11480866816→5439537152/OOM0/余27671629824B；无大文件内容读取、删除、全局drop或训练信号，不恢复旧cache自动门。新收据11381B/SHA643795f0…9f8ab1原生SCP到Mac核同；旧6553B归档实SHA0f0a06d1ade4cc95873a5c80bcf271cd64c406469cc56f89014d13e767398a42/9成员同，旧65字符抄录错显式纠正。单条SCP故障不混成原会话失联，无换认证路线。下一发布准入后单派新R2先动作门再84事件，原训练暂停/新训练0/4GPU小时未用/final采纳null保持，goal最后工具blocked不伪报active，无agent或自动任务变更。入口Q1_LOW_LATENCY_EVENTS及q1_event_r2_recovery_transfer/user_manual_cache_reclaim，发布以随后收据为准。
+
 - 2026-11-06按用户要求整理阶段README与本地证据ZIP，14967089B/SHA a1af45944aa86b991c813acc46fb173ceca7e1f7627bb972e72a1f246a85cbf9；108文件含12六宫图、17原速50fps视频/8239帧、8PDF及逐例/Primebot全库结果。CRC/每成员大小SHA/43相对链接过，复用既有完整视频解码且文件SHA同；新增离线上肢图仅读已保存收据/trace。48k未传十完整视频、84事件未成/预测器未部署均明示，不为补证据重复训练物理。本轮服务器连接0/goal和自动任务未改/原训练不重启，blocked与final及采纳null保持；入口Q1_MORPHMIMIC_LOW_LATENCY_PROGRESS及q1_progress_evidence_bundle/audit，ZIP/媒体不入Git，服务器镜像未尝试，发布以后续收据为准。
 
 - 2026-11-06 20:11低延迟goal工具已实记blocked/完整目标未缩小或结算。同一原生密码桥接阻塞连续至少三轮，本轮50602 probe为Unknown process id/聊天无附带终端，无新认证或服务器命令；不循环认证或换其他路线。84d14b2独立40位远端/Mac5份629854B已核，19KB三成员修复包/166d4e9/221清单/固定45检查和新R2 argv已备。27名义例26完整及九原速媒体/三六宫图PNG PDF/三联系表已成，真实修复动作门/84事件物理和后续适配仍缺，事件0/新增训练0和4GPU小时未用。恢复可用原密码会话后先原root/boot/GPU/暂停/旧PID及失败任务清理/锁compute/cgroup OOM磁盘，再补传与新R2单派；不重做已完名义或离线结果、不据UNKNOWN重启原训练。逐项完成性/阻塞审计及恢复点在q1_low_latency_goal_bridge_blocked_audit，原final/采纳null/无agent和自动任务变化保持；本次服务器镜像待连接，认证不记录。

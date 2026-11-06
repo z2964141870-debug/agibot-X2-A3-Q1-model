@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06 16:29：[按用户要求暂停原G1+Q1共享训练](README_Q1_SHARED_PAUSED_20261106.md)。最近收据各56600轮，已有16/32/48k/latest48k保留；原五PID全退出、GPU锁释放、显存1MiB/OOM0，无自动重启。后续按用户指定[research](research/README.md)继续低延迟遥操多方向研究与独立实验，原final门和采纳null保持。
+
 2026-11-06：[六宫图、36/36真实保存点对照已成：建议不为凑16万继续长跑](README_Q1_CHECKPOINT_CONVERGENCE_20261106.md)。两型motion/human的32k平均关节误差均低于48k，human还有滑移/侧倾回退；主要收益平台，32k列优先验收候选，非全库/自然步态合格。四训练六宫图/四物理对照及两human原速起走视频已Mac核SHA/目视和全解码，12段媒体均服务器NVIDIA EGL完成；余十MP4/训练PDF CSV待传。14:57原V04各55000轮健康，1024+1024总2048；未停训、改final或恢复paused低延迟goal。[结构化逐片汇总](../data/manifests/q1_checkpoint_convergence_summary_20261106.json)。
 
 2026-11-06 12:28：[原桥接恢复，原共享训练各52450轮](README_Q1_SHARED_TRAINING_20261104.md)。Windows密码直连及原生25362已进Linux，原设备/五PID-starttick/guard锁一致，非有限0/OOM0、48000保存已在。它是11月4日11:06开始的同一轮G1+Q1动作跟踪训练，没有重新开训；Primebot10000轮及Mac预测训练已结束。低延迟goal实读paused，本次仅恢复观察，新训练评估派发0。[原始现场](../logs/session_records/q1_bridge_recovered_1228_20261106.json)；原final五阶段/采纳null保持。

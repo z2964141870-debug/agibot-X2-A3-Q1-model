@@ -1,6 +1,8 @@
 # Q1低延迟遥操长期目标
 
-记录日期：2026-11-06。实验编号：Q1_LOW_LATENCY_LONG_TERM_20261106。状态：用户已暂停，目标未完成。
+记录日期：2026-11-06。实验编号：Q1_LOW_LATENCY_LONG_TERM_20261106。状态：16:29用户授权继续实际低延迟探索；应用goal最后元数据paused，目标未完成。
+
+用户最新明确要求先暂停原共享训练，再继续多方向低延迟研究，资料汇入reports/research。原训练已通过既有controller/guard于16:29:44退出，五PID全退/GPU锁释放/显存1MiB；最近收据各56600轮，latest仍48000，未导出后续内存，不承诺精确续训。见[暂停与继续范围](README_Q1_SHARED_PAUSED_20261106.md)。继续实际研究不等于应用goal已变active，现有工具无该恢复操作，不新建替代目标。旧TRAINING/guard持锁准入只适用于历史在训阶段；暂停后的独立实验必须另外验证设备、输入、旧进程退出、资源和独占GPU锁，不能直接套用该入口。
 
 本轮应用goal实读paused。用户随后明确要求重试原Windows地址，本次只恢复观察，没有恢复或派发低延迟实验。12:28:14原Windows/25362已进Linux，原boot/GPU/五PID启动tick/guard锁同，V04两型各52450/160000轮、非有限0/OOM0、48000保存已在；这是11月4日11:06持续至今的原共享动作跟踪训练，没有重新开训。三组Mac预测训练已结束，33例human campaign仍未下发。原训练不因goal暂停停止，自动任务未改。[恢复与范围实据](../logs/session_records/q1_bridge_recovered_1228_20261106.json)。下方active和UNKNOWN均为所标时点的历史。
 

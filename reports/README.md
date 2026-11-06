@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06：[补齐六宫图、比较16k/32k/48k并判断是否接近收敛](README_Q1_CHECKPOINT_CONVERGENCE_20261106.md)。用户已授权独立中途对照，保持原训练运行和最终门；当前为准备，实际回放、媒体、结论与发布核验待执行。
+
 2026-11-06 12:28：[原桥接恢复，原共享训练各52450轮](README_Q1_SHARED_TRAINING_20261104.md)。Windows密码直连及原生25362已进Linux，原设备/五PID-starttick/guard锁一致，非有限0/OOM0、48000保存已在。它是11月4日11:06开始的同一轮G1+Q1动作跟踪训练，没有重新开训；Primebot10000轮及Mac预测训练已结束。低延迟goal实读paused，本次仅恢复观察，新训练评估派发0。[原始现场](../logs/session_records/q1_bridge_recovered_1228_20261106.json)；原final五阶段/采纳null保持。
 
 2026-11-06 11:09：[桥接可到Windows认证，交互后仍Broken pipe](../logs/session_records/q1_bridge_auth_broken_pipe_1109_20261106.json)。TCP/SSH握手能通，但未取得Windows/Linux shell；当前故障在Mac→Windows段，Linux和训练实时UNKNOWN。未上传或重发任务，不循环认证/停止重启原训练。

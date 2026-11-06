@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06 23:51：[桥接观察判断已纠正、原生密码连接恢复](README_Q1_BRIDGE_OBSERVATION_20261106.md)。旧会话退出不再泛化为整桥接不可达；89657已实核原Linux身份/暂停/锁，事件同控制器RUNNING、急停21/21反向21/21丢包12/21物理媒体完整。q1仅更新观察规则与当前会话，十分钟和同聊天保持；完整84例分析仍待。[现场记录](../logs/session_records/q1_bridge_judgment_corrected_2351_20261106.json)。
+
 2026-11-06继续执行：[事件保存分析入口已在服务器部署](README_Q1_LOW_LATENCY_EVENTS_20261106.md)，两份源码大小SHA同/原运行时7检查全过。最后成功资源快照23:25:15为同控制器RUNNING、急停21/21与反向15/21物理媒体完整；后续观察75已完阶段。桥接随后超时，一次原生密码恢复未收Linux shell即外层Timeout255退出，实时UNKNOWN；不重复认证、事件或恢复原训练。[部署与恢复记录](../logs/session_records/q1_event_saved_analysis_deployed_20261106.json)。q1十分钟持续检查仍ACTIVE，已清除应用goal保持清除。
 
 2026-11-06用户清除应用goal后要求“持续系的做下去”：不重建/不调用goal工具，继续已有实际授权。q1已通过工具创建并独立文件核ACTIVE/heartbeat/十分钟/同聊天01a16102-1f55-75b1-9106-2edb1cd18914，仅实质结果/异常/需处理通知，yuanqi和头环不改。原Linux53096持续可用；23:11:37控制器280863/start28796218仍RUNNING，53已完阶段，急停21/21物理媒体完整、反向5/21物理媒体完整，其余事件尚未完成；总10614943744B/限34292629504B/OOM0/400MiB34度。新增清单外只读event_summary及7项聚焦检查全过/.003秒：完整84例及源门先行、统一capture时钟一秒窗口、保留去首帧后计算尖峰、截断无虚构恢复/失败无全组均值，可Mac复用绘图出12六宫图。入口尚未部署/实际分析0，不动在跑221源码/200冻结来源，原训练暂停/新训练0及4GPU小时未用/final采纳null保持；不新agent。 [准备与持续检查记录](../logs/session_records/q1_continuous_execution_and_event_analysis_preparation_20261106.json) / [事件阶段](README_Q1_LOW_LATENCY_EVENTS_20261106.md)。

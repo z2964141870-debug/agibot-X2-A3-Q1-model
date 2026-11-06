@@ -1,0 +1,73 @@
+{
+  "stage": "MANUAL_CACHE_COMPLETE_EVENT_R2_START_NOT_ACKNOWLEDGED",
+  "recorded_utc": "2026-11-06T14:04:11.032Z",
+  "completed_before_failure": {
+    "deployment": "166d4e986decdd2bd4789fa6516d56e4170c4ac4",
+    "server_tests": 45,
+    "skips": 0,
+    "code_files_matched": 221,
+    "frozen_source_assets_matched": 200,
+    "reused_nominal_evidence": 46,
+    "admission_commit": "5083f0e4e1e7853abf60b68487b0722fd652bd5b",
+    "independent_remote_full40_matched": true,
+    "mac_mirror_files": 9,
+    "mac_mirror_bytes": 659497,
+    "manual_cache_receipt": "logs/session_records/q1_user_manual_cache_reclaim_20261106.json",
+    "before_total_bytes": 12743512064,
+    "after_total_bytes": 6620999680,
+    "total_reduction_bytes": 6122512384,
+    "oom_kill_before_and_after": 0
+  },
+  "dispatch_attempt": {
+    "observer_session": 88742,
+    "method": "A single native SSH stdin submission of guarded detached Popen; stdout file and receipt must be fresh",
+    "tool_return_code": 255,
+    "tool_output": "Timeout, server 100.65.183.91 not responding.",
+    "remote_command_echo_received": false,
+    "remote_start_receipt_received": false,
+    "actual_remote_submission": "UNKNOWN; do not resend before checking",
+    "controller_pid": null,
+    "actual_event_physical_cases_after_attempt": "UNKNOWN",
+    "observed_new_event_physical_cases": 0,
+    "expected_receipt": "/opt/data/private/ZHY/logs/session_records/q1_paused32k_event_r2_dispatch_20261106.json",
+    "expected_log": "/opt/data/private/ZHY/logs/q1_paused32k_events_r2_20261106.log",
+    "expected_output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_20261106"
+  },
+  "other_existing_session": {
+    "session": 39270,
+    "last_known_shell": "Windows PowerShell",
+    "probe_exit": 255,
+    "output": "Timeout, server 100.65.183.91 not responding."
+  },
+  "one_bounded_recovery": {
+    "session": 89524,
+    "route": "Native password SSH yu@100.65.183.91:22, then original native25362 only if Windows shell is received",
+    "windows_password_prompt_received": true,
+    "windows_password_submitted": true,
+    "windows_shell_received": false,
+    "exit_code": 255,
+    "error": "Connection reset by 100.65.183.91 port 22",
+    "linux_attempted": false,
+    "additional_authentication_attempted_after_reset": false,
+    "alternate_authentication_proxy_port_or_forwarding": false,
+    "password_material_stored": false
+  },
+  "current_server_runtime": "UNKNOWN",
+  "failure_does_not_establish_training_or_server_failure": true,
+  "original_training_last_verified_user_paused": true,
+  "original_training_restarted_by_agent": false,
+  "new_training_updates_dispatched": 0,
+  "goal_tool_last_observed": "blocked",
+  "goal_updated_or_recreated": false,
+  "automation_changed": false,
+  "new_agents": 0,
+  "user_accepted_checkpoint": null,
+  "recovery_order": [
+    "Use the original native interactive password route when available; verify root/boot/GPU and actual cgroup/OOM/disk before computation",
+    "Inspect the exact R2 dispatch receipt, stdout log, output result and real controller PID/startticks before any launch",
+    "If the launch exists, monitor it; never repeat the completed nominal campaign or overwrite the prior failed event root",
+    "Only when all R2 launch evidence is absent use the already published guarded one-shot launch; its action-equivalence gate remains mandatory before84 event cases",
+    "Do not repeat unchanged45 tests or manual cache advice merely to wait"
+  ],
+  "server_record_mirror": "PENDING_ORIGINAL_NATIVE_PASSWORD_SESSION"
+}

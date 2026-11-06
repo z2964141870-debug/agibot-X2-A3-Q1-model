@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06最新：[缓存清理已完成，事件R2启动未获回执](README_Q1_LOW_LATENCY_EVENTS_20261106.md)。5083f0e独立40位远端/Mac九份659497B核同后，88742提交启动时Timeout255，39270亦失联；一次原生密码恢复89524在Windows密码后reset255/未Linux。R2实际提交与运行UNKNOWN，不重派；恢复先核精确收据/log/output/PID。45服务器检查和总量12.7435→6.6210GB清理实据保留，原训练不重启。[恢复点](../logs/session_records/q1_event_r2_dispatch_unacknowledged_20261106.json)。
+
 2026-11-06继续：[原生密码桥接恢复，事件修复45服务器检查及准入通过](README_Q1_LOW_LATENCY_EVENTS_20261106.md)。221代码/200冻结源码资产/46名义证据同，R2尚未派发。按用户新要求一次15秒项目文件页回收，总量12.7435→6.6210GB、cache11.4809→5.4395GB/OOM0，无删文件/内容读取或全局清理，例行cache策略未恢复。11381B新收据和原失败9成员已Mac核同；旧65字符归档SHA录入错误已纠正。原共享训练保持暂停；[清理记录](../logs/session_records/q1_user_manual_cache_reclaim_20261106.json) / [恢复交付](../logs/session_records/q1_event_r2_recovery_transfer_20261106.json)。
 
 2026-11-06：[MorphMimic复现与低延迟遥操阶段README及证据包](README_Q1_MORPHMIMIC_LOW_LATENCY_PROGRESS_20261106.md)已整理。ZIP 14967089B，108文件，含12张六宫图、17段原速50fps视频、8份PDF和逐例/Primebot全库结果；CRC/每成员大小SHA/43文档链接通过。48k余十视频仅服务器、84事件未完成、预测器未部署均明确列出。本轮0新训练/物理/认证，不恢复blocked目标或原训练。[交付清单](../data/manifests/q1_progress_evidence_bundle_20261106.json) / [校验](../logs/session_records/q1_progress_evidence_bundle_audit_20261106.json)。

@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06 09:05独立Mac MPS预测准备已成：arm64/Mac17,3/16GiB/可用44%，新隔离venv Torch2.7.0/NumPy1.26.4实核MPS可用；7项含真实CPU-GPU非零前向一致性全过/.568秒，0真实新更新。94672参数历史MLP、.01噪声训练、最多1000Adam/总600秒训练500秒/RSS及MPS driver各1GiB/系统可用>=25%/独立Mac锁/无CPUfallback；先发布固定配置再一次执行，test已见明示探索性。原服务器3090/锁和输入不访问；官方源码审计10f0cbc独立远端/Mac8份609557B同。goal active最低今日10:00/必要训练继续，V04/final/五阶段/采纳null保持，无agent其他自动任务变更；入口Q1_UPPER_MPS_FORECAST及preparation，实际训练和发布以后续收据为准。
+
 - 2026-11-06 08:48官方HuMiT Code入口固定Track/ec9890b静态核：完整19树/8文件73768B Gitblob及SHA同；当前joint/velocity actor与priv critic分离，但公开main未齐论文稀疏配置/实时部署/权重。离线速度中心差分含t+1，不能以current索引名认证因果；不执行或安装作者环境。一次有界原桥接TCP22通、交互提示后Broken pipe255，未Windows/Linux shell/上传下发，不再循环认证；原训练实时UNKNOWN。抗噪结果f204983独立远端及Mac7份606603B核同，下一归纳可执行低延迟取舍及真实human/侧车/资源恢复门；goal active最低今日10:00，原V04/final/五阶段/采纳null保持，无agent其他任务变更。入口Q1_HUMIT_SOURCE_AUDIT及审计/上轮publication，新发布以后续收据为准。
 
 - 2026-11-06 08:29抗噪上肢探索真实拟合完成：预登记8b34bd0先push/独立远端及Mac5份24049B核同后才读数据；786输入42220058B SHA同，三新模型精确加入.01rad原始历史噪声风险/含最新锚点，验证0/.01/.02三档选noise_ridge1。复用test明确探索性；干净.046069/旧.039339退，iid.01新.049308对旧.068280/阻尼.063617改善，AR1/偏差/冻结未全面胜旧。7检查过/Mac1.215秒峰163528704B/0服务器机器人推理物理CUDA，模型未部署。原噪声解析81025bf独立远端/Mac10份612210B核同；下一实际动捕噪声校准/真正human对照和因果学生方案，原桥接实时UNKNOWN/不循环认证。goal active最低今日10:00、原V04/final/五阶段/采纳null保持，无agent其他任务变更；入口Q1_UPPER_NOISE_ROBUST及实际审计，发布以后续收据为准。

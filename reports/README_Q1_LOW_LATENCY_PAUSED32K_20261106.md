@@ -2,6 +2,20 @@
 
 日期：2026-11-06。状态：目标 active；27例CUDA名义对照已完成，原共享训练保持用户暂停指令。
 
+## Mac交付与解释
+
+原生交互密码SCP已完整取回4863620B/44成员的结果包，大小和SHA与服务器完全相同。独立 `deliver_preview.py` 只读保存的27行数值，在Mac生成三张六宫图PNG/PDF和三张媒体联系表；九段H10/H5阻尼/H4阻尼视频逐份核原物理记录SHA、50fps/尺寸/时长及4761帧完整解码，均通过。三张图和三张联系表已目视，机器人与参考均可见，无空白媒体。服务器原始缺matplotlib失败日志和115输入未变审计继续保留，不能将后补绘图写成原分析命令成功。
+
+本机交付根为 `data/deliveries/Q1_LOW_LATENCY_CKPT32000_COMPLETED_20261106`，机器审计为其中 `mac_delivery_audit.json`。原共享训练暂停后新增训练仍0，本次只补传、绘图和解码，没有重复27例或重审32k权重。
+
+- [前走六宫图](../data/deliveries/Q1_LOW_LATENCY_CKPT32000_COMPLETED_20261106/mac_figures/walk_forward_loop_001__A022.png)
+- [起走六宫图](../data/deliveries/Q1_LOW_LATENCY_CKPT32000_COMPLETED_20261106/mac_figures/walk_forward_start_002__A023.png)
+- [停走六宫图](../data/deliveries/Q1_LOW_LATENCY_CKPT32000_COMPLETED_20261106/mac_figures/walk_forward_stop_002__A024.png)
+- [80ms阻尼前走原速视频](../data/deliveries/Q1_LOW_LATENCY_CKPT32000_COMPLETED_20261106/tail_damped_cv/h4/walk_forward_loop_001__A022/review/walk_forward_loop_001__A022_s0/tracking.mp4)
+- [交付与事件准入实据](../logs/session_records/q1_password_policy_delivery_event_admission_20261106.json)
+
+保存的CUDA目标调用p95在H10三片为7.27–8.25ms、阻尼H4/H5六片为12.19–15.85ms，但各例最大调用仍1.22–1.71秒，不能省略或假定成因。这个计时不含完整观测预处理、RPC和执行；还需预热及真正实时deadline验证，相关相位也不是实测端到端延迟。低离地、参考幅度差及H4起走右滑移回退仍在，名义结果只支持继续事件对照，不构成自然遥操采纳。
+
 18:54:10逐跳交互密码桥接恢复：原boot/GPU/唯一根相同，原五PID全退、STOPPED_SIGNAL与GPU锁释放符合用户暂停；当前显存1MiB/27度、计算空、cgroup13204852736B/限34292629504B/OOM0。R2于18:47:50完成56阶段/source_integrity PASSED，27段原速媒体全部通过、26例完整；H1前走在248帧触发失败、有效247/1031步，不给整片误差或时序。R2峰总16302190592B、GPU400MiB、新训练0，不能据低显存称GPU训练在跑。
 
 | 前走方法 | 真实预览 | 上肢RMSE rad | 左/右承重滑移 mm/s |

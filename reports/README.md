@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06交付更新：[原生逐跳密码桥接、三张六宫图及九原速视频已核](README_Q1_LOW_LATENCY_PAUSED32K_20261106.md)。4863620B包SHA同，Mac44成员/4761帧全解码和六图目视过；服务器221代码/44运行时检查及[事件准入](README_Q1_LOW_LATENCY_EVENTS_20261106.md)通过，84合成事件例待发布后单派。原训练暂停、goal active、0新训练，最大软件调用仍需定位，原final及采纳null保持。[实据](../logs/session_records/q1_password_policy_delivery_event_admission_20261106.json)。
+
 2026-11-06 18:54：[用户固定逐跳密码，原桥接恢复且27例低延迟已完成](README_Q1_LOW_LATENCY_PAUSED32K_20261106.md)。原生SSH两跳交互密码已成功；原训练保持暂停，R2源完整性和27视频过/26完整，80–100ms保持/阻尼接近H10，H1前走失败保留。数值已成/绘图库缺失日志保留，115源后审计通过，Mac六宫图和9原速媒体待取。[事件独立入口](README_Q1_LOW_LATENCY_EVENTS_20261106.md)已本地44项43过1原MuJoCo3.6待，尚未新事件物理；goal active/新增训练0/4GPU小时预算与final采纳null保持。
 
 2026-11-06最新：[实际32k低延迟GPU首批结果与桥接状态](README_Q1_LOW_LATENCY_PAUSED32K_20261106.md)。H10/H5各三片完整，100ms前走跟随/滑移退步，保持/阻尼及H4等整组待取；旧桥接Timeout/一次恢复Windows认证后Broken pipe，实时UNKNOWN，不重复任务。[停止/反向/丢包事件合同](README_Q1_LOW_LATENCY_EVENTS_20261106.md)6检查过，未物理。goal active/原训练暂停/新训练0，原final和采纳null保持。

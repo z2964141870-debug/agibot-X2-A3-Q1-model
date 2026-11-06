@@ -120,9 +120,15 @@
     },
     {
       "id": "dense_upper_rolling_review",
-      "status": "FIXED_IMPLEMENTATION_AND_SEVEN_CHECKS_PASSED_PENDING_PUBLICATION_AND_EXECUTION",
-      "evidence": "logs/session_records/q1_upper_rolling_review_preparation_20261106.json",
-      "work": "Three fixed complete test clips,continuous shared noise and explicit dropout support,hold/damped/noise_ridge/MLP,ungated and fixed40ms-age hold:72 reports. Compare same-absolute-target revisions and80/100ms generated-signal speed/acceleration;batch1 synchronized MPS software timing. No fitting or threshold choice,not robot commands or end-to-end latency. Seven fixture checks passed0.009s;publish rules before one actual dense review."
+      "status": "ACTUAL_72_DENSE_DIAGNOSTICS_COMPLETED_NO_FITTING",
+      "evidence": "logs/session_records/q1_upper_rolling_review_completed_20261106.json",
+      "work": "Published1008bc5 before one dense three-clip review,1485 origins/72 reports/six unchanged inputs. MPS batch1 after warmup p95 1.043ms,first diagnostic call355.717ms,not process cold start or robot latency. MLP lowers aggregate error but noisy revisions remain;fixed40ms hold gate worsens aggregate error and can increase jumps.1.507s/RSS246300672B,no robot or server access."
+    },
+    {
+      "id": "paired_origin_consistency_training",
+      "status": "PREREGISTRATION_AND_FOUR_CHECKS_PASSED_PENDING_PUBLICATION_AND_TRAINING",
+      "evidence": "logs/session_records/q1_upper_consistency_preparation_20261106.json",
+      "work": "Two new MPS MLPs share initialization,samples,26-frame continuous noise,two target origins,batches and1000update budget. Only same-absolute-target revision loss weight0 versus0.5 differs. Reuse train-only normalization;both validation selections and finite CPU checkpoints persisted before test. Four checks passed0.048s;publish before actual training,reused test exploratory,no server/robot access."
     },
     {
       "id": "causal_student_and_execution_phase",

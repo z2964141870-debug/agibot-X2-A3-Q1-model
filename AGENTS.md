@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06 09:44连续三片72诊断已实成/6源SHA同/1.507秒：MLP预热后batch1 p95 1.043ms/首诊断355.717ms，非进程冷启或机器人延迟；噪声修订仍高/固定停走退步/40ms过期切保持可增跳。下一独立MPS成对原点控制训练：相同26帧共享噪声/两个标签原点/初始化批次，只变修订损失0/.5，两模型各最多1000更新；4检查全过/.048秒，先发布再执行，两保存验证先于test/复用test仅探索性。不访问服务器3090/V04锁，goal active最低今日10:00/必要训练验证继续，原final五阶段采纳null/无agent其他任务变更；入口Q1_UPPER_ROLLING_REVIEW和Q1_UPPER_CONSISTENCY_TRAINING，新发布以后续收据为准。
+
 - 2026-11-06 09:31连续预测诊断准备：固定MLP800与noise_ridge1/三完整test走片×三场景×四方法×两年龄分支，不拟合选参；共享连续噪声、丢帧真实source索引、同绝对目标修订、80/100ms参考信号速度加速度及同步单帧MPS计时。7夹具全过/.009秒，先发布再一次执行，不当机器人控制稳定或端到端降延迟；原MPS训练ae1664d独立远端/Mac8份615045B同。goal active最低今日10:00/必要验证继续，原V04实时UNKNOWN/锁输入未访问/final五阶段及采纳null保持，无agent其他任务变更；入口Q1_UPPER_ROLLING_REVIEW/preparation和mps_completed_publication，发布以后续收据为准。
 
 - 2026-11-06 09:23本机MPS真实预测训练已成：8054be1预登记先公开/独立40位远端及Mac11份632724B核同后，09:10:31一次实际1000Adam/六参数计数均1000/验证选800，94672参数。全流程8.385秒/峰RSS437207040B/MPSdriver28065792B/可用最低43%，786来源42220058B前后SHA同/有限CPU保存及weights_only复读过。六压力均值较抗噪ridge低，但干净/偏差仍差旧干净ridge，固定停走4条件退步不隐去；test已见仅探索性。原服务器/3090未访问/无机器人推理物理，实时V04 UNKNOWN；下一完整连续预测修订/丢帧恢复与单帧GPU软件耗时。goal active最低今日10:00/必要验证继续，原final/五阶段/采纳null保持/无agent其他任务变更。入口Q1_UPPER_MPS_FORECAST及completed/preparation_publication；发布以后续收据为准。

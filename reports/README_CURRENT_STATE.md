@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06 09:44：[三片连续72诊断实际完成](README_Q1_UPPER_ROLLING_REVIEW_20261106.md)。MPS预热p95 1.043ms/首诊断调用355.717ms，MLP仍有噪声修订、固定停走退步及过期切保持突变；6输入SHA同/1.507秒。下一[成对原点修订损失0/.5控制训练](README_Q1_UPPER_CONSISTENCY_TRAINING_20261106.md)，4检查过/.048秒，先发布再两×1000真实MPS更新/验证选模先于test。goal active最低今日10:00，原服务器UNKNOWN/final五阶段及采纳null保持。
+
 2026-11-06 09:31：[连续预测诊断准备](README_Q1_UPPER_ROLLING_REVIEW_20261106.md)。固定已选模型/完整三test片，连续共享噪声/显式丢帧年龄、同绝对目标修订和80/100ms信号速度加速度；单帧MPS同步计时独立报告。7检查全过/.009秒，先发布后一次执行，不拟合选参。实际训练结果ae1664d独立40位远端及Mac8份615045B同；goal active最低今日10:00/原服务器UNKNOWN/final五阶段/采纳null保持。
 
 2026-11-06 09:23：[独立Mac GPU预测训练完成](README_Q1_UPPER_MPS_FORECAST_20261106.md)。预登记8054be1先发布核远端/Mac11份632724B同后，真实MPS1000更新/六Adam1000，验证选800。全流程8.385秒/RSS437207040B/MPS driver28065792B/可用最低43%，786源SHA同/CPU保存复读有限。六压力平均均胜抗噪ridge，但固定停走退步、干净/偏差仍不及旧干净ridge，复用test仅探索性；不是机器人闭环或实测降延迟。下一连续片预测修订/跳变/丢帧与单帧GPU计时，goal active最低今日10:00；V04实时UNKNOWN/原final五阶段及采纳null保持。[实际审计](../logs/session_records/q1_upper_mps_forecast_completed_20261106.json)。

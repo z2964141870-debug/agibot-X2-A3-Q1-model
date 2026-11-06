@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-07 01:47：[缺六例完成、第二调用尖峰定位及84合并恢复点](README_Q1_EVENT_MISSING6_20261107.md)。六例01:30全部完成/源门过，78例计时去前两调用仍最高49.824ms。332bc47源码与实际结果已远端/Mac核同；新合并入口部署未回执，2703客户端退出后唯一有界恢复20344在Mac→Windows22口TCP超时，未进Windows或Linux。部署UNKNOWN，84只读分析未下发，恢复先查精确收据和源码SHA。原训练暂停/原FAILED保留/新训练0/goal清除/采纳null，六视频和文档服务器镜像待补。[证据](../logs/session_records/q1_event_joined84_deployment_unacknowledged_20261107.json)。
+
 2026-11-07 01:33实核：独立缺六例330705/start29860648于01:30:13全部COMPLETED/12阶段/source_integrity PASSED，六物理及GPU原速媒体完整，原78直接复用/原R2 FAILED未改。控制器退/锁计算空/旧五PID退/训练仍STOPPED_SIGNAL；峰10795425792B/GPU400MiB/OOM0/训练信号0/回收未尝试。保存计时已1.526679秒分析：78次>100ms全部在frame1，去前两调用仍258次>20ms/最大49.823569ms，未定位底层因果。两原数值文件107470B已Mac二进制SHA同。89657 peer reset结束后唯一有界原生密码恢复2703已入原Linux并核身份；不泛化桥接不可达。下一独立只读合并84和更新图表，完整比较尚待，原训练不恢复/新训练0/goal清除/采纳null保持。 [六例与计时阶段](README_Q1_EVENT_MISSING6_20261107.md) / [真实完成](../logs/session_records/q1_event_missing6_completed_20261107.json)。
 
 2026-11-07：[只补缺六例和保存计时定位方案已就绪](README_Q1_EVENT_MISSING6_20261107.md)，新增5检查过，原暂停/锁空/OOM0实核；待发布、部署及新守卫准入，不重跑78或扩原R2时限。[准备记录](../logs/session_records/q1_event_missing6_preparation_20261107.json)。

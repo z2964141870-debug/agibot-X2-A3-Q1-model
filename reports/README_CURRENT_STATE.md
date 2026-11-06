@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07 01:47恢复点：缺六例01:30全部完成/source_integrity PASSED，78+6物理媒体均齐；保存78例计时定位全部>100ms于第二调用，去前两调用仍258次>20ms/max49.823569ms。独立84合并入口332bc47已push/独立40位远端与Mac11份708899B核同；向2703提交的部署无回执，客户端随后peer reset255结束。唯一有界20344在Mac→Windows原22口等90秒TCP超时，未Windows/Linux；最后现场01:33，当前服务器实时未核验，不把一跳失败泛化Linux停止。恢复先核q1_event_joined84_deployed收据、两源SHA及实际任务，未核不重传；84合并分析未下发，本地12图生成器仅AST过。原训练暂停/原R2 FAILED保持/新训练0和4GPU小时未用/goal清除/采纳null；六原速视频及新文档服务器镜像待补。 [完整恢复顺序](README_Q1_EVENT_MISSING6_20261107.md) / [发布与连接证据](../logs/session_records/q1_event_joined84_deployment_unacknowledged_20261107.json)。
+
 2026-11-07 01:33实核：独立缺六例330705/start29860648于01:30:13全部COMPLETED/12阶段/source_integrity PASSED，六物理及GPU原速媒体完整，原78直接复用/原R2 FAILED未改。控制器退/锁计算空/旧五PID退/训练仍STOPPED_SIGNAL；峰10795425792B/GPU400MiB/OOM0/训练信号0/回收未尝试。保存计时已1.526679秒分析：78次>100ms全部在frame1，去前两调用仍258次>20ms/最大49.823569ms，未定位底层因果。两原数值文件107470B已Mac二进制SHA同。89657 peer reset结束后唯一有界原生密码恢复2703已入原Linux并核身份；不泛化桥接不可达。下一独立只读合并84和更新图表，完整比较尚待，原训练不恢复/新训练0/goal清除/采纳null保持。 [六例与计时阶段](README_Q1_EVENT_MISSING6_20261107.md) / [真实完成](../logs/session_records/q1_event_missing6_completed_20261107.json)。
 
 2026-11-07续行：原生密码89657在01:11:28实核原暂停/旧PID退/锁和计算空/OOM0，原78例结果SHA同。新独立缺六例控制器与保存计时定位入口已实现，新增5本地检查全过；补验只late_burst阻尼H5/H4三片，总1800秒/1GiB，不改原7200秒失败或重跑78。尚未部署、真实计时分析或派发新物理，完整84比较仍待；原训练暂停/新训练0/goal清除/采纳null保持。 [独立方案](README_Q1_EVENT_MISSING6_20261107.md) / [现场](../logs/session_records/q1_event_missing6_preparation_20261107.json)。

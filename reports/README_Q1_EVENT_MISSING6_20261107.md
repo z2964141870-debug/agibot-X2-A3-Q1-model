@@ -63,3 +63,15 @@ Mac独立交付根`data/deliveries/Q1_EVENT_R2_TIMING_REVIEW_20261107`的summary
 新增`script/q1_checkpoint_review/event_joined_summary.py`及对应检查，仅在新的独立根读取保存78例与六例补验。固定原FAILED结果及部分分析SHA，要求补验COMPLETED/source_integrity PASSED、全部12守卫已正常回收，并重核721复用工件、223执行来源、200冻结及控制输入；六份新增trace、事件可见性、目标一致性与原速视频身份重新读取。精确84例不重叠，所有组均需三片完整才给全组均值。
 
 Mac新增3项检查全部通过/0跳过/0.003秒。入口尚未部署或实际执行，原84 campaign完成门不改；成功时只认证独立保存工件合并分析，不把原FAILED改为COMPLETED。新输出预定`Q1_LOW_LATENCY_CKPT32000_EVENTS_JOINED84_ANALYSIS_20261107`，内外各300秒保护，不申请GPU、不调用策略或积分、不生成新媒体。[准备记录](../logs/session_records/q1_event_joined84_preparation_20261107.json)。
+
+## 发布与未回执部署恢复点
+
+合并入口与六例实际结果已发布`332bc47e01ff8aa63a1e05adfacaad52a225c424`，显式push origin Q1/独立40位远端核同，11份708899B与Mac主根大小SHA一致。两新源码包4736B/SHA `aa66d47ad34a76bd424b55a6861941e6f2530ac956df11c37f44b5318d614c3f`仅含合并入口及三项检查，均在223/200清单外。
+
+向2703提交的部署命令未收回执，随后该客户端报告100.65.183.91 peer reset/Broken pipe255，故部署及服务器新增检查均UNKNOWN，不能当已成功或确定未执行。唯一有界新恢复20344等待90秒后明确在Mac到Windows原22端口TCP超时，未Windows shell、未尝试Linux；不把旧会话退出或这次一跳失败说成Linux已停。最后完整现场仍01:33，六例已完成的事实与本地收据不受后续观察失败影响。
+
+恢复先查`logs/session_records/q1_event_joined84_deployed_20261107.json`与两目标SHA，未查之前不重复部署。合并分析尚未下发，先核新输出、日志、收据与进程，再一次独立300秒只读分析。原FAILED与所有已完成78+6例保持，不再发物理任务。新增本地`deliver_event_joined.py`复用原绘图器，已AST解析，待真实84例数值后生成新的12PNG/12PDF/总览/表格ZIP；尚未运行、没有虚构图表。六代表视频仍服务器待补，新文档服务器镜像待补。[发布、连接证据与恢复顺序](../logs/session_records/q1_event_joined84_deployment_unacknowledged_20261107.json)。
+
+源码静态边界：`event_gpu_worker.py`在状态转换、obs和历史更新之后才开始`perf_counter_ns`，所记耗时包括事件目标构建、pack、数据到GPU、策略前向与结果回CPU同步；不包括全部CPU预处理、RPC及物理积分。因此这里不能把软件目标调用称为完整推理链或硬件端到端。下一性能实验应在独立入口分段测量并保留原计时，先核相同动作输出，区分第二调用初始化与稳定阶段49.824ms长尾；尚未执行新的剖析推理。
+
+q1只更新prompt为六例实际完成、保存计时已定位、2703已退出/20344原一跳超时及合并恢复顺序。工具回执ACTIVE，独立文件核heartbeat/十分钟/同聊天不变，保存SHA `21a665672f9c9c1446da1cd23c4170d11ffa9c5605fb7f789a13f56d05adbf8d`；其他自动任务、goal、agent与原训练未动。[续行记录](../logs/session_records/q1_missing6_timing_continuation_20261107.json)。

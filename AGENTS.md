@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06新goal实际推进：95d8faf首派263048一致性时GPU脚本缺common路径导入失败，CUDA/物理/训练0，原失败根保留；184e59b独立远端核同、215源码/原200冻结同及7独立启动检查过后，18:11:13新R2根单派263415/start27279136。三片1584帧CPU-CUDA H10容差已过/max2.536923e-6，首前走物理和GPU原速媒体完整，其余27例仍运行；不动在跑清单源码。独立q1_checkpoint_review/preview_summary在清单外准备保存工件六宫图/上肢时序/动作变化分析，新训练0/原训练暂停/goal active/final及采纳null保持，无agent/自动任务变更；入口Q1_LOW_LATENCY_PAUSED32K，后续结果/发布以实收据为准。
+
 - 2026-11-06用户“可以，开始尝试，允许开始目标模式”后，旧goal已null，新goal创建且实读active；原共享训练仍暂停。新增独立paused_runtime/GPU worker/32k controller，先原CPU-GPU H10全参考帧容差核验，再同human27例H10/5/4/2/1和H5/4保持/阻尼，顺序GPU EGL媒体；新训练总≤4GPU小时按失败决定，每训练交付六宫图，急停反向丢包及设计结论不可省。相关45运行44过1原运行时待/编译过，0新真实推理物理训练；旧16k在训controller不直接复用，原冻结/final及采纳null保持。复用63485无新认证/不新agent或自动任务，实际发布与部署以随后收据为准；入口Q1_LOW_LATENCY_PAUSED32K和q1_low_latency_paused_goal。
 
 - 2026-11-06原训练暂停后继续用户指定reports/research低延迟专题：十二一手工作覆盖当前/历史学生、时间mask课程、接触预测、异步前缀、动作队列/执行补偿和约束协同；另复用旧PredActor/当天DreamFree-GRASP-HALO审计。六源码AST/SHA前后同/无import执行，确认motion/human共用decoder可做独立因果编码器，但旧campaign依赖原TRAINING/guard55672且写死16k，暂停后需新准入/真实checkpoint锁元数据，尚未实现或下发。优先32k human H10/H5/H4/H2/H1再f0历史学生，不直接重训原配方；新训练物理GPU0，原训练保持停止/目标元数据paused/final及采纳null，无新agent/自动任务。入口research/2026-11-06/LOW_LATENCY_SUPERMIMIC、q1_low_latency_research及interface_audit；暂停7218236独立远端/Mac7份621771B已核，新发布与服务器镜像以收据为准。

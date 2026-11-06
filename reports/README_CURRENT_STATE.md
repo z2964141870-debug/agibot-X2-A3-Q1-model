@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06 08:03：[旧Primebot相位/幅度拆分实成](README_Q1_SAVED_TRACKING_RESPONSE_20261106.md)。393片3144信号/786原输入SHA同；1580弱波形相关、1404窄候选lag p05/中位/p95=-100/0/80ms、幅度比中位1.219，不称零端到端或PD延迟/当前Morph质量。5检查全过，Mac2.297秒/峰45219840B，0新物理推理拟合CUDA；原未对齐RMSE保留。上肢预测ca3dddc独立远端/Mac10份628102B已核，噪声退步不改选型。下一解释已选预测器噪声放大，并待原桥接作真实human对照；原训练实时UNKNOWN/goal active最低今日10:00，V04/final/五阶段/采纳null保持。[审计](../logs/session_records/q1_saved_tracking_response_20261106.json)。
+
 2026-11-06 07:45：[上肢因果预测真实CPU拟合完成](README_Q1_UPPER_CAUSAL_FORECAST_20261106.md)。393已交付reference/786工件42220058B原SHA同，沿167/98/128来源划分、8192/2048/2048窗口、三ridge模型；先写validation选择ridge .01再读test。干净均值.039339rad对阻尼.059140，126/128片改善；固定.01rad噪声变.068267对.063950，仅40/128片改善/三固定片均退步，不据test换模型或部署。9检查全过，Mac单线程0.990秒/峰155123712B；actual角度未入训练，0服务器命令/侧车/机器人推理物理CUDA。下一拆已有执行相位与幅度失真；原桥接/训练实时UNKNOWN，goal active最低今日10:00，V04/final/五阶段/采纳null保持。[审计](../logs/session_records/q1_upper_causal_forecast_20261106.json)。
 
 2026-11-06 07:24发布：预测评估/训练补审 `931be10582f43847896e5b289967ea1e9f5db023` 已推送并独立40位核同，13份661958B Mac大小SHA一致；16成员201863B独立小包逐成员Git同、解包34项33过1缺Torch跳过。包未上传/派发，恢复后放新代码快照目录，不覆盖任何原V04输入；原短预览campaign3b1cd18保持独立。goal最新实读active/最低今日10:00，必要训练或验证继续延长。[发布收据](../logs/session_records/q1_teleop_forecast_eval_publication_20261106.json)。

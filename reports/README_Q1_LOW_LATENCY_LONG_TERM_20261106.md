@@ -37,6 +37,7 @@
 | 小型因果预测训练 | [393片冻结来源划分、SE(3)特征、安全GPU训练入口和物理评估入口已准备](README_Q1_TELEOP_FORECAST_TRAINING_20261106.md)；真实侧车审计/训练待 | train167/val98/test128；历史25帧/目标10槽；验证集选模，测试集只报告 |
 | 已保存上肢参考预测 | [独立真实CPU拟合与留出结果完成](README_Q1_UPPER_CAUSAL_FORECAST_20261106.md)；不等同全身GRU | 所选ridge干净测试改善、固定噪声下退步；未部署或据test换参 |
 | 因果学生/执行前馈 | 按失败证据选择 | 新版本接口/动力学与独立训练验证，不能直接改当前运行策略 |
+| 保存轨迹相位与幅度 | [原Primebot393片诊断完成](README_Q1_SAVED_TRACKING_RESPONSE_20261106.md) | 弱相关/幅度失真显著，表观lag不当端到端或PD单因；当前human回放待服务器 |
 | 综合判定 | 待真实对照 | 延迟-跟踪-自然性、原速媒体、失败样例和可行性边界 |
 
 06:33新增独立 `forecast_eval.py`，对每个未来20至200ms槽报告世界位置、根位置和姿态测地线误差，统一比较hold、常速度、阻尼常速度及可选GRU；验证集选型、测试集只报告，预测只读25帧历史。新增3项测试后本地完整套件为87项84通过、3项固定Torch/原生运行时跳过。一次按用户“桥接稳定”发起的交互连接在密码提示后仍以Broken pipe退出255，未进入Windows/Linux、未上传或下发；服务器侧车和训练继续待可用会话。[评估准备审计](../logs/session_records/q1_teleop_forecast_evaluation_preparation_20261106.json)

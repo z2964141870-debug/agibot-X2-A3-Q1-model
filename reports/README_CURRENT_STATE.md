@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06 20:05：[事件R2最小部署包已成](README_Q1_LOW_LATENCY_EVENTS_20261106.md)，19114B/三成员逐项Git同，匹配166d4e9与221源码清单，服务器45检查和完整argv已固定，未上传或派发。50602原生两跳密码到Windows shell和Linux密码提示，提交后外层Windows连接被peer reset255，未获Linux shell；当前运行/资源UNKNOWN，不循环认证或推断服务器故障。5c8671e独立40位远端/Mac六份666109B核同；goal未完成/active，新训练0，原暂停与final/采纳null保持。[恢复记录](../logs/session_records/q1_event_r2_password_bridge_and_minimal_package_20261106.json)。
+
 2026-11-06桥接与修订发布：166d4e986decdd2bd4789fa6516d56e4170c4ac4独立40位远端/Mac八份652728B核同，新221项R2清单41135B/SHA7db3025b…f09a55已成。修订仍待原服务器45检查/新动作门/84事件R2，0新事件物理或训练。81883本地关闭时最后服务器收据包已创建并回执6553B/9成员，不误写命令失败；随后38570按原地址原生交互密码到Windows提示后Broken pipe/未Windows/Linux。当前实时UNKNOWN，按最后实据保留原训练暂停及首事件失败清理，不重启/重发。认证今后连续完成，不穿插其他工作/不用替代认证；无附带终端、Terminal UI读取被安全限制拒绝，未绕过。goal active/final与采纳null保持。[可恢复入口](../logs/session_records/q1_paused32k_event_r2_publication_20261106.json)。
 
 2026-11-06 19:33：[事件首派在新适配器动作门报错，尚无事件物理](README_Q1_LOW_LATENCY_EVENTS_20261106.md)。279689/start27764636在stream计时字段重复处退出，279761已回收/原GPU锁及计算空；保留失败根，独立修复dict合并和真实action路径回归，本地45项44过1服务器3.6待，尚未重派。另保存telemetry实核13473调用/122次>20ms，去首帧后仍95次/最大519.54ms，预热尚不足以证明实时deadline。cce5bd0独立40位远端/Mac8份676468B同，原生密码81883会话仍可用，文档SCP8849失败不混成整条桥接失联。原训练暂停/goal active/0新训练/final及采纳null保持。[失败与时序实据](../logs/session_records/q1_paused32k_event_attempt01_20261106.json)。

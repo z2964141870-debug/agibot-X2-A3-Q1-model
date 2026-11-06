@@ -4,6 +4,8 @@
 
 ## 首派失败与修订
 
+20:05恢复点：50602原生逐跳密码已进入Windows PowerShell，原生25362的Linux密码提示也已收到并立即提交；随后外层`100.65.183.91`连接被peer reset/255，未取得Linux shell，不重复认证或改入口。当前服务器资源仍UNKNOWN，本轮没有上传或派发。上轮5c8671e完整40位远端与Mac六份666109B已核同。为减少连接后的操作，新三成员修复包仅19114B，SHA `2c6f7d6f7e2c5d6a1cd185e54c7346c03aeb012c6a58f4615a744716865e474a`；两源码和匹配清单逐成员与已发布Git同，未上传。固定运行时45项模块、新R2完整argv及恢复顺序见[最小部署记录](../logs/session_records/q1_event_r2_password_bridge_and_minimal_package_20261106.json)。这只是部署准备，没有新增事件物理或训练结果；仍需真实动作门、84事件及后续验证。
+
 修订 `166d4e986decdd2bd4789fa6516d56e4170c4ac4` 已push并独立40位远端核同，八份652728B Mac主根镜像通过。新R2清单221项/41135B、SHA `7db3025b8456270747febef675f88aad82247cf3f338212d7359ba4fa3f09a55` 已生成，尚未服务器部署/45补验或R2派发。源提交与该清单必须一起使用，原237452b失败清单/输出保持历史，不覆盖。
 
 原81883最后的服务器收据包6553B/9成员已创建，回执在本地结束SSH时收到；包SHA `0f0a06d1ade4cc95873a5c80bcf2771cd64c406469cc56f89014d13e767398a42`，尚未SCP回Mac。随后同地址原生交互密码重连38570在Windows密码提示后Broken pipe255，未到Windows shell或Linux，不进行循环认证。实际训练/资源实时UNKNOWN不等于原训练重启或失败；R2命令从未下发。恢复后先核原boot/GPU/root、明确暂停、五旧PID、锁/compute/cgroup/OOM和原事件退出，再补传修订、核221大小SHA、服务器45检查和新动作门。[发布与恢复记录](../logs/session_records/q1_paused32k_event_r2_publication_20261106.json)。

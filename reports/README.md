@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06 20:05：[低延迟事件R2最小修复包19114B已核](README_Q1_LOW_LATENCY_EVENTS_20261106.md)，三成员均为已发布源码/清单，新运行命令和45服务器检查已固定，未上传派发。50602通过Windows密码并到Linux密码提示后，外层连接reset255；运行资源仍UNKNOWN，不重复认证。goal未完成/active、0新训练。[实据与恢复顺序](../logs/session_records/q1_event_r2_password_bridge_and_minimal_package_20261106.json)。
+
 2026-11-06修订发布与桥接：[事件响应修复166d4e9和新R2清单已保存](README_Q1_LOW_LATENCY_EVENTS_20261106.md)，服务器补验/派发待原生密码会话。新38570在Windows密码提示后Broken pipe，未到Linux，实时UNKNOWN；不混成服务器或训练停止。两跳密码认证今后连续完成，原训练暂停/goal active/0新训练/final采纳null保持。[恢复记录](../logs/session_records/q1_paused32k_event_r2_publication_20261106.json)。
 
 2026-11-06 19:33：[事件新入口在动作门退出，修订准备](README_Q1_LOW_LATENCY_EVENTS_20261106.md)。stream计时同名关键字导致失败/自有组和锁已回收/0事件物理，保留失败根后新增真实action路径回归。保存GPU目标调用去首帧仍95次超20ms，不能只凭预热或p95称实时合格。原密码桥接会话仍可用，原训练暂停/goal active/新训练0。[实据](../logs/session_records/q1_paused32k_event_attempt01_20261106.json)。

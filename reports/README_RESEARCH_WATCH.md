@@ -1,5 +1,7 @@
 # YUANQI 具身智能研究跟踪
 
+2026-11-06研究：[四项简报](research/2026-11-06/README.md)/[检查](README_RESEARCH_CHECK_20261106.md)：DreamFree未来蒸馏、GRASP物理重定向、HALO分层控制、动作接口语义。106次尝试/97份完整200缓存，13固定文本96419B；main去重193→205/H001不变。仅文献及静态核验，未改训练/goal/自动任务；服务器Git未独立观察、镜像待，实际发布见[收据](../data/manifests/research_watch_sync_20261106.json)。
+
 2026-11-05研究：[四项简报](research/2026-11-05/README.md)/[检查](README_RESEARCH_CHECK_20261105.md)：SONIC-K1真机条件配方、iLQR落脚/接触、视觉动作预见、触觉反射。85请求76成功/八固定文本80958B静态核验；main去重184→193，H001不变。接入11/5 11:44连接恢复记录，本研究任务未独立现场观察或改训练、goal、监督；服务器研究副本待核同步，实际发布见[收据](../data/manifests/research_watch_sync_20261105.json)。
 
 2026-11-04研究：[四项简报](research/2026-11-04/README.md)/[检查](README_RESEARCH_CHECK_20261104.md)：Koopman、RWM校准、Anchor1、NablaMimic0.2配方。78请求77成功/8固定文本96347B及95项完整树静态核验；main去重173→184，H001不变。工程按Q1最新记录，本轮未运行训练/仿真或改目标/自动任务；不新增硬门。服务器自动认证及镜像缺口延续，实际发布见[收据](../data/manifests/research_watch_sync_20261104.json)。

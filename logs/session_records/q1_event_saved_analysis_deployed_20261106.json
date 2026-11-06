@@ -1,0 +1,122 @@
+{
+  "stage": "SAVED_EVENT_ANALYSIS_DEPLOYED_AND_SERVER_TESTED",
+  "recorded_beijing": "2026-11-06T23:32:30+08:00",
+  "source_commit": "4cc98ebca8e8f22ffd8c67320a677efb6d967407",
+  "archive": {
+    "name": "q1_event_saved_analysis_4cc98eb_20261106.tgz",
+    "bytes": 6773,
+    "sha256": "cce4c75128d42fa4a1d006128210f04cd406b804bc7be5c767478ba317841371",
+    "windows_full_sha_verified": true,
+    "native_windows_to_linux_scp_completed": true,
+    "server_size_sha_and_exact_regular_member_set_verified": true,
+    "targets_absent_and_outside_running_and_frozen_sources_verified": true,
+    "tar_note": "Ignored LIBARCHIVE.xattr.com.apple.provenance; both deployed source content hashes subsequently matched"
+  },
+  "deployed_files": [
+    {
+      "path": "/opt/data/private/ZHY/script/q1_checkpoint_review/event_summary.py",
+      "bytes": 16595,
+      "sha256": "19055ca7227e0b21b3d29c77d60821ef21666443efcd552e2dd1be8cf98d5a82"
+    },
+    {
+      "path": "/opt/data/private/ZHY/script/q1_checkpoint_review/test_event_summary.py",
+      "bytes": 4350,
+      "sha256": "0c0e7c38a5f88b787f7d7dcab95d5b9bac4388dfd31f4c38ce7e26e69e4562a5"
+    }
+  ],
+  "server_tests": {
+    "command": "/opt/data/private/ZHY/data/environments/primebot_supermimic_118338b_20261103/bin/python -m unittest discover -s script/q1_checkpoint_review -p test_event_summary.py -v",
+    "cwd": "/opt/data/private/ZHY",
+    "tests": 7,
+    "passed": 7,
+    "skipped": 0,
+    "reported_seconds": 0.016,
+    "status": "OK",
+    "new_inference_calls": 0,
+    "new_physical_transitions": 0,
+    "new_training_updates": 0
+  },
+  "last_successful_resource_snapshot": {
+    "utc": "2026-11-06T15:25:15.339904+00:00",
+    "session": 46669,
+    "server_root": "/opt/data/private/ZHY",
+    "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+    "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+    "original_training_pids_absent": [54868, 55672, 55677, 55678, 55679],
+    "original_pipeline_status": "FAILED",
+    "original_guard_status": "STOPPED_SIGNAL",
+    "original_status_reason": "Previously verified explicit user pause; no original training restart",
+    "controller_pid": 280863,
+    "controller_start_ticks": "28796218",
+    "status": "RUNNING",
+    "phase": "reverse_damped_cv_h5_walk_forward_loop_001__A022_replay",
+    "completed_phases": 73,
+    "guard_status": "RUNNING",
+    "guard_worker_pid": 306177,
+    "saved_guard_gpu_lock_owner_pid": 280863,
+    "saved_guard_gpu_lock_owner_start_ticks": "28796218",
+    "stop": {"saved": 21, "complete": 21, "media": 21},
+    "reverse": {"saved": 15, "complete": 15, "media": 15},
+    "dropout": {"saved": 0, "complete": 0, "media": 0},
+    "late_burst": {"saved": 0, "complete": 0, "media": 0},
+    "memory": {
+      "total_bytes": 10650669056,
+      "container_limit_bytes": 34292629504,
+      "immediate_headroom_bytes": 23641960448,
+      "total_cache_bytes": 6456463360,
+      "total_rss_bytes": 3018285056,
+      "total_shmem_bytes": 12410880,
+      "total_dirty_bytes": 0,
+      "total_writeback_bytes": 3649536,
+      "oom_kill": 0,
+      "under_oom": 0
+    },
+    "gpu_sample": {"used_mib": 400, "temperature_c": 35, "recovery": "None"},
+    "maximum_total_bytes": 10735480832,
+    "maximum_gpu_used_mib": 400,
+    "maximum_subtree_rss_bytes": 3947765760,
+    "training_signals_sent": 0,
+    "memory_reclaim_attempted": false
+  },
+  "later_successful_observation": {
+    "completed_phases": 75,
+    "status": "RUNNING",
+    "phase": "reverse_damped_cv_h5_walk_forward_start_002__A023_replay",
+    "source_content_hashes_reverified": true,
+    "controller_stdout_tail": "empty"
+  },
+  "bridge": {
+    "original_session_53096": "Timeout255",
+    "existing_windows_session_46669": "Native25362 password login and deployment/tests succeeded; later outer Windows timeout255",
+    "bounded_recovery_session": 18867,
+    "bounded_recovery_status": "Windows shell reached with native interactive password; native25362 authentication submitted; outer100.65.183.91 Timeout255 before any Linux shell acknowledgement",
+    "bounded_recovery_for_this_failure_used": true,
+    "recovery_session_exit_code": 255,
+    "pending_authentication_prompt": false,
+    "read_only_snapshot_after_75_phases": "Sent without received output; no state mutation requested",
+    "credentials_saved": false,
+    "alternative_routes_or_authentication_used": false,
+    "current_realtime_state": "UNKNOWN_PENDING_FRESH_LINUX_OBSERVATION"
+  },
+  "continuation": {
+    "automation_id": "q1",
+    "saved_metadata_reverified": true,
+    "status": "ACTIVE",
+    "kind": "heartbeat",
+    "interval_minutes": 10,
+    "target_thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "automation_changed": false,
+    "application_goal_tools_called": false,
+    "cleared_application_goal_recreated": false,
+    "new_agents": 0
+  },
+  "actual_full_event_analysis_executions": 0,
+  "event_redispatches": 0,
+  "new_training_gpu_seconds_used": 0,
+  "new_training_gpu_seconds_cap": 14400,
+  "original_training_restarted": false,
+  "original_final_gates_modified": false,
+  "user_accepted_checkpoint": null,
+  "new_document_server_mirror": "PENDING",
+  "next": "Recover only the existing native password bridge. Verify current identity/controller/phase guard/lock/resources. After formal COMPLETED and source integrity PASSED, analyze existing artifacts without --plot in a fresh root, then deliver Mac figures and representative original-speed media. Do not repeat physical tests, unchanged checks, or cache cleanup."
+}

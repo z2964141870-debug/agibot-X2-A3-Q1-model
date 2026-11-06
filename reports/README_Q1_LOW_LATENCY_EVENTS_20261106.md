@@ -1,6 +1,27 @@
 # 低延迟输入事件与几何一致合同
 
-日期：2026-11-06。最新状态：用户已清除应用goal并要求持续推进，实际授权继续，不创建替代goal；本聊天q1十分钟持续检查已工具创建及文件核ACTIVE。23:11:37事件R2同一控制器继续RUNNING，急停21例、反向5例物理媒体完整，共26/84；尚无整组低延迟结论。原共享训练保持暂停，新训练0，final及采纳null保持。
+日期：2026-11-06。最新状态：用户已清除应用goal并要求持续推进，不创建替代goal；q1十分钟持续检查文件仍为ACTIVE。只读分析入口已部署、7项原运行时检查通过；事件任务最后成功观察仍RUNNING，23:25:15急停21例、反向15例物理媒体完整，后续75阶段已完。桥接随后超时，当前实时状态待新核；尚无整组低延迟结论。原共享训练保持暂停，新训练0，final及采纳null保持。
+
+## 分析入口服务器部署
+
+已发布提交`4cc98ebca8e8f22ffd8c67320a677efb6d967407`中的`event_summary.py`和`test_event_summary.py`通过原生密码SCP从Mac到Windows、再原生25362到服务器。归档6773B，SHA256 `cce4c75128d42fa4a1d006128210f04cd406b804bc7be5c767478ba317841371`逐跳核同；两个普通文件的成员集合、大小SHA、目标不存在及不属于当前221执行来源/200冻结来源均先核。只解出这两份新文件，没有覆盖在跑代码。tar报告忽略Apple来源扩展属性，成员内容随后再次核同。
+
+固定Primebot运行时仅运行新7项检查，全部通过、0跳过、0.016秒。没有重复未变45项、27名义回放、权重审计或缓存清理，也没有提前对未完成campaign执行分析。
+
+53096超时后，已有Windows会话46669通过原生25362交互密码恢复Linux，核原boot/GPU/唯一根、五旧训练PID退出、人工暂停状态及280863/start28796218同。23:25:15的73已完阶段快照显示急停21/21和反向15/21物理媒体完整、丢包与延迟突发尚未开始；当前guard RUNNING/持原GPU锁，GPU400MiB/35C/Recovery None，总10650669056B/限34292629504B/即时余23641960448B/OOM0，峰10735480832B。训练信号0、回收未尝试。之后确认75已完阶段，phase为`reverse_damped_cv_h5_walk_forward_start_002__A023_replay`，仍是原任务。
+
+46669随后再次Timeout255。该独立故障唯一一次原地址原生密码重连18867已进入Windows并提交Linux认证，未收到Linux shell回执即外层`100.65.183.91`再次Timeout255退出。该次有界恢复已用，后续实时UNKNOWN；不逐心跳重复认证，不能据失联判断事件失败或重发。认证不入记录，q1文件元数据仍ACTIVE/十分钟/本聊天，应用goal保持用户清除状态。详见[部署与恢复记录](../logs/session_records/q1_event_saved_analysis_deployed_20261106.json)。
+
+恢复先读同一根的result、当前phase guard、280863启动tick/锁及资源；只有正式COMPLETED/source_integrity PASSED后才运行：
+
+```sh
+/opt/data/private/ZHY/data/environments/primebot_supermimic_118338b_20261103/bin/python \
+  script/q1_checkpoint_review/event_summary.py \
+  --source /opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_20261106 \
+  --output /opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_ANALYSIS_20261106
+```
+
+执行前先核这个独立分析输出不存在；若已存在，先核其summary/audit和进程，不重复执行。服务器默认只生成JSON/CSV，Mac补12张六宫图与代表原速媒体，不修改先前已交付证据ZIP。是否进一步消耗4GPU小时训练预算仍由完整事件结果决定。
 
 ## 持续执行与保存工件分析
 

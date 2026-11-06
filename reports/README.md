@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-07：[低延迟事件R2在原两小时时限退出，78/84完整](README_Q1_LOW_LATENCY_EVENTS_20261107.md)。急停/反向/丢包各21、突发延迟15；缺突发延迟阻尼H5/H4六例。守卫已回收worker、原GPU锁释放/计算空/来源全同，原训练继续暂停；不是桥接故障，未重派或扩预算。后续独立只读部分分析，原84例完整门保持。[现场](../logs/session_records/q1_event_r2_wall_bound_20261107.json)。
+
 2026-11-06 23:51：[桥接观察判断已纠正、原生密码连接恢复](README_Q1_BRIDGE_OBSERVATION_20261106.md)。旧会话退出不再泛化为整桥接不可达；89657已实核原Linux身份/暂停/锁，事件同控制器RUNNING、急停21/21反向21/21丢包12/21物理媒体完整。q1仅更新观察规则与当前会话，十分钟和同聊天保持；完整84例分析仍待。[现场记录](../logs/session_records/q1_bridge_judgment_corrected_2351_20261106.json)。
 
 2026-11-06继续执行：[事件保存分析入口已在服务器部署](README_Q1_LOW_LATENCY_EVENTS_20261106.md)，两份源码大小SHA同/原运行时7检查全过。最后成功资源快照23:25:15为同控制器RUNNING、急停21/21与反向15/21物理媒体完整；后续观察75已完阶段。桥接随后超时，一次原生密码恢复未收Linux shell即外层Timeout255退出，实时UNKNOWN；不重复认证、事件或恢复原训练。[部署与恢复记录](../logs/session_records/q1_event_saved_analysis_deployed_20261106.json)。q1十分钟持续检查仍ACTIVE，已清除应用goal保持清除。

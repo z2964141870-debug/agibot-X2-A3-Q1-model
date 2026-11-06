@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07独立软件链路剖析准备：新event_profile/controller与worker仅四条stop/late_burst×H10/H4阻尼前走保存状态前缀，每条128/总512新CUDA调用上限，逐帧对保存动作2e-5等价与事件可见性门，0物理/渲染/训练。CPU状态/目标、host传输/pack/forward、CUDA流区间、原整体目标、完整worker及本机管道RPC分开；流区间含host空隙且不可与host相加，不是硬件端到端。新5检查全过/.003秒，尚待发布/部署/原运行时检查及准入，真实新调用0；总1200s/每流300s/64MiB，原22/24GiB、GPU18GiB80度及锁保留，不重跑84/不改旧worker或训练。入口README_Q1_EVENT_PROFILE_20261107和q1_event_profile_preparation_20261107，优先46396/固定用户入口，goal清除/采纳null保持。
+
 - 2026-11-07 02:28恢复点：用户原样source /Users/yu/.zshrc再ssh -tt hp_han已进原Linux46396，后续第一跳固定此入口。保存78+6于02:10:52独立JOINED84_ANALYSIS_PASSED/84完整/来源同/1.350300秒，原R2 FAILED与正式门不改。Mac新12六宫图/12PDF和六50fps原速视频6192帧已完整解码SHA同，40成员完整证据ZIP6864616B/SHA f299568cb503cf0f4170b279378bf9f7fc2fe1bce1ecefd2640ab1cce9d1c9ef及14链接核过/总览与联系表目视。H4阻尼80ms四事件上肢+0.36%至1.95%、滑移下降9.73%至30.99%，侧倾和首秒上肢退步保留；全84去首调用44268/362超20ms，原78第二调用定位不推广补六例。02:28原身份暂停/旧五PID及分析PID退/锁计算空/OOM0/总7771893760限34292629504/磁盘187401220096，优先复用46396。q1已工具更新固定入口及完成结果/ACTIVE十分钟同聊天独立核；下一独立分段性能剖析与适配，不重做已成物理/分析，不恢复原训练/goal/新训练0及4GPU小时未用/采纳null保持。入口README_Q1_LOW_LATENCY_EVENTS_JOINED84_20261107和q1_event_joined84_completed_20261107；late_burst视频仍服务器，文档镜像与本阶段发布以publication为准。
 
 - 2026-11-07用户再次明确第一跳固定原样`source /Users/yu/.zshrc`再`ssh -tt hp_han`，覆盖旧显式IP/自选参数入口说明。46396已按此进入Windows并经原服务器交互密码进入原Linux；02:06:54原root/boot/GPU/旧PID退/训练暂停/锁空/OOM0实核同。上次合并部署收据、两目标源码与输出/进程确无，随后仅部署两新文件/724保护输入同，服务器3新检查过/.007秒，02:07:45回执已收。优先复用46396；不把旧会话或旧IP失败泛化为用户入口不可用，不读取/记录认证或改全局配置。入口README_Q1_BRIDGE_OBSERVATION_20261107和q1_user_exact_entry_recovered_20261107；下一独立只读合并84，不重跑78+6/不恢复原训练/goal清除/采纳null保持。

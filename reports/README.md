@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-07：[Q1事件CPU/GPU分段计时有界方案](README_Q1_EVENT_PROFILE_20261107.md)已实现，五项新本地检查通过；仅四条保存状态前缀、总512调用上限、逐帧动作等价先行，不新增物理或训练，尚待发布/部署/真实准入。
+
 2026-11-07：[完整84例事件比较、12张六宫图与六段原速视频已到Mac](README_Q1_LOW_LATENCY_EVENTS_JOINED84_20261107.md)。用户现成入口实际成功，独立保存分析84/84通过/来源同，原FAILED不改；新6864616B证据ZIP含40成员/6192视频帧，CRC/SHA/14链接及稀疏目视过。80ms阻尼有候选价值但侧倾、首秒误差和软件长尾未解决；原训练保持暂停，新训练0，下一分段耗时与适配。[实际收据](../logs/session_records/q1_event_joined84_completed_20261107.json)。
 
 2026-11-07：[用户指定source zshrc与ssh hp_han入口已实际恢复](README_Q1_BRIDGE_OBSERVATION_20261107.md)，46396进入原Linux/原设备暂停资源核同；上次合并部署确无落地后仅新增两文件，服务器3检查过/724来源记录同。下一独立只读合并84，旧第一跳失败不泛化为入口不可用。 [现场收据](../logs/session_records/q1_user_exact_entry_recovered_20261107.json)。

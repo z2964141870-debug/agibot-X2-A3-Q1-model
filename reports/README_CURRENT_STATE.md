@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07：[独立分段耗时入口已准备](README_Q1_EVENT_PROFILE_20261107.md)。四条保存状态前缀×128、最多512新CUDA调用，动作逐帧与保存值核同才给统计；CPU状态/事件目标、host和CUDA区间、原scope/完整worker/本机管道RPC分开，全部及去前两次长尾均保留。五新本地检查全过，待发布、原运行时检查与准入，尚无真实新调用；原84及训练不重跑，goal清除/采纳null。[方案收据](../logs/session_records/q1_event_profile_preparation_20261107.json)。
+
 2026-11-07 02:28：[84例独立保存比较与完整证据已交付](README_Q1_LOW_LATENCY_EVENTS_JOINED84_20261107.md)。用户source zshrc＋ssh hp_han入口46396可用，02:10:52保存78+6真实JOINED84_ANALYSIS_PASSED/来源同，原R2 FAILED保留；Mac12六宫图/12PDF/六原速视频共6192帧全解码SHA同，新40成员ZIP6864616B及14相对链接核过。80ms阻尼上肢接近200ms、滑移减少，但侧倾/首秒误差退步与362次>20ms软件长尾保留，不判端到端或自然性合格。02:28原身份/训练暂停/旧PID及分析PID退/锁计算空/OOM0同；q1已更新固定入口与真实完成状态。下一独立分段性能剖析、短预览适配，不重跑84/恢复原训练或goal；新训练0/4GPU小时未用/采纳null。服务器文档镜像与发布以publication为准。[收据](../logs/session_records/q1_event_joined84_completed_20261107.json)。
 
 2026-11-07 02:07恢复：按用户原样入口source /Users/yu/.zshrc、ssh -tt hp_han已进Windows并交互密码进入原Linux，46396可用。02:06:54原root/boot/GPU/旧PID退/人工暂停/锁与计算空/OOM0全同；旧未回执部署收据、两目标源码和合并输出/进程确无，随后仅新增两源/724保护记录核同/服务器3新检查过，02:07:45真实回执已收。下一独立300秒保存78+6合并；不重复物理或恢复训练。后续第一跳以用户现成入口为准，旧20344失败只属历史，不能继续当不可达结论。 [入口修正](README_Q1_BRIDGE_OBSERVATION_20261107.md) / [原始证据](../logs/session_records/q1_user_exact_entry_recovered_20261107.json)。

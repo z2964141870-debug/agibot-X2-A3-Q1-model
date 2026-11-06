@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06 08:20：[已选上肢预测器噪声放大解析完成](README_Q1_UPPER_FORECAST_SENSITIVITY_20261106.md)。80ms ridge增益5.409对阻尼2.044、200ms6.745对2.769，期望噪声RMSE与既有ridge test最大差.192%；解释原退步，不据test重选。4检查全过，Mac.009秒/峰30687232B，0原轨迹/拟合/机器人推理物理CUDA；下一先固定抗噪训练验证规则，原test已见须标探索性。旧相位诊断b70beee独立远端及Mac10份615036B核同，goal active最低今日10:00/原真实human对照仍待桥接。[审计](../logs/session_records/q1_upper_forecast_sensitivity_20261106.json)。
+
 2026-11-06 08:03：[旧Primebot保存轨迹的表观相位/幅度诊断完成](README_Q1_SAVED_TRACKING_RESPONSE_20261106.md)。393片/3144关节信号，同支持-300..300ms网格/原未平移误差保留；1580弱相关，1404窄候选仍含正441/零266/负697和显著幅度变化，不能当统一端到端或PD延迟。5检查全过，Mac2.297秒/峰45219840B，0新推理物理模型拟合CUDA；v4论文与Q1数值分开。当前V04的真实human对照仍待原桥接，goal最低今日10:00保持。[审计](../logs/session_records/q1_saved_tracking_response_20261106.json)。
 
 2026-11-06 07:45：[393片已保存上肢参考的因果预测真实拟合](README_Q1_UPPER_CAUSAL_FORECAST_20261106.md)。167/98/128冻结来源划分，8192训练/2048验证/2048测试窗口、3个线性模型实际拟合；验证选ridge .01，干净测试比阻尼平均低约33.5%，固定.01rad噪声却高约6.8%，三固定片均退步，不据test换模型或部署。786输入42220058B发布身份/前后SHA同，9检查全过，Mac单线程0.990秒/峰155123712B；实际机器人角度未进训练，无新服务器/SMPL侧车/机器人推理物理CUDA。goal保持active最低今日10:00。[审计](../logs/session_records/q1_upper_causal_forecast_20261106.json)。

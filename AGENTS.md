@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06 08:20已选上肢预测器噪声Jacobian解析实成：仅读原模型与结果/输入SHA前后同，80ms gain为ridge5.409对阻尼2.044，200ms6.745对2.769；期望噪声RMSE与既有ridge test最大相对差.192%，四方法最大.656%，解释退步不据test换参。4检查全过，Mac.009秒/峰30687232B，0原轨迹/拟合/机器人推理物理CUDA/新认证。旧相位诊断b70beee独立远端/Mac10份615036B核同；下一先固定抗噪规则再独立训练，原test已见明示探索性，不代真实human对照。goal active最低今日10:00，原V04/final/五阶段/采纳null保持，无agent其他任务改动；入口Q1_UPPER_FORECAST_SENSITIVITY及审计/前阶段publication，新发布以后续收据为准。
+
 - 2026-11-06 08:03旧Primebot10000 motion保存相位/幅度分析实成：393片3144关节/786输入原SHA同，同支持-300..300ms网格，1580弱相关、1404窄启发候选/lag中位0/幅度比中位1.219，原未移RMSE保留；不能称零端到端/PD单因或当前Morph质量。5检查全过，Mac2.297秒/峰45219840B，0新推理物理拟合CUDA；不重做该分析。上肢预测ca3dddc独立远端/Mac10份628102B已核/噪声退步保持，下一解释预测器噪声放大及原桥接可用后的真实human对照。goal active最低今日10:00，原V04/final/完整五阶段/采纳null保持，无agent其他任务变更；入口Q1_SAVED_TRACKING_RESPONSE及q1_saved_tracking_response/upper_publication，发布以后续收据为准。
 
 - 2026-11-06 07:45新增已保存上肢reference的真实小型因果拟合：393片/786发布工件42220058B前后SHA同，冻结train167/val98/test128、8192/2048/2048窗口；三ridge真实拟合/先写val选择.01才读test。干净均值.039339对阻尼.059140rad/126片改善，预固定.01rad噪声却.068267对.063950/仅40片改善，三固定片均退，不据test换模型或部署。9检查全过，Mac单线程0.990秒/峰155123712B，0服务器命令/真实SMPL侧车/机器人推理物理CUDA；不重做该拟合。下一已保存执行相位/幅度拆分与原桥接可用后的真实human对照；goal active最低今日10:00，原V04/final/五阶段/采纳null保持，无agent/其他自动任务修改。入口Q1_UPPER_CAUSAL_FORECAST_20261106及q1_upper_causal_forecast审计，发布以后续收据为准。

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-06修订发布与桥接：[事件响应修复166d4e9和新R2清单已保存](README_Q1_LOW_LATENCY_EVENTS_20261106.md)，服务器补验/派发待原生密码会话。新38570在Windows密码提示后Broken pipe，未到Linux，实时UNKNOWN；不混成服务器或训练停止。两跳密码认证今后连续完成，原训练暂停/goal active/0新训练/final采纳null保持。[恢复记录](../logs/session_records/q1_paused32k_event_r2_publication_20261106.json)。
+
 2026-11-06 19:33：[事件新入口在动作门退出，修订准备](README_Q1_LOW_LATENCY_EVENTS_20261106.md)。stream计时同名关键字导致失败/自有组和锁已回收/0事件物理，保留失败根后新增真实action路径回归。保存GPU目标调用去首帧仍95次超20ms，不能只凭预热或p95称实时合格。原密码桥接会话仍可用，原训练暂停/goal active/新训练0。[实据](../logs/session_records/q1_paused32k_event_attempt01_20261106.json)。
 
 2026-11-06交付更新：[原生逐跳密码桥接、三张六宫图及九原速视频已核](README_Q1_LOW_LATENCY_PAUSED32K_20261106.md)。4863620B包SHA同，Mac44成员/4761帧全解码和六图目视过；服务器221代码/44运行时检查及[事件准入](README_Q1_LOW_LATENCY_EVENTS_20261106.md)通过，84合成事件例待发布后单派。原训练暂停、goal active、0新训练，最大软件调用仍需定位，原final及采纳null保持。[实据](../logs/session_records/q1_password_policy_delivery_event_admission_20261106.json)。

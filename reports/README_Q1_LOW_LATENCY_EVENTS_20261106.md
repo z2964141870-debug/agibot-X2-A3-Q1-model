@@ -4,6 +4,10 @@
 
 ## 首派失败与修订
 
+修订 `166d4e986decdd2bd4789fa6516d56e4170c4ac4` 已push并独立40位远端核同，八份652728B Mac主根镜像通过。新R2清单221项/41135B、SHA `7db3025b8456270747febef675f88aad82247cf3f338212d7359ba4fa3f09a55` 已生成，尚未服务器部署/45补验或R2派发。源提交与该清单必须一起使用，原237452b失败清单/输出保持历史，不覆盖。
+
+原81883最后的服务器收据包6553B/9成员已创建，回执在本地结束SSH时收到；包SHA `0f0a06d1ade4cc95873a5c80bcf2771cd64c406469cc56f89014d13e767398a42`，尚未SCP回Mac。随后同地址原生交互密码重连38570在Windows密码提示后Broken pipe255，未到Windows shell或Linux，不进行循环认证。实际训练/资源实时UNKNOWN不等于原训练重启或失败；R2命令从未下发。恢复后先核原boot/GPU/root、明确暂停、五旧PID、锁/compute/cgroup/OOM和原事件退出，再补传修订、核221大小SHA、服务器45检查和新动作门。[发布与恢复记录](../logs/session_records/q1_paused32k_event_r2_publication_20261106.json)。
+
 cce5bd0准入记录发布并独立40位远端/Mac八文件676468B核同后，279689/start27764636实际单派原事件根。新适配器equivalence阶段于19:33:22退出：`compute_record`已带`compute_scope`，`dict(..., **compute, compute_scope=...)`再次指定同名关键字导致TypeError。尚未比较完新适配器动作、未进入84事件物理，不能当低延迟策略质量失败。守卫279761/return1已回收、controller退/计算与GPU锁空，训练信号0，失败日志和根全部保留。
 
 修订仅在新worker用字典展开后显式覆盖计时说明，未改目标、策略数学、原R2 215源码或原200冻结来源；新增直接走`EventSession.action`的CPU合同回归，保留真实元数据的同名键，覆盖前次纯goal输入测试未覆盖的响应组装。Mac使用已有Torch运行时45项44过1MuJoCo3.6待/1.771秒；这不是新GPU动作等价或事件物理结果。修订发布与新清单后，服务器补45检查和准入，通过才使用新`Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_20261106`输出，原失败根不覆盖。

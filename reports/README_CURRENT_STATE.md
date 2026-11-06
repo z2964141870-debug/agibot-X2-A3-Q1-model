@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06桥接与修订发布：166d4e986decdd2bd4789fa6516d56e4170c4ac4独立40位远端/Mac八份652728B核同，新221项R2清单41135B/SHA7db3025b…f09a55已成。修订仍待原服务器45检查/新动作门/84事件R2，0新事件物理或训练。81883本地关闭时最后服务器收据包已创建并回执6553B/9成员，不误写命令失败；随后38570按原地址原生交互密码到Windows提示后Broken pipe/未Windows/Linux。当前实时UNKNOWN，按最后实据保留原训练暂停及首事件失败清理，不重启/重发。认证今后连续完成，不穿插其他工作/不用替代认证；无附带终端、Terminal UI读取被安全限制拒绝，未绕过。goal active/final与采纳null保持。[可恢复入口](../logs/session_records/q1_paused32k_event_r2_publication_20261106.json)。
+
 2026-11-06 19:33：[事件首派在新适配器动作门报错，尚无事件物理](README_Q1_LOW_LATENCY_EVENTS_20261106.md)。279689/start27764636在stream计时字段重复处退出，279761已回收/原GPU锁及计算空；保留失败根，独立修复dict合并和真实action路径回归，本地45项44过1服务器3.6待，尚未重派。另保存telemetry实核13473调用/122次>20ms，去首帧后仍95次/最大519.54ms，预热尚不足以证明实时deadline。cce5bd0独立40位远端/Mac8份676468B同，原生密码81883会话仍可用，文档SCP8849失败不混成整条桥接失联。原训练暂停/goal active/0新训练/final及采纳null保持。[失败与时序实据](../logs/session_records/q1_paused32k_event_attempt01_20261106.json)。
 
 2026-11-06交付更新：[逐跳原生密码桥接已实用，名义六宫图与九视频已到Mac](README_Q1_LOW_LATENCY_PAUSED32K_20261106.md)。结果包4863620B/44成员SHA同；三PNG/三PDF/三联系表目视齐，九50fps原速视频共4761帧完整解码/大小SHA逐份同。保持原绘图失败日志及115源未变证据，没有重复物理。237452b源码十Mac文件675687B、事件包13份726598B服务器核同，221代码全过/原215与200冻结未覆盖。服务器MuJoCo3.6的44项全过/0跳过，固定运行时preflight通过/复用46名义证据，GPU空闲1MiB27度/总13001687040限34292629504/OOM0。[84例急停反向丢包事件](README_Q1_LOW_LATENCY_EVENTS_20261106.md)待本次发布后单次派发，先动作等价门；软件调用最大1.2–1.7秒未定位，不能只报p95或称端到端降延迟。goal active/原训练暂停/新训练0及4GPU小时预算/final采纳null保持。[实据](../logs/session_records/q1_password_policy_delivery_event_admission_20261106.json)。

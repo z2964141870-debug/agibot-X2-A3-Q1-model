@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06 08:29：[抗噪上肢预测探索实成](README_Q1_UPPER_NOISE_ROBUST_20261106.md)。8b34bd0预登记先push并独立远端/Mac5份24049B核同后才读数据，原786输入SHA同/三真实拟合；验证选noise_ridge1。已看test仅探索性复比：iid.01新.049308对旧.068280/阻尼.063617，干净退至.046069且相关噪声/偏差/冻结未全面胜旧，未接策略。7检查全过，Mac1.215秒/峰163528704B，0服务器机器人推理物理CUDA/认证。原解析81025bf独立远端/Mac10份612210B齐；下一实际动捕噪声与真正human对照/因果学生方案。原训练实时UNKNOWN，goal active最低今日10:00/V04/final/五阶段/采纳null保持。[审计](../logs/session_records/q1_upper_noise_robust_20261106.json)。
+
 2026-11-06 08:20：[已选上肢预测器噪声Jacobian解析实成](README_Q1_UPPER_FORECAST_SENSITIVITY_20261106.md)。原模型及结果SHA前后同，80ms ridge噪声gain5.409对阻尼2.044，200ms6.745对2.769；解析期望与既有噪声test最大差ridge.192%/全方法.656%，解释退步不据test换参。4检查全过，Mac.009秒/峰30687232B，0原轨迹/拟合/机器人推理物理CUDA/认证。旧相位b70beee独立远端/Mac10份615036B同；下一预登记抗噪训练/验证规则，原test已见只能探索性复比。真实human对照待原桥接/实时训练UNKNOWN，goal active最低今日10:00，V04/final/五阶段/采纳null保持。[审计](../logs/session_records/q1_upper_forecast_sensitivity_20261106.json)。
 
 2026-11-06 08:03：[旧Primebot相位/幅度拆分实成](README_Q1_SAVED_TRACKING_RESPONSE_20261106.md)。393片3144信号/786原输入SHA同；1580弱波形相关、1404窄候选lag p05/中位/p95=-100/0/80ms、幅度比中位1.219，不称零端到端或PD延迟/当前Morph质量。5检查全过，Mac2.297秒/峰45219840B，0新物理推理拟合CUDA；原未对齐RMSE保留。上肢预测ca3dddc独立远端/Mac10份628102B已核，噪声退步不改选型。下一解释已选预测器噪声放大，并待原桥接作真实human对照；原训练实时UNKNOWN/goal active最低今日10:00，V04/final/五阶段/采纳null保持。[审计](../logs/session_records/q1_saved_tracking_response_20261106.json)。

@@ -58,6 +58,10 @@ class PreviewSession(NativeSession):
             modeled_transport_ns=0, preprocessing="offline_unverified",
             measured_end_to_end_latency_ns=None)
 
+    def compute_record(self, started):
+        require(not self.torch.cuda.is_initialized(), "Preview CPU policy worker initialized CUDA")
+        return dict(cpu_policy_wall_compute_ns=time.perf_counter_ns() - started)
+
     def start(self, request):
         require(request.get("interface") == "human", "Short preview study is human interface only")
         result = super().start(request)
@@ -105,13 +109,12 @@ class PreviewSession(NativeSession):
         torso = split_state(converted).body_quat[:, ANCHOR_IDX]
         goal, timing = preview_goal(window, self.tail_method)
         action = self.preview(self.history.flat(), goal, torso)
-        compute_ns = time.perf_counter_ns() - started
+        compute = self.compute_record(started)
         self.frame += 1
-        require(not torch.cuda.is_initialized(), "Preview CPU policy worker initialized CUDA")
         return dict(native_action=self.spec.translator.to_native_delta(action)[0].tolist(),
             canonical_action=action[0].tolist(), stream=dict(timing,
                 policy_prefix_frames=(window.prefix_frames if self.tail_method == "masked" else 10),
-                cpu_policy_wall_compute_ns=compute_ns,
+                **compute,
                 timing_clock_note="Replay schedule and wall compute use separate clocks; do not sum as measured latency"))
 
 

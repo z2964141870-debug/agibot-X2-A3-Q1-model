@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06新授权：[暂停后32k低延迟GPU探索](README_Q1_LOW_LATENCY_PAUSED32K_20261106.md)已获用户批准并新建 goal，实读 active，覆盖下方旧 paused 元数据。原共享训练保持暂停；独立 CUDA 策略/原共同 CPU 物理/顺序 NVIDIA EGL 入口已准备，先 CPU-GPU H10 动作一致性，再 27 例短窗/保持/阻尼对照。相关45项运行44过1原运行时待，真实新推理/物理/训练0；先发布核源码再一次下发，不直接运行旧16k在训入口。新训练合计≤4 GPU小时且按实际失败决定，后续急停反向丢包和六宫图交付仍属目标；不以三片结束结算，原final和采纳null保持。[预算](../data/manifests/q1_low_latency_paused_goal_20261106.json)。
+
 2026-11-06暂停后：[低延迟多方向专题](research/2026-11-06/LOW_LATENCY_SUPERMIMIC.md)已写入用户指定research，十二项一手工作覆盖因果学生、训练短预览、预测/接触、异步、延迟补偿与约束协同。六份本地源码AST/SHA无变，确认可独立替换human编码器并复用动作解码器；当前full/H10未适配短窗，逐部位窗口需新接口。先做暂停后独立评估准入和32k human短窗对照，不直接运行写死16k/旧55672持锁的campaign。本轮0新训练/物理/GPU任务，原训练不重启、app goal最后paused、原final/采纳null保持。暂停7218236已独立40位远端和Mac7份621771B核同；本轮新研究发布/服务器镜像以后续收据为准。
 
 2026-11-06 16:29：[原共享训练已按用户要求暂停](README_Q1_SHARED_PAUSED_20261106.md)。原设备/五PID-starttick/guard锁及退出源码核同后，经controller既有handler停止，五PID与自有组全退/GPU锁释放/计算进程为空，显存1MiB/OOM0。最近周期收据各56600轮，磁盘latest仍48000，未导出后续内存；保留16/32/48k，不承诺精确续训。旧pipeline FAILED源自本次人工STOPPED_SIGNAL，非新训练故障，不重启或放宽原160k final。按新指令继续[research](research/README.md)低延迟多方向研究和独立实验；app goal最后paused，实际授权已恢复但不伪报元数据active。采纳null。[暂停凭据](../logs/session_records/q1_shared_user_pause_20261106.json)。1fe322c六记录服务器镜像完成回执已收，不重传原36例。

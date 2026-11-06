@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06用户“可以，开始尝试，允许开始目标模式”后，旧goal已null，新goal创建且实读active；原共享训练仍暂停。新增独立paused_runtime/GPU worker/32k controller，先原CPU-GPU H10全参考帧容差核验，再同human27例H10/5/4/2/1和H5/4保持/阻尼，顺序GPU EGL媒体；新训练总≤4GPU小时按失败决定，每训练交付六宫图，急停反向丢包及设计结论不可省。相关45运行44过1原运行时待/编译过，0新真实推理物理训练；旧16k在训controller不直接复用，原冻结/final及采纳null保持。复用63485无新认证/不新agent或自动任务，实际发布与部署以随后收据为准；入口Q1_LOW_LATENCY_PAUSED32K和q1_low_latency_paused_goal。
+
 - 2026-11-06原训练暂停后继续用户指定reports/research低延迟专题：十二一手工作覆盖当前/历史学生、时间mask课程、接触预测、异步前缀、动作队列/执行补偿和约束协同；另复用旧PredActor/当天DreamFree-GRASP-HALO审计。六源码AST/SHA前后同/无import执行，确认motion/human共用decoder可做独立因果编码器，但旧campaign依赖原TRAINING/guard55672且写死16k，暂停后需新准入/真实checkpoint锁元数据，尚未实现或下发。优先32k human H10/H5/H4/H2/H1再f0历史学生，不直接重训原配方；新训练物理GPU0，原训练保持停止/目标元数据paused/final及采纳null，无新agent/自动任务。入口research/2026-11-06/LOW_LATENCY_SUPERMIMIC、q1_low_latency_research及interface_audit；暂停7218236独立远端/Mac7份621771B已核，新发布与服务器镜像以收据为准。
 
 - 2026-11-06用户明确要求先暂停原共享训练，再在reports/research继续多方向低延迟SuperMimic遥操探索。本次覆盖旧不得停止原训练限制；16:29:43核原boot/GPU/五PID-starttick/55672锁/四退出源码SHA后，仅pidfd向controller54868发送一次SIGTERM，原handler通知guard并阻止后续。16:29:44五PID全退/自有组无存活/锁释放/GPU计算为空，显存16177→1MiB、cgroup23187435520→13123092480B/限34292629504/OOM0。最近周期收据两型各56600轮/五Adam566000-54600-1092000-54600-1092000/非有限0；不是精确中断或保存轮。仅保留0/16/32/48k/latest48k，stat未变，无即时保存/未导出后续内存；replay未持久化，不承诺精确续训。旧pipeline FAILED由人工STOPPED_SIGNAL/-15导致，非新数值故障，不改写为完成/不自动重启。原160k final与采纳null保持；继续独立低延迟研究，暂停后实验须新准入并持释放后的GPU锁，不能直接套旧TRAINING入口。app goal最后paused无恢复接口，不伪报active或建替代goal/agent。入口Q1_SHARED_PAUSED及q1_shared_user_pause，发布镜像以收据为准；此前1fe322c六记录688021B服务器完成回执已收/SHA b01a04f，不重复原36例。

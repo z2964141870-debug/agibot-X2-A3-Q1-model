@@ -107,7 +107,7 @@ def policy_command(runtime, config, plan, checkpoint, baseline, horizon=None, ta
     return command
 
 
-def validate_stream(value, horizon, frame, tail_method="masked"):
+def validate_stream(value, horizon, frame, tail_method="masked", *, policy_device="cpu"):
     from stream_contract import DT_NS
     require(tail_method in TAIL_METHODS and isinstance(value, dict)
             and value.get("tail_method") == tail_method
@@ -143,9 +143,14 @@ def validate_stream(value, horizon, frame, tail_method="masked"):
             "Held terminal slots require an explicit terminal capture")
     terminal = terminal_capture is not None
     expected_generated = tuple(i >= horizon and not terminal and tail_method != "masked" for i in range(10))
+    require(policy_device in ("cpu", "cuda"), "Unsupported policy compute device")
+    compute_key = "cpu_policy_wall_compute_ns" if policy_device == "cpu" else "gpu_policy_wall_compute_ns"
     require(value.get("measured_frames") == value.get("observed_prefix_frames") == sum(measured)
-            and type(value.get("cpu_policy_wall_compute_ns")) is int
-            and value["cpu_policy_wall_compute_ns"] >= 0, "Missing truthful stream timing")
+            and type(value.get(compute_key)) is int and value[compute_key] >= 0,
+            "Missing truthful stream timing")
+    if policy_device == "cuda":
+        require(value.get("policy_device") == "cuda" and "cpu_policy_wall_compute_ns" not in value,
+                "GPU computation must not be labeled CPU timing")
     for key, expected in (("measured_mask", measured), ("generated_mask", expected_generated)):
         found = value.get(key)
         require(isinstance(found, (list, tuple)) and len(found) == 10

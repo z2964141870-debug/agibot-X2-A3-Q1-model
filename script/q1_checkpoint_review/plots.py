@@ -156,4 +156,3 @@ def generate(output, plan, config, runtime):
     require(identity(metrics)["sha256"] == __import__("hashlib").sha256(content).hexdigest(), "Completed Primebot log changed")
     save(root / "window_statistics.json", dict(panels=TITLES, window_iterations=2000, robots=windows,
         physical_quality_assessed=False))
-

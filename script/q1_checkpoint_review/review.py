@@ -85,6 +85,11 @@ def preflight(args):
                 r["checkpoint"] for r in reused["records"] if r["robot"] == "q1"), "Wrong saved16k review")
     require({r["clip"] for r in old["cases"]} == set(FIXED)
             and all(r["seed"] == 0 and r["complete"] for r in old["cases"]), "Incomplete saved16k cases")
+    for row, item in zip(sorted(old["cases"], key=lambda r: r["clip"]),
+                         sorted(fixed_rows(frozen), key=lambda r: Path(r["q1_primebot"]["path"]).stem)):
+        require(row["reference_sha256"] == item["q1_primebot"]["sha256"]
+                and row["native_reference_sha256"] == item["q1_morph"]["sha256"]
+                and row["human_sha256"] == item["human"]["sha256"], "Saved16k references changed")
     return config, runtime, plan, frozen, sources, reused
 
 
@@ -362,6 +367,8 @@ def execute(args):
             require(result["status"] == "WORKER_COMPLETED" and result["cleanup"]["worker_reaped"] is True
                     and result["cleanup"]["worker_return_code"] == 0, "Review phase failed: " + label)
         require(all(identity(r["path"]) == r for r in sources), "Frozen input changed during review")
+        require(identity(OLD_REVIEW / "review/result.json") == read(args.output / "authorization.json")["reused16k_motion"],
+                "Reused physical review changed during comparisons")
         save(args.output / "comparisons.json", dict(groups=read_groups(args.output), final_acceptance=False,
             user_accepted_checkpoint=None, scope="Three training motions; deterministic CPU replay, not full-library or robot acceptance"))
         state.update(status="COMPLETED_PENDING_LOCAL_REVIEW", ended_utc=now())

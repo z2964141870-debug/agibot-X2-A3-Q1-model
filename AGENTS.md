@@ -4,6 +4,10 @@
 
 ## 环境与目录
 
+- 2026-11-07 02:28恢复点：用户原样source /Users/yu/.zshrc再ssh -tt hp_han已进原Linux46396，后续第一跳固定此入口。保存78+6于02:10:52独立JOINED84_ANALYSIS_PASSED/84完整/来源同/1.350300秒，原R2 FAILED与正式门不改。Mac新12六宫图/12PDF和六50fps原速视频6192帧已完整解码SHA同，40成员完整证据ZIP6864616B/SHA f299568cb503cf0f4170b279378bf9f7fc2fe1bce1ecefd2640ab1cce9d1c9ef及14链接核过/总览与联系表目视。H4阻尼80ms四事件上肢+0.36%至1.95%、滑移下降9.73%至30.99%，侧倾和首秒上肢退步保留；全84去首调用44268/362超20ms，原78第二调用定位不推广补六例。02:28原身份暂停/旧五PID及分析PID退/锁计算空/OOM0/总7771893760限34292629504/磁盘187401220096，优先复用46396。q1已工具更新固定入口及完成结果/ACTIVE十分钟同聊天独立核；下一独立分段性能剖析与适配，不重做已成物理/分析，不恢复原训练/goal/新训练0及4GPU小时未用/采纳null保持。入口README_Q1_LOW_LATENCY_EVENTS_JOINED84_20261107和q1_event_joined84_completed_20261107；late_burst视频仍服务器，文档镜像与本阶段发布以publication为准。
+
+- 2026-11-07用户再次明确第一跳固定原样`source /Users/yu/.zshrc`再`ssh -tt hp_han`，覆盖旧显式IP/自选参数入口说明。46396已按此进入Windows并经原服务器交互密码进入原Linux；02:06:54原root/boot/GPU/旧PID退/训练暂停/锁空/OOM0实核同。上次合并部署收据、两目标源码与输出/进程确无，随后仅部署两新文件/724保护输入同，服务器3新检查过/.007秒，02:07:45回执已收。优先复用46396；不把旧会话或旧IP失败泛化为用户入口不可用，不读取/记录认证或改全局配置。入口README_Q1_BRIDGE_OBSERVATION_20261107和q1_user_exact_entry_recovered_20261107；下一独立只读合并84，不重跑78+6/不恢复原训练/goal清除/采纳null保持。
+
 - 2026-11-07 01:47恢复点：六缺例已01:30 COMPLETED/源门过、78保存计时已定位第二调用尖峰；独立84合并入口332bc47已push/独立40位远端/Mac11份708899B核同。两源码4736B包向2703的部署无回执即客户端peer reset255，部署和服务器3新检查UNKNOWN；唯一有界20344在Mac→Windows原22口等90秒TCP超时，未Windows或Linux，不泛化Linux不可达/不循环认证。最后现场01:33，原暂停/六例成功保持；恢复先读q1_event_joined84_deployed收据与两目标SHA，未核前不重传，合并分析未下发。新本地绘图入口仅AST过/真实84数值待，原FAILED/全部78+6不重跑/新训练0和4GPU小时未用/goal清除/采纳null/无agent保持。入口README_Q1_EVENT_MISSING6及q1_event_joined84_deployment_unacknowledged_20261107，文档服务器镜像与六原速视频待补。
 
 - 2026-11-07 01:33实核：独立缺六例330705/start29860648于01:30:13全部COMPLETED/12阶段/source_integrity PASSED，六物理及GPU原速媒体完整，原78直接复用/原R2 FAILED未改。控制器退/锁计算空/旧五PID退/训练仍STOPPED_SIGNAL；峰10795425792B/GPU400MiB/OOM0/训练信号0/回收未尝试。保存计时已1.526679秒分析：78次>100ms全部在frame1，去前两调用仍258次>20ms/最大49.823569ms，未定位底层因果。两原数值文件107470B已Mac二进制SHA同。89657 peer reset结束后唯一有界原生密码恢复2703已入原Linux并核身份；不泛化桥接不可达。下一独立只读合并84和更新图表，完整比较尚待，原训练不恢复/新训练0/goal清除/采纳null保持。 入口README_Q1_EVENT_MISSING6_20261107及三个新实测记录。

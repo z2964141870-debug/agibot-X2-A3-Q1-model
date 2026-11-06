@@ -1,0 +1,590 @@
+{
+  "stage": "JOINED84_SAVED_COMPARISON_AND_MAC_EVIDENCE_COMPLETED",
+  "date_beijing": "2026-11-07",
+  "source_commit": "332bc47e01ff8aa63a1e05adfacaad52a225c424",
+  "first_hop_entry": [
+    "source /Users/yu/.zshrc",
+    "ssh -tt hp_han"
+  ],
+  "observation_session": 46396,
+  "deployment": {
+    "bytes": 1595,
+    "sha256": "37035003e444501aaba1bdc55a1582d8b74c1d1e51ab33046d7c6d7900a632a0",
+    "receipt": {
+      "stage": "JOINED84_NEW_ANALYZER_DEPLOYED",
+      "utc": "2026-11-06T18:07:45.684421+00:00",
+      "source_commit": "332bc47e01ff8aa63a1e05adfacaad52a225c424",
+      "entry_commands": [
+        "source /Users/yu/.zshrc",
+        "ssh -tt hp_han"
+      ],
+      "observation_session": 46396,
+      "previous_deployment_receipt_absent": true,
+      "previous_two_source_targets_absent": true,
+      "package_preexisted": false,
+      "package": {
+        "path": "/opt/data/private/ZHY/data/deliveries/Q1_EVENT_JOINED84_CODE_20261107.tgz",
+        "bytes": 4736,
+        "sha256": "aa66d47ad34a76bd424b55a6861941e6f2530ac956df11c37f44b5318d614c3f"
+      },
+      "members": [
+        {
+          "path": "/opt/data/private/ZHY/script/q1_checkpoint_review/event_joined_summary.py",
+          "bytes": 12008,
+          "sha256": "03bd29d14dbc9057fd3eef515ce6e3d728dd875c17c94c7d90ab64870894b03b"
+        },
+        {
+          "path": "/opt/data/private/ZHY/script/q1_checkpoint_review/test_event_joined_summary.py",
+          "bytes": 1926,
+          "sha256": "569db9aba509060f1f325457fe6b2186960a36cffd4649cb9c15c49d00230483"
+        }
+      ],
+      "protected_records_verified": 724,
+      "tests": {
+        "return_code": 0,
+        "output": "test_duplicate_or_relabelled_parent_is_rejected (test_event_joined_summary.JoinedTests.test_duplicate_or_relabelled_parent_is_rejected) ... ok\ntest_exact_union_preserves_every_saved_case (test_event_joined_summary.JoinedTests.test_exact_union_preserves_every_saved_case) ... ok\ntest_failed_added_clip_does_not_gain_a_group_mean (test_event_joined_summary.JoinedTests.test_failed_added_clip_does_not_gain_a_group_mean) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.007s\n\nOK\n"
+      },
+      "new_physics": 0,
+      "new_inference": 0,
+      "new_training": 0
+    }
+  },
+  "dispatch": {
+    "bytes": 1883,
+    "sha256": "6679aeb8272587fd03fa57299d885391a0449f6916839c907cfbb71391807d96",
+    "receipt": {
+      "stage": "JOINED84_SAVED_ANALYSIS_DISPATCH",
+      "utc": "2026-11-06T18:10:50.873016+00:00",
+      "source_commit": "332bc47e01ff8aa63a1e05adfacaad52a225c424",
+      "entry_session": 46396,
+      "controller": {
+        "pid": 334285,
+        "name": "timeout",
+        "state": "R",
+        "ppid": 334284,
+        "start_ticks": "30156944",
+        "VmHWM_bytes": 4096,
+        "VmRSS_bytes": 4096,
+        "RssAnon_bytes": 4096,
+        "RssFile_bytes": 0,
+        "RssShmem_bytes": 0
+      },
+      "command": [
+        "timeout",
+        "--kill-after=5s",
+        "300",
+        "/opt/data/private/ZHY/data/environments/primebot_supermimic_118338b_20261103/bin/python",
+        "-u",
+        "/opt/data/private/ZHY/script/q1_checkpoint_review/event_joined_summary.py",
+        "--partial-root",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_PARTIAL_ANALYSIS_20261107",
+        "--followup",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_MISSING6_20261107",
+        "--output",
+        "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_JOINED84_ANALYSIS_20261107",
+        "--evaluation-commit",
+        "332bc47e01ff8aa63a1e05adfacaad52a225c424"
+      ],
+      "output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_JOINED84_ANALYSIS_20261107",
+      "log": "/opt/data/private/ZHY/logs/q1_event_joined84_analysis_20261107.log",
+      "completion_receipt": "/opt/data/private/ZHY/logs/session_records/q1_event_joined84_completion_20261107.json",
+      "numeric_package": "/opt/data/private/ZHY/data/deliveries/Q1_EVENT_JOINED84_NUMERIC_20261107.tgz",
+      "memory": {
+        "total_bytes": 7774904320,
+        "container_limit_bytes": 34292629504,
+        "immediate_headroom_bytes": 26517725184,
+        "guard_headroom_bytes": 24437350400,
+        "total_cache_bytes": 6591283200,
+        "total_rss_bytes": 16121856,
+        "total_shmem_bytes": 0,
+        "total_dirty_bytes": 0,
+        "total_writeback_bytes": 3649536,
+        "oom_kill": 0,
+        "under_oom": 0
+      },
+      "maximum_analysis_seconds": 300,
+      "wrapper_seconds": 320,
+      "new_physics": 0,
+      "new_inference": 0,
+      "new_training": 0
+    }
+  },
+  "completion": {
+    "stage": "JOINED84_SAVED_ANALYSIS_COMPLETION",
+    "utc": "2026-11-06T18:10:52.776950+00:00",
+    "return_code": 0,
+    "output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_JOINED84_ANALYSIS_20261107",
+    "new_inference": 0,
+    "new_physics": 0,
+    "new_training": 0,
+    "audit": {
+      "status": "JOINED84_ANALYSIS_PASSED",
+      "seconds": 1.350299961050041,
+      "sources_unchanged": true,
+      "original_campaign_status": "FAILED",
+      "new_physics": 0,
+      "new_inference": 0,
+      "new_training": 0
+    },
+    "total": 84,
+    "complete": 84,
+    "package": {
+      "path": "/opt/data/private/ZHY/data/deliveries/Q1_EVENT_JOINED84_NUMERIC_20261107.tgz",
+      "bytes": 84256,
+      "sha256": "798f328f07acd3aa3862026ee4a1c1b88efffa53c066c7bb9cdf02ae94d8d00e"
+    }
+  },
+  "numerical_delivery": {
+    "source": "/Users/yu/Documents/ChatGPT/元启/data/deliveries/Q1_EVENT_JOINED84_NUMERIC_20261107",
+    "archive": {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/deliveries/Q1_EVENT_JOINED84_NUMERIC_20261107.tgz",
+      "bytes": 84256,
+      "sha256": "798f328f07acd3aa3862026ee4a1c1b88efffa53c066c7bb9cdf02ae94d8d00e"
+    },
+    "files": [
+      {
+        "relative": "summary.json",
+        "bytes": 490754,
+        "sha256": "74e6399abfe510021bc6b0c2682d960ee4da8af7565ebe0fcf2a31d6a9a68734"
+      },
+      {
+        "relative": "per_case.csv",
+        "bytes": 29054,
+        "sha256": "cd2f3e732de40a397f0d66c8688bd48f5dc4ed00cfefb8a81c8a66ac3cdbeb1b"
+      },
+      {
+        "relative": "audit.json",
+        "bytes": 207,
+        "sha256": "d70a8b484c1d1e80f84769eb89cf5a92836be00725cb356a21fb0849ae3e0811"
+      }
+    ],
+    "audit": {
+      "status": "JOINED84_ANALYSIS_PASSED",
+      "seconds": 1.350299961050041,
+      "sources_unchanged": true,
+      "original_campaign_status": "FAILED",
+      "new_physics": 0,
+      "new_inference": 0,
+      "new_training": 0
+    },
+    "comparisons": [
+      {
+        "event": "stop",
+        "control": {
+          "upper_rmse_rad": 0.08182074874639511,
+          "joint_rmse_rad": 0.12256601949532826,
+          "slip_left_m_s": 0.01990861787442037,
+          "slip_right_m_s": 0.029472564343554438,
+          "sole_left_m": 0.0041083308887982966,
+          "sole_right_m": -0.000039508322303006334,
+          "alternations": 0,
+          "tilt_rms_rad": 0.07054565846920013
+        },
+        "candidate": {
+          "upper_rmse_rad": 0.08216451853513718,
+          "joint_rmse_rad": 0.12124764919281006,
+          "slip_left_m_s": 0.018576487664906608,
+          "slip_right_m_s": 0.02600102040864631,
+          "sole_left_m": 0.004448714261074263,
+          "sole_right_m": 0.000008713799085971672,
+          "alternations": 0,
+          "tilt_rms_rad": 0.07088484863440196
+        },
+        "upper_change_percent": 0.4201498935283432,
+        "slip_change_percent": -9.727742286966446,
+        "tilt_change_percent": 0.48080941132602195
+      },
+      {
+        "event": "reverse",
+        "control": {
+          "upper_rmse_rad": 0.09004647036393483,
+          "joint_rmse_rad": 0.08764172842105229,
+          "slip_left_m_s": 0.02254910224071932,
+          "slip_right_m_s": 0.008981740880147266,
+          "sole_left_m": 0.0027166339833559375,
+          "sole_right_m": 0.0007055156204769726,
+          "alternations": 0.3333333333333333,
+          "tilt_rms_rad": 0.04616148894031843
+        },
+        "candidate": {
+          "upper_rmse_rad": 0.09036934872468312,
+          "joint_rmse_rad": 0.08894877135753632,
+          "slip_left_m_s": 0.017435871447008085,
+          "slip_right_m_s": 0.00771508212048249,
+          "sole_left_m": 0.002959636140053501,
+          "sole_right_m": 0.0008599279551326618,
+          "alternations": 0.3333333333333333,
+          "tilt_rms_rad": 0.04841464137037595
+        },
+        "upper_change_percent": 0.35856859179859146,
+        "slip_change_percent": -20.233805765738953,
+        "tilt_change_percent": 4.881021998598434
+      },
+      {
+        "event": "dropout",
+        "control": {
+          "upper_rmse_rad": 0.08120155086119969,
+          "joint_rmse_rad": 0.08451193571090698,
+          "slip_left_m_s": 0.019585022272826387,
+          "slip_right_m_s": 0.03947472918024309,
+          "sole_left_m": 0.009191958441976844,
+          "sole_right_m": 0.006760677864682467,
+          "alternations": 5.666666666666667,
+          "tilt_rms_rad": 0.07178003589312236
+        },
+        "candidate": {
+          "upper_rmse_rad": 0.0820483888188998,
+          "joint_rmse_rad": 0.08487331370512645,
+          "slip_left_m_s": 0.017194453169257794,
+          "slip_right_m_s": 0.027553980863808385,
+          "sole_left_m": 0.009256264219943739,
+          "sole_right_m": 0.006702608043004959,
+          "alternations": 5.333333333333333,
+          "tilt_rms_rad": 0.07478653887907664
+        },
+        "upper_change_percent": 1.042883970464592,
+        "slip_change_percent": -24.231929643956374,
+        "tilt_change_percent": 4.188494681767563
+      },
+      {
+        "event": "late_burst",
+        "control": {
+          "upper_rmse_rad": 0.07876350730657578,
+          "joint_rmse_rad": 0.07134991884231567,
+          "slip_left_m_s": 0.013941017250360606,
+          "slip_right_m_s": 0.031528795166677365,
+          "sole_left_m": 0.010150460078327593,
+          "sole_right_m": 0.007735019327184322,
+          "alternations": 5.666666666666667,
+          "tilt_rms_rad": 0.06925824160377185
+        },
+        "candidate": {
+          "upper_rmse_rad": 0.08029972016811371,
+          "joint_rmse_rad": 0.07769629110892613,
+          "slip_left_m_s": 0.013354277984819841,
+          "slip_right_m_s": 0.01802304876738186,
+          "sole_left_m": 0.009071552159399938,
+          "sole_right_m": 0.0079173450374435,
+          "alternations": 6,
+          "tilt_rms_rad": 0.07190567255020142
+        },
+        "upper_change_percent": 1.9504119535439735,
+        "slip_change_percent": -30.99305872560777,
+        "tilt_change_percent": 3.8225500462105044
+      }
+    ],
+    "first_window": {
+      "capture_window_start_ns": 1000000000,
+      "capture_window_duration_ns": 1000000000,
+      "expected_samples": 50,
+      "observed_samples": 50,
+      "complete": true,
+      "upper_rmse_rad": 0.09475649893283844,
+      "action_delta_rms_p95": 0.04827383905649185,
+      "action_delta_max_joint_max": 0.1929938793182373,
+      "endpoint": "one saved simulator state after the action at each synthetic control timestamp",
+      "measured_hardware_delay": false
+    },
+    "first_telemetry": {
+      "gpu_goal_call_all": {
+        "samples": 1031,
+        "p50_ms": 7.420172,
+        "p95_ms": 8.180679000000001,
+        "maximum_ms": 1177.239733,
+        "calls_over_20ms": 8
+      },
+      "gpu_goal_call_without_first": {
+        "samples": 1030,
+        "p50_ms": 7.418965,
+        "p95_ms": 8.179715250000001,
+        "maximum_ms": 391.396405,
+        "calls_over_20ms": 7
+      },
+      "first_goal_call_ms": 1177.239733,
+      "action_delta_rms_p95": 0.022890066727995872,
+      "action_delta_max_joint_max": 0.41008925437927246,
+      "fallback_frames": 0,
+      "fallback_intervals": [],
+      "maximum_used_pose_age_ms": 180
+    }
+  },
+  "window_metrics": {
+    "window_comparisons": [
+      {
+        "event": "stop",
+        "window_upper_h10": 0.07742373148600261,
+        "window_upper_h4": 0.07825912286837895,
+        "window_upper_change_percent": 1.0789862053179
+      },
+      {
+        "event": "reverse",
+        "window_upper_h10": 0.0774683232108752,
+        "window_upper_h4": 0.08098073303699493,
+        "window_upper_change_percent": 4.533994903386085
+      },
+      {
+        "event": "dropout",
+        "window_upper_h10": 0.09198915461699168,
+        "window_upper_h4": 0.0930147518714269,
+        "window_upper_change_percent": 1.1149110552275632
+      },
+      {
+        "event": "late_burst",
+        "window_upper_h10": 0.08017235994338989,
+        "window_upper_h4": 0.08683777848879497,
+        "window_upper_change_percent": 8.313860974170595
+      }
+    ],
+    "after_first_samples": 44268,
+    "after_first_over20ms": 362
+  },
+  "final_observation": {
+    "stage": "JOINED84_POST_DELIVERY_OBSERVATION",
+    "utc": "2026-11-06T18:28:11.080870+00:00",
+    "root": "/opt/data/private/ZHY",
+    "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+    "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4, 1, 25, None",
+    "old_training_processes": {
+      "54868": null,
+      "55672": null,
+      "55677": null,
+      "55678": null,
+      "55679": null
+    },
+    "analysis_process": null,
+    "followup_process": null,
+    "training_guard": "STOPPED_SIGNAL",
+    "pipeline_status": "FAILED",
+    "joined_audit": {
+      "status": "JOINED84_ANALYSIS_PASSED",
+      "seconds": 1.350299961050041,
+      "sources_unchanged": true,
+      "original_campaign_status": "FAILED",
+      "new_physics": 0,
+      "new_inference": 0,
+      "new_training": 0
+    },
+    "gpu_lock_rows": [],
+    "gpu_compute": "",
+    "memory": {
+      "total_bytes": 7771893760,
+      "container_limit_bytes": 34292629504,
+      "immediate_headroom_bytes": 26520735744,
+      "guard_headroom_bytes": 24440360960,
+      "total_cache_bytes": 6591823872,
+      "total_rss_bytes": 11722752,
+      "total_shmem_bytes": 0,
+      "total_dirty_bytes": 0,
+      "total_writeback_bytes": 3649536,
+      "oom_kill": 0,
+      "under_oom": 0
+    },
+    "cgroup_peak_bytes": 32271110144,
+    "disk_free_bytes": 187401220096,
+    "new_inference": 0,
+    "new_physics": 0,
+    "new_training": 0,
+    "signals_sent": 0
+  },
+  "mac_combined_evidence": {
+    "archive": {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/deliveries/Q1_EVENTS_JOINED84_EVIDENCE_20261107.zip",
+      "bytes": 6864616,
+      "sha256": "f299568cb503cf0f4170b279378bf9f7fc2fe1bce1ecefd2640ab1cce9d1c9ef"
+    },
+    "files": 40,
+    "audit": {
+      "status": "PASSED",
+      "total_cases": 84,
+      "complete_cases": 84,
+      "source_summary_sha256": "74e6399abfe510021bc6b0c2682d960ee4da8af7565ebe0fcf2a31d6a9a68734",
+      "source_inputs_unchanged": true,
+      "six_panel_png": 12,
+      "six_panel_pdf": 12,
+      "original_speed_videos": 6,
+      "decoded_frames": 6192,
+      "media_events": [
+        "stop",
+        "reverse",
+        "dropout"
+      ],
+      "late_burst_video_in_bundle": false,
+      "readme_links_checked": [
+        "six_panel_overview.png",
+        "figures/",
+        "analysis/per_case.csv",
+        "analysis/summary.json",
+        "analysis/audit.json",
+        "evidence_audit.json",
+        "media/stop/masked_h10_walk_forward_loop_001__A022.mp4",
+        "media/stop/damped_cv_h4_walk_forward_loop_001__A022.mp4",
+        "media/reverse/masked_h10_walk_forward_loop_001__A022.mp4",
+        "media/reverse/damped_cv_h4_walk_forward_loop_001__A022.mp4",
+        "media/dropout/masked_h10_walk_forward_loop_001__A022.mp4",
+        "media/dropout/damped_cv_h4_walk_forward_loop_001__A022.mp4",
+        "media_contact.png",
+        "source_media_audit.json"
+      ],
+      "visual_inspection": {
+        "status": "REVIEWED",
+        "figure_scope": "twelve-figure overview and one late_burst detail",
+        "media_scope": "six-row contact sheet at frames 0,49,60,1031; sparse inspection only",
+        "assets_rendered": true,
+        "natural_gait_qualification": false
+      },
+      "historical_source_audits_retained": true,
+      "new_inference": 0,
+      "new_physics": 0,
+      "new_training": 0,
+      "original_campaign_status": "FAILED",
+      "original_campaign_final_gate_passed": false,
+      "measured_end_to_end_latency_ms": null,
+      "natural_teleoperation_qualified": false,
+      "user_accepted_checkpoint": null
+    }
+  },
+  "media_delivery": {
+    "root": "/Users/yu/Documents/ChatGPT/元启/data/deliveries/Q1_EVENT_R2_PARTIAL_MEDIA_20261107",
+    "archive": {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/deliveries/Q1_EVENT_R2_PARTIAL_RAW_20261107.tgz",
+      "bytes": 2991565,
+      "sha256": "e5a4bf494c82297e56f752ec2e32f1ecfb3ce2e20246f8c6a055503e14aab574"
+    },
+    "videos": [
+      {
+        "relative": "media/dropout/damped_cv_h4_walk_forward_loop_001__A022.mp4",
+        "event": "dropout",
+        "method": "damped_cv",
+        "horizon_frames": 4,
+        "bytes": 880762,
+        "sha256": "074eba95ac4aa51af07da8f6fc17627358450a2f6c1901f91f9631731d05cca3",
+        "decoded_frames": 1032,
+        "metadata": {
+          "width": 1280,
+          "height": 392,
+          "r_frame_rate": "50/1",
+          "duration": "20.640000",
+          "nb_frames": "1032"
+        },
+        "original_speed": true,
+        "source_video_path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_20261106/dropout/tail_damped_cv/h4/walk_forward_loop_001__A022/review/walk_forward_loop_001__A022_s0/tracking.mp4"
+      },
+      {
+        "relative": "media/dropout/masked_h10_walk_forward_loop_001__A022.mp4",
+        "event": "dropout",
+        "method": "masked",
+        "horizon_frames": 10,
+        "bytes": 876786,
+        "sha256": "b1a7023526f3ec1eea6fed775967e3cc025ae68ce0a6467f4f1dcaa426ed8b11",
+        "decoded_frames": 1032,
+        "metadata": {
+          "width": 1280,
+          "height": 392,
+          "r_frame_rate": "50/1",
+          "duration": "20.640000",
+          "nb_frames": "1032"
+        },
+        "original_speed": true,
+        "source_video_path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_20261106/dropout/h10/walk_forward_loop_001__A022/review/walk_forward_loop_001__A022_s0/tracking.mp4"
+      },
+      {
+        "relative": "media/reverse/damped_cv_h4_walk_forward_loop_001__A022.mp4",
+        "event": "reverse",
+        "method": "damped_cv",
+        "horizon_frames": 4,
+        "bytes": 352562,
+        "sha256": "3a45ce0fca6bd74bcb07d0342f41eb75cb115c4cdbd7d90641384072175e7dd8",
+        "decoded_frames": 1032,
+        "metadata": {
+          "width": 1280,
+          "height": 392,
+          "r_frame_rate": "50/1",
+          "duration": "20.640000",
+          "nb_frames": "1032"
+        },
+        "original_speed": true,
+        "source_video_path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_20261106/reverse/tail_damped_cv/h4/walk_forward_loop_001__A022/review/walk_forward_loop_001__A022_s0/tracking.mp4"
+      },
+      {
+        "relative": "media/reverse/masked_h10_walk_forward_loop_001__A022.mp4",
+        "event": "reverse",
+        "method": "masked",
+        "horizon_frames": 10,
+        "bytes": 356895,
+        "sha256": "9651a6813206ef1fcd8248d7091a309e78b4091651817a56b866fc4e1542a9d4",
+        "decoded_frames": 1032,
+        "metadata": {
+          "width": 1280,
+          "height": 392,
+          "r_frame_rate": "50/1",
+          "duration": "20.640000",
+          "nb_frames": "1032"
+        },
+        "original_speed": true,
+        "source_video_path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_20261106/reverse/h10/walk_forward_loop_001__A022/review/walk_forward_loop_001__A022_s0/tracking.mp4"
+      },
+      {
+        "relative": "media/stop/damped_cv_h4_walk_forward_loop_001__A022.mp4",
+        "event": "stop",
+        "method": "damped_cv",
+        "horizon_frames": 4,
+        "bytes": 268789,
+        "sha256": "dc4621250fec5d4bf7880abdd4bce435baf930cd81ac4d8c4c135be3772ad9b0",
+        "decoded_frames": 1032,
+        "metadata": {
+          "width": 1280,
+          "height": 392,
+          "r_frame_rate": "50/1",
+          "duration": "20.640000",
+          "nb_frames": "1032"
+        },
+        "original_speed": true,
+        "source_video_path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_20261106/stop/tail_damped_cv/h4/walk_forward_loop_001__A022/review/walk_forward_loop_001__A022_s0/tracking.mp4"
+      },
+      {
+        "relative": "media/stop/masked_h10_walk_forward_loop_001__A022.mp4",
+        "event": "stop",
+        "method": "masked",
+        "horizon_frames": 10,
+        "bytes": 265225,
+        "sha256": "0e53ab726de3a83658ee2d24137dc55c4008b6815caba58b04b23cf1f747b465",
+        "decoded_frames": 1032,
+        "metadata": {
+          "width": 1280,
+          "height": 392,
+          "r_frame_rate": "50/1",
+          "duration": "20.640000",
+          "nb_frames": "1032"
+        },
+        "original_speed": true,
+        "source_video_path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_20261106/stop/h10/walk_forward_loop_001__A022/review/walk_forward_loop_001__A022_s0/tracking.mp4"
+      }
+    ],
+    "total_decoded_frames": 6192,
+    "late_burst_video_in_mac_bundle": false
+  },
+  "automation": {
+    "path": "/Users/yu/.codex/automations/q1/automation.toml",
+    "sha256": "bc9114c8eb1a8b60eb03574a5f262c0e1b76afcadb6fbbec02dda014b2616dde",
+    "bytes": 4987,
+    "id": "q1",
+    "kind": "heartbeat",
+    "status": "ACTIVE",
+    "rrule": "RRULE:FREQ=MINUTELY;INTERVAL=10",
+    "target_thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "updated_at": 1793989600787,
+    "prompt_sha256": "1e095980d4790363253dc87a0ca8154ba42ba5322a5ec48ae89fca5d442b73fa",
+    "user_exact_entry": true,
+    "completed84_updated": true
+  },
+  "original_campaign_status": "FAILED",
+  "original_full84_campaign_gate_passed": false,
+  "original_training_guard": "STOPPED_SIGNAL",
+  "new_server_training_updates": 0,
+  "new_server_training_gpu_hours": 0,
+  "authorized_new_training_gpu_hour_limit": 4,
+  "user_accepted_checkpoint": null,
+  "overall_exploration_complete": false,
+  "server_document_mirror": "PENDING",
+  "publication": "PENDING"
+}

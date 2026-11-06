@@ -1,5 +1,9 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-07：[完整84例事件比较、12张六宫图与六段原速视频已到Mac](README_Q1_LOW_LATENCY_EVENTS_JOINED84_20261107.md)。用户现成入口实际成功，独立保存分析84/84通过/来源同，原FAILED不改；新6864616B证据ZIP含40成员/6192视频帧，CRC/SHA/14链接及稀疏目视过。80ms阻尼有候选价值但侧倾、首秒误差和软件长尾未解决；原训练保持暂停，新训练0，下一分段耗时与适配。[实际收据](../logs/session_records/q1_event_joined84_completed_20261107.json)。
+
+2026-11-07：[用户指定source zshrc与ssh hp_han入口已实际恢复](README_Q1_BRIDGE_OBSERVATION_20261107.md)，46396进入原Linux/原设备暂停资源核同；上次合并部署确无落地后仅新增两文件，服务器3检查过/724来源记录同。下一独立只读合并84，旧第一跳失败不泛化为入口不可用。 [现场收据](../logs/session_records/q1_user_exact_entry_recovered_20261107.json)。
+
 2026-11-07 01:47：[缺六例完成、第二调用尖峰定位及84合并恢复点](README_Q1_EVENT_MISSING6_20261107.md)。六例01:30全部完成/源门过，78例计时去前两调用仍最高49.824ms。332bc47源码与实际结果已远端/Mac核同；新合并入口部署未回执，2703客户端退出后唯一有界恢复20344在Mac→Windows22口TCP超时，未进Windows或Linux。部署UNKNOWN，84只读分析未下发，恢复先查精确收据和源码SHA。原训练暂停/原FAILED保留/新训练0/goal清除/采纳null，六视频和文档服务器镜像待补。[证据](../logs/session_records/q1_event_joined84_deployment_unacknowledged_20261107.json)。
 
 2026-11-07 01:33实核：独立缺六例330705/start29860648于01:30:13全部COMPLETED/12阶段/source_integrity PASSED，六物理及GPU原速媒体完整，原78直接复用/原R2 FAILED未改。控制器退/锁计算空/旧五PID退/训练仍STOPPED_SIGNAL；峰10795425792B/GPU400MiB/OOM0/训练信号0/回收未尝试。保存计时已1.526679秒分析：78次>100ms全部在frame1，去前两调用仍258次>20ms/最大49.823569ms，未定位底层因果。两原数值文件107470B已Mac二进制SHA同。89657 peer reset结束后唯一有界原生密码恢复2703已入原Linux并核身份；不泛化桥接不可达。下一独立只读合并84和更新图表，完整比较尚待，原训练不恢复/新训练0/goal清除/采纳null保持。 [六例与计时阶段](README_Q1_EVENT_MISSING6_20261107.md) / [真实完成](../logs/session_records/q1_event_missing6_completed_20261107.json)。

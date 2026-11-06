@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06 10:01:12实核已过最低10:00/现goal仍active；q1保存ACTIVE十分钟同聊天原样，未新goal-agent/其他自动任务变更。独立MPS总3000更新及本地验证已结束：新paired控制/修订两模型各1000、各6Adam1000/均验证选800/风险.0536087对.0538523未赢；786源42220058B SHA同/CPU有限保存复读过/全14.965秒/RSS414908416B/MPSdriver28065792B/可用最低42%。三固定噪声片同目标修订p95降25%-29%、信号加速度p95降35%-41%，但干净均值增3.7%/最大丢帧修订仍大，不部署或判自然性。原human33例campaign未上传/全身GRU未真实训练/原V04实时UNKNOWN；保持原输入/锁/final五阶段/采纳null，后续真正可用桥接先完整身份现场资源门再实际对照，不重做既完实验/认证循环。入口Q1_LOW_LATENCY_FEASIBILITY、Q1_UPPER_CONSISTENCY_TRAINING及minimum_time_checkpoint；发布镜像以后续收据为准。
+
 - 2026-11-06 09:44连续三片72诊断已实成/6源SHA同/1.507秒：MLP预热后batch1 p95 1.043ms/首诊断355.717ms，非进程冷启或机器人延迟；噪声修订仍高/固定停走退步/40ms过期切保持可增跳。下一独立MPS成对原点控制训练：相同26帧共享噪声/两个标签原点/初始化批次，只变修订损失0/.5，两模型各最多1000更新；4检查全过/.048秒，先发布再执行，两保存验证先于test/复用test仅探索性。不访问服务器3090/V04锁，goal active最低今日10:00/必要训练验证继续，原final五阶段采纳null/无agent其他任务变更；入口Q1_UPPER_ROLLING_REVIEW和Q1_UPPER_CONSISTENCY_TRAINING，新发布以后续收据为准。
 
 - 2026-11-06 09:31连续预测诊断准备：固定MLP800与noise_ridge1/三完整test走片×三场景×四方法×两年龄分支，不拟合选参；共享连续噪声、丢帧真实source索引、同绝对目标修订、80/100ms参考信号速度加速度及同步单帧MPS计时。7夹具全过/.009秒，先发布再一次执行，不当机器人控制稳定或端到端降延迟；原MPS训练ae1664d独立远端/Mac8份615045B同。goal active最低今日10:00/必要验证继续，原V04实时UNKNOWN/锁输入未访问/final五阶段及采纳null保持，无agent其他任务变更；入口Q1_UPPER_ROLLING_REVIEW/preparation和mps_completed_publication，发布以后续收据为准。

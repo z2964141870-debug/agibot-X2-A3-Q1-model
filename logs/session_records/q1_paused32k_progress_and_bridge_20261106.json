@@ -1,0 +1,59 @@
+{
+  "stage": "PAUSED32K_REAL_PROGRESS_AND_NEW_OBSERVER_FAILURE",
+  "record_date_beijing": "2026-11-06",
+  "goal_status_last_observed": "active",
+  "evaluation_commit": "184e59bfe52bddad4d6d3e87dcddd26991005ee6",
+  "analysis_source_commit": "5a07231f04c07ba8b357ff31cf6e894830ac7d7d",
+  "controller": {"pid": 263415, "start_ticks": "27279136"},
+  "output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_GPU_PREVIEW_R2_20261106",
+  "last_confirmed_state": {
+    "status": "RUNNING",
+    "phase": "masked_h5_walk_forward_stop_002__A024_media",
+    "complete_physical_cases": 6,
+    "media_cases_completed": 5,
+    "expected_cases": 27,
+    "cpu_gpu_h10_reference_frames": 1584,
+    "maximum_absolute_action_difference": 0.0000025369226932525635
+  },
+  "confirmed_full_cases": [
+    {"method":"masked","horizon":10,"clip":"walk_forward_loop_001__A022","complete":true,"valid_steps":1031,"reference_steps":1031,"upper_rmse_rad":0.08593104034662247,"loaded_slip_m_s":[0.007493513437571341,0.007683803971442775]},
+    {"method":"masked","horizon":5,"clip":"walk_forward_loop_001__A022","complete":true,"valid_steps":1031,"reference_steps":1031,"upper_rmse_rad":0.10528971999883652,"loaded_slip_m_s":[0.0200594034766336814,0.029727095541729674]},
+    {"method":"masked","horizon":10,"clip":"walk_forward_start_002__A023","complete":true,"valid_steps":151,"reference_steps":151,"upper_rmse_rad":0.07590054720640182,"loaded_slip_m_s":[0.013945305431478101,0.04772831966223655]},
+    {"method":"masked","horizon":5,"clip":"walk_forward_start_002__A023","complete":true,"valid_steps":151,"reference_steps":151,"upper_rmse_rad":0.09650073945522308,"loaded_slip_m_s":[0.035882241775630777,0.08411996319841802]},
+    {"method":"masked","horizon":10,"clip":"walk_forward_stop_002__A024","complete":true,"valid_steps":402,"reference_steps":402,"upper_rmse_rad":0.07277297973632812,"loaded_slip_m_s":[0.012051296350378748,0.01915782693896407]},
+    {"method":"masked","horizon":5,"clip":"walk_forward_stop_002__A024","complete":true,"valid_steps":402,"reference_steps":402,"upper_rmse_rad":0.07903134822845459,"loaded_slip_m_s":[0.041995637497750746,0.022259818554077573]}
+  ],
+  "server_mirror_confirmed": {"source_commit":"5a07231f04c07ba8b357ff31cf6e894830ac7d7d","files":7,"bytes":617197,"archive_sha256":"6c3bfbbc0444b8340466871e3e8c83181176d481f926c26e2dbf2e29c4f290b5","campaign_code_modified":0},
+  "observer_failure": {
+    "old_session":63485,
+    "old_session_exit_code":255,
+    "old_error":"Timeout, server 100.65.183.91 not responding",
+    "one_bounded_recovery_session":84492,
+    "recovery_exit_code":255,
+    "recovery_error":"Broken pipe after Windows interactive authentication; no Windows or Linux shell",
+    "authentication_material_recorded":false,
+    "recovery_attempt_used":true,
+    "live_campaign_gpu_cgroup_oom_state":"UNKNOWN",
+    "connection_failure_proves_training_failure":false
+  },
+  "deferred_analysis": {
+    "dispatch_status":"COMMAND_SENT_BUT_NO_RECEIPT_OBSERVED",
+    "expected_receipt":"logs/session_records/q1_paused32k_analysis_dispatch_20261106.json",
+    "expected_status":"logs/session_records/q1_paused32k_analysis_status_20261106.json",
+    "expected_log":"logs/q1_paused32k_saved_analysis_20261106.log",
+    "expected_output_suffix":"analysis",
+    "read_receipt_before_any_new_dispatch":true,
+    "not_claimed_running_or_completed":true
+  },
+  "next_recovery_reads":["original boot/GPU/sole root and stopped training PIDs/guard","R2 controller PID/starttick, result/phases/resources and original GPU lock","existing deferred analysis receipt/status/log before any dispatch","complete results, existing videos and analysis output without replaying completed cases"],
+  "local_event_contract":{"tests_ran":6,"tests_passed":6,"seconds":0.013,"server_executed":false,"new_physics":0},
+  "new_training_updates":0,
+  "new_training_gpu_seconds_used":0,
+  "new_training_gpu_seconds_cap":14400,
+  "original_training_restarted":false,
+  "natural_teleoperation_qualified":false,
+  "measured_end_to_end_latency_ms":null,
+  "original_final_gate_modified":false,
+  "user_accepted_checkpoint":null,
+  "server_mirror_for_this_new_record":"PENDING_CONNECTION_RECOVERY"
+}

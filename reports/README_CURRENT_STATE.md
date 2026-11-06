@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06最新：[低延迟GPU已有6例完整，桥接再次失联](README_Q1_LOW_LATENCY_PAUSED32K_20261106.md)。R2 263415/start27279136最后H5停走media、H10/H5各三片全完整/媒体5例；100ms前走上肢RMSE+.019359rad、滑移7.49/7.68→20.06/29.73mm/s。63485 Timeout255，一次有界84492在Windows认证后Broken pipe/未Linux，当前任务/GPU/cgroup/OOM UNKNOWN，非任务失败实据，不循环认证/重发。保存工件分析已发命令未获启动收据，恢复先核其dispatch/status/log与R2实际结果，完成例不重跑。[事件合同时钟/无未来补洞/停止反向速度一致](README_Q1_LOW_LATENCY_EVENTS_20261106.md)6本地检查过/未物理。goal active/原训练暂停/新训练0/4GPU小时预算未使用，final与采纳null保持。5a07231七份617197B服务器镜像已PASS，新记录待补。[恢复清单](../logs/session_records/q1_paused32k_progress_and_bridge_20261106.json)。
+
 2026-11-06 18:11：[32k GPU低延迟修订版实际运行](README_Q1_LOW_LATENCY_PAUSED32K_20261106.md)，184e59b独立40位远端核同/六文件服务器同步/215源码和200冻结资产同/独立7检查全过后，263415/start27279136在新R2根一次派发。三片H10全1584参考帧CPU-GPU动作容差通过/max2.536923e-6，首前走物理/原速媒体已完整；其余27例短窗对照在跑，新训练0。原失败根保留，原训练不重启/goal active/final及采纳null保持。待完成用独立保存工件分析入口生成六宫图、逐片误差和上肢时序，再依结果推进事件压力和训练。
 
 2026-11-06 18:06：[暂停后32k首派失败](README_Q1_LOW_LATENCY_PAUSED32K_20261106.md)：215源码核同/200原冻结未变/27服务器检查全过后，263048在一致性阶段因GPU脚本独立启动缺少common路径而退出，CUDA尚未初始化/新物理训练0。已补显式路径及清空继承PYTHONPATH的独立启动回归；失败根保留，修订发布后新根继续，原训练仍暂停/goal active/final采纳null保持。[记录](../logs/session_records/q1_paused32k_gpu_attempt01_20261106.json)。

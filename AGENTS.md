@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06本轮新goal继续：R2 263415/start27279136已确认H10/H5共6物理完整/5原速媒体，最后H5停走media；100ms前走上肢.085931→.105290rad/承重滑移7.49/7.68→20.06/29.73mm/s，暂不当整组或自然遥操结论。5a07231独立40位远端及七服务器记录617197B镜像PASS；随后63485 Timeout255，一次有界84492到Windows认证后Broken pipe255，未Windows/Linux，不循环认证/换入口。当前R2/GPU/cgroup/OOM UNKNOWN；分析命令已发送但无启动回执，恢复先核q1_paused32k_analysis_dispatch/status/log、原身份暂停状态及R2实际result/guard/resources，不重发已完物理或整任务。新stream_events独立合成capture/arrival/无未来补洞/停止反向速度合同6本地过，未服务器/物理；不改在跑清单源码。goal active/原训练暂停/新训练0、4GPU小时未用/final及采纳null保持，不新agent或自动任务。入口Q1_LOW_LATENCY_PAUSED32K、Q1_LOW_LATENCY_EVENTS及q1_paused32k_progress_and_bridge，新发布/服务器补镜像以后续收据为准。
+
 - 2026-11-06新goal实际推进：95d8faf首派263048一致性时GPU脚本缺common路径导入失败，CUDA/物理/训练0，原失败根保留；184e59b独立远端核同、215源码/原200冻结同及7独立启动检查过后，18:11:13新R2根单派263415/start27279136。三片1584帧CPU-CUDA H10容差已过/max2.536923e-6，首前走物理和GPU原速媒体完整，其余27例仍运行；不动在跑清单源码。独立q1_checkpoint_review/preview_summary在清单外准备保存工件六宫图/上肢时序/动作变化分析，新训练0/原训练暂停/goal active/final及采纳null保持，无agent/自动任务变更；入口Q1_LOW_LATENCY_PAUSED32K，后续结果/发布以实收据为准。
 
 - 2026-11-06用户“可以，开始尝试，允许开始目标模式”后，旧goal已null，新goal创建且实读active；原共享训练仍暂停。新增独立paused_runtime/GPU worker/32k controller，先原CPU-GPU H10全参考帧容差核验，再同human27例H10/5/4/2/1和H5/4保持/阻尼，顺序GPU EGL媒体；新训练总≤4GPU小时按失败决定，每训练交付六宫图，急停反向丢包及设计结论不可省。相关45运行44过1原运行时待/编译过，0新真实推理物理训练；旧16k在训controller不直接复用，原冻结/final及采纳null保持。复用63485无新认证/不新agent或自动任务，实际发布与部署以随后收据为准；入口Q1_LOW_LATENCY_PAUSED32K和q1_low_latency_paused_goal。

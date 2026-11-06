@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-06保存点收敛检查真实Q1阶段已成：c9ca15e于13:48:21派发246946，32k/48k双型审计、四训练六宫图/共享至53900、五新Q1组三片及48k六NVIDIA EGL媒体已成，复用16k motion共18完整例。G1首物理步前被原诊断geom_bodyid==0错误拒绝body1静态terrain水平z0，250541退出1/回收；原失败保留/峰25417736192B低24GiB/训练信号0。native_review/metrics属于1793冻结输入不改，独立native_cpu仅换静态焊接平面识别并AST核其余rollout同；resume_g1仅续缺少G1/合计7200秒3GiB，12本地检查过，发布/服务器检查派发待。Mac六宫图/媒体交付待，原V04/final门/paused低延迟goal/采纳null保持，不自动停训或新agent自动任务。入口Q1_CHECKPOINT_CONVERGENCE，后续发布以实收据为准。
+
 - 2026-11-06用户明确授权先补本次Primebot/共享G1+Q1六宫图，并以现有16000/32000/48000保存点同条件motion/human和G1检查后提出是否接近收敛、是否有必要续训的结论。新增独立script/q1_checkpoint_review，不改原interim16000授权或final正式完成门，不恢复paused低延迟goal，不自动停原训练。复用16k已完motion/双型审计，仅新审计32k/48k和缺少的回放；优先NVIDIA EGL媒体，原guard持锁时CPU隔离推理/物理、不争计算锁。22GiB准入/24GiB退出/18GiB80度/100GiB/每阶段1800秒总7200秒3GiB保持；G1尝试同原生场景CPU Warp，未真实执行前不预称可用或与GPU等价。曲线缺项保留、500iteration按真实回合加权，先固定逐片比较尺度；本条仅准备，实际派发结果与发布镜像以后续收据为准。
 
 - 2026-11-06用户明确重试原Windows地址后，11925已交互密码直连Windows并原生25362进入原Linux；12:28:14实核boot/GPU/唯一根/原五PID启动tick及guard55672锁全部同。pipeline TRAINING/guard RUNNING，两型各52450/160000轮/134681600转移，五Adam524500-50450-1009000-50450-1009000/非有限0，GPU16177MiB51度None/总22336016384B/限34292629504B/余11956613120B/OOM0，ckpt48000及latest已在。没有重新开训：这是11月4日11:06启动的原MorphMimic G1+Q1动作跟踪共享训练；已完成Primebot10000轮和Mac上肢预测3000更新分开。goal本轮实读paused，本次仅恢复观察/新训练评估派发0/未恢复低延迟实验，不修改原训练或自动任务。成功参数和立即交互不据此认定故障单因，不循环认证/不存认证；入口q1_bridge_recovered_1228_20261106及CURRENT_STATE，发布和镜像以后续收据为准。

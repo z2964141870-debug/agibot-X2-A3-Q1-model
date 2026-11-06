@@ -182,7 +182,7 @@ def g1_cpu(args, config, runtime, plan, frozen):
     spec = install("g1")["robot"]
     from inference import load_policy
     from morphmimic.eval.benchmark import make_eval_env
-    from native_review import rollout
+    from native_cpu import rollout
     import mujoco
     checkpoint = audit_record(args.output, args.iteration, "g1")
     actor, metadata = load_policy(checkpoint["path"], spec, COMMIT, "cpu", expected_plan=plan)
@@ -261,6 +261,8 @@ def read_groups(output):
                 if not path.is_file():
                     continue
                 value = read(path)
+                if value.get("status") != "PASSED":
+                    continue
                 cases = [r for r in value["cases"] if r["interface"] == interface]
                 require({r["clip"] for r in cases} == set(FIXED) and len(cases) == 3
                         and all(r["seed"] == 0 for r in cases), "Missing fixed comparison case")

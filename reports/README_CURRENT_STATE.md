@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-11-06：[六宫图补交与保存点收敛对照已获用户授权](README_Q1_CHECKPOINT_CONVERGENCE_20261106.md)。独立入口准备，复用16k Q1 motion和原双型审计，新审计32k/48k并比较motion/human、补G1原生CPU尝试。原V04继续运行，原final门和paused低延迟goal不改；当前仅准备，无新训练或停训。标准图未记录项保留missing，实际服务器执行与发布核验待后续收据。
+2026-11-06：[六宫图和Q1保存点真实对照已成，G1静态地面诊断待续](README_Q1_CHECKPOINT_CONVERGENCE_20261106.md)。c9ca15e已于13:48:21一次派发246946；32k/48k双型CPU审计、四张训练六宫图、五新Q1组15例及48k六原速NVIDIA EGL视频已成，复用16k motion后共18例。G1首组在首物理步前因冻结诊断只认world直属平面而失败，实际terrain为world焊接body1水平z0；250541退出1/已回收，峰总25417736192B低24GiB/训练信号0。独立修正保留原1793输入及失败，新入口仅续缺少G1，不重跑Q1；12本地检查过，发布/服务器验证派发及Mac图表媒体交付待。原V04继续，final门/paused低延迟goal/采纳null保持。
 
 2026-11-06 12:28：[原Windows和Linux桥接观察恢复](../logs/session_records/q1_bridge_recovered_1228_20261106.json)。用户明确重试后11925通过密码直连Windows/原生25362进入Linux，原boot/GPU/唯一根/五PID启动tick和guard55672锁同。原V04 TRAINING/RUNNING、两型各52450/160000轮/134681600转移、非有限0/OOM0，GPU16177MiB51度None/容器总22336016384B/限34292629504B/即时余11956613120B，48000保存已在。**没有重开训练**：原共享动作跟踪于11月4日11:06启动，之前Primebot10000轮和Mac上肢预测3000更新均已结束。goal实读paused，本次仅恢复观察/新训练评估任务0；实际human campaign仍未下发，原final五阶段及采纳null保持。下方11:09的UNKNOWN为历史，不据参数差异认定故障单因。
 

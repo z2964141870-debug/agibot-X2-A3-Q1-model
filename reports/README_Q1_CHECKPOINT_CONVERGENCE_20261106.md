@@ -19,3 +19,17 @@ Compare completion first, then per-clip full-motion joint/body error, sole clear
 The report will distinguish a training-signal plateau, a physical-performance plateau on the tested clips, and unmet natural-gait/full-library/robot acceptance. The160000 target is a predefined sampling budget, not proof that those iterations are necessary. Actual results, publication verification, server execution and local artifact delivery are pending.
 
 Local validation:4 focused selection/pooling/final-gate tests and8 existing intermediate resource/reaping/provenance tests passed. A first direct invocation of the existing tests lacked its requiredPYTHONPATH; the corrected documented module paths passed. Native CPU execution, scalar-tag availability and physical results still require the pinned server runtime.
+
+## Actual Q1 Stage and Isolated G1 Correction
+
+The published `c9ca15eac6a7ad47a5df6e8e990a0683bba947e0` entry was dispatched once at2026-11-06 13:48:21 Beijing as controller246946. Both32k/48k dual-robot CPU audits passed. Four standard/diagnostic six-panel reports were generated from1078 shared logged rows through53900 and10000 completed Primebot rows. Historical Primebot standard panels0/1/2/4/5 were not recorded and remain missing.
+
+All five new Q1 groups completed three fixed cases each:16k human,32k motion/human and48k motion/human. Reusing the prior16k motion gives18 complete Q1 cases. Six48k Q1 videos were rendered with NVIDIA EGL. These are complete nominal training motions, not full-library or natural-gait acceptance.
+
+The next G1 phase failed before a physical transition at the contact diagnostic's floor check. The saved unchanged native model contains exactly one horizontal plane at world z0, geom0 `terrain`, on static body1 `terrain`. The frozen evaluator incorrectly requires `geom_bodyid == 0`. Its worker250541 exited1 and was reaped; the failure and original output remain preserved. Peak review cgroup total25417736192B stayed below24GiB; training signals0.
+
+The frozen native evaluator is among the1793 original training inputs and must not be edited. Independent `native_cpu.py` therefore uses the same rollout body and inherited force reader, changing only floor identification to a plane welded to world with verified world pose. An AST parity test verifies every other rollout operation is unchanged. Static-world, static-child, dynamic-ancestor and tilted/elevated-floor checks pass. The analyzer preserves failed cases and missing groups instead of filling missing performance with zero.
+
+`resume_g1.py` prepares a new output and reuses the completed Q1 cases and three audits. It only runs the three missing G1 checkpoint groups and48k G1 media. It validates old guards/cleanup, original identities/resources/frozen inputs, and keeps the original combined7200second/3GiB budgets; no new Q1 physical replay or training. The formal final completion gate remains unchanged. Local checkpoint-review suite:12 tests passed. Actual continuation publication, server validation, dispatch and results remain pending.
+
+Server Q1-stage output: `/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_CONVERGENCE_CKPT16_32_48_20261106`. Compact six-panel/Q1 records package: `/tmp/q1_convergence_q1_curves_20261106.tgz`,6654473B, SHA256 `cf252b4469ab36cd1f4f3a52268177cfa058fe5a9697af679e4e01fb426b42e4`; Mac delivery and visual inspection pending. A separate transfer connection failed after Windows authentication; the existing11925 Linux session remains usable and no authentication loop was started.

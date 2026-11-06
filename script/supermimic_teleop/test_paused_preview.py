@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import signal
+import subprocess
 import sys
 import tempfile
 from types import SimpleNamespace
@@ -24,6 +25,18 @@ def write(path, value):
 
 
 class PausedAdmissionTests(unittest.TestCase):
+    def test_worker_and_controller_start_without_inherited_pythonpath(self):
+        environment = dict(os.environ, CUDA_VISIBLE_DEVICES="")
+        environment.pop("PYTHONPATH", None)
+        with tempfile.TemporaryDirectory() as temporary:
+            for name in ("gpu_preview_worker.py", "paused_preview.py"):
+                with self.subTest(name=name):
+                    path = Path(__file__).resolve().with_name(name)
+                    result = subprocess.run([sys.executable, str(path), "--help"], cwd=temporary,
+                        env=environment, capture_output=True, text=True, timeout=15)
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    self.assertIn("--gpu-owner-pid", result.stdout)
+
     def test_pause_identity_and_absent_original_pids_are_required(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary).resolve()

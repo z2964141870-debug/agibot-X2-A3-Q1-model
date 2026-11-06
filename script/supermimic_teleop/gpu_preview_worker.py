@@ -11,7 +11,7 @@ import time
 from types import SimpleNamespace
 
 HERE = Path(__file__).resolve().parent
-sys.path[:0] = [str(HERE), str(HERE.parent / "q1_five_stage")]
+sys.path[:0] = [str(HERE), str(HERE.parent / "q1_five_stage"), str(HERE.parent / "primebot_q1")]
 from common import identity, require
 from policy_process import MAX_MESSAGE, PolicyProcess
 from preview_worker import PreviewSession

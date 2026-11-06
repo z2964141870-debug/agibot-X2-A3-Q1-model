@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-06 18:06：[暂停后32k首派失败](README_Q1_LOW_LATENCY_PAUSED32K_20261106.md)：215源码核同/200原冻结未变/27服务器检查全过后，263048在一致性阶段因GPU脚本独立启动缺少common路径而退出，CUDA尚未初始化/新物理训练0。已补显式路径及清空继承PYTHONPATH的独立启动回归；失败根保留，修订发布后新根继续，原训练仍暂停/goal active/final采纳null保持。[记录](../logs/session_records/q1_paused32k_gpu_attempt01_20261106.json)。
+
 2026-11-06新授权：[暂停后32k低延迟GPU探索](README_Q1_LOW_LATENCY_PAUSED32K_20261106.md)已获用户批准并新建 goal，实读 active，覆盖下方旧 paused 元数据。原共享训练保持暂停；独立 CUDA 策略/原共同 CPU 物理/顺序 NVIDIA EGL 入口已准备，先 CPU-GPU H10 动作一致性，再 27 例短窗/保持/阻尼对照。相关45项运行44过1原运行时待，真实新推理/物理/训练0；先发布核源码再一次下发，不直接运行旧16k在训入口。新训练合计≤4 GPU小时且按实际失败决定，后续急停反向丢包和六宫图交付仍属目标；不以三片结束结算，原final和采纳null保持。[预算](../data/manifests/q1_low_latency_paused_goal_20261106.json)。
 
 2026-11-06暂停后：[低延迟多方向专题](research/2026-11-06/LOW_LATENCY_SUPERMIMIC.md)已写入用户指定research，十二项一手工作覆盖因果学生、训练短预览、预测/接触、异步、延迟补偿与约束协同。六份本地源码AST/SHA无变，确认可独立替换human编码器并复用动作解码器；当前full/H10未适配短窗，逐部位窗口需新接口。先做暂停后独立评估准入和32k human短窗对照，不直接运行写死16k/旧55672持锁的campaign。本轮0新训练/物理/GPU任务，原训练不重启、app goal最后paused、原final/采纳null保持。暂停7218236已独立40位远端和Mac7份621771B核同；本轮新研究发布/服务器镜像以后续收据为准。

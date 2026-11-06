@@ -1,0 +1,612 @@
+{
+  "stage": "SAVED_EVENT_TIMING_REVIEW_DISPATCH",
+  "utc": "2026-11-06T17:20:13.063659+00:00",
+  "pid": 330633,
+  "argv": [
+    "timeout",
+    "--kill-after=5s",
+    "300s",
+    "/opt/data/private/ZHY/data/environments/primebot_supermimic_118338b_20261103/bin/python",
+    "-u",
+    "/opt/data/private/ZHY/script/q1_checkpoint_review/event_timing_review.py",
+    "--summary",
+    "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_PARTIAL_ANALYSIS_20261107/summary.json",
+    "--audit",
+    "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_PARTIAL_ANALYSIS_20261107/audit.json",
+    "--output",
+    "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_TIMING_REVIEW_20261107"
+  ],
+  "output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_TIMING_REVIEW_20261107",
+  "stdout": "/opt/data/private/ZHY/logs/q1_event_timing_review_20261107.log",
+  "new_inference": 0,
+  "new_physics": 0,
+  "new_training": 0,
+  "returncode": 0,
+  "overall": {
+    "calls": 41106,
+    "over20ms": 336,
+    "over100ms": 78,
+    "maximum_ms": 565.169166,
+    "median_ms": 7.6580385,
+    "p95_ms": 12.8290645
+  },
+  "strata": [
+    {
+      "event": "ALL",
+      "subset": "ALL",
+      "calls": 41106,
+      "over20ms": 336,
+      "over100ms": 78,
+      "maximum_ms": 565.169166,
+      "median_ms": 7.6580385,
+      "p95_ms": 12.8290645
+    },
+    {
+      "event": "ALL",
+      "subset": "before_event",
+      "calls": 3405,
+      "over20ms": 104,
+      "over100ms": 78,
+      "maximum_ms": 565.169166,
+      "median_ms": 7.622117,
+      "p95_ms": 13.518243399999996
+    },
+    {
+      "event": "ALL",
+      "subset": "event_window",
+      "calls": 780,
+      "over20ms": 4,
+      "over100ms": 0,
+      "maximum_ms": 24.503271,
+      "median_ms": 7.3949505,
+      "p95_ms": 12.503705400000001
+    },
+    {
+      "event": "ALL",
+      "subset": "after_event",
+      "calls": 36921,
+      "over20ms": 228,
+      "over100ms": 0,
+      "maximum_ms": 49.823569,
+      "median_ms": 7.665274,
+      "p95_ms": 12.822981
+    },
+    {
+      "event": "ALL",
+      "subset": "first_capture_second",
+      "calls": 3900,
+      "over20ms": 21,
+      "over100ms": 0,
+      "maximum_ms": 38.993885,
+      "median_ms": 7.521951,
+      "p95_ms": 12.541640899999999
+    },
+    {
+      "event": "ALL",
+      "subset": "fallback",
+      "calls": 291,
+      "over20ms": 1,
+      "over100ms": 0,
+      "maximum_ms": 24.703545,
+      "median_ms": 7.28999,
+      "p95_ms": 8.577215500000001
+    },
+    {
+      "event": "ALL",
+      "subset": "within_two_frames_of_recovery",
+      "calls": 180,
+      "over20ms": 0,
+      "over100ms": 0,
+      "maximum_ms": 18.179848,
+      "median_ms": 7.542634,
+      "p95_ms": 11.669698249999998
+    },
+    {
+      "event": "stop",
+      "subset": "ALL",
+      "calls": 11067,
+      "over20ms": 106,
+      "over100ms": 21,
+      "maximum_ms": 440.230322,
+      "median_ms": 7.733975,
+      "p95_ms": 13.064176699999999
+    },
+    {
+      "event": "stop",
+      "subset": "before_event",
+      "calls": 918,
+      "over20ms": 27,
+      "over100ms": 21,
+      "maximum_ms": 440.230322,
+      "median_ms": 7.707031000000001,
+      "p95_ms": 13.65417585
+    },
+    {
+      "event": "stop",
+      "subset": "event_window",
+      "calls": 210,
+      "over20ms": 0,
+      "over100ms": 0,
+      "maximum_ms": 19.537769,
+      "median_ms": 7.5796425,
+      "p95_ms": 12.654054949999999
+    },
+    {
+      "event": "stop",
+      "subset": "after_event",
+      "calls": 9939,
+      "over20ms": 79,
+      "over100ms": 0,
+      "maximum_ms": 44.758251,
+      "median_ms": 7.741251,
+      "p95_ms": 13.0632838
+    },
+    {
+      "event": "stop",
+      "subset": "first_capture_second",
+      "calls": 1050,
+      "over20ms": 6,
+      "over100ms": 0,
+      "maximum_ms": 38.993885,
+      "median_ms": 7.535845999999999,
+      "p95_ms": 12.691531549999999
+    },
+    {
+      "event": "stop",
+      "subset": "fallback",
+      "calls": 0,
+      "over20ms": 0,
+      "over100ms": 0,
+      "maximum_ms": null,
+      "p95_ms": null
+    },
+    {
+      "event": "stop",
+      "subset": "within_two_frames_of_recovery",
+      "calls": 0,
+      "over20ms": 0,
+      "over100ms": 0,
+      "maximum_ms": null,
+      "p95_ms": null
+    },
+    {
+      "event": "reverse",
+      "subset": "ALL",
+      "calls": 11067,
+      "over20ms": 103,
+      "over100ms": 21,
+      "maximum_ms": 480.516612,
+      "median_ms": 7.625714,
+      "p95_ms": 12.961307599999996
+    },
+    {
+      "event": "reverse",
+      "subset": "before_event",
+      "calls": 918,
+      "over20ms": 29,
+      "over100ms": 21,
+      "maximum_ms": 480.516612,
+      "median_ms": 7.702802999999999,
+      "p95_ms": 14.054657399999996
+    },
+    {
+      "event": "reverse",
+      "subset": "event_window",
+      "calls": 210,
+      "over20ms": 4,
+      "over100ms": 0,
+      "maximum_ms": 24.503271,
+      "median_ms": 7.5460315,
+      "p95_ms": 13.487753349999998
+    },
+    {
+      "event": "reverse",
+      "subset": "after_event",
+      "calls": 9939,
+      "over20ms": 70,
+      "over100ms": 0,
+      "maximum_ms": 49.823569,
+      "median_ms": 7.621175,
+      "p95_ms": 12.9398574
+    },
+    {
+      "event": "reverse",
+      "subset": "first_capture_second",
+      "calls": 1050,
+      "over20ms": 10,
+      "over100ms": 0,
+      "maximum_ms": 38.455508,
+      "median_ms": 7.5893745,
+      "p95_ms": 12.863324149999999
+    },
+    {
+      "event": "reverse",
+      "subset": "fallback",
+      "calls": 0,
+      "over20ms": 0,
+      "over100ms": 0,
+      "maximum_ms": null,
+      "p95_ms": null
+    },
+    {
+      "event": "reverse",
+      "subset": "within_two_frames_of_recovery",
+      "calls": 0,
+      "over20ms": 0,
+      "over100ms": 0,
+      "maximum_ms": null,
+      "p95_ms": null
+    },
+    {
+      "event": "dropout",
+      "subset": "ALL",
+      "calls": 11067,
+      "over20ms": 76,
+      "over100ms": 21,
+      "maximum_ms": 534.88776,
+      "median_ms": 7.800174,
+      "p95_ms": 12.6508176
+    },
+    {
+      "event": "dropout",
+      "subset": "before_event",
+      "calls": 918,
+      "over20ms": 27,
+      "over100ms": 21,
+      "maximum_ms": 534.88776,
+      "median_ms": 7.713012,
+      "p95_ms": 13.229893049999996
+    },
+    {
+      "event": "dropout",
+      "subset": "event_window",
+      "calls": 210,
+      "over20ms": 0,
+      "over100ms": 0,
+      "maximum_ms": 17.982657,
+      "median_ms": 7.343304,
+      "p95_ms": 11.604106249999996
+    },
+    {
+      "event": "dropout",
+      "subset": "after_event",
+      "calls": 9939,
+      "over20ms": 49,
+      "over100ms": 0,
+      "maximum_ms": 47.489956,
+      "median_ms": 7.822197,
+      "p95_ms": 12.6193056
+    },
+    {
+      "event": "dropout",
+      "subset": "first_capture_second",
+      "calls": 1050,
+      "over20ms": 5,
+      "over100ms": 0,
+      "maximum_ms": 26.13651,
+      "median_ms": 7.5625875,
+      "p95_ms": 12.5275684
+    },
+    {
+      "event": "dropout",
+      "subset": "fallback",
+      "calls": 210,
+      "over20ms": 1,
+      "over100ms": 0,
+      "maximum_ms": 24.703545,
+      "median_ms": 7.318766500000001,
+      "p95_ms": 8.586829449999998
+    },
+    {
+      "event": "dropout",
+      "subset": "within_two_frames_of_recovery",
+      "calls": 105,
+      "over20ms": 0,
+      "over100ms": 0,
+      "maximum_ms": 18.179848,
+      "median_ms": 7.596067,
+      "p95_ms": 11.9255158
+    },
+    {
+      "event": "late_burst",
+      "subset": "ALL",
+      "calls": 7905,
+      "over20ms": 51,
+      "over100ms": 15,
+      "maximum_ms": 565.169166,
+      "median_ms": 7.463087,
+      "p95_ms": 8.412512
+    },
+    {
+      "event": "late_burst",
+      "subset": "before_event",
+      "calls": 651,
+      "over20ms": 21,
+      "over100ms": 15,
+      "maximum_ms": 565.169166,
+      "median_ms": 7.378405,
+      "p95_ms": 9.810604
+    },
+    {
+      "event": "late_burst",
+      "subset": "event_window",
+      "calls": 150,
+      "over20ms": 0,
+      "over100ms": 0,
+      "maximum_ms": 13.39849,
+      "median_ms": 7.2899745,
+      "p95_ms": 8.538440049999986
+    },
+    {
+      "event": "late_burst",
+      "subset": "after_event",
+      "calls": 7104,
+      "over20ms": 30,
+      "over100ms": 0,
+      "maximum_ms": 31.435336,
+      "median_ms": 7.470457,
+      "p95_ms": 8.345596549999998
+    },
+    {
+      "event": "late_burst",
+      "subset": "first_capture_second",
+      "calls": 750,
+      "over20ms": 0,
+      "over100ms": 0,
+      "maximum_ms": 16.435357,
+      "median_ms": 7.387645,
+      "p95_ms": 8.402543349999998
+    },
+    {
+      "event": "late_burst",
+      "subset": "fallback",
+      "calls": 81,
+      "over20ms": 0,
+      "over100ms": 0,
+      "maximum_ms": 12.545634,
+      "median_ms": 7.28652,
+      "p95_ms": 8.062717
+    },
+    {
+      "event": "late_burst",
+      "subset": "within_two_frames_of_recovery",
+      "calls": 75,
+      "over20ms": 0,
+      "over100ms": 0,
+      "maximum_ms": 12.545634,
+      "median_ms": 7.3856,
+      "p95_ms": 9.1688489
+    }
+  ],
+  "largest_calls": [
+    {
+      "event": "late_burst",
+      "method": "hold",
+      "horizon_frames": 4,
+      "clip": "walk_forward_start_002__A023",
+      "frame": 1,
+      "compute_ms": 565.169166,
+      "capture_clock_since_event_ms": -900,
+      "region": "before_event",
+      "first_capture_second": false,
+      "fallback": false,
+      "recovered_this_frame": false,
+      "within_two_frames_of_recovery": false,
+      "nearest_recovery_distance_frames": 55
+    },
+    {
+      "event": "dropout",
+      "method": "hold",
+      "horizon_frames": 4,
+      "clip": "walk_forward_start_002__A023",
+      "frame": 1,
+      "compute_ms": 534.88776,
+      "capture_clock_since_event_ms": -900,
+      "region": "before_event",
+      "first_capture_second": false,
+      "fallback": false,
+      "recovered_this_frame": false,
+      "within_two_frames_of_recovery": false,
+      "nearest_recovery_distance_frames": 58
+    },
+    {
+      "event": "dropout",
+      "method": "masked",
+      "horizon_frames": 10,
+      "clip": "walk_forward_loop_001__A022",
+      "frame": 1,
+      "compute_ms": 485.258647,
+      "capture_clock_since_event_ms": -780,
+      "region": "before_event",
+      "first_capture_second": false,
+      "fallback": false,
+      "recovered_this_frame": false,
+      "within_two_frames_of_recovery": false,
+      "nearest_recovery_distance_frames": 58
+    },
+    {
+      "event": "reverse",
+      "method": "hold",
+      "horizon_frames": 5,
+      "clip": "walk_forward_loop_001__A022",
+      "frame": 1,
+      "compute_ms": 480.516612,
+      "capture_clock_since_event_ms": -880,
+      "region": "before_event",
+      "first_capture_second": false,
+      "fallback": false,
+      "recovered_this_frame": false,
+      "within_two_frames_of_recovery": false,
+      "nearest_recovery_distance_frames": null
+    },
+    {
+      "event": "late_burst",
+      "method": "masked",
+      "horizon_frames": 5,
+      "clip": "walk_forward_start_002__A023",
+      "frame": 1,
+      "compute_ms": 474.069387,
+      "capture_clock_since_event_ms": -880,
+      "region": "before_event",
+      "first_capture_second": false,
+      "fallback": false,
+      "recovered_this_frame": false,
+      "within_two_frames_of_recovery": false,
+      "nearest_recovery_distance_frames": 54
+    },
+    {
+      "event": "late_burst",
+      "method": "hold",
+      "horizon_frames": 5,
+      "clip": "walk_forward_start_002__A023",
+      "frame": 1,
+      "compute_ms": 469.147515,
+      "capture_clock_since_event_ms": -880,
+      "region": "before_event",
+      "first_capture_second": false,
+      "fallback": false,
+      "recovered_this_frame": false,
+      "within_two_frames_of_recovery": false,
+      "nearest_recovery_distance_frames": 54
+    },
+    {
+      "event": "dropout",
+      "method": "masked",
+      "horizon_frames": 10,
+      "clip": "walk_forward_stop_002__A024",
+      "frame": 1,
+      "compute_ms": 459.712675,
+      "capture_clock_since_event_ms": -780,
+      "region": "before_event",
+      "first_capture_second": false,
+      "fallback": false,
+      "recovered_this_frame": false,
+      "within_two_frames_of_recovery": false,
+      "nearest_recovery_distance_frames": 58
+    },
+    {
+      "event": "late_burst",
+      "method": "masked",
+      "horizon_frames": 5,
+      "clip": "walk_forward_loop_001__A022",
+      "frame": 1,
+      "compute_ms": 457.554073,
+      "capture_clock_since_event_ms": -880,
+      "region": "before_event",
+      "first_capture_second": false,
+      "fallback": false,
+      "recovered_this_frame": false,
+      "within_two_frames_of_recovery": false,
+      "nearest_recovery_distance_frames": 54
+    },
+    {
+      "event": "dropout",
+      "method": "damped_cv",
+      "horizon_frames": 5,
+      "clip": "walk_forward_stop_002__A024",
+      "frame": 1,
+      "compute_ms": 456.375618,
+      "capture_clock_since_event_ms": -880,
+      "region": "before_event",
+      "first_capture_second": false,
+      "fallback": false,
+      "recovered_this_frame": false,
+      "within_two_frames_of_recovery": false,
+      "nearest_recovery_distance_frames": 58
+    },
+    {
+      "event": "late_burst",
+      "method": "hold",
+      "horizon_frames": 5,
+      "clip": "walk_forward_stop_002__A024",
+      "frame": 1,
+      "compute_ms": 442.166891,
+      "capture_clock_since_event_ms": -880,
+      "region": "before_event",
+      "first_capture_second": false,
+      "fallback": false,
+      "recovered_this_frame": false,
+      "within_two_frames_of_recovery": false,
+      "nearest_recovery_distance_frames": 54
+    },
+    {
+      "event": "stop",
+      "method": "damped_cv",
+      "horizon_frames": 4,
+      "clip": "walk_forward_stop_002__A024",
+      "frame": 1,
+      "compute_ms": 440.230322,
+      "capture_clock_since_event_ms": -900,
+      "region": "before_event",
+      "first_capture_second": false,
+      "fallback": false,
+      "recovered_this_frame": false,
+      "within_two_frames_of_recovery": false,
+      "nearest_recovery_distance_frames": null
+    },
+    {
+      "event": "stop",
+      "method": "masked",
+      "horizon_frames": 5,
+      "clip": "walk_forward_stop_002__A024",
+      "frame": 1,
+      "compute_ms": 438.220079,
+      "capture_clock_since_event_ms": -880,
+      "region": "before_event",
+      "first_capture_second": false,
+      "fallback": false,
+      "recovered_this_frame": false,
+      "within_two_frames_of_recovery": false,
+      "nearest_recovery_distance_frames": null
+    }
+  ],
+  "seconds": 1.5266785899875686,
+  "source_inputs_unchanged": true,
+  "outputs": [
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_TIMING_REVIEW_20261107/summary.json",
+      "bytes": 71850,
+      "sha256": "fd5433c7552e7e5820b3e6f18376e5d624bb96062f6d000790e785d7eb688a72"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_EVENTS_R2_TIMING_REVIEW_20261107/over20ms.csv",
+      "bytes": 35620,
+      "sha256": "3885d07325c0aade56521259eaa7dffeeb2b69c53a413954fb51bd2df3656738"
+    }
+  ],
+  "observer_transport": {
+    "decoded_bytes": 10974,
+    "decoded_sha256": "062b0fd57f8e8ae76eaafc55f772ff511943de6dd5fbea42928adccf9b8567de",
+    "verified": true,
+    "session": 89657
+  },
+  "frame_localization": {
+    "over100ms": 78,
+    "over100ms_frames": [
+      1
+    ],
+    "frame1_over20ms": 78,
+    "without_first_two_over20ms": 258,
+    "without_first_two_maximum_ms": 49.823569,
+    "note": "Derived from the saved over20ms table only; no new timing scan or inference"
+  },
+  "mac_delivery": {
+    "files": [
+      {
+        "relative": "summary.json",
+        "bytes": 71850,
+        "sha256": "fd5433c7552e7e5820b3e6f18376e5d624bb96062f6d000790e785d7eb688a72"
+      },
+      {
+        "relative": "over20ms.csv",
+        "bytes": 35620,
+        "sha256": "3885d07325c0aade56521259eaa7dffeeb2b69c53a413954fb51bd2df3656738"
+      }
+    ],
+    "root": "/Users/yu/Documents/ChatGPT/元启/data/deliveries/Q1_EVENT_R2_TIMING_REVIEW_20261107",
+    "decoded_bytes": 154398,
+    "decoded_sha256": "a672d28a98a5eee5e70f1cd02686d3fde0a1b7439d72a5bd4d2e27587f015cd5",
+    "verified": true,
+    "session": 2703
+  }
+}

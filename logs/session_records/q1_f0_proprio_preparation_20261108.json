@@ -1,0 +1,56 @@
+{
+  "stage": "F0_PROPRIO_RESIDUAL_PREPARATION",
+  "status": "LOCAL_CONTRACTS_PASSED",
+  "date_beijing": "2026-11-08",
+  "experiment": "F0_PROPRIO_PAIR01",
+  "contracts": {
+    "command": "data/environments/q1-teleop-mps-20261106/bin/python -m unittest discover -s script/supermimic_teleop -p test_student_proprio.py -v",
+    "tests": 6,
+    "passed": 6,
+    "elapsed_body_seconds": 0.661,
+    "scope": "synthetic CPU fixtures; not server CUDA or physical validation"
+  },
+  "cli_and_compile_passed": true,
+  "paired_updates_per_arm": 3000,
+  "warm_start": "original R2 selected500",
+  "trained_component": "zero-initialized robot-history latent residual adapter",
+  "frozen": [
+    "teacher",
+    "world_model",
+    "human_encoder",
+    "decoder",
+    "normalizers",
+    "physics"
+  ],
+  "input_arrays": [
+    "f0",
+    "history",
+    "teacher_action",
+    "clip_id"
+  ],
+  "matched_capacity_and_exposure": true,
+  "human_real_future_frames": 0,
+  "registered_heldout_events_before_training": true,
+  "new_cuda_calls": 0,
+  "new_optimizer_updates": 0,
+  "new_physical_steps": 0,
+  "new_rendered_frames": 0,
+  "cumulative_gpu_charged_seconds": 3557,
+  "expected_by_stage": {
+    "r1": 1614,
+    "r2": 572,
+    "r3": 1371
+  },
+  "maximum_new_wall_seconds": 600,
+  "ledger_stage": "r2",
+  "new_output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_PROPRIO_PAIR01_20261108",
+  "existing_linux_session": 45014,
+  "approved_ssh_values": [
+    90,
+    60,
+    5
+  ],
+  "original_shared_training_restarted": false,
+  "user_accepted_checkpoint": null,
+  "server_deployment": "PENDING"
+}

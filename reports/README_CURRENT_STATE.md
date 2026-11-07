@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+恢复补记：66625退回本地后已关闭本地shell，句柄结束，后续不再探旧句柄。q1仍ACTIVE十分钟同聊天，已工具更新并独立核同，下一自行固定入口登录后先查三个r2回执；2173c1656a61f01e49894e889ed4e0e9bf5f12d2恢复记录已push/独立40位核同/Mac六份733119B同，最新publication另存，服务器新文档镜像仍待。
+
 2026-11-07最新：[教师latent修订已发布部署，服务器检查/准入回执待核](README_Q1_TEACHER_LATENT_STUDENT_20261107.md#修订部署与当前恢复点)。906ce50/932883d独立40位远端/Mac10份783356B同；三成员15828B包确认部署/735旧来源同。五原运行时检查仅收前三点，之后准入无回执即本会话SSH明确Timeout回本地；一次自主原样source/ssh重连在Mac→Windows Operation timed out，未Windows/Linux，不让用户代测/不泛化Linux停止。66625现在仅本地zsh不能发Linux命令；下一固定入口自主恢复先读三个r2回执/实际进程和LATENT02输出派发日志账本，不重传或Popen。新LATENT02派发0，原1293秒/r3已172及共享暂停/既有goal/采纳null保持，服务器新文档镜像待。原始接续见runtime_unacknowledged。
 
 2026-11-07教师latent首派错误已结算：[LATENT01在聚合数据缺full_goal处退出/真实Adam0](README_Q1_TEACHER_LATENT_STUDENT_20261107.md#首派数据结构错误与修订)。355713/355785回收/原锁计算空/OOM0，27秒SETTLED/累计1293/r3已172；原FAILED/旧代码包和清单保留，非连接或步态故障。修订只为聚合数据从原配对人体和保存实际torso重建离线目标，仍逐行复现教师动作2e-5门/无未来输入或新物理；五本地CPU检查0.756秒全过，发布/原运行时/重新准入后仅新LATENT02。66625原Linux可用，用户固定入口自主恢复，不询问代测；原共享暂停/既有goal/采纳null/无新agent保持。

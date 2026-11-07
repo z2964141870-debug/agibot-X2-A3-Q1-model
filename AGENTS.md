@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-08 H4 selected1500七例闭环准备：新student_h4_review/plan/四本地合同.002秒全过/AST CLI过，真实新调用物理媒体0。只替换编码器、原R1 replay/worker/物理/时钟不改，不接独立CPU加速；旧14H4+3H10复用，三名义及四事件新7合24条，来源与目标SHA先行。1800秒/3GiB、计原r1余2074内，累计2569无预留不重置；先发布清单/原运行时来源资源准入，再唯一新REVIEW输出防重后单派。45014继续原Linux，旧五及H4三PID退/锁空/OOM0/GPU1MiB25度/总8154480640限34292629504/余盘183630389248；原共享暂停/采纳null/goal工具新agent不用。入口README_Q1_H4_SPECIALIST_REVIEW和preparation，实际派发以后续原回执为准。
+
 - 2026-11-08 H4_SPECIALIST01真实完成：3000新增Adam/十参数计数全3000/validation选1500，等来源H4MSE.0558613691→.0553457197仅降.923%，样本加权降.749%，六来源两项退步。915来源同/371344与timeout371343和worker371418均退/守卫回收0，77秒SETTLED累计2569-r1=626/r2=572/r3=1371无RESERVED，r1余2074。03:42总8151814144限34292629504/OOM0/GPU1MiB26度/余盘183630491648/private267049664512/锁计算空；10原件62313B包MacSHA同，训练六宫PNG/PDF CSV目视/17成员307711B证据ZIP和8链接过。45014仍原Linux，下一selected1500独立七闭环、旧R1/H4/H10全部复用，不重训或延长相同拟合；0新物理渲染，原共享暂停/采纳null/goal工具与新agent不用。入口README_Q1_H4_SPECIALIST与completed/training_delivery，发布和小镜像见随后publication，旧大包全索引PENDING。
 
 - 2026-11-08 H4真实部署准入：8a4bf49已push/独立40位远端/Mac12份839101B同，11276B六成员源码包四精确ACK只新增/906保护同，六原策略运行时合同本体1.354秒/进程3.971秒全过，915来源及原1404/711实际数据/暂停/资源锁准入12.083秒过。三原回执5385B/2140B包Mac字节SHA同；总8049188864限34292629504/OOM0/GPU1MiB25度/磁盘183748939776，2492全SETTLED新GPU0。发布准入后先output/dispatch/log/精确进程防重，再唯一H4_SPECIALIST01/600s，只r1余2151内训练；不重复部署/六合同/旧物理或恢复共享，45014复用/采纳null/goal工具与新agent不用。入口README_Q1_H4_SPECIALIST及三原回执。

@@ -1,0 +1,57 @@
+{
+  "stage": "CPU_STATE_DISPATCH",
+  "utc": "2026-11-07T18:32:08.075633+00:00",
+  "controller": {
+    "pid": 369355,
+    "name": "timeout",
+    "state": "R",
+    "ppid": 369289,
+    "start_ticks": "38924665",
+    "VmHWM_bytes": 4096,
+    "VmRSS_bytes": 4096,
+    "RssAnon_bytes": 4096,
+    "RssFile_bytes": 0,
+    "RssShmem_bytes": 0
+  },
+  "command": [
+    "timeout",
+    "--kill-after=5",
+    "300",
+    "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+    "-u",
+    "/opt/data/private/ZHY/script/supermimic_teleop/native_state_review.py",
+    "--output",
+    "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_CPU_STATE01_20261108",
+    "--manifest",
+    "/opt/data/private/ZHY/data/manifests/q1_cpu_state_code_20261108.json",
+    "--manifest-sha256",
+    "a4c66a8c6d84394e142ab892b2cb6a7d8af68c4e8638d9b6756a6e3934a0ca42",
+    "--evaluation-commit",
+    "22a4d22688dbf138b2b41ed783c71d296e7d9055"
+  ],
+  "output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_CPU_STATE01_20261108",
+  "stdout_log": "/opt/data/private/ZHY/logs/q1_cpu_state_20261108.log",
+  "admission": {
+    "memory_total": 8032436224,
+    "memory_limit": 34292629504,
+    "oom": {
+      "oom_kill_disable": "0",
+      "under_oom": "0",
+      "oom_kill": "0"
+    },
+    "gpu": [
+      "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      " 1",
+      " 25"
+    ],
+    "disk_free": 183751380992
+  },
+  "contracts": {
+    "path": "/opt/data/private/ZHY/logs/session_records/q1_cpu_state_contracts_20261108.json",
+    "bytes": 1148,
+    "sha256": "268656aa9788622f992448a2f35f505c4368a7e46609fc4182ae9006dcaf2376"
+  },
+  "new_policy_calls": 0,
+  "new_physical_steps": 0,
+  "new_optimizer_updates": 0
+}

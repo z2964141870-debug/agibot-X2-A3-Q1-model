@@ -1,0 +1,110 @@
+{
+  "stage": "SAVED_INPUT_AUDIT_RECOVERY_AND_COVERAGE_PLAN",
+  "recorded_utc": "2026-11-07T13:09:32+00:00",
+  "status": "AUDIT_REVISION_PUBLISHED_SERVER_CONFIRMATION_PENDING",
+  "source_commit": "68a69dd706e57bdf7ee7e8ab7a38a1ced0f2a8c3",
+  "independent_remote_commit": "68a69dd706e57bdf7ee7e8ab7a38a1ced0f2a8c3",
+  "new_manifest_sha256": "f9f8169c70d60bca4f9b956a561f3c9450338205a7c137b10bed171cf8c44f50",
+  "final_code_archive": {
+    "path": "data/deliveries/Q1_STUDENT_INPUT_AUDIT01_SOURCE_R3_20261107.tgz",
+    "bytes": 10346,
+    "sha256": "de645fcbad8da839bf6b9e37cbd0445891fc9d81c0c806855e91d9900b2120fe",
+    "regular_members": 4
+  },
+  "original_sources_modified": false,
+  "original_training_restart_signals_sent": 0,
+  "accepted_checkpoint": null,
+  "actual_new_cuda_calls": 0,
+  "actual_new_physical_transitions": 0,
+  "actual_optimizer_updates": 0,
+  "settled_gpu_seconds_unchanged": 1606,
+  "r3_settled_gpu_seconds_unchanged": 485,
+  "attempts": [
+    {
+      "pid": 359776,
+      "start_ticks": "36812223",
+      "return_code": 1,
+      "elapsed_seconds": 0.3493,
+      "error": "Two R1 SHA strings were transcribed with a duplicated terminal-wrap character, making them65 characters",
+      "resolution": "Read all expected identities from original verified authorization JSON; reject malformed identity before opening source",
+      "arrays_read": false,
+      "log": "/opt/data/private/ZHY/logs/q1_student_input_audit01_20261107.log"
+    },
+    {
+      "pid": 359782,
+      "start_ticks": "36832681",
+      "return_code": 1,
+      "elapsed_seconds": 0.4356,
+      "error": "Historical residual JSON existed only on Mac and had no server mirror",
+      "resolution": "Mirror exact original67570B JSON with SHA f5a69d0d9d28502a0bcb5a34163648e3310a739e33c3aec6f1f297a5f2ac406d; no residual recomputation",
+      "arrays_read": false,
+      "log": "/opt/data/private/ZHY/logs/q1_student_input_audit01_r2_20261107.log"
+    },
+    {
+      "pid": 359790,
+      "start_ticks": "36843997",
+      "return_code": 1,
+      "elapsed_seconds": 2.278,
+      "error": "Historical residual rows mix per-source records and two per-joint summaries; unguarded source key lookup failed",
+      "resolution": "Filter all-phase source records explicitly and reject missing/duplicate source residuals; seven local contracts passed",
+      "four_datasets_row_identity_and_clock_checks_reached_and_passed": true,
+      "final_source_integrity_gate_completed": false,
+      "result_output_created": false,
+      "log": "/opt/data/private/ZHY/logs/q1_student_input_audit01_r3_20261107.log"
+    }
+  ],
+  "native_checks_before_last_revision": {
+    "tests": 6,
+    "skipped": 0,
+    "passed": true,
+    "elapsed_seconds": 0.134,
+    "torch_imported": false
+  },
+  "latest_local_checks": {
+    "tests": 7,
+    "skipped": 0,
+    "passed": true,
+    "elapsed_seconds": 0.054,
+    "real_server_checks_after_revision": "PENDING"
+  },
+  "bridge": {
+    "old_session": 33391,
+    "old_session_result": "Timeout, server 100.65.183.91 not responding; exit255",
+    "deployment_r3_receiver_command_acknowledged": false,
+    "deployment_r3_archive_body_sent_bytes": 0,
+    "new_session": 17045,
+    "exact_first_hop": "source /Users/yu/.zshrc\nssh -tt hp_han",
+    "new_attempt_result": "ssh: connect to host 100.65.183.91 port22: Operation timed out; exit255",
+    "failed_hop": "Mac to Windows before authentication prompt",
+    "windows_shell_received": false,
+    "linux_attempted_in_new_session": false,
+    "linux_reachability_conclusion": "NOT_TESTED",
+    "user_connectivity_confirmation_requested": false,
+    "live_sessions_remaining": []
+  },
+  "recovery": {
+    "first_hop": "source /Users/yu/.zshrc then ssh -tt hp_han, unchanged",
+    "first_checks": [
+      "Verify actual host/root/boot/GPU, original training pause and old PID absence; current guard/lock/GPU/cgroup/OOM/disk",
+      "Inspect q1_student_input_audit_deployed_r3_20261107.json, four target identities and pending receiver process before resending",
+      "Inspect INPUT_AUDIT01 output, finished/dispatch r3 and any later actual process to prevent duplicate execution",
+      "If revision not deployed, deploy only exact published files outside old frozen inputs; run7 runtime contracts once",
+      "Run the fresh independent saved-data audit with the published manifest and original300s/64MiB/2GiB address boundary",
+      "Retain all failed logs; full input audit is still incomplete; never call it PASSED based on reached row checks"
+    ]
+  },
+  "coverage_candidate": {
+    "status": "METADATA_PLAN_ONLY",
+    "train_groups": 22,
+    "train_clips": 36,
+    "validation_groups": 6,
+    "validation_clips": 12,
+    "original_prefix_clips_reused": 18,
+    "new_clips": 30,
+    "maximum_new_physical_steps": 9585,
+    "maximum_new_records": 4795,
+    "new_planner_contracts": 3,
+    "training_dispatched": false,
+    "required_gate": "Real INPUT_AUDIT01 PASSED plus evidence review, independent implementation and source/resource/cost admission"
+  }
+}

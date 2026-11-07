@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 21:09 INPUT_AUDIT01恢复点：359776摘要65位转抄/359782旧残差未镜像先后退出，已由原JSON取值并精确镜像67570B原残差，不重算。359790/start36843997四数据行配对/历史时钟门后混合残差行KeyError退出2.278秒，最终source门未成/输出根未建。七检查修订68a69dd706e57bdf7ee7e8ab7a38a1ced0f2a8c3已push独立40位/Mac同，10346B四成员新包SHAde645fcbad8da839bf6b9e37cbd0445891fc9d81c0c806855e91d9900b2120fe。33391接收器提交时Timeout255退/正文0，部署UNKNOWN；自主固定source再ssh -tt hp_han新17045第一跳连接超时/未认证Windows或Linux，均退不探/不问用户代测/不泛化Linux不可达。恢复先查deployed_r3回执/四目标/receiver/实际输出和进程，未核不重传；补缺部署/七原运行时/300秒只读审计，原日志保留。独立覆盖计划三检查过已生成：train22组36片/val6组12片，旧18前缀复用、30新片最多9585物理步/4795记录；仅元数据未采样，须审计PASSED和证据决策/独立实现与准入后才派。0新CUDA物理Adam/原1606秒R3已485/原共享暂停/采纳null/不调用goal或新agent；入口README_Q1_STUDENT_INPUT_COVERAGE及recovery，服务器新文档镜像待。
+
 - 2026-11-07 INPUT_AUDIT01准备：独立student_input_audit/计划/五本地检查.053秒全过；仅读R1和聚合保存状态、f0/history及trace/原R2统计，核逐行身份/来源/历史flags时钟/截断与有限近邻代理，不加载模型/原始人体/test或重算旧残差。只读300s/2GiB地址/1GiB观测RSS/64MiB输出，真实服务器审计尚0，累计1606秒/R3已485保持。33391自主复用实返原Linux/原暂停旧五PID退/GPU1MiB25度计算空/OOM0/总8027570176限34292629504/磁盘184358957056B。待发布部署后唯一新输出，不延长同数据拟合或重跑0/7，不问用户代测/不调用goal或新agent/采纳null。入口README_Q1_STUDENT_INPUT_COVERAGE_20261107。
 
 - 2026-11-07 19:57 WM_PHYSICAL01真实完成：358968/start36541060和359040均退/WORKER_COMPLETED回收/source PASSED，3000Adam六计数全3000/3119 WM.step/拟合113.654740秒/0新物理；143秒SETTLED累计1606/r3已485。末validation动作.110133对初始.094864退16.10%、比同曝光控制末.114754低4.03%，物理validation MSE退16.05%；仍选0。20:02 CPU八张量/八元数据/教师来源与原R2精确同、最大差0/CUDA0，原0/7仅历史复用，不跑同策略或用last挑test。原80182B十六成员包/十五原值Mac SHA同，训练六宫PNG/PDF七点CSV已成目视，原共享暂停/五旧PID退/锁计算空/OOM0/峰10581987328B和518MiB。33391原Linux由Agent自主复用，断开自行固定source再ssh入口，不问用户代测。下一先核保存因果输入与来源覆盖、完整周期CPU状态处理，不延长同配方/叠loss；新训练先独立方案及来源资源门，不调用goal/新agent/采纳null。入口README_Q1_WM_PHYSICAL_DISTILL实际结果/selected_identity/completed；证据发布和服务器镜像随后publication为准。

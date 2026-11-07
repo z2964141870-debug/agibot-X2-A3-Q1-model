@@ -1,0 +1,415 @@
+{
+  "stage": "SAME_STATE_RESULT_AND_EVIDENCE",
+  "date_beijing": "2026-11-08",
+  "source_commit": "140e94d6f617bf8474d7a864613eee65d675377a",
+  "saved_analysis_audit": {
+    "status": "SAME_STATE_SAVED_ANALYSIS_PASSED",
+    "seconds": 0.9422659120173194,
+    "source_files": 889,
+    "source_inputs_unchanged": true,
+    "reused_policy_calls": 936,
+    "new_policy_calls": 0,
+    "new_physical_steps": 0,
+    "new_optimizer_updates": 0,
+    "original_campaign_status": "FAILED"
+  },
+  "original_campaign_status": "FAILED",
+  "original_error_preserved": true,
+  "reused_policy_calls": 936,
+  "new_policy_calls": 0,
+  "new_physical_steps": 0,
+  "new_optimizer_updates": 0,
+  "new_rendered_videos": 0,
+  "canonical_upper_mapping": "Frozen joint-name AST plus saved physical joint names",
+  "selected_action_maximum_difference": [
+    0.0,
+    0.0
+  ],
+  "cases": [
+    {
+      "clip": "walk_forward_loop_001__A022",
+      "prefix_calls": 128,
+      "failure_call_included": false,
+      "canonical_upper_indices": [
+        15,
+        16,
+        17,
+        18,
+        22,
+        23,
+        24,
+        25
+      ],
+      "residuals_to_privileged_h4": [
+        {
+          "student": "coverage_f0",
+          "privileged_reference": "teacher_h4",
+          "window": "all_prefix",
+          "first_frame": 0,
+          "end_frame_exclusive": 128,
+          "samples": 128,
+          "rmse_by_group": {
+            "present": 0.4948574289843071,
+            "upper": 0.13849936222630416,
+            "other_present": 0.6114379225449013
+          },
+          "maximum_absolute_residual": 2.939771831035614
+        },
+        {
+          "student": "coverage_f0",
+          "privileged_reference": "teacher_h4",
+          "window": "first_25",
+          "first_frame": 0,
+          "end_frame_exclusive": 25,
+          "samples": 25,
+          "rmse_by_group": {
+            "present": 0.17747975645268524,
+            "upper": 0.05957197005165146,
+            "other_present": 0.2178775622723557
+          },
+          "maximum_absolute_residual": 0.9242828190326691
+        },
+        {
+          "student": "coverage_f0",
+          "privileged_reference": "teacher_h4",
+          "window": "last_25",
+          "first_frame": 103,
+          "end_frame_exclusive": 128,
+          "samples": 25,
+          "rmse_by_group": {
+            "present": 0.6437606409219335,
+            "upper": 0.21851622847684948,
+            "other_present": 0.7899103043448684
+          },
+          "maximum_absolute_residual": 2.939771831035614
+        },
+        {
+          "student": "original_f0",
+          "privileged_reference": "teacher_h4",
+          "window": "all_prefix",
+          "first_frame": 0,
+          "end_frame_exclusive": 128,
+          "samples": 128,
+          "rmse_by_group": {
+            "present": 0.48242084141384295,
+            "upper": 0.15903147971937434,
+            "other_present": 0.5926772796107878
+          },
+          "maximum_absolute_residual": 2.8068317770957947
+        },
+        {
+          "student": "original_f0",
+          "privileged_reference": "teacher_h4",
+          "window": "first_25",
+          "first_frame": 0,
+          "end_frame_exclusive": 25,
+          "samples": 25,
+          "rmse_by_group": {
+            "present": 0.1973696989295733,
+            "upper": 0.0750406481843357,
+            "other_present": 0.24082548010996127
+          },
+          "maximum_absolute_residual": 1.1405833661556244
+        },
+        {
+          "student": "original_f0",
+          "privileged_reference": "teacher_h4",
+          "window": "last_25",
+          "first_frame": 103,
+          "end_frame_exclusive": 128,
+          "samples": 25,
+          "rmse_by_group": {
+            "present": 0.6096320517400502,
+            "upper": 0.20786339876382473,
+            "other_present": 0.7478860544813742
+          },
+          "maximum_absolute_residual": 2.8068317770957947
+        }
+      ],
+      "timing_without_first_two": {
+        "coverage_f0": {
+          "local_pipe_rpc": {
+            "samples": 126,
+            "p50_ms": 20.182433,
+            "p95_ms": 34.2263435,
+            "maximum_ms": 58.818043,
+            "calls_over_20ms": 76
+          },
+          "original_target_scope": {
+            "samples": 126,
+            "p50_ms": 6.6323265,
+            "p95_ms": 9.83388675,
+            "maximum_ms": 24.208232,
+            "calls_over_20ms": 1
+          },
+          "worker_action": {
+            "samples": 126,
+            "p50_ms": 19.103812,
+            "p95_ms": 30.51315925,
+            "maximum_ms": 40.237999,
+            "calls_over_20ms": 57
+          },
+          "cpu_native_state": {
+            "samples": 126,
+            "p50_ms": 11.589367,
+            "p95_ms": 17.83787725,
+            "maximum_ms": 24.710309,
+            "calls_over_20ms": 5
+          },
+          "student_forward_host": {
+            "samples": 126,
+            "p50_ms": 1.4690375,
+            "p95_ms": 2.0349065,
+            "maximum_ms": 9.033731,
+            "calls_over_20ms": 0
+          }
+        },
+        "original_f0": {
+          "local_pipe_rpc": {
+            "samples": 126,
+            "p50_ms": 14.7075215,
+            "p95_ms": 28.23339825,
+            "maximum_ms": 59.195015,
+            "calls_over_20ms": 22
+          },
+          "original_target_scope": {
+            "samples": 126,
+            "p50_ms": 4.966378,
+            "p95_ms": 10.11792425,
+            "maximum_ms": 31.729438,
+            "calls_over_20ms": 1
+          },
+          "worker_action": {
+            "samples": 126,
+            "p50_ms": 13.797759,
+            "p95_ms": 26.84340225,
+            "maximum_ms": 55.627838,
+            "calls_over_20ms": 19
+          },
+          "cpu_native_state": {
+            "samples": 126,
+            "p50_ms": 8.03094,
+            "p95_ms": 16.35732,
+            "maximum_ms": 44.364584,
+            "calls_over_20ms": 3
+          },
+          "student_forward_host": {
+            "samples": 126,
+            "p50_ms": 1.110078,
+            "p95_ms": 1.742338,
+            "maximum_ms": 6.322489,
+            "calls_over_20ms": 0
+          }
+        }
+      }
+    },
+    {
+      "clip": "walk_forward_start_002__A023",
+      "prefix_calls": 106,
+      "failure_call_included": true,
+      "canonical_upper_indices": [
+        15,
+        16,
+        17,
+        18,
+        22,
+        23,
+        24,
+        25
+      ],
+      "residuals_to_privileged_h4": [
+        {
+          "student": "coverage_f0",
+          "privileged_reference": "teacher_h4",
+          "window": "all_prefix",
+          "first_frame": 0,
+          "end_frame_exclusive": 106,
+          "samples": 106,
+          "rmse_by_group": {
+            "present": 0.5718090292100785,
+            "upper": 0.2580497203363769,
+            "other_present": 0.6897476341889905
+          },
+          "maximum_absolute_residual": 3.560511827468872
+        },
+        {
+          "student": "coverage_f0",
+          "privileged_reference": "teacher_h4",
+          "window": "first_25",
+          "first_frame": 0,
+          "end_frame_exclusive": 25,
+          "samples": 25,
+          "rmse_by_group": {
+            "present": 0.21466048104280477,
+            "upper": 0.06529994026465857,
+            "other_present": 0.26452491498710334
+          },
+          "maximum_absolute_residual": 1.1164986789226532
+        },
+        {
+          "student": "coverage_f0",
+          "privileged_reference": "teacher_h4",
+          "window": "last_25",
+          "first_frame": 81,
+          "end_frame_exclusive": 106,
+          "samples": 25,
+          "rmse_by_group": {
+            "present": 0.7284565138372167,
+            "upper": 0.40809042878760815,
+            "other_present": 0.8594837840902251
+          },
+          "maximum_absolute_residual": 3.560511827468872
+        },
+        {
+          "student": "original_f0",
+          "privileged_reference": "teacher_h4",
+          "window": "all_prefix",
+          "first_frame": 0,
+          "end_frame_exclusive": 106,
+          "samples": 106,
+          "rmse_by_group": {
+            "present": 0.5900507268748397,
+            "upper": 0.24803481998440066,
+            "other_present": 0.7155091469358444
+          },
+          "maximum_absolute_residual": 3.177388459444046
+        },
+        {
+          "student": "original_f0",
+          "privileged_reference": "teacher_h4",
+          "window": "first_25",
+          "first_frame": 0,
+          "end_frame_exclusive": 25,
+          "samples": 25,
+          "rmse_by_group": {
+            "present": 0.249620290615427,
+            "upper": 0.12111941302134135,
+            "other_present": 0.2992212596328046
+          },
+          "maximum_absolute_residual": 1.1858917027711868
+        },
+        {
+          "student": "original_f0",
+          "privileged_reference": "teacher_h4",
+          "window": "last_25",
+          "first_frame": 81,
+          "end_frame_exclusive": 106,
+          "samples": 25,
+          "rmse_by_group": {
+            "present": 0.7051437310452333,
+            "upper": 0.3628478098949098,
+            "other_present": 0.8403120477514959
+          },
+          "maximum_absolute_residual": 2.9387370347976685
+        }
+      ],
+      "timing_without_first_two": {
+        "coverage_f0": {
+          "local_pipe_rpc": {
+            "samples": 104,
+            "p50_ms": 18.267502,
+            "p95_ms": 22.813892049999996,
+            "maximum_ms": 34.710548,
+            "calls_over_20ms": 21
+          },
+          "original_target_scope": {
+            "samples": 104,
+            "p50_ms": 6.0242085,
+            "p95_ms": 7.6352145,
+            "maximum_ms": 11.811729,
+            "calls_over_20ms": 0
+          },
+          "worker_action": {
+            "samples": 104,
+            "p50_ms": 17.195271,
+            "p95_ms": 21.567578299999997,
+            "maximum_ms": 33.54651,
+            "calls_over_20ms": 11
+          },
+          "cpu_native_state": {
+            "samples": 104,
+            "p50_ms": 10.193194,
+            "p95_ms": 12.98515515,
+            "maximum_ms": 26.690119,
+            "calls_over_20ms": 1
+          },
+          "student_forward_host": {
+            "samples": 104,
+            "p50_ms": 1.333032,
+            "p95_ms": 1.5890065,
+            "maximum_ms": 1.699044,
+            "calls_over_20ms": 0
+          }
+        },
+        "original_f0": {
+          "local_pipe_rpc": {
+            "samples": 104,
+            "p50_ms": 18.2570325,
+            "p95_ms": 27.27227969999999,
+            "maximum_ms": 62.041306,
+            "calls_over_20ms": 34
+          },
+          "original_target_scope": {
+            "samples": 104,
+            "p50_ms": 5.724832,
+            "p95_ms": 8.554446049999997,
+            "maximum_ms": 13.780889,
+            "calls_over_20ms": 0
+          },
+          "worker_action": {
+            "samples": 104,
+            "p50_ms": 17.1997545,
+            "p95_ms": 25.95001994999999,
+            "maximum_ms": 32.08084,
+            "calls_over_20ms": 25
+          },
+          "cpu_native_state": {
+            "samples": 104,
+            "p50_ms": 10.107394,
+            "p95_ms": 16.784606349999997,
+            "maximum_ms": 19.663577,
+            "calls_over_20ms": 0
+          },
+          "student_forward_host": {
+            "samples": 104,
+            "p50_ms": 1.3191695,
+            "p95_ms": 1.7947702499999998,
+            "maximum_ms": 2.118906,
+            "calls_over_20ms": 0
+          }
+        }
+      }
+    }
+  ],
+  "server_numeric_archive": {
+    "bytes": 65838,
+    "sha256": "02d348a898a2f06fadb070c405f9f3a85409e8cf3046ae39b80429804db533fa",
+    "server_and_mac_identical": true,
+    "original_record_hashes_verified": 6
+  },
+  "evidence": {
+    "path": "data/deliveries/Q1_SAME_STATE_DIAGNOSTIC_EVIDENCE_20261108.zip",
+    "bytes": 615039,
+    "sha256": "3619a203602f4d494ca20e7fc035e5558ebde5d5c5db95e3cd363c0c46fdfced",
+    "members": 17,
+    "crc_and_member_hashes_passed": true,
+    "readme_links_checked": 11,
+    "six_panel_png": 2,
+    "six_panel_pdf": 2,
+    "both_png_visually_inspected": true
+  },
+  "cumulative_gpu_seconds": 2433,
+  "reserved_runs": 0,
+  "original_shared_training_resumed": false,
+  "privileged_future_for_offline_reference_only": true,
+  "hardware_end_to_end_latency_ms": null,
+  "natural_teleoperation_qualified": false,
+  "user_accepted_checkpoint": null,
+  "next_steps": [
+    "Independently verify faster CPU state processing against saved inputs before policy use",
+    "Register a single-variable H4 time-mask or closed-loop-objective experiment after this diagnosis; do not extend the failed f0 recipe"
+  ],
+  "server_document_mirror": "PENDING_SMALL_SCOPED_MIRROR",
+  "old_document_bundle_mirror": "PENDING_PRESERVED_NOT_RETRANSMITTED",
+  "credentials_recorded": false
+}

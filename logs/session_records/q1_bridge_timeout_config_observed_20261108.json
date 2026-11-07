@@ -1,0 +1,69 @@
+{
+  "stage": "NATIVE_BRIDGE_TIMEOUT_CONFIGURATION_OBSERVED",
+  "date_beijing": "2026-11-08",
+  "previous_goal_turn_classification": "PROGRESS_PUBLISHED_REAL_ADMISSION_AND_ANALYSIS_PREPARATION",
+  "first_hop_commands": ["source /Users/yu/.zshrc", "ssh -tt hp_han"],
+  "second_hop_uses_original_native_password_authentication": true,
+  "sessions": [
+    {
+      "session": 44573,
+      "windows_shell_observed": true,
+      "original_linux_shell_observed": true,
+      "project_directory_prompt_observed": true,
+      "initial_read_command": "System python name absent; no Python audit executed",
+      "corrected_read_only_command": "Submitted using existing absolute morphmimic environment interpreter; no result returned",
+      "review_dispatch_or_Popen_submitted": false,
+      "terminal_error": "Timeout, server 100.65.183.91 not responding.",
+      "exit_code": 255
+    },
+    {
+      "session": 98513,
+      "bounded_recovery_of_session": 44573,
+      "windows_shell_observed": true,
+      "original_linux_shell_observed": true,
+      "project_directory_command_result": "NOT_RECEIVED",
+      "one_additional_enter_sent": true,
+      "review_dispatch_or_Popen_submitted": false,
+      "terminal_error": "Timeout, server 100.65.183.91 not responding.",
+      "exit_code": 255
+    }
+  ],
+  "current_live_session": null,
+  "current_server_resources_and_review_artifacts": "NOT_REVERIFIED",
+  "linux_unreachable_inferred": false,
+  "effective_configuration_read_only": {
+    "source": "/Users/yu/.ssh/config Host hp_han",
+    "ssh_shell_function_source": "/Users/yu/.ssh/hp_han-shell.zsh",
+    "connect_timeout_seconds": 8,
+    "server_alive_interval_seconds": 20,
+    "server_alive_count_max": 3,
+    "control_master": "false",
+    "tcp_keepalive": "yes"
+  },
+  "cause_established": false,
+  "interpretation": "Observed timeout settings may be sensitive to a slow or stalled first-hop path. Their presence does not establish a unique root cause or Linux failure.",
+  "proposed_host_only_exception": {
+    "ConnectTimeout": {"before": 8, "after": 90},
+    "ServerAliveInterval": {"before": 20, "after": 60},
+    "ServerAliveCountMax": {"before": 3, "after": 5}
+  },
+  "permission_status": "USER_EXPLICITLY_APPROVED_THREE_HOST_ONLY_VALUES_AND_AUTONOMOUS_TEST",
+  "approved_values_applied": true,
+  "effective_configuration_after": {"ConnectTimeout": 90, "ServerAliveInterval": 60, "ServerAliveCountMax": 5, "ControlMaster": "false"},
+  "non_target_configuration_sha256_before_and_after": "192f66bd6913c96473a242b8e3eeb5e37048405859d2111ad799319eead0b4cf",
+  "all_other_configuration_lines_unchanged": true,
+  "first_post_change_test_session": 32715,
+  "first_post_change_test_result": "FIRST_HOP_TCP_OPERATION_TIMED_OUT_EXIT255_BEFORE_WINDOWS_AUTHENTICATION",
+  "bounded_post_change_retry_session": 21051,
+  "bounded_post_change_retry_result": "FIRST_HOP_CONNECTION_RESET_EXIT255_NO_WINDOWS_SHELL_NO_LINUX_ATTEMPT",
+  "post_change_test_sessions_both_ended": true,
+  "approval_required_by": "AGENTS.md line113 forbids global SSH configuration changes",
+  "user_connectivity_test_requested": false,
+  "global_ssh_configuration_changed": "ONLY_THREE_EXPLICITLY_APPROVED_HOST_HP_HAN_VALUES",
+  "new_training_or_physics_dispatched": false,
+  "original_shared_training_restart_requested": false,
+  "goal_tools_called": false,
+  "new_agents": 0,
+  "credentials_recorded": false,
+  "user_accepted_checkpoint": null
+}

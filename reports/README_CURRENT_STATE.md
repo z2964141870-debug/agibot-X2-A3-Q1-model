@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-08：[用户批准的固定入口超时调整已实施](README_Q1_BRIDGE_RECOVERY_20261108.md)。仅hp_han三值90秒/60秒×5生效、其他配置行SHA同，原source/ssh及密码链保持。44573和98513先前都已进原Linux后会话超时，只读核验未返、七例Popen仍未提交；当前资源工件待核，不据SSH结束推断服务器停止。改后32715第一跳TCP等90秒超时/未Windows认证，21051唯一有界重试第一跳reset255/未Windows shell，全部句柄退。下一续行自行固定入口有界尝试，先补三原准入回执/原身份暂停/资源锁及唯一任务防重门再单派七例，不重训或重做成功检查。此为用户明确批准例外，不再问其能否连接。[实录](../logs/session_records/q1_bridge_timeout_config_observed_20261108.json)。
+
 2026-11-07 23:33恢复点：[已选500闭环服务器准入已通过，尚未派发](README_Q1_COVERAGE_SELECTED_REVIEW_20261107.md#真实部署及准入)。e8bfecc/f142429已push；2668实际部署/四原运行时1.534秒及195/200/2200来源资源门3.222秒全过，CPU证六网络张量变且统计冻结。三原回执取回未成，Mac仅[已收输出记录](../logs/session_records/q1_student_coverage_review_admission_observed_20261107.json)，不可冒充字节核同。后续固定入口56539/40576超时、15017 reset均第一跳，未Windows/Linux，不泛化服务器停止、不问用户代测。原训练完成/累计2181秒及暂停保持；review Popen未提交/七新物理0。下一自主恢复取回原回执，核实时身份暂停/资源锁及唯一output/dispatch/log/进程再单派，不重部署检查或采集训练。独立保存28例分析/七六宫图入口已备，四新合同.002秒全过，真实分析/图0；[恢复记录](../logs/session_records/q1_student_coverage_review_recovery_20261107.json)，服务器新说明镜像待。
 
 2026-11-07 23:03：[COVERAGE01实际完成，已选新500候选](README_Q1_STUDENT_COVERAGE_TRAINING_20261107.md#真实完成结果)。Agent自主固定入口85082进入原Linux，查明360043/start37605132已于23:02完成而非重派；30新片9585步/3000Adam/source PASSED/575秒SETTLED，累计2181秒。选500的扩展验证误差降36.689%，两个固定旧验证集降40.069%/34.396%；训练六宫PNG/PDF/CSV已Mac目视，80172B十二成员原包SHA同。原共享仍暂停/五PID及本任务退/原锁计算空/OOM0。下一只对新候选做三名义加四事件独立闭环，旧对照和0/7保存结果复用；未有本候选闭环或端到端结论，采纳null。新文档镜像待，[实录](../logs/session_records/q1_student_coverage_completed_20261107.json)。

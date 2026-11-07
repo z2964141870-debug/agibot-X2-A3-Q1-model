@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 18:48冻结WM诊断实际完成：WM_PROBE02控制器357888/start36128560与357960均退/WORKER_COMPLETED回收/source PASSED，256保存转移/368 CUDA WM.step/4标量物理VJP/0新物理0Adam。验证原教师/混合状态关节WM/hold .095822/.117219、身体.048016/.069290，预测校准过；存在关节差分4/88过、四VJP均未通过、缺失七关节导数及响应0，整体科学FAILED不能当执行失败或可用训练梯度。原cfg bf16=True；量化仅假设，下一独立同权重FP32影子对照计划已登记、实现和实际调用0，不改旧175/200或放宽失败门。33秒SETTLED累计1429/r3已308；175/200/731退出后同/锁计算空/OOM0/峰10521755648B和428MiB，原共享暂停/采纳null保持。六原文件62818B包Mac全SHA同，诊断六宫PNG/PDF/两CSV已成目视；非训练曲线/无新增视频。33391固定入口自主复用，不问用户代测、不调用goal或新agent；入口README_Q1_PHYSICAL_WM_PROBE及probe02_completed，发布镜像随后收据为准。
+
 - 2026-11-07 18:43 WM_PROBE02真实准入：15d6acb脚底映射修订/5cb124c新175清单已push独立40位远端同、Mac十三份782632B核同。三成员15314B包经33391部署，746旧来源同；原运行时九检查2.430s全过，实际XML十无名碰撞geom/摩擦1/context62/CUDA0已核，不重载WM。175执行/200冻结/731保护输入和原锁准入过，总8107974656限34292629504/GPU1MiB25度/OOM0，1396秒r3已275全SETTLED。四原回执8623B及3000B包Mac SHA同；发布本准入后唯一新根WM_PROBE02/300s/512前向/256转移，首派FAILED保留/不重做旧物理/原共享暂停/采纳null/不调用goal或新agent。入口README_Q1_PHYSICAL_WM_PROBE及r3_runtime_admission，新文档服务器镜像待。
 
 - 2026-11-07 18:36物理WM首派已回收：357419/start36045340与357492均退出，WM_PROBE01因共同Primebot脚底geom无名称、误用Morph重命名规则而在context重建退出，0 WM.step/0物理/0Adam。guard WORKER_FAILED/return1，25秒SETTLED累计1396/r3已275；175执行/200冻结/731保护输入退出后SHA同，原暂停/锁计算空/OOM0/GPU1MiB25度/总8018432000限34292629504。六原文件4530B七成员包Mac逐字节核同。仅新诊断data与检查修订为原踝部collision-enabled geom/XML摩擦，九本地检查过/.037秒；待发布新清单、服务器九检查及实际编译XML context后新根WM_PROBE02，原失败/冻结来源和旧权重加载不重做。33391固定用户入口仍可用，连接由Agent自行尝试不问用户代测；不调用goal/新agent/原共享暂停/采纳null保持。入口README_Q1_PHYSICAL_WM_PROBE及first_failure，新文档服务器镜像待。

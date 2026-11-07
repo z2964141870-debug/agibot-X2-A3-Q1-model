@@ -1,14 +1,14 @@
 # Q1冻结世界模型的保存转移校准
 
-2026-11-07。当前状态：首派context错误已保留并回收；修订已在原服务器通过九检查、实际XML上下文和18:43来源/资源准入，下一唯一派发WM_PROBE02。原共享训练保持用户暂停，采纳仍为null。
+2026-11-07。当前状态：WM_PROBE02于18:47实际完成，来源和回收门通过，一步预测校准通过、物理梯度差分筛查未通过，整体科学筛查FAILED。原共享训练保持用户暂停，采纳仍为null。
 
 ## 用户版done与todo
 
-done：Agent自行按`source /Users/yu/.zshrc`再`ssh -tt hp_han`进入Windows，再用原生第二跳交互认证到原Linux。18:01北京时间取得原boot/GPU/root/旧训练PID退出、GPU计算空、OOM0与约8.0GB容器总内存的真实回执。该会话后来明确Timeout；一次同入口自主恢复33391又进入原Linux。没有要求用户先测网络，也没有将单条会话结束泛化为服务器停机。
+done：Agent自行按用户固定入口进入Windows及原Linux，沿33391完成实际GPU诊断和原值传回，不再要求用户先测连通性。256条保存转移/368次WM.step/4次物理VJP已完成；验证一步关节误差为保持当前状态的9.58%和11.72%，身体位置误差为4.80%和6.93%。
 
-done：找到并实核了保存物理数据对应的原模拟器与randomization源码。保存NPZ没有逐帧context，不能将任意零向量称为实际context。新入口在原`randomize=False`采样源码和固定XML下重建名义上下文，摩擦读实际脚底geom，明确标注为源码/XML重建而非记录张量；遇到未知延迟或不一致摩擦即拒绝。
+done：预测校准通过，但88个存在关节梯度检查仅4个通过，整体科学筛查FAILED。实际BF16配置及全部差分原值保留；六宫诊断PNG/PDF、原值CSV和可追溯包已生成，没有把诊断冒称新训练或自然遥操验收。
 
-todo：发布本次真实准入后，在新WM_PROBE02根补做最多256保存转移/512次WM.step校准。首派失败保留；不重复严格WM CPU加载或旧物理，诊断通过后才考虑单项误差差分训练。
+todo：实现已经登记的同权重BF16/FP32独立精度对照，保持原差分阈值和原生FAILED结果，先发布与准入再执行；通过后才登记单项模型误差训练。当前FP32对照尚未实现或运行，不以本次一步预测精度称完整目标完成。
 
 ## 为什么先做这个检查
 
@@ -71,3 +71,26 @@ todo：发布本次真实准入后，在新WM_PROBE02根补做最多256保存转
 18:43:45独立准入重新通过175执行/200冻结/731保护输入、原暂停与GPU锁；总8107974656B/限34292629504B、GPU1MiB25度/OOM0、原累计1396秒/r3已275，全SETTLED。新根/派发尚未创建，待发布本准入后唯一WM_PROBE02；256样本/512前向/300秒/64MiB和原资源边界不变，严格WM CPU加载不再重复。
 
 [部署](../logs/session_records/q1_physical_wm_probe_r3_deployed_20261107.json)、[原运行时九检查](../logs/session_records/q1_physical_wm_probe_r3_native_checks_20261107.json)、[实际编译XML context](../logs/session_records/q1_physical_wm_probe_r3_compiled_context_20261107.json)、[完整准入参数](../logs/session_records/q1_physical_wm_probe_r3_admitted_20261107.json)四原始回执8623B已Mac逐字节大小SHA核同，3000B五成员包SHA `c30e1111b70af253a5d2fcab8e1065bd7120a55e79068a63782547c6b4ee2703`。汇总见[来源与准入发布记录](../logs/session_records/q1_physical_wm_probe_r3_runtime_admission_20261107.json)，服务器新文档镜像仍待。
+
+## 真实诊断结果
+
+准入发布`e4b637774e594004decfe8c0612145687578f162`已显式push、独立40位远端及Mac九文件766045B核同。复用33391，确认原host/root/boot后唯一派发357888/start36128560，worker357960于北京时间18:46:32至18:47:04完成。控制器状态`WM_PROBE_COMPLETED`、守卫`WORKER_COMPLETED`且return0/reaped、来源门`PASSED`；科学筛查`FAILED`，二者不能混为执行故障。
+
+实际使用256条保存train/validation转移、368次CUDA `WM.step`和四个标量物理VJP。末29维命令缓存未纳入物理预测门或梯度。每个validation origin包含六个source，各source均值等权：
+
+| 验证状态来源 | 关节WM / identity (rad) | 关节比值 | 身体位置WM / identity (m) | 身体比值 |
+| --- | --- | --- | --- | --- |
+| 原教师状态 | 0.002325322 / 0.024267059 | 0.095822 | 0.000448462 / 0.009339778 | 0.048016 |
+| 教师学生混合状态 | 0.002896251 / 0.024707958 | 0.117219 | 0.000545368 / 0.007870760 | 0.069290 |
+
+一步预测校准门通过，包括逐source上界；原始六项物理误差与全部source保留。梯度门未通过：四组各22个存在关节，共88项，仅4项至少在一个预登记epsilon通过，四组VJP均未全过。22个存在关节都曾有非零物理响应，七个缺失关节的导数和扰动物理响应严格为零。该结果排除了只靠命令缓存造成的假阳性，但没有给出可直接用于训练的可信物理梯度。
+
+实际原配置`bf16=True`。例如original/train的joint0：autograd=-9，epsilon0.01中心差分约-9.789705，epsilon0.001差分为0。精度量化是待验证假设，尚不能认定根因，也不能由差分失败推论原WM整体无效。
+
+33秒持锁成本已SETTLED，累计1429/14400秒、r3已308/7200秒；本阶段新增物理/渲染/优化均0。退出后两个进程已退、原GPU锁可独占后释放、计算空，175执行/200冻结/731保护输入SHA全同。峰cgroup10521755648B/GPU428MiB，退出总8019955712B/限34292629504B、GPU1MiB26度/OOM0。原共享训练保持人工暂停，采纳null。
+
+六个原始文件62818B包SHA `0164c6dc5bec9e09f36e13c1aa2ddf8c586d6b6aa40067e0e1272d6faf183618`已Mac逐件核同。[派发](../logs/session_records/q1_physical_wm_probe02_dispatch_20261107.json)、[控制器结果](../logs/session_records/q1_physical_wm_probe02_result_20261107.json)、[守卫](../logs/session_records/q1_physical_wm_probe02_guard_20261107.json)、[全部诊断原值](../logs/session_records/q1_physical_wm_probe02_probe_result_20261107.json)、[退出实核](../logs/session_records/q1_physical_wm_probe02_completed_20261107.json)和[累计账本](../logs/session_records/q1_low_latency_gpu_cost_20261107.json)可追溯。
+
+独立`deliver_wm_probe.py`只读上述来源，已生成预测六宫PNG/PDF、四组CSV、完整梯度CSV及绘图审计，PNG已目视。它是物理预测诊断图，不是训练曲线；没有新增视频。证据包存于`data/deliveries/Q1_PHYSICAL_WM_PROBE02_EVIDENCE_20261107.zip`，包SHA/成员及链接检查见随后交付收据。服务器新文档镜像仍待实际回执。
+
+下一项[精度对照计划](../script/supermimic_teleop/wm_precision_probe_plan_20261107.json)已登记：严格相同权重，保留原生BF16并创建独立FP32影子；复用同256行、四锚点和原生已存差分，只新增四原生VJP及FP32预测/VJP/差分。保持原差分阈值、TF32关闭和512前向/8反向/300秒/64MiB上限，要求FP32仍保留预测校准。实际FP32调用仍0，须独立实现、发布、原运行时/来源/资源准入；原生FAILED不改写。此处是探索性train/validation诊断，不是未见holdout、闭环效果或硬件延迟认证。

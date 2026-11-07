@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07教师latent部署观察：33ec52c源码及18dd375清单记录均push/独立40位核同，170项31593B/SHA8158d820e52eed235eeecc7fbefac2d6d1e6358bb2386a5f98508e82dfd48ff6和七成员22261B包已Mac。56557接收器提交后无READY即Timeout255，归档正文0字节/新训练未派发；自主固定原样入口40295在第一跳reset255，未Windows shell/未Linux，不询问用户代测或泛化服务器不可达。两句柄已退；恢复先核q1_student_teacher_latent_deployed收据、七源码/包SHA和receiver/输出/进程，再身份暂停/来源/资源门，不直接重传。R3八完成记录15:55服务器镜像成功保持；原1266账本/原共享暂停/既有goal继续/采纳null/不新agent。入口TEACHER_LATENT_STUDENT及deployment_waiting。
+
 - 2026-11-07教师latent监督准备：三新执行模块/plan/训练六宫图入口与四本地检查0.748秒全过，0真实GPU标签/训练。仅动作loss加.1倍冻结教师32维human latent监督，未来full_goal只离线标签，学生f0/history和decoder不变；严格复用R3已成action-only逐验证点batch SHA/24格曝光，不重训控制。原R3 mask/clip/frame/状态/动作必须同、无丢行/新采物理/test，选点只validation action risk/含0。新LATENT01原1740/1800s/1GiB/资源锁及r3已145/总1266账本保持，发布/原运行时/来源/资源审计前不派发。56557原Linux/echo OFF自主固定入口不询问用户代测；原共享暂停/既有goal继续/采纳null/不新agent。入口TEACHER_LATENT_STUDENT与preparation，R3八完成记录已服务器大小SHA同。
 
 - 2026-11-07 15:40 R3 PAIR02真实完成：354888/start34987257及354961回收/source PASSED/两组各3000Adam与同batch SHA；next-state validation MSE下降42.15%，动作风险.094864→.115836，action-only.114754，均选0。CPU八encoder张量/八策略元数据精确同原R2/最大差0/CUDA0/辅助头不部署，原0/7仅同策略历史复用，不重复七物理或试last挑test。18成员90849B包/17工件432402B全Mac大小SHA同，双训练PNG/PDF已目视；131秒SETTLED加首派14秒，总1266/14400余13134/r3已145，峰10414170112B/GPU480MiB/OOM0/原锁和计算空。56557原Linux/echo OFF，固定用户入口自主恢复不询问代测；R1媒体part1968000B完整块/无pending，仅续传。下一教师隐变量监督独立假设需先登记来源/预算、复用严格同曝光控制；原共享暂停/既有goal继续/采纳null/不新agent。入口GIGABRAIN_AUXILIARY_PAIR及completed/selected_identity/figures_delivered，新文档镜像以publication为准。

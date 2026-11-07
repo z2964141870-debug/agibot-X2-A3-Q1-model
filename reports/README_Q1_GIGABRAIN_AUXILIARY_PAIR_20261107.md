@@ -37,6 +37,7 @@ CPU选中策略审计于15:40:58通过：两组八个encoder张量最大差0、�
 - [下一状态辅助六宫图](../data/analysis/Q1_STUDENT_R3_AUXILIARY_PAIR02_FIGURES_20261107/next_state_training_six_panel.png)、[PDF](../data/analysis/Q1_STUDENT_R3_AUXILIARY_PAIR02_FIGURES_20261107/next_state_training_six_panel.pdf)。
 - 原始18成员结果包`data/deliveries/Q1_STUDENT_AUXILIARY_PAIR02_RESULTS_20261107.tgz`：90849B/SHA `09b989efb2fc20c7659d22ba7d6e68553d9456a3f4340f0d13e06afe0db0446e`，17份原始工件432402B逐项大小SHA核同。权重未下载到Mac。
 - [交付记录](../logs/session_records/q1_student_auxiliary_pair_figures_delivered_20261107.json)。无新策略媒体；原R2两失败视频保持原路径，R1七视频包仍仅部分传回，不能记作新视频交付。
+- [本轮README与原值/双六宫图证据ZIP](../data/deliveries/Q1_STUDENT_AUXILIARY_PAIR02_EVIDENCE_20261107.zip)：598217B/SHA `3fa4540d8decfd5ae09df773d771fa2da4ba11fd108de528c4fcddaaefe565fa`，25成员CRC/大小SHA及9条相对链接通过；无新增MP4。[清单](../data/manifests/q1_student_auxiliary_pair02_evidence_20261107.json)。
 
 以下为准备、首派失败和修订准入的历史记录；最新实际状态以上述完成与身份审计为准。
 

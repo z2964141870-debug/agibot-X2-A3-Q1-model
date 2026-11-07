@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07最新恢复点：[教师latent监督源码33ec52c已发布，部署接收器待核](README_Q1_TEACHER_LATENT_STUDENT_20261107.md#接续与保存)。170清单31593B/SHA8158d820e52eed235eeecc7fbefac2d6d1e6358bb2386a5f98508e82dfd48ff6，七成员22261B包SHA50e5a6ce9c3a0afa374dd432b5ff0edf7bc8c62f29b133d14d82c2b925ccbe05。56557提交receiver无READY即Timeout255，正文发送0/新训练派发0；自主原样source再ssh -tt hp_han的40295在Mac→Windows reset255/未Windows或Linux，未询问用户代测，不泛化Linux不可达。旧句柄均结束不得再探；恢复先核部署收据/七目标SHA/receiver/output/进程，再原身份暂停与来源资源门。R3八完成文档15:55服务器镜像已过；原1266秒账本/原共享暂停/既有goal/采纳null保持。先完成本地证据包，后续q1按实际新现场接续。
+
 2026-11-07续行：[独立教师隐变量监督实现与四本地检查完成](README_Q1_TEACHER_LATENT_STUDENT_20261107.md)。三新执行模块/plan/训练六宫图入口，四CPU检查0.748秒过；仅加latent MSE.1、保留同R2初始化/原数据与统计/冻结decoder/3000Adam，用已成R3 action-only逐点batch SHA与曝光作历史控制，不重训控制。未来教师信息只离线标签，原clip/frame/状态/动作及终止行须同；真实新标签/训练0。下一发布与原运行时/来源/资源准入后单派新LATENT01，原1266/14400/r3已145不重置；56557原Linux自主复用，原共享暂停/既有goal继续/采纳null/不新agent。R3八份完成文件已服务器735508B大小SHA同，收据与publication另存。
 
 2026-11-07 15:40：[PAIR02真实完成及两张训练六宫图](README_Q1_GIGABRAIN_AUXILIARY_PAIR_20261107.md#真实完成与结论)。控制器354888/start34987257与worker354961已回收/source PASSED，各3000Adam/6000总更新/新物理0；辅助状态validation MSE下降42.15%，动作风险.094864→.115836，控制.114754，均选0。CPU八张量/八策略元数据与原R2精确同/最大差0/CUDA0；原0/7仅历史复用，不重发同策略七物理或试未选last。18成员90849B结果包Mac大小SHA及17工件全同，双PNG/PDF目视齐。131秒SETTLED加首派14秒，累计1266/14400、余13134，r3已145；峰总10414170112B/GPU480MiB/OOM0/锁和计算空。56557原Linux/echo OFF可复用，用户固定入口由Agent自主尝试，不询问用户代测。下一先独立教师隐变量监督方案及同曝光控制复用，不追加原配方；原共享暂停/既有goal继续/采纳null/无agent。新文档服务器镜像以publication实际回执为准。

@@ -1,0 +1,59 @@
+{
+  "stage": "EXISTING_R0_EVENT_PROFILE_COMPLETION_EVIDENCE_RECOVERED",
+  "date_beijing": "2026-11-08",
+  "native_session": 45014,
+  "rerun": false,
+  "new_policy_calls_this_recovery": 0,
+  "new_training_updates": 0,
+  "new_physical_transitions": 0,
+  "original_status": "COMPLETED",
+  "original_source_integrity": "PASSED",
+  "original_started_utc": "2026-11-06T19:47:47.540452+00:00",
+  "original_ended_utc": "2026-11-06T19:49:48.248406+00:00",
+  "original_controller_pid": 334613,
+  "original_controller_start_ticks": "30738406",
+  "original_controller_now_present": false,
+  "original_calls": 512,
+  "streams": 4,
+  "calls_per_stream": 128,
+  "all_action_differences_exact_zero": true,
+  "all_four_guards_recorded_size_sha_equal": true,
+  "all_four_workers_reaped_zero": true,
+  "raw_archive": {
+    "path": "data/deliveries/Q1_EVENT_PROFILE_ORIGINAL_RECOVERED_20261108.tgz",
+    "bytes": 39202,
+    "sha256": "a1cb8134b27b0fe3e7028883f3c187764cb0f0e8d44853f1d0d8873dfd4744a7",
+    "members": 8,
+    "server_and_mac_sha_equal": true
+  },
+  "timing_scope": "Instrumented saved-state prefix replay, not the original physical run and not hardware end to end. CUDA event intervals overlap wall partitions and include host gaps.",
+  "findings": {
+    "stable_scope": "without first two calls, 126 per stream",
+    "native_state_p50_ms_range": [
+      7.6096985,
+      7.805337
+    ],
+    "policy_forward_host_p50_ms_range": [
+      2.588898,
+      2.7675555
+    ],
+    "worker_p50_ms_range": [
+      11.9163475,
+      14.220385
+    ],
+    "worker_p95_ms_range": [
+      17.22248425,
+      21.1888505
+    ],
+    "stable_worker_calls_over_20ms": 25,
+    "stable_worker_samples": 504,
+    "stable_worker_maximum_ms": 39.897851,
+    "stable_rpc_maximum_ms": 80.448627,
+    "all_call_worker_maximum_ms": 1485.163685,
+    "large_initialization_call_preserved": true,
+    "unique_underlying_cause_established": false,
+    "real_time_deadline_qualified": false
+  },
+  "original_training_resumed": false,
+  "user_accepted_checkpoint": null
+}

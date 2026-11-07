@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-08 F0_PROPRIO七例已真实单派：bdd0c37准入发布独立远端/Mac七份571288B核同后，唯一output/log/dispatch/精确进程全无、原暂停资源锁及3671账本重核过；timeout381297/controller381298/start40284454，2119B原dispatch已MacSHA同。06:22:08仅历史RUNNING/4已成阶段/2完整媒体，第三名义replay；前走302/1031仍失败但长于旧185，起走105/151短于旧119，不推整七例结论。同任务继续，45014复用/不重派。独立只读28分析/七六宫图入口和四本地检查.002秒过/真实分析0，216执行清单外，终门及回收结算后才分析。不改在跑或训练六来源/共享保持暂停/goal工具新agent不用/采纳null；旧大包索引镜像PENDING。[进度](README_Q1_F0_PROPRIO_REVIEW_20261108.md#done与todo)。
+
 2026-11-08 F0_PROPRIO七例闭环真实准入过：aa29660源码/a138135的216清单独立远端40位同，十一成员32292B包八ACK部署/1036旧来源同。原Morph六检查本体.238秒/进程2.332183秒全过，原NVIDIA EGL媒体依赖过；1048来源及两真实选点CPU核验/原暂停资源锁准入13.844985秒过。zero_history0八tensor/统计/decoder精确同，可复用旧0/7；causal_history3000非零，三原收据5584B已Mac大小SHA同。GPU1MiB24度/OOM0/总8194355200限34292629504/余盘183587844096/原3671账本无预留；45014复用。先发布本准入再唯一REVIEW输出/log/dispatch/精确进程全无门后单派1800秒7例；不重训/原共享暂停/goal工具新agent不用/采纳null，旧大包索引镜像PENDING。[准入](README_Q1_F0_PROPRIO_REVIEW_20261108.md#实际准入)。
 
 2026-11-08 F0_PROPRIO_PAIR01七例闭环已独立准备：controller/worker/不可变计划和六CPU检查.082秒全过/编译CLI过，CUDA物理媒体0。只新causal_history3000，zero_history0先八tensor/统计/decoder精确同而复用原0/7；14H4+7旧f0复用。原CausalReviewSession.action/start及原CPU转换不改，总1800秒3GiB计r2/原3671账本无预留，先源码清单发布/原运行时及实际来源资源准入，再唯一防重单派；不重训或重跑旧物理。45014原Linux继续/原共享暂停/goal工具新agent不用/采纳null，旧大包索引镜像PENDING。[新闭环方案](README_Q1_F0_PROPRIO_REVIEW_20261108.md)。

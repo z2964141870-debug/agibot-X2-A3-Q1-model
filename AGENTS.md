@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-08 F0_PROPRIO七例已单派381297/381298/start40284454，bdd0c37准入独立远端/Mac七份571288B同及防重门过，2119B原dispatchMacSHA同。06:22:08仅历史RUNNING/4阶段/2媒体，前走302/1031仍失败较旧185长，起走105/151较旧119短，第三名义replay；不推整组结论/不重派。新只读28分析/七六宫图入口在216执行清单外，四本地检查.002秒过/真实分析0，等同任务终门14守卫回收和原r2结算后仅读保存分析。45014继续/原共享暂停/训练六来源冻结/goal工具新agent不用/采纳null/旧大包索引镜像PENDING，入口F0_PROPRIO_REVIEW及dispatch/analysis_preparation。
+
 - 2026-11-08 F0_PROPRIO七例闭环真实准入：aa29660源码/a138135的216清单独立远端40位同，32292B十一成员包八ACK部署/1036旧来源同，原Morph六检查.238秒全过和原NVIDIA EGL依赖过。1048保护/真实两选点CPU/原暂停资源锁准入13.844985秒过，zero_history0八tensor统计decoder精确同而复用旧0/7，causal_history3000非零；三原收据5584B已MacSHA同。总8194355200限34292629504/GPU1MiB24度/OOM0/余盘183587844096/账本3671无预留，真实新调用物理0。45014继续，先发布本准入再唯一REVIEW/log/dispatch/精确进程全无后单派1800秒七例；训练六来源不改/共享暂停/goal工具新agent不用/采纳null，旧大包索引镜像PENDING。入口F0_PROPRIO_REVIEW与deployed/contracts/admitted。
 
 - 2026-11-08 F0_PROPRIO_PAIR01七例闭环准备：新controller/worker/计划及六CPU检查.082秒全过/CLI编译过，真实新CUDA物理媒体0。只causal_history3000新七例，zero_history0先CPU八tensor/统计/decoder核同复用原0/7；14H4与7原f0复用。原CausalReviewSession.action/start和CPU转换不改，1800秒/3GiB/r2原3671账本不重置；先发布源码清单/服务器原运行时及来源资源准入，再唯一防重单派。训练六文件冻结/原共享暂停/45014继续/goal工具新agent不用/采纳null，旧大包索引镜像PENDING；入口F0_PROPRIO_REVIEW及preparation。

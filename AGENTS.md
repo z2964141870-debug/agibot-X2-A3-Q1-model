@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 19:15精度对照实际准入：bacf186源码/96539f2新178清单均push独立40位远端/Mac十一份806739B同；33391六成员20198B包部署/748旧来源同，原运行时五CPU检查全过/2.431331秒，178执行/200冻结/754保护来源与原锁准入过，总8111087616限34292629504/GPU1MiB26度/计算空/OOM0/原暂停五PID退同。三原回执6030B及2333B包Mac SHA同，累计1429/r3已308全SETTLED；尚未派发/新CUDA0，发布准入后唯一PRECISION01/376前向8反向/300s64MiB，原生FAILED不改。自主固定source/ssh复用33391、不问代测、不调用goal或新agent/采纳null；入口README_Q1_WM_PRECISION与admitted，新文档服务器镜像待。
+
 - 2026-11-07精度对照准备：独立wm_precision控制器/worker/math和五新CPU检查.038秒全过，复用冻结WM载入/256原选行/原guard账本；仅影子cfg.bf16=False，原生四VJP要求逐值复现/原FD直接复用，FP32四VJP同epsilon和预测保留门，376前向/8反向/300s/64MiB，真实新CUDA0。原生科学FAILED不改，先发布178新清单/服务器五检查/来源资源准入再唯一PRECISION01，不恢复原共享/不重复物理或旧拟合。结果e96479de93646a2fbd4b8e626ab33a875ba6d186已push/独立40位/Mac十三份1164479B同；新证据ZIP220785B/SHA f8d6c17c5227babd387bd1133ae4400dd284f3383609c9dfa248213bf4310eaa/14成员12链接核过。累计1429/r3已308全SETTLED，33391原Linux自主复用/断开自行固定source/ssh尝试，不询问用户代测，不调用goal或新agent/采纳null；入口README_Q1_WM_PRECISION，服务器新文档镜像待。
 
 - 2026-11-07 18:48冻结WM诊断实际完成：WM_PROBE02控制器357888/start36128560与357960均退/WORKER_COMPLETED回收/source PASSED，256保存转移/368 CUDA WM.step/4标量物理VJP/0新物理0Adam。验证原教师/混合状态关节WM/hold .095822/.117219、身体.048016/.069290，预测校准过；存在关节差分4/88过、四VJP均未通过、缺失七关节导数及响应0，整体科学FAILED不能当执行失败或可用训练梯度。原cfg bf16=True；量化仅假设，下一独立同权重FP32影子对照计划已登记、实现和实际调用0，不改旧175/200或放宽失败门。33秒SETTLED累计1429/r3已308；175/200/731退出后同/锁计算空/OOM0/峰10521755648B和428MiB，原共享暂停/采纳null保持。六原文件62818B包Mac全SHA同，诊断六宫PNG/PDF/两CSV已成目视；非训练曲线/无新增视频。33391固定入口自主复用，不问用户代测、不调用goal或新agent；入口README_Q1_PHYSICAL_WM_PROBE及probe02_completed，发布镜像随后收据为准。

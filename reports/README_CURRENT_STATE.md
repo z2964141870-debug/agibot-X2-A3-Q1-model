@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07 22:44：[COVERAGE01真实准入回执已恢复及原值传回](README_Q1_STUDENT_COVERAGE_TRAINING_20261107.md#准入回执恢复并精确传回)。固定入口38409自主进入原Linux；上次准入22:34已PASSED/193执行200冻结736保护/锁预算过，旧进程已退，新输出/派发/日志无，未重复准入或部署检查。三原文件9230B已Mac逐件SHA同。原共享保持暂停/五PID退/GPU锁计算空/OOM0，账本1606/r3已485全SETTLED；下一发布后唯一COVERAGE01，实际训练未下发/新物理Adam0。新说明服务器镜像待。
+
 2026-11-07 22:33：[COVERAGE01服务器部署与九原运行时检查已成](README_Q1_STUDENT_COVERAGE_TRAINING_20261107.md#服务器部署与原运行时已完成)。Agent自主固定入口88029进原Linux，42163B包/12目标SHA和779旧来源前后同，九CPU检查1.722秒过。原暂停五PID退/锁计算空/OOM0、账本1606/r3已485无RESERVED已核。准入命令提交后未收完成回执即该SSH明确超时；唯一有界97733固定入口仅第一跳banner exchange超时/未Windows/Linux，不让用户代测或泛化Linux停止。下一自行固定入口先查admitted回执及精确preflight进程，再资源锁账本和唯一输出/派发/日志；不重部署/九检查。训练Popen从未提交，新物理Adam0，30新片/1740秒/原共享暂停/采纳null保持。服务器原收据字节回传和新说明镜像待补；[实录](../logs/session_records/q1_student_coverage_server_deployed_observed_20261107.json)。
 
 2026-11-07 21:22：[因果输入审计已真实完成及六宫图](README_Q1_STUDENT_INPUT_COVERAGE_20261107.md#实际审计结果)。Agent自行固定source/ssh入口53893入原Linux，确认旧部署未成后只补四文件，七原运行时过/.259秒。359815/start37066571退出0，审计5.218秒/source PASSED/峰RSS279650304B；四数据4308行状态动作/历史时钟核同。训练覆盖12/22组及12/167片，R1启动200ms为0、聚合train仅52行；坐标截断train .0026-.0052%、val .0382-.0434%，但单一转向来源历史槽最高19.92%。邻居代理不证明因果或不可约误差。原值164214B及七成员17452B包Mac SHA同、诊断PNG/PDF/CSV目视齐；实际新CUDA/物理/Adam0，累计1606秒/R3已485、原训练暂停/采纳null保持。下一实现30新片覆盖候选，复用旧18/两数据、冻结归一化decoder，并保留旧验证集固定对照；未采样训练，不重跑旧0/7。自主复用53893，断开自行固定入口尝试，不问用户代测/不调用goal或新agent；发布及服务器镜像以后续publication为准。[完成回执](../logs/session_records/q1_student_input_audit_completed_20261107.json)。

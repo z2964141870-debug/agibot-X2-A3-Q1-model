@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 10:55 R1准入实成：a2d667a源码／5ec62e7收据均push和独立40位远端同，23成员346859B包原生SCP两跳到原服务器；239执行源码／原226保护前后同，37原运行时CPU检查全过/1.279秒，随机CPU夹具3Adam仍非32k训练。train_preflight已原Primebot环境通过200冻结源码资产／24控制／R0完成门，12train+6val组／上限4407物理步，GPU1MiB26度／总7720476672限34292629504/OOM0／原锁可独占。新输出和成本账本均无，R1尚未派发，先本阶段准入发布再单派；优先31470原Linux/36883 Windows传输，不重做37测试或R0。R0原116642B包native SCP首次下载单会话Broken pipe，31470仍成功，不泛化整桥接；唯一重试3131等认证/传输。原训练暂停／新训练0/goal active/final采纳null，入口q1_student_r1_admission_publication_20261107和学生训练README。
+
 - 2026-11-07 10:41固定用户入口31470实际恢复原Linux，原根boot/GPU/旧五PID退/STOPPED_SIGNAL/锁计算空/OOM0核同。上次R0/cache未知已查实：03:49:48 profiler COMPLETED/source_integrity PASSED/512调用/四条最大动作差0，不重发。新student_rollouts/fit/cost/training/worker与两新检查实现，本地16过/.658秒及六编译过；随机CPU夹具3次Adam不算32k训练。真实采样只12train和6validation源组、每片≤256步/trace状态动作门，R1新1740秒合并phase不扩原1800保护、持久账本分阶段与累计≤4GPU小时、原226清单不动；仍待发布/原运行时/资源准入及派发，服务器新训练0。用户明确不再询问入口可用性，应自行按固定入口实际尝试并精确报告哪一跳结果，原认证不存。入口README_Q1_STUDENT_TRAINING_PIPELINE_20261107及q1_student_pipeline_preparation_20261107；优先复用31470，原暂停/final采纳null/新goal active保持，不新agent或改其他自动任务。
 
 - 2026-11-07 04:47本地学生准备：新增student_inputs/data/models与三检查文件及有界训练plan，全24点R1时间mask、独立f0十步人体历史、冻结原解码器梯度核心已成；21项全过/0跳/0.634秒/六AST过，唯一随机CPU夹具一步SGD不算32k训练。120→50Hz右支持必须进依赖/ready时间，未可用当前改取过去支持并报告包龄，不能把H1或离线插值冒称f0；教师未来标签单独。新事件种子及167/98/128旧来源SHA已登记，原教师见393/旧test探索性保持。collector/controller/持久成本账本与原运行时32k动作等价仍待，真实新服务器训练0及4GPU小时未用；上次profiler/cache执行仍UNKNOWN、本阶段SSH0/原226来源不动、不重发。新goal继续active/原共享训练暂停/final采纳null保持；入口README_Q1_LOW_LATENCY_STUDENT_20261107和q1_student_local_preparation_20261107，服务器部署镜像待，优先本地补实际有界训练流水线，不以接口完成结算探索。

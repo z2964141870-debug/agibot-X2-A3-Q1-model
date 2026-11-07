@@ -1,0 +1,404 @@
+{
+  "stage": "F0_ONPOLICY_PAIR_COMPLETED_AND_EXACT_POLICY_AUDIT",
+  "status": "PASSED",
+  "observed_utc": "2026-11-07T23:43:08.266406+00:00",
+  "source_commit": "66ff17d2b11713679f19f20b9315e9b9c22f95e5",
+  "result": {
+    "stage": "F0_ONPOLICY_MATCHED_PAIR",
+    "status": "ONPOLICY_PAIR_TRAINED_PENDING_CLOSED_LOOP",
+    "controller": {
+      "pid": 387309,
+      "name": "python",
+      "state": "R",
+      "ppid": 387308,
+      "start_ticks": "40766102",
+      "VmHWM_bytes": 123183104,
+      "VmRSS_bytes": 105930752,
+      "RssAnon_bytes": 87080960,
+      "RssFile_bytes": 18849792,
+      "RssShmem_bytes": 0,
+      "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+      "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+    },
+    "started_utc": "2026-11-07T23:39:24.372767+00:00",
+    "new_physical_steps": 0,
+    "new_rendered_frames": 0,
+    "user_accepted_checkpoint": null,
+    "source_integrity": "PASSED",
+    "actual_optimizer_updates": 6000,
+    "arms": [
+      {
+        "variant": "saved_only",
+        "selected_update": 0,
+        "selected_adapter_unchanged": true,
+        "initial_validation_risk": 0.2210775182271997,
+        "selected_validation_risk": 0.2210775182271997
+      },
+      {
+        "variant": "onpolicy_mix",
+        "selected_update": 0,
+        "selected_adapter_unchanged": true,
+        "initial_validation_risk": 0.2210775182271997,
+        "selected_validation_risk": 0.2210775182271997
+      }
+    ],
+    "fit_result": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_PAIR01_20261108/fit_result.json",
+      "bytes": 48073,
+      "sha256": "cfc726cf0c66de656b2a0a5f254eabdd97150d4b84a17de5f51b5ab48c1fd882"
+    },
+    "natural_teleoperation_qualified": false,
+    "cost_settlement": {
+      "run_id": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_PAIR01_20261108",
+      "stage": "r2",
+      "state": "SETTLED",
+      "gpu_count": 1,
+      "reserved_seconds": 3105,
+      "owner": {
+        "pid": 387309,
+        "name": "python",
+        "state": "R",
+        "ppid": 387308,
+        "start_ticks": "40766102",
+        "VmHWM_bytes": 123183104,
+        "VmRSS_bytes": 105930752,
+        "RssAnon_bytes": 87080960,
+        "RssFile_bytes": 18849792,
+        "RssShmem_bytes": 0,
+        "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+        "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+      },
+      "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      "source_commit": "66ff17d2b11713679f19f20b9315e9b9c22f95e5",
+      "started_monotonic_ns": 407682949498934,
+      "cost_scope": "GPU-owning collection and training wall time",
+      "ended_monotonic_ns": 407805316321456,
+      "charged_seconds": 123,
+      "over_reserved_budget": false,
+      "cleanup": {
+        "worker_started": true,
+        "worker_pid": 387383,
+        "worker_group": 387383,
+        "worker_reaped": true,
+        "worker_return_code": 0
+      }
+    },
+    "ended_utc": "2026-11-07T23:41:26.741234+00:00",
+    "cumulative_gpu_charged_seconds": 4503
+  },
+  "guard": {
+    "status": "WORKER_COMPLETED",
+    "command": [
+      "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+      "-u",
+      "/opt/data/private/ZHY/script/supermimic_teleop/student_onpolicy_pair_worker.py",
+      "--plan",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024_train_plan.json",
+      "--checkpoint",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_32000.pt",
+      "--morph-source",
+      "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+      "--output",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_PAIR01_20261108",
+      "--pair-plan",
+      "/opt/data/private/ZHY/script/supermimic_teleop/student_onpolicy_pair_plan_20261108.json",
+      "--expected-gpu",
+      "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      "--gpu-owner-pid",
+      "387309",
+      "--gpu-owner-ticks",
+      "40766102",
+      "--deadline-ns",
+      "408277951972393"
+    ],
+    "cwd": "/opt/data/private/ZHY",
+    "started_utc": "2026-11-07T23:39:24.381945+00:00",
+    "controller_pid": 387309,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "memory": {
+        "total_bytes": 8341053440,
+        "container_limit_bytes": 34292629504,
+        "immediate_headroom_bytes": 25951576064,
+        "guard_headroom_bytes": 23871201280,
+        "total_cache_bytes": 7010144256,
+        "total_rss_bytes": 128040960,
+        "total_shmem_bytes": 0,
+        "total_dirty_bytes": 8245248,
+        "total_writeback_bytes": 4325376,
+        "oom_kill": 0,
+        "under_oom": 0
+      },
+      "gpu": {
+        "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+        "used_mib": 520,
+        "temperature_c": 37,
+        "recovery": "None"
+      },
+      "storage": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_PAIR01_20261108",
+        "unique_allocated_bytes": 14376960,
+        "unique_logical_bytes": 14337528,
+        "unique_inodes": 19,
+        "symlinks_not_followed": 0
+      },
+      "maximum_total_bytes": 10704166912,
+      "maximum_gpu_used_mib": 520,
+      "maximum_subtree_rss_bytes": 2926866432,
+      "gpu_lock_owner": {
+        "pid": 387309,
+        "name": "python",
+        "state": "R",
+        "ppid": 387308,
+        "start_ticks": "40766102",
+        "VmHWM_bytes": 123183104,
+        "VmRSS_bytes": 105930752,
+        "RssAnon_bytes": 87080960,
+        "RssFile_bytes": 18849792,
+        "RssShmem_bytes": 0,
+        "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+        "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+      },
+      "training_signals_sent": 0,
+      "memory_reclaim_attempted": false,
+      "project_storage": {
+        "root": "/opt/data/private/ZHY",
+        "unique_allocated_bytes": 267125964800,
+        "unique_logical_bytes": 266073911474,
+        "unique_inodes": 496835,
+        "symlinks_not_followed": 9324
+      }
+    },
+    "error": null,
+    "worker_pid": 387383,
+    "worker_group": 387383,
+    "cleanup": {
+      "worker_started": true,
+      "worker_pid": 387383,
+      "worker_group": 387383,
+      "worker_reaped": true,
+      "worker_return_code": 0
+    },
+    "ended_utc": "2026-11-07T23:41:26.013721+00:00"
+  },
+  "resource_peak_and_exit": {
+    "memory": {
+      "total_bytes": 8341053440,
+      "container_limit_bytes": 34292629504,
+      "immediate_headroom_bytes": 25951576064,
+      "guard_headroom_bytes": 23871201280,
+      "total_cache_bytes": 7010144256,
+      "total_rss_bytes": 128040960,
+      "total_shmem_bytes": 0,
+      "total_dirty_bytes": 8245248,
+      "total_writeback_bytes": 4325376,
+      "oom_kill": 0,
+      "under_oom": 0
+    },
+    "gpu": {
+      "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      "used_mib": 520,
+      "temperature_c": 37,
+      "recovery": "None"
+    },
+    "storage": {
+      "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_PAIR01_20261108",
+      "unique_allocated_bytes": 14376960,
+      "unique_logical_bytes": 14337528,
+      "unique_inodes": 19,
+      "symlinks_not_followed": 0
+    },
+    "maximum_total_bytes": 10704166912,
+    "maximum_gpu_used_mib": 520,
+    "maximum_subtree_rss_bytes": 2926866432,
+    "gpu_lock_owner": {
+      "pid": 387309,
+      "name": "python",
+      "state": "R",
+      "ppid": 387308,
+      "start_ticks": "40766102",
+      "VmHWM_bytes": 123183104,
+      "VmRSS_bytes": 105930752,
+      "RssAnon_bytes": 87080960,
+      "RssFile_bytes": 18849792,
+      "RssShmem_bytes": 0,
+      "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+      "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+    },
+    "training_signals_sent": 0,
+    "memory_reclaim_attempted": false
+  },
+  "protected_inputs_unchanged": 1152,
+  "initial_checkpoint": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_PROPRIO_PAIR01_20261108/causal_history/selected.pt",
+    "bytes": 2972223,
+    "sha256": "7c019f585995ca557eaf6b7b0fd76a082533a4337305bcd4f852db02b90c2f50"
+  },
+  "exact_policy_proofs": [
+    {
+      "arm": "saved_only",
+      "selected_update": 0,
+      "selected": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_PAIR01_20261108/saved_only/selected.pt",
+        "bytes": 2972607,
+        "sha256": "8c421641dddfef70ba7b5b01b63ba61dfbde73f8d3ef085f8140ff457c824e9b"
+      },
+      "last": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_PAIR01_20261108/saved_only/last.pt",
+        "bytes": 3962587,
+        "sha256": "b526fded9550f5c50f9e8a610e2bd1f07379cab999069dc53f2134cfbdf0072e"
+      },
+      "exact_initial_tensor_counts": {
+        "base_encoder": 8,
+        "adapter": 4
+      },
+      "statistics_decoder_and_teacher_exact": true,
+      "actual_last_adam_steps": [
+        3000,
+        3000,
+        3000,
+        3000
+      ],
+      "initial_policy_equal": true,
+      "identical_physics_not_repeated": true
+    },
+    {
+      "arm": "onpolicy_mix",
+      "selected_update": 0,
+      "selected": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_PAIR01_20261108/onpolicy_mix/selected.pt",
+        "bytes": 2972607,
+        "sha256": "6af9feb7d1986404b270d0689a03b657ec8f6611be9671e8e2cf00bf99bd1bf9"
+      },
+      "last": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_PAIR01_20261108/onpolicy_mix/last.pt",
+        "bytes": 3962587,
+        "sha256": "d9a4d29c11de581c0ab3909ffff95f89303906662cc4cbf2dd8925bda7e6e2db"
+      },
+      "exact_initial_tensor_counts": {
+        "base_encoder": 8,
+        "adapter": 4
+      },
+      "statistics_decoder_and_teacher_exact": true,
+      "actual_last_adam_steps": [
+        3000,
+        3000,
+        3000,
+        3000
+      ],
+      "initial_policy_equal": true,
+      "identical_physics_not_repeated": true
+    }
+  ],
+  "metrics": [
+    {
+      "arm": "saved_only",
+      "initial": {
+        "validation_risk": 0.2210775182271997,
+        "pure_validation_risk": 0.35494938492774963,
+        "old_matched_validation_risk": 0.08720565152664979,
+        "full_old_validation_risk": 0.05385383066690319,
+        "fixed_anchor_r1_risk": 0.047872198124726616,
+        "fixed_anchor_mixed_risk": 0.08536243097235759
+      },
+      "last": {
+        "validation_risk": 0.22118191452076036,
+        "pure_validation_risk": 0.3531780143578847,
+        "old_matched_validation_risk": 0.08918581468363602,
+        "full_old_validation_risk": 0.05579825523792431,
+        "fixed_anchor_r1_risk": 0.05119087640196085,
+        "fixed_anchor_mixed_risk": 0.0864682908480366
+      },
+      "last_change_percent": {
+        "validation_risk": 0.04722157838472629,
+        "pure_validation_risk": -0.4990487785252795,
+        "old_matched_validation_risk": 2.270682143096092,
+        "full_old_validation_risk": 3.6105594475679403,
+        "fixed_anchor_r1_risk": 6.932370785623254,
+        "fixed_anchor_mixed_risk": 1.2954877960740463
+      },
+      "eligible_updates": [
+        0
+      ],
+      "best_unconstrained_update": 1500
+    },
+    {
+      "arm": "onpolicy_mix",
+      "initial": {
+        "validation_risk": 0.2210775182271997,
+        "pure_validation_risk": 0.35494938492774963,
+        "old_matched_validation_risk": 0.08720565152664979,
+        "full_old_validation_risk": 0.05385383066690319,
+        "fixed_anchor_r1_risk": 0.047872198124726616,
+        "fixed_anchor_mixed_risk": 0.08536243097235759
+      },
+      "last": {
+        "validation_risk": 0.20421937387436628,
+        "pure_validation_risk": 0.2940859893957774,
+        "old_matched_validation_risk": 0.11435275835295518,
+        "full_old_validation_risk": 0.07085676939401156,
+        "fixed_anchor_r1_risk": 0.06725892362495263,
+        "fixed_anchor_mixed_risk": 0.10335665134092172
+      },
+      "last_change_percent": {
+        "validation_risk": -7.6254449063918095,
+        "pure_validation_risk": -17.147063248006766,
+        "old_matched_validation_risk": 31.129985673014904,
+        "full_old_validation_risk": 31.572384947460797,
+        "fixed_anchor_r1_risk": 40.49683586643689,
+        "fixed_anchor_mixed_risk": 21.079789040205622
+      },
+      "eligible_updates": [
+        0
+      ],
+      "best_unconstrained_update": 3000
+    }
+  ],
+  "cumulative_gpu_charged_seconds": 4503,
+  "by_stage": {
+    "r1": 1614,
+    "r2": 1518,
+    "r3": 1371
+  },
+  "reserved": false,
+  "remaining_total_seconds": 9897,
+  "remaining_r2_seconds": 2982,
+  "all_own_and_original_training_pids_absent": [
+    54868,
+    55672,
+    55677,
+    55678,
+    55679,
+    387308,
+    387309,
+    387383
+  ],
+  "gpu_compute_and_original_lock_empty": true,
+  "current_resources": {
+    "memory_total": 8522579968,
+    "memory_limit": 34292629504,
+    "oom": {
+      "oom_kill_disable": "0",
+      "under_oom": "0",
+      "oom_kill": "0"
+    },
+    "gpu": [
+      "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      " 1",
+      " 25"
+    ],
+    "disk_free": 183540178944
+  },
+  "reused_existing_complete_cases": 0,
+  "reused_existing_cases": 7,
+  "new_physical_steps": 0,
+  "new_rendered_frames": 0,
+  "new_model_calls_in_saved_audit": 0,
+  "saved_audit_seconds": 0.9593272280180827,
+  "teacher_recovery_ability_verified": false,
+  "heldout_events_opened": false,
+  "original_shared_training_resumed": false,
+  "natural_teleoperation_qualified": false,
+  "hardware_end_to_end_latency_ms": null,
+  "user_accepted_checkpoint": null
+}

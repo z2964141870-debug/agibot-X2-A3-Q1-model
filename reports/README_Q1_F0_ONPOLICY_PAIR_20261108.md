@@ -36,4 +36,37 @@
 
 18486B九成员包SHA d6c4f0e749b099b17947b0138b55051e9bdfd84ae6cc851aa30371916553728e经15次精确ACK传输，只新增精确成员；1119原来源前后同。[部署原件](../logs/session_records/q1_f0_onpolicy_pair_deployed_20261108.json)。原Morph六CPU合同本体2.046秒、进程5.660673秒全过；[运行时原件](../logs/session_records/q1_f0_onpolicy_pair_contracts_20261108.json)。
 
-1152来源、625纯学生标签与实际selected3000、采集终门和回收、原4380账本、暂停与资源锁准入11.882450秒通过。[准入原件](../logs/session_records/q1_f0_onpolicy_pair_admitted_20261108.json)。三原件4472B已Mac逐字节大小SHA核同；内存8235298816B/实际限34292629504B，GPU1MiB25度/OOM0/余盘183554568192B。真实新增服务器训练仍0。下一先发布本准入，再唯一输出/log/dispatch/精确进程全无门后单派600秒配对训练。旧大索引服务器镜像PENDING。
+1152来源、625纯学生标签与实际selected3000、采集终门和回收、原4380账本、暂停与资源锁准入11.882499秒通过。[准入原件](../logs/session_records/q1_f0_onpolicy_pair_admitted_20261108.json)。三原件4472B已Mac逐字节大小SHA核同；内存8235298816B/实际限34292629504B，GPU1MiB25度/OOM0/余盘183554568192B。真实新增服务器训练仍0。下一先发布本准入，再唯一输出/log/dispatch/精确进程全无门后单派600秒配对训练。旧大索引服务器镜像PENDING。
+
+## 真实训练结果
+
+准入ef6ed04399766e71ae3934db41e58bbb8ed7b7cb显式推送及独立40位远端核同后，唯一防重门通过，2026-11-08 07:39:02北京时间派发timeout387308/controller387309/start40766102。[派发原件](../logs/session_records/q1_f0_onpolicy_pair_dispatch_20261108.json)。07:41:26真实ONPOLICY_PAIR_TRAINED_PENDING_CLOSED_LOOP/source_integrity PASSED，worker387383由guard正常回收/return0；原五PID及本任务三PID全退，原GPU锁和计算空。
+
+两组各实际3000次Adam、四个优化器计数全3000、各384000样本曝光，初始化/容量/来源slot与调度SHA一致。训练前后的1152保护输入全同；教师/WM/人体编码器/decoder/归一化均未更新。所有500/1000/1500/2000/2500/3000选点都未守住三旧锚点，两组最终均选择update0。保存last供审计，不能改选last或放宽门。[完成原件及数值](../logs/session_records/q1_f0_onpolicy_pair_completed_20261108.json)。
+
+下表均为各组**未采纳的最后3000步**相对本组update0的验证动作MSE变化，负值表示误差下降。不是关节弧度、真实物理误差或遥操成功率。
+
+| 验证分布 | 只旧状态 | 半纯学生状态 |
+| --- | ---: | ---: |
+| 旧/纯同来源各半主风险 | +0.047% | -7.625% |
+| 纯学生状态 | -0.499% | -17.147% |
+| 同来源旧状态 | +2.271% | +31.130% |
+| 全旧状态锚点 | +3.611% | +31.572% |
+| 原R1锚点 | +6.932% | +40.497% |
+| 原混合状态锚点 | +1.295% | +21.080% |
+
+新标签确实改变了该模型在保存验证分布上的拟合取舍，但没有产生同时保留旧能力的合格选点。不能据此说纯学生标签普遍无效，也不能称闭环已改善；只否定当前初始化/容量/采样比例/损失下的继续单步蒸馏。没有对该配方延长训练。
+
+独立CPU保存审计0.959327秒：每组选中模型的8个base encoder张量、4个adapter张量及统计、teacher/decoder身份与实际初始selected3000完全相等；last适配器实际变化且保存四Adam计数3000。新schema未送入旧review入口，也未改旧合同；相同ProprioResidualStudent结构和原因果action路径保持，因此直接复用原七例0/7完整的失败结果，0新增物理/媒体/模型调用，不伪造新视频。[精确可复现审计命令](../logs/session_records/q1_f0_onpolicy_pair_saved_audit_20261108.txt)。
+
+新增123秒SETTLED，累计4503=1614+1518+1371/14400秒，无预留，余9897秒、r2余2982秒。总内存峰10704166912B/显存峰520MiB/OOM0/回收未尝试/原训练信号0；审计后总8522579968B/实际限34292629504B、GPU1MiB25度、余盘183540178944B。[资源原件](../logs/session_records/q1_f0_onpolicy_pair_resource_final_20261108.json)。
+
+## 交付与后续
+
+Mac两份[旧状态训练六宫PNG](../data/analysis/Q1_F0_ONPOLICY_PAIR_FIGURES_REVIEWED_20261108/saved_only_six_panel.png)、[纯学生标签训练六宫PNG](../data/analysis/Q1_F0_ONPOLICY_PAIR_FIGURES_REVIEWED_20261108/onpolicy_mix_six_panel.png)，同目录两PDF和两CSV均已生成并目视。原数值包31494B/SHA 0fadbeb499e64724375cc751fa724df9d548fd65b2d78ff9e2efa607bb582555已Mac逐字节核同；两图同时展示最后未采纳状态，避免只展示选0的零柱图。
+
+新[完整训练证据ZIP](../data/deliveries/Q1_F0_ONPOLICY_PAIR_REVIEWED_EVIDENCE_20261108.zip)523919B/SHA e997f65fc28317c186f83671acc84dda17916777cd1275790c86f8f8d5fc129b，17成员CRC/逐成员大小SHA/16相对链接通过；本包没有新增视频，因为策略相同未重复物理。原视频与旧失败包保留。[交付记录](../logs/session_records/q1_f0_onpolicy_pair_training_delivery_20261108.json)。首版图包是生成过程的草稿，不作为本阶段主交付。
+
+**下一步先核教师恢复能力，再决定训练目标。** 在独立新方案中，从已保存训练/验证学生状态分叉短真实物理前缀，对比原学生与特权H10教师，保留终止和接触/滑移/侧倾；先明确模拟器状态恢复是否包含必要隐状态并用零分叉动作/下一步等价门证明。没有此门，不把任意设置位置速度视为同一物理状态，不用未验证WM的多步预测替代物理。仅选择预先登记的train/validation锚点，不打开test/新留出事件；不得重跑旧七条或整84例。先方案/来源/资源与剩余账本发布，再有界GPU执行。该探查尚未实现或派发，新GPU预算未预留。
+
+本阶段拟合、保存审计和证据交付已结束，低延迟遥操整体目标未达到；H4的80ms预览与f0零预览仍需分别评估。硬件端到端、实测人体与自然性均未验收；原共享仍暂停、用户采纳null。具体Mac/服务器同步见随后publication，大索引服务器镜像仍PENDING。

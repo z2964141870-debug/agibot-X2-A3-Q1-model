@@ -1,0 +1,58 @@
+# Exact executed read-only CPU audit; no model forwards, physics or optimizer updates.
+/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python -u - <<'PY'
+import os,sys,json,time,datetime,hashlib,tarfile
+from pathlib import Path
+os.environ['CUDA_VISIBLE_DEVICES']=''
+root=Path('/opt/data/private/ZHY');sys.path[:0]=[str(root/'script/supermimic_teleop'),str(root/'script/q1_five_stage'),str(root/'script/primebot_q1')]
+from common import identity,save
+from delivery import read
+from paused_runtime import paused_state,own_gpu,compute_pids
+from student_input_audit import resources
+from student_cost import charged,checked,STAGES
+from upper_mps_forecast import audit_cpu_tensors
+import torch
+torch.set_num_threads(1)
+started=time.monotonic(); out=root/'data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_PAIR01_20261108'
+result,auth,fit,guard=map(read,[out/'result.json',out/'authorization.json',out/'fit_result.json',out/'fit.guard.json'])
+assert result['status']=='ONPOLICY_PAIR_TRAINED_PENDING_CLOSED_LOOP' and result['source_integrity']=='PASSED' and result['cost_settlement']['state']=='SETTLED'
+assert guard['status']=='WORKER_COMPLETED' and guard['cleanup']['worker_reaped'] and guard['cleanup']['worker_return_code']==0
+pids=[54868,55672,55677,55678,55679,387308,result['controller']['pid'],guard['cleanup']['worker_pid']]
+assert all(not Path('/proc',str(p)).exists() for p in pids)
+assert all(identity(r['path'])==r for r in auth['protected_inputs'])
+plan=read(root/'script/supermimic_teleop/student_onpolicy_pair_plan_20261108.json')
+initial=torch.load(plan['initial_checkpoint']['path'],map_location='cpu',weights_only=True);audit_cpu_tensors(torch,initial)
+proof=[]; metrics=[]
+for arm in ('saved_only','onpolicy_mix'):
+ selected=torch.load(out/arm/'selected.pt',map_location='cpu',weights_only=True);last=torch.load(out/arm/'last.pt',map_location='cpu',weights_only=True)
+ audit_cpu_tensors(torch,selected);audit_cpu_tensors(torch,last)
+ assert selected['schema']=='q1_f0_onpolicy_residual_v1' and selected['variant']==arm and selected['arm']==initial['arm']=='causal_history'
+ assert selected['selected_update']==selected['checkpoint_update']==0 and selected['actual_adam_steps']==[3000]*4
+ fields=('base_encoder_sha256','decoder_sha256','frozen_teacher_policy_sha256','current_statistics','interface','human_real_future_frames','history_frames','history_frame_dim')
+ assert all(selected[k]==initial[k] for k in fields)
+ counts={}
+ for name in ('base_encoder','adapter'):
+  assert selected[name].keys()==initial[name].keys() and all(torch.equal(v,initial[name][k]) for k,v in selected[name].items());counts[name]=len(selected[name])
+ counters=[int(v['step'].item()) for v in last['optimizer']['state'].values()];assert counters==[3000]*4
+ assert any(not torch.equal(v,initial['adapter'][k]) for k,v in last['adapter'].items())
+ proof.append(dict(arm=arm,selected_update=0,selected=identity(out/arm/'selected.pt'),last=identity(out/arm/'last.pt'),exact_initial_tensor_counts=counts,statistics_decoder_and_teacher_exact=True,actual_last_adam_steps=counters,initial_policy_equal=True,identical_physics_not_repeated=True))
+ trace=read(out/arm/'training_trace.json');a,b=trace[0],trace[-1]
+ keys=('validation_risk','pure_validation_risk','old_matched_validation_risk','full_old_validation_risk','fixed_anchor_r1_risk','fixed_anchor_mixed_risk')
+ metrics.append(dict(arm=arm,initial={k:a[k] for k in keys},last={k:b[k] for k in keys},last_change_percent={k:100*(b[k]/a[k]-1) for k in keys},eligible_updates=[r['update'] for r in trace if r['fixed_anchor_non_regression']],best_unconstrained_update=min(trace,key=lambda x:x['validation_risk'])['update']))
+assert not torch.cuda.is_initialized()
+config=read(root/'script/q1_five_stage/conditional_shared_v04_20261104.json');paused_state(config,read(root/'logs/session_records/q1_shared_user_pause_20261106.json'))
+assert not compute_pids()
+with own_gpu() as owner: assert owner is not None
+ledger=checked(read(root/'logs/session_records/q1_low_latency_gpu_cost_20261107.json'));assert charged(ledger)==4503 and not any(r['state']=='RESERVED' for r in ledger['runs'])
+by_stage={s:charged(dict(ledger,runs=[r for r in ledger['runs'] if r['stage']==s])) for s in STAGES}
+sample=resources(True);old_review=read(root/'data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_PROPRIO_PAIR01_REVIEW_ANALYSIS_20261108/summary.json')
+assert old_review['complete_new_cases']==0 and old_review['total_comparison_cases']==28
+record=dict(stage='F0_ONPOLICY_PAIR_COMPLETED_AND_EXACT_POLICY_AUDIT',status='PASSED',observed_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),source_commit=auth['evaluation_commit'],result=result,guard=guard,resource_peak_and_exit=read(out/'resources.json'),protected_inputs_unchanged=len(auth['protected_inputs']),initial_checkpoint=plan['initial_checkpoint'],exact_policy_proofs=proof,metrics=metrics,cumulative_gpu_charged_seconds=charged(ledger),by_stage=by_stage,reserved=False,remaining_total_seconds=14400-charged(ledger),remaining_r2_seconds=4500-by_stage['r2'],all_own_and_original_training_pids_absent=pids,gpu_compute_and_original_lock_empty=True,current_resources=sample,reused_existing_complete_cases=0,reused_existing_cases=7,new_physical_steps=0,new_rendered_frames=0,new_model_calls_in_saved_audit=0,saved_audit_seconds=time.monotonic()-started,teacher_recovery_ability_verified=False,heldout_events_opened=False,original_shared_training_resumed=False,natural_teleoperation_qualified=False,hardware_end_to_end_latency_ms=None,user_accepted_checkpoint=None)
+assert all(identity(r['path'])==r for r in auth['protected_inputs'])
+receipt=root/'logs/session_records/q1_f0_onpolicy_pair_completed_20261108.json';assert not receipt.exists();save(receipt,record)
+resource=root/'logs/session_records/q1_f0_onpolicy_pair_resource_final_20261108.json';assert not resource.exists();save(resource,dict(status='PASSED',resources=sample,peak=read(out/'resources.json'),ledger_cumulative_seconds=charged(ledger),by_stage=by_stage,all_pids_absent=pids,lock_and_compute_empty=True,original_shared_training_resumed=False))
+small=('result.json','fit_result.json','fit.guard.json','resources.json','checkpoint_audit.json','saved_only/fit_result.json','saved_only/training_trace.json','onpolicy_mix/fit_result.json','onpolicy_mix/training_trace.json')
+archive=root/'data/deliveries/Q1_F0_ONPOLICY_PAIR_RAW_20261108.tgz';assert not archive.exists()
+with tarfile.open(archive,'x:gz') as stream:
+ for name in small:stream.add(out/name,arcname=name,recursive=False)
+print('PAIR_COMPLETE_AUDIT '+json.dumps(dict(receipt=identity(receipt),resource=identity(resource),archive=identity(archive),metrics=metrics)),flush=True)
+PY

@@ -46,6 +46,10 @@ def identity(path):
 
 
 def checked(record):
+    require(isinstance(record.get('path'), str) and type(record.get('bytes')) is int
+            and record['bytes'] > 0 and isinstance(record.get('sha256'), str)
+            and len(record['sha256']) == 64 and set(record['sha256']) <= set('0123456789abcdef'),
+            'Malformed saved input identity')
     require(identity(record['path']) == record, 'Saved input identity changed: '+record['path'])
     return record
 

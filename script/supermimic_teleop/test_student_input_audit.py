@@ -1,16 +1,22 @@
 """Saved-data audit contracts; these fixtures do not run a real robot policy."""
 
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 
-from student_input_audit import (expected_flags, neighbor_proxy, normalization_metrics,
+from student_input_audit import (checked, expected_flags, neighbor_proxy, normalization_metrics,
                                  normalized_input, validate_rows)
 from student_data import OfflineStudentStream
 from stream_events import EventSpec
 
 
 class SavedInputAuditTests(unittest.TestCase):
+    def test_reject_malformed_identity_before_opening_a_source(self):
+        with patch('student_input_audit.identity', side_effect=AssertionError('source opened')):
+            with self.assertRaisesRegex(ValueError, 'Malformed'):
+                checked(dict(path='/fixture', bytes=1, sha256='a'*65))
+
     def test_clock_reconstruction_matches_real_visibility_interface(self):
         positions = np.zeros((80, 24, 3))
         rotations = np.zeros((80, 24, 4))

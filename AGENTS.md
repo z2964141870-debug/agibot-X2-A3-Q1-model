@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 16:30教师latent实际准入：66625原为本地交互zsh，Agent自行固定source再ssh -tt hp_han入Windows/原生第二跳密码进原Linux；原root/boot/GPU/暂停/旧五及R3 PID退/计算空同。TERM dumb改xterm-256color为本次环境事实，不判旧超时单因，不要求用户代测。先证七目标/代码包/收据/receiver/LATENT01输出派发日志均无才部署，735旧来源SHA同；四原运行时检查1.813833秒过，170执行/200冻结/745输入和原锁准入过，总8096813056限34292629504/GPU1MiB/账本1266/r3已145全SETTLED。三原回执2003B包已Mac大小SHA同，发布准入后唯一LATENT01，不重训控制/旧七物理；新训练0/原共享暂停/既有goal继续/采纳null/无新agent，新文档服务器镜像待。入口TEACHER_LATENT_STUDENT及deployed/native_checks/admitted，旧56557/40295均退不再探。
+
 - 2026-11-07教师latent部署观察：33ec52c源码及18dd375清单记录均push/独立40位核同，170项31593B/SHA8158d820e52eed235eeecc7fbefac2d6d1e6358bb2386a5f98508e82dfd48ff6和七成员22261B包已Mac。56557接收器提交后无READY即Timeout255，归档正文0字节/新训练未派发；自主固定原样入口40295在第一跳reset255，未Windows shell/未Linux，不询问用户代测或泛化服务器不可达。两句柄已退；恢复先核q1_student_teacher_latent_deployed收据、七源码/包SHA和receiver/输出/进程，再身份暂停/来源/资源门，不直接重传。R3八完成记录15:55服务器镜像成功保持；原1266账本/原共享暂停/既有goal继续/采纳null/不新agent。入口TEACHER_LATENT_STUDENT及deployment_waiting。
 
 - 2026-11-07教师latent监督准备：三新执行模块/plan/训练六宫图入口与四本地检查0.748秒全过，0真实GPU标签/训练。仅动作loss加.1倍冻结教师32维human latent监督，未来full_goal只离线标签，学生f0/history和decoder不变；严格复用R3已成action-only逐验证点batch SHA/24格曝光，不重训控制。原R3 mask/clip/frame/状态/动作必须同、无丢行/新采物理/test，选点只validation action risk/含0。新LATENT01原1740/1800s/1GiB/资源锁及r3已145/总1266账本保持，发布/原运行时/来源/资源审计前不派发。56557原Linux/echo OFF自主固定入口不询问用户代测；原共享暂停/既有goal继续/采纳null/不新agent。入口TEACHER_LATENT_STUDENT与preparation，R3八完成记录已服务器大小SHA同。

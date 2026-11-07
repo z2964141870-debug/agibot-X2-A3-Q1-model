@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-11-08：[f0机器人历史残差独立七例闭环准备](README_Q1_F0_PROPRIO_REVIEW_20261108.md)。仅causal_history selected3000新增七例；zero_history选0先CPU精确核同后复用旧0/7。原动作/事件路径与CPU转换不变，14H4和7原f0对照复用，六本地检查通过；服务器准入/物理媒体待，原1800秒/3GiB/r2预算保持。
+2026-11-08：[f0机器人历史残差七例闭环完成及证据包](README_Q1_F0_PROPRIO_REVIEW_20261108.md#实测结论与交付)。保存验证下降36.3%，闭环仍0/7，两例前缀延长/五例缩短；14H4和7原f0复用，14守卫清洁/source PASSED。七对照PNG/PDF、两训练图、两原速视频及2930530B证据ZIP/36成员/18链接已核；另六视频服务器。585秒SETTLED，累计4256/14400秒无预留；下一实际学生状态与序列闭环目标，原共享暂停/采纳null。[简短done/todo](README_Q1_F0_PROPRIO_RESULT_20261108.md)。
 
 2026-11-08：[f0机器人历史残差配对训练已完成](README_Q1_F0_PROPRIO_RESIDUAL_20261108.md#真实训练结果)。两组各3000真实更新，causal_history选3000/验证下降36.303%，zero_history选0；两旧验证锚点均改善，但闭环尚待，不据loss判断自然性。两训练六宫PNG/PDF/CSV和23成员550450B证据ZIP已核同/目视。114秒SETTLED，累计3671/14400，无RESERVED；下一仅非零组选点七例闭环，置零组CPU核同后复用旧失败。原共享暂停/采纳null。
 

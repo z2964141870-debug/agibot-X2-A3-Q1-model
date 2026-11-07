@@ -1,0 +1,414 @@
+{
+  "schema": "q1_f0_onpolicy_pair_plan_v1",
+  "experiment": "F0_ONPOLICY_PAIR01",
+  "hypothesis": "Pure-student visited-state teacher labels may improve the same f0 residual beyond equal-source saved-only continuation",
+  "attribution": "Independent action-distillation distribution intervention; not a reproduction of joint BC/RL or a behavior world model",
+  "arms": [
+    "saved_only",
+    "onpolicy_mix"
+  ],
+  "initial_checkpoint": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_PROPRIO_PAIR01_20261108/causal_history/selected.pt",
+    "bytes": 2972223,
+    "sha256": "7c019f585995ca557eaf6b7b0fd76a082533a4337305bcd4f852db02b90c2f50"
+  },
+  "initial_fit": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_PROPRIO_PAIR01_20261108/causal_history/fit_result.json",
+    "bytes": 20579,
+    "sha256": "56bcb4b578c58c1d8c47850bb212d3bbec769510e9506b1aefb831e21e051b69"
+  },
+  "origins": [
+    {
+      "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R1_20261107",
+      "records": [
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R1_20261107/result.json",
+          "bytes": 2083,
+          "sha256": "53956aff9207df8d0ad0f327ecfcdc5915806e0099c5c0cd4e84d17a14e9e94c"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R1_20261107/dataset_receipt.json",
+          "bytes": 735,
+          "sha256": "da410e6828e4d92ecfc53050e4ab6e64365fbee51aab621bde8352de6e25d846"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R1_20261107/train_data.npz",
+          "bytes": 31704322,
+          "sha256": "dcb524474af98422aba6bcfeb90fd1b3e2329435734130624ad2fb44e3d6449b"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R1_20261107/validation_data.npz",
+          "bytes": 16056382,
+          "sha256": "99df8ea7e936ff9f4fe15b27a410078cc41b16b28b895ead02801f56c7ddb8c8"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R1_20261107/collection_result.json",
+          "bytes": 10053,
+          "sha256": "05315f2f5aaa96a1159281d1ed6270625b419507462fefeabb18e4d22d09e689"
+        }
+      ]
+    },
+    {
+      "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R2_AGGREGATE01_20261107",
+      "records": [
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R2_AGGREGATE01_20261107/result.json",
+          "bytes": 2260,
+          "sha256": "ef8df08457e9426a2259ecee9b8e1855a755a228c51eafc54685cbde5a59a961"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R2_AGGREGATE01_20261107/dataset_receipt.json",
+          "bytes": 785,
+          "sha256": "32ed3ff5dd0cbcddfcc5f67e1675faec66b8c72001ab136673911e9bfffc6427"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R2_AGGREGATE01_20261107/train_data.npz",
+          "bytes": 20030766,
+          "sha256": "c9909178ae4a50c3aa716e09cf3987dc853f14f433737b46e7ff04d0561c0d71"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R2_AGGREGATE01_20261107/validation_data.npz",
+          "bytes": 10140202,
+          "sha256": "dbcdfc2223567cb0a72384b86a3cf242620a9513dc28892847233c9a7b640183"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R2_AGGREGATE01_20261107/collection_result.json",
+          "bytes": 16098,
+          "sha256": "46cfc5fbfa325dc5894b5ba85507c3fcfba9e37b24c4736021e70603b33c2a2e"
+        }
+      ]
+    },
+    {
+      "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_COVERAGE01_20261107",
+      "records": [
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_COVERAGE01_20261107/result.json",
+          "bytes": 2199,
+          "sha256": "2503c7eb1aed32ab8c1712f4affa942bd05f7438e8b7279d414756f2be9b09e7"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_COVERAGE01_20261107/dataset_receipt.json",
+          "bytes": 809,
+          "sha256": "f120bb0ae94e9f0f0b0ddbfd91e8bbbf2b98428dd4bef2d12bdfc97a8d51d27e"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_COVERAGE01_20261107/train_data.npz",
+          "bytes": 52271768,
+          "sha256": "94f589fd1f926b0a50154e3d1c8944768861ced725c868dce278d0f5fcd0ed66"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_COVERAGE01_20261107/validation_data.npz",
+          "bytes": 12308348,
+          "sha256": "c8e71ea0229c55a8f65e3d3375ccb832904ecc4142bd95cba9c79cbd2dea61b1"
+        },
+        {
+          "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_COVERAGE01_20261107/collection_result.json",
+          "bytes": 25525,
+          "sha256": "ec0b488113de1f5190163b6d4a312e4ba8eac794889cacaa39d49e0b26144db0"
+        }
+      ]
+    }
+  ],
+  "candidate_plan": {
+    "path": "/opt/data/private/ZHY/data/manifests/q1_student_coverage_candidate_20261107.json",
+    "sha256": "325fc39de2b68656d3107fedf6681c21b116d7f44b6f2995f4bc6d4f442ed67d"
+  },
+  "pure_collection": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_LABELS01_20261108/collection_result.json",
+    "bytes": 8494,
+    "sha256": "bf1a6d461c7a2dec87c019089b9e1f86db1da0d9d3896bebaf8c5d3e70e2c27f"
+  },
+  "pure_transitions": {
+    "train": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_LABELS01_20261108/train_transitions.npz",
+      "bytes": 5672358,
+      "sha256": "9d640ad35103f45e0dcd3428a42447720890bc498c62593c93732d25b2e3fe21"
+    },
+    "validation": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_LABELS01_20261108/validation_transitions.npz",
+      "bytes": 3060903,
+      "sha256": "ba18866ba760e9b2f2f9185633460619e412e73cb2027bb5bf66fb600247e97d"
+    }
+  },
+  "jobs": [
+    {
+      "relative": "230102/walk_ff_stop_180_R_003__A095.npz",
+      "clip": "walk_ff_stop_180_R_003__A095",
+      "split": "train",
+      "group_id": "230102",
+      "human": {
+        "bytes": 203582,
+        "sha256": "b27567b71d5d160487bd2a7105d3d5411f88b3fad58b2b972ca180eb8f6a4461"
+      },
+      "maximum_steps": 192,
+      "record_stride": 2,
+      "packet_event": {
+        "kind": "nominal",
+        "first_frame": 102,
+        "duration_frames": 8,
+        "transport_frames": 0
+      },
+      "physical_reference_event": "nominal",
+      "seed": 0
+    },
+    {
+      "relative": "220727/walk_sideway_135_stop_004__A040.npz",
+      "clip": "walk_sideway_135_stop_004__A040",
+      "split": "train",
+      "group_id": "220727",
+      "human": {
+        "bytes": 319838,
+        "sha256": "ce741e5885bba6299918fdab13e305a4be5f1b710a8cfecf74601bedbd287bea"
+      },
+      "maximum_steps": 192,
+      "record_stride": 2,
+      "packet_event": {
+        "kind": "dropout",
+        "first_frame": 102,
+        "duration_frames": 8,
+        "transport_frames": 1
+      },
+      "physical_reference_event": "nominal",
+      "seed": 0
+    },
+    {
+      "relative": "221128/neutral_walk_180_R_002__A075.npz",
+      "clip": "neutral_walk_180_R_002__A075",
+      "split": "train",
+      "group_id": "221128",
+      "human": {
+        "bytes": 311102,
+        "sha256": "7eb235249dcf9c8c8374b29ac478c6f2c3bcdacec1ff355b6ef57d84f0e9164a"
+      },
+      "maximum_steps": 192,
+      "record_stride": 2,
+      "packet_event": {
+        "kind": "late_burst",
+        "first_frame": 102,
+        "duration_frames": 8,
+        "transport_frames": 2
+      },
+      "physical_reference_event": "nominal",
+      "seed": 0
+    },
+    {
+      "relative": "230125/walk_ff_stop_315_001__A145.npz",
+      "clip": "walk_ff_stop_315_001__A145",
+      "split": "train",
+      "group_id": "230125",
+      "human": {
+        "bytes": 178718,
+        "sha256": "27da93e5b808fb5d23c45e09950689000a6877ef36d745a4cb6ee98d57e4d2ca"
+      },
+      "maximum_steps": 192,
+      "record_stride": 2,
+      "packet_event": {
+        "kind": "nominal",
+        "first_frame": 100,
+        "duration_frames": 8,
+        "transport_frames": 0
+      },
+      "physical_reference_event": "nominal",
+      "seed": 0
+    },
+    {
+      "relative": "221130/neutral_walk_180_R_001__A084.npz",
+      "clip": "neutral_walk_180_R_001__A084",
+      "split": "train",
+      "group_id": "221130",
+      "human": {
+        "bytes": 265406,
+        "sha256": "e224b46a1f942cf3f3a2138452e006febb9d3b229418fe4389304e7351c337a0"
+      },
+      "maximum_steps": 192,
+      "record_stride": 2,
+      "packet_event": {
+        "kind": "dropout",
+        "first_frame": 102,
+        "duration_frames": 8,
+        "transport_frames": 1
+      },
+      "physical_reference_event": "nominal",
+      "seed": 0
+    },
+    {
+      "relative": "221117/walk_arc_cw_start_002__A065.npz",
+      "clip": "walk_arc_cw_start_002__A065",
+      "split": "train",
+      "group_id": "221117",
+      "human": {
+        "bytes": 118910,
+        "sha256": "591b393bdef50bc2b1a4f8af4fe9745eaf71f794846529bb2c975baec1cac3bf"
+      },
+      "maximum_steps": 163,
+      "record_stride": 2,
+      "packet_event": {
+        "kind": "late_burst",
+        "first_frame": 65,
+        "duration_frames": 8,
+        "transport_frames": 2
+      },
+      "physical_reference_event": "nominal",
+      "seed": 0
+    },
+    {
+      "relative": "230313/walk_ff_loop_360_R_003__A267.npz",
+      "clip": "walk_ff_loop_360_R_003__A267",
+      "split": "validation",
+      "group_id": "230313",
+      "human": {
+        "bytes": 188126,
+        "sha256": "6b8fd4d01e71f557b545bc1375defa62731fc418aba7da6cfe275b29f1f9293a"
+      },
+      "maximum_steps": 192,
+      "record_stride": 2,
+      "packet_event": {
+        "kind": "nominal",
+        "first_frame": 102,
+        "duration_frames": 8,
+        "transport_frames": 0
+      },
+      "physical_reference_event": "nominal",
+      "seed": 0
+    },
+    {
+      "relative": "220720/walk_sideway_left_loop_004__A031.npz",
+      "clip": "walk_sideway_left_loop_004__A031",
+      "split": "validation",
+      "group_id": "220720",
+      "human": {
+        "bytes": 286910,
+        "sha256": "e886570cbc136157b9e362f93e66fda874ec1e7b96253cf5110b344996053929"
+      },
+      "maximum_steps": 192,
+      "record_stride": 2,
+      "packet_event": {
+        "kind": "dropout",
+        "first_frame": 102,
+        "duration_frames": 8,
+        "transport_frames": 1
+      },
+      "physical_reference_event": "nominal",
+      "seed": 0
+    },
+    {
+      "relative": "220721/turn_start_walk_000_002__A033.npz",
+      "clip": "turn_start_walk_000_002__A033",
+      "split": "validation",
+      "group_id": "220721",
+      "human": {
+        "bytes": 144446,
+        "sha256": "e575008cc6b72dacfaac6502f2583c3041069fdd852586b1c2ae966fd27a1c0c"
+      },
+      "maximum_steps": 192,
+      "record_stride": 2,
+      "packet_event": {
+        "kind": "late_burst",
+        "first_frame": 80,
+        "duration_frames": 8,
+        "transport_frames": 2
+      },
+      "physical_reference_event": "nominal",
+      "seed": 0
+    }
+  ],
+  "fit": {
+    "seed": 2026110804,
+    "maximum_updates": 3000,
+    "batch_size": 128,
+    "learning_rate": 0.0001,
+    "gradient_norm_limit": 1,
+    "validation_every_updates": 500
+  },
+  "selection": "Minimum half matched-old and half pure-state validation risk including update0, subject to all-old, original-R1 and mixed-collection validation anchors not regressing versus update0",
+  "fairness": "Each batch: same64 old anchors plus64 source-matched slots; old states for saved_only and pure-student states for onpolicy_mix; identical initialization, capacity, source slot schedule and updates; sample rows intentionally differ",
+  "frozen": [
+    "teacher",
+    "world_model",
+    "human_encoder",
+    "shared_decoder",
+    "normalizers",
+    "physics",
+    "reference_anchor"
+  ],
+  "input_arrays_read": [
+    "f0",
+    "history",
+    "teacher_action",
+    "clip_id"
+  ],
+  "excluded_model_inputs": [
+    "actual_state",
+    "next_state",
+    "terminal_after_action",
+    "teacher_future_dependency"
+  ],
+  "old_records": {
+    "train": 6725,
+    "validation": 2358
+  },
+  "pure_records": {
+    "train": 406,
+    "validation": 219
+  },
+  "human_real_future_frames": 0,
+  "teacher_recovery_ability_verified": false,
+  "test_sources_read_for_fitting": false,
+  "normalization_refitted": false,
+  "resource": {
+    "ledger_stage": "r2",
+    "expected_cumulative_seconds": 4380,
+    "expected_by_stage": {
+      "r1": 1614,
+      "r2": 1395,
+      "r3": 1371
+    },
+    "maximum_wall_seconds": 600,
+    "maximum_output_bytes": 134217728,
+    "new_physical_steps": 0,
+    "new_rendered_frames": 0,
+    "cache_advice": false
+  },
+  "heldout": {
+    "registered_before_fit": true,
+    "opened": false,
+    "seed": 2026110803,
+    "specs": [
+      {
+        "kind": "stop",
+        "first_frame": 73,
+        "duration_frames": 7,
+        "transport_frames": 0
+      },
+      {
+        "kind": "reverse",
+        "first_frame": 113,
+        "duration_frames": 13,
+        "transport_frames": 0
+      },
+      {
+        "kind": "dropout",
+        "first_frame": 37,
+        "duration_frames": 7,
+        "transport_frames": 0
+      },
+      {
+        "kind": "late_burst",
+        "first_frame": 83,
+        "duration_frames": 13,
+        "transport_frames": 2
+      }
+    ],
+    "use_after": "Lock selected models and rules; exploratory seven-case completeness before fresh-event evaluation"
+  },
+  "followup": {
+    "unchanged_selected": "Prove exact initial adapter, base, decoder and statistics equality and reuse the original seven failures",
+    "changed_selected": "Publish independent review schema and source/resource gates, then matched exploratory closed-loop physics and media",
+    "closed_loop_required": true,
+    "test_outcomes_used_for_selection": false
+  },
+  "original_shared_training_restarted": false,
+  "natural_teleoperation_qualified": false,
+  "hardware_end_to_end_latency_ms": null,
+  "user_accepted_checkpoint": null
+}

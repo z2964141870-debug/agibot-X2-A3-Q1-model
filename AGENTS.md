@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-08 F0_ONPOLICY_PAIR01独立准备：新六文件/六CPU合同.880秒全过及CLI过，实际新服务器Adam物理渲染0。实际causal_history3000非零继续、同容量初始化每组3000Adam，每批同64旧anchor+64同来源片段旧或纯学生状态；三验证锚点不退/含update0，406train219val纯标签复用/不输入next_state或terminal。600秒128MiB/原4380=1614+1395+1371全SETTLED账本不重置，先发布清单/原运行时及1119来源和采集回收/资源锁准入，再唯一防重派发。45014原Linux可用/获批SSH90/60/5自主核/原共享暂停/216及六旧训练不改/goal新agent不用/采纳null；teacher恢复未证，真实选点后独立闭环/训练六宫图。入口F0_ONPOLICY_PAIR与preparation，旧大索引镜像PENDING。
+
 - 2026-11-08 PURE_STUDENT_LABELS01真实完成：07:04:52 COMPLETED/source PASSED，386422/386423(start40547654)/386433全退/guard回收0/原锁计算空；九组1259物理步、1250学生前向、625H10独立标签(406train219val)、教师动作混合0/Adam渲染0。八前缀失败一短片163步边界，不当旧七条提升；next_state/terminal及状态动作标签精确配对，1119源同/保存诊断1.808604秒。124秒SETTLED累计4380=1614+1395+1371无预留/余10020；峰11499769856B/GPU444MiB/OOM0/回收未尝试，末总8239566848限34292629504/GPU1MiB25度/余盘183554822144。完成27838B/资源1934B原件MacSHA同，六宫PNG/PDF/CSV目视和213391B七成员ZIP/五链接过，数组服务器。45014原Linux复用/SSH90/60/5获批自主测试；下一同初始化容量曝光旧数据vs加入纯学生标签对照，先独立方案来源预算发布/教师恢复和terminal边界，不在采集入口开训或重做旧七物理。原共享暂停/216及六训练来源/goal工具新agent不用/采纳null，旧大包索引镜像PENDING。入口F0_ONPOLICY_LABELS与completed/resource_final/delivery。
 
 - 2026-11-08 PURE_STUDENT_LABELS01真实准入：33d973e源码/34c53b7五文件清单独立远端40位及Mac十一文件同，15484B八成员包13ACK新增/1111旧来源同；六原Morph合同本体.004秒/进程.259070秒过，1119来源选点/原4256账本/暂停资源锁准入10.700250秒过。三原回执5671B已MacSHA同，06:59:30总8204079104限34292629504/OOM0/GPU1MiB24度/余盘183574794240，新物理查询Adam0。45014原Linux复用/SSH获批90/60/5核同自主测试；先发布准入再唯一output/log/dispatch/精确进程防重单派600秒九组/1699物理+850标签上限，不改216执行六训练来源或重做旧七物理。原共享暂停/goal工具新agent不用/采纳null，旧大包索引镜像PENDING。入口F0_ONPOLICY_LABELS与三原回执，实际派发看随后dispatch。

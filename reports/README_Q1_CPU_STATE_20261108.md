@@ -6,7 +6,7 @@
 
 保存的同状态诊断显示，CPU状态转换中位约10至12ms，GPU前向约1.3至1.5ms。先验证用隔离MuJoCo运动学代替逐连杆Torch循环是否能保持策略输入并减少耗时。此项只改善软件处理，不能减少人体未来依赖，也不能修复已观察到的f0闭环失败。
 
-当前已实现独立转换器、五个坐标/不可变性合同及234状态配对检查；尚未执行服务器合同或真实配对比较。没有新的策略前向、物理积分、渲染、优化器更新或GPU预算扣费。
+五个坐标/不可变性合同已在真实策略运行时全部通过（本体0.082秒、外层3.020488秒）。首次CPU配对入口在bootstrap导入阶段因漏带既有Git可执行路径退出，17.408330秒、234状态比较尚未开始。保留原FAILED输出和日志；修订仅补标准运行环境与新的R2输出，五个未变合同复用。没有新的策略前向、物理积分、渲染、优化器更新或GPU预算扣费。
 
 ## 方案与边界
 
@@ -14,7 +14,7 @@
 - 新`KinematicState`只接受CPU float32 `[1,79]`且不求梯度。复用只读模型，持有独立`MjData`；调用`mj_kinematics`、`mj_comPos`、`mj_comVel`及世界朝向的`mj_objectVelocity(mjOBJ_XBODY)`，读取连杆原点。不调用动力学、积分或`mj_forward`。
 - 原输入的根角速度在世界坐标，MuJoCo自由关节qvel使用根局部角速度；明确转换。保留关节参考位置、WXYZ符号、稀疏29槽映射及上一动作尾部。
 - 真实策略运行时为Torch2.11.0+cu128/MuJoCo3.11.0；共同CPU物理回放另为Torch2.7/MuJoCo3.6。本次使用前者且隐藏CUDA，不能以本地3.9环境或物理运行时冒充策略运行时。
-- 本地相同版本MuJoCo不可用，五合同只登记待服务器执行；本地不编造通过数。
+- 本地相同版本MuJoCo不可用，五合同通过数来自服务器3.11真实执行。
 
 ## 预登记协议
 
@@ -30,7 +30,7 @@
 
 ## 入口与恢复
 
-新代码：`script/supermimic_teleop/native_state_cpu.py`、`native_state_review.py`、`test_native_state_cpu.py`。输出固定为服务器`data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_CPU_STATE01_20261108`，首次运行前检查输出、日志、收据与进程防重。
+新代码：`script/supermimic_teleop/native_state_cpu.py`、`native_state_review.py`、`test_native_state_cpu.py`。原`CPU_STATE01_20261108`为保留FAILED根；新输出固定为服务器`data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_CPU_STATE01_R2_20261108`，运行前检查输出、日志、收据与进程防重，并确认原进程退出且未进入比较。旧源码8091B包及SHA保留，不改原199/200或889保护来源。
 
 先发布三文件清单并独立核远端，再只部署新文件；运行时执行：
 

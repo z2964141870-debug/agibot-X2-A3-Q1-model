@@ -26,7 +26,8 @@ from student_input_audit import resources
 DATA = ROOT/'data/supermimic_for_q1'
 SOURCE = DATA/'Q1_LOW_LATENCY_CKPT32000_SAME_STATE01_20261108'
 SUMMARY = DATA/'Q1_LOW_LATENCY_CKPT32000_SAME_STATE01_SAVED_ANALYSIS_20261108'
-OUTPUT = DATA/'Q1_LOW_LATENCY_CKPT32000_CPU_STATE01_20261108'
+FIRST = DATA/'Q1_LOW_LATENCY_CKPT32000_CPU_STATE01_20261108'
+OUTPUT = DATA/'Q1_LOW_LATENCY_CKPT32000_CPU_STATE01_R2_20261108'
 LEDGER = ROOT/'logs/session_records/q1_low_latency_gpu_cost_20261107.json'
 CLIPS = (('walk_forward_loop_001__A022', 128), ('walk_forward_start_002__A023', 106))
 ATOL, RTOL = 2e-5, 2e-5
@@ -137,6 +138,11 @@ def execute(args):
     started = time.monotonic()
     require(args.output == OUTPUT and not args.output.exists() and len(args.evaluation_commit) == 40
         and all(c in '0123456789abcdef' for c in args.evaluation_commit), 'Use the new published CPU-only output')
+    first = read(FIRST/'result.json')
+    require(first.get('status') == 'FAILED' and first.get('error', '').startswith(
+        'ImportError: Failed to initialize: Bad git executable.') and 'runtime_sources' not in first
+        and not first.get('comparisons') and not Path('/proc', str(first['controller']['pid'])).exists(),
+        'Only recover the stopped dependency failure before any state comparisons')
     admitted = resources(True)
     require(identity(args.manifest)['sha256'] == args.manifest_sha256, 'Published CPU manifest changed')
     manifest = read(args.manifest)
@@ -155,6 +161,8 @@ def execute(args):
     auth = read(SOURCE/'authorization.json')
     runtime = read(ROOT/'data/manifests/primebot_q1_monitored_config_20261103.json')
     require(Path(sys.executable) == Path(runtime['morph_python']), 'Use the actual saved policy runtime')
+    from preview_review import environment
+    os.environ.update(environment(runtime))
     import torch
     require(os.environ.get('CUDA_VISIBLE_DEVICES') == '' and not torch.cuda.is_initialized(), 'CPU audit exposed CUDA')
     torch.set_num_threads(1)
@@ -162,7 +170,7 @@ def execute(args):
     require({k:importlib.metadata.version(k) for k in ('torch', 'mujoco')} == ready['packages'],
             'Use exact saved policy packages, not the separate CPU physics runtime')
     records = unique(summary['inputs']+manifest['files']+[identity(p) for p in
-        (SUMMARY/'summary.json', SUMMARY/'audit.json', args.manifest, LEDGER)])
+        (SUMMARY/'summary.json', SUMMARY/'audit.json', FIRST/'result.json', args.manifest, LEDGER)])
     ledger_before = identity(LEDGER)
     ledger = checked(read(LEDGER))
     require(charged(ledger) == 2433 and not any(r['state'] == 'RESERVED' for r in ledger['runs']),

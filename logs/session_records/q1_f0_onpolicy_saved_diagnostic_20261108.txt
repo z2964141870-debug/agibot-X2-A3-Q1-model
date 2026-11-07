@@ -1,0 +1,97 @@
+This diagnostic ran inside the already authenticated original Linux session.
+It performed no inference, physics, rendering or optimizer updates.
+The exact Python command is retained in the calling tool record. Its original
+server result and all per-source numerical values are preserved in
+q1_f0_onpolicy_completed_20261108.json (27838 bytes, SHA256
+18677bf0aadecbfd32567cdb0551bf426a2a183be42239d69af08ea7dbf3045c).
+
+Method: require COMPLETED/source_integrity PASSED and SETTLED, clean guard
+reaping, exited owned processes, empty GPU compute list and released exclusive
+lock; verify all 1119 protected inputs and generated trace/data identities;
+check finite arrays and exact actual_state, student_action, teacher_action,
+next_state and terminal_after_action against each saved physical trace;
+group by the nine predeclared source IDs, retain all failures, and report
+per-label and per-source canonical teacher/student action differences.
+Final-25-step statistics use the actual physical prefix, including failed
+prefixes. This does not establish teacher recoverability or hardware latency.
+
+Result: 1259 physical steps; 1250 student policy forwards; 625 privileged
+teacher queries; 406 training and 219 validation labels. No test or new heldout
+event payload was opened. Saved-data analysis took 1.8086041269707493 seconds.
+The GPU-owning collection cost settled at 124 seconds. The original cumulative
+ledger is 4380 seconds (r1 1614, r2 1395, r3 1371), with no live reservation.
+
+Exact executed Python body:
+import json,sys,time
+from pathlib import Path
+from datetime import datetime,timezone
+import numpy as np
+r=Path("/opt/data/private/ZHY")
+sys.path[:0]=[str(r/"script/supermimic_teleop"),str(r/"script/q1_five_stage"),str(r/"script/primebot_q1")]
+from student_input_audit import resources,identity
+from paused_runtime import own_gpu,compute_pids
+from student_cost import charged,checked
+from student_proprio_training import LEDGER
+from memory_watch import process
+o=r/"data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_LABELS01_20261108"
+target=r/"logs/session_records/q1_f0_onpolicy_completed_20261108.json"
+assert not target.exists()
+started=time.monotonic()
+result=json.loads((o/"result.json").read_text())
+guard=json.loads((o/"collection.guard.json").read_text())
+collection=json.loads((o/"collection_result.json").read_text())
+auth=json.loads((o/"authorization.json").read_text())
+assert result["status"]=="COMPLETED" and result["source_integrity"]=="PASSED"
+assert result["cost_settlement"]["state"]=="SETTLED" and guard["status"]=="WORKER_COMPLETED"
+assert guard["cleanup"]["worker_reaped"] is True and guard["cleanup"]["worker_return_code"]==0
+assert all(process(Path("/proc"),p) is None for p in [386422,386423,386433])
+assert not compute_pids()
+with own_gpu(): pass
+protected=auth["protected_inputs"]
+assert len(protected)==1119 and all(identity(x["path"])==x for x in protected)
+assert identity(o/"collection_result.json")==result["collection"]
+inputs=[identity(o/n) for n in ["result.json","collection_result.json","collection.guard.json","authorization.json","collection_plan.json","dataset_receipt.json"]]
+for row in collection["clips"]:
+ for name in ["trace","timing"]:
+  assert identity(row[name]["path"])==row[name]
+  inputs.append(row[name])
+samples={}
+for split in ["train","validation"]:
+ meta=collection["transitions"][split]
+ assert identity(meta["path"])==meta
+ inputs.append(meta)
+ with np.load(meta["path"],allow_pickle=False) as f: values={n:f[n] for n in f.files}
+ assert all(np.isfinite(v).all() for v in values.values())
+ assert values["next_state"].shape==values["actual_state"].shape
+ samples[split]=values
+rows=[]
+for clip in collection["clips"]:
+ data=samples[clip["split"]]
+ mask=data["clip_id"]==clip["clip_id"]
+ frames=data["frame"][mask]
+ teacher=data["teacher_action"][mask]
+ student=data["student_action"][mask]
+ delta=np.sqrt(np.mean((teacher-student)**2,axis=1))
+ assert len(delta)>0 and len(np.unique(frames))==len(frames)
+ terminal=clip["failure_frame"]
+ late=frames>=max(0,clip["actual_steps"]-25)
+ with np.load(clip["trace"]["path"],allow_pickle=False) as f:
+  assert np.array_equal(data["actual_state"][mask],f["actual"][frames])
+  assert np.array_equal(data["next_state"][mask],f["actual"][frames+1])
+  assert np.array_equal(data["student_action"][mask],f["canonical_action"][frames])
+  assert np.array_equal(data["teacher_action"][mask],f["teacher_action"][frames])
+  assert np.array_equal(data["terminal_after_action"][mask],frames+1==(-1 if terminal is None else terminal))
+ rows.append(dict(clip_id=clip["clip_id"],split=clip["split"],clip=clip["clip"],physical_steps=clip["actual_steps"],requested_steps=clip["requested_steps"],prefix_complete=clip["prefix_complete"],failure_frame=terminal,label_records=int(mask.sum()),terminal_label_records=int(data["terminal_after_action"][mask].sum()),canonical_action_delta_rms=float(np.sqrt(np.mean((teacher-student)**2))),per_label_delta_rms_p50=float(np.quantile(delta,.5)),per_label_delta_rms_p95=float(np.quantile(delta,.95)),last25_physical_steps_label_count=int(late.sum()),last25_delta_rms=None if not late.any() else float(np.sqrt(np.mean((teacher[late]-student[late])**2)))))
+ledger=checked(json.loads(LEDGER.read_text()))
+assert charged(ledger)==4380 and all(x["state"]=="SETTLED" for x in ledger["runs"])
+stages={s:charged(dict(ledger,runs=[x for x in ledger["runs"] if x["stage"]==s])) for s in ["r1","r2","r3"]}
+assert all(identity(x["path"])==x for x in protected+inputs)
+resources_now=resources(True)
+resource_path=o/"resources.jsonl"
+peak=None
+if resource_path.exists():
+ values=[json.loads(s) for s in resource_path.read_text().splitlines() if s.strip()]
+ peak=dict(samples=len(values),fields=list(values[-1]) if values else [])
+record=dict(stage="F0_ONPOLICY_COLLECTION_COMPLETED_AND_SAVED_DIAGNOSTIC",status="PASSED",observed_utc=datetime.now(timezone.utc).isoformat(),source_commit="33d973e4885010f161086589d5473d04cab8493b",result=result,collection=collection,guard=guard,saved_diagnostic=dict(rows=rows,split_records={s:len(d["frame"]) for s,d in samples.items()},next_state_terminal_pairing_verified=True,canonical_action_units="Unscaled canonical policy action; not joint-angle or hardware-error units",teacher_behavior_fraction=0.,teacher_recovery_ability_verified=False,new_policy_calls=0,new_physical_steps=0,new_optimizer_updates=0),protected_files=len(protected),source_inputs_unchanged=True,generated_inputs=inputs,processes_exited=[386422,386423,386433],gpu_compute_empty=True,exclusive_lock_released=True,resources=resources_now,peak_resource_file=peak,cumulative_gpu_charged_seconds=charged(ledger),stage_charged_seconds=stages,remaining_gpu_seconds=14400-charged(ledger),all_reservations_settled=True,diagnostic_seconds=time.monotonic()-started,original_shared_training_resumed=False,natural_teleoperation_qualified=False,hardware_end_to_end_latency_ms=None,user_accepted_checkpoint=None)
+with target.open("x") as f: json.dump(record,f,indent=2); f.write("\n")
+print("Q1_ONPOLICY_COMPLETED "+json.dumps(dict(receipt=identity(target),physical_steps=result["new_physical_transitions"],teacher_queries=result["teacher_queries"],split_records=record["saved_diagnostic"]["split_records"],complete_prefixes=sum(x["prefix_complete"] for x in rows),rows=rows,seconds=record["diagnostic_seconds"],cost=stages,resources=resources_now)),flush=True)

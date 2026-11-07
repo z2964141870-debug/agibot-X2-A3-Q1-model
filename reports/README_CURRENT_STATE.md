@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07 11:06:57：[R1短预览编码器已真实训练完成，训练六宫图已生成](README_Q1_STUDENT_R1_RESULTS_20261107.md)。18片4407物理步／1404训练+711验证记录，8000次Adam／validation选5000，教师与共享解码器不变／CPU有限保存复读／source_integrity PASSED，账本SETTLED549秒。可用目标上的H4动作MSE下降48.415%，H10退步28.420%，H1仅50/711及时可用；这些不是闭环或自然遥操结论。31470仍可用，11:10旧五PID与R1子树已退、原锁计算空；不再让用户先确认连接。新增独立23例同流闭环入口／五项可见性检查过，发布与原运行时准入后执行，原239/226/200输入不改、原训练暂停、goal active／采纳null保持。 [真实训练收据](../logs/session_records/q1_student_r1_completed_20261107.json)。
+
 2026-11-07 10:55：[R1已发布部署并通过原运行时／真实资源准入](README_Q1_STUDENT_TRAINING_PIPELINE_20261107.md)。a2d667a／5ec62e7均独立40位远端核同，23成员346859B包服务器SHA同／239执行源码与原226保护同；37运行时检查全过／1.279秒。200冻结资产／24控制输入／R0门核同，18源组上限4407真实物理步，GPU空闲1MiB26度／总7720476672B／OOM0／锁可独占。启动前新训练0／原训练暂停，下一单派独立R1而非恢复旧训练；六宫图和闭环验收仍待。[准入收据](../logs/session_records/q1_student_r1_admission_publication_20261107.json)。
 
 2026-11-07 10:41恢复：[原R0已完成，R1真实采样／有界训练／成本账本已本地实现](README_Q1_STUDENT_TRAINING_PIPELINE_20261107.md)。用户要求自行固定入口重试后31470直接进原Linux；原身份／人工暂停／旧五PID退／锁与计算空／OOM0核同。上次未回执R0实际03:49完成，512调用／四条动作最大差0／source_integrity PASSED，不重发。新增16本地检查过／随机CPU夹具3次Adam，真实32k学生与服务器新训练仍0；新源码发布、原运行时验证和准入待，原226清单不改。采样只12train／6validation组，源帧和动作对真实物理trace，训练1740秒单阶段、累计首轮≤4GPU小时持久账本；goal继续active／原训练不恢复／final采纳null保持。[准备收据](../logs/session_records/q1_student_pipeline_preparation_20261107.json)。

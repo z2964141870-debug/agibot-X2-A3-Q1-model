@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 15:25 R3配对真实准入：固定用户入口56557自主进原Linux、原身份暂停/旧PID退/锁计算空同；728f804已push/独立40位核同，八成员23272B包只新增/旧700来源同。原运行时六CPU检查4.193942秒过，163新执行/200冻结/729保护输入/原12train6val数据和GPU锁准入过后释放，总8073879552限34292629504/GPU1MiB26度/OOM0。三原始回执2410B包已Mac SHA同，真实新训练0，先发布本准入再唯一PAIR01单派；原1121秒账本/r3及总界不重置，不重采数据或恢复原共享训练/goal继续/采纳null/不新agent。入口GIGABRAIN_AUXILIARY_PAIR和auxiliary_pair_admitted，服务器新文档镜像待。
+
 - 2026-11-07续行：保存聚合动作残差真实只读完成，两原NPZ SHA前后同/新推理物理训练0；67570B原值已Mac，验证腿部动作delta RMS.409864对训练.083068，仅泛化诊断不定倒地因果。独立R3下一状态配对四执行模块/plan/六宫图已实现，六项CPU检查过；两组同R2初始化/数据/seed/各3000Adam，仅aux.1不同，真实更新0。下一状态须对应实际执行行为、保留gravity/去previous-action/缺失关节、终止mask/当前history核同，未来只监督且头不部署。先发布再原运行时/资源准入/单派，原1121/14400账本及r3上限7200保持；不重复同策略七物理、旧256/200冻结不改。95471旧会话Timeout已结束，按用户原样固定入口56557自主重连等待，不询问代测/不泛化Linux不可达。入口GIGABRAIN_AUXILIARY_PAIR及student_state_residuals；原共享暂停/既有goal继续/采纳null/无新agent，新镜像待实际回执。
 
 - 2026-11-07 14:41:43学生状态聚合实际结束/TRAINED_PENDING_CLOSED_LOOP/source PASSED：18来源4407步、原1404/711加新1456/737记录，3000Adam六计数全3000/拟合44.916641秒；验证选0、风险.094863855→末.114754134（+20.97%），未改善。CPU精确审计八个encoder张量/全部策略元数据与原R2同，最大差0，不重复七条相同f0物理；既有0/7只作为同策略历史证据复用，原campaign不改。 原始十四成员80501B包SHA67a19b42752f721d004e2311833b71a100c0fd979e739105c87d4bfdce5abc05已Mac同，训练PNG/PDF目视齐，CPU身份审计3509B/SHA9ebb7ca92913f670a100fc556865fba92986f2cd85de6d19945a3af80f931c6e/新CUDA0。持锁498秒已SETTLED，累计1121余13279/r2余3928，峰总11496599552/GPU502/OOM0；14:46:52控制器352942/worker353014和五旧训练PID均退、原STOPPED_SIGNAL/锁计算空/GPU1MiB26度。下一先保存残差诊断与单项GigaBrain性质消融，不能将选0当新策略或重复旧七例。95471原Linux/固定入口自主尝试，R1视频part1584000B待续/R2两代表视频已Mac完整；goal继续/原共享暂停/采纳null/不新agent。入口STUDENT_STATE_AGGREGATION、completed/selected_identity；新文档服务器镜像以publication为准。

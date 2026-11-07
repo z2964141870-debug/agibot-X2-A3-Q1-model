@@ -43,3 +43,11 @@ action_only组只对原encoder施加动作蒸馏；next_state组增加0.1倍next
 本阶段发布、服务器检查、准入、派发、完成与镜像分别以随后实际收据为准；不因旧SSH会话退出断言整个入口不可用，不要求用户先代测连接。
 
 固定用户入口56557已自主进入Windows并通过原生25362密码到原Linux。原boot/GPU及唯一private根同、五旧训练PID退出/STOPPED_SIGNAL、原锁可独占后释放、GPU1MiB26度/计算空/OOM0/总7981060096B限34292629504B均已实核。服务器残差原文件67570B及SHA也与Mac精确相同。这一成功不据此判断旧超时的唯一原因；没有询问用户代测或更换第一跳。
+
+## 真实服务器准入
+
+源码728f804cbffcde90c13f45083784f08ddbc1a0e4已push并独立40位远端核同；八成员23272B包SHA `c3b51e368a3e3be4f880db2dea8438424704b007b85cd890ff1e60ff8898cffc`已沿原会话送达。仅新增清单外文件，旧授权700份保护输入前后同；原运行时六检查全过，外层4.193942秒/测试1.524秒，仅随机CPU夹具各三更新。
+
+07:25UTC附近真实准入163新执行来源/200冻结/729保护输入通过，原12train/6val数据复用和原GPU锁检查后释放；GPU1MiB26度、总8073879552B/限34292629504B/OOM0。三原始回执已Mac精确取回，2410B归档SHA `b3b93ee2405f9c740a6eaec03c56f0c584daaeebe9cad5b1c330b2693f9ae5ff`。真实新训练仍0；先发布本准入再单派新根，不能据准备或随机夹具当实际学生训练。
+
+[部署](../logs/session_records/q1_student_auxiliary_pair_deployed_20261107.json) / [原运行时检查](../logs/session_records/q1_student_auxiliary_pair_native_checks_20261107.json) / [准入与参数](../logs/session_records/q1_student_auxiliary_pair_admitted_20261107.json)。新执行清单163项；省略的旧非执行测试/绘图仍受旧授权保护，原256和冻结200文件没有修改。

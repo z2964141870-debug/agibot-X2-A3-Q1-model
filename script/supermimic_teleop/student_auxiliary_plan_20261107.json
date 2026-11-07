@@ -1,0 +1,43 @@
+{
+  "schema": "q1_behavior_conditioned_auxiliary_pair_v1",
+  "property": "training-only next proprioceptive state prediction",
+  "source": {
+    "repository": "open-gigaai/giga-brain-wbc",
+    "commit": "fa44c2418e7be86c97655e5cb0c809213b2c7dca",
+    "path": "giga_brain_wbc/learning/losses/token_losses.py",
+    "adaptation": "one-step next observed state MSE; retain gravity, omit previous action and absent joints; condition on recorded executed behavior; auxiliary head removed at deployment",
+    "full_method_reproduction_claimed": false
+  },
+  "original_r2_plan_sha256": "b73365397cabb29968ab244f3be546ef809b78258973843f2c7245d1fc1fe2c0",
+  "original_aggregate_plan_sha256": "f671c45946fa0663e422d87735d5d61ceb83ab3f1316ae407e314a45702ce612",
+  "human_real_future_frames": 0,
+  "new_collection_steps": 0,
+  "origins": ["original R1 teacher states", "original AGGREGATE01 mixed behavior states"],
+  "warm_start": "same original R2 validation-selected encoder for both arms",
+  "normalization": "frozen original R2 human statistics and frozen teacher observation normalizer",
+  "target": "50 next observation dimensions: 22 q_rel, 22 qd, 3 gyro, 3 gravity; terminal crossings excluded",
+  "head_input": "current human latent, current normalized proprioception, actual executed 22-joint action",
+  "future_supervision_only": true,
+  "fit": {
+    "maximum_updates": 3000,
+    "learning_rate": 0.0001,
+    "batch_size": 128,
+    "validation_every_updates": 500,
+    "gradient_norm_limit": 1.0,
+    "auxiliary_weight": 0.1,
+    "seed": 2026110703,
+    "paired_batch_identity": true,
+    "early_stopping": false,
+    "selection": "validation action risk only; equal origins then equal sources; initial update zero eligible"
+  },
+  "test_used_for_selection": false,
+  "auxiliary_head_deployed": false,
+  "maximum_wall_seconds": 1740,
+  "original_phase_protection_seconds": 1800,
+  "maximum_output_bytes": 1073741824,
+  "cumulative_cost_stage": "r3",
+  "cumulative_r3_seconds": 7200,
+  "cumulative_all_training_seconds": 14400,
+  "original_shared_training_restarted": false,
+  "user_accepted_checkpoint": null
+}

@@ -1,14 +1,36 @@
 # Q1当前与历史学生：冻结FP32世界模型物理蒸馏
 
-2026-11-07北京时间19:51。独立实现已发布部署，原运行时五项检查和来源/资源准入通过，真实GPU训练尚为0；发布准入后唯一有界派发。原共享训练继续暂停，采纳null。
+2026-11-07北京时间19:57:38，独立物理蒸馏真实完成，3000次Adam、来源门和回收通过。验证仍选update0，20:02 CPU逐张量审计确认与原R2相同；本次没有产生更好的因果策略。原共享训练继续暂停，采纳null。
 
 ## 用户版done与todo
 
-done：同权重FP32精度诊断通过88/88，原BF16仅4/88的失败保留；下一项只检验加入物理特征损失能否改善当前与历史学生。
+done：固定FP32世界模型的物理损失实验完成。末validation动作风险0.110133，较初始0.094864退16.10%；比严格同曝光action-only末值低4.03%，仍未超过初始策略。物理validation MSE也升16.05%，不能把训练loss下降称为遥操改善。
 
-done：核查原PAIR02控制发现草案学习率0.0003与原0.0001不同，已经在任何训练前修订为0.0001、seed2026110703，其余更新/批次/验证与原控制相同。旧草案及证据ZIP作为历史保留。
+done：3000更新/六Adam各3000、3119次WM.step，拟合113.654740秒、持锁成本143秒已SETTLED；累计1606/14400秒，r3已485/7200秒。Mac原值逐件SHA同，训练六宫PNG/PDF和七点CSV已生成并目视。选中8个encoder张量与原R2最大差0，仅复用历史0/7失败，新闭环和新视频0。
 
-todo：发布独立实现并在原运行时检查，准入后唯一有界训练；交付六宫图和实际选中策略。若仍选中同一初始策略，复用既有0/7失败，不重复同策略物理测试。
+todo：停止延长本配方或继续叠加辅助loss。先核查已保存因果输入、按来源的训练/验证覆盖和失败时段，并比较短预览H4可保留的信息；再选择单项数据/表示改进。软件完整周期另查CPU状态转换和目标处理，不把单独GPU前向当端到端延迟。下一真实实验仍须独立方案、来源/资源门及同预算控制。
+
+## 实际结果
+
+| 指标 | update0 | update3000 |
+| --- | ---: | ---: |
+| validation动作风险，两origin后各source等权 | 0.094863855 | 0.110133066 |
+| 原action-only控制动作风险 | 0.094863855 | 0.114754134 |
+| validation物理特征MSE | 2.789744531 | 3.237624357 |
+| 原教师状态validation动作风险 | 0.082180139 | 0.104542360 |
+| 混合状态validation动作风险 | 0.107547571 | 0.115723773 |
+
+七个验证点的动作风险均未优于update0。最末训练batch的action MSE为0.000875504、physical MSE为0.016286185；它们不是来源等权的validation指标，不直接求比值或混作同分布平均。物理损失相对严格匹配控制仅减轻本轮验证退步，尚无采纳收益；单次数据与权重0.1的负结果不否定完整GigaBrain，也不证明未来信息是失败的唯一原因。
+
+派发控制器358968/start36541060与worker359040均已退出，守卫WORKER_COMPLETED/return0、worker_reaped，source_integrity PASSED。原184执行/200冻结/773保护来源由控制器在退出前核同。批次SHA为`862a2d90afcf5d9eec560de409bd5f445a7f8b7d0ca25690b64db33eb711a6a5`，与原PAIR02每个验证点及24个origin/source各16000曝光精确匹配；没有重训控制或采集新物理。
+
+选中策略CPU审计比较全部8项策略元数据、教师来源及8个encoder张量，均精确相同，CUDA未初始化。新selected.pt的外层方法/训练元数据不同，文件SHA不同不表示部署策略变化。仅复用原R2七个失败例的历史证据，本轮不新跑相同策略，也不以未选中的last权重挑test。[原始身份收据](../logs/session_records/q1_wm_physical_selected_identity_20261107.json)。
+
+峰cgroup10581987328B/GPU518MiB/OOM0。20:02现场总8323018752B/实际限34292629504B，GPU1MiB26度、计算进程和原锁记录空；五旧训练PID均退出、原guard仍STOPPED_SIGNAL。成本143秒已结算，首轮1606/14400秒、剩12794秒，r3已485/7200秒。没有回收缓存或向原训练发信号。[完成现场](../logs/session_records/q1_wm_physical_completed_20261107.json)。
+
+新[训练六宫图](../data/analysis/Q1_WM_PHYSICAL01_FIGURES_20261107/wm_physical_training_six_panel.png)、[PDF](../data/analysis/Q1_WM_PHYSICAL01_FIGURES_20261107/wm_physical_training_six_panel.pdf)、[七点CSV](../data/analysis/Q1_WM_PHYSICAL01_FIGURES_20261107/training_points.csv)已经生成。原始包80182B/SHA `23913f6da5c59cf407186d1a153c5fac389ab9a1758801675f025ab9461e9547`，16成员及15份原始记录大小SHA全同。证据包包含这次训练图和明确标注复用的两段R2失败原速视频；不是新策略视频。[完整证据ZIP](../data/deliveries/Q1_WM_PHYSICAL01_EVIDENCE_20261107.zip)，实际包身份见随后figures_delivered收据。
+
+CPU身份审计首条一次性命令因字符串路径未转换Path退出，修正后完成；未改训练代码或结果。Mac归档初次使用本地Python3.9不支持的extractall(filter=...)，只建立空输出目录；按已核验的纯普通文件清单提取后通过，真实训练与来源门均未受影响。原始日志和训练来源保持。
 
 ## 假设与边界
 

@@ -1,0 +1,44 @@
+{
+  "schema": "q1_h4_specialist_plan_v1",
+  "experiment": "H4_SPECIALIST01",
+  "hypothesis": "Continue the selected R1 encoder on requested H4 only to remove competing horizon objectives",
+  "primary_variable": "H4-only continuation from the unchanged selected R1 encoder",
+  "initial_selected_update": 5000,
+  "initial_checkpoint_sha256": "e553b0bdad0019888585a1ccff862656bf3733d570b8c7b064f0d9da82f631a8",
+  "r1_fit_sha256": "c260a82ebc2a3e7c29ed75ea2c3c1883c804b31b7c2566c3d59dd26b86d3f960",
+  "train_data_sha256": "dcb524474af98422aba6bcfeb90fd1b3e2329435734130624ad2fb44e3d6449b",
+  "validation_data_sha256": "99df8ea7e936ff9f4fe15b27a410078cc41b16b28b895ead02801f56c7ddb8c8",
+  "dataset": "reuse original real R1 states and support-aware prefix counts without new collection",
+  "request_horizon": 4,
+  "unavailable_first_target": "exclude from fitting and report counts; retain action hold in later replay",
+  "train_sampling": "equal source clips, original row identities retained",
+  "selection": "minimum equal-source H4 validation action MSE, including update0",
+  "other_horizons": "validation diagnostics only, never deployment support or checkpoint selection",
+  "fit": {
+    "seed": 2026110801,
+    "learning_rate": 0.0001,
+    "maximum_updates": 4000,
+    "batch_size": 128,
+    "gradient_norm_limit": 1.0,
+    "validation_every_updates": 250,
+    "early_stop_stale_validations": 6
+  },
+  "resource": {
+    "ledger_stage": "r1",
+    "expected_cumulative_seconds": 2492,
+    "maximum_wall_seconds": 600,
+    "maximum_output_bytes": 134217728,
+    "new_physical_steps": 0,
+    "new_render_frames": 0,
+    "cache_advice": false
+  },
+  "followup": {
+    "old_exploratory_cases": "three fixed nominal clips plus four events, reuse preserved R1/H10/H4 results",
+    "selected_zero": "verify exact encoder identity then reuse old R1 outcomes without replay",
+    "new_event_outcomes_used_for_training_or_selection": false,
+    "closed_loop_required_before_quality_claim": true
+  },
+  "frozen": ["teacher", "world_model", "decoder", "normalizers", "reference_anchor", "physics"],
+  "original_shared_training_restarted": false,
+  "user_accepted_checkpoint": null
+}

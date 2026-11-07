@@ -1,0 +1,65 @@
+{
+  "stage": "H4_SPECIALIST_PREPARATION",
+  "date_beijing": "2026-11-08",
+  "source_parent_commit": "df9611370d1cd7cc330bdf18d4322f24fdb84026",
+  "local_contracts": {
+    "passed": 6,
+    "skipped": 0,
+    "seconds": 0.608,
+    "scope": "synthetic_cpu_fixture_not_real32k_training"
+  },
+  "hypothesis": "H4-only continuation of unchanged validation-selected R1 to remove competing horizon objectives",
+  "warm_start": {
+    "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R1_20261107",
+    "selected_update": 5000,
+    "sha256": "e553b0bdad0019888585a1ccff862656bf3733d570b8c7b064f0d9da82f631a8"
+  },
+  "cumulative_gpu_cost": {
+    "settled_seconds": 2492,
+    "stages": {
+      "r1": 549,
+      "r2": 572,
+      "r3": 1371
+    },
+    "unresolved_reservations": 0,
+    "limit_seconds": 14400
+  },
+  "new_stage_limits": {
+    "stage": "r1",
+    "remaining_stage_seconds": 2151,
+    "maximum_wall_seconds": 600,
+    "maximum_adam_updates": 4000,
+    "maximum_output_bytes": 134217728
+  },
+  "actual_new_gpu_calls": 0,
+  "actual_new_adam_updates": 0,
+  "new_physical_steps": 0,
+  "new_render_frames": 0,
+  "current_native_session": 45014,
+  "ssh_settings_verified": {
+    "ConnectTimeout": 90,
+    "ServerAliveInterval": 60,
+    "ServerAliveCountMax": 5
+  },
+  "resource_observation": {
+    "memory_total_bytes": 8036737024,
+    "memory_limit_bytes": 34292629504,
+    "oom_kills": 0,
+    "gpu_mib": 1,
+    "gpu_temperature_c": 25,
+    "disk_free_bytes": 183749042176,
+    "private_allocated_bytes": 266931113984
+  },
+  "selection": "equal-source requested-H4 validation action MSE including update0; test excluded",
+  "next_steps": [
+    "source_publication_and_remote_ref_check",
+    "server_original_runtime_contracts",
+    "source_resource_admission",
+    "single_bounded_H4_fit",
+    "training_six_panel",
+    "independent_closed_loop_if_selected_encoder_changed"
+  ],
+  "original_shared_training_restarted": false,
+  "user_accepted_checkpoint": null,
+  "server_new_document_mirror": "PENDING"
+}

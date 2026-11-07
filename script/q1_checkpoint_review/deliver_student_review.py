@@ -36,8 +36,11 @@ def deliver(source, output):
         ("tilt_rms_rad", "Torso tilt RMS (deg)", 180/np.pi))
     limits = {key:max([r[key]*scale for r in rows if r.get(key) is not None]+[1e-9])*1.2
               for key, _, scale in gait}
+    floors = {key:min([r[key]*scale for r in rows if r.get(key) is not None]+[0.])*1.2
+              for key, _, scale in gait}
     for left, right, scale in (("slip_left_m_s", "slip_right_m_s", 1000), ("sole_left_m", "sole_right_m", 1000)):
         limits[left] = max(limits[left], max([r[right]*scale for r in rows if r.get(right) is not None]+[0])*1.2)
+        floors[left] = min(floors[left], min([r[right]*scale for r in rows if r.get(right) is not None]+[0])*1.2)
     limits["completion_fraction"] = 110
     for clip in FIXED:
         selected = [next(r for r in rows if (r["event"], r["variant"], r["horizon_frames"], r["clip"])
@@ -53,7 +56,9 @@ def deliver(source, output):
                 right = {"slip_left_m_s":"slip_right_m_s", "sole_left_m":"sole_right_m"}.get(key)
                 if right and row.get(right) is not None:
                     ax.plot(index, row[right]*scale, "_", color="#151515", markersize=13, markeredgewidth=2)
-            ax.set(title=title, xticks=np.arange(5), xticklabels=labels, ylim=(0, limits[key]))
+            ax.set(title=title, xticks=np.arange(5), xticklabels=labels, ylim=(floors[key], limits[key]))
+            if floors[key] < 0:
+                ax.axhline(0, color="#555555", linewidth=.7)
             ax.grid(axis="y", alpha=.2)
         fig.suptitle(clip+" | 32k teacher(T) vs R1 student(S); same dependency-aware receiver", fontsize=11)
         for suffix in ("png", "pdf"):
@@ -72,19 +77,26 @@ def deliver(source, output):
             ("action_jump", "Maximum saved canonical action jump", 1))
         fig, axes = plt.subplots(2, 3, figsize=(14, 8), constrained_layout=True)
         for ax, (key, title, scale) in zip(axes.flat, panels):
+            values = []
             for index, row in enumerate(selected):
                 val = (row["capture_window"]["upper_rmse_rad"] if key == "window_upper" else
                     row["software"]["action_delta_max_joint_max"] if key == "action_jump" else row.get(key))
                 if val is not None:
+                    values.append(val*scale)
                     ax.bar(index, val*scale, color=colors[index+1], width=.55)
                     right = {"slip_left_m_s":"slip_right_m_s", "sole_left_m":"sole_right_m"}.get(key)
                     if right and row.get(right) is not None:
+                        values.append(row[right]*scale)
                         ax.plot(index, row[right]*scale, "_", color="#151515", markersize=13, markeredgewidth=2)
                 else:
                     ax.text(index, .03, "FAILED / WINDOW INCOMPLETE", rotation=90,
                         ha="center", va="bottom", transform=ax.get_xaxis_transform(), fontsize=8)
             ax.set(title=title, xticks=(0, 1), xticklabels=("Teacher H4", "Student H4"))
-            ax.set_ylim(bottom=0)
+            lower, upper = min(values+[0.]), max(values+[0.])
+            margin = max(upper-lower, 1e-6)*.1
+            ax.set_ylim(lower-margin if lower < 0 else 0, upper+margin)
+            if lower < 0:
+                ax.axhline(0, color="#555555", linewidth=.7)
             ax.grid(axis="y", alpha=.2)
         fig.suptitle(event+" | synthetic event / A022 / 80ms requested preview; not hardware response latency", fontsize=11)
         for suffix in ("png", "pdf"):

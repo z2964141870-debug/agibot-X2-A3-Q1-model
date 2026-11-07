@@ -55,10 +55,11 @@ def deliver(source, output):
         fig, axes = plt.subplots(2, 3, figsize=(14, 8), constrained_layout=True)
         for ax, (key, name, scale) in zip(axes.flat, panels):
             right = {"slip_left_m_s":"slip_right_m_s", "sole_left_m":"sole_right_m"}.get(key)
-            limit = max([measured(r, key)*scale for r in comparable if measured(r, key) is not None]+[1e-9])
+            values = [measured(r, key)*scale for r in comparable if measured(r, key) is not None]
             if right:
-                limit = max(limit, max([r[right]*scale for r in comparable if r.get(right) is not None]+[0]))
-            limit = 110 if key == "completion_fraction" else limit*1.2
+                values.extend(r[right]*scale for r in comparable if r.get(right) is not None)
+            lower = min(values+[0.])*1.2
+            limit = 110 if key == "completion_fraction" else max(values+[1e-9])*1.2
             for index, row in enumerate(selected):
                 datum = measured(row, key)
                 if datum is None:
@@ -68,7 +69,9 @@ def deliver(source, output):
                 ax.bar(index, datum*scale, color=colors[index], width=.6)
                 if right and row.get(right) is not None:
                     ax.plot(index, row[right]*scale, "_", color="#151515", markersize=13, markeredgewidth=2)
-            ax.set(title=name, xticks=np.arange(3), xticklabels=labels, ylim=(0, limit))
+            ax.set(title=name, xticks=np.arange(3), xticklabels=labels, ylim=(lower, limit))
+            if lower < 0:
+                ax.axhline(0, color="#555555", linewidth=.7)
             ax.tick_params(axis="x", labelsize=8)
             ax.grid(axis="y", alpha=.2)
         fig.suptitle(title, fontsize=11)

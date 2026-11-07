@@ -1,0 +1,98 @@
+{
+  "stage": "COVERAGE_ADMISSION_RECOVERED_DISPATCH_COMMAND_UNACKNOWLEDGED",
+  "utc": "2026-11-07T14:52:14Z",
+  "previous_goal_turn_classification": "PROGRESS_SERVER_DEPLOYMENT_AND_NATIVE_CHECKS",
+  "this_turn_progress": [
+    "Autonomously recovered the fixed user entry and original Linux root",
+    "Verified the previously unacknowledged source/resource admission really passed",
+    "Transferred all three original server receipts with exact size and SHA equality",
+    "Published actual admission before submitting the unique registered training dispatch"
+  ],
+  "recovery_session": 38409,
+  "linux_host": "interactive67462",
+  "root": "/opt/data/private/ZHY",
+  "admission": {
+    "status": "COVERAGE_SOURCE_AND_RESOURCE_ADMISSION_PASSED",
+    "server_utc": "2026-11-07T14:34:17.067265+00:00",
+    "elapsed_seconds": 13.339042517996859,
+    "evaluation_sources": 193,
+    "frozen_sources": 200,
+    "protected_inputs": 736,
+    "reused_without_rerunning": true,
+    "publication_commit": "238938688b53735984b5c70f9972e464375c9080",
+    "explicit_push_origin_Q1": true,
+    "independent_remote_full_sha": "238938688b53735984b5c70f9972e464375c9080",
+    "mac_git_matched_files": 8,
+    "mac_git_matched_bytes": 781359,
+    "scoped_payload_audit_passed": true
+  },
+  "original_receipt_transfer": {
+    "package": "data/deliveries/Q1_STUDENT_COVERAGE_ADMISSION_RAW_20261107.tgz",
+    "package_bytes": 3035,
+    "package_sha256": "bbe43b3de13588441c6556a92e91ceaf1e469aabceac4173dd7e4f86611f8caa",
+    "members": 4,
+    "original_files": 3,
+    "original_bytes": 9230,
+    "all_original_file_sizes_and_sha_matched": true
+  },
+  "last_verified_server_state": {
+    "server_utc": "2026-11-07T14:44:18Z",
+    "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+    "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+    "gpu_used_mib": 1,
+    "gpu_temperature_c": 25,
+    "old_training_pids_present": [],
+    "original_guard": "STOPPED_SIGNAL",
+    "memory_total_bytes": 8027820032,
+    "oom_kill": 0,
+    "disk_free_bytes": 184006594560,
+    "old_preflight_or_coverage_processes_present": [],
+    "coverage_output_dispatch_and_log_existed": false,
+    "cumulative_charged_gpu_seconds": 1606,
+    "unresolved_reservations": []
+  },
+  "last_server_clock_reply_before_dispatch": "2026-11-07T14:48:18Z",
+  "dispatch": {
+    "operator_script_submitted": true,
+    "script_reuses_actual_admission_args": true,
+    "script_checks_fresh_output_dispatch_log_before_Popen": true,
+    "script_checks_original_pause_resources_lock_and_ledger_before_Popen": true,
+    "script_uses_detached_Popen_with_DEVNULL_stdin_and_exclusive_log": true,
+    "pid_or_dispatch_receipt_received": false,
+    "actual_Popen_execution": "UNKNOWN",
+    "training_execution": "UNKNOWN_NOT_CLAIMED_STARTED",
+    "output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_COVERAGE01_20261107",
+    "receipt_to_check": "/opt/data/private/ZHY/logs/session_records/q1_student_coverage_dispatch_20261107.json",
+    "log_to_check": "/opt/data/private/ZHY/logs/q1_student_coverage_20261107.log",
+    "registered_command": "logs/session_records/q1_student_coverage_registered_dispatch_20261107.json"
+  },
+  "connections_after_dispatch": [
+    {
+      "session": 38409,
+      "state": "EXITED_255",
+      "message": "Timeout, server 100.65.183.91 not responding",
+      "meaning": "This observer session ended; detached dispatch execution was not acknowledged"
+    },
+    {
+      "session": 2864,
+      "purpose": "One bounded autonomous recovery for the new session failure",
+      "fixed_user_first_hop_executed": true,
+      "state": "EXITED_255",
+      "message": "ssh: connect to host 100.65.183.91 port 22: Operation timed out",
+      "windows_shell_received": false,
+      "linux_attempted": false
+    }
+  ],
+  "next_action": "Autonomously use fixed user entry next cycle; inspect dispatch receipt, unique output/result/guard/resources/log, exact processes/PID-startticks, original pause, GPU lock/resources and current cost ledger before any mutation. If dispatched, monitor that same task; if terminal, preserve it and inspect cleanup/source/settlement. Only if receipt/output/log/processes are all authoritatively absent may the registered dispatch be submitted again.",
+  "deployment_native_checks_and_admission_must_not_be_repeated": true,
+  "current_new_real_physical_transitions": "UNKNOWN_AFTER_UNACKNOWLEDGED_DISPATCH",
+  "current_new_real_optimizer_updates": "UNKNOWN_AFTER_UNACKNOWLEDGED_DISPATCH",
+  "current_cost_reservation": "RECHECK_ACTUAL_LEDGER",
+  "original_shared_training_resume_sent": false,
+  "goal_tools_called": false,
+  "new_agents": 0,
+  "user_connectivity_test_requested": false,
+  "credentials_recorded": false,
+  "server_project_document_mirror": "PENDING",
+  "user_accepted_checkpoint": null
+}

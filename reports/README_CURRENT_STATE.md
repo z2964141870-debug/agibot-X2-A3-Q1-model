@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07 17:13：[教师latent重建五检查与新准入已实核通过](README_Q1_TEACHER_LATENT_STUDENT_20261107.md#1713修订实际准入)。94714自主固定入口到原Linux，五检查1.665472秒全过；LATENT02输出/派发/日志/相关进程全无后，仅补缺失准入，170执行/200冻结/745保护输入与原锁全过。总8096272384B限34292629504/GPU1MiB26度/OOM0/账本1293-r3已172。三原始回执1848B包已Mac逐字节SHA同；先发布本准入，再唯一LATENT02/3000Adam，旧控制不重训/原共享暂停/采纳null。新说明服务器镜像待。
+
 2026-11-07 17:04自主恢复：[50274实际到达原Linux，核验回执未返回](README_Q1_TEACHER_LATENT_STUDENT_20261107.md#1704自主恢复实录)。Agent自行固定source/ssh入口成功到Windows/原生第二跳到root@interactive67462，随后本会话明确Timeout退本地；同入口一次自主重试在Mac→Windows Operation timed out，未Windows shell，不能泛化Linux不可达。50274本地shell已关闭；三个r2收据/实时资源仍待核，LATENT02未提交Popen。下一周期仍自主尝试，先查回执/实际进程与输出防重复，不要求用户代测；原1293秒/r3已172/共享暂停/既有goal/采纳null保持，新说明服务器镜像待。
 
 恢复补记：66625退回本地后已关闭本地shell，句柄结束，后续不再探旧句柄。q1仍ACTIVE十分钟同聊天，已工具更新并独立核同，下一自行固定入口登录后先查三个r2回执；2173c1656a61f01e49894e889ed4e0e9bf5f12d2恢复记录已push/独立40位核同/Mac六份733119B同，最新publication另存，服务器新文档镜像仍待。

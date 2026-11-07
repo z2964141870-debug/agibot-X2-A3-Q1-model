@@ -1,12 +1,12 @@
 # Q1当前历史学生的教师隐变量监督
 
-日期：2026-11-07。状态：LATENT01在聚合数据缺少`full_goal`时退出，优化器更新0；进程已回收，27秒成本已结算。独立离线标签重建修订与五项本地检查已完成，修订已发布并确认部署。17时Agent自行固定入口曾到原Linux，但只读核验没有返回回执即会话超时，同入口一次自主重试在Mac→Windows连接超时；原运行时检查/准入结果仍待核实，LATENT02尚未派发。原共享训练保持人工暂停，首轮累计1293/14400秒成本不重置。
+日期：2026-11-07。状态：LATENT01在聚合数据缺少`full_goal`时退出，优化器更新0；进程已回收，27秒成本已结算。离线标签重建修订已发布部署，五项原运行时检查已取到实际全过回执；17:13新准入已通过，170执行/200冻结/745保护输入及原GPU锁核同。三份原始回执已Mac大小SHA同。LATENT02尚未派发，先发布本准入再唯一派发。原共享训练保持人工暂停，首轮累计1293/14400秒成本不重置。
 
 ## 用户版done / todo
 
-done：上一项GigaBrain下一状态辅助预测完成，状态预测改善42.15%，但动作validation未改善，两组选0。已实现另一项独立假设：用冻结32k教师的32维human隐变量作训练标签，帮助f0当前＋历史学生学习原共享decoder使用的表示。本地四项检查通过，历史action-only控制不重训。
+done：上一项GigaBrain下一状态辅助预测完成，状态预测改善42.15%，但动作validation未改善，两组选0。教师隐变量监督首派的数据格式错误已修订，五项服务器检查和新准入已实际通过；未来仍仅作离线标签，历史action-only控制不重训。
 
-todo：自行固定入口恢复后先核运行时检查/准入回执，再发布准入并唯一单派LATENT02/最多3000Adam。只有选中策略真实改变且通过validation选点，才开展新的独立闭环；若仍选0，核精确身份后继续复用原失败证据。每轮交付训练六宫图，真实机器人端到端延迟另测。
+todo：发布新准入后唯一单派LATENT02/最多3000Adam，并交付训练六宫图。只有选中策略真实改变且通过validation选点，才开展新的独立闭环；若仍选0，核精确身份后继续复用原失败证据。真实机器人端到端延迟另测。
 
 ## 为什么尝试与文献边界
 
@@ -77,3 +77,13 @@ Agent自行在交互zsh50274中执行`source /Users/yu/.zshrc`，再执行`ssh -
 提交的只读检查覆盖三个r2收据、LATENT02输出/派发/日志、相关进程、GPU/磁盘和成本账本，但没有返回其结果。后续轮询明确收到`Timeout, server 100.65.183.91 not responding.`并退到本地zsh；Agent立即自行原样source再ssh，有界重试明确`ssh: connect to host 100.65.183.91 port 22: Operation timed out`，未Windows shell，未尝试Linux。只说明该会话结束和该次第一跳失败，不能推出Linux服务器或后台检查停止。没有向用户询问可达性。50274随后关闭本地shell并结束，不能再探该句柄。
 
 本轮没有提交LATENT02 Popen、重复上传、重复测试、准入或训练。已确认的修订部署保持；五项原运行时检查与准入收据仍未核验，不能将旧进度点称为通过。最后核实的成本仍1293/14400秒、r3已172秒，原共享训练保持人工暂停。下一周期Agent继续自主固定入口，先读三个原始回执和实际进程/输出/日志/账本，再只补缺失步骤；不要求用户代测。原始小记录为`q1_student_teacher_latent_r2_autonomous_recovery_1704_20261107.json`。新文档服务器镜像待实际连接回执。
+
+## 17:13修订实际准入
+
+Agent自行固定source/ssh入口94714进Windows，再以原生第二跳交互密码进入原Linux，核root/host/boot同。先读取三个r2收据，证部署仍同、五项原运行时检查已于08:45:44 UTC实际全过/0失败0跳过/1.665472秒，准入收据不存在；实际/proc扫描没有test/preflight/latent进程，LATENT02输出/dispatch/log都不存在。没有重传或重复五检查。
+
+首次手动准入忘记先切项目目录，在home目录被原`paused_state`唯一根门正确拒绝，未到GPU准入或保留成本。切回`/opt/data/private/ZHY`后同一发布源码的`latent_preflight`与原GPU独占检查通过：170执行、200冻结、745保护输入、原真实train/validation数据和历史控制核同；原身份/暂停和旧PID退出由原门核验。准入时间09:13:13 UTC（北京时间17:13:13），总8096272384B/实际限34292629504B/即时余26196357120B/OOM0；GPU原UUID/1MiB/26度/recovery None。原锁准入后释放，磁盘余量通过原103GiB门。
+
+账本所有运行SETTLED，总1293/14400秒、r3已172/7200秒；本轮尚未派发。cache 6783819776B仅诊断，沿用已登记R2边界，没有重复advice或清理证据。原共享训练仍人工暂停。下一先发布本准入，再仅新LATENT02根派发，首派FAILED、原控制与旧物理证据不改。
+
+服务器三份原始JSON已通过当前原生会话传回，1848B包SHA`93da866f1d1baf01ae98f8ecce4d7f36484d42f44eaaf32eaca14c28d60c8fe9`，三成员/大小SHA/目标源码SHA和新参数逐项核同。Mac保存`data/deliveries/Q1_TEACHER_LATENT_R2_ADMISSION_RECEIPTS_20261107.tgz`；原始记录为`q1_student_teacher_latent_r2_deployed_20261107.json`、`q1_student_teacher_latent_r2_native_checks_20261107.json`和`q1_student_teacher_latent_r2_admitted_20261107.json`。新说明的服务器镜像以实际回执为准。

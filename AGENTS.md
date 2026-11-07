@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 17:13教师latent修订真实准入：94714由Agent自主固定source/ssh入口入原Linux；原r2五检查收据实际1.665472秒全过，部署收据/735旧来源同，LATENT02输出派发日志和相关进程均无。首次准入在home目录被原root门正确拒绝，切回/opt/data/private/ZHY后原170执行/200冻结/745保护输入及原锁准入全过，总8096272384限34292629504/GPU1MiB26度/OOM0/账本1293-r3已172全SETTLED。三原始回执1848B包SHA93da866f1d1baf01ae98f8ecce4d7f36484d42f44eaaf32eaca14c28d60c8fe9已Mac/仓库逐字节核同。先发布此准入再唯一LATENT02，不重训控制/原共享暂停/既有goal继续/采纳null/不新agent；94714原Linuxecho OFF可复用，新文档服务器镜像待。
+
 - 2026-11-07 17:04自主恢复实录：50274已原样source再ssh -tt hp_han进入Windows，并经原生第二跳交互密码收到原Linux root@interactive67462；cd原根/stty后提交只读核验但未收回执，随后明确Timeout退本地。同一固定入口自主有界重试在Mac→Windows Operation timed out，未Windows shell/未尝试Linux，不询问用户代测、不泛化服务器不可达。50274本地shell已exit/句柄结束，不再探；三个r2回执与实时资源仍未核，LATENT02 Popen从未提交。原1293秒/r3已172、共享暂停/既有goal/采纳null保持，下一周期自主固定入口先查回执/实际进程/输出/账本再续；见q1_student_teacher_latent_r2_autonomous_recovery_1704_20261107，新文档服务器镜像待。
 
 - 2026-11-07恢复补记：66625已从本地zsh退出并结束，不再探该句柄；此本地exit继承255不另当新桥接测试。原样固定source/ssh入口由Agent下一周期自主尝试，先核三个r2回执及实际进程，不问用户代测。恢复文档2173c1656a61f01e49894e889ed4e0e9bf5f12d2已push/独立40位远端/Mac六份733119B同；q1工具更新ACTIVE十分钟同聊天及保存prompt独立核同。LATENT02派发0、原1293秒/r3已172、共享暂停/既有goal/采纳null保持，新文档服务器镜像待，最新publication见q1_student_teacher_latent_r2_recovery_publication_20261107。

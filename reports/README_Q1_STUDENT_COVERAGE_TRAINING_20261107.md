@@ -1,6 +1,6 @@
 # Q1 因果学生扩大覆盖实验
 
-记录日期：2026-11-07。实验：COVERAGE01。状态：独立实现及本地检查完成，真实采集与训练待服务器准入。
+记录日期：2026-11-07。实验：COVERAGE01。状态：独立实现及九本地检查完成、源码和193项清单已发布；部署接收器无回执，正文未发，真实采集与训练未下发。
 
 ## 给用户的简报
 
@@ -39,6 +39,12 @@ seed2026110704，Adam学习率0.0001、batch128、最多3000更新、梯度范�
 调用独立入口沿用原`train_preflight`参数，并增加`--initial-r2-root`、`--aggregate-root`、`--input-audit-root`、`--coverage-plan`及其SHA、`--candidate-plan`；先核发布清单和原运行时九项，再唯一新根派发。SSH由Agent按用户固定source/ssh入口自行尝试，不请求用户代测。
 
 ## 结果与恢复
+
+源码8432242d412bcbe50e52d2bf6be94363aab93c2a、清单8991ca35c84ded05d1c1af1e2ff226e4594a1109均显式push origin Q1，独立远端完整40位相同；Mac15文件863217B与Git逐字节相同。193项清单35639B/SHA`d9fc8182b5b5a648b7fed837e2f0007500734993d7228226f958ab7b0140cec8`，12成员代码包42163B/SHA`589e21d7d9dbebc3ca9cda149eeebc40b935733cff29f6cf23c5367d026e8b70`已准备。
+
+53893旧会话超时后，Agent自主按固定source/ssh入口新55892已进Windows，再原生第二跳密码成功到原Linux，并确认`/opt/data/private/ZHY`。提交部署接收器后尚无READY/部署回执即该SSH明确Timeout退出255，代码包正文发送0。独立一次54567仍原样固定入口，仅第一跳Operation timed out，未到Windows认证或Linux。这个新重连失败不等于Linux不可达；没有请求用户代测。详见[发布与连接实录](../logs/session_records/q1_student_coverage_publication_and_connection_20261107.json)。
+
+下次自主沿固定入口恢复，先查`q1_student_coverage_deployed_20261107.json`、12目标大小SHA、接收器实际进程及唯一COVERAGE01输出/派发/日志。接收器无正文不可当已部署；若旧接收器仍在，先核其确切命令/启动tick和退出状态，不重复启动接收器。不因SSH退出推断后台状态，也不重派未知任务。补缺部署后以固定原运行时做九检查，再完整`coverage_preflight`和原锁/账本准入，保存回执；实际训练Popen尚未提交，任何待发命令不得当已开跑。服务器镜像和原运行时均未完成。
 
 当前真实新物理/训练仍0；新代码发布、服务器运行时与准入尚待。若选点仍0，须CPU核实际编码器及策略元数据身份，再复用原0/7历史结果；不能为产生视频重跑同策略。若选出不同策略，后续在独立来源/资源门下做三名义和四事件闭环、原速视频、脚底换脚/滑移/侧倾/上肢时序/动作突变及完整软件时钟。六宫图是编码器训练记录，不编造RL回报或500iteration滑动均值。
 

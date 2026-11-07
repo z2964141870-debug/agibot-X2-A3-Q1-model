@@ -1,6 +1,6 @@
 # YUANQI 当前状态与下一步
 
-2026-11-07：[独立扩大覆盖COVERAGE01实现完成](README_Q1_STUDENT_COVERAGE_TRAINING_20261107.md)。九CPU检查.680秒过；复用旧18前缀和两状态数据、仅30新片9585步，冻结原R2归一化/教师/decoder，3000Adam上限。扩展验证独立报告，原R1/混合两锚点不退才选新点，不能跨不同数据集比loss。53893自主复用实核原Linux/原暂停/计算空/OOM0/总8048500736限34292629504，成本1606全SETTLED、r3已485。待发布/服务器运行时与来源资源准入，真实新采集训练0；原0/7不重复，采纳null、不调用goal或新agent，不问用户代测连接。
+2026-11-07：[独立扩大覆盖COVERAGE01实现已发布](README_Q1_STUDENT_COVERAGE_TRAINING_20261107.md)。九CPU检查.680秒过；代码8432242/193清单8991ca3均push/独立40位/Mac15份863217B同。复用旧18前缀和两状态数据，仅30新片9585步，原R2统计/teacher/decoder冻结，旧两验证锚点不退才按扩展集选点。53893退出后自主固定入口55892已进Windows/原Linux，但部署接收器无READY即该会话Timeout，42163B包正文0/部署UNKNOWN；唯一54567原样重连仅第一跳TCP超时，未Windows/Linux，不泛化Linux不可达或询问用户代测。先核部署回执/目标/receiver/输出再补缺，九运行时/准入/Popen均未提交，真实采集训练0。成本1606/r3已485保持/原共享未恢复/采纳null、不调用goal或新agent。见[连接实录](../logs/session_records/q1_student_coverage_publication_and_connection_20261107.json)。
 
 2026-11-07 21:22：[因果输入审计已真实完成及六宫图](README_Q1_STUDENT_INPUT_COVERAGE_20261107.md#实际审计结果)。Agent自行固定source/ssh入口53893入原Linux，确认旧部署未成后只补四文件，七原运行时过/.259秒。359815/start37066571退出0，审计5.218秒/source PASSED/峰RSS279650304B；四数据4308行状态动作/历史时钟核同。训练覆盖12/22组及12/167片，R1启动200ms为0、聚合train仅52行；坐标截断train .0026-.0052%、val .0382-.0434%，但单一转向来源历史槽最高19.92%。邻居代理不证明因果或不可约误差。原值164214B及七成员17452B包Mac SHA同、诊断PNG/PDF/CSV目视齐；实际新CUDA/物理/Adam0，累计1606秒/R3已485、原训练暂停/采纳null保持。下一实现30新片覆盖候选，复用旧18/两数据、冻结归一化decoder，并保留旧验证集固定对照；未采样训练，不重跑旧0/7。自主复用53893，断开自行固定入口尝试，不问用户代测/不调用goal或新agent；发布及服务器镜像以后续publication为准。[完成回执](../logs/session_records/q1_student_input_audit_completed_20261107.json)。
 

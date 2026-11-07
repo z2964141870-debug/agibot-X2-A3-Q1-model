@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07 13:14：[R1保存23例分析已真实通过，R2训练已实际准入](README_Q1_F0_HISTORY_STUDENT_20261107.md#已恢复的r1与独立保存分析)。R1 4.761458秒／587源同／348099退，17完整六H1失败；混合质量变化保留，Mac七图待数值下载。R2 V2八成员28482B已部署、十服务器CPU检查2.104s过、251执行／200冻结／613控制及真实复用数据／R1保存分析／锁准入均过；真实训练尚未派发，发布后单派。原549秒／13851余量、共享暂停／采纳null保持。旧包夹带AppleDouble计数已明确更正，未部署旧包、源码清单不改。[R1分析](../logs/session_records/q1_student_r1_saved_analysis_completed_observed_20261107.json)／[R2准入](../logs/session_records/q1_student_r2_fit_admission_observed_20261107.json)。
+
 2026-11-07 12:43实核：[R1同流23例已执行完成／来源门过，17动作完整](README_Q1_STUDENT_R1_RESULTS_20261107.md)。338151和末347778已退，累计1916.113731s／原2700s；H4教师／学生三片及四事件均完整，H1两者各0／3且失败前缀保留，不以拟合或完整率判质量。严格用户入口59037已成功到原Linux，原暂停／旧PID退／锁和计算空／OOM0；随后6176B保存分析部署提交未获回执即SSH Timeout，自主有界原样重连第一跳超时。部署UNKNOWN，先核收据／两源码SHA和进程，不重传或重派。[完成观察](../logs/session_records/q1_student_r1_review_completed_observed_20261107.json)／[未回执部署](../logs/session_records/q1_student_r1_analysis_deployment_unacknowledged_20261107.json)。
 
 2026-11-07续行：[R2保存21例比较及七六宫图入口本地完成](README_Q1_F0_HISTORY_STUDENT_20261107.md#已恢复的r1与独立保存分析)，七检查0.004s／三AST过，原254来源SHA同。严格七f0＋十四保存H4对照，保留失败／包龄／回退／软件长尾；真实数值未到，不生成伪图。R1分析未派发、R2真实训练0，原549秒／13851余量与原共享暂停、采纳null保持。继续固定入口自主有界恢复，不再询问用户先测。

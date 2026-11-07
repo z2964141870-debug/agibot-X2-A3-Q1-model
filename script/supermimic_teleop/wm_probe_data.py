@@ -53,8 +53,8 @@ def nominal_context(robot, spec, settings):
     """Reconstruct the nominal common plant; source hashes must be checked first."""
     import re
 
-    if settings.get("action_scale") != .5 or settings.get("modeled_action_delay", False):
-        raise ValueError("Only the verified nominal no-delay common plant is registered")
+    if settings.get("action_scale") != .5 or type(settings.get("modeled_action_delay", False)) is not bool:
+        raise ValueError("Require the verified nominal common plant and a known delay model flag")
     ids = [i for i in range(robot.model.ngeom)
            if re.fullmatch(spec.foot_geom_regex, robot.model.geom(i).name or "")]
     if not ids:
@@ -68,7 +68,8 @@ def nominal_context(robot, spec, settings):
         friction=float(context[0]), foot_geoms=[robot.model.geom(i).name for i in ids],
         encoder_bias="zero from preserved randomize=False collector and nominal reset",
         torso_com_offset="zero from unchanged compiled XML and nominal reset",
-        action_delay_seconds="zero; explicit modeled_action_delay=False required",
+        action_delay_seconds="zero from preserved nominal_context/reset; an enabled delay model is not a nonzero delay",
+        delay_model_enabled=settings.get("modeled_action_delay", False),
         no_simulator_created=True, domain="common Primebot CPU plant, not original training dynamics")
 
 

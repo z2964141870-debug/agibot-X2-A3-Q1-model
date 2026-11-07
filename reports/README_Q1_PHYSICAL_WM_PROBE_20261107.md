@@ -24,6 +24,8 @@ todo：发布并部署独立入口，通过原运行时/来源/资源准入后�
 
 动作必须为保存的真实executed canonical29，不能改用同状态teacher查询，也不重复乘0.5执行器比例。当前和下一状态通过原native_state/FK转换为269维；下一命令缓存必须与记录执行动作核同。实际32k WM按原metadata和plan严格加载，保持cfg frame、残差尺度、morph154、presence、height、normalizer和全部buffers；参数冻结但动作输入保留autograd。
 
+延迟模型的开关与本段实际延迟分开。原Primebot可以开启延迟建模，但保存采集的`randomize=False`沿固定`nominal_context`把delay设为零；不能仅因开关True就拒绝这个已知名义条件，也不能将True误读成实际存在20ms延迟。未知开关类型拒绝，实际零延迟结论仅用于本次固定采集上下文。
+
 预测报告逐例和逐source的存在关节位置/速度、世界身体位置、符号无关四元数角、线/角速度，以及单列命令缓存。identity为原当前物理状态。每个validation origin按source等权；预登记研究筛查要求关节位置和身体位置均值不超过identity的0.95，且任一source不超过1.25。阈值在新结果之前公开，不是硬件或机器人质量验收标准。command-memory不参与筛查。
 
 每组首个选中状态做一次固定当前坐标系的物理特征VJP，归一化沿原268维std，排除缺失feature和命令缓存。22存在关节各用0.01与0.001两个中心差分步长；至少一个步长须满足绝对0.002加相对5%容差。每个关节至少在四状态之一有大于1e-7的物理导数；七个缺失关节导数和扰动物理响应须严格为零。这是四个标量VJP和逐关节差分，不称完整Jacobian。四组预测和梯度按当前实现共368次WM.step前向，硬上限512；CUDA原语kernel数量不据此虚构。

@@ -85,8 +85,11 @@ class WorldModelProbeTests(unittest.TestCase):
         self.assertEqual(context.shape, (62,))
         self.assertAlmostEqual(float(context[0]), .8)
         self.assertIn("NOT_RECORDED", receipt["kind"])
+        capable, recorded = nominal_context(robot, spec, dict(action_scale=.5, modeled_action_delay=True))
+        self.assertTrue(np.array_equal(capable, context))
+        self.assertTrue(recorded["delay_model_enabled"])
         with self.assertRaises(ValueError):
-            nominal_context(robot, spec, dict(action_scale=.5, modeled_action_delay=True))
+            nominal_context(robot, spec, dict(action_scale=.5, modeled_action_delay="unknown"))
 
     def test_quaternion_sign_and_command_memory_do_not_change_physical_metrics(self):
         present = np.arange(29) < 22

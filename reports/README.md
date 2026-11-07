@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-07：[R1闭环媒体入口错误及独立续行](README_Q1_STUDENT_R1_RESULTS_20261107.md)：首teacher H10前走物理1031/1031步完成后，新增控制器配置KeyError退出。原会话正常；保留FAILED和原243来源，新增入口仅续22物理及七媒体，复用首例并计入原2700秒预算。五新本地检查过，待服务器验证与准入；训练不重做，原共享保持暂停。[收据](../logs/session_records/q1_student_r1_review_media_failure_20261107.json)。
+
 2026-11-07：[R1真实训练结果与六宫图](README_Q1_STUDENT_R1_RESULTS_20261107.md)：8000次Adam、validation选5000、18片4407物理步、成本549秒／来源与清洁回收通过。H4可用目标拟合误差改善48.415%，同时H10退步和H1覆盖不足保留；下一独立23例同流闭环和GPU原速媒体，尚未给出质量合格结论，原共享训练暂停。
 
 2026-11-07研究：[四项简报](research/2026-11-07/README.md)/[检查](README_RESEARCH_CHECK_20261107.md)：STEP训练期预测、PhySA评测边界、NablaEngine0.2.0今日发行、VREgo对时与评测。91请求89完整200／六固定文本63120B；main去重205→217／H001不变。已接入Q1 a2d667aa的R0完成及学生流水线本地准备记录；本研究仅检索／静态核验，无新训练或自动任务变更。服务器Git未独立观察／研究镜像待，发布见[收据](../data/manifests/research_watch_sync_20261107.json)。

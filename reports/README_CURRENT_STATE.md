@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07 11:27：[R1训练未丢失，闭环首派在媒体入口配置错误处退出](README_Q1_STUDENT_R1_RESULTS_20261107.md)。teacher H10前走1031/1031物理步已成，新增控制器读取`config.python`触发KeyError，媒体未启动；原Linux31470仍可用，原五PID及R1／评估控制器均退，GPU1MiB26度。独立续行入口不改原243来源／FAILED根，严格校验后复用首例，仅续22物理＋七媒体，2700秒累计计入原109.178489秒。五新本地检查过，待发布／服务器运行时与准入；R1成本549秒、原共享暂停、goal active、采纳null保持。[记录](../logs/session_records/q1_student_r1_review_media_failure_20261107.json)。
+
 2026-11-07 11:06:57：[R1短预览编码器已真实训练完成，训练六宫图已生成](README_Q1_STUDENT_R1_RESULTS_20261107.md)。18片4407物理步／1404训练+711验证记录，8000次Adam／validation选5000，教师与共享解码器不变／CPU有限保存复读／source_integrity PASSED，账本SETTLED549秒。可用目标上的H4动作MSE下降48.415%，H10退步28.420%，H1仅50/711及时可用；这些不是闭环或自然遥操结论。31470仍可用，11:10旧五PID与R1子树已退、原锁计算空；不再让用户先确认连接。新增独立23例同流闭环入口／五项可见性检查过，发布与原运行时准入后执行，原239/226/200输入不改、原训练暂停、goal active／采纳null保持。 [真实训练收据](../logs/session_records/q1_student_r1_completed_20261107.json)。
 
 2026-11-07研究：[四项简报](research/2026-11-07/README.md)/[检查](README_RESEARCH_CHECK_20261107.md)：STEP训练期预测、PhySA评测边界、NablaEngine0.2.0今日发行、VREgo对时与评测。91请求89完整200／六固定文本63120B；main去重205→217／H001不变。已接入Q1 a2d667aa的R0完成及学生流水线本地准备记录；本研究仅检索／静态核验，无新训练或自动任务变更。服务器Git未独立观察／研究镜像待，发布见[收据](../data/manifests/research_watch_sync_20261107.json)。

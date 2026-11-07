@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-08 F0_PROPRIO七例闭环真实准入过：aa29660源码/a138135的216清单独立远端40位同，十一成员32292B包八ACK部署/1036旧来源同。原Morph六检查本体.238秒/进程2.332183秒全过，原NVIDIA EGL媒体依赖过；1048来源及两真实选点CPU核验/原暂停资源锁准入13.844985秒过。zero_history0八tensor/统计/decoder精确同，可复用旧0/7；causal_history3000非零，三原收据5584B已Mac大小SHA同。GPU1MiB24度/OOM0/总8194355200限34292629504/余盘183587844096/原3671账本无预留；45014复用。先发布本准入再唯一REVIEW输出/log/dispatch/精确进程全无门后单派1800秒7例；不重训/原共享暂停/goal工具新agent不用/采纳null，旧大包索引镜像PENDING。[准入](README_Q1_F0_PROPRIO_REVIEW_20261108.md#实际准入)。
+
 2026-11-08 F0_PROPRIO_PAIR01七例闭环已独立准备：controller/worker/不可变计划和六CPU检查.082秒全过/编译CLI过，CUDA物理媒体0。只新causal_history3000，zero_history0先八tensor/统计/decoder精确同而复用原0/7；14H4+7旧f0复用。原CausalReviewSession.action/start及原CPU转换不改，总1800秒3GiB计r2/原3671账本无预留，先源码清单发布/原运行时及实际来源资源准入，再唯一防重单派；不重训或重跑旧物理。45014原Linux继续/原共享暂停/goal工具新agent不用/采纳null，旧大包索引镜像PENDING。[新闭环方案](README_Q1_F0_PROPRIO_REVIEW_20261108.md)。
 
 2026-11-08 F0_PROPRIO_PAIR01真实完成：两组各3000新增Adam/四计数均3000，source PASSED；causal_history选3000/验证下降36.303%且两旧锚点均降，zero_history选0/零适配器，闭环质量尚待。两训练六宫PNG/PDF/CSV和15服务器原件已Mac核同及目视，23成员550450B ZIP/22链接过。114秒SETTLED/累计3671=1614+686+1371无RESERVED，380284/380285/380359及旧五PID均退/原锁计算空/OOM0；最新总8197259264限34292629504/GPU1MiB24度/余盘183588171776，45014原Linux正常。下一先CPU证置零组与原R2策略同而复用旧0/7，独立七例只跑causal_history3000/原action路径、不混CPU加速，先发布审计与来源资源准入。不重训或重跑旧物理/不恢复共享/goal工具新agent不用/采纳null；旧大包索引镜像PENDING。[完成证据](README_Q1_F0_PROPRIO_RESIDUAL_20261108.md#真实训练结果)。

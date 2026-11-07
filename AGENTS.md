@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-08 F0_PROPRIO七例闭环真实准入：aa29660源码/a138135的216清单独立远端40位同，32292B十一成员包八ACK部署/1036旧来源同，原Morph六检查.238秒全过和原NVIDIA EGL依赖过。1048保护/真实两选点CPU/原暂停资源锁准入13.844985秒过，zero_history0八tensor统计decoder精确同而复用旧0/7，causal_history3000非零；三原收据5584B已MacSHA同。总8194355200限34292629504/GPU1MiB24度/OOM0/余盘183587844096/账本3671无预留，真实新调用物理0。45014继续，先发布本准入再唯一REVIEW/log/dispatch/精确进程全无后单派1800秒七例；训练六来源不改/共享暂停/goal工具新agent不用/采纳null，旧大包索引镜像PENDING。入口F0_PROPRIO_REVIEW与deployed/contracts/admitted。
+
 - 2026-11-08 F0_PROPRIO_PAIR01七例闭环准备：新controller/worker/计划及六CPU检查.082秒全过/CLI编译过，真实新CUDA物理媒体0。只causal_history3000新七例，zero_history0先CPU八tensor/统计/decoder核同复用原0/7；14H4与7原f0复用。原CausalReviewSession.action/start和CPU转换不改，1800秒/3GiB/r2原3671账本不重置；先发布源码清单/服务器原运行时及来源资源准入，再唯一防重单派。训练六文件冻结/原共享暂停/45014继续/goal工具新agent不用/采纳null，旧大包索引镜像PENDING；入口F0_PROPRIO_REVIEW及preparation。
 
 - 2026-11-08 F0_PROPRIO_PAIR01真实完成：各3000新增Adam/四计数全3000/source PASSED，causal_history选3000/验证下降36.303%及两旧锚点降，zero_history选0/零适配器；闭环待，不据loss判改善。两训练六宫PNG/PDF/CSV/15原件已Mac核同目视，23成员550450B ZIP和22链接过。114秒SETTLED累计3671=1614+686+1371无RESERVED；380284/380285/380359及旧五PID退/原锁计算空/OOM0/总8197259264限34292629504/GPU1MiB24度/余盘183588171776。45014原Linux复用，下一CPU证明置零策略精确同而复用旧0/7，只非零selected3000新七探索闭环/原action不接CPU加速，先发布审计准入；训练六执行文件冻结/新物理媒体0/共享暂停/goal工具新agent不用/采纳null，旧大包镜像PENDING。入口F0_PROPRIO_RESIDUAL与completed/training_delivery，发布以随后publication为准。

@@ -1,6 +1,14 @@
 # Q1 f0机器人历史残差闭环检查
 
-2026-11-08，北京时间。F0_PROPRIO_PAIR01两组训练已完成并发布；本页登记后续独立探索性闭环。当前仅实现与本地检查完成，服务器准入、新物理及视频尚待。原共享训练保持暂停，原final门和用户采纳null保持。
+2026-11-08，北京时间。F0_PROPRIO_PAIR01两组训练已完成并发布；本页登记后续独立探索性闭环。服务器原运行时和实际来源资源准入已过，新物理及视频尚待。原共享训练保持暂停，原final门和用户采纳null保持。
+
+## 实际准入
+
+源码`aa29660433513dce1f9145263e479261a3efa4ba`与216项V2执行清单提交`a1381355ffd7274ac69ad7da4af6956a71b92d7d`均push origin Q1/独立40位远端核同。首次接收器在读取不存在的归档副本路径时退出，尚未READY或传字节/写文件；修订只引用原authorization中的计划身份，旧清单和本地包保留。V2十一成员32292B包八个精确ACK部署，1036原来源前后同，只增加清单外源码与小记录/阶段文档。
+
+原Morph运行时六项新检查全过，本体0.238秒/进程2.332183秒；原Primebot运行时媒体依赖实核NVIDIA RTX3090 EGL，未导入torch/未渲染帧。真实zero_history选点CPU核验：八base张量/缓冲精确相同、统计与teacher/decoder和时轴元数据一致、残差末层0；可复用旧0/7。causal_history3000非零、八base张量也精确同。
+
+1048份保护来源、原暂停/资源/原锁准入13.844985秒通过；总8194355200B/限34292629504B、GPU1MiB24度/OOM0、余盘183587844096B，累计3671秒无预留，真实新策略调用/物理0。三服务器原收据5584B已Mac二进制大小SHA核同：[部署](../logs/session_records/q1_f0_proprio_review_deployed_20261108.json)、[原运行时](../logs/session_records/q1_f0_proprio_review_contracts_20261108.json)、[准入](../logs/session_records/q1_f0_proprio_review_admitted_20261108.json)。下一发布本准入后唯一防重单派。
 
 ## 问题与范围
 

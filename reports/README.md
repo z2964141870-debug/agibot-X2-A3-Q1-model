@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-07研究：[四项简报](research/2026-11-07/README.md)/[检查](README_RESEARCH_CHECK_20261107.md)：STEP训练期预测、PhySA评测边界、NablaEngine0.2.0今日发行、VREgo对时与评测。91请求89完整200／六固定文本63120B；main去重205→217／H001不变。已接入Q1 a2d667aa的R0完成及学生流水线本地准备记录；本研究仅检索／静态核验，无新训练或自动任务变更。服务器Git未独立观察／研究镜像待，发布见[收据](../data/manifests/research_watch_sync_20261107.json)。
+
 2026-11-06研究：[四项简报](research/2026-11-06/README.md)/[检查](README_RESEARCH_CHECK_20261106.md)：DreamFree未来蒸馏、GRASP物理重定向、HALO分层控制、动作接口语义。106次尝试/97份完整200缓存，13固定文本96419B；main去重193→205/H001不变。仅文献及静态核验，未改训练/goal/自动任务；服务器Git未独立观察、镜像待，实际发布见[收据](../data/manifests/research_watch_sync_20261106.json)。
 
 2026-11-05研究：[四项简报](research/2026-11-05/README.md)/[检查](README_RESEARCH_CHECK_20261105.md)：SONIC-K1真机条件配方、iLQR落脚/接触、视觉动作预见、触觉反射。85请求76成功/八固定文本80958B静态核验；main去重184→193，H001不变。接入11/5 11:44连接恢复记录，本研究任务未独立现场观察或改训练、goal、监督；服务器研究副本待核同步，实际发布见[收据](../data/manifests/research_watch_sync_20261105.json)。

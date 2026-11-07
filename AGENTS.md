@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 R2本地准备：新增独立student_causal_fit／training／worker、两个检查与训练六宫图，六Python AST／JSON过、最新十检查全过/.689秒；每次CPU夹具三Adam，R2服务器更新0／原549秒及13851余量不变。原R1真实状态／动作与f0特征可复用，12train+6val源／train-only归一化／源均衡／validation选点，不读未来goal入学生，不重采物理。实际R2必须先R1闭环COMPLETED／源门／回收和保存23例分析通过，再原运行时／资源／原锁准入；1740秒单阶段／R2累计4500／原账本不换。原245源码SHA同，新六宫图实际0／未部署。固定入口45958第一跳Timeout、69314等待后reset，未Windows／Linux认证，不泛化后台失败或重派338151；最后11:52历史RUNNING。入口README_Q1_F0_HISTORY_STUDENT与q1_student_r2_preparation；原共享暂停／goal继续／采纳null／不新agent。
+
 - 2026-11-07 R1唯一RESUME2已11:46:27实际派发338151/start33610519，11:52最后现场RUNNING／四case记录五阶段／teacher H4起走，首teacher H10原1031步复用及首GPU50fps1032帧视频全解码过；原派发收据待Mac。31470/36883与此前99689均已退，本轮严格固定用户入口58643和77008第一跳Operation timed out，未Windows或Linux认证，不泛化后台停机／不再让用户先测试入口，不探旧句柄或重派。新student_summary／test／deliver三文件位于245运行来源之外，五本地检查／三AST过、245源码SHA同；须实际COMPLETED／source门及回收后独立300秒只读分析，七六宫图尚未生成，真实分析0。原共享暂停／成本549秒／剩13851训练秒／新goal继续／采纳null保持。入口README_Q1_STUDENT_R1_RESULTS及q1_student_r1_review_resume_progress、q1_student_r1_saved_analysis_preparation；新文档和分析源码服务器镜像待补。
 
 - 2026-11-07 11:44 R1媒体续行两处启动错误已诊断：原337407在媒体解释器字段退出、338001随后在video模块路径退出；两根保留／原243来源同，唯一首前走1031步不重做。修订5ea78ed已push／独立40位核同，245新清单和20539B三成员包部署，六服务器检查及真实video依赖／NVIDIA3090 EGL上下文全过；471训练与2323失败保护记录同，旧两续行源码精确包留存。两次运行累计120.264270秒／原2700还余2579.735730，下一新RESUME2根仅22物理七媒体，派发以实际收据为准。31470Linux正常，原共享暂停／成本549秒／剩13851训练秒／goal active／采纳null保持；不重训R1、不将本两次代码错误称桥接断联。

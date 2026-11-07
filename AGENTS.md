@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-08 CPU_ACTION01真实完成：370268/370269(start39131332)退出，两guard WORKER_COMPLETED/reaped0，64请求均ready/64CUDA前向，CPU_STATE_ACTION_PARITY_PASSED/906来源同/最大动作差2.741814e-6与3.337860e-6。去各前两次转换中位.832/.979ms、完整worker9.882/11.052ms、p95 34.723/15.050，前走仍4/30超20ms，全部worker约299–311ms初始尖峰保留，不把CPU约17倍外推全链路。03:09暂停五PID同/原锁计算空/OOM0/总8036917248限34292629504/GPU1MiB25度/余盘183749152768/private266931003392；59秒SETTLED累计2492无RESERVED。45129B/15原件包MacSHA同，新六宫PNG/PDF CSV目视、327401B/21成员ZIP SHA9e81bfe84d232c688a112510f045e6cfbebc8b6fb2a53292309caca579d8d0ae/7链接过；旧CPU805214B包不改。45014复用，下一回H4时间mask/因果闭环质量方案，不重跑234/64/936/旧七失败；0新物理渲染Adam/共享不恢复/goal工具和新agent不用/采纳null。入口CPU_ACTION_RESULT及详细README/完成回执，本阶段发布与小镜像以随后publication为准；旧大包全索引PENDING。
+
 - 2026-11-08 CPU_ACTION01部署准入真实过：6401814已push/独立40位远端/Mac11份820019B同，8205B五成员代码包沿45014逐片ACK部署、原899来源同；五原策略运行时合同.224522秒过/906保护准入12.729931秒过，三原回执5250B已Mac字节SHA同。GPU计算/锁空/原暂停不变/OOM0/总8053194752限34292629504/GPU1MiB25度/余盘183749693440，账本2433无RESERVED/真实新GPU0。发布本准入后唯一CPU_ACTION01，各片从0各32请求/至多64前向，300s/64MiB/先输出日志dispatch精确进程防重；不重做936/234CPU或物理，不改旧worker/共享暂停/goal工具和新agent不用/采纳null保持。入口README_Q1_CPU_ACTION与三原回执。
 
 - 2026-11-08 CPU_ACTION01独立准备：新controller/worker/math和五本地合同已实现，复用A022/A023从frame0各32保存状态、总64新CUDA调用上限/0物理媒体Adam；只独立worker请求内换已过234CPU等价的转换器，异常恢复绑定/禁止动态，旧worker及199/200不动。原账本2433需先核/预留再回收结算，总300秒/64MiB/原资源锁保留；服务器部署合同准入与动作仍待。CPU结果f6da281已push/独立40位远端/Mac13份824262B同，四小镜像899保护同/旧大包索引PENDING；45014复用，原共享暂停/goal工具和新agent不用/采纳null保持。入口README_Q1_CPU_ACTION_20261108与preparation。

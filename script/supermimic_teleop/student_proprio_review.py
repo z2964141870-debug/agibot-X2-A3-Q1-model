@@ -103,7 +103,7 @@ def trained_evidence(settings):
         and settings["exploratory_events"] == dict(first_frame=50, duration_frames=10, transport_frames=0),
         "Use the immutable seven-case exploratory plan without fresh-event or CPU changes")
     records = [identity(TRAINED/n) for n in ("result.json", "fit_result.json", "fit.guard.json",
-        "authorization.json", "checkpoint_audit.json", "reused_dataset.json", "residual_plan.json")]
+        "authorization.json", "checkpoint_audit.json", "reused_dataset.json")]
     for arm, update, is_zero in (("zero_history", 0, True), ("causal_history", 3000, False)):
         fit_arm = read(TRAINED/arm/"fit_result.json")
         trace = read(TRAINED/arm/"training_trace.json")
@@ -115,7 +115,7 @@ def trained_evidence(settings):
             and trace[0]["update"] == 0 and trace[-1]["update"] == 3000,
             "Paired selection, optimizer counters or fixed validation anchors changed")
         records += [identity(TRAINED/arm/n) for n in ("selected.pt", "fit_result.json", "training_trace.json")]
-    records += auth["protected_inputs"]
+    records += auth["protected_inputs"]+[auth["residual_plan"]]
     settings_records = [settings[k] for k in
         ("training_result", "fit_result", "selected_checkpoint", "zero_checkpoint", "original_checkpoint")]
     require(all(identity(r["path"]) == r for r in settings_records), "Registered selected artifacts changed")

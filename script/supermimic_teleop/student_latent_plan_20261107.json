@@ -1,0 +1,33 @@
+{
+  "schema": "q1_offline_teacher_latent_distillation_v1",
+  "method": "action_distillation_plus_frozen_teacher_human_latent",
+  "human_real_future_frames": 0,
+  "future_teacher_goal": "offline supervised labels only",
+  "deployed_teacher_encoder": false,
+  "same_state_action_parity_tolerance": 0.00002,
+  "new_collection_steps": 0,
+  "reused_action_control": "Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_AUXILIARY_PAIR02_20261107/action_only",
+  "control_retrained": false,
+  "single_changed_property": "0.1 times frozen teacher latent MSE",
+  "source_ownership": "unchanged original 12 train and 6 validation groups, both state origins",
+  "test_sources_read": false,
+  "selection": "same source balanced validation action risk, including update0",
+  "maximum_wall_seconds": 1740,
+  "original_phase_protection_seconds": 1800,
+  "maximum_output_bytes": 1073741824,
+  "cumulative_cost_stage": "r3",
+  "cost_ledger_reset": false,
+  "fit": {
+    "seed": 2026110703,
+    "learning_rate": 0.0001,
+    "batch_size": 128,
+    "maximum_updates": 3000,
+    "validation_every_updates": 500,
+    "gradient_norm_limit": 1.0,
+    "latent_weight": 0.1
+  },
+  "source_reference": "RMA adaptation of a privileged training latent; this experiment supervises the frozen SuperMimic human-goal latent instead",
+  "not_a_reproduction_of_full_rma_or_gigabrain": true,
+  "original_shared_training_restarted": false,
+  "user_accepted_checkpoint": null
+}

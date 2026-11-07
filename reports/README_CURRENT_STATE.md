@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07 11:39：[R1媒体模块路径遗漏已定位](README_Q1_STUDENT_R1_RESULTS_20261107.md)。续行338001／338073已退出回收，0新增物理／渲染／训练；原Linux31470仍可用。退出后修订独立续行路径初始化并新增回归，六本地检查过，原243／两个FAILED根不动，旧续行源码保留在精确包中；两次实际评估累计120.264270秒，下一续行须核两根并扣除，不重做1031步首例。[收据](../logs/session_records/q1_student_r1_review_media_path_failure_20261107.json)。
+
 2026-11-07 11:38：[R1闭环续行已发布部署并通过原运行时与真实首例复用准入](README_Q1_STUDENT_R1_RESULTS_20261107.md)。d5db791独立40位远端核同／三成员19662B包服务器SHA同，五新检查过／245代码及200冻结来源同，471份R1与931份失败评估保护记录同；首例1031条插值和到达可见性已全核。GPU锁准入后释放／GPU1MiB26度／总7921897472B／OOM0，续行输出仍无。发布本收据后仅续22物理七媒体，剩2590.821511秒，不重训R1／不恢复原共享。[收据](../logs/session_records/q1_student_r1_review_resume_publication_20261107.json)。
 
 2026-11-07 11:27：[R1训练未丢失，闭环首派在媒体入口配置错误处退出](README_Q1_STUDENT_R1_RESULTS_20261107.md)。teacher H10前走1031/1031物理步已成，新增控制器读取`config.python`触发KeyError，媒体未启动；原Linux31470仍可用，原五PID及R1／评估控制器均退，GPU1MiB26度。独立续行入口不改原243来源／FAILED根，严格校验后复用首例，仅续22物理＋七媒体，2700秒累计计入原109.178489秒。五新本地检查过，待发布／服务器运行时与准入；R1成本549秒、原共享暂停、goal active、采纳null保持。[记录](../logs/session_records/q1_student_r1_review_media_failure_20261107.json)。

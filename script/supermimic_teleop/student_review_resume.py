@@ -8,6 +8,7 @@ from pathlib import Path
 import shutil
 import signal
 import sys
+import tarfile
 import time
 from types import SimpleNamespace
 
@@ -18,7 +19,7 @@ from delivery import read
 from interim_review import GIB, fixed_rows, media
 from paused_preview import preflight
 from paused_runtime import own_gpu
-from preview_review import environment, validate_code_manifest
+from preview_review import environment, runtime_paths, validate_code_manifest
 from runtime_guard import guarded_run
 from stream_events import EventSpec, EventTimeline
 from student_review import ReviewBudget, folder, replay, review_cases, training_evidence, validate_timing
@@ -128,6 +129,46 @@ def copy_first(source, output):
     require(all(identity(r["path"]) == r for r in originals), "Original replay was modified by copying")
 
 
+def continuation_evidence(args, parent):
+    root = args.prior_continuation
+    require(root.is_absolute() and root.resolve() == root and root != args.output
+        and root.is_relative_to(ROOT/"data/supermimic_for_q1"), "Invalid preserved media-path failure root")
+    result, auth = read(root/"result.json"), read(root/"authorization.json")
+    name = "nominal_teacher_h10_"+FIXED[0]+"_media"
+    guard = read(root/(name+".guard.json"))
+    require(result.get("status") == "FAILED" and result.get("phase") == name and result.get("cases") == []
+        and result.get("stage") == auth.get("stage") == "R1_MATCHED_CLOSED_LOOP_CONTINUATION"
+        and auth.get("trained_student_inputs") == parent
+        and auth.get("maximum_cumulative_review_wall_seconds") == 2700
+        and not Path("/proc", str(result["controller"]["pid"])).exists()
+        and result.get("phases") == [dict(name=name, guard=identity(root/(name+".guard.json")))]
+        and guard.get("status") == "WORKER_FAILED" and guard.get("cleanup", {}).get("worker_reaped") is True
+        and guard["cleanup"].get("worker_return_code") == 1
+        and not Path("/proc", str(guard["worker_pid"])).exists()
+        and "ModuleNotFoundError: No module named 'video'" in (root/(name+".log")).read_text(),
+        "Reuse only the cleanly reaped media-path failure; no physics may have restarted")
+    archive = ROOT/"data/deliveries/Q1_STUDENT_R1_REVIEW_RESUME_CODE_V2_20261107.tgz"
+    record = identity(archive)
+    require(record["sha256"] == "90f82afd06a8f4e6d9004d08c5931c138c2b4e4b488b88c553ed834ea5052f43",
+        "Preserve the exact published pre-fix continuation source archive")
+    replaced = {str(HERE/n) for n in ("student_review_resume.py", "test_student_review_resume.py")}
+    import hashlib
+    with tarfile.open(archive, "r:gz") as packed:
+        for old in auth["evaluation_sources"]:
+            if old["path"] in replaced:
+                blob = packed.extractfile(str(Path(old["path"]).relative_to(ROOT))).read()
+                require((len(blob), hashlib.sha256(blob).hexdigest()) == (old["bytes"], old["sha256"]),
+                    "Archived failed continuation source differs")
+    protected = [r for r in auth["evaluation_sources"] if r["path"] not in replaced]
+    protected += auth["training_source_inputs"]+auth["controller_inputs"]+auth["preserved_failed_review_inputs"]
+    protected += [record]+[identity(p) for p in root.rglob("*") if p.is_file()]
+    require(all(identity(r["path"]) == r for r in protected), "Earlier continuation evidence changed")
+    elapsed = (datetime.fromisoformat(result["ended_utc"])-datetime.fromisoformat(result["started_utc"])).total_seconds()
+    require(0 < elapsed < 2700 and auth["prior_review_wall_seconds"] == 109.178489,
+        "Earlier continuation budget changed")
+    return elapsed, protected
+
+
 class ResumeBudget(ReviewBudget):
     def __init__(self, config, receipt, output, owner, spent):
         super().__init__(config, receipt, output, owner)
@@ -142,6 +183,7 @@ def execute(args):
     if args.child:
         config, runtime = read(args.config), read(args.runtime_config)
         if args.child == "media":
+            runtime_paths(runtime)
             return media(SimpleNamespace(output=folder(args)), config, runtime)
         from interim_review import TRAINING
         return replay(args, config, runtime, read(TRAINING/"e1024_train_plan.json"), read(config["frozen_data"]))
@@ -150,6 +192,10 @@ def execute(args):
         "Published review continuation is missing")
     parent = training_evidence(args.training_root)
     spent, first, preserved = previous_evidence(args, parent, sources, audit, runtime, frozen)
+    if args.prior_continuation:
+        elapsed, extra = continuation_evidence(args, parent)
+        spent += elapsed
+        preserved += extra
     controls = [identity(p) for p in (args.config, args.runtime_config, args.pause_receipt, args.code_manifest)]
     with own_gpu() as owner:
         args.output.mkdir(exist_ok=False)
@@ -212,7 +258,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__, allow_abbrev=False)
     for name in ("config", "runtime-config", "output", "training-root"):
         parser.add_argument("--"+name, type=Path, required=True)
-    for name in ("pause-receipt", "audit-root", "code-manifest", "previous-review"):
+    for name in ("pause-receipt", "audit-root", "code-manifest", "previous-review", "prior-continuation"):
         parser.add_argument("--"+name, type=Path)
     parser.add_argument("--manifest-sha256")
     parser.add_argument("--evaluation-commit", required=True)

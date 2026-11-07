@@ -6,13 +6,24 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
-from student_review_resume import (ResumeBudget, child_command, copy_first, phases_for,
+from student_review_resume import (ResumeBudget, child_command, copy_first, execute, phases_for,
                                    review_cases, spent_seconds)
 from common import identity, save
 from delivery import read
 
 
 class ResumeTests(unittest.TestCase):
+    def test_actual_media_branch_sets_the_video_module_path_before_rendering(self):
+        args = SimpleNamespace(child="media", config=Path("config"), runtime_config=Path("runtime"),
+            output=Path("out"), event_kind="nominal", variant="teacher", horizon=10, clip="clip")
+        calls = []
+        runtime = dict(primebot_python="/primebot/python")
+        with patch("student_review_resume.read", side_effect=[{}, runtime]), \
+                patch("student_review_resume.runtime_paths", side_effect=lambda r:calls.append(("paths", r))), \
+                patch("student_review_resume.media", side_effect=lambda *a:calls.append(("media", a[2]))):
+            execute(args)
+        self.assertEqual(calls, [("paths", runtime), ("media", runtime)])
+
     def test_media_and_physics_use_the_locked_primebot_runtime_without_a_config_python_key(self):
         args = SimpleNamespace(config=Path("config"), runtime_config=Path("runtime"), output=Path("output"),
             training_root=Path("trained"), evaluation_commit="a"*40)

@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-08 R1_H4_CPU_PAIR01独立准备：新增controller/worker和六本地合同.038秒全过/CLI编译过，真实CUDA0。保持R1 selected5000及原StudentReviewSession.action，仅请求内换已审计CPU转换；名义/丢包各原版/加速连续128，从0全前缀/ABBA串行共512上限/300秒64MiB，动作2e-5/缺失槽零与可见性同，0物理渲染Adam。原1009及冻结来源先核、3403全SETTLED/r1余1240不重置；先发布/原运行时/准入再唯一CPU_PAIR01防重单派。45014原Linux可用，H4结果b5b336d独立远端/Mac九份833989B同，五小镜像28230B精确ACK与SHA同，旧大包全索引PENDING；不重做旧f064/936或84/七物理，不延长H4-only/恢复共享/调用goal新agent，采纳null。入口README_Q1_R1_H4_CPU_PAIR与preparation，实际派发以随后receipt为准。
+
 - 2026-11-08 H4专项闭环真实完成：RESUME1七例全完整/13guard清洁回收/source PASSED，首1031物理与17对照直接复用；保存24比较4.126194秒/1009来源同。三名义上肢+0.55%、四事件上肢+4.80/+2.83/+0.74/+1.08%，滑移/侧倾部分改善保留，不继续同H4-only拟合。Mac七PNG/七PDF＋训练图＋一50fps152帧MP4全解码SHA/目视，31成员2221900B ZIP/SHA1cfc5d6e809a9756664f481ce01597b2982e97f4558730ef66e4d80e7f9f8b74及18链接过，余六视频仍服务器。续行733秒SETTLED，原失败101保留/累计3403=1460+572+1371无RESERVED；末总8180240384限34292629504/OOM0/GPU1MiB25度/余盘183604682752/所有自有进程退锁空，原共享暂停。45014仍原Linux，SSH三项授权已生效不再问代测；下一独立R1 H4的CPU转换动作/完整周期验证，再序列闭环目标，不重做七物理/84/旧f0的64或936。goal工具和新agent不用/采纳null，旧大包索引镜像PENDING；入口H4_REVIEW与completed/delivery，发布以随后publication为准。
 
 - 2026-11-08 04:27:17 H4独立RESUME1真实单派：timeout373346/controller373347/start39615599，外层1699秒/原101秒保留，首1031物理直接复用；首GPU EGL视频完整解码已过，三名义片已保存，同任务继续四事件。3194B原dispatchMacSHA同，准入028caa26独立40位远端/Mac九文件815985B同；45014原Linux可用。勿重派/重跑首物理或17对照，完成且来源/账本回收后只读24条保存分析，再Mac七六宫图/原速媒体证据包；两个新交付入口仅CLI准备。原共享暂停/采纳null/goal新agent不用，原1699余量和计费不扩；入口H4_REVIEW及resume_dispatch，最新同步看publication，旧大包/索引镜像PENDING。

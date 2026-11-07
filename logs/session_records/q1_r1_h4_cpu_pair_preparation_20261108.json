@@ -1,0 +1,61 @@
+{
+  "stage": "R1_H4_CPU_PAIR_PREPARATION",
+  "status": "LOCAL_CONTRACTS_PASSED",
+  "observed_utc": "2026-11-07T21:02:15.270Z",
+  "files": [
+    {
+      "relative": "script/supermimic_teleop/h4_cpu_pair.py",
+      "bytes": 17565,
+      "sha256": "97d87615272e158764f2b22405548e3948a1634acd79ca14475afa247073635e"
+    },
+    {
+      "relative": "script/supermimic_teleop/h4_cpu_pair_worker.py",
+      "bytes": 4411,
+      "sha256": "c4e1f615d21bb272ede2b81097a0c8295009128fa7c4d0b9e3f1fd58c7f89286"
+    },
+    {
+      "relative": "script/supermimic_teleop/test_h4_cpu_pair.py",
+      "bytes": 4400,
+      "sha256": "fef87be92e2728c38938666c9f3442a346ca88d444113c1f266ef5a509b9331f"
+    }
+  ],
+  "local_tests": {
+    "passed": 6,
+    "failed": 0,
+    "seconds": 0.038,
+    "command": "data/environments/q1-teleop-mps-20261106/bin/python -m unittest discover -s script/supermimic_teleop -p test_h4_cpu_pair.py -v"
+  },
+  "bounded_conditions": [
+    [
+      "nominal",
+      "original"
+    ],
+    [
+      "nominal",
+      "kinematic"
+    ],
+    [
+      "dropout",
+      "kinematic"
+    ],
+    [
+      "dropout",
+      "original"
+    ]
+  ],
+  "frames_per_condition": 128,
+  "maximum_new_policy_calls": 512,
+  "maximum_wall_seconds": 300,
+  "maximum_output_bytes": 67108864,
+  "cumulative_gpu_charged_seconds_before": 3403,
+  "r1_charged_seconds_before": 1460,
+  "r1_remaining_seconds_before": 1240,
+  "real_new_policy_calls": 0,
+  "new_physical_steps": 0,
+  "new_rendering": 0,
+  "new_training_updates": 0,
+  "server_contracts": "PENDING",
+  "server_admission": "PENDING",
+  "original_shared_training_resumed": false,
+  "user_accepted_checkpoint": null
+}

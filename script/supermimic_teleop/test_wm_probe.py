@@ -78,18 +78,40 @@ class WorldModelProbeTests(unittest.TestCase):
             selected_transitions(bad, traces, {0:None}, aggregate=True)
 
     def test_context_reads_xml_friction_and_refuses_unknown_delay(self):
-        model = SimpleNamespace(ngeom=2, geom_friction=np.array([[.8, .01, .001], [.8, .01, .001]]),
-            geom=lambda i:SimpleNamespace(name=("left_foot1_collision", "right_foot1_collision")[i]))
+        model = SimpleNamespace(ngeom=5,
+            geom_friction=np.array([[1.1, .01, .001], [1.2, .01, .001],
+                [.8, .01, .001], [.8, .01, .001], [1.3, .01, .001]]),
+            geom_bodyid=np.array([0, 1, 1, 2, 3]),
+            geom_contype=np.array([1, 0, 1, 1, 1]),
+            geom_conaffinity=np.array([0, 0, 0, 0, 0]),
+            body=lambda name:SimpleNamespace(id={"left_ankle_roll_link":1, "right_ankle_roll_link":2}[name]),
+            geom=lambda i:SimpleNamespace(name=("floor", "visual", "", "", "left_foot1_collision")[i]))
         robot, spec = SimpleNamespace(model=model), SimpleNamespace(foot_geom_regex=r".*foot1_collision")
         context, receipt = nominal_context(robot, spec, dict(action_scale=.5, modeled_action_delay=False))
         self.assertEqual(context.shape, (62,))
         self.assertAlmostEqual(float(context[0]), .8)
         self.assertIn("NOT_RECORDED", receipt["kind"])
+        self.assertEqual([row["id"] for row in receipt["foot_geoms"]], [2, 3])
+        self.assertEqual([row["name"] for row in receipt["foot_geoms"]], ["", ""])
         capable, recorded = nominal_context(robot, spec, dict(action_scale=.5, modeled_action_delay=True))
         self.assertTrue(np.array_equal(capable, context))
         self.assertTrue(recorded["delay_model_enabled"])
         with self.assertRaises(ValueError):
             nominal_context(robot, spec, dict(action_scale=.5, modeled_action_delay="unknown"))
+
+    def test_context_rejects_missing_foot_and_inconsistent_physical_friction(self):
+        model = SimpleNamespace(ngeom=2, geom_friction=np.array([[.6, .01, .001], [.8, .01, .001]]),
+            geom_bodyid=np.array([1, 2]), geom_contype=np.array([1, 1]),
+            geom_conaffinity=np.array([0, 0]),
+            body=lambda name:SimpleNamespace(id={"left_ankle_roll_link":1, "right_ankle_roll_link":2}[name]),
+            geom=lambda i:SimpleNamespace(name=""))
+        robot, spec = SimpleNamespace(model=model), SimpleNamespace(foot_geom_regex=r".*foot1_collision")
+        with self.assertRaisesRegex(ValueError, "single native friction"):
+            nominal_context(robot, spec, dict(action_scale=.5))
+        model.geom_friction[1, 0] = .6
+        model.geom_contype[1] = 0
+        with self.assertRaisesRegex(ValueError, "Both physical ankle"):
+            nominal_context(robot, spec, dict(action_scale=.5))
 
     def test_quaternion_sign_and_command_memory_do_not_change_physical_metrics(self):
         present = np.arange(29) < 22

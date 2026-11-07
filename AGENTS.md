@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 18:36物理WM首派已回收：357419/start36045340与357492均退出，WM_PROBE01因共同Primebot脚底geom无名称、误用Morph重命名规则而在context重建退出，0 WM.step/0物理/0Adam。guard WORKER_FAILED/return1，25秒SETTLED累计1396/r3已275；175执行/200冻结/731保护输入退出后SHA同，原暂停/锁计算空/OOM0/GPU1MiB25度/总8018432000限34292629504。六原文件4530B七成员包Mac逐字节核同。仅新诊断data与检查修订为原踝部collision-enabled geom/XML摩擦，九本地检查过/.037秒；待发布新清单、服务器九检查及实际编译XML context后新根WM_PROBE02，原失败/冻结来源和旧权重加载不重做。33391固定用户入口仍可用，连接由Agent自行尝试不问用户代测；不调用goal/新agent/原共享暂停/采纳null保持。入口README_Q1_PHYSICAL_WM_PROBE及first_failure，新文档服务器镜像待。
+
 - 2026-11-07 18:26物理WM准入：33391固定用户入口仍可用；e28dd7febf5fe96bb13f141f967d1eb564d7591a独立40位远端同，零延迟模型能力修订1566834/三成员15237B包部署、旧751来源同。修订八原运行时检查过，实际32k严格CPU载入20.561966秒/WM张量SHA4eccbe169cf22ce7729930a8d45c763fe0646c0a957b3b9e39d22beff0ebf330a/CUDA0；初Git环境失败与系统python缺numpy导入失误原样保留，分别用environment(runtime)/固定Primebot Python纠正。175/200/731与原锁准入过，总8107569152限34292629504/GPU1MiB25度/OOM0/原暂停同，1371秒r3已250全SETTLED；七原回执17254B及4784B包Mac逐件SHA同。GPU诊断尚未派发，先发布本准入再唯一WM_PROBE01，不重复原物理/训练或CPU严格加载，不调用goal/新agent/采纳null保持。入口README_Q1_PHYSICAL_WM_PROBE及r2_admitted；新文档服务器镜像待。
 
 - 2026-11-07物理WM诊断准备：新wm_probe四执行模块/固定计划/八CPU检查0.093秒过，实际CUDA0；≤256保存train/val转移、≤512WM.step/300秒/64MiB，排除末29命令恒等梯度，原始cfg/normalizer/morph/height/presence严格加载。context只按实核名义采样源码与XML重建，不称记录张量；对共同Primebot物理的筛查不等于原训练动力学认证。20613自主固定source/ssh到原Linux并18:01实核原身份暂停/旧PID退/GPU空/总8008724480限34292629504/OOM0后Timeout；一次同入口33391已再入原Linux，18:07两context源码SHA同/无probe根收据，原1371秒账本全SETTLED。需先发布/部署/原运行时/来源资源准入再唯一probe，实际新训练物理0/原共享暂停/不调用goal或新agent/采纳null保持，入口README_Q1_PHYSICAL_WM_PROBE。

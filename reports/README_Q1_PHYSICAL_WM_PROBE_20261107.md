@@ -1,6 +1,6 @@
 # Q1冻结世界模型的保存转移校准
 
-2026-11-07。当前状态：独立实现、服务器八项检查、真实32k严格CPU加载和18:26来源/资源准入已通过；实际CUDA预测/梯度诊断尚未派发。原共享训练保持用户暂停，采纳仍为null。
+2026-11-07。当前状态：首派已在context重建处退出并回收，未执行WM.step；独立共同物理脚底映射修订及九本地检查通过，服务器实际XML验证和新根诊断待。原共享训练保持用户暂停，采纳仍为null。
 
 ## 用户版done与todo
 
@@ -8,7 +8,7 @@ done：Agent自行按`source /Users/yu/.zshrc`再`ssh -tt hp_han`进入Windows�
 
 done：找到并实核了保存物理数据对应的原模拟器与randomization源码。保存NPZ没有逐帧context，不能将任意零向量称为实际context。新入口在原`randomize=False`采样源码和固定XML下重建名义上下文，摩擦读实际脚底geom，明确标注为源码/XML重建而非记录张量；遇到未知延迟或不一致摩擦即拒绝。
 
-todo：发布并部署独立入口，通过原运行时/来源/资源准入后，只做最多256个保存转移和512次CUDA WM.step前向的校准与梯度检查。诊断通过后才考虑单项误差差分训练；本阶段不增加物理、渲染或优化更新。
+todo：发布脚底映射修订及新来源清单，原服务器九项检查和实际编译XML context验证通过后，在新WM_PROBE02根补做最多256保存转移/512次WM.step校准。首派失败保留；不重复严格WM CPU加载或旧物理，诊断通过后才考虑单项误差差分训练。
 
 ## 为什么先做这个检查
 
@@ -51,3 +51,13 @@ todo：发布并部署独立入口，通过原运行时/来源/资源准入后�
 18:26:00修订准入：175执行/200冻结/731保护输入和原锁通过，cgroup8107569152B/限34292629504B、GPU1MiB25度/计算空/OOM0；原五训练PID退出及STOPPED_SIGNAL由准入重新确认。累计成本1371秒/r3已250、全SETTLED。原输出与派发仍未创建，不据准入称诊断已完成；发布本准入后唯一派发新WM_PROBE01。
 
 七份原始回执共17254B已沿现有SSH传回Mac并逐件大小SHA核同，4784B八成员归档SHA `140aa3b3418271551e10561362230ca6a2750285ff2938d9c927508e33f0c1d2`。[初部署](../logs/session_records/q1_physical_wm_probe_deployed_20261107.json)、[原检查含首次加载失败](../logs/session_records/q1_physical_wm_probe_native_checks_20261107.json)、[真实严格CPU加载](../logs/session_records/q1_physical_wm_probe_strict_cpu_load_20261107.json)、[初准入](../logs/session_records/q1_physical_wm_probe_admitted_20261107.json)、[名义上下文修订部署](../logs/session_records/q1_physical_wm_probe_r2_deployed_20261107.json)、[修订八检查](../logs/session_records/q1_physical_wm_probe_r2_native_checks_20261107.json)、[修订实际准入与完整参数](../logs/session_records/q1_physical_wm_probe_r2_admitted_20261107.json)。新说明服务器镜像仍待回执；认证材料未记录。
+
+## 首派与共同物理脚底映射修订
+
+准入发布`c1e899af9762452f9915819b7dda5f0241bf3329`已显式push、独立40位远端与Mac十二文件765098B核同。33391会话再次返回原host/root/boot后，唯一派发357419/start36045340；真实守卫于18:32:39启动357492，18:33:03退出1并完成回收。[派发原收据](../logs/session_records/q1_physical_wm_probe_dispatch_20261107.json)、[原result](../logs/session_records/q1_physical_wm_probe01_result_20261107.json)、[原guard](../logs/session_records/q1_physical_wm_probe01_guard_20261107.json)及[原错误](../logs/session_records/q1_physical_wm_probe01_worker_failure_20261107.log)保留。
+
+错误来自本诊断的资产名称假设：Morph资产构建器把脚底重命名为`left/right_foot[1-5]_collision`，共同Primebot XML保留无名mesh和四角sphere。名称正则匹配为空，`nominal_context`在样本与WM.step之前拒绝；这不是模型预测筛查失败。该诊断代码改为按左右`ankle_roll_link`上的collision-enabled geom选取，排除visual和其他身体上即使匹配旧名字的geom，读取全部实际XML摩擦并要求两脚完整/同值/有限。原固定采集`randomize=False`没有重写XML摩擦；仍不能把随机化向量的默认friction=1替代实际接触参数。
+
+九项本地检查0.037秒通过，新增无名脚底/不同身体假同名、视觉geometry过滤、缺一脚和不同摩擦拒绝。只修独立`wm_probe_data.py`与检查，原训练资产、动力学、采集和原失败输出不改。必须先发布新清单，在原服务器跑修订检查，并用原compiled XML验证context和十个实际碰撞geom，再在新`Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_WM_PROBE02_20261107`根运行；复用已成严格权重加载证据。
+
+18:36:25[退出后独立实核](../logs/session_records/q1_physical_wm_probe_first_failure_20261107.json)：175执行/200冻结/731保护输入SHA全同，两个进程已退、原GPU锁可独占后释放、计算空、原共享暂停/OOM0。总8018432000B/限34292629504B、GPU1MiB25度；25秒持锁已SETTLED，累计1396/14400秒/r3已275/7200秒。实际WM.step/新物理/优化均0，CUDA可用性检查不冒称执行了模型预测。六原文件4530B七成员归档SHA `eaeb8dc80bcb42e75f2df01a7060161e24cfa201bedc1aa0b95c222fec825f20`已Mac逐件大小SHA核同，原大authorization继续保存在失败根。新文档服务器镜像待，后续诊断结果另记。

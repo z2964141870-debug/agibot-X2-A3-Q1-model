@@ -51,21 +51,27 @@ def selected_transitions(data, traces, terminal, *, aggregate, quota=64):
 
 def nominal_context(robot, spec, settings):
     """Reconstruct the nominal common plant; source hashes must be checked first."""
-    import re
-
     if settings.get("action_scale") != .5 or type(settings.get("modeled_action_delay", False)) is not bool:
         raise ValueError("Require the verified nominal common plant and a known delay model flag")
-    ids = [i for i in range(robot.model.ngeom)
-           if re.fullmatch(spec.foot_geom_regex, robot.model.geom(i).name or "")]
-    if not ids:
-        raise ValueError("The frozen native foot regex matches no physical geoms")
+    # The common plant keeps unnamed geoms; Morph's asset builder renames its copy.
+    feet = ("left_ankle_roll_link", "right_ankle_roll_link")
+    by_foot = {name: [i for i in range(robot.model.ngeom)
+        if robot.model.geom_bodyid[i] == robot.model.body(name).id
+        and (robot.model.geom_contype[i] or robot.model.geom_conaffinity[i])]
+        for name in feet}
+    if not all(by_foot.values()):
+        raise ValueError("Both physical ankle bodies need collision-enabled foot geoms")
+    ids = [i for name in feet for i in by_foot[name]]
     friction = np.asarray(robot.model.geom_friction)[ids, 0]
     if not np.isfinite(friction).all() or (friction < 0).any() or not np.all(friction == friction[0]):
         raise ValueError("A single native friction context cannot describe these geoms")
     context = np.zeros(62, dtype=np.float32)
     context[0] = friction[0]
     return context, dict(kind="SOURCE_AND_XML_RECONSTRUCTED_NOMINAL_NOT_RECORDED_TENSOR",
-        friction=float(context[0]), foot_geoms=[robot.model.geom(i).name for i in ids],
+        friction=float(context[0]), foot_geoms=[dict(id=i, name=robot.model.geom(i).name,
+            body=name) for name in feet for i in by_foot[name]],
+        foot_selection="collision-enabled geoms on the common plant's two ankle-roll bodies",
+        native_asset_foot_regex_not_applied=spec.foot_geom_regex,
         encoder_bias="zero from preserved randomize=False collector and nominal reset",
         torso_com_offset="zero from unchanged compiled XML and nominal reset",
         action_delay_seconds="zero from preserved nominal_context/reset; an enabled delay model is not a nonzero delay",

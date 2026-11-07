@@ -1,0 +1,43 @@
+{
+  "stage": "PHYSICAL_WM_PROBE_COMMON_PLANT_GEOMETRY_REVISION_PREPARED",
+  "date_beijing": "2026-11-07",
+  "previous_admission_publication": {
+    "commit": "c1e899af9762452f9915819b7dda5f0241bf3329",
+    "explicit_push": "git push origin Q1",
+    "independent_remote_full40": "c1e899af9762452f9915819b7dda5f0241bf3329",
+    "main_mirror_files": 12,
+    "main_mirror_bytes": 765098,
+    "main_size_sha256_verified": true
+  },
+  "failed_run": "Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_WM_PROBE01_20261107",
+  "failure_scope": "Independent diagnostic context reconstruction, before WM.step; not a scientific calibration result",
+  "root_cause": "Morph asset builder renames foot geoms; common Primebot XML retains unnamed active mesh and spheres",
+  "correction": "Select collision-enabled geoms on the two common ankle-roll bodies, then require finite homogeneous XML friction and both feet",
+  "changed_sources": [
+    "script/supermimic_teleop/wm_probe_data.py",
+    "script/supermimic_teleop/test_wm_probe.py"
+  ],
+  "local_checks": {"tests": 9, "passed": 9, "skipped": 0, "elapsed_seconds": 0.037},
+  "server_runtime_checks": "PENDING",
+  "real_compiled_xml_context_check": "PENDING",
+  "next_run": "Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_WM_PROBE02_20261107",
+  "same_registered_limits": {"wall_seconds": 300, "output_bytes": 67108864, "sampled_transitions": 256, "wm_step_calls": 512},
+  "first_run_cost_seconds": 25,
+  "cumulative_charged_seconds": 1396,
+  "r3_charged_seconds": 275,
+  "failed_run_archive": {
+    "path": "/Users/yu/Documents/ChatGPT/元启/data/deliveries/Q1_PHYSICAL_WM_PROBE01_FAILURE_20261107.tgz",
+    "bytes": 4530,
+    "sha256": "eaeb8dc80bcb42e75f2df01a7060161e24cfa201bedc1aa0b95c222fec825f20",
+    "members": 7,
+    "member_size_sha256_verified": true
+  },
+  "new_training_updates": 0,
+  "new_physical_transitions": 0,
+  "first_run_cuda_wm_step_calls": 0,
+  "original_shared_training": "KEEP_USER_PAUSE",
+  "goal_tools_called": false,
+  "new_agents_created": false,
+  "user_accepted_checkpoint": null,
+  "server_new_document_mirror": "PENDING"
+}

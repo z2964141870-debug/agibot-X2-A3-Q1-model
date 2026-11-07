@@ -1,0 +1,60 @@
+{
+  "stage": "H4_SPECIALIST_DISPATCH",
+  "dispatched_utc": "2026-11-07T19:38:48.632635+00:00",
+  "timeout_controller": {
+    "pid": 371343,
+    "name": "timeout",
+    "state": "R",
+    "ppid": 371275,
+    "start_ticks": "39324720",
+    "VmHWM_bytes": 4096,
+    "VmRSS_bytes": 4096,
+    "RssAnon_bytes": 4096,
+    "RssFile_bytes": 0,
+    "RssShmem_bytes": 0
+  },
+  "command": [
+    "timeout",
+    "--signal=TERM",
+    "--kill-after=10",
+    "610",
+    "/opt/data/private/ZHY/data/environments/primebot_supermimic_118338b_20261103/bin/python",
+    "-u",
+    "/opt/data/private/ZHY/script/supermimic_teleop/student_h4_training.py",
+    "--output",
+    "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_H4_SPECIALIST01_20261108",
+    "--manifest",
+    "/opt/data/private/ZHY/data/manifests/q1_h4_specialist_code_20261108.json",
+    "--manifest-sha256",
+    "49f1661035dbf0ccbbfc9bd29226b872359221466a1ebf912bff59f9bef9e844",
+    "--evaluation-commit",
+    "8a4bf496c7547359a60d8736bcd4b4d9ff202bcb"
+  ],
+  "output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_H4_SPECIALIST01_20261108",
+  "stdout": "/opt/data/private/ZHY/logs/q1_h4_specialist_20261108.log",
+  "source_commit": "8a4bf496c7547359a60d8736bcd4b4d9ff202bcb",
+  "published_admission_commit": "8e7b24a3515d1044a575e2cae598a823a1e299f9",
+  "admission": {
+    "path": "/opt/data/private/ZHY/logs/session_records/q1_h4_specialist_admitted_20261108.json",
+    "bytes": 1480,
+    "sha256": "fc25e76ed740b35599ef8274f6b8f6572e55eb6ea9afdb3dde455a83ab6c422e"
+  },
+  "resources": {
+    "memory_total": 8036540416,
+    "memory_limit": 34292629504,
+    "oom": {
+      "oom_kill_disable": "0",
+      "under_oom": "0",
+      "oom_kill": "0"
+    },
+    "gpu": [
+      "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      " 1",
+      " 25"
+    ],
+    "disk_free": 183748931584
+  },
+  "prior_gpu_charged_seconds": 2492,
+  "original_training_restarted": false,
+  "user_accepted_checkpoint": null
+}

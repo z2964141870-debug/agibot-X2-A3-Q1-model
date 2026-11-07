@@ -1,0 +1,90 @@
+{
+  "stage": "R3_LATENT02_DEPLOYED_NATIVE_AND_ADMISSION_UNACKNOWLEDGED",
+  "source_commit": "906ce50265400a3cabd296a43bf54d69dc47fbbf",
+  "manifest_publication_commit": "932883df6f66b9a6e04129d01048e32cc4087305",
+  "code_archive": {
+    "bytes": 15828,
+    "sha256": "fbc4651f195df3f0b373feaa592f42104b8e9b0431b32592fbc5f439b5e72688"
+  },
+  "server_deployment": {
+    "acknowledged": true,
+    "files": 3,
+    "protected_old_files": 735,
+    "protected_sources_unchanged": true,
+    "receipt": "logs/session_records/q1_student_teacher_latent_r2_deployed_20261107.json"
+  },
+  "native_tests": {
+    "submitted": true,
+    "planned": 5,
+    "visible_progress_dots": 3,
+    "complete_receipt_received": false,
+    "receipt": "logs/session_records/q1_student_teacher_latent_r2_native_checks_20261107.json"
+  },
+  "admission": {
+    "command_submitted_after_native_command": true,
+    "complete_receipt_received": false,
+    "receipt": "logs/session_records/q1_student_teacher_latent_r2_admitted_20261107.json"
+  },
+  "connection": {
+    "session": 66625,
+    "latest_surface": "LOCAL_INTERACTIVE_ZSH_NOT_WINDOWS_OR_LINUX",
+    "previous_linux_session_exit": "Timeout, server 100.65.183.91 not responding.",
+    "autonomous_retry": {
+      "commands": [
+        "source /Users/yu/.zshrc",
+        "ssh -tt hp_han"
+      ],
+      "error": "ssh: connect to host 100.65.183.91 port 22: Operation timed out",
+      "failed_hop": "Mac to Windows",
+      "windows_shell_received": false,
+      "linux_attempted": false
+    },
+    "asked_user_to_test": false,
+    "sole_failure_cause_known": false,
+    "terminal_type_change_is_not_proven_network_fix": true
+  },
+  "native_checks_status": "UNKNOWN_UNTIL_RECEIPT_READ",
+  "admission_status": "UNKNOWN_UNTIL_RECEIPT_READ",
+  "new_latent02_training_dispatches": 0,
+  "planned_training_args": {
+    "config": "/opt/data/private/ZHY/script/q1_five_stage/conditional_shared_v04_20261104.json",
+    "runtime_config": "/opt/data/private/ZHY/data/manifests/primebot_q1_monitored_config_20261103.json",
+    "output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_LATENT02_20261107",
+    "pause_receipt": "/opt/data/private/ZHY/logs/session_records/q1_shared_user_pause_20261106.json",
+    "audit_root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_SHARED_CONVERGENCE_CKPT16_32_48_20261106",
+    "code_manifest": "/opt/data/private/ZHY/data/manifests/q1_student_teacher_latent_r2_code_20261107.json",
+    "manifest_sha256": "350816d0188f143536b37077b07749fcdaa7cce86ced7441dc1f4327cbf83c8b",
+    "evaluation_commit": "906ce50265400a3cabd296a43bf54d69dc47fbbf",
+    "training_root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R1_20261107",
+    "causal_plan": "/opt/data/private/ZHY/script/supermimic_teleop/student_causal_plan_20261107.json",
+    "source_split": "/opt/data/private/ZHY/data/manifests/q1_teleop_forecast_split_20261106.json",
+    "cost_ledger": "/opt/data/private/ZHY/logs/session_records/q1_low_latency_gpu_cost_20261107.json",
+    "r1_analysis_root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R1_REVIEW_ANALYSIS_20261107",
+    "initial_r2_root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R2_20261107",
+    "aggregate_root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R2_AGGREGATE01_20261107",
+    "auxiliary_root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_AUXILIARY_PAIR02_20261107",
+    "latent_plan": "/opt/data/private/ZHY/script/supermimic_teleop/student_latent_plan_20261107.json",
+    "latent_plan_sha256": "63149cb5cae8354f4cf12c658fae3f8a16ac0b26e314c17c81e27592f5e50320"
+  },
+  "cumulative_last_verified_charged_seconds": 1293,
+  "r3_last_verified_charged_seconds": 172,
+  "remaining_total_seconds": 13107,
+  "source_and_manifest_pushed_independent_full40_verified": true,
+  "mac_source_manifest_mirror": {
+    "files": 10,
+    "bytes": 783356,
+    "all_sizes_sha256_equal": true
+  },
+  "server_new_document_mirror": "PENDING",
+  "resume_first": [
+    "Read deployed/native_checks/admitted receipts and exact targets SHA",
+    "Inspect timeout command or remaining test/preflight process",
+    "Verify original root boot GPU pause old PID absence and actual lock/resources",
+    "Inspect LATENT02 output dispatch log process ledger before any Popen",
+    "Only after verified native tests and resource/source admission publish admission and uniquely dispatch LATENT02"
+  ],
+  "original_shared_training": "KEEP_USER_PAUSE",
+  "existing_low_latency_goal": "CONTINUE",
+  "user_accepted_checkpoint": null,
+  "authentication_recorded": false
+}

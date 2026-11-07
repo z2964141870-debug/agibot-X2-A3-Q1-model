@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07独立FP32物理蒸馏实现准备：四新执行模块/六宫图入口与五CPU检查.675秒全过，随机夹具3Adam非32k真实训练。已核PAIR02原控制lr.0001（草案.0003在运行前修订）/seed2026110703/3000更新/batch128/500验证/六Adam3000/逐点batch与24源各16000曝光；本地历史控制审计过、运行时身份及准入待。只加.1同状态教师动作WM物理特征误差，固定当前frame/std/presence且排除命令尾，学生f0/history不增未来/部署不加WM。累计1463/r3已342保持，尚未发布新清单/部署/服务器检查或真实训练；先全门再唯一WM_PHYSICAL01/1740s/1GiB/4096前向。选0同策略复用0/7，原共享暂停/原生失败/采纳null，不调用goal或新agent；入口README_Q1_WM_PHYSICAL_DISTILL及control_audit/preparation。
+
 - 2026-11-07 19:21精度对照已真实完成：358354/start36318263与358426退/guard WORKER_COMPLETED回收/source PASSED，FP32梯度88/88、原BF16 4/88，原生预测/VJP精确复现和逐source预测保留均过，原生FAILED保留。同256转移/376前向8反向/0新物理Adam，34秒SETTLED累计1463/r3已342；178/200/754退出后同/原锁计算空/OOM0/峰10615828480B与460MiB/末8024719360限34292629504/GPU1MiB26度/原五PID退且暂停同。112395B原值包Mac逐件SHA同，诊断六宫PNG/PDF两CSV已目视；单项FP32物理特征蒸馏仅设计登记，先核PAIR02精确设置/初始化/逐点batch曝光再实现发布与新准入，实际新训练0。33391原Linux自主固定入口复用，不问代测/不调用goal或新agent/采纳null；入口README_Q1_WM_PRECISION及completed，服务器新镜像以随后收据为准。
 
 - 2026-11-07 19:15精度对照实际准入：bacf186源码/96539f2新178清单均push独立40位远端/Mac十一份806739B同；33391六成员20198B包部署/748旧来源同，原运行时五CPU检查全过/2.431331秒，178执行/200冻结/754保护来源与原锁准入过，总8111087616限34292629504/GPU1MiB26度/计算空/OOM0/原暂停五PID退同。三原回执6030B及2333B包Mac SHA同，累计1429/r3已308全SETTLED；尚未派发/新CUDA0，发布准入后唯一PRECISION01/376前向8反向/300s64MiB，原生FAILED不改。自主固定source/ssh复用33391、不问代测、不调用goal或新agent/采纳null；入口README_Q1_WM_PRECISION与admitted，新文档服务器镜像待。

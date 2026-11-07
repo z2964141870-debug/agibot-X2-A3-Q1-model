@@ -1,6 +1,8 @@
 {
   "schema": "q1_frozen_fp32_wm_physical_distillation_v1",
-  "status": "DESIGN_REGISTERED_IMPLEMENTATION_AND_SOURCE_AUDIT_PENDING",
+  "status": "REVISED_BEFORE_TRAINING_IMPLEMENTATION_AND_SOURCE_AUDIT_PENDING",
+  "revision": 2,
+  "revision_reason": "Exact source audit found PAIR02 uses learning_rate=0.0001, not the draft 0.0003; no training ran under the draft",
   "hypothesis": "With a frozen one-step FP32 WM, matching the teacher's physical next-state features can weight action imitation by learned local dynamics without supplying future inputs to the student",
   "claim_scope": "Independent model-mediated distillation hypothesis, not a faithful GigaBrain loss reproduction and not evidence that physical gradients cause the observed f0 falls",
   "required_precision_result": {
@@ -26,9 +28,11 @@
   "selection": "Keep original validation action risk, equal state origins then equal source clips, including update0 and original validation points; no test-based selection and no changed score chosen after results",
   "maximum_updates": 3000,
   "batch_size": 128,
-  "learning_rate": 0.0003,
+  "learning_rate": 0.0001,
+  "seed": 2026110703,
   "gradient_norm_limit": 1.0,
   "validation_every_updates": 500,
+  "maximum_wm_step_calls": 4096,
   "required_exact_settings": "Any field here inconsistent with the source-audited original action-only control must block dispatch; publish a revised plan before any runtime change",
   "finite_checks": "Finite student action, masked physical prediction and loss each batch, finite encoder gradients, frozen component tensor SHA before/after, exact absent-joint zero contribution",
   "checkpoint_delivery": "Finite CPU selected/last saves and actual Adam counters, validation and auxiliary metrics, source/batch/exposure receipts, training six-panel PNG/PDF/CSV",

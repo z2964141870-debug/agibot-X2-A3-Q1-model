@@ -1,5 +1,13 @@
 # Q1 R1短预览编码器真实训练结果
 
+最新实核：北京时间12:43:59，经交互zsh原样`source /Users/yu/.zshrc`再`ssh -tt hp_han`及原服务器密码SSH成功进入原Linux。R1唯一RESUME2已于12:16:24实际COMPLETED／source_integrity PASSED，共23条case记录、29个结束守卫，累计1916.113731秒低于原2700秒；338151和末worker347778均退、末守卫回收／return0。原身份、旧五训练PID退出、人工暂停、GPU锁和计算空均同，GPU1MiB／25度、总7886499840B／限34292629504B、OOM0。原始收据尚待下载，本段以成功SSH工具观察为证。[完成观察](../logs/session_records/q1_student_r1_review_completed_observed_20261107.json)。
+
+**实际物理完整17／23，不能把执行完成当全部动作成功。** teacher H10、teacher H4、student H4三片各3／3完整，四类事件的teacher H4／student H4八条亦完整；teacher H1和student H1均0／3。按固定前走／起走／停走顺序，teacher H1有效66／1031、85／151、60／402步，student H1为53／1031、51／151、54／402。H1动作拟合改善尚未转成稳定闭环，六失败前缀保留，不生成全片误差或全组三片均值。H4质量是否改善仍待保存工件分析。
+
+随后沿59037发送已发布d1d02e7的6176B保存分析两源码包，未收到部署回执即该SSH报`Timeout, server ... not responding`退出至本地zsh；自主有界重连同一入口在第一跳`Operation timed out`，未Windows或Linux认证。部署状态UNKNOWN，五服务器新检查和实际分析未派发；恢复先核指定收据、包、两个目标SHA及receiver／输出／进程，不能直接重传。[部署待核](../logs/session_records/q1_student_r1_analysis_deployment_unacknowledged_20261107.json)。现成入口的只读有效设置仍为ConnectTimeout8／ServerAlive20×3；不改全局配置，不据此认定网络故障单因，不要求用户先测试。
+
+以下11:52及更早RUNNING／未完成说明均为历史，已由上述完成观察覆盖。
+
 更新：唯一RESUME2已于北京时间11:46:27实际派发，控制器338151/start33610519；最后成功现场11:52:06为RUNNING、四条case记录／五个已结束阶段，正在teacher H4起走。首teacher H10前走1031步由原结果复用；第一段NVIDIA3090 EGL原速视频已50fps／1032帧全解码通过，尚在服务器。四条记录不代表四条质量均已检查。后续旧观察会话退出，本轮自行原样`source /Users/yu/.zshrc`再`ssh -tt hp_han`的两次第一跳均报`Operation timed out`，未进Windows／未尝试Linux认证；实时任务待核，不把该错误当评估失败，不重派。原始派发收据仍待下载，本段依据此前真实工具回执。[派发与最后进度](../logs/session_records/q1_student_r1_review_resume_progress_20261107.json)。
 
 新增清单外只读`student_summary`及交付入口，五项本地检查和三文件AST已过，原245份执行源码逐项SHA同。正式COMPLETED、来源门通过及控制器回收后，独立分析23例／29阶段守卫，保留失败前缀、缺目标动作保持／恢复、capture事件窗口与三个嵌套软件计时；失败片不生成全片误差或三片均值。计划三张名义＋四张事件六宫图及PDF，真实闭环分析和新图仍为0，未部署。恢复先读实际result／guard／日志／PID／资源，再单次只读分析；不重训R1或补跑已成物理。[准备及精确连接记录](../logs/session_records/q1_student_r1_saved_analysis_preparation_20261107.json)。
@@ -20,7 +28,7 @@
 
 done：沿用户指定的现有密码SSH会话31470实际检查服务器，完成18片、4407个共同Primebot物理步的教师轨迹采集；在冻结32k教师、世界模型与共享解码器的条件下，仅训练复制的人体编码器。8000次真实Adam更新，十个Adam参数计数均8000，验证选5000。原始数值已回Mac并按压缩传输包SHA核对，训练六宫图PNG/PDF已生成和目视。
 
-todo：核实已派发的338151评估完成状态和来源门，再只读分析保存工件，交付完整率、离地／换脚、承重滑移、侧倾、上肢时序、动作突变与恢复、软件长尾以及GPU原速视频。之后再按失败推进f0当前＋历史学生和GigaBrain性质消融；不能以行为克隆拟合误差代替这些验证。
+todo：核实未回执的保存分析部署，完成五服务器检查及一次有界只读23例分析，交付完整率、离地／换脚、承重滑移、侧倾、上肢时序、动作突变与恢复、软件长尾和现有GPU原速视频。然后推进f0当前＋历史学生及GigaBrain性质消融；不能以行为克隆拟合误差或17例完整代替质量验证。
 
 ## 训练及实际成本
 

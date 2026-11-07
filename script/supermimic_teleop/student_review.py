@@ -116,8 +116,9 @@ def replay(args, config, runtime, plan, frozen):
         def action(self, frame, state):
             started = time.perf_counter_ns()
             reply = super().action(frame, state)
+            rpc_ns = time.perf_counter_ns()-started
             timing = validate_timing(reply["stream"], frame, args.horizon, args.variant, timeline)
-            telemetry.write(json.dumps(dict(timing, local_pipe_rpc_ns=time.perf_counter_ns()-started), allow_nan=False)+"\n")
+            telemetry.write(json.dumps(dict(timing, local_pipe_rpc_ns=rpc_ns), allow_nan=False)+"\n")
             if frame % 50 == 0:
                 telemetry.flush()
             return reply

@@ -25,3 +25,9 @@ CPU_STATE01_R2须为234状态/source_integrity PASSED且原结果SHA不变；897
 ## 当前状态
 
 实现与五本地合同通过，真实新CUDA/物理/训练0；服务器部署和实测以随后收据为准。CPU阶段证据已发布`f6da2817f5b6fd3e43f904dffd774edad4c648c0`，四小文件服务器镜像与899保护来源已核同，旧大包/全索引仍待同步。下一先此动作门，再回到未来帧依赖与闭环质量主线。
+
+## 真实部署与准入
+
+源码`6401814cb410bf886fe593ef2e051750f1edf479`已scoped audit、显式push/独立40位远端核同，Mac11文件820019B同。8205B五成员代码包SHA `fbafe01e21ee81fd40631d39c1fd79bb0d719fdf7716286b1e1c0ad4e3255a25`经当前45014逐片精确ACK部署，原899输入前后同。五原策略运行时合同本体.002秒/进程.224522秒全过；新准入12.729931秒通过、906保护来源同，原GPU锁及计算空/原训练暂停、总8053194752B/限34292629504B/OOM0/GPU1MiB25度/余盘183749693440B。三份原始回执5250B已Mac逐字节大小SHA匹配，尚无GPU任务派发或新的reserve；发布准入后只派一次。
+
+回执：[部署](../logs/session_records/q1_cpu_action_deployed_20261108.json)、[原运行时合同](../logs/session_records/q1_cpu_action_contracts_20261108.json)、[准入](../logs/session_records/q1_cpu_action_admitted_20261108.json)。

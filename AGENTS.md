@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 10:41固定用户入口31470实际恢复原Linux，原根boot/GPU/旧五PID退/STOPPED_SIGNAL/锁计算空/OOM0核同。上次R0/cache未知已查实：03:49:48 profiler COMPLETED/source_integrity PASSED/512调用/四条最大动作差0，不重发。新student_rollouts/fit/cost/training/worker与两新检查实现，本地16过/.658秒及六编译过；随机CPU夹具3次Adam不算32k训练。真实采样只12train和6validation源组、每片≤256步/trace状态动作门，R1新1740秒合并phase不扩原1800保护、持久账本分阶段与累计≤4GPU小时、原226清单不动；仍待发布/原运行时/资源准入及派发，服务器新训练0。用户明确不再询问入口可用性，应自行按固定入口实际尝试并精确报告哪一跳结果，原认证不存。入口README_Q1_STUDENT_TRAINING_PIPELINE_20261107及q1_student_pipeline_preparation_20261107；优先复用31470，原暂停/final采纳null/新goal active保持，不新agent或改其他自动任务。
+
 - 2026-11-07 04:47本地学生准备：新增student_inputs/data/models与三检查文件及有界训练plan，全24点R1时间mask、独立f0十步人体历史、冻结原解码器梯度核心已成；21项全过/0跳/0.634秒/六AST过，唯一随机CPU夹具一步SGD不算32k训练。120→50Hz右支持必须进依赖/ready时间，未可用当前改取过去支持并报告包龄，不能把H1或离线插值冒称f0；教师未来标签单独。新事件种子及167/98/128旧来源SHA已登记，原教师见393/旧test探索性保持。collector/controller/持久成本账本与原运行时32k动作等价仍待，真实新服务器训练0及4GPU小时未用；上次profiler/cache执行仍UNKNOWN、本阶段SSH0/原226来源不动、不重发。新goal继续active/原共享训练暂停/final采纳null保持；入口README_Q1_LOW_LATENCY_STUDENT_20261107和q1_student_local_preparation_20261107，服务器部署镜像待，优先本地补实际有界训练流水线，不以接口完成结算探索。
 
 - 2026-11-07 04:05新目标工具已创建active；旧q1工具确认不存在才同名重建ACTIVE十分钟同聊天/本地元数据独立核，不改其他任务。用户现成入口41828及有界35438均曾进原Linux，03:42身份暂停资源同。35438提交cache边界及profile派发未收回执即Timeout255，实际执行UNKNOWN，不重发/不循环认证；恢复先读q1_event_profile_dispatch/log/output/result及q1_rebase_cache_boundary收据，核PID和资源。入口q1_rebase_profile_unacknowledged_20261107；新训练0/原暂停不恢复/采纳null，先可独立推进本地时间语义和学生实现，不把已部署当已运行。

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07 10:41恢复：[原R0已完成，R1真实采样／有界训练／成本账本已本地实现](README_Q1_STUDENT_TRAINING_PIPELINE_20261107.md)。用户要求自行固定入口重试后31470直接进原Linux；原身份／人工暂停／旧五PID退／锁与计算空／OOM0核同。上次未回执R0实际03:49完成，512调用／四条动作最大差0／source_integrity PASSED，不重发。新增16本地检查过／随机CPU夹具3次Adam，真实32k学生与服务器新训练仍0；新源码发布、原运行时验证和准入待，原226清单不改。采样只12train／6validation组，源帧和动作对真实物理trace，训练1740秒单阶段、累计首轮≤4GPU小时持久账本；goal继续active／原训练不恢复／final采纳null保持。[准备收据](../logs/session_records/q1_student_pipeline_preparation_20261107.json)。
+
 2026-11-07 04:47：[短预览／f0历史学生独立输入与可训练核心已实现](README_Q1_LOW_LATENCY_STUDENT_20261107.md)，本地21检查过／0跳过／六AST同；保留120→50Hz插值右支持，未就绪帧不冒称当前或完整H4。R1全24点时间mask／R2小MLP均冻结共享解码器，唯一CPU随机夹具一步SGD不是32k训练；真实新服务器训练0／4GPU小时未用。新事件种子已登记，collector／controller／成本账本和原运行时动作等价待补。上一profile／cache提交仍UNKNOWN，原226源码不动／不重发／本阶段新SSH0，原训练保持暂停，goal继续active／final和采纳null保持。[准备收据](../logs/session_records/q1_student_local_preparation_20261107.json)。
 
 2026-11-07 04:05：新低延迟goal已工具创建active；旧q1被应用证实不存在，才创建同名q1／ACTIVE十分钟同聊天并本地独立核，其他任务未改。03:42原身份／训练暂停／旧五PID退／锁计算空／OOM0实核；后41828及有界35438原样入口都进过Linux，但profile派发与缓存边界提交未获回执即客户端Timeout255退出。实际执行UNKNOWN／不重发，恢复先读dispatch/log/result及缓存收据；新训练仍0，原训练不恢复。[恢复记录](../logs/session_records/q1_rebase_profile_unacknowledged_20261107.json)。

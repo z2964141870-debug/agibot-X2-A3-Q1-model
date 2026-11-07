@@ -145,6 +145,32 @@ class StudentLatentTests(unittest.TestCase):
                 fit_latent(native, labeled, payload, config, control, bad, failed,
                     time.monotonic_ns()+60_000_000_000, {})
 
+    def test_aggregate_rows_without_saved_full_goal_use_explicit_offline_reconstruction(self):
+        _, origins, _, _ = self.fixture()
+        values = {split:{key:data[key].copy() for key in ("f0", "history", "teacher_action", "clip_id", "frame")}
+                  for split, data in origins[1].items()}
+        preserved = copy.deepcopy(values)
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            for split, data in origins[1].items():
+                np.savez(root/(split+"_data.npz"), **{k:v for k, v in data.items() if k != "full_goal"})
+            with self.assertRaisesRegex(RuntimeError, "Reconstruct omitted"):
+                attach_goals(copy.deepcopy(values), root)
+            calls = []
+            def reconstruct(data):
+                self.assertNotIn("full_goal", data)
+                split = "train" if int(data["clip_id"].min()) < 2 else "validation"
+                calls.append(data["history"].copy())
+                return origins[1][split]["full_goal"].copy()
+            result = attach_goals(copy.deepcopy(values), root, reconstruct=reconstruct)
+            self.assertEqual(len(calls), 2)
+            for split in result:
+                for key in preserved[split]:
+                    self.assertTrue(np.array_equal(result[split][key], preserved[split][key]))
+                self.assertTrue(np.array_equal(result[split]["full_goal"], origins[1][split]["full_goal"]))
+            with self.assertRaisesRegex(RuntimeError, "invalid rows"):
+                attach_goals(copy.deepcopy(values), root, reconstruct=lambda data:np.zeros((1, 2254)))
+
 
 if __name__ == "__main__":
     unittest.main()

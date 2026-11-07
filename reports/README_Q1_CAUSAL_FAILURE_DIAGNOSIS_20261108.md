@@ -1,6 +1,6 @@
 # Q1 f0闭环失败：下一项独立诊断
 
-日期：2026-11-08。状态：独立入口已发布并部署，原服务器五项合同及852来源/资源/锁准入通过，真实新策略调用仍为0；准入发布后单次执行。
+日期：2026-11-08。状态：八段936次真实策略调用已清洁结束，两条新f0保存动作复现差均为0；末尾汇总因22物理关节索引误用于29槽而FAILED，原根保留。下一独立只读名字映射分析，不重跑936调用。
 
 扩大覆盖后验证风险下降36.69%，但选500的七例闭环全部比旧f0更早失败，见[真实结果](README_Q1_COVERAGE_CLOSED_LOOP_20261108.md)。下一项需要回答：同一实际机器人状态与人体历史下，动作偏差出现在输入构建、编码器输出，还是离开采样状态后的控制方向？不能再以相同离线风险的下降替代闭环目标。
 
@@ -35,3 +35,13 @@
 原Morph运行时五项检查全过，进程0.344895秒；北京时间2026-11-08 01:38:22独立准入12.946842秒通过：852来源、两片原失败证据、已选500身份、原暂停/设备和非阻塞锁及22/24GiB、18GiB80度、100GiB/private500GB门全过，账本2181秒、无未结预留，0新策略调用。三份原始收据1238B归档已Mac整包SHA核同并保留原字节，见[部署](../logs/session_records/q1_same_state_deployed_20261108.json)、[运行时](../logs/session_records/q1_same_state_native_checks_20261108.json)、[准入](../logs/session_records/q1_same_state_admitted_20261108.json)。准入owner366285只是已完成检查进程，不冒充长期controller。
 
 实际执行输出固定`/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_SAME_STATE01_20261108`，启动前再核输出/dispatch/log/精确进程全无及原暂停资源/账本，只有全无才单派。原312616B阶段文档镜像仍PENDING，本次仅五文件代码和三收据已核，不称历史所有文档已同步。
+
+## 八段调用已成，汇总映射错误
+
+准入`7f72e37aac778d697019763eabdae6c490fa5664`已发布并独立40位核同后，45014真实单派controller366422/start38617511。A022四策略各128次、A023四策略各106次，共936次全部守卫WORKER_COMPLETED/回收0，两条新500相对保存动作最大差各0；原f0/H4/H10均在同一状态前缀上已成。没有物理积分、渲染或Adam。
+
+原控制器末尾`compare`检查失败，错误为`ValueError: Require four aligned, finite canonical action prefixes and actual Q1 presence`。我在汇总时误把共同Primebot的上肢索引14–21当成canonical29槽；真实canonical22-present槽为0–13、15–18、22–25，上肢实际为15–18与22–25。原八段均有限、每段缺失槽非零计数均0，失误只发生于汇总分组。controller已退出/八自有阶段回收，252秒成本SETTLED，累计2433秒；原FAILED、日志和199执行来源保留，不能改写为原campaign成功，也不能重跑这些动作。
+
+独立`student_same_state_summary.py`已实现并有四项CPU合同，按SHA冻结的constants中`_JOINT_STEMS`/`JOINT_NAMES`的AST声明及保存的物理上肢名字构造唯一映射，禁止执行源模块或猜索引。只复用八段保存动作/时钟/计时/守卫及原852保护输入，前后核SHA，原失败保持；仅全部936实际调用和八清洁守卫都齐全才写独立SAME_STATE_SAVED_ANALYSIS_PASSED。拟总120秒/64MiB，0新增CUDA/物理/Adam；发布并核原运行时后执行，真实修复分析尚0。
+
+本机绘图入口`deliver_student_same_state.py`已按原FAILED与独立保存分析分开设计，仅AST过，尚无真实新图；分组残差不是关节跟踪误差，H4/H10仍仅离线特权参照。

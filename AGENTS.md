@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-08 CPU_ACTION01独立准备：新controller/worker/math和五本地合同已实现，复用A022/A023从frame0各32保存状态、总64新CUDA调用上限/0物理媒体Adam；只独立worker请求内换已过234CPU等价的转换器，异常恢复绑定/禁止动态，旧worker及199/200不动。原账本2433需先核/预留再回收结算，总300秒/64MiB/原资源锁保留；服务器部署合同准入与动作仍待。CPU结果f6da281已push/独立40位远端/Mac13份824262B同，四小镜像899保护同/旧大包索引PENDING；45014复用，原共享暂停/goal工具和新agent不用/采纳null保持。入口README_Q1_CPU_ACTION_20261108与preparation。
+
 - 2026-11-08 CPU_STATE01_R2真实完成：五原运行时合同过/本体.082秒，R2为CPU_STATE_EQUIVALENCE_PASSED/234状态/28.252531秒/897+2来源同，269/93/930原容差过/状态最大5.72e-6、观测历史1.91e-6。交替配对转换p50 6.199/7.160→.368/.402ms、p95 13.015/16.291→.760/.977ms；只CPU处理约降94%，完整worker/RPC/动作和硬件仍未验证，初始A022观测89.38ms尖峰保留。首派漏既有Git路径17.408秒导入失败/0状态，FAILED及8091B代码包保留；bfebfeb补标准environment并新R2，非重跑已成234。107841B/12成员原包Mac SHA86034e01fa778b77e908620d995b24793eedeb1931a5c4281ec8d99aa3059c5b同、两PNG两PDF CSV目视齐；两完整NPZ仍服务器。本轮0策略物理Adam/账本2433原字节同/无预留；02:37暂停五PID及CPU进程退、原锁计算空/OOM0/总8037265408限34292629504/GPU1MiB25度/余盘183749996544/private266930159616核同，45014复用。下一先独立小GPU动作等价门，再H4时间mask/闭环目标，不修改旧worker或重跑936/七失败，不恢复共享/goal工具/新agent/采纳null保持；入口CPU_STATE_RESULT与详细README，旧大包镜像PENDING，小镜像和发布见随后收据。
 
 - 2026-11-08独立CPU_STATE01准备：新native_state_cpu/配对入口/五坐标不可变性合同已实现，服务器执行待。真实策略Torch2.11+cu128/MuJoCo3.11，不用物理3.6代替；独立MjData只运动学/XBODY原点、根角速度世界转局部，269/93/930逐帧atol=rtol2e-5、FK绝对3e-5。仅保存A022128+A023106各原/新一次交替，300s/64MiB/RSS2GiB、原22/24GiB/锁资源保持，GPU账本2433原字节不改。45014原Linux仍成功、GPU1MiB25度/OOM0/总8031719424/余盘183751458816，原暂停同；不新认证/问代测。下一发布新三文件后原运行时合同/有界CPU检查，若过再独立小型GPU动作门，勿直接改旧worker或重跑936/七失败，原共享不恢复/采纳null/goal工具和新agent不用。入口README_Q1_CPU_STATE_20261108和preparation；旧大包镜像PENDING保持。

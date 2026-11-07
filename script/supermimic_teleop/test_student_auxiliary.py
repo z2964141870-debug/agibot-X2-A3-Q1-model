@@ -7,6 +7,9 @@ import tempfile
 import time
 from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
+import sys
+from types import ModuleType
 
 import numpy as np
 import torch
@@ -14,6 +17,7 @@ from torch import nn
 
 from student_auxiliary_data import target_indices, transition_records
 from student_auxiliary_fit import TransitionHead, fit_pair
+from student_auxiliary_worker import native_contracts
 from student_fit import cpu_state, module_sha
 from student_inputs import fit_current_statistics
 from student_models import current_student
@@ -42,6 +46,21 @@ class StudentAuxiliaryTests(unittest.TestCase):
         self.assertFalse(np.isin([22, 51, 64, 92], indices).any())
         with self.assertRaises(ValueError):
             target_indices(np.ones(29, dtype=bool))
+
+    def test_native_state_import_occurs_after_sparse_contract_installation(self):
+        bootstrap = ModuleType("bootstrap")
+        rewards = ModuleType("morphmimic.model.rewards_torch")
+        calls = []
+        def install(robot):
+            calls.append(robot)
+            rewards.analytic_obs = "installed observation contract"
+            return dict(robot="installed sparse Q1")
+        bootstrap.install = install
+        with patch.dict(sys.modules, {"bootstrap":bootstrap, "morphmimic.model.rewards_torch":rewards}):
+            spec, observation = native_contracts()
+        self.assertEqual(calls, ["q1"])
+        self.assertEqual(spec, "installed sparse Q1")
+        self.assertEqual(observation, "installed observation contract")
 
     def test_next_state_is_frame_plus_one_under_executed_behavior(self):
         data, traces, present, obs = self.fixture()

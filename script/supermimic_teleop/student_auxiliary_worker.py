@@ -15,6 +15,13 @@ from delivery import read
 from paused_runtime import assert_owner
 
 
+def native_contracts():
+    from bootstrap import install
+    spec = install("q1")["robot"]
+    from morphmimic.model.rewards_torch import analytic_obs
+    return spec, analytic_obs
+
+
 def load_origin(root, *, aggregate, observation, present):
     from student_auxiliary_data import transition_records
     collection, receipt = read(root/"collection_result.json"), read(root/"dataset_receipt.json")
@@ -50,17 +57,15 @@ def run(args):
     require(torch.cuda.is_available() and torch.cuda.device_count() == 1, "Admitted CUDA device unavailable")
     torch.backends.cuda.matmul.allow_tf32 = False
     torch.backends.cudnn.allow_tf32 = False
-    from bootstrap import install
     from inference import load_policy
     from interim_review import load_physical_robot
-    from morphmimic.model.rewards_torch import analytic_obs
     from q1_native_review import native_state
     from student_auxiliary_fit import fit_pair
     from student_fit import module_sha
 
     audit = read(args.output/"checkpoint_audit.json")
     teacher = next(row["checkpoint"] for row in audit["records"] if row["robot"] == "q1")
-    spec = install("q1")["robot"]
+    spec, analytic_obs = native_contracts()
     native, metadata = load_policy(Path(teacher["path"]), spec, plan["code_commit"], "cuda:0", expected_plan=plan)
     payload = torch.load(args.initial_r2_root/"selected.pt", map_location="cpu", weights_only=True)
     require(metadata.get("iteration") == 32000

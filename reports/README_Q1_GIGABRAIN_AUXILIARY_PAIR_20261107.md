@@ -51,3 +51,9 @@ action_only组只对原encoder施加动作蒸馏；next_state组增加0.1倍next
 07:25UTC附近真实准入163新执行来源/200冻结/729保护输入通过，原12train/6val数据复用和原GPU锁检查后释放；GPU1MiB26度、总8073879552B/限34292629504B/OOM0。三原始回执已Mac精确取回，2410B归档SHA `b3b93ee2405f9c740a6eaec03c56f0c584daaeebe9cad5b1c330b2693f9ae5ff`。真实新训练仍0；先发布本准入再单派新根，不能据准备或随机夹具当实际学生训练。
 
 [部署](../logs/session_records/q1_student_auxiliary_pair_deployed_20261107.json) / [原运行时检查](../logs/session_records/q1_student_auxiliary_pair_native_checks_20261107.json) / [准入与参数](../logs/session_records/q1_student_auxiliary_pair_admitted_20261107.json)。新执行清单163项；省略的旧非执行测试/绘图仍受旧授权保护，原256和冻结200文件没有修改。
+
+## 首派初始化错误与修订
+
+PAIR01于15:28派发354447/start34938997，worker354519在导入顺序门退出：`analytic_obs`间接先加载native state，而稀疏Q1 contracts必须先安装。尚无action_only/next_state拟合目录，真实optimizer更新0；守卫已回收、原锁/计算空、费用14秒SETTLED，总1135/14400秒、r3已14/7200。原FAILED根和23272B精确源码包保留，不能把这次代码故障称策略失败或桥接故障。
+
+修订仅新worker的初始化边界：先`install("q1")`再导入解析观测，增加真实调用同一初始化函数的本地回归。旧256/200冻结代码不动，原失败源码由发布提交和原八成员精确包保留；下一新PAIR02根，原1740秒阶段和r3累计预算不扩。发布修订后还须原运行时七检查及真实初始化加载、再准入与唯一派发。

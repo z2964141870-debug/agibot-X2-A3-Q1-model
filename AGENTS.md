@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 f0闭环准备：独立causal_review／worker与七本地合同0.042秒全过，只新增三名义＋四事件共七f0物理及七GPU媒体，十四R1教师H4／studentH4基线严格复用、目标SHA必须同。逐帧捕获／到达／插值支持／十历史槽／200ms包龄和fallback核验；源／已结算R2训练／回收及R1保存23分析先行，真实f0调用物理训练0。任务1800秒／原阶段1800／3GiB／原资源锁保持。训练2734cc5和收据15564b0已push／独立40位远端／主根核同，251清单和八成员28986B包齐、服务器待；25164严格用户入口第一跳超时，未Windows或Linux认证，自行有界续试、不问用户先测、不推断338151后台失败。原共享暂停／549秒已用13851余量／新goal继续／采纳null；入口README_Q1_F0_HISTORY_STUDENT和q1_student_r2_review_preparation。
+
 - 2026-11-07 R2本地准备：新增独立student_causal_fit／training／worker、两个检查与训练六宫图，六Python AST／JSON过、最新十检查全过/.689秒；每次CPU夹具三Adam，R2服务器更新0／原549秒及13851余量不变。原R1真实状态／动作与f0特征可复用，12train+6val源／train-only归一化／源均衡／validation选点，不读未来goal入学生，不重采物理。实际R2必须先R1闭环COMPLETED／源门／回收和保存23例分析通过，再原运行时／资源／原锁准入；1740秒单阶段／R2累计4500／原账本不换。原245源码SHA同，新六宫图实际0／未部署。固定入口45958第一跳Timeout、69314等待后reset，未Windows／Linux认证，不泛化后台失败或重派338151；最后11:52历史RUNNING。入口README_Q1_F0_HISTORY_STUDENT与q1_student_r2_preparation；原共享暂停／goal继续／采纳null／不新agent。
 
 - 2026-11-07 R1唯一RESUME2已11:46:27实际派发338151/start33610519，11:52最后现场RUNNING／四case记录五阶段／teacher H4起走，首teacher H10原1031步复用及首GPU50fps1032帧视频全解码过；原派发收据待Mac。31470/36883与此前99689均已退，本轮严格固定用户入口58643和77008第一跳Operation timed out，未Windows或Linux认证，不泛化后台停机／不再让用户先测试入口，不探旧句柄或重派。新student_summary／test／deliver三文件位于245运行来源之外，五本地检查／三AST过、245源码SHA同；须实际COMPLETED／source门及回收后独立300秒只读分析，七六宫图尚未生成，真实分析0。原共享暂停／成本549秒／剩13851训练秒／新goal继续／采纳null保持。入口README_Q1_STUDENT_R1_RESULTS及q1_student_r1_review_resume_progress、q1_student_r1_saved_analysis_preparation；新文档和分析源码服务器镜像待补。

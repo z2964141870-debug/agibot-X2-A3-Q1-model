@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07 13:56：[R2因果学生七例实际完成，动作0/7完整](README_Q1_F0_HISTORY_STUDENT_20261107.md#真实闭环结果)。名义三片有效185/1031、119/151、176/402，四事件194/210/204/199步后失败；十四旧H4对照严格复用，R1 H4三片仍全完整。保存分析1.316228秒PASSED/692来源同，188850B原包Mac SHA同，七PNG/七PDF/总览已目视，失败无全片或三片均值。各例fallback0、失败远晚于历史填满；完整worker稳定中位约31ms，不能据目标区间约10ms称20ms达标。下一独立学生状态聚合方案与现有视频补传，尚未新采集/训练。成本累计623/14400秒、余13777，原共享暂停/采纳null；59037现有原Linux继续复用，不让用户代测连接。[实证](../logs/session_records/q1_student_r2_closed_loop_completed_20261107.json)。
+
 2026-11-07 13:34：[R2真实f0训练完成，七例闭环已实际准入](README_Q1_F0_HISTORY_STUDENT_20261107.md)。3500Adam／validation选500，来源门和回收通过，成本74秒；原累计623／14400秒／余13777。71909B原始包Mac SHA同，训练六宫图已目视；254执行／200冻结／2132保留证据、十四旧H4对照及原GPU锁准入过，七新运行时检查全过，发布后单派七f0物理和七GPU媒体。R1真实数值已下载、七比较六宫图和PDF已目视，左右滑移混合及H1六失败不掩盖。当前59037原Linux，用户固定入口自行恢复成功，不再询问用户先测；原共享暂停／采纳null保持。[实测](../logs/session_records/q1_student_r2_completed_20261107.json)／[R1图表](../logs/session_records/q1_student_r1_matched_figures_delivered_20261107.json)。
 
 2026-11-07 13:14：[R1保存23例分析已真实通过，R2训练已实际准入](README_Q1_F0_HISTORY_STUDENT_20261107.md#已恢复的r1与独立保存分析)。R1 4.761458秒／587源同／348099退，17完整六H1失败；混合质量变化保留，Mac七图待数值下载。R2 V2八成员28482B已部署、十服务器CPU检查2.104s过、251执行／200冻结／613控制及真实复用数据／R1保存分析／锁准入均过；真实训练尚未派发，发布后单派。原549秒／13851余量、共享暂停／采纳null保持。旧包夹带AppleDouble计数已明确更正，未部署旧包、源码清单不改。[R1分析](../logs/session_records/q1_student_r1_saved_analysis_completed_observed_20261107.json)／[R2准入](../logs/session_records/q1_student_r2_fit_admission_observed_20261107.json)。

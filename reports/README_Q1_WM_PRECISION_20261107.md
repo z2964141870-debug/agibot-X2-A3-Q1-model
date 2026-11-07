@@ -1,14 +1,31 @@
 # Q1冻结世界模型的BF16与FP32独立对照
 
-2026-11-07。独立代码已部署，原运行时与来源/资源准入通过，真实精度对照尚未派发。原共享训练继续保持用户暂停，原生物理梯度FAILED与采纳null不变。
+2026-11-07北京时间19:18，独立精度对照已实际完成：`WM_PRECISION_COMPLETED`、diagnostic_screen/source_integrity均PASSED。19:21完成退出、来源、资源和成本复核。原共享训练继续保持用户暂停，原生物理梯度FAILED与采纳null不变。
 
 ## 用户版done与todo
 
-done：上一步实际世界模型预测校准通过，但BF16物理梯度有限差分仅4/88项通过。原结果、六宫PNG/PDF和两份CSV已归档，没有直接开始依赖该梯度的新训练。
+done：相同权重、256条保存转移、四个锚点和原阈值下，FP32物理梯度有限差分88/88通过，原BF16为4/88。原生预测及四个VJP逐值复现，原生FAILED保留；预测校准和逐source质量保留门均通过。
 
-done：独立实现的五项聚焦CPU检查通过，已发布部署；原服务器五项检查和实际资源/来源准入也通过，三份原始回执已Mac逐字节核同。
+done：376次WM.step、8次标量反向、0新物理/渲染/Adam，持锁34秒已结算，累计1463/14400秒。原值逐文件大小SHA核同，新的诊断六宫PNG/PDF及两份CSV已生成并目视。
 
-todo：发布准入后唯一有界执行，在相同权重、相同256条保存数据和四个锚点上，仅将独立影子的autocast改为FP32，检查梯度和预测质量；原生BF16结果始终保留。
+todo：已登记固定FP32世界模型的独立物理特征蒸馏设计；先审计已完成action-only控制的精确设置、同批次曝光和初始化，再实现发布及独立准入。学生仍只看f0/history，该设计尚未开始训练。
+
+## 真实完成结果
+
+控制器358354/start36318263与worker358426均已退出，guard为WORKER_COMPLETED/return0且worker_reaped；178执行/200冻结/754保护输入退出前后同。缺失七关节梯度与扰动物理响应仍严格为零，四组存在关节均22/22通过。88表示每关节至少一种预登记epsilon通过，不表示全部176个epsilon逐项通过，也不表示完整物理Jacobian。
+
+| validation状态来源，各六片等权 | BF16关节误差rad | FP32关节误差rad | BF16身体误差mm | FP32身体误差mm |
+| --- | --- | --- | --- | --- |
+| 原教师状态 | 0.002325322 | 0.002254676 | 0.448462 | 0.443072 |
+| 教师学生混合状态 | 0.002896251 | 0.002843029 | 0.545368 | 0.543459 |
+
+关节误差分别下降3.038%/1.838%，身体误差下降1.202%/0.350%。完整逐source、六项物理指标和每个epsilon保留，不能用这些均值替代闭环质量。独立FP32影子仅关闭本地BF16 autocast，TF32保持关闭，全部权重/normalizer不变；该对照支持本批样本的数值梯度实验，未证明BF16造成此前f0倒地，也未认证原训练动力学、自然遥操或硬件延迟。
+
+退出复核：峰cgroup10615828480B/GPU460MiB，末总8024719360B/限34292629504B，GPU1MiB26度/OOM0/计算进程空，原锁可获取后释放，旧五训练PID仍退出。成本本次34秒、累计1463/14400、r3已342/7200秒，全部SETTLED，无重置。
+
+[真实派发](../logs/session_records/q1_wm_precision_dispatch_20261107.json)、[控制器结果](../logs/session_records/q1_wm_precision01_result_20261107.json)、[完整诊断703660B](../logs/session_records/q1_wm_precision01_precision_result_20261107.json)、[守卫](../logs/session_records/q1_wm_precision01_guard_20261107.json)和[退出实核](../logs/session_records/q1_wm_precision_completed_20261107.json)已原字节传回Mac。结果包112395B/SHA `206898aa49f5e68e787b499c82293a43fb5f69fe806bc31d5e98c5259f20e5cb`全部成员核同，不重传或重做。新图与压缩包位置见本阶段figures_delivered收据。
+
+新证据ZIP为`data/deliveries/Q1_WM_PRECISION01_EVIDENCE_20261107.zip`，311946B/SHA `c902f6c707f23db424bed7f98039fca81e423a39498bbd07eeafbe25e7f0471b`，16成员CRC/逐件大小SHA及14相对链接通过。包内含简版README、六宫PNG/PDF、两CSV、原生与FP32完整原值、守卫/派发/成本及两预登记方案；本次没有新增训练曲线或视频。[交付收据](../logs/session_records/q1_wm_precision01_figures_delivered_20261107.json)。
 
 ## 假设与公平比较
 
@@ -30,7 +47,7 @@ BF16 autocast的量化可能使小扰动中心差分为零而自动微分非零�
 
 ## 实现与边界
 
-独立`wm_precision_probe.py`控制器、`wm_precision_worker.py`及`wm_precision_math.py`，复用原严格WM载入、数据重建、原物理指标、guard和持久成本账本。原175执行/200冻结源码不改。新聚焦检查覆盖影子隔离、拒绝可训练模型、单次VJP复现、禁止均值掩盖source回退和禁止缺失/重复source；真实CUDA尚为0。
+独立`wm_precision_probe.py`控制器、`wm_precision_worker.py`及`wm_precision_math.py`，复用原严格WM载入、数据重建、原物理指标、guard和持久成本账本。原175执行/200冻结源码不改。新聚焦检查覆盖影子隔离、拒绝可训练模型、单次VJP复现、禁止均值掩盖source回退和禁止缺失/重复source；实际CUDA调用及结果见上方完成记录。
 
 唯一新输出：`/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_WM_PRECISION01_20261107`。原PROBE01/02输出及失败证据不改；派发前核output/log/dispatch/receipt及实际进程，观察失联不能作为重派依据。
 
@@ -40,7 +57,9 @@ BF16 autocast的量化可能使小扰动中心差分为零而自动微分非零�
 
 ## 下一步
 
-先执行这项小样本精度对照。若数值梯度与预测保留同时过门，再登记固定教师/decoder/WM下单项物理误差训练，与同曝光action-only比较；若未过，保留反证并改用不依赖错误物理梯度的适配方向。不得从本计划自动开始训练，也不重复已完成的84事件、七条同策略失败物理或同数据latent拟合。
+精度与预测保留已同时过门，下一[预登记设计](../script/supermimic_teleop/wm_physical_distill_plan_20261107.json)只加0.1倍同状态、同当前坐标系的教师物理特征蒸馏，排除末29维命令缓存及缺失feature。教师目标为同状态下教师动作的冻结WM预测，不错用其他行为动作的日志下一状态。冻结teacher/decoder/WM和原R2统计；不增加未来信息或新辅助头。
+
+必须先精确审计原PAIR02 action-only控制的初始化、设置、每验证点batch SHA和source曝光，不一致就阻止派发并修订发布计划。最多3000更新/1740秒拟合/1800秒保护/1GiB，选择仍只用原validation动作风险且包含update0。若选中策略与R2精确相同，直接复用0/7证据，不重复失败物理；实际实现及训练尚未完成。不把这项独立假设称为GigaBrain损失的忠实复现。
 
 ## 真实部署与准入
 

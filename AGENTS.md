@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 19:21精度对照已真实完成：358354/start36318263与358426退/guard WORKER_COMPLETED回收/source PASSED，FP32梯度88/88、原BF16 4/88，原生预测/VJP精确复现和逐source预测保留均过，原生FAILED保留。同256转移/376前向8反向/0新物理Adam，34秒SETTLED累计1463/r3已342；178/200/754退出后同/原锁计算空/OOM0/峰10615828480B与460MiB/末8024719360限34292629504/GPU1MiB26度/原五PID退且暂停同。112395B原值包Mac逐件SHA同，诊断六宫PNG/PDF两CSV已目视；单项FP32物理特征蒸馏仅设计登记，先核PAIR02精确设置/初始化/逐点batch曝光再实现发布与新准入，实际新训练0。33391原Linux自主固定入口复用，不问代测/不调用goal或新agent/采纳null；入口README_Q1_WM_PRECISION及completed，服务器新镜像以随后收据为准。
+
 - 2026-11-07 19:15精度对照实际准入：bacf186源码/96539f2新178清单均push独立40位远端/Mac十一份806739B同；33391六成员20198B包部署/748旧来源同，原运行时五CPU检查全过/2.431331秒，178执行/200冻结/754保护来源与原锁准入过，总8111087616限34292629504/GPU1MiB26度/计算空/OOM0/原暂停五PID退同。三原回执6030B及2333B包Mac SHA同，累计1429/r3已308全SETTLED；尚未派发/新CUDA0，发布准入后唯一PRECISION01/376前向8反向/300s64MiB，原生FAILED不改。自主固定source/ssh复用33391、不问代测、不调用goal或新agent/采纳null；入口README_Q1_WM_PRECISION与admitted，新文档服务器镜像待。
 
 - 2026-11-07精度对照准备：独立wm_precision控制器/worker/math和五新CPU检查.038秒全过，复用冻结WM载入/256原选行/原guard账本；仅影子cfg.bf16=False，原生四VJP要求逐值复现/原FD直接复用，FP32四VJP同epsilon和预测保留门，376前向/8反向/300s/64MiB，真实新CUDA0。原生科学FAILED不改，先发布178新清单/服务器五检查/来源资源准入再唯一PRECISION01，不恢复原共享/不重复物理或旧拟合。结果e96479de93646a2fbd4b8e626ab33a875ba6d186已push/独立40位/Mac十三份1164479B同；新证据ZIP220785B/SHA f8d6c17c5227babd387bd1133ae4400dd284f3383609c9dfa248213bf4310eaa/14成员12链接核过。累计1429/r3已308全SETTLED，33391原Linux自主复用/断开自行固定source/ssh尝试，不询问用户代测，不调用goal或新agent/采纳null；入口README_Q1_WM_PRECISION，服务器新文档镜像待。

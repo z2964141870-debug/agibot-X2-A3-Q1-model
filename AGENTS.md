@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 15:40 R3 PAIR02真实完成：354888/start34987257及354961回收/source PASSED/两组各3000Adam与同batch SHA；next-state validation MSE下降42.15%，动作风险.094864→.115836，action-only.114754，均选0。CPU八encoder张量/八策略元数据精确同原R2/最大差0/CUDA0/辅助头不部署，原0/7仅同策略历史复用，不重复七物理或试last挑test。18成员90849B包/17工件432402B全Mac大小SHA同，双训练PNG/PDF已目视；131秒SETTLED加首派14秒，总1266/14400余13134/r3已145，峰10414170112B/GPU480MiB/OOM0/原锁和计算空。56557原Linux/echo OFF，固定用户入口自主恢复不询问代测；R1媒体part1968000B完整块/无pending，仅续传。下一教师隐变量监督独立假设需先登记来源/预算、复用严格同曝光控制；原共享暂停/既有goal继续/采纳null/不新agent。入口GIGABRAIN_AUXILIARY_PAIR及completed/selected_identity/figures_delivered，新文档镜像以publication为准。
+
 - 2026-11-07 15:33 R3修订准入：首PAIR01初始化顺序错误、实际Adam0/354447及354519退出回收/14秒SETTLED，FAILED及原23272B源码包保留，非策略或连接失败。新worker先装稀疏contracts再import state，5f430b4已push/独立远端/Mac核同，三成员14112B包部署/旧700来源同。原运行时七检查及真实native_contracts加载过/合22.766922秒、CUDA0；163/200/729来源和原锁准入过，GPU1MiB26度/OOM0/总8073822208限34292629504。五原回执4090B包已Mac SHA同，下一发布准入后唯一PAIR02；原1135/14400账本/r3已14不重置，不重采物理或恢复原共享训练/goal继续/采纳null/无agent，56557原Linux。入口GIGABRAIN_AUXILIARY_PAIR与pair_r2_admitted，新文档镜像待。
 
 - 2026-11-07 15:25 R3配对真实准入：固定用户入口56557自主进原Linux、原身份暂停/旧PID退/锁计算空同；728f804已push/独立40位核同，八成员23272B包只新增/旧700来源同。原运行时六CPU检查4.193942秒过，163新执行/200冻结/729保护输入/原12train6val数据和GPU锁准入过后释放，总8073879552限34292629504/GPU1MiB26度/OOM0。三原始回执2410B包已Mac SHA同，真实新训练0，先发布本准入再唯一PAIR01单派；原1121秒账本/r3及总界不重置，不重采数据或恢复原共享训练/goal继续/采纳null/不新agent。入口GIGABRAIN_AUXILIARY_PAIR和auxiliary_pair_admitted，服务器新文档镜像待。

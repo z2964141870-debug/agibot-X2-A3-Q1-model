@@ -1,12 +1,44 @@
 # Q1低成本下一状态辅助预测对照
 
-日期：2026-11-07。状态：独立实现和六项本地检查完成，真实服务器训练尚未开始。继续既有低延迟目标，不另建目标；原共享160k训练保持人工暂停，32k教师、世界模型、共享解码器、动力学、保存频率、原final门和采纳null保持。
+日期：2026-11-07。状态：PAIR02真实完成，两个训练六宫图已交付；辅助预测学会了下一状态，但没有改善validation动作风险，两组都选update0。CPU精确策略身份审计通过，复用原R2失败证据而未重复七例闭环。继续既有低延迟目标，不另建目标；原共享160k训练保持人工暂停，32k教师、世界模型、共享解码器、动力学、保存频率、原final门和采纳null保持。
 
 ## 用户版done / todo
 
-done：只读已保存的学生状态聚合数据，完成真实动作残差分析；验证集腿部RMS为0.409864，训练集为0.083068，单位为canonical动作delta，并非关节跟踪rad。两集上肢为0.133632与0.040352。该差异提示当前学生泛化仍弱，但不单独证明倒地原因。新增两组严格同初始化、同3000更新、同采样批次的训练入口，本地六项检查通过；随机CPU夹具不是32k真实训练。
+done：严格同初始化、同批次、各3000Adam的两组真实GPU拟合完成，来源门与清洁回收通过。下一状态validation MSE下降42.15%，但动作风险由0.094864变为0.115836；action-only末值0.114754，也未改善。两组均选初始策略，八个encoder张量和八项策略元数据与原R2精确相同。两张训练六宫图PNG/PDF已经生成并目视核看；本轮持锁成本131秒，首派代码故障14秒另计，总累计1266/14400秒。
 
-todo：发布后在原服务器运行时验证、核身份/暂停/资源/原GPU锁，再唯一派发配对实验。只改变辅助预测这一项；完成后交付两张训练六宫图，根据validation动作误差选择模型。选0或模型精确未变时复用既有失败证据，不重复相同七例物理；选中策略确实变化后才做独立闭环验证。R1视频part继续补传，不重渲染。
+todo：停止追加本配方迭代。下一项先核查教师隐变量监督是否比单独动作蒸馏更有效，独立登记后只改变这个训练信号，复用本轮严格匹配的action-only控制。未来教师信息只能用于离线标签；部署仍须通过f0可见性、真实闭环和完整软件周期检查。R1视频part继续补传，不重渲染。
+
+## 真实完成与结论
+
+PAIR02控制器354888/start34987257、worker354961已退出并被守卫回收；campaign为`PAIRED_FIT_PASSED_PENDING_CLOSED_LOOP`，`source_integrity=PASSED`。两组encoder六个Adam计数各为3000，辅助头四个计数各为3000。真实新增物理0、动作拟合6000更新，辅助头只有next_state组更新。原PAIR01失败根保留。
+
+| 实测指标 | action_only | next_state，权重0.1 |
+| --- | ---: | ---: |
+| 初始validation动作风险 | 0.094863855 | 0.094863855 |
+| 末validation动作风险 | 0.114754134 | 0.115836185 |
+| 相对初始动作风险变化 | +20.97% | +22.11% |
+| validation选中更新 | 0 | 0 |
+| 初始validation状态MSE | 0.114778208 | 0.114778208 |
+| 末validation状态MSE | 0.114287422 | 0.066393794 |
+| 实际拟合秒数 | 52.057131 | 53.832584 |
+
+两组批次SHA精确同为`862a2d90afcf5d9eec560de409bd5f445a7f8b7d0ca25690b64db33eb711a6a5`，24个origin/source格每格曝光16000条。原/混合train与validation的当前history重建最大差均0，没有跨终止行。下一状态标签、实际执行动作和保存物理trace均通过；这说明本项实验语义成立，不等于遥操效果改善。
+
+CPU选中策略审计于15:40:58通过：两组八个encoder张量最大差0、八项策略元数据和教师来源相同、辅助头未部署、CUDA未初始化。序列化文件SHA因外层元数据不同而不同，不能仅比`.pt`文件SHA判策略变化。两组selected encoder SHA均为`8824f3098459816c08d882de89199183e22ffc3626231242b9823d1847b5a1b9`。原R2的0/7完整动作只作为精确同策略的历史证据复用；本轮新闭环0，不能称新的R3质量验收或尝试未选中last权重挑test。
+
+结论仅否定当前数据、容量、辅助权重与训练预算下的这一项迁移：辅助状态预测改善没有转化成validation动作改善。不能据此否定完整GigaBrain行为世界模型，也不能说当前f0自然遥操已可用。完整worker约31ms超过20ms的旧问题仍未解决，硬件端到端延迟未实测。
+
+本轮131秒已SETTLED，加首派14秒，本项r3累计145/7200秒；原R1 549秒、R2 572秒，首轮总1266/14400秒、余13134秒。峰cgroup10414170112B/GPU480MiB/OOM0；完成现场原训练暂停、五旧PID与本轮子树均退出、原锁释放、GPU计算空。缓存回收没有重复尝试，原共享训练信号0。
+
+### 原始结果与训练六宫图
+
+- [真实派发](../logs/session_records/q1_student_auxiliary_pair_r2_dispatch_20261107.json)、[真实完成](../logs/session_records/q1_student_auxiliary_pair_completed_20261107.json)、[精确同策略审计](../logs/session_records/q1_student_auxiliary_pair_selected_identity_20261107.json)。
+- [action-only六宫图](../data/analysis/Q1_STUDENT_R3_AUXILIARY_PAIR02_FIGURES_20261107/action_only_training_six_panel.png)、[PDF](../data/analysis/Q1_STUDENT_R3_AUXILIARY_PAIR02_FIGURES_20261107/action_only_training_six_panel.pdf)。
+- [下一状态辅助六宫图](../data/analysis/Q1_STUDENT_R3_AUXILIARY_PAIR02_FIGURES_20261107/next_state_training_six_panel.png)、[PDF](../data/analysis/Q1_STUDENT_R3_AUXILIARY_PAIR02_FIGURES_20261107/next_state_training_six_panel.pdf)。
+- 原始18成员结果包`data/deliveries/Q1_STUDENT_AUXILIARY_PAIR02_RESULTS_20261107.tgz`：90849B/SHA `09b989efb2fc20c7659d22ba7d6e68553d9456a3f4340f0d13e06afe0db0446e`，17份原始工件432402B逐项大小SHA核同。权重未下载到Mac。
+- [交付记录](../logs/session_records/q1_student_auxiliary_pair_figures_delivered_20261107.json)。无新策略媒体；原R2两失败视频保持原路径，R1七视频包仍仅部分传回，不能记作新视频交付。
+
+以下为准备、首派失败和修订准入的历史记录；最新实际状态以上述完成与身份审计为准。
 
 ## 为什么做这项实验
 

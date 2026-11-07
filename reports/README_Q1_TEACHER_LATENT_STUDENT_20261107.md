@@ -1,12 +1,12 @@
 # Q1当前历史学生的教师隐变量监督
 
-日期：2026-11-07。状态：LATENT01在聚合数据缺少`full_goal`时退出，优化器更新0；进程已回收，27秒成本已结算。离线标签重建修订已发布部署，五项原运行时检查已取到实际全过回执；17:13新准入已通过，170执行/200冻结/745保护输入及原GPU锁核同。三份原始回执已Mac大小SHA同。LATENT02尚未派发，先发布本准入再唯一派发。原共享训练保持人工暂停，首轮累计1293/14400秒成本不重置。
+日期：2026-11-07。状态：LATENT02已真实完成3000Adam，来源门通过/进程已回收/78秒成本已结算。验证仍选第0步；八个encoder张量与八项策略元数据精确同原R2，不重复旧七例。训练六宫图PNG/PDF与CSV已成，原始20152B包已Mac大小SHA同。原共享训练保持人工暂停，首轮累计1371/14400秒，余13029秒；探索目标继续。
 
 ## 用户版done / todo
 
-done：上一项GigaBrain下一状态辅助预测完成，状态预测改善42.15%，但动作validation未改善，两组选0。教师隐变量监督首派的数据格式错误已修订，五项服务器检查和新准入已实际通过；未来仍仅作离线标签，历史action-only控制不重训。
+done：本轮教师隐变量监督真实3000更新完成，拟合46.81秒，持锁成本78秒。latent误差降9.26%，动作验证末值仍比初始差17.17%，所选策略没有变化。六宫图、原值与曲线已交付，旧两段失败视频按原字节复用；本轮没有新物理或渲染。
 
-todo：发布新准入后唯一单派LATENT02/最多3000Adam，并交付训练六宫图。只有选中策略真实改变且通过validation选点，才开展新的独立闭环；若仍选0，核精确身份后继续复用原失败证据。真实机器人端到端延迟另测。
+todo：不再延长相同数据上的latent拟合。先核现有冻结世界模型的一步预测、状态坐标和有效梯度，再登记只改跟踪误差差分目标的独立对照；发布来源/数据/资源门后才开展下一训练。H4质量、f0闭环、新登记留出事件与真人/真机延迟仍未完成，不能据本轮完成结算总目标。
 
 ## 为什么尝试与文献边界
 
@@ -87,3 +87,29 @@ Agent自行固定source/ssh入口94714进Windows，再以原生第二跳交互�
 账本所有运行SETTLED，总1293/14400秒、r3已172/7200秒；本轮尚未派发。cache 6783819776B仅诊断，沿用已登记R2边界，没有重复advice或清理证据。原共享训练仍人工暂停。下一先发布本准入，再仅新LATENT02根派发，首派FAILED、原控制与旧物理证据不改。
 
 服务器三份原始JSON已通过当前原生会话传回，1848B包SHA`93da866f1d1baf01ae98f8ecce4d7f36484d42f44eaaf32eaca14c28d60c8fe9`，三成员/大小SHA/目标源码SHA和新参数逐项核同。Mac保存`data/deliveries/Q1_TEACHER_LATENT_R2_ADMISSION_RECEIPTS_20261107.tgz`；原始记录为`q1_student_teacher_latent_r2_deployed_20261107.json`、`q1_student_teacher_latent_r2_native_checks_20261107.json`和`q1_student_teacher_latent_r2_admitted_20261107.json`。新说明的服务器镜像以实际回执为准。
+
+## 真实完成与结论
+
+准入提交`b46488f2a3aa22901eb9539e87e5c37982076683`已显式push、独立40位远端核同，Mac七份740181B逐项同后，唯一派发LATENT02。真实控制器356309/start35596919，worker356381；17:19:12结束为`TRAINED_PENDING_CLOSED_LOOP`、`source_integrity=PASSED`，guard为WORKER_COMPLETED/return0/已回收。控制器和worker已退，原GPU锁独占复核后释放、计算为空；原共享五PID退出/STOPPED_SIGNAL未变。
+
+原R1有效train1404/validation711、聚合train1456/validation737行全部复用，无新物理。离线重建的完整教师目标逐行复现保存动作，最大绝对差2.086163e-6，低2e-5容差。未来完整目标与32维标签均未部署；训练六个Adam计数全3000，逐验证点batch SHA及24格来源曝光与历史action-only控制相同，控制未重训。
+
+| 指标 | 初始 | 末次3000更新 | 解释 |
+| --- | --- | --- | --- |
+| validation动作风险 | 0.094863855 | 0.111150006 | 退步17.168%，仍选update0 |
+| 同曝光历史动作控制 | 0.094863855 | 0.114754134 | 新末值较控制低约3.14%，仍未胜初始 |
+| validation教师latent MSE | 0.186140542 | 0.168912865 | 降9.255%，不作为选点或步态通过依据 |
+
+本项当前配方没有产生可采纳的新策略。CPU精确审计确认所选encoder八张量及八项部署策略元数据、教师来源和共享decoder SHA与原R2全同，最大张量差0；CUDA未初始化。原R2同策略七例0完整仅作为历史证据复用，原campaign状态不改；不重复这七例或试未按validation选中的last权重。不能由本项失败推导所有f0路线不可行或未来不可观测是唯一原因。
+
+拟合46.807852秒；GPU持锁成本78秒SETTLED，累计1371/14400秒，剩13029秒；r3累计250/7200秒。峰总10558947328B、GPU478MiB，OOM0；CPU身份审计时总8252080128B/实际限34292629504B，GPU1MiB26度。未发送原训练信号、没有重复缓存回收或删除证据。
+
+原始结果包`data/deliveries/Q1_STUDENT_TEACHER_LATENT_R2_RESULTS_20261107.tgz`为20152B，SHA`c2c732e9fcac80c03d70a2b4212a7fcc6335b620867efa88d3051b709cf85eaa`；12成员及11份原始工件逐项大小SHA通过。Mac原值在`data/analysis/Q1_STUDENT_R3_LATENT02_20261107`。训练[六宫图PNG](../data/analysis/Q1_STUDENT_R3_LATENT02_FIGURES_20261107/latent_training_six_panel.png)、[PDF](../data/analysis/Q1_STUDENT_R3_LATENT02_FIGURES_20261107/latent_training_six_panel.pdf)与[七点曲线CSV](../data/analysis/Q1_STUDENT_R3_LATENT02_FIGURES_20261107/training_curve.csv)只读保存原值生成；PNG已目视核验。图题保留原campaign的closed-loop pending状态；本轮所选策略的失败历史已通过独立精确身份审计复用。
+
+[本轮README、六宫图、曲线、原值与两段历史失败视频证据ZIP](../data/deliveries/Q1_TEACHER_LATENT_R2_EVIDENCE_20261107.zip)为1261412B，SHA`6ad44815764db928e93a164aea314ac179c97dd44d2938feadcbc20b2c6ee514`；23成员CRC/逐项大小SHA及12条相对链接通过。视频在包内明确标为historical_r2，没有新渲染；[完整清单](../data/manifests/q1_teacher_latent_r2_evidence_20261107.json)。旧证据包保持不变。
+
+旧R2两段50fps失败视频保持原字节：前走1032帧/20.64秒，起走152帧/3.04秒，SHA与955065B历史原包一致。视频时长不等于物理有效跟踪完整率；失败前缀以原per_case.csv为准，不把完整封装视频视为动作成功。本轮没有新增物理/渲染，未将历史视频包装成新效果。
+
+94714之后的SSH明确Timeout退出本地；一次自主原样固定入口重试在Mac→Windows连接超时。原本为下一阶段准备的只读WM接口命令在超时返回后落到本地Python，于服务器路径不存在处退出，服务器没有执行该接口检查；没有来源或训练改动。94714本地shell已关闭，不再探旧句柄。下一次每条服务器命令先断言host/root，仍由Agent固定入口自主恢复，不要求用户代测。完成记录在Mac和Q1仓库，新文档服务器镜像仍待实际回执。
+
+下一项只读审计要核清冻结WM的状态/动作归一化、一步输出、根/身体误差坐标与梯度支持，然后再登记可微跟踪误差差分的单项对照。不把动作差分冒称论文的姿态误差速度项，不热改动力学或原训练；新训练仍计原r3与4GPU小时总账本。新留出事件和实际人体流的时戳/完整率/接触/侧倾/上肢时序/突变恢复及完整软件周期仍是未完成要求。

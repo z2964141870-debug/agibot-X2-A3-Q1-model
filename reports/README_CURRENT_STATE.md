@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07 17:19：[教师latent监督实际完成，验证仍选原策略](README_Q1_TEACHER_LATENT_STUDENT_20261107.md#真实完成与结论)。3000Adam/source PASSED/回收SETTLED，拟合46.807852秒/持锁78秒，累计1371/14400余13029，r3已250。latent误差降9.255%，动作末风险相对初始退17.168%，选0；CPU八张量/八策略元数据与原R2精确同，历史0/7复用，不新跑旧七例。20152B原包Mac SHA全同，训练六宫图PNG/PDF/CSV已成，旧两失败视频按原字节复用。原共享暂停/采纳null/goal继续；下一只读审现有WM的一步预测/坐标与误差差分目标，再独立方案和准入。94714后续Timeout/自主固定入口重试第一跳超时，本地shell已关，不能探旧句柄或把它当Linux；新说明服务器镜像待。
+
 2026-11-07 17:13：[教师latent重建五检查与新准入已实核通过](README_Q1_TEACHER_LATENT_STUDENT_20261107.md#1713修订实际准入)。94714自主固定入口到原Linux，五检查1.665472秒全过；LATENT02输出/派发/日志/相关进程全无后，仅补缺失准入，170执行/200冻结/745保护输入与原锁全过。总8096272384B限34292629504/GPU1MiB26度/OOM0/账本1293-r3已172。三原始回执1848B包已Mac逐字节SHA同；先发布本准入，再唯一LATENT02/3000Adam，旧控制不重训/原共享暂停/采纳null。新说明服务器镜像待。
 
 2026-11-07 17:04自主恢复：[50274实际到达原Linux，核验回执未返回](README_Q1_TEACHER_LATENT_STUDENT_20261107.md#1704自主恢复实录)。Agent自行固定source/ssh入口成功到Windows/原生第二跳到root@interactive67462，随后本会话明确Timeout退本地；同入口一次自主重试在Mac→Windows Operation timed out，未Windows shell，不能泛化Linux不可达。50274本地shell已关闭；三个r2收据/实时资源仍待核，LATENT02未提交Popen。下一周期仍自主尝试，先查回执/实际进程与输出防重复，不要求用户代测；原1293秒/r3已172/共享暂停/既有goal/采纳null保持，新说明服务器镜像待。

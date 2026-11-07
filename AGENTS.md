@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-08独立CPU_STATE01准备：新native_state_cpu/配对入口/五坐标不可变性合同已实现，服务器执行待。真实策略Torch2.11+cu128/MuJoCo3.11，不用物理3.6代替；独立MjData只运动学/XBODY原点、根角速度世界转局部，269/93/930逐帧atol=rtol2e-5、FK绝对3e-5。仅保存A022128+A023106各原/新一次交替，300s/64MiB/RSS2GiB、原22/24GiB/锁资源保持，GPU账本2433原字节不改。45014原Linux仍成功、GPU1MiB25度/OOM0/总8031719424/余盘183751458816，原暂停同；不新认证/问代测。下一发布新三文件后原运行时合同/有界CPU检查，若过再独立小型GPU动作门，勿直接改旧worker或重跑936/七失败，原共享不恢复/采纳null/goal工具和新agent不用。入口README_Q1_CPU_STATE_20261108和preparation；旧大包镜像PENDING保持。
+
 - 2026-11-08 02:02恢复点：936保存调用独立名字映射分析已SAME_STATE_SAVED_ANALYSIS_PASSED/889来源同/内部.942266秒，原FAILED/199执行200冻结保留，不重跑936或七失败。六原件65838B包Mac/服务器SHA02d348a898a2f06fadb070c405f9f3a85409e8cf3046ae39b80429804db533fa同；两PNG两PDF/CSV已Mac并目视，17成员615039B新ZIP/SHA3619a203602f4d494ca20e7fc035e5558ebde5d5c5db95e3cd363c0c46fdfced及11链接过。新f0对H4全前缀残差+2.58%/-3.09%，末25均退；CPU native_state中位10–12ms对前向1.3–1.5ms，完整worker仍p95 21.6–30.5ms，不当硬件延迟/倒地因果。45014原Linux继续成功，原身份/暂停五PID及366422退/锁计算空/OOM0/总8012316672限34292629504/GPU1MiB25度/余盘183751520256；SSH三值90/60/5与其他配置行SHA同，自主连接不问代测。累计2433秒无RESERVED，不重置。下一独立CPU状态等价加速，再单变量H4时间mask或闭环目标；原共享暂停/goal工具不用/采纳null/不新agent。入口README_Q1_SAME_STATE_RESULT及详细诊断README，旧312616B镜像仍PENDING，本阶段发布/小镜像随后收据为准。
 
 - 2026-11-08同状态936已执行：366422/start38617511退/八段128×4+106×4实际调用及八守卫回收0，两新f0原动作复现差0。末尾compare误用物理22上肢14–21为canonical29，FAILED原根保留；实际present0–13/15–18/22–25，命名上肢15–18/22–25，八数组有限/缺失槽全0。252sSETTLED累计2433无重置，0物理渲染Adam；不重跑936。新student_same_state_summary仅读原保存/守卫/852来源，AST冻结名字映射与四合同已备，120s/64MiB/0新CUDA，待发布部署/原运行时后独立分析，不能改写原FAILED。199/200来源不动，原共享暂停/采纳null/45014复用，不新goal或agent；入口同状态诊断README。

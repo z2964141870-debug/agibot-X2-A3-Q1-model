@@ -6,12 +6,20 @@ from unittest.mock import patch
 import numpy as np
 
 from student_input_audit import (checked, expected_flags, neighbor_proxy, normalization_metrics,
-                                 normalized_input, validate_rows)
+                                 normalized_input, recorded_residual, validate_rows)
 from student_data import OfflineStudentStream
 from stream_events import EventSpec
 
 
 class SavedInputAuditTests(unittest.TestCase):
+    def test_historical_joint_summaries_are_not_source_rows(self):
+        source = dict(split='train', phase='all', source_clip_id=0, groups={})
+        data = dict(rows=[source, dict(split='train', phase='per_joint', joints=[])])
+        self.assertEqual(recorded_residual(data, 'train', 0), [source])
+        data['rows'].append(dict(source))
+        with self.assertRaisesRegex(ValueError, 'duplicates'):
+            recorded_residual(data, 'train', 0)
+
     def test_reject_malformed_identity_before_opening_a_source(self):
         with patch('student_input_audit.identity', side_effect=AssertionError('source opened')):
             with self.assertRaisesRegex(ValueError, 'Malformed'):

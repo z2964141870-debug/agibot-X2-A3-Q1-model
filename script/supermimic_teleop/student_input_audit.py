@@ -178,6 +178,13 @@ def sampled_indices(data, count):
         for indices in [np.flatnonzero(data['clip_id'] == source)]])
 
 
+def recorded_residual(residual, split, source):
+    rows = [row for row in residual['rows'] if row.get('split') == split
+            and row.get('phase') == 'all' and row.get('source_clip_id') == int(source)]
+    require(len(rows) == 1, 'Historical residual is missing or duplicates this source')
+    return rows
+
+
 def neighbor_proxy(origins, statistics, present):
     bank, labels, source_ids = [], [], []
     for data in origins:
@@ -278,13 +285,12 @@ def execute(args):
                 indices = np.flatnonzero(values['clip_id'] == source)
                 job = jobs[int(source)]
                 metric = normalization_metrics(values['f0'][indices], statistics, lower, upper)
-                saved = [row for row in residual['rows'] if row['split'] == name
-                         and row['source_clip_id'] == int(source) and row['phase'] == 'all']
+                saved = None if origin == 0 else recorded_residual(residual, name, source)
                 rows.append(dict(origin=origin, split=name, source_clip_id=int(source), group_id=job['group_id'],
                     relative=job['relative'], samples=len(indices), first_frame=int(values['frame'][indices].min()),
                     last_frame=int(values['frame'][indices].max()), first_200ms_samples=int(np.sum(values['frame'][indices] < 10)),
                     first_second_samples=int(np.sum(values['frame'][indices] < 50)), metrics=metric,
-                    historical_action_residual=None if origin == 0 else saved))
+                    historical_action_residual=saved))
     result = dict(stage='SAVED_CAUSAL_INPUT_COVERAGE_AUDIT', status='PASSED', utc=datetime.now(timezone.utc).isoformat(),
         evaluation_commit=args.evaluation_commit, resources_before=admitted, resources_after=resources(False),
         source_coverage=coverage, source_rows=rows, collection_checks=collections,

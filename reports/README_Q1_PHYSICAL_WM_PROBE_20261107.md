@@ -1,6 +1,6 @@
 # Q1冻结世界模型的保存转移校准
 
-2026-11-07。当前状态：首派已在context重建处退出并回收，未执行WM.step；独立共同物理脚底映射修订及九本地检查通过，服务器实际XML验证和新根诊断待。原共享训练保持用户暂停，采纳仍为null。
+2026-11-07。当前状态：首派context错误已保留并回收；修订已在原服务器通过九检查、实际XML上下文和18:43来源/资源准入，下一唯一派发WM_PROBE02。原共享训练保持用户暂停，采纳仍为null。
 
 ## 用户版done与todo
 
@@ -8,7 +8,7 @@ done：Agent自行按`source /Users/yu/.zshrc`再`ssh -tt hp_han`进入Windows�
 
 done：找到并实核了保存物理数据对应的原模拟器与randomization源码。保存NPZ没有逐帧context，不能将任意零向量称为实际context。新入口在原`randomize=False`采样源码和固定XML下重建名义上下文，摩擦读实际脚底geom，明确标注为源码/XML重建而非记录张量；遇到未知延迟或不一致摩擦即拒绝。
 
-todo：发布脚底映射修订及新来源清单，原服务器九项检查和实际编译XML context验证通过后，在新WM_PROBE02根补做最多256保存转移/512次WM.step校准。首派失败保留；不重复严格WM CPU加载或旧物理，诊断通过后才考虑单项误差差分训练。
+todo：发布本次真实准入后，在新WM_PROBE02根补做最多256保存转移/512次WM.step校准。首派失败保留；不重复严格WM CPU加载或旧物理，诊断通过后才考虑单项误差差分训练。
 
 ## 为什么先做这个检查
 
@@ -61,3 +61,13 @@ todo：发布脚底映射修订及新来源清单，原服务器九项检查和�
 九项本地检查0.037秒通过，新增无名脚底/不同身体假同名、视觉geometry过滤、缺一脚和不同摩擦拒绝。只修独立`wm_probe_data.py`与检查，原训练资产、动力学、采集和原失败输出不改。必须先发布新清单，在原服务器跑修订检查，并用原compiled XML验证context和十个实际碰撞geom，再在新`Q1_LOW_LATENCY_CKPT32000_STUDENT_R3_WM_PROBE02_20261107`根运行；复用已成严格权重加载证据。
 
 18:36:25[退出后独立实核](../logs/session_records/q1_physical_wm_probe_first_failure_20261107.json)：175执行/200冻结/731保护输入SHA全同，两个进程已退、原GPU锁可独占后释放、计算空、原共享暂停/OOM0。总8018432000B/限34292629504B、GPU1MiB25度；25秒持锁已SETTLED，累计1396/14400秒/r3已275/7200秒。实际WM.step/新物理/优化均0，CUDA可用性检查不冒称执行了模型预测。六原文件4530B七成员归档SHA `eaeb8dc80bcb42e75f2df01a7060161e24cfa201bedc1aa0b95c222fec825f20`已Mac逐件大小SHA核同，原大authorization继续保存在失败根。新文档服务器镜像待，后续诊断结果另记。
+
+## 共同物理修订的真实准入
+
+修订`15d6acb4f3cf4e6a22b54c14384508d1434862b7`与175项新清单提交`5cb124c8c0e45100f9e25ef364ad91fa5e5f5a5b`已显式push并独立40位远端核同，修订十三份782632B Mac镜像逐件核同。三成员15314B代码包SHA `9045e7a7cd9834900089b5732d3334f0c41b5fc120fb6cae2ccdb2c6104bda53`沿33391部署，除两份已审定诊断文件外746份旧来源前后SHA同；旧失败根和日志保持。
+
+原Morph运行时九项检查全过/进程2.430354秒（测试本体0.071秒）。另只编译实际原XML、没有创建模拟器或加载WM：左右踝分别找到geom15..19和31..35，共十个无名碰撞geom，摩擦均1，重建62维context为`[1,0,...,0]`且CUDA未初始化。这个1是本次真实XML的测量值，不是套用随机化默认值。
+
+18:43:45独立准入重新通过175执行/200冻结/731保护输入、原暂停与GPU锁；总8107974656B/限34292629504B、GPU1MiB25度/OOM0、原累计1396秒/r3已275，全SETTLED。新根/派发尚未创建，待发布本准入后唯一WM_PROBE02；256样本/512前向/300秒/64MiB和原资源边界不变，严格WM CPU加载不再重复。
+
+[部署](../logs/session_records/q1_physical_wm_probe_r3_deployed_20261107.json)、[原运行时九检查](../logs/session_records/q1_physical_wm_probe_r3_native_checks_20261107.json)、[实际编译XML context](../logs/session_records/q1_physical_wm_probe_r3_compiled_context_20261107.json)、[完整准入参数](../logs/session_records/q1_physical_wm_probe_r3_admitted_20261107.json)四原始回执8623B已Mac逐字节大小SHA核同，3000B五成员包SHA `c30e1111b70af253a5d2fcab8e1065bd7120a55e79068a63782547c6b4ee2703`。汇总见[来源与准入发布记录](../logs/session_records/q1_physical_wm_probe_r3_runtime_admission_20261107.json)，服务器新文档镜像仍待。

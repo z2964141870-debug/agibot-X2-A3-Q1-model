@@ -1,0 +1,3022 @@
+{
+  "stage": "LOCAL_FROZEN_WM_INTERFACE_AUDIT_PASSED",
+  "authorization": {
+    "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/analysis/Q1_STUDENT_R3_AUXILIARY_PAIR02_20261107/authorization.json",
+    "bytes": 266331,
+    "sha256": "4e5830bd54678df1398e1276d5b072019595487e7ee4999c067f691076ffd549"
+  },
+  "authorization_stage": "R3_BEHAVIOR_CONDITIONED_NEXT_STATE_PAIR",
+  "evaluation_commit": "5f430b4362423521234fcb7ebcc9eed0e9cbb8ad",
+  "source_files": 15,
+  "source_bytes": 296205,
+  "all_source_sizes_and_sha256_equal": true,
+  "sources": [
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/references/morphmimic_q1_review_20261102/v01/src/morphmimic/constants.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1/src/morphmimic/constants.py",
+        "bytes": 8718,
+        "sha256": "4f10a7359526e3b7c246341f7d4352991824ba849bb6025c881cbba78801f3ac"
+      },
+      "functions": []
+    },
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/references/morphmimic_q1_review_20261102/v01/src/morphmimic/model/nets.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1/src/morphmimic/model/nets.py",
+        "bytes": 2180,
+        "sha256": "ac286379a8c685983fd204a40c6d1c8c7ada7f99a66fd5e2122af2b0f94ee39a"
+      },
+      "functions": [
+        {
+          "name": "mlp",
+          "line": 19,
+          "end_line": 42,
+          "arguments": [
+            "in_dim",
+            "hidden",
+            "out_dim",
+            "act",
+            "layer_norm"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "run_mlp",
+          "line": 45,
+          "end_line": 54,
+          "arguments": [
+            "net",
+            "x",
+            "bf16"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "fill_missing_buffers",
+          "line": 57,
+          "end_line": 65,
+          "arguments": [
+            "state_dict",
+            "prefix",
+            "defaults"
+          ],
+          "decorators": []
+        }
+      ]
+    },
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/references/morphmimic_q1_review_20261102/v01/src/morphmimic/model/policy.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1/src/morphmimic/model/policy.py",
+        "bytes": 13288,
+        "sha256": "58b11d6c9625a5922768b052897ee851e3f00993a99849cff3ec964cb1ea940a"
+      },
+      "functions": [
+        {
+          "name": "_check_morph",
+          "line": 25,
+          "end_line": 27,
+          "arguments": [
+            "buf",
+            "vec"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "MotionEncoder.__init__",
+          "line": 54,
+          "end_line": 57,
+          "arguments": [
+            "self",
+            "cfg"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "MotionEncoder.forward",
+          "line": 59,
+          "end_line": 60,
+          "arguments": [
+            "self",
+            "goal"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "HumanEncoder.__init__",
+          "line": 67,
+          "end_line": 70,
+          "arguments": [
+            "self",
+            "cfg"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "HumanEncoder.forward",
+          "line": 72,
+          "end_line": 73,
+          "arguments": [
+            "self",
+            "goal"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "ReconHead.__init__",
+          "line": 86,
+          "end_line": 89,
+          "arguments": [
+            "self",
+            "cfg"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "ReconHead.forward",
+          "line": 91,
+          "end_line": 95,
+          "arguments": [
+            "self",
+            "z",
+            "morph"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Decoder.__init__",
+          "line": 115,
+          "end_line": 132,
+          "arguments": [
+            "self",
+            "cfg"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Decoder._load_from_state_dict",
+          "line": 134,
+          "end_line": 140,
+          "arguments": [
+            "self",
+            "state_dict",
+            "prefix"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Decoder.set_morphology",
+          "line": 143,
+          "end_line": 147,
+          "arguments": [
+            "self",
+            "vec"
+          ],
+          "decorators": [
+            "torch.no_grad()"
+          ]
+        },
+        {
+          "name": "Decoder._film_forward",
+          "line": 149,
+          "end_line": 160,
+          "arguments": [
+            "self",
+            "x",
+            "morph"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Decoder.forward",
+          "line": 162,
+          "end_line": 176,
+          "arguments": [
+            "self",
+            "z",
+            "obs_hist_flat",
+            "morph"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Decoder.forward.net",
+          "line": 174,
+          "end_line": 175,
+          "arguments": [
+            "h"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Policy.__init__",
+          "line": 189,
+          "end_line": 199,
+          "arguments": [
+            "self",
+            "cfg"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Policy.encode",
+          "line": 201,
+          "end_line": 203,
+          "arguments": [
+            "self",
+            "goal"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Policy.set_morphology",
+          "line": 205,
+          "end_line": 207,
+          "arguments": [
+            "self",
+            "vec"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Policy.forward",
+          "line": 209,
+          "end_line": 214,
+          "arguments": [
+            "self",
+            "obs_hist_flat",
+            "goal",
+            "morph"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Policy.motion_parameters",
+          "line": 216,
+          "end_line": 219,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Policy.human_parameters",
+          "line": 221,
+          "end_line": 227,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Policy.reconstruct",
+          "line": 229,
+          "end_line": 234,
+          "arguments": [
+            "self",
+            "z"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Policy.encode_human",
+          "line": 236,
+          "end_line": 238,
+          "arguments": [
+            "self",
+            "goal"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Policy.forward_human",
+          "line": 240,
+          "end_line": 245,
+          "arguments": [
+            "self",
+            "obs_hist_flat",
+            "goal",
+            "morph"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Policy._require_human_encoder",
+          "line": 247,
+          "end_line": 250,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Critic.__init__",
+          "line": 291,
+          "end_line": 303,
+          "arguments": [
+            "self",
+            "cfg"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Critic._load_from_state_dict",
+          "line": 305,
+          "end_line": 311,
+          "arguments": [
+            "self",
+            "state_dict",
+            "prefix"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Critic.set_morphology",
+          "line": 314,
+          "end_line": 318,
+          "arguments": [
+            "self",
+            "vec"
+          ],
+          "decorators": [
+            "torch.no_grad()"
+          ]
+        },
+        {
+          "name": "Critic.forward",
+          "line": 320,
+          "end_line": 337,
+          "arguments": [
+            "self",
+            "local_feats",
+            "goal",
+            "ctx",
+            "priv"
+          ],
+          "decorators": []
+        }
+      ]
+    },
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/references/morphmimic_q1_review_20261102/v01/src/morphmimic/model/rewards_torch.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1/src/morphmimic/model/rewards_torch.py",
+        "bytes": 13283,
+        "sha256": "1e8f84fb1310d2ec43325966ac6242beffdaf670fb1b0280e2fa9177edbdf7a2"
+      },
+      "functions": [
+        {
+          "name": "_per_body",
+          "line": 98,
+          "end_line": 100,
+          "arguments": [
+            "x"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_gravity_like",
+          "line": 103,
+          "end_line": 108,
+          "arguments": [
+            "x"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_quat_error_sq",
+          "line": 111,
+          "end_line": 121,
+          "arguments": [
+            "q1",
+            "q2"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "relative_reference",
+          "line": 124,
+          "end_line": 147,
+          "arguments": [
+            "state",
+            "ref"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "tracking_reward",
+          "line": 150,
+          "end_line": 216,
+          "arguments": [
+            "state",
+            "ref",
+            "action",
+            "prev_action",
+            "joint_limits",
+            "cfg"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "termination_features",
+          "line": 219,
+          "end_line": 233,
+          "arguments": [
+            "state",
+            "ref"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "hard_termination",
+          "line": 236,
+          "end_line": 242,
+          "arguments": [
+            "state",
+            "ref",
+            "z_thresh",
+            "tilt_thresh"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "soft_termination",
+          "line": 245,
+          "end_line": 259,
+          "arguments": [
+            "state",
+            "ref",
+            "z_thresh",
+            "tilt_thresh",
+            "z_scale",
+            "tilt_scale"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "analytic_obs",
+          "line": 262,
+          "end_line": 288,
+          "arguments": [
+            "state",
+            "encoder_bias",
+            "default_joint_pos",
+            "prev_action",
+            "imu_idx"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "goal_features",
+          "line": 291,
+          "end_line": 345,
+          "arguments": [
+            "state",
+            "ref_future",
+            "anchor"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "critic_anchor_pos",
+          "line": 348,
+          "end_line": 365,
+          "arguments": [
+            "state",
+            "ref_future"
+          ],
+          "decorators": []
+        }
+      ]
+    },
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/references/morphmimic_q1_review_20261102/v01/src/morphmimic/model/state.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1/src/morphmimic/model/state.py",
+        "bytes": 8554,
+        "sha256": "8aab27b54e38ada2d642afa600810ffdefb0ce34ac14a5a6526bca7cedb2a785"
+      },
+      "functions": [
+        {
+          "name": "split_state",
+          "line": 80,
+          "end_line": 92,
+          "arguments": [
+            "s"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "join_state",
+          "line": 95,
+          "end_line": 107,
+          "arguments": [
+            "p"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "heading_frame",
+          "line": 110,
+          "end_line": 116,
+          "arguments": [
+            "s"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "root_frame",
+          "line": 119,
+          "end_line": 125,
+          "arguments": [
+            "s"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "anchor_quat",
+          "line": 128,
+          "end_line": 131,
+          "arguments": [
+            "s"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "state_frame",
+          "line": 134,
+          "end_line": 141,
+          "arguments": [
+            "s",
+            "mode"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "gravity_in_frame",
+          "line": 144,
+          "end_line": 148,
+          "arguments": [
+            "frame"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "rot6d_from_quat",
+          "line": 151,
+          "end_line": 154,
+          "arguments": [
+            "q"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "quat_from_rot6d",
+          "line": 157,
+          "end_line": 168,
+          "arguments": [
+            "r6"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_per_body",
+          "line": 171,
+          "end_line": 175,
+          "arguments": [
+            "frame",
+            "batch_shape"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "canonicalize",
+          "line": 178,
+          "end_line": 201,
+          "arguments": [
+            "s",
+            "frame"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "decanonicalize",
+          "line": 204,
+          "end_line": 223,
+          "arguments": [
+            "local",
+            "frame"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "StateNormalizer.__init__",
+          "line": 232,
+          "end_line": 235,
+          "arguments": [
+            "self",
+            "dim"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "StateNormalizer.from_stats",
+          "line": 238,
+          "end_line": 249,
+          "arguments": [
+            "cls",
+            "mean",
+            "std",
+            "floor"
+          ],
+          "decorators": [
+            "classmethod"
+          ]
+        },
+        {
+          "name": "StateNormalizer.normalize",
+          "line": 251,
+          "end_line": 252,
+          "arguments": [
+            "self",
+            "x"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "StateNormalizer.denormalize",
+          "line": 254,
+          "end_line": 255,
+          "arguments": [
+            "self",
+            "x"
+          ],
+          "decorators": []
+        }
+      ]
+    },
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/references/morphmimic_q1_review_20261102/v01/src/morphmimic/model/world_model.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1/src/morphmimic/model/world_model.py",
+        "bytes": 23611,
+        "sha256": "fa529db818cdb942294285e80ce72526dc2067e2cc4c3feaedc656280c8915ed"
+      },
+      "functions": [
+        {
+          "name": "residual_floor",
+          "line": 81,
+          "end_line": 88,
+          "arguments": [],
+          "decorators": []
+        },
+        {
+          "name": "HazardHead.__init__",
+          "line": 109,
+          "end_line": 115,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "HazardHead.k_z",
+          "line": 117,
+          "end_line": 119,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "HazardHead.k_u",
+          "line": 121,
+          "end_line": 123,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "HazardHead.metrics",
+          "line": 126,
+          "end_line": 137,
+          "arguments": [
+            "self"
+          ],
+          "decorators": [
+            "torch.no_grad()"
+          ]
+        },
+        {
+          "name": "HazardHead.forward",
+          "line": 139,
+          "end_line": 150,
+          "arguments": [
+            "self",
+            "e_z",
+            "e_tilt"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "WorldModel.__init__",
+          "line": 230,
+          "end_line": 282,
+          "arguments": [
+            "self",
+            "cfg",
+            "normalizer",
+            "joint_limits",
+            "default_joint_pos",
+            "reward_cfg",
+            "imu_idx"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "WorldModel._load_from_state_dict",
+          "line": 284,
+          "end_line": 295,
+          "arguments": [
+            "self",
+            "state_dict",
+            "prefix"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "WorldModel.set_morphology",
+          "line": 298,
+          "end_line": 306,
+          "arguments": [
+            "self",
+            "vec"
+          ],
+          "decorators": [
+            "torch.no_grad()"
+          ]
+        },
+        {
+          "name": "WorldModel.set_height_stats",
+          "line": 309,
+          "end_line": 320,
+          "arguments": [
+            "self",
+            "mean",
+            "std"
+          ],
+          "decorators": [
+            "torch.no_grad()"
+          ]
+        },
+        {
+          "name": "WorldModel.frame",
+          "line": 324,
+          "end_line": 327,
+          "arguments": [
+            "self",
+            "state"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "WorldModel.frame_inputs",
+          "line": 329,
+          "end_line": 341,
+          "arguments": [
+            "self",
+            "state",
+            "frame"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "WorldModel.local_features",
+          "line": 343,
+          "end_line": 346,
+          "arguments": [
+            "self",
+            "state"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "WorldModel.scale_ctx",
+          "line": 348,
+          "end_line": 350,
+          "arguments": [
+            "self",
+            "ctx"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "WorldModel.delta_scale",
+          "line": 354,
+          "end_line": 360,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "WorldModel.set_residual_scale",
+          "line": 363,
+          "end_line": 371,
+          "arguments": [
+            "self",
+            "sigma"
+          ],
+          "decorators": [
+            "torch.no_grad()"
+          ]
+        },
+        {
+          "name": "WorldModel.step",
+          "line": 373,
+          "end_line": 390,
+          "arguments": [
+            "self",
+            "state",
+            "action",
+            "ctx"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "WorldModel.rollout",
+          "line": 392,
+          "end_line": 399,
+          "arguments": [
+            "self",
+            "state0",
+            "actions",
+            "ctx"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "WorldModel.reward",
+          "line": 403,
+          "end_line": 411,
+          "arguments": [
+            "self",
+            "next_state",
+            "ref",
+            "action",
+            "prev_action"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "WorldModel.obs",
+          "line": 413,
+          "end_line": 417,
+          "arguments": [
+            "self",
+            "state",
+            "encoder_bias",
+            "prev_action"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "WorldModel.termination_logit",
+          "line": 419,
+          "end_line": 432,
+          "arguments": [
+            "self",
+            "next_state",
+            "ref"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "WorldModel.termination_prob",
+          "line": 434,
+          "end_line": 438,
+          "arguments": [
+            "self",
+            "next_state",
+            "ref"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "WorldModel.fit_loss",
+          "line": 442,
+          "end_line": 505,
+          "arguments": [
+            "self",
+            "batch",
+            "library"
+          ],
+          "decorators": []
+        }
+      ]
+    },
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/references/morphmimic_q1_review_20261102/v01/src/morphmimic/train/imagination.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1/src/morphmimic/train/imagination.py",
+        "bytes": 36017,
+        "sha256": "8973eb159ed069c9ddbd9549795a38333d2397eb33d61ae52d22674aff288586"
+      },
+      "functions": [
+        {
+          "name": "ImaginedRollout.num_rewarded",
+          "line": 162,
+          "end_line": 164,
+          "arguments": [
+            "self"
+          ],
+          "decorators": [
+            "property"
+          ]
+        },
+        {
+          "name": "frozen",
+          "line": 168,
+          "end_line": 180,
+          "arguments": [],
+          "decorators": [
+            "contextlib.contextmanager"
+          ]
+        },
+        {
+          "name": "act",
+          "line": 183,
+          "end_line": 192,
+          "arguments": [
+            "policy",
+            "obs_norm",
+            "goal_norm",
+            "obs_hist_flat",
+            "goal"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "act_human",
+          "line": 195,
+          "end_line": 217,
+          "arguments": [
+            "policy",
+            "obs_norm",
+            "human_norm",
+            "heading_norm",
+            "obs_hist_flat",
+            "human_goal_raw",
+            "point_mask",
+            "frame_mask",
+            "heading_mask"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "noise_half_widths",
+          "line": 220,
+          "end_line": 226,
+          "arguments": [
+            "noise",
+            "device"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "sensor_noise",
+          "line": 229,
+          "end_line": 231,
+          "arguments": [
+            "shape",
+            "half"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "imagination_noise",
+          "line": 234,
+          "end_line": 243,
+          "arguments": [
+            "start",
+            "cfg",
+            "half"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "reference_window",
+          "line": 246,
+          "end_line": 251,
+          "arguments": [
+            "library",
+            "frame0",
+            "length"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "human_window",
+          "line": 254,
+          "end_line": 257,
+          "arguments": [
+            "library",
+            "frame0",
+            "length"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "imagine",
+          "line": 260,
+          "end_line": 282,
+          "arguments": [
+            "wm",
+            "policy",
+            "critic",
+            "library",
+            "start",
+            "cfg",
+            "obs_norm",
+            "goal_norm",
+            "noise"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "anchor_kwargs",
+          "line": 301,
+          "end_line": 305,
+          "arguments": [
+            "anchor"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "imagine_step",
+          "line": 308,
+          "end_line": 333,
+          "arguments": [
+            "wm",
+            "policy",
+            "obs_norm",
+            "goal_norm",
+            "state",
+            "obs_hist",
+            "prev_action",
+            "survival",
+            "goal_ref",
+            "ctx",
+            "noise"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_transition",
+          "line": 336,
+          "end_line": 371,
+          "arguments": [
+            "wm",
+            "state",
+            "goal",
+            "action",
+            "obs_hist",
+            "prev_action",
+            "survival",
+            "goal_ref",
+            "ctx",
+            "noise",
+            "latent_err",
+            "action_err",
+            "recon_err"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "imagine_step_human",
+          "line": 374,
+          "end_line": 477,
+          "arguments": [
+            "wm",
+            "policy",
+            "obs_norm",
+            "goal_norm",
+            "human_norm",
+            "heading_norm",
+            "student",
+            "state",
+            "obs_hist",
+            "prev_action",
+            "survival",
+            "goal_ref",
+            "ctx",
+            "noise",
+            "point_mask",
+            "frame_mask",
+            "heading_mask",
+            "jitter",
+            "human_win"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "finish_rollout",
+          "line": 480,
+          "end_line": 531,
+          "arguments": [
+            "wm",
+            "critic",
+            "goal_norm",
+            "state0",
+            "steps",
+            "last_goal_ref",
+            "ctx",
+            "trunc_mask",
+            "bootstrap"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "human_jitter_window",
+          "line": 534,
+          "end_line": 544,
+          "arguments": [
+            "start",
+            "cfg",
+            "half"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "imagine_rollout",
+          "line": 547,
+          "end_line": 610,
+          "arguments": [
+            "wm",
+            "policy",
+            "critic",
+            "library",
+            "start",
+            "noise",
+            "cfg",
+            "obs_norm",
+            "goal_norm",
+            "step",
+            "finish",
+            "extras"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "policy_objective",
+          "line": 613,
+          "end_line": 629,
+          "arguments": [
+            "ro",
+            "cfg"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "student_objective",
+          "line": 632,
+          "end_line": 669,
+          "arguments": [
+            "ro",
+            "cfg",
+            "student",
+            "action_weight",
+            "align_weight",
+            "scales",
+            "recon_weight"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "TermScales.__init__",
+          "line": 678,
+          "end_line": 686,
+          "arguments": [
+            "self",
+            "names",
+            "decay",
+            "floor"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "TermScales.scales",
+          "line": 688,
+          "end_line": 691,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "TermScales.update",
+          "line": 694,
+          "end_line": 705,
+          "arguments": [
+            "self",
+            "terms"
+          ],
+          "decorators": [
+            "torch.no_grad()"
+          ]
+        },
+        {
+          "name": "gae_targets",
+          "line": 709,
+          "end_line": 730,
+          "arguments": [
+            "ro",
+            "cfg"
+          ],
+          "decorators": [
+            "torch.no_grad()"
+          ]
+        },
+        {
+          "name": "target_values",
+          "line": 733,
+          "end_line": 742,
+          "arguments": [
+            "critic",
+            "ro"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "critic_loss",
+          "line": 745,
+          "end_line": 764,
+          "arguments": [
+            "critic",
+            "ro",
+            "targets",
+            "idx"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "fit_critic",
+          "line": 767,
+          "end_line": 805,
+          "arguments": [
+            "critic",
+            "optimizer",
+            "ro",
+            "cfg",
+            "max_grad_norm",
+            "targets",
+            "loss_fn",
+            "average_grads"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "guarded_clip_grad_norm_",
+          "line": 808,
+          "end_line": 835,
+          "arguments": [
+            "params",
+            "max_norm"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "clip_grads_",
+          "line": 838,
+          "end_line": 848,
+          "arguments": [
+            "params",
+            "global_norm",
+            "elementwise"
+          ],
+          "decorators": []
+        }
+      ]
+    },
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/references/morphmimic_q1_review_20261102/v01/src/morphmimic/train/normalizers.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1/src/morphmimic/train/normalizers.py",
+        "bytes": 5259,
+        "sha256": "a20b8940fc35845e2a6e2d3ed6633c43b0177edf0df3463a7204c165740656e7"
+      },
+      "functions": [
+        {
+          "name": "RunningNormalizer.__init__",
+          "line": 38,
+          "end_line": 45,
+          "arguments": [
+            "self",
+            "dim",
+            "eps",
+            "sync"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "RunningNormalizer.update",
+          "line": 48,
+          "end_line": 67,
+          "arguments": [
+            "self",
+            "x"
+          ],
+          "decorators": [
+            "torch.no_grad()"
+          ]
+        },
+        {
+          "name": "RunningNormalizer._pooled_moments",
+          "line": 69,
+          "end_line": 87,
+          "arguments": [
+            "self",
+            "x"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "RunningNormalizer.pool_ranks_",
+          "line": 90,
+          "end_line": 108,
+          "arguments": [
+            "self"
+          ],
+          "decorators": [
+            "torch.no_grad()"
+          ]
+        },
+        {
+          "name": "RunningNormalizer.forward",
+          "line": 110,
+          "end_line": 111,
+          "arguments": [
+            "self",
+            "x"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "normalize",
+          "line": 114,
+          "end_line": 117,
+          "arguments": [
+            "x",
+            "mean",
+            "var",
+            "eps"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "normalize_history",
+          "line": 120,
+          "end_line": 124,
+          "arguments": [
+            "norm",
+            "hist_flat"
+          ],
+          "decorators": []
+        }
+      ]
+    },
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/references/morphmimic_q1_review_20261102/v01/src/morphmimic/train/trainer.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1/src/morphmimic/train/trainer.py",
+        "bytes": 134927,
+        "sha256": "763245b031bfd6ca627cd3ce4bc558a7aeb6ac320a993e1d74abf9f6c91f5640"
+      },
+      "functions": [
+        {
+          "name": "_PhaseTimer.__init__",
+          "line": 625,
+          "end_line": 627,
+          "arguments": [
+            "self",
+            "cuda"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_PhaseTimer.mark",
+          "line": 629,
+          "end_line": 635,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_PhaseTimer.seconds",
+          "line": 637,
+          "end_line": 642,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_Window.__init__",
+          "line": 650,
+          "end_line": 659,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_Window.mean",
+          "line": 661,
+          "end_line": 664,
+          "arguments": [
+            "self",
+            "key",
+            "value",
+            "weight"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_Window.total",
+          "line": 666,
+          "end_line": 667,
+          "arguments": [
+            "self",
+            "key",
+            "value"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_Window.max",
+          "line": 669,
+          "end_line": 671,
+          "arguments": [
+            "self",
+            "key",
+            "value"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_Window.min",
+          "line": 673,
+          "end_line": 675,
+          "arguments": [
+            "self",
+            "key",
+            "value"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_Window.flush",
+          "line": 677,
+          "end_line": 700,
+          "arguments": [
+            "self",
+            "device",
+            "world_size"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_Window._phase_times",
+          "line": 702,
+          "end_line": 709,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_Window._pooled",
+          "line": 711,
+          "end_line": 740,
+          "arguments": [
+            "self",
+            "device",
+            "world_size"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_as_vector",
+          "line": 743,
+          "end_line": 749,
+          "arguments": [
+            "values",
+            "device"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "LearnedSteps.__init__",
+          "line": 794,
+          "end_line": 868,
+          "arguments": [
+            "self",
+            "wm",
+            "policy",
+            "critic",
+            "library",
+            "imag_cfg",
+            "obs_norm",
+            "goal_norm",
+            "mode"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "LearnedSteps._wm_loss",
+          "line": 870,
+          "end_line": 871,
+          "arguments": [
+            "self",
+            "batch"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "LearnedSteps._imagine_step",
+          "line": 873,
+          "end_line": 883,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "LearnedSteps._finish_rollout",
+          "line": 885,
+          "end_line": 889,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "LearnedSteps.policy_loss",
+          "line": 891,
+          "end_line": 909,
+          "arguments": [
+            "self",
+            "start",
+            "noise"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "LearnedSteps._critic_targets",
+          "line": 911,
+          "end_line": 914,
+          "arguments": [
+            "self",
+            "ro"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "LearnedSteps._critic_loss",
+          "line": 916,
+          "end_line": 917,
+          "arguments": [
+            "self",
+            "ro",
+            "targets",
+            "idx"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "LearnedSteps._imagine_step_kp",
+          "line": 919,
+          "end_line": 932,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "LearnedSteps._finish_rollout_kp",
+          "line": 934,
+          "end_line": 940,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "LearnedSteps.policy_loss_kp",
+          "line": 942,
+          "end_line": 990,
+          "arguments": [
+            "self",
+            "start",
+            "noise",
+            "point_mask",
+            "frame_mask",
+            "heading_mask",
+            "jitter",
+            "human_win"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "LearnedSteps._critic_targets_kp",
+          "line": 992,
+          "end_line": 995,
+          "arguments": [
+            "self",
+            "ro"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "LearnedSteps._critic_loss_kp",
+          "line": 997,
+          "end_line": 1000,
+          "arguments": [
+            "self",
+            "ro",
+            "targets",
+            "idx"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_target_max",
+          "line": 1003,
+          "end_line": 1006,
+          "arguments": [
+            "cfg"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_tclip",
+          "line": 1009,
+          "end_line": 1013,
+          "arguments": [
+            "metrics",
+            "key",
+            "prefix"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_flag_arg",
+          "line": 1016,
+          "end_line": 1022,
+          "arguments": [
+            "key",
+            "value"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "check_goal_anchor",
+          "line": 1025,
+          "end_line": 1034,
+          "arguments": [
+            "cfg",
+            "anchor",
+            "path"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_field_defaults",
+          "line": 1037,
+          "end_line": 1045,
+          "arguments": [
+            "cfg"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_keep_fused",
+          "line": 1048,
+          "end_line": 1058,
+          "arguments": [
+            "opt",
+            "fused"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_stale_kp_parts",
+          "line": 1081,
+          "end_line": 1096,
+          "arguments": [
+            "ckpt"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_without_stale_kp_parts",
+          "line": 1099,
+          "end_line": 1113,
+          "arguments": [
+            "ckpt",
+            "stale"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_stale_kp_error",
+          "line": 1116,
+          "end_line": 1138,
+          "arguments": [
+            "path",
+            "ckpt",
+            "stale",
+            "hint"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_stale_kp_warning",
+          "line": 1141,
+          "end_line": 1154,
+          "arguments": [
+            "path",
+            "ckpt",
+            "stale"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "check_residual_scale",
+          "line": 1157,
+          "end_line": 1187,
+          "arguments": [
+            "sigma",
+            "rank",
+            "world_size",
+            "same_across_ranks"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "check_same_iteration",
+          "line": 1190,
+          "end_line": 1214,
+          "arguments": [
+            "it",
+            "rank",
+            "world_size",
+            "device",
+            "run_dir"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "rng_state",
+          "line": 1217,
+          "end_line": 1235,
+          "arguments": [],
+          "decorators": []
+        },
+        {
+          "name": "set_rng_state",
+          "line": 1238,
+          "end_line": 1254,
+          "arguments": [
+            "state"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer.__init__",
+          "line": 1281,
+          "end_line": 1552,
+          "arguments": [
+            "self",
+            "cfg",
+            "device"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._resolve_cfg",
+          "line": 1554,
+          "end_line": 1638,
+          "arguments": [
+            "self",
+            "cfg"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._height_stats",
+          "line": 1641,
+          "end_line": 1656,
+          "arguments": [
+            "self",
+            "chunk"
+          ],
+          "decorators": [
+            "torch.no_grad()"
+          ]
+        },
+        {
+          "name": "Trainer._kp_modules",
+          "line": 1658,
+          "end_line": 1661,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._kp_parameters",
+          "line": 1663,
+          "end_line": 1670,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._bind_kp_student",
+          "line": 1672,
+          "end_line": 1729,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._policy_fn",
+          "line": 1733,
+          "end_line": 1776,
+          "arguments": [
+            "self",
+            "obs_hist_flat",
+            "goals"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._on_reset",
+          "line": 1778,
+          "end_line": 1795,
+          "arguments": [
+            "self",
+            "env_ids"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._collect_steps",
+          "line": 1797,
+          "end_line": 1803,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._average_grads",
+          "line": 1807,
+          "end_line": 1815,
+          "arguments": [
+            "self",
+            "module",
+            "params"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer.fit_world_model",
+          "line": 1817,
+          "end_line": 1835,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer.estimate_residual_scale",
+          "line": 1838,
+          "end_line": 1856,
+          "arguments": [
+            "self",
+            "num_windows"
+          ],
+          "decorators": [
+            "torch.no_grad()"
+          ]
+        },
+        {
+          "name": "Trainer.latent_alignment",
+          "line": 1858,
+          "end_line": 1882,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer.improve_policy",
+          "line": 1884,
+          "end_line": 1923,
+          "arguments": [
+            "self",
+            "aux_loss"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer.improve_policy_kp",
+          "line": 1925,
+          "end_line": 2013,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._fit_critic",
+          "line": 2015,
+          "end_line": 2047,
+          "arguments": [
+            "self",
+            "name",
+            "critic",
+            "opt",
+            "ro",
+            "targets_fn",
+            "loss_fn"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer.iteration",
+          "line": 2049,
+          "end_line": 2120,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._update_target",
+          "line": 2123,
+          "end_line": 2132,
+          "arguments": [
+            "self"
+          ],
+          "decorators": [
+            "torch.no_grad()"
+          ]
+        },
+        {
+          "name": "Trainer.train",
+          "line": 2136,
+          "end_line": 2204,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._check_resume_agreement",
+          "line": 2206,
+          "end_line": 2221,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._accumulate",
+          "line": 2223,
+          "end_line": 2247,
+          "arguments": [
+            "self",
+            "window",
+            "metrics"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._snapshot",
+          "line": 2249,
+          "end_line": 2265,
+          "arguments": [
+            "self",
+            "window"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._log",
+          "line": 2267,
+          "end_line": 2299,
+          "arguments": [
+            "self",
+            "window"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._add_perf",
+          "line": 2301,
+          "end_line": 2319,
+          "arguments": [
+            "self",
+            "out",
+            "window",
+            "wall",
+            "ranks"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._robot_rows",
+          "line": 2321,
+          "end_line": 2333,
+          "arguments": [
+            "self",
+            "out"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._print_robot_line",
+          "line": 2335,
+          "end_line": 2350,
+          "arguments": [
+            "self",
+            "robot",
+            "m"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._print_line",
+          "line": 2352,
+          "end_line": 2393,
+          "arguments": [
+            "self",
+            "out"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._open_loggers",
+          "line": 2395,
+          "end_line": 2413,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._close_loggers",
+          "line": 2415,
+          "end_line": 2421,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer.checkpoint",
+          "line": 2425,
+          "end_line": 2499,
+          "arguments": [
+            "self",
+            "rng_ranks"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer.save_checkpoint",
+          "line": 2501,
+          "end_line": 2525,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._check_ranks_identical",
+          "line": 2527,
+          "end_line": 2576,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer.load",
+          "line": 2578,
+          "end_line": 2779,
+          "arguments": [
+            "self",
+            "path",
+            "explicit"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._keep_cfg",
+          "line": 2781,
+          "end_line": 2816,
+          "arguments": [
+            "self",
+            "path",
+            "kept",
+            "absent"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._flip_pool_norms",
+          "line": 2818,
+          "end_line": 2836,
+          "arguments": [
+            "self",
+            "path"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._resume_guard",
+          "line": 2838,
+          "end_line": 2860,
+          "arguments": [
+            "self",
+            "path",
+            "saved",
+            "current"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._resume_guard.norm",
+          "line": 2850,
+          "end_line": 2851,
+          "arguments": [
+            "value"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._load_policy",
+          "line": 2862,
+          "end_line": 2887,
+          "arguments": [
+            "self",
+            "state",
+            "path"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._load_sampler",
+          "line": 2889,
+          "end_line": 2912,
+          "arguments": [
+            "self",
+            "ckpt",
+            "path"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer._load_rng",
+          "line": 2914,
+          "end_line": 2947,
+          "arguments": [
+            "self",
+            "ckpt",
+            "path"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "Trainer.close",
+          "line": 2949,
+          "end_line": 2951,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        }
+      ]
+    },
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/repositories/q1-rf12-20261028/script/morphmimic_q1/assets.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/script/morphmimic_q1/assets.py",
+        "bytes": 6010,
+        "sha256": "5224a4b69eef91c7dd026ada323f57a7be124f8571051dcdc4792bd224388c7e"
+      },
+      "functions": [
+        {
+          "name": "SparseTranslator.num_native",
+          "line": 30,
+          "end_line": 31,
+          "arguments": [
+            "self"
+          ],
+          "decorators": [
+            "property"
+          ]
+        },
+        {
+          "name": "SparseTranslator.perm",
+          "line": 34,
+          "end_line": 35,
+          "arguments": [
+            "self"
+          ],
+          "decorators": [
+            "property"
+          ]
+        },
+        {
+          "name": "SparseTranslator.sign",
+          "line": 38,
+          "end_line": 39,
+          "arguments": [
+            "self"
+          ],
+          "decorators": [
+            "property"
+          ]
+        },
+        {
+          "name": "SparseTranslator.offset",
+          "line": 42,
+          "end_line": 43,
+          "arguments": [
+            "self"
+          ],
+          "decorators": [
+            "property"
+          ]
+        },
+        {
+          "name": "SparseTranslator.untracked",
+          "line": 46,
+          "end_line": 47,
+          "arguments": [
+            "self"
+          ],
+          "decorators": [
+            "property"
+          ]
+        },
+        {
+          "name": "SparseTranslator.to_canonical",
+          "line": 49,
+          "end_line": 50,
+          "arguments": [
+            "self",
+            "value"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseTranslator.to_canonical_delta",
+          "line": 52,
+          "end_line": 53,
+          "arguments": [
+            "self",
+            "value"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseTranslator.to_native",
+          "line": 55,
+          "end_line": 56,
+          "arguments": [
+            "self",
+            "value",
+            "default"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseTranslator.to_native_delta",
+          "line": 58,
+          "end_line": 59,
+          "arguments": [
+            "self",
+            "value"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseTranslator.limits_to_canonical",
+          "line": 61,
+          "end_line": 62,
+          "arguments": [
+            "self",
+            "value"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "q1_entity",
+          "line": 65,
+          "end_line": 140,
+          "arguments": [],
+          "decorators": []
+        },
+        {
+          "name": "q1_entity.PrimebotActuator.edit_spec",
+          "line": 72,
+          "end_line": 80,
+          "arguments": [
+            "self",
+            "spec",
+            "target_names"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "q1_entity.PrimebotActuator.initialize",
+          "line": 82,
+          "end_line": 93,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "q1_entity.PrimebotActuator.compute",
+          "line": 95,
+          "end_line": 100,
+          "arguments": [
+            "self",
+            "cmd"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "q1_entity.PrimebotActuatorCfg.build",
+          "line": 104,
+          "end_line": 105,
+          "arguments": [
+            "self",
+            "entity",
+            "target_ids",
+            "target_names"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "q1_entity.spec_fn",
+          "line": 107,
+          "end_line": 130,
+          "arguments": [],
+          "decorators": []
+        },
+        {
+          "name": "q1_spec",
+          "line": 144,
+          "end_line": 156,
+          "arguments": [],
+          "decorators": [
+            "cache"
+          ]
+        },
+        {
+          "name": "presence",
+          "line": 159,
+          "end_line": 162,
+          "arguments": [
+            "spec",
+            "ref"
+          ],
+          "decorators": []
+        }
+      ]
+    },
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/repositories/q1-rf12-20261028/script/morphmimic_q1/bootstrap.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/script/morphmimic_q1/bootstrap.py",
+        "bytes": 9504,
+        "sha256": "9f315daea55c5d0748ef1519127706a0ebb24a26450fa6e2e41a56b069967988"
+      },
+      "functions": [
+        {
+          "name": "install",
+          "line": 20,
+          "end_line": 212,
+          "arguments": [
+            "robot_name"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "install.get_robot",
+          "line": 32,
+          "end_line": 33,
+          "arguments": [
+            "name"
+          ],
+          "decorators": [
+            "cache"
+          ]
+        },
+        {
+          "name": "install.split",
+          "line": 42,
+          "end_line": 45,
+          "arguments": [
+            "state"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "install.join",
+          "line": 47,
+          "end_line": 49,
+          "arguments": [
+            "parts"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "install.morphology_population",
+          "line": 59,
+          "end_line": 79,
+          "arguments": [],
+          "decorators": [
+            "cache"
+          ]
+        },
+        {
+          "name": "install.morphology_vector",
+          "line": 81,
+          "end_line": 84,
+          "arguments": [
+            "name",
+            "actor",
+            "actor_geometry"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "install.decode",
+          "line": 97,
+          "end_line": 102,
+          "arguments": [
+            "self",
+            "z",
+            "obs_hist_flat",
+            "morph"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "install.env_cfg",
+          "line": 110,
+          "end_line": 140,
+          "arguments": [
+            "robot"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "install.NativeContext.__call__",
+          "line": 147,
+          "end_line": 149,
+          "arguments": [
+            "self",
+            "env"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "install.NativeEnv.project_observations",
+          "line": 157,
+          "end_line": 164,
+          "arguments": [
+            "self",
+            "obs"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "install.NativeEnv.step",
+          "line": 166,
+          "end_line": 169,
+          "arguments": [
+            "self",
+            "action"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "install.NativeEnv.reset",
+          "line": 171,
+          "end_line": 173,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "install.add",
+          "line": 180,
+          "end_line": 186,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "install.noise_widths",
+          "line": 192,
+          "end_line": 197,
+          "arguments": [
+            "noise",
+            "device"
+          ],
+          "decorators": []
+        }
+      ]
+    },
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/repositories/q1-rf12-20261028/script/morphmimic_q1/canonical.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/script/morphmimic_q1/canonical.py",
+        "bytes": 8672,
+        "sha256": "4a251e4b7e7125385d68b36393b513fcc3a17788c760eac7495751d5b5edf748"
+      },
+      "functions": [
+        {
+          "name": "SparseJointMap.__post_init__",
+          "line": 29,
+          "end_line": 48,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseJointMap.q1",
+          "line": 51,
+          "end_line": 62,
+          "arguments": [
+            "cls",
+            "canonical_names",
+            "native_names"
+          ],
+          "decorators": [
+            "classmethod"
+          ]
+        },
+        {
+          "name": "SparseJointMap._pairs",
+          "line": 64,
+          "end_line": 70,
+          "arguments": [
+            "self",
+            "ref"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseJointMap.mask",
+          "line": 72,
+          "end_line": 74,
+          "arguments": [
+            "self",
+            "ref"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseJointMap._width",
+          "line": 76,
+          "end_line": 78,
+          "arguments": [
+            "self",
+            "x",
+            "n"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseJointMap.canonical",
+          "line": 80,
+          "end_line": 85,
+          "arguments": [
+            "self",
+            "native"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseJointMap.native",
+          "line": 87,
+          "end_line": 97,
+          "arguments": [
+            "self",
+            "canonical",
+            "default"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseJointMap.project",
+          "line": 99,
+          "end_line": 101,
+          "arguments": [
+            "self",
+            "canonical"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseJointMap.limits",
+          "line": 103,
+          "end_line": 110,
+          "arguments": [
+            "self",
+            "native_limits"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseJointMap.state",
+          "line": 112,
+          "end_line": 115,
+          "arguments": [
+            "self",
+            "state"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseJointMap.proprio",
+          "line": 117,
+          "end_line": 122,
+          "arguments": [
+            "self",
+            "observation"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseJointMap.context",
+          "line": 124,
+          "end_line": 127,
+          "arguments": [
+            "self",
+            "context"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseJointMap.goal",
+          "line": 129,
+          "end_line": 134,
+          "arguments": [
+            "self",
+            "goal"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "SparseJointMap.joint_rmse",
+          "line": 136,
+          "end_line": 140,
+          "arguments": [
+            "self",
+            "predicted",
+            "target"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "morphology_with_presence",
+          "line": 143,
+          "end_line": 176,
+          "arguments": [
+            "actuator_terms",
+            "geometry",
+            "presence"
+          ],
+          "decorators": []
+        }
+      ]
+    },
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/repositories/q1-rf12-20261028/script/morphmimic_q1/model_adapter.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/script/morphmimic_q1/model_adapter.py",
+        "bytes": 6042,
+        "sha256": "a2dea697be29875fb4e9c3b2b9bc64a687ab107920c0f991a2e440c874b3adb2"
+      },
+      "functions": [
+        {
+          "name": "make_world_model",
+          "line": 15,
+          "end_line": 108,
+          "arguments": [
+            "spec"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "make_world_model.NativeWorldModel.__init__",
+          "line": 17,
+          "end_line": 29,
+          "arguments": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "make_world_model.NativeWorldModel.project",
+          "line": 31,
+          "end_line": 32,
+          "arguments": [
+            "self",
+            "action"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "make_world_model.NativeWorldModel.project_physical",
+          "line": 34,
+          "end_line": 36,
+          "arguments": [
+            "self",
+            "state"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "make_world_model.NativeWorldModel.local_features",
+          "line": 38,
+          "end_line": 41,
+          "arguments": [
+            "self",
+            "state"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "make_world_model.NativeWorldModel.step",
+          "line": 43,
+          "end_line": 58,
+          "arguments": [
+            "self",
+            "state",
+            "action",
+            "ctx"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "make_world_model.NativeWorldModel.reward",
+          "line": 60,
+          "end_line": 61,
+          "arguments": [
+            "self",
+            "next_state",
+            "ref",
+            "action",
+            "prev_action"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "make_world_model.NativeWorldModel.obs",
+          "line": 63,
+          "end_line": 67,
+          "arguments": [
+            "self",
+            "state",
+            "encoder_bias",
+            "prev_action"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "make_world_model.NativeWorldModel.termination_logit",
+          "line": 69,
+          "end_line": 79,
+          "arguments": [
+            "self",
+            "next_state",
+            "ref"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "make_world_model.NativeWorldModel.termination_prob",
+          "line": 81,
+          "end_line": 82,
+          "arguments": [
+            "self",
+            "next_state",
+            "ref"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "make_world_model.NativeWorldModel.fit_loss",
+          "line": 84,
+          "end_line": 106,
+          "arguments": [
+            "self",
+            "batch",
+            "library"
+          ],
+          "decorators": []
+        }
+      ]
+    },
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/repositories/q1-rf12-20261028/script/q1_five_stage/inference.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/script/q1_five_stage/inference.py",
+        "bytes": 7115,
+        "sha256": "3eb2ccaab3e32dceb224bd553f1397375e2ded2e9bc91028df71e743cf4d18d0"
+      },
+      "functions": [
+        {
+          "name": "validate_metadata",
+          "line": 11,
+          "end_line": 46,
+          "arguments": [
+            "value",
+            "robot",
+            "commit"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "load_policy",
+          "line": 49,
+          "end_line": 91,
+          "arguments": [
+            "path",
+            "spec",
+            "commit",
+            "device",
+            "expected_plan"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "NativePolicy.__init__",
+          "line": 95,
+          "end_line": 97,
+          "arguments": [
+            "self",
+            "policy",
+            "norms",
+            "present"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "NativePolicy.__call__",
+          "line": 99,
+          "end_line": 116,
+          "arguments": [
+            "self",
+            "history",
+            "goals",
+            "interface"
+          ],
+          "decorators": []
+        }
+      ]
+    },
+    {
+      "local": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/repositories/q1-rf12-20261028/script/q1_five_stage/q1_native_review.py",
+      "server": {
+        "path": "/opt/data/private/ZHY/script/q1_five_stage/q1_native_review.py",
+        "bytes": 13025,
+        "sha256": "193301f71a5b1c32dbbfe7f606b0d92e85a0c2b5a0420c280e478a11fefa3043"
+      },
+      "functions": [
+        {
+          "name": "reference_window_indices",
+          "line": 18,
+          "end_line": 21,
+          "arguments": [
+            "frame",
+            "frames",
+            "count"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "native_state",
+          "line": 24,
+          "end_line": 33,
+          "arguments": [
+            "robot",
+            "value",
+            "spec"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "assert_paired_reference",
+          "line": 36,
+          "end_line": 53,
+          "arguments": [
+            "robot",
+            "primebot",
+            "library",
+            "spec"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "rollout",
+          "line": 56,
+          "end_line": 125,
+          "arguments": [
+            "robot",
+            "actor",
+            "config",
+            "item",
+            "interface",
+            "seed",
+            "output"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "execute",
+          "line": 128,
+          "end_line": 204,
+          "arguments": [
+            "args"
+          ],
+          "decorators": []
+        }
+      ]
+    }
+  ],
+  "evidence_scope": "historical server source identities; not a new live-server observation",
+  "modules_imported": false,
+  "checkpoint_loaded": false,
+  "runtime_action_gradient": "NOT_EXECUTED",
+  "new_cuda_calls": 0,
+  "new_physical_transitions": 0,
+  "new_training_updates": 0,
+  "reviewed_interface": {
+    "physical_state": 240,
+    "effective_state": 269,
+    "context": 62,
+    "canonical_action": 29,
+    "real_q1_joints": 22,
+    "canonical_physical_features": 268,
+    "critic_features_with_command_memory": 297,
+    "morphology": 154,
+    "state_command_memory_slice": [
+      240,
+      269
+    ],
+    "deterministic_next_command_memory": true,
+    "context_layout": [
+      "friction1",
+      "encoder_bias29",
+      "torso_com3",
+      "delay_seconds29"
+    ],
+    "action_units": "raw canonical policy action; do not apply actuator scale twice",
+    "state_normalization": "saved mean/std in canonical frame; absent features projected",
+    "output_scale": "saved delta_scale; retain actual checkpoint configuration",
+    "effective_step": "make_world_model.NativeWorldModel.step",
+    "freeze_parameters_without_no_grad": true
+  },
+  "next_runtime_requirements": [
+    "Recheck original host/root/boot/GPU, explicit user pause, locks and resource limits",
+    "Load actual audited 32k wm buffers strictly after native bootstrap; never initialize a replacement WM",
+    "Use physical saved states and recorded executed actions; teacher queries are different labels",
+    "Check physical-only action gradients; command-memory identity gradients do not certify dynamics",
+    "Require finite nonzero physical pose response on present joints and zero absent-joint response",
+    "Keep next-reference labels offline, same frame/clip, episode masks and fixed-pair coordinates",
+    "Calibrate saved-transition prediction before registering a derivative-loss training comparison"
+  ],
+  "user_accepted_checkpoint": null
+}

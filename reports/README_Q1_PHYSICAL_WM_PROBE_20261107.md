@@ -1,6 +1,6 @@
 # Q1冻结世界模型的保存转移校准
 
-2026-11-07。当前状态：独立实现和八项本地检查已成，实际32k权重预测/梯度诊断尚未执行；原共享训练保持用户暂停，采纳仍为null。
+2026-11-07。当前状态：独立实现、服务器八项检查、真实32k严格CPU加载和18:26来源/资源准入已通过；实际CUDA预测/梯度诊断尚未派发。原共享训练保持用户暂停，采纳仍为null。
 
 ## 用户版done与todo
 
@@ -39,3 +39,15 @@ todo：发布并部署独立入口，通过原运行时/来源/资源准入后�
 先核output/log/dispatch/receipt/实际进程防重复，再原身份和暂停/资源、源码/计划、原运行时与独立准入发布，最后单次派发。worker诊断完成可返回筛查FAILED，控制器仍如实记录诊断已完成/source PASSED；实现错误与模型筛查失败分开。训练、物理、媒体均为0，本阶段没有新训练六宫图或新视频可宣称。
 
 发布、部署、运行时检查、准入、实际结果和三端镜像分别以随后收据为准。原final门及采纳null保持；不新建goal或agent，不让用户先做连通性确认。
+
+## 真实部署与准入
+
+独立实现`f417c8475b77295904404c6b5746d032dfb5ebe8`、名义零延迟修订`1566834e3634eb9d73b0f4c68a42c77365237298`及清单`e28dd7febf5fe96bb13f141f967d1eb564d7591a`已显式push并独立40位远端核同；修订前代码23215B归档保留，修订三成员15237B包SHA `be0bafa3c156eb94e45d1f7463b2aa46808bfc07ae5f5c7eb2097fff9f68d1b8`部署时旧751份保护来源前后同。原共享/冻结200输入没有修改。
+
+原运行时八项检查通过。额外实际权重CPU加载首次调用遗漏项目原有Git环境，原失败原样保留；随后沿`preview_review.environment(runtime)`的原Git可执行路径与CUDA禁用环境，于18:19:40完成严格加载，20.561966秒、Q1 present22/state269/context62/CUDA未初始化。WM全张量SHA为`4eccbe169cf22ce7729930a8d45c763fe0646c0a957b3b9e39d22beff0ebf330a`。没有更改全局Git或SSH设置。
+
+首条CPU准入命令误用了缺numpy的系统python，在模块导入处即退出；改用固定Primebot Python后通过。零延迟能力修订的八项检查又在原Morph运行时通过；这是代码变更后的必要检查，未重复旧物理或训练。
+
+18:26:00修订准入：175执行/200冻结/731保护输入和原锁通过，cgroup8107569152B/限34292629504B、GPU1MiB25度/计算空/OOM0；原五训练PID退出及STOPPED_SIGNAL由准入重新确认。累计成本1371秒/r3已250、全SETTLED。原输出与派发仍未创建，不据准入称诊断已完成；发布本准入后唯一派发新WM_PROBE01。
+
+七份原始回执共17254B已沿现有SSH传回Mac并逐件大小SHA核同，4784B八成员归档SHA `140aa3b3418271551e10561362230ca6a2750285ff2938d9c927508e33f0c1d2`。[初部署](../logs/session_records/q1_physical_wm_probe_deployed_20261107.json)、[原检查含首次加载失败](../logs/session_records/q1_physical_wm_probe_native_checks_20261107.json)、[真实严格CPU加载](../logs/session_records/q1_physical_wm_probe_strict_cpu_load_20261107.json)、[初准入](../logs/session_records/q1_physical_wm_probe_admitted_20261107.json)、[名义上下文修订部署](../logs/session_records/q1_physical_wm_probe_r2_deployed_20261107.json)、[修订八检查](../logs/session_records/q1_physical_wm_probe_r2_native_checks_20261107.json)、[修订实际准入与完整参数](../logs/session_records/q1_physical_wm_probe_r2_admitted_20261107.json)。新说明服务器镜像仍待回执；认证材料未记录。

@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 18:26物理WM准入：33391固定用户入口仍可用；e28dd7febf5fe96bb13f141f967d1eb564d7591a独立40位远端同，零延迟模型能力修订1566834/三成员15237B包部署、旧751来源同。修订八原运行时检查过，实际32k严格CPU载入20.561966秒/WM张量SHA4eccbe169cf22ce7729930a8d45c763fe0646c0a957b3b9e39d22beff0ebf330a/CUDA0；初Git环境失败与系统python缺numpy导入失误原样保留，分别用environment(runtime)/固定Primebot Python纠正。175/200/731与原锁准入过，总8107569152限34292629504/GPU1MiB25度/OOM0/原暂停同，1371秒r3已250全SETTLED；七原回执17254B及4784B包Mac逐件SHA同。GPU诊断尚未派发，先发布本准入再唯一WM_PROBE01，不重复原物理/训练或CPU严格加载，不调用goal/新agent/采纳null保持。入口README_Q1_PHYSICAL_WM_PROBE及r2_admitted；新文档服务器镜像待。
+
 - 2026-11-07物理WM诊断准备：新wm_probe四执行模块/固定计划/八CPU检查0.093秒过，实际CUDA0；≤256保存train/val转移、≤512WM.step/300秒/64MiB，排除末29命令恒等梯度，原始cfg/normalizer/morph/height/presence严格加载。context只按实核名义采样源码与XML重建，不称记录张量；对共同Primebot物理的筛查不等于原训练动力学认证。20613自主固定source/ssh到原Linux并18:01实核原身份暂停/旧PID退/GPU空/总8008724480限34292629504/OOM0后Timeout；一次同入口33391已再入原Linux，18:07两context源码SHA同/无probe根收据，原1371秒账本全SETTLED。需先发布/部署/原运行时/来源资源准入再唯一probe，实际新训练物理0/原共享暂停/不调用goal或新agent/采纳null保持，入口README_Q1_PHYSICAL_WM_PROBE。
 
 - 2026-11-07 17:52冻结WM本地审计：九上游+六适配源码296205B与保存PAIR02授权十五项大小SHA全同，LOCAL_FROZEN_WM_INTERFACE_AUDIT_PASSED；三个新标准库检查全过/.001秒，0import/checkpoint/CUDA/物理/训练。有效state269/context62/raw canonical29，末29命令恒等更新不能当物理Jacobian；下一先独立≤256保存train/val转移、≤512CUDA调用/300s/64MiB预测校准与物理梯度入口，须先实现发布/原运行时/来源资源门，实际未执行。原始v5 PDF17页22350232B/SHAdc9a66864a77beea3fced6a8fa730fe65d262fe4ce0fc0b7f5e584628158f916仍GigaBrain/十未来帧0.2s，撤回原InterTrack名/3.5-3.6节号/误差导数论文归因；后者是本项目独立假设。19098自主固定source/ssh入口到原Linux后Timeout退出，90374同入口有界重试第一跳TCP超时/未Windows；均退不再探，现场资源未获新回执，不泛化Linux停止/不问用户代测。LATENT02结果ee0639a553551d3c617e9e280b2dd32d34192616已push/独立40位/Mac十一份782301B同，原1371/r3已250/共享暂停/既有目标/采纳null不变，服务器文档镜像待。入口README_Q1_FROZEN_WM_INTERFACE及review/result_publication。

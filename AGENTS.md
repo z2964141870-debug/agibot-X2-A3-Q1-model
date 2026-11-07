@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 14:33已唯一派发AGGREGATE01控制器352942/start34610104；14:35:33实核RUNNING/guard RUNNING，前三来源768混合物理步，GPU442MiB36度、总11129298944B/限34292629504B/OOM0，持原GPU锁/训练信号0/回收未尝试。该行为含H10教师特权，只是采样阶段，不是f0闭环质量通过。 源4d1f632/准入发布b178fcabcc1e757ee7885732f0f1a054be073ab9，原始dispatch2855B/SHAe2855120a61c6af7e6b473a28632f1d256152161ebfd0ac4d38d7ca49d9f185e已Mac同，不能再Popen。原623已结算/本轮r2预留4426/实际1740秒阶段不扩，完成先SETTLE与来源回收门、训练六宫图，再新根七f0闭环/十四对照复用。95471原Linux/固定用户入口自主恢复不询问代测，R1视频核同816000前缀后续传，R2两视频已完整Mac；原共享暂停/goal继续/采纳null/不新agent。入口STUDENT_STATE_AGGREGATION与dispatch/running_observed，服务器新文档镜像待补。
+
 - 2026-11-07 14:26服务器真实准入：源码4d1f632及256执行清单已部署，六项原运行时CPU检查3.925733秒通过；256执行/200冻结/697保护输入SHA核同，原1404训练/711验证记录与12/6来源组复核通过。GPU1MiB25度、总8009773056B/限34292629504B/OOM0，原锁独占检查后释放。三份服务器原始回执已Mac大小SHA核同。真实采集/训练尚未派发；先发布本准入，再唯一AGGREGATE01根单派，原623秒成本账本和资源保护不变。 固定用户入口95471原Linux可用/不再询问用户先测，59037已本地zsh；R2两代表视频955065B包已Mac SHA同/完整解码/联系表目视，R1part816000B继续续传。入口STUDENT_STATE_AGGREGATION及三份deployed/native_checks/admitted原回执；服务器文档镜像待补，原共享暂停/goal继续/采纳null/不新agent。
 
 - 2026-11-07学生状态聚合准备：新增aggregate/controller/worker/fit、plan及训练六宫图入口，六聚焦CPU检查0.667秒全过/合成三Adam，真实新采集训练0。仅原12train/6val最多4407物理步，半教师半固定f0学生混合行为是特权训练采样，不冒称因果遥操；frame0或首个真正可用历史、真实状态/执行动作/学生动作/教师查询逐行核同，warm-start旧R2且统计/decoder/教师不变，原r2累计4500及总14400账本保持/已623余13777。方案1740秒1GiB/原22/24GiB18GiB80度100GiB及锁/自有回收，复用旧R2缓存边界不重复advice；新源码尚待发布/部署/运行时/准入。95471固定用户入口自主恢复原Linux/身份暂停旧PID退/OOM0/总7912632320限34292629504；59037已本地zsh不能再发Linux命令。Windows此次LF显示续行、CR立即出Linux密码提示为本次交互事实，不能概括旧失败单因；无需用户先代测。R2代表视频955065B包SHA2af2c32b85e38a6354e733028d35e4477ae2a2b7bcd5ed378a626c065287c364已partial768000B续传，R1part816000B保持；不重渲染，原共享暂停/新goal继续/采纳null/不新agent。入口STUDENT_STATE_AGGREGATION及preparation；发布以随后收据为准。

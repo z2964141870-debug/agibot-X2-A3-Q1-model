@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-07 15:33 R3修订准入：首PAIR01初始化顺序错误、实际Adam0/354447及354519退出回收/14秒SETTLED，FAILED及原23272B源码包保留，非策略或连接失败。新worker先装稀疏contracts再import state，5f430b4已push/独立远端/Mac核同，三成员14112B包部署/旧700来源同。原运行时七检查及真实native_contracts加载过/合22.766922秒、CUDA0；163/200/729来源和原锁准入过，GPU1MiB26度/OOM0/总8073822208限34292629504。五原回执4090B包已Mac SHA同，下一发布准入后唯一PAIR02；原1135/14400账本/r3已14不重置，不重采物理或恢复原共享训练/goal继续/采纳null/无agent，56557原Linux。入口GIGABRAIN_AUXILIARY_PAIR与pair_r2_admitted，新文档镜像待。
+
 - 2026-11-07 15:25 R3配对真实准入：固定用户入口56557自主进原Linux、原身份暂停/旧PID退/锁计算空同；728f804已push/独立40位核同，八成员23272B包只新增/旧700来源同。原运行时六CPU检查4.193942秒过，163新执行/200冻结/729保护输入/原12train6val数据和GPU锁准入过后释放，总8073879552限34292629504/GPU1MiB26度/OOM0。三原始回执2410B包已Mac SHA同，真实新训练0，先发布本准入再唯一PAIR01单派；原1121秒账本/r3及总界不重置，不重采数据或恢复原共享训练/goal继续/采纳null/不新agent。入口GIGABRAIN_AUXILIARY_PAIR和auxiliary_pair_admitted，服务器新文档镜像待。
 
 - 2026-11-07续行：保存聚合动作残差真实只读完成，两原NPZ SHA前后同/新推理物理训练0；67570B原值已Mac，验证腿部动作delta RMS.409864对训练.083068，仅泛化诊断不定倒地因果。独立R3下一状态配对四执行模块/plan/六宫图已实现，六项CPU检查过；两组同R2初始化/数据/seed/各3000Adam，仅aux.1不同，真实更新0。下一状态须对应实际执行行为、保留gravity/去previous-action/缺失关节、终止mask/当前history核同，未来只监督且头不部署。先发布再原运行时/资源准入/单派，原1121/14400账本及r3上限7200保持；不重复同策略七物理、旧256/200冻结不改。95471旧会话Timeout已结束，按用户原样固定入口56557自主重连等待，不询问代测/不泛化Linux不可达。入口GIGABRAIN_AUXILIARY_PAIR及student_state_residuals；原共享暂停/既有goal继续/采纳null/无新agent，新镜像待实际回执。

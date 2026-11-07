@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-08 F0_PROPRIO_PAIR01真实完成：两组各3000新增Adam/四计数均3000，source PASSED；causal_history选3000/验证下降36.303%且两旧锚点均降，zero_history选0/零适配器，闭环质量尚待。两训练六宫PNG/PDF/CSV和15服务器原件已Mac核同及目视，23成员550450B ZIP/22链接过。114秒SETTLED/累计3671=1614+686+1371无RESERVED，380284/380285/380359及旧五PID均退/原锁计算空/OOM0；最新总8197259264限34292629504/GPU1MiB24度/余盘183588171776，45014原Linux正常。下一先CPU证置零组与原R2策略同而复用旧0/7，独立七例只跑causal_history3000/原action路径、不混CPU加速，先发布审计与来源资源准入。不重训或重跑旧物理/不恢复共享/goal工具新agent不用/采纳null；旧大包索引镜像PENDING。[完成证据](README_Q1_F0_PROPRIO_RESIDUAL_20261108.md#真实训练结果)。
+
 2026-11-08 F0_PROPRIO_PAIR01真实准入过：0549ea6源码/e2e3ced清单独立远端40位同，十成员18512B源包五ACK部署/1015旧来源同，六原Morph检查全过/1031保护与六数组/R2保存点/原暂停锁资源准入12.320935秒过。三原收据5802B已Mac大小SHA同；GPU1MiB25度/OOM0/总8196124672限34292629504/余盘183602642944，3557账本全SETTLED/真实新训练0。发布本准入后唯一PAIR01防重单派600秒/两组各3000/计原r2；45014继续，原共享暂停/采纳null/goal新agent不用，不重复六检查或旧物理。[准入证据](README_Q1_F0_PROPRIO_RESIDUAL_20261108.md#原运行时与准入)。
 
 2026-11-08 F0_PROPRIO_PAIR01独立准备：六本地合同/编译CLI过，新增930→128→latent零初始化残差，两组真实/置零机器人历史同容量/样本序列/各3000更新；旧R2 selected500人体encoder及teacher/WM/decoder/norm冻结。严格复用三origin六train/validation数组6725/2358行，新四事件参数已训练前登记/不读test。总600秒128MiB/原r2账本，3557=1614+572+1371无预留不重置；真实新GPU物理0，先发布/原运行时/来源资源准入再唯一防重派发。45014原Linux可用/获批SSH90/60/5保持，自主连接不问代测；原共享暂停/goal工具新agent不用/采纳null。选0先证策略同而复用失败，非0才独立闭环。[新方案](README_Q1_F0_PROPRIO_RESIDUAL_20261108.md)。

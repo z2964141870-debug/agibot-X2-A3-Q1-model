@@ -1,0 +1,226 @@
+{
+  "stage": "F0_PROPRIO_PAIR01_COMPLETED",
+  "status": "PAIRED_RESIDUAL_TRAINED_PENDING_CLOSED_LOOP",
+  "source_commit": "0549ea64677b4fbf2102c813c3d4b387014deec5",
+  "manifest_commit": "e2e3cedab7558582eca5ad768c1475b3241a0f5c",
+  "training_result": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_PROPRIO_PAIR01_20261108/result.json",
+    "bytes": 3881,
+    "sha256": "008f09a1f48eaa7673175f7f40d94f74b85d3058dfeccad12550289396dff4d3"
+  },
+  "fit_result": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_PROPRIO_PAIR01_20261108/fit_result.json",
+    "bytes": 47243,
+    "sha256": "2ac2114a4e1b40e9c3d344ab6f348228dcde02afefe48004b06785d949b9d225"
+  },
+  "arms": [
+    {
+      "arm": "zero_history",
+      "initial_validation_risk": 0.08454722753522126,
+      "selected_validation_risk": 0.08454722753522126,
+      "selected_update": 0,
+      "actual_updates": 3000,
+      "actual_adam_steps": [
+        3000,
+        3000,
+        3000,
+        3000
+      ],
+      "selected_adapter_is_zero": true,
+      "trainable_parameters": 123296,
+      "initial_fixed_anchor_risks": [
+        0.08218013929824035,
+        0.10754757064084212
+      ],
+      "selected_fixed_anchor_risks": [
+        0.08218013929824035,
+        0.10754757064084212
+      ],
+      "selected_checkpoint": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_PROPRIO_PAIR01_20261108/zero_history/selected.pt",
+        "bytes": 2972223,
+        "sha256": "536ff112afa8dac167feb565f431d8b1aa6e031e090c5ca06910f75157d9d8c9"
+      },
+      "fit_result": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_PROPRIO_PAIR01_20261108/zero_history/fit_result.json",
+        "bytes": 20573,
+        "sha256": "473f70ef1d65d7b4c647d514b6ee89c1f1cf3f2ccf3f92c72c38067ac9746232"
+      }
+    },
+    {
+      "arm": "causal_history",
+      "initial_validation_risk": 0.08454722753522126,
+      "selected_validation_risk": 0.05385383066690319,
+      "selected_update": 3000,
+      "actual_updates": 3000,
+      "actual_adam_steps": [
+        3000,
+        3000,
+        3000,
+        3000
+      ],
+      "selected_adapter_is_zero": false,
+      "trainable_parameters": 123296,
+      "initial_fixed_anchor_risks": [
+        0.08218013929824035,
+        0.10754757064084212
+      ],
+      "selected_fixed_anchor_risks": [
+        0.047872198124726616,
+        0.08536243097235759
+      ],
+      "selected_checkpoint": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_PROPRIO_PAIR01_20261108/causal_history/selected.pt",
+        "bytes": 2972223,
+        "sha256": "7c019f585995ca557eaf6b7b0fd76a082533a4337305bcd4f852db02b90c2f50"
+      },
+      "fit_result": {
+        "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_PROPRIO_PAIR01_20261108/causal_history/fit_result.json",
+        "bytes": 20579,
+        "sha256": "56bcb4b578c58c1d8c47850bb212d3bbec769510e9506b1aefb831e21e051b69"
+      }
+    }
+  ],
+  "guard": {
+    "worker_started": true,
+    "worker_pid": 380359,
+    "worker_group": 380359,
+    "worker_reaped": true,
+    "worker_return_code": 0
+  },
+  "cost_settlement": {
+    "run_id": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_PROPRIO_PAIR01_20261108",
+    "stage": "r2",
+    "state": "SETTLED",
+    "gpu_count": 1,
+    "reserved_seconds": 3928,
+    "owner": {
+      "pid": 380285,
+      "name": "python",
+      "state": "R",
+      "ppid": 380284,
+      "start_ticks": "40114360",
+      "VmHWM_bytes": 125227008,
+      "VmRSS_bytes": 107929600,
+      "RssAnon_bytes": 88924160,
+      "RssFile_bytes": 19005440,
+      "RssShmem_bytes": 0,
+      "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+      "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+    },
+    "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+    "source_commit": "0549ea64677b4fbf2102c813c3d4b387014deec5",
+    "started_monotonic_ns": 401166127838889,
+    "cost_scope": "GPU-owning collection and training wall time",
+    "ended_monotonic_ns": 401279133830746,
+    "charged_seconds": 114,
+    "over_reserved_budget": false,
+    "cleanup": {
+      "worker_started": true,
+      "worker_pid": 380359,
+      "worker_group": 380359,
+      "worker_reaped": true,
+      "worker_return_code": 0
+    }
+  },
+  "cumulative_gpu_charged_seconds": 3671,
+  "by_stage": {
+    "r1": 1614,
+    "r2": 686,
+    "r3": 1371
+  },
+  "reserved": [],
+  "completion_resources": {
+    "memory_total": 8196210688,
+    "memory_limit": 34292629504,
+    "oom": {
+      "oom_kill_disable": "0",
+      "under_oom": "0",
+      "oom_kill": "0"
+    },
+    "gpu": [
+      "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      " 1",
+      " 28"
+    ],
+    "disk_free": 183588265984
+  },
+  "peak": {
+    "memory": {
+      "total_bytes": 8291815424,
+      "container_limit_bytes": 34292629504,
+      "immediate_headroom_bytes": 26000814080,
+      "guard_headroom_bytes": 23920439296,
+      "total_cache_bytes": 6961852416,
+      "total_rss_bytes": 127913984,
+      "total_shmem_bytes": 0,
+      "total_dirty_bytes": 8785920,
+      "total_writeback_bytes": 4190208,
+      "oom_kill": 0,
+      "under_oom": 0
+    },
+    "gpu": {
+      "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      "used_mib": 480,
+      "temperature_c": 36,
+      "recovery": "None"
+    },
+    "storage": {
+      "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_PROPRIO_PAIR01_20261108",
+      "unique_allocated_bytes": 14368768,
+      "unique_logical_bytes": 14326198,
+      "unique_inodes": 20,
+      "symlinks_not_followed": 0
+    },
+    "maximum_total_bytes": 10410434560,
+    "maximum_gpu_used_mib": 480,
+    "maximum_subtree_rss_bytes": 2884673536,
+    "gpu_lock_owner": {
+      "pid": 380285,
+      "name": "python",
+      "state": "R",
+      "ppid": 380284,
+      "start_ticks": "40114360",
+      "VmHWM_bytes": 125227008,
+      "VmRSS_bytes": 107929600,
+      "RssAnon_bytes": 88924160,
+      "RssFile_bytes": 19005440,
+      "RssShmem_bytes": 0,
+      "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+      "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+    },
+    "training_signals_sent": 0,
+    "memory_reclaim_attempted": false
+  },
+  "actual_optimizer_updates_total": 6000,
+  "actual_updates_each_arm": 3000,
+  "original_shared_training_resumed": false,
+  "original_and_training_pids_absent": [
+    54868,
+    55672,
+    55677,
+    55678,
+    55679,
+    380284,
+    380285,
+    380359
+  ],
+  "current_recovery_resources": {
+    "memory_total": 8197259264,
+    "memory_limit": 34292629504,
+    "oom_kill": 0,
+    "gpu_used_mib": 1,
+    "gpu_temperature_c": 24,
+    "disk_free": 183588171776
+  },
+  "original_gpu_lock": "acquired_nonblocking_idle",
+  "new_physical_steps": 0,
+  "new_rendered_frames": 0,
+  "heldout_events_opened": false,
+  "causal_risk_change_percent": -36.30325649120972,
+  "zero_history_selected_exact_base_proof": "PENDING_CPU_CHECKPOINT_REVIEW",
+  "closed_loop_quality": "PENDING_SEVEN_EXPLORATORY_CASES",
+  "hardware_end_to_end_latency_ms": null,
+  "user_accepted_checkpoint": null,
+  "server_latest_document_mirror": "PENDING"
+}

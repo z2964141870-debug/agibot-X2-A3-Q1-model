@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-08 F0_PROPRIO_PAIR01真实完成：各3000新增Adam/四计数全3000/source PASSED，causal_history选3000/验证下降36.303%及两旧锚点降，zero_history选0/零适配器；闭环待，不据loss判改善。两训练六宫PNG/PDF/CSV/15原件已Mac核同目视，23成员550450B ZIP和22链接过。114秒SETTLED累计3671=1614+686+1371无RESERVED；380284/380285/380359及旧五PID退/原锁计算空/OOM0/总8197259264限34292629504/GPU1MiB24度/余盘183588171776。45014原Linux复用，下一CPU证明置零策略精确同而复用旧0/7，只非零selected3000新七探索闭环/原action不接CPU加速，先发布审计准入；训练六执行文件冻结/新物理媒体0/共享暂停/goal工具新agent不用/采纳null，旧大包镜像PENDING。入口F0_PROPRIO_RESIDUAL与completed/training_delivery，发布以随后publication为准。
+
 - 2026-11-08 F0_PROPRIO_PAIR01原运行时准入已过：0549ea6/e2e3ced均独立远端40位同，18512B十成员五ACK部署/1015旧来源同，六原Morph合同1.681秒全过/1031保护来源和原暂停资源锁准入12.320935秒。三原收据5802B已Mac二进制SHA同，真实新GPU0/3557账本无预留，GPU1MiB25度/总8196124672限34292629504/OOM0/余盘183602642944。先发布本准入再唯一PAIR01防重单派600秒/各3000Adam/原r2账本；45014现有Linux复用/原共享暂停/采纳null/goal工具新agent不用，不重复合同或旧物理；训练图入口仅CLI备。入口F0_PROPRIO_RESIDUAL及deployed/contracts/admitted。
 
 - 2026-11-08 F0_PROPRIO_PAIR01准备：原R2 selected500加零初始化机器人历史latent残差，真实/置零历史同容量各3000Adam/600秒128MiB，teacher/WM/base人encoder/decoder/norm全冻结，六既有train/val数组6725/2358行复用。六本地合同及CLI编译过，新事件参数已登记不读test；新GPU物理0，先发布/原运行时来源资源准入再唯一防重派发，记原r2/累计3557无预留不重置。选零先策略精确核同复用旧0/7，非零才独立闭环与训练六宫图；不把GigaBrain decoder融合称直接残差移植。45014原Linux继续，获批SSH90/60/5自主测试/不问用户代测，原共享暂停/goal工具新agent不用/采纳null保持。入口F0_PROPRIO_RESIDUAL，旧大包索引镜像PENDING。

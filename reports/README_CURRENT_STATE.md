@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-07研究：[四项简报](research/2026-11-07/README.md)/[检查](README_RESEARCH_CHECK_20261107.md)：STEP训练期预测、PhySA评测边界、NablaEngine0.2.0今日发行、VREgo对时与评测。91请求89完整200／六固定文本63120B；main去重205→217／H001不变。已接入Q1 a2d667aa的R0完成及学生流水线本地准备记录；本研究仅检索／静态核验，无新训练或自动任务变更。服务器Git未独立观察／研究镜像待，发布见[收据](../data/manifests/research_watch_sync_20261107.json)。
+
 2026-11-07 10:55：[R1已发布部署并通过原运行时／真实资源准入](README_Q1_STUDENT_TRAINING_PIPELINE_20261107.md)。a2d667a／5ec62e7均独立40位远端核同，23成员346859B包服务器SHA同／239执行源码与原226保护同；37运行时检查全过／1.279秒。200冻结资产／24控制输入／R0门核同，18源组上限4407真实物理步，GPU空闲1MiB26度／总7720476672B／OOM0／锁可独占。启动前新训练0／原训练暂停，下一单派独立R1而非恢复旧训练；六宫图和闭环验收仍待。[准入收据](../logs/session_records/q1_student_r1_admission_publication_20261107.json)。
 
 2026-11-07 10:41恢复：[原R0已完成，R1真实采样／有界训练／成本账本已本地实现](README_Q1_STUDENT_TRAINING_PIPELINE_20261107.md)。用户要求自行固定入口重试后31470直接进原Linux；原身份／人工暂停／旧五PID退／锁与计算空／OOM0核同。上次未回执R0实际03:49完成，512调用／四条动作最大差0／source_integrity PASSED，不重发。新增16本地检查过／随机CPU夹具3次Adam，真实32k学生与服务器新训练仍0；新源码发布、原运行时验证和准入待，原226清单不改。采样只12train／6validation组，源帧和动作对真实物理trace，训练1740秒单阶段、累计首轮≤4GPU小时持久账本；goal继续active／原训练不恢复／final采纳null保持。[准备收据](../logs/session_records/q1_student_pipeline_preparation_20261107.json)。

@@ -33,3 +33,11 @@ todo：完成独立源码合同、发布与服务器来源/资源准入，再唯
 下一闭环需独立准入，三名义片加stop/reverse/dropout/late_burst四事件，保留完整率、脚底离地/换脚、双脚承重滑移、侧倾、上肢时序/首秒与动作突变，以及完整软件长尾。先比较原R1选点，不用旧均值或loss挑test；未通过闭环时不采纳checkpoint，也不恢复原160k训练或改变final门。
 
 参考既有一手来源与时间语义：[SONIC/TWIST/GigaBrain固定源码审计](research/2026-11-07/LOW_LATENCY_SUPERMIMIC_REBASE.md)。SONIC的独立四帧专用权重只说明该路线值得验证，不代表本模型已经获得相同效果。
+
+## 原运行时与真实准入
+
+源码`8a4bf496c7547359a60d8736bcd4b4d9ff202bcb`已scoped audit/显式push origin Q1、独立40位远端和Mac12文件839101B核同。11276B六成员源码包SHA `2bed0ca07a0fcdfd3fbf770698ba45890b9b46ecbb675d16cca72c792e2b50c3`沿45014原SSH四片精确ACK部署，906保护输入前后同。
+
+原策略运行时六合同全过，本体1.354秒/进程3.971秒；CPU夹具不算真实策略训练。915保护输入、原R1实际1404/711状态与动作trace、原设备/暂停与GPU锁准入12.083秒全部通过。准入总8049188864B/限34292629504B、OOM0、GPU1MiB25度、余盘183748939776B；尚未新GPU训练或预留。
+
+三个服务器原始回执5385B已Mac逐字节SHA核同，2140B四成员传输包SHA `7b98d1bdf358cdf3d565a0ec5193df06ad88ed17e7fb0802a7892451de759446`保留。[部署](../logs/session_records/q1_h4_specialist_deployed_20261108.json) / [原运行时合同](../logs/session_records/q1_h4_specialist_contracts_20261108.json) / [准入](../logs/session_records/q1_h4_specialist_admitted_20261108.json)。发布本准入后，先核唯一output/log/dispatch/精确进程全无才派一次；不重新部署或重复六合同，原训练仍暂停。

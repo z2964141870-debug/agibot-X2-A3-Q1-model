@@ -1,0 +1,154 @@
+{
+  "stage": "FROZEN_FP32_WM_MULTISTEP_PREPARATION",
+  "status": "IMPLEMENTED_LOCAL_CHECKED_NOT_DEPLOYED_OR_DISPATCHED",
+  "date_beijing": "2026-11-08",
+  "hypothesis": "Check multi-step model-state drift before using a recovery or velocity sequence loss",
+  "new_sources": [
+    {
+      "relative": "script/supermimic_teleop/wm_multistep_probe.py",
+      "path": "/opt/data/private/ZHY/script/supermimic_teleop/wm_multistep_probe.py",
+      "bytes": 11279,
+      "sha256": "1b52ed4e52b8b9517f7207ba2aac9dfe6b5a4302686454b8dbcd8fa3c020491d"
+    },
+    {
+      "relative": "script/supermimic_teleop/wm_multistep_worker.py",
+      "path": "/opt/data/private/ZHY/script/supermimic_teleop/wm_multistep_worker.py",
+      "bytes": 12923,
+      "sha256": "47cb866234673997cefd3fea1f1896affd8a5e1a9b2506738956e3e341d46035"
+    },
+    {
+      "relative": "script/supermimic_teleop/wm_multistep_math.py",
+      "path": "/opt/data/private/ZHY/script/supermimic_teleop/wm_multistep_math.py",
+      "bytes": 6024,
+      "sha256": "affdf542e8555ddd23f7add40fc1b2816ac4cada669745705d2a435e33af1e17"
+    },
+    {
+      "relative": "script/supermimic_teleop/wm_multistep_plan_20261108.json",
+      "path": "/opt/data/private/ZHY/script/supermimic_teleop/wm_multistep_plan_20261108.json",
+      "bytes": 2748,
+      "sha256": "f3e52863c833c119f1f369b9e866120e6daf7bce2a03e2d7a9d1ae780f93836c"
+    },
+    {
+      "relative": "script/supermimic_teleop/test_wm_multistep.py",
+      "path": "/opt/data/private/ZHY/script/supermimic_teleop/test_wm_multistep.py",
+      "bytes": 5209,
+      "sha256": "58baec12405e5a0500466fde34a431c95fefa11cad427608f318cef82ea7f731"
+    }
+  ],
+  "contracts": {
+    "tests": 9,
+    "passed": 9,
+    "seconds": 0.031,
+    "scope": [
+      "autonomous model-state recurrence and ordered saved actions",
+      "future action cannot change prior predictions",
+      "first-action gradient remains connected across all model states",
+      "frozen parameters receive no accumulated gradients",
+      "endpoint and exact prefix RMS differ without padding",
+      "terminal transition excluded on both arms",
+      "different initial states and test-source ownership rejected",
+      "signed negative root-relative cross term retained",
+      "one source regression cannot hide behind a better mean",
+      "missing directional-gradient anchor rejected"
+    ],
+    "initial_added_test_assertion_corrected": "Production require raises RuntimeError, not ValueError; final nine tests passed",
+    "python_ast_files": 4,
+    "controller_and_worker_cli_passed": true
+  },
+  "actual_saved_input_compatibility": {
+    "forks": 16,
+    "array_bytes_read": 1413992,
+    "common_nonterminal_steps": [
+      80,
+      51,
+      47,
+      15,
+      80,
+      80,
+      37,
+      2
+    ],
+    "new_world_model_calls": 0,
+    "new_physical_steps": 0,
+    "new_optimizer_updates": 0,
+    "original_physical_campaign_repeated": false
+  },
+  "registered_execution": {
+    "horizons": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      40
+    ],
+    "horizon_cohorts": [
+      8,
+      8,
+      7,
+      7,
+      6,
+      6,
+      5
+    ],
+    "saved_action_open_loop_calls": 508,
+    "true_state_oracle_one_step_calls": 508,
+    "directional_probe_calls": 1030,
+    "expected_model_step_calls": 2046,
+    "maximum_model_step_calls": 2048,
+    "maximum_backward_calls": 14,
+    "maximum_wall_seconds": 600,
+    "maximum_output_bytes": 67108864,
+    "new_physical_steps": 0,
+    "new_policy_calls": 0,
+    "new_optimizer_updates": 0
+  },
+  "measurement_limits": {
+    "initial_state": "Saved79D observation and frozen FK/context reconstruction, not a complete hidden simulator snapshot",
+    "future_actions": "Known saved executed actions are oracle dynamics-probe conditions, not an online prediction result",
+    "velocities": "Frozen FK link-origin linear/angular velocities; separate from previous finite-interval velocity proxy",
+    "numerical_gradient": "Two existing student anchors / one deterministic direction; not physical perturbation validation",
+    "contact_modes": "Recorded last-substep5N modes; model does not predict contact forces",
+    "new_independent_heldout_sources_read": false
+  },
+  "publication_before_runtime_required": true,
+  "exact_manifest": "PENDING_PUBLICATION_COMMIT",
+  "server_native_contracts": "PENDING",
+  "server_source_resource_and_pause_admission": "PENDING",
+  "actual_new_cuda_calls": 0,
+  "actual_new_physical_steps": 0,
+  "actual_new_optimizer_updates": 0,
+  "cost_ledger": {
+    "unchanged_at_last_observation": 5036,
+    "by_stage": {
+      "r1": 1614,
+      "r2": 2051,
+      "r3": 1371
+    },
+    "new_actual_seconds": 0,
+    "reservation_created": false
+  },
+  "connection": {
+    "session": 45014,
+    "layer": "WINDOWS_POWERSHELL",
+    "latest_successful_windows_date_reply": "2026-11-08T11:31:48.1141004+08:00",
+    "latest_original_native_second_hop": "CONNECTION_REFUSED_BEFORE_AUTHENTICATION",
+    "new_authentication_attempts_this_preparation": 0,
+    "whole_bridge_unreachable_inferred": false,
+    "approved_hp_han_settings": {
+      "ConnectTimeout": 90,
+      "ServerAliveInterval": 60,
+      "ServerAliveCountMax": 5
+    },
+    "effective_values_independently_rechecked": true,
+    "user_connectivity_test_requested": false
+  },
+  "outstanding_conditioning_cpu_audit": "SUBMITTED_COMPLETION_NOT_RECEIVED",
+  "outstanding_conditioning_curves_and_training_six_panels": "PENDING",
+  "original_shared_training_resumed": false,
+  "server_mirror": "PENDING",
+  "goal_tools_called": false,
+  "new_agents": 0,
+  "user_accepted_checkpoint": null
+}

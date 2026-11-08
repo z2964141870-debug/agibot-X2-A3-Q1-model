@@ -20,5 +20,6 @@ todo：
 
 - [完整方案及实际训练观察](README_Q1_HUMAN_CONDITIONING_20261108.md#真实训练观察与待补证据)
 - [已收到终端输出与恢复点](../logs/session_records/q1_human_conditioning_training_observed_20261108.json)
+- [观察发布、独立远端、Mac与q1续行核验](../logs/session_records/q1_human_conditioning_observation_publication_20261108.json)
 
 本页为阶段观察结论，服务器原件逐字节取回、CPU证明及图表待补。原160k final完成门不改，采纳null。

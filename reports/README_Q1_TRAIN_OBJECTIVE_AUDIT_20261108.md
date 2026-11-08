@@ -1,6 +1,6 @@
 # Q1训练目标只读诊断
 
-日期：2026-11-08，北京时间。实验：F0_TRAIN_OBJECTIVE_AUDIT01。状态：独立实现及六项CPU合同完成，真实GPU诊断尚未派发。
+日期：2026-11-08，北京时间。实验：F0_TRAIN_OBJECTIVE_AUDIT01。状态：独立实现、原运行时六合同和1229来源/资源准入通过，真实GPU诊断尚未派发。
 
 ## 目标与依据
 
@@ -34,6 +34,18 @@
 六项全过/.168秒及CLI通过，覆盖原映射/批次逐位一致、split/终止边界、拒绝验证文件和未来对象解码、已知梯度符号/零梯度/位移点积、组等权、真实前向和autograd不更新模型且禁止创建Adam。真实原运行时合同及来源/资源准入待发布部署。
 
 服务器执行须本阶段发布清单与SHA，先controller的`--admit-only`，实际唯一执行同命令移除此参数；外层`timeout --signal=TERM --kill-after=5s 310s`，原runtime guard为300秒。实际参数和收据随后登记，不用未发布SHA占位执行。
+
+## 原运行时与真实准入
+
+源码`bf3842bc83bc5d97df1ce34d0dce793ff2ae0a95`和清单发布`9324dea957514304ef6ecf86ff9d40e6e7df5fc7`均已显式push origin Q1、独立40位远端核同；源码九Mac文件590605B核同。16199B九成员包SHA `baafc2ca0c72698a2faf3ea5c164ef87281a4ed4c2f1e8f23218efb685f84bf2`，经45014原Linux逐包13精确ACK部署，1216旧保护文件前后同。
+
+原Morph运行时六CPU合同/.608秒、外层进程2.922691秒全过。10:13:35北京时间，1229来源/原暂停/设备/预算/锁准入11.264721秒通过，总8270012416B/限34292629504B、GPU1MiB24度、OOM0、磁盘余183398465536B；原4790秒台账无预留。实际新Q1前向/optimizer/物理/媒体仍0。
+
+三原回执2122B包SHA `d9a57b471d5e081eabab29d115587d88809b5bc9456e3bc65e91e75c433fed92` 已Mac二进制核同和精确解包，服务器原文未改。先发布本准入，再唯一防重派发；成功部署/合同不重复。
+
+- [新增部署](../logs/session_records/q1_train_objective_deployed_20261108.json)
+- [原运行时合同](../logs/session_records/q1_train_objective_contracts_20261108.json)
+- [真实准入](../logs/session_records/q1_train_objective_admitted_20261108.json)
 
 ## 同步与下一步
 

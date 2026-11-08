@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-08 TEACHER_RECOVERY01 RESUME1真实完成：a04e185准入独立远端/Mac十一份888695B同后唯一388642/388643(start41077401)/388717已全退/guard回收0/source PASSED/1172源含原FAILED同/原锁计算空。八Q1锚点保存重放差0/完整恢复逐位同/首学生0教师最大4.768e-7；16短段1335物理923前向/0Adam渲染。教师6/8对学生3/8完整、4长1短3同；A033/64虽延长但上肢.214893→.500980rad退，A033/96教师2有效步对学生5/共同仅2，不称通用恢复。只读共同非终止分析四检查.006秒过/62原文件SHA同，九PNG九PDF/总览和八图联系表目视，4825167B/84成员ZIP与81链接CRC逐件SHA过；首ZIP1970时间戳失败草稿保留，复用图/分析不重跑。92秒SETTLED累计4599=1614+1614+1371无预留/余9801、r2余2886，峰11667230720B/GPU444MiB/OOM0/回收未尝试，末8245805056限34292629504/GPU1MiB25度/余盘183536562176。45014原Linux继续/固定SSH90/60/5自主核；下一先旧能力约束连续序列目标及教师冲突独立方案审计，不延长同单步拟合或重做锚点/旧七/84。原共享暂停/goal新agent不用/采纳null，大索引服务器镜像PENDING，入口TEACHER_RECOVERY_RESULT及completed/saved_review。
+
 - 2026-11-08 TEACHER_RECOVERY01独立RESUME1真实准入：99c0d047源码/98d7f52七清单均push及独立40位远端同，9213B三新增文件包八ACK部署/1162旧来源含FAILED同。原Primebot CPU四回归.044秒/进程.460116秒全过，29关节AST读取且Morph包未初始化；1172保护/失败原件/暂停成本资源锁准入11.085109秒过，三原件4335B已MacSHA同。总8271482880限34292629504/GPU1MiB24度/OOM0/余盘183539441664，真实新Q1物理前向Adam0/无预留；原900仅余886，先发布本准入再唯一防重单派RESUME1，不重做合同或原失败。45014继续/原共享暂停/goal新agent不用/采纳null/大索引镜像PENDING，入口TEACHER_RECOVERY及resume_admitted。
 
 - 2026-11-08 TEACHER_RECOVERY01首派CPU导入失败已保留：388155/388156(start40991605)/388230全退/guard回收1/锁计算空，morphmimic.constants触发包init缺mjlab，发生Q1物理/CUDA创建前，新调用物理Adam0；六FAILED工件及1162源同。4秒SETTLED累计4507=1614+1522+1371无预留，按原起止保守扣14秒/900仅余886。新独立resume/controller与四回归.028秒过，AST读取冻结names不执行包，probe其余AST及五原执行完全同；原8锚点/1800步/1280前向不扩，待发布原CPU合同/来源资源准入后唯一防重单派RESUME1。失败7476B原件MacSHA同；45014继续/原共享暂停/goal新agent不用/采纳null/大索引镜像PENDING，入口TEACHER_RECOVERY及import_failed。

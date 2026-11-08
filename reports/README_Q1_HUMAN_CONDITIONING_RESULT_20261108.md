@@ -23,3 +23,28 @@ todo：
 - [观察发布、独立远端、Mac与q1续行核验](../logs/session_records/q1_human_conditioning_observation_publication_20261108.json)
 
 本页为阶段观察结论，服务器原件逐字节取回、CPU证明及图表待补。原160k final完成门不改，采纳null。
+
+## 六宫图交付校验补齐
+
+本次补的是保存结果消费入口，没有再训练或重新做闭环。原入口只对摘要标志作有限检查，未充分绑定逐点曲线、选点权重证明、原始JSON及成本记录；错误混合的记录可能被用于生成训练图或复用旧0/7结论。
+
+[交付入口](../script/supermimic_teleop/deliver_conditioning_pair.py)现先做不导入torch、MuJoCo或matplotlib的独立校验，再允许绘图：
+
+1. 原`fit_result.json`字节与controller记录大小/SHA相同；原`authorization.json`与CPU审计记录大小/SHA相同，授权绑定已发布conditioning计划。CPU审计中的原result/guard必须与取回文件一致。
+2. 原成本run/stage/清洁回收和累计5036秒必须相符；两组各3000更新、八Adam计数、同初始化/容量和每个保存点的来源曝光逐一保留。没有重置台账或新增预留。
+3. 重算每点old/pure各50%的验证风险、原三锚点不退门和`point + 20 * retention`目标。完整七保存点、逐来源覆盖、有限值和正百分比分母须先通过，不能出图后才发现不完整。
+4. selected/last权重CPU证明的原路径、选点及全输入策略等价断言须相符。只有选中robot adapter精确相同且human末层全零，才允许注明复用旧0/7；改变的候选必须保留需要独立闭环的标记。
+5. 输出摘要分列`eligible_nonzero_updates`与`ineligible_nonzero_updates`。选中新增0仍可能同时存在过门但风险更高的非零点，不能把“没被选中”都记为“旧能力门失败”。
+
+新增[11项CPU合同](../script/supermimic_teleop/test_deliver_conditioning_pair.py)在原有`q1-teleop-mps-20261106`环境全过/.008秒；两AST、CLI和diff检查通过。覆盖错配审计/选点、重复或缺失分组、非有限值、错误目标或权重、逐点曝光、原始JSON/计划字节改变，并验证改变候选的交付仍被允许但不复用旧闭环；目标合成误差仍用原绝对1e-6，不借相对容差放宽。测试全部为临时合成数值，不构成本轮真实训练曲线或新科学结果；未运行matplotlib或生成替代训练图。
+
+恢复后需要取回同一任务的七份原件：`result.json`、`fit_result.json`、`fit.guard.json`、`checkpoint_cpu_audit.json`、`authorization.json`和两组`training_trace.json`。先核已提交CPU审计是否完成；不能重派6000次更新。随后从项目主根用既有绘图环境运行，输出和ZIP均换为未存在的绝对路径：
+
+```sh
+data/environments/q1-teleop-mps-20261106/bin/python \
+  data/repositories/q1-rf12-20261028/script/supermimic_teleop/deliver_conditioning_pair.py \
+  --source /absolute/original/numeric/packet \
+  --output /absolute/fresh/figures --archive /absolute/fresh/evidence.zip
+```
+
+原件、CPU证明、双六宫图和ZIP依旧待服务器取证；没有据测试生成它们。多步WM五执行文件/manifest及原12128B包未改，仍待服务器来源/资源准入。45014的Windows于12:26:48返回延迟日期，本轮向同会话提交的一次原生第二跳随后明确返回`Connection refused`，未到认证且已回PowerShell；没有发送Linux监督命令或循环认证。第一跳仍在，Linux资源未重新核验。完整目标、原共享暂停与采纳null保持。[本次校验收据](../logs/session_records/q1_human_conditioning_delivery_checks_20261108.json)。

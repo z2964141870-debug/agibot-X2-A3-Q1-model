@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-08人体条件双六宫交付校验补齐：仅本地consumer/test，11CPU合同/.008秒/两AST及CLI过，原JSON/计划SHA/审计result-guard/5036成本/逐点曝光/三锚点选模和选中权重等价关联；分列非零过门/拒绝点，不据选0推全部拒。合成合同不当实际训练曲线，原七JSON/已提交CPU审计及图ZIP仍待，6000更新不重派。45014于12:26:48返回延迟Windows日期，本轮一次原生第二跳随后Connection refused未认证/回PowerShell/无Linux命令/不循环；原五多步源码/manifest/12128B包不动。原共享暂停/新GPU物理训练绘图0/5036台账/final/采纳null和完整目标保持，服务器镜像PENDING；入口HUMAN_CONDITIONING_RESULT及delivery_checks。
+
 - 2026-11-08保存承重时序诊断真实完成：新分析/plan/8合同在既有q1-teleop-mps环境.012秒过，16原分叉/62源同，842事件/4800逐帧、1.402938秒/RSS147832832B/0GPU物理训练。三阈值1/5/10N排序不翻，七有效锚点六处教师切换少但一处更多反而保持更久，不直接优化少切换；两样本确认后移20ms/不回填，删失尾/回顾A-B-A/40ms短锚保留界限。默认与bundled无matplotlib两失败根CSV保留且与R3逐位同；六宫PNG/PDF目视、268505B六成员ZIP和5链接过。45014在12:05:43仍Windows，原生第二跳再次拒绝未认证不循环或泛化Linux失败；先补人体条件原CPU/曲线不重训6000，再多步WM原源码资源准入单派。5036台账/共享暂停/final/采纳null和完整目标保持，goal工具/新agent不用，服务器镜像PENDING。入口SAVED_LOAD_TIMING及completed。
 
 - 2026-11-08多步WM只读交付准备续行：独立deliver_wm_multistep与八CPU合同/.086秒、两AST/CLI过，核94有效前缀/14梯度/16FK、原JSON大小SHA与发布清单/父来源、回收成本、负cross和各长度cohort，按动作等权重算screen且允许科学FAILED。测试临时合成数值不当实测，实际图/ZIP/模型调用均0；原五执行源码/manifest/12128B六成员包不动，服务器部署和准入待。45014在11:53:17仍Windows实时回显，90/60/5再次实读，最近11:48第二跳拒绝未认证，不循环或泛化Linux失败。先恢复查人体条件CPU审计/曲线不重派6000更新，再原来源资源门单派多步；5036台账/共享暂停/goal新agent不用/采纳null保持，服务器镜像PENDING。入口WM_MULTISTEP和delivery_preparation。

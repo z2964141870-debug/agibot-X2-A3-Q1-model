@@ -4,6 +4,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 from pathlib import Path
 import re
 import zipfile
@@ -13,37 +14,146 @@ from deliver_retained_sequence import identity
 ARMS = ('zero_human', 'real_human')
 RISKS = ('full_old_validation_risk', 'fixed_anchor_r1_risk', 'fixed_anchor_mixed_risk')
 METRICS = ('loss', 'point_loss', 'retention_loss', 'gradient_norm')
+RAW_NAMES = ('result.json', 'fit_result.json', 'fit.guard.json', 'checkpoint_cpu_audit.json',
+    'authorization.json', *(arm+'/training_trace.json' for arm in ARMS))
+SERVER_OUTPUT = '/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_HUMAN_CONDITIONING_PAIR01_20261108'
+PLAN = Path(__file__).with_name('student_conditioning_plan_20261108.json')
+
+
+def finite(value):
+    return type(value) in (int, float) and math.isfinite(value) and value >= 0
+
+
+def validate(bundle, plan):
+    campaign, fit, guard, proof, auth = [bundle[n] for n in RAW_NAMES[:5]]
+    status = 'HUMAN_CONDITIONING_PAIR_TRAINED_PENDING_CLOSED_LOOP'
+    cleanup = guard.get('cleanup', {})
+    cost = campaign.get('cost_settlement', {})
+    if (campaign.get('status') != status or fit.get('status') != status
+            or campaign.get('source_integrity') != 'PASSED'
+            or guard.get('status') != 'WORKER_COMPLETED' or cleanup.get('worker_reaped') is not True
+            or type(cleanup.get('worker_return_code')) is not int or cleanup['worker_return_code'] != 0
+            or cost.get('state') != 'SETTLED' or cost.get('cleanup') != cleanup
+            or cost.get('run_id') != SERVER_OUTPUT or cost.get('stage') != 'r2'
+            or type(cost.get('charged_seconds')) is not int or cost['charged_seconds'] <= 0
+            or cost.get('over_reserved_budget') is not False
+            or campaign.get('actual_optimizer_updates') != 6000 or fit.get('actual_optimizer_updates') != 6000
+            or fit.get('matched_initialization_capacity_and_source_slots') is not True
+            or fit.get('initial_action_audit', {}).get('status') != 'CONDITIONING_INITIAL_ACTION_PARITY_PASSED'
+            or fit.get('human_real_future_frames') != 0 or fit.get('test_sources_read') is not False
+            or fit.get('retention_weight') != plan['fit']['retention_weight']
+            or proof.get('status') != 'PASSED' or proof.get('result') != campaign or proof.get('guard') != guard
+            or proof.get('task_and_original_training_processes_exited') is not True
+            or proof.get('gpu_lock_released') is not True or proof.get('cuda_initialized') is not False
+            or auth.get('gpu_lock_owner') != campaign.get('controller')
+            or auth.get('maximum_human_future_frames') != 0
+            or auth.get('original_training_restarted') is not False or auth.get('final_acceptance') is not False):
+        raise ValueError('Require linked original training, causal inputs, cleanup, settlement and CPU proof')
+    expected_cost = plan['resource']['expected_cumulative_seconds']+cost['charged_seconds']
+    expected_stages = dict(plan['resource']['expected_by_stage'])
+    expected_stages['r2'] += cost['charged_seconds']
+    ledger = proof.get('cost_ledger', {})
+    if (campaign.get('cumulative_gpu_charged_seconds') != expected_cost
+            or ledger.get('charged_seconds') != expected_cost or ledger.get('by_stage') != expected_stages
+            or ledger.get('outstanding_reservations') != 0
+            or any(proof.get(k) != 0 for k in ('new_model_calls', 'new_optimizer_updates', 'new_physical_steps', 'new_rendered_frames'))):
+        raise ValueError('CPU proof or settled cumulative cost differs')
+    if any([r.get('variant') for r in value.get('arms', [])] != list(ARMS)
+            for value in (campaign, fit, proof)):
+        raise ValueError('Both ordered arms must occur exactly once in each original record')
+    runs = {r['variant']:r for r in fit['arms']}
+    traces = {arm:bundle[arm+'/training_trace.json'] for arm in ARMS}
+    matched = ('initial_adapter_sha256', 'initial_human_adapter_sha256', 'initial_validation_risk',
+        'initial_fixed_anchor_risks', 'schedule_sha256', 'source_sample_counts', 'trainable_parameters', 'trainable_tensors')
+    if any(runs[ARMS[0]][k] != runs[ARMS[1]][k] for k in matched):
+        raise ValueError('Matched initialization, capacity or source exposure differs')
+    selected = {}
+    for arm, summary, cpu in zip(ARMS, campaign['arms'], proof['arms']):
+        rows, item = traces[arm], runs[arm]
+        if ([r.get('update') for r in rows] != list(range(0, 3001, 500))
+                or item.get('actual_updates') != 3000 or item.get('actual_adam_steps') != [3000]*8
+                or item.get('trainable_tensors') != 8 or cpu.get('cpu_finite') is not True
+                or cpu.get('current_statistics_exact') is not True or cpu.get('frozen_teacher_and_decoder_exact') is not True
+                or item['provenance']['initial_student'] != proof.get('initial_checkpoint')):
+            raise ValueError('Original exposure, frozen metadata or initial checkpoint differs')
+        if not all(finite(rows[0][k]) and rows[0][k] > 0 for k in ('validation_risk', 'pure_validation_risk', *RISKS)):
+            raise ValueError('Percentage changes require positive original denominators')
+        source_ids = None
+        for row in rows:
+            numbers = [row[k] for k in ('validation_risk', 'old_matched_validation_risk', 'pure_validation_risk', *RISKS, 'elapsed_seconds')]
+            if (not all(finite(v) for v in numbers)
+                    or not math.isclose(row['validation_risk'], .5*(row['old_matched_validation_risk']+row['pure_validation_risk']), rel_tol=1e-10, abs_tol=1e-12)):
+                raise ValueError('Nonfinite risk or wrong matched validation weighting')
+            allowed = all(row[k] <= rows[0][k]+1e-12 for k in RISKS)
+            if row.get('fixed_anchor_non_regression') is not allowed:
+                raise ValueError('Validation eligibility differs from all three original anchors')
+            metrics = row.get('metrics')
+            if row['update'] == 0:
+                if metrics is not None:
+                    raise ValueError('Initial validation must not invent a training loss')
+            elif (not isinstance(metrics, dict) or not all(finite(metrics.get(k)) for k in METRICS)
+                    or not math.isclose(metrics['loss'], metrics['point_loss']+20.*metrics['retention_loss'], rel_tol=0., abs_tol=1e-6)):
+                raise ValueError('Missing, nonfinite or mismatched recorded objective')
+            values = row.get('pure_validation', [])
+            names = [r['source_clip_id'] for r in values]
+            if (not names or len(names) != len(set(names)) or not all(finite(r.get('action_mse')) for r in values)
+                    or source_ids is not None and set(names) != source_ids
+                    or row['update'] == 0 and any(r['action_mse'] <= 0 for r in values)):
+                raise ValueError('Missing, duplicate or changed per-source validation coverage')
+            source_ids = set(names)
+            peer = traces[ARMS[1] if arm == ARMS[0] else ARMS[0]][row['update']//500]
+            if any(row[k] != peer[k] for k in ('schedule_sha256', 'source_sample_counts')):
+                raise ValueError('Paired source exposure differs at a recorded point')
+        chosen = min((r for r in rows if r['fixed_anchor_non_regression']), key=lambda r:r['validation_risk'])
+        selected[arm] = chosen
+        if (item['selected_update'] != chosen['update'] or cpu.get('selected_update') != chosen['update']
+                or any(summary.get(k) != item[k] for k in ('selected_update', 'selected_policy_unchanged', 'initial_validation_risk', 'selected_validation_risk'))
+                or item['initial_validation_risk'] != rows[0]['validation_risk']
+                or item['selected_validation_risk'] != chosen['validation_risk']
+                or item['selected_fixed_anchor_risks'] != [chosen[k] for k in RISKS]
+                or item['schedule_sha256'] != rows[-1]['schedule_sha256']
+                or item['source_sample_counts'] != rows[-1]['source_sample_counts']):
+            raise ValueError('Selection or final exposure differs from the original curves')
+        checkpoints = cpu.get('checkpoints', [])
+        if ([r.get('name') for r in checkpoints] != ['selected.pt', 'last.pt']
+                or [r.get('checkpoint_update') for r in checkpoints] != [chosen['update'], 3000]
+                or any(r.get('cpu_finite_tensor_count', 0) <= 0 for r in checkpoints)
+                or any(r['checkpoint']['path'] != SERVER_OUTPUT+'/'+arm+'/'+r['name'] for r in checkpoints)):
+            raise ValueError('CPU proof belongs to different selected or last checkpoints')
+        unchanged = checkpoints[0].get('robot_adapter_initial_equal') is True and checkpoints[0].get('human_output_layer_zero') is True
+        if (cpu.get('initial_policy_equal') is not unchanged or item['selected_policy_unchanged'] is not unchanged
+                or cpu.get('new_closed_loop_required') is not (not unchanged)
+                or cpu.get('prior_closed_loop_cases_reused') != (7 if unchanged else None)
+                or cpu.get('prior_closed_loop_complete_cases_reused') != (0 if unchanged else None)):
+            raise ValueError('Prior closed-loop reuse requires the selected tensor identity proof')
+    return runs, selected
+
+
+def load_evidence(source, plan_path=PLAN):
+    bundle = {name:json.loads((source/name).read_text()) for name in RAW_NAMES}
+    plan = json.loads(plan_path.read_text())
+    expected = ((bundle['result.json']['fit_result'], source/'fit_result.json', SERVER_OUTPUT+'/fit_result.json'),
+        (bundle['checkpoint_cpu_audit.json']['protected_authorization'], source/'authorization.json', SERVER_OUTPUT+'/authorization.json'))
+    for record, local, original in expected:
+        value = identity(local)
+        if record != dict(value, path=original):
+            raise ValueError('Original JSON bytes or server identity differ: '+local.name)
+    local_plan = identity(plan_path)
+    server_plan = '/opt/data/private/ZHY/script/supermimic_teleop/'+plan_path.name
+    if bundle['authorization.json'].get('conditioning_plan') != dict(local_plan, path=server_plan):
+        raise ValueError('Published conditioning plan does not match authorization')
+    runs, selected = validate(bundle, plan)
+    return bundle, runs, selected
 
 
 def deliver(source, output, archive):
-    def read(name):
-        return json.loads((source/name).read_text())
-    campaign, fit, guard, proof = [read(n) for n in
-        ('result.json', 'fit_result.json', 'fit.guard.json', 'checkpoint_cpu_audit.json')]
-    if (campaign.get('status') != 'HUMAN_CONDITIONING_PAIR_TRAINED_PENDING_CLOSED_LOOP'
-            or campaign.get('source_integrity') != 'PASSED'
-            or campaign.get('cost_settlement', {}).get('state') != 'SETTLED'
-            or guard.get('status') != 'WORKER_COMPLETED'
-            or guard.get('cleanup', {}).get('worker_reaped') is not True
-            or guard['cleanup'].get('worker_return_code') != 0
-            or fit.get('actual_optimizer_updates') != 6000
-            or fit.get('matched_initialization_capacity_and_source_slots') is not True
-            or fit.get('initial_action_audit', {}).get('status') != 'CONDITIONING_INITIAL_ACTION_PARITY_PASSED'
-            or fit.get('human_real_future_frames') != 0
-            or proof.get('status') != 'PASSED' or proof.get('result') != campaign
-            or [r['variant'] for r in proof.get('arms', [])] != list(ARMS)
-            or not all(r.get('cpu_finite') is True for r in proof['arms'])):
-        raise ValueError('Require actual paired training, parity, source, cleanup, cost and CPU proof')
-    runs = {r['variant']:r for r in fit['arms']}
-    traces = {arm:read(arm+'/training_trace.json') for arm in ARMS}
-    for key in ('initial_adapter_sha256', 'initial_human_adapter_sha256', 'initial_validation_risk',
-            'initial_fixed_anchor_risks', 'schedule_sha256', 'source_sample_counts', 'trainable_parameters', 'trainable_tensors'):
-        if runs[ARMS[0]][key] != runs[ARMS[1]][key]:
-            raise ValueError('Matched conditioning control differs: '+key)
     raw_files = sorted(p for p in source.rglob('*') if p.is_file())
     if any(p.suffix in ('.pt', '.npz') for p in raw_files):
         raise ValueError('Use compact numeric evidence without tensors')
     inputs = [identity(p) for p in raw_files]
+    bundle, runs, selections = load_evidence(source)
+    campaign, proof = bundle['result.json'], bundle['checkpoint_cpu_audit.json']
+    traces = {arm:bundle[arm+'/training_trace.json'] for arm in ARMS}
     if output.exists() or archive.exists():
         raise FileExistsError('Preserve existing deliveries; use a fresh root')
     import matplotlib
@@ -53,18 +163,7 @@ def deliver(source, output, archive):
     stats = []
     for arm in ARMS:
         rows, item = traces[arm], runs[arm]
-        if [r['update'] for r in rows] != list(range(0, 3001, 500)) or item['actual_adam_steps'] != [3000]*8:
-            raise ValueError('Incomplete matched Adam exposure')
-        for row in rows:
-            allowed = all(row[k] <= rows[0][k]+1e-12 for k in RISKS)
-            if allowed != row['fixed_anchor_non_regression']:
-                raise ValueError('Validation gate differs from raw values')
-            m = row['metrics']
-            if m is not None and abs(m['loss']-m['point_loss']-20.*m['retention_loss']) > 1e-6:
-                raise ValueError('The registered point/retention objective differs')
-        selected = min((r for r in rows if r['fixed_anchor_non_regression']), key=lambda r:r['validation_risk'])
-        if selected['update'] != item['selected_update']:
-            raise ValueError('Registered selection differs from saved checkpoint')
+        selected = selections[arm]
         x = [r['update'] for r in rows]
         fig, axes = plt.subplots(2, 3, figsize=(15, 9), constrained_layout=True)
         for name, color in zip(ARMS, ('#286b9a', '#19826b')):
@@ -122,6 +221,8 @@ def deliver(source, output, archive):
                 writer.writerow({k:row.get(k) if k not in METRICS else (row['metrics'] or {}).get(k) for k in fields})
         cpu = next(r for r in proof['arms'] if r['variant'] == arm)
         stats.append(dict(variant=arm, selected_update=selected['update'], initial_policy_equal=cpu['initial_policy_equal'],
+            eligible_nonzero_updates=[r['update'] for r in rows if r['update'] and r['fixed_anchor_non_regression']],
+            ineligible_nonzero_updates=[r['update'] for r in rows if r['update'] and not r['fixed_anchor_non_regression']],
             selected_validation_change_percent=100.*(selected['validation_risk']/rows[0]['validation_risk']-1.),
             last_validation_change_percent=100.*(rows[-1]['validation_risk']/rows[0]['validation_risk']-1.),
             last_pure_validation_change_percent=100.*(rows[-1]['pure_validation_risk']/rows[0]['pure_validation_risk']-1.),

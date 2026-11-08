@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-08续行：[人体条件双六宫交付校验补齐](README_Q1_HUMAN_CONDITIONING_RESULT_20261108.md#六宫图交付校验补齐)。两个本地交付文件、11CPU合同/.008秒/两AST及CLI过，原JSON/计划SHA与审计result/guard、累计成本/曝光/三锚点选点及selected权重等价完整交叉校验；选0不推全部非零点拒绝，改变候选保留新闭环要求。临时合成合同不当实际曲线，真实原七JSON/CPU回执/双图ZIP仍待，不重派6000更新。45014在12:26:48实回延迟Windows日期，本轮唯一原生第二跳随后Connection refused未认证/已回PowerShell，未发Linux命令/不循环，不能泛化全桥接失败。下一先恢复读取原CPU审计/曲线，再原五执行/manifest来源资源门唯一多步WM诊断，原12128B包不改；新模型/物理/训练/GPU/绘图0、5036台账/共享暂停/final/采纳null及完整目标保持，服务器镜像PENDING。[校验收据](../logs/session_records/q1_human_conditioning_delivery_checks_20261108.json)。
+
 2026-11-08 12:14：[新承重标签时序诊断完成](README_Q1_SAVED_LOAD_TIMING_20261108.md)，原16分叉/62源SHA同，三阈值1/5/10N×即时/两样本确认、842事件/4800逐帧/1.402938秒/RSS147832832B，0新策略物理训练GPU。七>=80ms锚点六处教师切换少，一处9→10却有效51→80，不据少切换加惩罚；两样本确认首次分歧均后移20ms、尾候选删失/回顾A-B-A不在线，40ms锚点不推恢复。新8CPU合同/实际环境.012秒、两AST/CLI过；默认和bundled缺matplotlib的两失败根留两CSV且SHA同，新R3用既有q1-teleop-mps环境完成六宫PNG/PDF目视/268505B六成员ZIP及5链接过。12:05:43原45014实时Windows，随后原生第二跳再次Connection refused未认证，未循环或泛化整桥接；Linux现场/人体条件CPU审计曲线仍待，多步WM未部署派发。下一先取原6000更新证据不重训，再原发布源码/来源资源门唯一多步诊断；5036成本/共享暂停/final/采纳null保持，完整目标继续/goal工具新agent不用/服务器镜像PENDING。
 
 2026-11-08 11:59续行：[多步WM只读交付入口准备](README_Q1_WM_MULTISTEP_20261108.md#保存结果交付)，八新CPU合同/.086秒、两AST/CLI过，94前缀/14数值梯度/16FK/带符号分解/共同非终止支持/按动作等权筛查及SHA成本回收门齐；科学失败照实保留，合成测试不当实测。两六宫图PNG/PDF和CSV/ZIP实际执行0，服务器多步诊断未部署或派发；原五执行文件/manifest及12128B包不改。获批SSH90/60/5再实读，45014在11:53:17实回Windows日期，最近11:48原生第二跳Connection refused未认证，本续行不循环，不泛化整桥接或训练故障；Linux资源和人体条件CPU审计/曲线仍待。原共享暂停/5036台账未改/6000更新不重派/goal新agent不用/采纳null，恢复先查原件和实际现场；服务器镜像PENDING。

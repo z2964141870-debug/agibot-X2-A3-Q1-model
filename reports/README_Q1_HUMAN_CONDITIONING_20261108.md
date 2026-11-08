@@ -1,6 +1,6 @@
 # Q1因果人体条件纠偏对照
 
-日期：2026-11-08，北京时间。实验：F0_HUMAN_CONDITIONING_PAIR01。当前仅独立实现及六项本地CPU合同通过，真实新GPU训练未派发。原共享训练继续暂停，低延迟自然遥操目标尚未达到。
+日期：2026-11-08，北京时间。实验：F0_HUMAN_CONDITIONING_PAIR01。源码及精确清单已发布，六项原运行时CPU合同、1240来源与资源准入通过，真实新GPU训练未派发。原共享训练继续暂停，低延迟自然遥操目标尚未达到。
 
 ## 问题与可检验假设
 
@@ -29,7 +29,7 @@ teacher、世界模型、人体编码器、共享decoder、所有归一化、动
 
 ## 初始化与可见性门
 
-在任何真实更新之前，从旧train与纯学生train各取最多16行，检查两组CPU动作与各自原策略逐位同、GPU动作与原GPU策略逐位同、CPU/GPU最大差不超过2e-5。八残差张量做两次train-only autograd，梯度有限，冻结模块及模型SHA不变。该门在本地合成CPU已过，真实原运行时和真实CUDA门仍待。
+在任何真实更新之前，从旧train与纯学生train各取最多16行，检查两组CPU动作与各自原策略逐位同、GPU动作与原GPU策略逐位同、CPU/GPU最大差不超过2e-5。八残差张量做两次train-only autograd，梯度有限，冻结模块及模型SHA不变。该门在本地及原Morph运行时合成CPU已过，真实CUDA门仍待。
 
 六项本地检查覆盖真实分支输入、初始动作和名义容量、冻结范围、未来对象和source/split隔离、真实小型Adam与八计数、原保持目标、同批次曝光、选0及拒绝静默截断；1.044秒全过，CLI也过。不是新增真实Q1训练效果。
 
@@ -56,7 +56,17 @@ teacher、世界模型、人体编码器、共享decoder、所有归一化、动
 ## done与todo
 
 1. 独立实现、六本地CPU合同和CLI已过，原32k/旧六训练文件和实际数据未改。
-2. 待源码/manifest发布、服务器六CPU合同、来源/资源准入以及真实初始化门后单派。
+2. 源码/manifest发布、服务器六CPU合同和来源/资源准入已过；先发布准入，再唯一单派，并在任何真实更新前过CUDA初始化门。
 3. 训练结束交付两组六宫PNG/PDF/CSV、原始数值与成本，按真实选点决定闭环，不能据loss改善判自然遥操合格。完整软件与实测人体/硬件端到端目标继续保留。
 
 [准备原记录](../logs/session_records/q1_human_conditioning_preparation_20261108.json)。服务器小记录和大索引镜像状态以publication为准；当前未同步处PENDING，采纳null。
+
+## 服务器原运行时准入
+
+源码`8a742af22085089b0b599dace72dc95e7f7e9f69`、六文件清单发布`dc55cd0f77021d4f71a331c100fd8bc83841d5e6`均已显式push origin Q1并独立40位远端核同，Mac源码十一文件917059B及清单1676B大小SHA同。18486B九成员纠正包SHA `e4fde03c6aad65f39f7c7df38191819dfa6902e19734faccafc4a58128b54b2b`已十五精确ACK部署，1229原来源前后同。首包因Mac附加的九个AppleDouble成员被原白名单拒绝，所有目标/receipt/archive确无写入后才纠正重传；没有放宽成员门，失败包本地保留。
+
+原Morph运行时六CPU检查通过，外层进程5.803316秒，GPU模型调用和真实优化均0。10:54:42来源/原暂停/资源/成本与锁准入11.758276秒通过，1240保护文件、总8263753728B/限34292629504B、GPU1MiB25度、OOM0、余盘183396569088B；原4820秒全部SETTLED无预留。三原回执4823B、2093B包SHA `d3805cd6bda7cce9812a5ad2484660312fcd67f957a41fb186661b541346df7a`已Mac二进制和逐件核同，原文未改。先发布本准入再唯一600秒派发，不重部署或重复合同，原共享不恢复。
+
+- [新增部署原件](../logs/session_records/q1_human_conditioning_deployed_20261108.json)
+- [原运行时合同原件](../logs/session_records/q1_human_conditioning_contracts_20261108.json)
+- [真实准入原件](../logs/session_records/q1_human_conditioning_admitted_20261108.json)

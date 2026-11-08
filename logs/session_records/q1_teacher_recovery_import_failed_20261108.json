@@ -1,0 +1,218 @@
+{
+  "stage": "TEACHER_RECOVERY_CPU_IMPORT_FAILURE",
+  "status": "FAILED_PRESERVED",
+  "observed_utc": "2026-11-08T00:18:43.084971+00:00",
+  "result": {
+    "stage": "RESTORATION_GATED_TEACHER_RECOVERY",
+    "status": "FAILED",
+    "controller": {
+      "pid": 388156,
+      "name": "python",
+      "state": "R",
+      "ppid": 388155,
+      "start_ticks": "40991605",
+      "VmHWM_bytes": 124203008,
+      "VmRSS_bytes": 106979328,
+      "RssAnon_bytes": 87719936,
+      "RssFile_bytes": 19259392,
+      "RssShmem_bytes": 0,
+      "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+      "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+    },
+    "started_utc": "2026-11-08T00:16:49.592591+00:00",
+    "new_optimizer_updates": 0,
+    "user_accepted_checkpoint": null,
+    "error": "RuntimeError: Restoration or fork worker failed",
+    "cost_settlement": {
+      "run_id": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_TEACHER_RECOVERY01_20261108",
+      "stage": "r2",
+      "state": "SETTLED",
+      "gpu_count": 1,
+      "reserved_seconds": 2982,
+      "owner": {
+        "pid": 388156,
+        "name": "python",
+        "state": "R",
+        "ppid": 388155,
+        "start_ticks": "40991605",
+        "VmHWM_bytes": 124203008,
+        "VmRSS_bytes": 106979328,
+        "RssAnon_bytes": 87719936,
+        "RssFile_bytes": 19259392,
+        "RssShmem_bytes": 0,
+        "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+        "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+      },
+      "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      "source_commit": "e94ede9bc67d27ee42f368b6048dd6026def8fba",
+      "started_monotonic_ns": 409938098325858,
+      "cost_scope": "GPU-owning collection and training wall time",
+      "ended_monotonic_ns": 409941247911564,
+      "charged_seconds": 4,
+      "over_reserved_budget": false,
+      "cleanup": {
+        "worker_started": true,
+        "worker_pid": 388230,
+        "worker_group": 388230,
+        "worker_reaped": true,
+        "worker_return_code": 1
+      }
+    },
+    "ended_utc": "2026-11-08T00:17:02.674480+00:00",
+    "cumulative_gpu_charged_seconds": 4507
+  },
+  "guard": {
+    "status": "WORKER_FAILED",
+    "command": [
+      "/opt/data/private/ZHY/data/environments/primebot_supermimic_118338b_20261103/bin/python",
+      "-u",
+      "/opt/data/private/ZHY/script/supermimic_teleop/student_recovery.py",
+      "--output",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_TEACHER_RECOVERY01_20261108",
+      "--manifest",
+      "/opt/data/private/ZHY/data/manifests/q1_teacher_recovery_code_20261108.json",
+      "--manifest-sha256",
+      "02e85aec6f0df8531f33c49b3c76570aece57cc1d0507ab2ba095a18964d49d4",
+      "--evaluation-commit",
+      "e94ede9bc67d27ee42f368b6048dd6026def8fba",
+      "--child",
+      "--gpu-owner-pid",
+      "388156",
+      "--gpu-owner-ticks",
+      "40991605",
+      "--deadline-ns",
+      "410833100738911"
+    ],
+    "cwd": "/opt/data/private/ZHY",
+    "started_utc": "2026-11-08T00:16:59.532480+00:00",
+    "controller_pid": 388156,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "memory": {
+        "total_bytes": 8580653056,
+        "container_limit_bytes": 34292629504,
+        "immediate_headroom_bytes": 25711976448,
+        "guard_headroom_bytes": 23631601664,
+        "total_cache_bytes": 7010820096,
+        "total_rss_bytes": 364077056,
+        "total_shmem_bytes": 0,
+        "total_dirty_bytes": 3379200,
+        "total_writeback_bytes": 4325376,
+        "oom_kill": 0,
+        "under_oom": 0
+      },
+      "gpu": {
+        "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+        "used_mib": 1,
+        "temperature_c": 25,
+        "recovery": "None"
+      },
+      "storage": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_TEACHER_RECOVERY01_20261108",
+        "unique_allocated_bytes": 339968,
+        "unique_logical_bytes": 324725,
+        "unique_inodes": 7,
+        "symlinks_not_followed": 0
+      },
+      "maximum_total_bytes": 8580653056,
+      "maximum_gpu_used_mib": 1,
+      "maximum_subtree_rss_bytes": 572465152,
+      "gpu_lock_owner": {
+        "pid": 388156,
+        "name": "python",
+        "state": "R",
+        "ppid": 388155,
+        "start_ticks": "40991605",
+        "VmHWM_bytes": 124203008,
+        "VmRSS_bytes": 106979328,
+        "RssAnon_bytes": 87719936,
+        "RssFile_bytes": 19259392,
+        "RssShmem_bytes": 0,
+        "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+        "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+      },
+      "training_signals_sent": 0,
+      "memory_reclaim_attempted": false,
+      "project_storage": {
+        "root": "/opt/data/private/ZHY",
+        "unique_allocated_bytes": 267140276224,
+        "unique_logical_bytes": 266088132514,
+        "unique_inodes": 496875,
+        "symlinks_not_followed": 9324
+      }
+    },
+    "error": null,
+    "worker_pid": 388230,
+    "worker_group": 388230,
+    "cleanup": {
+      "worker_started": true,
+      "worker_pid": 388230,
+      "worker_group": 388230,
+      "worker_reaped": true,
+      "worker_return_code": 1
+    },
+    "ended_utc": "2026-11-08T00:17:02.669330+00:00"
+  },
+  "files": [
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_TEACHER_RECOVERY01_20261108/authorization.json",
+      "bytes": 305556,
+      "sha256": "8d356d24af2816010dbd279f845e733351f41bb458166fbcbbd084378c7d1d73"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_TEACHER_RECOVERY01_20261108/checkpoint_audit.json",
+      "bytes": 9781,
+      "sha256": "1edc570211ba42bc2e7ae11540799d52998b1a941cb37b9c9e53d1efecf06666"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_TEACHER_RECOVERY01_20261108/recovery.guard.json",
+      "bytes": 2886,
+      "sha256": "f8f5c3486da1b3da21b9f3387184ebbf82b25dfea8d38d2c902002a07748c9fa"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_TEACHER_RECOVERY01_20261108/recovery.log",
+      "bytes": 684,
+      "sha256": "a5d43b1494313bfaf65c4b9215097e79b36e3767fb5e582f88a65ba5f952a639"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_TEACHER_RECOVERY01_20261108/resources.json",
+      "bytes": 1356,
+      "sha256": "375a9565386b2c342a8e3298bb2c357ff5a5aafc73d5f83b92804d28d69970c0"
+    },
+    {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_TEACHER_RECOVERY01_20261108/result.json",
+      "bytes": 1884,
+      "sha256": "d40ed74cbdebc176653db5f0eb967a05b7aa50954c367daf408495f4ae4f47cf"
+    }
+  ],
+  "protected_inputs_unchanged": 1162,
+  "actual_new_q1_physical_steps": 0,
+  "actual_new_model_forwards": 0,
+  "new_optimizer_updates": 0,
+  "conservative_spent_seconds": 14,
+  "remaining_original_wall_seconds": 886,
+  "cost_seconds": 4507,
+  "by_stage": {
+    "r1": 1614,
+    "r2": 1522,
+    "r3": 1371
+  },
+  "resources": {
+    "memory_total": 8247029760,
+    "memory_limit": 34292629504,
+    "oom": {
+      "oom_kill_disable": "0",
+      "under_oom": "0",
+      "oom_kill": "0"
+    },
+    "gpu": [
+      "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      " 1",
+      " 25"
+    ],
+    "disk_free": 183539552256
+  },
+  "failed_processes_absent": true,
+  "original_shared_training_resumed": false,
+  "user_accepted_checkpoint": null
+}

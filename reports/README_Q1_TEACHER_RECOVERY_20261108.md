@@ -41,3 +41,13 @@
 原Morph运行时六项合同全部通过，本体.017秒/进程2.020343秒，包含真实MjData复制与控制器/RNG恢复后的同动作下一步完全相同；本项为简单模型绑定夹具，不替代后续真实Q1锚点门。[原运行时记录](../logs/session_records/q1_teacher_recovery_contracts_20261108.json)。
 
 1162保护输入、前一配对实验终门和清洁回收、实际原学生选点、固定来源/锚点、原4503成本与暂停/资源锁准入11.324664秒通过。[准入原件](../logs/session_records/q1_teacher_recovery_admitted_20261108.json)。总8255102976B/实际限34292629504B，GPU1MiB24度/OOM0/余盘183539904512B；三原回执4675B已Mac逐字节SHA核同。本轮真实Q1物理和模型前向仍0，尚无预算预留。下一先发布本准入，再唯一新output/log/dispatch/精确进程全无门后单派900秒短分叉；不重复六合同或部署。旧大索引服务器镜像PENDING。
+
+## 首派CPU导入故障与独立续行
+
+49a612aeb92385146d5160323665f378677673ef准入已显式推送/独立远端同后，防重门单派timeout388155/controller388156/start40991605。[原始派发](../logs/session_records/q1_teacher_recovery_dispatch_20261108.json)。CPU child388230在导入morphmimic.constants时触发包__init__所需mjlab缺失；该错误发生在Q1Simulator或CUDA worker创建之前，真实Q1物理/模型调用/Adam均0。新入口没有在CPU固定运行时隔离常量导入，这是实现遗漏，不能归因网络、教师或步态质量。
+
+原guard WORKER_FAILED/return1已清洁回收，三个PID全退、原锁和GPU计算空；FAILED根及六原工件保留，1162输入SHA全同。实际4秒SETTLED，累计4507=1614+1522+1371秒，无预留；原900秒实验按起止时间保守扣14秒，仅余886秒。总8247029760B/限34292629504B、GPU1MiB25度/OOM0/余盘183539552256B。[失败及完整来源原件](../logs/session_records/q1_teacher_recovery_import_failed_20261108.json)7476B/SHA e96d55bd64ec3446fc6c26a577552a5e1c73b71ec589fd20770f40e5fb893977已Mac核同。
+
+仅新增[独立续行controller](../script/supermimic_teleop/student_recovery_resume.py)和[四项回归](../script/supermimic_teleop/test_student_recovery_resume.py)。CPU通过AST读取冻结常量的字面量关节stems并验证JOINT_NAMES表达式，不导入/执行Morph包；CUDA原worker和物理恢复/分叉函数其余AST逐项相等，五原执行文件逐字节保留。四本地检查.028秒全过。新根Q1_LOW_LATENCY_CKPT32000_TEACHER_RECOVERY01_RESUME1_20261108；原8锚点/1800步/1280前向/128MiB/0Adam不变，仅886秒和原4507账本，不重新发放900秒。
+
+续行仍待独立源码清单发布、原CPU运行时新四检查/真实常量读取及包含FAILED根的来源/资源准入；通过并发布后唯一防重单派。没有重复旧六项合同或任何旧物理，整体低延迟目标未结算。45014原Linux继续可用，桥接没有被误报中断。

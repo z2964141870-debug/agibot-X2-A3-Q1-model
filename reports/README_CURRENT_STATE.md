@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-08：[训练目标只读诊断已准备](README_Q1_TRAIN_OBJECTIVE_AUDIT_20261108.md)。六CPU合同.168秒及CLI过；下一先发布五文件清单、原运行时与来源/资源/原4790台账准入，再唯一300秒/1000前向批/84 autograd诊断。仅解码train，原前四批次逐位复用，0Adam/物理/渲染；不重做旧七/84或延长同MSE。45014优先复用，原共享暂停/采纳null/goal与新agent不用，大索引服务器镜像PENDING。
+
 2026-11-08 [F0_RETAINED_SEQUENCE_PAIR01真实完成，仍未通过采纳门](README_Q1_RETAINED_SEQUENCE_RESULT_20261108.md)：两组各3000Adam／四计数均3000／各384000点目标，来源抽样同、1216源门过／guard回收0。末轮综合MSE-9.176/-9.046%、pure-12.728/-12.519%，旧三锚点仍+4.776%至7.249%，两组都选新增0；CPU2.545536秒证8base＋4adapter／统计teacher decoder精确同初始causal_history3000，复用旧0/7／0新物理媒体。两训练六宫PNG/PDF/CSV已目视，513225B／23成员ZIP和22链接CRC大小SHA全过，31743B十五原件MacSHA同。191秒SETTLED／累计4790=1614+1805+1371／无预留／r2余2695，总余9610；峰10561945600B/GPU544MiB/OOM0，末总8541753344限34292629504／GPU1MiB27度／余盘183398744064。390213/390214/start41469547及worker和旧五PID均退／原锁计算空，45014继续／SSH90/60/5实核自主测试。下一先训练源标签／梯度冲突的独立方案，不延长本配方或重跑旧七/84，原共享暂停／goal新agent不用／采纳null，大索引服务器镜像PENDING；最新发布和小镜像以publication为准。
 
 2026-11-08 [F0_RETAINED_SEQUENCE_PAIR01原运行时准入已过](README_Q1_RETAINED_SEQUENCE_20261108.md#原运行时与真实准入)：c3a826e源码／a66c91b清单已push及独立40位远端核同，合并保留并行FRDV记录；Mac十二份593026B同。16605B十成员包14ACK新增／1172旧来源同，六原Morph CPU检查进程4.584067秒全过，1216来源与暂停资源锁／4599已结算账本准入11.785079秒通过。三原回执5344B已MacSHA同，GPU1MiB25度／总8255746048限34292629504／OOM0／余盘183413096448，新真实GPU训练物理0。45014原Linux继续／获批SSH90/60/5核同自主测试；先发布本准入再唯一output/log/dispatch/精确进程防重单派600秒两组3000Adam。原共享暂停／旧执行不改／goal新agent不用／采纳null，大索引服务器镜像PENDING。

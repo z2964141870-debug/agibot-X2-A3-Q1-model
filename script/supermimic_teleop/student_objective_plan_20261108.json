@@ -1,0 +1,59 @@
+{
+  "schema": "q1_f0_train_objective_audit_plan_v1",
+  "experiment": "F0_TRAIN_OBJECTIVE_AUDIT01",
+  "purpose": "Separate measured train-objective tradeoffs from validation regression without choosing or updating a policy",
+  "base_plan": {
+    "path": "/opt/data/private/ZHY/script/supermimic_teleop/student_onpolicy_pair_plan_20261108.json",
+    "bytes": 14682,
+    "sha256": "9090bdf0df299bbbcc5d6b5c81618dfcea19773a6fdff6655d25f8a1cac0a44d"
+  },
+  "sequence_summary": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_SAVED_SEQUENCE_AUDIT01_20261108/summary.json",
+    "bytes": 232350,
+    "sha256": "49e856fd077ae001e6f152d9a41520b7b95608fd83602f045db0edac784d6dbc"
+  },
+  "last_checkpoints": {
+    "retained_point_last": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_RETAINED_SEQUENCE_PAIR01_20261108/retained_point/last.pt",
+      "bytes": 3958875,
+      "sha256": "cd9cc2c79165e636151561001c81df518816ff6369c871908031d1a03e44fd57"
+    },
+    "retained_delta_last": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_RETAINED_SEQUENCE_PAIR01_20261108/retained_delta/last.pt",
+      "bytes": 3958875,
+      "sha256": "0336475315f02d0dc797c74b4eb7bd8b089d57303c50f723e292c35d484edf49"
+    }
+  },
+  "probe": {
+    "seed": 2026110806,
+    "minibatches": 4,
+    "windows_per_distribution": 16,
+    "retention_weight": 20.0,
+    "increment_weight": 0.5,
+    "maximum_forward_batches": 1000,
+    "maximum_forward_rows": 30000,
+    "maximum_autograd_calls": 84
+  },
+  "train_distribution_metrics": "Full old group-equal and pure group-equal; fixed origins0/1 source-equal; no validation values decoded",
+  "gradient_schedule": "Exact first four sequence batches from the completed pair, with the original seed and sampling order",
+  "gradient_objectives": ["old_point", "old_origin_0", "old_origin_1", "old_origin_2", "pure_point", "retention", "increment"],
+  "gradient_parameters": "Four adapter tensors only, no .backward accumulation or optimizer",
+  "zero_or_absent_gradient_cosine": null,
+  "first_order_displacement_dots": "At initial only, approximate local loss change along each actual final-minus-initial displacement; no causal attribution",
+  "validation_arrays_decoded": 0,
+  "test_sources_used": false,
+  "optimizer_updates": 0,
+  "new_physical_steps": 0,
+  "new_rendered_frames": 0,
+  "frozen": ["teacher", "world_model", "human_encoder", "decoder", "normalizers", "all three inspected adapters", "physics"],
+  "human_real_future_frames": 0,
+  "resource": {
+    "maximum_wall_seconds": 300,
+    "maximum_output_bytes": 67108864,
+    "ledger_stage": "r2",
+    "expected_cumulative_seconds": 4790,
+    "expected_by_stage": {"r1": 1614, "r2": 1805, "r3": 1371}
+  },
+  "natural_teleoperation_qualified": false,
+  "user_accepted_checkpoint": null
+}

@@ -7,6 +7,7 @@ done：
 1. 根据[保存分叉速度诊断](README_Q1_SAVED_VELOCITY_REVIEW_20261108.md)，先核多步模型可靠性。原一步FP32校准不能证明长时预测或模型梯度适合新恢复目标，首80ms误差也不能替代较长恢复效果。
 2. 新增独立controller、worker、数学合同、固定计划和检查，不改原WM、策略、动力学、保存频率及旧执行源码。九项CPU检查通过/.031秒，四Python AST与两CLI通过；新增缺梯度检查的测试异常类型修正后全过，无实际服务器执行。
 3. 只读原16条保存轨迹的1413992B数组，实核共同支持为80/51/47/15/80/80/37/2步，与预登记完全一致。它是新入口的输入兼容性检查，没有重做旧物理、速度图或模型推断。
+4. 11:59续行补齐独立只读交付入口，八项CPU合同通过/.086秒、两AST及CLI通过。它核已结算成本、守卫回收、原始JSON大小SHA、源码清单和原恢复证据链；逐一核94个有效前缀、14个数值梯度、16个FK重建记录、带符号误差分解与承重模式。重算按动作等权的科学筛查，允许如实交付科学FAILED；命令记忆不参与质量筛查。测试使用临时合成数值，未生成科学结果或图表；实际绘图/压缩包/目视仍待原件。
 
 ## 固定测量
 
@@ -38,9 +39,17 @@ done：
 
 仍用原非阻塞GPU锁和持久成本台账。登记边界5036秒=1614/2051/1371，不能换run重置；本任务归r3，必须无未结预留并实核余额。准入22GiB/退出24GiB、GPU18GiB/80度、100GiB余盘/private500GB、自有子树回收和1800秒原阶段保护保持；不清缓存、不恢复共享训练。完成必须有guard清洁回收、来源前后相同及成本settle。
 
+## 保存结果交付
+
+[交付入口](../script/supermimic_teleop/deliver_wm_multistep.py)与[八项合同](../script/supermimic_teleop/test_deliver_wm_multistep.py)仅在Mac读取真实完成JSON，导入时不加载torch、策略、物理或CUDA。CLI要求`--source --output --archive --plan --manifest --recovery-result`，输出与ZIP必须是未存在的独立绝对路径。原controller/worker五执行文件和清单未改，服务器包仍用原12128B、六成员发布件。
+
+输入是原`result.json`、`multistep.guard.json`、`multistep_result.json`、`authorization.json`，加已发布计划、五文件manifest和原`recovery_result.json`。输出按学生/特权教师分两张六宫PNG/PDF，保留逐前缀末端/RMS CSV、位置与线速度带符号根/相对/cross CSV、双尺度AD/FD CSV、完整科学筛查和原始JSON证据。各长度保留各自cohort，曲线先动作等权再锚点等权，散点保留单锚回退；不能将短窗口缺片填成长窗口。ZIP逐成员字节与CRC、README本地及包内链接须核同。
+
+本轮还静态读原生`WorldModel.rollout`及实际`NativeWorldModel.step`：源码沿自身生成状态递归、无显式detach，结构上允许多步梯度；这不证明真实32k的数值导数、预测校准或接触梯度已通过。真实多步执行、该交付入口的绘图和目视均为0。上一人体条件训练的双训练六宫图仍独立待补，不用本诊断替代。
+
 todo：
 
-1. 原生第二跳恢复后先核设备/根/暂停/PID/锁和实际资源，读取上轮已提交CPU审计与曲线，不重派已成6000更新。45014最后是Windows PowerShell，11:31:48返回实时日期；此前第二跳明确`Connection refused`，没有Linux认证提示，不能泛化全桥接断联。固定第一跳仍为`source /Users/yu/.zshrc`后`ssh -tt hp_han`，获批90/60/5已实读，不询问用户代测或循环认证。
+1. 原生第二跳恢复后先核设备/根/暂停/PID/锁和实际资源，读取上轮已提交CPU审计与曲线，不重派已成6000更新。45014仍是Windows PowerShell，本次11:53:17返回实时日期；最近11:48原生第二跳明确`Connection refused`，没有Linux认证提示，本续行不循环重试，不能泛化全桥接断联。固定第一跳仍为`source /Users/yu/.zshrc`后`ssh -tt hp_han`，获批90/60/5再次实读，不询问用户代测。
 2. 来源发布及五文件manifest后，在原Morph运行时执行九个新合同与实际来源/资源准入；目前均PENDING。先核唯一输出/log/dispatch/精确进程防重复，才单派新任务。不重做已成旧七/84回放。
 3. 实测后交付各长度数值/六宫图，按失真长度、承重切换和数值梯度表现决定恢复目标或下一消融。不可靠就记录失败，不直接用多步梯度继续拟合；任何新训练另行独立方案和来源资源审计。
 

@@ -1,0 +1,43 @@
+{
+  "schema": "q1_teacher_recovery_plan_v1",
+  "collection_root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_ONPOLICY_LABELS01_20261108",
+  "selected_checkpoint": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_PROPRIO_PAIR01_20261108/causal_history/selected.pt",
+    "bytes": 2972223,
+    "sha256": "7c019f585995ca557eaf6b7b0fd76a082533a4337305bcd4f852db02b90c2f50"
+  },
+  "jobs": [
+    {"clip_id": 0, "clip": "walk_ff_stop_180_R_003__A095", "split": "train", "anchor": 64, "maximum_steps": 80, "arm_order": ["student_f0", "privileged_teacher_h10"]},
+    {"clip_id": 0, "clip": "walk_ff_stop_180_R_003__A095", "split": "train", "anchor": 96, "maximum_steps": 80, "arm_order": ["privileged_teacher_h10", "student_f0"]},
+    {"clip_id": 2, "clip": "neutral_walk_180_R_002__A075", "split": "train", "anchor": 64, "maximum_steps": 80, "arm_order": ["student_f0", "privileged_teacher_h10"]},
+    {"clip_id": 2, "clip": "neutral_walk_180_R_002__A075", "split": "train", "anchor": 96, "maximum_steps": 80, "arm_order": ["privileged_teacher_h10", "student_f0"]},
+    {"clip_id": 6, "clip": "walk_ff_loop_360_R_003__A267", "split": "validation", "anchor": 64, "maximum_steps": 80, "arm_order": ["student_f0", "privileged_teacher_h10"]},
+    {"clip_id": 6, "clip": "walk_ff_loop_360_R_003__A267", "split": "validation", "anchor": 96, "maximum_steps": 80, "arm_order": ["privileged_teacher_h10", "student_f0"]},
+    {"clip_id": 8, "clip": "turn_start_walk_000_002__A033", "split": "validation", "anchor": 64, "maximum_steps": 80, "arm_order": ["student_f0", "privileged_teacher_h10"]},
+    {"clip_id": 8, "clip": "turn_start_walk_000_002__A033", "split": "validation", "anchor": 96, "maximum_steps": 80, "arm_order": ["privileged_teacher_h10", "student_f0"]}
+  ],
+  "maximum_physical_steps": 1800,
+  "maximum_policy_forwards": 1280,
+  "maximum_wall_seconds": 900,
+  "maximum_output_bytes": 134217728,
+  "ledger_stage": "r2",
+  "initial_cumulative_seconds": 4503,
+  "initial_by_stage": {"r1": 1614, "r2": 1518, "r3": 1371},
+  "new_optimizer_updates": 0,
+  "new_rendered_frames": 0,
+  "test_sources_read": false,
+  "absent_anchor_rule": "Explicit missing fixed anchor; do not choose a replacement or extend a terminated prefix",
+  "physics_restoration": "Rebuild only four necessary saved-action prefixes from frame0; copy full MjData and all Q1 control tensors/RNG; gate same-action next state bitwise before every fork",
+  "prefix_state_atol": 0.000002,
+  "prefix_state_rtol": 0.000002,
+  "first_action_atol": 0.00002,
+  "first_action_rtol": 0.00002,
+  "student_path": "Inherited ProprioReviewSession/CausalReviewSession action with original CPU state conversion",
+  "teacher_path": "Same frozen H10 teacher as collected labels, privileged future only on the teacher fork",
+  "reference_task": "Nominal physical reference with each existing source's original packet events",
+  "same_robot_history": true,
+  "source_preprocessing": "offline_unverified",
+  "hardware_end_to_end_latency_ms": null,
+  "natural_teleoperation_qualified": false,
+  "user_accepted_checkpoint": null
+}

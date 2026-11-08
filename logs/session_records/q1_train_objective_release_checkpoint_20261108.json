@@ -1,0 +1,94 @@
+{
+  "stage": "F0_TRAIN_OBJECTIVE_AUDIT01_RELEASE_CHECKPOINT",
+  "status": "RESULT_PUBLISHED_COMPACT_SERVER_MIRROR_PASSED",
+  "observed_utc": "2026-11-08T02:36:04Z",
+  "evaluation_commit": "bf3842bc83bc5d97df1ce34d0dce793ff2ae0a95",
+  "manifest_publication_commit": "9324dea957514304ef6ecf86ff9d40e6e7df5fc7",
+  "admission_publication_commit": "b75c14e43372116cfbb2b506a1450f00962d8534",
+  "result_commit": "32776005ba5e4d34a1e1aa21e21ebc5f678d22ce",
+  "result_independent_remote_ref": "32776005ba5e4d34a1e1aa21e21ebc5f678d22ce",
+  "result_mac_equal_files": 8,
+  "result_mac_equal_bytes": 905538,
+  "server_mirror_receipt": {
+    "relative": "logs/session_records/q1_train_objective_compact_mirror_20261108.json",
+    "bytes": 2189,
+    "sha256": "0c36bd07fad0605a4e5281733d97f326dba5c1737354b05be98f38c35adbe29b"
+  },
+  "compact_mirrored_files": 6,
+  "compact_mirrored_bytes": 47951,
+  "compact_package_bytes": 16434,
+  "compact_package_sha256": "4c8a87fc79d7ec50efe96dac97fdc415d9a1bf6c882fa1c3af5f02e519ec7f6f",
+  "exact_acknowledged_chunks": 13,
+  "protected_sources_unchanged": 1229,
+  "compact_receiver_recovery": {
+    "first_receiver": "ALARM_EXPIRED_BEFORE_PACKET_ACCEPTANCE",
+    "receipt_archive_and_targets_audited_before_restart": true,
+    "confirmed_no_receipt_or_archive_before_restart": true,
+    "reused_exact_package": true,
+    "scientific_calls_during_mirror": 0
+  },
+  "automation": {
+    "id": "q1",
+    "kind": "heartbeat",
+    "status": "ACTIVE",
+    "rrule": "RRULE:FREQ=MINUTELY;INTERVAL=10",
+    "target_thread_id": "01a16102-1f55-75b1-9106-2edb1cd18914",
+    "created_at": 1793994272115,
+    "updated_at": 1794105314769,
+    "independent_toml_readback": "EXACT_PROMPT_AND_METADATA_PASSED",
+    "created_at_preserved": true,
+    "other_automations_changed": false
+  },
+  "ssh": {
+    "session_id": 45014,
+    "observed_shell": "root@interactive67462",
+    "first_hop": "source /Users/yu/.zshrc then ssh -tt hp_han",
+    "approved_hp_han_settings": {
+      "ConnectTimeout": 90,
+      "ServerAliveInterval": 60,
+      "ServerAliveCountMax": 5
+    },
+    "native_session_mirror_roundtrip": "PASSED",
+    "authentication_material_recorded": false
+  },
+  "actual_forward_batches": 243,
+  "actual_forward_rows": 22929,
+  "actual_autograd_calls": 84,
+  "actual_optimizer_updates": 0,
+  "actual_new_physical_steps": 0,
+  "actual_new_rendered_frames": 0,
+  "charged_gpu_seconds": 30,
+  "cumulative_gpu_seconds": 4820,
+  "gpu_seconds_by_stage": {
+    "r1": 1614,
+    "r2": 1835,
+    "r3": 1371
+  },
+  "outstanding_reservations": 0,
+  "remaining_gpu_seconds": 9580,
+  "remaining_r2_gpu_seconds": 2665,
+  "evidence_zip": {
+    "relative": "data/deliveries/Q1_TRAIN_OBJECTIVE_EVIDENCE_20261108.zip",
+    "bytes": 332703,
+    "sha256": "4db94ee28e40776b14e24c6e632b34ce43f5df8c759b2b2fdff1b96ec8716e5d",
+    "members": 18,
+    "checked_relative_links": 17
+  },
+  "next_scientific_step": "INDEPENDENT_HUMAN_LATENT_CONDITIONING_MATCHED_PAIR_DESIGN",
+  "next_step_implemented": false,
+  "next_step_dispatched": false,
+  "next_step_constraints": [
+    "Matched real-versus-zero causally available human latent residual branch; same capacity and initial output",
+    "Original point-plus-retention objective, data and sample exposure retained",
+    "Independent source, visibility, initialization, cost publication and original runtime/resource admission before GPU execution",
+    "Each arm at most 3000 new updates; paired wall time at most 600 seconds within actual original r2 remaining budget",
+    "Original three nonregression validation gates and update0 retained; unchanged policy reuses audited previous 0/7 evidence"
+  ],
+  "large_global_server_indexes": "PENDING",
+  "server_mirror_of_this_closing_record": "PENDING",
+  "original_shared_training_resumed": false,
+  "application_goal_tools_called": false,
+  "subagents_created": false,
+  "natural_teleoperation_goal_achieved": false,
+  "user_accepted_checkpoint": null
+}

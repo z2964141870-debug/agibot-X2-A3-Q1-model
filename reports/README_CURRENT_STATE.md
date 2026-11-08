@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-08 [教师恢复独立RESUME1已通过原CPU准入](README_Q1_TEACHER_RECOVERY_20261108.md#续行真实准入)：99c0d047源码/98d7f52清单已独立远端核同，三新增部署/1162旧来源及FAILED同；原Primebot四回归.044秒、真实29关节AST与未初始化Morph包门全过。1172来源/原暂停资源成本锁准入11.085109秒过，三原件4335B已MacSHA同；新Q1物理前向Adam0/无预留，原900仅余886及4507台账保留。45014原Linux继续，先发布本准入再唯一RESUME1防重单派，不重复合同/原失败/旧物理；原共享保持暂停/采纳null/大索引镜像PENDING。[准入原件](../logs/session_records/q1_teacher_recovery_resume_admitted_20261108.json)。
+
 2026-11-08 [教师恢复首派CPU导入遗漏已定位并准备独立续行](README_Q1_TEACHER_RECOVERY_20261108.md#首派CPU导入故障与独立续行)：原FAILED/六工件/1162源保留，三个PID退、guard回收1/锁计算空，Q1物理/CUDA创建前失败/真实调用0。4秒SETTLED累计4507，无预留；原900秒保守扣14仅余886。新resume只AST读取常量避免执行Morph包，probe其余AST和五原源同、四本地回归过；先发布/CPU运行时与FAILED来源资源准入后防重单派，不重复旧六合同/物理。45014继续，原共享暂停/采纳null，大索引镜像PENDING。[失败原件](../logs/session_records/q1_teacher_recovery_import_failed_20261108.json)。
 
 2026-11-08 [教师恢复短分叉真实准入通过](README_Q1_TEACHER_RECOVERY_20261108.md#原运行时与真实准入)：五源码及清单已独立远端核同，八成员部署/1152保护同，原Morph六合同含MjData绑定全过，1162来源/前一回收/原4503账本与暂停资源锁准入11.324664秒过。三原件4675B已MacSHA同，原共享仍暂停，新Q1物理/前向0、无预留；先发布本准入再唯一防重门后单派900秒固定锚点分叉。45014继续，不重复合同或旧物理，采纳null/大索引镜像PENDING。

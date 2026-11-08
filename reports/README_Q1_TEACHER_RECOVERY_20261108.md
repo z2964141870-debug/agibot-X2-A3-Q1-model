@@ -1,6 +1,6 @@
 # Q1：教师恢复能力与物理状态恢复门
 
-2026-11-08，北京时间。独立实验TEACHER_RECOVERY01。状态：实现准备；真实新推理、物理和训练均0。原共享训练保持人工暂停，32k候选与原final门不变，用户采纳null。
+2026-11-08，北京时间。独立实验TEACHER_RECOVERY01。状态：首派导入失败保留，独立RESUME1已通过原CPU运行时和来源资源准入，待唯一防重派发；真实新推理、物理和训练均0。原共享训练保持人工暂停，32k候选与原final门不变，用户采纳null。
 
 ## 问题与依据
 
@@ -51,3 +51,11 @@
 仅新增[独立续行controller](../script/supermimic_teleop/student_recovery_resume.py)和[四项回归](../script/supermimic_teleop/test_student_recovery_resume.py)。CPU通过AST读取冻结常量的字面量关节stems并验证JOINT_NAMES表达式，不导入/执行Morph包；CUDA原worker和物理恢复/分叉函数其余AST逐项相等，五原执行文件逐字节保留。四本地检查.028秒全过。新根Q1_LOW_LATENCY_CKPT32000_TEACHER_RECOVERY01_RESUME1_20261108；原8锚点/1800步/1280前向/128MiB/0Adam不变，仅886秒和原4507账本，不重新发放900秒。
 
 续行仍待独立源码清单发布、原CPU运行时新四检查/真实常量读取及包含FAILED根的来源/资源准入；通过并发布后唯一防重单派。没有重复旧六项合同或任何旧物理，整体低延迟目标未结算。45014原Linux继续可用，桥接没有被误报中断。
+
+## 续行真实准入
+
+独立源码99c0d047f6b6322e905a329775ca0cd525132cc1及七执行清单98d7f52a7e5d81f1008cda2a7d6e3c0b83a3e715已显式push origin Q1、独立40位远端核同。9213B三成员新增包经八个精确ACK部署，1162原保护输入及FAILED工件未变。[部署原件](../logs/session_records/q1_teacher_recovery_resume_deployed_20261108.json)。
+
+原Primebot CPU运行时四项回归全过，本体.044秒/进程.460116秒；真实冻结29关节声明已AST读取，morphmimic包未初始化。[CPU合同原件](../logs/session_records/q1_teacher_recovery_resume_contracts_20261108.json)。包含原失败工件的1172保护输入、原暂停/成本/资源锁准入11.085109秒通过，总8271482880B/限34292629504B，GPU1MiB24度/OOM0/余盘183539441664B。[准入原件](../logs/session_records/q1_teacher_recovery_resume_admitted_20261108.json)。三原回执4335B已Mac逐字节SHA核同。
+
+真实新Q1物理/前向/Adam仍0，没有新预留。发布本准入后，检查独立RESUME1输出、日志、派发收据与精确进程均无，才单派剩余886秒；保持原900秒失败消耗及4507秒台账，不重复原运行时检查。旧大索引服务器镜像仍PENDING。

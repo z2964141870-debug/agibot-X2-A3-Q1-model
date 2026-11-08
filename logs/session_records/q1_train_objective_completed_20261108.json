@@ -1,0 +1,317 @@
+{
+  "stage": "F0_TRAIN_OBJECTIVE_AUDIT01_COMPLETED",
+  "status": "PASSED",
+  "source_commit": "bf3842bc83bc5d97df1ce34d0dce793ff2ae0a95",
+  "manifest_publication_commit": "9324dea957514304ef6ecf86ff9d40e6e7df5fc7",
+  "admission_publication_commit": "b75c14e43372116cfbb2b506a1450f00962d8534",
+  "admission_independent_remote_ref": "b75c14e43372116cfbb2b506a1450f00962d8534",
+  "admission_mac_equal_files": 7,
+  "admission_mac_equal_bytes": 560364,
+  "result": {
+    "stage": "F0_TRAIN_OBJECTIVE_AUDIT",
+    "status": "TRAIN_ONLY_OBJECTIVE_AUDIT_PASSED",
+    "controller": {
+      "pid": 391156,
+      "name": "python",
+      "state": "R",
+      "ppid": 391155,
+      "start_ticks": "41714306",
+      "VmHWM_bytes": 124157952,
+      "VmRSS_bytes": 106913792,
+      "RssAnon_bytes": 88006656,
+      "RssFile_bytes": 18907136,
+      "RssShmem_bytes": 0,
+      "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+      "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+    },
+    "started_utc": "2026-11-08T02:17:26.532918+00:00",
+    "actual_optimizer_updates": 0,
+    "new_physical_steps": 0,
+    "new_rendered_frames": 0,
+    "user_accepted_checkpoint": null,
+    "source_integrity": "PASSED",
+    "counts": {
+      "student_forward_batches": 243,
+      "student_forward_rows": 22929,
+      "autograd_calls": 84
+    },
+    "summary": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_TRAIN_OBJECTIVE_AUDIT01_20261108/summary.json",
+      "bytes": 126145,
+      "sha256": "dc1765eec927cf4a3d8d70a50d6ae34d7da62dfa7d9e2a7915b3cbd387491fca"
+    },
+    "natural_teleoperation_qualified": false,
+    "cost_settlement": {
+      "run_id": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_TRAIN_OBJECTIVE_AUDIT01_20261108",
+      "stage": "r2",
+      "state": "SETTLED",
+      "gpu_count": 1,
+      "reserved_seconds": 2695,
+      "owner": {
+        "pid": 391156,
+        "name": "python",
+        "state": "R",
+        "ppid": 391155,
+        "start_ticks": "41714306",
+        "VmHWM_bytes": 124157952,
+        "VmRSS_bytes": 106913792,
+        "RssAnon_bytes": 88006656,
+        "RssFile_bytes": 18907136,
+        "RssShmem_bytes": 0,
+        "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+        "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+      },
+      "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      "source_commit": "bf3842bc83bc5d97df1ce34d0dce793ff2ae0a95",
+      "started_monotonic_ns": 417165109822897,
+      "cost_scope": "GPU-owning collection and training wall time",
+      "ended_monotonic_ns": 417194971596212,
+      "charged_seconds": 30,
+      "over_reserved_budget": false,
+      "cleanup": {
+        "worker_started": true,
+        "worker_pid": 391230,
+        "worker_group": 391230,
+        "worker_reaped": true,
+        "worker_return_code": 0
+      }
+    },
+    "ended_utc": "2026-11-08T02:17:56.397075+00:00",
+    "cumulative_gpu_charged_seconds": 4820
+  },
+  "guard": {
+    "status": "WORKER_COMPLETED",
+    "command": [
+      "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+      "-u",
+      "/opt/data/private/ZHY/script/supermimic_teleop/student_objective_worker.py",
+      "--plan",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024_train_plan.json",
+      "--checkpoint",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_32000.pt",
+      "--morph-source",
+      "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+      "--output",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_TRAIN_OBJECTIVE_AUDIT01_20261108",
+      "--audit-plan",
+      "/opt/data/private/ZHY/script/supermimic_teleop/student_objective_plan_20261108.json",
+      "--expected-gpu",
+      "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      "--gpu-owner-pid",
+      "391156",
+      "--gpu-owner-ticks",
+      "41714306",
+      "--deadline-ns",
+      "417460112817362"
+    ],
+    "cwd": "/opt/data/private/ZHY",
+    "started_utc": "2026-11-08T02:17:26.544154+00:00",
+    "controller_pid": 391156,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "memory": {
+        "total_bytes": 8363732992,
+        "container_limit_bytes": 34292629504,
+        "immediate_headroom_bytes": 25928896512,
+        "guard_headroom_bytes": 23848521728,
+        "total_cache_bytes": 7030870016,
+        "total_rss_bytes": 124837888,
+        "total_shmem_bytes": 0,
+        "total_dirty_bytes": 1892352,
+        "total_writeback_bytes": 4325376,
+        "oom_kill": 0,
+        "under_oom": 0
+      },
+      "gpu": {
+        "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+        "used_mib": 515,
+        "temperature_c": 30,
+        "recovery": "None"
+      },
+      "storage": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_TRAIN_OBJECTIVE_AUDIT01_20261108",
+        "unique_allocated_bytes": 471040,
+        "unique_logical_bytes": 457369,
+        "unique_inodes": 7,
+        "symlinks_not_followed": 0
+      },
+      "maximum_total_bytes": 10739380224,
+      "maximum_gpu_used_mib": 518,
+      "maximum_subtree_rss_bytes": 2922037248,
+      "gpu_lock_owner": {
+        "pid": 391156,
+        "name": "python",
+        "state": "R",
+        "ppid": 391155,
+        "start_ticks": "41714306",
+        "VmHWM_bytes": 124157952,
+        "VmRSS_bytes": 106913792,
+        "RssAnon_bytes": 88006656,
+        "RssFile_bytes": 18907136,
+        "RssShmem_bytes": 0,
+        "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+        "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+      },
+      "training_signals_sent": 0,
+      "memory_reclaim_attempted": false,
+      "project_storage": {
+        "root": "/opt/data/private/ZHY",
+        "unique_allocated_bytes": 267160186880,
+        "unique_logical_bytes": 266107715760,
+        "unique_inodes": 497068,
+        "symlinks_not_followed": 9324
+      }
+    },
+    "error": null,
+    "worker_pid": 391230,
+    "worker_group": 391230,
+    "cleanup": {
+      "worker_started": true,
+      "worker_pid": 391230,
+      "worker_group": 391230,
+      "worker_reaped": true,
+      "worker_return_code": 0
+    },
+    "ended_utc": "2026-11-08T02:17:55.477704+00:00"
+  },
+  "resource_final": {
+    "stage": "F0_TRAIN_OBJECTIVE_AUDIT01_FINAL_RESOURCES",
+    "status": "PASSED",
+    "observed_utc": "2026-11-08T02:20:04.437846+00:00",
+    "protected_sources_unchanged": 1229,
+    "authorization": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_TRAIN_OBJECTIVE_AUDIT01_20261108/authorization.json",
+      "bytes": 321966,
+      "sha256": "d1db9c760b3dca9d78209b24f6732260a0b4cf2de47cf3fcc890520e54f9a695"
+    },
+    "exited_pids": [
+      391155,
+      391156,
+      391230,
+      54868,
+      55672,
+      55677,
+      55678,
+      55679
+    ],
+    "gpu_compute_pids": [],
+    "resources": {
+      "memory_total": 8266432512,
+      "memory_limit": 34292629504,
+      "oom": {
+        "oom_kill_disable": "0",
+        "under_oom": "0",
+        "oom_kill": "0"
+      },
+      "gpu": [
+        "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+        " 1",
+        " 25"
+      ],
+      "disk_free": 183396876288
+    },
+    "cumulative_gpu_seconds": 4820,
+    "by_stage_gpu_seconds": {
+      "r1": 1614,
+      "r2": 1835,
+      "r3": 1371
+    },
+    "outstanding_reservations": 0,
+    "peak_total_bytes": 10739380224,
+    "peak_gpu_used_mib": 518,
+    "original_shared_training_resumed": false,
+    "user_accepted_checkpoint": null
+  },
+  "training_change_percent": {
+    "retained_point": [
+      5.044666231809347,
+      4.909644407142855,
+      2.915288750128986,
+      1.445999400040221,
+      -72.237565227084,
+      -70.93194273853469
+    ],
+    "retained_delta": [
+      5.201950934152633,
+      4.8930997999229175,
+      2.830623612103378,
+      1.3842511139080305,
+      -72.89707251453572,
+      -71.58085814435302
+    ]
+  },
+  "prior_validation_change_percent": {
+    "retained_point": [
+      6.4375308149228205,
+      7.2485857075467175,
+      4.853673326314745,
+      5.280214772420355,
+      -12.728198346644836,
+      -9.176422906965753
+    ],
+    "retained_delta": [
+      6.409021869073639,
+      7.078303064869673,
+      4.7760471382726655,
+      5.086253072373248,
+      -12.518681933788823,
+      -9.046483947291339
+    ]
+  },
+  "gradient_initial_old_vs_pure_cosines": [
+    -0.20935327512781915,
+    -0.07762467351043928,
+    0.05332428425408682,
+    -0.03669771679124219
+  ],
+  "gradient_initial_old_vs_pure_mean_cosine": -0.06758784529385345,
+  "gradient_initial_old_vs_pure_negative_batches": 3,
+  "gradient_initial_total_vs_old_negative_batches": 1,
+  "gradient_initial_retention_norms": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "cosine_zero_or_absent_gradient": null,
+  "diagnostic_scope": "Only the first four exact saved-training minibatches; local gradients do not prove a causal failure mechanism",
+  "policy_input_conditioning_observation": "Frozen human history encoder supplies base latent; the current trainable residual adapter only consumes930 robot-history features",
+  "next_hypothesis": "An independently audited equal-capacity paired residual: preserve the actual initial robot branch, add a zero-initialized branch fed real versus zero frozen human latent; all other data/objectives fixed. This is not yet implemented or dispatched, and the audit does not prove conditioning is the cause.",
+  "numeric_archive": {
+    "path": "data/deliveries/Q1_TRAIN_OBJECTIVE_NUMERIC_20261108.tgz",
+    "bytes": 27359,
+    "sha256": "f61fc9a53924e10e38863d20459915ee739fefa2f0c35932c5a1e215a9174a8b",
+    "members": 11,
+    "mac_binary_sha_equal": true,
+    "transfer_manifest_member_hashes_equal": true
+  },
+  "delivery": {
+    "archive": {
+      "path": "/Users/yu/Documents/ChatGPT/元启/data/deliveries/Q1_TRAIN_OBJECTIVE_EVIDENCE_20261108.zip",
+      "bytes": 332703,
+      "sha256": "4db94ee28e40776b14e24c6e632b34ce43f5df8c759b2b2fdff1b96ec8716e5d"
+    },
+    "members": 18,
+    "readme_relative_links_checked": 17,
+    "png_dimensions": [
+      2560,
+      1600
+    ],
+    "png_visually_inspected": true,
+    "source_inputs_unchanged": true,
+    "new_model_calls": 0,
+    "new_physical_steps": 0,
+    "new_optimizer_updates": 0,
+    "new_rendered_frames": 0
+  },
+  "remaining_gpu_seconds": 9580,
+  "remaining_r2_seconds": 2665,
+  "native_linux_session": 45014,
+  "original_shared_training_resumed": false,
+  "application_goal_tools_called": false,
+  "subagents_created": false,
+  "large_global_server_indexes": "PENDING",
+  "this_stage_small_server_mirror": "PENDING",
+  "natural_teleoperation_goal_achieved": false,
+  "user_accepted_checkpoint": null
+}

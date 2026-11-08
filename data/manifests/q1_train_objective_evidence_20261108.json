@@ -1,0 +1,363 @@
+{
+  "status": "PASSED",
+  "stage": "F0_TRAIN_OBJECTIVE_AUDIT_DELIVERY",
+  "source_inputs": [
+    {
+      "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/analysis/Q1_TRAIN_OBJECTIVE_NUMERIC_20261108/admission.json",
+      "bytes": 1013,
+      "sha256": "307985c8da9e6895183d02e11060a7ac3e0be9738814c2f213c1a6353c1db8bf"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/analysis/Q1_TRAIN_OBJECTIVE_NUMERIC_20261108/audit.guard.json",
+      "bytes": 3212,
+      "sha256": "2de33074d721a24f71840c44a43d120340a52d29e3e1df48d8ac6e9b9c8d28ff"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/analysis/Q1_TRAIN_OBJECTIVE_NUMERIC_20261108/audit.log",
+      "bytes": 169,
+      "sha256": "8c3c0c99e2b462690df8773762e8cb1d3cf2b926c8b0d0c559722b40fd632869"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/analysis/Q1_TRAIN_OBJECTIVE_NUMERIC_20261108/audit_plan.json",
+      "bytes": 2867,
+      "sha256": "e0a537e0ea8372d8ded52956455e57aa71aaffad33de745d0cc05376762c067f"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/analysis/Q1_TRAIN_OBJECTIVE_NUMERIC_20261108/dispatch.json",
+      "bytes": 1680,
+      "sha256": "875c7468c7e92e990dcfab0fb093f4d50454845e1f933bbe980d81f048a8b046"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/analysis/Q1_TRAIN_OBJECTIVE_NUMERIC_20261108/native_checks.json",
+      "bytes": 1543,
+      "sha256": "00a58838c9890e25ef2e0a3ddb766ae1b36ca0f2c26b9e84540fdfd567bd41b6"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/analysis/Q1_TRAIN_OBJECTIVE_NUMERIC_20261108/numeric_transfer_manifest.json",
+      "bytes": 2807,
+      "sha256": "343ae4b9fc4f9910a6dc6b16106caa9239c1359d98efa86275797be980210a4b"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/analysis/Q1_TRAIN_OBJECTIVE_NUMERIC_20261108/resource_final.json",
+      "bytes": 1182,
+      "sha256": "74970318c0b46acbba50d657aeb7295508ceec80cc5b3a4ab59d8891ddc42546"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/analysis/Q1_TRAIN_OBJECTIVE_NUMERIC_20261108/result.json",
+      "bytes": 2353,
+      "sha256": "ac7b0a8962167396e5f81b0c6ed1228db07509c069f1ccb10e3efea8b3f9393f"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/analysis/Q1_TRAIN_OBJECTIVE_NUMERIC_20261108/source_manifest.json",
+      "bytes": 1171,
+      "sha256": "0a384a7ed38a1c94738f38b8e6315034f6793451565700ea4356e4bbe65f24b5"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/analysis/Q1_TRAIN_OBJECTIVE_NUMERIC_20261108/summary.json",
+      "bytes": 126145,
+      "sha256": "dc1765eec927cf4a3d8d70a50d6ae34d7da62dfa7d9e2a7915b3cbd387491fca"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/analysis/Q1_RETAINED_SEQUENCE_NUMERIC_20261108/retained_point/training_trace.json",
+      "bytes": 14294,
+      "sha256": "23a14e627ebf72203ef2dd9a51a9b4ef9551125b97f6d9a2716924363897e283"
+    },
+    {
+      "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/analysis/Q1_RETAINED_SEQUENCE_NUMERIC_20261108/retained_delta/training_trace.json",
+      "bytes": 14283,
+      "sha256": "69c0fdcf7bd2731f15a190fb38fa635cd0c3c44317412adfe3b0693c346ae3c8"
+    }
+  ],
+  "comparisons": [
+    {
+      "arm": "retained_point",
+      "metric": "All old",
+      "train_key": "full_old_group_mse",
+      "validation_key": "full_old_validation_risk",
+      "initial_train_mse": 0.009356530448262951,
+      "last_train_mse": 0.009828536180255433,
+      "train_change_percent": 5.044666231809347,
+      "initial_validation_mse": 0.05385383066690319,
+      "last_validation_mse": 0.057320687611101435,
+      "validation_change_percent": 6.4375308149228205
+    },
+    {
+      "arm": "retained_point",
+      "metric": "R1",
+      "train_key": "fixed_r1_source_mse",
+      "validation_key": "fixed_anchor_r1_risk",
+      "initial_train_mse": 0.005164637928828597,
+      "last_train_mse": 0.005418203286050509,
+      "train_change_percent": 4.909644407142855,
+      "initial_validation_mse": 0.047872198124726616,
+      "last_validation_mse": 0.051342255435884,
+      "validation_change_percent": 7.2485857075467175
+    },
+    {
+      "arm": "retained_point",
+      "metric": "Mixed",
+      "train_key": "fixed_mixed_source_mse",
+      "validation_key": "fixed_anchor_mixed_risk",
+      "initial_train_mse": 0.006061635251777868,
+      "last_train_mse": 0.0062383494223468006,
+      "train_change_percent": 2.915288750128986,
+      "initial_validation_mse": 0.08536243097235759,
+      "last_validation_mse": 0.08950564451515675,
+      "validation_change_percent": 4.853673326314745
+    },
+    {
+      "arm": "retained_point",
+      "metric": "Matched old",
+      "train_key": "matched_old_group_mse",
+      "validation_key": "old_matched_validation_risk",
+      "initial_train_mse": 0.005670259105196844,
+      "last_train_mse": 0.0057522510178387165,
+      "train_change_percent": 1.445999400040221,
+      "initial_validation_mse": 0.08720565152664979,
+      "last_validation_mse": 0.09181029722094536,
+      "validation_change_percent": 5.280214772420355
+    },
+    {
+      "arm": "retained_point",
+      "metric": "Pure",
+      "train_key": "pure_group_mse",
+      "validation_key": "pure_validation_risk",
+      "initial_train_mse": 0.3143341119090716,
+      "last_train_mse": 0.08726680278778076,
+      "train_change_percent": -72.237565227084,
+      "initial_validation_mse": 0.35494938492774963,
+      "last_validation_mse": 0.30977072318394977,
+      "validation_change_percent": -12.728198346644836
+    },
+    {
+      "arm": "retained_point",
+      "metric": "Combined",
+      "train_key": "combined_matched_pure_mse",
+      "validation_key": "validation_risk",
+      "initial_train_mse": 0.16000218550713424,
+      "last_train_mse": 0.04650952690280974,
+      "train_change_percent": -70.93194273853469,
+      "initial_validation_mse": 0.2210775182271997,
+      "last_validation_mse": 0.20079051020244756,
+      "validation_change_percent": -9.176422906965753
+    },
+    {
+      "arm": "retained_delta",
+      "metric": "All old",
+      "train_key": "full_old_group_mse",
+      "validation_key": "full_old_validation_risk",
+      "initial_train_mse": 0.009356530448262951,
+      "last_train_mse": 0.009843252571320642,
+      "train_change_percent": 5.201950934152633,
+      "initial_validation_mse": 0.05385383066690319,
+      "last_validation_mse": 0.0573053344516789,
+      "validation_change_percent": 6.409021869073639
+    },
+    {
+      "arm": "retained_delta",
+      "metric": "R1",
+      "train_key": "fixed_r1_source_mse",
+      "validation_key": "fixed_anchor_r1_risk",
+      "initial_train_mse": 0.005164637928828597,
+      "last_train_mse": 0.005417348816990852,
+      "train_change_percent": 4.8930997999229175,
+      "initial_validation_mse": 0.047872198124726616,
+      "last_validation_mse": 0.05126073739180962,
+      "validation_change_percent": 7.078303064869673
+    },
+    {
+      "arm": "retained_delta",
+      "metric": "Mixed",
+      "train_key": "fixed_mixed_source_mse",
+      "validation_key": "fixed_anchor_mixed_risk",
+      "initial_train_mse": 0.006061635251777868,
+      "last_train_mse": 0.006233217330494274,
+      "train_change_percent": 2.830623612103378,
+      "initial_validation_mse": 0.08536243097235759,
+      "last_validation_mse": 0.08943938091397285,
+      "validation_change_percent": 4.7760471382726655
+    },
+    {
+      "arm": "retained_delta",
+      "metric": "Matched old",
+      "train_key": "matched_old_group_mse",
+      "validation_key": "old_matched_validation_risk",
+      "initial_train_mse": 0.005670259105196844,
+      "last_train_mse": 0.005748749730022003,
+      "train_change_percent": 1.3842511139080305,
+      "initial_validation_mse": 0.08720565152664979,
+      "last_validation_mse": 0.09164115165670712,
+      "validation_change_percent": 5.086253072373248
+    },
+    {
+      "arm": "retained_delta",
+      "metric": "Pure",
+      "train_key": "pure_group_mse",
+      "validation_key": "pure_validation_risk",
+      "initial_train_mse": 0.3143341119090716,
+      "last_train_mse": 0.0851937464127938,
+      "train_change_percent": -72.89707251453572,
+      "initial_validation_mse": 0.35494938492774963,
+      "last_validation_mse": 0.3105144004027049,
+      "validation_change_percent": -12.518681933788823
+    },
+    {
+      "arm": "retained_delta",
+      "metric": "Combined",
+      "train_key": "combined_matched_pure_mse",
+      "validation_key": "validation_risk",
+      "initial_train_mse": 0.16000218550713424,
+      "last_train_mse": 0.0454712480714079,
+      "train_change_percent": -71.58085814435302,
+      "initial_validation_mse": 0.2210775182271997,
+      "last_validation_mse": 0.201077776029706,
+      "validation_change_percent": -9.046483947291339
+    }
+  ],
+  "train_change_percent": {
+    "retained_point": [
+      5.044666231809347,
+      4.909644407142855,
+      2.915288750128986,
+      1.445999400040221,
+      -72.237565227084,
+      -70.93194273853469
+    ],
+    "retained_delta": [
+      5.201950934152633,
+      4.8930997999229175,
+      2.830623612103378,
+      1.3842511139080305,
+      -72.89707251453572,
+      -71.58085814435302
+    ]
+  },
+  "validation_change_percent": {
+    "retained_point": [
+      6.4375308149228205,
+      7.2485857075467175,
+      4.853673326314745,
+      5.280214772420355,
+      -12.728198346644836,
+      -9.176422906965753
+    ],
+    "retained_delta": [
+      6.409021869073639,
+      7.078303064869673,
+      4.7760471382726655,
+      5.086253072373248,
+      -12.518681933788823,
+      -9.046483947291339
+    ]
+  },
+  "counts": {
+    "student_forward_batches": 243,
+    "student_forward_rows": 22929,
+    "autograd_calls": 84
+  },
+  "new_model_calls": 0,
+  "new_optimizer_updates": 0,
+  "new_physical_steps": 0,
+  "new_rendered_frames": 0,
+  "natural_teleoperation_qualified": false,
+  "causal_mechanism_proven": false,
+  "user_accepted_checkpoint": null,
+  "archive": {
+    "path": "/Users/yu/Documents/ChatGPT/\u5143\u542f/data/deliveries/Q1_TRAIN_OBJECTIVE_EVIDENCE_20261108.zip",
+    "bytes": 332703,
+    "sha256": "4db94ee28e40776b14e24c6e632b34ce43f5df8c759b2b2fdff1b96ec8716e5d"
+  },
+  "members": [
+    {
+      "relative": "delivery.json",
+      "bytes": 10001,
+      "sha256": "deda5bb30b5f640e48b7c54ce59c7449dd82e1fa02653bc890bef6fb0cef71aa"
+    },
+    {
+      "relative": "README.md",
+      "bytes": 1011,
+      "sha256": "12c8d83d4bdf1b9860397de64d52604f7689c0d57b56aa1ffdb5313e89d13407"
+    },
+    {
+      "relative": "train_validation_comparison.csv",
+      "bytes": 2372,
+      "sha256": "29a8414edaf0ca859d9bf1c74b5d101f4b43b8c4ddc14ae6c78f793a05d59c61"
+    },
+    {
+      "relative": "objective_six_panel.png",
+      "bytes": 290644,
+      "sha256": "ac3f5997688ec295013a87b04cf5b0746756bf57c371585f73751981b6f68f3f"
+    },
+    {
+      "relative": "objective_six_panel.pdf",
+      "bytes": 39708,
+      "sha256": "9077afdd7798f943397c8e2880b4d040e1920b8e8f28d1cd72bc16e3ae6fd480"
+    },
+    {
+      "relative": "raw/admission.json",
+      "bytes": 1013,
+      "sha256": "307985c8da9e6895183d02e11060a7ac3e0be9738814c2f213c1a6353c1db8bf"
+    },
+    {
+      "relative": "raw/audit.guard.json",
+      "bytes": 3212,
+      "sha256": "2de33074d721a24f71840c44a43d120340a52d29e3e1df48d8ac6e9b9c8d28ff"
+    },
+    {
+      "relative": "raw/audit.log",
+      "bytes": 169,
+      "sha256": "8c3c0c99e2b462690df8773762e8cb1d3cf2b926c8b0d0c559722b40fd632869"
+    },
+    {
+      "relative": "raw/audit_plan.json",
+      "bytes": 2867,
+      "sha256": "e0a537e0ea8372d8ded52956455e57aa71aaffad33de745d0cc05376762c067f"
+    },
+    {
+      "relative": "raw/dispatch.json",
+      "bytes": 1680,
+      "sha256": "875c7468c7e92e990dcfab0fb093f4d50454845e1f933bbe980d81f048a8b046"
+    },
+    {
+      "relative": "raw/native_checks.json",
+      "bytes": 1543,
+      "sha256": "00a58838c9890e25ef2e0a3ddb766ae1b36ca0f2c26b9e84540fdfd567bd41b6"
+    },
+    {
+      "relative": "raw/numeric_transfer_manifest.json",
+      "bytes": 2807,
+      "sha256": "343ae4b9fc4f9910a6dc6b16106caa9239c1359d98efa86275797be980210a4b"
+    },
+    {
+      "relative": "raw/resource_final.json",
+      "bytes": 1182,
+      "sha256": "74970318c0b46acbba50d657aeb7295508ceec80cc5b3a4ab59d8891ddc42546"
+    },
+    {
+      "relative": "raw/result.json",
+      "bytes": 2353,
+      "sha256": "ac7b0a8962167396e5f81b0c6ed1228db07509c069f1ccb10e3efea8b3f9393f"
+    },
+    {
+      "relative": "raw/source_manifest.json",
+      "bytes": 1171,
+      "sha256": "0a384a7ed38a1c94738f38b8e6315034f6793451565700ea4356e4bbe65f24b5"
+    },
+    {
+      "relative": "raw/summary.json",
+      "bytes": 126145,
+      "sha256": "dc1765eec927cf4a3d8d70a50d6ae34d7da62dfa7d9e2a7915b3cbd387491fca"
+    },
+    {
+      "relative": "prior/retained_point_training_trace.json",
+      "bytes": 14294,
+      "sha256": "23a14e627ebf72203ef2dd9a51a9b4ef9551125b97f6d9a2716924363897e283"
+    },
+    {
+      "relative": "prior/retained_delta_training_trace.json",
+      "bytes": 14283,
+      "sha256": "69c0fdcf7bd2731f15a190fb38fa635cd0c3c44317412adfe3b0693c346ae3c8"
+    }
+  ],
+  "readme_links_checked": 17
+}

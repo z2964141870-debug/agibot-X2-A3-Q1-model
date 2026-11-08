@@ -1,0 +1,305 @@
+{
+  "stage": "F0_RETAINED_SEQUENCE_PAIR01_COMPLETED_AND_CPU_AUDIT",
+  "status": "PASSED",
+  "observed_utc": "2026-11-08T01:40:50.526798+00:00",
+  "source_commit": "c3a826e3d6457d9ed455f165869fa60b8b3e7218",
+  "result": {
+    "stage": "F0_RETAINED_SEQUENCE_PAIR",
+    "status": "RETAINED_SEQUENCE_PAIR_TRAINED_PENDING_CLOSED_LOOP",
+    "controller": {
+      "pid": 390214,
+      "name": "python",
+      "state": "R",
+      "ppid": 390213,
+      "start_ticks": "41469547",
+      "VmHWM_bytes": 123314176,
+      "VmRSS_bytes": 106053632,
+      "RssAnon_bytes": 87216128,
+      "RssFile_bytes": 18837504,
+      "RssShmem_bytes": 0,
+      "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+      "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+    },
+    "started_utc": "2026-11-08T01:36:39.112934+00:00",
+    "new_physical_steps": 0,
+    "new_rendered_frames": 0,
+    "user_accepted_checkpoint": null,
+    "source_integrity": "PASSED",
+    "actual_optimizer_updates": 6000,
+    "arms": [
+      {
+        "variant": "retained_point",
+        "selected_update": 0,
+        "selected_adapter_unchanged": true,
+        "initial_validation_risk": 0.2210775182271997,
+        "selected_validation_risk": 0.2210775182271997
+      },
+      {
+        "variant": "retained_delta",
+        "selected_update": 0,
+        "selected_adapter_unchanged": true,
+        "initial_validation_risk": 0.2210775182271997,
+        "selected_validation_risk": 0.2210775182271997
+      }
+    ],
+    "fit_result": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_RETAINED_SEQUENCE_PAIR01_20261108/fit_result.json",
+      "bytes": 37625,
+      "sha256": "0a9ed780e70611f261ecb1a490a97c517e39c44b742d14e56fadd67e8c1b131c"
+    },
+    "natural_teleoperation_qualified": false,
+    "cost_settlement": {
+      "run_id": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_RETAINED_SEQUENCE_PAIR01_20261108",
+      "stage": "r2",
+      "state": "SETTLED",
+      "gpu_count": 1,
+      "reserved_seconds": 2886,
+      "owner": {
+        "pid": 390214,
+        "name": "python",
+        "state": "R",
+        "ppid": 390213,
+        "start_ticks": "41469547",
+        "VmHWM_bytes": 123314176,
+        "VmRSS_bytes": 106053632,
+        "RssAnon_bytes": 87216128,
+        "RssFile_bytes": 18837504,
+        "RssShmem_bytes": 0,
+        "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+        "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+      },
+      "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      "source_commit": "c3a826e3d6457d9ed455f165869fa60b8b3e7218",
+      "started_monotonic_ns": 414717689664073,
+      "cost_scope": "GPU-owning collection and training wall time",
+      "ended_monotonic_ns": 414907813673219,
+      "charged_seconds": 191,
+      "over_reserved_budget": false,
+      "cleanup": {
+        "worker_started": true,
+        "worker_pid": 390288,
+        "worker_group": 390288,
+        "worker_reaped": true,
+        "worker_return_code": 0
+      }
+    },
+    "ended_utc": "2026-11-08T01:39:49.239023+00:00",
+    "cumulative_gpu_charged_seconds": 4790
+  },
+  "guard": {
+    "status": "WORKER_COMPLETED",
+    "command": [
+      "/opt/data/private/ZHY/data/environments/morphmimic_original_20261029/bin/python",
+      "-u",
+      "/opt/data/private/ZHY/script/supermimic_teleop/student_retained_sequence_worker.py",
+      "--plan",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024_train_plan.json",
+      "--checkpoint",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/MORPHMIMIC_Q1_CONDITIONAL_SHARED01_V04_20261104/e1024/train/run/q1/ckpt_32000.pt",
+      "--morph-source",
+      "/opt/data/private/ZHY/data/references/morphmimic_v01_x2_t2_20261102/unpack/morphmimic-0.1",
+      "--output",
+      "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_RETAINED_SEQUENCE_PAIR01_20261108",
+      "--sequence-plan",
+      "/opt/data/private/ZHY/script/supermimic_teleop/student_retained_sequence_plan_20261108.json",
+      "--expected-gpu",
+      "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      "--gpu-owner-pid",
+      "390214",
+      "--gpu-owner-ticks",
+      "41469547",
+      "--deadline-ns",
+      "415312692101123"
+    ],
+    "cwd": "/opt/data/private/ZHY",
+    "started_utc": "2026-11-08T01:36:39.122349+00:00",
+    "controller_pid": 390214,
+    "storage_status": "LOCAL_ONLY",
+    "last_storage_check": {
+      "memory": {
+        "total_bytes": 8362684416,
+        "container_limit_bytes": 34292629504,
+        "immediate_headroom_bytes": 25929945088,
+        "guard_headroom_bytes": 23849570304,
+        "total_cache_bytes": 7029923840,
+        "total_rss_bytes": 129576960,
+        "total_shmem_bytes": 0,
+        "total_dirty_bytes": 9461760,
+        "total_writeback_bytes": 4325376,
+        "oom_kill": 0,
+        "under_oom": 0
+      },
+      "gpu": {
+        "uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+        "used_mib": 1,
+        "temperature_c": 37,
+        "recovery": "None"
+      },
+      "storage": {
+        "root": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_RETAINED_SEQUENCE_PAIR01_20261108",
+        "unique_allocated_bytes": 14331904,
+        "unique_logical_bytes": 14302529,
+        "unique_inodes": 19,
+        "symlinks_not_followed": 0
+      },
+      "maximum_total_bytes": 10561945600,
+      "maximum_gpu_used_mib": 544,
+      "maximum_subtree_rss_bytes": 2965729280,
+      "gpu_lock_owner": {
+        "pid": 390214,
+        "name": "python",
+        "state": "R",
+        "ppid": 390213,
+        "start_ticks": "41469547",
+        "VmHWM_bytes": 123314176,
+        "VmRSS_bytes": 106053632,
+        "RssAnon_bytes": 87216128,
+        "RssFile_bytes": 18837504,
+        "RssShmem_bytes": 0,
+        "boot": "90395f47-4035-4785-858e-b3d05c44a738",
+        "gpu": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4"
+      },
+      "training_signals_sent": 0,
+      "memory_reclaim_attempted": false,
+      "project_storage": {
+        "root": "/opt/data/private/ZHY",
+        "unique_allocated_bytes": 267152891904,
+        "unique_logical_bytes": 266100493004,
+        "unique_inodes": 497033,
+        "symlinks_not_followed": 9324
+      }
+    },
+    "error": null,
+    "worker_pid": 390288,
+    "worker_group": 390288,
+    "cleanup": {
+      "worker_started": true,
+      "worker_pid": 390288,
+      "worker_group": 390288,
+      "worker_reaped": true,
+      "worker_return_code": 0
+    },
+    "ended_utc": "2026-11-08T01:39:48.409880+00:00"
+  },
+  "arms": [
+    {
+      "variant": "retained_point",
+      "selected_update": 0,
+      "cpu_finite": true,
+      "initial_policy_equal": true,
+      "frozen_base_tensors_exact": 8,
+      "adapter_tensors": 4,
+      "current_statistics_exact": true,
+      "frozen_teacher_and_decoder_exact": true,
+      "checkpoints": [
+        {
+          "name": "selected.pt",
+          "checkpoint": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_RETAINED_SEQUENCE_PAIR01_20261108/retained_point/selected.pt",
+            "bytes": 2969087,
+            "sha256": "182954636af0f481f862a6d5353cd102b2ea1a87ec9dbd75345bf902e12dc2af"
+          },
+          "cpu_finite_tensor_count": 12,
+          "checkpoint_update": 0,
+          "adapter_initial_equal": true
+        },
+        {
+          "name": "last.pt",
+          "checkpoint": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_RETAINED_SEQUENCE_PAIR01_20261108/retained_point/last.pt",
+            "bytes": 3958875,
+            "sha256": "cd9cc2c79165e636151561001c81df518816ff6369c871908031d1a03e44fd57"
+          },
+          "cpu_finite_tensor_count": 24,
+          "checkpoint_update": 3000,
+          "adapter_initial_equal": false
+        }
+      ],
+      "prior_closed_loop_complete_cases_reused": 0,
+      "prior_closed_loop_cases_reused": 7,
+      "new_closed_loop_required": false
+    },
+    {
+      "variant": "retained_delta",
+      "selected_update": 0,
+      "cpu_finite": true,
+      "initial_policy_equal": true,
+      "frozen_base_tensors_exact": 8,
+      "adapter_tensors": 4,
+      "current_statistics_exact": true,
+      "frozen_teacher_and_decoder_exact": true,
+      "checkpoints": [
+        {
+          "name": "selected.pt",
+          "checkpoint": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_RETAINED_SEQUENCE_PAIR01_20261108/retained_delta/selected.pt",
+            "bytes": 2969087,
+            "sha256": "020503a3c8d6719fb07b2d42bb7f06eba8c6610564ebfe0ceb5fc7dd45a2041c"
+          },
+          "cpu_finite_tensor_count": 12,
+          "checkpoint_update": 0,
+          "adapter_initial_equal": true
+        },
+        {
+          "name": "last.pt",
+          "checkpoint": {
+            "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_RETAINED_SEQUENCE_PAIR01_20261108/retained_delta/last.pt",
+            "bytes": 3958875,
+            "sha256": "0336475315f02d0dc797c74b4eb7bd8b089d57303c50f723e292c35d484edf49"
+          },
+          "cpu_finite_tensor_count": 24,
+          "checkpoint_update": 3000,
+          "adapter_initial_equal": false
+        }
+      ],
+      "prior_closed_loop_complete_cases_reused": 0,
+      "prior_closed_loop_cases_reused": 7,
+      "new_closed_loop_required": false
+    }
+  ],
+  "protected_sources_unchanged": 1216,
+  "protected_authorization": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_RETAINED_SEQUENCE_PAIR01_20261108/authorization.json",
+    "bytes": 318835,
+    "sha256": "488da736cd4dedb8b025bebd82249df7d9301733ca9252bcb87ff21b4fce9708"
+  },
+  "resources": {
+    "memory_total": 8541753344,
+    "memory_limit": 34292629504,
+    "oom": {
+      "oom_kill_disable": "0",
+      "under_oom": "0",
+      "oom_kill": "0"
+    },
+    "gpu": [
+      "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+      " 1",
+      " 27"
+    ],
+    "disk_free": 183398744064
+  },
+  "exited_pids": [
+    390214,
+    390288,
+    390213,
+    54868,
+    55672,
+    55677,
+    55678,
+    55679
+  ],
+  "cumulative_gpu_seconds": 4790,
+  "by_stage_gpu_seconds": {
+    "r1": 1614,
+    "r2": 1805,
+    "r3": 1371
+  },
+  "outstanding_reservations": 0,
+  "cpu_audit_wall_seconds": 2.545535989047494,
+  "new_policy_forwards_for_audit": 0,
+  "new_physical_steps_for_audit": 0,
+  "new_optimizer_updates_for_audit": 0,
+  "new_rendered_frames_for_audit": 0,
+  "original_shared_training_resumed": false,
+  "user_accepted_checkpoint": null
+}

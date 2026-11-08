@@ -1,0 +1,70 @@
+{
+  "schema": "q1_f0_human_conditioning_plan_v1",
+  "experiment": "F0_HUMAN_CONDITIONING_PAIR01",
+  "hypothesis": "A trainable branch directly conditioned on the frozen causal human latent may preserve old behavior while adapting to student states",
+  "attribution": "Independent causal conditioning ablation, not a GigaBrain reproduction or proven failure cause",
+  "base_plan": {
+    "path": "/opt/data/private/ZHY/script/supermimic_teleop/student_onpolicy_pair_plan_20261108.json",
+    "bytes": 14682,
+    "sha256": "9090bdf0df299bbbcc5d6b5c81618dfcea19773a6fdff6655d25f8a1cac0a44d"
+  },
+  "sequence_summary": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_SAVED_SEQUENCE_AUDIT01_20261108/summary.json",
+    "bytes": 232350,
+    "sha256": "49e856fd077ae001e6f152d9a41520b7b95608fd83602f045db0edac784d6dbc"
+  },
+  "arms": ["zero_human", "real_human"],
+  "fit": {
+    "seed": 2026110806,
+    "maximum_updates": 3000,
+    "windows_per_distribution": 16,
+    "learning_rate": 0.0001,
+    "gradient_norm_limit": 1.0,
+    "validation_every_updates": 500,
+    "retention_weight": 20.0
+  },
+  "architecture": {
+    "initial_robot_adapter": "The actual selected3000 four-tensor robot-history adapter, copied exactly",
+    "additional_branch": "Linear(actual_latent,128),ELU,Linear(128,actual_latent),last layer zero",
+    "only_experimental_variable": "Additional branch receives real frozen causal human latent or zeros of identical shape",
+    "residual": "z+(1-abs(z))*tanh(robot_adapter(history)+human_adapter(real_z_or_zero))",
+    "trainable_tensors_per_arm": 8,
+    "matched_capacity_and_initial_output": true
+  },
+  "initial_action_gate": {
+    "sources": "First at most16 train rows from all-old and pure student, never validation gradients",
+    "cpu_and_device_initial_reference_actions_exact": true,
+    "maximum_cpu_device_action_difference": 0.00002,
+    "actual_train_only_autograd_calls": 2
+  },
+  "selection": "Original matched/pure50:50 validation risk, all three original fixed anchors nonincreasing, update0 included",
+  "objective": "Identical point action MSE plus20 times initial old-train output retention; no increment term",
+  "sampling": "Unchanged original seed and16old+16pure four-label windows,128point targets per update",
+  "data": {
+    "old_records": {"train": 6725, "validation": 2358},
+    "pure_records": {"train": 406, "validation": 219},
+    "train_windows": {"old": 6581, "pure": 387},
+    "validation_windows": {"old": 2304, "pure": 209},
+    "label_spacing_ms": 40,
+    "sequence_span_ms": 120,
+    "retention_rows_per_update": 64
+  },
+  "student_inputs": ["f0", "history"],
+  "human_real_future_frames": 0,
+  "future_state_or_teacher_goal_as_input": false,
+  "frozen": ["teacher", "world_model", "human_encoder", "shared_decoder", "normalizers", "physics", "reference_anchor"],
+  "saved_state_open_loop_fitting": true,
+  "heldout_events_opened": false,
+  "resource": {
+    "maximum_wall_seconds": 600,
+    "maximum_output_bytes": 134217728,
+    "ledger_stage": "r2",
+    "expected_cumulative_seconds": 4820,
+    "expected_by_stage": {"r1": 1614, "r2": 1835, "r3": 1371}
+  },
+  "new_physical_steps": 0,
+  "new_rendered_frames": 0,
+  "hardware_end_to_end_latency_ms": null,
+  "natural_teleoperation_qualified": false,
+  "user_accepted_checkpoint": null
+}

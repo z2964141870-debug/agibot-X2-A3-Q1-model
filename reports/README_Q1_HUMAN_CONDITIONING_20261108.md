@@ -1,6 +1,6 @@
 # Q1因果人体条件纠偏对照
 
-日期：2026-11-08，北京时间。实验：F0_HUMAN_CONDITIONING_PAIR01。源码及精确清单已发布，六项原运行时CPU合同、1240来源与资源准入通过，真实新GPU训练未派发。原共享训练继续暂停，低延迟自然遥操目标尚未达到。
+日期：2026-11-08，北京时间。实验：F0_HUMAN_CONDITIONING_PAIR01。两组真实GPU训练已完成，各3000更新，最终均选新增update0；训练终态和清洁回收已收到，独立CPU权重审计提交后未收到回执，原曲线与六宫图交付待补。原共享训练继续暂停，低延迟自然遥操目标尚未达到。
 
 ## 问题与可检验假设
 
@@ -70,3 +70,17 @@ teacher、世界模型、人体编码器、共享decoder、所有归一化、动
 - [新增部署原件](../logs/session_records/q1_human_conditioning_deployed_20261108.json)
 - [原运行时合同原件](../logs/session_records/q1_human_conditioning_contracts_20261108.json)
 - [真实准入原件](../logs/session_records/q1_human_conditioning_admitted_20261108.json)
+
+## 真实训练观察与待补证据
+
+准入发布`1ef74ab955aa22951119b743dd848dccbd43d133`独立远端及Mac核同后，10:58:45唯一派发timeout392055/start41964408，controller392056/start41964409，worker392130。11:02:45原result记录`HUMAN_CONDITIONING_PAIR_TRAINED_PENDING_CLOSED_LOOP`、source PASSED、6000实际更新；两组各八个Adam计数均3000。初始真实CPU/GPU动作与原策略各自逐位同、最大跨设备差2.1457672119140625e-6低于2e-5，两次train-only梯度门先于任何真实更新通过。
+
+两组最终均选新增update0，初始及选中验证风险均0.2210775182271997。update0是已有非零机器人历史selected3000策略加零输出人体分支。当前只确认没有被选中的可采用新策略；各500更新保存点的旧能力门与退步幅度须取原曲线后逐点报告，不能仅凭选0断言所有非零点均未过门。不能据本轮结果否定f0或证明缺少人体条件是失败根因。
+
+guard为WORKER_COMPLETED，worker已回收且return0。216秒SETTLED，累计5036/14400秒，r1/r2/r3为1614/2051/1371，无预留；总余9364秒、r2余2449秒。11:03:40资源历史快照：总8282664960/限34292629504B、OOM0、GPU1MiB27度、余盘183381708800B，原暂停门通过。controller/timeout当前退出与锁释放仍需下一次实际观察，不能把初始PID描述或低显存当它们已退出的独立证据。
+
+之后提交独立CPU审计：只读selected/last有限保存、冻结base/统计/teacher/decoder、机器人分支与原起点相等以及人体末层为零的全输入等价证明；未收到完成回执即Linux SSH被远端关闭，45014已回到Windows PowerShell。同一Windows原生第二跳重登返回`Connection refused`，没有到认证；第一跳仍在线，不把它描述为整桥接不可达，也不从失去观察推断训练失败。服务器是否已有`checkpoint_cpu_audit.json`或`q1_human_conditioning_completed_20261108.json`须先查，不直接重复审计；本地尚无该原件。
+
+本地独立`deliver_conditioning_pair.py`入口CLI已过，实际保存数据绘图尚未执行。原始曲线和独立CPU证明取回后才生成两PNG/两PDF/两CSV与证据ZIP；当前无本轮新媒体。若选中策略确实与旧策略全输入等价，则复用原0/7闭环，不重复相同物理或视频。若证明不成立，保持问题并独立验收，不伪称复用。
+
+实际观察记录：[训练终态、具体第二跳错误和待回执审计代码](../logs/session_records/q1_human_conditioning_training_observed_20261108.json)。这是已收到终端输出的记录，不冒充服务器result/dispatch的逐字节原件。下一先补证据和六宫图，再据完整曲线设计不同机制；不重派本轮训练、不延长相同残差拟合、不恢复共享训练或调用goal工具。服务器镜像PENDING，采纳null。

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-08 11:03:40后恢复点：[因果人体条件对照实际训练已成，独立取证待补](README_Q1_HUMAN_CONDITIONING_RESULT_20261108.md)。唯一392055/392056-start41964409/392130，两组各3000Adam与八计数/source PASSED/worker清洁回收0，最终均选新增0，不能仅据选0断言所有非零点均过不了旧能力门。216秒SETTLED累计5036=1614+2051+1371/无预留，总余9364、r2余2449；11:03:40原暂停门过、总8282664960限34292629504/OOM0/GPU1MiB27度/余盘183381708800仅历史。随后独立CPU审计已提交无回执，Linux被远端关闭，45014现在仅Windows；原生第二跳重登Connection refused，第一跳在线、不泛化训练停止。恢复先查checkpoint_cpu_audit/q1_human_conditioning_completed及进程，原dispatch/result/曲线未Mac逐字节取回；本地交付入口仅CLI过，双六宫图和ZIP待补，不重派6000更新。原共享暂停/冻结来源/final/采纳null，goal工具新agent不用；本阶段服务器镜像PENDING。[详细观察](../logs/session_records/q1_human_conditioning_training_observed_20261108.json)。
+
 2026-11-08 [F0_HUMAN_CONDITIONING_PAIR01真实准入已过](README_Q1_HUMAN_CONDITIONING_20261108.md#服务器原运行时准入)：8a742af源码/dc55cd0清单独立40位远端/Mac十二份918735B同；纠正九成员包18486B/十五ACK只新增、1229原来源同。六原Morph CPU检查进程5.803316秒和1240来源资源准入11.758276秒通过，三原件4823B与2093B包MacSHA同。总8263753728限34292629504/GPU1MiB25度/OOM0/余盘183396569088，原4820台账无预留/实际新GPU0。45014继续；先发布准入再唯一output/log/dispatch/精确进程皆无后单派600秒两组3000，先过真实CUDA初始动作门，不重合同或部署。原共享暂停/采纳null/goal新agent不用，大索引服务器镜像PENDING。
 
 2026-11-08：[因果人体条件纠偏对照准备](README_Q1_HUMAN_CONDITIONING_20261108.md)。保留实际机器人残差，只新增同容量零输出人体分支，真实/置零因果latent唯一对照；同原数据曝光和point＋20倍保持/三旧验证门/每组3000更新。六CPU合同1.044秒和CLI过，真实新GPU0；原4820秒无预留/600秒新上限，先发布来源及原运行时资源准入，原共享暂停。 45014原Linux继续；新完整来源/初始化可见性门及后续真实结果仍待，不重做旧七/84、不用goal或新agent/采纳null。

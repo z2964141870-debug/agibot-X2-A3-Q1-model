@@ -1,0 +1,177 @@
+{
+  "stage": "F0_HUMAN_CONDITIONING_PAIR01_TRAINING_OBSERVED_AUDIT_UNACKNOWLEDGED",
+  "status": "TRAINING_TERMINAL_OBSERVED_INDEPENDENT_CPU_AUDIT_AND_DELIVERY_PENDING",
+  "date_beijing": "2026-11-08",
+  "evidence_kind": "Observed native terminal output; not a byte-identical copy of the server result or dispatch receipt",
+  "output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_HUMAN_CONDITIONING_PAIR01_20261108",
+  "execution_commit": "8a742af22085089b0b599dace72dc95e7f7e9f69",
+  "manifest_publication_commit": "dc55cd0f77021d4f71a331c100fd8bc83841d5e6",
+  "admission_publication_commit": "1ef74ab955aa22951119b743dd848dccbd43d133",
+  "original_dispatch_receipt": "/opt/data/private/ZHY/logs/session_records/q1_human_conditioning_dispatch_20261108.json",
+  "dispatch_observed_utc": "2026-11-08T02:58:45.723780Z",
+  "timeout_process": {
+    "pid": 392055,
+    "start_ticks": "41964408"
+  },
+  "observed_result": {
+    "stage": "F0_HUMAN_CONDITIONING_PAIR",
+    "status": "HUMAN_CONDITIONING_PAIR_TRAINED_PENDING_CLOSED_LOOP",
+    "controller": {
+      "pid": 392056,
+      "start_ticks": "41964409",
+      "ppid": 392055
+    },
+    "started_utc": "2026-11-08T02:59:09.525704+00:00",
+    "ended_utc": "2026-11-08T03:02:45.026596+00:00",
+    "source_integrity": "PASSED",
+    "actual_optimizer_updates": 6000,
+    "arms": [
+      {
+        "variant": "zero_human",
+        "selected_update": 0,
+        "selected_policy_unchanged": true,
+        "actual_adam_steps": [
+          3000,
+          3000,
+          3000,
+          3000,
+          3000,
+          3000,
+          3000,
+          3000
+        ],
+        "initial_validation_risk": 0.2210775182271997,
+        "selected_validation_risk": 0.2210775182271997
+      },
+      {
+        "variant": "real_human",
+        "selected_update": 0,
+        "selected_policy_unchanged": true,
+        "actual_adam_steps": [
+          3000,
+          3000,
+          3000,
+          3000,
+          3000,
+          3000,
+          3000,
+          3000
+        ],
+        "initial_validation_risk": 0.2210775182271997,
+        "selected_validation_risk": 0.2210775182271997
+      }
+    ],
+    "fit_result": {
+      "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_HUMAN_CONDITIONING_PAIR01_20261108/fit_result.json",
+      "bytes": 40158,
+      "sha256": "9b1eb482c3f9a4e8a16d8cf6f87a147fb0733fc3aba9b82bd2b4783c107ba703"
+    },
+    "new_physical_steps": 0,
+    "new_rendered_frames": 0,
+    "natural_teleoperation_qualified": false,
+    "cost_settlement": {
+      "state": "SETTLED",
+      "stage": "r2",
+      "charged_seconds": 216,
+      "reserved_seconds": 2665,
+      "over_reserved_budget": false
+    },
+    "cumulative_gpu_charged_seconds": 5036,
+    "user_accepted_checkpoint": null
+  },
+  "observed_guard": {
+    "status": "WORKER_COMPLETED",
+    "cleanup": {
+      "worker_started": true,
+      "worker_pid": 392130,
+      "worker_group": 392130,
+      "worker_reaped": true,
+      "worker_return_code": 0
+    },
+    "error": null
+  },
+  "observed_initial_action_gate": {
+    "status": "CONDITIONING_INITIAL_ACTION_PARITY_PASSED",
+    "maximum_cpu_device_action_difference": 0.0000021457672119140625,
+    "tolerance": 0.00002,
+    "actual_autograd_calls": 2,
+    "optimizer_updates_before_audit": 0,
+    "initial_actions_exact_reference": true,
+    "cpu_actions_exact_reference": true,
+    "training_only_probe": true
+  },
+  "last_resource_observation": {
+    "observed_utc": "2026-11-08T03:03:40.709261+00:00",
+    "memory_total": 8282664960,
+    "memory_limit": 34292629504,
+    "oom": {
+      "oom_kill_disable": "0",
+      "under_oom": "0",
+      "oom_kill": "0"
+    },
+    "gpu_uuid": "GPU-c602a45a-0dd8-9ad2-9adc-4f863facd1d4",
+    "gpu_memory_mib": 1,
+    "gpu_temperature_c": 27,
+    "disk_free": 183381708800,
+    "original_pause_gate_returned_without_error": true
+  },
+  "observed_cost_ledger": {
+    "charged_seconds": 5036,
+    "by_stage": {
+      "r1": 1614,
+      "r2": 2051,
+      "r3": 1371
+    },
+    "outstanding_reservations": 0,
+    "total_remaining_seconds": 9364,
+    "r2_remaining_seconds": 2449
+  },
+  "independent_cpu_audit": {
+    "status": "SUBMITTED_COMPLETION_NOT_RECEIVED",
+    "expected_output": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_HUMAN_CONDITIONING_PAIR01_20261108/checkpoint_cpu_audit.json",
+    "expected_record": "/opt/data/private/ZHY/logs/session_records/q1_human_conditioning_completed_20261108.json",
+    "source": "import os,sys,time,json\nfrom pathlib import Path\nsys.path[:0]=['script/supermimic_teleop','script/q1_five_stage','script/primebot_q1']\nfrom common import ROOT,require,identity,save,now\nfrom delivery import read\nfrom paused_runtime import paused_state,own_gpu\nfrom student_input_audit import resources\nfrom student_cost import checked,charged,STAGES\np=ROOT/'data/supermimic_for_q1/Q1_LOW_LATENCY_CKPT32000_F0_HUMAN_CONDITIONING_PAIR01_20261108'\ndest=p/'checkpoint_cpu_audit.json'\nrequire(not dest.exists(),'Read the existing audit instead of repeating')\nstarted=time.monotonic()\nsample=resources(False)\nconfig=read(ROOT/'script/q1_five_stage/conditional_shared_v04_20261104.json')\npaused_state(config,read(ROOT/'logs/session_records/q1_shared_user_pause_20261106.json'))\nr,g,f,a=[read(p/n) for n in ('result.json','fit.guard.json','fit_result.json','authorization.json')]\nrequire(r['source_integrity']=='PASSED' and r['actual_optimizer_updates']==6000 and r['cost_settlement']['state']=='SETTLED','Wait for successful settled training')\nrequire(g['status']=='WORKER_COMPLETED' and g['cleanup']['worker_reaped'] and g['cleanup']['worker_return_code']==0,'Wait for worker cleanup')\nrequire(all(not Path('/proc',str(pid)).exists() for pid in [392055,392056,g['cleanup']['worker_pid'],54868,55672,55677,55678,55679]),'Task or old training still active')\nwith own_gpu():pass\nimport torch\nfrom upper_mps_forecast import audit_cpu_tensors\ntorch.set_num_threads(1)\nrequire(not torch.cuda.is_initialized(),'CPU audit initialized CUDA')\nplan=read(ROOT/'script/supermimic_teleop/student_conditioning_plan_20261108.json')\nbase=read(plan['base_plan']['path'])\ninitial=base['initial_checkpoint']\nrequire(identity(initial['path'])==initial,'Initial checkpoint changed')\nb=torch.load(initial['path'],map_location='cpu',weights_only=True)\naudit_cpu_tensors(torch,b)\nrequire(b['selected_update']==3000 and b['actual_adam_steps']==[3000]*4,'Wrong initial robot adapter')\nrecords=[]\nfor arm in ('zero_human','real_human'):\n item=next(x for x in f['arms'] if x['variant']==arm)\n checkpoints=[]\n for name in ('selected.pt','last.pt'):\n  path=p/arm/name\n  c=torch.load(path,map_location='cpu',weights_only=True)\n  count=audit_cpu_tensors(torch,c)\n  require(c['schema']=='q1_f0_human_conditioned_residual_v1' and c['variant']==arm and c['actual_updates']==3000 and c['actual_adam_steps']==[3000]*8 and c['human_real_future_frames']==0,'Checkpoint metadata differs')\n  require(set(c['base_encoder'])==set(b['base_encoder']) and all(torch.equal(v,b['base_encoder'][k]) for k,v in c['base_encoder'].items()),'Frozen human encoder changed')\n  require(c['current_statistics']==b['current_statistics'] and all(c[k]==b[k] for k in ('base_encoder_sha256','decoder_sha256','frozen_teacher_policy_sha256')),'Statistics, teacher or decoder changed')\n  require(c['provenance']['initial_student']==initial and c['provenance']['conditioning_plan']==identity(ROOT/'script/supermimic_teleop/student_conditioning_plan_20261108.json'),'Checkpoint provenance differs')\n  require(set(c['adapter'])==set(b['adapter']) and set(c['human_adapter'])=={'0.weight','0.bias','2.weight','2.bias'},'Residual tensor keys differ')\n  equal=all(torch.equal(v,b['adapter'][k]) for k,v in c['adapter'].items())\n  zero=not bool(torch.count_nonzero(c['human_adapter']['2.weight'])) and not bool(torch.count_nonzero(c['human_adapter']['2.bias']))\n  if name=='selected.pt':\n   require(c['checkpoint_update']==item['selected_update'],'Selected update differs')\n   unchanged=equal and zero\n   require(unchanged==item['selected_policy_unchanged'],'Selected policy identity assertion differs')\n   selected_equal=unchanged\n  else:\n   require(c['checkpoint_update']==3000,'Last checkpoint was truncated')\n   steps=[int(x['step']) for x in c['optimizer']['state'].values()]\n   require(steps==[3000]*8,'Actual saved Adam counters differ')\n  checkpoints.append(dict(name=name,checkpoint=identity(path),cpu_finite_tensor_count=count,checkpoint_update=c['checkpoint_update'],robot_adapter_initial_equal=equal,human_output_layer_zero=zero))\n records.append(dict(variant=arm,selected_update=item['selected_update'],cpu_finite=True,initial_policy_equal=selected_equal,frozen_base_tensors_exact=len(b['base_encoder']),robot_adapter_tensors=4,human_adapter_tensors=4,current_statistics_exact=True,frozen_teacher_and_decoder_exact=True,checkpoints=checkpoints,prior_closed_loop_complete_cases_reused=0 if selected_equal else None,prior_closed_loop_cases_reused=7 if selected_equal else None,new_closed_loop_required=not selected_equal))\nrequire(all(identity(x['path'])==x for x in a['protected_inputs']),'Protected inputs changed')\nl=checked(read(ROOT/'logs/session_records/q1_low_latency_gpu_cost_20261107.json'))\nrequire(charged(l)==5036 and not any(x['state']=='RESERVED' for x in l['runs']),'Cost settlement differs')\nrequire(not torch.cuda.is_initialized(),'CPU checkpoint audit initialized CUDA')\nrecord=dict(stage='F0_HUMAN_CONDITIONING_PAIR01_COMPLETED',status='PASSED',observed_utc=now(),elapsed_seconds=time.monotonic()-started,result=r,guard=g,arms=records,initial_checkpoint=initial,protected_sources_unchanged=len(a['protected_inputs']),protected_authorization=identity(p/'authorization.json'),resources=resources(False),resource_before_cpu_audit=sample,task_and_original_training_processes_exited=True,gpu_lock_released=True,cost_ledger=dict(charged_seconds=charged(l),by_stage={s:charged(dict(l,runs=[x for x in l['runs'] if x['stage']==s])) for s in STAGES},outstanding_reservations=0),new_model_calls=0,new_optimizer_updates=0,new_physical_steps=0,new_rendered_frames=0,cuda_initialized=False,original_shared_training_resumed=False,user_accepted_checkpoint=None,policy_identity_proof='Frozen base/statistics/decoder and robot adapter equal initial; zero final human layer adds identically zero for all finite latent inputs')\nsave(dest,record)\nsave(ROOT/'logs/session_records/q1_human_conditioning_completed_20261108.json',record)\nprint('Q1HC_CPU_AUDIT',json.dumps(dict(status=record['status'],seconds=record['elapsed_seconds'],arms=records,protected=len(a['protected_inputs']),resources=record['resources'],cost=record['cost_ledger'])),flush=True)\n",
+    "check_existing_receipt_output_and_exact_process_before_any_repeat": true,
+    "original_server_audit_received": false,
+    "local_audit_proof_created": false
+  },
+  "connection_observations": [
+    {
+      "session": 45014,
+      "hop": "Windows to original Linux",
+      "error": "Connection to 59.77.15.15 closed by remote host.",
+      "windows_shell_observed_after_error": true,
+      "linux_audit_completion_received": false
+    },
+    {
+      "session": 45014,
+      "hop": "Windows to original Linux",
+      "command": "ssh -tt -p 25362 root@59.77.15.15",
+      "error": "ssh: connect to host 59.77.15.15 port 25362: Connection refused",
+      "password_prompt_observed": false,
+      "windows_shell_observed_after_error": true
+    }
+  ],
+  "current_session_layer": "WINDOWS_POWERSHELL",
+  "current_linux_resources": "NOT_REVERIFIED_AFTER_LAST_SUCCESSFUL_RESOURCE_OBSERVATION",
+  "whole_bridge_unreachable_inferred": false,
+  "linux_training_stopped_inferred_from_connection_error": false,
+  "six_panel_delivery": {
+    "status": "PENDING_ORIGINAL_CURVES_AND_INDEPENDENT_CPU_AUDIT",
+    "local_helper": "script/supermimic_teleop/deliver_conditioning_pair.py",
+    "helper_cli": "PASSED",
+    "actual_saved_data_delivery_run": false,
+    "original_numeric_download_completed": false,
+    "new_png": 0,
+    "new_pdf": 0,
+    "new_csv": 0,
+    "new_zip": 0
+  },
+  "interpretation": "Both arms selected additional update0 under the registered selection rule. The original curves are still required to report every saved point, exact regression percentages or all rejected gate values. No claim of all nonzero points failing is made from selected0 alone.",
+  "original_shared_training_resumed": false,
+  "goal_tools_called": false,
+  "new_agents": 0,
+  "credentials_recorded": false,
+  "user_accepted_checkpoint": null,
+  "recovery_next": "Reuse45014 only as Windows. Restore native password second hop when a new recovery condition is available. First check original audit/dispatch/results/processes; preserve any submitted failure. Retrieve original compact numeric records and audit before actual plots. Never redispatch the completed6000-update training pair."
+}

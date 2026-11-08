@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-08 F0_HUMAN_CONDITIONING_PAIR01真实训练终态已收：唯一392055/392056-start41964409/392130，两组各3000更新与八Adam计数/source PASSED/guard清洁回收0，最终均选新增0；各保存点门值待原曲线，不仅据选0断言全部拒。216秒SETTLED累计5036=1614+2051+1371无预留/总余9364/r2余2449，11:03:40暂停门过/总8282664960限34292629504/OOM0/GPU1MiB27度/余盘183381708800仅历史。独立CPU审计提交后未回执即Linux远端关闭，45014现仅Windows，原生第二跳重登Connection refused；不泛化全桥接/训练失败、不逐心跳重复认证，恢复先查audit/完成收据/进程/原dispatch和曲线，不重派本轮。Mac原件、双六宫图和ZIP待补，本地只读交付helper仅CLI过；原共享暂停/goal新agent不用/采纳null/服务器镜像PENDING，入口HUMAN_CONDITIONING_RESULT及training_observed。
+
 - 2026-11-08 F0_HUMAN_CONDITIONING_PAIR01真实准入：8a742af源码/dc55cd0清单均push独立40位远端/Mac十二份918735B同；18486B九成员纠正包十五ACK部署/1229旧来源前后同。首包Mac九附加元数据被白名单拒绝且目标全无，原失败本地保留，未放宽门。原Morph六CPU检查进程5.803316秒全过及1240来源暂停成本资源锁准入11.758276秒过，三原件4823B/2093B包MacSHA同。10:54总8263753728限34292629504/GPU1MiB25度/OOM0/余盘183396569088，原4820全SETTLED无预留/实际新GPU0；45014继续，先发布准入再唯一防重单派600秒两组3000/真实CUDA初始化门先于更新，不重部署合同/原共享不恢复/goal新agent不用/采纳null，大索引镜像PENDING。入口HUMAN_CONDITIONING及三原回执。
 
 - 2026-11-08 F0_HUMAN_CONDITIONING_PAIR01独立准备：六新文件/六CPU合同1.044秒和CLI全过；实际旧四张量机器人分支旁新增末层零输出人体latent分支，两组同容量初始化/数据曝光/point＋20倍保持，仅real/zero因果人体条件不同。原三旧验证不退门与选0/每组3000Adam/600秒128MiB保留，真实新GPU0；原4820=1614+1835+1371全SETTLED/r2余2665不重置，先发布来源/原运行时及资源初始化门再唯一新根派发。10:46原Linux45014实核暂停/五PID退/锁计算空/OOM0/总8267460608限34292629504/GPU1MiB25度/余盘183396945920。原共享不恢复/旧来源不改/goal新agent不用/采纳null，大索引服务器镜像PENDING；入口HUMAN_CONDITIONING及preparation。

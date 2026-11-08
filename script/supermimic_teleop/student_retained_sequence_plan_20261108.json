@@ -1,0 +1,54 @@
+{
+  "schema": "q1_f0_retained_sequence_plan_v1",
+  "experiment": "F0_RETAINED_SEQUENCE_PAIR01",
+  "hypothesis": "Teacher action-increment matching may improve a causal residual when both arms retain identical old-policy outputs",
+  "attribution": "Independent saved-state sequence distillation; not a reproduction of GigaBrain rewards or multistep model-based optimization",
+  "base_plan": {
+    "path": "/opt/data/private/ZHY/script/supermimic_teleop/student_onpolicy_pair_plan_20261108.json",
+    "bytes": 14682,
+    "sha256": "9090bdf0df299bbbcc5d6b5c81618dfcea19773a6fdff6655d25f8a1cac0a44d"
+  },
+  "sequence_summary": {
+    "path": "/opt/data/private/ZHY/data/supermimic_for_q1/Q1_LOW_LATENCY_SAVED_SEQUENCE_AUDIT01_20261108/summary.json",
+    "bytes": 232350,
+    "sha256": "49e856fd077ae001e6f152d9a41520b7b95608fd83602f045db0edac784d6dbc"
+  },
+  "arms": ["retained_point", "retained_delta"],
+  "fit": {
+    "seed": 2026110806,
+    "maximum_updates": 3000,
+    "windows_per_distribution": 16,
+    "learning_rate": 0.0001,
+    "gradient_norm_limit": 1.0,
+    "validation_every_updates": 500,
+    "retention_weight": 20.0,
+    "increment_weight": 0.5
+  },
+  "sequence_width": 4,
+  "label_spacing_ms": 40,
+  "sequence_span_ms": 120,
+  "target_point_rows_per_batch": 128,
+  "old_policy_retention_rows_per_batch": 64,
+  "old_policy_retention_reference": "Exact initial causal_history selected3000 on saved old train states only",
+  "increment_target": "Match normalized canonical action differences over40ms, without suppressing genuine teacher motion",
+  "selection": "Unchanged old/matched-pure50:50 validation risk; all original three fixed anchor risks nonincreasing; update0 included",
+  "source_train_windows": {"old": 6581, "pure": 387},
+  "source_validation_windows": {"old": 2304, "pure": 209},
+  "student_inputs": ["f0", "history"],
+  "human_real_future_frames": 0,
+  "frozen": ["teacher", "world_model", "human_encoder", "shared_decoder", "normalizers", "physics", "reference_anchor"],
+  "saved_state_open_loop_fitting": true,
+  "heldout_events_opened": false,
+  "resource": {
+    "maximum_wall_seconds": 600,
+    "maximum_output_bytes": 134217728,
+    "ledger_stage": "r2",
+    "expected_cumulative_seconds": 4599,
+    "expected_by_stage": {"r1": 1614, "r2": 1614, "r3": 1371}
+  },
+  "new_physical_steps": 0,
+  "new_rendered_frames": 0,
+  "hardware_end_to_end_latency_ms": null,
+  "natural_teleoperation_qualified": false,
+  "user_accepted_checkpoint": null
+}

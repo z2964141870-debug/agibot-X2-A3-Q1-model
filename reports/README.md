@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-09研究：[三项简报](research/2026-11-09/README.md)/[检查](README_RESEARCH_CHECK_20261109.md)：DKWBC跟踪/平衡分工、STRIDE采样时长边界、TT-MBRL回合适配。106请求100完整200；main去重218→226/H001不变。按Q1 f4d55a2b保存记录，先原人体条件审计曲线，再已有多步WM；本轮无科学执行。发布见[收据](../data/manifests/research_watch_sync_20261109.json)，服务器镜像待。
+
 2026-11-08研究：[FRDV2.0简报](research/2026-11-08/README.md)/[检查](README_RESEARCH_CHECK_20261108.md)。11/7实质源码更新；128树条目重建SHA及12文本123056B静态核验，热批吞吐不当控制延迟，动力学验证仍不含。93请求91完整200；main去重217→218/H001不变。按Q1 f08eb7bd已完成保存序列审计理解主线，本次无科学执行。服务器Git未独立观察/研究镜像待，实际发布见[收据](../data/manifests/research_watch_sync_20261108.json)。
 
 2026-11-07研究：[四项简报](research/2026-11-07/README.md)/[检查](README_RESEARCH_CHECK_20261107.md)：STEP训练期预测、PhySA评测边界、NablaEngine0.2.0今日发行、VREgo对时与评测。91请求89完整200／六固定文本63120B；main去重205→217／H001不变。已接入Q1 a2d667aa的R0完成及学生流水线本地准备记录；本研究仅检索／静态核验，无新训练或自动任务变更。服务器Git未独立观察／研究镜像待，发布见[收据](../data/manifests/research_watch_sync_20261107.json)。

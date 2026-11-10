@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-10研究：[仅检查记录](README_RESEARCH_CHECK_20261110.md)，无新简报。95请求87完整200；30仓库头/9发行无实质变化，11/10公告覆盖未建立，VREgo仅恢复访问。main去重226/H001及候选不变；Q1按原人体审计曲线→已有多步WM恢复，本轮无科学执行。[发布收据](../data/manifests/research_watch_sync_20261110.json)，服务器镜像待。
+
 2026-11-09研究：[三项简报](research/2026-11-09/README.md)/[检查](README_RESEARCH_CHECK_20261109.md)：DKWBC跟踪/平衡分工、STRIDE采样时长边界、TT-MBRL回合适配。106请求100完整200；main去重218→226/H001不变。按Q1 f4d55a2b保存记录，先原人体条件审计曲线，再已有多步WM；本轮无科学执行。发布见[收据](../data/manifests/research_watch_sync_20261109.json)，服务器镜像待。
 
 2026-11-08续行：[原始依赖截止下的短预览补全](README_Q1_DEPENDENCY_PREVIEW_20261108.md)。新receiver复用R1可见性及原阻尼/.12秒，10CPU合同.551秒/CLI过；固定393片121659锚点时序分析.002299125秒/RSS33079296B，H4严格80ms有79.9423%仅3帧真实前缀，完整第4帧原始支持额外最多6.666667ms；不是新步态或硬件延迟结果。原84依赖未知不当严格80ms基线，旧来源不动；新GPU动作门/匹配物理未实现派发，回退与R1不同须独立对照。45014在12:44:17实回Windows，最近12:38第二跳Connection refused，当前不循环/未发Linux命令，SSH90/60/5生效。恢复优先原人体条件CPU审计和七JSON/双训练图不重派6000，再已发布多步WM来源/资源门唯一派发；新GPU物理Adam0/5036台账无预留/R1余1086、R2余2449、R3余5829，原共享暂停/final/采纳null和完整目标保持，服务器镜像PENDING。[阶段收据](../logs/session_records/q1_dependency_preview_prepared_20261108.json)。

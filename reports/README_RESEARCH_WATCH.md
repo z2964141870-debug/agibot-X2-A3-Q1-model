@@ -1,5 +1,7 @@
 # YUANQI 具身智能研究跟踪
 
+2026-11-10研究：[仅检查记录](README_RESEARCH_CHECK_20261110.md)，无新简报。95请求87完整200；30仓库头/9发行无实质变化，11/10公告覆盖未建立，VREgo仅恢复访问。main去重226/H001及候选不变；Q1按原人体审计曲线→已有多步WM恢复，本轮无科学执行。[发布收据](../data/manifests/research_watch_sync_20261110.json)，服务器镜像待。
+
 2026-11-09研究：[三项简报](research/2026-11-09/README.md)/[检查](README_RESEARCH_CHECK_20261109.md)：DKWBC跟踪/平衡分工、STRIDE采样时长边界、TT-MBRL回合适配。106请求100完整200；main去重218→226/H001不变。按Q1 f4d55a2b保存记录，先原人体条件审计曲线，再已有多步WM；本轮无科学执行。发布见[收据](../data/manifests/research_watch_sync_20261109.json)，服务器镜像待。
 
 2026-11-08研究：[FRDV2.0简报](research/2026-11-08/README.md)/[检查](README_RESEARCH_CHECK_20261108.md)。11/7实质源码更新；128树条目重建SHA及12文本123056B静态核验，热批吞吐不当控制延迟，动力学验证仍不含。93请求91完整200；main去重217→218/H001不变。按Q1 f08eb7bd已完成保存序列审计理解主线，本次无科学执行。服务器Git未独立观察/研究镜像待，实际发布见[收据](../data/manifests/research_watch_sync_20261108.json)。

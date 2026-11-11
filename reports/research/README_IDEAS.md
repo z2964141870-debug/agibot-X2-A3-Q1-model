@@ -1,5 +1,16 @@
 # 候选研究想法
 
+## 2026-11-11 候选与证据更新
+
+| 来源 | 对应瓶颈及安排 | 证据边界 |
+| --- | --- | --- |
+| [SuperMimic 作者源码](https://github.com/HybridRobotics/supermimic/tree/5efbf114e11f725c31d83e217be987c13c0e4ce2) | 现在静态核对 Q1 与 G1 的状态/动作语义、奖励、终止和采样计数；保持原恢复次序 | Apache-2.0 固定树和训练/播放入口；`mjlab_research`、数据、权重未确认可取，无已注册 Q1 任务 |
+| [Beyond Retargeting v2](https://arxiv.org/abs/2610.07891v2) | 撤回，暂停候选和延迟对标，v1 保留阅读历史 | 原撤回说明仅涉及数据使用许可与内部开源合规审查；不推断结果真假 |
+| [Dithered Low-Bit World Models v1](https://arxiv.org/html/2611.11780v1) | 现在用其区分一步误差、奖励误差和闭环结果；不启动量化实验 | 正文及对照；采样规划、无真机，代码预告待发 |
+| [RoboMoCap v1](https://arxiv.org/html/2611.10994v1) | 基线后借鉴头戴与腕部数据对时、独立腕/脚真值 | 论文、作者页和数据卡；分片未下载、代码未核，光学棚和运动学评测 |
+
+DIAL、Galilean 时空标定、Unified Inertial 和 Library of Hands 仅阅读线索，见[检查记录](../README_RESEARCH_CHECK_20261111.md)。不另立科研假设，`H001` 保持待验证。
+
 ## 2026-11-09 文献候选更新
 
 本次 3 项入简报、5 项仅登记筛查；新增假设 0，`H001` 保留原状态。以下仅研究候选，不派发训练、不改冻结接口或资源台账。

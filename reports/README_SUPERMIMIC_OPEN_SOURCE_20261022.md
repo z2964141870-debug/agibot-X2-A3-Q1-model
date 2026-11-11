@@ -1,5 +1,7 @@
 # SuperMimic 开源状态核验
 
+> **2026-11-11 更新：**作者组织已公开 [SuperMimic G1 训练源码](https://github.com/HybridRobotics/supermimic/tree/5efbf114e11f725c31d83e217be987c13c0e4ce2)，Apache-2.0；配套依赖、动作资产及可用预训练权重仍未核实。下文为 10/22 的历史快照，旧专有 Demo 许可保持原范围。详见[本期简报](research/2026-11-11/README.md)。
+
 记录日期：北京时间2026-10-22 08:20。阶段：supermimic-open-source-20261022。状态：来源核验与分析完成；GitHub发布回执见本页保存状态。此为用户指定项目的单项调查，不是每日检查。
 
 ## 目标与范围

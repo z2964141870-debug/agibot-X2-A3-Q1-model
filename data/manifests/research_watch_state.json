@@ -2,9 +2,9 @@
   "schema_version": 1,
   "automation_id": "yuanqi",
   "timezone": "Asia/Shanghai",
-  "last_successful_source_check_at": "2026-11-10T01:19:09.799Z",
-  "last_report_date": "2026-11-09",
-  "last_report_path": "reports/research/2026-11-09/README.md",
+  "last_successful_source_check_at": "2026-11-11T01:27:41.273000Z",
+  "last_report_date": "2026-11-11",
+  "last_report_path": "reports/research/2026-11-11/README.md",
   "initial_check": {
     "mode": "manual",
     "source_scope": "arXiv cs.RO 2026-09-29 推送筛选与三篇原始页面核对；不是全领域或系统查新。",
@@ -901,13 +901,17 @@
       "change_kind": "FIRST_DISCOVERY_OF_RECENT_V1",
       "verification_level": "Original abstract/history and selected framework, training, experiments, latency, partial-input/noise ablations and conclusion sections. No implementation or reproduction.",
       "code_status": "OFFICIAL_CODE_AND_WEIGHTS_ENTRY_NOT_VERIFIED",
-      "recommendation": "AFTER_HUMANOID_BASELINE",
+      "recommendation": "HISTORICAL_ONLY",
       "notes": "Runtime retargeting-free student still requires a teacher trained on retargeted motion data. Frame-wise codebook imputes plausible rather than verified true intent. Author-reported 0.604 ms shared-runtime algorithm path differs from 147.5 ms median video-derived real-robot response on one selected 5-second segment. Explicit missing-keypoint masks and temporally correlated input augmentation are existing prior art.",
       "related_links": [
         "https://arxiv.org/html/2610.07891v1"
       ],
       "disposition": "REPORTED",
-      "reported_in": "reports/research/2026-10-08/README.md"
+      "reported_in": "reports/research/2026-10-08/README.md",
+      "active_evidence_status": "HISTORICAL_VERSION_WITHDRAWN",
+      "prior_recommendation": "AFTER_HUMANOID_BASELINE",
+      "withdrawn_by": "arxiv:2610.07891@v2",
+      "withdrawal_checked_at": "2026-11-11T09:27:41.273+08:00"
     },
     {
       "id": "arxiv:2610.07052",
@@ -5577,6 +5581,193 @@
         "data/research/2026-11-09/sources/temporal_regularization_abs.html",
         "data/research/2026-11-09/sources/temporal_regularization_full.html"
       ]
+    },
+    {
+      "id": "arxiv:2610.07891",
+      "version": "v2",
+      "title": "Beyond Retargeting: Low-Latency and Robust Humanoid Whole-Body Teleoperation with Learned Atomic Motion Primitives",
+      "url": "https://arxiv.org/abs/2610.07891v2",
+      "dedup_key": "arxiv:2610.07891@v2",
+      "first_submitted_at": "2026-10-06T07:39:20Z",
+      "first_seen_on": "2026-11-11",
+      "feed_announced_on": "2026-11-10",
+      "feed_timezone": "-0500",
+      "change_kind": "AUTHOR_WITHDRAWAL",
+      "verification_level": "Author notice and both version histories; no reproduction",
+      "notes": "Prior figures historical, data-use license and company compliance review pending; results not adjudicated",
+      "recommendation": "HISTORICAL_WITHDRAWN",
+      "checked_at": "2026-11-11T09:27:41.273+08:00",
+      "cache_paths": [
+        "data/research/2026-11-11/sources/retarget_withdrawal_abs.html",
+        "data/research/2026-11-11/sources/retarget_original_abs.html"
+      ],
+      "disposition": "REPORTED",
+      "check_manifest": "data/manifests/research_watch_check_20261111.json",
+      "reported_in": "reports/research/2026-11-11/README.md",
+      "version_submitted_at": "2026-11-09T06:58:17Z",
+      "supersedes_as_active_evidence": "arxiv:2610.07891@v1"
+    },
+    {
+      "id": "arxiv:2611.11780",
+      "version": "v1",
+      "title": "Planners Exploit Deterministic Error: Dithered Low-Bit World Models",
+      "url": "https://arxiv.org/abs/2611.11780v1",
+      "dedup_key": "arxiv:2611.11780@v1",
+      "first_submitted_at": "2026-11-09T02:37:20Z",
+      "first_seen_on": "2026-11-11",
+      "feed_announced_on": "2026-11-10",
+      "feed_timezone": "-0500",
+      "change_kind": "NEW_MANUSCRIPT",
+      "verification_level": "Original methods, experiments and limitations; no reproduction",
+      "notes": "Sampling planners in simulation; code and design docs planned with final paper; compare single-step vs reward and closed-loop metrics",
+      "recommendation": "NOW_READ_EVALUATION",
+      "checked_at": "2026-11-11T09:27:41.273+08:00",
+      "cache_paths": [
+        "data/research/2026-11-11/sources/robomocap_abs.html",
+        "data/research/2026-11-11/sources/robomocap_full.html"
+      ],
+      "disposition": "REPORTED",
+      "check_manifest": "data/manifests/research_watch_check_20261111.json",
+      "reported_in": "reports/research/2026-11-11/README.md"
+    },
+    {
+      "id": "arxiv:2611.10994",
+      "version": "v1",
+      "title": "RoboMoCap: A Large-Scale Whole-Body Motion Capture Dataset with Egocentric Vision for Robot Learning",
+      "url": "https://arxiv.org/abs/2611.10994v1",
+      "dedup_key": "arxiv:2611.10994@v1",
+      "first_submitted_at": "2026-11-07T22:27:20Z",
+      "first_seen_on": "2026-11-11",
+      "feed_announced_on": "2026-11-10",
+      "feed_timezone": "-0500",
+      "change_kind": "NEW_MANUSCRIPT",
+      "verification_level": "Original methods and benchmarks, author project and public data card; no asset files downloaded",
+      "notes": "Public HF card lists CC BY-NC 4.0; local card/tree API timed out; G1 retargeting evaluated kinematically, no verified controller",
+      "recommendation": "AFTER_BASELINE",
+      "checked_at": "2026-11-11T09:27:41.273+08:00",
+      "cache_paths": [
+        "data/research/2026-11-11/sources/lowbit_abs.html",
+        "data/research/2026-11-11/sources/lowbit_full.html"
+      ],
+      "disposition": "REPORTED",
+      "check_manifest": "data/manifests/research_watch_check_20261111.json",
+      "reported_in": "reports/research/2026-11-11/README.md",
+      "related_links": [
+        "https://bitrobot-foundation.github.io/robomocap/",
+        "https://huggingface.co/datasets/BitRobot/robomocap"
+      ]
+    },
+    {
+      "id": "arxiv:2611.10660",
+      "version": "v1",
+      "title": "Dynamics-Informed Action Learning for Goal-Conditioned Latent Planning",
+      "url": "https://arxiv.org/abs/2611.10660v1",
+      "dedup_key": "arxiv:2611.10660@v1",
+      "first_submitted_at": "2026-11-07T11:21:30Z",
+      "first_seen_on": "2026-11-11",
+      "feed_announced_on": "2026-11-10",
+      "feed_timezone": "-0500",
+      "change_kind": "CANDIDATE_ONLY",
+      "verification_level": "Selected original text; assets not checked",
+      "notes": "Latent action planning; different controller and task scope",
+      "recommendation": "BACKGROUND",
+      "checked_at": "2026-11-11T09:27:41.273+08:00",
+      "cache_paths": [
+        "data/research/2026-11-11/sources/dial_abs.html",
+        "data/research/2026-11-11/sources/dial_full.html"
+      ],
+      "disposition": "SCREENED",
+      "check_manifest": "data/manifests/research_watch_check_20261111.json",
+      "reported_in": null
+    },
+    {
+      "id": "arxiv:2611.12526",
+      "version": "v1",
+      "title": "Galilean Robots, Aristotelian Sensors: Joint Spatiotemporal Trajectory Estimation and Extrinsic Calibration",
+      "url": "https://arxiv.org/abs/2611.12526v1",
+      "dedup_key": "arxiv:2611.12526@v1",
+      "first_submitted_at": "2026-11-09T15:01:51Z",
+      "first_seen_on": "2026-11-11",
+      "feed_announced_on": "2026-11-10",
+      "feed_timezone": "-0500",
+      "change_kind": "CANDIDATE_ONLY",
+      "verification_level": "Selected original text; assets not checked",
+      "notes": "Batch spatial/time calibration, not a streaming head-ring latency result",
+      "recommendation": "BACKGROUND",
+      "checked_at": "2026-11-11T09:27:41.273+08:00",
+      "cache_paths": [
+        "data/research/2026-11-11/sources/library_hands_abs.html",
+        "data/research/2026-11-11/sources/galilean_calibration_full.html"
+      ],
+      "disposition": "SCREENED",
+      "check_manifest": "data/manifests/research_watch_check_20261111.json",
+      "reported_in": null
+    },
+    {
+      "id": "arxiv:2611.10137",
+      "version": "v1",
+      "title": "A Unified Inertial Encoder for Human and Humanoid Motion",
+      "url": "https://arxiv.org/abs/2611.10137v1",
+      "dedup_key": "arxiv:2611.10137@v1",
+      "first_submitted_at": "2026-11-06T19:03:25Z",
+      "first_seen_on": "2026-11-11",
+      "feed_announced_on": "2026-11-10",
+      "feed_timezone": "-0500",
+      "change_kind": "CANDIDATE_ONLY",
+      "verification_level": "Selected original text; assets not checked",
+      "notes": "Inertial motion representation; no direct evidence for the project wrist or control loop",
+      "recommendation": "BACKGROUND",
+      "checked_at": "2026-11-11T09:27:41.273+08:00",
+      "cache_paths": [
+        "data/research/2026-11-11/sources/galilean_abs.html",
+        "data/research/2026-11-11/sources/unified_inertial_full.html"
+      ],
+      "disposition": "SCREENED",
+      "check_manifest": "data/manifests/research_watch_check_20261111.json",
+      "reported_in": null
+    },
+    {
+      "id": "arxiv:2611.12678",
+      "version": "v1",
+      "title": "Library of Hands: Fix the Hands, Not the World Model",
+      "url": "https://arxiv.org/abs/2611.12678v1",
+      "dedup_key": "arxiv:2611.12678@v1",
+      "first_submitted_at": "2026-11-09T16:45:11Z",
+      "first_seen_on": "2026-11-11",
+      "feed_announced_on": "2026-11-10",
+      "feed_timezone": "-0500",
+      "change_kind": "CANDIDATE_ONLY",
+      "verification_level": "Selected original text; assets not checked",
+      "notes": "Video hand refinement, not direct wrist state estimation or control",
+      "recommendation": "BACKGROUND",
+      "checked_at": "2026-11-11T09:27:41.273+08:00",
+      "cache_paths": [
+        "data/research/2026-11-11/sources/unified_proprio_abs.html",
+        "data/research/2026-11-11/sources/library_of_hands_full.html"
+      ],
+      "disposition": "SCREENED",
+      "check_manifest": "data/manifests/research_watch_check_20261111.json",
+      "reported_in": null
+    },
+    {
+      "id": "github:HybridRobotics/supermimic",
+      "version": "5efbf114e11f725c31d83e217be987c13c0e4ce2",
+      "dedup_key": "github:HybridRobotics/supermimic@5efbf114e11f725c31d83e217be987c13c0e4ce2",
+      "title": "SuperMimic",
+      "url": "https://github.com/HybridRobotics/supermimic/tree/5efbf114e11f725c31d83e217be987c13c0e4ce2",
+      "repository_created_at_utc": "2026-11-10T10:46:56Z",
+      "commit_committer_at_utc": "2026-11-10T16:10:56Z",
+      "first_public_at": null,
+      "first_seen_on": "2026-11-11",
+      "change_kind": "AUTHOR_SOURCE_PUBLICATION_FIRST_VERIFIED",
+      "verification_level": "Author identity, complete pinned tree, Apache-2.0 and fixed training implementation; static only",
+      "code_status": "PUBLIC_APACHE_2_0_G1",
+      "asset_status": "NO_VERIFIED_PUBLIC_CHECKPOINT_OR_DATA; REQUIRED_MJLAB_RESEARCH_API_404",
+      "recommendation": "NOW_STATIC_COMPARISON",
+      "checked_at": "2026-11-11T09:27:41.273+08:00",
+      "reported_in": "reports/research/2026-11-11/README.md",
+      "check_manifest": "data/manifests/research_watch_check_20261111.json",
+      "disposition": "REPORTED"
     }
   ],
   "idea_ids": [
@@ -5586,22 +5777,21 @@
     "scheduled_task_config": "ACTIVE",
     "first_scheduled_run": "TRIGGER_AND_RESEARCH_VERIFIED",
     "last_error": {
-      "recorded_at": "2026-11-10T09:34:49.565+08:00",
+      "recorded_at": "2026-11-11T09:27:41.273+08:00",
       "scope": "partial_sources_and_server_mirror",
-      "recovered": "DreamFreeDNS,CV/LGrecentpartial200,Nablareleasetimeout recovered byseparate suffixrequests;failuresretained.",
-      "sources": "Nablaproject404;VRegorepo/commits/contents404,implementationreleaseunverified;Nov10announcementsnotestablished.",
-      "server": "NoSSHauthenticationattempt orcurrentserverGitobservation; savedNov8statusnotliveproof;serverwrites0."
+      "sources": "Nabla/docs/dependency 404, local HF dataset timeouts; raw GitHub source recovered via pinned shallow fetch.",
+      "server": "Not independently observed; no repeated authentication, no server writes."
     },
     "first_scheduled_trigger_at": "2026-09-30T01:01:12.375Z",
-    "last_scheduled_source_check_at": "2026-11-10T01:19:09.799Z",
-    "last_coverage_note": "95HTTPattempts87complete200;30heads9releaselists unchanged;20projectpages19abstracts;Nov9listings unchanged,Nov10announcement coverage notestablished;noexecution.",
-    "last_scheduled_trigger_at": "2026-11-10T00:58:51.254Z",
+    "last_scheduled_source_check_at": "2026-11-11T01:27:41.273000Z",
+    "last_coverage_note": "November 10 arXiv announcements recovered; November 11 not yet covered; GitHub engineering records only.",
+    "last_scheduled_trigger_at": "2026-11-11T01:00:26.001Z",
     "last_run_interrupted": false,
     "last_run_resumed": true,
     "last_interrupted_check_manifest": "data/manifests/research_watch_check_20261003.json",
-    "last_check_outcome": "NO_VERIFIED_SUBSTANTIVE_CHANGE_WITH_ANNOUNCEMENT_COVERAGE_GAP",
-    "last_resumed_from_trigger_at": "2026-11-10T00:58:51.254Z",
-    "publication_status": "CHECK_RECORD_PUBLISHED_AND_INDEPENDENTLY_VERIFIED_SERVER_MIRROR_PENDING",
+    "last_check_outcome": "FOUR_ITEMS_VERIFIED_WITH_PARTIAL_SOURCE_AND_SERVER_GAPS",
+    "last_resumed_from_trigger_at": "2026-11-11T01:00:26.001Z",
+    "publication_status": "LOCAL_PREPARED_PENDING_VERIFICATION",
     "previous_sync_failure_resolved_connection_at": "2026-10-12T09:09:40+08:00",
     "previous_sync_failure": {
       "scope": "record_sync",
@@ -5626,7 +5816,7 @@
       "2026-10-19",
       "2026-10-20"
     ],
-    "last_notification_decision": "DONT_NOTIFY",
+    "last_notification_decision": "NOTIFY",
     "previous_sync_failure_20261011": {
       "scope": "record_sync_and_partial_source_gap",
       "ssh": "Three initial read-only requests and one later retry timed out",
@@ -5637,9 +5827,11 @@
       "recorded_at": "2026-10-11T09:08:48+08:00",
       "same_ssh_problem_as_local_engineering_record": "reports/README_A3_CONTROLLER_ADAPTER_20261010.md"
     },
-    "pending_sync_dates": [],
-    "latest_sync_receipt_path": "data/manifests/research_watch_sync_20261110.json",
-    "last_notification_reason": "No verified method/code/asset change; existing source recovery and unchanged mirror gap do not warrant repeated notification.",
+    "pending_sync_dates": [
+      "2026-11-11"
+    ],
+    "latest_sync_receipt_path": "data/manifests/research_watch_sync_20261111.json",
+    "last_notification_reason": "Author SuperMimic source publicly verified; substantive withdrawal and two new papers.",
     "user_action_issues": [
       {
         "id": "RECORD_CREDENTIAL_20261012",
@@ -5955,5 +6147,5 @@
     }
   },
   "dedup_rule": "同 ID/版本不重复转述；新版本或代码发布只有实质变化才再次报告，记录变化说明。",
-  "latest_check_manifest": "data/manifests/research_watch_check_20261110.json"
+  "latest_check_manifest": "data/manifests/research_watch_check_20261111.json"
 }

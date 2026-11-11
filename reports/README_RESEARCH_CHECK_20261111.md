@@ -23,4 +23,6 @@
 
 原文缓存及浅层源码对象在 `data/research/2026-11-11/`；执行、逐请求 UTC/大小/SHA、比对、diff 与发布记录在 `logs/research_watch/2026-11-11/`。初始抓取的部分文件名与实际论文错位，始终以原始请求 URL、标题及正文校正，原始缓存不改名；清单按实际 ID 绑定。RoboMoCap 的本机数据卡/树请求超时，公开页面可见性来自独立网页核验，未取二进制。复核入口：`python3 logs/research_watch/2026-11-11/inspect.py` 与同目录的 `publish.py`；仅运行本地研究记录脚本及 Git 载荷审计。
 
+发布后从作者项目页点击核验原数据卡：顶部标签和 License 正文都标为 **CC BY 4.0**，早先的 `CC BY-NC 4.0` 转述已更正。项目页与数据卡均写代码待发布，未核验分片内容。原发布收据保留，更正提交的核验见 `logs/research_watch/2026-11-11/asset-correction_verified.json`。
+
 `main` 维护完整简报、候选及去重；`Q1` 接收当日检查和指针，保留本分支工程入口与中央状态文件。两边仅暂存本次显式文件，检查 diff、运行 `script/project_tools/audit_git_payload.py`，普通推送后独立核对远端引用及 Git blob。实际结果及服务器待镜像状态见收据。没有新增科研假设，`H001` 保持待验证。

@@ -1,14 +1,12 @@
 # YUANQI 项目状态与重要文件
 
-<<<<<<< HEAD
+2026-11-12：[X2 SMPL遥操仓库核查与SuperMimic方案](README_X2_SMPL_SUPERMIMIC_TELEOP_20261112.md)。找到正确的第三方X2完整SONIC/SMPL部署分支，旧-review地址404不代表正确仓库不可用；MorphMimic发布X2人体策略但硬件入口仅G1。智元A3官方10/30更新无SMPL编码器；推荐复用X2部署后端、独立接Morph人体策略，先原预览基线再短缓冲适配。仅静态研究，目标/旧训练保持暂停，0服务器操作与新训练。
+
 2026-11-11研究：[四项简报](research/2026-11-11/README.md)／[检查](README_RESEARCH_CHECK_20261111.md)。SuperMimic作者G1源码公开；Beyond Retargeting撤回；多步误差与对时两项候选。Q1仍先补原人体审计和曲线，再按已有计划核多步WM；本轮无训练或仿真。[发布收据](../data/manifests/research_watch_sync_20261111.json)，服务器镜像待。
 
 2026-11-10研究：[仅检查记录](README_RESEARCH_CHECK_20261110.md)，无新简报。95请求87完整200；30仓库头/9发行无实质变化，11/10公告覆盖未建立，VREgo仅恢复访问。main去重226/H001及候选不变；Q1按原人体审计曲线→已有多步WM恢复，本轮无科学执行。[发布收据](../data/manifests/research_watch_sync_20261110.json)，服务器镜像待。
 
 2026-11-09研究：[三项简报](research/2026-11-09/README.md)/[检查](README_RESEARCH_CHECK_20261109.md)：DKWBC跟踪/平衡分工、STRIDE采样时长边界、TT-MBRL回合适配。106请求100完整200；main去重218→226/H001不变。按Q1 f4d55a2b保存记录，先原人体条件审计曲线，再已有多步WM；本轮无科学执行。发布见[收据](../data/manifests/research_watch_sync_20261109.json)，服务器镜像待。
-=======
-2026-11-12：[X2 SMPL遥操仓库核查与SuperMimic方案](README_X2_SMPL_SUPERMIMIC_TELEOP_20261112.md)。找到正确的第三方X2完整SONIC/SMPL部署分支，旧-review地址404不代表正确仓库不可用；MorphMimic发布X2人体策略但硬件入口仅G1。智元A3官方10/30更新无SMPL编码器；推荐复用X2部署后端、独立接Morph人体策略，先原预览基线再短缓冲适配。仅静态研究，目标/旧训练保持暂停，0服务器操作与新训练。
->>>>>>> 775ab7a (Document X2 SMPL teleoperation repositories and SuperMimic integration plan)
 
 2026-11-08：[严格80ms的阻尼补全入口已准备](README_Q1_DEPENDENCY_PREVIEW_20261108.md)。复用R1原始依赖截止和旧预测器，10新CPU检查通过；固定393片元数据121659锚点中79.9423%的H4只到齐3帧，完整4帧还需最多6.666667ms原始支持。未做新GPU动作/物理/训练，不改写旧84质量；原人体条件CPU取证与双图、真实多步WM仍待服务器，原共享暂停/5036成本保持。
 

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-12最新用户范围：[只构思X2 human接入](README_X2_MORPHMIMIC_HUMAN_PLAN_20261112.md)，暂不做仿真或真机测试。用户x2分支79c4a1e独立远端核同，八源码身份记录；衣服human_data已有逐关节位置/世界旋转，可在G1 GMR前分流，新增24关节完整HumanFrame/窗口/MorphHumanPolicy/X2TargetAdapter，复用现有AimDK状态反馈/单writer和MC交接机制；不复用SONIC840/990观测或直接换ONNX，pelvis/gyro/腕映射/增益配方需独立核。第一跳到Windows，原第二跳认证前Connection refused后未再尝试、Windows已退出；慢只读git fetch自有进程已终止，0Linux命令/机器人连接/模型物理训练测试。原goal/共享训练保持暂停，5036旧账本不改，不新agent/自动任务；先等用户后续明确实施任务。[方案收据](../logs/session_records/x2_morphmimic_human_plan_20261112.json)，服务器镜像未尝试。
+
 2026-11-12用户新请求：[X2优先的SMPL遥操检索与设计](README_X2_SMPL_SUPERMIMIC_TELEOP_20261112.md)。关键词178候选取首100、智元33公共仓库、17README与源码静态查；十README HEAD/固定提交核同。正确meetsitaram/GR00T-WholeBodyControl-X2的supermimic-deploy分支ceccba97可读，旧-review404已纠正；当前公开模型/主文档是SONIC，不凭分支名认证X2 SuperMimic benchmark。MorphMimic统一发布X2 human可复用，但硬件仅G1；拟复用X2 C++/AimDK反馈执行并新增独立policy适配，注意pelvis-vs-torso IMU/gyro及腕映射。50Hz窗口含当前帧时十槽跨度180ms，与旧下一至十帧200ms分开。先现成X2 SONIC SMPL基线、Morph同人体源仿真、硬件shadow，再有证据做短缓冲/适配；本次0登录/模型调用/物理/训练或真机命令，用户goal及原共享保持暂停、5036旧台账不改，服务器镜像PENDING。[来源收据](../logs/session_records/x2_smpl_supermimic_research_20261112.json)。
 
 2026-11-11研究：[四项简报](research/2026-11-11/README.md)／[检查](README_RESEARCH_CHECK_20261111.md)。SuperMimic作者G1源码公开；Beyond Retargeting撤回；多步误差与对时两项候选。Q1仍先补原人体审计和曲线，再按已有计划核多步WM；本轮无训练或仿真。[发布收据](../data/manifests/research_watch_sync_20261111.json)，服务器镜像待。

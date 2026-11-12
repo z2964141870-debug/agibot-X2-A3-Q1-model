@@ -1,0 +1,81 @@
+{
+  "stage": "X2_MORPHMIMIC_HUMAN_DESIGN_ONLY",
+  "date_beijing": "2026-11-12",
+  "user_scope": "Design only; x2 branch supplied as deployment reference; no simulation or real robot testing",
+  "x2_branch_commit": "79c4a1e7c019fe57130a2f530fcec78875eb7e4f",
+  "independent_git_remote_verified": true,
+  "sources": [
+    {
+      "path": "script/smartwear_runtime/SmpleXConverter.py",
+      "url": "https://raw.githubusercontent.com/z2964141870-debug/agibot-X2-A3-Q1-model/79c4a1e7c019fe57130a2f530fcec78875eb7e4f/script/smartwear_runtime/SmpleXConverter.py",
+      "bytes": 12269,
+      "sha256": "05799ff1e22c1d85960de020808bf72bf72bb5ddf51705d702a73d24f016205c"
+    },
+    {
+      "path": "script/smartwear_runtime/garment_udp_v2_reconnect_safe.py",
+      "url": "https://raw.githubusercontent.com/z2964141870-debug/agibot-X2-A3-Q1-model/79c4a1e7c019fe57130a2f530fcec78875eb7e4f/script/smartwear_runtime/garment_udp_v2_reconnect_safe.py",
+      "bytes": 36892,
+      "sha256": "e2aaf69b4028cc6f74ecc7324cfda9794a0dca49ef0648b58a6ff4612bc22a82"
+    },
+    {
+      "path": "deploy_ws/agi_x2_deploy_onnx_ref/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/z2964141870-debug/agibot-X2-A3-Q1-model/79c4a1e7c019fe57130a2f530fcec78875eb7e4f/deploy_ws/agi_x2_deploy_onnx_ref/CMakeLists.txt",
+      "bytes": 8699,
+      "sha256": "b28862add1fc4ceecf1940f29fac65caa5f5315792b160e29cea519872eb58bd"
+    },
+    {
+      "path": "deploy_ws/agi_x2_deploy_onnx_ref/src/smpl_intent_source.cpp",
+      "url": "https://raw.githubusercontent.com/z2964141870-debug/agibot-X2-A3-Q1-model/79c4a1e7c019fe57130a2f530fcec78875eb7e4f/deploy_ws/agi_x2_deploy_onnx_ref/src/smpl_intent_source.cpp",
+      "bytes": 5072,
+      "sha256": "b923572353c472cacc686dccc1d4a61f8e7cddb6e1cd119ccdfd3e167052b4be"
+    },
+    {
+      "path": "deploy_ws/agi_x2_deploy_onnx_ref/include/zmq/smpl_intent_source.hpp",
+      "url": "https://raw.githubusercontent.com/z2964141870-debug/agibot-X2-A3-Q1-model/79c4a1e7c019fe57130a2f530fcec78875eb7e4f/deploy_ws/agi_x2_deploy_onnx_ref/include/zmq/smpl_intent_source.hpp",
+      "bytes": 2950,
+      "sha256": "0559c845a022f0a8e802b380a7d25727896af4598b457c82e9e3e1becf4943e2"
+    },
+    {
+      "path": "deploy_ws/agi_x2_deploy_onnx_ref/src/aimdk_io.cpp",
+      "url": "https://raw.githubusercontent.com/z2964141870-debug/agibot-X2-A3-Q1-model/79c4a1e7c019fe57130a2f530fcec78875eb7e4f/deploy_ws/agi_x2_deploy_onnx_ref/src/aimdk_io.cpp",
+      "bytes": 11217,
+      "sha256": "b1f31a59dc7d22e165452b532943a7de7b88287c6e4371bc69f294358bc5ce35"
+    },
+    {
+      "path": "deploy_ws/agi_x2_deploy_onnx_ref/src/x2_deploy_onnx_ref.cpp",
+      "url": "https://raw.githubusercontent.com/z2964141870-debug/agibot-X2-A3-Q1-model/79c4a1e7c019fe57130a2f530fcec78875eb7e4f/deploy_ws/agi_x2_deploy_onnx_ref/src/x2_deploy_onnx_ref.cpp",
+      "bytes": 257181,
+      "sha256": "e88baa7e08ead6062030fae75ec969ef74ac9144fb72e732552e2e7344e9fb7d"
+    },
+    {
+      "path": "script/sonic_x2_transfer_v2/GR00T_audit/AGENTS.md",
+      "url": "https://raw.githubusercontent.com/z2964141870-debug/agibot-X2-A3-Q1-model/79c4a1e7c019fe57130a2f530fcec78875eb7e4f/script/sonic_x2_transfer_v2/GR00T_audit/AGENTS.md",
+      "bytes": 5043,
+      "sha256": "bd95c4957f3f234c4087f00988b676220ff03ab7547f748bc75feafad3b4185e"
+    }
+  ],
+  "findings": [
+    "Tap per-joint human world rotations before existing G1 GMR",
+    "Current SmplIntentSource has72 position values and one human quaternion; it cannot stand in for24 joint orientations",
+    "New Morph policy observation/normalization/action adapter required; preserve SONIC policy path",
+    "Source defaults writer500Hz with configurable argument; historical250Hz is not a live configuration proof",
+    "Exact model-specific pelvis IMU and gyro reconstruction, wrist mapping and scaling required"
+  ],
+  "execution": {
+    "windows_entry": "source /Users/yu/.zshrc then ssh -tt hp_han",
+    "windows_shell_reached": true,
+    "linux_second_hop": "Connection refused before authentication",
+    "linux_shell_reached": false,
+    "windows_session_closed": true,
+    "slow_readonly_git_fetch_terminated": true,
+    "robot_connections": 0,
+    "robot_commands": 0,
+    "model_calls": 0,
+    "physics_steps": 0,
+    "training_updates": 0,
+    "tests_run": 0,
+    "application_goal": "user_paused",
+    "server_mirror": "PENDING_NOT_ATTEMPTED"
+  },
+  "old_untracked_worker_untouched": true
+}

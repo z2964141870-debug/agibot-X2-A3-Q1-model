@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-12：[结合用户x2分支的MorphMimic human接入方案](README_X2_MORPHMIMIC_HUMAN_PLAN_20261112.md)。用户限定仅构思，0模型/仿真/真机测试。固定x2远端79c4a1e，确认衣服端GMR前已有24关节世界旋转；现有smpl_intent只有位置及一个朝向，需新增完整人体消息及独立Morph观测/动作适配，复用X2反馈执行机制。先原窗口仿真设计，后短预览；不恢复goal或训练。
+
 2026-11-12：[X2 SMPL遥操仓库核查与SuperMimic方案](README_X2_SMPL_SUPERMIMIC_TELEOP_20261112.md)。找到正确的第三方X2完整SONIC/SMPL部署分支，旧-review地址404不代表正确仓库不可用；MorphMimic发布X2人体策略但硬件入口仅G1。智元A3官方10/30更新无SMPL编码器；推荐复用X2部署后端、独立接Morph人体策略，先原预览基线再短缓冲适配。仅静态研究，目标/旧训练保持暂停，0服务器操作与新训练。
 
 2026-11-11研究：[四项简报](research/2026-11-11/README.md)／[检查](README_RESEARCH_CHECK_20261111.md)。SuperMimic作者G1源码公开；Beyond Retargeting撤回；多步误差与对时两项候选。Q1仍先补原人体审计和曲线，再按已有计划核多步WM；本轮无训练或仿真。[发布收据](../data/manifests/research_watch_sync_20261111.json)，服务器镜像待。

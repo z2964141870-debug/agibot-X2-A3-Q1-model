@@ -1,5 +1,8 @@
 # YUANQI 当前状态与下一步
 
+2026-11-13最新状态：[X2 MorphMimic human最新CLOTHO FGP对齐与全套本机预测试已完成](README_X2_LATEST_FGP_PRETEST_20261113.md)（底座搭建见[README_X2_MORPH_LOCAL_SETUP_20261112.md](README_X2_MORPH_LOCAL_SETUP_20261112.md)）。已将最新版两阶段CLOTHO FGP（`U100hL7.07h_residual.pth` + `globalpose/weights.pt`）无头接入`script/x2_morph_human/`，完成18/18单测、C++17零SDK本地IPC、便携包V2（`X2_MORPH_HUMAN_PORTABLE_V2_20261112.tgz`，净室通过）、实时50Hz ZeroMQ异步桥接与168ms丢包Hold恢复，以及8组X2 Ultra MuJoCo闭环仿真+50fps视频（全0跌倒）与三张六宫图/视频联系表（证据包`X2_LATEST_FGP_PRETEST_EVIDENCE_20261113.zip`）。全部输出保持advisory（`publish_allowed=False`，`hardware_commands=0`），待到机器人旁先做`shadow_reader`只读零位/IMU/增益核对后再接电机writer；Q1服务器共享训练保持人工暂停未触碰。
+
+
 2026-11-12最新用户范围：[只构思X2 human接入](README_X2_MORPHMIMIC_HUMAN_PLAN_20261112.md)，暂不做仿真或真机测试。用户x2分支79c4a1e独立远端核同，八源码身份记录；衣服human_data已有逐关节位置/世界旋转，可在G1 GMR前分流，新增24关节完整HumanFrame/窗口/MorphHumanPolicy/X2TargetAdapter，复用现有AimDK状态反馈/单writer和MC交接机制；不复用SONIC840/990观测或直接换ONNX，pelvis/gyro/腕映射/增益配方需独立核。第一跳到Windows，原第二跳认证前Connection refused后未再尝试、Windows已退出；慢只读git fetch自有进程已终止，0Linux命令/机器人连接/模型物理训练测试。原goal/共享训练保持暂停，5036旧账本不改，不新agent/自动任务；先等用户后续明确实施任务。[方案收据](../logs/session_records/x2_morphmimic_human_plan_20261112.json)，服务器镜像未尝试。
 
 2026-11-12用户新请求：[X2优先的SMPL遥操检索与设计](README_X2_SMPL_SUPERMIMIC_TELEOP_20261112.md)。关键词178候选取首100、智元33公共仓库、17README与源码静态查；十README HEAD/固定提交核同。正确meetsitaram/GR00T-WholeBodyControl-X2的supermimic-deploy分支ceccba97可读，旧-review404已纠正；当前公开模型/主文档是SONIC，不凭分支名认证X2 SuperMimic benchmark。MorphMimic统一发布X2 human可复用，但硬件仅G1；拟复用X2 C++/AimDK反馈执行并新增独立policy适配，注意pelvis-vs-torso IMU/gyro及腕映射。50Hz窗口含当前帧时十槽跨度180ms，与旧下一至十帧200ms分开。先现成X2 SONIC SMPL基线、Morph同人体源仿真、硬件shadow，再有证据做短缓冲/适配；本次0登录/模型调用/物理/训练或真机命令，用户goal及原共享保持暂停、5036旧台账不改，服务器镜像PENDING。[来源收据](../logs/session_records/x2_smpl_supermimic_research_20261112.json)。

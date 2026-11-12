@@ -1,0 +1,75 @@
+{
+  "record_id": "x2_latest_fgp_pretest_20261113",
+  "date": "2026-11-13",
+  "status": "X2_LATEST_FGP_LOCAL_PRETEST_COMPLETED",
+  "fgp_alignment": {
+    "legacy_fgp": {
+      "archive": "/Users/yu/Human+/key_project/EgoLocate.zip",
+      "weights_bytes": 23224559,
+      "pipeline": "single_stage_pose_only_zero_root_translation_in_historical_jsonl"
+    },
+    "latest_clotho_fgp": {
+      "code_archive": "/Users/yu/Human+/key_project/CLOTHO-mocap-main (1).zip",
+      "checkpoints_archive": "/Users/yu/Human+/key_project/checkpoints.zip",
+      "stage1_canonicalizer": {
+        "file": "checkpoints/canonicalization/U100hL7.07h_residual.pth",
+        "bytes": 384845450,
+        "sha256": "b613eb8226b26b9dc82904c22f4aec78773992503337c3cbde674c998f61ce12"
+      },
+      "stage2_globalpose_selected": {
+        "file": "checkpoints/globalpose/weights.pt",
+        "bytes": 134051421,
+        "sha256": "b63f62b846713cfae1f7f3119633f36d41befff8b9b25003c29fdd946777feef",
+        "cpu_4thread_steady_median_ms": 30.244,
+        "cpu_4thread_steady_p95_ms": 31.545,
+        "active18_geodesic_diff_vs_legacy_deg": 17.32
+      },
+      "stage2_lip_compared": {
+        "file": "checkpoints/LIP/LIP_10_real_denoised_7.07_10imu_10.pth",
+        "bytes": 26748498,
+        "sha256": "efc4bb8583bf053890d9ae754e97415c8658dba237893982aa51b9541edbb9a2",
+        "cpu_4thread_steady_median_ms": 28.035,
+        "cpu_4thread_steady_p95_ms": 28.745,
+        "active18_geodesic_diff_vs_legacy_deg": 19.99
+      },
+      "smpl_model": {
+        "file": "models/SMPL_male.pkl",
+        "bytes": 39056404,
+        "sha256": "0e8c0bbbbc635dcb166ed29c303fb4bef16ea5f623e5a89263495a9e403575bd"
+      },
+      "unity_display_hack_removed": true
+    }
+  },
+  "verification": {
+    "unit_tests": "18/18 passed (0.797s)",
+    "cpp17_ipc_probe": {
+      "status": "CPP_LOCAL_IPC_PASSED",
+      "binary_sha256": "a153f05bc791b3c1cf1b82143c170c0afcafb05547e365519f0bc0580d7d7131",
+      "requests": 80,
+      "policy_calls": 31,
+      "hal_commands": 0
+    },
+    "closed_loop_runs_count": 8,
+    "closed_loop_falls": 0,
+    "portable_bundle_v2": {
+      "path": "data/deliveries/X2_MORPH_HUMAN_PORTABLE_V2_20261112.tgz",
+      "bytes": 99500160,
+      "sha256": "802a0f0a791520ef06f932369527578d1e0ada2542441c000b6ca8296aeb73c4",
+      "members": 80,
+      "cleanroom_doctor_and_18_tests_passed": true
+    },
+    "evidence_zip": {
+      "path": "data/deliveries/X2_LATEST_FGP_PRETEST_EVIDENCE_20261113.zip",
+      "bytes": 11446965,
+      "sha256": "6418be031a7c54b75877c6649b91a10e999801262523801e7491ad180f972b04",
+      "members": 25
+    }
+  },
+  "safety_boundaries": {
+    "publish_allowed": false,
+    "hardware_commands": 0,
+    "server_training_touched": false,
+    "development_simulation_only": true,
+    "original_training_plant_equivalence": "NOT_VERIFIED"
+  }
+}

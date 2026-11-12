@@ -1,5 +1,8 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-13：[X2最新CLOTHO FGP对齐与8组闭环预测试完成](README_X2_LATEST_FGP_PRETEST_20261113.md)／[本地开发包说明](README_X2_MORPH_LOCAL_SETUP_20261112.md)。核清旧EgoLocate单阶段FGP（根平移置零）与最新两阶段CLOTHO FGP（`U100h`去噪+`GlobalPose`/`LIP`+米制3D根位移，剔除Unity 0.7/1.0m显示偏置），选定`U100h+GlobalPose`（支撑滑移降>56%，4核CPU稳态30.24ms<33.3ms）。18/18单测、C++17零SDK IPC、便携包V2净室验证、实时50Hz ZMQ+168ms丢包Hold恢复及8组X2 Ultra MuJoCo闭环50fps视频（0跌倒）与三张六宫图/联系表及证据ZIP已齐；`publish_allowed=False`，原服务器暂停训练未动。[记录](../logs/session_records/x2_latest_fgp_pretest_20261113.json)。
+
+
 2026-11-12：[结合用户x2分支的MorphMimic human接入方案](README_X2_MORPHMIMIC_HUMAN_PLAN_20261112.md)。用户限定仅构思，0模型/仿真/真机测试。固定x2远端79c4a1e，确认衣服端GMR前已有24关节世界旋转；现有smpl_intent只有位置及一个朝向，需新增完整人体消息及独立Morph观测/动作适配，复用X2反馈执行机制。先原窗口仿真设计，后短预览；不恢复goal或训练。
 
 2026-11-12：[X2 SMPL遥操仓库核查与SuperMimic方案](README_X2_SMPL_SUPERMIMIC_TELEOP_20261112.md)。找到正确的第三方X2完整SONIC/SMPL部署分支，旧-review地址404不代表正确仓库不可用；MorphMimic发布X2人体策略但硬件入口仅G1。智元A3官方10/30更新无SMPL编码器；推荐复用X2部署后端、独立接Morph人体策略，先原预览基线再短缓冲适配。仅静态研究，目标/旧训练保持暂停，0服务器操作与新训练。

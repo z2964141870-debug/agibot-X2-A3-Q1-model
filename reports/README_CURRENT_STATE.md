@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-13 15:06：[FGP权重未替换与CPU分段更正](README_X2_FGP_S_ASSET_AUDIT_20261113.md#1506-权重未替换与分段耗时复核)。实际始终为U100h B＋GlobalPose，旧780.54ms不是小权重或FGP-S测试；23.2MB为PIP，不能混用。新每组8输出/去前两次中位，4线程去噪818.73ms＋GP70.46ms/总888.29ms；1线程总741.78ms，仅小样本诊断不改默认或判定降频原因。两组输出差低2e-5，6999B原件已Mac/SoC1 SHA同。[收据](../logs/session_records/x2_fgp_cpu_split_recheck_20261113.json)。无新BLE/标定/反馈/电机或训练；实时FGP后端仍待解决。
+
 2026-11-13：[FGP权重与新版代码核对、自启动网页准备](README_X2_FGP_S_ASSET_AUDIT_20261113.md)。按用户最新明确，采用EgoLocate适配器默认U100h去噪＋GlobalPose，代码为已核同作者bed3424b的新CLOTHO；LIP Tanh修复已确认，独立StageTran另需两权重，不混作当前GP。包内23.2MB权重实为PIP，旧FGP身份归因更正。设备214文件/模型加载及10测试.278s、Mac10测试.206s/双视口网页通过，8件原始证据SHA取回；SoC1自启动命令与只读API见报告。用户自行启动采集/标定，本轮未新启动BLE或电机。真实通知和真人SMPL待验证；Orin CPU现有B＋GP约781ms，非30Hz实时能力，不因缺FGP-S阻塞准备。原Q1保持暂停。发布见[收据](../logs/session_records/x2_fgp_s_audit_publication_20261113.json)。
 
 2026-11-13 13:13：[X2 SoC1迁移与基础测试完成](README_X2_ORIN_BASIC_TESTS_20261113.md)。原生两跳SCP已将99.5MB便携包、两段最新FGP人体录制和14个ARM64/Python3.10轮子迁至`/home/agi/x2_morph_human_20261113`，独立venv/ROS路径隔离与资产SHA通过；19/19测试4.875s、C++17零SDK IPC 80请求/31推理通过。两段固定合成反馈离线回放991/1723帧，CPU处理p95 8.896/8.952ms；同参数Mac/Orin1723帧及22Hold相同、最大目标差1.4454e-6rad，六宫图已目视。服务`max-freshness-ms`接线修复已上板；原V2包保留，完整日志/新证据ZIP归档。FGP实际推理仍在Mac，180ms预览未减，不等于实时/端到端或真机通过。电机命令/反馈订阅/物理/训练均0，自有测试进程已退；不启动shadow或writer。下一仅继续固定反馈的Mac→Orin实时流/时钟测试，真实硬件另候指令。源码/记录同步以[publication](../logs/session_records/x2_orin_basic_publication_20261113.json)为准。[小记录](../logs/session_records/x2_orin_basic_tests_20261113.json)。

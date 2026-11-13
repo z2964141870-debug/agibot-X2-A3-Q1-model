@@ -48,7 +48,24 @@ PyTorch 检查使用既有 `data/environments/clotho-fgp-20261112/bin/python`，
 
 本次复用 92286 时第二跳回报连接结束并回 Windows cmd；随后同句柄原生 `ssh agi@10.0.1.41` 交互认证已成功。14:43:24 实核 SoC1 与原项目存在，boot 为 `39cb8e5a-9c22-451e-a3ba-23c98bebccd2`；当前 92286 在 SoC1 shell，80856 在 Windows cmd。该会话退出不表示整个桥接不可用，未改转发或认证方式。
 
-## 用户自启动
+## 15:06 权重未替换与分段耗时复核
+
+用户追问“小权重为何还是 0.78 秒”后，重新核实了板端实际加载项：**没有替换成小权重**，仍是 U100h B 去噪＋GlobalPose。此前 32 输出的 780.54 ms 是这套组合的历史测试，不能作为 FGP-S 或更小权重的测速。此前将“按 EgoLocate 适配器默认配置准备”表述得像已换成小权重，说明不准确，现明确更正。EgoLocate 外部 FGP 工程/权重缺失，当前使用用户提供的 CLOTHO 权重解析该配置，不能声称与缺失的旧权重逐字等同。
+
+同一 SoC1、同一录制前缀、同一权重进行了有界 CPU 分段诊断，模型只加载一次，各设置重置状态，顺序为 4 线程后 1 线程。每组 8 输出，下面为去掉前两次后余下 6 次的各项中位数；分项中位数不要求相加等于总中位数。
+
+| CPU 线程 | U100h 去噪 | GlobalPose | 整段 |
+| --- | ---: | ---: | ---: |
+| 4 | 818.73 ms | 70.46 ms | 888.29 ms |
+| 1 | 653.55 ms | 83.47 ms | 741.78 ms |
+
+这是小样本顺序诊断，不是完整线程优选或小模型对照，不据此改动当前 4 线程默认。两组相对保存参考的姿态最大差均为 1.206994e-6、根平移 3.576279e-7，低于 2e-5 门。当前测到的主要耗时在 U100h；仅替换下游姿态权重不会移除该阶段。0.78 秒不是不变的模型常数，不将该差异归因于已证实的降频、BLAS 缺失或某个单一原因。
+
+实际权重为 `checkpoints/canonicalization/U100hL7.07h_residual.pth`（384,845,450 B，含训练状态）和 `checkpoints/globalpose/weights.pt`（134,051,421 B），SHA 与此前加载记录一致。SoC1 实读 8 核亲和性、performance governor、当前/最大 1,984,000 kHz；Torch 2.5.1 为 CPU 构建、OpenBLAS/OpenMP 可用，尚未尝试 GPU 后端优化。文件体积不等于模型参数量或推理耗时。
+
+原始记录位于 Mac `data/analysis/X2_FGP_PREVIEW_20261113/cpu_split_recheck_20261113.json`，6999 B，SHA `b63a5815193b0158f055a4eb8d15af381caf802742b234db7753c1918cced599`；已从 SoC1 原生两跳取回并核同。板端原件为 `data/analysis/X2_FGP_BLE_LIVE_20261113/cpu_split_recheck_20261113.json`。结构化更正见 [分段复核收据](../logs/session_records/x2_fgp_cpu_split_recheck_20261113.json)。新诊断无 BLE/标定/机器人反馈、电机、GPU 或训练；尚无已实际加载测试的小权重 FGP 结果。
+
+## 用户自启动命令
 
 在 SoC1 终端执行以下命令可先检查衣服数据，不启动 FGP 重建：
 

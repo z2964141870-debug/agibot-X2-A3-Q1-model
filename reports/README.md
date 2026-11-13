@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-13：[FGP实际未换小权重，0.78秒归属更正](README_X2_FGP_S_ASSET_AUDIT_20261113.md#1506-权重未替换与分段耗时复核)。同U100h B＋GlobalPose的小样本分段复核：4线程约819ms去噪/70ms姿态/888ms整段；不是FGP-S测速，未改默认或启动衣服/真机。6999B原始证据两端SHA同。
+
 2026-11-13：[FGP按EgoLocate权重＋新版代码的核查与网页准备](README_X2_FGP_S_ASSET_AUDIT_20261113.md)。默认U100h＋GlobalPose权重固定SHA，CLOTHO五源码与作者main核同；LIP激活修复与新增平移依赖分清，包内PIP误认已更正。设备214文件/模型加载和10测试通过，用户自启动衣服/标定/SMPL网页脚本已备；当前Orin CPU约781ms仅诊断，真实BLE通知/真人重建待验证，0电机命令。
 
 2026-11-13：[X2 Orin迁移与无电机输出基础测试](README_X2_ORIN_BASIC_TESTS_20261113.md)。SoC1独立Python3.10/14轮子与资产迁移核同，19测试及C++ IPC通过；最新FGP录制两段离线处理p95约8.9ms，同参数Mac/Orin最大目标差1.4454e-6rad及22Hold精确同，六宫图/日志证据归档。服务新鲜度参数接线已修；180ms预览仍在，0反馈订阅/物理/硬件命令，FGP前端仍在Mac，不当真机遥操验证。

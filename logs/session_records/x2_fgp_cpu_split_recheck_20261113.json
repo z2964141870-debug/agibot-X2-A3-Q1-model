@@ -1,0 +1,51 @@
+{
+  "record_id": "x2_fgp_cpu_split_recheck_20261113",
+  "date": "2026-11-13",
+  "status": "CPU_SPLIT_RECHECK_PASSED",
+  "correction": "No smaller FGP checkpoint was substituted. The previous 780.54 ms measurement used the same U100h B plus GlobalPose combination; it is not an FGP-S benchmark.",
+  "model_profile": {
+    "selection": "EgoLocate FGP adapter defaults resolved with supplied CLOTHO assets; original external FGP weights are not bundled",
+    "canonicalizer": "IMUCanonicalization B",
+    "pose_model": "Full_GR_OV_10",
+    "weights": [
+      {"path": "checkpoints/canonicalization/U100hL7.07h_residual.pth", "bytes": 384845450, "sha256": "b613eb8226b26b9dc82904c22f4aec78773992503337c3cbde674c998f61ce12"},
+      {"path": "checkpoints/globalpose/weights.pt", "bytes": 134051421, "sha256": "b63f62b846713cfae1f7f3119633f36d41befff8b9b25003c29fdd946777feef"}
+    ],
+    "smaller_egolocate_23224559B_weight": "PIP/FastPIP; not substituted into the ten-IMU CLOTHO pipeline",
+    "trained_fgp_s_weight_found_in_supplied_bundles": false
+  },
+  "diagnostic": {
+    "device": "X2 SoC1 Orin NX CPU",
+    "boot_observed": "39cb8e5a-9c22-451e-a3ba-23c98bebccd2",
+    "outer_timeout_s": 120,
+    "nonblocking_preview_lock": true,
+    "setting_order_threads": [4, 1],
+    "outputs_per_setting": 8,
+    "reported_medians_exclude_first_outputs": 2,
+    "model_loads": 1,
+    "reset_state_per_setting": true,
+    "results": [
+      {"threads": 4, "canonicalizer_median_ms": 818.7326400000074, "globalpose_median_ms": 70.46171449997018, "total_median_ms": 888.2927479999125},
+      {"threads": 1, "canonicalizer_median_ms": 653.5549419999143, "globalpose_median_ms": 83.46562899998844, "total_median_ms": 741.7778064999538}
+    ],
+    "pose_max_difference_both_settings": 0.0000012069940567016602,
+    "root_max_difference_both_settings": 0.00000035762786865234375,
+    "output_equivalence_tolerance": 0.00002,
+    "default_threads_changed": false,
+    "torch": "2.5.1 CPU; USE_CUDA=OFF; OpenBLAS and OpenMP enabled",
+    "cpu_affinity": [0, 1, 2, 3, 4, 5, 6, 7],
+    "cpu_governor_observed": "performance",
+    "cpu_current_and_max_khz_observed": 1984000,
+    "limits": ["Small ordered diagnostic, not a complete thread comparison", "Not a small-model or FGP-S benchmark", "No proven throttling or single-cause attribution", "Not BLE or hardware end-to-end latency"]
+  },
+  "raw_evidence": {
+    "mac_path": "data/analysis/X2_FGP_PREVIEW_20261113/cpu_split_recheck_20261113.json",
+    "soc1_path": "data/analysis/X2_FGP_BLE_LIVE_20261113/cpu_split_recheck_20261113.json",
+    "bytes": 6999,
+    "sha256": "b63a5815193b0158f055a4eb8d15af381caf802742b234db7753c1918cced599",
+    "native_two_hop_download_and_sha_verification": "PASSED"
+  },
+  "boundaries": {"ble_connections": 0, "calibration_started": false, "feedback_subscriptions": 0, "hardware_commands": 0, "gpu_calls": 0, "training_updates": 0, "publish_allowed": false, "original_q1_training_touched": false},
+  "documentation_device_mirror": "PENDING; raw evidence exists on both SoC1 and Mac",
+  "credentials_recorded": false
+}

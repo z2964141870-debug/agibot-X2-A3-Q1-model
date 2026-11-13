@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-13：[X2性能优化当前阶段](README_X2_JOINT_PERF_20261113.md)。独立control/sleep1/sleep1_fk三组准备，3合同.167秒过/128随机骨架数值误差≤1e-12；各复用929帧30Hz/latest及原native observe/100秒保护/20ms接受门，未派发。当前ONNX确有action_motion＋action_human，motion670与human2160目标、10槽均需，重定向候选未测试不自动改默认。SoC0本轮原生密码登录核RK3588/约10负载/无ORT，RTT .256–.764ms仅ICMP；SoC1原9179会话可用、boot df9b9a2e、12.3GB可用/67.093度。原Q1暂停，电机MC训练0。
+
 2026-11-13：[X2 FGP＋Morph真实同机联合测试](README_X2_JOINT_LATENCY_RESULT_20261113.md)。连续929帧衣服IMU30Hz释放＋真实ROS反馈＋原native observe。FIFO R3完整900输出但17.647Hz/末积压20.963秒；对齐作者latest R4实际566输入/537输出/跳363，17.805Hz，FGP中位41.561/p95 63.420ms、1456 ready/1322接受、133次RPC>20ms及1反馈超时均拒。含180ms预览的人体参考年龄中位保守297–310ms/p95 341–356ms/最大495–510ms，不是BLE或机械端到端；首个输出约1.25秒，跳帧30Hz动态精度未证。两真实组共1437GPU帧/0训练，四计时合同/前后247源码24资产和历史结果SHA同/三子进程各退出0/锁空，温度最高69.343度/最低可用11624099840B；六宫图和数值回Mac。未达30Hz，下一分离骨架转换与同步通信并定位CPU调度；默认衣服/终端23/物理和Q1暂停未动，SDK电机MC新BLE0，同步见publication。
 
 2026-11-13：[FGP S1原始权重优化本轮结果](README_X2_FGP_S1_ACCEL_RESULT_20261113.md)。新checkpoint和ONNX来源同，144张量/90.7MiB参数。准确mixed_gemm＋graph＋相同特征复用R7中位29.086/p95 35.884/最大36.429ms、8/32超时，一致性.073度/.515mm过且与R4全pose/root逐位同，64特征请求省32次重复FK。13板端合同.004秒过/原247源24资产终检SHA同；R5 GP GPU无明确收益、R6 opt5在600秒原限回收/无engine，预算均结清。R4/R5/R7六宫图及数值回Mac，尚未稳定30Hz、未自动切换实时衣服入口或Morph同机认证。下一墙钟30Hz长序列＋CPU Morph50Hz队列/长尾测试，终端2、3与原物理不改，硬件/新BLE反馈/训练0，Q1暂停。同步及证据包见随后publication。

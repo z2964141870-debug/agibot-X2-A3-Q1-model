@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-13：[第一终端FGP加速独立准备](README_X2_FGP_TRT_ACCEL_20261113.md)。用户说明第二第三终端已完成，本轮不改后端。原生SSH12557在SoC1/boot8f960fd3；TRT10.7/CUDA12.6已装且venv可导入，可用13.05GB/GPU约63C。新五文件与六CPU合同/编译过，只换CANO执行不改基线。先发布再部署合同与资源准入，单派FP32和FP16各600秒/256MiB workspace，32输出每组及32 CPU同输入参考，按已定输出差/全链33.33ms门判断；GPU实际目前0/硬件训练0/原Q1暂停。
+
 2026-11-13：[FGP ARM64兼容已实测，实时预算未过](README_X2_FGP_REALTIME_ARM64_20261113.md)。新包24资产Mac/SoC1 SHA同、两套均S1；原carticulate ce5b204编译/不变量及两套完整CANO/LIP/GP/物理各32输出通过，4线程中位129.324/132.481ms、p95 134.535/137.488ms，全超33.33ms。CANO中位112.741/115.711ms、内部物理6.470/6.344ms；Windows逐值等价和真人精度未证。247上游源/24资产终检过，321650B原始包已回Mac，20项610641B与板端大小SHA同。一次直连恢复成功，boot变8f960fd3；推理属于旧boot，重启后只读核原件和补取证、不重跑。0电机/新BLE/反馈/训练，默认引擎/Q1暂停保持。下一CANO独立加速与输出/长尾门，见[收据](../logs/session_records/x2_fgp_realtime_arm64_20261113.json)，设备新文档镜像待。
 
 2026-11-13侧线：[第二、第三终端原生writer与MC协议软件接通](README_X2_MORPH_NATIVE_WRITER_20261113.md)。独立链接原Sonic AimdkIo，50Hz推理/500Hz writer分离；23Python和19C++检查、三场景隔离SDK正常返回/策略退出/反馈断流通过。真实X2反馈6秒295请求/295ready/294接受，接受RPC p95 13.690ms；1次22.570ms超20ms已拒绝。PD目标不是实际关节角，初次误拒162条的检查已修，原件保留。IMU为核SHA torso源码约定+FK腰速重建，不当新物理标定。设备R6二进制/PROFILE_V2/ISOLATED_R3/LIVE_FEEDBACK_R2已成，MC只读PASSIVE/运行2251；实际电机和MC修改0。剩现场真实输出的受控接管、执行器与增益验收；默认observe，不启动原ritual。主线FGP及Q1暂停保持。[收据](../logs/session_records/x2_morph_native_writer_20261113.json)，同步见后续publication。

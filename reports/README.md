@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-13：[FGP S1原始权重核同与R3/R4结果、R5准备](README_X2_FGP_TRT_ACCEL_20261113.md#r3-结果与原始权重核同)。准确mixed_gemm姿态最大差.073度/根.515mm；graph约30ms但仍超时，尚未稳定30Hz。原始checkpoint与ONNX来源同，独立GP FP32 GPU方案待有界执行，原生物理/终端2、3保持。
+
 2026-11-13：[FGP TensorRT三方案实测与设备分工](README_X2_FGP_TRT_ACCEL_20261113.md#r2-实测与当前设备分工)。FP32完整链50.552ms且一致性过，未30Hz；FP16和mixed约29.5/30.1ms但最大约14度/3cm差均拒绝，累计三engine/96GPU与96CPU参考结清。R2小原件SHA回Mac、原源/资产终检与四方案六宫图齐。Morph当前显式CPU ONNX，13.690ms为接受请求RPC p95；优先FGP CANO GPU＋Morph CPU，尚未同机并跑验收，第二第三终端不改/硬件训练0。
 
 2026-11-13：[FGP实时版ARM64原生移植与完整链实测](README_X2_FGP_REALTIME_ARM64_20261113.md)。用户新资源24资产逐件SHA过；Orin原生carticulate编译/动力学不变量通过，两套CANO→LIP→GP→原生物理各32有效输出。4线程约129–132ms/帧，未过30Hz，CANO为主要优化方向；Windows逐值等价及真人精度未证。247上游源/24资产终检过，321650B原始结果包回Mac及20项SHA同；SoC1重启后仅补只读取证，0电机/新BLE/训练，不重跑已通过组。

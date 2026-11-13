@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-13：[S1原始权重核同，GP GPU加速R5准备](README_X2_FGP_TRT_ACCEL_20261113.md#r5-gp网络gpu准备)。用户新checkpoint与现有ONNX来源SHA完全同（144模型张量/约90.7MiB参数，文件另含优化器）。R3准确mixed_gemm及R4 graph约30ms，一致性过但R4仍8至11/32超33.33ms，预算已结清/原件SHA回Mac。下一独立GP FP32 graph一engine/32输出/保守68GPU及64CPU参考，先发布及板端11合同，原物理和第二第三终端不改；尚未派发/0新训练电机，Q1暂停保持。
+
 2026-11-13：[第一终端TensorRT三方案实测完成](README_X2_FGP_TRT_ACCEL_20261113.md#r2-实测与当前设备分工)。FP32整链中位50.552/p95 57.927ms且一致性通过，尚未30Hz；FP16和新增mixed虽约29.5/30.1ms，最大约14度/3cm差均拒绝。mixed强制norm/softmax/reduce为FP32仍未消除偏差，累计三engine/96GPU与96CPU参考结清。R2七原件/五源码Mac与板端SHA同，原247源/24资产终检过，四方案六宫图目视。双端策略源码确认Morph显式CPUExecutionProvider，先前13.690ms为CPU策略接受请求RPC p95；优先FGP CANO GPU＋Morph CPU，其余FGP仍CPU，同机资源与全部RPC长尾未测，不认证整链50Hz。SSH12557/44218仍原SoC1/boot8f960fd3，自有推理进程已退；第二第三终端不改/硬件训练0/Q1暂停。设备文档同步见随后publication。
 
 2026-11-13：[FGP ARM64兼容已实测，实时预算未过](README_X2_FGP_REALTIME_ARM64_20261113.md)。新包24资产Mac/SoC1 SHA同、两套均S1；原carticulate ce5b204编译/不变量及两套完整CANO/LIP/GP/物理各32输出通过，4线程中位129.324/132.481ms、p95 134.535/137.488ms，全超33.33ms。CANO中位112.741/115.711ms、内部物理6.470/6.344ms；Windows逐值等价和真人精度未证。247上游源/24资产终检过，321650B原始包已回Mac，20项610641B与板端大小SHA同。一次直连恢复成功，boot变8f960fd3；推理属于旧boot，重启后只读核原件和补取证、不重跑。0电机/新BLE/反馈/训练，默认引擎/Q1暂停保持。下一CANO独立加速与输出/长尾门，见[收据](../logs/session_records/x2_fgp_realtime_arm64_20261113.json)，设备新文档镜像待。

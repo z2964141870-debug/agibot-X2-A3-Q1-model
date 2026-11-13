@@ -2,6 +2,7 @@
 import argparse
 import json
 from pathlib import Path
+import re
 import sys
 
 from script.x2_fgp_realtime.assets import file_digest
@@ -18,7 +19,9 @@ def make_plan(rows, onnx_sha256):
         if row["type"] not in COMPUTE_TYPES or not row["floating_data_outputs"]:
             continue
         name = row["name"]
-        if not name or any(c in name for c in ",:*\n\r") or name in names:
+        internal_name = re.fullmatch(r"\(Unnamed Layer\* \d+\) \[[A-Za-z]+\]", name)
+        if (not name or any(c in name for c in ",:\n\r") or name in names
+                or ("*" in name and internal_name is None)):
             raise ValueError("Unsafe or duplicate precision layer name")
         names.add(name)
         selected.append(dict(name=name, type=row["type"],
@@ -26,6 +29,11 @@ def make_plan(rows, onnx_sha256):
                              output_type="fp32"))
     if not any(row["precision"] == "fp16" for row in selected):
         raise ValueError("No matrix multiplication layers found")
+    for row in selected:
+        pattern = re.compile(re.escape(row["name"]).replace(r"\*", ".*"))
+        matches = [r["name"] for r in rows if pattern.fullmatch(r["name"])]
+        if matches != [row["name"]]:
+            raise ValueError("Precision layer pattern is ambiguous")
     return dict(format_version=1, onnx_sha256=onnx_sha256, layers=selected,
                 policy="FP16 matrix compute, FP32 floating compute otherwise and FP32 compute outputs",
                 hardware_commands=0, training_updates=0, model_calls=0)

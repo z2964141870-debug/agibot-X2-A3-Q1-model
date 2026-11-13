@@ -71,6 +71,10 @@ class ContractTests(unittest.TestCase):
             make_plan([row, row], "source")
         with self.assertRaises(ValueError):
             make_plan([dict(row, name="*:fp16")], "source")
+        internal = dict(name="(Unnamed Layer* 265) [ElementWise]", type="ELEMENTWISE", floating_data_outputs=True)
+        self.assertEqual(len(make_plan([row, internal], "source")["layers"]), 2)
+        with self.assertRaises(ValueError):
+            make_plan([row, internal, dict(internal, name="(Unnamed Layer 265) [ElementWise]")], "source")
 
 
 if __name__ == "__main__":

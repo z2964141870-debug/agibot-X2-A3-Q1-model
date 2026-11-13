@@ -1,6 +1,6 @@
 # X2 FGP CANO TensorRT 加速
 
-记录日期：2026-11-13。阶段：CANO_TRT_R1 已完成；独立 R2 混合精度准备。FP32 一致性通过但未达30Hz，FP16 一致性失败；不采用失败版本。
+记录日期：2026-11-13。阶段：R1至R4已完成；准确mixed_gemm约30ms但仍有超时，独立R5 GP网络GPU加速准备。30Hz尚未通过。
 
 ## 目标与边界
 
@@ -104,3 +104,17 @@ mixed_gemm去前两次中位31.818/p95 36.579/最大36.830ms、9/30超时，CANO
 在精度已过门的同一mixed_gemm engine上，不改权重/作者链或增加engine。只捕获固定TensorRT kernel执行到本进程独有CUDA stream/graph，逐帧CPU→GPU输入和GPU→CPU输出仍完整同步；每帧仍真实计算，不缓存姿态或插帧。启动使用零缓冲对无状态CANO作一次GPU预热及一次capture enqueue，不推进LIP/GP/物理/人体历史，初始化耗时和额外调用独立记录。capture失败即保留失败，不软回退后宣称图加速。
 
 新增预算最多两组：CPU4线程＋graph、CPU1线程＋graph，每组32真实输出/32CPU同输入参考/120秒，保守含初始化每组最多34GPU调用，总≤68GPU＋64CPU参考，0新engine/训练。旧R3预算不扩。资源门不变；输出 `probe_gemm_graph_t4_r4`、必要时 `probe_gemm_graph_t1_r4`。完整链全32帧≤33.33ms且原mixed一致性限值同时通过才称该录制短样本过门，仍需后续长序列与Morph CPU同机测试。新增graph包装和线程开关仅在自有加速命名空间；不修改第二第三终端。
+
+## R4 已保存结果
+
+源码`3ba380dd644c2f75bc85064d773d0d1ba756ea60`已发布核同。CPU4+graph完整链中位30.186/p95 36.131/最大37.080ms，11/32超33.33ms；CPU1+graph为30.101/37.896/38.868ms，8/32超时。两组一致性均通过，姿态最大差.073327度、根.515055mm，与R3完全相同。启动GPU准备各.390/.392秒单列；两组共64真实GPU输出、两warmup及两capture enqueue，64CPU同输入参考，保守68预算结清。新增engine/训练/硬件命令0。
+
+原始两目录已原生SCP取回，结果包`data/deliveries/X2_FGP_TRT_R4_RESULTS_20261113.tgz`的SHA为`e5c847952ee4b12c0674f24b66c0496d9b23b88d06364d5851a9795b04c8338d`，Mac与SoC1同。CUDA Graph未解决完整链30Hz长尾，不以中位数宣称稳定；下一变量只移动GP神经网络。
+
+## R5 GP网络GPU准备
+
+复用同一准确CANO mixed_gemm engine，新增作者原样`gp.onnx`的TensorRT FP32（禁TF32）engine及CUDA Graph。GP输入features[1,1,267]、h/c[3,1,512]，输出prediction[1,1,9]及h_out/c_out；30Hz元数据对应每输出一次GP调用。每帧实际传输当前features和隐藏状态、同步输出后由作者网络更新状态；初始化零输入仅建图，不推进外部人体或物理状态。LIP、特征、原生物理和第二第三终端不改。
+
+独立预算一engine/600秒/workspace256MiB，一组CPU4完整32输出/120秒：64真实GPU网络调用＋两warmup＋两capture，保守上限68；计时后32CANO＋32GP同输入CPU参考。沿用全链1度/10mm和CANO .005/.02门；额外GP三输出合计最大绝对差≤2e-4、相对L2≤1e-3且所有值有限。不放宽门，不重跑R4。GPU前向与GP隐藏状态均保存，短样本整链全32帧≤33.33ms才过速度门。
+
+新根`build_gp_fp32_r5`和`probe_gemm_gp_graph_t4_r5`。原GP SHA`1a292e5fac116ff81fca39a0900317db286a94fa304ad00628ae02b3f3bfdb61`，原来源/资产保持。可用内存4GiB、80度、10GiB余盘及自有项目锁边界延续；17:49实核原boot、可用12.375GB/最高66.843度/余盘374.170GB且无加速进程。十一CPU合同.001秒通过（含GP输出顺序/隐藏状态复制），新设备GPU执行尚未开始。准备记录见[x2_fgp_trt_r5_prepared_20261113.json](../logs/session_records/x2_fgp_trt_r5_prepared_20261113.json)。

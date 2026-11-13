@@ -40,6 +40,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--cuda-graph", action="store_true")
     parser.add_argument("--cpu-threads", type=int, choices=(1, 4), default=4)
+    parser.add_argument("--gp-build-root", type=Path)
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Preserve existing results")
@@ -65,6 +66,23 @@ def main():
         from .graph_session import CudaGraphSession
         session_type = CudaGraphSession
     session = session_type(engine_path)
+    gp_session, gp_build = None, None
+    import stage_tran_gp.onnx_network as gp_module
+    original_gp_factory = gp_module.cpu_session
+    if args.gp_build_root is not None:
+        try:
+            if not args.cuda_graph:
+                raise ValueError("GP acceleration requires the audited graph initialization")
+            gp_build = json.loads((args.gp_build_root / "build_receipt.json").read_text())
+            gp_engine = args.gp_build_root / "gp.plan"
+            if (gp_build["status"] != "BUILD_PASSED" or gp_build["precision"] != "fp32"
+                    or gp_build["onnx_sha256"] != file_digest(bundle_root / "gp.onnx")
+                    or gp_build["engine_sha256"] != file_digest(gp_engine)):
+                raise ValueError("GP engine/source identity mismatch")
+            gp_session = session_type(gp_engine, gp=True)
+        except BaseException:
+            session.close()
+            raise
     session_initialization_s = time.perf_counter()-session_started
     original_flow = OnnxBundle.flow_model
     argv = sys.argv
@@ -74,13 +92,22 @@ def main():
                 raise ValueError("Unexpected CANO bundle")
             return OnnxFlowModel(session, bundle.window_size, latest_only=True)
         OnnxBundle.flow_model = accelerated_flow
+        if gp_session is not None:
+            def accelerated_gp(path, threads=1):
+                if Path(path).resolve() != (bundle_root / "gp.onnx").resolve():
+                    raise ValueError("Unexpected GP model path")
+                return gp_session
+            gp_module.cpu_session = accelerated_gp
         sys.argv = ["recorded_probe", "--source-root", str(args.source_root), "--fixture", str(args.fixture),
                     "--bundle", "onnx_s1", "--threads", str(args.cpu_threads), "--full", "--output", str(args.output)]
         baseline.main()
     finally:
         OnnxBundle.flow_model = original_flow
+        gp_module.cpu_session = original_gp_factory
         sys.argv = argv
         session.close()
+        if gp_session is not None:
+            gp_session.close()
     if len(session.recorded) != 32:
         raise ValueError("Expected exactly 32 CANO calls")
     # CPU comparison follows the timed GPU run; it cannot inflate GPU timings.
@@ -96,12 +123,35 @@ def main():
         metrics.update(differences(saved["pose"], saved["translation"], ref["pose"], ref["translation"]))
     limits = LIMITS[build["precision"]]
     accepted = all(metrics[k] <= value for k, value in limits.items())
+    gp_metrics = None
+    if gp_session is not None:
+        if len(gp_session.recorded) != 32:
+            raise ValueError("Expected exactly 32 GP calls")
+        gp_cpu = cpu_session(bundle_root / "gp.onnx", threads=1)
+        gpu_gp = [np.stack([values[i] for _, values in gp_session.recorded]) for i in range(3)]
+        cpu_gp_rows = [gp_cpu.run(None, feed) for feed, _ in gp_session.recorded]
+        cpu_gp = [np.stack([values[i] for values in cpu_gp_rows]) for i in range(3)]
+        if not all(np.isfinite(value).all() for value in cpu_gp):
+            raise ValueError("Nonfinite GP CPU reference")
+        differences_gp = [a-b for a, b in zip(gpu_gp, cpu_gp)]
+        gp_metrics = dict(max_abs=max(float(np.abs(d).max()) for d in differences_gp),
+                          relative_l2=float(np.sqrt(sum(np.sum(d.astype(np.float64)**2) for d in differences_gp)) /
+                                            max(np.sqrt(sum(np.sum(v.astype(np.float64)**2) for v in cpu_gp)), 1e-12)),
+                          frames=32, engine_sha256=gp_build["engine_sha256"])
+        gp_passed = gp_metrics["max_abs"] <= 2e-4 and gp_metrics["relative_l2"] <= 1e-3
+        gp_metrics["agreement_status"] = "PASSED" if gp_passed else "FAILED"
+        accepted = accepted and gp_passed
+        from .trt_session import GP_OUTPUTS, GP_INPUTS
+        gp_saved = {"gpu_"+name: value for name, value in zip(GP_OUTPUTS, gpu_gp)}
+        gp_saved.update({"cpu_"+name: value for name, value in zip(GP_OUTPUTS, cpu_gp)})
+        gp_saved.update({"input_"+name: np.stack([feed[name] for feed, _ in gp_session.recorded]) for name in GP_INPUTS})
+        np.savez_compressed(args.output / "gp_comparison.npz", **gp_saved)
     np.savez_compressed(args.output / "cano_comparison.npz", gpu=gpu_outputs, cpu=cpu_outputs,
         x_t=np.stack([feed["x_t"] for feed, _ in session.recorded]),
         x_cond=np.stack([feed["x_cond"] for feed, _ in session.recorded]))
     report_path = args.output / "report.json"
     report = json.loads(report_path.read_text())
-    report.update(acceleration="CANO TensorRT only; all other author stages unchanged",
+    report.update(acceleration="CANO + GP TensorRT; LIP and native physics unchanged" if gp_session else "CANO TensorRT only; all other author stages unchanged",
         precision=build["precision"], tensorrt_version=session.version,
         engine_sha256=build["engine_sha256"], onnx_sha256=build["onnx_sha256"],
         agreement_status="PASSED" if accepted else "FAILED", agreement_metrics=metrics,
@@ -109,9 +159,10 @@ def main():
         reference_report_sha256=file_digest(args.reference / "report.json"),
         comparison_after_timed_run=True, input_recording_included_in_timed_run=True,
         cuda_graph=args.cuda_graph, session_initialization_s=session_initialization_s,
-        initialization_gpu_warmup_calls=1 if args.cuda_graph else 0,
-        initialization_capture_enqueue_calls=1 if args.cuda_graph else 0,
-        initialization_feed="Zero buffers; stateless CANO only, no LIP/GP/physics/history advancement" if args.cuda_graph else None,
+        initialization_gpu_warmup_calls=(1+int(gp_session is not None)) if args.cuda_graph else 0,
+        initialization_capture_enqueue_calls=(1+int(gp_session is not None)) if args.cuda_graph else 0,
+        initialization_feed="Zero buffers; graph invocations only, no external LIP/GP/physics/history advancement" if args.cuda_graph else None,
+        gp_acceleration=gp_metrics,
         resource_after=resources())
     report_path.write_text(json.dumps(report, indent=2)+"\n")
     print(json.dumps({k: v for k, v in report.items() if k != "rows"}))

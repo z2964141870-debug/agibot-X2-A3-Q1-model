@@ -5,9 +5,9 @@ from .trt_session import TrtSession
 
 
 class CudaGraphSession(TrtSession):
-    def __init__(self, engine_path):
+    def __init__(self, engine_path, *, gp=False):
         self.graph, self.graph_exec = ct.c_void_p(), ct.c_void_p()
-        super().__init__(engine_path)
+        super().__init__(engine_path, gp=gp)
         signatures = {
             "cudaStreamBeginCapture": [ct.c_void_p, ct.c_int],
             "cudaStreamEndCapture": [ct.c_void_p, ct.POINTER(ct.c_void_p)],

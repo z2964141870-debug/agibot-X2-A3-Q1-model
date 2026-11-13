@@ -89,7 +89,7 @@ def main():
     with lock_path.open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         args.output.mkdir(parents=True)
-        engine = args.output / "cano.plan"
+        engine = args.output / (args.onnx.stem + ".plan")
         command = ["/usr/src/tensorrt/bin/trtexec", "--onnx=" + str(args.onnx.resolve()),
                    "--saveEngine=" + str(engine.resolve()), "--memPoolSize=workspace:256M",
                    "--builderOptimizationLevel=2", "--maxAuxStreams=0", "--avgTiming=2",

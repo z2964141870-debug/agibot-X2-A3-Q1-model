@@ -1,14 +1,44 @@
 import unittest
+from types import SimpleNamespace
 
 import numpy as np
 
 from .probe import differences, LIMITS
 from .build import PRECISION_FLAGS
-from .trt_session import validate_feed
+from .trt_session import TrtSession, validate_feed, validate_gp_feed, GP_INPUTS, GP_OUTPUTS
 from .precision_plan import make_plan, specifications
 
 
 class ContractTests(unittest.TestCase):
+    def test_explicit_gp_state_contract(self):
+        feed = {name: np.zeros(shape, np.float32) for name, shape in GP_INPUTS.items()}
+        self.assertEqual(set(validate_gp_feed(feed)), set(GP_INPUTS))
+        with self.assertRaises(ValueError):
+            validate_gp_feed({"features": feed["features"]})
+        feed["h"][0, 0, 0] = np.inf
+        with self.assertRaises(ValueError):
+            validate_gp_feed(feed)
+
+    def test_gp_state_output_order_and_recording_ownership(self):
+        session = TrtSession.__new__(TrtSession)
+        session.gp, session.closed, session.recorded = True, False, []
+        session.outputs = {name: np.full(shape, i+1, np.float32)
+                           for i, (name, shape) in enumerate(GP_OUTPUTS.items())}
+        session.pointers = dict.fromkeys((*GP_INPUTS, *GP_OUTPUTS), None)
+        session.stream = None
+        session.cuda = SimpleNamespace(cudaMemcpyAsync=lambda *args: 0,
+                                       cudaStreamSynchronize=lambda *args: 0)
+        session.enqueue = lambda: None
+        feed = {name: np.zeros(shape, np.float32) for name, shape in GP_INPUTS.items()}
+        prediction, h, c = session.run(None, feed)
+        self.assertEqual((prediction.flat[0], h.flat[0], c.flat[0]), (1, 2, 3))
+        feed["h"].fill(9)
+        self.assertEqual(session.recorded[0][0]["h"].flat[0], 0)
+        session.outputs["h_out"].fill(8)
+        self.assertEqual(h.flat[0], 2)
+        with self.assertRaises(RuntimeError):
+            session.run(["c_out", "h_out", "prediction"], feed)
+
     def feed(self):
         return {name: np.zeros((1, 30, 10, 9), dtype=np.float32) for name in ("x_t", "x_cond")}
 

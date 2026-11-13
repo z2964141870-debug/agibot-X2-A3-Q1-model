@@ -5,6 +5,21 @@ import sys
 
 import numpy as np
 
+GP_INPUTS = {"features": (1, 1, 267), "h": (3, 1, 512), "c": (3, 1, 512)}
+GP_OUTPUTS = {"prediction": (1, 1, 9), "h_out": (3, 1, 512), "c_out": (3, 1, 512)}
+
+
+def validate_gp_feed(feed):
+    if set(feed) != set(GP_INPUTS):
+        raise ValueError("Expected explicit GP features/h/c")
+    result = {}
+    for name, shape in GP_INPUTS.items():
+        value = feed[name]
+        if value.shape != shape or value.dtype != np.float32 or not np.isfinite(value).all():
+            raise ValueError("Invalid GP input " + name)
+        result[name] = np.ascontiguousarray(value)
+    return result
+
 
 def validate_feed(feed):
     if set(feed) != {"x_t", "x_cond"}:
@@ -20,7 +35,8 @@ def validate_feed(feed):
 
 
 class TrtSession:
-    def __init__(self, engine_path):
+    def __init__(self, engine_path, *, gp=False):
+        self.gp = gp
         # Only TensorRT is taken from the OS installation; keep venv numpy/torch.
         sys.path.append("/usr/lib/python3.10/dist-packages")
         import tensorrt as trt
@@ -65,11 +81,16 @@ class TrtSession:
                     raise RuntimeError("Tensor address rejected")
                 target = self.inputs if self.engine.get_tensor_mode(name) == trt.TensorIOMode.INPUT else self.outputs
                 target[name] = array
-            if set(self.inputs) != {"x_t", "x_cond"} or set(self.outputs) != {"residual"}:
-                raise ValueError("Unexpected engine I/O names")
-            validate_feed(self.inputs)
-            if self.outputs["residual"].shape != (1, 1, 10, 9):
-                raise ValueError("Unexpected residual output shape")
+            if gp:
+                validate_gp_feed(self.inputs)
+                if set(self.outputs) != set(GP_OUTPUTS) or any(self.outputs[n].shape != s for n, s in GP_OUTPUTS.items()):
+                    raise ValueError("Unexpected GP output contract")
+            else:
+                if set(self.inputs) != {"x_t", "x_cond"} or set(self.outputs) != {"residual"}:
+                    raise ValueError("Unexpected engine I/O names")
+                validate_feed(self.inputs)
+                if self.outputs["residual"].shape != (1, 1, 10, 9):
+                    raise ValueError("Unexpected residual output shape")
         except BaseException:
             self.close()
             raise
@@ -80,22 +101,24 @@ class TrtSession:
             raise RuntimeError("CUDA runtime returned " + str(code))
 
     def run(self, names, feed):
-        if self.closed or names != ["residual"] or len(self.recorded) >= 32:
+        ordered = list(GP_OUTPUTS) if self.gp else ["residual"]
+        if self.closed or (names != ordered and not (self.gp and names is None)) or len(self.recorded) >= 32:
             raise RuntimeError("Invalid request or bounded 32-call limit reached")
-        feed = validate_feed(feed)
+        feed = validate_gp_feed(feed) if self.gp else validate_feed(feed)
         for name, value in feed.items():
             self.check(self.cuda.cudaMemcpyAsync(self.pointers[name], value.ctypes.data,
                                                 value.nbytes, 1, self.stream))
         self.enqueue()
-        output = self.outputs["residual"]
-        self.check(self.cuda.cudaMemcpyAsync(output.ctypes.data, self.pointers["residual"],
-                                            output.nbytes, 2, self.stream))
+        for name in ordered:
+            output = self.outputs[name]
+            self.check(self.cuda.cudaMemcpyAsync(output.ctypes.data, self.pointers[name],
+                                                output.nbytes, 2, self.stream))
         self.check(self.cuda.cudaStreamSynchronize(self.stream))
-        if not np.isfinite(output).all():
+        if not all(np.isfinite(self.outputs[n]).all() for n in ordered):
             raise ValueError("Nonfinite TensorRT output")
-        result = output.copy()
-        self.recorded.append(({k: v.copy() for k, v in feed.items()}, result))
-        return [result]
+        results = [self.outputs[n].copy() for n in ordered]
+        self.recorded.append(({k: v.copy() for k, v in feed.items()}, results if self.gp else results[0]))
+        return results
 
     def enqueue(self):
         if not self.context.execute_async_v3(stream_handle=self.stream.value):

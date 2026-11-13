@@ -10,6 +10,7 @@ CONFIGS = {
     "control": dict(variant="control", threads=4, spinning=True, batched_fk=False),
     "sleep1": dict(variant="sleep1", threads=1, spinning=False, batched_fk=False),
     "sleep1_fk": dict(variant="sleep1_fk", threads=1, spinning=False, batched_fk=True),
+    "all_sleep1_fk": dict(variant="all_sleep1_fk", threads=1, spinning=False, batched_fk=True),
 }
 
 

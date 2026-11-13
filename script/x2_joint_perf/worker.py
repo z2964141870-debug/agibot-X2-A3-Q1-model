@@ -12,6 +12,7 @@ def settings():
         dict(variant="control", threads=4, spinning=True, batched_fk=False),
         dict(variant="sleep1", threads=1, spinning=False, batched_fk=False),
         dict(variant="sleep1_fk", threads=1, spinning=False, batched_fk=True),
+        dict(variant="all_sleep1_fk", threads=1, spinning=False, batched_fk=True),
     ):
         raise ValueError("Unregistered performance variant")
     return config
@@ -20,7 +21,7 @@ def settings():
 def main():
     config = settings()
     mode = sys.argv[1]
-    if mode == "policy":
+    if mode == "policy" or config["variant"] == "all_sleep1_fk":
         import onnxruntime as ort
         original = ort.InferenceSession
 
@@ -34,10 +35,14 @@ def main():
             return original(model, options, *args, **kwargs)
 
         ort.InferenceSession = configured_session
-    elif mode == "fgp" and config["batched_fk"]:
+    if mode == "fgp" and config["batched_fk"]:
         from .adapter import BatchedSmplAdapter
         from script.x2_morph_human import core
         core.SmplAdapter = BatchedSmplAdapter
+    if mode == "fgp" and config["variant"] == "all_sleep1_fk":
+        import torch
+        original_threads = torch.set_num_threads
+        torch.set_num_threads = lambda ignored: original_threads(1)
     from script.x2_joint_latency.worker import main as original_main
     original_main()
 

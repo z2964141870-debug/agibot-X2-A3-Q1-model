@@ -1,9 +1,13 @@
 import threading
 import time
 import unittest
+from unittest.mock import patch
+from pathlib import Path
+import json
+import tempfile
 
 from .pipeline import BoundedPipeline, PreparedDenoiser
-from .run import select_worker
+from .run import select_worker, validate_parity
 
 
 class Contract(unittest.TestCase):
@@ -69,6 +73,38 @@ class Contract(unittest.TestCase):
                          "script.x2_joint_pipeline.worker")
         with self.assertRaises(ValueError):
             select_worker(["python", "-m", "script.x2_joint_latency.worker", "other"])
+
+    def test_two_inflight_failures_release_both_credits(self):
+        gate = threading.Event()
+        def process(x):
+            gate.wait(1)
+            raise ValueError("both fail")
+        p = BoundedPipeline(process, lambda x: None)
+        p.reserve(); p.submit(1)
+        p.reserve(); p.submit(2)
+        gate.set()
+        with self.assertRaises(ValueError):
+            p.close()
+        self.assertEqual(p.active, 0)
+
+    def test_incomplete_or_changed_prefix_gate_rejected(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            receipt = dict(status="PIPELINE_PREFIX_EQUIVALENCE_PASSED", outputs=64,
+                fixture_sha256="same", engine_sha256="same", reference="serial",
+                reference_timing_sha256="same", reference_pose_sha256="same")
+            (root/"parity.json").write_text(json.dumps(receipt))
+            guard = dict(status=receipt["status"], child_returncode=1)
+            (root/"guard.json").write_text(json.dumps(guard))
+            with patch("script.x2_joint_pipeline.run.file_digest", return_value="same"):
+                with self.assertRaises(ValueError):
+                    validate_parity(root, Path("fixture"))
+                guard["child_returncode"] = 0
+                (root/"guard.json").write_text(json.dumps(guard))
+                self.assertEqual(validate_parity(root, Path("fixture")), receipt)
+            with patch("script.x2_joint_pipeline.run.file_digest", return_value="changed"):
+                with self.assertRaises(ValueError):
+                    validate_parity(root, Path("fixture"))
 
 
 if __name__ == "__main__":

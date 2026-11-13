@@ -12,7 +12,7 @@ CPU路径调用原作者RealtimePipeline.step，只将其中的denoiser替换为
 
 ## 验证与预算
 
-本地五项CPU合同已过：双阶段顺序和两帧上限、线程归属、CPU/发送失败传播与回收、准备结果单次消费及原native observe命令保持。新worker/probe CLI通过。真实设备GPU暂未执行。
+本地七项CPU合同已过：双阶段顺序和两帧上限、线程归属、CPU/发送失败传播与回收、双在途失败两额度回收、准备结果单次消费、原native observe命令保持，以及拒绝不完整/变更输入的前缀门。新worker/probe CLI通过。真实设备GPU暂未执行。joint入口同时要求prefix guard成功且worker退出0、同fixture/engine和保存串行原件SHA，不能只凭一个PASSED字段开跑。
 
 先独立PIPELINE_PREFIX门：精确复用串行最好组前93个实际处理输入（29历史+64输出），不替换为连续理想索引；最多64次真实GPU帧+原graph两次初始化，CPU完整物理顺序保留，与保存64个pose/root比最大绝对差2e-5。无真实策略请求/反馈/BLE/电机；两个保存来源SHA绑定。100秒守卫/120秒外层，失败根保留。
 
@@ -40,4 +40,4 @@ env -u PYTHONPATH -u PYTHONHOME timeout --signal=INT --kill-after=10s 120s data/
 
 用户版：流水线代码和本地并发检查已备；尚无本轮实际提速结论。下一先64输出一致性门，再做同机壁钟短测。
 
-Agent版：六新文件、原控制器/策略worker复用，最多两帧额度，依赖文件不热改；原四组/929串行结果不重做。先发布源码与精确SHA包、沿Windows桥接run核同boot/原来源/无自有测试任务/锁/资源，再板端五合同、唯一prefix根及其guard终门，成功后唯一joint根。异常保留失败，不擅改原作者/权重/物理或放宽原final门。原Q1训练保持暂停，goal/新agent不使用。
+Agent版：六新文件、原控制器/策略worker复用，最多两帧额度，依赖文件不热改；原四组/929串行结果不重做。先发布源码与精确SHA包、沿Windows桥接run核同boot/原来源/无自有测试任务/锁/资源，再板端七合同、唯一prefix根及其guard终门，成功后唯一joint根。异常保留失败，不擅改原作者/权重/物理或放宽原final门。原Q1训练保持暂停，goal/新agent不使用。

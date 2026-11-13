@@ -42,7 +42,7 @@ bash script/x2_morph_human/run.sh replay --human-jsonl human.jsonl --output data
 
 HumanFrame v1包含`kind=morph_human_frame/version=1/sequence`、`capture_ns/capture_clock`、`arrival_ns/arrival_clock`、`calibration_id/skeleton_id`、`convention=world_zup_m_smpl_rest_wxyz`、`valid[24]`、`positions[24,3]`、`quaternions[24,4]`。进入ONNX的168维按**每关节xyz+wxyz交错**，不是先72位置再96旋转。网络服务用自身单调时钟重记arrival，不信发送端声称的接收时间。旧72位置+单四元数消息被拒绝。
 
-接收器保留十个真实50Hz槽，跨度180ms；插值记录右端原始支持，未到齐不输出目标。序号、采集时间、标定/时钟跨epoch或未知骨架拒绝；重连须明确reset。3秒人流过期沿用所锁定的上游teleop值。额外的缺槽/无支持仅使advisory不可用，不触发机器人模式/阻尼。预览跨度、接收年龄、策略计算和硬件端到端延迟分别记录；未知硬件延迟为null。本版没有启用预测尾部/短预览。
+接收器保留十个真实50Hz槽，跨度180ms；插值记录右端原始支持，未到齐不输出目标。序号、采集时间、标定/时钟跨epoch或未知骨架拒绝；重连须明确reset。`serve` 默认新鲜度上限120ms，可用 `--max-freshness-ms` 显式设置；离线回放也应显式记录此参数。底层Runtime兼容默认3秒，不能把它当服务端实际配置。额外的缺槽/无支持仅使advisory不可用，不触发机器人模式/阻尼。预览跨度、接收年龄、策略计算和硬件端到端延迟分别记录；未知硬件延迟为null。本版没有启用预测尾部/短预览。
 
 ## 策略服务与后端接口
 
@@ -83,9 +83,28 @@ Orin需原环境的libzmq开发依赖和C++17编译器。本Mac已实际编译�
 bash script/x2_morph_human/run.sh bundle --output data/deliveries/X2_MORPH_HUMAN_PORTABLE.tgz
 ```
 
-压缩包含代码、固定来源/许可证、真实X2权重/参数和原始MJCF/mesh；没有Mac虚拟环境、机器人凭据、Linux轮子或HAL写入器。在Orin SoC1解压，准备Python3.11与对应Linux依赖后运行doctor、测试与离线回放。若现场无法上网，需要事先按**实际JetPack/Ubuntu/Python ABI**补齐wheelhouse；当前不知道该ABI，不能把Mac wheel冒充Orin安装包。
+压缩包含代码、固定来源/许可证、真实X2权重/参数和原始MJCF/mesh；没有Mac虚拟环境、机器人凭据、Linux轮子或HAL写入器。2026-11-13已实测SoC1为Orin NX / Ubuntu22.04 / L4T R36.4.3 / CPython3.10.12；SoC0为RK3588，不是第二台Orin。实际迁移目录为 `/home/agi/x2_morph_human_20261113`，使用独立Python3.10环境，Mac虚拟环境不搬入设备。
 
-CPU ONNX先作为可复现基线。本Mac推理足够轻；CUDA/TensorRT需根据Orin的JetPack、算子支持、动作等价与完整周期p95/p99再启用，不移植训练WM在线优化。SoC0无需部署本包。
+设备侧离线依赖包 `X2_ORIN_PY310_WHEELS_20261113.tgz` 含14个ARM64/CPython3.10轮子，解至 `data/wheelhouse/` 后先核 `SHA256SUMS`，再在项目主根执行：
+
+```bash
+python3 -m venv data/environments/orin-py310
+env -u PYTHONPATH -u PYTHONHOME data/environments/orin-py310/bin/python -m pip install \
+  --no-index --find-links data/wheelhouse \
+  -r script/x2_morph_human/requirements-orin-py310.lock.txt
+env -u PYTHONPATH -u PYTHONHOME data/environments/orin-py310/bin/python -m pip check
+bash script/x2_morph_human/run_orin.sh doctor --meshes
+env -u PYTHONPATH -u PYTHONHOME data/environments/orin-py310/bin/python \
+  -m unittest script.x2_morph_human.test_runtime -v
+bash script/x2_morph_human/run_orin.sh replay \
+  --human-jsonl data/real_manual_active_gp.jsonl --clock-50hz \
+  --max-interp-gap-ms 100 --max-freshness-ms 100 --frames 2000 \
+  --output data/analysis/my_orin_offline_replay
+```
+
+`run_orin.sh` 只在当前进程清除机器人登录环境的ROS `PYTHONPATH/PYTHONHOME`，不改系统ROS配置。`X2_MORPH_ORIN_PYTHON` 可指定独立解释器。上例只安装基础离线推理依赖，不含MuJoCo/视频依赖或CLOTHO/PyTorch；最新FGP前端仍在Mac运行。V2历史包未重打，部署时显式补上本阶段 `__main__.py`、`test_runtime.py`、`run_orin.sh` 覆盖层，特别是服务端新鲜度参数接线修复。完整记录见 `reports/README_X2_ORIN_BASIC_TESTS_20261113.md`。
+
+CPU ONNX先作为可复现基线。实测Orin CPU固定合成反馈离线回放p95约8.9ms，不含180ms预览等待、网络和执行端延迟，不是50Hz实时闭环认证。系统TensorRT10.7存在，但当前CPU wheel没有CUDA/TensorRT provider；启用GPU须另验算子、动作等价与完整周期p95/p99。SoC0本轮未安装文件。
 
 现场依次补齐：衣服坐标/骨长/根高度标定和真实流；X2固件反馈话题/关节顺序/IMU外参；Orin依赖/性能；只读影子日志；将C++策略适配接进**现有唯一writer和状态机**，核Morph独立PD/action profile。当前提供的client/reader不负责MC交接，也不另建第二writer。真机控制仍是后续明确任务，需遵循x2分支现场卡。不能许诺带过去不作核对就直接遥操。
 
@@ -103,15 +122,19 @@ CPU ONNX先作为可复现基线。本Mac推理足够轻；CUDA/TensorRT需根�
 针对最新两阶段 FGP（`CLOTHO-mocap-main` + `checkpoints`：`U100hL7.07h_residual.pth` 11-IMU 去噪 + `globalpose/weights.pt` 或 `LIP` 全身姿态与真实 3D 根位移），提供零 Unity 依赖的无头推理导出与实时 30Hz→50Hz ZeroMQ 压测入口：
 
 ```bash
-# 1) 从原始 11-IMU 穿戴数据跑最新两阶段 CLOTHO FGP（推荐 --backend globalpose），导出标准 NPZ 与 HumanFrame JSONL
-bash script/x2_morph_human/run.sh clotho-export \
+# 1) 在Mac的FGP环境中从已标定11-IMU录制目录导出NPZ
+data/environments/x2-morph-human-20261112/bin/python \
+  -m script.x2_morph_human.clotho_fgp_runner \
   --clotho-root /path/to/CLOTHO-mocap-main \
-  --checkpoints-root /path/to/checkpoints \
-  --recording /path/to/imu_recording.pt \
-  --backend globalpose \
+  --recording-dir /path/to/worn_recording \
+  --backend globalpose --start-frame 4100 --frames 600 --warmup-frames 29 \
+  --output-npz data/analysis/my_clotho_gp.npz
+
+# checkpoints须位于clotho-root/checkpoints；录制目录包含frames.jsonl和tpose_calibration.json
+bash script/x2_morph_human/run.sh fgp-convert \
+  --input data/analysis/my_clotho_gp.npz \
   --calibration script/x2_morph_human/config/clotho_fgp_yup.json \
-  --output-npz data/analysis/my_clotho_gp.npz \
-  --output-jsonl data/analysis/my_clotho_gp.jsonl
+  --align-initial-ground --output data/analysis/my_clotho_gp.jsonl
 
 # 2) 使用导出的最新 FGP HumanFrame 流驱动 X2 Ultra 50Hz 开发级闭环 MuJoCo 仿真并保存 50fps MP4
 bash script/x2_morph_human/run.sh replay \
@@ -120,8 +143,9 @@ bash script/x2_morph_human/run.sh replay \
   --human-points full --simulate --video \
   --output data/analysis/my_x2_clotho_sim
 
-# 3) 运行全部 18 项单元测试（含最新 CLOTHO 标定等价、Torso->Pelvis 转换、异步丢包 Hold 恢复）
-bash script/x2_morph_human/run.sh test
+# 3) 在Mac运行19项测试，新增独立服务过期输入无目标检查
+data/environments/x2-morph-human-20261112/bin/python \
+  -m unittest script.x2_morph_human.test_runtime -v
 ```
 
 关键参数说明：

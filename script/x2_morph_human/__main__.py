@@ -309,7 +309,9 @@ def serve(args):
     if not args.endpoint.startswith("tcp://127.0.0.1:"):
         raise ValueError("development advisory service binds to loopback only")
     max_gap_ns = int(round(args.max_interp_gap_ms * 1e6))
-    r = Runtime(human_points=args.human_points, max_interp_gap_ns=max_gap_ns)
+    max_age_ns = int(round(args.max_freshness_ms * 1e6))
+    r = Runtime(human_points=args.human_points, max_interp_gap_ns=max_gap_ns,
+                max_age_ns=max_age_ns)
     clock = f"local_monotonic:{platform.node()}:{time.monotonic_ns()}"
     context = zmq.Context()
     socket = context.socket(zmq.REP)
@@ -318,6 +320,7 @@ def serve(args):
     socket.bind(args.endpoint)
     print(json.dumps(dict(status="ADVISORY_ONLY", endpoint=args.endpoint,
                           human_points=args.human_points, max_interp_gap_ms=args.max_interp_gap_ms,
+                          max_freshness_ms=args.max_freshness_ms,
                           publish_allowed=False)), flush=True)
     try:
         while True:

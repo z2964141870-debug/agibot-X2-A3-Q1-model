@@ -1,0 +1,66 @@
+{
+  "record_id": "x2_orin_basic_tests_20261113",
+  "status": "MIGRATION_AND_BASIC_ADVISORY_TESTS_PASSED",
+  "last_device_evidence_at": "2026-11-13T13:13:55.641403+08:00",
+  "base_source_commit": "bdc230e55ca5bafa654f8e2972156ee0a0beed08",
+  "upstream_commit": "770394b4a0cad9effbf807a6c03435d1699733d0",
+  "route": ["ssh sshuser@100.92.227.62", "ssh agi@10.0.1.41"],
+  "authentication": "NATIVE_INTERACTIVE_PASSWORD_NOT_STORED",
+  "project_on_soc1": "/home/agi/x2_morph_human_20261113",
+  "hardware": {
+    "soc1": "Jetson Orin NX",
+    "soc0": "RK3588; no files installed in this stage",
+    "l4t": "R36.4.3",
+    "system_tensorrt": "10.7.0",
+    "python": "3.10.12",
+    "provider_used": "CPUExecutionProvider"
+  },
+  "policy_sha256": "cf95194793e4732447f66432fc2381d82dd7c3d82c94da15ad074f2cfe295512",
+  "base_bundle": {
+    "path": "data/deliveries/X2_MORPH_HUMAN_PORTABLE_V2_20261112.tgz",
+    "bytes": 99500160,
+    "sha256": "802a0f0a791520ef06f932369527578d1e0ada2542441c000b6ca8296aeb73c4",
+    "mac_windows_soc1_hashes_match": true,
+    "original_archive_preserved": true
+  },
+  "offline_wheels": {
+    "path": "data/deliveries/X2_ORIN_PY310_WHEELS_20261113.tgz",
+    "bytes": 52265906,
+    "sha256": "0f725b13fdb5f6c2c4e53da62e7bc250514d1fe9c1b5fe31e0ab7a1b03da350f",
+    "count": 14,
+    "abi": "CPython3.10 / Linux aarch64",
+    "all_wheel_hashes_checked_on_soc1": true,
+    "pip_check_with_ros_python_paths_unset": "PASSED"
+  },
+  "latest_fgp_runtime_location": "MAC; saved human output streams copied to Orin",
+  "source_overlay": [
+    {"path": "script/x2_morph_human/__main__.py", "sha256": "7651db22b5a361b0ac87d16e9ef0c2a62bb792b63e87d2e129b70d96c8469f3f"},
+    {"path": "script/x2_morph_human/test_runtime.py", "sha256": "506006d455a79949ab9d38eef85617b96894041f641adff497d33b4cd82843c4"},
+    {"path": "script/x2_morph_human/run_orin.sh", "sha256": "31bde63ea87b4abe3cc49b4b54b4c0954242dc5a5e39b7c520c39103baa5fa84"}
+  ],
+  "device_tests": {"passed": 19, "wall_s": 4.875, "freshness_cli_process_test": "PASSED"},
+  "cpp_ipc_v2": {"status": "CPP_LOCAL_IPC_PASSED", "requests": 80, "policy_calls": 31, "startup_waits": 9, "wall_s": 0.9523583899999721, "sdk_linked": false},
+  "offline_replays": [
+    {"id": "orin_real_worn", "frames": 991, "startup_waits": 11, "hold_ticks": 0, "p50_ms": 7.829932, "p95_ms": 8.895811, "p99_ms": 10.868099700000009, "max_ms": 15.451425},
+    {"id": "orin_real_active", "frames": 1723, "startup_waits": 11, "hold_ticks": 22, "p50_ms": 7.548474, "p95_ms": 8.952287599999996, "p99_ms": 10.591512719999999, "max_ms": 17.766511}
+  ],
+  "offline_parameters": {"virtual_clock_hz": 50, "max_interp_gap_ms": 100, "max_freshness_ms": 100, "robot_feedback": "FIXED_SYNTHETIC", "preview_span_ms": 180},
+  "mac_orin_parity": {"status": "OFFLINE_PARITY_PASSED", "frames": 1723, "hold_ticks": 22, "max_target_difference_rad": 0.0000014454126358032227, "tolerance_rad": 0.00002, "timing_and_holds_identical": true},
+  "raw_result_archives": [
+    {"path": "data/deliveries/X2_ORIN_BASIC_RESULTS_20261113.tgz", "bytes": 5121223, "sha256": "8ee1fb9177b24744f0ca7aedfade36949084ee1c6cd96e018f4cc490de00fcfc", "verified_members": 27},
+    {"path": "data/deliveries/X2_ORIN_BASIC_RESULTS_R2_20261113.tgz", "bytes": 36622, "sha256": "7effeb83944daa117a6bd1f5b5fdc4554d247868a2678c0bb281d6c6489e4230", "verified_members": 11}
+  ],
+  "own_policy_test_processes_remaining_at_receipt": 0,
+  "hardware_commands": 0,
+  "robot_feedback_subscriptions": 0,
+  "simulation_steps_this_stage": 0,
+  "training_updates": 0,
+  "publish_allowed": false,
+  "hardware_end_to_end_latency_ms": null,
+  "preview_reduction_validated": false,
+  "robot_services_changed": false,
+  "system_ros_packages_changed": false,
+  "q1_training_touched": false,
+  "baidu_backup": "LOCAL_ONLY",
+  "publication_receipt": "logs/session_records/x2_orin_basic_publication_20261113.json"
+}

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-13：[X2 Orin迁移与无电机输出基础测试](README_X2_ORIN_BASIC_TESTS_20261113.md)。SoC1独立Python3.10/14轮子与资产迁移核同，19测试及C++ IPC通过；最新FGP录制两段离线处理p95约8.9ms，同参数Mac/Orin最大目标差1.4454e-6rad及22Hold精确同，六宫图/日志证据归档。服务新鲜度参数接线已修；180ms预览仍在，0反馈订阅/物理/硬件命令，FGP前端仍在Mac，不当真机遥操验证。
+
 2026-11-13 12:42：[X2 Windows裸连与两台SoC登录成功](README_X2_BRIDGE_ACCESS_20261113.md)。原样`ssh sshuser@100.92.227.62`进入Windows，再原生`ssh agi@10.0.1.41`和`ssh run@10.0.1.40`均交互认证成功。设备树纠正“双Orin”：SoC1为Orin NX/L4T R36.4.3，SoC0为RK3588；同一X2 Ultra序列号已核。早先超时只保留历史；本次仅只读身份检查，未改转发/服务或部署/控制硬件。
 
 2026-11-13：[X2最新CLOTHO FGP对齐与8组闭环预测试完成](README_X2_LATEST_FGP_PRETEST_20261113.md)／[本地开发包说明](README_X2_MORPH_LOCAL_SETUP_20261112.md)。核清旧EgoLocate单阶段FGP（根平移置零）与最新两阶段CLOTHO FGP（`U100h`去噪+`GlobalPose`/`LIP`+米制3D根位移，剔除Unity 0.7/1.0m显示偏置），选定`U100h+GlobalPose`（支撑滑移降>56%，4核CPU稳态30.24ms<33.3ms）。18/18单测、C++17零SDK IPC、便携包V2净室验证、实时50Hz ZMQ+168ms丢包Hold恢复及8组X2 Ultra MuJoCo闭环50fps视频（0跌倒）与三张六宫图/联系表及证据ZIP已齐；`publish_allowed=False`，原服务器暂停训练未动。[记录](../logs/session_records/x2_latest_fgp_pretest_20261113.json)。

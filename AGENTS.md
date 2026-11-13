@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-13 X2 SoC1实际迁移/基础测试完成：原生两跳密码SSH/SCP至`/home/agi/x2_morph_human_20261113`，99.5MB V2包/两FGP录制/14 ARM64 CPython3.10轮子SHA核同，独立orin-py310环境与当前进程ROS路径隔离；19测试4.875s/C++17零SDK IPC80请求31调用过。两段固定合成反馈离线991/1723帧，Orin CPU p95 8.896/8.952ms；同参数Mac1723帧22Hold及时间/目标序同，最大差1.4454e-6rad，六宫图目视。serve新鲜度参数未接Runtime已修并上板，原V2包不重打；18旧日志/新19日志保留，自有策略测试进程退。FGP真实推理仍Mac，180ms预览不减，CPU wheel无CUDA/TensorRT EP，不据系统TensorRT或离线虚拟时钟称实时/真机达标。电机命令/反馈订阅/物理/训练0，不启shadow_reader/接writer；Q1暂停未动。入口README_X2_ORIN_BASIC_TESTS_20261113与小记录/publication；设备会话92286本阶段在SoC1，后续先核状态。
+
 - 2026-11-13 X2 MorphMimic human最新CLOTHO FGP对齐与本机闭环预测试完成：核清旧版EgoLocate单阶段weights.pt(23224559B/历史流根平移零)与最新两阶段CLOTHO FGP(U100h 384845450B + GlobalPose 134051421B / LIP 26748498B + SMPL_male 39056404B)，复现UDP.py标定误差0.0并剔除tran[2]*=0.7/tran[1]+=1.0显示hack，4线程CPU稳态GlobalPose 30.24ms(p95 31.54ms)<33.33ms，支撑滑移较LIP降>56%(22.45 vs 51.90cm/s)定为主选。script/x2_morph_human 18/18单测.797s过、C++17 advisory_probe零SDK IPC过、便携包V2(99500160B/80成员)净室doctor+18单测过；8组X2 Ultra 50Hz MuJoCo闭环+50fps MP4全0跌倒(含真实BLE 107.5ms抖动21帧Hold恢复及实时墙钟50Hz ZMQ+168ms丢包10帧Hold恢复)，三张六宫图/视频联系表目视过，25成员证据ZIP已校验。publish_allowed=False/hardware_commands=0/开发级MuJoCo不冒充训练plant等价，原Q1服务器暂停训练未动；入口README_X2_LATEST_FGP_PRETEST_20261113。
 
 - 2026-11-08严格依赖短预览补全准备：新增独立receiver/audit/test三文件，复用R1原始支持截止与旧damped_cv/.12秒，10CPU合同.551秒/CLI过；393片元数据121659锚点.002299125秒/RSS33079296B、0姿态模型物理训练，H4在80ms仅3真实帧97257/4帧24402，完整第4帧额外原始支持最多6.666667ms。原84依赖未知不直接当严格80ms基线，旧结果/冻结入口不改；无前缀只保持新鲜已就绪过去姿态，无支持拒绝，新回退与R1上一动作保持不同，不能直接复用其物理。GPU动作门/独立匹配物理尚未实现派发；恢复先原人体条件CPU审计七JSON不重训6000，再原多步WM来源资源准入。45014于12:44:17仍Windows，最近12:38第二跳拒绝仅历史/本阶段不循环；SSH获批90/60/5实核。原5036台账无新预留、R1余1086/R2余2449/R3余5829、共享暂停/final/采纳null和完整目标保持，服务器镜像PENDING；入口DEPENDENCY_PREVIEW及prepared。

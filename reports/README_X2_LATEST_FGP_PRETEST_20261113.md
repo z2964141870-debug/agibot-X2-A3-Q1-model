@@ -1,5 +1,7 @@
 # X2 MorphMimic human：最新 CLOTHO FGP 对齐与本机闭环预测试报告（2026-11-13）
 
+后续设备结果见 [Orin迁移与基础测试](README_X2_ORIN_BASIC_TESTS_20261113.md)。本文保留本机历史结果；命令以 `script/x2_morph_human/README.md` 为准：FGP导出实际为独立 `clotho_fgp_runner` 模块，测试用 `python -m unittest`，没有 `clotho-export` / `live-bridge` / `test` CLI子命令。后续服务新鲜度接线已修、设备测试新增至19项；Orin当前为Python3.10/CPU推理，不沿用本文Mac <3ms估计。
+
 本报告回答并落地两件事：
 1. **明确对齐旧版 EgoLocate FGP 与最新版 CLOTHO FGP**：核实此前本地测试样例中的历史内嵌姿态流来自旧版单阶段 FGP（`EgoLocate/mocap/assets/weights.pt`，根平移固定为 `[0, 0, 0] m`），并已将用户指定的最新版两阶段 **CLOTHO FGP**（`CLOTHO-mocap-main (1).zip` + `checkpoints.zip`）完整无头接入 `script/x2_morph_human/`。
 2. **在去真机现场前完成全套本机预测试**：完成 18/18 单元测试、C++17 零 SDK 异步 IPC 探针、便携发布包 V2 净室校验、8 组 X2 Ultra MuJoCo 闭环仿真 + 50 fps 原速视频、真实 30 Hz→50 Hz ZeroMQ 异步插值与 168 ms 蓝牙丢包恢复验证，以及三张六宫图/视频联系表交付。

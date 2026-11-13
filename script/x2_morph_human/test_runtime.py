@@ -312,5 +312,62 @@ class LatestFgpAndAsyncTests(unittest.TestCase):
             self.assertGreater(max(diffs), 1e-2)
 
 
+class ServiceFreshnessTests(unittest.TestCase):
+    def test_cli_freshness_rejects_stale_stream_without_target(self):
+        import select
+        import signal
+        import socket
+        import subprocess
+        import sys
+        import time
+        import zmq
+        from .__main__ import adapter, demo_stream
+        from .runtime import Runtime, synthetic_state
+
+        with socket.socket() as available:
+            available.bind(("127.0.0.1", 0))
+            endpoint = f"tcp://127.0.0.1:{available.getsockname()[1]}"
+        fixture = Runtime()
+        server = subprocess.Popen(
+            [sys.executable, "-m", "script.x2_morph_human", "serve", "--endpoint", endpoint,
+             "--max-freshness-ms", "50"],
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        context = zmq.Context()
+        client = context.socket(zmq.REQ)
+        client.setsockopt(zmq.LINGER, 0)
+        client.setsockopt(zmq.RCVTIMEO, 5000)
+        client.setsockopt(zmq.SNDTIMEO, 5000)
+        try:
+            self.assertTrue(select.select([server.stdout], [], [], 20)[0], "service startup timed out")
+            startup = json.loads(server.stdout.readline())
+            self.assertEqual(startup["status"], "ADVISORY_ONLY")
+            client.connect(endpoint)
+            for packet in demo_stream(adapter(fixture.root), 10):
+                client.send_json(packet)
+                self.assertFalse(client.recv_json()["publish_allowed"])
+            client.send_json(synthetic_state(fixture, 0, 0))
+            ready = client.recv_json()
+            self.assertTrue(ready["ready"])
+            self.assertEqual(len(ready["q_target_rad"]), 31)
+            time.sleep(.15)
+            client.send_json(synthetic_state(fixture, 1, 0))
+            stale = client.recv_json()
+            self.assertFalse(stale["ready"])
+            self.assertFalse(stale["publish_allowed"])
+            self.assertNotIn("q_target_rad", stale)
+        finally:
+            client.close()
+            context.term()
+            if server.poll() is None:
+                server.send_signal(signal.SIGINT)
+                try:
+                    server.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    server.terminate()
+                    server.wait(timeout=5)
+            server.stdout.close()
+            server.stderr.close()
+
+
 if __name__ == "__main__":
     unittest.main()

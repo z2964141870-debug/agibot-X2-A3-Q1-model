@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-13连接实测：[X2新桥接入口](README_X2_BRIDGE_ACCESS_20261113.md)。遵循用户最新要求原样裸连`ssh sshuser@100.92.227.62`，返回`Operation timed out`/255，未出现密码提示或进入Windows。此前三个入口90秒TCP等待与网络诊断作为历史，Tailscale peer10/17/13ms及ICMP12ms有回应，根因未定；之后继续用户裸连入口。全部0认证提交/远端/硬件命令，未重建转发或部署模型，X2本地预测试成果沿下条保留。[原始小记录](../logs/session_records/x2_bridge_access_20261113.json)。
+
 2026-11-13最新状态：[X2 MorphMimic human最新CLOTHO FGP对齐与全套本机预测试已完成](README_X2_LATEST_FGP_PRETEST_20261113.md)（底座搭建见[README_X2_MORPH_LOCAL_SETUP_20261112.md](README_X2_MORPH_LOCAL_SETUP_20261112.md)）。已将最新版两阶段CLOTHO FGP（`U100hL7.07h_residual.pth` + `globalpose/weights.pt`）无头接入`script/x2_morph_human/`，完成18/18单测、C++17零SDK本地IPC、便携包V2（`X2_MORPH_HUMAN_PORTABLE_V2_20261112.tgz`，净室通过）、实时50Hz ZeroMQ异步桥接与168ms丢包Hold恢复，以及8组X2 Ultra MuJoCo闭环仿真+50fps视频（全0跌倒）与三张六宫图/视频联系表（证据包`X2_LATEST_FGP_PRETEST_EVIDENCE_20261113.zip`）。全部输出保持advisory（`publish_allowed=False`，`hardware_commands=0`），待到机器人旁先做`shadow_reader`只读零位/IMU/增益核对后再接电机writer；Q1服务器共享训练保持人工暂停未触碰。
 
 

@@ -1,0 +1,54 @@
+{
+  "record_id": "x2_bridge_access_20261113",
+  "observed_at": "2026-11-13T12:27:19+08:00",
+  "status": "PEER_RESPONDS_SSH_TCP_TIMEOUT",
+  "bridge_address": "100.92.227.62",
+  "latest_user_direction": "Use bare native SSH to Windows; do not focus on forwarded endpoints",
+  "bare_ssh_attempt": {
+    "command": "ssh sshuser@100.92.227.62",
+    "extra_cli_options": [],
+    "exit_code": 255,
+    "error": "Operation timed out",
+    "authentication_prompt_seen": false,
+    "windows_shell_reached": false
+  },
+  "ssh_attempts": [
+    {"port": 22040, "user": "run", "intended_device": "SoC0", "intended_target": "10.0.1.40:22", "connect_timeout_s": 90, "exit_code": 255, "error": "Operation timed out", "authentication_prompt_seen": false},
+    {"port": 22041, "user": "agi", "intended_device": "SoC1", "intended_target": "10.0.1.41:22", "connect_timeout_s": 90, "exit_code": 255, "error": "Operation timed out", "authentication_prompt_seen": false},
+    {"port": 22, "user": "sshuser", "intended_device": "Windows bridge", "connect_timeout_s": 90, "exit_code": 255, "error": "Operation timed out", "authentication_prompt_seen": false}
+  ],
+  "network": {
+    "route_interface": "utun4",
+    "tailscale_backend": "Running",
+    "self_online": true,
+    "peer_hostname": "DESKTOP-LQL43SI",
+    "peer_online": true,
+    "peer_ping_ms": [10, 17, 13],
+    "icmp_mode_reply_ms": 12
+  },
+  "effective_ssh_config": {
+    "checked_endpoint": "agi@100.92.227.62:22041",
+    "controlmaster": false,
+    "proxycommand_present": false,
+    "proxyjump_present": false,
+    "connection_attempts": 1
+  },
+  "conclusions": {
+    "bridge_network_probe_responds": true,
+    "windows_shell_reached": false,
+    "orin_shell_reached": false,
+    "credentials_submitted": false,
+    "soc0_ssh_password_verified": false,
+    "cause": "NOT_DETERMINED",
+    "next_evidence": ["Windows sshd status", "Windows listening ports 22/22040/22041", "Existing portproxy mappings", "Inbound firewall and access policy"]
+  },
+  "safety": {
+    "remote_commands": 0,
+    "hardware_commands": 0,
+    "publish_allowed": false,
+    "ssh_configuration_changed": false,
+    "port_forwarding_changed": false,
+    "training_touched": false,
+    "running_probe_processes": 0
+  }
+}

@@ -14,6 +14,7 @@ def main():
     parser.add_argument("--baseline", type=Path, required=True)
     parser.add_argument("--acceleration", type=Path, required=True)
     parser.add_argument("--mixed", type=Path)
+    parser.add_argument("--candidate", type=Path, action="append", default=[])
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.output.exists():
@@ -24,6 +25,16 @@ def main():
         folders.append(args.mixed)
         names.append("TRT mixed")
         colors.append("#7b4a9e")
+    for folder, color in zip(args.candidate, ("#bd7d12", "#557a34")):
+        candidate = json.loads((folder / "report.json").read_text())
+        folders.append(folder)
+        label = "TRT "+candidate["precision"]
+        if candidate.get("cuda_graph"):
+            label += " graph t"+str(candidate["threads"])
+        names.append(label)
+        colors.append(color)
+    if len(args.candidate) > 2:
+        parser.error("At most two additional candidates")
     reports = [json.loads((p / "report.json").read_text()) for p in folders]
     for report in reports:
         if report["output_frames"] != 32 or report["fixture_sha256"] != reports[0]["fixture_sha256"]:
@@ -49,7 +60,10 @@ def main():
         cases=[dict(name=name, timing_all_ms=r["timing_all_ms"],
                     timing_after_first2_ms=r["timing_after_first2_ms"],
                     agreement_status=r.get("agreement_status", "REFERENCE"),
-                    agreement_metrics=r.get("agreement_metrics")) for name, r in zip(names, reports)],
+                    agreement_metrics=r.get("agreement_metrics"),
+                    short_sample_30hz_passed=(r.get("agreement_status") == "PASSED"
+                                              and r["timing_all_ms"]["over_33ms"] == 0))
+               for name, r in zip(names, reports)],
         limitation="32-frame unpaced recording, no BLE/browser/network/robot timing or human GT. CPU baseline predates reboot; not a randomized concurrent performance trial.",
         new_model_calls=0, hardware_commands=0, training_updates=0)
     (args.output / "summary.json").write_text(json.dumps(summary, indent=2)+"\n")
@@ -69,6 +83,7 @@ def main():
     axes[0, 0].set(title="Full pipeline per output", xlabel="Source frame", ylabel="ms")
     axes[0, 0].legend(fontsize=8)
     axes[0, 1].boxplot([v[2:] for v in values], tick_labels=names, showfliers=True)
+    axes[0, 1].tick_params(axis="x", labelrotation=20, labelsize=8)
     axes[0, 1].axhline(1000/30, color="#555555", ls="--")
     axes[0, 1].set(title="After first two outputs", ylabel="Full pipeline ms")
     stages = ("cano", "pose", "physics")

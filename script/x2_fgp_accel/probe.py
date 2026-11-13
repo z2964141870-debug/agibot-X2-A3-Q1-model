@@ -3,6 +3,7 @@ import argparse
 import json
 from pathlib import Path
 import sys
+import time
 
 import numpy as np
 
@@ -37,6 +38,8 @@ def main():
     parser.add_argument("--build-root", type=Path, required=True)
     parser.add_argument("--reference", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--cuda-graph", action="store_true")
+    parser.add_argument("--cpu-threads", type=int, choices=(1, 4), default=4)
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Preserve existing results")
@@ -56,7 +59,13 @@ def main():
     prepare_clotho_environment(args.source_root)
     from onnx_inference import OnnxBundle, OnnxFlowModel, cpu_session
     from script.x2_fgp_realtime import probe as baseline
-    session = TrtSession(engine_path)
+    session_started = time.perf_counter()
+    session_type = TrtSession
+    if args.cuda_graph:
+        from .graph_session import CudaGraphSession
+        session_type = CudaGraphSession
+    session = session_type(engine_path)
+    session_initialization_s = time.perf_counter()-session_started
     original_flow = OnnxBundle.flow_model
     argv = sys.argv
     try:
@@ -66,7 +75,7 @@ def main():
             return OnnxFlowModel(session, bundle.window_size, latest_only=True)
         OnnxBundle.flow_model = accelerated_flow
         sys.argv = ["recorded_probe", "--source-root", str(args.source_root), "--fixture", str(args.fixture),
-                    "--bundle", "onnx_s1", "--threads", "4", "--full", "--output", str(args.output)]
+                    "--bundle", "onnx_s1", "--threads", str(args.cpu_threads), "--full", "--output", str(args.output)]
         baseline.main()
     finally:
         OnnxBundle.flow_model = original_flow
@@ -75,7 +84,7 @@ def main():
     if len(session.recorded) != 32:
         raise ValueError("Expected exactly 32 CANO calls")
     # CPU comparison follows the timed GPU run; it cannot inflate GPU timings.
-    reference = cpu_session(bundle_root / "cano.onnx", threads=4)
+    reference = cpu_session(bundle_root / "cano.onnx", threads=args.cpu_threads)
     gpu_outputs = np.stack([output for _, output in session.recorded])
     cpu_outputs = np.stack([reference.run(["residual"], feed)[0] for feed, _ in session.recorded])
     if not np.isfinite(cpu_outputs).all():
@@ -99,6 +108,10 @@ def main():
         agreement_limits=limits, screening_limits_are_hardware_safety_certification=False,
         reference_report_sha256=file_digest(args.reference / "report.json"),
         comparison_after_timed_run=True, input_recording_included_in_timed_run=True,
+        cuda_graph=args.cuda_graph, session_initialization_s=session_initialization_s,
+        initialization_gpu_warmup_calls=1 if args.cuda_graph else 0,
+        initialization_capture_enqueue_calls=1 if args.cuda_graph else 0,
+        initialization_feed="Zero buffers; stateless CANO only, no LIP/GP/physics/history advancement" if args.cuda_graph else None,
         resource_after=resources())
     report_path.write_text(json.dumps(report, indent=2)+"\n")
     print(json.dumps({k: v for k, v in report.items() if k != "rows"}))

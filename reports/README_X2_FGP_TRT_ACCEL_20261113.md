@@ -85,3 +85,22 @@ R2七份141,226 B原件和五源码已Mac/设备SHA核同，原247上游源/24�
 新增至多两engine：`mixed_gemm`及允许TF32的FP32对照，每engine最多600秒、256MiB workspace、独立32次GPU与32次CPU同输入参考。R3总计最多64+64调用、0训练；前两轮三engine/96+96不重置。原4GiB可用/80 C/10GiB余盘和自有进程回收门不变。新根 `build_gemm_r3`/`probe_gemm_r3`、`build_tf32_r3`/`probe_tf32_r3`。mixed_gemm保持原1度/10mm/.005/.02限值，TF32沿FP32更严的.5度/5mm/.0002/.001限值；不放宽质量换速度。
 
 30Hz短样本门要求完整FGP链逐帧不超过33.33ms并且一致性通过；中位或p95过门而仍超时不称稳定30Hz。此32输出录制筛查仍不是长时间衣服/网页/机器人并跑认证。新增两计划合同连同原七项，本地9项.001秒通过；先发布和原运行时验证，再唯一新根执行。原作者/旧基线/第二第三终端不改，不接电机。准备记录见[x2_fgp_trt_r3_prepared_20261113.json](../logs/session_records/x2_fgp_trt_r3_prepared_20261113.json)。
+
+## R3 结果与原始权重核同
+
+实际parser为564个浮点计算层，其中97个矩阵乘法。首计划因TensorRT内部自动层名带字面星号而在构建前拒绝，随后仅允许其固定命名且模式精确唯一匹配，旧失败保留；没有因该解析失败新增推理。修正源码 `86eb2524ed4371d245023ccfcd41038409f609e1` 已push并独立核远端，Orin九CPU检查.002秒过。mixed_gemm构建170.802276秒/52,455,276 B，564项计算与输出约束全有日志回执。
+
+| R3完整链32输出 | 中位/p95/最大 ms | 超33.33ms | 相对CPU参考 |
+| --- | --- | ---: | --- |
+| 逐层mixed_gemm | 31.970/36.742/67.497 | 11/32 | **一致性通过**：姿态最大.073327度，根最大.515055mm，residual最大.00224163/相对L2 .00170904 |
+| TF32对照 | 41.201/48.585/58.899 | 32/32 | 严格FP32门失败：residual最大.00042522>.0002；姿态.033112度、根.059869mm仍保留 |
+
+mixed_gemm去前两次中位31.818/p95 36.579/最大36.830ms、9/30超时，CANO中位15.178/LIP2.168/GP＋物理13.068ms；首帧CANO54.189ms单列。不能以平均约31Hz或去首帧称完整30Hz。TF32不提高到30Hz，也不为它放宽预定数值门。实际本轮两engine/64GPU64CPU参考结清，累计五engine/160GPU160CPU参考；原作者代码与模型未改。
+
+用户新提供 `/Users/yu/Downloads/cano_ep120.pth.1`，285,461,969 B/SHA `288fa807273b183eb75f85e3b9aeeabe3715cd14e14c26c273de0feb17a882aa`，与当前ONNX原manifest的cano checkpoint SHA**完全一致**。`torch.load(weights_only=True,map_location="cpu")`成功，元数据model_size=S1、epoch120/global_step213720；144模型张量、23,773,449元素，FP32模型本体95,093,796 B（约90.7MiB）。272MiB文件含Adam状态，不因文件大而判另一模型或B版。原始参数已可用于后续导出优化，但当前ONNX本就来源于该权重，无需重复上传大文件或无理由重导出；不把S1称另取到纯S权重。
+
+## R4 CUDA Graph与CPU线程准备
+
+在精度已过门的同一mixed_gemm engine上，不改权重/作者链或增加engine。只捕获固定TensorRT kernel执行到本进程独有CUDA stream/graph，逐帧CPU→GPU输入和GPU→CPU输出仍完整同步；每帧仍真实计算，不缓存姿态或插帧。启动使用零缓冲对无状态CANO作一次GPU预热及一次capture enqueue，不推进LIP/GP/物理/人体历史，初始化耗时和额外调用独立记录。capture失败即保留失败，不软回退后宣称图加速。
+
+新增预算最多两组：CPU4线程＋graph、CPU1线程＋graph，每组32真实输出/32CPU同输入参考/120秒，保守含初始化每组最多34GPU调用，总≤68GPU＋64CPU参考，0新engine/训练。旧R3预算不扩。资源门不变；输出 `probe_gemm_graph_t4_r4`、必要时 `probe_gemm_graph_t1_r4`。完整链全32帧≤33.33ms且原mixed一致性限值同时通过才称该录制短样本过门，仍需后续长序列与Morph CPU同机测试。新增graph包装和线程开关仅在自有加速命名空间；不修改第二第三终端。

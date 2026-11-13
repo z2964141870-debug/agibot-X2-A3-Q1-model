@@ -86,8 +86,7 @@ class TrtSession:
         for name, value in feed.items():
             self.check(self.cuda.cudaMemcpyAsync(self.pointers[name], value.ctypes.data,
                                                 value.nbytes, 1, self.stream))
-        if not self.context.execute_async_v3(stream_handle=self.stream.value):
-            raise RuntimeError("TensorRT enqueue failed")
+        self.enqueue()
         output = self.outputs["residual"]
         self.check(self.cuda.cudaMemcpyAsync(output.ctypes.data, self.pointers["residual"],
                                             output.nbytes, 2, self.stream))
@@ -97,6 +96,10 @@ class TrtSession:
         result = output.copy()
         self.recorded.append(({k: v.copy() for k, v in feed.items()}, result))
         return [result]
+
+    def enqueue(self):
+        if not self.context.execute_async_v3(stream_handle=self.stream.value):
+            raise RuntimeError("TensorRT enqueue failed")
 
     def close(self):
         if self.closed:

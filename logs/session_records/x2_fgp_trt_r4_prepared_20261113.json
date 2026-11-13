@@ -1,0 +1,22 @@
+{
+  "record_id": "x2_fgp_trt_r4_prepared_20261113",
+  "date": "2026-11-13",
+  "status": "R3_SETTLED_R4_GRAPH_RUNTIME_PREPARED",
+  "r3_source_commit": "86eb2524ed4371d245023ccfcd41038409f609e1",
+  "r3_settled": {"engines": 2, "gpu_calls": 64, "cpu_reference_calls": 64, "mixed_gemm_agreement": "PASSED", "mixed_gemm_30hz": "FAILED", "tf32_agreement": "FAILED", "tf32_30hz": "FAILED"},
+  "cumulative_before_r4": {"engines": 5, "gpu_calls": 160, "cpu_reference_calls": 160},
+  "same_engine_sha256": "89cf34659df7d686abd4230fcd6b1c17a47b05b9d46dda4ecdbad5381d0f3f08",
+  "new_maximum": {"engines": 0, "cases": 2, "output_frames_each": 32, "gpu_calls_including_initialization": 68, "cpu_reference_calls": 64, "outer_wall_s_each": 120},
+  "cases": ["CUDA graph / CPU threads 4", "CUDA graph / CPU threads 1 if needed"],
+  "initialization": "One zero-buffer stateless CANO GPU warmup plus capture enqueue; no downstream human/LIP/GP/physics state advances; time separately reported",
+  "dynamic_input_validation": "Each recorded frame still copies both actual inputs and synchronizes actual output, then CPU same-input reference after timed run",
+  "quality_limits_unchanged": {"residual_max_abs": 0.005, "residual_relative_l2": 0.02, "pose_max_deg": 1.0, "root_max_m": 0.01},
+  "resource_limits_unchanged": {"min_available_gib": 4, "temperature_stop_c": 80, "min_disk_free_gib": 10},
+  "short_sample_30hz_gate": "All 32 full-chain outputs <=1000/30ms and agreement passed, not a long-run or concurrent certification",
+  "raw_checkpoint": {"path": "/Users/yu/Downloads/cano_ep120.pth.1", "bytes": 285461969, "sha256": "288fa807273b183eb75f85e3b9aeeabe3715cd14e14c26c273de0feb17a882aa", "matches_current_onnx_checkpoint_manifest": true, "model_size": "S1", "model_tensor_count": 144, "model_elements": 23773449, "weights_only_load": true},
+  "new_gpu_calls_at_preparation": 0,
+  "terminal23_changed": false,
+  "hardware_commands": 0,
+  "training_updates": 0,
+  "publish_allowed": false
+}

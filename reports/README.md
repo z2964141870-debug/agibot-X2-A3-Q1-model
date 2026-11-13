@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-13：[X2 FGP＋Morph联合延迟简报](README_X2_JOINT_LATENCY_RESULT_20261113.md)／[完整证据记录](README_X2_JOINT_LATENCY_20261113.md)。真实FGP＋Morph＋ROS只读反馈＋native observe。latest人体17.81Hz、参考年龄中位约297–310ms/p95 341–356ms，含180ms预览但非BLE/机械端到端；363/929输入跳过，未30Hz，133次RPC超20ms拒绝。FIFO诊断末积压21秒，作者在线本身取最新。两六宫图/CSV/原件已回Mac，247源码24资产前后同，0电机MC训练，Q1保持暂停。
+
 2026-11-13：[FGP S1加速简报](README_X2_FGP_S1_ACCEL_RESULT_20261113.md)／[完整方案和结果](README_X2_FGP_TRT_ACCEL_20261113.md#r7-实测与当前结论)。原始权重SHA同；准确混合＋graph＋特征精确复用整链29.09ms中位/35.88ms p95，8/32超时，尚未稳定30Hz。数值.073度/.515mm且缓存全输出逐位同；GP GPU无明确收益/opt5构建限时失败，保留所有证据，不改原衣服默认/后端/物理或Q1暂停。
 
 2026-11-13：[GP GPU加速R5完成与R6方案](README_X2_FGP_TRT_ACCEL_20261113.md#r5-实际结果)。GP数值过门，整链仍30.407ms中位/8帧超时，未证收益；下一保留精度与原物理，仅加大CANO构建搜索，独立预算已登记，未称稳定30Hz。

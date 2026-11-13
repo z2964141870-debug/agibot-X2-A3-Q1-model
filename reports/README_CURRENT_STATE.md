@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-13侧线：[第二、第三终端原生writer与MC协议软件接通](README_X2_MORPH_NATIVE_WRITER_20261113.md)。独立链接原Sonic AimdkIo，50Hz推理/500Hz writer分离；23Python和19C++检查、三场景隔离SDK正常返回/策略退出/反馈断流通过。真实X2反馈6秒295请求/295ready/294接受，接受RPC p95 13.690ms；1次22.570ms超20ms已拒绝。PD目标不是实际关节角，初次误拒162条的检查已修，原件保留。IMU为核SHA torso源码约定+FK腰速重建，不当新物理标定。设备R6二进制/PROFILE_V2/ISOLATED_R3/LIVE_FEEDBACK_R2已成，MC只读PASSIVE/运行2251；实际电机和MC修改0。剩现场真实输出的受控接管、执行器与增益验收；默认observe，不启动原ritual。主线FGP及Q1暂停保持。[收据](../logs/session_records/x2_morph_native_writer_20261113.json)，同步见后续publication。
+
 2026-11-13：[FGP直连准备与Downloads/checkpoints实查](README_X2_CLOTHO_REALTIME_BRANCH_REVIEW_20261113.md#mac-有线直连与资源实查)。Mac经en7临时10.0.1.10有线原生SSH直达SoC1，新分支192034B源码包板端SHA同/独立解包，CPU ONNXRuntime1.19.2导入及pip check过。用户指定目录六文件586300547B逐件SHA：U100h/LIP/GlobalPose与已用版本同，另三ASIP；无ONNX/manifest或新部署包，不是没有任何FGP权重。新版模型/物理链尚未运行，仍待完整新资源及ARM64 carticulate；默认引擎/衣服/机器人输出及Q1暂停未改。本节设备文档镜像待。[实查收据](../logs/session_records/x2_clotho_realtime_direct_assets_20261113.json)。
 
 2026-11-13侧线：[Morph第二、第三终端建议接口已接通](README_X2_MORPH_BACKEND_TERMINAL23_20261113.md)。新增独立`script/x2_morph_backend`，Mac/Orin各11测试通过、真实ONNX合成反馈各83请求及64/61原生候选与C++逐值同；Orin成功候选RPC p95 13.197ms，非硬件端到端。Mac已改走有线原生`ssh agi@10.0.1.41`，en7的10.0.1.10由用户配置；真实ROS3秒149完整31关节快照全有效/最大本地接收年龄41.229495ms，SDK环境已对齐。IMU仍缺实测安装体/外参，真实反馈推理0、现有writer未接入；所有输出advisory/电机和MC操作0、旧Sonic及Q1暂停保持。先实测IMU再只读真实反馈→策略，之后独立writer故障/交接验证，不启动原ritual。[结果记录](../logs/session_records/x2_morph_backend_terminal23_20261113.json)。主线FGP继续按其最新记录推进，不以本侧接口通过替代FGP实时验收。

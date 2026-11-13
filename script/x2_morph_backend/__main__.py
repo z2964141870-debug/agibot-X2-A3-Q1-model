@@ -12,6 +12,7 @@ from script.x2_morph_human.artifacts import home
 from script.x2_morph_human.client import Client
 from script.x2_morph_human.shadow_reader import Feedback
 from .contract import Backend, Contract, GROUPS
+from .sensor_profile import validate as validate_sensor_profile
 
 
 def make_backend(args, contract):
@@ -49,9 +50,8 @@ def pipe(args, contract):
 
 def ros(args, contract):
     cfg = json.loads(args.profile.read_text())
-    calibrated = bool(cfg.get("measured_sensor_calibration_id")) and not cfg["measured_sensor_calibration_id"].startswith("REPLACE")
-    if not args.inspect and not calibrated:
-        raise ValueError("measured IMU body/extrinsic profile required for policy requests; use --inspect to inspect feedback only")
+    sensor_basis = "INSPECTION_ONLY" if args.inspect else validate_sensor_profile(cfg)
+    calibrated = sensor_basis == "MEASURED_PROFILE"
     if not 0 < args.seconds <= 600:
         raise ValueError("read-only ROS capture must be bounded to 0..600 seconds")
     import rclpy
@@ -93,7 +93,7 @@ def ros(args, contract):
         seq, started, next_tick = 0, time.monotonic(), time.monotonic() + .02
         with args.output.open("x") as output:
             print(json.dumps(dict(status="READ_ONLY_ROS_STARTED", inspect=args.inspect,
-                                  measured_calibration=calibrated, hardware_commands=0)), flush=True)
+                                  measured_calibration=calibrated, sensor_basis=sensor_basis, hardware_commands=0)), flush=True)
             while rclpy.ok() and time.monotonic() - started < args.seconds:
                 rclpy.spin_once(node, timeout_sec=max(0., next_tick - time.monotonic()))
                 if time.monotonic() < next_tick:
@@ -120,7 +120,8 @@ def ros(args, contract):
         rclpy.shutdown()
     summary = dict(status="READ_ONLY_ROS_FINISHED", received=dict(counts), ingest_errors=dict(errors),
                    complete_snapshots=seq, imu_frame_ids=sorted(frames), inspect=args.inspect,
-                   measured_calibration=calibrated, joint_schema=JointStateArray.get_fields_and_field_types(),
+                   measured_calibration=calibrated, sensor_basis=sensor_basis,
+                   joint_schema=JointStateArray.get_fields_and_field_types(),
                    hardware_commands=0)
     print(json.dumps(summary, allow_nan=False), flush=True)
     return summary

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Process-local policy + ROS Python environment. No MC handoff or command writer.
+# Process-local policy + ROS environment; control remains explicit opt-in.
 set -eu
 backend_root=$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)
 backend_python=${X2_BACKEND_PYTHON:-"$backend_root/data/environments/orin-py310/bin/python"}
@@ -9,8 +9,15 @@ if [ ! -x "$backend_python" ]; then
     exit 1
 fi
 cd "$backend_root"
+backend_module=script.x2_morph_backend
+case "${1:-}" in
+  sensor-profile) backend_module=script.x2_morph_backend.sensor_profile; shift ;;
+  mc) backend_module=script.x2_morph_backend.mc_handoff; shift ;;
+  control) backend_module=script.x2_morph_backend.control_session; shift ;;
+  native-probe) backend_module=script.x2_morph_backend.native_probe; shift ;;
+esac
 exec env -u PYTHONHOME PYTHONDONTWRITEBYTECODE=1 \
     PYTHONPATH="$backend_root:$backend_sdk/local/lib/python3.10/dist-packages:/opt/ros/humble/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages" \
     LD_LIBRARY_PATH="$backend_sdk/lib:/opt/ros/humble/lib:/agibot/software/common/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" \
     AMENT_PREFIX_PATH="$backend_sdk:/opt/ros/humble:/agibot/software/common" \
-    "$backend_python" -B -m script.x2_morph_backend "$@"
+    "$backend_python" -B -m "$backend_module" "$@"

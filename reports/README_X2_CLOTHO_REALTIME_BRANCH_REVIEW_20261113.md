@@ -50,6 +50,27 @@ CANO 使用 30 帧已到达历史，满窗后交付末帧并作因果 EMA；这�
 
 后续应先取得完整资源包并按 deployment_assets.json 核 SHA、包内 manifest/来源配对，再用同一保存 IMU 分别测 CANO/LIP/GP/物理及完整时序，不沿用 0.78 秒，不只看前向均值。先离线与网页，不接电机。Windows 可先验证作者原生完整链；Orin 需另解决物理库 ARM64 构建，或评估 fivepoint 分支的 GPU 路径。当前不改现有设备默认模型/线程，不启动 BLE/标定/硬件或旧 Q1 训练。
 
+## Mac 有线直连与资源实查
+
+用户已将原 Windows 到机器人网线改接 Mac。本次通过 en7（USB 10/100 LAN 3）直连，临时别名为 `10.0.1.10/24`；系统授权后添加，Wi-Fi 默认路由保持。`route -n get 10.0.1.41` 确认 en7，原生 `ssh agi@10.0.1.41` 已密码登录原 SoC1，boot 与此前一致。后续本机到机器人直接连接，不再经过 Windows。临时别名不是持久网络配置，重接/重启后先检查实际接口和路由。
+
+固定 `fgp_realtime/1e719140b43a2ec4dc22f4159014b2eb9de51ed9` 的官方源码归档已传至 SoC1 并 SHA 核同，192,034 B / SHA `e6b0d59e67c4a8847b14d6c639c40af98b67db98c7874bf83c87229379232306`，独立解包到 `/home/agi/x2_morph_human_20261113/data/runtime/clotho_fgp_realtime_20261113`。旧 runtime 保留。项目独立 `fgp-preview-py310` 环境新增 ONNXRuntime 1.19.2 与 pyserial 3.5，实际 ARM64 导入成功，提供 CPUExecutionProvider，`pip check` 通过；原 numpy 1.26.4 / torch 2.5.1 未替换。检查显式清除本进程 PYTHONPATH/PYTHONHOME，没有加载人体模型或启动衣服。
+
+用户进一步指定 `/Users/yu/Downloads/checkpoints` 后，实际枚举到六个文件，总计 586,300,547 B；此前按 ZIP 名称查找不足以判断这个目录的内容，本次已按文件大小和 SHA 逐个核对：
+
+| 文件 | 字节数 | 结论 |
+| --- | ---: | --- |
+| canonicalization/U100hL7.07h_residual.pth | 384,845,450 | 与此前审计/实际加载的 B 规格 canonicalizer SHA 完全相同 |
+| LIP/LIP_10_real_denoised_7.07_10imu_10.pth | 26,748,498 | 与此前保存的 LIP 清单 SHA 完全相同 |
+| globalpose/weights.pt | 134,051,421 | 与此前实际加载的 GlobalPose SHA 完全相同 |
+| asip/ASIP_20.pth | 40,649,647 | ASIP 文件；不是本分支列出的 CANO/LIP/GP ONNX 包 |
+| asip/temporal_prior_f30.pt | 4,364 | ASIP prior 文件 |
+| asip/spatial_prior_10imu.pt | 1,167 | ASIP prior 文件 |
+
+因此该目录**有现有 FGP 原始权重**，但没有作者实时分支配套的 `cano.onnx`、`lip.onnx`、`gp.onnx`、初始状态 NPZ、manifest 或 `fgp_realtime_weights.zip`。不能把旧 B 权重重新命名为 S/S1 或把既有 GlobalPose 姿态权重当作本分支的 GP 速度网络。若另行导出旧模型，也仍是旧模型，不能据此认证作者新部署包或承诺其实时性能。
+
+完整新版链仍待准确资源包及 Linux ARM64 兼容 carticulate 物理库；本次没有运行新模型、BLE、标定、机器人反馈或控制，没有修改旧默认引擎，也没有启动 Q1 训练。详细六文件 SHA、环境与传输记录见 [直连及资源实查收据](../logs/session_records/x2_clotho_realtime_direct_assets_20261113.json)。设备上的源码/依赖准备完成；本节新增文档设备镜像尚待，不冒称全部记录已同步。
+
 ## 来源与保存
 
 结构化来源：[x2_clotho_realtime_branch_review_20261113.json](../logs/session_records/x2_clotho_realtime_branch_review_20261113.json)。旧计时更正：[FGP资产核查](README_X2_FGP_S_ASSET_AUDIT_20261113.md#1506-权重未替换与分段耗时复核)。

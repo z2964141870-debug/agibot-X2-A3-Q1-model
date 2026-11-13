@@ -1,0 +1,90 @@
+{
+  "record_id": "x2_clotho_realtime_direct_assets_20261113",
+  "date": "2026-11-13",
+  "status": "DIRECT_WIRED_SOURCE_AND_CPU_DEPENDENCIES_READY_NEW_MODEL_ASSETS_ABSENT",
+  "direct_connection": {
+    "path": "Mac Ethernet -> X2 SoC1; no Windows bridge",
+    "mac_service": "USB 10/100 LAN 3",
+    "mac_interface": "en7",
+    "temporary_mac_alias": "10.0.1.10/24",
+    "alias_added_with_native_administrator_authorization": true,
+    "route_to_soc1_interface": "en7",
+    "wifi_default_route_changed": false,
+    "ssh_command": "ssh agi@10.0.1.41",
+    "native_interactive_password_login": "SUCCEEDED",
+    "soc1_boot_id": "39cb8e5a-9c22-451e-a3ba-23c98bebccd2",
+    "credentials_recorded": false
+  },
+  "source": {
+    "repository": "humanplus-ai/CLOTHO-mocap",
+    "branch": "fgp_realtime",
+    "commit": "1e719140b43a2ec4dc22f4159014b2eb9de51ed9",
+    "archive": "data/deliveries/CLOTHO_FGP_REALTIME_SOURCE_1e719140_20261113.tgz",
+    "bytes": 192034,
+    "sha256": "e6b0d59e67c4a8847b14d6c639c40af98b67db98c7874bf83c87229379232306",
+    "archive_members": 115,
+    "archive_paths_and_member_types_checked": true,
+    "mac_runtime": "data/runtime/clotho_fgp_realtime_20261113",
+    "device_runtime": "/home/agi/x2_morph_human_20261113/data/runtime/clotho_fgp_realtime_20261113",
+    "direct_scp_finished": true,
+    "device_archive_size_sha256_match": true,
+    "device_extraction_completed": true,
+    "old_runtime_replaced": false
+  },
+  "device_environment": {
+    "python": "/home/agi/x2_morph_human_20261113/data/environments/fgp-preview-py310/bin/python",
+    "machine": "aarch64",
+    "process_pythonpath_pythonhome_unset": true,
+    "onnxruntime_installed_and_imported": "1.19.2",
+    "providers_reported": ["AzureExecutionProvider", "CPUExecutionProvider"],
+    "pyserial": "3.5",
+    "numpy_unchanged": "1.26.4",
+    "torch_unchanged": "2.5.1",
+    "additional_installed_dependencies": {
+      "coloredlogs": "15.0.1",
+      "flatbuffers": "25.12.19",
+      "humanfriendly": "10.0",
+      "packaging": "26.3",
+      "protobuf": "7.36.2"
+    },
+    "pip_check": "No broken requirements found.",
+    "native_physics_arm64_available_at_preparation_check": false,
+    "models_loaded": 0,
+    "inference_sessions_created": 0
+  },
+  "user_specified_directory_audit": {
+    "root": "/Users/yu/Downloads/checkpoints",
+    "method": "recursive file enumeration plus actual byte count and streamed SHA256; no checkpoint deserialization",
+    "files": [
+      {"path": "canonicalization/U100hL7.07h_residual.pth", "bytes": 384845450, "sha256": "b613eb8226b26b9dc82904c22f4aec78773992503337c3cbde674c998f61ce12", "matches_previous": "x2_fgp_s_asset_audit_20261113 checkpoint_sha256_previous_verified"},
+      {"path": "LIP/LIP_10_real_denoised_7.07_10imu_10.pth", "bytes": 26748498, "sha256": "efc4bb8583bf053890d9ae754e97415c8658dba237893982aa51b9541edbb9a2", "matches_previous": "q1_cloth_fgp_20261008_E003_summary.json"},
+      {"path": "globalpose/weights.pt", "bytes": 134051421, "sha256": "b63f62b846713cfae1f7f3119633f36d41befff8b9b25003c29fdd946777feef", "matches_previous": "x2_fgp_cpu_split_recheck_20261113"},
+      {"path": "asip/temporal_prior_f30.pt", "bytes": 4364, "sha256": "bbab7d3c80201c064c4f68112ec414bab3f75e9978546007e2503ac5bf421488"},
+      {"path": "asip/spatial_prior_10imu.pt", "bytes": 1167, "sha256": "54d975f262d34d02c4eaeb3e7c77c72e22c841ba05bb3f53e6175e47451e0efe"},
+      {"path": "asip/ASIP_20.pth", "bytes": 40649647, "sha256": "db3747af77343fe658ad2c62d3e10c5a8ba1313356700c36bd4b8498eb602581"}
+    ],
+    "file_count": 6,
+    "total_bytes": 586300547,
+    "onnx_files": 0,
+    "manifest_files": 0,
+    "realtime_weights_archive_found": false,
+    "conclusion": "Existing U100h B, LIP, GlobalPose and ASIP files are present. The author fgp_realtime CANO/LIP/GP ONNX deployment bundle is absent from this directory. Existing files cannot be renamed into the missing S/S1 deployment."
+  },
+  "remaining_requirements": [
+    "Author fgp_realtime_weights.zip or exact complete extracted assets validated against deployment_assets.json and internal manifests",
+    "Compatible Linux ARM64 carticulate native physics implementation",
+    "Bounded same-recording neural-stage and full-chain validation after assets arrive"
+  ],
+  "boundaries": {
+    "new_model_calls": 0,
+    "ble_connections": 0,
+    "calibration_started": false,
+    "feedback_subscriptions": 0,
+    "hardware_commands": 0,
+    "training_updates": 0,
+    "publish_allowed": false,
+    "existing_engine_switched": false,
+    "original_q1_training_touched": false
+  },
+  "new_document_device_mirror": "PENDING"
+}

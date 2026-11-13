@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-13：[Mac有线直连、FGP实时依赖与指定权重目录实查](README_X2_CLOTHO_REALTIME_BRANCH_REVIEW_20261113.md#mac-有线直连与资源实查)。新版源码传至SoC1核同、ONNXRuntime1.19.2导入和pip check过；Downloads/checkpoints六文件中有已用U100h/LIP/GlobalPose及ASIP，没有新CANO/LIP/GP ONNX配套资源。尚未新版模型推理/物理链或真机控制，完整权重及ARM64原生物理库待。
+
 2026-11-13：[Morph第二、第三终端适配与真实只读反馈](README_X2_MORPH_BACKEND_TERMINAL23_20261113.md)。独立后端与C++原生31槽适配，Mac/Orin各11测试、各83合成反馈IPC请求及64/61候选精确匹配；Orin成功候选RPC p95 13.197ms。Mac有线直连10.0.1.41已成功，真实ROS3秒149完整快照全有效。0电机/MC操作；实测IMU外参及旧writer集成尚待，非真机遥操通过。
 
 2026-11-13：[CLOTHO的CPU实时分支与GPU分支核查](README_X2_CLOTHO_REALTIME_BRANCH_REVIEW_20261113.md)。发现此前遗漏的fgp_realtime CPU ONNX/S1相关资源，旧0.78秒不是此版本结果；需独立fgp_realtime_weights.zip与包内manifest，Windows物理库不能直接用于Orin。新读取不当实际测速/真机通过，当前模型未改。

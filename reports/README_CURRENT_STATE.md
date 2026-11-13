@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-13：[FGP直连准备与Downloads/checkpoints实查](README_X2_CLOTHO_REALTIME_BRANCH_REVIEW_20261113.md#mac-有线直连与资源实查)。Mac经en7临时10.0.1.10有线原生SSH直达SoC1，新分支192034B源码包板端SHA同/独立解包，CPU ONNXRuntime1.19.2导入及pip check过。用户指定目录六文件586300547B逐件SHA：U100h/LIP/GlobalPose与已用版本同，另三ASIP；无ONNX/manifest或新部署包，不是没有任何FGP权重。新版模型/物理链尚未运行，仍待完整新资源及ARM64 carticulate；默认引擎/衣服/机器人输出及Q1暂停未改。本节设备文档镜像待。[实查收据](../logs/session_records/x2_clotho_realtime_direct_assets_20261113.json)。
+
 2026-11-13侧线：[Morph第二、第三终端建议接口已接通](README_X2_MORPH_BACKEND_TERMINAL23_20261113.md)。新增独立`script/x2_morph_backend`，Mac/Orin各11测试通过、真实ONNX合成反馈各83请求及64/61原生候选与C++逐值同；Orin成功候选RPC p95 13.197ms，非硬件端到端。Mac已改走有线原生`ssh agi@10.0.1.41`，en7的10.0.1.10由用户配置；真实ROS3秒149完整31关节快照全有效/最大本地接收年龄41.229495ms，SDK环境已对齐。IMU仍缺实测安装体/外参，真实反馈推理0、现有writer未接入；所有输出advisory/电机和MC操作0、旧Sonic及Q1暂停保持。先实测IMU再只读真实反馈→策略，之后独立writer故障/交接验证，不启动原ritual。[结果记录](../logs/session_records/x2_morph_backend_terminal23_20261113.json)。主线FGP继续按其最新记录推进，不以本侧接口通过替代FGP实时验收。
 
 2026-11-13：[作者CLOTHO实时部署分支已核清](README_X2_CLOTHO_REALTIME_BRANCH_REVIEW_20261113.md)。此前遗漏fgp_realtime/1e719140（11月9日），其CPU ONNX CANO→LIP→GP→原生物理与当前U100h B＋GlobalPose不同，旧0.78秒不适用。两套外置onnx_s1/cano_s_ep120_fast清单已读，规格待包内manifest，不冒称已加载或30Hz通过；缺fgp_realtime_weights.zip，新包在Human+范围未找到且仓库未附下载地址。作者发布目标Windows x64/3.8物理，Orin需兼容ARM64原生库；默认串口BLE-UART非现有Bleak。另五点分支有CUDA Graph/c129。此轮只读0模型/硬件/训练，保留用户自启采集；先资源SHA与同录制分段/全链测试。[收据](../logs/session_records/x2_clotho_realtime_branch_review_20261113.json)，设备镜像待补。

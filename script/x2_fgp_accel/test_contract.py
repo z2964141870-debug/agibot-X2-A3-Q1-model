@@ -37,10 +37,14 @@ class ContractTests(unittest.TestCase):
         a = [np.zeros((1,), np.float32) for _ in range(3)]
         cache(*a)
         cache(a[0].astype(np.float64), *a[1:])
+        a[0].fill(-0.)
+        cache(*a)
+        a[0].fill(0.)
+        cache(*a)
         a[2][0] = np.nan
         cache(*a)
         cache(*a)
-        self.assertEqual((cache.hits, cache.misses), (0, 4))
+        self.assertEqual((cache.hits, cache.misses), (0, 6))
 
     def test_explicit_gp_state_contract(self):
         feed = {name: np.zeros(shape, np.float32) for name, shape in GP_INPUTS.items()}

@@ -132,3 +132,11 @@ GP+物理阶段去前两次中位R4为12.487/R5为12.458ms，原生物理分别6
 先复用R3 exact precision计划和原始ONNX，只将TensorRT builderOptimizationLevel从2改为5，GP恢复原CPU路径，CPU4+同一graph包装保持。板端安装的trtexec帮助明确支持0至5，更高级别只允许构建时更多优化选项；是否加速待实测。数值门不变，不改权重、历史长度、Euler次数、原生物理或系统频率/功耗。
 
 新增最多一engine/600秒/workspace256MiB，一组32真实输出＋一warmup＋一capture（保守34GPU）、32CPU同输入参考/120秒，资源边界沿用。新根`build_gemm_opt5_r6`、`probe_gemm_opt5_graph_t4_r6`。所有564项精度/输出约束仍须日志逐项确认；32完整链各帧≤33.33ms且一致性通过才过短样本门。R5和R4不重做；本方案准备时新GPU0，先发布和原运行时合同后执行。
+
+## R7 相同人体特征复用准备
+
+只读核实作者`GlobalPoseTracker.update`在GP头fps=30/substeps=1时，会两次对相同pose/acc/gyro调用`PoseFeatures`；后者仅使用固定SMPL offsets做FK和拼接，无可变时序状态。两来源固定SHA为features.py `8b6a4a67d4a4d054b139ceebc36ba8501e84dcebb0ca0768a7c7fb621e89a207`和tracker.py `324e93beeb21ab86c9ea8f9dfb32031cb127161b3bdb35ea3e5734c94d1ccc58`。此为源码机会，不是已测加速收益。
+
+新增独立单条缓存，仅完整shape/dtype/逐字节相同且有限输入才命中；保存键及输出副本，调用方更改返回值不会污染缓存。只在本进程30Hz tracker实例挂包装，退出恢复工厂；不改原作者文件、GP网络更新、接触/物理步数或动力学。每帧仍运行CANO/LIP/GP和一次物理，缓存只省重复FK/特征计算。十三CPU合同.001秒过，新增两项覆盖所有权和不精确/NaN键。
+
+独立R7固定复用R3 engine＋CPU4/graph/原CPU GP，以已保存R4 CPU4原件为精确对照，不与R6混合。新根`probe_gemm_featurecache_graph_t4_r7`，0新engine，最多32GPU＋一warmup＋一capture（保守34）/32CPU参考/120秒。原混合精度门和全部32帧≤33.33ms门保留，额外要求pose与translation相对R4逐位相同、64次特征请求至少32次命中且最多32次真实特征计算；来源不符或任何差异则失败。R6运行时不部署R7，不热改在跑文件；先发布，再等R6终态和独立准入后单派。

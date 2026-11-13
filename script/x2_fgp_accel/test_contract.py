@@ -7,9 +7,41 @@ from .probe import differences, LIMITS
 from .build import PRECISION_FLAGS
 from .trt_session import TrtSession, validate_feed, validate_gp_feed, GP_INPUTS, GP_OUTPUTS
 from .precision_plan import make_plan, specifications
+from .feature_cache import ExactFeatureCache
 
 
 class ContractTests(unittest.TestCase):
+    def test_feature_cache_copies_inputs_and_outputs(self):
+        class Tensor:
+            def __init__(self, value):
+                self.value = value
+            def clone(self):
+                return Tensor(self.value.copy())
+        cache = ExactFeatureCache(lambda *values: tuple(Tensor(v.copy()) for v in values))
+        arrays = [np.zeros((2, 3), np.float32) for _ in range(3)]
+        first = cache(*arrays)
+        first[0].value.fill(9)
+        second = cache(*arrays)
+        self.assertEqual(second[0].value.flat[0], 0)
+        second[0].value.fill(8)
+        self.assertEqual(cache(*arrays)[0].value.flat[0], 0)
+        arrays[0].fill(1)
+        self.assertEqual(cache(*arrays)[0].value.flat[0], 1)
+        self.assertEqual((cache.hits, cache.misses), (2, 2))
+
+    def test_feature_cache_rejects_inexact_keys_and_nan_hits(self):
+        class Tensor:
+            def clone(self):
+                return Tensor()
+        cache = ExactFeatureCache(lambda *values: (Tensor(), Tensor(), Tensor()))
+        a = [np.zeros((1,), np.float32) for _ in range(3)]
+        cache(*a)
+        cache(a[0].astype(np.float64), *a[1:])
+        a[2][0] = np.nan
+        cache(*a)
+        cache(*a)
+        self.assertEqual((cache.hits, cache.misses), (0, 4))
+
     def test_explicit_gp_state_contract(self):
         feed = {name: np.zeros(shape, np.float32) for name, shape in GP_INPUTS.items()}
         self.assertEqual(set(validate_gp_feed(feed)), set(GP_INPUTS))

@@ -41,6 +41,7 @@ def main():
     parser.add_argument("--cuda-graph", action="store_true")
     parser.add_argument("--cpu-threads", type=int, choices=(1, 4), default=4)
     parser.add_argument("--gp-build-root", type=Path)
+    parser.add_argument("--feature-cache-reference", type=Path)
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Preserve existing results")
@@ -51,6 +52,20 @@ def main():
     if (build["status"] != "BUILD_PASSED" or build["onnx_sha256"] != file_digest(bundle_root / "cano.onnx")
             or build["engine_sha256"] != file_digest(engine_path)):
         raise ValueError("Engine/source provenance mismatch")
+    if args.feature_cache_reference is not None:
+        from .feature_cache import FEATURE_SOURCES
+        if any(file_digest(args.source_root / "stage_tran_gp" / name) != digest
+               for name, digest in FEATURE_SOURCES.items()):
+            raise ValueError("Stateless feature source identity mismatch")
+        previous = json.loads((args.feature_cache_reference / "report.json").read_text())
+        if (previous.get("agreement_status") != "PASSED"
+                or previous.get("engine_sha256") != build["engine_sha256"]
+                or previous["fixture_sha256"] != file_digest(args.fixture)
+                or previous["threads"] != args.cpu_threads
+                or previous.get("cuda_graph") != args.cuda_graph
+                or previous.get("gp_acceleration") is not None
+                or args.gp_build_root is not None):
+            raise ValueError("Exact feature cache comparison identity mismatch")
     reference_report = json.loads((args.reference / "report.json").read_text())
     if (reference_report["bundle"] != "onnx_s1" or not reference_report["native_physics"]
             or reference_report["fixture_sha256"] != file_digest(args.fixture)
@@ -68,7 +83,10 @@ def main():
     session = session_type(engine_path)
     gp_session, gp_build = None, None
     import stage_tran_gp.onnx_network as gp_module
+    from stage_tran_gp.tracker import GlobalPoseTracker
     original_gp_factory = gp_module.cpu_session
+    original_tracker_init = GlobalPoseTracker.__init__
+    caches = []
     if args.gp_build_root is not None:
         try:
             if not args.cuda_graph:
@@ -92,6 +110,15 @@ def main():
                 raise ValueError("Unexpected CANO bundle")
             return OnnxFlowModel(session, bundle.window_size, latest_only=True)
         OnnxBundle.flow_model = accelerated_flow
+        if args.feature_cache_reference is not None:
+            from .feature_cache import ExactFeatureCache
+            def cached_tracker_init(tracker, *positional, **keywords):
+                original_tracker_init(tracker, *positional, **keywords)
+                if tracker.network.fps != 30:
+                    raise ValueError("Feature cache experiment requires the 30 Hz GP head")
+                tracker.features = ExactFeatureCache(tracker.features)
+                caches.append(tracker.features)
+            GlobalPoseTracker.__init__ = cached_tracker_init
         if gp_session is not None:
             def accelerated_gp(path, threads=1):
                 if Path(path).resolve() != (bundle_root / "gp.onnx").resolve():
@@ -104,6 +131,7 @@ def main():
     finally:
         OnnxBundle.flow_model = original_flow
         gp_module.cpu_session = original_gp_factory
+        GlobalPoseTracker.__init__ = original_tracker_init
         sys.argv = argv
         session.close()
         if gp_session is not None:
@@ -123,6 +151,24 @@ def main():
         metrics.update(differences(saved["pose"], saved["translation"], ref["pose"], ref["translation"]))
     limits = LIMITS[build["precision"]]
     accepted = all(metrics[k] <= value for k, value in limits.items())
+    cache_metrics = None
+    if args.feature_cache_reference is not None:
+        previous = json.loads((args.feature_cache_reference / "report.json").read_text())
+        if (previous.get("engine_sha256") != build["engine_sha256"]
+                or previous["fixture_sha256"] != file_digest(args.fixture)
+                or previous["threads"] != args.cpu_threads
+                or previous.get("cuda_graph") != args.cuda_graph
+                or previous.get("gp_acceleration") is not None
+                or gp_session is not None or len(caches) != 1):
+            raise ValueError("Exact feature cache comparison identity mismatch")
+        with np.load(args.output / "outputs.npz", allow_pickle=False) as actual, np.load(
+                args.feature_cache_reference / "outputs.npz", allow_pickle=False) as original:
+            equal = all(np.array_equal(actual[name], original[name]) for name in ("pose", "translation"))
+        cache = caches[0]
+        cache_metrics = dict(calls=cache.calls, hits=cache.hits, misses=cache.misses,
+                             bitwise_equal_full_outputs=equal,
+                             reference_report_sha256=file_digest(args.feature_cache_reference / "report.json"))
+        accepted = accepted and equal and cache.calls == 64 and cache.hits >= 32 and cache.misses <= 32
     gp_metrics = None
     if gp_session is not None:
         if len(gp_session.recorded) != 32:
@@ -163,6 +209,7 @@ def main():
         initialization_capture_enqueue_calls=(1+int(gp_session is not None)) if args.cuda_graph else 0,
         initialization_feed="Zero buffers; graph invocations only, no external LIP/GP/physics/history advancement" if args.cuda_graph else None,
         gp_acceleration=gp_metrics,
+        feature_cache=cache_metrics,
         resource_after=resources())
     report_path.write_text(json.dumps(report, indent=2)+"\n")
     print(json.dumps({k: v for k, v in report.items() if k != "rows"}))

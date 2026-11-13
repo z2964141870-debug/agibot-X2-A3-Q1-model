@@ -1,0 +1,47 @@
+{
+  "record_id": "x2_clotho_realtime_branch_review_20261113",
+  "date": "2026-11-13",
+  "status": "UPSTREAM_BRANCH_SOURCE_REVIEW_COMPLETED_NO_MODEL_RUN",
+  "upstream": "humanplus-ai/CLOTHO-mocap",
+  "access": "Authenticated GitHub API; no credentials recorded",
+  "branches": {
+    "main": {"sha": "bed3424b86caa5849c75b5046252331f73cdce20", "commit_utc": "2026-10-24T05:38:41Z"},
+    "fgp_realtime": {"sha": "1e719140b43a2ec4dc22f4159014b2eb9de51ed9", "commit_utc": "2026-11-09T12:12:49Z", "ahead_of_main": 3, "behind_main": 0},
+    "fivepoint-physics_optimization": {"sha": "dcc6df97dad70543989f21f566f3fa9b8381a224", "commit_utc": "2026-11-09T08:29:49Z"}
+  },
+  "correction": "Previous audit covered main and supplied ZIPs but omitted fgp_realtime. Old U100h B plus GlobalPose CPU timings do not measure the newer CPU ONNX deployment.",
+  "upstream_sources": {
+    "fgp_realtime_README.md": {"bytes": 7841, "sha256": "28fc6eda97dc1f839ae2f5a539c39cf1c768ece587b217f0ac1991b70d57ee0e"},
+    "fgp_realtime_deployment_assets.json": {"bytes": 3819, "sha256": "d838e8c07df5cfa9656be68b174c8cf0bdce5ac37a52226aaa5ebefa5df86d2f"},
+    "other_files_read": ["cano_model_config.py", "onnx_inference.py", "online_fgp+LIP_realtime_onnx.py", "check_deployment.py", "stage_tran_gp/onnx_network.py", "stage_tran_gp/physics.py", "fivepoint-physics_optimization:README_INFERENCE.md", "fivepoint-physics_optimization:README_RECEIVER.md"],
+    "main_local_remote_sha_matches": ["README.md", "train_cano.py", "online_fgp+globalpose.py", "online_fgp+LIP.py", "neural_backbone.py", "stage_tran/README.md", "stage_tran/CURRENT.json", "PoseReconstruction/LIP_model.py"],
+    "github_releases_observed": 0
+  },
+  "cpu_deployment": {
+    "chain": "CANO -> LIP pose -> recurrent GP velocity/stationary prediction -> native double-tracking physics",
+    "backend": "ONNX Runtime CPUExecutionProvider",
+    "target_hz_documented_not_measured_here": 30,
+    "default_bundle": "models/onnx_s1",
+    "alternate_bundle": "models/onnx_cano_s_ep120_fast",
+    "declared_bytes_per_bundle": {"cano.onnx": 95439547, "lip.onnx": 8912335, "gp.onnx": 23231818},
+    "actual_model_size_requires_bundle_manifest": true,
+    "S1_preset": {"depth": 4, "ffn": 384, "enc_d_model": 384, "enc_layers": 4, "enc_nhead": 8},
+    "required_external_archive": "fgp_realtime_weights.zip",
+    "optional_archives": ["fgp_realtime_viewers.zip", "fgp_realtime_offline_data.zip"],
+    "public_download_link_for_new_archive_in_readme": false,
+    "new_bundles_present_in_git_tree": false,
+    "new_bundle_filename_search_root": "/Users/yu/Human+",
+    "new_bundle_filename_matches_in_search_root": 0,
+    "package_and_model_files_downloaded": false,
+    "source_hash_mismatch_warnings": {"onnx_s1": "GP training LIP source hash differs", "onnx_cano_s_ep120_fast": "GP training CANO source hash differs"},
+    "latest_only_export_supported_by_code_not_verified_in_missing_manifest": true,
+    "native_release_target": "Windows x64; Python 3.9 main and CPython 3.8 native physics subprocess",
+    "orin_full_physics_chain_tested": false,
+    "orin_limitation": "Bundled Windows pyd/DLL cannot run on Linux ARM64; compatible native physics build is required",
+    "input_transport_default": "Serial BLE-UART, not native Bleak",
+    "causal_window": "30 arrived history frames, latest-frame output; startup warmup is distinct from future-preview latency"
+  },
+  "boundaries": {"models_loaded": 0, "ble_connections": 0, "calibration_started": false, "feedback_subscriptions": 0, "hardware_commands": 0, "training_updates": 0, "publish_allowed": false, "existing_runtime_changed": false, "original_q1_training_touched": false},
+  "device_document_mirror": "PENDING",
+  "credentials_recorded": false
+}

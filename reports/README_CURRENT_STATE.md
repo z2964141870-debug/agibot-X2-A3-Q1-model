@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-13：[作者CLOTHO实时部署分支已核清](README_X2_CLOTHO_REALTIME_BRANCH_REVIEW_20261113.md)。此前遗漏fgp_realtime/1e719140（11月9日），其CPU ONNX CANO→LIP→GP→原生物理与当前U100h B＋GlobalPose不同，旧0.78秒不适用。两套外置onnx_s1/cano_s_ep120_fast清单已读，规格待包内manifest，不冒称已加载或30Hz通过；缺fgp_realtime_weights.zip，新包在Human+范围未找到且仓库未附下载地址。作者发布目标Windows x64/3.8物理，Orin需兼容ARM64原生库；默认串口BLE-UART非现有Bleak。另五点分支有CUDA Graph/c129。此轮只读0模型/硬件/训练，保留用户自启采集；先资源SHA与同录制分段/全链测试。[收据](../logs/session_records/x2_clotho_realtime_branch_review_20261113.json)，设备镜像待补。
+
 2026-11-13 15:06：[FGP权重未替换与CPU分段更正](README_X2_FGP_S_ASSET_AUDIT_20261113.md#1506-权重未替换与分段耗时复核)。实际始终为U100h B＋GlobalPose，旧780.54ms不是小权重或FGP-S测试；23.2MB为PIP，不能混用。新每组8输出/去前两次中位，4线程去噪818.73ms＋GP70.46ms/总888.29ms；1线程总741.78ms，仅小样本诊断不改默认或判定降频原因。两组输出差低2e-5，6999B原件已Mac/SoC1 SHA同。[收据](../logs/session_records/x2_fgp_cpu_split_recheck_20261113.json)。无新BLE/标定/反馈/电机或训练；实时FGP后端仍待解决。
 
 2026-11-13：[FGP权重与新版代码核对、自启动网页准备](README_X2_FGP_S_ASSET_AUDIT_20261113.md)。按用户最新明确，采用EgoLocate适配器默认U100h去噪＋GlobalPose，代码为已核同作者bed3424b的新CLOTHO；LIP Tanh修复已确认，独立StageTran另需两权重，不混作当前GP。包内23.2MB权重实为PIP，旧FGP身份归因更正。设备214文件/模型加载及10测试.278s、Mac10测试.206s/双视口网页通过，8件原始证据SHA取回；SoC1自启动命令与只读API见报告。用户自行启动采集/标定，本轮未新启动BLE或电机。真实通知和真人SMPL待验证；Orin CPU现有B＋GP约781ms，非30Hz实时能力，不因缺FGP-S阻塞准备。原Q1保持暂停。发布见[收据](../logs/session_records/x2_fgp_s_audit_publication_20261113.json)。

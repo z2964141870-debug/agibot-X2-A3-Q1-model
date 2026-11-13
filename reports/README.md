@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-13：[CLOTHO的CPU实时分支与GPU分支核查](README_X2_CLOTHO_REALTIME_BRANCH_REVIEW_20261113.md)。发现此前遗漏的fgp_realtime CPU ONNX/S1相关资源，旧0.78秒不是此版本结果；需独立fgp_realtime_weights.zip与包内manifest，Windows物理库不能直接用于Orin。新读取不当实际测速/真机通过，当前模型未改。
+
 2026-11-13：[FGP实际未换小权重，0.78秒归属更正](README_X2_FGP_S_ASSET_AUDIT_20261113.md#1506-权重未替换与分段耗时复核)。同U100h B＋GlobalPose的小样本分段复核：4线程约819ms去噪/70ms姿态/888ms整段；不是FGP-S测速，未改默认或启动衣服/真机。6999B原始证据两端SHA同。
 
 2026-11-13：[FGP按EgoLocate权重＋新版代码的核查与网页准备](README_X2_FGP_S_ASSET_AUDIT_20261113.md)。默认U100h＋GlobalPose权重固定SHA，CLOTHO五源码与作者main核同；LIP激活修复与新增平移依赖分清，包内PIP误认已更正。设备214文件/模型加载和10测试通过，用户自启动衣服/标定/SMPL网页脚本已备；当前Orin CPU约781ms仅诊断，真实BLE通知/真人重建待验证，0电机命令。

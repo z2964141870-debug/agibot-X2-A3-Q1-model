@@ -2,6 +2,8 @@
 
 记录日期：2026-11-13。状态：本地资产核查完成，FGP-S 已训练权重未找到。
 
+**后续范围更正**：用户要求读取作者仓库后，实查发现此前遗漏的 fgp_realtime 分支（2026-11-09 更新）已说明 CPU ONNX 及 onnx_s1/onnx_cano_s_ep120_fast 两套外置资源。本报告“未找到”限于此前提供的 ZIP/main，不推广为作者无轻量部署。当前仍未拿到新资源包；旧 0.78 秒不是新版本测速。详见 [实时分支核查](README_X2_CLOTHO_REALTIME_BRANCH_REVIEW_20261113.md)。
+
 用户后续明确“EgoLocate 用哪个权重就跟着用”。当前实施选择已固定为包内 `FgpMocapAdapter` 的默认：去噪开启、30 帧历史、`U100hL7.07h_residual.pth`＋`Full_GR_OV_10.forward_frame_fast0`；用户最新 CLOTHO 中该类默认解析到 `checkpoints/globalpose/weights.pt`。不再以找到 S 权重作为继续准备的前置条件。预览启动校验该两份权重及 SMPL 的精确 SHA，并在 API/doctor 输出 `model_profile`。外部 `ble_web_pose` 缺失，不能宣称整个旧实现逐字等同；模型选择及现有已提供权重的身份已固定。
 
 用户进一步明确“权重使用 EgoLocate 的，代码使用新版”，并引用作者对 `online_fgp+LIP` 姿态 bug 修复及新增 global translation 的说明。本次实查作者 `humanplus-ai/CLOTHO-mocap` main 为 `bed3424b86caa5849c75b5046252331f73cdce20`（提交信息 `Update realtime translation`）；本地与该提交的 `neural_backbone.py`、`online_fgp+LIP.py`、`LIP_model.py`、`full_GR_OV.py`、`stage_tran/online_guarded.py` 五份逐字相同。

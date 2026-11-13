@@ -34,6 +34,8 @@ def main():
             label += " graph t"+str(candidate["threads"])
         if candidate.get("gp_acceleration") is not None:
             label += " + GP GPU"
+        if candidate.get("feature_cache") is not None:
+            label += " + exact FK reuse"
         if "opt5" in folder.name:
             label += " opt5"
         names.append(label)

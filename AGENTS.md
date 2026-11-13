@@ -4,6 +4,8 @@
 
 ## 环境与目录
 
+- 2026-11-13 FGP原始S1权重与现有ONNX来源SHA完全同（144张量/90.7MiB参数，272MiB原文件含优化器），独立加速R1-R7本轮预算结清。准确mixed_gemm＋CUDA Graph＋相同特征逐字节缓存R7整链中位29.086/p95 35.884/最大36.429ms、8/32超时，.073度/.515mm一致性过且32帧pose/root与R4逐位同；64特征请求省32重复FK。13板端合同.004秒/原247源24资产终检同，R4/R5/R7六宫图及57成员3.13MB证据包CRC/逐件SHA/三相对链接过。GP GPU未证速度收益，opt5构建600秒原时限回收/无engine；自有进程退锁空，不重跑或扩预算。当前仍离线32帧探针，未切换衣服实时默认/未Morph同机认证/未稳定30Hz；下一墙钟30Hz长序列＋Morph CPU50Hz并跑/队列和长尾。终端2、3/原物理/原Q1暂停未动，电机MC新BLE反馈训练0；入口README_X2_FGP_S1_ACCEL_RESULT_20261113，最终同步见publication。
+
 - 2026-11-13 用户明确FGP权重跟EgoLocate衣服适配器、代码用新版CLOTHO。已核默认去噪开启/30帧/U100h＋Full_GR_OV_10，提供的GlobalPose权重加载；作者main bed3424b与本地五源码SHA同，LIP两Tanh修复和独立StageTran代码存在，但新增两平移权重未随包提供，不把旧LIP foot-lock称新StageTran。EgoLocate包内23.2MB实际PIP/FastPIP（72有限张量/5800184元素），此前“旧单阶段FGP”身份更正；真正FGP工程是包外依赖，S结构有而S权重未找到，不阻塞按用户默认准备。自启动网页/标定/SMPL脚本上SoC1，214资产及模型加载/10测试.278s过，Mac10测试.206s/桌面移动Playwright及截图过；8件设备原始证据4243B两跳SCP/SHA同。当前B＋GlobalPose Orin CPU780.54ms不适合30Hz，不能沿用Mac30ms；真实BLE通知/真人标定未过，由用户启动，0反馈订阅/电机命令。入口README_X2_FGP_S_ASSET_AUDIT_20261113；92286已原生重登SoC1，80856 Windows，后续先核状态；Q1暂停不动/goal新agent不用。
 
 - 2026-11-13 X2 SoC1实际迁移/基础测试完成：原生两跳密码SSH/SCP至`/home/agi/x2_morph_human_20261113`，99.5MB V2包/两FGP录制/14 ARM64 CPython3.10轮子SHA核同，独立orin-py310环境与当前进程ROS路径隔离；19测试4.875s/C++17零SDK IPC80请求31调用过。两段固定合成反馈离线991/1723帧，Orin CPU p95 8.896/8.952ms；同参数Mac1723帧22Hold及时间/目标序同，最大差1.4454e-6rad，六宫图目视。serve新鲜度参数未接Runtime已修并上板，原V2包不重打；18旧日志/新19日志保留，自有策略测试进程退。FGP真实推理仍Mac，180ms预览不减，CPU wheel无CUDA/TensorRT EP，不据系统TensorRT或离线虚拟时钟称实时/真机达标。电机命令/反馈订阅/物理/训练0，不启shadow_reader/接writer；Q1暂停未动。入口README_X2_ORIN_BASIC_TESTS_20261113与小记录/publication；设备会话92286本阶段在SoC1，后续先核状态。

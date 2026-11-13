@@ -1,6 +1,8 @@
 # YUANQI 当前状态与下一步
 
-2026-11-13：[X2性能优化当前阶段](README_X2_JOINT_PERF_20261113.md)。独立control/sleep1/sleep1_fk三组准备，3合同.167秒过/128随机骨架数值误差≤1e-12；各复用929帧30Hz/latest及原native observe/100秒保护/20ms接受门，未派发。当前ONNX确有action_motion＋action_human，motion670与human2160目标、10槽均需，重定向候选未测试不自动改默认。SoC0本轮原生密码登录核RK3588/约10负载/无ORT，RTT .256–.764ms仅ICMP；SoC1原9179会话可用、boot df9b9a2e、12.3GB可用/67.093度。原Q1暂停，电机MC训练0。
+2026-11-13连接规则更新：用户要求后续使用Windows桥接，已原生`ssh sshuser@100.92.227.62`→Windows内`ssh run@10.0.1.41`交互密码登录，同X2 Ultra SoC1/boot df9b9a2e；会话40802。后续设备管理用run，覆盖先前Mac直连偏好；不使用转发端点替代、不改网络或认证配置。[连接收据](../logs/session_records/x2_bridge_run_recovered_20261113.json)。
+
+2026-11-13：[X2性能四组完成及run宿主机频率核验](README_X2_JOINT_PERF_20261113.md)。control/sleep1/sleep1_fk/all_sleep1_fk各929源30Hz/latest＋真实ROS/native observe完成，17.743/21.070/22.672/24.805Hz；最好745输出/跳155未30Hz，FGP p50/p95 34.422/38.972ms，1492ready/1486接受/6次超20ms，RPC p95/p99 14.866/17.420ms。含180ms预览参考年龄中位268–281ms/p95上界309ms，非BLE机械或相位GT。2592GPU帧/8初始化enqueue，12自有PID全退0/锁空；前后247源24资产JSON逐字节同/最高69.875度/最低可用11562205184B。3合同、32合成线程动作差0、四组共同前缀4输出pose/root逐位同，后续跳帧不同不当全序列等价。run@10.0.1.41新81221同boot df9b9a2e已成功/具sudo，MAXN_SUPER/8核performance及当前上限1.984GHz/EMC3.199GHz；agi限制非整板缺配置，0频率/功耗写入。后续用run，原agi9179仍仅旧受限会话。当前ONNX双motion/human，motion670需X2重定向状态仍10槽；未新测该链。下一CPU/GPU流水解耦或独立重定向对照，不重复四组/不擅刷固件。六宫图/CSV/证据V2见报告，SDK电机MC新BLE训练0/Q1暂停；publication记录同步范围。
 
 2026-11-13：[X2 FGP＋Morph真实同机联合测试](README_X2_JOINT_LATENCY_RESULT_20261113.md)。连续929帧衣服IMU30Hz释放＋真实ROS反馈＋原native observe。FIFO R3完整900输出但17.647Hz/末积压20.963秒；对齐作者latest R4实际566输入/537输出/跳363，17.805Hz，FGP中位41.561/p95 63.420ms、1456 ready/1322接受、133次RPC>20ms及1反馈超时均拒。含180ms预览的人体参考年龄中位保守297–310ms/p95 341–356ms/最大495–510ms，不是BLE或机械端到端；首个输出约1.25秒，跳帧30Hz动态精度未证。两真实组共1437GPU帧/0训练，四计时合同/前后247源码24资产和历史结果SHA同/三子进程各退出0/锁空，温度最高69.343度/最低可用11624099840B；六宫图和数值回Mac。未达30Hz，下一分离骨架转换与同步通信并定位CPU调度；默认衣服/终端23/物理和Q1暂停未动，SDK电机MC新BLE0，同步见publication。
 

@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-11-13：[X2同板性能优化与motion候选](README_X2_JOINT_PERF_20261113.md)。当前权重双输出实核；motion消费X2重定向状态且仍10槽，切换本身不消除预览。独立三组同929帧/真实反馈observe对照准备，3合同过；SoC0实际RK3588且已有控制负载，不当第二块CUDA板。0电机MC训练，原输入与接口默认保持。
+2026-11-13：[X2性能四组结果、motion候选与宿主机频率](README_X2_JOINT_PERF_20261113.md)。实际新人体17.743→24.805Hz/FGP p95 64.019→38.972ms，全部ready RPC p95 23.685→14.866ms/超时157→6；仍跳155/929未30Hz，180ms预览不减。原247源24资产同/12子进程全退0/锁空，六宫图及原件已Mac。run成功登录同SoC1并核MAXN_SUPER/CPU8核1.984GHz/EMC3.199GHz，0改频功耗；后续用run。权重同时motion/human，重定向候选未测仍10槽；SoC0为RK3588，不当第二空闲Orin。SDK/电机MC训练0。
 
 2026-11-13：[X2 FGP＋Morph联合延迟简报](README_X2_JOINT_LATENCY_RESULT_20261113.md)／[完整证据记录](README_X2_JOINT_LATENCY_20261113.md)。真实FGP＋Morph＋ROS只读反馈＋native observe。latest人体17.81Hz、参考年龄中位约297–310ms/p95 341–356ms，含180ms预览但非BLE/机械端到端；363/929输入跳过，未30Hz，133次RPC超20ms拒绝。FIFO诊断末积压21秒，作者在线本身取最新。两六宫图/CSV/原件已回Mac，247源码24资产前后同，0电机MC训练，Q1保持暂停。
 

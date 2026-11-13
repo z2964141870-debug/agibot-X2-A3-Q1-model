@@ -1,4 +1,6 @@
-# X2 双 Orin 桥接连接实测
+# X2 Windows 桥接连接实测
+
+2026-11-13后续规则更新：用户要求恢复Windows桥接，并指定机器人使用有sudo权限的run。已原生`ssh sshuser@100.92.227.62`进入DESKTOP-LQL43SI，再从Windows原生`ssh run@10.0.1.41`密码登录同X2 Ultra SoC1，boot为df9b9a2e-b465-4057-86fb-4692ca5184b5，会话40802。后续操作和文件同步沿这条路径，覆盖先前Mac有线直连偏好；不使用转发端点、代理、隧道或替代认证，不修改网络或服务。凭据只在交互提示中提交，未写文件。两板实际为SoC1 Orin NX与SoC0 RK3588，旧“双Orin”标题已更正。收据见`logs/session_records/x2_bridge_run_recovered_20261113.json`。
 
 最新记录时间：2026-11-13 12:42:53 北京时间。状态：Windows 与 SoC0/SoC1 均已原生交互密码登录成功。下方 12:27 的超时保留为历史，不代表当前不可达。
 

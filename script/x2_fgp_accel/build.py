@@ -12,6 +12,15 @@ import time
 from script.x2_fgp_realtime.assets import file_digest
 
 
+PRECISION_FLAGS = {
+    "fp32": (),
+    "fp16": ("--fp16",),
+    "mixed": ("--fp16", "--precisionConstraints=obey",
+              "--layerPrecisions=*LayerNormalization:fp32,*Softmax:fp32,/ReduceSum*:fp32",
+              "--layerOutputTypes=*LayerNormalization:fp32,*Softmax:fp32,/ReduceSum*:fp32"),
+}
+
+
 def resources():
     memory = dict(line.split(":", 1) for line in Path("/proc/meminfo").read_text().splitlines())
     available = int(memory["MemAvailable"].split()[0]) * 1024
@@ -48,7 +57,7 @@ def stop_child(child):
 def main():
     parser = argparse.ArgumentParser(__doc__)
     parser.add_argument("--onnx", type=Path, required=True)
-    parser.add_argument("--precision", choices=("fp32", "fp16"), required=True)
+    parser.add_argument("--precision", choices=tuple(PRECISION_FLAGS), required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.output.exists():
@@ -71,8 +80,7 @@ def main():
                    "--saveEngine=" + str(engine.resolve()), "--memPoolSize=workspace:256M",
                    "--builderOptimizationLevel=2", "--maxAuxStreams=0", "--avgTiming=2",
                    "--noTF32", "--skipInference"]
-        if args.precision == "fp16":
-            command.append("--fp16")
+        command.extend(PRECISION_FLAGS[args.precision])
         child = None
         started = time.monotonic()
         samples = [before]

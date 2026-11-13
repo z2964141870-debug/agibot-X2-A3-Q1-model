@@ -2,7 +2,8 @@ import unittest
 
 import numpy as np
 
-from .probe import differences
+from .probe import differences, LIMITS
+from .build import PRECISION_FLAGS
 from .trt_session import validate_feed
 
 
@@ -44,6 +45,11 @@ class ContractTests(unittest.TestCase):
         result = differences(rotation, np.array([[.01, 0, 0]]), identity, np.zeros((1, 3)))
         self.assertAlmostEqual(result["pose_max_deg"], 2, places=8)
         self.assertAlmostEqual(result["root_max_m"], .01)
+
+    def test_mixed_constraints_and_original_limits(self):
+        self.assertEqual(LIMITS["mixed"], LIMITS["fp16"])
+        self.assertIn("--precisionConstraints=obey", PRECISION_FLAGS["mixed"])
+        self.assertTrue(any("*LayerNormalization:fp32" in value for value in PRECISION_FLAGS["mixed"]))
 
 
 if __name__ == "__main__":

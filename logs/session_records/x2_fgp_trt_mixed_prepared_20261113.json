@@ -1,0 +1,19 @@
+{
+  "record_id": "x2_fgp_trt_mixed_prepared_20261113",
+  "date": "2026-11-13",
+  "status": "R1_COMPLETED_R2_MIXED_PRECISION_PREPARED",
+  "r1_settled": {"engine_builds": 2, "gpu_cano_calls": 64, "cpu_cano_reference_calls": 64, "fp32_agreement": "PASSED", "fp16_agreement": "FAILED", "old_roots_preserved": true},
+  "r2_new_budget": {"engine_builds": 1, "build_wall_s": 600, "workspace_mib": 256, "gpu_cano_calls": 32, "cpu_cano_reference_calls": 32, "probe_outer_wall_s": 120},
+  "resource_limits_unchanged": {"min_available_gib": 4, "temperature_stop_c": 80, "min_disk_free_gib": 10},
+  "hypothesis": "Force LayerNormalization, Softmax and ReduceSum calculation/output to FP32 while allowing remaining layers FP16. R1 evidence has not established the cause of FP16 drift.",
+  "parser_observation": {"layers": 5885, "layer_types_observed": ["NORMALIZATION", "SOFTMAX", "REDUCE"], "parse_errors": 0},
+  "precision_constraints": "obey; no silent relaxation",
+  "agreement_limits": {"residual_max_abs": 0.005, "residual_relative_l2": 0.02, "pose_max_deg": 1.0, "root_max_m": 0.01},
+  "thresholds_relaxed": false,
+  "new_output_dirs": ["build_mixed_r2", "probe_mixed_r2"],
+  "original_author_models_and_baseline_code_changed": false,
+  "hardware_commands": 0,
+  "training_updates": 0,
+  "publish_allowed": false,
+  "r2_gpu_calls_at_preparation": 0
+}

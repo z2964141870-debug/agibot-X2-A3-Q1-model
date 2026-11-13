@@ -1,0 +1,122 @@
+{
+  "status": "SAVED_ACCELERATION_ANALYSIS_PASSED",
+  "inputs": [
+    {
+      "path": "data/analysis/X2_FGP_REALTIME_20261113/full_s1_t4_r1/report.json",
+      "bytes": 11946,
+      "sha256": "2ce44d23f7a01dff92ea5b1dcdf152cba0ffe758f44bc2de8db51674fa5a19e4"
+    },
+    {
+      "path": "data/analysis/X2_FGP_REALTIME_20261113/full_s1_t4_r1/outputs.npz",
+      "bytes": 26601,
+      "sha256": "cb9728176e7e2a308d4b5e72b428b7054ccf7af3e2b59b84eb3b8852607afc21"
+    },
+    {
+      "path": "data/analysis/X2_FGP_TRT_ACCEL_20261113/probe_fp32_r1/report.json",
+      "bytes": 13322,
+      "sha256": "3e44b840ab3e293ad21e1f3135bc213d563b3fc65ab310168e130b81bd9620f4"
+    },
+    {
+      "path": "data/analysis/X2_FGP_TRT_ACCEL_20261113/probe_fp32_r1/outputs.npz",
+      "bytes": 26597,
+      "sha256": "8f5c3ad79aa935d8a53e38d4aeb2ba4896ec1e74d021b36c715be9993e93975f"
+    },
+    {
+      "path": "data/analysis/X2_FGP_TRT_ACCEL_20261113/probe_fp32_r1/cano_comparison.npz",
+      "bytes": 70077,
+      "sha256": "e0c0187822e06ef680cce9f06eeeee5111ce78fa70c15eb0abc981188f049588"
+    },
+    {
+      "path": "data/analysis/X2_FGP_TRT_ACCEL_20261113/probe_fp16_r1/report.json",
+      "bytes": 13326,
+      "sha256": "1b0f57517fab419e42b0b2ef7f9804d1d38608a734545d32d60e9c785be5721d"
+    },
+    {
+      "path": "data/analysis/X2_FGP_TRT_ACCEL_20261113/probe_fp16_r1/outputs.npz",
+      "bytes": 26595,
+      "sha256": "c0e40b1c0cc4fd98b01804e76ec2cef8103fd5e10d26309f925e4bc4ea6a7fdf"
+    },
+    {
+      "path": "data/analysis/X2_FGP_TRT_ACCEL_20261113/probe_fp16_r1/cano_comparison.npz",
+      "bytes": 66647,
+      "sha256": "aa93556a038ade08da7b0b380333fb1631ebc57118c3ec97963f48d515c06bfd"
+    }
+  ],
+  "cases": [
+    {
+      "name": "CPU ONNX",
+      "timing_all_ms": {
+        "count": 32,
+        "p50": 129.3239540000286,
+        "p95": 134.53517309985727,
+        "max": 139.02538500042283,
+        "over_33ms": 32
+      },
+      "timing_after_first2_ms": {
+        "count": 30,
+        "p50": 129.287934000331,
+        "p95": 132.84260385012203,
+        "max": 136.03203000002395,
+        "over_33ms": 30
+      },
+      "agreement_status": "REFERENCE",
+      "agreement_metrics": null
+    },
+    {
+      "name": "TRT FP32",
+      "timing_all_ms": {
+        "count": 32,
+        "p50": 50.551759499967375,
+        "p95": 57.92679119998638,
+        "max": 61.9980819999455,
+        "over_33ms": 32
+      },
+      "timing_after_first2_ms": {
+        "count": 30,
+        "p50": 50.551759499967375,
+        "p95": 57.607843799962666,
+        "max": 58.25897799991253,
+        "over_33ms": 30
+      },
+      "agreement_status": "PASSED",
+      "agreement_metrics": {
+        "residual_max_abs": 8.344650268554688e-07,
+        "residual_relative_l2": 6.201510132086696e-07,
+        "pose_max_deg": 0.050522209707365075,
+        "pose_mean_deg": 0.004124829893908764,
+        "root_max_m": 6.30435920356831e-07,
+        "root_mean_m": 4.190557945094042e-07
+      }
+    },
+    {
+      "name": "TRT FP16",
+      "timing_all_ms": {
+        "count": 32,
+        "p50": 29.48190799997974,
+        "p95": 36.18454294999083,
+        "max": 37.821054999994885,
+        "over_33ms": 7
+      },
+      "timing_after_first2_ms": {
+        "count": 30,
+        "p50": 29.365063999989616,
+        "p95": 36.258460049998575,
+        "max": 37.821054999994885,
+        "over_33ms": 6
+      },
+      "agreement_status": "FAILED",
+      "agreement_metrics": {
+        "residual_max_abs": 0.0784115195274353,
+        "residual_relative_l2": 0.04772939532995224,
+        "pose_max_deg": 13.965882438660563,
+        "pose_mean_deg": 1.192161150074136,
+        "root_max_m": 0.03081033006310463,
+        "root_mean_m": 0.014494424685835838
+      }
+    }
+  ],
+  "limitation": "32-frame unpaced recording, no BLE/browser/network/robot timing or human GT. CPU baseline predates reboot; not a randomized concurrent performance trial.",
+  "new_model_calls": 0,
+  "hardware_commands": 0,
+  "training_updates": 0
+}

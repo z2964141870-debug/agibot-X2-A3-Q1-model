@@ -1,6 +1,6 @@
 # X2 FGP CANO TensorRT 加速
 
-记录日期：2026-11-13。阶段：CANO_TRT_R1。当前为独立方案与 CPU 合同准备完成，实际 GPU 构建/推理待执行。后续实测在本文件追加。
+记录日期：2026-11-13。阶段：CANO_TRT_R1 已完成；独立 R2 混合精度准备。FP32 一致性通过但未达30Hz，FP16 一致性失败；不采用失败版本。
 
 ## 目标与边界
 
@@ -40,4 +40,26 @@ env -u PYTHONPATH -u PYTHONHOME \
   --output data/analysis/X2_FGP_TRT_ACCEL_20261113/build_fp32_r1
 ```
 
-真实部署/构建/推理结果及后续发布收据待执行后登记，不以准备完成代表加速通过。
+## R1 实际完成
+
+准备提交 `6dff33e5473467e6082e358a147b4d6f95d72228` 已显式 push，并独立 ls-remote 核同40位后执行。五源码包 6,110 B/SHA `c2a7dba5c7ca18210e6fa3a8d3c38b2dc6ad7ce949ed23177e90bda8567067c7` 上板核同，五源码逐件 SHA 同；原环境六合同 .002 秒过。Mac 扩展头 provenance 被 GNU tar 忽略，五个实际文件完好，不重传重测。
+
+| 完整链 | 中位 / p95 / 最大 ms | 超33.33ms | 一致性 |
+| --- | --- | ---: | --- |
+| 保存 CPU ONNX 基线 | 129.324 / 134.535 / 139.025 | 32/32 | 参考 |
+| TensorRT FP32 CANO | 50.552 / 57.927 / 61.998 | 32/32 | 通过 |
+| TensorRT FP16 CANO | 29.482 / 36.185 / 37.821 | 7/32 | **失败，不采用** |
+
+FP32 residual 最大绝对差 `8.34465e-7`/相对L2 `6.20151e-7`，全链关节角差最大 0.05053 度、根平移最大 `6.30436e-7 m`；角差公式对 float32 近似旋转有数值底噪，不把0.05度当真人误差。FP16 residual 最大差 .078412/相对L2 .047729，最大关节角差13.9659度、根平移 .0308103 m，明显超预定门。中位29.5ms也不能掩盖7/32超时或一致性失败。
+
+FP32 构建24.190秒、engine 96,506,588 B/SHA `eda242045eab76c5dc0b59db54ac7a8f51a5b9f90107a6419b47b03eb13bb739`；FP16 构建110.552秒、engine50,281,180 B/SHA `48e1a69b91cdbb59a09fad8ca9ae23d1bf49a8bfba90ca7691427d71f83a2b53`。最低真实可用内存10.963/9.838 GB、最高温66.843/67.406 C，两个构建子进程退出0。原ONNX SHA `adf4e93a607c45ee1a18d4e12a54648afbb709e5d5a769f9ed61743e5d581649`。
+
+实际恰好两个engine/64次GPU CANO/64次CPU同输入参考，0训练和硬件命令。原基线代码、247上游源和24作者资产测试后再次SHA全同。32输出完整且tracking；原作者GP训练来源警告保留。CPU全链基线属于重启前历史，GPU测试属于新boot，非同场随机配对性能试验；逐输入CANO数值对照则在本次GPU计时之后执行。
+
+原始 JSON/NPZ/log 已原生SCP取回，`X2_FGP_TRT_R1_RESULTS_20261113.tgz` SHA `fad36b1cfbd5fd8a35c821da5e4edffa6f9a8ab97902497207e86b63644cc2cd` 两端同，12份253,068 B原件及五执行源码SHA同；engine不回传，保持设备本地并登记SHA。只读分析/CSV/六宫图在 Mac `data/analysis/X2_FGP_TRT_ACCEL_20261113/analysis_r1`，PNG已目视，无新增模型调用。[R1六宫图](../data/analysis/X2_FGP_TRT_ACCEL_20261113/analysis_r1/six_panel.png)。
+
+## R2 独立混合精度方案
+
+R1 的两个engine和64调用预算已结清，不把失败FP16改写为通过或覆盖其根。只读解析网络实际有5,885层，包含 LayerNormalization、Softmax、两个ReduceSum；没有 parser 不支持错误。根据精度敏感性，新增**独立一个** FP16 engine，强制所有 `*LayerNormalization`、`*Softmax`、`/ReduceSum*` 的计算精度和输出为FP32，其余允许FP16；这是待验证假设，不能断言已定位FP16误差因果。
+
+新增独立预算为一engine/600秒/256MiB workspace/32 GPU与32 CPU参考，资源门与R1相同；输出 `build_mixed_r2`、`probe_mixed_r2`，复用原保存CPU全链，不重跑R1两组。严格沿用FP16原数值阈值，不放宽。`--precisionConstraints=obey`，若不能满足则构建失败，不软回退。原作者/旧基线不改；仅自有build/probe支持新模式与一CPU合同，准备发布后再部署执行。第二第三终端保持不动，0新训练/硬件。

@@ -1,6 +1,6 @@
 # YUANQI 项目状态与重要文件
 
-2026-11-13：[FGP CANO独立TensorRT加速准备](README_X2_FGP_TRT_ACCEL_20261113.md)。原生Orin核TensorRT10.7/CUDA12.6可用；只替换CANO执行，两个有界FP32/FP16 engine与64次GPU/64次CPU参考预算，六CPU合同过，尚未实际GPU构建。原作者/基线代码及第二第三终端保持，0硬件/训练；按数值一致性和完整链33.33ms门判断，不把准备当加速成功。
+2026-11-13：[FGP TensorRT R1实测与独立混合精度准备](README_X2_FGP_TRT_ACCEL_20261113.md)。FP32完整链50.552ms且一致性过；FP16虽29.482ms，但最大14度/3.08cm偏差被拒。两engine/64GPU与64CPU参考预算结清，原源/资产终检与Mac原件SHA、六宫图齐。新增独立一engine/32GPU32CPU混合精度方案，强制norm/softmax/reduce为FP32、其余允许FP16，阈值不放宽，待发布执行。第二第三终端/硬件训练保持。
 
 2026-11-13：[FGP实时版ARM64原生移植与完整链实测](README_X2_FGP_REALTIME_ARM64_20261113.md)。用户新资源24资产逐件SHA过；Orin原生carticulate编译/动力学不变量通过，两套CANO→LIP→GP→原生物理各32有效输出。4线程约129–132ms/帧，未过30Hz，CANO为主要优化方向；Windows逐值等价及真人精度未证。247上游源/24资产终检过，321650B原始结果包回Mac及20项SHA同；SoC1重启后仅补只读取证，0电机/新BLE/训练，不重跑已通过组。
 

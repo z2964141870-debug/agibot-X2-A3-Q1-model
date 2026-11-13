@@ -1,0 +1,253 @@
+{
+  "status": "ARM64_STAGE_INTEGRITY_PASSED",
+  "machine": "aarch64",
+  "source_checks": [
+    {
+      "archive": "data/deliveries/CLOTHO_FGP_REALTIME_SOURCE_1e719140_20261113.tgz",
+      "sha256": "e6b0d59e67c4a8847b14d6c639c40af98b67db98c7874bf83c87229379232306",
+      "regular_files_sha_matched": 96
+    },
+    {
+      "archive": "data/deliveries/CARTICULATE_UPSTREAM_ce5b2046_20261113.tgz",
+      "sha256": "3bceae456878ff5555e3d053c9eb4f9f2d1eec47ca4746af4aa90379cc3194b0",
+      "regular_files_sha_matched": 46
+    },
+    {
+      "archive": "data/deliveries/SOPHUS_12210_de0f8d3d_20261113.tgz",
+      "sha256": "ca5d3f8955f7da6ec3c24b641d5a1a20f6f4cd9f031023e0eeaa4bb6bd9edf11",
+      "regular_files_sha_matched": 105
+    }
+  ],
+  "original_assets_sha_matched": 24,
+  "installed_native_matches_build": true,
+  "native_invariants": {
+    "status": "NATIVE_DYNAMICS_INVARIANTS_PASSED",
+    "module_sha256": "2d75a14be1bf5a79aa09d34ce99d9540e79823adf05a33c2c6399a6eb099c08d",
+    "cache_sha256": "18f9cbd3c62f0dc69a33bc5a1c7c8f0177781fa5c4cdb389adbf36ee8f8998b4",
+    "roundtrip_state": true,
+    "mass_symmetry_max_abs": 2.86102294921875e-06,
+    "mass_min_eigenvalue": 0.00017069746993569583,
+    "inverse_dynamics_residual_max_abs": 5.7244662954758496e-05,
+    "forward_inverse_acceleration_max_abs": 1.8421560525894165e-05,
+    "jacobian_velocity_max_abs": 1.4901161193847656e-08,
+    "integration_finite_difference_max_abs": 7.578358054161072e-05,
+    "contact_joints_checked": 5,
+    "windows_binary_equivalence": "NOT_ESTABLISHED",
+    "hardware_commands": 0,
+    "limitation": "Invariant checks on one deterministic SMPL state; not Windows-reference parity or accuracy validation."
+  },
+  "runs": [
+    {
+      "status": "RECORDED_NEURAL_STAGES_PASSED",
+      "bundle": "onnx_s1",
+      "threads": 2,
+      "native_physics": false,
+      "initialize_s": 0.652385084999878,
+      "timing_all_ms": {
+        "count": 32,
+        "p50": 209.95477300039056,
+        "p95": 212.66306005009028,
+        "max": 213.80255599979137,
+        "over_33ms": 32
+      },
+      "timing_after_first2_ms": {
+        "count": 30,
+        "p50": 209.92978599997514,
+        "p95": 210.63162799991915,
+        "max": 212.42137900026137,
+        "over_33ms": 30
+      },
+      "run": "neural_s1_t2_r2"
+    },
+    {
+      "status": "RECORDED_NEURAL_STAGES_PASSED",
+      "bundle": "onnx_s1",
+      "threads": 1,
+      "native_physics": false,
+      "initialize_s": 0.6581107289994179,
+      "timing_all_ms": {
+        "count": 32,
+        "p50": 390.14202099951945,
+        "p95": 392.2150311997939,
+        "max": 393.0656610000369,
+        "over_33ms": 32
+      },
+      "timing_after_first2_ms": {
+        "count": 30,
+        "p50": 390.0916749994394,
+        "p95": 391.5960844003166,
+        "max": 391.7883610001809,
+        "over_33ms": 30
+      },
+      "run": "neural_s1_t1_r1"
+    },
+    {
+      "status": "RECORDED_FULL_PIPELINE_PASSED",
+      "bundle": "onnx_s1",
+      "threads": 4,
+      "native_physics": true,
+      "initialize_s": 0.8015644699999029,
+      "timing_all_ms": {
+        "count": 32,
+        "p50": 129.3239540000286,
+        "p95": 134.53517309985727,
+        "max": 139.02538500042283,
+        "over_33ms": 32
+      },
+      "timing_after_first2_ms": {
+        "count": 30,
+        "p50": 129.287934000331,
+        "p95": 132.84260385012203,
+        "max": 136.03203000002395,
+        "over_33ms": 30
+      },
+      "run": "full_s1_t4_r1",
+      "exclusive_stage_median_ms": {
+        "cano": 112.74124150031639,
+        "pose": 2.3160844998528773,
+        "physics": 12.819223500173393
+      },
+      "native_physics_median_ms": 6.47004949996699,
+      "statuses": [
+        "tracking"
+      ]
+    },
+    {
+      "status": "RECORDED_FULL_PIPELINE_PASSED",
+      "bundle": "onnx_cano_s_ep120_fast",
+      "threads": 4,
+      "native_physics": true,
+      "initialize_s": 0.771439965999889,
+      "timing_all_ms": {
+        "count": 32,
+        "p50": 132.48075349974897,
+        "p95": 137.48764824990758,
+        "max": 155.94508499998483,
+        "over_33ms": 32
+      },
+      "timing_after_first2_ms": {
+        "count": 30,
+        "p50": 132.48075349974897,
+        "p95": 137.65918074991532,
+        "max": 155.94508499998483,
+        "over_33ms": 30
+      },
+      "run": "full_cano_t4_r1",
+      "exclusive_stage_median_ms": {
+        "cano": 115.71122399982414,
+        "pose": 2.326389000245399,
+        "physics": 12.767739000082656
+      },
+      "native_physics_median_ms": 6.343512000057672,
+      "statuses": [
+        "tracking"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "data/analysis/X2_FGP_REALTIME_20261113/asset_audit_orin.json",
+      "bytes": 6790,
+      "sha256": "c20ec915f81f65ebe2004df80d9e27eda64c30a1492190e92c202f9b12da5467"
+    },
+    {
+      "path": "data/analysis/X2_FGP_REALTIME_20261113/native_invariants_r1.json",
+      "bytes": 830,
+      "sha256": "8897b07b47724dcce96151a316b95f34fd20ea242a030a671700d61dbd793c8c"
+    },
+    {
+      "path": "data/analysis/X2_FGP_REALTIME_20261113/native_build_r1/build_receipt.json",
+      "bytes": 822,
+      "sha256": "31ae404298c764c9e4e7f3f92f2e75787de687b76be197bcefd8db178832c7f3"
+    },
+    {
+      "path": "data/runtime/clotho_fgp_realtime_20261113/carticulate/carticulate.cpython-310-aarch64-linux-gnu.so",
+      "bytes": 421920,
+      "sha256": "2d75a14be1bf5a79aa09d34ce99d9540e79823adf05a33c2c6399a6eb099c08d"
+    },
+    {
+      "path": "data/analysis/X2_FGP_REALTIME_20261113/neural_s1_t2_r2/report.json",
+      "bytes": 9557,
+      "sha256": "11427ff6bd9ed5da79e5652e6a56207209cb922ec2b732925a965773ff9e4bc8"
+    },
+    {
+      "path": "data/analysis/X2_FGP_REALTIME_20261113/neural_s1_t2_r2/outputs.npz",
+      "bytes": 27355,
+      "sha256": "a67aebca510d8f3529ef8c0a3e94c84aeb9fe8bda4153881b1303c73f3ba8372"
+    },
+    {
+      "path": "data/analysis/X2_FGP_REALTIME_20261113/neural_s1_t1_r1/report.json",
+      "bytes": 9537,
+      "sha256": "50f36b306f3e9eda0f9292f5e439581b6976f04c4c80d6e4cc91305b01edb3a0"
+    },
+    {
+      "path": "data/analysis/X2_FGP_REALTIME_20261113/neural_s1_t1_r1/outputs.npz",
+      "bytes": 27355,
+      "sha256": "a67aebca510d8f3529ef8c0a3e94c84aeb9fe8bda4153881b1303c73f3ba8372"
+    },
+    {
+      "path": "data/analysis/X2_FGP_REALTIME_20261113/full_s1_t4_r1/report.json",
+      "bytes": 11946,
+      "sha256": "2ce44d23f7a01dff92ea5b1dcdf152cba0ffe758f44bc2de8db51674fa5a19e4"
+    },
+    {
+      "path": "data/analysis/X2_FGP_REALTIME_20261113/full_s1_t4_r1/outputs.npz",
+      "bytes": 26601,
+      "sha256": "cb9728176e7e2a308d4b5e72b428b7054ccf7af3e2b59b84eb3b8852607afc21"
+    },
+    {
+      "path": "data/analysis/X2_FGP_REALTIME_20261113/full_cano_t4_r1/report.json",
+      "bytes": 11949,
+      "sha256": "62d804c8a8493b4562717d24f0e36c8a1230776696154d94c2b742c312b211ac"
+    },
+    {
+      "path": "data/analysis/X2_FGP_REALTIME_20261113/full_cano_t4_r1/outputs.npz",
+      "bytes": 26578,
+      "sha256": "0ffe918be88afed7c495fbfe3d2497db858c6260e549b3fe8d808015c2b0eab4"
+    },
+    {
+      "path": "script/x2_fgp_realtime/CMakeLists.txt",
+      "bytes": 863,
+      "sha256": "c0bc3c166ddd23eb4380272e1b784f0b183115fd5f8178e2576beb2917e5858a"
+    },
+    {
+      "path": "script/x2_fgp_realtime/__init__.py",
+      "bytes": 74,
+      "sha256": "e258b1ef1422cd86c0e0dd4c62e57db8f29ed96f473123e7bc5b53a015643505"
+    },
+    {
+      "path": "script/x2_fgp_realtime/assets.py",
+      "bytes": 5218,
+      "sha256": "60bb629806e5e84935ae5b0a00a7bce1d2cfc282c1154ecb6c7232ed29eaa918"
+    },
+    {
+      "path": "script/x2_fgp_realtime/build_native.py",
+      "bytes": 3349,
+      "sha256": "4572260309ce4be4cd4c819e004a259c99172af4112c0a8b5b29ca9c6053b66d"
+    },
+    {
+      "path": "script/x2_fgp_realtime/native_check.py",
+      "bytes": 4335,
+      "sha256": "11f2c2ea6d1a913ccee4cb339ca4ff699fc0e5285f62f4c9c16f85588f4ebeeb"
+    },
+    {
+      "path": "script/x2_fgp_realtime/probe.py",
+      "bytes": 7036,
+      "sha256": "1d043170f8d2f01d18abbb52f548f568af7414c1571006679927f70d284ef7d6"
+    },
+    {
+      "path": "script/x2_fgp_realtime/test_assets.py",
+      "bytes": 1864,
+      "sha256": "6a05c6fa28d2b1de73f2d9c55b26184e2cac5ffeadaf5b5b7a3cb3084dd56459"
+    },
+    {
+      "path": "script/x2_fgp_realtime/verify_stage.py",
+      "bytes": 6662,
+      "sha256": "3d2327d8873076787d688ab1996b52a866b1378d72c1beafc207bdc02d944225"
+    }
+  ],
+  "hardware_commands": 0,
+  "publish_allowed": false,
+  "windows_binary_equivalence": "NOT_ESTABLISHED",
+  "accuracy_ground_truth_evaluated": false
+}

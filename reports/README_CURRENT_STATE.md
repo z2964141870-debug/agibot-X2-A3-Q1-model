@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-13：[FGP ARM64兼容已实测，实时预算未过](README_X2_FGP_REALTIME_ARM64_20261113.md)。新包24资产Mac/SoC1 SHA同、两套均S1；原carticulate ce5b204编译/不变量及两套完整CANO/LIP/GP/物理各32输出通过，4线程中位129.324/132.481ms、p95 134.535/137.488ms，全超33.33ms。CANO中位112.741/115.711ms、内部物理6.470/6.344ms；Windows逐值等价和真人精度未证。247上游源/24资产终检过，321650B原始包已回Mac，20项610641B与板端大小SHA同。一次直连恢复成功，boot变8f960fd3；推理属于旧boot，重启后只读核原件和补取证、不重跑。0电机/新BLE/反馈/训练，默认引擎/Q1暂停保持。下一CANO独立加速与输出/长尾门，见[收据](../logs/session_records/x2_fgp_realtime_arm64_20261113.json)，设备新文档镜像待。
+
 2026-11-13侧线：[第二、第三终端原生writer与MC协议软件接通](README_X2_MORPH_NATIVE_WRITER_20261113.md)。独立链接原Sonic AimdkIo，50Hz推理/500Hz writer分离；23Python和19C++检查、三场景隔离SDK正常返回/策略退出/反馈断流通过。真实X2反馈6秒295请求/295ready/294接受，接受RPC p95 13.690ms；1次22.570ms超20ms已拒绝。PD目标不是实际关节角，初次误拒162条的检查已修，原件保留。IMU为核SHA torso源码约定+FK腰速重建，不当新物理标定。设备R6二进制/PROFILE_V2/ISOLATED_R3/LIVE_FEEDBACK_R2已成，MC只读PASSIVE/运行2251；实际电机和MC修改0。剩现场真实输出的受控接管、执行器与增益验收；默认observe，不启动原ritual。主线FGP及Q1暂停保持。[收据](../logs/session_records/x2_morph_native_writer_20261113.json)，同步见后续publication。
 
 2026-11-13：[FGP直连准备与Downloads/checkpoints实查](README_X2_CLOTHO_REALTIME_BRANCH_REVIEW_20261113.md#mac-有线直连与资源实查)。Mac经en7临时10.0.1.10有线原生SSH直达SoC1，新分支192034B源码包板端SHA同/独立解包，CPU ONNXRuntime1.19.2导入及pip check过。用户指定目录六文件586300547B逐件SHA：U100h/LIP/GlobalPose与已用版本同，另三ASIP；无ONNX/manifest或新部署包，不是没有任何FGP权重。新版模型/物理链尚未运行，仍待完整新资源及ARM64 carticulate；默认引擎/衣服/机器人输出及Q1暂停未改。本节设备文档镜像待。[实查收据](../logs/session_records/x2_clotho_realtime_direct_assets_20261113.json)。

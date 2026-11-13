@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-13：[FGP实时版ARM64原生移植与完整链实测](README_X2_FGP_REALTIME_ARM64_20261113.md)。用户新资源24资产逐件SHA过；Orin原生carticulate编译/动力学不变量通过，两套CANO→LIP→GP→原生物理各32有效输出。4线程约129–132ms/帧，未过30Hz，CANO为主要优化方向；Windows逐值等价及真人精度未证。247上游源/24资产终检过，321650B原始结果包回Mac及20项SHA同；SoC1重启后仅补只读取证，0电机/新BLE/训练，不重跑已通过组。
+
 2026-11-13侧线：[Morph原生writer、故障与MC交接软件验证](README_X2_MORPH_NATIVE_WRITER_20261113.md)。Orin独立C++构建/23Python＋19C++检查与三场景隔离SDK通过；真实反馈6秒295请求/294接受、p95 13.690ms，1次22.570ms超时拒绝。IMU使用核SHA源码约定及pelvis重建，非新物理标定；修正PD目标误按实际位置限位。MC只读为PASSIVE，真实发送/MC修改0，现场实际接管未执行。
 
 2026-11-13：[Mac有线直连、FGP实时依赖与指定权重目录实查](README_X2_CLOTHO_REALTIME_BRANCH_REVIEW_20261113.md#mac-有线直连与资源实查)。新版源码传至SoC1核同、ONNXRuntime1.19.2导入和pip check过；Downloads/checkpoints六文件中有已用U100h/LIP/GlobalPose及ASIP，没有新CANO/LIP/GP ONNX配套资源。尚未新版模型推理/物理链或真机控制，完整权重及ARM64原生物理库待。

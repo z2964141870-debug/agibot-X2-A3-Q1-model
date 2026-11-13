@@ -1,0 +1,70 @@
+{
+  "record_id": "x2_fgp_realtime_arm64_20261113",
+  "date": "2026-11-13",
+  "status": "ARM64_NATIVE_AND_RECORDED_FULL_PIPELINE_PASSED_REALTIME_BUDGET_FAILED",
+  "evidence_basis": "Actual native SSH command outputs, then original JSON/NPZ and native module copied to Mac with archive SHA and per-artifact verification. This compact summary is not itself a byte-identical copy of those originals; the companion integrity receipt is.",
+  "device": {
+    "host": "10.0.1.41",
+    "project": "/home/agi/x2_morph_human_20261113",
+    "machine": "aarch64",
+    "boot_id": "39cb8e5a-9c22-451e-a3ba-23c98bebccd2",
+    "access": "Mac Ethernet direct native interactive SSH; no Windows"
+  },
+  "assets": {
+    "input": "/Users/yu/Downloads/fgp_realtime_weights.zip",
+    "archive_bytes": 271917294,
+    "archive_sha256": "c5994a8cac85550539526408259ce3eb2884450a08953f75c8cc3d220d69df9d",
+    "file_count": 24,
+    "unpacked_bytes": 295951921,
+    "mac_and_device_size_sha_inventory_audit": "PASSED",
+    "both_manifest_model_sizes": "S1",
+    "format": 2,
+    "dtype": "float32",
+    "opset": 17,
+    "history_frames": 30,
+    "cano_output": "latest",
+    "provenance_warnings": {"onnx_s1": "GP training LIP hash differs", "onnx_cano_s_ep120_fast": "GP training CANO hash differs"},
+    "same_lip_onnx_binary_in_both_bundles": true,
+    "post_probe_full_integrity_recheck": "ARM64_STAGE_INTEGRITY_PASSED"
+  },
+  "native_build": {
+    "upstream_repository": "Xinyu-Yi/carticulate",
+    "upstream_commit": "ce5b20464f580f81033ed063fdf3fba7f7a05346",
+    "sophus_commit": "de0f8d3d92bf776271e16de56d1803940ebccab9",
+    "wall_s": 43.047133633,
+    "bytes": 421920,
+    "sha256": "2d75a14be1bf5a79aa09d34ce99d9540e79823adf05a33c2c6399a6eb099c08d",
+    "module": "carticulate.cpython-310-aarch64-linux-gnu.so",
+    "binding_scope": "Original kinematic and dynamic armature/model blocks; unused optimizer and ESKF omitted. Original dynamics equations not rewritten.",
+    "windows_binary_equivalence": "NOT_ESTABLISHED",
+    "numeric_invariants_status": "NATIVE_DYNAMICS_INVARIANTS_PASSED",
+    "mass_symmetry_max_abs": 0.00000286102294921875,
+    "mass_min_eigenvalue": 0.00017069746993569583,
+    "inverse_dynamics_residual_max_abs": 0.000057244662954758496,
+    "forward_inverse_acceleration_max_abs": 0.000018421560525894165,
+    "jacobian_velocity_max_abs": 0.000000014901161193847656,
+    "integration_finite_difference_max_abs": 0.00007578358054161072
+  },
+  "fixture": {
+    "relative_path": "data/runtime/x2-fgp-viewer/recorded_fixture.npz",
+    "sha256": "0b30bd434ce8d7326b1a866de7c96109a8a0a6ebcb3f8c6283477b47d6c0f34d",
+    "raw_shape": [61, 10, 7],
+    "input_frames": 61,
+    "history_only_frames": 29,
+    "output_frames_per_run": 32,
+    "old_pose_root_keys_are_ground_truth": false
+  },
+  "runs": [
+    {"name": "neural_s1_t1_r1", "status": "RECORDED_NEURAL_STAGES_PASSED", "threads": 1, "full_physics": false, "p50_ms": 390.14202099951945, "p95_ms": 392.2150311997939, "max_ms": 393.0656610000369, "over_33_33_ms": 32},
+    {"name": "neural_s1_t2_r2", "status": "RECORDED_NEURAL_STAGES_PASSED", "threads": 2, "full_physics": false, "p50_ms": 209.95477300039056, "p95_ms": 212.66306005009028, "max_ms": 213.80255599979137, "over_33_33_ms": 32},
+    {"name": "full_s1_t4_r1", "status": "RECORDED_FULL_PIPELINE_PASSED", "threads": 4, "full_physics": true, "p50_ms": 129.3239540000286, "p95_ms": 134.53517309985727, "max_ms": 139.02538500042283, "over_33_33_ms": 32, "after_first2_p50_ms": 129.287934000331, "after_first2_p95_ms": 132.84260385012203},
+    {"name": "full_cano_t4_r1", "status": "RECORDED_FULL_PIPELINE_PASSED", "threads": 4, "full_physics": true, "p50_ms": 132.48075349974897, "p95_ms": 137.48764824990758, "max_ms": 155.94508499998483, "over_33_33_ms": 32, "after_first2_p50_ms": 132.48075349974897, "after_first2_p95_ms": 137.65918074991532}
+  ],
+  "diagnostic_frame": {"run": "full_s1_t4_r1", "frame": 31, "total_ms": 128.6587859995052, "calibration_ms": 0.6708849996357458, "status": "tracking", "native_physics_ms": 6.260552999265201, "exclusive_cano_ms": 112.46653000034712, "exclusive_pose_ms": 1.9732660002773628, "exclusive_outer_physics_ms": 12.725736999527726, "timers_are_nested": true},
+  "preserved_probe_failure": {"output": "neural_s1_t2_r1", "cause": "Own probe expected 11 IMUs although fixture already contains selected 10; failed before model creation", "corrected_run": "neural_s1_t2_r2"},
+  "local_checks": {"asset_tests": 6, "asset_tests_passed": 6, "asset_tests_wall_s": 0.003, "compileall": "PASSED", "diff_check": "PASSED", "verify_stage_device_execution": "ARM64_STAGE_INTEGRITY_PASSED", "clotho_original_files_sha_matched": 96, "carticulate_original_files_sha_matched": 46, "sophus_original_files_sha_matched": 105, "mac_received_artifacts_and_own_sources_sha_matched": 20, "mac_verified_bytes": 610641},
+  "connection_at_evidence_retrieval": {"scp": "No route to host", "previous_ssh": "Operation timed out; session exited", "mac_interface": "en7", "alias_retained": "10.0.1.10/24", "link_status_at_error": "inactive", "media_at_error": "autoselect (none)", "route_interface": "en7", "route_reject_flag_at_error": true, "fresh_native_recovery_attempt": "SUCCEEDED", "recovered_link": "active, 100baseTX full-duplex", "new_boot_id": "8f960fd3-d5da-4630-b5de-4d61d7251901", "reboot_reason": "NOT_INVESTIGATED", "agent_issued_reboot": false, "inference_repeated_after_reboot": false, "no_global_unreachability_claim": true},
+  "boundaries": {"ble_connections": 0, "new_calibration": false, "feedback_subscriptions": 0, "hardware_commands": 0, "publish_allowed": false, "original_engine_switched": false, "q1_training_touched": false, "training_updates": 0, "accuracy_ground_truth_evaluated": false, "wall_clock_online_tested": false},
+  "artifact_status": {"raw_results": "MAC_AND_DEVICE_SIZE_SHA_VERIFIED", "archive": "data/deliveries/X2_FGP_REALTIME_ARM64_RESULTS_20261113.tgz", "archive_bytes": 321650, "archive_sha256": "e19ed1527ea5a313f328e8fe6bfd950c4442da26edc771affd0c8a4eab12934f", "regular_members": 13, "new_document_device_mirror": "PENDING", "baidu_backup": "NOT_PERFORMED"},
+  "next": "Assess CANO execution acceleration with output parity and full latency gates; do not repeat passed probes. Windows binary parity and author training provenance pairing remain unverified."
+}

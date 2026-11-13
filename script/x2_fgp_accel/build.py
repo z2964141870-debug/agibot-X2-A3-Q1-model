@@ -4,6 +4,7 @@ import fcntl
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import signal
 import subprocess
@@ -18,6 +19,8 @@ PRECISION_FLAGS = {
     "mixed": ("--fp16", "--precisionConstraints=obey",
               "--layerPrecisions=*LayerNormalization:fp32,*Softmax:fp32,/ReduceSum*:fp32",
               "--layerOutputTypes=*LayerNormalization:fp32,*Softmax:fp32,/ReduceSum*:fp32"),
+    "mixed_gemm": ("--fp16", "--precisionConstraints=obey"),
+    "tf32": (),
 }
 
 
@@ -59,6 +62,7 @@ def main():
     parser.add_argument("--onnx", type=Path, required=True)
     parser.add_argument("--precision", choices=tuple(PRECISION_FLAGS), required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--precision-plan", type=Path)
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Use a new output directory")
@@ -70,6 +74,16 @@ def main():
     inventory = json.loads((args.onnx.parent / "manifest.json").read_text())
     if onnx_hash != inventory["files"][args.onnx.name]:
         parser.error("ONNX does not match its author manifest")
+    plan, extra_flags = None, []
+    if args.precision == "mixed_gemm":
+        if args.precision_plan is None:
+            parser.error("mixed_gemm requires an audited precision plan")
+        from .precision_plan import specifications
+        plan = json.loads(args.precision_plan.read_text())
+        precision_spec, output_spec = specifications(plan, onnx_hash)
+        extra_flags = ["--layerPrecisions="+precision_spec, "--layerOutputTypes="+output_spec]
+    elif args.precision_plan is not None:
+        parser.error("precision plan is only for mixed_gemm")
     lock_path = Path("data/locks/x2_fgp_accel.lock")
     lock_path.parent.mkdir(parents=True, exist_ok=True)
     with lock_path.open("a") as lock:
@@ -79,8 +93,11 @@ def main():
         command = ["/usr/src/tensorrt/bin/trtexec", "--onnx=" + str(args.onnx.resolve()),
                    "--saveEngine=" + str(engine.resolve()), "--memPoolSize=workspace:256M",
                    "--builderOptimizationLevel=2", "--maxAuxStreams=0", "--avgTiming=2",
-                   "--noTF32", "--skipInference"]
+                   "--skipInference"]
+        if args.precision != "tf32":
+            command.append("--noTF32")
         command.extend(PRECISION_FLAGS[args.precision])
+        command.extend(extra_flags)
         child = None
         started = time.monotonic()
         samples = [before]
@@ -102,6 +119,13 @@ def main():
                 raise RuntimeError("No serialized engine")
             if file_digest(args.onnx) != onnx_hash:
                 raise RuntimeError("Original ONNX changed")
+            if plan is not None:
+                log_text = (args.output / "build.log").read_text()
+                applied = dict(re.findall(r"Set layer (.+) to precision (fp16|fp32)", log_text))
+                typed = set(re.findall(r"Set output 0 of layer (.+) to type fp32", log_text))
+                if any(applied.get(r["name"]) != r["precision"] or r["name"] not in typed
+                       for r in plan["layers"]):
+                    raise RuntimeError("Not all planned layer constraints were acknowledged")
             status = "BUILD_PASSED"
         except BaseException as caught:
             error = repr(caught)
@@ -118,6 +142,9 @@ def main():
                 limits=dict(wall_s=600, workspace_mib=256, min_available_gib=4, temperature_c=80),
                 workspace_is_total_memory_limit=False, hardware_commands=0, training_updates=0,
                 publish_allowed=False, lock_scope="This project's acceleration checks only; not a global GPU lock")
+            if args.precision_plan is not None:
+                receipt["precision_plan_sha256"] = file_digest(args.precision_plan)
+                receipt["planned_compute_layers"] = len(plan["layers"])
             (args.output / "build_receipt.json").write_text(json.dumps(receipt, indent=2)+"\n")
             print(json.dumps(receipt))
         if status != "BUILD_PASSED":

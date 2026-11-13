@@ -1,0 +1,22 @@
+{
+  "record_id": "x2_fgp_trt_r3_prepared_20261113",
+  "date": "2026-11-13",
+  "status": "R3_PRECISION_PLAN_AND_TF32_PREPARED",
+  "user_request": "Continue mixed precision; target at least 30Hz without losing continuity",
+  "prior_settled": {"engines": 3, "gpu_cano_calls": 96, "cpu_reference_calls": 96, "mixed_agreement": "FAILED"},
+  "new_maximum": {"engines": 2, "build_wall_s_each": 600, "workspace_mib_each": 256, "gpu_cano_calls": 64, "cpu_same_input_reference_calls": 64, "probe_outer_wall_s_each": 120, "parser_outer_wall_s": 60},
+  "cases": [
+    {"name": "mixed_gemm", "compute": "Parsed floating matrix multiply FP16; other floating compute FP32; floating compute outputs FP32", "tf32": false, "quality_limits": {"residual_max_abs": 0.005, "residual_relative_l2": 0.02, "pose_max_deg": 1.0, "root_max_m": 0.01}},
+    {"name": "tf32", "compute": "Original FP32 graph with TF32 allowed, no FP16", "quality_limits": {"residual_max_abs": 0.0002, "residual_relative_l2": 0.001, "pose_max_deg": 0.5, "root_max_m": 0.005}}
+  ],
+  "layer_plan": "Exact TensorRT parser names; skip integer and shape data; all requested compute and output constraints must appear in the build log",
+  "resource_limits": {"min_available_gib": 4, "temperature_stop_c": 80, "min_disk_free_gib": 10},
+  "short_sample_30hz_gate": "All 32 full-chain outputs <=1000/30ms and fixed agreement limits passed; not a long-run certification",
+  "local_tests": {"passed": 9, "wall_s": 0.001},
+  "original_onnx_changed": false,
+  "terminal23_changed": false,
+  "training_updates": 0,
+  "hardware_commands": 0,
+  "publish_allowed": false,
+  "new_gpu_calls_at_preparation": 0
+}

@@ -16,6 +16,8 @@ LIMITS = {
     "fp16": dict(residual_max_abs=5e-3, residual_relative_l2=.02, pose_max_deg=1., root_max_m=.01),
 }
 LIMITS["mixed"] = LIMITS["fp16"].copy()
+LIMITS["mixed_gemm"] = LIMITS["fp16"].copy()
+LIMITS["tf32"] = LIMITS["fp32"].copy()
 
 
 def differences(pose, root, reference_pose, reference_root):

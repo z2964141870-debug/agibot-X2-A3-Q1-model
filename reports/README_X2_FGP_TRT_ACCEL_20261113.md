@@ -77,3 +77,11 @@ R2 已按独立方案完成，未新增第四个engine或重跑R1。构建90.462
 后续同机测试应先用录制人体与合成反馈、保持advisory，分列FGP完整链耗时/队列年龄、Morph全部RPC p95/p99/最大与20ms超时、实际内存峰值和温度，再决定是否需要双GPU方案。180ms人体预览仍属输入需求，不能通过CPU/GPU分工消除。当前未运行该并跑测试，未订阅新反馈或调用电机。
 
 R2七份141,226 B原件和五源码已Mac/设备SHA核同，原247上游源/24资产终检再次通过；78,570 B结果包SHA `65df84e757afb4c9d4a82fae62577af557235c06a48cc1d4d669f4a7ca38f70e`。Mac只读四方案[六宫图](../data/analysis/X2_FGP_TRT_ACCEL_20261113/analysis_r2/six_panel.png)、CSV和summary已生成并目视，不新增推理。原件与engine留设备，Mac不复制engine。小记录见[x2_fgp_trt_r2_completed_20261113.json](../logs/session_records/x2_fgp_trt_r2_completed_20261113.json)，设备文档镜像状态以publication为准。
+
+## R3 有界精度分配方案
+
+用户进一步要求混合精度探索并以30Hz为最低目标。不重跑R2同一配方；新增实际TensorRT解析层计划，只给浮点数据矩阵乘法FP16计算，其余浮点计算及矩阵乘法输出保持FP32，整数/shape层不强改类型。计划读取同一个原ONNX，不重写模型；精确列出实际parser层名，构建日志须逐项确认计算精度与输出类型，否则失败。旧norm/softmax门已真实生效但不够，残差流精度敏感仍只是待验假设。
+
+新增至多两engine：`mixed_gemm`及允许TF32的FP32对照，每engine最多600秒、256MiB workspace、独立32次GPU与32次CPU同输入参考。R3总计最多64+64调用、0训练；前两轮三engine/96+96不重置。原4GiB可用/80 C/10GiB余盘和自有进程回收门不变。新根 `build_gemm_r3`/`probe_gemm_r3`、`build_tf32_r3`/`probe_tf32_r3`。mixed_gemm保持原1度/10mm/.005/.02限值，TF32沿FP32更严的.5度/5mm/.0002/.001限值；不放宽质量换速度。
+
+30Hz短样本门要求完整FGP链逐帧不超过33.33ms并且一致性通过；中位或p95过门而仍超时不称稳定30Hz。此32输出录制筛查仍不是长时间衣服/网页/机器人并跑认证。新增两计划合同连同原七项，本地9项.001秒通过；先发布和原运行时验证，再唯一新根执行。原作者/旧基线/第二第三终端不改，不接电机。准备记录见[x2_fgp_trt_r3_prepared_20261113.json](../logs/session_records/x2_fgp_trt_r3_prepared_20261113.json)。

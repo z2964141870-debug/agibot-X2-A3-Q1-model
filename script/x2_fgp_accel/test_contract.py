@@ -5,6 +5,7 @@ import numpy as np
 from .probe import differences, LIMITS
 from .build import PRECISION_FLAGS
 from .trt_session import validate_feed
+from .precision_plan import make_plan, specifications
 
 
 class ContractTests(unittest.TestCase):
@@ -50,6 +51,26 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(LIMITS["mixed"], LIMITS["fp16"])
         self.assertIn("--precisionConstraints=obey", PRECISION_FLAGS["mixed"])
         self.assertTrue(any("*LayerNormalization:fp32" in value for value in PRECISION_FLAGS["mixed"]))
+
+    def test_float_compute_plan_preserves_non_matrix_outputs(self):
+        rows = [dict(name="/linear/MatMul", type="MATRIX_MULTIPLY", floating_data_outputs=True),
+                dict(name="/residual/Add", type="ELEMENTWISE", floating_data_outputs=True),
+                dict(name="/shape/Add", type="ELEMENTWISE", floating_data_outputs=False)]
+        plan = make_plan(rows, "source")
+        self.assertEqual(specifications(plan, "source"),
+                         ("/linear/MatMul:fp16,/residual/Add:fp32", "/linear/MatMul:fp32,/residual/Add:fp32"))
+        with self.assertRaises(ValueError):
+            specifications(plan, "changed source")
+        plan["layers"][1]["precision"] = "fp16"
+        with self.assertRaises(ValueError):
+            specifications(plan, "source")
+
+    def test_precision_plan_rejects_duplicates_and_wildcards(self):
+        row = dict(name="/linear/MatMul", type="MATRIX_MULTIPLY", floating_data_outputs=True)
+        with self.assertRaises(ValueError):
+            make_plan([row, row], "source")
+        with self.assertRaises(ValueError):
+            make_plan([dict(row, name="*:fp16")], "source")
 
 
 if __name__ == "__main__":

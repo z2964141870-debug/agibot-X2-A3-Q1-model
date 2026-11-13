@@ -22,6 +22,10 @@
 
 用户Done：完成流水线首测，吞吐提高但延迟回退，暂不使用。To Do：独立进程隔离，验证能否兼顾吞吐和策略时限。
 
+用户后续允许评估放宽20ms并优先优化资源分配，最新下一步转为[独立绑核R2](README_X2_RESOURCE_ALLOCATION_20261113.md)，先隔离CPU分配变量，进程隔离保留为候选。R1保存数据已生成[六宫图](../data/analysis/X2_JOINT_PIPELINE_20261113/figures_r1/six_panel.png)、[PDF](../data/analysis/X2_JOINT_PIPELINE_20261113/figures_r1/six_panel.pdf)和[比较CSV](../data/analysis/X2_JOINT_PIPELINE_20261113/figures_r1/comparison.csv)，已经目视。
+
+[本轮证据包](../data/deliveries/X2_PIPELINE_R1_AND_ALLOCATION_PREP_20261113.zip)包含R1数值、六宫图/CSV、前缀与资源来源收据、串行多门槛分析及R2准备方案；无新增视频或真机控制证据，R2尚未实测。
+
 Agent恢复：执行1ae257e/分析d2c7be1已push/独立远端40位核同。R1根及961帧预算结清，原四串行组复用。下一独立进程版须新源码/预算/来源资源发布、精确64前缀门及自有CPU子进程清理；不以R1门替代新实现门。默认衣服/终端23/180ms/Q1暂停保持，0电机MC训练。六宫图、证据和设备文档镜像见后续publication。
 
 ## 原计划历史

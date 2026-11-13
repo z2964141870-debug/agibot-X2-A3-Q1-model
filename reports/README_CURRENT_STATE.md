@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-13：[用户授权X2流水线优化](README_X2_JOINT_PIPELINE_20261113.md)。独立三阶段、总两帧在途，五本地并发合同/CLI通过，实际GPU0。原作者/模型/物理/180ms预览/终端23保持；先发布源码与Windows→run资源来源锁准入，再唯一64输出精确串行前缀门，过后唯一929源joint_r1/原observe。原四串行组不重跑，964GPU帧总界/原温度内存磁盘和100秒门；完成交付六宫图和真实p95/p99/排队年龄。
+
 2026-11-13连接规则更新：用户要求后续使用Windows桥接，已原生`ssh sshuser@100.92.227.62`→Windows内`ssh run@10.0.1.41`交互密码登录，同X2 Ultra SoC1/boot df9b9a2e；会话40802。后续设备管理用run，覆盖先前Mac直连偏好；不使用转发端点替代、不改网络或认证配置。[连接收据](../logs/session_records/x2_bridge_run_recovered_20261113.json)。
 
 2026-11-13：[X2性能四组完成及run宿主机频率核验](README_X2_JOINT_PERF_20261113.md)。control/sleep1/sleep1_fk/all_sleep1_fk各929源30Hz/latest＋真实ROS/native observe完成，17.743/21.070/22.672/24.805Hz；最好745输出/跳155未30Hz，FGP p50/p95 34.422/38.972ms，1492ready/1486接受/6次超20ms，RPC p95/p99 14.866/17.420ms。含180ms预览参考年龄中位268–281ms/p95上界309ms，非BLE机械或相位GT。2592GPU帧/8初始化enqueue，12自有PID全退0/锁空；前后247源24资产JSON逐字节同/最高69.875度/最低可用11562205184B。3合同、32合成线程动作差0、四组共同前缀4输出pose/root逐位同，后续跳帧不同不当全序列等价。run@10.0.1.41新81221同boot df9b9a2e已成功/具sudo，MAXN_SUPER/8核performance及当前上限1.984GHz/EMC3.199GHz；agi限制非整板缺配置，0频率/功耗写入。后续用run，原agi9179仍仅旧受限会话。当前ONNX双motion/human，motion670需X2重定向状态仍10槽；未新测该链。下一CPU/GPU流水解耦或独立重定向对照，不重复四组/不擅刷固件。六宫图/CSV/证据V2见报告，SDK电机MC新BLE训练0/Q1暂停；publication记录同步范围。

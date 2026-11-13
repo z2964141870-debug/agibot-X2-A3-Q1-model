@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FGP · 人体预览</title><link rel="stylesheet" href="/style.css"><script type="importmap">{"imports":{"three":"/vendor/three.module.js"}}</script><script src="/vendor/lucide.js"></script></head>
+<body>
+<header><strong>FGP <span>人体预览</span></strong><div class="header-status"><span id="source-badge" class="badge">连接中</span><span class="safe"><i data-lucide="shield-check"></i>电机输出关闭</span></div></header>
+<main>
+<section class="viewport" aria-label="SMPL 人体三维视图"><div id="scene"></div><div class="scene-top"><span id="scene-source">—</span><div class="tools"><button id="home" title="复位视角" aria-label="复位视角"><i data-lucide="scan"></i></button><button id="body" title="人体网格" aria-label="人体网格" aria-pressed="true"><i data-lucide="person-standing"></i></button><button id="bones" title="关节骨架" aria-label="关节骨架" aria-pressed="false"><i data-lucide="bone"></i></button></div></div><div class="scene-bottom"><span id="pose-label">等待人体数据</span><span>SMPL24 · Y↑</span></div></section>
+<aside>
+<section><h2>数据源 <span id="connection-dot" class="dot"></span></h2><div class="source-name" id="source-name">—</div><dl><dt>人体重建</dt><dd id="reconstruction">—</dd><dt>时间基准</dt><dd id="clock">—</dd><dt>SMPL 数据龄</dt><dd id="smpl-age">—</dd><dt>单帧推理</dt><dd id="inference-ms">—</dd><dt>旋转正交误差</dt><dd id="so3-error">—</dd></dl><p id="error" role="alert"></p></section>
+<section id="replay-controls" hidden><h2>录制回放</h2><div class="play-row"><button id="play" title="暂停" aria-label="暂停"><i data-lucide="pause"></i></button><input id="seek" type="range" min="0" max="1" value="0" aria-label="回放位置"><output id="position">0 / 0</output></div></section>
+<section id="live-controls" hidden><h2>衣服连接</h2><div id="devices"></div></section>
+<section id="calibration-controls" hidden><h2>T-pose 标定</h2><button id="calibrate" class="command" disabled><i data-lucide="crosshair"></i>采集 T-pose</button><div class="cal-state" id="cal-state">尚未采集</div><dl><dt>有效样本</dt><dd id="cal-samples">—</dd><dt>最大姿态抖动</dt><dd id="cal-jitter">—</dd><dt>最大加速度波动</dt><dd id="cal-acc">—</dd><dt>姿势人工确认</dt><dd>待确认</dd></dl></section>
+<section class="sensors" id="sensor-section" hidden><h2>IMU 原始数据</h2><table><thead><tr><th>传感器</th><th>加速度 m/s²</th><th>|q|</th></tr></thead><tbody id="imu-rows"></tbody></table></section>
+</aside></main><footer><span id="footer-state">等待服务</span><span>机器人反馈：未订阅 · 命令发布：关闭</span></footer>
+<script type="module" src="/app.js"></script></body></html>

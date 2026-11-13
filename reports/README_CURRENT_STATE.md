@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-13：[FGP权重与新版代码核对、自启动网页准备](README_X2_FGP_S_ASSET_AUDIT_20261113.md)。按用户最新明确，采用EgoLocate适配器默认U100h去噪＋GlobalPose，代码为已核同作者bed3424b的新CLOTHO；LIP Tanh修复已确认，独立StageTran另需两权重，不混作当前GP。包内23.2MB权重实为PIP，旧FGP身份归因更正。设备214文件/模型加载及10测试.278s、Mac10测试.206s/双视口网页通过，8件原始证据SHA取回；SoC1自启动命令与只读API见报告。用户自行启动采集/标定，本轮未新启动BLE或电机。真实通知和真人SMPL待验证；Orin CPU现有B＋GP约781ms，非30Hz实时能力，不因缺FGP-S阻塞准备。原Q1保持暂停。发布见[收据](../logs/session_records/x2_fgp_s_audit_publication_20261113.json)。
+
 2026-11-13 13:13：[X2 SoC1迁移与基础测试完成](README_X2_ORIN_BASIC_TESTS_20261113.md)。原生两跳SCP已将99.5MB便携包、两段最新FGP人体录制和14个ARM64/Python3.10轮子迁至`/home/agi/x2_morph_human_20261113`，独立venv/ROS路径隔离与资产SHA通过；19/19测试4.875s、C++17零SDK IPC 80请求/31推理通过。两段固定合成反馈离线回放991/1723帧，CPU处理p95 8.896/8.952ms；同参数Mac/Orin1723帧及22Hold相同、最大目标差1.4454e-6rad，六宫图已目视。服务`max-freshness-ms`接线修复已上板；原V2包保留，完整日志/新证据ZIP归档。FGP实际推理仍在Mac，180ms预览未减，不等于实时/端到端或真机通过。电机命令/反馈订阅/物理/训练均0，自有测试进程已退；不启动shadow或writer。下一仅继续固定反馈的Mac→Orin实时流/时钟测试，真实硬件另候指令。源码/记录同步以[publication](../logs/session_records/x2_orin_basic_publication_20261113.json)为准。[小记录](../logs/session_records/x2_orin_basic_tests_20261113.json)。
 
 2026-11-13 12:42:53恢复：[X2裸连与设备身份核验成功](README_X2_BRIDGE_ACCESS_20261113.md)。原样`ssh sshuser@100.92.227.62`已密码登录Windows `DESKTOP-LQL43SI`，其内原生`ssh agi@10.0.1.41`/`ssh run@10.0.1.40`均成功；设备树实核SoC1为Orin NX/L4T R36.4.3，SoC0为RK3588（不是双Orin），同一X2 Ultra序列号。会话92286当前SoC0 `run@agi:~$`，未来须核时态；Windows cmd需CR提交。早先超时为历史，不据此判当前离线。仅身份系统只读，无sudo/上传/服务改动/训练或硬件命令，后续按实际设备准备。[原始小记录](../logs/session_records/x2_bridge_access_20261113.json)。

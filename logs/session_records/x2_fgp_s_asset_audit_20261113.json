@@ -1,0 +1,118 @@
+{
+  "record_id": "x2_fgp_s_asset_audit_20261113",
+  "date": "2026-11-13",
+  "status": "ASSET_AUDIT_COMPLETED_FGP_S_WEIGHTS_NOT_FOUND_IN_SCANNED_BUNDLES",
+  "latest_user_selection": {
+    "request": "Follow the weights used by EgoLocate",
+    "denoise_enabled": true,
+    "denoise_window_frames": 30,
+    "canonicalizer": "checkpoints/canonicalization/U100hL7.07h_residual.pth",
+    "pose_class": "Full_GR_OV_10",
+    "pose_entry": "forward_frame_fast0",
+    "supplied_clotho_default_pose_weight": "checkpoints/globalpose/weights.pt",
+    "S_weight_search_blocks_preparation": false,
+    "startup_hash_verification_added": true,
+    "api_and_doctor_model_profile_added": true,
+    "entire_original_external_bridge_byte_equivalence": "NOT_ESTABLISHED"
+  },
+  "new_code_verification": {
+    "user_requirement": "EgoLocate weight selection with latest CLOTHO implementation; verify author's LIP activation and global translation changes",
+    "upstream": "humanplus-ai/CLOTHO-mocap",
+    "main_commit_observed": "bed3424b86caa5849c75b5046252331f73cdce20",
+    "main_commit_message": "Update realtime translation",
+    "local_matches_upstream": true,
+    "verified_source_sha256": {
+      "neural_backbone.py": "d62702df79ef333b2f687e5af8736f7f60cf0d15cbb77abfe2ced9b288d3e8b5",
+      "online_fgp+LIP.py": "7f19ea991c45dbc42dc267ca7fbd9eb066b2cebf0307afb5a6c82dbe87b06c47",
+      "PoseReconstruction/LIP_model.py": "632615d553ccd17fd19b7a0c814ab6fa0cfe2b11c5d63d57cb0965d32197b4c0",
+      "PoseReconstruction/GlobalPose_nets/full_GR_OV.py": "76bc935c9426a25756b90f74a0e88134c007a421914620dcb518ceaecf9841d6",
+      "stage_tran/online_guarded.py": "cadbdadacd331a9ccac492af12d7f5e258ee213f1612ba6eb4cd0ab9d38d4cf8"
+    },
+    "lip_two_lstm_activation": "tanh",
+    "lip_default_translation": "stage_tran.OnlineGuarded",
+    "lip_additional_stage_tran_weights_in_supplied_checkpoint_zip": false,
+    "old_local_lip_foot_lock_is_full_new_stage_tran": false,
+    "selected_globalpose_returns_metric_root_translation": true,
+    "unity_display_translation_hacks_used": false
+  },
+  "ego_archive": {
+    "path": "/Users/yu/Human+/key_project/EgoLocate.zip",
+    "bytes": 716628859,
+    "visible_neural_checkpoint_members": [
+      {"path": "EgoLocate/example_data/imu.pt", "bytes": 1615097, "role": "EXAMPLE_IMU_DATA"},
+      {"path": "EgoLocate/mocap/assets/weights.pt", "bytes": 23224559, "role": "PIP_FASTPIP_WEIGHTS"}
+    ],
+    "fgp_s_named_members": [],
+    "relevant_source_text_files_scanned": 95,
+    "explicit_fgp_s_text_matches": 0,
+    "fgp_directory_included": false,
+    "adapter_external_root": "FGP_ROOT = ROOT.parent / 'FGP'",
+    "adapter_external_import": "ble_web_pose.run",
+    "adapter_external_pose_class": "Full_GR_OV_10",
+    "adapter_external_canonicalizer": "checkpoints/canonicalization/U100hL7.07h_residual.pth"
+  },
+  "pip_weight": {
+    "sha256": "94511b459a185f013afb52fd53fb8b17c101b83a97a8a1beb390067790303500",
+    "torch_weights_only": true,
+    "tensor_count": 72,
+    "numel": 5800184,
+    "all_tensor_values_finite": true,
+    "rnn1_linear1_weight_shape": [256, 72],
+    "rnn1_rnn_weight_ih_l0_shape": [1024, 256],
+    "rnn3_linear2_weight_shape": [90, 256],
+    "rnn5_linear2_weight_shape": [2, 64],
+    "classification_basis": "mocap README identifies original PIP weights; FastPIP in net.py loads config.py weights_file; tensor signatures agree"
+  },
+  "archive_source_sha256": {
+    "EgoLocate/mocap/net.py": "fa4d7e07d5068246938fca9ee820a51f256a3d04503399f3f9d8055b1337f444",
+    "EgoLocate/fgp_mocap_adapter.py": "3aa8608ccab78650782210ea61b1bc4694393b1c94bcf8644eaae576dbba0c9b",
+    "EgoLocate/mocap/config.py": "7c6789df39495a5d2477a19ad2952ffdaa741bddd1ebaca7293aad95718cd99f",
+    "EgoLocate/mocap/README.md": "2a94c6d384467d3ba8c0c3880b0634ccadf6df7a89a41738047549ffaedc3887"
+  },
+  "clotho_size_audit": {
+    "source": "data/runtime/clotho_fgp_latest/CLOTHO-mocap-main/train_cano.py:init_cano_model",
+    "S": {"depth": 4, "ffn": 384, "enc_d_model": 256, "enc_layers": 3, "enc_nhead": 4, "parameters": 10144521, "tensor_count": 132},
+    "B": {"depth": 6, "ffn": 512, "enc_d_model": 384, "enc_layers": 4, "enc_nhead": 8, "parameters": 32051721, "tensor_count": 180},
+    "existing_checkpoint": "checkpoints/canonicalization/U100hL7.07h_residual.pth",
+    "checkpoint_bytes": 384845450,
+    "checkpoint_sha256_previous_verified": "b613eb8226b26b9dc82904c22f4aec78773992503337c3cbde674c998f61ce12",
+    "torch_weights_only": true,
+    "map_location": "meta",
+    "model_tensor_count": 180,
+    "model_numel": 32051721,
+    "S_missing_keys": 0,
+    "S_extra_keys": 48,
+    "S_shape_mismatches": 131,
+    "B_missing_keys": 0,
+    "B_extra_keys": 0,
+    "B_shape_mismatches": 0,
+    "checkpoint_size_identity": "B",
+    "S_trained_weights_found": false,
+    "S_forward_or_benchmark_calls": 0,
+    "user_FGP_S_identity_vs_current_S_preset": "NOT_ESTABLISHED"
+  },
+  "erratum": {
+    "supersedes_identity_fields_in": "logs/session_records/x2_latest_fgp_pretest_20261113.json",
+    "incorrect_prior_claim": "EgoLocate/mocap/assets/weights.pt is legacy single-stage FGP",
+    "corrected_identity": "PIP/FastPIP",
+    "historical_embedded_pose_stream_model_provenance": "NOT_ESTABLISHED_FROM_THIS_ARCHIVE",
+    "old_json_zip_and_saved_trajectories_rewritten": false
+  },
+  "preparation_snapshot": {
+    "script_directory": "script/x2_fgp_preview",
+    "local_unit_tests": 10,
+    "local_unit_tests_s": 0.206,
+    "local_unit_tests_status": "PASSED",
+    "browser_status": "PASSED_DESKTOP_AND_MOBILE",
+    "web_checks": "data/analysis/X2_FGP_PREVIEW_20261113/web_checks_final/web_checks.json",
+    "device_overlay": {"status": "DEPLOYED_SHA_AND_DOCTOR_PASSED", "bytes": 39555, "members": 20, "sha256": "1480da5478628606321142650e3bf60a6e753d7a6dab4fdc7c8c978fa95ebd3c", "doctor_files": 214, "models_loaded": true, "device_tests": 10, "device_tests_s": 0.278},
+    "real_ble_notifications": "NOT_RECEIVED",
+    "real_calibration": "NOT_PERFORMED",
+    "device_recorded_cpu_baseline": {"identity": "B_PLUS_GLOBALPOSE_NOT_FGP_S", "p50_ms": 780.5379735004863, "p95_ms": 854.9498242497975, "frames": 32, "device_raw_receipt_download": "SHA_VERIFIED_MAC", "pose_max_difference": 1.4528632164001465e-6, "root_max_difference": 7.264316082000732e-7},
+    "raw_device_evidence_bundle": {"path": "data/analysis/X2_FGP_PREVIEW_20261113/preview_evidence_20261113.tgz", "bytes": 4243, "members": 8, "sha256": "c9b9e6215183fae0854de718782c2ca7f3f376399876fc790f2b6f7669e39fd8"},
+    "live_realtime_dynamic_smpl": "NOT_VALIDATED"
+  },
+  "boundaries": {"new_ble_sessions": 0, "new_calibrations": 0, "hardware_commands": 0, "feedback_subscriptions": 0, "publish_allowed": false, "new_training": 0, "paused_q1_training_touched": false},
+  "device_mirror": "SOURCE_AND_ASSETS_VERIFIED_DOCUMENTS_PENDING_PUBLICATION",
+  "credentials_recorded": false
+}

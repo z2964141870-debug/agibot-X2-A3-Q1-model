@@ -1,9 +1,11 @@
 # X2 MorphMimic human：最新 CLOTHO FGP 对齐与本机闭环预测试报告（2026-11-13）
 
+**2026-11-13 权重身份更正**：本报告原将 EgoLocate 包内 23.2MB `mocap/assets/weights.pt` 认作旧版单阶段 FGP，该判断错误。包内 README、`FastPIP` 加载路径与 72 个权重张量均证实它属于 PIP；实际 FGP 适配器依赖包外同级 `FGP/`。历史人体流的具体模型来源尚未据此建立，旧图/JSON/ZIP保持历史，版本归因以 [FGP-S资产核查](README_X2_FGP_S_ASSET_AUDIT_20261113.md) 为准。本文 CPU 约30ms为 Mac 历史测量；后续 Orin B＋GlobalPose约781ms，不能沿用本机实时能力结论。
+
 后续设备结果见 [Orin迁移与基础测试](README_X2_ORIN_BASIC_TESTS_20261113.md)。本文保留本机历史结果；命令以 `script/x2_morph_human/README.md` 为准：FGP导出实际为独立 `clotho_fgp_runner` 模块，测试用 `python -m unittest`，没有 `clotho-export` / `live-bridge` / `test` CLI子命令。后续服务新鲜度接线已修、设备测试新增至19项；Orin当前为Python3.10/CPU推理，不沿用本文Mac <3ms估计。
 
 本报告回答并落地两件事：
-1. **明确对齐旧版 EgoLocate FGP 与最新版 CLOTHO FGP**：核实此前本地测试样例中的历史内嵌姿态流来自旧版单阶段 FGP（`EgoLocate/mocap/assets/weights.pt`，根平移固定为 `[0, 0, 0] m`），并已将用户指定的最新版两阶段 **CLOTHO FGP**（`CLOTHO-mocap-main (1).zip` + `checkpoints.zip`）完整无头接入 `script/x2_morph_human/`。
+1. **历史人体流与最新版 CLOTHO FGP 接入**：此前样例的内嵌人体流根平移为 `[0, 0, 0] m`，其实际模型身份仍未建立；EgoLocate 包内 PIP 权重不能作为其 FGP 来源证明。已将用户指定的两阶段 **CLOTHO FGP**（`CLOTHO-mocap-main (1).zip` + `checkpoints.zip`）无头接入 `script/x2_morph_human/`。
 2. **在去真机现场前完成全套本机预测试**：完成 18/18 单元测试、C++17 零 SDK 异步 IPC 探针、便携发布包 V2 净室校验、8 组 X2 Ultra MuJoCo 闭环仿真 + 50 fps 原速视频、真实 30 Hz→50 Hz ZeroMQ 异步插值与 168 ms 蓝牙丢包恢复验证，以及三张六宫图/视频联系表交付。
 
 > **安全边界保持**：本阶段仅限本机离线推理、开发级 MuJoCo 闭环仿真与本地 `127.0.0.1` IPC 验证；`publish_allowed=False`、电机控制写入 `hardware_commands=0`、训练服务器暂停状态保持不变（`training_updates=0`）。开发级 MuJoCo 场景不冒充官方未公开的训练动力学等价性（`original_training_plant_equivalence=NOT_VERIFIED`）。
@@ -14,8 +16,8 @@
 
 | 维度 | 旧版 FGP（`EgoLocate.zip` / 历史内嵌流） | 最新版 CLOTHO FGP（`CLOTHO-mocap-main (1).zip` + `checkpoints.zip`） | 对 X2 MorphMimic human 遥操的影响 |
 |---|---|---|---|
-| **推理架构** | 单阶段网络直接回归姿态 | **两阶段流水线**：Stage-1 11-IMU 规范化去噪 → Stage-2 全身 SMPL + 3D 根位移 | 显著抑制穿戴传感器漂移与高频抖动 |
-| **权重文件与大小** | `EgoLocate/mocap/assets/weights.pt`（`23,224,559 B`） | Stage-1：`U100hL7.07h_residual.pth`（`384,845,450 B`，SHA `b613eb82...`）<br>Stage-2 主选：`globalpose/weights.pt`（`134,051,421 B`，SHA `b63f62b8...`）<br>Stage-2 对照：`LIP_10_real_denoised_7.07_10imu_10.pth`（`26,748,498 B`，SHA `efc4bb85...`）<br>体模：`SMPL_male.pkl`（`39,056,404 B`，SHA `0e8c0bbb...`） | `U100h + GlobalPose` 在相同穿戴 11-IMU 实测流上较 `LIP` 降低 X2 支撑脚滑移 **>56%**（`p95` `22.45` vs `51.90 cm/s`），定为主选前端 |
+| **推理架构** | 历史保存流，模型身份待证；不能判单阶段 FGP | **两阶段流水线**：Stage-1 10 活跃 IMU 规范化去噪 → Stage-2 全身 SMPL + 3D 根位移 | 重建差异及开发仿真指标见下文，不由版本名证明准确率 |
+| **权重文件与大小** | 包内 `mocap/assets/weights.pt`（`23,224,559 B`）实际为 PIP，未建立与历史流的关联 | Stage-1：`U100hL7.07h_residual.pth`（`384,845,450 B`，SHA `b613eb82...`）<br>Stage-2 主选：`globalpose/weights.pt`（`134,051,421 B`，SHA `b63f62b8...`）<br>Stage-2 对照：`LIP_10_real_denoised_7.07_10imu_10.pth`（`26,748,498 B`，SHA `efc4bb85...`）<br>体模：`SMPL_male.pkl`（`39,056,404 B`，SHA `0e8c0bbb...`） | `U100h + GlobalPose` 在相同穿戴 11-IMU 实测流上较 `LIP` 降低 X2 支撑脚滑移 **>56%**（`p95` `22.45` vs `51.90 cm/s`），作为开发前端候选 |
 | **骨盆 3D 根平移** | 历史录制 JSONL 固定 `translation_m = [0, 0, 0] m` | 输出真实米制 3D 根位移（实测穿戴流跨度 `[0.067, 0.171, 0.078] m`） | MorphMimic human 168D 输入同时依赖 24 关节世界位置与旋转，真实根位移消除“原地悬空踏步”冲突 |
 | **标定与 Unity 显示 Hack** | 旧桥接混合录制世界系 | `ClothoCalibrator` 精确复现 `Socket/UDP.py` 标定（float32 误差 `0.0`），**剔除** `UDP.py` 仅供 Unity 渲染的 `tran[2] *= 0.7; tran[1] += 1.0` 失真，经 `config/clotho_fgp_yup.json` 转入 Z-up 地面接触系 | 保持物理真实步幅与骨盆高度，避免传入策略前引入 0.7 倍缩放与 1 m 悬空偏置 |
 | **同源 11-IMU 姿态差异** | 基准对照 | 相对旧版 FGP：Active-18 测地角差均值 **`17.32°`**（`GlobalPose`：骨盆 `23.33°`，肩肘 `23.68°`）/ **`19.99°`**（`LIP`） | 证实旧版与最新版输出分布存在显著差异，接入真机前切换至最新 CLOTHO FGP 十分必要 |
@@ -76,7 +78,7 @@
 ### 5.1 给用户看的简明版（Concise Summary for User）
 
 **Done（已完成）**：
-1. **核清并切换至最新版 CLOTHO FGP**：确认旧数据里嵌的是无根位移的旧版 EgoLocate 单阶段 FGP；现已把你给的最新版 `CLOTHO-mocap-main` + `checkpoints.zip`（`U100h` 11-IMU 去噪 + `GlobalPose`）完整无头接入本地链路，剔除了 Unity 显示缩放失真，CPU 单帧约 `30.2 ms`（满足 30 Hz 衣服实时预算），相比 `LIP` 将 X2 支撑滑移降低了 56% 以上。
+1. **接入最新版 CLOTHO FGP**：历史流根平移为零但模型身份待证；你给的 `CLOTHO-mocap-main` + `checkpoints.zip`（`U100h` 去噪 + `GlobalPose`）已无头接入本地链路，剔除 Unity 显示缩放。Mac 录制输入单帧约 `30.2 ms`，后续 Orin CPU约 `781 ms`，尚不具备板端 30 Hz 动态重建能力；开发仿真中相比 `LIP` 的支撑滑移降低 56% 以上，不当真人/真机验证。
 2. **跑通全套本机 X2 闭环预测试与防呆验证**：完成 18 项单测、C++17 / ZeroMQ 实时 50 Hz 通信压测（IPC 往返仅 `2.1~2.6 ms`）、蓝牙抖动与 168 ms 丢包自动 Hold 恢复测试，以及 8 组 X2 Ultra MuJoCo 闭环仿真和 50 fps 视频（全部 **0 跌倒**），并打好了净室验证通过的 `V2` 部署包和证据 ZIP。
 
 **Todo（去机器人旁后的下一步）**：
@@ -90,7 +92,7 @@
 
 **Done（详细技术完成项）**：
 1. **FGP 版本取证与无头推理集成**：
-   - 解包核验 `/Users/yu/Human+/key_project/EgoLocate.zip`（旧版单阶段 `weights.pt` `23.22 MB`）与 `CLOTHO-mocap-main (1).zip` + `checkpoints.zip`（新版两阶段 `U100hL7.07h_residual.pth` `384.85 MB` + `globalpose/weights.pt` `134.05 MB` / `LIP_10_real_denoised_7.07_10imu_10.pth` `26.75 MB` + `SMPL_male.pkl` `39.06 MB`）。
+   - 解包核验 `/Users/yu/Human+/key_project/EgoLocate.zip`（其中 `weights.pt` `23.22 MB` 后经更正为 PIP）与 `CLOTHO-mocap-main (1).zip` + `checkpoints.zip`（两阶段 `U100hL7.07h_residual.pth` `384.85 MB` + `globalpose/weights.pt` `134.05 MB` / `LIP_10_real_denoised_7.07_10imu_10.pth` `26.75 MB` + `SMPL_male.pkl` `39.06 MB`）。
    - 实现 `script/x2_morph_human/clotho_fgp_runner.py` 与 `config/clotho_fgp_yup.json`：精确对齐 `Socket/UDP.py` 标定矩阵（误差 `0.0`），移除 `UDP.py` 中 `tran[2]*=0.7; tran[1]+=1.0` 的 Unity 视觉偏置；在 4 线程 CPU 上实测稳态 `GlobalPose` `p50=30.24 ms / p95=31.54 ms`、`LIP` `p50=28.03 ms / p95=28.74 ms`；同源穿戴流相对旧版 Active-18 测地角差 `17.32°`（`GlobalPose`）与 `19.99°`（`LIP`）。
 2. **运行时契约、C++17 IPC 与单元测试**：
    - 在 `runtime.py`、`fgp_bridge.py`、`__main__.py` 中补齐 `--max-freshness-ms`（与 `--max-interp-gap-ms` 分离）、`--human-points {full,five}`（置零非五点 slot 并维持显式 `valid` 掩码语义）及 CLI `clotho-export` / `live-bridge` 入口。

@@ -133,6 +133,8 @@ GP+物理阶段去前两次中位R4为12.487/R5为12.458ms，原生物理分别6
 
 新增最多一engine/600秒/workspace256MiB，一组32真实输出＋一warmup＋一capture（保守34GPU）、32CPU同输入参考/120秒，资源边界沿用。新根`build_gemm_opt5_r6`、`probe_gemm_opt5_graph_t4_r6`。所有564项精度/输出约束仍须日志逐项确认；32完整链各帧≤33.33ms且一致性通过才过短样本门。R5和R4不重做；本方案准备时新GPU0，先发布和原运行时合同后执行。
 
+R6实际于18:09触发600秒原时限：`BUILD_FAILED`/`TimeoutError('600 second build limit')`，600.756189秒，子进程返回-15且已回收；无engine（0B/SHA null），因此没有R6模型probe或CPU参考，不把日志中子图生成当完整engine。最低可用9,223,389,184B/最高68.843度，仍在资源边界内。失败根/log保持，不扩预算或重启构建；该观察仅说明本次opt5未在预算内完成，不证明其潜在速度好坏。
+
 ## R7 相同人体特征复用准备
 
 只读核实作者`GlobalPoseTracker.update`在GP头fps=30/substeps=1时，会两次对相同pose/acc/gyro调用`PoseFeatures`；后者仅使用固定SMPL offsets做FK和拼接，无可变时序状态。两来源固定SHA为features.py `8b6a4a67d4a4d054b139ceebc36ba8501e84dcebb0ca0768a7c7fb621e89a207`和tracker.py `324e93beeb21ab86c9ea8f9dfb32031cb127161b3bdb35ea3e5734c94d1ccc58`。此为源码机会，不是已测加速收益。

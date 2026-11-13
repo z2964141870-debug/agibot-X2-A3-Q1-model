@@ -1,10 +1,11 @@
 {
   "record_id": "x2_bridge_access_20261113",
   "observed_at": "2026-11-13T12:27:19+08:00",
-  "status": "PEER_RESPONDS_SSH_TCP_TIMEOUT",
+  "status": "WINDOWS_AND_BOTH_SOC_PASSWORD_SSH_PASSED",
+  "latest_observed_at": "2026-11-13T12:42:53+08:00",
   "bridge_address": "100.92.227.62",
   "latest_user_direction": "Use bare native SSH to Windows; do not focus on forwarded endpoints",
-  "bare_ssh_attempt": {
+  "initial_bare_ssh_attempt": {
     "command": "ssh sshuser@100.92.227.62",
     "extra_cli_options": [],
     "exit_code": 255,
@@ -33,7 +34,7 @@
     "proxyjump_present": false,
     "connection_attempts": 1
   },
-  "conclusions": {
+  "initial_conclusions": {
     "bridge_network_probe_responds": true,
     "windows_shell_reached": false,
     "orin_shell_reached": false,
@@ -42,7 +43,7 @@
     "cause": "NOT_DETERMINED",
     "next_evidence": ["Windows sshd status", "Windows listening ports 22/22040/22041", "Existing portproxy mappings", "Inbound firewall and access policy"]
   },
-  "safety": {
+  "initial_attempt_safety": {
     "remote_commands": 0,
     "hardware_commands": 0,
     "publish_allowed": false,
@@ -50,5 +51,46 @@
     "port_forwarding_changed": false,
     "training_touched": false,
     "running_probe_processes": 0
+  },
+  "latest_success": {
+    "windows_command": "ssh sshuser@100.92.227.62",
+    "extra_cli_options": [],
+    "windows_shell_reached": true,
+    "windows_hostname": "DESKTOP-LQL43SI",
+    "windows_version": "10.0.26200.9711",
+    "native_lan_ssh": true,
+    "interactive_password_authentication": true,
+    "robot_banner_serial": "X220025BBZ0029",
+    "soc1": {
+      "command_from_windows": "ssh agi@10.0.1.41",
+      "shell_reached": true,
+      "verified_user": "agi",
+      "device_tree_model": "NVIDIA Jetson Orin NX Engineering Reference Developer Kit Super V2Board",
+      "kernel": "Linux 5.15.148-tegra aarch64",
+      "ubuntu_banner": "22.04.5 LTS",
+      "l4t_release": "R36 revision 4.3"
+    },
+    "soc0": {
+      "command_from_windows": "ssh run@10.0.1.40",
+      "shell_reached": true,
+      "verified_user": "run",
+      "device_tree_model": "RK3588 AGI Board",
+      "kernel": "Linux 6.1.99-rt36 aarch64",
+      "ubuntu_banner": "22.04.5 LTS",
+      "nv_tegra_release_present": false
+    },
+    "topology_correction": "SoC0 is RK3588; only SoC1 was verified as Jetson Orin NX",
+    "session_id_at_observation": 92286,
+    "session_location_at_observation": "SoC0 run@agi:~$",
+    "windows_console_input_terminator": "CR",
+    "safety": {
+      "only_login_and_read_only_identity_commands": true,
+      "sudo_used": false,
+      "files_uploaded": false,
+      "service_or_network_configuration_changed": false,
+      "hardware_commands": 0,
+      "publish_allowed": false,
+      "training_touched": false
+    }
   }
 }

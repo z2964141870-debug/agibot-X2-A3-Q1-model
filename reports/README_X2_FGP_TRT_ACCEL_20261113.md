@@ -63,3 +63,17 @@ FP32 构建24.190秒、engine 96,506,588 B/SHA `eda242045eab76c5dc0b59db54ac7a8f
 R1 的两个engine和64调用预算已结清，不把失败FP16改写为通过或覆盖其根。只读解析网络实际有5,885层，包含 LayerNormalization、Softmax、两个ReduceSum；没有 parser 不支持错误。根据精度敏感性，新增**独立一个** FP16 engine，强制所有 `*LayerNormalization`、`*Softmax`、`/ReduceSum*` 的计算精度和输出为FP32，其余允许FP16；这是待验证假设，不能断言已定位FP16误差因果。
 
 新增独立预算为一engine/600秒/256MiB workspace/32 GPU与32 CPU参考，资源门与R1相同；输出 `build_mixed_r2`、`probe_mixed_r2`，复用原保存CPU全链，不重跑R1两组。严格沿用FP16原数值阈值，不放宽。`--precisionConstraints=obey`，若不能满足则构建失败，不软回退。原作者/旧基线不改；仅自有build/probe支持新模式与一CPU合同，准备发布后再部署执行。第二第三终端保持不动，0新训练/硬件。
+
+## R2 实测与当前设备分工
+
+R2 已按独立方案完成，未新增第四个engine或重跑R1。构建90.462823秒、退出0，engine49,978,860 B/SHA `a10c99e9a5657dc617573bbc2be1a303277325b98aa117be9cb927602e223ea1`；最低可用内存9,932,763,136 B、最高温67.593 C。32个完整有限tracking输出的中位30.144/p95 37.725/最大57.336 ms，6/32超33.33ms；去前两次仍中位30.064/p95 35.820/最大39.551ms，5/30超时。
+
+混合精度residual最大差 .0787252、相对L2 .0478101，关节角最大差13.95935度、根平移最大差 .0304361 m，**一致性失败，不采用**。强制上述三类运算FP32未消除偏差，不能据此定位单一误差原因，也不能把约30ms称为可部署30Hz。实际累计三个engine、96次GPU CANO与96次同输入CPU参考，0新训练/硬件命令。
+
+用户关心两模型共享GPU压力，已在Mac与SoC1双端核实当前实际策略入口 `data/runtime/x2_morph_human/upstream/deploy/sim2sim/policy_node.py:325` 明确指定 `CPUExecutionProvider`。此前真实反馈6秒的接受RPC p95 13.690ms是**CPU ONNX策略的请求往返**，不是GPU前向；全部295请求有1次22.570ms超20ms并拒绝，不能把仅接受请求的p95当全部请求保证。见[原生writer结果](README_X2_MORPH_NATIVE_WRITER_20261113.md)。
+
+当前优先分工为**FGP的CANO用GPU、Morph保持CPU、FGP其余LIP/GP与原生物理仍用CPU**，这是待并跑验证的部署建议，没有修改第二第三终端。即使分开处理器，整机CPU调度、内存和功耗竞争仍须实测；现有数据没有证明两模型同机50Hz稳定，也没有证明GPU容量不足。本轮闲置快照可用内存约12.42GB，不能代替并跑峰值或实时预算。通过一致性门的FP32 FGP整链单独运行已约50.6ms，首先还需满足其自身30Hz/33.33ms预算。
+
+后续同机测试应先用录制人体与合成反馈、保持advisory，分列FGP完整链耗时/队列年龄、Morph全部RPC p95/p99/最大与20ms超时、实际内存峰值和温度，再决定是否需要双GPU方案。180ms人体预览仍属输入需求，不能通过CPU/GPU分工消除。当前未运行该并跑测试，未订阅新反馈或调用电机。
+
+R2七份141,226 B原件和五源码已Mac/设备SHA核同，原247上游源/24资产终检再次通过；78,570 B结果包SHA `65df84e757afb4c9d4a82fae62577af557235c06a48cc1d4d669f4a7ca38f70e`。Mac只读四方案[六宫图](../data/analysis/X2_FGP_TRT_ACCEL_20261113/analysis_r2/six_panel.png)、CSV和summary已生成并目视，不新增推理。原件与engine留设备，Mac不复制engine。小记录见[x2_fgp_trt_r2_completed_20261113.json](../logs/session_records/x2_fgp_trt_r2_completed_20261113.json)，设备文档镜像状态以publication为准。

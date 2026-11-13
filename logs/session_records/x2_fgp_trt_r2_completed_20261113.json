@@ -1,0 +1,62 @@
+{
+  "record_id": "x2_fgp_trt_r2_completed_20261113",
+  "date": "2026-11-13",
+  "status": "R2_COMPLETED_AGREEMENT_FAILED_NOT_ADOPTED",
+  "device_project": "/home/agi/x2_morph_human_20261113",
+  "device_boot_id": "8f960fd3-d5da-4630-b5de-4d61d7251901",
+  "source_commit": "951deef44a7376721890ecbd4b6e6b6594f84c90",
+  "engine": {
+    "precision": "mixed",
+    "bytes": 49978860,
+    "sha256": "a10c99e9a5657dc617573bbc2be1a303277325b98aa117be9cb927602e223ea1",
+    "build_wall_s": 90.46282311499999,
+    "min_available_bytes": 9932763136,
+    "max_temperature_c": 67.593,
+    "returncode": 0
+  },
+  "outputs": {
+    "frames": 32,
+    "all_finite": true,
+    "timing_all_ms": {"p50": 30.144242500000473, "p95": 37.725397100007285, "max": 57.33595800006697, "over_33ms": 6},
+    "timing_after_first2_ms": {"p50": 30.0637650001363, "p95": 35.820162800030175, "max": 39.55074700002115, "over_33ms": 5},
+    "agreement_status": "FAILED",
+    "residual_max_abs": 0.07872515916824341,
+    "residual_relative_l2": 0.047810107469558716,
+    "pose_max_deg": 13.959346528808936,
+    "root_max_m": 0.030436094850301743,
+    "thresholds_relaxed": false
+  },
+  "settled_totals_r1_r2": {"engine_builds": 3, "gpu_cano_calls": 96, "cpu_same_input_reference_calls": 96},
+  "source_integrity": {"original_sources_sha_matched": 247, "original_author_assets_sha_matched": 24, "own_device_sources_sha_matched": 5},
+  "evidence_package": {
+    "path": "data/deliveries/X2_FGP_TRT_R2_RESULTS_20261113.tgz",
+    "bytes": 78570,
+    "sha256": "65df84e757afb4c9d4a82fae62577af557235c06a48cc1d4d669f4a7ca38f70e",
+    "members": 7,
+    "uncompressed_member_bytes": 141226,
+    "all_member_sha_mac_device_matched": true
+  },
+  "saved_analysis": {"path": "data/analysis/X2_FGP_TRT_ACCEL_20261113/analysis_r2", "six_panel_visually_checked": true, "new_model_calls": 0},
+  "policy_provider": {
+    "source": "data/runtime/x2_morph_human/upstream/deploy/sim2sim/policy_node.py:325",
+    "configured": "CPUExecutionProvider",
+    "verified_on_mac_and_device": true,
+    "quoted_13_690_ms": "Accepted-request RPC p95 for CPU ONNX; 294 accepted of 295, one 22.570ms request rejected",
+    "provisional_split": "GPU CANO; CPU Morph and unchanged CPU LIP/GP/native physics",
+    "same_device_concurrent_test": "NOT_RUN",
+    "both_gpu_test": "NOT_RUN"
+  },
+  "limitations": [
+    "32 unpaced recorded outputs, no BLE/browser/network/robot end-to-end timing or human accuracy ground truth",
+    "Historical full CPU baseline predates reboot, not a randomized same-condition performance comparison",
+    "Precision-sensitive operations forced FP32 did not remove drift; no single cause established",
+    "FP32 agreement passed but full pipeline alone still misses 30Hz",
+    "Preview wait remains 180ms; processor placement does not remove input preview requirement"
+  ],
+  "terminal23_changed": false,
+  "hardware_commands": 0,
+  "training_updates": 0,
+  "publish_allowed": false,
+  "q1_training": "UNCHANGED_PAUSED",
+  "device_document_mirror": "PENDING_PUBLICATION"
+}

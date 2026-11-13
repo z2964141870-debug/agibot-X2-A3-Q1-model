@@ -13,17 +13,22 @@ def main():
     parser = argparse.ArgumentParser(__doc__)
     parser.add_argument("--baseline", type=Path, required=True)
     parser.add_argument("--acceleration", type=Path, required=True)
+    parser.add_argument("--mixed", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Preserve existing analysis")
     folders = [args.baseline, args.acceleration / "probe_fp32_r1", args.acceleration / "probe_fp16_r1"]
+    names, colors = ["CPU ONNX", "TRT FP32", "TRT FP16"], ["#306c9b", "#a9473b", "#22866b"]
+    if args.mixed is not None:
+        folders.append(args.mixed)
+        names.append("TRT mixed")
+        colors.append("#7b4a9e")
     reports = [json.loads((p / "report.json").read_text()) for p in folders]
     for report in reports:
         if report["output_frames"] != 32 or report["fixture_sha256"] != reports[0]["fixture_sha256"]:
             raise ValueError("Evidence identity mismatch")
     args.output.mkdir(parents=True)
-    names, colors = ["CPU ONNX", "TRT FP32", "TRT FP16"], ["#306c9b", "#a9473b", "#22866b"]
     values = [np.asarray([row["total_ms"] for row in report["rows"]]) for report in reports]
     diagnostics, inputs = [], []
     for folder, report in zip(folders, reports):
@@ -50,7 +55,7 @@ def main():
     (args.output / "summary.json").write_text(json.dumps(summary, indent=2)+"\n")
     with (args.output / "timing.csv").open("w", newline="") as stream:
         writer = csv.writer(stream)
-        writer.writerow(["source_frame", "cpu_ms", "trt_fp32_ms", "trt_fp16_ms"])
+        writer.writerow(["source_frame", *[name+" ms" for name in names]])
         for i in range(32):
             writer.writerow([29+i, *(series[i] for series in values)])
     import matplotlib
@@ -67,9 +72,10 @@ def main():
     axes[0, 1].axhline(1000/30, color="#555555", ls="--")
     axes[0, 1].set(title="After first two outputs", ylabel="Full pipeline ms")
     stages = ("cano", "pose", "physics")
+    width = .8/len(reports)
     for i, (report, name, color) in enumerate(zip(reports, names, colors)):
         medians = [np.median([row["author_exclusive_stage_ms"][key] for row in report["rows"][2:]]) for key in stages]
-        axes[0, 2].bar(np.arange(3)+(i-1)*.24, medians, width=.24, label=name, color=color)
+        axes[0, 2].bar(np.arange(3)+(i-(len(reports)-1)/2)*width, medians, width=width, label=name, color=color)
     axes[0, 2].set_xticks(np.arange(3), ["CANO", "LIP", "GP + physics"])
     axes[0, 2].set(title="Exclusive stage medians", ylabel="ms")
     axes[0, 2].legend(fontsize=8)

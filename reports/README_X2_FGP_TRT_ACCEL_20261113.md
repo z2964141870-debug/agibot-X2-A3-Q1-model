@@ -1,6 +1,6 @@
 # X2 FGP CANO TensorRT 加速
 
-记录日期：2026-11-13。阶段：R1至R4已完成；准确mixed_gemm约30ms但仍有超时，独立R5 GP网络GPU加速准备。30Hz尚未通过。
+记录日期：2026-11-13。阶段：R1至R5已完成；准确mixed_gemm约30ms但仍有超时，R5 GP GPU未得明确速度收益，独立R6构建优化准备。30Hz尚未通过。
 
 ## 目标与边界
 
@@ -118,3 +118,17 @@ mixed_gemm去前两次中位31.818/p95 36.579/最大36.830ms、9/30超时，CANO
 独立预算一engine/600秒/workspace256MiB，一组CPU4完整32输出/120秒：64真实GPU网络调用＋两warmup＋两capture，保守上限68；计时后32CANO＋32GP同输入CPU参考。沿用全链1度/10mm和CANO .005/.02门；额外GP三输出合计最大绝对差≤2e-4、相对L2≤1e-3且所有值有限。不放宽门，不重跑R4。GPU前向与GP隐藏状态均保存，短样本整链全32帧≤33.33ms才过速度门。
 
 新根`build_gp_fp32_r5`和`probe_gemm_gp_graph_t4_r5`。原GP SHA`1a292e5fac116ff81fca39a0900317db286a94fa304ad00628ae02b3f3bfdb61`，原来源/资产保持。可用内存4GiB、80度、10GiB余盘及自有项目锁边界延续；17:49实核原boot、可用12.375GB/最高66.843度/余盘374.170GB且无加速进程。十一CPU合同.001秒通过（含GP输出顺序/隐藏状态复制），新设备GPU执行尚未开始。准备记录见[x2_fgp_trt_r5_prepared_20261113.json](../logs/session_records/x2_fgp_trt_r5_prepared_20261113.json)。
+
+## R5 实际结果
+
+准备源码`e1fc991`和索引`7f04c2dca6eeadd51eadabb3ba8085ce9950daec`已push/独立40位远端核同，八源码上板SHA同，十一板端合同.003秒通过。GP FP32 engine构建5.046682秒/23,319,452B/SHA`7b9d10bd971ac1d8fea8fa900d9904a8f51eb3b97f8b07e751d32780f4e3361c`，最低可用11.258GB/最高66.968度，退出0。
+
+完整32输出中位30.407/p95 40.809/最大43.837ms，8/32超33.33ms；去前两次仍8/30超时。一致性通过：CANO最大差.00224163/相对L2 .00170904，全链姿态.073327度、根.515058mm；GP预测及h/c同输入CPU参考最大差3.814697e-6、相对L2 1.355153e-7。作者日志仍打印其CPU类名，实际session已被显式GPU适配器替换，记录以适配器引擎SHA和对照为准。
+
+GP+物理阶段去前两次中位R4为12.487/R5为12.458ms，原生物理分别6.336/6.502ms；该小样本未证GP搬GPU有明确收益，不将R5替代当前优先方案。累计新一engine/64帧GPU调用＋两warmup＋两capture/64CPU参考结清，0训练硬件。原始包`data/deliveries/X2_FGP_TRT_R5_RESULTS_20261113.tgz`为1,225,814B/SHA`3f660e4d612d7f6e490cb4b3cfc7298718b3617b930392acc665c8ea9f759434`已Mac/设备核同；engine仍板端，不为图表重跑。
+
+## R6 构建搜索独立方案
+
+先复用R3 exact precision计划和原始ONNX，只将TensorRT builderOptimizationLevel从2改为5，GP恢复原CPU路径，CPU4+同一graph包装保持。板端安装的trtexec帮助明确支持0至5，更高级别只允许构建时更多优化选项；是否加速待实测。数值门不变，不改权重、历史长度、Euler次数、原生物理或系统频率/功耗。
+
+新增最多一engine/600秒/workspace256MiB，一组32真实输出＋一warmup＋一capture（保守34GPU）、32CPU同输入参考/120秒，资源边界沿用。新根`build_gemm_opt5_r6`、`probe_gemm_opt5_graph_t4_r6`。所有564项精度/输出约束仍须日志逐项确认；32完整链各帧≤33.33ms且一致性通过才过短样本门。R5和R4不重做；本方案准备时新GPU0，先发布和原运行时合同后执行。

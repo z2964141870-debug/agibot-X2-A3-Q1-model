@@ -23,7 +23,8 @@ def main():
     names, colors = ["CPU ONNX", "TRT FP32", "TRT FP16"], ["#306c9b", "#a9473b", "#22866b"]
     if args.mixed is not None:
         folders.append(args.mixed)
-        names.append("TRT mixed")
+        mixed_report = json.loads((args.mixed / "report.json").read_text())
+        names.append("TRT "+mixed_report["precision"])
         colors.append("#7b4a9e")
     for folder, color in zip(args.candidate, ("#bd7d12", "#557a34")):
         candidate = json.loads((folder / "report.json").read_text())
@@ -31,6 +32,10 @@ def main():
         label = "TRT "+candidate["precision"]
         if candidate.get("cuda_graph"):
             label += " graph t"+str(candidate["threads"])
+        if candidate.get("gp_acceleration") is not None:
+            label += " + GP GPU"
+        if "opt5" in folder.name:
+            label += " opt5"
         names.append(label)
         colors.append(color)
     if len(args.candidate) > 2:
@@ -103,7 +108,7 @@ def main():
         ax.legend(fontsize=8)
     for ax in axes.flat:
         ax.grid(alpha=.2)
-    fig.suptitle("X2 Orin: recorded-input CANO acceleration | 32 outputs | no hardware control", fontsize=14)
+    fig.suptitle("X2 Orin: recorded-input FGP acceleration | 32 outputs | no hardware control", fontsize=14)
     fig.savefig(args.output / "six_panel.png", dpi=160)
     plt.close(fig)
     print(json.dumps(summary))

@@ -63,6 +63,7 @@ def main():
     parser.add_argument("--precision", choices=tuple(PRECISION_FLAGS), required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--precision-plan", type=Path)
+    parser.add_argument("--optimization-level", type=int, choices=(2, 5), default=2)
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Use a new output directory")
@@ -92,7 +93,7 @@ def main():
         engine = args.output / (args.onnx.stem + ".plan")
         command = ["/usr/src/tensorrt/bin/trtexec", "--onnx=" + str(args.onnx.resolve()),
                    "--saveEngine=" + str(engine.resolve()), "--memPoolSize=workspace:256M",
-                   "--builderOptimizationLevel=2", "--maxAuxStreams=0", "--avgTiming=2",
+                   "--builderOptimizationLevel="+str(args.optimization_level), "--maxAuxStreams=0", "--avgTiming=2",
                    "--skipInference"]
         if args.precision != "tf32":
             command.append("--noTF32")

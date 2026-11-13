@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-13",
+  "stage": "TERMINAL23_R1",
+  "status": "NO_PUBLISH_ADAPTER_AND_READ_ONLY_FEEDBACK_VERIFIED",
+  "full_sdk_writer_integration": false,
+  "robot_feedback_policy_inference_calls": 0,
+  "measured_sensor_calibration": false,
+  "hardware_commands": 0,
+  "mc_operations": 0,
+  "training_updates": 0,
+  "physical_simulation_runs": 0,
+  "model_sha256": "cf95194793e4732447f66432fc2381d82dd7c3d82c94da15ad074f2cfe295512",
+  "x2_reference_branch_commit": "79c4a1e7c019fe57130a2f530fcec78875eb7e4f",
+  "connection": {
+    "current": "DIRECT_MAC_ETHERNET_TO_SOC1",
+    "login": "agi@10.0.1.41",
+    "mac_interface": "en7",
+    "mac_address": "10.0.1.10/24",
+    "agent_modified_mac_network": false,
+    "own_windows_session_closed": true
+  },
+  "tests": {
+    "mac": {"passed": 11, "seconds": 0.004},
+    "orin": {"passed": 11, "seconds": 0.020}
+  },
+  "synthetic_feedback_ipc": {
+    "mac": {"requests": 83, "native_candidates": 64, "cpp_exact_matches": 64,
+      "all_reply_rpc_p95_ms": 3.423875, "candidate_rpc_p95_ms": 4.205916},
+    "orin": {"requests": 83, "native_candidates": 61, "cpp_exact_matches": 61,
+      "all_reply_rpc_p95_ms": 13.154947, "candidate_rpc_p95_ms": 13.196897},
+    "native_transform_max_difference_rad": 0.0,
+    "human_dropout_rejected": true,
+    "human_resume_ready": true,
+    "policy_process_loss_latched": true,
+    "rpc_timeout_for_probe_ms": 1000,
+    "candidate_accept_rpc_budget_ms": 20,
+    "fixture": "SYNTHETIC_SMPL_FIXED_FEEDBACK",
+    "hardware_end_to_end_ms": null
+  },
+  "read_only_ros": {
+    "seconds": 3,
+    "received": {"leg": 1506, "waist": 1501, "arm": 1499, "head": 995, "imu": 470},
+    "complete_snapshots": 149,
+    "valid_snapshots": 149,
+    "ingest_errors": {},
+    "max_local_receive_age_ms": 41.229495,
+    "imu_frame_ids": ["base_link"],
+    "joint_state_schema": {"header": "aimdk_msgs/MessageHeader", "state": "aimdk_msgs/DomainErrorState", "joints": "sequence<aimdk_msgs/JointState>"},
+    "sdk_overlay": "/home/agi/aimdk_msgs_pc2",
+    "policy_requests": 0
+  },
+  "unchanged_runtime_sources": {
+    "script/x2_morph_human/runtime.py": "d6cda7be6d1a8357df7b16d7023354bf5ba6f44e4a46c710177797065f264478",
+    "script/x2_morph_human/__main__.py": "7651db22b5a361b0ac87d16e9ef0c2a62bb792b63e87d2e129b70d96c8469f3f",
+    "gear-sonic/ritual_start_kb.sh": "da66b27676d901d41804b384c9937ef1d04c27574dff250e34d1b0733ca55553",
+    "gear-sonic/start_x2_deploy_ritual.sh": "2504b079102332307c5009e4e566c0cba9836d6729e59b13b48c42e8f067151d",
+    "installed_x2_deploy_onnx_ref": "466a9864e01d6b522e87d199ff87c6e1b98e8e07c1ba845703403c7d1167e97d"
+  },
+  "raw_local_root": "/Users/yu/Documents/ChatGPT/元启/data/analysis/X2_MORPH_TERMINAL23_20261113",
+  "raw_soc1_root": "/home/agi/x2_morph_human_20261113/data/analysis/X2_MORPH_TERMINAL23_20261113/ORIN_R1",
+  "raw_sha256": {
+    "MAC_R1/summary.json": "c56301ec0a8578b7f75b81cce8a882efa17d1ea608d00c162e01cedac859c196",
+    "ORIN_R1/summary.json": "7b1619a78243f41e14f03ae921e47d37ff48155db928defa14a9fe3c6d62968e",
+    "ORIN_R1/backend.targets.jsonl": "6e612c3a6f7cc88c351de7b2115dd7110e6b6f7509ead5d7806b6f7b38dc21b0",
+    "ORIN_R1/ros_feedback.jsonl": "cafd5f565938ca515d59f3a1dff49a4dbbfabfdbc21dcc35b424ed700c3981d9"
+  },
+  "publication": "PENDING_SEPARATE_RECEIPT"
+}

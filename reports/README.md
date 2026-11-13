@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-13：[Morph第二、第三终端适配与真实只读反馈](README_X2_MORPH_BACKEND_TERMINAL23_20261113.md)。独立后端与C++原生31槽适配，Mac/Orin各11测试、各83合成反馈IPC请求及64/61候选精确匹配；Orin成功候选RPC p95 13.197ms。Mac有线直连10.0.1.41已成功，真实ROS3秒149完整快照全有效。0电机/MC操作；实测IMU外参及旧writer集成尚待，非真机遥操通过。
+
 2026-11-13：[CLOTHO的CPU实时分支与GPU分支核查](README_X2_CLOTHO_REALTIME_BRANCH_REVIEW_20261113.md)。发现此前遗漏的fgp_realtime CPU ONNX/S1相关资源，旧0.78秒不是此版本结果；需独立fgp_realtime_weights.zip与包内manifest，Windows物理库不能直接用于Orin。新读取不当实际测速/真机通过，当前模型未改。
 
 2026-11-13：[FGP实际未换小权重，0.78秒归属更正](README_X2_FGP_S_ASSET_AUDIT_20261113.md#1506-权重未替换与分段耗时复核)。同U100h B＋GlobalPose的小样本分段复核：4线程约819ms去噪/70ms姿态/888ms整段；不是FGP-S测速，未改默认或启动衣服/真机。6999B原始证据两端SHA同。

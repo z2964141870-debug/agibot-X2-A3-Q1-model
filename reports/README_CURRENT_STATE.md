@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-13侧线：[Morph第二、第三终端建议接口已接通](README_X2_MORPH_BACKEND_TERMINAL23_20261113.md)。新增独立`script/x2_morph_backend`，Mac/Orin各11测试通过、真实ONNX合成反馈各83请求及64/61原生候选与C++逐值同；Orin成功候选RPC p95 13.197ms，非硬件端到端。Mac已改走有线原生`ssh agi@10.0.1.41`，en7的10.0.1.10由用户配置；真实ROS3秒149完整31关节快照全有效/最大本地接收年龄41.229495ms，SDK环境已对齐。IMU仍缺实测安装体/外参，真实反馈推理0、现有writer未接入；所有输出advisory/电机和MC操作0、旧Sonic及Q1暂停保持。先实测IMU再只读真实反馈→策略，之后独立writer故障/交接验证，不启动原ritual。[结果记录](../logs/session_records/x2_morph_backend_terminal23_20261113.json)。主线FGP继续按其最新记录推进，不以本侧接口通过替代FGP实时验收。
+
 2026-11-13：[作者CLOTHO实时部署分支已核清](README_X2_CLOTHO_REALTIME_BRANCH_REVIEW_20261113.md)。此前遗漏fgp_realtime/1e719140（11月9日），其CPU ONNX CANO→LIP→GP→原生物理与当前U100h B＋GlobalPose不同，旧0.78秒不适用。两套外置onnx_s1/cano_s_ep120_fast清单已读，规格待包内manifest，不冒称已加载或30Hz通过；缺fgp_realtime_weights.zip，新包在Human+范围未找到且仓库未附下载地址。作者发布目标Windows x64/3.8物理，Orin需兼容ARM64原生库；默认串口BLE-UART非现有Bleak。另五点分支有CUDA Graph/c129。此轮只读0模型/硬件/训练，保留用户自启采集；先资源SHA与同录制分段/全链测试。[收据](../logs/session_records/x2_clotho_realtime_branch_review_20261113.json)，设备镜像待补。
 
 2026-11-13 15:06：[FGP权重未替换与CPU分段更正](README_X2_FGP_S_ASSET_AUDIT_20261113.md#1506-权重未替换与分段耗时复核)。实际始终为U100h B＋GlobalPose，旧780.54ms不是小权重或FGP-S测试；23.2MB为PIP，不能混用。新每组8输出/去前两次中位，4线程去噪818.73ms＋GP70.46ms/总888.29ms；1线程总741.78ms，仅小样本诊断不改默认或判定降频原因。两组输出差低2e-5，6999B原件已Mac/SoC1 SHA同。[收据](../logs/session_records/x2_fgp_cpu_split_recheck_20261113.json)。无新BLE/标定/反馈/电机或训练；实时FGP后端仍待解决。

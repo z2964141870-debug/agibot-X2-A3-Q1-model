@@ -39,6 +39,37 @@
 
 重新从 ZIP 流式读取适配器后，SHA 与已有摘录相同：`3aa8608ccab78650782210ea61b1bc4694393b1c94bcf8644eaae576dbba0c9b`。其他摘录身份见[收据](../logs/session_records/egolocate_fgp_chain_rechecked_20261114.json)。本次没有重新加载权重或复测模型速度。
 
+## 两条当前链路的具体区别
+
+本表的旧链是按 EgoLocate 适配器选择、使用已提供新版 CLOTHO 复现的配置，不代表缺失的历史同级 FGP 工程已逐字复跑。
+
+| 项目 | EgoLocate 适配器配置的本地复现 | 当前实际测速候选 |
+| --- | --- | --- |
+| 前级 FGP/CANO | U100hL7.07h_residual.pth；B，6 层规范化块 | 用户提供 cano_ep120.pth.1 对应 onnx_s1 来源；S1，4 层规范化块 |
+| 模型规格 | encoder 384 维/4 层 | encoder 同为 384 维/4 层；不是 256 维/3 层的纯 S |
+| 姿态与平移后级 | Full_GR_OV_10；全 GlobalPose 权重，包含姿态和速度网络 | LIP ONNX 先估姿态，独立 GP ONNX 估速度/静止量，再原生物理修正姿态和平移 |
+| GP 名称 | 完整 GlobalPose 系统 | 此处 GP ONNX 是 267→9 的速度/静止网络，不等于旧完整系统 |
+| 物理 | 所复现 forward_frame_fast0 跳过重接触/物理求解 | 使用已移植 ARM64 原生物理 |
+| 执行代码 | 原适配器导入外部 ble_web_pose；本地复现用 CLOTHO main/PyTorch CPU | 固定 fgp_realtime 源码＋自有 TensorRT mixed_gemm/CUDA Graph/精确特征缓存；其余 LIP/GP/物理在 CPU |
+| 衣服输入 | 原始上衣6/裤子5；按模型顺序取10有效 IMU，加速度与朝向、T-pose 标定 | 相同衣服语义；目前测速用保存录制按墙钟释放，非新真人 BLE 验收 |
+| 历史窗口 | 30 已到达帧 | 30 已到达帧；导出只取末帧残差，不等于改成只看1帧 |
+| 最终人体输出 | SMPL24 局部旋转矩阵[24,3,3]＋三维根平移，随后附时间戳/转换 HumanFrame | 同类型输出；数值、平移算法及质量不保证与旧链相同，不能当作等价换权重 |
+
+两链经已有适配器均能接同类 HumanFrame。内部模型张量和循环状态不同，权重不可互换。30 帧历史的启动填窗不是持续等待未来30帧；Morph 的10槽180ms预览需求仍是另一处独立延迟，切换 FGP 不自动消除它。
+
+### Orin 实测与资源结论
+
+| 测试 | 实际条件 | 已保存结果 |
+| --- | --- | --- |
+| B＋GlobalPose | SoC1 PyTorch CPU、32输出短测 | 中位780.54ms，p95 854.95ms；不适合30Hz |
+| S1完整实时链 | SoC1 ONNX CPU＋原生物理、32输出短测 | 中位129.32ms，p95 134.54ms；仍不适合30Hz |
+| S1加速候选 | TensorRT选择性混合＋Graph＋相同特征精确缓存，32输出 | 中位29.09ms，p95 35.88ms；8/32超过33.33ms，未稳定30Hz |
+| S1与Morph同机 | 最好已完成串行组、929源帧latest释放 | 人体24.805Hz；另流水线R1虽29.853Hz但RPC长尾回退，未采纳 |
+
+这些不是只改变单一权重的公平消融，也不是两链真人精度优劣比较。不能把全部速度差归因于模型小了。旧 B 链尚未获得同等级 TensorRT/GPU 优化结果；没有证据证明它必然装不进 Orin 内存或无法优化。已证实的是按现有 CPU 路径帧耗时严重不够用。完整 EgoLocate 若同时运行相机/SLAM/手部视觉还会引入额外计算，但完整该组合尚未在 Orin 测量，不给出虚构占用率或吞吐。
+
+依据：[B分段实测](README_X2_FGP_S_ASSET_AUDIT_20261113.md#1506-权重未替换与分段耗时复核)、[S1加速](README_X2_FGP_S1_ACCEL_RESULT_20261113.md)、[同机结果](README_X2_JOINT_PERF_20261113.md)、[流水线取舍](README_X2_JOINT_PIPELINE_20261113.md)。本次只重读原件和源码，新增模型/板端测试为0，共享使用机器人期间不因此启动压测。
+
 ## Done / To Do
 
 用户：确认衣服链路有 FGP 前级；之前把包内 PIP 权重身份扩大成整体链路的说法不准确。此包衣服入口下游实际为 Full_GR_OV_10，不能自动认定 FastPIP 串接。

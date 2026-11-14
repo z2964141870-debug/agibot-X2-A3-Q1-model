@@ -1,5 +1,7 @@
 # YUANQI 具身智能研究跟踪
 
+2026-11-14研究：[四项简报](research/2026-11-14/README.md)／[检查](README_RESEARCH_CHECK_20261114.md)。接续11/12未报检索并补到11/13公告；作者依赖、BlinkMimic、动作梯度与异步控制。Q1先原人体审计曲线→已有多步WM，X2资源分配R2仍准备；本轮无科学执行。[发布收据](../data/manifests/research_watch_sync_20261114.json)，服务器镜像待。
+
 2026-11-11研究：[四项简报](research/2026-11-11/README.md)／[检查](README_RESEARCH_CHECK_20261111.md)。SuperMimic作者G1源码公开；Beyond Retargeting撤回；多步误差与对时两项候选。Q1仍先补原人体审计和曲线，再按已有计划核多步WM；本轮无训练或仿真。[发布收据](../data/manifests/research_watch_sync_20261111.json)，服务器镜像待。
 
 2026-11-10研究：[仅检查记录](README_RESEARCH_CHECK_20261110.md)，无新简报。95请求87完整200；30仓库头/9发行无实质变化，11/10公告覆盖未建立，VREgo仅恢复访问。main去重226/H001及候选不变；Q1按原人体审计曲线→已有多步WM恢复，本轮无科学执行。[发布收据](../data/manifests/research_watch_sync_20261110.json)，服务器镜像待。

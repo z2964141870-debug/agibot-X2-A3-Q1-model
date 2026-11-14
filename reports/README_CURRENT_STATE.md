@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-14更新：[R2初始化协议准备](README_X2_ALLOCATION_STARTUP_20261114.md)。90475仍原生Windows→run原SoC1/boot115b4d3f。35依赖、六新板端合同及247/24源同；prefix_r2/23869-start157227以7.556145秒完成64GPU/输出及三TID核门。joint_r2/25867-start176081以4.653688秒JSONDecodeError初始化失败，policy25872退0/FGP25879退-2，栈在TensorRT反序列化，无fgp_outputs或native/status，显式录制GPU/graph初始化0。两monitor TARGET_EXITED/自有tegrastats回收，终后源同。原失败根不动。新增x2_joint_startup五合同.059秒/CLI过，仅fd1诊断隔离、严格原始报文和bind/observe内核掩码；尚未部署派发。先新来源发布/五板端检查/原35、prefix与失败SHA及资源锁准入，唯一joint_r2_startupfix，仍900帧/2初始化及100/120秒，不重做64门。原Q1暂停/默认衣服/终端23/180ms保持，0电机MC训练。
+
 2026-11-14最新：[X2监测](README_X2_RESOURCE_MONITOR_20261114.md)。90475原生Windows密码→run@SoC1成功，boot115b4d3f-aaff-47dc-8f1f-5ac42d20a106。唯一20秒背景采样完成/20区间/0模型反馈电机：CPU平均25.05%、GPU中位11%最大22%、最高64.968度、最低可用12502802432B；自有tegrastats已回收，七板端合同过，11259B四原件包Mac SHA同。新3236第一跳超时只该会话失败，90475随后成功回执，不能泛化桥接断联。下一复用90475，先原35执行依赖及247源码/24资产、旧R1终门/锁和资源核验；新R2仍0GPU，独立64前缀及TID门过后才900帧联合。共享使用，不改系统服务/时钟，默认衣服/终端23/180ms/Q1暂停保持。
 
 2026-11-14：[EgoLocate 衣服链路复核](README_EGOLOCATE_FGP_CHAIN_RECHECK_20261114.md)。显式 U100h FGP 去噪→Full_GR_OV_10，网页自定义 backend 绕过原生 FastPIP；23MB PIP 文件身份不代表整个衣服链路。旧外部 FGP 工程未打包，不能反推应用不用 FGP；当前 CANO S1/LIP/GP 资源及测速另列。本次静态核查/0新模型硬件训练。机器人共享使用先被动观察，不启动已准备绑核压测。

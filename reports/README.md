@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-14：[R2前缀通过与启动协议独立修复准备](README_X2_ALLOCATION_STARTUP_20261114.md)。64输出/三TID核门实际过；joint在反序列化初始化JSON解析失败，0录制GPU/无native反馈。原始坏行未保存，不定死原生日志单因；新fd诊断隔离/严格JSON原件留存/角色内核掩码记录，五本地合同过，板端待。原源247/24终后同，失败保留/预算不扩。
+
 2026-11-14：[X2同步资源监测实测](README_X2_RESOURCE_MONITOR_20261114.md)。原生Windows→run恢复新boot115b4d3f；20秒背景CPU25.05%/GPU中位11%最大22%/最高64.968度/最低可用11.64GiB，0模型和电机。七本地及七板端合同过，原件11259B回Mac SHA同。下一R2来源资源及64前缀门，未测提速，不重跑旧组。
 
 2026-11-14：[EgoLocate FGP 前级与后端复核](README_EGOLOCATE_FGP_CHAIN_RECHECK_20261114.md)。衣服入口确有 U100h FGP 权重，并接 Full_GR_OV_10；PIP 文件身份不能描述整条链，原生 FastPIP 被自定义 backend 绕过。仅静态核查，没有新增模型/机器人操作。

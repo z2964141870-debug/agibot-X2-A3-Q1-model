@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-14：[EgoLocate 衣服链路复核](README_EGOLOCATE_FGP_CHAIN_RECHECK_20261114.md)。显式 U100h FGP 去噪→Full_GR_OV_10，网页自定义 backend 绕过原生 FastPIP；23MB PIP 文件身份不代表整个衣服链路。旧外部 FGP 工程未打包，不能反推应用不用 FGP；当前 CANO S1/LIP/GP 资源及测速另列。本次静态核查/0新模型硬件训练。机器人共享使用先被动观察，不启动已准备绑核压测。
+
 2026-11-14研究：[四项简报](research/2026-11-14/README.md)／[检查](README_RESEARCH_CHECK_20261114.md)。接续11/12未报检索并补到11/13公告；作者依赖、BlinkMimic、动作梯度与异步控制。Q1先原人体审计曲线→已有多步WM，X2资源分配R2仍准备；本轮无科学执行。[发布收据](../data/manifests/research_watch_sync_20261114.json)，服务器镜像待。
 
 2026-11-13最新：[用户要求资源分配优化与放宽时限评估](README_X2_RESOURCE_ALLOCATION_20261113.md)。独立x2_joint_alloc六合同.007秒/两CLI过，真实绑核/GPU0；新964帧+4初始化预算和独立64输出来源/角色核门待板端准入，不重派R1。旧串行1492ready超过20/25/30/33.333ms为6/2/1/0，R1需设备完整日志不能套数，原50Hz/20ms生产后端未改。40802现Windows，第二跳abort后一次原生重连SoC1 TCP超时，当前机器人现场未复核，Windows仍在；不重试未变状态/不判断整桥接失败。六宫图R1已Mac目视，Q1暂停/默认衣服/终端23保持。

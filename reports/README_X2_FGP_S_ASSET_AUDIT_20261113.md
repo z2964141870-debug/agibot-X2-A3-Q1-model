@@ -1,5 +1,7 @@
 # FGP-S 与 EgoLocate 权重核查
 
+**2026-11-14 链路澄清**：[直接源码复核](README_EGOLOCATE_FGP_CHAIN_RECHECK_20261114.md)确认衣服适配器有前级 FGP 去噪权重 U100h，再调用 Full_GR_OV_10。23.2MB 文件是 PIP 只描述该文件身份，不代表整个衣服应用只用 PIP。网页入口传入自定义 FGP backend，绕过原生 FastPIP 分支；缺失同级旧工程不能表述为应用没有 FGP，也不能推断必然 FGP→FastPIP。当前后来提供的 CANO S1/LIP/GP 资源及测速按其新报告为准。
+
 记录日期：2026-11-13。状态：本地资产核查完成，FGP-S 已训练权重未找到。
 
 **后续范围更正**：用户要求读取作者仓库后，实查发现此前遗漏的 fgp_realtime 分支（2026-11-09 更新）已说明 CPU ONNX 及 onnx_s1/onnx_cano_s_ep120_fast 两套外置资源。本报告“未找到”限于此前提供的 ZIP/main，不推广为作者无轻量部署。当前仍未拿到新资源包；旧 0.78 秒不是新版本测速。详见 [实时分支核查](README_X2_CLOTHO_REALTIME_BRANCH_REVIEW_20261113.md)。

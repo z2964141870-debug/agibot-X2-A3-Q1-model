@@ -1,0 +1,54 @@
+{
+  "recorded_at_utc": "2026-11-14T15:53:47Z",
+  "status": "DISPATCH_ACKNOWLEDGED_RESULT_UNVERIFIED",
+  "execution_release": "fa667901bc53b7581baced44a2d42dcbf8448929",
+  "project_root": "/home/agi/x2_morph_human_20261113",
+  "last_verified_boot_id": "115b4d3f-aaff-47dc-8f1f-5ac42d20a106",
+  "prior_native_acknowledgement": {
+    "evidence_origin": "Previously received session 90475 acknowledgement; raw device receipt pending Mac retrieval",
+    "root_pid": 35179,
+    "root_starttick": 247845,
+    "monitor_pid": 35181,
+    "output": "data/analysis/X2_JOINT_ALLOC_20261113/joint_r2_startupfix",
+    "monitor_output": "data/analysis/X2_JOINT_ALLOC_20261113/monitor_startupfix",
+    "dispatch_receipt": "logs/session_records/x2_joint_r2_startupfix_dispatch_20261114.json",
+    "admission_receipt": "logs/session_records/x2_joint_startup_admitted_20261114.json",
+    "outer_log": "logs/x2_joint_r2_startupfix_20261114.log",
+    "protocol_log": "logs/session_records/x2_joint_r2_startupfix_protocol_20261114.log",
+    "board_startup_contracts_passed": 5,
+    "unchanged_original_dependencies": 35,
+    "unchanged_upstream_sources": 247,
+    "unchanged_assets": 24
+  },
+  "observed_session_end": {
+    "session_id": 90475,
+    "exit_code": 255,
+    "second_hop_error": "Read from remote host 10.0.1.41: Connection aborted",
+    "first_hop_error": "Read from remote host 100.92.227.62: Connection reset by peer; client_loop: send disconnect: Broken pipe"
+  },
+  "one_native_recovery": {
+    "session_id": 40609,
+    "command": "ssh sshuser@100.92.227.62",
+    "exit_code": 255,
+    "error": "ssh: connect to host 100.92.227.62 port 22: Operation timed out",
+    "failed_stage": "Mac to Windows TCP connect, before interactive authentication",
+    "second_hop_attempted": false,
+    "network_or_authentication_configuration_changes": 0
+  },
+  "current_runtime_status": "UNVERIFIED",
+  "actual_recorded_gpu_frames": null,
+  "actual_graph_initialization_enqueues": null,
+  "terminal_source_integrity": "UNVERIFIED",
+  "owned_process_cleanup_and_lock_release": "UNVERIFIED",
+  "budgets_unchanged": {
+    "controller_seconds": 100,
+    "outer_seconds": 120,
+    "recorded_gpu_frame_bound": 900,
+    "explicit_graph_initialization_enqueue_bound": 2
+  },
+  "last_acknowledgement_is_not_current_liveness": true,
+  "dispatch_again": false,
+  "next_action": "Recover the same native two-hop entry, verify identity and existing receipts/processes/output, collect final run and monitor, check sources and actual kernel masks before saved-only analysis",
+  "device_documents_mirror": "PENDING",
+  "shared_q1_training": "REMAINS_USER_PAUSED"
+}

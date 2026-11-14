@@ -51,4 +51,4 @@ timeout --signal=INT --kill-after=5s 35s python3 -B -m script.x2_resource_monito
 
 ## 保存状态
 
-源码与计划已发布；板端部署、实际采样、原件回传均已完成。最新报告与索引的Git发布及设备文档镜像以后续publication为准，旧部署收据中的报告SHA对应部署时原计划版本。下一R2仍先独立源码/资产及资源准入，再唯一64前缀门；尚无R2实际GPU调用或提速结论。
+源码与计划已发布；板端部署、实际采样、原件回传均已完成。最新报告与索引的Git发布及设备文档镜像以后续publication为准，旧部署收据中的报告SHA对应部署时原计划版本。后续R2独立64帧前缀及实际TID门已通过，初次joint初始化失败后来源终门同；新入口五板端合同和准入通过，唯一joint_r2_startupfix/35179-start247845及同步monitor35181收到派发回执。新联合吞吐与同步负载结果尚未取回，不能把背景25.05%CPU/11%GPU套成联合模型负载。90475已退出、唯一原生恢复第一跳TCP超时，恢复先读原任务与monitor_startupfix，不重派；详见[启动补测恢复点](README_X2_ALLOCATION_STARTUP_20261114.md)。

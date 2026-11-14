@@ -1,6 +1,16 @@
 # X2 R2 初始化协议隔离与独立补测
 
-2026-11-14。状态 PREPARED_NOT_DISPATCHED。仅修复自有测试入口的启动传输，保持原模型、30Hz人体物理、50Hz策略请求、20ms实际门及180ms预览；不改旧控制器、R2四执行源码、作者代码、终端2/3或系统服务。
+2026-11-14。状态 DISPATCH_ACKNOWLEDGED_RESULT_UNVERIFIED。仅修复自有测试入口的启动传输，保持原模型、30Hz人体物理、50Hz策略请求、20ms实际门及180ms预览；不改旧控制器、R2四执行源码、作者代码、终端2/3或系统服务。
+
+## 当前恢复点
+
+新入口源码已发布 `fa667901bc53b7581baced44a2d42dcbf8448929`，显式push origin Q1并独立核到同一40位远端。五项新板端合同、原35依赖、247上游源码/24资产及失败根保护门通过后，唯一补测已收到派发回执：外层PID35179/starttick247845，监测PID35181。执行根`data/analysis/X2_JOINT_ALLOC_20261113/joint_r2_startupfix`，同步监测根`monitor_startupfix`，原100秒控制器/120秒外层和900录制帧/2显式graph初始化上限保持。
+
+设备原始派发收据`logs/session_records/x2_joint_r2_startupfix_dispatch_20261114.json`、准入`x2_joint_startup_admitted_20261114.json`及严格协议日志`x2_joint_r2_startupfix_protocol_20261114.log`尚未回Mac。此处PID来自之前实际收到的回执，是恢复定位信息，不是当前存活证明。
+
+23:53北京时间续行时，90475返回第二跳Connection aborted及第一跳Connection reset/Broken pipe后退出255；不能据此认定补测失败或机器人停机。唯一原生恢复`ssh sshuser@100.92.227.62`在第一跳TCP连接阶段Operation timed out/255，未到密码提示，未尝试第二跳；未修改网络或认证。当前补测终态、真实帧数、角色内核掩码、来源终门及自有进程/锁回收均未核验，不能标为仍在跑或已完成。详见[续行记录](../logs/session_records/x2_joint_startup_dispatch_observation_20261114.json)。
+
+恢复后先取原收据与现存输出/日志/进程，禁止重派：核身份boot、原PID/starttick及monitor，再读run_receipt、fgp_summary、affinity、native/status、三份kernel_binding和startup_config；比较终前/终后247+24、原35依赖、新五源码和失败根SHA。只有实际完成及来源/回收/全部角色掩码门通过，才用已保存工件做独立analysis_startupfix及20/25/30/33.333ms事后分析。R1完整日志的多门槛统计也只读一次，不重跑模型。准备的`script/x2_joint_alloc/deliver.py`只通过CLI检查，真实R2绘图尚未执行；它要求完成数值、相同历史基线、实际掩码审查及同boot已退出监测，拒绝拿不完整结果出提速图。
 
 ## 实际前序与失败证据
 
@@ -32,4 +42,4 @@ R2六项板端合同、35个项目依赖SHA及原247上游源码/24资产通过�
 
 真实完成后检查三worker退出、全部角色核掩码、源前后同、监测回收，再只读分析吞吐/间隔、全部ready RPC、20/25/30/33.333ms事后门和源年龄，生成六宫图。原串行与R1来自旧boot，比较必须标历史对照及背景负载变化，不将短测称稳定30Hz或硬件端到端/真人质量验收。
 
-原Q1暂停、用户采纳null保持。此处仅准备完成，实际派发、结果、Mac原件和服务器文档镜像以后续收据为准。
+原Q1暂停、用户采纳null保持。新入口已派发，终态与来源终门尚未核验；设备派发原件、R2数值、六宫图和本次文档设备镜像待补。不能据当前连接退出重派或宣称提速，后续以真实收据为准。

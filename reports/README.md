@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-14：[X2同步资源监测实测](README_X2_RESOURCE_MONITOR_20261114.md)。原生Windows→run恢复新boot115b4d3f；20秒背景CPU25.05%/GPU中位11%最大22%/最高64.968度/最低可用11.64GiB，0模型和电机。七本地及七板端合同过，原件11259B回Mac SHA同。下一R2来源资源及64前缀门，未测提速，不重跑旧组。
+
 2026-11-14：[EgoLocate FGP 前级与后端复核](README_EGOLOCATE_FGP_CHAIN_RECHECK_20261114.md)。衣服入口确有 U100h FGP 权重，并接 Full_GR_OV_10；PIP 文件身份不能描述整条链，原生 FastPIP 被自定义 backend 绕过。仅静态核查，没有新增模型/机器人操作。
 
 2026-11-14研究：[四项简报](research/2026-11-14/README.md)／[检查](README_RESEARCH_CHECK_20261114.md)。接续11/12未报检索并补到11/13公告；作者依赖、BlinkMimic、动作梯度与异步控制。Q1先原人体审计曲线→已有多步WM，X2资源分配R2仍准备；本轮无科学执行。[发布收据](../data/manifests/research_watch_sync_20261114.json)，服务器镜像待。

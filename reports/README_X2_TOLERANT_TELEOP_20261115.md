@@ -21,3 +21,13 @@ sh "$base/script/x2_morph_backend/run_orin.sh" control \
   --output "$base/data/analysis/X2_TOLERANT_CONTROL_$(date +%Y%m%d_%H%M%S)" \
   --seconds 10 --control --confirm-live X2_ULTRA_MORPH_CONTROL
 ```
+
+## 20:11 至 20:13 现场故障
+
+20:11:59 启动的是原版 R6。MC 交接成功后，序号 501 的 24.52ms 回复被拒绝，随后持续故障阻尼。日志后来记录 SIGINT，最终状态仍为 FAULT_DAMPING，未取得正常归还回执。累计 17403 次电机发布包括故障阻尼，不能计作有效跟随。
+
+20:12:37 容错版被独占锁挡住，尚未开始交接。20:13:06 容错版收到反馈及部分策略目标，但始终未收到 MC 发布的站立命令，20 秒后在 STANDBY 退出。该次 MC 未被操作，电机发布 0。最终状态为 1009 请求、823 候选、186 拒绝，其中 151 次人体参考过期、19 次插值间隔过长，另有 2 次 RPC 超 30ms。
+
+事后只读管理器显示 MC 为 Idel，GetMcAction 不可用，Morph writer 和硬件锁均无持有者。因为旧阻尼 writer 已退出，专用于仍存活 writer 的 recover 入口不适用。先由现场通过官方流程恢复 MC，实核 Running/STAND_DEFAULT 后再继续只读检查。全局 `x2-teleop control` 默认仍指向原版 R6，容错版使用本页上节的独立命令。
+
+板端原始记录分别位于 `data/analysis/X2_LIVE_CONTROL_20261115_201159`、`data/analysis/X2_TOLERANT_CONTROL_20261115_201237` 和 `data/analysis/X2_TOLERANT_CONTROL_20261115_201306`。

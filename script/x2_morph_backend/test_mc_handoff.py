@@ -50,6 +50,35 @@ class HandoffTests(unittest.TestCase):
     def test_stopped_pid_is_not_running(self):
         self.assertTrue(stopped(dict(status="Stopped",pid=12)))
         self.assertFalse(stopped(dict(status="Running(12)",pid=12)))
+    def test_firmware_idle_typo_and_retained_pid_are_stop_states(self):
+        for status in ("Idel", "Idle", "Exited", "Stopped(12)"):
+            self.assertTrue(stopped(dict(status=status, pid=12)))
+        for status in ("Running(12)", "Stopping", "Starting", "unknown", None):
+            self.assertFalse(stopped(dict(status=status, pid=12)))
+
+    def test_unarmed_rollback_waits_for_service_rebind(self):
+        self.h.stop_attempted = True
+        original = self.mc.mode
+        remaining = [2]
+        def transient_mode():
+            if remaining[0]:
+                remaining[0] -= 1
+                raise HandoffError("MC service response timed out")
+            return original()
+        self.mc.mode = transient_mode
+        self.h.rollback_unarmed()
+        self.assertEqual(remaining[0], 0)
+        self.assertEqual(self.mc.action, "STAND_DEFAULT")
+
+    def test_missing_rollback_service_never_sends_joint_or_stand(self):
+        self.h.stop_attempted = True
+        def unavailable():
+            raise HandoffError("MC service response timed out")
+        self.mc.mode = unavailable
+        with self.assertRaisesRegex(HandoffError, "services did not return"):
+            self.h.rollback_unarmed()
+        self.assertEqual(self.mc.calls, ["start_app"])
+
     def test_no_target_never_stops_mc(self):
         self.controller.row["ready_target"] = False
         with self.assertRaises(HandoffError): self.h.acquire()

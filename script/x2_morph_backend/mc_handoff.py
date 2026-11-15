@@ -14,7 +14,12 @@ class HandoffError(RuntimeError):
 
 def stopped(runtime):
     # EM retains the old PID after a successful stop; PID presence is not liveness.
-    return isinstance(runtime, dict) and runtime.get("status", "").lower().startswith("stopped")
+    if not isinstance(runtime, dict) or not isinstance(runtime.get("status"), str):
+        return False
+    # This X2 firmware uses Idel (sic)/Idle and retains the last PID.
+    # Bus silence and native feedback checks remain separate requirements.
+    status = runtime["status"].strip().split("(", 1)[0].lower()
+    return status in {"stopped", "idle", "idel", "exited"}
 
 
 class Handoff:
@@ -114,7 +119,13 @@ class Handoff:
             self.mc.app("start_app")
             self.wait(lambda: self.mc.runtime().get("status", "").startswith("Running("), 15.,
                       "MC restart after failed admission not confirmed")
-        mode = self.mc.mode()
+        self.mark("ROLLBACK_WAIT_MC_SERVICES")
+        def available_mode():
+            try:
+                return self.mc.mode()
+            except (HandoffError, OSError, TimeoutError):
+                return None
+        mode = self.wait(available_mode, 30., "MC services did not return during unarmed rollback")
         if mode == "PASSIVE_DEFAULT":
             self.mc.set_mode("JOINT_DEFAULT")
             self.wait(lambda: self.mc.mode() == "JOINT_DEFAULT", 5., "rollback JOINT not confirmed")

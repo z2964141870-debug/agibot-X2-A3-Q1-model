@@ -218,3 +218,11 @@ Agent to do：利用保存的native.jsonl区分人体流超过100ms、RPC超过2
 X2_LIVE_CONTROL_20261115_164224最终capture_frozen=true、STANDBY、hardware_commands=0，没有CONTROL。最终1238请求/1175候选/63拒绝，原生日志没有control_rejected事件。MC后续查询为Running/28597、PASSIVE_DEFAULT，未确认STAND恢复。只能确定捕获后、Morph接管前未完成；Python原终端异常未落盘，无法从最终PASSIVE推断具体失败点或MC实际停启是否成功。现场不要重复接管，也不要将此状态记为正常交接成功。
 
 新增交接分步骤日志handoff_steps.jsonl及handoff_failure.json，记录CHECK_CONTROLLER_READY、CHECK_MC_RUNTIME_AND_STAND、FREEZE_RETURN_COMMAND、REQUEST/CONFIRM_DAMPING、REQUEST_MC_STOP、CONFIRM_MC_STOPPED、CONFIRM_BUS_SILENT、REQUEST_MORPH_ARM、CONFIRM_MORPH_CONTROL，及异常/当时原生状态。原运行的缺失异常不能事后恢复，需用户原终端Traceback才能进一步定位；不为获取日志重跑真实控制。原门限、状态机、MC调用和恢复逻辑未改。15项本机/板端测试情况见后续实际回执。
+
+## 用户补充原始Traceback后的定位
+
+本次原始异常明确为CONFIRM_MC_STOPPED（8秒未确认停止）；异常恢复时GetMcAction又报MC service response timed out，未完成恢复站立。更正前文“失败点未知”：失败步骤现已明确，停机超时的底层原因仍缺当时EM返回值。
+
+只读比对机器人当前Sonic deploy_x2.sh确认：固件停止态包含Idel（原拼写）、Idle、Stopped、Exited，并保留旧PID。原Morph只认Stopped，现补齐上述精确停止态；仍要求后续命令总线静默和原生新鲜反馈，不以Idle单独授权电机。未通过真实停MC复测，不能宣称本次必定就是Idel导致。
+
+原rollback只等MC进程Running就直接调用模式服务，存在ROS重绑定尚未完成的窗口。现增加最多30秒只读服务就绪等待，再沿原有JOINT→STAND恢复流程；服务持续不可用时明确失败，不越过模式确认。18项Mac/Orin合同测试状态以板端回执为准。当前修复只部署，未再次真实停启MC/未发电机；现场当前模式需重新只读查询，PASSIVE不能当成已恢复站立。

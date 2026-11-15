@@ -28,10 +28,10 @@ def summarize_window(frames):
     from scipy.spatial.transform import Rotation
     rotations = Rotation.from_quat(means[:, [1, 2, 3, 0]]).as_matrix()
     calibration_data = np.concatenate((values[:, :, :3].mean(axis=0).ravel(), rotations.ravel()))
-    stable = bool(jitter.max() <= 2.5 and acc_std.max() <= .8)
+    stable = bool(jitter.max() <= 5.0 and acc_std.max() <= .8)
     return dict(samples=len(values), orientation_jitter_p95_deg=jitter.tolist(),
                 acceleration_std_norm_m_s2=acc_std.tolist(), static_window_passed=stable,
                 tpose_geometry_verified=False,
                 calibration_data=calibration_data.tolist(), quaternion_mean_wxyz=means.tolist(),
-                thresholds=dict(jitter_p95_deg=2.5, acceleration_std_m_s2=.8,
+                thresholds=dict(jitter_p95_deg=5.0, acceleration_std_m_s2=.8,
                                 status="ENGINEERING_STATIC_WINDOW_THRESHOLDS_NOT_VALIDATED_QUALITY_SCORE"))

@@ -17,6 +17,9 @@ import numpy as np
 from .ble import BleSource
 from .calibration import summarize_window
 
+CALIBRATION_PREPARE_S = 3.0
+CALIBRATION_CAPTURE_S = 3.0
+
 
 class ReplayBody:
     def __init__(self, clotho_root, recording):
@@ -65,6 +68,7 @@ class Preview:
         self.lock = threading.RLock()
         self.stop_event = threading.Event()
         self.calibration = dict(state="not_captured", tpose_geometry_verified=False)
+        self.calibration_prepare_started = None
         self.calibration_started = None
         self.calibration_rows = []
         self.calibration_epoch = None
@@ -167,13 +171,35 @@ class Preview:
                         self.mesh_bytes = self.replay.frame(self.index).tobytes()
                         self.frame_seq += 1
                         self.last_tick = now
+                    if self.calibration_prepare_started is not None:
+                        self.advance_calibration(now)
                     if self.calibration_started is not None:
                         self.collect_calibration(now)
             except Exception as error:
                 with self.lock:
                     self.error = f"{type(error).__name__}: {error}"
+                    self.calibration_prepare_started = None
                     self.calibration_started = None
                     self.calibration["state"] = "error"
+
+    def advance_calibration(self, now):
+        """Run the user-facing T-pose preparation delay before sampling."""
+        elapsed = now - self.calibration_prepare_started
+        if elapsed < CALIBRATION_PREPARE_S:
+            self.calibration.update(
+                state="preparing",
+                remaining_s=max(0, CALIBRATION_PREPARE_S - elapsed),
+                capture_remaining_s=CALIBRATION_CAPTURE_S,
+            )
+            return
+        self.calibration_prepare_started = None
+        self.calibration_started = now
+        self.calibration_rows, self.calibration_epoch, self.last_pair = [], None, None
+        self.calibration.update(
+            state="collecting", samples=0, remaining_s=CALIBRATION_CAPTURE_S,
+            capture_remaining_s=CALIBRATION_CAPTURE_S,
+            tpose_geometry_verified=False,
+        )
 
     def collect_calibration(self, now):
         pair = self.source.pair()
@@ -185,8 +211,11 @@ class Preview:
             self.calibration_rows.append(self.source.active_values(pair))
             self.last_pair = pair["received_ns"]
         elapsed = now-self.calibration_started
-        self.calibration.update(samples=len(self.calibration_rows), remaining_s=max(0, 3-elapsed))
-        if elapsed >= 3:
+        self.calibration.update(samples=len(self.calibration_rows),
+                                remaining_s=max(0, CALIBRATION_CAPTURE_S-elapsed),
+                                capture_remaining_s=max(0, CALIBRATION_CAPTURE_S-elapsed),
+                                state="collecting")
+        if elapsed >= CALIBRATION_CAPTURE_S:
             self.calibration_started = None
             result = summarize_window(self.calibration_rows)
             result.update(state="static_passed" if result["static_window_passed"] else "unstable",
@@ -225,11 +254,18 @@ class Preview:
             if command.get("action") == "calibrate":
                 if not self.source or self.source.pair() is None:
                     raise ValueError("both garments must have fresh synchronized IMU data")
-                if self.calibration_started is not None:
+                if self.calibration_prepare_started is not None or self.calibration_started is not None:
                     raise ValueError("calibration already collecting")
-                self.calibration_started = time.monotonic()
+                self.calibration_prepare_started = time.monotonic()
+                self.calibration_started = None
                 self.calibration_rows, self.calibration_epoch, self.last_pair = [], None, None
-                self.calibration = dict(state="collecting", samples=0, remaining_s=3, tpose_geometry_verified=False)
+                self.calibration = dict(
+                    state="preparing", samples=0, remaining_s=CALIBRATION_PREPARE_S,
+                    capture_remaining_s=CALIBRATION_CAPTURE_S,
+                    tpose_geometry_verified=False,
+                )
+                self.smpl = None
+                self.live_status = "waiting_calibration"
                 self.error = None
             elif command.get("action") == "play" and self.replay:
                 if not isinstance(command.get("playing"), bool):

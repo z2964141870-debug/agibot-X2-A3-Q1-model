@@ -39,9 +39,10 @@ The service loads the models, then scans for up to 180 seconds. Each garment con
 60 seconds with at most two attempts. Waiting does not imply failure. If a scan ends without a
 target, the page reports that observation; it does not retry forever. Ctrl-C releases owned BLE clients.
 
-When both garments have fresh data, wear the clothes, stand in T-pose and click the calibration button.
-Remain still for three seconds. At least 60 unique paired samples and the static-window checks are
-required. SMPL inference starts only after this user-triggered capture passes the static check.
+When both garments have fresh data, wear the clothes and click the calibration button once. The page
+then gives a three-second preparation countdown; use it to assume T-pose. The following three-second
+capture window must remain completely still. At least 60 unique paired samples and the static-window
+checks are required. SMPL inference starts only after this two-stage capture passes the static check.
 Stationarity does not prove the wearer is geometrically in T-pose; inspect the reconstructed mesh.
 After a garment counter reset, capture calibration again. A gap holds the displayed last pose and
 marks it stale; the inference history resets before reconstruction resumes.

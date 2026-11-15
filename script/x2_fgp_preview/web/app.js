@@ -116,8 +116,16 @@ function draw(state){
       (d.imu_values||[]).forEach((v,i)=>{const row=document.createElement('tr');row.innerHTML=`<td>${role==='upper'?'上衣':'裤子'} ${i+1}</td><td>${v.slice(0,3).map(x=>fmt(x)).join(' / ')}</td><td>${fmt(Math.hypot(...v.slice(3)),2)}</td>`;$('imu-rows').append(row);});
     }
     const c=state.calibration;
-    $('calibrate').disabled=!Object.values(state.devices).every(d=>d.fresh)||c.state==='collecting';
-    $('cal-state').textContent=({not_captured:'尚未采集',collecting:`采集中 · 剩余 ${fmt(c.remaining_s)} 秒`,static_passed:'静稳检查通过 · T-pose 姿势待人工确认',unstable:'静稳检查未通过',epoch_changed:'设备计数已重置 · 需要重新标定',error:'采集失败'})[c.state]||c.state;
+    $('calibrate').disabled=!Object.values(state.devices).every(d=>d.fresh)||['preparing','collecting'].includes(c.state);
+    $('cal-state').textContent=({
+      not_captured:'尚未采集',
+      preparing:`请摆好并保持 T-pose · ${fmt(c.remaining_s)} 秒后开始采集`,
+      collecting:`正在采集 · 请保持 T-pose · 剩余 ${fmt(c.remaining_s)} 秒`,
+      static_passed:'静稳检查通过 · T-pose 姿势待人工确认',
+      unstable:'静稳检查未通过',
+      epoch_changed:'设备计数已重置 · 需要重新标定',
+      error:'采集失败'
+    })[c.state]||c.state;
     $('cal-samples').textContent=c.samples??'—';
     $('cal-jitter').textContent=c.orientation_jitter_p95_deg?`${fmt(Math.max(...c.orientation_jitter_p95_deg))}°`:'—';
     $('cal-acc').textContent=c.acceleration_std_norm_m_s2?`${fmt(Math.max(...c.acceleration_std_norm_m_s2),2)} m/s²`:'—';

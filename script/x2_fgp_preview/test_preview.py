@@ -147,6 +147,11 @@ class PreviewTests(unittest.TestCase):
             for role in ("upper", "lower"):
                 preview.source.feed(role, packet(10))
             preview.command(dict(action="calibrate"))
+            self.assertEqual(preview.calibration["state"], "preparing")
+            preview.advance_calibration(preview.calibration_prepare_started + 2.9)
+            self.assertIsNone(preview.calibration_started)
+            preview.advance_calibration(preview.calibration_prepare_started + 3.0)
+            self.assertIsNotNone(preview.calibration_started)
             preview.collect_calibration(preview.calibration_started+.1)
             self.assertEqual(len(preview.calibration_rows), 1)
             preview.collect_calibration(preview.calibration_started+.2)
@@ -155,6 +160,21 @@ class PreviewTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "epoch changed"):
                 preview.collect_calibration(preview.calibration_started+.3)
             self.assertFalse(list(Path(directory).glob("*.json")))
+
+    def test_calibration_preparation_precedes_three_second_capture(self):
+        with tempfile.TemporaryDirectory() as directory:
+            preview = Preview("ble", Path(directory), dict(joints=[], vertices=[]))
+            for role in ("upper", "lower"):
+                preview.source.feed(role, packet(10))
+            preview.command(dict(action="calibrate"))
+            self.assertEqual(preview.calibration["state"], "preparing")
+            preview.advance_calibration(preview.calibration_prepare_started + 3.0)
+            capture_start = preview.calibration_started
+            self.assertIsNotNone(capture_start)
+            preview.collect_calibration(capture_start + 2.9)
+            self.assertEqual(preview.calibration["state"], "collecting")
+            self.assertAlmostEqual(preview.calibration["remaining_s"], 0.1, places=6)
+            preview.calibration_started = None
 
     def test_static_result_saved_without_pose_claim(self):
         with tempfile.TemporaryDirectory() as directory:

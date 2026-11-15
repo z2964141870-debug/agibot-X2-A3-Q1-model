@@ -145,8 +145,9 @@ class Preview:
                         pose_mat=pose.tolist(), root_translation_m=result["root_translation_m"].tolist(),
                         joints_yup_m=mesh[:72].reshape(24, 3).tolist(), inference_ms=result["inference_ms"],
                         rotation_orthogonality_max_error=so3, source_clock="receiver monotonic proxy",
-                        source="LATEST_CLOTHO_U100H_GLOBALPOSE_CPU", hardware_commands=0,
-                        globalpose_integration_dt_s=float(self.engine.gp.dt), nominal_input_hz=30)
+                        source=self.engine.model_profile.get("selection", "FGP"), hardware_commands=0,
+                        globalpose_integration_dt_s=float(getattr(getattr(self.engine, "gp", None), "dt", 1 / 30)),
+                        nominal_input_hz=30)
                     snapshot = dict(self.smpl)
                 self.output.mkdir(parents=True, exist_ok=True)
                 encoded = (json.dumps(snapshot, allow_nan=False)+"\n").encode()
@@ -314,6 +315,8 @@ class Preview:
             self.inference_thread.join(timeout=15)
         if self.reconnect_thread:
             self.reconnect_thread.join(timeout=20)
+        if self.engine is not None and hasattr(self.engine, "close"):
+            self.engine.close()
         return self.source.stop() if self.source else not self.thread.is_alive()
 
 
@@ -394,6 +397,10 @@ def main():
     parser.add_argument("--port", type=int, default=8768)
     parser.add_argument("--scan-seconds", type=float, default=120)
     parser.add_argument("--reconstruct", action="store_true")
+    parser.add_argument("--fgp-backend", choices=("gpu", "cpu"), default="gpu")
+    parser.add_argument("--cano-engine", type=Path)
+    parser.add_argument("--gp-engine", type=Path)
+    parser.add_argument("--no-cuda-graph", action="store_true")
     args = parser.parse_args()
     replay = engine = live_body = None
     if args.export_template:
@@ -412,10 +419,19 @@ def main():
         if args.reconstruct:
             if not args.clotho_root:
                 parser.error("reconstruction needs --clotho-root")
-            from .engine import LatestFgp
-            engine = LatestFgp(args.clotho_root)
+            if args.fgp_backend == "gpu":
+                if not args.cano_engine:
+                    parser.error("GPU reconstruction requires --cano-engine")
+                from .gpu_engine import S1GpuFgp
+                engine = S1GpuFgp(args.clotho_root, args.cano_engine, args.gp_engine,
+                                   cuda_graph=not args.no_cuda_graph)
+            else:
+                from .engine import LatestFgp
+                engine = LatestFgp(args.clotho_root)
             live_body = ReplayBody(args.clotho_root, None)
             template = live_body.template()
+            if args.fgp_backend == "gpu":
+                engine.torch.set_num_threads(1)
         elif not args.template:
             parser.error("BLE transport preview requires --template")
         else:

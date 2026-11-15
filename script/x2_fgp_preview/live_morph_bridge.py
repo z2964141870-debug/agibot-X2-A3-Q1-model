@@ -35,7 +35,8 @@ def main():
     args = parser.parse_args()
 
     cal = Calibration(**json.loads(args.calibration.read_text()))
-    skeleton = args.clotho_root / "upstream/deploy/vr_teleop/human_skeleton.json"
+    from script.x2_morph_human.artifacts import home
+    skeleton = home() / "upstream/deploy/vr_teleop/human_skeleton.json"
     adapter = SmplAdapter(skeleton, cal)
     clock = f"fgp_bridge_monotonic:{socket.gethostname()}:{time.monotonic_ns()}"
     args.output.parent.mkdir(parents=True, exist_ok=True)

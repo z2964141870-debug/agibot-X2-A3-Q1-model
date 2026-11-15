@@ -9,7 +9,7 @@ unset PYTHONPATH PYTHONHOME
 python_bin="$project_root/data/environments/fgp-preview-py310/bin/python"
 test -x "$python_bin" || { echo 'Run bash script/x2_fgp_preview/setup_orin.sh first.' >&2; exit 1; }
 runtime="$project_root/data/runtime/x2-fgp-viewer"
-clotho_root="$project_root/data/runtime/clotho_fgp_latest/CLOTHO-mocap-main"
+clotho_root="$project_root/data/runtime/clotho_fgp_realtime_20261113"
 calibration="$project_root/script/x2_morph_human/config/clotho_fgp_yup.json"
 output="$project_root/data/analysis/X2_FGP_LIVE_MORPH_$(date +%Y%m%d_%H%M%S)"
 server_log="$output/fgp_server.log"
@@ -27,7 +27,8 @@ trap cleanup EXIT INT TERM
 flock -n "$runtime/preview.lock" "$python_bin" -u -m script.x2_fgp_preview.server \
   --mode ble --host 0.0.0.0 --port 8768 --scan-seconds 180 \
   --output "$output/preview" --three-root "$runtime/node_modules/three" \
-  --lucide "$runtime/lucide.min.js" --reconstruct --clotho-root "$clotho_root" \
+  --lucide "$runtime/lucide.min.js" --reconstruct --fgp-backend gpu --clotho-root "$clotho_root" \
+  --cano-engine "$project_root/data/analysis/X2_FGP_TRT_ACCEL_20261113/build_gemm_r3/cano.plan" \
   >"$server_log" 2>&1 &
 server_pid=$!
 

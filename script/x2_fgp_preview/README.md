@@ -1,3 +1,7 @@
+# Current live backend (2026-11-15)
+
+`run_orin.sh smpl` and `run_live_orin.sh` select the audited S1 CANO TensorRT mixed_gemm engine with CUDA Graph. LIP/GP and native physics run on CPU. No automatic CPU B fallback. The historical B/U100h notes below describe the previous diagnostic implementation. Restart the preview after updating, then repeat the 3s preparation + 3s capture calibration. GPU live BLE rate and wearer quality require measurement; recorded results alone do not certify 30Hz.
+
 # SmartWear / CLOTHO FGP Preview
 
 Read-only clothing acquisition, user-triggered T-pose capture and SMPL24 browser preview.

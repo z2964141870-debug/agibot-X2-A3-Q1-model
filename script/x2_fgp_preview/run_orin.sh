@@ -11,9 +11,11 @@ mode="${1:-smpl}"
 extra=()
 case "$mode" in
   smpl)
-    extra=(--reconstruct --clotho-root "$project_root/data/runtime/clotho_fgp_latest/CLOTHO-mocap-main")
-    echo 'FGP: EgoLocate default U100h denoiser + GlobalPose Full_GR_OV_10 (verified weights).'
-    echo 'Current CPU backend is diagnostic only: recorded Orin median 781ms/output; live 30Hz is not validated.'
+    clotho_root="$project_root/data/runtime/clotho_fgp_realtime_20261113"
+    extra=(--reconstruct --fgp-backend gpu --clotho-root "$clotho_root"
+      --cano-engine "$project_root/data/analysis/X2_FGP_TRT_ACCEL_20261113/build_gemm_r3/cano.plan")
+    echo 'FGP: S1 onnx_s1 with audited TensorRT CUDA Graph CANO engine.'
+    echo 'LIP, GP and native physics remain on CPU; the old B/U100h CPU path is not selected.'
     ;;
   transport) extra=(--template "$runtime/smpl_template.json");;
   *) echo 'Usage: bash script/x2_fgp_preview/run_orin.sh [smpl|transport]' >&2; exit 1;;

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-15 [X2 容错版简版操作书](README_X2_TOLERANT_QUICKSTART_20261115.md)。官方 MC 已恢复 STAND_DEFAULT，恢复后只读捕获成功，人体参考仍反复过期。
+
 2026-11-15 [X2 现场故障与恢复入口](README_X2_TOLERANT_TELEOP_20261115.md#2011-至-2013-现场故障)。原版接管后进入阻尼，随后进程退出。容错版后两次均未完成交接，最新 MC 为 Idel，需现场官方恢复。
 
 2026-11-15：[X2全局命令](README_X2_GLOBAL_COMMANDS_20261115.md)。SoC1已安装x2-teleop；MC inspect目前服务不可用，模式未确认。

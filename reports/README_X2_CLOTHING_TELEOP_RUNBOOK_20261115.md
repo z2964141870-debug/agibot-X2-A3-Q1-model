@@ -244,3 +244,7 @@ sh script/x2_morph_backend/run_orin.sh recover \
 ```
 
 必须由有支撑/急停准备的现场操作者在另一个终端执行，保留原阻尼终端。成功以MC_RECOVERY_CONFIRMED＋原writer RELEASED为准；原终端退出时仍可能显示之前的RPC异常，不能单靠旧Traceback判断恢复失败。日志operator_recovery.jsonl。未确认则维持现场保护并检查，不再次启动控制。
+
+## 本次恢复实核完成
+
+用户执行显式恢复命令后，operator_recovery.jsonl确认START_MC→REQUEST_JOINT→WAIT_WRITER_RELEASE→REQUEST_STAND_AFTER_RELEASE→MC_RECOVERY_CONFIRMED。随后独立只读GetMcAction为STAND_DEFAULT、MC Running(42508)，原178114已退出，无Morph control/native进程，原状态RELEASED。原reason unexpected_external_writer在本次明确恢复上下文对应MC接管，不能泛称未知进程故障。累计278003次发送包含长时间故障阻尼，不是278003次策略跟随。下一步先离线/observe定位RPC长尾并评估门限，不自动重新接管；恢复完成不等于遥操质量或实时验收通过。收据logs/session_records/x2_fault_recovery_confirmed_20261115.json。

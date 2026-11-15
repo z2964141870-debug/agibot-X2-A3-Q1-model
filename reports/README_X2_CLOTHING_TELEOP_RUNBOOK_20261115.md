@@ -226,3 +226,21 @@ X2_LIVE_CONTROL_20261115_164224最终capture_frozen=true、STANDBY、hardware_co
 只读比对机器人当前Sonic deploy_x2.sh确认：固件停止态包含Idel（原拼写）、Idle、Stopped、Exited，并保留旧PID。原Morph只认Stopped，现补齐上述精确停止态；仍要求后续命令总线静默和原生新鲜反馈，不以Idle单独授权电机。未通过真实停MC复测，不能宣称本次必定就是Idel导致。
 
 原rollback只等MC进程Running就直接调用模式服务，存在ROS重绑定尚未完成的窗口。现增加最多30秒只读服务就绪等待，再沿原有JOINT→STAND恢复流程；服务持续不可用时明确失败，不越过模式确认。18项Mac/Orin合同测试状态以板端回执为准。当前修复只部署，未再次真实停启MC/未发电机；现场当前模式需重新只读查询，PASSIVE不能当成已恢复站立。
+
+## 16:53真实CONTROL后RPC故障与明确恢复入口
+
+本次X2_LIVE_CONTROL_20261115_165306完成DAMPING确认/MC停止确认/总线静默/原生ARM，handoff_events含MORPH_OWNS_BUS。进入CONTROL后第377次策略请求RPC24.346ms>20ms，当时反馈最大年龄1.72ms，触发rpc_or_feedback_deadline并锁存FAULT_DAMPING。注意：这次已发生真实电机发布，与此前0发布的失败不同；后续持续发布的是零kp故障阻尼，不能把累计发布数当作持续策略跟随。
+
+故障writer不得直接杀掉。用户确认现场有支撑、原终端三保持且尚未恢复MC后，已新增独立显式operator recovery入口，7项Mac/Orin模拟检查通过；尚未用自动控制去试恢复。入口限定现存FAULT_DAMPING、PID命令行/run_id匹配，恢复MC服务，必要时PASSIVE→JOINT，观察原writer RELEASED后才请求STAND。服务/总线未确认即失败，不清除故障重启Morph。不向原writer注入命令或信号，不改20ms门。
+
+本次专用命令（下次不同PID/目录/run_id不能照抄）：
+
+```bash
+sh script/x2_morph_backend/run_orin.sh recover \
+  --native-output data/analysis/X2_LIVE_CONTROL_20261115_165306/native \
+  --native-pid 178114 \
+  --run-id rc972b19b6383 \
+  --confirm-supported-recovery X2_SUPPORTED_MC_RECOVERY
+```
+
+必须由有支撑/急停准备的现场操作者在另一个终端执行，保留原阻尼终端。成功以MC_RECOVERY_CONFIRMED＋原writer RELEASED为准；原终端退出时仍可能显示之前的RPC异常，不能单靠旧Traceback判断恢复失败。日志operator_recovery.jsonl。未确认则维持现场保护并检查，不再次启动控制。

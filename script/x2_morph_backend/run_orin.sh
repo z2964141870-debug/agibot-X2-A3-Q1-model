@@ -14,6 +14,7 @@ case "${1:-}" in
   sensor-profile) backend_module=script.x2_morph_backend.sensor_profile; shift ;;
   mc) backend_module=script.x2_morph_backend.mc_handoff; shift ;;
   control) backend_module=script.x2_morph_backend.control_session; shift ;;
+  recover) backend_module=script.x2_morph_backend.recover; shift ;;
   native-probe) backend_module=script.x2_morph_backend.native_probe; shift ;;
 esac
 exec env -u PYTHONHOME PYTHONDONTWRITEBYTECODE=1 \

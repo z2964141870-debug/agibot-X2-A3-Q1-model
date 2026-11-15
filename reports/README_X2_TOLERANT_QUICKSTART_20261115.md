@@ -1,5 +1,7 @@
 # X2 容错版 · 10 秒短测
 
+> **暂停实控。** 20:23 容错版真机短测出现异常运动。以下控制命令仅保留为历史记录。当前仅做只读和离线排查。[事故记录](README_X2_TOLERANT_MOTION_INCIDENT_20261115.md)
+
 1. 保持衣服和策略终端运行，确认网页 SMPL 实时更新，机器人有支撑、急停就绪。
 2. 在机器人终端三从任意目录粘贴第一段。确认 `Running` / `STAND_DEFAULT`。第二段先删去 `--control --confirm-live X2_ULTRA_MORPH_CONTROL` 做只读检查。见到 `mc_capture_complete=true`、`ready_target=true` 且人体参考没有反复过期后，再完整执行第二段开始短测。
 

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-15 [X2 真机运动异常，暂停实控](README_X2_TOLERANT_MOTION_INCIDENT_20261115.md)。20:23 容错版交接和归还成功，现场动作验收失败。
+
 2026-11-15 [X2 容错版简版操作书](README_X2_TOLERANT_QUICKSTART_20261115.md)。官方 MC 已恢复 STAND_DEFAULT，恢复后只读捕获成功，人体参考仍反复过期。
 
 2026-11-15 [X2 现场故障与恢复入口](README_X2_TOLERANT_TELEOP_20261115.md#2011-至-2013-现场故障)。原版接管后进入阻尼，随后进程退出。容错版后两次均未完成交接，最新 MC 为 Idel，需现场官方恢复。

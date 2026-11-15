@@ -64,7 +64,14 @@ def main():
             if a.control:
                 # ROS setup can take longer than a target's lifetime. Finish
                 # initialization before observing the stable readiness window.
-                mc=RosMc(); handoff=Handoff(mc,controller)
+                def record_step(event):
+                    # Diagnostic I/O must never block recovery on a disk error.
+                    try:
+                        with (out/"handoff_steps.jsonl").open("a") as journal:
+                            journal.write(json.dumps(event)+"\n")
+                    except OSError:
+                        pass
+                mc=RosMc(); handoff=Handoff(mc,controller,on_step=record_step)
             readiness = StableReadiness()
             deadline=time.monotonic()+20.
             while time.monotonic()<deadline:
@@ -98,7 +105,21 @@ def main():
                 native=status,mc_events=handoff.events if handoff else [],
                 hardware_commands=status["hardware_commands"],mc_mutations=bool(a.control)),indent=2)+"\n")
             print(json.dumps(status))
-        except (Exception,KeyboardInterrupt):
+        except (Exception,KeyboardInterrupt) as error:
+            diagnostic = dict(error=repr(error),
+                step=handoff.current_step if handoff else "STARTUP",
+                mc_stop_attempted=handoff.stop_attempted if handoff else False,
+                damping_requested=handoff.damping_requested if handoff else False,
+                handoff_events=handoff.events if handoff else [])
+            try:
+                diagnostic["native"] = controller.status()
+            except Exception as status_error:
+                diagnostic["status_error"] = repr(status_error)
+            try:
+                (out/"handoff_failure.json").write_text(json.dumps(diagnostic,indent=2)+"\n")
+            except OSError:
+                pass
+            print("HANDOFF_FAILED step="+diagnostic["step"]+" error="+repr(error),flush=True)
             if a.control and handoff is not None and process.poll() is None:
                 try:
                     current=controller.status()

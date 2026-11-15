@@ -18,12 +18,19 @@ def stopped(runtime):
 
 
 class Handoff:
-    def __init__(self, mc, controller, *, clock=time.monotonic, sleep=time.sleep):
+    def __init__(self, mc, controller, *, clock=time.monotonic, sleep=time.sleep, on_step=None):
         self.mc, self.controller, self.clock, self.sleep = mc, controller, clock, sleep
         self.stop_attempted = False
         self.damping_requested = False
         self.acquired = False
         self.events = []
+        self.current_step = "NOT_STARTED"
+        self.on_step = on_step
+
+    def mark(self, step):
+        self.current_step = step
+        if self.on_step is not None:
+            self.on_step(dict(step=step, monotonic_s=self.clock()))
 
     def wait(self, predicate, seconds, reason):
         deadline = self.clock()+seconds
@@ -35,26 +42,36 @@ class Handoff:
         raise HandoffError(reason)
 
     def acquire(self):
+        self.mark("CHECK_CONTROLLER_READY")
         status = self.controller.status()
         if (status.get("stage") != "STANDBY" or not status.get("ready_target")
                 or not status.get("mc_capture_complete") or status.get("transport_failed")):
             raise HandoffError("controller must have fresh targets and a complete captured MC command")
+        self.mark("CHECK_MC_RUNTIME_AND_STAND")
         runtime = self.mc.runtime()
         if not runtime.get("status", "").startswith("Running(") or self.mc.mode() != "STAND_DEFAULT":
             raise HandoffError("MC must be running in STAND_DEFAULT before ownership transfer")
+        self.mark("FREEZE_RETURN_COMMAND")
         self.controller.command("capture_return")
         self.wait(lambda: self.controller.status().get("mc_capture_frozen"), 2.,
                   "standing MC return command was not frozen")
+        self.mark("REQUEST_DAMPING")
         self.damping_requested = True
         self.mc.set_mode("DAMPING_DEFAULT")
+        self.mark("CONFIRM_DAMPING")
         self.wait(lambda: self.mc.mode() == "DAMPING_DEFAULT", 3., "MC damping not confirmed")
         self.events.append("DAMPING_CONFIRMED")
+        self.mark("REQUEST_MC_STOP")
         self.stop_attempted = True
         self.mc.app("stop_app")
+        self.mark("CONFIRM_MC_STOPPED")
         self.wait(lambda: stopped(self.mc.runtime()), 8., "MC process stop not confirmed")
+        self.mark("CONFIRM_BUS_SILENT")
         self.wait(lambda: self.controller.status().get("external_age_s", -1.) >= .3,
                   3., "MC command bus not silent")
+        self.mark("REQUEST_MORPH_ARM")
         self.controller.command("arm", mc_stopped=True)
+        self.mark("CONFIRM_MORPH_CONTROL")
         self.wait(lambda: self.controller.status().get("stage") == "CONTROL", 3., "Morph writer did not arm")
         self.acquired = True
         self.events.append("MORPH_OWNS_BUS")

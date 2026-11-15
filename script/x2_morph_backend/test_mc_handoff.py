@@ -54,6 +54,7 @@ class HandoffTests(unittest.TestCase):
         self.controller.row["ready_target"] = False
         with self.assertRaises(HandoffError): self.h.acquire()
         self.assertEqual(self.mc.calls, [])
+        self.assertEqual(self.h.current_step, "CHECK_CONTROLLER_READY")
     def test_missing_return_capture_never_stops_mc(self):
         self.controller.row["mc_capture_complete"] = False
         with self.assertRaises(HandoffError): self.h.acquire()
@@ -66,10 +67,12 @@ class HandoffTests(unittest.TestCase):
         self.mc.app = lambda action: self.mc.calls.append(action)
         with self.assertRaises(HandoffError): self.h.acquire()
         self.assertFalse(any(op=="arm" for op,_ in self.controller.calls))
+        self.assertEqual(self.h.current_step, "CONFIRM_MC_STOPPED")
     def test_busy_bus_does_not_arm(self):
         self.controller.row["external_age_s"] = .01
         with self.assertRaises(HandoffError): self.h.acquire()
         self.assertFalse(any(op=="arm" for op,_ in self.controller.calls))
+        self.assertEqual(self.h.current_step, "CONFIRM_BUS_SILENT")
     def test_rollback_after_unarmed_failure(self):
         self.controller.row["external_age_s"] = .01
         with self.assertRaises(HandoffError): self.h.acquire()

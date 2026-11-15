@@ -212,3 +212,9 @@ Agent to do：利用保存的native.jsonl区分人体流超过100ms、RPC超过2
 ## 遥操优先模式
 
 用户允许移除影响遥操的辅助功能，run_live_orin.sh现默认--no-live-mesh --no-smpl-log：完全跳过逐帧SMPL网格/FK显示，保留原姿态和根平移送入策略；逐帧SMPL文件关闭，转发日志每30次请求记录一次。网页保留衣服状态、标定和重连。未改模型/物理/人体预览/反馈/MC及deadline。修改后需要重新启动第一终端并标定；实际频率收益须标定后实测，不能由删代码推算。
+
+## 16:42交接未完成：不能把Morph零发布当作MC未被操作
+
+X2_LIVE_CONTROL_20261115_164224最终capture_frozen=true、STANDBY、hardware_commands=0，没有CONTROL。最终1238请求/1175候选/63拒绝，原生日志没有control_rejected事件。MC后续查询为Running/28597、PASSIVE_DEFAULT，未确认STAND恢复。只能确定捕获后、Morph接管前未完成；Python原终端异常未落盘，无法从最终PASSIVE推断具体失败点或MC实际停启是否成功。现场不要重复接管，也不要将此状态记为正常交接成功。
+
+新增交接分步骤日志handoff_steps.jsonl及handoff_failure.json，记录CHECK_CONTROLLER_READY、CHECK_MC_RUNTIME_AND_STAND、FREEZE_RETURN_COMMAND、REQUEST/CONFIRM_DAMPING、REQUEST_MC_STOP、CONFIRM_MC_STOPPED、CONFIRM_BUS_SILENT、REQUEST_MORPH_ARM、CONFIRM_MORPH_CONTROL，及异常/当时原生状态。原运行的缺失异常不能事后恢复，需用户原终端Traceback才能进一步定位；不为获取日志重跑真实控制。原门限、状态机、MC调用和恢复逻辑未改。15项本机/板端测试情况见后续实际回执。

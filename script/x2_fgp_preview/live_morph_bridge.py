@@ -32,7 +32,10 @@ def main():
     parser.add_argument("--poll-ms", type=float, default=20.0)
     parser.add_argument("--http-timeout", type=float, default=2.0)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--log-every", type=int, default=1)
     args = parser.parse_args()
+    if args.log_every < 1:
+        parser.error("--log-every must be positive")
 
     cal = Calibration(**json.loads(args.calibration.read_text()))
     from script.x2_morph_human.artifacts import home
@@ -88,8 +91,9 @@ def main():
                                arrival_ns=arrival_ns, reply=reply,
                                fgp_inference_ms=sample.get("inference_ms"),
                                hardware_commands=0)
-                    log.write(json.dumps(row, allow_nan=False) + "\n")
-                    log.flush()
+                    if sent % args.log_every == 0:
+                        log.write(json.dumps(row, allow_nan=False) + "\n")
+                        log.flush()
                     last_sequence, last_received = sequence, received_ns
                 except (urllib.error.URLError, TimeoutError, OSError, ValueError, Exception) as error:
                     # Keep the bridge alive through BLE warmup and temporary

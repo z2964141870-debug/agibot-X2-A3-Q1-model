@@ -88,6 +88,7 @@ function draw(state){
   const replay=state.mode==='replay';
   $('replay-controls').hidden=!replay;
   for(const id of ['live-controls','calibration-controls','sensor-section'])$(id).hidden=replay;
+  if(state.live_mesh_enabled===false){body.visible=false;bones.visible=false;$('pose-label').textContent='遥操优先 · 3D 网格已关闭';}
   $('source-badge').textContent=replay?'历史录制':'实时 BLE';
   $('source-badge').className='badge'+(replay?'':' live');
   $('scene-source').textContent=replay?'CLOTHO · GlobalPose · 历史录制':'SmartWear · 传感器实时数据';
@@ -95,6 +96,7 @@ function draw(state){
   $('reconstruction').textContent=replay?'最新 FGP · 录制结果':({not_enabled:'未启用',waiting_calibration:'等待标定',history_warmup:'历史帧积累中',stale_hold:'数据过期 · 暂存',receiving:state.smpl_realtime_valid?'最新 FGP · 实时':'最新 FGP · 数据过期',error:'重建错误'})[state.reconstruction]||state.reconstruction;
   $('clock').textContent=replay?'录制时间轴':'接收端单调时钟';
   $('pose-label').textContent=replay?'历史录制 · 非当前穿戴者':state.smpl_realtime_valid?'实时 CLOTHO · GlobalPose':state.frame_seq>0?'SMPL 暂存 · 非实时姿态':'静态模板 · 非人体推理';
+  if(state.live_mesh_enabled===false)$('pose-label').textContent='遥操优先 · 3D 网格已关闭';
   $('smpl-age').textContent=state.smpl_age_ms==null?'—':`${fmt(state.smpl_age_ms,0)} ms`;
   $('inference-ms').textContent=state.smpl_inference_ms==null?'—':`${fmt(state.smpl_inference_ms)} ms`;
   $('so3-error').textContent=state.smpl_so3_error==null?'—':state.smpl_so3_error.toExponential(2);
@@ -138,7 +140,7 @@ async function poll(){
   try{
     const response=await fetch('/api/state');if(!response.ok)throw new Error('服务暂未响应');
     const state=await response.json();draw(state);
-    if(frameSeq!==state.frame_seq){await mesh();frameSeq=state.frame_seq;}
+    if(state.live_mesh_enabled!==false&&frameSeq!==state.frame_seq){await mesh();frameSeq=state.frame_seq;}
   }catch(e){$('error').textContent=e.message;$('connection-dot').className='dot';$('footer-state').textContent='预览连接等待中';}
   finally{busy=false;}
 }

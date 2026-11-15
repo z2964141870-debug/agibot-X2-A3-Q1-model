@@ -29,7 +29,7 @@ trap 'exit 130' INT
 trap 'exit 143' TERM
 
 flock -n -F "$runtime/preview.lock" "$python_bin" -u -m script.x2_fgp_preview.server \
-  --mode ble --host 0.0.0.0 --port 8768 --scan-seconds 180 \
+  --no-live-mesh --no-smpl-log --mode ble --host 0.0.0.0 --port 8768 --scan-seconds 180 \
   --output "$output/preview" --three-root "$runtime/node_modules/three" \
   --lucide "$runtime/lucide.min.js" --reconstruct --fgp-backend gpu --clotho-root "$clotho_root" \
   --cano-engine "$project_root/data/analysis/X2_FGP_TRT_ACCEL_20261113/build_gemm_r3/cano.plan" \
@@ -52,4 +52,4 @@ echo "FGP preview is live on 127.0.0.1:8768; bridge log: $bridge_log"
 "$bridge_python" -u -m script.x2_fgp_preview.live_morph_bridge \
   --preview-url http://127.0.0.1:8768 --endpoint tcp://127.0.0.1:5765 \
   --clotho-root "$clotho_root" --calibration "$calibration" \
-  --output "$bridge_log"
+  --log-every 30 --output "$bridge_log"

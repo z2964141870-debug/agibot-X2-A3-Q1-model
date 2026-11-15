@@ -62,7 +62,7 @@ class ReplayBody:
 
 
 class Preview:
-    def __init__(self, mode, output, template, replay=None, scan_seconds=120, engine=None, live_body=None):
+    def __init__(self, mode, output, template, replay=None, scan_seconds=120, engine=None, live_body=None, live_mesh=True, log_smpl=True):
         self.mode, self.output, self.template, self.replay = mode, output, template, replay
         self.source = BleSource(scan_seconds=scan_seconds) if mode == "ble" else None
         self.lock = threading.RLock()
@@ -82,6 +82,7 @@ class Preview:
         self.error = None
         self.reconnect_thread = None
         self.engine, self.live_body = engine, live_body
+        self.live_mesh, self.log_smpl = live_mesh, log_smpl
         self.smpl = None
         self.sample_log_bytes = 0
         self.sample_log_limit_bytes = 64*1024*1024
@@ -134,21 +135,25 @@ class Preview:
                     with self.lock:
                         self.live_status = "history_warmup"
                     continue
-                mesh = self.live_body.from_pose(result["pose_mat"], result["root_translation_m"])
+                mesh = (self.live_body.from_pose(result["pose_mat"], result["root_translation_m"])
+                        if self.live_mesh else None)
                 pose = result["pose_mat"].astype(np.float64)
                 so3 = float(np.max(np.abs(np.swapaxes(pose, -1, -2)@pose-np.eye(3))))
                 with self.lock:
                     self.frame_seq += 1
-                    self.mesh_bytes = mesh.tobytes()
+                    if mesh is not None:
+                        self.mesh_bytes = mesh.tobytes()
                     self.live_status = "receiving"
                     self.smpl = dict(sequence=self.frame_seq, received_ns=pair["received_ns"], output_ns=time.monotonic_ns(),
                         pose_mat=pose.tolist(), root_translation_m=result["root_translation_m"].tolist(),
-                        joints_yup_m=mesh[:72].reshape(24, 3).tolist(), inference_ms=result["inference_ms"],
+                        joints_yup_m=mesh[:72].reshape(24, 3).tolist() if mesh is not None else None, inference_ms=result["inference_ms"],
                         rotation_orthogonality_max_error=so3, source_clock="receiver monotonic proxy",
                         source=self.engine.model_profile.get("selection", "FGP"), hardware_commands=0,
                         globalpose_integration_dt_s=float(getattr(getattr(self.engine, "gp", None), "dt", 1 / 30)),
                         nominal_input_hz=30)
                     snapshot = dict(self.smpl)
+                if not self.log_smpl:
+                    continue
                 self.output.mkdir(parents=True, exist_ok=True)
                 encoded = (json.dumps(snapshot, allow_nan=False)+"\n").encode()
                 if self.sample_log_bytes+len(encoded) <= self.sample_log_limit_bytes:
@@ -240,6 +245,7 @@ class Preview:
                         smpl_inference_ms=self.smpl["inference_ms"] if self.smpl else None,
                         smpl_so3_error=self.smpl["rotation_orthogonality_max_error"] if self.smpl else None,
                         model_profile=self.engine.model_profile if self.engine else None,
+                        live_mesh_enabled=self.live_mesh, smpl_logging_enabled=self.log_smpl,
                         sample_log_bytes=self.sample_log_bytes, sample_log_limit_bytes=self.sample_log_limit_bytes,
                         ble_reconnecting=bool(self.reconnect_thread and self.reconnect_thread.is_alive()),
                         hardware_commands=0, feedback_subscriptions=0, publish_allowed=False,
@@ -401,6 +407,8 @@ def main():
     parser.add_argument("--cano-engine", type=Path)
     parser.add_argument("--gp-engine", type=Path)
     parser.add_argument("--no-cuda-graph", action="store_true")
+    parser.add_argument("--no-live-mesh", action="store_true")
+    parser.add_argument("--no-smpl-log", action="store_true")
     args = parser.parse_args()
     replay = engine = live_body = None
     if args.export_template:
@@ -438,7 +446,8 @@ def main():
             template = json.loads(args.template.read_text())
     if not args.three_root or not args.lucide:
         parser.error("local Three.js and Lucide assets required")
-    preview = Preview(args.mode, args.output, template, replay, args.scan_seconds, engine, live_body)
+    preview = Preview(args.mode, args.output, template, replay, args.scan_seconds, engine, live_body,
+                      live_mesh=not args.no_live_mesh, log_smpl=not args.no_smpl_log)
     server = ThreadingHTTPServer((args.host, args.port), make_handler(preview, args.three_root, args.lucide))
     preview.start()
     args.output.mkdir(parents=True, exist_ok=True)

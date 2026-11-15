@@ -25,7 +25,7 @@ cleanup() {
 trap cleanup EXIT INT TERM
 
 flock -n "$runtime/preview.lock" "$python_bin" -u -m script.x2_fgp_preview.server \
-  --mode ble --host 127.0.0.1 --port 8768 --scan-seconds 180 \
+  --mode ble --host 0.0.0.0 --port 8768 --scan-seconds 180 \
   --output "$output/preview" --three-root "$runtime/node_modules/three" \
   --lucide "$runtime/lucide.min.js" --reconstruct --clotho-root "$clotho_root" \
   >"$server_log" 2>&1 &

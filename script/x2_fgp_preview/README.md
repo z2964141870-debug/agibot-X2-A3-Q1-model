@@ -39,6 +39,10 @@ The service loads the models, then scans for up to 180 seconds. Each garment con
 60 seconds with at most two attempts. Waiting does not imply failure. If a scan ends without a
 target, the page reports that observation; it does not retry forever. Ctrl-C releases owned BLE clients.
 
+If either garment later shows a connection error, use the page's `重新连接衣服` button. It stops the
+BLE receiver, clears stale frames and counters, and starts a fresh two-garment scan. It does not
+restart FGP, the robot, or any motor-control component.
+
 When both garments have fresh data, wear the clothes and click the calibration button once. The page
 then gives a three-second preparation countdown; use it to assume T-pose. The following three-second
 capture window must remain completely still. At least 60 unique paired samples and the static-window

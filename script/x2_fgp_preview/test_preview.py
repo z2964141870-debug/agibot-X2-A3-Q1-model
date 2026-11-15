@@ -100,6 +100,15 @@ class PreviewTests(unittest.TestCase):
         self.assertTrue(source.feed("lower", v2_packet(20)))
         self.assertEqual(source.status["lower"]["packets"], 1)
 
+    def test_source_restart_clears_old_frames_and_status(self):
+        source = BleSource()
+        source.feed("upper", packet(20))
+        source.stop = lambda: True
+        source.start = lambda: None
+        source.restart()
+        self.assertEqual(source.status["upper"]["packets"], 0)
+        self.assertEqual(len(source.frames["upper"]), 0)
+
     def test_counter_wrap_duplicate_reset(self):
         source = BleSource()
         self.assertTrue(source.feed("upper", packet(65535)))

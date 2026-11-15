@@ -80,6 +80,7 @@ class Preview:
         self.frame_seq = 0
         self.mesh_bytes = np.asarray(template["joints"] + template["vertices"], dtype="<f4").tobytes()
         self.error = None
+        self.reconnect_thread = None
         self.engine, self.live_body = engine, live_body
         self.smpl = None
         self.sample_log_bytes = 0
@@ -239,6 +240,7 @@ class Preview:
                         smpl_so3_error=self.smpl["rotation_orthogonality_max_error"] if self.smpl else None,
                         model_profile=self.engine.model_profile if self.engine else None,
                         sample_log_bytes=self.sample_log_bytes, sample_log_limit_bytes=self.sample_log_limit_bytes,
+                        ble_reconnecting=bool(self.reconnect_thread and self.reconnect_thread.is_alive()),
                         hardware_commands=0, feedback_subscriptions=0, publish_allowed=False,
                         source_clock="recorded stream" if self.replay else "receiver monotonic proxy, not hardware capture")
 
@@ -251,7 +253,29 @@ class Preview:
 
     def command(self, command):
         with self.lock:
-            if command.get("action") == "calibrate":
+            if command.get("action") == "reconnect":
+                if not self.source:
+                    raise ValueError("BLE receiver is not enabled")
+                if self.reconnect_thread and self.reconnect_thread.is_alive():
+                    raise ValueError("BLE reconnect already in progress")
+                self.calibration_prepare_started = None
+                self.calibration_started = None
+                self.calibration_rows, self.calibration_epoch, self.last_pair = [], None, None
+                self.calibration = dict(state="not_captured", tpose_geometry_verified=False)
+                self.smpl = None
+                self.live_status = "waiting_calibration"
+                self.error = None
+
+                def reconnect_worker():
+                    try:
+                        self.source.restart()
+                    except Exception as error:
+                        with self.lock:
+                            self.error = f"BLE reconnect failed: {type(error).__name__}: {error}"
+
+                self.reconnect_thread = threading.Thread(target=reconnect_worker, daemon=True)
+                self.reconnect_thread.start()
+            elif command.get("action") == "calibrate":
                 if not self.source or self.source.pair() is None:
                     raise ValueError("both garments must have fresh synchronized IMU data")
                 if self.calibration_prepare_started is not None or self.calibration_started is not None:
@@ -288,6 +312,8 @@ class Preview:
         self.thread.join(timeout=10)
         if self.inference_thread:
             self.inference_thread.join(timeout=15)
+        if self.reconnect_thread:
+            self.reconnect_thread.join(timeout=20)
         return self.source.stop() if self.source else not self.thread.is_alive()
 
 

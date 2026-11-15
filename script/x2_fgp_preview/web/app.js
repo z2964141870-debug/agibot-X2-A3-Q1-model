@@ -58,6 +58,7 @@ for(const [id,obj] of [['body',body],['bones',bones]]) $(''+id).onclick=()=>{obj
 $('play').onclick=async()=>{try{await command({action:'play',playing:!playing});}catch(e){$('error').textContent=e.message;}};
 $('seek').onchange=async e=>{try{await command({action:'seek',frame:Number(e.target.value)});}catch(e){$('error').textContent=e.message;}};
 $('calibrate').onclick=async()=>{try{await command({action:'calibrate'});}catch(e){$('error').textContent=e.message;}};
+$('reconnect').onclick=async()=>{try{await command({action:'reconnect'});}catch(e){$('error').textContent=e.message;}};
 async function mesh(){
   if(frameBusy)return;
   frameBusy=true;
@@ -107,6 +108,7 @@ function draw(state){
     if(document.activeElement!==$('seek'))$('seek').value=state.frame;
     $('position').textContent=`${state.frame+1} / ${state.frame_count}`;
   }else{
+    $('reconnect').disabled=Boolean(state.ble_reconnecting);
     $('devices').replaceChildren();$('imu-rows').replaceChildren();
     for(const [role,d] of Object.entries(state.devices)){
       const node=document.createElement('div');node.className='device';

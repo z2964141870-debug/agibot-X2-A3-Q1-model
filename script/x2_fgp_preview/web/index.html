@@ -7,7 +7,7 @@
 <aside>
 <section><h2>数据源 <span id="connection-dot" class="dot"></span></h2><div class="source-name" id="source-name">—</div><dl><dt>人体重建</dt><dd id="reconstruction">—</dd><dt>时间基准</dt><dd id="clock">—</dd><dt>SMPL 数据龄</dt><dd id="smpl-age">—</dd><dt>单帧推理</dt><dd id="inference-ms">—</dd><dt>旋转正交误差</dt><dd id="so3-error">—</dd></dl><p id="error" role="alert"></p></section>
 <section id="replay-controls" hidden><h2>录制回放</h2><div class="play-row"><button id="play" title="暂停" aria-label="暂停"><i data-lucide="pause"></i></button><input id="seek" type="range" min="0" max="1" value="0" aria-label="回放位置"><output id="position">0 / 0</output></div></section>
-<section id="live-controls" hidden><h2>衣服连接</h2><div id="devices"></div></section>
+<section id="live-controls" hidden><h2>衣服连接</h2><button id="reconnect" class="command"><i data-lucide="refresh-cw"></i>重新连接衣服</button><div id="devices"></div></section>
 <section id="calibration-controls" hidden><h2>T-pose 标定</h2><button id="calibrate" class="command" disabled><i data-lucide="crosshair"></i>采集 T-pose</button><div class="cal-state" id="cal-state">尚未采集</div><dl><dt>有效样本</dt><dd id="cal-samples">—</dd><dt>最大姿态抖动</dt><dd id="cal-jitter">—</dd><dt>最大加速度波动</dt><dd id="cal-acc">—</dd><dt>姿势人工确认</dt><dd>待确认</dd></dl></section>
 <section class="sensors" id="sensor-section" hidden><h2>IMU 原始数据</h2><table><thead><tr><th>传感器</th><th>加速度 m/s²</th><th>|q|</th></tr></thead><tbody id="imu-rows"></tbody></table></section>
 </aside></main><footer><span id="footer-state">等待服务</span><span>机器人反馈：未订阅 · 命令发布：关闭</span></footer>

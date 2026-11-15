@@ -188,6 +188,13 @@ class BleSource:
         self.loop = None
         self.task = None
 
+    def _reset_buffers_and_status(self):
+        self.frames = {role: deque(maxlen=600) for role in ADDRESSES}
+        self.assemblers = {role: FrameAssembler() for role in ADDRESSES}
+        self.status = {role: dict(address=addr, state="idle", packets=0, rejected=0,
+                                  duplicate_packets=0, missing_packets=0, error=None)
+                       for role, addr in self.addresses.items()}
+
     def feed(self, role, payload, received_ns=None):
         now = time.monotonic_ns() if received_ns is None else received_ns
         with self.lock:
@@ -339,6 +346,17 @@ class BleSource:
                 self.loop.call_soon_threadsafe(self.task.cancel)
                 self.thread.join(timeout=15)
         return not self.thread or not self.thread.is_alive()
+
+    def restart(self):
+        """Reconnect both garments with fresh buffers and independent scan state."""
+        stopped = self.stop()
+        if not stopped:
+            raise RuntimeError("BLE receiver did not stop before reconnect")
+        with self.lock:
+            self._reset_buffers_and_status()
+            self.loop = None
+            self.task = None
+        self.start()
 
 
 def main():

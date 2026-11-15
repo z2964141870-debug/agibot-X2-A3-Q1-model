@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-15：[X2全局命令](README_X2_GLOBAL_COMMANDS_20261115.md)。SoC1已安装x2-teleop；MC inspect目前服务不可用，模式未确认。
+
 2026-11-15：[RPC 20→30ms独立候选](README_X2_RPC_BUDGET_20261115.md)。SoC1新R7编译与writer gate过、两组各20秒只读零发布；但衣服已stale_hold，两组ready均0，实效未验证，不自动替换R6。原MC恢复STAND_DEFAULT/旧writer退；80ms目标/120ms反馈门保持。下一恢复有效衣服帧后测30ms连续就绪。
 
 

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+root=/home/agi/x2_morph_human_20261113
+cd "$root"
+mkdir -p data/analysis
+case "${1:-help}" in
+  fgp) shift; exec bash script/x2_fgp_preview/run_live_orin.sh "$@" ;;
+  policy) shift; exec sh script/x2_morph_human/run_orin.sh serve --endpoint tcp://127.0.0.1:5765 --max-freshness-ms 120 --max-interp-gap-ms 100 "$@" ;;
+  mc) shift; exec sh script/x2_morph_backend/run_orin.sh mc "$@" ;;
+  observe|control)
+    action=$1; shift
+    seconds=${1:-}; [[ "$seconds" =~ ^[0-9]+$ ]] || { echo "用法: x2-teleop $action 秒数" >&2; exit 2; }; shift
+    if [[ "$action" == control ]]; then
+      [[ "${1:-}" == --confirm-live ]] || { echo '真机控制须显式指定 --confirm-live' >&2; exit 2; }; shift
+      extra=(--control --confirm-live X2_ULTRA_MORPH_CONTROL)
+    else extra=(); fi
+    [[ $# == 0 ]] || { echo '不支持额外参数' >&2; exit 2; }
+    output="data/analysis/X2_LIVE_${action^^}_$(date +%Y%m%d_%H%M%S)_$$"
+    echo "输出目录: $root/$output"
+    exec sh script/x2_morph_backend/run_orin.sh control --binary data/analysis/X2_MORPH_NATIVE_BUILD_R6_20261113/x2_morph_native --profile data/analysis/X2_MORPH_NATIVE_SENSOR_V2_20261113.json --endpoint tcp://127.0.0.1:5765 --output "$output" --seconds "$seconds" "${extra[@]}" ;;
+  recover) shift; exec sh script/x2_morph_backend/run_orin.sh recover "$@" ;;
+  help|-h|--help) printf '%s\n' 'x2-teleop policy           启动策略服务' 'x2-teleop fgp              启动衣服和网页' 'x2-teleop mc inspect       检查官方MC' 'x2-teleop observe 6        只读检查，不控制电机' 'x2-teleop control 10 --confirm-live  显式真机接管' 'x2-teleop recover [参数]   显式故障恢复';;
+  *) echo '未知命令；运行 x2-teleop help' >&2; exit 2 ;;
+esac

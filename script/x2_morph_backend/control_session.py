@@ -46,15 +46,24 @@ def main():
                 except FileNotFoundError: time.sleep(.05); continue
                 if not a.control or (status.get("ready_target") and status.get("mc_capture_complete")): break
                 time.sleep(.05)
-            else: raise HandoffError("SMPL/feedback/MC command capture did not become ready")
+            else:
+                status = controller.status()
+                (out/"startup_not_ready.json").write_text(json.dumps(status, indent=2)+"\n")
+                raise HandoffError("Startup not ready: ready_target="+str(status.get("ready_target"))+
+                                   ", mc_capture_complete="+str(status.get("mc_capture_complete"))+
+                                   ", transport_failed="+str(status.get("transport_failed"))+
+                                   "; inspect "+str(native_out/"native.jsonl"))
             if a.control:
                 mc=RosMc(); handoff=Handoff(mc,controller); handoff.acquire()
+                print("CONTROL_ACTIVE: Morph owns command bus; timed session running", flush=True)
                 deadline=time.monotonic()+a.seconds
                 while time.monotonic()<deadline:
                     status=controller.status()
                     if status["stage"]!="CONTROL": raise HandoffError("control left active state: "+status["stage"])
                     time.sleep(.05)
+                print("RETURNING_TO_MC: completing normal handoff", flush=True)
                 handoff.release()
+                print("MC_STAND_CONFIRMED: command bus returned", flush=True)
             process.wait(timeout=a.seconds+10 if not a.control else 5.)
             status=controller.status()
             if process.returncode: raise HandoffError("native backend exited unsuccessfully")

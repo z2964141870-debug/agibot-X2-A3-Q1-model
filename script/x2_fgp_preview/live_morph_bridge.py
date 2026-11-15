@@ -49,8 +49,8 @@ def main():
     with args.output.open("x", encoding="utf-8") as log:
         print(json.dumps(dict(status="FGP_MORPH_BRIDGE_READY", preview_url=args.preview_url,
                               endpoint=args.endpoint, calibration_id=cal.id,
-                              skeleton_id=adapter.skeleton_id, hardware_commands=0),
-                         flush=True))
+                              skeleton_id=adapter.skeleton_id, hardware_commands=0)),
+              flush=True)
         try:
             while True:
                 try:
@@ -107,7 +107,7 @@ def main():
             print(json.dumps(dict(status="FGP_MORPH_BRIDGE_STOPPED", sent=sent,
                                   accepted=accepted, errors=errors,
                                   wall_s=time.monotonic() - started,
-                                  hardware_commands=0), flush=True))
+                                  hardware_commands=0)), flush=True)
 
 
 if __name__ == "__main__":

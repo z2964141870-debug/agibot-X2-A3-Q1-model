@@ -44,6 +44,8 @@ class PolicyFixture:
     def __init__(self, address, contract):
         self.address, self.contract = address, contract
         self.done = threading.Event()
+        self.late_once = threading.Event()
+        self.no_reference = threading.Event()
         self.thread = threading.Thread(target=self.run)
         self.thread.start()
     def run(self):
@@ -55,6 +57,12 @@ class PolicyFixture:
             while not self.done.is_set():
                 try: row=server.recv_json()
                 except zmq.Again: continue
+                if self.no_reference.is_set():
+                    server.send_json(dict(ready=False, publish_allowed=False, reason="fixture_reference_loss"))
+                    continue
+                if self.late_once.is_set():
+                    self.late_once.clear()
+                    time.sleep(.04)
                 server.send_json(dict(kind="x2_morph_advisory_target",version=1,ready=True,
                     publish_allowed=False,policy_sha256=MODEL_SHA,robot_profile="morphmimic_v01_x2_ultra",
                     state_sequence=row["sequence"],joint_names=list(self.contract.names),
@@ -74,7 +82,10 @@ def isolated(args, root, out, cfg):
     rclpy.init()
     summaries=[]
     try:
-        for case in ("normal_return", "policy_loss", "feedback_loss"):
+        cases = ["normal_return", "policy_loss", "feedback_loss"]
+        if args.missed_target_cases:
+            cases += ["single_late_reply", "reference_loss"]
+        for case in cases:
             run_id="t"+uuid.uuid4().hex[:10]
             prefix="/x2_morph_test/"+run_id
             node=Node("morph_fixture_"+run_id,enable_rosout=False,start_parameter_services=False)
@@ -151,12 +162,23 @@ def isolated(args, root, out, cfg):
                         if j!=(c.names[i],c.default[i],0.,c.kp[i],c.kd[i]):
                             raise AssertionError("SDK writer changed native target or gains")
                 before_fault=len(received)
-                if case=="normal_return":
+                normal_return = case in ("normal_return", "single_late_reply")
+                if case=="single_late_reply":
+                    before = status(case_out)["rejected"]
+                    policy.late_once.set()
+                    wait(lambda s: s["rejected"] > before)
+                    pump(.2)
+                    if status(case_out)["stage"] != "CONTROL":
+                        raise AssertionError("one late reply interrupted control")
+                if normal_return:
                     command("return"); milestones["returned"]=wait(lambda s:s.get("stage")=="HOLD_FOR_MC",4.)
                 else:
                     if case=="policy_loss": policy.close()
+                    elif case=="reference_loss": policy.no_reference.set()
                     else: send_feedback=False
                     milestones["fault"]=wait(lambda s:s.get("stage")=="FAULT_DAMPING",2.)
+                    if case=="reference_loss" and milestones["fault"]["reason"]!="policy_target_expired":
+                        raise AssertionError("reference loss did not expire the retained target")
                     pump(.2)
                     damping=received[before_fault:]
                     damping_groups={g for _,g,joints in damping
@@ -172,10 +194,15 @@ def isolated(args, root, out, cfg):
                 final=status(case_out)
                 if process.returncode or final["stage"]!="RELEASED" or final["hardware_commands"]!=0:
                     raise AssertionError("private bus handback failed")
+                if case=="single_late_reply":
+                    samples = [json.loads(line) for line in (case_out/"native.jsonl").read_text().splitlines()]
+                    if not any(row.get("rejection_reason")=="rpc_deadline" and not row["accepted"]
+                               and row["rpc_ms"]>=40 for row in samples):
+                        raise AssertionError("late reply was not recorded as discarded")
                 summaries.append(dict(case=case,status="PASSED",sdk_publish_calls=final["sdk_publish_calls"],
                     writer_ticks=final["writer_ticks"],command_messages_observed=len(received),
                     milestones=milestones,exact_native_target_and_gains_verified=True,
-                    fault_vendor_damping_groups=list(GROUPS) if case!="normal_return" else [],
+                    fault_vendor_damping_groups=[] if normal_return else list(GROUPS),
                     final=final,fixture="SYNTHETIC_POLICY_AND_PRIVATE_ROS_FEEDBACK",real_mc_calls=0,
                     private_topic_prefix=prefix,hardware_commands=0))
             finally:
@@ -248,8 +275,11 @@ def main():
     p.add_argument("--binary",type=Path,required=True)
     p.add_argument("--profile",type=Path,required=True)
     p.add_argument("--output",type=Path,required=True)
+    p.add_argument("--missed-target-cases",action="store_true")
     a=p.parse_args(); a.binary=a.binary.resolve(); a.profile=a.profile.resolve()
     cfg=json.loads(a.profile.read_text()); validate(cfg)
+    if a.missed_target_cases and (a.mode!="isolated" or cfg.get("rpc_budget_ms")!=30):
+        p.error("missed-target cases require an isolated 30ms candidate")
     out=a.output.resolve(); out.mkdir(parents=True,exist_ok=False)
     result=(isolated if a.mode=="isolated" else real_feedback)(a,home(),out,cfg)
     (out/"summary.json").write_text(json.dumps(result,indent=2,allow_nan=False)+"\n")

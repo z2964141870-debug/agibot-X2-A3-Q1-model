@@ -131,8 +131,15 @@ def main():
     sess = ort.InferenceSession(str(args.tokenizer), sess_options=options, providers=["CPUExecutionProvider"])
     meta = sess.get_modelmeta().custom_metadata_map
     decoder = ort.InferenceSession(str(args.decoder), sess_options=options, providers=["CPUExecutionProvider"])
+    decoder_meta = decoder.get_modelmeta().custom_metadata_map
+    fingerprint = meta.get("codec_fingerprint")
+    paired_fingerprint = (
+        fingerprint and fingerprint == decoder_meta.get("codec_fingerprint")
+        and meta.get("pairs_with") == args.decoder.name
+    )
     if (decoder.get_inputs()[0].name != "obs" or decoder.get_inputs()[0].shape[-1] != 1670
-            or decoder.get_modelmeta().custom_metadata_map.get("ori_mode") != meta["ori_mode"]):
+            or (decoder_meta.get("ori_mode") != meta["ori_mode"]
+                and not (decoder_meta.get("ori_mode") is None and paired_fingerprint))):
         raise ValueError("SONIC decoder does not match the token observation contract")
 
     def decode(token):

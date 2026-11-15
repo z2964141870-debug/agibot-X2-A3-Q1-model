@@ -28,3 +28,9 @@ PYTHONPATH=/home/agi/x2_morph_human_20261113 CUDA_VISIBLE_DEVICES= \
 - 三个自有测试进程退出。EM 回读 MC 持续 Running(2230)；终后模式服务超时，不能宣称终后站立模式确认。未执行 MC 写入、控制交接或原仪式。
 
 原件见 SoC1 两个 `X2_SONIC_REAL_FEEDBACK_SHADOW_20261115_205952` / `X2_SONIC_REAL_FEEDBACK_SHADOW_20261115_210124` 输出目录。下一步在不发电机命令的同一环境先接原站立 pose 参考，并由穿戴者静止通过原门，验证同一窗口内存在真人 intent、真实反馈和 token，随后检查断流回退及目标幅度。
+
+## 部署模型配对预检
+
+核实板端 `robot_env.env` 在加载时将 `X2_WHOLE_BODY_TELEOP` 设为 0，旧 Stage 3 调用传入的开关变量和当前启动脚本读取的变量也不同。旧 tokenizer 的 `pairs_with` 指向 armA 14900，且没有共享指纹，不能从有限输出推断 S1FT16000 配对。板端 v16ft8 45000 tokenizer/decoder 的配对文件名、指纹和张量契约一致，tokenizer 规定 full 朝向。新增 `sonic_deploy_preflight.py` 在板上确认旧组拒绝（exit 1）、v16 通过（exit 0）。
+
+同一录制 150 帧用 v16 两模型离线输出 218 token / 218 个动作，实测代码退出 0，原件 `data/analysis/X2_SONIC_V16_PAIR_PREVIEW_20261115/result.json`。仍使用合成反馈及零本体历史，无电机发布。没有改板端默认模型、环境启动项或执行交接。尚缺同一影子会话的正式参考流、实时人体 token、实测反馈和动作包络证据。

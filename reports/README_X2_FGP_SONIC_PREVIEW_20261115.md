@@ -14,3 +14,7 @@ PYTHONPATH=/home/agi/x2_morph_human_20261113 CUDA_VISIBLE_DEVICES= \
 ```
 
 下一步先用真人静立、小幅单臂与转身数据对照旧 FGP 路径，检查左右、根朝向、动作幅度和变化率，再用实测反馈做只读回放。真机实控继续暂停。
+
+## 真人输入回执与实控缺口
+
+现场回执：180 帧、286 token、286 组策略动作，最大源间隔 90.748ms。策略的真实硬件观测仍未接入。随后在 SoC1 利用第 5729 帧和原 SONIC pack/unpack 函数完成 1623B `pico_intent` v4 内存往返，关节点和根四元数逐值一致，engaged=0，零电机发布。新版 FGP 到正式 token service 仍缺持续转发和断流测试。板端已装 SONIC 二进制具有 `--no-publish` 实现，旧仪式不应直接执行来代替影子验证。下一步由两个终端分工：衣服/FGP 和实时 intent 转发；正式 tokenizer 和 SONIC 后端读取实机反馈、以 no-publish 保存策略目标。验证前不提供本组合的实际接管入口。

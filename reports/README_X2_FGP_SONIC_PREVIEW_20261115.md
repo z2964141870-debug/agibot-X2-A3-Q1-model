@@ -18,3 +18,13 @@ PYTHONPATH=/home/agi/x2_morph_human_20261113 CUDA_VISIBLE_DEVICES= \
 ## 真人输入回执与实控缺口
 
 现场回执：180 帧、286 token、286 组策略动作，最大源间隔 90.748ms。策略的真实硬件观测仍未接入。随后在 SoC1 利用第 5729 帧和原 SONIC pack/unpack 函数完成 1623B `pico_intent` v4 内存往返，关节点和根四元数逐值一致，engaged=0，零电机发布。新版 FGP 到正式 token service 仍缺持续转发和断流测试。板端已装 SONIC 二进制具有 `--no-publish` 实现，旧仪式不应直接执行来代替影子验证。下一步由两个终端分工：衣服/FGP 和实时 intent 转发；正式 tokenizer 和 SONIC 后端读取实机反馈、以 no-publish 保存策略目标。验证前不提供本组合的实际接管入口。
+
+## SONIC 原接收端实时影子测试
+
+新增 `sonic_shadow_intent.py`，从共同 FGP 源读帧，经原衣服骨架和静止门生成私有 loopback 15773 intent。原 token service 使用独立 15774/15557 且 planner 端口为 0。原 C++ SONIC 始终带 `--no-publish`，独立测试有界退出，MC 继续管理机器人。
+
+- 20:59:52 真人帧 661，发送 611，token 服务接收约 25Hz。原后端因缺 `--input-type zmq` 在初始化拒绝启动。
+- 21:01:24 加入必需输入参数。原 SONIC 真实机器人反馈接近 50Hz，保存 1071 条 joint 和 target 记录。640 真人帧的静止门未就绪，intent 0；原主参考 pose 也未接入，控制状态进入 SAFE_IDLE，外层时限回收。实测尚无完整实时 token 覆盖。
+- 三个自有测试进程退出。EM 回读 MC 持续 Running(2230)；终后模式服务超时，不能宣称终后站立模式确认。未执行 MC 写入、控制交接或原仪式。
+
+原件见 SoC1 两个 `X2_SONIC_REAL_FEEDBACK_SHADOW_20261115_205952` / `X2_SONIC_REAL_FEEDBACK_SHADOW_20261115_210124` 输出目录。下一步在不发电机命令的同一环境先接原站立 pose 参考，并由穿戴者静止通过原门，验证同一窗口内存在真人 intent、真实反馈和 token，随后检查断流回退及目标幅度。

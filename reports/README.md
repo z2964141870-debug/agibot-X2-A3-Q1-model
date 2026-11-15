@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-15 [FGP 接入 X2 SONIC 可行性](README_X2_FGP_SONIC_FEASIBILITY_20261115.md)。已核板端协议及模型，先离线对齐旧骨架转换和 token 观测，实控保持暂停。
+
 2026-11-15 [X2 真机运动异常，暂停实控](README_X2_TOLERANT_MOTION_INCIDENT_20261115.md)。20:23 容错版交接和归还成功，现场动作验收失败。
 
 2026-11-15 [X2 容错版简版操作书](README_X2_TOLERANT_QUICKSTART_20261115.md)。官方 MC 已恢复 STAND_DEFAULT，恢复后只读捕获成功，人体参考仍反复过期。

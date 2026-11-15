@@ -34,6 +34,7 @@ def main():
         validate(a.parity, a.release)
     from script.x2_joint_opt import run as coordinator
     original = coordinator.select
+    original_validate_prefix = coordinator.validate_prefix
     before = sources()
     complete = False
     def select(command, output, variant):
@@ -43,6 +44,7 @@ def main():
             result[result.index(module)] = "script.x2_joint_process_r2.worker"
         return result
     coordinator.select = select
+    coordinator.validate_prefix = lambda directory, config: validate(directory, config["release"])
     sys.argv = [sys.argv[0], a.mode, "--variant", "dedicated_hosts", "--release", a.release,
                 "--output", str(a.output), "--fixture", str(a.fixture)]
     if a.reference:
@@ -54,6 +56,7 @@ def main():
         complete = True
     finally:
         coordinator.select = original
+        coordinator.validate_prefix = original_validate_prefix
         if a.output.is_dir():
             after = sources()
             (a.output/"process_config.json").write_text(json.dumps(dict(mode=a.mode,

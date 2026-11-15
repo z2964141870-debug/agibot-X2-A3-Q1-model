@@ -10,17 +10,13 @@ import argparse
 import json
 import socket
 import time
-import urllib.error
-import urllib.request
 from pathlib import Path
 
 from script.x2_morph_human.client import Client
 from script.x2_morph_human.core import Calibration, SmplAdapter
 
 
-def get_json(url: str, timeout: float):
-    with urllib.request.urlopen(url, timeout=timeout) as response:
-        return json.loads(response.read())
+from .smpl_source import get_json, read_latest
 
 
 def main():
@@ -57,13 +53,12 @@ def main():
         try:
             while True:
                 try:
-                    smpl_response = get_json(args.preview_url + "/api/smpl", args.http_timeout)
-                    sample = smpl_response.get("sample")
-                    if smpl_response.get("status") != "receiving" or not sample:
+                    frame = read_latest(args.preview_url, args.http_timeout, fetch=get_json)
+                    if frame is None:
                         time.sleep(max(0.001, args.poll_ms / 1000.0))
                         continue
-                    sequence = int(sample["sequence"])
-                    received_ns = int(sample["received_ns"])
+                    sequence = frame.sequence
+                    received_ns = frame.received_ns
                     if last_sequence is not None and sequence <= last_sequence:
                         time.sleep(max(0.001, args.poll_ms / 1000.0))
                         continue
@@ -71,9 +66,9 @@ def main():
                         raise ValueError("FGP received timestamp did not increase")
                     arrival_ns = time.monotonic_ns()
                     packet = adapter.packet_from_matrices(
-                        sample["pose_mat"], sample["root_translation_m"],
+                        frame.pose_mat, frame.root_translation_m,
                         sequence=sequence, capture_ns=received_ns,
-                        capture_clock=str(sample.get("source_clock", "fgp_receiver_monotonic")),
+                        capture_clock=frame.source_clock,
                         arrival_ns=arrival_ns, arrival_clock=clock,
                     )
                     if client is None:
@@ -89,13 +84,13 @@ def main():
                         accepted += 1
                     row = dict(sequence=sequence, received_ns=received_ns,
                                arrival_ns=arrival_ns, reply=reply,
-                               fgp_inference_ms=sample.get("inference_ms"),
+                               fgp_inference_ms=frame.inference_ms,
                                hardware_commands=0)
                     if sent % args.log_every == 0:
                         log.write(json.dumps(row, allow_nan=False) + "\n")
                         log.flush()
                     last_sequence, last_received = sequence, received_ns
-                except (urllib.error.URLError, TimeoutError, OSError, ValueError, Exception) as error:
+                except Exception as error:
                     # Keep the bridge alive through BLE warmup and temporary
                     # service restarts; do not fabricate a HumanFrame.
                     errors += 1

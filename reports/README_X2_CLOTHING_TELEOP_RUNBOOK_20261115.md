@@ -248,3 +248,8 @@ sh script/x2_morph_backend/run_orin.sh recover \
 ## 本次恢复实核完成
 
 用户执行显式恢复命令后，operator_recovery.jsonl确认START_MC→REQUEST_JOINT→WAIT_WRITER_RELEASE→REQUEST_STAND_AFTER_RELEASE→MC_RECOVERY_CONFIRMED。随后独立只读GetMcAction为STAND_DEFAULT、MC Running(42508)，原178114已退出，无Morph control/native进程，原状态RELEASED。原reason unexpected_external_writer在本次明确恢复上下文对应MC接管，不能泛称未知进程故障。累计278003次发送包含长时间故障阻尼，不是278003次策略跟随。下一步先离线/observe定位RPC长尾并评估门限，不自动重新接管；恢复完成不等于遥操质量或实时验收通过。收据logs/session_records/x2_fault_recovery_confirmed_20261115.json。
+
+
+## RPC时限候选（未采用）
+
+20ms并非不可调整。独立R7已支持20/25/30ms配置，原R6保留；构建和两个20秒observe过，但当时衣服已stale，两组有效目标均0，不能据此放行真机。详见[RPC阶段结果](README_X2_RPC_BUDGET_20261115.md)。先恢复上下衣fresh=true和SMPL持续更新，再完成30ms有效人体observe；此处不提供未经这一步验证的新版实控命令。

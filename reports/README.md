@@ -1,5 +1,8 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-15：[RPC 20→30ms独立候选](README_X2_RPC_BUDGET_20261115.md)。SoC1新R7编译与writer gate过、两组各20秒只读零发布；但衣服已stale_hold，两组ready均0，实效未验证，不自动替换R6。原MC恢复STAND_DEFAULT/旧writer退；80ms目标/120ms反馈门保持。下一恢复有效衣服帧后测30ms连续就绪。
+
+
 2026-11-15: [Minimal teleoperation UI](README_X2_TELEOP_MINIMAL_UI_20261115.md): removed mesh and full-frame recording from live path; deployed, both garments receiving; waiting for fresh wearer calibration and measured benefit.
 
 2026-11-15: [X2 clothing operation runbook](README_X2_CLOTHING_TELEOP_RUNBOOK_20261115.md). Fixed live bridge startup JSON logging and combined launcher lifecycle; reboot requires restart and calibration. Pre-reboot read-only: 205 accepted / 271 requests, zero hardware commands; strict 120/100ms admission and powered control remain unverified.

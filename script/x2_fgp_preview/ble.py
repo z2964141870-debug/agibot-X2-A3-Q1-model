@@ -16,6 +16,10 @@ ADDRESSES = {"upper": "F5:C6:03:E6:4B:30", "lower": "DA:1B:78:C1:56:1F"}
 NOTIFY_UUID = "adaf0101-c332-42a8-93bd-25e905756cb8"
 IMU = struct.Struct("<HI7f")
 PACKET_BYTES = 217
+V2_PACKET_BYTES = 137
+V2_IMU = struct.Struct("<HI3h4h")
+V2_UTC = struct.Struct("<2sBBQB")
+FRAME_HEADER = b"\xff\xfe"
 ACTIVE_UPPER = [5, 1, 4, 0, 3]
 ACTIVE_LOWER = [4, 1, 3, 0, 2]
 
@@ -23,7 +27,17 @@ ACTIVE_LOWER = [4, 1, 3, 0, 2]
 def decode_packet(payload, role):
     if role not in ADDRESSES:
         raise ValueError("unknown garment role")
-    if len(payload) != PACKET_BYTES or bytes(payload[:2]) != b"\xff\xfe":
+    if len(payload) < 4 or bytes(payload[:2]) != FRAME_HEADER:
+        raise ValueError("unexpected SmartWear packet length/header")
+    wire_length = struct.unpack_from("<H", payload, 2)[0]
+    if wire_length == V2_PACKET_BYTES:
+        return _decode_v2_packet(payload, role)
+    # The current CLOTHO receiver uses ctypes.from_buffer_copy for the newer
+    # float32 layout, which accepts an ATT/MTU tail. FrameAssembler feeds this
+    # function complete frames.
+    if wire_length not in (PACKET_BYTES - 4, PACKET_BYTES):
+        raise ValueError("unsupported SmartWear packet length field")
+    if len(payload) < PACKET_BYTES:
         raise ValueError("unexpected SmartWear packet length/header")
     offsets = [8 + i * IMU.size for i in range(4)] + [148 + i * IMU.size for i in range(2)]
     if role == "lower":
@@ -34,10 +48,125 @@ def decode_packet(payload, role):
     if not np.isfinite(values).all() or np.any((norms < .5) | (norms > 1.5)):
         raise ValueError("invalid IMU values/quaternion norms")
     values[:, 3:] /= norms[:, None]
-    return dict(values=values, counters=[r[0] for r in rows],
+    return dict(protocol="v1_float32", values=values, counters=[r[0] for r in rows],
                 sample_time_fine=[r[1] for r in rows],
-                wire_length_field=struct.unpack_from("<H", payload, 2)[0],
+                wire_length_field=wire_length,
                 checksum_status="NOT_VALIDATED_PROTOCOL_UNDOCUMENTED")
+
+
+def _decode_v2_packet(payload, role):
+    """Decode the 137-byte SmartWear V2 BLE frame used by the current suit."""
+    if len(payload) < V2_PACKET_BYTES or bytes(payload[:2]) != FRAME_HEADER:
+        raise ValueError("unexpected SmartWear V2 packet length/header")
+    if struct.unpack_from("<H", payload, 2)[0] != V2_PACKET_BYTES:
+        raise ValueError("unexpected SmartWear V2 packet length field")
+    frame = bytes(payload[:V2_PACKET_BYTES])
+    if (sum(frame[: V2_PACKET_BYTES - 1]) & 0xFF) != frame[-1]:
+        raise ValueError("invalid SmartWear V2 checksum")
+    magic, version, flags, frame_utc_ns, _reserved = V2_UTC.unpack_from(frame, 124)
+    if magic != b"UT" or version != 2 or flags & ~0x01:
+        raise ValueError("invalid SmartWear V2 UTC extension")
+    # V2 carries six slots on both devices. The lower garment's slot 3 is a
+    # reserved/unused position; the SmartWear reference selects 0,1,2,4,5.
+    indices = list(range(6)) if role == "upper" else [0, 1, 2, 4, 5]
+    values = np.empty((len(indices), 7), dtype=np.float64)
+    counters = []
+    sample_time_fine = []
+    for output_index, index in enumerate(indices):
+        offset = 4 + index * V2_IMU.size
+        counter, sample_time, ax, ay, az, qx, qy, qz, qw = V2_IMU.unpack_from(frame, offset)
+        values[output_index] = [
+            ax / 256.0, ay / 256.0, az / 256.0,
+            qw / 16384.0, qx / 16384.0, qy / 16384.0, qz / 16384.0,
+        ]
+        counters.append(counter)
+        sample_time_fine.append(sample_time)
+    if not np.isfinite(values).all():
+        raise ValueError("invalid SmartWear V2 IMU values")
+    norms = np.linalg.norm(values[:, 3:], axis=1)
+    if np.any((norms < .5) | (norms > 1.5)):
+        raise ValueError("invalid SmartWear V2 quaternion norms")
+    values[:, 3:] /= norms[:, None]
+    return dict(protocol="v2_quantized", values=values, counters=counters,
+                sample_time_fine=sample_time_fine, wire_length_field=V2_PACKET_BYTES,
+                frame_utc_ns=(frame_utc_ns if flags & 0x01 else None),
+                checksum_status="VALIDATED_V2_SUM8")
+
+
+class FrameAssembler:
+    """Recover fixed SmartWear frames from BLE notification boundaries."""
+
+    def __init__(self, frame_bytes=None):
+        self.frame_bytes = frame_bytes
+        self.allowed_frame_bytes = {frame_bytes} if frame_bytes else {V2_PACKET_BYTES, PACKET_BYTES}
+        self.buffer = bytearray()
+        self.fragments = 0
+        self.frames = 0
+        self.padding_bytes = 0
+        self.format_errors = 0
+        self.last_error = None
+
+    def feed(self, payload):
+        data = bytes(payload)
+        if not data:
+            return []
+        self.fragments += 1
+        self.buffer.extend(data)
+        frames = []
+
+        while True:
+            if len(self.buffer) < 2:
+                return frames
+
+            header_at = self.buffer.find(FRAME_HEADER)
+            if header_at < 0:
+                # Preserve a possible first byte of a split FF FE header.
+                keep = 1 if self.buffer[-1:] == FRAME_HEADER[:1] else 0
+                dropped = len(self.buffer) - keep
+                if dropped:
+                    self.format_errors += 1
+                    self.last_error = "SmartWear frame header not found"
+                self.buffer = self.buffer[-keep:] if keep else bytearray()
+                return frames
+
+            if header_at:
+                self.format_errors += 1
+                self.last_error = "discarded bytes before SmartWear frame header"
+                del self.buffer[:header_at]
+
+            if len(self.buffer) < 4:
+                return frames
+
+            wire_length = struct.unpack_from("<H", self.buffer, 2)[0]
+            length_map = {V2_PACKET_BYTES: V2_PACKET_BYTES,
+                          PACKET_BYTES - 4: PACKET_BYTES,
+                          PACKET_BYTES: PACKET_BYTES}
+            expected = self.frame_bytes or length_map.get(wire_length)
+            if expected not in self.allowed_frame_bytes:
+                self.format_errors += 1
+                self.last_error = f"unsupported SmartWear packet length field: {wire_length}"
+                del self.buffer[0]
+                continue
+            if len(self.buffer) < expected:
+                return frames
+
+            frames.append(bytes(self.buffer[:expected]))
+            del self.buffer[:expected]
+            self.frames += 1
+
+            if not self.buffer:
+                return frames
+
+            # A notification may contain a frame followed by MTU padding, or
+            # the start of another frame. Keep only bytes from the next header.
+            next_header = self.buffer.find(FRAME_HEADER)
+            if next_header < 0:
+                self.padding_bytes += len(self.buffer)
+                self.buffer.clear()
+                return frames
+            if next_header:
+                self.padding_bytes += next_header
+                del self.buffer[:next_header]
 
 
 class BleSource:
@@ -51,6 +180,7 @@ class BleSource:
         self.lock = threading.RLock()
         self.stop_event = threading.Event()
         self.frames = {role: deque(maxlen=600) for role in ADDRESSES}
+        self.assemblers = {role: FrameAssembler() for role in ADDRESSES}
         self.status = {role: dict(address=addr, state="idle", packets=0, rejected=0,
                                   duplicate_packets=0, missing_packets=0, error=None)
                        for role, addr in self.addresses.items()}
@@ -63,28 +193,43 @@ class BleSource:
         with self.lock:
             status = self.status[role]
             status["last_packet_bytes"] = len(payload)
-            try:
-                packet = decode_packet(payload, role)
-            except ValueError as error:
-                status["rejected"] += 1
-                status["error"] = str(error)
-                return False
-            previous = self.frames[role][-1] if self.frames[role] else None
-            if previous:
-                delta = (packet["counters"][0] - previous["counters"][0]) % 65536
-                if delta == 0:
-                    status["duplicate_packets"] += 1
-                    return False
-                if delta < 32768:
-                    status["missing_packets"] += max(0, delta - 1)
-                else:
-                    status["epoch"] = status.get("epoch", 0) + 1
-                    self.frames[role].clear()
-            packet["received_ns"] = now
-            self.frames[role].append(packet)
-            status.update(state="receiving", packets=status["packets"] + 1,
-                          last_received_ns=now, error=None)
-            return True
+            assembler = self.assemblers[role]
+            format_errors_before = assembler.format_errors
+            packets = assembler.feed(payload)
+            status.update(
+                fragments=assembler.fragments,
+                frames_assembled=assembler.frames,
+                padding_bytes=assembler.padding_bytes,
+            )
+            new_format_errors = assembler.format_errors - format_errors_before
+            if new_format_errors:
+                status["rejected"] += new_format_errors
+                status["error"] = assembler.last_error
+            accepted = False
+            for raw_packet in packets:
+                try:
+                    packet = decode_packet(raw_packet, role)
+                except ValueError as error:
+                    status["rejected"] += 1
+                    status["error"] = str(error)
+                    continue
+                previous = self.frames[role][-1] if self.frames[role] else None
+                if previous:
+                    delta = (packet["counters"][0] - previous["counters"][0]) % 65536
+                    if delta == 0:
+                        status["duplicate_packets"] += 1
+                        continue
+                    if delta < 32768:
+                        status["missing_packets"] += max(0, delta - 1)
+                    else:
+                        status["epoch"] = status.get("epoch", 0) + 1
+                        self.frames[role].clear()
+                packet["received_ns"] = now
+                self.frames[role].append(packet)
+                status.update(state="receiving", packets=status["packets"] + 1,
+                              last_received_ns=now, error=None)
+                accepted = True
+            return accepted
 
     def snapshot(self):
         now = time.monotonic_ns()

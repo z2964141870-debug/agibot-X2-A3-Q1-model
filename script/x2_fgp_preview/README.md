@@ -13,8 +13,9 @@ asset hashes; `/api/state.model_profile` exposes the choice. The absent external
 `ble_web_pose` source prevents claiming its complete implementation is byte-identical.
 The user has chosen this default pipeline; locating FGP-S is not a prerequisite for preparation.
 
-Preparation status: recorded-input parity and browser checks pass, but live BLE notifications
-and wearer calibration have not passed. The current Orin CPU B+GlobalPose baseline takes about
+Preparation status: recorded-input parity and browser checks pass. The current suit's live BLE
+transport is now verified on SoC1 for both garment addresses; wearer calibration and live pose
+quality remain user-triggered checks. The current Orin CPU B+GlobalPose baseline takes about
 781ms/output, far above the 33.33ms input period. Sampling under this load skips temporal inputs;
 dynamic reconstruction is not validated. Transport diagnostics and slow SMPL inspection are
 available; an adequately fast backend is needed before real-time use. S architecture alone is not trained S.
@@ -96,9 +97,14 @@ This renders actual saved latest-CLOTHO output. The page labels it historical, n
 
 ## Interpretation
 
-The 10 active IMUs are selected from 6 upper and 5 lower sensors using CLOTHO's exact order.
-217-byte packets, finite acceleration and quaternion norm are checked. The undocumented checksum
-is retained as unvalidated. Packet counters and the receiver clock do not establish hardware sync.
+The receiver accepts both SmartWear wire variants that exist in the supplied robot sources. The
+current BLE garments use the V2 137-byte frame: `FF FE`, a 137-byte length field, six quantized
+`<HI3h4h>` IMU records, a `UT` time extension, and the documented one-byte sum check. The lower
+garment selects slots `0,1,2,4,5`; the sixth slot is reserved. The newer 217-byte float32 layout
+remains supported for compatible firmware and selects six upper plus five lower sensors. BLE
+notification boundaries are not treated as frame boundaries: fragments, coalesced frames and MTU
+padding are assembled before decoding. Packet counters and the receiver clock do not establish
+hardware sync.
 
 The new streaming adapter matches the prior CPU runner on recorded inputs. It preserves upstream
 GlobalPose integration dt=1/60 and the existing 30Hz gyro conversion; this is not a validation of

@@ -6,7 +6,8 @@ from pathlib import Path
 
 import numpy as np
 
-from .ble import ACTIVE_LOWER, ACTIVE_UPPER, BleSource, IMU, decode_packet
+from .ble import (ACTIVE_LOWER, ACTIVE_UPPER, BleSource, FrameAssembler, IMU,
+                  V2_IMU, V2_PACKET_BYTES, decode_packet)
 from .calibration import quaternion_mean, summarize_window
 from .engine import LatestFgp, WEIGHTS
 from .server import Preview
@@ -18,6 +19,18 @@ def packet(counter=1):
     struct.pack_into("<H", data, 2, 213)
     for i, offset in enumerate([8, 42, 76, 110, 148, 182]):
         IMU.pack_into(data, offset, counter, 1000+i, i, 9.81, 0, 0, 0, 0, 1)
+    return data
+
+
+def v2_packet(counter=1):
+    data = bytearray(V2_PACKET_BYTES)
+    data[:2] = b"\xff\xfe"
+    struct.pack_into("<H", data, 2, V2_PACKET_BYTES)
+    for index in range(6):
+        V2_IMU.pack_into(data, 4 + index * V2_IMU.size,
+                         counter, 1000 + index, 0, 2511, 0, 0, 0, 0, 16384)
+    struct.pack_into("<2sBBQB", data, 124, b"UT", 2, 0, 0, 0)
+    data[-1] = sum(data[:-1]) & 0xFF
     return data
 
 
@@ -39,14 +52,53 @@ class PreviewTests(unittest.TestCase):
         active = BleSource.active_values(dict(upper=upper, lower=lower))
         np.testing.assert_array_equal(active[:, 0], [5, 1, 4, 0, 3, 5, 1, 4, 0, 2])
 
+    def test_v2_wire_layout_and_checksum(self):
+        upper, lower = decode_packet(v2_packet(), "upper"), decode_packet(v2_packet(), "lower")
+        self.assertEqual(upper["protocol"], "v2_quantized")
+        self.assertEqual(upper["values"].shape, (6, 7))
+        self.assertEqual(lower["values"].shape, (5, 7))
+        np.testing.assert_allclose(upper["values"][:, 1], 2511 / 256.0, rtol=0, atol=1e-12)
+        self.assertEqual(BleSource.active_values(dict(upper=upper, lower=lower)).shape, (10, 7))
+        bad = v2_packet()
+        bad[-1] ^= 1
+        with self.assertRaisesRegex(ValueError, "checksum"):
+            decode_packet(bad, "upper")
+
     def test_corrupt_payloads(self):
         for data in (packet()[:-1], bytes(217)):
             with self.assertRaises(ValueError):
                 decode_packet(data, "upper")
+        self.assertEqual(decode_packet(packet() + b"\x00" * 27, "upper")["values"].shape,
+                         (6, 7))
         data = packet()
         struct.pack_into("<f", data, 14, float("nan"))
         with self.assertRaises(ValueError):
             decode_packet(data, "upper")
+
+    def test_frame_assembler_accepts_fragments_padding_and_merged_frames(self):
+        assembler = FrameAssembler()
+        first = packet(10)
+        second = packet(11)
+        self.assertEqual(assembler.feed(first[:73]), [])
+        frames = assembler.feed(first[73:])
+        self.assertEqual(frames, [bytes(first)])
+        frames = assembler.feed(bytes(first) + bytes(second) + b"\x00" * 8)
+        self.assertEqual(frames, [bytes(first), bytes(second)])
+        self.assertEqual(assembler.frames, 3)
+        self.assertEqual(assembler.padding_bytes, 8)
+        v2 = FrameAssembler()
+        v2_raw = v2_packet(12)
+        self.assertEqual(v2.feed(v2_raw[:51]), [])
+        self.assertEqual(v2.feed(v2_raw[51:]), [bytes(v2_raw)])
+
+    def test_source_assembles_without_counting_fragment_as_rejection(self):
+        source = BleSource()
+        self.assertFalse(source.feed("upper", packet(20)[:80]))
+        self.assertEqual(source.status["upper"]["rejected"], 0)
+        self.assertTrue(source.feed("upper", packet(20)[80:]))
+        self.assertEqual(source.status["upper"]["packets"], 1)
+        self.assertTrue(source.feed("lower", v2_packet(20)))
+        self.assertEqual(source.status["lower"]["packets"], 1)
 
     def test_counter_wrap_duplicate_reset(self):
         source = BleSource()

@@ -58,6 +58,8 @@ monitor35181对35179/start247845记录TARGET_EXITED、tegrastats35182返回-15�
 
 ## Done / To Do：用户简版
 
+发布核验：结果与并行研究记录已合并至`d5a90b4898b781736dc36fbff69557774860941f`并独立核同远端Q1；Mac主根14文件大小SHA同，两个有额外历史内容的研究索引保留本机版本。设备21文件/6563698B已保存至独立`data/publications/X2_JOINT_ALLOC_R2_20261115_d5a90b4`快照并逐件核同，原40运行源码前后同；设备中央索引未覆盖，不能称中央目录全量同步。[发布收据](../logs/session_records/x2_joint_alloc_r2_publication_20261115.json)和[设备原收据](../logs/session_records/x2_joint_alloc_r2_device_snapshot_20261115.json)为准，完成记录中的PENDING_PUBLICATION已由此后续收据解决。
+
 - Done：Mac有线直连恢复；取回并核完R2，900输出/零跳帧，平均29.98Hz、Morph p95约16ms，仅2次超20ms。
 - Done：性能/资源/抖动三张六宫图、完整数值与证据包；结果仍有输出抖动、180ms预览未减少，未上电机。
 - To Do：基于R2继续定位GPU主机阶段与HumanFrame发送等待，先独立分段计时方案，再有界小样本验证；优先降低长尾而非增加固定缓冲。

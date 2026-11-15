@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-15研究：[单项简报](research/2026-11-15/README.md)／[检查](README_RESEARCH_CHECK_20261115.md)。GigaBrain-WBC 11/14源码更新：分项损失、干净下一状态及根运动辅助头，未核新性能。最新Q1记录中X2 R2已唯一派发、终态待核，覆盖旧“仍准备”摘要；Q1仍先原人体审计曲线→已有多步WM，本轮无科学执行。[发布收据](../data/manifests/research_watch_sync_20261115.json)，服务器镜像待。
+
 2026-11-15：[Windows桥接分层诊断](README_X2_BRIDGE_DIAGNOSTIC_20261115.md)。截图绿点与CLI实读不同：目标Online=false/最后在线北京时间00:10:00，原生33296第一跳TCP超时未认证；ICMP三次/默认及TSMP各三次均无回复。本机Running/Online/Health空、netcheck UDP及多中继测速可达，但另一Online对照节点两次也无回复，不能认定Windows卡死或仅sshd故障。只读无配置/服务/机器人修改；原R2已派发终态待核，不重派。恢复先取同任务原件/源终门/回收，设备报告镜像待。
 
 2026-11-14最新：[R2独立启动补测已派发、终态待核](README_X2_ALLOCATION_STARTUP_20261114.md)。fa667901源码发布核远端同，新五板端合同及原35依赖/247源24资产与失败保护门通过；唯一joint_r2_startupfix收到PID35179/start247845和monitor35181回执，仍原100/120秒、900帧/2初始化，不重做已成64前缀。90475后明确第二跳abort/第一跳reset退出；唯一原生恢复40609在Mac→Windows TCP连接超时，未到密码提示/未尝试Linux。当前终态、帧数、源终门及回收未核，不能据失去观察重派或宣称提速。恢复先取原派发/结果/协议/内核掩码/监测及前后来源，全部完成门过才保存分析和六宫图；准备的deliver.py仅CLI过、真实绘图0。原joint_r2初始化失败根保留，Q1暂停/衣服默认/终端23/180ms保持；设备派发原件与新文档镜像待补。[恢复记录](../logs/session_records/x2_joint_startup_dispatch_observation_20261114.json)。

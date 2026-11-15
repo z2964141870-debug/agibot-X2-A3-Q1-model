@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-15: [X2 clothing operation runbook](README_X2_CLOTHING_TELEOP_RUNBOOK_20261115.md). Fixed live bridge startup JSON logging and combined launcher lifecycle; reboot requires restart and calibration. Pre-reboot read-only: 205 accepted / 271 requests, zero hardware commands; strict 120/100ms admission and powered control remain unverified.
+
 2026-11-15：[衣服网页恢复S1 GPU](README_X2_FGP_LIVE_S1_GPU_20261115.md)。旧CPU网页已替换，32录制输出与R7逐位同/中位31.063ms/p95 36.218ms；上下衣接收，等待用户3+3秒重新标定。真实BLE质量及稳定30Hz待验证。
 
 2026-11-15 进行中：[三小时30Hz目标 R2 候选已准备](README_X2_30HZ_GOAL_20261115.md)。R1 真实结果均值约30Hz但间隔 p95 42.05ms，连续30Hz未达标。R2 为独立主机亲和性变化：GPU 2,3、发送0、原生观测1、CPU子进程4,5、策略6,7；本地语法/5合同通过，来源清单已生成。直连X2本轮到达`run@10.0.1.41`密码提示但认证拒绝，未派发设备实验；不把该次认证失败扩大为整机不可达，不循环试密码。

@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-15: [X2 clothing operation runbook](README_X2_CLOTHING_TELEOP_RUNBOOK_20261115.md). Fixed live bridge startup JSON logging and combined launcher lifecycle; reboot requires restart and calibration. Pre-reboot read-only: 205 accepted / 271 requests, zero hardware commands; strict 120/100ms admission and powered control remain unverified.
+
 2026-11-15：[衣服网页恢复S1 GPU](README_X2_FGP_LIVE_S1_GPU_20261115.md)。旧CPU网页已替换，32录制输出与R7逐位同/中位31.063ms/p95 36.218ms；上下衣接收，等待用户3+3秒重新标定。真实BLE质量及稳定30Hz待验证。
 
 2026-11-15：[X2主机分配与分段计时结果](README_X2_JOINT_HOST_OPT_20261115.md)。两组新64+900全部完成，独立分核小幅降低ACK/RPC p95但输出抖动未解；完整分段耗时、CPU/GPU/回退指标及表格原件包已齐，默认未切换。用户明确后续只有训练需六宫图，性能阶段使用表格及双Done/To Do。

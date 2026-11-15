@@ -13,6 +13,28 @@ from .mc_handoff import Handoff, HandoffError, NativeController, RosMc
 from .sensor_profile import validate
 
 
+class StableReadiness:
+    """Do not admit a transient target or hide rejections between status polls."""
+    def __init__(self, duration=1.0):
+        self.duration = duration
+        self.since = None
+        self.last_rejected = None
+        self.first_requests = None
+
+    def update(self, status, now):
+        rejected = status.get("rejected", 0)
+        healthy = (status.get("stage") == "STANDBY" and status.get("ready_target")
+                   and status.get("mc_capture_complete") and not status.get("transport_failed"))
+        changed = self.last_rejected is not None and rejected != self.last_rejected
+        self.last_rejected = rejected
+        if not healthy or changed:
+            self.since = self.first_requests = None
+            return False
+        if self.since is None:
+            self.since, self.first_requests = now, status.get("requests", 0)
+        return now - self.since >= self.duration and status.get("requests", 0) > self.first_requests
+
+
 def main():
     p=argparse.ArgumentParser(__doc__)
     p.add_argument("--binary",type=Path,required=True)
@@ -39,22 +61,27 @@ def main():
         process=subprocess.Popen(argv,stdin=subprocess.PIPE,stdout=stdout,stderr=stderr,text=True)
         controller=NativeController(process,native_out,run_id)
         try:
+            if a.control:
+                # ROS setup can take longer than a target's lifetime. Finish
+                # initialization before observing the stable readiness window.
+                mc=RosMc(); handoff=Handoff(mc,controller)
+            readiness = StableReadiness()
             deadline=time.monotonic()+20.
             while time.monotonic()<deadline:
                 if process.poll() is not None: raise HandoffError("native backend exited during startup")
                 try: status=controller.status()
                 except FileNotFoundError: time.sleep(.05); continue
-                if not a.control or (status.get("ready_target") and status.get("mc_capture_complete")): break
+                if not a.control or readiness.update(status, time.monotonic()): break
                 time.sleep(.05)
             else:
                 status = controller.status()
                 (out/"startup_not_ready.json").write_text(json.dumps(status, indent=2)+"\n")
-                raise HandoffError("Startup not ready: ready_target="+str(status.get("ready_target"))+
+                raise HandoffError("No continuous 1s ready window within 20s: ready_target="+str(status.get("ready_target"))+
                                    ", mc_capture_complete="+str(status.get("mc_capture_complete"))+
                                    ", transport_failed="+str(status.get("transport_failed"))+
                                    "; inspect "+str(native_out/"native.jsonl"))
             if a.control:
-                mc=RosMc(); handoff=Handoff(mc,controller); handoff.acquire()
+                handoff.acquire()
                 print("CONTROL_ACTIVE: Morph owns command bus; timed session running", flush=True)
                 deadline=time.monotonic()+a.seconds
                 while time.monotonic()<deadline:

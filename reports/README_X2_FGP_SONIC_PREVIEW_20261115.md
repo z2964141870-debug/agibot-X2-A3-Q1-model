@@ -34,3 +34,9 @@ PYTHONPATH=/home/agi/x2_morph_human_20261113 CUDA_VISIBLE_DEVICES= \
 核实板端 `robot_env.env` 在加载时将 `X2_WHOLE_BODY_TELEOP` 设为 0，旧 Stage 3 调用传入的开关变量和当前启动脚本读取的变量也不同。旧 tokenizer 的 `pairs_with` 指向 armA 14900，且没有共享指纹，不能从有限输出推断 S1FT16000 配对。板端 v16ft8 45000 tokenizer/decoder 的配对文件名、指纹和张量契约一致，tokenizer 规定 full 朝向。新增 `sonic_deploy_preflight.py` 在板上确认旧组拒绝（exit 1）、v16 通过（exit 0）。
 
 同一录制 150 帧用 v16 两模型离线输出 218 token / 218 个动作，实测代码退出 0，原件 `data/analysis/X2_SONIC_V16_PAIR_PREVIEW_20261115/result.json`。仍使用合成反馈及零本体历史，无电机发布。没有改板端默认模型、环境启动项或执行交接。尚缺同一影子会话的正式参考流、实时人体 token、实测反馈和动作包络证据。
+
+## 21:12 v16 真人与实测反馈同会话
+
+用板端 `idle_stand.x2m2` 和原 pose watchdog 隔离发布站立参考，原 tokenizer/SONIC 后端均选配对的 v16。后端全程 `--no-publish`，MC 未停止。真人 intent 14–15Hz、机器人反馈 50Hz、token 达 50Hz，原后端明确记录 WHOLE-BODY ENGAGED。600 个正常 tick 和 101 个归还 tick，测试干净退出，MC 回读 Running(2230)/STAND_DEFAULT。
+
+**动作不通过。** 对齐 701 条采样的时间戳后，原 SONIC `target_pos.csv` 腰部横滚的相邻目标最大跳 2.274976 rad（约 130.35°），最大目标与实测位置差 2.38716 rad（约 136.77°）。这是 shadow 目标，不是机器人实际运动。运行未提供真机调参预设，日志显示目标限幅未启用。需要查清朝向、站立参考和目标跳变来源，并以实际拟部署参数、保留保护再做影子复验。当前不可把该影子命令去掉 `--no-publish` 后使用。结果在板端 `data/analysis/X2_SONIC_V16_SHADOW_20261115_211209`。

@@ -4,6 +4,7 @@ import argparse
 from collections import deque
 from concurrent.futures import ThreadPoolExecutor
 import json
+import os
 from pathlib import Path
 from queue import Queue
 import subprocess
@@ -26,8 +27,9 @@ FGP_WARMUP = 29
 STATE_TICKS = 450
 
 
-def read_when_written(path, process=None):
-    for _ in range(600):
+def read_when_written(path, process=None, timeout_s=15):
+    deadline = time.monotonic() + timeout_s
+    while time.monotonic() < deadline:
         if path.is_file():
             return json.loads(path.read_text())
         if process is not None and process.poll() is not None:
@@ -121,11 +123,20 @@ def case(args, threads, output):
               "--inflight", str(args.inflight)]
     for name in options:
         worker.extend(("--" + name.replace("_", "-"), str(getattr(args, name))))
+    env = None
+    if args.staged_worker is not None:
+        env = dict(os.environ)
+        env["X2_STAGED_PROBE_DEADLINE"] = str(time.time() + 95)
+        env["PYTHONPATH"] = str(args.staged_worker) + os.pathsep + env.get("PYTHONPATH", "")
+        worker = [str(args.fgp_python), "-B", "-m", "script.x2_fgp_staged_probe.worker", "fgp",
+                  "--endpoint", "local_benchmark_pending", "--output", str(output),
+                  "--source-root", str(args.clotho_root), "--build-root", str(args.cano_engine.parent),
+                  "--fixture", str(args.imu)]
     state_ticks = STATE_TICKS if args.frames == FRAMES else 650
     with (output / "fgp.log").open("x") as log:
-        process = subprocess.Popen(worker, stdout=log, stderr=subprocess.STDOUT)
+        process = subprocess.Popen(worker, stdout=log, stderr=subprocess.STDOUT, env=env)
         try:
-            read_when_written(output / "worker_ready.json", process)
+            read_when_written(output / "worker_ready.json", process, 40 if args.staged_worker else 15)
             with zmq.Context() as context, ThreadPoolExecutor(max_workers=1) as worker_pool:
                 endpoints = Queue()
                 guard = worker_pool.submit(serve, context, endpoints, runtime,
@@ -147,6 +158,19 @@ def case(args, threads, output):
                 except subprocess.TimeoutExpired:
                     process.kill()
                     process.wait()
+    if args.staged_worker is not None:
+        status = json.loads((output / "fgp_summary.json").read_text())
+        reaped = json.loads((output / "cpu_reap.json").read_text())
+        if (status["outputs"], status["dropped_input_frames"], reaped["completed"], reaped["exitcode"], reaped["alive"]) != (
+                args.frames - FGP_WARMUP, 0, args.frames - FGP_WARMUP, 0, False):
+            raise ValueError("staged FGP coverage or clean CPU exit mismatch")
+        frames = [json.loads(line) for line in (output / "fgp.jsonl").read_text().splitlines()]
+        captures = [dict(r, input_ns=r["capture_ns"], begin_ns=r["started_ns"],
+                         sending_ns=r["inferred_ns"] + round(r["sender_queue_ms"] * 1e6),
+                         sent_ns=r["acknowledged_ns"] - round(r["human_rpc_ms"] * 1e6),
+                         confirmed_ns=r["acknowledged_ns"], credit_wait_ns=r["reserve_ns"])
+                    for r in frames if r["output"]]
+        publish_json(output / "fgp_result.json", dict(frames=captures, peak_inflight=status["max_in_flight"]))
     capture_doc = json.loads((output / "fgp_result.json").read_text())
     captures = capture_doc["frames"]
     accepted = {r["input_ns"]: r["accepted_ns"] for r in captures}
@@ -210,12 +234,15 @@ def main():
     cli.add_argument("--worker", action="store_true", help=argparse.SUPPRESS)
     cli.add_argument("--frames", type=int, choices=(FRAMES, 240), default=FRAMES)
     cli.add_argument("--inflight", type=int, choices=(1, 2), default=1)
+    cli.add_argument("--staged-worker", type=Path, help="path to the isolated script namespace")
     args = cli.parse_args()
     if args.worker:
         fgp_main(args)
         return
     if args.fgp_python is None:
         cli.error("--fgp-python is required")
+    if args.staged_worker is not None and (args.frames, args.inflight) != (240, 2):
+        cli.error("staged worker requires 240 frames and two in flight")
     assets = {name: getattr(args, name) for name in ("imu", "cano_engine", "calibration")}
     before = {name: sha(path) for name, path in assets.items()}
     args.output.mkdir()
@@ -227,13 +254,15 @@ def main():
         for i in range(1, len(rounds)):
             with np.load(args.output / f"r{i}" / "fgp_outputs.npz", allow_pickle=False) as candidate:
                 differences = {name: float(np.max(np.abs(reference[name] - candidate[name])))
-                               for name in ("pose", "root")}
+                               for name in ("pose", "translation" if args.staged_worker is not None else "root")}
             if any(value > 2e-5 for value in differences.values()):
                 raise ValueError("FGP numerical outputs differ beyond tolerance")
             pose_deltas.append(differences)
     summary = dict(hardware_commands=0, input_hashes=before, imu_frames_per_round=args.frames,
                    inflight_limit=args.inflight, rounds=rounds, fgp_numerical_deltas=pose_deltas,
-                   scope="GPU FGP with recorded IMU, shared loopback, fixed synthetic feedback, separate sender")
+                   scope="recorded IMU and fixed synthetic feedback, shared loopback",
+                   fgp_structure="separate GPU, CPU process, sender" if args.staged_worker is not None
+                   else "FGP with separate sender")
     publish_json(args.output / "result.json", summary)
 
 

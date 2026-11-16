@@ -1,8 +1,21 @@
-# X2 SONIC 真人只读联测工具
+# X2 SONIC 真人只读联测工具与 3 终端实机入口
 
-用于“衣服 → SMPL → SONIC tracking”的隔离只读联测。所有脚本都不发布电机命令，也不改动 MC、kplanner、生产站立后端，以及生产 token 服务使用的端口（5557、5558、5563、5573、5574）。隔离端口为 15557、15558、15566、15573、15574、15575。结果说明见 [README_X2_SONIC_LIVE_HANDOFF_20261116](../../reports/README_X2_SONIC_LIVE_HANDOFF_20261116.md)。
+用于“衣服 → SMPL → SONIC tracking”的隔离只读联测与 3 终端真机全前台运行。隔离只读模式使用端口 15557、15558、15566、15573、15574、15575；实机 3 终端模式使用生产端口 5556、5557、5558、5563、5573、5574。结果说明见 [README_X2_SONIC_LIVE_HANDOFF_20261116](../../reports/README_X2_SONIC_LIVE_HANDOFF_20261116.md)。
 
-## 板端使用（agi@10.0.1.41）
+## 真机 3 终端前台模式（agi@10.0.1.41）
+
+```bash
+# 终端 1：控制衣服（连蓝牙、回车触发 T-Pose 标定、Ctrl-C 自动释放蓝牙）
+bash /home/agi/x2_sonic_live/term1_garment.sh
+
+# 终端 2：启动 Policy（自动起 watchdog/kplanner + token service band=0 允许迈步 + 前台 deploy_x2.sh）
+bash /home/agi/x2_sonic_live/term2_policy.sh
+
+# 终端 3：切换运控（1 Hz 实时状态 + 按 Enter 切换 kplanner 站立 <-> 自己的全身 policy）
+bash /home/agi/x2_sonic_live/term3_switch.sh
+```
+
+## 只读隔离联测（agi@10.0.1.41）
 
 把本目录和 `script/x2_fgp_preview/` 同步到板端同级目录（例如 `/home/agi/x2_sonic_live/script/`）。
 

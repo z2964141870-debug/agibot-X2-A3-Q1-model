@@ -17,6 +17,7 @@ CLOCK = "pc2_local_monotonic"
 PERIOD_NS = 20_000_000
 PACKETS = 300
 MAX_PACKET_BYTES = 32768
+DROPOUT = range(144, 152)
 
 
 def paced_wait(deadline):
@@ -33,10 +34,12 @@ def send(args):
         link.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
         start = time.monotonic_ns() + 150_000_000
         base = frames[0]["arrival_ns"]
-        for frame in frames:
+        for index, frame in enumerate(frames):
+            if args.dropout and index in DROPOUT:
+                continue
             paced_wait(start + frame["arrival_ns"] - base)
             link.sendall(json.dumps(frame, allow_nan=False).encode() + b"\n")
-    print(json.dumps(dict(sent=len(frames), hardware_commands=0)))
+    print(json.dumps(dict(sent=len(frames) - (len(DROPOUT) if args.dropout else 0), hardware_commands=0)))
 
 
 def receive(args):
@@ -55,6 +58,20 @@ def receive(args):
 
     policy_node.ORT_THREADS = 2  # applies only to this isolated process
     runtime = Runtime(root, max_age_ns=120_000_000, max_interp_gap_ns=100_000_000)
+
+    class TimedSession:
+        def __init__(self, session):
+            self.session = session
+            self.last_ms = None
+
+        def run(self, names, feed):
+            begin = time.monotonic_ns()
+            result = self.session.run(names, feed)
+            self.last_ms = (time.monotonic_ns() - begin) / 1e6
+            return result
+
+    timer = TimedSession(runtime.runner.session)
+    runtime.runner.session = timer
     cfg = json.loads(args.profile.read_text())
     if cfg["imu_body"] not in runtime.robot.tree_names or set(cfg["joint_state_topics"]) != set(GROUPS):
         raise ValueError("unexpected X2 sensor profile")
@@ -113,7 +130,7 @@ def receive(args):
     spins = threading.Thread(target=spin, name="feedback-shadow")
     spins.start()
     worker = None
-    stats, rejections, traces = [], Counter(), []
+    stats, rejections, traces, missing_human = [], Counter(), [], []
     args.output.mkdir()
     try:
         with socket.socket() as listener:
@@ -157,13 +174,27 @@ def receive(args):
                     if reply.get("publish_allowed") or reply.get("reset"):
                         raise ValueError(f"unexpected advisory reply: {reply}")
                     if reply["ready"]:
+                        current = state["q_rad"]
+                        target = reply["q_target_rad"]
                         stats.append(dict(tick=tick, runtime_ms=(finished-received)/1e6,
+                                          onnx_ms=timer.last_ms,
+                                          preprocessing_ms=reply["preprocessing_ms"],
                                           cycle_ms=(finished-start)/1e6, from_due_ms=(finished-scheduled)/1e6,
                                           feedback_max_age_ms=max(state["source_receive_ages_s"].values())*1000,
                                           human_arrival_age_ms=reply["timing"]["newest_arrival_age_ms"],
-                                          targets=reply["q_target_rad"]))
+                                          target_error_deg=float(np.rad2deg(np.max(np.abs(
+                                              np.subtract(target, current))))),
+                                          joint_names=reply["joint_names"], feedback=current, targets=target))
+                        if missing_human and "first_ready_after" not in missing_human[-1]:
+                            missing_human[-1]["first_ready_after"] = tick
                     else:
-                        rejections[reply.get("reason", "unknown")] += 1
+                        reason = reply.get("reason", "unknown")
+                        rejections[reason] += 1
+                        if stats:
+                            if not missing_human or "first_ready_after" in missing_human[-1]:
+                                missing_human.append(dict(last_ready=stats[-1]["tick"], first_rejected=tick,
+                                                           rejection_reason=reason))
+                            missing_human[-1]["last_rejected"] = tick
                 tick += 1
                 elapsed = time.monotonic_ns() - origin
                 earliest = elapsed // PERIOD_NS + 1
@@ -182,7 +213,8 @@ def receive(args):
         node.destroy_node()
         rclpy.shutdown()
 
-    if len(rx_stamps) != PACKETS or len(stats) < 50:
+    expected_packets = PACKETS - (len(DROPOUT) if args.dropout else 0)
+    if len(rx_stamps) != expected_packets or len(stats) < 50:
         raise ValueError(f"insufficient observation: {len(rx_stamps)} packets {len(stats)} ready, {rejections}")
     for before, after in zip(stats, stats[1:]):
         if after["tick"] == before["tick"] + 1:
@@ -193,12 +225,25 @@ def receive(args):
                     p99=float(np.percentile(values, 99)), max=float(max(values)))
 
     report = {name: describe([row[name] for row in stats]) for name in (
-        "runtime_ms", "cycle_ms", "from_due_ms", "feedback_max_age_ms", "human_arrival_age_ms")}
+        "runtime_ms", "onnx_ms", "preprocessing_ms", "cycle_ms", "from_due_ms", "feedback_max_age_ms",
+        "human_arrival_age_ms", "target_error_deg")}
+    by_tick = {row["tick"]: row for row in stats}
+    for event in missing_human:
+        if "first_ready_after" not in event:
+            continue
+        before, after = (by_tick[event[key]] for key in ("last_ready", "first_ready_after"))
+        delta = np.rad2deg(np.abs(np.subtract(after["targets"], after["feedback"])))
+        index = int(np.argmax(delta))
+        event.update(first_target_to_feedback_deg=float(delta[index]), joint=after["joint_names"][index],
+                     previous_advice_to_current_advice_deg=float(np.rad2deg(np.max(np.abs(
+                         np.subtract(after["targets"], before["targets"]))))))
     result = dict(human_packets=len(rx_stamps), ready_states=len(stats), rejection_counts=dict(rejections),
                   cycle_over_20ms=sum(row["cycle_ms"] > 20 for row in stats), scope="real feedback, recorded human packets",
+                  ready_rate_hz=(len(stats) - 1) * 50 / (stats[-1]["tick"] - stats[0]["tick"]),
+                  adjacent_pairs=len(traces), human_input_recovery_events=missing_human,
                   new_publishers=0, hardware_commands=0, sensor_profile_measured=cfg["measured_sensor_calibration"],
                   **report, arrival_gap_ms=describe(np.diff(rx_stamps)/1e6),
-                  adjacent_target_max_step_deg=describe(traces))
+                  adjacent_target_max_step_deg=describe(traces) if traces else None)
     (args.output / "result.json").write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
     with (args.output / "targets.jsonl").open("x") as log:
         for row in stats:
@@ -218,6 +263,8 @@ def main():
     tx.add_argument("--capture", type=Path, required=True)
     tx.add_argument("--host", required=True)
     tx.add_argument("--port", type=int, required=True)
+    for command in (tx, rx):
+        command.add_argument("--dropout", action="store_true", help="omit the same eight archived packets")
     args = parser.parse_args()
     (receive if args.mode == "receive" else send)(args)
 

@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-16 [X2 Orin 断流只读复验](README_X2_ORIN_READONLY_RECOVERY_20261116.md)。录制人体＋真实反馈，略过8帧后最长到达断档298.24 ms，建议恢复间隔400 ms（计划时标），恢复首个建议相对反馈腰偏航39.47°。零电机命令。下一步将分阶段 FGP 接入无网页版终端，再做穿戴只读对照。
+
 2026-11-15 [X2 共享 FGP 与 SONIC 回放](README_X2_FGP_SONIC_PREVIEW_20261115.md)。板端 150 帧生成 218 个 token 与策略动作，合成站立及零本体历史，实际控制暂停。
 
 2026-11-15 [FGP 接入 X2 SONIC 可行性](README_X2_FGP_SONIC_FEASIBILITY_20261115.md)。已核板端协议及模型，先离线对齐旧骨架转换和 token 观测，实控保持暂停。

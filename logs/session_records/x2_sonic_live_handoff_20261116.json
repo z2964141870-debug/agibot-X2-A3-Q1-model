@@ -1,0 +1,563 @@
+{
+  "date": "2026-11-16",
+  "robot": "X2 Ultra SoC1 agi@10.0.1.41 (boot after 21:26 restart)",
+  "scope": "isolated read-only shadow: diagnostic x2_deploy_onnx_ref --no-publish --cycle-trace; isolated ports 15557/15558/15566/15573/15574/15575; token service --planner-cmd-port 0; zero motor commands; MC/kplanner/production deploy untouched",
+  "live_baseline": {
+    "kplanner_pid": 15176,
+    "kplanner_binds_5556": true,
+    "pose_watchdog_pid": 15249,
+    "standing_deploy_pid": 15834
+  },
+  "garment": {
+    "entry": "garment_udp_v2_reconnect_safe.py --lfp-backend local-cpu (LFP_dense_taichi_ft.onnx), pico_intent :15573, engage /tmp/x2_shadow_pico_intent.engage",
+    "fps_observed": "28.0-30.9"
+  },
+  "onboard_sha256": [
+    "9c9d4386c8779650e702946a6ef3e52dc26062836277953971794382243d1b39  /home/agi/projects/project_tools/x2_smpl_wholebody/garment_intent_adapter.py",
+    "1f9fb97712473defcada21d223897df3eb019fe138a1f8238c5d3b1666935ddb  /home/agi/projects/project_tools/x2_smpl_wholebody/mock_pico_intent_sender.py",
+    "1073b56792b96f43c9126041d5912d2325e0e1749a404d8d5d168875e8afe168  /home/agi/projects/project_tools/x2_smpl_wholebody/pipeline_monitor.py",
+    "b4cbfb22a85bae958392cb5d868fdce6514896ecfd0267749b9589f1d9d0063f  /home/agi/projects/project_tools/x2_smpl_wholebody/smpl_obs.py",
+    "34710a401d1fe6bb120b930f08ea775e2381aae56e25206e616120bb008edc0e  /home/agi/projects/project_tools/x2_smpl_wholebody/token_service_core.py",
+    "bc7c0de93953c6e7c2f3b21da6fdce5270019a5c8faf29967c46fa4b3350fda6  /home/agi/projects/project_tools/x2_smpl_wholebody/wire_format.py",
+    "847a4915bb9b6d44b589544009e94dc4807511d2d4725635ac6008848e2b3526  /home/agi/projects/project_tools/x2_smpl_wholebody/x2_smpl_token_service.py",
+    "d7c517605b1ed7c3970e8ff31a3eac87f646681821561bfde586e111408bdf4b  /home/agi/projects/smartwear_v2/garment_udp_v2_reconnect_safe.py",
+    "e88baa7e08ead6062030fae75ec969ef74ac9144fb72e732552e2e7344e9fb7d  /home/agi/gear-sonic/ws/src/x2/agi_x2_deploy_onnx_ref/src/x2_deploy_onnx_ref.cpp",
+    "69b8b3ddf77d044f5528f50bb6f77d56affe90dc923befc0f0e50c15ab761375  /home/agi/gear-sonic/gear_sonic_deploy/scripts/x2_pose_watchdog.py",
+    "020519f4a2988d0d82b9f18b186b911b6bebadeaf33527de28aaa2ea4fe072c4  /home/agi/gear-sonic/policies/x2_smpl_tokenizer_v11release.onnx",
+    "7dfdec7cf1b1ac67635c3cd8f541c27b50d917df2e3381a6bb086b605e1959a0  /home/agi/gear-sonic/policies/x2_sonic_s1ft16000_g1.onnx",
+    "158e29b04506a974e6c1a4b9e8e9de9bec86d662b25ef1b749189370795b7319  /home/agi/gear-sonic/policies/x2_sonic_s1ft16000_g1_token.onnx"
+  ],
+  "bundle": {
+    "path": "data/analysis/X2_SONIC_LIVE_HANDOFF_20261116.tgz",
+    "sha256": "1a348b031790c6eb88e64433f117c32f53de60d9ea81eaf21d7471b3a84372db"
+  },
+  "bugs": [
+    {
+      "id": "frame_convention",
+      "file": "garment_intent_adapter.py",
+      "evidence": "run_live_stand: CALIB_SUSPECT knees not below hips; root-local joints in SMPL body frame (x left,y up,z fwd)",
+      "workaround": "relay M=Rz90*T, joints@M.T, R_wire=M T^T R_root M^T; 110/110 live frames stand-plausible"
+    },
+    {
+      "id": "token_service_clock",
+      "file": "x2_smpl_token_service.py",
+      "evidence": "run_live_fixed: intent 0.0 Hz while tokens 49.9 Hz, ENGAGED never released in 19 s; core._now from 0 vs time.monotonic() stamps",
+      "workaround": "core._now = monotonic now before tick"
+    },
+    {
+      "id": "garment_exit_ble",
+      "file": "garment_udp_v2_reconnect_safe.py",
+      "evidence": "Ctrl-C -> Aborted (core dumped); BlueZ Connected: yes; next start BleakDeviceNotFoundError",
+      "workaround": "bluetoothctl disconnect both addresses (run_garment_fg.sh)"
+    }
+  ],
+  "captures": {
+    "run_smoke2_20261116_213229": {
+      "outcomes": {
+        "confirmed": 2
+      },
+      "events": [
+        {
+          "request_t": "341.900959807",
+          "requested_mode": "tracking",
+          "outcome": "confirmed",
+          "prior_head": "pose",
+          "prior_pose_reference": {
+            "source_kind": "cold_idle",
+            "slot_counts": {
+              "cold_idle": 10
+            }
+          },
+          "actual_head": "token",
+          "confirmed_t": "343.765783",
+          "confirmation_ms": 1864.823193
+        },
+        {
+          "request_t": "351.415540414",
+          "requested_mode": "planner",
+          "outcome": "confirmed",
+          "prior_head": "token",
+          "actual_head": "pose",
+          "confirmed_t": "351.931971",
+          "confirmation_ms": 516.430586,
+          "confirmed_pose_reference": {
+            "source_kind": "cold_idle",
+            "slot_counts": {
+              "cold_idle": 10
+            }
+          }
+        }
+      ],
+      "phases": [
+        {
+          "name": "planner_0",
+          "ticks": 270
+        },
+        {
+          "name": "tracking_1",
+          "ticks": 408
+        },
+        {
+          "name": "planner_2",
+          "ticks": 221
+        }
+      ],
+      "planner_slot_provenance": {
+        "planner_0": {
+          "cold_idle": 2700
+        },
+        "planner_2": {
+          "cold_idle": 2210
+        }
+      },
+      "pose_received_total": {
+        "first": 58,
+        "last": 957
+      },
+      "token_received_total": {
+        "first": 0,
+        "last": 383
+      },
+      "wearer_spans": [],
+      "files_sha256": {
+        "deploy/cycle_trace.csv": "5773456945396623dccec12a9ac6acc536cdbbb38ce81527fa2ab1d42a325da9",
+        "requests.jsonl": "bd744f3e1c2ac599a7f257af663f4032975638077ea7692e3f619b681877856c",
+        "deploy/target_pos.csv": "e6c04ccf2e5b8afb53bb69fe1fe5898098752551ad7bc1b5554aecdfc02f2496",
+        "deploy/joint_pos.csv": "15b3134e68fcf35d767714f795a63a15e154282a7679d33b082541b7018c2db5"
+      }
+    },
+    "run_live_stand_20261116_214240": {
+      "outcomes": {
+        "confirmation_timeout": 1,
+        "already_active": 1
+      },
+      "events": [
+        {
+          "request_t": "951.539151548",
+          "requested_mode": "tracking",
+          "outcome": "confirmation_timeout",
+          "prior_head": "pose",
+          "prior_pose_reference": {
+            "source_kind": "upstream",
+            "slot_counts": {
+              "upstream": 10
+            }
+          }
+        },
+        {
+          "request_t": "961.051142067",
+          "requested_mode": "planner",
+          "outcome": "already_active",
+          "prior_head": "pose",
+          "prior_pose_reference": {
+            "source_kind": "upstream",
+            "slot_counts": {
+              "upstream": 10
+            }
+          }
+        }
+      ],
+      "phases": [
+        {
+          "name": "planner_0",
+          "ticks": 950
+        }
+      ],
+      "planner_slot_provenance": {
+        "planner_0": {
+          "upstream": 9500
+        }
+      },
+      "pose_received_total": {
+        "first": 62,
+        "last": 964
+      },
+      "token_received_total": {
+        "first": 0,
+        "last": 0
+      },
+      "wearer_spans": [],
+      "files_sha256": {
+        "deploy/cycle_trace.csv": "a827daf1ae8f118b2c0ccaec588399561a6b4817915fbbe5098d308f4c303a74",
+        "requests.jsonl": "b04de7054ccaf7be0211d28c027e5e9aaa00b5ce956210942c73287043a625ad",
+        "deploy/target_pos.csv": "d4aaed437cc5510185dba79dda852199053e829e21def02084d3fc61bb9982fc",
+        "deploy/joint_pos.csv": "bc91679f1f1bc7f267a07920d6372c3b2c0bfe9a0542a89f91581e67790435c5"
+      }
+    },
+    "run_live_fixed_20261116_214511": {
+      "outcomes": {
+        "confirmation_timeout": 2
+      },
+      "events": [
+        {
+          "request_t": "1102.188327711",
+          "requested_mode": "tracking",
+          "outcome": "confirmation_timeout",
+          "prior_head": "pose",
+          "prior_pose_reference": {
+            "source_kind": "upstream",
+            "slot_counts": {
+              "upstream": 10
+            }
+          }
+        },
+        {
+          "request_t": "1112.19617851",
+          "requested_mode": "planner",
+          "outcome": "confirmation_timeout",
+          "prior_head": "token"
+        }
+      ],
+      "phases": [
+        {
+          "name": "planner_0",
+          "ticks": 528
+        },
+        {
+          "name": "tracking_1",
+          "ticks": 419
+        }
+      ],
+      "planner_slot_provenance": {
+        "planner_0": {
+          "upstream": 5280
+        }
+      },
+      "pose_received_total": {
+        "first": 70,
+        "last": 986
+      },
+      "token_received_total": {
+        "first": 0,
+        "last": 420
+      },
+      "wearer_spans": [],
+      "files_sha256": {
+        "deploy/cycle_trace.csv": "78d65a8f9fc17db30a3cafc7af2f06b8bf963d6b41ee2417ec06cf2c5545edcc",
+        "requests.jsonl": "3321cd8be7db302101277df4029585621bb42ff22468d49839917b7e16d2cb30",
+        "deploy/target_pos.csv": "0ac72a42b2170c3c94cb39b2eb460cd773938ac116a001e70925f47b80bd8ca2",
+        "deploy/joint_pos.csv": "ae0393f167170627ff2f590c823cee95efeb43f097cf64d48bdb675028a46693"
+      }
+    },
+    "run_live_cycle_20261116_214739": {
+      "outcomes": {
+        "confirmation_timeout": 1,
+        "already_active": 1
+      },
+      "events": [
+        {
+          "request_t": "1249.920787985",
+          "requested_mode": "tracking",
+          "outcome": "confirmation_timeout",
+          "prior_head": "pose",
+          "prior_pose_reference": {
+            "source_kind": "upstream",
+            "slot_counts": {
+              "upstream": 10
+            }
+          }
+        },
+        {
+          "request_t": "1258.428187336",
+          "requested_mode": "planner",
+          "outcome": "already_active",
+          "prior_head": "pose",
+          "prior_pose_reference": {
+            "source_kind": "upstream",
+            "slot_counts": {
+              "upstream": 10
+            }
+          }
+        }
+      ],
+      "phases": [
+        {
+          "name": "planner_0",
+          "ticks": 949
+        }
+      ],
+      "planner_slot_provenance": {
+        "planner_0": {
+          "upstream": 9490
+        }
+      },
+      "pose_received_total": {
+        "first": 64,
+        "last": 1010
+      },
+      "token_received_total": {
+        "first": 0,
+        "last": 0
+      },
+      "wearer_spans": [],
+      "files_sha256": {
+        "deploy/cycle_trace.csv": "9baeee6a76097a034a9b140406c90207d62ac9eb2c83829f74f9dd488380da12",
+        "requests.jsonl": "bee61ba98332687bcf04b8828423cd9c011538a5c32d2758e0ccf4592c8a4220",
+        "deploy/target_pos.csv": "0015fd2383498d952839a1d3bf77cc7451bce85a855549098ad955bb7f63ea29",
+        "deploy/joint_pos.csv": "9ac0a5b636bc714a41483a7c5a55bf162b8e1e056a259c28c890659b1f00c995"
+      }
+    },
+    "run_live_arm_20261116_215153": {
+      "outcomes": {
+        "confirmed": 2
+      },
+      "events": [
+        {
+          "request_t": "1502.804364968",
+          "requested_mode": "tracking",
+          "outcome": "confirmed",
+          "prior_head": "pose",
+          "prior_pose_reference": {
+            "source_kind": "upstream",
+            "slot_counts": {
+              "upstream": 10
+            }
+          },
+          "actual_head": "token",
+          "confirmed_t": "1506.992034",
+          "confirmation_ms": 4187.669032
+        },
+        {
+          "request_t": "1515.316184119",
+          "requested_mode": "planner",
+          "outcome": "confirmed",
+          "prior_head": "token",
+          "actual_head": "pose",
+          "confirmed_t": "1516.289736",
+          "confirmation_ms": 973.551881,
+          "confirmed_pose_reference": {
+            "source_kind": "upstream",
+            "slot_counts": {
+              "upstream": 10
+            }
+          }
+        }
+      ],
+      "phases": [
+        {
+          "name": "planner_0",
+          "ticks": 281
+        },
+        {
+          "name": "tracking_1",
+          "ticks": 465
+        },
+        {
+          "name": "planner_2",
+          "ticks": 229
+        }
+      ],
+      "planner_slot_provenance": {
+        "planner_0": {
+          "upstream": 2810
+        },
+        "planner_2": {
+          "upstream": 2290
+        }
+      },
+      "pose_received_total": {
+        "first": 16,
+        "last": 935
+      },
+      "token_received_total": {
+        "first": 0,
+        "last": 440
+      },
+      "wearer_spans": [
+        {
+          "file": "span_1506.npz",
+          "frames": 441,
+          "duration_s": 8.8,
+          "left_wrist_z_m": [
+            -0.066,
+            0.497
+          ],
+          "right_wrist_z_m": [
+            -0.075,
+            -0.052
+          ]
+        }
+      ],
+      "files_sha256": {
+        "deploy/cycle_trace.csv": "522c6c76ebf23cf0f1f692f104401d34e90e6404a99596736e16317e5d9742e1",
+        "requests.jsonl": "b8ee399cd4dd279f80814208a747a98a57f74d7bd3fec6d7d7f0a1811f45e580",
+        "deploy/target_pos.csv": "f65d587012bf1964fa6a51c2ff4c14e40ca7e553fb5304db9913163d744333c2",
+        "deploy/joint_pos.csv": "939ea7d31ace84a2b9a12b1da86152034ad3f70eb6762cd486ace3e8cf05fcbe"
+      }
+    }
+  },
+  "risk_open_loop": {
+    "note": "robot never moved; target-vs-measured grows open-loop; release first-step equals open-loop gap because ramp resets to measured",
+    "joints": {
+      "waist_roll_joint": {
+        "planner_0": {
+          "min": 0.336,
+          "max": 2.529,
+          "max_step": 0.152,
+          "max_error": 2.075
+        },
+        "tracking_1": {
+          "min": -25.783,
+          "max": 25.783,
+          "max_step": 14.451,
+          "max_error": 28.194,
+          "boundary_step_into": 1.917
+        },
+        "planner_2": {
+          "min": 0.779,
+          "max": 20.59,
+          "max_step": 1.48,
+          "max_error": 18.179,
+          "boundary_step_into": 23.372
+        }
+      },
+      "waist_pitch_joint": {
+        "planner_0": {
+          "min": -6.905,
+          "max": 1.704,
+          "max_step": 0.237,
+          "max_error": 8.609
+        },
+        "tracking_1": {
+          "min": -25.783,
+          "max": 1.704,
+          "max_step": 1.417,
+          "max_error": 27.487,
+          "boundary_step_into": 8.325
+        },
+        "planner_2": {
+          "min": -11.535,
+          "max": 2.72,
+          "max_step": 0.526,
+          "max_error": 13.239,
+          "boundary_step_into": 27.487
+        }
+      },
+      "right_ankle_roll_joint": {
+        "planner_0": {
+          "min": 2.196,
+          "max": 3.361,
+          "max_step": 0.051,
+          "max_error": 1.027
+        },
+        "tracking_1": {
+          "min": -40.107,
+          "max": 2.558,
+          "max_step": 2.979,
+          "max_error": 42.442,
+          "boundary_step_into": 0.857
+        },
+        "planner_2": {
+          "min": -3.349,
+          "max": 3.296,
+          "max_step": 4.712,
+          "max_error": 5.683,
+          "boundary_step_into": 36.758
+        }
+      },
+      "left_ankle_roll_joint": {
+        "planner_0": {
+          "min": -0.558,
+          "max": -0.044,
+          "max_step": 0.122,
+          "max_error": 0.478
+        },
+        "tracking_1": {
+          "min": -5.855,
+          "max": 23.928,
+          "max_step": 4.296,
+          "max_error": 24.45,
+          "boundary_step_into": 0.344
+        },
+        "planner_2": {
+          "min": -2.74,
+          "max": 1.782,
+          "max_step": 1.918,
+          "max_error": 2.304,
+          "boundary_step_into": 14.9
+        }
+      },
+      "left_elbow_joint": {
+        "planner_0": {
+          "min": -38.917,
+          "max": -38.117,
+          "max_step": 0.159,
+          "max_error": 0.801
+        },
+        "tracking_1": {
+          "min": -148.969,
+          "max": -22.13,
+          "max_step": 17.82,
+          "max_error": 110.852,
+          "boundary_step_into": 0.796
+        },
+        "planner_2": {
+          "min": -38.913,
+          "max": -38.116,
+          "max_step": 0.182,
+          "max_error": 0.796,
+          "boundary_step_into": 110.852
+        }
+      },
+      "right_elbow_joint": {
+        "planner_0": {
+          "min": -39.366,
+          "max": -38.721,
+          "max_step": 0.222,
+          "max_error": 0.646
+        },
+        "tracking_1": {
+          "min": -45.503,
+          "max": -24.989,
+          "max_step": 2.766,
+          "max_error": 13.732,
+          "boundary_step_into": 0.639
+        },
+        "planner_2": {
+          "min": -39.354,
+          "max": -38.124,
+          "max_step": 0.126,
+          "max_error": 0.633,
+          "boundary_step_into": 3.661
+        }
+      }
+    }
+  },
+  "onboard_patches_installed": {
+    "backup_suffix": ".bak_20261116_pre_sonic_fix",
+    "files": {
+      "/home/agi/projects/project_tools/x2_smpl_wholebody/garment_intent_adapter.py": {
+        "orig_sha256": "9c9d4386c8779650e702946a6ef3e52dc26062836277953971794382243d1b39",
+        "patched_sha256": "e75c2a4a12bbb2d77498024e0d97ab4e0d5f3de02b24acb89a81baf5e45b7b2d"
+      },
+      "/home/agi/projects/project_tools/x2_smpl_wholebody/x2_smpl_token_service.py": {
+        "orig_sha256": "847a4915bb9b6d44b589544009e94dc4807511d2d4725635ac6008848e2b3526",
+        "patched_sha256": "3790e64ca30f8c53c291b91ddef455ed15c99bb8992cc0a720370d10d026635f"
+      },
+      "/home/agi/projects/smartwear_v2/garment_udp_v2_reconnect_safe.py": {
+        "orig_sha256": "d7c517605b1ed7c3970e8ff31a3eac87f646681821561bfde586e111408bdf4b",
+        "patched_sha256": "6f6105624c66bd9be5ac2a4b7bc8584377b4fab3597a1de72696ff4ae071707b"
+      },
+      "/home/agi/projects/project_tools/x2_smpl_wholebody/tests/test_garment_adapter.py": {
+        "orig_sha256": "b3fff196654dd8ef4dc2147ecc44f08eb479babc1fbf4c3ef79989e543407742",
+        "patched_sha256": "5479e18cf3e430320d811f414b60165cc0073966036c9d54ffaefc02409a330f"
+      },
+      "/home/agi/projects/project_tools/x2_smpl_wholebody/tests/test_token_chain.py": {
+        "orig_sha256": "19bdb69a3cbb6e5dd40135532a92e92c4a9f677b139cb58d0d2ab7bce55621b2",
+        "patched_sha256": "7bc58c84e55a3c5eac32ca1f62a9952f0e626f613be5005258d0888072e9f2de"
+      }
+    },
+    "tests": {
+      "test_garment_adapter.py": "35/35 checks passed",
+      "test_heading_guards.py": "VERDICT: PASS",
+      "test_token_chain.py": "46/46 checks passed",
+      "test_onboard_fixes.py": "Ran 4 tests in 0.159s OK",
+      "garment_udp_v2_reconnect_safe.py": "py_compile & --help passed"
+    }
+  },
+  "pending": [
+    "MuJoCo closed-loop replay of the token head (deferred per user choice A)",
+    "field: right arm, both arms, >=30 s stand",
+    "powered: tighter waist/leg clamps, --stand-default-pose, spotter + e-stop"
+  ]
+}

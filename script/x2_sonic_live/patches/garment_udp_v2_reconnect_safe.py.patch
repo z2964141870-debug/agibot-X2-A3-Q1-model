@@ -1,0 +1,150 @@
+--- /Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028/data/analysis/X2_SONIC_LIVE_HANDOFF_20261116/onboard_originals/smartwear_v2/garment_udp_v2_reconnect_safe.py	2026-10-28 23:24:47
++++ /Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028/script/x2_sonic_live/onboard_patched/smartwear_v2/garment_udp_v2_reconnect_safe.py	2026-11-16 22:11:30
+@@ -19,10 +19,13 @@
+ import sys
+ import time
+ import json
++import atexit
++import signal
++import subprocess
+ import argparse
+ import logging
+ import importlib.util
+-from threading import Thread
++from threading import Event, Thread
+ 
+ sys.coinit_flags = 0  # 0 means MTA
+ 
+@@ -123,6 +126,7 @@
+ 
+ CALIBRATION_DONE = False
+ RUNNING = True
++_STOP_EVENT = Event()
+ 
+ clock = Clock()
+ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+@@ -764,21 +768,26 @@
+     elif args.auto_calibrate:
+         logging.info("--auto-calibrate: 5 秒后自动开始 T-Pose 校准, 请保持 T-Pose 姿势")
+         for i in range(5):
+-            time.sleep(1)
++            if not RUNNING or _STOP_EVENT.wait(1):
++                return
+             print(5 - i, end=" ", flush=True)
+         print()
+     else:
+         try:
+             input("数据接收成功, 接下来进行校准数据采集, 请输入任意字符开始")
+-        except EOFError:
++        except (EOFError, KeyboardInterrupt):
++            if not RUNNING:
++                return
+             logging.warning("无终端输入, 5 秒后自动开始校准, 请保持 T-Pose")
+             for i in range(5):
+-                time.sleep(1)
++                if not RUNNING or _STOP_EVENT.wait(1):
++                    return
+                 print(5 - i, end=" ", flush=True)
+             print()
+ 
+     for i in range(3):
+-        time.sleep(1)
++        if not RUNNING or _STOP_EVENT.wait(1):
++            return
+         print(3 - i)
+ 
+     stream_started = False
+@@ -969,10 +978,48 @@
+ 
+ 
+ def dynamic_calibration(t_gap=1):
+-    while True:
+-        time.sleep(1)
++    while RUNNING and not _STOP_EVENT.wait(t_gap):
+         if CALIBRATION_DONE:
+             my_server.auto_calibrate()
++
++
++def _disconnect_ble_fallback(addresses: tuple[str, ...]) -> None:
++    """Best-effort BlueZ disconnect fallback if Bleak client teardown missed a link."""
++    for addr in addresses:
++        if not addr:
++            continue
++        try:
++            subprocess.run(
++                ["bluetoothctl", "disconnect", addr],
++                check=False,
++                capture_output=True,
++                timeout=3.0,
++            )
++        except Exception:
++            pass
++
++
++def shutdown_garment_session(manager, pico_pub=None, threads=(),
++                             ble_addresses: tuple[str, ...] = ()) -> None:
++    """Stop worker loops, close BLE clients via Bleak, and release BlueZ links."""
++    global RUNNING
++    RUNNING = False
++    _STOP_EVENT.set()
++    if manager is not None and hasattr(manager, "close_all"):
++        try:
++            manager.close_all()
++        except Exception as exc:
++            logging.warning("BLE manager close_all error: %s", exc)
++    for thread in threads:
++        if thread is not None and thread.is_alive():
++            thread.join(timeout=2.0)
++    if pico_pub is not None:
++        try:
++            pico_pub.close(0)
++        except Exception:
++            pass
++    if ble_addresses:
++        _disconnect_ble_fallback(ble_addresses)
+ 
+ 
+ if __name__ == "__main__":
+@@ -1056,9 +1103,38 @@
+         manager.connect_devices(max_devices=2)
+         input_mod.start_data_threads(manager, input_mod.data_up_buffer, input_mod.data_down_buffer)
+ 
++    ble_addrs = (args.addr_up, args.addr_down) if _INPUT_BLE else ()
++    _cleaned = False
++
++    def _cleanup_once():
++        global _cleaned
++        if _cleaned:
++            return
++        _cleaned = True
++        shutdown_garment_session(manager, pico_pub=pico_pub, threads=threads, ble_addresses=ble_addrs)
++
++    def _handle_signal(signum, _frame):
++        global RUNNING
++        logging.info("收到退出信号 (%s), 正在关闭衣服采集与蓝牙连接...", signum)
++        RUNNING = False
++        _STOP_EVENT.set()
++
+     threads = [
+-        Thread(target=data_transmit, kwargs={"fps": args.fps}),
+-        Thread(target=dynamic_calibration, kwargs={"t_gap": 2}),
++        Thread(target=data_transmit, kwargs={"fps": args.fps}, daemon=True),
++        Thread(target=dynamic_calibration, kwargs={"t_gap": 2}, daemon=True),
+     ]
+-    for thread in threads:
+-        thread.start()
++    signal.signal(signal.SIGINT, _handle_signal)
++    signal.signal(signal.SIGTERM, _handle_signal)
++    atexit.register(_cleanup_once)
++    try:
++        for thread in threads:
++            thread.start()
++        while RUNNING and not _STOP_EVENT.is_set():
++            if not any(t.is_alive() for t in threads):
++                break
++            _STOP_EVENT.wait(0.2)
++    except KeyboardInterrupt:
++        RUNNING = False
++        _STOP_EVENT.set()
++    finally:
++        _cleanup_once()

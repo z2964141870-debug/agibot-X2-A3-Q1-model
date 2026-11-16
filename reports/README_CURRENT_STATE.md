@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-16 [X2 真人穿戴 SONIC 只读切换联测](README_X2_SONIC_LIVE_HANDOFF_20261116.md)。现场 kplanner 稳站，隔离端口、`--no-publish` 下首次录到完整 `pose → token → pose`：接入确认 4187.7 ms，撤权确认 973.6 ms，planner 段 10 槽来源全为 upstream，左臂同侧响应。三个生产问题（adapter SMPL Y-up→Z-up、token 服务 `monotonic()` 时钟、衣服 Ctrl-C 蓝牙释放）已做成正式补丁并带 `.bak_20261116_pre_sonic_fix` 备份安装至 SoC1，板端测试（35/35、PASS、46/46、4/4 及 `py_compile`/`--help`）全通过。token 段 `waist_roll` 和 `right_ankle_roll` 打满限幅为开环结果，闭环 MuJoCo 回放延后，现由用户转真机观察；本次全程零电机输出。
+
 2026-11-16 [X2 动作历史平滑复验](README_X2_MORPH_ACTION_HISTORY_CHECK_20261116.md)。滤波能抑制已知 26.7° 右膝突跳，但右膝越界未改善，未部署。跟随验证下一轮用已验证的 SONIC kplanner 稳站，不把官方静态站姿回放当必经步骤。
 
 2026-11-16 [X2 真人轮右膝跳变复放](README_X2_LIVE_KNEE_JUMP_20261116.md)。1012 步复放最大误差 0.0152°，动作历史单独造成 −26.704°，人体参考单独 −0.046°。板端官方站姿固定输入已备，等待用户现场设好正常站立后做无需衣服的短只读测试。

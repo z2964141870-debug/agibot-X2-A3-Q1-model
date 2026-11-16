@@ -1,0 +1,769 @@
+{
+  "capture_sha256": "4a0c24ff572689a25914fc553e6a77321ebcf71f9c2c4ddb011e2691aeb35ef2",
+  "rounds": [
+    {
+      "split": false,
+      "ready_states": 589,
+      "human": {
+        "send_to_server_recv_ms": {
+          "count": 359,
+          "p95": 8.427096499999998,
+          "max": 18.477868
+        },
+        "send_to_reply_ms": {
+          "count": 359,
+          "p95": 9.3255739,
+          "max": 29.217447
+        },
+        "due_to_reply_ms": {
+          "count": 359,
+          "p95": 10.814095399999994,
+          "max": 35.923286
+        }
+      },
+      "state": {
+        "send_to_server_recv_ms": {
+          "count": 600,
+          "p95": 0.4673259499999999,
+          "max": 2.429283
+        },
+        "send_to_reply_ms": {
+          "count": 600,
+          "p95": 13.970072849999987,
+          "max": 32.784892
+        },
+        "due_to_reply_ms": {
+          "count": 600,
+          "p95": 14.337450449999997,
+          "max": 32.87441
+        }
+      },
+      "state_not_ready_reasons": {
+        "need 10 real 50Hz slots (180ms span)": 11
+      },
+      "state_over_20_ms": 2,
+      "target_step_deg": {
+        "count": 588,
+        "p95": 5.4686934971856225,
+        "max": 24.136013213011072
+      },
+      "state_profile": {
+        "ready": 589,
+        "ready_ms": {
+          "transport_in": {
+            "count": 589,
+            "p95": 0.44901260000000087,
+            "max": 2.429283
+          },
+          "decode": {
+            "count": 589,
+            "p95": 0.17105220000000002,
+            "max": 0.326291
+          },
+          "window_lock": {
+            "count": 589,
+            "p95": 0.008325800000000001,
+            "max": 0.043263
+          },
+          "window_build": {
+            "count": 589,
+            "p95": 2.1833954,
+            "max": 6.27233
+          },
+          "onnx": {
+            "count": 589,
+            "p95": 7.024952000000001,
+            "max": 12.697617
+          },
+          "runtime_other": {
+            "count": 589,
+            "p95": 4.4886732,
+            "max": 10.607872
+          },
+          "reply_encode": {
+            "count": 589,
+            "p95": 0.233904,
+            "max": 4.993082
+          },
+          "transport_out": {
+            "count": 589,
+            "p95": 1.0041146,
+            "max": 10.812984
+          }
+        },
+        "ready_over_20_ms": 2,
+        "biggest_excess_counts": {
+          "transport_out": 1,
+          "runtime_other": 1
+        },
+        "worst_ready": [
+          {
+            "sequence": 360,
+            "ready": true,
+            "rpc_ms": 32.784892,
+            "stages_ms": {
+              "transport_in": 0.372178,
+              "decode": 0.326291,
+              "window_lock": 0.008864,
+              "window_build": 6.27233,
+              "onnx": 4.195644,
+              "runtime_other": 10.607872,
+              "reply_encode": 0.188729,
+              "transport_out": 10.812984
+            },
+            "onnx_calling_thread_cpu_ms": 4.178528,
+            "state_handler_thread_cpu_ms": 12.014016,
+            "largest_increase_from_ready_median": "transport_out"
+          },
+          {
+            "sequence": 400,
+            "ready": true,
+            "rpc_ms": 20.373317,
+            "stages_ms": {
+              "transport_in": 0.295956,
+              "decode": 0.181465,
+              "window_lock": 0.0072,
+              "window_build": 1.954995,
+              "onnx": 4.82842,
+              "runtime_other": 8.252318,
+              "reply_encode": 0.212856,
+              "transport_out": 4.640107
+            },
+            "onnx_calling_thread_cpu_ms": 2.993408,
+            "state_handler_thread_cpu_ms": 9.556192,
+            "largest_increase_from_ready_median": "runtime_other"
+          },
+          {
+            "sequence": 401,
+            "ready": true,
+            "rpc_ms": 19.35339,
+            "stages_ms": {
+              "transport_in": 0.293557,
+              "decode": 0.295732,
+              "window_lock": 0.006304,
+              "window_build": 5.421964,
+              "onnx": 3.689808,
+              "runtime_other": 8.221472,
+              "reply_encode": 0.308308,
+              "transport_out": 1.116245
+            },
+            "onnx_calling_thread_cpu_ms": 2.332224,
+            "state_handler_thread_cpu_ms": 9.89008
+          },
+          {
+            "sequence": 526,
+            "ready": true,
+            "rpc_ms": 19.271696,
+            "stages_ms": {
+              "transport_in": 0.246359,
+              "decode": 0.107707,
+              "window_lock": 0.00704,
+              "window_build": 2.08379,
+              "onnx": 12.697617,
+              "runtime_other": 3.720143,
+              "reply_encode": 0.171097,
+              "transport_out": 0.237943
+            },
+            "onnx_calling_thread_cpu_ms": 12.211584,
+            "state_handler_thread_cpu_ms": 17.826592
+          },
+          {
+            "sequence": 429,
+            "ready": true,
+            "rpc_ms": 18.287808,
+            "stages_ms": {
+              "transport_in": 0.128987,
+              "decode": 0.074237,
+              "window_lock": 0.004735,
+              "window_build": 2.130158,
+              "onnx": 11.443751,
+              "runtime_other": 4.081892,
+              "reply_encode": 0.191289,
+              "transport_out": 0.232759
+            },
+            "onnx_calling_thread_cpu_ms": 11.328224,
+            "state_handler_thread_cpu_ms": 16.976256
+          }
+        ]
+      }
+    },
+    {
+      "split": true,
+      "ready_states": 589,
+      "human": {
+        "send_to_server_recv_ms": {
+          "count": 359,
+          "p95": 1.7341120999999995,
+          "max": 6.170479
+        },
+        "send_to_reply_ms": {
+          "count": 359,
+          "p95": 4.792316099999997,
+          "max": 8.772587
+        },
+        "due_to_reply_ms": {
+          "count": 359,
+          "p95": 5.5844675,
+          "max": 8.887559
+        }
+      },
+      "state": {
+        "send_to_server_recv_ms": {
+          "count": 600,
+          "p95": 0.7754066999999988,
+          "max": 2.700152
+        },
+        "send_to_reply_ms": {
+          "count": 600,
+          "p95": 14.323645949999998,
+          "max": 21.206726
+        },
+        "due_to_reply_ms": {
+          "count": 600,
+          "p95": 14.472414099999998,
+          "max": 21.279913
+        }
+      },
+      "state_not_ready_reasons": {
+        "need 10 real 50Hz slots (180ms span)": 11
+      },
+      "state_over_20_ms": 3,
+      "target_step_deg": {
+        "count": 588,
+        "p95": 5.468699132091688,
+        "max": 30.175777460663625
+      },
+      "state_profile": {
+        "ready": 589,
+        "ready_ms": {
+          "transport_in": {
+            "count": 589,
+            "p95": 0.7707604000000002,
+            "max": 2.700152
+          },
+          "decode": {
+            "count": 589,
+            "p95": 0.1475464,
+            "max": 0.731908
+          },
+          "window_lock": {
+            "count": 589,
+            "p95": 0.006482600000000001,
+            "max": 0.009728
+          },
+          "window_build": {
+            "count": 589,
+            "p95": 2.1082832000000007,
+            "max": 4.514897
+          },
+          "onnx": {
+            "count": 589,
+            "p95": 6.493803000000004,
+            "max": 14.547943
+          },
+          "runtime_other": {
+            "count": 589,
+            "p95": 4.9715116,
+            "max": 9.63169
+          },
+          "reply_encode": {
+            "count": 589,
+            "p95": 0.2297318,
+            "max": 3.272897
+          },
+          "transport_out": {
+            "count": 589,
+            "p95": 0.7425502000000003,
+            "max": 4.480338
+          }
+        },
+        "ready_over_20_ms": 3,
+        "biggest_excess_counts": {
+          "onnx": 2,
+          "runtime_other": 1
+        },
+        "worst_ready": [
+          {
+            "sequence": 333,
+            "ready": true,
+            "rpc_ms": 21.206726,
+            "stages_ms": {
+              "transport_in": 0.190424,
+              "decode": 0.084765,
+              "window_lock": 0.004128,
+              "window_build": 1.729852,
+              "onnx": 14.360561,
+              "runtime_other": 4.438612,
+              "reply_encode": 0.178297,
+              "transport_out": 0.220087
+            },
+            "onnx_calling_thread_cpu_ms": 14.339584,
+            "state_handler_thread_cpu_ms": 19.887424,
+            "largest_increase_from_ready_median": "onnx"
+          },
+          {
+            "sequence": 283,
+            "ready": true,
+            "rpc_ms": 20.634873,
+            "stages_ms": {
+              "transport_in": 0.220151,
+              "decode": 0.10086,
+              "window_lock": 0.004703,
+              "window_build": 1.731389,
+              "onnx": 14.547943,
+              "runtime_other": 3.570581,
+              "reply_encode": 0.217815,
+              "transport_out": 0.241431
+            },
+            "onnx_calling_thread_cpu_ms": 4.007936,
+            "state_handler_thread_cpu_ms": 9.249216,
+            "largest_increase_from_ready_median": "onnx"
+          },
+          {
+            "sequence": 533,
+            "ready": true,
+            "rpc_ms": 20.203152,
+            "stages_ms": {
+              "transport_in": 0.364978,
+              "decode": 0.226807,
+              "window_lock": 0.00528,
+              "window_build": 2.083311,
+              "onnx": 8.35286,
+              "runtime_other": 8.829386,
+              "reply_encode": 0.159961,
+              "transport_out": 0.180569
+            },
+            "onnx_calling_thread_cpu_ms": 4.21504,
+            "state_handler_thread_cpu_ms": 10.827744,
+            "largest_increase_from_ready_median": "runtime_other"
+          },
+          {
+            "sequence": 118,
+            "ready": true,
+            "rpc_ms": 19.489545,
+            "stages_ms": {
+              "transport_in": 0.155258,
+              "decode": 0.217336,
+              "window_lock": 0.00672,
+              "window_build": 1.67859,
+              "onnx": 12.812045,
+              "runtime_other": 4.161022,
+              "reply_encode": 0.170618,
+              "transport_out": 0.287956
+            },
+            "onnx_calling_thread_cpu_ms": 4.759936,
+            "state_handler_thread_cpu_ms": 10.27776
+          },
+          {
+            "sequence": 208,
+            "ready": true,
+            "rpc_ms": 18.975034,
+            "stages_ms": {
+              "transport_in": 0.280117,
+              "decode": 0.134331,
+              "window_lock": 0.004736,
+              "window_build": 1.769626,
+              "onnx": 12.465656,
+              "runtime_other": 3.914216,
+              "reply_encode": 0.179769,
+              "transport_out": 0.226583
+            },
+            "onnx_calling_thread_cpu_ms": 4.349568,
+            "state_handler_thread_cpu_ms": 9.916288
+          }
+        ]
+      }
+    },
+    {
+      "split": true,
+      "ready_states": 589,
+      "human": {
+        "send_to_server_recv_ms": {
+          "count": 359,
+          "p95": 0.9352663,
+          "max": 3.632755
+        },
+        "send_to_reply_ms": {
+          "count": 359,
+          "p95": 2.803140999999999,
+          "max": 6.138029
+        },
+        "due_to_reply_ms": {
+          "count": 359,
+          "p95": 4.8019959,
+          "max": 7.912426
+        }
+      },
+      "state": {
+        "send_to_server_recv_ms": {
+          "count": 600,
+          "p95": 0.7191297499999997,
+          "max": 2.340134
+        },
+        "send_to_reply_ms": {
+          "count": 600,
+          "p95": 12.854981899999991,
+          "max": 21.839699
+        },
+        "due_to_reply_ms": {
+          "count": 600,
+          "p95": 12.94288509999998,
+          "max": 21.971055
+        }
+      },
+      "state_not_ready_reasons": {
+        "need 10 real 50Hz slots (180ms span)": 11
+      },
+      "state_over_20_ms": 1,
+      "target_step_deg": {
+        "count": 588,
+        "p95": 5.4693383097319535,
+        "max": 30.121919711510785
+      },
+      "state_profile": {
+        "ready": 589,
+        "ready_ms": {
+          "transport_in": {
+            "count": 589,
+            "p95": 0.7130350000000003,
+            "max": 2.340134
+          },
+          "decode": {
+            "count": 589,
+            "p95": 0.15207720000000002,
+            "max": 0.643814
+          },
+          "window_lock": {
+            "count": 589,
+            "p95": 0.0062262,
+            "max": 0.084924
+          },
+          "window_build": {
+            "count": 589,
+            "p95": 2.140724,
+            "max": 5.603048
+          },
+          "onnx": {
+            "count": 589,
+            "p95": 5.088336000000001,
+            "max": 11.909268
+          },
+          "runtime_other": {
+            "count": 589,
+            "p95": 5.050176200000001,
+            "max": 11.307434
+          },
+          "reply_encode": {
+            "count": 589,
+            "p95": 0.2249702,
+            "max": 1.960085
+          },
+          "transport_out": {
+            "count": 589,
+            "p95": 0.8310270000000014,
+            "max": 4.784585
+          }
+        },
+        "ready_over_20_ms": 1,
+        "biggest_excess_counts": {
+          "runtime_other": 1
+        },
+        "worst_ready": [
+          {
+            "sequence": 277,
+            "ready": true,
+            "rpc_ms": 21.839699,
+            "stages_ms": {
+              "transport_in": 0.267573,
+              "decode": 0.147739,
+              "window_lock": 0.005791,
+              "window_build": 5.603048,
+              "onnx": 3.959047,
+              "runtime_other": 11.307434,
+              "reply_encode": 0.193304,
+              "transport_out": 0.355763
+            },
+            "onnx_calling_thread_cpu_ms": 3.948704,
+            "state_handler_thread_cpu_ms": 12.150496,
+            "largest_increase_from_ready_median": "runtime_other"
+          },
+          {
+            "sequence": 213,
+            "ready": true,
+            "rpc_ms": 18.364443,
+            "stages_ms": {
+              "transport_in": 0.366834,
+              "decode": 0.343155,
+              "window_lock": 0.00544,
+              "window_build": 4.615374,
+              "onnx": 3.357343,
+              "runtime_other": 9.280376,
+              "reply_encode": 0.177306,
+              "transport_out": 0.218615
+            },
+            "onnx_calling_thread_cpu_ms": 2.750464,
+            "state_handler_thread_cpu_ms": 10.012032
+          },
+          {
+            "sequence": 300,
+            "ready": true,
+            "rpc_ms": 18.356377,
+            "stages_ms": {
+              "transport_in": 0.19292,
+              "decode": 0.159226,
+              "window_lock": 0.00432,
+              "window_build": 4.165566,
+              "onnx": 4.284218,
+              "runtime_other": 8.936999,
+              "reply_encode": 0.36981,
+              "transport_out": 0.243318
+            },
+            "onnx_calling_thread_cpu_ms": 2.268448,
+            "state_handler_thread_cpu_ms": 9.460384
+          },
+          {
+            "sequence": 18,
+            "ready": true,
+            "rpc_ms": 18.04567,
+            "stages_ms": {
+              "transport_in": 0.301332,
+              "decode": 0.151962,
+              "window_lock": 0.004864,
+              "window_build": 1.525061,
+              "onnx": 11.909268,
+              "runtime_other": 3.733616,
+              "reply_encode": 0.186232,
+              "transport_out": 0.233335
+            },
+            "onnx_calling_thread_cpu_ms": 3.33104,
+            "state_handler_thread_cpu_ms": 8.527744
+          },
+          {
+            "sequence": 571,
+            "ready": true,
+            "rpc_ms": 17.713148,
+            "stages_ms": {
+              "transport_in": 0.208888,
+              "decode": 0.097372,
+              "window_lock": 0.003712,
+              "window_build": 1.807323,
+              "onnx": 11.508778,
+              "runtime_other": 3.629205,
+              "reply_encode": 0.181113,
+              "transport_out": 0.276757
+            },
+            "onnx_calling_thread_cpu_ms": 10.99728,
+            "state_handler_thread_cpu_ms": 16.397344
+          }
+        ]
+      }
+    },
+    {
+      "split": false,
+      "ready_states": 589,
+      "human": {
+        "send_to_server_recv_ms": {
+          "count": 359,
+          "p95": 8.6077416,
+          "max": 14.825412
+        },
+        "send_to_reply_ms": {
+          "count": 359,
+          "p95": 9.5795006,
+          "max": 44.537778
+        },
+        "due_to_reply_ms": {
+          "count": 359,
+          "p95": 11.270133299999998,
+          "max": 44.673631
+        }
+      },
+      "state": {
+        "send_to_server_recv_ms": {
+          "count": 600,
+          "p95": 0.9754404499999993,
+          "max": 6.041497
+        },
+        "send_to_reply_ms": {
+          "count": 600,
+          "p95": 13.350372799999999,
+          "max": 22.132392
+        },
+        "due_to_reply_ms": {
+          "count": 600,
+          "p95": 13.75562109999999,
+          "max": 38.24611
+        }
+      },
+      "state_not_ready_reasons": {
+        "need 10 real 50Hz slots (180ms span)": 11
+      },
+      "state_over_20_ms": 2,
+      "target_step_deg": {
+        "count": 588,
+        "p95": 5.46868568515676,
+        "max": 30.121984598307897
+      },
+      "state_profile": {
+        "ready": 589,
+        "ready_ms": {
+          "transport_in": {
+            "count": 589,
+            "p95": 0.9795342000000006,
+            "max": 6.041497
+          },
+          "decode": {
+            "count": 589,
+            "p95": 0.16858920000000002,
+            "max": 0.92006
+          },
+          "window_lock": {
+            "count": 589,
+            "p95": 0.006099200000000001,
+            "max": 0.079869
+          },
+          "window_build": {
+            "count": 589,
+            "p95": 2.1858470000000003,
+            "max": 6.044088
+          },
+          "onnx": {
+            "count": 589,
+            "p95": 6.305796000000001,
+            "max": 14.193339
+          },
+          "runtime_other": {
+            "count": 589,
+            "p95": 4.6300214,
+            "max": 11.76777
+          },
+          "reply_encode": {
+            "count": 589,
+            "p95": 0.2334822,
+            "max": 4.371484
+          },
+          "transport_out": {
+            "count": 589,
+            "p95": 1.0603948,
+            "max": 3.660502
+          }
+        },
+        "ready_over_20_ms": 2,
+        "biggest_excess_counts": {
+          "onnx": 2
+        },
+        "worst_ready": [
+          {
+            "sequence": 53,
+            "ready": true,
+            "rpc_ms": 22.132392,
+            "stages_ms": {
+              "transport_in": 0.264982,
+              "decode": 0.139418,
+              "window_lock": 0.005279,
+              "window_build": 1.538821,
+              "onnx": 14.193339,
+              "runtime_other": 5.476237,
+              "reply_encode": 0.253526,
+              "transport_out": 0.26079
+            },
+            "onnx_calling_thread_cpu_ms": 5.085824,
+            "state_handler_thread_cpu_ms": 10.46784,
+            "largest_increase_from_ready_median": "onnx"
+          },
+          {
+            "sequence": 322,
+            "ready": true,
+            "rpc_ms": 21.048711,
+            "stages_ms": {
+              "transport_in": 0.125467,
+              "decode": 0.052414,
+              "window_lock": 0.003104,
+              "window_build": 2.00114,
+              "onnx": 11.601259,
+              "runtime_other": 6.335442,
+              "reply_encode": 0.189689,
+              "transport_out": 0.740196
+            },
+            "onnx_calling_thread_cpu_ms": 5.73728,
+            "state_handler_thread_cpu_ms": 11.398272,
+            "largest_increase_from_ready_median": "onnx"
+          },
+          {
+            "sequence": 547,
+            "ready": true,
+            "rpc_ms": 18.825514,
+            "stages_ms": {
+              "transport_in": 0.273078,
+              "decode": 0.140603,
+              "window_lock": 0.004704,
+              "window_build": 2.70268,
+              "onnx": 10.637862,
+              "runtime_other": 4.635755,
+              "reply_encode": 0.185593,
+              "transport_out": 0.245239
+            },
+            "onnx_calling_thread_cpu_ms": 8.633632,
+            "state_handler_thread_cpu_ms": 14.737536
+          },
+          {
+            "sequence": 88,
+            "ready": true,
+            "rpc_ms": 18.253029,
+            "stages_ms": {
+              "transport_in": 0.307828,
+              "decode": 0.599401,
+              "window_lock": 0.026175,
+              "window_build": 3.458684,
+              "onnx": 3.282082,
+              "runtime_other": 8.864141,
+              "reply_encode": 0.400177,
+              "transport_out": 1.314541
+            },
+            "onnx_calling_thread_cpu_ms": 3.247744,
+            "state_handler_thread_cpu_ms": 10.432736
+          },
+          {
+            "sequence": 54,
+            "ready": true,
+            "rpc_ms": 17.652117,
+            "stages_ms": {
+              "transport_in": 0.40872,
+              "decode": 0.348914,
+              "window_lock": 0.004192,
+              "window_build": 1.621473,
+              "onnx": 2.790036,
+              "runtime_other": 11.76777,
+              "reply_encode": 0.170489,
+              "transport_out": 0.540523
+            },
+            "onnx_calling_thread_cpu_ms": 2.78384,
+            "state_handler_thread_cpu_ms": 9.259296
+          }
+        ]
+      }
+    }
+  ],
+  "policy_state_ticks": 600,
+  "human_packets": 359,
+  "paired_supports": [
+    {
+      "runs": [
+        0,
+        1
+      ],
+      "ready_in_both": 589,
+      "same_support": 577
+    },
+    {
+      "runs": [
+        3,
+        2
+      ],
+      "ready_in_both": 589,
+      "same_support": 583
+    }
+  ],
+  "scope": "isolated TCP loopback with fixed synthetic feedback and real recorded human packets",
+  "hardware_commands": 0
+}

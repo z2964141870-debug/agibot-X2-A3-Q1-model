@@ -13,7 +13,7 @@ import zmq
 
 from .artifacts import sha
 from .bench_human_ingress import CLOCK, TICKS, SharedHumanBuffer
-from .core import DT_NS
+from .core import DT_NS, HumanBuffer
 from .replay_window_pacing import distribution
 from .review_saved_trace import delta, rows
 from .runtime import Runtime, synthetic_state
@@ -28,7 +28,67 @@ def socket(context, kind):
     return connection
 
 
-def serve(context, endpoints, runtime, count, expected):
+class ProfiledBuffer(SharedHumanBuffer):
+    def window(self, now_ns, receiver_clock):
+        start = time.monotonic_ns()
+        with self.lock:
+            acquired = time.monotonic_ns()
+            self.lock_wait_ns = acquired - start
+            try:
+                return HumanBuffer.window(self, now_ns, receiver_clock)
+            finally:
+                self.window_ns = time.monotonic_ns() - acquired
+
+
+class ProfiledSession:
+    def __init__(self, session):
+        self.session = session
+        self.run_ns = 0
+        self.cpu_ns = 0
+
+    def run(self, names, feeds):
+        start, cpu = time.monotonic_ns(), time.thread_time_ns()
+        try:
+            return self.session.run(names, feeds)
+        finally:
+            self.run_ns = time.monotonic_ns() - start
+            self.cpu_ns = time.thread_time_ns() - cpu
+
+
+def summarize_states(client, service):
+    samples = []
+    for seq, row in enumerate(client):
+        s = service[seq]
+        if row["received_ns"] != s["received_ns"]:
+            raise ValueError("state request and service timestamps differ")
+        received, cutoff, returned, send_begin = (s[k] for k in ("received_ns", "cutoff_ns", "returned_ns",
+                                                                "send_begin_ns"))
+        stages = dict(transport_in=received - row["sent_ns"], decode=cutoff - received,
+                      window_lock=s["lock_ns"], window_build=s["window_ns"], onnx=s["onnx_ns"],
+                      runtime_other=returned - cutoff - s["lock_ns"] - s["window_ns"] - s["onnx_ns"],
+                      reply_encode=send_begin - returned, transport_out=row["finished_ns"] - send_begin)
+        if min(stages.values()) < 0 or sum(stages.values()) != row["finished_ns"] - row["sent_ns"]:
+            raise ValueError("state timing decomposition does not close")
+        samples.append(dict(sequence=seq, ready=row["result"]["ready"], rpc_ms=sum(stages.values()) / 1e6,
+                            stages_ms={k: value / 1e6 for k, value in stages.items()},
+                            onnx_calling_thread_cpu_ms=s["onnx_cpu_ns"] / 1e6,
+                            state_handler_thread_cpu_ms=s["handler_cpu_ns"] / 1e6))
+    ready = [row for row in samples if row["ready"]]
+    baseline = {key: float(np.median([row["stages_ms"][key] for row in ready])) for key in stages}
+    slow = [row for row in ready if row["rpc_ms"] > 20.0]
+    for row in slow:
+        row["largest_increase_from_ready_median"] = max(
+            baseline, key=lambda key: row["stages_ms"][key] - baseline[key])
+    return dict(ready=len(ready), ready_ms={key: distribution([r["stages_ms"][key] for r in ready])
+                                           for key in stages},
+                ready_over_20_ms=len(slow),
+                biggest_excess_counts=dict(Counter(r["largest_increase_from_ready_median"] for r in slow)),
+                worst_ready=sorted(ready, key=lambda row: row["rpc_ms"], reverse=True)[:5])
+
+
+
+def serve(context, endpoints, runtime, count, expected, profile):
+    measurements = {}
     with socket(context, zmq.REP) as reply:
         port = reply.bind_to_random_port("tcp://127.0.0.1")
         endpoints.put(f"tcp://127.0.0.1:{port}")
@@ -44,14 +104,33 @@ def serve(context, endpoints, runtime, count, expected):
                 result = dict(accepted_sequence=request["sequence"], accepted_ns=stamp)
             elif kind == "x2_measurement":
                 cutoff = time.monotonic_ns()
+                if profile:
+                    runtime.buffer.lock_wait_ns = runtime.buffer.window_ns = 0
+                    runtime.runner.session.run_ns = runtime.runner.session.cpu_ns = 0
+                    handler_cpu = time.thread_time_ns()
                 result = runtime.handle(request, cutoff, CLOCK)
+                if profile:
+                    returned = time.monotonic_ns()
+                    handler_cpu = time.thread_time_ns() - handler_cpu
                 if result.get("reset") or result.get("publish_allowed"):
                     raise ValueError("state reply exceeded advisory-only contract")
                 if result["ready"]:
                     result["cutoff_ns"] = cutoff
             else:
                 raise ValueError("unexpected test request")
-            reply.send_json(dict(received_ns=received, result=result))
+            outgoing = dict(received_ns=received, result=result)
+            if profile and kind == "x2_measurement":
+                wire = json.dumps(outgoing).encode("utf-8")
+                send_begin = time.monotonic_ns()
+                reply.send(wire)
+                measurements[request["sequence"]] = dict(
+                    received_ns=received, cutoff_ns=cutoff, returned_ns=returned, send_begin_ns=send_begin,
+                    lock_ns=runtime.buffer.lock_wait_ns, window_ns=runtime.buffer.window_ns,
+                    onnx_ns=runtime.runner.session.run_ns, onnx_cpu_ns=runtime.runner.session.cpu_ns,
+                    handler_cpu_ns=handler_cpu)
+            else:
+                reply.send_json(outgoing)
+    return measurements
 
 
 def request_frames(context, endpoint, events, anchor):
@@ -71,35 +150,39 @@ def request_frames(context, endpoint, events, anchor):
     return result
 
 
-def exercise(root, packets, split):
+def exercise(root, packets, split, ticks, profile):
     runtime = Runtime(root, max_age_ns=120_000_000, max_interp_gap_ns=100_000_000)
-    runtime.buffer = SharedHumanBuffer(runtime.buffer)
+    buffer_type = ProfiledBuffer if profile else SharedHumanBuffer
+    runtime.buffer = buffer_type(runtime.buffer)
     for packet in packets[:12]:
         runtime.push(packet)
     now = time.monotonic_ns()
     if not runtime.handle(synthetic_state(runtime, 0, now), now, CLOCK)["ready"]:
         raise ValueError("warmup did not produce a target")
     runtime.reset()
+    if profile:
+        runtime.runner.session = ProfiledSession(runtime.runner.session)
     origin = packets[0]["arrival_ns"]
     people = [(p["arrival_ns"] - origin, json.dumps(p).encode()) for p in packets
-              if p["arrival_ns"] - origin < TICKS * DT_NS]
-    states = [(tick * DT_NS, json.dumps(synthetic_state(runtime, tick, 0)).encode()) for tick in range(TICKS)]
+              if p["arrival_ns"] - origin < ticks * DT_NS]
+    states = [(tick * DT_NS, json.dumps(synthetic_state(runtime, tick, 0)).encode()) for tick in range(ticks)]
     with zmq.Context() as context, ThreadPoolExecutor(max_workers=4) as workers:
         endpoints = Queue()
         tasks = [workers.submit(serve, context, endpoints, runtime,
                                 len(states) if split else len(states) + len(people),
-                                "x2_measurement" if split else None)]
+                                "x2_measurement" if split else None, profile)]
         state_url = endpoints.get(timeout=2)
         if split:
-            tasks.append(workers.submit(serve, context, endpoints, runtime, len(people), "morph_human_frame"))
+            tasks.append(workers.submit(serve, context, endpoints, runtime, len(people), "morph_human_frame", profile))
             human_url = endpoints.get(timeout=2)
         else:
             human_url = state_url
         anchor = time.monotonic_ns() + 100_000_000
         state_future = workers.submit(request_frames, context, state_url, states, anchor)
         human_future = workers.submit(request_frames, context, human_url, people, anchor)
-        state_results, human_results = state_future.result(timeout=15), human_future.result(timeout=15)
-        for task in tasks:
+        state_results, human_results = state_future.result(timeout=ticks / 50 + 8), human_future.result(timeout=8)
+        measurements = tasks[0].result(timeout=2)
+        for task in tasks[1:]:
             task.result(timeout=2)
 
     humans = [row["result"] for row in human_results]
@@ -129,20 +212,25 @@ def exercise(root, packets, split):
             ("send_to_reply_ms", "finished_ns", "sent_ns"),
             ("due_to_reply_ms", "finished_ns", "due_ns"))}
 
+    profile_result = summarize_states(state_results, measurements) if profile else None
     return dict(split=split, ready_states=len(targets), human=spans(human_results), state=spans(state_results),
                 state_not_ready_reasons=dict(Counter(
                     row["result"]["reason"] for row in state_results if not row["result"]["ready"])),
                 state_over_20_ms=sum(r["finished_ns"] - r["sent_ns"] > DT_NS for r in state_results),
-                target_step_deg=distribution(steps)), accepted_ids, supports
+                target_step_deg=distribution(steps), state_profile=profile_result), accepted_ids, supports
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--policy-root", type=Path, required=True)
     parser.add_argument("--capture", type=Path, required=True)
+    parser.add_argument("--ticks", type=int, default=TICKS)
+    parser.add_argument("--profile-state", action="store_true")
     args = parser.parse_args()
+    if not TICKS <= args.ticks <= 900:
+        parser.error("--ticks must be between 300 and 900")
     packets = list(rows(args.capture))
-    runs = [exercise(args.policy_root, packets, separate) for separate in (False, True, True, False)]
+    runs = [exercise(args.policy_root, packets, separate, args.ticks, args.profile_state) for separate in (False, True, True, False)]
     if any(run[1] != runs[0][1] for run in runs):
         raise ValueError("input populations differ")
     pairs = []
@@ -152,7 +240,7 @@ def main():
         pairs.append(dict(runs=[left, right], ready_in_both=len(shared),
                           same_support=sum(a[seq] == b[seq] for seq in shared)))
     print(json.dumps(dict(capture_sha256=sha(args.capture), rounds=[item[0] for item in runs],
-                          policy_state_ticks=TICKS, human_packets=len(runs[0][1]), paired_supports=pairs,
+                          policy_state_ticks=args.ticks, human_packets=len(runs[0][1]), paired_supports=pairs,
                           scope="isolated TCP loopback with fixed synthetic feedback and real recorded human packets",
                           hardware_commands=0), indent=2, allow_nan=False))
 

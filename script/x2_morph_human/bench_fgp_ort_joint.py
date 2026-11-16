@@ -167,12 +167,31 @@ def describe_system(samples, start, end):
 
 
 
-def case(args, threads, output):
+def runtime_affinity(root, threads, mask):
+    previous = os.sched_getaffinity(0)
+    existing = set(Path("/proc/self/task").iterdir())
+    try:
+        if mask is not None:
+            os.sched_setaffinity(0, mask)
+        runtime = fixture_runtime(root, threads)
+        created = set(Path("/proc/self/task").iterdir()) - existing
+        bindings = {int(tid.name): sorted(os.sched_getaffinity(int(tid.name))) for tid in created}
+        if not bindings or (mask is not None and any(value != sorted(mask) for value in bindings.values())):
+            raise ValueError(f"ORT worker binding failed: {bindings}")
+        return runtime, bindings
+    finally:
+        os.sched_setaffinity(0, previous)
+
+
+def case(args, threads, output, policy_mask=None):
     output.mkdir()
+    bindings = None
     if threads == 0:
         skeleton = activate(args.policy_root) / "upstream/deploy/vr_teleop/human_skeleton.json"
         runtime = SimpleNamespace(buffer=HumanBuffer(sha(skeleton), max_age_ns=120_000_000,
                                                      max_interp_gap_ns=100_000_000))
+    elif args.affinity_compare:
+        runtime, bindings = runtime_affinity(args.policy_root, threads, policy_mask)
     else:
         runtime = fixture_runtime(args.policy_root, threads)
     runtime.buffer = SharedHumanBuffer(runtime.buffer)
@@ -196,13 +215,26 @@ def case(args, threads, output):
                   "--source-root", str(args.clotho_root), "--build-root", str(args.cano_engine.parent),
                   "--fixture", str(args.imu)]
     state_ticks = (STATE_TICKS if args.frames == FRAMES else 650) if threads else 0
-    with (output / "fgp.log").open("x") as log, sample_system(output, args.resource_compare) as samples:
+    sample = args.resource_compare or args.affinity_compare
+    service_cpus = None
+
+    def run_service(*values):
+        nonlocal service_cpus
+        if policy_mask is not None:
+            os.sched_setaffinity(0, policy_mask)
+        if args.affinity_compare:
+            service_cpus = sorted(os.sched_getaffinity(0))
+            if policy_mask is not None and service_cpus != sorted(policy_mask):
+                raise ValueError("state service thread binding failed")
+        return serve(*values)
+
+    with (output / "fgp.log").open("x") as log, sample_system(output, sample) as samples:
         process = subprocess.Popen(worker, stdout=log, stderr=subprocess.STDOUT, env=env)
         try:
             read_when_written(output / "worker_ready.json", process, 40 if args.staged_worker else 15)
             with zmq.Context() as context, ThreadPoolExecutor(max_workers=1) as worker_pool:
                 endpoints = Queue()
-                guard = worker_pool.submit(serve, context, endpoints, runtime,
+                guard = worker_pool.submit(run_service, context, endpoints, runtime,
                                            state_ticks + args.frames - FGP_WARMUP, None, False)
                 endpoint = endpoints.get(timeout=2)
                 anchor = time.monotonic_ns() + 200_000_000
@@ -275,7 +307,8 @@ def case(args, threads, output):
     return dict(threads=threads, frames=len(captures), state_ticks=state_ticks,
                 peak_inflight=capture_doc["peak_inflight"],
                 resources=describe_system(samples, captures[0]["inferred_ns"], captures[-1]["inferred_ns"])
-                if args.resource_compare else None,
+                if sample else None,
+                policy_init_new_threads=bindings, service_thread_cpus=service_cpus,
                 first_ready_tick=ready[0] if ready else None, last_ready_tick=ready[-1] if ready else None,
                 ready=len(ready), unready_within_ready_range=len(active) - len(ready),
                 longest_ready_gap_ms=longest * DT_NS / 1e6,
@@ -301,7 +334,9 @@ def main():
     cli.add_argument("--frames", type=int, choices=(FRAMES, 240), default=FRAMES)
     cli.add_argument("--inflight", type=int, choices=(1, 2), default=1)
     cli.add_argument("--staged-worker", type=Path, help="path to the isolated script namespace")
-    cli.add_argument("--resource-compare", action="store_true", help="compare FGP alone with 2-thread Morph")
+    comparison = cli.add_mutually_exclusive_group()
+    comparison.add_argument("--resource-compare", action="store_true", help="compare FGP alone with 2-thread Morph")
+    comparison.add_argument("--affinity-compare", action="store_true", help="compare 2-thread Morph unrestricted and on CPUs 6,7")
     args = cli.parse_args()
     if args.worker:
         fgp_main(args)
@@ -310,13 +345,17 @@ def main():
         cli.error("--fgp-python is required")
     if args.staged_worker is not None and (args.frames, args.inflight) != (240, 2):
         cli.error("staged worker requires 240 frames and two in flight")
-    if args.resource_compare and args.staged_worker is None:
+    if (args.resource_compare or args.affinity_compare) and args.staged_worker is None:
         cli.error("resource comparison requires the staged FGP fixture")
     assets = {name: getattr(args, name) for name in ("imu", "cano_engine", "calibration")}
     before = {name: sha(path) for name, path in assets.items()}
     args.output.mkdir()
-    counts = (0, 2, 2, 0) if args.resource_compare else (4, 2, 2, 4)
-    rounds = [case(args, threads, args.output / f"r{i}") for i, threads in enumerate(counts)]
+    counts = (0, 2, 2, 0) if args.resource_compare else ((2, 2, 2, 2) if args.affinity_compare else (4, 2, 2, 4))
+    masks = (None, {6, 7}, {6, 7}, None) if args.affinity_compare else (None,) * 4
+    if args.affinity_compare and not {6, 7} <= os.sched_getaffinity(0):
+        cli.error("CPUs 6 and 7 must both be available")
+    rounds = [case(args, threads, args.output / f"r{i}", mask)
+              for i, (threads, mask) in enumerate(zip(counts, masks, strict=True))]
     if before != {name: sha(path) for name, path in assets.items()}:
         raise ValueError("source contents changed")
     pose_deltas = []

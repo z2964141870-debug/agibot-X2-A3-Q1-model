@@ -17,7 +17,7 @@
 
 保持人体首帧会改变目标幅度，两种单独干预均未消除越界。首帧来自旧衣服数据，仍可能含固定姿态偏差。这是离线模型输入对照，无法复现本次真人的精确人体参考或确认剩余偏差来自实际标定、其他反馈、观测历史还是模型。没有复开 BLE、反馈订阅、MC 或电机发布，源码及配置不替换部署入口。19 项本地策略回归通过。
 
-[目标映射复算](../logs/session_records/x2_morph_ankle_target_audit_20261116.json) · [四种输入回放](../logs/session_records/x2_morph_ankle_input_replay_20261116.json)。板端目录 `/home/run/x2-advisory-audit.XnLAIs`，同源模型配置 SHA-256 与两份回执内 source 一致。
+[目标映射复算](../logs/session_records/x2_morph_ankle_target_audit_20261116.json) · [四种输入回放](../logs/session_records/x2_morph_ankle_input_replay_20261116.json)。板端目录 `/home/run/x2-advisory-audit.XnLAIs`，模型配置哈希见目标复算回执。
 
 ## To do
 

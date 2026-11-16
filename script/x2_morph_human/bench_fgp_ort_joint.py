@@ -2,22 +2,26 @@
 
 import argparse
 from collections import deque
+from contextlib import contextmanager
 from concurrent.futures import ThreadPoolExecutor
 import json
 import os
 from pathlib import Path
 from queue import Queue
+import re
 import subprocess
+from threading import Thread
 import time
+from types import SimpleNamespace
 
 import numpy as np
 import zmq
 
 from . import __path__ as package_paths
-from .artifacts import sha
+from .artifacts import activate, sha
 from .bench_human_ingress import CLOCK, SharedHumanBuffer
 from .bench_zmq_ingress import fixture_runtime, request_frames, serve, socket
-from .core import Calibration, DT_NS, SmplAdapter
+from .core import Calibration, DT_NS, HumanBuffer, SmplAdapter
 from .replay_window_pacing import distribution
 from .runtime import synthetic_state
 
@@ -109,9 +113,68 @@ def fgp_main(args):
         engine.close()
 
 
+@contextmanager
+def sample_system(output, enabled):
+    samples = []
+    if not enabled:
+        yield samples
+        return
+    with subprocess.Popen(["tegrastats", "--interval", "500"], text=True,
+                          stdout=subprocess.PIPE, stderr=subprocess.DEVNULL) as monitor:
+        def collect():
+            for line in monitor.stdout:
+                samples.append((time.monotonic_ns(), line.strip()))
+
+        reader = Thread(target=collect, name="tegrastats-reader")
+        reader.start()
+        try:
+            yield samples
+        finally:
+            if monitor.poll() is None:
+                monitor.terminate()
+            try:
+                monitor.wait(timeout=3)
+            except subprocess.TimeoutExpired:
+                monitor.kill()
+                monitor.wait()
+            reader.join(timeout=3)
+            if reader.is_alive():
+                raise RuntimeError("telemetry reader did not exit")
+            publish_json(output / "tegrastats.json", samples)
+
+
+def describe_system(samples, start, end):
+    window = [line for stamp, line in samples if start <= stamp <= end]
+    gpu, cpu, memory, temperatures = [], [], [], []
+    for line in window:
+        activity = re.search(r"GR3D_FREQ (\d+)%", line)
+        processors = re.search(r"CPU \[([^\]]+)\]", line)
+        ram = re.search(r"RAM (\d+)/(\d+)MB", line)
+        gpu_temp = re.search(r"gpu@([\d.]+)C", line)
+        if not (activity and processors and ram and gpu_temp):
+            raise ValueError(f"unknown tegrastats format: {line}")
+        gpu.append(int(activity[1]))
+        cpu.append([0 if core == "off" else int(core.split("%", 1)[0])
+                    for core in processors[1].split(",")])
+        memory.append(int(ram[1]))
+        temperatures.append(float(gpu_temp[1]))
+    if len(window) < 5:
+        raise ValueError("insufficient resource samples inside FGP output span")
+    return dict(samples=len(window), cpu_per_core_median_percent=np.median(cpu, axis=0).tolist(),
+                cpu_per_core_max_percent=np.max(cpu, axis=0).tolist(),
+                gpu_engine_median_percent=float(np.median(gpu)), gpu_engine_max_percent=max(gpu),
+                ram_usage_max_mb=max(memory), gpu_temp_max_c=max(temperatures))
+
+
+
 def case(args, threads, output):
     output.mkdir()
-    runtime = fixture_runtime(args.policy_root, threads)
+    if threads == 0:
+        skeleton = activate(args.policy_root) / "upstream/deploy/vr_teleop/human_skeleton.json"
+        runtime = SimpleNamespace(buffer=HumanBuffer(sha(skeleton), max_age_ns=120_000_000,
+                                                     max_interp_gap_ns=100_000_000))
+    else:
+        runtime = fixture_runtime(args.policy_root, threads)
     runtime.buffer = SharedHumanBuffer(runtime.buffer)
     options = ("imu", "policy_root", "clotho_root", "cano_engine", "calibration")
     worker = [str(args.fgp_python), "-B", "-c",
@@ -132,8 +195,8 @@ def case(args, threads, output):
                   "--endpoint", "local_benchmark_pending", "--output", str(output),
                   "--source-root", str(args.clotho_root), "--build-root", str(args.cano_engine.parent),
                   "--fixture", str(args.imu)]
-    state_ticks = STATE_TICKS if args.frames == FRAMES else 650
-    with (output / "fgp.log").open("x") as log:
+    state_ticks = (STATE_TICKS if args.frames == FRAMES else 650) if threads else 0
+    with (output / "fgp.log").open("x") as log, sample_system(output, args.resource_compare) as samples:
         process = subprocess.Popen(worker, stdout=log, stderr=subprocess.STDOUT, env=env)
         try:
             read_when_written(output / "worker_ready.json", process, 40 if args.staged_worker else 15)
@@ -147,7 +210,7 @@ def case(args, threads, output):
                           for tick in range(state_ticks)]
                 publish_json(output / "start.json", dict(endpoint=endpoint, anchor_ns=anchor))
                 replies = request_frames(context, endpoint, states, anchor)
-                guard.result(timeout=3)
+                guard.result(timeout=18 if not threads else 3)
             if process.wait(timeout=3) != 0:
                 raise RuntimeError("FGP worker failed; see round log")
         finally:
@@ -182,9 +245,9 @@ def case(args, threads, output):
                     accepted[stamp] > result["cutoff_ns"] for stamp in result["timing"]["raw_support_end_ns"]):
                 raise ValueError("bad reference visibility or state sequence")
             ready.append(seq)
-    if not ready:
+    if threads and not ready:
         raise ValueError("no shared FGP and policy cycles")
-    active = replies[ready[0]:ready[-1] + 1]
+    active = replies[ready[0]:ready[-1] + 1] if ready else []
     consecutive = [float(np.rad2deg(np.max(np.abs(np.subtract(
         active[i]["result"]["q_target_rad"], active[i-1]["result"]["q_target_rad"])))))
                    for i in range(1, len(active))
@@ -210,7 +273,10 @@ def case(args, threads, output):
              replies[i]["result"]["timing"]["slot_capture_ns"][0]) / 1e6 for i in ready]
     release_ages = [(r["confirmed_ns"] - r["input_ns"]) / 1e6 for r in captures]
     return dict(threads=threads, frames=len(captures), state_ticks=state_ticks,
-                peak_inflight=capture_doc["peak_inflight"], first_ready_tick=ready[0], last_ready_tick=ready[-1],
+                peak_inflight=capture_doc["peak_inflight"],
+                resources=describe_system(samples, captures[0]["inferred_ns"], captures[-1]["inferred_ns"])
+                if args.resource_compare else None,
+                first_ready_tick=ready[0] if ready else None, last_ready_tick=ready[-1] if ready else None,
                 ready=len(ready), unready_within_ready_range=len(active) - len(ready),
                 longest_ready_gap_ms=longest * DT_NS / 1e6,
                 fgp_output_gap_ms=frame_spacing("inferred_ns"), acknowledgement_gap_ms=frame_spacing("confirmed_ns"),
@@ -221,9 +287,9 @@ def case(args, threads, output):
                 gpu_finish_to_sender_ms=frame_durations("inferred_ns", "sending_ns"),
                 sender_rpc_ms=frame_durations("sent_ns", "confirmed_ns"),
                 producer_credit_wait_ms=detailed([r["credit_wait_ns"] / 1e6 for r in captures]),
-                oldest_reference_age_ms=detailed(ages), state_rpc_ms=detailed(rpc),
+                oldest_reference_age_ms=detailed(ages) if ages else None, state_rpc_ms=detailed(rpc) if rpc else None,
                 state_rpc_over_20_ms=sum(v > 20 for v in rpc),
-                adjacent_target_step_deg=distribution(consecutive))
+                adjacent_target_step_deg=distribution(consecutive) if consecutive else None)
 
 
 def main():
@@ -235,6 +301,7 @@ def main():
     cli.add_argument("--frames", type=int, choices=(FRAMES, 240), default=FRAMES)
     cli.add_argument("--inflight", type=int, choices=(1, 2), default=1)
     cli.add_argument("--staged-worker", type=Path, help="path to the isolated script namespace")
+    cli.add_argument("--resource-compare", action="store_true", help="compare FGP alone with 2-thread Morph")
     args = cli.parse_args()
     if args.worker:
         fgp_main(args)
@@ -243,10 +310,13 @@ def main():
         cli.error("--fgp-python is required")
     if args.staged_worker is not None and (args.frames, args.inflight) != (240, 2):
         cli.error("staged worker requires 240 frames and two in flight")
+    if args.resource_compare and args.staged_worker is None:
+        cli.error("resource comparison requires the staged FGP fixture")
     assets = {name: getattr(args, name) for name in ("imu", "cano_engine", "calibration")}
     before = {name: sha(path) for name, path in assets.items()}
     args.output.mkdir()
-    rounds = [case(args, threads, args.output / f"r{i}") for i, threads in enumerate((4, 2, 2, 4))]
+    counts = (0, 2, 2, 0) if args.resource_compare else (4, 2, 2, 4)
+    rounds = [case(args, threads, args.output / f"r{i}") for i, threads in enumerate(counts)]
     if before != {name: sha(path) for name, path in assets.items()}:
         raise ValueError("source contents changed")
     pose_deltas = []

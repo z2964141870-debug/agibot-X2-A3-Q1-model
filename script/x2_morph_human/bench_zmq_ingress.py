@@ -7,11 +7,12 @@ import json
 from pathlib import Path
 from queue import Queue
 import time
+from unittest.mock import patch
 
 import numpy as np
 import zmq
 
-from .artifacts import sha
+from .artifacts import activate, sha
 from .bench_human_ingress import CLOCK, TICKS, SharedHumanBuffer
 from .core import DT_NS, HumanBuffer
 from .replay_window_pacing import distribution
@@ -150,8 +151,54 @@ def request_frames(context, endpoint, events, anchor):
     return result
 
 
-def exercise(root, packets, split, ticks, profile):
-    runtime = Runtime(root, max_age_ns=120_000_000, max_interp_gap_ns=100_000_000)
+def fixture_runtime(root, threads):
+    if threads is None:
+        return Runtime(root, max_age_ns=120_000_000, max_interp_gap_ns=100_000_000)
+    activate(root)
+    from deploy.sim2sim import policy_node
+
+    with patch.object(policy_node, "ORT_THREADS", threads):
+        runtime = Runtime(root, max_age_ns=120_000_000, max_interp_gap_ns=100_000_000)
+    if runtime.runner.session.get_session_options().intra_op_num_threads != threads:
+        raise ValueError("ORT thread setting not applied")
+    return runtime
+
+
+def fixed_clock_parity(root, packets, thread_counts):
+    # Preserve identical packet visibility and feedback for all configurations.
+    packets = packets[:96]
+    baseline = None
+    evidence = {}
+    for threads in thread_counts:
+        runtime = fixture_runtime(root, threads)
+        position = 0
+        output = {}
+        for seq, now in enumerate(range(packets[0]["arrival_ns"], packets[-1]["arrival_ns"] + 1, DT_NS)):
+            while position < len(packets) and packets[position]["arrival_ns"] <= now:
+                runtime.push(dict(packets[position], arrival_clock=CLOCK))
+                position += 1
+            reply = runtime.handle(synthetic_state(runtime, seq, now, CLOCK), now, CLOCK)
+            if reply.get("reset"):
+                raise ValueError("parity run reset unexpectedly")
+            if reply["ready"]:
+                output[seq] = (reply["timing"]["raw_support_end_ns"], reply["canonical_action"], reply["q_target_rad"])
+        if not output:
+            raise ValueError("thread parity found no policy samples")
+        if baseline is None:
+            baseline = output
+        if output.keys() != baseline.keys() or any(output[k][0] != baseline[k][0] for k in output):
+            raise ValueError("thread parity changed visible reference frames")
+        action = max(delta(output[k][1], baseline[k][1]) for k in output)
+        target = max(delta(output[k][2], baseline[k][2]) for k in output)
+        if action > 2e-5 or target > 2e-5:
+            raise ValueError("thread parity exceeded tolerance")
+        evidence[str(threads)] = dict(ready=len(output), action_max_abs=action, target_max_abs_rad=target)
+    return evidence
+
+
+def exercise(root, packets, split, ticks, profile, threads=None):
+    runtime = fixture_runtime(root, threads)
+    actual_threads = runtime.runner.session.get_session_options().intra_op_num_threads
     buffer_type = ProfiledBuffer if profile else SharedHumanBuffer
     runtime.buffer = buffer_type(runtime.buffer)
     for packet in packets[:12]:
@@ -213,7 +260,7 @@ def exercise(root, packets, split, ticks, profile):
             ("due_to_reply_ms", "finished_ns", "due_ns"))}
 
     profile_result = summarize_states(state_results, measurements) if profile else None
-    return dict(split=split, ready_states=len(targets), human=spans(human_results), state=spans(state_results),
+    return dict(split=split, ort_intra_op_threads=actual_threads, ready_states=len(targets), human=spans(human_results), state=spans(state_results),
                 state_not_ready_reasons=dict(Counter(
                     row["result"]["reason"] for row in state_results if not row["result"]["ready"])),
                 state_over_20_ms=sum(r["finished_ns"] - r["sent_ns"] > DT_NS for r in state_results),
@@ -226,21 +273,35 @@ def main():
     parser.add_argument("--capture", type=Path, required=True)
     parser.add_argument("--ticks", type=int, default=TICKS)
     parser.add_argument("--profile-state", action="store_true")
+    parser.add_argument("--thread-sweep", action="store_true", help="compare 4, 2 and 1 ORT thread on shared REP")
     args = parser.parse_args()
     if not TICKS <= args.ticks <= 900:
         parser.error("--ticks must be between 300 and 900")
     packets = list(rows(args.capture))
-    runs = [exercise(args.policy_root, packets, separate, args.ticks, args.profile_state) for separate in (False, True, True, False)]
+    if len(packets) < 96:
+        parser.error("expected at least 96 recorded packets")
+    if args.thread_sweep:
+        counts = (4, 2, 1, 1, 2, 4)
+        parity = fixed_clock_parity(args.policy_root, packets, (4, 2, 1))
+        runs = [exercise(args.policy_root, packets, False, args.ticks, args.profile_state, threads)
+                for threads in counts]
+        comparisons = ((0, 1), (0, 2), (5, 4), (5, 3))
+    else:
+        parity = None
+        runs = [exercise(args.policy_root, packets, split, args.ticks, args.profile_state)
+                for split in (False, True, True, False)]
+        comparisons = ((0, 1), (3, 2))
     if any(run[1] != runs[0][1] for run in runs):
         raise ValueError("input populations differ")
     pairs = []
-    for left, right in ((0, 1), (3, 2)):
+    for left, right in comparisons:
         a, b = runs[left][2], runs[right][2]
         shared = a.keys() & b.keys()
         pairs.append(dict(runs=[left, right], ready_in_both=len(shared),
                           same_support=sum(a[seq] == b[seq] for seq in shared)))
     print(json.dumps(dict(capture_sha256=sha(args.capture), rounds=[item[0] for item in runs],
                           policy_state_ticks=args.ticks, human_packets=len(runs[0][1]), paired_supports=pairs,
+                          fixed_clock_thread_parity=parity,
                           scope="isolated TCP loopback with fixed synthetic feedback and real recorded human packets",
                           hardware_commands=0), indent=2, allow_nan=False))
 

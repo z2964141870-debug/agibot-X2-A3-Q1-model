@@ -1,6 +1,7 @@
 """Compare ORT thread counts while recorded IMU passes through FGP and loopback."""
 
 import argparse
+from collections import deque
 from concurrent.futures import ThreadPoolExecutor
 import json
 from pathlib import Path
@@ -45,8 +46,8 @@ def fgp_main(args):
     from script.x2_fgp_preview.gpu_engine import S1GpuFgp
 
     with np.load(args.imu, allow_pickle=False) as packet:
-        raw, calibration = packet["raw"][:FRAMES], packet["calibration"]
-    if raw.shape != (FRAMES, 10, 7) or calibration.shape != (120,):
+        raw, calibration = packet["raw"][:args.frames], packet["calibration"]
+    if raw.shape != (args.frames, 10, 7) or calibration.shape != (120,):
         raise ValueError("recorded IMU layout changed")
     engine = S1GpuFgp(args.clotho_root, args.cano_engine)
     try:
@@ -55,32 +56,53 @@ def fgp_main(args):
         adapter = SmplAdapter(args.policy_root / "upstream/deploy/vr_teleop/human_skeleton.json", cal)
         publish_json(args.output / "worker_ready.json", {"frames": len(raw)})
         start = read_when_written(args.output / "start.json")
-        captured = []
-        with zmq.Context() as context, socket(context, zmq.REQ) as client:
-            client.connect(start["endpoint"])
-            for frame, values in enumerate(raw):
-                due = start["anchor_ns"] + frame * 1_000_000_000 // 30
-                while (remaining := due - time.monotonic_ns()) > 0:
-                    time.sleep(remaining / 1e9)
-                begin = time.monotonic_ns()
-                pose = engine.step(values)
-                end = time.monotonic_ns()
-                if pose is None:
-                    continue
-                packet = adapter.packet_from_matrices(
-                    pose["pose_mat"], pose["root_translation_m"], sequence=frame,
-                    capture_ns=due, capture_clock=CLOCK, arrival_ns=end, arrival_clock=CLOCK)
-                sent = time.monotonic_ns()
-                client.send_json(packet)
-                ack = client.recv_json()["result"]
-                confirmed = time.monotonic_ns()
-                if ack["accepted_sequence"] != frame:
-                    raise ValueError("unexpected HumanFrame acknowledgement")
-                captured.append(dict(frame=frame, input_ns=due, begin_ns=begin, inferred_ns=end,
-                                     sent_ns=sent, accepted_ns=ack["accepted_ns"], confirmed_ns=confirmed))
-        if [row["frame"] for row in captured] != list(range(FGP_WARMUP, FRAMES)):
+        pending = deque()
+        captured, poses, roots = [], [], []
+        max_inflight = 0
+
+        def forward(frame, due, begin, end, pending_start, pose):
+            sending = time.monotonic_ns()
+            packet = adapter.packet_from_matrices(
+                pose["pose_mat"], pose["root_translation_m"], sequence=frame,
+                capture_ns=due, capture_clock=CLOCK, arrival_ns=end, arrival_clock=CLOCK)
+            sent = time.monotonic_ns()
+            sender.send_json(packet)
+            ack = sender.recv_json()["result"]
+            confirmed = time.monotonic_ns()
+            if ack["accepted_sequence"] != frame:
+                raise ValueError("unexpected HumanFrame acknowledgement")
+            return dict(frame=frame, input_ns=due, credit_wait_ns=begin-pending_start, begin_ns=begin,
+                        inferred_ns=end, sending_ns=sending, sent_ns=sent,
+                        accepted_ns=ack["accepted_ns"], confirmed_ns=confirmed)
+
+        with zmq.Context() as context, ThreadPoolExecutor(max_workers=1) as pool:
+            sender = pool.submit(socket, context, zmq.REQ).result(timeout=3)
+            pool.submit(sender.connect, start["endpoint"]).result(timeout=3)
+            try:
+                for frame, values in enumerate(raw):
+                    due = start["anchor_ns"] + frame * 1_000_000_000 // 30
+                    while (remaining := due - time.monotonic_ns()) > 0:
+                        time.sleep(remaining / 1e9)
+                    pending_start = time.monotonic_ns()
+                    while pending and (pending[0].done() or len(pending) == args.inflight):
+                        captured.append(pending.popleft().result(timeout=3))
+                    max_inflight = max(max_inflight, len(pending) + 1)
+                    begin = time.monotonic_ns()
+                    pose = engine.step(values)
+                    end = time.monotonic_ns()
+                    if pose is None:
+                        continue
+                    poses.append(pose["pose_mat"])
+                    roots.append(pose["root_translation_m"])
+                    pending.append(pool.submit(forward, frame, due, begin, end, pending_start, pose))
+                while pending:
+                    captured.append(pending.popleft().result(timeout=3))
+            finally:
+                pool.submit(sender.close).result(timeout=3)
+        if [row["frame"] for row in captured] != list(range(FGP_WARMUP, args.frames)):
             raise ValueError("FGP changed output frame coverage")
-        publish_json(args.output / "fgp_result.json", captured)
+        np.savez(args.output / "fgp_outputs.npz", pose=poses, root=roots)
+        publish_json(args.output / "fgp_result.json", dict(frames=captured, peak_inflight=max_inflight))
     finally:
         engine.close()
 
@@ -95,9 +117,11 @@ def case(args, threads, output):
               "m.__path__[:]=json.loads(sys.argv.pop(1)); sys.path.append(sys.argv.pop(1)); "
               "runpy.run_module('script.x2_morph_human.bench_fgp_ort_joint',run_name='__main__')",
               json.dumps(list(package_paths)), str(Path(zmq.__file__).resolve().parents[1]),
-              "--worker", "--output", str(output)]
+              "--worker", "--output", str(output), "--frames", str(args.frames),
+              "--inflight", str(args.inflight)]
     for name in options:
         worker.extend(("--" + name.replace("_", "-"), str(getattr(args, name))))
+    state_ticks = STATE_TICKS if args.frames == FRAMES else 650
     with (output / "fgp.log").open("x") as log:
         process = subprocess.Popen(worker, stdout=log, stderr=subprocess.STDOUT)
         try:
@@ -105,11 +129,11 @@ def case(args, threads, output):
             with zmq.Context() as context, ThreadPoolExecutor(max_workers=1) as worker_pool:
                 endpoints = Queue()
                 guard = worker_pool.submit(serve, context, endpoints, runtime,
-                                           STATE_TICKS + FRAMES - FGP_WARMUP, None, False)
+                                           state_ticks + args.frames - FGP_WARMUP, None, False)
                 endpoint = endpoints.get(timeout=2)
                 anchor = time.monotonic_ns() + 200_000_000
                 states = [(tick * DT_NS, json.dumps(synthetic_state(runtime, tick, 0)).encode())
-                          for tick in range(STATE_TICKS)]
+                          for tick in range(state_ticks)]
                 publish_json(output / "start.json", dict(endpoint=endpoint, anchor_ns=anchor))
                 replies = request_frames(context, endpoint, states, anchor)
                 guard.result(timeout=3)
@@ -123,7 +147,8 @@ def case(args, threads, output):
                 except subprocess.TimeoutExpired:
                     process.kill()
                     process.wait()
-    captures = json.loads((output / "fgp_result.json").read_text())
+    capture_doc = json.loads((output / "fgp_result.json").read_text())
+    captures = capture_doc["frames"]
     accepted = {r["input_ns"]: r["accepted_ns"] for r in captures}
     ready = []
     for seq, reply in enumerate(replies):
@@ -142,19 +167,37 @@ def case(args, threads, output):
                    if active[i]["result"]["ready"] and active[i-1]["result"]["ready"]]
     longest = max((b - a - 1 for a, b in zip(ready, ready[1:])), default=0)
 
+    def detailed(values):
+        values = np.asarray(values)
+        return dict(**distribution(values), p50=float(np.median(values)),
+                    p99=float(np.percentile(values, 99)),
+                    above_33_33ms=int(np.count_nonzero(values > 1000/30)),
+                    above_50ms=int(np.count_nonzero(values > 50)),
+                    above_100ms=int(np.count_nonzero(values > 100)))
+
     def frame_durations(a, b):
-        return distribution([(r[b] - r[a]) / 1e6 for r in captures])
+        return detailed([(r[b] - r[a]) / 1e6 for r in captures])
 
     def frame_spacing(key):
-        return distribution(np.diff([r[key] for r in captures]) / 1e6)
+        return detailed(np.diff([r[key] for r in captures]) / 1e6)
 
     rpc = [(replies[i]["finished_ns"] - replies[i]["sent_ns"]) / 1e6 for i in ready]
-    return dict(threads=threads, frames=len(captures), first_ready_tick=ready[0], last_ready_tick=ready[-1],
+    ages = [(replies[i]["result"]["cutoff_ns"] -
+             replies[i]["result"]["timing"]["slot_capture_ns"][0]) / 1e6 for i in ready]
+    release_ages = [(r["confirmed_ns"] - r["input_ns"]) / 1e6 for r in captures]
+    return dict(threads=threads, frames=len(captures), state_ticks=state_ticks,
+                peak_inflight=capture_doc["peak_inflight"], first_ready_tick=ready[0], last_ready_tick=ready[-1],
                 ready=len(ready), unready_within_ready_range=len(active) - len(ready),
                 longest_ready_gap_ms=longest * DT_NS / 1e6,
                 fgp_output_gap_ms=frame_spacing("inferred_ns"), acknowledgement_gap_ms=frame_spacing("confirmed_ns"),
                 fgp_step_ms=frame_durations("begin_ns", "inferred_ns"),
-                source_to_ack_ms=frame_durations("input_ns", "confirmed_ns"), state_rpc_ms=distribution(rpc),
+                source_to_ack_ms=detailed(release_ages),
+                first_last_quarter_source_to_ack_p50_ms=[float(np.median(part)) for part in
+                    (release_ages[:len(release_ages)//4], release_ages[-len(release_ages)//4:])],
+                gpu_finish_to_sender_ms=frame_durations("inferred_ns", "sending_ns"),
+                sender_rpc_ms=frame_durations("sent_ns", "confirmed_ns"),
+                producer_credit_wait_ms=detailed([r["credit_wait_ns"] / 1e6 for r in captures]),
+                oldest_reference_age_ms=detailed(ages), state_rpc_ms=detailed(rpc),
                 state_rpc_over_20_ms=sum(v > 20 for v in rpc),
                 adjacent_target_step_deg=distribution(consecutive))
 
@@ -165,6 +208,8 @@ def main():
         cli.add_argument("--" + name.replace("_", "-"), type=Path, required=True)
     cli.add_argument("--fgp-python", type=Path)
     cli.add_argument("--worker", action="store_true", help=argparse.SUPPRESS)
+    cli.add_argument("--frames", type=int, choices=(FRAMES, 240), default=FRAMES)
+    cli.add_argument("--inflight", type=int, choices=(1, 2), default=1)
     args = cli.parse_args()
     if args.worker:
         fgp_main(args)
@@ -177,9 +222,18 @@ def main():
     rounds = [case(args, threads, args.output / f"r{i}") for i, threads in enumerate((4, 2, 2, 4))]
     if before != {name: sha(path) for name, path in assets.items()}:
         raise ValueError("source contents changed")
-    summary = dict(hardware_commands=0, input_hashes=before, imu_frames_per_round=FRAMES,
-                   state_ticks_per_round=STATE_TICKS, rounds=rounds,
-                   scope="GPU FGP with recorded IMU, shared loopback, fixed synthetic feedback, serial FGP and send")
+    pose_deltas = []
+    with np.load(args.output / "r0" / "fgp_outputs.npz", allow_pickle=False) as reference:
+        for i in range(1, len(rounds)):
+            with np.load(args.output / f"r{i}" / "fgp_outputs.npz", allow_pickle=False) as candidate:
+                differences = {name: float(np.max(np.abs(reference[name] - candidate[name])))
+                               for name in ("pose", "root")}
+            if any(value > 2e-5 for value in differences.values()):
+                raise ValueError("FGP numerical outputs differ beyond tolerance")
+            pose_deltas.append(differences)
+    summary = dict(hardware_commands=0, input_hashes=before, imu_frames_per_round=args.frames,
+                   inflight_limit=args.inflight, rounds=rounds, fgp_numerical_deltas=pose_deltas,
+                   scope="GPU FGP with recorded IMU, shared loopback, fixed synthetic feedback, separate sender")
     publish_json(args.output / "result.json", summary)
 
 

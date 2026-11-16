@@ -1,0 +1,170 @@
+#!/usr/bin/env python3
+"""One-command SmartWear check on SoC1 using live feedback and a muted writer."""
+
+import argparse
+from contextlib import ExitStack
+import json
+import math
+import os
+from pathlib import Path
+import re
+import subprocess
+import time
+import tempfile
+
+BASE = Path("/home/agi/x2_morph_human_20261113")
+TERMINAL = Path("/home/run/x2-terminal-test")
+DATA = BASE / "data"
+POLICY_PYTHON = DATA / "environments/orin-py310/bin/python"
+FGP_PYTHON = DATA / "environments/fgp-preview-py310/bin/python"
+CLOTHO = DATA / "runtime/clotho_fgp_realtime_20261113"
+LOCK = DATA / "runtime/x2-fgp-viewer/preview.lock"
+ENGINE = DATA / "analysis/X2_FGP_TRT_ACCEL_20261113/build_gemm_r3/cano.plan"
+NATIVE = DATA / "analysis/X2_TOLERANT_R1_20261115"
+CALIBRATION = BASE / "script/x2_morph_human/config/clotho_fgp_yup.json"
+POLICY = BASE / "script/x2_morph_human/run_orin.sh"
+BACKEND = BASE / "script/x2_morph_backend/run_orin.sh"
+ENDPOINT = "tcp://127.0.0.1:5778"
+
+
+def wait_for(process, deadline, message, condition):
+    while time.monotonic() < deadline:
+        if process.poll() is not None:
+            raise RuntimeError(f"{message}; process exited {process.returncode}")
+        if condition():
+            return
+        time.sleep(.1)
+    raise TimeoutError(message)
+
+
+def accepted_human(path):
+    if not path.is_file():
+        return False
+    with path.open() as stream:
+        for line in stream:
+            if re.search(r'"status"\s*:\s*"accepted"', line):
+                return True
+    return False
+
+
+def report(path):
+    if not path.is_file():
+        return "无策略采样"
+    accepted = measured = outside = 0
+    biggest_step = biggest_gap = 0.
+    previous = None
+    elbows = {}
+    reasons = {}
+    with path.open() as stream:
+        for line in stream:
+            if not line.endswith("\n"):
+                continue
+            row = json.loads(line)
+            if row.get("kind") != "policy_sample":
+                continue
+            state = row["state"]
+            measured += 1
+            reply = row["reply"]
+            if not row.get("accepted"):
+                reason = row.get("rejection_reason", "unknown")
+                reasons[reason] = reasons.get(reason, 0) + 1
+                previous = None
+                continue
+            accepted += 1
+            outside += bool(row.get("pd_targets_outside_qpos_ranges"))
+            target = dict(zip(reply["joint_names"], reply["q_target_rad"]))
+            actual = dict(zip(state["joint_names"], state["q_rad"]))
+            biggest_gap = max(biggest_gap, *(abs(target[j]-actual[j]) for j in target))
+            if previous is not None:
+                biggest_step = max(biggest_step, *(abs(target[j]-previous[j]) for j in target))
+            previous = target
+            elbows = {side: tuple(round(math.degrees(q), 1) for q in
+                                 (target[f"{side}_elbow_joint"], actual[f"{side}_elbow_joint"]))
+                      for side in ("left", "right")}
+    common = max(reasons, key=reasons.get) if reasons else "无"
+    return (f"策略建议 {accepted}/{measured} | 左右肘目标/实测 {elbows} | "
+            f"连续目标最大步长 {math.degrees(biggest_step):.1f}° | "
+            f"目标与实测最大差 {math.degrees(biggest_gap):.1f}° | 超区间 {outside} | 常见拒绝 {common}")
+
+
+def launch(args):
+    native_binary = NATIVE / "build/x2_morph_native"
+    profile = NATIVE / "profile_30ms.json"
+    for path in (POLICY_PYTHON, FGP_PYTHON, CLOTHO, LOCK, ENGINE, CALIBRATION, POLICY, BACKEND,
+                 native_binary, profile, TERMINAL / "script/x2_fgp_preview/terminal.py"):
+        if not path.exists():
+            raise FileNotFoundError(path)
+    root = Path(tempfile.mkdtemp(prefix="x2-garment-check.", dir=Path.home()))
+    print(f"只读穿戴测试。机器人保持由现有控制器管理。日志 {root}", flush=True)
+    env = os.environ.copy()
+    env.pop("PYTHONHOME", None)
+    env["X2_MORPH_HOME"] = str(DATA / "runtime/x2_morph_human")
+    env["PYTHONPATH"] = f"{TERMINAL}:{BASE}"
+    env["PYTHONUNBUFFERED"] = "1"
+
+    with ExitStack() as stack:
+        def start(command, *, cwd=BASE, log=None):
+            stdout = stack.enter_context(log.open("x")) if log else None
+            process = subprocess.Popen([str(part) for part in command], cwd=cwd, env=env,
+                                       stdout=stdout, stderr=subprocess.STDOUT if log else None)
+            def stop():
+                if process.poll() is None:
+                    process.terminate()
+                    try:
+                        process.wait(timeout=7)
+                    except subprocess.TimeoutExpired:
+                        process.kill()
+                        process.wait()
+            stack.callback(stop)
+            return process
+
+        policy_log = root / "policy.log"
+        policy = start(["sh", POLICY, "serve", "--endpoint", ENDPOINT,
+                        "--max-freshness-ms", 120, "--max-interp-gap-ms", 100], log=policy_log)
+        wait_for(policy, time.monotonic()+25, f"策略服务未就绪，见 {policy_log}",
+                 lambda: "ADVISORY_ONLY" in policy_log.read_text())
+        garment = None
+        if not args.smoke:
+            garment = start([FGP_PYTHON, "-B", "-u", "-m", "script.x2_fgp_preview.terminal",
+                             "--lock", LOCK, "--clotho-root", CLOTHO, "--cano-engine", ENGINE,
+                             "--bridge-python", POLICY_PYTHON, "--calibration", CALIBRATION,
+                             "--output", root / "fgp", "--endpoint", ENDPOINT],
+                            cwd=TERMINAL)
+            wait_for(garment, time.monotonic()+360, f"未收到有效标定人体帧，见 {root}/fgp",
+                     lambda: accepted_human(root / "fgp/forward.jsonl"))
+            print("人体帧已到策略。保持自然站立，慢抬左臂，放下后慢抬右臂。", flush=True)
+        native_log = root / "observer.log"
+        native_root = root / "observer"
+        observe = start(["sh", BACKEND, "control", "--binary", native_binary, "--profile", profile,
+                         "--output", native_root, "--endpoint", ENDPOINT,
+                         "--seconds", 6 if args.smoke else 25], log=native_log)
+        deadline = time.monotonic()+52
+        while observe.poll() is None and time.monotonic() < deadline:
+            if policy.poll() is not None or (garment and garment.poll() is not None):
+                raise RuntimeError(f"穿戴或策略进程提前结束，见 {root}")
+            time.sleep(2)
+            print(report(native_root / "native/native.jsonl"), flush=True)
+        if observe.poll() != 0:
+            raise RuntimeError(f"只读后端未正常结束，见 {native_log}")
+        summary = json.loads((native_root / "summary.json").read_text())
+        if (summary["hardware_commands"] != 0 or summary["mc_mutations"] or
+                summary["native"]["mode"] != "observe" or summary["native"]["sdk_publish_calls"] != 0):
+            raise RuntimeError(f"只读回执不符合预期，见 {native_root}")
+        print(report(native_root / "native/native.jsonl"), flush=True)
+        if not args.smoke and summary["native"]["candidates"] == 0:
+            raise RuntimeError(f"未获得任何有效策略目标，见 {native_root}")
+        print(f"只读结束，电机命令 0。日志 {root}", flush=True)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--smoke", action="store_true", help="check startup and feedback without opening BLE")
+    try:
+        launch(parser.parse_args())
+    except KeyboardInterrupt:
+        print("已结束穿戴检查，保留本次日志。")
+        raise SystemExit(130)
+
+
+if __name__ == "__main__":
+    main()

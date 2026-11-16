@@ -8,6 +8,7 @@ import math
 import os
 from pathlib import Path
 import re
+import statistics
 import subprocess
 import time
 import tempfile
@@ -22,9 +23,14 @@ LOCK = DATA / "runtime/x2-fgp-viewer/preview.lock"
 ENGINE = DATA / "analysis/X2_FGP_TRT_ACCEL_20261113/build_gemm_r3/cano.plan"
 NATIVE = DATA / "analysis/X2_TOLERANT_R1_20261115"
 CALIBRATION = BASE / "script/x2_morph_human/config/clotho_fgp_yup.json"
-POLICY = BASE / "script/x2_morph_human/run_orin.sh"
+CAPTURE = Path.home() / "x2-garment-check-support/gesture_capture.py"
 BACKEND = BASE / "script/x2_morph_backend/run_orin.sh"
 ENDPOINT = "tcp://127.0.0.1:5778"
+PHASES = ((0, "stand", "自然站立，双臂放下"),
+          (4, "left_up", "慢抬左臂，保持"),
+          (8, "left_down", "放下左臂"),
+          (12, "right_up", "慢抬右臂，保持"),
+          (16, "right_down", "放下右臂"))
 
 
 def wait_for(process, deadline, message, condition):
@@ -87,10 +93,44 @@ def report(path):
             f"目标与实测最大差 {math.degrees(biggest_gap):.1f}° | 超区间 {outside} | 常见拒绝 {common}")
 
 
+def read_status(path):
+    try:
+        return json.loads(path.read_text())
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+
+def summarize_trace(path, phases):
+    buckets = {phase["phase"]: [] for phase in phases}
+    phase_index = -1
+    footer = {}
+    with path.open() as stream:
+        for line in stream:
+            row = json.loads(line)
+            if row.get("kind") == "trace_end":
+                footer = row
+                continue
+            if not row["reply"].get("ready"):
+                continue
+            while phase_index+1 < len(phases) and phases[phase_index+1]["monotonic_ns"] <= row["received_ns"]:
+                phase_index += 1
+            if phase_index >= 0:
+                buckets[phases[phase_index]["phase"]].append(row["reply"])
+    result = {}
+    for phase, rows in buckets.items():
+        result[phase] = {"samples": len(rows)}
+        for side in ("left", "right"):
+            if rows:
+                signal = [math.degrees(row["q_target_rad"][row["joint_names"].index(f"{side}_elbow_joint")])
+                          for row in rows]
+                result[phase][f"{side}_elbow_deg"] = round(statistics.median(signal), 1)
+    return dict(phases=result, trace=footer)
+
+
 def launch(args):
     native_binary = NATIVE / "build/x2_morph_native"
     profile = NATIVE / "profile_30ms.json"
-    for path in (POLICY_PYTHON, FGP_PYTHON, CLOTHO, LOCK, ENGINE, CALIBRATION, POLICY, BACKEND,
+    for path in (POLICY_PYTHON, FGP_PYTHON, CLOTHO, LOCK, ENGINE, CALIBRATION, CAPTURE, BACKEND,
                  native_binary, profile, TERMINAL / "script/x2_fgp_preview/terminal.py"):
         if not path.exists():
             raise FileNotFoundError(path)
@@ -99,13 +139,14 @@ def launch(args):
     env = os.environ.copy()
     env.pop("PYTHONHOME", None)
     env["X2_MORPH_HOME"] = str(DATA / "runtime/x2_morph_human")
-    env["PYTHONPATH"] = f"{TERMINAL}:{BASE}"
+    env["PYTHONPATH"] = str(BASE)
     env["PYTHONUNBUFFERED"] = "1"
 
     with ExitStack() as stack:
-        def start(command, *, cwd=BASE, log=None):
+        def start(command, *, cwd=BASE, log=None, garment_overlay=False):
             stdout = stack.enter_context(log.open("x")) if log else None
-            process = subprocess.Popen([str(part) for part in command], cwd=cwd, env=env,
+            child_env = dict(env, PYTHONPATH=f"{TERMINAL}:{BASE}") if garment_overlay else env
+            process = subprocess.Popen([str(part) for part in command], cwd=cwd, env=child_env,
                                        stdout=stdout, stderr=subprocess.STDOUT if log else None)
             def stop():
                 if process.poll() is None:
@@ -119,31 +160,55 @@ def launch(args):
             return process
 
         policy_log = root / "policy.log"
-        policy = start(["sh", POLICY, "serve", "--endpoint", ENDPOINT,
+        policy_trace = root / "policy_trace.jsonl"
+        policy = start([POLICY_PYTHON, "-B", CAPTURE, "policy", policy_trace, "--endpoint", ENDPOINT,
                         "--max-freshness-ms", 120, "--max-interp-gap-ms", 100], log=policy_log)
         wait_for(policy, time.monotonic()+25, f"策略服务未就绪，见 {policy_log}",
                  lambda: "ADVISORY_ONLY" in policy_log.read_text())
         garment = None
-        if not args.smoke:
-            garment = start([FGP_PYTHON, "-B", "-u", "-m", "script.x2_fgp_preview.terminal",
+        if args.recorded_input:
+            start([POLICY_PYTHON, "-B", "-m", "script.x2_morph_human.client",
+                   "--realtime", "--input", args.recorded_input,
+                   "--endpoint", ENDPOINT, "--output", root / "recorded_replies.jsonl"],
+                  log=root / "recorded_sender.log")
+        elif not args.smoke:
+            garment = start([FGP_PYTHON, "-B", "-u", CAPTURE, "garment",
                              "--lock", LOCK, "--clotho-root", CLOTHO, "--cano-engine", ENGINE,
                              "--bridge-python", POLICY_PYTHON, "--calibration", CALIBRATION,
                              "--output", root / "fgp", "--endpoint", ENDPOINT],
-                            cwd=TERMINAL)
+                            cwd=TERMINAL, garment_overlay=True)
             wait_for(garment, time.monotonic()+360, f"未收到有效标定人体帧，见 {root}/fgp",
                      lambda: accepted_human(root / "fgp/forward.jsonl"))
-            print("人体帧已到策略。保持自然站立，慢抬左臂，放下后慢抬右臂。", flush=True)
+            print("人体帧已到策略。手臂先放下，等终端的动作提示。", flush=True)
         native_log = root / "observer.log"
         native_root = root / "observer"
         observe = start(["sh", BACKEND, "control", "--binary", native_binary, "--profile", profile,
                          "--output", native_root, "--endpoint", ENDPOINT,
                          "--seconds", 6 if args.smoke else 25], log=native_log)
         deadline = time.monotonic()+52
-        while observe.poll() is None and time.monotonic() < deadline:
-            if policy.poll() is not None or (garment and garment.poll() is not None):
-                raise RuntimeError(f"穿戴或策略进程提前结束，见 {root}")
-            time.sleep(2)
-            print(report(native_root / "native/native.jsonl"), flush=True)
+        next_report = time.monotonic()
+        phases = []
+        stand_started = None
+        with (root / "phases.jsonl").open("x", buffering=1) as phase_log:
+            while observe.poll() is None and time.monotonic() < deadline:
+                if policy.poll() is not None or (garment and garment.poll() is not None):
+                    raise RuntimeError(f"穿戴或策略进程提前结束，见 {root}")
+                now = time.monotonic()
+                status = read_status(native_root / "native/status.json")
+                if stand_started is None and status.get("candidates", 0) > 0:
+                    stand_started = now
+                if stand_started is not None and len(phases) < len(PHASES):
+                    offset, phase, cue = PHASES[len(phases)]
+                    if now-stand_started >= offset:
+                        marker = dict(phase=phase, monotonic_ns=time.monotonic_ns())
+                        phases.append(marker)
+                        phase_log.write(json.dumps(marker)+"\n")
+                        if not args.smoke:
+                            print(f"动作提示：{cue}", flush=True)
+                if now >= next_report:
+                    print(report(native_root / "native/native.jsonl"), flush=True)
+                    next_report = now+2
+                time.sleep(.2)
         if observe.poll() != 0:
             raise RuntimeError(f"只读后端未正常结束，见 {native_log}")
         summary = json.loads((native_root / "summary.json").read_text())
@@ -153,12 +218,31 @@ def launch(args):
         print(report(native_root / "native/native.jsonl"), flush=True)
         if not args.smoke and summary["native"]["candidates"] == 0:
             raise RuntimeError(f"未获得任何有效策略目标，见 {native_root}")
+        if garment is not None and garment.poll() is None:
+            garment.terminate()
+            garment.wait(timeout=7)
+        policy.terminate()
+        policy.wait(timeout=7)
+        gesture = summarize_trace(policy_trace, phases)
+        if not args.smoke:
+            for phase, scores in gesture["phases"].items():
+                print(f"{phase}：{scores}", flush=True)
+        if garment is not None:
+            gesture["smpl_logged"] = (root / "fgp/smpl.jsonl").is_file()
+        (root / "gesture.json").write_text(json.dumps(gesture, ensure_ascii=False, indent=2)+"\n")
+        if (not gesture["trace"].get("complete") or not gesture["trace"].get("written") or
+                (garment is not None and not gesture["smpl_logged"]) or
+                (not args.smoke and (len(phases) != len(PHASES) or
+                                     any(not v["samples"] for v in gesture["phases"].values())))):
+            raise RuntimeError(f"手势或对齐日志不完整，见 {root}")
         print(f"只读结束，电机命令 0。日志 {root}", flush=True)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--smoke", action="store_true", help="check startup and feedback without opening BLE")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--smoke", action="store_true", help="check startup and feedback without opening BLE")
+    mode.add_argument("--recorded-input", type=Path, help="replace garments with saved HumanFrame JSONL")
     try:
         launch(parser.parse_args())
     except KeyboardInterrupt:

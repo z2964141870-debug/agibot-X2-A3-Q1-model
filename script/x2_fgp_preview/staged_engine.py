@@ -1,6 +1,7 @@
 """Split S1 CANO and ordered CPU reconstruction for headless capture."""
 
 from contextlib import contextmanager
+from concurrent.futures import ThreadPoolExecutor
 import multiprocessing as mp
 import os
 from pathlib import Path
@@ -114,11 +115,13 @@ def reconstruction_worker(pipe, root):
 class StagedS1:
     """One CANO frame and one reconstruction may be in progress at once.
 
-    Output carries the original frame's sequence and source timestamp. Call
-    collect(0) independently of new input so a completed frame can leave promptly.
+    Output carries the original frame's sequence and source timestamp. When
+    on_result is provided, a single reader delivers it independently of CANO.
+    Callbacks must return promptly. Reset waits for old delivery before clearing
+    state, so callbacks cannot cross a completed reset.
     """
 
-    def __init__(self, root, engine, *, startup_timeout=35, frame_timeout=1):
+    def __init__(self, root, engine, *, startup_timeout=35, frame_timeout=1, on_result=None):
         root, engine = Path(root).resolve(), Path(engine).resolve()
         if _sha256(engine) != "89cf34659df7d686abd4230fcd6b1c17a47b05b9d46dda4ecdbad5381d0f3f08":
             raise ValueError("Audited mixed_gemm engine identity mismatch")
@@ -127,6 +130,9 @@ class StagedS1:
         self.sequence = 0
         self.session = None
         self.closed = False
+        self.on_result = on_result
+        self.collector = None
+        self.delivery = None
         ctx = mp.get_context("spawn")
         self.pipe, child = ctx.Pipe()
         self.process = ctx.Process(target=reconstruction_worker, args=(child, root), name="fgp-reconstruction")
@@ -140,6 +146,8 @@ class StagedS1:
         try:
             self._receive("ready", startup_timeout)
             self._init_cano(root, engine)
+            if on_result is not None:
+                self.collector = ThreadPoolExecutor(max_workers=1, thread_name_prefix="fgp-collector")
         except BaseException:
             self.close()
             raise
@@ -211,13 +219,32 @@ class StagedS1:
                                 calibration_ms=(cano_started-started)/1e6, cano_ms=(denoised-cano_started)/1e6,
                                 denoised_ns=denoised)
             self.pipe.send(("frame", (self.sequence, calibrated, acc.numpy(), rot.numpy())))
+            if self.collector is not None:
+                self.delivery = self.collector.submit(self._deliver, self.pending)
         return previous
 
     def collect(self, timeout=0):
-        if self.pending is None or (timeout == 0 and not self.pipe.poll()):
+        if self.pending is None:
             return None
+        if self.delivery is not None:
+            if timeout == 0 and not self.delivery.done():
+                return None
+            row = self.delivery.result(timeout=timeout)
+            self.delivery = None
+        else:
+            if timeout == 0 and not self.pipe.poll():
+                return None
+            row = self._read_result(self.pending, timeout)
+        self.pending = None
+        return row
+
+    def _deliver(self, row):
+        result = self._read_result(row, self.frame_timeout)
+        self.on_result(result)
+        return result
+
+    def _read_result(self, row, timeout):
         sequence, result, started, finished, stages = self._receive("frame", timeout)
-        row, self.pending = self.pending, None
         if sequence != row["sequence"]:
             raise ValueError("FGP CPU stage returned an out-of-order frame")
         returned = time.monotonic_ns()
@@ -244,6 +271,8 @@ class StagedS1:
                 self.process.kill()
                 self.process.join()
         finally:
+            if self.collector is not None:
+                self.collector.shutdown()
             self.pipe.close()
             if self.session is not None:
                 self.session.close()

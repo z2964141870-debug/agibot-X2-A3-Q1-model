@@ -1,0 +1,180 @@
+{
+  "policy_sha256": "cf95194793e4732447f66432fc2381d82dd7c3d82c94da15ad074f2cfe295512",
+  "cycles": 876,
+  "max_baseline_feature_error": 0.0,
+  "max_baseline_target_error_rad": 0.0,
+  "event_sequences": [
+    268,
+    269
+  ],
+  "cap_ms_per_ready_cycle": {
+    "baseline": {
+      "accepted_adjacent_step_deg": {
+        "count": 861,
+        "p95": 5.3911707647286145,
+        "max": 19.971254567063845
+      },
+      "accepted_adjacent_steps_above_10_deg": 10,
+      "forced_catchups": 0,
+      "largest_forced_catchup_step_deg": null,
+      "peak_joint": "right_elbow_joint",
+      "peak_sequences": [
+        268,
+        269
+      ],
+      "added_reference_lag_ms": {
+        "count": 876,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "differing_window_cycles": 0,
+      "deviation_from_baseline_target_deg": {
+        "count": 876,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "original_elbow_event": {
+        "step_deg": 19.971254567063845,
+        "added_lag_ms": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "20_with_20_ms_max_lag": {
+      "accepted_adjacent_step_deg": {
+        "count": 861,
+        "p95": 4.675339618954598,
+        "max": 15.0332156273468
+      },
+      "accepted_adjacent_steps_above_10_deg": 3,
+      "forced_catchups": 181,
+      "largest_forced_catchup_step_deg": 15.0332156273468,
+      "peak_joint": "right_elbow_joint",
+      "peak_sequences": [
+        268,
+        269
+      ],
+      "added_reference_lag_ms": {
+        "count": 876,
+        "p95": 20.0,
+        "max": 20.0
+      },
+      "differing_window_cycles": 318,
+      "deviation_from_baseline_target_deg": {
+        "count": 876,
+        "p95": 1.9880260225619995,
+        "max": 7.508645520648457
+      },
+      "original_elbow_event": {
+        "step_deg": 15.0332156273468,
+        "added_lag_ms": [
+          0.0,
+          20.0
+        ]
+      }
+    },
+    "20_with_40_ms_max_lag": {
+      "accepted_adjacent_step_deg": {
+        "count": 861,
+        "p95": 4.726152811284908,
+        "max": 13.732262665945301
+      },
+      "accepted_adjacent_steps_above_10_deg": 1,
+      "forced_catchups": 105,
+      "largest_forced_catchup_step_deg": 13.732262665945301,
+      "peak_joint": "right_elbow_joint",
+      "peak_sequences": [
+        226,
+        227
+      ],
+      "added_reference_lag_ms": {
+        "count": 876,
+        "p95": 40.0,
+        "max": 40.0
+      },
+      "differing_window_cycles": 550,
+      "deviation_from_baseline_target_deg": {
+        "count": 876,
+        "p95": 3.98346920367581,
+        "max": 13.826860785949977
+      },
+      "original_elbow_event": {
+        "step_deg": 7.957569949131301,
+        "added_lag_ms": [
+          0.0,
+          40.0
+        ]
+      }
+    }
+  },
+  "baseline_groups": {
+    "by_window_advance_ms": {
+      "0": {
+        "count": 513,
+        "p95": 2.9630152921459034,
+        "max": 8.668051349237905,
+        "steps_above_10_deg": 0
+      },
+      "60": {
+        "count": 125,
+        "p95": 7.983223456634949,
+        "max": 19.971254567063845,
+        "steps_above_10_deg": 4
+      },
+      "20": {
+        "count": 36,
+        "p95": 3.8161735383532793,
+        "max": 6.517404072066602,
+        "steps_above_10_deg": 0
+      },
+      "40": {
+        "count": 153,
+        "p95": 6.908337974684557,
+        "max": 14.410473129770887,
+        "steps_above_10_deg": 3
+      },
+      "80": {
+        "count": 30,
+        "p95": 12.901275491260222,
+        "max": 13.360580846786132,
+        "steps_above_10_deg": 3
+      },
+      "100": {
+        "count": 4,
+        "p95": 3.019494724034291,
+        "max": 3.0743671831657045,
+        "steps_above_10_deg": 0
+      }
+    },
+    "by_right_support_arrival_gap": {
+      "same_right_support": {
+        "count": 513,
+        "p95": 2.9630152921459034,
+        "max": 8.668051349237905,
+        "steps_above_10_deg": 0
+      },
+      "over_60_ms": {
+        "count": 90,
+        "p95": 7.180561610046443,
+        "max": 12.837738403558118,
+        "steps_above_10_deg": 2
+      },
+      "33.33_to_60_ms": {
+        "count": 215,
+        "p95": 6.6616100267678044,
+        "max": 19.971254567063845,
+        "steps_above_10_deg": 7
+      },
+      "up_to_33.33_ms": {
+        "count": 43,
+        "p95": 8.785761975620257,
+        "max": 10.899344697651957,
+        "steps_above_10_deg": 1
+      }
+    }
+  },
+  "arrival_scope": "bridge arrival gap between the latest right bracket and its preceding input packet",
+  "scope": "same recorded feedback and action history, real arrived slots only, no physical rollout",
+  "hardware_commands": 0
+}

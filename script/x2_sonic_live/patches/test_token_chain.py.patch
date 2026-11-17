@@ -1,0 +1,75 @@
+--- /Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028/data/analysis/X2_SONIC_LIVE_HANDOFF_20261116/onboard_originals/x2_smpl_wholebody/tests/test_token_chain.py	2026-11-16 19:37:35
++++ /Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028/script/x2_sonic_live/onboard_patched/x2_smpl_wholebody/tests/test_token_chain.py	2026-11-16 22:19:52
+@@ -38,9 +38,10 @@
+ 
+ from smpl_obs import DELAY_S, SMPL_DT, SMPL_WINDOW, build_smpl_obs  # noqa: E402
+ from token_service_core import (  # noqa: E402
+-    CONTROL_DT, NUM_X2, WRIST_MJ, WRIST_RANGE, TokenServiceCore,
++    CONTROL_DT, INTENT_FRESH_S, NUM_X2, WRIST_MJ, WRIST_RANGE, TokenServiceCore,
+     cap_operator_pose, level_operator_root, window_from_ring)
+ from wire_format import (HEADER_SIZE, pack_pose_message, unpack_message)  # noqa: E402
++from x2_smpl_token_service import sync_and_tick  # noqa: E402
+ 
+ PASS = []
+ 
+@@ -411,8 +412,52 @@
+     sub.close(0)
+     pub.close(0)
+     ctx.term()
++
++
++def test_monotonic_clock_sync_and_stream_stop():
++    """sync_and_tick keeps wall clock advancing from t0>0 so window moves and stale stream stops."""
++    t0 = 1500.0
++    core = fresh_core(now=t0)
++    rng = np.random.default_rng(7)
++    base_q = np.array([1.0, 0, 0, 0], np.float32)
++    body_q = np.zeros(NUM_X2, np.float32)
++
++    pub_obs = []
++    # Run 120 ticks (2.4 s) at 50 Hz with varying stand joints -> crosses 1.0 s warmup + history
++    for i in range(120):
++        t = t0 + i * CONTROL_DT
++        j = stand_joints(float(i) * CONTROL_DT, rng)
++        # inject gentle wave into wrists/hands so obs definitely evolves over time
++        j[20, 2] += 0.10 * math.sin(i * 0.25)
++        j[21, 2] += 0.10 * math.cos(i * 0.25)
++        core.feed_intent(t, j, np.array([1.0, 0, 0, 0], np.float32), 1.0)
++        core.feed_debug(t + 0.001, base_q, body_q)
++        res = sync_and_tick(core, t)
++        if res.published:
++            pub_obs.append(TOKEN_SEEN[-1].copy())
+ 
++    check("sync_clock: publishes tokens past 1.0 s warmup when t0=1500",
++          len(pub_obs) >= 20, f"n_pub={len(pub_obs)}")
++    if len(pub_obs) >= 2:
++        obs_diff = float(np.max(np.abs(pub_obs[-1] - pub_obs[0])))
++        check("sync_clock: live window advances instead of pinning at ring[0]",
++              obs_diff > 1e-3, f"max_obs_diff={obs_diff:.4f}")
+ 
++    # Stop feeding intent while advancing wall clock & robot debug state
++    t_last_intent = t0 + 119 * CONTROL_DT
++    disengaged_at = None
++    for k in range(1, 50):
++        t = t_last_intent + k * CONTROL_DT
++        core.feed_debug(t, base_q, body_q)
++        res = sync_and_tick(core, t)
++        if not res.published and not res.intent_fresh:
++            disengaged_at = t - t_last_intent
++            break
++    check("sync_clock: stops publishing within INTENT_FRESH_S after stream stops",
++          disengaged_at is not None and disengaged_at <= INTENT_FRESH_S + 2 * CONTROL_DT,
++          f"disengaged_after={disengaged_at}s limit={INTENT_FRESH_S}s")
++
++
+ def main() -> int:
+     tests = [
+         test_wire_roundtrip_token_payload,
+@@ -428,6 +473,7 @@
+         test_root_leveling_and_caps,
+         test_end_to_end_50hz_stream,
+         test_zmq_loopback_smoke,
++        test_monotonic_clock_sync_and_stream_stop,
+     ]
+     print(f"x2_smpl_wholebody offline tests — {len(tests)} cases")
+     for t in tests:

@@ -1,0 +1,198 @@
+--- /Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028/data/analysis/X2_SONIC_LIVE_HANDOFF_20261116/onboard_originals/x2_smpl_wholebody/tests/test_garment_adapter.py	2026-11-16 19:37:35
++++ /Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028/script/x2_sonic_live/onboard_patched/x2_smpl_wholebody/tests/test_garment_adapter.py	2026-11-16 22:18:48
+@@ -35,8 +35,9 @@
+ sys.path.insert(0, str(HERE / "tests"))
+ 
+ from garment_intent_adapter import (  # noqa: E402
++    _SMPL_FK_WORLD_ALIGN, _SMPL_TO_ZUP,
+     GarmentIntentAdapter, joints_from_human_data, root_local_joints)
+-from token_service_core import TokenServiceCore, NUM_X2  # noqa: E402
++from token_service_core import TokenServiceCore, NUM_X2, _stand_plausible  # noqa: E402
+ from wire_format import unpack_message  # noqa: E402
+ 
+ PASS = []
+@@ -56,10 +57,19 @@
+ 
+ 
+ def human_data_world(pos_local: np.ndarray, root_yaw: float = 0.0,
+-                     root_pitch: float = 0.0, pelvis_world=(0.3, -0.2, 0.95)):
+-    """Place a local pose in the world the way FK would: R_root @ p + t,
+-    quats = R_root (rigid root motion). Returns the name-keyed FK dict."""
++                     root_pitch: float = 0.0, pelvis_world=(0.3, -0.2, 0.95),
++                     source_frame: str = "canonical"):
++    """Place a local pose in the world the way FK would:
++    - source_frame='canonical': R_wire @ p + t, quats = R_wire
++    - source_frame='smpl_fk': mirrors SmpleXConverter's T-rotated Y-up body FK."""
+     R = Rot.from_euler("ZYX", [root_yaw, root_pitch, 0.0])  # yaw then pitch
++    if source_frame == "smpl_fk":
++        r_mat = _SMPL_FK_WORLD_ALIGN.T @ R.as_matrix() @ _SMPL_TO_ZUP
++        pos_body = pos_local.astype(np.float64) @ _SMPL_TO_ZUP
++        R_emit = Rot.from_matrix(r_mat)
++    else:
++        pos_body = pos_local.astype(np.float64)
++        R_emit = R
+     names = [
+         "pelvis", "left_hip", "right_hip", "spine1", "left_knee", "right_knee",
+         "spine2", "left_ankle", "right_ankle", "spine3", "left_foot", "right_foot",
+@@ -69,9 +79,9 @@
+     ]
+     t = np.asarray(pelvis_world, np.float64)
+     out = {}
+-    q_wxyz = np.array([*R.as_quat()[3:4], *R.as_quat()[:3]], np.float64)
++    q_wxyz = np.array([*R_emit.as_quat()[3:4], *R_emit.as_quat()[:3]], np.float64)
+     for i, n in enumerate(names):
+-        p = R.apply(pos_local[i].astype(np.float64)) + t
++        p = R_emit.apply(pos_body[i]) + t
+         out[n] = (p.astype(np.float32), q_wxyz.astype(np.float32))
+     return out
+ 
+@@ -114,7 +124,7 @@
+     P = a_pose()
+     with tempfile.TemporaryDirectory() as td:
+         engage = os.path.join(td, "engage")
+-        ad = GarmentIntentAdapter(engage_file=engage, stationary_s=0.2)
++        ad = GarmentIntentAdapter(engage_file=engage, stationary_s=0.2, source_frame="canonical")
+         open(engage, "w").close()
+         msg = None
+         for i in range(30):
+@@ -142,7 +152,7 @@
+         # fresh adapter per sub-case: production clocks are monotonic, so
+         # the gate may assume ever-advancing t
+         ad = GarmentIntentAdapter(engage_file=engage, stationary_s=0.5,
+-                                  stationary_speed_mps=0.2)
++                                  stationary_speed_mps=0.2, source_frame="canonical")
+         # no file: never publish even when still
+         out = [ad.publish(human_data_world(P), t) for t in np.arange(0, 2.0, 0.02)]
+         check("gate: no engage file -> nothing published", all(o is None for o in out))
+@@ -150,7 +160,7 @@
+ 
+         # file + continuous motion: still blocked
+         ad = GarmentIntentAdapter(engage_file=engage, stationary_s=0.5,
+-                                  stationary_speed_mps=0.2)
++                                  stationary_speed_mps=0.2, source_frame="canonical")
+         open(engage, "w").close()
+         out = [ad.publish(human_data_world(wiggle(P, 0.30, t)), t)
+                for t in np.arange(0, 2.0, 0.02)]
+@@ -159,7 +169,7 @@
+ 
+         # file + still: publishes after the stationary window
+         ad = GarmentIntentAdapter(engage_file=engage, stationary_s=0.5,
+-                                  stationary_speed_mps=0.2)
++                                  stationary_speed_mps=0.2, source_frame="canonical")
+         out = [ad.publish(human_data_world(P), t) for t in np.arange(0, 2.0, 0.02)]
+         check("gate: engages after stationary window", any(o is not None for o in out))
+         check("gate: reason ok-or-engaged (latch)",
+@@ -175,7 +185,7 @@
+     P = a_pose()
+     with tempfile.TemporaryDirectory() as td:
+         engage = os.path.join(td, "engage")
+-        ad = GarmentIntentAdapter(engage_file=engage, stationary_s=0.1)
++        ad = GarmentIntentAdapter(engage_file=engage, stationary_s=0.1, source_frame="canonical")
+         open(engage, "w").close()
+         idx = []
+         for i, t in enumerate(np.arange(0, 1.0, 0.02)):
+@@ -212,7 +222,7 @@
+             # the FROZEN-INTENT guard would rightly block a perfectly static
+             # human), operator faces 0 deg until i=120, then turns 90 deg
+             yaw = math.radians(90) if i >= 120 else 0.0
+-            hd = human_data_world(wiggle(P, 0.004, t), root_yaw=yaw)
++            hd = human_data_world(wiggle(P, 0.004, t), root_yaw=yaw, source_frame="smpl_fk")
+             t = i * 0.02
+             msg = ad.publish(hd, t)
+             if msg is not None:
+@@ -252,7 +262,7 @@
+         engage = os.path.join(td, "engage")
+         open(engage, "w").close()
+         ad = GarmentIntentAdapter(engage_file=engage, stationary_s=0.5,
+-                                  stationary_speed_mps=0.2)
++                                  stationary_speed_mps=0.2, source_frame="canonical")
+         rng = np.random.default_rng(7)
+         t = 0.0
+         published = 0
+@@ -271,7 +281,7 @@
+     with tempfile.TemporaryDirectory() as td:
+         engage = os.path.join(td, "engage")
+         ad = GarmentIntentAdapter(engage_file=engage, stationary_s=0.3,
+-                                  stationary_speed_mps=0.2)
++                                  stationary_speed_mps=0.2, source_frame="canonical")
+         open(engage, "w").close()
+         # stand still -> engage
+         for i in range(40):
+@@ -292,11 +302,77 @@
+         out = [ad.publish(human_data_world(wiggle(P, 0.30, t)), 6.0 + t)
+                for t in np.arange(0, 1.0, 0.02)]
+         check("latch: re-engage re-gated by motion", all(o is None for o in out))
++
++
++def test_smpl_fk_frame_transform():
++    """Real SmpleXConverter FK puts root quat in T-world and joints in Y-up;
++    source_frame='smpl_fk' (default) must recover SONIC Z-up + stand_plausible."""
++    P = a_pose()
++    hd = human_data_world(P, root_yaw=math.radians(35), root_pitch=math.radians(12),
++                          pelvis_world=(1.0, -0.5, 0.9), source_frame="smpl_fk")
++    pos, quat = joints_from_human_data(hd)
++    # Without the fix (canonical), SMPL Y-up fails stand plausibility.
++    j_bad, _ = root_local_joints(pos, quat[0], source_frame="canonical")
++    ok_bad, _ = _stand_plausible(j_bad)
++    check("smpl_fk regression: canonical frame on SMPL-FK fails stand check", not ok_bad)
++
++    j_zup, q_wire = root_local_joints(pos, quat[0], source_frame="smpl_fk")
++    ok_good, why = _stand_plausible(j_zup)
++    check("smpl_fk fix: converted frame passes _stand_plausible", ok_good, why)
++    check("smpl_fk fix: matches canonical local Z-up joints", np.allclose(j_zup, P, atol=1e-4))
++    eul = Rot.from_quat([q_wire[1], q_wire[2], q_wire[3], q_wire[0]]).as_euler("ZYX", degrees=True)
++    check("smpl_fk fix: preserves yaw (35 deg) and pitch (12 deg)",
++          abs(eul[0] - 35.0) < 1e-2 and abs(eul[1] - 12.0) < 1e-2, f"eul={np.round(eul, 2)}")
+ 
+ 
++def test_smplx_converter_fast_interop():
++    """On X2 (where smartwear_v2 is installed), run the real SMPLXConverter fast path."""
++    smartwear = Path("/home/agi/projects/smartwear_v2")
++    if not (smartwear / "general_motion_retargeting" / "SmpleXConverter.py").is_file():
++        print("  SKIP  real SMPLXConverter not present on this host")
++        return
++    if str(smartwear) not in sys.path:
++        sys.path.insert(0, str(smartwear))
++    from general_motion_retargeting.SmpleXConverter import SMPLXConverter
++
++    conv = SMPLXConverter()
++    angles_rest = np.zeros((24, 3), dtype=np.float32)
++    trans = np.zeros(3, dtype=np.float32)
++    hd_rest = conv.convert_axis_angle_to_smpl_bundle_fast(angles_rest, trans)["human_data"]
++    pos_r, q_r = joints_from_human_data(hd_rest)
++    j_rest, rq_rest = root_local_joints(pos_r, q_r[0], source_frame="smpl_fk")
++    ok_r, why_r = _stand_plausible(j_rest)
++    check("real SMPLXConverter rest: stand_plausible", ok_r, why_r)
++    check("real SMPLXConverter rest: +y left hip, -y right hip, +z head, +x toes",
++          j_rest[1, 1] > 0.04 and j_rest[2, 1] < -0.04 and j_rest[15, 2] > 0.4 and j_rest[10, 0] > j_rest[7, 0])
++    eul = Rot.from_quat([rq_rest[1], rq_rest[2], rq_rest[3], rq_rest[0]]).as_euler("ZYX", degrees=True)
++    check("real SMPLXConverter rest: upright human_quat (|pitch|,|roll| < 5 deg)",
++          abs(eul[1]) < 5.0 and abs(eul[2]) < 5.0, f"eul={np.round(eul, 2)}")
++
++    # Raise left shoulder (SMPL joint 16, T-pose arm points +X; +Z rotation lifts +X toward +Y up)
++    angles_raise = angles_rest.copy()
++    angles_raise[16] = np.array([0.0, 0.0, 0.8], dtype=np.float32)
++    hd_up = conv.convert_axis_angle_to_smpl_bundle_fast(angles_raise, trans)["human_data"]
++    with tempfile.TemporaryDirectory() as td:
++        engage = os.path.join(td, "engage")
++        open(engage, "w").close()
++        ad = GarmentIntentAdapter(engage_file=engage, stationary_s=0.05)
++        for k in range(5):
++            ad.publish(hd_rest, k * 0.03)
++        msg = ad.publish(hd_up, 0.20)
++        check("real SMPLXConverter: GarmentIntentAdapter default publishes", msg is not None)
++        if msg is not None:
++            j_up = unpack_message(msg, expected_topic="pico_intent").fields["smpl_joints"].reshape(24, 3)
++            check("real SMPLXConverter left raise: left wrist z rises above rest",
++                  j_up[20, 2] > j_rest[20, 2] + 0.15 and abs(j_up[21, 2] - j_rest[21, 2]) < 0.05,
++                  f"lw_z {j_rest[20,2]:.3f}->{j_up[20,2]:.3f}")
++
++
+ def main() -> int:
+     tests = [
+         test_root_local_math,
++        test_smpl_fk_frame_transform,
++        test_smplx_converter_fast_interop,
+         test_wire_contract,
+         test_engage_gate,
+         test_frame_index_counts_published,

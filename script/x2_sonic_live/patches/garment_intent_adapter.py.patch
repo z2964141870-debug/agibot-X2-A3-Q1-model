@@ -1,0 +1,76 @@
+--- /Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028/data/analysis/X2_SONIC_LIVE_HANDOFF_20261116/onboard_originals/x2_smpl_wholebody/garment_intent_adapter.py	2026-10-29 12:29:02
++++ /Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028/script/x2_sonic_live/onboard_patched/x2_smpl_wholebody/garment_intent_adapter.py	2026-11-16 22:10:56
+@@ -36,7 +36,20 @@
+ # "stationary" for the engage gate.
+ STATIONARY_SPEED_THRESH_MPS = 0.20
+ 
++# SmpleXConverter applies T = Rx(+90 deg) on the left of root_orient, leaving
++# the skeleton in SMPL body axes (x=left, y=up, z=fwd). Wire protocol expects
++# SONIC Z-up (x=fwd, y=left, z=up): M = Rz(+90 deg) @ T maps SMPL body -> Z-up.
++_SMPL_FK_T = np.array(
++    [[1.0, 0.0, 0.0], [0.0, 0.0, -1.0], [0.0, 1.0, 0.0]],
++    dtype=np.float64,
++)
++_SMPL_TO_ZUP = np.array(
++    [[0.0, 0.0, 1.0], [1.0, 0.0, 0.0], [0.0, 1.0, 0.0]],
++    dtype=np.float64,
++)
++_SMPL_FK_WORLD_ALIGN = _SMPL_TO_ZUP @ _SMPL_FK_T.T  # = Rz(+90 deg)
+ 
++
+ def joints_from_human_data(human_data: dict) -> tuple[np.ndarray, np.ndarray]:
+     """{(name): (pos(3,), quat_wxyz(4,))} -> (pos24x3, quat_wxyz24x4)
+     in SMPL joint order. Raises on missing joints."""
+@@ -59,14 +72,25 @@
+ 
+ 
+ def root_local_joints(pos24x3: np.ndarray, root_quat_wxyz: np.ndarray,
++                      source_frame: str = "canonical",
+                       ) -> tuple[np.ndarray, np.ndarray]:
+     """Pico process_smpl_joints semantics on world-frame input:
+-    (R_root^-1 (pos - pelvis), root_quat_wxyz)."""
++    (R_root^-1 (pos - pelvis), root_quat_wxyz) for canonical Z-up FK, or
++    convert SmpleXConverter's T-rotated Y-up body frame into SONIC Z-up
++    (x=fwd, y=left, z=up) when source_frame='smpl_fk'."""
++    if source_frame not in ("canonical", "smpl_fk"):
++        raise ValueError(f"source_frame must be 'canonical' or 'smpl_fk', got {source_frame!r}")
+     p = np.asarray(pos24x3, np.float32)
+     q = np.asarray(root_quat_wxyz, np.float32).reshape(4)
+     r = Rot.from_quat([q[1], q[2], q[3], q[0]])
+     local = r.inv().apply((p - p[0:1]).astype(np.float64))
+-    return local.astype(np.float32), q
++    if source_frame == "canonical":
++        return local.astype(np.float32), q
++    local_zup = local @ _SMPL_TO_ZUP.T
++    r_wire = _SMPL_FK_WORLD_ALIGN @ r.as_matrix() @ _SMPL_TO_ZUP.T
++    qx = Rot.from_matrix(r_wire).as_quat()
++    q_wire = np.array([qx[3], qx[0], qx[1], qx[2]], dtype=np.float32)
++    return local_zup.astype(np.float32), q_wire
+ 
+ 
+ class GarmentIntentAdapter:
+@@ -75,10 +99,14 @@
+     def __init__(self,
+                  engage_file: str | None = None,
+                  stationary_s: float = 2.0,
+-                 stationary_speed_mps: float = STATIONARY_SPEED_THRESH_MPS):
++                 stationary_speed_mps: float = STATIONARY_SPEED_THRESH_MPS,
++                 source_frame: str = "smpl_fk"):
++        if source_frame not in ("canonical", "smpl_fk"):
++            raise ValueError(f"source_frame must be 'canonical' or 'smpl_fk', got {source_frame!r}")
+         self.engage_file = engage_file
+         self.stationary_s = float(stationary_s)
+         self.stationary_v = float(stationary_speed_mps)
++        self.source_frame = source_frame
+         self.history: deque = deque()          # (t, joints_local) for the gate
+         self.engaged = False
+         self.frame_index = 0
+@@ -137,7 +165,7 @@
+         freely — that motion IS the whole-body command — and only the engage
+         file disappearing releases."""
+         pos, quat = joints_from_human_data(human_data)
+-        j_local, root_q = root_local_joints(pos, quat[0])
++        j_local, root_q = root_local_joints(pos, quat[0], source_frame=self.source_frame)
+ 
+         if self.engaged:
+             allowed = self._engage_file_present()

@@ -1,0 +1,32 @@
+--- /Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028/data/analysis/X2_SONIC_LIVE_HANDOFF_20261116/onboard_originals/x2_smpl_wholebody/x2_smpl_token_service.py	2026-11-16 19:40:05
++++ /Users/yu/Documents/ChatGPT/元启/data/repositories/q1-rf12-20261028/script/x2_sonic_live/onboard_patched/x2_smpl_wholebody/x2_smpl_token_service.py	2026-11-16 22:11:01
+@@ -43,6 +43,12 @@
+ _PC2_PREFIX = os.environ.get("PC2_PREFIX", os.path.expanduser("~/gear-sonic"))
+ 
+ 
++def sync_and_tick(core: TokenServiceCore, now: float):
++    """Sync core's internal clock with wall monotonic time before ticking."""
++    core._now = float(now)
++    return core.tick()
++
++
+ def main() -> int:
+     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+     ap.add_argument("--tokenizer", required=True,
+@@ -125,6 +131,7 @@
+                             operator_root_level=root_level,
+                             lean_cap_deg=lean_cap, reach_cap_m=reach_cap,
+                             planner_cmd=int(args.planner_cmd_port) > 0,
++                            now=time.monotonic(),
+                             root_heading_band_deg=args.root_heading_band_deg,
+                             root_heading_hold_s=args.root_heading_hold_s,
+                             stand_plausibility=not args.no_stand_plausibility)
+@@ -285,7 +292,7 @@
+             continue
+         next_t += CONTROL_DT
+ 
+-        res = core.tick()
++        res = sync_and_tick(core, now)
+ 
+         # engage transition logging + span flush mirrors upstream
+         if core.engaged_prev != engaged_prev_published:

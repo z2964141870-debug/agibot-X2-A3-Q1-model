@@ -1,5 +1,11 @@
 # 候选研究想法
 
+## 2026-11-18 H002 研究假设与消融先导结果（Estimation ↔ Control Co-Design for 0 ms Mocap-Free WBC）
+
+| 假设 / 模块 | 对应论文故事与瓶颈 | 已核先导消融结果（`16 Clips: LAFAN1+PHUMA+SOMA`, `Q1 50Hz`）与边界 |
+| --- | --- | --- |
+| **H002: `CGFA` + `WM-Contact-Reg`** | 解决 `0ms` 无未来帧遥操同时面临的**（1）人机 `<250ms` 闭环带宽与 VLA 因果对齐**、**（2）无动捕/无LiDAR 下的空间漂移**、**（3）接触滑移与 PD 超限耦合破坏状态估计**；明确将 `PICO / FGP+头环 × Q1/G1/X2/A3` 界定为跨端/跨具身泛化工程增量而非算法主创新 | 16 片段受控消融（`12 Train / 4 Held-Out`, Oracle=`100.0%`）：无门控积分 `C2` 存活跌至 `81.2%`、`341.3 mm/s`；`C3 (CGFA Only)` 正常 All-16 `93.8%` / Dynamic-10 **`100.0%`**、`RootXY 34.5 cm`（Held-Out `42.5 cm` 对置零 `88.2 cm`）；完整 `C5 (H002 Full ONNX+安全壳)` 在 `0.55×` 低摩擦+丢包+IMU 压测下全面最优（Stress-8 Return **`0.771`**, RootXY **`34.8 cm`** / HO4 **`33.7 cm`**, 滑移 **`152.7 mm/s`**, PD 越限 **`0.000%`**, 单线程 CPU **`3.13/3.60 ms`**）。残余限制：常规 `stat_fit_squat` 与 `walk4` 末段仍有 `2/16` 摔倒且尚未真机上电（[完整消融报告](../README_H002_CONTACT_ANCHORED_CAUSAL_WBC_20261118.md)） |
+
 ## 2026-11-15 候选证据更新
 
 | 来源 | 对应瓶颈及安排 | 核验证据与限制 |

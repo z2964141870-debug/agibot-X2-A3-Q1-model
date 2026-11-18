@@ -1,0 +1,39 @@
+{
+  "stage": "Q1_SUPERMIMIC_HP_ZERO_LATENCY_AUDIT_20261118",
+  "date_beijing": "2026-11-18",
+  "workstation": "yu-3090",
+  "gpu": "NVIDIA GeForce RTX 3090 24GB",
+  "runtime": {
+    "python": "3.13.18",
+    "torch": "2.14.1+cu130",
+    "mujoco": "3.11.0",
+    "unilab": "1.5.0",
+    "unisim_core": "2.1.0",
+    "mujoco_gl_render": "egl"
+  },
+  "commands_executed": [
+    "uv sync --frozen --python 3.13",
+    ".venv/bin/python tools/prepare_q1_assets.py --validate-only --output runs/deploy_readiness_audit/q1_asset_validation.json",
+    "/home/yu/envs/smhp_retarget/bin/python tools/retarget_q1.py --source bvh --source-dir /home/yu/datasets/lafan1_walk --clips walk1_subject1 walk2_subject1 walk3_subject1 walk4_subject1 --max-frames 240 --workers 4 --gmr-root /home/yu/models/cache/GMR --output src/unisupermimic/assets/motions/q1/lafan1_showcase",
+    "PYTHONPATH=/home/yu/models/cache/GMR /home/yu/envs/smhp_retarget/bin/python tools/check_q1_motions.py src/unisupermimic/assets/motions/q1/lafan1_showcase --output runs/deploy_readiness_audit/q1_motion_qc.json",
+    "MUJOCO_GL=egl .venv/bin/python tools/record_teleop_comparison_video.py --robot q1 --motion src/unisupermimic/assets/motions/q1/lafan1_showcase/walk1_subject1.csv --base-ckpt checkpoints/q1_base_soma1k.pt --scheme-a-ckpt checkpoints/q1_scheme_a_1k.pt --scheme-b-ckpt checkpoints/q1_scheme_b_66hz_1k.pt --out-mp4 runs/deploy_readiness_audit/q1_walk1_teleop_compare.mp4 --max-seconds 6.0 --fps 15",
+    "CUDA_VISIBLE_DEVICES=\"\" WARP_DISABLE_CUDA=\"1\" MPLBACKEND=Agg .venv/bin/python runs/deploy_readiness_audit/audit_deploy_gap.py"
+  ],
+  "hygiene": {
+    "supermimic_hp_git_status": "clean",
+    "q1_repo_payload_files": [
+      "script/q1_supermimic_hp_audit/audit_deploy_gap.py",
+      "data/manifests/q1_supermimic_hp_audit_evidence_20261118.json",
+      "logs/session_records/q1_supermimic_hp_audit_20261118.json",
+      "reports/README_Q1_SUPERMIMIC_HP_AUDIT_20261118.md",
+      "reports/README_CURRENT_STATE.md"
+    ],
+    "root_fs_avail": "810G"
+  },
+  "limitations": [
+    "Audited on 4 retargeted LAFAN1 walking/turning clips (240 frames @ 30Hz each), not on SOMA 1k held-out set or live EgoLocate garment BLE stream.",
+    "X2 checkpoints verified by SHA-256 on yu-3090 but X2 URDF meshes and closed-loop rollout not run in this round.",
+    "Sim2Real audit ran on CPU MuJoCo backend with eval_mode=True and no injected network/actuator latency distribution.",
+    "On-robot Q1 hardware deployment and ONNX export (export_onnx.py) remain unimplemented in upstream SuperMimicHP."
+  ]
+}

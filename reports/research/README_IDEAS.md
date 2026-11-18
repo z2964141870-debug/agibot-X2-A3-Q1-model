@@ -1,5 +1,11 @@
 # 候选研究想法
 
+## 2026-11-19 H002-SONIC v2 多模态因果 Token 架构与控制-估计物理边界实证
+
+| 假设 / 模块 | 对应核心结论与创新深度 | 已核实测证据（`250 Clips / 50 Held-Out / 8 Raw BVH / 24s Switch`）与边界 |
+| --- | --- | --- |
+| **H002-SONIC v2: Frozen 904-Clip `TokenHead` + 4 Causal Tokenizers + Torque-Safe PD** | 实证（1）**冻结闭环 RL `TokenHead`** 是跨 200 片段多模态蒸馏保持高动态原语（深蹲/转身）的关键，开放环路 WM 解冻 `dec` 会产生 Exploitation 退化；（2）`RobotPose / 零IK HumanSMPL / VR3Pt / PlannerCmd` 四模态通过 `SHA-256 codec_fingerprint` 与 `0.24s` 余弦热切换共享同一本体平衡底盘 | 未见过 50 Held-Out：`RobotPose` **`96.0%`**（`5.58cm`, 20-Stress **`95.0%`**）、`HumanSMPL` **`94.0%`**、8 条零 IK 原始人类 BVH **`100.0%`**（`soma_eating_apple` `5.11cm`）、`VR3Pt` **`94.0%`**、`PlannerCmd` **`98.0%`**（Loco `100%`）；对照消融 `WM-Unfroz Dec` 仅 `74.0%/40.0%`。`v1-16`：`93.8%` 攻克 `stat_fit_squat` 与 `walk4`。`24s` 四模态热切换 + `400ms` 断链 Watchdog **`1200/1200`**（`0 OOB`, `min_upright=0.979`）。局限：长距离零动捕急转仍有 `CGFA` 累计滑移；尚未真机上电（[完整报告](../README_H002_SONIC_MULTIMODAL_SIM_20261119.md)） |
+
 ## 2026-11-18 H002 研究假设与消融先导结果（Estimation ↔ Control Co-Design for 0 ms Mocap-Free WBC）
 
 | 假设 / 模块 | 对应论文故事与瓶颈 | 已核先导消融结果（`16 Clips: LAFAN1+PHUMA+SOMA`, `Q1 50Hz`）与边界 |

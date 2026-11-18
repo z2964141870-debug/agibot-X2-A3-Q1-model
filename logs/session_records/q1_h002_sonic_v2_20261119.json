@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-19",
+  "node": "yu-3090",
+  "task": "Q1 H002-SONIC v2 scaled 250-clip training, 4-modality ONNX suite, torque-safe PD eval, 3D visual rendering, and GitHub archiving",
+  "dataset": {
+    "total_clips": 250,
+    "train_clips": 200,
+    "held_out_clips": 50,
+    "train_frames_50hz": 49794,
+    "held_out_raw_bvh": 8
+  },
+  "revisions": {
+    "v2a_ablation": "Phase-0 WM calibration + unfrozen dec[-3]/dec[-1] caused open-loop WM exploitation (50-HO 74.0%, 20-Stress 40.0%).",
+    "v2b_frozen_token_head": "Frozen 904-clip TokenHead + unclamped proximal multi-dataset distillation (54.99s) + Torque-Safe Hardware PD filter."
+  },
+  "verified_exit_codes": {
+    "train_v2b": 0,
+    "export_onnx": 0,
+    "eval_v2c": 0,
+    "render_visuals": 0
+  }
+}

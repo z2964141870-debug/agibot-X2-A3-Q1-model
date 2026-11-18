@@ -1,0 +1,535 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-19",
+  "hypothesis_id": "H002-SONIC-v2",
+  "title": "H002-SONIC v2: 250-Clip Multi-Dataset & 4-Modality 0ms Causal Whole-Body Teleoperation",
+  "host": "yu-3090",
+  "supermimic_hp_repo": "humanplus-ai/SuperMimicHP",
+  "supermimic_hp_branch": "feat/x2-embodiment",
+  "supermimic_hp_commit": "27c3e2cfa6a29c8d003e3fcd63fbf5dd37e8b190",
+  "codec_fingerprint": "33f64eaefe80c12b35d7bd0b8bfbf641a3a8d463e9979ea448b7ba79788f13f8",
+  "repo_archive_paths": [
+    "script/q1_h002_sonic_v2/build_scaled_dataset_250.py",
+    "script/q1_h002_sonic_v2/multimodal_features.py",
+    "script/q1_h002_sonic_v2/cgfa_estimator.py",
+    "script/q1_h002_sonic_v2/train_h002_sonic_v2.py",
+    "script/q1_h002_sonic_v2/export_sonic_onnx_suite.py",
+    "script/q1_h002_sonic_v2/eval_sonic_suite.py",
+    "script/q1_h002_sonic_v2/render_sonic_visuals.py",
+    "reports/README_H002_SONIC_MULTIMODAL_SIM_20261119.md",
+    "reports/figures/h002_v2_sonic_benchmark.png",
+    "reports/figures/q1_multimodal_filmstrip.png",
+    "reports/README_CURRENT_STATE.md",
+    "reports/research/README_IDEAS.md",
+    "data/manifests/q1_h002_sonic_v2_20261119.json",
+    "logs/session_records/q1_h002_sonic_v2_20261119.json"
+  ],
+  "scripts_sha256": {
+    "build_scaled_dataset_250.py": {
+      "bytes": 29105,
+      "sha256": "6fa318716a810be29fd8f627f27c994bd6b011fe3bc62cd0b4db45e41fd7b4dc"
+    },
+    "multimodal_features.py": {
+      "bytes": 14442,
+      "sha256": "7eddf1d6fdd29c0f81997376c80471fb5706ba4aa38e450b953291ce8489df57"
+    },
+    "cgfa_estimator.py": {
+      "bytes": 9544,
+      "sha256": "4e77df1f4ae2ea0011b355c652be54f71412bace3b55cf5212538cbd832ed732"
+    },
+    "train_h002_sonic_v2.py": {
+      "bytes": 19356,
+      "sha256": "8f40236b2319d4478b3744ac5f6f275fcf554fd27cfc85b588769e2a4e681de1"
+    },
+    "export_sonic_onnx_suite.py": {
+      "bytes": 7434,
+      "sha256": "b60df247f732f2fceab9fa6639ec6856c90b6fe7800fc30957658687c1334cdd"
+    },
+    "eval_sonic_suite.py": {
+      "bytes": 43730,
+      "sha256": "044f617abdea87aaba7593754452721a8389959b9793be0e18e5deae4a9d6a82"
+    },
+    "render_sonic_visuals.py": {
+      "bytes": 14345,
+      "sha256": "a0eff22a3d273b9039c7a14a8cbbee5c5bb0a39d8001fa31f454d1971dfa42e2"
+    }
+  },
+  "figures_sha256": {
+    "h002_v2_sonic_benchmark.png": {
+      "bytes": 453692,
+      "sha256": "c01ea55075b17f4bb62d63a41aa49dc448c89311eaeee20f80d9b29b293a1c66"
+    },
+    "q1_multimodal_filmstrip.png": {
+      "bytes": 166164,
+      "sha256": "aa41b9f9f6e4aa324d940ed445f1eea796c79f717dad968c8f59c9f79002208b"
+    }
+  },
+  "remote_large_payloads_not_in_git": {
+    "h002_sonic_v2_bundle.pt": {
+      "path": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/checkpoints/h002_sonic_v2_bundle.pt",
+      "bytes": 43376639,
+      "sha256": "2604abbb2dd91f1f59b794755f971789e8a393a59f965e8157a750bd587128f7"
+    },
+    "q1_h002_token_head.onnx": {
+      "path": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/onnx/q1_h002_token_head.onnx",
+      "bytes": 17867002,
+      "sha256": "e0455c0b50db1c1fdc8aed1e0d283820d3fd64174b261093d99dc4430ff3e80f"
+    },
+    "q1_tok_robot_pose.onnx": {
+      "path": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/onnx/q1_tok_robot_pose.onnx",
+      "bytes": 15898229,
+      "sha256": "9ee7a429347d0c9076657c6bb47e4635ee6b149cdc2504370fbfcecf09e6e6d9"
+    },
+    "q1_tok_human_smpl.onnx": {
+      "path": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/onnx/q1_tok_human_smpl.onnx",
+      "bytes": 4427834,
+      "sha256": "7dab4d9d056e797c1ae8631d6c15ffd5fc3324234c86b821b253fcbb46adfb0e"
+    },
+    "q1_tok_vr_3pt.onnx": {
+      "path": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/onnx/q1_tok_vr_3pt.onnx",
+      "bytes": 4140550,
+      "sha256": "ff0586884a3f1b0aa33883145945be8f32e9cd91110891ffc1d7b41aa97e06ba"
+    },
+    "q1_tok_planner_cmd.onnx": {
+      "path": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/onnx/q1_tok_planner_cmd.onnx",
+      "bytes": 1030628,
+      "sha256": "9c33375e028e634c908c5b2a6a6d5523b512319978076a8de12ed771a33ca1b4"
+    },
+    "q1_sonic_multimodal_demo.mp4": {
+      "path": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/q1_sonic_multimodal_demo.mp4",
+      "bytes": 488155,
+      "sha256": "71181c01de558676fe7f6a739723e156c59a79605908ef34039cc440f96e97b8"
+    },
+    "v2_sonic_metrics.json": {
+      "path": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/v2_sonic_metrics.json",
+      "bytes": 264684,
+      "sha256": "0e53155c3b7b88c4c46bbf43cda7202c4e482ac32dba237b024e00b687fc17c5"
+    },
+    "dataset_250_manifest.json": {
+      "path": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/dataset_250_manifest.json",
+      "bytes": 109796,
+      "sha256": "9ded179606d46b51d16808159dbc216b55c4a66c8a12278fdb1ed2346f64b75b"
+    }
+  },
+  "training_summary": {
+    "architecture": "H002-SONIC v2b (Frozen 904-clip Universal TokenHead + Unclamped Proximal Multi-Dataset Causal Tokenizers)",
+    "total_wall_s": 54.99,
+    "peak_vram_gb": 0.278,
+    "train_clips": 200,
+    "train_frames_50hz": 49794,
+    "codec_fingerprint": "33f64eaefe80c12b35d7bd0b8bfbf641a3a8d463e9979ea448b7ba79788f13f8",
+    "phase1_token_head": {
+      "s1_cos": 0.9579684138298035,
+      "s1_cos_sa": 0.9974929690361023,
+      "s1_a_mse": 0.04217691347002983,
+      "s1_l_prox": 6.759056850569323e-05,
+      "wall_s": 9.08
+    },
+    "phase2_modalities": {
+      "human_smpl": {
+        "s1_cos": 0.9790102243423462,
+        "s1_a_mse": 0.014516858384013176,
+        "s1_a_mse_t": 0.03594259172677994,
+        "wall_s": 15.33
+      },
+      "vr_3pt": {
+        "s1_cos": 0.9688137769699097,
+        "s1_a_mse": 0.017154991626739502,
+        "s1_a_mse_t": 0.037098973989486694,
+        "wall_s": 14.76
+      },
+      "planner_cmd": {
+        "s1_cos": 0.8427550792694092,
+        "s1_a_mse": 0.1033930629491806,
+        "s1_a_mse_t": 0.12966859340667725,
+        "wall_s": 14.57
+      }
+    }
+  },
+  "onnx_verify": {
+    "codec_fingerprint": "33f64eaefe80c12b35d7bd0b8bfbf641a3a8d463e9979ea448b7ba79788f13f8",
+    "onnx_dir": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/onnx",
+    "models": {
+      "robot_pose": {
+        "tokenizer_onnx": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/onnx/q1_tok_robot_pose.onnx",
+        "tokenizer_bytes": 15898229,
+        "parity_action_max_abs_diff": 4.887580871582031e-06,
+        "cpu_cgfa_tok_head_p50_ms": 3.387300002941629,
+        "cpu_cgfa_tok_head_p99_ms": 3.8854847553011496
+      },
+      "human_smpl": {
+        "tokenizer_onnx": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/onnx/q1_tok_human_smpl.onnx",
+        "tokenizer_bytes": 4427834,
+        "parity_action_max_abs_diff": 4.291534423828125e-06,
+        "cpu_cgfa_tok_head_p50_ms": 2.8667095029959455,
+        "cpu_cgfa_tok_head_p99_ms": 3.476040719688171
+      },
+      "vr_3pt": {
+        "tokenizer_onnx": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/onnx/q1_tok_vr_3pt.onnx",
+        "tokenizer_bytes": 4140550,
+        "parity_action_max_abs_diff": 4.0531158447265625e-06,
+        "cpu_cgfa_tok_head_p50_ms": 2.7885264971700963,
+        "cpu_cgfa_tok_head_p99_ms": 3.22311745803745
+      },
+      "planner_cmd": {
+        "tokenizer_onnx": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/onnx/q1_tok_planner_cmd.onnx",
+        "tokenizer_bytes": 1030628,
+        "parity_action_max_abs_diff": 3.814697265625e-06,
+        "cpu_cgfa_tok_head_p50_ms": 2.6689830010582227,
+        "cpu_cgfa_tok_head_p99_ms": 3.1618807555059902
+      }
+    },
+    "token_head": {
+      "onnx": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/onnx/q1_h002_token_head.onnx",
+      "bytes": 17867002
+    }
+  },
+  "eval_headline": {
+    "v1_16_match_v2_robot_pose": {
+      "n_clips": 16,
+      "survival_rate": 0.9375,
+      "survival_fraction": 0.9866520100502513,
+      "norm_return": 0.8165803490657542,
+      "body_pos_rmse_cm": 4.99146332730481,
+      "root_xy_rmse_cm": 37.8577694808902,
+      "wrist_world_rmse_cm": 40.07297979877754,
+      "stance_slip_mm_s": 152.06079396034565,
+      "pd_oob_pct": 0.0,
+      "tau_util_p99": 0.7559776847623286,
+      "cpu_step_ms_p50": 3.7541871872690535,
+      "pd_max_oob_deg": 0.0
+    },
+    "stat_fit_squat": {
+      "completed": true,
+      "failed": false,
+      "steps_run": 198,
+      "budget": 198,
+      "survival_fraction": 1.0,
+      "norm_return": 0.5620371920263602,
+      "body_pos_rmse_cm": 10.388852086389464,
+      "root_xy_rmse_cm": 62.22284655216828,
+      "wrist_world_rmse_cm": 68.99906755284778,
+      "stance_slip_mm_s": 208.25806110116994,
+      "pd_oob_pct": 0.0,
+      "pd_max_oob_deg": 0.0,
+      "tau_util_p99": 1.0,
+      "cpu_step_ms_p50": 3.744545996596571
+    },
+    "walk4_subject1": {
+      "completed": true,
+      "failed": false,
+      "steps_run": 398,
+      "budget": 398,
+      "survival_fraction": 1.0,
+      "norm_return": 0.7511078466438388,
+      "body_pos_rmse_cm": 7.589961566381988,
+      "root_xy_rmse_cm": 63.58466989982453,
+      "wrist_world_rmse_cm": 67.6420759020691,
+      "stance_slip_mm_s": 333.1487314212243,
+      "pd_oob_pct": 0.0,
+      "pd_max_oob_deg": 0.0,
+      "tau_util_p99": 1.0,
+      "cpu_step_ms_p50": 3.759775499929674
+    },
+    "held_out_50_nominal_all_50": {
+      "Oracle_scheme_a_0ms": {
+        "n_clips": 50,
+        "survival_rate": 0.96,
+        "survival_fraction": 0.9866666666666666,
+        "norm_return": 0.7984622291624284,
+        "body_pos_rmse_cm": 5.680178016930862,
+        "root_xy_rmse_cm": 11.62001853450374,
+        "wrist_world_rmse_cm": 14.050393299976436,
+        "stance_slip_mm_s": 192.96612037506722,
+        "pd_oob_pct": 0.8935673258243046,
+        "tau_util_p99": 0.8873973821163176,
+        "cpu_step_ms_p50": 2.009133579704212,
+        "pd_max_oob_deg": 70.26744255833876
+      },
+      "Zeroed_unadapted_0ms": {
+        "n_clips": 50,
+        "survival_rate": 0.92,
+        "survival_fraction": 0.9690137133478842,
+        "norm_return": 0.7255552361030172,
+        "body_pos_rmse_cm": 6.127193467105834,
+        "root_xy_rmse_cm": 53.58997917851896,
+        "wrist_world_rmse_cm": 56.24160846780946,
+        "stance_slip_mm_s": 267.74273867254794,
+        "pd_oob_pct": 1.1589266130581115,
+        "tau_util_p99": 0.9700831552386281,
+        "cpu_step_ms_p50": 2.014750960006495,
+        "pd_max_oob_deg": 96.29350956045717
+      },
+      "V1_H002_ONNX": {
+        "n_clips": 50,
+        "survival_rate": 0.94,
+        "survival_fraction": 0.9736729100045683,
+        "norm_return": 0.7213792934342158,
+        "body_pos_rmse_cm": 6.626271525300949,
+        "root_xy_rmse_cm": 34.44713847201386,
+        "wrist_world_rmse_cm": 38.3169912722785,
+        "stance_slip_mm_s": 219.4658607971214,
+        "pd_oob_pct": 0.0,
+        "tau_util_p99": 0.8195683779478071,
+        "cpu_step_ms_p50": 3.6958481202600524,
+        "pd_max_oob_deg": 0.0
+      },
+      "V2_RobotPose_ONNX": {
+        "n_clips": 50,
+        "survival_rate": 0.96,
+        "survival_fraction": 0.9951225826100198,
+        "norm_return": 0.7652684641861447,
+        "body_pos_rmse_cm": 5.578180347447504,
+        "root_xy_rmse_cm": 41.77968231296053,
+        "wrist_world_rmse_cm": 43.68642323856144,
+        "stance_slip_mm_s": 219.87159114106697,
+        "pd_oob_pct": 0.0,
+        "tau_util_p99": 0.7958582591295241,
+        "cpu_step_ms_p50": 3.7468232803075807,
+        "pd_max_oob_deg": 0.0
+      },
+      "V2_HumanSMPL_ONNX": {
+        "n_clips": 50,
+        "survival_rate": 0.94,
+        "survival_fraction": 0.9904883000862901,
+        "norm_return": 0.7602773617152387,
+        "body_pos_rmse_cm": 5.78481978105495,
+        "root_xy_rmse_cm": 32.81024317906537,
+        "wrist_world_rmse_cm": 35.15291496804802,
+        "stance_slip_mm_s": 196.20050010295475,
+        "pd_oob_pct": 0.0,
+        "tau_util_p99": 0.7833922425389289,
+        "cpu_step_ms_p50": 3.3651508902403293,
+        "pd_max_oob_deg": 0.0
+      },
+      "V2_VR3Pt_ONNX": {
+        "n_clips": 50,
+        "survival_rate": 0.94,
+        "survival_fraction": 0.9757575757575758,
+        "norm_return": 0.7396154325692337,
+        "body_pos_rmse_cm": 6.127197711243797,
+        "root_xy_rmse_cm": 32.93609561644471,
+        "wrist_world_rmse_cm": 35.79956667879344,
+        "stance_slip_mm_s": 223.22375116116172,
+        "pd_oob_pct": 0.0,
+        "tau_util_p99": 0.7985890085160732,
+        "cpu_step_ms_p50": 3.092338089700206,
+        "pd_max_oob_deg": 0.0
+      },
+      "V2_PlannerCmd_ONNX": {
+        "n_clips": 50,
+        "survival_rate": 0.98,
+        "survival_fraction": 0.990909090909091,
+        "norm_return": 0.6892319664146781,
+        "body_pos_rmse_cm": 7.356011296334771,
+        "root_xy_rmse_cm": 28.39357996832988,
+        "wrist_world_rmse_cm": 34.669669088935386,
+        "stance_slip_mm_s": 180.79530745867757,
+        "pd_oob_pct": 0.0,
+        "tau_util_p99": 0.7955702847599985,
+        "cpu_step_ms_p50": 3.1140063106431626,
+        "pd_max_oob_deg": 0.0
+      },
+      "Ablation_WM_UnfrozenDec": {
+        "n_clips": 50,
+        "survival_rate": 0.74,
+        "survival_fraction": 0.8967160431176788,
+        "norm_return": 0.6562931593853959,
+        "body_pos_rmse_cm": 7.552355614765668,
+        "root_xy_rmse_cm": 40.13351454942041,
+        "wrist_world_rmse_cm": 44.713456277154236,
+        "stance_slip_mm_s": 248.22981124673095,
+        "pd_oob_pct": 0.0,
+        "tau_util_p99": 0.8632645520865917,
+        "cpu_step_ms_p50": 3.7356013502721908,
+        "pd_max_oob_deg": 0.0
+      }
+    },
+    "held_out_20_stress": {
+      "Zeroed_unadapted_0ms": {
+        "n_clips": 20,
+        "survival_rate": 0.85,
+        "survival_fraction": 0.9393292218669103,
+        "norm_return": 0.6388746837181737,
+        "body_pos_rmse_cm": 7.668528649805866,
+        "root_xy_rmse_cm": 69.93987639183618,
+        "wrist_world_rmse_cm": 74.02506715906938,
+        "stance_slip_mm_s": 320.69400916008874,
+        "pd_oob_pct": 1.5522000679713568,
+        "tau_util_p99": 1.1202108201384544,
+        "cpu_step_ms_p50": 2.0411604242326575,
+        "pd_max_oob_deg": 122.06823926149744
+      },
+      "V1_H002_ONNX": {
+        "n_clips": 20,
+        "survival_rate": 0.85,
+        "survival_fraction": 0.9669191919191918,
+        "norm_return": 0.6518089277526224,
+        "body_pos_rmse_cm": 7.973957008485809,
+        "root_xy_rmse_cm": 41.82155397377322,
+        "wrist_world_rmse_cm": 47.38894187956493,
+        "stance_slip_mm_s": 269.28900503907255,
+        "pd_oob_pct": 0.0,
+        "tau_util_p99": 0.9086242446899411,
+        "cpu_step_ms_p50": 3.8231550750424503,
+        "pd_max_oob_deg": 0.0
+      },
+      "V2_RobotPose_ONNX": {
+        "n_clips": 20,
+        "survival_rate": 0.95,
+        "survival_fraction": 0.9972361809045227,
+        "norm_return": 0.6941058711422852,
+        "body_pos_rmse_cm": 6.79566429189204,
+        "root_xy_rmse_cm": 53.321226952504524,
+        "wrist_world_rmse_cm": 56.3220987029202,
+        "stance_slip_mm_s": 283.43545150555025,
+        "pd_oob_pct": 0.0,
+        "tau_util_p99": 0.8682248222827909,
+        "cpu_step_ms_p50": 3.7646593744284473,
+        "pd_max_oob_deg": 0.0
+      },
+      "V2_HumanSMPL_ONNX": {
+        "n_clips": 20,
+        "survival_rate": 0.85,
+        "survival_fraction": 0.9583168367087964,
+        "norm_return": 0.6765784235263996,
+        "body_pos_rmse_cm": 7.165107050014496,
+        "root_xy_rmse_cm": 44.9172941677359,
+        "wrist_world_rmse_cm": 48.701794663233976,
+        "stance_slip_mm_s": 263.815064891411,
+        "pd_oob_pct": 0.0,
+        "tau_util_p99": 0.8886170778274535,
+        "cpu_step_ms_p50": 3.3711628242599545,
+        "pd_max_oob_deg": 0.0
+      },
+      "V2_VR3Pt_ONNX": {
+        "n_clips": 20,
+        "survival_rate": 0.8,
+        "survival_fraction": 0.9375666209837064,
+        "norm_return": 0.6439774905052245,
+        "body_pos_rmse_cm": 7.942410199254395,
+        "root_xy_rmse_cm": 43.12222339978229,
+        "wrist_world_rmse_cm": 47.45364045425978,
+        "stance_slip_mm_s": 312.5080106637597,
+        "pd_oob_pct": 0.0,
+        "tau_util_p99": 0.86501692533493,
+        "cpu_step_ms_p50": 3.0965242001911975,
+        "pd_max_oob_deg": 0.0
+      },
+      "V2_PlannerCmd_ONNX": {
+        "n_clips": 20,
+        "survival_rate": 0.95,
+        "survival_fraction": 0.9845959595959595,
+        "norm_return": 0.6362308730695774,
+        "body_pos_rmse_cm": 8.642388520735562,
+        "root_xy_rmse_cm": 34.47206446063275,
+        "wrist_world_rmse_cm": 40.70253014626879,
+        "stance_slip_mm_s": 221.15728389161117,
+        "pd_oob_pct": 0.0,
+        "tau_util_p99": 0.8707639307677745,
+        "cpu_step_ms_p50": 3.1217665495205438,
+        "pd_max_oob_deg": 0.0
+      },
+      "Ablation_WM_UnfrozenDec": {
+        "n_clips": 20,
+        "survival_rate": 0.4,
+        "survival_fraction": 0.7930669550041578,
+        "norm_return": 0.5077732753013569,
+        "body_pos_rmse_cm": 10.504248607430936,
+        "root_xy_rmse_cm": 50.605927223373854,
+        "wrist_world_rmse_cm": 58.08379764951443,
+        "stance_slip_mm_s": 310.5902824639508,
+        "pd_oob_pct": 0.0,
+        "tau_util_p99": 1.0393911072611806,
+        "cpu_step_ms_p50": 3.895534475122986,
+        "pd_max_oob_deg": 0.0
+      }
+    },
+    "zero_ik_raw_bvh_8": {
+      "n_bvhs": 8,
+      "survival_rate": 1.0,
+      "mean_root_xy_rmse_cm": 44.676249999999996,
+      "per_bvh": {
+        "lafan_aiming1_subject4": {
+          "kind": "lafan1",
+          "completed": true,
+          "steps_run": 280,
+          "budget": 280,
+          "h_nom_human_m": 0.916,
+          "root_xy_rmse_cm": 89.17
+        },
+        "lafan_obstacles1_subject2": {
+          "kind": "lafan1",
+          "completed": true,
+          "steps_run": 280,
+          "budget": 280,
+          "h_nom_human_m": 0.902,
+          "root_xy_rmse_cm": 10.77
+        },
+        "lafan_walk2_subject1": {
+          "kind": "lafan1",
+          "completed": true,
+          "steps_run": 280,
+          "budget": 280,
+          "h_nom_human_m": 0.929,
+          "root_xy_rmse_cm": 156.19
+        },
+        "lafan_walk3_subject3": {
+          "kind": "lafan1",
+          "completed": true,
+          "steps_run": 280,
+          "budget": 280,
+          "h_nom_human_m": 0.908,
+          "root_xy_rmse_cm": 13.65
+        },
+        "soma_stat_000_egypt_dance_R_003__A275": {
+          "kind": "soma",
+          "completed": true,
+          "steps_run": 248,
+          "budget": 248,
+          "h_nom_human_m": 0.977,
+          "root_xy_rmse_cm": 30.77
+        },
+        "soma_stat_001_screaming_001__A274": {
+          "kind": "soma",
+          "completed": true,
+          "steps_run": 191,
+          "budget": 191,
+          "h_nom_human_m": 0.982,
+          "root_xy_rmse_cm": 20.93
+        },
+        "soma_stat_002_lasso_dance_R_002__A275": {
+          "kind": "soma",
+          "completed": true,
+          "steps_run": 256,
+          "budget": 256,
+          "h_nom_human_m": 1.0,
+          "root_xy_rmse_cm": 30.82
+        },
+        "soma_stat_3_eating_apple_R_002__A276": {
+          "kind": "soma",
+          "completed": true,
+          "steps_run": 280,
+          "budget": 280,
+          "h_nom_human_m": 0.986,
+          "root_xy_rmse_cm": 5.11
+        }
+      }
+    },
+    "sonic_modeswitch_24s": {
+      "completed_24s": true,
+      "steps_survived": 1200,
+      "budget": 1200,
+      "pd_oob_count": 0,
+      "max_step_jump_deg": 34.72,
+      "p99_step_jump_deg": 14.58,
+      "mean_stance_slip_mm_s": 108.7,
+      "tau_util_p99": 0.765,
+      "height_range_m": [
+        0.38,
+        0.43
+      ],
+      "min_upright_cos": 0.979
+    }
+  }
+}

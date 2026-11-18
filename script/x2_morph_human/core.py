@@ -226,7 +226,7 @@ class HumanBuffer:
             self.origin_capture_ns = p["capture_ns"]
         self.frames.append((p["sequence"], p["capture_ns"], p["arrival_ns"], pos, quat))
 
-    def window(self, now_ns, receiver_clock):
+    def window(self, now_ns, receiver_clock, *, trace_support=False):
         if self.epoch is None or receiver_clock != self.epoch[1]:
             raise NotReady("no frames or receiver clock mismatch")
         available = [f for f in self.frames if f[2] <= now_ns]
@@ -239,6 +239,7 @@ class HumanBuffer:
         if target[0] < times[0]:
             raise NotReady("need 10 real 50Hz slots (180ms span)")
         pos, quat, support, gaps_ns = [], [], [], []
+        provenance = []
         for t in target:
             right = int(np.searchsorted(times, t))
             if right >= len(times):
@@ -247,6 +248,8 @@ class HumanBuffer:
                 f = available[right]
                 pos.append(f[3]); quat.append(f[4]); support.append(int(times[right]))
                 gaps_ns.append(0)
+                if trace_support:
+                    provenance.append(dict(left=list(f[:3]), right=list(f[:3]), weight_right=0.))
             else:
                 left = right-1
                 gap = int(times[right]) - int(times[left]) if left >= 0 else self.max_interp_gap_ns + 1
@@ -257,14 +260,21 @@ class HumanBuffer:
                 quat.append(interpolate(available[left][4], available[right][4], a))
                 support.append(int(times[right]))
                 gaps_ns.append(gap)
+                if trace_support:
+                    provenance.append(dict(left=list(available[left][:3]),
+                                           right=list(available[right][:3]), weight_right=a))
         frames = np.concatenate((np.asarray(pos), np.asarray(quat)), -1).reshape(K, 168)
-        return frames, dict(slot_capture_ns=target.tolist(), raw_support_end_ns=support,
+        timing = dict(slot_capture_ns=target.tolist(), raw_support_end_ns=support,
                             capture_clock=self.epoch[0], arrival_clock=self.epoch[1],
                             calibration_id=self.epoch[2], measured_preview_span_ms=180.,
                             newest_arrival_age_ms=(now_ns-available[-1][2])/1e6,
                             max_source_gap_ms=max(gaps_ns)/1e6,
                             max_interp_gap_ms=self.max_interp_gap_ns/1e6,
                             hardware_end_to_end_latency_ms=None)
+        if trace_support:
+            timing["support_frame_fields"] = ["sequence", "capture_ns", "arrival_ns"]
+            timing["slot_support_frames"] = provenance
+        return frames, timing
 
 
 def pelvis_from_sensor(robot, q, dq, sensor_quat, sensor_gyro, body_name, body_from_sensor):

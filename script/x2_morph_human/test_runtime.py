@@ -70,6 +70,15 @@ class CoreTests(unittest.TestCase):
         self.assertEqual(w.shape,(10,168))
         self.assertTrue(any(s>t for s,t in zip(t["raw_support_end_ns"],t["slot_capture_ns"])))
         self.assertTrue(max(t["raw_support_end_ns"]) <= packets[-1]["capture_ns"])
+        traced, details = b.window(packets[-1]["arrival_ns"], "replay_monotonic", trace_support=True)
+        np.testing.assert_array_equal(w, traced)
+        self.assertNotIn("slot_support_frames", t)
+        for target, support in zip(t["slot_capture_ns"], details["slot_support_frames"]):
+            left, right, weight = support["left"], support["right"], support["weight_right"]
+            self.assertAlmostEqual(target, left[1] + weight * (right[1] - left[1]))
+            for sequence, capture, arrival in (left, right):
+                self.assertEqual(capture, packets[sequence]["capture_ns"])
+                self.assertEqual(arrival, packets[sequence]["arrival_ns"])
 
     def test_schema_and_reset_boundaries(self):
         for change in [dict(kind="legacy_smpl"),dict(valid=[True]*23),dict(calibration_id=""),

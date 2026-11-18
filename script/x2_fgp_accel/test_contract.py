@@ -58,6 +58,7 @@ class ContractTests(unittest.TestCase):
     def test_gp_state_output_order_and_recording_ownership(self):
         session = TrtSession.__new__(TrtSession)
         session.gp, session.closed, session.recorded = True, False, []
+        session.record_io = True
         session.outputs = {name: np.full(shape, i+1, np.float32)
                            for i, (name, shape) in enumerate(GP_OUTPUTS.items())}
         session.pointers = dict.fromkeys((*GP_INPUTS, *GP_OUTPUTS), None)
@@ -74,6 +75,13 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(h.flat[0], 2)
         with self.assertRaises(RuntimeError):
             session.run(["c_out", "h_out", "prediction"], feed)
+        session.recorded.clear()
+        session.record_io = False
+        latest = session.run(None, feed)
+        self.assertEqual(latest[1].flat[0], 8)
+        self.assertEqual(session.recorded, [])
+        session.outputs["h_out"].fill(0)
+        self.assertEqual(latest[1].flat[0], 8)
 
     def feed(self):
         return {name: np.zeros((1, 30, 10, 9), dtype=np.float32) for name in ("x_t", "x_cond")}

@@ -35,8 +35,9 @@ def validate_feed(feed):
 
 
 class TrtSession:
-    def __init__(self, engine_path, *, gp=False):
+    def __init__(self, engine_path, *, gp=False, record_io=True, pin_output=False):
         self.gp = gp
+        self.record_io = record_io
         # Only TensorRT is taken from the OS installation; keep venv numpy/torch.
         sys.path.append("/usr/lib/python3.10/dist-packages")
         import tensorrt as trt
@@ -50,11 +51,15 @@ class TrtSession:
             "cudaStreamSynchronize": [ct.c_void_p],
             "cudaMemcpyAsync": [ct.c_void_p, ct.c_void_p, ct.c_size_t, ct.c_int, ct.c_void_p],
         }
+        if pin_output:
+            signatures.update(cudaMallocHost=[ct.POINTER(ct.c_void_p), ct.c_size_t],
+                              cudaFreeHost=[ct.c_void_p])
         for name, signature in signatures.items():
             fn = getattr(self.cuda, name)
             fn.argtypes, fn.restype = signature, ct.c_int
         self.stream = ct.c_void_p()
         self.pointers, self.inputs, self.outputs = {}, {}, {}
+        self.pinned_outputs = []
         self.recorded = []
         self.closed = False
         self.logger = trt.Logger(trt.Logger.WARNING)
@@ -79,7 +84,14 @@ class TrtSession:
                 self.pointers[name] = pointer
                 if not self.context.set_tensor_address(name, pointer.value):
                     raise RuntimeError("Tensor address rejected")
-                target = self.inputs if self.engine.get_tensor_mode(name) == trt.TensorIOMode.INPUT else self.outputs
+                is_input = self.engine.get_tensor_mode(name) == trt.TensorIOMode.INPUT
+                if pin_output and not is_input:
+                    pinned = ct.c_void_p()
+                    self.check(self.cuda.cudaMallocHost(ct.byref(pinned), array.nbytes))
+                    self.pinned_outputs.append(pinned)
+                    buffer = (ct.c_float * array.size).from_address(pinned.value)
+                    array = np.ctypeslib.as_array(buffer).reshape(shape)
+                target = self.inputs if is_input else self.outputs
                 target[name] = array
             if gp:
                 validate_gp_feed(self.inputs)
@@ -117,7 +129,8 @@ class TrtSession:
         if not all(np.isfinite(self.outputs[n]).all() for n in ordered):
             raise ValueError("Nonfinite TensorRT output")
         results = [self.outputs[n].copy() for n in ordered]
-        self.recorded.append(({k: v.copy() for k, v in feed.items()}, results if self.gp else results[0]))
+        if self.record_io:
+            self.recorded.append(({k: v.copy() for k, v in feed.items()}, results if self.gp else results[0]))
         return results
 
     def enqueue(self):
@@ -131,6 +144,11 @@ class TrtSession:
         if self.stream.value:
             self.cuda.cudaStreamSynchronize(self.stream)
         self.context = None
+        if self.pinned_outputs:
+            self.outputs.clear()
+            for pointer in self.pinned_outputs:
+                self.cuda.cudaFreeHost(pointer)
+            self.pinned_outputs.clear()
         for pointer in self.pointers.values():
             self.cuda.cudaFree(pointer)
         if self.stream.value:

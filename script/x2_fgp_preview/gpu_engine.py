@@ -32,19 +32,53 @@ def _load_realtime_module(root: Path):
 
 
 class _CalibratorAdapter:
-    def __init__(self, calibrator, torch):
+    def __init__(self, calibrator, torch, *, profile_stages=False, numpy_candidate=False):
         self.calibrator = calibrator
         self.torch = torch
+        self.profile_stages = profile_stages
+        self.elapsed_ms = None
+        self.numpy_candidate = numpy_candidate
+        self.numpy_constants = None
 
     def calibrate(self, raw, acc_scale=30):
-        acc, rot = self.calibrator.calibrate_ordered_10x7(np.asarray(raw, dtype=np.float32))
-        return self.torch.cat((acc.flatten() / float(acc_scale), rot.flatten())).tolist()
+        started = time.perf_counter_ns() if self.profile_stages else None
+        values = np.asarray(raw, dtype=np.float32)
+        packed = self._numpy(values, acc_scale) if self.numpy_candidate else None
+        if packed is None:
+            acc, rot = self.calibrator.calibrate_ordered_10x7(values)
+            packed = self.torch.cat((acc.flatten() / float(acc_scale), rot.flatten())).tolist()
+        if started is not None:
+            self.elapsed_ms = (time.perf_counter_ns() - started) / 1e6
+        return packed
+
+    def _numpy(self, values, scale):
+        if (values.shape != (10, 7) or not np.isfinite(values).all()
+                or self.calibrator.smpl2imu is None or not np.isfinite(scale) or scale == 0):
+            return None
+        q = values[:, 3:]
+        norm = np.sqrt(np.sum(q * q, axis=1, keepdims=True))
+        if (norm <= 0).any() or not np.isfinite(norm).all():
+            return None
+        if self.numpy_constants is None:
+            self.numpy_constants = tuple(t.detach().cpu().numpy() for t in
+                (self.calibrator.smpl2imu, self.calibrator.device2bone, self.calibrator.acc_offset))
+        world, bone, gravity = self.numpy_constants
+        a, b, c, d = (q / norm).T
+        rot = np.stack((
+            -2*c*c - 2*d*d + 1, 2*b*c - 2*a*d, 2*a*c + 2*b*d,
+            2*b*c + 2*a*d, -2*b*b - 2*d*d + 1, 2*c*d - 2*a*b,
+            2*b*d - 2*a*c, 2*a*b + 2*c*d, -2*b*b - 2*c*c + 1,
+        ), axis=1).reshape(10, 3, 3)
+        acc = world @ (rot @ values[:, :3, None] - gravity)
+        return np.concatenate((acc.reshape(-1) / np.float32(scale), (world @ rot @ bone).reshape(-1))).tolist()
 
 
 class S1GpuFgp:
     """Expose the preview engine's ``reset/step/close`` contract for S1 GPU."""
 
-    def __init__(self, clotho_root: Path, cano_engine: Path, gp_engine: Path | None = None, *, cuda_graph=True):
+    def __init__(self, clotho_root: Path, cano_engine: Path, gp_engine: Path | None = None, *,
+                 cuda_graph=True, profile_stages=False, record_cano_io=True, pin_cano_output=False,
+                 numpy_calibration=False):
         self.clotho_root = Path(clotho_root).resolve()
         self.cano_engine = Path(cano_engine).resolve()
         self.gp_engine = None
@@ -75,7 +109,8 @@ class S1GpuFgp:
         self.art = art
         self.source = _load_realtime_module(self.clotho_root)
         onnx_root = self.clotho_root / "models" / "onnx_s1"
-        self.cano_session = (CudaGraphSession if cuda_graph else TrtSession)(self.cano_engine)
+        self.cano_session = (CudaGraphSession if cuda_graph else TrtSession)(
+            self.cano_engine, record_io=record_cano_io, pin_output=pin_cano_output)
 
 
 
@@ -119,7 +154,10 @@ class S1GpuFgp:
             GlobalPoseTracker.__init__ = original_tracker_init
 
         self.calibrator = ClothoCalibrator(torch, art, bulid_rot, SMPLPose.t_pose_ori)
-        self.calibrator_adapter = _CalibratorAdapter(self.calibrator, torch)
+        self.calibrator_adapter = _CalibratorAdapter(self.calibrator, torch, profile_stages=profile_stages,
+                                                     numpy_candidate=numpy_calibration)
+        self.profile_stages = profile_stages
+        self.last_step_profile = None
         self.model_profile = dict(
             selection="CLOTHO fgp_realtime S1 bundle",
             backend="TensorRT CUDA Graph",
@@ -143,12 +181,35 @@ class S1GpuFgp:
     def reset(self, calibration=None):
         if calibration is not None:
             self.calibrator.set_calibration_120(calibration)
+            self.calibrator_adapter.numpy_constants = None
         self.pipeline.reset()
 
     def step(self, values):
         began = time.perf_counter()
+        if self.profile_stages:
+            self.last_step_profile = None
+            self.calibrator_adapter.elapsed_ms = None
+            cpu_started = time.thread_time_ns()
+            previous_tracker_result = self.pipeline.gp.tracker.last_result
         with self.torch.inference_mode():
             result = self.pipeline.step(values, self.calibrator_adapter, measured=True)
+        if self.profile_stages:
+            pipeline_ms = (time.perf_counter() - began) * 1000
+            spans = self.pipeline.perf.frame
+            row = dict(pipeline_wall_ms=pipeline_ms,
+                       pipeline_thread_cpu_ms=(time.thread_time_ns() - cpu_started) / 1e6,
+                       calibration_ms=self.calibrator_adapter.elapsed_ms,
+                       cano_host_ms=spans.get("cano"),
+                       lip_host_ms=spans.get("pose"),
+                       gp_adapter_excluding_lip_ms=spans.get("physics"))
+            current = self.pipeline.gp.tracker.last_result
+            if current is not None and current is not previous_tracker_result:
+                diagnostics = current["diagnostics"]
+                row.update(gp_tracker_ms=diagnostics["gp_ms"],
+                           native_physics_ms=diagnostics["physics_ms"],
+                           physics_updates=diagnostics["physics_updates"],
+                           gp_status=diagnostics["status"])
+            self.last_step_profile = row
         if result is None:
             return None
         pose, tran = result

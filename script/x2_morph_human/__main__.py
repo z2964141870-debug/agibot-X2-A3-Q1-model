@@ -317,26 +317,47 @@ def serve(args):
     socket = context.socket(zmq.REP)
     socket.setsockopt(zmq.LINGER, 0)
     socket.setsockopt(zmq.MAXMSGSIZE, 256*1024)
-    socket.bind(args.endpoint)
-    print(json.dumps(dict(status="ADVISORY_ONLY", endpoint=args.endpoint,
-                          human_points=args.human_points, max_interp_gap_ms=args.max_interp_gap_ms,
-                          max_freshness_ms=args.max_freshness_ms,
-                          publish_allowed=False)), flush=True)
+    recorder = None
     try:
+        socket.bind(args.endpoint)
+        startup = dict(status="ADVISORY_ONLY", endpoint=args.endpoint,
+                       human_points=args.human_points, max_interp_gap_ms=args.max_interp_gap_ms,
+                       max_freshness_ms=args.max_freshness_ms, publish_allowed=False)
+        if args.trace_output is not None:
+            from .trace import TraceRecorder
+            recorder = TraceRecorder(args.trace_output, args.trace_max_mib * 1024**2,
+                                     dict(startup, receiver_clock=clock,
+                                          policy_sha256=artifacts.MODEL_SHA,
+                                          source_commit=artifacts.UPSTREAM_COMMIT))
+            startup["trace_output"] = str(args.trace_output)
+        print(json.dumps(startup), flush=True)
         while True:
             msg = socket.recv()
+            received_ns = time.monotonic_ns()
+            event = (dict(kind="request_reply", received_ns=received_ns, request_wire=msg)
+                     if recorder and recorder.active else None)
             try:
                 request = json.loads(msg)
-                reply = r.handle(request, time.monotonic_ns(), clock)
+                request_ns = time.monotonic_ns()
+                if event is not None:
+                    kind = request.get("kind") if isinstance(request, dict) else None
+                    seq = request.get("sequence") if isinstance(request, dict) else None
+                    event.update(request_kind=kind if isinstance(kind, str) else None,
+                                 request_sequence=seq if type(seq) is int else None, runtime_ns=request_ns)
+                reply = r.handle(request, request_ns, clock, trace=event)
             except Exception as exc:
                 # Exceptions never become a stale/zero target. Clear policy history.
                 r.reset()
                 reply = dict(ready=False, error=str(exc), reset=True, publish_allowed=False)
             socket.send_json(reply)
+            if event is not None:
+                recorder.submit(dict(event, reply=reply, reply_sent_ns=time.monotonic_ns()))
     except KeyboardInterrupt:
         pass
     finally:
         socket.close(); context.term()
+        if recorder is not None:
+            recorder.close()
 
 
 def bundle(args):
@@ -375,7 +396,14 @@ def main():
     p = sub.add_parser("fgp-convert");p.add_argument("--input", type=Path, required=True);p.add_argument("--calibration", type=Path, required=True);p.add_argument("--output", type=Path, required=True);p.add_argument("--align-initial-ground", action="store_true");p.set_defaults(fn=fgp_convert)
     p = sub.add_parser("synth-motion");p.add_argument("--preset", choices=("walk_start_stop", "turn_and_wave"), required=True);p.add_argument("--frames", type=int, default=400);p.add_argument("--output", type=Path, required=True);p.set_defaults(fn=synth_motion)
     p = sub.add_parser("replay");p.add_argument("--human-jsonl", type=Path);p.add_argument("--state-jsonl", type=Path);p.add_argument("--output", type=Path, required=True);p.add_argument("--frames", type=int, default=150);p.add_argument("--human-points", choices=("full", "five"), default="full");p.add_argument("--max-interp-gap-ms", type=float, default=40.0);p.add_argument("--max-freshness-ms", type=float, default=None);p.add_argument("--clock-50hz", action="store_true");p.add_argument("--simulate", action="store_true");p.add_argument("--video", action="store_true");p.set_defaults(fn=replay)
-    p = sub.add_parser("serve");p.add_argument("--endpoint", default="tcp://127.0.0.1:5765");p.add_argument("--human-points", choices=("full", "five"), default="full");p.add_argument("--max-interp-gap-ms", type=float, default=100.0);p.add_argument("--max-freshness-ms", type=float, default=120.0);p.set_defaults(fn=serve)
+    p = sub.add_parser("serve")
+    p.add_argument("--endpoint", default="tcp://127.0.0.1:5765")
+    p.add_argument("--human-points", choices=("full", "five"), default="full")
+    p.add_argument("--max-interp-gap-ms", type=float, default=100.0)
+    p.add_argument("--max-freshness-ms", type=float, default=120.0)
+    p.add_argument("--trace-output", type=Path, help="record each request/reply and inference tensors to a new JSONL file")
+    p.add_argument("--trace-max-mib", type=int, default=256, choices=range(1, 1025), metavar="1..1024")
+    p.set_defaults(fn=serve)
     p = sub.add_parser("bundle");p.add_argument("--output", required=True, type=Path);p.set_defaults(fn=bundle)
     args = parser.parse_args()
     if args.command == "replay" and (not 1 <= args.frames <= 3000 or (args.video and not args.simulate)):

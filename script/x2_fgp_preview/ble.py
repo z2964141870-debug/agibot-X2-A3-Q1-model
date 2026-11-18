@@ -252,17 +252,30 @@ class BleSource:
             return result
 
     def pair(self, max_age_ms=150, max_skew_ms=60):
+        pair, _ = self._pair(max_age_ms, max_skew_ms, diagnostic=False)
+        return pair
+
+    def diagnostic_pair(self, max_age_ms=150, max_skew_ms=60):
+        return self._pair(max_age_ms, max_skew_ms, diagnostic=True)
+
+    def _pair(self, max_age_ms, max_skew_ms, diagnostic):
         now = time.monotonic_ns()
         with self.lock:
+            details = ({r: dict(state=self.status[r]["state"], packets=self.status[r]["packets"],
+                                last_received_ns=self.status[r].get("last_received_ns"))
+                        for r in ("upper", "lower")} if diagnostic else None)
             if not all(self.frames.values()):
-                return None
+                return None, dict(ble=details, pair_status="missing") if diagnostic else None
             upper, lower = (self.frames[r][-1] for r in ("upper", "lower"))
             times = [upper["received_ns"], lower["received_ns"]]
-            if now - min(times) > max_age_ms * 1e6 or abs(times[0] - times[1]) > max_skew_ms * 1e6:
-                return None
-            return dict(upper=upper, lower=lower, received_ns=min(times),
-                        skew_ms=abs(times[0] - times[1]) / 1e6,
-                        epoch=[self.status[r].get("epoch", 0) for r in ("upper", "lower")])
+            age = (now-min(times))/1e6
+            skew = abs(times[0]-times[1])/1e6
+            status = "stale" if age > max_age_ms else "skew" if skew > max_skew_ms else "ready"
+            note = dict(ble=details, pair_status=status, pair_age_ms=age, pair_skew_ms=skew) if diagnostic else None
+            if status != "ready":
+                return None, note
+            return dict(upper=upper, lower=lower, received_ns=min(times), skew_ms=skew,
+                        epoch=[self.status[r].get("epoch", 0) for r in ("upper", "lower")]), note
 
     @staticmethod
     def active_values(pair):

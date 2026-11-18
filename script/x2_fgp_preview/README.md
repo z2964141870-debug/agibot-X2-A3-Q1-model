@@ -120,3 +120,20 @@ GlobalPose integration dt=1/60 and the existing 30Hz gyro conversion; this is no
 that physical timebase. It keeps the original SMPL translation, without the old Unity display hacks.
 This frontend does not alter MorphMimic's existing 180ms preview requirement or establish that the
 complete FGP-policy-controller path can run at 50Hz.
+# Orin 终端直采诊断
+
+试跑时，先从原终端正常退出正在占用衣服的网页采集，再启动独立的只读 MorphMimic 策略服务（本机 `5776`）。终端直采用同一把采集锁，避免两个 BLE 接收器并行。将此模块及配套的 `ble.py`、`server.py` 放入待测代码环境后，在 Orin 项目目录运行：
+
+```bash
+cd /home/agi/x2_morph_human_20261113
+env -u PYTHONPATH -u PYTHONHOME data/environments/fgp-preview-py310/bin/python -B -u \
+  -m script.x2_fgp_preview.terminal \
+  --clotho-root data/runtime/clotho_fgp_realtime_20261113 \
+  --cano-engine data/analysis/X2_FGP_TRT_ACCEL_20261113/build_gemm_r3/cano.plan \
+  --bridge-python data/environments/orin-py310/bin/python \
+  --calibration script/x2_morph_human/config/clotho_fgp_yup.json \
+  --endpoint tcp://127.0.0.1:5776 \
+  --output "$HOME/x2-fgp-terminal-$(date +%Y%m%d_%H%M%S)"
+```
+
+上下衣收到可配对数据后按 Enter。等三秒准备、三秒采集并通过 T-pose 校验后，FGP 产出有效帧就自动转发。按 Ctrl-C 退出。回看 `capture.jsonl` 的两路 BLE 收包时间、配对状态、FGP 重置、积累历史和出帧时间，以及 `forward.jsonl` 的取帧、发送和回执时间。两份日志各限 16 MiB。

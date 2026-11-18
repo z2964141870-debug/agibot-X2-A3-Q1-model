@@ -1,8 +1,11 @@
 import tempfile
+from contextlib import nullcontext
 from pathlib import Path
+from types import SimpleNamespace
 from unittest import TestCase
 from unittest.mock import Mock
 import numpy as np
+from .gpu_engine import S1GpuFgp
 from .server import Preview
 
 
@@ -30,3 +33,28 @@ class MinimalPreviewTests(TestCase):
             self.assertEqual(preview.live_status, "receiving")
             self.assertIsNone(preview.smpl["joints_yup_m"])
             self.assertFalse((Path(folder)/"smpl.jsonl").exists())
+
+    def test_gp_stage_timing_is_not_reused_on_a_held_frame(self):
+        engine = S1GpuFgp.__new__(S1GpuFgp)
+        engine.profile_stages = True
+        engine.torch = SimpleNamespace(inference_mode=nullcontext)
+        engine.calibrator_adapter = SimpleNamespace(elapsed_ms=None)
+        tracker = SimpleNamespace(last_result=None)
+
+        def step(values, calibrator, *, measured):
+            self.assertTrue(measured)
+            calibrator.elapsed_ms = 1.0
+            if values:
+                tracker.last_result = {"diagnostics": dict(gp_ms=10.0, physics_ms=8.0,
+                                                             physics_updates=1, status="tracking")}
+            return None
+
+        engine.pipeline = SimpleNamespace(gp=SimpleNamespace(tracker=tracker),
+                                          perf=SimpleNamespace(frame={"cano": 4.0, "pose": 3.0}),
+                                          step=step)
+        engine.step(True)
+        self.assertEqual(engine.last_step_profile["native_physics_ms"], 8.0)
+        self.assertEqual(engine.last_step_profile["cano_host_ms"], 4.0)
+        self.assertEqual(engine.last_step_profile["calibration_ms"], 1.0)
+        engine.step(False)
+        self.assertNotIn("native_physics_ms", engine.last_step_profile)

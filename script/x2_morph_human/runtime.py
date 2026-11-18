@@ -60,7 +60,7 @@ class Runtime:
     def push(self, packet):
         self.buffer.push(packet)
 
-    def state(self, p, now_ns, receiver_clock):
+    def state(self, p, now_ns, receiver_clock, *, trace=None):
         t0 = time.perf_counter_ns()
         if p.get("kind") != "x2_measurement" or p.get("version") != 1:
             raise ValueError("expected x2_measurement v1")
@@ -84,11 +84,29 @@ class Runtime:
             raise ValueError("explicit IMU body and sensor extrinsic required")
         extrinsic = unit(array(p["body_from_sensor_wxyz"], (4,), "body_from_sensor"))
         quat, gyro = pelvis_from_sensor(self.robot, q, dq, sq, sg, p["imu_body"], extrinsic)
-        window, timing = self.buffer.window(now_ns, receiver_clock)
+        if trace is None:
+            window, timing = self.buffer.window(now_ns, receiver_clock)
+        else:
+            window, timing = self.buffer.window(now_ns, receiver_clock, trace_support=True)
         self.reference.frames = window
         self.last_state_sequence, self.receiver_clock = p["sequence"], receiver_clock
         t1 = time.perf_counter_ns()
-        targets = self.runner.step(self.step_id, quat, gyro, q, dq)
+        if trace is None:
+            targets = self.runner.step(self.step_id, quat, gyro, q, dq)
+        else:
+            from .trace import SessionCapture
+            trace.update(step_id=self.step_id, reference_window=window.copy(), timing=timing,
+                         pelvis_quat_wxyz=quat.copy(), pelvis_gyro_rad_s=gyro.copy())
+            timing = {key: value for key, value in timing.items()
+                      if key not in ("support_frame_fields", "slot_support_frames")}
+            session = self.runner.session
+            self.runner.session = SessionCapture(session, trace)
+            try:
+                targets = self.runner.step(self.step_id, quat, gyro, q, dq)
+                trace.update(aligned_reference=self.runner.last_ref.copy(),
+                             heading_offset_rad=float(self.reference.turn))
+            finally:
+                self.runner.session = session
         self.step_id += 1
         if targets.shape != (31,) or not np.isfinite(targets).all():
             raise RuntimeError("non-finite or wrong shape target")
@@ -103,7 +121,7 @@ class Runtime:
                     preprocessing_ms=(t1-t0)/1e6, policy_and_features_ms=(t2-t1)/1e6,
                     full_runtime_ms=(t2-t0)/1e6, imu_reconstructed_to=self.robot.imu_body)
 
-    def handle(self, message, now_ns, receiver_clock):
+    def handle(self, message, now_ns, receiver_clock, *, trace=None):
         """Arrival timestamps are assigned here, not trusted from a remote sender."""
         from .core import NotReady
         kind = message.get("kind")
@@ -116,7 +134,8 @@ class Runtime:
             return dict(ready=False, accepted_sequence=message["sequence"], publish_allowed=False)
         if kind == "x2_measurement":
             try:
-                return self.state(dict(message, received_ns=now_ns, clock_id=receiver_clock), now_ns, receiver_clock)
+                return self.state(dict(message, received_ns=now_ns, clock_id=receiver_clock),
+                                  now_ns, receiver_clock, trace=trace)
             except NotReady as exc:
                 return dict(ready=False, reason=str(exc), publish_allowed=False)
         raise ValueError("unsupported message kind")

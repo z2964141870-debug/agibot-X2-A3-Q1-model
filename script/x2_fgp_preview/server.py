@@ -62,7 +62,8 @@ class ReplayBody:
 
 
 class Preview:
-    def __init__(self, mode, output, template, replay=None, scan_seconds=120, engine=None, live_body=None, live_mesh=True, log_smpl=True):
+    def __init__(self, mode, output, template, replay=None, scan_seconds=120, engine=None, live_body=None,
+                 live_mesh=True, log_smpl=True, inference_trace=None):
         self.mode, self.output, self.template, self.replay = mode, output, template, replay
         self.source = BleSource(scan_seconds=scan_seconds) if mode == "ble" else None
         self.lock = threading.RLock()
@@ -83,6 +84,7 @@ class Preview:
         self.reconnect_thread = None
         self.engine, self.live_body = engine, live_body
         self.live_mesh, self.log_smpl = live_mesh, log_smpl
+        self.inference_trace = inference_trace
         self.smpl = None
         self.sample_log_bytes = 0
         self.sample_log_limit_bytes = 64*1024*1024
@@ -103,34 +105,56 @@ class Preview:
         stale_reset = False
         next_tick = time.monotonic()
         while not self.stop_event.wait(max(0, next_tick-time.monotonic())):
+            scheduled_ns = int(next_tick * 1e9)
             next_tick = max(next_tick+1/30, time.monotonic())
+            event = dict(tick_ns=time.monotonic_ns(), scheduled_ns=scheduled_ns) if self.inference_trace is not None else None
             try:
                 with self.lock:
                     calibration = dict(self.calibration)
                 if calibration.get("state") != "static_passed":
                     continue
-                pair = self.source.pair()
+                if event is None:
+                    pair = self.source.pair()
+                else:
+                    pair, details = self.source.diagnostic_pair()
+                    event.update(details)
+                    event["stage"] = "waiting_for_pair"
                 if pair is None:
                     with self.lock:
                         self.live_status = "stale_hold"
                     if initialized and not stale_reset:
+                        if event is not None:
+                            event["reset"] = "stale_pair"
                         self.engine.reset()
                         stale_reset = True
                     continue
                 if calibration_id != calibration["captured_unix_ns"]:
+                    if event is not None:
+                        event["reset"] = "calibration"
                     self.engine.reset(calibration["calibration_data"])
                     calibration_id, epoch = calibration["captured_unix_ns"], pair["epoch"]
                     initialized, stale_reset = True, False
                 if pair["epoch"] != epoch:
+                    if event is not None:
+                        event["stage"] = "epoch_changed"
                     with self.lock:
                         self.calibration["state"] = "epoch_changed"
                         self.live_status = "waiting_calibration"
                     continue
                 if previous_pair == pair["received_ns"]:
+                    if event is not None:
+                        event["stage"] = "duplicate_pair"
                     continue
                 previous_pair = pair["received_ns"]
                 stale_reset = False
+                if event is not None:
+                    event.update(source_ns=pair["received_ns"], step_started_ns=time.monotonic_ns())
                 result = self.engine.step(self.source.active_values(pair))
+                if event is not None:
+                    event.update(step_finished_ns=time.monotonic_ns(), stage="history_warmup")
+                    profile = getattr(self.engine, "last_step_profile", None)
+                    if isinstance(profile, dict):
+                        event["inference_stages"] = profile
                 if result is None:
                     with self.lock:
                         self.live_status = "history_warmup"
@@ -152,6 +176,9 @@ class Preview:
                         globalpose_integration_dt_s=float(getattr(getattr(self.engine, "gp", None), "dt", 1 / 30)),
                         nominal_input_hz=30)
                     snapshot = dict(self.smpl)
+                if event is not None:
+                    event.update(stage="output", output_ns=snapshot["output_ns"],
+                                 sequence=snapshot["sequence"], inference_ms=snapshot["inference_ms"])
                 if not self.log_smpl:
                     continue
                 self.output.mkdir(parents=True, exist_ok=True)
@@ -161,10 +188,15 @@ class Preview:
                         stream.write(encoded)
                     self.sample_log_bytes += len(encoded)
             except Exception as error:
+                if event is not None:
+                    event.update(stage="error", error=repr(error))
                 with self.lock:
                     self.error = f"{type(error).__name__}: {error}"
                     self.live_status = "error"
                     self.calibration["state"] = "error"
+            finally:
+                if event is not None and "stage" in event:
+                    self.inference_trace(dict(event, end_ns=time.monotonic_ns()))
 
     def run(self):
         while not self.stop_event.wait(1/30):

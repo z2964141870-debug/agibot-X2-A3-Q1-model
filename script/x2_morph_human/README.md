@@ -52,6 +52,19 @@ bash script/x2_morph_human/run.sh serve
 
 服务只绑定`127.0.0.1`，默认5765，ZeroMQ REQ/REP JSON，每次一个消息。先发HumanFrame，再发测量；`reset`清空人体流、对齐朝向、历史与last_action。缺人流返回`ready=false`且**不含可执行目标**。
 
+### 逐帧诊断
+
+在独立的只读测试中启动策略服务并记录完整策略输入输出：
+
+```bash
+bash script/x2_morph_human/run.sh serve --endpoint tcp://127.0.0.1:5776 \
+  --trace-output "/tmp/morph-$(date +%Y%m%d-%H%M%S)-$$.jsonl"
+```
+
+衣服适配器和只读反馈客户端都应连接同一个诊断端点。日志以服务接收顺序保存原始请求、服务单调时钟、对应回复，以及成功进入推理的十帧人体窗口、朝向对齐结果、重建 IMU 和实际 ONNX 张量。`request_wire.json_text` 是收到的 JSON 原文。张量用 `dtype`、`shape` 和 Base64 原始字节保存，便于无损回放。原始 BLE、转换前 SMPL 和发送到电机的命令位于策略服务边界之外。
+
+默认上限为 256 MiB，可用 `--trace-max-mib` 调整。文件仅运行用户可读写，已存在时拒绝覆盖。正常 Ctrl-C 退出后，用末行 `trace_end.complete` 确认完整性。队列积压、达到文件上限或写入失败时，终端会报告；缺少完整结束标记的日志只适合部分分析。记录开关会复制张量并增加 CPU 和写入开销，时延验收需另测。
+
 `x2_measurement` v1字段：`sequence`、模型覆盖的`joint_names[31]`、`q_rad[31]/dq_rad_s[31]`、`imu_quat_wxyz[4]/imu_gyro_rad_s[3]`、`imu_body`及`body_from_sensor_wxyz[4]`。显式声明IMU安装体和外参；服务可用导出FK将torso姿态/角速度一起重建为pelvis，扣除腰部关节速度。反馈必须按名完整匹配，模型目标顺序也由发布JSON驱动。接收时间不冒充传感器采样时间。
 
 返回`kind=x2_morph_advisory_target`，包含模型SHA/机器人profile、对应state_sequence、原生名字和31个弧度目标、canonical_action29及分段时序。`publish_allowed=false`始终为false。动作只按发布JSON进行一次default+scale/sign/perm映射，头保持默认，last_action仍为canonical policy action。

@@ -1,0 +1,145 @@
+--- a/deploy_ws/agi_x2_deploy_onnx_ref/src/x2_deploy_onnx_ref.cpp
++++ b/deploy_ws/agi_x2_deploy_onnx_ref/src/x2_deploy_onnx_ref.cpp
+@@ -97,6 +97,8 @@
+ #include <cstdio>
+ #include <cstring>
+ #include <fstream>
++#include <iomanip>
++#include <filesystem>
+ #include <future>
+ #include <iostream>
+ #include <limits>
+@@ -217,6 +219,7 @@
+   // muting the deploy AND stopping MC would leave nothing commanding the
+   // joints at all (zero torque, robot drops).
+   bool        no_publish        = false;
++  bool        cycle_trace       = false;
+   double      tilt_cos          = -0.3;
+   double      ramp_seconds      = 2.0;
+   // Per-joint hard clamp on |target - default_angles|, in radians. Negative
+@@ -886,6 +889,7 @@
+       << "  --imu-topic NAME           override IMU topic (default /aima/hal/imu/torso/state;\n"
+       << "                             use /aima/hal/imu/torse/state on firmware that\n"
+       << "                             ships with the SDK-example typo)\n"
++      << "  --cycle-trace              Save at most 1000 policy ticks (--no-publish only).\n"
+       << "  --obs-dump PATH            DEBUG: dump the first CONTROL-tick obs\n"
+       << "                             (tokenizer + proprioception + raw action) to\n"
+       << "                             PATH as a binary blob and exit immediately.\n"
+@@ -1075,6 +1079,7 @@
+     else if (s == "--max-duration")      a.max_duration      = std::stod(next("--max-duration"));
+     else if (s == "--dry-run")           a.dry_run           = true;
+     else if (s == "--no-publish")        a.no_publish        = true;
++    else if (s == "--cycle-trace")       a.cycle_trace       = true;
+     else if (s == "--tilt-cos")          a.tilt_cos          = std::stod(next("--tilt-cos"));
+     else if (s == "--ramp-seconds")      a.ramp_seconds      = std::stod(next("--ramp-seconds"));
+     else if (s == "--writer-hz")         a.writer_hz         = std::stoi(next("--writer-hz"));
+@@ -1280,6 +1285,12 @@
+   reject_nonpos("--kd-scale-wrist",    a.kd_scale_wrist);
+   reject_nonpos("--kd-scale-head",     a.kd_scale_head);
+ 
++  if (a.cycle_trace && (!a.no_publish || a.log_dir.empty())) {
++    throw std::invalid_argument("--cycle-trace requires --no-publish and --log-dir");
++  }
++  if (a.cycle_trace && std::filesystem::exists(a.log_dir) && !std::filesystem::is_empty(a.log_dir)) {
++    throw std::invalid_argument("--cycle-trace requires a new or empty log directory");
++  }
+   return a;
+ }
+ 
+@@ -1588,6 +1599,24 @@
+                   !cli.flight_dir.empty() ? cli.flight_dir
+                   : (!cli.log_dir.empty() ? cli.log_dir : std::string("/tmp")))
+   {
++    if (cli.cycle_trace) {
++      const auto path = std::filesystem::path(cli.log_dir) / "cycle_trace.csv";
++      if (std::filesystem::exists(path)) {
++        throw std::runtime_error("cycle trace already exists: " + path.string());
++      }
++      cycle_trace_.open(path);
++      if (!cycle_trace_) throw std::runtime_error("cannot open cycle trace: " + path.string());
++      cycle_trace_ << "t,policy_head,pose_received_total,pose_latest_receive_s,pose_has_body,"
++                      "token_received_total,token_latest_receive_s,smpl_hold";
++      for (const auto* name : {"leg", "waist", "arm", "head", "imu"}) {
++        cycle_trace_ << ',' << name << "_feedback_stamp_s";
++      }
++      for (std::size_t i = 0; i < SMPL_WINDOW; ++i) cycle_trace_ << ",smpl_slot_receive_s_" << i;
++      for (const auto* name : {"model_action_il", "target_pre_safety_mj", "target_final_mj"}) {
++        for (std::size_t i = 0; i < NUM_DOFS; ++i) cycle_trace_ << ',' << name << '_' << i;
++      }
++      cycle_trace_ << '\n';
++    }
+     if (cli.imu_topic.empty()) {
+       aimdk_io_ = std::make_unique<AimdkIo>(node_);
+     } else {
+@@ -3353,6 +3382,10 @@
+     }
+     std::vector<float> tok_obs;
+     std::vector<float> smpl_obs;
++    const bool trace_cycle = cycle_trace_.is_open();
++    std::array<double, SMPL_WINDOW> smpl_slot_stamps;
++    if (trace_cycle) smpl_slot_stamps.fill(-1.0);
++    std::optional<std::array<double, NUM_DOFS>> traced_model_action;
+     if (dual_head) {
+       // Both heads hot every tick: pose-ref features from the kplanner
+       // wire, SMPL obs from the laptop stream (zeros until a window exists).
+@@ -3363,6 +3396,9 @@
+       bool have_win = smpl_source_->Window(SteadyNow(), win);
+       if (wb_hold_ && wb_hold_win_) { win = *wb_hold_win_; have_win = true; }   // frozen at hold entry
+       if (have_win) {
++        if (trace_cycle) {
++          for (std::size_t i = 0; i < win.size(); ++i) smpl_slot_stamps[i] = win[i].t_mono;
++        }
+         LevelOperatorRoot(win, cli_.operator_root_level);   // no-op when unset
+         if (!wb_yaw_align_) {
+           wb_yaw_align_ = SmplYawAlign(rs.base_quat_wxyz, win[SMPL_WINDOW - 1].quat_wxyz);
+@@ -3424,6 +3460,7 @@
+         obs.insert(obs.end(), prop.begin(), prop.end());
+         obs.push_back(token_active ? 1.0f : 0.0f);
+         action_il = onnx_actor_->InferObs(obs);
++        if (trace_cycle) traced_model_action = action_il;
+         if (wb_switch_t0_ >= 0.0) {
+           const double ramp = std::max(1e-3, cli_.wb_switch_ramp_s);
+           double a = (SteadyNow() - wb_switch_t0_) / ramp;
+@@ -3436,6 +3473,7 @@
+       } else {
+         action_il = (token_active ? token_actor_ : onnx_actor_)
+                         ->Infer(tok_obs, prop);
++        if (trace_cycle) traced_model_action = action_il;
+       }
+     } catch (const std::exception& e) {
+       RCLCPP_FATAL(node_->get_logger(),
+@@ -3668,6 +3706,25 @@
+     latest_cmd_ready_.store(true, std::memory_order_release);
+ 
+     // ---- Log ---------------------------------------------------------------
++    if (trace_cycle) {
++      const char* head = token_active ? (dual_head ? "dual_smpl" : "token")
++                                      : (dual_head ? "dual_pose" : "pose");
++      cycle_trace_ << std::fixed << std::setprecision(6) << now << ',' << head << ','
++                   << (zmq_pose_source_ ? zmq_pose_source_->total_frames_received() : 0) << ','
++                   << (zmq_pose_source_ ? zmq_pose_source_->LastReceivedMonotonicS() : -1.0) << ','
++                   << (zmq_pose_source_ && zmq_pose_source_->has_body_reference()) << ','
++                   << (token_source_ ? token_source_->total_frames_received() : 0) << ','
++                   << (token_source_ ? token_source_->LastReceivedMonotonicS() : -1.0) << ','
++                   << (dual_head && wb_hold_) << ',' << rs.leg_stamp_s << ',' << rs.waist_stamp_s
++                   << ',' << rs.arm_stamp_s << ',' << rs.head_stamp_s << ',' << rs.imu_stamp_s;
++      cycle_trace_ << std::setprecision(12);
++      for (const auto value : smpl_slot_stamps) cycle_trace_ << ',' << value;
++      for (const auto* values : {&traced_model_action.value(), &target_pos_mj, &sc.target_pos_mj}) {
++        for (const auto value : *values) cycle_trace_ << ',' << value;
++      }
++      cycle_trace_ << '\n';
++      if (++cycle_trace_rows_ >= 1000 || !cycle_trace_) cycle_trace_.close();
++    }
+     logger_.Log(now, rs.joint_pos_mj, rs.joint_vel_mj,
+                 rs.base_quat_wxyz, rs.base_ang_vel,
+                 action_il, sc);
+@@ -4039,6 +4096,8 @@
+   std::atomic<int32_t>              mc_action_status_{-1};
+ 
+   DeployLogger                      logger_;
++  std::ofstream                     cycle_trace_;
++  std::size_t                       cycle_trace_rows_ = 0;
+   agi_x2::FlightRecorder            recorder_;
+ 
+   // Per-DOF max_target_dev clamp synthesised once from the global +

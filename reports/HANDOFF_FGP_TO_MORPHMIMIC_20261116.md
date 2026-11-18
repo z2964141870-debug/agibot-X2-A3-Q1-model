@@ -8,15 +8,23 @@
 
 ## 一、接手人先看清「已跑通的现网基线」
 
-### 1. 板端（SoC1 `agi@10.0.1.41`）现网可用资产
-- **3 个全前台启动入口（推荐日常直接用）**：
+### 1. 板端（SoC1 `agi@10.0.1.41`）与仓库目录对应
+
+> **仓库分支对齐说明**：下文所有引用脚本（`script/x2_sonic_live/`、`script/x2_fgp_preview/`、`script/x2_morph_human/`、`skills/x2-garment-sonic-bringup/`）与报告现已同步在 **`x2`** 与 **`Q1`** 两条分支。
+
+#### 板端 `agi` 用户下（SONIC 真机全套 + 衣服 + FGP 基础工作区）
+- **SONIC 部署与模型**：`/home/agi/gear-sonic/`（即 `/agibot/data/home/agi/gear-sonic/`；含 `policies/`、`pc2_kplanner_onnx.py`、`start_x2_deploy_ritual.sh`、`gear_sonic_deploy/`）
+- **SMPL Token 服务与适配器（已打补丁并保留 `.bak_20261116_pre_sonic_fix`）**：`/home/agi/projects/project_tools/x2_smpl_wholebody/`
+- **LFP 衣服前台入口（已打补丁并保留备份）**：`/home/agi/projects/smartwear_v2/garment_udp_v2_reconnect_safe.py`
+- **3 终端全前台入口 & 隔离只读测试工具**：
   - 终端 1（衣服 LFP）：`/home/agi/x2_sonic_live/term1_garment.sh`（按 Enter 摆 3 秒 T-Pose；Ctrl-C 自动释放蓝牙）
   - 终端 2（Policy 栈）：`/home/agi/x2_sonic_live/term2_policy.sh`（自动起 `watchdog` + `kplanner` + `--root-heading-band-deg 0` 的 `x2_smpl_token_service`，前台调 `deploy_x2.sh onbot`）
   - 终端 3（运控切换 + 监控）：`/home/agi/x2_sonic_live/term3_switch.sh`（1 Hz 全链监控 + 按 Enter 切换 `kplanner` 站立 ↔ 全身 SONIC）
-- **已修复并备份的生产文件**（原件备份为 `*.bak_20261116_pre_sonic_fix`，源码与 diff 在 [script/x2_sonic_live/](../script/x2_sonic_live/README.md)）：
-  - `/home/agi/projects/project_tools/x2_smpl_wholebody/garment_intent_adapter.py`：`SMPLXConverter` Y-up → SONIC Z-up 转换（默认 `source_frame="smpl_fk"`）
-  - `/home/agi/projects/project_tools/x2_smpl_wholebody/x2_smpl_token_service.py`：`sync_and_tick` 对齐 `time.monotonic()` 时钟
-  - `/home/agi/projects/smartwear_v2/garment_udp_v2_reconnect_safe.py`：`SIGINT`/`SIGTERM`/`atexit` 调用 `close_all()` + `bluetoothctl disconnect` 释放 BLE
+- **FGP 预览 & MorphMimic 基础工作区（含模型与环境）**：`/home/agi/x2_morph_human_20261113/`
+
+#### 板端 `run` 用户下（FGP 分阶段实验 & 一键 Morph 检查）
+- **一键穿戴 MorphMimic 只读检查入口**：`/home/run/x2-garment-check`
+- **近期 FGP 分阶段 / 独立收集临时验收目录**（未覆盖正式安装）：`/home/run/x2-fgp-stage-candidate.AMQOAO`、`/home/run/x2-fgp-collector.QM5832`、`/home/run/x2-orin-recovery-readonly.nsjguU`
 - **已实测指标（今晚真机闭环 `rec_5122_000`..`rec_5360_024`）**：
   - 连续稳定接管 `247.6 s`（0 次误断连）；
   - 展开转身净跨度人 `-263.9°` / 机器人 `-268.0°`，航向误差均值 `5.2°`（P95 `12.5°`）；

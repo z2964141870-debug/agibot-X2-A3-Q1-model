@@ -1,5 +1,11 @@
 # 候选研究想法
 
+## 2026-11-19 H002-SONIC v3 大规模 1,927-Clip、4,096-Env Push+Delay RL 与时序因果优势实证
+
+| 假设 / 模块 | 对应核心结论与创新深度 | 已核实测证据（`200-HO / Push&Delay Sweep / 7.3m Racetrack + 10.4m Fig-8 / Falling-Box`）与边界 |
+| --- | --- | --- |
+| **H002-SONIC v3: 1,727-Clip + 4,096-Env Push+Delay RL + Wide-Batch 4-Modality Causal Tokenizers** | （1）闭环 Push+Delay RL 结合冻结 `TokenHead` 对多模态宽蒸馏显著拉开 Stress（`+10~14 pp`）与 `40ms` 延迟耐受（`+34 pp`）；（2）**CGFA** 支撑 `7–10m` 连续转弯闭环回到原点（`5–20 cm`）；（3）**0ms 因果对齐** 在高台落箱突发响应物理压制 `120–200ms` 未来窗缓冲基线 | 200-HO Nom `96.0–97.5%`、Stress **`92.0–95.5%`**；CPU 50-HO **`98.0%`** / 20-STR **`95.0%`**；H2H `0.70m/s+40ms` `398/398`（v2 跌倒）；24 BVH `95.8%`；回环误差 `5.0cm` (Race) / `20.0cm` (Fig8)；落箱 `VR3Pt 90% / SMPL 85%` vs `120ms 15% / 200ms 0%`。边界：`V3_RobotPose` 落箱 `0%`（推扰先验抑制双臂突发屈曲），需 Stage A 保留双臂突发接握原语（[完整报告](../README_H002_SONIC_V3_MASSIVE_SCALING_20261119.md)） |
+
 ## 2026-11-19 H002-SONIC v2 多模态因果 Token 架构与控制-估计物理边界实证
 
 | 假设 / 模块 | 对应核心结论与创新深度 | 已核实测证据（`250 Clips / 50 Held-Out / 8 Raw BVH / 24s Switch`）与边界 |

@@ -1,0 +1,116 @@
+{
+  "platform": "Linux-6.8.0-40-generic-x86_64-with-glibc2.35",
+  "cpu_affinity": [
+    12
+  ],
+  "ort_version": "1.31.0",
+  "provider": [
+    "CPUExecutionProvider"
+  ],
+  "intra_threads": 1,
+  "inter_threads": 1,
+  "load_before": [
+    1.61083984375,
+    10.3359375,
+    16.59326171875
+  ],
+  "samples_per_path": 1000,
+  "clip": "ho_lafan_walk2_subject3_50hz.npz",
+  "base_sha256": {
+    "config/q1_deploy_config.json": "fd058f4caaa7334b5846c07ec8ef4e2dfedf0248bf39a2ee792a6454f8409db8",
+    "onnx/q1_h002_token_head.onnx": "e0455c0b50db1c1fdc8aed1e0d283820d3fd64174b261093d99dc4430ff3e80f",
+    "onnx/q1_tok_human_smpl.onnx": "7dab4d9d056e797c1ae8631d6c15ffd5fc3324234c86b821b253fcbb46adfb0e",
+    "onnx/q1_tok_planner_cmd.onnx": "9c33375e028e634c908c5b2a6a6d5523b512319978076a8de12ed771a33ca1b4",
+    "onnx/q1_tok_robot_pose.onnx": "9ee7a429347d0c9076657c6bb47e4635ee6b149cdc2504370fbfcecf09e6e6d9",
+    "onnx/q1_tok_vr_3pt.onnx": "ff0586884a3f1b0aa33883145945be8f32e9cd91110891ffc1d7b41aa97e06ba"
+  },
+  "period_ms": 20.0,
+  "paths": {
+    "robot_pose_track": {
+      "p50": 2.2158759999999997,
+      "p95": 3.5921498999999995,
+      "p99": 3.9310034299999996,
+      "max": 6.021502,
+      "over_2p5ms": 355
+    },
+    "robot_pose_recover": {
+      "p50": 0.37055499999999997,
+      "p95": 0.6554641999999999,
+      "p99": 0.8412816999999999,
+      "max": 0.988189,
+      "over_2p5ms": 0
+    },
+    "robot_pose_handoff": {
+      "p50": 2.4737985,
+      "p95": 3.8435242999999994,
+      "p99": 4.29781448,
+      "max": 5.131957,
+      "over_2p5ms": 484
+    },
+    "human_smpl_track": {
+      "p50": 1.5699204999999998,
+      "p95": 2.6373090999999995,
+      "p99": 3.0285015899999994,
+      "max": 3.4125259999999997,
+      "over_2p5ms": 72
+    },
+    "human_smpl_handoff": {
+      "p50": 1.799535,
+      "p95": 3.0453112499999997,
+      "p99": 3.4237856399999997,
+      "max": 3.8634039999999996,
+      "over_2p5ms": 175
+    },
+    "vr_3pt_track": {
+      "p50": 1.543397,
+      "p95": 2.6775769499999997,
+      "p99": 2.9459793199999993,
+      "max": 4.2756739999999995,
+      "over_2p5ms": 90
+    },
+    "vr_3pt_handoff": {
+      "p50": 1.789709,
+      "p95": 2.93603685,
+      "p99": 3.19626019,
+      "max": 3.894497,
+      "over_2p5ms": 146
+    },
+    "planner_cmd_track": {
+      "p50": 1.3481670000000001,
+      "p95": 2.42639915,
+      "p99": 2.63489663,
+      "max": 2.940576,
+      "over_2p5ms": 31
+    },
+    "planner_cmd_handoff": {
+      "p50": 1.6152544999999998,
+      "p95": 2.72510865,
+      "p99": 3.15410533,
+      "max": 6.003069,
+      "over_2p5ms": 98
+    }
+  },
+  "flat_replay": {
+    "robot_pose": {
+      "ticks": 200,
+      "target_torque_sha256": "a3cd5ce940d0282ae73edd16fb345dce06dc15d701034f1ae17b6eef63cc3b3d"
+    },
+    "human_smpl": {
+      "ticks": 200,
+      "target_torque_sha256": "bf5d06f34eb7e9276e76db94daebb7d9c5ce8eb5e5f5da2738f24293af43abfe"
+    },
+    "vr_3pt": {
+      "ticks": 200,
+      "target_torque_sha256": "e41e463451adf72fad66ab59eee65766d229d106b14c949eb1e9e230df3707a0"
+    },
+    "planner_cmd": {
+      "ticks": 200,
+      "target_torque_sha256": "4c45fa02b2a3b47f8fffbc34e4500c63e3123a1d319fc2f3afef150482b845b8"
+    }
+  },
+  "load_after": [
+    1.203125,
+    5.845703125,
+    13.560546875
+  ]
+}

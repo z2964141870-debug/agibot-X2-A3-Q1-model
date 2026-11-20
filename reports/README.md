@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-20 [Q1 H003 独立倒地起身](README_Q1_H003_FALL_RECOVERY_20261120.md)。固定倒姿 22/24，动态接力 5/5，平地逐位一致。单核起身 P99 为 0.211 ms，完整交还为 4.225 ms。
+
 2026-11-15 [X2 共享 FGP 与 SONIC 回放](README_X2_FGP_SONIC_PREVIEW_20261115.md)。板端 150 帧生成 218 个 token 与策略动作，合成站立及零本体历史，实际控制暂停。
 
 2026-11-15 [FGP 接入 X2 SONIC 可行性](README_X2_FGP_SONIC_FEASIBILITY_20261115.md)。已核板端协议及模型，先离线对齐旧骨架转换和 token 观测，实控保持暂停。

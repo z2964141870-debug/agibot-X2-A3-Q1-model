@@ -1,0 +1,115 @@
+{
+  "platform": "macOS-26.5-arm64-arm-64bit",
+  "cpu_affinity": null,
+  "ort_version": "1.32.0",
+  "provider": [
+    "CPUExecutionProvider"
+  ],
+  "intra_threads": 1,
+  "inter_threads": 1,
+  "load_before": [
+    1.91455078125,
+    2.01123046875,
+    2.11181640625
+  ],
+  "samples_per_path": 1000,
+  "clip": "ho_lafan_walk2_subject3_50hz.npz",
+  "base_sha256": {
+    "config/q1_deploy_config.json": "fd058f4caaa7334b5846c07ec8ef4e2dfedf0248bf39a2ee792a6454f8409db8",
+    "onnx/q1_h002_token_head.onnx": "e0455c0b50db1c1fdc8aed1e0d283820d3fd64174b261093d99dc4430ff3e80f",
+    "onnx/q1_tok_human_smpl.onnx": "7dab4d9d056e797c1ae8631d6c15ffd5fc3324234c86b821b253fcbb46adfb0e",
+    "onnx/q1_tok_planner_cmd.onnx": "9c33375e028e634c908c5b2a6a6d5523b512319978076a8de12ed771a33ca1b4",
+    "onnx/q1_tok_robot_pose.onnx": "9ee7a429347d0c9076657c6bb47e4635ee6b149cdc2504370fbfcecf09e6e6d9",
+    "onnx/q1_tok_vr_3pt.onnx": "ff0586884a3f1b0aa33883145945be8f32e9cd91110891ffc1d7b41aa97e06ba"
+  },
+  "period_ms": 20.0,
+  "active_wait": true,
+  "paths": {
+    "robot_pose_track": {
+      "p50": 0.8244165,
+      "p95": 1.3787440999999998,
+      "p99": 1.55249676,
+      "max": 1.682292,
+      "over_2p5ms": 0
+    },
+    "robot_pose_recover": {
+      "p50": 0.06974999999999999,
+      "p95": 0.09654824999999999,
+      "p99": 0.18646582999999992,
+      "max": 0.657625,
+      "over_2p5ms": 0
+    },
+    "robot_pose_handoff": {
+      "p50": 0.889729,
+      "p95": 1.4086142499999998,
+      "p99": 1.69289166,
+      "max": 1.895708,
+      "over_2p5ms": 0
+    },
+    "human_smpl_track": {
+      "p50": 0.8613959999999999,
+      "p95": 1.04738125,
+      "p99": 1.1733144899999999,
+      "max": 1.396833,
+      "over_2p5ms": 0
+    },
+    "human_smpl_handoff": {
+      "p50": 0.858833,
+      "p95": 1.11207435,
+      "p99": 1.3968025899999998,
+      "max": 2.797834,
+      "over_2p5ms": 1
+    },
+    "vr_3pt_track": {
+      "p50": 0.7148749999999999,
+      "p95": 1.0053896,
+      "p99": 1.1391274999999998,
+      "max": 1.3921249999999998,
+      "over_2p5ms": 0
+    },
+    "vr_3pt_handoff": {
+      "p50": 0.86125,
+      "p95": 1.0828295,
+      "p99": 1.2083130899999996,
+      "max": 1.437584,
+      "over_2p5ms": 0
+    },
+    "planner_cmd_track": {
+      "p50": 0.708,
+      "p95": 0.9369777499999999,
+      "p99": 1.11824483,
+      "max": 1.6767079999999999,
+      "over_2p5ms": 0
+    },
+    "planner_cmd_handoff": {
+      "p50": 0.754437,
+      "p95": 1.0088149,
+      "p99": 1.19817367,
+      "max": 1.378458,
+      "over_2p5ms": 0
+    }
+  },
+  "flat_replay": {
+    "robot_pose": {
+      "ticks": 200,
+      "target_torque_sha256": "e35f527e420c849dfdb9fc10e8c1de6c3e265c57f31ca72018330d28319cc299"
+    },
+    "human_smpl": {
+      "ticks": 200,
+      "target_torque_sha256": "13ce866f12d951893f12cfd6a071a353c7f15a8e4abd386dfbd4bd0287124c27"
+    },
+    "vr_3pt": {
+      "ticks": 200,
+      "target_torque_sha256": "f4a21debae7433d2f848088a2eb3a23dfd4a9912ebb0493707d4f2e83d962f76"
+    },
+    "planner_cmd": {
+      "ticks": 200,
+      "target_torque_sha256": "7b2ad2597513fd5a2c69522f983403c61cfab2e432fced754911ae56b1770e24"
+    }
+  },
+  "load_after": [
+    2.01708984375,
+    2.0009765625,
+    2.078125
+  ]
+}

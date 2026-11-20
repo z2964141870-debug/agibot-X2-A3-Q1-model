@@ -1,5 +1,20 @@
 # 候选研究想法
 
+## 2026-11-20 候选与既有工作的边界
+
+| 来源 | 对应瓶颈与安排 | 证据 / 限制 |
+| --- | --- | --- |
+| [XMimic/XSoma](https://arxiv.org/html/2611.20452v1)及[SuperMimic固定源码](https://github.com/HybridRobotics/supermimic/tree/698ea39bc901d8fe733b3c8621df3199d241f7e4) | 现在读计算链、采样、奖励/动力学分工和计时；基线后单变量候选 | 原文、两README、作者旧新21文本204306B；四H100的0.86min排除启动/编译/评测，单卡约1.3倍。源码去额外动作噪声/条件bf16未在项目验证；不换框架 |
+| [学习仿真器审计](https://arxiv.org/html/2611.23118v1) | 现在区分一步、自身多步和闭环成功；H002/H003同样需分列固定/变延迟 | 原文方法/主要结果与未决结论；18微调模型13策略失败为作者报告，ANYmal单步态仿真。ensemble排序非概率校准，非Q1因果结论 |
+| [MOSAIC](https://arxiv.org/html/2611.22894v1) | 基线后拆安装旋转/身份与姿态误差；不替换现衣服标定 | 原文/作者页，code coming soon；固定六部位/恒定偏移，松衣滑动未建模，腕手评测不作精度证据 |
+| [WinDEX](https://arxiv.org/html/2611.21143v1) | 基线后借鉴头环双目同钟IMU、世界系腕轨迹和独立GT | 部分原文方法/实验/局限及作者页；流式171FPS腕42.7mm，命令30Hz；离线世界37.29mm不可混用。三段动捕、长遮挡/跨设备有限，许可/权重未核 |
+| [ReLoco](https://arxiv.org/abs/2611.23916v1)、[ECHO](https://arxiv.org/abs/2611.25778v1)、[PGX](https://arxiv.org/abs/2611.26596v1) | 既有恢复、历史残差和物理谓词交还的相关工作线索 | 仅摘要；未审资产，不以统一恢复、历史/残差或状态机本身主张新颖；不否定用户已验证kplanner |
+| [AFFECT](https://arxiv.org/abs/2611.25980v1)、[CauSyncVLA](https://arxiv.org/abs/2611.25667v1)、[QTOP](https://arxiv.org/abs/2611.20791v1)、[MoViC](https://arxiv.org/abs/2611.19998v1) | 动作响应、执行历史补偿、多任务干扰及低频视觉桥接，基线后再审 | 仅摘要，不把视觉操作/分布优势或外推直接等同全身接触梯度、真实延迟补偿 |
+| [Awaken-HI](https://arxiv.org/abs/2611.26420v1)、[MixReact](https://arxiv.org/abs/2611.26218v1) | 人体经验与多模态条件背景 | 仅摘要；大规模声明不转为数据门槛，人体仿真反应非本体部署证明 |
+
+本期新增研究假设0。Q1最新H002/H003记录已包含接触/估计协同、因果多模态、动作历史、延迟与控制权切换；本次只补相关工作，不重命名为新创新，不运行其方案。main保存通用研究历史，Q1保留自己的工程候选。原始日期和核验层级见[清单](../../data/manifests/research_watch_check_20261120.json)。
+
+
 ## 2026-11-19 H002-SONIC v3 大规模 1,927-Clip、4,096-Env Push+Delay RL 与时序因果优势实证
 
 | 假设 / 模块 | 对应核心结论与创新深度 | 已核实测证据（`200-HO / Push&Delay Sweep / 7.3m Racetrack + 10.4m Fig-8 / Falling-Box`）与边界 |

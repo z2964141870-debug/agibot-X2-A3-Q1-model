@@ -38,3 +38,22 @@ py=../../../.venv/bin/python
 "$py" bundle.py
 MUJOCO_GL=egl __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json "$py" render.py
 ```
+
+## 遥操全程在线的配对复核与基线备份
+
+固定两个留出种子 251233、251257，同一初态、同一推力、同一遥操输入时序，各运行旧版与独占 recovery。48 次静态倒姿中，旧版 48 次交还，2 次在交还前连续半秒满足站稳真值；新版 47 次交还，47 次全部满足，另一次继续持有控制权。20 次行走受推中两版各有 16 次真实倒地，交还前连续站稳分别为 9/16 与 16/16。两版均交还的样本里，新版交还时间的配对中位增量分别是 0.82 秒和 0.62 秒。[配对逐试次结果](evidence/q1_h003_autonomous_recovery_20261120/matched_results.json)
+
+基线标签为 `q1-recovery-baseline-20261120`。在 yu-3090 和 Mac 各保留一份实验归档，含独立运行包、权重、原速回放、原始轨迹及两版对照脚本。503 个文件归档时逐件校验，两端核对整个归档的 SHA-256。[归档位置与校验值](evidence/q1_h003_autonomous_recovery_20261120/backup.json)
+
+复现配对实验时，按上文设置环境，在新实验目录内分别运行两组、两个种子及两种控制器，再运行计分脚本。
+
+```sh
+for arm in legacy exclusive; do
+  for seed in 251233 251257; do
+    for group in static push; do
+      Q1_STABILITY_ARM="$arm" "$py" compare_online_run.py test "$group" "$seed"
+    done
+  done
+done
+"$py" compare_online_score.py
+```

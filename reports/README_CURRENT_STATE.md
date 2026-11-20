@@ -1,5 +1,7 @@
 # YUANQI 当前状态与下一步
 
+2026-11-20 [Q1 起身交还后的步态分叉实验](README_Q1_H003_HANDOFF_GAIT_20261120.md)。0.30 秒步行参考候选在新增 20 次扰动中通过 18 次，原版通过 16 次；共同成功样本的前向速度波动降低，横滚改善尚不一致。
+
 2026-11-20 [Q1 H003 独立倒地起身](README_Q1_H003_FALL_RECOVERY_20261120.md)。固定倒姿 22/24，动态接力 5/5，平地逐位一致。单核起身 P99 为 0.211 ms，完整交还为 4.225 ms。
 
 2026-11-19 [Q1 H002-SONIC v3 1927 片段扩展、4,096-Env Push+Delay RL 与闭环绕圈+高台落箱 0ms 接箱验证](README_H002_SONIC_V3_MASSIVE_SCALING_20261119.md)（[证据清单](../data/manifests/q1_h002_sonic_v3_20261119.json)）。将数据扩充至 `1727 Train / 200 Held-Out`（`486,571` 帧）+ `24` 条零 IK 原始 `.bvh`，经 `4,096` 并行 `mjwarp` Push+Delay RL 与 `4,096`-batch 蒸馏在 **200-HO Hardened Stress** 取得 **`92.0–95.5%`**（v2 `78.0–85.5%`，slip 减半至 `168.8–191.9 mm/s`）；CPU MuJoCo 3.11 `50-HO` 全模态 **`98.0%`**、`20-STR` **`95.0%`**、`H2H 0.70m/s+40ms` **`398/398` 完赛**（v2 于 `129/398` 跌倒）、`24 Raw BVH` `23/24=95.8%`、`30s` 四模态热切换+Watchdog `1500/1500`（`0 OOB`）。两项新困难基准：`7.25m` Racetrack 回环误差 **`5.0 cm`**、`10.44m` Figure-8 回环 **`20.0 cm`**（v2 跌倒，`Unfiltered DR` 均跌倒）；`20-Trial` 高台刚体落箱实测 `V3_VR3Pt 90%`、`V3_HumanSMPL 85%` vs `SONIC-Fut(120ms) 15%` 与 `SuperMimic(200ms) 0%`（同时披露 `V3_RobotPose` 接箱 `0%` 的上肢保守局限）。

@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "task": "Q1 PlannerCmd lateral strafe calibration (frozen V2b TokenHead)",
+  "date": "2026-11-21",
+  "timezone": "Asia/Shanghai",
+  "host": "yu-3090",
+  "status": "simulation_verified_deploy_candidate_not_installed",
+  "codec_fingerprint": "33f64eaefe80c12b35d7bd0b8bfbf641a3a8d463e9979ea448b7ba79788f13f8",
+  "frozen_dependencies": {
+    "token_head_onnx": {
+      "path": "/home/yu/projects/Q1_deploy/onnx/q1_h002_token_head.onnx",
+      "sha256": "e0455c0b50db1c1fdc8aed1e0d283820d3fd64174b261093d99dc4430ff3e80f"
+    },
+    "deploy_planner_baseline_onnx": {
+      "path": "/home/yu/projects/Q1_deploy/onnx/q1_tok_planner_cmd.onnx",
+      "sha256": "6a989b2b02d35f90d3dc663161386d284adb4ed0c1e8c0bc0183f6c217d51a09",
+      "modified": false
+    },
+    "v2b_bundle_pt": "/home/yu/projects/SuperMimicHP/runs/h002_sonic_v2/checkpoints/h002_sonic_v2_bundle.pt",
+    "base_anchors_npz": "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal/planner_cem_anchors_true_cgfa.npz",
+    "hard_floor_xml": "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal/xml/q1_hard_floor_sim.xml",
+    "deploy_config_json": "/home/yu/projects/Q1_deploy/config/q1_deploy_config.json"
+  },
+  "scripts": {
+    "eval_strafe_suite.py": {
+      "path": "/home/yu/projects/agibot-X2-A3-Q1-model/script/q1_h003_planner_strafe/eval_strafe_suite.py",
+      "sha256": "72756885169676ba2bc221a6d975fe4e0e0bfd72d79b12190c4184f13ccc5e99"
+    },
+    "calibrate_strafe_planner.py": {
+      "path": "/home/yu/projects/agibot-X2-A3-Q1-model/script/q1_h003_planner_strafe/calibrate_strafe_planner.py",
+      "sha256": "82bb06023b90c306aa80c27d8e6d0bf6c2e3525bf258faa436ce41d35166f846"
+    }
+  },
+  "runs": {
+    "v1_audit": {
+      "run_dir": "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_20261121",
+      "argv": [
+        "/home/yu/projects/SuperMimicHP/.venv/bin/python",
+        "/home/yu/projects/agibot-X2-A3-Q1-model/script/q1_h003_planner_strafe/calibrate_strafe_planner.py",
+        "--out-dir",
+        "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_20261121"
+      ],
+      "outcome": "not_accepted_stop_phase_falls_left_and_0.499_mirror_at_0.20",
+      "wall_seconds": 2453.79,
+      "perturbed_delayed_2ms": "22/24",
+      "onnx": {
+        "path": "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_20261121/onnx/q1_tok_planner_cmd.onnx",
+        "sha256": "a680180167714f6a0eda346b4445ad4fcbe676ef80c0e6089c171e991f034646"
+      },
+      "anchors_npz": {
+        "path": "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_20261121/anchors_strafe_2ms.npz",
+        "sha256": "eeb38f7e251b169394c52ee8df3fd2a102386ccdb6e285335207f5a5e2e656c6"
+      }
+    },
+    "v2_candidate": {
+      "run_dir": "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_v2_20261121",
+      "argv": [
+        "/home/yu/projects/SuperMimicHP/.venv/bin/python",
+        "/home/yu/projects/agibot-X2-A3-Q1-model/script/q1_h003_planner_strafe/calibrate_strafe_planner.py",
+        "--out-dir",
+        "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_v2_20261121",
+        "--init-anchors-npz",
+        "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_20261121/anchors_strafe_2ms.npz",
+        "--refine-keys",
+        "strafe_l010,strafe_l015,strafe_l020"
+      ],
+      "outcome": "passed_all_simulation_gates",
+      "wall_seconds": 890.81,
+      "artifacts": {
+        "onnx": {
+          "path": "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_v2_20261121/onnx/q1_tok_planner_cmd.onnx",
+          "bytes": 1030628,
+          "sha256": "ce0aa0a49666515e0b47dd200995fecc8980cd3bcdd41149fbc4824fb92679e5",
+          "pt_vs_onnx_max_abs_diff": 1.7285346984863281e-06
+        },
+        "anchors_npz": {
+          "path": "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_v2_20261121/anchors_strafe_2ms.npz",
+          "sha256": "2cb482beed622f398da5a3a5c41506a18dddb4965c484d23a208aba888ef101a"
+        },
+        "calibration_summary_json": {
+          "path": "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_v2_20261121/calibration_summary.json",
+          "sha256": "4e4780701ce0e39c261da9cbd94da0d65930bca8ed078a38cd74e8cd550c2123"
+        },
+        "eval_strafe_report_json": {
+          "path": "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_v2_20261121/eval_strafe_report.json",
+          "sha256": "e7c981fbfbc33fa953597e32b26377a72ce8d9b333948707cb3da59b0b2ea20d"
+        },
+        "train_curve_csv": {
+          "path": "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_v2_20261121/train_curve.csv",
+          "sha256": "54db8d036652a861e65f9da6587c7209474b12800ea2f3e53a410b78766a2793"
+        },
+        "train_curve_png": {
+          "path": "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_v2_20261121/train_curve.png",
+          "sha256": "d848984d9046737064fec05f57f4ab37a2f84623c0c04b3de1599b1eb70bc2da"
+        },
+        "video_1x_mp4": {
+          "path": "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_v2_20261121/q1_strafe_16s_1x2.mp4",
+          "sha256": "53d24e1815686016663be16e84e0b9c357b234eb402d57a4fb6d6ae7b1e01a13",
+          "codec": "h264",
+          "width": 1280,
+          "height": 540,
+          "fps": "25/1",
+          "nb_frames": 438,
+          "duration_s": 17.52
+        },
+        "qc_png": {
+          "path": "/home/yu/projects/SuperMimicHP/runs/h003_v2b_planner_cal_strafe_v2_20261121/q1_strafe_qc.png",
+          "sha256": "992a07ab49e24f5905be2f86aa72e3ff0544157c8174e401b9a3ed1a1851b69a"
+        }
+      }
+    }
+  },
+  "metrics_comparison_old_vs_v2": {
+    "smoke_latency_single_thread": {
+      "old": {"p50_ms": 0.5058, "p95_ms": 0.8265, "oob": 0, "max_tau_nm": 36.0},
+      "v2": {"p50_ms": 0.5335, "p95_ms": 1.1116, "oob": 0, "max_tau_nm": 36.0}
+    },
+    "nominal_2ms_lateral_sweep_12_speeds": {
+      "old": {
+        "survived": "10/12",
+        "falls": ["vy_+0.10@5.10s", "vy_+0.20@5.90s"],
+        "pd_oob_total": 0,
+        "dy_m": {
+          "vy_-0.20": -0.2201, "vy_-0.15": 0.0031, "vy_-0.12": -0.0133, "vy_-0.10": -0.0212, "vy_-0.08": -0.0294, "vy_-0.05": -0.0446,
+          "vy_+0.05": 0.0391, "vy_+0.08": 0.0298, "vy_+0.10": 0.7302, "vy_+0.12": 0.4892, "vy_+0.15": 0.3051, "vy_+0.20": 0.7885
+        },
+        "mirror_disp_ratio": {"0.05": 0.877, "0.10": 0.029, "0.15": 0.010, "0.20": 0.279}
+      },
+      "v2": {
+        "survived": "12/12",
+        "falls": [],
+        "pd_oob_total": 0,
+        "fw_min_cm_worst": 11.13,
+        "roll_max_deg_worst": 8.53,
+        "dy_m": {
+          "vy_-0.20": -0.7894, "vy_-0.15": -0.5111, "vy_-0.12": -0.5319, "vy_-0.10": -0.4646, "vy_-0.08": -0.4037, "vy_-0.05": -0.1603,
+          "vy_+0.05": 0.1381, "vy_+0.08": 0.5732, "vy_+0.10": 0.4545, "vy_+0.12": 0.3824, "vy_+0.15": 0.3197, "vy_+0.20": 0.4805
+        },
+        "mirror_disp_ratio": {"0.05": 0.862, "0.10": 0.978, "0.15": 0.626, "0.20": 0.609}
+      }
+    },
+    "perturbed_stance_plus_10ms_delay_2ms": {
+      "old": {"passed": 4, "total": 24, "mean_roll_max_deg": 7.06, "worst_roll_max_deg": 49.52, "mean_fw_min_cm": 9.74, "worst_fw_min_cm": 0.01, "total_pd_oob": 0},
+      "v2": {"passed": 24, "total": 24, "mean_roll_max_deg": 4.5, "worst_roll_max_deg": 6.32, "mean_fw_min_cm": 13.32, "worst_fw_min_cm": 8.38, "total_pd_oob": 0}
+    },
+    "reversal_17_5s_2ms": {
+      "old": {
+        "completed": true, "pd_oob": 0, "max_qd_rad_s": 8.989,
+        "left_+0.10_1_4s_dy_m": 0.1678, "right_-0.10_5_8s_dy_m": -0.0311, "left_+0.15_9_12s_dy_m": 0.0567, "right_-0.15_13_16s_dy_m": -0.0121
+      },
+      "v2": {
+        "completed": true, "pd_oob": 0, "max_qd_rad_s": 10.224,
+        "left_+0.10_1_4s_dy_m": 0.2215, "right_-0.10_5_8s_dy_m": -0.357, "left_+0.15_9_12s_dy_m": 0.1101, "right_-0.15_13_16s_dy_m": -0.1767
+      }
+    },
+    "card04_18s_5ms": {
+      "old": {
+        "completed": true, "pd_oob_count": 0, "stage1_stand_0_3s_slip_mm_s": 5.38,
+        "stage2_walk_3_7s_disp_m": 1.454, "stage2_walk_3_7s_footW_cm": 16.38, "stage2_walk_3_7s_pitch_std_deg": 1.45,
+        "stage3_turn_7_11s_peak_yaw_deg": 51.04, "stage5_stop_15_18s_slip_mm_s": 11.19, "stage5_stop_last2s_drift_m": 0.003
+      },
+      "v2": {
+        "completed": true, "pd_oob_count": 0, "stage1_stand_0_3s_slip_mm_s": 3.22,
+        "stage2_walk_3_7s_disp_m": 1.559, "stage2_walk_3_7s_footW_cm": 14.31, "stage2_walk_3_7s_pitch_std_deg": 1.64,
+        "stage3_turn_7_11s_peak_yaw_deg": 50.17, "stage5_stop_15_18s_slip_mm_s": 10.96, "stage5_stop_last2s_drift_m": 0.026
+      }
+    }
+  }
+}

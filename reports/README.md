@@ -1,5 +1,7 @@
 # YUANQI 项目状态与重要文件
 
+2026-11-21研究：[两项简报](research/2026-11-21/README.md)／[检查](README_RESEARCH_CHECK_20261121.md)。RSL-RL6.0正式发行：SAC、返回接口和熵日志；mjlab参考速度按锚点朝向差对齐。仅固定源码静态核验，未升级或实验。已接入Q1并行正式Recovery复核：5ms→2ms静态24/24→0/24、旧2/5撤回，带电暂缓；kplanner现场基线保持。[发布收据](../data/manifests/research_watch_sync_20261121.json)，服务器镜像待。
+
 2026-11-20研究：[四项简报](research/2026-11-20/README.md)／[检查](README_RESEARCH_CHECK_20261120.md)。XMimic计时、模型闭环审计、MOSAIC标定、WinDEX手腕。已按Q1最新H002/H003仿真/控制权交还刷新背景，旧暂停摘要不代表当前主线；kplanner现场基线保留。本轮仅文献/静态源码，未实验或改默认。[发布收据](../data/manifests/research_watch_sync_20261120.json)，huanyu连接拒绝、镜像待。
 
 2026-11-15研究：[单项简报](research/2026-11-15/README.md)／[检查](README_RESEARCH_CHECK_20261115.md)。GigaBrain-WBC 11/14源码更新：分项损失、干净下一状态及根运动辅助头，未核新性能。最新Q1记录中X2 R2已唯一派发、终态待核，覆盖旧“仍准备”摘要；Q1仍先原人体审计曲线→已有多步WM，本轮无科学执行。[发布收据](../data/manifests/research_watch_sync_20261115.json)，服务器镜像待。

@@ -35,7 +35,8 @@ def render(run, path):
                 camera.lookat[:]=[data.qpos[0],data.qpos[1],.24]
                 renderer.update_scene(data,camera=camera)
                 image.paste(Image.fromarray(renderer.render()),(340*j,54))
-                label="passed" if r["success"] else "failed"
+                soft = r["success"] and r["peak_qd"] <= 12 and r["ground_mm"] <= 10 and r["self_mm"] <= 2
+                label="handoff + soft" if soft else ("handoff, over limit" if r["success"] else "no timely handoff")
                 pen.text((340*j+8,30),f'{r["pose"]}  trial {r["trial"]}  |  {label}',font=font,fill="white")
                 owner="recovery" if trace[max(0,index-1),4] else "teleoperation"
                 ending="  |  end, held frame" if tick >= len(poses) else ""

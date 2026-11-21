@@ -21,7 +21,7 @@ from q1_kinematics_np import quat_xyzw_to_mat, mat_to_quat_wxyz, yaw_angle_from_
 from q1_autonomous_recovery import Q1AutonomousRecovery
 
 
-def simulate(group, seed, out, expert, cadence, delay_ms, box, physics_ms):
+def simulate(group, seed, out, expert, cadence, delay_ms, box, physics_ms, *, record_trials=()):
     verify(BUNDLE)
     out.mkdir(parents=True)
     model = bench.scene(out / "scene")
@@ -69,6 +69,7 @@ def simulate(group, seed, out, expert, cadence, delay_ms, box, physics_ms):
         initial_self=max([max(0.,-float(c.dist)) for c in data.contact if geom_floor not in c.geom],default=0.)
         samples = deque([np.r_[data.qpos, data.qvel]] * 7, maxlen=7)
         peak_rows = []
+        state_history = []
         max_step = 0.
         pre_impact_fall = False
         est = bench.ContactGatedFootAnchorNP(kin)
@@ -81,6 +82,7 @@ def simulate(group, seed, out, expert, cadence, delay_ms, box, physics_ms):
         )
         ref = None
         anchors = []
+        release_checks = []
         captures = []
         releases = []
         kicks = []
@@ -130,7 +132,12 @@ def simulate(group, seed, out, expert, cadence, delay_ms, box, physics_ms):
             idx = min(tick, len(pos) - 1)
 
             def reanchor():
-                nonlocal ref, align, offset, yaw
+                nonlocal ref, align, offset, yaw, seen_stable
+                # The owner clears standing_confirmed after the release callbacks.
+                confirmed = bool(branch.standing_confirmed)
+                release_checks.append(dict(tick=tick, confirmed=confirmed, quiet_since_s=branch.since))
+                if confirmed and seen_stable is None:
+                    seen_stable = tick
                 anchors.append(tick)
                 yaw = rotz_np(yaw_angle_from_mat(R))
                 if static:
@@ -187,6 +194,9 @@ def simulate(group, seed, out, expert, cadence, delay_ms, box, physics_ms):
                     R_ref=yaw if static else rot[0],
                 )
             before = branch.owner
+            if i in record_trials:
+                state_history.append(np.r_[data.qpos, data.qvel, sent, measured,
+                                          branch.rise.expert.state[0,:4]])
             target, tau, g = branch.step(
                 R,
                 w,
@@ -224,7 +234,7 @@ def simulate(group, seed, out, expert, cadence, delay_ms, box, physics_ms):
                 upright and np.linalg.norm(data.qvel[:2]) < 0.20 and np.linalg.norm(true_w) < 0.80
             )
             if releases and releases[-1] == tick:
-                wrong += int(not calm)
+                wrong += int(not calm or not release_checks[-1]["confirmed"])
             quiet_run = quiet_run + 1 if g == 1 and calm else 0
             max_solo = max(max_solo, quiet_run)
             pd_oob += int(np.sum(abs(tau) > ctrl.eff + 1e-4))
@@ -317,6 +327,7 @@ def simulate(group, seed, out, expert, cadence, delay_ms, box, physics_ms):
             phases=phases,
             kicks=kicks,
             releases=releases,
+            release_checks=release_checks,
             takeovers=captures,
             wrong_release=wrong,
             solo_calm_s=max_solo * 0.02,
@@ -354,6 +365,8 @@ def simulate(group, seed, out, expert, cadence, delay_ms, box, physics_ms):
                               and len(releases) == 1 and wrong == 0 and phases[0]["post_1s"]))
         np.savez_compressed(out / f"trial_{i:02d}.npz", trace=trace, qpos=states,
                             initial=initial_qpos, peaks=peaks)
+        if state_history:
+            np.savez_compressed(out / f"control_state_{i:02d}.npz", states=state_history)
         reports.append(r)
     (out / "results.json").write_text(json.dumps(reports, indent=2))
 

@@ -28,6 +28,8 @@ def main(args):
             rng=np.random.default_rng(seed)
             m=holder["model"];d=mj.MjData(m);floor=m.geom("floor").id
             saved=[]
+            rejected=[]
+            settled=mj.MjData(m)
             for i in range(24):
                 kind=i//8
                 accepted=False
@@ -41,14 +43,28 @@ def main(args):
                     cr,sr=np.cos(roll/2),np.sin(roll/2);cp,sp=np.cos(pitch/2),np.sin(pitch/2);cy,sy=np.cos(yaw/2),np.sin(yaw/2)
                     quat=[cr*cp*cy+sr*sp*sy,sr*cp*cy-cr*sp*sy,cr*sp*cy+sr*cp*sy,cr*cp*sy-sr*sp*cy]
                     d.qpos[:]=np.r_[0,0,-.4,quat,joints];d.qvel[:]=0;mj.mj_forward(m,d)
-                    if any(c.dist<-.0005 and floor not in c.geom for c in d.contact):continue
+                    if any(c.dist<-.0005 and floor not in c.geom for c in d.contact):
+                        rejected.append(dict(trial=i,attempt=attempt+1,reason="initial_self_overlap"))
+                        continue
                     contacts=[c.dist for c in d.contact if floor in c.geom]
                     d.qpos[2]-=min(contacts)-.0002;mj.mj_forward(m,d)
+                    mj.mj_resetData(m,settled)
+                    settled.qpos[:]=d.qpos
+                    settled.ctrl[:]=d.qpos[7:]
+                    mj.mj_forward(m,settled)
+                    mj.mj_step(m,settled,nstep=50)
+                    ground=max((-1000*c.dist for c in settled.contact if floor in c.geom),default=0.)
+                    arm_leg=max((-1000*c.dist for c in settled.contact if floor not in c.geom),default=0.)
+                    if ground>10 or arm_leg>2:
+                        rejected.append(dict(trial=i,attempt=attempt+1,reason="settled_overlap",
+                                             ground_mm=ground,self_mm=arm_leg,qpos=d.qpos.tolist()))
+                        continue
                     accepted=True;break
                 if not accepted:raise RuntimeError(f"Cannot construct legal fall {seed}/{i}")
                 saved.append(dict(pose=("prone","supine","side")[kind],attempts=attempt+1,root_z=float(d.qpos[2]),qpos=d.qpos.tolist()))
                 yield saved[-1]["pose"],d.qpos.copy()
             (out/"initialization.json").write_text(json.dumps(saved,indent=2))
+            (out/"rejected_initializations.json").write_text(json.dumps(rejected,indent=2))
         eval_core.bench.poses=poses
         init="hardware-shaped legal fallen starts"
     if args.catch:

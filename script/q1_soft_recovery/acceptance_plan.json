@@ -1,0 +1,56 @@
+{
+  "status": "unexecuted_final_acceptance",
+  "robot": "Q1",
+  "physics_ms": 2,
+  "control_ms": 20,
+  "observation_delay_ms_assumed": 11,
+  "explicit_arm_leg_pairs": 96,
+  "sender": {
+    "target_box_from_default_rad": 2.0,
+    "increment_per_physics_step_rad": 0.2,
+    "torque_limits": "frozen Q1 deploy config"
+  },
+  "static": {
+    "reserved_seeds": [84101, 84102, 84103, 84104, 84105],
+    "per_seed": {"prone": 8, "supine": 8, "side": 8},
+    "total": 120,
+    "minimum_success": 114,
+    "minimum_success_per_orientation": 36,
+    "standing_confirmation_deadline_s_from_takeover": 15,
+    "incorrect_handbacks_maximum": 0,
+    "settled_initial_ground_maximum_mm": 10,
+    "settled_initial_arm_leg_maximum_mm": 2,
+    "illegal_initialization_handling": "reject before policy execution and retain rejection record; never replace a policy failure"
+  },
+  "push": {
+    "reserved_seeds": [84111, 84112, 84113],
+    "per_seed": 10,
+    "total": 30,
+    "minimum_actual_falls": 20,
+    "recovery_rate_over_actual_falls_minimum": 0.9,
+    "pre_impact_falls_are_failures": true
+  },
+  "recovery_peaks": {
+    "joint_speed_maximum_rad_s": 12,
+    "ground_penetration_maximum_mm": 10,
+    "arm_leg_penetration_maximum_mm": 2,
+    "include_failed_trials": true,
+    "additional_reporting": "also report full-trial peaks, including external impact and subsequent teleoperation"
+  },
+  "regressions": [
+    "offline operator: recovery owns control and stands independently",
+    "no teleoperation callback or reference progression while recovery owns control",
+    "fresh operator input and measured quiet standing required for handback",
+    "one reference reanchor per handback",
+    "repeated falls and stale operator input",
+    "normal unpushed walking remains stable"
+  ],
+  "deliverables": [
+    "original-speed videos",
+    "real training curves and numeric sources",
+    "checkpoint and ONNX hashes with equivalence verification",
+    "frozen runtime, robot, collision, sender and model configuration",
+    "3090 and Mac evidence copies with matching SHA-256",
+    "code, reports and manifests committed and pushed to Q1"
+  ]
+}

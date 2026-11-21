@@ -1,4 +1,6 @@
+2026-11-21 [Q1 FGP 仿真结果](README_Q1_FGP_HUMAN_SMPL_SIM_20261121.md)。FGP human_smpl 仿真链路可运行，默认及真实站姿初始化均未通过稳定闭环，暂不进入真机主动遥操。
 2026-11-21 [Q1 FGP human_smpl 适配](README_Q1_FGP_HUMAN_SMPL_ADAPTER_ALIGNMENT_20261121.md)。只读入口已通过 FGP fixture 和 Q1 反馈检查，真实 FGP 与主动低层接管待下一阶段。
+2026-11-21 [Q1 PlannerCmd 左右横移校准与 2 ms 验证](README_Q1_PLANNER_STRAFE_CAL_20261121.md)。冻结 V2b TokenHead 完成 `q1_tok_planner_cmd.onnx` 侧向校准（`ce0aa0a4`）：2 ms 扫参 12/12 无跌倒、扰动+10 ms 延迟 4/24→24/24、镜像比 0.609–0.978、17.5 s 连续换向全通、Card 04 18 s 无回归；候选留在 3090，尚未替换部署包，下一步推进自主倒地起身。
 2026-11-21 [Q1 Planner 真机反馈](README_Q1_PLANNER_HARDWARE_FEEDBACK_20261121.md)。低层键盘 planner 的命令链路已打通，前后走和转向稳定，左右横移多速度仍不稳定。原始 32 MB 监控日志保留在 `/home/yu/projects/Q1_deploy/real_logs/`，报告已提交 Q1 分支。
 # YUANQI 当前状态与下一步
 

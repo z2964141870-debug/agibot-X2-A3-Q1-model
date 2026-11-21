@@ -1,4 +1,6 @@
+2026-11-21 [Q1 FGP human_smpl 仿真遥操](README_Q1_FGP_HUMAN_SMPL_SIM_20261121.md)。保存的 FGP SMPL 驱动 Q1 MuJoCo 已接通，但当前闭环约 1–2 秒倾倒，结果和视频已留档。
 2026-11-21 [Q1 FGP human_smpl 遥操适配对齐](README_Q1_FGP_HUMAN_SMPL_ADAPTER_ALIGNMENT_20261121.md)。新增 FGP HTTP 线程、SMPL 50 Hz 重采样和只读桥接入口，fixture 验证无 HAL 命令发布。
+2026-11-21 [Q1 PlannerCmd 左右横移校准与 2 ms 验证](README_Q1_PLANNER_STRAFE_CAL_20261121.md)。冻结 V2b TokenHead，在 2 ms 物理+扰动+10 ms 延迟下重新标定侧向锚点并加入 `±vy→0` 减速斜坡：12 组名义横移 12/12 无跌倒、扰动+延迟由 4/24 升至 24/24、镜像比 0.609–0.978、Card 04 18s 保持全通，候选 ONNX 留在 3090 待部署复核。
 2026-11-21 [Q1 Planner 真机反馈与模型训练摘要](README_Q1_PLANNER_HARDWARE_FEEDBACK_20261121.md)。低层命令链路、站立承重、前后走和转向已验证；左右横移在多组速度下仍不稳定，已整理真机监控与离线侧向评估。
 2026-11-21 [Q1 柔和自主起身开发验证](README_Q1_SOFT_RECOVERY_20261121.md)。追加复评：侧卧局部避碰、侧卧+承重反馈组合和 phase_fit 候选均未形成可采纳模型，正式验收未启动。
 # YUANQI 项目状态与重要文件

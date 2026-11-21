@@ -1,0 +1,1964 @@
+{
+  "archive": {
+    "path": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_final_acceptance_20261121.tar.gz",
+    "bytes": 16967838,
+    "sha256": "635d7e30523eae3715006151bed19b70a4c77f6992276ecc42ba46718221d782",
+    "sha256_file": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_final_acceptance_20261121.tar.gz.sha256",
+    "mac_copy_status": "not_executed_on_sandbox_no_mac_ssh_host_in_config"
+  },
+  "final_acceptance_report": {
+    "status": "partial_fail_see_gates",
+    "overall_strict_acceptance_pass": false,
+    "acceptance_plan_sha256": "01edf19eb3858bbbf2a3a9e7510b69fa13b793a0fc33a43f8bbb907a4a6e8131",
+    "expert": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/unified_v3_08/expert.onnx",
+    "expert_sha256": "5d38cfcb3c31ad1103bd8897d4c8fad97472a04d5e258106732dd3a409b842ee",
+    "gate_config": {
+      "calm_upright_gate": {
+        "h_min": 0.355,
+        "up_z_min": 0.965,
+        "rms_leg_max": 0.35,
+        "w_norm_max": 0.7,
+        "qd_rms_max": 0.95,
+        "calm_ticks": 4
+      },
+      "blend_ticks": 16
+    },
+    "onnx_verification": {
+      "max_abs_diff": 2.384185791015625e-07,
+      "cpu_1t_p50_ms": 0.17763649520929903,
+      "cpu_1t_p95_ms": 0.18301449381397106
+    },
+    "gates": {
+      "static_total_ge_114": true,
+      "static_prone_ge_36": true,
+      "static_supine_ge_36": true,
+      "static_side_ge_36": true,
+      "static_confirm_le_15s": true,
+      "static_wrong_handbacks_0": true,
+      "static_legal_settled_starts_120": true,
+      "push_actual_falls_ge_20": true,
+      "push_recovery_rate_ge_90pct": true,
+      "push_pre_impact_falls_0": true,
+      "push_wrong_handbacks_0": true,
+      "owned_peak_qd_le_12_incl_failed": false,
+      "owned_ground_mm_le_10_incl_failed": false,
+      "owned_arm_leg_mm_le_2_incl_failed": false,
+      "regression_offline_clean": true,
+      "regression_flat_no_takeover": true,
+      "regression_ownership_stale_deterministic": true,
+      "regression_double_clean": true
+    },
+    "static_unseen": {
+      "total": 120,
+      "timely_success": 116,
+      "timely_rate": 0.9666666666666667,
+      "simultaneous_soft_success": 114,
+      "soft_rate": 0.95,
+      "within_qd_12": 120,
+      "within_ground_10": 119,
+      "within_self_2": 119,
+      "wrong_release": 0,
+      "max_confirm_s": 15.32,
+      "max_confirm_s_all_confirmed": 15.32,
+      "max_confirm_s_successful": 14.42,
+      "all_timely_within_deadline": true,
+      "legal_settled_starts": 120,
+      "initial_ground_mm_max": 3.8120101511578337,
+      "initial_arm_leg_self_mm_max": 0.0,
+      "initial_all_self_mm_max": 0.0,
+      "rejected_initializations_total": 1,
+      "rejected_reasons": {
+        "settled_overlap": 1
+      },
+      "pd_oob": 0,
+      "teleop_calls_while_owned": 0,
+      "max_command_step": 0.20000004768371582,
+      "owned_peaks_including_failed": {
+        "peak_qd": 11.703927608925817,
+        "ground_mm": 10.063930458793381,
+        "self_mm": 2.4256331701771883
+      },
+      "full_trial_peaks_including_teleop": {
+        "trial_peak_qd": 11.703927608925817,
+        "trial_ground_mm": 10.063930458793381,
+        "trial_self_mm": 2.4256331701771883
+      },
+      "by_pose": {
+        "prone": {
+          "succ": 40,
+          "soft": 40,
+          "n": 40,
+          "worst_qd": 11.703927608925817,
+          "worst_gnd": 9.8138683953422,
+          "worst_self": 0.0,
+          "max_confirm_s": 14.42
+        },
+        "supine": {
+          "succ": 38,
+          "soft": 38,
+          "n": 40,
+          "worst_qd": 10.13096560648985,
+          "worst_gnd": 9.738856373482003,
+          "worst_self": 0.0,
+          "max_confirm_s": 15.32
+        },
+        "side": {
+          "succ": 38,
+          "soft": 36,
+          "n": 40,
+          "worst_qd": 11.126345035221306,
+          "worst_gnd": 10.063930458793381,
+          "worst_self": 2.4256331701771883,
+          "max_confirm_s": 12.96
+        }
+      },
+      "per_seed": [
+        {
+          "seed": 84101,
+          "success": 22,
+          "soft_success": 22,
+          "n": 24,
+          "rejected_init_attempts": 0,
+          "max_init_attempts": 1,
+          "wrong_release": 0,
+          "max_confirm_s": 15.32,
+          "max_confirm_s_successful": 12.96,
+          "owned_peak_qd": 11.535549546816029,
+          "owned_ground_mm": 9.750548215609285,
+          "owned_self_mm": 0.40519753597390124,
+          "trial_peak_qd": 11.535549546816029,
+          "trial_ground_mm": 9.750548215609285,
+          "trial_self_mm": 0.40519753597390124,
+          "by_pose": {
+            "prone": {
+              "succ": 8,
+              "soft": 8,
+              "n": 8,
+              "worst_qd": 11.535549546816029,
+              "worst_gnd": 9.366912996089848,
+              "worst_self": 0.0,
+              "max_confirm_s": 10.42,
+              "max_confirm_s_successful": 10.42
+            },
+            "supine": {
+              "succ": 7,
+              "soft": 7,
+              "n": 8,
+              "worst_qd": 10.13096560648985,
+              "worst_gnd": 8.732700387173157,
+              "worst_self": 0.0,
+              "max_confirm_s": 15.32,
+              "max_confirm_s_successful": 9.84
+            },
+            "side": {
+              "succ": 7,
+              "soft": 7,
+              "n": 8,
+              "worst_qd": 10.119411695259597,
+              "worst_gnd": 9.750548215609285,
+              "worst_self": 0.40519753597390124,
+              "max_confirm_s": 12.96,
+              "max_confirm_s_successful": 12.96
+            }
+          }
+        },
+        {
+          "seed": 84102,
+          "success": 24,
+          "soft_success": 22,
+          "n": 24,
+          "rejected_init_attempts": 1,
+          "max_init_attempts": 2,
+          "wrong_release": 0,
+          "max_confirm_s": 10.72,
+          "max_confirm_s_successful": 10.72,
+          "owned_peak_qd": 11.703927608925817,
+          "owned_ground_mm": 10.063930458793381,
+          "owned_self_mm": 2.4256331701771883,
+          "trial_peak_qd": 11.703927608925817,
+          "trial_ground_mm": 10.063930458793381,
+          "trial_self_mm": 2.4256331701771883,
+          "by_pose": {
+            "prone": {
+              "succ": 8,
+              "soft": 8,
+              "n": 8,
+              "worst_qd": 11.703927608925817,
+              "worst_gnd": 9.042087746731244,
+              "worst_self": 0.0,
+              "max_confirm_s": 9.68,
+              "max_confirm_s_successful": 9.68
+            },
+            "supine": {
+              "succ": 8,
+              "soft": 8,
+              "n": 8,
+              "worst_qd": 9.905388375710775,
+              "worst_gnd": 8.91846224519947,
+              "worst_self": 0.0,
+              "max_confirm_s": 7.54,
+              "max_confirm_s_successful": 7.54
+            },
+            "side": {
+              "succ": 8,
+              "soft": 6,
+              "n": 8,
+              "worst_qd": 10.55201698615228,
+              "worst_gnd": 10.063930458793381,
+              "worst_self": 2.4256331701771883,
+              "max_confirm_s": 10.72,
+              "max_confirm_s_successful": 10.72
+            }
+          }
+        },
+        {
+          "seed": 84103,
+          "success": 24,
+          "soft_success": 24,
+          "n": 24,
+          "rejected_init_attempts": 0,
+          "max_init_attempts": 1,
+          "wrong_release": 0,
+          "max_confirm_s": 10.9,
+          "max_confirm_s_successful": 10.9,
+          "owned_peak_qd": 11.141984788900734,
+          "owned_ground_mm": 9.738856373482003,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 11.141984788900734,
+          "trial_ground_mm": 9.738856373482003,
+          "trial_self_mm": 0.0,
+          "by_pose": {
+            "prone": {
+              "succ": 8,
+              "soft": 8,
+              "n": 8,
+              "worst_qd": 11.141984788900734,
+              "worst_gnd": 8.338586988491224,
+              "worst_self": 0.0,
+              "max_confirm_s": 9.56,
+              "max_confirm_s_successful": 9.56
+            },
+            "supine": {
+              "succ": 8,
+              "soft": 8,
+              "n": 8,
+              "worst_qd": 9.840886783409033,
+              "worst_gnd": 9.738856373482003,
+              "worst_self": 0.0,
+              "max_confirm_s": 7.66,
+              "max_confirm_s_successful": 7.66
+            },
+            "side": {
+              "succ": 8,
+              "soft": 8,
+              "n": 8,
+              "worst_qd": 11.126345035221306,
+              "worst_gnd": 8.981339974569662,
+              "worst_self": 0.0,
+              "max_confirm_s": 10.9,
+              "max_confirm_s_successful": 10.9
+            }
+          }
+        },
+        {
+          "seed": 84104,
+          "success": 23,
+          "soft_success": 23,
+          "n": 24,
+          "rejected_init_attempts": 0,
+          "max_init_attempts": 1,
+          "wrong_release": 0,
+          "max_confirm_s": 12.56,
+          "max_confirm_s_successful": 12.5,
+          "owned_peak_qd": 11.64442513778113,
+          "owned_ground_mm": 9.8138683953422,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 11.64442513778113,
+          "trial_ground_mm": 9.8138683953422,
+          "trial_self_mm": 0.0,
+          "by_pose": {
+            "prone": {
+              "succ": 8,
+              "soft": 8,
+              "n": 8,
+              "worst_qd": 11.64442513778113,
+              "worst_gnd": 9.8138683953422,
+              "worst_self": 0.0,
+              "max_confirm_s": 11.74,
+              "max_confirm_s_successful": 11.74
+            },
+            "supine": {
+              "succ": 7,
+              "soft": 7,
+              "n": 8,
+              "worst_qd": 9.736590815030013,
+              "worst_gnd": 9.125097752738554,
+              "worst_self": 0.0,
+              "max_confirm_s": 12.56,
+              "max_confirm_s_successful": 12.5
+            },
+            "side": {
+              "succ": 8,
+              "soft": 8,
+              "n": 8,
+              "worst_qd": 10.526599577567724,
+              "worst_gnd": 9.223267750037834,
+              "worst_self": 0.0,
+              "max_confirm_s": 10.8,
+              "max_confirm_s_successful": 10.8
+            }
+          }
+        },
+        {
+          "seed": 84105,
+          "success": 23,
+          "soft_success": 23,
+          "n": 24,
+          "rejected_init_attempts": 0,
+          "max_init_attempts": 1,
+          "wrong_release": 0,
+          "max_confirm_s": 14.42,
+          "max_confirm_s_successful": 14.42,
+          "owned_peak_qd": 11.122358409443402,
+          "owned_ground_mm": 9.551089087215502,
+          "owned_self_mm": 1.872375575959456,
+          "trial_peak_qd": 11.122358409443402,
+          "trial_ground_mm": 9.551089087215502,
+          "trial_self_mm": 1.872375575959456,
+          "by_pose": {
+            "prone": {
+              "succ": 8,
+              "soft": 8,
+              "n": 8,
+              "worst_qd": 11.122358409443402,
+              "worst_gnd": 9.551089087215502,
+              "worst_self": 0.0,
+              "max_confirm_s": 14.42,
+              "max_confirm_s_successful": 14.42
+            },
+            "supine": {
+              "succ": 8,
+              "soft": 8,
+              "n": 8,
+              "worst_qd": 9.91488877074785,
+              "worst_gnd": 8.18344360615171,
+              "worst_self": 0.0,
+              "max_confirm_s": 9.66,
+              "max_confirm_s_successful": 9.66
+            },
+            "side": {
+              "succ": 7,
+              "soft": 7,
+              "n": 8,
+              "worst_qd": 9.899732033525146,
+              "worst_gnd": 9.49911778734393,
+              "worst_self": 1.872375575959456,
+              "max_confirm_s": 12.6,
+              "max_confirm_s_successful": 12.6
+            }
+          }
+        }
+      ],
+      "failures_or_violations": [
+        {
+          "seed": 84101,
+          "trial": 15,
+          "pose": "supine",
+          "success": false,
+          "confirm_s": 15.32,
+          "takeovers": [
+            0
+          ],
+          "releases": [
+            816
+          ],
+          "peak_qd": 9.099964102555571,
+          "peak_qd_joint": "right_shoulder_pitch_joint",
+          "ground_mm": 8.611591669198424,
+          "self_mm": 0.0,
+          "all_self_mm": 0.0,
+          "trial_peak_qd": 9.099964102555571,
+          "trial_ground_mm": 8.611591669198424,
+          "trial_self_mm": 0.0
+        },
+        {
+          "seed": 84101,
+          "trial": 19,
+          "pose": "side",
+          "success": false,
+          "confirm_s": null,
+          "takeovers": [
+            0
+          ],
+          "releases": [],
+          "peak_qd": 9.687052383068869,
+          "peak_qd_joint": "right_shoulder_pitch_joint",
+          "ground_mm": 8.373270989505855,
+          "self_mm": 0.0,
+          "all_self_mm": 0.0,
+          "trial_peak_qd": 9.687052383068869,
+          "trial_ground_mm": 8.373270989505855,
+          "trial_self_mm": 0.0
+        },
+        {
+          "seed": 84102,
+          "trial": 18,
+          "pose": "side",
+          "success": true,
+          "confirm_s": 8.9,
+          "takeovers": [
+            0
+          ],
+          "releases": [
+            495
+          ],
+          "peak_qd": 10.55201698615228,
+          "peak_qd_joint": "right_hip_roll_joint",
+          "ground_mm": 7.592810540598679,
+          "self_mm": 2.4256331701771883,
+          "all_self_mm": 2.4256331701771883,
+          "trial_peak_qd": 10.55201698615228,
+          "trial_ground_mm": 7.592810540598679,
+          "trial_self_mm": 2.4256331701771883
+        },
+        {
+          "seed": 84102,
+          "trial": 23,
+          "pose": "side",
+          "success": true,
+          "confirm_s": 10.620000000000001,
+          "takeovers": [
+            0
+          ],
+          "releases": [
+            581
+          ],
+          "peak_qd": 9.760488528990614,
+          "peak_qd_joint": "right_shoulder_roll_joint",
+          "ground_mm": 10.063930458793381,
+          "self_mm": 0.0,
+          "all_self_mm": 0.0,
+          "trial_peak_qd": 9.760488528990614,
+          "trial_ground_mm": 10.063930458793381,
+          "trial_self_mm": 0.0
+        },
+        {
+          "seed": 84104,
+          "trial": 12,
+          "pose": "supine",
+          "success": false,
+          "confirm_s": 12.56,
+          "takeovers": [
+            0
+          ],
+          "releases": [],
+          "peak_qd": 9.215794867406235,
+          "peak_qd_joint": "right_shoulder_pitch_joint",
+          "ground_mm": 8.142967190574296,
+          "self_mm": 0.0,
+          "all_self_mm": 0.0,
+          "trial_peak_qd": 9.215794867406235,
+          "trial_ground_mm": 8.142967190574296,
+          "trial_self_mm": 0.0
+        },
+        {
+          "seed": 84105,
+          "trial": 17,
+          "pose": "side",
+          "success": false,
+          "confirm_s": 11.06,
+          "takeovers": [
+            0
+          ],
+          "releases": [],
+          "peak_qd": 9.045252473142474,
+          "peak_qd_joint": "left_elbow_joint",
+          "ground_mm": 8.11966493753314,
+          "self_mm": 0.0,
+          "all_self_mm": 0.0,
+          "trial_peak_qd": 9.045252473142474,
+          "trial_ground_mm": 8.11966493753314,
+          "trial_self_mm": 0.0
+        }
+      ]
+    },
+    "push_unseen": {
+      "total_trials": 30,
+      "actual_falls": 30,
+      "recovered_over_actual_falls": 30,
+      "recovery_rate_over_actual_falls": 1.0,
+      "pre_impact_falls": 0,
+      "wrong_release": 0,
+      "pd_oob": 0,
+      "teleop_calls_while_owned": 0,
+      "max_command_step": 0.20000004768371582,
+      "owned_count": 30,
+      "owned_within_qd_12": 15,
+      "owned_within_ground_10": 26,
+      "owned_within_self_2": 22,
+      "after_40_within_soft": 28,
+      "owned_peaks_including_failed": {
+        "peak_qd": 22.907108711764906,
+        "ground_mm": 11.372817960133526,
+        "self_mm": 12.213904859098193
+      },
+      "after_40_peaks": {
+        "peak_qd": 11.489564178094916,
+        "ground_mm": 10.683615955276213,
+        "self_mm": 1.2799051142731903
+      },
+      "full_trial_peaks_all30": {
+        "trial_peak_qd": 34.537849260839124,
+        "trial_ground_mm": 24.212083510266247,
+        "trial_self_mm": 12.213904859098193
+      },
+      "full_trial_peaks_fell_subset": {
+        "trial_peak_qd": 34.537849260839124,
+        "trial_ground_mm": 24.212083510266247,
+        "trial_self_mm": 12.213904859098193
+      },
+      "per_seed": [
+        {
+          "seed": 84111,
+          "n": 10,
+          "actual_falls": 10,
+          "recovered": 10,
+          "pre_impact_falls": 0,
+          "wrong_release": 0,
+          "owned_peaks_including_failed": {
+            "peak_qd": 15.421802631020661,
+            "ground_mm": 11.211701930678858,
+            "self_mm": 12.213904859098193
+          },
+          "after_40_peaks": {
+            "peak_qd": 11.489564178094916,
+            "ground_mm": 10.228597474005399,
+            "self_mm": 0.48965796156244373
+          },
+          "full_trial_peaks": {
+            "trial_peak_qd": 27.079217136532332,
+            "trial_ground_mm": 18.36857470019549,
+            "trial_self_mm": 12.213904859098193
+          }
+        },
+        {
+          "seed": 84112,
+          "n": 10,
+          "actual_falls": 10,
+          "recovered": 10,
+          "pre_impact_falls": 0,
+          "wrong_release": 0,
+          "owned_peaks_including_failed": {
+            "peak_qd": 12.871104368994803,
+            "ground_mm": 10.683615955276213,
+            "self_mm": 7.091278936174775
+          },
+          "after_40_peaks": {
+            "peak_qd": 11.263218560232279,
+            "ground_mm": 10.683615955276213,
+            "self_mm": 0.0
+          },
+          "full_trial_peaks": {
+            "trial_peak_qd": 34.537849260839124,
+            "trial_ground_mm": 24.212083510266247,
+            "trial_self_mm": 7.091278936174775
+          }
+        },
+        {
+          "seed": 84113,
+          "n": 10,
+          "actual_falls": 10,
+          "recovered": 10,
+          "pre_impact_falls": 0,
+          "wrong_release": 0,
+          "owned_peaks_including_failed": {
+            "peak_qd": 22.907108711764906,
+            "ground_mm": 11.372817960133526,
+            "self_mm": 10.899010299021626
+          },
+          "after_40_peaks": {
+            "peak_qd": 11.2108010463591,
+            "ground_mm": 9.025744059319967,
+            "self_mm": 1.2799051142731903
+          },
+          "full_trial_peaks": {
+            "trial_peak_qd": 26.086304093511302,
+            "trial_ground_mm": 20.32572952528578,
+            "trial_self_mm": 10.899010299021626
+          }
+        }
+      ],
+      "trials": [
+        {
+          "seed": 84111,
+          "trial": 0,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            106
+          ],
+          "releases": [
+            681
+          ],
+          "confirm_s": 11.5,
+          "owned_peak_qd": 12.948768672592415,
+          "owned_peak_qd_joint": "right_knee_joint",
+          "owned_ground_mm": 7.96471245307567,
+          "owned_self_mm": 2.3731706040013645,
+          "trial_peak_qd": 27.079217136532332,
+          "trial_ground_mm": 7.96471245307567,
+          "trial_self_mm": 2.3731706040013645,
+          "cap_plus40": [
+            12.948768672592415,
+            7.66729753272103,
+            2.3731706040013645
+          ],
+          "after_40": [
+            9.570444306370122,
+            7.96471245307567,
+            0.48965796156244373
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84111,
+          "trial": 1,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            126
+          ],
+          "releases": [
+            632
+          ],
+          "confirm_s": 10.120000000000001,
+          "owned_peak_qd": 10.970047559906956,
+          "owned_peak_qd_joint": "right_shoulder_pitch_joint",
+          "owned_ground_mm": 10.228597474005399,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 21.902489272285322,
+          "trial_ground_mm": 14.827499962054715,
+          "trial_self_mm": 1.1618654327969256,
+          "cap_plus40": [
+            10.947845367958587,
+            8.585936115328014,
+            0.0
+          ],
+          "after_40": [
+            10.970047559906956,
+            10.228597474005399,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84111,
+          "trial": 2,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            125
+          ],
+          "releases": [
+            594
+          ],
+          "confirm_s": 9.38,
+          "owned_peak_qd": 12.417765449719692,
+          "owned_peak_qd_joint": "left_shoulder_roll_joint",
+          "owned_ground_mm": 9.482014827608033,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 21.56624427470595,
+          "trial_ground_mm": 11.798428520382275,
+          "trial_self_mm": 2.872001884211304,
+          "cap_plus40": [
+            12.417765449719692,
+            9.482014827608033,
+            0.0
+          ],
+          "after_40": [
+            9.630149505002349,
+            7.6738873996308365,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84111,
+          "trial": 3,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            114
+          ],
+          "releases": [
+            613
+          ],
+          "confirm_s": 9.98,
+          "owned_peak_qd": 12.079877810457813,
+          "owned_peak_qd_joint": "right_hip_roll_joint",
+          "owned_ground_mm": 7.829877778993986,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 22.370070381775264,
+          "trial_ground_mm": 8.63135300527484,
+          "trial_self_mm": 0.7008201934068279,
+          "cap_plus40": [
+            12.079877810457813,
+            7.348056251080065,
+            0.0
+          ],
+          "after_40": [
+            11.220305915830462,
+            7.829877778993986,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84111,
+          "trial": 4,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            102
+          ],
+          "releases": [
+            636
+          ],
+          "confirm_s": 10.68,
+          "owned_peak_qd": 13.551353201295814,
+          "owned_peak_qd_joint": "left_ankle_pitch_joint",
+          "owned_ground_mm": 11.211701930678858,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 19.891205767678308,
+          "trial_ground_mm": 12.65693419877969,
+          "trial_self_mm": 0.7008201934068279,
+          "cap_plus40": [
+            13.551353201295814,
+            11.211701930678858,
+            0.0
+          ],
+          "after_40": [
+            11.119022484156744,
+            8.303261692179278,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84111,
+          "trial": 5,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            130
+          ],
+          "releases": [
+            579
+          ],
+          "confirm_s": 8.98,
+          "owned_peak_qd": 15.13312731296622,
+          "owned_peak_qd_joint": "left_shoulder_roll_joint",
+          "owned_ground_mm": 7.3470746132471145,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 25.318985789279072,
+          "trial_ground_mm": 12.82205965869778,
+          "trial_self_mm": 2.2877581104007336,
+          "cap_plus40": [
+            15.13312731296622,
+            7.3470746132471145,
+            0.0
+          ],
+          "after_40": [
+            9.108327785557675,
+            5.8932603373052475,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84111,
+          "trial": 6,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            136
+          ],
+          "releases": [
+            662
+          ],
+          "confirm_s": 10.52,
+          "owned_peak_qd": 15.421802631020661,
+          "owned_peak_qd_joint": "right_shoulder_roll_joint",
+          "owned_ground_mm": 7.1747046596728135,
+          "owned_self_mm": 12.213904859098193,
+          "trial_peak_qd": 25.84796204418619,
+          "trial_ground_mm": 18.36857470019549,
+          "trial_self_mm": 12.213904859098193,
+          "cap_plus40": [
+            15.421802631020661,
+            7.1747046596728135,
+            12.213904859098193
+          ],
+          "after_40": [
+            9.961498928284717,
+            6.59952780350136,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84111,
+          "trial": 7,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            145
+          ],
+          "releases": [
+            673
+          ],
+          "confirm_s": 10.56,
+          "owned_peak_qd": 13.052908118802222,
+          "owned_peak_qd_joint": "left_shoulder_roll_joint",
+          "owned_ground_mm": 8.88429268520069,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 21.473870357707053,
+          "trial_ground_mm": 15.815620418958241,
+          "trial_self_mm": 1.6065737482351432,
+          "cap_plus40": [
+            13.052908118802222,
+            7.184628435813689,
+            0.0
+          ],
+          "after_40": [
+            11.489564178094916,
+            8.88429268520069,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84111,
+          "trial": 8,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            125
+          ],
+          "releases": [
+            610
+          ],
+          "confirm_s": 9.700000000000001,
+          "owned_peak_qd": 10.818246066901358,
+          "owned_peak_qd_joint": "left_hip_pitch_joint",
+          "owned_ground_mm": 7.551165972230437,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 19.93134765907581,
+          "trial_ground_mm": 11.485558719653056,
+          "trial_self_mm": 0.7008201934068279,
+          "cap_plus40": [
+            10.818246066901358,
+            6.460186256381665,
+            0.0
+          ],
+          "after_40": [
+            9.665480586689059,
+            7.551165972230437,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84111,
+          "trial": 9,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            116
+          ],
+          "releases": [
+            577
+          ],
+          "confirm_s": 9.22,
+          "owned_peak_qd": 13.955990343906679,
+          "owned_peak_qd_joint": "right_hip_pitch_joint",
+          "owned_ground_mm": 9.640651891952574,
+          "owned_self_mm": 0.9001543935202427,
+          "trial_peak_qd": 24.498383059389162,
+          "trial_ground_mm": 9.640651891952574,
+          "trial_self_mm": 0.9001543935202427,
+          "cap_plus40": [
+            13.955990343906679,
+            7.03427695672168,
+            0.9001543935202427
+          ],
+          "after_40": [
+            9.626731571610836,
+            9.640651891952574,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84112,
+          "trial": 0,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            107
+          ],
+          "releases": [
+            681
+          ],
+          "confirm_s": 11.48,
+          "owned_peak_qd": 9.756948868041714,
+          "owned_peak_qd_joint": "right_shoulder_roll_joint",
+          "owned_ground_mm": 8.155655081523769,
+          "owned_self_mm": 7.091278936174775,
+          "trial_peak_qd": 34.537849260839124,
+          "trial_ground_mm": 8.155655081523769,
+          "trial_self_mm": 7.091278936174775,
+          "cap_plus40": [
+            9.401874296211071,
+            5.238053611921135,
+            7.091278936174775
+          ],
+          "after_40": [
+            9.756948868041714,
+            8.155655081523769,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84112,
+          "trial": 1,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            152
+          ],
+          "releases": [
+            665
+          ],
+          "confirm_s": 10.260000000000002,
+          "owned_peak_qd": 11.76049107346546,
+          "owned_peak_qd_joint": "right_shoulder_roll_joint",
+          "owned_ground_mm": 7.987915815258869,
+          "owned_self_mm": 3.2713631927669855,
+          "trial_peak_qd": 23.757329798643696,
+          "trial_ground_mm": 7.987915815258869,
+          "trial_self_mm": 3.2713631927669855,
+          "cap_plus40": [
+            11.76049107346546,
+            7.987915815258869,
+            3.2713631927669855
+          ],
+          "after_40": [
+            11.263218560232279,
+            7.906460519924795,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84112,
+          "trial": 2,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            133
+          ],
+          "releases": [
+            551
+          ],
+          "confirm_s": 8.36,
+          "owned_peak_qd": 9.91745100831092,
+          "owned_peak_qd_joint": "waist_yaw_joint",
+          "owned_ground_mm": 8.738515306575815,
+          "owned_self_mm": 3.0035404086464674,
+          "trial_peak_qd": 27.429869554624634,
+          "trial_ground_mm": 8.738515306575815,
+          "trial_self_mm": 3.0035404086464674,
+          "cap_plus40": [
+            9.91745100831092,
+            7.380968852930246,
+            3.0035404086464674
+          ],
+          "after_40": [
+            9.582920592931517,
+            8.738515306575815,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84112,
+          "trial": 3,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            131
+          ],
+          "releases": [
+            659
+          ],
+          "confirm_s": 10.559999999999999,
+          "owned_peak_qd": 9.677035609726008,
+          "owned_peak_qd_joint": "right_shoulder_roll_joint",
+          "owned_ground_mm": 8.060630805408898,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 20.41465518042473,
+          "trial_ground_mm": 11.485558719653056,
+          "trial_self_mm": 0.7008201934068279,
+          "cap_plus40": [
+            9.59511414392392,
+            3.9395078312878735,
+            0.0
+          ],
+          "after_40": [
+            9.677035609726008,
+            8.09045148387758,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84112,
+          "trial": 4,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            133
+          ],
+          "releases": [
+            678
+          ],
+          "confirm_s": 10.9,
+          "owned_peak_qd": 11.427059324159046,
+          "owned_peak_qd_joint": "right_hip_pitch_joint",
+          "owned_ground_mm": 8.019077440373675,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 20.632678077111365,
+          "trial_ground_mm": 11.485558719653056,
+          "trial_self_mm": 0.7008201934068279,
+          "cap_plus40": [
+            11.427059324159046,
+            8.019077440373675,
+            0.0
+          ],
+          "after_40": [
+            9.474781694773197,
+            6.012231700841614,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84112,
+          "trial": 5,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            107
+          ],
+          "releases": [
+            586
+          ],
+          "confirm_s": 9.58,
+          "owned_peak_qd": 11.576988910493572,
+          "owned_peak_qd_joint": "left_elbow_joint",
+          "owned_ground_mm": 10.683615955276213,
+          "owned_self_mm": 5.2155752257165044,
+          "trial_peak_qd": 24.057022143484172,
+          "trial_ground_mm": 10.683615955276213,
+          "trial_self_mm": 5.2155752257165044,
+          "cap_plus40": [
+            11.576988910493572,
+            4.680158716993656,
+            5.2155752257165044
+          ],
+          "after_40": [
+            8.841269556841208,
+            10.683615955276213,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84112,
+          "trial": 6,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            168
+          ],
+          "releases": [
+            609
+          ],
+          "confirm_s": 8.82,
+          "owned_peak_qd": 10.487019773562215,
+          "owned_peak_qd_joint": "left_hip_pitch_joint",
+          "owned_ground_mm": 7.939107110489896,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 33.64658901779164,
+          "trial_ground_mm": 24.212083510266247,
+          "trial_self_mm": 1.1618654327969256,
+          "cap_plus40": [
+            10.487019773562215,
+            7.939107110489896,
+            0.0
+          ],
+          "after_40": [
+            9.80390817532849,
+            7.622093733801585,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84112,
+          "trial": 7,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            132
+          ],
+          "releases": [
+            554
+          ],
+          "confirm_s": 8.44,
+          "owned_peak_qd": 9.240952957245376,
+          "owned_peak_qd_joint": "right_hip_pitch_joint",
+          "owned_ground_mm": 8.133827290963032,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 24.902428023945966,
+          "trial_ground_mm": 15.01676726483854,
+          "trial_self_mm": 2.6520826769411534,
+          "cap_plus40": [
+            9.240952957245376,
+            5.870478417016628,
+            0.0
+          ],
+          "after_40": [
+            8.878089746816626,
+            8.133827290963032,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84112,
+          "trial": 8,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            133
+          ],
+          "releases": [
+            667
+          ],
+          "confirm_s": 10.68,
+          "owned_peak_qd": 11.00476307792269,
+          "owned_peak_qd_joint": "left_shoulder_pitch_joint",
+          "owned_ground_mm": 8.138833546023221,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 21.275922925725805,
+          "trial_ground_mm": 11.485558719653056,
+          "trial_self_mm": 1.3424610286478418,
+          "cap_plus40": [
+            11.00476307792269,
+            7.559784682281593,
+            0.0
+          ],
+          "after_40": [
+            9.644135424489557,
+            9.83444650758299,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84112,
+          "trial": 9,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            128
+          ],
+          "releases": [
+            603
+          ],
+          "confirm_s": 9.5,
+          "owned_peak_qd": 12.871104368994803,
+          "owned_peak_qd_joint": "left_hip_pitch_joint",
+          "owned_ground_mm": 8.118265535554885,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 22.757329932818976,
+          "trial_ground_mm": 11.485558719653056,
+          "trial_self_mm": 0.7008201934068279,
+          "cap_plus40": [
+            12.871104368994803,
+            7.279623929784824,
+            0.0
+          ],
+          "after_40": [
+            9.385164292264571,
+            8.118265535554885,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84113,
+          "trial": 0,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            105
+          ],
+          "releases": [
+            647
+          ],
+          "confirm_s": 10.84,
+          "owned_peak_qd": 10.201596345278057,
+          "owned_peak_qd_joint": "left_shoulder_roll_joint",
+          "owned_ground_mm": 8.797914539656142,
+          "owned_self_mm": 3.1906851094309956,
+          "trial_peak_qd": 23.792870484905638,
+          "trial_ground_mm": 8.797914539656142,
+          "trial_self_mm": 3.1906851094309956,
+          "cap_plus40": [
+            10.201596345278057,
+            7.089217709414494,
+            3.1906851094309956
+          ],
+          "after_40": [
+            9.623845050432665,
+            8.797914539656142,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84113,
+          "trial": 1,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            124
+          ],
+          "releases": [
+            623
+          ],
+          "confirm_s": 9.98,
+          "owned_peak_qd": 13.750100883392587,
+          "owned_peak_qd_joint": "right_hip_pitch_joint",
+          "owned_ground_mm": 9.738238322660624,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 21.57013445424716,
+          "trial_ground_mm": 9.738238322660624,
+          "trial_self_mm": 1.1618654327969256,
+          "cap_plus40": [
+            13.750100883392587,
+            9.738238322660624,
+            0.0
+          ],
+          "after_40": [
+            10.983828211326145,
+            7.465030429999124,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84113,
+          "trial": 2,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            126
+          ],
+          "releases": [
+            597
+          ],
+          "confirm_s": 9.42,
+          "owned_peak_qd": 15.060309026325342,
+          "owned_peak_qd_joint": "left_elbow_joint",
+          "owned_ground_mm": 8.038437209842604,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 22.21974138853403,
+          "trial_ground_mm": 12.816850564578829,
+          "trial_self_mm": 1.9609708680964535,
+          "cap_plus40": [
+            15.060309026325342,
+            8.038437209842604,
+            0.0
+          ],
+          "after_40": [
+            9.169235923456979,
+            9.025744059319967,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84113,
+          "trial": 3,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            115
+          ],
+          "releases": [
+            679
+          ],
+          "confirm_s": 11.28,
+          "owned_peak_qd": 10.422769794360697,
+          "owned_peak_qd_joint": "left_hip_pitch_joint",
+          "owned_ground_mm": 8.321510252333395,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 23.49896844652481,
+          "trial_ground_mm": 9.217652781903372,
+          "trial_self_mm": 0.7008201934068279,
+          "cap_plus40": [
+            10.422769794360697,
+            7.673409279419674,
+            0.0
+          ],
+          "after_40": [
+            9.529648148293884,
+            8.321510252333395,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84113,
+          "trial": 4,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            138
+          ],
+          "releases": [
+            596
+          ],
+          "confirm_s": 9.16,
+          "owned_peak_qd": 15.868261195179596,
+          "owned_peak_qd_joint": "left_elbow_joint",
+          "owned_ground_mm": 8.651035531295982,
+          "owned_self_mm": 0.2964738835671427,
+          "trial_peak_qd": 23.68655419889524,
+          "trial_ground_mm": 20.32572952528578,
+          "trial_self_mm": 0.7008201934068279,
+          "cap_plus40": [
+            15.868261195179596,
+            7.880108047667693,
+            0.2964738835671427
+          ],
+          "after_40": [
+            9.30134475536969,
+            8.651035531295982,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84113,
+          "trial": 5,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            93
+          ],
+          "releases": [
+            570
+          ],
+          "confirm_s": 9.540000000000001,
+          "owned_peak_qd": 20.39975224502677,
+          "owned_peak_qd_joint": "left_shoulder_roll_joint",
+          "owned_ground_mm": 11.372817960133526,
+          "owned_self_mm": 10.899010299021626,
+          "trial_peak_qd": 20.39975224502677,
+          "trial_ground_mm": 11.372817960133526,
+          "trial_self_mm": 10.899010299021626,
+          "cap_plus40": [
+            20.39975224502677,
+            11.372817960133526,
+            10.899010299021626
+          ],
+          "after_40": [
+            9.409421738223843,
+            8.293993904958517,
+            1.2799051142731903
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84113,
+          "trial": 6,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            114
+          ],
+          "releases": [
+            542
+          ],
+          "confirm_s": 8.559999999999999,
+          "owned_peak_qd": 22.907108711764906,
+          "owned_peak_qd_joint": "right_ankle_pitch_joint",
+          "owned_ground_mm": 6.5918482409899894,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 26.086304093511302,
+          "trial_ground_mm": 7.389413555838765,
+          "trial_self_mm": 1.1618654327969256,
+          "cap_plus40": [
+            22.907108711764906,
+            5.839530944313491,
+            0.0
+          ],
+          "after_40": [
+            8.979058188846908,
+            6.5918482409899894,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84113,
+          "trial": 7,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            132
+          ],
+          "releases": [
+            554
+          ],
+          "confirm_s": 8.44,
+          "owned_peak_qd": 18.137078656308404,
+          "owned_peak_qd_joint": "left_knee_joint",
+          "owned_ground_mm": 7.53718374353932,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 19.366447047013455,
+          "trial_ground_mm": 11.485558719653056,
+          "trial_self_mm": 0.7008201934068279,
+          "cap_plus40": [
+            18.137078656308404,
+            7.094008748120665,
+            0.0
+          ],
+          "after_40": [
+            9.39169288757987,
+            7.772000393092015,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84113,
+          "trial": 8,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            131
+          ],
+          "releases": [
+            656
+          ],
+          "confirm_s": 10.5,
+          "owned_peak_qd": 11.2108010463591,
+          "owned_peak_qd_joint": "right_shoulder_pitch_joint",
+          "owned_ground_mm": 8.261682982740936,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 20.82622832994164,
+          "trial_ground_mm": 11.712727932054658,
+          "trial_self_mm": 0.7008201934068279,
+          "cap_plus40": [
+            9.10742224179232,
+            6.732027556819023,
+            0.0
+          ],
+          "after_40": [
+            11.2108010463591,
+            8.261682982740936,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        },
+        {
+          "seed": 84113,
+          "trial": 9,
+          "fell": true,
+          "success": true,
+          "pre_impact_fall": false,
+          "wrong_release": 0,
+          "takeovers": [
+            132
+          ],
+          "releases": [
+            604
+          ],
+          "confirm_s": 9.44,
+          "owned_peak_qd": 10.82827718852921,
+          "owned_peak_qd_joint": "left_hip_pitch_joint",
+          "owned_ground_mm": 8.849101000510547,
+          "owned_self_mm": 0.0,
+          "trial_peak_qd": 21.726676091403565,
+          "trial_ground_mm": 11.485558719653056,
+          "trial_self_mm": 0.7008201934068279,
+          "cap_plus40": [
+            10.82827718852921,
+            8.849101000510547,
+            0.0
+          ],
+          "after_40": [
+            9.31402780895344,
+            7.726825912761897,
+            0.0
+          ],
+          "pd_oob": 0,
+          "teleop_calls_while_owned": 0,
+          "max_command_step": 0.20000004768371582
+        }
+      ]
+    },
+    "combined_owned_peaks_including_failed": {
+      "peak_qd": 22.907108711764906,
+      "ground_mm": 11.372817960133526,
+      "self_mm": 12.213904859098193
+    },
+    "regressions": {
+      "offline_84101": {
+        "trials": 3,
+        "releases": 0,
+        "teleop_calls_while_owned": 0,
+        "terminal_standing": 3,
+        "owned_peaks": {
+          "peak_qd": 9.47983580915804,
+          "ground_mm": 9.750548215609285,
+          "self_mm": 0.0
+        }
+      },
+      "flat_84101": {
+        "trials": 2,
+        "takeovers": 0,
+        "upright_fraction_min": 1.0,
+        "terminal_standing": 1,
+        "trial_peaks": {
+          "trial_peak_qd": 7.941935583181119,
+          "trial_ground_mm": 12.977397308428975,
+          "trial_self_mm": 1.3074465625967204
+        }
+      },
+      "double_84111": {
+        "trials": 5,
+        "both_fell": 5,
+        "both_phases_recover": 5,
+        "wrong_release": 0,
+        "releases_confirmed_all": true,
+        "owned_peaks": {
+          "peak_qd": 18.449795947328475,
+          "ground_mm": 11.211701930678858,
+          "self_mm": 5.076618261055964
+        },
+        "trial_peaks": {
+          "trial_peak_qd": 27.990329379085388,
+          "trial_ground_mm": 14.827499962054715,
+          "trial_self_mm": 6.443178626192539
+        }
+      },
+      "ownership_stale_deterministic": {
+        "automatic_takeover": true,
+        "protect_duplicate_timestamp_rejected": true,
+        "protect_nonfinite_rejected": true,
+        "offline_hold": true,
+        "stale_future_pre_takeover_rejected": true,
+        "instability_restarts_dwell": true,
+        "sample_gap_restarts_dwell": true,
+        "anchor_before_teleop": true,
+        "second_fall": true,
+        "timestamp_reset": true,
+        "persistent_down_no_timeout_s": 30
+      }
+    },
+    "videos": [
+      {
+        "video": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/final_acceptance_20261121/Q1_recovery_v2_unseen_84101_1x.mp4",
+        "fps": 25,
+        "frames": 447,
+        "speed": 1.0,
+        "sha256": "fd9f4852577b6d6c97b331d1ee98b6c4af03931c75c7b8c997defc7e9f3ecf3b",
+        "group": "static",
+        "seed": 84101,
+        "contact_sheet": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/final_acceptance_20261121/Q1_recovery_v2_unseen_84101_1x.jpg"
+      },
+      {
+        "video": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/final_acceptance_20261121/Q1_recovery_v2_unseen_84102_1x.mp4",
+        "fps": 25,
+        "frames": 306,
+        "speed": 1.0,
+        "sha256": "4995d83644e8f6b4e48a014912198052fb7168ffa0a4f4d4c715f0d19f044c4d",
+        "group": "static",
+        "seed": 84102,
+        "contact_sheet": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/final_acceptance_20261121/Q1_recovery_v2_unseen_84102_1x.jpg"
+      },
+      {
+        "video": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/final_acceptance_20261121/Q1_recovery_v2_unseen_84103_1x.mp4",
+        "fps": 25,
+        "frames": 301,
+        "speed": 1.0,
+        "sha256": "be1668aa422a891052e9c794f4bfd1cdee3b53bc1e00163c9d5f6b74c484cbd0",
+        "group": "static",
+        "seed": 84103,
+        "contact_sheet": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/final_acceptance_20261121/Q1_recovery_v2_unseen_84103_1x.jpg"
+      },
+      {
+        "video": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/final_acceptance_20261121/Q1_recovery_v2_unseen_84104_1x.mp4",
+        "fps": 25,
+        "frames": 426,
+        "speed": 1.0,
+        "sha256": "6eaa68a6fdfddb2d7b8f6c9abafd9bf6c8f5c690049416f4e2c691a7067b4b2e",
+        "group": "static",
+        "seed": 84104,
+        "contact_sheet": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/final_acceptance_20261121/Q1_recovery_v2_unseen_84104_1x.jpg"
+      },
+      {
+        "video": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/final_acceptance_20261121/Q1_recovery_v2_unseen_84105_1x.mp4",
+        "fps": 25,
+        "frames": 426,
+        "speed": 1.0,
+        "sha256": "8df6f274cfea724a37cab5b9711b3ae89156c98c6d18ebb4aad022271933c59a",
+        "group": "static",
+        "seed": 84105,
+        "contact_sheet": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/final_acceptance_20261121/Q1_recovery_v2_unseen_84105_1x.jpg"
+      },
+      {
+        "video": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/final_acceptance_20261121/Q1_recovery_v2_unseen_push_84111_1x.mp4",
+        "contact_sheet": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/final_acceptance_20261121/Q1_recovery_v2_unseen_push_84111_1x.jpg",
+        "fps": 25,
+        "frames": 379,
+        "duration_s": 15.16,
+        "speed": 1.0,
+        "trials": [
+          6,
+          5,
+          0,
+          9
+        ],
+        "sha256": "f76025ad4345791794f2646ff83f3638696f0b84822c0f3c29e713b56649ae67",
+        "group": "push",
+        "seed": 84111
+      }
+    ]
+  },
+  "frozen_config_snapshot": {
+    "runtime": {
+      "physics_ms": 2,
+      "control_ms": 20,
+      "sender_hz": 500,
+      "observation_delay_ms_assumed": 11,
+      "explicit_arm_leg_pairs": 96,
+      "mujoco": "3.11.0",
+      "bundle": "/home/yu/projects/SuperMimicHP/runs/h003_recovery_expert/formal_03/pinned/q1_v2b_gantry_deploy_bundle",
+      "deploy_codec_fingerprint": "33f64eaefe80c12b35d7bd0b8bfbf641a3a8d463e9979ea448b7ba79788f13f8",
+      "torque_safe_pd": {
+        "engage_steps": 5,
+        "dq_tau_scale": 0.5
+      },
+      "sender_target_box_rad": 2.0,
+      "sender_increment_per_2ms_rad": 0.2
+    },
+    "model": {
+      "expert": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/unified_v3_08/expert.onnx",
+      "expert_sha256": "5d38cfcb3c31ad1103bd8897d4c8fad97472a04d5e258106732dd3a409b842ee",
+      "onnx_verification": {
+        "max_abs_diff": 2.384185791015625e-07,
+        "cpu_1t_p50_ms": 0.17763649520929903,
+        "cpu_1t_p95_ms": 0.18301449381397106
+      },
+      "gate_config": {
+        "h_min": 0.355,
+        "up_z_min": 0.965,
+        "rms_leg_max": 0.35,
+        "w_norm_max": 0.7,
+        "qd_rms_max": 0.95,
+        "calm_ticks": 4
+      },
+      "blend_ticks": 16,
+      "stage_configs": {
+        "side_v2_06": {
+          "pools": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/pools",
+          "roll": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_20261121/joined_roll_dev/roll.npz",
+          "out": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/side_v2_06",
+          "side_train": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/pools/side_train_800.npz",
+          "resume": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/side_v2_05/best_side_v3.pt",
+          "lr": 0.00012,
+          "updates_a1": 280,
+          "updates_a2": 500,
+          "export_only": null,
+          "device": "cuda",
+          "seed": 95206
+        },
+        "side_v2_07": {
+          "pools": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/pools",
+          "roll": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_20261121/joined_roll_dev/roll.npz",
+          "out": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/side_v2_07",
+          "side_train": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/pools/side_train_800.npz",
+          "resume": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/side_v2_05/best_side_v3.pt",
+          "resume_landing": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/side_v2_06/best_landing.pt",
+          "lr": 0.0001,
+          "updates_a1": 0,
+          "updates_a2": 400,
+          "export_only": null,
+          "device": "cuda",
+          "seed": 95207
+        },
+        "supine_v2_03": {
+          "pools": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/pools",
+          "side_pool_dir": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/side_v2_05_routed",
+          "out": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/supine_v2_03",
+          "resume": null,
+          "envs": 96,
+          "steps": 48,
+          "updates": 1500,
+          "lr": 0.00025,
+          "max_logstd": -0.5,
+          "device": "cuda",
+          "seed": 94303
+        },
+        "supine_v2_04": {
+          "pools": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/pools",
+          "side_pool_dir": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/side_v2_05_routed",
+          "out": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/supine_v2_04",
+          "resume": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/supine_v2_03/best.pt",
+          "envs": 96,
+          "steps": 48,
+          "updates": 500,
+          "lr": 6e-05,
+          "max_logstd": -2.1,
+          "eval_every": 50,
+          "polish": true,
+          "device": "cuda",
+          "seed": 94304
+        }
+      }
+    },
+    "files": {
+      "/home/yu/projects/SuperMimicHP/runs/h003_recovery_expert/formal_03/pinned/q1_v2b_gantry_deploy_bundle/config/q1_deploy_config.json": {
+        "bytes": 6914,
+        "sha256": "fd058f4caaa7334b5846c07ec8ef4e2dfedf0248bf39a2ee792a6454f8409db8"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/h003_recovery_expert/formal_03/pinned/q1_v2b_gantry_deploy_bundle/robot_model/supermimic.xml": {
+        "bytes": 26370,
+        "sha256": "47bfa08baed1a3482e575a6489b29c2fc1c720ba1f359f636a76c40a5e9da9df"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_20261121/eval_core.py": {
+        "bytes": 19988,
+        "sha256": "dc8248aa66d456f4477058818b5bb80c9e05d8f609c120ffc30dd5e0b6ac9be5"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_20261121/evaluate.py": {
+        "bytes": 5504,
+        "sha256": "44a6757540b5d0fb3ea2d7413a5565da07512d833575d5a10f6de64971a7ae9b"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/h003_gait_engineering_01/autonomous_recovery/q1_autonomous_recovery.py": {
+        "bytes": 5424,
+        "sha256": "5c99519c69d28e648fe47e84e18c63fdb9f35022c0bd2e30e7b25fb95be3a378"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_supported_rise_20261121/limbs.py": {
+        "bytes": 3196,
+        "sha256": "ba55828e954ab4103661a838fcb234ba26bf7a6e5c2c56fe705adcebf808827c"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_20261121/common.py": {
+        "bytes": 2323,
+        "sha256": "1c86c0d1eae1fa162296e4dfcc116e76c8aaf249b97c62e1d7940d10fbe5d07c"
+      },
+      "/home/yu/projects/agibot-X2-A3-Q1-model/script/q1_soft_recovery/eval_v2.py": {
+        "bytes": 24546,
+        "sha256": "4944dae0ee8313f839007253b10a10fdbf2988f3bb0db9f37b9a992b17bf0878"
+      },
+      "/home/yu/projects/agibot-X2-A3-Q1-model/script/q1_soft_recovery/unified_v3.py": {
+        "bytes": 15107,
+        "sha256": "d4c938e87cf5b897ad91c0c9c41710af58bcb2aa419bce0b28ea8fee3c9a8254"
+      },
+      "/home/yu/projects/agibot-X2-A3-Q1-model/script/q1_soft_recovery/run_final_acceptance.py": {
+        "bytes": 34441,
+        "sha256": "511c4238d3ee499fab19ee2b6d23429dbe4ce4d3fd6675b440b6948fcf699175"
+      },
+      "/home/yu/projects/agibot-X2-A3-Q1-model/script/q1_soft_recovery/acceptance_plan.json": {
+        "bytes": 2133,
+        "sha256": "01edf19eb3858bbbf2a3a9e7510b69fa13b793a0fc33a43f8bbb907a4a6e8131"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_20261121/joined_roll_dev/roll.npz": {
+        "bytes": 1648,
+        "sha256": "6fb3cbda24fd6ab12ff61a6b38ca0ed7f0269427b21cf6bb5bbc707aa660792a"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/side_v2_06/best_landing.pt": {
+        "bytes": 291237,
+        "sha256": "b37c4f76e481b9d81af81a18caf0dc083c7f259050406f4afb60d60425245597"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/side_v2_07/best_side_v3.pt": {
+        "bytes": 763713,
+        "sha256": "d785ca56b6a633030e2990974595601c79a984c7cd7aa3511fd4524a7cb45dd1"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/supine_v2_04/best.pt": {
+        "bytes": 1439763,
+        "sha256": "c00e3c2fae17904cc6ae48ed0551fc4e659275f513b9a7a8ade7990991e0b035"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/unified_v3_08/expert.onnx": {
+        "bytes": 1320969,
+        "sha256": "5d38cfcb3c31ad1103bd8897d4c8fad97472a04d5e258106732dd3a409b842ee"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/side_v2_06/train_curve_a1.png": {
+        "bytes": 520248,
+        "sha256": "478842b17eeac08e646da0abcf77f2f3ed08aab608c03aff727e14a431af4d3c"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/side_v2_06/train_curve_a1.csv": {
+        "bytes": 25680,
+        "sha256": "3d3405874cef2da3882f8cb314454317e8cdd44642c732053c2e430ba9007b20"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/side_v2_07/train_curve_a2.png": {
+        "bytes": 585900,
+        "sha256": "b156e121068bfd53e4b40b5ce19880b91d13d265082541873fcdf4778a67bcfa"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/side_v2_07/train_curve_a2.csv": {
+        "bytes": 38899,
+        "sha256": "6d995bd6290b9c139dfe2cb9c28027a1ff863be461d68213ca40421ac447a143"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/supine_v2_03/train_curve.png": {
+        "bytes": 436107,
+        "sha256": "7bbe11d5f2a9e8347e15c653d8e4eab8380585d538351618ec2ecc5dbd66bbf7"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/supine_v2_03/train_curve.csv": {
+        "bytes": 155902,
+        "sha256": "bc8f57b3013169515427122889d214836ed3ce3c9344296c2397d898c329b789"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/supine_v2_04/train_curve.png": {
+        "bytes": 685769,
+        "sha256": "9dbd6ed9500456bbd2992d6b06041f363108669134bb7e3f09f50556a28b976b"
+      },
+      "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/supine_v2_04/train_curve.csv": {
+        "bytes": 56055,
+        "sha256": "9ca295c84be6556ee8805e0dca9954c2ca750225584faba0b0dde3a8db9980cc"
+      }
+    }
+  }
+}

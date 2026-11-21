@@ -104,3 +104,21 @@ py=../../.venv/bin/python
 "$py" support_transfer.py joined_roll_dev/instrumented NEW_SUPPORT joined_roll_dev/roll.npz
 "$py" clearance.py support_feedback_01/expert.onnx joined_roll_dev/blend8/scene/fall_hard.xml NEW_CLEARANCE --margin .018 --group push --seed 92023
 ```
+
+## 2026-11-21 侧卧局部保护与候选统一复评
+
+本轮先验证侧卧起身最初数拍的局部保护是否能减少同侧腕腿接触。新增 `script/q1_soft_recovery/side_initial_guard.py`，只在侧卧 Recovery 接管后的限定拍数调用臂部几何投影，之后恢复原始 learned rise。以 `side_entry_02/expert.onnx`、种子 92117、24 个合法倒姿复评，结果如下。
+
+| 保护拍数 | 成功 | 峰速 rad/s | 地面穿透 mm | 显式臂腿穿透 mm |
+| ---: | ---: | ---: | ---: | ---: |
+| 4 | 8/24 | 16.66 | 12.99 | 9.08 |
+| 8 | 9/24 | 22.32 | 13.63 | 9.50 |
+| 12 | 6/24 | 11.29 | 11.17 | 9.50 |
+
+将投影改为“只有预测到风险时才修正”，成功数为 10/24、10/24、11/24，仍未降低全组地面或臂腿穿透阈值。该方向不采纳，保留脚本和结果目录作为负对照。
+
+随后新增 `script/q1_soft_recovery/side_support.py`，把 `side_entry_02` 的侧卧轨迹和 `support_feedback_01` 的承重反馈合成为单一 ONNX，测试承重反馈强度 0.5、1.0、1.5。三组分别为 0/24，峰速 13.73、11.48、13.45 rad/s，均不能交还，不采纳。原因是两个模块共享 `RollToRise` 状态机时，承重阶段状态与侧卧入口状态的切换不满足原训练时的状态分布。
+
+最后使用正确的 8 拍交接包装器 `phase_fit.py evaluate`，把 `phase_fit_01/selected_00` 至 `selected_05` 全部在同一 24 个倒姿、种子 92117 上复评。`selected_00` 至 `selected_02` 为 10/24，`selected_03` 至 `selected_05` 为 11/24。最大显式臂腿穿透仍约 17.71 mm，最大峰速仍约 17.46 rad/s，均未达到柔和阈值。直接调用基础 `evaluate.py` 会漏掉该候选所需的 8 拍交接包装器，所得 0/24 只作为错误入口诊断，不用于候选排序。
+
+本轮没有新的可采纳模型，也没有启动正式 120 倒姿、30 次受推或真机带电验收。下一步仍应优先修改侧卧进入后的连续承重轨迹和站立接手速度，而不是继续增加全程碰撞投影余量。

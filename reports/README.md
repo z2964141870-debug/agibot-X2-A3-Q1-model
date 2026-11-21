@@ -1,3 +1,4 @@
+2026-11-21 [Q1 FGP human_smpl 遥操适配对齐](README_Q1_FGP_HUMAN_SMPL_ADAPTER_ALIGNMENT_20261121.md)。新增 FGP HTTP 线程、SMPL 50 Hz 重采样和只读桥接入口，fixture 验证无 HAL 命令发布。
 2026-11-21 [Q1 Planner 真机反馈与模型训练摘要](README_Q1_PLANNER_HARDWARE_FEEDBACK_20261121.md)。低层命令链路、站立承重、前后走和转向已验证；左右横移在多组速度下仍不稳定，已整理真机监控与离线侧向评估。
 2026-11-21 [Q1 柔和自主起身开发验证](README_Q1_SOFT_RECOVERY_20261121.md)。追加复评：侧卧局部避碰、侧卧+承重反馈组合和 phase_fit 候选均未形成可采纳模型，正式验收未启动。
 # YUANQI 项目状态与重要文件

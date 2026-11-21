@@ -1,3 +1,4 @@
+2026-11-21 [Q1 FGP human_smpl 适配](README_Q1_FGP_HUMAN_SMPL_ADAPTER_ALIGNMENT_20261121.md)。只读入口已通过 FGP fixture 和 Q1 反馈检查，真实 FGP 与主动低层接管待下一阶段。
 2026-11-21 [Q1 Planner 真机反馈](README_Q1_PLANNER_HARDWARE_FEEDBACK_20261121.md)。低层键盘 planner 的命令链路已打通，前后走和转向稳定，左右横移多速度仍不稳定。原始 32 MB 监控日志保留在 `/home/yu/projects/Q1_deploy/real_logs/`，报告已提交 Q1 分支。
 # YUANQI 当前状态与下一步
 

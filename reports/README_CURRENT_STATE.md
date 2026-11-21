@@ -1,3 +1,4 @@
+2026-11-21 [Q1 Planner 真机反馈](README_Q1_PLANNER_HARDWARE_FEEDBACK_20261121.md)。低层键盘 planner 的命令链路已打通，前后走和转向稳定，左右横移多速度仍不稳定。原始 32 MB 监控日志保留在 `/home/yu/projects/Q1_deploy/real_logs/`，报告已提交 Q1 分支。
 # YUANQI 当前状态与下一步
 
 2026-11-21追加：侧卧局部避碰、侧卧与承重反馈组合、phase_fit候选统一复评均未形成可采纳模型。当前候选仍未通过 24 个开发倒姿的柔和阈值联合验收，正式 120/30 验收未启动。详见 [Q1 柔和自主起身开发验证](README_Q1_SOFT_RECOVERY_20261121.md)。

@@ -1,8 +1,8 @@
 # Q1 FGP `human_smpl` 仿真遥操验证
 
-**日期**：2026-11-21  
-**场景**：Q1 MuJoCo hard-floor，Pure V2b `human_smpl` ONNX  
-**输入**：保存的 FGP SMPL24 JSONL  
+**日期**：2026-11-21
+**场景**：Q1 MuJoCo hard-floor，Pure V2b `human_smpl` ONNX
+**输入**：保存的 FGP SMPL24 JSONL
 **控制**：50 Hz 策略，MuJoCo 5 ms 子步，Q1 部署安全位置目标
 
 ## 主结果
@@ -73,4 +73,3 @@ Q1 MuJoCo 场景、`human_smpl` 特征、ONNX 推理和仿真执行链已经接�
 4. 站姿切换阶段的输入预热、动作限幅和策略 handoff。
 
 本轮没有发布任何 `/aima/hal/joint/command`。
-

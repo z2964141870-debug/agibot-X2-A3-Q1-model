@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-22",
+  "smpl_onnx_variant": "A2_adapter_v2_frozen_v2_onnx",
+  "bundle_dir": "/home/yu/projects/SuperMimicHP/runs/q1_fgp_human_smpl_v2_20261122/deploy_bundle_fgp_v2_20261122",
+  "zip_path": "/home/yu/projects/SuperMimicHP/runs/q1_fgp_human_smpl_v2_20261122/q1_fgp_control_addon_v2_20261122.zip",
+  "zip_bytes": 36457648,
+  "zip_sha256": "824c2eeec9b549536966b0c27711cf39be9b7f52bb3f9205dc2105325feeef7f",
+  "zip_sha256_file": "/home/yu/projects/SuperMimicHP/runs/q1_fgp_human_smpl_v2_20261122/q1_fgp_control_addon_v2_20261122.zip.sha256",
+  "components": {
+    "DEPLOY_HANDOFF.md": "8df7c334d21163770991e9d66f619d5d9d911bef2a02a2c3e381705840afd42d",
+    "code/q1_cgfa_obs_np.py": "2f03e42598d3270094f18729bdd316712d7ad0a3505815d299f5e9383c2ca99c",
+    "code/q1_fgp_client_v2.py": "84ff596cbf587eff41421c1b1fbfd37af26eb93be0052451a2be6d1962b2cfef",
+    "code/q1_fgp_smpl_v2.py": "5a53e4248c940a0aca296fe612228e22b5c854f6d54dcd1952cd1489ab9001b6",
+    "code/q1_kinematics_np.py": "7c9a33862fd5e287d74d93b20b7cf2d2f5995e5dedb00eb4ecdb70910df7a6b5",
+    "code/q1_v2b_runtime.py": "f913fee386d177f95df00696cac4e140b22643d5882283274fb6be961f198ea8",
+    "code/smoke_test_fgp_v2_addon.py": "88cd975ead45df23a152549781bf65d4e4cba47c8697ed0b60bb407f05850913",
+    "config/q1_deploy_config.json": "84b2cea4876a3769a6f7901172d58b0bc38b305df6e975aa1ef2b28cb108d414",
+    "onnx/q1_h002_token_head.onnx": "e0455c0b50db1c1fdc8aed1e0d283820d3fd64174b261093d99dc4430ff3e80f",
+    "onnx/q1_tok_human_smpl.onnx": "7dab4d9d056e797c1ae8631d6c15ffd5fc3324234c86b821b253fcbb46adfb0e",
+    "onnx/q1_tok_planner_cmd.onnx": "ce0aa0a49666515e0b47dd200995fecc8980cd3bcdd41149fbc4824fb92679e5",
+    "onnx/q1_tok_robot_pose.onnx": "9ee7a429347d0c9076657c6bb47e4635ee6b149cdc2504370fbfcecf09e6e6d9",
+    "robot_model/supermimic.xml": "47bfa08baed1a3482e575a6489b29c2fc1c720ba1f359f636a76c40a5e9da9df"
+  },
+  "isolated_python_I_smoke_standalone": {
+    "verified_bundle_files": 13,
+    "torch_loaded": false,
+    "mujoco_loaded": false,
+    "oob_total": 0,
+    "latencies": {
+      "human_smpl": {
+        "p50_ms": 0.6852,
+        "p95_ms": 0.8836
+      },
+      "planner_cmd": {
+        "p50_ms": 0.4994,
+        "p95_ms": 0.6577
+      }
+    },
+    "transient_outages_ignored": 3,
+    "final_segment": 1,
+    "debiased_pitch_deg": -0.0,
+    "debiased_torso_x": 0.0,
+    "antiskate_vx_m_s": 0.0194,
+    "fallback_guard_verified": true
+  },
+  "isolated_python_I_smoke_merged_no_sha_json": {
+    "verified_bundle_files": 0,
+    "torch_loaded": false,
+    "mujoco_loaded": false,
+    "oob_total": 0,
+    "latencies": {
+      "human_smpl": {
+        "p50_ms": 0.69,
+        "p95_ms": 0.9395
+      },
+      "planner_cmd": {
+        "p50_ms": 0.5037,
+        "p95_ms": 0.6834
+      }
+    },
+    "transient_outages_ignored": 3,
+    "final_segment": 1,
+    "debiased_pitch_deg": -0.0,
+    "debiased_torso_x": 0.0,
+    "antiskate_vx_m_s": 0.0194,
+    "fallback_guard_verified": true
+  }
+}

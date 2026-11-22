@@ -108,3 +108,7 @@ source /home/yu/ros2_ws_aimdk/install/setup.bash
 - 该入口不启用 Recovery，FGP 线程常驻但只在 `human_smpl` owner 下消费。
 
 候选桥接的模拟发布器回归已通过，覆盖 Planner → human_smpl、过期 FGP 拒绝、human_smpl → Planner 和单线程控制权。当前没有向 Q1 真机启动该入口。
+
+## 切换入口参数修正
+
+首次给出 `--keyboard-switchable` 命令时，CLI 没有把该模式同步传入桥接构造器的 `human_smpl` 参数，导致初始化时报 `Switchable teleop requires the human_smpl input`。已补上该参数传递，重新通过 Python 编译、帮助入口和 `SWITCHABLE_BRIDGE_PASS` 离线回归。此前命令未进入 ROS 发布循环，也没有向 Q1 发送关节命令。

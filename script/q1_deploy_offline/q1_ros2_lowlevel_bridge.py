@@ -743,7 +743,7 @@ def main() -> int:
                 if (args.stand_start or args.fgp_readonly) and args.duration > 0
                 else None
             ),
-            human_smpl=(args.human_smpl or args.fgp_readonly),
+            human_smpl=(args.human_smpl or args.fgp_readonly or args.keyboard_switchable),
             fgp_url=args.fgp_url,
             fgp_standing_height=args.fgp_standing_height,
             fgp_readonly=args.fgp_readonly,

@@ -1,3 +1,5 @@
+2026-11-22 [Q1 遥操版本里程碑](README_Q1_TELEOP_MILESTONE_20261122.md)。冻结单进程 Planner/human_smpl 切换、`w/s/a/d/e` Planner、`t` 遥操、`p` 回 Planner、`q` 退出和同步采集器。真机数据目录已保存，版本标签待本提交后创建。
+
 2026-11-22 [Q1 切换真机运行数据报告](README_Q1_SWITCHABLE_RUNTIME_DATA_20261122.md)。同步采集器四路写盘完整、状态/命令约 500 Hz、policy 约 50 Hz，写盘无丢帧。human_smpl 段约 97.76% 拍有有效 FGP，存在 12 个短暂失效区间，数据适合诊断和带标记筛选，不作为无缺口连续训练集。原始大文件仍 LOCAL_ONLY。
 
 2026-11-22 [Q1 部署 V2 离线验收](README_Q1_DEPLOY_V2_OFFLINE_20261122.md)。横移扰动对照 4/24→24/24，隔离候选四模态自检通过。Recovery V2 桥接回归和部署 owner 仿真通过起身与交还检查，受推冲击仍超限。FGP 真实 BLE 录制可经 HTTP 驱动仿真，根位置真值支持 40 秒回放，后续长段仍有跌倒。实际机器人及实时穿戴待测。

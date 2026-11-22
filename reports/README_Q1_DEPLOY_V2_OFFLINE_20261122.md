@@ -116,3 +116,7 @@ source /home/yu/ros2_ws_aimdk/install/setup.bash
 ## 切换入口退出诊断补丁
 
 现场首轮运行在输出 `planner_cmd = stop` 后紧接着显示 `Keyboard planner stopped`，但旧入口没有记录退出原因。已补充 `stop_reason` 日志和 `s/p/q` 按键去抖。空格仍只更新 Planner 的停止命令，不设置退出事件。下一次退出会明确显示 `keyboard_q`、`feedback_stale`、`publish_exception` 或其他原因。
+
+## 切换按键冲突修正
+
+现场确认 `s` 需要保留为 Planner 后退。切换入口现改为 `t=human_smpl`，`s` 恢复为后退，`p=planner`，`q=exit`。按键去抖规则同步改为 `t/p/q`。

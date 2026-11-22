@@ -697,7 +697,7 @@ def main() -> int:
     mode.add_argument(
         "--keyboard-switchable",
         action="store_true",
-        help="Planner keyboard with s=human_smpl, p=planner, q=exit",
+        help="Planner keyboard with t=human_smpl, p=planner, q=exit",
     )
     mode.add_argument("--human-smpl", action="store_true", help="Live FGP human_smpl policy input")
     mode.add_argument("--fgp-readonly", action="store_true", help="Live FGP human_smpl alignment without HAL commands")
@@ -776,6 +776,7 @@ def main() -> int:
             old_settings = termios.tcgetattr(fd)
             key_commands = {
                 "w": (args.keyboard_vx, 0.0, 0.0),
+                "s": (-args.keyboard_vx, 0.0, 0.0),
                 "a": (0.0, args.keyboard_vy, 0.0),
                 "d": (0.0, -args.keyboard_vy, 0.0),
                 "e": (0.0, 0.0, -args.keyboard_wz),
@@ -789,8 +790,8 @@ def main() -> int:
             }
             if args.keyboard_switchable:
                 print(
-                    "Switchable planner active: w/a/d/e planner, s=human_smpl, "
-                    "p=planner, space=stop, q=exit",
+                    "Switchable planner active: w/s/a/d/e planner, "
+                    "s=backward, t=human_smpl, p=planner, space=stop, q=exit",
                     flush=True,
                 )
             else:
@@ -808,13 +809,13 @@ def main() -> int:
                     if not readable:
                         continue
                     key = os.read(fd, 1).decode("utf-8", errors="ignore").lower()
-                    if key in ("s", "p", "q"):
+                    if key in ("t", "p", "q"):
                         if key == last_mode_key:
                             continue
                         last_mode_key = key
                     else:
                         last_mode_key = None
-                    if args.keyboard_switchable and key == "s":
+                    if args.keyboard_switchable and key == "t":
                         node.request_control_mode("human_smpl")
                         continue
                     if args.keyboard_switchable and key == "p":

@@ -38,7 +38,7 @@ with patches[0], patches[1], patches[2], patches[3]:
     )
     queued = SimpleNamespace(tick=tick, arrival_ns=time.monotonic_ns())
     node.fgp.status = Mock(return_value={'fresh': True})
-    node.fgp.get_latest = Mock(return_value=(queued, 0))
+    node.fgp.pop_paced = Mock(return_value=(queued, 0, False))
     node._base_step = Mock(return_value=(q.copy(), np.zeros(22, np.float32), {}))
     node._human_smpl_step = Mock(return_value=(q.copy() + 0.01, np.zeros(22, np.float32), {}))
     node._infer_once((R, w, q, qd, None))

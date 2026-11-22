@@ -45,12 +45,12 @@ def iter_fgp_ticks(
             yield from stream.push_sample(sample)
 
 
-def iter_live_ticks(source: FGPHttpSource, dt: float, duration_s: float):
-    deadline = next_tick = time.monotonic()
-    deadline += duration_s
+def iter_live_ticks(source: FGPHttpSource, dt: float, duration_s: float | None):
+    next_tick = time.monotonic()
+    deadline = None if duration_s is None else next_tick + duration_s
     source.start()
     try:
-        while max(next_tick, time.monotonic()) < deadline:
+        while deadline is None or max(next_tick, time.monotonic()) < deadline:
             time.sleep(max(0.0, next_tick - time.monotonic()))
             queued, _ = source.get_latest()
             age = None if queued is None else time.monotonic_ns() - queued.arrival_ns
@@ -76,6 +76,22 @@ def passive_viewer(model, data):
                 time.sleep(0.01)
         except mujoco.UnexpectedError:
             pass
+
+
+def prepare_output(path: Path) -> Path:
+    """Create a fresh run directory, preserving earlier traces on rerun."""
+    if not path.exists():
+        path.mkdir(parents=True)
+        return path
+    if not path.is_dir():
+        raise ValueError(f"Output path is not a directory: {path}")
+    index = 2
+    while True:
+        candidate = path.with_name(f"{path.name}_run{index:02d}")
+        if not candidate.exists():
+            candidate.mkdir(parents=True)
+            return candidate
+        index += 1
 
 
 def rollout(
@@ -257,6 +273,8 @@ def rollout(
                 if data.qpos[2] < 0.15 or tilt >= 65.0:
                     stop_reason = "tilt_or_height_limit"
                     break
+    except KeyboardInterrupt:
+        stop_reason = "interrupted"
     finally:
         if renderer is not None:
             renderer.close()
@@ -298,7 +316,10 @@ def main() -> int:
     source.add_argument("--fgp-url")
     source.add_argument("--reference-clip", type=Path)
     parser.add_argument("--modality", choices=("human_smpl", "robot_pose", "planner_cmd"), default="human_smpl")
-    parser.add_argument("--duration", type=float, default=10.0)
+    parser.add_argument(
+        "--duration", type=float, default=None,
+        help="Seconds to run. Omit or use 0 with --fgp-url for continuous mode.",
+    )
     parser.add_argument("--start-s", type=float, default=0.0)
     parser.add_argument("--fgp-standing-height", type=float, help="Measured standing pelvis height in meters")
     parser.add_argument("--prestand-s", type=float, default=0.2)
@@ -311,10 +332,14 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--video", action="store_true")
     args = parser.parse_args()
+    if args.duration is None:
+        args.duration = 0.0 if args.fgp_url else 10.0
     if not args.assets.is_dir():
         parser.error(f"Q1 mesh assets not found: {args.assets}")
-    if not np.isfinite(args.duration) or args.duration <= 0:
-        parser.error("--duration must be positive and finite")
+    if not np.isfinite(args.duration) or args.duration < 0:
+        parser.error("--duration must be nonnegative and finite")
+    if args.duration == 0 and not args.fgp_url:
+        parser.error("--duration 0 is only supported with --fgp-url")
     if not np.isfinite(args.prestand_s) or args.prestand_s < 0:
         parser.error("--prestand-s must be nonnegative and finite")
     if not np.isfinite(args.start_s) or args.start_s < 0 or (args.start_s and not args.smpl_jsonl):
@@ -328,7 +353,7 @@ def main() -> int:
     if args.viewer and not args.fgp_url:
         parser.error("--viewer requires a live FGP URL")
 
-    args.output.mkdir(parents=True)
+    args.output = prepare_output(args.output)
     controller = Q1V2bOnnxController(ROOT, modalities=(args.modality,))
     dt = controller.cfg["dt_s"]
     kin = Q1KinematicsNP(ROOT / "robot_model/supermimic.xml")
@@ -339,7 +364,7 @@ def main() -> int:
     http = None
     if args.fgp_url:
         http = FGPHttpSource(args.fgp_url, dt, standing_height_m=args.fgp_standing_height)
-        ticks = iter_live_ticks(http, dt, args.duration)
+        ticks = iter_live_ticks(http, dt, None if args.duration == 0 else args.duration)
     elif args.reference_clip:
         clip = PrebakedClipLibraryNP(args.reference_clip)
         ticks = (SMPLTick(1, round(i * dt * 1e9), *clip.get_step_inputs(i, args.modality))
@@ -381,7 +406,8 @@ def main() -> int:
         "xy_feedback": args.xy_feedback,
         "physics_ms": args.physics_ms,
         "prestand_s": args.prestand_s,
-        "requested_duration_s": args.duration,
+        "requested_duration_s": None if args.duration == 0 else args.duration,
+        "continuous_until_exit": bool(args.fgp_url and args.duration == 0),
         "recording_start_s": args.start_s,
         "fgp_standing_height_m": args.fgp_standing_height,
         "http_status": http.status() if http else None,
@@ -393,7 +419,7 @@ def main() -> int:
     }
     (args.output / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(report, ensure_ascii=False))
-    return 0 if result["stop_reason"] in ("completed", "viewer_closed") else 1
+    return 0 if result["stop_reason"] in ("completed", "viewer_closed", "interrupted") else 1
 
 
 if __name__ == "__main__":

@@ -76,3 +76,12 @@ source /home/yu/ros2_ws_aimdk/install/setup.bash
 有桌面时，本机 HTTP 回归可附加 --viewer。现场穿戴时，可将仿真入口换成 --fgp-url 指向提供 /api/smpl 的 FGP 主机，并使用 --viewer。只启动 MuJoCo，此入口没有 ROS 节点。仿真依赖 SuperMimicHP 的 Q1 网格资产和 Python 环境。候选目录包含代码实文件、配置、六个 ONNX 和场景 XML，实验运行的原始输出见 [工件与指标清单](../data/manifests/q1_deploy_v2_offline_20261122.json)。大工件与原始录制保留在本机，状态 LOCAL_ONLY。
 
 下一次现场可以先验证穿戴到 MuJoCo 的实时路径。横移 V2 的真机表现仍有待测量。Recovery 的受推冲击和 FGP 困难片段需要继续验证。
+
+## 2026-11-22 实时仿真入口修复
+
+之前的实时入口存在两个实际缺陷。`--duration 0` 被拒绝，且重复使用同一个输出目录会因 `FileExistsError` 退出。已修复候选入口和 Git 交接快照。
+
+- 使用 `--fgp-url` 时，省略 `--duration` 或设置 `--duration 0` 会持续运行，直到关闭 MuJoCo 窗口或按 `Ctrl-C`。
+- `Ctrl-C` 会正常保存 `report.json` 和 `trace.npz`，报告中的 `stop_reason` 为 `interrupted`。
+- 已存在的输出目录会自动使用 `_run02`、`_run03` 等新目录，保留历史记录。
+- 本机 HTTP 连续运行回归通过两次，分别处理 124 和 72 个策略步，均正常中断并保存报告。

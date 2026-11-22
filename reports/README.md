@@ -1,3 +1,5 @@
+2026-11-22 [Q1 切换真机运行数据报告](README_Q1_SWITCHABLE_RUNTIME_DATA_20261122.md)。同步采集器四路写盘完整、状态/命令约 500 Hz、policy 约 50 Hz，写盘无丢帧。human_smpl 段约 97.76% 拍有有效 FGP，存在 12 个短暂失效区间，数据适合诊断和带标记筛选，不作为无缺口连续训练集。原始大文件仍 LOCAL_ONLY。
+
 2026-11-22 [Q1 部署 V2 离线验收](README_Q1_DEPLOY_V2_OFFLINE_20261122.md)。横移扰动对照 4/24→24/24，隔离候选四模态自检通过。Recovery V2 桥接回归和部署 owner 仿真通过起身与交还检查，受推冲击仍超限。FGP 真实 BLE 录制可经 HTTP 驱动仿真，根位置真值支持 40 秒回放，后续长段仍有跌倒。实际机器人及实时穿戴待测。
 
 2026-11-22研究：[工程边界简报](research/2026-11-22/README.md)／[检查](README_RESEARCH_CHECK_20261122.md)。公开研究无实质新增；Q1 Soft Recovery V2、FGP human_smpl 仿真与 PlannerCmd 侧向校准有边界更新。未运行或改默认。[发布收据](../data/manifests/research_watch_sync_20261122.json)，服务器镜像待。

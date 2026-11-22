@@ -6,6 +6,8 @@
 2026-11-21 [Q1 Planner 真机反馈](README_Q1_PLANNER_HARDWARE_FEEDBACK_20261121.md)。低层键盘 planner 的命令链路已打通，前后走和转向稳定，左右横移多速度仍不稳定。原始 32 MB 监控日志保留在 `/home/yu/projects/Q1_deploy/real_logs/`，报告已提交 Q1 分支。
 # YUANQI 当前状态与下一步
 
+2026-11-22 [Q1 切换真机运行数据报告](README_Q1_SWITCHABLE_RUNTIME_DATA_20261122.md)。同步采集器四路写盘完整、状态/命令约 500 Hz、policy 约 50 Hz，写盘无丢帧。human_smpl 段约 97.76% 拍有有效 FGP，存在 12 个短暂失效区间，数据适合诊断和带标记筛选，不作为无缺口连续训练集。原始大文件仍 LOCAL_ONLY。
+
 2026-11-22 追加：新增同步真机采集器，`--record-dir` 输出 FGP、500 Hz 状态、500 Hz 实际命令和 50 Hz policy 输入输出。上一轮没有这些写盘记录，下一轮需使用新入口。
 
 2026-11-22 追加：切换入口按键冲突已修正，`s` 保留 Planner 后退，`t` 切 human_smpl，`p` 回 Planner，`q` 退出。

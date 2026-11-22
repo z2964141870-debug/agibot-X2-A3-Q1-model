@@ -53,15 +53,9 @@ code/sim_q1_fgp_human_smpl.py \
 
 这三组结果都出现明显目标误差和身体倾倒，说明当前 `human_smpl` 真闭环仿真还没有通过。站姿预热和初始关节姿态会改变失败时间，不能单独解释失败。
 
-## 数据来源边界
+## 数据来源
 
-`live_device_status_r1/session.json` 的启动参数包含：
-
-```text
-fixture=/home/yu/projects/FGP_mocap/assets/recorded_fixture.npz
-```
-
-因此本轮使用的是 FGP 真实输出格式和完整 FGP 推理结果的保存回放。该文件不能证明本轮输入来自刚刚采集的真实 BLE 衣服数据。仿真没有启动 FGP BLE，也没有连接或控制 Q1 真机。
+2026-11-22 复核后确认，这批保存的 SMPL 帧来自历史真实 BLE 穿戴。会话命令为 live，stats 的 input_kind 为 live_ble，帧时钟为 ble_receiver_monotonic_proxy。启动参数中的 fixture 是默认字段。当天仿真通过文件回放，没有启动 BLE 或连接 Q1。
 
 ## 当前判断
 
@@ -73,3 +67,5 @@ Q1 MuJoCo 场景、`human_smpl` 特征、ONNX 推理和仿真执行链已经接�
 4. 站姿切换阶段的输入预热、动作限幅和策略 handoff。
 
 本轮没有发布任何 `/aima/hal/joint/command`。
+
+2026-11-22 的复核修正了仿真 pelvis 局部角速度，保留这里的历史失败记录。新结果包括静站、HTTP 断流恢复与长段根部 XY 对照。见 [Q1 部署 V2 离线验收](README_Q1_DEPLOY_V2_OFFLINE_20261122.md)。

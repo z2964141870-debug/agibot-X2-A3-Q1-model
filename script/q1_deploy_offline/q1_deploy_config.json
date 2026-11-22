@@ -1,0 +1,411 @@
+{
+  "bundle_name": "q1_v2b_gantry_deploy_bundle",
+  "policy_architecture": "H002-SONIC v2b (Full Body Natural Narrow Stance)",
+  "codec_fingerprint": "33f64eaefe80c12b35d7bd0b8bfbf641a3a8d463e9979ea448b7ba79788f13f8",
+  "ctrl_hz": 50,
+  "dt_s": 0.02,
+  "hist_len": 10,
+  "obs_dim": 80,
+  "z_dim": 32,
+  "num_joints": 22,
+  "lookahead_ms": 0,
+  "ori_mode": "heading",
+  "obs_layout": {
+    "proprio_and_aprev": "0:72",
+    "heading_aligned_rel_rot_6d": "72:78",
+    "cgfa_root_xy_error_m": "78:80"
+  },
+  "onnx_head_file": "q1_h002_token_head.onnx",
+  "modal_tokenizer_files": {
+    "robot_pose": "q1_tok_robot_pose.onnx",
+    "human_smpl": "q1_tok_human_smpl.onnx",
+    "vr_3pt": "q1_tok_vr_3pt.onnx",
+    "planner_cmd": "q1_tok_planner_cmd.onnx"
+  },
+  "modality_input_dims": {
+    "robot_pose": 590,
+    "human_smpl": 430,
+    "vr_3pt": 360,
+    "planner_cmd": 100
+  },
+  "cgfa_recommended": {
+    "mode": "cgfa_clipped_norm",
+    "gamma_stat": 0.998,
+    "gamma_loco": 0.96,
+    "hard_clip_radius_m": 0.25,
+    "loco_speed_thresh": 0.15,
+    "loco_speed_temp": 0.04,
+    "yaw_rate_equiv_m": 0.2,
+    "sole_local_offset_m": [
+      0.02,
+      0.0,
+      -0.022
+    ]
+  },
+  "torque_safe_pd": {
+    "engage_steps": 5,
+    "dq_tau_scale": 0.5
+  },
+  "recovery": {
+    "enabled_by_default": false,
+    "expert_file": "q1_recovery_expert_v2.onnx",
+    "expert_sha256": "5d38cfcb3c31ad1103bd8897d4c8fad97472a04d5e258106732dd3a409b842ee",
+    "obs_dim": 74,
+    "state_dim": 26,
+    "owner_class": "Q1SoftRecoveryV2Owner",
+    "calm_upright_gate": {
+      "h_min": 0.355,
+      "up_z_min": 0.965,
+      "rms_leg_max": 0.35,
+      "w_norm_max": 0.7,
+      "qd_rms_max": 0.95,
+      "calm_ticks": 4
+    },
+    "blend_ticks": 16,
+    "leg_speed_cap": 8.5,
+    "leg_brake_gain": 0.5,
+    "sender_ramp_hz": 500,
+    "sender_max_increment_rad_per_2ms": 0.2,
+    "fall_gate_ticks": 3,
+    "stand_dwell_ticks": 25,
+    "wide_stand_dwell_ticks": 40,
+    "handoff_ticks": 30,
+    "source": "q1_deploy_addon_lateral_and_recovery_v2_20261122.zip",
+    "strict_acceptance_note": "15/18 strict gates passed (unseen static 116/120 timely & 114/120 soft, unseen push 30/30 recovered); push impact [cap,cap+40) peaks exceed 12/10/2; keep enabled_by_default=false"
+  },
+  "joint_names": [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_joint",
+    "left_ankle_pitch_joint",
+    "left_ankle_roll_joint",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_joint",
+    "right_ankle_pitch_joint",
+    "right_ankle_roll_joint",
+    "waist_roll_joint",
+    "waist_yaw_joint",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_joint"
+  ],
+  "default_q": [
+    -0.09,
+    -0.02,
+    -0.02,
+    0.22,
+    -0.13,
+    0.0,
+    -0.09,
+    0.02,
+    0.02,
+    0.22,
+    -0.13,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.18,
+    0.0,
+    1.4,
+    0.0,
+    -0.18,
+    0.0,
+    1.4
+  ],
+  "action_scale": [
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.2625,
+    0.2625,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.2625,
+    0.2625,
+    0.1125,
+    0.3,
+    0.2625,
+    0.2625,
+    0.2625,
+    0.2625,
+    0.2625,
+    0.2625,
+    0.2625,
+    0.2625
+  ],
+  "kp": [
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    20.0,
+    20.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    20.0,
+    20.0,
+    80.0,
+    30.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0
+  ],
+  "kd": [
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    0.8,
+    0.8,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    0.8,
+    0.8,
+    3.5,
+    1.5,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8
+  ],
+  "effort_limit_nm": [
+    36.0,
+    36.0,
+    36.0,
+    36.0,
+    21.0,
+    21.0,
+    36.0,
+    36.0,
+    36.0,
+    36.0,
+    21.0,
+    21.0,
+    36.0,
+    36.0,
+    21.0,
+    21.0,
+    21.0,
+    21.0,
+    21.0,
+    21.0,
+    21.0,
+    21.0
+  ],
+  "q_lo": [
+    -3.0543,
+    -0.69813,
+    -1.5708,
+    0.0,
+    -0.7854,
+    -0.34907,
+    -3.0543,
+    -1.5708,
+    -1.5708,
+    0.0,
+    -0.7854,
+    -0.34907,
+    -0.2618,
+    -1.5708,
+    -3.1416,
+    -0.087266,
+    -1.5708,
+    -0.87266,
+    -3.1416,
+    -2.7925,
+    -1.5708,
+    -0.87266
+  ],
+  "q_hi": [
+    1.5708,
+    1.5708,
+    1.5708,
+    2.4435,
+    0.43633,
+    0.34907,
+    1.5708,
+    0.69813,
+    1.5708,
+    2.4435,
+    0.43633,
+    0.34907,
+    0.2618,
+    1.5708,
+    1.5708,
+    2.7925,
+    1.5708,
+    1.6581,
+    1.5708,
+    0.087266,
+    1.5708,
+    1.6581
+  ],
+  "onnx_files": {
+    "q1_h002_token_head.onnx": {
+      "bytes": 17867002,
+      "sha256": "e0455c0b50db1c1fdc8aed1e0d283820d3fd64174b261093d99dc4430ff3e80f",
+      "inputs": [
+        {
+          "obs_hist": [
+            "batch",
+            10,
+            80
+          ]
+        },
+        {
+          "token": [
+            "batch",
+            32
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "action": [
+            "batch",
+            22
+          ]
+        }
+      ],
+      "metadata": {
+        "codec_fingerprint": "33f64eaefe80c12b35d7bd0b8bfbf641a3a8d463e9979ea448b7ba79788f13f8",
+        "ori_mode": "heading",
+        "ctrl_hz": "50",
+        "lookahead_ms": "0"
+      }
+    },
+    "q1_tok_robot_pose.onnx": {
+      "bytes": 15898229,
+      "sha256": "9ee7a429347d0c9076657c6bb47e4635ee6b149cdc2504370fbfcecf09e6e6d9",
+      "inputs": [
+        {
+          "modal_input": [
+            "batch",
+            590
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "token": [
+            "batch",
+            32
+          ]
+        }
+      ],
+      "metadata": {
+        "codec_fingerprint": "33f64eaefe80c12b35d7bd0b8bfbf641a3a8d463e9979ea448b7ba79788f13f8",
+        "ori_mode": "heading",
+        "ctrl_hz": "50",
+        "lookahead_ms": "0",
+        "modality": "robot_pose"
+      }
+    },
+    "q1_tok_human_smpl.onnx": {
+      "bytes": 4427834,
+      "sha256": "7dab4d9d056e797c1ae8631d6c15ffd5fc3324234c86b821b253fcbb46adfb0e",
+      "inputs": [
+        {
+          "modal_input": [
+            "batch",
+            430
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "token": [
+            "batch",
+            32
+          ]
+        }
+      ],
+      "metadata": {
+        "codec_fingerprint": "33f64eaefe80c12b35d7bd0b8bfbf641a3a8d463e9979ea448b7ba79788f13f8",
+        "ori_mode": "heading",
+        "ctrl_hz": "50",
+        "lookahead_ms": "0",
+        "modality": "human_smpl"
+      }
+    },
+    "q1_tok_vr_3pt.onnx": {
+      "bytes": 4140550,
+      "sha256": "ff0586884a3f1b0aa33883145945be8f32e9cd91110891ffc1d7b41aa97e06ba",
+      "inputs": [
+        {
+          "modal_input": [
+            "batch",
+            360
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "token": [
+            "batch",
+            32
+          ]
+        }
+      ],
+      "metadata": {
+        "codec_fingerprint": "33f64eaefe80c12b35d7bd0b8bfbf641a3a8d463e9979ea448b7ba79788f13f8",
+        "ori_mode": "heading",
+        "ctrl_hz": "50",
+        "lookahead_ms": "0",
+        "modality": "vr_3pt"
+      }
+    },
+    "q1_tok_planner_cmd.onnx": {
+      "bytes": 1030628,
+      "sha256": "ce0aa0a49666515e0b47dd200995fecc8980cd3bcdd41149fbc4824fb92679e5",
+      "inputs": [
+        {
+          "modal_input": [
+            "batch",
+            100
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "token": [
+            "batch",
+            32
+          ]
+        }
+      ],
+      "metadata": {
+        "codec_fingerprint": "33f64eaefe80c12b35d7bd0b8bfbf641a3a8d463e9979ea448b7ba79788f13f8",
+        "ori_mode": "heading",
+        "ctrl_hz": "50",
+        "lookahead_ms": "0",
+        "modality": "planner_cmd"
+      }
+    }
+  }
+}

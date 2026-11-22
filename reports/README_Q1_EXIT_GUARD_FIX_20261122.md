@@ -32,10 +32,11 @@ PASSIVE_DEFAULT was not requested: SetMcAction service unavailable
 - 低层模式检测不到该服务时，`q` 切回零速度 Planner，并继续保持 PD 命令。
 - `x` 作为强制退出键。强制退出前必须由人工或吊架承托机器人。
 - `_switch_to_passive()` 现在返回成功状态，只有被官方服务确认后才认为退出到被动模式完成。
+- 键盘进入 cbreak 前清空 `TCIFLUSH` 输入队列，避免启动前残留字符触发模式操作。
 
 当前候选文件 SHA-256：
 
-`a4617373d4402812734fbd5e14de01578a813d5c7c7129c4ae1eb17aa0a27f90`
+`cda69e3eecac80e7dc4d4a64290486c835d498a01adabecb36762424b072cd0c`
 
 ## 离线验证
 

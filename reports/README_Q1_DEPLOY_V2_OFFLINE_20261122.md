@@ -112,3 +112,7 @@ source /home/yu/ros2_ws_aimdk/install/setup.bash
 ## 切换入口参数修正
 
 首次给出 `--keyboard-switchable` 命令时，CLI 没有把该模式同步传入桥接构造器的 `human_smpl` 参数，导致初始化时报 `Switchable teleop requires the human_smpl input`。已补上该参数传递，重新通过 Python 编译、帮助入口和 `SWITCHABLE_BRIDGE_PASS` 离线回归。此前命令未进入 ROS 发布循环，也没有向 Q1 发送关节命令。
+
+## 切换入口退出诊断补丁
+
+现场首轮运行在输出 `planner_cmd = stop` 后紧接着显示 `Keyboard planner stopped`，但旧入口没有记录退出原因。已补充 `stop_reason` 日志和 `s/p/q` 按键去抖。空格仍只更新 Planner 的停止命令，不设置退出事件。下一次退出会明确显示 `keyboard_q`、`feedback_stale`、`publish_exception` 或其他原因。

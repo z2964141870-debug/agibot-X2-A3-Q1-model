@@ -208,6 +208,7 @@ class Q1LowLevelBridge(Node):
         self.initialized = False
         self.sequence = 0
         self.stop_event = threading.Event()
+        self.stop_reason: str | None = None
         self.control_thread = threading.Thread(target=self._control_loop, name="q1_500hz", daemon=True)
         self.stand_controller = None
         self.started_at = None
@@ -287,6 +288,8 @@ class Q1LowLevelBridge(Node):
         self.control_thread.start()
 
     def stop(self) -> None:
+        if self.stop_reason is None:
+            self.stop_reason = "shutdown"
         self.stop_event.set()
         if self.control_thread.is_alive():
             self.control_thread.join(timeout=2.0)
@@ -623,6 +626,7 @@ class Q1LowLevelBridge(Node):
         next_tick = time.monotonic()
         while not self.stop_event.is_set():
             if self.run_duration is not None and time.monotonic() - self.started_at >= self.run_duration:
+                self.stop_reason = "run_duration"
                 self.stop_event.set()
                 return
             now = time.monotonic()
@@ -640,6 +644,7 @@ class Q1LowLevelBridge(Node):
                     print("q1_lowlevel_bridge: feedback became stale after engagement", flush=True)
                     self._publish_damping()
                     self.get_logger().error("State lost after engagement. Stopping control.")
+                    self.stop_reason = "feedback_stale"
                     self.stop_event.set()
                     return
             else:
@@ -650,6 +655,7 @@ class Q1LowLevelBridge(Node):
                     except Exception as error:
                         if self.recovery_v2:
                             self.get_logger().error(f"Recovery V2 inference failed: {error}")
+                            self.stop_reason = "recovery_inference_error"
                             self.stop_event.set()
                             return
                         _, _, q, qd, _ = decoded
@@ -672,6 +678,7 @@ class Q1LowLevelBridge(Node):
                         self.sent_active_command = True
                     except Exception as error:
                         print(f"q1_lowlevel_bridge: publish exception: {error!r}", flush=True)
+                        self.stop_reason = "publish_exception"
                         self.stop_event.set()
                         return
             tick += 1
@@ -794,12 +801,19 @@ def main() -> int:
                 )
             try:
                 tty.setcbreak(fd)
+                last_mode_key = None
                 while rclpy.ok() and not node.stop_event.is_set():
                     rclpy.spin_once(node, timeout_sec=0.01)
                     readable, _, _ = select.select([fd], [], [], 0.0)
                     if not readable:
                         continue
                     key = os.read(fd, 1).decode("utf-8", errors="ignore").lower()
+                    if key in ("s", "p", "q"):
+                        if key == last_mode_key:
+                            continue
+                        last_mode_key = key
+                    else:
+                        last_mode_key = None
                     if args.keyboard_switchable and key == "s":
                         node.request_control_mode("human_smpl")
                         continue
@@ -807,6 +821,8 @@ def main() -> int:
                         node.request_control_mode("planner")
                         continue
                     if (args.keyboard_switchable and key == "q") or (not args.keyboard_switchable and key in ("x", "\x03")):
+                        node.stop_reason = "keyboard_q" if args.keyboard_switchable else "keyboard_exit"
+                        print(f"Exit requested: {node.stop_reason}", flush=True)
                         node.stop_event.set()
                         break
                     if key in (" ", "0"):
@@ -819,7 +835,8 @@ def main() -> int:
                         print(f"planner_cmd = vx={vx:.3f} vy={vy:.3f} wz={wz:.3f}", flush=True)
             finally:
                 termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-                print("Keyboard planner stopped", flush=True)
+                reason = node.stop_reason or "control_thread_stopped"
+                print(f"Keyboard planner stopped: reason={reason}", flush=True)
         else:
             while rclpy.ok() and not node.stop_event.is_set():
                 rclpy.spin_once(node, timeout_sec=0.01)

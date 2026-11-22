@@ -6,6 +6,8 @@
 2026-11-21 [Q1 Planner 真机反馈](README_Q1_PLANNER_HARDWARE_FEEDBACK_20261121.md)。低层键盘 planner 的命令链路已打通，前后走和转向稳定，左右横移多速度仍不稳定。原始 32 MB 监控日志保留在 `/home/yu/projects/Q1_deploy/real_logs/`，报告已提交 Q1 分支。
 # YUANQI 当前状态与下一步
 
+2026-11-22 [Q1 Recovery V2 真机测试](README_Q1_RECOVERY_REAL_TEST_20261122.md)。两轮受保护测试中第一轮自主起身成功，第二轮因手部硬件断裂中止。采集器两轮均无写盘丢帧，第二轮不计为策略失败。
+
 2026-11-22 [humanplus 主机只读探测](README_Q1_HUMANPLUS_READONLY_PROBE_20261122.md)。SSH 可达，目标为 Ubuntu 24.04、ROS 2 Jazzy、RTX 5060 Laptop 8 GiB、24 CPU、30 GiB 内存；根分区仅剩约 8.9 GiB。未迁移、未改配置、未启动 Q1。
 
 2026-11-22 [Q1 遥操版本里程碑](README_Q1_TELEOP_MILESTONE_20261122.md)。冻结单进程 Planner/human_smpl 切换、`w/s/a/d/e` Planner、`t` 遥操、`p` 回 Planner、`q` 退出和同步采集器。真机数据目录已保存，版本标签待本提交后创建。

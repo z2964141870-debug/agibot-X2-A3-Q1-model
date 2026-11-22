@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-22",
+  "version": "Q1 Recovery V2 real test",
+  "candidate": "/home/yu/projects/Q1_deploy/verification/q1_deploy_v2_candidate_20261122",
+  "mode": "recovery_offline",
+  "exit_passive": true,
+  "attempts": [
+    {
+      "id": "q1_recovery_v2_real_20261122",
+      "duration_s": 15.9,
+      "result": "autonomous_recovery_success",
+      "hardware_fault": false,
+      "state_records": 7940,
+      "policy_records": 795,
+      "command_records": 7939,
+      "recorder_dropped": {}
+    },
+    {
+      "id": "q1_recovery_v2_real_20261122_run02",
+      "duration_s": 59.1,
+      "result": "aborted_hardware_fault",
+      "hardware_fault": "hand mechanism broke during recovery",
+      "state_records": 28425,
+      "policy_records": 2843,
+      "command_records": 28431,
+      "recorder_dropped": {}
+    }
+  ],
+  "conclusion": "one real-robot autonomous recovery success observed. Second attempt is a hand hardware failure and is excluded from policy-failure count.",
+  "raw_data": "LOCAL_ONLY"
+}

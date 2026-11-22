@@ -132,3 +132,7 @@ source /home/yu/ros2_ws_aimdk/install/setup.bash
 - `session.json` 与 `summary.json`，记录启动参数、模型入口和异步写盘丢帧计数。
 
 控制线程使用异步有界队列写盘。`summary.json` 中的 `dropped` 必须为零才表示本地采集完整。本采集器尚未用于上一轮真机控制，当前旧桥接进程也没有写盘。
+
+## Recovery 退出状态修正
+
+原桥接退出路径发送的是 SDK 要求的 `stiffness=0, damping=5` 阻尼急停帧。该状态不是官方 `PASSIVE_DEFAULT` 零力矩状态。新增 `--exit-passive` 后，退出顺序为先发送阻尼帧，再通过 `/aimdk_5Fmsgs/srv/SetMcAction` 请求 `PASSIVE_DEFAULT`。服务不可用、超时或拒绝时，程序明确保留阻尼状态，不假报已经零力矩。离线 `PASSIVE_REQUEST_PASS` 回归通过。

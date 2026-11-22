@@ -20,7 +20,15 @@ from pathlib import Path
 
 import numpy as np
 import rclpy
-from aimdk_msgs.msg import JointCommand, JointCommandArray, JointStateArray
+from aimdk_msgs.msg import (
+    CommonState,
+    JointCommand,
+    JointCommandArray,
+    JointStateArray,
+    McActionCommand,
+    RequestHeader,
+)
+from aimdk_msgs.srv import SetMcAction
 from rclpy.node import Node
 from rclpy.qos import DurabilityPolicy, HistoryPolicy, QoSProfile, ReliabilityPolicy
 from rclpy.serialization import deserialize_message, serialize_message
@@ -108,6 +116,7 @@ class Q1LowLevelBridge(Node):
         fgp_standing_height: float | None = None, fgp_readonly: bool = False,
         recovery_offline: bool = False, switchable_teleop: bool = False,
         record_dir: Path | None = None, record_metadata: dict | None = None,
+        exit_passive: bool = False,
     ):
         super().__init__("q1_external_lowlevel_bridge")
         self.root = bundle_root.resolve()
@@ -134,6 +143,7 @@ class Q1LowLevelBridge(Node):
         self.switchable_teleop = bool(switchable_teleop)
         self.fgp_readonly = bool(fgp_readonly)
         self.readonly = bool(stand_readonly or fgp_readonly)
+        self.exit_passive = bool(exit_passive)
         self.recorder = (
             Q1RuntimeRecorder(
                 record_dir,
@@ -144,6 +154,7 @@ class Q1LowLevelBridge(Node):
                     "human_smpl": self.human_smpl,
                     "switchable_teleop": self.switchable_teleop,
                     "recovery_enabled": self.enable_recovery,
+                    "exit_passive": self.exit_passive,
                     **(record_metadata or {}),
                 },
             )
@@ -217,6 +228,11 @@ class Q1LowLevelBridge(Node):
         self.publisher = None
         if not self.readonly:
             self.publisher = self.create_publisher(JointCommandArray, "/aima/hal/joint/command", qos_cmd)
+        self.passive_client = (
+            self.create_client(SetMcAction, "/aimdk_5Fmsgs/srv/SetMcAction")
+            if self.exit_passive and not self.readonly
+            else None
+        )
 
         self.lock = threading.Lock()
         self.mode_lock = threading.Lock()
@@ -332,8 +348,41 @@ class Q1LowLevelBridge(Node):
             for _ in range(5):
                 self._publish_damping()
                 time.sleep(self.period)
+        if self.exit_passive and self.passive_client is not None and rclpy.ok():
+            self._switch_to_passive()
         if self.recorder is not None:
             self.recorder.close()
+
+    def _switch_to_passive(self) -> None:
+        if not self.passive_client.wait_for_service(timeout_sec=1.0):
+            self.get_logger().error(
+                "PASSIVE_DEFAULT was not requested: SetMcAction service unavailable"
+            )
+            return
+        request = SetMcAction.Request()
+        request.header = RequestHeader()
+        request.header.stamp = self.get_clock().now().to_msg()
+        request.source = "q1_external_lowlevel_bridge"
+        request.command = McActionCommand()
+        request.command.action_desc = "PASSIVE_DEFAULT"
+        future = self.passive_client.call_async(request)
+        rclpy.spin_until_future_complete(self, future, timeout_sec=3.0)
+        if not future.done():
+            self.get_logger().error("PASSIVE_DEFAULT request timed out; damping remains active")
+            return
+        try:
+            response = future.result()
+            code = response.response.header.code
+            state = response.response.state.value
+        except Exception as error:
+            self.get_logger().error(f"PASSIVE_DEFAULT request failed; damping remains active: {error}")
+            return
+        if code == 0 and state == CommonState.SUCCESS:
+            self.get_logger().info("PASSIVE_DEFAULT accepted: zero-torque state requested")
+        else:
+            self.get_logger().error(
+                f"PASSIVE_DEFAULT rejected code={code} state={state}; damping remains active"
+            )
 
     def _record_fgp(self, response: dict) -> None:
         if self.recorder is not None:
@@ -855,6 +904,11 @@ def main() -> int:
     ap.add_argument("--fgp-url", type=str)
     ap.add_argument("--fgp-standing-height", type=float)
     ap.add_argument("--record-dir", type=Path, help="Write synchronized FGP, state, command and policy traces")
+    ap.add_argument(
+        "--exit-passive",
+        action="store_true",
+        help="After damping exit frames, request official PASSIVE_DEFAULT zero-torque state",
+    )
     args = ap.parse_args()
     if not any((args.enable_recovery, args.recovery_offline, args.stand_start, args.stand_start_readonly,
                 args.planner, args.keyboard, args.keyboard_switchable, args.human_smpl, args.fgp_readonly)):
@@ -894,6 +948,7 @@ def main() -> int:
             switchable_teleop=args.keyboard_switchable,
             record_dir=record_dir,
             record_metadata={"argv": sys.argv, "record_requested": bool(record_dir)},
+            exit_passive=args.exit_passive,
             planner_command=(
                 0.0 if args.keyboard or args.keyboard_switchable else args.planner_vx,
                 0.0 if args.keyboard or args.keyboard_switchable else args.planner_vy,

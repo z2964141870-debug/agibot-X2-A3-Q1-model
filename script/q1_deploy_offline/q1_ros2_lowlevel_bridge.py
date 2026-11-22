@@ -30,6 +30,7 @@ from q1_cgfa_obs_np import ContactGatedFootAnchorNP, LivePlannerControllerNP, bu
 from q1_fgp_client import FGPHttpSource
 from q1_kinematics_np import Q1KinematicsNP, quat_xyzw_to_mat, yaw_angle_from_mat, yaw_mat_np
 from q1_recovery_runtime import Q1RecoveryBranch
+from q1_runtime_recorder import Q1RuntimeRecorder
 from q1_soft_recovery_v2_owner import Q1SoftRecoveryV2Owner
 from q1_stand_start import Q1StandStart
 from q1_v2b_runtime import Q1V2bOnnxController
@@ -86,6 +87,17 @@ def update_joint_command(
         item.damping = float(damping[i])
 
 
+def prepare_record_dir(path: Path) -> Path:
+    if not path.exists():
+        return path
+    index = 2
+    while True:
+        candidate = path.with_name(f"{path.name}_run{index:02d}")
+        if not candidate.exists():
+            return candidate
+        index += 1
+
+
 class Q1LowLevelBridge(Node):
     def __init__(
         self, bundle_root: Path, *, enable_recovery: bool, publish_hz: float = 500.0,
@@ -95,6 +107,7 @@ class Q1LowLevelBridge(Node):
         human_smpl: bool = False, fgp_url: str | None = None,
         fgp_standing_height: float | None = None, fgp_readonly: bool = False,
         recovery_offline: bool = False, switchable_teleop: bool = False,
+        record_dir: Path | None = None, record_metadata: dict | None = None,
     ):
         super().__init__("q1_external_lowlevel_bridge")
         self.root = bundle_root.resolve()
@@ -121,6 +134,22 @@ class Q1LowLevelBridge(Node):
         self.switchable_teleop = bool(switchable_teleop)
         self.fgp_readonly = bool(fgp_readonly)
         self.readonly = bool(stand_readonly or fgp_readonly)
+        self.recorder = (
+            Q1RuntimeRecorder(
+                record_dir,
+                {
+                    "bundle": str(self.root),
+                    "publish_hz": self.publish_hz,
+                    "policy_hz": float(self.cfg["ctrl_hz"]),
+                    "human_smpl": self.human_smpl,
+                    "switchable_teleop": self.switchable_teleop,
+                    "recovery_enabled": self.enable_recovery,
+                    **(record_metadata or {}),
+                },
+            )
+            if record_dir is not None
+            else None
+        )
         if self.human_smpl and not fgp_url:
             raise ValueError("human_smpl mode requires --fgp-url")
         if self.switchable_teleop and not self.human_smpl:
@@ -151,6 +180,7 @@ class Q1LowLevelBridge(Node):
                 fgp_url,
                 dt=float(self.cfg["dt_s"]),
                 standing_height_m=fgp_standing_height,
+                on_sample=self._record_fgp,
             )
             if self.human_smpl else None
         )
@@ -209,6 +239,7 @@ class Q1LowLevelBridge(Node):
         self.sequence = 0
         self.stop_event = threading.Event()
         self.stop_reason: str | None = None
+        self.policy_context = {}
         self.control_thread = threading.Thread(target=self._control_loop, name="q1_500hz", daemon=True)
         self.stand_controller = None
         self.started_at = None
@@ -283,6 +314,8 @@ class Q1LowLevelBridge(Node):
         return np.median(q[:, order], axis=0).astype(np.float32)
 
     def start(self) -> None:
+        if self.recorder is not None:
+            self.recorder.start()
         if self.fgp is not None:
             self.fgp.start()
         self.control_thread.start()
@@ -299,6 +332,40 @@ class Q1LowLevelBridge(Node):
             for _ in range(5):
                 self._publish_damping()
                 time.sleep(self.period)
+        if self.recorder is not None:
+            self.recorder.close()
+
+    def _record_fgp(self, response: dict) -> None:
+        if self.recorder is not None:
+            self.recorder.record("fgp", response)
+
+    def _record_policy(
+        self, *, now_ns, mode, R, omega, q, qd, target, tau, gate, queued
+    ) -> None:
+        if self.recorder is None:
+            return
+        age_ms = None if queued is None else (now_ns - int(queued.arrival_ns)) / 1e6
+        self.recorder.record(
+            "policy_50hz",
+            {
+                "sample_monotonic_ns": now_ns,
+                "mode": mode,
+                "gate": gate,
+                "R_imu": R,
+                "omega_body": omega,
+                "q": q,
+                "qd": qd,
+                "target": target,
+                "tau_est": tau,
+                "prev_action": self.prev_action,
+                "planner_command": self.get_planner_command(),
+                "obs_80": self.policy_context.get("obs"),
+                "planner_features": self.policy_context.get("planner"),
+                "human_smpl_features": self.policy_context.get("feature"),
+                "fgp": self.policy_context.get("fgp"),
+                "fgp_age_ms": age_ms,
+            },
+        )
 
     def _on_imu(self, msg: Imu) -> None:
         with self.lock:
@@ -508,6 +575,13 @@ class Q1LowLevelBridge(Node):
             R_ref=planner_R_ref,
             cgfa_exy=exy,
         )
+        self.policy_context = {
+            "modality": "planner_cmd",
+            "obs": obs.copy(),
+            "planner": np.asarray(planner, dtype=np.float32).copy(),
+            "feature": None,
+            "fgp": None,
+        }
         return self.tracker.step(obs, planner, q, qd, modality="planner_cmd")
 
     def _human_smpl_step(self, R, omega, q, qd, tick):
@@ -526,6 +600,18 @@ class Q1LowLevelBridge(Node):
             R_ref=r_ref,
             cgfa_exy=exy,
         )
+        self.policy_context = {
+            "modality": "human_smpl",
+            "obs": obs.copy(),
+            "planner": None,
+            "feature": np.asarray(tick.feature, dtype=np.float32).copy(),
+            "fgp": {
+                "segment": int(tick.segment),
+                "stamp_ns": int(tick.stamp_ns),
+                "root_xy": np.asarray(tick.root_xy, dtype=np.float32).copy(),
+                "root_rotation": np.asarray(tick.root_rotation, dtype=np.float32).copy(),
+            },
+        }
         return self.tracker.step(obs, tick.feature, q, qd, modality="human_smpl")
 
     def _infer_once(self, decoded) -> None:
@@ -575,19 +661,19 @@ class Q1LowLevelBridge(Node):
 
             stamp_ns = queued.arrival_ns if live_fgp else None if self.human_smpl else now_ns
             stamp = None if self.recovery_offline or stamp_ns is None else stamp_ns * 1e-9
-            target, _, gate = self.recovery.step(
+            target, tau, gate = self.recovery.step(
                 R, omega, q, qd, self.prev_action, base_step, handback_anchor,
                 sample_time_s=now_ns * 1e-9, teleop_stamp_s=stamp,
             )
         elif self.recovery is not None:
-            target, _, gate = self.recovery.step(
+            target, tau, gate = self.recovery.step(
                 R, omega, q, qd, self.prev_action, base_step,
                 lambda: self._reset_anchor(R, omega, q, qd),
             )
         elif self.fgp_readonly and not live_fgp:
             return
         else:
-            target, _, _ = base_step()
+            target, tau, _ = base_step()
             gate = 0.0
 
         target = np.asarray(target, dtype=np.float32)
@@ -595,12 +681,20 @@ class Q1LowLevelBridge(Node):
             if not np.isfinite(target).all():
                 raise ValueError("Nonfinite Recovery V2 target")
             self.desired_target = np.clip(target, self.default_q - 2.0, self.default_q + 2.0)
+            self._record_policy(
+                now_ns=now_ns, mode=active_mode, R=R, omega=omega, q=q, qd=qd,
+                target=self.desired_target, tau=tau, gate=gate, queued=queued,
+            )
             return
         target = np.clip(target, self.last_target - 0.2, self.last_target + 0.2)
         target = np.clip(target, self.default_q - 2.0, self.default_q + 2.0)
         self.target = target
         self.last_target = target.copy()
         self.prev_action = (target - self.default_q) / self.action_scale
+        self._record_policy(
+            now_ns=now_ns, mode=active_mode, R=R, omega=omega, q=q, qd=qd,
+            target=target, tau=tau, gate=gate, queued=queued,
+        )
         if self.sequence % 50 == 0:
             position_error = float(np.max(np.abs(target - q)))
             self.get_logger().info(f"inference gate={gate:.2f} max_target_error_rad={position_error:.3f}")
@@ -618,6 +712,19 @@ class Q1LowLevelBridge(Node):
     def _publish_damping(self) -> None:
         msg = self._command(self.target, np.zeros(22, dtype=np.float32), np.full(22, 5.0, dtype=np.float32))
         self.publisher.publish(msg)
+        if self.recorder is not None:
+            self.recorder.record(
+                "command_500hz",
+                {
+                    "send_monotonic_ns": time.monotonic_ns(),
+                    "sequence": self.sequence,
+                    "mode": "damping",
+                    "target": self.target,
+                    "desired_target": self.desired_target,
+                    "stiffness": np.zeros(22, dtype=np.float32),
+                    "damping": np.full(22, 5.0, dtype=np.float32),
+                },
+            )
         self.sequence += 1
 
     def _control_loop(self) -> None:
@@ -649,6 +756,21 @@ class Q1LowLevelBridge(Node):
                     return
             else:
                 self.command_state = joint_msg
+                R, omega, q, qd, effort = decoded
+                if self.recorder is not None:
+                    self.recorder.record(
+                        "state_500hz",
+                        {
+                            "sample_monotonic_ns": time.monotonic_ns(),
+                            "mode": self.get_control_mode(),
+                            "imu_rotation": R,
+                            "omega_body": omega,
+                            "q": q,
+                            "qd": qd,
+                            "effort": effort,
+                            "joint_state_sequence": getattr(joint_msg.header, "sequence", None),
+                        },
+                    )
                 if not self.initialized or tick % self.infer_divider == 0:
                     try:
                         self._infer_once(decoded)
@@ -671,6 +793,19 @@ class Q1LowLevelBridge(Node):
                         target = self._next_sender_target() if self.recovery_v2 else self.target
                         msg = self._command(target, self.kp, self.kd)
                         self.publisher.publish(msg)
+                        if self.recorder is not None:
+                            self.recorder.record(
+                                "command_500hz",
+                                {
+                                    "send_monotonic_ns": time.monotonic_ns(),
+                                    "sequence": self.sequence,
+                                    "mode": self.get_control_mode(),
+                                    "target": target,
+                                    "desired_target": self.desired_target,
+                                    "stiffness": self.kp,
+                                    "damping": self.kd,
+                                },
+                            )
                         if self.recovery_v2:
                             self.target = target
                             self.prev_action = (target - self.default_q) / self.action_scale
@@ -719,6 +854,7 @@ def main() -> int:
     ap.add_argument("--keyboard-reach-x", type=float, default=0.04)
     ap.add_argument("--fgp-url", type=str)
     ap.add_argument("--fgp-standing-height", type=float)
+    ap.add_argument("--record-dir", type=Path, help="Write synchronized FGP, state, command and policy traces")
     args = ap.parse_args()
     if not any((args.enable_recovery, args.recovery_offline, args.stand_start, args.stand_start_readonly,
                 args.planner, args.keyboard, args.keyboard_switchable, args.human_smpl, args.fgp_readonly)):
@@ -735,6 +871,7 @@ def main() -> int:
         or not np.isfinite(args.duration) or args.duration < 0
     ):
         ap.error("Stand transition must be positive and duration must be nonnegative")
+    record_dir = prepare_record_dir(args.record_dir.resolve()) if args.record_dir else None
     rclpy.init()
     node = None
     try:
@@ -755,6 +892,8 @@ def main() -> int:
             fgp_standing_height=args.fgp_standing_height,
             fgp_readonly=args.fgp_readonly,
             switchable_teleop=args.keyboard_switchable,
+            record_dir=record_dir,
+            record_metadata={"argv": sys.argv, "record_requested": bool(record_dir)},
             planner_command=(
                 0.0 if args.keyboard or args.keyboard_switchable else args.planner_vx,
                 0.0 if args.keyboard or args.keyboard_switchable else args.planner_vy,

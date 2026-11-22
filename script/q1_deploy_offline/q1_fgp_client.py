@@ -7,6 +7,7 @@ import json
 import threading
 import time
 from dataclasses import dataclass
+from typing import Callable
 from urllib.request import urlopen
 
 from q1_fgp_smpl import FGPSMPLStream, SMPLTick
@@ -31,6 +32,7 @@ class FGPHttpSource:
         timeout_s: float = 0.15,
         fresh_ms: float = 150.0,
         queue_size: int = 32,
+        on_sample: Callable[[dict], None] | None = None,
     ):
         if not url.startswith(("http://", "https://")):
             raise ValueError("FGP URL must start with http:// or https://")
@@ -50,6 +52,7 @@ class FGPHttpSource:
         self.dropped_ticks = 0
         self.http_errors = 0
         self.responses = 0
+        self.on_sample = on_sample
 
     def start(self) -> None:
         if self.thread is not None and self.thread.is_alive():
@@ -66,11 +69,15 @@ class FGPHttpSource:
     def ingest(self, response: dict, arrival_ns: int | None = None) -> int:
         """Ingest one decoded `/api/smpl` response. Returns the number of new ticks."""
         arrival = time.monotonic_ns() if arrival_ns is None else int(arrival_ns)
+        accepted_before = 0
+        accepted_after = 0
         with self.lock:
             self.responses += 1
             self.last_arrival_ns = arrival
+            accepted_before = self.stream.events["accepted_frames"]
             segment = self.stream.segment
             ticks = self.stream.push_response(response, arrival)
+            accepted_after = self.stream.events["accepted_frames"]
             if self.stream.previous is None or self.stream.segment != segment:
                 self.queue.clear()
                 self.last_tick = None
@@ -79,6 +86,8 @@ class FGPHttpSource:
                     self.queue.popleft()
                     self.dropped_ticks += 1
                 self.queue.append(FGPQueuedTick(tick=tick, arrival_ns=arrival))
+        if accepted_after > accepted_before and self.on_sample is not None:
+            self.on_sample(response)
         return len(ticks)
 
     def get_latest(self) -> tuple[FGPQueuedTick | None, int]:

@@ -120,3 +120,15 @@ source /home/yu/ros2_ws_aimdk/install/setup.bash
 ## 切换按键冲突修正
 
 现场确认 `s` 需要保留为 Planner 后退。切换入口现改为 `t=human_smpl`，`s` 恢复为后退，`p=planner`，`q=exit`。按键去抖规则同步改为 `t/p/q`。
+
+## 真机同步采集器
+
+新增 `--record-dir` 入口。每次桥接运行会自动创建独立目录，重复路径自动追加 `_run02`。记录内容包括：
+
+- `fgp.jsonl`，FGP `/api/smpl` 接受的新 SMPL 帧及会话、标定代次信息。
+- `state_500hz.jsonl`，每次有效 HAL 状态的 IMU 姿态、角速度、22 关节位置、速度、力矩反馈和状态序号。
+- `command_500hz.jsonl`，每次实际发布的目标位置、刚度、阻尼、模式和命令序号，含退出阻尼帧。
+- `policy_50hz.jsonl`，模式、`obs_80`、Planner 特征、human_smpl 特征、FGP 源帧元数据、目标位置、估算力矩和前一动作。
+- `session.json` 与 `summary.json`，记录启动参数、模型入口和异步写盘丢帧计数。
+
+控制线程使用异步有界队列写盘。`summary.json` 中的 `dropped` 必须为零才表示本地采集完整。本采集器尚未用于上一轮真机控制，当前旧桥接进程也没有写盘。

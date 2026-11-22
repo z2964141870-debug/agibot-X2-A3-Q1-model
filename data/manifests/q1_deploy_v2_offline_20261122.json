@@ -31,8 +31,8 @@
     },
     {
       "path": "/home/yu/projects/Q1_deploy/verification/q1_deploy_v2_candidate_20261122/code/q1_fgp_client.py",
-      "bytes": 5422,
-      "sha256": "99e8c62875a7cfe467f219f35d5b197d2032facdf609dc67bde6612ea7760ab5"
+      "bytes": 5845,
+      "sha256": "e3039c38e48655ee06ffe579713ff5f353c509089c45700358fed91ff0f3b47d"
     },
     {
       "path": "/home/yu/projects/Q1_deploy/verification/q1_deploy_v2_candidate_20261122/code/q1_fgp_smpl.py",
@@ -51,8 +51,8 @@
     },
     {
       "path": "/home/yu/projects/Q1_deploy/verification/q1_deploy_v2_candidate_20261122/code/q1_ros2_lowlevel_bridge.py",
-      "bytes": 40051,
-      "sha256": "d67aa5c0f25f8e91b0c89bc27f4d3b2d243dc971c57c5747996ffd49f35cb19a"
+      "bytes": 45845,
+      "sha256": "b828a69e846fa8f2d917df771a5330958639bd2443cb066b7fe1816ed3de21e7"
     },
     {
       "path": "/home/yu/projects/Q1_deploy/verification/q1_deploy_v2_candidate_20261122/code/q1_soft_recovery_v2_owner.py",
@@ -153,6 +153,11 @@
       "path": "/home/yu/projects/Q1_deploy/verification/q1_deploy_v2_candidate_20261122/robot_model/supermimic.xml",
       "bytes": 26370,
       "sha256": "47bfa08baed1a3482e575a6489b29c2fc1c720ba1f359f636a76c40a5e9da9df"
+    },
+    {
+      "path": "/home/yu/projects/Q1_deploy/verification/q1_deploy_v2_candidate_20261122/code/q1_runtime_recorder.py",
+      "bytes": 3637,
+      "sha256": "882543dab147166ca792f0c986cc6300fa9d102fe7677d49d80bb721734d8886"
     }
   ],
   "baseline_planner": {
@@ -1057,5 +1062,17 @@
     "exit_reason_logging": true,
     "mode_key_debounce": true,
     "planner_backward_key": "s"
+  },
+  "runtime_recording_20261122": {
+    "cli": "--record-dir",
+    "streams": [
+      "fgp",
+      "state_500hz",
+      "command_500hz",
+      "policy_50hz"
+    ],
+    "async_writer": true,
+    "recorder_unit_test": "RECORDER_PASS",
+    "used_in_previous_round": false
   }
 }

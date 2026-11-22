@@ -1,0 +1,71 @@
+{
+  "schema_version": 2,
+  "automation_id": "yuanqi",
+  "date": "2026-11-22",
+  "triggered_at_utc": "2026-11-22T00:56:43.875Z",
+  "checked_at_utc": "2026-11-22T01:10:12.651+00:00",
+  "previous_successful_source_check_at": "2026-11-21T01:18:08.885+00:00",
+  "source_check_completed_at_utc": "2026-11-22T01:10:12.651+00:00",
+  "notification_decision": "NOTIFY",
+  "brief": "reports/research/2026-11-22/README.md",
+  "brief_items": 1,
+  "source_counts": {
+    "bounded_cache_date": "2026-11-21",
+    "new_listing_screening_ids": 0,
+    "common_repository_heads": 36,
+    "changed_heads": 0,
+    "common_release_lists": 13,
+    "changed_release_lists": 0,
+    "new_dedup_entries": 0,
+    "engineering_records_read": 4
+  },
+  "public_source_check": {
+    "schema_version": 1,
+    "date": "2026-11-22",
+    "checked_at_utc": "2026-11-22T01:10:12.651+00:00",
+    "previous_successful_source_check_at": "2026-11-21T01:18:08.885+00:00",
+    "method": "Reuse bounded 2026-11-21 cache; directly inspect arXiv cs.RO recent page and watched official GitHub heads; no third-party code execution.",
+    "public_result": "NO_SUBSTANTIVE_PUBLIC_SOURCE_CHANGE",
+    "coverage": {
+      "arxiv_latest_visible_date": "2026-11-20",
+      "arxiv_2026_11_21_22_complete": false,
+      "github_watched_heads_checked": true,
+      "new_listing_keys": 0,
+      "changed_repository_heads": 0,
+      "changed_release_lists": 0
+    },
+    "sources": [
+      {
+        "url": "https://arxiv.org/list/cs.RO/recent",
+        "status": "visible_latest_2026-11-20; no newer listing exposed"
+      },
+      {
+        "url": "https://github.com/HybridRobotics/supermimic",
+        "head": "698ea39bc901d8fe733b3c8621df3199d241f7e4",
+        "previous_head": "698ea39bc901d8fe733b3c8621df3199d241f7e4",
+        "changed": false
+      },
+      {
+        "url": "https://github.com/leggedrobotics/rsl_rl/releases",
+        "status": "no change since 2026-11-21 v6.0.0 review"
+      }
+    ],
+    "limitations": "The visible arXiv pages/RSS stop at Nov 20 in this check; absence of a newer exposed partition is not proof of no Nov 21-22 submissions.",
+    "scientific_execution": false
+  },
+  "git_start": {
+    "main": "79e1761deb03a0e1bad84f2384ddfe313e8b3a8b",
+    "Q1": "46ddd9f3d3378bccf5478ac4092f8a19c059014f"
+  },
+  "latest_engineering_record": "46ddd9f3d3378bccf5478ac4092f8a19c059014f",
+  "x2_ref_observed_read_only": "e1fa35da93e6d210451e841d145887cc63b53897",
+  "engineering_context": "Q1 latest engineering commit 46ddd9f3d3378bccf5478ac4092f8a19c059014f. Soft Recovery V2 static 116/120 and push 30/30 remain bounded by peak-speed, penetration and handback gates; human_smpl FGP replay terminates in Q1 simulation after about 1.62 s; PlannerCmd lateral calibration improves from 4/24 to 24/24 under 2 ms simulation with disturbance plus 10 ms delay, but its candidate package is not deployed. These are saved simulation/offline/pre-deployment records only. SONIC kplanner remains the user-validated field standing baseline. Main owns full research history; Q1 central research_watch_state.json is preserved byte-for-byte. Server Git and huanyu mirror were not independently observed; mirror remains PENDING.",
+  "q1_central_state_preserved": true,
+  "main_dedup_before": 284,
+  "main_dedup_after": 284,
+  "new_hypotheses": 0,
+  "server_git_status": "NOT_INDEPENDENTLY_OBSERVED",
+  "server_mirror": "PENDING",
+  "server_written": false,
+  "no_scientific_execution": true
+}

@@ -6,6 +6,8 @@
 2026-11-21 [Q1 Planner 真机反馈](README_Q1_PLANNER_HARDWARE_FEEDBACK_20261121.md)。低层键盘 planner 的命令链路已打通，前后走和转向稳定，左右横移多速度仍不稳定。原始 32 MB 监控日志保留在 `/home/yu/projects/Q1_deploy/real_logs/`，报告已提交 Q1 分支。
 # YUANQI 当前状态与下一步
 
+2026-11-22 追加：真实衣服→FGP→Q1 仿真已打通。修复了 latest-only 接口跳序误触发 source_gap。直立片段可完成 20 秒，非站立起始片段仍会倾倒，需做 handoff 过渡。
+
 2026-11-22 追加：FGP 实时仿真入口已支持无限运行、Ctrl-C 正常保存和重复输出目录自动编号，连续 HTTP 回归通过。
 
 2026-11-22 [Q1 部署 V2 离线验收](README_Q1_DEPLOY_V2_OFFLINE_20261122.md)。横移扰动对照 4/24→24/24，隔离候选四模态自检通过。Recovery V2 桥接回归和部署 owner 仿真通过起身与交还检查，受推冲击仍超限。FGP 真实 BLE 录制可经 HTTP 驱动仿真，根位置真值支持 40 秒回放，后续长段仍有跌倒。实际机器人及实时穿戴待测。

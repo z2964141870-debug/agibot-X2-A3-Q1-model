@@ -36,8 +36,8 @@
     },
     {
       "path": "/home/yu/projects/Q1_deploy/verification/q1_deploy_v2_candidate_20261122/code/q1_fgp_smpl.py",
-      "bytes": 7118,
-      "sha256": "587fd191c4cac56adefd518887e1f991b0289a7f87536ef6df1fe9eb06318dad"
+      "bytes": 7438,
+      "sha256": "834f46bcb34ade4a167455187674c0733ca46f542914af1ab60a590f16b534a0"
     },
     {
       "path": "/home/yu/projects/Q1_deploy/verification/q1_deploy_v2_candidate_20261122/code/q1_kinematics_np.py",
@@ -1004,5 +1004,43 @@
     "stop_reason": "interrupted",
     "rerun_output_collision": "auto_suffix_run02",
     "real_suit_or_Q1_connected": false
+  },
+  "live_suit_simulation_20261122": {
+    "fgp_session": "/home/yu/projects/FGP_mocap/results/live_20261122_141319",
+    "fgp_status": "tracking",
+    "fgp_outputs_at_check": 14600,
+    "adapter_fix": "latest-only /api/smpl sequence skips no longer reset stream",
+    "live_before_fix": {
+      "simulated_s": 12.4,
+      "reference_segments": 9,
+      "source_gap_events": 7,
+      "tracking_lost_events": 1,
+      "idle_ticks": 113,
+      "stop_reason": "tilt_or_height_limit"
+    },
+    "live_after_fix": {
+      "simulated_s": 3.78,
+      "reference_segments": 1,
+      "source_gap_events": 0,
+      "idle_ticks": 11,
+      "stop_reason": "tilt_or_height_limit"
+    },
+    "upright_segment": {
+      "start_s": 15.1,
+      "duration_s": 20.0,
+      "max_input_tilt_deg": 8.76,
+      "completed": true,
+      "max_q1_tilt_deg": 8.686,
+      "target_error_p95_rad": 0.47546
+    },
+    "non_upright_start_input": {
+      "first_20s_input_tilt_max_deg": 34.2,
+      "pelvis_height_m_range": [
+        0.534,
+        1.028
+      ],
+      "completed": false
+    },
+    "real_robot_connected": false
   }
 }

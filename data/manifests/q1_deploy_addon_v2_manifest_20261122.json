@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-22",
+  "bundle_dir": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/deploy_bundle_v2_20261122",
+  "zip_path": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/q1_deploy_addon_lateral_and_recovery_v2_20261122.zip",
+  "zip_bytes": 33509500,
+  "zip_sha256": "642574482ad5c13fceb132d5211bd9da518b7ae2b317e6568ca3ab072e382cf6",
+  "zip_sha256_file": "/home/yu/projects/SuperMimicHP/runs/q1_soft_recovery_v2_20261121/q1_deploy_addon_lateral_and_recovery_v2_20261122.zip.sha256",
+  "components": {
+    "DEPLOY_HANDOFF.md": "8ce567272056a39dc9b3b7986d482aaf96d62abbe71df77bd0f831cc0600d141",
+    "code/leg_height.py": "0e215e8a6a342a122687f02d8d1a9b4094751659b3f3342f5037239d7b049dec",
+    "code/q1_autonomous_recovery.py": "5c99519c69d28e648fe47e84e18c63fdb9f35022c0bd2e30e7b25fb95be3a378",
+    "code/q1_cgfa_obs_np.py": "2f03e42598d3270094f18729bdd316712d7ad0a3505815d299f5e9383c2ca99c",
+    "code/q1_kinematics_np.py": "7c9a33862fd5e287d74d93b20b7cf2d2f5995e5dedb00eb4ecdb70910df7a6b5",
+    "code/q1_recovery_runtime.py": "f4754486ed5831d573a64d28daae7bb9a87245dd456c62bb0ff3e2d531d5f715",
+    "code/q1_soft_recovery_v2_owner.py": "d74cdecb5cc8192adf104cf3d9908920f7cc01b36219e648477029ded56c2f38",
+    "code/q1_v2b_runtime.py": "f913fee386d177f95df00696cac4e140b22643d5882283274fb6be961f198ea8",
+    "code/recovery.py": "217ec2629cc067ce38ac60b63a1697f2ae25afa175ef0b6df650de083776b3fe",
+    "code/smoke_test_deploy_v2_addon.py": "ba07d9caada410917b376d46c435873f25a929970a00d29c81f74799c9d27333",
+    "config/q1_deploy_config.json": "2988330ee8c36e9113e5fd6a314d993317a0568fff57099b9ac5cfa7b6889477",
+    "onnx/q1_h002_token_head.onnx": "e0455c0b50db1c1fdc8aed1e0d283820d3fd64174b261093d99dc4430ff3e80f",
+    "onnx/q1_recovery_expert_v2.onnx": "5d38cfcb3c31ad1103bd8897d4c8fad97472a04d5e258106732dd3a409b842ee",
+    "onnx/q1_tok_planner_cmd.onnx": "ce0aa0a49666515e0b47dd200995fecc8980cd3bcdd41149fbc4824fb92679e5",
+    "onnx/q1_tok_robot_pose.onnx": "9ee7a429347d0c9076657c6bb47e4635ee6b149cdc2504370fbfcecf09e6e6d9",
+    "robot_model/supermimic.xml": "47bfa08baed1a3482e575a6489b29c2fc1c720ba1f359f636a76c40a5e9da9df"
+  },
+  "bit_for_bit_parity_vs_eval_v2": {
+    "steps_tested": 95,
+    "phases_verified": {
+      "protect": true,
+      "rise": true,
+      "blend_and_leg_brake": true,
+      "handback": true
+    },
+    "max_target_abs_diff": 0.0,
+    "max_tau_abs_diff": 0.0,
+    "max_owner_abs_diff": 0.0
+  },
+  "isolated_python_I_smoke": {
+    "verified_bundle_files": 16,
+    "torch_loaded": false,
+    "mujoco_loaded": false,
+    "planner_cmd_v2": {
+      "p50_ms": 0.4184,
+      "p95_ms": 1.1217,
+      "oob": 0
+    },
+    "recovery_owner_v2_teleop_mode": {
+      "p50_ms": 0.4876,
+      "p95_ms": 1.1456,
+      "oob": 0
+    },
+    "recovery_owner_v2_active_mode": {
+      "p50_ms": 0.2501,
+      "p95_ms": 0.2673,
+      "oob": 0
+    },
+    "ownership_checks": {
+      "automatic_takeover": true,
+      "protect_duplicate_timestamp_rejected": true,
+      "protect_nonfinite_rejected": true,
+      "offline_hold": true,
+      "stale_future_pre_takeover_rejected": true,
+      "instability_restarts_dwell": true,
+      "sample_gap_restarts_dwell": true,
+      "anchor_before_teleop": true,
+      "second_fall": true,
+      "timestamp_reset": true,
+      "persistent_down_no_timeout_s": 30
+    }
+  },
+  "real_log_zero_false_trigger_audit": {
+    "q1_planner_keyboard_monitor_20261121_194500": {
+      "samples": 8554,
+      "duration_s": 171.117,
+      "min_up_z": 0.9838,
+      "max_fall_count": 0,
+      "max_imminent_ticks": 0,
+      "false_takeovers": 0
+    },
+    "official_biped_walk_run_segments": {
+      "q1_official_standup_faceup_20261120": {
+        "samples_50hz": 293,
+        "start_s": 9.143,
+        "end_s": 14.983,
+        "min_up_z": 0.9996,
+        "false_takeovers": 0
+      },
+      "q1_official_standup_from_mcap": {
+        "samples_50hz": 338,
+        "start_s": 8.243769543,
+        "end_s": 14.984,
+        "min_up_z": 0.9988,
+        "false_takeovers": 0
+      }
+    }
+  }
+}

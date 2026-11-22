@@ -6,6 +6,8 @@
 2026-11-21 [Q1 Planner 真机反馈](README_Q1_PLANNER_HARDWARE_FEEDBACK_20261121.md)。低层键盘 planner 的命令链路已打通，前后走和转向稳定，左右横移多速度仍不稳定。原始 32 MB 监控日志保留在 `/home/yu/projects/Q1_deploy/real_logs/`，报告已提交 Q1 分支。
 # YUANQI 当前状态与下一步
 
+2026-11-22 追加：新增单进程 `--keyboard-switchable`，默认 Planner，`s` 切 human_smpl，`p` 回 Planner，`q` 退出，过期 FGP 会拒绝切换。离线桥接回归通过，尚未启动真机。
+
 2026-11-22 追加：真实衣服→FGP→Q1 仿真已打通。修复了 latest-only 接口跳序误触发 source_gap。直立片段可完成 20 秒，非站立起始片段仍会倾倒，需做 handoff 过渡。
 
 2026-11-22 追加：FGP 实时仿真入口已支持无限运行、Ctrl-C 正常保存和重复输出目录自动编号，连续 HTTP 回归通过。

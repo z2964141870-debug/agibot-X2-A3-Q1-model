@@ -94,7 +94,7 @@ class Q1LowLevelBridge(Node):
         run_duration: float | None = None, planner_command=(0.0, 0.0, 0.0, 1.0, 0.04),
         human_smpl: bool = False, fgp_url: str | None = None,
         fgp_standing_height: float | None = None, fgp_readonly: bool = False,
-        recovery_offline: bool = False,
+        recovery_offline: bool = False, switchable_teleop: bool = False,
     ):
         super().__init__("q1_external_lowlevel_bridge")
         self.root = bundle_root.resolve()
@@ -118,10 +118,13 @@ class Q1LowLevelBridge(Node):
         if self.recovery_v2 and self.publish_hz != recovery_cfg["sender_ramp_hz"]:
             raise ValueError("Recovery V2 requires the configured sender cadence")
         self.human_smpl = bool(human_smpl)
+        self.switchable_teleop = bool(switchable_teleop)
         self.fgp_readonly = bool(fgp_readonly)
         self.readonly = bool(stand_readonly or fgp_readonly)
         if self.human_smpl and not fgp_url:
             raise ValueError("human_smpl mode requires --fgp-url")
+        if self.switchable_teleop and not self.human_smpl:
+            raise ValueError("Switchable teleop requires the human_smpl input")
 
         if self.human_smpl:
             modalities = ("human_smpl", "planner_cmd")
@@ -186,6 +189,11 @@ class Q1LowLevelBridge(Node):
             self.publisher = self.create_publisher(JointCommandArray, "/aima/hal/joint/command", qos_cmd)
 
         self.lock = threading.Lock()
+        self.mode_lock = threading.Lock()
+        self.active_mode = "planner" if self.switchable_teleop else (
+            "human_smpl" if self.human_smpl else "planner"
+        )
+        self.pending_mode: str | None = None
         self.imu = None
         self.joint = None
         self.last_imu_wall = 0.0
@@ -215,6 +223,53 @@ class Q1LowLevelBridge(Node):
     def get_planner_command(self):
         with self.planner_command_lock:
             return self.planner_command
+
+    def get_control_mode(self) -> str:
+        with self.mode_lock:
+            return self.active_mode
+
+    def request_control_mode(self, mode: str) -> bool:
+        if mode not in ("planner", "human_smpl"):
+            raise ValueError(f"Unsupported control mode: {mode}")
+        if mode == "human_smpl":
+            if self.fgp is None:
+                self.get_logger().error("Teleop mode requires an FGP source")
+                return False
+            status = self.fgp.status()
+            if not status["fresh"]:
+                self.get_logger().warning(
+                    "Teleop mode refused: FGP input is stale or unavailable"
+                )
+                return False
+        with self.mode_lock:
+            self.pending_mode = mode
+        self.get_logger().info(f"Requested control mode: {mode}")
+        return True
+
+    def _take_pending_mode(self) -> str | None:
+        with self.mode_lock:
+            mode = self.pending_mode
+            self.pending_mode = None
+            return mode
+
+    def _apply_pending_mode(self, R, omega, q, qd, queued, live_fgp: bool) -> None:
+        requested = self._take_pending_mode()
+        if requested is None or requested == self.get_control_mode():
+            return
+        if requested == "human_smpl":
+            if queued is None or not live_fgp:
+                self.get_logger().warning("Teleop mode deferred: no fresh FGP frame available")
+                with self.mode_lock:
+                    self.pending_mode = requested
+                return
+            self._reset_fgp_segment(R, omega, q, qd, queued.tick)
+            self.tracker.reset(q)
+        else:
+            self._reanchor_reference(R, omega, q, qd)
+            self.tracker.reset(q)
+        with self.mode_lock:
+            self.active_mode = requested
+        self.get_logger().info(f"Control mode active: {requested}")
 
     def _load_stand_reference(self, path: Path | None) -> np.ndarray:
         source = path or self.root / "real_logs/q1_official_standup_faceup_20261120.npz"
@@ -491,14 +546,22 @@ class Q1LowLevelBridge(Node):
         now_ns = time.monotonic_ns()
         age_limit = 100_000_000 if self.recovery_v2 else 150_000_000
         live_fgp = queued is not None and 0 <= now_ns - queued.arrival_ns <= age_limit
+        self._apply_pending_mode(R, omega, q, qd, queued, live_fgp)
+        active_mode = self.get_control_mode()
 
         def base_step():
-            if live_fgp:
+            if active_mode == "human_smpl" and live_fgp:
                 return self._human_smpl_step(R, omega, q, qd, queued.tick)
-            if self.fgp_segment is not None:
+            if active_mode == "planner" and self.fgp_segment is not None:
                 self._reanchor_reference(R, omega, q, qd)
                 self.tracker.reset(q)
-            return self._base_step(R, omega, q, qd, neutral=self.human_smpl or self.recovery_offline)
+            return self._base_step(
+                R,
+                omega,
+                q,
+                qd,
+                neutral=(active_mode == "human_smpl" or self.recovery_offline),
+            )
 
         if self.recovery_v2:
             def handback_anchor():
@@ -624,6 +687,11 @@ def main() -> int:
     mode.add_argument("--stand-start", action="store_true")
     mode.add_argument("--planner", action="store_true")
     mode.add_argument("--keyboard", action="store_true", help="Interactive planner keyboard control")
+    mode.add_argument(
+        "--keyboard-switchable",
+        action="store_true",
+        help="Planner keyboard with s=human_smpl, p=planner, q=exit",
+    )
     mode.add_argument("--human-smpl", action="store_true", help="Live FGP human_smpl policy input")
     mode.add_argument("--fgp-readonly", action="store_true", help="Live FGP human_smpl alignment without HAL commands")
     ap.add_argument("--stand-reference", type=Path)
@@ -646,13 +714,13 @@ def main() -> int:
     ap.add_argument("--fgp-standing-height", type=float)
     args = ap.parse_args()
     if not any((args.enable_recovery, args.recovery_offline, args.stand_start, args.stand_start_readonly,
-                args.planner, args.keyboard, args.human_smpl, args.fgp_readonly)):
+                args.planner, args.keyboard, args.keyboard_switchable, args.human_smpl, args.fgp_readonly)):
         ap.error("Select a control or read-only mode")
-    if args.enable_recovery and (args.stand_start or args.stand_start_readonly or args.fgp_readonly):
+    if args.enable_recovery and (args.stand_start or args.stand_start_readonly or args.fgp_readonly or args.keyboard_switchable):
         ap.error("--enable-recovery requires a control mode")
-    if args.human_smpl or args.fgp_readonly:
+    if args.human_smpl or args.fgp_readonly or args.keyboard_switchable:
         if not args.fgp_url:
-            ap.error("--human-smpl/--fgp-readonly requires --fgp-url")
+            ap.error("--human-smpl/--fgp-readonly/--keyboard-switchable requires --fgp-url")
     elif args.fgp_url:
         ap.error("--fgp-url requires --human-smpl or --fgp-readonly")
     if (args.stand_start_readonly or args.stand_start) and (
@@ -679,10 +747,11 @@ def main() -> int:
             fgp_url=args.fgp_url,
             fgp_standing_height=args.fgp_standing_height,
             fgp_readonly=args.fgp_readonly,
+            switchable_teleop=args.keyboard_switchable,
             planner_command=(
-                0.0 if args.keyboard else args.planner_vx,
-                0.0 if args.keyboard else args.planner_vy,
-                0.0 if args.keyboard else args.planner_wz,
+                0.0 if args.keyboard or args.keyboard_switchable else args.planner_vx,
+                0.0 if args.keyboard or args.keyboard_switchable else args.planner_vy,
+                0.0 if args.keyboard or args.keyboard_switchable else args.planner_wz,
                 args.keyboard_z_ratio if args.keyboard else args.planner_z_ratio,
                 args.keyboard_reach_x if args.keyboard else args.planner_reach_x,
             ),
@@ -693,12 +762,17 @@ def main() -> int:
             print(json.dumps(report, ensure_ascii=False))
             return 0 if report["steps"] and "stopped" not in report else 1
         node.start()
-        if args.keyboard:
+        if args.keyboard or args.keyboard_switchable:
             if not sys.stdin.isatty():
                 raise RuntimeError("--keyboard requires an interactive terminal")
             fd = sys.stdin.fileno()
             old_settings = termios.tcgetattr(fd)
             key_commands = {
+                "w": (args.keyboard_vx, 0.0, 0.0),
+                "a": (0.0, args.keyboard_vy, 0.0),
+                "d": (0.0, -args.keyboard_vy, 0.0),
+                "e": (0.0, 0.0, -args.keyboard_wz),
+            } if args.keyboard_switchable else {
                 "w": (args.keyboard_vx, 0.0, 0.0),
                 "s": (-args.keyboard_vx, 0.0, 0.0),
                 "a": (0.0, args.keyboard_vy, 0.0),
@@ -706,11 +780,18 @@ def main() -> int:
                 "q": (0.0, 0.0, args.keyboard_wz),
                 "e": (0.0, 0.0, -args.keyboard_wz),
             }
-            print(
-                "Keyboard planner active: w/s forward-back, a/d left-right, "
-                "q/e turn, space stop, x or Ctrl-C exit",
-                flush=True,
-            )
+            if args.keyboard_switchable:
+                print(
+                    "Switchable planner active: w/a/d/e planner, s=human_smpl, "
+                    "p=planner, space=stop, q=exit",
+                    flush=True,
+                )
+            else:
+                print(
+                    "Keyboard planner active: w/s forward-back, a/d left-right, "
+                    "q/e turn, space stop, x or Ctrl-C exit",
+                    flush=True,
+                )
             try:
                 tty.setcbreak(fd)
                 while rclpy.ok() and not node.stop_event.is_set():
@@ -719,7 +800,13 @@ def main() -> int:
                     if not readable:
                         continue
                     key = os.read(fd, 1).decode("utf-8", errors="ignore").lower()
-                    if key in ("x", "\x03"):
+                    if args.keyboard_switchable and key == "s":
+                        node.request_control_mode("human_smpl")
+                        continue
+                    if args.keyboard_switchable and key == "p":
+                        node.request_control_mode("planner")
+                        continue
+                    if (args.keyboard_switchable and key == "q") or (not args.keyboard_switchable and key in ("x", "\x03")):
                         node.stop_event.set()
                         break
                     if key in (" ", "0"):

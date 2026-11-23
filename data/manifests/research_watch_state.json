@@ -2,9 +2,9 @@
   "schema_version": 1,
   "automation_id": "yuanqi",
   "timezone": "Asia/Shanghai",
-  "last_successful_source_check_at": "2026-11-22T01:10:12.651+00:00",
-  "last_report_date": "2026-11-22",
-  "last_report_path": "reports/research/2026-11-22/README.md",
+  "last_successful_source_check_at": "2026-11-23T01:09:43.679+00:00",
+  "last_report_date": "2026-11-23",
+  "last_report_path": "reports/research/2026-11-23/README.md",
   "initial_check": {
     "mode": "manual",
     "source_scope": "arXiv cs.RO 2026-09-29 推送筛选与三篇原始页面核对；不是全领域或系统查新。",
@@ -6997,21 +6997,21 @@
     "scheduled_task_config": "ACTIVE",
     "first_scheduled_run": "TRIGGER_AND_RESEARCH_VERIFIED",
     "last_error": {
-      "recorded_at": "2026-11-22T01:10:12.651+00:00",
-      "scope": "source_coverage_and_server_mirror",
-      "sources": "Visible arXiv partitions/RSS stop at Nov 20; no changed watched heads or release lists found.",
-      "server": "Not independently observed; mirror remains PENDING; no device or training action taken."
+      "recorded_at": "2026-11-23T01:09:43.679+00:00",
+      "scope": "q1_engineering_update_and_server_mirror",
+      "sources": "Q1 remote advanced by parallel engineering commits; public source lists did not expose newer partitions.",
+      "server": "Not independently observed; mirror remains PENDING."
     },
     "first_scheduled_trigger_at": "2026-09-30T01:01:12.375Z",
-    "last_scheduled_source_check_at": "2026-11-22T01:10:12.651+00:00",
-    "last_coverage_note": "Bounded 2026-11-21 cache plus direct arXiv/GitHub checks; visible arXiv pages still end at Nov 20, so Nov 21-22 coverage is not complete.",
-    "last_scheduled_trigger_at": "2026-11-22T00:56:43.875Z",
+    "last_scheduled_source_check_at": "2026-11-23T01:09:43.679+00:00",
+    "last_coverage_note": "Official arXiv pages expose Nov 20 as newest; no new watched public heads; Q1 range 1cf8966..f871b80 contains 21 engineering commits and 38 changed files.",
+    "last_scheduled_trigger_at": "2026-11-23T00:59:30.071Z",
     "last_run_interrupted": false,
     "last_run_resumed": false,
     "last_interrupted_check_manifest": "data/manifests/research_watch_check_20261003.json",
-    "last_check_outcome": "ENGINEERING_BOUNDARY_UPDATE_NO_PUBLIC_SOURCE_CHANGE",
+    "last_check_outcome": "Q1_ENGINEERING_HANDOFF_UPDATE_NO_NEW_PUBLIC_SOURCE",
     "last_resumed_from_trigger_at": "2026-11-12T01:05:15.710Z",
-    "publication_status": "DOCUMENTS_PUBLISHED_AND_INDEPENDENTLY_VERIFIED_SERVER_MIRROR_PENDING",
+    "publication_status": "LOCAL_PREPARED_PENDING_VERIFICATION",
     "previous_sync_failure_resolved_connection_at": "2026-10-12T09:09:40+08:00",
     "previous_sync_failure": {
       "scope": "record_sync",
@@ -7047,9 +7047,11 @@
       "recorded_at": "2026-10-11T09:08:48+08:00",
       "same_ssh_problem_as_local_engineering_record": "reports/README_A3_CONTROLLER_ADAPTER_20261010.md"
     },
-    "pending_sync_dates": [],
-    "latest_sync_receipt_path": "data/manifests/research_watch_sync_20261122.json",
-    "last_notification_reason": "Q1 engineering boundary updates; no substantive public source change.",
+    "pending_sync_dates": [
+      "2026-11-23"
+    ],
+    "latest_sync_receipt_path": "data/manifests/research_watch_sync_20261123.json",
+    "last_notification_reason": "Q1 FGP Control V2 and policy training handoff added verified engineering evidence; no new public source entry.",
     "user_action_issues": [
       {
         "id": "RECORD_CREDENTIAL_20261012",
@@ -7219,7 +7221,8 @@
       "2026-11-15",
       "2026-11-20",
       "2026-11-21",
-      "2026-11-22"
+      "2026-11-22",
+      "2026-11-23"
     ],
     "record_sync_20261101": {
       "documents_verified_at": "2026-11-01T11:34:00+08:00",
@@ -7303,9 +7306,9 @@
       "announcements": "Visible Nov3 only; Nov4 not yet verified, historical gaps preserved.",
       "assets": "No models/datasets/videos/runtime downloaded or checked. Paper supplements/Anchor/Koopman author implementations not confirmed."
     },
-    "context_refreshed_at": "2026-11-22T01:10:12.651+00:00",
-    "current_engineering": "Q1 latest engineering commit 46ddd9f3d3378bccf5478ac4092f8a19c059014f. Soft Recovery V2 static 116/120 and push 30/30 remain bounded by peak-speed, penetration and handback gates; human_smpl FGP replay terminates in Q1 simulation after about 1.62 s; PlannerCmd lateral calibration improves from 4/24 to 24/24 under 2 ms simulation with disturbance plus 10 ms delay, but its candidate package is not deployed. These are saved simulation/offline/pre-deployment records only. SONIC kplanner remains the user-validated field standing baseline. Main owns full research history; Q1 central research_watch_state.json is preserved byte-for-byte. Server Git and huanyu mirror were not independently observed; mirror remains PENDING.",
-    "concurrent_Q1_base": "46ddd9f3d3378bccf5478ac4092f8a19c059014f",
+    "context_refreshed_at": "2026-11-23T01:09:43.679+00:00",
+    "current_engineering": "Q1 latest engineering commit f871b80ce7538967789c1e12b3f226e2b11590ab. The remote advanced from 1cf8966 with 21 engineering commits and 38 changed files, including FGP Control V2, switchable teleop recording, offline causality checks and a policy-training handoff. The handoff reports 6603 valid FGP frames, P50/P95 inference 27.4/40.3 ms, 9828 human_smpl policy frames, FGP age P50/P95 31.9/53.0 ms and target-joint error P50/P95 0.207/0.474 rad. A2 FGP V2 with CGFA completed a 119.72 s offline replay at 13.50 deg maximum tilt and 0.515 rad target-error P95, while the old adapter and zeroed-root controls fell. The live exit fall is attributed to PASSIVE_DEFAULT unavailability and the old exit path, not counted as a policy failure. SONIC kplanner remains the user-validated field standing baseline. Q1 central research_watch_state.json is preserved byte-for-byte. Server Git and huanyu mirror were not independently observed; mirror remains PENDING.",
+    "concurrent_Q1_base": "f871b80ce7538967789c1e12b3f226e2b11590ab",
     "record_sync_20261105": {
       "documents_verified_at": "2026-11-05T12:09:30+08:00",
       "main_commit": "7667d0897fb9ba0b50bbea146e6d8848080b08ef",
@@ -7382,5 +7385,5 @@
     ]
   },
   "dedup_rule": "同 ID/版本不重复转述；新版本或代码发布只有实质变化才再次报告，记录变化说明。",
-  "latest_check_manifest": "data/manifests/research_watch_check_20261122.json"
+  "latest_check_manifest": "data/manifests/research_watch_check_20261123.json"
 }

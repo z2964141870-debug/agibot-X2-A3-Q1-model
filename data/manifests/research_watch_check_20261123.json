@@ -1,0 +1,86 @@
+{
+  "schema_version": 2,
+  "automation_id": "yuanqi",
+  "date": "2026-11-23",
+  "triggered_at_utc": "2026-11-23T00:59:30.071Z",
+  "checked_at_utc": "2026-11-23T01:09:43.679+00:00",
+  "previous_successful_source_check_at": "2026-11-22T01:10:12.651+00:00",
+  "source_check_completed_at_utc": "2026-11-23T01:09:43.679+00:00",
+  "notification_decision": "NOTIFY",
+  "brief": "reports/research/2026-11-23/README.md",
+  "brief_items": 1,
+  "source_counts": {
+    "new_listing_screening_ids": 0,
+    "changed_heads": 0,
+    "changed_release_lists": 0,
+    "new_dedup_entries": 0,
+    "q1_engineering_commits_since_previous_check": 21,
+    "q1_changed_files_since_previous_check": 38
+  },
+  "public_source_check": {
+    "schema_version": 1,
+    "date": "2026-11-23",
+    "checked_at_utc": "2026-11-23T01:09:43.678+00:00",
+    "previous_successful_source_check_at": "2026-11-22T01:10:12.651+00:00",
+    "method": "Directly inspect official arXiv new-listing pages; compare watched public heads; read the new Q1 remote engineering range; no third-party code execution.",
+    "public_result": "NO_SUBSTANTIVE_PUBLIC_SOURCE_CHANGE",
+    "coverage": {
+      "arxiv_latest_visible_date": "2026-11-20",
+      "arxiv_2026_11_21_23_complete": false,
+      "new_listing_keys": 0,
+      "changed_repository_heads": 0,
+      "changed_release_lists": 0,
+      "q1_engineering_commits_since_previous_check": 21,
+      "q1_changed_files_since_previous_check": 38
+    },
+    "sources": [
+      {
+        "url": "https://arxiv.org/list/cs.RO/new",
+        "status": "showing_new_listings_for_2026-11-20",
+        "entries": 140
+      },
+      {
+        "url": "https://arxiv.org/list/cs.LG/new",
+        "status": "showing_new_listings_for_2026-11-20",
+        "entries": 359
+      },
+      {
+        "url": "https://arxiv.org/list/cs.CV/new",
+        "status": "showing_new_listings_for_2026-11-20",
+        "entries": 337
+      },
+      {
+        "url": "https://github.com/HybridRobotics/supermimic",
+        "head": "698ea39bc901d8fe733b3c8621df3199d241f7e4",
+        "previous_head": "698ea39bc901d8fe733b3c8621df3199d241f7e4",
+        "changed": false
+      },
+      {
+        "url": "https://github.com/leggedrobotics/rsl_rl/releases/tag/v6.0.0",
+        "status": "unchanged_since_2026-11-21_review"
+      }
+    ],
+    "q1_range": {
+      "from": "1cf8966c07b8cf2e8684fc236c77b7a55880c479",
+      "to": "f871b80ce7538967789c1e12b3f226e2b11590ab",
+      "latest_handoff": "reports/DEPLOY_HANDOFF_Q1_FGP_POLICY_TRAINING_V1_20261122.md"
+    },
+    "limitations": "Official arXiv pages expose 2026-11-20 as newest; this is not proof that unexposed 2026-11-21-23 partitions contain no submissions. Q1 real-run values are author/project engineering records, not independently reproduced in this check.",
+    "scientific_execution": false
+  },
+  "git_start": {
+    "main": "68fce012a5d08b061c5fa3df7fd8c23f30ad0f32",
+    "Q1": "f871b80ce7538967789c1e12b3f226e2b11590ab"
+  },
+  "latest_engineering_record": "f871b80ce7538967789c1e12b3f226e2b11590ab",
+  "x2_ref_observed_read_only": "e1fa35da93e6d210451e841d145887cc63b53897",
+  "engineering_context": "Q1 latest engineering commit f871b80ce7538967789c1e12b3f226e2b11590ab. The remote advanced from 1cf8966 with 21 engineering commits and 38 changed files, including FGP Control V2, switchable teleop recording, offline causality checks and a policy-training handoff. The handoff reports 6603 valid FGP frames, P50/P95 inference 27.4/40.3 ms, 9828 human_smpl policy frames, FGP age P50/P95 31.9/53.0 ms and target-joint error P50/P95 0.207/0.474 rad. A2 FGP V2 with CGFA completed a 119.72 s offline replay at 13.50 deg maximum tilt and 0.515 rad target-error P95, while the old adapter and zeroed-root controls fell. The live exit fall is attributed to PASSIVE_DEFAULT unavailability and the old exit path, not counted as a policy failure. SONIC kplanner remains the user-validated field standing baseline. Q1 central research_watch_state.json is preserved byte-for-byte. Server Git and huanyu mirror were not independently observed; mirror remains PENDING.",
+  "q1_central_state_preserved": true,
+  "main_dedup_before": 284,
+  "main_dedup_after": 284,
+  "new_hypotheses": 0,
+  "server_git_status": "NOT_INDEPENDENTLY_OBSERVED",
+  "server_mirror": "PENDING",
+  "server_written": false,
+  "no_scientific_execution": true
+}

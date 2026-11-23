@@ -1,3 +1,5 @@
+2026-11-23研究：[一项工程简报](research/2026-11-23/README.md)／[检查](README_RESEARCH_CHECK_20261123.md)。公开研究无实质新增；Q1 远端新增 FGP Control V2、真机运行数据与策略训练交接，未在本轮启动训练。[发布收据](../data/manifests/research_watch_sync_20261123.json)，服务器镜像待。
+
 2026-11-22 [Q1 FGP Control V2 合入](README_Q1_FGP_CONTROL_V2_MERGE_20261122.md)。A2 适配器已合入隔离候选，13 文件校验、FGP V2 smoke、五模态 smoke 和 switchable bridge 回归通过。真机部署命令与回滚命令已冻结，尚未启动真机。
 
 2026-11-22 [Q1 Recovery V2 真机测试](README_Q1_RECOVERY_REAL_TEST_20261122.md)。两轮受保护测试中第一轮自主起身成功，第二轮因手部硬件断裂中止。采集器两轮均无写盘丢帧，第二轮不计为策略失败。

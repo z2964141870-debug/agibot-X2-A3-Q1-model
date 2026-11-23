@@ -1,3 +1,5 @@
+2026-11-23研究：[一项工程简报](research/2026-11-23/README.md)／[检查](README_RESEARCH_CHECK_20261123.md)。公开研究无实质新增；Q1 远端新增 FGP Control V2、真机运行数据与策略训练交接，未在本轮启动训练。[发布收据](../data/manifests/research_watch_sync_20261123.json)，服务器镜像待。
+
 2026-11-22研究：[工程边界简报](research/2026-11-22/README.md)／[检查](README_RESEARCH_CHECK_20261122.md)。公开研究无实质新增；Q1 Soft Recovery V2、FGP human_smpl 仿真与 PlannerCmd 侧向校准有边界更新。未运行或改默认。[发布收据](../data/manifests/research_watch_sync_20261122.json)，服务器镜像待。
 
 2026-11-21 [Q1 FGP 仿真结果](README_Q1_FGP_HUMAN_SMPL_SIM_20261121.md)。FGP human_smpl 仿真链路可运行，默认及真实站姿初始化均未通过稳定闭环，暂不进入真机主动遥操。

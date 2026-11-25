@@ -1,5 +1,7 @@
 # 具身智能研究简报索引
 
+最近检查：**2026-11-25**，[三项文献简报](2026-11-25/README.md)／[检查](../README_RESEARCH_CHECK_20261125.md)。FoveaWAM、FabricBench 与人类纠正时序偏好进入筛选；H004 保持，未改变训练主线。
+
 最近检查：**2026-11-24**，[三项文献简报](2026-11-24/README.md)／[检查](../README_RESEARCH_CHECK_20261124.md)。Skill-JEPA、CoMP、RoboCap-10k进入当前研究筛选；SparseHPS仅作背景，未改变训练主线。
 
 最近检查：**2026-11-23**，[一项工程简报](2026-11-23/README.md)／[检查](../README_RESEARCH_CHECK_20261123.md)。公开研究无实质新增；Q1 FGP Control V2 与策略训练交接提供了新的工程证据边界，未启动训练。

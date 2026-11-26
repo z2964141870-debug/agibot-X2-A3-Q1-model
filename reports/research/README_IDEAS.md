@@ -1,5 +1,9 @@
 # 候选研究想法
 
+## 2026-11-26 H004 相关方法补充
+
+[Sampling at Scale](https://arxiv.org/abs/2611.31561) 只作为 H004 的采样预算和约束搜索相关工作；[Exteroceptive Sensor Faults](https://arxiv.org/abs/2611.31667) 和 [Exact Collision Gradients](https://arxiv.org/abs/2611.31676) 分别作为头环传感可靠性、接触物理误差背景。本期不新增研究假设、不把采样并行、故障注入或可微碰撞本身称为原创。
+
 ## 2026-11-25 H004 相关工作补充
 
 [FoveaWAM](https://arxiv.org/abs/2611.31705) 的目标中心 4D 世界动作模型和延迟感知评测可作为 H004 的相关对照：它提醒我们把动作时效、目标状态和闭环成功分开记录。它不替换 Skill-JEPA 的潜在动作假设，也没有形成新的假设编号。FabricBench 与人类纠正时序偏好分别作为布料接触和控制权交还背景，不改变当前 SuperMimic/Q1 主线。

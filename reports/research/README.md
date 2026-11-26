@@ -1,5 +1,7 @@
 # 具身智能研究简报索引
 
+最近检查：**2026-11-26**，[三项文献简报](2026-11-26/README.md)／[检查](../README_RESEARCH_CHECK_20261126.md)。Sampling at Scale、传感故障注入和精确碰撞梯度进入筛选；H004 保持。
+
 最近检查：**2026-11-25**，[三项文献简报](2026-11-25/README.md)／[检查](../README_RESEARCH_CHECK_20261125.md)。FoveaWAM、FabricBench 与人类纠正时序偏好进入筛选；H004 保持，未改变训练主线。
 
 最近检查：**2026-11-24**，[三项文献简报](2026-11-24/README.md)／[检查](../README_RESEARCH_CHECK_20261124.md)。Skill-JEPA、CoMP、RoboCap-10k进入当前研究筛选；SparseHPS仅作背景，未改变训练主线。

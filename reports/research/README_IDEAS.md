@@ -1,5 +1,9 @@
 # 候选研究想法
 
+## 2026-11-27 H004 相关工作补充
+
+[Effect-Driven Skill Abstractions](https://arxiv.org/abs/2611.33229)从“动作片段导致什么状态变化”来量化技能，可作为 H004 潜在动作空间的相关对照；不新增假设。DexEngine 与 WorldReforge 分别补充物理可执行重定向和失败接触世界模型的相关工作，深度传感失效研究补充头环/FGP故障表。本期不把技能量化、故障注入或失败数据本身称为原创。
+
 ## 2026-11-26 H004 相关方法补充
 
 [Sampling at Scale](https://arxiv.org/abs/2611.31561) 只作为 H004 的采样预算和约束搜索相关工作；[Exteroceptive Sensor Faults](https://arxiv.org/abs/2611.31667) 和 [Exact Collision Gradients](https://arxiv.org/abs/2611.31676) 分别作为头环传感可靠性、接触物理误差背景。本期不新增研究假设、不把采样并行、故障注入或可微碰撞本身称为原创。

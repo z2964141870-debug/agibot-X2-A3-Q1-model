@@ -1,5 +1,7 @@
 # 具身智能研究简报索引
 
+最近检查：**2026-11-27**，[四项文献简报](2026-11-27/README.md)／[检查](../README_RESEARCH_CHECK_20261127.md)。Effect-Driven Skills、深度传感失效、DexEngine、WorldReforge 进入筛选；H004 保持。
+
 最近检查：**2026-11-26**，[三项文献简报](2026-11-26/README.md)／[检查](../README_RESEARCH_CHECK_20261126.md)。Sampling at Scale、传感故障注入和精确碰撞梯度进入筛选；H004 保持。
 
 最近检查：**2026-11-25**，[三项文献简报](2026-11-25/README.md)／[检查](../README_RESEARCH_CHECK_20261125.md)。FoveaWAM、FabricBench 与人类纠正时序偏好进入筛选；H004 保持，未改变训练主线。
@@ -48,6 +50,7 @@
 
 | 简报日期（北京时间） | 内容 | 核验范围 |
 | --- | --- | --- |
+| [2026-11-27](2026-11-27/README.md) | Effect-Driven Skills、深度传感失效、DexEngine、WorldReforge；H004保持 | arXiv摘要/项目页/代码入口静态核验；无执行或下载 |
 | [2026-11-26](2026-11-26/README.md) | Sampling at Scale、传感故障注入、精确碰撞梯度；H004保持 | arXiv摘要/代码入口静态核验；无执行或下载 |
 | [2026-11-25](2026-11-25/README.md) | FoveaWAM、FabricBench、人类纠正时序偏好；H004保持 | arXiv摘要/项目页静态核验；无执行或下载 |
 | [2026-11-24](2026-11-24/README.md) | Skill-JEPA、CoMP、RoboCap-10k；SparseHPS背景；H004待验证 | arXiv摘要/项目页/官方代码静态核验；无执行或下载 |

@@ -1,3 +1,5 @@
+2026-11-27研究：[四项文献简报](research/2026-11-27/README.md)／[检查](README_RESEARCH_CHECK_20261127.md)。新增 Effect-Driven Skills、深度传感失效、DexEngine、WorldReforge；H004 保持，不改变 Q1 训练主线。[发布收据](../data/manifests/research_watch_sync_20261127.json)，服务器镜像待。
+
 2026-11-26研究：[三项文献简报](research/2026-11-26/README.md)／[检查](README_RESEARCH_CHECK_20261126.md)。新增 Sampling at Scale、Exteroceptive Sensor Faults、Exact Collision Gradients；H004 保持，不改变 Q1 训练主线。[发布收据](../data/manifests/research_watch_sync_20261126.json)，服务器镜像待。
 
 2026-11-25研究：[三项文献简报](research/2026-11-25/README.md)／[检查](README_RESEARCH_CHECK_20261125.md)。新增 FoveaWAM、FabricBench 与人类纠正时序偏好；不新增研究假设，不改变 Q1 训练主线。[发布收据](../data/manifests/research_watch_sync_20261125.json)，服务器镜像待。

@@ -1,5 +1,7 @@
 # 具身智能研究简报索引
 
+最近检查：**2026-11-27**，[四项文献简报](2026-11-27/README.md)／[检查](../README_RESEARCH_CHECK_20261127.md)。Effect-Driven Skills、深度传感失效、DexEngine、WorldReforge 进入筛选；H004 保持。
+
 最近检查：**2026-11-26**，[三项文献简报](2026-11-26/README.md)／[检查](../README_RESEARCH_CHECK_20261126.md)。Sampling at Scale、传感故障注入和精确碰撞梯度进入筛选；H004 保持。
 
 最近检查：**2026-11-25**，[三项文献简报](2026-11-25/README.md)／[检查](../README_RESEARCH_CHECK_20261125.md)。FoveaWAM、FabricBench 与人类纠正时序偏好进入筛选；H004 保持，未改变训练主线。
